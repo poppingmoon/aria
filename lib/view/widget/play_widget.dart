@@ -27,6 +27,7 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/nyaize.dart';
+import '../dialog/confirmation_dialog.dart';
 import '../dialog/error_message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import 'account_preview.dart';
@@ -66,111 +67,130 @@ class PlayWidget extends HookConsumerWidget {
       duration: Durations.medium1,
       child:
           started.value
-              ? Column(
-                children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    elevation: 0.0,
-                    color: colors.panel,
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(32.0),
-                      child: AsUiWidget(
-                        account: account,
-                        host: host,
-                        componentId: '___root___',
-                        components: components.value,
+              ? PopScope(
+                canPop: false,
+                onPopInvokedWithResult: (didPop, _) async {
+                  if (!didPop) {
+                    final shouldPop = await confirm(
+                      context,
+                      message: t.aria.exitPlayConfirm,
+                    );
+                    if (!context.mounted) return;
+                    if (shouldPop) {
+                      try {
+                        await aiscript.value?.abort();
+                      } catch (_) {}
+                      if (!context.mounted) return;
+                      context.pop();
+                    }
+                  }
+                },
+                child: Column(
+                  children: [
+                    Card(
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      elevation: 0.0,
+                      color: colors.panel,
+                      child: Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(32.0),
+                        child: AsUiWidget(
+                          account: account,
+                          host: host,
+                          componentId: '___root___',
+                          components: components.value,
+                        ),
                       ),
                     ),
-                  ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    elevation: 0.0,
-                    color: colors.panel,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          IconButton(
-                            tooltip: t.misskey.reload,
-                            onPressed: () async {
-                              await aiscript.value?.abort();
-                              started.value = false;
-                            },
-                            icon: const Icon(Icons.refresh),
-                          ),
-                          Row(
-                            children: [
-                              LikeButton(
-                                isLiked: play.isLiked,
-                                likedCount: play.likedCount ?? 0,
-                                onTap:
-                                    !account.isGuest && account.host == host
-                                        ? () => futureWithDialog(
-                                          context,
-                                          play.isLiked
-                                              ? ref
-                                                  .read(
-                                                    playNotifierProvider(
-                                                      account,
-                                                      play.id,
-                                                    ).notifier,
-                                                  )
-                                                  .unlike()
-                                              : ref
-                                                  .read(
-                                                    playNotifierProvider(
-                                                      account,
-                                                      play.id,
-                                                    ).notifier,
-                                                  )
-                                                  .like(),
-                                        )
-                                        : null,
-                              ),
-                              const Spacer(),
-                              if (!account.isGuest)
-                                IconButton(
-                                  tooltip: t.misskey.shareWithNote,
-                                  onPressed: () {
-                                    ref
-                                        .read(
-                                          postNotifierProvider(
-                                            account,
-                                          ).notifier,
-                                        )
-                                        .setText('${play.title} $url');
-                                    context.push('/$account/post');
-                                  },
-                                  icon: const Icon(Icons.repeat_rounded),
+                    Card(
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      elevation: 0.0,
+                      color: colors.panel,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            IconButton(
+                              tooltip: t.misskey.reload,
+                              onPressed: () async {
+                                await aiscript.value?.abort();
+                                started.value = false;
+                              },
+                              icon: const Icon(Icons.refresh),
+                            ),
+                            Row(
+                              children: [
+                                LikeButton(
+                                  isLiked: play.isLiked,
+                                  likedCount: play.likedCount ?? 0,
+                                  onTap:
+                                      !account.isGuest && account.host == host
+                                          ? () => futureWithDialog(
+                                            context,
+                                            play.isLiked
+                                                ? ref
+                                                    .read(
+                                                      playNotifierProvider(
+                                                        account,
+                                                        play.id,
+                                                      ).notifier,
+                                                    )
+                                                    .unlike()
+                                                : ref
+                                                    .read(
+                                                      playNotifierProvider(
+                                                        account,
+                                                        play.id,
+                                                      ).notifier,
+                                                    )
+                                                    .like(),
+                                          )
+                                          : null,
                                 ),
-                              IconButton(
-                                tooltip: t.misskey.copyLink,
-                                onPressed:
-                                    () => copyToClipboard(
-                                      context,
-                                      url.toString(),
-                                    ),
-                                icon: const Icon(Icons.link),
-                              ),
-                              IconButton(
-                                tooltip: t.aria.openInBrowser,
-                                onPressed: () => launchUrl(ref, url),
-                                icon: const Icon(Icons.open_in_browser),
-                              ),
-                              IconButton(
-                                tooltip: t.misskey.share,
-                                onPressed:
-                                    () => Share.share('${play.title} $url'),
-                                icon: const Icon(Icons.share),
-                              ),
-                            ],
-                          ),
-                        ],
+                                const Spacer(),
+                                if (!account.isGuest)
+                                  IconButton(
+                                    tooltip: t.misskey.shareWithNote,
+                                    onPressed: () {
+                                      ref
+                                          .read(
+                                            postNotifierProvider(
+                                              account,
+                                            ).notifier,
+                                          )
+                                          .setText('${play.title} $url');
+                                      context.push('/$account/post');
+                                    },
+                                    icon: const Icon(Icons.repeat_rounded),
+                                  ),
+                                IconButton(
+                                  tooltip: t.misskey.copyLink,
+                                  onPressed:
+                                      () => copyToClipboard(
+                                        context,
+                                        url.toString(),
+                                      ),
+                                  icon: const Icon(Icons.link),
+                                ),
+                                IconButton(
+                                  tooltip: t.aria.openInBrowser,
+                                  onPressed: () => launchUrl(ref, url),
+                                  icon: const Icon(Icons.open_in_browser),
+                                ),
+                                IconButton(
+                                  tooltip: t.misskey.share,
+                                  onPressed:
+                                      () => Share.share('${play.title} $url'),
+                                  icon: const Icon(Icons.share),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
               : Card(
                 margin: const EdgeInsets.symmetric(vertical: 8.0),
@@ -416,7 +436,9 @@ class PlayWidget extends HookConsumerWidget {
                                 started.value = true;
                                 await aiscript.value?.exec(input: play.script);
                               } catch (e, st) {
-                                await aiscript.value?.abort();
+                                try {
+                                  await aiscript.value?.abort();
+                                } catch (_) {}
                                 if (!context.mounted) return;
                                 await showErrorMessageDialog(
                                   context,
