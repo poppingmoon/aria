@@ -343,6 +343,7 @@ class _NoteDetailedContent extends HookConsumerWidget {
               account: account,
               user: appearNote.user,
               size: style.lineHeight * avatarScale,
+              showOnlineIndicator: true,
               onTap: () => context.push('/$account/users/${appearNote.userId}'),
             ),
             const SizedBox(width: 8.0),

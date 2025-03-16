@@ -171,6 +171,7 @@ class _UserHome extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 100.0,
+                  showOnlineIndicator: true,
                   onTap:
                       () => showImageDialog(
                         context,

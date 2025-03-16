@@ -41,6 +41,7 @@ class RenoteMutedUsersPage extends ConsumerWidget {
                 account: account,
                 user: renoteMuting.mutee,
                 size: 32.0,
+                showOnlineIndicator: true,
               ),
               title: UsernameWidget(account: account, user: renoteMuting.mutee),
               subtitle: Column(

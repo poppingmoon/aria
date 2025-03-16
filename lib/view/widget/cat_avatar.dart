@@ -9,6 +9,7 @@ import '../../model/account.dart';
 import 'avatar_decorations.dart';
 import 'cat_ear.dart';
 import 'image_widget.dart';
+import 'online_indicator.dart';
 
 final _catEarWiggleTween = TweenSequence([
   TweenSequenceItem(
@@ -32,6 +33,8 @@ class CatAvatar extends HookWidget {
     required this.catEarColor,
     required this.showAvatarDecorations,
     required this.decorations,
+    required this.showOnlineStatus,
+    required this.onlineStatus,
     required this.size,
     required this.borderRadius,
     required this.onTap,
@@ -43,6 +46,8 @@ class CatAvatar extends HookWidget {
   final Color catEarColor;
   final bool showAvatarDecorations;
   final List<UserAvatarDecoration> decorations;
+  final bool showOnlineStatus;
+  final OnlineStatus? onlineStatus;
   final double size;
   final BorderRadius borderRadius;
   final void Function()? onTap;
@@ -127,6 +132,15 @@ class CatAvatar extends HookWidget {
                 account: account,
                 decorations: decorations,
                 size: size,
+              ),
+            if (showOnlineStatus)
+              Positioned(
+                left: 0.0,
+                bottom: 0.0,
+                child: OnlineIndicator(
+                  onlineStatus: onlineStatus,
+                  size: size * 0.2,
+                ),
               ),
           ],
         ),

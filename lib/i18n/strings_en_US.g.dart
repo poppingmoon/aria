@@ -224,6 +224,7 @@ class TranslationsAriaEnUs {
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
+	String get showOnlineStatus => 'Show online status';
 	String get showPopupOnNewNote => 'Show popup on new note';
 	String get showQuoteButtonInNoteFooter => 'Add "Quote" to note action menu';
 	String get showReactionsCountForEachTypes => 'See the number of reactions for each reaction types';

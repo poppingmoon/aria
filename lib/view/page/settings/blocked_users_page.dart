@@ -39,6 +39,7 @@ class BlockedUsersPage extends ConsumerWidget {
                 account: account,
                 user: blocking.blockee,
                 size: 32.0,
+                showOnlineIndicator: true,
               ),
               title: UsernameWidget(account: account, user: blocking.blockee),
               subtitle: Column(

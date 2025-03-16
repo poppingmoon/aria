@@ -107,6 +107,7 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(false) bool enableEmojiFadeIn,
     @Default(false) bool forceShowAds,
     @Default(false) bool useGroupedNotifications,
+    @Default(false) bool showOnlineStatus,
     @Default(false) bool showTimelineTabBarAtBottom,
     @Default(false) bool showMenuButtonInTabBar,
     @Default(defaultTimelinesPageButtonTypes)

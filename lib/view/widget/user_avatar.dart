@@ -11,6 +11,7 @@ import '../../provider/static_image_url_provider.dart';
 import 'avatar_decorations.dart';
 import 'cat_avatar.dart';
 import 'image_widget.dart';
+import 'online_indicator.dart';
 
 class UserAvatar extends ConsumerWidget {
   const UserAvatar({
@@ -20,6 +21,7 @@ class UserAvatar extends ConsumerWidget {
     this.size,
     this.decorations,
     this.forceShowDecoration = false,
+    this.showOnlineIndicator = false,
     this.onTap,
   });
 
@@ -28,6 +30,7 @@ class UserAvatar extends ConsumerWidget {
   final double? size;
   final List<UserAvatarDecoration>? decorations;
   final bool forceShowDecoration;
+  final bool showOnlineIndicator;
   final void Function()? onTap;
 
   @override
@@ -37,12 +40,14 @@ class UserAvatar extends ConsumerWidget {
       showAvatarDecorations,
       squareAvatars,
       disableShowingAnimatedImages,
+      showOnlineStatus,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
           settings.showAvatarDecorations,
           settings.squareAvatars,
           settings.disableShowingAnimatedImages,
+          settings.showOnlineStatus,
         ),
       ),
     );
@@ -74,6 +79,8 @@ class UserAvatar extends ConsumerWidget {
         catEarColor: catEarColor,
         showAvatarDecorations: forceShowDecoration || showAvatarDecorations,
         decorations: decorations,
+        showOnlineStatus: showOnlineIndicator && showOnlineStatus,
+        onlineStatus: user.onlineStatus,
         size: size,
         borderRadius: borderRadius,
         onTap: onTap,
@@ -100,6 +107,15 @@ class UserAvatar extends ConsumerWidget {
               account: account,
               decorations: decorations,
               size: size,
+            ),
+          if (showOnlineIndicator && showOnlineStatus)
+            Positioned(
+              left: 0.0,
+              bottom: 0.0,
+              child: OnlineIndicator(
+                onlineStatus: user.onlineStatus,
+                size: size * 0.2,
+              ),
             ),
         ],
       ),

@@ -7,7 +7,7 @@ part of 'general_settings_notifier_provider.dart';
 // **************************************************************************
 
 String _$generalSettingsNotifierHash() =>
-    r'f520e6e87d770d222008f36134176c2c6015debc';
+    r'ca5500fbcb1e8636ef23af543a38e3bb52952500';
 
 /// See also [GeneralSettingsNotifier].
 @ProviderFor(GeneralSettingsNotifier)
