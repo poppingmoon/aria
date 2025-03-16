@@ -183,30 +183,31 @@ class ImageGalleryDialog extends HookConsumerWidget {
           duration: const Duration(milliseconds: 100),
           curve: Curves.easeInOut,
           child: SafeArea(
-            child: Stack(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: IconButton(
-                      tooltip:
-                          MaterialLocalizations.of(context).closeButtonTooltip,
-                      style: IconButton.styleFrom(
-                        backgroundColor: Colors.white54,
+            child: IconButtonTheme(
+              data: IconButtonThemeData(
+                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+              ),
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional.topStart,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: IconButton(
+                        tooltip:
+                            MaterialLocalizations.of(
+                              context,
+                            ).closeButtonTooltip,
+
+                        onPressed: () => context.pop(),
+                        icon: const Icon(Icons.close),
                       ),
-                      onPressed: () => context.pop(),
-                      icon: const Icon(Icons.close),
                     ),
                   ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional.topEnd,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Material(
-                      color: Colors.white54,
-                      shape: const OvalBorder(),
+                  Align(
+                    alignment: AlignmentDirectional.topEnd,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: PopupMenuButton<void>(
                         itemBuilder:
                             (context) => [
@@ -254,80 +255,79 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                ),
-                if (index.value > 0)
-                  Align(
-                    alignment: AlignmentDirectional.centerStart,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          backgroundColor: Colors.white54,
+                  if (index.value > 0)
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          onPressed:
+                              () => controller.previousPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn,
+                              ),
+                          icon: const Icon(Icons.navigate_before),
                         ),
-                        onPressed:
-                            () => controller.previousPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeIn,
-                            ),
-                        icon: const Icon(Icons.navigate_before),
                       ),
                     ),
-                  ),
-                if (index.value < files.length - 1)
-                  Align(
-                    alignment: AlignmentDirectional.centerEnd,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          backgroundColor: Colors.white54,
-                        ),
-                        onPressed:
-                            () => controller.nextPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeIn,
-                            ),
-                        icon: const Icon(Icons.navigate_next),
-                      ),
-                    ),
-                  ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onLongPress:
-                          () => copyToClipboard(
-                            context,
-                            comment != null && comment.isNotEmpty
-                                ? comment
-                                : files[index.value].name,
+                  if (index.value < files.length - 1)
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                            backgroundColor: Colors.white54,
                           ),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.white38,
-                          borderRadius: BorderRadius.circular(8.0),
+                          onPressed:
+                              () => controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeIn,
+                              ),
+                          icon: const Icon(Icons.navigate_next),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(maxHeight: 100.0),
-                            child: SingleChildScrollView(
-                              child: Text(
-                                comment != null && comment.isNotEmpty
-                                    ? comment
-                                    : files[index.value].name,
-                                style: TextStyle(
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 2.0,
-                                      color: Theme.of(context).canvasColor,
-                                    ),
-                                    Shadow(
-                                      blurRadius: 2.0,
-                                      color: Theme.of(context).canvasColor,
-                                    ),
-                                  ],
+                      ),
+                    ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onLongPress:
+                            () => copyToClipboard(
+                              context,
+                              comment != null && comment.isNotEmpty
+                                  ? comment
+                                  : files[index.value].name,
+                            ),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white38,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxHeight: 100.0,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Text(
+                                  comment != null && comment.isNotEmpty
+                                      ? comment
+                                      : files[index.value].name,
+                                  style: TextStyle(
+                                    shadows: [
+                                      Shadow(
+                                        blurRadius: 2.0,
+                                        color: Theme.of(context).canvasColor,
+                                      ),
+                                      Shadow(
+                                        blurRadius: 2.0,
+                                        color: Theme.of(context).canvasColor,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -336,8 +336,8 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
