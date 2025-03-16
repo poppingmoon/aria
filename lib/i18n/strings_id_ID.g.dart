@@ -1528,6 +1528,8 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get modified => 'Diubah';
 	@override String thereAreNChanges({required Object n}) => 'Ada ${n} perubahan';
 	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
+	@override String get postForm => 'Buat catatan';
+	@override late final _TranslationsMisskeySettingsIdId settings_ = _TranslationsMisskeySettingsIdId._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);
 	@override late final _TranslationsMisskeyDeliveryIdId delivery_ = _TranslationsMisskeyDeliveryIdId._(_root);
 	@override late final _TranslationsMisskeyBubbleGameIdId bubbleGame_ = _TranslationsMisskeyBubbleGameIdId._(_root);
@@ -1602,6 +1604,16 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
 	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsIdId extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.abuseUserReport_

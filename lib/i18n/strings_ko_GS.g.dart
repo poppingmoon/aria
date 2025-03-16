@@ -1557,6 +1557,24 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '활성화 하기 전에 주의 사항을 확인했습니다.';
 	@override String get federationSpecified => '이 서버는 화이트 리스트 제도로 운영 중 입니다. 정해진 리모트 서버가 아닌 경우 연합되지 않습니다.';
 	@override String get federationDisabled => '이 서버는 연합을 하지 않고 있습니다. 리모트 서버 유저와 통신을 할 수 없습니다.';
+	@override String get confirmOnReact => '리액션할 때 확인';
+	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} "로 리액션하시겠습니까?';
+	@override String get markAsSensitiveConfirm => '이 미디어를 민감한 미디어로 설정하시겠습니까?';
+	@override String get unmarkAsSensitiveConfirm => '이 미디어의 민감한 미디어 지정을 해제하시겠습니까?';
+	@override String get preferences => '환경설정';
+	@override String get accessibility => '접근성';
+	@override String get preferencesProfile => '설정 프로필';
+	@override String get copyPreferenceId => '설정한 ID를 복사';
+	@override String get resetToDefaultValue => '기본값으로 되돌리기';
+	@override String get overrideByAccount => '계정으로 덮어쓰기';
+	@override String get untitled => '제목 없음';
+	@override String get noName => '이름이 없습니다.';
+	@override String get skip => '건너뛰기';
+	@override String get restore => '복원';
+	@override String get postForm => '글 입력란';
+	@override late final _TranslationsMisskeySettingsKoGs settings_ = _TranslationsMisskeySettingsKoGs._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileKoGs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileKoGs._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupKoGs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupKoGs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsKoGs accountSettings_ = _TranslationsMisskeyAccountSettingsKoGs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportKoGs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoGs._(_root);
 	@override late final _TranslationsMisskeyDeliveryKoGs delivery_ = _TranslationsMisskeyDeliveryKoGs._(_root);
@@ -1651,6 +1669,48 @@ class _TranslationsMisskeyIOKoGs extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusKoGs skebStatus_ = _TranslationsMisskeyIOSkebStatusKoGs._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsKoGs extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => '서비스 연동';
+	@override String get accountData => '계정 데이터';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileKoGs extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => '프로필 이름';
+	@override String get profileNameDescription => '이 디바이스를 식별할 이름을 설정해 주세요.';
+	@override String get profileNameDescription2 => '예: \'메인PC\', \'스마트폰\' 등';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupKoGs extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => '자동 백업';
+	@override String get restoreFromBackup => '백업으로 복구';
+	@override String get noBackupsFoundTitle => '백업을 찾을 수 없습니다';
+	@override String get noBackupsFoundDescription => '자동으로 생성된 백업은 찾을 수 없었지만, 수동으로 백업 파일을 저장한 경우 해당 파일을 가져와 복원할 수 있습니다.';
+	@override String get selectBackupToRestore => '복원할 백업을 선택하세요';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => '자동 백업을 활성화하려면 프로필 이름을 설정해야 합니다.';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '이 장치에서 설정 자동 백업이 활성화되어 있지 않습니다.';
+	@override String get backupFound => '설정 백업이 발견되었습니다';
 }
 
 // Path: misskey.accountSettings_
@@ -2212,6 +2272,7 @@ class _TranslationsMisskeyThemeKoGs extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name} 테마가 설치되었습니다';
 	@override String get installedThemes => '설치된 테마';
 	@override String get builtinThemes => '표준 테마';
+	@override String get instanceTheme => '서버 테마';
 	@override String get alreadyInstalled => '이미 설치된 테마입니다';
 	@override String get invalid => '테마 형식이 올바르지 않습니다';
 	@override String get make => '테마 만들기';
@@ -2819,6 +2880,8 @@ class _TranslationsMisskeyNotificationKoGs extends TranslationsMisskeyNotificati
 	@override String get flushNotification => '알림 이력을 초기화';
 	@override String exportOfXCompleted({required Object x}) => '${x} 추출에 성공했습니다.';
 	@override String get login => '로그인 알림이 있습니다';
+	@override String get createToken => '액세스 토큰이 생성되었습니다';
+	@override String createTokenDescription({required Object text}) => '만약 기억이 나지 않는다면 \'${text}\'를 통해 액세스 토큰을 삭제해 주세요.';
 	@override late final _TranslationsMisskeyNotificationTypesKoGs types_ = _TranslationsMisskeyNotificationTypesKoGs._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsKoGs actions_ = _TranslationsMisskeyNotificationActionsKoGs._(_root);
 }
@@ -2970,6 +3033,7 @@ class _TranslationsMisskeyModerationLogTypesKoGs extends TranslationsMisskeyMode
 	@override String get deletePage => '페이지를 삭제';
 	@override String get deleteFlash => 'Play를 삭제';
 	@override String get deleteGalleryPost => '갤러리 포스트를 삭제';
+	@override String get updateProxyAccountDescription => '프록시 계정의 설명 업데이트';
 }
 
 // Path: misskey.fileViewer_
@@ -3253,7 +3317,16 @@ class _TranslationsMisskeyBootErrorsKoGs extends TranslationsMisskeyBootErrorsEn
 
 	// Translations
 	@override String get title => '로딩이 실패함';
+	@override String get serverError => '잠시 기다렸다가 다시 로드해도 여전히 문제가 해결되지 않으면 아래 Error ID와 함께 서버 관리자에게 연락해 주세요.';
+	@override String get solution => '다음과 같은 방법으로 해결할 수 있습니다.';
+	@override String get solution1 => '브라우저 및 OS를 최신 버전으로 업데이트하기';
+	@override String get solution2 => '광고 차단 비활성화하기';
+	@override String get solution3 => '브라우저 캐시 지우기';
 	@override String get solution4 => '(Tor Browser) dom.webaudio.enabled를 true로 설정하세요';
+	@override String get otherOption => '기타 옵션';
+	@override String get otherOption1 => '클라이언트 설정 및 캐시 삭제';
+	@override String get otherOption2 => '간편 클라이언트 실행';
+	@override String get otherOption3 => '복구 툴 실행';
 }
 
 // Path: misskey.search_
@@ -3265,7 +3338,11 @@ class _TranslationsMisskeySearchKoGs extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => '말캉';
 	@override String get searchScopeLocal => '로컬';
+	@override String get searchScopeServer => '서버 지정';
 	@override String get searchScopeUser => '사용자 지정';
+	@override String get pleaseEnterServerHost => '서버의 호스트를 입력해 주세요.';
+	@override String get pleaseSelectUser => '유저를 선택해주세요';
+	@override String get serverHostPlaceholder => '예: misskey.example.com';
 }
 
 // Path: misskeyIO.skebStatus_

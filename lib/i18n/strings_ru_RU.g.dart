@@ -1258,6 +1258,8 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get alwaysConfirmFollow => 'Всегда подтверждать подписку';
 	@override String get inquiry => 'Связаться';
 	@override String get messageToFollower => 'Сообщение подписчикам';
+	@override String get postForm => 'Форма отправки';
+	@override late final _TranslationsMisskeySettingsRuRu settings_ = _TranslationsMisskeySettingsRuRu._(_root);
 	@override late final _TranslationsMisskeyDeliveryRuRu delivery_ = _TranslationsMisskeyDeliveryRuRu._(_root);
 	@override late final _TranslationsMisskeyAnnouncementRuRu announcement_ = _TranslationsMisskeyAnnouncementRuRu._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingRuRu initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingRuRu._(_root);
@@ -1325,6 +1327,16 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiRuRu reversi_ = _TranslationsMisskeyReversiRuRu._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRuRu remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRuRu._(_root);
 	@override late final _TranslationsMisskeySearchRuRu search_ = _TranslationsMisskeySearchRuRu._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsRuRu extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Вебхук';
 }
 
 // Path: misskey.delivery_

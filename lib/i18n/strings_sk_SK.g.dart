@@ -994,6 +994,7 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get sourceCode => 'Zdrojový kód';
 	@override String get flip => 'Preklopiť';
 	@override String lastNDays({required Object n}) => 'Posledných ${n} dní';
+	@override String get postForm => 'Napísať poznámku';
 	@override late final _TranslationsMisskeyDeliverySkSk delivery_ = _TranslationsMisskeyDeliverySkSk._(_root);
 	@override late final _TranslationsMisskeyRoleSkSk role_ = _TranslationsMisskeyRoleSkSk._(_root);
 	@override late final _TranslationsMisskeySensitiveMediaDetectionSkSk sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionSkSk._(_root);

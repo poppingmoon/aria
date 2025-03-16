@@ -1430,6 +1430,8 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => 'Selecione uma conta';
 	@override String get availableRoles => 'Cargos disponíveis';
 	@override String get acknowledgeNotesAndEnable => 'Ative após compreender as precauções.';
+	@override String get postForm => 'Campo de postagem';
+	@override late final _TranslationsMisskeySettingsPtPt settings_ = _TranslationsMisskeySettingsPtPt._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsPtPt accountSettings_ = _TranslationsMisskeyAccountSettingsPtPt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportPtPt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportPtPt._(_root);
 	@override late final _TranslationsMisskeyDeliveryPtPt delivery_ = _TranslationsMisskeyDeliveryPtPt._(_root);
@@ -1509,6 +1511,16 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestPtPt followRequest_ = _TranslationsMisskeyFollowRequestPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPtPt remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPtPt._(_root);
 	@override late final _TranslationsMisskeySearchPtPt search_ = _TranslationsMisskeySearchPtPt._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsPtPt extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.accountSettings_

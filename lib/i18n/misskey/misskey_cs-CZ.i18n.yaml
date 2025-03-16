@@ -1102,6 +1102,7 @@ sourceCode: "Zdrojový kód"
 flip: "Otočit"
 lastNDays: "Posledních {n} dnů"
 surrender: "Zrušit"
+postForm: "Formulář pro odeslání"
 delivery_:
   stop: "Suspendováno"
   type_:

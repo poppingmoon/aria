@@ -130,7 +130,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Von deinem Profil lösen';
 	@override String get copyContent => 'Inhalt kopieren';
 	@override String get copyLink => 'Link kopieren';
-	@override String get copyRemoteLink => 'Renote-Link kopieren';
+	@override String get copyRemoteLink => 'Remote-Link kopieren';
 	@override String get copyLinkRenote => 'Renote-Link kopieren';
 	@override String get delete => 'Löschen';
 	@override String get deleteAndEdit => 'Löschen und Bearbeiten';
@@ -944,7 +944,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get accounts => 'Benutzerkonten';
 	@override String get switch_ => 'Wechseln';
 	@override String get noMaintainerInformationWarning => 'Betreiberinformationen sind nicht konfiguriert.';
-	@override String get noInquiryUrlWarning => 'Keine gültige URL.';
+	@override String get noInquiryUrlWarning => 'Keine gültige Kontakt-URL.';
 	@override String get noBotProtectionWarning => 'Schutz vor Bots ist nicht konfiguriert.';
 	@override String get configure => 'Konfigurieren';
 	@override String get postToGallery => 'Neuen Galeriebeitrag erstellen';
@@ -1389,6 +1389,8 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get availableRoles => 'Verfügbare Rollen';
 	@override String get federationSpecified => 'Dieser Server arbeitet mit Whitelist-Föderation. Er kann nicht mit anderen als den vom Administrator angegebenen Servern interagieren.';
 	@override String get federationDisabled => 'Föderation ist auf diesem Server deaktiviert. Es ist nicht möglich, mit Benutzern auf anderen Servern zu interagieren.';
+	@override String get postForm => 'Notizfenster';
+	@override late final _TranslationsMisskeySettingsDeDe settings_ = _TranslationsMisskeySettingsDeDe._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsDeDe accountSettings_ = _TranslationsMisskeyAccountSettingsDeDe._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportDeDe abuseUserReport_ = _TranslationsMisskeyAbuseUserReportDeDe._(_root);
 	@override late final _TranslationsMisskeyDeliveryDeDe delivery_ = _TranslationsMisskeyDeliveryDeDe._(_root);
@@ -1467,6 +1469,16 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySelfXssPreventionDeDe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionDeDe._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsDeDe remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsDeDe._(_root);
 	@override late final _TranslationsMisskeySearchDeDe search_ = _TranslationsMisskeySearchDeDe._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsDeDe extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.accountSettings_

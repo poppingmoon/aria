@@ -1185,6 +1185,9 @@ keepOriginalFilenameDescription: "Если вы выключите данную 
 alwaysConfirmFollow: "Всегда подтверждать подписку"
 inquiry: "Связаться"
 messageToFollower: "Сообщение подписчикам"
+postForm: "Форма отправки"
+settings_:
+  webhook: "Вебхук"
 delivery_:
   stop: "Заморожено"
   type_:

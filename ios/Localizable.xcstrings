@@ -1067,7 +1067,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "您的追隨請求已通過"
+            "value": "您的追隨請求已被核准"
           }
         }
       }
@@ -1491,6 +1491,12 @@
             "value": "アクセストークンが作成されました"
           }
         },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "액세스 토큰이 생성되었습니다"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1692,10 +1698,16 @@
             "value": "心当たりがない場合は「アクセストークンの管理」を通じてアクセストークンを削除してください。"
           }
         },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "만약 기억이 나지 않는다면 '액세스 토큰 관리'를 통해 액세스 토큰을 삭제해 주세요."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果不明白其用途，请遵循「管理 Access Tokens」的指示删除访问令牌。"
+            "value": "如果不明白其用途，请遵循「管理访问令牌」的指示删除访问令牌。"
           }
         },
         "zh-Hant": {

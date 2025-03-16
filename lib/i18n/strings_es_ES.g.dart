@@ -1561,6 +1561,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get target => 'Para';
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
+	@override String get postForm => 'Formulario';
+	@override late final _TranslationsMisskeySettingsEsEs settings_ = _TranslationsMisskeySettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsEsEs accountSettings_ = _TranslationsMisskeyAccountSettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportEsEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportEsEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryEsEs delivery_ = _TranslationsMisskeyDeliveryEsEs._(_root);
@@ -1636,6 +1638,16 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestEsEs followRequest_ = _TranslationsMisskeyFollowRequestEsEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsEsEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsEsEs._(_root);
 	@override late final _TranslationsMisskeySearchEsEs search_ = _TranslationsMisskeySearchEsEs._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.accountSettings_

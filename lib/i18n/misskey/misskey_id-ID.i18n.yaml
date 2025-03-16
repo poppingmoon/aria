@@ -1265,6 +1265,9 @@ performance: "Kinerja"
 modified: "Diubah"
 thereAreNChanges: "Ada {n} perubahan"
 prohibitedWordsForNameOfUser: "Kata yang dilarang untuk nama pengguna"
+postForm: "Buat catatan"
+settings_:
+  webhook: "Webhook"
 abuseUserReport_:
   accept: "Setuju"
   reject: "Tolak"

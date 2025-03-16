@@ -1196,6 +1196,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
 	@override String get surrender => 'Từ chối';
+	@override String get postForm => 'Mẫu đăng';
 	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
 	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingViVn._(_root);

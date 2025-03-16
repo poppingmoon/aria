@@ -1272,7 +1272,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get youHaveUnreadAnnouncements => 'Tens informes per llegir.';
 	@override String get useSecurityKey => 'Segueix les instruccions del teu navegador O dispositiu per fer servir el teu passkey.';
 	@override String get replies => 'Respostes';
-	@override String get renotes => 'Impulsar';
+	@override String get renotes => 'Impulsos';
 	@override String get loadReplies => 'Mostrar les respostes';
 	@override String get loadConversation => 'Mostrar la conversació ';
 	@override String get pinnedList => 'Llista fixada';
@@ -1395,6 +1395,20 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => 'Vols reaccionar amb "${emoji}"?';
 	@override String get markAsSensitiveConfirm => 'Vols marcar aquest contingut com a sensible?';
 	@override String get unmarkAsSensitiveConfirm => 'Vols deixar de marcar com a sensible aquest contingut?';
+	@override String get preferences => 'Preferències ';
+	@override String get accessibility => 'Accessibilitat ';
+	@override String get preferencesProfile => 'Perfil de configuració ';
+	@override String get copyPreferenceId => 'Copiar l\'ID de la configuració ';
+	@override String get resetToDefaultValue => 'Restaura al valor per defecte ';
+	@override String get overrideByAccount => 'Anul·lar per compte';
+	@override String get untitled => 'Sense títol ';
+	@override String get noName => 'No hi ha un nom disponible ';
+	@override String get skip => 'Ometre ';
+	@override String get restore => 'Restaurar ';
+	@override String get postForm => 'Formulari de publicació';
+	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileCaEs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileCaEs._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupCaEs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupCaEs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsCaEs accountSettings_ = _TranslationsMisskeyAccountSettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
@@ -1481,6 +1495,60 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchCaEs search_ = _TranslationsMisskeySearchCaEs._(_root);
 }
 
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => 'Pots gestionar i configurar el Disc, comprovar el seu ús i establir una configuració per a la càrrega d\'arxius.';
+	@override String get pluginBanner => 'Els complements poden fer-se servir per ampliar les funcionalitats del client. Els complements poden instal·lar-se, configurar-se individualment i gestionar-se.';
+	@override String get notificationsBanner => 'Pots configurar el tipus i l\'abast de les notificacions que es rebran del servidor, també les notificacions emergents.';
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => 'Relació entre serveis';
+	@override String get serviceConnectionBanner => 'Pots configurar i gestionar tokens d\'accés i webhooks per integrar serveis i aplicacions externes.';
+	@override String get accountData => 'Dades del compte';
+	@override String get accountDataBanner => 'Exportació/Importació i gestió d\'arxius amb dades del compte.';
+	@override String get muteAndBlockBanner => 'Pots configurar i gestionar els continguts que desitges amagar i restringir les accions de determinats usuaris.';
+	@override String get accessibilityBanner => 'Els clients poden personalitzar-se i configurar-se per un ús òptim en funció de la seva visió i comportament.';
+	@override String get privacyBanner => 'Pots establir la configuració de privacitat del compte, com el grau de visibilitat del teu contingut, la facilitat per trobar-ho i si es pot aprovar els seguidors.';
+	@override String get securityBanner => 'Configura les opcions relacionades amb la seguretat del teu compte com ara contrasenyes, mètodes per iniciar sessió, aplicacions d\'autentificació i claus d\'accés.';
+	@override String get preferencesBanner => 'Pots configurar el comportament general del client segons les teves preferències.';
+	@override String get appearanceBanner => 'Pots configurar les preferències relacionades amb la visualització i l\'aspecte del client segons el teu parer.';
+	@override String get soundsBanner => 'Configuració dels sons que reproduirà el client.';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileCaEs extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'Nom del perfil';
+	@override String get profileNameDescription => 'Estableix un nom que identifiqui aquest dispositiu.';
+	@override String get profileNameDescription2 => 'Per exemple: "PC Principal", "Smartphone", etc';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupCaEs extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => 'Còpia de seguretat automàtica ';
+	@override String get restoreFromBackup => 'Restaurar des d\'una còpia de seguretat';
+	@override String get noBackupsFoundTitle => 'No s\'ha trobat cap còpia de seguretat';
+	@override String get noBackupsFoundDescription => 'No s\'han trobat còpies de seguretat creades automàticament, però si has desat, manualment, un arxiu de còpia de seguretat, pots importar-lo i carregar-lo.';
+	@override String get selectBackupToRestore => 'Seleccionar la còpia de seguretat que vols restaurar';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Has de posar-li un nom al teu perfil per poder activar les còpies de seguretat automàtiques.';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'La còpia de seguretat automàtica no es troba activada en aquest dispositiu.';
+	@override String get backupFound => 'Còpia de seguretat de la configuració trobada';
+}
+
 // Path: misskey.accountSettings_
 class _TranslationsMisskeyAccountSettingsCaEs extends TranslationsMisskeyAccountSettingsEnUs {
 	_TranslationsMisskeyAccountSettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -1497,6 +1565,7 @@ class _TranslationsMisskeyAccountSettingsCaEs extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => 'Fes que les notes antigues siguin privades';
 	@override String get makeNotesHiddenBeforeDescription => 'Mentres aquesta funció estigui activada les notes que hagin superat una data i hora fixada o hagi passat el temps establert només seran visibles per a tu. Si la desactives es restablirà també l\'estat públic de les notes.';
 	@override String get mayNotEffectForFederatedNotes => 'Això pot ser que no afecti les notes federades.';
+	@override String get mayNotEffectSomeSituations => 'Aquestes restriccions són simplificades. Pot ser que no s\'apliquin en determinades situacions, com quan es modera o visualitza un servidor remot.';
 	@override String get notesHavePassedSpecifiedPeriod => 'Notes publicades durant un període de temps especificat.';
 	@override String get notesOlderThanSpecifiedDateAndTime => 'Notes més antigues de la data i temps especificat ';
 }
@@ -2040,6 +2109,7 @@ class _TranslationsMisskeyThemeCaEs extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name} Instal·lat ';
 	@override String get installedThemes => 'Temes instal·lats ';
 	@override String get builtinThemes => 'Temes integrats';
+	@override String get instanceTheme => 'Tema de la instància ';
 	@override String get alreadyInstalled => 'Aquest tema ja es troba instal·lat ';
 	@override String get invalid => 'El format d\'aquest tema no és correcte';
 	@override String get make => 'Crear un tema';
@@ -3463,7 +3533,7 @@ class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get hashtag => 'Etiqueta';
 	@override String get mention => 'Menció';
 	@override String get mentionMe => 'Mencions (jo)';
-	@override String get renote => 'Renotar';
+	@override String get renote => 'Impulsar';
 	@override String get modalBg => 'Fons del modal';
 	@override String get divider => 'Divisor';
 	@override String get scrollbarHandle => 'Maneta de la barra de desplaçament';
@@ -3542,7 +3612,7 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	@override String get follow => 'Segueix-me';
 	@override String get mention => 'Menció';
 	@override String get reply => 'Respostes';
-	@override String get renote => 'Impulsar';
+	@override String get renote => 'Impulsos';
 	@override String get quote => 'Citar';
 	@override String get reaction => 'Reaccions';
 	@override String get pollEnded => 'Enquesta terminada';
@@ -3565,7 +3635,7 @@ class _TranslationsMisskeyNotificationActionsCaEs extends TranslationsMisskeyNot
 	// Translations
 	@override String get followBack => 'També et segueix';
 	@override String get reply => 'Respondre';
-	@override String get renote => 'Impulsos';
+	@override String get renote => 'Impulsar';
 }
 
 // Path: misskey.deck_.columns_

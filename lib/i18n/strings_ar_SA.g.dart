@@ -1085,6 +1085,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get flip => 'اقلب';
 	@override String lastNDays({required Object n}) => 'آخر ${n} أيام';
 	@override String get surrender => 'ألغِ';
+	@override String get postForm => 'أنشئ ملاحظة';
 	@override late final _TranslationsMisskeyDeliveryArSa delivery_ = _TranslationsMisskeyDeliveryArSa._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingArSa._(_root);
 	@override late final _TranslationsMisskeyServerRulesArSa serverRules_ = _TranslationsMisskeyServerRulesArSa._(_root);

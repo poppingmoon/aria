@@ -688,7 +688,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get scratchpadDescription => 'Lo Scratchpad offre un ambiente per esperimenti di AiScript. È possibile scrivere, eseguire e confermare i risultati dell\'interazione del codice con Misskey.';
 	@override String get uiInspector => 'UI Inspector';
 	@override String get uiInspectorDescription => 'Puoi visualizzare un elenco di elementi UI presenti in memoria. I componenti dell\'interfaccia utente vengono generati dalle funzioni Ui:C:.';
-	@override String get output => 'Uscita';
+	@override String get output => 'Output';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilita AiScript nelle pagine';
 	@override String get updateRemoteUser => 'Aggiorna dati dal profilo remoto';
@@ -848,7 +848,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get noCrawle => 'Rifiuta l\'indicizzazione dai robot.';
 	@override String get noCrawleDescription => 'Richiedi che i motori di ricerca non indicizzino la tua pagina di profilo, le tue note, pagine, ecc.';
 	@override String get lockedAccountInfo => 'A meno che non imposti la visibilità delle tue note su "Solo ai follower", le tue note sono visibili da tutti, anche se hai configurato l\'account per confermare manualmente le richieste di follow.';
-	@override String get alwaysMarkSensitive => 'Segnare gli allegati come espliciti come opzione predefinita';
+	@override String get alwaysMarkSensitive => 'Segnare automaticamente come espliciti gli allegati';
 	@override String get loadRawImages => 'Visualizza le intere immagini allegate invece delle miniature.';
 	@override String get disableShowingAnimatedImages => 'Disabilita le immagini animate';
 	@override String get highlightSensitiveMedia => 'Evidenzia i media espliciti';
@@ -1172,7 +1172,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get license => 'Licenza';
 	@override String get unfavoriteConfirm => 'Vuoi davvero rimuovere la preferenza?';
 	@override String get myClips => 'Le mie Clip';
-	@override String get drivecleaner => 'Drive cleaner';
+	@override String get drivecleaner => 'Pulizia del Drive';
 	@override String get retryAllQueuesNow => 'Ritenta di consumare tutte le code';
 	@override String get retryAllQueuesConfirmTitle => 'Vuoi ritentare adesso?';
 	@override String get retryAllQueuesConfirmText => 'Potrebbe sovraccaricare il server temporaneamente.';
@@ -1395,6 +1395,20 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => 'Vuoi davvero reagire con ${emoji} ?';
 	@override String get markAsSensitiveConfirm => 'Vuoi davvero indicare questo contenuto multimediale come esplicito?';
 	@override String get unmarkAsSensitiveConfirm => 'Vuoi davvero indicare come non esplicito il contenuto multimediale?';
+	@override String get preferences => 'Preferenze';
+	@override String get accessibility => 'Accessibilità';
+	@override String get preferencesProfile => 'Profilo preferenze';
+	@override String get copyPreferenceId => 'Copia ID preferenze';
+	@override String get resetToDefaultValue => 'Ripristina a predefinito';
+	@override String get overrideByAccount => 'Sovrascrivere col profilo';
+	@override String get untitled => 'Senza titolo';
+	@override String get noName => 'Senza nome';
+	@override String get skip => 'Salta';
+	@override String get restore => 'Ripristina';
+	@override String get postForm => 'Finestra di pubblicazione';
+	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileItIt preferencesProfile_ = _TranslationsMisskeyPreferencesProfileItIt._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupItIt preferencesBackup_ = _TranslationsMisskeyPreferencesBackupItIt._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsItIt accountSettings_ = _TranslationsMisskeyAccountSettingsItIt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportItIt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _TranslationsMisskeyDeliveryItIt delivery_ = _TranslationsMisskeyDeliveryItIt._(_root);
@@ -1481,6 +1495,60 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchItIt search_ = _TranslationsMisskeySearchItIt._(_root);
 }
 
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => 'Permette di gestire e configurare il Drive, controllare il consumo di spazio e configurare il caricamento dei file.';
+	@override String get pluginBanner => 'Consentono di migliorare le funzionalità. Le estensioni si possono configurare e gestire singolarmente.';
+	@override String get notificationsBanner => 'Puoi impostare il tipo di notifiche da ricevere dal server e anche le notifiche push.';
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => 'Integrazione servizi';
+	@override String get serviceConnectionBanner => 'Puoi gestire i codici di accesso e i Webhook per collegare App o servizi esterni.';
+	@override String get accountData => 'Dati del profilo';
+	@override String get accountDataBanner => 'Puoi gestire i dati del tuo profilo, esportando e importando.';
+	@override String get muteAndBlockBanner => 'Puoi configurare la visibiltà dei contenuti e limitare le attività provenienti da profili specifici.';
+	@override String get accessibilityBanner => 'Puoi personalizzare e migliorare la lettura sul tuo dispositivo in modo che sia più chiaro e reattivo.';
+	@override String get privacyBanner => 'Puoi configurare la privacy del tuo profilo, come la visibilità delle Note, la visibilità del profilo nelle ricerche e l\'approvazione delle relazioni tra profili.';
+	@override String get securityBanner => 'Puoi gestire la sicurezza del tuo account, la password, i modi di accesso, la generazione di codici OTP per accesso multi fattore (MFA/2FA) e la passkey.';
+	@override String get preferencesBanner => 'Puoi personalizzare il comportamento del tuo dispositivo.';
+	@override String get appearanceBanner => 'Puoi personalizzare l\'aspetto nel dispositivo, in base alle tue preferenze.';
+	@override String get soundsBanner => 'Puoi personalizzare i suoni emessi dagli eventi sul tuo dispositivo.';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileItIt extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'Nome del profilo';
+	@override String get profileNameDescription => 'Impostare il nome che indentifica questo dispositivo.';
+	@override String get profileNameDescription2 => 'Es: "PC principale" o "Cellulare"';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupItIt extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => 'Backup automatico';
+	@override String get restoreFromBackup => 'Ripristinare da backup';
+	@override String get noBackupsFoundTitle => 'Nessun backup trovato';
+	@override String get noBackupsFoundDescription => 'Impossibile trovare un backup creato automaticamente. Se se hai salvato il file di backup manualmente, puoi importarlo e ripristinarlo.';
+	@override String get selectBackupToRestore => 'Seleziona un backup da ripristinare';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Per abilitare i backup automatici, è necessario indicare il nome del profilo.';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Su questo dispositivo non è stato attivato il backup automatico delle preferenze.';
+	@override String get backupFound => 'Esiste il Backup delle preferenze';
+}
+
 // Path: misskey.accountSettings_
 class _TranslationsMisskeyAccountSettingsItIt extends TranslationsMisskeyAccountSettingsEnUs {
 	_TranslationsMisskeyAccountSettingsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -1497,6 +1565,7 @@ class _TranslationsMisskeyAccountSettingsItIt extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => 'Nascondi le Note pubblicate in precedenza';
 	@override String get makeNotesHiddenBeforeDescription => 'Mentre questa funzione è abilitata, le Note antecedenti al momento impostato, saranno visibili soltanto a te (private). Disabilitandola nuovamente, verrà ripristinata anche la visibilità pubblica della Nota.';
 	@override String get mayNotEffectForFederatedNotes => 'Le Note già federate su server remoti potrebbero non essere modificate.';
+	@override String get mayNotEffectSomeSituations => 'Queste restrizioni sono semplificate. In alcuni casi, potrebbero anche non avvenire. Ad esempio visionando un server remoto o durante la moderazione.';
 	@override String get notesHavePassedSpecifiedPeriod => 'Note antecedenti al periodo specificato';
 	@override String get notesOlderThanSpecifiedDateAndTime => 'Note antecedenti al momento specificato';
 }
@@ -2040,6 +2109,7 @@ class _TranslationsMisskeyThemeItIt extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name} è installato';
 	@override String get installedThemes => 'Temi installati';
 	@override String get builtinThemes => 'Temi integrati';
+	@override String get instanceTheme => 'Tema dell\'istanza';
 	@override String get alreadyInstalled => 'Questo tema è già installato';
 	@override String get invalid => 'Il formato tema non è valido';
 	@override String get make => 'Crea un tema';
@@ -2712,8 +2782,8 @@ class _TranslationsMisskeyDrivecleanerItIt extends TranslationsMisskeyDriveclean
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get orderBySizeDesc => 'Dal più grande al più piccolo';
-	@override String get orderByCreatedAtAsc => 'Dal più vecchio al più recente';
+	@override String get orderBySizeDesc => 'Dal file più grosso al più piccolo';
+	@override String get orderByCreatedAtAsc => 'Dal file più vecchio al più recente';
 }
 
 // Path: misskey.webhookSettings_

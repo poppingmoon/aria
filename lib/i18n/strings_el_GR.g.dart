@@ -352,6 +352,7 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override String get icon => 'Εικονίδιο';
 	@override String get replies => 'Απάντηση';
 	@override String get renotes => 'Κοινοποίηση σημειώματος';
+	@override String get postForm => 'Φόρμα δημοσίευσης';
 	@override late final _TranslationsMisskeyEmailElGr email_ = _TranslationsMisskeyEmailElGr._(_root);
 	@override late final _TranslationsMisskeyChannelElGr channel_ = _TranslationsMisskeyChannelElGr._(_root);
 	@override late final _TranslationsMisskeyThemeElGr theme_ = _TranslationsMisskeyThemeElGr._(_root);

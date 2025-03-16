@@ -1013,7 +1013,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get public => '公开';
 	@override String get private => '私密';
 	@override String i18nInfo({required Object link}) => 'Misskey 已经被志愿者们翻译成了各种语言。如果你也有兴趣，可以通过 ${link} 帮助翻译。';
-	@override String get manageAccessTokens => '管理 Access Tokens';
+	@override String get manageAccessTokens => '管理访问令牌';
 	@override String get accountInfo => '账户信息';
 	@override String get notesCount => '帖子数量';
 	@override String get repliesCount => '回复数量';
@@ -1580,6 +1580,20 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => '要用「${emoji}」进行回应吗？';
 	@override String get markAsSensitiveConfirm => '要将此媒体标记为敏感吗？';
 	@override String get unmarkAsSensitiveConfirm => '要将此媒体解除敏感标记吗？';
+	@override String get preferences => '设置';
+	@override String get accessibility => '辅助功能';
+	@override String get preferencesProfile => '设置的配置';
+	@override String get copyPreferenceId => '复制设置 ID';
+	@override String get resetToDefaultValue => '重置为默认值';
+	@override String get overrideByAccount => '用账户覆盖';
+	@override String get untitled => '未命名';
+	@override String get noName => '没有名字';
+	@override String get skip => '跳过';
+	@override String get restore => '恢复';
+	@override String get postForm => '投稿窗口';
+	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileZhCn preferencesProfile_ = _TranslationsMisskeyPreferencesProfileZhCn._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupZhCn preferencesBackup_ = _TranslationsMisskeyPreferencesBackupZhCn._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsZhCn accountSettings_ = _TranslationsMisskeyAccountSettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhCn abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhCn delivery_ = _TranslationsMisskeyDeliveryZhCn._(_root);
@@ -1666,6 +1680,60 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchZhCn search_ = _TranslationsMisskeySearchZhCn._(_root);
 }
 
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsZhCn extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => '可在此管理和设置网盘、确认使用量及配置上传文件的设置。';
+	@override String get pluginBanner => '使用插件可以扩展客户端的功能。可以在此安装、单独管理插件。';
+	@override String get notificationsBanner => '可在此设置从服务器接收的通知的种类和范围，以及推送通知的设置。';
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => '连接服务';
+	@override String get serviceConnectionBanner => '可在此管理用于连接外部应用或服务的访问令牌及 Webhook。';
+	@override String get accountData => '账户数据';
+	@override String get accountDataBanner => '可在此导入或导出帐户数据的存档。';
+	@override String get muteAndBlockBanner => '可在此设置隐藏内容，或限制指定用户能进行的操作。';
+	@override String get accessibilityBanner => '可在此设置客户端的显示及动态效果等辅助设置。';
+	@override String get privacyBanner => '可在此设置如内容可见性、可发现性、批准关注请求等账户隐私设置。';
+	@override String get securityBanner => '可在此设置如密码、登入方式、验证器、Passkey 等账户安全性设置。';
+	@override String get preferencesBanner => '可在此设置客户端的整体运作行为。';
+	@override String get appearanceBanner => '可在此设置客户端的外观及显示方式。';
+	@override String get soundsBanner => '可在此设置客户端播放的声音。';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileZhCn extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => '配置名';
+	@override String get profileNameDescription => '请指定用于识别此设备的名称';
+	@override String get profileNameDescription2 => '如「PC」、「手机」等';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupZhCn extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => '自动备份';
+	@override String get restoreFromBackup => '从备份恢复';
+	@override String get noBackupsFoundTitle => '没有找到备份';
+	@override String get noBackupsFoundDescription => '没有找到自动备份。若有手动保存备份文件，可将其导入来恢复。';
+	@override String get selectBackupToRestore => '请选择要恢复的备份';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => '需指定配置名以开启自动备份。';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '此设备未开启自动备份';
+	@override String get backupFound => '已找到备份';
+}
+
 // Path: misskey.accountSettings_
 class _TranslationsMisskeyAccountSettingsZhCn extends TranslationsMisskeyAccountSettingsEnUs {
 	_TranslationsMisskeyAccountSettingsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
@@ -1682,6 +1750,7 @@ class _TranslationsMisskeyAccountSettingsZhCn extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => '将过去的帖子设为私密';
 	@override String get makeNotesHiddenBeforeDescription => '开启此设定时，超过设定的时间或日期后，帖子将变为仅自己可见。关闭后帖子的公开状态将恢复成原本的设定。';
 	@override String get mayNotEffectForFederatedNotes => '与远程服务器联合的帖子在远端可能会没有效果。';
+	@override String get mayNotEffectSomeSituations => '此限制功能非常简单，在与远程服务器联合等情形时可能不适用。';
 	@override String get notesHavePassedSpecifiedPeriod => '超过指定时间的帖子';
 	@override String get notesOlderThanSpecifiedDateAndTime => '指定日期前的帖子';
 }
@@ -2225,6 +2294,7 @@ class _TranslationsMisskeyThemeZhCn extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name} 已安装';
 	@override String get installedThemes => '已安装的主题';
 	@override String get builtinThemes => '标准主题';
+	@override String get instanceTheme => '服务器主题';
 	@override String get alreadyInstalled => '此主题已经安装';
 	@override String get invalid => '主题格式错误';
 	@override String get make => '制作主题';
@@ -2985,7 +3055,7 @@ class _TranslationsMisskeyModerationLogTypesZhCn extends TranslationsMisskeyMode
 	@override String get deletePage => '删除了页面';
 	@override String get deleteFlash => '删除了 Play';
 	@override String get deleteGalleryPost => '删除了图库稿件';
-	@override String get updateProxyAccountDescription => '更新代理账户的说明';
+	@override String get updateProxyAccountDescription => '更新代理账户的简介';
 }
 
 // Path: misskey.fileViewer_
