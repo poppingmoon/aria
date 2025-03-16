@@ -90,31 +90,32 @@ class ImageDialog extends HookConsumerWidget {
           duration: const Duration(milliseconds: 100),
           curve: Curves.easeInOut,
           child: SafeArea(
-            child: Stack(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional.topStart,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: IconButton(
-                      tooltip:
-                          MaterialLocalizations.of(context).closeButtonTooltip,
-                      style: IconButton.styleFrom(
-                        backgroundColor: Colors.white54,
-                      ),
-                      onPressed: () => context.pop(),
-                      icon: const Icon(Icons.close),
-                    ),
-                  ),
-                ),
-                if (url case final url?)
+            child: IconButtonTheme(
+              data: IconButtonThemeData(
+                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+              ),
+              child: Stack(
+                children: [
                   Align(
-                    alignment: AlignmentDirectional.topEnd,
+                    alignment: AlignmentDirectional.topStart,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Material(
-                        color: Colors.white54,
-                        shape: const OvalBorder(),
+                      child: IconButton(
+                        tooltip:
+                            MaterialLocalizations.of(
+                              context,
+                            ).closeButtonTooltip,
+
+                        onPressed: () => context.pop(),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ),
+                  ),
+                  if (url case final url?)
+                    Align(
+                      alignment: AlignmentDirectional.topEnd,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
                         child: PopupMenuButton<void>(
                           itemBuilder:
                               (context) => [
@@ -156,8 +157,8 @@ class ImageDialog extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

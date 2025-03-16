@@ -22,34 +22,34 @@ class VideoDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Stack(
-      children: [
-        Dismissible(
-          key: const ValueKey(0),
-          onDismissed: (_) => context.pop(),
-          direction: DismissDirection.vertical,
-          child: Center(child: _VideoWidget(url: url, file: file)),
-        ),
-        Align(
-          alignment: AlignmentDirectional.topStart,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: IconButton(
-              tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
-              style: IconButton.styleFrom(backgroundColor: Colors.white54),
-              onPressed: () => context.pop(),
-              icon: const Icon(Icons.close),
-            ),
+    return IconButtonTheme(
+      data: IconButtonThemeData(
+        style: IconButton.styleFrom(backgroundColor: Colors.white54),
+      ),
+      child: Stack(
+        children: [
+          Dismissible(
+            key: const ValueKey(0),
+            onDismissed: (_) => context.pop(),
+            direction: DismissDirection.vertical,
+            child: Center(child: _VideoWidget(url: url, file: file)),
           ),
-        ),
-        if (url case final url?)
           Align(
-            alignment: AlignmentDirectional.topEnd,
+            alignment: AlignmentDirectional.topStart,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Material(
-                color: Colors.white54,
-                shape: const OvalBorder(),
+              child: IconButton(
+                tooltip: MaterialLocalizations.of(context).closeButtonTooltip,
+                onPressed: () => context.pop(),
+                icon: const Icon(Icons.close),
+              ),
+            ),
+          ),
+          if (url case final url?)
+            Align(
+              alignment: AlignmentDirectional.topEnd,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: PopupMenuButton<void>(
                   itemBuilder:
                       (context) => [
@@ -91,8 +91,8 @@ class VideoDialog extends ConsumerWidget {
                 ),
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }
