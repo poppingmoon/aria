@@ -7,19 +7,20 @@ on:
       - l10n-main
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
   get-flutter-version:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     outputs:
       flutter-version: ${{ steps.get-flutter-version.outputs.version }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Get Flutter version from .fvmrc
         id: get-flutter-version
@@ -32,11 +33,17 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -56,7 +63,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@v1
+        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
         with:
           fail_level: error
 
@@ -69,11 +76,16 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -83,7 +95,7 @@ jobs:
         run: flutter pub get
 
       - name: Analyze
-        uses: invertase/github-action-dart-analyzer@v3
+        uses: invertase/github-action-dart-analyzer@e981b01a458d0bab71ee5da182e5b26687b7101b # v3.0.0
         with:
           fatal-infos: true
           custom-lint: true
@@ -93,11 +105,16 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -114,11 +131,16 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -131,12 +153,12 @@ jobs:
         run: rustup update
 
       - name: Start simulator
-        uses: futureware-tech/simulator-action@v3
+        uses: futureware-tech/simulator-action@dab10d813144ef59b48d401cd95da151222ef8cd # v4
         with:
           model: 'iPhone 15'
 
       - name: Pre-build the app
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
         with:
           timeout_minutes: 30
           max_attempts: 5
@@ -145,7 +167,7 @@ jobs:
             --target=integration_test/timeline_test.dart
 
       - name: Integration test
-        uses: nick-fields/retry@v3
+        uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
         with:
           timeout_minutes: 30
           max_attempts: 3
@@ -156,11 +178,17 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -177,7 +205,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@v1
+        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
         with:
           fail_level: error
 
@@ -190,11 +218,17 @@ jobs:
 
     needs: get-flutter-version
 
+    permissions:
+      contents: read
+      pull-requests: write
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -205,7 +239,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@v1
+        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
         with:
           fail_level: error
 
