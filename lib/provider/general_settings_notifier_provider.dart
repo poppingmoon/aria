@@ -395,6 +395,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowOnlineStatus(bool showOnlineStatus) async {
+    state = state.copyWith(showOnlineStatus: showOnlineStatus);
+    await _save();
+  }
+
   Future<void> setShowTimelineTabBarAtBottom(
     bool showTimelineTabBarAtBottom,
   ) async {

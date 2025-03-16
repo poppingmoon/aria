@@ -171,6 +171,7 @@ class _UserHome extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 100.0,
+                  showOnlineIndicator: true,
                   onTap:
                       () => showImageDialog(
                         context,
@@ -484,19 +485,12 @@ class _UserHome extends ConsumerWidget {
                                                   (context) =>
                                                       UrlSheet(url: link.url),
                                             ),
-                                        child:
-                                            link.imgSrc != null
-                                                ? ImageWidget(
-                                                  url: link.imgSrc!,
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                  semanticLabel:
-                                                      link.description,
-                                                )
-                                                : const SizedBox(
-                                                  width: 200.0,
-                                                  height: 40.0,
-                                                ),
+                                        child: ImageWidget(
+                                          url: link.imgSrc,
+                                          width: 200.0,
+                                          height: 40.0,
+                                          semanticLabel: link.description,
+                                        ),
                                       ),
                                     )
                                     .toList(),

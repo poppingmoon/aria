@@ -277,6 +277,7 @@ class _ClipDescription extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 32.0,
+                  showOnlineIndicator: true,
                   onTap: () => context.push('/$account/users/${user.id}'),
                 ),
                 const SizedBox(width: 4.0),

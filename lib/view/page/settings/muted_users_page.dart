@@ -39,6 +39,7 @@ class MutedUsersPage extends ConsumerWidget {
                 account: account,
                 user: muting.mutee,
                 size: 32.0,
+                showOnlineIndicator: true,
               ),
               title: UsernameWidget(account: account, user: muting.mutee),
               subtitle: Column(

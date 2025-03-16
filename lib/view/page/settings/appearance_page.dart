@@ -176,6 +176,20 @@ class AppearancePage extends HookConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
               child: SwitchListTile(
+                title: Text(t.aria.showOnlineStatus),
+                value: settings.showOnlineStatus,
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowOnlineStatus(value),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: SwitchListTile(
                 title: Text(t.aria.showTimelineTabBarAtBottom),
                 value: settings.showTimelineTabBarAtBottom,
                 onChanged:

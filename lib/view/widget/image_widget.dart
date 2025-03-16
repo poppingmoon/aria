@@ -21,7 +21,7 @@ class ImageWidget extends ConsumerWidget {
     this.enableFadeIn = true,
   });
 
-  final String url;
+  final String? url;
   final String? blurHash;
   final double? width;
   final double? height;
@@ -46,7 +46,8 @@ class ImageWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (url.isEmpty) {
+    final url = this.url;
+    if (url == null || url.isEmpty) {
       return _buildPlaceholder();
     }
     if (url.startsWith('data')) {

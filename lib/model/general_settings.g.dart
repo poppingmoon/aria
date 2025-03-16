@@ -111,6 +111,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
   enableEmojiFadeIn: json['enableEmojiFadeIn'] as bool? ?? false,
   forceShowAds: json['forceShowAds'] as bool? ?? false,
   useGroupedNotifications: json['useGroupedNotifications'] as bool? ?? false,
+  showOnlineStatus: json['showOnlineStatus'] as bool? ?? false,
   showTimelineTabBarAtBottom:
       json['showTimelineTabBarAtBottom'] as bool? ?? false,
   showMenuButtonInTabBar: json['showMenuButtonInTabBar'] as bool? ?? false,
@@ -256,6 +257,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'enableEmojiFadeIn': instance.enableEmojiFadeIn,
   'forceShowAds': instance.forceShowAds,
   'useGroupedNotifications': instance.useGroupedNotifications,
+  'showOnlineStatus': instance.showOnlineStatus,
   'showTimelineTabBarAtBottom': instance.showTimelineTabBarAtBottom,
   'showMenuButtonInTabBar': instance.showMenuButtonInTabBar,
   'timelinesPageButtonTypes':

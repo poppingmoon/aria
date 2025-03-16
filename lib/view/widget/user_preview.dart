@@ -27,7 +27,12 @@ class UserPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: UserAvatar(account: account, user: user, size: avatarSize),
+      leading: UserAvatar(
+        account: account,
+        user: user,
+        size: avatarSize,
+        showOnlineIndicator: true,
+      ),
       title: Align(
         alignment: AlignmentDirectional.centerStart,
         child: UsernameWidget(account: account, user: user),
