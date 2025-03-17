@@ -1121,6 +1121,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'W ciągu ostatnich ${n} dni';
 	@override String get surrender => 'Odrzuć';
 	@override String get gameRetry => 'Spróbuj ponownie';
+	@override String get postForm => 'Formularz tworzenia wpisu';
 	@override late final _TranslationsMisskeyDeliveryPlPl delivery_ = _TranslationsMisskeyDeliveryPlPl._(_root);
 	@override late final _TranslationsMisskeyBubbleGamePlPl bubbleGame_ = _TranslationsMisskeyBubbleGamePlPl._(_root);
 	@override late final _TranslationsMisskeyRolePlPl role_ = _TranslationsMisskeyRolePlPl._(_root);

@@ -1175,6 +1175,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get flip => 'Otočit';
 	@override String lastNDays({required Object n}) => 'Posledních ${n} dnů';
 	@override String get surrender => 'Zrušit';
+	@override String get postForm => 'Formulář pro odeslání';
 	@override late final _TranslationsMisskeyDeliveryCsCz delivery_ = _TranslationsMisskeyDeliveryCsCz._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCsCz._(_root);
 	@override late final _TranslationsMisskeyServerRulesCsCz serverRules_ = _TranslationsMisskeyServerRulesCsCz._(_root);

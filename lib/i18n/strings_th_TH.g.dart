@@ -1372,6 +1372,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get prohibitedWordsForNameOfUserDescription => 'หากมีสตริงใดๆ ในรายการนี้ปรากฏอยู่ในชื่อของผู้ใช้ ชื่อนั้นจะถูกปฏิเสธ ผู้ใช้ที่มีสิทธิ์แต่ผู้ดูแลระบบนั้นจะไม่ได้รับผลกระทบใดๆจากข้อจำกัดนี้ค่ะ';
 	@override String get yourNameContainsProhibitedWords => 'ชื่อของคุณนั้นมีคำที่ต้องห้าม';
 	@override String get yourNameContainsProhibitedWordsDescription => 'ถ้าหากคุณต้องการใช้ชื่อนี้ กรุณาติดต่อผู้ดูแลระบบของเซิร์ฟเวอร์นะค่ะ';
+	@override String get postForm => 'แบบฟอร์มการโพสต์';
+	@override late final _TranslationsMisskeySettingsThTh settings_ = _TranslationsMisskeySettingsThTh._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportThTh abuseUserReport_ = _TranslationsMisskeyAbuseUserReportThTh._(_root);
 	@override late final _TranslationsMisskeyDeliveryThTh delivery_ = _TranslationsMisskeyDeliveryThTh._(_root);
 	@override late final _TranslationsMisskeyBubbleGameThTh bubbleGame_ = _TranslationsMisskeyBubbleGameThTh._(_root);
@@ -1448,6 +1450,16 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsThTh remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsThTh._(_root);
 	@override late final _TranslationsMisskeySearchThTh search_ = _TranslationsMisskeySearchThTh._(_root);
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsThTh extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.abuseUserReport_

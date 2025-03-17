@@ -1596,6 +1596,20 @@ class TranslationsMisskeyEnUs {
 	String reactAreYouSure({required Object emoji}) => 'Would you like to add a "${emoji}" reaction?';
 	String get markAsSensitiveConfirm => 'Do you want to set this media as sensitive?';
 	String get unmarkAsSensitiveConfirm => 'Do you want to remove the sensitive designation for this media?';
+	String get preferences => 'Preferences';
+	String get accessibility => 'Accessibility';
+	String get preferencesProfile => 'Preferences profile';
+	String get copyPreferenceId => 'Copy the proference ID';
+	String get resetToDefaultValue => 'Revert to default';
+	String get overrideByAccount => 'Override by the account';
+	String get untitled => 'Untitled';
+	String get noName => 'No name';
+	String get skip => 'Skip';
+	String get restore => 'Restore';
+	String get postForm => 'Posting form';
+	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
+	late final TranslationsMisskeyPreferencesProfileEnUs preferencesProfile_ = TranslationsMisskeyPreferencesProfileEnUs.internal(_root);
+	late final TranslationsMisskeyPreferencesBackupEnUs preferencesBackup_ = TranslationsMisskeyPreferencesBackupEnUs.internal(_root);
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -1692,6 +1706,60 @@ class TranslationsMisskeyIOEnUs {
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
 }
 
+// Path: misskey.settings_
+class TranslationsMisskeySettingsEnUs {
+	TranslationsMisskeySettingsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get driveBanner => 'You can manage and configure the drive, check usage, and configure file upload settings.';
+	String get pluginBanner => 'You can extend client features with plugins. You can install plugins, configure and manage individually.';
+	String get notificationsBanner => 'You can configure the types and range of notifications from the server and push notifications.';
+	String get api => 'API';
+	String get webhook => 'Webhook';
+	String get serviceConnection => 'Service integration';
+	String get serviceConnectionBanner => 'Manage and configure access tokens and Webhooks to integrate with external apps or services.';
+	String get accountData => 'Account data';
+	String get accountDataBanner => 'Export and import to manage account data.';
+	String get muteAndBlockBanner => 'You can configure and manage settings to hide content and restrict actions from specific users.';
+	String get accessibilityBanner => 'You can personalize the client\'s visuals and behavior, and configure settings to optimize usage.';
+	String get privacyBanner => 'You can configure settings related to account privacy, such as content visibility, discoverability, and follow approval.';
+	String get securityBanner => 'You can configure settings related to account security, such as password, login methods, authentication apps, and Passkeys.';
+	String get preferencesBanner => 'You can configure the overall behavior of the client according to your preferences.';
+	String get appearanceBanner => 'You can configure the appearance and display settings for the client according to your preferences.';
+	String get soundsBanner => 'You can configure the sound settings for playback in the client.';
+}
+
+// Path: misskey.preferencesProfile_
+class TranslationsMisskeyPreferencesProfileEnUs {
+	TranslationsMisskeyPreferencesProfileEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get profileName => 'Profile name';
+	String get profileNameDescription => 'Set a name that identifies this device.';
+	String get profileNameDescription2 => 'Example: "Main PC", "Smartphone"';
+}
+
+// Path: misskey.preferencesBackup_
+class TranslationsMisskeyPreferencesBackupEnUs {
+	TranslationsMisskeyPreferencesBackupEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get autoBackup => 'Auto backup';
+	String get restoreFromBackup => 'Restore from backup';
+	String get noBackupsFoundTitle => 'No backups found';
+	String get noBackupsFoundDescription => 'No auto-created backups were found, but if you have manually saved a backup file, you can import and restore it.';
+	String get selectBackupToRestore => 'Select a backup to restore';
+	String get youNeedToNameYourProfileToEnableAutoBackup => 'A profile name must be set to enable auto backup.';
+	String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Settings auto backup is not enabled on this device.';
+	String get backupFound => 'Settings backup is found';
+}
+
 // Path: misskey.accountSettings_
 class TranslationsMisskeyAccountSettingsEnUs {
 	TranslationsMisskeyAccountSettingsEnUs.internal(this._root);
@@ -1708,6 +1776,7 @@ class TranslationsMisskeyAccountSettingsEnUs {
 	String get makeNotesHiddenBefore => 'Make past notes private';
 	String get makeNotesHiddenBeforeDescription => 'While this feature is enabled, notes that are past the set date and time or have been visible only to you. When it is deactivated, the note publication status will also be restored.';
 	String get mayNotEffectForFederatedNotes => 'Notes federated to a remote server may not be affected.';
+	String get mayNotEffectSomeSituations => 'These restrictions are simplified. They may not apply in some situations, such as when viewing on a remote server or during moderation.';
 	String get notesHavePassedSpecifiedPeriod => 'Note that the specified time has passed';
 	String get notesOlderThanSpecifiedDateAndTime => 'Notes before the specified date and time';
 }
@@ -2251,6 +2320,7 @@ class TranslationsMisskeyThemeEnUs {
 	String installed({required Object name}) => '${name} has been installed';
 	String get installedThemes => 'Installed themes';
 	String get builtinThemes => 'Built-in themes';
+	String get instanceTheme => 'Server theme';
 	String get alreadyInstalled => 'This theme is already installed';
 	String get invalid => 'The format of this theme is invalid';
 	String get make => 'Make a theme';
@@ -3987,7 +4057,7 @@ class TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
 
 	// Translations
 	String get copySelectionRows => 'Copy selected rows';
-	String get copySelectionRanges => 'Copy selected ranges';
+	String get copySelectionRanges => 'Copy selection';
 	String get deleteSelectionRows => 'Delete selected rows';
 	String get deleteSelectionRanges => 'Delete rows in the selection';
 	String get searchSettings => 'Search settings';

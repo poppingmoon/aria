@@ -927,6 +927,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get renotes => 'রিনোট';
 	@override String get sourceCode => 'সোর্স কোড';
 	@override String get flip => 'উল্টান';
+	@override String get postForm => 'নোট লিখুন';
 	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
 	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);
 	@override late final _TranslationsMisskeyEmailUnavailableBnBd emailUnavailable_ = _TranslationsMisskeyEmailUnavailableBnBd._(_root);

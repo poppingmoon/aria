@@ -77,10 +77,6 @@ class PlayWidget extends HookConsumerWidget {
                     );
                     if (!context.mounted) return;
                     if (shouldPop) {
-                      try {
-                        await aiscript.value?.abort();
-                      } catch (_) {}
-                      if (!context.mounted) return;
                       context.pop();
                     }
                   }

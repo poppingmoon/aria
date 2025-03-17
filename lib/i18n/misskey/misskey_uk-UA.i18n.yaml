@@ -913,6 +913,7 @@ renotes: "Поширити"
 sourceCode: "Вихідний код"
 flip: "Перевернути"
 lastNDays: "Останні {n} днів"
+postForm: "Створення нотатки"
 delivery_:
   stop: "Призупинено"
   type_:

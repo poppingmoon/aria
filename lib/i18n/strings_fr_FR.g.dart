@@ -1359,6 +1359,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get lockdown => 'Verrouiller';
 	@override String get pleaseSelectAccount => 'Sélectionner un compte';
 	@override String get availableRoles => 'Rôles disponibles';
+	@override String get postForm => 'Formulaire de publication';
 	@override late final _TranslationsMisskeyAbuseUserReportFrFr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportFrFr._(_root);
 	@override late final _TranslationsMisskeyDeliveryFrFr delivery_ = _TranslationsMisskeyDeliveryFrFr._(_root);
 	@override late final _TranslationsMisskeyBubbleGameFrFr bubbleGame_ = _TranslationsMisskeyBubbleGameFrFr._(_root);

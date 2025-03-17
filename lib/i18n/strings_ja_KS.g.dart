@@ -43,6 +43,8 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	// Translations
 	@override String get aboutAria => 'Ariaってなんや？';
 	@override String get accessToken => 'アクセストークン';
+	@override String get accessTokenUpdated => 'アクセストークンを更新したで';
+	@override String get accountAdded => 'アカウントを追加したで';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: 'Ariaは'),
 		miria,
@@ -96,6 +98,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => '予測型「戻る」アニメーションを有効にするで';
 	@override String get enableSpellCheck => 'スペルチェックを有効にするで';
 	@override String get endpoint => 'エンドポイント';
+	@override String get exitPlayConfirm => 'Playをやめてええか？';
 	@override String get expandNote => 'ノートを開くで';
 	@override String get extraMentionsWarning => '返信元のノートには入ってへんメンションがあるで';
 	@override String get fileNotFound => 'ファイルがあらへん';
@@ -218,6 +221,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
+	@override String get showOnlineStatus => 'オンライン状態を表示するで';
 	@override String get showPopupOnNewNote => 'ノートを受信したときにポップアップを表示するで';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
 	@override String get showReactionsCountForEachTypes => '各リアクションのリアクション数を表示する';
@@ -1586,6 +1590,20 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " でツッコむ？';
 	@override String get markAsSensitiveConfirm => 'このメディアをセンシティブとして設定しますか？';
 	@override String get unmarkAsSensitiveConfirm => 'このメディアのセンシティブ指定を解除しますか？';
+	@override String get preferences => '環境設定';
+	@override String get accessibility => 'アクセシビリティ';
+	@override String get preferencesProfile => '設定のプロファイル';
+	@override String get copyPreferenceId => '設定IDをコピー';
+	@override String get resetToDefaultValue => '初期値に戻す';
+	@override String get overrideByAccount => 'アカウントで上書き';
+	@override String get untitled => '無題';
+	@override String get noName => '名前はありません';
+	@override String get skip => 'スキップ';
+	@override String get restore => '復元';
+	@override String get postForm => '投稿フォーム';
+	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileJaKs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileJaKs._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupJaKs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupJaKs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsJaKs accountSettings_ = _TranslationsMisskeyAccountSettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaKs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaKs._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaKs delivery_ = _TranslationsMisskeyDeliveryJaKs._(_root);
@@ -1682,6 +1700,60 @@ class _TranslationsMisskeyIOJaKs extends TranslationsMisskeyIOEnUs {
 	@override late final _TranslationsMisskeyIOSkebStatusJaKs skebStatus_ = _TranslationsMisskeyIOSkebStatusJaKs._(_root);
 }
 
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => 'ドライブの管理と設定、使用量の確認、ファイルをアップロードする際の設定を行えます。';
+	@override String get pluginBanner => 'プラグインを利用するとクライアントの機能を拡張することができます。プラグインのインストール、個別の設定と管理が行えます。';
+	@override String get notificationsBanner => 'サーバーからの受信する通知の種類と範囲や、プッシュ通知の設定が行えます。';
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => 'サービス連携';
+	@override String get serviceConnectionBanner => '外部のアプリ・サービスと連携するためのアクセストークンやWebhookの管理と設定が行えます。';
+	@override String get accountData => 'アカウントのデータ';
+	@override String get accountDataBanner => 'アカウントデータのアーカイブをエクスポート/インポートして管理できます。';
+	@override String get muteAndBlockBanner => '非表示にするコンテンツの設定や、特定のユーザーからのアクションを制限する設定と管理を行えます。';
+	@override String get accessibilityBanner => 'クライアントの視覚や動作に関するパーソナライズを行い、より最適に使用できるように設定できます。';
+	@override String get privacyBanner => 'コンテンツの公開範囲、見つけやすさ、フォローの承認制などアカウントのプライバシーに関する設定を行えます。';
+	@override String get securityBanner => 'パスワード、ログイン方法、認証アプリ、パスキーなどアカウントのセキュリティに関する設定を行えます。';
+	@override String get preferencesBanner => '好みに応じた、クライアントの全体的な動作の設定が行えます。';
+	@override String get appearanceBanner => '好みに応じた、クライアントの見た目・表示方法に関する設定が行えます。';
+	@override String get soundsBanner => 'クライアントで再生するサウンドの設定が行えます。';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileJaKs extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'プロファイル名';
+	@override String get profileNameDescription => 'このデバイスを識別する名前を設定してください。';
+	@override String get profileNameDescription2 => '例: 「メインPC」、「スマホ」など';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupJaKs extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => '自動バックアップ';
+	@override String get restoreFromBackup => 'バックアップから復元';
+	@override String get noBackupsFoundTitle => 'バックアップが見つかりませんでした';
+	@override String get noBackupsFoundDescription => '自動で作成されたバックアップは見つかりませんでしたが、バックアップファイルを手動で保存している場合、それをインポートして復元することはできます。';
+	@override String get selectBackupToRestore => '復元するバックアップを選択してください';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => '自動バックアップを有効にするにはプロファイル名の設定が必要です。';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'このデバイスで設定の自動バックアップは有効になっていません。';
+	@override String get backupFound => '設定のバックアップが見つかりました';
+}
+
 // Path: misskey.accountSettings_
 class _TranslationsMisskeyAccountSettingsJaKs extends TranslationsMisskeyAccountSettingsEnUs {
 	_TranslationsMisskeyAccountSettingsJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
@@ -1698,6 +1770,7 @@ class _TranslationsMisskeyAccountSettingsJaKs extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => '昔のノートを見れんようにする';
 	@override String get makeNotesHiddenBeforeDescription => 'この機能が有効になってる間は、設定された日時より前、それか設定された時間が経ったノートがフォロワーのみ見れるようになるで。無効に戻すと、ノートの公開状態も戻るで。';
 	@override String get mayNotEffectForFederatedNotes => 'リモートサーバーに連合されたノートには効果が及ばんかもしれん。';
+	@override String get mayNotEffectSomeSituations => 'これらの制限は簡易的なものです。リモートサーバーでの閲覧やモデレーション時など、一部のシチュエーションでは適用されない場合があります。';
 	@override String get notesHavePassedSpecifiedPeriod => '決めた時間が経ったノート';
 	@override String get notesOlderThanSpecifiedDateAndTime => '決めた日時より前のノート';
 }
@@ -2241,6 +2314,7 @@ class _TranslationsMisskeyThemeJaKs extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name}をインストールしたで。';
 	@override String get installedThemes => 'インストールされとるテーマ';
 	@override String get builtinThemes => '標準のテーマ';
+	@override String get instanceTheme => 'サーバーのテーマ';
 	@override String get alreadyInstalled => 'そのテーマはもうインストールされとるで？';
 	@override String get invalid => 'テーマの形式が間違ってるみたいや';
 	@override String get make => 'テーマ作る';

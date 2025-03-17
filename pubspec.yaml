@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.0.0-beta.11+55
+version: 1.0.0-beta.12+56
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
@@ -13,7 +13,7 @@ dependencies:
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
   characters: ^1.4.0
-  chewie: ^1.10.0
+  chewie: ^1.11.0
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
@@ -22,7 +22,7 @@ dependencies:
   dotted_border: ^2.1.0
   extended_image: ^10.0.0
   file: ^7.0.1
-  file_picker: ^9.0.2
+  file_picker: ^9.2.0
   flex_color_picker: ^3.7.0
   flutter:
     sdk: flutter
@@ -46,11 +46,11 @@ dependencies:
   flutter_image_compress: ^2.4.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^19.0.0
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.3
-  flutter_rust_bridge: ^2.8.0
+  flutter_rust_bridge: ^2.9.0
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.0.17
   fluttertoast: ^8.2.12
@@ -80,7 +80,7 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/material_off_icons
       ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
-  material_symbols_icons: ^4.2808.0
+  material_symbols_icons: ^4.2810.1
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
@@ -105,7 +105,7 @@ dependencies:
   riverpod_annotation: ^2.6.1
   rust_lib_aria:
     path: rust_builder
-  searchfield: ^1.2.4
+  searchfield: ^1.2.6
   share_plus: ^10.1.4
   shared_preferences: ^2.5.2
   shared_preferences_platform_interface: ^2.4.1
@@ -137,7 +137,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.3
   flutter_test:
     sdk: flutter
-  freezed: ^3.0.3
+  freezed: ^3.0.4
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter

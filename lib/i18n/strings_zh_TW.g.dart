@@ -185,7 +185,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get youShouldUpgradeClient => '請重新載入以使用新版客戶端顯示此頁面。';
 	@override String get enterListName => '輸入清單名稱';
 	@override String get privacy => '隱私';
-	@override String get makeFollowManuallyApprove => '手動審核追隨請求';
+	@override String get makeFollowManuallyApprove => '追隨需要核准';
 	@override String get defaultNoteVisibility => '預設可見性';
 	@override String get follow => '追隨';
 	@override String get followRequest => '追隨請求';
@@ -541,13 +541,13 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get addModerationNote => '新增管理筆記';
 	@override String get moderationLogs => '管理日誌';
 	@override String nUsersMentioned({required Object n}) => '被 ${n} 個人提及';
-	@override String get securityKeyAndPasskey => '安全金鑰、Passkey';
+	@override String get securityKeyAndPasskey => '安全金鑰、通行金鑰';
 	@override String get securityKey => '安全金鑰';
 	@override String get lastUsed => '上次使用';
 	@override String lastUsedAt({required Object t}) => '上次使用：${t}';
 	@override String get unregister => '註銷';
 	@override String get passwordLessLogin => '無密碼登入';
-	@override String get passwordLessLoginDescription => '不使用密碼，以安全金鑰或 Passkey 登入';
+	@override String get passwordLessLoginDescription => '不使用密碼，以安全金鑰或通行金鑰登入';
 	@override String get resetPassword => '重設密碼';
 	@override String newPasswordIs({required Object password}) => '新密碼為「${password}」';
 	@override String get reduceUiAnimation => '減少介面的動態視覺';
@@ -847,7 +847,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get driveUsage => '雲端硬碟使用量';
 	@override String get noCrawle => '拒絕搜尋引擎索引';
 	@override String get noCrawleDescription => '要求網路搜尋引擎不要索引你的個人資料頁、貼文及頁面等。';
-	@override String get lockedAccountInfo => '即使你通過了追隨者請求，除非你將貼文的可見性設定為 「追隨者」，否則任何人都能看見你的貼文。';
+	@override String get lockedAccountInfo => '即使追隨需要核准，除非你將貼文的可見性設定為 「追隨者」，否則任何人都能看見你的貼文。';
 	@override String get alwaysMarkSensitive => '預設標記檔案為敏感內容';
 	@override String get loadRawImages => '以原始圖檔顯示附件圖檔的縮圖';
 	@override String get disableShowingAnimatedImages => '不播放動態圖檔';
@@ -1270,7 +1270,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get currentAnnouncements => '最新公告';
 	@override String get pastAnnouncements => '歷史公告';
 	@override String get youHaveUnreadAnnouncements => '有未讀的公告。';
-	@override String get useSecurityKey => '請按照瀏覽器或裝置上的說明來使用安全金鑰或 Passkey。';
+	@override String get useSecurityKey => '請按照瀏覽器或裝置上的說明來使用安全金鑰或通行金鑰。';
 	@override String get replies => '回覆';
 	@override String get renotes => '轉發';
 	@override String get loadReplies => '閱覽回覆';
@@ -1287,7 +1287,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get edited => '已編輯';
 	@override String get notificationRecieveConfig => '接受通知的設定';
 	@override String get mutualFollow => '互相追隨';
-	@override String get followingOrFollower => '追隨中或者追隨者';
+	@override String get followingOrFollower => '追隨中或追隨者';
 	@override String get fileAttachedOnly => '只顯示包含附件的貼文';
 	@override String get showRepliesToOthersInTimeline => '在時間軸上顯示給其他人的回覆';
 	@override String get hideRepliesToOthersInTimeline => '在時間軸上隱藏給其他人的回覆';
@@ -1373,10 +1373,10 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get modified => '已變更';
 	@override String get discard => '取消';
 	@override String thereAreNChanges({required Object n}) => '有 ${n} 處的變更';
-	@override String get signinWithPasskey => '使用密碼金鑰登入';
-	@override String get unknownWebAuthnKey => '未註冊的金鑰。';
-	@override String get passkeyVerificationFailed => '驗證金鑰失敗。';
-	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證金鑰成功，但是無密碼登入的方式是停用的。';
+	@override String get signinWithPasskey => '使用通行金鑰登入';
+	@override String get unknownWebAuthnKey => '未註冊的通行金鑰。';
+	@override String get passkeyVerificationFailed => '驗證通行金鑰失敗。';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證通行金鑰成功，但是無密碼登入的方式是停用的。';
 	@override String get messageToFollower => '給追隨者的訊息';
 	@override String get target => '目標 ';
 	@override String get testCaptchaWarning => '此功能用於 CAPTCHA 的測試。<strong>請勿在正式環境中使用。</strong>';
@@ -1395,6 +1395,20 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => '用「 ${emoji} 」反應嗎？';
 	@override String get markAsSensitiveConfirm => '要將這個媒體設定為敏感嗎？';
 	@override String get unmarkAsSensitiveConfirm => '要解除這個媒體的敏感設定嗎？';
+	@override String get preferences => '環境設定';
+	@override String get accessibility => '輔助工具';
+	@override String get preferencesProfile => '設定檔案';
+	@override String get copyPreferenceId => '複製設定 ID';
+	@override String get resetToDefaultValue => '還原成預設值';
+	@override String get overrideByAccount => '覆寫帳號';
+	@override String get untitled => '無標題';
+	@override String get noName => '沒有名稱';
+	@override String get skip => '跳過';
+	@override String get restore => '還原';
+	@override String get postForm => '發文視窗';
+	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileZhTw preferencesProfile_ = _TranslationsMisskeyPreferencesProfileZhTw._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupZhTw preferencesBackup_ = _TranslationsMisskeyPreferencesBackupZhTw._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
@@ -1481,6 +1495,60 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchZhTw search_ = _TranslationsMisskeySearchZhTw._(_root);
 }
 
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => '您可以管理和設定雲端硬碟、確認使用量，以及調整上傳檔案時的設定。';
+	@override String get pluginBanner => '可使用外掛擴充用戶端的功能。您可以安裝外掛，實施個別的設定與管理。';
+	@override String get notificationsBanner => '您可以設定從伺服器接收通知的類型和範圍，以及推送通知。';
+	@override String get api => 'API';
+	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => '服務整合';
+	@override String get serviceConnectionBanner => '您可以管理和設定存取權杖與 Webhooks，以便與外部應用程式和服務整合。';
+	@override String get accountData => '帳戶資料';
+	@override String get accountDataBanner => '您可以管理帳戶資料的匯出 / 匯入。';
+	@override String get muteAndBlockBanner => '您可以設定和管理要隱藏的內容，並限制特定使用者的行動。';
+	@override String get accessibilityBanner => '可針對客戶端的視覺和行為進行個人化設定，以達到更佳的使用效果。';
+	@override String get privacyBanner => '您可以調整帳戶的隱私設定，例如內容的可見性、尋找內容的容易程度，以及追隨是否需要核准。';
+	@override String get securityBanner => '您可以設定與帳戶安全性相關的設定，例如密碼、登入方式、驗證應用程式和通行金鑰。';
+	@override String get preferencesBanner => '您可以根據喜好設定用戶端的整體行為。';
+	@override String get appearanceBanner => '您可以根據喜好設定與用戶端外觀和顯示方式相關的設定。';
+	@override String get soundsBanner => '您可以調整用戶端播放的聲音設定。';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileZhTw extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => '設定檔案名稱';
+	@override String get profileNameDescription => '設定一個名稱來識別此裝置。';
+	@override String get profileNameDescription2 => '例如：「主要個人電腦」、「智慧型手機」等';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupZhTw extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => '自動備份';
+	@override String get restoreFromBackup => '從備份還原';
+	@override String get noBackupsFoundTitle => '找不到備份檔';
+	@override String get noBackupsFoundDescription => '沒有找到自動建立的備份，但如果您手動儲存了備份檔案，則可以匯入並還原。';
+	@override String get selectBackupToRestore => '選擇要還原的備份';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => '要啟用自動備份，必須設定檔案名稱。';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '此裝置未啟用自動備份設定。';
+	@override String get backupFound => '找到設定的備份';
+}
+
 // Path: misskey.accountSettings_
 class _TranslationsMisskeyAccountSettingsZhTw extends TranslationsMisskeyAccountSettingsEnUs {
 	_TranslationsMisskeyAccountSettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -1497,6 +1565,7 @@ class _TranslationsMisskeyAccountSettingsZhTw extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => '隱藏過去的貼文';
 	@override String get makeNotesHiddenBeforeDescription => '啟用此功能後，超過設定的日期和時間或超過設定時間的貼文將僅對自己顯示（私密化）。 如果您再次停用它，貼文的公開狀態也會恢復原狀。';
 	@override String get mayNotEffectForFederatedNotes => '聯邦發送至遠端伺服器的貼文可能會不受影響。';
+	@override String get mayNotEffectSomeSituations => '這些限制已經簡化。它們可能不適用於某些情況，例如在遠端伺服器上檢視或管理時。';
 	@override String get notesHavePassedSpecifiedPeriod => '早於指定時間的貼文';
 	@override String get notesOlderThanSpecifiedDateAndTime => '指定時間和日期之前的貼文';
 }
@@ -2040,6 +2109,7 @@ class _TranslationsMisskeyThemeZhTw extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name}已安裝';
 	@override String get installedThemes => '已經安裝的佈景主題';
 	@override String get builtinThemes => '標準佈景主題';
+	@override String get instanceTheme => '伺服器的主題';
 	@override String get alreadyInstalled => '已安裝此佈景主題';
 	@override String get invalid => '佈景主題格式錯誤';
 	@override String get make => '製作佈景主題';
@@ -2158,11 +2228,11 @@ class _TranslationsMisskeyX2faZhTw extends TranslationsMisskeyX2faEnUs {
 	@override String get setupCompleted => '設定完成';
 	@override String get step4 => '從現在開始，任何登入操作都將要求您提供權杖。';
 	@override String get securityKeyNotSupported => '您的瀏覽器不支援安全金鑰。';
-	@override String get registerTOTPBeforeKey => '如要註冊安全金鑰或 Passkey，請先設定驗證應用程式。';
-	@override String get securityKeyInfo => '您可以設定使用支援 FIDO2 的硬體安全金鑰，以及裝置上的生物辨識、PIN 碼和密碼等來登入。';
-	@override String get registerSecurityKey => '註冊安全金鑰或 Passkey';
+	@override String get registerTOTPBeforeKey => '如要註冊安全金鑰或通行金鑰，請先設定驗證應用程式。';
+	@override String get securityKeyInfo => '註冊 WebAuthn 衍生的金鑰，例如支援 FIDO2 的硬體安全金鑰、裝置生物識別、PIN 鎖和通行金鑰。';
+	@override String get registerSecurityKey => '註冊安全金鑰或通行金鑰';
 	@override String get securityKeyName => '輸入金鑰名稱';
-	@override String get tapSecurityKey => '按照瀏覽器的說明註冊安全金鑰或 Passkey。';
+	@override String get tapSecurityKey => '按照瀏覽器的說明註冊安全金鑰或通行金鑰。';
 	@override String get removeKey => '刪除安全金鑰';
 	@override String removeKeyConfirm({required Object name}) => '要刪除${name}嗎？';
 	@override String get whyTOTPOnlyRenew => '如果註冊了安全金鑰，則無法解除驗證應用程式的設定。';
@@ -2457,7 +2527,7 @@ class _TranslationsMisskeyProfileZhTw extends TranslationsMisskeyProfileEnUs {
 	@override String avatarDecorationMax({required Object max}) => '最多可以設置 ${max} 個裝飾。';
 	@override String get followedMessage => '被追隨時的訊息';
 	@override String get followedMessageDescription => '可以設定被追隨時顯示給對方的訊息。';
-	@override String get followedMessageDescriptionForLockedAccount => '如果追隨是需要審核的話，在允許追隨請求之後顯示。';
+	@override String get followedMessageDescriptionForLockedAccount => '如果追隨需要核准的話，將在通過追隨請求之後顯示。';
 }
 
 // Path: misskey.exportOrImport_
@@ -2629,7 +2699,7 @@ class _TranslationsMisskeyNotificationZhTw extends TranslationsMisskeyNotificati
 	@override String youRenoted({required Object name}) => '${name} 轉發了你的貼文';
 	@override String get youWereFollowed => '您有新的追隨者';
 	@override String get youReceivedFollowRequest => '您有新的追隨請求';
-	@override String get yourFollowRequestAccepted => '您的追隨請求已通過';
+	@override String get yourFollowRequestAccepted => '您的追隨請求已被核准';
 	@override String get pollEnded => '問卷調查已產生結果';
 	@override String get newNote => '新的貼文';
 	@override String unreadAntennaNote({required Object name}) => '天線 ${name}';

@@ -921,6 +921,7 @@ renotes: "Preposlať"
 sourceCode: "Zdrojový kód"
 flip: "Preklopiť"
 lastNDays: "Posledných {n} dní"
+postForm: "Napísať poznámku"
 delivery_:
   stop: "Zmrazené"
   type_:
