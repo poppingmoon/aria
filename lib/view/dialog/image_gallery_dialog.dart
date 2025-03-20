@@ -139,7 +139,6 @@ class ImageGalleryDialog extends HookConsumerWidget {
                           Positioned.fill(
                             child: ImageWidget(
                               url: thumbnailUrl,
-                              blurHash: thumbnailUrl,
                               fit: BoxFit.contain,
                             ),
                           ),
