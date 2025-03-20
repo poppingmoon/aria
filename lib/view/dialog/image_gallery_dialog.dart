@@ -198,7 +198,6 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             MaterialLocalizations.of(
                               context,
                             ).closeButtonTooltip,
-
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),

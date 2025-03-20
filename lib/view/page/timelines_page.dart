@@ -57,7 +57,6 @@ class TimelinesPage extends HookConsumerWidget {
                   .contains(TimelinesPageButtonType.menu),
           settings.timelinesPageButtonTypes,
           settings.showSmallTimelinesPageButtons,
-
           settings.showSquaredTimelinesPageButtons,
           settings.enableHorizontalSwipe,
         ),
