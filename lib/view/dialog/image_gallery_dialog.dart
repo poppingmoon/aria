@@ -139,7 +139,6 @@ class ImageGalleryDialog extends HookConsumerWidget {
                           Positioned.fill(
                             child: ImageWidget(
                               url: thumbnailUrl,
-                              blurHash: thumbnailUrl,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -198,7 +197,6 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             MaterialLocalizations.of(
                               context,
                             ).closeButtonTooltip,
-
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),
