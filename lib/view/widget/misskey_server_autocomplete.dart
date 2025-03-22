@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../constant/max_content_width.dart';
@@ -10,7 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../provider/search_misskey_servers_provider.dart';
 import '../../util/punycode.dart';
 
-class MisskeyServerAutocomplete extends ConsumerWidget {
+class MisskeyServerAutocomplete extends HookConsumerWidget {
   const MisskeyServerAutocomplete({
     super.key,
     required this.controller,
@@ -26,6 +27,8 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final textFieldKey = useMemoized(() => GlobalKey());
+
     return TextFieldTapRegion(
       onTapOutside: (_) => focusNode.unfocus(),
       child: Shortcuts(
@@ -41,6 +44,7 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
           },
           fieldViewBuilder:
               (context, textEditingController, focusNode, _) => TextField(
+                key: textFieldKey,
                 controller: textEditingController,
                 focusNode: focusNode,
                 decoration: InputDecoration(
@@ -148,11 +152,15 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
                     constraints: BoxConstraints(
                       maxHeight: 200.0,
                       maxWidth:
+                          (textFieldKey.currentContext?.findRenderObject()
+                                  as RenderBox?)
+                              ?.size
+                              .width ??
                           min(
-                            MediaQuery.sizeOf(context).width,
-                            maxContentWidth,
-                          ) -
-                          64.0,
+                                MediaQuery.sizeOf(context).width,
+                                maxContentWidth,
+                              ) -
+                              64.0,
                     ),
                     // Use `CustomScrollView` instead of `ListView` because
                     // `ListView` shows white space on top of the options
