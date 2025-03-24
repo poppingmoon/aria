@@ -10,6 +10,7 @@ import '../../../model/account.dart';
 import '../../../model/list_settings.dart';
 import '../../../model/tab_settings.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
@@ -48,6 +49,8 @@ class ListPage extends HookConsumerWidget {
         .watch(listsNotifierProvider(account))
         .valueOrNull
         ?.firstWhereOrNull((list) => list.id == listId);
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['my', 'lists', listId]);
 
     return DefaultTabController(
       length: 2,
@@ -59,33 +62,18 @@ class ListPage extends HookConsumerWidget {
               itemBuilder:
                   (context) => [
                     PopupMenuItem(
-                      onTap:
-                          () => launchUrl(
-                            ref,
-                            Uri.https(
-                              account.host,
-                              list?.isPublic ?? false
-                                  ? 'lists/$listId'
-                                  : 'my/lists/$listId',
-                            ),
-                          ),
+                      onTap: () => launchUrl(ref, url),
                       child: Text(t.aria.openInBrowser),
                     ),
                     PopupMenuItem(
-                      onTap:
-                          () => copyToClipboard(
-                            context,
-                            list?.isPublic ?? false
-                                ? 'https://${account.host}/lists/$listId'
-                                : 'https://${account.host}/my/lists/$listId',
-                          ),
+                      onTap: () => copyToClipboard(context, url.toString()),
                       child: Text(t.misskey.copyLink),
                     ),
                     if (list?.isPublic ?? false)
                       PopupMenuItem(
                         onTap:
                             () => Share.shareUri(
-                              Uri.https(account.host, 'list/$listId'),
+                              serverUrl.replace(pathSegments: ['list', listId]),
                             ),
                         child: Text(t.misskey.share),
                       ),

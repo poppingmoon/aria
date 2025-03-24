@@ -6,6 +6,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/federation_instance_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/launch_url.dart';
 import 'server_ads.dart';
@@ -25,6 +26,7 @@ class ServerPage extends HookConsumerWidget {
         account.host != host
             ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
             : null;
+    final serverUrl = ref.watch(serverUrlNotifierProvider(host));
 
     return DefaultTabController(
       length: 3,
@@ -120,7 +122,7 @@ class ServerPage extends HookConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.open_in_browser),
                 title: Text(t.aria.openInBrowser),
-                onTap: () => launchUrl(ref, Uri.https(host)),
+                onTap: () => launchUrl(ref, serverUrl),
               ),
             ],
           ),

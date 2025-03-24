@@ -9,6 +9,7 @@ import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -64,6 +65,8 @@ class AntennaPage extends ConsumerWidget {
         .watch(antennasNotifierProvider(account))
         .valueOrNull
         ?.firstWhereOrNull((antenna) => antenna.id == antennaId);
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['my', 'antennas', antennaId]);
 
     return Scaffold(
       appBar: AppBar(
@@ -73,19 +76,11 @@ class AntennaPage extends ConsumerWidget {
             itemBuilder:
                 (context) => [
                   PopupMenuItem(
-                    onTap:
-                        () => launchUrl(
-                          ref,
-                          Uri.https(account.host, 'my/antennas/$antennaId'),
-                        ),
+                    onTap: () => launchUrl(ref, url),
                     child: Text(t.aria.openInBrowser),
                   ),
                   PopupMenuItem(
-                    onTap:
-                        () => copyToClipboard(
-                          context,
-                          'https://${account.host}/my/antennas/$antennaId',
-                        ),
+                    onTap: () => copyToClipboard(context, url.toString()),
                     child: Text(t.misskey.copyLink),
                   ),
                   if (antenna != null)

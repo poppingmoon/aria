@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../model/account.dart';
 import 'emoji_provider.dart';
 import 'proxied_image_url_provider.dart';
+import 'server_url_notifier_provider.dart';
 
 part 'emoji_url_provider.g.dart';
 
@@ -31,9 +32,8 @@ part 'emoji_url_provider.g.dart';
       rawUrl = ref.watch(emojiProvider(account.host, emoji))?.url;
     }
   }
-  rawUrl ??= Uri(
-    scheme: 'https',
-    host: account.host,
+  final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+  rawUrl ??= serverUrl.replace(
     pathSegments: [
       'emoji',
       if (host != null)
@@ -42,16 +42,12 @@ part 'emoji_url_provider.g.dart';
         '$customEmojiName.webp',
     ],
   );
-  if (!rawUrl.isAbsolute) {
-    rawUrl = rawUrl.replace(scheme: 'https', host: account.host);
+  if (!rawUrl.hasScheme) {
+    rawUrl = serverUrl.resolveUri(rawUrl);
   }
 
   final proxied = ref.watch(
-    proxiedImageUrlProvider(
-      account.host,
-      rawUrl.toString(),
-      emoji: !useOriginalSize,
-    ),
+    proxiedImageUrlProvider(account.host, rawUrl, emoji: !useOriginalSize),
   );
 
   return (proxied.toString(), rawUrl.toString());

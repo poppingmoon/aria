@@ -12,6 +12,7 @@ import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -374,7 +375,12 @@ class NotificationWidget extends ConsumerWidget {
           title: Text(t.misskey.notification_.createToken),
           subtitle: InkWell(
             onTap:
-                () => launchUrl(ref, Uri.https(account.host, 'settings/apps')),
+                () => launchUrl(
+                  ref,
+                  ref
+                      .watch(serverUrlNotifierProvider(account.host))
+                      .replace(pathSegments: ['settings', 'apps']),
+                ),
             child: Text(
               t.misskey.notification_.createTokenDescription(
                 text: t.misskey.manageAccessTokens,

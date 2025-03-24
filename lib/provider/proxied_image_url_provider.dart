@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'api/meta_notifier_provider.dart';
+import 'server_url_notifier_provider.dart';
 
 part 'proxied_image_url_provider.g.dart';
 
@@ -10,26 +11,22 @@ part 'proxied_image_url_provider.g.dart';
 Uri? proxiedImageUrl(
   Ref ref,
   String host,
-  String baseUrl, {
+  Uri baseUrl, {
   bool emoji = false,
   bool preview = false,
   bool static = false,
 }) {
   if (host.isEmpty) {
-    return Uri.tryParse(baseUrl);
-  }
-  final url = Uri.tryParse(baseUrl);
-  if (url == null) {
-    return null;
+    return baseUrl;
   }
 
-  Uri imageUrl =
-      url.isAbsolute ? url : url.replace(scheme: 'https', host: host);
+  final serverUrl = ref.watch(serverUrlNotifierProvider(host));
+  Uri imageUrl = baseUrl.hasScheme ? baseUrl : serverUrl.resolveUri(baseUrl);
   final mediaProxy =
       ref.watch(metaNotifierProvider(host)).valueOrNull?.mediaProxy;
   final mediaProxyUrl =
       (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
-      Uri.https(host, 'proxy');
+      serverUrl.replace(pathSegments: ['proxy']);
   if (imageUrl.host == mediaProxyUrl.host) {
     if (mediaProxyUrl.pathSegments.length <= imageUrl.pathSegments.length &&
         const ListEquality<String>().equals(
@@ -45,12 +42,11 @@ Uri? proxiedImageUrl(
         },
       );
     }
-  } else if (imageUrl.host == host) {
-    if (imageUrl.pathSegments.firstOrNull == 'proxy') {
-      if (imageUrl.queryParameters['url'] case final url?) {
-        if (Uri.tryParse(url) case final url?) {
-          imageUrl = url;
-        }
+  } else if (imageUrl.host == serverUrl.host &&
+      imageUrl.pathSegments.firstOrNull == 'proxy') {
+    if (imageUrl.queryParameters['url'] case final url?) {
+      if (Uri.tryParse(url) case final url?) {
+        imageUrl = url;
       }
     }
   }

@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/summaly_result.dart';
+import 'server_url_notifier_provider.dart';
 import 'summaly_repository_provider.dart';
 
 part 'summaly_provider.g.dart';
@@ -14,5 +15,11 @@ FutureOr<SummalyResult?> summaly(
   String? lang,
 }) {
   final summalyRepository = ref.watch(summalyRepositoryProvider);
-  return summalyRepository.getSummary(host: host, link: link, lang: lang);
+  final serverUrl = ref.watch(serverUrlNotifierProvider(host));
+
+  return summalyRepository.getSummary(
+    serverUrl: serverUrl,
+    link: link,
+    lang: lang,
+  );
 }

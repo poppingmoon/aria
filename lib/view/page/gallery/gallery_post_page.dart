@@ -14,6 +14,7 @@ import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/user_gallery_posts_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
@@ -45,7 +46,8 @@ class GalleryPostPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final post = ref.watch(galleryPostNotifierProvider(account, postId));
-    final url = Uri.https(account.host, 'gallery/$postId');
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['gallery', postId]);
     final theme = Theme.of(context);
 
     return Scaffold(

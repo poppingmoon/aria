@@ -12,6 +12,7 @@ import '../../model/clip_settings.dart';
 import '../../provider/api/clip_notes_notifier_provider.dart';
 import '../../provider/api/clip_notifier_provider.dart';
 import '../../provider/api/clips_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -63,6 +64,8 @@ class ClipPage extends HookConsumerWidget {
     final clip =
         myClip ?? ref.watch(clipNotifierProvider(account, clipId)).valueOrNull;
     final notes = ref.watch(clipNotesNotifierProvider(account, clipId));
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['clips', clipId]);
 
     return Scaffold(
       appBar: AppBar(
@@ -72,27 +75,16 @@ class ClipPage extends HookConsumerWidget {
             itemBuilder:
                 (context) => [
                   PopupMenuItem(
-                    onTap:
-                        () => launchUrl(
-                          ref,
-                          Uri.https(account.host, 'clips/$clipId'),
-                        ),
+                    onTap: () => launchUrl(ref, url),
                     child: Text(t.aria.openInBrowser),
                   ),
                   PopupMenuItem(
-                    onTap:
-                        () => copyToClipboard(
-                          context,
-                          'https://${account.host}/clips/$clipId',
-                        ),
+                    onTap: () => copyToClipboard(context, url.toString()),
                     child: Text(t.misskey.copyLink),
                   ),
                   if (clip?.isPublic ?? false)
                     PopupMenuItem(
-                      onTap:
-                          () => Share.shareUri(
-                            Uri.https(account.host, 'clips/$clipId'),
-                          ),
+                      onTap: () => Share.shareUri(url),
                       child: Text(t.misskey.share),
                     ),
                   if (myClip != null) ...[

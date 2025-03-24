@@ -9,6 +9,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/format_datetime.dart';
 import '../../util/punycode.dart';
 import 'bot_badge.dart';
@@ -95,15 +96,16 @@ class NoteHeader extends HookConsumerWidget {
                             ),
                             child: ImageWidget(
                               url:
-                                  iconUrl.isAbsolute
-                                      ? iconUrl.toString()
-                                      : iconUrl
-                                          .replace(
-                                            scheme: 'https',
-                                            host:
-                                                note.user.host ?? account.host,
-                                          )
-                                          .toString(),
+                                  (iconUrl.hasScheme
+                                          ? iconUrl
+                                          : ref
+                                              .watch(
+                                                serverUrlNotifierProvider(
+                                                  account.host,
+                                                ),
+                                              )
+                                              .resolveUri(iconUrl))
+                                      .toString(),
                               height: style.lineHeight,
                               opacity: style.color?.a ?? 1.0,
                             ),

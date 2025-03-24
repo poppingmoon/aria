@@ -7,6 +7,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../model/account.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/proxied_image_url_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
@@ -34,11 +35,7 @@ class InstanceTickerWidget extends ConsumerWidget {
     final proxiedUrl =
         instance != null && faviconUrl != null && account.host.isNotEmpty
             ? ref.watch(
-              proxiedImageUrlProvider(
-                account.host,
-                faviconUrl.toString(),
-                preview: true,
-              ),
+              proxiedImageUrlProvider(account.host, faviconUrl, preview: true),
             )
             : faviconUrl;
     final style = DefaultTextStyle.of(context).style;
@@ -68,9 +65,13 @@ class InstanceTickerWidget extends ConsumerWidget {
                   ImageWidget(
                     height: style.fontSize! + 2.0,
                     url:
-                        proxiedUrl != null
-                            ? proxiedUrl.toString()
-                            : 'https://${account.host}/favicon.ico',
+                        (proxiedUrl ??
+                                ref
+                                    .watch(
+                                      serverUrlNotifierProvider(account.host),
+                                    )
+                                    .replace(pathSegments: ['favicon.ico']))
+                            .toString(),
                   ),
                   const SizedBox(width: 4.0),
                 ],

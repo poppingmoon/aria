@@ -13,6 +13,7 @@ import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -68,6 +69,7 @@ class UserSheet extends ConsumerWidget {
             .watch(accountsNotifierProvider)
             .where((acct) => acct != account)
             .toList();
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
 
     return DraggableScrollableSheet(
       minChildSize: 0.5,
@@ -111,7 +113,9 @@ class UserSheet extends ConsumerWidget {
                         onTap: () {
                           copyToClipboard(
                             context,
-                            Uri.https(account.host, user.acct).toString(),
+                            serverUrl
+                                .replace(pathSegments: [user.acct])
+                                .toString(),
                           );
                           context.pop();
                         },
@@ -120,7 +124,10 @@ class UserSheet extends ConsumerWidget {
                         leading: const Icon(Icons.open_in_browser),
                         title: Text(t.aria.openInBrowser),
                         onTap: () {
-                          launchUrl(ref, Uri.https(account.host, user.acct));
+                          launchUrl(
+                            ref,
+                            serverUrl.replace(pathSegments: [user.acct]),
+                          );
                           context.pop();
                         },
                       ),

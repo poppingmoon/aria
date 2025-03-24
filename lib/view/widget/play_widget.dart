@@ -54,7 +54,8 @@ class PlayWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final url = Uri.https(host, 'play/${play.id}');
+    final serverUrl = ref.watch(serverUrlNotifierProvider(host));
+    final url = serverUrl.replace(pathSegments: ['play', play.id]);
     final started = useState(false);
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
@@ -300,6 +301,9 @@ class PlayWidget extends HookConsumerWidget {
                                 emojis = response.values.toList();
                               } catch (_) {}
                               components.value = {};
+                              final serverUrl = ref.read(
+                                serverUrlNotifierProvider(account.host),
+                              );
                               try {
                                 aiscript.value = await AiScript.newInstance(
                                   read: (prompt) async {
@@ -316,7 +320,7 @@ class PlayWidget extends HookConsumerWidget {
                                     userUsername: i?.username,
                                     customEmojis: jsonEncode(emojis ?? []),
                                     locale: locale,
-                                    serverUrl: 'https://${account.host}',
+                                    serverUrl: serverUrl.toString(),
                                     dialog:
                                         (title, text, type) => showDialog(
                                           context: context,
@@ -350,9 +354,6 @@ class PlayWidget extends HookConsumerWidget {
                                     },
                                     api: (ep, param, token) async {
                                       final json = jsonDecode(param);
-                                      final serverUrl = ref.read(
-                                        serverUrlNotifierProvider(account.host),
-                                      );
                                       final misskey = Misskey(
                                         serverUrl: serverUrl,
                                         token: token,
