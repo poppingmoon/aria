@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
 import '../model/streaming/note_update_event.dart';
+import '../util/append_content_warning.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
 
@@ -32,6 +33,10 @@ class NotesNotifier extends _$NotesNotifier {
     state = {
       ...state,
       note.id: note.copyWith(
+        cw:
+            note.user.mandatoryCW != null
+                ? appendContentWarning(note.cw, note.user.mandatoryCW)
+                : note.cw,
         reactionCount:
             note.reactionCount ??
             note.reactions.values.fold<int>(
