@@ -8,7 +8,7 @@ class SummalyRepository {
   final Dio dio;
 
   Future<SummalyResult> getSummary({
-    required String host,
+    required Uri serverUrl,
     required String link,
     String? lang,
   }) async {
@@ -27,11 +27,15 @@ class SummalyRepository {
             )
             .removeFragment();
     final response = await dio.getUri<Map<String, dynamic>>(
-      Uri.https(host, 'url', {
-        'url': replacedUrl.toString(),
-        if (lang != null) 'lang': lang,
-      }),
+      serverUrl.replace(
+        pathSegments: ['url'],
+        queryParameters: {
+          'url': replacedUrl.toString(),
+          if (lang != null) 'lang': lang,
+        },
+      ),
     );
+
     return SummalyResult.fromJson(response.data!);
   }
 }

@@ -6,7 +6,7 @@ part of 'skeb_status_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$skebStatusHash() => r'd91a5c868e7273a7a8ac8ec6745b7eece3be97e9';
+String _$skebStatusHash() => r'515cd9b8e3fc815d4ce537ae30b2b6ec93152976';
 
 /// Copied from Dart SDK
 class _SystemHash {

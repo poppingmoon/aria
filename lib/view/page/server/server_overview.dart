@@ -14,6 +14,7 @@ import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/api/stats_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/node_info_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/launch_url.dart';
 import '../../widget/error_message.dart';
 import '../../widget/image_widget.dart';
@@ -37,6 +38,7 @@ class ServerOverview extends ConsumerWidget {
         (nodeInfo?['software'] as Map<String, dynamic>?)?['name'] as String?;
     final stats =
         meta != null ? ref.watch(statsProvider(Account(host: host))) : null;
+    final serverUrl = ref.watch(serverUrlNotifierProvider(host));
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -85,7 +87,9 @@ class ServerOverview extends ConsumerWidget {
                               (meta?.iconUrl ??
                                       instance?.iconUrl ??
                                       instance?.faviconUrl ??
-                                      Uri.https(host, 'favicon.ico'))
+                                      serverUrl.replace(
+                                        pathSegments: ['favicon.ico'],
+                                      ))
                                   .toString(),
                           height: 64.0,
                           width: 64.0,
@@ -164,9 +168,11 @@ class ServerOverview extends ConsumerWidget {
                     () => launchUrl(
                       ref,
                       meta.repositoryUrl ??
-                          Uri.https(
-                            host,
-                            'tarball/misskey-${meta.version}.tar.gz',
+                          serverUrl.replace(
+                            pathSegments: [
+                              'tarball',
+                              'misskey-${meta.version}.tar.gz',
+                            ],
                           ),
                     ),
               ),

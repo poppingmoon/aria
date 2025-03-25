@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'node_info_provider.dart';
+part of 'server_url_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$nodeInfoHash() => r'8adb58e99d017a16df2ec2bb18977fe26cfe0fd7';
+String _$serverUrlNotifierHash() => r'f1d26cd49ffae5fe9cf7cd15eae5387d3160ceb7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,22 +29,30 @@ class _SystemHash {
   }
 }
 
-/// See also [nodeInfo].
-@ProviderFor(nodeInfo)
-const nodeInfoProvider = NodeInfoFamily();
+abstract class _$ServerUrlNotifier extends BuildlessAutoDisposeNotifier<Uri> {
+  late final String host;
 
-/// See also [nodeInfo].
-class NodeInfoFamily extends Family<AsyncValue<Map<String, dynamic>>> {
-  /// See also [nodeInfo].
-  const NodeInfoFamily();
+  Uri build(String host);
+}
 
-  /// See also [nodeInfo].
-  NodeInfoProvider call(String host) {
-    return NodeInfoProvider(host);
+/// See also [ServerUrlNotifier].
+@ProviderFor(ServerUrlNotifier)
+const serverUrlNotifierProvider = ServerUrlNotifierFamily();
+
+/// See also [ServerUrlNotifier].
+class ServerUrlNotifierFamily extends Family<Uri> {
+  /// See also [ServerUrlNotifier].
+  const ServerUrlNotifierFamily();
+
+  /// See also [ServerUrlNotifier].
+  ServerUrlNotifierProvider call(String host) {
+    return ServerUrlNotifierProvider(host);
   }
 
   @override
-  NodeInfoProvider getProviderOverride(covariant NodeInfoProvider provider) {
+  ServerUrlNotifierProvider getProviderOverride(
+    covariant ServerUrlNotifierProvider provider,
+  ) {
     return call(provider.host);
   }
 
@@ -60,27 +68,29 @@ class NodeInfoFamily extends Family<AsyncValue<Map<String, dynamic>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'nodeInfoProvider';
+  String? get name => r'serverUrlNotifierProvider';
 }
 
-/// See also [nodeInfo].
-class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
-  /// See also [nodeInfo].
-  NodeInfoProvider(String host)
+/// See also [ServerUrlNotifier].
+class ServerUrlNotifierProvider
+    extends AutoDisposeNotifierProviderImpl<ServerUrlNotifier, Uri> {
+  /// See also [ServerUrlNotifier].
+  ServerUrlNotifierProvider(String host)
     : this._internal(
-        (ref) => nodeInfo(ref as NodeInfoRef, host),
-        from: nodeInfoProvider,
-        name: r'nodeInfoProvider',
+        () => ServerUrlNotifier()..host = host,
+        from: serverUrlNotifierProvider,
+        name: r'serverUrlNotifierProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$nodeInfoHash,
-        dependencies: NodeInfoFamily._dependencies,
-        allTransitiveDependencies: NodeInfoFamily._allTransitiveDependencies,
+                : _$serverUrlNotifierHash,
+        dependencies: ServerUrlNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ServerUrlNotifierFamily._allTransitiveDependencies,
         host: host,
       );
 
-  NodeInfoProvider._internal(
+  ServerUrlNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -93,13 +103,16 @@ class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
   final String host;
 
   @override
-  Override overrideWith(
-    FutureOr<Map<String, dynamic>> Function(NodeInfoRef provider) create,
-  ) {
+  Uri runNotifierBuild(covariant ServerUrlNotifier notifier) {
+    return notifier.build(host);
+  }
+
+  @override
+  Override overrideWith(ServerUrlNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: NodeInfoProvider._internal(
-        (ref) => create(ref as NodeInfoRef),
+      override: ServerUrlNotifierProvider._internal(
+        () => create()..host = host,
         from: from,
         name: null,
         dependencies: null,
@@ -111,13 +124,13 @@ class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<Map<String, dynamic>> createElement() {
-    return _NodeInfoProviderElement(this);
+  AutoDisposeNotifierProviderElement<ServerUrlNotifier, Uri> createElement() {
+    return _ServerUrlNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is NodeInfoProvider && other.host == host;
+    return other is ServerUrlNotifierProvider && other.host == host;
   }
 
   @override
@@ -131,18 +144,18 @@ class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin NodeInfoRef on AutoDisposeFutureProviderRef<Map<String, dynamic>> {
+mixin ServerUrlNotifierRef on AutoDisposeNotifierProviderRef<Uri> {
   /// The parameter `host` of this provider.
   String get host;
 }
 
-class _NodeInfoProviderElement
-    extends AutoDisposeFutureProviderElement<Map<String, dynamic>>
-    with NodeInfoRef {
-  _NodeInfoProviderElement(super.provider);
+class _ServerUrlNotifierProviderElement
+    extends AutoDisposeNotifierProviderElement<ServerUrlNotifier, Uri>
+    with ServerUrlNotifierRef {
+  _ServerUrlNotifierProviderElement(super.provider);
 
   @override
-  String get host => (origin as NodeInfoProvider).host;
+  String get host => (origin as ServerUrlNotifierProvider).host;
 }
 
 // ignore_for_file: type=lint

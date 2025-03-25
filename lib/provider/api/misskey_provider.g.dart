@@ -6,7 +6,7 @@ part of 'misskey_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyHash() => r'6ad58d2d21a8be2bea35a0ffbc4543a17f2876c1';
+String _$misskeyHash() => r'4d0958c3df375c44bb5495b631c952133ecaafcd';
 
 /// Copied from Dart SDK
 class _SystemHash {

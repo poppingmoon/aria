@@ -11,7 +11,7 @@ Future<void> lookup(WidgetRef ref, Account account, String query) async {
     await ref.context.push('/$account/$query');
   } else if (query.startsWith('#')) {
     await ref.context.push('/$account/tags/${query.substring(1)}');
-  } else if (query.startsWith('https://')) {
+  } else if (query.startsWith(RegExp('https?://'))) {
     final url = Uri.tryParse(query);
     if (url == null) return;
     try {

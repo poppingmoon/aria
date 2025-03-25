@@ -21,23 +21,23 @@ import '../widget/misskey_server_autocomplete.dart';
 import '../widget/misskey_server_background.dart';
 
 class TokenLoginPage extends HookConsumerWidget {
-  const TokenLoginPage({super.key, this.host});
+  const TokenLoginPage({super.key, this.query});
 
-  final String? host;
+  final String? query;
 
-  Future<void> _login(WidgetRef ref, String hostText, String token) async {
-    final trimmed =
-        toAscii(
-          hostText
-              .trim()
-              .replaceFirst(RegExp('https?://'), '')
-              .split('/')
-              .first,
-        ).toLowerCase();
+  Future<void> _login(WidgetRef ref, String query, String token) async {
+    final trimmed = query.trim();
+    final match = RegExp(
+      '^(https?://)?([^/]*)',
+      caseSensitive: false,
+    ).firstMatch(trimmed);
+    final scheme = match?[1]?.toLowerCase() ?? 'https://';
+    final host = toAscii(match?[2] ?? trimmed).toLowerCase();
+    final serverUrl = Uri.parse('$scheme$host');
     if (!ref.context.mounted) return;
     final result = await ref
         .read(accountsNotifierProvider.notifier)
-        .loginWithToken(trimmed, token);
+        .loginWithToken(serverUrl, token);
     showToast(
       context: ref.context.mounted ? ref.context : null,
       message: result.added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
@@ -49,12 +49,16 @@ class TokenLoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
-    final hostController = useTextEditingController(text: this.host);
-    final host = useState(this.host ?? '');
-    final hostFocusNode = useFocusNode();
-    final server = servers.firstWhereOrNull(
-      (server) => server.url == host.value,
-    );
+    final queryController = useTextEditingController(text: this.query);
+    final query = useState(this.query ?? '');
+    final host =
+        query.value
+            .trim()
+            .replaceFirst(RegExp('https?://'), '')
+            .split('/')
+            .first;
+    final queryFocusNode = useFocusNode();
+    final server = servers.firstWhereOrNull((server) => server.url == host);
     final iconUrl =
         server?.meta?['iconUrl'] as String? ??
         (server != null && server.icon
@@ -64,14 +68,20 @@ class TokenLoginPage extends HookConsumerWidget {
     final token = useState('');
     final tokenFocusNode = useFocusNode();
     useEffect(() {
-      hostController.addListener(() => host.value = hostController.text);
+      queryController.addListener(
+        () =>
+            query.value = queryController.text.replaceFirst(
+              RegExp('^https://'),
+              '',
+            ),
+      );
       tokenController.addListener(() => token.value = tokenController.text);
       return;
     }, []);
 
     return Scaffold(
       body: MisskeyServerBackground(
-        controller: hostController,
+        controller: queryController,
         child: Column(
           children: [
             ClipRect(
@@ -111,13 +121,13 @@ class TokenLoginPage extends HookConsumerWidget {
                                         height: 50.0,
                                       ),
                                     )
-                                    : const SizedBox(width: 50.0, height: 50.0),
+                                    : const SizedBox.square(dimension: 50.0),
                           ),
                           const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
-                            controller: hostController,
-                            focusNode: hostFocusNode,
-                            autofocus: this.host?.isEmpty ?? true,
+                            controller: queryController,
+                            focusNode: queryFocusNode,
+                            autofocus: this.query?.isEmpty ?? true,
                             onSubmitted: (_) => tokenFocusNode.requestFocus(),
                           ),
                           Align(
@@ -135,7 +145,7 @@ class TokenLoginPage extends HookConsumerWidget {
                                           const MisskeyServerListDialog(),
                                 );
                                 if (host != null) {
-                                  hostController.text = host;
+                                  queryController.text = host;
                                   if (!context.mounted) return;
                                   tokenFocusNode.requestFocus();
                                 }
@@ -149,13 +159,13 @@ class TokenLoginPage extends HookConsumerWidget {
                               ...disablingTextShortcuts,
                               submitActivator: VoidCallbackIntent(
                                 () =>
-                                    hostController.text.isNotEmpty &&
+                                    queryController.text.isNotEmpty &&
                                             tokenController.text.isNotEmpty
                                         ? futureWithDialog(
                                           context,
                                           _login(
                                             ref,
-                                            hostController.text,
+                                            queryController.text,
                                             tokenController.text,
                                           ),
                                         )
@@ -181,12 +191,12 @@ class TokenLoginPage extends HookConsumerWidget {
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
                             onPressed:
-                                host.value.isNotEmpty && token.value.isNotEmpty
+                                query.value.isNotEmpty && token.value.isNotEmpty
                                     ? () => futureWithDialog(
                                       context,
                                       _login(
                                         ref,
-                                        hostController.text,
+                                        queryController.text,
                                         tokenController.text,
                                       ),
                                     )

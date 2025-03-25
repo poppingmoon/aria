@@ -13,6 +13,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../widget/mfm/code.dart';
 import '../widget/url_sheet.dart';
 import 'message_dialog.dart';
@@ -30,6 +31,8 @@ class SwRegisterDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final scratchPadUrl = serverUrl.replace(pathSegments: ['scratchpad']);
     final responseText = useState('');
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
@@ -49,20 +52,15 @@ class SwRegisterDialog extends HookConsumerWidget {
                 child: InkWell(
                   onTap:
                       () => launchUrl(
-                        Uri.https(account.host, 'scratchpad'),
+                        scratchPadUrl,
                         mode: LaunchMode.externalApplication,
                       ),
                   onLongPress:
                       () => showModalBottomSheet<void>(
                         context: context,
                         builder:
-                            (context) => UrlSheet(
-                              url:
-                                  Uri.https(
-                                    account.host,
-                                    'scratchpad',
-                                  ).toString(),
-                            ),
+                            (context) =>
+                                UrlSheet(url: scratchPadUrl.toString()),
                       ),
                   child: Text(
                     t.misskey.scratchpad,

@@ -12,8 +12,10 @@ import 'package:url_launcher/url_launcher.dart' hide launchUrl;
 import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/api/meta_notifier_provider.dart';
+import '../../provider/dio_provider.dart';
 import '../../provider/miauth_notifier_provider.dart';
 import '../../provider/misskey_servers_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/punycode.dart';
@@ -27,32 +29,63 @@ class LoginPage extends HookConsumerWidget {
 
   Future<void> _launchMiAuth(
     WidgetRef ref,
-    String hostText, {
+    String query, {
     bool skipValidation = false,
   }) async {
-    final trimmed =
-        toAscii(
-          hostText
-              .trim()
-              .replaceFirst(RegExp('https?://'), '')
-              .split('/')
-              .first,
-        ).toLowerCase();
+    final trimmed = query.trim();
+    final match = RegExp(
+      '^(https?://)?([^/]*)',
+      caseSensitive: false,
+    ).firstMatch(trimmed);
+    final scheme = match?[1]?.toLowerCase() ?? 'https://';
+    final host = toAscii(match?[2] ?? trimmed).toLowerCase();
+    final serverUrl = Uri.parse('$scheme$host');
 
     bool miauth = skipValidation;
     if (!skipValidation) {
       final server = ref
           .read(misskeyServersProvider)
           .valueOrNull
-          ?.firstWhereOrNull((server) => server.url == trimmed);
+          ?.firstWhereOrNull((server) => server.url == host);
       if (server?.meta case final meta?) {
         if (meta['features'] case {'miauth': true}) {
           miauth = true;
         }
+        if (meta['uri'] case final String uri) {
+          final url = Uri.tryParse(uri);
+          if (url?.authority case final authority?) {
+            await ref
+                .read(serverUrlNotifierProvider(authority).notifier)
+                .updateUrl(serverUrl);
+          }
+        }
       } else {
         try {
-          final meta = await ref.read(metaNotifierProvider(trimmed).future);
-          miauth = meta.features?.miauth ?? false;
+          if (await ref
+                  .read(serverUrlNotifierProvider(host).notifier)
+                  .getSavedUrl() ==
+              serverUrl) {
+            final meta = await ref.read(metaNotifierProvider(trimmed).future);
+            miauth = meta.features?.miauth ?? false;
+          } else {
+            final meta = await ref
+                .read(dioProvider)
+                .postUri<Map<String, dynamic>>(
+                  serverUrl.replace(pathSegments: ['api', 'meta']),
+                  data: {},
+                );
+            if (meta.data?['features'] case {'miauth': true}) {
+              miauth = true;
+            }
+            if (meta.data?['uri'] case final String uri) {
+              final url = Uri.tryParse(uri);
+              if (url?.authority case final authority?) {
+                await ref
+                    .read(serverUrlNotifierProvider(authority).notifier)
+                    .updateUrl(serverUrl);
+              }
+            }
+          }
         } catch (_) {}
       }
     }
@@ -61,7 +94,7 @@ class LoginPage extends HookConsumerWidget {
     if (miauth) {
       final url = ref
           .read(miAuthNotifierProvider.notifier)
-          .buildMiAuthUrl(trimmed);
+          .buildMiAuthUrl(serverUrl);
       unawaited(
         launchUrl(
           ref,
@@ -83,17 +116,24 @@ class LoginPage extends HookConsumerWidget {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
     final controller = useTextEditingController();
     final focusNode = useFocusNode();
-    final host = useState('');
-    final server = servers.firstWhereOrNull(
-      (server) => server.url == host.value,
-    );
+    final query = useState('');
+    final host =
+        query.value
+            .trim()
+            .replaceFirst(RegExp('https?://'), '')
+            .split('/')
+            .first;
+    final server = servers.firstWhereOrNull((server) => server.url == host);
     final iconUrl =
         server?.meta?['iconUrl'] as String? ??
         (server != null && server.icon
             ? 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp'
             : null);
     useEffect(() {
-      controller.addListener(() => host.value = controller.text);
+      controller.addListener(
+        () =>
+            query.value = controller.text.replaceFirst(RegExp('^https://'), ''),
+      );
       return;
     }, []);
 
@@ -114,7 +154,7 @@ class LoginPage extends HookConsumerWidget {
                             PopupMenuItem(
                               onTap:
                                   () => context.push(
-                                    '/login/token?host=${host.value}',
+                                    '/login/token?query=${query.value}',
                                   ),
                               child: Text(t.aria.loginWithAccessToken),
                             ),
@@ -153,7 +193,7 @@ class LoginPage extends HookConsumerWidget {
                                         height: 50.0,
                                       ),
                                     )
-                                    : const SizedBox(width: 50.0, height: 50.0),
+                                    : const SizedBox.square(dimension: 50.0),
                           ),
                           const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
@@ -190,19 +230,19 @@ class LoginPage extends HookConsumerWidget {
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
                             onPressed:
-                                host.value.isNotEmpty
+                                query.value.isNotEmpty
                                     ? () => futureWithDialog(
                                       context,
-                                      _launchMiAuth(ref, host.value),
+                                      _launchMiAuth(ref, query.value),
                                     )
                                     : null,
                             onLongPress:
-                                host.value.isNotEmpty
+                                query.value.isNotEmpty
                                     ? () => futureWithDialog(
                                       context,
                                       _launchMiAuth(
                                         ref,
-                                        host.value,
+                                        query.value,
                                         skipValidation: true,
                                       ),
                                     )

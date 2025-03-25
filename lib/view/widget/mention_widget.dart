@@ -7,6 +7,7 @@ import '../../provider/cache_manager_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import '../../util/punycode.dart';
 
@@ -41,7 +42,8 @@ class MentionWidget extends ConsumerWidget {
           ),
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
-    final url = 'https://${account.host}/avatar/@$username@$host';
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['avatar', '@$username@$host']);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -64,11 +66,12 @@ class MentionWidget extends ConsumerWidget {
       child: InputChip(
         avatar: CircleAvatar(
           foregroundImage: CachedNetworkImageProvider(
-            disableShowingAnimatedImages
-                ? ref
-                    .watch(staticImageUrlProvider(account.host, url))
-                    .toString()
-                : url,
+            (disableShowingAnimatedImages
+                    ? ref.watch(
+                      staticImageUrlProvider(account.host, url.toString()),
+                    )
+                    : url)
+                .toString(),
             cacheManager: ref.watch(cacheManagerProvider),
           ),
           onForegroundImageError: (_, _) {},

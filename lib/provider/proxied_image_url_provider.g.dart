@@ -6,7 +6,7 @@ part of 'proxied_image_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$proxiedImageUrlHash() => r'273f773eeb4b38bbb2c5d61d1460de6f8c872cda';
+String _$proxiedImageUrlHash() => r'624a112e9854446a1d6cc929e35b7e2230664fdf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -41,7 +41,7 @@ class ProxiedImageUrlFamily extends Family<Uri?> {
   /// See also [proxiedImageUrl].
   ProxiedImageUrlProvider call(
     String host,
-    String baseUrl, {
+    Uri baseUrl, {
     bool emoji = false,
     bool preview = false,
     bool static = false,
@@ -88,7 +88,7 @@ class ProxiedImageUrlProvider extends AutoDisposeProvider<Uri?> {
   /// See also [proxiedImageUrl].
   ProxiedImageUrlProvider(
     String host,
-    String baseUrl, {
+    Uri baseUrl, {
     bool emoji = false,
     bool preview = false,
     bool static = false,
@@ -132,7 +132,7 @@ class ProxiedImageUrlProvider extends AutoDisposeProvider<Uri?> {
   }) : super.internal();
 
   final String host;
-  final String baseUrl;
+  final Uri baseUrl;
   final bool emoji;
   final bool preview;
   final bool static;
@@ -192,7 +192,7 @@ mixin ProxiedImageUrlRef on AutoDisposeProviderRef<Uri?> {
   String get host;
 
   /// The parameter `baseUrl` of this provider.
-  String get baseUrl;
+  Uri get baseUrl;
 
   /// The parameter `emoji` of this provider.
   bool get emoji;
@@ -211,7 +211,7 @@ class _ProxiedImageUrlProviderElement extends AutoDisposeProviderElement<Uri?>
   @override
   String get host => (origin as ProxiedImageUrlProvider).host;
   @override
-  String get baseUrl => (origin as ProxiedImageUrlProvider).baseUrl;
+  Uri get baseUrl => (origin as ProxiedImageUrlProvider).baseUrl;
   @override
   bool get emoji => (origin as ProxiedImageUrlProvider).emoji;
   @override

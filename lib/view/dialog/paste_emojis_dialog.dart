@@ -11,6 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/endpoints_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
@@ -37,9 +38,8 @@ class PasteEmojisDialog extends HookConsumerWidget {
     final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
     final isThirdPartyRegistrySupported =
         endpoints?.contains('i/registry/scopes-with-domain') ?? true;
-    final registryUrl = Uri(
-      scheme: 'https',
-      host: account.host,
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final registryUrl = serverUrl.replace(
       pathSegments: [
         'registry',
         'value',

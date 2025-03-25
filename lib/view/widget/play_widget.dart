@@ -14,10 +14,10 @@ import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/aiscript_storage_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/play_notifier_provider.dart';
-import '../../provider/dio_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../rust/api/aiscript.dart';
 import '../../rust/api/aiscript/api.dart';
 import '../../rust/api/aiscript/play.dart';
@@ -54,7 +54,8 @@ class PlayWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final url = Uri.https(host, 'play/${play.id}');
+    final serverUrl = ref.watch(serverUrlNotifierProvider(host));
+    final url = serverUrl.replace(pathSegments: ['play', play.id]);
     final started = useState(false);
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
@@ -300,6 +301,9 @@ class PlayWidget extends HookConsumerWidget {
                                 emojis = response.values.toList();
                               } catch (_) {}
                               components.value = {};
+                              final serverUrl = ref.read(
+                                serverUrlNotifierProvider(account.host),
+                              );
                               try {
                                 aiscript.value = await AiScript.newInstance(
                                   read: (prompt) async {
@@ -316,7 +320,7 @@ class PlayWidget extends HookConsumerWidget {
                                     userUsername: i?.username,
                                     customEmojis: jsonEncode(emojis ?? []),
                                     locale: locale,
-                                    serverUrl: 'https://${account.host}',
+                                    serverUrl: serverUrl.toString(),
                                     dialog:
                                         (title, text, type) => showDialog(
                                           context: context,
@@ -350,10 +354,8 @@ class PlayWidget extends HookConsumerWidget {
                                     },
                                     api: (ep, param, token) async {
                                       final json = jsonDecode(param);
-                                      final dio = ref.read(dioProvider);
                                       final misskey = Misskey(
-                                        dio: dio,
-                                        host: account.host,
+                                        serverUrl: serverUrl,
                                         token: token,
                                       );
                                       try {
@@ -370,9 +372,11 @@ class PlayWidget extends HookConsumerWidget {
                                         return (jsonEncode(response), null);
                                       } on MisskeyException catch (e) {
                                         if (account.host != host) {
+                                          final serverUrl = ref.read(
+                                            serverUrlNotifierProvider(host),
+                                          );
                                           final misskey = Misskey(
-                                            dio: dio,
-                                            host: host,
+                                            serverUrl: serverUrl,
                                           );
                                           try {
                                             final response = await misskey

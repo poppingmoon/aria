@@ -16,6 +16,7 @@ import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/page_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
 import '../../../util/future_with_dialog.dart';
@@ -180,9 +181,13 @@ class PagePage extends ConsumerWidget {
         username: username,
       ),
     );
-    final url = Uri.https(
-      account.host,
-      '@${page.valueOrNull?.user.username}/pages/${page.valueOrNull?.name}',
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(
+      pathSegments: [
+        '@${page.valueOrNull?.user.username}',
+        'pages',
+        '${page.valueOrNull?.name}',
+      ],
     );
     final theme = Theme.of(context);
 

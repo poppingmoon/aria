@@ -25,7 +25,7 @@ List<Override> createOverrides(
 }) {
   final dio = Dio();
   final dioAdapter = DioAdapter(dio: dio, matcher: const UrlRequestMatcher());
-  final misskey = Misskey(host: account.host, dio: dio);
+  final misskey = Misskey(serverUrl: Uri.https(account.host), dio: dio);
   if (i != null) {
     dioAdapter.onPost('i', (server) => server.reply(200, i.toJson()));
   }

@@ -5,6 +5,7 @@ import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/reversi_invitations_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';
 
 class MisskeyGamesPage extends ConsumerWidget {
@@ -16,6 +17,7 @@ class MisskeyGamesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final invitations =
         ref.watch(reversiInvitationsProvider(account)).valueOrNull ?? [];
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
 
     return Scaffold(
       appBar: AppBar(title: const Text('Misskey Games')),
@@ -24,12 +26,20 @@ class MisskeyGamesPage extends ConsumerWidget {
           ListTile(
             title: const Text('🍪👈'),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(ref, Uri.https(account.host, 'clicker')),
+            onTap:
+                () => launchUrl(
+                  ref,
+                  serverUrl.replace(pathSegments: ['clicker']),
+                ),
           ),
           ListTile(
             title: Text(t.misskey.bubbleGame),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(ref, Uri.https(account.host, 'bubble-game')),
+            onTap:
+                () => launchUrl(
+                  ref,
+                  serverUrl.replace(pathSegments: ['bubble-game']),
+                ),
           ),
           ListTile(
             title: Text(t.misskey.reversi_.reversi),
@@ -40,7 +50,11 @@ class MisskeyGamesPage extends ConsumerWidget {
                     )
                     : null,
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(ref, Uri.https(account.host, 'reversi')),
+            onTap:
+                () => launchUrl(
+                  ref,
+                  serverUrl.replace(pathSegments: ['reversi']),
+                ),
           ),
         ],
       ),

@@ -19,6 +19,7 @@ import '../../provider/api/note_state_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -76,7 +77,8 @@ class NoteSheet extends ConsumerWidget {
     if (note == null || appearNote == null) {
       return NoteFallbackWidget(account: account, noteId: noteId);
     }
-    final url = Uri.https(account.host, '/notes/${appearNote.id}');
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['notes', appearNote.id]);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final canUseTranslator =
@@ -249,17 +251,7 @@ class NoteSheet extends ConsumerWidget {
                       ref
                           .read(misskeyProvider(destination))
                           .ap
-                          .show(
-                            ApShowRequest(
-                              uri:
-                                  remoteUrl ??
-                                  Uri(
-                                    scheme: 'https',
-                                    host: account.host,
-                                    pathSegments: ['notes', appearNote.id],
-                                  ),
-                            ),
-                          ),
+                          .show(ApShowRequest(uri: remoteUrl ?? url)),
                     );
                     if (!context.mounted) return;
                     if (response != null) {
@@ -613,9 +605,8 @@ class NoteSheet extends ConsumerWidget {
                           t.misskey.reportAbuseOf(name: appearNote.user.acct),
                         ),
                         initialText: [
-                          if (note.uri ?? note.url case final url?)
-                            'Note: $url',
-                          'Local Note: ${Uri.https(account.host, '/notes/$noteId')}',
+                          if (remoteUrl != null) 'Note: $remoteUrl',
+                          'Local Note: $url',
                           '-----',
                           '',
                         ].join('\n'),

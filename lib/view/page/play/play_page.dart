@@ -13,6 +13,7 @@ import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/play_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
@@ -38,7 +39,8 @@ class PlayPage extends HookConsumerWidget {
     final account = useState(this.account);
     final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
     final play = ref.watch(playNotifierProvider(this.account, playId));
-    final url = Uri.https(this.account.host, 'play/$playId');
+    final serverUrl = ref.watch(serverUrlNotifierProvider(this.account.host));
+    final url = serverUrl.replace(pathSegments: ['play', playId]);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );

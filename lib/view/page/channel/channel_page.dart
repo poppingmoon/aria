@@ -7,6 +7,7 @@ import '../../../model/account.dart';
 import '../../../model/tab_settings.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
+import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/launch_url.dart';
 import '../../widget/timeline_list_view.dart';
@@ -27,6 +28,9 @@ class ChannelPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final channel =
         ref.watch(channelNotifierProvider(account, channelId)).valueOrNull;
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['channels', channelId]);
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -51,19 +55,11 @@ class ChannelPage extends ConsumerWidget {
                       child: Text(t.misskey.search),
                     ),
                     PopupMenuItem(
-                      onTap:
-                          () => launchUrl(
-                            ref,
-                            Uri.https(account.host, 'channels/$channelId'),
-                          ),
+                      onTap: () => launchUrl(ref, url),
                       child: Text(t.aria.openInBrowser),
                     ),
                     PopupMenuItem(
-                      onTap:
-                          () => copyToClipboard(
-                            context,
-                            'https://${account.host}/channels/$channelId',
-                          ),
+                      onTap: () => copyToClipboard(context, url.toString()),
                       child: Text(t.misskey.copyLink),
                     ),
                   ],

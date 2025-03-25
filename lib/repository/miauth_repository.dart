@@ -48,55 +48,33 @@ class MiAuthRepository {
 
   final Dio dio;
 
-  (String, Uri) buildMiAuthUrl(String host) {
+  ({String sessionId, Uri url}) buildMiAuthUrl(Uri serverUrl) {
     final sessionId = const Uuid().v4();
-    if (kDebugMode) {
-      if (host.startsWith('localhost')) {
-        final url = Uri.http(host, 'miauth/$sessionId', {
-          'name': 'Aria',
-          'permission': _permissions.map((e) => e.value).join(','),
-          if (defaultTargetPlatform == TargetPlatform.android)
-            'callback': 'aria://aria/miauth',
-        });
-        return (sessionId, url);
-      }
-    }
-    final url = Uri.https(host, 'miauth/$sessionId', {
-      'name': 'Aria',
-      'permission': _permissions.map((e) => e.value).join(','),
-      if (defaultTargetPlatform == TargetPlatform.android)
-        'callback': 'aria://aria/miauth',
-    });
-    return (sessionId, url);
+    final url = serverUrl.replace(
+      pathSegments: ['miauth', sessionId],
+      queryParameters: {
+        'name': 'Aria',
+        'permission': _permissions.map((e) => e.value).join(','),
+        if (defaultTargetPlatform == TargetPlatform.android)
+          'callback': 'aria://aria/miauth',
+      },
+    );
+    return (sessionId: sessionId, url: url);
   }
 
-  Future<(String, UserDetailedNotMe)?> check(
-    String host,
+  Future<({String token, UserDetailedNotMe user})?> check(
+    Uri serverUrl,
     String sessionId,
   ) async {
-    if (kDebugMode) {
-      if (host.startsWith('localhost')) {
-        final response = await dio.postUri<Map<String, dynamic>>(
-          Uri.http(host, 'api/miauth/$sessionId/check'),
-        );
-        final data = response.data;
-        if (data != null && data['ok'] as bool) {
-          return (
-            data['token'] as String,
-            UserDetailedNotMe.fromJson(data['user'] as Map<String, dynamic>),
-          );
-        }
-      }
-    }
     final response = await dio.postUri<Map<String, dynamic>>(
-      Uri.https(host, 'api/miauth/$sessionId/check'),
+      serverUrl.replace(pathSegments: ['api', 'miauth', sessionId, 'check']),
     );
-    final data = response.data!;
-    if (data['ok'] as bool) {
-      return (
-        data['token'] as String,
-        UserDetailedNotMe.fromJson(data['user'] as Map<String, dynamic>),
-      );
+    if (response.data case {
+      'ok': true,
+      'token': final String token,
+      'user': final Map<String, dynamic> user,
+    }) {
+      return (token: token, user: UserDetailedNotMe.fromJson(user));
     }
     return null;
   }
