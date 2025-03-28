@@ -1982,27 +1982,39 @@ packages:
   unifiedpush:
     dependency: "direct main"
     description:
-      name: unifiedpush
-      sha256: "6dbed5a6305ca33f1865c7a3d814ae39476b79a2d23ca76a5708f023f405730f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.2"
+      path: unifiedpush
+      ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      resolved-ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
+    version: "6.0.0-rc3"
   unifiedpush_android:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: unifiedpush_android
-      sha256: "7443dece0a850ae956514f809983eb2b39fc518c2c7d24dbfe817198bec89134"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.0"
+      path: unifiedpush_android
+      ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      resolved-ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
+    version: "3.0.0-rc3"
+  unifiedpush_linux:
+    dependency: "direct overridden"
+    description:
+      path: unifiedpush_linux
+      ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      resolved-ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
+    version: "0.0.1"
   unifiedpush_platform_interface:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: unifiedpush_platform_interface
-      sha256: dd588d78a8b2bfc10430e30035526e98caa543d0b7364a6344b5eb4815721c6d
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
+      path: unifiedpush_platform_interface
+      ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      resolved-ref: "125e1130350cb2dc0799f89b7be10ea6ee854b7e"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
+    version: "3.0.0-rc3"
   unifiedpush_ui:
     dependency: "direct main"
     description:

@@ -156,7 +156,7 @@ class Aria extends HookConsumerWidget {
                 .read(unifiedPushEndpointNotifierProvider(instance).notifier)
                 .updateEndpoint(endpoint),
         onRegistrationFailed:
-            (instance) =>
+            (reason, instance) =>
                 ref
                     .read(
                       unifiedPushEndpointNotifierProvider(instance).notifier,
@@ -171,28 +171,43 @@ class Aria extends HookConsumerWidget {
                     .remove(),
         onMessage: (message, instance) async {
           Account account = Account.fromString(instance);
-          final keySet = await ref.read(
-            webPushKeySetNotifierNotifierProvider(account).future,
-          );
-
           final PushNotification notification;
-          if (keySet != null) {
-            final decrypted = await WebPush().decrypt(keySet, message);
+          if (message.decrypted) {
             final webPushMessage =
-                jsonDecode(utf8.decode(decrypted)) as Map<String, dynamic>;
+                jsonDecode(utf8.decode(message.content))
+                    as Map<String, dynamic>;
             notification = PushNotification.fromJson(webPushMessage);
           } else {
-            final fcmMessage =
-                jsonDecode(utf8.decode(message)) as Map<String, dynamic>;
-            fcmMessage['body'] = jsonDecode(fcmMessage['body'] as String);
-            notification = PushNotification.fromJson(fcmMessage);
-            account =
-                ref
-                    .read(userIdsNotifierProvider)
-                    .entries
-                    .firstWhereOrNull((e) => e.value == notification.userId)
-                    ?.key ??
-                account;
+            final keySet = await ref.read(
+              webPushKeySetNotifierNotifierProvider(account).future,
+            );
+            if (keySet != null) {
+              final decrypted = await WebPush().decrypt(
+                keySet,
+                message.content,
+              );
+              final webPushMessage =
+                  jsonDecode(utf8.decode(decrypted)) as Map<String, dynamic>;
+              notification = PushNotification.fromJson(webPushMessage);
+            } else {
+              final fcmMessage =
+                  jsonDecode(utf8.decode(message.content))
+                      as Map<String, dynamic>;
+              if (fcmMessage['body'] case final String body) {
+                fcmMessage['body'] = jsonDecode(body);
+              }
+              if (fcmMessage['dateTime'] case final String dateTime) {
+                fcmMessage['dateTime'] = int.tryParse(dateTime);
+              }
+              notification = PushNotification.fromJson(fcmMessage);
+              account =
+                  ref
+                      .read(userIdsNotifierProvider)
+                      .entries
+                      .firstWhereOrNull((e) => e.value == notification.userId)
+                      ?.key ??
+                  account;
+            }
           }
 
           final currentLocale = LocaleSettings.currentLocale;

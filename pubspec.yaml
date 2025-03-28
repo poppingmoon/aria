@@ -119,7 +119,11 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
       ref: 4e9421350c0f6b3c4ca908e79042e6a2ab5d6dfc
-  unifiedpush: ^5.0.2
+  unifiedpush:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
+      path: unifiedpush
   unifiedpush_ui: ^0.1.0
   url_launcher: ^6.3.1
   uuid: ^4.5.1
@@ -151,6 +155,21 @@ dev_dependencies:
   yaml: ^3.1.3
 
 dependency_overrides:
+  unifiedpush_android:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
+      path: unifiedpush_android
+  unifiedpush_linux:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
+      path: unifiedpush_linux
+  unifiedpush_platform_interface:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
+      path: unifiedpush_platform_interface
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart

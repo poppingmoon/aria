@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId "com.poppingmoon.aria"
-        minSdkVersion 21
+        minSdkVersion 23
         multiDexEnabled true
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
@@ -72,7 +72,7 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
-    implementation 'org.unifiedpush.android:foss-embedded-fcm-distributor:1.0.0'
+    implementation 'org.unifiedpush.android:embedded-fcm-distributor:3.0.0'
 }
 
 ext.abiCodes = ["x86_64": 1, "armeabi-v7a": 2, "arm64-v8a": 3]

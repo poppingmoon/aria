@@ -7,7 +7,7 @@ part of 'unified_push_endpoint_notifier_provider.dart';
 // **************************************************************************
 
 String _$unifiedPushEndpointNotifierHash() =>
-    r'3f75d1fc1b47935113c253744f1e1aac307dac9a';
+    r'4d2342848f3cba07157455b2567deb5afa5a81d1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$UnifiedPushEndpointNotifier
-    extends BuildlessNotifier<String?> {
+    extends BuildlessNotifier<PushEndpoint?> {
   late final String instance;
 
-  String? build(String instance);
+  PushEndpoint? build(String instance);
 }
 
 /// See also [UnifiedPushEndpointNotifier].
@@ -42,7 +42,7 @@ abstract class _$UnifiedPushEndpointNotifier
 const unifiedPushEndpointNotifierProvider = UnifiedPushEndpointNotifierFamily();
 
 /// See also [UnifiedPushEndpointNotifier].
-class UnifiedPushEndpointNotifierFamily extends Family<String?> {
+class UnifiedPushEndpointNotifierFamily extends Family<PushEndpoint?> {
   /// See also [UnifiedPushEndpointNotifier].
   const UnifiedPushEndpointNotifierFamily();
 
@@ -75,7 +75,7 @@ class UnifiedPushEndpointNotifierFamily extends Family<String?> {
 
 /// See also [UnifiedPushEndpointNotifier].
 class UnifiedPushEndpointNotifierProvider
-    extends NotifierProviderImpl<UnifiedPushEndpointNotifier, String?> {
+    extends NotifierProviderImpl<UnifiedPushEndpointNotifier, PushEndpoint?> {
   /// See also [UnifiedPushEndpointNotifier].
   UnifiedPushEndpointNotifierProvider(String instance)
     : this._internal(
@@ -105,7 +105,9 @@ class UnifiedPushEndpointNotifierProvider
   final String instance;
 
   @override
-  String? runNotifierBuild(covariant UnifiedPushEndpointNotifier notifier) {
+  PushEndpoint? runNotifierBuild(
+    covariant UnifiedPushEndpointNotifier notifier,
+  ) {
     return notifier.build(instance);
   }
 
@@ -126,7 +128,7 @@ class UnifiedPushEndpointNotifierProvider
   }
 
   @override
-  NotifierProviderElement<UnifiedPushEndpointNotifier, String?>
+  NotifierProviderElement<UnifiedPushEndpointNotifier, PushEndpoint?>
   createElement() {
     return _UnifiedPushEndpointNotifierProviderElement(this);
   }
@@ -148,13 +150,13 @@ class UnifiedPushEndpointNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin UnifiedPushEndpointNotifierRef on NotifierProviderRef<String?> {
+mixin UnifiedPushEndpointNotifierRef on NotifierProviderRef<PushEndpoint?> {
   /// The parameter `instance` of this provider.
   String get instance;
 }
 
 class _UnifiedPushEndpointNotifierProviderElement
-    extends NotifierProviderElement<UnifiedPushEndpointNotifier, String?>
+    extends NotifierProviderElement<UnifiedPushEndpointNotifier, PushEndpoint?>
     with UnifiedPushEndpointNotifierRef {
   _UnifiedPushEndpointNotifierProviderElement(super.provider);
 
