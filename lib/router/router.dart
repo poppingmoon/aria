@@ -77,6 +77,7 @@ import '../view/page/settings/tab_settings_page.dart';
 import '../view/page/settings/tabs_page.dart';
 import '../view/page/settings/theme_manage_page.dart';
 import '../view/page/settings/theme_page.dart';
+import '../view/page/settings/timeline_buttons_page.dart';
 import '../view/page/share_page.dart';
 import '../view/page/splash_page.dart';
 import '../view/page/tag/tag_page.dart';
@@ -260,6 +261,12 @@ GoRouter router(Ref ref) {
           GoRoute(
             path: 'appearance',
             builder: (_, _) => const AppearancePage(),
+            routes: [
+              GoRoute(
+                path: 'buttons',
+                builder: (_, _) => const TimelineButtonsPage(),
+              ),
+            ],
           ),
           GoRoute(path: 'behavior', builder: (_, _) => const BehaviorPage()),
           GoRoute(
