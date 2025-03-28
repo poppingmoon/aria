@@ -14,7 +14,6 @@ import '../../model/streaming/main_event.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
 import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
@@ -320,23 +319,23 @@ class _NewNotificationsDivider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final color = Theme.of(context).colorScheme.primary;
 
     return ColoredBox(
       color: Theme.of(context).colorScheme.surface,
       child: Row(
         children: [
-          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
+          Expanded(child: Divider(color: color, thickness: 2.0)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               t.aria.newNotifications,
-              style: TextStyle(color: colors.accent),
+              style: DefaultTextStyle.of(context).style
+                  .apply(color: color, fontSizeFactor: 0.9)
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
+          Expanded(child: Divider(color: color, thickness: 2.0)),
         ],
       ),
     );
