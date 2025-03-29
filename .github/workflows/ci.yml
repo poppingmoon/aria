@@ -43,7 +43,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -63,7 +63,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
+        uses: reviewdog/action-suggester@4747dbc9f9e37adba0943e681cc20db466642158 # v1.21.0
         with:
           fail_level: error
 
@@ -85,7 +85,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -114,7 +114,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -140,7 +140,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -188,7 +188,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -205,7 +205,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
+        uses: reviewdog/action-suggester@4747dbc9f9e37adba0943e681cc20db466642158 # v1.21.0
         with:
           fail_level: error
 
@@ -228,7 +228,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -239,7 +239,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@a3026c6020837c23b61a79d12db223a00df19e6a # v1.19.0
+        uses: reviewdog/action-suggester@4747dbc9f9e37adba0943e681cc20db466642158 # v1.21.0
         with:
           fail_level: error
 

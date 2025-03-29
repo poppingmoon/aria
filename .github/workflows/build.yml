@@ -49,7 +49,7 @@ jobs:
           cp -r . $APK_BUILD_DIR
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -94,7 +94,7 @@ jobs:
           mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
 
       - name: Upload APK
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: APK
           path: |
@@ -127,7 +127,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -166,7 +166,7 @@ jobs:
           --build-number ${{ steps.get-build-number.outputs.build-number }}3
 
       - name: Upload App Bundle
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: App Bundle
           path: build/app/outputs/bundle/release/app-release.aab
@@ -202,7 +202,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -235,7 +235,7 @@ jobs:
         run: zip -r aria-${{ github.ref_name }}.ipa Payload
 
       - name: Upload IPA (Unsigned)
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: IPA
           path: aria-${{ github.ref_name }}.ipa
@@ -313,7 +313,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -332,7 +332,7 @@ jobs:
           -DestinationPath aria-${{ github.ref_name }}-windows-x64.zip
 
       - name: Upload ZIP
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: Windows ZIP
           path: aria-${{ github.ref_name }}-windows-x64.zip
@@ -357,7 +357,7 @@ jobs:
         run: iscc windows/setup.iss
 
       - name: Upload installer
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: Windows Installer
           path: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
@@ -386,7 +386,7 @@ jobs:
         run: rustup update
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -453,7 +453,7 @@ jobs:
           build/macos/Build/Products/Release/aria.app
 
       - name: Upload DMG
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: DMG
           path: aria-${{ github.ref_name }}.dmg
@@ -512,7 +512,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@f2c4f6686ca8e8d6e6d0f28410eeef506ed66aff # v2.18.0
+        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
         with:
           channel: master
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -539,7 +539,7 @@ jobs:
         run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz *
 
       - name: Upload TAR
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: Linux ${{ matrix.arch }} TAR
           path: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
