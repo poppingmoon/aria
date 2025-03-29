@@ -70,6 +70,9 @@ Future<String?> pickEmoji(
       context: ref.context,
       builder:
           (context) => Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
             child: EmojiPicker(
               account: account,
               onTapEmoji: (emoji, keepOpen) => onTap(context, emoji, keepOpen),
@@ -182,6 +185,7 @@ class EmojiPicker extends HookConsumerWidget {
                 prefixIcon: const Icon(Icons.search),
                 hintText: t.misskey.search,
                 suffixIcon: IconButton(
+                  style: IconButton.styleFrom(minimumSize: Size.zero),
                   onPressed: () => controller.clear(),
                   icon: const Icon(Icons.close),
                 ),
