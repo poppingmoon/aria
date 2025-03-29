@@ -1473,6 +1473,12 @@
             "value": "Token d'accés generat"
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein Zugangstoken wurde erstellt"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",

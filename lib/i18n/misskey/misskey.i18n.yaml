@@ -293,7 +293,6 @@ deleteAreYouSure: "Are you sure that you want to delete \"{x}\"?"
 resetAreYouSure: "Really reset?"
 areYouSure: "Are you sure?"
 saved: "Saved"
-messaging: "Chat"
 upload: "Upload"
 keepOriginalUploading: "Keep original image"
 keepOriginalUploadingDescription: "Saves the originally uploaded image as-is. If turned off, a version to display on the web will be generated on upload."
@@ -306,7 +305,6 @@ uploadFromUrlMayTakeTime: "It may take some time until the upload is complete."
 explore: "Explore"
 messageRead: "Read"
 noMoreHistory: "There is no further history"
-startMessaging: "Start a new chat"
 nUsersRead: "read by {n}"
 agreeTo: "I agree to {x0}"
 agree: "Agree"
@@ -495,8 +493,6 @@ noteOf: "Note by {user}"
 quoteAttached: "Quote"
 quoteQuestion: "Append as quote?"
 attachAsFileQuestion: "The text in clipboard is long. Would you want to attach it as text file?"
-noMessagesYet: "No messages yet"
-newMessageExists: "There are new messages"
 onlyOneFileCanBeAttached: "You can only attach one file to a message"
 signinRequired: "Please register or sign in before continuing"
 signinOrContinueOnRemote: "To continue, you need to move your server or sign up / log in to this server."
@@ -702,6 +698,7 @@ userSaysSomethingAbout: "{name} said something about \"{word}\""
 makeActive: "Activate"
 display: "Display"
 copy: "Copy"
+copiedToClipboard: "Copied to clipboard"
 metrics: "Metrics"
 overview: "Overview"
 logs: "Logs"
@@ -1320,14 +1317,35 @@ unmarkAsSensitiveConfirm: "Do you want to remove the sensitive designation for t
 preferences: "Preferences"
 accessibility: "Accessibility"
 preferencesProfile: "Preferences profile"
-copyPreferenceId: "Copy the proference ID"
+copyPreferenceId: "Copy the preference ID"
 resetToDefaultValue: "Revert to default"
 overrideByAccount: "Override by the account"
 untitled: "Untitled"
 noName: "No name"
 skip: "Skip"
 restore: "Restore"
+syncBetweenDevices: "Sync between devices"
+preferenceSyncConflictTitle: "The configured value exists on the server."
+preferenceSyncConflictText: "The sync enabled settings will save their values to the server. However, there are existing values on the server. Which set of values would you like to overwrite?"
+preferenceSyncConflictChoiceServer: "Configured value on server"
+preferenceSyncConflictChoiceDevice: "Configured value on device"
+preferenceSyncConflictChoiceCancel: "Cancel enabling sync"
+paste: "Paste"
+emojiPalette: "Emoji palette"
 postForm: "Posting form"
+textCount: "Character count"
+information: "About"
+chat_:
+  invitations: "Invite"
+  noHistory: "No history available"
+  members: "Members"
+  home: "Home"
+  send: "Send"
+emojiPalette_:
+  palettes: "Palette"
+  enableSyncBetweenDevicesForPalettes: "Enable palette sync between devices"
+  paletteForMain: "Main palette"
+  paletteForReaction: "Reaction palette"
 settings_:
   driveBanner: "You can manage and configure the drive, check usage, and configure file upload settings."
   pluginBanner: "You can extend client features with plugins. You can install plugins, configure and manage individually."
@@ -1345,6 +1363,9 @@ settings_:
   preferencesBanner: "You can configure the overall behavior of the client according to your preferences."
   appearanceBanner: "You can configure the appearance and display settings for the client according to your preferences."
   soundsBanner: "You can configure the sound settings for playback in the client."
+  timelineAndNote: "Timeline and note"
+  makeEveryTextElementsSelectable: "Make all text elements selectable"
+  makeEveryTextElementsSelectable_description: "Enabling this may reduce usability in some situations."
 preferencesProfile_:
   profileName: "Profile name"
   profileNameDescription: "Set a name that identifies this device."
@@ -1377,7 +1398,7 @@ abuseUserReport_:
   resolve: "Resolve"
   accept: "Accept"
   reject: "Reject"
-  resolveTutorial: "If the report is legitimate in content, select \"Accept\" to mark the case as resolved in the affirmative.\nIf the content of the report is not legitimate, select \"Reject\" to mark the case as resolved in the negative."
+  resolveTutorial: "If the report's content is legitimate, select \"Accept\" to mark it as resolved.\nIf the report's content is illegitimate, select \"Reject\" to ignore it."
 delivery_:
   status: "Delivery status"
   stop: "Suspended"
@@ -2230,6 +2251,7 @@ permissions_:
   readClipFavorite: "View favorited clips"
   readFederation: "Get federation data"
   writeReportAbuse: "Report violation"
+  writeChat: "Compose or delete chat messages"
 auth_:
   shareAccessTitle: "Granting application permissions"
   shareAccess: "Would you like to authorize \"{name}\" to access this account?"
@@ -2509,6 +2531,7 @@ notification_:
     achievementEarned: "Achievement unlocked"
     exportCompleted: "The export has been completed"
     login: "Sign In"
+    createToken: "Create access token"
     test: "Notification test"
     app: "Notifications from linked apps"
   actions_:
@@ -2536,6 +2559,7 @@ deck_:
   useSimpleUiForNonRootPages: "Use simple UI for navigated pages"
   usedAsMinWidthWhenFlexible: "Minimum width will be used for this when the \"Auto-adjust width\" option is enabled"
   flexible: "Auto-adjust width"
+  enableSyncBetweenDevicesForProfiles: "Enable profile information sync between devices"
   columns_:
     main: "Main"
     widgets: "Widgets"
@@ -2581,7 +2605,7 @@ webhookSettings_:
   testRemarks: "Click the button to the right of the switch to send a test Webhook with dummy data."
 abuseReport_:
   notificationRecipient_:
-    createRecipient: "Add a recipient for reports"
+    createRecipient: "Add recipient for reports"
     modifyRecipient: "Edit a recipient for reports"
     recipientType: "Notification type"
     recipientType_:
@@ -2657,10 +2681,8 @@ externalResourceInstaller_:
   checkVendorBeforeInstall: "Make sure the distributor of this resource is trustworthy before installation."
   plugin_:
     title: "Do you want to install this plugin?"
-    metaTitle: "Plugin information"
   theme_:
     title: "Do you want to install this theme?"
-    metaTitle: "Theme information"
   meta_:
     base: "Base color scheme"
   vendorInfo_:
@@ -2813,7 +2835,7 @@ customEmojisManager_:
     confirmImportEmojisTitle: "Import Emojis"
     confirmImportEmojisDescription: "Import {count} Emoji(s) received from the remote server. Please pay close attention to the license of the Emoji. Are you sure to continue?"
   local_:
-    tabTitleList: "List of registered Emojis"
+    tabTitleList: "Registered emojis"
     tabTitleRegister: "Emoji registration"
     list_:
       emojisNothing: "There are no registered Emojis."
@@ -2861,8 +2883,8 @@ selfXssPrevention_:
   description2: "If you do not understand exactly what you are trying to paste, %cstop working right now and close this window."
   description3: "For more information, please refer to this. {link}"
 followRequest_:
-  recieved: "Received application"
-  sent: "Sent application"
+  recieved: "Received request"
+  sent: "Sent request"
 remoteLookupErrors_:
   federationNotAllowed_:
     title: "Unable to communicate with this server"

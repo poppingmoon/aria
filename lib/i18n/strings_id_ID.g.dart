@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsIdId extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsIdId({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsIdId({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.idId,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsIdId extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsIdId _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsIdId $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsIdId(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaIdId aria = _TranslationsAriaIdId._(_root);
@@ -547,7 +550,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Yakin mau atur ulang?';
 	@override String get areYouSure => 'Apakah kamu yakin?';
 	@override String get saved => 'Telah disimpan';
-	@override String get messaging => 'Pesan';
 	@override String get upload => 'Unggah';
 	@override String get keepOriginalUploading => 'Simpan gambar asli';
 	@override String get keepOriginalUploadingDescription => 'Simpan gambar yang diunggah sebagaimana gambar aslinya. Bila dimatikan, versi tampilan web akan dihasilkan pada saat diunggah.';
@@ -560,7 +562,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Jelajahi';
 	@override String get messageRead => 'Telah dibaca';
 	@override String get noMoreHistory => 'Tidak ada sejarah lagi';
-	@override String get startMessaging => 'Mulai mengirim pesan';
 	@override String nUsersRead({required Object n}) => 'Dibaca oleh ${n}';
 	@override String agreeTo({required Object x0}) => 'Saya setuju kepada ${x0}';
 	@override String get agree => 'Setuju';
@@ -748,8 +749,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Dikutip';
 	@override String get quoteQuestion => 'Apakah kamu ingin menambahkan kutipan?';
 	@override String get attachAsFileQuestion => 'Teks dalam papan klip terlalu panjang. Apakah kamu ingin melampirkannya sebagai berkas teks?';
-	@override String get noMessagesYet => 'Tidak ada pesan';
-	@override String get newMessageExists => 'Kamu mendapatkan pesan baru';
 	@override String get onlyOneFileCanBeAttached => 'Kamu hanya dapat melampirkan satu berkas ke dalam pesan';
 	@override String get signinRequired => 'Silahkan login';
 	@override String get invitations => 'Undangan';
@@ -1529,6 +1528,8 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String thereAreNChanges({required Object n}) => 'Ada ${n} perubahan';
 	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
 	@override String get postForm => 'Buat catatan';
+	@override String get information => 'Informasi';
+	@override late final _TranslationsMisskeyChatIdId chat_ = _TranslationsMisskeyChatIdId._(_root);
 	@override late final _TranslationsMisskeySettingsIdId settings_ = _TranslationsMisskeySettingsIdId._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);
 	@override late final _TranslationsMisskeyDeliveryIdId delivery_ = _TranslationsMisskeyDeliveryIdId._(_root);
@@ -1604,6 +1605,20 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
 	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatIdId extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Undang';
+	@override String get noHistory => 'Tidak ada riwayat';
+	@override String get members => 'Anggota';
+	@override String get home => 'Beranda';
+	@override String get send => 'Kirim';
 }
 
 // Path: misskey.settings_
@@ -2374,6 +2389,7 @@ class _TranslationsMisskeyPermissionsIdId extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'Lihat klip yang difavoritkan';
 	@override String get readFederation => 'Mendapatkan data federasi';
 	@override String get writeReportAbuse => 'Melaporkan pelanggaran';
+	@override String get writeChat => 'Buat atau hapus obrolan';
 }
 
 // Path: misskey.auth_
@@ -3561,7 +3577,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginIdId extends Translatio
 
 	// Translations
 	@override String get title => 'Apakah kamu ingin memasang plugin ini?';
-	@override String get metaTitle => 'Informasi plugin';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3572,7 +3587,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeIdId extends Translation
 
 	// Translations
 	@override String get title => 'Apakah kamu ingin memasang tema ini?';
-	@override String get metaTitle => 'Informasi tema';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

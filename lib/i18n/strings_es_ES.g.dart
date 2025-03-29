@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsEsEs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsEsEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsEsEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.esEs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsEsEs extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsEsEs _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsEsEs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsEsEs(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaEsEs aria = _TranslationsAriaEsEs._(_root);
@@ -551,7 +554,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => '¿Desea reestablecer?';
 	@override String get areYouSure => '¿Estás conforme?';
 	@override String get saved => 'Guardado';
-	@override String get messaging => 'Chat';
 	@override String get upload => 'Subir';
 	@override String get keepOriginalUploading => 'Mantener la imagen original';
 	@override String get keepOriginalUploadingDescription => 'Mantener la versión original al cargar imágenes. Si está desactivado, el navegador generará imágenes para la publicación web en el momento de recargar la página';
@@ -564,7 +566,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explorar';
 	@override String get messageRead => 'Ya leído';
 	@override String get noMoreHistory => 'El historial se ha acabado';
-	@override String get startMessaging => 'Iniciar chat';
 	@override String nUsersRead({required Object n}) => 'Leído por ${n} personas';
 	@override String agreeTo({required Object x0}) => 'De acuerdo con ${x0}';
 	@override String get agree => 'De acuerdo.';
@@ -753,8 +754,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Cita añadida';
 	@override String get quoteQuestion => '¿Quiere añadir una cita?';
 	@override String get attachAsFileQuestion => 'El texto del portapapeles es demasiado grande ¿Desea adjuntarlo como archivo de texto?';
-	@override String get noMessagesYet => 'Aún no hay chat';
-	@override String get newMessageExists => 'Tienes un mensaje nuevo';
 	@override String get onlyOneFileCanBeAttached => 'Solo se puede añadir un archivo al mensaje';
 	@override String get signinRequired => 'Iniciar sesión';
 	@override String get signinOrContinueOnRemote => 'Para continuar, tendrá que ir a su servidor o registrarse e iniciar sesión en este servidor';
@@ -1562,6 +1561,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
 	@override String get postForm => 'Formulario';
+	@override String get information => 'Información';
+	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
 	@override late final _TranslationsMisskeySettingsEsEs settings_ = _TranslationsMisskeySettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsEsEs accountSettings_ = _TranslationsMisskeyAccountSettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportEsEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportEsEs._(_root);
@@ -1638,6 +1639,20 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestEsEs followRequest_ = _TranslationsMisskeyFollowRequestEsEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsEsEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsEsEs._(_root);
 	@override late final _TranslationsMisskeySearchEsEs search_ = _TranslationsMisskeySearchEsEs._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatEsEs extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Invitar';
+	@override String get noHistory => 'No hay datos en el historial';
+	@override String get members => 'Miembros';
+	@override String get home => 'Inicio';
+	@override String get send => 'Enviar';
 }
 
 // Path: misskey.settings_
@@ -2416,6 +2431,7 @@ class _TranslationsMisskeyPermissionsEsEs extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'Ver los clips que me gustan';
 	@override String get readFederation => 'Ver instancias federadas';
 	@override String get writeReportAbuse => 'Crear reportes de usuario';
+	@override String get writeChat => 'Administrar chat';
 }
 
 // Path: misskey.auth_
@@ -3553,7 +3569,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginEsEs extends Translatio
 
 	// Translations
 	@override String get title => '¿Quieres instalar este plugin?';
-	@override String get metaTitle => 'Información del plugin';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3564,7 +3579,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeEsEs extends Translation
 
 	// Translations
 	@override String get title => '¿Quieres instalar este tema?';
-	@override String get metaTitle => 'Información del tema';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

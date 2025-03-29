@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsKoGs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsKoGs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsKoGs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.koGs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsKoGs extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsKoGs _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsKoGs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsKoGs(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaKoGs aria = _TranslationsAriaKoGs._(_root);
@@ -537,7 +540,6 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => '아시로 데돌립니꺼?';
 	@override String get areYouSure => '갠찮십니꺼?';
 	@override String get saved => '저장햇십니다';
-	@override String get messaging => '대화';
 	@override String get upload => '올리기';
 	@override String get keepOriginalUploading => '온본 두기';
 	@override String get keepOriginalUploadingDescription => '이미지럴 올릴 때 온본얼 고대로 둡니다. 꺼모 올릴 때 브라우저서 웹 공개 이미지럴 맨겁니다.';
@@ -550,7 +552,6 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get explore => '살펴보기';
 	@override String get messageRead => '이럿어예';
 	@override String get noMoreHistory => '요카마 옛날 기록이 어ᇝ십니다';
-	@override String get startMessaging => '대화하기';
 	@override String nUsersRead({required Object n}) => '${n}멩이 이럿십니다';
 	@override String agreeTo({required Object x0}) => '${x0}에 동이하기';
 	@override String get agree => '동이합니다';
@@ -739,8 +740,6 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => '따옴';
 	@override String get quoteQuestion => '따와가 작성하겠십니까?';
 	@override String get attachAsFileQuestion => '붙여넣으려는 글이 너무 깁니다. 텍스트 파일로 첨부하시겠습니까?';
-	@override String get noMessagesYet => '아직 대화가 없십니다';
-	@override String get newMessageExists => '새 메시지가 있십니다';
 	@override String get onlyOneFileCanBeAttached => '메시지엔 파일 하나까제밖에 몬 넣십니다';
 	@override String get signinRequired => '진행하기 전에 로그인을 해 주세요';
 	@override String get signinOrContinueOnRemote => '계속하려면 사용하는 서버로 이동하거나 이 서버에 로그인해야 합니다.';
@@ -946,6 +945,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get makeActive => '활성화';
 	@override String get display => '보기';
 	@override String get copy => '복사';
+	@override String get copiedToClipboard => '클립보드에 복사되었습니다.';
 	@override String get metrics => '통계';
 	@override String get overview => '요약';
 	@override String get logs => '로그';
@@ -1542,7 +1542,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get signinWithPasskey => '패스키로 로그인';
 	@override String get unknownWebAuthnKey => '등록되지 않은 패스키입니다.';
 	@override String get passkeyVerificationFailed => '패스키 검증을 실패했습니다.';
-	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '패스키를 검증했으나, 비밀번호 없이 로그인하기가 꺼져 있습니다.';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '입력된 패스키는 정상적이나, 비밀번호 없이 로그인 하는 기능이 비활성화 되어있습니다.';
 	@override String get messageToFollower => '팔로워에게 보낼 메시지';
 	@override String get target => '대상';
 	@override String get testCaptchaWarning => 'CAPTCHA를 테스트하기 위한 기능입니다. <strong>실제 환경에서는 사용하지 마세요.</strong>';
@@ -1571,7 +1571,19 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get noName => '이름이 없습니다.';
 	@override String get skip => '건너뛰기';
 	@override String get restore => '복원';
+	@override String get syncBetweenDevices => '장치간 동기화';
+	@override String get preferenceSyncConflictTitle => '서버에 설정값이 존재합니다.';
+	@override String get preferenceSyncConflictText => '동기화를 활성화 한 항목의 설정 값은 서버에 저장되지만, 해당 항목은 이미 서버에 설정 값이 저장되어져 있습니다. 어느 쪽의 설정 값을 덮어씌울까요?';
+	@override String get preferenceSyncConflictChoiceServer => '서버 설정값';
+	@override String get preferenceSyncConflictChoiceDevice => '장치 설정값';
+	@override String get preferenceSyncConflictChoiceCancel => '동기화 취소';
+	@override String get paste => '붙여넣기';
+	@override String get emojiPalette => '이모지 팔레트';
 	@override String get postForm => '글 입력란';
+	@override String get textCount => '문자 수';
+	@override String get information => '정보';
+	@override late final _TranslationsMisskeyChatKoGs chat_ = _TranslationsMisskeyChatKoGs._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteKoGs emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoGs._(_root);
 	@override late final _TranslationsMisskeySettingsKoGs settings_ = _TranslationsMisskeySettingsKoGs._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileKoGs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileKoGs._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupKoGs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupKoGs._(_root);
@@ -1671,6 +1683,33 @@ class _TranslationsMisskeyIOKoGs extends TranslationsMisskeyIOEnUs {
 	@override late final _TranslationsMisskeyIOSkebStatusKoGs skebStatus_ = _TranslationsMisskeyIOSkebStatusKoGs._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatKoGs extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => '초대하기';
+	@override String get noHistory => '기록이 없십니다';
+	@override String get members => '구성원';
+	@override String get home => '덜머리';
+	@override String get send => '전송';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteKoGs extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => '팔레트';
+	@override String get enableSyncBetweenDevicesForPalettes => '팔레트의 디바이스 간 동기화를 활성화';
+	@override String get paletteForMain => '메인으로 사용할 팔레트';
+	@override String get paletteForReaction => '리액션으로 사용할 팔레트';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsKoGs extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
@@ -1678,10 +1717,25 @@ class _TranslationsMisskeySettingsKoGs extends TranslationsMisskeySettingsEnUs {
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
+	@override String get driveBanner => '드라이브 관리, 사용량 확인, 파일 업로드에 관한 설정을 합니다.';
+	@override String get pluginBanner => '플러그인을 사용하면 클라이언트 기능을 확장할 수 있습니다. 플러그인 설치와 개별적인 설정을 합니다.';
+	@override String get notificationsBanner => '서버에서 받는 알림의 종류 및 범위, 푸시 알림 설정을 합니다.';
 	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
 	@override String get serviceConnection => '서비스 연동';
+	@override String get serviceConnectionBanner => '외부 앱, 서비스와 연결하기 위한 액세스 토큰과 웹 훅 관리 설정을 합니다.';
 	@override String get accountData => '계정 데이터';
+	@override String get accountDataBanner => '계정 데이터의 아카이브를 추출하기/가져오기 하여 관리할 수 있습니다.';
+	@override String get muteAndBlockBanner => '숨길 컨텐츠의 설정과, 특정 유저의 리액션을 제한하는 설정을 관리합니다.';
+	@override String get accessibilityBanner => '좀 더 쾌적하게 사용할 수 있도록 클라이언트의 시각 및 움직임에 관한 개인화 설정을 합니다.';
+	@override String get privacyBanner => '컨텐츠, 계정의 발견 범위, 팔로우 승인제 등의 계정의 프라이버시에 관한 설정을 합니다.';
+	@override String get securityBanner => '비밀번호, 로그인 방법, OTP, 패스 키 등의 계정의 보안에 관련된 설정을 합니다.';
+	@override String get preferencesBanner => '취향에 알맞는 클라이언트의 전체적인 동작을 설정합니다.';
+	@override String get appearanceBanner => '취향에 알맞는 클라이언트의 디스플레이, 표시 방법에 관한 설정을 합니다.';
+	@override String get soundsBanner => '클라이언트에서 재생할 소리에 대한 설정을 합니다.';
+	@override String get timelineAndNote => '타임라인과 노트';
+	@override String get makeEveryTextElementsSelectable => '모든 텍스트 요소를 선택할 수 있도록 함';
+	@override String get makeEveryTextElementsSelectable_description => '활성화 시, 일부 동작에서 사용자의 접근성이 나빠질 수도 있습니다.';
 }
 
 // Path: misskey.preferencesProfile_
@@ -1729,6 +1783,7 @@ class _TranslationsMisskeyAccountSettingsKoGs extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => '과거 노트 비공개로 전환하기';
 	@override String get makeNotesHiddenBeforeDescription => '이 기능이 활성화되어 있는 동안 설정한 날짜 및 시간보다 과거 또는 설정한 시간이 지난 노트는 본인만 볼 수 있게(비공개로 전환) 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
 	@override String get mayNotEffectForFederatedNotes => '원격 서버에 연합된 노트에는 효과가 없을 수도 있습니다.';
+	@override String get mayNotEffectSomeSituations => '여기서 설정하는 제한은 모더레이션이나 리모트 서버에서 볼 때 등 일부 환경에서는 적용되지 않을 수도 있습니다.';
 	@override String get notesHavePassedSpecifiedPeriod => '지정한 시간이 경과된 노트';
 	@override String get notesOlderThanSpecifiedDateAndTime => '지정된 날짜 및 시간 이전의 노트';
 }
@@ -2502,6 +2557,7 @@ class _TranslationsMisskeyPermissionsKoGs extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => '클립의 좋아요 보기';
 	@override String get readFederation => '연합 정보 불러오기';
 	@override String get writeReportAbuse => '위반 내용 신고하기';
+	@override String get writeChat => '대화를 시작하거나 메시지를 보냅니다';
 }
 
 // Path: misskey.auth_
@@ -2913,6 +2969,7 @@ class _TranslationsMisskeyDeckKoGs extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '루트 이외의 페이지로 접속한 경우 UI 간략화하기';
 	@override String get usedAsMinWidthWhenFlexible => '\'폭 자동 조정\'이 활성화된 경우 최소 폭으로 사용됩니다';
 	@override String get flexible => '폭 자동 조정';
+	@override String get enableSyncBetweenDevicesForProfiles => '프로파일 정보의 디바이스 간 동기화를 활성화';
 	@override late final _TranslationsMisskeyDeckColumnsKoGs columns_ = _TranslationsMisskeyDeckColumnsKoGs._(_root);
 }
 
@@ -3801,6 +3858,7 @@ class _TranslationsMisskeyNotificationTypesKoGs extends TranslationsMisskeyNotif
 	@override String get achievementEarned => '도전 과제 획득';
 	@override String get exportCompleted => '추출을 성공함';
 	@override String get login => '로그인';
+	@override String get createToken => '액세스 토큰 만들기';
 	@override String get test => '알림 테스트';
 	@override String get app => '연동된 앱을 통한 알림';
 }
@@ -3891,7 +3949,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginKoGs extends Translatio
 
 	// Translations
 	@override String get title => '이 플러그인을 설치하시겠습니까?';
-	@override String get metaTitle => '플러그인 정보';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3902,7 +3959,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeKoGs extends Translation
 
 	// Translations
 	@override String get title => '이 테마를 설치하시겠습니까?';
-	@override String get metaTitle => '테마 정보';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

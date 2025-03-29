@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsZhTw extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsZhTw({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsZhTw({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.zhTw,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsZhTw extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsZhTw _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsZhTw $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsZhTw(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaZhTw aria = _TranslationsAriaZhTw._(_root);
@@ -371,7 +374,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => '確定要重設嗎？';
 	@override String get areYouSure => '是否確定？';
 	@override String get saved => '已儲存';
-	@override String get messaging => '聊天';
 	@override String get upload => '上傳';
 	@override String get keepOriginalUploading => '保留原圖';
 	@override String get keepOriginalUploadingDescription => '上傳圖片時保留原始圖片。關閉時，瀏覽器會在上傳時生成適用於網路傳送的版本。';
@@ -384,7 +386,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get explore => '探索';
 	@override String get messageRead => '已讀';
 	@override String get noMoreHistory => '沒有更多歷史紀錄';
-	@override String get startMessaging => '開始聊天';
 	@override String nUsersRead({required Object n}) => '${n} 人已讀';
 	@override String agreeTo({required Object x0}) => '我同意${x0}';
 	@override String get agree => '同意';
@@ -573,8 +574,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => '引用';
 	@override String get quoteQuestion => '是否要引用？';
 	@override String get attachAsFileQuestion => '剪貼簿的文字較長。請問是否要將其以文字檔的方式附加呢？';
-	@override String get noMessagesYet => '沒有訊息';
-	@override String get newMessageExists => '有新的訊息';
 	@override String get onlyOneFileCanBeAttached => '只能加入一個附件';
 	@override String get signinRequired => '請先登入';
 	@override String get signinOrContinueOnRemote => '若要繼續，需前往您所在的伺服器，或者註冊並登入此伺服器';
@@ -780,6 +779,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get makeActive => '啟用';
 	@override String get display => '檢視';
 	@override String get copy => '複製';
+	@override String get copiedToClipboard => '已複製到剪貼簿';
 	@override String get metrics => '指標';
 	@override String get overview => '概覽';
 	@override String get logs => '日誌';
@@ -1405,7 +1405,19 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get noName => '沒有名稱';
 	@override String get skip => '跳過';
 	@override String get restore => '還原';
+	@override String get syncBetweenDevices => '裝置之間的同步化';
+	@override String get preferenceSyncConflictTitle => '伺服器上存在設定值';
+	@override String get preferenceSyncConflictText => '已啟用同步的設定項目會將設定值儲存至伺服器，並已找到該設定項目在伺服器上儲存的設定值。請選擇要使用哪個設定值進行覆寫。';
+	@override String get preferenceSyncConflictChoiceServer => '伺服器設定值';
+	@override String get preferenceSyncConflictChoiceDevice => '裝置的設定值';
+	@override String get preferenceSyncConflictChoiceCancel => '取消啟用同步';
+	@override String get paste => '貼上';
+	@override String get emojiPalette => '表情符號調色盤';
 	@override String get postForm => '發文視窗';
+	@override String get textCount => '字數';
+	@override String get information => '關於';
+	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileZhTw preferencesProfile_ = _TranslationsMisskeyPreferencesProfileZhTw._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupZhTw preferencesBackup_ = _TranslationsMisskeyPreferencesBackupZhTw._(_root);
@@ -1495,6 +1507,33 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchZhTw search_ = _TranslationsMisskeySearchZhTw._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatZhTw extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => '邀請';
+	@override String get noHistory => '沒有歷史紀錄';
+	@override String get members => '成員';
+	@override String get home => '首頁';
+	@override String get send => '發送';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteZhTw extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => '調色盤';
+	@override String get enableSyncBetweenDevicesForPalettes => '啟用裝置與裝置之間的調色盤同步化';
+	@override String get paletteForMain => '主要使用的調色盤';
+	@override String get paletteForReaction => '反應用的調色盤';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -1518,6 +1557,9 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get preferencesBanner => '您可以根據喜好設定用戶端的整體行為。';
 	@override String get appearanceBanner => '您可以根據喜好設定與用戶端外觀和顯示方式相關的設定。';
 	@override String get soundsBanner => '您可以調整用戶端播放的聲音設定。';
+	@override String get timelineAndNote => '時間軸及貼文';
+	@override String get makeEveryTextElementsSelectable => '允許選取所有文字';
+	@override String get makeEveryTextElementsSelectable_description => '啟用此功能後，可能會在某些情境下降低可用性。';
 }
 
 // Path: misskey.preferencesProfile_
@@ -2339,6 +2381,7 @@ class _TranslationsMisskeyPermissionsZhTw extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => '查看摘錄的讚';
 	@override String get readFederation => '查看站台聯邦的相關資訊';
 	@override String get writeReportAbuse => '檢舉違規行為';
+	@override String get writeChat => '撰寫或刪除訊息';
 }
 
 // Path: misskey.auth_
@@ -2750,6 +2793,7 @@ class _TranslationsMisskeyDeckZhTw extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '用簡易介面顯示非根頁面';
 	@override String get usedAsMinWidthWhenFlexible => '如果啟用「自動調整寬度」，此為最小寬度';
 	@override String get flexible => '自動調整寬度';
+	@override String get enableSyncBetweenDevicesForProfiles => '啟用裝置與裝置之間的設定檔資料同步化';
 	@override late final _TranslationsMisskeyDeckColumnsZhTw columns_ = _TranslationsMisskeyDeckColumnsZhTw._(_root);
 }
 
@@ -3622,6 +3666,7 @@ class _TranslationsMisskeyNotificationTypesZhTw extends TranslationsMisskeyNotif
 	@override String get achievementEarned => '獲得成就';
 	@override String get exportCompleted => '已完成匯出。';
 	@override String get login => '登入';
+	@override String get createToken => '建立存取權杖';
 	@override String get test => '通知測試';
 	@override String get app => '應用程式通知';
 }
@@ -3712,7 +3757,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginZhTw extends Translatio
 
 	// Translations
 	@override String get title => '要安裝此外掛嘛？';
-	@override String get metaTitle => '外掛資訊';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3723,7 +3767,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeZhTw extends Translation
 
 	// Translations
 	@override String get title => '要安裝此佈景主題嗎？';
-	@override String get metaTitle => '佈景主題資訊';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

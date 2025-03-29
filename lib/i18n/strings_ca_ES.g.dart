@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsCaEs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsCaEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsCaEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.caEs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsCaEs extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsCaEs _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsCaEs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsCaEs(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaCaEs aria = _TranslationsAriaCaEs._(_root);
@@ -371,7 +374,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Segur que vols restablir-ho?';
 	@override String get areYouSure => 'Estàs segur?';
 	@override String get saved => 'S\'ha desat';
-	@override String get messaging => 'Xat';
 	@override String get upload => 'Puja';
 	@override String get keepOriginalUploading => 'Guarda la imatge original';
 	@override String get keepOriginalUploadingDescription => 'Guarda la imatge pujada sense modificar. Si està desactivat, es generarà una versió per visualitzar a la web en pujar la imatge.';
@@ -384,7 +386,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explora';
 	@override String get messageRead => 'Vist';
 	@override String get noMoreHistory => 'No hi ha res més per veure';
-	@override String get startMessaging => 'Comença a xatejar';
 	@override String nUsersRead({required Object n}) => 'Vist per ${n}';
 	@override String agreeTo({required Object x0}) => 'Accepto que ${x0}';
 	@override String get agree => 'Hi estic d\'acord';
@@ -573,8 +574,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Frase adjunta';
 	@override String get quoteQuestion => 'Vols annexar-la com a cita?';
 	@override String get attachAsFileQuestion => 'El text copiat és massa llarg. Vols adjuntar-lo com un fitxer de text?';
-	@override String get noMessagesYet => 'Encara no hi ha missatges';
-	@override String get newMessageExists => 'Has rebut un nou missatge';
 	@override String get onlyOneFileCanBeAttached => 'Només pots adjuntar un fitxer a un missatge';
 	@override String get signinRequired => 'Si us plau, Registra\'t o inicia la sessió abans de continuar';
 	@override String get signinOrContinueOnRemote => 'Per continuar necessites moure el teu servidor o registrar-te / iniciar sessió en aquest servidor.';
@@ -780,6 +779,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get makeActive => 'Activar';
 	@override String get display => 'Veure';
 	@override String get copy => 'Copiar';
+	@override String get copiedToClipboard => 'Copiat al porta papers';
 	@override String get metrics => 'Mètriques';
 	@override String get overview => 'Visió General';
 	@override String get logs => 'Registres';
@@ -1221,7 +1221,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get thisChannelArchived => 'Aquest Canal ha sigut arxivat.';
 	@override String get displayOfNote => 'Mostrar notes';
 	@override String get initialAccountSetting => 'Configuració del perfil';
-	@override String get youFollowing => 'Seguint';
+	@override String get youFollowing => 'Segueixes ';
 	@override String get preventAiLearning => 'Descartar l\'ús d\'aprenentatge automàtic (IA Generativa)';
 	@override String get preventAiLearningDescription => 'Demanar els indexadors no fer servir els texts, imatges, etc. en cap conjunt de dades per alimentar l\'aprenentatge automàtic (IA Predictiva/ Generativa). Això s\'aconsegueix afegint la etiqueta "noai" com a resposta HTML al contingut corresponent. Prevenir aquest ús totalment pot ser que no sigui aconseguit, ja que molts indexadors poden obviar aquesta etiqueta.';
 	@override String get options => 'Opcions';
@@ -1405,7 +1405,19 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get noName => 'No hi ha un nom disponible ';
 	@override String get skip => 'Ometre ';
 	@override String get restore => 'Restaurar ';
+	@override String get syncBetweenDevices => 'Sincronització entre dispositius';
+	@override String get preferenceSyncConflictTitle => 'Els valors de la configuració ja existeixen al dispositiu';
+	@override String get preferenceSyncConflictText => 'Un element de la configuració amb sincronització activada desa els seus valors al servidor, però s\'ha trobat un valor a la configuració desat al servidor per aquest element de la configuració. Quin valor us sobreescriure?';
+	@override String get preferenceSyncConflictChoiceServer => 'Valors de configuració del servidor';
+	@override String get preferenceSyncConflictChoiceDevice => 'Punts d\'ajustos del dispositiu ';
+	@override String get preferenceSyncConflictChoiceCancel => 'Cancel·lar l\'activació de la sincronització ';
+	@override String get paste => 'Pegar';
+	@override String get emojiPalette => 'Calaix d\'emojis';
 	@override String get postForm => 'Formulari de publicació';
+	@override String get textCount => 'Nombre de caràcters ';
+	@override String get information => 'Informació';
+	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileCaEs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileCaEs._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupCaEs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupCaEs._(_root);
@@ -1495,6 +1507,33 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchCaEs search_ = _TranslationsMisskeySearchCaEs._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Convida';
+	@override String get noHistory => 'No hi ha un registre previ';
+	@override String get members => 'Membres';
+	@override String get home => 'Inici';
+	@override String get send => 'Envia';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteCaEs extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'Calaixos d\'emojis';
+	@override String get enableSyncBetweenDevicesForPalettes => 'Activa la sincronització dels calaixos d\'emojis entre dispositius';
+	@override String get paletteForMain => 'Calaix d\'emojis principal';
+	@override String get paletteForReaction => 'Calaix d\'emojis per reaccions';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -1518,6 +1557,9 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get preferencesBanner => 'Pots configurar el comportament general del client segons les teves preferències.';
 	@override String get appearanceBanner => 'Pots configurar les preferències relacionades amb la visualització i l\'aspecte del client segons el teu parer.';
 	@override String get soundsBanner => 'Configuració dels sons que reproduirà el client.';
+	@override String get timelineAndNote => 'Línia de temps i nota';
+	@override String get makeEveryTextElementsSelectable => 'Fes que tots els elements del text siguin seleccionables';
+	@override String get makeEveryTextElementsSelectable_description => 'L\'activació pot reduir la usabilitat en determinades ocasions.';
 }
 
 // Path: misskey.preferencesProfile_
@@ -2339,6 +2381,7 @@ class _TranslationsMisskeyPermissionsCaEs extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'Veure clips favorits';
 	@override String get readFederation => 'Veure dades de federació';
 	@override String get writeReportAbuse => 'Informar d\'un abús';
+	@override String get writeChat => 'Crear o esborrar missatges de xat';
 }
 
 // Path: misskey.auth_
@@ -2750,6 +2793,7 @@ class _TranslationsMisskeyDeckCaEs extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => 'Usa una interfície senzilla per a les pàgines navegades';
 	@override String get usedAsMinWidthWhenFlexible => 'L\'amplada mínima es farà servir quan "Ajust automàtic de l\'amplada" estigui activat';
 	@override String get flexible => 'Ajust automàtic de l\'amplada';
+	@override String get enableSyncBetweenDevicesForProfiles => 'Activar la sincronització de la informació de perfils de dispositiu a dispositiu';
 	@override late final _TranslationsMisskeyDeckColumnsCaEs columns_ = _TranslationsMisskeyDeckColumnsCaEs._(_root);
 }
 
@@ -3622,6 +3666,7 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	@override String get achievementEarned => 'Assoliment desbloquejat';
 	@override String get exportCompleted => 'Exportació completada';
 	@override String get login => 'Iniciar sessió';
+	@override String get createToken => 'Creació de tokens d\'accés ';
 	@override String get test => 'Prova la notificació';
 	@override String get app => 'Notificacions d\'aplicacions';
 }
@@ -3712,7 +3757,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginCaEs extends Translatio
 
 	// Translations
 	@override String get title => 'Vols instal·lar aquest afegit?';
-	@override String get metaTitle => 'Informació de l\'afegit ';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3723,7 +3767,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeCaEs extends Translation
 
 	// Translations
 	@override String get title => 'Vols instal·lar aquest tema?';
-	@override String get metaTitle => 'Informació del tema';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

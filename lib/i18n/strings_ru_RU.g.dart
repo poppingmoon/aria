@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsRuRu extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsRuRu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsRuRu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ruRu,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsRuRu extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsRuRu _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsRuRu $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsRuRu(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaRuRu aria = _TranslationsAriaRuRu._(_root);
@@ -359,7 +362,6 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'На самом деле сбросить?';
 	@override String get areYouSure => 'Вы уверены?';
 	@override String get saved => 'Сохранено';
-	@override String get messaging => 'Сообщения';
 	@override String get upload => 'Загрузить';
 	@override String get keepOriginalUploading => 'Сохранить исходное изображение';
 	@override String get keepOriginalUploadingDescription => 'Сохраняет исходную версию при загрузке изображений. Если выключить, то при загрузке браузер генерирует изображение для публикации.';
@@ -372,7 +374,6 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Обзор';
 	@override String get messageRead => 'Прочитали';
 	@override String get noMoreHistory => 'История закончилась';
-	@override String get startMessaging => 'Начать общение';
 	@override String nUsersRead({required Object n}) => 'Прочитали ${n}';
 	@override String agreeTo({required Object x0}) => 'Я соглашаюсь с ${x0}';
 	@override String get agree => 'Согласен';
@@ -559,8 +560,6 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Цитата';
 	@override String get quoteQuestion => 'Хотите добавить цитату?';
 	@override String get attachAsFileQuestion => 'Текста в буфере обмена слишком много. Прикрепить как текстовый файл?';
-	@override String get noMessagesYet => 'Пока ни одного сообщения';
-	@override String get newMessageExists => 'Новое сообщение';
 	@override String get onlyOneFileCanBeAttached => 'К сообщению можно прикрепить только один файл';
 	@override String get signinRequired => 'Пожалуйста, войдите';
 	@override String get signinOrContinueOnRemote => 'Чтобы продолжить, вам необходимо войти в аккаунт на своём сервере или зарегистрироваться / войти в аккаунт на этом.';
@@ -1259,6 +1258,8 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get inquiry => 'Связаться';
 	@override String get messageToFollower => 'Сообщение подписчикам';
 	@override String get postForm => 'Форма отправки';
+	@override String get information => 'Описание';
+	@override late final _TranslationsMisskeyChatRuRu chat_ = _TranslationsMisskeyChatRuRu._(_root);
 	@override late final _TranslationsMisskeySettingsRuRu settings_ = _TranslationsMisskeySettingsRuRu._(_root);
 	@override late final _TranslationsMisskeyDeliveryRuRu delivery_ = _TranslationsMisskeyDeliveryRuRu._(_root);
 	@override late final _TranslationsMisskeyAnnouncementRuRu announcement_ = _TranslationsMisskeyAnnouncementRuRu._(_root);
@@ -1327,6 +1328,20 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiRuRu reversi_ = _TranslationsMisskeyReversiRuRu._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRuRu remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRuRu._(_root);
 	@override late final _TranslationsMisskeySearchRuRu search_ = _TranslationsMisskeySearchRuRu._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatRuRu extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Пригласить';
+	@override String get noHistory => 'История пока пуста';
+	@override String get members => 'Участники';
+	@override String get home => 'Главная';
+	@override String get send => 'Отправить';
 }
 
 // Path: misskey.settings_
@@ -1934,6 +1949,7 @@ class _TranslationsMisskeyPermissionsRuRu extends TranslationsMisskeyPermissions
 	@override String get readGalleryLikes => 'Просмотр списка понравившегося в галерее';
 	@override String get writeGalleryLikes => 'Изменение списка понравившегося в галерее';
 	@override String get writeAdminResetPassword => 'Сбросить пароль пользователю';
+	@override String get writeChat => 'Писать и удалять сообщения';
 }
 
 // Path: misskey.auth_

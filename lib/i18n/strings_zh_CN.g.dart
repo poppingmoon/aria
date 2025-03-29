@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsZhCn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsZhCn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsZhCn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.zhCn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsZhCn extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsZhCn _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsZhCn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsZhCn(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaZhCn aria = _TranslationsAriaZhCn._(_root);
@@ -556,7 +559,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => '恢复默认设置？';
 	@override String get areYouSure => '你确定吗？';
 	@override String get saved => '已保存';
-	@override String get messaging => '聊天';
 	@override String get upload => '本地上传';
 	@override String get keepOriginalUploading => '保留原图';
 	@override String get keepOriginalUploadingDescription => '上传图片时保留原始图片。关闭时，浏览器会在上传时生成一张用于web发布的图片。';
@@ -569,7 +571,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get explore => '发现';
 	@override String get messageRead => '已读';
 	@override String get noMoreHistory => '没有更多的历史记录';
-	@override String get startMessaging => '添加聊天';
 	@override String nUsersRead({required Object n}) => '${n} 人已读';
 	@override String agreeTo({required Object x0}) => '勾选则表示已阅读并同意 ${x0}';
 	@override String get agree => '同意';
@@ -758,8 +759,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => '已引用';
 	@override String get quoteQuestion => '是否引用此链接内容？';
 	@override String get attachAsFileQuestion => '剪贴板内的文字过长。要转换为文本文件并添加吗？';
-	@override String get noMessagesYet => '现在没有新的聊天';
-	@override String get newMessageExists => '新信息';
 	@override String get onlyOneFileCanBeAttached => '只能添加一个附件';
 	@override String get signinRequired => '请先登录';
 	@override String get signinOrContinueOnRemote => '若要继续，需要转到您所使用的实例，或者在此服务器上注册或登录。';
@@ -965,6 +964,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get makeActive => '启用';
 	@override String get display => '显示';
 	@override String get copy => '复制';
+	@override String get copiedToClipboard => '已复制到剪贴板';
 	@override String get metrics => '指标';
 	@override String get overview => '概览';
 	@override String get logs => '日志';
@@ -1590,7 +1590,19 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get noName => '没有名字';
 	@override String get skip => '跳过';
 	@override String get restore => '恢复';
+	@override String get syncBetweenDevices => '设备间同步';
+	@override String get preferenceSyncConflictTitle => '服务器上已存在设定值';
+	@override String get preferenceSyncConflictText => '服务器上已有此设置的设定值。要覆盖哪个设定值？';
+	@override String get preferenceSyncConflictChoiceServer => '服务器上的设定值';
+	@override String get preferenceSyncConflictChoiceDevice => '设备上的设定值';
+	@override String get preferenceSyncConflictChoiceCancel => '取消同步';
+	@override String get paste => '粘贴';
+	@override String get emojiPalette => '表情符号调色板';
 	@override String get postForm => '投稿窗口';
+	@override String get textCount => '字数';
+	@override String get information => '关于';
+	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileZhCn preferencesProfile_ = _TranslationsMisskeyPreferencesProfileZhCn._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupZhCn preferencesBackup_ = _TranslationsMisskeyPreferencesBackupZhCn._(_root);
@@ -1680,6 +1692,33 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchZhCn search_ = _TranslationsMisskeySearchZhCn._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatZhCn extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => '邀请';
+	@override String get noHistory => '没有历史记录';
+	@override String get members => '成员';
+	@override String get home => '首页';
+	@override String get send => '发送';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteZhCn extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => '调色板';
+	@override String get enableSyncBetweenDevicesForPalettes => '启用调色板的设备间同步';
+	@override String get paletteForMain => '主调色板';
+	@override String get paletteForReaction => '回应用调色板';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsZhCn extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
@@ -1703,6 +1742,9 @@ class _TranslationsMisskeySettingsZhCn extends TranslationsMisskeySettingsEnUs {
 	@override String get preferencesBanner => '可在此设置客户端的整体运作行为。';
 	@override String get appearanceBanner => '可在此设置客户端的外观及显示方式。';
 	@override String get soundsBanner => '可在此设置客户端播放的声音。';
+	@override String get timelineAndNote => '时间线和帖子';
+	@override String get makeEveryTextElementsSelectable => '使所有的文字均可选择';
+	@override String get makeEveryTextElementsSelectable_description => '若开启，在某些情况下可能降低用户体验。';
 }
 
 // Path: misskey.preferencesProfile_
@@ -2524,6 +2566,7 @@ class _TranslationsMisskeyPermissionsZhCn extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => '查看便签的点赞';
 	@override String get readFederation => '查看联合相关信息';
 	@override String get writeReportAbuse => '举报用户';
+	@override String get writeChat => '撰写或删除消息';
 }
 
 // Path: misskey.auth_
@@ -2935,6 +2978,7 @@ class _TranslationsMisskeyDeckZhCn extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '用简易UI表示非根页面';
 	@override String get usedAsMinWidthWhenFlexible => '「自适应宽度」被启用的时候，这就是最小的宽度';
 	@override String get flexible => '自适应宽度';
+	@override String get enableSyncBetweenDevicesForProfiles => '启用个人资料信息跨设备同步';
 	@override late final _TranslationsMisskeyDeckColumnsZhCn columns_ = _TranslationsMisskeyDeckColumnsZhCn._(_root);
 }
 
@@ -3807,6 +3851,7 @@ class _TranslationsMisskeyNotificationTypesZhCn extends TranslationsMisskeyNotif
 	@override String get achievementEarned => '取得的成就';
 	@override String get exportCompleted => '已完成导出';
 	@override String get login => '登录';
+	@override String get createToken => '创建访问令牌';
 	@override String get test => '测试通知';
 	@override String get app => '关联应用的通知';
 }
@@ -3897,7 +3942,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginZhCn extends Translatio
 
 	// Translations
 	@override String get title => '要安装此插件吗？';
-	@override String get metaTitle => '插件信息';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3908,7 +3952,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeZhCn extends Translation
 
 	// Translations
 	@override String get title => '要安装此主题吗？';
-	@override String get metaTitle => '主题信息';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsLoLa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsLoLa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsLoLa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.loLa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsLoLa extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsLoLa _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsLoLa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsLoLa(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaLoLa aria = _TranslationsAriaLoLa._(_root);
@@ -282,7 +285,6 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String get removed => 'ລຶບແລ້ວ';
 	@override String get resetAreYouSure => 'ຣີ​ເຊັດບໍ?';
 	@override String get saved => 'ບັນທຶກແລ້ວ';
-	@override String get messaging => 'ແຊັຕ';
 	@override String get upload => 'ອັບໂຫຼດ';
 	@override String get keepOriginalUploading => 'ຮັກສາຮູບພາບຕົ້ນສະບັບ';
 	@override String get fromDrive => 'ຈາກ Drive';
@@ -292,7 +294,6 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlRequested => 'ຮ້ອງຂໍການອັບໂຫລດແລ້ວ';
 	@override String get explore => 'ສຳຫຼວດ';
 	@override String get messageRead => 'ອ່ານແລ້ວ';
-	@override String get startMessaging => 'ເລີ່ມການສົນທະນາໃໝ່';
 	@override String nUsersRead({required Object n}) => 'ອ່ານໂດຍ ${n}';
 	@override String get agree => 'ຍອມຮັບ';
 	@override String get termsOfService => 'ເງື່ອນໄຂການບໍລິການ';
@@ -453,6 +454,8 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String get file => 'ໄຟລ໌';
 	@override String get replies => 'ຕອບ​ກັບ';
 	@override String get renotes => 'Renote';
+	@override String get information => 'ກ່ຽວກັບ';
+	@override late final _TranslationsMisskeyChatLoLa chat_ = _TranslationsMisskeyChatLoLa._(_root);
 	@override late final _TranslationsMisskeyDeliveryLoLa delivery_ = _TranslationsMisskeyDeliveryLoLa._(_root);
 	@override late final _TranslationsMisskeyRoleLoLa role_ = _TranslationsMisskeyRoleLoLa._(_root);
 	@override late final _TranslationsMisskeyEmailLoLa email_ = _TranslationsMisskeyEmailLoLa._(_root);
@@ -475,6 +478,19 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesLoLa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsLoLa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsLoLa._(_root);
 	@override late final _TranslationsMisskeySearchLoLa search_ = _TranslationsMisskeySearchLoLa._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatLoLa extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'ເຊີນ';
+	@override String get noHistory => '​ບໍ່​ມີປະຫວັດ';
+	@override String get members => 'ສະມາຊິກ';
+	@override String get home => 'ໜ້າຫຼັກ';
 }
 
 // Path: misskey.delivery_

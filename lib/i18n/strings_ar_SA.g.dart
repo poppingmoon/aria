@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsArSa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsArSa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsArSa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.arSa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsArSa extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsArSa _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsArSa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsArSa(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaArSa aria = _TranslationsAriaArSa._(_root);
@@ -324,7 +327,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'متأكد من أنك تريد حذف ${x}؟';
 	@override String get resetAreYouSure => 'هل تريد إعادة التعيين؟';
 	@override String get saved => 'حُفظ';
-	@override String get messaging => 'المحادثة';
 	@override String get upload => 'ارفع';
 	@override String get keepOriginalUploading => 'ابق الصورة الأصلية';
 	@override String get keepOriginalUploadingDescription => 'يحفظ الصور المرفوعة على حالتها الأصلية، وان عطّل ستولد نسخة مخصصة من الصورة.';
@@ -337,7 +339,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get explore => 'استكشاف';
 	@override String get messageRead => 'مقروءة';
 	@override String get noMoreHistory => 'لا يوجد المزيد من التاريخ';
-	@override String get startMessaging => 'ابدأ محادثة';
 	@override String nUsersRead({required Object n}) => 'قرأه ${n}';
 	@override String agreeTo({required Object x0}) => 'اوافق على ${x0}';
 	@override String get agree => 'أقبل';
@@ -509,8 +510,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'ملاحظات ${user}';
 	@override String get quoteAttached => 'اِقتُبسَ';
 	@override String get quoteQuestion => 'أتريد تضمينها كاقتباس';
-	@override String get noMessagesYet => 'ليس هناك رسائل بعد';
-	@override String get newMessageExists => 'لقد تلقيت رسالة جديدة';
 	@override String get onlyOneFileCanBeAttached => 'يمكنك إرفاق ملف واحد بالرسالة';
 	@override String get signinRequired => 'رجاءً لِج';
 	@override String get invitations => 'دعوة';
@@ -1086,6 +1085,8 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'آخر ${n} أيام';
 	@override String get surrender => 'ألغِ';
 	@override String get postForm => 'أنشئ ملاحظة';
+	@override String get information => 'عن';
+	@override late final _TranslationsMisskeyChatArSa chat_ = _TranslationsMisskeyChatArSa._(_root);
 	@override late final _TranslationsMisskeyDeliveryArSa delivery_ = _TranslationsMisskeyDeliveryArSa._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingArSa._(_root);
 	@override late final _TranslationsMisskeyServerRulesArSa serverRules_ = _TranslationsMisskeyServerRulesArSa._(_root);
@@ -1141,6 +1142,20 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyOfflineScreenArSa offlineScreen_ = _TranslationsMisskeyOfflineScreenArSa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsArSa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsArSa._(_root);
 	@override late final _TranslationsMisskeySearchArSa search_ = _TranslationsMisskeySearchArSa._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatArSa extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'دعوة';
+	@override String get noHistory => 'السجل فارغ';
+	@override String get members => 'الأعضاء';
+	@override String get home => 'الرئيسي';
+	@override String get send => 'أرسل';
 }
 
 // Path: misskey.delivery_
@@ -1588,6 +1603,7 @@ class _TranslationsMisskeyPermissionsArSa extends TranslationsMisskeyPermissions
 	@override String get readGallery => 'اعرض المعرض';
 	@override String get writeGallery => 'عدّل المعرض';
 	@override String get readGalleryLikes => 'يعرض ما أعجبك من مشاركات المعرض';
+	@override String get writeChat => 'اكتب أو احذف رسائل محادثة';
 }
 
 // Path: misskey.auth_

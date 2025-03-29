@@ -17,9 +17,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.enUs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -30,6 +30,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final Translations _root = this; // ignore: unused_field
+
+	Translations $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => Translations(meta: meta ?? this.$meta);
 
 	// Translations
 	late final TranslationsAriaEnUs aria = TranslationsAriaEnUs.internal(_root);
@@ -572,7 +574,6 @@ class TranslationsMisskeyEnUs {
 	String get resetAreYouSure => 'Really reset?';
 	String get areYouSure => 'Are you sure?';
 	String get saved => 'Saved';
-	String get messaging => 'Chat';
 	String get upload => 'Upload';
 	String get keepOriginalUploading => 'Keep original image';
 	String get keepOriginalUploadingDescription => 'Saves the originally uploaded image as-is. If turned off, a version to display on the web will be generated on upload.';
@@ -585,7 +586,6 @@ class TranslationsMisskeyEnUs {
 	String get explore => 'Explore';
 	String get messageRead => 'Read';
 	String get noMoreHistory => 'There is no further history';
-	String get startMessaging => 'Start a new chat';
 	String nUsersRead({required Object n}) => 'read by ${n}';
 	String agreeTo({required Object x0}) => 'I agree to ${x0}';
 	String get agree => 'Agree';
@@ -774,8 +774,6 @@ class TranslationsMisskeyEnUs {
 	String get quoteAttached => 'Quote';
 	String get quoteQuestion => 'Append as quote?';
 	String get attachAsFileQuestion => 'The text in clipboard is long. Would you want to attach it as text file?';
-	String get noMessagesYet => 'No messages yet';
-	String get newMessageExists => 'There are new messages';
 	String get onlyOneFileCanBeAttached => 'You can only attach one file to a message';
 	String get signinRequired => 'Please register or sign in before continuing';
 	String get signinOrContinueOnRemote => 'To continue, you need to move your server or sign up / log in to this server.';
@@ -981,6 +979,7 @@ class TranslationsMisskeyEnUs {
 	String get makeActive => 'Activate';
 	String get display => 'Display';
 	String get copy => 'Copy';
+	String get copiedToClipboard => 'Copied to clipboard';
 	String get metrics => 'Metrics';
 	String get overview => 'Overview';
 	String get logs => 'Logs';
@@ -1599,14 +1598,26 @@ class TranslationsMisskeyEnUs {
 	String get preferences => 'Preferences';
 	String get accessibility => 'Accessibility';
 	String get preferencesProfile => 'Preferences profile';
-	String get copyPreferenceId => 'Copy the proference ID';
+	String get copyPreferenceId => 'Copy the preference ID';
 	String get resetToDefaultValue => 'Revert to default';
 	String get overrideByAccount => 'Override by the account';
 	String get untitled => 'Untitled';
 	String get noName => 'No name';
 	String get skip => 'Skip';
 	String get restore => 'Restore';
+	String get syncBetweenDevices => 'Sync between devices';
+	String get preferenceSyncConflictTitle => 'The configured value exists on the server.';
+	String get preferenceSyncConflictText => 'The sync enabled settings will save their values to the server. However, there are existing values on the server. Which set of values would you like to overwrite?';
+	String get preferenceSyncConflictChoiceServer => 'Configured value on server';
+	String get preferenceSyncConflictChoiceDevice => 'Configured value on device';
+	String get preferenceSyncConflictChoiceCancel => 'Cancel enabling sync';
+	String get paste => 'Paste';
+	String get emojiPalette => 'Emoji palette';
 	String get postForm => 'Posting form';
+	String get textCount => 'Character count';
+	String get information => 'About';
+	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
+	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
 	late final TranslationsMisskeyPreferencesProfileEnUs preferencesProfile_ = TranslationsMisskeyPreferencesProfileEnUs.internal(_root);
 	late final TranslationsMisskeyPreferencesBackupEnUs preferencesBackup_ = TranslationsMisskeyPreferencesBackupEnUs.internal(_root);
@@ -1706,6 +1717,33 @@ class TranslationsMisskeyIOEnUs {
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
 }
 
+// Path: misskey.chat_
+class TranslationsMisskeyChatEnUs {
+	TranslationsMisskeyChatEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get invitations => 'Invite';
+	String get noHistory => 'No history available';
+	String get members => 'Members';
+	String get home => 'Home';
+	String get send => 'Send';
+}
+
+// Path: misskey.emojiPalette_
+class TranslationsMisskeyEmojiPaletteEnUs {
+	TranslationsMisskeyEmojiPaletteEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get palettes => 'Palette';
+	String get enableSyncBetweenDevicesForPalettes => 'Enable palette sync between devices';
+	String get paletteForMain => 'Main palette';
+	String get paletteForReaction => 'Reaction palette';
+}
+
 // Path: misskey.settings_
 class TranslationsMisskeySettingsEnUs {
 	TranslationsMisskeySettingsEnUs.internal(this._root);
@@ -1729,6 +1767,9 @@ class TranslationsMisskeySettingsEnUs {
 	String get preferencesBanner => 'You can configure the overall behavior of the client according to your preferences.';
 	String get appearanceBanner => 'You can configure the appearance and display settings for the client according to your preferences.';
 	String get soundsBanner => 'You can configure the sound settings for playback in the client.';
+	String get timelineAndNote => 'Timeline and note';
+	String get makeEveryTextElementsSelectable => 'Make all text elements selectable';
+	String get makeEveryTextElementsSelectable_description => 'Enabling this may reduce usability in some situations.';
 }
 
 // Path: misskey.preferencesProfile_
@@ -1793,7 +1834,7 @@ class TranslationsMisskeyAbuseUserReportEnUs {
 	String get resolve => 'Resolve';
 	String get accept => 'Accept';
 	String get reject => 'Reject';
-	String get resolveTutorial => 'If the report is legitimate in content, select "Accept" to mark the case as resolved in the affirmative.\nIf the content of the report is not legitimate, select "Reject" to mark the case as resolved in the negative.';
+	String get resolveTutorial => 'If the report\'s content is legitimate, select "Accept" to mark it as resolved.\nIf the report\'s content is illegitimate, select "Reject" to ignore it.';
 }
 
 // Path: misskey.delivery_
@@ -2550,6 +2591,7 @@ class TranslationsMisskeyPermissionsEnUs {
 	String get readClipFavorite => 'View favorited clips';
 	String get readFederation => 'Get federation data';
 	String get writeReportAbuse => 'Report violation';
+	String get writeChat => 'Compose or delete chat messages';
 }
 
 // Path: misskey.auth_
@@ -2961,6 +3003,7 @@ class TranslationsMisskeyDeckEnUs {
 	String get useSimpleUiForNonRootPages => 'Use simple UI for navigated pages';
 	String get usedAsMinWidthWhenFlexible => 'Minimum width will be used for this when the "Auto-adjust width" option is enabled';
 	String get flexible => 'Auto-adjust width';
+	String get enableSyncBetweenDevicesForProfiles => 'Enable profile information sync between devices';
 	late final TranslationsMisskeyDeckColumnsEnUs columns_ = TranslationsMisskeyDeckColumnsEnUs.internal(_root);
 }
 
@@ -3327,8 +3370,8 @@ class TranslationsMisskeyFollowRequestEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get recieved => 'Received application';
-	String get sent => 'Sent application';
+	String get recieved => 'Received request';
+	String get sent => 'Sent request';
 }
 
 // Path: misskey.remoteLookupErrors_
@@ -3849,6 +3892,7 @@ class TranslationsMisskeyNotificationTypesEnUs {
 	String get achievementEarned => 'Achievement unlocked';
 	String get exportCompleted => 'The export has been completed';
 	String get login => 'Sign In';
+	String get createToken => 'Create access token';
 	String get test => 'Notification test';
 	String get app => 'Notifications from linked apps';
 }
@@ -3921,7 +3965,7 @@ class TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get createRecipient => 'Add a recipient for reports';
+	String get createRecipient => 'Add recipient for reports';
 	String get modifyRecipient => 'Edit a recipient for reports';
 	String get recipientType => 'Notification type';
 	late final TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs recipientType_ = TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs.internal(_root);
@@ -3939,7 +3983,6 @@ class TranslationsMisskeyExternalResourceInstallerPluginEnUs {
 
 	// Translations
 	String get title => 'Do you want to install this plugin?';
-	String get metaTitle => 'Plugin information';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3950,7 +3993,6 @@ class TranslationsMisskeyExternalResourceInstallerThemeEnUs {
 
 	// Translations
 	String get title => 'Do you want to install this theme?';
-	String get metaTitle => 'Theme information';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
@@ -4103,7 +4145,7 @@ class TranslationsMisskeyCustomEmojisManagerLocalEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get tabTitleList => 'List of registered Emojis';
+	String get tabTitleList => 'Registered emojis';
 	String get tabTitleRegister => 'Emoji registration';
 	late final TranslationsMisskeyCustomEmojisManagerLocalListEnUs list_ = TranslationsMisskeyCustomEmojisManagerLocalListEnUs.internal(_root);
 	late final TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs register_ = TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs.internal(_root);
