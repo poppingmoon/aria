@@ -22,36 +22,42 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
 
   String get _key => '$account/push-subscription';
 
+  String get _isProxyKey => '$account/push-subscription-is-proxy';
+
   Future<void> subscribe({
     required String id,
     String? fcmToken,
     String? apnsToken,
-    required WebPushKeySet keySet,
+    WebPushKeySet? keySet,
     required SwRegisterResponse response,
   }) async {
     final endpoint = response.endpoint;
-    if (endpoint.startsWith(misskeyWebPushProxyUrl)) {
-      final jwk = await (await keySet.privateKey.privKey).exportJsonWebKey();
-      await ref
-          .read(dioProvider)
-          .post<Map<String, dynamic>>(
-            '$misskeyWebPushProxyUrl/subscriptions',
-            data: {
-              'id': id,
-              if (fcmToken != null) 'fcmToken': fcmToken,
-              if (apnsToken != null) 'apnsToken': apnsToken,
-              'auth': keySet.publicKey.auth,
-              'publicKey': keySet.publicKey.p256dh,
-              'privateKey': jwk['d'],
-              'vapidKey': response.key,
-            },
-          );
-    } else {
-      await ref
-          .read(webPushKeySetNotifierNotifierProvider(account).notifier)
-          .save(keySet);
+    final isProxy = endpoint.startsWith(misskeyWebPushProxyUrl);
+    if (keySet != null) {
+      if (isProxy) {
+        final jwk = await (await keySet.privateKey.privKey).exportJsonWebKey();
+        await ref
+            .read(dioProvider)
+            .post<Map<String, dynamic>>(
+              '$misskeyWebPushProxyUrl/subscriptions',
+              data: {
+                'id': id,
+                if (fcmToken != null) 'fcmToken': fcmToken,
+                if (apnsToken != null) 'apnsToken': apnsToken,
+                'auth': keySet.publicKey.auth,
+                'publicKey': keySet.publicKey.p256dh,
+                'privateKey': jwk['d'],
+                'vapidKey': response.key,
+              },
+            );
+      } else {
+        await ref
+            .read(webPushKeySetNotifierNotifierProvider(account).notifier)
+            .save(keySet);
+      }
     }
     await ref.read(sharedPreferencesProvider).setString(_key, endpoint);
+    await ref.read(sharedPreferencesProvider).setBool(_isProxyKey, isProxy);
     state = endpoint;
   }
 
@@ -61,10 +67,11 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
     if (defaultTargetPlatform == TargetPlatform.android) {
       await UnifiedPush.unregister(account.toString());
     }
+    final isProxy = ref.read(sharedPreferencesProvider).getBool(_isProxyKey);
     final keySet = await ref.read(
       webPushKeySetNotifierNotifierProvider(account).future,
     );
-    if (keySet == null) {
+    if (isProxy ?? keySet == null) {
       await ref.read(dioProvider).delete<void>(endpoint);
     }
     await ref
@@ -77,6 +84,7 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
           .delete();
     }
     await ref.read(sharedPreferencesProvider).remove(_key);
+    await ref.read(sharedPreferencesProvider).remove(_isProxyKey);
     state = null;
   }
 }

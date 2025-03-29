@@ -90,10 +90,13 @@ class TimelineDrawer extends HookConsumerWidget {
                     ? UserAvatar(
                       account: account,
                       user: i,
-                      size: 40,
+                      size: 40.0,
                       onTap: () => context.push('/$account/users/${i.id}'),
                     )
                     : IconButton(
+                      style: IconButton.styleFrom(
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ),
                       onPressed:
                           () => context.push('/$account/@${account.username}'),
                       icon: const Icon(Icons.person),

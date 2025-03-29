@@ -10,7 +10,6 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
-import '../../../constant/fcm_token_prefix.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../constant/misskey_web_push_proxy_url.dart';
 import '../../../constant/notification_channel_id.dart';
@@ -35,30 +34,41 @@ class NotificationsSettingsPage extends ConsumerWidget {
   Future<void> _subscribe(WidgetRef ref) async {
     final id = const Uuid().v4();
     final String endpoint;
+    ({String auth, String publicKey})? publicKeySet;
     String? fcmToken;
     String? apnsToken;
 
     // Request permissions and get the endpoint and the token.
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final result =
-          await FlutterLocalNotificationsPlugin()
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >()
-              ?.requestNotificationsPermission();
+      final result = await futureWithDialog(
+        ref.context,
+        FlutterLocalNotificationsPlugin()
+            .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin
+            >()
+            ?.requestNotificationsPermission(),
+      );
       if (!ref.context.mounted) return;
       if (!(result ?? false)) {
         await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
         return;
       }
 
-      await UnifiedPush.removeNoDistributorDialogACK();
+      final meta = await futureWithDialog(
+        ref.context,
+        ref.read(metaNotifierProvider(account.host).future),
+      );
+      if (meta == null) return;
+
       if (!ref.context.mounted) return;
-      await UnifiedPushUi(ref.context, [
-        account.toString(),
-      ], _UnifiedPushFunctions()).registerAppWithDialog();
+      final instances = [account.toString()];
+      await UnifiedPushUi(
+        ref.context,
+        instances,
+        _UnifiedPushFunctions(vapid: meta.swPublickey),
+      ).registerAppWithDialog();
       if (!ref.context.mounted) return;
-      final completer = Completer<String>();
+      final completer = Completer<PushEndpoint>();
       final sub = ref.listenManual(
         unifiedPushEndpointNotifierProvider(account.toString()),
         (_, endpoint) => endpoint != null ? completer.complete(endpoint) : null,
@@ -66,21 +76,22 @@ class NotificationsSettingsPage extends ConsumerWidget {
       );
       final unifiedPushEndpoint = await futureWithDialog(
         ref.context,
-        completer.future.timeout(const Duration(seconds: 5)),
+        completer.future.timeout(const Duration(seconds: 10)),
       );
       sub.close();
       if (unifiedPushEndpoint == null) return;
-      if (unifiedPushEndpoint.startsWith(fcmTokenPrefix)) {
-        endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
-        fcmToken = unifiedPushEndpoint.substring(fcmTokenPrefix.length);
-      } else {
-        endpoint = unifiedPushEndpoint;
+      endpoint = unifiedPushEndpoint.url;
+      if (unifiedPushEndpoint.pubKeySet case final pubKeySet?) {
+        publicKeySet = (auth: pubKeySet.auth, publicKey: pubKeySet.pubKey);
       }
     } else {
       final connector = ref.read(apnsPushConnectorProvider);
-      final result = await connector.requestNotificationPermissions();
+      final result = await futureWithDialog(
+        ref.context,
+        connector.requestNotificationPermissions(),
+      );
       if (!ref.context.mounted) return;
-      if (!result) {
+      if (!(result ?? false)) {
         await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
         return;
       }
@@ -99,29 +110,47 @@ class NotificationsSettingsPage extends ConsumerWidget {
       connector.token.addListener(callback);
       apnsToken = await futureWithDialog(
         ref.context,
-        completer.future.timeout(const Duration(seconds: 5)),
+        completer.future.timeout(const Duration(seconds: 10)),
       );
       connector.token.removeListener(callback);
       if (apnsToken == null) return;
     }
 
-    final keySet = await WebPushKeySet.newKeyPair();
+    WebPushKeySet? keySet;
+    final SwRegisterRequest request;
+    if (publicKeySet case (:final auth, :final publicKey)) {
+      request = SwRegisterRequest(
+        endpoint: endpoint,
+        auth: auth,
+        publickey: publicKey,
+      );
+    } else {
+      keySet = await WebPushKeySet.newKeyPair();
+      request = SwRegisterRequest(
+        endpoint: endpoint,
+        auth: keySet.publicKey.auth,
+        publickey: keySet.publicKey.p256dh,
+      );
+    }
     if (!ref.context.mounted) return;
 
     // Register the endpoint and keys to the Misskey server.
     final response = await showDialog<SwRegisterResponse>(
       context: ref.context,
       builder:
-          (context) => SwRegisterDialog(
-            account: account,
-            request: SwRegisterRequest(
-              endpoint: endpoint,
-              auth: keySet.publicKey.auth,
-              publickey: keySet.publicKey.p256dh,
-            ),
-          ),
+          (context) => SwRegisterDialog(account: account, request: request),
     );
-    if (!ref.context.mounted || response == null) return;
+    if (!ref.context.mounted || response == null) {
+      if (defaultTargetPlatform == TargetPlatform.android) {
+        await UnifiedPush.unregister(account.toString());
+        ref
+            .read(
+              unifiedPushEndpointNotifierProvider(account.toString()).notifier,
+            )
+            .remove();
+      }
+      return;
+    }
 
     // Subscribe and save the endpoint.
     await futureWithDialog(
@@ -174,6 +203,7 @@ class NotificationsSettingsPage extends ConsumerWidget {
       TargetPlatform.android || TargetPlatform.iOS => meta?.swPublickey != null,
       _ => false,
     };
+    final theme = Theme.of(context);
 
     return AccountSettingsScaffold(
       account: account,
@@ -189,9 +219,7 @@ class NotificationsSettingsPage extends ConsumerWidget {
               child: Text(
                 t.misskey.pushNotification,
                 style: TextStyle(
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withValues(alpha: 0.8),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
             ),
@@ -224,7 +252,11 @@ class NotificationsSettingsPage extends ConsumerWidget {
   }
 }
 
-class _UnifiedPushFunctions extends UnifiedPushFunctions {
+class _UnifiedPushFunctions implements UnifiedPushFunctions {
+  const _UnifiedPushFunctions({this.vapid});
+
+  final String? vapid;
+
   @override
   Future<String?> getDistributor() {
     return UnifiedPush.getDistributor();
@@ -237,7 +269,7 @@ class _UnifiedPushFunctions extends UnifiedPushFunctions {
 
   @override
   Future<void> registerApp(String instance) {
-    return UnifiedPush.registerApp(instance);
+    return UnifiedPush.register(instance: instance, vapid: vapid);
   }
 
   @override
