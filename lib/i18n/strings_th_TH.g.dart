@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsThTh extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsThTh({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsThTh({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.thTh,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsThTh extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsThTh _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsThTh $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsThTh(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaThTh aria = _TranslationsAriaThTh._(_root);
@@ -367,7 +370,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'รีเซ็ตเลยไหม?';
 	@override String get areYouSure => 'แน่ใจแล้วใช่ไหมคะ?';
 	@override String get saved => 'บันทึกแล้ว';
-	@override String get messaging => 'แชท';
 	@override String get upload => 'อัปโหลด';
 	@override String get keepOriginalUploading => 'เก็บภาพต้นฉบับ';
 	@override String get keepOriginalUploadingDescription => 'เก็บภาพต้นฉบับไว้เมื่ออัปโหลดภาพ หากปิด รูปภาพสำหรับการเผยแพร่ทางเว็บจะถูกสร้างขึ้นในเบราว์เซอร์เมื่อทำการอัปโหลด';
@@ -380,7 +382,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get explore => 'สำรวจ';
 	@override String get messageRead => 'อ่านแล้ว';
 	@override String get noMoreHistory => 'ไม่มีประวัติเพิ่มเติม';
-	@override String get startMessaging => 'เริ่มการสนทนา';
 	@override String nUsersRead({required Object n}) => 'อ่านโดย ${n}';
 	@override String agreeTo({required Object x0}) => 'ฉันยอมรับ ${x0}';
 	@override String get agree => 'ยอมรับ';
@@ -569,8 +570,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'อ้างอิง';
 	@override String get quoteQuestion => 'ต้องการที่จะแนบมันเพื่ออ้างอิงใช่ไหม?';
 	@override String get attachAsFileQuestion => 'ข้อความในคลิปบอร์ดยาวเกินไป คุณต้องการแนบเป็นไฟล์ข้อความหรือไม่?';
-	@override String get noMessagesYet => 'ยังไม่มีข้อความ';
-	@override String get newMessageExists => 'คุณมีข้อความใหม่';
 	@override String get onlyOneFileCanBeAttached => 'สามารถแนบไฟล์ได้เพียงไฟล์เดียวต่อ 1 ข้อความ';
 	@override String get signinRequired => 'ก่อนดำเนินการต่อ กรุณาลงทะเบียนหรือเข้าสู่ระบบ';
 	@override String get signinOrContinueOnRemote => 'เพื่อดำเนินการต่อได้ คุณต้องไปที่เซิร์ฟเวอร์ที่คุณใช้งานอยู่ หรือลงทะเบียน/เข้าสู่ระบบเซิร์ฟเวอร์นี้';
@@ -1373,6 +1372,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get yourNameContainsProhibitedWords => 'ชื่อของคุณนั้นมีคำที่ต้องห้าม';
 	@override String get yourNameContainsProhibitedWordsDescription => 'ถ้าหากคุณต้องการใช้ชื่อนี้ กรุณาติดต่อผู้ดูแลระบบของเซิร์ฟเวอร์นะค่ะ';
 	@override String get postForm => 'แบบฟอร์มการโพสต์';
+	@override String get information => 'เกี่ยวกับ';
+	@override late final _TranslationsMisskeyChatThTh chat_ = _TranslationsMisskeyChatThTh._(_root);
 	@override late final _TranslationsMisskeySettingsThTh settings_ = _TranslationsMisskeySettingsThTh._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportThTh abuseUserReport_ = _TranslationsMisskeyAbuseUserReportThTh._(_root);
 	@override late final _TranslationsMisskeyDeliveryThTh delivery_ = _TranslationsMisskeyDeliveryThTh._(_root);
@@ -1450,6 +1451,20 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsThTh remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsThTh._(_root);
 	@override late final _TranslationsMisskeySearchThTh search_ = _TranslationsMisskeySearchThTh._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatThTh extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'คำเชิญ';
+	@override String get noHistory => 'ไม่มีประวัติ';
+	@override String get members => 'สมาชิก';
+	@override String get home => 'หน้าหลัก';
+	@override String get send => 'ส่ง';
 }
 
 // Path: misskey.settings_
@@ -2228,6 +2243,7 @@ class _TranslationsMisskeyPermissionsThTh extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'ดูคลิปที่ถูกใจ';
 	@override String get readFederation => 'รับข้อมูลเกี่ยวกับสหพันธ์';
 	@override String get writeReportAbuse => 'รายงานการละเมิด';
+	@override String get writeChat => 'เขียนหรือลบข้อความแชท';
 }
 
 // Path: misskey.auth_
@@ -3497,7 +3513,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginThTh extends Translatio
 
 	// Translations
 	@override String get title => 'ต้องการติดตั้งปลั๊กอินนี้ใช่ไหม?';
-	@override String get metaTitle => 'ข้อมูลส่วนเสริม';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3508,7 +3523,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeThTh extends Translation
 
 	// Translations
 	@override String get title => 'ต้องการติดตั้งธีมนี้ใช่ไหม?';
-	@override String get metaTitle => 'ข้อมูลธีม';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

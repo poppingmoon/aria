@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsBnBd extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsBnBd({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsBnBd({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.bnBd,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsBnBd extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsBnBd _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsBnBd $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsBnBd(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaBnBd aria = _TranslationsAriaBnBd._(_root);
@@ -327,7 +330,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'আপনি কি "${x}" সরানোর ব্যাপারে নিশ্চিত?';
 	@override String get resetAreYouSure => 'রিসেট করার ব্যাপারে নিশ্চিত?';
 	@override String get saved => 'সংরক্ষিত হয়েছে';
-	@override String get messaging => 'চ্যাট';
 	@override String get upload => 'আপলোড';
 	@override String get keepOriginalUploading => 'আসল ছবি রাখুন';
 	@override String get keepOriginalUploadingDescription => 'ছবিটি আপলোড করার সময় আসল সংস্করণটি রাখুন। অপশনটি বন্ধ থাকলে, আপলোডের সময় ওয়েব প্রকাশনার জন্য ছবি ব্রাউজারে তৈরি করা হবে।';
@@ -340,7 +342,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get explore => 'ঘুরে দেখুন';
 	@override String get messageRead => 'পড়া';
 	@override String get noMoreHistory => 'আর কোন ইতিহাস নেই';
-	@override String get startMessaging => 'চ্যাট শুরু করুন';
 	@override String nUsersRead({required Object n}) => '${n} জন পড়েছেন';
 	@override String agreeTo({required Object x0}) => '${x0} এর প্রতি আমি সম্মত';
 	@override String get start => 'শুরু করুন';
@@ -502,8 +503,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user} এর নোট';
 	@override String get quoteAttached => 'উদ্ধৃত';
 	@override String get quoteQuestion => 'উদ্ধৃতি হিসাবে সংযুক্ত করবেন?';
-	@override String get noMessagesYet => 'কোন মেসেজ নেই';
-	@override String get newMessageExists => 'নতুন মেসেজ পেয়েছেন';
 	@override String get onlyOneFileCanBeAttached => 'আপনি মেসেজের সাথে সর্বোচ্চ একটি ফাইল যুক্ত করতে পারবেন';
 	@override String get signinRequired => 'দয়া করে লগ ইন করুন';
 	@override String get invitations => 'আমন্ত্রণ';
@@ -928,6 +927,8 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get sourceCode => 'সোর্স কোড';
 	@override String get flip => 'উল্টান';
 	@override String get postForm => 'নোট লিখুন';
+	@override String get information => 'আপনার সম্পর্কে';
+	@override late final _TranslationsMisskeyChatBnBd chat_ = _TranslationsMisskeyChatBnBd._(_root);
 	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
 	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);
 	@override late final _TranslationsMisskeyEmailUnavailableBnBd emailUnavailable_ = _TranslationsMisskeyEmailUnavailableBnBd._(_root);
@@ -977,6 +978,20 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiBnBd reversi_ = _TranslationsMisskeyReversiBnBd._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsBnBd remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsBnBd._(_root);
 	@override late final _TranslationsMisskeySearchBnBd search_ = _TranslationsMisskeySearchBnBd._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatBnBd extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'আমন্ত্রণ';
+	@override String get noHistory => 'কোনো ইতিহাস নেই';
+	@override String get members => 'সদস্যবৃন্দ';
+	@override String get home => 'মূল পাতা';
+	@override String get send => 'পাঠান';
 }
 
 // Path: misskey.delivery_
@@ -1364,6 +1379,7 @@ class _TranslationsMisskeyPermissionsBnBd extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'গ্যালারী সম্পাদনা করুন';
 	@override String get readGalleryLikes => 'গ্যালারীর পছন্দগুলি দেখুন';
 	@override String get writeGalleryLikes => 'গ্যালারীর পছন্দগুলি সম্পাদনা করুন';
+	@override String get writeChat => 'চ্যাটগুলি সম্পাদনা করুন';
 }
 
 // Path: misskey.auth_

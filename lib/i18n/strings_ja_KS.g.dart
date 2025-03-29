@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsJaKs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsJaKs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsJaKs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.jaKs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsJaKs extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsJaKs _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsJaKs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsJaKs(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaJaKs aria = _TranslationsAriaJaKs._(_root);
@@ -566,7 +569,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'リセットしてええん？';
 	@override String get areYouSure => 'いいん？';
 	@override String get saved => '保存したで！';
-	@override String get messaging => 'チャット';
 	@override String get upload => 'アップロード';
 	@override String get keepOriginalUploading => 'オリジナル画像のまんま';
 	@override String get keepOriginalUploadingDescription => '画像を上げるときにオリジナル版のまんまにするで。オフにしたら、上げたときにブラウザでWeb公開用の画像を生成するで。 ';
@@ -579,7 +581,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'みつける';
 	@override String get messageRead => 'もう読んだ';
 	@override String get noMoreHistory => 'これより昔のんはあらへんで';
-	@override String get startMessaging => 'チャットやるで';
 	@override String nUsersRead({required Object n}) => '${n}人が読んでもうた';
 	@override String agreeTo({required Object x0}) => '${x0}に同意したで';
 	@override String get agree => 'せやな';
@@ -768,8 +769,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => '引用付いとるで';
 	@override String get quoteQuestion => '引用として添付してもええか？';
 	@override String get attachAsFileQuestion => 'クリップボードのテキストが長すぎるからテキストファイルとして添付してもええか？';
-	@override String get noMessagesYet => 'まだチャットはあらへんで';
-	@override String get newMessageExists => '新しいメッセージがきたで';
 	@override String get onlyOneFileCanBeAttached => 'ごめんな、メッセージに添付できるファイルはひとつだけなんよ。';
 	@override String get signinRequired => 'ログインしてくれへん？';
 	@override String get signinOrContinueOnRemote => '続行するには、お使いのサーバーに移動するか、このサーバーに登録・ログインする必要があるで';
@@ -975,6 +974,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get makeActive => '使うで';
 	@override String get display => '表示';
 	@override String get copy => 'コピー';
+	@override String get copiedToClipboard => 'クリップボードにコピーされました';
 	@override String get metrics => 'メトリクス';
 	@override String get overview => '概要';
 	@override String get logs => 'ログ';
@@ -1600,7 +1600,19 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get noName => '名前はありません';
 	@override String get skip => 'スキップ';
 	@override String get restore => '復元';
+	@override String get syncBetweenDevices => 'デバイス間で同期';
+	@override String get preferenceSyncConflictTitle => 'サーバーに設定値が存在します';
+	@override String get preferenceSyncConflictText => '同期が有効にされた設定項目は設定値をサーバーに保存しますが、この設定項目のサーバーに保存された設定値が見つかりました。どちらの設定値で上書きしますか？';
+	@override String get preferenceSyncConflictChoiceServer => 'サーバーの設定値';
+	@override String get preferenceSyncConflictChoiceDevice => 'デバイスの設定値';
+	@override String get preferenceSyncConflictChoiceCancel => '同期の有効化をキャンセル';
+	@override String get paste => 'ペースト';
+	@override String get emojiPalette => '絵文字パレット';
 	@override String get postForm => '投稿フォーム';
+	@override String get textCount => '文字数';
+	@override String get information => '情報';
+	@override late final _TranslationsMisskeyChatJaKs chat_ = _TranslationsMisskeyChatJaKs._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteJaKs emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaKs._(_root);
 	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileJaKs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileJaKs._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupJaKs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupJaKs._(_root);
@@ -1700,6 +1712,33 @@ class _TranslationsMisskeyIOJaKs extends TranslationsMisskeyIOEnUs {
 	@override late final _TranslationsMisskeyIOSkebStatusJaKs skebStatus_ = _TranslationsMisskeyIOSkebStatusJaKs._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatJaKs extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => '来てや';
+	@override String get noHistory => '履歴はないわ。';
+	@override String get members => 'メンバーはん';
+	@override String get home => 'ホーム';
+	@override String get send => '送信';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteJaKs extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'パレット';
+	@override String get enableSyncBetweenDevicesForPalettes => 'パレットのデバイス間同期を有効にする';
+	@override String get paletteForMain => 'メインで使用するパレット';
+	@override String get paletteForReaction => 'リアクションで使用するパレット';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
@@ -1723,6 +1762,9 @@ class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	@override String get preferencesBanner => '好みに応じた、クライアントの全体的な動作の設定が行えます。';
 	@override String get appearanceBanner => '好みに応じた、クライアントの見た目・表示方法に関する設定が行えます。';
 	@override String get soundsBanner => 'クライアントで再生するサウンドの設定が行えます。';
+	@override String get timelineAndNote => 'タイムラインとノート';
+	@override String get makeEveryTextElementsSelectable => '全てのテキスト要素を選択可能にする';
+	@override String get makeEveryTextElementsSelectable_description => '有効にすると、一部のシチュエーションでのユーザビリティが低下する場合があります。';
 }
 
 // Path: misskey.preferencesProfile_
@@ -2544,6 +2586,7 @@ class _TranslationsMisskeyPermissionsJaKs extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'クリップのいいね見る';
 	@override String get readFederation => '連合の情報取得';
 	@override String get writeReportAbuse => '違反報告';
+	@override String get writeChat => 'チャットを操作するで';
 }
 
 // Path: misskey.auth_
@@ -2955,6 +2998,7 @@ class _TranslationsMisskeyDeckJaKs extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '非ルートページは簡易UIで表示';
 	@override String get usedAsMinWidthWhenFlexible => '「幅を自動調整」が有効の場合、これが幅の最小値となるで';
 	@override String get flexible => '幅を自動調整';
+	@override String get enableSyncBetweenDevicesForProfiles => 'プロファイル情報のデバイス間同期を有効にする';
 	@override late final _TranslationsMisskeyDeckColumnsJaKs columns_ = _TranslationsMisskeyDeckColumnsJaKs._(_root);
 }
 
@@ -3843,6 +3887,7 @@ class _TranslationsMisskeyNotificationTypesJaKs extends TranslationsMisskeyNotif
 	@override String get achievementEarned => '実績の獲得';
 	@override String get exportCompleted => 'エクスポート終わった';
 	@override String get login => 'ログイン';
+	@override String get createToken => 'アクセストークンの作成';
 	@override String get test => '通知テスト';
 	@override String get app => '連携アプリからの通知や';
 }
@@ -3933,7 +3978,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginJaKs extends Translatio
 
 	// Translations
 	@override String get title => 'このプラグイン、インストールする？';
-	@override String get metaTitle => 'プラグイン情報';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3944,7 +3988,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeJaKs extends Translation
 
 	// Translations
 	@override String get title => 'このテーマインストールする？';
-	@override String get metaTitle => 'テーマ情報';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

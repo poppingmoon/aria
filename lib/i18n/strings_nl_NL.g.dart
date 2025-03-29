@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsNlNl extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsNlNl({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsNlNl({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.nlNl,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsNlNl extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsNlNl _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsNlNl $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsNlNl(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaNlNl aria = _TranslationsAriaNlNl._(_root);
@@ -320,7 +323,6 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Weet je zeker dat je "${x}" wil verwijderen?';
 	@override String get resetAreYouSure => 'Resetten?';
 	@override String get saved => 'Opgeslagen';
-	@override String get messaging => 'Chat';
 	@override String get upload => 'Uploaden';
 	@override String get keepOriginalUploading => 'Origineel beeld behouden.';
 	@override String get keepOriginalUploadingDescription => 'Bewaar de originele versie bij het uploaden van afbeeldingen. Indien uitgeschakeld, wordt bij het uploaden een alternatieve versie voor webpublicatie genereert.';
@@ -333,7 +335,6 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Verkennen';
 	@override String get messageRead => 'Lezen';
 	@override String get noMoreHistory => 'Er is geen verdere geschiedenis';
-	@override String get startMessaging => 'Start een gesprek';
 	@override String nUsersRead({required Object n}) => 'gelezen door ${n}';
 	@override String agreeTo({required Object x0}) => 'Ik stem in met ${x0}';
 	@override String get start => 'Aan de slag';
@@ -526,6 +527,8 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'Antwoord';
 	@override String get renotes => 'Herdelen';
+	@override String get information => 'Over';
+	@override late final _TranslationsMisskeyChatNlNl chat_ = _TranslationsMisskeyChatNlNl._(_root);
 	@override late final _TranslationsMisskeyDeliveryNlNl delivery_ = _TranslationsMisskeyDeliveryNlNl._(_root);
 	@override late final _TranslationsMisskeyEmailNlNl email_ = _TranslationsMisskeyEmailNlNl._(_root);
 	@override late final _TranslationsMisskeyThemeNlNl theme_ = _TranslationsMisskeyThemeNlNl._(_root);
@@ -546,6 +549,18 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiNlNl reversi_ = _TranslationsMisskeyReversiNlNl._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNlNl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNlNl._(_root);
 	@override late final _TranslationsMisskeySearchNlNl search_ = _TranslationsMisskeySearchNlNl._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatNlNl extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Uitnodigen';
+	@override String get members => 'Leden';
+	@override String get home => 'Startpagina';
 }
 
 // Path: misskey.delivery_

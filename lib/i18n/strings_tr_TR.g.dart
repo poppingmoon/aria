@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsTrTr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsTrTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsTrTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.trTr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsTrTr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsTrTr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsTrTr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsTrTr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaTrTr aria = _TranslationsAriaTrTr._(_root);
@@ -327,7 +330,6 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => '"${x}" silmek istediğinizden emin misiniz?';
 	@override String get resetAreYouSure => 'Sıfırlansın mı?';
 	@override String get saved => 'Kaydedildi';
-	@override String get messaging => 'Mesajlar';
 	@override String get upload => 'Yükle';
 	@override String get keepOriginalUploading => 'Orijinal görseli koru';
 	@override String get keepOriginalUploadingDescription => 'Orijinal olarak yüklenen görüntüyü olduğu gibi kaydeder. Kapatılırsa, yükleme sırasında web\'de görüntülenecek bir sürüm oluşturulur.';
@@ -340,7 +342,6 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Keşfet';
 	@override String get messageRead => 'Okundu';
 	@override String get noMoreHistory => 'Bundan öncesi yok';
-	@override String get startMessaging => 'Yeni bir sohbet başlat';
 	@override String nUsersRead({required Object n}) => '${n} kişi okudu';
 	@override String agreeTo({required Object x0}) => 'Kabul Ediyorum: ${x0}';
 	@override String get agree => 'Kabul Et';
@@ -417,7 +418,6 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get manageAntennas => 'Anten ayarları';
 	@override String get userList => 'Listeler';
 	@override String get resetPassword => 'Şifre sıfırlama';
-	@override String get noMessagesYet => 'Şimdilik mesaj yok';
 	@override String get details => 'Detaylar';
 	@override String get deck => 'Güverte';
 	@override String get smtpHost => 'Sağlayıcı';
@@ -444,6 +444,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'yanıt';
 	@override String get renotes => 'vazgeçme';
+	@override late final _TranslationsMisskeyChatTrTr chat_ = _TranslationsMisskeyChatTrTr._(_root);
 	@override late final _TranslationsMisskeyDeliveryTrTr delivery_ = _TranslationsMisskeyDeliveryTrTr._(_root);
 	@override late final _TranslationsMisskeyAccountDeleteTrTr accountDelete_ = _TranslationsMisskeyAccountDeleteTrTr._(_root);
 	@override late final _TranslationsMisskeyEmailTrTr email_ = _TranslationsMisskeyEmailTrTr._(_root);
@@ -464,6 +465,16 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDeckTrTr deck_ = _TranslationsMisskeyDeckTrTr._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesTrTr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesTrTr._(_root);
 	@override late final _TranslationsMisskeySearchTrTr search_ = _TranslationsMisskeySearchTrTr._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatTrTr extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Ana sayfa';
 }
 
 // Path: misskey.delivery_

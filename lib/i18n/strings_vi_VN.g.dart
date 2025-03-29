@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsViVn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsViVn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsViVn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.viVn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsViVn extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsViVn _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsViVn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsViVn(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaViVn aria = _TranslationsAriaViVn._(_root);
@@ -341,7 +344,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Bạn có chắc muốn đặt lại?';
 	@override String get areYouSure => 'Bạn chắc chứ?';
 	@override String get saved => 'Đã lưu';
-	@override String get messaging => 'Trò chuyện';
 	@override String get upload => 'Tải lên';
 	@override String get keepOriginalUploading => 'Giữ hình ảnh gốc';
 	@override String get keepOriginalUploadingDescription => 'Giữ nguyên như hình ảnh được tải lên ban đầu. Nếu tắt, một phiên bản để hiển thị trên web sẽ được tạo khi tải lên.';
@@ -354,7 +356,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Khám phá';
 	@override String get messageRead => 'Đã đọc';
 	@override String get noMoreHistory => 'Không còn gì để đọc';
-	@override String get startMessaging => 'Bắt đầu trò chuyện';
 	@override String nUsersRead({required Object n}) => 'đọc bởi ${n}';
 	@override String agreeTo({required Object x0}) => 'Tôi đồng ý ${x0}';
 	@override String get agree => 'Đồng ý';
@@ -540,8 +541,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Trích dẫn';
 	@override String get quoteQuestion => 'Trích dẫn lại?';
 	@override String get attachAsFileQuestion => 'Văn bản ở trong bộ nhớ tạm rất dài. Bạn có muốn đăng nó dưới dạng một tệp văn bản không?';
-	@override String get noMessagesYet => 'Chưa có tin nhắn';
-	@override String get newMessageExists => 'Bạn có tin nhắn mới';
 	@override String get onlyOneFileCanBeAttached => 'Bạn chỉ có thể đính kèm một tập tin';
 	@override String get signinRequired => 'Vui lòng đăng nhập';
 	@override String get invitations => 'Mời';
@@ -1197,6 +1196,8 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
 	@override String get surrender => 'Từ chối';
 	@override String get postForm => 'Mẫu đăng';
+	@override String get information => 'Giới thiệu';
+	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
 	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
 	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingViVn._(_root);
@@ -1254,6 +1255,20 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiViVn reversi_ = _TranslationsMisskeyReversiViVn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
 	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatViVn extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Mời';
+	@override String get noHistory => 'Không có dữ liệu';
+	@override String get members => 'Thành viên';
+	@override String get home => 'Trang chính';
+	@override String get send => 'Gửi';
 }
 
 // Path: misskey.delivery_
@@ -1775,6 +1790,7 @@ class _TranslationsMisskeyPermissionsViVn extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'Sửa kho ảnh của tôi';
 	@override String get readGalleryLikes => 'Xem danh sách các tút đã thích trong thư viện của tôi';
 	@override String get writeGalleryLikes => 'Sửa danh sách các tút đã thích trong thư viện của tôi';
+	@override String get writeChat => 'Soạn hoặc xóa tin nhắn';
 }
 
 // Path: misskey.auth_

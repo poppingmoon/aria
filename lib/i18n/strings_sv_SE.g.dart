@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsSvSe extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsSvSe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsSvSe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.svSe,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsSvSe extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsSvSe _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsSvSe $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsSvSe(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaSvSe aria = _TranslationsAriaSvSe._(_root);
@@ -322,7 +325,6 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Är du säker att du vill radera "${x}"?';
 	@override String get resetAreYouSure => 'Vill du återställa?';
 	@override String get saved => 'Sparad';
-	@override String get messaging => 'Chatt';
 	@override String get upload => 'Ladda upp';
 	@override String get keepOriginalUploading => 'Behåll originalbild';
 	@override String get keepOriginalUploadingDescription => 'Sparar den originellt uppladdade bilden i sitt i befintliga skick. Om avstängd, kommer en webbversion bli genererad vid uppladdning.';
@@ -335,7 +337,6 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Utforska';
 	@override String get messageRead => 'Läs';
 	@override String get noMoreHistory => 'Det finns ingen mer historik';
-	@override String get startMessaging => 'Starta en chatt';
 	@override String nUsersRead({required Object n}) => 'läst av ${n}';
 	@override String agreeTo({required Object x0}) => 'Jag accepterar ${x0}';
 	@override String get agree => 'Överens';
@@ -467,7 +468,6 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get enable => 'Aktivera';
 	@override String get next => 'Nästa';
 	@override String get retype => 'Ange igen';
-	@override String get noMessagesYet => 'Inga meddelanden än';
 	@override String get invitations => 'Inbjudan';
 	@override String get invitationCode => 'Inbjudningskod';
 	@override String get available => 'Tillgängligt';
@@ -635,6 +635,8 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get tryAgain => 'Försök igen senare';
 	@override String get signinWithPasskey => 'Logga in med nyckel';
 	@override String get unknownWebAuthnKey => 'Okänd nyckel';
+	@override String get information => 'Om';
+	@override late final _TranslationsMisskeyChatSvSe chat_ = _TranslationsMisskeyChatSvSe._(_root);
 	@override late final _TranslationsMisskeyDeliverySvSe delivery_ = _TranslationsMisskeyDeliverySvSe._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingSvSe initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingSvSe._(_root);
 	@override late final _TranslationsMisskeyInitialTutorialSvSe initialTutorial_ = _TranslationsMisskeyInitialTutorialSvSe._(_root);
@@ -672,6 +674,19 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiSvSe reversi_ = _TranslationsMisskeyReversiSvSe._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionSvSe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionSvSe._(_root);
 	@override late final _TranslationsMisskeySearchSvSe search_ = _TranslationsMisskeySearchSvSe._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatSvSe extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Inbjudan';
+	@override String get members => 'Medlemmar';
+	@override String get home => 'Hem';
+	@override String get send => 'Skicka';
 }
 
 // Path: misskey.delivery_

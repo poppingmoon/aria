@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsPlPl extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsPlPl({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsPlPl({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.plPl,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsPlPl extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsPlPl _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsPlPl $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsPlPl(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaPlPl aria = _TranslationsAriaPlPl._(_root);
@@ -346,7 +349,6 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Czy na pewno chcesz zresetować?';
 	@override String get areYouSure => 'Na pewno?';
 	@override String get saved => 'Zapisano';
-	@override String get messaging => 'Wiadomości';
 	@override String get upload => 'Wyślij';
 	@override String get keepOriginalUploading => 'Zachowaj oryginalny obraz';
 	@override String get keepOriginalUploadingDescription => 'Zapisuje oryginalnie przesłany obraz w niezmienionej postaci. Jeśli ta opcja jest wyłączona, po przesłaniu zostanie wygenerowana wersja do wyświetlenia w Internecie.';
@@ -359,7 +361,6 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Eksploruj';
 	@override String get messageRead => 'Przeczytano';
 	@override String get noMoreHistory => 'Nie ma dalszej historii';
-	@override String get startMessaging => 'Rozpocznij czat';
 	@override String nUsersRead({required Object n}) => 'przeczytano przez ${n}';
 	@override String agreeTo({required Object x0}) => 'Wyrażam zgodę na ${x0}';
 	@override String get agree => 'Zatwierdź';
@@ -543,8 +544,6 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Wpisy ${user}';
 	@override String get quoteAttached => 'Zacytowano';
 	@override String get quoteQuestion => 'Czy na pewno chcesz umieścić cytat?';
-	@override String get noMessagesYet => 'Nie napisano jeszcze wiadomości';
-	@override String get newMessageExists => 'Masz nową wiadomość';
 	@override String get onlyOneFileCanBeAttached => 'Możesz załączyć tylko jeden plik do wiadomości';
 	@override String get signinRequired => 'Proszę się zalogować';
 	@override String get invitations => 'Zaproś';
@@ -1122,6 +1121,8 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get surrender => 'Odrzuć';
 	@override String get gameRetry => 'Spróbuj ponownie';
 	@override String get postForm => 'Formularz tworzenia wpisu';
+	@override String get information => 'Informacje';
+	@override late final _TranslationsMisskeyChatPlPl chat_ = _TranslationsMisskeyChatPlPl._(_root);
 	@override late final _TranslationsMisskeyDeliveryPlPl delivery_ = _TranslationsMisskeyDeliveryPlPl._(_root);
 	@override late final _TranslationsMisskeyBubbleGamePlPl bubbleGame_ = _TranslationsMisskeyBubbleGamePlPl._(_root);
 	@override late final _TranslationsMisskeyRolePlPl role_ = _TranslationsMisskeyRolePlPl._(_root);
@@ -1174,6 +1175,20 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiPlPl reversi_ = _TranslationsMisskeyReversiPlPl._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPlPl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPlPl._(_root);
 	@override late final _TranslationsMisskeySearchPlPl search_ = _TranslationsMisskeySearchPlPl._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatPlPl extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Zaproś';
+	@override String get noHistory => 'Brak historii';
+	@override String get members => 'Członkowie';
+	@override String get home => 'Strona główna';
+	@override String get send => 'Wyślij';
 }
 
 // Path: misskey.delivery_
@@ -1606,6 +1621,7 @@ class _TranslationsMisskeyPermissionsPlPl extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'Edytuj swoją galerię';
 	@override String get readGalleryLikes => 'Wyświetlanie listy polubionych postów w galerii';
 	@override String get writeGalleryLikes => 'Edytowanie listy polubionych postów w galerii';
+	@override String get writeChat => 'Tworzenie lub usuwanie wiadomości czatu';
 }
 
 // Path: misskey.auth_

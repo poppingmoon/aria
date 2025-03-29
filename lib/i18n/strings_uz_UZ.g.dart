@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsUzUz extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsUzUz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsUzUz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.uzUz,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsUzUz extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsUzUz _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsUzUz $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsUzUz(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaUzUz aria = _TranslationsAriaUzUz._(_root);
@@ -332,7 +335,6 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => '“${x}”ni chindan ham yo\'q qilmoqchimisiz?';
 	@override String get resetAreYouSure => 'Haqiqatan ham qayta tiklansinmi?';
 	@override String get saved => 'Saqlandi';
-	@override String get messaging => 'Suhbat';
 	@override String get upload => 'Yuklash';
 	@override String get keepOriginalUploading => 'Asl rasmni saqlang';
 	@override String get keepOriginalUploadingDescription => 'Rasmlarni yuklashda asl nusxasini saqlaydi. Agar o\'chirilgan bo\'lsa, brauzer yuklangandan keyin nashr qilish uchun rasm yaratadi.';
@@ -345,7 +347,6 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Ko\'rib chiqish';
 	@override String get messageRead => 'O‘qildi';
 	@override String get noMoreHistory => 'Buning ortida hech qanday hikoya yo\'q';
-	@override String get startMessaging => 'Yangi suhbatni boshlash';
 	@override String nUsersRead({required Object n}) => '${n} tomonidan o\'qildi';
 	@override String agreeTo({required Object x0}) => 'Men ${x0} ga roziman';
 	@override String get agree => 'Rozi bo\'lish';
@@ -520,8 +521,6 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user} tomonidan  joylandi\n';
 	@override String get quoteAttached => 'Iqtibos';
 	@override String get quoteQuestion => 'Iqtibos sifatida qo\'shilsinmi?';
-	@override String get noMessagesYet => 'Bu yerda xabarlar yo\'q';
-	@override String get newMessageExists => 'Yangi xabarlar bor';
 	@override String get onlyOneFileCanBeAttached => 'Faqat bitta faylni biriktirish mumkin';
 	@override String get signinRequired => 'Davom etishdan oldin ro\'yhatdan o\'tishingiz yoki tizimga kirishingiz kerak';
 	@override String get invitations => 'Taklif qilish';
@@ -916,6 +915,8 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String get replies => 'Javob berish';
 	@override String get renotes => 'Qayta qayd etish';
 	@override String get flip => 'Teskari';
+	@override String get information => 'Haqida';
+	@override late final _TranslationsMisskeyChatUzUz chat_ = _TranslationsMisskeyChatUzUz._(_root);
 	@override late final _TranslationsMisskeyDeliveryUzUz delivery_ = _TranslationsMisskeyDeliveryUzUz._(_root);
 	@override late final _TranslationsMisskeyAchievementsUzUz achievements_ = _TranslationsMisskeyAchievementsUzUz._(_root);
 	@override late final _TranslationsMisskeyRoleUzUz role_ = _TranslationsMisskeyRoleUzUz._(_root);
@@ -950,6 +951,20 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiUzUz reversi_ = _TranslationsMisskeyReversiUzUz._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUzUz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUzUz._(_root);
 	@override late final _TranslationsMisskeySearchUzUz search_ = _TranslationsMisskeySearchUzUz._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatUzUz extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Taklif qilish';
+	@override String get noHistory => 'Tarix yo\'q';
+	@override String get members => 'A\'zolar';
+	@override String get home => 'Bosh sahifa';
+	@override String get send => 'Yuborish';
 }
 
 // Path: misskey.delivery_

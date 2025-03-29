@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsPtPt extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsPtPt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsPtPt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ptPt,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsPtPt extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsPtPt _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsPtPt $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsPtPt(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaPtPt aria = _TranslationsAriaPtPt._(_root);
@@ -416,7 +419,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Deseja reiniciar?';
 	@override String get areYouSure => 'Tem certeza?';
 	@override String get saved => 'Salvo';
-	@override String get messaging => 'Chat';
 	@override String get upload => 'Fazer upload';
 	@override String get keepOriginalUploading => 'Manter a imagem original';
 	@override String get keepOriginalUploadingDescription => 'Ao fazer o upload de uma imagem, ela será mantida em sua versão original. Caso desative esta opção, o navegador irá gerar uma versão da imagem otimizada para publicação na web durante o upload.';
@@ -429,7 +431,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explorar';
 	@override String get messageRead => 'Lida';
 	@override String get noMoreHistory => 'Não existe histórico anterior';
-	@override String get startMessaging => 'Iniciar conversação';
 	@override String nUsersRead({required Object n}) => '${n} pessoas leram';
 	@override String agreeTo({required Object x0}) => 'Eu concordo com ${x0}';
 	@override String get agree => 'Concordar';
@@ -618,8 +619,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Com citação';
 	@override String get quoteQuestion => 'Anexar como citação?';
 	@override String get attachAsFileQuestion => 'O texto na área de transferência é muito longo. Você gostaria de anexá-lo como um arquivo de texto?';
-	@override String get noMessagesYet => 'Sem conversas até o momento';
-	@override String get newMessageExists => 'Há uma nova mensagem';
 	@override String get onlyOneFileCanBeAttached => 'Apenas um arquivo pode ser anexado a uma mensagem';
 	@override String get signinRequired => 'É necessário se inscrever ou fazer login antes de continuar';
 	@override String get signinOrContinueOnRemote => 'Para continuar, você precisa mover o seu servidor ou entrar/cadastrar-se nesse servidor.';
@@ -1431,6 +1430,8 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get availableRoles => 'Cargos disponíveis';
 	@override String get acknowledgeNotesAndEnable => 'Ative após compreender as precauções.';
 	@override String get postForm => 'Campo de postagem';
+	@override String get information => 'Informações';
+	@override late final _TranslationsMisskeyChatPtPt chat_ = _TranslationsMisskeyChatPtPt._(_root);
 	@override late final _TranslationsMisskeySettingsPtPt settings_ = _TranslationsMisskeySettingsPtPt._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsPtPt accountSettings_ = _TranslationsMisskeyAccountSettingsPtPt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportPtPt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportPtPt._(_root);
@@ -1511,6 +1512,20 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestPtPt followRequest_ = _TranslationsMisskeyFollowRequestPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPtPt remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPtPt._(_root);
 	@override late final _TranslationsMisskeySearchPtPt search_ = _TranslationsMisskeySearchPtPt._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatPtPt extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Convidar';
+	@override String get noHistory => 'Ainda não há histórico';
+	@override String get members => 'Membros';
+	@override String get home => 'Início';
+	@override String get send => 'Enviar';
 }
 
 // Path: misskey.settings_
@@ -2311,6 +2326,7 @@ class _TranslationsMisskeyPermissionsPtPt extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'Ver Clipes favoritados';
 	@override String get readFederation => 'Ver dados de federação';
 	@override String get writeReportAbuse => 'Reportar violação';
+	@override String get writeChat => 'Compor ou editar mensagens de chat';
 }
 
 // Path: misskey.auth_
@@ -3612,7 +3628,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginPtPt extends Translatio
 
 	// Translations
 	@override String get title => 'Deseja instalar esse plugin?';
-	@override String get metaTitle => 'Informações do plugin';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3623,7 +3638,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemePtPt extends Translation
 
 	// Translations
 	@override String get title => 'Deseja instalar esse tema?';
-	@override String get metaTitle => 'Informações do tema';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

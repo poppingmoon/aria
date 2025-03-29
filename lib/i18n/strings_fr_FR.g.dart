@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsFrFr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsFrFr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsFrFr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.frFr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsFrFr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsFrFr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsFrFr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsFrFr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaFrFr aria = _TranslationsAriaFrFr._(_root);
@@ -359,7 +362,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Voulez-vous réinitialiser ?';
 	@override String get areYouSure => 'Êtes-vous sûr·e ?';
 	@override String get saved => 'Enregistré';
-	@override String get messaging => 'Discuter';
 	@override String get upload => 'Téléverser';
 	@override String get keepOriginalUploading => 'Garder l’image d’origine';
 	@override String get keepOriginalUploadingDescription => 'Conserve la version originale lors du téléchargement d\'images. S\'il est désactivé, le navigateur génère l\'image pour la publication web lors du téléchargement.';
@@ -372,7 +374,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Découvrir';
 	@override String get messageRead => 'Lu';
 	@override String get noMoreHistory => 'Il n’y a plus d’historique';
-	@override String get startMessaging => 'Commencer à discuter';
 	@override String nUsersRead({required Object n}) => 'Lu par ${n} personnes';
 	@override String agreeTo({required Object x0}) => 'J’accepte ${x0}';
 	@override String get agree => 'Accepter';
@@ -559,8 +560,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Notes de ${user}';
 	@override String get quoteAttached => 'Avec citation';
 	@override String get quoteQuestion => 'Souhaitez-vous ajouter une citation ?';
-	@override String get noMessagesYet => 'Pas encore de discussion';
-	@override String get newMessageExists => 'Vous avez un nouveau message';
 	@override String get onlyOneFileCanBeAttached => 'Vous ne pouvez joindre qu’un seul fichier au message';
 	@override String get signinRequired => 'Veuillez vous connecter';
 	@override String get invitations => 'Invitations';
@@ -1360,6 +1359,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => 'Sélectionner un compte';
 	@override String get availableRoles => 'Rôles disponibles';
 	@override String get postForm => 'Formulaire de publication';
+	@override String get information => 'Informations';
+	@override late final _TranslationsMisskeyChatFrFr chat_ = _TranslationsMisskeyChatFrFr._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportFrFr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportFrFr._(_root);
 	@override late final _TranslationsMisskeyDeliveryFrFr delivery_ = _TranslationsMisskeyDeliveryFrFr._(_root);
 	@override late final _TranslationsMisskeyBubbleGameFrFr bubbleGame_ = _TranslationsMisskeyBubbleGameFrFr._(_root);
@@ -1429,6 +1430,20 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenFrFr embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenFrFr._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsFrFr remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsFrFr._(_root);
 	@override late final _TranslationsMisskeySearchFrFr search_ = _TranslationsMisskeySearchFrFr._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatFrFr extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Inviter';
+	@override String get noHistory => 'Pas d\'historique';
+	@override String get members => 'Membres';
+	@override String get home => 'Principal';
+	@override String get send => 'Envoyer';
 }
 
 // Path: misskey.abuseUserReport_
@@ -2102,6 +2117,7 @@ class _TranslationsMisskeyPermissionsFrFr extends TranslationsMisskeyPermissions
 	@override String get writeAdminUnsuspendUser => 'Lever la suspension d\'un utilisateur';
 	@override String get writeAdminMeta => 'Gérer les métadonnées de l\'instance';
 	@override String get writeAdminRoles => 'Gérer les rôles';
+	@override String get writeChat => 'Gérer les discussions';
 }
 
 // Path: misskey.auth_
@@ -3087,7 +3103,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginFrFr extends Translatio
 
 	// Translations
 	@override String get title => 'Voulez-vous installer cette extension ?';
-	@override String get metaTitle => 'Informations sur l\'extension';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3098,7 +3113,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeFrFr extends Translation
 
 	// Translations
 	@override String get title => 'Voulez-vous installer ce thème ?';
-	@override String get metaTitle => 'Informations sur le thème';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

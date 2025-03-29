@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsSkSk extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsSkSk({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsSkSk({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.skSk,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsSkSk extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsSkSk _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsSkSk $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsSkSk(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaSkSk aria = _TranslationsAriaSkSk._(_root);
@@ -319,7 +322,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Naozaj chcete odstrániť "${x}"?';
 	@override String get resetAreYouSure => 'Naozaj resetovať?';
 	@override String get saved => 'Uložené';
-	@override String get messaging => 'Chat';
 	@override String get upload => 'Nahrať súbor';
 	@override String get keepOriginalUploading => 'Zachovať pôvodný obrázok';
 	@override String get keepOriginalUploadingDescription => 'Uloží pôvodný obrázok ako je. Ak je vypnuté, verzia pre web sa vygeneruje pri nahratí.';
@@ -332,7 +334,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Objavovať';
 	@override String get messageRead => 'Prečítané';
 	@override String get noMoreHistory => 'To je všetko';
-	@override String get startMessaging => 'Začať chat';
 	@override String nUsersRead({required Object n}) => 'prečítané ${n} používateľmi';
 	@override String agreeTo({required Object x0}) => 'Súhlasím s ${x0}';
 	@override String get agreeBelow => 'Súhlasím s nasledovným';
@@ -505,8 +506,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Poznámky používateľa ${user}';
 	@override String get quoteAttached => 'Citované';
 	@override String get quoteQuestion => 'Pripojiť ako citát?';
-	@override String get noMessagesYet => 'Zatiaľ žiadne správy';
-	@override String get newMessageExists => 'Máte novú správu';
 	@override String get onlyOneFileCanBeAttached => 'Ku správe môžete priložiť len jeden súbor';
 	@override String get signinRequired => 'Prihláste sa, prosím!';
 	@override String get invitations => 'Pozvať';
@@ -995,6 +994,8 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get flip => 'Preklopiť';
 	@override String lastNDays({required Object n}) => 'Posledných ${n} dní';
 	@override String get postForm => 'Napísať poznámku';
+	@override String get information => 'Informácie';
+	@override late final _TranslationsMisskeyChatSkSk chat_ = _TranslationsMisskeyChatSkSk._(_root);
 	@override late final _TranslationsMisskeyDeliverySkSk delivery_ = _TranslationsMisskeyDeliverySkSk._(_root);
 	@override late final _TranslationsMisskeyRoleSkSk role_ = _TranslationsMisskeyRoleSkSk._(_root);
 	@override late final _TranslationsMisskeySensitiveMediaDetectionSkSk sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionSkSk._(_root);
@@ -1046,6 +1047,20 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiSkSk reversi_ = _TranslationsMisskeyReversiSkSk._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsSkSk remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsSkSk._(_root);
 	@override late final _TranslationsMisskeySearchSkSk search_ = _TranslationsMisskeySearchSkSk._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatSkSk extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Pozvať';
+	@override String get noHistory => 'Žiadna história';
+	@override String get members => 'Členovia';
+	@override String get home => 'Domov';
+	@override String get send => 'Poslať';
 }
 
 // Path: misskey.delivery_
@@ -1476,6 +1491,7 @@ class _TranslationsMisskeyPermissionsSkSk extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'Upravovať vašu galériu';
 	@override String get readGalleryLikes => 'Vidieť zoznam obľúbených príspevkov z galérie';
 	@override String get writeGalleryLikes => 'Upraviť zoznam obľúbených príspevov z galérie';
+	@override String get writeChat => 'Písať alebo odstraňovať správy v chate';
 }
 
 // Path: misskey.auth_

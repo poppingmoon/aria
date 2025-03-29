@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsItIt extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsItIt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsItIt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.itIt,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsItIt extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsItIt _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsItIt $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsItIt(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaItIt aria = _TranslationsAriaItIt._(_root);
@@ -371,7 +374,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get resetAreYouSure => 'Ripristinare?';
 	@override String get areYouSure => 'Confermi?';
 	@override String get saved => 'Salvato';
-	@override String get messaging => 'Messaggi';
 	@override String get upload => 'Carica';
 	@override String get keepOriginalUploading => 'Conservare l\'immagine originale.';
 	@override String get keepOriginalUploadingDescription => 'Conserva la versione originale quando si caricano le immagini. Se è disattivato, il browser genera l\'immagine per la pubblicazione sul Web durante il caricamento.';
@@ -384,7 +386,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Esplora';
 	@override String get messageRead => 'Visualizzato';
 	@override String get noMoreHistory => 'Non c\'è più cronologia da visualizzare';
-	@override String get startMessaging => 'Nuovo messaggio';
 	@override String nUsersRead({required Object n}) => 'Letto da ${n} persone';
 	@override String agreeTo({required Object x0}) => 'Sono d\'accordo con ${x0}';
 	@override String get agree => 'Accetto';
@@ -573,8 +574,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get quoteAttached => 'Citazione allegata';
 	@override String get quoteQuestion => 'Vuoi aggiungere una citazione?';
 	@override String get attachAsFileQuestion => 'Il testo copiato eccede le dimensioni, vuoi allegarlo?';
-	@override String get noMessagesYet => 'Ancora nessuna chat';
-	@override String get newMessageExists => 'Hai ricevuto un nuovo messaggio';
 	@override String get onlyOneFileCanBeAttached => 'È possibile allegare al messaggio soltanto uno file';
 	@override String get signinRequired => 'Occorre avere un profilo registrato su questa istanza';
 	@override String get signinOrContinueOnRemote => 'Per continuare, devi accedere alla tua istanza o registrarti su questa e poi accedere';
@@ -780,6 +779,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get makeActive => 'Attiva';
 	@override String get display => 'Visualizza';
 	@override String get copy => 'Copia';
+	@override String get copiedToClipboard => 'Copiato negli appunti';
 	@override String get metrics => 'Statistiche';
 	@override String get overview => 'Anteprima';
 	@override String get logs => 'Log';
@@ -1055,7 +1055,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get driveCapOverrideLabel => 'Modificare la capienza del Drive per questo profilo';
 	@override String get driveCapOverrideCaption => 'Se viene specificato meno di 0, viene annullato.';
 	@override String get requireAdminForView => 'Per visualizzarli, è necessario aver effettuato l\'accesso con un profilo amministratore.';
-	@override String get isSystemAccount => 'Questi profili vengono creati e gestiti automaticamente dal sistema';
+	@override String get isSystemAccount => 'Si tratta di un profilo creato e gestito automaticamente dal sistema.';
 	@override String typeToConfirm({required Object x}) => 'Digita ${x} per continuare';
 	@override String get deleteAccount => 'Eliminazione profilo';
 	@override String get document => 'Documentazione';
@@ -1405,7 +1405,19 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get noName => 'Senza nome';
 	@override String get skip => 'Salta';
 	@override String get restore => 'Ripristina';
+	@override String get syncBetweenDevices => 'Sincronizzazione tra i dispositivi';
+	@override String get preferenceSyncConflictTitle => 'Sul server esiste già il valore impostato';
+	@override String get preferenceSyncConflictText => 'Le impostazione sincronizzata salverà il valore sul server. Però, bada che esiste già un valore sul server. Quale vorresti sovrascrivere?';
+	@override String get preferenceSyncConflictChoiceServer => 'Valore del server';
+	@override String get preferenceSyncConflictChoiceDevice => 'Valore del dispositivo';
+	@override String get preferenceSyncConflictChoiceCancel => 'Annulla la sincronizzazione';
+	@override String get paste => 'Incolla';
+	@override String get emojiPalette => 'Tavolozza emoji';
 	@override String get postForm => 'Finestra di pubblicazione';
+	@override String get textCount => 'Il numero di caratteri';
+	@override String get information => 'Informazioni';
+	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
 	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
 	@override late final _TranslationsMisskeyPreferencesProfileItIt preferencesProfile_ = _TranslationsMisskeyPreferencesProfileItIt._(_root);
 	@override late final _TranslationsMisskeyPreferencesBackupItIt preferencesBackup_ = _TranslationsMisskeyPreferencesBackupItIt._(_root);
@@ -1495,6 +1507,33 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchItIt search_ = _TranslationsMisskeySearchItIt._(_root);
 }
 
+// Path: misskey.chat_
+class _TranslationsMisskeyChatItIt extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Invita';
+	@override String get noHistory => 'Nessuna cronologia';
+	@override String get members => 'Membri';
+	@override String get home => 'Home';
+	@override String get send => 'Inviare';
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteItIt extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'Tavolozza';
+	@override String get enableSyncBetweenDevicesForPalettes => 'Attiva la sincronizzazione tra dispositivi';
+	@override String get paletteForMain => 'Tavolozza principale';
+	@override String get paletteForReaction => 'Tavolozza per reazioni';
+}
+
 // Path: misskey.settings_
 class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	_TranslationsMisskeySettingsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -1518,6 +1557,9 @@ class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	@override String get preferencesBanner => 'Puoi personalizzare il comportamento del tuo dispositivo.';
 	@override String get appearanceBanner => 'Puoi personalizzare l\'aspetto nel dispositivo, in base alle tue preferenze.';
 	@override String get soundsBanner => 'Puoi personalizzare i suoni emessi dagli eventi sul tuo dispositivo.';
+	@override String get timelineAndNote => 'Note e Timeline';
+	@override String get makeEveryTextElementsSelectable => 'Imposta ogni elemento come selezionabile';
+	@override String get makeEveryTextElementsSelectable_description => 'Potrebbe ridurre l\'usabilità in alcune situazioni.';
 }
 
 // Path: misskey.preferencesProfile_
@@ -2339,6 +2381,7 @@ class _TranslationsMisskeyPermissionsItIt extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'Vedere Clip preferite';
 	@override String get readFederation => 'Vedere la federazione';
 	@override String get writeReportAbuse => 'Inviare segnalazioni';
+	@override String get writeChat => 'Gestire la chat';
 }
 
 // Path: misskey.auth_
@@ -2750,6 +2793,7 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => 'Visualizza sotto pagine con interfaccia web semplice';
 	@override String get usedAsMinWidthWhenFlexible => 'Se "larghezza flessibile" è abilitato, questa diventa la larghezza minima';
 	@override String get flexible => 'Larghezza flessibile';
+	@override String get enableSyncBetweenDevicesForProfiles => 'Abilita la sincronizzazione delle informazioni profilo tra dispositivi';
 	@override late final _TranslationsMisskeyDeckColumnsItIt columns_ = _TranslationsMisskeyDeckColumnsItIt._(_root);
 }
 
@@ -3622,6 +3666,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	@override String get achievementEarned => 'Risultato raggiunto';
 	@override String get exportCompleted => 'Esportazione completata';
 	@override String get login => 'Accessi';
+	@override String get createToken => 'Creare un token di accesso';
 	@override String get test => 'Notifiche di test';
 	@override String get app => 'Notifiche da applicazioni';
 }
@@ -3712,7 +3757,6 @@ class _TranslationsMisskeyExternalResourceInstallerPluginItIt extends Translatio
 
 	// Translations
 	@override String get title => 'Vuoi davvero installare questo componente aggiuntivo?';
-	@override String get metaTitle => 'Informazioni sul componente aggiuntivo';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -3723,7 +3767,6 @@ class _TranslationsMisskeyExternalResourceInstallerThemeItIt extends Translation
 
 	// Translations
 	@override String get title => 'Vuoi davvero installare questa variazione grafica?';
-	@override String get metaTitle => 'Informazioni sulla variazione grafica';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_

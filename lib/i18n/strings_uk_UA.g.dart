@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsUkUa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsUkUa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsUkUa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ukUa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsUkUa extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsUkUa _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsUkUa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsUkUa(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaUkUa aria = _TranslationsAriaUkUa._(_root);
@@ -322,7 +325,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Ви впевнені, що хочете видалити "${x}"?';
 	@override String get resetAreYouSure => 'Справді скинути?';
 	@override String get saved => 'Збережено';
-	@override String get messaging => 'Чати';
 	@override String get upload => 'Завантажити';
 	@override String get keepOriginalUploading => 'Зберегти оригінальне зображення';
 	@override String get keepOriginalUploadingDescription => 'Зберігає початково завантажене зображення як є. Якщо вимкнено, версія для відображення в Інтернеті буде створена під час завантаження.';
@@ -335,7 +337,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Огляд';
 	@override String get messageRead => 'Прочитано';
 	@override String get noMoreHistory => 'Подальшої історії немає';
-	@override String get startMessaging => 'Розпочати діалог';
 	@override String nUsersRead({required Object n}) => 'Прочитали ${n}';
 	@override String agreeTo({required Object x0}) => 'Я погоджуюсь з ${x0}';
 	@override String get agreeBelow => 'Я погоджуюся з наведеним нижче';
@@ -503,8 +504,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Нотатка ${user}';
 	@override String get quoteAttached => 'Цитата';
 	@override String get quoteQuestion => 'Ви хочете додати цитату?';
-	@override String get noMessagesYet => 'Ще немає повідомлень';
-	@override String get newMessageExists => 'Є нові повідомлення';
 	@override String get onlyOneFileCanBeAttached => 'До повідомлення можна вкласти лише один файл';
 	@override String get signinRequired => 'Будь ласка, авторизуйтесь';
 	@override String get invitations => 'Запрошення';
@@ -986,6 +985,8 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get flip => 'Перевернути';
 	@override String lastNDays({required Object n}) => 'Останні ${n} днів';
 	@override String get postForm => 'Створення нотатки';
+	@override String get information => 'Інформація';
+	@override late final _TranslationsMisskeyChatUkUa chat_ = _TranslationsMisskeyChatUkUa._(_root);
 	@override late final _TranslationsMisskeyDeliveryUkUa delivery_ = _TranslationsMisskeyDeliveryUkUa._(_root);
 	@override late final _TranslationsMisskeyAchievementsUkUa achievements_ = _TranslationsMisskeyAchievementsUkUa._(_root);
 	@override late final _TranslationsMisskeyRoleUkUa role_ = _TranslationsMisskeyRoleUkUa._(_root);
@@ -1037,6 +1038,20 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiUkUa reversi_ = _TranslationsMisskeyReversiUkUa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUkUa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUkUa._(_root);
 	@override late final _TranslationsMisskeySearchUkUa search_ = _TranslationsMisskeySearchUkUa._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatUkUa extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Запросити';
+	@override String get noHistory => 'Історія порожня';
+	@override String get members => 'Учасники';
+	@override String get home => 'Домівка';
+	@override String get send => 'Відправити';
 }
 
 // Path: misskey.delivery_
@@ -1447,6 +1462,7 @@ class _TranslationsMisskeyPermissionsUkUa extends TranslationsMisskeyPermissions
 	@override String get readChannels => 'Переглядати канали';
 	@override String get writeChannels => 'Змінювати канали';
 	@override String get readGallery => 'Перегляд галереї';
+	@override String get writeChat => 'Створювати та видаляти повідомлення';
 }
 
 // Path: misskey.auth_

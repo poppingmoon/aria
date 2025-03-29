@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsNoNo extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsNoNo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsNoNo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.noNo,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsNoNo extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsNoNo _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsNoNo $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsNoNo(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaNoNo aria = _TranslationsAriaNoNo._(_root);
@@ -372,8 +375,6 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get next => 'Neste';
 	@override String get retype => 'Gjenta';
 	@override String get quoteAttached => 'Sitat';
-	@override String get noMessagesYet => 'Ingen meldinger ennå';
-	@override String get newMessageExists => 'Det er nye meldinger';
 	@override String get onlyOneFileCanBeAttached => 'Du kan bare legge ved én fil i en melding';
 	@override String get invitations => 'Inviter';
 	@override String get available => 'Tilgjengelig';
@@ -536,6 +537,8 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get replies => 'Svar';
 	@override String get renotes => 'Renote';
 	@override String get surrender => 'Avbryt';
+	@override String get information => 'Informasjon';
+	@override late final _TranslationsMisskeyChatNoNo chat_ = _TranslationsMisskeyChatNoNo._(_root);
 	@override late final _TranslationsMisskeyDeliveryNoNo delivery_ = _TranslationsMisskeyDeliveryNoNo._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingNoNo initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingNoNo._(_root);
 	@override late final _TranslationsMisskeyAchievementsNoNo achievements_ = _TranslationsMisskeyAchievementsNoNo._(_root);
@@ -576,6 +579,19 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNoNo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoNo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNoNo._(_root);
 	@override late final _TranslationsMisskeySearchNoNo search_ = _TranslationsMisskeySearchNoNo._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatNoNo extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Inviter';
+	@override String get members => 'Medlemmer';
+	@override String get home => 'Hjem';
+	@override String get send => 'Send';
 }
 
 // Path: misskey.delivery_

@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsRoRo extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsRoRo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsRoRo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.roRo,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsRoRo extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsRoRo _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsRoRo $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsRoRo(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaRoRo aria = _TranslationsAriaRoRo._(_root);
@@ -322,7 +325,6 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Ești sigur că vrei să ștergi ${x}?';
 	@override String get resetAreYouSure => 'Sigur vrei să resetezi?';
 	@override String get saved => 'Salvat';
-	@override String get messaging => 'Chat';
 	@override String get upload => 'Încarcă';
 	@override String get keepOriginalUploading => 'Păstrează imaginea originală';
 	@override String get keepOriginalUploadingDescription => 'Salvează imaginea originala încărcată fără modificări. Dacă e oprită, o versiune pentru afișarea pe web va fi generată la încărcare.';
@@ -335,7 +337,6 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explorează';
 	@override String get messageRead => 'Citit';
 	@override String get noMoreHistory => 'Nu există mai mult istoric';
-	@override String get startMessaging => 'Începe un chat nou';
 	@override String nUsersRead({required Object n}) => 'citit de ${n}';
 	@override String agreeTo({required Object x0}) => 'Sunt de acord cu ${x0}';
 	@override String get start => 'Să începem';
@@ -497,8 +498,6 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Notă de ${user}';
 	@override String get quoteAttached => 'Citat';
 	@override String get quoteQuestion => 'Vrei să adaugi ca citat?';
-	@override String get noMessagesYet => 'Niciun mesaj încă';
-	@override String get newMessageExists => 'Ai mesaje noi';
 	@override String get onlyOneFileCanBeAttached => 'Poți atașa un singur fișier la un mesaj';
 	@override String get signinRequired => 'Te rog autentifică-te';
 	@override String get invitations => 'Invită';
@@ -714,6 +713,8 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'Răspunde';
 	@override String get renotes => 'Re-notează';
+	@override String get information => 'Despre';
+	@override late final _TranslationsMisskeyChatRoRo chat_ = _TranslationsMisskeyChatRoRo._(_root);
 	@override late final _TranslationsMisskeyDeliveryRoRo delivery_ = _TranslationsMisskeyDeliveryRoRo._(_root);
 	@override late final _TranslationsMisskeyRoleRoRo role_ = _TranslationsMisskeyRoleRoRo._(_root);
 	@override late final _TranslationsMisskeyEmailRoRo email_ = _TranslationsMisskeyEmailRoRo._(_root);
@@ -738,6 +739,20 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiRoRo reversi_ = _TranslationsMisskeyReversiRoRo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRoRo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRoRo._(_root);
 	@override late final _TranslationsMisskeySearchRoRo search_ = _TranslationsMisskeySearchRoRo._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatRoRo extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Invită';
+	@override String get noHistory => 'Nu există istoric';
+	@override String get members => 'Membri';
+	@override String get home => 'Acasă';
+	@override String get send => 'Trimite';
 }
 
 // Path: misskey.delivery_

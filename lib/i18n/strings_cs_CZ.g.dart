@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsCsCz extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsCsCz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsCsCz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.csCz,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsCsCz extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsCsCz _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsCsCz $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsCsCz(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaCsCz aria = _TranslationsAriaCsCz._(_root);
@@ -86,6 +89,9 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Oznámení';
 	@override String get username => 'Uživatelské jméno';
 	@override String get password => 'Heslo';
+	@override String get initialPasswordForSetup => 'Počáteční heslo pro nastavení';
+	@override String get initialPasswordIsIncorrect => 'Počáteční heslo pro nastavení je nesprávné';
+	@override String get initialPasswordForSetupDescription => 'Použijte heslo, které jste nastavili v konfiguračním souboru, pokud jste Misskey instalovali ručně.\nPokud užíváte Misskey hostovací službu, použijte poskytnuté heslo.\nPokud jste heslo nenastavovali, zanechte prázdné.';
 	@override String get forgotPassword => 'Zapomenuté heslo';
 	@override String get fetchingAsApObject => 'Načítám data z Fediversu...';
 	@override String get ok => 'Potvrdit';
@@ -123,6 +129,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Odepnout';
 	@override String get copyContent => 'Zkopírovat obsah';
 	@override String get copyLink => 'Kopírovat odkaz';
+	@override String get copyRemoteLink => 'Zkoprírovat vzdálený odkaz';
+	@override String get copyLinkRenote => 'Zkopírovat odkaz renotu';
 	@override String get delete => 'Smazat';
 	@override String get deleteAndEdit => 'Smazat a upravit';
 	@override String get deleteAndEditConfirm => 'Jste si jistí že chcete smazat tuto poznámku a editovat ji? Ztratíte tím všechny reakce, sdílení a odpovědi na ni.';
@@ -246,6 +254,9 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Obnovit list účtů';
 	@override String get loginFailed => 'Přihlášení se nezdařilo.';
 	@override String get showOnRemote => 'Více na původním profilu';
+	@override String get continueOnRemote => 'Pokračujte na původní profil';
+	@override String get chooseServerOnMisskeyHub => 'Vyberete si server z Misskey Hubu';
+	@override String get inputHostName => 'Zadejte doménu';
 	@override String get general => 'Obecně';
 	@override String get wallpaper => 'Obrázek na pozadí';
 	@override String get setWallpaper => 'Nastavení obrázku na pozadí';
@@ -270,6 +281,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get perDay => 'za den';
 	@override String get stopActivityDelivery => 'Přestat zasílat aktivitu';
 	@override String get blockThisInstance => 'Blokovat tuto instanci';
+	@override String get silenceThisInstance => 'Utišit tuto instanci';
 	@override String get operations => 'Operace';
 	@override String get software => 'Software';
 	@override String get version => 'Verze';
@@ -334,7 +346,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String deleteAreYouSure({required Object x}) => 'Jste si jistí že chcete smazat "${x}"?';
 	@override String get resetAreYouSure => 'Opravdu resetovat?';
 	@override String get saved => 'Uloženo';
-	@override String get messaging => 'Zprávy';
 	@override String get upload => 'Nahrát soubory';
 	@override String get keepOriginalUploading => 'Ponechat originální obrázek';
 	@override String get keepOriginalUploadingDescription => 'Uloží původní nahraný obrázek jak je. Pokud je to vypnuté, vygeneruje se zobrazení verze na webu při nahrátí.';
@@ -347,7 +358,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Objevovat';
 	@override String get messageRead => 'Přečtené';
 	@override String get noMoreHistory => 'To je vše';
-	@override String get startMessaging => 'Zahájit chat';
 	@override String nUsersRead({required Object n}) => 'přečteno ${n} uživateli';
 	@override String agreeTo({required Object x0}) => 'Souhlasím s ${x0}';
 	@override String get agree => 'Souhlasím';
@@ -526,8 +536,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user} poznámky';
 	@override String get quoteAttached => 'Citace';
 	@override String get quoteQuestion => 'Přiložit jako citaci?';
-	@override String get noMessagesYet => 'Zatím tu nejsou žádné zprávy';
-	@override String get newMessageExists => 'Máte novou zprávu';
 	@override String get onlyOneFileCanBeAttached => 'Ke zprávě můžete přiložit jenom jeden soubor';
 	@override String get signinRequired => 'Přihlašte se, prosím';
 	@override String get invitations => 'Pozvat';
@@ -551,6 +559,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'O ${x}';
 	@override String get emojiStyle => 'Styl emoji';
 	@override String get native => 'Výchozí';
+	@override String get style => 'Vzhled';
+	@override String get popup => 'Vyskakovací okno';
 	@override String get showNoteActionsOnlyHover => 'Zobrazit akce poznámky jenom při naběhnutí myši';
 	@override String get noHistory => 'Žádná historie';
 	@override String get signinHistory => 'Historie přihlášení';
@@ -613,6 +623,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get popout => 'Pop-out';
 	@override String get volume => 'Hlasitost';
 	@override String get masterVolume => 'Celková hlasitost';
+	@override String get notUseSound => 'Zakázat zvuk';
 	@override String get details => 'Detaily';
 	@override String get chooseEmoji => 'Vybrat emotikon';
 	@override String get unableToProcess => 'Operace nebyla dokončena.';
@@ -1176,6 +1187,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'Posledních ${n} dnů';
 	@override String get surrender => 'Zrušit';
 	@override String get postForm => 'Formulář pro odeslání';
+	@override String get information => 'Informace';
+	@override late final _TranslationsMisskeyChatCsCz chat_ = _TranslationsMisskeyChatCsCz._(_root);
 	@override late final _TranslationsMisskeyDeliveryCsCz delivery_ = _TranslationsMisskeyDeliveryCsCz._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCsCz._(_root);
 	@override late final _TranslationsMisskeyServerRulesCsCz serverRules_ = _TranslationsMisskeyServerRulesCsCz._(_root);
@@ -1236,6 +1249,20 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiCsCz reversi_ = _TranslationsMisskeyReversiCsCz._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsCsCz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCsCz._(_root);
 	@override late final _TranslationsMisskeySearchCsCz search_ = _TranslationsMisskeySearchCsCz._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatCsCz extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get invitations => 'Pozvat';
+	@override String get noHistory => 'Žádná historie';
+	@override String get members => 'Členové';
+	@override String get home => 'Domů';
+	@override String get send => 'Odeslat';
 }
 
 // Path: misskey.delivery_
@@ -1799,6 +1826,7 @@ class _TranslationsMisskeyPermissionsCsCz extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'Upravit galerii';
 	@override String get readGalleryLikes => 'Zobrazit seznam to se mi líbí příspěvků v galerii';
 	@override String get writeGalleryLikes => 'Upravit seznam to se mi líbí příspěvků v galerii';
+	@override String get writeChat => 'Sestavit nebo mazat zprávy chatu';
 }
 
 // Path: misskey.auth_

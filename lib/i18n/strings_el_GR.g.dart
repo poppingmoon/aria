@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsElGr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsElGr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsElGr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.elGr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsElGr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsElGr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsElGr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsElGr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsAriaElGr aria = _TranslationsAriaElGr._(_root);
@@ -226,14 +229,12 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override String get remove => 'Διαγραφή';
 	@override String get removed => 'Η διαγραφή ολοκληρώθηκε επιτυχώς';
 	@override String get saved => 'Αποθηκεύτηκε';
-	@override String get messaging => 'Συνομιλία';
 	@override String get upload => 'Ανεβάστε';
 	@override String get fromDrive => 'Από τον Αποθηκευτικό Χώρο';
 	@override String get fromUrl => 'Από URL';
 	@override String get uploadFromUrl => 'Ανεβάστε από URL';
 	@override String get explore => 'Εξερευνήστε';
 	@override String get messageRead => 'Διαβάστηκε';
-	@override String get startMessaging => 'Ξεκινήστε μία συνομιλία';
 	@override String nUsersRead({required Object n}) => 'διαβάστηκε από ${n}';
 	@override String get start => 'Ας αρχίσουμε';
 	@override String get home => 'Κεντρικό';
@@ -353,6 +354,8 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override String get replies => 'Απάντηση';
 	@override String get renotes => 'Κοινοποίηση σημειώματος';
 	@override String get postForm => 'Φόρμα δημοσίευσης';
+	@override String get information => 'Πληροφορίες';
+	@override late final _TranslationsMisskeyChatElGr chat_ = _TranslationsMisskeyChatElGr._(_root);
 	@override late final _TranslationsMisskeyEmailElGr email_ = _TranslationsMisskeyEmailElGr._(_root);
 	@override late final _TranslationsMisskeyChannelElGr channel_ = _TranslationsMisskeyChannelElGr._(_root);
 	@override late final _TranslationsMisskeyThemeElGr theme_ = _TranslationsMisskeyThemeElGr._(_root);
@@ -374,6 +377,17 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesElGr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesElGr._(_root);
 	@override late final _TranslationsMisskeyReversiElGr reversi_ = _TranslationsMisskeyReversiElGr._(_root);
 	@override late final _TranslationsMisskeySearchElGr search_ = _TranslationsMisskeySearchElGr._(_root);
+}
+
+// Path: misskey.chat_
+class _TranslationsMisskeyChatElGr extends TranslationsMisskeyChatEnUs {
+	_TranslationsMisskeyChatElGr._(TranslationsElGr root) : this._root = root, super.internal(root);
+
+	final TranslationsElGr _root; // ignore: unused_field
+
+	// Translations
+	@override String get members => 'Μέλη';
+	@override String get home => 'Κεντρικό';
 }
 
 // Path: misskey.email_
@@ -451,6 +465,7 @@ class _TranslationsMisskeyPermissionsElGr extends TranslationsMisskeyPermissions
 	@override String get writeNotifications => 'Διαχειριστείτε τις ειδοποιήσεις σας';
 	@override String get readPages => 'Δείτε τις Σελίδες σας';
 	@override String get writePages => 'Επεξεργαστείτε ή διαγράψτε τις σελίδες σας';
+	@override String get writeChat => 'Γράψτε ή διαγράψτε μηνύματα συνομιλίας';
 }
 
 // Path: misskey.antennaSources_
