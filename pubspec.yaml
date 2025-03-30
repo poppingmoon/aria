@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.0.0-beta.13+57
+version: 1.0.0+58
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
@@ -161,7 +161,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: bfb7d96f04f15654e41cf816785d7a99c490f1f0
+      ref: 208b7e5c1d1dfbd11e4e26287e2f6eb8eab79c1c
 
 flutter:
   uses-material-design: true
