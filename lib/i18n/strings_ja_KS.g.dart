@@ -581,6 +581,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'みつける';
 	@override String get messageRead => 'もう読んだ';
 	@override String get noMoreHistory => 'これより昔のんはあらへんで';
+	@override String get startChat => 'チャットを始める';
 	@override String nUsersRead({required Object n}) => '${n}人が読んでもうた';
 	@override String agreeTo({required Object x0}) => '${x0}に同意したで';
 	@override String get agree => 'せやな';
@@ -1611,6 +1612,10 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get postForm => '投稿フォーム';
 	@override String get textCount => '文字数';
 	@override String get information => '情報';
+	@override String get chat => 'チャット';
+	@override String get migrateOldSettings => '旧設定情報を移行';
+	@override String get migrateOldSettings_description => '通常これは自動で行われていますが、何らかの理由により上手く移行されなかった場合は手動で移行処理をトリガーできます。現在の設定情報は上書きされます。';
+	@override String get compress => '圧縮';
 	@override late final _TranslationsMisskeyChatJaKs chat_ = _TranslationsMisskeyChatJaKs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaKs emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaKs._(_root);
 	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
@@ -1719,11 +1724,45 @@ class _TranslationsMisskeyChatJaKs extends TranslationsMisskeyChatEnUs {
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => 'まだメッセージはありません';
+	@override String get newMessage => '新しいメッセージ';
+	@override String get individualChat => '個人チャット';
+	@override String get individualChat_description => '特定ユーザーとの一対一のチャットができます。';
+	@override String get roomChat => 'ルームチャット';
+	@override String get roomChat_description => '複数人でのチャットができます。\nまた、個人チャットを許可していないユーザーとでも、相手が受け入れればチャットができます。';
+	@override String get createRoom => 'ルームを作成';
+	@override String get inviteUserToChat => 'ユーザーを招待してチャットを始めましょう';
+	@override String get yourRooms => '作成したルーム';
+	@override String get joiningRooms => '参加中のルーム';
 	@override String get invitations => '来てや';
+	@override String get noInvitations => '招待はありません';
+	@override String get history => '履歴';
 	@override String get noHistory => '履歴はないわ。';
+	@override String get noRooms => 'ルームはありません';
+	@override String get inviteUser => 'ユーザーを招待';
+	@override String get sentInvitations => '送信した招待';
+	@override String get join => '参加';
+	@override String get ignore => '無視';
+	@override String get leave => 'ルームから退出';
 	@override String get members => 'メンバーはん';
+	@override String get searchMessages => 'メッセージを検索';
 	@override String get home => 'ホーム';
 	@override String get send => '送信';
+	@override String get newline => '改行';
+	@override String get muteThisRoom => 'このルームをミュート';
+	@override String get deleteRoom => 'ルームを削除';
+	@override String get chatNotAvailableForThisAccountOrServer => 'このサーバー、またはこのアカウントでチャットは有効化されていません。';
+	@override String get chatNotAvailableInOtherAccount => '相手のアカウントでチャット機能が使えない状態になっています。';
+	@override String get cannotChatWithTheUser => 'このユーザーとのチャットを開始できません';
+	@override String get cannotChatWithTheUser_description => 'チャットが使えない状態になっているか、相手がチャットを開放していません。';
+	@override String get chatWithThisUser => 'チャットする';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'このユーザーはフォロワーからのみチャットを受け付けています。';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'このユーザーは、このユーザーがフォローしているユーザーからのみチャットを受け付けています。';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'このユーザーは相互フォローのユーザーからのみチャットを受け付けています。';
+	@override String get thisUserNotAllowedChatAnyone => 'このユーザーは誰からもチャットを受け付けていません。';
+	@override String get chatAllowedUsers => 'チャットを許可する相手';
+	@override String get chatAllowedUsers_note => '自分からチャットメッセージを送った相手とはこの設定に関わらずチャットが可能です。';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersJaKs chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersJaKs._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1765,6 +1804,11 @@ class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	@override String get timelineAndNote => 'タイムラインとノート';
 	@override String get makeEveryTextElementsSelectable => '全てのテキスト要素を選択可能にする';
 	@override String get makeEveryTextElementsSelectable_description => '有効にすると、一部のシチュエーションでのユーザビリティが低下する場合があります。';
+	@override String get useStickyIcons => 'アイコンをスクロールに追従させる';
+	@override String get showNavbarSubButtons => 'ナビゲーションバーに副ボタンを表示';
+	@override String get ifOn => 'オンのとき';
+	@override String get ifOff => 'オフのとき';
+	@override late final _TranslationsMisskeySettingsChatJaKs chat_ = _TranslationsMisskeySettingsChatJaKs._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -2392,6 +2436,7 @@ class _TranslationsMisskeySfxJaKs extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'ノート(自分)';
 	@override String get notification => '通知';
 	@override String get reaction => 'ツッコミ選んどるとき';
+	@override String get chatMessage => 'チャットのメッセージ';
 }
 
 // Path: misskey.soundSettings_
@@ -2587,6 +2632,7 @@ class _TranslationsMisskeyPermissionsJaKs extends TranslationsMisskeyPermissions
 	@override String get readFederation => '連合の情報取得';
 	@override String get writeReportAbuse => '違反報告';
 	@override String get writeChat => 'チャットを操作するで';
+	@override String get readChat => 'チャットを閲覧する';
 }
 
 // Path: misskey.auth_
@@ -2952,6 +2998,7 @@ class _TranslationsMisskeyNotificationJaKs extends TranslationsMisskeyNotificati
 	@override String get newNote => 'さらの投稿';
 	@override String unreadAntennaNote({required Object name}) => 'アンテナ ${name}';
 	@override String get roleAssigned => 'ロールが付与されたで';
+	@override String get chatRoomInvitationReceived => 'チャットルームへ招待されました';
 	@override String get emptyPushNotificationMessage => 'プッシュ通知の更新をしといたで';
 	@override String get achievementEarned => '実績を獲得しとるで';
 	@override String get testNotification => '通知テスト';
@@ -3119,6 +3166,7 @@ class _TranslationsMisskeyModerationLogTypesJaKs extends TranslationsMisskeyMode
 	@override String get deletePage => 'ページ消す';
 	@override String get deleteFlash => 'Playをほかす';
 	@override String get deleteGalleryPost => 'ギャラリーの投稿をほかす';
+	@override String get deleteChatRoom => 'チャットルームを削除';
 	@override String get updateProxyAccountDescription => 'プロキシアカウントの説明を更新';
 }
 
@@ -3447,6 +3495,31 @@ class _TranslationsMisskeyIOSkebStatusJaKs extends TranslationsMisskeyIOSkebStat
 	@override String nRequests({required Object n}) => '取引実績 ${n}件';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersJaKs extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => '誰でも';
+	@override String get followers => '自分のフォロワーのみ';
+	@override String get following => '自分がフォローしているユーザーのみ';
+	@override String get mutual => '相互フォローのユーザーのみ';
+	@override String get none => '誰も許可しない';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatJaKs extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => '送信者の名前を表示';
+	@override String get sendOnEnter => 'Enterで送信';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeJaKs extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
@@ -3724,6 +3797,7 @@ class _TranslationsMisskeyRoleOptionsJaKs extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'フォローのインポートを許す';
 	@override String get canImportMuting => 'ミュートのインポートを許す';
 	@override String get canImportUserLists => 'リストのインポートを許す';
+	@override String get canChat => 'チャットを許可';
 }
 
 // Path: misskey.role_.condition_
@@ -3884,6 +3958,7 @@ class _TranslationsMisskeyNotificationTypesJaKs extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => 'フォロー許可してほしいみたいやで';
 	@override String get followRequestAccepted => 'フォローが受理されたで';
 	@override String get roleAssigned => 'ロールが付与された';
+	@override String get chatRoomInvitationReceived => 'チャットルームへ招待された';
 	@override String get achievementEarned => '実績の獲得';
 	@override String get exportCompleted => 'エクスポート終わった';
 	@override String get login => 'ログイン';

@@ -386,6 +386,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Esplora';
 	@override String get messageRead => 'Visualizzato';
 	@override String get noMoreHistory => 'Non c\'è più cronologia da visualizzare';
+	@override String get startChat => 'Inizia a chattare';
 	@override String nUsersRead({required Object n}) => 'Letto da ${n} persone';
 	@override String agreeTo({required Object x0}) => 'Sono d\'accordo con ${x0}';
 	@override String get agree => 'Accetto';
@@ -1416,6 +1417,10 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get postForm => 'Finestra di pubblicazione';
 	@override String get textCount => 'Il numero di caratteri';
 	@override String get information => 'Informazioni';
+	@override String get chat => 'Chat';
+	@override String get migrateOldSettings => 'Migrare le vecchie impostazioni';
+	@override String get migrateOldSettings_description => 'Di solito, viene fatto automaticamente. Se per qualche motivo non fossero migrate con successo, è possibile avviare il processo di migrazione manualmente, sovrascrivendo le configurazioni attuali.';
+	@override String get compress => 'Comprimi';
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
 	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
@@ -1514,11 +1519,45 @@ class _TranslationsMisskeyChatItIt extends TranslationsMisskeyChatEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => 'Ancora nessun messaggio';
+	@override String get newMessage => 'Nuovo messaggio';
+	@override String get individualChat => 'Chat individuale';
+	@override String get individualChat_description => 'Puoi chattare con una persona specifica.';
+	@override String get roomChat => 'Stanza di chat';
+	@override String get roomChat_description => 'Puoi chattare con più persone.\nInoltre, anche le persone che non consentono chat personalizzate possono chattare se gli altri accettano.';
+	@override String get createRoom => 'Crea stanza';
+	@override String get inviteUserToChat => 'Invita a chattare altre persone';
+	@override String get yourRooms => 'Le tue stanze';
+	@override String get joiningRooms => 'Stanze a cui partecipi';
 	@override String get invitations => 'Invita';
+	@override String get noInvitations => 'Nessun invito';
+	@override String get history => 'Cronologia';
 	@override String get noHistory => 'Nessuna cronologia';
+	@override String get noRooms => 'Nessuna stanza';
+	@override String get inviteUser => 'Invita';
+	@override String get sentInvitations => 'Inviti spediti';
+	@override String get join => 'Entra';
+	@override String get ignore => 'Ignora';
+	@override String get leave => 'Esci';
 	@override String get members => 'Membri';
+	@override String get searchMessages => 'Cerca messaggi';
 	@override String get home => 'Home';
 	@override String get send => 'Inviare';
+	@override String get newline => 'Nuova riga';
+	@override String get muteThisRoom => 'Silenzia stanza';
+	@override String get deleteRoom => 'Elimina stanza';
+	@override String get chatNotAvailableForThisAccountOrServer => 'Questo server, o questo profilo ha disabilitato la chat.';
+	@override String get chatNotAvailableInOtherAccount => 'La chat non è disponibile nel profilo dell\'altra persona.';
+	@override String get cannotChatWithTheUser => 'Impossibile chattare con questa persona';
+	@override String get cannotChatWithTheUser_description => 'La chat potrebbe non essere disponibile, oppure l\'altra persona potrebbe non esserlo.';
+	@override String get chatWithThisUser => 'Chatta con questa persona';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Questa persona permette di chattare soltanto i propri Follower.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Questa persona permette di chattare soltanto ai suoi Follow.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Questa persona permette di chattare solo a relazioni reciproche.';
+	@override String get thisUserNotAllowedChatAnyone => 'Questa persona non permette di chattare a nessuno.';
+	@override String get chatAllowedUsers => 'Persone ammesse alla chat';
+	@override String get chatAllowedUsers_note => 'Puoi chattare con le persone a cui hai già inviato un messaggio, indipendentemente da questa impostazione.';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersItIt chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersItIt._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1560,6 +1599,10 @@ class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	@override String get timelineAndNote => 'Note e Timeline';
 	@override String get makeEveryTextElementsSelectable => 'Imposta ogni elemento come selezionabile';
 	@override String get makeEveryTextElementsSelectable_description => 'Potrebbe ridurre l\'usabilità in alcune situazioni.';
+	@override String get showNavbarSubButtons => 'Mostra i pulsanti secondari nella barra di navigazione';
+	@override String get ifOn => 'Quando attivato';
+	@override String get ifOff => 'Quando disattivato';
+	@override late final _TranslationsMisskeySettingsChatItIt chat_ = _TranslationsMisskeySettingsChatItIt._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -2187,6 +2230,7 @@ class _TranslationsMisskeySfxItIt extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'Mia nota';
 	@override String get notification => 'Notifiche';
 	@override String get reaction => 'Quando seleziono una reazione';
+	@override String get chatMessage => 'Messaggio di chat';
 }
 
 // Path: misskey.soundSettings_
@@ -2382,6 +2426,7 @@ class _TranslationsMisskeyPermissionsItIt extends TranslationsMisskeyPermissions
 	@override String get readFederation => 'Vedere la federazione';
 	@override String get writeReportAbuse => 'Inviare segnalazioni';
 	@override String get writeChat => 'Gestire la chat';
+	@override String get readChat => 'Visualizzare le chat';
 }
 
 // Path: misskey.auth_
@@ -2747,6 +2792,7 @@ class _TranslationsMisskeyNotificationItIt extends TranslationsMisskeyNotificati
 	@override String get newNote => 'Nuove Note';
 	@override String unreadAntennaNote({required Object name}) => 'Antenna ${name}';
 	@override String get roleAssigned => 'Ruolo assegnato';
+	@override String get chatRoomInvitationReceived => 'Invito in una stanza di chat';
 	@override String get emptyPushNotificationMessage => 'Le notifiche push sono state aggiornate.';
 	@override String get achievementEarned => 'Obiettivo raggiunto';
 	@override String get testNotification => 'Provare la notifica';
@@ -2914,6 +2960,7 @@ class _TranslationsMisskeyModerationLogTypesItIt extends TranslationsMisskeyMode
 	@override String get deletePage => 'Pagina eliminata';
 	@override String get deleteFlash => 'Play eliminato';
 	@override String get deleteGalleryPost => 'Eliminazione pubblicazione nella Galleria';
+	@override String get deleteChatRoom => 'Elimina chat';
 	@override String get updateProxyAccountDescription => 'Aggiornata la descrizione del profilo proxy';
 }
 
@@ -3226,6 +3273,31 @@ class _TranslationsMisskeySearchItIt extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => 'Es: misskey.example.com';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersItIt extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Chiunque';
+	@override String get followers => 'Solo i tuoi Follower';
+	@override String get following => 'Solo i tuoi Follow';
+	@override String get mutual => 'Solo relazioni reciproche';
+	@override String get none => 'Nessuno';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatItIt extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Mostra il nome del mittente';
+	@override String get sendOnEnter => 'Invio spedisce';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeItIt extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -3503,6 +3575,7 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'Può importare Following';
 	@override String get canImportMuting => 'Può importare Silenziati';
 	@override String get canImportUserLists => 'Può importare liste di Profili';
+	@override String get canChat => 'Chat consentita';
 }
 
 // Path: misskey.role_.condition_
@@ -3663,6 +3736,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => 'Richieste di follow in arrivo';
 	@override String get followRequestAccepted => 'Richieste di follow accettate';
 	@override String get roleAssigned => 'Ruolo concesso';
+	@override String get chatRoomInvitationReceived => 'Invito in una stanza di chat';
 	@override String get achievementEarned => 'Risultato raggiunto';
 	@override String get exportCompleted => 'Esportazione completata';
 	@override String get login => 'Accessi';

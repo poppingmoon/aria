@@ -385,6 +385,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Erkunden';
 	@override String get messageRead => 'Gelesen';
 	@override String get noMoreHistory => 'Kein weiterer Verlauf vorhanden';
+	@override String get startChat => 'Chat starten';
 	@override String nUsersRead({required Object n}) => 'Von ${n} Benutzern gelesen';
 	@override String agreeTo({required Object x0}) => 'Ich stimme ${x0} zu';
 	@override String get agree => 'Zustimmen';
@@ -1340,7 +1341,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get endReplay => 'Aufzeichnung verlassen';
 	@override String get copyReplayData => 'Aufzeichnung kopieren';
 	@override String get ranking => 'Rangliste';
-	@override String lastNDays({required Object n}) => 'Letzten ${n} Tage';
+	@override String lastNDays({required Object n}) => 'Letzte ${n} Tage';
 	@override String get backToTitle => 'Zurück zum Startbildschirm';
 	@override String get hemisphere => 'Hemisphäre';
 	@override String get withSensitive => 'Zeige "sensitive Inhalte" an';
@@ -1402,10 +1403,20 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get skip => 'Überspringen';
 	@override String get restore => 'Wiederherstellen';
 	@override String get syncBetweenDevices => 'Zwischen Geräten synchronisieren';
+	@override String get preferenceSyncConflictTitle => 'Der konfigurierte Wert ist auf dem Server bereits vorhanden.';
+	@override String get preferenceSyncConflictText => 'Die Einstellungen mit aktivierter Synchronisierung werden ihre Werte auf dem Server speichern. Es gibt jedoch bereits Werte auf dem Server. Welche Einstellungswerte sollen überschrieben werden?';
+	@override String get preferenceSyncConflictChoiceServer => 'Konfigurierte Werte auf dem Server';
+	@override String get preferenceSyncConflictChoiceDevice => 'Konfigurierte Werte auf dem Gerät';
+	@override String get preferenceSyncConflictChoiceCancel => 'Einrichten der Synchronisierung abbrechen';
 	@override String get paste => 'Einfügen';
+	@override String get emojiPalette => 'Emoji-Palette';
 	@override String get postForm => 'Notizfenster';
 	@override String get textCount => 'Zeichenanzahl';
 	@override String get information => 'Über';
+	@override String get chat => 'Chat';
+	@override String get migrateOldSettings => 'Alte Client-Einstellungen migrieren';
+	@override String get migrateOldSettings_description => 'Dies sollte normalerweise automatisch geschehen, aber wenn die Migration aus irgendeinem Grund nicht erfolgreich war, kannst du den Migrationsprozess selbst manuell auslösen. Die aktuellen Konfigurationsinformationen werden dabei überschrieben.';
+	@override String get compress => 'Komprimieren';
 	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
 	@override late final _TranslationsMisskeySettingsDeDe settings_ = _TranslationsMisskeySettingsDeDe._(_root);
@@ -1486,6 +1497,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsDeDe mediaControls_ = _TranslationsMisskeyMediaControlsDeDe._(_root);
 	@override late final _TranslationsMisskeyContextMenuDeDe contextMenu_ = _TranslationsMisskeyContextMenuDeDe._(_root);
 	@override late final _TranslationsMisskeyGridComponentDeDe gridComponent_ = _TranslationsMisskeyGridComponentDeDe._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogDeDe roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogDeDe._(_root);
 	@override late final _TranslationsMisskeyCustomEmojisManagerDeDe customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerDeDe._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenDeDe embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenDeDe._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionDeDe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionDeDe._(_root);
@@ -1503,11 +1515,43 @@ class _TranslationsMisskeyChatDeDe extends TranslationsMisskeyChatEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => 'Noch keine Nachrichten';
+	@override String get newMessage => 'Neue Nachricht';
+	@override String get individualChat => 'Privater Chat';
+	@override String get individualChat_description => 'Führe einen privaten Chat mit einer anderen Person.';
+	@override String get roomChat_description => 'Ein Chat-Raum, an dem mehrere Personen teilnehmen können.\nDu kannst auch Personen einladen, die keine privaten Chats zulassen, wenn sie die Einladung annehmen.';
+	@override String get createRoom => 'Raum erstellen';
+	@override String get inviteUserToChat => 'Lade Benutzer ein, um mit dem Chatten zu beginnen';
+	@override String get yourRooms => 'Erstellte Räume';
 	@override String get invitations => 'Einladen';
+	@override String get noInvitations => 'Keine Einladungen';
+	@override String get history => 'Verlauf';
 	@override String get noHistory => 'Kein Verlauf gefunden';
+	@override String get noRooms => 'Keine Räume gefunden';
+	@override String get inviteUser => 'Benutzer einladen';
+	@override String get sentInvitations => 'Verschickte Einladungen';
+	@override String get join => 'Beitreten';
+	@override String get ignore => 'Ignorieren';
+	@override String get leave => 'Raum verlassen';
 	@override String get members => 'Mitglieder';
+	@override String get searchMessages => 'Nachrichten suchen';
 	@override String get home => 'Startseite';
 	@override String get send => 'Senden';
+	@override String get newline => 'Neue Zeile';
+	@override String get muteThisRoom => 'Raum stummschalten';
+	@override String get deleteRoom => 'Raum löschen';
+	@override String get chatNotAvailableForThisAccountOrServer => 'Der Chat ist auf diesem Server oder für dieses Konto nicht aktiviert.';
+	@override String get chatNotAvailableInOtherAccount => 'Die Chatfunktion wurde vom anderen Benutzer deaktiviert.';
+	@override String get cannotChatWithTheUser => 'Starten eines Chats mit diesem Benutzer nicht möglich';
+	@override String get cannotChatWithTheUser_description => 'Der Chat ist entweder nicht verfügbar oder die andere Seite hat den Chat nicht aktiviert.';
+	@override String get chatWithThisUser => 'Mit dem Benutzer chatten';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Dieser Benutzer nimmt nur Chats von Followern an.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Dieser Benutzer nimmt nur Chats von Benutzern an, denen er folgt.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Dieser Benutzer akzeptiert nur Chats von Benutzern, die sich gegenseitig folgen.';
+	@override String get thisUserNotAllowedChatAnyone => 'Dieser Benutzer nimmt keine Chats von anderen Benutzern an.';
+	@override String get chatAllowedUsers => 'Wem das Chatten erlaubt werden soll';
+	@override String get chatAllowedUsers_note => 'Du kannst unabhängig von dieser Einstellung mit allen Personen chatten, denen du eine Chat-Nachricht gesendet hast.';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersDeDe chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersDeDe._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1520,6 +1564,7 @@ class _TranslationsMisskeyEmojiPaletteDeDe extends TranslationsMisskeyEmojiPalet
 	@override String get palettes => 'Palette';
 	@override String get enableSyncBetweenDevicesForPalettes => 'Synchronisierung der Paletten zwischen Geräten aktivieren';
 	@override String get paletteForMain => 'Hauptpalette';
+	@override String get paletteForReaction => 'Reaktions-Palette';
 }
 
 // Path: misskey.settings_
@@ -1529,9 +1574,25 @@ class _TranslationsMisskeySettingsDeDe extends TranslationsMisskeySettingsEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get driveBanner => 'Du kannst den Drive verwalten und konfigurieren, die Auslastung überprüfen und Einstellungen für das Hochladen von Dateien vornehmen.';
+	@override String get pluginBanner => 'Du kannst die Funktionen des Clients mit Plugins erweitern. Plugins können installiert, individuell konfiguriert und verwaltet werden.';
 	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
+	@override String get serviceConnectionBanner => 'Du kannst Zugriffstoken und Webhooks für die Integration mit externen Anwendungen und Diensten verwalten und konfigurieren.';
 	@override String get accountData => 'Kontodaten';
+	@override String get accountDataBanner => 'Export/Import und Verwaltung von Kontodatenarchiven.';
+	@override String get muteAndBlockBanner => 'Du kannst Einstellungen konfigurieren und verwalten, um Inhalte auszublenden und Aktionen für bestimmte Benutzer zu beschränken.';
+	@override String get accessibilityBanner => 'Die Clients können personalisiert und für eine optimale Nutzung im Hinblick auf ihre Darstellung und ihr Verhalten eingerichtet werden.';
+	@override String get privacyBanner => 'Du kannst Einstellungen für die Privatsphäre deines Kontos vornehmen, z. B. inwieweit Inhalte veröffentlicht werden, wie leicht sie zu finden sind und ob Follower genehmigt werden müssen.';
+	@override String get securityBanner => 'Du kannst Einstellungen für die Kontosicherheit konfigurieren, z. B. Passwörter, Anmeldemethoden, Authentifizierungs-Apps und Passkeys.';
+	@override String get appearanceBanner => 'Du kannst das Erscheinungsbild und die Anzeigeeinstellungen für den Client nach deinen Wünschen konfigurieren.';
+	@override String get soundsBanner => 'Du kannst die Einstellungen für die Wiedergabe von Klängen im Client konfigurieren.';
+	@override String get timelineAndNote => 'Chroniken und Notizen';
+	@override String get makeEveryTextElementsSelectable => 'Alle Textelemente auswählbar machen';
+	@override String get makeEveryTextElementsSelectable_description => 'Die Aktivierung kann in manchen Situationen die Benutzerfreundlichkeit beeinträchtigen.';
+	@override String get ifOn => 'Wenn eingeschaltet';
+	@override String get ifOff => 'Wenn ausgeschaltet';
+	@override late final _TranslationsMisskeySettingsChatDeDe chat_ = _TranslationsMisskeySettingsChatDeDe._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -1541,6 +1602,8 @@ class _TranslationsMisskeyPreferencesProfileDeDe extends TranslationsMisskeyPref
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get profileName => 'Profilname';
+	@override String get profileNameDescription => 'Lege einen Namen fest, der dieses Gerät identifiziert.';
 	@override String get profileNameDescription2 => 'Beispiel: "Haupt-PC", "Smartphone"';
 }
 
@@ -1573,9 +1636,11 @@ class _TranslationsMisskeyAccountSettingsDeDe extends TranslationsMisskeyAccount
 	@override String get requireSigninToViewContentsDescription2 => 'Der Inhalt wird nicht in URL-Vorschauen (OGP), eingebettet in Webseiten oder auf Servern, die keine Zitate unterstützen, angezeigt.';
 	@override String get requireSigninToViewContentsDescription3 => 'Diese Einschränkungen gelten möglicherweise nicht für föderierte Inhalte von anderen Servern.';
 	@override String get makeNotesFollowersOnlyBefore => 'Macht frühere Notizen nur für Follower sichtbar';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'Solange diese Funktion aktiviert ist, sind Notizen, die nach dem eingestellten Datum und der eingestellten Zeit liegen oder die eingestellte Zeit abgelaufen ist, nur für Follower sichtbar. Bei Deaktivierung wird auch der öffentliche Status der Notiz wiederhergestellt.';
 	@override String get makeNotesHiddenBefore => 'Frühere Notizen privat machen';
 	@override String get makeNotesHiddenBeforeDescription => '';
 	@override String get mayNotEffectForFederatedNotes => 'Dies hat möglicherweise keine Auswirkungen auf Notizen, die an andere Server föderiert werden.';
+	@override String get mayNotEffectSomeSituations => 'Diese Einschränkungen sind vereinfacht. Sie gelten möglicherweise nicht in allen Situationen, z. B. bei der Anzeige auf einem fremden Server oder während der Moderation.';
 	@override String get notesOlderThanSpecifiedDateAndTime => 'Notizen vor einem bestimmtem Datum und Uhrzeit';
 }
 
@@ -1591,6 +1656,7 @@ class _TranslationsMisskeyAbuseUserReportDeDe extends TranslationsMisskeyAbuseUs
 	@override String get resolve => 'lösen';
 	@override String get accept => 'Akzeptieren';
 	@override String get reject => 'Ablehnen';
+	@override String get resolveTutorial => 'Wenn der Inhalt der Meldung rechtmäßig ist, wähle „Akzeptieren“, um sie als gelöst zu markieren.\nWenn der Inhalt der Meldung unzulässig ist, wähle „Ablehnen“, um sie zu ignorieren.';
 }
 
 // Path: misskey.delivery_
@@ -1600,6 +1666,7 @@ class _TranslationsMisskeyDeliveryDeDe extends TranslationsMisskeyDeliveryEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get status => 'Auslieferungsstatus';
 	@override String get stop => 'Gesperrt';
 	@override late final _TranslationsMisskeyDeliveryTypeDeDe type_ = _TranslationsMisskeyDeliveryTypeDeDe._(_root);
 }
@@ -1689,7 +1756,9 @@ class _TranslationsMisskeyTimelineDescriptionDeDe extends TranslationsMisskeyTim
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get home => 'In der Startseiten-Chronik kannst du Notizen von Konten sehen, denen du folgst.';
 	@override String get local => 'In der lokalen Chronik siehst du Notizen von allen Benutzern auf diesem Server.';
+	@override String get social => 'Die soziale Chronik zeigt Notizen von der Startseite und der lokalen Chronik.';
 	@override String get global => 'In der globalen Chronik siehst du Notizen von allen föderierten Servern.';
 }
 
@@ -1723,6 +1792,8 @@ class _TranslationsMisskeyServerSettingsDeDe extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallbackDescription => 'Ist diese Option aktiviert, wird die Chronik auf zusätzliche Abfragen in der Datenbank zurückgreifen, wenn sich die Chronik nicht im Cache befindet. Eine Deaktivierung führt zu geringerer Serverlast, aber schränkt den Zeitraum der abrufbaren Chronik ein. ';
 	@override String get reactionsBufferingDescription => 'Wenn diese Option aktiviert ist, kann sie die Leistung beim Erstellen von Reaktionen erheblich verbessern und die Belastung der Datenbank verringern. Allerdings steigt die Speichernutzung von Redis.';
 	@override String get inquiryUrl => 'Kontakt-URL';
+	@override String get inquiryUrlDescription => 'Gib eine URL für das Kontaktformular der Serverbetreiber oder eine Webseite an, die Kontaktinformationen enthält.';
+	@override String get openRegistration => 'Registrierung von Konten aktivieren';
 	@override String get openRegistrationWarning => 'Das Aktivieren von Registrierungen ist riskant. Es wird empfohlen, sie nur dann zu aktivieren, wenn der Server ständig überwacht wird und im Falle eines Problems sofort reagiert werden kann.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Wenn über einen bestimmten Zeitraum keine Moderatorenaktivität festgestellt wird, wird diese Einstellung automatisch deaktiviert, um Spam zu verhindern.';
 }
@@ -2111,6 +2182,7 @@ class _TranslationsMisskeyThemeDeDe extends TranslationsMisskeyThemeEnUs {
 	@override String installed({required Object name}) => '${name} wurde installiert';
 	@override String get installedThemes => 'Installierte Farbschemata';
 	@override String get builtinThemes => 'Eingebaute Farbschemata';
+	@override String get instanceTheme => 'Server-Thema';
 	@override String get alreadyInstalled => 'Dieses Farbschema ist bereits installiert';
 	@override String get invalid => 'Der Code dieses Farbschemas ist ungültig';
 	@override String get make => 'Farbschema erstellen';
@@ -2146,6 +2218,7 @@ class _TranslationsMisskeySfxDeDe extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'Meine Notizen';
 	@override String get notification => 'Benachrichtigungen';
 	@override String get reaction => 'Auswählen einer Reaktion';
+	@override String get chatMessage => 'Chat-Nachrichten';
 }
 
 // Path: misskey.soundSettings_
@@ -2193,6 +2266,10 @@ class _TranslationsMisskeyTimeInDeDe extends TranslationsMisskeyTimeInEnUs {
 	@override String seconds({required Object n}) => 'In ${n}s';
 	@override String minutes({required Object n}) => 'In ${n} Min.';
 	@override String hours({required Object n}) => 'In ${n} Std.';
+	@override String days({required Object n}) => 'In ${n} Tagen';
+	@override String weeks({required Object n}) => 'In ${n} Wochen';
+	@override String months({required Object n}) => 'In ${n} Monaten';
+	@override String years({required Object n}) => 'In ${n} Jahren';
 }
 
 // Path: misskey.time_
@@ -2242,6 +2319,7 @@ class _TranslationsMisskeyX2faDeDe extends TranslationsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'Verwende diese Codes, falls du nicht mehr auf deine App zur Zweifaktorauthentifizierung zugreifen kannst. Jeder Code kann nur einmal verwendet werden. Bewahre sie an einem sicheren Ort auf.';
 	@override String get backupCodeUsedWarning => 'Ein Backup-Code wurde verwendet. Falls du den Zugriff zu deiner Zweifaktorauthentifizierungsapp verloren hast, konfiguriere diese bitte möglichst bald erneut.';
 	@override String get backupCodesExhaustedWarning => 'Alle Backup-Codes wurden verwendet. Falls du den Zugang zu deiner Zweifaktorauthentifizierungsapp verlierst, wirst du dich nicht mehr in dieses Konto einloggen können. Bitte konfiguriere diese App erneut.';
+	@override String get moreDetailedGuideHere => 'Hier ist eine ausführliche Anleitung';
 }
 
 // Path: misskey.permissions_
@@ -2300,8 +2378,12 @@ class _TranslationsMisskeyPermissionsDeDe extends TranslationsMisskeyPermissions
 	@override String get readAdminServerInfo => 'Serverinformationen anzeigen';
 	@override String get readAdminShowModerationLog => 'Moderationsprotokoll einsehen';
 	@override String get readAdminShowUser => 'Private Benutzerinformationen einsehen';
+	@override String get writeAdminSuspendUser => 'Benutzer sperren';
 	@override String get writeAdminUnsetUserAvatar => 'Benutzer-Profilbild entfernen';
 	@override String get writeAdminUnsetUserBanner => 'Benutzer-Banner entfernen';
+	@override String get writeAdminUnsuspendUser => 'Benutzer entsperren';
+	@override String get writeAdminMeta => 'Metadaten der Instanz verwalten';
+	@override String get writeAdminUserNote => 'Moderationsvermerke verwalten';
 	@override String get writeAdminRoles => 'Rollen verwalten';
 	@override String get readAdminRoles => 'Rollen anzeigen';
 	@override String get writeAdminRelays => 'Relays verwalten';
@@ -2325,7 +2407,10 @@ class _TranslationsMisskeyPermissionsDeDe extends TranslationsMisskeyPermissions
 	@override String get readAdminAd => 'Werbung ansehen';
 	@override String get writeInviteCodes => 'Einladungscodes erstellen';
 	@override String get readInviteCodes => 'Einladungscodes anzeigen';
+	@override String get readFederation => 'Informationen zur Föderation einsehen';
+	@override String get writeReportAbuse => 'Verstöße melden';
 	@override String get writeChat => 'Chats bedienen';
+	@override String get readChat => 'Chats durchsuchen';
 }
 
 // Path: misskey.auth_
@@ -2513,6 +2598,7 @@ class _TranslationsMisskeyProfileDeDe extends TranslationsMisskeyProfileEnUs {
 	@override String avatarDecorationMax({required Object max}) => 'Du kannst bis zu ${max} Dekorationen hinzufügen.';
 	@override String get followedMessage => 'Nachricht, wenn dir jemand folgt';
 	@override String get followedMessageDescription => 'Du kannst eine kurze Nachricht festlegen, die dem Empfänger angezeigt wird, wenn er dir folgt.';
+	@override String get followedMessageDescriptionForLockedAccount => 'Wenn Folgeanfragen deine Genehmigung brauchen, wird dies beim Genehmigen einer Anfrage angezeigt.';
 }
 
 // Path: misskey.exportOrImport_
@@ -2610,6 +2696,7 @@ class _TranslationsMisskeyPlayDeDe extends TranslationsMisskeyPlayEnUs {
 	@override String get title => 'Titel';
 	@override String get script => 'Skript';
 	@override String get summary => 'Beschreibung';
+	@override String get visibilityDescription => 'Wenn du die Sichtbarkeit auf Privat stellst, wird der Play nicht auf deinem Profil sichtbar sein, aber jeder, der die URL hat, kann ihn trotzdem aufrufen.';
 }
 
 // Path: misskey.pages_
@@ -2649,6 +2736,7 @@ class _TranslationsMisskeyPagesDeDe extends TranslationsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'Vorschaubild festlegen';
 	@override String get eyeCatchingImageRemove => 'Vorschaubild entfernen';
 	@override String get chooseBlock => 'Block hinzufügen';
+	@override String get enterSectionTitle => 'Titel des Abschnitts eingeben';
 	@override String get selectType => 'Typ auswählen';
 	@override String get contentBlocks => 'Inhalt';
 	@override String get inputBlocks => 'Eingabe';
@@ -2687,6 +2775,7 @@ class _TranslationsMisskeyNotificationDeDe extends TranslationsMisskeyNotificati
 	@override String get newNote => 'Neue Notiz';
 	@override String unreadAntennaNote({required Object name}) => 'Antenne ${name}';
 	@override String get roleAssigned => 'Rolle zugewiesen';
+	@override String get chatRoomInvitationReceived => 'Du wurdest in einen Chatraum eingeladen';
 	@override String get emptyPushNotificationMessage => 'Push-Benachrichtigungen wurden aktualisiert';
 	@override String get achievementEarned => 'Errungenschaft freigeschaltet';
 	@override String get testNotification => 'Testbenachrichtigung';
@@ -2833,6 +2922,7 @@ class _TranslationsMisskeyModerationLogTypesDeDe extends TranslationsMisskeyMode
 	@override String get unmarkSensitiveDriveFile => 'Datei als nicht sensitiv markiert';
 	@override String get resolveAbuseReport => 'Meldung bearbeitet';
 	@override String get forwardAbuseReport => 'Meldung weitergeleitet';
+	@override String get updateAbuseReportNote => 'Moderationsnotiz einer Meldung aktualisiert';
 	@override String get createInvitation => 'Einladung erstellt';
 	@override String get createAd => 'Werbung erstellt';
 	@override String get deleteAd => 'Werbung gelöscht';
@@ -2852,6 +2942,8 @@ class _TranslationsMisskeyModerationLogTypesDeDe extends TranslationsMisskeyMode
 	@override String get deletePage => 'Seite gelöscht';
 	@override String get deleteFlash => 'Play gelöscht';
 	@override String get deleteGalleryPost => 'Galeriebeitrag gelöscht';
+	@override String get deleteChatRoom => 'Chatraum gelöscht';
+	@override String get updateProxyAccountDescription => 'Beschreibung des Proxy-Benutzerkontos aktualisiert';
 }
 
 // Path: misskey.fileViewer_
@@ -2918,6 +3010,7 @@ class _TranslationsMisskeyReversiDeDe extends TranslationsMisskeyReversiEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get reversi => 'Reversi';
 	@override String get gameSettings => 'Spieleinstellungen';
 	@override String get chooseBoard => 'Spielbrett auswählen';
 	@override String get blackOrWhite => 'Schwarz/Weiß';
@@ -2935,6 +3028,7 @@ class _TranslationsMisskeyReversiDeDe extends TranslationsMisskeyReversiEnUs {
 	@override String pastTurnOf({required Object name}) => 'Zug von ${name}';
 	@override String get surrender => 'Aufgeben';
 	@override String get surrendered => 'Aufgegeben';
+	@override String get timeout => 'Zeit abgelaufen';
 	@override String get drawn => 'Unentschieden';
 	@override String won({required Object name}) => '${name} hat gewonnen';
 	@override String get black => 'Schwarz';
@@ -2949,6 +3043,7 @@ class _TranslationsMisskeyReversiDeDe extends TranslationsMisskeyReversiEnUs {
 	@override String get freeMatch => 'Freies Spiel';
 	@override String get lookingForPlayer => 'Gegner werden gesucht...';
 	@override String get gameCanceled => 'Das Spiel wurde abgesagt.';
+	@override String get shareToTlTheGameWhenStart => 'Spiel in der Chronik teilen, wenn es gestartet wurde';
 	@override String get iStartedAGame => 'Das Spiel hat begonnen! #MisskeyReversi';
 	@override String get opponentHasSettingsChanged => 'Der Gegner hat seine Einstellungen geändert.';
 	@override String get allowIrregularRules => 'Irreguläre Regeln (völlig frei)';
@@ -2985,7 +3080,9 @@ class _TranslationsMisskeyUrlPreviewSettingDeDe extends TranslationsMisskeyUrlPr
 	@override String get requireContentLengthDescription => 'Wenn der Server keine Content-Length zurückgibt, wird keine Vorschau erzeugt.';
 	@override String get userAgent => 'User-Agent';
 	@override String get userAgentDescription => 'Legt den User-Agent fest, der beim Abrufen der Vorschau verwendet werden soll. Bleibt er leer, wird der Standard-User-Agent verwendet.';
+	@override String get summaryProxy => 'Proxy-Endpunkte, die Vorschaubilder erzeugen';
 	@override String get summaryProxyDescription => 'Generierung von Vorschaubildern mit Summaly Proxy anstelle von Misskey selbst.';
+	@override String get summaryProxyDescription2 => 'Die folgenden Parameter werden als Abfrage-Strings mit dem Proxy verknüpft. Wenn der Proxy sie nicht unterstützt, werden die Werte ignoriert.';
 }
 
 // Path: misskey.mediaControls_
@@ -3009,6 +3106,8 @@ class _TranslationsMisskeyContextMenuDeDe extends TranslationsMisskeyContextMenu
 	// Translations
 	@override String get title => 'Kontextmenü';
 	@override String get app => 'Anwendung';
+	@override String get appWithShift => 'Anwendung per Umschalttaste';
+	@override String get native => 'Natives Browsermenü';
 }
 
 // Path: misskey.gridComponent_
@@ -3021,6 +3120,16 @@ class _TranslationsMisskeyGridComponentDeDe extends TranslationsMisskeyGridCompo
 	@override late final _TranslationsMisskeyGridComponentErrorDeDe error_ = _TranslationsMisskeyGridComponentErrorDeDe._(_root);
 }
 
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogDeDe extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => 'Nicht ausgewählt';
+}
+
 // Path: misskey.customEmojisManager_
 class _TranslationsMisskeyCustomEmojisManagerDeDe extends TranslationsMisskeyCustomEmojisManagerEnUs {
 	_TranslationsMisskeyCustomEmojisManagerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -3028,8 +3137,10 @@ class _TranslationsMisskeyCustomEmojisManagerDeDe extends TranslationsMisskeyCus
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe._(_root);
 	@override late final _TranslationsMisskeyCustomEmojisManagerLogsDeDe logs_ = _TranslationsMisskeyCustomEmojisManagerLogsDeDe._(_root);
 	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteDeDe remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteDeDe._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalDeDe local_ = _TranslationsMisskeyCustomEmojisManagerLocalDeDe._(_root);
 }
 
 // Path: misskey.embedCodeGen_
@@ -3045,6 +3156,9 @@ class _TranslationsMisskeyEmbedCodeGenDeDe extends TranslationsMisskeyEmbedCodeG
 	@override String get maxHeight => 'Maximale Höhe';
 	@override String get maxHeightDescription => 'Der Wert 0 deaktiviert die Einstellung der maximalen Höhe. Gib einen Wert an, um zu verhindern, dass das Widget weiterhin vertikal vergrößert wird.';
 	@override String get maxHeightWarn => 'Die Begrenzung der maximalen Höhe ist deaktiviert (0). Wenn dies nicht beabsichtigt war, setze die maximale Höhe auf einen Wert fest.';
+	@override String get previewIsNotActual => 'Die Anzeige weicht von der tatsächlichen Einbettung ab, da sie den auf dem Vorschaufenster angezeigten Bereich überschreitet.';
+	@override String get rounded => 'Ecken abrunden';
+	@override String get border => 'Dem äußeren Rand einen Rahmen hinzufügen';
 	@override String get applyToPreview => 'Auf die Vorschau anwenden';
 	@override String get generateCode => 'Einbettungscode generieren';
 	@override String get codeGenerated => 'Der Code wurde generiert';
@@ -3097,6 +3211,8 @@ class _TranslationsMisskeyCaptchaDeDe extends TranslationsMisskeyCaptchaEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get verify => 'Bitte beantworte das CAPTCHA';
+	@override String get testSiteKeyMessage => 'Du kannst die Vorschau prüfen, indem du die Testwerte für den Site- und Secret-Key eingibst. Weitere Informationen findest du auf der folgenden Seite.';
 	@override late final _TranslationsMisskeyCaptchaErrorDeDe error_ = _TranslationsMisskeyCaptchaErrorDeDe._(_root);
 }
 
@@ -3136,6 +3252,31 @@ class _TranslationsMisskeySearchDeDe extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => 'Beispiel: misskey.example.com';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersDeDe extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Jeder';
+	@override String get followers => 'Nur deine Follower';
+	@override String get following => 'Nur Benutzer, denen du folgst';
+	@override String get mutual => 'Nur Benutzer, die sich gegenseitig folgen';
+	@override String get none => 'Niemand';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatDeDe extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Name des Absenders anzeigen';
+	@override String get sendOnEnter => 'Eingabetaste sendet Nachricht';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -3145,6 +3286,8 @@ class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTy
 	// Translations
 	@override String get none => 'Wird veröffentlicht';
 	@override String get manuallySuspended => 'Manuell gesperrt';
+	@override String get goneSuspended => 'Gesperrt wegen Löschung des Servers';
+	@override String get autoSuspendedForNotResponding => 'Gesperrt, weil der Server nicht antwortet';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3159,6 +3302,8 @@ class _TranslationsMisskeyBubbleGameScoreDeDe extends TranslationsMisskeyBubbleG
 	@override String get highScore => 'Höchstpunktzahl';
 	@override String get maxChain => 'Maximale Anzahl an Verkettungen';
 	@override String yen({required Object yen}) => '${yen} Yen';
+	@override String estimatedQty({required Object qty}) => '${qty} Stück';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} Onigiri';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -3222,11 +3367,13 @@ class _TranslationsMisskeyInitialTutorialTimelineDeDe extends TranslationsMisske
 
 	// Translations
 	@override String get title => 'So funktionieren die Chroniken';
+	@override String get description1 => 'Misskey stellt mehrere Chroniken bereit (einige können je nach den Richtlinien des Servers nicht verfügbar sein).';
 	@override String get home => 'Du kannst Beiträge von den Konten sehen, denen du folgst.';
 	@override String get local => 'Du kannst Beiträge aller Benutzer auf diesem Server sehen.';
 	@override String get social => 'Notizen von der Startseite und der lokalen Chronik werden angezeigt.';
 	@override String get global => 'Du kannst Notizen von allen föderierten Servern sehen.';
 	@override String get description2 => 'Du kannst jederzeit am oberen Rand des Bildschirms zwischen den jeweiligen Chroniken wechseln.';
+	@override String description3({required Object link}) => 'Darüber hinaus gibt es Listen-Chroniken und Kanal-Chroniken. Weitere Einzelheiten findest du unter ${link}.';
 }
 
 // Path: misskey.initialTutorial_.postNote_
@@ -3236,6 +3383,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteDeDe extends TranslationsMisske
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get description1 => 'Wenn du eine Notiz auf Misskey veröffentlichst, stehen dir verschiedene Optionen zur Verfügung. Die Oberfläche sieht folgendermaßen aus.';
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe._(_root);
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwDeDe cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwDeDe._(_root);
 }
@@ -3248,6 +3396,7 @@ class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe exten
 
 	// Translations
 	@override String get title => 'Wie markiert man Anhänge als sensibel?';
+	@override String get description => 'Markiere Anhänge als sensibel, die aufgrund von den Serverregeln nicht sichtbar sein sollen.';
 	@override String get tryThisFile => 'Versuche, das angehängte Bild als sensibel zu markieren!';
 	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe._(_root);
 	@override String get method => 'Um einen Anhang als sensibel zu kennzeichnen, klicke auf das Vorschaubild der Datei, um das Menü zu öffnen, und klicke auf „Als sensibel markieren“.';
@@ -3384,6 +3533,7 @@ class _TranslationsMisskeyRoleOptionsDeDe extends TranslationsMisskeyRoleOptions
 	@override String get canManageAvatarDecorations => 'Profilbilddekorationen verwalten';
 	@override String get driveCapacity => 'Drive-Kapazität';
 	@override String get alwaysMarkNsfw => 'Dateien immer als NSFW markieren';
+	@override String get canUpdateBioMedia => 'Kann ein Profil- oder ein Bannerbild bearbeiten';
 	@override String get pinMax => 'Maximale Anzahl an angehefteten Notizen';
 	@override String get antennaMax => 'Maximale Anzahl an Antennen';
 	@override String get wordMuteMax => 'Maximale Zeichenlänge für Wortstummschaltungen';
@@ -3399,7 +3549,11 @@ class _TranslationsMisskeyRoleOptionsDeDe extends TranslationsMisskeyRoleOptions
 	@override String get canUseTranslator => 'Verwendung des Übersetzers';
 	@override String get avatarDecorationLimit => 'Maximale Anzahl an Profilbilddekorationen, die angebracht werden können';
 	@override String get canImportAntennas => 'Importieren von Antennen erlauben';
+	@override String get canImportBlocking => 'Importieren von Blockierungen zulassen';
+	@override String get canImportFollowing => 'Importieren von Gefolgten zulassen';
+	@override String get canImportMuting => 'Importieren von Stummgeschalteten zulassen';
 	@override String get canImportUserLists => 'Importieren von Listen erlauben';
+	@override String get canChat => 'Chatten erlauben';
 }
 
 // Path: misskey.role_.condition_
@@ -3409,10 +3563,14 @@ class _TranslationsMisskeyRoleConditionDeDe extends TranslationsMisskeyRoleCondi
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => 'Manuellen Rollen zugewiesen';
 	@override String get isLocal => 'Lokaler Benutzer';
 	@override String get isRemote => 'Benutzer fremder Instanz';
 	@override String get isCat => 'Katzen-Benutzer';
 	@override String get isBot => 'Bot-Benutzer';
+	@override String get isSuspended => 'Gesperrter Benutzer';
+	@override String get isLocked => 'Private Konten';
+	@override String get isExplorable => 'Benutzer, die ihr Konto im "Erkunden"-Bereich sichtbar machen';
 	@override String get createdLessThan => 'Kontoerstellung liegt weniger als X zurück';
 	@override String get createdMoreThan => 'Kontoerstellung liegt mehr als X zurück';
 	@override String get followersLessThanOrEq => 'Hat X oder weniger Follower';
@@ -3531,6 +3689,8 @@ class _TranslationsMisskeyPagesBlocksDeDe extends TranslationsMisskeyPagesBlocks
 	@override String get section => 'Abschnitt';
 	@override String get image => 'Bild';
 	@override String get button => 'Knopf';
+	@override String get dynamic => 'Dynamische Bausteine';
+	@override String dynamicDescription({required Object play}) => 'Dieser Baustein wurde abgeschafft. Bitte verwende von nun an ${play}.';
 	@override String get note => 'Eingebettete Notiz';
 	@override late final _TranslationsMisskeyPagesBlocksNoteDeDe note_ = _TranslationsMisskeyPagesBlocksNoteDeDe._(_root);
 }
@@ -3554,9 +3714,11 @@ class _TranslationsMisskeyNotificationTypesDeDe extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => 'Erhaltene Follow-Anfragen';
 	@override String get followRequestAccepted => 'Akzeptierte Follow-Anfragen';
 	@override String get roleAssigned => 'Rolle zugewiesen';
+	@override String get chatRoomInvitationReceived => 'Einladungen zum Chatraum';
 	@override String get achievementEarned => 'Errungenschaft freigeschaltet';
 	@override String get exportCompleted => 'Der Export ist abgeschlossen';
 	@override String get login => 'Anmeldung';
+	@override String get createToken => 'Erstellung von Zugriffstokens';
 	@override String get test => 'Test-Benachrichtigungen';
 	@override String get app => 'Benachrichtigungen von Apps';
 }
@@ -3750,7 +3912,28 @@ class _TranslationsMisskeyGridComponentErrorDeDe extends TranslationsMisskeyGrid
 
 	// Translations
 	@override String get requiredValue => 'Dieser Wert ist ein Pflichtfeld';
+	@override String get columnTypeNotSupport => 'Die Validierung regulärer Ausdrücke wird nur für Spalten vom Typ "Text" unterstützt.';
+	@override String patternNotMatch({required Object pattern}) => 'Dieser Wert stimmt nicht mit dem Schema in ${pattern} überein';
 	@override String get notUnique => 'Dieser Wert muss eindeutig sein';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => 'Ausgewählte Zeilen kopieren';
+	@override String get copySelectionRanges => 'Auswahl kopieren';
+	@override String get deleteSelectionRows => 'Ausgewählte Zeilen löschen';
+	@override String get searchSettings => 'Sucheinstellungen';
+	@override String get searchSettingCaption => 'Detaillierte Suchkriterien festlegen.';
+	@override String get searchLimit => 'Anzahl der Ergebnisse';
+	@override String get sortOrder => 'Sortierung';
+	@override String get registrationLogs => 'Registrierungsprotokoll';
+	@override String get registrationLogsCaption => 'Protokolle werden beim Aktualisieren oder Löschen von Emojis angezeigt. Sie verschwinden nach dem Aktualisieren oder Löschen, dem Wechsel zu einer neuen Seite oder dem Neuladen.';
+	@override String get alertEmojisRegisterFailedDescription => 'Emoji konnte nicht aktualisiert oder gelöscht werden. Bitte prüfe das Registrierungsprotokoll für Details.';
 }
 
 // Path: misskey.customEmojisManager_.logs_
@@ -3760,6 +3943,7 @@ class _TranslationsMisskeyCustomEmojisManagerLogsDeDe extends TranslationsMisske
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get failureLogNothing => 'Es gibt kein Fehlerprotokoll.';
 	@override String get logNothing => 'Keine Protokoll-Einträge.';
 }
 
@@ -3770,7 +3954,24 @@ class _TranslationsMisskeyCustomEmojisManagerRemoteDeDe extends TranslationsMiss
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get selectionRowDetail => 'Details der ausgewählten Zeile';
+	@override String get importSelectionRangesRows => 'Zeilen in der Auswahl importieren';
+	@override String get importEmojisButton => 'Ausgewählte Emojis importieren';
 	@override String get confirmImportEmojisTitle => 'Emojis importieren';
+	@override String confirmImportEmojisDescription({required Object count}) => 'Importiere ${count} Emoji(s), die von entfernten Server empfangen wurden. Bitte achte genau auf die Lizenz der Emojis. Bist du sicher, dass du fortfahren möchtest?';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalDeDe extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => 'Hinzugefügte Emojis';
+	@override String get tabTitleRegister => 'Emojis hinzufügen';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListDeDe list_ = _TranslationsMisskeyCustomEmojisManagerLocalListDeDe._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
@@ -3835,6 +4036,8 @@ class _TranslationsMisskeyCaptchaErrorDeDe extends TranslationsMisskeyCaptchaErr
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedDeDe requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedDeDe._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorUnknownDeDe unknown_ = _TranslationsMisskeyCaptchaErrorUnknownDeDe._(_root);
 }
 
@@ -3847,6 +4050,8 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe extends Translat
 	// Translations
 	@override String get description => 'Du kannst einschränken, wer deine Notiz sehen kann.';
 	@override String get public => 'Deine Notiz wird für alle Nutzer sichtbar sein.';
+	@override String get home => 'Nur auf der Startseite sichtbar. Kann von Followern, Profilbesuchern und durch Renotes gesehen werden.';
+	@override String get followers => 'Nur für Follower sichtbar. Nur Follower können es sehen und niemand sonst, und es kann nicht von anderen gerenoted werden.';
 	@override String get direct => 'Die Notiz wird nur für den angegebenen Benutzer veröffentlicht und der Empfänger wird benachrichtigt. Kann anstelle von Direktnachrichten verwendet werden.';
 	@override String get doNotSendConfidencialOnDirect1 => 'Sei vorsichtig, wenn du sensible Informationen verschickst!';
 	@override String get doNotSendConfidencialOnDirect2 => 'Die Administratoren des Servers können den Inhalt der Notiz sehen. Sei vorsichtig mit sensiblen Informationen, wenn du Direktnachrichten an Benutzer auf nicht vertrauenswürdigen Servern sendest.';
@@ -3863,6 +4068,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwDeDe extends TranslationsMiss
 	@override String get title => 'Inhaltswarnung';
 	@override String get description => 'Anstelle des Textes wird das angezeigt, was du im Abschnitt „Anmerkungen“ angibst. Drücke auf „Inhalt anzeigen“, um den vollständigen Text zu sehen.';
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe._(_root);
+	@override String get useCases => 'Dient zur Kennzeichnung von Notizen, wie sie in den Serverrichtlinien vorgeschrieben sind, oder zur eigenen Festlegung von Spoiler-Beiträgen oder sensiblem Text.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
@@ -4860,6 +5066,61 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe 
 	@override String get description => 'Während der Installation des Farbschemas ist ein Problem aufgetreten. Bitte versuche es erneut. Detaillierte Fehlerinformationen können über die Javascript-Konsole abgerufen werden.';
 }
 
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListDeDe extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => 'Es wurden keine Emojis hinzugefügt.';
+	@override String get alertUpdateEmojisNothingDescription => 'Es wurden keine Emojis geändert.';
+	@override String get alertDeleteEmojisNothingDescription => 'Es gibt keine zu löschenden Emojis.';
+	@override String confirmUpdateEmojisDescription({required Object count}) => 'Aktualisiere ${count} Emoji(s). Willst du fortfahren?';
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'Lösche ${count} ausgewählte Emoji(s). Willst du fortfahren?';
+	@override String get confirmMovePageDesciption => 'An den Emojis auf dieser Seite wurden Änderungen vorgenommen.\nWenn du die Seite verlässt, ohne zu speichern, werden alle auf dieser Seite vorgenommenen Änderungen verworfen.';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingDescription => 'Hier kannst du das Verhalten beim Hochladen von Emojis konfigurieren.';
+	@override String get directoryToCategoryLabel => 'Gib den Namen des Verzeichnisses in das Feld „Kategorie“ ein';
+	@override String get directoryToCategoryCaption => 'Wenn du ein Verzeichnis ziehst und ablegst, gib den Verzeichnisnamen in das Feld „Kategorie“ ein.';
+	@override String get emojiInputAreaList1 => 'Ziehe Bilddateien oder Verzeichnisse per Drag-and-drop in diesen Rahmen';
+	@override String get emojiInputAreaList2 => 'Klicke auf diesen Link, um von deinem PC aus zu wählen';
+	@override String get emojiInputAreaList3 => 'Klicke auf diesen Link, um vom Drive aus zu wählen';
+	@override String confirmRegisterEmojisDescription({required Object count}) => 'Füge die in der Liste aufgeführten Emojis als neue benutzerdefinierte Emojis hinzu. Bist du sicher? (Um eine Überlastung zu vermeiden, können nur ${count} Emoji(s) in einem Vorgang hinzugefügt werden)';
+	@override String get confirmClearEmojisDescription => 'Verwerfe die Bearbeitungen und lösche die Emojis aus der Liste. Bist du sicher, dass du fortfahren möchtest?';
+	@override String confirmUploadEmojisDescription({required Object count}) => 'Lade die ${count} abgelegte(n) Datei(en) in das Drive hoch. Bist du sicher, dass du fortfahren möchtest?';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedDeDe extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA-Anfrage fehlgeschlagen.';
+	@override String get text => 'Bitte probiere es später noch einmal oder überprüfe die Einstellungen erneut.';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA-Prüfung fehlgeschlagen';
+	@override String get text => 'Bitte überprüfe nochmals, ob die Einstellungen korrekt sind.';
+}
+
 // Path: misskey.captcha_.error_.unknown_
 class _TranslationsMisskeyCaptchaErrorUnknownDeDe extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
 	_TranslationsMisskeyCaptchaErrorUnknownDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -4867,6 +5128,7 @@ class _TranslationsMisskeyCaptchaErrorUnknownDeDe extends TranslationsMisskeyCap
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'CAPTCHA-Fehler';
 	@override String get text => 'Es ist ein unerwarteter Fehler aufgetreten.';
 }
 
