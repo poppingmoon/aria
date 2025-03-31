@@ -22,7 +22,7 @@ dependencies:
   dotted_border: ^2.1.0
   extended_image: ^10.0.0
   file: ^7.0.1
-  file_picker: ^9.2.3
+  file_picker: ^10.0.0
   flex_color_picker: ^3.7.0
   flutter:
     sdk: flutter
