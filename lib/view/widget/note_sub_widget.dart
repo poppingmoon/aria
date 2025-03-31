@@ -127,6 +127,7 @@ class NoteSubWidget extends HookConsumerWidget {
                           text: cw,
                           emojis: note.emojis,
                           author: note.user,
+                          noteId: note.id,
                           nyaize: true,
                         ),
                       CwButton(

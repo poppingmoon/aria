@@ -120,6 +120,7 @@ class SubNoteContent extends HookConsumerWidget {
             ],
             emojis: note.emojis,
             author: note.user,
+            noteId: note.id,
             nyaize: true,
             maxLines: isCollapsed.value ? 10 : null,
           ),
