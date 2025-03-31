@@ -37,7 +37,7 @@ class EmojiSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final targetNote =
-        targetNoteId != null
+        (targetNoteId?.isNotEmpty ?? false)
             ? ref.watch(noteProvider(account, targetNoteId!))
             : null;
     final isCustomEmoji = emoji.startsWith(':');

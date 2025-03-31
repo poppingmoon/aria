@@ -413,6 +413,7 @@ class _NoteContent extends HookConsumerWidget {
               text: cw,
               emojis: appearNote.emojis,
               author: appearNote.user,
+              noteId: appearNote.id,
               nyaize: true,
             ),
           Padding(
@@ -444,6 +445,7 @@ class _NoteContent extends HookConsumerWidget {
               nodes: parsed,
               emojis: appearNote.emojis,
               author: appearNote.user,
+              noteId: appearNote.id,
               nyaize: true,
               maxLines: isCollapsed.value ? 10 : null,
             ),
