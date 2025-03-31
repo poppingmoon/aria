@@ -386,6 +386,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explora';
 	@override String get messageRead => 'Vist';
 	@override String get noMoreHistory => 'No hi ha res més per veure';
+	@override String get startChat => 'Comença a xatejar ';
 	@override String nUsersRead({required Object n}) => 'Vist per ${n}';
 	@override String agreeTo({required Object x0}) => 'Accepto que ${x0}';
 	@override String get agree => 'Hi estic d\'acord';
@@ -1416,6 +1417,10 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get postForm => 'Formulari de publicació';
 	@override String get textCount => 'Nombre de caràcters ';
 	@override String get information => 'Informació';
+	@override String get chat => 'Xat';
+	@override String get migrateOldSettings => 'Migració de la configuració antiga ';
+	@override String get migrateOldSettings_description => 'Normalment això es fa automàticament, però si la transició no es fa, el procés es pot iniciar manualment. S\'esborrarà la configuració actual.';
+	@override String get compress => 'Comprimir ';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1514,11 +1519,45 @@ class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => 'Encara no tens missatges ';
+	@override String get newMessage => 'Missatge nou';
+	@override String get individualChat => 'Xat individual ';
+	@override String get individualChat_description => 'Pots mantenir converses individuals amb usuaris concrets.';
+	@override String get roomChat => 'Sala de xat';
+	@override String get roomChat_description => 'Pots xatejar amb diverses persones.\nTambé pots xatejar amb usuaris que no poden fer xats privats, si ells accepten.';
+	@override String get createRoom => 'Crear una sala';
+	@override String get inviteUserToChat => 'Invita usuaris per començar a xatejar';
+	@override String get yourRooms => 'Sales creades';
+	@override String get joiningRooms => 'Sales a les quals participes';
 	@override String get invitations => 'Convida';
+	@override String get noInvitations => 'No tens cap invitació ';
+	@override String get history => 'Historial de converses ';
 	@override String get noHistory => 'No hi ha un registre previ';
+	@override String get noRooms => 'No hi ha habitacions';
+	@override String get inviteUser => 'Invitar usuaris';
+	@override String get sentInvitations => 'Enviar invitacions';
+	@override String get join => 'Afegir-se ';
+	@override String get ignore => 'Ignorar ';
+	@override String get leave => 'Marxar';
 	@override String get members => 'Membres';
+	@override String get searchMessages => 'Buscar missatges ';
 	@override String get home => 'Inici';
 	@override String get send => 'Envia';
+	@override String get newline => 'Línia nova ';
+	@override String get muteThisRoom => 'Silenciar aquesta sala';
+	@override String get deleteRoom => 'Esborrar la sala';
+	@override String get chatNotAvailableForThisAccountOrServer => 'El xat no està disponible per aquest servidor o aquest compte.';
+	@override String get chatNotAvailableInOtherAccount => 'La funció de xat es troba desactivada al compte de l\'altre usuari.';
+	@override String get cannotChatWithTheUser => 'No pots xatejar amb aquest usuari';
+	@override String get cannotChatWithTheUser_description => 'El xat està desactivat o l\'altra part encara no l\'ha obert.';
+	@override String get chatWithThisUser => 'Xateja amb aquest usuari';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Aquest usuari només accepta xats d\'usuaris que el segueixen.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Aquest usuari només accepta xats d\'usuaris que segueix.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Aquest usuari només accepta xats d\'usuaris que segueixes i et segueixen.';
+	@override String get thisUserNotAllowedChatAnyone => 'Aquest usuari no accepta xats de ningú.';
+	@override String get chatAllowedUsers => 'Usuaris que poden xatejar';
+	@override String get chatAllowedUsers_note => 'Pots xatejar amb qualsevol usuari a qui hagis enviat un missatge de xat, independentment d\'aquesta configuració.';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersCaEs chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersCaEs._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1560,6 +1599,11 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get timelineAndNote => 'Línia de temps i nota';
 	@override String get makeEveryTextElementsSelectable => 'Fes que tots els elements del text siguin seleccionables';
 	@override String get makeEveryTextElementsSelectable_description => 'L\'activació pot reduir la usabilitat en determinades ocasions.';
+	@override String get useStickyIcons => 'Utilitza icones fixes';
+	@override String get showNavbarSubButtons => 'Mostrar sub botons a la barra de navegació ';
+	@override String get ifOn => 'Quan s\'encén ';
+	@override String get ifOff => 'Quan s\'apaga ';
+	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -2187,6 +2231,7 @@ class _TranslationsMisskeySfxCaEs extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'Nota (per mi)';
 	@override String get notification => 'Notificacions';
 	@override String get reaction => 'Quan se selecciona una reacció ';
+	@override String get chatMessage => 'Missatges del xat';
 }
 
 // Path: misskey.soundSettings_
@@ -2382,6 +2427,7 @@ class _TranslationsMisskeyPermissionsCaEs extends TranslationsMisskeyPermissions
 	@override String get readFederation => 'Veure dades de federació';
 	@override String get writeReportAbuse => 'Informar d\'un abús';
 	@override String get writeChat => 'Crear o esborrar missatges de xat';
+	@override String get readChat => 'Explorar xats';
 }
 
 // Path: misskey.auth_
@@ -2747,6 +2793,7 @@ class _TranslationsMisskeyNotificationCaEs extends TranslationsMisskeyNotificati
 	@override String get newNote => 'Nota nova';
 	@override String unreadAntennaNote({required Object name}) => 'Antena ${name}';
 	@override String get roleAssigned => 'Rol assignat ';
+	@override String get chatRoomInvitationReceived => 'T\'han invitat a una sala de xat';
 	@override String get emptyPushNotificationMessage => 'Les notificacions han sigut actualitzades';
 	@override String get achievementEarned => 'Aconseguiment desblocat';
 	@override String get testNotification => 'Notificació de prova';
@@ -2914,6 +2961,7 @@ class _TranslationsMisskeyModerationLogTypesCaEs extends TranslationsMisskeyMode
 	@override String get deletePage => 'Esborrar la pàgina';
 	@override String get deleteFlash => 'Esborrar el guió';
 	@override String get deleteGalleryPost => 'Esborrar la publicació de la galeria';
+	@override String get deleteChatRoom => 'Esborra la sala de xat';
 	@override String get updateProxyAccountDescription => 'Actualitzar descripció del compte proxy';
 }
 
@@ -3226,6 +3274,31 @@ class _TranslationsMisskeySearchCaEs extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => 'Ex: misskey.example.com';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersCaEs extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Tothom';
+	@override String get followers => 'Només els teus seguidors';
+	@override String get following => 'Només usuaris als que segueixes';
+	@override String get mutual => 'Només seguidors mutus';
+	@override String get none => 'Ningú ';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatCaEs extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Mostrar el nom del remitent';
+	@override String get sendOnEnter => 'Introdueix per enviar';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCaEs extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -3503,6 +3576,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'Autoritza la importació de seguidors';
 	@override String get canImportMuting => 'Autoritza la importació de silenciats';
 	@override String get canImportUserLists => 'Autoritza la importació de llistes d\'usuaris ';
+	@override String get canChat => 'Pot xatejar';
 }
 
 // Path: misskey.role_.condition_
@@ -3663,6 +3737,7 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => 'Rebuda una petició de seguiment';
 	@override String get followRequestAccepted => 'Petició de seguiment acceptada';
 	@override String get roleAssigned => 'Rol donat';
+	@override String get chatRoomInvitationReceived => 'Invitat a la sala de xat';
 	@override String get achievementEarned => 'Assoliment desbloquejat';
 	@override String get exportCompleted => 'Exportació completada';
 	@override String get login => 'Iniciar sessió';

@@ -586,6 +586,7 @@ class TranslationsMisskeyEnUs {
 	String get explore => 'Explore';
 	String get messageRead => 'Read';
 	String get noMoreHistory => 'There is no further history';
+	String get startChat => 'Start chat';
 	String nUsersRead({required Object n}) => 'read by ${n}';
 	String agreeTo({required Object x0}) => 'I agree to ${x0}';
 	String get agree => 'Agree';
@@ -1616,6 +1617,10 @@ class TranslationsMisskeyEnUs {
 	String get postForm => 'Posting form';
 	String get textCount => 'Character count';
 	String get information => 'About';
+	String get chat => 'Chat';
+	String get migrateOldSettings => 'Migrate old client settings';
+	String get migrateOldSettings_description => 'This should be done automatically but if for some reason the migration was not successful, you can trigger the migration process yourself manually. The current configuration information will be overwritten.';
+	String get compress => 'Compress';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1724,11 +1729,45 @@ class TranslationsMisskeyChatEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get noMessagesYet => 'No messages yet';
+	String get newMessage => 'New message';
+	String get individualChat => 'Private Chat';
+	String get individualChat_description => 'Have a private chat with another person.';
+	String get roomChat => 'Room Chat';
+	String get roomChat_description => 'A chat room which can have multiple people.\nYou can also invite people who don\'t allow private chats if they accept the invite.';
+	String get createRoom => 'Create Room';
+	String get inviteUserToChat => 'Invite users to start chatting';
+	String get yourRooms => 'Created rooms';
+	String get joiningRooms => 'Joined rooms';
 	String get invitations => 'Invite';
+	String get noInvitations => 'No invitations';
+	String get history => 'History';
 	String get noHistory => 'No history available';
+	String get noRooms => 'No rooms found';
+	String get inviteUser => 'Invite Users';
+	String get sentInvitations => 'Sent Invites';
+	String get join => 'Join';
+	String get ignore => 'Ignore';
+	String get leave => 'Leave room';
 	String get members => 'Members';
+	String get searchMessages => 'Search messages';
 	String get home => 'Home';
 	String get send => 'Send';
+	String get newline => 'New line';
+	String get muteThisRoom => 'Mute room';
+	String get deleteRoom => 'Delete room';
+	String get chatNotAvailableForThisAccountOrServer => 'Chat is not enabled on this server or for this account.';
+	String get chatNotAvailableInOtherAccount => 'The chat function is disabled for the other user.';
+	String get cannotChatWithTheUser => 'Cannot start a chat with this user';
+	String get cannotChatWithTheUser_description => 'Chat is either unavailable or the other party has not enabled chat.';
+	String get chatWithThisUser => 'Chat with user';
+	String get thisUserAllowsChatOnlyFromFollowers => 'This user accepts chats from followers only.';
+	String get thisUserAllowsChatOnlyFromFollowing => 'This user accepts chats only from users they follow.';
+	String get thisUserAllowsChatOnlyFromMutualFollowing => 'This user only accepts chats from users who are mutual followers.';
+	String get thisUserNotAllowedChatAnyone => 'This user is not accepting chats from anyone.';
+	String get chatAllowedUsers => 'Who to allow chatting with';
+	String get chatAllowedUsers_note => 'You can chat with anyone to whom you have sent a chat message regardless of this setting.';
+	late final TranslationsMisskeyChatChatAllowedUsersEnUs chatAllowedUsers_ = TranslationsMisskeyChatChatAllowedUsersEnUs.internal(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1770,6 +1809,11 @@ class TranslationsMisskeySettingsEnUs {
 	String get timelineAndNote => 'Timeline and note';
 	String get makeEveryTextElementsSelectable => 'Make all text elements selectable';
 	String get makeEveryTextElementsSelectable_description => 'Enabling this may reduce usability in some situations.';
+	String get useStickyIcons => 'Make icons follow while scrolling';
+	String get showNavbarSubButtons => 'Show sub-buttons on the navigation bar';
+	String get ifOn => 'When turned on';
+	String get ifOff => 'When turned off';
+	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -2397,6 +2441,7 @@ class TranslationsMisskeySfxEnUs {
 	String get noteMy => 'Own note';
 	String get notification => 'Notifications';
 	String get reaction => 'On choosing a reaction';
+	String get chatMessage => 'Chat Messages';
 }
 
 // Path: misskey.soundSettings_
@@ -2592,6 +2637,7 @@ class TranslationsMisskeyPermissionsEnUs {
 	String get readFederation => 'Get federation data';
 	String get writeReportAbuse => 'Report violation';
 	String get writeChat => 'Compose or delete chat messages';
+	String get readChat => 'Browse Chat';
 }
 
 // Path: misskey.auth_
@@ -2957,6 +3003,7 @@ class TranslationsMisskeyNotificationEnUs {
 	String get newNote => 'New note';
 	String unreadAntennaNote({required Object name}) => 'Antenna ${name}';
 	String get roleAssigned => 'Role given';
+	String get chatRoomInvitationReceived => 'You have been invited to a chat room';
 	String get emptyPushNotificationMessage => 'Push notifications have been updated';
 	String get achievementEarned => 'Achievement unlocked';
 	String get testNotification => 'Test notification';
@@ -3124,6 +3171,7 @@ class TranslationsMisskeyModerationLogTypesEnUs {
 	String get deletePage => 'Page deleted';
 	String get deleteFlash => 'Play deleted';
 	String get deleteGalleryPost => 'Gallery post deleted';
+	String get deleteChatRoom => 'Deleted Chat Room';
 	String get updateProxyAccountDescription => 'Update the description of the proxy account';
 }
 
@@ -3452,6 +3500,31 @@ class TranslationsMisskeyIOSkebStatusEnUs {
 	String nRequests({required Object n}) => 'Requested ${n} times';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class TranslationsMisskeyChatChatAllowedUsersEnUs {
+	TranslationsMisskeyChatChatAllowedUsersEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get everyone => 'Everyone';
+	String get followers => 'Only your followers';
+	String get following => 'Only users you are following';
+	String get mutual => 'Mutual followers only';
+	String get none => 'Nobody';
+}
+
+// Path: misskey.settings_.chat_
+class TranslationsMisskeySettingsChatEnUs {
+	TranslationsMisskeySettingsChatEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get showSenderName => 'Show sender\'s name';
+	String get sendOnEnter => 'Press Enter to send';
+}
+
 // Path: misskey.delivery_.type_
 class TranslationsMisskeyDeliveryTypeEnUs {
 	TranslationsMisskeyDeliveryTypeEnUs.internal(this._root);
@@ -3729,6 +3802,7 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	String get canImportFollowing => 'Allow importing following';
 	String get canImportMuting => 'Allow importing muting';
 	String get canImportUserLists => 'Allow importing lists';
+	String get canChat => 'Allow Chat';
 }
 
 // Path: misskey.role_.condition_
@@ -3889,6 +3963,7 @@ class TranslationsMisskeyNotificationTypesEnUs {
 	String get receiveFollowRequest => 'Received follow requests';
 	String get followRequestAccepted => 'Accepted follow requests';
 	String get roleAssigned => 'Role given';
+	String get chatRoomInvitationReceived => 'Invited to chat room';
 	String get achievementEarned => 'Achievement unlocked';
 	String get exportCompleted => 'The export has been completed';
 	String get login => 'Sign In';

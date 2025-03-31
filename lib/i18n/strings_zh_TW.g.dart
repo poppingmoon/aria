@@ -386,6 +386,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get explore => '探索';
 	@override String get messageRead => '已讀';
 	@override String get noMoreHistory => '沒有更多歷史紀錄';
+	@override String get startChat => '開始聊天';
 	@override String nUsersRead({required Object n}) => '${n} 人已讀';
 	@override String agreeTo({required Object x0}) => '我同意${x0}';
 	@override String get agree => '同意';
@@ -1416,6 +1417,10 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get postForm => '發文視窗';
 	@override String get textCount => '字數';
 	@override String get information => '關於';
+	@override String get chat => '聊天';
+	@override String get migrateOldSettings => '遷移舊設定資訊';
+	@override String get migrateOldSettings_description => '通常情況下，這會自動進行，但若因某些原因未能順利遷移，您可以手動觸發遷移處理。請注意，當前的設定資訊將會被覆寫。';
+	@override String get compress => '壓縮';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1514,11 +1519,45 @@ class _TranslationsMisskeyChatZhTw extends TranslationsMisskeyChatEnUs {
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => '尚無訊息';
+	@override String get newMessage => '新訊息';
+	@override String get individualChat => 'ㄧ對一聊天室';
+	@override String get individualChat_description => '可以與特定使用者進行一對一的聊天。';
+	@override String get roomChat => '多人聊天室';
+	@override String get roomChat_description => '可以進行多人聊天。\n此外，即使是未允許個人聊天的使用者，只要對方接受，也可以進行聊天。';
+	@override String get createRoom => '建立聊天室';
+	@override String get inviteUserToChat => '邀請使用者開始聊天';
+	@override String get yourRooms => '已建立的聊天室';
+	@override String get joiningRooms => '已加入的聊天室';
 	@override String get invitations => '邀請';
+	@override String get noInvitations => '沒有邀請';
+	@override String get history => '歷史紀錄';
 	@override String get noHistory => '沒有歷史紀錄';
+	@override String get noRooms => '沒有可用的聊天室';
+	@override String get inviteUser => '邀請使用者';
+	@override String get sentInvitations => '已傳送的邀請';
+	@override String get join => '加入';
+	@override String get ignore => '忽視';
+	@override String get leave => '退出聊天室';
 	@override String get members => '成員';
+	@override String get searchMessages => '搜尋聊天訊息';
 	@override String get home => '首頁';
 	@override String get send => '發送';
+	@override String get newline => '換行';
+	@override String get muteThisRoom => '此聊天室已靜音';
+	@override String get deleteRoom => '刪除聊天室';
+	@override String get chatNotAvailableForThisAccountOrServer => '這個伺服器或這個帳號的聊天功能尚未啟用。';
+	@override String get chatNotAvailableInOtherAccount => '對方的帳號無法使用聊天功能。';
+	@override String get cannotChatWithTheUser => '無法與此使用者聊天';
+	@override String get cannotChatWithTheUser_description => '聊天功能目前無法使用，或對方尚未開放聊天功能。';
+	@override String get chatWithThisUser => '聊天';
+	@override String get thisUserAllowsChatOnlyFromFollowers => '此使用者僅接受來自追隨者的聊天訊息。';
+	@override String get thisUserAllowsChatOnlyFromFollowing => '此使用者僅接受自己追隨的使用者傳送聊天訊息。';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => '此使用者只接受互相追隨的使用者傳送聊天訊息。';
+	@override String get thisUserNotAllowedChatAnyone => '此使用者不接受來自任何人的聊天訊息。';
+	@override String get chatAllowedUsers => '允許聊天的對象';
+	@override String get chatAllowedUsers_note => '無論此設定為何，您仍可與自己曾發送過聊天訊息的對象進行聊天。';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersZhTw chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersZhTw._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1560,6 +1599,11 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get timelineAndNote => '時間軸及貼文';
 	@override String get makeEveryTextElementsSelectable => '允許選取所有文字';
 	@override String get makeEveryTextElementsSelectable_description => '啟用此功能後，可能會在某些情境下降低可用性。';
+	@override String get useStickyIcons => '使大頭貼跟隨捲動';
+	@override String get showNavbarSubButtons => '在導覽列顯示輔助按鈕';
+	@override String get ifOn => '開啟時';
+	@override String get ifOff => '關閉時';
+	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -2187,6 +2231,7 @@ class _TranslationsMisskeySfxZhTw extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => '我的貼文';
 	@override String get notification => '通知';
 	@override String get reaction => '選擇反應時';
+	@override String get chatMessage => '聊天訊息';
 }
 
 // Path: misskey.soundSettings_
@@ -2382,6 +2427,7 @@ class _TranslationsMisskeyPermissionsZhTw extends TranslationsMisskeyPermissions
 	@override String get readFederation => '查看站台聯邦的相關資訊';
 	@override String get writeReportAbuse => '檢舉違規行為';
 	@override String get writeChat => '撰寫或刪除訊息';
+	@override String get readChat => '查看聊天訊息';
 }
 
 // Path: misskey.auth_
@@ -2747,6 +2793,7 @@ class _TranslationsMisskeyNotificationZhTw extends TranslationsMisskeyNotificati
 	@override String get newNote => '新的貼文';
 	@override String unreadAntennaNote({required Object name}) => '天線 ${name}';
 	@override String get roleAssigned => '已授予角色';
+	@override String get chatRoomInvitationReceived => '您被邀請加入聊天室';
 	@override String get emptyPushNotificationMessage => '推送通知已更新';
 	@override String get achievementEarned => '獲得成就';
 	@override String get testNotification => '通知測試';
@@ -2914,6 +2961,7 @@ class _TranslationsMisskeyModerationLogTypesZhTw extends TranslationsMisskeyMode
 	@override String get deletePage => '刪除頁面';
 	@override String get deleteFlash => '刪除 Play';
 	@override String get deleteGalleryPost => '刪除相簿的貼文';
+	@override String get deleteChatRoom => '刪除聊天室';
 	@override String get updateProxyAccountDescription => '更新代理帳戶的說明';
 }
 
@@ -3226,6 +3274,31 @@ class _TranslationsMisskeySearchZhTw extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => '例：misskey.example.com';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersZhTw extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => '任何人';
+	@override String get followers => '追隨自己的使用者';
+	@override String get following => '只有您追隨的使用者';
+	@override String get mutual => '互相追隨';
+	@override String get none => '無';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatZhTw extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => '顯示發送者的名稱';
+	@override String get sendOnEnter => '按下 Enter 發送訊息';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeZhTw extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -3503,6 +3576,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => '允許匯入追隨名單';
 	@override String get canImportMuting => '允許匯入靜音名單';
 	@override String get canImportUserLists => '允許匯入清單';
+	@override String get canChat => '允許聊天';
 }
 
 // Path: misskey.role_.condition_
@@ -3663,6 +3737,7 @@ class _TranslationsMisskeyNotificationTypesZhTw extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => '已收到追隨請求';
 	@override String get followRequestAccepted => '追隨請求已接受';
 	@override String get roleAssigned => '已授予角色';
+	@override String get chatRoomInvitationReceived => '已被邀請加入聊天室';
 	@override String get achievementEarned => '獲得成就';
 	@override String get exportCompleted => '已完成匯出。';
 	@override String get login => '登入';
