@@ -45,6 +45,8 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	// Translations
 	@override String get aboutAria => 'Acerca de Aria';
 	@override String get accessToken => 'Token de acceso';
+	@override String get accessTokenUpdated => 'Se actualizó correctamente un token de acceso';
+	@override String get accountAdded => 'Se añadió una cuenta correctamente';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: 'Aria es una fork de '),
 		miria,
@@ -63,9 +65,11 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get avatarSize => 'Tamaño del avatar';
 	@override String get background => 'Fondo';
 	@override String get buttonTypes => 'Tipos de botón';
+	@override String get calculating => 'Calculado...';
 	@override String get confirmBeforeFollow => 'Confirmar antes de seguir';
 	@override String get confirmBeforePost => 'Confirmar antes de publicar';
 	@override String get confirmBeforeReact => 'Confirmar antes de reaccionar';
+	@override String get confirmBeforeRenote => 'Confirmar antes de renotar';
 	@override String get copied => 'Copiado al portapapeles';
 	@override String get copyName => 'Copiar nombre';
 	@override String get crop => 'Recortar';
@@ -96,6 +100,7 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => 'Habilitar animaciones de gesto atrás predictivo';
 	@override String get enableSpellCheck => 'Activar el corrector ortográfico';
 	@override String get endpoint => 'Endpoint';
+	@override String get exitPlayConfirm => '¿Estás seguro de salir de Play?';
 	@override String get expandNote => 'Mostrar nota';
 	@override String get extraMentionsWarning => 'Esta nota incluye menciones que no están incluidas en la nota a responder';
 	@override String get fileNotFound => 'Archivo no encontrado';
@@ -148,6 +153,7 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get noteDoubleTapAction => 'Acción de doble toque en notas';
 	@override String get noteFooterSize => 'Tamaño del botón de acción en notas';
 	@override String get noteLongPressAction => 'Acción de pulsación larga en notas';
+	@override String get noteScheduled => 'La nota ha sido programada';
 	@override String get noteTapAction => 'Acción de toque de nota';
 	@override String get notesAfterRenotes => 'Notas después de renotar';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
@@ -179,6 +185,7 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get playAudio => 'Reproducir audio';
 	@override String get playVideo => 'Reproducir vídeo';
 	@override String get pleaseCopyResponse => 'Por favor copie esta respuesta';
+	@override String pleaseLoginAs({required Object user}) => 'Por favor, inicia sesión como ${user}';
 	@override String get postConfirm => '¿Estás seguro de publicar esta nota?';
 	@override String get reactionConfirm => '¿Estás seguro de añadir una reacción?';
 	@override String get recentlyUsedEmojis => 'Emojis usados recientemente';
@@ -191,6 +198,10 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get reset => 'Restablecer';
 	@override String get rotate => 'Rotar';
 	@override String get scale => 'Escala';
+	@override String get schedule => 'Calendario';
+	@override String get scheduledNoteError => 'La publicación de la nota programada ha fallado';
+	@override String get scheduledNotePosted => 'La nota programada ha sido publicada';
+	@override String get scheduledNotes => 'Notas programadas';
 	@override String get selectIcon => 'Seleccione un icono';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Auto-renotado por '),
@@ -212,8 +223,12 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get showNoteCreatedAt => 'Mostrar fecha de creación de notas';
 	@override String get showNoteFooter => 'Mostrar botones de acción en notas';
 	@override String get showNoteReactionsViewer => 'Mostrar los que reaccionaron en notas';
+	@override String get showOnlineStatus => 'Mostrar estado de conexión';
 	@override String get showPopupOnNewNote => 'Mostrar ventana emergente en nueva nota';
 	@override String get showQuoteButtonInNoteFooter => 'Añadir "Citar" al menú de acciones';
+	@override String get showReactionsCountForEachTypes => 'Ver el número de reacciones por cada tipo de reacción';
+	@override String get showRenotesCount => 'Ver el número de renotas en notas';
+	@override String get showRepliesCount => 'Ver el número de respuestas en notas';
 	@override String get showSelfRenotes => 'Mostrar auto-renotes';
 	@override String get showSmallButtons => 'Mostrar botones pequeños';
 	@override String get showSquaredButtons => 'Mostrar botones cuadrados';
@@ -255,6 +270,7 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get vibrateNote => 'Vibrar en una nueva nota';
 	@override String get vibrateNotification => 'Vibrar en una nueva notificación';
 	@override String get webBrowser => 'Navegador';
+	@override String willBePostedOn({required Object date}) => 'Se publicará en ${date}';
 }
 
 // Path: misskey
