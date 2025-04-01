@@ -26,6 +26,7 @@ class TimelineNote extends HookConsumerWidget {
     this.focusPostForm,
     this.margin = EdgeInsets.zero,
     this.borderRadius,
+    this.hide = false,
   });
 
   final TabSettings tabSettings;
@@ -33,6 +34,7 @@ class TimelineNote extends HookConsumerWidget {
   final void Function()? focusPostForm;
   final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
+  final bool hide;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,7 +58,7 @@ class TimelineNote extends HookConsumerWidget {
         ),
       );
     }
-    if (tabSettings.withFiles && appearNote.fileIds.isEmpty) {
+    if ((tabSettings.withFiles && appearNote.fileIds.isEmpty) || hide) {
       return HardMutedNoteWidget(borderRadius: borderRadius);
     }
     if (note.isRenote) {

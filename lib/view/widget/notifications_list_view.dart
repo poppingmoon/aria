@@ -177,7 +177,7 @@ class NotificationsListView extends HookConsumerWidget {
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           width: maxContentWidth,
-                          child: const Divider(height: 0.0),
+                          child: const Divider(height: 1.0),
                         ),
                       ),
                   itemCount: nextNotifications.value.length,

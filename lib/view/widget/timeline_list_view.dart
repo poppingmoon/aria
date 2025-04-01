@@ -133,8 +133,9 @@ class TimelineListView extends HookConsumerWidget {
     final previousNotes = ref.watch(
       timelineNotesNotifierProvider(tabSettings, untilId: centerId),
     );
-    final hasPreviousNote =
-        previousNotes.valueOrNull?.items.isNotEmpty ?? false;
+    final partialPreviousNoteIds =
+        previousNotes.valueOrNull?.items.take(5).map((note) => note.id) ?? [];
+    final hasPreviousNote = partialPreviousNoteIds.isNotEmpty;
     final (showGap, showPopup, vibrateOnNote) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
@@ -401,6 +402,7 @@ class TimelineListView extends HookConsumerWidget {
                                             ? const Radius.circular(8.0)
                                             : Radius.zero,
                                   ),
+                          hide: partialPreviousNoteIds.contains(note.id),
                         ),
                       ),
                     );
