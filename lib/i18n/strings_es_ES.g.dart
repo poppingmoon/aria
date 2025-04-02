@@ -1576,6 +1576,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get target => 'Para';
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
+	@override String get preferences => 'Preferencias';
 	@override String get postForm => 'Formulario';
 	@override String get information => 'Información';
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);

@@ -1606,6 +1606,9 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings => '迁移旧设置信息';
 	@override String get migrateOldSettings_description => '通常设置信息将自动迁移。但如果由于某种原因迁移不成功，则可以手动触发迁移过程。当前的配置信息将被覆盖。';
 	@override String get compress => '压缩';
+	@override String get right => '右';
+	@override String get bottom => '下';
+	@override String get top => '上';
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
@@ -3007,6 +3010,9 @@ class _TranslationsMisskeyDeckZhCn extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => '总是显示主列';
 	@override String get columnAlign => '列对齐';
+	@override String get columnGap => '列间距';
+	@override String get deckMenuPosition => 'Deck 菜单位置';
+	@override String get navbarPosition => '导航栏位置';
 	@override String get addColumn => '添加列';
 	@override String get newNoteNotificationSettings => '新帖子通知设定';
 	@override String get configureColumn => '列设置';
@@ -3020,7 +3026,7 @@ class _TranslationsMisskeyDeckZhCn extends TranslationsMisskeyDeckEnUs {
 	@override String get newProfile => '新建配置文件';
 	@override String get deleteProfile => '删除配置文件';
 	@override String get introduction => '将各列进行组合以创建您自己的界面！';
-	@override String get introduction2 => '您可以随时通过屏幕右侧的 + 来添加列';
+	@override String get introduction2 => '可以随时通过屏幕右侧的 + 来添加列';
 	@override String get widgetsIntroduction => '从列菜单中，选择“小工具编辑”来添加小工具';
 	@override String get useSimpleUiForNonRootPages => '用简易UI表示非根页面';
 	@override String get usedAsMinWidthWhenFlexible => '「自适应宽度」被启用的时候，这就是最小的宽度';

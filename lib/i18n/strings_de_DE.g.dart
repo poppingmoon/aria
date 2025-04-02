@@ -1046,8 +1046,8 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get cropYes => 'Zuschneiden';
 	@override String get cropNo => 'Unbearbeitet verwenden';
 	@override String get file => 'Datei';
-	@override String recentNHours({required Object n}) => 'Letzten ${n} Stunden';
-	@override String recentNDays({required Object n}) => 'Letzten ${n} Tage';
+	@override String recentNHours({required Object n}) => 'Letzte ${n} Stunden';
+	@override String recentNDays({required Object n}) => 'Letzte ${n} Tage';
 	@override String get noEmailServerWarning => 'Es ist kein Email-Server konfiguriert.';
 	@override String get thereIsUnresolvedAbuseReportWarning => 'Es liegen ungelöste Meldungen vor.';
 	@override String get recommended => 'Empfehlung';
@@ -1055,7 +1055,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get driveCapOverrideLabel => 'Die Drive-Kapazität dieses Nutzers verändern';
 	@override String get driveCapOverrideCaption => 'Gib einen Wert von 0 oder weniger ein, um die Kapazität auf den Standard zurückzusetzen.';
 	@override String get requireAdminForView => 'Melde dich mit einem Administratorkonto an, um dies einzusehen.';
-	@override String get isSystemAccount => 'Ein Benutzerkonto, dass durch das System erstellt und automatisch kontrolliert wird.';
+	@override String get isSystemAccount => 'Ein Benutzerkonto, das durch das System erstellt und automatisch verwaltet wird.';
 	@override String typeToConfirm({required Object x}) => 'Bitte gib zur Bestätigung ${x} ein';
 	@override String get deleteAccount => 'Benutzerkonto löschen';
 	@override String get document => 'Dokumentation';

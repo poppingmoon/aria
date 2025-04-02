@@ -1421,6 +1421,9 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings => '遷移舊設定資訊';
 	@override String get migrateOldSettings_description => '通常情況下，這會自動進行，但若因某些原因未能順利遷移，您可以手動觸發遷移處理。請注意，當前的設定資訊將會被覆寫。';
 	@override String get compress => '壓縮';
+	@override String get right => '右';
+	@override String get bottom => '下';
+	@override String get top => '上';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -2822,6 +2825,9 @@ class _TranslationsMisskeyDeckZhTw extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => '總是顯示主欄';
 	@override String get columnAlign => '對齊欄位';
+	@override String get columnGap => '欄與欄之間的邊距';
+	@override String get deckMenuPosition => '多欄模式的選單位置';
+	@override String get navbarPosition => '導覽列位置';
 	@override String get addColumn => '新增欄位';
 	@override String get newNoteNotificationSettings => '新貼文通知的設定';
 	@override String get configureColumn => '欄位的設定';
