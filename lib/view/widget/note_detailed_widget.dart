@@ -79,7 +79,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
       );
     }
 
-    final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
+    final children = ref.watch(
+      childrenNotesNotifierProvider(account, appearNote.id),
+    );
     final (
       verticalPadding,
       horizontalPadding,
@@ -99,7 +101,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
     );
     final conversation =
         appearNote.replyId != null
-            ? ref.watch(conversationNotesProvider(account, noteId))
+            ? ref.watch(conversationNotesProvider(account, appearNote.id))
             : null;
     final isRenote = note.isRenote;
     final theme = Theme.of(context);
@@ -197,7 +199,6 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 ),
                 child: _NoteDetailedContent(
                   account: account,
-                  noteId: noteId,
                   note: note,
                   appearNote: appearNote,
                   style: style,
@@ -246,7 +247,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                       .read(
                                         childrenNotesNotifierProvider(
                                           account,
-                                          noteId,
+                                          appearNote.id,
                                         ).notifier,
                                       )
                                       .loadMore(skipError: true),
@@ -284,14 +285,12 @@ class NoteDetailedWidget extends HookConsumerWidget {
 class _NoteDetailedContent extends HookConsumerWidget {
   const _NoteDetailedContent({
     required this.account,
-    required this.noteId,
     required this.note,
     required this.appearNote,
     required this.style,
   });
 
   final Account account;
-  final String noteId;
   final Note note;
   final Note appearNote;
   final TextStyle style;
