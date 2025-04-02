@@ -13,7 +13,7 @@ dependencies:
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
   characters: ^1.4.0
-  chewie: ^1.11.0
+  chewie: ^1.11.1
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
