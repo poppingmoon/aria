@@ -1616,6 +1616,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings => '旧設定情報を移行';
 	@override String get migrateOldSettings_description => '通常これは自動で行われていますが、何らかの理由により上手く移行されなかった場合は手動で移行処理をトリガーできます。現在の設定情報は上書きされます。';
 	@override String get compress => '圧縮';
+	@override String get right => '右';
+	@override String get bottom => '下';
+	@override String get top => '上';
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
 	@override late final _TranslationsMisskeySettingsJaJp settings_ = _TranslationsMisskeySettingsJaJp._(_root);
@@ -3027,6 +3030,9 @@ class _TranslationsMisskeyDeckJaJp extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => '常にメインカラムを表示';
 	@override String get columnAlign => 'カラムの寄せ';
+	@override String get columnGap => 'カラム間のマージン';
+	@override String get deckMenuPosition => 'デッキメニューの位置';
+	@override String get navbarPosition => 'ナビゲーションバーの位置';
 	@override String get addColumn => 'カラムを追加';
 	@override String get newNoteNotificationSettings => '新着ノート通知の設定';
 	@override String get configureColumn => 'カラムの設定';
@@ -3863,16 +3869,15 @@ class _TranslationsMisskeyThemeKeysJaJp extends TranslationsMisskeyThemeKeysEnUs
 	@override String get panel => 'パネル';
 	@override String get shadow => '影';
 	@override String get header => 'ヘッダー';
-	@override String get navBg => 'サイドバーの背景';
-	@override String get navFg => 'サイドバーの文字';
-	@override String get navHoverFg => 'サイドバー文字(ホバー)';
-	@override String get navActive => 'サイドバー文字(アクティブ)';
-	@override String get navIndicator => 'サイドバーのインジケーター';
+	@override String get navBg => 'ナビゲーションバーの背景';
+	@override String get navFg => 'ナビゲーションバーの文字';
+	@override String get navActive => 'ナビゲーションバー文字(アクティブ)';
+	@override String get navIndicator => 'ナビゲーションバーのインジケーター';
 	@override String get link => 'リンク';
 	@override String get hashtag => 'ハッシュタグ';
 	@override String get mention => 'メンション';
 	@override String get mentionMe => 'あなた宛てメンション';
-	@override String get renote => 'Renote';
+	@override String get renote => 'リノート';
 	@override String get modalBg => 'モーダルの背景';
 	@override String get divider => '分割線';
 	@override String get scrollbarHandle => 'スクロールバーの取っ手';
@@ -3888,11 +3893,8 @@ class _TranslationsMisskeyThemeKeysJaJp extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'ボタンの背景 (ホバー)';
 	@override String get inputBorder => '入力ボックスの縁取り';
 	@override String get driveFolderBg => 'ドライブフォルダーの背景';
-	@override String get wallpaperOverlay => '壁紙のオーバーレイ';
 	@override String get badge => 'バッジ';
 	@override String get messageBg => 'チャットの背景';
-	@override String get accentDarken => 'アクセント (暗め)';
-	@override String get accentLighten => 'アクセント (明るめ)';
 	@override String get fgHighlighted => '強調された文字';
 }
 

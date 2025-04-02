@@ -630,7 +630,7 @@ class TranslationsMisskeyEnUs {
 	String get emptyFolder => 'This folder is empty';
 	String get unableToDelete => 'Unable to delete';
 	String get inputNewFileName => 'Enter a new filename';
-	String get inputNewDescription => 'Enter new caption';
+	String get inputNewDescription => 'Enter new alt text';
 	String get inputNewFolderName => 'Enter a new folder name';
 	String get circularReferenceFolder => 'The destination folder is a subfolder of the folder you wish to move.';
 	String get hasChildFilesOrFolders => 'Since this folder is not empty, it can not be deleted.';
@@ -928,8 +928,8 @@ class TranslationsMisskeyEnUs {
 	String get expandTweet => 'Expand post';
 	String get themeEditor => 'Theme editor';
 	String get description => 'Description';
-	String get describeFile => 'Add caption';
-	String get enterFileDescription => 'Enter caption';
+	String get describeFile => 'Add alt text';
+	String get enterFileDescription => 'Enter alt text';
 	String get author => 'Author';
 	String get leaveConfirm => 'There are unsaved changes. Do you want to discard them?';
 	String get manage => 'Management';
@@ -1299,7 +1299,7 @@ class TranslationsMisskeyEnUs {
 	String get windowMaximize => 'Maximize';
 	String get windowMinimize => 'Minimize';
 	String get windowRestore => 'Restore';
-	String get caption => 'Caption';
+	String get caption => 'Alt text';
 	String get loggedInAsBot => 'Currently logged in as bot';
 	String get tools => 'Tools';
 	String get cannotLoad => 'Unable to load';
@@ -1621,6 +1621,9 @@ class TranslationsMisskeyEnUs {
 	String get migrateOldSettings => 'Migrate old client settings';
 	String get migrateOldSettings_description => 'This should be done automatically but if for some reason the migration was not successful, you can trigger the migration process yourself manually. The current configuration information will be overwritten.';
 	String get compress => 'Compress';
+	String get right => 'Right';
+	String get bottom => 'Bottom';
+	String get top => 'Top';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -3032,6 +3035,9 @@ class TranslationsMisskeyDeckEnUs {
 	// Translations
 	String get alwaysShowMainColumn => 'Always show main column';
 	String get columnAlign => 'Align columns';
+	String get columnGap => 'Margin between columns';
+	String get deckMenuPosition => 'Deck menu position';
+	String get navbarPosition => 'Navigation bar position';
 	String get addColumn => 'Add column';
 	String get newNoteNotificationSettings => 'Notification setting for new notes';
 	String get configureColumn => 'Column settings';
@@ -3045,7 +3051,7 @@ class TranslationsMisskeyDeckEnUs {
 	String get newProfile => 'New profile';
 	String get deleteProfile => 'Delete profile';
 	String get introduction => 'Create the perfect interface for you by arranging columns freely!';
-	String get introduction2 => 'Click on the + on the right of the screen to add new colums whenever you want.';
+	String get introduction2 => 'Click on the + on the right of the screen to add new columns whenever you want.';
 	String get widgetsIntroduction => 'Please select "Edit widgets" in the column menu and add a widget.';
 	String get useSimpleUiForNonRootPages => 'Use simple UI for navigated pages';
 	String get usedAsMinWidthWhenFlexible => 'Minimum width will be used for this when the "Auto-adjust width" option is enabled';

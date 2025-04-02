@@ -1213,7 +1213,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get continue_ => 'Continuar';
 	@override String get preservedUsernames => 'Noms d\'usuaris reservats';
 	@override String get preservedUsernamesDescription => 'Llistat de noms d\'usuaris que no es poden fer servir separats per salts de linia. Aquests noms d\'usuaris no estaran disponibles quan es creï un compte d\'usuari normal, però els administradors els poden fer servir per crear comptes manualment. Per altre banda els comptes ja creats amb aquests noms d\'usuari no es veure\'n afectats.';
-	@override String get createNoteFromTheFile => 'Compon una nota des d\'aquest fitxer';
+	@override String get createNoteFromTheFile => 'Escriu una nota incloent aquest fitxer';
 	@override String get archive => 'Arxiu';
 	@override String get archived => 'Arxivat';
 	@override String get unarchive => 'Desarxivar';
@@ -1421,6 +1421,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings => 'Migració de la configuració antiga ';
 	@override String get migrateOldSettings_description => 'Normalment això es fa automàticament, però si la transició no es fa, el procés es pot iniciar manualment. S\'esborrarà la configuració actual.';
 	@override String get compress => 'Comprimir ';
+	@override String get right => 'Dreta';
+	@override String get bottom => 'A baix ';
+	@override String get top => 'A dalt ';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -2822,6 +2825,9 @@ class _TranslationsMisskeyDeckCaEs extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => 'Mostrar sempre la columna principal';
 	@override String get columnAlign => 'Alinea les columnes';
+	@override String get columnGap => 'Espai entre columnes';
+	@override String get deckMenuPosition => 'Posició del menú del tauler';
+	@override String get navbarPosition => 'Posició de la barra de navegació ';
 	@override String get addColumn => 'Afig una columna';
 	@override String get newNoteNotificationSettings => 'Configuració de notificacions per a notes noves';
 	@override String get configureColumn => 'Configuració de columnes';

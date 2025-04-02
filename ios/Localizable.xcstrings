@@ -1733,6 +1733,12 @@
             "value": "Scheduled note posting has failed"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La publicación de la nota programada ha fallado"
+          }
+        },
         "ja": {
           "stringUnit": {
             "state": "translated",
@@ -1748,6 +1754,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Note has been scheduled"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La nota ha sido programada"
           }
         },
         "ja": {
@@ -1767,6 +1779,12 @@
             "value": "Scheduled note has been posted"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La nota programada ha sido publicada"
+          }
+        },
         "ja": {
           "stringUnit": {
             "state": "translated",
@@ -1782,6 +1800,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Scheduled note posting has failed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La publicación de la nota programada ha fallado"
           }
         },
         "ja": {
