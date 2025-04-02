@@ -9,6 +9,8 @@ const _compressTypeMap = {
   'image/webp': (quality: 90, format: CompressFormat.webp),
   'image/svg+xml': (quality: 100, format: CompressFormat.webp),
   'image/tiff': (quality: 100, format: CompressFormat.webp),
+  'image/heic': (quality: 90, format: CompressFormat.webp),
+  'image/heif': (quality: 90, format: CompressFormat.webp),
 };
 
 const _compressTypeMapFallback = {
@@ -17,6 +19,8 @@ const _compressTypeMapFallback = {
   'image/webp': (quality: 85, format: CompressFormat.jpeg),
   'image/svg+xml': (quality: 100, format: CompressFormat.png),
   'image/tiff': (quality: 100, format: CompressFormat.png),
+  'image/heic': (quality: 85, format: CompressFormat.png),
+  'image/heif': (quality: 85, format: CompressFormat.png),
 };
 
 bool _isAnimated(Uint8List image) {
@@ -36,9 +40,10 @@ bool _isAnimated(Uint8List image) {
 }
 
 Future<Uint8List?> compressImage(Uint8List image, String? type) async {
+  final fileType = type?.split(';').first;
   final imgConfig = switch (defaultTargetPlatform) {
-    TargetPlatform.android || TargetPlatform.iOS => _compressTypeMap[type],
-    _ => _compressTypeMapFallback[type],
+    TargetPlatform.android || TargetPlatform.iOS => _compressTypeMap[fileType],
+    _ => _compressTypeMapFallback[fileType],
   };
   if (imgConfig == null || _isAnimated(image)) {
     return null;
