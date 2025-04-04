@@ -1856,7 +1856,6 @@ class _TranslationsMisskeyThemeKeysBnBd extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'হেডার';
 	@override String get navBg => 'সাইডবারের পটভূমি';
 	@override String get navFg => 'সাইডবারের পাঠ্য';
-	@override String get navHoverFg => 'সাইডবারের পাঠ্য (হভার)';
 	@override String get navActive => 'সাইডবারের পাঠ্য (অ্যাকটিভ)';
 	@override String get navIndicator => 'সাইডবারের ইনডিকেটর';
 	@override String get link => 'লিংক';
@@ -1879,11 +1878,8 @@ class _TranslationsMisskeyThemeKeysBnBd extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'বাটনের পটভূমি (হভার)';
 	@override String get inputBorder => 'ইনপুট ফিল্ডের বর্ডার';
 	@override String get driveFolderBg => 'ড্রাইভ ফোল্ডারের পটভূমি';
-	@override String get wallpaperOverlay => 'ওয়ালপেপার ওভারলে';
 	@override String get badge => 'ব্যাজ';
 	@override String get messageBg => 'চ্যাটের পটভূমি';
-	@override String get accentDarken => 'অ্যাকসেন্ট (গাঢ়)';
-	@override String get accentLighten => 'অ্যাকসেন্ট (হাল্কা)';
 	@override String get fgHighlighted => 'হাইলাইট করা পাঠ্য';
 }
 

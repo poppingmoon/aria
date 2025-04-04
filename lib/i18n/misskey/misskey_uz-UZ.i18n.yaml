@@ -911,8 +911,6 @@ theme_:
     mention: "Murojat"
     renote: "Qayta qayd etish"
     divider: "Ajratrmoq"
-    accentDarken: "Urg'u (Qoraytirilgan)"
-    accentLighten: "Urg'u (Yoritilgan)"
     fgHighlighted: "Belgilangan matn"
 sfx_:
   note: "Qaydlar"

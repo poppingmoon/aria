@@ -17,6 +17,7 @@ abstract class AntennaSettings with _$AntennaSettings {
     bool? caseSensitive,
     bool? withFile,
     bool? excludeBots,
+    bool? hideNotesInSensitiveChannel,
   }) = _AntennaSettings;
 
   factory AntennaSettings.fromAntenna(Antenna antenna) {
@@ -32,6 +33,7 @@ abstract class AntennaSettings with _$AntennaSettings {
       caseSensitive: antenna.caseSensitive,
       withFile: antenna.withFile,
       excludeBots: antenna.excludeBots,
+      hideNotesInSensitiveChannel: antenna.hideNotesInSensitiveChannel,
     );
   }
 }

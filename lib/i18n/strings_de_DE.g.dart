@@ -3621,7 +3621,6 @@ class _TranslationsMisskeyThemeKeysDeDe extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Kopfzeile';
 	@override String get navBg => 'Hintergrund der Seitenleiste';
 	@override String get navFg => 'Text der Seitenleiste';
-	@override String get navHoverFg => 'Text der Seitenleiste (Mouseover)';
 	@override String get navActive => 'Text der Seitenleiste (Aktiv)';
 	@override String get navIndicator => 'Indikator der Seitenleiste';
 	@override String get link => 'Link';
@@ -3644,11 +3643,8 @@ class _TranslationsMisskeyThemeKeysDeDe extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Hintergrund von Schaltflächen (Mouseover)';
 	@override String get inputBorder => 'Rahmen von Eingabefeldern';
 	@override String get driveFolderBg => 'Hintergrund von Drive-Ordnern';
-	@override String get wallpaperOverlay => 'Hintergrundbild-Overlay';
 	@override String get badge => 'Wappen';
 	@override String get messageBg => 'Hintergrund von Chats';
-	@override String get accentDarken => 'Akzent (Verdunkelt)';
-	@override String get accentLighten => 'Akzent (Erhellt)';
 	@override String get fgHighlighted => 'Hervorgehobener Text';
 }
 

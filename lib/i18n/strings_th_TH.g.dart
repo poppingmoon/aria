@@ -3327,7 +3327,6 @@ class _TranslationsMisskeyThemeKeysThTh extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'ส่วนหัว';
 	@override String get navBg => 'พื้นหลังแถบด้านข้าง';
 	@override String get navFg => 'ข้อความแถบด้านข้าง';
-	@override String get navHoverFg => 'ข้อความแถบด้านข้าง (โฮเวอร์)';
 	@override String get navActive => 'ข้อความแถบด้านข้าง (ใช้งานอยู่)';
 	@override String get navIndicator => 'ตัวระบุแถบด้านข้าง';
 	@override String get link => 'ลิงก์';
@@ -3350,11 +3349,8 @@ class _TranslationsMisskeyThemeKeysThTh extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'ปุ่มพื้นหลัง (โฮเวอร์)';
 	@override String get inputBorder => 'เส้นขอบของช่องป้อนข้อมูล';
 	@override String get driveFolderBg => 'พื้นหลังโฟลเดอร์ไดรฟ์';
-	@override String get wallpaperOverlay => 'วอลล์เปเปอร์ซ้อนทับ';
 	@override String get badge => 'ตรา';
 	@override String get messageBg => 'พื้นหลังแชท';
-	@override String get accentDarken => 'สีหลัก (มืด)';
-	@override String get accentLighten => 'สีหลัก (สว่าง)';
 	@override String get fgHighlighted => 'ข้อความที่ไฮไลต์';
 }
 

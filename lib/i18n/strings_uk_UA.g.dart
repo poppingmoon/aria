@@ -2016,7 +2016,6 @@ class _TranslationsMisskeyThemeKeysUkUa extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Заголовок';
 	@override String get navBg => 'Фон бокової панелі';
 	@override String get navFg => 'Текст бокової панелі';
-	@override String get navHoverFg => 'Текст бокової панелі (під курсором)';
 	@override String get navActive => 'Текст бокової панелі (активне)';
 	@override String get navIndicator => 'Індикатор бокової панелі';
 	@override String get link => 'Посилання';
@@ -2039,11 +2038,8 @@ class _TranslationsMisskeyThemeKeysUkUa extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Фон кнопки (при наведенні)';
 	@override String get inputBorder => 'Край поля вводу';
 	@override String get driveFolderBg => 'Фон папки на диску';
-	@override String get wallpaperOverlay => 'Накладання шпалер';
 	@override String get badge => 'Значок';
 	@override String get messageBg => 'Фон переписки';
-	@override String get accentDarken => 'Акцент (Затемлений)';
-	@override String get accentLighten => 'Акцент (Освітлений)';
 	@override String get fgHighlighted => 'Виділений текст';
 }
 

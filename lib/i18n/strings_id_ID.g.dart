@@ -3413,7 +3413,6 @@ class _TranslationsMisskeyThemeKeysIdId extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Header';
 	@override String get navBg => 'Latar belakang bilah samping';
 	@override String get navFg => 'Teks bilah samping';
-	@override String get navHoverFg => 'Teks bilah samping (Mengambang)';
 	@override String get navActive => 'Teks bilah samping (Aktif)';
 	@override String get navIndicator => 'Indikator bilah samping';
 	@override String get link => 'Tautan';
@@ -3436,11 +3435,8 @@ class _TranslationsMisskeyThemeKeysIdId extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Latar belakang tombol (Mengambang)';
 	@override String get inputBorder => 'Batas bidang masukan';
 	@override String get driveFolderBg => 'Latar belakang folder drive';
-	@override String get wallpaperOverlay => 'Lapisan wallpaper';
 	@override String get badge => 'Lencana';
 	@override String get messageBg => 'Latar belakang obrolan';
-	@override String get accentDarken => 'Aksen (Gelap)';
-	@override String get accentLighten => 'Aksen (Terang)';
 	@override String get fgHighlighted => 'Teks yang disorot';
 }
 

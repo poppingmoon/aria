@@ -10,6 +10,7 @@ import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
+import '../../provider/api/endpoint_parameters_provider.dart';
 import '../../provider/api/lists_notifier_provider.dart';
 import '../widget/antenna_source_widget.dart';
 import '../widget/mention_widget.dart';
@@ -42,6 +43,10 @@ class AntennaSettingsDialog extends HookConsumerWidget {
     final list = lists?.firstWhereOrNull(
       (list) => list.id == settings.value.userListId,
     );
+    final params =
+        ref
+            .watch(endpointParametersProvider(account, 'antennas/create'))
+            .valueOrNull;
 
     return AlertDialog(
       title: Text(
@@ -234,6 +239,20 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 (value) =>
                     settings.value = settings.value.copyWith(withFile: value),
           ),
+          if (this.settings?.hideNotesInSensitiveChannel != null ||
+              (params?.any(
+                    (param) => param.name == 'hideNotesInSensitiveChannel',
+                  ) ??
+                  false))
+            SwitchListTile(
+              title: Text(t.misskey.hideNotesInSensitiveChannel),
+              value: settings.value.hideNotesInSensitiveChannel ?? false,
+              onChanged:
+                  (value) =>
+                      settings.value = settings.value.copyWith(
+                        hideNotesInSensitiveChannel: value,
+                      ),
+            ),
         ],
       ),
       actions: [

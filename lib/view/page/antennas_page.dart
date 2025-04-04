@@ -120,6 +120,8 @@ class AntennasPage extends ConsumerWidget {
                     withFile: result.withFile,
                     localOnly: result.localOnly,
                     excludeBots: result.excludeBots,
+                    hideNotesInSensitiveChannel:
+                        result.hideNotesInSensitiveChannel,
                   ),
             );
           }

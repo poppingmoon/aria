@@ -2138,7 +2138,6 @@ class _TranslationsMisskeyThemeKeysArSa extends TranslationsMisskeyThemeKeysEnUs
 	@override String get shadow => 'الظل';
 	@override String get navBg => 'خلفية الشريط الجانبي';
 	@override String get navFg => 'نص الشريط الجانبي';
-	@override String get navHoverFg => 'نص الشريط الجانبي (عند التمرير فوقه)';
 	@override String get link => 'رابط';
 	@override String get hashtag => 'وسم';
 	@override String get mention => 'أشر الى';

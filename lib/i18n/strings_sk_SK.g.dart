@@ -1977,7 +1977,6 @@ class _TranslationsMisskeyThemeKeysSkSk extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Hlavička';
 	@override String get navBg => 'Pozadie bočného panela';
 	@override String get navFg => 'Text bočného panela';
-	@override String get navHoverFg => 'Text bočného panela (pod kurzorom)';
 	@override String get navActive => 'Text bočného panela (aktívny)';
 	@override String get navIndicator => 'Indikátor bočného panela';
 	@override String get link => 'Odkaz';
@@ -2000,11 +1999,8 @@ class _TranslationsMisskeyThemeKeysSkSk extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Pozadie tlačidla (pod kurzorom)';
 	@override String get inputBorder => 'Okraj vstupného poľa';
 	@override String get driveFolderBg => 'Pozadie priečinu disku';
-	@override String get wallpaperOverlay => 'Vrstvenie pozadia';
 	@override String get badge => 'Odznak';
 	@override String get messageBg => 'Pozadie chatu';
-	@override String get accentDarken => 'Akcent (stmavené)';
-	@override String get accentLighten => 'Akcent (zosvetlené)';
 	@override String get fgHighlighted => 'Zvýraznený text';
 }
 
