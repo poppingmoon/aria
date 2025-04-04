@@ -2958,7 +2958,6 @@ class _TranslationsMisskeyThemeKeysFrFr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Entête';
 	@override String get navBg => 'Fond de la barre latérale';
 	@override String get navFg => 'Texte de la barre latérale';
-	@override String get navHoverFg => 'Texte de la barre latérale (survolé)';
 	@override String get navActive => 'Texte de la barre latérale (actif)';
 	@override String get navIndicator => 'Indicateur de barre latérale';
 	@override String get link => 'Lien';
@@ -2981,11 +2980,8 @@ class _TranslationsMisskeyThemeKeysFrFr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Arrière-plan du bouton (survolé)';
 	@override String get inputBorder => 'Cadre de la zone de texte';
 	@override String get driveFolderBg => 'Arrière-plan du dossier de disque';
-	@override String get wallpaperOverlay => 'Superposition de fond d\'écran';
 	@override String get badge => 'Badge';
 	@override String get messageBg => 'Arrière plan de la discussion';
-	@override String get accentDarken => 'Plus sombre';
-	@override String get accentLighten => 'Plus clair';
 	@override String get fgHighlighted => 'Texte mis en évidence';
 }
 

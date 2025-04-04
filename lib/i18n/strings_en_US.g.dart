@@ -709,6 +709,7 @@ class TranslationsMisskeyEnUs {
 	String get antennaKeywordsDescription => 'Separate with spaces for an AND condition or with line breaks for an OR condition.';
 	String get notifyAntenna => 'Notify about new notes';
 	String get withFileAntenna => 'Only notes with files';
+	String get hideNotesInSensitiveChannel => 'Hide notes from sensitive channels';
 	String get enableServiceworker => 'Enable Push-Notifications for your Browser';
 	String get antennaUsersDescription => 'List one username per line';
 	String get caseSensitive => 'Case sensitive';
@@ -1624,6 +1625,7 @@ class TranslationsMisskeyEnUs {
 	String get right => 'Right';
 	String get bottom => 'Bottom';
 	String get top => 'Top';
+	String get embed => 'Embed';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1816,6 +1818,7 @@ class TranslationsMisskeySettingsEnUs {
 	String get showNavbarSubButtons => 'Show sub-buttons on the navigation bar';
 	String get ifOn => 'When turned on';
 	String get ifOff => 'When turned off';
+	String get enableSyncThemesBetweenDevices => 'Synchronize installed themes across devices';
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
@@ -3876,7 +3879,6 @@ class TranslationsMisskeyThemeKeysEnUs {
 	String get header => 'Header';
 	String get navBg => 'Sidebar background';
 	String get navFg => 'Sidebar text';
-	String get navHoverFg => 'Sidebar text (Hover)';
 	String get navActive => 'Sidebar text (Active)';
 	String get navIndicator => 'Sidebar indicator';
 	String get link => 'Link';
@@ -3899,11 +3901,8 @@ class TranslationsMisskeyThemeKeysEnUs {
 	String get buttonHoverBg => 'Button background (Hover)';
 	String get inputBorder => 'Input field border';
 	String get driveFolderBg => 'Drive folder background';
-	String get wallpaperOverlay => 'Wallpaper overlay';
 	String get badge => 'Badge';
 	String get messageBg => 'Chat background';
-	String get accentDarken => 'Accent (Darkened)';
-	String get accentLighten => 'Accent (Lightened)';
 	String get fgHighlighted => 'Highlighted Text';
 }
 

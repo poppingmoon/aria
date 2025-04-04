@@ -2704,7 +2704,6 @@ class _TranslationsMisskeyThemeKeysRuRu extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Заголовок';
 	@override String get navBg => 'Фон боковой панели';
 	@override String get navFg => 'Текст на боковой панели';
-	@override String get navHoverFg => 'Текст на боковой панели (под указателем)';
 	@override String get navActive => 'Текст на боковой панели (активирован)';
 	@override String get navIndicator => 'Индикатор на боковой панели';
 	@override String get link => 'Ссылка';
@@ -2727,11 +2726,8 @@ class _TranslationsMisskeyThemeKeysRuRu extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Текст кнопки';
 	@override String get inputBorder => 'Рамка поля ввода';
 	@override String get driveFolderBg => 'Фон папки «Диска»';
-	@override String get wallpaperOverlay => 'Слой обоев';
 	@override String get badge => 'Значок';
 	@override String get messageBg => 'Фон беседы';
-	@override String get accentDarken => 'Фон (затемнённый)';
-	@override String get accentLighten => 'Фон (осветлённый)';
 	@override String get fgHighlighted => 'Подсвеченный текст';
 }
 

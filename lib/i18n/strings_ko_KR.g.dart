@@ -3762,7 +3762,6 @@ class _TranslationsMisskeyThemeKeysKoKr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => '헤더';
 	@override String get navBg => '사이드바 배경';
 	@override String get navFg => '사이드바 텍스트';
-	@override String get navHoverFg => '사이드바 텍스트 (호버)';
 	@override String get navActive => '사이드바 텍스트 (활성)';
 	@override String get navIndicator => '사이드바 인디케이터';
 	@override String get link => '링크';
@@ -3785,11 +3784,8 @@ class _TranslationsMisskeyThemeKeysKoKr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => '버튼 배경 (호버)';
 	@override String get inputBorder => '입력 필드 테두리';
 	@override String get driveFolderBg => '드라이브 폴더 배경';
-	@override String get wallpaperOverlay => '배경화면 오버레이';
 	@override String get badge => '배지';
 	@override String get messageBg => '대화 배경';
-	@override String get accentDarken => '강조 색상 (어두움)';
-	@override String get accentLighten => '강조 색상 (밝음)';
 	@override String get fgHighlighted => '강조된 텍스트';
 }
 

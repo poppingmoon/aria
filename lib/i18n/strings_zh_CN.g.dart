@@ -694,6 +694,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔。';
 	@override String get notifyAntenna => '开启通知';
 	@override String get withFileAntenna => '仅带有附件的帖子';
+	@override String get hideNotesInSensitiveChannel => '隐藏敏感频道内的帖子';
 	@override String get enableServiceworker => '启用 ServiceWorker';
 	@override String get antennaUsersDescription => '指定用户名，一行一个';
 	@override String get caseSensitive => '区分大小写';
@@ -1609,6 +1610,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
+	@override String get embed => '嵌入';
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
@@ -3835,7 +3837,6 @@ class _TranslationsMisskeyThemeKeysZhCn extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => '顶栏';
 	@override String get navBg => '侧边栏背景';
 	@override String get navFg => '侧栏文本';
-	@override String get navHoverFg => '侧栏文本（悬停）';
 	@override String get navActive => '侧栏文本（活动）';
 	@override String get navIndicator => '侧栏标记';
 	@override String get link => '链接';
@@ -3858,11 +3859,8 @@ class _TranslationsMisskeyThemeKeysZhCn extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => '按钮背景（悬停）';
 	@override String get inputBorder => '输入框边框';
 	@override String get driveFolderBg => '网盘的文件夹背景';
-	@override String get wallpaperOverlay => '壁纸叠加层';
 	@override String get badge => '徽章';
 	@override String get messageBg => '聊天背景';
-	@override String get accentDarken => '强调色(深)';
-	@override String get accentLighten => '强调色(浅)';
 	@override String get fgHighlighted => '高亮显示文本';
 }
 

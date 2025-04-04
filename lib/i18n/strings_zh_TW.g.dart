@@ -509,6 +509,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => '空格代表「以及」（AND），換行代表「或者」（OR）';
 	@override String get notifyAntenna => '通知有新貼文';
 	@override String get withFileAntenna => '僅帶有附件的貼文';
+	@override String get hideNotesInSensitiveChannel => '隱藏敏感頻道的貼文';
 	@override String get enableServiceworker => '啟用瀏覽器的推播通知';
 	@override String get antennaUsersDescription => '填寫使用者名稱，以換行分隔';
 	@override String get caseSensitive => '區分大小寫';
@@ -1424,6 +1425,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
+	@override String get embed => '嵌入';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1606,6 +1608,7 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get showNavbarSubButtons => '在導覽列顯示輔助按鈕';
 	@override String get ifOn => '開啟時';
 	@override String get ifOff => '關閉時';
+	@override String get enableSyncThemesBetweenDevices => '在裝置之間同步已安裝的主題';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -3650,7 +3653,6 @@ class _TranslationsMisskeyThemeKeysZhTw extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => '標題';
 	@override String get navBg => '側邊欄的背景 ';
 	@override String get navFg => '側邊欄的文字';
-	@override String get navHoverFg => '側邊欄文字（懸浮） ';
 	@override String get navActive => '側邊欄文字（活動）';
 	@override String get navIndicator => '側邊欄指示符';
 	@override String get link => '連結';
@@ -3673,11 +3675,8 @@ class _TranslationsMisskeyThemeKeysZhTw extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => '按鈕背景 (漂浮)';
 	@override String get inputBorder => '輸入框邊框';
 	@override String get driveFolderBg => '雲端硬碟文件夾背景';
-	@override String get wallpaperOverlay => '壁紙覆蓋層';
 	@override String get badge => '徽章';
 	@override String get messageBg => '私訊背景';
-	@override String get accentDarken => '強調色（黑暗）';
-	@override String get accentLighten => '強調色（明亮）';
 	@override String get fgHighlighted => '突顯文字';
 }
 

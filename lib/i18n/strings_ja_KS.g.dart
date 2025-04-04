@@ -704,6 +704,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'スペースで区切ったるとAND指定で、改行で区切ったるとOR指定や';
 	@override String get notifyAntenna => '新しいノートを通知すんで';
 	@override String get withFileAntenna => 'なんか添付されたノートだけ';
+	@override String get hideNotesInSensitiveChannel => 'センシティブなチャンネルのノートを非表示';
 	@override String get enableServiceworker => 'ブラウザにプッシュ通知が行くようにする';
 	@override String get antennaUsersDescription => 'ユーザー名を改行で区切ったってな';
 	@override String get caseSensitive => '大文字と小文字は別もんや';
@@ -1619,6 +1620,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
+	@override String get embed => '埋め込み';
 	@override late final _TranslationsMisskeyChatJaKs chat_ = _TranslationsMisskeyChatJaKs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaKs emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaKs._(_root);
 	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
@@ -1811,6 +1813,7 @@ class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	@override String get showNavbarSubButtons => 'ナビゲーションバーに副ボタンを表示';
 	@override String get ifOn => 'オンのとき';
 	@override String get ifOff => 'オフのとき';
+	@override String get enableSyncThemesBetweenDevices => 'デバイス間でインストールしたテーマを同期';
 	@override late final _TranslationsMisskeySettingsChatJaKs chat_ = _TranslationsMisskeySettingsChatJaKs._(_root);
 }
 

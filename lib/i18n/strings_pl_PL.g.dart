@@ -2132,7 +2132,6 @@ class _TranslationsMisskeyThemeKeysPlPl extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Nagłówek';
 	@override String get navBg => 'Tło paska bocznego';
 	@override String get navFg => 'Tekst paska bocznego';
-	@override String get navHoverFg => 'Tekst paska bocznego (zbliżenie)';
 	@override String get navActive => 'Tekst paska bocznego (aktywny)';
 	@override String get navIndicator => 'Wskaźnik paska bocznego';
 	@override String get link => 'Odnośnik';
@@ -2155,11 +2154,8 @@ class _TranslationsMisskeyThemeKeysPlPl extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Tło przycisku (po najechaniu)';
 	@override String get inputBorder => 'Obramowanie pola wejścia';
 	@override String get driveFolderBg => 'Tło folderu na dysku';
-	@override String get wallpaperOverlay => 'Nakładka tapety';
 	@override String get badge => 'Odznaka';
 	@override String get messageBg => 'Tło czatu';
-	@override String get accentDarken => 'Akcent (ciemniejszy)';
-	@override String get accentLighten => 'Akcent (jaśniejszy)';
 	@override String get fgHighlighted => 'Wyróżniony tekst';
 }
 

@@ -1500,8 +1500,6 @@ class _TranslationsMisskeyThemeKeysUzUz extends TranslationsMisskeyThemeKeysEnUs
 	@override String get mention => 'Murojat';
 	@override String get renote => 'Qayta qayd etish';
 	@override String get divider => 'Ajratrmoq';
-	@override String get accentDarken => 'Urg\'u (Qoraytirilgan)';
-	@override String get accentLighten => 'Urg\'u (Yoritilgan)';
 	@override String get fgHighlighted => 'Belgilangan matn';
 }
 

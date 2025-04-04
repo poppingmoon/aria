@@ -2415,7 +2415,6 @@ class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Ảnh bìa';
 	@override String get navBg => 'Nền thanh bên';
 	@override String get navFg => 'Chữ thanh bên';
-	@override String get navHoverFg => 'Chữ thanh bên (Khi chạm)';
 	@override String get navActive => 'Chữ thanh bên (Khi chọn)';
 	@override String get navIndicator => 'Chỉ báo thanh bên';
 	@override String get link => 'Đường dẫn';
@@ -2438,11 +2437,8 @@ class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Nền nút (Chạm)';
 	@override String get inputBorder => 'Đường viền khung soạn thảo';
 	@override String get driveFolderBg => 'Nền thư mục Ổ đĩa';
-	@override String get wallpaperOverlay => 'Lớp phủ hình nền';
 	@override String get badge => 'Huy hiệu';
 	@override String get messageBg => 'Nền chat';
-	@override String get accentDarken => 'Màu phụ (Tối)';
-	@override String get accentLighten => 'Màu phụ (Sáng)';
 	@override String get fgHighlighted => 'Chữ nổi bật';
 }
 

@@ -3442,7 +3442,6 @@ class _TranslationsMisskeyThemeKeysPtPt extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Cabeçalho';
 	@override String get navBg => 'Plano de fundo da barra lateral';
 	@override String get navFg => 'Texto da barra lateral';
-	@override String get navHoverFg => 'Texto da coluna lateral (Selecionado)';
 	@override String get navActive => 'Texto da coluna lateral (Ativa)';
 	@override String get navIndicator => 'Indicador da coluna lateral';
 	@override String get link => 'Link';
@@ -3465,11 +3464,8 @@ class _TranslationsMisskeyThemeKeysPtPt extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Plano de fundo de botão (Selecionado)';
 	@override String get inputBorder => 'Borda de campo digitável';
 	@override String get driveFolderBg => 'Plano de fundo da pasta no Drive';
-	@override String get wallpaperOverlay => 'Sobreposição do papel de parede.';
 	@override String get badge => 'Emblema';
 	@override String get messageBg => 'Plano de fundo do chat';
-	@override String get accentDarken => 'Cor de destaque (Escurecida)';
-	@override String get accentLighten => 'Cor de destaque (Esclarecida)';
 	@override String get fgHighlighted => 'Texto Destacado';
 }
 

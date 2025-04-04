@@ -509,6 +509,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Sparando con uno spazio indichi la condizione E (and). Separando con un a capo, indichi la condizione O (or).';
 	@override String get notifyAntenna => 'Invia notifiche delle nuove note';
 	@override String get withFileAntenna => 'Solo note con file in allegato';
+	@override String get hideNotesInSensitiveChannel => 'Nascondere le Note dai canali espliciti';
 	@override String get enableServiceworker => 'Abilita ServiceWorker';
 	@override String get antennaUsersDescription => 'Elenca un nome utente per riga';
 	@override String get caseSensitive => 'Sensibile alla distinzione tra maiuscole e minuscole';
@@ -1421,6 +1422,10 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings => 'Migrare le vecchie impostazioni';
 	@override String get migrateOldSettings_description => 'Di solito, viene fatto automaticamente. Se per qualche motivo non fossero migrate con successo, è possibile avviare il processo di migrazione manualmente, sovrascrivendo le configurazioni attuali.';
 	@override String get compress => 'Comprimi';
+	@override String get right => 'Destra';
+	@override String get bottom => 'Sotto';
+	@override String get top => 'Sopra';
+	@override String get embed => 'Incorporare';
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
 	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
@@ -1599,9 +1604,11 @@ class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	@override String get timelineAndNote => 'Note e Timeline';
 	@override String get makeEveryTextElementsSelectable => 'Imposta ogni elemento come selezionabile';
 	@override String get makeEveryTextElementsSelectable_description => 'Potrebbe ridurre l\'usabilità in alcune situazioni.';
+	@override String get useStickyIcons => 'Fissa le icone durante lo scorrimento';
 	@override String get showNavbarSubButtons => 'Mostra i pulsanti secondari nella barra di navigazione';
 	@override String get ifOn => 'Quando attivato';
 	@override String get ifOff => 'Quando disattivato';
+	@override String get enableSyncThemesBetweenDevices => 'Sincronizzare il tema tra i dispositivi';
 	@override late final _TranslationsMisskeySettingsChatItIt chat_ = _TranslationsMisskeySettingsChatItIt._(_root);
 }
 
@@ -2821,6 +2828,9 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => 'Mostra sempre la colonna principale';
 	@override String get columnAlign => 'Allineare colonne';
+	@override String get columnGap => 'Margine tra le colonne';
+	@override String get deckMenuPosition => 'Posizione del menu Deck';
+	@override String get navbarPosition => 'Posizione barra di navigazione';
 	@override String get addColumn => 'Aggiungi colonna';
 	@override String get newNoteNotificationSettings => 'Preferenze per le notifiche di nuove Note';
 	@override String get configureColumn => 'Impostazioni colonna';
@@ -3643,14 +3653,13 @@ class _TranslationsMisskeyThemeKeysItIt extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Intestazione';
 	@override String get navBg => 'Sfondo della barra laterale';
 	@override String get navFg => 'Testo della barra laterale';
-	@override String get navHoverFg => 'Testo della barra laterale (al passaggio del mouse)';
 	@override String get navActive => 'Testo della barra laterale (attivo)';
 	@override String get navIndicator => 'Indicatore di barra laterale';
 	@override String get link => 'Link';
 	@override String get hashtag => 'Hashtag';
 	@override String get mention => 'Menzioni';
 	@override String get mentionMe => 'Menzioni (di me)';
-	@override String get renote => 'Rinota';
+	@override String get renote => 'Renota';
 	@override String get modalBg => 'Sfondo modale.';
 	@override String get divider => 'Interruzione di linea';
 	@override String get scrollbarHandle => 'Maniglie della barra di scorrimento';
@@ -3666,11 +3675,8 @@ class _TranslationsMisskeyThemeKeysItIt extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Sfondo del pulsante (sorvolato)';
 	@override String get inputBorder => 'Inquadra casella di testo';
 	@override String get driveFolderBg => 'Sfondo della cartella di disco';
-	@override String get wallpaperOverlay => 'Sovrapposizione dello sfondo';
 	@override String get badge => 'Distintivo';
 	@override String get messageBg => 'Sfondo della chat';
-	@override String get accentDarken => 'Temi (scuri)';
-	@override String get accentLighten => 'Temi (luminosi)';
 	@override String get fgHighlighted => 'Testo in evidenza.';
 }
 

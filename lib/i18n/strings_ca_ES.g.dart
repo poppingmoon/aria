@@ -509,6 +509,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Separar amb espais per la condició AND o amb salts de línia per la condició OR.';
 	@override String get notifyAntenna => 'Notifica\'m les publicacions noves';
 	@override String get withFileAntenna => 'Només les publicacions amb fitxers';
+	@override String get hideNotesInSensitiveChannel => 'Amaga les notes a canals sensibles ';
 	@override String get enableServiceworker => 'Activar les notificacions al navegador';
 	@override String get antennaUsersDescription => 'Llistar un nom d\'usuari per línia';
 	@override String get caseSensitive => 'Sensible a majúscules i minúscules ';
@@ -1424,6 +1425,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get right => 'Dreta';
 	@override String get bottom => 'A baix ';
 	@override String get top => 'A dalt ';
+	@override String get embed => 'Incrustar';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1606,6 +1608,7 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get showNavbarSubButtons => 'Mostrar sub botons a la barra de navegació ';
 	@override String get ifOn => 'Quan s\'encén ';
 	@override String get ifOff => 'Quan s\'apaga ';
+	@override String get enableSyncThemesBetweenDevices => 'Sincronitzar els temes instal·lats entre dispositius';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -3650,7 +3653,6 @@ class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Capçalera';
 	@override String get navBg => 'Fons de la barra lateral';
 	@override String get navFg => 'Text de la barra lateral';
-	@override String get navHoverFg => 'Text barra lateral (en passar per sobre)';
 	@override String get navActive => 'Text barra lateral (actiu)';
 	@override String get navIndicator => 'Indicador barra lateral';
 	@override String get link => 'Enllaç';
@@ -3673,11 +3675,8 @@ class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Fons botó (en passar-hi per sobre)';
 	@override String get inputBorder => 'Contorn del cap d\'introducció ';
 	@override String get driveFolderBg => 'Fons de la carpeta Disc';
-	@override String get wallpaperOverlay => 'Superposició del fons de pantalla ';
 	@override String get badge => 'Insígnia ';
 	@override String get messageBg => 'Fons del xat';
-	@override String get accentDarken => 'Accent (fosc)';
-	@override String get accentLighten => 'Accent (clar)';
 	@override String get fgHighlighted => 'Text ressaltat';
 }
 

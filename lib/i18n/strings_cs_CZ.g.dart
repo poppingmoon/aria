@@ -2506,7 +2506,6 @@ class _TranslationsMisskeyThemeKeysCsCz extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Nadpis';
 	@override String get navBg => 'Pozadí postranního panelu';
 	@override String get navFg => 'Text na postranním panelu';
-	@override String get navHoverFg => 'Text na postranním panelu (Hover)';
 	@override String get navActive => 'Text na postranním panelu (Aktivní)';
 	@override String get navIndicator => 'Indikátor na postranním panelu';
 	@override String get link => 'Odkaz';
@@ -2529,11 +2528,8 @@ class _TranslationsMisskeyThemeKeysCsCz extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'Pozadí tlačítka (Hover)';
 	@override String get inputBorder => 'Ohraničení vstupního pole';
 	@override String get driveFolderBg => 'Pozadí složky disku';
-	@override String get wallpaperOverlay => 'Překrytí tapety';
 	@override String get badge => 'Odznak';
 	@override String get messageBg => 'Pozadí chatu';
-	@override String get accentDarken => 'Akcent (Ztmavený)';
-	@override String get accentLighten => 'Akcent (Zesvětlený)';
 	@override String get fgHighlighted => 'Zvýrazněný text';
 }
 
