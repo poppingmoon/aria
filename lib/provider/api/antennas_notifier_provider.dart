@@ -27,6 +27,7 @@ class AntennasNotifier extends _$AntennasNotifier {
     bool? withFile,
     bool? localOnly,
     bool? excludeBots,
+    bool? hideNotesInSensitiveChannel,
   }) async {
     final antenna = await _misskey.antennas.create(
       AntennasCreateRequest(
@@ -41,6 +42,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         notify: false,
         localOnly: localOnly,
         excludeBots: excludeBots,
+        hideNotesInSensitiveChannel: hideNotesInSensitiveChannel,
       ),
     );
     state = AsyncValue.data([antenna, ...?state.valueOrNull]);
@@ -58,6 +60,7 @@ class AntennasNotifier extends _$AntennasNotifier {
     bool? withFile,
     bool? localOnly,
     bool? excludeBots,
+    bool? hideNotesInSensitiveChannel,
   }) async {
     await _misskey.antennas.update(
       AntennasUpdateRequest(
@@ -73,6 +76,10 @@ class AntennasNotifier extends _$AntennasNotifier {
         notify: antenna.notify ?? false,
         localOnly: localOnly ?? antenna.localOnly ?? false,
         excludeBots: excludeBots ?? antenna.excludeBots ?? false,
+        hideNotesInSensitiveChannel:
+            hideNotesInSensitiveChannel ??
+            antenna.hideNotesInSensitiveChannel ??
+            false,
       ),
     );
     state = AsyncValue.data([
@@ -90,6 +97,9 @@ class AntennasNotifier extends _$AntennasNotifier {
                   withFile: withFile ?? antenna.withFile,
                   localOnly: localOnly ?? antenna.localOnly,
                   excludeBots: excludeBots ?? antenna.excludeBots,
+                  hideNotesInSensitiveChannel:
+                      hideNotesInSensitiveChannel ??
+                      antenna.hideNotesInSensitiveChannel,
                 )
                 : e,
       ),
@@ -120,6 +130,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         notify: antenna.notify ?? false,
         localOnly: antenna.localOnly ?? false,
         excludeBots: antenna.excludeBots ?? false,
+        hideNotesInSensitiveChannel:
+            antenna.hideNotesInSensitiveChannel ?? false,
       ),
     );
     state = AsyncValue.data([
@@ -147,6 +159,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         notify: antenna.notify ?? false,
         localOnly: antenna.localOnly ?? false,
         excludeBots: antenna.excludeBots ?? false,
+        hideNotesInSensitiveChannel:
+            antenna.hideNotesInSensitiveChannel ?? false,
       ),
     );
     state = AsyncValue.data([
