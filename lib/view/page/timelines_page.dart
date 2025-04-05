@@ -69,17 +69,28 @@ class TimelinesPage extends HookConsumerWidget {
     );
     final showPostForm = useState(false);
     useEffect(() {
+      int previousIndex = tabIndex;
+      int index = tabIndex;
+
       void callback() {
         if (tabs.isEmpty) return;
-        final previousIndex = controller.previousIndex;
-        final nextIndex = controller.index;
+        final int nextIndex;
+        if (controller.index != previousIndex) {
+          nextIndex = controller.index;
+          if (controller.offset == 0.0) {
+            previousIndex = controller.index;
+          }
+        } else {
+          nextIndex = controller.animation?.value.round() ?? index;
+        }
+        if (nextIndex == index) return;
         ref
             .read(timelineTabIndexNotifierProvider.notifier)
             .updateIndex(nextIndex);
-        if (previousIndex == nextIndex) return;
-        final previousAccount = tabs[previousIndex].account;
+        final previousAccount = tabs[index].account;
         final nextTab = tabs[nextIndex];
         final nextAccount = nextTab.account;
+        index = nextIndex;
         if (previousAccount != nextAccount) {
           if (previousAccount.host != nextAccount.host) {
             ref
@@ -127,8 +138,8 @@ class TimelinesPage extends HookConsumerWidget {
           });
         }
       }
-      controller.addListener(callback);
-      return () => controller.removeListener(callback);
+      controller.animation?.addListener(callback);
+      return () => controller.animation?.removeListener(callback);
     }, [tabs]);
     final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
     final rootFocusNode = useFocusNode();
