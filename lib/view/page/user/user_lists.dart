@@ -23,7 +23,16 @@ class UserLists extends ConsumerWidget {
       child: switch (lists) {
         AsyncValue(valueOrNull: final lists?) =>
           lists.isEmpty
-              ? Center(child: Text(t.misskey.noLists))
+              ? LayoutBuilder(
+                builder:
+                    (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.noLists)),
+                      ),
+                    ),
+              )
               : ListView.separated(
                 itemBuilder:
                     (context, index) => Center(

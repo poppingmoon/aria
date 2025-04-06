@@ -44,7 +44,16 @@ class ClipsPage extends ConsumerWidget {
               child: switch (clips) {
                 AsyncValue(valueOrNull: final clips?) =>
                   clips.isEmpty
-                      ? Center(child: Text(t.misskey.nothing))
+                      ? LayoutBuilder(
+                        builder:
+                            (context, constraint) => SingleChildScrollView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              child: SizedBox(
+                                height: constraint.maxHeight,
+                                child: Center(child: Text(t.misskey.nothing)),
+                              ),
+                            ),
+                      )
                       : ListView.separated(
                         itemBuilder:
                             (context, index) => Center(
@@ -120,7 +129,16 @@ class ClipsPage extends ConsumerWidget {
               child: switch (favoriteClips) {
                 AsyncValue(valueOrNull: final clips?) =>
                   clips.isEmpty
-                      ? Center(child: Text(t.misskey.nothing))
+                      ? LayoutBuilder(
+                        builder:
+                            (context, constraint) => SingleChildScrollView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              child: SizedBox(
+                                height: constraint.maxHeight,
+                                child: Center(child: Text(t.misskey.nothing)),
+                              ),
+                            ),
+                      )
                       : ListView.separated(
                         itemBuilder:
                             (context, index) => Center(

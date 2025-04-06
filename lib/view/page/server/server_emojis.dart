@@ -142,7 +142,16 @@ class ServerEmojis extends HookConsumerWidget {
                 },
                 itemCount: groups.length + 1,
               )
-              : Center(child: Text(t.misskey.noCustomEmojis)),
+              : LayoutBuilder(
+                builder:
+                    (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.noCustomEmojis)),
+                      ),
+                    ),
+              ),
     );
   }
 }

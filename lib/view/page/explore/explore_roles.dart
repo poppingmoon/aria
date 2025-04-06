@@ -26,7 +26,16 @@ class ExploreRoles extends ConsumerWidget {
             final manualRoles =
                 roles.where((role) => role.target == 'manual').toList();
             return manualRoles.isEmpty
-                ? Center(child: Text(t.misskey.noRole))
+                ? LayoutBuilder(
+                  builder:
+                      (context, constraint) => SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height: constraint.maxHeight,
+                          child: Center(child: Text(t.misskey.noRole)),
+                        ),
+                      ),
+                )
                 : ListView.builder(
                   itemBuilder:
                       (context, index) => Center(
