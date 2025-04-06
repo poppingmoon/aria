@@ -38,6 +38,7 @@ class UsernameWidget extends StatelessWidget {
       simple: true,
       style: style,
       emojis: user.emojis,
+      author: user,
       overflow: overflow,
       maxLines: maxLines,
     );
