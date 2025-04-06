@@ -27,7 +27,16 @@ class ChannelsFavorites extends ConsumerWidget {
       child: switch (channels) {
         AsyncValue(valueOrNull: final channels?) =>
           channels.isEmpty
-              ? Center(child: Text(t.misskey.nothing))
+              ? LayoutBuilder(
+                builder:
+                    (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.nothing)),
+                      ),
+                    ),
+              )
               : ListView.builder(
                 itemBuilder:
                     (context, index) => Center(

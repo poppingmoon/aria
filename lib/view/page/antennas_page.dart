@@ -27,7 +27,16 @@ class AntennasPage extends ConsumerWidget {
         child: switch (antennas) {
           AsyncValue(valueOrNull: final antennas?) =>
             antennas.isEmpty
-                ? Center(child: Text(t.misskey.nothing))
+                ? LayoutBuilder(
+                  builder:
+                      (context, constraint) => SingleChildScrollView(
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        child: SizedBox(
+                          height: constraint.maxHeight,
+                          child: Center(child: Text(t.misskey.nothing)),
+                        ),
+                      ),
+                )
                 : ListTileTheme(
                   tileColor: Theme.of(context).colorScheme.surface,
                   child: ListView.separated(

@@ -23,7 +23,16 @@ class PagesFeatured extends ConsumerWidget {
       child: switch (pages) {
         AsyncValue(valueOrNull: final pages?) =>
           pages.isEmpty
-              ? Center(child: Text(t.misskey.nothing))
+              ? LayoutBuilder(
+                builder:
+                    (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.nothing)),
+                      ),
+                    ),
+              )
               : ListView.builder(
                 itemBuilder:
                     (context, index) => Center(
