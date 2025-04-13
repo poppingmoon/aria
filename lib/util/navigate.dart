@@ -10,6 +10,7 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
   if (url == null) return;
   if (url.pathSegments.firstOrNull
       case 'channels' ||
+          'chat' ||
           'clips' ||
           'gallery' ||
           'notes' ||

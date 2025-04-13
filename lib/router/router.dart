@@ -25,6 +25,7 @@ import '../view/page/authenticate_page.dart';
 import '../view/page/avatar_decorations_page.dart';
 import '../view/page/channel/channel_page.dart';
 import '../view/page/channel/channels_page.dart';
+import '../view/page/chat/chat_page.dart';
 import '../view/page/clip_page.dart';
 import '../view/page/clips_page.dart';
 import '../view/page/crop_image_page.dart';
@@ -398,6 +399,19 @@ GoRouter router(Ref ref) {
                     ),
               ),
             ],
+          ),
+          GoRoute(
+            path: 'chat',
+            builder:
+                (_, state) => ChatPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                  initialIndex: switch (state.uri.fragment) {
+                    'invitations' => 1,
+                    'joining-rooms' => 2,
+                    'owned-rooms' => 3,
+                    _ => 0,
+                  },
+                ),
           ),
           GoRoute(
             path: 'clips',
