@@ -111,6 +111,13 @@ class TimelineWidget extends HookConsumerWidget {
               if (vibrateOnNotification) {
                 await HapticFeedback.mediumImpact();
               }
+            case NewChatMessage():
+              await ref
+                  .read(iNotifierProvider(account).notifier)
+                  .addUnreadChatMessage();
+              if (vibrateOnNotification) {
+                await HapticFeedback.mediumImpact();
+              }
             case AnnouncementCreated(:final announcement):
               await ref
                   .read(iNotifierProvider(account).notifier)

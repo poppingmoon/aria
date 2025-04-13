@@ -57,6 +57,11 @@ class MainStreamNotifier extends _$MainStreamNotifier {
             }
             yield UnreadNotification(notification);
           }
+        case 'newChatMessage':
+          if (event['body'] case final Map<String, dynamic> body) {
+            final message = ChatMessage.fromJson(body);
+            yield NewChatMessage(message);
+          }
         case 'receiveFollowRequest':
           if (event['body'] case final Map<String, dynamic> body) {
             final user = UserDetailed.fromJson(body);

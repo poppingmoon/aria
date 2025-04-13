@@ -320,6 +320,67 @@ as INotificationsResponse,
 
 
 /// @nodoc
+mixin _$NewChatMessage {
+
+ ChatMessage get message;
+/// Create a copy of NewChatMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NewChatMessageCopyWith<NewChatMessage> get copyWith => _$NewChatMessageCopyWithImpl<NewChatMessage>(this as NewChatMessage, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewChatMessage&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'NewChatMessage(message: $message)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NewChatMessageCopyWith<$Res>  {
+  factory $NewChatMessageCopyWith(NewChatMessage value, $Res Function(NewChatMessage) _then) = _$NewChatMessageCopyWithImpl;
+@useResult
+$Res call({
+ ChatMessage message
+});
+
+
+
+
+}
+/// @nodoc
+class _$NewChatMessageCopyWithImpl<$Res>
+    implements $NewChatMessageCopyWith<$Res> {
+  _$NewChatMessageCopyWithImpl(this._self, this._then);
+
+  final NewChatMessage _self;
+  final $Res Function(NewChatMessage) _then;
+
+/// Create a copy of NewChatMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? message = null,}) {
+  return _then(NewChatMessage(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as ChatMessage,
+  ));
+}
+
+}
+
+
+/// @nodoc
 mixin _$ReceiveFollowRequest {
 
  UserDetailed get user;

@@ -335,6 +335,20 @@ class INotifier extends _$INotifier {
     }
   }
 
+  Future<void> addUnreadChatMessage() async {
+    final i = await future;
+    if (i != null) {
+      state = AsyncValue.data(i.copyWith(hasUnreadChatMessages: true));
+    }
+  }
+
+  Future<void> readChatMessages() async {
+    final i = await future;
+    if (i != null) {
+      state = AsyncValue.data(i.copyWith(hasUnreadChatMessages: false));
+    }
+  }
+
   Future<void> addUnreadAnnouncement(AnnouncementsResponse announcement) async {
     final i = await future;
     if (i != null) {

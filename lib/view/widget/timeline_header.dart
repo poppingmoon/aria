@@ -27,6 +27,7 @@ class TimelineHeader extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(tabSettings.account)).valueOrNull;
     final hasUnreadNotification = i?.hasUnreadNotification ?? false;
     final hasUnreadAnnouncement = i?.hasUnreadAnnouncement ?? false;
+    final hasUnreadChatMessages = i?.hasUnreadChatMessages ?? false;
     final onlineUsersCount =
         ref.watch(onlineUsersCountProvider(tabSettings.account)).valueOrNull;
     final scrollController = ref.watch(
@@ -83,7 +84,9 @@ class TimelineHeader extends HookConsumerWidget {
             Stack(
               children: [
                 TabIconWidget(tabSettings: tabSettings),
-                if (hasUnreadNotification || hasUnreadAnnouncement)
+                if (hasUnreadNotification ||
+                    hasUnreadAnnouncement ||
+                    hasUnreadChatMessages)
                   DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,

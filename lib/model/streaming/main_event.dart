@@ -54,6 +54,14 @@ class UnreadNotification with _$UnreadNotification implements MainEvent {
 }
 
 @freezed
+class NewChatMessage with _$NewChatMessage implements MainEvent {
+  const NewChatMessage(this.message);
+
+  @override
+  final ChatMessage message;
+}
+
+@freezed
 class ReceiveFollowRequest with _$ReceiveFollowRequest implements MainEvent {
   const ReceiveFollowRequest(this.user);
 
