@@ -51,6 +51,9 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
       return '/$account/notes/$noteId';
     } else if (notification.body?.userId case final userId?) {
       return '/$account/users/$userId';
+    } else if (notification.body?.type ==
+        NotificationType.chatRoomInvitationReceived) {
+      return '/$account/chat#invitations';
     } else if (notification.body?.type == NotificationType.noteScheduled) {
       return '/$account/scheduled-notes';
     }

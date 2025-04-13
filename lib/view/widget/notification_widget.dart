@@ -327,6 +327,19 @@ class NotificationWidget extends ConsumerWidget {
           createdAt: notification.createdAt,
           onTap: () => context.push('/$account/roles/${notification.role?.id}'),
         );
+      case NotificationType.chatRoomInvitationReceived:
+        if (notification.invitation case final invitation?) {
+          return _NotificationTile(
+            account: account,
+            user: notification.user,
+            icon: const Icon(Icons.message),
+            iconBackgroundColor: eventOther,
+            title: Text(t.misskey.notification_.chatRoomInvitationReceived),
+            subtitle: Text(invitation.room?.name ?? ''),
+            createdAt: notification.createdAt,
+            onTap: () => context.push('/$account/chat#invitations'),
+          );
+        }
       case NotificationType.exportCompleted:
         return _NotificationTile(
           account: account,
