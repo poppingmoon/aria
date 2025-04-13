@@ -15,6 +15,7 @@ import '../../model/streaming/main_event.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/file_system_provider.dart';
+import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
@@ -162,18 +163,22 @@ class FilePickerSheet extends ConsumerWidget {
             unawaited(
               ref.read(mainStreamNotifierProvider(account).notifier).connect(),
             );
-            final sub = ref.listenManual(mainStreamNotifierProvider(account), (
-              _,
-              next,
-            ) {
-              if (next case AsyncData(
-                value: UrlUploadFinished(marker: final m?, :final file),
-              )) {
-                if (m == marker) {
-                  completer.complete(file);
+            final messageSub = ref.listenManual(
+              incomingMessageProvider(account),
+              (_, _) {},
+            );
+            final mainSub = ref.listenManual(
+              mainStreamNotifierProvider(account),
+              (_, next) {
+                if (next case AsyncData(
+                  value: UrlUploadFinished(marker: final m?, :final file),
+                )) {
+                  if (m == marker) {
+                    completer.complete(file);
+                  }
                 }
-              }
-            });
+              },
+            );
             final folderId =
                 ref.read(accountSettingsNotifierProvider(account)).uploadFolder;
             await futureWithDialog(
@@ -207,8 +212,12 @@ class FilePickerSheet extends ConsumerWidget {
               } catch (_) {}
             });
             if (!context.mounted) return;
-            final file = await futureWithDialog(context, completer.future);
-            sub.close();
+            final file = await futureWithDialog(
+              context,
+              completer.future.timeout(const Duration(minutes: 1)),
+            );
+            messageSub.close();
+            mainSub.close();
             timer.cancel();
             if (!context.mounted) return;
             if (file == null) return;
