@@ -6,47 +6,65 @@ part 'main_event.g.dart';
 
 sealed class MainEvent {}
 
-class Notification implements MainEvent {
+@freezed
+class Notification with _$Notification implements MainEvent {
   const Notification(this.notification);
 
+  @override
   final INotificationsResponse notification;
 }
 
-class Mention implements MainEvent {
+@freezed
+class Mention with _$Mention implements MainEvent {
   const Mention(this.note);
 
+  @override
   final Note note;
 }
 
-class MeUpdated implements MainEvent {
+@freezed
+class MeUpdated with _$MeUpdated implements MainEvent {
   const MeUpdated(this.i);
 
+  @override
   final MeDetailed i;
 }
 
-@Freezed(toJson: false)
-abstract class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
-  const factory UrlUploadFinished({String? marker, required DriveFile file}) =
-      _UrlUploadFinished;
+@freezed
+@JsonSerializable(createToJson: false)
+class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
+  const UrlUploadFinished({this.marker, required this.file});
+
+  @override
+  final String? marker;
+
+  @override
+  final DriveFile file;
 
   factory UrlUploadFinished.fromJson(Map<String, Object?> json) =>
       _$UrlUploadFinishedFromJson(json);
 }
 
-class UnreadNotification implements MainEvent {
+@freezed
+class UnreadNotification with _$UnreadNotification implements MainEvent {
   const UnreadNotification(this.notification);
 
+  @override
   final INotificationsResponse notification;
 }
 
-class ReceiveFollowRequest implements MainEvent {
+@freezed
+class ReceiveFollowRequest with _$ReceiveFollowRequest implements MainEvent {
   const ReceiveFollowRequest(this.user);
 
+  @override
   final UserDetailed user;
 }
 
-class AnnouncementCreated implements MainEvent {
+@freezed
+class AnnouncementCreated with _$AnnouncementCreated implements MainEvent {
   const AnnouncementCreated(this.announcement);
 
+  @override
   final AnnouncementsResponse announcement;
 }
