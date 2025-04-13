@@ -7,7 +7,7 @@ part of 'main_stream_notifier_provider.dart';
 // **************************************************************************
 
 String _$mainStreamNotifierHash() =>
-    r'42e2c637e332ade3061360b749ce2a989446d703';
+    r'b84722e8d4a4939820ffa838e8946b8e904736e3';
 
 /// Copied from Dart SDK
 class _SystemHash {

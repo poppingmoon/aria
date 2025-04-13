@@ -22,40 +22,53 @@ class MainStreamNotifier extends _$MainStreamNotifier {
     if (message.type == IncomingMessageType.channel &&
         message.body['id'] == _id) {
       final event = message.body;
-      final body = event['body'] as Map<String, dynamic>?;
       switch (event['type']) {
         case 'notification':
-          final notification = INotificationsResponse.fromJson(body!);
-          if (notification case INotificationsResponse(:final note?)) {
-            ref.read(notesNotifierProvider(account).notifier).add(note);
+          if (event['body'] case final Map<String, dynamic> body) {
+            final notification = INotificationsResponse.fromJson(body);
+            if (notification case INotificationsResponse(:final note?)) {
+              ref.read(notesNotifierProvider(account).notifier).add(note);
+            }
+            yield Notification(notification);
           }
-          yield Notification(notification);
         case 'mention':
-          final note = Note.fromJson(body!);
-          ref.read(notesNotifierProvider(account).notifier).add(note);
-          yield Mention(note);
-        case 'meUpdated':
-          final i = MeDetailed.fromJson(body!);
-          ref
-              .read(notesNotifierProvider(account).notifier)
-              .addAll(i.pinnedNotes ?? []);
-          yield MeUpdated(i);
-        case 'unreadNotification':
-          final notification = INotificationsResponse.fromJson(body!);
-          if (notification case INotificationsResponse(:final note?)) {
+          if (event['body'] case final Map<String, dynamic> body) {
+            final note = Note.fromJson(body);
             ref.read(notesNotifierProvider(account).notifier).add(note);
+            yield Mention(note);
           }
-          yield UnreadNotification(notification);
-        case 'receiveFollowRequest':
-          final user = UserDetailed.fromJson(body!);
-          yield ReceiveFollowRequest(user);
-        case 'announcementCreated':
-          final announcement = AnnouncementsResponse.fromJson(
-            body!['announcement'] as Map<String, dynamic>,
-          );
-          yield AnnouncementCreated(announcement);
+        case 'meUpdated':
+          if (event['body'] case final Map<String, dynamic> body) {
+            final i = MeDetailed.fromJson(body);
+            ref
+                .read(notesNotifierProvider(account).notifier)
+                .addAll(i.pinnedNotes ?? []);
+            yield MeUpdated(i);
+          }
         case 'urlUploadFinished':
-          yield UrlUploadFinished.fromJson(body!);
+          if (event['body'] case final Map<String, dynamic> body) {
+            yield UrlUploadFinished.fromJson(body);
+          }
+        case 'unreadNotification':
+          if (event['body'] case final Map<String, dynamic> body) {
+            final notification = INotificationsResponse.fromJson(body);
+            if (notification case INotificationsResponse(:final note?)) {
+              ref.read(notesNotifierProvider(account).notifier).add(note);
+            }
+            yield UnreadNotification(notification);
+          }
+        case 'receiveFollowRequest':
+          if (event['body'] case final Map<String, dynamic> body) {
+            final user = UserDetailed.fromJson(body);
+            yield ReceiveFollowRequest(user);
+          }
+        case 'announcementCreated':
+          if (event['body'] case {
+            'announcement': final Map<String, dynamic> body,
+          }) {
+            final announcement = AnnouncementsResponse.fromJson(body);
+            yield AnnouncementCreated(announcement);
+          }
       }
     }
   }

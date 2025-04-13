@@ -18,16 +18,25 @@ class Mention implements MainEvent {
   final Note note;
 }
 
-class UnreadNotification implements MainEvent {
-  const UnreadNotification(this.notification);
-
-  final INotificationsResponse notification;
-}
-
 class MeUpdated implements MainEvent {
   const MeUpdated(this.i);
 
   final MeDetailed i;
+}
+
+@Freezed(toJson: false)
+abstract class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
+  const factory UrlUploadFinished({String? marker, required DriveFile file}) =
+      _UrlUploadFinished;
+
+  factory UrlUploadFinished.fromJson(Map<String, Object?> json) =>
+      _$UrlUploadFinishedFromJson(json);
+}
+
+class UnreadNotification implements MainEvent {
+  const UnreadNotification(this.notification);
+
+  final INotificationsResponse notification;
 }
 
 class ReceiveFollowRequest implements MainEvent {
@@ -40,13 +49,4 @@ class AnnouncementCreated implements MainEvent {
   const AnnouncementCreated(this.announcement);
 
   final AnnouncementsResponse announcement;
-}
-
-@Freezed(toJson: false)
-abstract class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
-  const factory UrlUploadFinished({String? marker, required DriveFile file}) =
-      _UrlUploadFinished;
-
-  factory UrlUploadFinished.fromJson(Map<String, Object?> json) =>
-      _$UrlUploadFinishedFromJson(json);
 }
