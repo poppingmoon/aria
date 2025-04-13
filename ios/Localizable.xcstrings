@@ -1686,6 +1686,12 @@
             "value": "Si no saps què és, esborra el token des de Administrar claus de seguretat d'accés ."
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie keine Ahnung haben, löschen Sie das Zugriffstoken über \"Zugriffstokens verwalten\""
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -3270,7 +3276,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "노트가 필요해요"
+            "value": "노트가 더 필요해요"
           }
         },
         "no": {
@@ -9327,7 +9333,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "여기를 누르세요"
+            "value": "여길 눌러보세요"
           }
         },
         "no": {

@@ -709,7 +709,7 @@ class TranslationsMisskeyEnUs {
 	String get antennaKeywordsDescription => 'Separate with spaces for an AND condition or with line breaks for an OR condition.';
 	String get notifyAntenna => 'Notify about new notes';
 	String get withFileAntenna => 'Only notes with files';
-	String get hideNotesInSensitiveChannel => 'Hide notes from sensitive channels';
+	String get excludeNotesInSensitiveChannel => 'Exclude notes from sensitive channels';
 	String get enableServiceworker => 'Enable Push-Notifications for your Browser';
 	String get antennaUsersDescription => 'List one username per line';
 	String get caseSensitive => 'Case sensitive';
@@ -1626,6 +1626,9 @@ class TranslationsMisskeyEnUs {
 	String get bottom => 'Bottom';
 	String get top => 'Top';
 	String get embed => 'Embed';
+	String get settingsMigrating => 'Settings are being migrated, please wait a moment... (You can also migrate manually later by going to Settings→Others→Migrate old settings)';
+	String get readonly => 'Read only';
+	String get goToDeck => 'Return to Deck';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1762,6 +1765,7 @@ class TranslationsMisskeyChatEnUs {
 	String get muteThisRoom => 'Mute room';
 	String get deleteRoom => 'Delete room';
 	String get chatNotAvailableForThisAccountOrServer => 'Chat is not enabled on this server or for this account.';
+	String get chatIsReadOnlyForThisAccountOrServer => 'Chat is read-only on this instance or this account. You cannot write new messages or create/join chat rooms.';
 	String get chatNotAvailableInOtherAccount => 'The chat function is disabled for the other user.';
 	String get cannotChatWithTheUser => 'Cannot start a chat with this user';
 	String get cannotChatWithTheUser_description => 'Chat is either unavailable or the other party has not enabled chat.';
@@ -2096,6 +2100,8 @@ class TranslationsMisskeyRoleEnUs {
 	String get descriptionOfIsExplorable => 'This role\'s timeline and the list of users with this will be made public if enabled.';
 	String get displayOrder => 'Position';
 	String get descriptionOfDisplayOrder => 'The higher the number, the higher its UI position.';
+	String get preserveAssignmentOnMoveAccount => 'Preserve role assignment during migration';
+	String get preserveAssignmentOnMoveAccount_description => 'When turned on, this role will be carried over to the destination account when an account with this role is migrated.';
 	String get canEditMembersByModerator => 'Allow moderators to edit the list of members for this role';
 	String get descriptionOfCanEditMembersByModerator => 'When turned on, moderators as well as administrators will be able to assign and unassign users to this role. When turned off, only administrators will be able to assign users.';
 	String get priority => 'Priority';
@@ -3811,7 +3817,7 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	String get canImportFollowing => 'Allow importing following';
 	String get canImportMuting => 'Allow importing muting';
 	String get canImportUserLists => 'Allow importing lists';
-	String get canChat => 'Allow Chat';
+	String get chatAvailability => 'Allow Chat';
 }
 
 // Path: misskey.role_.condition_

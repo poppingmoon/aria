@@ -694,7 +694,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔。';
 	@override String get notifyAntenna => '开启通知';
 	@override String get withFileAntenna => '仅带有附件的帖子';
-	@override String get hideNotesInSensitiveChannel => '隐藏敏感频道内的帖子';
+	@override String get excludeNotesInSensitiveChannel => '排除敏感频道内的帖子';
 	@override String get enableServiceworker => '启用 ServiceWorker';
 	@override String get antennaUsersDescription => '指定用户名，一行一个';
 	@override String get caseSensitive => '区分大小写';
@@ -1611,6 +1611,9 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '嵌入';
+	@override String get settingsMigrating => '正在迁移设置，请稍候。（之后也可以在设置 → 其它 → 迁移旧设置来手动迁移）';
+	@override String get readonly => '只读';
+	@override String get goToDeck => '返回至 Deck';
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
@@ -1737,6 +1740,7 @@ class _TranslationsMisskeyChatZhCn extends TranslationsMisskeyChatEnUs {
 	@override String get muteThisRoom => '静音此房间';
 	@override String get deleteRoom => '删除房间';
 	@override String get chatNotAvailableForThisAccountOrServer => '此服务器或者账户还未开启聊天功能。';
+	@override String get chatIsReadOnlyForThisAccountOrServer => '此服务器或者账户内的聊天为只读。无法发布新信息或创建及加入群聊。';
 	@override String get chatNotAvailableInOtherAccount => '对方账户目前处于无法使用聊天的状态。';
 	@override String get cannotChatWithTheUser => '无法与此用户聊天';
 	@override String get cannotChatWithTheUser_description => '可能现在无法使用聊天，或者对方未开启聊天。';
@@ -2070,6 +2074,8 @@ class _TranslationsMisskeyRoleZhCn extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => '打开后将公开角色时间线。如果角色不是公开的，就无法公开时间线。';
 	@override String get displayOrder => '显示顺序';
 	@override String get descriptionOfDisplayOrder => '数字越大，显示位置越靠前。';
+	@override String get preserveAssignmentOnMoveAccount => '将分配状态继承到目标账户';
+	@override String get preserveAssignmentOnMoveAccount_description => '启用后，当迁移具有该角色的账户时，目标账户也会继承该角色。';
 	@override String get canEditMembersByModerator => '允许监察员编辑成员';
 	@override String get descriptionOfCanEditMembersByModerator => '如果选中，监察员和管理员都能够为用户分配/取消分配角色。如果未选中，则只有管理员可以执行此操作。';
 	@override String get priority => '优先级';
@@ -3769,7 +3775,7 @@ class _TranslationsMisskeyRoleOptionsZhCn extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => '允许导入关注列表';
 	@override String get canImportMuting => '允许导入隐藏列表';
 	@override String get canImportUserLists => '允许导入用户列表';
-	@override String get canChat => '允许聊天';
+	@override String get chatAvailability => '允许聊天';
 }
 
 // Path: misskey.role_.condition_

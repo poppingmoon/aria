@@ -245,7 +245,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                   ) ??
                   false))
             SwitchListTile(
-              title: Text(t.misskey.hideNotesInSensitiveChannel),
+              title: Text(t.misskey.excludeNotesInSensitiveChannel),
               value: settings.value.hideNotesInSensitiveChannel ?? false,
               onChanged:
                   (value) =>
