@@ -79,7 +79,7 @@ class MainStreamNotifier extends _$MainStreamNotifier {
   }
 
   WebSocketChannel get _webSocketChannel =>
-      ref.read(webSocketChannelProvider(account));
+      ref.read(webSocketChannelProvider(account)).$1;
 
   static const _id = 'main';
 

@@ -22,7 +22,7 @@ class NoteSubscriptionNotifier extends _$NoteSubscriptionNotifier {
   }
 
   WebSocketChannel get _webSocketChannel =>
-      ref.read(webSocketChannelProvider(account));
+      ref.read(webSocketChannelProvider(account)).$1;
 
   Future<void> _subNote(String noteId) async {
     await _webSocketChannel.ready;

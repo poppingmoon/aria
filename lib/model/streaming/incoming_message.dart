@@ -19,7 +19,7 @@ abstract class IncomingMessage with _$IncomingMessage {
     // ignore: invalid_annotation_target
     @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
     IncomingMessageType? type,
-    required Map<String, dynamic> body,
+    @Default({}) Map<String, dynamic> body,
   }) = _IncomingMessage;
 
   factory IncomingMessage.fromJson(Map<String, Object?> json) =>
