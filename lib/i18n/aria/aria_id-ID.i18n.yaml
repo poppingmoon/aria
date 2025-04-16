@@ -96,7 +96,6 @@ openScratchpadAndRunCode(rich): "Buka {scratchpad} di browser anda, lalu masukka
 openSensitiveMediaOnDoubleTap: "Buka media sensitif dengan ketukan ganda"
 parameters: "Parameter"
 paste: "Tempel"
-pastePinnedEmojisDescription(rich): "Tempel daftar emoji dengan format JSON untuk menyematkan emoji. Anda bisa menyalin emoji yang sudah tersematkan dari Misskey Web di {url}."
 pasteResponseBelow: "Tempel respon di bawah."
 pinToEmojiPicker: "Sematkan ke pemilih emoji"
 playAudio: "Putar audio"
