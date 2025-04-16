@@ -101,6 +101,7 @@ openScratchpadAndRunCode(rich): "ブラウザで{scratchpad}を開き、以下�
 openSensitiveMediaOnDoubleTap: "ダブルタップしてセンシティブなメディアを開く"
 parameters: "パラメータ"
 paste: "貼り付け"
+pastePinnedEmojisDescription(rich): "絵文字のリストを貼り付けて一括でピン止めします。\nMisskey Webでピン止めした絵文字のリストは{url}からコピーすることができます。"
 pasteResponseBelow: "以下にレスポンスを貼り付けてください。"
 pinToEmojiPicker: "絵文字ピッカーにピン留め"
 playAudio: "音声を再生"
