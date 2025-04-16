@@ -26,6 +26,7 @@ import '../view/page/avatar_decorations_page.dart';
 import '../view/page/channel/channel_page.dart';
 import '../view/page/channel/channels_page.dart';
 import '../view/page/chat/chat_page.dart';
+import '../view/page/chat/chat_room_page.dart';
 import '../view/page/clip_page.dart';
 import '../view/page/clips_page.dart';
 import '../view/page/crop_image_page.dart';
@@ -412,6 +413,28 @@ GoRouter router(Ref ref) {
                     _ => 0,
                   },
                 ),
+            routes: [
+              GoRoute(
+                path: 'room/:roomId',
+                builder:
+                    (_, state) => ChatRoomPage(
+                      account: Account.fromString(
+                        state.pathParameters['acct']!,
+                      ),
+                      roomId: state.pathParameters['roomId'],
+                    ),
+              ),
+              GoRoute(
+                path: 'user/:userId',
+                builder:
+                    (_, state) => ChatRoomPage(
+                      account: Account.fromString(
+                        state.pathParameters['acct']!,
+                      ),
+                      userId: state.pathParameters['userId'],
+                    ),
+              ),
+            ],
           ),
           GoRoute(
             path: 'clips',

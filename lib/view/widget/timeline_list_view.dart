@@ -402,7 +402,9 @@ class TimelineListView extends HookConsumerWidget {
                                             ? const Radius.circular(8.0)
                                             : Radius.zero,
                                   ),
-                          hide: partialPreviousNoteIds.contains(note.id),
+                          hide:
+                              index < 5 &&
+                              partialPreviousNoteIds.contains(note.id),
                         ),
                       ),
                     );
