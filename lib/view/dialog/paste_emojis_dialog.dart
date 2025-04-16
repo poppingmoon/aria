@@ -15,13 +15,7 @@ import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
-const _sampleEmojis = """
-[
-	'👍',
-	'❤️',
-  ':misskey:',
-  ':ai_yay@.:',
-]""";
+const _sampleEmojis = ['👍', '❤️', ':misskey:', ':ai_yay@.:'];
 
 class PasteEmojisDialog extends HookConsumerWidget {
   const PasteEmojisDialog({
@@ -38,6 +32,7 @@ class PasteEmojisDialog extends HookConsumerWidget {
     final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
     final isThirdPartyRegistrySupported =
         endpoints?.contains('i/registry/scopes-with-domain') ?? true;
+    final useEmojiPalette = endpoints?.contains('chat/history') ?? false;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final registryUrl = serverUrl.replace(
       pathSegments: [
@@ -48,6 +43,9 @@ class PasteEmojisDialog extends HookConsumerWidget {
         'base',
         if (reaction) 'reactions' else 'pinnedEmojis',
       ],
+    );
+    final emojiPaletteUrl = serverUrl.replace(
+      pathSegments: ['settings', 'emoji-palette'],
     );
     final recognizer = useTapGestureRecognizer();
     final controller = useTextEditingController();
@@ -62,10 +60,18 @@ class PasteEmojisDialog extends HookConsumerWidget {
           Text.rich(
             t.aria.pastePinnedEmojisDescription(
               url: TextSpan(
-                text: registryUrl.toString().breakAll,
+                text:
+                    (useEmojiPalette ? emojiPaletteUrl : registryUrl)
+                        .toString()
+                        .breakAll,
                 style: TextStyle(color: colors.link),
                 recognizer:
-                    recognizer..onTap = () => launchUrl(ref, registryUrl),
+                    recognizer
+                      ..onTap =
+                          () => launchUrl(
+                            ref,
+                            useEmojiPalette ? emojiPaletteUrl : registryUrl,
+                          ),
               ),
             ),
           ),
@@ -75,8 +81,14 @@ class PasteEmojisDialog extends HookConsumerWidget {
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
-                labelText: '${t.misskey.value} (JSON)',
-                hintText: _sampleEmojis,
+                labelText:
+                    useEmojiPalette
+                        ? t.misskey.emojiPalette
+                        : '${t.misskey.value} (JSON)',
+                hintText:
+                    useEmojiPalette
+                        ? _sampleEmojis.join(' ')
+                        : json5Encode(_sampleEmojis, space: 2),
                 enabledBorder: Theme.of(context).inputDecorationTheme.border,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
@@ -89,10 +101,17 @@ class PasteEmojisDialog extends HookConsumerWidget {
       actions: [
         ElevatedButton(
           onPressed: () {
+            final text = controller.text.trim();
             try {
-              final emojis = json5Decode(controller.text);
+              final emojis =
+                  text.startsWith('[') ? json5Decode(text) : text.split(' ');
               if (emojis is List) {
-                context.pop(emojis.whereType<String>().toList());
+                context.pop(
+                  emojis
+                      .whereType<String>()
+                      .where((emoji) => emoji.isNotEmpty)
+                      .toList(),
+                );
               } else {
                 throw const FormatException();
               }

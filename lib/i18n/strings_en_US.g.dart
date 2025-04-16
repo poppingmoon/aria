@@ -180,7 +180,7 @@ class TranslationsAriaEnUs {
 	String get parameters => 'Parameters';
 	String get paste => 'Paste';
 	TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: 'Paste JSON format emojis list to pin the emojis.\nYou can copy your pinned emojis for Misskey Web from '),
+		const TextSpan(text: 'Paste emoji list to pin the emojis.\nYou can copy your pinned emojis for Misskey Web from '),
 		url,
 		const TextSpan(text: '.'),
 	]);
