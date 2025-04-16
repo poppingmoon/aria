@@ -96,7 +96,6 @@ openScratchpadAndRunCode(rich): "在浏览器中打开 {scratchpad} ，然后输
 openSensitiveMediaOnDoubleTap: "遇到敏感媒体时双击以显示"
 parameters: "参数"
 paste: "粘贴"
-pastePinnedEmojisDescription(rich): "粘贴 JSON 格式的表情符号列表以固定表情符号。您可以从 {url} 复制Misskey Web 的固定表情符号。"
 pasteResponseBelow: "粘贴下面的回复"
 pinToEmojiPicker: "固定到表情选择器"
 playAudio: "播放音频"
