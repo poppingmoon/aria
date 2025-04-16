@@ -101,7 +101,7 @@ openScratchpadAndRunCode(rich): "Open {scratchpad} in your browser, then enter t
 openSensitiveMediaOnDoubleTap: "Open sensitive media on double tap"
 parameters: "Parameters"
 paste: "Paste"
-pastePinnedEmojisDescription(rich): "Paste JSON format emojis list to pin the emojis.\nYou can copy your pinned emojis for Misskey Web from {url}."
+pastePinnedEmojisDescription(rich): "Paste emoji list to pin the emojis.\nYou can copy your pinned emojis for Misskey Web from {url}."
 pasteResponseBelow: "Paste the response below."
 pinToEmojiPicker: "Pin to emoji picker"
 playAudio: "Play audio"

@@ -6,6 +6,7 @@ import 'package:reorderables/reorderables.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/api/endpoints_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../dialog/confirmation_dialog.dart';
@@ -28,6 +29,8 @@ class PinnedEmojisEditor extends HookConsumerWidget {
     final pinnedEmojis = ref.watch(
       pinnedEmojisNotifierProvider(account, reaction: reaction),
     );
+    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final useEmojiPalette = endpoints?.contains('chat/history') ?? false;
 
     return ExpansionTile(
       leading: Icon(reaction ? Icons.push_pin : Icons.push_pin_outlined),
@@ -105,7 +108,13 @@ class PinnedEmojisEditor extends HookConsumerWidget {
         ListTile(
           leading: const Icon(Icons.copy),
           title: Text(t.misskey.copy),
-          onTap: () => copyToClipboard(context, json5Encode(pinnedEmojis)),
+          onTap:
+              () => copyToClipboard(
+                context,
+                useEmojiPalette
+                    ? pinnedEmojis.join(' ')
+                    : json5Encode(pinnedEmojis),
+              ),
           dense: true,
         ),
         ListTile(
