@@ -95,17 +95,19 @@ class ChatMessageWidget extends HookConsumerWidget {
                   margin: EdgeInsets.zero,
                   clipBehavior: Clip.hardEdge,
                   child: InkWell(
-                    onTap:
-                        () => showModalBottomSheet<void>(
-                          context: context,
-                          builder:
-                              (context) => _ChatMessageSheet(
-                                account: account,
-                                message: message,
-                                user: user,
-                                updateMessage: updateMessage,
-                              ),
-                        ),
+                    onTap: () {
+                      if (message.id.isEmpty) return;
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder:
+                            (context) => _ChatMessageSheet(
+                              account: account,
+                              message: message,
+                              user: user,
+                              updateMessage: updateMessage,
+                            ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Mfm(
@@ -140,17 +142,19 @@ class ChatMessageWidget extends HookConsumerWidget {
                 ),
                 child: TimeWidget(
                   time: message.createdAt,
-                  onTap:
-                      () => showModalBottomSheet<void>(
-                        context: context,
-                        builder:
-                            (context) => _ChatMessageSheet(
-                              account: account,
-                              message: message,
-                              user: user,
-                              updateMessage: updateMessage,
-                            ),
-                      ),
+                  onTap: () {
+                    if (message.id.isEmpty) return;
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder:
+                          (context) => _ChatMessageSheet(
+                            account: account,
+                            message: message,
+                            user: user,
+                            updateMessage: updateMessage,
+                          ),
+                    );
+                  },
                 ),
               ),
               if (message.reactions.isNotEmpty) ...[

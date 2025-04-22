@@ -6,7 +6,7 @@ part of 'attaches_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$attachesNotifierHash() => r'eaad5ef85272b9b0153be9e851d47a11688e6303';
+String _$attachesNotifierHash() => r'383d958c23010db42b46d23a39637cb62e6918e1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,8 +34,14 @@ abstract class _$AttachesNotifier
   late final Account account;
   late final String? noteId;
   late final bool gallery;
+  late final bool chat;
 
-  List<PostFile> build(Account account, {String? noteId, bool gallery = false});
+  List<PostFile> build(
+    Account account, {
+    String? noteId,
+    bool gallery = false,
+    bool chat = false,
+  });
 }
 
 /// See also [AttachesNotifier].
@@ -52,8 +58,14 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
     Account account, {
     String? noteId,
     bool gallery = false,
+    bool chat = false,
   }) {
-    return AttachesNotifierProvider(account, noteId: noteId, gallery: gallery);
+    return AttachesNotifierProvider(
+      account,
+      noteId: noteId,
+      gallery: gallery,
+      chat: chat,
+    );
   }
 
   @override
@@ -64,6 +76,7 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
       provider.account,
       noteId: provider.noteId,
       gallery: provider.gallery,
+      chat: provider.chat,
     );
   }
 
@@ -90,12 +103,14 @@ class AttachesNotifierProvider
     Account account, {
     String? noteId,
     bool gallery = false,
+    bool chat = false,
   }) : this._internal(
          () =>
              AttachesNotifier()
                ..account = account
                ..noteId = noteId
-               ..gallery = gallery,
+               ..gallery = gallery
+               ..chat = chat,
          from: attachesNotifierProvider,
          name: r'attachesNotifierProvider',
          debugGetCreateSourceHash:
@@ -108,6 +123,7 @@ class AttachesNotifierProvider
          account: account,
          noteId: noteId,
          gallery: gallery,
+         chat: chat,
        );
 
   AttachesNotifierProvider._internal(
@@ -120,15 +136,22 @@ class AttachesNotifierProvider
     required this.account,
     required this.noteId,
     required this.gallery,
+    required this.chat,
   }) : super.internal();
 
   final Account account;
   final String? noteId;
   final bool gallery;
+  final bool chat;
 
   @override
   List<PostFile> runNotifierBuild(covariant AttachesNotifier notifier) {
-    return notifier.build(account, noteId: noteId, gallery: gallery);
+    return notifier.build(
+      account,
+      noteId: noteId,
+      gallery: gallery,
+      chat: chat,
+    );
   }
 
   @override
@@ -140,7 +163,8 @@ class AttachesNotifierProvider
             create()
               ..account = account
               ..noteId = noteId
-              ..gallery = gallery,
+              ..gallery = gallery
+              ..chat = chat,
         from: from,
         name: null,
         dependencies: null,
@@ -149,6 +173,7 @@ class AttachesNotifierProvider
         account: account,
         noteId: noteId,
         gallery: gallery,
+        chat: chat,
       ),
     );
   }
@@ -164,7 +189,8 @@ class AttachesNotifierProvider
     return other is AttachesNotifierProvider &&
         other.account == account &&
         other.noteId == noteId &&
-        other.gallery == gallery;
+        other.gallery == gallery &&
+        other.chat == chat;
   }
 
   @override
@@ -173,6 +199,7 @@ class AttachesNotifierProvider
     hash = _SystemHash.combine(hash, account.hashCode);
     hash = _SystemHash.combine(hash, noteId.hashCode);
     hash = _SystemHash.combine(hash, gallery.hashCode);
+    hash = _SystemHash.combine(hash, chat.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -189,6 +216,9 @@ mixin AttachesNotifierRef on AutoDisposeNotifierProviderRef<List<PostFile>> {
 
   /// The parameter `gallery` of this provider.
   bool get gallery;
+
+  /// The parameter `chat` of this provider.
+  bool get chat;
 }
 
 class _AttachesNotifierProviderElement
@@ -202,6 +232,8 @@ class _AttachesNotifierProviderElement
   String? get noteId => (origin as AttachesNotifierProvider).noteId;
   @override
   bool get gallery => (origin as AttachesNotifierProvider).gallery;
+  @override
+  bool get chat => (origin as AttachesNotifierProvider).chat;
 }
 
 // ignore_for_file: type=lint

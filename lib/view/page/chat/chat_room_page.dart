@@ -7,7 +7,9 @@ import '../../../model/account.dart';
 import '../../../model/tab_settings.dart';
 import '../../../provider/api/chat_room_notifier_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
+import '../../../provider/send_chat_message_notifier_provider.dart';
 import '../../widget/chat_list_view.dart';
+import '../../widget/chat_post_form.dart';
 import '../../widget/streaming_error_icon.dart';
 import '../../widget/username_widget.dart';
 
@@ -36,38 +38,66 @@ class ChatRoomPage extends ConsumerWidget {
             ? ref.watch(chatRoomNotifierProvider(account, roomId!)).valueOrNull
             : null;
 
-    return Scaffold(
-      appBar: AppBar(
-        title:
-            user != null
-                ? UsernameWidget(account: account, user: user)
-                : Text(room != null ? room.name : t.misskey.chat),
-        actions: [
-          StreamingErrorIcon(tabSettings: TabSettings.homeTimeline(account)),
-          PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  if (userId != null)
-                    PopupMenuItem(
-                      onTap: () => context.push('/$account/users/$userId'),
-                      child: ListTile(
-                        leading: const Icon(Icons.person),
-                        title: Text(t.misskey.user),
+    return PopScope(
+      onPopInvokedWithResult:
+          (_, _) =>
+              ref
+                  .read(
+                    sendChatMessageNotifierProvider(
+                      account,
+                      userId: userId,
+                      roomId: roomId,
+                    ).notifier,
+                  )
+                  .save(),
+      child: Scaffold(
+        appBar: AppBar(
+          title:
+              user != null
+                  ? UsernameWidget(account: account, user: user)
+                  : Text(room != null ? room.name : t.misskey.chat),
+          actions: [
+            StreamingErrorIcon(tabSettings: TabSettings.homeTimeline(account)),
+            PopupMenuButton<void>(
+              itemBuilder:
+                  (context) => [
+                    if (userId != null)
+                      PopupMenuItem(
+                        onTap: () => context.push('/$account/users/$userId'),
+                        child: ListTile(
+                          leading: const Icon(Icons.person),
+                          title: Text(t.misskey.user),
+                        ),
                       ),
-                    ),
-                  if (roomId != null)
-                    PopupMenuItem(
-                      onTap: () => context.push('/$account/chat/$roomId/info'),
-                      child: ListTile(
-                        leading: const Icon(Icons.info_outline),
-                        title: Text(t.misskey.info),
+                    if (roomId != null)
+                      PopupMenuItem(
+                        onTap:
+                            () => context.push('/$account/chat/$roomId/info'),
+                        child: ListTile(
+                          leading: const Icon(Icons.info_outline),
+                          title: Text(t.misskey.info),
+                        ),
                       ),
-                    ),
-                ],
+                  ],
+            ),
+          ],
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: ChatListView(
+                  account: account,
+                  userId: userId,
+                  roomId: roomId,
+                ),
+              ),
+              const Divider(height: 0.0),
+              ChatPostForm(account: account, userId: userId, roomId: roomId),
+            ],
           ),
-        ],
+        ),
       ),
-      body: ChatListView(account: account, userId: userId, roomId: roomId),
     );
   }
 }

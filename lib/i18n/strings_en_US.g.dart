@@ -211,6 +211,7 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: 'Self-renoted by '),
 		user,
 	]);
+	String get sendMessageConfirm => 'Are you sure you want to send this message?';
 	String get serverUrl => 'Server URL';
 	String get settingsFileForAria => 'Settings file for Aria';
 	TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
