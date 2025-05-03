@@ -101,7 +101,6 @@ openScratchpadAndRunCode(rich): "Abre {scratchpad} en tu navegador, luego introd
 openSensitiveMediaOnDoubleTap: "Abrir multimedia sensible con doble toque"
 parameters: "Parámetros"
 paste: "Pegar"
-pastePinnedEmojisDescription(rich): "Pega la lista de emojis en formato JSON para anclar los emojis.\nPuedes copiar tus emojis anclados para la Web de Misskey desde {url}."
 pasteResponseBelow: "Pegar la respuesta a continuación."
 pinToEmojiPicker: "Fijar al selector de emojis"
 playAudio: "Reproducir audio"
