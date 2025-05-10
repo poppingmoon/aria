@@ -177,6 +177,7 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: ' in your browser, then enter the following code and run it.'),
 	]);
 	String get openSensitiveMediaOnDoubleTap => 'Open sensitive media on double tap';
+	String get owner => 'Owner';
 	String get parameters => 'Parameters';
 	String get paste => 'Paste';
 	TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [

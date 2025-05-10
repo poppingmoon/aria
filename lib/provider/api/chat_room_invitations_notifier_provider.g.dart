@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_room_notifier_provider.dart';
+part of 'chat_room_invitations_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chatRoomNotifierHash() => r'90610dfe9f24d7c279db5a54ce5300b0f021f638';
+String _$chatRoomInvitationsNotifierHash() =>
+    r'09ef947a4e2b45cc6045c8eb474e3b4000988e94';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,31 +30,32 @@ class _SystemHash {
   }
 }
 
-abstract class _$ChatRoomNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<ChatRoom> {
+abstract class _$ChatRoomInvitationsNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<ChatJoining>> {
   late final Account account;
   late final String roomId;
 
-  FutureOr<ChatRoom> build(Account account, String roomId);
+  FutureOr<PaginationState<ChatJoining>> build(Account account, String roomId);
 }
 
-/// See also [ChatRoomNotifier].
-@ProviderFor(ChatRoomNotifier)
-const chatRoomNotifierProvider = ChatRoomNotifierFamily();
+/// See also [ChatRoomInvitationsNotifier].
+@ProviderFor(ChatRoomInvitationsNotifier)
+const chatRoomInvitationsNotifierProvider = ChatRoomInvitationsNotifierFamily();
 
-/// See also [ChatRoomNotifier].
-class ChatRoomNotifierFamily extends Family<AsyncValue<ChatRoom>> {
-  /// See also [ChatRoomNotifier].
-  const ChatRoomNotifierFamily();
+/// See also [ChatRoomInvitationsNotifier].
+class ChatRoomInvitationsNotifierFamily
+    extends Family<AsyncValue<PaginationState<ChatJoining>>> {
+  /// See also [ChatRoomInvitationsNotifier].
+  const ChatRoomInvitationsNotifierFamily();
 
-  /// See also [ChatRoomNotifier].
-  ChatRoomNotifierProvider call(Account account, String roomId) {
-    return ChatRoomNotifierProvider(account, roomId);
+  /// See also [ChatRoomInvitationsNotifier].
+  ChatRoomInvitationsNotifierProvider call(Account account, String roomId) {
+    return ChatRoomInvitationsNotifierProvider(account, roomId);
   }
 
   @override
-  ChatRoomNotifierProvider getProviderOverride(
-    covariant ChatRoomNotifierProvider provider,
+  ChatRoomInvitationsNotifierProvider getProviderOverride(
+    covariant ChatRoomInvitationsNotifierProvider provider,
   ) {
     return call(provider.account, provider.roomId);
   }
@@ -70,33 +72,37 @@ class ChatRoomNotifierFamily extends Family<AsyncValue<ChatRoom>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'chatRoomNotifierProvider';
+  String? get name => r'chatRoomInvitationsNotifierProvider';
 }
 
-/// See also [ChatRoomNotifier].
-class ChatRoomNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<ChatRoomNotifier, ChatRoom> {
-  /// See also [ChatRoomNotifier].
-  ChatRoomNotifierProvider(Account account, String roomId)
+/// See also [ChatRoomInvitationsNotifier].
+class ChatRoomInvitationsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ChatRoomInvitationsNotifier,
+          PaginationState<ChatJoining>
+        > {
+  /// See also [ChatRoomInvitationsNotifier].
+  ChatRoomInvitationsNotifierProvider(Account account, String roomId)
     : this._internal(
         () =>
-            ChatRoomNotifier()
+            ChatRoomInvitationsNotifier()
               ..account = account
               ..roomId = roomId,
-        from: chatRoomNotifierProvider,
-        name: r'chatRoomNotifierProvider',
+        from: chatRoomInvitationsNotifierProvider,
+        name: r'chatRoomInvitationsNotifierProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$chatRoomNotifierHash,
-        dependencies: ChatRoomNotifierFamily._dependencies,
+                : _$chatRoomInvitationsNotifierHash,
+        dependencies: ChatRoomInvitationsNotifierFamily._dependencies,
         allTransitiveDependencies:
-            ChatRoomNotifierFamily._allTransitiveDependencies,
+            ChatRoomInvitationsNotifierFamily._allTransitiveDependencies,
         account: account,
         roomId: roomId,
       );
 
-  ChatRoomNotifierProvider._internal(
+  ChatRoomInvitationsNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -111,15 +117,17 @@ class ChatRoomNotifierProvider
   final String roomId;
 
   @override
-  FutureOr<ChatRoom> runNotifierBuild(covariant ChatRoomNotifier notifier) {
+  FutureOr<PaginationState<ChatJoining>> runNotifierBuild(
+    covariant ChatRoomInvitationsNotifier notifier,
+  ) {
     return notifier.build(account, roomId);
   }
 
   @override
-  Override overrideWith(ChatRoomNotifier Function() create) {
+  Override overrideWith(ChatRoomInvitationsNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: ChatRoomNotifierProvider._internal(
+      override: ChatRoomInvitationsNotifierProvider._internal(
         () =>
             create()
               ..account = account
@@ -136,14 +144,17 @@ class ChatRoomNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ChatRoomNotifier, ChatRoom>
+  AutoDisposeAsyncNotifierProviderElement<
+    ChatRoomInvitationsNotifier,
+    PaginationState<ChatJoining>
+  >
   createElement() {
-    return _ChatRoomNotifierProviderElement(this);
+    return _ChatRoomInvitationsNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ChatRoomNotifierProvider &&
+    return other is ChatRoomInvitationsNotifierProvider &&
         other.account == account &&
         other.roomId == roomId;
   }
@@ -160,7 +171,8 @@ class ChatRoomNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ChatRoomNotifierRef on AutoDisposeAsyncNotifierProviderRef<ChatRoom> {
+mixin ChatRoomInvitationsNotifierRef
+    on AutoDisposeAsyncNotifierProviderRef<PaginationState<ChatJoining>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -168,15 +180,20 @@ mixin ChatRoomNotifierRef on AutoDisposeAsyncNotifierProviderRef<ChatRoom> {
   String get roomId;
 }
 
-class _ChatRoomNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ChatRoomNotifier, ChatRoom>
-    with ChatRoomNotifierRef {
-  _ChatRoomNotifierProviderElement(super.provider);
+class _ChatRoomInvitationsNotifierProviderElement
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ChatRoomInvitationsNotifier,
+          PaginationState<ChatJoining>
+        >
+    with ChatRoomInvitationsNotifierRef {
+  _ChatRoomInvitationsNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as ChatRoomNotifierProvider).account;
+  Account get account =>
+      (origin as ChatRoomInvitationsNotifierProvider).account;
   @override
-  String get roomId => (origin as ChatRoomNotifierProvider).roomId;
+  String get roomId => (origin as ChatRoomInvitationsNotifierProvider).roomId;
 }
 
 // ignore_for_file: type=lint

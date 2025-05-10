@@ -10,10 +10,36 @@ part 'chat_room_notifier_provider.g.dart';
 class ChatRoomNotifier extends _$ChatRoomNotifier {
   @override
   FutureOr<ChatRoom> build(Account account, String roomId) {
-    return ref
-        .watch(misskeyProvider(account))
-        .chat
-        .rooms
-        .show(ChatRoomsShowRequest(roomId: roomId));
+    return _misskey.chat.rooms.show(ChatRoomsShowRequest(roomId: roomId));
+  }
+
+  Misskey get _misskey => ref.read(misskeyProvider(account));
+
+  Future<void> updateRoom({String? name, String? description}) async {
+    final room = await _misskey.chat.rooms.update(
+      ChatRoomsUpdateRequest(
+        roomId: roomId,
+        name: name,
+        description: description,
+      ),
+    );
+    state = AsyncValue.data(room);
+  }
+
+  Future<void> delete() async {
+    await _misskey.chat.rooms.delete(ChatRoomsDeleteRequest(roomId: roomId));
+  }
+
+  Future<void> mute(bool mute) async {
+    await _misskey.chat.rooms.mute(
+      ChatRoomsMuteRequest(roomId: roomId, mute: mute),
+    );
+    if (state.valueOrNull case final value?) {
+      state = AsyncValue.data(value.copyWith(isMuted: mute));
+    }
+  }
+
+  Future<void> leave() async {
+    await _misskey.chat.rooms.leave(ChatRoomsLeaveRequest(roomId: roomId));
   }
 }
