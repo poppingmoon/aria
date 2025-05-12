@@ -58,7 +58,7 @@ class ErrorMessage extends HookConsumerWidget {
         ],
         'PERMISSION_DENIED' => [
           t.misskey.permissionDeniedError,
-          t.misskey.permissionDeniedErrorDescription,
+          t.aria.permissionDeniedErrorDescription,
         ],
         _ when error.code.startsWith('TOO_MANY') => [
           t.misskey.youCannotCreateAnymore,

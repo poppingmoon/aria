@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/chat_invitations_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../widget/paginated_list_view.dart';
+import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_sheet.dart';
@@ -25,6 +28,30 @@ class ChatInvitations extends ConsumerWidget {
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
+
+    if (invitations.error case MisskeyException(code: 'PERMISSION_DENIED')) {
+      return RefreshIndicator(
+        onRefresh:
+            () => ref.refresh(chatInvitationsNotifierProvider(account).future),
+        child: LayoutBuilder(
+          builder:
+              (context, constraint) => SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: SizedBox(
+                  height: constraint.maxHeight,
+                  child: Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.all(16.0),
+                      child: PermissionDeniedErrorWidget(account: account),
+                    ),
+                  ),
+                ),
+              ),
+        ),
+      );
+    }
 
     return PaginatedListView(
       paginationState: invitations,

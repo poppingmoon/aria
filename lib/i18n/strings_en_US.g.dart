@@ -186,6 +186,7 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: '.'),
 	]);
 	String get pasteResponseBelow => 'Paste the response below.';
+	String get permissionDeniedErrorDescription => 'The access token does not have the permission to perform this action. Please login again.';
 	String get pinToEmojiPicker => 'Pin to emoji picker';
 	String get playAudio => 'Play audio';
 	String get playVideo => 'Play video';

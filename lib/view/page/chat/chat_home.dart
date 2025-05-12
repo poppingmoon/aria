@@ -14,6 +14,7 @@ import '../../../provider/streaming/incoming_message_provider.dart';
 import '../../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/mfm.dart';
+import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
@@ -81,6 +82,24 @@ class ChatHome extends HookConsumerWidget {
                     ),
                 itemCount: history.length,
               ),
+        AsyncValue(error: MisskeyException(code: 'PERMISSION_DENIED')) =>
+          LayoutBuilder(
+            builder:
+                (context, constraint) => SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: SizedBox(
+                    height: constraint.maxHeight,
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        padding: const EdgeInsets.all(16.0),
+                        child: PermissionDeniedErrorWidget(account: account),
+                      ),
+                    ),
+                  ),
+                ),
+          ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Center(
