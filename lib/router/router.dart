@@ -124,7 +124,8 @@ GoRouter router(Ref ref) {
       ),
       GoRoute(
         path: '/login',
-        builder: (_, _) => const LoginPage(),
+        builder:
+            (_, state) => LoginPage(query: state.uri.queryParameters['query']),
         routes: [
           GoRoute(
             path: 'authenticate',
