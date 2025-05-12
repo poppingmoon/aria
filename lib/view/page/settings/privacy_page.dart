@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/account_settings_scaffold.dart';
@@ -23,6 +24,8 @@ class PrivacyPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return AccountSettingsScaffold(
       account: account,
@@ -224,6 +227,63 @@ class PrivacyPage extends ConsumerWidget {
               ),
             ),
           ],
+          if (i?.canChat != null) ...[
+            const Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(width: maxContentWidth, child: Divider()),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.misskey.chat_.chatAllowedUsers),
+                  subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.chat_.chatAllowedUsers),
+                      header: Card.filled(
+                        color: colors.infoBg,
+                        margin: EdgeInsets.zero,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            t.misskey.chat_.chatAllowedUsers_note,
+                            style: TextStyle(color: colors.infoFg),
+                          ),
+                        ),
+                      ),
+                      values: ChatScope.values,
+                      initialValue: i?.chatScope,
+                      itemBuilder:
+                          (context, chatScope) => ListTile(
+                            title: _ChatScopeWidget(chatScope: chatScope),
+                          ),
+                    );
+                    if (!context.mounted) return;
+                    if (result != null) {
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setChatScope(result),
+                      );
+                    }
+                  },
+                ),
+              ),
+            ),
+          ],
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: SizedBox(width: maxContentWidth, child: Divider()),
+            ),
+          ),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -433,5 +493,23 @@ class PrivacyPage extends ConsumerWidget {
       ),
       selectedDestination: AccountSettingsDestination.privacy,
     );
+  }
+}
+
+class _ChatScopeWidget extends StatelessWidget {
+  const _ChatScopeWidget({this.chatScope});
+
+  final ChatScope? chatScope;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(switch (chatScope) {
+      ChatScope.everyone => t.misskey.chat_.chatAllowedUsers_.everyone,
+      ChatScope.followers => t.misskey.chat_.chatAllowedUsers_.followers,
+      ChatScope.following => t.misskey.chat_.chatAllowedUsers_.following,
+      ChatScope.mutual => t.misskey.chat_.chatAllowedUsers_.mutual,
+      ChatScope.none => t.misskey.chat_.chatAllowedUsers_.none,
+      null => t.misskey.unknown,
+    });
   }
 }
