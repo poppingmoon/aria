@@ -7,7 +7,7 @@ part of 'message_opened_app_notifier_provider.dart';
 // **************************************************************************
 
 String _$messageOpenedAppNotifierHash() =>
-    r'b0a39353d2e0f5ffc225503cf3995e77abd56ab7';
+    r'd0392e9ceef2a4428e28f2195666c71cfb742e6d';
 
 /// See also [MessageOpenedAppNotifier].
 @ProviderFor(MessageOpenedAppNotifier)

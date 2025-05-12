@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -218,277 +217,301 @@ class Aria extends HookConsumerWidget {
             await LocaleSettings.useDeviceLocale();
           }
 
-          final title = switch (notification.body?.type) {
-            NotificationType.follow => t.misskey.notification_.youWereFollowed,
-            NotificationType.mention => t.misskey.notification_.youGotMention(
-              name: notification.body?.user?.nameOrUsername ?? '',
-            ),
-            NotificationType.reply => t.misskey.notification_.youGotReply(
-              name: notification.body?.user?.nameOrUsername ?? '',
-            ),
-            NotificationType.renote => t.misskey.notification_.youRenoted(
-              name: notification.body?.user?.nameOrUsername ?? '',
-            ),
-            NotificationType.quote => t.misskey.notification_.youGotQuote(
-              name: notification.body?.user?.nameOrUsername ?? '',
-            ),
-            NotificationType.note => t.misskey.notification_.newNote,
-            NotificationType.reaction => [
-              notification.body?.reaction?.split('@')[0].replaceAll(':', ''),
-              notification.body?.user?.nameOrUsername,
-            ].nonNulls.join(' '),
-            NotificationType.receiveFollowRequest =>
-              t.misskey.notification_.youReceivedFollowRequest,
-            NotificationType.followRequestAccepted =>
-              t.misskey.notification_.yourFollowRequestAccepted,
-            NotificationType.achievementEarned =>
-              t.misskey.notification_.achievementEarned,
-            NotificationType.login => t.misskey.notification_.login,
-            NotificationType.exportCompleted =>
-              t.misskey.notification_.exportOfXCompleted(
-                x: switch (notification.body?.exportedEntity) {
-                  UserExportableEntities.antenna => t.misskey.antennas,
-                  UserExportableEntities.blocking => t.misskey.blockedUsers,
-                  UserExportableEntities.clip => t.misskey.clips,
-                  UserExportableEntities.customEmoji => t.misskey.customEmojis,
-                  UserExportableEntities.favorite => t.misskey.favorites,
-                  UserExportableEntities.following => t.misskey.following,
-                  UserExportableEntities.muting => t.misskey.mutedUsers,
-                  UserExportableEntities.note => t.misskey.notes,
-                  UserExportableEntities.userList => t.misskey.lists,
-                  null => '',
-                },
+          final title = switch (notification) {
+            NotificationPushNotification(:final body) => switch (body.type) {
+              NotificationType.follow =>
+                t.misskey.notification_.youWereFollowed,
+              NotificationType.mention => t.misskey.notification_.youGotMention(
+                name: body.user?.nameOrUsername ?? '',
               ),
-            NotificationType.pollEnded => t.misskey.notification_.pollEnded,
-            NotificationType.roleAssigned =>
-              t.misskey.notification_.roleAssigned,
-            NotificationType.chatRoomInvitationReceived =>
-              t.misskey.notification_.chatRoomInvitationReceived,
-            NotificationType.createToken => t.misskey.notification_.createToken,
-            NotificationType.scheduleNote ||
-            NotificationType.scheduledNoteError => t.aria.scheduledNoteError,
-            NotificationType.noteScheduled => t.aria.noteScheduled,
-            NotificationType.scheduledNotePosted => t.aria.scheduledNotePosted,
-            NotificationType.app =>
-              notification.body?.header ?? notification.body?.body,
-            NotificationType.test => t.misskey.notification_.testNotification,
-            NotificationType.edited ||
-            NotificationType.reactionGrouped ||
-            NotificationType.renoteGrouped ||
-            NotificationType.noteGrouped ||
-            NotificationType.pollVote ||
-            NotificationType.groupInvited ||
-            null => null,
-          };
-          final body = switch (notification.body?.type) {
-            NotificationType.follow ||
-            NotificationType.receiveFollowRequest ||
-            NotificationType.followRequestAccepted =>
-              notification.body?.user?.nameOrUsername,
-            NotificationType.mention ||
-            NotificationType.reply ||
-            NotificationType.renote ||
-            NotificationType.quote ||
-            NotificationType.note ||
-            NotificationType.reaction ||
-            NotificationType.pollEnded => notification.body?.note?.text,
-            NotificationType.achievementEarned => switch (notification
-                .body
-                ?.achievement) {
-              'notes1' => t.misskey.achievements_.types_.notes1_.title,
-              'notes10' => t.misskey.achievements_.types_.notes10_.title,
-              'notes100' => t.misskey.achievements_.types_.notes100_.title,
-              'notes500' => t.misskey.achievements_.types_.notes500_.title,
-              'notes1000' => t.misskey.achievements_.types_.notes1000_.title,
-              'notes5000' => t.misskey.achievements_.types_.notes5000_.title,
-              'notes10000' => t.misskey.achievements_.types_.notes10000_.title,
-              'notes20000' => t.misskey.achievements_.types_.notes20000_.title,
-              'notes30000' => t.misskey.achievements_.types_.notes30000_.title,
-              'notes40000' => t.misskey.achievements_.types_.notes40000_.title,
-              'notes50000' => t.misskey.achievements_.types_.notes50000_.title,
-              'notes60000' => t.misskey.achievements_.types_.notes60000_.title,
-              'notes70000' => t.misskey.achievements_.types_.notes70000_.title,
-              'notes80000' => t.misskey.achievements_.types_.notes80000_.title,
-              'notes90000' => t.misskey.achievements_.types_.notes90000_.title,
-              'notes100000' =>
-                t.misskey.achievements_.types_.notes100000_.title,
-              'login3' => t.misskey.achievements_.types_.login3_.title,
-              'login7' => t.misskey.achievements_.types_.login7_.title,
-              'login15' => t.misskey.achievements_.types_.login15_.title,
-              'login30' => t.misskey.achievements_.types_.login30_.title,
-              'login60' => t.misskey.achievements_.types_.login60_.title,
-              'login100' => t.misskey.achievements_.types_.login100_.title,
-              'login200' => t.misskey.achievements_.types_.login200_.title,
-              'login300' => t.misskey.achievements_.types_.login300_.title,
-              'login400' => t.misskey.achievements_.types_.login400_.title,
-              'login500' => t.misskey.achievements_.types_.login500_.title,
-              'login600' => t.misskey.achievements_.types_.login600_.title,
-              'login700' => t.misskey.achievements_.types_.login700_.title,
-              'login800' => t.misskey.achievements_.types_.login800_.title,
-              'login900' => t.misskey.achievements_.types_.login900_.title,
-              'login1000' => t.misskey.achievements_.types_.login1000_.title,
-              'noteClipped1' =>
-                t.misskey.achievements_.types_.noteClipped1_.title,
-              'noteFavorited1' =>
-                t.misskey.achievements_.types_.noteFavorited1_.title,
-              'myNoteFavorited1' =>
-                t.misskey.achievements_.types_.myNoteFavorited1_.title,
-              'profileFilled' =>
-                t.misskey.achievements_.types_.profileFilled_.title,
-              'markedAsCat' =>
-                t.misskey.achievements_.types_.markedAsCat_.title,
-              'following1' => t.misskey.achievements_.types_.following1_.title,
-              'following10' =>
-                t.misskey.achievements_.types_.following10_.title,
-              'following50' =>
-                t.misskey.achievements_.types_.following50_.title,
-              'following100' =>
-                t.misskey.achievements_.types_.following100_.title,
-              'following300' =>
-                t.misskey.achievements_.types_.following300_.title,
-              'followers1' => t.misskey.achievements_.types_.followers1_.title,
-              'followers10' =>
-                t.misskey.achievements_.types_.followers10_.title,
-              'followers50' =>
-                t.misskey.achievements_.types_.followers50_.title,
-              'followers100' =>
-                t.misskey.achievements_.types_.followers100_.title,
-              'followers300' =>
-                t.misskey.achievements_.types_.followers300_.title,
-              'followers500' =>
-                t.misskey.achievements_.types_.followers500_.title,
-              'followers1000' =>
-                t.misskey.achievements_.types_.followers1000_.title,
-              'collectAchievements30' =>
-                t.misskey.achievements_.types_.collectAchievements30_.title,
-              'viewAchievements3min' =>
-                t.misskey.achievements_.types_.viewAchievements3min_.title,
-              'iLoveMisskey' =>
-                t.misskey.achievements_.types_.iLoveMisskey_.title,
-              'foundTreasure' =>
-                t.misskey.achievements_.types_.foundTreasure_.title,
-              'client30min' =>
-                t.misskey.achievements_.types_.client30min_.title,
-              'client60min' =>
-                t.misskey.achievements_.types_.client60min_.title,
-              'noteDeletedWithin1min' =>
-                t.misskey.achievements_.types_.noteDeletedWithin1min_.title,
-              'postedAtLateNight' =>
-                t.misskey.achievements_.types_.postedAtLateNight_.title,
-              'postedAt0min0sec' =>
-                t.misskey.achievements_.types_.postedAt0min0sec_.title,
-              'selfQuote' => t.misskey.achievements_.types_.selfQuote_.title,
-              'htl20npm' => t.misskey.achievements_.types_.htl20npm_.title,
-              'viewInstanceChart' =>
-                t.misskey.achievements_.types_.viewInstanceChart_.title,
-              'outputHelloWorldOnScratchpad' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .outputHelloWorldOnScratchpad_
-                    .title,
-              'open3windows' =>
-                t.misskey.achievements_.types_.open3windows_.title,
-              'driveFolderCircularReference' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .driveFolderCircularReference_
-                    .title,
-              'reactWithoutRead' =>
-                t.misskey.achievements_.types_.reactWithoutRead_.title,
-              'clickedClickHere' =>
-                t.misskey.achievements_.types_.clickedClickHere_.title,
-              'justPlainLucky' =>
-                t.misskey.achievements_.types_.justPlainLucky_.title,
-              'setNameToSyuilo' =>
-                t.misskey.achievements_.types_.setNameToSyuilo_.title,
-              'passedSinceAccountCreated1' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .passedSinceAccountCreated1_
-                    .title,
-              'passedSinceAccountCreated2' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .passedSinceAccountCreated2_
-                    .title,
-              'passedSinceAccountCreated3' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .passedSinceAccountCreated3_
-                    .title,
-              'loggedInOnBirthday' =>
-                t.misskey.achievements_.types_.loggedInOnBirthday_.title,
-              'loggedInOnNewYearsDay' =>
-                t.misskey.achievements_.types_.loggedInOnNewYearsDay_.title,
-              'cookieClicked' =>
-                t.misskey.achievements_.types_.cookieClicked_.title,
-              'brainDiver' => t.misskey.achievements_.types_.brainDiver_.title,
-              'smashTestNotificationButton' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .smashTestNotificationButton_
-                    .title,
-              'tutorialCompleted' =>
-                t.misskey.achievements_.types_.tutorialCompleted_.title,
-              'bubbleGameExplodingHead' =>
-                t.misskey.achievements_.types_.bubbleGameExplodingHead_.title,
-              'bubbleGameDoubleExplodingHead' =>
-                t
-                    .misskey
-                    .achievements_
-                    .types_
-                    .bubbleGameDoubleExplodingHead_
-                    .title,
-              _ => null,
+              NotificationType.reply => t.misskey.notification_.youGotReply(
+                name: body.user?.nameOrUsername ?? '',
+              ),
+              NotificationType.renote => t.misskey.notification_.youRenoted(
+                name: body.user?.nameOrUsername ?? '',
+              ),
+              NotificationType.quote => t.misskey.notification_.youGotQuote(
+                name: body.user?.nameOrUsername ?? '',
+              ),
+              NotificationType.note => t.misskey.notification_.newNote,
+              NotificationType.reaction => [
+                body.reaction?.split('@')[0].replaceAll(':', ''),
+                body.user?.nameOrUsername,
+              ].nonNulls.join(' '),
+              NotificationType.receiveFollowRequest =>
+                t.misskey.notification_.youReceivedFollowRequest,
+              NotificationType.followRequestAccepted =>
+                t.misskey.notification_.yourFollowRequestAccepted,
+              NotificationType.achievementEarned =>
+                t.misskey.notification_.achievementEarned,
+              NotificationType.login => t.misskey.notification_.login,
+              NotificationType.exportCompleted => t.misskey.notification_
+                  .exportOfXCompleted(
+                    x: switch (body.exportedEntity) {
+                      UserExportableEntities.antenna => t.misskey.antennas,
+                      UserExportableEntities.blocking => t.misskey.blockedUsers,
+                      UserExportableEntities.clip => t.misskey.clips,
+                      UserExportableEntities.customEmoji =>
+                        t.misskey.customEmojis,
+                      UserExportableEntities.favorite => t.misskey.favorites,
+                      UserExportableEntities.following => t.misskey.following,
+                      UserExportableEntities.muting => t.misskey.mutedUsers,
+                      UserExportableEntities.note => t.misskey.notes,
+                      UserExportableEntities.userList => t.misskey.lists,
+                      null => '',
+                    },
+                  ),
+              NotificationType.pollEnded => t.misskey.notification_.pollEnded,
+              NotificationType.roleAssigned =>
+                t.misskey.notification_.roleAssigned,
+              NotificationType.chatRoomInvitationReceived =>
+                t.misskey.notification_.chatRoomInvitationReceived,
+              NotificationType.createToken =>
+                t.misskey.notification_.createToken,
+              NotificationType.scheduleNote ||
+              NotificationType.scheduledNoteError => t.aria.scheduledNoteError,
+              NotificationType.noteScheduled => t.aria.noteScheduled,
+              NotificationType.scheduledNotePosted =>
+                t.aria.scheduledNotePosted,
+              NotificationType.app => body.header ?? body.body,
+              NotificationType.test => t.misskey.notification_.testNotification,
+              NotificationType.edited ||
+              NotificationType.reactionGrouped ||
+              NotificationType.renoteGrouped ||
+              NotificationType.noteGrouped ||
+              NotificationType.pollVote ||
+              NotificationType.groupInvited ||
+              null => null,
             },
-            NotificationType.roleAssigned => notification.body?.role?.name,
-            NotificationType.chatRoomInvitationReceived =>
-              notification.body?.invitation?.room?.name,
-            NotificationType.createToken => t.misskey.notification_
-                .createTokenDescription(text: t.misskey.manageAccessTokens),
-            NotificationType.scheduleNote => notification.body?.errorType,
-            NotificationType.noteScheduled =>
-              notification.body?.draft?.data.text,
-            NotificationType.scheduledNotePosted =>
-              notification.body?.note?.text,
-            NotificationType.scheduledNoteError =>
-              notification.body?.draft?.reason,
-            NotificationType.app =>
-              notification.body?.header != null
-                  ? notification.body?.body
-                  : null,
-            NotificationType.test =>
-              t.misskey.notification_.notificationWillBeDisplayedLikeThis,
-            NotificationType.edited ||
-            NotificationType.exportCompleted ||
-            NotificationType.login ||
-            NotificationType.reactionGrouped ||
-            NotificationType.renoteGrouped ||
-            NotificationType.noteGrouped ||
-            NotificationType.pollVote ||
-            NotificationType.groupInvited ||
-            null => null,
+            ReadAllNotificationsPushNotification() => null,
+            NewChatMessagePushNotification(:final body) =>
+              body.toRoom != null
+                  ? '${body.toRoom?.name}: ${body.fromUser?.nameOrUsername}'
+                  : body.fromUser?.nameOrUsername,
+          };
+          final body = switch (notification) {
+            NotificationPushNotification(:final body) => switch (body.type) {
+              NotificationType.follow ||
+              NotificationType.receiveFollowRequest ||
+              NotificationType
+                  .followRequestAccepted => body.user?.nameOrUsername,
+              NotificationType.mention ||
+              NotificationType.reply ||
+              NotificationType.renote ||
+              NotificationType.quote ||
+              NotificationType.note ||
+              NotificationType.reaction ||
+              NotificationType.pollEnded => body.note?.text,
+              NotificationType.achievementEarned => switch (body.achievement) {
+                'notes1' => t.misskey.achievements_.types_.notes1_.title,
+                'notes10' => t.misskey.achievements_.types_.notes10_.title,
+                'notes100' => t.misskey.achievements_.types_.notes100_.title,
+                'notes500' => t.misskey.achievements_.types_.notes500_.title,
+                'notes1000' => t.misskey.achievements_.types_.notes1000_.title,
+                'notes5000' => t.misskey.achievements_.types_.notes5000_.title,
+                'notes10000' =>
+                  t.misskey.achievements_.types_.notes10000_.title,
+                'notes20000' =>
+                  t.misskey.achievements_.types_.notes20000_.title,
+                'notes30000' =>
+                  t.misskey.achievements_.types_.notes30000_.title,
+                'notes40000' =>
+                  t.misskey.achievements_.types_.notes40000_.title,
+                'notes50000' =>
+                  t.misskey.achievements_.types_.notes50000_.title,
+                'notes60000' =>
+                  t.misskey.achievements_.types_.notes60000_.title,
+                'notes70000' =>
+                  t.misskey.achievements_.types_.notes70000_.title,
+                'notes80000' =>
+                  t.misskey.achievements_.types_.notes80000_.title,
+                'notes90000' =>
+                  t.misskey.achievements_.types_.notes90000_.title,
+                'notes100000' =>
+                  t.misskey.achievements_.types_.notes100000_.title,
+                'login3' => t.misskey.achievements_.types_.login3_.title,
+                'login7' => t.misskey.achievements_.types_.login7_.title,
+                'login15' => t.misskey.achievements_.types_.login15_.title,
+                'login30' => t.misskey.achievements_.types_.login30_.title,
+                'login60' => t.misskey.achievements_.types_.login60_.title,
+                'login100' => t.misskey.achievements_.types_.login100_.title,
+                'login200' => t.misskey.achievements_.types_.login200_.title,
+                'login300' => t.misskey.achievements_.types_.login300_.title,
+                'login400' => t.misskey.achievements_.types_.login400_.title,
+                'login500' => t.misskey.achievements_.types_.login500_.title,
+                'login600' => t.misskey.achievements_.types_.login600_.title,
+                'login700' => t.misskey.achievements_.types_.login700_.title,
+                'login800' => t.misskey.achievements_.types_.login800_.title,
+                'login900' => t.misskey.achievements_.types_.login900_.title,
+                'login1000' => t.misskey.achievements_.types_.login1000_.title,
+                'noteClipped1' =>
+                  t.misskey.achievements_.types_.noteClipped1_.title,
+                'noteFavorited1' =>
+                  t.misskey.achievements_.types_.noteFavorited1_.title,
+                'myNoteFavorited1' =>
+                  t.misskey.achievements_.types_.myNoteFavorited1_.title,
+                'profileFilled' =>
+                  t.misskey.achievements_.types_.profileFilled_.title,
+                'markedAsCat' =>
+                  t.misskey.achievements_.types_.markedAsCat_.title,
+                'following1' =>
+                  t.misskey.achievements_.types_.following1_.title,
+                'following10' =>
+                  t.misskey.achievements_.types_.following10_.title,
+                'following50' =>
+                  t.misskey.achievements_.types_.following50_.title,
+                'following100' =>
+                  t.misskey.achievements_.types_.following100_.title,
+                'following300' =>
+                  t.misskey.achievements_.types_.following300_.title,
+                'followers1' =>
+                  t.misskey.achievements_.types_.followers1_.title,
+                'followers10' =>
+                  t.misskey.achievements_.types_.followers10_.title,
+                'followers50' =>
+                  t.misskey.achievements_.types_.followers50_.title,
+                'followers100' =>
+                  t.misskey.achievements_.types_.followers100_.title,
+                'followers300' =>
+                  t.misskey.achievements_.types_.followers300_.title,
+                'followers500' =>
+                  t.misskey.achievements_.types_.followers500_.title,
+                'followers1000' =>
+                  t.misskey.achievements_.types_.followers1000_.title,
+                'collectAchievements30' =>
+                  t.misskey.achievements_.types_.collectAchievements30_.title,
+                'viewAchievements3min' =>
+                  t.misskey.achievements_.types_.viewAchievements3min_.title,
+                'iLoveMisskey' =>
+                  t.misskey.achievements_.types_.iLoveMisskey_.title,
+                'foundTreasure' =>
+                  t.misskey.achievements_.types_.foundTreasure_.title,
+                'client30min' =>
+                  t.misskey.achievements_.types_.client30min_.title,
+                'client60min' =>
+                  t.misskey.achievements_.types_.client60min_.title,
+                'noteDeletedWithin1min' =>
+                  t.misskey.achievements_.types_.noteDeletedWithin1min_.title,
+                'postedAtLateNight' =>
+                  t.misskey.achievements_.types_.postedAtLateNight_.title,
+                'postedAt0min0sec' =>
+                  t.misskey.achievements_.types_.postedAt0min0sec_.title,
+                'selfQuote' => t.misskey.achievements_.types_.selfQuote_.title,
+                'htl20npm' => t.misskey.achievements_.types_.htl20npm_.title,
+                'viewInstanceChart' =>
+                  t.misskey.achievements_.types_.viewInstanceChart_.title,
+                'outputHelloWorldOnScratchpad' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .outputHelloWorldOnScratchpad_
+                      .title,
+                'open3windows' =>
+                  t.misskey.achievements_.types_.open3windows_.title,
+                'driveFolderCircularReference' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .driveFolderCircularReference_
+                      .title,
+                'reactWithoutRead' =>
+                  t.misskey.achievements_.types_.reactWithoutRead_.title,
+                'clickedClickHere' =>
+                  t.misskey.achievements_.types_.clickedClickHere_.title,
+                'justPlainLucky' =>
+                  t.misskey.achievements_.types_.justPlainLucky_.title,
+                'setNameToSyuilo' =>
+                  t.misskey.achievements_.types_.setNameToSyuilo_.title,
+                'passedSinceAccountCreated1' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .passedSinceAccountCreated1_
+                      .title,
+                'passedSinceAccountCreated2' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .passedSinceAccountCreated2_
+                      .title,
+                'passedSinceAccountCreated3' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .passedSinceAccountCreated3_
+                      .title,
+                'loggedInOnBirthday' =>
+                  t.misskey.achievements_.types_.loggedInOnBirthday_.title,
+                'loggedInOnNewYearsDay' =>
+                  t.misskey.achievements_.types_.loggedInOnNewYearsDay_.title,
+                'cookieClicked' =>
+                  t.misskey.achievements_.types_.cookieClicked_.title,
+                'brainDiver' =>
+                  t.misskey.achievements_.types_.brainDiver_.title,
+                'smashTestNotificationButton' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .smashTestNotificationButton_
+                      .title,
+                'tutorialCompleted' =>
+                  t.misskey.achievements_.types_.tutorialCompleted_.title,
+                'bubbleGameExplodingHead' =>
+                  t.misskey.achievements_.types_.bubbleGameExplodingHead_.title,
+                'bubbleGameDoubleExplodingHead' =>
+                  t
+                      .misskey
+                      .achievements_
+                      .types_
+                      .bubbleGameDoubleExplodingHead_
+                      .title,
+                _ => null,
+              },
+              NotificationType.roleAssigned => body.role?.name,
+              NotificationType.chatRoomInvitationReceived =>
+                body.invitation?.room?.name,
+              NotificationType.createToken => t.misskey.notification_
+                  .createTokenDescription(text: t.misskey.manageAccessTokens),
+              NotificationType.scheduleNote => body.errorType,
+              NotificationType.noteScheduled => body.draft?.data.text,
+              NotificationType.scheduledNotePosted => body.note?.text,
+              NotificationType.scheduledNoteError => body.draft?.reason,
+              NotificationType.app => body.header != null ? body.body : null,
+              NotificationType.test =>
+                t.misskey.notification_.notificationWillBeDisplayedLikeThis,
+              NotificationType.edited ||
+              NotificationType.exportCompleted ||
+              NotificationType.login ||
+              NotificationType.reactionGrouped ||
+              NotificationType.renoteGrouped ||
+              NotificationType.noteGrouped ||
+              NotificationType.pollVote ||
+              NotificationType.groupInvited ||
+              null => null,
+            },
+            ReadAllNotificationsPushNotification() => null,
+            NewChatMessagePushNotification(:final body) => body.text,
           };
 
-          File? file;
-          if (notification.body?.user?.avatarUrl ?? notification.body?.icon
-              case final url?) {
-            file = await ref
-                .read(cacheManagerProvider)
-                .getSingleFile(url.toString());
-          }
+          final url = switch (notification) {
+            NotificationPushNotification(:final body) =>
+              body.user?.avatarUrl ?? body.icon,
+            NewChatMessagePushNotification(:final body) =>
+              body.fromUser?.avatarUrl,
+            _ => null,
+          };
+          final file =
+              url != null
+                  ? await ref
+                      .read(cacheManagerProvider)
+                      .getSingleFile(url.toString())
+                  : null;
 
           await flutterLocalNotificationsPlugin.show(
             DateTime.now().millisecondsSinceEpoch & 0x7fffffff,
@@ -528,7 +551,9 @@ class Aria extends HookConsumerWidget {
                 setAsGroupSummary: true,
               ),
             ),
-            payload: jsonEncode(PushNotification(userId: notification.userId)),
+            payload: jsonEncode(
+              ReadAllNotificationsPushNotification(userId: notification.userId),
+            ),
           );
         },
       );
