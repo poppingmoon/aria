@@ -262,6 +262,7 @@ class PrivacyPage extends ConsumerWidget {
                   subtitle: NoteVisibilityWidget(
                     visibility: settings.defaultNoteVisibility,
                   ),
+                  trailing: const Icon(Icons.navigate_next),
                   onTap: () async {
                     final result = await showRadioDialog(
                       context,
@@ -340,6 +341,7 @@ class PrivacyPage extends ConsumerWidget {
                   subtitle: NoteVisibilityWidget(
                     visibility: settings.defaultRenoteVisibility,
                   ),
+                  trailing: const Icon(Icons.navigate_next),
                   onTap: () async {
                     final result = await showRadioDialog(
                       context,
