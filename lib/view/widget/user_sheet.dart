@@ -171,6 +171,17 @@ class UserSheet extends ConsumerWidget {
                             context.push('/$account/post');
                           },
                         ),
+                      if (i != null &&
+                          userId != i.id &&
+                          (i.canChat ?? false) &&
+                          (user.canChat ?? false) &&
+                          user.host == null)
+                        ListTile(
+                          leading: const Icon(Icons.message),
+                          title: Text(t.misskey.chat_.chatWithThisUser),
+                          onTap:
+                              () => context.push('/$account/chat/user/$userId'),
+                        ),
                       if (switchCandidateAccounts.isNotEmpty)
                         ListTile(
                           leading: const Icon(Icons.switch_account),
