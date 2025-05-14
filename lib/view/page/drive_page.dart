@@ -450,6 +450,7 @@ class DrivePage extends HookConsumerWidget {
                           : null,
                 ),
               ),
+              const SliverToBoxAdapter(child: SizedBox(height: 120.0)),
             ],
           ),
         ),
