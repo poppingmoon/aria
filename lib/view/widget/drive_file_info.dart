@@ -287,6 +287,7 @@ class DriveFileInfo extends ConsumerWidget {
               ],
             ),
           ),
+          const SizedBox(height: 120.0),
         ],
       ),
     );
