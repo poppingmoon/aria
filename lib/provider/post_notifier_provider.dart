@@ -211,6 +211,7 @@ class PostNotifier extends _$PostNotifier {
                   text: request.text,
                   fileIds: request.fileIds,
                   channelId: request.channelId,
+                  localOnly: request.localOnly,
                   poll: request.poll,
                   scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
                 ),
