@@ -46,6 +46,7 @@ import 'provider/window_size_repository_provider.dart';
 import 'repository/window_position_repository.dart';
 import 'repository/window_size_repository.dart';
 import 'router/router.dart';
+import 'view/dialog/error_message_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -154,13 +155,12 @@ class Aria extends HookConsumerWidget {
             (endpoint, instance) => ref
                 .read(unifiedPushEndpointNotifierProvider(instance).notifier)
                 .updateEndpoint(endpoint),
-        onRegistrationFailed:
-            (reason, instance) =>
-                ref
-                    .read(
-                      unifiedPushEndpointNotifierProvider(instance).notifier,
-                    )
-                    .remove(),
+        onRegistrationFailed: (reason, instance) {
+          ref
+              .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+              .remove();
+          showErrorMessageDialog(ref.context, error: reason);
+        },
         onUnregistered:
             (instance) =>
                 ref
