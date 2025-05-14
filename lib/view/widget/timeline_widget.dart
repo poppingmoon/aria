@@ -362,11 +362,14 @@ class TimelineWidget extends HookConsumerWidget {
           const ModalBarrier(color: Colors.black54),
         ...?dialogAnnouncements?.map(
           (announcement) => Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AnnouncementWidget(
-                account: account,
-                announcement: announcement,
+            margin: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 8.0),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: AnnouncementWidget(
+                  account: account,
+                  announcement: announcement,
+                ),
               ),
             ),
           ),
