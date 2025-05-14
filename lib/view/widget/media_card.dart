@@ -149,8 +149,9 @@ class MediaCard extends HookConsumerWidget {
                           child: BlurHash(hash: blurhash),
                         )
                       else
-                        const Positioned.fill(
-                          child: ColoredBox(color: Color(0xff888888)),
+                        const ColoredBox(
+                          color: Color(0xff888888),
+                          child: SizedBox.expand(),
                         ),
                       Text.rich(
                         TextSpan(
