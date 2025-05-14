@@ -4,9 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../constant/max_content_width.dart';
+import '../../extension/note_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/tab_settings.dart';
+import '../../provider/api/children_notes_notifier_provider.dart';
+import '../../provider/api/conversation_notes_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
@@ -159,6 +162,15 @@ class NotePage extends HookConsumerWidget {
           IconButton(
             tooltip: t.misskey.reload,
             onPressed: () async {
+              final appearNoteId = note.isRenote ? note.renoteId : note.id;
+              if (appearNoteId != null) {
+                ref.invalidate(
+                  conversationNotesProvider(account, appearNoteId),
+                );
+                ref.invalidate(
+                  childrenNotesNotifierProvider(account, appearNoteId),
+                );
+              }
               await futureWithDialog(
                 context,
                 ref.read(notesNotifierProvider(account).notifier).show(noteId),

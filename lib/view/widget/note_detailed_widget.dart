@@ -79,13 +79,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
       );
     }
 
-    final children = ref.watch(
-      childrenNotesNotifierProvider(account, appearNote.id),
-    );
     final (
       verticalPadding,
       horizontalPadding,
       tapAction,
+      enableInfiniteScroll,
       doubleTapAction,
       longPressAction,
     ) = ref.watch(
@@ -94,15 +92,43 @@ class NoteDetailedWidget extends HookConsumerWidget {
           settings.noteVerticalPadding,
           settings.noteHorizontalPadding,
           settings.noteTapAction,
+          settings.enableInfiniteScroll,
           settings.noteDoubleTapAction,
           settings.noteLongPressAction,
         ),
       ),
     );
+    final children = ref.watch(
+      childrenNotesNotifierProvider(account, appearNote.id),
+    );
     final conversation =
         appearNote.replyId != null
             ? ref.watch(conversationNotesProvider(account, appearNote.id))
             : null;
+    if (enableInfiniteScroll) {
+      ref.listen(
+        childrenNotesNotifierProvider(
+          account,
+          appearNote.id,
+        ).select((children) => children.valueOrNull),
+        (prev, next) {
+          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
+              ((prev?.isLastLoaded ?? false) &&
+                  (!(next?.isLastLoaded ?? true)))) {
+            if ((next?.items.length ?? 0) < 10) {
+              ref
+                  .read(
+                    childrenNotesNotifierProvider(
+                      account,
+                      appearNote.id,
+                    ).notifier,
+                  )
+                  .loadMore();
+            }
+          }
+        },
+      );
+    }
     final isRenote = note.isRenote;
     final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
