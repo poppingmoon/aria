@@ -37,7 +37,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
 
   Future<Iterable<DriveFile>> _fetchFiles({String? untilId}) {
     return _misskey.drive.files.files(
-      DriveFilesRequest(folderId: folderId, untilId: untilId),
+      DriveFilesRequest(folderId: folderId, untilId: untilId, limit: 30),
     );
   }
 

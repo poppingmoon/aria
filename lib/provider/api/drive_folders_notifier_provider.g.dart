@@ -7,7 +7,7 @@ part of 'drive_folders_notifier_provider.dart';
 // **************************************************************************
 
 String _$driveFoldersNotifierHash() =>
-    r'a36765471c587ad38ae84e2587342cb16870f47b';
+    r'f09699cf4fdee8ab475064df0649339fad36955a';
 
 /// Copied from Dart SDK
 class _SystemHash {

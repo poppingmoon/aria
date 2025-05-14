@@ -35,7 +35,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
 
   Future<List<DriveFolder>> _fetchFolders({String? untilId}) async {
     final response = await _misskey.drive.folders.folders(
-      DriveFoldersRequest(folderId: folderId, untilId: untilId),
+      DriveFoldersRequest(folderId: folderId, untilId: untilId, limit: 30),
     );
     return response.toList();
   }
