@@ -704,7 +704,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'スペースで区切るとAND指定になり、改行で区切るとOR指定になります';
 	@override String get notifyAntenna => '新しいノートを通知する';
 	@override String get withFileAntenna => 'ファイルが添付されたノートのみ';
-	@override String get hideNotesInSensitiveChannel => 'センシティブなチャンネルのノートを非表示';
+	@override String get excludeNotesInSensitiveChannel => 'センシティブなチャンネルのノートを除外';
 	@override String get enableServiceworker => 'ブラウザへのプッシュ通知を有効にする';
 	@override String get antennaUsersDescription => 'ユーザー名を改行で区切って指定します';
 	@override String get caseSensitive => '大文字小文字を区別する';
@@ -1621,6 +1621,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '埋め込み';
+	@override String get settingsMigrating => '設定を移行しています。しばらくお待ちください... (後ほど、設定→その他→旧設定情報を移行 で手動で移行することもできます)';
+	@override String get readonly => '読み取り専用';
+	@override String get goToDeck => 'デッキへ戻る';
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
 	@override late final _TranslationsMisskeySettingsJaJp settings_ = _TranslationsMisskeySettingsJaJp._(_root);
@@ -1757,6 +1760,7 @@ class _TranslationsMisskeyChatJaJp extends TranslationsMisskeyChatEnUs {
 	@override String get muteThisRoom => 'このルームをミュート';
 	@override String get deleteRoom => 'ルームを削除';
 	@override String get chatNotAvailableForThisAccountOrServer => 'このサーバー、またはこのアカウントでチャットは有効化されていません。';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'このサーバー、またはこのアカウントでチャットは読み取り専用となっています。新たに書き込んだり、チャットルームを作成・参加したりすることはできません。';
 	@override String get chatNotAvailableInOtherAccount => '相手のアカウントでチャット機能が使えない状態になっています。';
 	@override String get cannotChatWithTheUser => 'このユーザーとのチャットを開始できません';
 	@override String get cannotChatWithTheUser_description => 'チャットが使えない状態になっているか、相手がチャットを開放していません。';
@@ -2091,6 +2095,8 @@ class _TranslationsMisskeyRoleJaJp extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => 'オンにすると、「みつける」でメンバー一覧が公開されるほか、ロールのタイムラインが利用可能になります。';
 	@override String get displayOrder => '表示順';
 	@override String get descriptionOfDisplayOrder => '数値が大きいほどUI上で先頭に表示されます。';
+	@override String get preserveAssignmentOnMoveAccount => 'アサイン状態を移行先アカウントにも引き継ぐ';
+	@override String get preserveAssignmentOnMoveAccount_description => 'オンにすると、このロールが付与されたアカウントが移行された際に、移行先アカウントにもこのロールが引き継がれるようになります。';
 	@override String get canEditMembersByModerator => 'モデレーターのメンバー編集を許可';
 	@override String get descriptionOfCanEditMembersByModerator => 'オンにすると、管理者に加えてモデレーターもこのロールへユーザーをアサイン/アサイン解除できるようになります。オフにすると管理者のみが行えます。';
 	@override String get priority => '優先度';
@@ -3806,7 +3812,7 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'フォローのインポートを許可';
 	@override String get canImportMuting => 'ミュートのインポートを許可';
 	@override String get canImportUserLists => 'リストのインポートを許可';
-	@override String get canChat => 'チャットを許可';
+	@override String get chatAvailability => 'チャットを許可';
 }
 
 // Path: misskey.role_.condition_

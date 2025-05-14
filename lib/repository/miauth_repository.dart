@@ -41,6 +41,8 @@ const _permissions = [
   Permission.writeClipFavorite,
   Permission.readClipFavorite,
   Permission.writeReportAbuse,
+  Permission.readChat,
+  Permission.writeChat,
 ];
 
 class MiAuthRepository {

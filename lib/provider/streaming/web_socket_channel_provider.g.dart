@@ -6,7 +6,7 @@ part of 'web_socket_channel_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webSocketChannelHash() => r'c927774cbfa8db702af8f6710ba0c7d8ecfc43af';
+String _$webSocketChannelHash() => r'e30b2364f99bb94031a62ae01df616e5e260b12a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,7 @@ class _SystemHash {
 const webSocketChannelProvider = WebSocketChannelFamily();
 
 /// See also [webSocketChannel].
-class WebSocketChannelFamily extends Family<WebSocketChannel> {
+class WebSocketChannelFamily extends Family<(WebSocketChannel, DateTime)> {
   /// See also [webSocketChannel].
   const WebSocketChannelFamily();
 
@@ -66,7 +66,8 @@ class WebSocketChannelFamily extends Family<WebSocketChannel> {
 }
 
 /// See also [webSocketChannel].
-class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
+class WebSocketChannelProvider
+    extends AutoDisposeProvider<(WebSocketChannel, DateTime)> {
   /// See also [webSocketChannel].
   WebSocketChannelProvider(Account account)
     : this._internal(
@@ -97,7 +98,7 @@ class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
 
   @override
   Override overrideWith(
-    WebSocketChannel Function(WebSocketChannelRef provider) create,
+    (WebSocketChannel, DateTime) Function(WebSocketChannelRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -114,7 +115,7 @@ class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
   }
 
   @override
-  AutoDisposeProviderElement<WebSocketChannel> createElement() {
+  AutoDisposeProviderElement<(WebSocketChannel, DateTime)> createElement() {
     return _WebSocketChannelProviderElement(this);
   }
 
@@ -134,13 +135,14 @@ class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin WebSocketChannelRef on AutoDisposeProviderRef<WebSocketChannel> {
+mixin WebSocketChannelRef
+    on AutoDisposeProviderRef<(WebSocketChannel, DateTime)> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _WebSocketChannelProviderElement
-    extends AutoDisposeProviderElement<WebSocketChannel>
+    extends AutoDisposeProviderElement<(WebSocketChannel, DateTime)>
     with WebSocketChannelRef {
   _WebSocketChannelProviderElement(super.provider);
 

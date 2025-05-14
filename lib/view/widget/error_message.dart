@@ -52,6 +52,14 @@ class ErrorMessage extends HookConsumerWidget {
         'SIGNIN_REQUIRED' => [
           t.misskey.thisContentsAreMarkedAsSigninRequiredByAuthor,
         ],
+        'AUTHENTICATION_FAILED' => [
+          t.misskey.tokenRevoked,
+          t.misskey.tokenRevokedDescription,
+        ],
+        'PERMISSION_DENIED' => [
+          t.misskey.permissionDeniedError,
+          t.aria.permissionDeniedErrorDescription,
+        ],
         _ when error.code.startsWith('TOO_MANY') => [
           t.misskey.youCannotCreateAnymore,
           error.message,

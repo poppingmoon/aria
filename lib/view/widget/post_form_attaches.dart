@@ -30,18 +30,25 @@ class PostFormAttaches extends ConsumerWidget {
     required this.account,
     this.noteId,
     this.gallery = false,
+    this.chat = false,
     this.maxCrossAxisExtent = 200.0,
   });
 
   final Account account;
   final String? noteId;
   final bool gallery;
+  final bool chat;
   final double maxCrossAxisExtent;
 
   Future<void> _renameFile(WidgetRef ref, int index) async {
     final file =
         ref.read(
-          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+          attachesNotifierProvider(
+            account,
+            noteId: noteId,
+            gallery: gallery,
+            chat: chat,
+          ),
         )[index];
     final result = await showTextFieldDialog(
       ref.context,
@@ -69,6 +76,7 @@ class PostFormAttaches extends ConsumerWidget {
                     account,
                     noteId: noteId,
                     gallery: gallery,
+                    chat: chat,
                   ).notifier,
                 )
                 .replace(index, DrivePostFile.fromDriveFile(driveFile));
@@ -80,6 +88,7 @@ class PostFormAttaches extends ConsumerWidget {
                   account,
                   noteId: noteId,
                   gallery: gallery,
+                  chat: chat,
                 ).notifier,
               )
               .replace(index, file.copyWith(name: result));
@@ -96,7 +105,12 @@ class PostFormAttaches extends ConsumerWidget {
   ) async {
     final file =
         ref.read(
-          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+          attachesNotifierProvider(
+            account,
+            noteId: noteId,
+            gallery: gallery,
+            chat: chat,
+          ),
         )[index];
     switch (file) {
       case DrivePostFile():
@@ -120,6 +134,7 @@ class PostFormAttaches extends ConsumerWidget {
                   account,
                   noteId: noteId,
                   gallery: gallery,
+                  chat: chat,
                 ).notifier,
               )
               .replace(index, DrivePostFile.fromDriveFile(driveFile));
@@ -131,6 +146,7 @@ class PostFormAttaches extends ConsumerWidget {
                 account,
                 noteId: noteId,
                 gallery: gallery,
+                chat: chat,
               ).notifier,
             )
             .replace(index, file.copyWith(isSensitive: isSensitive));
@@ -142,7 +158,12 @@ class PostFormAttaches extends ConsumerWidget {
   Future<void> _describeFile(WidgetRef ref, int index) async {
     final file =
         ref.read(
-          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+          attachesNotifierProvider(
+            account,
+            noteId: noteId,
+            gallery: gallery,
+            chat: chat,
+          ),
         )[index];
     final result = await showDialog<String>(
       context: ref.context,
@@ -172,6 +193,7 @@ class PostFormAttaches extends ConsumerWidget {
                     account,
                     noteId: noteId,
                     gallery: gallery,
+                    chat: chat,
                   ).notifier,
                 )
                 .replace(index, DrivePostFile.fromDriveFile(driveFile));
@@ -183,6 +205,7 @@ class PostFormAttaches extends ConsumerWidget {
                   account,
                   noteId: noteId,
                   gallery: gallery,
+                  chat: chat,
                 ).notifier,
               )
               .replace(index, file.copyWith(comment: result));
@@ -195,7 +218,12 @@ class PostFormAttaches extends ConsumerWidget {
   Future<void> _editImage(WidgetRef ref, int index) async {
     final file =
         ref.read(
-          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+          attachesNotifierProvider(
+            account,
+            noteId: noteId,
+            gallery: gallery,
+            chat: chat,
+          ),
         )[index];
     final data =
         await switch (file) {
@@ -221,6 +249,7 @@ class PostFormAttaches extends ConsumerWidget {
               account,
               noteId: noteId,
               gallery: gallery,
+              chat: chat,
             ).notifier,
           )
           .replace(
@@ -240,7 +269,12 @@ class PostFormAttaches extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(
-      attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+      attachesNotifierProvider(
+        account,
+        noteId: noteId,
+        gallery: gallery,
+        chat: chat,
+      ),
     );
     final uploading = files.any(
       (file) => file is LocalPostFile && file.uploading,
@@ -257,6 +291,7 @@ class PostFormAttaches extends ConsumerWidget {
                   account,
                   noteId: noteId,
                   gallery: gallery,
+                  chat: chat,
                 ).notifier,
               )
               .reorder(oldIndex, newIndex),
@@ -284,6 +319,7 @@ class PostFormAttaches extends ConsumerWidget {
           index: index,
           noteId: noteId,
           gallery: gallery,
+          chat: chat,
           onTap:
               !uploading
                   ? () => showModalBottomSheet<void>(
@@ -396,6 +432,7 @@ class PostFormAttaches extends ConsumerWidget {
                                         account,
                                         noteId: noteId,
                                         gallery: gallery,
+                                        chat: chat,
                                       ).notifier,
                                     )
                                     .remove(index);
@@ -420,6 +457,7 @@ class _PostFormAttach extends ConsumerWidget {
     required this.index,
     this.noteId,
     required this.gallery,
+    required this.chat,
     this.onTap,
   });
 
@@ -427,6 +465,7 @@ class _PostFormAttach extends ConsumerWidget {
   final int index;
   final String? noteId;
   final bool gallery;
+  final bool chat;
   final void Function()? onTap;
 
   @override
@@ -436,6 +475,7 @@ class _PostFormAttach extends ConsumerWidget {
         account,
         noteId: noteId,
         gallery: gallery,
+        chat: chat,
       ).select((files) => files[index]),
     );
     final colors = ref.watch(
@@ -465,6 +505,7 @@ class _PostFormAttach extends ConsumerWidget {
                             account,
                             noteId: noteId,
                             gallery: gallery,
+                            chat: chat,
                           ).notifier,
                         )
                         .upload(index),

@@ -316,7 +316,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => '폴더 아이디 복사하기';
 	@override String get copyProfileUrl => '프로필 주소 복사하기';
 	@override String get searchUser => '사용자 찾기';
-	@override String get searchThisUsersNotes => '사용자의 노트 검색';
+	@override String get searchThisUsersNotes => '유저의 노트를 검색';
 	@override String get reply => '답하기';
 	@override String get loadMore => '더 볼래예';
 	@override String get showMore => '더 볼래예';
@@ -552,6 +552,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get explore => '살펴보기';
 	@override String get messageRead => '이럿어예';
 	@override String get noMoreHistory => '요카마 옛날 기록이 어ᇝ십니다';
+	@override String get startChat => '채팅을 시작하기';
 	@override String nUsersRead({required Object n}) => '${n}멩이 이럿십니다';
 	@override String agreeTo({required Object x0}) => '${x0}에 동이하기';
 	@override String get agree => '동이합니다';
@@ -674,6 +675,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => '띠어서기럴 하모 ‘거라고’가 데고 줄 바꿈얼 하모 ‘아이먼’이 뎁니다';
 	@override String get notifyAntenna => '새 노트럴 알리기';
 	@override String get withFileAntenna => '파일이 붙언 노트마';
+	@override String get excludeNotesInSensitiveChannel => '민감한 채널의 노트 제외';
 	@override String get enableServiceworker => '브라우저서 알림 포시럴 키기';
 	@override String get antennaUsersDescription => '사용자 이럼얼 줄 바꿈해서로 섭니다';
 	@override String get caseSensitive => '대소문자럴 구벨하기';
@@ -769,7 +771,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get drawer => '서랍';
 	@override String get popup => '팝업';
 	@override String get showNoteActionsOnlyHover => '마우스 올맀을 때만 노트 액션 버턴 보이기';
-	@override String get showReactionsCount => '노트의 반응 수를 표시하기';
+	@override String get showReactionsCount => '노트의 리액션 수를 표시하기';
 	@override String get noHistory => '기록이 없십니다';
 	@override String get signinHistory => '로그인 기록';
 	@override String get enableAdvancedMfm => '복잡한 MFM 키기';
@@ -1003,8 +1005,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get renotedCount => '리노트덴 수';
 	@override String get followingCount => '팔로우 수';
 	@override String get followersCount => '팔로워 수';
-	@override String get sentReactionsCount => '반응 수';
-	@override String get receivedReactionsCount => '받은 반응 수';
+	@override String get sentReactionsCount => '리액션 수';
+	@override String get receivedReactionsCount => '받은 리액션 수';
 	@override String get pollVotesCount => '투표 수';
 	@override String get pollVotedCount => '받은 투표 수';
 	@override String get yes => '예';
@@ -1012,7 +1014,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get driveFilesCount => '드라이브에 있는 파일 수';
 	@override String get driveUsage => '드라이브 사용량';
 	@override String get noCrawle => '검색엔진의 인덱싱 거부';
-	@override String get noCrawleDescription => '검색엔진에 사용자 페이지, 노트, 페이지 등의 콘텐츠를 인덱싱되지 않게 합니다.';
+	@override String get noCrawleDescription => '검색엔진에 유저 페이지, 노트, 페이지 등의 콘텐츠를 인덱싱되지 않게 합니다.';
 	@override String get lockedAccountInfo => '팔로우를 승인으로 승인받더라도 노트의 공개 범위를 \'팔로워\'로 하지 않는 한 누구나 당신의 노트를 볼 수 있습니다.';
 	@override String get alwaysMarkSensitive => '미디어를 항상 열람 주의로 설정';
 	@override String get loadRawImages => '첨부한 이미지의 썸네일을 원본화질로 표시';
@@ -1090,7 +1092,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get userPagePinTip => '각 노트의 메뉴에서 「프로필에 고정」을 선택하는 것으로, 여기에 노트를 표시해 둘 수 있어요.';
 	@override String get notSpecifiedMentionWarning => '수신자가 선택되지 않은 멘션이 있어요';
 	@override String get info => '정보';
-	@override String get userInfo => '사용자 정보';
+	@override String get userInfo => '유저 정보';
 	@override String get unknown => '알 수 없음';
 	@override String get onlineStatus => '온라인 상태';
 	@override String get hideOnlineStatus => '온라인 상태 숨기기';
@@ -1117,8 +1119,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get postToGallery => '갤러리에 업로드';
 	@override String get postToHashtag => '이 해시태그에 게시';
 	@override String get gallery => '갤러리';
-	@override String get recentPosts => '최근 포스트';
-	@override String get popularPosts => '인기 포스트';
+	@override String get recentPosts => '최근 게시물';
+	@override String get popularPosts => '인기 게시물';
 	@override String get shareWithNote => '노트로 공유';
 	@override String get ads => '광고';
 	@override String get expiration => '기한';
@@ -1147,7 +1149,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get translate => '번역';
 	@override String translatedFrom({required Object x}) => '${x}서 번옉';
 	@override String get accountDeletionInProgress => '계정 삭제 작업을 진행하고 있습니다';
-	@override String get usernameInfo => '서버상에서 계정을 식별하기 위한 이름. 알파벳(a~z, A~Z), 숫자(0~9) 및 언더바(_)를 사용할 수 있습니다. 사용자명은 나중에 변경할 수 없습니다.';
+	@override String get usernameInfo => '서버상에서 계정을 식별하기 위한 이름. 알파벳(a~z, A~Z), 숫자(0~9) 및 언더바(_)를 사용할 수 있습니다. 유저명은 나중에 변경할 수 없습니다.';
 	@override String get aiChanMode => '아이 모드';
 	@override String get devMode => '개발자 모드';
 	@override String get keepCw => 'CW 유지하기';
@@ -1281,7 +1283,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get roles => '옉할';
 	@override String get role => '옉할';
 	@override String get noRole => '옉할이 어ᇝ십니다';
-	@override String get normalUser => '일반 사용자';
+	@override String get normalUser => '일반 유저';
 	@override String get undefined => '정의되지 않음';
 	@override String get assign => '할당';
 	@override String get unassign => '할당 취소';
@@ -1305,7 +1307,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => '아이예';
 	@override String get thisPostMayBeAnnoyingIgnore => '이대로 게시';
 	@override String get collapseRenotes => '이미 본 리노트를 간략화하기';
-	@override String get collapseRenotesDescription => '반응이나 리노트를 한 노트를 접어서 표시합니다.';
+	@override String get collapseRenotesDescription => '리액션이나 리노트를 한 노트를 접어서 표시합니다.';
 	@override String get internalServerError => '내부 서버 오류';
 	@override String get internalServerErrorDescription => '내부 서버에서 예기치 않은 오류가 발생했습니다.';
 	@override String get copyErrorInfo => '오류 정보 복사';
@@ -1329,8 +1331,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get sensitiveWords => '민감한 단어';
 	@override String get sensitiveWordsDescription => '설정한 단어가 포함된 노트의 공개 범위를 \'홈\'으로 강제합니다. 개행으로 구분하여 여러 개를 지정할 수 있습니다.';
 	@override String get sensitiveWordsDescription2 => '공백으로 구분하면 AND 지정이 되며, 키워드를 슬래시로 둘러싸면 정규 표현식이 됩니다.';
-	@override String get prohibitedWords => '금지 워드';
-	@override String get prohibitedWordsDescription => '설정된 워드가 포함되는 노트를 작성하려고 하면, 에러가 발생하도록 합니다. 줄바꿈으로 구분지어 복수 설정할 수 있습니다.';
+	@override String get prohibitedWords => '금지 단어';
+	@override String get prohibitedWordsDescription => '설정된 단어가 포함되는 노트를 작성하려고 하면, 오류가 발생하도록 합니다. 줄바꿈으로 구분지어 복수 설정할 수 있습니다.';
 	@override String get prohibitedWordsDescription2 => '공백으로 구분하면 AND 지정이 되며, 키워드를 슬래시로 둘러싸면 정규 표현식이 됩니다.';
 	@override String get hiddenTags => '수ᇚ훈 해시태그';
 	@override String get hiddenTagsDescription => '설정한 태그를 트렌드에 표시하지 않도록 합니다. 줄 바꿈으로 하나씩 나눠서 설정할 수 있습니다.';
@@ -1355,7 +1357,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get audioFiles => '소리';
 	@override String get dataSaver => '데이터 절약 모드';
 	@override String get accountMigration => '계정 이동';
-	@override String get accountMoved => '이 사용자는 다음 계정으로 이사했습니다:';
+	@override String get accountMoved => '이 유저는 다음 계정으로 이사했습니다:';
 	@override String get accountMovedShort => '이사한 계정입니다';
 	@override String get operationForbidden => '사용할 수 없습니다';
 	@override String get forceShowAds => '광고를 항상 표시';
@@ -1377,7 +1379,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get pleaseAgreeAllToContinue => '계속하시려면 모든 항목에 동의하십시오.';
 	@override String get continue_ => '계속';
 	@override String get preservedUsernames => '예약 사용자 이럼';
-	@override String get preservedUsernamesDescription => '예약할 사용자명을 한 줄에 하나씩 입력합니다. 여기에서 지정한 사용자명으로는 계정을 생성할 수 없게 됩니다. 단, 관리자 권한으로 계정을 생성할 때에는 해당되지 않으며, 이미 존재하는 계정도 영향을 받지 않습니다.';
+	@override String get preservedUsernamesDescription => '예약할 유저명을 한 줄에 하나씩 입력합니다. 여기에서 지정한 유저명으로는 계정을 생성할 수 없게 됩니다. 단, 관리자 권한으로 계정을 생성할 때에는 해당되지 않으며, 이미 존재하는 계정도 영향을 받지 않습니다.';
 	@override String get createNoteFromTheFile => '이 파일로 노트를 작성';
 	@override String get archive => '아카이브';
 	@override String get archived => '아카이브 됨';
@@ -1546,8 +1548,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get messageToFollower => '팔로워에게 보낼 메시지';
 	@override String get target => '대상';
 	@override String get testCaptchaWarning => 'CAPTCHA를 테스트하기 위한 기능입니다. <strong>실제 환경에서는 사용하지 마세요.</strong>';
-	@override String get prohibitedWordsForNameOfUser => '금지 단어 (사용자 이름)';
-	@override String get prohibitedWordsForNameOfUserDescription => '이 목록에 포함되는 키워드가 사용자 이름에 있는 경우, 일반 사용자는 이름을 바꿀 수 없습니다. 모더레이터 권한을 가진 사용자는 제한 대상에서 제외됩니다.';
+	@override String get prohibitedWordsForNameOfUser => '금지 단어 (유저명)';
+	@override String get prohibitedWordsForNameOfUserDescription => '이 목록에 포함되는 키워드가 유저명에 있는 경우, 일반 유저는 이름을 바꿀 수 없습니다. 모더레이터 권한을 가진 유저는 제한 대상에서 제외됩니다.';
 	@override String get yourNameContainsProhibitedWords => '바꾸려는 이름에 금지된 키워드가 포함되어 있습니다.';
 	@override String get yourNameContainsProhibitedWordsDescription => '이름에 금지된 키워드가 있습니다. 이름을 사용해야 하는 경우, 서버 관리자에 문의하세요.';
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '게시자에 의해 로그인해야 볼 수 있도록 설정되어 있습니다.';
@@ -1582,6 +1584,17 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get postForm => '글 입력란';
 	@override String get textCount => '문자 수';
 	@override String get information => '정보';
+	@override String get chat => '채팅';
+	@override String get migrateOldSettings => '기존 설정 정보를 이전';
+	@override String get migrateOldSettings_description => '보통은 자동으로 이루어지지만, 어떤 이유로 인해 성공적으로 이전이 이루어지지 않는 경우 수동으로 이전을 실행할 수 있습니다. 현재 설정 정보는 덮어쓰게 됩니다.';
+	@override String get compress => '압축';
+	@override String get right => '오른쪽';
+	@override String get bottom => '아래';
+	@override String get top => '위';
+	@override String get embed => '임베드';
+	@override String get settingsMigrating => '설정을 이전하는 중입니다. 잠시 기다려주십시오... (나중에 \'환경설정 → 기타 → 기존 설정 정보를 이전\'에서 수동으로 이전할 수도 있습니다)';
+	@override String get readonly => '읽기 전용';
+	@override String get goToDeck => '덱으로 돌아가기';
 	@override late final _TranslationsMisskeyChatKoGs chat_ = _TranslationsMisskeyChatKoGs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoGs emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoGs._(_root);
 	@override late final _TranslationsMisskeySettingsKoGs settings_ = _TranslationsMisskeySettingsKoGs._(_root);
@@ -1690,11 +1703,46 @@ class _TranslationsMisskeyChatKoGs extends TranslationsMisskeyChatEnUs {
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => '아직 메시지가 없습니다';
+	@override String get newMessage => '새로운 메시지';
+	@override String get individualChat => '개인 대화';
+	@override String get individualChat_description => '특정 유저와 일대일 채팅을 할 수 있습니다.';
+	@override String get roomChat => '룸 채팅';
+	@override String get roomChat_description => '여러 명이 함께 채팅할 수 있습니다.\n또한, 개인 채팅을 허용하지 않은 유저와도 상대방이 수락하면 채팅을 할 수 있습니다.';
+	@override String get createRoom => '룸을 생성';
+	@override String get inviteUserToChat => '유저를 초대하여 채팅을 시작하세요';
+	@override String get yourRooms => '생성한 룸';
+	@override String get joiningRooms => '참가 중인 룸';
 	@override String get invitations => '초대하기';
+	@override String get noInvitations => '초대장이 없습니다';
+	@override String get history => '이력';
 	@override String get noHistory => '기록이 없십니다';
+	@override String get noRooms => '룸이 없습니다';
+	@override String get inviteUser => '유저를 초대';
+	@override String get sentInvitations => '초대를 보내기';
+	@override String get join => '참여';
+	@override String get ignore => '무시';
+	@override String get leave => '룸을 떠나기';
 	@override String get members => '구성원';
+	@override String get searchMessages => '메시지 검색';
 	@override String get home => '덜머리';
 	@override String get send => '전송';
+	@override String get newline => '줄바꿈';
+	@override String get muteThisRoom => '이 룸을 뮤트';
+	@override String get deleteRoom => '룸을 삭제';
+	@override String get chatNotAvailableForThisAccountOrServer => '이 서버 또는 이 계정에서 채팅이 활성화되어 있지 않습니다.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => '이 서버 또는 이 계정에서 채팅은 읽기 전용입니다. 새로 쓰거나 채팅방을 만들거나 참가할 수 없습니다.';
+	@override String get chatNotAvailableInOtherAccount => '상대방 계정에서 채팅 기능을 사용할 수 없는 상태입니다.';
+	@override String get cannotChatWithTheUser => '이 유저와 채팅을 시작할 수 없습니다';
+	@override String get cannotChatWithTheUser_description => '채팅을 사용할 수 없는 상태이거나 상대방이 채팅을 열지 않은 상태입니다.';
+	@override String get chatWithThisUser => '채팅하기';
+	@override String get thisUserAllowsChatOnlyFromFollowers => '이 유저는 팔로워만 채팅을 할 수 있습니다.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => '이 유저는 이 유저가 팔로우하는 유저만 채팅을 허용합니다.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => '이 유저는 상호 팔로우하는 유저만 채팅을 허용합니다.';
+	@override String get thisUserNotAllowedChatAnyone => '이 유저는 다른 사람의 채팅을 받지 않습니다.';
+	@override String get chatAllowedUsers => '채팅을 허용한 상대';
+	@override String get chatAllowedUsers_note => '내가 채팅 메시지를 보낸 상대와는 이 설정과 상관없이 채팅이 가능합니다.';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersKoGs chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersKoGs._(_root);
 }
 
 // Path: misskey.emojiPalette_
@@ -1735,7 +1783,13 @@ class _TranslationsMisskeySettingsKoGs extends TranslationsMisskeySettingsEnUs {
 	@override String get soundsBanner => '클라이언트에서 재생할 소리에 대한 설정을 합니다.';
 	@override String get timelineAndNote => '타임라인과 노트';
 	@override String get makeEveryTextElementsSelectable => '모든 텍스트 요소를 선택할 수 있도록 함';
-	@override String get makeEveryTextElementsSelectable_description => '활성화 시, 일부 동작에서 사용자의 접근성이 나빠질 수도 있습니다.';
+	@override String get makeEveryTextElementsSelectable_description => '활성화 시, 일부 동작에서 유저의 접근성이 나빠질 수도 있습니다.';
+	@override String get useStickyIcons => '아이콘이 스크롤을 따라가도록 하기';
+	@override String get showNavbarSubButtons => '내비게이션 바에 보조 버튼 표시';
+	@override String get ifOn => '켜져 있을 때';
+	@override String get ifOff => '꺼져 있을 때';
+	@override String get enableSyncThemesBetweenDevices => '기기 간 설치한 테마 동기화';
+	@override late final _TranslationsMisskeySettingsChatKoGs chat_ = _TranslationsMisskeySettingsChatKoGs._(_root);
 }
 
 // Path: misskey.preferencesProfile_
@@ -1777,12 +1831,12 @@ class _TranslationsMisskeyAccountSettingsKoGs extends TranslationsMisskeyAccount
 	@override String get requireSigninToViewContents => '콘텐츠 열람을 위해 로그인을 필수로 설정하기';
 	@override String get requireSigninToViewContentsDescription1 => '자신이 작성한 모든 노트 등의 콘텐츠를 보기 위해 로그인을 필수로 설정합니다. 크롤러가 정보 수집하는 것을 방지하는 효과를 기대할 수 있습니다.';
 	@override String get requireSigninToViewContentsDescription2 => 'URL 미리보기(OGP), 웹페이지에 삽입, 노트 인용을 지원하지 않는 서버에서 볼 수 없게 됩니다.';
-	@override String get requireSigninToViewContentsDescription3 => '원격 서버에 연합된 콘텐츠에는 이러한 제한이 적용되지 않을 수 있습니다.';
+	@override String get requireSigninToViewContentsDescription3 => '리모트 서버에 연합된 콘텐츠에는 이러한 제한이 적용되지 않을 수 있습니다.';
 	@override String get makeNotesFollowersOnlyBefore => '과거 노트는 팔로워만 볼 수 있도록 설정하기';
 	@override String get makeNotesFollowersOnlyBeforeDescription => '이 기능이 활성화되어 있는 동안, 설정된 날짜 및 시간보다 과거 또는 설정된 시간이 지난 노트는 팔로워만 볼 수 있게 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
 	@override String get makeNotesHiddenBefore => '과거 노트 비공개로 전환하기';
 	@override String get makeNotesHiddenBeforeDescription => '이 기능이 활성화되어 있는 동안 설정한 날짜 및 시간보다 과거 또는 설정한 시간이 지난 노트는 본인만 볼 수 있게(비공개로 전환) 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
-	@override String get mayNotEffectForFederatedNotes => '원격 서버에 연합된 노트에는 효과가 없을 수도 있습니다.';
+	@override String get mayNotEffectForFederatedNotes => '리모트 서버에 연합된 노트에는 효과가 없을 수도 있습니다.';
 	@override String get mayNotEffectSomeSituations => '여기서 설정하는 제한은 모더레이션이나 리모트 서버에서 볼 때 등 일부 환경에서는 적용되지 않을 수도 있습니다.';
 	@override String get notesHavePassedSpecifiedPeriod => '지정한 시간이 경과된 노트';
 	@override String get notesOlderThanSpecifiedDateAndTime => '지정된 날짜 및 시간 이전의 노트';
@@ -1841,11 +1895,11 @@ class _TranslationsMisskeyAnnouncementKoGs extends TranslationsMisskeyAnnounceme
 	@override String get needConfirmationToRead => '읽음으로 표시하기 전에 확인하기';
 	@override String get needConfirmationToReadDescription => '활성화하면 이 공지사항을 읽음으로 표시하기 전에 확인 알림창을 띄웁니다. \'모두 읽음\'의 대상에서도 제외됩니다.';
 	@override String get end => '공지에서 내리기';
-	@override String get tooManyActiveAnnouncementDescription => '공지사항이 너무 많을 경우, 사용자 경험에 영향을 끼칠 가능성이 있습니다. 오래된 공지사항은 아카이브하시는 것을 권장드립니다.';
+	@override String get tooManyActiveAnnouncementDescription => '공지사항이 너무 많을 경우, 유저 경험에 영향을 끼칠 가능성이 있습니다. 오래된 공지사항은 아카이브하시는 것을 권장드립니다.';
 	@override String get readConfirmTitle => '읽음으로 표시합니까?';
 	@override String readConfirmText({required Object title}) => '〈${title}〉의 내용을 읽음으로 표시합니다.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => '신규 유저의 이용 경험에 악영향을 끼칠 수 있으므로, 일시적인 알림 수단으로만 사용하고 고정된 정보에는 사용을 지양하는 것을 추천합니다.';
-	@override String get dialogAnnouncementUxWarn => '다이얼로그 형태의 알림이 동시에 2개 이상 존재하는 경우, 사용자 경험에 악영향을 끼칠 수 있으므로 신중히 결정하십시오.';
+	@override String get dialogAnnouncementUxWarn => '다이얼로그 형태의 알림이 동시에 2개 이상 존재하는 경우, 유저 경험에 악영향을 끼칠 수 있으므로 신중히 결정하십시오.';
 	@override String get silence => '조용히 알림';
 	@override String get silenceDescription => '활성화하면 공지사항에 대한 알림이 가지 않게 되며, 확인 버튼을 누를 필요가 없게 됩니다.';
 }
@@ -1991,7 +2045,7 @@ class _TranslationsMisskeyRoleKoGs extends TranslationsMisskeyRoleEnUs {
 	@override String get permission => '역할 권한';
 	@override String get descriptionOfPermission => '<b>조정자</b>는 기본적인 조정 작업을 진행할 수 있습니다.\n<b>관리자</b>는 서버의 모든 설정을 변경할 수 있습니다.';
 	@override String get assignTarget => '할당 대상';
-	@override String get descriptionOfAssignTarget => '<b>수동</b>을 선택하면 누가 이 역할에 포함되는지를 수동으로 관리할 수 있습니다.\n<b>조건부</b>를 선택하면 조건을 설정해 일치하는 사용자를 자동으로 포함되게 할 수 있습니다.';
+	@override String get descriptionOfAssignTarget => '<b>수동</b>을 선택하면 누가 이 역할에 포함되는지를 수동으로 관리할 수 있습니다.\n<b>조건부</b>를 선택하면 조건을 설정해 일치하는 유저를 자동으로 포함되게 할 수 있습니다.';
 	@override String get manual => '수동';
 	@override String get manualRoles => '수동 역할';
 	@override String get conditional => '조건부';
@@ -1999,7 +2053,7 @@ class _TranslationsMisskeyRoleKoGs extends TranslationsMisskeyRoleEnUs {
 	@override String get condition => '조건';
 	@override String get isConditionalRole => '조건부 역할입니다.';
 	@override String get isPublic => '역할 공개';
-	@override String get descriptionOfIsPublic => '역할에 할당된 사용자를 누구나 볼 수 있습니다. 또한 사용자 프로필에 이 역할이 표시됩니다.';
+	@override String get descriptionOfIsPublic => '역할에 할당된 유저를 누구나 볼 수 있습니다. 또한 유저 프로필에 이 역할이 표시됩니다.';
 	@override String get options => '옵션';
 	@override String get policies => '정책';
 	@override String get baseRole => '기본 역할';
@@ -2012,8 +2066,10 @@ class _TranslationsMisskeyRoleKoGs extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => '활성화하면 역할 타임라인을 공개합니다. 비활성화 시 타임라인이 공개되지 않습니다.';
 	@override String get displayOrder => '보기 순서';
 	@override String get descriptionOfDisplayOrder => '값이 클 수록 UI에서 먼저 표시됩니다.';
+	@override String get preserveAssignmentOnMoveAccount => '이전 대상 계정에도 할당 상태 전달';
+	@override String get preserveAssignmentOnMoveAccount_description => '켜면 이 역할이 부여된 계정이 이전될 때 마이그레이션 대상 계정에도 이 역할이 승계됩니다.';
 	@override String get canEditMembersByModerator => '모더레이터의 역할 수정 허용';
-	@override String get descriptionOfCanEditMembersByModerator => '이 옵션을 켜면 모더레이터도 이 역할에 사용자를 할당하거나 삭제할 수 있습니다. 꺼져 있으면 관리자만 할당이 가능합니다.';
+	@override String get descriptionOfCanEditMembersByModerator => '이 옵션을 켜면 모더레이터도 이 역할에 유저를 할당하거나 삭제할 수 있습니다. 꺼져 있으면 관리자만 할당이 가능합니다.';
 	@override String get priority => '우선순위';
 	@override late final _TranslationsMisskeyRolePriorityKoGs priority_ = _TranslationsMisskeyRolePriorityKoGs._(_root);
 	@override late final _TranslationsMisskeyRoleOptionsKoGs options_ = _TranslationsMisskeyRoleOptionsKoGs._(_root);
@@ -2104,7 +2160,7 @@ class _TranslationsMisskeyAdKoGs extends TranslationsMisskeyAdEnUs {
 	@override String get adsSettings => '광고 표시 설정';
 	@override String get notesPerOneAd => '실시간으로 갱신되는 타임라인에서 광고를 노출시키는 간격 (노트 당)';
 	@override String get setZeroToDisable => '0으로 지정하면 실시간 타임라인에서의 광고를 비활성화합니다';
-	@override String get adsTooClose => '광고의 표시 간격이 매우 작아, 사용자 경험에 부정적인 영향을 미칠 수 있습니다.';
+	@override String get adsTooClose => '광고의 표시 간격이 매우 작아, 유저 경험에 부정적인 영향을 미칠 수 있습니다.';
 }
 
 // Path: misskey.forgotPassword_
@@ -2363,6 +2419,7 @@ class _TranslationsMisskeySfxKoGs extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => '내 노트';
 	@override String get notification => '알림';
 	@override String get reaction => '리액션 개리기';
+	@override String get chatMessage => '채팅 메시지';
 }
 
 // Path: misskey.soundSettings_
@@ -2497,7 +2554,7 @@ class _TranslationsMisskeyPermissionsKoGs extends TranslationsMisskeyPermissions
 	@override String get writePages => '페이지를 수정합니다';
 	@override String get readPageLikes => '페이지의 좋아요를 확인합니다';
 	@override String get writePageLikes => '페이지에 좋아요를 추가하거나 취소합니다';
-	@override String get readUserGroups => '사용자 그룹 보기';
+	@override String get readUserGroups => '유저 그룹 보기';
 	@override String get writeUserGroups => '유저 그룹을 만들거나, 초대하거나, 이름을 변경하거나, 양도하거나, 삭제합니다';
 	@override String get readChannels => '채널을 보기';
 	@override String get writeChannels => '채널을 추가하거나 삭제합니다';
@@ -2509,23 +2566,23 @@ class _TranslationsMisskeyPermissionsKoGs extends TranslationsMisskeyPermissions
 	@override String get writeFlash => 'Play를 조작합니다';
 	@override String get readFlashLikes => 'Play의 좋아요를 봅니다';
 	@override String get writeFlashLikes => 'Play의 좋아요를 조작합니다';
-	@override String get readAdminAbuseUserReports => '사용자 신고 보기';
-	@override String get writeAdminDeleteAccount => '사용자 계정 삭제하기';
-	@override String get writeAdminDeleteAllFilesOfAUser => '모든 사용자 파일 삭제하기';
+	@override String get readAdminAbuseUserReports => '유저 신고 보기';
+	@override String get writeAdminDeleteAccount => '유저 계정 삭제하기';
+	@override String get writeAdminDeleteAllFilesOfAUser => '모든 유저 파일 삭제하기';
 	@override String get readAdminIndexStats => '데이터베이스 색인 정보 보기';
 	@override String get readAdminTableStats => '데이터베이스 테이블 정보 보기';
-	@override String get readAdminUserIps => '사용자 IP 주소 보기';
+	@override String get readAdminUserIps => '유저 IP 주소 보기';
 	@override String get readAdminMeta => '인스턴스 메타데이터 보기';
-	@override String get writeAdminResetPassword => '사용자 비밀번호 재설정하기';
-	@override String get writeAdminResolveAbuseUserReport => '사용자 신고 처리하기';
+	@override String get writeAdminResetPassword => '유저 비밀번호 재설정하기';
+	@override String get writeAdminResolveAbuseUserReport => '유저 신고 처리하기';
 	@override String get writeAdminSendEmail => '이메일 보내기';
 	@override String get readAdminServerInfo => '서버 정보 보기';
 	@override String get readAdminShowModerationLog => '조정 기록 보기';
-	@override String get readAdminShowUser => '사용자 개인정보 보기';
-	@override String get writeAdminSuspendUser => '사용자 정지하기';
-	@override String get writeAdminUnsetUserAvatar => '사용자 아바타 삭제하기';
-	@override String get writeAdminUnsetUserBanner => '사용자 배너 삭제하기';
-	@override String get writeAdminUnsuspendUser => '사용자 정지 해제하기';
+	@override String get readAdminShowUser => '유저 개인정보 보기';
+	@override String get writeAdminSuspendUser => '유저 정지하기';
+	@override String get writeAdminUnsetUserAvatar => '유저 아바타 삭제하기';
+	@override String get writeAdminUnsetUserBanner => '유저 배너 삭제하기';
+	@override String get writeAdminUnsuspendUser => '유저 정지 해제하기';
 	@override String get writeAdminMeta => '인스턴스 메타데이터 수정하기';
 	@override String get writeAdminUserNote => '조정 기록 수정하기';
 	@override String get writeAdminRoles => '역할 수정하기';
@@ -2539,15 +2596,15 @@ class _TranslationsMisskeyPermissionsKoGs extends TranslationsMisskeyPermissions
 	@override String get writeAdminAvatarDecorations => '아바타 꾸미기 수정하기';
 	@override String get readAdminAvatarDecorations => '아바타 꾸미기 보기';
 	@override String get writeAdminFederation => '연합 정보 수정하기';
-	@override String get writeAdminAccount => '사용자 계정 수정하기';
-	@override String get readAdminAccount => '사용자 정보 보기';
+	@override String get writeAdminAccount => '유저 계정 수정하기';
+	@override String get readAdminAccount => '유저 정보 보기';
 	@override String get writeAdminEmoji => '이모지 수정하기';
 	@override String get readAdminEmoji => '이모지 보기';
 	@override String get writeAdminQueue => '작업 대기열 수정하기';
 	@override String get readAdminQueue => '작업 대기열 정보 보기';
 	@override String get writeAdminPromo => '홍보 기록 수정하기';
-	@override String get writeAdminDrive => '사용자 드라이브 수정하기';
-	@override String get readAdminDrive => '사용자 드라이브 정보 보기';
+	@override String get writeAdminDrive => '유저 드라이브 수정하기';
+	@override String get readAdminDrive => '유저 드라이브 정보 보기';
 	@override String get readAdminStream => '관리자용 Websocket API 사용하기';
 	@override String get writeAdminAd => '광고 수정하기';
 	@override String get readAdminAd => '광고 보기';
@@ -2558,6 +2615,7 @@ class _TranslationsMisskeyPermissionsKoGs extends TranslationsMisskeyPermissions
 	@override String get readFederation => '연합 정보 불러오기';
 	@override String get writeReportAbuse => '위반 내용 신고하기';
 	@override String get writeChat => '대화를 시작하거나 메시지를 보냅니다';
+	@override String get readChat => '채팅 열람하기';
 }
 
 // Path: misskey.auth_
@@ -2576,7 +2634,7 @@ class _TranslationsMisskeyAuthKoGs extends TranslationsMisskeyAuthEnUs {
 	@override String get callback => '앱으로 돌아갑니다';
 	@override String get accepted => '접근 권한이 부여되었습니다.';
 	@override String get denied => '접근이 거부되었습니다';
-	@override String get scopeUser => '다음 사용자로 활동하고 있습니다.';
+	@override String get scopeUser => '다음 유저로 활동하고 있습니다.';
 	@override String get pleaseLogin => '어플리케이션의 접근을 허가하려면 로그인하십시오.';
 	@override String get byClickingYouWillBeRedirectedToThisUrl => '접근을 허용하면 자동으로 다음 URL로 이동합니다.';
 }
@@ -2637,7 +2695,7 @@ class _TranslationsMisskeyWidgetsKoGs extends TranslationsMisskeyWidgetsEnUs {
 	@override String get postForm => '글 입력란';
 	@override String get slideshow => '슬라이드 쇼';
 	@override String get button => '버튼';
-	@override String get onlineUsers => '온라인 사용자';
+	@override String get onlineUsers => '온라인 유저';
 	@override String get jobQueue => '작업 대기옐';
 	@override String get serverMetric => '서버 통계';
 	@override String get aiscript => 'AiScript 콘솔';
@@ -2646,7 +2704,7 @@ class _TranslationsMisskeyWidgetsKoGs extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => '유저 리스트';
 	@override late final _TranslationsMisskeyWidgetsUserListKoGs userList_ = _TranslationsMisskeyWidgetsUserListKoGs._(_root);
 	@override String get clicker => '클리커';
-	@override String get birthdayFollowings => '오늘이 생일인 사용자';
+	@override String get birthdayFollowings => '오늘이 생일인 유저';
 }
 
 // Path: misskey.cw_
@@ -2779,7 +2837,7 @@ class _TranslationsMisskeyChartsKoGs extends TranslationsMisskeyChartsEnUs {
 	@override String get apRequest => '요청';
 	@override String get usersIncDec => '유저 수 증감';
 	@override String get usersTotal => '유저 수 합계';
-	@override String get activeUsers => '활동 사용자 수';
+	@override String get activeUsers => '활동 유저 수';
 	@override String get notesIncDec => '노트 수 증감';
 	@override String get localNotesIncDec => '로컬 노트 수 증감';
 	@override String get remoteNotesIncDec => '리모트 노트 수 증감';
@@ -2798,8 +2856,8 @@ class _TranslationsMisskeyInstanceChartsKoGs extends TranslationsMisskeyInstance
 
 	// Translations
 	@override String get requests => '요청';
-	@override String get users => '사용자 수 차이';
-	@override String get usersTotal => '누적 사용자 수';
+	@override String get users => '유저 수 차이';
+	@override String get usersTotal => '누적 유저 수';
 	@override String get notes => '노트 수 증감';
 	@override String get notesTotal => '누적 노트 수';
 	@override String get ff => '팔로잉/팔로워 증감';
@@ -2923,13 +2981,14 @@ class _TranslationsMisskeyNotificationKoGs extends TranslationsMisskeyNotificati
 	@override String get newNote => '새 걸';
 	@override String unreadAntennaNote({required Object name}) => '안테나 ${name}';
 	@override String get roleAssigned => '역할이 부여 되었습니다.';
+	@override String get chatRoomInvitationReceived => '채팅 룸에 초대받았습니다';
 	@override String get emptyPushNotificationMessage => '푸시 알림이 갱신되었습니다';
 	@override String get achievementEarned => '도전 과제를 달성했습니다';
 	@override String get testNotification => '알림 테스트';
 	@override String get checkNotificationBehavior => '알림 표시를 체크하기';
 	@override String get sendTestNotification => '테스트 알림 보내기';
 	@override String get notificationWillBeDisplayedLikeThis => '알림이 이렇게 표시됩니다';
-	@override String reactedBySomeUsers({required Object n}) => '${n}명이 반응했습니다';
+	@override String reactedBySomeUsers({required Object n}) => '${n}명이 리액션했습니다';
 	@override String likedBySomeUsers({required Object n}) => '${n}명이 좋아요를 했습니다';
 	@override String renotedBySomeUsers({required Object n}) => '${n}명이 리노트했습니다';
 	@override String followedBySomeUsers({required Object n}) => '${n}명에게 팔로우됨';
@@ -2951,6 +3010,9 @@ class _TranslationsMisskeyDeckKoGs extends TranslationsMisskeyDeckEnUs {
 	// Translations
 	@override String get alwaysShowMainColumn => '메인 칼럼 항상 표시';
 	@override String get columnAlign => '칼럼 정렬';
+	@override String get columnGap => '칼럼 간 여백';
+	@override String get deckMenuPosition => '덱 메뉴 위치';
+	@override String get navbarPosition => '내비게이션 바 위치';
 	@override String get addColumn => '칼럼 추가';
 	@override String get newNoteNotificationSettings => '새 노트 알림 설정';
 	@override String get configureColumn => '칼럼 설정';
@@ -3057,9 +3119,9 @@ class _TranslationsMisskeyModerationLogTypesKoGs extends TranslationsMisskeyMode
 	@override String get deleteDriveFile => '파일 삭제';
 	@override String get deleteNote => '노트 뭉캐기';
 	@override String get createGlobalAnnouncement => '전역 공지사항 생성';
-	@override String get createUserAnnouncement => '사용자 공지사항 만들기';
+	@override String get createUserAnnouncement => '유저에게 공지사항 만들기';
 	@override String get updateGlobalAnnouncement => '모든 공지사항 수정';
-	@override String get updateUserAnnouncement => '사용자 공지사항 수정';
+	@override String get updateUserAnnouncement => '유저의 공지사항 수정';
 	@override String get deleteGlobalAnnouncement => '모든 공지사항 삭제';
 	@override String get deleteUserAnnouncement => '사용자 공지 걸 뭉캐기';
 	@override String get resetPassword => '비밀번호 재설정';
@@ -3089,7 +3151,8 @@ class _TranslationsMisskeyModerationLogTypesKoGs extends TranslationsMisskeyMode
 	@override String get deleteAccount => '계정을 삭제';
 	@override String get deletePage => '페이지를 삭제';
 	@override String get deleteFlash => 'Play를 삭제';
-	@override String get deleteGalleryPost => '갤러리 포스트를 삭제';
+	@override String get deleteGalleryPost => '갤러리 게시물을 삭제';
+	@override String get deleteChatRoom => '채팅 룸 삭제';
 	@override String get updateProxyAccountDescription => '프록시 계정의 설명 업데이트';
 }
 
@@ -3324,7 +3387,7 @@ class _TranslationsMisskeySelfXssPreventionKoGs extends TranslationsMisskeySelfX
 	// Translations
 	@override String get warning => '경고';
 	@override String get title => '“이 화면에 뭔가를 붙여넣어라"는 것은 모두 사기입니다.';
-	@override String get description1 => '여기에 무언가를 붙여넣으면 악의적인 사용자에게 계정을 탈취당하거나 개인정보를 도용당할 수 있습니다.';
+	@override String get description1 => '여기에 무언가를 붙여넣으면 악의적인 유저에게 계정을 탈취당하거나 개인정보를 도용당할 수 있습니다.';
 	@override String get description2 => '붙여 넣으려는 항목이 무엇인지 정확히 이해하지 못하는 경우, %c지금 바로 작업을 중단하고 이 창을 닫으십시오.';
 	@override String description3({required Object link}) => '자세한 내용은 여기를 확인해 주세요.  ${link}';
 }
@@ -3416,6 +3479,31 @@ class _TranslationsMisskeyIOSkebStatusKoGs extends TranslationsMisskeyIOSkebStat
 	@override String yenX({required Object x}) => 'JPY ${x}';
 	@override String nWorks({required Object n}) => '납품 실적 ${n}건';
 	@override String nRequests({required Object n}) => '거래 실적 ${n}건';
+}
+
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersKoGs extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => '누구나';
+	@override String get followers => '자신의 팔로워만';
+	@override String get following => '자신이 팔로우한 유저만';
+	@override String get mutual => '상호 팔로우한 유저만';
+	@override String get none => '아무도 허락하지 않기';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatKoGs extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => '발신자 이름 표시';
+	@override String get sendOnEnter => '엔터로 보내기';
 }
 
 // Path: misskey.delivery_.type_
@@ -3682,8 +3770,8 @@ class _TranslationsMisskeyRoleOptionsKoGs extends TranslationsMisskeyRoleOptions
 	@override String get webhookMax => '만들 수 있는 Webhook 수';
 	@override String get clipMax => '만들 수 있는 클립 수';
 	@override String get noteEachClipsMax => '클립에 넣을 수 있는 노트 수';
-	@override String get userListMax => '만들 수 있는 사용자 리스트 수';
-	@override String get userEachUserListsMax => '사용자 리스트에 넣을 수 있는 사용자 수';
+	@override String get userListMax => '만들 수 있는 유저 리스트 수';
+	@override String get userEachUserListsMax => '유저 리스트에 넣을 수 있는 유저 수';
 	@override String get rateLimitFactor => '요청 빈도 제한';
 	@override String get descriptionOfRateLimitFactor => '작을수록 제한이 완화되고, 클수록 제한이 강화됩니다.';
 	@override String get canHideAds => '강고 수ᇚ후기';
@@ -3695,6 +3783,7 @@ class _TranslationsMisskeyRoleOptionsKoGs extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => '팔로우 가져오기 허용';
 	@override String get canImportMuting => '뮤트 목록 가져오기 허용';
 	@override String get canImportUserLists => '리스트 목록 가져오기 허용';
+	@override String get chatAvailability => '채팅을 허락';
 }
 
 // Path: misskey.role_.condition_
@@ -3705,21 +3794,21 @@ class _TranslationsMisskeyRoleConditionKoGs extends TranslationsMisskeyRoleCondi
 
 	// Translations
 	@override String get roleAssignedTo => '수동 역할에 이미 할당됨';
-	@override String get isLocal => '로컬 사용자';
+	@override String get isLocal => '로컬 유저';
 	@override String get isRemote => '웬겍 사용자';
 	@override String get isCat => '갱이 사용자';
 	@override String get isBot => '자동 사용자';
-	@override String get isSuspended => '정지된 사용자';
-	@override String get isLocked => '잠금 계정 사용자';
-	@override String get isExplorable => '‘계정을 쉽게 발견하도록 하기’를 활성화한 사용자';
+	@override String get isSuspended => '정지된 유저';
+	@override String get isLocked => '잠금 계정 유저';
+	@override String get isExplorable => '‘계정을 쉽게 발견하도록 하기’를 활성화한 유저';
 	@override String get createdLessThan => '가입한 지 다음 일수 이내인 유저';
 	@override String get createdMoreThan => '가입한 지 다음 일수 이상인 유저';
 	@override String get followersLessThanOrEq => '팔로워 수가 다음 이하인 유저';
-	@override String get followersMoreThanOrEq => '팔로워 수가 다음보다 많은 사용자';
+	@override String get followersMoreThanOrEq => '팔로워 수가 다음보다 많은 유저';
 	@override String get followingLessThanOrEq => '팔로잉 수가 다음 이하인 유저';
-	@override String get followingMoreThanOrEq => '팔로잉 수가 다음보다 많은 사용자';
+	@override String get followingMoreThanOrEq => '팔로잉 수가 다음보다 많은 유저';
 	@override String get notesLessThanOrEq => '노트 수가 다음 이하인 유저';
-	@override String get notesMoreThanOrEq => '노트 수가 다음보다 많은 사용자';
+	@override String get notesMoreThanOrEq => '노트 수가 다음보다 많은 유저';
 	@override String get and => '다음을 모두 만족';
 	@override String get or => '다음을 하나라도 만족';
 	@override String get not => '다음을 만족하지 않음';
@@ -3840,7 +3929,7 @@ class _TranslationsMisskeyNotificationTypesKoGs extends TranslationsMisskeyNotif
 
 	// Translations
 	@override String get all => '전부';
-	@override String get note => '사용자의 새 글';
+	@override String get note => '유저의 새 글';
 	@override String get follow => '팔로잉';
 	@override String get mention => '멘션';
 	@override String get reply => '답글';
@@ -3850,7 +3939,8 @@ class _TranslationsMisskeyNotificationTypesKoGs extends TranslationsMisskeyNotif
 	@override String get pollEnded => '투표가 종료됨';
 	@override String get receiveFollowRequest => '팔로우 요청을 받았을 때';
 	@override String get followRequestAccepted => '팔로우 요청이 승인되었을 때';
-	@override String get roleAssigned => '역할이 부여 됨';
+	@override String get roleAssigned => '역할이 부여됨';
+	@override String get chatRoomInvitationReceived => '채팅 룸에 초대받음';
 	@override String get achievementEarned => '도전 과제 획득';
 	@override String get exportCompleted => '추출을 성공함';
 	@override String get login => '로그인';
@@ -3932,7 +4022,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientKoGs extends Translati
 	@override String get recipientType => '알림 종류';
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoGs recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoGs._(_root);
 	@override String get keywords => '키워드';
-	@override String get notifiedUser => '알릴 사용자';
+	@override String get notifiedUser => '알릴 유저';
 	@override String get notifiedWebhook => '사용할 Webhook';
 	@override String get deleteConfirm => '수신자를 삭제하시겠습니까?';
 }
@@ -4321,7 +4411,7 @@ class _TranslationsMisskeyAchievementsTypesNotes20000KoGs extends TranslationsMi
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '노트가 필요해요';
+	@override String get title => '노트가 더 필요해요';
 	@override String get description => '노트럴 20,000번 섰어예';
 }
 
@@ -4491,7 +4581,7 @@ class _TranslationsMisskeyAchievementsTypesLogin200KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '단골 I';
-	@override String get description => '총 200일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 200일';
 }
 
 // Path: misskey.achievements_.types_.login300_
@@ -4502,7 +4592,7 @@ class _TranslationsMisskeyAchievementsTypesLogin300KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '단골 II';
-	@override String get description => '총 300일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 300일';
 }
 
 // Path: misskey.achievements_.types_.login400_
@@ -4513,7 +4603,7 @@ class _TranslationsMisskeyAchievementsTypesLogin400KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '단골 III';
-	@override String get description => '총 400일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 400일';
 }
 
 // Path: misskey.achievements_.types_.login500_
@@ -4524,7 +4614,7 @@ class _TranslationsMisskeyAchievementsTypesLogin500KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '베테랑 I';
-	@override String get description => '총 500일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 500일';
 	@override String get flavor => '제군, 나는 노트가 좋다';
 }
 
@@ -4536,7 +4626,7 @@ class _TranslationsMisskeyAchievementsTypesLogin600KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '베테랑 II';
-	@override String get description => '총 600일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 600일';
 }
 
 // Path: misskey.achievements_.types_.login700_
@@ -4547,7 +4637,7 @@ class _TranslationsMisskeyAchievementsTypesLogin700KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '베테랑 III';
-	@override String get description => '총 700일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 700일';
 }
 
 // Path: misskey.achievements_.types_.login800_
@@ -4558,7 +4648,7 @@ class _TranslationsMisskeyAchievementsTypesLogin800KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '노트 마스터 I';
-	@override String get description => '총 800일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 800일';
 }
 
 // Path: misskey.achievements_.types_.login900_
@@ -4569,7 +4659,7 @@ class _TranslationsMisskeyAchievementsTypesLogin900KoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '노트 마스터 II';
-	@override String get description => '총 900일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 900일';
 }
 
 // Path: misskey.achievements_.types_.login1000_
@@ -4580,7 +4670,7 @@ class _TranslationsMisskeyAchievementsTypesLogin1000KoGs extends TranslationsMis
 
 	// Translations
 	@override String get title => '노트 마스터 III';
-	@override String get description => '총 1,000일간 로그인했습니다';
+	@override String get description => '총 로그인한 날이 1,000일';
 	@override String get flavor => 'Misskey를 사용해 주셔서 감사합니다!';
 }
 
@@ -4625,7 +4715,7 @@ class _TranslationsMisskeyAchievementsTypesProfileFilledKoGs extends Translation
 
 	// Translations
 	@override String get title => '준비 완료';
-	@override String get description => '프로필 설정을 완료했습니다';
+	@override String get description => '프로필 설정을 완료했다';
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
@@ -4636,7 +4726,7 @@ class _TranslationsMisskeyAchievementsTypesMarkedAsCatKoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '나는 고양이다냥!';
-	@override String get description => '계정을 고양이로 설정했습니다냥';
+	@override String get description => '계정을 고양이로 설정했다냥';
 	@override String get flavor => '냐냐냐냐냐냐아아아아앙!';
 }
 
@@ -4648,7 +4738,7 @@ class _TranslationsMisskeyAchievementsTypesFollowing1KoGs extends TranslationsMi
 
 	// Translations
 	@override String get title => '첫 팔로우';
-	@override String get description => '사용자를 처음으로 팔로우했습니다';
+	@override String get description => '유저를 처음으로 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.following10_
@@ -4659,7 +4749,7 @@ class _TranslationsMisskeyAchievementsTypesFollowing10KoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '팔로우, 팔로우';
-	@override String get description => '10명의 사용자를 팔로우했습니다';
+	@override String get description => '10명의 유저를 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.following50_
@@ -4670,7 +4760,7 @@ class _TranslationsMisskeyAchievementsTypesFollowing50KoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '친구 잔뜩';
-	@override String get description => '50명의 사용자를 팔로우했습니다';
+	@override String get description => '50명의 유저를 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.following100_
@@ -4681,7 +4771,7 @@ class _TranslationsMisskeyAchievementsTypesFollowing100KoGs extends Translations
 
 	// Translations
 	@override String get title => '주소록 한 권으론 부족해';
-	@override String get description => '100명의 사용자를 팔로우했습니다';
+	@override String get description => '100명의 유저를 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.following300_
@@ -4692,7 +4782,7 @@ class _TranslationsMisskeyAchievementsTypesFollowing300KoGs extends Translations
 
 	// Translations
 	@override String get title => '친구가 넘쳐나';
-	@override String get description => '300명의 사용자를 팔로우했습니다';
+	@override String get description => '300명의 유저를 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers1_
@@ -4703,7 +4793,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers1KoGs extends TranslationsMi
 
 	// Translations
 	@override String get title => '첫 팔로워';
-	@override String get description => '사용자가 처음으로 팔로잉했습니다';
+	@override String get description => '유저가 처음으로 팔로잉했다';
 }
 
 // Path: misskey.achievements_.types_.followers10_
@@ -4714,7 +4804,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers10KoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '팔로우 미!';
-	@override String get description => '10명의 사용자가 팔로우했습니다';
+	@override String get description => '10명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers50_
@@ -4725,7 +4815,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers50KoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '이곳저곳';
-	@override String get description => '50명의 사용자가 팔로우했습니다';
+	@override String get description => '50명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers100_
@@ -4736,7 +4826,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers100KoGs extends Translations
 
 	// Translations
 	@override String get title => '인기왕';
-	@override String get description => '100명의 사용자가 팔로우했습니다';
+	@override String get description => '100명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers300_
@@ -4747,7 +4837,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers300KoGs extends Translations
 
 	// Translations
 	@override String get title => '줄 좀 서봐요';
-	@override String get description => '100명의 사용자가 팔로우했습니다';
+	@override String get description => '100명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers500_
@@ -4758,7 +4848,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers500KoGs extends Translations
 
 	// Translations
 	@override String get title => '기지국';
-	@override String get description => '500명의 사용자가 팔로우했습니다';
+	@override String get description => '500명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.followers1000_
@@ -4769,7 +4859,7 @@ class _TranslationsMisskeyAchievementsTypesFollowers1000KoGs extends Translation
 
 	// Translations
 	@override String get title => '유명인사';
-	@override String get description => '1,000명의 사용자가 팔로우했습니다';
+	@override String get description => '1,000명의 유저가 팔로우했다';
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
@@ -4780,7 +4870,7 @@ class _TranslationsMisskeyAchievementsTypesCollectAchievements30KoGs extends Tra
 
 	// Translations
 	@override String get title => '도전 과제 콜렉터';
-	@override String get description => '30개의 도전과제를 획득했습니다';
+	@override String get description => '30개의 도전과제를 획득했다';
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
@@ -4791,7 +4881,7 @@ class _TranslationsMisskeyAchievementsTypesViewAchievements3minKoGs extends Tran
 
 	// Translations
 	@override String get title => '저 도전과제 좋아해요';
-	@override String get description => '도전 과제 목록을 3분 이상 쳐다봤습니다';
+	@override String get description => '도전 과제 목록을 3분 이상 쳐다봤다';
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
@@ -4814,7 +4904,7 @@ class _TranslationsMisskeyAchievementsTypesFoundTreasureKoGs extends Translation
 
 	// Translations
 	@override String get title => '보물찾기';
-	@override String get description => '숨겨진 보물을 발견했습니다';
+	@override String get description => '숨겨진 보물을 발견했다';
 }
 
 // Path: misskey.achievements_.types_.client30min_
@@ -4825,7 +4915,7 @@ class _TranslationsMisskeyAchievementsTypesClient30minKoGs extends TranslationsM
 
 	// Translations
 	@override String get title => '잠시 쉬어요';
-	@override String get description => '클라이언트를 시작하고 30분이 경과하였습니다';
+	@override String get description => '클라이언트를 시작하고 30분이 경과했다';
 }
 
 // Path: misskey.achievements_.types_.client60min_
@@ -4836,7 +4926,7 @@ class _TranslationsMisskeyAchievementsTypesClient60minKoGs extends TranslationsM
 
 	// Translations
 	@override String get title => 'No "Miss" in Misskey';
-	@override String get description => '클라이언트를 시작하고 60분이 경과하였습니다';
+	@override String get description => '클라이언트를 시작하고 60분이 경과했다';
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
@@ -4847,7 +4937,7 @@ class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minKoGs extends Tra
 
 	// Translations
 	@override String get title => '있었는데요 없었습니다';
-	@override String get description => '노트를 포스트한 후 1분 이내에 삭제했습니다';
+	@override String get description => '노트를 게시한 후 1분 이내에 삭제했다';
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
@@ -4858,7 +4948,7 @@ class _TranslationsMisskeyAchievementsTypesPostedAtLateNightKoGs extends Transla
 
 	// Translations
 	@override String get title => '올빼미';
-	@override String get description => '한밤중에 노트를 포스트했습니다';
+	@override String get description => '한밤중에 노트를 게시했다';
 	@override String get flavor => '잠 좀 자세요. 걱정돼요.';
 }
 
@@ -4882,7 +4972,7 @@ class _TranslationsMisskeyAchievementsTypesSelfQuoteKoGs extends TranslationsMis
 
 	// Translations
 	@override String get title => '혼잣말';
-	@override String get description => '자기 노트를 인용했습니다';
+	@override String get description => '자기 노트를 인용했다';
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
@@ -4893,7 +4983,7 @@ class _TranslationsMisskeyAchievementsTypesHtl20npmKoGs extends TranslationsMiss
 
 	// Translations
 	@override String get title => '타임라인 폭주 중';
-	@override String get description => '1분 사이에 홈 타임라인에 노트가 20개 넘게 생성되었습니다';
+	@override String get description => '1분 사이에 홈 타임라인에 노트가 20개 넘게 생성되었다';
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
@@ -4904,7 +4994,7 @@ class _TranslationsMisskeyAchievementsTypesViewInstanceChartKoGs extends Transla
 
 	// Translations
 	@override String get title => '애널리스트';
-	@override String get description => '서버의 차트를 열었습니다';
+	@override String get description => '서버의 차트를 열었다';
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
@@ -4915,7 +5005,7 @@ class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoGs exte
 
 	// Translations
 	@override String get title => 'Hello, world!';
-	@override String get description => '스크래치패드에서 hello world를 출력했습니다';
+	@override String get description => '스크래치패드에서 hello world를 출력했다';
 }
 
 // Path: misskey.achievements_.types_.open3windows_
@@ -4926,7 +5016,7 @@ class _TranslationsMisskeyAchievementsTypesOpen3windowsKoGs extends Translations
 
 	// Translations
 	@override String get title => '멀티 윈도우';
-	@override String get description => '3개 이상의 창을 열었습니다';
+	@override String get description => '3개 이상의 창을 열었다';
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
@@ -4937,7 +5027,7 @@ class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceKoGs exte
 
 	// Translations
 	@override String get title => '순환 참조';
-	@override String get description => '드라이브 폴더에 스스로를 넣게 했습니다';
+	@override String get description => '드라이브 폴더에 스스로를 넣게 했다';
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
@@ -4948,7 +5038,7 @@ class _TranslationsMisskeyAchievementsTypesReactWithoutReadKoGs extends Translat
 
 	// Translations
 	@override String get title => '읽고 답하긴 하시는 건가요?';
-	@override String get description => '100자가 넘는 노트를 작성한 지 3초 안에 반응했어요';
+	@override String get description => '100자가 넘는 노트를 작성한 지 3초 안에 리액션했다';
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
@@ -4958,8 +5048,8 @@ class _TranslationsMisskeyAchievementsTypesClickedClickHereKoGs extends Translat
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '여기를 누르세요';
-	@override String get description => '여기를 눌렀습니다';
+	@override String get title => '여길 눌러보세요';
+	@override String get description => '여기를 눌렀다';
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
@@ -4970,7 +5060,7 @@ class _TranslationsMisskeyAchievementsTypesJustPlainLuckyKoGs extends Translatio
 
 	// Translations
 	@override String get title => '그냥 운이 좋았어';
-	@override String get description => '매 10초마다 0.01%의 확률로 달성됩니다';
+	@override String get description => '매 10초마다 0.01%의 확률로 달성된다';
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
@@ -4981,7 +5071,7 @@ class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloKoGs extends Translati
 
 	// Translations
 	@override String get title => '신 콤플렉스';
-	@override String get description => '이름을 syuilo로 설정했습니다';
+	@override String get description => '이름을 syuilo로 설정했다';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
@@ -4992,7 +5082,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1KoGs extend
 
 	// Translations
 	@override String get title => '1주년';
-	@override String get description => '계정을 생성하고 1년이 지났습니다';
+	@override String get description => '계정을 생성하고 1년이 지났다';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
@@ -5003,7 +5093,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2KoGs extend
 
 	// Translations
 	@override String get title => '2주년';
-	@override String get description => '계정을 생성하고 2년이 지났습니다';
+	@override String get description => '계정을 생성하고 2년이 지났다';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
@@ -5014,7 +5104,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3KoGs extend
 
 	// Translations
 	@override String get title => '3주년';
-	@override String get description => '계정을 생성하고 3년이 지났습니다';
+	@override String get description => '계정을 생성하고 3년이 지났다';
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
@@ -5025,7 +5115,7 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayKoGs extends Transl
 
 	// Translations
 	@override String get title => '생일 축하합니다!';
-	@override String get description => '생일에 로그인했습니다';
+	@override String get description => '생일에 로그인했다';
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
@@ -5036,7 +5126,7 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoGs extends Tra
 
 	// Translations
 	@override String get title => '새해 복 많이 받으세요';
-	@override String get description => '새해 첫 날에 로그인했습니다';
+	@override String get description => '새해 첫 날에 로그인했다';
 	@override String get flavor => '올해에도 저희 서버에 관심을 가져 주셔서 감사합니다';
 }
 
@@ -5048,8 +5138,8 @@ class _TranslationsMisskeyAchievementsTypesCookieClickedKoGs extends Translation
 
 	// Translations
 	@override String get title => '쿠키를 클릭하는 게임';
-	@override String get description => '쿠키를 클릭했습니다';
-	@override String get flavor => '소프트웨어 착각하지 않으셨나요?';
+	@override String get description => '쿠키를 클릭했다';
+	@override String get flavor => '소프트웨어 착각하지 않았어?';
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
@@ -5060,7 +5150,7 @@ class _TranslationsMisskeyAchievementsTypesBrainDiverKoGs extends TranslationsMi
 
 	// Translations
 	@override String get title => 'Brain Diver';
-	@override String get description => 'Brain Diver로의 링크를 첨부했습니다';
+	@override String get description => 'Brain Diver로의 링크를 첨부했다';
 	@override String get flavor => 'Misskey-Misskey La-Tu-Ma';
 }
 
@@ -5072,7 +5162,7 @@ class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonKoGs exten
 
 	// Translations
 	@override String get title => '테스트 과잉';
-	@override String get description => '매우 짧은 시간 안에 알림 테스트를 여러 번 수행했습니다';
+	@override String get description => '매우 짧은 시간 안에 알림 테스트를 여러 번 수행했다';
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
@@ -5105,7 +5195,7 @@ class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoGs ext
 
 	// Translations
 	@override String get title => '더블 🤯';
-	@override String get description => '버블게임에서 가장 큰 물건 2개를 동시에 내놓았다.';
+	@override String get description => '버블게임에서 가장 큰 물건 2개를 동시에 내놓았다';
 	@override String get flavor => '이 정도만　도시락통에　🤯　🤯　조금만 더';
 }
 
@@ -5292,8 +5382,8 @@ class _TranslationsMisskeyCaptchaErrorUnknownKoGs extends TranslationsMisskeyCap
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'CAPTCHA 에러';
-	@override String get text => '알 수 없는 에러가 발생했습니다.';
+	@override String get title => 'CAPTCHA 오류';
+	@override String get text => '알 수 없는 오류가 발생했습니다.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
@@ -5314,6 +5404,6 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsK
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get mail => '모더레이터 권한을 가진 사용자의 이메일 주소에 알림을 보냅니다 (신고를 받은 때에만)';
+	@override String get mail => '모더레이터 권한을 가진 유저의 이메일 주소에 알림을 보냅니다 (신고를 받은 때에만)';
 	@override String get webhook => '지정한 SystemWebhook에 알림을 보냅니다 (신고를 받은 때와 해결했을 때에 송신)';
 }

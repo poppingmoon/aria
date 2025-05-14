@@ -509,7 +509,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Separar amb espais per la condició AND o amb salts de línia per la condició OR.';
 	@override String get notifyAntenna => 'Notifica\'m les publicacions noves';
 	@override String get withFileAntenna => 'Només les publicacions amb fitxers';
-	@override String get hideNotesInSensitiveChannel => 'Amaga les notes a canals sensibles ';
+	@override String get excludeNotesInSensitiveChannel => 'Excloure notes a canals sensibles';
 	@override String get enableServiceworker => 'Activar les notificacions al navegador';
 	@override String get antennaUsersDescription => 'Llistar un nom d\'usuari per línia';
 	@override String get caseSensitive => 'Sensible a majúscules i minúscules ';
@@ -622,7 +622,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String limitTo({required Object x}) => 'Limita a ${x}';
 	@override String get noFollowRequests => 'No tens sol·licituds de seguiment';
 	@override String get openImageInNewTab => 'Obre imatges a una nova pestanya';
-	@override String get dashboard => 'Taulell de control';
+	@override String get dashboard => 'Tauler de control';
 	@override String get local => 'Local';
 	@override String get remote => 'Remot';
 	@override String get total => 'Total';
@@ -737,7 +737,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get plugins => 'Extensions';
 	@override String get preferencesBackups => 'Configuracions de les Còpies de seguretat';
 	@override String get deck => 'Escriptori';
-	@override String get undeck => 'Tanca l\'escriptori';
+	@override String get undeck => 'Tanca el tauler';
 	@override String get useBlurEffectForModal => 'Utilitzar l\'efecte de difuminació a modals';
 	@override String get useFullReactionPicker => 'Utilitza el cercador de reaccions d\'escala sencera';
 	@override String get width => 'Amplada';
@@ -1000,7 +1000,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get emailRequiredForSignup => 'Demanar correu electrònic per registrar-se ';
 	@override String get unread => 'Sense llegir';
 	@override String get filter => 'Filtrar';
-	@override String get controlPanel => 'Taulell de control';
+	@override String get controlPanel => 'Tauler de control';
 	@override String get manageAccounts => 'Gestionar comptes';
 	@override String get makeReactionsPublic => 'Reaccions públiques ';
 	@override String get makeReactionsPublicDescription => 'Això fa que totes les teves reaccions siguin visibles públicament ';
@@ -1426,6 +1426,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get bottom => 'A baix ';
 	@override String get top => 'A dalt ';
 	@override String get embed => 'Incrustar';
+	@override String get settingsMigrating => 'Estem fent la migració de la teva configuració. Si us plau espera un moment... (També pots fer la migració més tard i manualment anant a Preferències → Altres configuracions → Migrar configuració antiga)';
+	@override String get readonly => 'Només lectura';
+	@override String get goToDeck => 'Tornar al tauler';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1552,6 +1555,7 @@ class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
 	@override String get muteThisRoom => 'Silenciar aquesta sala';
 	@override String get deleteRoom => 'Esborrar la sala';
 	@override String get chatNotAvailableForThisAccountOrServer => 'El xat no està disponible per aquest servidor o aquest compte.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'El xat és només de lectura en aquest servidor o compte. No es poden escriure nous missatges ni crear o unir-se a sales de xat.';
 	@override String get chatNotAvailableInOtherAccount => 'La funció de xat es troba desactivada al compte de l\'altre usuari.';
 	@override String get cannotChatWithTheUser => 'No pots xatejar amb aquest usuari';
 	@override String get cannotChatWithTheUser_description => 'El xat està desactivat o l\'altra part encara no l\'ha obert.';
@@ -1886,6 +1890,8 @@ class _TranslationsMisskeyRoleCaEs extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => 'La línia de temps d\'aquest rol i la llista d\'usuaris seran públics si s\'activa.';
 	@override String get displayOrder => 'Posició ';
 	@override String get descriptionOfDisplayOrder => 'Com més gran és el número, més dalt la seva posició a la interfície.';
+	@override String get preserveAssignmentOnMoveAccount => 'L\'estat de l\'assignació també es trasllada amb el compte migrat';
+	@override String get preserveAssignmentOnMoveAccount_description => 'Si s\'activa quan es migra un compte amb aquest rol, el compte migrat també heretarà aquest rol.';
 	@override String get canEditMembersByModerator => 'Permetre que els moderadors editin la llista d\'usuaris en aquest rol';
 	@override String get descriptionOfCanEditMembersByModerator => 'Quan s\'activa, els moderadors, així com els administradors, podran afegir i treure usuaris d\'aquest rol. Si es troba desactivat, només els administradors poden assignar usuaris.';
 	@override String get priority => 'Prioritat';
@@ -2831,7 +2837,7 @@ class _TranslationsMisskeyDeckCaEs extends TranslationsMisskeyDeckEnUs {
 	@override String get columnGap => 'Espai entre columnes';
 	@override String get deckMenuPosition => 'Posició del menú del tauler';
 	@override String get navbarPosition => 'Posició de la barra de navegació ';
-	@override String get addColumn => 'Afig una columna';
+	@override String get addColumn => 'Afegeix una columna';
 	@override String get newNoteNotificationSettings => 'Configuració de notificacions per a notes noves';
 	@override String get configureColumn => 'Configuració de columnes';
 	@override String get swapLeft => 'Mou a l’esquerra';
@@ -3040,7 +3046,7 @@ class _TranslationsMisskeyReversiCaEs extends TranslationsMisskeyReversiEnUs {
 	// Translations
 	@override String get reversi => 'Reversi';
 	@override String get gameSettings => 'Opcions del joc';
-	@override String get chooseBoard => 'Escull un taulell';
+	@override String get chooseBoard => 'Escull un tauler';
 	@override String get blackOrWhite => 'Negres/Blanques';
 	@override String blackIs({required Object name}) => '${name} juga amb negres ';
 	@override String get rules => 'Regles';
@@ -3585,7 +3591,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'Autoritza la importació de seguidors';
 	@override String get canImportMuting => 'Autoritza la importació de silenciats';
 	@override String get canImportUserLists => 'Autoritza la importació de llistes d\'usuaris ';
-	@override String get canChat => 'Pot xatejar';
+	@override String get chatAvailability => 'Es permet xatejar';
 }
 
 // Path: misskey.role_.condition_
@@ -3648,7 +3654,7 @@ class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get fg => 'Text';
 	@override String get focus => 'Enfocament';
 	@override String get indicator => 'Indicador';
-	@override String get panel => 'Taulell ';
+	@override String get panel => 'Tauler';
 	@override String get shadow => 'Ombra';
 	@override String get header => 'Capçalera';
 	@override String get navBg => 'Fons de la barra lateral';

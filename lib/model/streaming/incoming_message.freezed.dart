@@ -81,14 +81,14 @@ as Map<String, dynamic>,
 @JsonSerializable(createToJson: false)
 
 class _IncomingMessage implements IncomingMessage {
-  const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type, required final  Map<String, dynamic> body}): _body = body;
+  const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type, final  Map<String, dynamic> body = const {}}): _body = body;
   factory _IncomingMessage.fromJson(Map<String, dynamic> json) => _$IncomingMessageFromJson(json);
 
 // https://github.com/rrousselGit/freezed/issues/488
 // ignore: invalid_annotation_target
 @override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) final  IncomingMessageType? type;
  final  Map<String, dynamic> _body;
-@override Map<String, dynamic> get body {
+@override@JsonKey() Map<String, dynamic> get body {
   if (_body is EqualUnmodifiableMapView) return _body;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_body);

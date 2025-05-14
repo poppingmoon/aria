@@ -13,7 +13,7 @@ _IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) =>
         json['type'],
         unknownValue: JsonKey.nullForUndefinedEnumValue,
       ),
-      body: json['body'] as Map<String, dynamic>,
+      body: json['body'] as Map<String, dynamic>? ?? const {},
     );
 
 const _$IncomingMessageTypeEnumMap = {

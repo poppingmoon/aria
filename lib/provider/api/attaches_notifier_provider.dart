@@ -18,6 +18,7 @@ class AttachesNotifier extends _$AttachesNotifier {
     Account account, {
     String? noteId,
     bool gallery = false,
+    bool chat = false,
   }) {
     if (noteId != null) {
       final note = ref.read(noteProvider(account, noteId));
@@ -26,7 +27,7 @@ class AttachesNotifier extends _$AttachesNotifier {
               .toList() ??
           [];
     }
-    if (!gallery) {
+    if (!gallery && !chat) {
       ref.keepAlive();
     }
     return [];

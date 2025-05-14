@@ -61,6 +61,32 @@ class TimelineMenu extends ConsumerWidget {
                   ),
                 ),
               ),
+            if (i?.canChat != null)
+              Card(
+                clipBehavior: Clip.hardEdge,
+                child: InkWell(
+                  onTap: () => context.push('/$account/chat'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Stack(
+                        children: [
+                          const Icon(Icons.message),
+                          if (i?.hasUnreadChatMessages ?? false)
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                              child: const SizedBox(height: 12.0, width: 12.0),
+                            ),
+                        ],
+                      ),
+                      FittedBox(child: Text(t.misskey.chat)),
+                    ],
+                  ),
+                ),
+              ),
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(

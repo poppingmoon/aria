@@ -65,7 +65,7 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
   String get _id => tabSettings.id ?? tabSettings.tabType.toString();
 
   WebSocketChannel get _webSocketChannel =>
-      ref.read(webSocketChannelProvider(tabSettings.account));
+      ref.read(webSocketChannelProvider(tabSettings.account)).$1;
 
   Future<void> connect() async {
     switch (tabSettings.tabType) {

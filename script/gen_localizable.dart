@@ -48,6 +48,7 @@ const notificationKeys = [
   'login',
   'pollEnded',
   'roleAssigned',
+  'chatRoomInvitationReceived',
   'createToken',
   'testNotification',
   'notificationWillBeDisplayedLikeThis',

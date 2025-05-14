@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/api/chat_message_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/api/misskey_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/muted_emojis_notifier_provider.dart';
@@ -27,18 +30,26 @@ class EmojiSheet extends ConsumerWidget {
     required this.account,
     required this.emoji,
     this.targetNoteId,
+    this.targetMessageId,
   });
 
   final Account account;
   final String emoji;
   final String? targetNoteId;
+  final String? targetMessageId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final targetNote =
-        (targetNoteId?.isNotEmpty ?? false)
+        targetNoteId?.isNotEmpty ?? false
             ? ref.watch(noteProvider(account, targetNoteId!))
+            : null;
+    final targetMessage =
+        targetMessageId?.isNotEmpty ?? false
+            ? ref
+                .watch(chatMessageProvider(account, targetMessageId!))
+                .valueOrNull
             : null;
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
@@ -51,6 +62,10 @@ class EmojiSheet extends ConsumerWidget {
         targetNote != null &&
         (!isCustomEmoji ||
             data != null && checkReactionPermissions(i, targetNote, data));
+    final canReactToMessage =
+        !account.isGuest &&
+        targetMessage != null &&
+        targetMessage.fromUserId != i?.id;
     final isPinnedForReaction = ref.watch(
       pinnedEmojisNotifierProvider(
         account,
@@ -147,6 +162,32 @@ class EmojiSheet extends ConsumerWidget {
               }
               if (!context.mounted) return;
               context.pop();
+            },
+          ),
+        if (canReactToMessage)
+          ListTile(
+            leading: const Icon(Icons.add),
+            title: Text(t.misskey.doReaction),
+            onTap: () async {
+              final result = await futureWithDialog(
+                context,
+                ref
+                    .read(misskeyProvider(account))
+                    .chat
+                    .messages
+                    .react(
+                      ChatMessagesReactRequest(
+                        messageId: targetMessage.id,
+                        reaction: emoji,
+                      ),
+                    )
+                    .then((_) => ()),
+                overlay: false,
+              );
+              if (!context.mounted) return;
+              if (result != null) {
+                context.pop();
+              }
             },
           ),
         if (!account.isGuest && host == null) ...[

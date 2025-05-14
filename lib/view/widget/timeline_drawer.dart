@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/accounts_notifier_provider.dart';
@@ -143,6 +144,24 @@ class TimelineDrawer extends HookConsumerWidget {
                 title: Text(t.misskey.drive),
                 onTap: () => context.push('/$account/drive'),
               ),
+              if (i?.canChat != null && i?.chatScope != ChatScope.none)
+                ListTile(
+                  leading: Stack(
+                    children: [
+                      const Icon(Icons.message),
+                      if (i?.hasUnreadChatMessages ?? false)
+                        DecoratedBox(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          child: const SizedBox(height: 12.0, width: 12.0),
+                        ),
+                    ],
+                  ),
+                  title: Text(t.misskey.chat),
+                  onTap: () => context.push('/$account/chat'),
+                ),
               ListTile(
                 leading: const Icon(Icons.tag),
                 title: Text(t.misskey.explore),

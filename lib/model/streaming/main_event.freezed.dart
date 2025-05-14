@@ -12,6 +12,189 @@ part of 'main_event.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+/// @nodoc
+mixin _$Notification {
+
+ INotificationsResponse get notification;
+/// Create a copy of Notification
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$NotificationCopyWith<Notification> get copyWith => _$NotificationCopyWithImpl<Notification>(this as Notification, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Notification&&(identical(other.notification, notification) || other.notification == notification));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,notification);
+
+@override
+String toString() {
+  return 'Notification(notification: $notification)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $NotificationCopyWith<$Res>  {
+  factory $NotificationCopyWith(Notification value, $Res Function(Notification) _then) = _$NotificationCopyWithImpl;
+@useResult
+$Res call({
+ INotificationsResponse notification
+});
+
+
+
+
+}
+/// @nodoc
+class _$NotificationCopyWithImpl<$Res>
+    implements $NotificationCopyWith<$Res> {
+  _$NotificationCopyWithImpl(this._self, this._then);
+
+  final Notification _self;
+  final $Res Function(Notification) _then;
+
+/// Create a copy of Notification
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? notification = null,}) {
+  return _then(Notification(
+null == notification ? _self.notification : notification // ignore: cast_nullable_to_non_nullable
+as INotificationsResponse,
+  ));
+}
+
+}
+
+
+/// @nodoc
+mixin _$Mention {
+
+ Note get note;
+/// Create a copy of Mention
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MentionCopyWith<Mention> get copyWith => _$MentionCopyWithImpl<Mention>(this as Mention, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Mention&&(identical(other.note, note) || other.note == note));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,note);
+
+@override
+String toString() {
+  return 'Mention(note: $note)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MentionCopyWith<$Res>  {
+  factory $MentionCopyWith(Mention value, $Res Function(Mention) _then) = _$MentionCopyWithImpl;
+@useResult
+$Res call({
+ Note note
+});
+
+
+
+
+}
+/// @nodoc
+class _$MentionCopyWithImpl<$Res>
+    implements $MentionCopyWith<$Res> {
+  _$MentionCopyWithImpl(this._self, this._then);
+
+  final Mention _self;
+  final $Res Function(Mention) _then;
+
+/// Create a copy of Mention
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? note = null,}) {
+  return _then(Mention(
+null == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as Note,
+  ));
+}
+
+}
+
+
+/// @nodoc
+mixin _$MeUpdated {
+
+ MeDetailed get i;
+/// Create a copy of MeUpdated
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MeUpdatedCopyWith<MeUpdated> get copyWith => _$MeUpdatedCopyWithImpl<MeUpdated>(this as MeUpdated, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MeUpdated&&(identical(other.i, i) || other.i == i));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,i);
+
+@override
+String toString() {
+  return 'MeUpdated(i: $i)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MeUpdatedCopyWith<$Res>  {
+  factory $MeUpdatedCopyWith(MeUpdated value, $Res Function(MeUpdated) _then) = _$MeUpdatedCopyWithImpl;
+@useResult
+$Res call({
+ MeDetailed i
+});
+
+
+
+
+}
+/// @nodoc
+class _$MeUpdatedCopyWithImpl<$Res>
+    implements $MeUpdatedCopyWith<$Res> {
+  _$MeUpdatedCopyWithImpl(this._self, this._then);
+
+  final MeUpdated _self;
+  final $Res Function(MeUpdated) _then;
+
+/// Create a copy of MeUpdated
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? i = null,}) {
+  return _then(MeUpdated(
+null == i ? _self.i : i // ignore: cast_nullable_to_non_nullable
+as MeDetailed,
+  ));
+}
+
+}
+
+
 
 /// @nodoc
 mixin _$UrlUploadFinished {
@@ -51,7 +234,7 @@ $Res call({
 });
 
 
-$DriveFileCopyWith<$Res> get file;
+
 
 }
 /// @nodoc
@@ -65,100 +248,258 @@ class _$UrlUploadFinishedCopyWithImpl<$Res>
 /// Create a copy of UrlUploadFinished
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? marker = freezed,Object? file = null,}) {
-  return _then(_self.copyWith(
+  return _then(UrlUploadFinished(
 marker: freezed == marker ? _self.marker : marker // ignore: cast_nullable_to_non_nullable
 as String?,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
 as DriveFile,
   ));
 }
-/// Create a copy of UrlUploadFinished
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$DriveFileCopyWith<$Res> get file {
-  
-  return $DriveFileCopyWith<$Res>(_self.file, (value) {
-    return _then(_self.copyWith(file: value));
-  });
-}
+
 }
 
 
 /// @nodoc
-@JsonSerializable(createToJson: false)
+mixin _$UnreadNotification {
 
-class _UrlUploadFinished implements UrlUploadFinished {
-  const _UrlUploadFinished({this.marker, required this.file});
-  factory _UrlUploadFinished.fromJson(Map<String, dynamic> json) => _$UrlUploadFinishedFromJson(json);
-
-@override final  String? marker;
-@override final  DriveFile file;
-
-/// Create a copy of UrlUploadFinished
+ INotificationsResponse get notification;
+/// Create a copy of UnreadNotification
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$UrlUploadFinishedCopyWith<_UrlUploadFinished> get copyWith => __$UrlUploadFinishedCopyWithImpl<_UrlUploadFinished>(this, _$identity);
+$UnreadNotificationCopyWith<UnreadNotification> get copyWith => _$UnreadNotificationCopyWithImpl<UnreadNotification>(this as UnreadNotification, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UrlUploadFinished&&(identical(other.marker, marker) || other.marker == marker)&&(identical(other.file, file) || other.file == file));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnreadNotification&&(identical(other.notification, notification) || other.notification == notification));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
-int get hashCode => Object.hash(runtimeType,marker,file);
+int get hashCode => Object.hash(runtimeType,notification);
 
 @override
 String toString() {
-  return 'UrlUploadFinished(marker: $marker, file: $file)';
+  return 'UnreadNotification(notification: $notification)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$UrlUploadFinishedCopyWith<$Res> implements $UrlUploadFinishedCopyWith<$Res> {
-  factory _$UrlUploadFinishedCopyWith(_UrlUploadFinished value, $Res Function(_UrlUploadFinished) _then) = __$UrlUploadFinishedCopyWithImpl;
-@override @useResult
+abstract mixin class $UnreadNotificationCopyWith<$Res>  {
+  factory $UnreadNotificationCopyWith(UnreadNotification value, $Res Function(UnreadNotification) _then) = _$UnreadNotificationCopyWithImpl;
+@useResult
 $Res call({
- String? marker, DriveFile file
+ INotificationsResponse notification
 });
 
 
-@override $DriveFileCopyWith<$Res> get file;
+
 
 }
 /// @nodoc
-class __$UrlUploadFinishedCopyWithImpl<$Res>
-    implements _$UrlUploadFinishedCopyWith<$Res> {
-  __$UrlUploadFinishedCopyWithImpl(this._self, this._then);
+class _$UnreadNotificationCopyWithImpl<$Res>
+    implements $UnreadNotificationCopyWith<$Res> {
+  _$UnreadNotificationCopyWithImpl(this._self, this._then);
 
-  final _UrlUploadFinished _self;
-  final $Res Function(_UrlUploadFinished) _then;
+  final UnreadNotification _self;
+  final $Res Function(UnreadNotification) _then;
 
-/// Create a copy of UrlUploadFinished
+/// Create a copy of UnreadNotification
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? marker = freezed,Object? file = null,}) {
-  return _then(_UrlUploadFinished(
-marker: freezed == marker ? _self.marker : marker // ignore: cast_nullable_to_non_nullable
-as String?,file: null == file ? _self.file : file // ignore: cast_nullable_to_non_nullable
-as DriveFile,
+@pragma('vm:prefer-inline') @override $Res call({Object? notification = null,}) {
+  return _then(UnreadNotification(
+null == notification ? _self.notification : notification // ignore: cast_nullable_to_non_nullable
+as INotificationsResponse,
   ));
 }
 
-/// Create a copy of UrlUploadFinished
+}
+
+
+/// @nodoc
+mixin _$NewChatMessage {
+
+ ChatMessage get message;
+/// Create a copy of NewChatMessage
 /// with the given fields replaced by the non-null parameter values.
-@override
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$DriveFileCopyWith<$Res> get file {
-  
-  return $DriveFileCopyWith<$Res>(_self.file, (value) {
-    return _then(_self.copyWith(file: value));
-  });
+$NewChatMessageCopyWith<NewChatMessage> get copyWith => _$NewChatMessageCopyWithImpl<NewChatMessage>(this as NewChatMessage, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewChatMessage&&(identical(other.message, message) || other.message == message));
 }
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'NewChatMessage(message: $message)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $NewChatMessageCopyWith<$Res>  {
+  factory $NewChatMessageCopyWith(NewChatMessage value, $Res Function(NewChatMessage) _then) = _$NewChatMessageCopyWithImpl;
+@useResult
+$Res call({
+ ChatMessage message
+});
+
+
+
+
+}
+/// @nodoc
+class _$NewChatMessageCopyWithImpl<$Res>
+    implements $NewChatMessageCopyWith<$Res> {
+  _$NewChatMessageCopyWithImpl(this._self, this._then);
+
+  final NewChatMessage _self;
+  final $Res Function(NewChatMessage) _then;
+
+/// Create a copy of NewChatMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? message = null,}) {
+  return _then(NewChatMessage(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as ChatMessage,
+  ));
+}
+
+}
+
+
+/// @nodoc
+mixin _$ReceiveFollowRequest {
+
+ UserDetailed get user;
+/// Create a copy of ReceiveFollowRequest
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ReceiveFollowRequestCopyWith<ReceiveFollowRequest> get copyWith => _$ReceiveFollowRequestCopyWithImpl<ReceiveFollowRequest>(this as ReceiveFollowRequest, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceiveFollowRequest&&(identical(other.user, user) || other.user == user));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,user);
+
+@override
+String toString() {
+  return 'ReceiveFollowRequest(user: $user)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ReceiveFollowRequestCopyWith<$Res>  {
+  factory $ReceiveFollowRequestCopyWith(ReceiveFollowRequest value, $Res Function(ReceiveFollowRequest) _then) = _$ReceiveFollowRequestCopyWithImpl;
+@useResult
+$Res call({
+ UserDetailed user
+});
+
+
+
+
+}
+/// @nodoc
+class _$ReceiveFollowRequestCopyWithImpl<$Res>
+    implements $ReceiveFollowRequestCopyWith<$Res> {
+  _$ReceiveFollowRequestCopyWithImpl(this._self, this._then);
+
+  final ReceiveFollowRequest _self;
+  final $Res Function(ReceiveFollowRequest) _then;
+
+/// Create a copy of ReceiveFollowRequest
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? user = null,}) {
+  return _then(ReceiveFollowRequest(
+null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as UserDetailed,
+  ));
+}
+
+}
+
+
+/// @nodoc
+mixin _$AnnouncementCreated {
+
+ AnnouncementsResponse get announcement;
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AnnouncementCreatedCopyWith<AnnouncementCreated> get copyWith => _$AnnouncementCreatedCopyWithImpl<AnnouncementCreated>(this as AnnouncementCreated, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,announcement);
+
+@override
+String toString() {
+  return 'AnnouncementCreated(announcement: $announcement)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AnnouncementCreatedCopyWith<$Res>  {
+  factory $AnnouncementCreatedCopyWith(AnnouncementCreated value, $Res Function(AnnouncementCreated) _then) = _$AnnouncementCreatedCopyWithImpl;
+@useResult
+$Res call({
+ AnnouncementsResponse announcement
+});
+
+
+
+
+}
+/// @nodoc
+class _$AnnouncementCreatedCopyWithImpl<$Res>
+    implements $AnnouncementCreatedCopyWith<$Res> {
+  _$AnnouncementCreatedCopyWithImpl(this._self, this._then);
+
+  final AnnouncementCreated _self;
+  final $Res Function(AnnouncementCreated) _then;
+
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? announcement = null,}) {
+  return _then(AnnouncementCreated(
+null == announcement ? _self.announcement : announcement // ignore: cast_nullable_to_non_nullable
+as AnnouncementsResponse,
+  ));
+}
+
+}
+
 
 // dart format on

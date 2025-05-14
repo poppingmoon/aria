@@ -60,6 +60,7 @@ class Mfm extends HookConsumerWidget {
     this.emojis,
     this.author,
     this.noteId,
+    this.messageId,
     this.nyaize = false,
     this.isUserDescription = false,
     this.onClickEv,
@@ -80,6 +81,7 @@ class Mfm extends HookConsumerWidget {
   final Map<String, String>? emojis;
   final User? author;
   final String? noteId;
+  final String? messageId;
   final bool nyaize;
   final bool isUserDescription;
   final void Function(String clickEv)? onClickEv;
@@ -134,6 +136,7 @@ class Mfm extends HookConsumerWidget {
       emojis: emojis,
       author: author,
       noteId: noteId,
+      messageId: messageId,
       shouldNyaize:
           nyaize && (author?.isCat ?? false) && (author?.speakAsCat ?? true),
       isUserDescription: isUserDescription,
@@ -215,6 +218,7 @@ class _Mfm extends StatelessWidget {
     this.emojis,
     this.author,
     this.noteId,
+    this.messageId,
     required this.shouldNyaize,
     required this.isUserDescription,
     this.onClickEv,
@@ -237,6 +241,7 @@ class _Mfm extends StatelessWidget {
   final Map<String, String>? emojis;
   final User? author;
   final String? noteId;
+  final String? messageId;
   final bool shouldNyaize;
   final bool isUserDescription;
   final void Function(String clickEv)? onClickEv;
@@ -509,6 +514,7 @@ class _Mfm extends StatelessWidget {
                           account: account,
                           emoji: ':$name@${author?.host ?? '.'}:',
                           targetNoteId: noteId,
+                          targetMessageId: messageId,
                         ),
                   )
                   : null,
@@ -539,6 +545,7 @@ class _Mfm extends StatelessWidget {
                           account: account,
                           emoji: emoji,
                           targetNoteId: noteId,
+                          targetMessageId: messageId,
                         ),
                   )
                   : null,

@@ -380,6 +380,7 @@ class _TimelinesPageButton extends ConsumerWidget {
     final requireCredencial = switch (buttonType) {
       TimelinesPageButtonType.announcements => false,
       TimelinesPageButtonType.antennas => true,
+      TimelinesPageButtonType.chat => true,
       TimelinesPageButtonType.channels => false,
       TimelinesPageButtonType.clips => true,
       TimelinesPageButtonType.drive => true,
@@ -410,6 +411,7 @@ class _TimelinesPageButton extends ConsumerWidget {
     final tooltip = switch (buttonType) {
       TimelinesPageButtonType.announcements => t.misskey.announcements,
       TimelinesPageButtonType.antennas => t.misskey.antennas,
+      TimelinesPageButtonType.chat => t.misskey.chat,
       TimelinesPageButtonType.channels => t.misskey.channel,
       TimelinesPageButtonType.clips => t.misskey.clips,
       TimelinesPageButtonType.drive => t.misskey.drive,
@@ -439,6 +441,7 @@ class _TimelinesPageButton extends ConsumerWidget {
         () => context.push('/$account/antennas'),
       TimelinesPageButtonType.channels =>
         () => context.push('/$account/channels'),
+      TimelinesPageButtonType.chat => () => context.push('/$account/chat'),
       TimelinesPageButtonType.clips => () => context.push('/$account/clips'),
       TimelinesPageButtonType.drive => () => context.push('/$account/drive'),
       TimelinesPageButtonType.explore =>
@@ -496,6 +499,19 @@ class _TimelinesPageButton extends ConsumerWidget {
         Icons.settings_input_antenna,
       ),
       TimelinesPageButtonType.channels => const Icon(Icons.tv),
+      TimelinesPageButtonType.chat => Stack(
+        children: [
+          const Icon(Icons.message),
+          if (i?.hasUnreadChatMessages ?? false)
+            DecoratedBox(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              child: const SizedBox(height: 12.0, width: 12.0),
+            ),
+        ],
+      ),
       TimelinesPageButtonType.clips => const Icon(Icons.attach_file),
       TimelinesPageButtonType.drive => const Icon(Icons.cloud),
       TimelinesPageButtonType.explore => const Icon(Icons.tag),

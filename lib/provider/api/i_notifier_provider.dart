@@ -266,6 +266,12 @@ class INotifier extends _$INotifier {
     await _save(i);
   }
 
+  Future<void> setChatScope(ChatScope chatScope) async {
+    final i = await _misskey.i.update(IUpdateRequest(chatScope: chatScope));
+    state = AsyncValue.data(i);
+    await _save(i);
+  }
+
   Future<void> setAlwaysMarkSensitive(bool alwaysMarkSensitive) async {
     final i = await _misskey.i.update(
       IUpdateRequest(alwaysMarkNsfw: alwaysMarkSensitive),
@@ -332,6 +338,20 @@ class INotifier extends _$INotifier {
     final i = await future;
     if (i != null) {
       state = AsyncValue.data(i.copyWith(hasUnreadNotification: false));
+    }
+  }
+
+  Future<void> addUnreadChatMessage() async {
+    final i = await future;
+    if (i != null) {
+      state = AsyncValue.data(i.copyWith(hasUnreadChatMessages: true));
+    }
+  }
+
+  Future<void> readChatMessages() async {
+    final i = await future;
+    if (i != null) {
+      state = AsyncValue.data(i.copyWith(hasUnreadChatMessages: false));
     }
   }
 

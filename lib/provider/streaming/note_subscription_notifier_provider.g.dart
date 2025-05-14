@@ -7,7 +7,7 @@ part of 'note_subscription_notifier_provider.dart';
 // **************************************************************************
 
 String _$noteSubscriptionNotifierHash() =>
-    r'3956dbc55d5fa7bdefe296d28f97aace1893098c';
+    r'd16216637a218914ecd35664cca30a24c3d544ac';
 
 /// Copied from Dart SDK
 class _SystemHash {

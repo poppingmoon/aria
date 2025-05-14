@@ -239,18 +239,18 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 (value) =>
                     settings.value = settings.value.copyWith(withFile: value),
           ),
-          if (this.settings?.hideNotesInSensitiveChannel != null ||
+          if (this.settings?.excludeNotesInSensitiveChannel != null ||
               (params?.any(
-                    (param) => param.name == 'hideNotesInSensitiveChannel',
+                    (param) => param.name == 'excludeNotesInSensitiveChannel',
                   ) ??
                   false))
             SwitchListTile(
-              title: Text(t.misskey.hideNotesInSensitiveChannel),
-              value: settings.value.hideNotesInSensitiveChannel ?? false,
+              title: Text(t.misskey.excludeNotesInSensitiveChannel),
+              value: settings.value.excludeNotesInSensitiveChannel ?? false,
               onChanged:
                   (value) =>
                       settings.value = settings.value.copyWith(
-                        hideNotesInSensitiveChannel: value,
+                        excludeNotesInSensitiveChannel: value,
                       ),
             ),
         ],

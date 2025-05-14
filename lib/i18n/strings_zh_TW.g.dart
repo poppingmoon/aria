@@ -509,7 +509,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => '空格代表「以及」（AND），換行代表「或者」（OR）';
 	@override String get notifyAntenna => '通知有新貼文';
 	@override String get withFileAntenna => '僅帶有附件的貼文';
-	@override String get hideNotesInSensitiveChannel => '隱藏敏感頻道的貼文';
 	@override String get enableServiceworker => '啟用瀏覽器的推播通知';
 	@override String get antennaUsersDescription => '填寫使用者名稱，以換行分隔';
 	@override String get caseSensitive => '區分大小寫';
@@ -1426,6 +1425,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '嵌入';
+	@override String get settingsMigrating => '正在移轉設定。請稍候……（之後也可以到「設定 → 其他 → 舊設定資訊移轉」中手動進行移轉）';
+	@override String get readonly => '唯讀';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1552,6 +1553,7 @@ class _TranslationsMisskeyChatZhTw extends TranslationsMisskeyChatEnUs {
 	@override String get muteThisRoom => '此聊天室已靜音';
 	@override String get deleteRoom => '刪除聊天室';
 	@override String get chatNotAvailableForThisAccountOrServer => '這個伺服器或這個帳號的聊天功能尚未啟用。';
+	@override String get chatIsReadOnlyForThisAccountOrServer => '在此伺服器或此帳戶上的聊天是唯讀的。您無法發布新訊息、建立或加入聊天室。';
 	@override String get chatNotAvailableInOtherAccount => '對方的帳號無法使用聊天功能。';
 	@override String get cannotChatWithTheUser => '無法與此使用者聊天';
 	@override String get cannotChatWithTheUser_description => '聊天功能目前無法使用，或對方尚未開放聊天功能。';
@@ -1650,7 +1652,7 @@ class _TranslationsMisskeyAccountSettingsZhTw extends TranslationsMisskeyAccount
 	// Translations
 	@override String get requireSigninToViewContents => '須登入以顯示內容';
 	@override String get requireSigninToViewContentsDescription1 => '必須登入才會顯示您建立的貼文等內容。可望有效防止資訊被爬蟲蒐集。';
-	@override String get requireSigninToViewContentsDescription2 => '來自不支援 URL 預覽 (OGP)、 網頁嵌入和引用貼文的伺服器，也將停止顯示。';
+	@override String get requireSigninToViewContentsDescription2 => '針對您貼文的 URL 預覽 (OGP) 與網頁嵌入功能將會無法使用。而不支援引用貼文的伺服器，也將停止顯示。';
 	@override String get requireSigninToViewContentsDescription3 => '這些限制可能不適用於被聯邦發送至遠端伺服器的內容。';
 	@override String get makeNotesFollowersOnlyBefore => '讓過去的貼文僅對追隨者顯示';
 	@override String get makeNotesFollowersOnlyBeforeDescription => '啟用此功能後，超過設定的日期和時間或超過設定時間的貼文將僅對追隨者顯示。 如果您再次停用它，貼文的公開狀態也會恢復原狀。';
@@ -1886,6 +1888,8 @@ class _TranslationsMisskeyRoleZhTw extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => '若開啟則公開角色時間軸。若角色不是公開的，則無法公開時間軸。';
 	@override String get displayOrder => '顯示順序';
 	@override String get descriptionOfDisplayOrder => '數字越大，顯示在UI上的越上面。';
+	@override String get preserveAssignmentOnMoveAccount => '將指派狀態承接至轉移後的帳戶';
+	@override String get preserveAssignmentOnMoveAccount_description => '開啟此選項後，當具備此角色的帳戶被移轉時，該角色也會承接至轉移後的帳戶。';
 	@override String get canEditMembersByModerator => '允許編輯審查員的成員';
 	@override String get descriptionOfCanEditMembersByModerator => '如果開啟，管理員與審查員都可以為使用者指派/解除指派該角色。如果關閉，則只有管理員可以執行。';
 	@override String get priority => '優先級';
@@ -3585,7 +3589,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => '允許匯入追隨名單';
 	@override String get canImportMuting => '允許匯入靜音名單';
 	@override String get canImportUserLists => '允許匯入清單';
-	@override String get canChat => '允許聊天';
+	@override String get chatAvailability => '允許聊天';
 }
 
 // Path: misskey.role_.condition_

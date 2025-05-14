@@ -25,6 +25,8 @@ import '../view/page/authenticate_page.dart';
 import '../view/page/avatar_decorations_page.dart';
 import '../view/page/channel/channel_page.dart';
 import '../view/page/channel/channels_page.dart';
+import '../view/page/chat/chat_page.dart';
+import '../view/page/chat/chat_room_page.dart';
 import '../view/page/clip_page.dart';
 import '../view/page/clips_page.dart';
 import '../view/page/crop_image_page.dart';
@@ -122,7 +124,8 @@ GoRouter router(Ref ref) {
       ),
       GoRoute(
         path: '/login',
-        builder: (_, _) => const LoginPage(),
+        builder:
+            (_, state) => LoginPage(query: state.uri.queryParameters['query']),
         routes: [
           GoRoute(
             path: 'authenticate',
@@ -395,6 +398,41 @@ GoRouter router(Ref ref) {
                         state.pathParameters['acct']!,
                       ),
                       channelId: state.pathParameters['channelId']!,
+                    ),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: 'chat',
+            builder:
+                (_, state) => ChatPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                  initialIndex: switch (state.uri.fragment) {
+                    'invitations' => 1,
+                    'joining-rooms' => 2,
+                    'owned-rooms' => 3,
+                    _ => 0,
+                  },
+                ),
+            routes: [
+              GoRoute(
+                path: 'room/:roomId',
+                builder:
+                    (_, state) => ChatRoomPage(
+                      account: Account.fromString(
+                        state.pathParameters['acct']!,
+                      ),
+                      roomId: state.pathParameters['roomId'],
+                    ),
+              ),
+              GoRoute(
+                path: 'user/:userId',
+                builder:
+                    (_, state) => ChatRoomPage(
+                      account: Account.fromString(
+                        state.pathParameters['acct']!,
+                      ),
+                      userId: state.pathParameters['userId'],
                     ),
               ),
             ],

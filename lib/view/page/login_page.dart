@@ -25,7 +25,9 @@ import '../widget/misskey_server_autocomplete.dart';
 import '../widget/misskey_server_background.dart';
 
 class LoginPage extends HookConsumerWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, this.query});
+
+  final String? query;
 
   Future<void> _launchMiAuth(
     WidgetRef ref,
@@ -114,9 +116,9 @@ class LoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
-    final controller = useTextEditingController();
+    final controller = useTextEditingController(text: this.query);
     final focusNode = useFocusNode();
-    final query = useState('');
+    final query = useState(this.query ?? '');
     final host =
         query.value
             .trim()

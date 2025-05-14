@@ -46,13 +46,28 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
     }
 
     ref.read(iNotifierProvider(account).notifier).readNotifications().ignore();
-    if (notification.body?.note?.id case final noteId?) {
-      ref.read(notesNotifierProvider(account).notifier).show(noteId).ignore();
-      return '/$account/notes/$noteId';
-    } else if (notification.body?.userId case final userId?) {
-      return '/$account/users/$userId';
-    } else if (notification.body?.type == NotificationType.noteScheduled) {
-      return '/$account/scheduled-notes';
+    switch (notification) {
+      case NotificationPushNotification(:final body):
+        if (body.note?.id case final noteId?) {
+          ref
+              .read(notesNotifierProvider(account).notifier)
+              .show(noteId)
+              .ignore();
+          return '/$account/notes/$noteId';
+        } else if (body.userId case final userId?) {
+          return '/$account/users/$userId';
+        } else if (body.type == NotificationType.chatRoomInvitationReceived) {
+          return '/$account/chat#invitations';
+        } else if (body.type == NotificationType.noteScheduled) {
+          return '/$account/scheduled-notes';
+        }
+      case NewChatMessagePushNotification(:final body):
+        if (body.toRoomId case final roomId?) {
+          return '/$account/chat/room/$roomId';
+        } else {
+          return '/$account/chat/user/${body.fromUserId}';
+        }
+      default:
     }
     return '/$account/notifications';
   }

@@ -509,7 +509,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Sparando con uno spazio indichi la condizione E (and). Separando con un a capo, indichi la condizione O (or).';
 	@override String get notifyAntenna => 'Invia notifiche delle nuove note';
 	@override String get withFileAntenna => 'Solo note con file in allegato';
-	@override String get hideNotesInSensitiveChannel => 'Nascondere le Note dai canali espliciti';
 	@override String get enableServiceworker => 'Abilita ServiceWorker';
 	@override String get antennaUsersDescription => 'Elenca un nome utente per riga';
 	@override String get caseSensitive => 'Sensibile alla distinzione tra maiuscole e minuscole';
@@ -608,7 +607,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get showReactionsCount => 'Visualizza il numero di reazioni su una nota';
 	@override String get noHistory => 'Nessuna cronologia';
 	@override String get signinHistory => 'Storico degli accessi al profilo';
-	@override String get enableAdvancedMfm => 'Attiva MFM avanzati';
+	@override String get enableAdvancedMfm => 'Attivare i Misskey Flavoured Markdown (MFM) avanzati';
 	@override String get enableAnimatedMfm => 'Attiva MFM animati';
 	@override String get doing => 'In corso...';
 	@override String get category => 'Categoria';
@@ -691,7 +690,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get uiInspectorDescription => 'Puoi visualizzare un elenco di elementi UI presenti in memoria. I componenti dell\'interfaccia utente vengono generati dalle funzioni Ui:C:.';
 	@override String get output => 'Output';
 	@override String get script => 'Script';
-	@override String get disablePagesScript => 'Disabilita AiScript nelle pagine';
+	@override String get disablePagesScript => 'Disabilitare AiScript nelle pagine';
 	@override String get updateRemoteUser => 'Aggiorna dati dal profilo remoto';
 	@override String get unsetUserAvatar => 'Rimozione foto profilo';
 	@override String get unsetUserAvatarConfirm => 'Vuoi davvero rimuovere la foto profilo?';
@@ -749,7 +748,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get permission => 'Autorizzazioni ';
 	@override String get adminPermission => 'Privilegi amministrativi';
 	@override String get enableAll => 'Abilita tutto';
-	@override String get disableAll => 'Disabilita tutto';
+	@override String get disableAll => 'Disabilitare tutto';
 	@override String get tokenRequested => 'Autorizza accesso al profilo';
 	@override String get pluginTokenRequestedDescription => 'Il plugin potrà utilizzare le autorizzazioni impostate qui.';
 	@override String get notificationType => 'Tipo di notifiche';
@@ -852,7 +851,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get lockedAccountInfo => 'A meno che non imposti la visibilità delle tue note su "Solo ai follower", le tue note sono visibili da tutti, anche se hai configurato l\'account per confermare manualmente le richieste di follow.';
 	@override String get alwaysMarkSensitive => 'Segnare automaticamente come espliciti gli allegati';
 	@override String get loadRawImages => 'Visualizza le intere immagini allegate invece delle miniature.';
-	@override String get disableShowingAnimatedImages => 'Disabilita le immagini animate';
+	@override String get disableShowingAnimatedImages => 'Disabilitare le immagini animate';
 	@override String get highlightSensitiveMedia => 'Evidenzia i media espliciti';
 	@override String get verificationEmailSent => 'Una mail di verifica è stata inviata. Si prega di accedere al collegamento per compiere la verifica.';
 	@override String get notSet => 'Non impostato';
@@ -1278,7 +1277,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get loadReplies => 'Leggi le risposte';
 	@override String get loadConversation => 'Leggi la conversazione';
 	@override String get pinnedList => 'Elenco in primo piano';
-	@override String get keepScreenOn => 'Mantieni lo schermo acceso';
+	@override String get keepScreenOn => 'Mantenere lo schermo acceso';
 	@override String get verifiedLink => 'Abbiamo confermato la validità di questo collegamento';
 	@override String get notifyNotes => 'Notifica nuove Note';
 	@override String get unnotifyNotes => 'Interrompi le notifiche di nuove Note';
@@ -1320,7 +1319,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get showAvatarDecorations => 'Mostra decorazione della foto profilo';
 	@override String get releaseToRefresh => 'Rilascia per aggiornare';
 	@override String get refreshing => 'Aggiornamento...';
-	@override String get pullDownToRefresh => 'Trascina per aggiornare';
+	@override String get pullDownToRefresh => 'Trascinare per aggiornare';
 	@override String get disableStreamingTimeline => 'Disabilitare gli aggiornamenti della TL in tempo reale';
 	@override String get useGroupedNotifications => 'Mostra le notifiche raggruppate';
 	@override String get signupPendingError => 'Si è verificato un problema durante la verifica del tuo indirizzo email. Potrebbe essere scaduto il collegamento temporaneo.';
@@ -1348,7 +1347,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get hemisphere => 'Geolocalizzazione';
 	@override String get withSensitive => 'Mostra le Note con allegati espliciti';
 	@override String userSaysSomethingSensitive({required Object name}) => 'Note da ${name} con allegati espliciti';
-	@override String get enableHorizontalSwipe => 'Trascina per invertire i tab';
+	@override String get enableHorizontalSwipe => 'Trascinare per invertire le colonne';
 	@override String get loading => 'Caricamento';
 	@override String get surrender => 'Annulla';
 	@override String get gameRetry => 'Riprova';
@@ -1886,6 +1885,8 @@ class _TranslationsMisskeyRoleItIt extends TranslationsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => 'Selezionandolo, la timeline del ruolo diventerà accessibile pubblicamente. Tranne se il ruolo non è pubblico.';
 	@override String get displayOrder => 'Ordine di visualizzazione';
 	@override String get descriptionOfDisplayOrder => 'I valori più alti vengono visualizzati per primi';
+	@override String get preserveAssignmentOnMoveAccount => 'Mantenere l\'assegnazione alla migrazione del profilo';
+	@override String get preserveAssignmentOnMoveAccount_description => 'Attivando, il ruolo verrà portato sul profilo destinatario, durante la migrazione.';
 	@override String get canEditMembersByModerator => 'Anche i Moderatori assegnano profili a questo ruolo';
 	@override String get descriptionOfCanEditMembersByModerator => 'Se disattivo, potranno farlo solamente gli Amministratori.';
 	@override String get priority => 'Priorità';
@@ -3585,7 +3586,6 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'Può importare Following';
 	@override String get canImportMuting => 'Può importare Silenziati';
 	@override String get canImportUserLists => 'Può importare liste di Profili';
-	@override String get canChat => 'Chat consentita';
 }
 
 // Path: misskey.role_.condition_
@@ -5131,7 +5131,7 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterItIt extends Translati
 	@override String get directoryToCategoryLabel => 'Inseriscile in una cartella omonima alla categoria';
 	@override String get directoryToCategoryCaption => 'Crea il campo categoria in base alla cartella.';
 	@override String get emojiInputAreaCaption => 'Seleziona l\'emoji da registrare utilizzando uno dei metodi.';
-	@override String get emojiInputAreaList1 => 'Trascina una immagine o una cartella in quest\'area';
+	@override String get emojiInputAreaList1 => 'Trascinare una immagine o una cartella in quest\'area';
 	@override String get emojiInputAreaList2 => 'Clicca per scegliere file dal tuo dispositivo';
 	@override String get emojiInputAreaList3 => 'Clicca per selezionare dal Drive';
 	@override String confirmRegisterEmojisDescription({required Object count}) => 'Registrazione delle emoji elencate come nuove emoji personalizzate. Vuoi davvero procedere? (Per evitare sovraccarichi, puoi registrare al massimo ${count} emoji per volta)';

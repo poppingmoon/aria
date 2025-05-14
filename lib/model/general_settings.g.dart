@@ -369,6 +369,7 @@ const _$TimelinesPageButtonTypeEnumMap = {
   TimelinesPageButtonType.announcements: 'announcements',
   TimelinesPageButtonType.antennas: 'antennas',
   TimelinesPageButtonType.channels: 'channels',
+  TimelinesPageButtonType.chat: 'chat',
   TimelinesPageButtonType.clips: 'clips',
   TimelinesPageButtonType.drive: 'drive',
   TimelinesPageButtonType.explore: 'explore',

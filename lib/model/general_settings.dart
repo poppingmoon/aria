@@ -185,6 +185,7 @@ enum TimelinesPageButtonType {
   announcements,
   antennas,
   channels,
+  chat,
   clips,
   drive,
   explore,
