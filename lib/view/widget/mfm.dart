@@ -505,6 +505,8 @@ class _Mfm extends StatelessWidget {
           useOriginalSize: config.scale >= 2.5,
           height: config.style.fontSize! * config.scale * (simple ? 1.0 : 2.0),
           opacity: config.opacity,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerLeft,
           onTap:
               !simple
                   ? () => showModalBottomSheet<void>(
@@ -550,6 +552,8 @@ class _Mfm extends StatelessWidget {
                   )
                   : null,
           inline: true,
+          fit: BoxFit.cover,
+          alignment: Alignment.centerLeft,
         ),
       ),
       MfmMathInline(:final formula) => WidgetSpan(
@@ -784,7 +788,16 @@ class _Mfm extends StatelessWidget {
         return TextSpan(
           children: _buildNodes(
             context,
-            config.copyWith(scale: config.scale * 2),
+            config.copyWith(
+              scale:
+                  config.scale *
+                  switch (config.xNest) {
+                    0 => 2,
+                    1 => 1.5,
+                    _ => 1.0,
+                  },
+              xNest: config.xNest + 1,
+            ),
             children,
           ),
         );
@@ -793,7 +806,16 @@ class _Mfm extends StatelessWidget {
         return TextSpan(
           children: _buildNodes(
             context,
-            config.copyWith(scale: config.scale * 4),
+            config.copyWith(
+              scale:
+                  config.scale *
+                  switch (config.xNest) {
+                    0 => 4,
+                    1 => 2.5,
+                    _ => 1.0,
+                  },
+              xNest: config.xNest + 1,
+            ),
             children,
           ),
         );
@@ -802,7 +824,16 @@ class _Mfm extends StatelessWidget {
         return TextSpan(
           children: _buildNodes(
             context,
-            config.copyWith(scale: config.scale * 6),
+            config.copyWith(
+              scale:
+                  config.scale *
+                  switch (config.xNest) {
+                    0 => 6,
+                    1 => 3.5,
+                    _ => 1.0,
+                  },
+              xNest: config.xNest + 1,
+            ),
             children,
           ),
         );
