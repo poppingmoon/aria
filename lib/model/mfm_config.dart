@@ -11,5 +11,6 @@ abstract class MfmConfig with _$MfmConfig {
     @Default(1.0) double scale,
     @Default(1.0) double opacity,
     TextAlign? align,
+    @Default(0) int xNest,
   }) = _MfmConfig;
 }

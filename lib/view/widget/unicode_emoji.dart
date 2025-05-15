@@ -29,6 +29,8 @@ class UnicodeEmoji extends ConsumerWidget {
     this.account,
     required this.emoji,
     this.style,
+    this.fit = BoxFit.contain,
+    this.alignment = Alignment.center,
     this.onTap,
     this.inline = false,
   });
@@ -36,6 +38,8 @@ class UnicodeEmoji extends ConsumerWidget {
   final Account? account;
   final String emoji;
   final TextStyle? style;
+  final BoxFit fit;
+  final Alignment alignment;
   final void Function()? onTap;
   final bool inline;
 
@@ -55,7 +59,8 @@ class UnicodeEmoji extends ConsumerWidget {
         child: Assets.misskey.packages.frontend.assets.dummy.image(
           height: style.lineHeight,
           opacity: AlwaysStoppedAnimation(style.color?.a ?? 1.0),
-          fit: BoxFit.contain,
+          fit: fit,
+          alignment: alignment,
         ),
       );
     }
@@ -77,6 +82,8 @@ class UnicodeEmoji extends ConsumerWidget {
               height: style.fontSize,
               width: style.fontSize,
               opacity: style.color?.a,
+              fit: fit,
+              alignment: alignment,
             ),
           ),
         );

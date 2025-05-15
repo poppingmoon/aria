@@ -20,6 +20,8 @@ class CustomEmoji extends ConsumerWidget {
     this.useOriginalSize = false,
     this.height,
     this.opacity = 1.0,
+    this.fit = BoxFit.contain,
+    this.alignment = Alignment.center,
     this.onTap,
     this.disableTooltip = false,
     this.fallbackTextStyle,
@@ -34,6 +36,8 @@ class CustomEmoji extends ConsumerWidget {
   final bool useOriginalSize;
   final double? height;
   final double opacity;
+  final BoxFit fit;
+  final Alignment alignment;
   final void Function()? onTap;
   final bool disableTooltip;
   final TextStyle? fallbackTextStyle;
@@ -68,7 +72,8 @@ class CustomEmoji extends ConsumerWidget {
             child: Assets.misskey.packages.frontend.assets.dummy.image(
               height: height,
               opacity: AlwaysStoppedAnimation(opacity),
-              fit: BoxFit.contain,
+              fit: fit,
+              alignment: alignment,
             ),
           ),
         ),
@@ -112,13 +117,15 @@ class CustomEmoji extends ConsumerWidget {
                       : proxiedUrl,
               height: height,
               opacity: opacity,
-              fit: BoxFit.contain,
+              fit: fit,
+              alignment: alignment,
               errorBuilder:
                   (_, _, _) => ImageWidget(
                     url: rawUrl,
                     height: height,
                     opacity: opacity,
-                    fit: BoxFit.contain,
+                    fit: fit,
+                    alignment: alignment,
                     errorBuilder:
                         (_, _, _) =>
                             fallbackToImage
@@ -126,7 +133,8 @@ class CustomEmoji extends ConsumerWidget {
                                     .image(
                                       height: height,
                                       opacity: AlwaysStoppedAnimation(opacity),
-                                      fit: BoxFit.contain,
+                                      fit: fit,
+                                      alignment: alignment,
                                     )
                                 : height > fallbackTextStyle.lineHeight
                                 ? Column(

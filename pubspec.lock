@@ -1965,8 +1965,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "4e9421350c0f6b3c4ca908e79042e6a2ab5d6dfc"
-      resolved-ref: "4e9421350c0f6b3c4ca908e79042e6a2ab5d6dfc"
+      ref: "05d864e84b6d6028d457ee9b03f61836a4c1f316"
+      resolved-ref: "05d864e84b6d6028d457ee9b03f61836a4c1f316"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
