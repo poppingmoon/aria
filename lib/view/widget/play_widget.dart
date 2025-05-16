@@ -177,7 +177,9 @@ class PlayWidget extends HookConsumerWidget {
                                 IconButton(
                                   tooltip: t.misskey.share,
                                   onPressed:
-                                      () => Share.share('${play.title} $url'),
+                                      () => SharePlus.instance.share(
+                                        ShareParams(text: '${play.title} $url'),
+                                      ),
                                   icon: const Icon(Icons.share),
                                 ),
                               ],

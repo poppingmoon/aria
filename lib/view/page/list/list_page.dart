@@ -72,8 +72,12 @@ class ListPage extends HookConsumerWidget {
                     if (list?.isPublic ?? false)
                       PopupMenuItem(
                         onTap:
-                            () => Share.shareUri(
-                              serverUrl.replace(pathSegments: ['list', listId]),
+                            () => SharePlus.instance.share(
+                              ShareParams(
+                                uri: serverUrl.replace(
+                                  pathSegments: ['list', listId],
+                                ),
+                              ),
                             ),
                         child: Text(t.misskey.share),
                       ),

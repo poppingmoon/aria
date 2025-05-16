@@ -84,7 +84,10 @@ class GalleryPostPage extends ConsumerWidget {
                     child: Text(t.aria.openInBrowser),
                   ),
                   PopupMenuItem(
-                    onTap: () => Share.share('${post.valueOrNull?.title} $url'),
+                    onTap:
+                        () => SharePlus.instance.share(
+                          ShareParams(text: '${post.valueOrNull?.title} $url'),
+                        ),
                     child: Text(t.misskey.share),
                   ),
                   if (post.valueOrNull?.user case final user?
@@ -251,7 +254,10 @@ class GalleryPostPage extends ConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.share,
-                        onPressed: () => Share.share('${post.title} $url'),
+                        onPressed:
+                            () => SharePlus.instance.share(
+                              ShareParams(text: '${post.title} $url'),
+                            ),
                         icon: const Icon(Icons.share),
                       ),
                     ],
