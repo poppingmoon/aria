@@ -89,7 +89,6 @@ openScratchpadAndRunCode(rich): "{scratchpad} 를 브라우저에서 열고, 다
 openSensitiveMediaOnDoubleTap: "야시시한 미디어는 두 번 눌러서 열라카래이"
 parameters: "매개변수"
 paste: "붙여넣기"
-pastePinnedEmojisDescription(rich): "이모지 목록을 고정할라면은 JSON 파일을 직접 붙여넣어야 한다야.\n{url}에 가가, 거 미스키 웹에서 고정된 이모지 목록을 복사해주믄 고맙겠대이."
 pasteResponseBelow: "답변을 아래 복사하세요"
 pinToEmojiPicker: "이모지 선택기에 고정"
 playAudio: "소리 듣기"

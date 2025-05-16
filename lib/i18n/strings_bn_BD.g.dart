@@ -293,7 +293,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'প্রোফাইল সম্পাদনা করুন';
 	@override String get noteDeleteConfirm => 'আপনি কি নোট ডিলিট করার ব্যাপারে নিশ্চিত?';
 	@override String get pinLimitExceeded => 'আপনি আর কোন নোট পিন করতে পারবেন না';
-	@override String get intro => 'Misskey এর ইন্সটলেশন সম্পন্ন হয়েছে！দয়া করে অ্যাডমিন ইউজার তৈরি করুন।';
 	@override String get done => 'সম্পন্ন';
 	@override String get processing => 'প্রক্রিয়াধীন...';
 	@override String get preview => 'পূর্বরূপ দেখুন';
@@ -751,7 +750,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get developer => 'ডেভেলপার';
 	@override String get makeExplorable => 'অ্যাকাউন্ট "ঘুরে দেখুন" পৃষ্ঠায় দেখান';
 	@override String get makeExplorableDescription => 'আপনি এটি বন্ধ করলে, আপনার অ্যাকাউন্ট "ঘুরে দেখুন" পৃষ্ঠায় প্রদর্শিত হবে না।';
-	@override String get showGapBetweenNotesInTimeline => 'টাইমলাইন এবং নোটের মাঝে ফাকা জায়গা রাখুন';
 	@override String get duplicate => 'প্রতিরূপ';
 	@override String get left => 'বাম';
 	@override String get center => 'মাঝখান';

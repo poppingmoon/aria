@@ -88,6 +88,7 @@ class TranslationsAriaEnUs {
 	);
 	String get deleteTabConfirm => 'Are you sure you want to delete this tab?';
 	String get disableDataSaverWhenOnWifi => 'Disable data saver when on Wi-Fi';
+	String get disableStreamingTimeline => 'Disable real-time timeline updates';
 	String get disableSubscribingNotes => 'Disable real-time reaction updates';
 	String get discardChangesConfirm => 'Are you sure you want to discard changes and back?';
 	String get displayOfThumbnail => 'Display of thumbnail';
@@ -224,6 +225,7 @@ class TranslationsAriaEnUs {
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
 	String get showEntireImage => 'Show entire image';
 	String get showExpandedImage => 'Show expanded image';
+	String get showGapBetweenNotesInTimeline => 'Show a gap between posts on the timeline';
 	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
 	String get showMenuButtonInTabBar => 'Show menu button in tab bar';
@@ -508,6 +510,7 @@ class TranslationsMisskeyEnUs {
 	String get mediaSilenceThisInstance => 'Media-silence this server';
 	String get operations => 'Operations';
 	String get software => 'Software';
+	String get softwareName => 'Software';
 	String get version => 'Version';
 	String get metadata => 'Metadata';
 	String withNFiles({required Object n}) => '${n} file(s)';
@@ -538,7 +541,6 @@ class TranslationsMisskeyEnUs {
 	String get editProfile => 'Edit profile';
 	String get noteDeleteConfirm => 'Are you sure you want to delete this note?';
 	String get pinLimitExceeded => 'You cannot pin any more notes';
-	String get intro => 'Installation of Misskey has been finished! Please create an admin user.';
 	String get done => 'Done';
 	String get processing => 'Processing...';
 	String get preview => 'Preview';
@@ -1072,7 +1074,6 @@ class TranslationsMisskeyEnUs {
 	String get developer => 'Developer';
 	String get makeExplorable => 'Make account visible in "Explore"';
 	String get makeExplorableDescription => 'If you turn this off, your account will not show up in the "Explore" section.';
-	String get showGapBetweenNotesInTimeline => 'Show a gap between posts on the timeline';
 	String get duplicate => 'Duplicate';
 	String get left => 'Left';
 	String get center => 'Center';
@@ -1266,7 +1267,8 @@ class TranslationsMisskeyEnUs {
 	String get document => 'Documentation';
 	String get numberOfPageCache => 'Number of cached pages';
 	String get numberOfPageCacheDescription => 'Increasing this number will improve convenience for but cause more load as more memory usage on the user\'s device.';
-	String get logoutConfirm => 'Really log out?';
+	String get logoutConfirm => 'Are you sure you want to log out?';
+	String get logoutWillClearClientData => 'Logging out will erase the settings of the client from the browser. In order to be able to restore the settings upon logging in again, you must enable automatic backup of your settings.';
 	String get lastActiveDate => 'Last used at';
 	String get statusbar => 'Status bar';
 	String get pleaseSelect => 'Select an option';
@@ -1524,7 +1526,6 @@ class TranslationsMisskeyEnUs {
 	String get releaseToRefresh => 'Release to refresh';
 	String get refreshing => 'Refreshing...';
 	String get pullDownToRefresh => 'Pull down to refresh';
-	String get disableStreamingTimeline => 'Disable real-time timeline updates';
 	String get useGroupedNotifications => 'Display grouped notifications';
 	String get signupPendingError => 'There was a problem verifying the email address. The link may have expired.';
 	String get cwNotationRequired => 'If "Hide content" is enabled, a description must be provided.';
@@ -1559,7 +1560,7 @@ class TranslationsMisskeyEnUs {
 	String get useTotp => 'Enter the One-Time Password';
 	String get useBackupCode => 'Use the backup codes';
 	String get launchApp => 'Launch the app';
-	String get useNativeUIForVideoAudioPlayer => 'Use UI of browser when play video and audio';
+	String get useNativeUIForVideoAudioPlayer => 'Use UI of browser when play video and audio\n';
 	String get keepOriginalFilename => 'Keep original file name';
 	String get keepOriginalFilenameDescription => 'If you turn off this setting, files names will be replaced with random string automatically when you upload files.';
 	String get noDescription => 'There is no explanation';
@@ -1632,6 +1633,9 @@ class TranslationsMisskeyEnUs {
 	String get settingsMigrating => 'Settings are being migrated, please wait a moment... (You can also migrate manually later by going to Settings→Others→Migrate old settings)';
 	String get readonly => 'Read only';
 	String get goToDeck => 'Return to Deck';
+	String get federationJobs => 'Federation Jobs';
+	String get driveAboutTip => 'In Drive, a list of files you\'ve uploaded in the past will be displayed. <br>  \nYou can reuse these files when attaching them to notes, or you can upload files in advance to post later. <br>  \n<b>Be careful when deleting a file, as it will not be available in all places where it was used (such as notes, pages, avatars, banners, etc.).</b> <br>  \nYou can also create folders to organize your files.';
+	String get scrollToClose => 'Scroll to close';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1826,6 +1830,8 @@ class TranslationsMisskeySettingsEnUs {
 	String get ifOn => 'When turned on';
 	String get ifOff => 'When turned off';
 	String get enableSyncThemesBetweenDevices => 'Synchronize installed themes across devices';
+	String get enablePullToRefresh => 'Pull to Refresh';
+	String get enablePullToRefresh_description => 'When using a mouse, drag while pressing in the scroll wheel.';
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
@@ -1839,6 +1845,7 @@ class TranslationsMisskeyPreferencesProfileEnUs {
 	String get profileName => 'Profile name';
 	String get profileNameDescription => 'Set a name that identifies this device.';
 	String get profileNameDescription2 => 'Example: "Main PC", "Smartphone"';
+	String get manageProfiles => 'Manage Profiles';
 }
 
 // Path: misskey.preferencesBackup_
@@ -2032,6 +2039,8 @@ class TranslationsMisskeyServerSettingsEnUs {
 	String get openRegistration => 'Make the account creation open';
 	String get openRegistrationWarning => 'Opening registration carries risks. It is recommended to only enable it if you have a system in place to continuously monitor the server and respond immediately in case of any issues.';
 	String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'If no moderator activity is detected for a while, this setting will be automatically turned off to prevent spam.';
+	String get deliverSuspendedSoftware => 'Suspended Software';
+	String get deliverSuspendedSoftwareDescription => 'You can specify a range of names and versions of the server\'s software to stop delivery for vulnerability or other reasons. This version information is provided by the server and is not guaranteed to be reliable. A semver range specification can be used to specify the version, but specifying >= 2024.3.1 will not include custom versions such as 2024.3.1-custom.0, so it is recommended that a prerelease specification be used, such as >= 2024.3.1-0';
 }
 
 // Path: misskey.accountMigration_
@@ -2742,6 +2751,7 @@ class TranslationsMisskeyWidgetsEnUs {
 	late final TranslationsMisskeyWidgetsUserListEnUs userList_ = TranslationsMisskeyWidgetsUserListEnUs.internal(_root);
 	String get clicker => 'Clicker';
 	String get birthdayFollowings => 'Today\'s Birthdays';
+	String get chat => 'Chat';
 }
 
 // Path: misskey.cw_
@@ -3554,6 +3564,7 @@ class TranslationsMisskeyDeliveryTypeEnUs {
 	String get manuallySuspended => 'Manually suspended';
 	String get goneSuspended => 'Server is suspended due to server deletion';
 	String get autoSuspendedForNotResponding => 'Server is suspended due to no responding';
+	String get softwareSuspended => 'Suspended as this software is no longer being distributed to';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3799,6 +3810,7 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	String get canManageCustomEmojis => 'Can manage custom emojis';
 	String get canManageAvatarDecorations => 'Manage avatar decorations';
 	String get driveCapacity => 'Drive capacity';
+	String get maxFileSize => 'Upload-able max file size';
 	String get alwaysMarkNsfw => 'Always mark files as NSFW';
 	String get canUpdateBioMedia => 'Can edit an icon or a banner image';
 	String get pinMax => 'Maximum number of pinned notes';
@@ -4015,6 +4027,7 @@ class TranslationsMisskeyDeckColumnsEnUs {
 	String get mentions => 'Mentions';
 	String get direct => 'Direct notes';
 	String get roleTimeline => 'Role Timeline';
+	String get chat => 'Chat';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -5367,7 +5380,7 @@ class TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
 	String confirmDeleteEmojisDescription({required Object count}) => 'Delete checked ${count} Emoji(s). Are you sure to continue?';
 	String get confirmResetDescription => '';
 	String get confirmMovePageDesciption => 'Changes have been made to the Emojis on this page.\nIf you leave the page without saving, all changes made on this page will be discarded.';
-	String get dialogSelectRoleTitle => 'Search by roll set in Emojis';
+	String get dialogSelectRoleTitle => 'Search by role set in Emojis';
 }
 
 // Path: misskey.customEmojisManager_.local_.register_

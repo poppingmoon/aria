@@ -185,6 +185,8 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get cantRenote => 'Dit bericht kan niet worden herdeeld';
 	@override String get cantReRenote => 'Een herdeling kan niet worden herdeeld';
 	@override String get quote => 'Quote';
+	@override String get inChannelRenote => 'Alleen-kanaal Renote';
+	@override String get inChannelQuote => 'Alleen-kanaal Citaat';
 	@override String get renoteToChannel => 'Renote naar kanaal';
 	@override String get renoteToOtherChannel => 'Renote naar ander kanaal';
 	@override String get pinnedNote => 'Vastgemaakte notitie';
@@ -210,6 +212,8 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get enterFileName => 'Invoeren bestandsnaam';
 	@override String get mute => 'Dempen';
 	@override String get unmute => 'Stop dempen';
+	@override String get renoteMute => 'Renotes dempen';
+	@override String get renoteUnmute => 'Dempen Renotes opheffen';
 	@override String get block => 'Blokkeren';
 	@override String get unblock => 'Deblokkeren';
 	@override String get suspend => 'Opschorten';
@@ -219,7 +223,10 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get suspendConfirm => 'Ben je zeker dat je deze account wil suspenderen?';
 	@override String get unsuspendConfirm => 'Ben je zeker dat je deze account wil opnieuw aanstellen?';
 	@override String get selectList => 'Kies een lijst.';
+	@override String get editList => 'Lijst bewerken';
+	@override String get selectChannel => 'Kanaal selecteren';
 	@override String get selectAntenna => 'Kies een antenne';
+	@override String get editAntenna => 'Antenne bewerken';
 	@override String get createAntenna => 'Antenne aanmaken';
 	@override String get selectWidget => 'Kies een widget';
 	@override String get editWidgets => 'Bewerk widgets';
@@ -233,6 +240,9 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get settingGuide => 'Aanbevolen instellingen';
 	@override String get cacheRemoteFiles => 'Externe bestanden cachen';
 	@override String get cacheRemoteFilesDescription => 'Als deze instelling uitgeschakeld is worden bestanden altijd direct van remote servers geladen. Hiermee wordt opslagruimte bespaard, maar doordat er geen thumbnails worden gegenereerd, zal netwerkverkeer toenemen.';
+	@override String get youCanCleanRemoteFilesCache => 'Klik op de 🗑️ knop in de bestandsbeheerweergave om de cache te wissen.';
+	@override String get cacheRemoteSensitiveFiles => 'Gevoelige bestanden van externe instances in de cache bewaren';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Als deze instelling is uitgeschakeld, worden gevoelige bestanden op afstand direct vanuit de instantie op afstand geladen zonder caching.';
 	@override String get flagAsBot => 'Markeer dit account als een robot.';
 	@override String get flagAsBotDescription => 'Als dit account van een programma wordt beheerd, zet deze vlag aan. Het aanzetten helpt andere ontwikkelaars om bijvoorbeeld onbedoelde feedback loops te doorbreken of om Misskey meer geschikt te maken.';
 	@override String get flagAsCat => 'Markeer dit account als een kat.';
@@ -241,6 +251,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get flagShowTimelineRepliesDescription => 'Als je dit vlag aanzet, toont de tijdlijn ook antwoorden op andere en niet alleen jouw eigen notities.';
 	@override String get autoAcceptFollowed => 'Accepteer verzoeken om jezelf te volgen vanzelf als je de verzoeker al volgt.';
 	@override String get addAccount => 'Account toevoegen';
+	@override String get reloadAccountsList => 'Accountlijst opnieuw laden';
 	@override String get loginFailed => 'Aanmelding mislukt.';
 	@override String get showOnRemote => 'Toon op de externe instantie.';
 	@override String get continueOnRemote => 'Verder op remote server';
@@ -272,6 +283,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get perDay => 'Per dag';
 	@override String get stopActivityDelivery => 'Stop met versturen activiteiten';
 	@override String get blockThisInstance => 'Blokkeer deze server';
+	@override String get silenceThisInstance => 'Instantie dempen';
 	@override String get mediaSilenceThisInstance => 'Media van deze server dempen';
 	@override String get operations => 'Verwerkingen';
 	@override String get software => 'Software';
@@ -292,6 +304,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get clearCachedFilesConfirm => 'Weet je zeker dat je alle externe bestanden in de cache wilt verwijderen?';
 	@override String get blockedInstances => 'Geblokkeerde servers';
 	@override String get blockedInstancesDescription => 'Maak een lijst van de servers die moeten worden geblokkeerd, gescheiden door regeleinden. Geblokkeerde servers kunnen niet meer communiceren met deze server.';
+	@override String get silencedInstances => 'Gedempte instanties';
 	@override String get silencedInstancesDescription => 'Geef de hostnamen van de servers die je wil dempen op, elk op hun eigen regel. Alle accounts die bij de opgegeven servers horen worden als gedempt behandeld, kunnen alleen maar volgverzoeken maken, en kunnen lokale accounts niet vermelden als ze niet gevolgd worden. Geblokkeerde servers worden hier niet door beïnvloed.';
 	@override String get mediaSilencedInstances => 'Media-gedempte servers';
 	@override String get mediaSilencedInstancesDescription => 'Geef de hostnamen van de servers die je wil media-dempen op, elk op hun eigen regel. Alle accounts die bij de opgegeven servers horen worden als gedempt behandeld, en kunnen geen eigen emojis gebruiken. Geblokkeerde servers worden hier niet door beïnvloed.';
@@ -304,7 +317,6 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Bewerk Profiel';
 	@override String get noteDeleteConfirm => 'Ben je zeker dat je dit bericht wil verwijderen?';
 	@override String get pinLimitExceeded => 'Je kunt geen berichten meer vastprikken';
-	@override String get intro => 'Installatie van Misskey geëindigd! Maak nu een beheerder aan.';
 	@override String get done => 'Klaar';
 	@override String get processing => 'Bezig met verwerken';
 	@override String get preview => 'Voorbeeld';
@@ -358,6 +370,10 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get startChat => 'Chat starten';
 	@override String nUsersRead({required Object n}) => 'gelezen door ${n}';
 	@override String agreeTo({required Object x0}) => 'Ik stem in met ${x0}';
+	@override String get agree => 'Akkoord';
+	@override String get agreeBelow => 'Ik ga akkoord met de volgende';
+	@override String get basicNotesBeforeCreateAccount => 'Belangrijke informatie';
+	@override String get termsOfService => 'Gebruiksvoorwaarden';
 	@override String get start => 'Aan de slag';
 	@override String get home => 'Startpagina';
 	@override String get remoteUserCaution => 'Aangezien deze gebruiker van een externe server afkomstig is, kan de weergegeven informatie onvolledig zijn.';
@@ -403,6 +419,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get rename => 'Hernoemen';
 	@override String get avatar => 'Avatar';
 	@override String get banner => 'Banner';
+	@override String get displayOfSensitiveMedia => 'Weergave van gevoelige media';
 	@override String get whenServerDisconnected => 'Wanneer de verbinding met de server wordt onderbroken';
 	@override String get disconnectedFromServer => 'Verbinding met de server onderbroken.';
 	@override String get reload => 'Verversen';
@@ -440,7 +457,10 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get backgroundImageUrl => 'URL afbeelding';
 	@override String get basicInfo => 'Basisinformatie';
 	@override String get pinnedUsers => 'Vastgeprikte gebruikers';
+	@override String get pinnedUsersDescription => 'Een lijst met gebruikersnamen, gescheiden door regeleinden, die moet worden vastgemaakt in het tabblad “Verkennen”';
 	@override String get pinnedPages => 'Vastgeprikte pagina\'s';
+	@override String get pinnedPagesDescription => 'Voer de paden in van de Pagina\'s die je aan de bovenste pagina van deze instantie wilt vastmaken, gescheiden door regeleinden.';
+	@override String get pinnedClipId => 'ID van de clip die moet worden vastgepind';
 	@override String get pinnedNotes => 'Vastgemaakte notitie';
 	@override String get hcaptcha => 'hCaptcha';
 	@override String get enableHcaptcha => 'Inschakelen hCaptcha';
@@ -459,6 +479,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get enableTurnstile => 'Inschakelen tourniquet';
 	@override String get turnstileSiteKey => 'Site sleutel';
 	@override String get turnstileSecretKey => 'Geheime sleutel';
+	@override String get avoidMultiCaptchaConfirm => 'Het gebruik van meerdere Captcha-systemen kan interferentie tussen deze systemen veroorzaken. Wil je de andere Captcha-systemen die momenteel actief zijn uitschakelen? Als je wilt dat ze ingeschakeld blijven, druk dan op annuleren.';
 	@override String get antennas => 'Antennes';
 	@override String get manageAntennas => 'Antennes beheren';
 	@override String get name => 'Naam';
@@ -466,6 +487,13 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywords => 'Sleutelwoorden';
 	@override String get antennaExcludeKeywords => 'Blokkeerwoorden';
 	@override String get antennaExcludeBots => 'Bot-accounts uitsluiten';
+	@override String get antennaKeywordsDescription => 'Scheid met spaties voor een EN-voorwaarde of met regeleinden voor een OF-voorwaarde.';
+	@override String get notifyAntenna => 'Houd een notificatie bij nieuwe notities';
+	@override String get withFileAntenna => 'Alleen notities met bestanden';
+	@override String get excludeNotesInSensitiveChannel => 'Sluit notities uit van gevoelige kanalen';
+	@override String get enableServiceworker => 'Activeer pushmeldingen in de browser';
+	@override String get antennaUsersDescription => 'Lijst één gebruikersnaam per regel';
+	@override String get caseSensitive => 'Hoofdlettergevoelig';
 	@override String get withReplies => 'Antwoorden toevoegen';
 	@override String get connectedTo => 'De volgende accounts zijn verbonden';
 	@override String get notesAndReplies => 'Berichten en reacties';
@@ -486,18 +514,30 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get aboutMisskey => 'Over Misskey';
 	@override String get administrator => 'Beheerder';
 	@override String get token => 'Token';
+	@override String get x2fa => 'Twee factor authenticatie';
+	@override String get setupOf2fa => 'Tweefactorauthenticatie instellen';
+	@override String get totp => 'Verificatie-App';
+	@override String get totpDescription => 'Log in via de verificatie-app met het eenmalige wachtwoord';
 	@override String get moderator => 'Moderator';
 	@override String get moderation => 'Moderatie';
+	@override String get moderationNote => 'Moderatienotitie';
+	@override String get moderationNoteDescription => 'Voer hier notities in. Deze zijn alleen zichtbaar voor de moderators.';
+	@override String get addModerationNote => 'Moderatienotitie toevoegen';
+	@override String get moderationLogs => 'Moderatieprotocollen';
 	@override String nUsersMentioned({required Object n}) => 'Vermeld door ${n} gebruikers';
+	@override String get securityKeyAndPasskey => 'Beveiligings- en pasjessleutels';
 	@override String get securityKey => 'Beveiligingssleutel';
 	@override String get lastUsed => 'Laatst gebruikt';
+	@override String lastUsedAt({required Object t}) => 'Laatst gebruikt: ${t}';
 	@override String get unregister => 'Uitschrijven';
 	@override String get passwordLessLogin => 'Inloggen zonder wachtwoord';
+	@override String get passwordLessLoginDescription => 'Maakt aanmelden zonder wachtwoord mogelijk met een beveiligingstoken of -wachtsleutel';
 	@override String get resetPassword => 'Wachtwoord terugzetten';
 	@override String newPasswordIs({required Object password}) => 'Het nieuwe wachtwoord is „${password}”.';
 	@override String get reduceUiAnimation => 'Verminder beweging in de UI';
 	@override String get share => 'Delen';
 	@override String get notFound => 'Niet gevonden';
+	@override String get notFoundDescription => 'Er is geen pagina gevonden onder deze URL.';
 	@override String get uploadFolder => 'Standaardmap voor uploaden';
 	@override String get markAsReadAllNotifications => 'Markeer alle meldingen als gelezen';
 	@override String get markAsReadAllUnreadNotes => 'Markeer alle berichten als gelezen';
@@ -516,13 +556,53 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Notitie van ${user}';
 	@override String get quoteAttached => 'Citaat';
 	@override String get quoteQuestion => 'Toevoegen als citaat?';
+	@override String get attachAsFileQuestion => 'De tekst op het klembord is te lang. Wilt u het als een tekstbestand bijvoegen?';
+	@override String get onlyOneFileCanBeAttached => 'Per bericht kan slechts één bestand worden bijgevoegd';
+	@override String get signinRequired => 'Gelieve te registreren of in te loggen om verder te gaan';
 	@override String get signinOrContinueOnRemote => 'Ga naar je eigen instantie of registreer je/log in op deze server om door te gaan.';
 	@override String get invitations => 'Uitnodigen';
+	@override String get invitationCode => 'Uitnodigingscode';
+	@override String get checking => 'Wordt gecheckt ...';
+	@override String get available => 'Beschikbaar';
+	@override String get unavailable => 'Onbeschikbaar';
+	@override String get usernameInvalidFormat => 'Je kunt kleine letters, hoofdletters, cijfers en onderstrepingstekens gebruiken.';
+	@override String get tooShort => 'Te kort';
+	@override String get tooLong => 'Te lang';
+	@override String get weakPassword => 'Zwak wachtwoord';
+	@override String get normalPassword => 'Redelijke wachtwoord';
+	@override String get strongPassword => 'Sterk wachtwoord';
+	@override String get passwordMatched => 'Lucifers';
+	@override String get passwordNotMatched => 'Komt niet overeen';
+	@override String signinWith({required Object x}) => 'Aanmelden met ${x}';
+	@override String get signinFailed => 'Inloggen mislukt. Controleer gebruikersnaam en wachtwoord.';
+	@override String get or => 'Of';
+	@override String get language => 'Taal';
+	@override String get uiLanguage => 'Taal van gebruikersinterface';
+	@override String aboutX({required Object x}) => 'Over ${x}';
+	@override String get emojiStyle => 'Emoji-stijl';
+	@override String get native => 'Inheems';
 	@override String get menuStyle => 'Menustijl';
 	@override String get style => 'Stijl';
 	@override String get drawer => 'Lade';
 	@override String get popup => 'Pop-up';
+	@override String get showNoteActionsOnlyHover => 'Toon notitiemenu alleen bij muisaanwijzer';
 	@override String get showReactionsCount => 'Zie het aantal reacties op notities';
+	@override String get noHistory => 'Geen geschiedenis gevonden';
+	@override String get signinHistory => 'Inloggeschiedenis';
+	@override String get enableAdvancedMfm => 'Uitgebreide MFM activeren';
+	@override String get enableAnimatedMfm => 'Geanimeerde MFM activeren';
+	@override String get doing => 'In uitvoering...';
+	@override String get category => 'Categorie';
+	@override String get tags => 'Aliassen';
+	@override String get docSource => 'Broncode van dit document';
+	@override String get createAccount => 'Gebruikersaccount maken';
+	@override String get existingAccount => 'Bestaand gebruikersaccount';
+	@override String get regenerate => 'Regenereer';
+	@override String get fontSize => 'Lettergrootte';
+	@override String get mediaListWithOneImageAppearance => 'Hoogte van medialijsten met slechts één afbeelding';
+	@override String limitTo({required Object x}) => 'Beperken tot ${x}';
+	@override String get noFollowRequests => 'Je hebt geen lopende volgverzoeken';
+	@override String get openImageInNewTab => 'Afbeeldingen in nieuw tabblad openen';
 	@override String get dashboard => 'Overzicht';
 	@override String get local => 'Lokaal';
 	@override String get remote => 'Remote';
@@ -537,38 +617,387 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get numberOfDays => 'Aantal dagen';
 	@override String get hideThisNote => 'Verberg deze notitie';
 	@override String get showFeaturedNotesInTimeline => 'Laat featured notities in tijdlijn zien';
+	@override String get objectStorage => 'Object Storage';
+	@override String get useObjectStorage => 'Object Storage gebruiken';
+	@override String get objectStorageBaseUrl => 'Basis-URL';
+	@override String get objectStorageBaseUrlDesc => 'De URL die wordt gebruikt als referentie. Als je een CDN of proxy gebruikt, voer dan de URL daarvan in. Gebruik voor S3 ‘https://<bucket>.s3.amazonaws.com’. Gebruik voor GCS of vergelijkbaar ‘https://storage.googleapis.com/<bucket>’.';
+	@override String get objectStorageBucket => 'Bucket';
+	@override String get objectStorageBucketDesc => 'Geef de bucketnaam op die bij je provider wordt gebruikt.';
+	@override String get objectStoragePrefix => 'Prefix';
+	@override String get objectStoragePrefixDesc => 'Bestanden worden opgeslagen in de mappen onder deze prefix.';
+	@override String get objectStorageEndpoint => 'Endpoint';
+	@override String get objectStorageEndpointDesc => 'Laat dit leeg als je AWS S3 gebruikt, anders geef je het eindpunt op als ‘<host>’ of ‘<host>:<port>’, afhankelijk van de service die je gebruikt.';
+	@override String get objectStorageRegion => 'Region';
+	@override String get objectStorageRegionDesc => 'Voer een regio in zoals “xx-east-1”. Als je provider geen onderscheid maakt tussen regio\'s, voer dan “us-east-1” in. Laat leeg als je AWS-configuratiebestanden of omgevingsvariabelen gebruikt.';
+	@override String get objectStorageUseSSL => 'SSL gebruiken';
+	@override String get objectStorageUseSSLDesc => 'Deactiveer dit als u geen HTTPS gebruikt voor API-verbindingen';
+	@override String get objectStorageUseProxy => 'Verbinden via proxy';
+	@override String get objectStorageUseProxyDesc => 'Deactiveer dit als u geen proxy wilt gebruiken voor verbindingen met de API';
+	@override String get objectStorageSetPublicRead => 'Instellen op “public-read” op upload';
+	@override String get s3ForcePathStyleDesc => 'Als s3ForcePathStyle is geactiveerd, moet de bucketnaam niet worden opgegeven in de hostnaam van de URL, maar in het pad van de URL. Deze optie moet mogelijk worden geactiveerd als services zoals een zelfbediende Minio-instantie worden gebruikt.';
+	@override String get serverLogs => 'Serverprotocollen';
+	@override String get deleteAll => 'Alles verwijderen';
+	@override String get showFixedPostForm => 'Het postingformulier bovenaan de tijdbalk weergeven';
+	@override String get showFixedPostFormInChannel => 'Het postingformulier bovenaan de tijdbalk weergeven (Kanalen)';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Toon replies van nieuw gevolgde gebruikers standaard in de tijdlijn';
+	@override String get newNoteRecived => 'Er zijn nieuwe notities';
+	@override String get sounds => 'Geluiden';
 	@override String get sound => 'Geluid';
+	@override String get listen => 'Luisteren';
+	@override String get none => 'Niets';
+	@override String get showInPage => 'Weergeven in een pagina';
+	@override String get popout => 'Pop-Up';
+	@override String get volume => 'Volume';
+	@override String get masterVolume => 'Hoofdvolume';
 	@override String get notUseSound => 'Geluid uitschakelen';
 	@override String get useSoundOnlyWhenActive => 'Geluid alleen inschakelen wanneer Misskey actief is';
+	@override String get details => 'Details';
+	@override String get renoteDetails => 'Renote Details';
+	@override String get chooseEmoji => 'Emoji selecteren';
+	@override String get unableToProcess => 'De operatie kan niet worden voltooid.';
+	@override String get recentUsed => 'Recent gebruikt';
+	@override String get install => 'Installeren';
+	@override String get uninstall => 'Deinstalleren';
+	@override String get installedApps => 'Geautoriseerde toepassingen';
+	@override String get nothing => 'Niets te zien hier';
+	@override String get installedDate => 'Geautoriseerd at';
+	@override String get lastUsedDate => 'Laatst gebruikt at';
+	@override String get state => 'Status';
+	@override String get sort => 'Sorteren';
+	@override String get ascendingOrder => 'Oplopende volgorde';
+	@override String get descendingOrder => 'Aflopende volgorde';
+	@override String get scratchpad => 'Testomgeving';
+	@override String get scratchpadDescription => 'De testomgeving biedt een gebied voor AiScript experimenten. Daar kunt u AiScript schrijven en uitvoeren en de effecten ervan op Misskey controleren.';
 	@override String get uiInspector => 'UI-inspecteur';
+	@override String get uiInspectorDescription => 'De lijst met servers van UI-componenten kan worden bekeken in de cache. De UI-component wordt gegenereerd door de functie Ui:C:';
+	@override String get output => 'Uitvoer';
+	@override String get script => 'Script';
+	@override String get disablePagesScript => 'AiScript uitschakelen op pagina\'s';
+	@override String get updateRemoteUser => 'Gebruikersinformatie bijwerken';
 	@override String get unsetUserAvatar => 'Avatar verwijderen';
 	@override String get unsetUserAvatarConfirm => 'Weet je zeker dat je je avatar wil verwijderen?';
 	@override String get unsetUserBanner => 'Banner verwijderen';
 	@override String get unsetUserBannerConfirm => 'Weet je zeker dat je je banner wil verwijderen?';
+	@override String get deleteAllFiles => 'Alle bestanden verwijderen';
+	@override String get deleteAllFilesConfirm => 'Wil je echt alle bestanden verwijderen?';
+	@override String get removeAllFollowing => 'Ontvolg alle gevolgde gebruikers';
+	@override String removeAllFollowingDescription({required Object host}) => 'Door dit uit te voeren worden alle accounts van ${host} ontvolgd. Voer dit uit als de instantie bijvoorbeeld niet meer bestaat.';
+	@override String get userSuspended => 'Deze gebruiker is geschorst.';
+	@override String get userSilenced => 'Deze gebruiker is instantiebreed gedempt.';
+	@override String get yourAccountSuspendedTitle => 'Deze account is geschorst';
+	@override String get yourAccountSuspendedDescription => 'Dit gebruikersaccount is geschorst omdat het de gebruiksvoorwaarden van deze server heeft geschonden. Neem contact op met de operator voor meer informatie. Maak geen nieuwe gebruikersaccount aan.';
+	@override String get tokenRevoked => 'Ongeldig token';
+	@override String get tokenRevokedDescription => 'Het token is verlopen. Log opnieuw in.';
+	@override String get accountDeleted => 'Het gebruikersaccount is verwijderd';
+	@override String get accountDeletedDescription => 'Deze account is verwijderd.';
+	@override String get menu => 'Menu';
+	@override String get divider => 'Scheider';
+	@override String get addItem => 'Element toevoegen';
+	@override String get rearrange => 'Sorteren';
+	@override String get relays => 'Relays';
+	@override String get addRelay => 'Relay toevoegen';
+	@override String get inboxUrl => 'Inbox-URL';
+	@override String get addedRelays => 'Toegevoegd Relays';
+	@override String get serviceworkerInfo => 'Moet worden geactiveerd voor pushmeldingen.';
+	@override String get deletedNote => 'Verwijderde notitie';
+	@override String get invisibleNote => 'Privé notitie';
+	@override String get enableInfiniteScroll => 'Automatisch meer laden';
+	@override String get visibility => 'Zichtbaarheid';
+	@override String get poll => 'Peiling';
+	@override String get useCw => 'Inhoudswaarschuwing gebruiken';
+	@override String get enablePlayer => 'Videospeler openen';
+	@override String get disablePlayer => 'Videospeler sluiten';
 	@override String get expandTweet => 'Notitie uitklappen';
+	@override String get themeEditor => 'Thema-editor';
+	@override String get description => 'Beschrijving';
+	@override String get describeFile => 'Beschrijving toevoegen';
+	@override String get enterFileDescription => 'Beschrijving invoeren';
+	@override String get author => 'Auteur';
+	@override String get leaveConfirm => 'Er zijn niet-opgeslagen wijzigingen. Wil je ze verwijderen?';
+	@override String get manage => 'Beheer';
+	@override String get plugins => 'Plugins';
+	@override String get preferencesBackups => 'Instellingen Back-ups';
+	@override String get deck => 'Dek';
+	@override String get undeck => 'Dek verlaten';
+	@override String get useBlurEffectForModal => 'Vervagingseffect gebruiken voor modals';
+	@override String get useFullReactionPicker => 'Volledige reaktieselectier gebruiken';
+	@override String get width => 'Breedte';
+	@override String get height => 'Hoogte';
+	@override String get large => 'Groot';
+	@override String get medium => 'Medium';
+	@override String get small => 'Klein';
+	@override String get generateAccessToken => 'Toegangstoken genereren';
+	@override String get permission => 'Machtigingen';
 	@override String get adminPermission => 'Administratorrechten';
+	@override String get enableAll => 'Alle activeren';
+	@override String get disableAll => 'Alle deactiveren';
+	@override String get tokenRequested => 'Toegang verlenen tot het gebruikersaccount';
+	@override String get pluginTokenRequestedDescription => 'Deze plugin kan de hier geconfigureerde autorisaties gebruiken.';
+	@override String get notificationType => 'Type melding';
+	@override String get edit => 'Bewerken';
+	@override String get emailServer => 'Email-Server';
+	@override String get enableEmail => 'Email distributie inschakelen';
+	@override String get emailConfigInfo => 'Wordt gebruikt om je email te bevestigen tijdens het aanmelden of als je je wachtwoord bent vergeten';
+	@override String get email => 'Email';
+	@override String get emailAddress => 'Email adres';
+	@override String get smtpConfig => 'SMTP-server configuratie';
 	@override String get smtpHost => 'Server';
+	@override String get smtpPort => 'Poort';
 	@override String get smtpUser => 'Gebruikersnaam';
 	@override String get smtpPass => 'Wachtwoord';
+	@override String get emptyToDisableSmtpAuth => 'Laat gebruikersnaam en wachtwoord leeg om SMTP-authenticatie uit te schakelen.';
+	@override String get smtpSecure => 'Impliciet SSL/TLS gebruiken voor SMTP-verbindingen';
+	@override String get smtpSecureInfo => 'Schakel dit uit bij gebruik van STARTTLS';
+	@override String get testEmail => 'Emailversand testen';
+	@override String get wordMute => 'Woord dempen';
 	@override String get wordMuteDescription => 'Minimaliseert notities die het gespecificeerde woord of zin bevatten. Geminimaliseerde notities kunnen worden weergegeven door er op te klikken.';
 	@override String get hardWordMute => 'Harde woorddemping';
 	@override String get showMutedWord => 'Gedempte woorden weergeven';
 	@override String get hardWordMuteDescription => 'Verbert notities die het gespecificeerde woord of zin bevatten. In tegenstelling tot woorddemping wordt de notitie volledig verborgen.';
+	@override String get regexpError => 'Fout in reguliere expressie';
+	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Er is een fout opgetreden in de reguliere expressie op regel ${line} van uw ${tab} woord dempen:';
+	@override String get instanceMute => 'Instantie dempers';
+	@override String userSaysSomething({required Object name}) => '${name} zei iets';
 	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} zei iets over \'${word}\'';
+	@override String get makeActive => 'Activeren';
+	@override String get display => 'Weergave';
+	@override String get copy => 'Kopiëren';
 	@override String get copiedToClipboard => 'Naar het klembord gekopieerd';
+	@override String get metrics => 'Metrieken';
+	@override String get overview => 'Overzicht';
+	@override String get logs => 'Protocollen';
+	@override String get delayed => 'Vertraagd';
+	@override String get database => 'Database';
+	@override String get channel => 'Kanalen';
+	@override String get create => 'Creëer';
+	@override String get notificationSetting => 'Instellingen meldingen';
+	@override String get notificationSettingDesc => 'Selecteer het type meldingen dat moet worden weergegeven.';
+	@override String get useGlobalSetting => 'Globale instelling gebruiken';
+	@override String get useGlobalSettingDesc => 'Als deze optie is ingeschakeld, worden de meldingsinstellingen van je account gebruikt. Als deze optie uitgeschakeld is, kunnen individuele configuraties worden gemaakt.';
+	@override String get other => 'Ander';
+	@override String get regenerateLoginToken => 'Login token opnieuw genereren';
+	@override String get regenerateLoginTokenDescription => 'Regenereren van het token dat intern wordt gebruikt om in te loggen. Dit is normaal gezien niet nodig. Alle apparaten worden afgemeld tijdens het regenereren.';
 	@override String get theKeywordWhenSearchingForCustomEmoji => 'Dit is het keyword dat gebruikt wordt bij het zoeken naar eigen emojis.';
+	@override String get setMultipleBySeparatingWithSpace => 'Scheid elementen met een spatie om meerdere instellingen te configureren.';
+	@override String get fileIdOrUrl => 'Bestands-ID of URL';
+	@override String get behavior => 'Gedrag';
+	@override String get sample => 'Voorbeeld';
+	@override String get abuseReports => 'Meldt';
+	@override String get reportAbuse => 'Meld';
+	@override String get reportAbuseRenote => 'Meld renote';
+	@override String reportAbuseOf({required Object name}) => 'Meld ${name}';
 	@override String get fillAbuseReportDescription => 'Vul s.v.p. de details in over deze melding. Geef, als het over een specifieke notitie gaat, ook de URL op.';
+	@override String get abuseReported => 'Uw rapport is verzonden. Hartelijk dank.';
+	@override String get reporter => 'Verslaggever';
+	@override String get reporteeOrigin => 'Oorsprong van de gemelde persoon';
+	@override String get reporterOrigin => 'Verslaggever Oorsprong';
+	@override String get send => 'Stuur';
+	@override String get openInNewTab => 'In nieuw tabblad openen';
+	@override String get openInSideView => 'In zijaanzicht openen';
+	@override String get defaultNavigationBehaviour => 'Standaard navigatie gedrag';
+	@override String get editTheseSettingsMayBreakAccount => 'Het wijzigen van deze instellingen kan je account beschadigen.';
+	@override String get instanceTicker => 'Instantie-informatie van notities';
+	@override String waitingFor({required Object x}) => 'Wachten op ${x}';
+	@override String get random => 'Willekeurig';
+	@override String get system => 'Systeem';
+	@override String get switchUi => 'UI omschakelen';
+	@override String get desktop => 'Desktop';
+	@override String get clip => 'Clip aanmaken';
+	@override String get createNew => 'Nieuwe aanmaken';
+	@override String get optional => 'Optioneel';
+	@override String get createNewClip => 'Nieuwe clip aanmaken';
+	@override String get unclip => 'Van clip verwijderen';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Deze notitie is al toegevoegd aan de clip “${name}”. Wil je deze uit deze clip verwijderen?';
+	@override String get public => 'Openbare';
+	@override String get private => 'Privé';
+	@override String i18nInfo({required Object link}) => 'Misskey wordt in veel verschillende talen vertaald door vrijwilligers. Je kunt helpen op ${link}';
+	@override String get manageAccessTokens => 'Toegangstokens beheren';
+	@override String get accountInfo => 'Informatie over gebruikersaccount';
+	@override String get notesCount => 'Aantal notities';
+	@override String get repliesCount => 'Aantal verzonden replies';
+	@override String get renotesCount => 'Aantal verzonden renotes';
+	@override String get repliedCount => 'Aantal ontvangen replies';
+	@override String get renotedCount => 'Aantal ontvangen renotes';
+	@override String get followingCount => 'Aantal gevolgde accounts';
+	@override String get followersCount => 'Aantal volgers';
+	@override String get sentReactionsCount => 'Aantal verzonden reacties';
+	@override String get receivedReactionsCount => 'Aantal ontvangen reacties';
+	@override String get pollVotesCount => 'Aantal verzonden peiling stemmen';
+	@override String get pollVotedCount => 'Aantal ontvangen peiling stemmen';
+	@override String get yes => 'Ja';
+	@override String get no => 'Nee';
+	@override String get driveFilesCount => 'Aantal bestanden in station';
+	@override String get driveUsage => 'Schijfruimtegebruik';
+	@override String get noCrawle => 'Crawler-indexering verwerpen';
+	@override String get noCrawleDescription => 'Vraag zoekmachines om je eigen profielpagina, notities, pagina\'s, enz. niet te indexeren.';
+	@override String get lockedAccountInfo => 'Tenzij je de zichtbaarheid van je notities instelt op “Alleen volgers”, zijn je notities zichtbaar voor iedereen, zelfs als je vereist dat volgers handmatig worden goedgekeurd.';
+	@override String get alwaysMarkSensitive => 'Markeer media standaard als gevoelig';
+	@override String get loadRawImages => 'Toon altijd originele afbeeldingen in plaats van miniaturen';
+	@override String get disableShowingAnimatedImages => 'Speel geen geanimeerde afbeeldingen af';
+	@override String get highlightSensitiveMedia => 'Markeer gevoelige media';
+	@override String get verificationEmailSent => 'Er is een bevestigingsmail naar uw e-mailadres verzonden. Ga naar de link in de e-mail om het verificatieproces te voltooien.';
+	@override String get notSet => 'Niet geconfigureerd';
+	@override String get emailVerified => 'Emailadres bevestigd';
+	@override String get noteFavoritesCount => 'Aantal notities gemarkeerd als favoriet';
+	@override String get pageLikesCount => 'Aantal gelikete pagina\'s';
+	@override String get pageLikedCount => 'Aantal ontvangen pagina-likes';
+	@override String get contact => 'Contact';
+	@override String get useSystemFont => 'Het standaardlettertype van het systeem gebruiken';
+	@override String get clips => 'Clips';
+	@override String get experimentalFeatures => 'Experimentele functionaliteiten';
+	@override String get experimental => 'Experimentele';
+	@override String get thisIsExperimentalFeature => 'Dit is een experimentele functie. De functionaliteit kan worden gewijzigd en werkt mogelijk niet zoals bedoeld.';
+	@override String get developer => 'Ontwikkelaar';
+	@override String get makeExplorable => 'Gebruikersaccount zichtbaar maken in “Verkennen”';
+	@override String get makeExplorableDescription => 'Als deze optie is uitgeschakeld, is uw gebruikersaccount niet zichtbaar in het gedeelte “Verkennen”.';
+	@override String get duplicate => 'Dupliceren';
+	@override String get left => 'Links';
+	@override String get center => 'Center';
+	@override String get wide => 'Breed';
+	@override String get narrow => 'Smal';
 	@override String get reloadToApplySetting => 'Deze instelling gaat pas in nadat de pagina herladen is. Nu herladen?';
+	@override String get needReloadToApply => 'Deze instelling wordt van kracht nadat de pagina is vernieuwd.';
+	@override String get showTitlebar => 'Titelbalk weergeven';
 	@override String get clearCache => 'Cache opschonen';
+	@override String onlineUsersCount({required Object n}) => '${n} Gebruikers zijn online';
+	@override String nUsers({required Object n}) => '${n} Gebruikers';
+	@override String nNotes({required Object n}) => '${n} Notities';
+	@override String get sendErrorReports => 'Foutrapporten sturen';
+	@override String get sendErrorReportsDescription => 'Als u deze optie inschakelt, wordt gedetailleerde foutinformatie met Misskey gedeeld wanneer zich een probleem voordoet. Dit helpt de kwaliteit van Misskey te verbeteren.\nDit omvat informatie zoals de versie van uw OS, welke browser u gebruikt, uw activiteit in Misskey, enz.';
+	@override String get myTheme => 'Mijn thema';
+	@override String get backgroundColor => 'Achtergrondkleur';
+	@override String get accentColor => 'Accentkleur';
+	@override String get textColor => 'Tekstkleur';
+	@override String get saveAs => 'Opslaan als…';
+	@override String get advanced => 'Geavanceerd';
+	@override String get advancedSettings => 'Geavanceerde instellingen';
+	@override String get value => 'Waarde';
+	@override String get createdAt => 'Aangemaakt at';
+	@override String get updatedAt => 'Laatst gewijzigd at';
+	@override String get saveConfirm => 'Wijzigingen opslaan?';
+	@override String get deleteConfirm => 'Echt verwijderen?';
+	@override String get invalidValue => 'Ongeldige waarde.';
+	@override String get registry => 'Registry';
+	@override String get closeAccount => 'Gebruikersaccount sluiten';
+	@override String get currentVersion => 'Huidige versie';
+	@override String get latestVersion => 'Nieuwste versie';
+	@override String get youAreRunningUpToDateClient => 'Je gebruikt de nieuwste versie van je client.';
+	@override String get newVersionOfClientAvailable => 'Er is een nieuwere versie van je client beschikbaar.';
+	@override String get usageAmount => 'Gebruik';
+	@override String get capacity => 'Capaciteit';
+	@override String get inUse => 'Gebruikt';
+	@override String get editCode => 'Code bewerken';
+	@override String get apply => 'Toepassen';
+	@override String get receiveAnnouncementFromInstance => 'Meldingen ontvangen van deze instantie';
+	@override String get emailNotification => 'E-mailmeldingen';
+	@override String get publish => 'Publiceren';
+	@override String get inChannelSearch => 'In kanaal zoeken';
+	@override String get useReactionPickerForContextMenu => 'Open reactieselectie door rechts te klikken';
+	@override String typingUsers({required Object users}) => '${users} is/zijn aan het schrijven...';
+	@override String get jumpToSpecifiedDate => 'Naar een specifieke datum springen';
+	@override String get showingPastTimeline => 'Momenteel wordt een oude tijdlijn weergeven';
+	@override String get clear => 'Terugkeren';
+	@override String get markAllAsRead => 'Alles als gelezen markeren';
+	@override String get goBack => 'Terug';
+	@override String get unlikeConfirm => 'Wil je echt je like verwijderen?';
+	@override String get fullView => 'Volledig zicht';
+	@override String get quitFullView => 'Volledig zicht verlaten';
+	@override String get addDescription => 'Beschrijving toevoegen';
+	@override String get userPagePinTip => 'Je kunt hier notities tonen door “Vastmaken aan profiel” te selecteren in het menu van de individuele notities.';
+	@override String get notSpecifiedMentionWarning => 'Deze notitie bevat verwijzingen naar gebruikers die niet zijn geselecteerd als ontvangers';
 	@override String get info => 'Over';
+	@override String get userInfo => 'Gebruikersinformatie';
+	@override String get unknown => 'Onbekend';
+	@override String get onlineStatus => 'Online status';
+	@override String get hideOnlineStatus => 'Online status verbergen';
+	@override String get hideOnlineStatusDescription => 'Het verbergen van je online status vermindert het nut van functies zoals zoeken.';
+	@override String get online => 'Online';
+	@override String get active => 'Actief';
+	@override String get offline => 'Offline';
+	@override String get notRecommended => 'Niet aanbevolen';
+	@override String get botProtection => 'Beveiliging tegen bots';
+	@override String get instanceBlocking => 'Geblokkeerde/gedempte Instanties';
+	@override String get selectAccount => 'Gebruikersaccount selecteren';
+	@override String get switchAccount => 'Account wisselen';
+	@override String get enabled => 'Ingeschakeld';
+	@override String get disabled => 'Uitgeschakeld';
+	@override String get quickAction => 'Snelle acties';
 	@override String get user => 'Gebruikers';
+	@override String get administration => 'Beheer';
+	@override String get accounts => 'Gebruikersaccounts';
+	@override String get switch_ => 'Wissel';
+	@override String get noMaintainerInformationWarning => 'Operatorinformatie is niet geconfigureerd.';
 	@override String get noInquiryUrlWarning => 'Contact-URL niet opgegeven';
+	@override String get noBotProtectionWarning => 'Bescherming tegen bots is niet geconfigureerd.';
+	@override String get configure => 'Configureer';
+	@override String get postToGallery => 'Nieuw galerijbericht maken';
+	@override String get postToHashtag => 'Post naar deze hashtag';
+	@override String get gallery => 'Galerij';
+	@override String get recentPosts => 'Recente berichten';
+	@override String get popularPosts => 'Populair berichten';
+	@override String get shareWithNote => 'Delen met notitie';
+	@override String get ads => 'Advertenties';
+	@override String get expiration => 'Deadline';
+	@override String get startingperiod => 'Start';
+	@override String get memo => 'Memo';
+	@override String get priority => 'Prioriteit';
+	@override String get high => 'Hoge';
+	@override String get middle => 'Medium';
+	@override String get low => 'Lage';
+	@override String get emailNotConfiguredWarning => 'E-mailadres niet ingesteld.';
+	@override String get ratio => 'Verhouding';
+	@override String get previewNoteText => 'Show voorproefje';
+	@override String get customCss => 'Aangepaste CSS';
+	@override String get customCssWarn => 'Gebruik deze instelling alleen als je weet wat het doet. Ongeldige invoer kan ertoe leiden dat de client niet meer normaal functioneert.';
+	@override String get global => 'Globaal';
+	@override String get squareAvatars => 'Toon profielfoto\'s as vierkant';
+	@override String get sent => 'Verzonden';
+	@override String get received => 'Ontvangen';
+	@override String get searchResult => 'Zoekresultaten';
+	@override String get hashtags => 'Hashtags';
+	@override String get troubleshooting => 'Probleemoplossing';
+	@override String get useBlurEffect => 'Vervagingseffecten in de UI gebruike';
+	@override String get learnMore => 'Meer leren';
+	@override String get misskeyUpdated => 'Misskey is bijgewerkt!';
+	@override String get whatIsNew => 'Wijzigingen tonen';
+	@override String get translate => 'Vertalen';
+	@override String translatedFrom({required Object x}) => 'Vertaald uit ${x}';
+	@override String get accountDeletionInProgress => 'De verwijdering van je gebruikersaccount wordt momenteel verwerkt.';
+	@override String get usernameInfo => 'Een naam die kan worden gebruikt om je gebruikersaccount op deze server te identificeren. Je kunt het alfabet (a~z, A~Z), cijfers (0~9) of underscores (_) gebruiken. Gebruikersnamen kunnen later niet worden gewijzigd.';
+	@override String get aiChanMode => 'Ai Mode';
+	@override String get devMode => 'Ontwikkelaar modus';
+	@override String get keepCw => 'Inhoudswaarschuwingen behouden';
+	@override String get pubSub => 'Pub/Sub Gebruikersaccounts';
+	@override String get lastCommunication => 'Laatste communicatie';
+	@override String get resolved => 'Opgelost';
+	@override String get unresolved => 'Onopgelost';
+	@override String get breakFollow => 'Volger verwijderen';
+	@override String get breakFollowConfirm => 'Deze volger echt weghalen?';
+	@override String get itsOn => 'Ingeschakeld';
+	@override String get itsOff => 'Uitgeschakeld';
+	@override String get on => 'Op';
+	@override String get off => 'Uit';
+	@override String get emailRequiredForSignup => 'Vereist e-mailadres voor aanmelding';
+	@override String get unread => 'Ongelezen';
+	@override String get filter => 'Filter';
+	@override String get controlPanel => 'Controlepaneel';
+	@override String get manageAccounts => 'Gebruikersaccounts beheren';
+	@override String get makeReactionsPublic => 'Reactiegeschiedenis publiceren';
+	@override String get makeReactionsPublicDescription => 'Hierdoor wordt de lijst met al je eerdere reacties openbaar.';
+	@override String get classic => 'Classic';
 	@override String get muteThread => 'Discussies dempen ';
 	@override String get unmuteThread => 'Dempen van discussie ongedaan maken';
 	@override String get followingVisibility => 'Zichtbaarheid van gevolgden';
 	@override String get followersVisibility => 'Zichtbaarheid van volgers';
+	@override String get continueThread => 'Bekijk draad voortzetting';
+	@override String get deleteAccountConfirm => 'Je gebruikersaccount wordt onherroepelijk verwijderd. Wil je nog steeds doorgaan?';
+	@override String get incorrectPassword => 'Onjuist wachtwoord.';
 	@override String get incorrectTotp => 'Het eenmalige wachtwoord is incorrect of verlopen';
+	@override String voteConfirm({required Object choice}) => 'Bevestig je je stem op “${choice}”?';
 	@override String get hide => 'Verbergen';
+	@override String get useDrawerReactionPickerForMobile => 'Toon reactiekiezer als lade op mobiel';
+	@override String welcomeBackWithName({required Object name}) => 'Welkom terug, ${name}';
+	@override String clickToFinishEmailVerification({required Object ok}) => 'Druk op [${ok}] om de e-mailbevestiging af te ronden.';
 	@override String get searchByGoogle => 'Zoeken';
 	@override String get threeMonths => '3 maanden';
 	@override String get oneYear => '1 jaar';
@@ -576,6 +1005,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get cropImage => 'Afbeelding bijsnijden';
 	@override String get cropImageAsk => 'Bijsnijdengevraagd';
 	@override String get file => 'Bestanden';
+	@override String get account => 'Gebruikersaccounts';
 	@override String get pushNotification => 'Pushberichten';
 	@override String get subscribePushNotification => 'Push meldingen inschakelen';
 	@override String get unsubscribePushNotification => 'Pushberichten uitschakelen';
@@ -583,6 +1013,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get windowMaximize => 'Maximaliseren';
 	@override String get windowRestore => 'Herstellen';
 	@override String get loggedInAsBot => 'Momenteel als bot ingelogd';
+	@override String get show => 'Weergave';
 	@override String correspondingSourceIsAvailable({required Object anchor}) => 'De bijbehorende broncode is beschikbaar bij ${anchor}';
 	@override String get invalidParamErrorDescription => 'De aanvraagparameters zijn ongeldig. Dit komt meestal door een bug, maar kan ook omdat de invoer te lang is of iets dergelijks.';
 	@override String get collapseRenotes => 'Renotes die je al gezien hebt, inklappen';
@@ -601,13 +1032,16 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get openTagPageConfirm => 'Wil je deze hashtagpagina openen?';
 	@override String get specifyHost => 'Specificeer host';
 	@override String get icon => 'Avatar';
-	@override String get replies => 'Antwoord';
+	@override String get replies => 'Antwoorden';
 	@override String get renotes => 'Herdelen';
 	@override String get followingOrFollower => 'Gevolgd of volger';
 	@override String get confirmShowRepliesAll => 'Dit is een onomkeerbare operatie. Weet je zeker dat reacties op anderen van iedereen die je volgt, wil weergeven in je tijdlijn?';
 	@override String get information => 'Over';
 	@override late final _TranslationsMisskeyChatNlNl chat_ = _TranslationsMisskeyChatNlNl._(_root);
 	@override late final _TranslationsMisskeyDeliveryNlNl delivery_ = _TranslationsMisskeyDeliveryNlNl._(_root);
+	@override late final _TranslationsMisskeyRoleNlNl role_ = _TranslationsMisskeyRoleNlNl._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityNlNl ffVisibility_ = _TranslationsMisskeyFfVisibilityNlNl._(_root);
+	@override late final _TranslationsMisskeyAdNlNl ad_ = _TranslationsMisskeyAdNlNl._(_root);
 	@override late final _TranslationsMisskeyEmailNlNl email_ = _TranslationsMisskeyEmailNlNl._(_root);
 	@override late final _TranslationsMisskeyThemeNlNl theme_ = _TranslationsMisskeyThemeNlNl._(_root);
 	@override late final _TranslationsMisskeySfxNlNl sfx_ = _TranslationsMisskeySfxNlNl._(_root);
@@ -619,10 +1053,12 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyExportOrImportNlNl exportOrImport_ = _TranslationsMisskeyExportOrImportNlNl._(_root);
 	@override late final _TranslationsMisskeyChartsNlNl charts_ = _TranslationsMisskeyChartsNlNl._(_root);
 	@override late final _TranslationsMisskeyTimelinesNlNl timelines_ = _TranslationsMisskeyTimelinesNlNl._(_root);
+	@override late final _TranslationsMisskeyPlayNlNl play_ = _TranslationsMisskeyPlayNlNl._(_root);
 	@override late final _TranslationsMisskeyPagesNlNl pages_ = _TranslationsMisskeyPagesNlNl._(_root);
 	@override late final _TranslationsMisskeyNotificationNlNl notification_ = _TranslationsMisskeyNotificationNlNl._(_root);
 	@override late final _TranslationsMisskeyDeckNlNl deck_ = _TranslationsMisskeyDeckNlNl._(_root);
 	@override late final _TranslationsMisskeyWebhookSettingsNlNl webhookSettings_ = _TranslationsMisskeyWebhookSettingsNlNl._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNlNl abuseReport_ = _TranslationsMisskeyAbuseReportNlNl._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesNlNl moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNlNl._(_root);
 	@override late final _TranslationsMisskeyReversiNlNl reversi_ = _TranslationsMisskeyReversiNlNl._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNlNl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNlNl._(_root);
@@ -637,8 +1073,10 @@ class _TranslationsMisskeyChatNlNl extends TranslationsMisskeyChatEnUs {
 
 	// Translations
 	@override String get invitations => 'Uitnodigen';
+	@override String get noHistory => 'Geen geschiedenis gevonden';
 	@override String get members => 'Leden';
 	@override String get home => 'Startpagina';
+	@override String get send => 'Stuur';
 }
 
 // Path: misskey.delivery_
@@ -650,6 +1088,37 @@ class _TranslationsMisskeyDeliveryNlNl extends TranslationsMisskeyDeliveryEnUs {
 	// Translations
 	@override String get stop => 'Opgeschort';
 	@override late final _TranslationsMisskeyDeliveryTypeNlNl type_ = _TranslationsMisskeyDeliveryTypeNlNl._(_root);
+}
+
+// Path: misskey.role_
+class _TranslationsMisskeyRoleNlNl extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get priority => 'Prioriteit';
+	@override late final _TranslationsMisskeyRolePriorityNlNl priority_ = _TranslationsMisskeyRolePriorityNlNl._(_root);
+}
+
+// Path: misskey.ffVisibility_
+class _TranslationsMisskeyFfVisibilityNlNl extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get public => 'Publiceren';
+}
+
+// Path: misskey.ad_
+class _TranslationsMisskeyAdNlNl extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get back => 'Terug';
 }
 
 // Path: misskey.email_
@@ -669,6 +1138,7 @@ class _TranslationsMisskeyThemeNlNl extends TranslationsMisskeyThemeEnUs {
 	final TranslationsNlNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get description => 'Beschrijving';
 	@override late final _TranslationsMisskeyThemeKeysNlNl keys = _TranslationsMisskeyThemeKeysNlNl._(_root);
 }
 
@@ -749,6 +1219,7 @@ class _TranslationsMisskeyExportOrImportNlNl extends TranslationsMisskeyExportOr
 	final TranslationsNlNl _root; // ignore: unused_field
 
 	// Translations
+	@override String get clips => 'Clip aanmaken';
 	@override String get followingList => 'Volgend';
 	@override String get muteList => 'Dempen';
 	@override String get blockingList => 'Blokkeren';
@@ -775,6 +1246,17 @@ class _TranslationsMisskeyTimelinesNlNl extends TranslationsMisskeyTimelinesEnUs
 
 	// Translations
 	@override String get home => 'Startpagina';
+}
+
+// Path: misskey.play_
+class _TranslationsMisskeyPlayNlNl extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get script => 'Script';
+	@override String get summary => 'Beschrijving';
 }
 
 // Path: misskey.pages_
@@ -818,6 +1300,17 @@ class _TranslationsMisskeyWebhookSettingsNlNl extends TranslationsMisskeyWebhook
 
 	// Translations
 	@override String get name => 'Naam';
+	@override String get active => 'Ingeschakeld';
+}
+
+// Path: misskey.abuseReport_
+class _TranslationsMisskeyAbuseReportNlNl extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientNlNl notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientNlNl._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -871,6 +1364,18 @@ class _TranslationsMisskeyDeliveryTypeNlNl extends TranslationsMisskeyDeliveryTy
 	@override String get none => 'Publiceren';
 }
 
+// Path: misskey.role_.priority_
+class _TranslationsMisskeyRolePriorityNlNl extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get low => 'Lage';
+	@override String get middle => 'Medium';
+	@override String get high => 'Hoge';
+}
+
 // Path: misskey.email_.follow_
 class _TranslationsMisskeyEmailFollowNlNl extends TranslationsMisskeyEmailFollowEnUs {
 	_TranslationsMisskeyEmailFollowNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
@@ -890,6 +1395,7 @@ class _TranslationsMisskeyThemeKeysNlNl extends TranslationsMisskeyThemeKeysEnUs
 	// Translations
 	@override String get mention => 'Vermelding';
 	@override String get renote => 'Herdelen';
+	@override String get divider => 'Scheider';
 }
 
 // Path: misskey.widgets_.userList_
@@ -949,7 +1455,18 @@ class _TranslationsMisskeyDeckColumnsNlNl extends TranslationsMisskeyDeckColumns
 	@override String get tl => 'Tijdlijn';
 	@override String get antenna => 'Antennes';
 	@override String get list => 'Lijsten';
+	@override String get channel => 'Kanalen';
 	@override String get mentions => 'Vermeldingen';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _TranslationsMisskeyAbuseReportNotificationRecipientNlNl extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNlNl recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNlNl._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
@@ -960,4 +1477,14 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNlNl extends Translation
 
 	// Translations
 	@override String get title => 'Niet gevonden';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNlNl extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

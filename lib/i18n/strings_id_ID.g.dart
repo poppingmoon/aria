@@ -171,11 +171,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get openSensitiveMediaOnDoubleTap => 'Buka media sensitif dengan ketukan ganda';
 	@override String get parameters => 'Parameter';
 	@override String get paste => 'Tempel';
-	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: 'Tempel daftar emoji dengan format JSON untuk menyematkan emoji. Anda bisa menyalin emoji yang sudah tersematkan dari Misskey Web di '),
-		url,
-		const TextSpan(text: '.'),
-	]);
 	@override String get pasteResponseBelow => 'Tempel respon di bawah.';
 	@override String get pinToEmojiPicker => 'Sematkan ke pemilih emoji';
 	@override String get playAudio => 'Putar audio';
@@ -511,7 +506,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Sunting profil';
 	@override String get noteDeleteConfirm => 'Apakah kamu yakin ingin menghapus catatan ini?';
 	@override String get pinLimitExceeded => 'Kamu tidak dapat menyematkan catatan lagi';
-	@override String get intro => 'Instalasi Misskey telah selesai! Mohon untuk membuat pengguna admin.';
 	@override String get done => 'Selesai';
 	@override String get processing => 'Memproses';
 	@override String get preview => 'Pratinjau';
@@ -1031,7 +1025,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Pengembang';
 	@override String get makeExplorable => 'Buat akun tampil di "Jelajahi"';
 	@override String get makeExplorableDescription => 'Jika kamu mematikan ini, akun kamu tidak akan muncul di menu "Jelajahi"';
-	@override String get showGapBetweenNotesInTimeline => 'Tampilkan jarak diantara catatan pada lini masa';
 	@override String get duplicate => 'Duplikat';
 	@override String get left => 'Kiri';
 	@override String get center => 'Tengah';
@@ -1476,7 +1469,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Lepaskan untuk memuat ulang';
 	@override String get refreshing => 'Sedang memuat ulang...';
 	@override String get pullDownToRefresh => 'Tarik ke bawah untuk memuat ulang';
-	@override String get disableStreamingTimeline => 'Nonaktifkan pembaharuan lini masa real-time';
 	@override String get useGroupedNotifications => 'Tampilkan notifikasi secara dikelompokkan';
 	@override String get signupPendingError => 'Terdapat masalah ketika memverifikasi alamat surel. Tautan kemungkinan telah kedaluwarsa.';
 	@override String get cwNotationRequired => 'Jika "Sembunyikan konten" diaktifkan, deskripsi harus disediakan.';

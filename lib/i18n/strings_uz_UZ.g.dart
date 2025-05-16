@@ -297,7 +297,6 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Profilni o\'zgartirish';
 	@override String get noteDeleteConfirm => 'Haqiqatan ham bu qaydni oʻchirib tashlamoqchimisiz?';
 	@override String get pinLimitExceeded => 'Siz boshqa qaydlarni mahkamlay olmaysiz';
-	@override String get intro => 'Misskeyni o\'rnatish tugallandi! Iltimos, administrator foydalanuvchi yarating.';
 	@override String get done => 'Bajarildi';
 	@override String get processing => 'Amaliyotda';
 	@override String get preview => 'Ko\'rish';

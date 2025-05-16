@@ -45,6 +45,8 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	// Translations
 	@override String get aboutAria => '关于 Aria';
 	@override String get accessToken => '访问令牌';
+	@override String get accessTokenUpdated => '成功更新访问令牌';
+	@override String get accountAdded => '成功添加账户';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: 'Aria 是 '),
 		miria,
@@ -67,6 +69,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get confirmBeforeFollow => '在关注之前确认';
 	@override String get confirmBeforePost => '在发布帖子前确认';
 	@override String get confirmBeforeReact => '在表情回应前确认';
+	@override String get confirmBeforeRenote => '在转发之前确认';
 	@override String get copied => '已复制到剪贴板';
 	@override String get copyName => '复制昵称';
 	@override String get crop => '裁剪';
@@ -97,6 +100,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => '启用预测性返回动画';
 	@override String get enableSpellCheck => '启用拼写检查';
 	@override String get endpoint => '端点';
+	@override String get exitPlayConfirm => '你确定要退出这个 Play 吗？';
 	@override String get expandNote => '展开帖子';
 	@override String get extraMentionsWarning => '此帖子包含在目标回复帖子中未提及的内容';
 	@override String get fileNotFound => '未找到文件';
@@ -150,8 +154,9 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get noteDoubleTapAction => '帖子双击时行为';
 	@override String get noteFooterSize => '帖子操作菜单大小';
 	@override String get noteLongPressAction => '长按帖子时动作';
+	@override String get noteScheduled => '帖子已定时';
 	@override String get noteTapAction => '帖子点击时操作';
-	@override String get notesAfterRenotes => '重现后的帖子';
+	@override String get notesAfterRenotes => '转贴后的帖子';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' 人在线'),
@@ -159,9 +164,9 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get opacity => '不透明度';
 	@override String get openAsGuest => '以访客身份访问';
 	@override String get openInAnotherAccount => '在另一个帐户中打开';
-	@override String get openInBrowser => '在游览器中打开';
-	@override String get openInExternalBrowser => '在外部游览器中打开';
-	@override String get openInInternalBrowser => '在内部游览器中打开';
+	@override String get openInBrowser => '在浏览器中打开';
+	@override String get openInExternalBrowser => '在外部浏览器中打开';
+	@override String get openInInternalBrowser => '在内置浏览器中打开';
 	@override String get openMenu => '打开菜单';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: '在浏览器中打开 '),
@@ -171,21 +176,17 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get openSensitiveMediaOnDoubleTap => '遇到敏感媒体时双击以显示';
 	@override String get parameters => '参数';
 	@override String get paste => '粘贴';
-	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: '粘贴 JSON 格式的表情符号列表以固定表情符号。您可以从 '),
-		url,
-		const TextSpan(text: ' 复制Misskey Web 的固定表情符号。'),
-	]);
 	@override String get pasteResponseBelow => '粘贴下面的回复';
 	@override String get pinToEmojiPicker => '固定到表情选择器';
 	@override String get playAudio => '播放音频';
 	@override String get playVideo => '播放视频';
 	@override String get pleaseCopyResponse => '请复制此回复';
+	@override String pleaseLoginAs({required Object user}) => '请以 ${user} 登录';
 	@override String get postConfirm => '你确定要发布这个帖子吗？';
 	@override String get reactionConfirm => '您确定要添加一个反应吗？';
 	@override String get recentlyUsedEmojis => '最近使用的表情';
-	@override String get renoteConfirm => '您确定要删除这个帖子吗？';
-	@override String get renoteToChannel => '重命名频道';
+	@override String get renoteConfirm => '您确定要转发这个帖子吗？';
+	@override String get renoteToChannel => '转发至频道';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
 		const TextSpan(text: ' 转发了'),
@@ -193,10 +194,14 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get reset => '重置';
 	@override String get rotate => '旋转';
 	@override String get scale => '缩放';
+	@override String get schedule => '定时发布';
+	@override String get scheduledNoteError => '定时帖子发布失败';
+	@override String get scheduledNotePosted => '定时帖子已发布';
+	@override String get scheduledNotes => '定时帖子';
 	@override String get selectIcon => '选择一个图标';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
-		const TextSpan(text: ' 重新注释了'),
+		const TextSpan(text: ' 自己转发了'),
 	]);
 	@override String get serverUrl => '服务器地址';
 	@override String get settingsFileForAria => 'Aria 的设置文件';
@@ -214,12 +219,13 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showNoteCreatedAt => '显示帖子的创建时间';
 	@override String get showNoteFooter => '在帖子下显示操作菜单';
 	@override String get showNoteReactionsViewer => '在帖子中显示反应表情';
+	@override String get showOnlineStatus => '显示在线状态';
 	@override String get showPopupOnNewNote => '在新帖子上显示弹出窗口';
-	@override String get showQuoteButtonInNoteFooter => '在帖子菜单中添加转发按钮';
+	@override String get showQuoteButtonInNoteFooter => '在帖子菜单中添加引用按钮';
 	@override String get showReactionsCountForEachTypes => '查看每个反应类型的反应数量';
-	@override String get showRenotesCount => '查看帖子中的复注数量';
+	@override String get showRenotesCount => '查看帖子中的转发数量';
 	@override String get showRepliesCount => '查看帖子中的回复数量';
-	@override String get showSelfRenotes => '显示自重注释';
+	@override String get showSelfRenotes => '显示自己转发';
 	@override String get showSmallButtons => '显示小按钮';
 	@override String get showSquaredButtons => '显示平方按钮';
 	@override String get showStackTrace => '显示堆栈跟踪';
@@ -259,7 +265,8 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get vibrateNote => '在有新帖子时震动';
 	@override String get vibrateNotification => '在有通知时震动';
-	@override String get webBrowser => '网络游览器';
+	@override String get webBrowser => '网页浏览器';
+	@override String willBePostedOn({required Object date}) => '帖子将于 ${date} 发布';
 }
 
 // Path: misskey
@@ -490,6 +497,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => '隐藏此服务器的媒体文件';
 	@override String get operations => '操作';
 	@override String get software => '软件';
+	@override String get softwareName => '软件名';
 	@override String get version => '版本';
 	@override String get metadata => '元数据';
 	@override String withNFiles({required Object n}) => '${n} 个文件';
@@ -520,7 +528,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get editProfile => '编辑资料';
 	@override String get noteDeleteConfirm => '确定要删除该帖子吗？';
 	@override String get pinLimitExceeded => '无法置顶更多了';
-	@override String get intro => 'Misskey 的部署结束啦！创建管理员账号吧！';
 	@override String get done => '完成';
 	@override String get processing => '正在处理';
 	@override String get preview => '预览';
@@ -1054,7 +1061,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get developer => '开发者';
 	@override String get makeExplorable => '使账号可见。';
 	@override String get makeExplorableDescription => '关闭时，账号不会显示在"发现"中。';
-	@override String get showGapBetweenNotesInTimeline => '时间线上的帖子分开显示。';
 	@override String get duplicate => '复制';
 	@override String get left => '左';
 	@override String get center => '中央';
@@ -1249,6 +1255,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => '缓存页数';
 	@override String get numberOfPageCacheDescription => '设置较高的值会更方便用户，但设备的负载和内存使用量会增加。';
 	@override String get logoutConfirm => '是否确认登出？';
+	@override String get logoutWillClearClientData => '登出时将会从浏览器中删除客户端的设置信息。如果想要在再次登入时恢复设置信息，请在设置里打开自动备份。';
 	@override String get lastActiveDate => '最后活跃时间';
 	@override String get statusbar => '状态栏';
 	@override String get pleaseSelect => '请选择';
@@ -1506,7 +1513,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => '松开以刷新';
 	@override String get refreshing => '刷新中';
 	@override String get pullDownToRefresh => '下拉以刷新';
-	@override String get disableStreamingTimeline => '禁止实时更新时间线';
 	@override String get useGroupedNotifications => '分组显示通知';
 	@override String get signupPendingError => '确认电子邮件时出现错误。链接可能已过期。';
 	@override String get cwNotationRequired => '在启用「隐藏内容」时必须输入注释';
@@ -1614,6 +1620,9 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get settingsMigrating => '正在迁移设置，请稍候。（之后也可以在设置 → 其它 → 迁移旧设置来手动迁移）';
 	@override String get readonly => '只读';
 	@override String get goToDeck => '返回至 Deck';
+	@override String get federationJobs => '联合作业';
+	@override String get driveAboutTip => '网盘可以显示以前上传的文件。<br>\n也可以在发布帖子时重复使用文件，或在发布帖子前预先上传文件。<br>\n<b>删除文件时，其将从至今为止所有用到该文件的地方（如帖子、页面、头像、横幅）消失。</b><br>\n也可以新建文件夹来整理文件。';
+	@override String get scrollToClose => '滑动并关闭';
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
@@ -1797,6 +1806,8 @@ class _TranslationsMisskeySettingsZhCn extends TranslationsMisskeySettingsEnUs {
 	@override String get showNavbarSubButtons => '在导航栏中显示副按钮';
 	@override String get ifOn => '启用时';
 	@override String get ifOff => '关闭时';
+	@override String get enablePullToRefresh => '开启下拉刷新';
+	@override String get enablePullToRefresh_description => '使用鼠标时按下滚轮来拖动';
 	@override late final _TranslationsMisskeySettingsChatZhCn chat_ = _TranslationsMisskeySettingsChatZhCn._(_root);
 }
 
@@ -1810,6 +1821,7 @@ class _TranslationsMisskeyPreferencesProfileZhCn extends TranslationsMisskeyPref
 	@override String get profileName => '配置名';
 	@override String get profileNameDescription => '请指定用于识别此设备的名称';
 	@override String get profileNameDescription2 => '如「PC」、「手机」等';
+	@override String get manageProfiles => '管理配置文件';
 }
 
 // Path: misskey.preferencesBackup_
@@ -2003,6 +2015,7 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get openRegistration => '开放注册';
 	@override String get openRegistrationWarning => '开放注册有风险。建议仅当能够持续监控服务器并在出现问题时能够立即响应时才打开它。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '若在一段时间内没有检测到管理活动，为防止垃圾信息，此设定将自动关闭。';
+	@override String get deliverSuspendedSoftware => '不可用的软件';
 }
 
 // Path: misskey.accountMigration_
@@ -2713,6 +2726,7 @@ class _TranslationsMisskeyWidgetsZhCn extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListZhCn userList_ = _TranslationsMisskeyWidgetsUserListZhCn._(_root);
 	@override String get clicker => '点击器';
 	@override String get birthdayFollowings => '今天是他们的生日';
+	@override String get chat => '聊天';
 }
 
 // Path: misskey.cw_
@@ -3509,6 +3523,7 @@ class _TranslationsMisskeyDeliveryTypeZhCn extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => '手动停止中';
 	@override String get goneSuspended => '因服务器被删除而停止';
 	@override String get autoSuspendedForNotResponding => '因服务器无应答而停止';
+	@override String get softwareSuspended => '因有不可用的软件而停止';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3754,6 +3769,7 @@ class _TranslationsMisskeyRoleOptionsZhCn extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => '管理自定义表情符号';
 	@override String get canManageAvatarDecorations => '管理头像挂件';
 	@override String get driveCapacity => '网盘容量';
+	@override String get maxFileSize => '可上传的最大文件大小';
 	@override String get alwaysMarkNsfw => '总是将文件标记为 NSFW';
 	@override String get canUpdateBioMedia => '可以更新头像和横幅';
 	@override String get pinMax => '帖子置顶数量限制';
@@ -3970,6 +3986,7 @@ class _TranslationsMisskeyDeckColumnsZhCn extends TranslationsMisskeyDeckColumns
 	@override String get mentions => '提及';
 	@override String get direct => '指定用户';
 	@override String get roleTimeline => '角色时间线';
+	@override String get chat => '聊天';
 }
 
 // Path: misskey.webhookSettings_.events_

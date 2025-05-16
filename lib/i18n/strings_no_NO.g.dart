@@ -247,7 +247,6 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Rediger profil';
 	@override String get noteDeleteConfirm => 'Er du sikker på at du vil slette denne Noten?';
 	@override String get pinLimitExceeded => 'Du kan ikke feste flere.';
-	@override String get intro => 'Installasjonen av Misskey er ferdig! Vennligst opprett en administratorkonto.';
 	@override String get done => 'Ferdig';
 	@override String get default_ => 'Standard';
 	@override String defaultValueIs({required Object value}) => 'Standard: ${value}';

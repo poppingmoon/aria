@@ -305,6 +305,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => '將這個伺服器的媒體設為禁言';
 	@override String get operations => '操作';
 	@override String get software => '軟體';
+	@override String get softwareName => '軟體名稱';
 	@override String get version => '版本';
 	@override String get metadata => '詮釋資料';
 	@override String withNFiles({required Object n}) => '${n} 個檔案';
@@ -335,7 +336,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get editProfile => '編輯個人檔案';
 	@override String get noteDeleteConfirm => '確定刪除此貼文嗎？';
 	@override String get pinLimitExceeded => '不能置頂更多貼文了';
-	@override String get intro => 'Misskey 部署完成！請建立管理員帳戶。';
 	@override String get done => '完成';
 	@override String get processing => '處理中';
 	@override String get preview => '預覽';
@@ -509,6 +509,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => '空格代表「以及」（AND），換行代表「或者」（OR）';
 	@override String get notifyAntenna => '通知有新貼文';
 	@override String get withFileAntenna => '僅帶有附件的貼文';
+	@override String get excludeNotesInSensitiveChannel => '排除敏感頻道的貼文';
 	@override String get enableServiceworker => '啟用瀏覽器的推播通知';
 	@override String get antennaUsersDescription => '填寫使用者名稱，以換行分隔';
 	@override String get caseSensitive => '區分大小寫';
@@ -868,7 +869,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get developer => '開發者';
 	@override String get makeExplorable => '使自己的帳戶更容易被找到';
 	@override String get makeExplorableDescription => '如果關閉，帳戶將不會被顯示在「探索」頁面中。';
-	@override String get showGapBetweenNotesInTimeline => '分開顯示時間軸上的貼文';
 	@override String get duplicate => '複製';
 	@override String get left => '左';
 	@override String get center => '置中';
@@ -1063,6 +1063,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => '快取頁面數';
 	@override String get numberOfPageCacheDescription => '增加數量會提高便利性，但也會增加負荷與記憶體使用量。';
 	@override String get logoutConfirm => '確定要登出嗎？';
+	@override String get logoutWillClearClientData => '當您登出時，客戶端的設定資訊將從瀏覽器中清除。為了能夠在重新登入時恢復您的設定資訊，請啟用設定內的自動備份選項。';
 	@override String get lastActiveDate => '上次使用日期及時間';
 	@override String get statusbar => '狀態列';
 	@override String get pleaseSelect => '請選擇';
@@ -1320,7 +1321,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => '放開以更新內容';
 	@override String get refreshing => '載入更新中';
 	@override String get pullDownToRefresh => '往下拉來更新內容';
-	@override String get disableStreamingTimeline => '停用時間軸的即時更新';
 	@override String get useGroupedNotifications => '分組顯示通知訊息';
 	@override String get signupPendingError => '驗證您的電子郵件地址時出現問題。連結可能已過期。';
 	@override String get cwNotationRequired => '如果開啟「隱藏內容」，則需要註解說明。';
@@ -1392,7 +1392,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '了解注意事項後再開啟。';
 	@override String get federationSpecified => '此伺服器以白名單聯邦的方式運作。除了管理員指定的伺服器外，它無法與其他伺服器互動。';
 	@override String get federationDisabled => '此伺服器未開啟站台聯邦。無法與其他伺服器上的使用者互動。';
-	@override String get confirmOnReact => '反應時確認';
+	@override String get confirmOnReact => '在做出反應前先確認';
 	@override String reactAreYouSure({required Object emoji}) => '用「 ${emoji} 」反應嗎？';
 	@override String get markAsSensitiveConfirm => '要將這個媒體設定為敏感嗎？';
 	@override String get unmarkAsSensitiveConfirm => '要解除這個媒體的敏感設定嗎？';
@@ -1427,6 +1427,10 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get embed => '嵌入';
 	@override String get settingsMigrating => '正在移轉設定。請稍候……（之後也可以到「設定 → 其他 → 舊設定資訊移轉」中手動進行移轉）';
 	@override String get readonly => '唯讀';
+	@override String get goToDeck => '回去甲板';
+	@override String get federationJobs => '聯邦通訊作業';
+	@override String get driveAboutTip => '在「雲端硬碟」中，會顯示過去上傳的檔案列表。<br>\n可以在附加到貼文時重新利用，或者事先上傳之後再用於發布。<br>\n<b>請注意，刪除檔案後，之前使用過該檔案的所有地方（貼文、頁面、大頭貼、橫幅等）也會一併無法顯示。</b><br>\n也可以建立資料夾來整理檔案。';
+	@override String get scrollToClose => '用滾輪關閉';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1611,6 +1615,8 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOn => '開啟時';
 	@override String get ifOff => '關閉時';
 	@override String get enableSyncThemesBetweenDevices => '在裝置之間同步已安裝的主題';
+	@override String get enablePullToRefresh => '下拉更新';
+	@override String get enablePullToRefresh_description => '使用滑鼠，按下並拖曳滾輪。';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -1624,6 +1630,7 @@ class _TranslationsMisskeyPreferencesProfileZhTw extends TranslationsMisskeyPref
 	@override String get profileName => '設定檔案名稱';
 	@override String get profileNameDescription => '設定一個名稱來識別此裝置。';
 	@override String get profileNameDescription2 => '例如：「主要個人電腦」、「智慧型手機」等';
+	@override String get manageProfiles => '管理個人檔案';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1659,7 +1666,7 @@ class _TranslationsMisskeyAccountSettingsZhTw extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBefore => '隱藏過去的貼文';
 	@override String get makeNotesHiddenBeforeDescription => '啟用此功能後，超過設定的日期和時間或超過設定時間的貼文將僅對自己顯示（私密化）。 如果您再次停用它，貼文的公開狀態也會恢復原狀。';
 	@override String get mayNotEffectForFederatedNotes => '聯邦發送至遠端伺服器的貼文可能會不受影響。';
-	@override String get mayNotEffectSomeSituations => '這些限制已經簡化。它們可能不適用於某些情況，例如在遠端伺服器上檢視或管理時。';
+	@override String get mayNotEffectSomeSituations => '這些限制僅是簡化版本。在某些情況下，例如在遠端伺服器上瀏覽或進行審核時，可能不會套用這些限制。';
 	@override String get notesHavePassedSpecifiedPeriod => '早於指定時間的貼文';
 	@override String get notesOlderThanSpecifiedDateAndTime => '指定時間和日期之前的貼文';
 }
@@ -1817,6 +1824,8 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get openRegistration => '允許建立帳戶';
 	@override String get openRegistrationWarning => '開放註冊伴隨著風險。 建議只有在伺服器受到持續監控，並準備好在出現問題時能立即處理的情況下才開放註冊。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '如果在一段期間內沒有偵測到任何審查員活動，此設定將自動關閉，以防止垃圾內容。';
+	@override String get deliverSuspendedSoftware => '已停止發佈的軟體';
+	@override String get deliverSuspendedSoftwareDescription => '由於脆弱性等原因，可以指定伺服器軟體的名稱與版本範圍來停止其發佈。這些版本資訊是由伺服器所提供，其可靠性無法保證。版本的指定可以使用 semver（語意化版本控制） 的範圍語法，但如果指定為 >= 2024.3.1，則像 2024.3.1-custom.0 這樣的自訂版本將不會被包含在內，因此建議使用 >= 2024.3.1-0 的方式來同時包含預發佈版本。';
 }
 
 // Path: misskey.accountMigration_
@@ -2527,6 +2536,7 @@ class _TranslationsMisskeyWidgetsZhTw extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListZhTw userList_ = _TranslationsMisskeyWidgetsUserListZhTw._(_root);
 	@override String get clicker => '點擊器';
 	@override String get birthdayFollowings => '今天生日的使用者';
+	@override String get chat => '聊天';
 }
 
 // Path: misskey.cw_
@@ -3323,6 +3333,7 @@ class _TranslationsMisskeyDeliveryTypeZhTw extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => '手動暫停中';
 	@override String get goneSuspended => '因為伺服器刪除所以暫停中';
 	@override String get autoSuspendedForNotResponding => '因為伺服器沒有回應所以暫停中';
+	@override String get softwareSuspended => '此軟體因已停止發佈，目前無法使用';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3568,6 +3579,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => '管理自訂表情符號';
 	@override String get canManageAvatarDecorations => '管理頭像裝飾';
 	@override String get driveCapacity => '雲端硬碟容量';
+	@override String get maxFileSize => '可上傳的最大檔案大小';
 	@override String get alwaysMarkNsfw => '總是將檔案標記為NSFW';
 	@override String get canUpdateBioMedia => '允許更新大頭貼和橫幅';
 	@override String get pinMax => '置頂貼文的最大數量';
@@ -3784,6 +3796,7 @@ class _TranslationsMisskeyDeckColumnsZhTw extends TranslationsMisskeyDeckColumns
 	@override String get mentions => '提及';
 	@override String get direct => '指定使用者';
 	@override String get roleTimeline => '角色時間軸';
+	@override String get chat => '聊天';
 }
 
 // Path: misskey.webhookSettings_.events_

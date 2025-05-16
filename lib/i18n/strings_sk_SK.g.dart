@@ -284,7 +284,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Upraviť profil';
 	@override String get noteDeleteConfirm => 'Naozaj chcete odstrániť túto poznámku?';
 	@override String get pinLimitExceeded => 'Ďalšie poznámky už nemôžete pripnúť.';
-	@override String get intro => 'Inštalácia Misskey je dokončená! Prosím vytvorte administrátora.';
 	@override String get done => 'Hotovo';
 	@override String get processing => 'Pracujem...';
 	@override String get preview => 'Náhľad';
@@ -762,7 +761,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Vývojár';
 	@override String get makeExplorable => 'Spraviť účet viditeľný v "Objavovať"';
 	@override String get makeExplorableDescription => 'Ak toto vypnete, váš účet sa nezobrazí v sekcii "Objavovat".';
-	@override String get showGapBetweenNotesInTimeline => 'Zobraziť medzeru medzi príspevkami časovej osi.';
 	@override String get duplicate => 'Duplikovať';
 	@override String get left => 'Naľavo';
 	@override String get center => 'Stred';

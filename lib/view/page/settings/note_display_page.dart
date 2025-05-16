@@ -270,7 +270,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                         margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         width: maxContentWidth,
                         child: SwitchListTile(
-                          title: Text(t.misskey.showGapBetweenNotesInTimeline),
+                          title: Text(t.aria.showGapBetweenNotesInTimeline),
                           value: settings.showGapBetweenNotesInTimeline,
                           onChanged:
                               (value) => ref

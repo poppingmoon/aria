@@ -832,7 +832,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     width: maxContentWidth,
                     child: SwitchListTile(
-                      title: Text(t.misskey.disableStreamingTimeline),
+                      title: Text(t.aria.disableStreamingTimeline),
                       value: tabSettings.value.disableStreaming,
                       onChanged:
                           (value) =>

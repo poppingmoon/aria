@@ -291,7 +291,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'تعديل الملف التعريفي';
 	@override String get noteDeleteConfirm => 'هل تريد حذف هذه الملاحظة؟';
 	@override String get pinLimitExceeded => 'لا يمكنك تثبيت الملاحظات بعد الآن.';
-	@override String get intro => 'لقد انتهت عملية تنصيب Misskey. الرجاء إنشاء حساب إداري.';
 	@override String get done => 'تمّ';
 	@override String get processing => 'المعالجة جارية';
 	@override String get preview => 'معاينة';
@@ -752,7 +751,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get developer => 'المطور';
 	@override String get makeExplorable => 'أظهر الحساب في صفحة "استكشاف"';
 	@override String get makeExplorableDescription => 'بتعطيل هذا الخيار لن يظهر حسابك في صفحة "استكشاف"';
-	@override String get showGapBetweenNotesInTimeline => 'أظهر فجوات بين المشاركات في الخيط الزمني';
 	@override String get left => 'يسار';
 	@override String get center => 'وسط';
 	@override String get wide => 'عريض';

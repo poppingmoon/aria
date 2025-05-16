@@ -1503,6 +1503,12 @@
             "value": "채팅 룸에 초대받았습니다"
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você foi convidado para uma conversa"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1554,6 +1560,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "액세스 토큰이 생성되었습니다"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uma token de acesso foi criada"
           }
         },
         "zh-Hans": {
@@ -1769,6 +1781,12 @@
             "value": "만약 기억이 나지 않는다면 '액세스 토큰 관리'를 통해 액세스 토큰을 삭제해 주세요."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se você não faz ideia, exclua o token de acesso através de \"Gerenciar tokens de acesso\"."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1803,6 +1821,12 @@
             "state": "translated",
             "value": "予約済みのノートの投稿に失敗しました"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时帖子发布失败"
+          }
         }
       }
     },
@@ -1825,6 +1849,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ノートが予約されました"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "帖子已定时"
           }
         }
       }
@@ -1849,6 +1879,12 @@
             "state": "translated",
             "value": "予約済みのノートが投稿されました"
           }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时帖子已发布"
+          }
         }
       }
     },
@@ -1871,6 +1907,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "予約済みのノートの投稿に失敗しました"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时帖子发布失败"
           }
         }
       }

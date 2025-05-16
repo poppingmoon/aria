@@ -175,11 +175,6 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get openSensitiveMediaOnDoubleTap => 'Abrir multimedia sensible con doble toque';
 	@override String get parameters => 'Parámetros';
 	@override String get paste => 'Pegar';
-	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: 'Pega la lista de emojis en formato JSON para anclar los emojis.\nPuedes copiar tus emojis anclados para la Web de Misskey desde '),
-		url,
-		const TextSpan(text: '.'),
-	]);
 	@override String get pasteResponseBelow => 'Pegar la respuesta a continuación.';
 	@override String get pinToEmojiPicker => 'Fijar al selector de emojis';
 	@override String get playAudio => 'Reproducir audio';
@@ -531,7 +526,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Editar perfil';
 	@override String get noteDeleteConfirm => '¿Desea borrar esta nota?';
 	@override String get pinLimitExceeded => 'Ya no se pueden fijar más posts';
-	@override String get intro => '¡La instalación de Misskey ha terminado! Crea el usuario administrador.';
 	@override String get done => 'Terminado';
 	@override String get processing => 'Procesando';
 	@override String get preview => 'Vista previa';
@@ -582,6 +576,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Explorar';
 	@override String get messageRead => 'Ya leído';
 	@override String get noMoreHistory => 'El historial se ha acabado';
+	@override String get startChat => 'Nuevo Chat';
 	@override String nUsersRead({required Object n}) => 'Leído por ${n} personas';
 	@override String agreeTo({required Object x0}) => 'De acuerdo con ${x0}';
 	@override String get agree => 'De acuerdo.';
@@ -704,6 +699,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Separar con espacios es una declaración AND, separar con una linea nueva es una declaración OR';
 	@override String get notifyAntenna => 'Notificar nueva nota';
 	@override String get withFileAntenna => 'Sólo notas con archivos adjuntados';
+	@override String get excludeNotesInSensitiveChannel => 'Excluir notas en canales sensibles';
 	@override String get enableServiceworker => 'Activar ServiceWorker';
 	@override String get antennaUsersDescription => 'Elegir nombres de usuarios separados por una linea nueva';
 	@override String get caseSensitive => 'Distinguir mayúsculas de minúsculas';
@@ -975,6 +971,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get makeActive => 'Activar';
 	@override String get display => 'Apariencia';
 	@override String get copy => 'Copiar';
+	@override String get copiedToClipboard => 'Texto copiado al portapapeles';
 	@override String get metrics => 'Métricas';
 	@override String get overview => 'Resumen';
 	@override String get logs => 'Registros';
@@ -1062,7 +1059,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Desarrolladores';
 	@override String get makeExplorable => 'Hacer visible la cuenta en "Explorar"';
 	@override String get makeExplorableDescription => 'Si desactiva esta opción, su cuenta no aparecerá en la sección "Explorar".';
-	@override String get showGapBetweenNotesInTimeline => 'Mostrar un intervalo entre notas en la línea de tiempo';
 	@override String get duplicate => 'Duplicar';
 	@override String get left => 'Izquierda';
 	@override String get center => 'Centrar';
@@ -1257,6 +1253,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'Cantidad de páginas cacheadas';
 	@override String get numberOfPageCacheDescription => 'Al aumentar el número mejora la conveniencia pero tambien puede aumentar la carga y la memoria a usarse';
 	@override String get logoutConfirm => '¿Cerrar sesión?';
+	@override String get logoutWillClearClientData => 'Al cerrar la sesión, la información de configuración del cliente se borra del navegador. Para garantizar que la información de configuración se pueda restaurar al volver a iniciar sesión, active la copia de seguridad automática de la configuración.';
 	@override String get lastActiveDate => 'Utilizado por última vez el';
 	@override String get statusbar => 'Barra de estado';
 	@override String get pleaseSelect => 'Selecciona una opción';
@@ -1352,7 +1349,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get likeOnly => 'Sólo \'me gusta\'';
 	@override String get likeOnlyForRemote => 'Sólo reacciones de instancias remotas';
 	@override String get nonSensitiveOnly => 'Solo no sensible';
-	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => 'Sólo no contenido sensible (sólo me gusta en remote)';
+	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => 'Sólo no contenido sensible (sólo me gusta en remoto)';
 	@override String get rolesAssignedToMe => 'Roles asignados a mí';
 	@override String get resetPasswordConfirm => '¿Realmente quieres cambiar la contraseña?';
 	@override String get sensitiveWords => 'Palabras sensibles';
@@ -1514,7 +1511,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Soltar para recargar';
 	@override String get refreshing => 'Recargando...';
 	@override String get pullDownToRefresh => 'Tira hacia abajo para recargar';
-	@override String get disableStreamingTimeline => 'Desactivar actualizaciones en tiempo real de la línea de tiempo';
 	@override String get useGroupedNotifications => 'Mostrar notificaciones agrupadas';
 	@override String get signupPendingError => 'Ha habido un problema al verificar tu dirección de correo electrónico. Es posible que el enlace haya caducado.';
 	@override String get cwNotationRequired => 'Si se ha activado "ocultar contenido", es necesario proporcionar una descripción.';
@@ -1574,13 +1570,56 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificación de la clave de acceso ha sido satisfactoria pero se ha deshabilitado el inicio de sesión sin contraseña.';
 	@override String get messageToFollower => 'Mensaje a seguidores';
 	@override String get target => 'Para';
+	@override String get testCaptchaWarning => 'Esta función está pensada para probar CAPTCHAs.<strong>No utilizar en un entorno de producción.</strong>';
+	@override String get prohibitedWordsForNameOfUser => 'Palabras prohibidas para nombres de usuario';
+	@override String get prohibitedWordsForNameOfUserDescription => 'Si alguna de las cadenas de esta lista está incluida en el nombre del usuario, el nombre será denegado. Los usuarios con privilegios de moderador no se ven afectados por esta restricción.';
+	@override String get yourNameContainsProhibitedWords => 'Tu nombre contiene palabras prohibidas';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Si deseas usar este nombre, por favor contacta con tu administrador/a de tu servidor';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => ' Establecido por el autor: requiere iniciar  sesión para ver';
+	@override String get lockdown => 'Bloqueo';
+	@override String get pleaseSelectAccount => 'Seleccione una cuenta, por favor.';
+	@override String get availableRoles => 'Roles disponibles ';
+	@override String get acknowledgeNotesAndEnable => 'Activar después de comprender las precauciones';
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
+	@override String get confirmOnReact => 'Confirmar la reacción';
+	@override String reactAreYouSure({required Object emoji}) => '¿Quieres añadir una reacción «${emoji}»?';
+	@override String get markAsSensitiveConfirm => '¿Desea establecer este medio multimedia(Imagen,vídeo...) como sensible?';
+	@override String get unmarkAsSensitiveConfirm => '¿Desea eliminar la designación de sensible para este adjunto?';
 	@override String get preferences => 'Preferencias';
+	@override String get accessibility => 'Accesibilidad';
+	@override String get preferencesProfile => 'Configuración del perfil';
+	@override String get copyPreferenceId => 'Copiar  ID de la configuración';
+	@override String get resetToDefaultValue => 'Revertir a valor predeterminado';
+	@override String get overrideByAccount => 'Anulado por la cuenta';
+	@override String get untitled => 'Sin título';
+	@override String get noName => 'No hay nombre.';
+	@override String get skip => 'Saltar';
+	@override String get restore => 'Restaurar';
+	@override String get syncBetweenDevices => 'Sincronizar entre dispositivos';
+	@override String get preferenceSyncConflictTitle => 'Los valores configurados existen en el servidor.';
+	@override String get preferenceSyncConflictText => 'Los ajustes de sincronización activados guardarán sus valores en el servidor. Sin embargo, hay valores existentes en el servidor. ¿Qué conjunto de valores desea sobrescribir?';
+	@override String get preferenceSyncConflictChoiceServer => 'Valores de configuración del servidor';
+	@override String get preferenceSyncConflictChoiceDevice => 'Valor configurado en el dispositivo';
+	@override String get paste => 'Pegar';
+	@override String get emojiPalette => 'Paleta emoji';
 	@override String get postForm => 'Formulario';
 	@override String get information => 'Información';
+	@override String get chat => 'Chat';
+	@override String get migrateOldSettings => 'Migrar la configuración anterior';
+	@override String get right => 'Derecha';
+	@override String get bottom => 'Abajo';
+	@override String get top => 'Arriba';
+	@override String get embed => 'Insertar';
+	@override String get settingsMigrating => 'La configuración está siendo migrada, por favor espera un momento... (También puedes migrar manualmente más tarde yendo a Ajustes  otros migrar configuración antigua';
+	@override String get readonly => 'Solo Lectura';
+	@override String get goToDeck => 'Volver al Deck';
+	@override String get federationJobs => 'Trabajos de Federación';
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
+	@override late final _TranslationsMisskeyEmojiPaletteEsEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteEsEs._(_root);
 	@override late final _TranslationsMisskeySettingsEsEs settings_ = _TranslationsMisskeySettingsEsEs._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileEsEs preferencesProfile_ = _TranslationsMisskeyPreferencesProfileEsEs._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupEsEs preferencesBackup_ = _TranslationsMisskeyPreferencesBackupEsEs._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsEsEs accountSettings_ = _TranslationsMisskeyAccountSettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportEsEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportEsEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryEsEs delivery_ = _TranslationsMisskeyDeliveryEsEs._(_root);
@@ -1665,11 +1704,57 @@ class _TranslationsMisskeyChatEsEs extends TranslationsMisskeyChatEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get noMessagesYet => 'Aún no hay mensajes';
+	@override String get newMessage => 'Mensajes nuevos';
+	@override String get individualChat => 'Chat individual';
+	@override String get individualChat_description => 'Mantén una conversación privada con otra persona.';
+	@override String get roomChat => 'Sala de Chat';
+	@override String get roomChat_description => 'Una sala de chat que puede tener varias personas.\nTambién puedes invitar a personas que no permiten chats privados si aceptan la invitación.';
+	@override String get createRoom => 'Crear sala';
+	@override String get inviteUserToChat => 'Invitar usuarios para empezar a chatear';
+	@override String get yourRooms => 'Salas creadas';
+	@override String get joiningRooms => 'Salas que te has unido';
 	@override String get invitations => 'Invitar';
+	@override String get noInvitations => 'No hay invitación.';
+	@override String get history => 'Historial';
 	@override String get noHistory => 'No hay datos en el historial';
+	@override String get noRooms => 'Sala no encontrada';
+	@override String get inviteUser => 'Invitar  usuarios';
+	@override String get sentInvitations => 'Invitaciones enviadas';
+	@override String get join => 'Unirse';
+	@override String get ignore => 'Ignorar';
+	@override String get leave => 'Dejar sala';
 	@override String get members => 'Miembros';
+	@override String get searchMessages => 'Buscar mensajes';
 	@override String get home => 'Inicio';
 	@override String get send => 'Enviar';
+	@override String get newline => 'Nueva línea';
+	@override String get muteThisRoom => 'Silenciar esta sala';
+	@override String get deleteRoom => 'Borrar sala';
+	@override String get chatNotAvailableForThisAccountOrServer => 'El chat no está habilitado en este servidor ni para esta cuenta.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'El chat es de sólo lectura en esta instancia o esta cuenta. No puedes escribir nuevos mensajes ni crear/unirte a salas de chat.';
+	@override String get chatNotAvailableInOtherAccount => 'La función de chat está desactivada para el otro usuario.';
+	@override String get cannotChatWithTheUser => 'No se puede iniciar un chat con este usuario';
+	@override String get cannotChatWithTheUser_description => 'El chat no está disponible o la otra parte no ha habilitado el chat.';
+	@override String get chatWithThisUser => 'Chatear';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Este usuario sólo acepta chats de seguidores.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Este usuario sólo acepta chats de los usuarios a los que sigue.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Este usuario sólo acepta chats de usuarios que son seguidores mutuos.';
+	@override String get thisUserNotAllowedChatAnyone => 'Este usuario no acepta chats de nadie.';
+	@override String get chatAllowedUsers => 'A quién permitir chatear.';
+	@override String get chatAllowedUsers_note => 'Puedes chatear con cualquier persona a la que hayas enviado un mensaje de chat, independientemente de esta configuración.';
+	@override late final _TranslationsMisskeyChatChatAllowedUsersEsEs chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersEsEs._(_root);
+}
+
+// Path: misskey.emojiPalette_
+class _TranslationsMisskeyEmojiPaletteEsEs extends TranslationsMisskeyEmojiPaletteEnUs {
+	_TranslationsMisskeyEmojiPaletteEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'Paleta\n';
+	@override String get enableSyncBetweenDevicesForPalettes => 'Activar la sincronización de paletas entre dispositivos';
 }
 
 // Path: misskey.settings_
@@ -1679,7 +1764,39 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
+	@override String get timelineAndNote => 'Líneas del tiempo y notas';
+	@override String get makeEveryTextElementsSelectable_description => 'Activar esta opción puede reducir la usabilidad en algunas situaciones.';
+	@override String get useStickyIcons => 'Hacer que los iconos te sigan cuando desplaces';
+	@override String get showNavbarSubButtons => 'Mostrar los sub-botones en la barra de navegación.';
+	@override String get ifOn => 'Si está activado';
+	@override String get enableSyncThemesBetweenDevices => 'Sincronizar los temas instalados entre dispositivos.';
+	@override late final _TranslationsMisskeySettingsChatEsEs chat_ = _TranslationsMisskeySettingsChatEsEs._(_root);
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileEsEs extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'Nombre de perfil';
+	@override String get profileNameDescription => 'Establece un nombre que identifique al dispositivo';
+	@override String get profileNameDescription2 => 'Por ejemplo: "PC Principal","Teléfono"';
+}
+
+// Path: misskey.preferencesBackup_
+class _TranslationsMisskeyPreferencesBackupEsEs extends TranslationsMisskeyPreferencesBackupEnUs {
+	_TranslationsMisskeyPreferencesBackupEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => 'Respaldo automático';
+	@override String get restoreFromBackup => 'Restaurar desde copia de seguridad';
+	@override String get noBackupsFoundTitle => 'No se encontró una copia de seguridad';
 }
 
 // Path: misskey.accountSettings_
@@ -2535,6 +2652,7 @@ class _TranslationsMisskeyWidgetsEsEs extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListEsEs userList_ = _TranslationsMisskeyWidgetsUserListEsEs._(_root);
 	@override String get clicker => 'Cliqueador';
 	@override String get birthdayFollowings => 'Hoy cumplen años';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.cw_
@@ -3077,6 +3195,31 @@ class _TranslationsMisskeySearchEsEs extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeUser => 'Especificar usuario';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _TranslationsMisskeyChatChatAllowedUsersEsEs extends TranslationsMisskeyChatChatAllowedUsersEnUs {
+	_TranslationsMisskeyChatChatAllowedUsersEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Todos';
+	@override String get followers => 'Sólo sus propios seguidores.';
+	@override String get following => 'Solo usuarios que sigues';
+	@override String get mutual => 'Solo seguidores mutuos';
+	@override String get none => 'Nadie';
+}
+
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatEsEs extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Mostrar el nombre del remitente';
+	@override String get sendOnEnter => 'Intro para enviar';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeEsEs extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
@@ -3535,6 +3678,7 @@ class _TranslationsMisskeyDeckColumnsEsEs extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Menciones';
 	@override String get direct => 'Notas directas';
 	@override String get roleTimeline => 'Linea de tiempo del rol';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.webhookSettings_.events_

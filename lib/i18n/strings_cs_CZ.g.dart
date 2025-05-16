@@ -308,7 +308,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Upravit můj profil';
 	@override String get noteDeleteConfirm => 'Jste si jistí že chcete smazat tuhle poznámku?';
 	@override String get pinLimitExceeded => 'Nemůžete připnout další poznámky.';
-	@override String get intro => 'Instalace Misskey byla dokončena! Prosím vytvořte admina.';
 	@override String get done => 'Hotovo';
 	@override String get processing => 'Zpracovávám';
 	@override String get preview => 'Náhled';
@@ -806,7 +805,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Vývojář';
 	@override String get makeExplorable => 'Udělat účet viditelný v "Objevit"';
 	@override String get makeExplorableDescription => 'Pokud tohle vypnete, tak se účet přestane zobrazovat v sekci "Objevit".';
-	@override String get showGapBetweenNotesInTimeline => 'Zobrazit mezeru mezi příspěvkama na časové ose';
 	@override String get duplicate => 'Duplikovat';
 	@override String get left => 'Vlevo';
 	@override String get center => 'Uprostřed';

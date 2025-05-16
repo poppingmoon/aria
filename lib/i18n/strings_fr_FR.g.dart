@@ -323,7 +323,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Modifier votre profil';
 	@override String get noteDeleteConfirm => 'Êtes-vous sûr·e de vouloir supprimer cette note ?';
 	@override String get pinLimitExceeded => 'Vous ne pouvez plus épingler d’autres notes.';
-	@override String get intro => 'L’installation de Misskey est terminée ! Veuillez créer un compte administrateur.';
 	@override String get done => 'Terminé';
 	@override String get processing => 'Traitement en cours';
 	@override String get preview => 'Aperçu';
@@ -845,7 +844,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Développeur';
 	@override String get makeExplorable => 'Rendre le compte visible sur la page "Découvrir".';
 	@override String get makeExplorableDescription => 'Si vous désactivez cette option, votre compte n\'apparaîtra pas sur la page "Découvrir".';
-	@override String get showGapBetweenNotesInTimeline => 'Afficher un écart entre les notes sur la Timeline';
 	@override String get duplicate => 'Duliquer';
 	@override String get left => 'Gauche';
 	@override String get center => 'Centrer';
@@ -1294,7 +1292,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Relâcher pour rafraîchir';
 	@override String get refreshing => 'Rafraîchissement...';
 	@override String get pullDownToRefresh => 'Tirer vers le bas pour rafraîchir';
-	@override String get disableStreamingTimeline => 'Désactiver les mises à jour en temps réel de la ligne du temps';
 	@override String get useGroupedNotifications => 'Grouper les notifications';
 	@override String get signupPendingError => 'Un problème est survenu lors de la vérification de votre adresse e-mail. Le lien a peut-être expiré.';
 	@override String get cwNotationRequired => 'Si « Masquer le contenu » est activé, une description doit être fournie.';
