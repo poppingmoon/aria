@@ -1076,7 +1076,7 @@ packages:
     source: hosted
     version: "1.1.0"
   image_size_getter:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: image_size_getter
       sha256: "9a299e3af2ebbcfd1baf21456c3c884037ff524316c97d8e56035ea8fdf35653"

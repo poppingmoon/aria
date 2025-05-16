@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ImageLayer {
 
- Uint8List get data; Size get size; double get opacity; Offset get offset; double get scale; double get angle; bool get flipX;
+ Uint8List get data; double get opacity; Offset get offset; double get scale; double get angle; bool get flipX;
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $ImageLayerCopyWith<ImageLayer> get copyWith => _$ImageLayerCopyWithImpl<ImageLa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageLayer&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.size, size) || other.size == size)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.angle, angle) || other.angle == angle)&&(identical(other.flipX, flipX) || other.flipX == flipX));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageLayer&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.angle, angle) || other.angle == angle)&&(identical(other.flipX, flipX) || other.flipX == flipX));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),size,opacity,offset,scale,angle,flipX);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),opacity,offset,scale,angle,flipX);
 
 @override
 String toString() {
-  return 'ImageLayer(data: $data, size: $size, opacity: $opacity, offset: $offset, scale: $scale, angle: $angle, flipX: $flipX)';
+  return 'ImageLayer(data: $data, opacity: $opacity, offset: $offset, scale: $scale, angle: $angle, flipX: $flipX)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $ImageLayerCopyWith<$Res>  {
   factory $ImageLayerCopyWith(ImageLayer value, $Res Function(ImageLayer) _then) = _$ImageLayerCopyWithImpl;
 @useResult
 $Res call({
- Uint8List data, Size size, double opacity, Offset offset, double scale, double angle, bool flipX
+ Uint8List data, double opacity, Offset offset, double scale, double angle, bool flipX
 });
 
 
@@ -63,11 +63,10 @@ class _$ImageLayerCopyWithImpl<$Res>
 
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? size = null,Object? opacity = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? opacity = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
   return _then(_self.copyWith(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as Uint8List,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
-as Size,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
+as Uint8List,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double,offset: null == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
 as Offset,scale: null == scale ? _self.scale : scale // ignore: cast_nullable_to_non_nullable
 as double,angle: null == angle ? _self.angle : angle // ignore: cast_nullable_to_non_nullable
@@ -83,11 +82,10 @@ as bool,
 
 
 class _ImageLayer implements ImageLayer {
-  const _ImageLayer({required this.data, required this.size, this.opacity = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false});
+  const _ImageLayer({required this.data, this.opacity = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false});
   
 
 @override final  Uint8List data;
-@override final  Size size;
 @override@JsonKey() final  double opacity;
 @override@JsonKey() final  Offset offset;
 @override@JsonKey() final  double scale;
@@ -104,16 +102,16 @@ _$ImageLayerCopyWith<_ImageLayer> get copyWith => __$ImageLayerCopyWithImpl<_Ima
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageLayer&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.size, size) || other.size == size)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.angle, angle) || other.angle == angle)&&(identical(other.flipX, flipX) || other.flipX == flipX));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageLayer&&const DeepCollectionEquality().equals(other.data, data)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.angle, angle) || other.angle == angle)&&(identical(other.flipX, flipX) || other.flipX == flipX));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),size,opacity,offset,scale,angle,flipX);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data),opacity,offset,scale,angle,flipX);
 
 @override
 String toString() {
-  return 'ImageLayer(data: $data, size: $size, opacity: $opacity, offset: $offset, scale: $scale, angle: $angle, flipX: $flipX)';
+  return 'ImageLayer(data: $data, opacity: $opacity, offset: $offset, scale: $scale, angle: $angle, flipX: $flipX)';
 }
 
 
@@ -124,7 +122,7 @@ abstract mixin class _$ImageLayerCopyWith<$Res> implements $ImageLayerCopyWith<$
   factory _$ImageLayerCopyWith(_ImageLayer value, $Res Function(_ImageLayer) _then) = __$ImageLayerCopyWithImpl;
 @override @useResult
 $Res call({
- Uint8List data, Size size, double opacity, Offset offset, double scale, double angle, bool flipX
+ Uint8List data, double opacity, Offset offset, double scale, double angle, bool flipX
 });
 
 
@@ -141,11 +139,10 @@ class __$ImageLayerCopyWithImpl<$Res>
 
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? size = null,Object? opacity = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? data = null,Object? opacity = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
   return _then(_ImageLayer(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as Uint8List,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
-as Size,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
+as Uint8List,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double,offset: null == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
 as Offset,scale: null == scale ? _self.scale : scale // ignore: cast_nullable_to_non_nullable
 as double,angle: null == angle ? _self.angle : angle // ignore: cast_nullable_to_non_nullable
