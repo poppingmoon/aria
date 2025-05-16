@@ -1,9 +1,10 @@
 import 'dart:math';
+import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -13,9 +14,14 @@ import '../../provider/overlay_layers_notifier_provider.dart';
 import 'reorderable_drag_start_listener_wrapper.dart';
 
 class LayersSheet extends ConsumerWidget {
-  const LayersSheet({super.key, required this.backgroundLayer});
+  const LayersSheet({
+    super.key,
+    required this.backgroundLayer,
+    required this.images,
+  });
 
   final ImageLayer backgroundLayer;
+  final Map<Uint8List, Image> images;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -68,7 +74,10 @@ class LayersSheet extends ConsumerWidget {
                     builder:
                         (context) => _LayerSheet(
                           backgroundLayer: backgroundLayer,
+                          backgroundImage: images[backgroundLayer.data]!,
                           index: index,
+                          image:
+                              layer is ImageLayer ? images[layer.data] : null,
                         ),
                   ),
             ),
@@ -102,10 +111,17 @@ class LayersSheet extends ConsumerWidget {
 }
 
 class _LayerSheet extends HookConsumerWidget {
-  const _LayerSheet({required this.backgroundLayer, required this.index});
+  const _LayerSheet({
+    required this.backgroundLayer,
+    required this.backgroundImage,
+    required this.index,
+    this.image,
+  });
 
   final ImageLayer backgroundLayer;
+  final Image backgroundImage;
   final int index;
+  final Image? image;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -114,11 +130,10 @@ class _LayerSheet extends HookConsumerWidget {
     );
     const minAngle = -pi;
     const maxAngle = pi;
-    final minOffsetX = layer is ImageLayer ? -layer.size.width.toDouble() : 0.0;
-    final maxOffsetX = backgroundLayer.size.width.toDouble();
-    final minOffsetY =
-        layer is ImageLayer ? -layer.size.height.toDouble() : 0.0;
-    final maxOffsetY = backgroundLayer.size.height.toDouble();
+    final minOffsetX = image?.width.toDouble() ?? 0.0;
+    final maxOffsetX = backgroundImage.width.toDouble();
+    final minOffsetY = -(image?.height.toDouble() ?? 0.0);
+    final maxOffsetY = backgroundImage.height.toDouble();
     const minScale = 0.0;
     const maxScale = 10.0;
     const minStrokeWidthFactor = 0.0;

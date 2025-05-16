@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Image;
 
+import '../../extension/image_extension.dart';
 import '../../model/layer.dart';
 
 class LayersViewer extends StatefulWidget {
@@ -40,15 +41,15 @@ class LayersViewerState extends State<LayersViewer> {
       layers: widget.layers,
       images: widget.images,
     );
-    final backgroundSize = (widget.layers.first as ImageLayer).size;
-    final size = Size(
-      backgroundSize.width.toDouble(),
-      backgroundSize.width.toDouble(),
-    );
-    painter.paint(canvas, size);
+    final backgroundImage =
+        widget.images[(widget.layers.first as ImageLayer).data];
+    if (backgroundImage == null) {
+      return null;
+    }
+    painter.paint(canvas, backgroundImage.size);
     final image = await recorder.endRecording().toImage(
-      backgroundSize.width,
-      backgroundSize.height,
+      backgroundImage.width,
+      backgroundImage.height,
     );
     final byteData = await image.toByteData(format: ImageByteFormat.png);
     return byteData?.buffer.asUint8List();
@@ -56,7 +57,9 @@ class LayersViewerState extends State<LayersViewer> {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundSize = (widget.layers.first as ImageLayer).size;
+    final backgroundImage =
+        widget.images[(widget.layers.first as ImageLayer).data];
+
     return SizedBox(
       width: double.maxFinite,
       height: double.maxFinite,
@@ -69,16 +72,16 @@ class LayersViewerState extends State<LayersViewer> {
             onInteractionStart: widget.onInteractionStart,
             onInteractionUpdate: widget.onInteractionUpdate,
             onInteractionEnd: widget.onInteractionEnd,
-            child: CustomPaint(
-              size: Size(
-                backgroundSize.width.toDouble(),
-                backgroundSize.height.toDouble(),
-              ),
-              painter: _LayersPainter(
-                layers: widget.layers,
-                images: widget.images,
-              ),
-            ),
+            child:
+                backgroundImage != null
+                    ? CustomPaint(
+                      size: backgroundImage.size,
+                      painter: _LayersPainter(
+                        layers: widget.layers,
+                        images: widget.images,
+                      ),
+                    )
+                    : const SizedBox.shrink(),
           ),
         ),
       ),
@@ -97,28 +100,28 @@ class _LayersPainter extends CustomPainter {
     for (final layer in layers) {
       canvas.save();
       canvas.translate(layer.offset.dx, layer.offset.dy);
-      if (layer is ImageLayer) {
-        canvas.translate(layer.size.width / 2, layer.size.height / 2);
+      final image = layer is ImageLayer ? images[layer.data] : null;
+      if (image != null) {
+        canvas.translate(image.width / 2, image.height / 2);
       }
       canvas.rotate(layer.angle);
       canvas.scale(layer.scale);
       if (layer.flipX) {
         canvas.scale(-1.0, 1.0);
       }
-      if (layer is ImageLayer) {
-        canvas.translate(-layer.size.width / 2, -layer.size.height / 2);
+      if (image != null) {
+        canvas.translate(-image.width / 2, -image.height / 2);
       }
       switch (layer) {
         case ImageLayer():
-          final image = images[layer.data];
           if (image != null) {
             paintImage(
               canvas: canvas,
               rect: Rect.fromLTWH(
                 0.0,
                 0.0,
-                layer.size.width.toDouble(),
-                layer.size.height.toDouble(),
+                image.width.toDouble(),
+                image.height.toDouble(),
               ),
               opacity: layer.opacity,
               image: image,

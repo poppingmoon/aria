@@ -67,7 +67,6 @@ dependencies:
       url: https://github.com/poppingmoon/image_compression
       ref: 37b78624635c42f51524cdfc001ae9073ec468ee
   image_editor: ^1.6.0
-  image_size_getter: ^2.4.0
   intl: ^0.19.0
   json5: ^0.8.2
   json_annotation: ^4.9.0
