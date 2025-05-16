@@ -86,6 +86,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	);
 	@override String get deleteTabConfirm => 'このタブほかしてええか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを止めとく';
+	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新をやめるで';
 	@override String get disableSubscribingNotes => 'ツッコミをいちいち更新せんようにする';
 	@override String get discardChangesConfirm => '変えんと戻ってええか？';
 	@override String get displayOfThumbnail => 'サムネイルの表示';
@@ -174,14 +175,16 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 		const TextSpan(text: 'を開いて、下のコードを入力して走らしてな'),
 	]);
 	@override String get openSensitiveMediaOnDoubleTap => '二度押ししてきわどいメディアを開くで';
+	@override String get owner => 'オーナー';
 	@override String get parameters => 'パラメータ';
 	@override String get paste => '貼り付け';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: 'JSON形式で表記された絵文字のリストを貼り付けて一括でピン留めするで。\nMisskey Webでピン留めした絵文字のリストは'),
+		const TextSpan(text: '絵文字のリストを貼り付けて一括でピン留めするで。\nMisskey Webでピン留めした絵文字のリストは'),
 		url,
 		const TextSpan(text: 'からコピーしてや。'),
 	]);
 	@override String get pasteResponseBelow => '下のとこにレスポンスを貼り付けてな';
+	@override String get permissionDeniedErrorDescription => 'この操作をやるための権限がアクセストークンについてへんわ。もっかいログインしてな。';
 	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留めしとく';
 	@override String get playAudio => '音声を再生';
 	@override String get playVideo => '動画を再生';
@@ -208,6 +211,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 		user,
 		const TextSpan(text: 'がセルフリノートしたで'),
 	]);
+	@override String get sendMessageConfirm => 'このメッセージを送信してええか？';
 	@override String get serverUrl => 'サーバーのURL';
 	@override String get settingsFileForAria => 'Ariaの設定ファイル';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -218,6 +222,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示するで';
 	@override String get showEntireImage => '全体を表示するで';
 	@override String get showExpandedImage => 'でかくして表示するで';
+	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示するで';
 	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
 	@override String get showMenuButtonInTabBar => 'タイムラインのタブバーにメニューボタンを追加';
@@ -500,6 +505,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'サーバーをメディアサイレンス';
 	@override String get operations => '操作';
 	@override String get software => 'ソフトウェア';
+	@override String get softwareName => 'ソフトウェア名';
 	@override String get version => 'バージョン';
 	@override String get metadata => 'メタデータ';
 	@override String withNFiles({required Object n}) => '${n}個のファイル';
@@ -530,7 +536,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'プロフィールをいじる';
 	@override String get noteDeleteConfirm => 'このノートをほかしてええか？';
 	@override String get pinLimitExceeded => 'これ以上ピン留めできひん';
-	@override String get intro => 'Misskeyのインストールが完了したで！管理者アカウントを作ってや。';
 	@override String get done => 'でけた';
 	@override String get processing => '処理しとる';
 	@override String get preview => 'プレビュー';
@@ -1064,7 +1069,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get developer => '開発者やで';
 	@override String get makeExplorable => 'アカウントを見つけやすくするで';
 	@override String get makeExplorableDescription => 'オフにすると、「みつける」にアカウントが載らんくなるで。';
-	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示するで';
 	@override String get duplicate => '複製';
 	@override String get left => '左';
 	@override String get center => '真ん中';
@@ -1259,6 +1263,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'ページ、どんだけキャッシュすんの？';
 	@override String get numberOfPageCacheDescription => '増やすと使いやすくなるけど、負荷とメモリ使用量が増えてくで。一長一短やな。';
 	@override String get logoutConfirm => 'ログアウトしまっか？';
+	@override String get logoutWillClearClientData => 'ログアウトするとクライアントの設定情報がブラウザから消去されます。再ログイン時に設定情報を復元できるようにするためには、設定の自動バックアップを有効にしてください。';
 	@override String get lastActiveDate => '最後に使った日時';
 	@override String get statusbar => 'ステータスバー';
 	@override String get pleaseSelect => '選んだってやー';
@@ -1516,7 +1521,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => '離したらリロード';
 	@override String get refreshing => 'リロードしとる';
 	@override String get pullDownToRefresh => '引っ張ってリロードするで';
-	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新をやめるで';
 	@override String get useGroupedNotifications => '通知をグループ分けして出すで';
 	@override String get signupPendingError => 'メアド確認してたらなんか変なことなったわ。リンクの期限切れてるかもしれん。';
 	@override String get cwNotationRequired => '「内容を隠す」んやったら注釈書かなアカンで。';
@@ -1624,6 +1628,9 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get settingsMigrating => '設定を移行しています。しばらくお待ちください... (後ほど、設定→その他→旧設定情報を移行 で手動で移行することもできます)';
 	@override String get readonly => '読み取り専用';
 	@override String get goToDeck => 'デッキへ戻る';
+	@override String get federationJobs => '連合ジョブ';
+	@override String get driveAboutTip => 'ドライブでは、過去にアップロードしたファイルの一覧が表示されます。<br>\nノートに添付する際に再利用したり、あとで投稿するファイルを予めアップロードしておくこともできます。<br>\n<b>ファイルを削除すると、今までそのファイルを使用した全ての場所(ノート、ページ、アバター、バナー等)からも見えなくなるので注意してください。</b><br>\nフォルダを作って整理することもできます。';
+	@override String get scrollToClose => 'スクロールして閉じる';
 	@override late final _TranslationsMisskeyChatJaKs chat_ = _TranslationsMisskeyChatJaKs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaKs emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaKs._(_root);
 	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
@@ -1818,6 +1825,8 @@ class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOn => 'オンのとき';
 	@override String get ifOff => 'オフのとき';
 	@override String get enableSyncThemesBetweenDevices => 'デバイス間でインストールしたテーマを同期';
+	@override String get enablePullToRefresh => 'ひっぱって更新';
+	@override String get enablePullToRefresh_description => 'マウスでは、ホイールを押し込みながらドラッグします。';
 	@override late final _TranslationsMisskeySettingsChatJaKs chat_ = _TranslationsMisskeySettingsChatJaKs._(_root);
 }
 
@@ -1831,6 +1840,7 @@ class _TranslationsMisskeyPreferencesProfileJaKs extends TranslationsMisskeyPref
 	@override String get profileName => 'プロファイル名';
 	@override String get profileNameDescription => 'このデバイスを識別する名前を設定してください。';
 	@override String get profileNameDescription2 => '例: 「メインPC」、「スマホ」など';
+	@override String get manageProfiles => 'プロファイルの管理';
 }
 
 // Path: misskey.preferencesBackup_
@@ -2024,6 +2034,8 @@ class _TranslationsMisskeyServerSettingsJaKs extends TranslationsMisskeyServerSe
 	@override String get openRegistration => 'アカウントの作成をオープンにする';
 	@override String get openRegistrationWarning => '登録を解放するのはリスクが伴うで。サーバーをいっつも監視して、なんか起きたらすぐに対応できるんやったら、オンにしてもええと思う。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターがおらんかったら、スパムを防ぐためにこの設定は勝手に切られるで。';
+	@override String get deliverSuspendedSoftware => '配信停止中のソフトウェア';
+	@override String get deliverSuspendedSoftwareDescription => '脆弱性などの理由で、サーバーのソフトウェアの名前及びバージョンの範囲を指定して配信を停止できます。このバージョン情報はサーバーが提供したものであり、信頼性は保証されません。バージョン指定には semver の範囲指定が使用できますが、>= 2024.3.1 と指定すると 2024.3.1-custom.0 のようなカスタムバージョンが含まれないため、>= 2024.3.1-0 のように prerelease の指定を行うことを推奨します。';
 }
 
 // Path: misskey.accountMigration_
@@ -2734,6 +2746,7 @@ class _TranslationsMisskeyWidgetsJaKs extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListJaKs userList_ = _TranslationsMisskeyWidgetsUserListJaKs._(_root);
 	@override String get clicker => 'クリッカー';
 	@override String get birthdayFollowings => '今日誕生日のツレ';
+	@override String get chat => 'チャット';
 }
 
 // Path: misskey.cw_
@@ -3546,6 +3559,7 @@ class _TranslationsMisskeyDeliveryTypeJaKs extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => '手動停止中';
 	@override String get goneSuspended => 'サーバー削除のため停止中';
 	@override String get autoSuspendedForNotResponding => 'サーバー応答せえへんから停止中';
+	@override String get softwareSuspended => '配信停止中のソフトウェアであるため停止中';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3791,6 +3805,7 @@ class _TranslationsMisskeyRoleOptionsJaKs extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => 'カスタム絵文字の管理';
 	@override String get canManageAvatarDecorations => 'アバターを飾るモンの管理';
 	@override String get driveCapacity => 'ドライブ容量';
+	@override String get maxFileSize => 'アップロード可能な最大ファイルサイズ';
 	@override String get alwaysMarkNsfw => '勝手にファイルにNSFWをくっつける';
 	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートピン留めできる数';
@@ -4007,6 +4022,7 @@ class _TranslationsMisskeyDeckColumnsJaKs extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'あんた宛て';
 	@override String get direct => 'ダイレクト';
 	@override String get roleTimeline => 'ロールタイムライン';
+	@override String get chat => 'チャット';
 }
 
 // Path: misskey.webhookSettings_.events_

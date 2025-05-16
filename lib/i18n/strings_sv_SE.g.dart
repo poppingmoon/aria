@@ -287,7 +287,6 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Redigera profil';
 	@override String get noteDeleteConfirm => 'Är du säker på att du vill ta bort denna not?';
 	@override String get pinLimitExceeded => 'Du kan inte fästa fler noter';
-	@override String get intro => 'Misskey har installerats! Vänligen skapa en adminanvändare.';
 	@override String get done => 'Klar';
 	@override String get processing => 'Bearbetar...';
 	@override String get preview => 'Förhandsvisning';

@@ -79,12 +79,13 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override String get lang__ => 'Tiếng Nhật';
+	@override String get lang__ => 'Tiếng Việt ';
 	@override String get headlineMisskey => 'Mạng xã hội liên hợp';
 	@override String get introMisskey => 'Xin chào! Misskey là một nền tảng tiểu blog phi tập trung mã nguồn mở.\nViết "tút" để chia sẻ những suy nghĩ của bạn 📡\nBằng "biểu cảm", bạn có thể bày tỏ nhanh chóng cảm xúc của bạn với các tút 👍\nHãy khám phá một thế giới mới! 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} là một trong những chủ máy của <b>Misskey</b> là nền tảng mã nguồn mở';
 	@override String monthAndDay({required Object day, required Object month}) => '${day} tháng ${month}';
 	@override String get search => 'Tìm kiếm';
+	@override String get reset => 'cài lại';
 	@override String get notifications => 'Thông báo';
 	@override String get username => 'Tên người dùng';
 	@override String get password => 'Mật khẩu';
@@ -128,9 +129,10 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Bỏ ghim';
 	@override String get copyContent => 'Chép nội dung';
 	@override String get copyLink => 'Chép liên kết';
+	@override String get copyRemoteLink => 'Sao chép liên kết từ xa';
 	@override String get copyLinkRenote => 'Sao chép liên kết ghi chú';
 	@override String get delete => 'Xóa';
-	@override String get deleteAndEdit => 'Sửa';
+	@override String get deleteAndEdit => 'Xóa và soạn thảo lại';
 	@override String get deleteAndEditConfirm => 'Bạn có chắc muốn sửa tút này? Những biểu cảm, lượt trả lời và đăng lại sẽ bị mất.';
 	@override String get addToList => 'Thêm vào danh sách';
 	@override String get addToAntenna => 'Thêm vào Ăngten';
@@ -143,6 +145,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => 'Sao chép ID thư mục';
 	@override String get copyProfileUrl => 'Sao chép URL hồ sơ';
 	@override String get searchUser => 'Tìm kiếm người dùng';
+	@override String get searchThisUsersNotes => 'Tìm kiếm ghi chú của người dùng';
 	@override String get reply => 'Trả lời';
 	@override String get loadMore => 'Tải thêm';
 	@override String get showMore => 'Xem thêm';
@@ -191,11 +194,14 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get renote => 'Đăng lại';
 	@override String get unrenote => 'Hủy đăng lại';
 	@override String get renoted => 'Đã đăng lại.';
+	@override String renotedToX({required Object name}) => 'Đã cho thuê lại ${name}.';
 	@override String get cantRenote => 'Không thể đăng lại tút này.';
 	@override String get cantReRenote => 'Không thể đăng lại một tút đăng lại.';
 	@override String get quote => 'Trích dẫn';
 	@override String get inChannelRenote => 'Chia sẻ trong kênh này';
 	@override String get inChannelQuote => 'Trích dẫn trong kênh này';
+	@override String get renoteToChannel => 'Đăng lại tới kênh';
+	@override String get renoteToOtherChannel => 'Đăng lại tới kênh khác';
 	@override String get pinnedNote => 'Bài viết đã ghim';
 	@override String get pinned => 'Ghim';
 	@override String get you => 'Bạn';
@@ -205,6 +211,11 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get reaction => 'Biểu cảm';
 	@override String get reactions => 'Biểu cảm';
 	@override String get emojiPicker => 'Bộ chọn biểu tượng cảm xúc';
+	@override String get pinnedEmojisForReactionSettingDescription => 'Ghim các biểu tượng cảm xúc sẽ hiển thị khi phản hồi';
+	@override String get pinnedEmojisSettingDescription => 'Ghim các biểu tượng cảm xúc sẽ hiển thị trong bảng chọn emoji';
+	@override String get emojiPickerDisplay => 'Hiển thị bộ chọn';
+	@override String get overwriteFromPinnedEmojisForReaction => 'Ghi đè thiết lập phản hồi';
+	@override String get overwriteFromPinnedEmojis => 'Ghi đè thiết lập chung';
 	@override String get reactionSettingDescription2 => 'Kéo để sắp xếp, nhấn để xóa, nhấn "+" để thêm.';
 	@override String get rememberNoteVisibility => 'Lưu kiểu tút mặc định';
 	@override String get attachCancel => 'Gỡ tập tin đính kèm';
@@ -229,6 +240,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get selectChannel => 'Lựa chọn kênh';
 	@override String get selectAntenna => 'Chọn một antenna';
 	@override String get editAntenna => 'Chỉnh sửa Ăngten';
+	@override String get createAntenna => 'Tạo Ăngten ';
 	@override String get selectWidget => 'Chọn tiện ích';
 	@override String get editWidgets => 'Sửa tiện ích';
 	@override String get editWidgetsExit => 'Xong';
@@ -255,6 +267,10 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Cập nhật danh sách tài khoản';
 	@override String get loginFailed => 'Đăng nhập không thành công';
 	@override String get showOnRemote => 'Truy cập trang của người này';
+	@override String get continueOnRemote => 'Tiếp tục trên phiên bản từ xa';
+	@override String get chooseServerOnMisskeyHub => 'Chọn một máy chủ từ Misskey Hub';
+	@override String get specifyServerHost => 'Thiết lập một máy chủ';
+	@override String get inputHostName => 'Nhập địa chỉ máy chủ';
 	@override String get general => 'Tổng quan';
 	@override String get wallpaper => 'Ảnh bìa';
 	@override String get setWallpaper => 'Đặt ảnh bìa';
@@ -265,6 +281,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get proxyAccount => 'Tài khoản proxy';
 	@override String get proxyAccountDescription => 'Tài khoản proxy là tài khoản hoạt động như một người theo dõi từ xa cho người dùng trong những điều kiện nhất định. Ví dụ: khi người dùng thêm người dùng từ xa vào danh sách, hoạt động của người dùng từ xa sẽ không được chuyển đến phiên bản nếu không có người dùng cục bộ nào theo dõi người dùng đó, vì vậy tài khoản proxy sẽ theo dõi.';
 	@override String get host => 'Host';
+	@override String get selectSelf => 'Chọn chính bạn';
 	@override String get selectUser => 'Chọn người dùng';
 	@override String get recipient => 'Người nhận';
 	@override String get annotation => 'Bình luận';
@@ -279,6 +296,8 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get perDay => 'Mỗi Ngày';
 	@override String get stopActivityDelivery => 'Ngưng gửi hoạt động';
 	@override String get blockThisInstance => 'Chặn máy chủ này';
+	@override String get silenceThisInstance => 'Máy chủ im lặng';
+	@override String get mediaSilenceThisInstance => 'Tắt nội dung đa phương tiện từ máy chủ này';
 	@override String get operations => 'Vận hành';
 	@override String get software => 'Phần mềm';
 	@override String get version => 'Phiên bản';
@@ -298,6 +317,12 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get clearCachedFilesConfirm => 'Bạn có chắc muốn xóa sạch bộ nhớ đệm?';
 	@override String get blockedInstances => 'Máy chủ đã chặn';
 	@override String get blockedInstancesDescription => 'Danh sách những máy chủ bạn muốn chặn. Chúng sẽ không thể giao tiếp với máy chủy này nữa.';
+	@override String get silencedInstances => 'Máy chủ im lặng';
+	@override String get silencedInstancesDescription => 'Đặt máy chủ mà bạn muốn tắt tiếng, phân tách bằng dấu xuống dòng. Tất cả tài khoản trên máy chủ bị tắt tiếng sẽ được coi là "bị tắt tiếng" và mọi hành động theo dõi sẽ được coi là yêu cầu. Không có tác dụng với những trường hợp bị chặn.';
+	@override String get mediaSilencedInstances => 'Các máy chủ đã tắt nội dung đa phương tiện ';
+	@override String get mediaSilencedInstancesDescription => 'Đặt máy chủ mà bạn muốn tắt nội dung đa phương tiện, phân tách bằng dấu xuống dòng. Tất cả tài khoản trên máy chủ bị tắt tiếng sẽ được coi là "nhạy cảm" và biểu tượng cảm xúc tùy chỉnh sẽ không thể được sử dụng. Không có tác dụng với những trường hợp bị chặn.';
+	@override String get federationAllowedHosts => 'Các máy chủ được phép liên kết';
+	@override String get federationAllowedHostsDescription => 'Điền tên các máy chủ mà bạn muốn cho phép liên kết, cách nhau bởi dấu xuống dòng';
 	@override String get muteAndBlock => 'Ẩn và Chặn';
 	@override String get mutedUsers => 'Người đã ẩn';
 	@override String get blockedUsers => 'Người đã chặn';
@@ -305,7 +330,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Sửa hồ sơ';
 	@override String get noteDeleteConfirm => 'Bạn có chắc muốn xóa tút này?';
 	@override String get pinLimitExceeded => 'Bạn không thể ghim bài viết nữa';
-	@override String get intro => 'Đã cài đặt Misskey! Xin hãy tạo tài khoản admin.';
 	@override String get done => 'Xong';
 	@override String get processing => 'Đang xử lý';
 	@override String get preview => 'Xem trước';
@@ -334,8 +358,8 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get featured => 'Nổi bật';
 	@override String get usernameOrUserId => 'Tên người dùng hoặc ID';
 	@override String get noSuchUser => 'Không tìm thấy người dùng';
-	@override String get lookup => 'Tìm kiếm';
-	@override String get announcements => 'Thông báo';
+	@override String get lookup => 'Tra cứu';
+	@override String get announcements => 'Thông báo máy chủ';
 	@override String get imageUrl => 'URL ảnh';
 	@override String get remove => 'Xóa';
 	@override String get removed => 'Đã xóa';
@@ -356,6 +380,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Khám phá';
 	@override String get messageRead => 'Đã đọc';
 	@override String get noMoreHistory => 'Không còn gì để đọc';
+	@override String get startChat => 'Bắt đầu trò chuyện';
 	@override String nUsersRead({required Object n}) => 'đọc bởi ${n}';
 	@override String agreeTo({required Object x0}) => 'Tôi đồng ý ${x0}';
 	@override String get agree => 'Đồng ý';
@@ -386,6 +411,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Chọn nhiều tập tin';
 	@override String get selectFolder => 'Chọn thư mục';
 	@override String get selectFolders => 'Chọn nhiều thư mục';
+	@override String get fileNotSelected => 'Chưa chọn tệp nào';
 	@override String get renameFile => 'Đổi tên tập tin';
 	@override String get folderName => 'Tên thư mục';
 	@override String get createFolder => 'Tạo thư mục';
@@ -393,6 +419,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'Xóa thư mục';
 	@override String get folder => 'Thư mục';
 	@override String get addFile => 'Thêm tập tin';
+	@override String get showFile => 'Hiển thị tập tin';
 	@override String get emptyDrive => 'Ổ đĩa của bạn trống trơn';
 	@override String get emptyFolder => 'Thư mục trống';
 	@override String get unableToDelete => 'Không thể xóa';
@@ -476,6 +503,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Phân cách bằng dấu cách cho điều kiện AND hoặc bằng xuống dòng cho điều kiện OR.';
 	@override String get notifyAntenna => 'Thông báo có tút mới';
 	@override String get withFileAntenna => 'Chỉ những tút có media';
+	@override String get excludeNotesInSensitiveChannel => 'Không hiển thị trong kênh nhạy cảm';
 	@override String get enableServiceworker => 'Bật ServiceWorker';
 	@override String get antennaUsersDescription => 'Liệt kê mỗi hàng một tên người dùng';
 	@override String get caseSensitive => 'Trường hợp nhạy cảm';
@@ -506,6 +534,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get moderator => 'Kiểm duyệt viên';
 	@override String get moderation => 'Kiểm duyệt';
 	@override String get moderationNote => 'Ghi chú kiểm duyệt';
+	@override String get moderationNoteDescription => 'Bạn có thể điền vào những ghi chú chỉ được chia sẻ giữa những người kiểm duyệt.';
 	@override String get addModerationNote => 'Thêm ghi chú kiểm duyệt';
 	@override String get moderationLogs => 'Nhật kí quản trị';
 	@override String nUsersMentioned({required Object n}) => 'Dùng bởi ${n} người';
@@ -543,6 +572,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get attachAsFileQuestion => 'Văn bản ở trong bộ nhớ tạm rất dài. Bạn có muốn đăng nó dưới dạng một tệp văn bản không?';
 	@override String get onlyOneFileCanBeAttached => 'Bạn chỉ có thể đính kèm một tập tin';
 	@override String get signinRequired => 'Vui lòng đăng nhập';
+	@override String get signinOrContinueOnRemote => 'Để tiếp tục, bạn cần chuyển máy chủ hoặc đăng nhập/đăng ký ở máy chủ này.';
 	@override String get invitations => 'Mời';
 	@override String get invitationCode => 'Mã mời';
 	@override String get checking => 'Đang kiểm tra...';
@@ -564,7 +594,12 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Giới thiệu ${x}';
 	@override String get emojiStyle => 'Kiểu cách Emoji';
 	@override String get native => 'Bản xứ';
+	@override String get menuStyle => 'Kiểu Menu';
+	@override String get style => 'Phong cách';
+	@override String get drawer => 'Ngăn ứng dụng';
+	@override String get popup => 'Cửa sổ bật lên';
 	@override String get showNoteActionsOnlyHover => 'Chỉ hiển thị các hành động ghi chú khi di chuột';
+	@override String get showReactionsCount => 'Hiển thị số reaction trong bài đăng';
 	@override String get noHistory => 'Không có dữ liệu';
 	@override String get signinHistory => 'Lịch sử đăng nhập';
 	@override String get enableAdvancedMfm => 'Xem bài MFM chất lượng cao.';
@@ -577,6 +612,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get existingAccount => 'Tài khoản hiện có';
 	@override String get regenerate => 'Tạo lại';
 	@override String get fontSize => 'Cỡ chữ';
+	@override String get mediaListWithOneImageAppearance => 'Chiều cao của danh sách nội dung đã phương tiện mà chỉ có một hình ảnh';
 	@override String limitTo({required Object x}) => 'Giới hạn tỷ lệ ${x}';
 	@override String get noFollowRequests => 'Bạn không có yêu cầu theo dõi nào';
 	@override String get openImageInNewTab => 'Mở ảnh trong tab mới';
@@ -611,10 +647,12 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get objectStorageUseProxy => 'Kết nối thông qua Proxy';
 	@override String get objectStorageUseProxyDesc => 'Tắt nếu bạn không dùng Proxy để kết nối API';
 	@override String get objectStorageSetPublicRead => 'Đặt "public-read" khi tải lên';
+	@override String get s3ForcePathStyleDesc => 'Nếu s3ForcePathStyle được bật, tên bucket phải được thêm vào địa chỉ URL thay vì chỉ có tên miền. Bạn có thể phải sử dụng thiết lập này nếu bạn sử dụng các dịch vụ như Minio mà bạn tự cung cấp.';
 	@override String get serverLogs => 'Nhật ký máy chủ';
 	@override String get deleteAll => 'Xóa tất cả';
 	@override String get showFixedPostForm => 'Hiện khung soạn tút ở phía trên bảng tin';
 	@override String get showFixedPostFormInChannel => 'Hiển thị mẫu bài đăng ở phía trên bản tin';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Mặc định hiển thị trả lời từ những người dùng mới theo dõi trong dòng thời gian';
 	@override String get newNoteRecived => 'Đã nhận tút mới';
 	@override String get sounds => 'Âm thanh';
 	@override String get sound => 'Âm thanh';
@@ -625,7 +663,9 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get volume => 'Âm lượng';
 	@override String get masterVolume => 'Âm thanh chung';
 	@override String get notUseSound => 'Tắt tiếng';
+	@override String get useSoundOnlyWhenActive => 'Chỉ phát âm thanh khi Misskey đang được hiển thị';
 	@override String get details => 'Chi tiết';
+	@override String get renoteDetails => 'Tìm hiểu thêm về đăng lại ';
 	@override String get chooseEmoji => 'Chọn emoji';
 	@override String get unableToProcess => 'Không thể hoàn tất hành động';
 	@override String get recentUsed => 'Sử dụng gần đây';
@@ -641,6 +681,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get descendingOrder => 'Giảm dần';
 	@override String get scratchpad => 'Scratchpad';
 	@override String get scratchpadDescription => 'Scratchpad cung cấp môi trường cho các thử nghiệm AiScript. Bạn có thể viết, thực thi và kiểm tra kết quả tương tác với Misskey trong đó.';
+	@override String get uiInspector => 'Trình kiểm tra UI';
 	@override String get output => 'Nguồn ra';
 	@override String get script => 'Kịch bản';
 	@override String get disablePagesScript => 'Tắt AiScript trên Trang';
@@ -699,6 +740,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get small => 'Nhỏ';
 	@override String get generateAccessToken => 'Tạo mã truy cập';
 	@override String get permission => 'Cho phép ';
+	@override String get adminPermission => 'Quyền quản trị viên';
 	@override String get enableAll => 'Bật toàn bộ';
 	@override String get disableAll => 'Tắt toàn bộ';
 	@override String get tokenRequested => 'Cấp quyền truy cập vào tài khoản';
@@ -720,13 +762,19 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'Tắt cái này nếu dùng STARTTLS';
 	@override String get testEmail => 'Kiểm tra vận chuyển email';
 	@override String get wordMute => 'Ẩn chữ';
+	@override String get wordMuteDescription => 'Thu nhỏ các bài đăng chứa các từ hoặc cụm từ nhất định. Các bài đăng này có thể được hiển thị khi click vào.';
+	@override String get hardWordMute => 'Ẩn cụm từ hoàn toàn';
+	@override String get showMutedWord => 'Hiển thị từ đã ẩn';
+	@override String get hardWordMuteDescription => 'Ẩn hoàn toàn các bài đăng chứa từ hoặc cụm từ. Khác với mute, bài đăng sẽ bị ẩn hoàn toàn.';
 	@override String get regexpError => 'Lỗi biểu thức';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Xảy ra lỗi biểu thức ở dòng ${line} của ${tab} chữ ẩn:';
 	@override String get instanceMute => 'Những máy chủ ẩn';
 	@override String userSaysSomething({required Object name}) => '${name} nói gì đó';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} đã nói gì đó về "${word}"';
 	@override String get makeActive => 'Kích hoạt';
 	@override String get display => 'Hiển thị';
 	@override String get copy => 'Sao chép';
+	@override String get copiedToClipboard => 'Đã sao chép vào clipboard';
 	@override String get metrics => 'Số liệu';
 	@override String get overview => 'Tổng quan';
 	@override String get logs => 'Nhật ký';
@@ -741,12 +789,14 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get other => 'Khác';
 	@override String get regenerateLoginToken => 'Tạo lại mã đăng nhập';
 	@override String get regenerateLoginTokenDescription => 'Tạo lại mã nội bộ có thể dùng để đăng nhập. Thông thường hành động này là không cần thiết. Nếu được tạo lại, tất cả các thiết bị sẽ bị đăng xuất.';
+	@override String get theKeywordWhenSearchingForCustomEmoji => 'Đây là từ khoá được sử dụng để tìm kiếm emoji';
 	@override String get setMultipleBySeparatingWithSpace => 'Tách nhiều mục nhập bằng dấu cách.';
 	@override String get fileIdOrUrl => 'ID tập tin hoặc URL';
 	@override String get behavior => 'Thao tác';
 	@override String get sample => 'Ví dụ';
 	@override String get abuseReports => 'Lượt báo cáo';
 	@override String get reportAbuse => 'Báo cáo';
+	@override String get reportAbuseRenote => 'Báo cáo bài đăng lại';
 	@override String reportAbuseOf({required Object name}) => 'Báo cáo ${name}';
 	@override String get fillAbuseReportDescription => 'Vui lòng điền thông tin chi tiết về báo cáo này. Nếu đó là về một tút cụ thể, hãy kèm theo URL của tút.';
 	@override String get abuseReported => 'Báo cáo đã được gửi. Cảm ơn bạn nhiều.';
@@ -796,6 +846,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'Luôn đánh dấu NSFW';
 	@override String get loadRawImages => 'Tải ảnh gốc thay vì ảnh thu nhỏ';
 	@override String get disableShowingAnimatedImages => 'Không phát ảnh động';
+	@override String get highlightSensitiveMedia => 'Đánh dấu nội dung nhạy cảm';
 	@override String get verificationEmailSent => 'Một email xác minh đã được gửi. Vui lòng nhấn vào liên kết đính kèm để hoàn tất xác minh.';
 	@override String get notSet => 'Chưa đặt';
 	@override String get emailVerified => 'Email đã được xác minh';
@@ -811,7 +862,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Nhà phát triển';
 	@override String get makeExplorable => 'Không hiện tôi trong "Khám phá"';
 	@override String get makeExplorableDescription => 'Nếu bạn tắt, tài khoản của bạn sẽ không hiện trong mục "Khám phá".';
-	@override String get showGapBetweenNotesInTimeline => 'Hiện dải phân cách giữa các tút trên bảng tin';
 	@override String get duplicate => 'Tạo bản sao';
 	@override String get left => 'Bên trái';
 	@override String get center => 'Giữa';
@@ -889,6 +939,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get accounts => 'Tài khoản của bạn';
 	@override String get switch_ => 'Chuyển đổi';
 	@override String get noMaintainerInformationWarning => 'Chưa thiết lập thông tin vận hành.';
+	@override String get noInquiryUrlWarning => 'Địa chỉ hỏi đáp chưa được đặt';
 	@override String get noBotProtectionWarning => 'Bảo vệ Bot chưa thiết lập.';
 	@override String get configure => 'Thiết lập';
 	@override String get postToGallery => 'Tạo tút có ảnh';
@@ -953,6 +1004,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get continueThread => 'Tiếp tục xem chuỗi tút';
 	@override String get deleteAccountConfirm => 'Điều này sẽ khiến tài khoản bị xóa vĩnh viễn. Vẫn tiếp tục?';
 	@override String get incorrectPassword => 'Sai mật khẩu.';
+	@override String get incorrectTotp => 'Mã OTP không đúng hoặc đã quá hạn';
 	@override String voteConfirm({required Object choice}) => 'Xác nhận bình chọn "${choice}"?';
 	@override String get hide => 'Ẩn';
 	@override String get useDrawerReactionPickerForMobile => 'Hiện bộ chọn biểu cảm dạng xổ ra trên điện thoại';
@@ -977,6 +1029,9 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 ngày';
 	@override String get oneWeek => '1 tuần';
 	@override String get oneMonth => '1 tháng';
+	@override String get threeMonths => '3 tháng';
+	@override String get oneYear => '1 năm';
+	@override String get threeDays => '3 ngày ';
 	@override String get reflectMayTakeTime => 'Có thể mất một thời gian để điều này được áp dụng.';
 	@override String get failedToFetchAccountInformation => 'Không thể lấy thông tin tài khoản';
 	@override String get rateLimitExceeded => 'Giới hạn quá mức';
@@ -1001,6 +1056,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'Số lượng trang bộ nhớ đệm';
 	@override String get numberOfPageCacheDescription => 'Việc tăng con số này sẽ cải thiện sự thuận tiện cho người dùng nhưng gây ra nhiều áp lực hơn cho máy chủ cũng như sử dụng nhiều bộ nhớ hơn.';
 	@override String get logoutConfirm => 'Bạn có chắc muốn đăng xuất?';
+	@override String get logoutWillClearClientData => 'Đăng xuất sẽ xoá các thiết lập của bạn khỏi trình duyệt. Để có thể khôi phục thiết lập khi đăng nhập lại, bạn phải bật tự động sao lưu cài đặt.';
 	@override String get lastActiveDate => 'Lần cuối vào';
 	@override String get statusbar => 'Thanh trạng thái';
 	@override String get pleaseSelect => 'Chọn một lựa chọn';
@@ -1050,6 +1106,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get remindMeLater => 'Để sau';
 	@override String get didYouLikeMisskey => 'Bạn có ưa thích Mískey không?';
 	@override String pleaseDonate({required Object host}) => 'Misskey là phần mềm miễn phí mà ${host} đang sử dụng. Xin mong bạn quyên góp cho chúng tôi để chúng tôi có thể tiếp tục phát triển dịch vụ này. Xin cảm ơn!!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Mã nguồn có thể được xem tại ${anchor}';
 	@override String get roles => 'Vai trò';
 	@override String get role => 'Vai trò';
 	@override String get noRole => 'Bạn chưa được cấp quyền.';
@@ -1077,23 +1134,41 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => 'Từ chối';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Đăng bài để nguyên';
 	@override String get collapseRenotes => 'Không hiển thị bài viết đã từng xem';
+	@override String get collapseRenotesDescription => 'Các bài đăng bị thu gọn mà bạn đã phản hồi hoặc đăng lại trước đây.';
 	@override String get internalServerError => 'Lỗi trong chủ máy';
 	@override String get internalServerErrorDescription => 'Trong chủ máy lỗi bất ngờ xảy ra';
 	@override String get copyErrorInfo => 'Sao chép thông tin lỗi';
 	@override String get joinThisServer => 'Đăng ký trên chủ máy này';
 	@override String get exploreOtherServers => 'Tìm chủ máy khác';
 	@override String get letsLookAtTimeline => 'Thử xem Timeline';
+	@override String get disableFederationConfirm => 'Bạn có muốn làm điều đó mà không cần liên minh không?';
+	@override String get disableFederationConfirmWarn => 'Ngay cả khi bị trì hoãn, bài đăng vẫn sẽ tiếp tục là công khai trừ khi được thiết lập khác. Bạn thường không cần phải làm điều này.';
 	@override String get disableFederationOk => 'Vô hiệu hoá';
+	@override String get invitationRequiredToRegister => 'Phiên bản này chỉ dành cho người được mời. Bạn phải nhập mã mời hợp lệ để đăng ký.';
 	@override String get emailNotSupported => 'Máy chủ này không hỗ trợ gửi email';
 	@override String get postToTheChannel => 'Đăng lên kênh';
 	@override String get cannotBeChangedLater => 'Không thể thay đổi sau này.';
+	@override String get reactionAcceptance => 'Phản ứng chấp nhận';
 	@override String get likeOnly => 'Chỉ lượt thích';
+	@override String get likeOnlyForRemote => 'Tất cả (chỉ bao gồm lượt thích trên các máy chủ khác)';
+	@override String get nonSensitiveOnly => 'Chỉ nội dung không nhạy cảm';
+	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => 'Chỉ nội dung không nhạy cảm (chỉ bao gồm lượt thích từ máy chủ khác)';
 	@override String get rolesAssignedToMe => 'Vai trò được giao cho tôi';
 	@override String get resetPasswordConfirm => 'Bạn thực sự muốn đặt lại mật khẩu?';
 	@override String get sensitiveWords => 'Các từ nhạy cảm';
+	@override String get sensitiveWordsDescription => 'Phạm vi của tất cả bài đăng chứa các từ được cấu hình sẽ tự động được đặt về "Home". Ban có thể thêm nhiều từ trên mỗi dòng.';
+	@override String get sensitiveWordsDescription2 => 'Sử dụng dấu cách sẽ tạo cấu trúc AND và thêm dấu gạch xuôi để sử dụng như một regex.';
 	@override String get prohibitedWords => 'Các từ bị cấm';
+	@override String get prohibitedWordsDescription => 'Hiển thị lỗi khi đăng một bài đăng chứa các từ sau. Nhiều từ có thể được thêm bằng cách viết một từ trên mỗi dòng.';
+	@override String get prohibitedWordsDescription2 => 'Sử dụng dấu cách sẽ tạo cấu trúc AND và thêm dấu gạch xuôi để sử dụng như một regex.';
+	@override String get hiddenTags => 'Hashtag ẩn';
+	@override String get hiddenTagsDescription => 'Các hashtag này sẽ không được hiển thị trên danh sách Trending. Nhiều tag có thể được thêm bằng cách viết một tag trên mỗi dòng.';
+	@override String get notesSearchNotAvailable => 'Tìm kiếm bài đăng hiện không khả dụng.';
 	@override String get license => 'Giấy phép';
 	@override String get unfavoriteConfirm => 'Bạn thực sự muốn xoá khỏi mục yêu thích?';
+	@override String get myClips => 'Các clip của tôi';
+	@override String get drivecleaner => 'Trình dọn đĩa';
+	@override String get retryAllQueuesNow => 'Thử lại cho tất cả hàng chờ';
 	@override String get retryAllQueuesConfirmTitle => 'Bạn có muốn thử lại?';
 	@override String get retryAllQueuesConfirmText => 'Điều này sẽ tạm thời làm tăng mức độ tải của máy chủ.';
 	@override String get enableChartsForRemoteUser => 'Tạo biểu đồ người dùng từ xa';
@@ -1129,6 +1204,8 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get specifyUser => 'Người dùng chỉ định';
 	@override String get failedToPreviewUrl => 'Không thể xem trước';
 	@override String get update => 'Cập nhật';
+	@override String get cancelReactionConfirm => 'Bạn có muốn hủy phản ứng của mình không?';
+	@override String get changeReactionConfirm => 'Bạn có muốn thay đổi phản ứng của mình không?';
 	@override String get later => 'Để sau';
 	@override String get goToMisskey => 'Tới Misskey';
 	@override String get installed => 'Đã tải xuống';
@@ -1177,6 +1254,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get followingOrFollower => 'Đang theo dõi hoặc người theo dõi';
 	@override String get externalServices => 'Các dịch vụ bên ngoài';
 	@override String get sourceCode => 'Mã nguồn';
+	@override String get repositoryUrlDescription => 'Nếu bạn có kho lưu trữ mã nguồn có thể truy cập công khai, hãy nhập URL. Nếu bạn đang sử dụng Misskey theo mặc định (không thực hiện bất kỳ thay đổi nào đối với mã nguồn), hãy nhập https://github.com/misskey-dev/misskey.';
 	@override String get feedback => 'Phản hồi';
 	@override String get feedbackUrl => 'URL phản hồi';
 	@override String get privacyPolicy => 'Chính sách bảo mật';
@@ -1193,14 +1271,27 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Đang làm mới';
 	@override String get pullDownToRefresh => 'Kéo xuống để làm mới';
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
+	@override String get decorate => 'Trang trí';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
+	@override String userSaysSomethingSensitive({required Object name}) => 'Bài đăng có chứa các tập tin nhạy cảm từ ${name}';
 	@override String get surrender => 'Từ chối';
+	@override String get signinWithPasskey => 'Đăng nhập bằng mật khẩu của bạn';
+	@override String get passkeyVerificationFailed => 'Xác minh mật khẩu không thành công.';
+	@override String get messageToFollower => 'Tin nhắn cho người theo dõi';
+	@override String get yourNameContainsProhibitedWords => 'Tên bạn đang cố gắng đổi có chứa chuỗi ký tự bị cấm.';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Tên có chứa chuỗi ký tự bị cấm. Nếu bạn muốn sử dụng tên này, hãy liên hệ với quản trị viên máy chủ của bạn.';
+	@override String get federationDisabled => 'Liên kết bị vô hiệu hóa trên máy chủ này. Bạn không thể tương tác với người dùng trên các máy chủ khác.';
+	@override String reactAreYouSure({required Object emoji}) => 'Bạn có muốn phản hồi với " ${emoji} " không?';
+	@override String get paste => 'dán';
 	@override String get postForm => 'Mẫu đăng';
 	@override String get information => 'Giới thiệu';
 	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
+	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);
 	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
 	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingViVn._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialViVn initialTutorial_ = _TranslationsMisskeyInitialTutorialViVn._(_root);
+	@override late final _TranslationsMisskeyTimelineDescriptionViVn timelineDescription_ = _TranslationsMisskeyTimelineDescriptionViVn._(_root);
 	@override late final _TranslationsMisskeyServerSettingsViVn serverSettings_ = _TranslationsMisskeyServerSettingsViVn._(_root);
 	@override late final _TranslationsMisskeyAccountMigrationViVn accountMigration_ = _TranslationsMisskeyAccountMigrationViVn._(_root);
 	@override late final _TranslationsMisskeyAchievementsViVn achievements_ = _TranslationsMisskeyAchievementsViVn._(_root);
@@ -1253,6 +1344,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportViVn abuseReport_ = _TranslationsMisskeyAbuseReportViVn._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesViVn moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesViVn._(_root);
 	@override late final _TranslationsMisskeyReversiViVn reversi_ = _TranslationsMisskeyReversiViVn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerViVn customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerViVn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
 	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
 }
@@ -1269,6 +1361,17 @@ class _TranslationsMisskeyChatViVn extends TranslationsMisskeyChatEnUs {
 	@override String get members => 'Thành viên';
 	@override String get home => 'Trang chính';
 	@override String get send => 'Gửi';
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsViVn extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'Yêu cầu đăng nhập để xem nội dung';
+	@override String get requireSigninToViewContentsDescription1 => 'Yêu cầu đăng nhập để xem tất cả ghi chú và nội dung khác mà bạn tạo. Điều này được kỳ vọng sẽ có hiệu quả trong việc ngăn chặn thông tin bị thu thập bởi các trình thu thập thông tin.';
 }
 
 // Path: misskey.delivery_
@@ -1315,8 +1418,39 @@ class _TranslationsMisskeyInitialAccountSettingViVn extends TranslationsMisskeyI
 	@override String pushNotificationDescription({required Object name}) => 'Bật thông báo đẩy sẽ cho phép bạn nhận thông báo từ ${name} trực tiếp từ thiết bị của bạn.';
 	@override String get initialAccountSettingCompleted => 'Thiết lập tài khoản thành công!';
 	@override String haveFun({required Object name}) => 'Hãy tận hưởng ${name} nhé!';
+	@override String youCanContinueTutorial({required Object name}) => 'Bạn có thể tiếp tục xem hướng dẫn về cách sử dụng ${name} (Misskey) hoặc bạn có thể thoát khỏi phần thiết lập tại đây và bắt đầu sử dụng ngay lập tức.';
+	@override String get startTutorial => 'Bắt đầu hướng dẫn';
 	@override String get skipAreYouSure => 'Bạn thực sự muốn bỏ qua mục thiết lập tài khoản?';
 	@override String get laterAreYouSure => 'Bạn thực sự muốn thiết lập tài khoản vào lúc khác?';
+}
+
+// Path: misskey.initialTutorial_
+class _TranslationsMisskeyInitialTutorialViVn extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get launchTutorial => 'Bắt đầu hướng dẫn';
+	@override String get title => 'Hướng dẫn';
+	@override String get wellDone => 'Làm tốt!';
+	@override String get skipAreYouSure => 'Thoát khỏi hướng dẫn?';
+	@override late final _TranslationsMisskeyInitialTutorialLandingViVn landing_ = _TranslationsMisskeyInitialTutorialLandingViVn._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialNoteViVn note_ = _TranslationsMisskeyInitialTutorialNoteViVn._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialTimelineViVn timeline_ = _TranslationsMisskeyInitialTutorialTimelineViVn._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteViVn postNote_ = _TranslationsMisskeyInitialTutorialPostNoteViVn._(_root);
+}
+
+// Path: misskey.timelineDescription_
+class _TranslationsMisskeyTimelineDescriptionViVn extends TranslationsMisskeyTimelineDescriptionEnUs {
+	_TranslationsMisskeyTimelineDescriptionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Trong dòng thời gian Trang chính, bạn có thể xem ghi chú từ các tài khoản bạn theo dõi.';
+	@override String get local => 'Trong dòng thời gian cục bộ, bạn có thể xem ghi chú từ tất cả người dùng trên máy chủ này.';
+	@override String get social => 'Dòng thời gian Xã hội hiển thị các ghi chú từ cả dòng thời gian Trang chủ và Địa phương.';
 }
 
 // Path: misskey.serverSettings_
@@ -2215,7 +2349,13 @@ class _TranslationsMisskeyModerationLogTypesViVn extends TranslationsMisskeyMode
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
+	@override String get createRole => 'Tạo một vai trò';
+	@override String get deleteRole => 'Xóa vai trò';
+	@override String get updateRole => 'Cập nhật vai trò';
+	@override String get assignRole => 'Chỉ định cho vai trò';
+	@override String get unassignRole => 'Bỏ gán vai trò';
 	@override String get suspend => 'Vô hiệu hóa';
+	@override String get unsuspend => 'Rã đông';
 	@override String get resetPassword => 'Đặt lại mật khẩu';
 	@override String get createInvitation => 'Tạo lời mời';
 }
@@ -2228,6 +2368,16 @@ class _TranslationsMisskeyReversiViVn extends TranslationsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Tổng cộng';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerViVn extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalViVn local_ = _TranslationsMisskeyCustomEmojisManagerLocalViVn._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_
@@ -2260,6 +2410,51 @@ class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTy
 
 	// Translations
 	@override String get none => 'Đang đăng';
+}
+
+// Path: misskey.initialTutorial_.landing_
+class _TranslationsMisskeyInitialTutorialLandingViVn extends TranslationsMisskeyInitialTutorialLandingEnUs {
+	_TranslationsMisskeyInitialTutorialLandingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Chào mừng đến với Hướng dẫn';
+	@override String get description => 'Tại đây, bạn có thể tìm hiểu những điều cơ bản về cách sử dụng Misskey và các tính năng của nó.';
+}
+
+// Path: misskey.initialTutorial_.note_
+class _TranslationsMisskeyInitialTutorialNoteViVn extends TranslationsMisskeyInitialTutorialNoteEnUs {
+	_TranslationsMisskeyInitialTutorialNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bài Viết là gì?';
+	@override String get description => 'Các bài đăng trên Misskey được gọi là \'Bài Viết\'. Ghi chú được sắp xếp theo thứ tự thời gian trên dòng thời gian và được cập nhật theo thời gian thực.';
+}
+
+// Path: misskey.initialTutorial_.timeline_
+class _TranslationsMisskeyInitialTutorialTimelineViVn extends TranslationsMisskeyInitialTutorialTimelineEnUs {
+	_TranslationsMisskeyInitialTutorialTimelineViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Bạn có thể xem ghi chú từ những tài khoản bạn theo dõi.';
+	@override String get local => 'Bạn có thể xem ghi chú từ tất cả người dùng trên máy chủ này.';
+	@override String get social => 'Ghi chú từ dòng thời gian Trang chủ và Địa phương sẽ được hiển thị.';
+	@override String get global => 'Bạn có thể xem ghi chú từ tất cả các máy chủ được kết nối.';
+}
+
+// Path: misskey.initialTutorial_.postNote_
+class _TranslationsMisskeyInitialTutorialPostNoteViVn extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn._(_root);
 }
 
 // Path: misskey.achievements_.types_
@@ -2556,6 +2751,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientViVn extends Translati
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_root);
 }
 
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalViVn extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListViVn list_ = _TranslationsMisskeyCustomEmojisManagerLocalListViVn._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.noSuchObject_
 class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2564,6 +2769,16 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn extends Translation
 
 	// Translations
 	@override String get title => 'Không tìm thấy';
+}
+
+// Path: misskey.initialTutorial_.postNote_.visibility_
+class _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Chỉ công khai trên dòng thời gian Trang chủ. Những người truy cập trang cá nhân của bạn, thông qua người theo dõi và thông qua ghi chú lại có thể thấy thông tin đó.';
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -3084,7 +3299,7 @@ class _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn extends Translat
 	// Translations
 	@override String get title => 'Tín hiệu báo giờ';
 	@override String get description => 'Đăng bài vào 0 phút 0 giây';
-	@override String get flavor => 'Piiiiiii ĐÂY LÀ TIẾNG NÓI VIỆT NAM';
+	@override String get flavor => 'Pin pop pop pop';
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
@@ -3248,4 +3463,14 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn exte
 
 	// Translations
 	@override String get mail => 'Email';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListViVn extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'Xóa các biểu tượng cảm xúc ${count} đã chọn. Bạn có muốn chạy nó không?';
 }

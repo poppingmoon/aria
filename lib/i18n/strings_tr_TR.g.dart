@@ -293,7 +293,6 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Profili düzenle';
 	@override String get noteDeleteConfirm => 'Bu notu silmek istediğinizden emin misiniz?';
 	@override String get pinLimitExceeded => 'Daha fazla not sabitlenemez';
-	@override String get intro => 'Misskey yüklemesi tamamlandı! Lütfen yönetici hesabını oluşturun.';
 	@override String get done => 'Tamamlandı';
 	@override String get preview => 'Önizleme';
 	@override String get default_ => 'Varsayılan';

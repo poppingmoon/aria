@@ -61,7 +61,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
           distribution: zulu
           java-version: 17
@@ -104,7 +104,7 @@ jobs:
 
       - name: Release APK
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: |
             ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
@@ -137,7 +137,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
+        uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
         with:
           distribution: zulu
           java-version: 17
@@ -174,7 +174,7 @@ jobs:
       - name: Authenticate to Google Cloud
         id: auth
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: google-github-actions/auth@71f986410dfbc7added4569d411d040a91dc6935 # v2.1.8
+        uses: google-github-actions/auth@ba79af03959ebeac9769e648f473a284504d9193 # v2.1.10
         with:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.SERVICE_ACCOUNT }}
@@ -189,7 +189,7 @@ jobs:
           serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
 
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-15
 
     needs: get-flutter-version
 
@@ -242,7 +242,7 @@ jobs:
 
       - name: Release IPA (Unsigned)
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: aria-${{ github.ref_name }}.ipa
           draft: true
@@ -339,7 +339,7 @@ jobs:
 
       - name: Release ZIP
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: aria-${{ github.ref_name }}-windows-x64.zip
           draft: true
@@ -364,7 +364,7 @@ jobs:
 
       - name: Release installer
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
           draft: true
@@ -460,7 +460,7 @@ jobs:
 
       - name: Release DMG
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: aria-${{ github.ref_name }}.dmg
           draft: true
@@ -546,7 +546,7 @@ jobs:
 
       - name: Release TAR
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
         with:
           files: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
           draft: true

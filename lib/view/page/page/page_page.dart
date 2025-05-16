@@ -217,7 +217,10 @@ class PagePage extends ConsumerWidget {
                     child: Text(t.aria.openInBrowser),
                   ),
                   PopupMenuItem(
-                    onTap: () => Share.share('${page.valueOrNull?.title} $url'),
+                    onTap:
+                        () => SharePlus.instance.share(
+                          ShareParams(text: '${page.valueOrNull?.title} $url'),
+                        ),
                     child: Text(t.misskey.share),
                   ),
                   if (page.valueOrNull?.user case final user?
@@ -450,7 +453,10 @@ class PagePage extends ConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.share,
-                        onPressed: () => Share.share('${page.title} $url'),
+                        onPressed:
+                            () => SharePlus.instance.share(
+                              ShareParams(text: '${page.title} $url'),
+                            ),
                         icon: const Icon(Icons.share),
                       ),
                     ],

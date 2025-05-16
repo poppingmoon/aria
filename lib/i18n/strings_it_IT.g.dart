@@ -335,7 +335,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Modifica profilo';
 	@override String get noteDeleteConfirm => 'Vuoi davvero eliminare questa Nota?';
 	@override String get pinLimitExceeded => 'Non puoi fissare altre note ';
-	@override String get intro => 'L\'installazione di Misskey è terminata! Si prega di creare il profilo amministratore.';
 	@override String get done => 'Fine';
 	@override String get processing => 'In elaborazione';
 	@override String get preview => 'Anteprima';
@@ -467,7 +466,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get enableLocalTimeline => 'Abilita la timeline locale';
 	@override String get enableGlobalTimeline => 'Abilita la timeline federata';
 	@override String get disablingTimelinesInfo => 'Anche disabilitandole, gli Amministratori e i Moderatori potranno comunque accedervi.';
-	@override String get registration => 'Iscriviti';
+	@override String get registration => 'Registrazione';
 	@override String get invite => 'Invita';
 	@override String get driveCapacityPerLocalAccount => 'Capienza del Drive per profilo locale';
 	@override String get driveCapacityPerRemoteAccount => 'Capienza del Drive per profilo remoto';
@@ -509,6 +508,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get antennaKeywordsDescription => 'Sparando con uno spazio indichi la condizione E (and). Separando con un a capo, indichi la condizione O (or).';
 	@override String get notifyAntenna => 'Invia notifiche delle nuove note';
 	@override String get withFileAntenna => 'Solo note con file in allegato';
+	@override String get excludeNotesInSensitiveChannel => 'Escludere le Note dai canali espliciti';
 	@override String get enableServiceworker => 'Abilita ServiceWorker';
 	@override String get antennaUsersDescription => 'Elenca un nome utente per riga';
 	@override String get caseSensitive => 'Sensibile alla distinzione tra maiuscole e minuscole';
@@ -812,7 +812,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get send => 'Inviare';
 	@override String get openInNewTab => 'Apri in una nuova scheda';
 	@override String get openInSideView => 'Apri in vista laterale';
-	@override String get defaultNavigationBehaviour => 'Navigazione preimpostata';
+	@override String get defaultNavigationBehaviour => 'Tipo di navigazione predefinita';
 	@override String get editTheseSettingsMayBreakAccount => 'Modificare queste impostazioni può danneggiare il profilo';
 	@override String get instanceTicker => 'Informazioni sull\'istanza da cui vengono le note';
 	@override String waitingFor({required Object x}) => 'Aspettando ${x}';
@@ -868,7 +868,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Sviluppatore';
 	@override String get makeExplorable => 'Profilo visibile pubblicamente nella pagina "Esplora"';
 	@override String get makeExplorableDescription => 'Disabilitando questa opzione, il tuo profilo non verrà elencato nella pagina "Esplora".';
-	@override String get showGapBetweenNotesInTimeline => 'Mostrare un intervallo tra le note sulla timeline';
 	@override String get duplicate => 'Duplica';
 	@override String get left => 'Sinistra';
 	@override String get center => 'Centro';
@@ -951,7 +950,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get configure => 'Imposta';
 	@override String get postToGallery => 'Pubblicare nella galleria';
 	@override String get postToHashtag => 'Pubblica a questo hashtag';
-	@override String get gallery => 'Galleria';
+	@override String get gallery => 'Gallerie';
 	@override String get recentPosts => 'Pubblicazioni recenti';
 	@override String get popularPosts => 'Le più visualizzate';
 	@override String get shareWithNote => 'Condividere in nota';
@@ -1063,6 +1062,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'Numero di pagine cache';
 	@override String get numberOfPageCacheDescription => 'Aumenta l\'usabilità, ma aumenta anche il carico e l\'utilizzo della memoria.';
 	@override String get logoutConfirm => 'Vuoi davvero uscire da Misskey? ';
+	@override String get logoutWillClearClientData => 'All\'uscita, la configurazione del client viene rimossa dal browser. Per ripristinarla quando si effettua nuovamente l\'accesso, abilitare il backup automatico.';
 	@override String get lastActiveDate => 'Data dell\'ultimo utilizzo';
 	@override String get statusbar => 'Barra di stato';
 	@override String get pleaseSelect => 'Scegli un\'opzione';
@@ -1320,7 +1320,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Rilascia per aggiornare';
 	@override String get refreshing => 'Aggiornamento...';
 	@override String get pullDownToRefresh => 'Trascinare per aggiornare';
-	@override String get disableStreamingTimeline => 'Disabilitare gli aggiornamenti della TL in tempo reale';
 	@override String get useGroupedNotifications => 'Mostra le notifiche raggruppate';
 	@override String get signupPendingError => 'Si è verificato un problema durante la verifica del tuo indirizzo email. Potrebbe essere scaduto il collegamento temporaneo.';
 	@override String get cwNotationRequired => 'Devi indicare perché il contenuto è indicato come esplicito.';
@@ -1425,6 +1424,9 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get bottom => 'Sotto';
 	@override String get top => 'Sopra';
 	@override String get embed => 'Incorporare';
+	@override String get settingsMigrating => 'Migrazione delle impostazioni. Attendere prego ... (Puoi anche migrare manualmente in un secondo momento, nel menu: Impostazioni → Altro → Migrazione delle impostazioni)';
+	@override String get readonly => 'Sola lettura';
+	@override String get goToDeck => 'Torna al Deck';
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
 	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
@@ -1551,6 +1553,7 @@ class _TranslationsMisskeyChatItIt extends TranslationsMisskeyChatEnUs {
 	@override String get muteThisRoom => 'Silenzia stanza';
 	@override String get deleteRoom => 'Elimina stanza';
 	@override String get chatNotAvailableForThisAccountOrServer => 'Questo server, o questo profilo ha disabilitato la chat.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'Le chat, su questo server o su questo profilo, sono di sola lettura. Impossibile scrivere in chat o creare e partecipare a stanze.';
 	@override String get chatNotAvailableInOtherAccount => 'La chat non è disponibile nel profilo dell\'altra persona.';
 	@override String get cannotChatWithTheUser => 'Impossibile chattare con questa persona';
 	@override String get cannotChatWithTheUser_description => 'La chat potrebbe non essere disponibile, oppure l\'altra persona potrebbe non esserlo.';
@@ -2524,6 +2527,7 @@ class _TranslationsMisskeyWidgetsItIt extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListItIt userList_ = _TranslationsMisskeyWidgetsUserListItIt._(_root);
 	@override String get clicker => 'Cliccheria';
 	@override String get birthdayFollowings => 'Compleanni del giorno';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.cw_
@@ -2828,8 +2832,8 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Mostra sempre la colonna principale';
-	@override String get columnAlign => 'Allineare colonne';
-	@override String get columnGap => 'Margine tra le colonne';
+	@override String get columnAlign => 'Allineamento delle colonne';
+	@override String get columnGap => 'Spessore del margine tra colonne';
 	@override String get deckMenuPosition => 'Posizione del menu Deck';
 	@override String get navbarPosition => 'Posizione barra di navigazione';
 	@override String get addColumn => 'Aggiungi colonna';
@@ -3586,6 +3590,7 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'Può importare Following';
 	@override String get canImportMuting => 'Può importare Silenziati';
 	@override String get canImportUserLists => 'Può importare liste di Profili';
+	@override String get chatAvailability => 'Chat consentita';
 }
 
 // Path: misskey.role_.condition_
@@ -3776,10 +3781,11 @@ class _TranslationsMisskeyDeckColumnsItIt extends TranslationsMisskeyDeckColumns
 	@override String get tl => 'Timeline';
 	@override String get antenna => 'Antenne';
 	@override String get list => 'Liste';
-	@override String get channel => 'Canale';
+	@override String get channel => 'Canali';
 	@override String get mentions => 'Menzioni';
 	@override String get direct => 'Note Dirette';
 	@override String get roleTimeline => 'Timeline Ruolo';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.webhookSettings_.events_

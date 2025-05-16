@@ -86,6 +86,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	);
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';
+	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新を無効にする';
 	@override String get disableSubscribingNotes => 'リアクションのリアルタイム更新を無効にする';
 	@override String get discardChangesConfirm => '変更せずに戻りますか？';
 	@override String get displayOfThumbnail => 'サムネイルの表示';
@@ -174,14 +175,16 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 		const TextSpan(text: 'を開き、以下のコードを入力して実行してください。'),
 	]);
 	@override String get openSensitiveMediaOnDoubleTap => 'ダブルタップしてセンシティブなメディアを開く';
+	@override String get owner => 'オーナー';
 	@override String get parameters => 'パラメータ';
 	@override String get paste => '貼り付け';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
-		const TextSpan(text: 'JSON形式で表記された絵文字のリストを貼り付けて一括でピン止めします。\nMisskey Webでピン止めした絵文字のリストは'),
+		const TextSpan(text: '絵文字のリストを貼り付けて一括でピン止めします。\nMisskey Webでピン止めした絵文字のリストは'),
 		url,
 		const TextSpan(text: 'からコピーすることができます。'),
 	]);
 	@override String get pasteResponseBelow => '以下にレスポンスを貼り付けてください。';
+	@override String get permissionDeniedErrorDescription => 'この操作を行うための権限がアクセストークンに付与されていません。ログインし直してください。';
 	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留め';
 	@override String get playAudio => '音声を再生';
 	@override String get playVideo => '動画を再生';
@@ -208,6 +211,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 		user,
 		const TextSpan(text: 'がセルフリノート'),
 	]);
+	@override String get sendMessageConfirm => 'このメッセージを送信しますか？';
 	@override String get serverUrl => 'サーバーのURL';
 	@override String get settingsFileForAria => 'Ariaの設定ファイル';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -218,6 +222,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示する';
 	@override String get showEntireImage => '全体を表示する';
 	@override String get showExpandedImage => '拡大して表示する';
+	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示';
 	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
 	@override String get showMenuButtonInTabBar => 'タイムラインのタブバーにメニューボタンを追加';
@@ -452,7 +457,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get addEmoji => '絵文字を追加';
 	@override String get settingGuide => 'おすすめ設定';
 	@override String get cacheRemoteFiles => 'リモートのファイルをキャッシュする';
-	@override String get cacheRemoteFilesDescription => 'この設定を有効にすると、リモートファイルをこのサーバーのストレージにキャッシュするようになります。画像の表示が高速になりますが、サーバーのストレージを多く消費します。リモートユーザーがどれほどキャッシュを保持するかは、ロールによるドライブ容量制限によって決定されます。この制限を超えた場合、古いファイルからキャッシュが削除されリンクになります。この設定が無効の場合、リモートのファイルを最初からリンクとして保持しますが、画像のサムネイル生成やユーザーのプライバシー保護のために、default.ymlでproxyRemoteFilesをtrueにすることをお勧めします。';
+	@override String get cacheRemoteFilesDescription => 'この設定を有効にすると、リモートファイルをこのサーバーのストレージにキャッシュするようになります。画像の表示が高速になりますが、サーバーのストレージを多く消費します。リモートユーザーがどれほどキャッシュを保持するかは、ロールによるドライブ容量制限によって決定されます。この制限を超えた場合、古いファイルからキャッシュが削除されリンクになります。この設定が無効の場合、リモートのファイルを最初からリンクとして保持します。';
 	@override String get youCanCleanRemoteFilesCache => 'ファイル管理の🗑️ボタンで全てのキャッシュを削除できます。';
 	@override String get cacheRemoteSensitiveFiles => 'リモートのセンシティブなファイルをキャッシュする';
 	@override String get cacheRemoteSensitiveFilesDescription => 'この設定を無効にすると、リモートのセンシティブなファイルはキャッシュせず直リンクするようになります。';
@@ -500,6 +505,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'サーバーをメディアサイレンス';
 	@override String get operations => '操作';
 	@override String get software => 'ソフトウェア';
+	@override String get softwareName => 'ソフトウェア名';
 	@override String get version => 'バージョン';
 	@override String get metadata => 'メタデータ';
 	@override String withNFiles({required Object n}) => '${n}つのファイル';
@@ -530,7 +536,6 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'プロフィールを編集';
 	@override String get noteDeleteConfirm => 'このノートを削除しますか？';
 	@override String get pinLimitExceeded => 'これ以上ピン留めできません';
-	@override String get intro => 'Misskeyのインストールが完了しました！管理者アカウントを作成しましょう。';
 	@override String get done => '完了';
 	@override String get processing => '処理中';
 	@override String get preview => 'プレビュー';
@@ -1064,7 +1069,6 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get developer => '開発者';
 	@override String get makeExplorable => 'アカウントを見つけやすくする';
 	@override String get makeExplorableDescription => 'オフにすると、「みつける」にアカウントが載らなくなります。';
-	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示';
 	@override String get duplicate => '複製';
 	@override String get left => '左';
 	@override String get center => '中央';
@@ -1259,6 +1263,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'ページキャッシュ数';
 	@override String get numberOfPageCacheDescription => '多くすると利便性が向上しますが、負荷とメモリ使用量が増えます。';
 	@override String get logoutConfirm => 'ログアウトしますか？';
+	@override String get logoutWillClearClientData => 'ログアウトするとクライアントの設定情報がブラウザから消去されます。再ログイン時に設定情報を復元できるようにするためには、設定の自動バックアップを有効にしてください。';
 	@override String get lastActiveDate => '最終利用日時';
 	@override String get statusbar => 'ステータスバー';
 	@override String get pleaseSelect => '選択してください';
@@ -1516,7 +1521,6 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => '離してリロード';
 	@override String get refreshing => 'リロード中';
 	@override String get pullDownToRefresh => '引っ張ってリロード';
-	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新を無効にする';
 	@override String get useGroupedNotifications => '通知をグルーピング';
 	@override String get signupPendingError => 'メールアドレスの確認中に問題が発生しました。リンクの有効期限が切れている可能性があります。';
 	@override String get cwNotationRequired => '「内容を隠す」がオンの場合は注釈の記述が必要です。';
@@ -1624,6 +1628,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get settingsMigrating => '設定を移行しています。しばらくお待ちください... (後ほど、設定→その他→旧設定情報を移行 で手動で移行することもできます)';
 	@override String get readonly => '読み取り専用';
 	@override String get goToDeck => 'デッキへ戻る';
+	@override String get federationJobs => '連合ジョブ';
+	@override String get driveAboutTip => 'ドライブでは、過去にアップロードしたファイルの一覧が表示されます。<br>\nノートに添付する際に再利用したり、あとで投稿するファイルを予めアップロードしておくこともできます。<br>\n<b>ファイルを削除すると、今までそのファイルを使用した全ての場所(ノート、ページ、アバター、バナー等)からも見えなくなるので注意してください。</b><br>\nフォルダを作って整理することもできます。';
+	@override String get scrollToClose => 'スクロールして閉じる';
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
 	@override late final _TranslationsMisskeySettingsJaJp settings_ = _TranslationsMisskeySettingsJaJp._(_root);
@@ -1818,6 +1825,8 @@ class _TranslationsMisskeySettingsJaJp extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOn => 'オンのとき';
 	@override String get ifOff => 'オフのとき';
 	@override String get enableSyncThemesBetweenDevices => 'デバイス間でインストールしたテーマを同期';
+	@override String get enablePullToRefresh => 'ひっぱって更新';
+	@override String get enablePullToRefresh_description => 'マウスでは、ホイールを押し込みながらドラッグします。';
 	@override late final _TranslationsMisskeySettingsChatJaJp chat_ = _TranslationsMisskeySettingsChatJaJp._(_root);
 }
 
@@ -1831,6 +1840,7 @@ class _TranslationsMisskeyPreferencesProfileJaJp extends TranslationsMisskeyPref
 	@override String get profileName => 'プロファイル名';
 	@override String get profileNameDescription => 'このデバイスを識別する名前を設定してください。';
 	@override String get profileNameDescription2 => '例: 「メインPC」、「スマホ」など';
+	@override String get manageProfiles => 'プロファイルの管理';
 }
 
 // Path: misskey.preferencesBackup_
@@ -2024,6 +2034,8 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get openRegistration => 'アカウントの作成をオープンにする';
 	@override String get openRegistrationWarning => '登録を開放することはリスクが伴います。サーバーを常に監視し、トラブルが発生した際にすぐに対応できる体制がある場合のみオンにすることを推奨します。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターのアクティビティが検出されなかった場合、スパム防止のためこの設定は自動でオフになります。';
+	@override String get deliverSuspendedSoftware => '配信停止中のソフトウェア';
+	@override String get deliverSuspendedSoftwareDescription => '脆弱性などの理由で、サーバーのソフトウェアの名前及びバージョンの範囲を指定して配信を停止できます。このバージョン情報はサーバーが提供したものであり、信頼性は保証されません。バージョン指定には semver の範囲指定が使用できますが、>= 2024.3.1 と指定すると 2024.3.1-custom.0 のようなカスタムバージョンが含まれないため、>= 2024.3.1-0 のように prerelease の指定を行うことを推奨します。';
 }
 
 // Path: misskey.accountMigration_
@@ -2734,6 +2746,7 @@ class _TranslationsMisskeyWidgetsJaJp extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListJaJp userList_ = _TranslationsMisskeyWidgetsUserListJaJp._(_root);
 	@override String get clicker => 'クリッカー';
 	@override String get birthdayFollowings => '今日誕生日のユーザー';
+	@override String get chat => 'チャット';
 }
 
 // Path: misskey.cw_
@@ -3546,6 +3559,7 @@ class _TranslationsMisskeyDeliveryTypeJaJp extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => '手動停止中';
 	@override String get goneSuspended => 'サーバー削除のため停止中';
 	@override String get autoSuspendedForNotResponding => 'サーバー応答なしのため停止中';
+	@override String get softwareSuspended => '配信停止中のソフトウェアであるため停止中';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3791,6 +3805,7 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => 'カスタム絵文字の管理';
 	@override String get canManageAvatarDecorations => 'アバターデコレーションの管理';
 	@override String get driveCapacity => 'ドライブ容量';
+	@override String get maxFileSize => 'アップロード可能な最大ファイルサイズ';
 	@override String get alwaysMarkNsfw => 'ファイルにNSFWを常に付与';
 	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートのピン留めの最大数';
@@ -4007,6 +4022,7 @@ class _TranslationsMisskeyDeckColumnsJaJp extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'あなた宛て';
 	@override String get direct => 'ダイレクト';
 	@override String get roleTimeline => 'ロールタイムライン';
+	@override String get chat => 'チャット';
 }
 
 // Path: misskey.webhookSettings_.events_

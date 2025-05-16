@@ -287,7 +287,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Редагувати обліковий запис';
 	@override String get noteDeleteConfirm => 'Ви дійсно хочете видалити цей запис?';
 	@override String get pinLimitExceeded => 'Більше записів не можна закріпити';
-	@override String get intro => 'Встановлення Misskey завершено! Будь ласка, створіть обліковий запис адміністратора.';
 	@override String get done => 'Готово';
 	@override String get processing => 'Обробка';
 	@override String get preview => 'Попередній перегляд';
@@ -760,7 +759,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Розробник';
 	@override String get makeExplorable => 'Зробіть обліковий запис видимим у розділі "Огляд"';
 	@override String get makeExplorableDescription => 'Вимкніть, щоб обліковий запис не показувався у розділі "Огляд".';
-	@override String get showGapBetweenNotesInTimeline => 'Показувати розрив між записами у стрічці новин';
 	@override String get duplicate => 'Дублікат';
 	@override String get left => 'Лівий';
 	@override String get center => 'Центр';

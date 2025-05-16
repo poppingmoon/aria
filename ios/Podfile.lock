@@ -46,8 +46,6 @@ PODS:
   - SDWebImageWebPCoder (0.14.6):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.17)
-  - wakelock_plus (0.0.1):
-    - Flutter
   - webcrypto (0.1.1):
     - Flutter
     - FlutterMacOS
@@ -62,7 +60,6 @@ DEPENDENCIES:
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
   - receive_sharing_intent (from `.symlinks/plugins/receive_sharing_intent/ios`)
   - rust_lib_aria (from `.symlinks/plugins/rust_lib_aria/ios`)
-  - wakelock_plus (from `.symlinks/plugins/wakelock_plus/ios`)
   - webcrypto (from `.symlinks/plugins/webcrypto/darwin`)
 
 SPEC REPOS:
@@ -92,8 +89,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/receive_sharing_intent/ios"
   rust_lib_aria:
     :path: ".symlinks/plugins/rust_lib_aria/ios"
-  wakelock_plus:
-    :path: ".symlinks/plugins/wakelock_plus/ios"
   webcrypto:
     :path: ".symlinks/plugins/webcrypto/darwin"
 
@@ -112,7 +107,6 @@ SPEC CHECKSUMS:
   rust_lib_aria: 0c3df7954648e308ecb56b46643d21fedce9a23d
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
-  wakelock_plus: 373cfe59b235a6dd5837d0fb88791d2f13a90d56
   webcrypto: aa788ff6b0a956e5d6e613b35b99c13e220ca2d0
 
 PODFILE CHECKSUM: b4f6a2524c570f4064b4baab0c402e22ad4981d6

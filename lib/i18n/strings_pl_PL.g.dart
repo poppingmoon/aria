@@ -310,7 +310,6 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Edytuj profil';
 	@override String get noteDeleteConfirm => 'Czy na pewno chcesz usunąć ten wpis?';
 	@override String get pinLimitExceeded => 'Nie możesz przypiąć więcej wpisów.';
-	@override String get intro => 'Zakończono instalację Misskey! Utwórz konto administratora.';
 	@override String get done => 'Gotowe';
 	@override String get processing => 'Przetwarzanie';
 	@override String get preview => 'Podgląd';
@@ -829,7 +828,6 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Programista';
 	@override String get makeExplorable => 'Pokazuj konto na stronie „Eksploruj”';
 	@override String get makeExplorableDescription => 'Jeżeli wyłączysz tę opcję, Twoje konto nie będzie wyświetlać się w sekcji „Eksploruj”.';
-	@override String get showGapBetweenNotesInTimeline => 'Pokazuj odstęp między wpisami na osi czasu.';
 	@override String get duplicate => 'Duplikuj';
 	@override String get left => 'Lewo';
 	@override String get center => 'Wyśsrodkuj';

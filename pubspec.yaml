@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.0.3+61
+version: 1.1.0+62
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
@@ -9,21 +9,21 @@ environment:
 dependencies:
   aho_corasick: ^2.0.0
   async: ^2.12.0
-  audio_service: ^0.18.17
+  audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
   characters: ^1.4.0
-  chewie: ^1.11.1
+  chewie: ^1.11.3
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
-  connectivity_plus: ^6.1.3
+  connectivity_plus: ^6.1.4
   dio: ^5.8.0+1
   dotted_border: ^2.1.0
-  extended_image: ^10.0.0
+  extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker: ^10.0.0
-  flex_color_picker: ^3.7.0
+  file_picker: ^10.1.9
+  flex_color_picker: ^3.7.1
   flutter:
     sdk: flutter
   flutter_apns_only:
@@ -31,7 +31,7 @@ dependencies:
       url: https://github.com/poppingmoon/flutter-apns
       ref: 1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb
       path: flutter_apns_only
-  flutter_blurhash: ^0.8.2
+  flutter_blurhash: ^0.9.1
   flutter_cache_manager: ^3.4.1
   flutter_highlighting:
     git:
@@ -43,18 +43,18 @@ dependencies:
   flutter_image_compress: ^2.4.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^19.0.0
+  flutter_local_notifications: ^19.2.0
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.3
   flutter_rust_bridge: ^2.9.0
   flutter_secure_storage: ^9.2.4
-  flutter_svg: ^2.0.17
+  flutter_svg: ^2.1.0
   fluttertoast: ^8.2.12
   freezed_annotation: ^3.0.0
   gal: ^2.3.1
   gal_linux: ^0.1.2
-  go_router: ^14.8.1
+  go_router: ^15.1.2
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -70,22 +70,22 @@ dependencies:
   intl: ^0.19.0
   json5: ^0.8.2
   json_annotation: ^4.9.0
-  just_audio: ^0.9.46
+  just_audio: ^0.10.2
   kana_kit: ^2.1.1
   material_off_icons:
     git:
       url: https://github.com/poppingmoon/material_off_icons
       ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
-  material_symbols_icons: ^4.2811.0
+  material_symbols_icons: ^4.2815.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 9ccc6080f1e2b7eb3c16aa44879485489bccf46f
+      ref: 5ab5354321cea91d895048cdf34fb34a8bf988ad
   mime: ^2.0.0
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: ad65354c55b34d682f92fc8ccc796c23b72b76b3
+      ref: d081328f0ba7d4b97b5e820b8612dae065bad395
   multi_split_view: ^3.6.0
   package_info_plus: ^8.3.0
   path: ^1.9.1
@@ -101,12 +101,12 @@ dependencies:
   riverpod_annotation: ^2.6.1
   rust_lib_aria:
     path: rust_builder
-  searchfield: ^1.2.6
-  share_plus: ^10.1.4
+  searchfield: ^1.3.0
+  share_plus: ^11.0.0
   shared_preferences: ^2.5.3
   shared_preferences_platform_interface: ^2.4.1
-  slang: ^4.6.0
-  slang_flutter: ^4.6.0
+  slang: ^4.7.1
+  slang_flutter: ^4.7.0
   tinycolor2:
     git:
       url: https://github.com/poppingmoon/tinycolor2
@@ -115,14 +115,14 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
       ref: 05d864e84b6d6028d457ee9b03f61836a4c1f316
-  unifiedpush: ^6.0.0-rc3
+  unifiedpush: ^6.0.1
   unifiedpush_ui: ^0.1.0
   url_launcher: ^6.3.1
   uuid: ^4.5.1
   vector_math: ^2.1.4
   video_player: ^2.9.5
-  wakelock_plus: ^1.2.11
-  web_socket_channel: ^3.0.2
+  wakelock_plus: ^1.3.2
+  web_socket_channel: ^3.0.3
   webpush_encryption: ^1.0.0-rc1
   window_manager: ^0.4.3
 
@@ -133,16 +133,16 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.3
   flutter_test:
     sdk: flutter
-  freezed: ^3.0.4
+  freezed: ^3.0.6
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
-  json_serializable: ^6.9.4
+  json_serializable: ^6.9.5
   lint: ^2.8.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5
-  slang_build_runner: ^4.6.0
+  slang_build_runner: ^4.7.0
   url_launcher_platform_interface: ^2.3.2
   yaml: ^3.1.3
 
@@ -150,13 +150,8 @@ dependency_overrides:
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
-      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
+      ref: 2e966e96560daa02c4a550129dd9d8d4e29f26c8
       path: unifiedpush_android
-  unifiedpush_linux:
-    git:
-      url: https://github.com/poppingmoon/flutter-connector
-      ref: 125e1130350cb2dc0799f89b7be10ea6ee854b7e
-      path: unifiedpush_linux
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart

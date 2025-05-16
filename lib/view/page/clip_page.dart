@@ -84,7 +84,8 @@ class ClipPage extends HookConsumerWidget {
                   ),
                   if (clip?.isPublic ?? false)
                     PopupMenuItem(
-                      onTap: () => Share.shareUri(url),
+                      onTap:
+                          () => SharePlus.instance.share(ShareParams(uri: url)),
                       child: Text(t.misskey.share),
                     ),
                   if (myClip != null) ...[

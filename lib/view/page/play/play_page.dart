@@ -71,7 +71,10 @@ class PlayPage extends HookConsumerWidget {
                     child: Text(t.aria.openInBrowser),
                   ),
                   PopupMenuItem(
-                    onTap: () => Share.share('${play.valueOrNull?.title} $url'),
+                    onTap:
+                        () => SharePlus.instance.share(
+                          ShareParams(text: '${play.valueOrNull?.title} $url'),
+                        ),
                     child: Text(t.misskey.share),
                   ),
                   if (!account.value.isGuest &&

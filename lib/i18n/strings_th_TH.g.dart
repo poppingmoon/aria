@@ -88,6 +88,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} เป็นหนึ่งในเซิร์ฟเวอร์ของแพลตฟอร์มโอเพ่นซอร์ส <b>Misskey</b>';
 	@override String monthAndDay({required Object month, required Object day}) => '${month}/${day}';
 	@override String get search => 'ค้นหา';
+	@override String get reset => 'รีเซ็ต';
 	@override String get notifications => 'เเจ้งเตือน';
 	@override String get username => 'ชื่อผู้ใช้';
 	@override String get password => 'รหัสผ่าน';
@@ -131,6 +132,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'เลิกปักหมุด';
 	@override String get copyContent => 'คัดลอกเนื้อหา';
 	@override String get copyLink => 'คัดลอกลิงก์';
+	@override String get copyRemoteLink => 'คัดลอกลิงค์ระยะไกล';
 	@override String get copyLinkRenote => 'คัดลอกลิงก์รีโน้ต';
 	@override String get delete => 'ลบ';
 	@override String get deleteAndEdit => 'ลบและแก้ไข';
@@ -331,7 +333,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'แก้ไขโปรไฟล์';
 	@override String get noteDeleteConfirm => 'ต้องการลบโน้ตนี้ใช่ไหม?';
 	@override String get pinLimitExceeded => 'คุณไม่สามารถปักหมุดโน้ตเพิ่มเติมใดๆได้อีก';
-	@override String get intro => 'การติดตั้ง Misskey เสร็จสิ้นแล้วนะ! โปรดสร้างผู้ใช้งานที่เป็นผู้ดูแลระบบ';
 	@override String get done => 'เสร็จสิ้น';
 	@override String get processing => 'กำลังประมวลผล...';
 	@override String get preview => 'แสดงตัวอย่าง';
@@ -763,10 +764,12 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get testEmail => 'ทดสอบการส่งอีเมล';
 	@override String get wordMute => 'ปิดเสียงคำ';
 	@override String get hardWordMute => 'ปิดเสียงคำแบบแข็งโป๊ก';
+	@override String get hardWordMuteDescription => 'ซ่อนหมายเหตุที่มีวลีที่ระบุ ต่างจากการปิดเสียงคำ โน้ตต่างๆ จะถูกซ่อนไว้อย่างสมบูรณ์';
 	@override String get regexpError => 'เกิดข้อผิดพลาดใน regular expression';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'เกิดข้อผิดพลาดใน regular expression บรรทัดที่ ${line} ของการปิดเสียงคำ ${tab} :';
 	@override String get instanceMute => 'ปิดเสียงเซิร์ฟเวอร์';
 	@override String userSaysSomething({required Object name}) => '${name} พูดอะไรบางอย่าง';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} พูดอะไรบางอย่างเกี่ยวกับ "${word}"';
 	@override String get makeActive => 'เปิดใช้งาน';
 	@override String get display => 'แสดงผล';
 	@override String get copy => 'คัดลอก';
@@ -857,7 +860,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get developer => 'สำหรับนักพัฒนา';
 	@override String get makeExplorable => 'ทำให้บัญชีมองเห็นใน “สำรวจ”';
 	@override String get makeExplorableDescription => 'ถ้าหากคุณปิดการทำงานนี้ บัญชีของคุณนั้นจะไม่แสดงในส่วน “สำรวจ”';
-	@override String get showGapBetweenNotesInTimeline => 'แสดงช่องว่างระหว่างโพสต์บนไทม์ไลน์';
 	@override String get duplicate => 'ทำซ้ำ';
 	@override String get left => 'ซ้าย';
 	@override String get center => 'กึ่งกลาง';
@@ -1306,7 +1308,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'ปล่อยเพื่อรีเฟรช';
 	@override String get refreshing => 'กำลังรีเฟรช...';
 	@override String get pullDownToRefresh => 'ดึงลงเพื่อรีเฟรช';
-	@override String get disableStreamingTimeline => 'ปิดใช้งานอัปเดตไทม์ไลน์แบบเรียลไทม์';
 	@override String get useGroupedNotifications => 'แสดงผลการแจ้งเตือนแบบกลุ่มแล้ว';
 	@override String get signupPendingError => 'มีปัญหาในการตรวจสอบที่อยู่อีเมลลิงก์อาจหมดอายุแล้ว';
 	@override String get cwNotationRequired => 'หากเปิดใช้งาน “ซ่อนเนื้อหา” จะต้องระบุคำอธิบาย';
@@ -1371,10 +1372,17 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get prohibitedWordsForNameOfUserDescription => 'หากมีสตริงใดๆ ในรายการนี้ปรากฏอยู่ในชื่อของผู้ใช้ ชื่อนั้นจะถูกปฏิเสธ ผู้ใช้ที่มีสิทธิ์แต่ผู้ดูแลระบบนั้นจะไม่ได้รับผลกระทบใดๆจากข้อจำกัดนี้ค่ะ';
 	@override String get yourNameContainsProhibitedWords => 'ชื่อของคุณนั้นมีคำที่ต้องห้าม';
 	@override String get yourNameContainsProhibitedWordsDescription => 'ถ้าหากคุณต้องการใช้ชื่อนี้ กรุณาติดต่อผู้ดูแลระบบของเซิร์ฟเวอร์นะค่ะ';
+	@override String get federationDisabled => 'เซิร์ฟเวอร์นี้ปิดการใช้งานการรวมกลุ่ม คุณไม่สามารถโต้ตอบกับผู้ใช้บนเซิร์ฟเวอร์อื่นได้';
+	@override String reactAreYouSure({required Object emoji}) => 'คุณต้องการที่จะตอบสนองต่อ " ${emoji}" หรือไม่?';
+	@override String get markAsSensitiveConfirm => 'คุณต้องการทำเครื่องหมายสื่อนี้ว่าละเอียดอ่อนหรือไม่?';
+	@override String get unmarkAsSensitiveConfirm => 'คุณต้องการลบการกำหนดความไวของสื่อนี้หรือไม่?';
 	@override String get postForm => 'แบบฟอร์มการโพสต์';
 	@override String get information => 'เกี่ยวกับ';
+	@override String get right => 'ขวา';
+	@override String get bottom => 'ภายใต้';
 	@override late final _TranslationsMisskeyChatThTh chat_ = _TranslationsMisskeyChatThTh._(_root);
 	@override late final _TranslationsMisskeySettingsThTh settings_ = _TranslationsMisskeySettingsThTh._(_root);
+	@override late final _TranslationsMisskeyAccountSettingsThTh accountSettings_ = _TranslationsMisskeyAccountSettingsThTh._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportThTh abuseUserReport_ = _TranslationsMisskeyAbuseUserReportThTh._(_root);
 	@override late final _TranslationsMisskeyDeliveryThTh delivery_ = _TranslationsMisskeyDeliveryThTh._(_root);
 	@override late final _TranslationsMisskeyBubbleGameThTh bubbleGame_ = _TranslationsMisskeyBubbleGameThTh._(_root);
@@ -1475,6 +1483,19 @@ class _TranslationsMisskeySettingsThTh extends TranslationsMisskeySettingsEnUs {
 
 	// Translations
 	@override String get webhook => 'Webhook';
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsThTh extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'ต้องเข้าสู่ระบบเพื่อดูเนื้อหา';
+	@override String get requireSigninToViewContentsDescription1 => 'ต้องเข้าสู่ระบบเพื่อดูบันทึกและเนื้อหาอื่น ๆ ทั้งหมดที่คุณสร้าง คาดว่าจะมีประสิทธิผลในการป้องกันไม่ให้ข้อมูลถูกเก็บรวบรวมโดยโปรแกรมรวบรวมข้อมูล';
+	@override String get requireSigninToViewContentsDescription2 => 'นอกจากนี้ จะไม่สามารถดูจากเซิร์ฟเวอร์ที่ไม่รองรับการดูตัวอย่าง URL (OGP), การฝังในหน้าเว็บ หรือการอ้างอิงหมายเหตุได้';
+	@override String get requireSigninToViewContentsDescription3 => 'เนื้อหาที่ถูกรวมเข้ากับเซิร์ฟเวอร์ระยะไกลอาจไม่อยู่ภายใต้ข้อจำกัดเหล่านี้';
 }
 
 // Path: misskey.abuseUserReport_

@@ -305,6 +305,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'Silenciar els arxius d\'aquesta instància ';
 	@override String get operations => 'Accions';
 	@override String get software => 'Programari';
+	@override String get softwareName => 'Nom del programari';
 	@override String get version => 'Versió';
 	@override String get metadata => 'Metadades';
 	@override String withNFiles({required Object n}) => '${n} fitxer(s)';
@@ -335,7 +336,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Edita el perfil';
 	@override String get noteDeleteConfirm => 'Segur que voleu eliminar aquesta publicació?';
 	@override String get pinLimitExceeded => 'No podeu fixar més publicacions';
-	@override String get intro => 'La instal·lació de Misskey ha acabat! Crea un usuari d\'administrador.';
 	@override String get done => 'Fet';
 	@override String get processing => 'S\'està processant...';
 	@override String get preview => 'Vista prèvia';
@@ -365,7 +365,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get usernameOrUserId => 'Nom o ID d\'usuari';
 	@override String get noSuchUser => 'No s\'ha trobat l\'usuari';
 	@override String get lookup => 'Cerca';
-	@override String get announcements => 'Anuncis';
+	@override String get announcements => 'Avisos';
 	@override String get imageUrl => 'URL de la imatge';
 	@override String get remove => 'Eliminar';
 	@override String get removed => 'Eliminat';
@@ -441,7 +441,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get displayOfSensitiveMedia => 'Visualització de contingut sensible';
 	@override String get whenServerDisconnected => 'Quan es perdi la connexió al servidor';
 	@override String get disconnectedFromServer => 'Desconnectat pel servidor';
-	@override String get reload => 'Actualitza';
+	@override String get reload => 'Actualitzar';
 	@override String get doNothing => 'Ignora';
 	@override String get reloadConfirm => 'Vols recarregar?';
 	@override String get watch => 'Veure';
@@ -793,7 +793,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get notificationSettingDesc => 'Selecciona els tipus de notificacions que es mostraran';
 	@override String get useGlobalSetting => 'Fer servir la configuració global';
 	@override String get useGlobalSettingDesc => 'Si s\'activa, es farà servir la configuració de notificacions del teu comte. Si no s\'activa es poden fer configuracions individuals.';
-	@override String get other => 'Altre';
+	@override String get other => 'Altres';
 	@override String get regenerateLoginToken => 'Regenerar clau de seguretat d\'inici de sessió';
 	@override String get regenerateLoginTokenDescription => 'Regenera la clau de seguretat que es fa servir internament durant l\'inici de sessió. Normalment aquesta acció no és necessària. Si es regenera es tancarà la sessió a tots els dispositius amb una sessió activa.';
 	@override String get theKeywordWhenSearchingForCustomEmoji => 'Cercar un emoji personalitzat ';
@@ -869,7 +869,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Programador';
 	@override String get makeExplorable => 'Fes que el compte sigui visible a la secció "Explorar"';
 	@override String get makeExplorableDescription => 'Si desactives aquesta opció, el teu compte no sortirà a la secció "Explorar"';
-	@override String get showGapBetweenNotesInTimeline => 'Notes separades a la línia de temps';
 	@override String get duplicate => 'Duplicat';
 	@override String get left => 'Esquerra';
 	@override String get center => 'Centre';
@@ -956,7 +955,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get recentPosts => 'Articles recents';
 	@override String get popularPosts => 'Articles populars';
 	@override String get shareWithNote => 'Comparteix amb una nota';
-	@override String get ads => 'Anuncis';
+	@override String get ads => 'Publicitat ';
 	@override String get expiration => '';
 	@override String get startingperiod => 'Inici';
 	@override String get memo => 'Recordatori';
@@ -1064,6 +1063,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'Nombre de pàgines a la memòria cau';
 	@override String get numberOfPageCacheDescription => 'Incrementant aquest nombre farà que millori l\'experiència de l\'usuari, però es farà servir més memòria al dispositiu de l\'usuari.';
 	@override String get logoutConfirm => 'Vols sortir?';
+	@override String get logoutWillClearClientData => 'En tancar la sessió, la informació del client al navegador s\'esborrarà. Per garantir que la informació de configuració es pugui restaurar en tornar a iniciar sessió activa la còpia de seguretat automàtica de la configuració.';
 	@override String get lastActiveDate => 'Fet servir per última vegada';
 	@override String get statusbar => 'Barra d\'estat';
 	@override String get pleaseSelect => 'Selecciona una opció';
@@ -1194,7 +1194,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get accountMoved => 'Aquest usuari té un compte nou:';
 	@override String get accountMovedShort => 'Aquest compte ha sigut migrat';
 	@override String get operationForbidden => 'Operació no permesa ';
-	@override String get forceShowAds => 'Mostra els anuncis sempre ';
+	@override String get forceShowAds => 'Mostrar publicitat sempre ';
 	@override String get addMemo => 'Afegir recordatori';
 	@override String get editMemo => 'Editar recordatori';
 	@override String get reactionsList => 'Reaccions';
@@ -1269,8 +1269,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get dialog => 'Diàleg ';
 	@override String get icon => 'Icona';
 	@override String get forYou => 'Per a tu';
-	@override String get currentAnnouncements => 'Informes actuals';
-	@override String get pastAnnouncements => 'Informes passats';
+	@override String get currentAnnouncements => 'Avisos actuals';
+	@override String get pastAnnouncements => 'Avisos passats';
 	@override String get youHaveUnreadAnnouncements => 'Tens informes per llegir.';
 	@override String get useSecurityKey => 'Segueix les instruccions del teu navegador O dispositiu per fer servir el teu passkey.';
 	@override String get replies => 'Respostes';
@@ -1321,7 +1321,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Deixar anar per actualitzar';
 	@override String get refreshing => 'Recarregant...';
 	@override String get pullDownToRefresh => 'Llisca cap a baix per recarregar';
-	@override String get disableStreamingTimeline => 'Desactivar l\'actualització en temps real de les línies de temps';
 	@override String get useGroupedNotifications => 'Mostrar les notificacions agrupades ';
 	@override String get signupPendingError => 'Hi ha hagut un problema verificant l\'adreça de correu electrònic. L\'enllaç pot haver caducat.';
 	@override String get cwNotationRequired => 'Si està activat "Amagar contingut" s\'ha d\'escriure una descripció ';
@@ -1419,16 +1418,19 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'Nombre de caràcters ';
 	@override String get information => 'Informació';
 	@override String get chat => 'Xat';
-	@override String get migrateOldSettings => 'Migració de la configuració antiga ';
+	@override String get migrateOldSettings => 'Migrar la configuració anterior';
 	@override String get migrateOldSettings_description => 'Normalment això es fa automàticament, però si la transició no es fa, el procés es pot iniciar manualment. S\'esborrarà la configuració actual.';
 	@override String get compress => 'Comprimir ';
 	@override String get right => 'Dreta';
 	@override String get bottom => 'A baix ';
 	@override String get top => 'A dalt ';
 	@override String get embed => 'Incrustar';
-	@override String get settingsMigrating => 'Estem fent la migració de la teva configuració. Si us plau espera un moment... (També pots fer la migració més tard i manualment anant a Preferències → Altres configuracions → Migrar configuració antiga)';
+	@override String get settingsMigrating => 'Estem migrant la teva configuració. Si us plau espera un moment... (També pots fer la migració més tard, manualment, anant a Preferències → Altres → Migrar configuració antiga)';
 	@override String get readonly => 'Només lectura';
 	@override String get goToDeck => 'Tornar al tauler';
+	@override String get federationJobs => 'Treballs sindicats ';
+	@override String get driveAboutTip => 'Al Disc veure\'s una llista de tots els arxius que has anat pujant.<br>\nPots tornar-los a fer servir adjuntant-los a notes noves o pots adelantar-te i pujar arxius per publicar-los més tard!<br>\n<b>Tingués en compte que si esborres un arxiu també desapareixerà de tots els llocs on l\'has fet servir (notes, pàgines, avatars, imatges de capçalera, etc.)</b><br>\nTambé pots crear carpetes per organitzar les.';
+	@override String get scrollToClose => 'Desplaçar per tancar';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1541,7 +1543,7 @@ class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
 	@override String get noInvitations => 'No tens cap invitació ';
 	@override String get history => 'Historial de converses ';
 	@override String get noHistory => 'No hi ha un registre previ';
-	@override String get noRooms => 'No hi ha habitacions';
+	@override String get noRooms => 'No hi ha cap sala';
 	@override String get inviteUser => 'Invitar usuaris';
 	@override String get sentInvitations => 'Enviar invitacions';
 	@override String get join => 'Afegir-se ';
@@ -1610,9 +1612,11 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get makeEveryTextElementsSelectable_description => 'L\'activació pot reduir la usabilitat en determinades ocasions.';
 	@override String get useStickyIcons => 'Utilitza icones fixes';
 	@override String get showNavbarSubButtons => 'Mostrar sub botons a la barra de navegació ';
-	@override String get ifOn => 'Quan s\'encén ';
-	@override String get ifOff => 'Quan s\'apaga ';
+	@override String get ifOn => 'Quan s\'activa';
+	@override String get ifOff => 'Quan es desactiva';
 	@override String get enableSyncThemesBetweenDevices => 'Sincronitzar els temes instal·lats entre dispositius';
+	@override String get enablePullToRefresh => 'Lliscar i actualitzar ';
+	@override String get enablePullToRefresh_description => 'Amb el ratolí, llisca mentre prems la roda.';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -1626,6 +1630,7 @@ class _TranslationsMisskeyPreferencesProfileCaEs extends TranslationsMisskeyPref
 	@override String get profileName => 'Nom del perfil';
 	@override String get profileNameDescription => 'Estableix un nom que identifiqui aquest dispositiu.';
 	@override String get profileNameDescription2 => 'Per exemple: "PC Principal", "Smartphone", etc';
+	@override String get manageProfiles => 'Gestionar perfils';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1719,7 +1724,7 @@ class _TranslationsMisskeyAnnouncementCaEs extends TranslationsMisskeyAnnounceme
 	@override String get needConfirmationToRead => 'Es necessita confirmació de lectura de la notificació ';
 	@override String get needConfirmationToReadDescription => 'Si s\'activa es mostrarà un diàleg per confirmar la lectura d\'aquesta notificació. A més aquesta notificació serà exclosa de qualsevol funcionalitat com "Marcar tot com a llegit".';
 	@override String get end => 'Final de la notificació ';
-	@override String get tooManyActiveAnnouncementDescription => 'Tenir massa notificacions actives pot empitjorar l\'experiència de l\'usuari. Considera finalitzar els anuncis que siguin antics.';
+	@override String get tooManyActiveAnnouncementDescription => 'Tenir massa notificacions actives pot empitjorar l\'experiència de l\'usuari. Considera finalitzar els avisos que siguin antics.';
 	@override String get readConfirmTitle => 'Marcar com llegida?';
 	@override String readConfirmText({required Object title}) => 'Això marcarà el contingut de "${title}" com llegit.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Ja que l\'ús de notificacions pot impactar l\'experiència dels nous usuaris, és recomanable fer servir les notificacions amb el flux d\'informació en comptes de fer-les servir en un únic bloc.';
@@ -1819,6 +1824,8 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get openRegistration => 'Registres oberts';
 	@override String get openRegistrationWarning => 'Obrir els registres és arriscat. Es recomana obrir-los només si el servidor és monitorat constantment i per respondre immediatament davant qualsevol problema.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Si no es detecta activitat per part del moderador durant un període de temps, aquesta opció es desactiva automàticament per evitar el correu brossa.';
+	@override String get deliverSuspendedSoftware => 'Programari que ja no es distribueix';
+	@override String get deliverSuspendedSoftwareDescription => 'Pots especificar un rang de noms i versions del programari del servidor per detenir l\'entrega, per exemple, degut a vulnerabilitats. Aquesta informació la proporciona el servidor i la seva fiabilitat no es garantitzada. Es pot fer servir una especificació de rang sencer per especificar una versió, però es recomana especificar una versió anterior, com >= 2024.3.1-0, perquè especificar  >= 2024.3.1 no incloure versions personalitzades com 2024.3.1-custom.0.';
 }
 
 // Path: misskey.accountMigration_
@@ -1835,7 +1842,7 @@ class _TranslationsMisskeyAccountMigrationCaEs extends TranslationsMisskeyAccoun
 	@override String get moveTo => 'Migrar aquest compte a un altre';
 	@override String get moveToLabel => 'Compte al qual es vol migrar:';
 	@override String get moveCannotBeUndone => 'Les migracions dels comptes no es poden desfer.';
-	@override String get moveAccountDescription => 'Això migrarà la teva compte a un altre diferent.\n　・Els seguidors d\'aquest compte és passaran al compte nou de forma automàtica\n　・Es deixaran de seguir a tots els usuaris que es segueixen actualment en aquest compte\n　・No es poden crear notes noves, etc. en aquest compte\n\nSi bé la migració de seguidors es automàtica, has de preparar alguns pasos manualment per migrar la llista d\'usuaris que segueixes. Per fer això has d\'exportar els seguidors que després importaraes al compte nou mitjançant el menú de configuració. El mateix procediment s\'ha de seguir per less teves llistes i els teus usuaris silenciats i bloquejats.\n\n(Aquesta explicació s\'aplica a Misskey v13.12.0 i posteriors. Altres aplicacions, com Mastodon, poden funcionar diferent.)';
+	@override String get moveAccountDescription => 'Això migrarà el teu compte a un altre diferent.\n　・Els seguidors d\'aquest compte és passaran al compte nou de forma automàtica\n　・Es deixaran de seguir a tots els usuaris que es segueixen actualment en aquest compte\n　・No es poden crear notes noves, etc. en aquest compte\n\nSi bé la migració de seguidors es automàtica, has de preparar alguns pasos manualment per migrar la llista d\'usuaris que segueixes. Per fer això has d\'exportar els seguidors que després importaraes al compte nou mitjançant el menú de configuració. El mateix procediment s\'ha de seguir per less teves llistes i els teus usuaris silenciats i bloquejats.\n\n(Aquesta explicació s\'aplica a Misskey v13.12.0 i posteriors. Altres aplicacions, com Mastodon, poden funcionar diferent.)';
 	@override String get moveAccountHowTo => 'Per fer la migració, primer has de crear un àlies per aquest compte al compte al qual vols migrar.\nDesprés de crear l\'àlies, introdueix el compte al qual vols migrar amb el format següent: @nomusuari@servidor.exemple.com';
 	@override String get startMigration => 'Migrar';
 	@override String migrationConfirm({required Object account}) => 'Vols migrar aquest compte a ${account}? Una vegada comenci la migració no es podrà parar O fer marxa enrere i no podràs tornar a fer servir aquest compte mai més.';
@@ -1981,8 +1988,8 @@ class _TranslationsMisskeyAdCaEs extends TranslationsMisskeyAdEnUs {
 	@override String get reduceFrequencyOfThisAd => 'Mostrar menys aquest anunci';
 	@override String get hide => 'No mostrar mai';
 	@override String get timezoneinfo => 'El dia de la setmana ve determinat del fus horari del servidor.';
-	@override String get adsSettings => 'Configuració d\'anuncis ';
-	@override String get notesPerOneAd => 'Interval d\'emplaçament d\'anuncis en temps real (Notes per anuncis)';
+	@override String get adsSettings => 'Configurar la publicitat';
+	@override String get notesPerOneAd => 'Interval d\'emplaçament publicitari en temps real (Notes per anuncis)';
 	@override String get setZeroToDisable => 'Ajusta aquest valor a 0 per deshabilitar l\'actualització d\'anuncis en temps real';
 	@override String get adsTooClose => 'L\'interval actual pot fer que l\'experiència de l\'usuari sigui dolenta perquè l\'interval és molt baix.';
 }
@@ -2529,6 +2536,7 @@ class _TranslationsMisskeyWidgetsCaEs extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListCaEs userList_ = _TranslationsMisskeyWidgetsUserListCaEs._(_root);
 	@override String get clicker => 'Clicker';
 	@override String get birthdayFollowings => 'Usuaris que fan l\'aniversari avui';
+	@override String get chat => 'Xat';
 }
 
 // Path: misskey.cw_
@@ -3325,6 +3333,7 @@ class _TranslationsMisskeyDeliveryTypeCaEs extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => 'Suspendre manualment';
 	@override String get goneSuspended => 'Servidor suspès perquè el servidor s\'ha esborrat';
 	@override String get autoSuspendedForNotResponding => 'Servidor suspès perquè el servidor no respon';
+	@override String get softwareSuspended => 'Suspès perquè el programari ha deixat de desenvolupar-se ';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3570,6 +3579,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => 'Gestiona els emojis personalitzats';
 	@override String get canManageAvatarDecorations => 'Gestiona les decoracions dels avatars ';
 	@override String get driveCapacity => 'Capacitat del disc';
+	@override String get maxFileSize => 'Mida màxima de l\'arxiu que es pot carregar';
 	@override String get alwaysMarkNsfw => 'Marca sempre els fitxers com a sensibles';
 	@override String get canUpdateBioMedia => 'Permet l\'edició d\'una icona o un bàner';
 	@override String get pinMax => 'Nombre màxim de notes fixades';
@@ -3582,7 +3592,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get userEachUserListsMax => 'Nombre màxim d\'usuaris dintre d\'una llista d\'usuaris ';
 	@override String get rateLimitFactor => 'Limitador';
 	@override String get descriptionOfRateLimitFactor => 'Límits baixos són menys restrictius, límits alts són més restrictius.';
-	@override String get canHideAds => 'Pot amagar els anuncis';
+	@override String get canHideAds => 'Pot amagar la publicitat';
 	@override String get canSearchNotes => 'Pot cercar notes';
 	@override String get canUseTranslator => 'Pot fer servir el traductor';
 	@override String get avatarDecorationLimit => 'Nombre màxim de decoracions que es poden aplicar els avatars';
@@ -3786,6 +3796,7 @@ class _TranslationsMisskeyDeckColumnsCaEs extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Mencions';
 	@override String get direct => 'Publicacions directes';
 	@override String get roleTimeline => 'Línia de temps dels rols';
+	@override String get chat => 'Xat';
 }
 
 // Path: misskey.webhookSettings_.events_

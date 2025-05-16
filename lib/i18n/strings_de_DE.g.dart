@@ -304,6 +304,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'Medien dieses Servers stummschalten';
 	@override String get operations => 'Aktionen';
 	@override String get software => 'Software';
+	@override String get softwareName => 'Software Name';
 	@override String get version => 'Version';
 	@override String get metadata => 'Metadaten';
 	@override String withNFiles({required Object n}) => '${n} Datei(en)';
@@ -334,7 +335,6 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get editProfile => 'Profil bearbeiten';
 	@override String get noteDeleteConfirm => 'Möchtest du diese Notiz wirklich löschen?';
 	@override String get pinLimitExceeded => 'Du kannst nicht noch mehr Notizen anheften.';
-	@override String get intro => 'Misskey ist installiert! Lass uns nun ein Administratorkonto einrichten.';
 	@override String get done => 'Fertig';
 	@override String get processing => 'In Bearbeitung …';
 	@override String get preview => 'Vorschau';
@@ -868,7 +868,6 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Entwickler';
 	@override String get makeExplorable => 'Benutzerkonto in „Erkunden“ sichtbar machen';
 	@override String get makeExplorableDescription => 'Wenn diese Option deaktiviert ist, ist dein Benutzerkonto nicht im „Erkunden“-Bereich sichtbar.';
-	@override String get showGapBetweenNotesInTimeline => 'Abstände zwischen Notizen auf der Chronik anzeigen';
 	@override String get duplicate => 'Duplizieren';
 	@override String get left => 'Links';
 	@override String get center => 'Mittig';
@@ -1063,6 +1062,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get numberOfPageCache => 'Seitencachegröße';
 	@override String get numberOfPageCacheDescription => 'Das Erhöhen dieses Caches führt zu einer angenehmerern Benutzererfahrung, aber erhöht Last und Arbeitsspeicherauslastung auf dem Nutzergerät.';
 	@override String get logoutConfirm => 'Wirklich abmelden?';
+	@override String get logoutWillClearClientData => 'Beim Abmelden werden die Konfigurationsdaten des Clients aus dem Browser gelöscht. Um sicherzustellen, dass die Konfigurationsdaten beim erneuten Einloggen wiederhergestellt werden können, aktivieren Sie bitte die automatische Sicherung der Konfiguration.';
 	@override String get lastActiveDate => 'Zuletzt verwendet am';
 	@override String get statusbar => 'Statusleiste';
 	@override String get pleaseSelect => 'Wähle eine Option';
@@ -1320,7 +1320,6 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Zum Aktualisieren loslassen';
 	@override String get refreshing => 'Wird aktualisiert...';
 	@override String get pullDownToRefresh => 'Zum Aktualisieren ziehen';
-	@override String get disableStreamingTimeline => 'Echtzeitaktualisierung der Chronik deaktivieren';
 	@override String get useGroupedNotifications => 'Benachrichtigungen gruppieren';
 	@override String get signupPendingError => 'Beim Überprüfen der Mailadresse ist etwas schiefgelaufen. Der Link könnte abgelaufen sein.';
 	@override String get cwNotationRequired => 'Ist "Inhaltswarnung verwenden" aktiviert, muss eine Beschreibung gegeben werden.';
@@ -1428,6 +1427,9 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get settingsMigrating => 'Ihre Einstellungen werden gerade migriert, Bitte warten Sie einen Moment... (Sie können die Einstellungen später auch manuell migrieren, indem Sie zu Einstellungen → Sonstiges → Alte Einstellungen migrieren gehen)';
 	@override String get readonly => 'Nur Lesezugriff';
 	@override String get goToDeck => 'Zurück zum Deck';
+	@override String get federationJobs => 'Föderation Jobs';
+	@override String get driveAboutTip => 'In Drive sehen Sie eine Liste der Dateien, die Sie in der Vergangenheit hochgeladen haben. <br>\nSie können diese Dateien wiederverwenden um sie zu beispiel an Notizen anzuhängen, oder sie können Dateien vorab hochzuladen, um sie später zu versenden! <br>\n<b>Wenn Sie eine Datei löschen, verschwindet sie auch von allen Stellen, an denen Sie sie verwendet haben (Notizen, Seiten, Avatare, Banner usw.).</b><br>\nSie können auch Ordner erstellen, um sie zu organisieren.';
+	@override String get scrollToClose => 'Zum Schließen scrollen';
 	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
 	@override late final _TranslationsMisskeySettingsDeDe settings_ = _TranslationsMisskeySettingsDeDe._(_root);
@@ -1612,6 +1614,8 @@ class _TranslationsMisskeySettingsDeDe extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOn => 'Wenn eingeschaltet';
 	@override String get ifOff => 'Wenn ausgeschaltet';
 	@override String get enableSyncThemesBetweenDevices => 'Synchronisierung von installierten Themen auf verschiedenen Endgeräten';
+	@override String get enablePullToRefresh => 'Ziehen zum Aktualisieren';
+	@override String get enablePullToRefresh_description => 'Bei Benutzung einer Maus, mit gedrücktem Mausrad ziehen';
 	@override late final _TranslationsMisskeySettingsChatDeDe chat_ = _TranslationsMisskeySettingsChatDeDe._(_root);
 }
 
@@ -1625,6 +1629,7 @@ class _TranslationsMisskeyPreferencesProfileDeDe extends TranslationsMisskeyPref
 	@override String get profileName => 'Profilname';
 	@override String get profileNameDescription => 'Lege einen Namen fest, der dieses Gerät identifiziert.';
 	@override String get profileNameDescription2 => 'Beispiel: "Haupt-PC", "Smartphone"';
+	@override String get manageProfiles => 'Profile verwalten';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1818,6 +1823,8 @@ class _TranslationsMisskeyServerSettingsDeDe extends TranslationsMisskeyServerSe
 	@override String get openRegistration => 'Registrierung von Konten aktivieren';
 	@override String get openRegistrationWarning => 'Das Aktivieren von Registrierungen ist riskant. Es wird empfohlen, sie nur dann zu aktivieren, wenn der Server ständig überwacht wird und im Falle eines Problems sofort reagiert werden kann.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Wenn über einen bestimmten Zeitraum keine Moderatorenaktivität festgestellt wird, wird diese Einstellung automatisch deaktiviert, um Spam zu verhindern.';
+	@override String get deliverSuspendedSoftware => 'Software, die nicht mehr beliefert wird';
+	@override String get deliverSuspendedSoftwareDescription => 'Sie können eine Auswahl von Namen und Versionen verschiedener Serversoftware angeben, um die Zustellung zu stoppen, z. B. aufgrund von Sicherheitslücken. Diese Versionsinformationen werden vom Server bereitgestellt und ihre Zuverlässigkeit ist nicht garantiert. Es wird jedoch empfohlen, eine Vorabversion anzugeben, wie z. B. >= 2024.3.1-0, da die Angabe >= 2024.3.1 keine benutzerdefinierten Versionen wie 2024.3.1-custom.0 einschließt.';
 }
 
 // Path: misskey.accountMigration_
@@ -2528,6 +2535,7 @@ class _TranslationsMisskeyWidgetsDeDe extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListDeDe userList_ = _TranslationsMisskeyWidgetsUserListDeDe._(_root);
 	@override String get clicker => 'Klickzähler';
 	@override String get birthdayFollowings => 'Nutzer, die heute Geburtstag haben';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.cw_
@@ -3324,6 +3332,7 @@ class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTy
 	@override String get manuallySuspended => 'Manuell gesperrt';
 	@override String get goneSuspended => 'Gesperrt wegen Löschung des Servers';
 	@override String get autoSuspendedForNotResponding => 'Gesperrt, weil der Server nicht antwortet';
+	@override String get softwareSuspended => 'Ausgesetzt, weil die Software nicht mehr beliefert wird';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -3569,6 +3578,7 @@ class _TranslationsMisskeyRoleOptionsDeDe extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => 'Benutzerdefinierte Emojis verwalten';
 	@override String get canManageAvatarDecorations => 'Profilbilddekorationen verwalten';
 	@override String get driveCapacity => 'Drive-Kapazität';
+	@override String get maxFileSize => 'Maximale Dateigröße, die hochgeladen werden kann';
 	@override String get alwaysMarkNsfw => 'Dateien immer als NSFW markieren';
 	@override String get canUpdateBioMedia => 'Kann ein Profil- oder ein Bannerbild bearbeiten';
 	@override String get pinMax => 'Maximale Anzahl an angehefteten Notizen';
@@ -3785,6 +3795,7 @@ class _TranslationsMisskeyDeckColumnsDeDe extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Erwähnungen';
 	@override String get direct => 'Direktnachrichten';
 	@override String get roleTimeline => 'Rollenchronik';
+	@override String get chat => 'Chat';
 }
 
 // Path: misskey.webhookSettings_.events_

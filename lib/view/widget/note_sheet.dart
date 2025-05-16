@@ -272,9 +272,11 @@ class NoteSheet extends ConsumerWidget {
                 title: Text(t.misskey.share),
                 onTap: () {
                   if (appearNote.text != null) {
-                    Share.share('${appearNote.text} $url');
+                    SharePlus.instance.share(
+                      ShareParams(text: '${appearNote.text} $url'),
+                    );
                   } else {
-                    Share.shareUri(url);
+                    SharePlus.instance.share(ShareParams(uri: url));
                   }
                 },
               ),
