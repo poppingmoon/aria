@@ -32,7 +32,7 @@ deleteFilesConfirm:
   other: "ファイルが{n}個あるけどほかしてええか？"
 deleteTabConfirm: "このタブほかしてええか？"
 disableDataSaverWhenOnWifi: "Wi-Fi接続中はデータセーバーを止めとく"
-disableStreamingTimeline: "タイムラインのリアルタイム更新をやめるで"
+disableStreamingTimeline: "タイムラインをいちいち更新せんようにする"
 disableSubscribingNotes: "ツッコミをいちいち更新せんようにする"
 discardChangesConfirm: "変えんと戻ってええか？"
 displayOfThumbnail: "サムネイルの表示"
