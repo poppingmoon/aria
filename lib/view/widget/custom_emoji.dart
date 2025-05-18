@@ -69,7 +69,7 @@ class CustomEmoji extends ConsumerWidget {
           visible: !disableTooltip,
           child: Tooltip(
             message: emoji.replaceFirst('@.', ''),
-            child: Assets.misskey.packages.frontend.assets.dummy.image(
+            child: Assets.misskey.packages.frontend.assets.unknown.image(
               height: height,
               opacity: AlwaysStoppedAnimation(opacity),
               fit: fit,
