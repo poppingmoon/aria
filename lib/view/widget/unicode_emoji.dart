@@ -56,7 +56,7 @@ class UnicodeEmoji extends ConsumerWidget {
     if (muted) {
       return InkWell(
         onTap: onTap,
-        child: Assets.misskey.packages.frontend.assets.dummy.image(
+        child: Assets.misskey.packages.frontend.assets.unknown.image(
           height: style.lineHeight,
           opacity: AlwaysStoppedAnimation(style.color?.a ?? 1.0),
           fit: fit,

@@ -203,8 +203,13 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
   AssetGenImage get dummy =>
       const AssetGenImage('assets/misskey/packages/frontend/assets/dummy.png');
 
+  /// File path: assets/misskey/packages/frontend/assets/unknown.png
+  AssetGenImage get unknown => const AssetGenImage(
+    'assets/misskey/packages/frontend/assets/unknown.png',
+  );
+
   /// List of all assets
-  List<AssetGenImage> get values => [aboutIcon, dummy];
+  List<AssetGenImage> get values => [aboutIcon, dummy, unknown];
 }
 
 class Assets {
