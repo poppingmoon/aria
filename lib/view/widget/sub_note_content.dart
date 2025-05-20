@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
@@ -76,52 +77,10 @@ class SubNoteContent extends HookConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (parsed != null || note.replyId != null || note.renoteId != null)
-          Mfm(
+          _SubNoteMfm(
             account: account,
-            leadingSpans: [
-              if (note.replyId case final replyId?)
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(8.0),
-                    onTap: () => context.push('/$account/notes/$replyId'),
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(end: 4.0),
-                      child: Icon(
-                        Icons.reply,
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.primary.withValues(alpha: style.color?.a),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
             nodes: parsed,
-            trailingSpans: [
-              if (note.renoteId case final renoteId?)
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.middle,
-                  child: InkWell(
-                    onTap: () => context.push('/$account/notes/$renoteId'),
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 4.0),
-                      child: Text(
-                        'RN: ...',
-                        style: TextStyle(
-                          color: colors.renote,
-                          fontStyle: FontStyle.italic,
-                        ),
-                        textScaler: TextScaler.noScaling,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-            emojis: note.emojis,
-            author: note.user,
-            noteId: note.id,
-            nyaize: true,
+            note: note,
             maxLines: isCollapsed.value ? 10 : null,
           ),
         if (!isCollapsed.value) ...[
@@ -223,6 +182,75 @@ class SubNoteContent extends HookConsumerWidget {
             focusPostForm: focusPostForm,
           ),
       ],
+    );
+  }
+}
+
+class _SubNoteMfm extends ConsumerWidget {
+  const _SubNoteMfm({
+    required this.account,
+    required this.nodes,
+    required this.note,
+    this.maxLines,
+  });
+
+  final Account account;
+  final List<MfmNode>? nodes;
+  final Note note;
+  final int? maxLines;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final style = DefaultTextStyle.of(context).style;
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
+
+    return Mfm(
+      account: account,
+      leadingSpans: [
+        if (note.replyId case final replyId?)
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(8.0),
+              onTap: () => context.push('/$account/notes/$replyId'),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(end: 4.0),
+                child: Icon(
+                  Icons.reply,
+                  color: colors.accent.withValues(alpha: style.color?.a),
+                ),
+              ),
+            ),
+          ),
+      ],
+      nodes: nodes,
+      trailingSpans: [
+        if (note.renoteId case final renoteId?)
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: InkWell(
+              onTap: () => context.push('/$account/notes/$renoteId'),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(start: 4.0),
+                child: Text(
+                  'RN: ...',
+                  style: TextStyle(
+                    color: colors.renote,
+                    fontStyle: FontStyle.italic,
+                  ),
+                  textScaler: TextScaler.noScaling,
+                ),
+              ),
+            ),
+          ),
+      ],
+      emojis: note.emojis,
+      author: note.user,
+      noteId: note.id,
+      nyaize: true,
+      maxLines: maxLines,
     );
   }
 }

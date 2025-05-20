@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/note_extension.dart';
@@ -427,26 +428,10 @@ class _NoteContent extends HookConsumerWidget {
         ],
         if (appearNote.cw == null || showContent.value) ...[
           if (parsed != null || appearNote.replyId != null)
-            Mfm(
+            _NoteMfm(
               account: account,
-              leadingSpans: [
-                if (appearNote.replyId case final replyId?) ...[
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(8.0),
-                      onTap: () => context.push('/$account/notes/$replyId'),
-                      child: Icon(Icons.reply, color: colors.accent),
-                    ),
-                  ),
-                  const WidgetSpan(child: SizedBox(width: 4.0)),
-                ],
-              ],
               nodes: parsed,
-              emojis: appearNote.emojis,
-              author: appearNote.user,
-              noteId: appearNote.id,
-              nyaize: true,
+              note: appearNote,
               maxLines: isCollapsed.value ? 10 : null,
             ),
           const SizedBox(height: 4.0),
@@ -562,6 +547,48 @@ class _NoteContent extends HookConsumerWidget {
             focusPostForm: focusPostForm,
           ),
       ],
+    );
+  }
+}
+
+class _NoteMfm extends StatelessWidget {
+  const _NoteMfm({
+    required this.account,
+    required this.nodes,
+    required this.note,
+    this.maxLines,
+  });
+
+  final Account account;
+  final List<MfmNode>? nodes;
+  final Note note;
+  final int? maxLines;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Mfm(
+      account: account,
+      leadingSpans: [
+        if (note.replyId case final replyId?) ...[
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(8.0),
+              onTap: () => context.push('/$account/notes/$replyId'),
+              child: Icon(Icons.reply, color: theme.colorScheme.primary),
+            ),
+          ),
+          const WidgetSpan(child: SizedBox(width: 4.0)),
+        ],
+      ],
+      nodes: nodes,
+      emojis: note.emojis,
+      author: note.user,
+      noteId: note.id,
+      nyaize: true,
+      maxLines: maxLines,
     );
   }
 }
