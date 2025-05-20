@@ -27,6 +27,7 @@ class Code extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final input = code.replaceAll(RegExp(r'\r?\n$'), '');
     final languageId = allLanguages[language]?.id ?? 'javascript';
     final theme = switch (Theme.of(context).brightness) {
       Brightness.light => atelierCaveLightTheme,
@@ -47,7 +48,7 @@ class Code extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: HighlightView(
-                  code,
+                  input,
                   languageId: languageId,
                   theme: theme,
                   padding:
