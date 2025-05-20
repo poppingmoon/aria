@@ -15,7 +15,7 @@ import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_is_long_provider.dart';
+import '../../provider/note_collapse_reason_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
@@ -382,11 +382,11 @@ class _NoteContent extends HookConsumerWidget {
               : null,
       [parsed],
     );
-    final isLong =
-        appearNote.cw == null &&
-        !alwaysExpandLongNote &&
-        ref.watch(noteIsLongProvider(account, appearNote.id));
-    final isCollapsed = useState(appearNote.cw == null && isLong);
+    final collapseReason =
+        appearNote.cw == null && !alwaysExpandLongNote
+            ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
+            : null;
+    final isCollapsed = useState(collapseReason != null);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -428,12 +428,48 @@ class _NoteContent extends HookConsumerWidget {
         ],
         if (appearNote.cw == null || showContent.value) ...[
           if (parsed != null || appearNote.replyId != null)
-            _NoteMfm(
-              account: account,
-              nodes: parsed,
-              note: appearNote,
-              maxLines: isCollapsed.value ? 10 : null,
-            ),
+            if (collapseReason case CollapseReason.large)
+              ClipRect(
+                clipBehavior: isCollapsed.value ? Clip.antiAlias : Clip.none,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: double.infinity,
+                    maxHeight: isCollapsed.value ? 300.0 : double.infinity,
+                  ),
+                  child: ShaderMask(
+                    shaderCallback:
+                        (bounds) => LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white,
+                            Colors.white,
+                            Colors.white.withValues(alpha: 0.0),
+                          ],
+                          stops: [
+                            0.0,
+                            if (isCollapsed.value && bounds.height >= 300.0)
+                              0.9
+                            else
+                              1.0,
+                            1.0,
+                          ],
+                        ).createShader(bounds),
+                    child: _NoteMfm(
+                      account: account,
+                      nodes: parsed,
+                      note: appearNote,
+                    ),
+                  ),
+                ),
+              )
+            else
+              _NoteMfm(
+                account: account,
+                nodes: parsed,
+                note: appearNote,
+                maxLines: isCollapsed.value ? 10 : null,
+              ),
           const SizedBox(height: 4.0),
           if (!isCollapsed.value) ...[
             if (appearNote.files.isNotEmpty) ...[
@@ -474,7 +510,7 @@ class _NoteContent extends HookConsumerWidget {
               const SizedBox(height: 4.0),
             ],
           ],
-          if (isLong) ...[
+          if (collapseReason != null) ...[
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 foregroundColor: colors.fg,

@@ -3,13 +3,13 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_is_long_provider.dart';
+import '../../provider/note_collapse_reason_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import 'media_list.dart';
@@ -60,14 +60,14 @@ class SubNoteContent extends HookConsumerWidget {
     final showFooter = this.showFooter ?? showSubNoteFooter;
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
-    final isLong =
-        note.cw == null &&
-        !alwaysExpandLongNote &&
-        ref.watch(noteIsLongProvider(account, noteId));
+    final collapseReason =
+        note.cw == null && !alwaysExpandLongNote
+            ? ref.watch(noteCollapseReasonProvider(account, noteId))
+            : null;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
-    final isCollapsed = useState(isLong);
+    final isCollapsed = useState(collapseReason != null);
     final isFilesCollapsed = useState(true);
     final isPollCollapsed = useState(true);
     final style = DefaultTextStyle.of(context).style;
@@ -77,12 +77,48 @@ class SubNoteContent extends HookConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (parsed != null || note.replyId != null || note.renoteId != null)
-          _SubNoteMfm(
-            account: account,
-            nodes: parsed,
-            note: note,
-            maxLines: isCollapsed.value ? 10 : null,
-          ),
+          if (collapseReason case CollapseReason.large)
+            ClipRect(
+              clipBehavior: isCollapsed.value ? Clip.antiAlias : Clip.none,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: double.infinity,
+                  maxHeight: isCollapsed.value ? 200.0 : double.infinity,
+                ),
+                child: ShaderMask(
+                  shaderCallback:
+                      (bounds) => LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.white,
+                          Colors.white,
+                          Colors.white.withValues(alpha: 0.0),
+                        ],
+                        stops: [
+                          0.0,
+                          if (isCollapsed.value && bounds.height >= 200.0)
+                            0.9
+                          else
+                            1.0,
+                          1.0,
+                        ],
+                      ).createShader(bounds),
+                  child: _SubNoteMfm(
+                    account: account,
+                    nodes: parsed,
+                    note: note,
+                  ),
+                ),
+              ),
+            )
+          else
+            _SubNoteMfm(
+              account: account,
+              nodes: parsed,
+              note: note,
+              maxLines: isCollapsed.value ? 10 : null,
+            ),
         if (!isCollapsed.value) ...[
           if (note.files.isNotEmpty) ...[
             if (!expandMedia)
@@ -142,7 +178,7 @@ class SubNoteContent extends HookConsumerWidget {
               ),
           ],
         ],
-        if (isLong)
+        if (collapseReason != null)
           OutlinedButton(
             style: OutlinedButton.styleFrom(
               foregroundColor: colors.fg,

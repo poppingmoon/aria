@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'note_is_long_provider.dart';
+part of 'note_collapse_reason_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteIsLongHash() => r'0ba45ba6e079aaefe6c231e422e163c4ee6358ad';
+String _$noteCollapseReasonHash() =>
+    r'84a1cc2d6ac623dc91b4289d9948759c32ded006';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,23 +30,23 @@ class _SystemHash {
   }
 }
 
-/// See also [noteIsLong].
-@ProviderFor(noteIsLong)
-const noteIsLongProvider = NoteIsLongFamily();
+/// See also [noteCollapseReason].
+@ProviderFor(noteCollapseReason)
+const noteCollapseReasonProvider = NoteCollapseReasonFamily();
 
-/// See also [noteIsLong].
-class NoteIsLongFamily extends Family<bool> {
-  /// See also [noteIsLong].
-  const NoteIsLongFamily();
+/// See also [noteCollapseReason].
+class NoteCollapseReasonFamily extends Family<CollapseReason?> {
+  /// See also [noteCollapseReason].
+  const NoteCollapseReasonFamily();
 
-  /// See also [noteIsLong].
-  NoteIsLongProvider call(Account account, String noteId) {
-    return NoteIsLongProvider(account, noteId);
+  /// See also [noteCollapseReason].
+  NoteCollapseReasonProvider call(Account account, String noteId) {
+    return NoteCollapseReasonProvider(account, noteId);
   }
 
   @override
-  NoteIsLongProvider getProviderOverride(
-    covariant NoteIsLongProvider provider,
+  NoteCollapseReasonProvider getProviderOverride(
+    covariant NoteCollapseReasonProvider provider,
   ) {
     return call(provider.account, provider.noteId);
   }
@@ -62,28 +63,30 @@ class NoteIsLongFamily extends Family<bool> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'noteIsLongProvider';
+  String? get name => r'noteCollapseReasonProvider';
 }
 
-/// See also [noteIsLong].
-class NoteIsLongProvider extends AutoDisposeProvider<bool> {
-  /// See also [noteIsLong].
-  NoteIsLongProvider(Account account, String noteId)
+/// See also [noteCollapseReason].
+class NoteCollapseReasonProvider extends AutoDisposeProvider<CollapseReason?> {
+  /// See also [noteCollapseReason].
+  NoteCollapseReasonProvider(Account account, String noteId)
     : this._internal(
-        (ref) => noteIsLong(ref as NoteIsLongRef, account, noteId),
-        from: noteIsLongProvider,
-        name: r'noteIsLongProvider',
+        (ref) =>
+            noteCollapseReason(ref as NoteCollapseReasonRef, account, noteId),
+        from: noteCollapseReasonProvider,
+        name: r'noteCollapseReasonProvider',
         debugGetCreateSourceHash:
             const bool.fromEnvironment('dart.vm.product')
                 ? null
-                : _$noteIsLongHash,
-        dependencies: NoteIsLongFamily._dependencies,
-        allTransitiveDependencies: NoteIsLongFamily._allTransitiveDependencies,
+                : _$noteCollapseReasonHash,
+        dependencies: NoteCollapseReasonFamily._dependencies,
+        allTransitiveDependencies:
+            NoteCollapseReasonFamily._allTransitiveDependencies,
         account: account,
         noteId: noteId,
       );
 
-  NoteIsLongProvider._internal(
+  NoteCollapseReasonProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -98,11 +101,13 @@ class NoteIsLongProvider extends AutoDisposeProvider<bool> {
   final String noteId;
 
   @override
-  Override overrideWith(bool Function(NoteIsLongRef provider) create) {
+  Override overrideWith(
+    CollapseReason? Function(NoteCollapseReasonRef provider) create,
+  ) {
     return ProviderOverride(
       origin: this,
-      override: NoteIsLongProvider._internal(
-        (ref) => create(ref as NoteIsLongRef),
+      override: NoteCollapseReasonProvider._internal(
+        (ref) => create(ref as NoteCollapseReasonRef),
         from: from,
         name: null,
         dependencies: null,
@@ -115,13 +120,13 @@ class NoteIsLongProvider extends AutoDisposeProvider<bool> {
   }
 
   @override
-  AutoDisposeProviderElement<bool> createElement() {
-    return _NoteIsLongProviderElement(this);
+  AutoDisposeProviderElement<CollapseReason?> createElement() {
+    return _NoteCollapseReasonProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is NoteIsLongProvider &&
+    return other is NoteCollapseReasonProvider &&
         other.account == account &&
         other.noteId == noteId;
   }
@@ -138,7 +143,7 @@ class NoteIsLongProvider extends AutoDisposeProvider<bool> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin NoteIsLongRef on AutoDisposeProviderRef<bool> {
+mixin NoteCollapseReasonRef on AutoDisposeProviderRef<CollapseReason?> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -146,14 +151,15 @@ mixin NoteIsLongRef on AutoDisposeProviderRef<bool> {
   String get noteId;
 }
 
-class _NoteIsLongProviderElement extends AutoDisposeProviderElement<bool>
-    with NoteIsLongRef {
-  _NoteIsLongProviderElement(super.provider);
+class _NoteCollapseReasonProviderElement
+    extends AutoDisposeProviderElement<CollapseReason?>
+    with NoteCollapseReasonRef {
+  _NoteCollapseReasonProviderElement(super.provider);
 
   @override
-  Account get account => (origin as NoteIsLongProvider).account;
+  Account get account => (origin as NoteCollapseReasonProvider).account;
   @override
-  String get noteId => (origin as NoteIsLongProvider).noteId;
+  String get noteId => (origin as NoteCollapseReasonProvider).noteId;
 }
 
 // ignore_for_file: type=lint
