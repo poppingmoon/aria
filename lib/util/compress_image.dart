@@ -60,6 +60,9 @@ Future<Uint8List?> compressImage(Uint8List image, String? type) async {
         quality: imgConfig.quality,
         format: imgConfig.format,
       );
+      if (fileType case 'image/heic' || 'image/heif') {
+        return resized;
+      }
       if (resized.length < image.length) {
         return resized;
       }
@@ -83,6 +86,9 @@ Future<Uint8List?> compressImage(Uint8List image, String? type) async {
           ),
         ),
       );
+      if (fileType case 'image/heic' || 'image/heif') {
+        return resized.rawBytes;
+      }
       if (resized.rawBytes.length < image.length) {
         return resized.rawBytes;
       }
