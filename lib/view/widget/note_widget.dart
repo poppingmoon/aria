@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/note_extension.dart';
@@ -14,7 +15,7 @@ import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_is_long_provider.dart';
+import '../../provider/note_collapse_reason_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
@@ -381,11 +382,11 @@ class _NoteContent extends HookConsumerWidget {
               : null,
       [parsed],
     );
-    final isLong =
-        appearNote.cw == null &&
-        !alwaysExpandLongNote &&
-        ref.watch(noteIsLongProvider(account, appearNote.id));
-    final isCollapsed = useState(appearNote.cw == null && isLong);
+    final collapseReason =
+        appearNote.cw == null && !alwaysExpandLongNote
+            ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
+            : null;
+    final isCollapsed = useState(collapseReason != null);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -427,28 +428,48 @@ class _NoteContent extends HookConsumerWidget {
         ],
         if (appearNote.cw == null || showContent.value) ...[
           if (parsed != null || appearNote.replyId != null)
-            Mfm(
-              account: account,
-              leadingSpans: [
-                if (appearNote.replyId case final replyId?) ...[
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(8.0),
-                      onTap: () => context.push('/$account/notes/$replyId'),
-                      child: Icon(Icons.reply, color: colors.accent),
+            if (collapseReason case CollapseReason.large)
+              ClipRect(
+                clipBehavior: isCollapsed.value ? Clip.antiAlias : Clip.none,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: double.infinity,
+                    maxHeight: isCollapsed.value ? 300.0 : double.infinity,
+                  ),
+                  child: ShaderMask(
+                    shaderCallback:
+                        (bounds) => LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white,
+                            Colors.white,
+                            Colors.white.withValues(alpha: 0.0),
+                          ],
+                          stops: [
+                            0.0,
+                            if (isCollapsed.value && bounds.height >= 300.0)
+                              0.9
+                            else
+                              1.0,
+                            1.0,
+                          ],
+                        ).createShader(bounds),
+                    child: _NoteMfm(
+                      account: account,
+                      nodes: parsed,
+                      note: appearNote,
                     ),
                   ),
-                  const WidgetSpan(child: SizedBox(width: 4.0)),
-                ],
-              ],
-              nodes: parsed,
-              emojis: appearNote.emojis,
-              author: appearNote.user,
-              noteId: appearNote.id,
-              nyaize: true,
-              maxLines: isCollapsed.value ? 10 : null,
-            ),
+                ),
+              )
+            else
+              _NoteMfm(
+                account: account,
+                nodes: parsed,
+                note: appearNote,
+                maxLines: isCollapsed.value ? 10 : null,
+              ),
           const SizedBox(height: 4.0),
           if (!isCollapsed.value) ...[
             if (appearNote.files.isNotEmpty) ...[
@@ -489,7 +510,7 @@ class _NoteContent extends HookConsumerWidget {
               const SizedBox(height: 4.0),
             ],
           ],
-          if (isLong) ...[
+          if (collapseReason != null) ...[
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 foregroundColor: colors.fg,
@@ -562,6 +583,48 @@ class _NoteContent extends HookConsumerWidget {
             focusPostForm: focusPostForm,
           ),
       ],
+    );
+  }
+}
+
+class _NoteMfm extends StatelessWidget {
+  const _NoteMfm({
+    required this.account,
+    required this.nodes,
+    required this.note,
+    this.maxLines,
+  });
+
+  final Account account;
+  final List<MfmNode>? nodes;
+  final Note note;
+  final int? maxLines;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Mfm(
+      account: account,
+      leadingSpans: [
+        if (note.replyId case final replyId?) ...[
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(8.0),
+              onTap: () => context.push('/$account/notes/$replyId'),
+              child: Icon(Icons.reply, color: theme.colorScheme.primary),
+            ),
+          ),
+          const WidgetSpan(child: SizedBox(width: 4.0)),
+        ],
+      ],
+      nodes: nodes,
+      emojis: note.emojis,
+      author: note.user,
+      noteId: note.id,
+      nyaize: true,
+      maxLines: maxLines,
     );
   }
 }
