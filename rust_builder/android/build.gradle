@@ -1,14 +1,11 @@
 // The Android Gradle Plugin builds the native code with the Android NDK.
 
+plugins {
+    id 'com.android.library'
+}
+
 group 'com.flutter_rust_bridge.rust_lib_aria'
 version '1.0'
-
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 
 rootProject.allprojects {
     repositories {
@@ -16,8 +13,6 @@ rootProject.allprojects {
         mavenCentral()
     }
 }
-
-apply plugin: 'com.android.library'
 
 android {
     if (project.android.hasProperty("namespace")) {
