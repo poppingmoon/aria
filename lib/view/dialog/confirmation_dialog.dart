@@ -46,6 +46,7 @@ class ConfirmationDialog extends StatelessWidget {
     final theme = Theme.of(context);
 
     return AlertDialog(
+      icon: title == null ? const Icon(Icons.help_outline, size: 36.0) : null,
       title: title,
       content: content ?? Text(message ?? ''),
       actions: [

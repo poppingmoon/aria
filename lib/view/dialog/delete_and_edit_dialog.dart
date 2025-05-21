@@ -27,6 +27,7 @@ class DeleteAndEditDialog extends ConsumerWidget {
     final theme = Theme.of(context);
 
     return AlertDialog(
+      icon: const Icon(Icons.help_outline, size: 36.0),
       content: Text(t.misskey.deleteAndEditConfirm),
       actions: [
         ElevatedButton(
