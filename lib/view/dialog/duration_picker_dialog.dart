@@ -35,6 +35,7 @@ class DurationPickerDialog extends HookWidget {
     final secondsController = useTextEditingController(
       text: ((initialDuration?.inSeconds ?? 0) % 60).toString(),
     );
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.poll_.duration),
@@ -45,7 +46,7 @@ class DurationPickerDialog extends HookWidget {
             controller: daysController,
             decoration: InputDecoration(
               labelText: t.misskey.time_.day,
-              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+              enabledBorder: theme.inputDecorationTheme.border,
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
@@ -57,7 +58,7 @@ class DurationPickerDialog extends HookWidget {
             controller: hoursController,
             decoration: InputDecoration(
               labelText: t.misskey.time_.hour,
-              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+              enabledBorder: theme.inputDecorationTheme.border,
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
@@ -69,7 +70,7 @@ class DurationPickerDialog extends HookWidget {
             controller: minutesController,
             decoration: InputDecoration(
               labelText: t.misskey.time_.minute,
-              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+              enabledBorder: theme.inputDecorationTheme.border,
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
@@ -81,7 +82,7 @@ class DurationPickerDialog extends HookWidget {
             controller: secondsController,
             decoration: InputDecoration(
               labelText: t.misskey.time_.second,
-              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+              enabledBorder: theme.inputDecorationTheme.border,
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.done,
@@ -112,7 +113,11 @@ class DurationPickerDialog extends HookWidget {
               ),
           child: Text(t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

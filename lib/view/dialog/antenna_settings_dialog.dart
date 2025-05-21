@@ -47,6 +47,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
         ref
             .watch(endpointParametersProvider(account, 'antennas/create'))
             .valueOrNull;
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(
@@ -62,7 +63,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 controller: nameController,
                 decoration: InputDecoration(
                   labelText: t.misskey.name,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                 ),
                 onChanged:
                     (value) =>
@@ -190,7 +191,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 decoration: InputDecoration(
                   labelText: t.misskey.antennaKeywords,
                   helperText: t.misskey.antennaKeywordsDescription,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
                 maxLines: 5,
@@ -207,7 +208,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 decoration: InputDecoration(
                   labelText: t.misskey.antennaExcludeKeywords,
                   helperText: t.misskey.antennaKeywordsDescription,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
                 minLines: 3,
@@ -276,7 +277,11 @@ class AntennaSettingsDialog extends HookConsumerWidget {
               ),
           child: Text(t.misskey.save),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

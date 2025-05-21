@@ -24,6 +24,8 @@ class DeleteAndEditDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+
     return AlertDialog(
       content: Text(t.misskey.deleteAndEditConfirm),
       actions: [
@@ -52,7 +54,11 @@ class DeleteAndEditDialog extends ConsumerWidget {
           },
           child: Text(t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

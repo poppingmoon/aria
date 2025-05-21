@@ -25,6 +25,7 @@ class MuteDialog extends HookConsumerWidget {
     final period = useState(_MutePeriod.indefinite);
     final expiresAt = useState(DateTime.now());
     final expiresAfter = useState(const Duration(minutes: 10));
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.mute),
@@ -33,7 +34,7 @@ class MuteDialog extends HookConsumerWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6.0),
           ),
-          tileColor: Theme.of(context).colorScheme.surface,
+          tileColor: theme.colorScheme.surface,
         ),
         child: Column(
           children: [
@@ -128,7 +129,11 @@ class MuteDialog extends HookConsumerWidget {
           },
           child: Text(t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

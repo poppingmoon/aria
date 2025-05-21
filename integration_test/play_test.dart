@@ -86,13 +86,7 @@ Ui:render([
       find.byType(TextField),
       'https://misskey.tld/play/testplay',
     );
-    await tester.pumpAndSettle();
-    await tester.tap(
-      find.descendant(
-        of: find.byType(AlertDialog),
-        matching: find.byType(ElevatedButton),
-      ),
-    );
+    await tester.testTextInput.receiveAction(TextInputAction.done);
     await tester.pumpAndSettle();
     expect(find.text('Test Play'), findsExactly(2));
     expect(find.text('Test Play summary'), findsOne);

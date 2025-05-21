@@ -89,9 +89,8 @@ class PostConfirmationDialog extends ConsumerWidget {
     final note = request
         .copyWith(scheduledAt: canScheduleNote ? request.scheduledAt : null)
         .toNote(i: i, channel: channel);
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return Dialog(
       child: Container(
@@ -109,7 +108,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                     request.isRenote
                         ? t.aria.renoteConfirm
                         : t.aria.postConfirm,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: theme.textTheme.titleMedium,
                   ),
                 ),
               ),
@@ -160,14 +159,19 @@ class PostConfirmationDialog extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    spacing: 8.0,
                     children: [
                       ElevatedButton(
                         autofocus: true,
                         onPressed: () => context.pop(true),
                         child: Text(t.misskey.ok),
                       ),
-                      const SizedBox(width: 8.0),
-                      OutlinedButton(
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor:
+                              theme.colorScheme.surfaceContainerLowest,
+                        ),
                         onPressed: () => context.pop(false),
                         child: Text(t.misskey.cancel),
                       ),
