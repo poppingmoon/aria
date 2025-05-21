@@ -37,7 +37,10 @@ class ImageWidget extends ConsumerWidget {
       return SizedBox(
         width: width,
         height: height,
-        child: BlurHash(hash: blurHash),
+        child: BlurHash(
+          hash: blurHash,
+          optimizationMode: BlurHashOptimizationMode.approximation,
+        ),
       );
     } else {
       return SizedBox(width: width, height: height);

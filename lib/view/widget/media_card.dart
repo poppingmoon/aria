@@ -146,7 +146,11 @@ class MediaCard extends HookConsumerWidget {
                             Color(0xffb4b4b4),
                             BlendMode.multiply,
                           ),
-                          child: BlurHash(hash: blurhash),
+                          child: BlurHash(
+                            hash: blurhash,
+                            optimizationMode:
+                                BlurHashOptimizationMode.approximation,
+                          ),
                         )
                       else
                         const ColoredBox(
@@ -510,7 +514,10 @@ class _ImagePreview extends ConsumerWidget {
           url != null
               ? ImageWidget(url: url, blurHash: file.blurhash, fit: fit)
               : blurHash != null
-              ? BlurHash(hash: blurHash)
+              ? BlurHash(
+                hash: blurHash,
+                optimizationMode: BlurHashOptimizationMode.approximation,
+              )
               : const SizedBox.shrink(),
     );
   }
@@ -631,7 +638,10 @@ class _FilePreview extends ConsumerWidget {
           if (file case DriveFile(:final thumbnailUrl?))
             ImageWidget(url: thumbnailUrl, blurHash: file.blurhash, fit: fit)
           else if (file case DriveFile(:final blurhash?))
-            BlurHash(hash: blurhash),
+            BlurHash(
+              hash: blurhash,
+              optimizationMode: BlurHashOptimizationMode.approximation,
+            ),
           DecoratedBox(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,

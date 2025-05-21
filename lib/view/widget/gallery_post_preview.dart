@@ -75,7 +75,11 @@ class GalleryPostPreview extends HookConsumerWidget {
                             Color(0xffb4b4b4),
                             BlendMode.multiply,
                           ),
-                          child: BlurHash(hash: blurhash),
+                          child: BlurHash(
+                            hash: blurhash,
+                            optimizationMode:
+                                BlurHashOptimizationMode.approximation,
+                          ),
                         ),
                       ),
                     ),
