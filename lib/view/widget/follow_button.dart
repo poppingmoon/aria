@@ -67,11 +67,13 @@ class FollowButton extends HookConsumerWidget {
       );
     } else {
       final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+      final theme = Theme.of(context);
 
       return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          foregroundColor: Theme.of(context).colorScheme.primary,
-          backgroundColor: Theme.of(context).colorScheme.surface,
+          foregroundColor: theme.colorScheme.primary,
+          backgroundColor: theme.colorScheme.surface,
+          side: BorderSide(color: theme.colorScheme.primary),
         ),
         onPressed: () async {
           if (ref.read(generalSettingsNotifierProvider).confirmBeforeFollow) {

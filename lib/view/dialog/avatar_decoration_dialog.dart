@@ -74,6 +74,7 @@ class AvatarDecorationDialog extends HookConsumerWidget {
       offsetY: offsetY.value,
       flipH: flipH.value,
     );
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.avatarDecorations),
@@ -227,7 +228,12 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                   ),
                 ),
                 if (index != null)
-                  OutlinedButton.icon(
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: theme.colorScheme.primary,
+                      backgroundColor: theme.colorScheme.surfaceContainerLowest,
+                      iconColor: theme.colorScheme.primary,
+                    ),
                     onPressed: () => context.pop((null,)),
                     icon: const Icon(Icons.close),
                     label: Text(t.misskey.detach),

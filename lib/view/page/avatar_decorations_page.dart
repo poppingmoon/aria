@@ -143,8 +143,8 @@ class AvatarDecorationsPage extends ConsumerWidget {
                 sliver: SliverToBoxAdapter(
                   child: OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: Theme.of(context).colorScheme.error,
-                      iconColor: Theme.of(context).colorScheme.error,
+                      foregroundColor: colors.error,
+                      iconColor: colors.error,
                     ),
                     onPressed: () async {
                       final confirmed = await confirm(

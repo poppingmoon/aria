@@ -60,6 +60,7 @@ class PlayWidget extends HookConsumerWidget {
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
     final locale = Localizations.localeOf(context).toLanguageTag();
+    final style = DefaultTextStyle.of(context).style;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -260,7 +261,7 @@ class PlayWidget extends HookConsumerWidget {
                         children: [
                           Text(
                             play.title,
-                            style: DefaultTextStyle.of(context).style
+                            style: style
                                 .apply(fontSizeFactor: 1.4)
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
@@ -271,9 +272,7 @@ class PlayWidget extends HookConsumerWidget {
                                     ? account
                                     : Account(host: host),
                             text: play.summary,
-                            style: DefaultTextStyle.of(
-                              context,
-                            ).style.apply(fontSizeFactor: 1.1),
+                            style: style.apply(fontSizeFactor: 1.1),
                           ),
                           const SizedBox(height: 16.0),
                           ElevatedButton(
@@ -515,9 +514,9 @@ class _Dialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final style = DefaultTextStyle.of(context).style;
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return AlertDialog(
       icon: IconTheme(
@@ -552,9 +551,9 @@ class _Dialog extends ConsumerWidget {
               ? Mfm(account: account, text: title, textAlign: TextAlign.center)
               : null,
       titlePadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 32.0),
-      titleTextStyle: DefaultTextStyle.of(
-        context,
-      ).style.apply(fontSizeFactor: 1.1).copyWith(fontWeight: FontWeight.bold),
+      titleTextStyle: style
+          .apply(fontSizeFactor: 1.1)
+          .copyWith(fontWeight: FontWeight.bold),
       content: Mfm(account: account, text: text, textAlign: TextAlign.center),
       contentPadding: const EdgeInsets.symmetric(
         vertical: 4.0,
@@ -571,8 +570,10 @@ class _Dialog extends ConsumerWidget {
                   onPressed: () => context.pop(true),
                   child: Text(t.misskey.ok),
                 ),
-                OutlinedButton(
+                ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    foregroundColor: theme.colorScheme.primary,
+                    backgroundColor: theme.colorScheme.surfaceContainerLowest,
                     minimumSize: const Size(100.0, 40.0),
                     padding: const EdgeInsets.all(8.0),
                   ),

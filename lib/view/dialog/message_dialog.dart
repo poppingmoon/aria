@@ -18,6 +18,7 @@ class MessageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      icon: const Icon(Icons.error_outline, size: 36.0),
       content: Text(message),
       actions: [
         ElevatedButton(

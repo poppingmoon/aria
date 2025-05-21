@@ -43,7 +43,10 @@ class ConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AlertDialog(
+      icon: title == null ? const Icon(Icons.help_outline, size: 36.0) : null,
       title: title,
       content: content ?? Text(message ?? ''),
       actions: [
@@ -52,7 +55,11 @@ class ConfirmationDialog extends StatelessWidget {
           onPressed: () => context.pop(true),
           child: Text(okText ?? t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(false),
           child: Text(cancelText ?? t.misskey.cancel),
         ),

@@ -18,6 +18,7 @@ class ClipSettingsDialog extends HookWidget {
     final descriptionController = useTextEditingController(
       text: this.settings?.description,
     );
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(this.settings == null ? t.misskey.create : t.misskey.edit),
@@ -31,7 +32,7 @@ class ClipSettingsDialog extends HookWidget {
                 controller: nameController,
                 decoration: InputDecoration(
                   labelText: t.misskey.name,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                 ),
                 onChanged:
                     (value) =>
@@ -49,7 +50,7 @@ class ClipSettingsDialog extends HookWidget {
                 controller: descriptionController,
                 decoration: InputDecoration(
                   labelText: '${t.misskey.description} (${t.misskey.optional})',
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
                 onChanged:
@@ -77,7 +78,11 @@ class ClipSettingsDialog extends HookWidget {
           onPressed: () => context.pop(settings.value),
           child: Text(t.misskey.save),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

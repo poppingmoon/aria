@@ -42,6 +42,7 @@ class ChatMessageSendConfirmationDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final theme = Theme.of(context);
 
     return Dialog(
       child: Container(
@@ -57,7 +58,7 @@ class ChatMessageSendConfirmationDialog extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     t.aria.sendMessageConfirm,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: theme.textTheme.titleMedium,
                   ),
                 ),
               ),
@@ -81,14 +82,19 @@ class ChatMessageSendConfirmationDialog extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
+                    spacing: 8.0,
                     children: [
                       ElevatedButton(
                         autofocus: true,
                         onPressed: () => context.pop(true),
                         child: Text(t.misskey.ok),
                       ),
-                      const SizedBox(width: 8.0),
-                      OutlinedButton(
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: theme.colorScheme.primary,
+                          backgroundColor:
+                              theme.colorScheme.surfaceContainerLowest,
+                        ),
                         onPressed: () => context.pop(false),
                         child: Text(t.misskey.cancel),
                       ),

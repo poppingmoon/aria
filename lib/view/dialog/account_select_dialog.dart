@@ -37,6 +37,7 @@ class AccountSelectDialog extends HookConsumerWidget {
       );
       return;
     }, []);
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.selectAccount),
@@ -89,7 +90,11 @@ class AccountSelectDialog extends HookConsumerWidget {
           onPressed: () => context.pop(account.value),
           child: Text(t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

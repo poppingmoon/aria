@@ -15,6 +15,7 @@ class ListSettingsDialog extends HookWidget {
   Widget build(BuildContext context) {
     final settings = useState(this.settings ?? const ListSettings());
     final controller = useTextEditingController(text: this.settings?.name);
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.editList),
@@ -28,7 +29,7 @@ class ListSettingsDialog extends HookWidget {
                 controller: controller,
                 decoration: InputDecoration(
                   labelText: t.misskey.name,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: theme.inputDecorationTheme.border,
                 ),
                 onChanged:
                     (value) =>
@@ -51,7 +52,11 @@ class ListSettingsDialog extends HookWidget {
           onPressed: () => context.pop(settings.value),
           child: Text(t.misskey.save),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),

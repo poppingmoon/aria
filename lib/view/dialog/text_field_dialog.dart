@@ -104,6 +104,7 @@ class TextFieldDialog extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: initialText);
+    final theme = Theme.of(context);
 
     return Shortcuts(
       shortcuts: {
@@ -118,7 +119,11 @@ class TextFieldDialog extends HookWidget {
             onPressed: () => context.pop(controller.text),
             child: Text(t.misskey.ok),
           ),
-          OutlinedButton(
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: theme.colorScheme.primary,
+              backgroundColor: theme.colorScheme.surfaceContainerLowest,
+            ),
             onPressed: () => context.pop(),
             child: Text(t.misskey.cancel),
           ),

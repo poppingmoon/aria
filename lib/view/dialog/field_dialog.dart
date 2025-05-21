@@ -15,6 +15,7 @@ class FieldDialog extends HookWidget {
   Widget build(BuildContext context) {
     final nameController = useTextEditingController(text: field?.name);
     final valueController = useTextEditingController(text: field?.value);
+    final theme = Theme.of(context);
 
     return AlertDialog(
       title: Text(t.misskey.profile_.metadata),
@@ -27,7 +28,7 @@ class FieldDialog extends HookWidget {
               controller: nameController,
               decoration: InputDecoration(
                 labelText: t.misskey.profile_.metadataLabel,
-                enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                enabledBorder: theme.inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.next,
               onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -37,7 +38,7 @@ class FieldDialog extends HookWidget {
               controller: valueController,
               decoration: InputDecoration(
                 labelText: t.misskey.profile_.metadataContent,
-                enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                enabledBorder: theme.inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.done,
               onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -56,7 +57,11 @@ class FieldDialog extends HookWidget {
               ),
           child: Text(t.misskey.ok),
         ),
-        OutlinedButton(
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: theme.colorScheme.primary,
+            backgroundColor: theme.colorScheme.surfaceContainerLowest,
+          ),
           onPressed: () => context.pop(),
           child: Text(t.misskey.cancel),
         ),
