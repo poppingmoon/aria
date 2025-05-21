@@ -546,7 +546,9 @@ class _AddReactionButton extends ConsumerWidget {
               const Icon(Icons.favorite_border)
             else
               const Icon(Icons.add),
-            if (showReactionsCount && (note.reactionCount ?? 0) > 0)
+            if ((note.reactionAcceptance == ReactionAcceptance.likeOnly ||
+                    showReactionsCount) &&
+                (note.reactionCount ?? 0) > 0)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
                 child: Text(
