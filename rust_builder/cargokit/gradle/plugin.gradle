@@ -58,13 +58,13 @@ abstract class CargoKitBuildTask extends DefaultTask {
         def manifestDir = Paths.get(project.buildscript.sourceFile.parent, project.cargokit.manifestDir)
 
         def rootProjectDir = project.rootProject.projectDir
-        
+
         if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
             project.exec {
                 commandLine 'chmod', '+x', path
             }
         }
-        
+
         project.exec {
             executable path
             args "build-gradle"
@@ -92,7 +92,7 @@ class CargoKitPlugin implements Plugin<Project> {
         _findFlutterPlugin(rootProject.childProjects)
     }
 
-   private Plugin _findFlutterPlugin(Map projects) {
+    private Plugin _findFlutterPlugin(Map projects) {
         for (project in projects) {
             for (plugin in project.value.getPlugins()) {
                 if (plugin.class.name == "FlutterPlugin") {
@@ -120,7 +120,11 @@ class CargoKitPlugin implements Plugin<Project> {
 
         def cargoBuildDir = "${project.buildDir}/build"
 
-        plugin.project.android.applicationVariants.all { variant ->
+        // Determine if the project is an application or library
+        def isApplication = plugin.project.plugins.hasPlugin('com.android.application')
+        def variants = isApplication ? plugin.project.android.applicationVariants : plugin.project.android.libraryVariants
+
+        variants.all { variant ->
 
             final buildType = variant.buildType.name
 
