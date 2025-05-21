@@ -135,6 +135,7 @@ class ChatPostForm extends HookConsumerWidget {
         focusNode.removeListener(focusNodeCallback);
       };
     }, [account]);
+    final showTextField = isFocused.value || (text?.isNotEmpty ?? false);
     final canPost = (text?.isNotEmpty ?? false) || attaches.isNotEmpty;
     final theme = Theme.of(context);
 
@@ -153,20 +154,26 @@ class ChatPostForm extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 8.0,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: TextField(
-                controller: controller,
-                focusNode: focusNode,
-                decoration: InputDecoration(
-                  hintText: t.misskey.inputMessageHere,
-                  filled: false,
-                  border: const OutlineInputBorder(borderSide: BorderSide.none),
+            Visibility(
+              visible: showTextField,
+              maintainState: true,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: TextField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  decoration: InputDecoration(
+                    hintText: t.misskey.inputMessageHere,
+                    filled: false,
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  minLines: 1,
+                  maxLines: 3,
+                  spellCheckConfiguration:
+                      enableSpellCheck ? const SpellCheckConfiguration() : null,
                 ),
-                minLines: 1,
-                maxLines: 3,
-                spellCheckConfiguration:
-                    enableSpellCheck ? const SpellCheckConfiguration() : null,
               ),
             ),
             if (attaches.isNotEmpty)
@@ -235,7 +242,30 @@ class ChatPostForm extends HookConsumerWidget {
                         ),
                     icon: const Icon(Icons.mood),
                   ),
-                  const Spacer(),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap:
+                          () =>
+                              isFocused.value
+                                  ? focusNode.unfocus()
+                                  : focusNode.requestFocus(),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Visibility.maintain(
+                          visible: !showTextField,
+                          child: Text(
+                            t.misskey.inputMessageHere,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onSurface.withValues(
+                                alpha: 0.5,
+                              ),
+                            ),
+                            maxLines: 1,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   IconButton(
                     style: IconButton.styleFrom(
                       foregroundColor: theme.colorScheme.primary,
