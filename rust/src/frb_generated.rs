@@ -223,6 +223,7 @@ let api_locale = <String>::sse_decode(&mut deserializer);
 let api_server_url = <String>::sse_decode(&mut deserializer);
 let api_dialog = decode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_confirm = decode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
+let api_toast = decode_DartFn_Inputs_String_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_token = <Option<String>>::sse_decode(&mut deserializer);
 let api_api = decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_save = decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
@@ -230,7 +231,7 @@ let api_load = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutte
 let api_url = <String>::sse_decode(&mut deserializer);
 let api_nyaize = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end();
                 transform_result_sse::<_, ()>((move || {
-                     let output_ok = Result::<_,()>::Ok(crate::api::aiscript::api::AsApiLib::new(api_user_id, api_user_name, api_user_username, api_custom_emojis, api_locale, api_server_url, api_dialog, api_confirm, api_token, api_api, api_save, api_load, api_url, api_nyaize))?;   Ok(output_ok)
+                     let output_ok = Result::<_,()>::Ok(crate::api::aiscript::api::AsApiLib::new(api_user_id, api_user_name, api_user_username, api_custom_emojis, api_locale, api_server_url, api_dialog, api_confirm, api_toast, api_token, api_api, api_save, api_load, api_url, api_nyaize))?;   Ok(output_ok)
                 })()) })
 }
 fn wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(

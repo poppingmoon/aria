@@ -100,6 +100,7 @@ abstract class RustLibApi extends BaseApi {
     required String serverUrl,
     required FutureOr<void> Function(String, String, String) dialog,
     required FutureOr<bool> Function(String, String, String) confirm,
+    required FutureOr<void> Function(String) toast,
     String? token,
     required FutureOr<(String, String?)> Function(String, String, String?) api,
     required FutureOr<void> Function(String, String) save,
@@ -373,6 +374,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required String serverUrl,
     required FutureOr<void> Function(String, String, String) dialog,
     required FutureOr<bool> Function(String, String, String) confirm,
+    required FutureOr<void> Function(String) toast,
     String? token,
     required FutureOr<(String, String?)> Function(String, String, String?) api,
     required FutureOr<void> Function(String, String) save,
@@ -396,6 +398,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           );
           sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
             confirm,
+            serializer,
+          );
+          sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
+            toast,
             serializer,
           );
           sse_encode_opt_String(token, serializer);
@@ -433,6 +439,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           serverUrl,
           dialog,
           confirm,
+          toast,
           token,
           api,
           save,
@@ -457,6 +464,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           "serverUrl",
           "dialog",
           "confirm",
+          "toast",
           "token",
           "api",
           "save",
