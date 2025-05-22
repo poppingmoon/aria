@@ -19,10 +19,9 @@ class ChannelColorBarBox extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        border:
-            color != null
-                ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
-                : null,
+        border: color != null
+            ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
+            : null,
       ),
       child: child,
     );

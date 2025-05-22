@@ -36,14 +36,11 @@ class PostPage extends HookConsumerWidget {
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final channel =
-        request.channelId != null
-            ? ref
-                .watch(
-                  channelNotifierProvider(account.value, request.channelId!),
-                )
-                .valueOrNull
-            : null;
+    final channel = request.channelId != null
+        ? ref
+              .watch(channelNotifierProvider(account.value, request.channelId!))
+              .valueOrNull
+        : null;
     final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
     final useHashtags = ref.watch(
       accountSettingsNotifierProvider(
@@ -113,38 +110,30 @@ class PostPage extends HookConsumerWidget {
     );
 
     return PopScope(
-      onPopInvokedWithResult:
-          (_, _) =>
-              ref
-                  .read(
-                    postNotifierProvider(
-                      account.value,
-                      noteId: noteId,
-                    ).notifier,
-                  )
-                  .save(),
+      onPopInvokedWithResult: (_, _) => ref
+          .read(postNotifierProvider(account.value, noteId: noteId).notifier)
+          .save(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(t.misskey.note),
           actions: [
             IconButton(
               tooltip: buttonText,
-              onPressed:
-                  needsUpload
-                      ? () => futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              attachesNotifierProvider(
-                                account.value,
-                                noteId: noteId,
-                              ).notifier,
-                            )
-                            .uploadAll(),
-                      )
-                      : canPost
-                      ? () => PostForm.post(ref, account.value, noteId)
-                      : null,
+              onPressed: needsUpload
+                  ? () => futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            attachesNotifierProvider(
+                              account.value,
+                              noteId: noteId,
+                            ).notifier,
+                          )
+                          .uploadAll(),
+                    )
+                  : canPost
+                  ? () => PostForm.post(ref, account.value, noteId)
+                  : null,
               icon: Icon(buttonIcon),
             ),
           ],
@@ -172,8 +161,8 @@ class PostPage extends HookConsumerWidget {
                             focusNode: focusNode,
                             cwFocusNode: cwFocusNode,
                             hashtagsFocusNode: hashtagsFocusNode,
-                            onAccountChanged:
-                                (newAccount) => account.value = newAccount,
+                            onAccountChanged: (newAccount) =>
+                                account.value = newAccount,
                           ),
                         ),
                       ),
@@ -182,22 +171,21 @@ class PostPage extends HookConsumerWidget {
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       width: maxContentWidth,
-                      child:
-                          request.isRenote
-                              ? NoteWidget(
-                                key: const ValueKey('renote'),
-                                account: account.value,
-                                noteId: request.renoteId!,
-                                borderRadius: BorderRadius.circular(8.0),
-                              )
-                              : NoteWidget(
-                                key: const ValueKey('note'),
-                                account: account.value,
-                                noteId: '',
-                                note: note,
-                                showFooter: false,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
+                      child: request.isRenote
+                          ? NoteWidget(
+                              key: const ValueKey('renote'),
+                              account: account.value,
+                              noteId: request.renoteId!,
+                              borderRadius: BorderRadius.circular(8.0),
+                            )
+                          : NoteWidget(
+                              key: const ValueKey('note'),
+                              account: account.value,
+                              noteId: '',
+                              note: note,
+                              showFooter: false,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
                     ),
                     const SizedBox(height: 120.0),
                   ],
@@ -239,56 +227,54 @@ class PostPage extends HookConsumerWidget {
             ),
           ],
         ),
-        floatingActionButton:
-            !isCwFocused.value && !isFocused.value
-                ? FloatingActionButton.extended(
-                  onPressed:
-                      canPost
-                          ? () => PostForm.post(ref, account.value, noteId)
-                          : null,
-                  backgroundColor: Colors.transparent,
-                  extendedPadding: EdgeInsets.zero,
-                  disabledElevation: 0.0,
-                  label: Ink(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          colors.buttonGradateA.withValues(
-                            alpha: canPost ? 1.0 : 0.5,
-                          ),
-                          colors.buttonGradateB.withValues(
-                            alpha: canPost ? 1.0 : 0.5,
-                          ),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(16.0),
+        floatingActionButton: !isCwFocused.value && !isFocused.value
+            ? FloatingActionButton.extended(
+                onPressed: canPost
+                    ? () => PostForm.post(ref, account.value, noteId)
+                    : null,
+                backgroundColor: Colors.transparent,
+                extendedPadding: EdgeInsets.zero,
+                disabledElevation: 0.0,
+                label: Ink(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        colors.buttonGradateA.withValues(
+                          alpha: canPost ? 1.0 : 0.5,
+                        ),
+                        colors.buttonGradateB.withValues(
+                          alpha: canPost ? 1.0 : 0.5,
+                        ),
+                      ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            buttonText,
-                            style: TextStyle(
-                              color: colors.fgOnAccent.withValues(
-                                alpha: canPost ? 1.0 : 0.5,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 4.0),
-                          Icon(
-                            buttonIcon,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          buttonText,
+                          style: TextStyle(
                             color: colors.fgOnAccent.withValues(
                               alpha: canPost ? 1.0 : 0.5,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(width: 4.0),
+                        Icon(
+                          buttonIcon,
+                          color: colors.fgOnAccent.withValues(
+                            alpha: canPost ? 1.0 : 0.5,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                )
-                : null,
+                ),
+              )
+            : null,
       ),
     );
   }

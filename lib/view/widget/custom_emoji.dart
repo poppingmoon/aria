@@ -91,10 +91,8 @@ class CustomEmoji extends ConsumerWidget {
     );
     final (disableShowingAnimatedImages, enableEmojiFadeIn) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.disableShowingAnimatedImages,
-          settings.enableEmojiFadeIn,
-        ),
+        (settings) =>
+            (settings.disableShowingAnimatedImages, settings.enableEmojiFadeIn),
       ),
     );
     final enableFadeIn = this.enableFadeIn ?? enableEmojiFadeIn;
@@ -107,54 +105,47 @@ class CustomEmoji extends ConsumerWidget {
           message: emoji.replaceFirst('@.', ''),
           child: RepaintBoundary(
             child: ImageWidget(
-              url:
-                  disableShowingAnimatedImages
-                      ? ref
-                          .watch(
-                            staticImageUrlProvider(account.host, proxiedUrl),
-                          )
-                          .toString()
-                      : proxiedUrl,
+              url: disableShowingAnimatedImages
+                  ? ref
+                        .watch(staticImageUrlProvider(account.host, proxiedUrl))
+                        .toString()
+                  : proxiedUrl,
               height: height,
               opacity: opacity,
               fit: fit,
               alignment: alignment,
-              errorBuilder:
-                  (_, _, _) => ImageWidget(
-                    url: rawUrl,
-                    height: height,
-                    opacity: opacity,
-                    fit: fit,
-                    alignment: alignment,
-                    errorBuilder:
-                        (_, _, _) =>
-                            fallbackToImage
-                                ? Assets.misskey.packages.frontend.assets.dummy
-                                    .image(
-                                      height: height,
-                                      opacity: AlwaysStoppedAnimation(opacity),
-                                      fit: fit,
-                                      alignment: alignment,
-                                    )
-                                : height > fallbackTextStyle.lineHeight
-                                ? Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      emoji,
-                                      style: fallbackTextStyle,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                    ),
-                                  ],
-                                )
-                                : Text(
-                                  emoji,
-                                  style: fallbackTextStyle,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                  ),
+              errorBuilder: (_, _, _) => ImageWidget(
+                url: rawUrl,
+                height: height,
+                opacity: opacity,
+                fit: fit,
+                alignment: alignment,
+                errorBuilder: (_, _, _) => fallbackToImage
+                    ? Assets.misskey.packages.frontend.assets.dummy.image(
+                        height: height,
+                        opacity: AlwaysStoppedAnimation(opacity),
+                        fit: fit,
+                        alignment: alignment,
+                      )
+                    : height > fallbackTextStyle.lineHeight
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            emoji,
+                            style: fallbackTextStyle,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                        ],
+                      )
+                    : Text(
+                        emoji,
+                        style: fallbackTextStyle,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+              ),
               semanticLabel: emoji,
               enableFadeIn: enableFadeIn,
             ),

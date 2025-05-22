@@ -16,10 +16,9 @@ Future<DateTime?> pickDateTime(
   if (date == null) return null;
   final time = await showTimePicker(
     context: context,
-    initialTime:
-        initialDate != null
-            ? TimeOfDay.fromDateTime(initialDate)
-            : TimeOfDay.now(),
+    initialTime: initialDate != null
+        ? TimeOfDay.fromDateTime(initialDate)
+        : TimeOfDay.now(),
   );
   if (time == null) return null;
   return date.copyWith(hour: time.hour, minute: time.minute);

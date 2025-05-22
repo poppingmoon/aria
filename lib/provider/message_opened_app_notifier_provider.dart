@@ -35,12 +35,11 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
     if (userId == null) {
       return null;
     }
-    final account =
-        ref
-            .read(userIdsNotifierProvider)
-            .entries
-            .firstWhereOrNull((e) => e.value == userId)
-            ?.key;
+    final account = ref
+        .read(userIdsNotifierProvider)
+        .entries
+        .firstWhereOrNull((e) => e.value == userId)
+        ?.key;
     if (account == null) {
       return null;
     }

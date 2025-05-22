@@ -49,16 +49,15 @@ ThemeData themeData(Ref ref, Brightness brightness) {
         )
         .apply(
           fontFamily: fontFamily,
-          fontFamilyFallback:
-              fontFamily != null
-                  ? [
-                    FontFamily.bIZUDGothic,
-                    FontFamily.notoSansJP,
-                    FontFamily.notoSansKR,
-                    FontFamily.notoSansSC,
-                    FontFamily.notoSansTC,
-                  ]
-                  : null,
+          fontFamilyFallback: fontFamily != null
+              ? [
+                  FontFamily.bIZUDGothic,
+                  FontFamily.notoSansJP,
+                  FontFamily.notoSansKR,
+                  FontFamily.notoSansSC,
+                  FontFamily.notoSansTC,
+                ]
+              : null,
           displayColor: colors.fg,
           bodyColor: colors.fg,
           decorationColor: colors.fg,
@@ -114,10 +113,9 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     ),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
-        TargetPlatform.android:
-            enablePredictiveBack
-                ? const PredictiveBackPageTransitionsBuilder()
-                : const ZoomPageTransitionsBuilder(),
+        TargetPlatform.android: enablePredictiveBack
+            ? const PredictiveBackPageTransitionsBuilder()
+            : const ZoomPageTransitionsBuilder(),
         TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
         TargetPlatform.macOS: const CupertinoPageTransitionsBuilder(),
       },

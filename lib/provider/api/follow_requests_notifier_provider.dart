@@ -52,10 +52,9 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items:
-              value.items
-                  .where((request) => request.follower.id != userId)
-                  .toList(),
+          items: value.items
+              .where((request) => request.follower.id != userId)
+              .toList(),
         ),
       );
     }
@@ -69,10 +68,9 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items:
-              value.items
-                  .where((request) => request.follower.id != userId)
-                  .toList(),
+          items: value.items
+              .where((request) => request.follower.id != userId)
+              .toList(),
         ),
       );
     }

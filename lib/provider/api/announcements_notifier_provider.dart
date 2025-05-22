@@ -61,15 +61,13 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
     final value = await future;
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map(
-                  (announcement) =>
-                      announcement.id == announcementId
-                          ? announcement.copyWith(isRead: true)
-                          : announcement,
-                )
-                .toList(),
+        items: value.items
+            .map(
+              (announcement) => announcement.id == announcementId
+                  ? announcement.copyWith(isRead: true)
+                  : announcement,
+            )
+            .toList(),
       ),
     );
   }

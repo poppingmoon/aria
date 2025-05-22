@@ -247,12 +247,11 @@ class NoteWidget extends HookConsumerWidget {
                             account: account,
                             user: appearNote.user,
                             size: style.lineHeight,
-                            onTap:
-                                appearNote.userId.isNotEmpty
-                                    ? () => context.push(
-                                      '/$account/users/${appearNote.userId}',
-                                    )
-                                    : null,
+                            onTap: appearNote.userId.isNotEmpty
+                                ? () => context.push(
+                                    '/$account/users/${appearNote.userId}',
+                                  )
+                                : null,
                           ),
                           const SizedBox(width: 8.0),
                         ],
@@ -289,12 +288,11 @@ class NoteWidget extends HookConsumerWidget {
                               account: account,
                               user: appearNote.user,
                               size: style.lineHeight * avatarScale,
-                              onTap:
-                                  appearNote.userId.isNotEmpty
-                                      ? () => context.push(
-                                        '/$account/users/${appearNote.userId}',
-                                      )
-                                      : null,
+                              onTap: appearNote.userId.isNotEmpty
+                                  ? () => context.push(
+                                      '/$account/users/${appearNote.userId}',
+                                    )
+                                  : null,
                             ),
                           ),
                         Expanded(
@@ -370,22 +368,19 @@ class _NoteContent extends HookConsumerWidget {
     );
     final showFooter = this.showFooter ?? showNoteFooter;
     final showContent = useState(alwaysExpandCw);
-    final parsed =
-        appearNote.text != null
-            ? ref.watch(parsedMfmProvider(appearNote.text!))
-            : null;
+    final parsed = appearNote.text != null
+        ? ref.watch(parsedMfmProvider(appearNote.text!))
+        : null;
     final renoteUrl = note.uri?.toString() ?? note.url?.toString();
     final urls = useMemoized(
-      () =>
-          parsed != null
-              ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
-              : null,
+      () => parsed != null
+          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+          : null,
       [parsed],
     );
-    final collapseReason =
-        appearNote.cw == null && !alwaysExpandLongNote
-            ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
-            : null;
+    final collapseReason = appearNote.cw == null && !alwaysExpandLongNote
+        ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
+        : null;
     final isCollapsed = useState(collapseReason != null);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
@@ -437,24 +432,23 @@ class _NoteContent extends HookConsumerWidget {
                     maxHeight: isCollapsed.value ? 300.0 : double.infinity,
                   ),
                   child: ShaderMask(
-                    shaderCallback:
-                        (bounds) => LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.white,
-                            Colors.white,
-                            Colors.white.withValues(alpha: 0.0),
-                          ],
-                          stops: [
-                            0.0,
-                            if (isCollapsed.value && bounds.height >= 300.0)
-                              0.9
-                            else
-                              1.0,
-                            1.0,
-                          ],
-                        ).createShader(bounds),
+                    shaderCallback: (bounds) => LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.white,
+                        Colors.white,
+                        Colors.white.withValues(alpha: 0.0),
+                      ],
+                      stops: [
+                        0.0,
+                        if (isCollapsed.value && bounds.height >= 300.0)
+                          0.9
+                        else
+                          1.0,
+                        1.0,
+                      ],
+                    ).createShader(bounds),
                     child: _NoteMfm(
                       account: account,
                       nodes: parsed,

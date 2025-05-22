@@ -115,65 +115,50 @@ class FollowRequestsListView extends HookConsumerWidget {
               center: centerKey,
               slivers: [
                 SliverList.separated(
-                  itemBuilder:
-                      (context, index) => Center(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            top:
-                                index == nextRequests.value.length - 1
-                                    ? 8.0
-                                    : 0.0,
-                            left: 8.0,
-                            right: 8.0,
-                            bottom:
-                                index == 0 &&
-                                        (requests.valueOrNull?.items.isEmpty ??
-                                            true)
-                                    ? 8.0
-                                    : 0.0,
-                          ),
-                          width: maxContentWidth,
-                          child: Material(
-                            color: Theme.of(context).colorScheme.surface,
-                            borderRadius: BorderRadius.vertical(
-                              top:
-                                  index == nextRequests.value.length - 1
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                              bottom:
-                                  index == 0 &&
-                                          (requests
-                                                  .valueOrNull
-                                                  ?.items
-                                                  .isEmpty ??
-                                              true)
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                            ),
-                            clipBehavior: Clip.hardEdge,
-                            child: _FollowRequestTile(
-                              account: account,
-                              user: nextRequests.value[index],
-                              onDismissed:
-                                  () =>
-                                      nextRequests.value =
-                                          nextRequests.value
-                                              .whereIndexed(
-                                                (i, _) => i != index,
-                                              )
-                                              .toList(),
-                            ),
-                          ),
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == nextRequests.value.length - 1 ? 8.0 : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom:
+                            index == 0 &&
+                                (requests.valueOrNull?.items.isEmpty ?? true)
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.vertical(
+                          top: index == nextRequests.value.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom:
+                              index == 0 &&
+                                  (requests.valueOrNull?.items.isEmpty ?? true)
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: _FollowRequestTile(
+                          account: account,
+                          user: nextRequests.value[index],
+                          onDismissed: () => nextRequests.value = nextRequests
+                              .value
+                              .whereIndexed((i, _) => i != index)
+                              .toList(),
                         ),
                       ),
-                  separatorBuilder:
-                      (_, _) => Center(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          width: maxContentWidth,
-                          child: const Divider(height: 0.0),
-                        ),
-                      ),
+                    ),
+                  ),
+                  separatorBuilder: (_, _) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: const Divider(height: 0.0),
+                    ),
+                  ),
                   itemCount: nextRequests.value.length,
                 ),
                 if (nextRequests.value.isNotEmpty &&
@@ -189,39 +174,35 @@ class FollowRequestsListView extends HookConsumerWidget {
                   ),
                 SliverList.separated(
                   key: centerKey,
-                  itemBuilder:
-                      (context, index) => Center(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            top:
-                                index == 0 && nextRequests.value.isEmpty
-                                    ? 8.0
-                                    : 0.0,
-                            left: 8.0,
-                            right: 8.0,
-                            bottom:
-                                index == requests.value!.items.length - 1
-                                    ? 8.0
-                                    : 0.0,
-                          ),
-                          width: maxContentWidth,
-                          child: Material(
-                            color: Theme.of(context).colorScheme.surface,
-                            child: _FollowRequestTile(
-                              account: account,
-                              user: requests.value!.items[index].follower,
-                            ),
-                          ),
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == 0 && nextRequests.value.isEmpty
+                            ? 8.0
+                            : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom: index == requests.value!.items.length - 1
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        child: _FollowRequestTile(
+                          account: account,
+                          user: requests.value!.items[index].follower,
                         ),
                       ),
-                  separatorBuilder:
-                      (_, _) => Center(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          width: maxContentWidth,
-                          child: const Divider(height: 0.0),
-                        ),
-                      ),
+                    ),
+                  ),
+                  separatorBuilder: (_, _) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: const Divider(height: 0.0),
+                    ),
+                  ),
                   itemCount: requests.valueOrNull?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
@@ -232,14 +213,11 @@ class FollowRequestsListView extends HookConsumerWidget {
                       child: PaginationBottomWidget(
                         paginationState: requests,
                         noItemsLabel: t.misskey.noFollowRequests,
-                        loadMore:
-                            () => ref
-                                .read(
-                                  followRequestsNotifierProvider(
-                                    account,
-                                  ).notifier,
-                                )
-                                .loadMore(skipError: true),
+                        loadMore: () => ref
+                            .read(
+                              followRequestsNotifierProvider(account).notifier,
+                            )
+                            .loadMore(skipError: true),
                         height: 120.0,
                       ),
                     ),
@@ -287,12 +265,8 @@ class _FollowRequestTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () => context.push('/$account/users/${user.id}'),
-      onLongPress:
-          () => showUserSheet(
-            context: context,
-            account: account,
-            userId: user.id,
-          ),
+      onLongPress: () =>
+          showUserSheet(context: context, account: account, userId: user.id),
       child: Row(
         children: [
           Padding(
@@ -324,33 +298,29 @@ class _FollowRequestTile extends ConsumerWidget {
               foregroundColor: Theme.of(context).colorScheme.onPrimary,
               backgroundColor: Theme.of(context).colorScheme.primary,
             ),
-            onPressed:
-                () => futureWithDialog(
-                  context,
-                  Future<void>(() async {
-                    await ref
-                        .read(followRequestsNotifierProvider(account).notifier)
-                        .accept(user.id);
-                    onDismissed?.call();
-                  }),
-                ),
+            onPressed: () => futureWithDialog(
+              context,
+              Future<void>(() async {
+                await ref
+                    .read(followRequestsNotifierProvider(account).notifier)
+                    .accept(user.id);
+                onDismissed?.call();
+              }),
+            ),
             child: Text(t.misskey.accept),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed:
-                  () => futureWithDialog(
-                    context,
-                    Future<void>(() async {
-                      await ref
-                          .read(
-                            followRequestsNotifierProvider(account).notifier,
-                          )
-                          .reject(user.id);
-                      onDismissed?.call();
-                    }),
-                  ),
+              onPressed: () => futureWithDialog(
+                context,
+                Future<void>(() async {
+                  await ref
+                      .read(followRequestsNotifierProvider(account).notifier)
+                      .reject(user.id);
+                  onDismissed?.call();
+                }),
+              ),
               child: Text(t.misskey.reject),
             ),
           ),

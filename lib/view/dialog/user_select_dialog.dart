@@ -23,12 +23,11 @@ Future<UserDetailed?> selectUser(
 }) {
   return showDialog(
     context: context,
-    builder:
-        (context) => UserSelectDialog(
-          account: account,
-          includeSelf: includeSelf,
-          localOnly: localOnly,
-        ),
+    builder: (context) => UserSelectDialog(
+      account: account,
+      includeSelf: includeSelf,
+      localOnly: localOnly,
+    ),
   );
 }
 
@@ -49,16 +48,15 @@ class UserSelectDialog extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final username = useState('');
     final host = useState(localOnly ? '.' : '');
-    final users =
-        username.value.isNotEmpty || host.value.isNotEmpty
-            ? ref.watch(
-              searchUsersByUsernameProvider(
-                account,
-                username.value.isNotEmpty ? username.value : null,
-                host.value.isNotEmpty ? toAscii(host.value) : null,
-              ),
-            )
-            : null;
+    final users = username.value.isNotEmpty || host.value.isNotEmpty
+        ? ref.watch(
+            searchUsersByUsernameProvider(
+              account,
+              username.value.isNotEmpty ? username.value : null,
+              host.value.isNotEmpty ? toAscii(host.value) : null,
+            ),
+          )
+        : null;
     final recentlyUsedUsers =
         ref
             .watch(recentlyUsedUsersNotifierProvider(account))
@@ -88,8 +86,9 @@ class UserSelectDialog extends HookConsumerWidget {
                       decoration: InputDecoration(
                         labelText: t.misskey.username,
                         prefixText: '@',
-                        enabledBorder:
-                            Theme.of(context).inputDecorationTheme.border,
+                        enabledBorder: Theme.of(
+                          context,
+                        ).inputDecorationTheme.border,
                         floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
                       onChanged: (value) => username.value = value,
@@ -105,8 +104,9 @@ class UserSelectDialog extends HookConsumerWidget {
                         decoration: InputDecoration(
                           labelText: t.misskey.host,
                           prefixText: '@',
-                          enabledBorder:
-                              Theme.of(context).inputDecorationTheme.border,
+                          enabledBorder: Theme.of(
+                            context,
+                          ).inputDecorationTheme.border,
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                         ),
                         onChanged: (value) => host.value = value,
@@ -124,54 +124,51 @@ class UserSelectDialog extends HookConsumerWidget {
                 null =>
                   recentlyUsedUsers.isNotEmpty
                       ? ListView.separated(
-                        itemBuilder:
-                            (context, index) => UserPreview(
+                          itemBuilder: (context, index) => UserPreview(
+                            account: account,
+                            user: recentlyUsedUsers[index],
+                            onTap: () => context.pop(recentlyUsedUsers[index]),
+                            onLongPress: () => showUserSheet(
+                              context: context,
                               account: account,
-                              user: recentlyUsedUsers[index],
-                              onTap:
-                                  () => context.pop(recentlyUsedUsers[index]),
-                              onLongPress:
-                                  () => showUserSheet(
-                                    context: context,
-                                    account: account,
-                                    userId: recentlyUsedUsers[index].id,
-                                  ),
+                              userId: recentlyUsedUsers[index].id,
                             ),
-                        separatorBuilder: (_, _) => const Divider(height: 0.0),
-                        itemCount: recentlyUsedUsers.length,
-                      )
+                          ),
+                          separatorBuilder: (_, _) =>
+                              const Divider(height: 0.0),
+                          itemCount: recentlyUsedUsers.length,
+                        )
                       : Center(child: Text(t.misskey.noUsers)),
                 AsyncValue(valueOrNull: final users?) =>
                   users.isEmpty
                       ? Center(child: Text(t.misskey.nothing))
                       : ListView.separated(
-                        itemBuilder:
-                            (context, index) =>
-                                includeSelf || users[index].id != i?.id
-                                    ? UserPreview(
-                                      account: account,
-                                      user: users[index],
-                                      onTap: () {
-                                        ref
-                                            .read(
-                                              recentlyUsedUsersNotifierProvider(
-                                                account,
-                                              ).notifier,
-                                            )
-                                            .add(users[index]);
-                                        context.pop(users[index]);
-                                      },
-                                      onLongPress:
-                                          () => showUserSheet(
-                                            context: context,
-                                            account: account,
-                                            userId: users[index].id,
-                                          ),
-                                    )
-                                    : const SizedBox.shrink(),
-                        separatorBuilder: (_, _) => const Divider(height: 0.0),
-                        itemCount: users.length,
-                      ),
+                          itemBuilder: (context, index) =>
+                              includeSelf || users[index].id != i?.id
+                              ? UserPreview(
+                                  account: account,
+                                  user: users[index],
+                                  onTap: () {
+                                    ref
+                                        .read(
+                                          recentlyUsedUsersNotifierProvider(
+                                            account,
+                                          ).notifier,
+                                        )
+                                        .add(users[index]);
+                                    context.pop(users[index]);
+                                  },
+                                  onLongPress: () => showUserSheet(
+                                    context: context,
+                                    account: account,
+                                    userId: users[index].id,
+                                  ),
+                                )
+                              : const SizedBox.shrink(),
+                          separatorBuilder: (_, _) =>
+                              const Divider(height: 0.0),
+                          itemCount: users.length,
+                        ),
                 AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
                   error: error,
                   stackTrace: stackTrace,

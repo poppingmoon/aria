@@ -15,12 +15,11 @@ class Spin extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final direction =
-        args.containsKey('left')
-            ? _SpinDirection.reverse
-            : args.containsKey('alternate')
-            ? _SpinDirection.alternate
-            : _SpinDirection.normal;
+    final direction = args.containsKey('left')
+        ? _SpinDirection.reverse
+        : args.containsKey('alternate')
+        ? _SpinDirection.alternate
+        : _SpinDirection.normal;
     final speed =
         safeParseDuration(args['speed']) ?? const Duration(milliseconds: 1500);
     if (speed == Duration.zero) {
@@ -48,19 +47,17 @@ class Spin extends HookWidget {
 
     if (args.containsKey('x')) {
       return Transform(
-        transform:
-            Matrix4.identity()
-              ..setEntry(3, 2, 0.008)
-              ..rotateX(-angle),
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, 0.008)
+          ..rotateX(-angle),
         alignment: Alignment.center,
         child: child,
       );
     } else if (args.containsKey('y')) {
       return Transform(
-        transform:
-            Matrix4.identity()
-              ..setEntry(3, 2, 0.008)
-              ..rotateY(-angle),
+        transform: Matrix4.identity()
+          ..setEntry(3, 2, 0.008)
+          ..rotateY(-angle),
         alignment: Alignment.center,
         child: child,
       );

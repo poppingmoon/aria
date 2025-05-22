@@ -116,10 +116,9 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
           withChannelNotes: true,
         ),
       ),
-      TabType.notifications =>
-        throw UnsupportedError(
-          '_fetchNote() for TabType.notifications is not supported',
-        ),
+      TabType.notifications => throw UnsupportedError(
+        '_fetchNote() for TabType.notifications is not supported',
+      ),
       TabType.custom => _fetchNotesFromCustomTimeline(sinceId),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);

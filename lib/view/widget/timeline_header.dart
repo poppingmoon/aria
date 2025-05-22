@@ -28,17 +28,16 @@ class TimelineHeader extends HookConsumerWidget {
     final hasUnreadNotification = i?.hasUnreadNotification ?? false;
     final hasUnreadAnnouncement = i?.hasUnreadAnnouncement ?? false;
     final hasUnreadChatMessages = i?.hasUnreadChatMessages ?? false;
-    final onlineUsersCount =
-        ref.watch(onlineUsersCountProvider(tabSettings.account)).valueOrNull;
+    final onlineUsersCount = ref
+        .watch(onlineUsersCountProvider(tabSettings.account))
+        .valueOrNull;
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
     );
     final (alwaysShowHeader, oneLine) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.alwaysShowTabHeader,
-          settings.showTabHeaderInOneLine,
-        ),
+        (settings) =>
+            (settings.alwaysShowTabHeader, settings.showTabHeaderInOneLine),
       ),
     );
     final isMenuExpanded = useState(false);
@@ -140,18 +139,17 @@ class TimelineHeader extends HookConsumerWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: oneLine ? 1 : null,
         ),
-        subtitle:
-            !oneLine
-                ? Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text(
-                    tabSettings.account.toString(),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    textDirection: TextDirection.ltr,
-                  ),
-                )
-                : null,
+        subtitle: !oneLine
+            ? Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  tabSettings.account.toString(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textDirection: TextDirection.ltr,
+                ),
+              )
+            : null,
         onExpansionChanged: (value) {
           isMenuExpanded.value = value;
           if (value) {

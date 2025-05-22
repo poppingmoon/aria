@@ -68,8 +68,8 @@ class MentionWidget extends ConsumerWidget {
           foregroundImage: CachedNetworkImageProvider(
             (disableShowingAnimatedImages
                     ? ref.watch(
-                      staticImageUrlProvider(account.host, url.toString()),
-                    )
+                        staticImageUrlProvider(account.host, url.toString()),
+                      )
                     : url)
                 .toString(),
             cacheManager: ref.watch(cacheManagerProvider),

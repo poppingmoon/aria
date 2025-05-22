@@ -24,38 +24,34 @@ class PagesFeatured extends ConsumerWidget {
         AsyncValue(valueOrNull: final pages?) =>
           pages.isEmpty
               ? LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.nothing)),
-                      ),
+                  builder: (context, constraint) => SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: constraint.maxHeight,
+                      child: Center(child: Text(t.misskey.nothing)),
                     ),
-              )
+                  ),
+                )
               : ListView.builder(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        width: maxContentWidth,
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 8.0 : 4.0,
-                          right: 8.0,
-                          bottom: index == pages.length - 1 ? 120.0 : 4.0,
-                        ),
-                        child: PagePreview(
-                          account: account,
-                          page: pages[index],
-                          onTap:
-                              () => context.push(
-                                '/$account/pages/${pages[index].id}',
-                              ),
-                        ),
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      width: maxContentWidth,
+                      margin: EdgeInsets.only(
+                        left: 8.0,
+                        top: index == 0 ? 8.0 : 4.0,
+                        right: 8.0,
+                        bottom: index == pages.length - 1 ? 120.0 : 4.0,
+                      ),
+                      child: PagePreview(
+                        account: account,
+                        page: pages[index],
+                        onTap: () =>
+                            context.push('/$account/pages/${pages[index].id}'),
                       ),
                     ),
-                itemCount: pages.length,
-              ),
+                  ),
+                  itemCount: pages.length,
+                ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Center(

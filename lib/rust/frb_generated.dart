@@ -1013,84 +1013,84 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AiScript =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
+  get rust_arc_increment_strong_count_AiScript => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AiScript =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
+  get rust_arc_decrement_strong_count_AiScript => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsApiLib =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
+  get rust_arc_increment_strong_count_AsApiLib => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsApiLib =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
+  get rust_arc_decrement_strong_count_AsApiLib => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiButtonCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
+  get rust_arc_increment_strong_count_AsUiButtonCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiButtonCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
+  get rust_arc_decrement_strong_count_AsUiButtonCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiLib =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
+  get rust_arc_increment_strong_count_AsUiLib => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiLib =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
+  get rust_arc_decrement_strong_count_AsUiLib => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiMfmCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
+  get rust_arc_increment_strong_count_AsUiMfmCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiMfmCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
+  get rust_arc_decrement_strong_count_AsUiMfmCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiNumberCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
+  get rust_arc_increment_strong_count_AsUiNumberCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiNumberCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
+  get rust_arc_decrement_strong_count_AsUiNumberCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiSelectCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
+  get rust_arc_increment_strong_count_AsUiSelectCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiSelectCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
+  get rust_arc_decrement_strong_count_AsUiSelectCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiSwitchCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
+  get rust_arc_increment_strong_count_AsUiSwitchCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiSwitchCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiTextInputCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+  get rust_arc_increment_strong_count_AsUiTextInputCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiTextInputCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+  get rust_arc_decrement_strong_count_AsUiTextInputCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
 
   RustArcIncrementStrongCountFnType
-  get rust_arc_increment_strong_count_AsUiTextareaCallback =>
-      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
+  get rust_arc_increment_strong_count_AsUiTextareaCallback => wire
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
 
   RustArcDecrementStrongCountFnType
-  get rust_arc_decrement_strong_count_AsUiTextareaCallback =>
-      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
+  get rust_arc_decrement_strong_count_AsUiTextareaCallback => wire
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -1974,8 +1974,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -1987,8 +1987,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2000,8 +2000,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2013,8 +2013,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2026,8 +2026,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2039,8 +2039,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2052,8 +2052,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2065,8 +2065,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -2078,8 +2078,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          raw,
-        );
+            raw,
+          );
   }
 
   @protected
@@ -4833,11 +4833,10 @@ class AsUiButtonCallbackImpl extends RustOpaque implements AsUiButtonCallback {
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiButtonCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiButtonCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiButtonCallbackPtr,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiButtonCallbackPtr,
   );
 
   Future<void> call() =>
@@ -4904,11 +4903,10 @@ class AsUiNumberCallbackImpl extends RustOpaque implements AsUiNumberCallback {
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiNumberCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiNumberCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiNumberCallbackPtr,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiNumberCallbackPtr,
   );
 
   Future<void> call({required double value}) => RustLib.instance.api
@@ -4932,11 +4930,10 @@ class AsUiSelectCallbackImpl extends RustOpaque implements AsUiSelectCallback {
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiSelectCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiSelectCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiSelectCallbackPtr,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiSelectCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api
@@ -4960,11 +4957,10 @@ class AsUiSwitchCallbackImpl extends RustOpaque implements AsUiSwitchCallback {
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiSwitchCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiSwitchCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr,
   );
 
   Future<void> call({required bool value}) => RustLib.instance.api
@@ -4985,21 +4981,18 @@ class AsUiTextInputCallbackImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib
-            .instance
-            .api
-            .rust_arc_increment_strong_count_AsUiTextInputCallback,
-    rustArcDecrementStrongCount:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiTextInputCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance
+        .api
+        .rust_arc_increment_strong_count_AsUiTextInputCallback,
+    rustArcDecrementStrongCount: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiTextInputCallback,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api
@@ -5020,21 +5013,18 @@ class AsUiTextareaCallbackImpl extends RustOpaque
   ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount:
-        RustLib
-            .instance
-            .api
-            .rust_arc_increment_strong_count_AsUiTextareaCallback,
-    rustArcDecrementStrongCount:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiTextareaCallback,
-    rustArcDecrementStrongCountPtr:
-        RustLib
-            .instance
-            .api
-            .rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr,
+    rustArcIncrementStrongCount: RustLib
+        .instance
+        .api
+        .rust_arc_increment_strong_count_AsUiTextareaCallback,
+    rustArcDecrementStrongCount: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiTextareaCallback,
+    rustArcDecrementStrongCountPtr: RustLib
+        .instance
+        .api
+        .rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api

@@ -69,8 +69,8 @@ class ChannelsSearch extends HookConsumerWidget {
                   ),
                 ],
                 selected: {includeDescription.value},
-                onSelectionChanged:
-                    (selection) => includeDescription.value = selection.single,
+                onSelectionChanged: (selection) =>
+                    includeDescription.value = selection.single,
               ),
             ),
           ),
@@ -89,31 +89,27 @@ class ChannelsSearch extends HookConsumerWidget {
         ],
       ),
       paginationState: channels,
-      itemBuilder:
-          (context, channel) => ChannelPreview(
-            account: account,
-            channel: channel,
-            onTap:
-                onChannelTap != null ? () => onChannelTap?.call(channel) : null,
-          ),
-      onRefresh:
-          () => ref.refresh(
+      itemBuilder: (context, channel) => ChannelPreview(
+        account: account,
+        channel: channel,
+        onTap: onChannelTap != null ? () => onChannelTap?.call(channel) : null,
+      ),
+      onRefresh: () => ref.refresh(
+        searchChannelsNotifierProvider(
+          account,
+          query.value,
+          includeDescription: includeDescription.value,
+        ).future,
+      ),
+      loadMore: (skipError) => ref
+          .read(
             searchChannelsNotifierProvider(
               account,
               query.value,
               includeDescription: includeDescription.value,
-            ).future,
-          ),
-      loadMore:
-          (skipError) => ref
-              .read(
-                searchChannelsNotifierProvider(
-                  account,
-                  query.value,
-                  includeDescription: includeDescription.value,
-                ).notifier,
-              )
-              .loadMore(skipError: skipError),
+            ).notifier,
+          )
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

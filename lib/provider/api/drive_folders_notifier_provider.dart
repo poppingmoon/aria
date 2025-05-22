@@ -85,10 +85,9 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map((folder) => folder.id == folderId ? response : folder)
-                .toList(),
+        items: value.items
+            .map((folder) => folder.id == folderId ? response : folder)
+            .toList(),
       ),
     );
   }

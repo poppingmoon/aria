@@ -48,10 +48,9 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .where((invitation) => invitation.roomId != roomId)
-                .toList(),
+        items: value.items
+            .where((invitation) => invitation.roomId != roomId)
+            .toList(),
       ),
     );
   }
@@ -63,10 +62,9 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .where((invitation) => invitation.roomId != roomId)
-                .toList(),
+        items: value.items
+            .where((invitation) => invitation.roomId != roomId)
+            .toList(),
       ),
     );
   }

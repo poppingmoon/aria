@@ -43,10 +43,9 @@ class AntennaSettingsDialog extends HookConsumerWidget {
     final list = lists?.firstWhereOrNull(
       (list) => list.id == settings.value.userListId,
     );
-    final params =
-        ref
-            .watch(endpointParametersProvider(account, 'antennas/create'))
-            .valueOrNull;
+    final params = ref
+        .watch(endpointParametersProvider(account, 'antennas/create'))
+        .valueOrNull;
     final theme = Theme.of(context);
 
     return AlertDialog(
@@ -65,9 +64,8 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                   labelText: t.misskey.name,
                   enabledBorder: theme.inputDecorationTheme.border,
                 ),
-                onChanged:
-                    (value) =>
-                        settings.value = settings.value.copyWith(name: value),
+                onChanged: (value) =>
+                    settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
                 onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
@@ -83,9 +81,8 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 title: Text(t.misskey.antennaSource),
                 values: AntennaSource.values,
                 initialValue: settings.value.src,
-                itemBuilder:
-                    (context, antennaSource) =>
-                        AntennaSourceWidget(antennaSource: antennaSource),
+                itemBuilder: (context, antennaSource) =>
+                    AntennaSourceWidget(antennaSource: antennaSource),
               );
               if (result != null) {
                 settings.value = settings.value.copyWith(src: result);
@@ -103,9 +100,8 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                   title: Text(t.misskey.userList),
                   values: AntennaSource.values,
                   initialValue: settings.value.src,
-                  itemBuilder:
-                      (context, antennaSource) =>
-                          AntennaSourceWidget(antennaSource: antennaSource),
+                  itemBuilder: (context, antennaSource) =>
+                      AntennaSourceWidget(antennaSource: antennaSource),
                 );
                 if (result != null) {
                   settings.value = settings.value.copyWith(src: result);
@@ -122,10 +118,10 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   ...?settings.value.users?.mapIndexed((index, user) {
-                    final acct = (user.startsWith('@')
-                            ? user.substring(1)
-                            : user)
-                        .split('@');
+                    final acct =
+                        (user.startsWith('@') ? user.substring(1) : user).split(
+                          '@',
+                        );
                     final username = acct[0];
                     final host = acct.elementAtOrNull(1) ?? account.host;
                     return MentionWidget(
@@ -167,20 +163,14 @@ class AntennaSettingsDialog extends HookConsumerWidget {
           SwitchListTile(
             title: Text(t.misskey.antennaExcludeBots),
             value: settings.value.excludeBots ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(
-                      excludeBots: value,
-                    ),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(excludeBots: value),
           ),
           SwitchListTile(
             title: Text(t.misskey.withReplies),
             value: settings.value.withReplies ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(
-                      withReplies: value,
-                    ),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(withReplies: value),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -220,25 +210,20 @@ class AntennaSettingsDialog extends HookConsumerWidget {
           SwitchListTile(
             title: Text(t.misskey.localOnly),
             value: settings.value.localOnly ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(localOnly: value),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(localOnly: value),
           ),
           SwitchListTile(
             title: Text(t.misskey.caseSensitive),
             value: settings.value.caseSensitive ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(
-                      caseSensitive: value,
-                    ),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(caseSensitive: value),
           ),
           SwitchListTile(
             title: Text(t.misskey.withFileAntenna),
             value: settings.value.withFile ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(withFile: value),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(withFile: value),
           ),
           if (this.settings?.excludeNotesInSensitiveChannel != null ||
               (params?.any(
@@ -248,33 +233,28 @@ class AntennaSettingsDialog extends HookConsumerWidget {
             SwitchListTile(
               title: Text(t.misskey.excludeNotesInSensitiveChannel),
               value: settings.value.excludeNotesInSensitiveChannel ?? false,
-              onChanged:
-                  (value) =>
-                      settings.value = settings.value.copyWith(
-                        excludeNotesInSensitiveChannel: value,
-                      ),
+              onChanged: (value) => settings.value = settings.value.copyWith(
+                excludeNotesInSensitiveChannel: value,
+              ),
             ),
         ],
       ),
       actions: [
         ElevatedButton(
-          onPressed:
-              () => context.pop(
-                settings.value.copyWith(
-                  keywords:
-                      keywordsController.text
-                          .trim()
-                          .split('\n')
-                          .map((e) => e.trim().split(' '))
-                          .toList(),
-                  excludeKeywords:
-                      excludeKeywordsController.text
-                          .trim()
-                          .split('\n')
-                          .map((e) => e.trim().split(' '))
-                          .toList(),
-                ),
-              ),
+          onPressed: () => context.pop(
+            settings.value.copyWith(
+              keywords: keywordsController.text
+                  .trim()
+                  .split('\n')
+                  .map((e) => e.trim().split(' '))
+                  .toList(),
+              excludeKeywords: excludeKeywordsController.text
+                  .trim()
+                  .split('\n')
+                  .map((e) => e.trim().split(' '))
+                  .toList(),
+            ),
+          ),
           child: Text(t.misskey.save),
         ),
         ElevatedButton(

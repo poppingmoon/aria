@@ -112,17 +112,17 @@ class AsUiWidget extends HookConsumerWidget {
             padding: padding != null ? EdgeInsets.all(padding) : null,
             decoration: BoxDecoration(
               color: safeParseColor(bgColor),
-              border:
-                  borderWidth != null && borderWidth > 0.0
-                      ? Border.all(
-                        color:
-                            safeParseColor(borderColor) ??
-                            Theme.of(context).colorScheme.outlineVariant,
-                        width: borderWidth,
-                      )
-                      : null,
-              borderRadius:
-                  rounded ?? false ? BorderRadius.circular(8.0) : null,
+              border: borderWidth != null && borderWidth > 0.0
+                  ? Border.all(
+                      color:
+                          safeParseColor(borderColor) ??
+                          Theme.of(context).colorScheme.outlineVariant,
+                      width: borderWidth,
+                    )
+                  : null,
+              borderRadius: rounded ?? false
+                  ? BorderRadius.circular(8.0)
+                  : null,
             ),
             child: Column(
               crossAxisAlignment: switch (align) {
@@ -198,10 +198,9 @@ class AsUiWidget extends HookConsumerWidget {
                   fontFamily: font,
                 ),
               ),
-          onClickEv:
-              onClickEv != null
-                  ? (clickEv) => onClickEv.call(value: clickEv)
-                  : null,
+          onClickEv: onClickEv != null
+              ? (clickEv) => onClickEv.call(value: clickEv)
+              : null,
           enableEmojiFadeIn: false,
         );
       case AsUiComponent_Button(
@@ -256,24 +255,22 @@ class AsUiWidget extends HookConsumerWidget {
         return SwitchListTile(
           value: value.value ?? false,
           title: label != null ? Text(label) : null,
-          subtitle:
-              caption != null
-                  ? Text(
-                    caption,
-                    style: TextStyle(
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onSurface.withValues(alpha: 0.75),
-                    ),
-                  )
-                  : null,
-          onChanged:
-              onChange != null
-                  ? (v) {
-                    value.value = v;
-                    onChange.call(value: v);
-                  }
-                  : null,
+          subtitle: caption != null
+              ? Text(
+                  caption,
+                  style: TextStyle(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.75),
+                  ),
+                )
+              : null,
+          onChanged: onChange != null
+              ? (v) {
+                  value.value = v;
+                  onChange.call(value: v);
+                }
+              : null,
           controlAffinity: ListTileControlAffinity.leading,
           dense: true,
         );
@@ -291,8 +288,9 @@ class AsUiWidget extends HookConsumerWidget {
           child: TextField(
             controller: controller,
             decoration: InputDecoration(labelText: label, helperText: caption),
-            onChanged:
-                onInput != null ? (value) => onInput.call(value: value) : null,
+            onChanged: onInput != null
+                ? (value) => onInput.call(value: value)
+                : null,
             minLines: 6,
             maxLines: 6,
             onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -312,8 +310,9 @@ class AsUiWidget extends HookConsumerWidget {
           child: TextField(
             controller: controller,
             decoration: InputDecoration(labelText: label, helperText: caption),
-            onChanged:
-                onInput != null ? (value) => onInput.call(value: value) : null,
+            onChanged: onInput != null
+                ? (value) => onInput.call(value: value)
+                : null,
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
@@ -326,12 +325,11 @@ class AsUiWidget extends HookConsumerWidget {
         ),
       ):
         final controller = useTextEditingController(
-          text:
-              defaultValue != null
-                  ? defaultValue == defaultValue.toInt()
-                      ? defaultValue.toInt().toString()
-                      : defaultValue.toString()
-                  : null,
+          text: defaultValue != null
+              ? defaultValue == defaultValue.toInt()
+                    ? defaultValue.toInt().toString()
+                    : defaultValue.toString()
+              : null,
         );
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
@@ -409,15 +407,14 @@ class AsUiWidget extends HookConsumerWidget {
                 }
               }),
             ],
-            onChanged:
-                onInput != null
-                    ? (value) async {
-                      final v = double.tryParse(value);
-                      if (v != null) {
-                        await onInput.call(value: v);
-                      }
+            onChanged: onInput != null
+                ? (value) async {
+                    final v = double.tryParse(value);
+                    if (v != null) {
+                      await onInput.call(value: v);
                     }
-                    : null,
+                  }
+                : null,
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
@@ -439,13 +436,12 @@ class AsUiWidget extends HookConsumerWidget {
         );
         return DropdownButtonFormField(
           decoration: InputDecoration(labelText: label, helperText: caption),
-          items:
-              items
-                  ?.map(
-                    (item) =>
-                        DropdownMenuItem(value: item.$2, child: Text(item.$1)),
-                  )
-                  .toList(),
+          items: items
+              ?.map(
+                (item) =>
+                    DropdownMenuItem(value: item.$2, child: Text(item.$1)),
+              )
+              .toList(),
           value: value.value,
           onChanged: (v) async {
             value.value = v;
@@ -461,23 +457,22 @@ class AsUiWidget extends HookConsumerWidget {
         return _Folder(
           title: title,
           opened: opened,
-          children:
-              children
-                  ?.where(
-                    (id) => switch (components[id]) {
-                      AsUiContainer(hidden: true) => false,
-                      _ => true,
-                    },
-                  )
-                  .map(
-                    (id) => AsUiWidget(
-                      account: account,
-                      host: host,
-                      componentId: id,
-                      components: components,
-                    ),
-                  )
-                  .toList(),
+          children: children
+              ?.where(
+                (id) => switch (components[id]) {
+                  AsUiContainer(hidden: true) => false,
+                  _ => true,
+                },
+              )
+              .map(
+                (id) => AsUiWidget(
+                  account: account,
+                  host: host,
+                  componentId: id,
+                  components: components,
+                ),
+              )
+              .toList(),
         );
       case AsUiComponent_PostFormButton(
         field0: AsUiPostFormButton(
@@ -498,45 +493,44 @@ class AsUiWidget extends HookConsumerWidget {
             text: text,
             primary: primary,
             rounded: rounded,
-            onTap:
-                !account.isGuest
-                    ? () {
-                      if (form?.text case final text?) {
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setText(text);
-                      }
-                      if (form?.cw case final cw?) {
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setCw(cw);
-                      }
-                      switch (form?.visibility) {
-                        case 'public':
-                          ref
-                              .read(postNotifierProvider(account).notifier)
-                              .setVisibility(NoteVisibility.public);
-                        case 'home':
-                          ref
-                              .read(postNotifierProvider(account).notifier)
-                              .setVisibility(NoteVisibility.home);
-                        case 'followers':
-                          ref
-                              .read(postNotifierProvider(account).notifier)
-                              .setVisibility(NoteVisibility.followers);
-                        case 'specified':
-                          ref
-                              .read(postNotifierProvider(account).notifier)
-                              .setVisibility(NoteVisibility.specified);
-                      }
-                      if (form?.localOnly case final localOnly?) {
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setLocalOnly(localOnly);
-                      }
-                      context.push('/$account/post');
+            onTap: !account.isGuest
+                ? () {
+                    if (form?.text case final text?) {
+                      ref
+                          .read(postNotifierProvider(account).notifier)
+                          .setText(text);
                     }
-                    : null,
+                    if (form?.cw case final cw?) {
+                      ref
+                          .read(postNotifierProvider(account).notifier)
+                          .setCw(cw);
+                    }
+                    switch (form?.visibility) {
+                      case 'public':
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setVisibility(NoteVisibility.public);
+                      case 'home':
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setVisibility(NoteVisibility.home);
+                      case 'followers':
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setVisibility(NoteVisibility.followers);
+                      case 'specified':
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setVisibility(NoteVisibility.specified);
+                    }
+                    if (form?.localOnly case final localOnly?) {
+                      ref
+                          .read(postNotifierProvider(account).notifier)
+                          .setLocalOnly(localOnly);
+                    }
+                    context.push('/$account/post');
+                  }
+                : null,
           ),
         );
       case AsUiComponent_PostForm(field0: AsUiPostForm(:final form)):
@@ -618,17 +612,13 @@ class _Button extends ConsumerWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: primary ?? false ? colors.accent : colors.buttonBg,
-        foregroundColor:
-            primary ?? false
-                ? colors.fgOnAccent
-                : DefaultTextStyle.of(context).style.color,
+        foregroundColor: primary ?? false
+            ? colors.fgOnAccent
+            : DefaultTextStyle.of(context).style.color,
         elevation: 0.0,
-        shape:
-            rounded ?? false
-                ? const StadiumBorder()
-                : RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
+        shape: rounded ?? false
+            ? const StadiumBorder()
+            : RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
         padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 14.0),
         minimumSize: const Size(100.0, 40.0),
       ),

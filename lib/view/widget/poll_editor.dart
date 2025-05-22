@@ -74,43 +74,32 @@ class PollEditor extends ConsumerWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed:
-                    () => ref
-                        .read(
-                          postNotifierProvider(
-                            account,
-                            noteId: noteId,
-                          ).notifier,
-                        )
-                        .removeChoice(index),
+                onPressed: () => ref
+                    .read(
+                      postNotifierProvider(account, noteId: noteId).notifier,
+                    )
+                    .removeChoice(index),
                 icon: const Icon(Icons.close),
               ),
             ),
           ),
           ElevatedButton(
-            onPressed:
-                poll.choices.length <= 10
-                    ? () => ref
-                        .read(
-                          postNotifierProvider(
-                            account,
-                            noteId: noteId,
-                          ).notifier,
-                        )
-                        .addChoice('')
-                    : null,
+            onPressed: poll.choices.length <= 10
+                ? () => ref
+                      .read(
+                        postNotifierProvider(account, noteId: noteId).notifier,
+                      )
+                      .addChoice('')
+                : null,
             child: Text(t.misskey.add),
           ),
           const Divider(),
           SwitchListTile(
             title: Text(t.misskey.poll_.canMultipleVote),
             value: poll.multiple ?? false,
-            onChanged:
-                (value) => ref
-                    .read(
-                      postNotifierProvider(account, noteId: noteId).notifier,
-                    )
-                    .setMultiple(value),
+            onChanged: (value) => ref
+                .read(postNotifierProvider(account, noteId: noteId).notifier)
+                .setMultiple(value),
           ),
           ListTile(
             title: Text(t.misskey.poll_.expiration),
@@ -121,68 +110,66 @@ class PollEditor extends ConsumerWidget {
                   ? t.misskey.poll_.after
                   : t.misskey.poll_.infinite,
             ),
-            onTap:
-                () => showModalBottomSheet<void>(
-                  context: context,
-                  builder:
-                      (context) => ListView(
-                        shrinkWrap: true,
-                        children: [
-                          ListTile(
-                            title: Text(t.misskey.poll_.infinite),
-                            onTap: () {
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account,
-                                      noteId: noteId,
-                                    ).notifier,
-                                  )
-                                  .clearExpiration();
-                              context.pop();
-                            },
-                          ),
-                          ListTile(
-                            title: Text(t.misskey.poll_.at),
-                            onTap: () {
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account,
-                                      noteId: noteId,
-                                    ).notifier,
-                                  )
-                                  .setExpiresAt(
-                                    DateTime.now()
-                                        .add(const Duration(days: 1))
-                                        .copyWith(
-                                          hour: 0,
-                                          minute: 0,
-                                          second: 0,
-                                          millisecond: 0,
-                                        ),
-                                  );
-                              context.pop();
-                            },
-                          ),
-                          ListTile(
-                            title: Text(t.misskey.poll_.after),
-                            onTap: () {
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account,
-                                      noteId: noteId,
-                                    ).notifier,
-                                  )
-                                  .setExpiredAfter(const Duration(hours: 1));
-                              context.pop();
-                            },
-                          ),
-                        ],
-                      ),
-                  clipBehavior: Clip.hardEdge,
-                ),
+            onTap: () => showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => ListView(
+                shrinkWrap: true,
+                children: [
+                  ListTile(
+                    title: Text(t.misskey.poll_.infinite),
+                    onTap: () {
+                      ref
+                          .read(
+                            postNotifierProvider(
+                              account,
+                              noteId: noteId,
+                            ).notifier,
+                          )
+                          .clearExpiration();
+                      context.pop();
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.poll_.at),
+                    onTap: () {
+                      ref
+                          .read(
+                            postNotifierProvider(
+                              account,
+                              noteId: noteId,
+                            ).notifier,
+                          )
+                          .setExpiresAt(
+                            DateTime.now()
+                                .add(const Duration(days: 1))
+                                .copyWith(
+                                  hour: 0,
+                                  minute: 0,
+                                  second: 0,
+                                  millisecond: 0,
+                                ),
+                          );
+                      context.pop();
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.poll_.after),
+                    onTap: () {
+                      ref
+                          .read(
+                            postNotifierProvider(
+                              account,
+                              noteId: noteId,
+                            ).notifier,
+                          )
+                          .setExpiredAfter(const Duration(hours: 1));
+                      context.pop();
+                    },
+                  ),
+                ],
+              ),
+              clipBehavior: Clip.hardEdge,
+            ),
           ),
           if (expiresAt != null)
             ListTile(

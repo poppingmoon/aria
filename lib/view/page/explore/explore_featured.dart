@@ -45,17 +45,16 @@ class ExploreFeatured extends HookConsumerWidget {
         ),
       ),
       paginationState: notes,
-      itemBuilder:
-          (context, note) => NoteWidget(account: account, noteId: note.id),
-      onRefresh:
-          () => switch (type.value) {
-            _NoteType.notes => ref.refresh(
-              featuredNotesNotifierProvider(account).future,
-            ),
-            _NoteType.polls => ref.refresh(
-              featuredPollsNotifierProvider(account).future,
-            ),
-          },
+      itemBuilder: (context, note) =>
+          NoteWidget(account: account, noteId: note.id),
+      onRefresh: () => switch (type.value) {
+        _NoteType.notes => ref.refresh(
+          featuredNotesNotifierProvider(account).future,
+        ),
+        _NoteType.polls => ref.refresh(
+          featuredPollsNotifierProvider(account).future,
+        ),
+      },
       loadMore: switch (type.value) {
         _NoteType.notes =>
           (skipError) => ref

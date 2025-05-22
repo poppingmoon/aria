@@ -24,12 +24,11 @@ class UserNotifier extends _$UserNotifier {
     ref.onResume(() => timer?.cancel());
     ref.onDispose(() => timer?.cancel());
     try {
-      final user =
-          userId != null
-              ? await _misskey.users.show(UsersShowRequest(userId: userId))
-              : await _misskey.users.showByName(
-                UsersShowByUserNameRequest(userName: username!, host: host),
-              );
+      final user = userId != null
+          ? await _misskey.users.show(UsersShowRequest(userId: userId))
+          : await _misskey.users.showByName(
+              UsersShowByUserNameRequest(userName: username!, host: host),
+            );
       ref
           .read(notesNotifierProvider(account).notifier)
           .addAll(user.pinnedNotes ?? []);
@@ -159,10 +158,9 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.following.update(
       FollowingUpdateRequest(
         userId: _userId,
-        notify:
-            notify
-                ? FollowingUpdateAllNotifyType.normal
-                : FollowingUpdateAllNotifyType.none,
+        notify: notify
+            ? FollowingUpdateAllNotifyType.normal
+            : FollowingUpdateAllNotifyType.none,
       ),
     );
     final user = state.valueOrNull;

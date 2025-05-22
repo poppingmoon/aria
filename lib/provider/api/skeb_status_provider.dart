@@ -25,10 +25,9 @@ FutureOr<UsersGetSkebStatusResponse> skebStatus(
           pathSegments: ['api', 'users', 'get-skeb-status'],
           queryParameters: {'userId': userId},
         ),
-        options:
-            userAgent != null
-                ? Options(headers: {'User-Agent': userAgent})
-                : null,
+        options: userAgent != null
+            ? Options(headers: {'User-Agent': userAgent})
+            : null,
       );
 
   return UsersGetSkebStatusResponse.fromJson(response.data!);

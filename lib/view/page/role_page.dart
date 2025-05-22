@@ -24,10 +24,9 @@ class RolePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final role = ref.watch(roleProvider(account, roleId)).valueOrNull;
     final description = role?.description;
-    final users =
-        role?.isExplorable ?? true
-            ? ref.watch(roleUsersNotifierProvider(account, roleId))
-            : null;
+    final users = role?.isExplorable ?? true
+        ? ref.watch(roleUsersNotifierProvider(account, roleId))
+        : null;
 
     return DefaultTabController(
       length: 2,
@@ -35,119 +34,115 @@ class RolePage extends ConsumerWidget {
         appBar: AppBar(
           title: Text(role?.name ?? t.misskey.role),
           bottom: TabBar(
-            tabs: [Tab(text: t.misskey.users), Tab(text: t.misskey.timeline)],
+            tabs: [
+              Tab(text: t.misskey.users),
+              Tab(text: t.misskey.timeline),
+            ],
           ),
         ),
         body: TabBarView(
           children: [
             PaginatedListView(
-              header:
-                  description != null
-                      ? SliverToBoxAdapter(
-                        child: Center(
-                          child: Container(
-                            margin: const EdgeInsets.only(
-                              top: 8.0,
-                              left: 8.0,
-                              right: 8.0,
+              header: description != null
+                  ? SliverToBoxAdapter(
+                      child: Center(
+                        child: Container(
+                          margin: const EdgeInsets.only(
+                            top: 8.0,
+                            left: 8.0,
+                            right: 8.0,
+                          ),
+                          width: maxContentWidth,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            width: maxContentWidth,
-                            child: Card(
-                              shape: RoundedRectangleBorder(
+                            margin: EdgeInsets.zero,
+                            clipBehavior: Clip.hardEdge,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                border: switch (role?.color) {
+                                  final color? => Border(
+                                    left: BorderSide(
+                                      color: Color(0xFF000000 | color),
+                                      width: 4.0,
+                                    ),
+                                  ),
+                                  _ => null,
+                                },
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
-                              margin: EdgeInsets.zero,
-                              clipBehavior: Clip.hardEdge,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  border: switch (role?.color) {
-                                    final color? => Border(
-                                      left: BorderSide(
-                                        color: Color(0xFF000000 | color),
-                                        width: 4.0,
-                                      ),
-                                    ),
-                                    _ => null,
-                                  },
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    children: [
-                                      switch (role) {
-                                        RolesListResponse(:final iconUrl?) =>
-                                          ImageWidget(
-                                            url: iconUrl.toString(),
-                                            width: 28.0,
-                                            height: 28.0,
-                                          ),
-                                        RolesListResponse(
-                                          isAdministrator: true,
-                                        ) =>
-                                          Icon(
-                                            Symbols.crown,
-                                            color:
-                                                Theme.of(
-                                                  context,
-                                                ).colorScheme.primary,
-                                            size: 28.0,
-                                            fill: 1.0,
-                                          ),
-                                        RolesListResponse(isModerator: true) =>
-                                          Icon(
-                                            Icons.shield,
-                                            color:
-                                                Theme.of(
-                                                  context,
-                                                ).colorScheme.primary,
-                                            size: 28.0,
-                                          ),
-                                        _ => Icon(
-                                          Icons.person,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onSurface
-                                              .withValues(alpha: 0.7),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    switch (role) {
+                                      RolesListResponse(:final iconUrl?) =>
+                                        ImageWidget(
+                                          url: iconUrl.toString(),
+                                          width: 28.0,
+                                          height: 28.0,
+                                        ),
+                                      RolesListResponse(
+                                        isAdministrator: true,
+                                      ) =>
+                                        Icon(
+                                          Symbols.crown,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
+                                          size: 28.0,
+                                          fill: 1.0,
+                                        ),
+                                      RolesListResponse(isModerator: true) =>
+                                        Icon(
+                                          Icons.shield,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.primary,
                                           size: 28.0,
                                         ),
-                                      },
-                                      const SizedBox(width: 6.0),
-                                      Expanded(child: Text(description)),
-                                    ],
-                                  ),
+                                      _ => Icon(
+                                        Icons.person,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface
+                                            .withValues(alpha: 0.7),
+                                        size: 28.0,
+                                      ),
+                                    },
+                                    const SizedBox(width: 6.0),
+                                    Expanded(child: Text(description)),
+                                  ],
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      )
-                      : null,
+                      ),
+                    )
+                  : null,
               paginationState: users,
-              itemBuilder:
-                  (context, user) =>
-                      UserInfo(account: account, user: user.user),
-              footer:
-                  !(role?.isExplorable ?? true)
-                      ? SliverFillRemaining(
-                        hasScrollBody: false,
-                        child: Center(
-                          child: Container(
-                            margin: const EdgeInsets.all(16.0),
-                            width: maxContentWidth,
-                            child: Center(child: Text(t.misskey.nothing)),
-                          ),
+              itemBuilder: (context, user) =>
+                  UserInfo(account: account, user: user.user),
+              footer: !(role?.isExplorable ?? true)
+                  ? SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: Container(
+                          margin: const EdgeInsets.all(16.0),
+                          width: maxContentWidth,
+                          child: Center(child: Text(t.misskey.nothing)),
                         ),
-                      )
-                      : null,
-              onRefresh:
-                  () => ref.refresh(
-                    roleUsersNotifierProvider(account, roleId).future,
-                  ),
-              loadMore:
-                  (skipError) => ref
-                      .read(roleUsersNotifierProvider(account, roleId).notifier)
-                      .loadMore(skipError: skipError),
+                      ),
+                    )
+                  : null,
+              onRefresh: () => ref.refresh(
+                roleUsersNotifierProvider(account, roleId).future,
+              ),
+              loadMore: (skipError) => ref
+                  .read(roleUsersNotifierProvider(account, roleId).notifier)
+                  .loadMore(skipError: skipError),
               panel: false,
               noItemsLabel: t.misskey.noUsers,
             ),

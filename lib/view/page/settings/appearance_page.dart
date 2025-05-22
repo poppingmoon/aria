@@ -42,10 +42,9 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.media_.title),
                 subtitle: Text(t.misskey.dataSaver_.media_.description),
                 value: settings.dataSaverMedia,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDataSaverMedia(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setDataSaverMedia(value),
               ),
             ),
           ),
@@ -57,10 +56,9 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.avatar_.title),
                 subtitle: Text(t.misskey.dataSaver_.avatar_.description),
                 value: settings.dataSaverAvatar,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDataSaverAvatar(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setDataSaverAvatar(value),
               ),
             ),
           ),
@@ -72,10 +70,9 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.urlPreview_.title),
                 subtitle: Text(t.misskey.dataSaver_.urlPreview_.description),
                 value: settings.dataSaverUrlPreview,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDataSaverUrlPreview(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setDataSaverUrlPreview(value),
               ),
             ),
           ),
@@ -86,10 +83,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.disableDataSaverWhenOnWifi),
                 value: settings.disableDataSaverWhenOnWifi,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDisableDataSaverWhenOnWifi(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setDisableDataSaverWhenOnWifi(value),
               ),
             ),
           ),
@@ -106,10 +102,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.reduceUiAnimation),
                 value: settings.reduceAnimation,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setReduceAnimation(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setReduceAnimation(value),
               ),
             ),
           ),
@@ -120,10 +115,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.disableShowingAnimatedImages),
                 value: settings.disableShowingAnimatedImages,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDisableShowingAnimatedImages(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setDisableShowingAnimatedImages(value),
               ),
             ),
           ),
@@ -134,10 +128,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.enableEmojiFadeIn),
                 value: settings.enableEmojiFadeIn,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setEnableEmojiFadeIn(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setEnableEmojiFadeIn(value),
               ),
             ),
           ),
@@ -148,10 +141,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.forceShowAds),
                 value: settings.forceShowAds,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setForceShowAds(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setForceShowAds(value),
               ),
             ),
           ),
@@ -162,10 +154,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.useGroupedNotifications),
                 value: settings.useGroupedNotifications,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setUseGroupedNotifications(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setUseGroupedNotifications(value),
               ),
             ),
           ),
@@ -176,10 +167,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showOnlineStatus),
                 value: settings.showOnlineStatus,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowOnlineStatus(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowOnlineStatus(value),
               ),
             ),
           ),
@@ -190,10 +180,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTimelineTabBarAtBottom),
                 value: settings.showTimelineTabBarAtBottom,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowTimelineTabBarAtBottom(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowTimelineTabBarAtBottom(value),
               ),
             ),
           ),
@@ -204,10 +193,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showMenuButtonInTabBar),
                 value: settings.showMenuButtonInTabBar,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowMenuButtonInTabBar(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowMenuButtonInTabBar(value),
               ),
             ),
           ),
@@ -218,10 +206,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTabHeaderInOneLine),
                 value: settings.showTabHeaderInOneLine,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowTabHeaderInOneLine(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowTabHeaderInOneLine(value),
               ),
             ),
           ),
@@ -232,10 +219,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.alwaysShowTabHeader),
                 value: settings.alwaysShowTabHeader,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setAlwaysShowTabHeader(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setAlwaysShowTabHeader(value),
               ),
             ),
           ),
@@ -246,10 +232,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTimelineLastViewedAt),
                 value: settings.showTimelineLastViewedAt,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowTimelineLastViewedAt(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowTimelineLastViewedAt(value),
               ),
             ),
           ),
@@ -260,10 +245,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showPopupOnNewNote),
                 value: settings.showPopupOnNewNote,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowPopupOnNewNote(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowPopupOnNewNote(value),
               ),
             ),
           ),
@@ -297,10 +281,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.vibrateNote),
                 value: settings.vibrateNote,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setVibrateNote(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setVibrateNote(value),
               ),
             ),
           ),
@@ -311,10 +294,9 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.vibrateNotification),
                 value: settings.vibrateNotification,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setVibrateNotification(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setVibrateNotification(value),
               ),
             ),
           ),

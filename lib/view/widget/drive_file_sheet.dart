@@ -64,9 +64,8 @@ class DriveFileSheet extends ConsumerWidget {
   Future<void> _describeFile(WidgetRef ref) async {
     final result = await showDialog<String>(
       context: ref.context,
-      builder:
-          (context) =>
-              FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
+      builder: (context) =>
+          FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
     );
     if (!ref.context.mounted) return;
     if (result != null && result != file.name) {
@@ -256,12 +255,11 @@ class DriveFileSheet extends ConsumerWidget {
           leading: const Icon(Icons.collections),
           title: Text(t.misskey.gallery),
           trailing: const Icon(Icons.navigate_next),
-          onTap:
-              () => showDialog<void>(
-                context: context,
-                builder:
-                    (context) => GalleryDialog(account: account, files: [file]),
-              ),
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (context) =>
+                GalleryDialog(account: account, files: [file]),
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

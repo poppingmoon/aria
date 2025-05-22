@@ -24,38 +24,35 @@ class GalleryPopular extends ConsumerWidget {
         AsyncValue(valueOrNull: final posts?) =>
           posts.isEmpty
               ? LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.nothing)),
-                      ),
+                  builder: (context, constraint) => SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: constraint.maxHeight,
+                      child: Center(child: Text(t.misskey.nothing)),
                     ),
-              )
+                  ),
+                )
               : ListView.builder(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        width: maxContentWidth,
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 8.0 : 4.0,
-                          right: 8.0,
-                          bottom: index == posts.length - 1 ? 120.0 : 4.0,
-                        ),
-                        child: GalleryPostPreview(
-                          account: account,
-                          post: posts[index],
-                          onTap:
-                              () => context.push(
-                                '/$account/gallery/${posts[index].id}',
-                              ),
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      width: maxContentWidth,
+                      margin: EdgeInsets.only(
+                        left: 8.0,
+                        top: index == 0 ? 8.0 : 4.0,
+                        right: 8.0,
+                        bottom: index == posts.length - 1 ? 120.0 : 4.0,
+                      ),
+                      child: GalleryPostPreview(
+                        account: account,
+                        post: posts[index],
+                        onTap: () => context.push(
+                          '/$account/gallery/${posts[index].id}',
                         ),
                       ),
                     ),
-                itemCount: posts.length,
-              ),
+                  ),
+                  itemCount: posts.length,
+                ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Center(

@@ -30,9 +30,8 @@ class CropImagePage extends HookWidget {
         mode: ExtendedImageMode.editor,
         extendedImageEditorKey: editorKey,
         cacheRawData: true,
-        initEditorConfigHandler:
-            (ExtendedImageState? state) =>
-                EditorConfig(cropAspectRatio: aspectRatio),
+        initEditorConfigHandler: (ExtendedImageState? state) =>
+            EditorConfig(cropAspectRatio: aspectRatio),
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: t.misskey.done,

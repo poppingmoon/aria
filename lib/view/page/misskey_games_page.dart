@@ -26,35 +26,27 @@ class MisskeyGamesPage extends ConsumerWidget {
           ListTile(
             title: const Text('🍪👈'),
             trailing: const Icon(Icons.navigate_next),
-            onTap:
-                () => launchUrl(
-                  ref,
-                  serverUrl.replace(pathSegments: ['clicker']),
-                ),
+            onTap: () =>
+                launchUrl(ref, serverUrl.replace(pathSegments: ['clicker'])),
           ),
           ListTile(
             title: Text(t.misskey.bubbleGame),
             trailing: const Icon(Icons.navigate_next),
-            onTap:
-                () => launchUrl(
-                  ref,
-                  serverUrl.replace(pathSegments: ['bubble-game']),
-                ),
+            onTap: () => launchUrl(
+              ref,
+              serverUrl.replace(pathSegments: ['bubble-game']),
+            ),
           ),
           ListTile(
             title: Text(t.misskey.reversi_.reversi),
-            subtitle:
-                invitations.isNotEmpty
-                    ? Text(
-                      '${t.misskey.invitations}: ${invitations.map((user) => user.acct).join(', ')}',
-                    )
-                    : null,
+            subtitle: invitations.isNotEmpty
+                ? Text(
+                    '${t.misskey.invitations}: ${invitations.map((user) => user.acct).join(', ')}',
+                  )
+                : null,
             trailing: const Icon(Icons.navigate_next),
-            onTap:
-                () => launchUrl(
-                  ref,
-                  serverUrl.replace(pathSegments: ['reversi']),
-                ),
+            onTap: () =>
+                launchUrl(ref, serverUrl.replace(pathSegments: ['reversi'])),
           ),
         ],
       ),

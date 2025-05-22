@@ -22,59 +22,51 @@ class UserReactions extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: reactions,
-      itemBuilder:
-          (context, reaction) => Column(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(8.0),
+      itemBuilder: (context, reaction) => Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(8.0),
+              ),
+            ),
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                EmojiWidget(
+                  account: account,
+                  emoji: reaction.type,
+                  style: DefaultTextStyle.of(
+                    context,
+                  ).style.apply(fontSizeFactor: 1.5),
+                  emojis: reaction.note.reactionEmojis,
+                  onTap: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) =>
+                        EmojiSheet(account: account, emoji: reaction.type),
                   ),
                 ),
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    EmojiWidget(
-                      account: account,
-                      emoji: reaction.type,
-                      style: DefaultTextStyle.of(
-                        context,
-                      ).style.apply(fontSizeFactor: 1.5),
-                      emojis: reaction.note.reactionEmojis,
-                      onTap:
-                          () => showModalBottomSheet<void>(
-                            context: context,
-                            builder:
-                                (context) => EmojiSheet(
-                                  account: account,
-                                  emoji: reaction.type,
-                                ),
-                          ),
-                    ),
-                    TimeWidget(time: reaction.createdAt),
-                  ],
-                ),
-              ),
-              NoteWidget(
-                account: account,
-                noteId: reaction.note.id,
-                withHardMute: false,
-                borderRadius: const BorderRadius.vertical(
-                  bottom: Radius.circular(8.0),
-                ),
-              ),
-            ],
+                TimeWidget(time: reaction.createdAt),
+              ],
+            ),
           ),
-      onRefresh:
-          () => ref.refresh(
-            userReactionsNotifierProvider(account, userId).future,
+          NoteWidget(
+            account: account,
+            noteId: reaction.note.id,
+            withHardMute: false,
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(8.0),
+            ),
           ),
-      loadMore:
-          (skipError) => ref
-              .read(userReactionsNotifierProvider(account, userId).notifier)
-              .loadMore(skipError: skipError),
+        ],
+      ),
+      onRefresh: () =>
+          ref.refresh(userReactionsNotifierProvider(account, userId).future),
+      loadMore: (skipError) => ref
+          .read(userReactionsNotifierProvider(account, userId).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

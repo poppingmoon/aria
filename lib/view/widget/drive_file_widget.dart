@@ -31,17 +31,15 @@ class DriveFileWidget extends ConsumerWidget {
       clipBehavior: Clip.hardEdge,
       child: IconTheme(
         data: IconThemeData(
-          color:
-              isSelected
-                  ? Theme.of(context).colorScheme.onPrimary
-                  : Theme.of(context).colorScheme.onSurface,
+          color: isSelected
+              ? Theme.of(context).colorScheme.onPrimary
+              : Theme.of(context).colorScheme.onSurface,
         ),
         child: DefaultTextStyle.merge(
           style: TextStyle(
-            color:
-                isSelected
-                    ? Theme.of(context).colorScheme.onPrimary
-                    : Theme.of(context).colorScheme.onSurface,
+            color: isSelected
+                ? Theme.of(context).colorScheme.onPrimary
+                : Theme.of(context).colorScheme.onSurface,
           ),
           child: InkWell(
             onTap: onTap,
@@ -78,16 +76,12 @@ class DriveFileWidget extends ConsumerWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed:
-                          () => showModalBottomSheet<void>(
-                            context: context,
-                            builder:
-                                (context) => DriveFileSheet(
-                                  account: account,
-                                  file: file,
-                                ),
-                            clipBehavior: Clip.antiAlias,
-                          ),
+                      onPressed: () => showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) =>
+                            DriveFileSheet(account: account, file: file),
+                        clipBehavior: Clip.antiAlias,
+                      ),
                       icon: const Icon(Icons.more_vert),
                     ),
                   ],

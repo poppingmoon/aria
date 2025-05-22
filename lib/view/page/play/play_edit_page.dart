@@ -21,10 +21,9 @@ class PlayEditPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final play =
-        playId != null
-            ? ref.watch(playNotifierProvider(account, playId!)).valueOrNull
-            : null;
+    final play = playId != null
+        ? ref.watch(playNotifierProvider(account, playId!)).valueOrNull
+        : null;
     final title = useState(play?.title);
     final summary = useState(play?.summary);
     final script = useState(play?.script);
@@ -48,46 +47,42 @@ class PlayEditPage extends HookConsumerWidget {
               ? t.misskey.play_.new_
               : '${t.misskey.play_.edit}: ${play?.title ?? ''}',
         ),
-        actions:
-            playId != null
-                ? [
-                  PopupMenuButton<void>(
-                    itemBuilder:
-                        (context) => [
-                          PopupMenuItem(
-                            onTap: () async {
-                              final confirmed = await confirm(
-                                context,
-                                message: t.misskey.deleteAreYouSure(
-                                  x: play?.title ?? '',
-                                ),
-                              );
-                              if (!context.mounted) return;
-                              if (confirmed) {
-                                await futureWithDialog(
-                                  context,
-                                  ref
-                                      .read(misskeyProvider(account))
-                                      .flash
-                                      .delete(
-                                        FlashDeleteRequest(flashId: playId!),
-                                      ),
-                                );
-                                if (!context.mounted) return;
-                                context.go('/$account/play');
-                              }
-                            },
-                            child: Text(
-                              t.misskey.delete,
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                            ),
+        actions: playId != null
+            ? [
+                PopupMenuButton<void>(
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () async {
+                        final confirmed = await confirm(
+                          context,
+                          message: t.misskey.deleteAreYouSure(
+                            x: play?.title ?? '',
                           ),
-                        ],
-                  ),
-                ]
-                : null,
+                        );
+                        if (!context.mounted) return;
+                        if (confirmed) {
+                          await futureWithDialog(
+                            context,
+                            ref
+                                .read(misskeyProvider(account))
+                                .flash
+                                .delete(FlashDeleteRequest(flashId: playId!)),
+                          );
+                          if (!context.mounted) return;
+                          context.go('/$account/play');
+                        }
+                      },
+                      child: Text(
+                        t.misskey.delete,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ]
+            : null,
       ),
       body: ListView(
         children: [

@@ -92,10 +92,9 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map((post) => post.id == postId ? updated : post)
-                .toList(),
+        items: value.items
+            .map((post) => post.id == postId ? updated : post)
+            .toList(),
       ),
     );
   }

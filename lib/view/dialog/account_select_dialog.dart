@@ -23,17 +23,15 @@ class AccountSelectDialog extends HookConsumerWidget {
     final focusNode = useFocusNode();
     useEffect(() {
       controller.addListener(
-        () =>
-            account.value = Account(
-              host:
-                  toAscii(
-                    controller.text
-                        .trim()
-                        .replaceFirst('https://', '')
-                        .split('/')
-                        .first,
-                  ).toLowerCase(),
-            ),
+        () => account.value = Account(
+          host: toAscii(
+            controller.text
+                .trim()
+                .replaceFirst('https://', '')
+                .split('/')
+                .first,
+          ).toLowerCase(),
+        ),
       );
       return;
     }, []);
@@ -62,8 +60,8 @@ class AccountSelectDialog extends HookConsumerWidget {
             title: Text(t.aria.guest),
             value: true,
             groupValue: account.value?.isGuest ?? false,
-            onChanged:
-                (value) => account.value = Account(host: controller.text),
+            onChanged: (value) =>
+                account.value = Account(host: controller.text),
           ),
           if (account.value?.isGuest ?? false) ...[
             MisskeyServerAutocomplete(

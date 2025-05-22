@@ -40,16 +40,14 @@ class NoteHeader extends HookConsumerWidget {
           child: Align(
             alignment: AlignmentDirectional.centerStart,
             child: InkWell(
-              onTap:
-                  note.userId.isNotEmpty
-                      ? () => context.push('/$account/users/${note.userId}')
-                      : null,
-              onLongPress:
-                  () => showUserSheet(
-                    context: context,
-                    account: account,
-                    userId: note.userId,
-                  ),
+              onTap: note.userId.isNotEmpty
+                  ? () => context.push('/$account/users/${note.userId}')
+                  : null,
+              onLongPress: () => showUserSheet(
+                context: context,
+                account: account,
+                userId: note.userId,
+              ),
               child: UsernameWidget(
                 account: account,
                 user: note.user,
@@ -99,12 +97,12 @@ class NoteHeader extends HookConsumerWidget {
                                   (iconUrl.hasScheme
                                           ? iconUrl
                                           : ref
-                                              .watch(
-                                                serverUrlNotifierProvider(
-                                                  account.host,
-                                                ),
-                                              )
-                                              .resolveUri(iconUrl))
+                                                .watch(
+                                                  serverUrlNotifierProvider(
+                                                    account.host,
+                                                  ),
+                                                )
+                                                .resolveUri(iconUrl))
                                       .toString(),
                               height: style.lineHeight,
                               opacity: style.color?.a ?? 1.0,
@@ -125,10 +123,9 @@ class NoteHeader extends HookConsumerWidget {
           style: style.apply(fontSizeFactor: 0.9),
           child: TimeWidget(
             time: note.createdAt,
-            onTap:
-                note.id.isNotEmpty
-                    ? () => context.push('/$account/notes/${note.id}')
-                    : null,
+            onTap: note.id.isNotEmpty
+                ? () => context.push('/$account/notes/${note.id}')
+                : null,
             absolute: showCreatedAt,
           ),
         ),

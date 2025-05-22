@@ -24,8 +24,9 @@ class ChannelHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final channel =
-        ref.watch(channelNotifierProvider(account, channelId)).valueOrNull;
+    final channel = ref
+        .watch(channelNotifierProvider(account, channelId))
+        .valueOrNull;
     if (channel == null) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -33,18 +34,16 @@ class ChannelHome extends ConsumerWidget {
     final description = channel.description;
 
     return RefreshIndicator(
-      onRefresh:
-          () => ref.refresh(channelNotifierProvider(account, channelId).future),
+      onRefresh: () =>
+          ref.refresh(channelNotifierProvider(account, channelId).future),
       child: CustomScrollView(
         slivers: [
           SliverList.list(
             children: [
               InkWell(
-                onTap:
-                    () =>
-                        bannerUrl != null
-                            ? showImageDialog(context, url: bannerUrl)
-                            : null,
+                onTap: () => bannerUrl != null
+                    ? showImageDialog(context, url: bannerUrl)
+                    : null,
                 child: Stack(
                   children: [
                     Container(height: 200, color: bannerBackgroundColor),
@@ -69,87 +68,85 @@ class ChannelHome extends ConsumerWidget {
                     if (!account.isGuest) ...[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:
-                            channel.isFollowing ?? false
-                                ? ElevatedButton(
-                                  onPressed:
-                                      () => futureWithDialog(
-                                        context,
-                                        ref
-                                            .read(
-                                              channelNotifierProvider(
-                                                account,
-                                                channelId,
-                                              ).notifier,
-                                            )
-                                            .unfollow(),
-                                      ),
-                                  child: Text(t.misskey.unfollow),
-                                )
-                                : ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor:
-                                        Theme.of(context).colorScheme.primary,
-                                    backgroundColor:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
-                                  onPressed:
-                                      () => futureWithDialog(
-                                        context,
-                                        ref
-                                            .read(
-                                              channelNotifierProvider(
-                                                account,
-                                                channelId,
-                                              ).notifier,
-                                            )
-                                            .follow(),
-                                      ),
-                                  child: Text(t.misskey.follow),
+                        child: channel.isFollowing ?? false
+                            ? ElevatedButton(
+                                onPressed: () => futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(
+                                        channelNotifierProvider(
+                                          account,
+                                          channelId,
+                                        ).notifier,
+                                      )
+                                      .unfollow(),
                                 ),
+                                child: Text(t.misskey.unfollow),
+                              )
+                            : ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Theme.of(
+                                    context,
+                                  ).colorScheme.primary,
+                                  backgroundColor: Theme.of(
+                                    context,
+                                  ).colorScheme.surface,
+                                ),
+                                onPressed: () => futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(
+                                        channelNotifierProvider(
+                                          account,
+                                          channelId,
+                                        ).notifier,
+                                      )
+                                      .follow(),
+                                ),
+                                child: Text(t.misskey.follow),
+                              ),
                       ),
                       Align(
                         alignment: AlignmentDirectional.topEnd,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child:
-                              channel.isFavorited ?? false
-                                  ? ElevatedButton(
-                                    onPressed:
-                                        () => futureWithDialog(
-                                          context,
-                                          ref
-                                              .read(
-                                                channelNotifierProvider(
-                                                  account,
-                                                  channelId,
-                                                ).notifier,
-                                              )
-                                              .unfavorite(),
-                                        ),
-                                    child: Text(t.misskey.unfavorite),
-                                  )
-                                  : ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor:
-                                          Theme.of(context).colorScheme.primary,
-                                      backgroundColor:
-                                          Theme.of(context).colorScheme.surface,
-                                    ),
-                                    onPressed:
-                                        () => futureWithDialog(
-                                          context,
-                                          ref
-                                              .read(
-                                                channelNotifierProvider(
-                                                  account,
-                                                  channelId,
-                                                ).notifier,
-                                              )
-                                              .favorite(),
-                                        ),
-                                    child: Text(t.misskey.favorite),
+                          child: channel.isFavorited ?? false
+                              ? ElevatedButton(
+                                  onPressed: () => futureWithDialog(
+                                    context,
+                                    ref
+                                        .read(
+                                          channelNotifierProvider(
+                                            account,
+                                            channelId,
+                                          ).notifier,
+                                        )
+                                        .unfavorite(),
                                   ),
+                                  child: Text(t.misskey.unfavorite),
+                                )
+                              : ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                    backgroundColor: Theme.of(
+                                      context,
+                                    ).colorScheme.surface,
+                                  ),
+                                  onPressed: () => futureWithDialog(
+                                    context,
+                                    ref
+                                        .read(
+                                          channelNotifierProvider(
+                                            account,
+                                            channelId,
+                                          ).notifier,
+                                        )
+                                        .favorite(),
+                                  ),
+                                  child: Text(t.misskey.favorite),
+                                ),
                         ),
                       ),
                     ],
@@ -232,22 +229,21 @@ class ChannelHome extends ConsumerWidget {
             ],
           ),
           SliverList.builder(
-            itemBuilder:
-                (context, index) => Center(
-                  child: Container(
-                    width: maxContentWidth,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 4.0,
-                      horizontal: 8.0,
-                    ),
-                    child: NoteWidget(
-                      account: account,
-                      noteId: channel.pinnedNoteIds[index],
-                      withHardMute: false,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
+            itemBuilder: (context, index) => Center(
+              child: Container(
+                width: maxContentWidth,
+                margin: const EdgeInsets.symmetric(
+                  vertical: 4.0,
+                  horizontal: 8.0,
                 ),
+                child: NoteWidget(
+                  account: account,
+                  noteId: channel.pinnedNoteIds[index],
+                  withHardMute: false,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+            ),
             itemCount: channel.pinnedNoteIds.length,
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 80.0)),

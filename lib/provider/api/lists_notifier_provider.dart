@@ -45,10 +45,9 @@ class ListsNotifier extends _$ListsNotifier {
     );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (list) =>
-            list.id == listId
-                ? list.copyWith(userIds: [...list.userIds, userId])
-                : list,
+        (list) => list.id == listId
+            ? list.copyWith(userIds: [...list.userIds, userId])
+            : list,
       ),
     ]);
   }
@@ -59,12 +58,11 @@ class ListsNotifier extends _$ListsNotifier {
     );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (list) =>
-            list.id == listId
-                ? list.copyWith(
-                  userIds: list.userIds.where((id) => id != userId).toList(),
-                )
-                : list,
+        (list) => list.id == listId
+            ? list.copyWith(
+                userIds: list.userIds.where((id) => id != userId).toList(),
+              )
+            : list,
       ),
     ]);
   }

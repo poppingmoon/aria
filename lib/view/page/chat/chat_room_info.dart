@@ -28,8 +28,8 @@ class ChatRoomInfo extends ConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(
-      onRefresh:
-          () => ref.refresh(chatRoomNotifierProvider(account, roomId).future),
+      onRefresh: () =>
+          ref.refresh(chatRoomNotifierProvider(account, roomId).future),
       child: switch (room) {
         AsyncValue(valueOrNull: final room?) => IconTheme(
           data: IconThemeData(
@@ -49,48 +49,46 @@ class ChatRoomInfo extends ConsumerWidget {
                   child: KeyValueWidget(
                     label: t.misskey.name,
                     child: InkWell(
-                      onTap:
-                          isMyRoom
-                              ? () async {
-                                final result = await showTextFieldDialog(
+                      onTap: isMyRoom
+                          ? () async {
+                              final result = await showTextFieldDialog(
+                                context,
+                                title: Text(t.misskey.name),
+                                initialText: room.name,
+                              );
+                              if (!context.mounted) return;
+                              if (result != null) {
+                                await futureWithDialog(
                                   context,
-                                  title: Text(t.misskey.name),
-                                  initialText: room.name,
+                                  ref
+                                      .read(
+                                        chatRoomNotifierProvider(
+                                          account,
+                                          roomId,
+                                        ).notifier,
+                                      )
+                                      .updateRoom(name: result),
                                 );
-                                if (!context.mounted) return;
-                                if (result != null) {
-                                  await futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          chatRoomNotifierProvider(
-                                            account,
-                                            roomId,
-                                          ).notifier,
-                                        )
-                                        .updateRoom(name: result),
-                                  );
-                                }
                               }
-                              : null,
+                            }
+                          : null,
                       onLongPress: () => copyToClipboard(context, room.name),
                       child: Text.rich(
                         TextSpan(
                           text: room.name,
-                          children:
-                              isMyRoom
-                                  ? [
-                                    const WidgetSpan(
-                                      alignment: PlaceholderAlignment.middle,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 4.0,
-                                        ),
-                                        child: Icon(Icons.edit),
+                          children: isMyRoom
+                              ? [
+                                  const WidgetSpan(
+                                    alignment: PlaceholderAlignment.middle,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 4.0,
                                       ),
+                                      child: Icon(Icons.edit),
                                     ),
-                                  ]
-                                  : null,
+                                  ),
+                                ]
+                              : null,
                         ),
                       ),
                     ),
@@ -108,35 +106,33 @@ class ChatRoomInfo extends ConsumerWidget {
                   child: KeyValueWidget(
                     label: t.misskey.description,
                     child: InkWell(
-                      onTap:
-                          isMyRoom
-                              ? () async {
-                                final result = await showTextFieldDialog(
+                      onTap: isMyRoom
+                          ? () async {
+                              final result = await showTextFieldDialog(
+                                context,
+                                title: Text(t.misskey.description),
+                                initialText: room.description,
+                                maxLines: null,
+                              );
+                              if (!context.mounted) return;
+                              if (result != null) {
+                                await futureWithDialog(
                                   context,
-                                  title: Text(t.misskey.description),
-                                  initialText: room.description,
-                                  maxLines: null,
+                                  ref
+                                      .read(
+                                        chatRoomNotifierProvider(
+                                          account,
+                                          roomId,
+                                        ).notifier,
+                                      )
+                                      .updateRoom(description: result),
                                 );
-                                if (!context.mounted) return;
-                                if (result != null) {
-                                  await futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          chatRoomNotifierProvider(
-                                            account,
-                                            roomId,
-                                          ).notifier,
-                                        )
-                                        .updateRoom(description: result),
-                                  );
-                                }
                               }
-                              : null,
-                      onLongPress:
-                          room.description.isNotEmpty
-                              ? () => copyToClipboard(context, room.description)
-                              : null,
+                            }
+                          : null,
+                      onLongPress: room.description.isNotEmpty
+                          ? () => copyToClipboard(context, room.description)
+                          : null,
                       child: Text.rich(
                         TextSpan(
                           children: [
@@ -216,18 +212,17 @@ class ChatRoomInfo extends ConsumerWidget {
                       secondary: const Icon(Icons.visibility_off),
                       title: Text(t.misskey.chat_.muteThisRoom),
                       value: room.isMuted ?? false,
-                      onChanged:
-                          (value) => futureWithDialog(
-                            context,
-                            ref
-                                .read(
-                                  chatRoomNotifierProvider(
-                                    account,
-                                    roomId,
-                                  ).notifier,
-                                )
-                                .mute(value),
-                          ),
+                      onChanged: (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(
+                              chatRoomNotifierProvider(
+                                account,
+                                roomId,
+                              ).notifier,
+                            )
+                            .mute(value),
+                      ),
                     ),
                   ),
                 ),

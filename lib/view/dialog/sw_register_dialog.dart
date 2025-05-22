@@ -50,18 +50,15 @@ class SwRegisterDialog extends HookConsumerWidget {
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,
                 child: InkWell(
-                  onTap:
-                      () => launchUrl(
-                        scratchPadUrl,
-                        mode: LaunchMode.externalApplication,
-                      ),
-                  onLongPress:
-                      () => showModalBottomSheet<void>(
-                        context: context,
-                        builder:
-                            (context) =>
-                                UrlSheet(url: scratchPadUrl.toString()),
-                      ),
+                  onTap: () => launchUrl(
+                    scratchPadUrl,
+                    mode: LaunchMode.externalApplication,
+                  ),
+                  onLongPress: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) =>
+                        UrlSheet(url: scratchPadUrl.toString()),
+                  ),
                   child: Text(
                     t.misskey.scratchpad,
                     style: TextStyle(color: colors.link),
@@ -72,7 +69,8 @@ class SwRegisterDialog extends HookConsumerWidget {
           ),
           const SizedBox(height: 8.0),
           Code(
-            code: """
+            code:
+                """
 if (USER_USERNAME != '${account.username}') {
   return Mk:dialog('${t.misskey.permissionDeniedError}', '${t.aria.pleaseLoginAs(user: '@${account.username}')}', 'warning')
 }
@@ -117,24 +115,23 @@ if (Core:type(response) == 'error') {
       ),
       actions: [
         ElevatedButton(
-          onPressed:
-              responseText.value.isNotEmpty
-                  ? () async {
-                    try {
-                      final json = json5Decode(responseText.value);
-                      final response = SwRegisterResponse.fromJson(
-                        json as Map<String, dynamic>,
-                      );
-                      if (!context.mounted) return;
-                      if (i?.id == response.userId &&
-                          request.endpoint == response.endpoint) {
-                        context.pop(response);
-                        return;
-                      }
-                    } catch (_) {}
-                    await showMessageDialog(context, t.misskey.invalidValue);
-                  }
-                  : null,
+          onPressed: responseText.value.isNotEmpty
+              ? () async {
+                  try {
+                    final json = json5Decode(responseText.value);
+                    final response = SwRegisterResponse.fromJson(
+                      json as Map<String, dynamic>,
+                    );
+                    if (!context.mounted) return;
+                    if (i?.id == response.userId &&
+                        request.endpoint == response.endpoint) {
+                      context.pop(response);
+                      return;
+                    }
+                  } catch (_) {}
+                  await showMessageDialog(context, t.misskey.invalidValue);
+                }
+              : null,
           child: Text(t.misskey.ok),
         ),
       ],

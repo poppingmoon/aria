@@ -42,8 +42,9 @@ class LanguagesPage extends ConsumerWidget {
                         link: '[Crowdin](https://crowdin.com/project/misskey)',
                       ),
                       style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSecondaryContainer,
                       ),
                     ),
                   ),
@@ -65,14 +66,13 @@ class LanguagesPage extends ConsumerWidget {
                           alignment: PlaceholderAlignment.baseline,
                           baseline: TextBaseline.alphabetic,
                           child: InkWell(
-                            onTap:
-                                () => launchUrl(
-                                  ref,
-                                  Uri.https(
-                                    'crowdin.com',
-                                    'project/aria-for-misskey',
-                                  ),
-                                ),
+                            onTap: () => launchUrl(
+                              ref,
+                              Uri.https(
+                                'crowdin.com',
+                                'project/aria-for-misskey',
+                              ),
+                            ),
                             child: Text.rich(
                               TextSpan(
                                 children: [
@@ -82,15 +82,13 @@ class LanguagesPage extends ConsumerWidget {
                                   ),
                                   WidgetSpan(
                                     child: Builder(
-                                      builder:
-                                          (context) => Icon(
-                                            Icons.open_in_new,
-                                            color: colors.link,
-                                            size:
-                                                DefaultTextStyle.of(
-                                                  context,
-                                                ).style.fontSize,
-                                          ),
+                                      builder: (context) => Icon(
+                                        Icons.open_in_new,
+                                        color: colors.link,
+                                        size: DefaultTextStyle.of(
+                                          context,
+                                        ).style.fontSize,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -102,8 +100,9 @@ class LanguagesPage extends ConsumerWidget {
                         ),
                       ),
                       style: TextStyle(
-                        color:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSecondaryContainer,
                       ),
                     ),
                   ),
@@ -163,9 +162,8 @@ class LanguagesPage extends ConsumerWidget {
                   child: RadioListTile(
                     title: FutureBuilder(
                       future: LocaleSettings.instance.loadLocale(appLocale),
-                      builder:
-                          (context, snapshot) =>
-                              Text(appLocale.translations.misskey.lang__),
+                      builder: (context, snapshot) =>
+                          Text(appLocale.translations.misskey.lang__),
                     ),
                     subtitle: Text(appLocale.languageTag),
                     value: appLocale,
@@ -180,14 +178,13 @@ class LanguagesPage extends ConsumerWidget {
                         LocaleSettings.setLocale(locale);
                       }
                     },
-                    shape:
-                        index == AppLocaleUtils.supportedLocales.length - 1
-                            ? const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(8.0),
-                              ),
-                            )
-                            : null,
+                    shape: index == AppLocaleUtils.supportedLocales.length - 1
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              bottom: Radius.circular(8.0),
+                            ),
+                          )
+                        : null,
                   ),
                 ),
               ),

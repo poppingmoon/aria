@@ -24,8 +24,9 @@ Stream<List<String>> endpoints(Ref ref, String host) async* {
     }
   } catch (_) {}
   try {
-    final endpoints =
-        await ref.watch(misskeyProvider(Account(host: host))).endpoints();
+    final endpoints = await ref
+        .watch(misskeyProvider(Account(host: host)))
+        .endpoints();
     yield endpoints;
     await ref
         .read(cacheManagerProvider)

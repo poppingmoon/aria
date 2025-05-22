@@ -25,12 +25,9 @@ class ChatRoomChat extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final user =
-        userId != null
-            ? ref
-                .watch(userNotifierProvider(account, userId: userId))
-                .valueOrNull
-            : null;
+    final user = userId != null
+        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        : null;
 
     return SafeArea(
       child: Column(

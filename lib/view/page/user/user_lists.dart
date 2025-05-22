@@ -24,54 +24,50 @@ class UserLists extends ConsumerWidget {
         AsyncValue(valueOrNull: final lists?) =>
           lists.isEmpty
               ? LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.noLists)),
-                      ),
+                  builder: (context, constraint) => SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: constraint.maxHeight,
+                      child: Center(child: Text(t.misskey.noLists)),
                     ),
-              )
+                  ),
+                )
               : ListView.separated(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 8.0 : 0.0,
-                          right: 8.0,
-                          bottom: index == lists.length - 1 ? 8.0 : 0.0,
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        left: 8.0,
+                        top: index == 0 ? 8.0 : 0.0,
+                        right: 8.0,
+                        bottom: index == lists.length - 1 ? 8.0 : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(lists[index].name ?? ''),
+                        subtitle: Text(
+                          t.misskey.nUsers(n: lists[index].userIds.length),
                         ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        tileColor: Theme.of(context).colorScheme.surface,
+                        onTap: () => context.push(
+                          '/$account/users/$userId/list/${lists[index].id}',
+                        ),
+                      ),
+                    ),
+                  ),
+                  separatorBuilder: (_, _) => const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: SizedBox(
                         width: maxContentWidth,
-                        child: ListTile(
-                          title: Text(lists[index].name ?? ''),
-                          subtitle: Text(
-                            t.misskey.nUsers(n: lists[index].userIds.length),
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          tileColor: Theme.of(context).colorScheme.surface,
-                          onTap:
-                              () => context.push(
-                                '/$account/users/$userId/list/${lists[index].id}',
-                              ),
-                        ),
+                        child: Divider(height: 0.0),
                       ),
                     ),
-                separatorBuilder:
-                    (_, _) => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: SizedBox(
-                          width: maxContentWidth,
-                          child: Divider(height: 0.0),
-                        ),
-                      ),
-                    ),
-                itemCount: lists.length,
-              ),
+                  ),
+                  itemCount: lists.length,
+                ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Center(

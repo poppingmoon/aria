@@ -32,8 +32,9 @@ class EmojisNotifier extends _$EmojisNotifier {
       }
     } catch (_) {}
     final lastModified = await file?.file.lastModified();
-    final difference =
-        lastModified != null ? DateTime.now().difference(lastModified) : null;
+    final difference = lastModified != null
+        ? DateTime.now().difference(lastModified)
+        : null;
     if (difference != null && difference < const Duration(minutes: 10)) {
       _recentlyFetched = true;
       _timer = Timer(const Duration(minutes: 10) - difference, () {
@@ -59,8 +60,9 @@ class EmojisNotifier extends _$EmojisNotifier {
   Future<List<Emoji>> _fetchEmojis() async {
     final endpoints = await ref.read(endpointsProvider(host).future);
     if (endpoints.contains('emojis')) {
-      final emojis =
-          await ref.read(misskeyProvider(Account(host: host))).emojis();
+      final emojis = await ref
+          .read(misskeyProvider(Account(host: host)))
+          .emojis();
       return emojis.emojis;
     } else {
       final meta = await ref
@@ -73,10 +75,9 @@ class EmojisNotifier extends _$EmojisNotifier {
           for (final emoji in emojis)
             if (emoji is Map<String, dynamic>)
               Emoji(
-                aliases:
-                    ((emoji['aliases'] ?? <String>[]) as List)
-                        .whereType<String>()
-                        .toList(),
+                aliases: ((emoji['aliases'] ?? <String>[]) as List)
+                    .whereType<String>()
+                    .toList(),
                 name: emoji['name'] as String,
                 category: emoji['category'] as String?,
                 url: Uri.parse((emoji['url'] as String).trim()),

@@ -21,17 +21,13 @@ class FollowingPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.following)),
       body: PaginatedListView(
         paginationState: following,
-        itemBuilder:
-            (context, relation) =>
-                UserInfo(account: account, user: relation.followee!),
-        onRefresh:
-            () => ref.refresh(
-              userFollowingNotifierProvider(account, userId).future,
-            ),
-        loadMore:
-            (skipError) => ref
-                .read(userFollowingNotifierProvider(account, userId).notifier)
-                .loadMore(skipError: skipError),
+        itemBuilder: (context, relation) =>
+            UserInfo(account: account, user: relation.followee!),
+        onRefresh: () =>
+            ref.refresh(userFollowingNotifierProvider(account, userId).future),
+        loadMore: (skipError) => ref
+            .read(userFollowingNotifierProvider(account, userId).notifier)
+            .loadMore(skipError: skipError),
         panel: false,
         noItemsLabel: t.misskey.noUsers,
       ),

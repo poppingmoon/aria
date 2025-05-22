@@ -99,14 +99,12 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setBirthday(DateTime? birthday) async {
-    final response = await _misskey.apiService.post<Map<String, dynamic>>(
-      'i/update',
-      {
-        'birthday':
-            birthday != null ? birthday.toIso8601String().split('T')[0] : null,
-      },
-      excludeRemoveNullPredicate: (_, _) => true,
-    );
+    final response = await _misskey.apiService
+        .post<Map<String, dynamic>>('i/update', {
+          'birthday': birthday != null
+              ? birthday.toIso8601String().split('T')[0]
+              : null,
+        }, excludeRemoveNullPredicate: (_, _) => true);
     state = AsyncValue.data(MeDetailed.fromJson(response));
     await _save(response);
   }
@@ -136,18 +134,17 @@ class INotifier extends _$INotifier {
   ) async {
     final i = await _misskey.i.update(
       IUpdateRequest(
-        avatarDecorations:
-            avatarDecorations
-                .map(
-                  (decoration) => IUpdateAvatarDecoration(
-                    id: decoration.id,
-                    angle: decoration.angle,
-                    flipH: decoration.flipH,
-                    offsetX: decoration.offsetX,
-                    offsetY: decoration.offsetY,
-                  ),
-                )
-                .toList(),
+        avatarDecorations: avatarDecorations
+            .map(
+              (decoration) => IUpdateAvatarDecoration(
+                id: decoration.id,
+                angle: decoration.angle,
+                flipH: decoration.flipH,
+                offsetX: decoration.offsetX,
+                offsetY: decoration.offsetY,
+              ),
+            )
+            .toList(),
       ),
     );
     state = AsyncValue.data(i);
@@ -370,10 +367,9 @@ class INotifier extends _$INotifier {
   Future<void> readAnnouncement(String announcementId) async {
     final i = await future;
     if (i != null) {
-      final unreadAnnouncements =
-          i.unreadAnnouncements
-              .where((announcement) => announcement.id != announcementId)
-              .toList();
+      final unreadAnnouncements = i.unreadAnnouncements
+          .where((announcement) => announcement.id != announcementId)
+          .toList();
       final updated = i.copyWith(
         unreadAnnouncements: unreadAnnouncements,
         hasUnreadAnnouncement: unreadAnnouncements.isNotEmpty,

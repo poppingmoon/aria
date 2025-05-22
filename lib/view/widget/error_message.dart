@@ -83,13 +83,12 @@ class ErrorMessage extends HookConsumerWidget {
       message,
       (acc, token) => acc.replaceAll(token, '*' * token.length),
     );
-    final maskedStackTrace =
-        stackTrace != null
-            ? tokens.fold(
-              stackTrace.toString(),
-              (acc, token) => acc.replaceAll(token, '*' * token.length),
-            )
-            : null;
+    final maskedStackTrace = stackTrace != null
+        ? tokens.fold(
+            stackTrace.toString(),
+            (acc, token) => acc.replaceAll(token, '*' * token.length),
+          )
+        : null;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -110,21 +109,19 @@ class ErrorMessage extends HookConsumerWidget {
           ListTile(
             title: Text(t.aria.stackTrace),
             subtitle: InkWell(
-              onLongPress:
-                  maskedStackTrace != null
-                      ? () => copyToClipboard(context, maskedStackTrace)
-                      : null,
-              child:
-                  maskedStackTrace != null
-                      ? Text(maskedStackTrace)
-                      : Text(
-                        t.misskey.nothing,
-                        style: TextStyle(
-                          color: DefaultTextStyle.of(
-                            context,
-                          ).style.color?.withValues(alpha: 0.5),
-                        ),
+              onLongPress: maskedStackTrace != null
+                  ? () => copyToClipboard(context, maskedStackTrace)
+                  : null,
+              child: maskedStackTrace != null
+                  ? Text(maskedStackTrace)
+                  : Text(
+                      t.misskey.nothing,
+                      style: TextStyle(
+                        color: DefaultTextStyle.of(
+                          context,
+                        ).style.color?.withValues(alpha: 0.5),
                       ),
+                    ),
             ),
           ),
         TextButton(

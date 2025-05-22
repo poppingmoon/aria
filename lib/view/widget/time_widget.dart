@@ -27,21 +27,20 @@ class TimeWidget extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      child:
-          time != null && absolute != null && relative != null
-              ? Tooltip(
-                message:
-                    '$absolute.${time.millisecond.toString().padLeft(3, '0')} ($relative)',
-                child: Text(
-                  detailed
-                      ? '$absolute ($relative)'
-                      : this.absolute
-                      ? absolute
-                      : relative,
-                  textScaler: textScaler,
-                ),
-              )
-              : Text(t.misskey.ago_.invalid),
+      child: time != null && absolute != null && relative != null
+          ? Tooltip(
+              message:
+                  '$absolute.${time.millisecond.toString().padLeft(3, '0')} ($relative)',
+              child: Text(
+                detailed
+                    ? '$absolute ($relative)'
+                    : this.absolute
+                    ? absolute
+                    : relative,
+                textScaler: textScaler,
+              ),
+            )
+          : Text(t.misskey.ago_.invalid),
     );
   }
 }

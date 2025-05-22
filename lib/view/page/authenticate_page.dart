@@ -21,17 +21,13 @@ class AuthenticatePage extends ConsumerWidget {
         title: Text(t.misskey.authenticationRequiredToContinue),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  PopupMenuItem(
-                    onTap:
-                        () => copyToClipboard(
-                          context,
-                          miAuthState!.url.toString(),
-                        ),
-                    child: Text(t.misskey.copyLink),
-                  ),
-                ],
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                onTap: () =>
+                    copyToClipboard(context, miAuthState!.url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+            ],
           ),
         ],
       ),
@@ -46,8 +42,9 @@ class AuthenticatePage extends ConsumerWidget {
             if (result?.added case final added?) {
               showToast(
                 context: context.mounted ? context : null,
-                message:
-                    added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+                message: added
+                    ? t.aria.accountAdded
+                    : t.aria.accessTokenUpdated,
               );
             }
             if (result?.success ?? false) {

@@ -20,18 +20,16 @@ class UserClips extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: clips,
-      itemBuilder:
-          (context, clip) => ClipPreview(
-            account: account,
-            clip: clip,
-            onTap: () => context.push('/$account/clips/${clip.id}'),
-          ),
-      onRefresh:
-          () => ref.refresh(userClipsNotifierProvider(account, userId).future),
-      loadMore:
-          (skipError) => ref
-              .read(userClipsNotifierProvider(account, userId).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, clip) => ClipPreview(
+        account: account,
+        clip: clip,
+        onTap: () => context.push('/$account/clips/${clip.id}'),
+      ),
+      onRefresh: () =>
+          ref.refresh(userClipsNotifierProvider(account, userId).future),
+      loadMore: (skipError) => ref
+          .read(userClipsNotifierProvider(account, userId).notifier)
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

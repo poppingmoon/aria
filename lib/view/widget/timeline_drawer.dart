@@ -23,16 +23,15 @@ class TimelineDrawer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
     final tabIndex = controller?.index;
-    final currentAccount =
-        tabIndex != null
-            ? ref.watch(
-              timelineTabsNotifierProvider.select(
-                (tabs) => tabs.elementAtOrNull(tabIndex)?.account,
-              ),
-            )
-            : null;
+    final currentAccount = tabIndex != null
+        ? ref.watch(
+            timelineTabsNotifierProvider.select(
+              (tabs) => tabs.elementAtOrNull(tabIndex)?.account,
+            ),
+          )
+        : null;
     final expansionTileControllers = useMemoized(
-      () => List.generate(accounts.length, (_) => ExpansionTileController()),
+      () => List.generate(accounts.length, (_) => ExpansibleController()),
       [accounts],
     );
     useEffect(() {
@@ -86,26 +85,24 @@ class TimelineDrawer extends HookConsumerWidget {
         ...accounts.mapIndexed((index, account) {
           final i = ref.watch(iNotifierProvider(account)).valueOrNull;
           return ExpansionTile(
-            leading:
-                i != null
-                    ? UserAvatar(
-                      account: account,
-                      user: i,
-                      size: 40.0,
-                      onTap: () => context.push('/$account/users/${i.id}'),
-                    )
-                    : IconButton(
-                      style: IconButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
-                      onPressed:
-                          () => context.push('/$account/@${account.username}'),
-                      icon: const Icon(Icons.person),
+            leading: i != null
+                ? UserAvatar(
+                    account: account,
+                    user: i,
+                    size: 40.0,
+                    onTap: () => context.push('/$account/users/${i.id}'),
+                  )
+                : IconButton(
+                    style: IconButton.styleFrom(
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-            title:
-                i != null
-                    ? UsernameWidget(account: account, user: i)
-                    : Text(account.username ?? ''),
+                    onPressed: () =>
+                        context.push('/$account/@${account.username}'),
+                    icon: const Icon(Icons.person),
+                  ),
+            title: i != null
+                ? UsernameWidget(account: account, user: i)
+                : Text(account.username ?? ''),
             subtitle: Align(
               alignment: AlignmentDirectional.centerStart,
               child: Text(
@@ -190,105 +187,101 @@ class TimelineDrawer extends HookConsumerWidget {
                 onTap: () => context.push('/$account/search'),
               ),
               PopupMenuButton<void>(
-                itemBuilder:
-                    (context) => [
-                      PopupMenuItem(
-                        onTap: () async {
-                          final result = await showTextFieldDialog(
-                            context,
-                            title: Text(t.misskey.lookup),
-                          );
-                          if (!context.mounted) return;
-                          if (result == null) return;
-                          await lookup(ref, account, result.trim());
-                        },
-                        child: ListTile(
-                          leading: const Icon(Icons.travel_explore),
-                          title: Text(t.misskey.lookup),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/lists'),
-                        child: ListTile(
-                          leading: const Icon(Icons.list),
-                          title: Text(t.misskey.lists),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/antennas'),
-                        child: ListTile(
-                          leading: const Icon(Icons.settings_input_antenna),
-                          title: Text(t.misskey.antennas),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/favorites'),
-                        child: ListTile(
-                          leading: const Icon(Icons.star_rounded),
-                          title: Text(t.misskey.favorites),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/pages'),
-                        child: ListTile(
-                          leading: const Icon(Icons.article),
-                          title: Text(t.misskey.pages),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/play'),
-                        child: const ListTile(
-                          leading: Icon(Icons.play_arrow),
-                          title: Text('Play'),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/gallery'),
-                        child: ListTile(
-                          leading: const Icon(Icons.collections),
-                          title: Text(t.misskey.gallery),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/channels'),
-                        child: ListTile(
-                          leading: const Icon(Icons.tv),
-                          title: Text(t.misskey.channel),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/games'),
-                        child: const ListTile(
-                          leading: Icon(Icons.games),
-                          title: Text('Misskey Games'),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap:
-                            () => context.push(
-                              '/$account/servers/${account.host}',
-                            ),
-                        child: ListTile(
-                          leading: const Icon(Icons.dns),
-                          title: Text(t.misskey.instanceInfo),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () => context.push('/$account/post'),
-                        child: ListTile(
-                          leading: const Icon(Icons.edit),
-                          title: Text(t.misskey.note),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap:
-                            () => context.push('/settings/accounts/$account'),
-                        child: ListTile(
-                          leading: const Icon(Icons.settings),
-                          title: Text(t.misskey.settings),
-                        ),
-                      ),
-                    ],
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    onTap: () async {
+                      final result = await showTextFieldDialog(
+                        context,
+                        title: Text(t.misskey.lookup),
+                      );
+                      if (!context.mounted) return;
+                      if (result == null) return;
+                      await lookup(ref, account, result.trim());
+                    },
+                    child: ListTile(
+                      leading: const Icon(Icons.travel_explore),
+                      title: Text(t.misskey.lookup),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/lists'),
+                    child: ListTile(
+                      leading: const Icon(Icons.list),
+                      title: Text(t.misskey.lists),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/antennas'),
+                    child: ListTile(
+                      leading: const Icon(Icons.settings_input_antenna),
+                      title: Text(t.misskey.antennas),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/favorites'),
+                    child: ListTile(
+                      leading: const Icon(Icons.star_rounded),
+                      title: Text(t.misskey.favorites),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/pages'),
+                    child: ListTile(
+                      leading: const Icon(Icons.article),
+                      title: Text(t.misskey.pages),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/play'),
+                    child: const ListTile(
+                      leading: Icon(Icons.play_arrow),
+                      title: Text('Play'),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/gallery'),
+                    child: ListTile(
+                      leading: const Icon(Icons.collections),
+                      title: Text(t.misskey.gallery),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/channels'),
+                    child: ListTile(
+                      leading: const Icon(Icons.tv),
+                      title: Text(t.misskey.channel),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/games'),
+                    child: const ListTile(
+                      leading: Icon(Icons.games),
+                      title: Text('Misskey Games'),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () =>
+                        context.push('/$account/servers/${account.host}'),
+                    child: ListTile(
+                      leading: const Icon(Icons.dns),
+                      title: Text(t.misskey.instanceInfo),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/post'),
+                    child: ListTile(
+                      leading: const Icon(Icons.edit),
+                      title: Text(t.misskey.note),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.push('/settings/accounts/$account'),
+                    child: ListTile(
+                      leading: const Icon(Icons.settings),
+                      title: Text(t.misskey.settings),
+                    ),
+                  ),
+                ],
                 child: ListTile(
                   leading: const Icon(Icons.more_horiz),
                   title: Text(t.misskey.more),

@@ -105,10 +105,9 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           antennaId: tabSettings.antennaId!,
           untilId: untilId,
           limit: limit,
-          pagination:
-              untilId != null
-                  ? Id.tryParse(untilId)?.date.millisecondsSinceEpoch.toString()
-                  : null,
+          pagination: untilId != null
+              ? Id.tryParse(untilId)?.date.millisecondsSinceEpoch.toString()
+              : null,
         ),
       ),
       TabType.channel => _misskey.channels.timeline(
@@ -141,10 +140,9 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           allowPartial: true,
         ),
       ),
-      TabType.notifications =>
-        throw UnsupportedError(
-          '_fetchNote() for TabType.notifications is not supported',
-        ),
+      TabType.notifications => throw UnsupportedError(
+        '_fetchNote() for TabType.notifications is not supported',
+      ),
       TabType.custom => _fetchNotesFromCustomTimeline(untilId: untilId),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
@@ -155,10 +153,9 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value =
-        state.hasError
-            ? state.valueOrNull ?? const PaginationState()
-            : await future;
+    final value = state.hasError
+        ? state.valueOrNull ?? const PaginationState()
+        : await future;
     if (value.isLastLoaded) {
       return;
     }

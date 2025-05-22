@@ -46,16 +46,15 @@ class UrlPreview extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final summalyResult =
-        ref
-            .watch(
-              summalyProvider(
-                account.host,
-                link,
-                lang: Localizations.localeOf(context).toLanguageTag(),
-              ),
-            )
-            .valueOrNull;
+    final summalyResult = ref
+        .watch(
+          summalyProvider(
+            account.host,
+            link,
+            lang: Localizations.localeOf(context).toLanguageTag(),
+          ),
+        )
+        .valueOrNull;
     final isPlayerOpen = useState(false);
     final thumbnail = summalyResult?.thumbnail;
     final hideThumbnail =
@@ -86,11 +85,10 @@ class UrlPreview extends HookConsumerWidget {
               Expanded(
                 child: InkWell(
                   onTap: () => navigate(ref, account, link),
-                  onLongPress:
-                      () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => UrlSheet(url: link),
-                      ),
+                  onLongPress: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => UrlSheet(url: link),
+                  ),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -209,8 +207,8 @@ class UrlPreview extends HookConsumerWidget {
               label: Text(
                 isPlayerOpen.value
                     ? playerUrl != null
-                        ? t.misskey.disablePlayer
-                        : t.misskey.close
+                          ? t.misskey.disablePlayer
+                          : t.misskey.close
                     : playerUrl != null
                     ? t.misskey.enablePlayer
                     : t.misskey.expandTweet,

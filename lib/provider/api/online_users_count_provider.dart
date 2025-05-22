@@ -8,7 +8,8 @@ part 'online_users_count_provider.g.dart';
 
 @riverpod
 FutureOr<int> onlineUsersCount(Ref ref, Account account) async {
-  final response =
-      await ref.read(misskeyProvider(account)).getOnlineUsersCount();
+  final response = await ref
+      .read(misskeyProvider(account))
+      .getOnlineUsersCount();
   return response.count;
 }

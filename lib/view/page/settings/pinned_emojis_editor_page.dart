@@ -56,33 +56,27 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
               child: ListTile(
                 leading: const Icon(Icons.emoji_symbols),
                 title: Text(t.aria.defaultReaction),
-                subtitle:
-                    settings.defaultReaction != null
-                        ? Builder(
-                          builder:
-                              (context) => EmojiWidget(
-                                account: account,
-                                emoji: settings.defaultReaction!,
-                                style: DefaultTextStyle.of(
-                                  context,
-                                ).style.apply(fontSizeFactor: 2.0),
-                              ),
-                        )
-                        : Text(t.misskey.notSet),
-                trailing:
-                    settings.defaultReaction != null
-                        ? IconButton(
-                          onPressed:
-                              () => ref
-                                  .read(
-                                    accountSettingsNotifierProvider(
-                                      account,
-                                    ).notifier,
-                                  )
-                                  .setDefaultReaction(null),
-                          icon: const Icon(Icons.close),
-                        )
-                        : const Icon(Icons.navigate_next),
+                subtitle: settings.defaultReaction != null
+                    ? Builder(
+                        builder: (context) => EmojiWidget(
+                          account: account,
+                          emoji: settings.defaultReaction!,
+                          style: DefaultTextStyle.of(
+                            context,
+                          ).style.apply(fontSizeFactor: 2.0),
+                        ),
+                      )
+                    : Text(t.misskey.notSet),
+                trailing: settings.defaultReaction != null
+                    ? IconButton(
+                        onPressed: () => ref
+                            .read(
+                              accountSettingsNotifierProvider(account).notifier,
+                            )
+                            .setDefaultReaction(null),
+                        icon: const Icon(Icons.close),
+                      )
+                    : const Icon(Icons.navigate_next),
                 onTap: () async {
                   final emoji = await pickEmoji(
                     ref,
@@ -130,28 +124,23 @@ class _RecentlyUsedEmojisEditor extends ConsumerWidget {
               child: Wrap(
                 spacing: 4.0,
                 runSpacing: 4.0,
-                children:
-                    recentlyUsedEmojis
-                        .mapIndexed(
-                          (index, emoji) => EmojiWidget(
-                            account: account,
-                            emoji: emoji,
-                            onTap:
-                                () => showModalBottomSheet<void>(
-                                  context: context,
-                                  builder:
-                                      (context) => EmojiSheet(
-                                        account: account,
-                                        emoji: emoji,
-                                      ),
-                                ),
-                            style: DefaultTextStyle.of(
-                              context,
-                            ).style.apply(fontSizeFactor: 2.0),
-                            disableTooltip: true,
-                          ),
-                        )
-                        .toList(),
+                children: recentlyUsedEmojis
+                    .mapIndexed(
+                      (index, emoji) => EmojiWidget(
+                        account: account,
+                        emoji: emoji,
+                        onTap: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) =>
+                              EmojiSheet(account: account, emoji: emoji),
+                        ),
+                        style: DefaultTextStyle.of(
+                          context,
+                        ).style.apply(fontSizeFactor: 2.0),
+                        disableTooltip: true,
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           ),

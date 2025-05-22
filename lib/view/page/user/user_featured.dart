@@ -19,16 +19,14 @@ class UserFeatured extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: notes,
-      itemBuilder:
-          (context, note) => NoteWidget(account: account, noteId: note.id),
-      onRefresh:
-          () => ref.refresh(
-            userFeaturedNotesNotifierProvider(account, userId).future,
-          ),
-      loadMore:
-          (skipError) => ref
-              .read(userFeaturedNotesNotifierProvider(account, userId).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, note) =>
+          NoteWidget(account: account, noteId: note.id),
+      onRefresh: () => ref.refresh(
+        userFeaturedNotesNotifierProvider(account, userId).future,
+      ),
+      loadMore: (skipError) => ref
+          .read(userFeaturedNotesNotifierProvider(account, userId).notifier)
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

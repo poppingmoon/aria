@@ -33,10 +33,9 @@ class NotesNotifier extends _$NotesNotifier {
     state = {
       ...state,
       note.id: note.copyWith(
-        cw:
-            note.user.mandatoryCW != null
-                ? appendContentWarning(note.cw, note.user.mandatoryCW)
-                : note.cw,
+        cw: note.user.mandatoryCW != null
+            ? appendContentWarning(note.cw, note.user.mandatoryCW)
+            : note.cw,
         reactionCount:
             note.reactionCount ??
             note.reactions.values.fold<int>(
@@ -169,10 +168,9 @@ class NotesNotifier extends _$NotesNotifier {
     await _misskey.notes.reactions.create(
       NotesReactionsCreateRequest(noteId: noteId, reaction: reaction),
     );
-    final emoji =
-        reaction.startsWith(':') && !reaction.endsWith('@.:')
-            ? '${reaction.substring(0, reaction.length - 1)}@.:'
-            : reaction;
+    final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
+        ? '${reaction.substring(0, reaction.length - 1)}@.:'
+        : reaction;
     final cachedNote = state[noteId];
     if (cachedNote != null && cachedNote.myReaction != emoji) {
       add(

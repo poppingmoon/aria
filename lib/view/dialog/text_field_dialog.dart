@@ -22,17 +22,16 @@ Future<String?> showTextFieldDialog(
 }) {
   return showDialog(
     context: context,
-    builder:
-        (context) => TextFieldDialog(
-          title: title,
-          initialText: initialText,
-          decoration: decoration,
-          style: style,
-          minLines: minLines,
-          maxLines: maxLines,
-          maxLength: maxLength,
-          autocompleteOptions: autocompleteOptions,
-        ),
+    builder: (context) => TextFieldDialog(
+      title: title,
+      initialText: initialText,
+      decoration: decoration,
+      style: style,
+      minLines: minLines,
+      maxLines: maxLines,
+      maxLength: maxLength,
+      autocompleteOptions: autocompleteOptions,
+    ),
   );
 }
 
@@ -60,13 +59,12 @@ class TextFieldDialog extends HookWidget {
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
     final decoration = (this.decoration ?? const InputDecoration()).copyWith(
-      suffixIcon:
-          maxLines == 1
-              ? IconButton(
-                onPressed: () => controller.clear(),
-                icon: const Icon(Icons.close),
-              )
-              : null,
+      suffixIcon: maxLines == 1
+          ? IconButton(
+              onPressed: () => controller.clear(),
+              icon: const Icon(Icons.close),
+            )
+          : null,
       enabledBorder: Theme.of(context).inputDecorationTheme.border,
     );
 
@@ -153,8 +151,8 @@ class _Autocomplete extends HookWidget {
             .groupListsBy((option) => option.startsWith(query));
         return [...?groups[true], ...?groups[false]];
       },
-      fieldViewBuilder:
-          (context, textEditingController, focusNode, _) => TextField(
+      fieldViewBuilder: (context, textEditingController, focusNode, _) =>
+          TextField(
             key: textFieldKey,
             controller: textEditingController,
             focusNode: focusNode,
@@ -176,15 +174,14 @@ class _Autocomplete extends HookWidget {
               constraints: BoxConstraints(maxHeight: 300.0, maxWidth: maxWidth),
               child: ListView(
                 shrinkWrap: true,
-                children:
-                    options
-                        .map(
-                          (option) => ListTile(
-                            title: Text(option),
-                            onTap: () => onSelected(option),
-                          ),
-                        )
-                        .toList(),
+                children: options
+                    .map(
+                      (option) => ListTile(
+                        title: Text(option),
+                        onTap: () => onSelected(option),
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           ),

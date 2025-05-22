@@ -66,19 +66,17 @@ class PagePage extends ConsumerWidget {
         final nodes = parse(text);
         final urls = extractUrl(nodes);
         return Column(
-          crossAxisAlignment:
-              page.alignCenter ?? false
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
+          crossAxisAlignment: page.alignCenter ?? false
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
             Mfm(
               account: account,
               nodes: nodes,
               style: TextStyle(
-                fontFamilyFallback:
-                    page.font == 'serif'
-                        ? ['serif', FontFamily.notoSerifJP]
-                        : null,
+                fontFamilyFallback: page.font == 'serif'
+                    ? ['serif', FontFamily.notoSerifJP]
+                    : null,
               ),
               textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
@@ -92,10 +90,9 @@ class PagePage extends ConsumerWidget {
         );
       case PageSection(:final title, :final children):
         return Column(
-          crossAxisAlignment:
-              page.alignCenter ?? false
-                  ? CrossAxisAlignment.center
-                  : CrossAxisAlignment.start,
+          crossAxisAlignment: page.alignCenter ?? false
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
             Text(
               title ?? '',
@@ -103,10 +100,9 @@ class PagePage extends ConsumerWidget {
                   ?.apply(fontSizeFactor: topLevel ? 1.35 : 1.0)
                   .copyWith(
                     fontWeight: FontWeight.bold,
-                    fontFamilyFallback:
-                        page.font == 'serif'
-                            ? ['serif', FontFamily.notoSerifJP]
-                            : null,
+                    fontFamilyFallback: page.font == 'serif'
+                        ? ['serif', FontFamily.notoSerifJP]
+                        : null,
                   ),
               textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
@@ -196,86 +192,83 @@ class PagePage extends ConsumerWidget {
         title: Text(page.valueOrNull?.title ?? ''),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  if (!account.isGuest)
-                    PopupMenuItem(
-                      onTap: () {
+            itemBuilder: (context) => [
+              if (!account.isGuest)
+                PopupMenuItem(
+                  onTap: () {
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setText('${page.valueOrNull?.title} $url');
+                    context.push('/$account/post');
+                  },
+                  child: Text(t.misskey.shareWithNote),
+                ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              PopupMenuItem(
+                onTap: () => launchUrl(ref, url),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => SharePlus.instance.share(
+                  ShareParams(text: '${page.valueOrNull?.title} $url'),
+                ),
+                child: Text(t.misskey.share),
+              ),
+              if (page.valueOrNull?.user case final user?
+                  when !account.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: ['Page: $url', '-----', ''].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
                         ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setText('${page.valueOrNull?.title} $url');
-                        context.push('/$account/post');
-                      },
-                      child: Text(t.misskey.shareWithNote),
-                    ),
-                  PopupMenuItem(
-                    onTap: () => copyToClipboard(context, url.toString()),
-                    child: Text(t.misskey.copyLink),
-                  ),
-                  PopupMenuItem(
-                    onTap: () => launchUrl(ref, url),
-                    child: Text(t.aria.openInBrowser),
-                  ),
-                  PopupMenuItem(
-                    onTap:
-                        () => SharePlus.instance.share(
-                          ShareParams(text: '${page.valueOrNull?.title} $url'),
-                        ),
-                    child: Text(t.misskey.share),
-                  ),
-                  if (page.valueOrNull?.user case final user?
-                      when !account.isGuest && i?.id != user.id)
-                    PopupMenuItem(
-                      onTap: () async {
-                        final comment = await showTextFieldDialog(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          initialText: ['Page: $url', '-----', ''].join('\n'),
-                          decoration: InputDecoration(
-                            helperText: t.misskey.fillAbuseReportDescription,
-                          ),
-                          maxLines: null,
-                        );
-                        if (!context.mounted) return;
-                        if (comment == null) return;
-                        final confirmed = await confirm(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          message: comment,
-                          okText: t.misskey.reportAbuse,
-                        );
-                        if (!context.mounted) return;
-                        if (confirmed) {
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(misskeyProvider(account))
-                                .users
-                                .reportAbuse(
-                                  UsersReportAbuseRequest(
-                                    userId: user.id,
-                                    comment: comment,
-                                  ),
-                                ),
-                          );
-                        }
-                      },
-                      child: Text(t.misskey.reportAbuse),
-                    ),
-                ],
+                            .read(misskeyProvider(account))
+                            .users
+                            .reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
+                ),
+            ],
           ),
         ],
       ),
       body: RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(
-              pageNotifierProvider(
-                account,
-                pageId: pageId,
-                pageName: pageName,
-                username: username,
-              ).future,
-            ),
+        onRefresh: () => ref.refresh(
+          pageNotifierProvider(
+            account,
+            pageId: pageId,
+            pageName: pageName,
+            username: username,
+          ).future,
+        ),
         child: switch (page) {
           AsyncValue(valueOrNull: final page?) => ListView(
             children: [
@@ -293,11 +286,8 @@ class PagePage extends ConsumerWidget {
                     ),
                     clipBehavior: Clip.antiAlias,
                     child: InkWell(
-                      onTap:
-                          () => showImageDialog(
-                            context,
-                            url: eyeCatchingImage.url,
-                          ),
+                      onTap: () =>
+                          showImageDialog(context, url: eyeCatchingImage.url),
                       child: ImageWidget(
                         url: eyeCatchingImage.url,
                         blurHash: eyeCatchingImage.blurhash,
@@ -317,26 +307,22 @@ class PagePage extends ConsumerWidget {
                         UserAvatar(
                           account: account,
                           user: page.user,
-                          onTap:
-                              () => context.push(
-                                '/$account/users/${page.userId}',
-                              ),
+                          onTap: () =>
+                              context.push('/$account/users/${page.userId}'),
                         ),
                         const SizedBox(width: 2.0),
                         Expanded(
                           child: Align(
                             alignment: AlignmentDirectional.centerStart,
                             child: InkWell(
-                              onTap:
-                                  () => context.push(
-                                    '/$account/users/${page.userId}',
-                                  ),
-                              onLongPress:
-                                  () => showUserSheet(
-                                    context: context,
-                                    account: account,
-                                    userId: page.userId,
-                                  ),
+                              onTap: () => context.push(
+                                '/$account/users/${page.userId}',
+                              ),
+                              onLongPress: () => showUserSheet(
+                                context: context,
+                                account: account,
+                                userId: page.userId,
+                              ),
                               child: UsernameWidget(
                                 account: account,
                                 user: page.user,
@@ -347,14 +333,13 @@ class PagePage extends ConsumerWidget {
                       ],
                     ),
                     tileColor: theme.colorScheme.surface,
-                    shape:
-                        page.eyeCatchingImage == null
-                            ? const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(8.0),
-                              ),
-                            )
-                            : null,
+                    shape: page.eyeCatchingImage == null
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(8.0),
+                            ),
+                          )
+                        : null,
                   ),
                 ),
               ),
@@ -400,12 +385,11 @@ class PagePage extends ConsumerWidget {
                       LikeButton(
                         isLiked: page.isLiked ?? false,
                         likedCount: page.likedCount ?? 0,
-                        onTap:
-                            !account.isGuest
-                                ? () => futureWithDialog(
-                                  context,
-                                  page.isLiked ?? false
-                                      ? ref
+                        onTap: !account.isGuest
+                            ? () => futureWithDialog(
+                                context,
+                                page.isLiked ?? false
+                                    ? ref
                                           .read(
                                             pageNotifierProvider(
                                               account,
@@ -415,7 +399,7 @@ class PagePage extends ConsumerWidget {
                                             ).notifier,
                                           )
                                           .unlike()
-                                      : ref
+                                    : ref
                                           .read(
                                             pageNotifierProvider(
                                               account,
@@ -425,8 +409,8 @@ class PagePage extends ConsumerWidget {
                                             ).notifier,
                                           )
                                           .like(),
-                                )
-                                : null,
+                              )
+                            : null,
                       ),
                       const Spacer(),
                       if (!account.isGuest)
@@ -442,8 +426,8 @@ class PagePage extends ConsumerWidget {
                         ),
                       IconButton(
                         tooltip: t.misskey.copyLink,
-                        onPressed:
-                            () => copyToClipboard(context, url.toString()),
+                        onPressed: () =>
+                            copyToClipboard(context, url.toString()),
                         icon: const Icon(Icons.link),
                       ),
                       IconButton(
@@ -453,10 +437,9 @@ class PagePage extends ConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.share,
-                        onPressed:
-                            () => SharePlus.instance.share(
-                              ShareParams(text: '${page.title} $url'),
-                            ),
+                        onPressed: () => SharePlus.instance.share(
+                          ShareParams(text: '${page.title} $url'),
+                        ),
                         icon: const Icon(Icons.share),
                       ),
                     ],
@@ -485,14 +468,13 @@ class PagePage extends ConsumerWidget {
                         account: account,
                         userId: page.userId,
                       ),
-                      onTap:
-                          () => context.push('/$account/users/${page.user.id}'),
-                      onLongPress:
-                          () => showUserSheet(
-                            context: context,
-                            account: account,
-                            userId: page.user.id,
-                          ),
+                      onTap: () =>
+                          context.push('/$account/users/${page.user.id}'),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: page.user.id,
+                      ),
                     ),
                   ),
                 ),
@@ -593,50 +575,45 @@ class PagePage extends ConsumerWidget {
               const SizedBox(height: 8.0),
               // Builder defers API call.
               Builder(
-                builder:
-                    (context) => Center(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        width: maxContentWidth,
-                        child: ExpansionTile(
-                          leading: const Icon(Icons.schedule),
-                          title: Text(t.misskey.recentPosts),
-                          initiallyExpanded: true,
-                          backgroundColor: theme.colorScheme.surface,
-                          collapsedBackgroundColor: theme.colorScheme.surface,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          collapsedShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          children: [
-                            ...?ref
-                                .watch(
-                                  userPagesNotifierProvider(
-                                    account,
-                                    page.userId,
-                                  ),
-                                )
-                                .valueOrNull
-                                ?.items
-                                .map(
-                                  (page) => Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: PagePreview(
-                                      account: account,
-                                      page: page,
-                                      onTap:
-                                          () => context.push(
-                                            '/$account/pages/${page.id}',
-                                          ),
-                                    ),
+                builder: (context) => Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ExpansionTile(
+                      leading: const Icon(Icons.schedule),
+                      title: Text(t.misskey.recentPosts),
+                      initiallyExpanded: true,
+                      backgroundColor: theme.colorScheme.surface,
+                      collapsedBackgroundColor: theme.colorScheme.surface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      collapsedShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      children: [
+                        ...?ref
+                            .watch(
+                              userPagesNotifierProvider(account, page.userId),
+                            )
+                            .valueOrNull
+                            ?.items
+                            .map(
+                              (page) => Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: PagePreview(
+                                  account: account,
+                                  page: page,
+                                  onTap: () => context.push(
+                                    '/$account/pages/${page.id}',
                                   ),
                                 ),
-                          ],
-                        ),
-                      ),
+                              ),
+                            ),
+                      ],
                     ),
+                  ),
+                ),
               ),
               const SizedBox(height: 120.0),
             ],

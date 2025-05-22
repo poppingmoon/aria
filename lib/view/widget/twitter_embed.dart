@@ -23,7 +23,8 @@ class TwitterEmbed extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final height = useState(200.0);
     // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-javascript-factory-function
-    final content = """
+    final content =
+        """
 <html>
 
   <head>
@@ -79,14 +80,11 @@ class TwitterEmbed extends HookConsumerWidget {
         child: InAppWebView(
           initialSettings: InAppWebViewSettings(transparentBackground: true),
           initialData: InAppWebViewInitialData(data: content),
-          onWebViewCreated:
-              (controller) => controller.addJavaScriptHandler(
-                handlerName: 'onReady',
-                callback:
-                    (arguments) =>
-                        height.value =
-                            (arguments.single as num).toDouble() + 16.0,
-              ),
+          onWebViewCreated: (controller) => controller.addJavaScriptHandler(
+            handlerName: 'onReady',
+            callback: (arguments) =>
+                height.value = (arguments.single as num).toDouble() + 16.0,
+          ),
           shouldOverrideUrlLoading: (controller, navigationAction) async {
             final url = navigationAction.request.url;
             if (url == null) {

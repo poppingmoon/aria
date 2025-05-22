@@ -20,8 +20,10 @@ FutureOr<List<GalleryPost>> popularGalleryPosts(
   ref.onResume(() => timer?.cancel());
   ref.onDispose(() => timer?.cancel());
   try {
-    final response =
-        await ref.watch(misskeyProvider(account)).gallery.popular();
+    final response = await ref
+        .watch(misskeyProvider(account))
+        .gallery
+        .popular();
     return response.toList();
   } catch (_) {
     timer?.cancel();

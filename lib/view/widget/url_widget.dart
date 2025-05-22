@@ -56,11 +56,10 @@ class UrlWidget extends StatelessWidget {
     if (url == null) {
       return InkWell(
         onTap: onTap,
-        onLongPress:
-            () => showModalBottomSheet<void>(
-              context: context,
-              builder: (context) => UrlSheet(url: this.url),
-            ),
+        onLongPress: () => showModalBottomSheet<void>(
+          context: context,
+          builder: (context) => UrlSheet(url: this.url),
+        ),
         child: Text(
           this.url,
           style: style.apply(
@@ -85,11 +84,10 @@ class UrlWidget extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      onLongPress:
-          () => showModalBottomSheet<void>(
-            context: context,
-            builder: (context) => UrlSheet(url: this.url),
-          ),
+      onLongPress: () => showModalBottomSheet<void>(
+        context: context,
+        builder: (context) => UrlSheet(url: this.url),
+      ),
       child: Text.rich(
         TextSpan(
           children: [

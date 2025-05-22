@@ -47,12 +47,12 @@ class AboutAriaPage extends HookConsumerWidget {
                         if (snapshot case AsyncSnapshot(:final data?)) {
                           final buildNumber =
                               defaultTargetPlatform == TargetPlatform.android &&
-                                      kReleaseMode
-                                  ? data.buildNumber.substring(
-                                    0,
-                                    data.buildNumber.length - 1,
-                                  )
-                                  : data.buildNumber;
+                                  kReleaseMode
+                              ? data.buildNumber.substring(
+                                  0,
+                                  data.buildNumber.length - 1,
+                                )
+                              : data.buildNumber;
                           return Text(
                             '${data.version}+$buildNumber',
                             style: TextStyle(
@@ -83,23 +83,20 @@ class AboutAriaPage extends HookConsumerWidget {
                         alignment: PlaceholderAlignment.baseline,
                         baseline: TextBaseline.alphabetic,
                         child: InkWell(
-                          onTap:
-                              () => launchUrl(
-                                ref,
-                                Uri.https(
-                                  'github.com',
-                                  'shiosyakeyakini-info/miria',
-                                ),
-                              ),
-                          onLongPress:
-                              () => showModalBottomSheet<void>(
-                                context: context,
-                                builder:
-                                    (context) => const UrlSheet(
-                                      url:
-                                          'https://github.com/shiosyakeyakini-info/miria',
-                                    ),
-                              ),
+                          onTap: () => launchUrl(
+                            ref,
+                            Uri.https(
+                              'github.com',
+                              'shiosyakeyakini-info/miria',
+                            ),
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url:
+                                  'https://github.com/shiosyakeyakini-info/miria',
+                            ),
+                          ),
                           child: Text(
                             'Miria',
                             style: TextStyle(color: colors.link),
@@ -111,20 +108,16 @@ class AboutAriaPage extends HookConsumerWidget {
                         alignment: PlaceholderAlignment.baseline,
                         baseline: TextBaseline.alphabetic,
                         child: InkWell(
-                          onTap:
-                              () => launchUrl(
-                                ref,
-                                Uri.https('github.com', 'misskey-dev/misskey'),
-                              ),
-                          onLongPress:
-                              () => showModalBottomSheet<void>(
-                                context: context,
-                                builder:
-                                    (context) => const UrlSheet(
-                                      url:
-                                          'https://github.com/misskey-dev/misskey',
-                                    ),
-                              ),
+                          onTap: () => launchUrl(
+                            ref,
+                            Uri.https('github.com', 'misskey-dev/misskey'),
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url: 'https://github.com/misskey-dev/misskey',
+                            ),
+                          ),
                           child: Text(
                             'Misskey',
                             style: TextStyle(color: colors.link),
@@ -139,19 +132,15 @@ class AboutAriaPage extends HookConsumerWidget {
                         alignment: PlaceholderAlignment.baseline,
                         baseline: TextBaseline.alphabetic,
                         child: InkWell(
-                          onTap:
-                              () => context.push(
-                                '/voskey.icalo.net/users/9d8sfcv0qj',
-                              ),
-                          onLongPress:
-                              () => showModalBottomSheet<void>(
-                                context: context,
-                                builder:
-                                    (context) => const UrlSheet(
-                                      url:
-                                          'https://voskey.icalo.net/@sevenc_nanashi',
-                                    ),
-                              ),
+                          onTap: () => context.push(
+                            '/voskey.icalo.net/users/9d8sfcv0qj',
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url: 'https://voskey.icalo.net/@sevenc_nanashi',
+                            ),
+                          ),
                           child: Text(
                             '@sevenc_nanashi@voskey.icalo.net',
                             style: TextStyle(color: colors.mention),
@@ -163,23 +152,17 @@ class AboutAriaPage extends HookConsumerWidget {
                         alignment: PlaceholderAlignment.baseline,
                         baseline: TextBaseline.alphabetic,
                         child: InkWell(
-                          onTap:
-                              () => launchUrl(
-                                ref,
-                                Uri.https(
-                                  'creativecommons.org',
-                                  'licenses/by/4.0',
-                                ),
-                              ),
-                          onLongPress:
-                              () => showModalBottomSheet<void>(
-                                context: context,
-                                builder:
-                                    (context) => const UrlSheet(
-                                      url:
-                                          'https://creativecommons.org/licenses/by/4.0',
-                                    ),
-                              ),
+                          onTap: () => launchUrl(
+                            ref,
+                            Uri.https('creativecommons.org', 'licenses/by/4.0'),
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url:
+                                  'https://creativecommons.org/licenses/by/4.0',
+                            ),
+                          ),
                           child: Text(
                             'CC-BY 4.0',
                             style: TextStyle(color: colors.link),
@@ -201,11 +184,8 @@ class AboutAriaPage extends HookConsumerWidget {
               child: ListTile(
                 leading: const Icon(Icons.code),
                 title: Text(t.misskey.aboutMisskey_.source),
-                onTap:
-                    () => launchUrl(
-                      ref,
-                      Uri.https('github.com', 'poppingmoon/aria'),
-                    ),
+                onTap: () =>
+                    launchUrl(ref, Uri.https('github.com', 'poppingmoon/aria')),
               ),
             ),
           ),

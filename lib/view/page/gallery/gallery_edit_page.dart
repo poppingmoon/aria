@@ -25,12 +25,9 @@ class GalleryEditPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(attachesNotifierProvider(account, gallery: true));
-    final post =
-        postId != null
-            ? ref
-                .watch(galleryPostNotifierProvider(account, postId!))
-                .valueOrNull
-            : null;
+    final post = postId != null
+        ? ref.watch(galleryPostNotifierProvider(account, postId!)).valueOrNull
+        : null;
     final title = useState('');
     final description = useState<String?>(null);
     final isSensitive = useState(false);
@@ -103,10 +100,9 @@ class GalleryEditPage extends HookConsumerWidget {
             trailing: Text(
               '${files.length}/32',
               style: TextStyle(
-                color:
-                    files.isEmpty || files.length > 32
-                        ? Theme.of(context).colorScheme.error
-                        : null,
+                color: files.isEmpty || files.length > 32
+                    ? Theme.of(context).colorScheme.error
+                    : null,
               ),
             ),
           ),
@@ -120,12 +116,11 @@ class GalleryEditPage extends HookConsumerWidget {
               onPressed: () async {
                 final files = await showModalBottomSheet<List<PostFile>>(
                   context: context,
-                  builder:
-                      (context) => FilePickerSheet(
-                        account: account,
-                        type: FileType.image,
-                        allowMultiple: true,
-                      ),
+                  builder: (context) => FilePickerSheet(
+                    account: account,
+                    type: FileType.image,
+                    allowMultiple: true,
+                  ),
                   clipBehavior: Clip.hardEdge,
                 );
                 if (files != null) {
@@ -156,66 +151,65 @@ class GalleryEditPage extends HookConsumerWidget {
           context,
         ).colorScheme.primary.withValues(alpha: canSave ? 1.0 : 0.5),
         disabledElevation: 0.0,
-        onPressed:
-            canSave
-                ? () async {
-                  final files = await futureWithDialog(
+        onPressed: canSave
+            ? () async {
+                final files = await futureWithDialog(
+                  context,
+                  ref
+                      .read(
+                        attachesNotifierProvider(
+                          account,
+                          gallery: true,
+                        ).notifier,
+                      )
+                      .uploadAll(),
+                );
+                if (files == null) return;
+                if (!context.mounted) return;
+                if (postId == null) {
+                  final result = await futureWithDialog(
                     context,
                     ref
-                        .read(
-                          attachesNotifierProvider(
-                            account,
-                            gallery: true,
-                          ).notifier,
-                        )
-                        .uploadAll(),
+                        .read(misskeyProvider(account))
+                        .gallery
+                        .posts
+                        .create(
+                          GalleryPostsCreateRequest(
+                            title: title.value,
+                            description: description.value,
+                            fileIds: files.map((file) => file.id).toList(),
+                            isSensitive: isSensitive.value,
+                          ),
+                        ),
                   );
-                  if (files == null) return;
                   if (!context.mounted) return;
-                  if (postId == null) {
-                    final result = await futureWithDialog(
-                      context,
-                      ref
-                          .read(misskeyProvider(account))
-                          .gallery
-                          .posts
-                          .create(
-                            GalleryPostsCreateRequest(
-                              title: title.value,
-                              description: description.value,
-                              fileIds: files.map((file) => file.id).toList(),
-                              isSensitive: isSensitive.value,
-                            ),
+                  if (result != null) {
+                    context.pop();
+                  }
+                } else {
+                  final result = await futureWithDialog(
+                    context,
+                    ref
+                        .read(misskeyProvider(account))
+                        .gallery
+                        .posts
+                        .update(
+                          GalleryPostsUpdateRequest(
+                            postId: postId!,
+                            title: title.value,
+                            description: description.value,
+                            fileIds: files.map((file) => file.id).toList(),
+                            isSensitive: isSensitive.value,
                           ),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      context.pop();
-                    }
-                  } else {
-                    final result = await futureWithDialog(
-                      context,
-                      ref
-                          .read(misskeyProvider(account))
-                          .gallery
-                          .posts
-                          .update(
-                            GalleryPostsUpdateRequest(
-                              postId: postId!,
-                              title: title.value,
-                              description: description.value,
-                              fileIds: files.map((file) => file.id).toList(),
-                              isSensitive: isSensitive.value,
-                            ),
-                          ),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      context.pop();
-                    }
+                        ),
+                  );
+                  if (!context.mounted) return;
+                  if (result != null) {
+                    context.pop();
                   }
                 }
-                : null,
+              }
+            : null,
         child: const Icon(Icons.save),
       ),
     );

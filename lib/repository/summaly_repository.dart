@@ -13,19 +13,15 @@ class SummalyRepository {
     String? lang,
   }) async {
     final url = Uri.parse(link);
-    final replacedUrl =
-        url
-            .replace(
-              host:
-                  url.host == 'music.youtube.com' &&
-                          [
-                            'watch',
-                            'channel',
-                          ].contains(url.pathSegments.firstOrNull)
-                      ? 'www.youtube.com'
-                      : null,
-            )
-            .removeFragment();
+    final replacedUrl = url
+        .replace(
+          host:
+              url.host == 'music.youtube.com' &&
+                  ['watch', 'channel'].contains(url.pathSegments.firstOrNull)
+              ? 'www.youtube.com'
+              : null,
+        )
+        .removeFragment();
     final response = await dio.getUri<Map<String, dynamic>>(
       serverUrl.replace(
         pathSegments: ['url'],

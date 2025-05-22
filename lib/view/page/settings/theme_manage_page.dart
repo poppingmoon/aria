@@ -60,11 +60,10 @@ class ThemeManagePage extends ConsumerWidget {
       if (!ref.context.mounted) return;
       await showDialog<void>(
         context: ref.context,
-        builder:
-            (context) => AlertDialog(
-              title: Text(t.misskey.theme_.invalid),
-              content: ErrorMessage(error: e, stackTrace: st),
-            ),
+        builder: (context) => AlertDialog(
+          title: Text(t.misskey.theme_.invalid),
+          content: ErrorMessage(error: e, stackTrace: st),
+        ),
       );
     }
   }
@@ -76,159 +75,158 @@ class ThemeManagePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.theme_.installedThemes)),
-      body:
-          codes.isNotEmpty
-              ? ListView.builder(
-                itemBuilder: (context, index) {
-                  if (index < codes.length) {
-                    final theme = themes[index];
-                    return Center(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        width: maxContentWidth,
-                        child: ExpansionTile(
-                          leading: Icon(
-                            theme != null
-                                ? theme.base == 'dark'
+      body: codes.isNotEmpty
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                if (index < codes.length) {
+                  final theme = themes[index];
+                  return Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ExpansionTile(
+                        leading: Icon(
+                          theme != null
+                              ? theme.base == 'dark'
                                     ? Icons.dark_mode
                                     : Icons.light_mode
-                                : Icons.question_mark,
-                          ),
-                          title: Text(theme?.name ?? t.misskey.unknown),
-                          expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                          childrenPadding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                          ),
-                          children: [
-                            if (theme case MisskeyTheme(:final author?)) ...[
-                              KeyValueWidget(
-                                label: t.misskey.author,
-                                text: author,
-                              ),
-                              const SizedBox(height: 8.0),
-                            ],
-                            if (theme case MisskeyTheme(:final desc?)) ...[
-                              KeyValueWidget(
-                                label: t.misskey.theme_.description,
-                                text: desc,
-                              ),
-                              const SizedBox(height: 8.0),
-                            ],
+                              : Icons.question_mark,
+                        ),
+                        title: Text(theme?.name ?? t.misskey.unknown),
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        childrenPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                        ),
+                        children: [
+                          if (theme case MisskeyTheme(:final author?)) ...[
                             KeyValueWidget(
-                              label: t.misskey.theme_.code,
-                              child: ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  maxHeight: 400.0,
-                                  maxWidth: maxContentWidth,
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Code(
-                                    code: codes[index],
-                                    language: 'json',
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 8.0),
-                            OutlinedButton.icon(
-                              onPressed: () async {
-                                final confirmed = await confirm(
-                                  context,
-                                  message: t.misskey.deleteAreYouSure(
-                                    x: theme?.name ?? t.misskey.unknown,
-                                  ),
-                                );
-                                if (confirmed) {
-                                  await ref
-                                      .read(
-                                        misskeyThemeCodesNotifierProvider
-                                            .notifier,
-                                      )
-                                      .uninstall(index);
-                                }
-                              },
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor:
-                                    Theme.of(context).colorScheme.error,
-                                iconColor: Theme.of(context).colorScheme.error,
-                              ),
-                              icon: const Icon(Icons.delete),
-                              label: Text(t.misskey.uninstall),
+                              label: t.misskey.author,
+                              text: author,
                             ),
                             const SizedBox(height: 8.0),
                           ],
-                        ),
+                          if (theme case MisskeyTheme(:final desc?)) ...[
+                            KeyValueWidget(
+                              label: t.misskey.theme_.description,
+                              text: desc,
+                            ),
+                            const SizedBox(height: 8.0),
+                          ],
+                          KeyValueWidget(
+                            label: t.misskey.theme_.code,
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxHeight: 400.0,
+                                maxWidth: maxContentWidth,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Code(
+                                  code: codes[index],
+                                  language: 'json',
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          OutlinedButton.icon(
+                            onPressed: () async {
+                              final confirmed = await confirm(
+                                context,
+                                message: t.misskey.deleteAreYouSure(
+                                  x: theme?.name ?? t.misskey.unknown,
+                                ),
+                              );
+                              if (confirmed) {
+                                await ref
+                                    .read(
+                                      misskeyThemeCodesNotifierProvider
+                                          .notifier,
+                                    )
+                                    .uninstall(index);
+                              }
+                            },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: Theme.of(
+                                context,
+                              ).colorScheme.error,
+                              iconColor: Theme.of(context).colorScheme.error,
+                            ),
+                            icon: const Icon(Icons.delete),
+                            label: Text(t.misskey.uninstall),
+                          ),
+                          const SizedBox(height: 8.0),
+                        ],
                       ),
-                    );
-                  } else {
-                    return const SizedBox(height: 120.0);
-                  }
-                },
-                itemCount: codes.length + 1,
-              )
-              : Center(child: Text(t.aria.noThemes)),
+                    ),
+                  );
+                } else {
+                  return const SizedBox(height: 120.0);
+                }
+              },
+              itemCount: codes.length + 1,
+            )
+          : Center(child: Text(t.aria.noThemes)),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           showModalBottomSheet<void>(
             context: context,
-            builder:
-                (context) => ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ListTile(
-                      leading: const Icon(Icons.paste),
+            builder: (context) => ListView(
+              shrinkWrap: true,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.paste),
+                  title: Text(t.misskey.theme_.code),
+                  onTap: () async {
+                    final result = await showTextFieldDialog(
+                      context,
                       title: Text(t.misskey.theme_.code),
-                      onTap: () async {
-                        final result = await showTextFieldDialog(
-                          context,
-                          title: Text(t.misskey.theme_.code),
-                          maxLines: 10,
-                        );
-                        if (result != null) {
-                          await _install(ref, result);
-                        }
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.dns),
-                      title: Text(t.misskey.instance),
-                      onTap: () async {
-                        final account = await showDialog<Account>(
-                          context: context,
-                          builder: (context) => const AccountSelectDialog(),
-                        );
-                        if (account == null) return;
-                        if (!context.mounted) return;
-                        final meta = await futureWithDialog(
-                          context,
-                          ref.read(metaNotifierProvider(account.host).future),
-                        );
-                        if (meta == null) return;
-                        if (!context.mounted) return;
-                        final lightTheme = meta.defaultLightTheme;
-                        final darkTheme = meta.defaultDarkTheme;
-                        if (lightTheme == null && darkTheme == null) {
-                          await showMessageDialog(context, t.aria.noThemes);
-                          return;
-                        }
-                        if (lightTheme != null) {
-                          await _install(
-                            ref,
-                            lightTheme,
-                            fallbackName: account.host,
-                          );
-                        }
-                        if (darkTheme != null) {
-                          await _install(
-                            ref,
-                            darkTheme,
-                            fallbackName: account.host,
-                          );
-                        }
-                      },
-                    ),
-                  ],
+                      maxLines: 10,
+                    );
+                    if (result != null) {
+                      await _install(ref, result);
+                    }
+                  },
                 ),
+                ListTile(
+                  leading: const Icon(Icons.dns),
+                  title: Text(t.misskey.instance),
+                  onTap: () async {
+                    final account = await showDialog<Account>(
+                      context: context,
+                      builder: (context) => const AccountSelectDialog(),
+                    );
+                    if (account == null) return;
+                    if (!context.mounted) return;
+                    final meta = await futureWithDialog(
+                      context,
+                      ref.read(metaNotifierProvider(account.host).future),
+                    );
+                    if (meta == null) return;
+                    if (!context.mounted) return;
+                    final lightTheme = meta.defaultLightTheme;
+                    final darkTheme = meta.defaultDarkTheme;
+                    if (lightTheme == null && darkTheme == null) {
+                      await showMessageDialog(context, t.aria.noThemes);
+                      return;
+                    }
+                    if (lightTheme != null) {
+                      await _install(
+                        ref,
+                        lightTheme,
+                        fallbackName: account.host,
+                      );
+                    }
+                    if (darkTheme != null) {
+                      await _install(
+                        ref,
+                        darkTheme,
+                        fallbackName: account.host,
+                      );
+                    }
+                  },
+                ),
+              ],
+            ),
             clipBehavior: Clip.hardEdge,
           );
         },

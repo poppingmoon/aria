@@ -39,10 +39,9 @@ class ChatHistoryNotifier extends _$ChatHistoryNotifier {
       state = AsyncValue.data(
         value
             .map(
-              (message) =>
-                  message.id == messageId
-                      ? message.copyWith(isRead: true)
-                      : message,
+              (message) => message.id == messageId
+                  ? message.copyWith(isRead: true)
+                  : message,
             )
             .toList(),
       );

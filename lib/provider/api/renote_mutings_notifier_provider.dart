@@ -50,8 +50,9 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items:
-              value.items.where((muting) => muting.muteeId != userId).toList(),
+          items: value.items
+              .where((muting) => muting.muteeId != userId)
+              .toList(),
         ),
       );
     }

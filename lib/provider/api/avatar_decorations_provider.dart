@@ -12,7 +12,8 @@ FutureOr<List<GetAvatarDecorationsResponse>> avatarDecorations(
   Ref ref,
   Account account,
 ) async {
-  final response =
-      await ref.watch(misskeyProvider(account)).getAvatarDecorations();
+  final response = await ref
+      .watch(misskeyProvider(account))
+      .getAvatarDecorations();
   return response.toList();
 }

@@ -19,19 +19,17 @@ class GalleryMy extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: posts,
-      itemBuilder:
-          (context, post) => GalleryPostPreview(
-            account: account,
-            post: post,
-            hideUserInfo: true,
-            onTap: () => context.push('/$account/gallery/${post.id}'),
-          ),
-      onRefresh:
-          () => ref.refresh(myGalleryPostsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(myGalleryPostsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, post) => GalleryPostPreview(
+        account: account,
+        post: post,
+        hideUserInfo: true,
+        onTap: () => context.push('/$account/gallery/${post.id}'),
+      ),
+      onRefresh: () =>
+          ref.refresh(myGalleryPostsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(myGalleryPostsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

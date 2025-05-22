@@ -8,11 +8,10 @@ import '../../test_util/dummy_note.dart';
 
 Note createDummyNote(int day, [int hour = 0]) {
   return dummyNote.copyWith(
-    id:
-        Id(
-          method: IdGenMethod.aidx,
-          date: DateTime(2025, 1, day, hour),
-        ).toString(),
+    id: Id(
+      method: IdGenMethod.aidx,
+      date: DateTime(2025, 1, day, hour),
+    ).toString(),
   );
 }
 

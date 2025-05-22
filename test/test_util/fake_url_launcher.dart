@@ -37,7 +37,8 @@ class FakeUrlLauncher
   }
 
   @override
-  LinkDelegate? get linkDelegate => (_) => Container();
+  LinkDelegate? get linkDelegate =>
+      (_) => Container();
 
   @override
   Future<bool> supportsCloseForMode(PreferredLaunchMode mode) async {

@@ -56,18 +56,17 @@ Future<ProviderContainer> setupWidget(
           routes: [
             GoRoute(
               path: '/',
-              builder:
-                  (_, _) => Scaffold(
-                    body: NoteWidget(
-                      account: account,
-                      noteId: noteId,
-                      withHardMute: withHardMute,
-                      focusPostForm: focusPostForm,
-                      note: note,
-                      showFooter: showFooter,
-                      backgroundColor: backgroundColor,
-                    ),
-                  ),
+              builder: (_, _) => Scaffold(
+                body: NoteWidget(
+                  account: account,
+                  noteId: noteId,
+                  withHardMute: withHardMute,
+                  focusPostForm: focusPostForm,
+                  note: note,
+                  showFooter: showFooter,
+                  backgroundColor: backgroundColor,
+                ),
+              ),
             ),
           ],
         ),

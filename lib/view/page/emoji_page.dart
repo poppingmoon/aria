@@ -38,8 +38,8 @@ class EmojiPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(name)),
       body: RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(emojiResponseProvider(account, name).future),
+        onRefresh: () =>
+            ref.refresh(emojiResponseProvider(account, name).future),
         child: switch (emoji) {
           AsyncValue(valueOrNull: final emoji?) => SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
@@ -54,11 +54,10 @@ class EmojiPage extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
-                          onTap:
-                              () => showImageDialog(
-                                context,
-                                url: emoji.url.toString(),
-                              ),
+                          onTap: () => showImageDialog(
+                            context,
+                            url: emoji.url.toString(),
+                          ),
                           child: ImageWidget(url: emoji.url.toString()),
                         ),
                       ),
@@ -73,34 +72,28 @@ class EmojiPage extends ConsumerWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: KeyValueWidget(
                           label: t.misskey.tags,
-                          child:
-                              emoji.aliases.isNotEmpty
-                                  ? Wrap(
-                                    spacing: 4.0,
-                                    runSpacing: 4.0,
-                                    children:
-                                        emoji.aliases
-                                            .map(
-                                              (alias) => ActionChip(
-                                                label: Text(alias),
-                                                onPressed:
-                                                    () => copyToClipboard(
-                                                      context,
-                                                      alias,
-                                                    ),
-                                                shape: StadiumBorder(
-                                                  side: BorderSide(
-                                                    color:
-                                                        Theme.of(context)
-                                                            .colorScheme
-                                                            .outlineVariant,
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                            .toList(),
-                                  )
-                                  : Text(t.misskey.none),
+                          child: emoji.aliases.isNotEmpty
+                              ? Wrap(
+                                  spacing: 4.0,
+                                  runSpacing: 4.0,
+                                  children: emoji.aliases
+                                      .map(
+                                        (alias) => ActionChip(
+                                          label: Text(alias),
+                                          onPressed: () =>
+                                              copyToClipboard(context, alias),
+                                          shape: StadiumBorder(
+                                            side: BorderSide(
+                                              color: Theme.of(
+                                                context,
+                                              ).colorScheme.outlineVariant,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                )
+                              : Text(t.misskey.none),
                         ),
                       ),
                       Padding(
@@ -114,8 +107,9 @@ class EmojiPage extends ConsumerWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: KeyValueWidget(
                           label: t.misskey.sensitive,
-                          text:
-                              emoji.isSensitive ? t.misskey.yes : t.misskey.no,
+                          text: emoji.isSensitive
+                              ? t.misskey.yes
+                              : t.misskey.no,
                         ),
                       ),
                       Padding(
@@ -129,20 +123,16 @@ class EmojiPage extends ConsumerWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: KeyValueWidget(
                           label: t.misskey.license,
-                          child:
-                              emoji.license != null
-                                  ? InkWell(
-                                    onLongPress:
-                                        () => copyToClipboard(
-                                          context,
-                                          emoji.license!,
-                                        ),
-                                    child: Mfm(
-                                      account: account,
-                                      text: emoji.license,
-                                    ),
-                                  )
-                                  : null,
+                          child: emoji.license != null
+                              ? InkWell(
+                                  onLongPress: () =>
+                                      copyToClipboard(context, emoji.license!),
+                                  child: Mfm(
+                                    account: account,
+                                    text: emoji.license,
+                                  ),
+                                )
+                              : null,
                         ),
                       ),
                       Padding(
@@ -175,14 +165,13 @@ class EmojiPage extends ConsumerWidget {
           _ => const Center(child: CircularProgressIndicator()),
         },
       ),
-      floatingActionButton:
-          confirm
-              ? FloatingActionButton.extended(
-                onPressed: () => context.pop(true),
-                icon: const Icon(Icons.check),
-                label: Text(t.aria.useThisEmoji),
-              )
-              : null,
+      floatingActionButton: confirm
+          ? FloatingActionButton.extended(
+              onPressed: () => context.pop(true),
+              icon: const Icon(Icons.check),
+              label: Text(t.aria.useThisEmoji),
+            )
+          : null,
     );
   }
 }

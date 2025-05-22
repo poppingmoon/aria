@@ -50,82 +50,78 @@ class PlayPage extends HookConsumerWidget {
         title: Text(play.valueOrNull?.title ?? 'Play'),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  if (!account.value.isGuest)
-                    PopupMenuItem(
-                      onTap: () {
+            itemBuilder: (context) => [
+              if (!account.value.isGuest)
+                PopupMenuItem(
+                  onTap: () {
+                    ref
+                        .read(postNotifierProvider(account.value).notifier)
+                        .setText('${play.valueOrNull?.title} $url');
+                    context.push('/${account.value}/post');
+                  },
+                  child: Text(t.misskey.shareWithNote),
+                ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              PopupMenuItem(
+                onTap: () => launchUrl(ref, url),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => SharePlus.instance.share(
+                  ShareParams(text: '${play.valueOrNull?.title} $url'),
+                ),
+                child: Text(t.misskey.share),
+              ),
+              if (!account.value.isGuest &&
+                  play.valueOrNull?.user.username == account.value.username)
+                PopupMenuItem(
+                  onTap: () =>
+                      context.push('/${account.value}/play/$playId/edit'),
+                  child: Text(t.misskey.edit),
+                ),
+              if (play.valueOrNull?.user case final user?
+                  when !account.value.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: ['Play: $url', '-----', ''].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
                         ref
-                            .read(postNotifierProvider(account.value).notifier)
-                            .setText('${play.valueOrNull?.title} $url');
-                        context.push('/${account.value}/post');
-                      },
-                      child: Text(t.misskey.shareWithNote),
-                    ),
-                  PopupMenuItem(
-                    onTap: () => copyToClipboard(context, url.toString()),
-                    child: Text(t.misskey.copyLink),
-                  ),
-                  PopupMenuItem(
-                    onTap: () => launchUrl(ref, url),
-                    child: Text(t.aria.openInBrowser),
-                  ),
-                  PopupMenuItem(
-                    onTap:
-                        () => SharePlus.instance.share(
-                          ShareParams(text: '${play.valueOrNull?.title} $url'),
-                        ),
-                    child: Text(t.misskey.share),
-                  ),
-                  if (!account.value.isGuest &&
-                      play.valueOrNull?.user.username == account.value.username)
-                    PopupMenuItem(
-                      onTap:
-                          () => context.push(
-                            '/${account.value}/play/$playId/edit',
-                          ),
-                      child: Text(t.misskey.edit),
-                    ),
-                  if (play.valueOrNull?.user case final user?
-                      when !account.value.isGuest && i?.id != user.id)
-                    PopupMenuItem(
-                      onTap: () async {
-                        final comment = await showTextFieldDialog(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          initialText: ['Play: $url', '-----', ''].join('\n'),
-                          decoration: InputDecoration(
-                            helperText: t.misskey.fillAbuseReportDescription,
-                          ),
-                          maxLines: null,
-                        );
-                        if (!context.mounted) return;
-                        if (comment == null) return;
-                        final confirmed = await confirm(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          message: comment,
-                          okText: t.misskey.reportAbuse,
-                        );
-                        if (!context.mounted) return;
-                        if (confirmed) {
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(misskeyProvider(account.value))
-                                .users
-                                .reportAbuse(
-                                  UsersReportAbuseRequest(
-                                    userId: user.id,
-                                    comment: comment,
-                                  ),
-                                ),
-                          );
-                        }
-                      },
-                      child: Text(t.misskey.reportAbuse),
-                    ),
-                ],
+                            .read(misskeyProvider(account.value))
+                            .users
+                            .reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
+                ),
+            ],
           ),
         ],
       ),
@@ -183,27 +179,24 @@ class PlayPage extends HookConsumerWidget {
                           account: this.account,
                           user: play.user,
                           avatarSize: 50.0,
-                          trailing:
-                              this.account == account.value
-                                  ? FollowButton(
-                                    account: this.account,
-                                    userId: play.userId,
-                                  )
-                                  : null,
-                          onTap:
-                              () => context.push(
-                                this.account == account.value
-                                    ? '/${this.account}/users/${play.userId}'
-                                    : '/${account.value}/@${play.user.username}@${this.account.host}',
-                              ),
-                          onLongPress:
-                              this.account == account.value
-                                  ? () => showUserSheet(
-                                    context: context,
-                                    account: this.account,
-                                    userId: play.userId,
-                                  )
-                                  : null,
+                          trailing: this.account == account.value
+                              ? FollowButton(
+                                  account: this.account,
+                                  userId: play.userId,
+                                )
+                              : null,
+                          onTap: () => context.push(
+                            this.account == account.value
+                                ? '/${this.account}/users/${play.userId}'
+                                : '/${account.value}/@${play.user.username}@${this.account.host}',
+                          ),
+                          onLongPress: this.account == account.value
+                              ? () => showUserSheet(
+                                  context: context,
+                                  account: this.account,
+                                  userId: play.userId,
+                                )
+                              : null,
                         ),
                         const Divider(),
                         DefaultTextStyle.merge(
@@ -274,15 +267,15 @@ class PlayPage extends HookConsumerWidget {
       },
       floatingActionButton:
           !account.value.isGuest &&
-                  this.account == account.value &&
-                  play.valueOrNull?.user.username == account.value.username
-              ? FloatingActionButton(
-                tooltip: t.misskey.edit,
-                onPressed:
-                    () => context.push('/${this.account}/play/$playId/edit'),
-                child: const Icon(Icons.edit),
-              )
-              : null,
+              this.account == account.value &&
+              play.valueOrNull?.user.username == account.value.username
+          ? FloatingActionButton(
+              tooltip: t.misskey.edit,
+              onPressed: () =>
+                  context.push('/${this.account}/play/$playId/edit'),
+              child: const Icon(Icons.edit),
+            )
+          : null,
     );
   }
 }

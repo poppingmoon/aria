@@ -12,14 +12,13 @@ Future<T?> showRadioDialog<T>(
 }) {
   return showDialog<T>(
     context: context,
-    builder:
-        (context) => RadioDialog(
-          title: title,
-          header: header,
-          values: values,
-          initialValue: initialValue,
-          itemBuilder: itemBuilder,
-        ),
+    builder: (context) => RadioDialog(
+      title: title,
+      header: header,
+      values: values,
+      initialValue: initialValue,
+      itemBuilder: itemBuilder,
+    ),
   );
 }
 

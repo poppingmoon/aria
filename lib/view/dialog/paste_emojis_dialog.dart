@@ -60,18 +60,15 @@ class PasteEmojisDialog extends HookConsumerWidget {
           Text.rich(
             t.aria.pastePinnedEmojisDescription(
               url: TextSpan(
-                text:
-                    (useEmojiPalette ? emojiPaletteUrl : registryUrl)
-                        .toString()
-                        .breakAll,
+                text: (useEmojiPalette ? emojiPaletteUrl : registryUrl)
+                    .toString()
+                    .breakAll,
                 style: TextStyle(color: colors.link),
-                recognizer:
-                    recognizer
-                      ..onTap =
-                          () => launchUrl(
-                            ref,
-                            useEmojiPalette ? emojiPaletteUrl : registryUrl,
-                          ),
+                recognizer: recognizer
+                  ..onTap = () => launchUrl(
+                    ref,
+                    useEmojiPalette ? emojiPaletteUrl : registryUrl,
+                  ),
               ),
             ),
           ),
@@ -81,14 +78,12 @@ class PasteEmojisDialog extends HookConsumerWidget {
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
-                labelText:
-                    useEmojiPalette
-                        ? t.misskey.emojiPalette
-                        : '${t.misskey.value} (JSON)',
-                hintText:
-                    useEmojiPalette
-                        ? _sampleEmojis.join(' ')
-                        : json5Encode(_sampleEmojis, space: 2),
+                labelText: useEmojiPalette
+                    ? t.misskey.emojiPalette
+                    : '${t.misskey.value} (JSON)',
+                hintText: useEmojiPalette
+                    ? _sampleEmojis.join(' ')
+                    : json5Encode(_sampleEmojis, space: 2),
                 enabledBorder: Theme.of(context).inputDecorationTheme.border,
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
@@ -103,8 +98,9 @@ class PasteEmojisDialog extends HookConsumerWidget {
           onPressed: () {
             final text = controller.text.trim();
             try {
-              final emojis =
-                  text.startsWith('[') ? json5Decode(text) : text.split(' ');
+              final emojis = text.startsWith('[')
+                  ? json5Decode(text)
+                  : text.split(' ');
               if (emojis is List) {
                 context.pop(
                   emojis

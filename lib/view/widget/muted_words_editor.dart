@@ -119,23 +119,22 @@ class MutedWordsEditor extends HookConsumerWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
-            onPressed:
-                isChanged.value
-                    ? () async {
-                      final mutes = _parseMutes(context, controller.text);
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              mutedWordsNotifierProvider(
-                                account,
-                                hardMute: hardMute,
-                              ).notifier,
-                            )
-                            .updateMutedWords(mutes),
-                      );
-                    }
-                    : null,
+            onPressed: isChanged.value
+                ? () async {
+                    final mutes = _parseMutes(context, controller.text);
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            mutedWordsNotifierProvider(
+                              account,
+                              hardMute: hardMute,
+                            ).notifier,
+                          )
+                          .updateMutedWords(mutes),
+                    );
+                  }
+                : null,
             icon: const Icon(Icons.save),
             label: Text(t.misskey.save),
           ),

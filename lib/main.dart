@@ -146,28 +146,23 @@ class Aria extends HookConsumerWidget {
         const InitializationSettings(
           android: AndroidInitializationSettings('ic_notification'),
         ),
-        onDidReceiveNotificationResponse:
-            (response) => _onDidReceiveNotificationResponse(ref, response),
+        onDidReceiveNotificationResponse: (response) =>
+            _onDidReceiveNotificationResponse(ref, response),
       );
 
       await UnifiedPush.initialize(
-        onNewEndpoint:
-            (endpoint, instance) => ref
-                .read(unifiedPushEndpointNotifierProvider(instance).notifier)
-                .updateEndpoint(endpoint),
+        onNewEndpoint: (endpoint, instance) => ref
+            .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+            .updateEndpoint(endpoint),
         onRegistrationFailed: (reason, instance) {
           ref
               .read(unifiedPushEndpointNotifierProvider(instance).notifier)
               .remove();
           showErrorMessageDialog(ref.context, error: reason);
         },
-        onUnregistered:
-            (instance) =>
-                ref
-                    .read(
-                      unifiedPushEndpointNotifierProvider(instance).notifier,
-                    )
-                    .remove(),
+        onUnregistered: (instance) => ref
+            .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+            .remove(),
         onMessage: (message, instance) async {
           Account account = Account.fromString(instance);
           final PushNotification notification;
@@ -245,22 +240,22 @@ class Aria extends HookConsumerWidget {
               NotificationType.achievementEarned =>
                 t.misskey.notification_.achievementEarned,
               NotificationType.login => t.misskey.notification_.login,
-              NotificationType.exportCompleted => t.misskey.notification_
-                  .exportOfXCompleted(
-                    x: switch (body.exportedEntity) {
-                      UserExportableEntities.antenna => t.misskey.antennas,
-                      UserExportableEntities.blocking => t.misskey.blockedUsers,
-                      UserExportableEntities.clip => t.misskey.clips,
-                      UserExportableEntities.customEmoji =>
-                        t.misskey.customEmojis,
-                      UserExportableEntities.favorite => t.misskey.favorites,
-                      UserExportableEntities.following => t.misskey.following,
-                      UserExportableEntities.muting => t.misskey.mutedUsers,
-                      UserExportableEntities.note => t.misskey.notes,
-                      UserExportableEntities.userList => t.misskey.lists,
-                      null => '',
-                    },
-                  ),
+              NotificationType.exportCompleted =>
+                t.misskey.notification_.exportOfXCompleted(
+                  x: switch (body.exportedEntity) {
+                    UserExportableEntities.antenna => t.misskey.antennas,
+                    UserExportableEntities.blocking => t.misskey.blockedUsers,
+                    UserExportableEntities.clip => t.misskey.clips,
+                    UserExportableEntities.customEmoji =>
+                      t.misskey.customEmojis,
+                    UserExportableEntities.favorite => t.misskey.favorites,
+                    UserExportableEntities.following => t.misskey.following,
+                    UserExportableEntities.muting => t.misskey.mutedUsers,
+                    UserExportableEntities.note => t.misskey.notes,
+                    UserExportableEntities.userList => t.misskey.lists,
+                    null => '',
+                  },
+                ),
               NotificationType.pollEnded => t.misskey.notification_.pollEnded,
               NotificationType.roleAssigned =>
                 t.misskey.notification_.roleAssigned,
@@ -293,8 +288,8 @@ class Aria extends HookConsumerWidget {
             NotificationPushNotification(:final body) => switch (body.type) {
               NotificationType.follow ||
               NotificationType.receiveFollowRequest ||
-              NotificationType
-                  .followRequestAccepted => body.user?.nameOrUsername,
+              NotificationType.followRequestAccepted =>
+                body.user?.nameOrUsername,
               NotificationType.mention ||
               NotificationType.reply ||
               NotificationType.renote ||
@@ -476,8 +471,10 @@ class Aria extends HookConsumerWidget {
               NotificationType.roleAssigned => body.role?.name,
               NotificationType.chatRoomInvitationReceived =>
                 body.invitation?.room?.name,
-              NotificationType.createToken => t.misskey.notification_
-                  .createTokenDescription(text: t.misskey.manageAccessTokens),
+              NotificationType.createToken =>
+                t.misskey.notification_.createTokenDescription(
+                  text: t.misskey.manageAccessTokens,
+                ),
               NotificationType.scheduleNote => body.errorType,
               NotificationType.noteScheduled => body.draft?.data.text,
               NotificationType.scheduledNotePosted => body.note?.text,
@@ -506,12 +503,11 @@ class Aria extends HookConsumerWidget {
               body.fromUser?.avatarUrl,
             _ => null,
           };
-          final file =
-              url != null
-                  ? await ref
-                      .read(cacheManagerProvider)
-                      .getSingleFile(url.toString())
-                  : null;
+          final file = url != null
+              ? await ref
+                    .read(cacheManagerProvider)
+                    .getSingleFile(url.toString())
+              : null;
 
           await flutterLocalNotificationsPlugin.show(
             DateTime.now().millisecondsSinceEpoch & 0x7fffffff,
@@ -523,8 +519,9 @@ class Aria extends HookConsumerWidget {
                 t.misskey.notifications,
                 styleInformation: BigTextStyleInformation(body ?? ''),
                 color: ariaColor,
-                largeIcon:
-                    file != null ? FilePathAndroidBitmap(file.path) : null,
+                largeIcon: file != null
+                    ? FilePathAndroidBitmap(file.path)
+                    : null,
                 groupKey: account.toString(),
                 subText: account.toString(),
               ),
@@ -533,10 +530,9 @@ class Aria extends HookConsumerWidget {
           );
 
           final userId = notification.userId;
-          final summaryId =
-              userId != null
-                  ? Id.tryParse(userId)?.date.millisecondsSinceEpoch
-                  : null;
+          final summaryId = userId != null
+              ? Id.tryParse(userId)?.date.millisecondsSinceEpoch
+              : null;
           await flutterLocalNotificationsPlugin.show(
             (summaryId ?? 0) & 0x7fffffff,
             title,
@@ -558,9 +554,8 @@ class Aria extends HookConsumerWidget {
         },
       );
 
-      final appLaunchDetails =
-          await flutterLocalNotificationsPlugin
-              .getNotificationAppLaunchDetails();
+      final appLaunchDetails = await flutterLocalNotificationsPlugin
+          .getNotificationAppLaunchDetails();
       if (appLaunchDetails?.notificationResponse case final response?) {
         _onDidReceiveNotificationResponse(ref, response);
       }
@@ -614,9 +609,8 @@ class Aria extends HookConsumerWidget {
       case TargetPlatform.android:
         useOnAppLifecycleStateChange((_, state) async {
           if (state == AppLifecycleState.resumed) {
-            final appLaunchDetails =
-                await FlutterLocalNotificationsPlugin()
-                    .getNotificationAppLaunchDetails();
+            final appLaunchDetails = await FlutterLocalNotificationsPlugin()
+                .getNotificationAppLaunchDetails();
             if (appLaunchDetails?.notificationResponse case final response?) {
               _onDidReceiveNotificationResponse(ref, response);
             }

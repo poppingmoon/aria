@@ -101,24 +101,23 @@ class PostForm extends HookConsumerWidget {
     final request = ref.read(postNotifierProvider(account, noteId: noteId));
     final hashtags =
         ref.read(accountSettingsNotifierProvider(account)).postFormUseHashtags
-            ? ref.read(postFormHashtagsNotifierProvider(account))
-            : null;
+        ? ref.read(postFormHashtagsNotifierProvider(account))
+        : null;
     final attaches = ref.read(
       attachesNotifierProvider(account, noteId: noteId),
     );
     final hasFiles = attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final files =
-        hasFiles
-            ? await futureWithDialog(
-              ref.context,
-              ref
-                  .read(
-                    attachesNotifierProvider(account, noteId: noteId).notifier,
-                  )
-                  .uploadAll(),
-            )
-            : null;
+    final files = hasFiles
+        ? await futureWithDialog(
+            ref.context,
+            ref
+                .read(
+                  attachesNotifierProvider(account, noteId: noteId).notifier,
+                )
+                .uploadAll(),
+          )
+        : null;
     if (hasFiles && files == null) return;
     if (!ref.context.mounted) return;
     if (needsUpload ||
@@ -149,8 +148,9 @@ class PostForm extends HookConsumerWidget {
             .extract((node) => node is MfmHashtag)
             .whereType<MfmHashtag>()
             .map((node) => node.hashtag);
-        final history =
-            ref.read(accountSettingsNotifierProvider(account)).hashtags;
+        final history = ref
+            .read(accountSettingsNotifierProvider(account))
+            .hashtags;
         unawaited(
           ref
               .read(accountSettingsNotifierProvider(account).notifier)
@@ -181,20 +181,19 @@ class PostForm extends HookConsumerWidget {
     final accounts = ref.read(accountsNotifierProvider);
     final destination = await showModalBottomSheet<Account>(
       context: ref.context,
-      builder:
-          (context) => ListView.separated(
-            itemBuilder: (context, index) {
-              final account = accounts[index];
-              return AccountPreview(
-                account: account,
-                trailing: const Icon(Icons.navigate_next),
-                avatarSize: 40.0,
-                onTap: () => context.pop(accounts[index]),
-              );
-            },
-            separatorBuilder: (_, _) => const Divider(height: 0.0),
-            itemCount: accounts.length,
-          ),
+      builder: (context) => ListView.separated(
+        itemBuilder: (context, index) {
+          final account = accounts[index];
+          return AccountPreview(
+            account: account,
+            trailing: const Icon(Icons.navigate_next),
+            avatarSize: 40.0,
+            onTap: () => context.pop(accounts[index]),
+          );
+        },
+        separatorBuilder: (_, _) => const Divider(height: 0.0),
+        itemCount: accounts.length,
+      ),
       clipBehavior: Clip.hardEdge,
     );
     if (destination == null || destination == origin) {
@@ -224,22 +223,17 @@ class PostForm extends HookConsumerWidget {
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final reply =
-        request.replyId != null
-            ? ref.watch(noteProvider(account.value, request.replyId!))
-            : null;
-    final renote =
-        request.renoteId != null
-            ? ref.watch(noteProvider(account.value, request.renoteId!))
-            : null;
-    final channel =
-        request.channelId != null
-            ? ref
-                .watch(
-                  channelNotifierProvider(account.value, request.channelId!),
-                )
-                .valueOrNull
-            : null;
+    final reply = request.replyId != null
+        ? ref.watch(noteProvider(account.value, request.replyId!))
+        : null;
+    final renote = request.renoteId != null
+        ? ref.watch(noteProvider(account.value, request.renoteId!))
+        : null;
+    final channel = request.channelId != null
+        ? ref
+              .watch(channelNotifierProvider(account.value, request.channelId!))
+              .valueOrNull
+        : null;
     final mentions = useMemoized(
       () => extractMentions(parse(request.text ?? '')),
       [request.text],
@@ -253,27 +247,24 @@ class PostForm extends HookConsumerWidget {
       [mentions],
     );
     final extraMentions = useMemoized(
-      () =>
-          reply != null
-              ? mentions.where(
-                (mention) =>
-                    reply.user.acct != mention.acct &&
-                    replyMentions.every(
-                      (replyMention) => replyMention.acct != mention.acct,
-                    ),
-              )
-              : <MfmMention>[],
+      () => reply != null
+          ? mentions.where(
+              (mention) =>
+                  reply.user.acct != mention.acct &&
+                  replyMentions.every(
+                    (replyMention) => replyMention.acct != mention.acct,
+                  ),
+            )
+          : <MfmMention>[],
       [mentions, reply, replyMentions],
     );
     final visibleUsers = useState(<UserDetailed>[]);
     final notSpecifiedMentions = useMemoized(
       () => mentions.where(
-        (mention) =>
-            !visibleUsers.value.any(
-              (user) =>
-                  user.username == mention.username &&
-                  user.host == mention.host,
-            ),
+        (mention) => !visibleUsers.value.any(
+          (user) =>
+              user.username == mention.username && user.host == mention.host,
+        ),
       ),
       [mentions, visibleUsers],
     );
@@ -483,221 +474,194 @@ class PostForm extends HookConsumerWidget {
                 children: [
                   IconButton(
                     tooltip: t.misskey.switchAccount,
-                    onPressed:
-                        noteId == null
-                            ? () async {
-                              final destination = await _switchAccount(
-                                ref,
-                                account.value,
-                              );
-                              if (destination != null) {
-                                account.value = destination;
-                                onAccountChanged?.call(destination);
-                              }
+                    onPressed: noteId == null
+                        ? () async {
+                            final destination = await _switchAccount(
+                              ref,
+                              account.value,
+                            );
+                            if (destination != null) {
+                              account.value = destination;
+                              onAccountChanged?.call(destination);
                             }
-                            : null,
-                    icon:
-                        i != null
-                            ? UserAvatar(
-                              account: account.value,
-                              user: i,
-                              size: 32.0,
-                            )
-                            : const Icon(Icons.person),
+                          }
+                        : null,
+                    icon: i != null
+                        ? UserAvatar(
+                            account: account.value,
+                            user: i,
+                            size: 32.0,
+                          )
+                        : const Icon(Icons.person),
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed:
-                        canChangeVisibility
-                            ? () async {
-                              final candidates = NoteVisibility.values.where(
-                                (visibility) =>
-                                    (visibility != NoteVisibility.public ||
-                                        i == null ||
-                                        !i.isSilenced) &&
-                                    (visibility.priority >=
-                                        NoteVisibility.min(
-                                          reply?.visibility ??
-                                              NoteVisibility.public,
-                                          renote?.visibility ??
-                                              NoteVisibility.public,
-                                        ).priority),
-                              );
-                              final result =
-                                  await showModalBottomSheet<NoteVisibility>(
-                                    context: context,
-                                    builder:
-                                        (context) => NoteVisibilitySheet(
-                                          visibilities: candidates,
-                                        ),
-                                  );
-                              if (result != null) {
-                                ref
-                                    .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
-                                    )
-                                    .setVisibility(result);
-                              }
+                    onPressed: canChangeVisibility
+                        ? () async {
+                            final candidates = NoteVisibility.values.where(
+                              (visibility) =>
+                                  (visibility != NoteVisibility.public ||
+                                      i == null ||
+                                      !i.isSilenced) &&
+                                  (visibility.priority >=
+                                      NoteVisibility.min(
+                                        reply?.visibility ??
+                                            NoteVisibility.public,
+                                        renote?.visibility ??
+                                            NoteVisibility.public,
+                                      ).priority),
+                            );
+                            final result =
+                                await showModalBottomSheet<NoteVisibility>(
+                                  context: context,
+                                  builder: (context) => NoteVisibilitySheet(
+                                    visibilities: candidates,
+                                  ),
+                                );
+                            if (result != null) {
+                              ref
+                                  .read(
+                                    postNotifierProvider(
+                                      account.value,
+                                    ).notifier,
+                                  )
+                                  .setVisibility(result);
                             }
-                            : null,
+                          }
+                        : null,
                     icon: NoteVisibilityIcon(visibility: request.visibility),
                   ),
                   IconButton(
-                    tooltip:
-                        request.localOnly ?? false
-                            ? t.misskey.visibility_.disableFederation
+                    tooltip: request.localOnly ?? false
+                        ? t.misskey.visibility_.disableFederation
+                        : null,
+                    onPressed: canChangeLocalOnly
+                        ? () => ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setLocalOnly(!(request.localOnly ?? false))
+                        : null,
+                    color: request.localOnly ?? false
+                        ? Theme.of(context).colorScheme.error
+                        : null,
+                    disabledColor: request.localOnly ?? false
+                        ? Theme.of(
+                            context,
+                          ).colorScheme.error.withValues(alpha: 0.5)
+                        : null,
+                    icon: request.localOnly ?? false
+                        ? const Icon(OffIcons.rocket_outlined)
+                        : const Icon(Icons.rocket),
+                  ),
+                  PopupMenuButton<void>(
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        onTap: noteId == null
+                            ? () async {
+                                final result =
+                                    await showModalBottomSheet<
+                                      (ReactionAcceptance?,)
+                                    >(
+                                      context: context,
+                                      builder: (context) => ListView(
+                                        shrinkWrap: true,
+                                        children: [
+                                          ListTile(
+                                            title: Text(
+                                              t.misskey.reactionAcceptance,
+                                            ),
+                                          ),
+                                          const Divider(height: 0.0),
+                                          ...[
+                                            null,
+                                            ...ReactionAcceptance.values,
+                                          ].map(
+                                            (acceptance) => ListTile(
+                                              leading: ReactionAcceptanceIcon(
+                                                acceptance: acceptance,
+                                              ),
+                                              title: ReactionAcceptanceWidget(
+                                                acceptance: acceptance,
+                                              ),
+                                              onTap: () =>
+                                                  context.pop((acceptance,)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                if (result != null) {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(
+                                          account.value,
+                                        ).notifier,
+                                      )
+                                      .setReactionAcceptance(result.$1);
+                                }
+                              }
                             : null,
-                    onPressed:
-                        canChangeLocalOnly
-                            ? () => ref
+                        child: ListTile(
+                          leading: ReactionAcceptanceIcon(
+                            acceptance: request.reactionAcceptance,
+                          ),
+                          title: Text(t.misskey.reactionAcceptance),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: () {
+                          final text = request.text;
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setText(request.cw);
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setCw(text?.replaceAll('\n', ' '));
+                          useCw.value = true;
+                        },
+                        enabled: request.text != null || request.cw != null,
+                        child: ListTile(
+                          leading: const Icon(Icons.swap_vert),
+                          title: Text(t.aria.swapCw),
+                        ),
+                      ),
+                      if (canScheduleNote)
+                        PopupMenuItem(
+                          onTap: () =>
+                              context.push('/${account.value}/scheduled-notes'),
+                          child: ListTile(
+                            leading: const Icon(Icons.schedule),
+                            title: Text(t.aria.scheduledNotes),
+                          ),
+                        ),
+                      PopupMenuItem(
+                        onTap: () async {
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.resetAreYouSure,
+                          );
+                          if (!context.mounted) return;
+                          if (confirmed) {
+                            ref
                                 .read(
                                   postNotifierProvider(account.value).notifier,
                                 )
-                                .setLocalOnly(!(request.localOnly ?? false))
-                            : null,
-                    color:
-                        request.localOnly ?? false
-                            ? Theme.of(context).colorScheme.error
-                            : null,
-                    disabledColor:
-                        request.localOnly ?? false
-                            ? Theme.of(
-                              context,
-                            ).colorScheme.error.withValues(alpha: 0.5)
-                            : null,
-                    icon:
-                        request.localOnly ?? false
-                            ? const Icon(OffIcons.rocket_outlined)
-                            : const Icon(Icons.rocket),
-                  ),
-                  PopupMenuButton<void>(
-                    itemBuilder:
-                        (context) => [
-                          PopupMenuItem(
-                            onTap:
-                                noteId == null
-                                    ? () async {
-                                      final result = await showModalBottomSheet<
-                                        (ReactionAcceptance?,)
-                                      >(
-                                        context: context,
-                                        builder:
-                                            (context) => ListView(
-                                              shrinkWrap: true,
-                                              children: [
-                                                ListTile(
-                                                  title: Text(
-                                                    t
-                                                        .misskey
-                                                        .reactionAcceptance,
-                                                  ),
-                                                ),
-                                                const Divider(height: 0.0),
-                                                ...[
-                                                  null,
-                                                  ...ReactionAcceptance.values,
-                                                ].map(
-                                                  (acceptance) => ListTile(
-                                                    leading:
-                                                        ReactionAcceptanceIcon(
-                                                          acceptance:
-                                                              acceptance,
-                                                        ),
-                                                    title:
-                                                        ReactionAcceptanceWidget(
-                                                          acceptance:
-                                                              acceptance,
-                                                        ),
-                                                    onTap:
-                                                        () => context.pop((
-                                                          acceptance,
-                                                        )),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                      );
-                                      if (result != null) {
-                                        ref
-                                            .read(
-                                              postNotifierProvider(
-                                                account.value,
-                                              ).notifier,
-                                            )
-                                            .setReactionAcceptance(result.$1);
-                                      }
-                                    }
-                                    : null,
-                            child: ListTile(
-                              leading: ReactionAcceptanceIcon(
-                                acceptance: request.reactionAcceptance,
-                              ),
-                              title: Text(t.misskey.reactionAcceptance),
-                            ),
-                          ),
-                          PopupMenuItem(
-                            onTap: () {
-                              final text = request.text;
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
-                                  )
-                                  .setText(request.cw);
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
-                                  )
-                                  .setCw(text?.replaceAll('\n', ' '));
-                              useCw.value = true;
-                            },
-                            enabled: request.text != null || request.cw != null,
-                            child: ListTile(
-                              leading: const Icon(Icons.swap_vert),
-                              title: Text(t.aria.swapCw),
-                            ),
-                          ),
-                          if (canScheduleNote)
-                            PopupMenuItem(
-                              onTap:
-                                  () => context.push(
-                                    '/${account.value}/scheduled-notes',
-                                  ),
-                              child: ListTile(
-                                leading: const Icon(Icons.schedule),
-                                title: Text(t.aria.scheduledNotes),
-                              ),
-                            ),
-                          PopupMenuItem(
-                            onTap: () async {
-                              final confirmed = await confirm(
-                                context,
-                                message: t.misskey.resetAreYouSure,
-                              );
-                              if (!context.mounted) return;
-                              if (confirmed) {
-                                ref
-                                    .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
-                                    )
-                                    .reset();
-                              }
-                            },
-                            child: ListTile(
-                              leading: const Icon(Icons.delete),
-                              title: Text(t.aria.reset),
-                              iconColor: colors.error,
-                              textColor: colors.error,
-                            ),
-                          ),
-                        ],
+                                .reset();
+                          }
+                        },
+                        child: ListTile(
+                          leading: const Icon(Icons.delete),
+                          title: Text(t.aria.reset),
+                          iconColor: colors.error,
+                          textColor: colors.error,
+                        ),
+                      ),
+                    ],
                     icon: const Icon(Icons.more_horiz),
                   ),
                   if (showPostButton) ...[
@@ -719,10 +683,9 @@ class PostForm extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      onPressed:
-                          canPost
-                              ? () => post(ref, account.value, noteId)
-                              : null,
+                      onPressed: canPost
+                          ? () => post(ref, account.value, noteId)
+                          : null,
                       child: Ink(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -759,12 +722,11 @@ class PostForm extends HookConsumerWidget {
             if (request.replyId case final replyId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$replyId'),
-                onLongPress:
-                    () => showNoteSheet(
-                      context: context,
-                      account: account.value,
-                      noteId: replyId,
-                    ),
+                onLongPress: () => showNoteSheet(
+                  context: context,
+                  account: account.value,
+                  noteId: replyId,
+                ),
                 child: Row(
                   children: [
                     const Padding(
@@ -775,10 +737,8 @@ class PostForm extends HookConsumerWidget {
                       UserAvatar(
                         account: account.value,
                         user: user,
-                        onTap:
-                            () => context.push(
-                              '/${account.value}/users/${user.id}',
-                            ),
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
                       ),
                       const SizedBox(width: 4.0),
                     ],
@@ -789,16 +749,13 @@ class PostForm extends HookConsumerWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed:
-                          noteId == null
-                              ? () => ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
-                                  )
-                                  .setReply(null)
-                              : null,
+                      onPressed: noteId == null
+                          ? () => ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .setReply(null)
+                          : null,
                       icon: const Icon(Icons.close),
                     ),
                   ],
@@ -807,12 +764,11 @@ class PostForm extends HookConsumerWidget {
             if (request.renoteId case final renoteId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$renoteId'),
-                onLongPress:
-                    () => showNoteSheet(
-                      context: context,
-                      account: account.value,
-                      noteId: renoteId,
-                    ),
+                onLongPress: () => showNoteSheet(
+                  context: context,
+                  account: account.value,
+                  noteId: renoteId,
+                ),
                 child: Row(
                   children: [
                     const Padding(
@@ -823,10 +779,8 @@ class PostForm extends HookConsumerWidget {
                       UserAvatar(
                         account: account.value,
                         user: user,
-                        onTap:
-                            () => context.push(
-                              '/${account.value}/users/${user.id}',
-                            ),
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
                       ),
                       const SizedBox(width: 4.0),
                     ],
@@ -837,16 +791,13 @@ class PostForm extends HookConsumerWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed:
-                          noteId == null
-                              ? () => ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
-                                  )
-                                  .setRenote(null)
-                              : null,
+                      onPressed: noteId == null
+                          ? () => ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .setRenote(null)
+                          : null,
                       icon: const Icon(Icons.close),
                     ),
                   ],
@@ -854,8 +805,8 @@ class PostForm extends HookConsumerWidget {
               ),
             if (request.channelId case final channelId?)
               InkWell(
-                onTap:
-                    () => context.push('/${account.value}/channels/$channelId'),
+                onTap: () =>
+                    context.push('/${account.value}/channels/$channelId'),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
                     border: BorderDirectional(
@@ -876,16 +827,15 @@ class PostForm extends HookConsumerWidget {
                       else
                         const Spacer(),
                       IconButton(
-                        onPressed:
-                            canChangeChannel
-                                ? () => ref
-                                    .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
-                                    )
-                                    .setChannel(null)
-                                : null,
+                        onPressed: canChangeChannel
+                            ? () => ref
+                                  .read(
+                                    postNotifierProvider(
+                                      account.value,
+                                    ).notifier,
+                                  )
+                                  .setChannel(null)
+                            : null,
                         icon: const Icon(Icons.close),
                       ),
                     ],
@@ -943,15 +893,14 @@ class PostForm extends HookConsumerWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed:
-                          () => ref
-                              .read(
-                                postNotifierProvider(
-                                  account.value,
-                                  noteId: noteId,
-                                ).notifier,
-                              )
-                              .setScheduledAt(null),
+                      onPressed: () => ref
+                          .read(
+                            postNotifierProvider(
+                              account.value,
+                              noteId: noteId,
+                            ).notifier,
+                          )
+                          .setScheduledAt(null),
                       icon: const Icon(Icons.close),
                     ),
                   ],
@@ -973,22 +922,20 @@ class PostForm extends HookConsumerWidget {
                         account: account.value,
                         username: user.username,
                         host: user.host ?? account.value.host,
-                        onDeleted:
-                            noteId == null
-                                ? () {
-                                  ref
-                                      .read(
-                                        postNotifierProvider(
-                                          account.value,
-                                        ).notifier,
-                                      )
-                                      .removeVisibleUser(user.id);
-                                  visibleUsers.value =
-                                      visibleUsers.value
-                                          .where((e) => e.id != user.id)
-                                          .toList();
-                                }
-                                : null,
+                        onDeleted: noteId == null
+                            ? () {
+                                ref
+                                    .read(
+                                      postNotifierProvider(
+                                        account.value,
+                                      ).notifier,
+                                    )
+                                    .removeVisibleUser(user.id);
+                                visibleUsers.value = visibleUsers.value
+                                    .where((e) => e.id != user.id)
+                                    .toList();
+                              }
+                            : null,
                       ),
                     ),
                     if (noteId == null)
@@ -1074,16 +1021,15 @@ class PostForm extends HookConsumerWidget {
                           !(reply?.localOnly ?? false) &&
                           !(renote?.localOnly ?? false))
                         TextButton(
-                          onPressed:
-                              noteId == null
-                                  ? () => ref
-                                      .read(
-                                        postNotifierProvider(
-                                          account.value,
-                                        ).notifier,
-                                      )
-                                      .setLocalOnly(false)
-                                  : null,
+                          onPressed: noteId == null
+                              ? () => ref
+                                    .read(
+                                      postNotifierProvider(
+                                        account.value,
+                                      ).notifier,
+                                    )
+                                    .setLocalOnly(false)
+                              : null,
                           child: Text(t.aria.enableFederation),
                         ),
                     ],
@@ -1137,10 +1083,9 @@ class PostForm extends HookConsumerWidget {
                     textInputAction: TextInputAction.next,
                     maxLength: (request.cw?.length ?? 0) > 80 ? 100 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
-                    spellCheckConfiguration:
-                        enableSpellCheck
-                            ? const SpellCheckConfiguration()
-                            : null,
+                    spellCheckConfiguration: enableSpellCheck
+                        ? const SpellCheckConfiguration()
+                        : null,
                   ),
                 ),
               ),
@@ -1161,78 +1106,69 @@ class PostForm extends HookConsumerWidget {
                 maxLines: maxLines,
                 maxLength: (request.text?.length ?? 0) > 2900 ? 3000 : null,
                 maxLengthEnforcement: MaxLengthEnforcement.none,
-                contextMenuBuilder:
-                    (
-                      context,
-                      editableTextState,
-                    ) => AdaptiveTextSelectionToolbar.editable(
+                contextMenuBuilder: (context, editableTextState) =>
+                    AdaptiveTextSelectionToolbar.editable(
                       clipboardStatus: ClipboardStatus.pasteable,
-                      onCopy:
-                          editableTextState.copyEnabled
-                              ? () => editableTextState.copySelection(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
-                      onCut:
-                          editableTextState.cutEnabled
-                              ? () => editableTextState.cutSelection(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
-                      onPaste:
-                          editableTextState.pasteEnabled
-                              ? () async {
-                                final data = await Clipboard.getData(
-                                  Clipboard.kTextPlain,
-                                );
-                                if (data case ClipboardData(:final text?)) {
-                                  if (Uri.tryParse(text) case final url?
-                                      when RegExp(
-                                        r'^https?$',
-                                      ).hasMatch(url.scheme)) {
-                                    if (!controller.selection.isCollapsed) {
-                                      controller.insert('[', ']()');
-                                      controller
-                                          .selection = TextSelection.collapsed(
-                                        offset: controller.selection.end + 2,
-                                      );
-                                    }
+                      onCopy: editableTextState.copyEnabled
+                          ? () => editableTextState.copySelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onCut: editableTextState.cutEnabled
+                          ? () => editableTextState.cutSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onPaste: editableTextState.pasteEnabled
+                          ? () async {
+                              final data = await Clipboard.getData(
+                                Clipboard.kTextPlain,
+                              );
+                              if (data case ClipboardData(:final text?)) {
+                                if (Uri.tryParse(text) case final url?
+                                    when RegExp(
+                                      r'^https?$',
+                                    ).hasMatch(url.scheme)) {
+                                  if (!controller.selection.isCollapsed) {
+                                    controller.insert('[', ']()');
+                                    controller.selection =
+                                        TextSelection.collapsed(
+                                          offset: controller.selection.end + 2,
+                                        );
                                   }
-                                  await editableTextState.pasteText(
-                                    SelectionChangedCause.toolbar,
-                                  );
                                 }
+                                await editableTextState.pasteText(
+                                  SelectionChangedCause.toolbar,
+                                );
                               }
-                              : null,
-                      onSelectAll:
-                          editableTextState.selectAllEnabled
-                              ? () => editableTextState.selectAll(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
-                      onLookUp:
-                          editableTextState.lookUpEnabled
-                              ? () => editableTextState.lookUpSelection(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
-                      onSearchWeb:
-                          editableTextState.searchWebEnabled
-                              ? () => editableTextState.searchWebForSelection(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
-                      onShare:
-                          editableTextState.shareEnabled
-                              ? () => editableTextState.shareSelection(
-                                SelectionChangedCause.toolbar,
-                              )
-                              : null,
+                            }
+                          : null,
+                      onSelectAll: editableTextState.selectAllEnabled
+                          ? () => editableTextState.selectAll(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onLookUp: editableTextState.lookUpEnabled
+                          ? () => editableTextState.lookUpSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onSearchWeb: editableTextState.searchWebEnabled
+                          ? () => editableTextState.searchWebForSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onShare: editableTextState.shareEnabled
+                          ? () => editableTextState.shareSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
                       onLiveTextInput: null,
                       anchors: editableTextState.contextMenuAnchors,
                     ),
-                spellCheckConfiguration:
-                    enableSpellCheck ? const SpellCheckConfiguration() : null,
+                spellCheckConfiguration: enableSpellCheck
+                    ? const SpellCheckConfiguration()
+                    : null,
               ),
             ),
             if (useHashtags) ...[
@@ -1278,10 +1214,9 @@ class PostForm extends HookConsumerWidget {
                   child: Text(
                     '${attaches.length}/16',
                     style: TextStyle(
-                      color:
-                          attaches.length > 16
-                              ? Theme.of(context).colorScheme.error
-                              : null,
+                      color: attaches.length > 16
+                          ? Theme.of(context).colorScheme.error
+                          : null,
                     ),
                   ),
                 ),
@@ -1417,11 +1352,10 @@ class _PostFormFooter extends HookConsumerWidget {
                           final files =
                               await showModalBottomSheet<List<PostFile>>(
                                 context: context,
-                                builder:
-                                    (context) => FilePickerSheet(
-                                      account: account,
-                                      allowMultiple: true,
-                                    ),
+                                builder: (context) => FilePickerSheet(
+                                  account: account,
+                                  allowMultiple: true,
+                                ),
                                 clipBehavior: Clip.hardEdge,
                               );
                           if (files != null) {
@@ -1439,22 +1373,19 @@ class _PostFormFooter extends HookConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.poll,
-                        onPressed:
-                            () =>
-                                ref
-                                    .read(
-                                      postNotifierProvider(
-                                        account,
-                                        noteId: noteId,
-                                      ).notifier,
-                                    )
-                                    .togglePoll(),
+                        onPressed: () => ref
+                            .read(
+                              postNotifierProvider(
+                                account,
+                                noteId: noteId,
+                              ).notifier,
+                            )
+                            .togglePoll(),
                         icon: Icon(
                           Icons.bar_chart,
-                          color:
-                              request.poll != null
-                                  ? Theme.of(context).colorScheme.primary
-                                  : null,
+                          color: request.poll != null
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
                         ),
                       ),
                       IconButton(
@@ -1485,10 +1416,9 @@ class _PostFormFooter extends HookConsumerWidget {
                         },
                         icon: Icon(
                           Icons.visibility_off,
-                          color:
-                              useCw.value
-                                  ? Theme.of(context).colorScheme.primary
-                                  : null,
+                          color: useCw.value
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
                         ),
                       ),
                       IconButton(
@@ -1522,55 +1452,46 @@ class _PostFormFooter extends HookConsumerWidget {
                         },
                         icon: Icon(
                           Icons.tag,
-                          color:
-                              useHashtags
-                                  ? Theme.of(context).colorScheme.primary
-                                  : null,
+                          color: useHashtags
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
                         ),
                       ),
                       IconButton(
                         tooltip: t.misskey.emoji,
-                        onPressed:
-                            () => pickEmoji(
-                              ref,
-                              account,
-                              post: true,
-                              onTapEmoji:
-                                  (emoji) => controller.insert(
-                                    emoji.replaceFirst('@.', ''),
-                                  ),
-                            ),
+                        onPressed: () => pickEmoji(
+                          ref,
+                          account,
+                          post: true,
+                          onTapEmoji: (emoji) =>
+                              controller.insert(emoji.replaceFirst('@.', '')),
+                        ),
                         icon: const Icon(Icons.mood),
                       ),
                       IconButton(
                         tooltip: t.misskey.channel,
-                        onPressed:
-                            canChangeChannel
-                                ? () async {
-                                  final result =
-                                      await showDialog<CommunityChannel>(
-                                        context: context,
-                                        builder:
-                                            (context) => ChannelsPage(
-                                              account: account,
-                                              onChannelTap:
-                                                  (channel) =>
-                                                      context.pop(channel),
-                                              initialIndex: 2,
-                                            ),
-                                      );
-                                  if (!context.mounted) return;
-                                  if (result != null) {
-                                    ref
-                                        .read(
-                                          postNotifierProvider(
-                                            account,
-                                          ).notifier,
-                                        )
-                                        .setChannel(result.id);
-                                  }
+                        onPressed: canChangeChannel
+                            ? () async {
+                                final result =
+                                    await showDialog<CommunityChannel>(
+                                      context: context,
+                                      builder: (context) => ChannelsPage(
+                                        account: account,
+                                        onChannelTap: (channel) =>
+                                            context.pop(channel),
+                                        initialIndex: 2,
+                                      ),
+                                    );
+                                if (!context.mounted) return;
+                                if (result != null) {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(account).notifier,
+                                      )
+                                      .setChannel(result.id);
                                 }
-                                : null,
+                              }
+                            : null,
                         icon: const Icon(Icons.tv),
                       ),
                       if (canScheduleNote)

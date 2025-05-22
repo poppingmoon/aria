@@ -142,10 +142,9 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map((file) => file.id == fileId ? response : file)
-                .toList(),
+        items: value.items
+            .map((file) => file.id == fileId ? response : file)
+            .toList(),
       ),
     );
   }

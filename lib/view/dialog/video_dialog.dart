@@ -32,7 +32,9 @@ class VideoDialog extends ConsumerWidget {
             key: const ValueKey(0),
             onDismissed: (_) => context.pop(),
             direction: DismissDirection.vertical,
-            child: Center(child: _VideoWidget(url: url, file: file)),
+            child: Center(
+              child: _VideoWidget(url: url, file: file),
+            ),
           ),
           Align(
             alignment: AlignmentDirectional.topStart,
@@ -51,43 +53,42 @@ class VideoDialog extends ConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: PopupMenuButton<void>(
-                  itemBuilder:
-                      (context) => [
-                        PopupMenuItem(
-                          onTap: () async {
-                            if (!await Gal.requestAccess()) {
-                              if (!context.mounted) return;
-                              await showMessageDialog(
-                                context,
-                                t.misskey.permissionDeniedError,
-                              );
-                              return;
-                            }
-                            if (!context.mounted) return;
-                            await futureWithDialog(
-                              context,
-                              Future(() async {
-                                final file = await ref
-                                    .read(cacheManagerProvider)
-                                    .getSingleFile(url);
-                                await Gal.putVideo(file.path);
-                              }),
-                              message: t.aria.downloaded,
-                            );
-                          },
-                          child: ListTile(
-                            leading: const Icon(Icons.download),
-                            title: Text(t.misskey.download),
-                          ),
-                        ),
-                        PopupMenuItem(
-                          onTap: () => launchUrl(ref, Uri.parse(url)),
-                          child: ListTile(
-                            leading: const Icon(Icons.open_in_browser),
-                            title: Text(t.aria.openInBrowser),
-                          ),
-                        ),
-                      ],
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      onTap: () async {
+                        if (!await Gal.requestAccess()) {
+                          if (!context.mounted) return;
+                          await showMessageDialog(
+                            context,
+                            t.misskey.permissionDeniedError,
+                          );
+                          return;
+                        }
+                        if (!context.mounted) return;
+                        await futureWithDialog(
+                          context,
+                          Future(() async {
+                            final file = await ref
+                                .read(cacheManagerProvider)
+                                .getSingleFile(url);
+                            await Gal.putVideo(file.path);
+                          }),
+                          message: t.aria.downloaded,
+                        );
+                      },
+                      child: ListTile(
+                        leading: const Icon(Icons.download),
+                        title: Text(t.misskey.download),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () => launchUrl(ref, Uri.parse(url)),
+                      child: ListTile(
+                        leading: const Icon(Icons.open_in_browser),
+                        title: Text(t.aria.openInBrowser),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -126,10 +127,9 @@ class _VideoWidgetState extends State<_VideoWidget> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController =
-        widget.url != null
-            ? VideoPlayerController.networkUrl(Uri.parse(widget.url!))
-            : VideoPlayerController.file(widget.file!);
+    _videoPlayerController = widget.url != null
+        ? VideoPlayerController.networkUrl(Uri.parse(widget.url!))
+        : VideoPlayerController.file(widget.file!);
     await _videoPlayerController.initialize();
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,

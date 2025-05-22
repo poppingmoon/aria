@@ -57,7 +57,8 @@ void main() {
   );
   final colorsString = colors
       .map(
-        (colors) => """
+        (colors) =>
+            """
   MisskeyColors(
     id: '${colors.id}',
     name: '${colors.name}',
@@ -91,7 +92,8 @@ void main() {
   ),""",
       )
       .join('\n');
-  final contents = """
+  final contents =
+      """
 /// Generated file. Do not edit.
 ///
 /// Source: misskey/packages/frontend-shared/themes

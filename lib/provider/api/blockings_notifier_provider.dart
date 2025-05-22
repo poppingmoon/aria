@@ -47,10 +47,9 @@ class BlockingsNotifier extends _$BlockingsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items:
-              value.items
-                  .where((blocking) => blocking.blockeeId != userId)
-                  .toList(),
+          items: value.items
+              .where((blocking) => blocking.blockeeId != userId)
+              .toList(),
         ),
       );
     }

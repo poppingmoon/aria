@@ -42,45 +42,40 @@ class SearchNotes extends HookConsumerWidget {
     final controller = useTextEditingController();
     final query = useState('');
     final userId = useState(this.userId);
-    final user =
-        userId.value != null
-            ? ref
-                .watch(userNotifierProvider(account, userId: userId.value))
-                .valueOrNull
-            : null;
+    final user = userId.value != null
+        ? ref
+              .watch(userNotifierProvider(account, userId: userId.value))
+              .valueOrNull
+        : null;
     final channelId = useState(this.channelId);
-    final channel =
-        channelId.value != null
-            ? ref
-                .watch(channelNotifierProvider(account, channelId.value!))
-                .valueOrNull
-            : null;
+    final channel = channelId.value != null
+        ? ref
+              .watch(channelNotifierProvider(account, channelId.value!))
+              .valueOrNull
+        : null;
     final localOnly = useState(this.channelId != null);
     final sinceDate = useState<DateTime?>(null);
     final untilDate = useState<DateTime?>(null);
     final method = ref.watch(idGenMethodProvider(account)).valueOrNull;
-    final sinceId =
-        method != null && sinceDate.value != null
-            ? Id(method: method, date: sinceDate.value!).toString()
-            : null;
-    final untilId =
-        method != null && untilDate.value != null
-            ? Id(method: method, date: untilDate.value!).toString()
-            : null;
-    final notes =
-        query.value.isNotEmpty
-            ? ref.watch(
-              searchNotesNotifierProvider(
-                account,
-                query.value,
-                userId: userId.value,
-                channelId: channelId.value,
-                localOnly: localOnly.value,
-                sinceId: sinceId,
-                untilId: untilId,
-              ),
-            )
-            : null;
+    final sinceId = method != null && sinceDate.value != null
+        ? Id(method: method, date: sinceDate.value!).toString()
+        : null;
+    final untilId = method != null && untilDate.value != null
+        ? Id(method: method, date: untilDate.value!).toString()
+        : null;
+    final notes = query.value.isNotEmpty
+        ? ref.watch(
+            searchNotesNotifierProvider(
+              account,
+              query.value,
+              userId: userId.value,
+              channelId: channelId.value,
+              localOnly: localOnly.value,
+              sinceId: sinceId,
+              untilId: untilId,
+            ),
+          )
+        : null;
     final style = DefaultTextStyle.of(context).style;
 
     return PaginatedListView(
@@ -119,54 +114,44 @@ class SearchNotes extends HookConsumerWidget {
                   SwitchListTile(
                     title: Text(t.misskey.localOnly),
                     value: localOnly.value,
-                    onChanged:
-                        channelId.value == null
-                            ? (value) => localOnly.value = value
-                            : null,
+                    onChanged: channelId.value == null
+                        ? (value) => localOnly.value = value
+                        : null,
                   ),
                   ListTile(
                     title: Text(t.misskey.user),
-                    subtitle:
-                        user != null
-                            ? UsernameWidget(
-                              account: account,
-                              leadingSpans: [
-                                WidgetSpan(
-                                  child: UserAvatar(
-                                    account: account,
-                                    user: user,
+                    subtitle: user != null
+                        ? UsernameWidget(
+                            account: account,
+                            leadingSpans: [
+                              WidgetSpan(
+                                child: UserAvatar(account: account, user: user),
+                              ),
+                              const TextSpan(text: ' '),
+                            ],
+                            user: user,
+                            trailingSpans: [
+                              const TextSpan(text: ' '),
+                              TextSpan(text: '@${user.username}'),
+                              if (user.host != null)
+                                TextSpan(
+                                  text: '@${toUnicode(user.host!)}',
+                                  style: TextStyle(
+                                    color: style.color?.withValues(alpha: 0.5),
                                   ),
                                 ),
-                                const TextSpan(text: ' '),
-                              ],
-                              user: user,
-                              trailingSpans: [
-                                const TextSpan(text: ' '),
-                                TextSpan(text: '@${user.username}'),
-                                if (user.host != null)
-                                  TextSpan(
-                                    text: '@${toUnicode(user.host!)}',
-                                    style: TextStyle(
-                                      color: style.color?.withValues(
-                                        alpha: 0.5,
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            )
-                            : Text(t.misskey.notSet),
-                    trailing:
-                        userId.value != null
-                            ? IconButton(
-                              onPressed: () => userId.value = null,
-                              icon: const Icon(Icons.close),
-                            )
-                            : const Icon(Icons.navigate_next),
+                            ],
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          )
+                        : Text(t.misskey.notSet),
+                    trailing: userId.value != null
+                        ? IconButton(
+                            onPressed: () => userId.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
                     onTap: () async {
                       final result = await selectUser(
                         context,
@@ -182,22 +167,20 @@ class SearchNotes extends HookConsumerWidget {
                   ListTile(
                     title: Text(t.misskey.channel),
                     subtitle: Text(channel?.name ?? t.misskey.notSet),
-                    trailing:
-                        channelId.value != null
-                            ? IconButton(
-                              onPressed: () => channelId.value = null,
-                              icon: const Icon(Icons.close),
-                            )
-                            : const Icon(Icons.navigate_next),
+                    trailing: channelId.value != null
+                        ? IconButton(
+                            onPressed: () => channelId.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
                     onTap: () async {
                       final result = await showDialog<CommunityChannel>(
                         context: context,
-                        builder:
-                            (context) => ChannelsPage(
-                              account: account,
-                              onChannelTap: (channel) => context.pop(channel),
-                              initialIndex: account.isGuest ? 1 : 2,
-                            ),
+                        builder: (context) => ChannelsPage(
+                          account: account,
+                          onChannelTap: (channel) => context.pop(channel),
+                          initialIndex: account.isGuest ? 1 : 2,
+                        ),
                       );
                       if (result != null) {
                         channelId.value = result.id;
@@ -212,13 +195,12 @@ class SearchNotes extends HookConsumerWidget {
                           ? absoluteTime(sinceDate.value!)
                           : t.misskey.notSet,
                     ),
-                    trailing:
-                        sinceDate.value != null
-                            ? IconButton(
-                              onPressed: () => sinceDate.value = null,
-                              icon: const Icon(Icons.close),
-                            )
-                            : const Icon(Icons.navigate_next),
+                    trailing: sinceDate.value != null
+                        ? IconButton(
+                            onPressed: () => sinceDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
                     onTap: () async {
                       final result = await pickDateTime(
                         context,
@@ -236,13 +218,12 @@ class SearchNotes extends HookConsumerWidget {
                           ? absoluteTime(untilDate.value!)
                           : t.misskey.notSet,
                     ),
-                    trailing:
-                        untilDate.value != null
-                            ? IconButton(
-                              onPressed: () => untilDate.value = null,
-                              icon: const Icon(Icons.close),
-                            )
-                            : const Icon(Icons.navigate_next),
+                    trailing: untilDate.value != null
+                        ? IconButton(
+                            onPressed: () => untilDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
                     onTap: () async {
                       final result = await pickDateTime(
                         context,
@@ -270,10 +251,21 @@ class SearchNotes extends HookConsumerWidget {
         ],
       ),
       paginationState: notes,
-      itemBuilder:
-          (context, note) => NoteWidget(account: account, noteId: note.id),
-      onRefresh:
-          () => ref.refresh(
+      itemBuilder: (context, note) =>
+          NoteWidget(account: account, noteId: note.id),
+      onRefresh: () => ref.refresh(
+        searchNotesNotifierProvider(
+          account,
+          query.value,
+          userId: userId.value,
+          channelId: channelId.value,
+          localOnly: localOnly.value,
+          sinceId: sinceId,
+          untilId: untilId,
+        ).future,
+      ),
+      loadMore: (skipError) => ref
+          .read(
             searchNotesNotifierProvider(
               account,
               query.value,
@@ -282,22 +274,9 @@ class SearchNotes extends HookConsumerWidget {
               localOnly: localOnly.value,
               sinceId: sinceId,
               untilId: untilId,
-            ).future,
-          ),
-      loadMore:
-          (skipError) => ref
-              .read(
-                searchNotesNotifierProvider(
-                  account,
-                  query.value,
-                  userId: userId.value,
-                  channelId: channelId.value,
-                  localOnly: localOnly.value,
-                  sinceId: sinceId,
-                  untilId: untilId,
-                ).notifier,
-              )
-              .loadMore(skipError: skipError),
+            ).notifier,
+          )
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

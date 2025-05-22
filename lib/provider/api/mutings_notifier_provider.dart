@@ -45,8 +45,9 @@ class MutingsNotifier extends _$MutingsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items:
-              value.items.where((muting) => muting.muteeId != userId).toList(),
+          items: value.items
+              .where((muting) => muting.muteeId != userId)
+              .toList(),
         ),
       );
     }

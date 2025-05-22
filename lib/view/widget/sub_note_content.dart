@@ -58,12 +58,12 @@ class SubNoteContent extends HookConsumerWidget {
       ),
     );
     final showFooter = this.showFooter ?? showSubNoteFooter;
-    final parsed =
-        note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
-    final collapseReason =
-        note.cw == null && !alwaysExpandLongNote
-            ? ref.watch(noteCollapseReasonProvider(account, noteId))
-            : null;
+    final parsed = note.text != null
+        ? ref.watch(parsedMfmProvider(note.text!))
+        : null;
+    final collapseReason = note.cw == null && !alwaysExpandLongNote
+        ? ref.watch(noteCollapseReasonProvider(account, noteId))
+        : null;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -86,24 +86,23 @@ class SubNoteContent extends HookConsumerWidget {
                   maxHeight: isCollapsed.value ? 200.0 : double.infinity,
                 ),
                 child: ShaderMask(
-                  shaderCallback:
-                      (bounds) => LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.white,
-                          Colors.white,
-                          Colors.white.withValues(alpha: 0.0),
-                        ],
-                        stops: [
-                          0.0,
-                          if (isCollapsed.value && bounds.height >= 200.0)
-                            0.9
-                          else
-                            1.0,
-                          1.0,
-                        ],
-                      ).createShader(bounds),
+                  shaderCallback: (bounds) => LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.white,
+                      Colors.white,
+                      Colors.white.withValues(alpha: 0.0),
+                    ],
+                    stops: [
+                      0.0,
+                      if (isCollapsed.value && bounds.height >= 200.0)
+                        0.9
+                      else
+                        1.0,
+                      1.0,
+                    ],
+                  ).createShader(bounds),
                   child: _SubNoteMfm(
                     account: account,
                     nodes: parsed,
@@ -132,8 +131,8 @@ class SubNoteContent extends HookConsumerWidget {
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                onPressed:
-                    () => isFilesCollapsed.value = !isFilesCollapsed.value,
+                onPressed: () =>
+                    isFilesCollapsed.value = !isFilesCollapsed.value,
                 icon: Icon(
                   isFilesCollapsed.value
                       ? Icons.arrow_right

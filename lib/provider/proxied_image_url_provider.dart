@@ -22,8 +22,10 @@ Uri? proxiedImageUrl(
 
   final serverUrl = ref.watch(serverUrlNotifierProvider(host));
   Uri imageUrl = baseUrl.hasScheme ? baseUrl : serverUrl.resolveUri(baseUrl);
-  final mediaProxy =
-      ref.watch(metaNotifierProvider(host)).valueOrNull?.mediaProxy;
+  final mediaProxy = ref
+      .watch(metaNotifierProvider(host))
+      .valueOrNull
+      ?.mediaProxy;
   final mediaProxyUrl =
       (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
       serverUrl.replace(pathSegments: ['proxy']);

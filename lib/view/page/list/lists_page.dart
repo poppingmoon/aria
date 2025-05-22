@@ -32,76 +32,69 @@ class ListsPage extends ConsumerWidget {
           AsyncValue(valueOrNull: final lists?) =>
             lists.isEmpty
                 ? LayoutBuilder(
-                  builder:
-                      (context, constraint) => SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        child: SizedBox(
-                          height: constraint.maxHeight,
-                          child: Center(child: Text(t.misskey.nothing)),
-                        ),
+                    builder: (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.nothing)),
                       ),
-                )
+                    ),
+                  )
                 : ListView.separated(
-                  itemBuilder:
-                      (context, index) => Center(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: 8.0,
-                            top: index == 0 ? 8.0 : 0.0,
-                            right: 8.0,
-                            bottom: index == lists.length - 1 ? 120.0 : 0.0,
-                          ),
-                          width: maxContentWidth,
-                          child: ListTileTheme.merge(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top:
-                                    index == 0
-                                        ? const Radius.circular(8.0)
-                                        : Radius.zero,
-                                bottom:
-                                    index == lists.length - 1
-                                        ? const Radius.circular(8.0)
-                                        : Radius.zero,
-                              ),
+                    itemBuilder: (context, index) => Center(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: 8.0,
+                          top: index == 0 ? 8.0 : 0.0,
+                          right: 8.0,
+                          bottom: index == lists.length - 1 ? 120.0 : 0.0,
+                        ),
+                        width: maxContentWidth,
+                        child: ListTileTheme.merge(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: index == 0
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
+                              bottom: index == lists.length - 1
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
                             ),
-                            tileColor: theme.colorScheme.surface,
-                            child: ListTile(
-                              title: Text(lists[index].name ?? ''),
-                              subtitle: Text(
-                                t.misskey.nUsers(
-                                  n:
-                                      [
-                                        NumberFormat().format(
-                                          lists[index].userIds.length,
-                                        ),
-                                        if (i?.policies case UserPolicies(
-                                          :final userEachUserListsLimit?,
-                                        ))
-                                          ' / ${NumberFormat().format(userEachUserListsLimit)}',
-                                      ].join(),
-                                ),
-                              ),
-                              onTap:
-                                  () => context.push(
-                                    '/$account/lists/${lists[index].id}',
+                          ),
+                          tileColor: theme.colorScheme.surface,
+                          child: ListTile(
+                            title: Text(lists[index].name ?? ''),
+                            subtitle: Text(
+                              t.misskey.nUsers(
+                                n: [
+                                  NumberFormat().format(
+                                    lists[index].userIds.length,
                                   ),
+                                  if (i?.policies case UserPolicies(
+                                    :final userEachUserListsLimit?,
+                                  ))
+                                    ' / ${NumberFormat().format(userEachUserListsLimit)}',
+                                ].join(),
+                              ),
+                            ),
+                            onTap: () => context.push(
+                              '/$account/lists/${lists[index].id}',
                             ),
                           ),
                         ),
                       ),
-                  separatorBuilder:
-                      (context, index) => const Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: SizedBox(
-                            width: maxContentWidth,
-                            child: Divider(height: 0.0),
-                          ),
+                    ),
+                    separatorBuilder: (context, index) => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SizedBox(
+                          width: maxContentWidth,
+                          child: Divider(height: 0.0),
                         ),
                       ),
-                  itemCount: lists.length,
-                ),
+                    ),
+                    itemCount: lists.length,
+                  ),
           AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Center(
@@ -120,9 +113,8 @@ class ListsPage extends ConsumerWidget {
         onPressed: () async {
           final name = await showDialog<String>(
             context: context,
-            builder:
-                (context) =>
-                    TextFieldDialog(title: Text(t.misskey.enterListName)),
+            builder: (context) =>
+                TextFieldDialog(title: Text(t.misskey.enterListName)),
           );
           if (!context.mounted) return;
           if (name != null) {

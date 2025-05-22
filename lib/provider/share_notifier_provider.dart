@@ -39,13 +39,15 @@ class ShareNotifier extends _$ShareNotifier {
         final url = Uri.parse(sharedFiles.single.path);
         if (url.scheme == 'aria') {
           if (url.path == '/miauth') {
-            final result =
-                await ref.read(miAuthNotifierProvider.notifier).check();
+            final result = await ref
+                .read(miAuthNotifierProvider.notifier)
+                .check();
             if (result.added case final added?) {
               showToast(
                 context: null,
-                message:
-                    added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+                message: added
+                    ? t.aria.accountAdded
+                    : t.aria.accessTokenUpdated,
               );
             }
             if (result.success) {

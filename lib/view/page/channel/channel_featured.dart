@@ -24,21 +24,19 @@ class ChannelFeatured extends ConsumerWidget {
     );
     return PaginatedListView(
       paginationState: notes,
-      itemBuilder:
-          (context, note) => NoteWidget(account: account, noteId: note.id),
-      onRefresh:
-          () => ref.refresh(
-            featuredNotesNotifierProvider(account, channelId: channelId).future,
-          ),
-      loadMore:
-          (skipError) => ref
-              .read(
-                featuredNotesNotifierProvider(
-                  account,
-                  channelId: channelId,
-                ).notifier,
-              )
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, note) =>
+          NoteWidget(account: account, noteId: note.id),
+      onRefresh: () => ref.refresh(
+        featuredNotesNotifierProvider(account, channelId: channelId).future,
+      ),
+      loadMore: (skipError) => ref
+          .read(
+            featuredNotesNotifierProvider(
+              account,
+              channelId: channelId,
+            ).notifier,
+          )
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

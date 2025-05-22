@@ -56,43 +56,41 @@ class PollWidget extends HookConsumerWidget {
                 border: Border.all(color: Colors.transparent),
                 borderRadius: BorderRadius.circular(4.0),
                 color: showResult.value ? null : colors.accentedBg,
-                gradient:
-                    showResult.value
-                        ? LinearGradient(
-                          colors: [
-                            colors.buttonGradateA,
-                            colors.buttonGradateB,
-                            colors.accentedBg,
-                          ],
-                          stops: [
-                            0,
-                            choice.votes / max(total, 1),
-                            choice.votes / max(total, 1),
-                          ],
-                        )
-                        : null,
+                gradient: showResult.value
+                    ? LinearGradient(
+                        colors: [
+                          colors.buttonGradateA,
+                          colors.buttonGradateB,
+                          colors.accentedBg,
+                        ],
+                        stops: [
+                          0,
+                          choice.votes / max(total, 1),
+                          choice.votes / max(total, 1),
+                        ],
+                      )
+                    : null,
               ),
               child: InkWell(
-                onTap:
-                    !account.isGuest && !closed && !isVoted
-                        ? () async {
-                          final confirmed = await confirm(
+                onTap: !account.isGuest && !closed && !isVoted
+                    ? () async {
+                        final confirmed = await confirm(
+                          context,
+                          message: t.misskey.voteConfirm(choice: choice.text),
+                        );
+                        if (!context.mounted) return;
+                        if (confirmed) {
+                          await futureWithDialog(
                             context,
-                            message: t.misskey.voteConfirm(choice: choice.text),
+                            ref
+                                .read(notesNotifierProvider(account).notifier)
+                                .vote(noteId, index),
+                            overlay: false,
                           );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            await futureWithDialog(
-                              context,
-                              ref
-                                  .read(notesNotifierProvider(account).notifier)
-                                  .vote(noteId, index),
-                              overlay: false,
-                            );
-                            showResult.value = !poll.multiple;
-                          }
+                          showResult.value = !poll.multiple;
                         }
-                        : null,
+                      }
+                    : null,
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: Padding(
@@ -107,18 +105,17 @@ class PollWidget extends HookConsumerWidget {
                         child: Mfm(
                           account: account,
                           text: choice.text,
-                          trailingSpans:
-                              showResult.value
-                                  ? [
-                                    TextSpan(
-                                      text:
-                                          ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
-                                      style: TextStyle(
-                                        color: colors.fg.withValues(alpha: 0.5),
-                                      ),
+                          trailingSpans: showResult.value
+                              ? [
+                                  TextSpan(
+                                    text:
+                                        ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
+                                    style: TextStyle(
+                                      color: colors.fg.withValues(alpha: 0.5),
                                     ),
-                                  ]
-                                  : null,
+                                  ),
+                                ]
+                              : null,
                           simple: true,
                           emojis: emojis,
                         ),
@@ -138,13 +135,11 @@ class PollWidget extends HookConsumerWidget {
               const TextSpan(text: ' · '),
               if (!closed && !isVoted)
                 TextSpan(
-                  text:
-                      showResult.value
-                          ? t.misskey.poll_.vote
-                          : t.misskey.poll_.showResult,
-                  recognizer:
-                      recognizer
-                        ..onTap = () => showResult.value = !showResult.value,
+                  text: showResult.value
+                      ? t.misskey.poll_.vote
+                      : t.misskey.poll_.showResult,
+                  recognizer: recognizer
+                    ..onTap = () => showResult.value = !showResult.value,
                 )
               else if (isVoted)
                 TextSpan(text: t.misskey.poll_.voted)
@@ -153,25 +148,24 @@ class PollWidget extends HookConsumerWidget {
               if (remaining != null && !remaining.isNegative) ...[
                 const TextSpan(text: ' · '),
                 TextSpan(
-                  text:
-                      remaining.inDays > 0
-                          ? t.misskey.poll_.remainingDays(
-                            d: remaining.inDays,
-                            h: remaining.inHours % 24,
-                          )
-                          : remaining.inHours > 0
-                          ? t.misskey.poll_.remainingHours(
-                            h: remaining.inHours,
-                            m: remaining.inMinutes % 60,
-                          )
-                          : remaining.inMinutes > 0
-                          ? t.misskey.poll_.remainingMinutes(
-                            m: remaining.inMinutes,
-                            s: remaining.inSeconds % 60,
-                          )
-                          : t.misskey.poll_.remainingSeconds(
-                            s: remaining.inSeconds,
-                          ),
+                  text: remaining.inDays > 0
+                      ? t.misskey.poll_.remainingDays(
+                          d: remaining.inDays,
+                          h: remaining.inHours % 24,
+                        )
+                      : remaining.inHours > 0
+                      ? t.misskey.poll_.remainingHours(
+                          h: remaining.inHours,
+                          m: remaining.inMinutes % 60,
+                        )
+                      : remaining.inMinutes > 0
+                      ? t.misskey.poll_.remainingMinutes(
+                          m: remaining.inMinutes,
+                          s: remaining.inSeconds % 60,
+                        )
+                      : t.misskey.poll_.remainingSeconds(
+                          s: remaining.inSeconds,
+                        ),
                 ),
               ],
             ],

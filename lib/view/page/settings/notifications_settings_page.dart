@@ -137,8 +137,8 @@ class NotificationsSettingsPage extends ConsumerWidget {
     // Register the endpoint and keys to the Misskey server.
     final response = await showDialog<SwRegisterResponse>(
       context: ref.context,
-      builder:
-          (context) => SwRegisterDialog(account: account, request: request),
+      builder: (context) =>
+          SwRegisterDialog(account: account, request: request),
     );
     if (!ref.context.mounted || response == null) {
       if (defaultTargetPlatform == TargetPlatform.android) {
@@ -167,11 +167,10 @@ class NotificationsSettingsPage extends ConsumerWidget {
     );
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final flutterLocalNotificationsPlugin =
-          FlutterLocalNotificationsPlugin()
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >();
+      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin()
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
       await flutterLocalNotificationsPlugin?.createNotificationChannelGroup(
         AndroidNotificationChannelGroup(account.toString(), account.toString()),
       );
@@ -231,17 +230,16 @@ class NotificationsSettingsPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.subscribePushNotification),
                 value: endpoint != null,
-                onChanged:
-                    endpoint != null
-                        ? (_) => _unsubscribe(ref)
-                        : i != null && isPushNotificationSupported
-                        ? (_) async {
-                          await _subscribe(ref);
-                          await ref
-                              .read(userIdsNotifierProvider.notifier)
-                              .add(account, i.id);
-                        }
-                        : null,
+                onChanged: endpoint != null
+                    ? (_) => _unsubscribe(ref)
+                    : i != null && isPushNotificationSupported
+                    ? (_) async {
+                        await _subscribe(ref);
+                        await ref
+                            .read(userIdsNotifierProvider.notifier)
+                            .add(account, i.id);
+                      }
+                    : null,
               ),
             ),
           ),

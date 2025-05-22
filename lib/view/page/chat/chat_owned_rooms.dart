@@ -24,84 +24,80 @@ class ChatOwnedRooms extends ConsumerWidget {
 
     if (rooms.error case MisskeyException(code: 'PERMISSION_DENIED')) {
       return RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(ownedChatRoomsNotifierProvider(account).future),
+        onRefresh: () =>
+            ref.refresh(ownedChatRoomsNotifierProvider(account).future),
         child: LayoutBuilder(
-          builder:
-              (context, constraint) => SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: SizedBox(
-                  height: constraint.maxHeight,
-                  child: Center(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      width: maxContentWidth,
-                      padding: const EdgeInsets.all(16.0),
-                      child: PermissionDeniedErrorWidget(account: account),
-                    ),
-                  ),
+          builder: (context, constraint) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: SizedBox(
+              height: constraint.maxHeight,
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.all(16.0),
+                  child: PermissionDeniedErrorWidget(account: account),
                 ),
               ),
+            ),
+          ),
         ),
       );
     }
 
     return PaginatedListView(
       paginationState: rooms,
-      itemBuilder:
-          (context, room) => Card.filled(
-            color: theme.colorScheme.surface,
-            margin: EdgeInsets.zero,
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-              onTap: () => context.push('/$account/chat/room/${room.id}'),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8.0,
-                  horizontal: 16.0,
+      itemBuilder: (context, room) => Card.filled(
+        color: theme.colorScheme.surface,
+        margin: EdgeInsets.zero,
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => context.push('/$account/chat/room/${room.id}'),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 16.0,
+            ),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                UserAvatar(
+                  account: account,
+                  user: room.owner,
+                  size: 40.0,
+                  onTap: () => context.push('/$account/users/${room.ownerId}'),
                 ),
-                child: Row(
-                  spacing: 8.0,
-                  children: [
-                    UserAvatar(
-                      account: account,
-                      user: room.owner,
-                      size: 40.0,
-                      onTap:
-                          () => context.push('/$account/users/${room.ownerId}'),
-                    ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 4.0,
-                        children: [
-                          Text(room.name),
-                          if (room.description.isNotEmpty)
-                            Text(
-                              room.description,
-                              style: style.apply(
-                                fontSizeFactor: 0.9,
-                                color: theme.colorScheme.onSurface.withValues(
-                                  alpha: 0.8,
-                                ),
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.0,
+                    children: [
+                      Text(room.name),
+                      if (room.description.isNotEmpty)
+                        Text(
+                          room.description,
+                          style: style.apply(
+                            fontSizeFactor: 0.9,
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.8,
                             ),
-                        ],
-                      ),
-                    ),
-                  ],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                        ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
-      onRefresh:
-          () => ref.refresh(ownedChatRoomsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(ownedChatRoomsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+        ),
+      ),
+      onRefresh: () =>
+          ref.refresh(ownedChatRoomsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(ownedChatRoomsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.chat_.noRooms,
     );

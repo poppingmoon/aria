@@ -31,10 +31,9 @@ class TimelineCenterNotifier extends _$TimelineCenterNotifier {
         tabSettings.listId ??
         tabSettings.roleId ??
         tabSettings.userId;
-    final method =
-        id != null
-            ? Id.parse(id).method
-            : await ref.read(idGenMethodProvider(tabSettings.account).future);
+    final method = id != null
+        ? Id.parse(id).method
+        : await ref.read(idGenMethodProvider(tabSettings.account).future);
     setCenter(Id(method: method, date: date).toString());
   }
 

@@ -55,89 +55,83 @@ class GalleryPostPage extends ConsumerWidget {
         title: Text(post.valueOrNull?.title ?? ''),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  if (!account.isGuest) ...[
-                    if (post.valueOrNull?.user.username == account.username)
-                      PopupMenuItem(
-                        onTap:
-                            () =>
-                                context.push('/$account/gallery/$postId/edit'),
-                        child: Text(t.misskey.edit),
+            itemBuilder: (context) => [
+              if (!account.isGuest) ...[
+                if (post.valueOrNull?.user.username == account.username)
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/gallery/$postId/edit'),
+                    child: Text(t.misskey.edit),
+                  ),
+                PopupMenuItem(
+                  onTap: () {
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setText('${post.valueOrNull?.title} $url');
+                    context.push('/$account/post');
+                  },
+                  child: Text(t.misskey.shareWithNote),
+                ),
+              ],
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              PopupMenuItem(
+                onTap: () => launchUrl(ref, url),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => SharePlus.instance.share(
+                  ShareParams(text: '${post.valueOrNull?.title} $url'),
+                ),
+                child: Text(t.misskey.share),
+              ),
+              if (post.valueOrNull?.user case final user?
+                  when !account.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: ['Post: $url', '-----', ''].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
                       ),
-                    PopupMenuItem(
-                      onTap: () {
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
                         ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setText('${post.valueOrNull?.title} $url');
-                        context.push('/$account/post');
-                      },
-                      child: Text(t.misskey.shareWithNote),
-                    ),
-                  ],
-                  PopupMenuItem(
-                    onTap: () => copyToClipboard(context, url.toString()),
-                    child: Text(t.misskey.copyLink),
-                  ),
-                  PopupMenuItem(
-                    onTap: () => launchUrl(ref, url),
-                    child: Text(t.aria.openInBrowser),
-                  ),
-                  PopupMenuItem(
-                    onTap:
-                        () => SharePlus.instance.share(
-                          ShareParams(text: '${post.valueOrNull?.title} $url'),
-                        ),
-                    child: Text(t.misskey.share),
-                  ),
-                  if (post.valueOrNull?.user case final user?
-                      when !account.isGuest && i?.id != user.id)
-                    PopupMenuItem(
-                      onTap: () async {
-                        final comment = await showTextFieldDialog(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          initialText: ['Post: $url', '-----', ''].join('\n'),
-                          decoration: InputDecoration(
-                            helperText: t.misskey.fillAbuseReportDescription,
-                          ),
-                          maxLines: null,
-                        );
-                        if (!context.mounted) return;
-                        if (comment == null) return;
-                        final confirmed = await confirm(
-                          context,
-                          title: Text(t.misskey.reportAbuseOf(name: user.acct)),
-                          message: comment,
-                          okText: t.misskey.reportAbuse,
-                        );
-                        if (!context.mounted) return;
-                        if (confirmed) {
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(misskeyProvider(account))
-                                .users
-                                .reportAbuse(
-                                  UsersReportAbuseRequest(
-                                    userId: user.id,
-                                    comment: comment,
-                                  ),
-                                ),
-                          );
-                        }
-                      },
-                      child: Text(t.misskey.reportAbuse),
-                    ),
-                ],
+                            .read(misskeyProvider(account))
+                            .users
+                            .reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
+                ),
+            ],
           ),
         ],
       ),
       body: RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(
-              galleryPostNotifierProvider(account, postId).future,
-            ),
+        onRefresh: () =>
+            ref.refresh(galleryPostNotifierProvider(account, postId).future),
         child: switch (post) {
           AsyncValue(valueOrNull: final post?) => ListView(
             children: [
@@ -146,12 +140,11 @@ class GalleryPostPage extends ConsumerWidget {
                   child: SizedBox(
                     width: maxContentWidth,
                     child: InkWell(
-                      onTap:
-                          () => showImageGalleryDialog(
-                            ref.context,
-                            files: post.files,
-                            initialIndex: index,
-                          ),
+                      onTap: () => showImageGalleryDialog(
+                        ref.context,
+                        files: post.files,
+                        initialIndex: index,
+                      ),
                       child: ImageWidget(url: file.url, fit: BoxFit.cover),
                     ),
                   ),
@@ -196,12 +189,11 @@ class GalleryPostPage extends ConsumerWidget {
                       LikeButton(
                         isLiked: post.isLiked ?? false,
                         likedCount: post.likedCount,
-                        onTap:
-                            !account.isGuest
-                                ? () => futureWithDialog(
-                                  context,
-                                  post.isLiked ?? false
-                                      ? ref
+                        onTap: !account.isGuest
+                            ? () => futureWithDialog(
+                                context,
+                                post.isLiked ?? false
+                                    ? ref
                                           .read(
                                             galleryPostNotifierProvider(
                                               account,
@@ -209,7 +201,7 @@ class GalleryPostPage extends ConsumerWidget {
                                             ).notifier,
                                           )
                                           .unlike()
-                                      : ref
+                                    : ref
                                           .read(
                                             galleryPostNotifierProvider(
                                               account,
@@ -217,17 +209,15 @@ class GalleryPostPage extends ConsumerWidget {
                                             ).notifier,
                                           )
                                           .like(),
-                                )
-                                : null,
+                              )
+                            : null,
                       ),
                       const Spacer(),
                       if (post.user.username == account.username)
                         IconButton(
                           tooltip: t.misskey.edit,
-                          onPressed:
-                              () => context.push(
-                                '/$account/gallery/$postId/edit',
-                              ),
+                          onPressed: () =>
+                              context.push('/$account/gallery/$postId/edit'),
                           icon: const Icon(Icons.edit),
                         ),
                       if (!account.isGuest)
@@ -243,8 +233,8 @@ class GalleryPostPage extends ConsumerWidget {
                         ),
                       IconButton(
                         tooltip: t.misskey.copyLink,
-                        onPressed:
-                            () => copyToClipboard(context, url.toString()),
+                        onPressed: () =>
+                            copyToClipboard(context, url.toString()),
                         icon: const Icon(Icons.link),
                       ),
                       IconButton(
@@ -254,10 +244,9 @@ class GalleryPostPage extends ConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.share,
-                        onPressed:
-                            () => SharePlus.instance.share(
-                              ShareParams(text: '${post.title} $url'),
-                            ),
+                        onPressed: () => SharePlus.instance.share(
+                          ShareParams(text: '${post.title} $url'),
+                        ),
                         icon: const Icon(Icons.share),
                       ),
                     ],
@@ -284,14 +273,13 @@ class GalleryPostPage extends ConsumerWidget {
                         account: account,
                         userId: post.userId,
                       ),
-                      onTap:
-                          () => context.push('/$account/users/${post.user.id}'),
-                      onLongPress:
-                          () => showUserSheet(
-                            context: context,
-                            account: account,
-                            userId: post.user.id,
-                          ),
+                      onTap: () =>
+                          context.push('/$account/users/${post.user.id}'),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: post.user.id,
+                      ),
                     ),
                   ),
                 ),
@@ -383,52 +371,50 @@ class GalleryPostPage extends ConsumerWidget {
               ),
               // Builder defers API call.
               Builder(
-                builder:
-                    (context) => Center(
-                      child: SizedBox(
-                        width: maxContentWidth,
-                        child: ExpansionTile(
-                          leading: const Icon(Icons.schedule),
-                          title: Text(t.misskey.recentPosts),
-                          initiallyExpanded: true,
-                          backgroundColor: theme.colorScheme.surface,
-                          collapsedBackgroundColor: theme.colorScheme.surface,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          collapsedShape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          children: [
-                            ...?ref
-                                .watch(
-                                  userGalleryPostsNotifierProvider(
-                                    account,
-                                    post.userId,
-                                  ),
-                                )
-                                .valueOrNull
-                                ?.items
-                                .map(
-                                  (post) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4.0,
-                                      horizontal: 8.0,
-                                    ),
-                                    child: GalleryPostPreview(
-                                      account: account,
-                                      post: post,
-                                      onTap:
-                                          () => context.push(
-                                            '/$account/gallery/${post.id}',
-                                          ),
-                                    ),
+                builder: (context) => Center(
+                  child: SizedBox(
+                    width: maxContentWidth,
+                    child: ExpansionTile(
+                      leading: const Icon(Icons.schedule),
+                      title: Text(t.misskey.recentPosts),
+                      initiallyExpanded: true,
+                      backgroundColor: theme.colorScheme.surface,
+                      collapsedBackgroundColor: theme.colorScheme.surface,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      collapsedShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      children: [
+                        ...?ref
+                            .watch(
+                              userGalleryPostsNotifierProvider(
+                                account,
+                                post.userId,
+                              ),
+                            )
+                            .valueOrNull
+                            ?.items
+                            .map(
+                              (post) => Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 4.0,
+                                  horizontal: 8.0,
+                                ),
+                                child: GalleryPostPreview(
+                                  account: account,
+                                  post: post,
+                                  onTap: () => context.push(
+                                    '/$account/gallery/${post.id}',
                                   ),
                                 ),
-                          ],
-                        ),
-                      ),
+                              ),
+                            ),
+                      ],
                     ),
+                  ),
+                ),
               ),
               const SizedBox(height: 120.0),
             ],
@@ -448,13 +434,13 @@ class GalleryPostPage extends ConsumerWidget {
       ),
       floatingActionButton:
           !account.isGuest &&
-                  post.valueOrNull?.user.username == account.username
-              ? FloatingActionButton(
-                tooltip: t.misskey.edit,
-                onPressed: () => context.push('/$account/gallery/$postId/edit'),
-                child: const Icon(Icons.edit),
-              )
-              : null,
+              post.valueOrNull?.user.username == account.username
+          ? FloatingActionButton(
+              tooltip: t.misskey.edit,
+              onPressed: () => context.push('/$account/gallery/$postId/edit'),
+              child: const Icon(Icons.edit),
+            )
+          : null,
     );
   }
 }

@@ -9,7 +9,9 @@ part 'reversi_invitations_provider.g.dart';
 
 @riverpod
 FutureOr<List<User>> reversiInvitations(Ref ref, Account account) async {
-  final response =
-      await ref.watch(misskeyProvider(account)).reversi.invitations();
+  final response = await ref
+      .watch(misskeyProvider(account))
+      .reversi
+      .invitations();
   return response.toList();
 }

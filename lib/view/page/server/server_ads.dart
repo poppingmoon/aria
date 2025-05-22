@@ -18,29 +18,27 @@ class ServerAds extends ConsumerWidget {
     final meta = ref.watch(metaNotifierProvider(host));
 
     return RefreshIndicator(
-      onRefresh:
-          () => ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+      onRefresh: () =>
+          ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
       child: switch (meta) {
         AsyncValue(valueOrNull: MetaResponse(:final ads)) =>
           ads.isNotEmpty
               ? ListView.builder(
-                itemBuilder:
-                    (context, index) => AdWidget(
-                      account: Account(host: host),
-                      specify: ads[index],
-                    ),
-                itemCount: ads.length,
-              )
+                  itemBuilder: (context, index) => AdWidget(
+                    account: Account(host: host),
+                    specify: ads[index],
+                  ),
+                  itemCount: ads.length,
+                )
               : LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.nothing)),
-                      ),
+                  builder: (context, constraint) => SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: constraint.maxHeight,
+                      child: Center(child: Text(t.misskey.nothing)),
                     ),
-              ),
+                  ),
+                ),
         AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
           error: error,
           stackTrace: stackTrace,

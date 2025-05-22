@@ -31,205 +31,188 @@ class ChatInvitations extends ConsumerWidget {
 
     if (invitations.error case MisskeyException(code: 'PERMISSION_DENIED')) {
       return RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(chatInvitationsNotifierProvider(account).future),
+        onRefresh: () =>
+            ref.refresh(chatInvitationsNotifierProvider(account).future),
         child: LayoutBuilder(
-          builder:
-              (context, constraint) => SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: SizedBox(
-                  height: constraint.maxHeight,
-                  child: Center(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      width: maxContentWidth,
-                      padding: const EdgeInsets.all(16.0),
-                      child: PermissionDeniedErrorWidget(account: account),
-                    ),
-                  ),
+          builder: (context, constraint) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: SizedBox(
+              height: constraint.maxHeight,
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.all(16.0),
+                  child: PermissionDeniedErrorWidget(account: account),
                 ),
               ),
+            ),
+          ),
         ),
       );
     }
 
     return PaginatedListView(
       paginationState: invitations,
-      itemBuilder:
-          (context, invitation) => Card.filled(
-            color: colors.panel,
-            margin: EdgeInsets.zero,
-            clipBehavior: Clip.hardEdge,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 8.0,
-                horizontal: 16.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 4.0,
+      itemBuilder: (context, invitation) => Card.filled(
+        color: colors.panel,
+        margin: EdgeInsets.zero,
+        clipBehavior: Clip.hardEdge,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 4.0,
+            children: [
+              Row(
+                spacing: 8.0,
                 children: [
-                  Row(
-                    spacing: 8.0,
-                    children: [
-                      if (invitation.room?.owner case final user?)
-                        UserAvatar(
-                          account: account,
-                          user: user,
-                          size: 40.0,
-                          onTap:
-                              () => context.push('/$account/users/${user.id}'),
-                        ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          spacing: 4.0,
+                  if (invitation.room?.owner case final user?)
+                    UserAvatar(
+                      account: account,
+                      user: user,
+                      size: 40.0,
+                      onTap: () => context.push('/$account/users/${user.id}'),
+                    ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 4.0,
+                      children: [
+                        Row(
+                          spacing: 2.0,
                           children: [
-                            Row(
-                              spacing: 2.0,
-                              children: [
-                                if (invitation.room?.owner case final user?)
-                                  Expanded(
-                                    child: Align(
-                                      alignment:
-                                          AlignmentDirectional.centerStart,
-                                      child: InkWell(
-                                        onTap:
-                                            () => context.push(
-                                              '/$account/users/${user.id}',
-                                            ),
-                                        onLongPress:
-                                            () => showUserSheet(
-                                              context: context,
-                                              account: account,
-                                              userId: user.id,
-                                            ),
-                                        child: UsernameWidget(
-                                          account: account,
-                                          user: user,
-                                          trailingSpans: [
-                                            const WidgetSpan(
-                                              child: SizedBox(width: 4.0),
-                                            ),
-                                            TextSpan(
-                                              text: '@${user.username}',
-                                              style: TextStyle(
-                                                color: colors.fg.withValues(
-                                                  alpha: 0.8,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 1,
+                            if (invitation.room?.owner case final user?)
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional.centerStart,
+                                  child: InkWell(
+                                    onTap: () => context.push(
+                                      '/$account/users/${user.id}',
+                                    ),
+                                    onLongPress: () => showUserSheet(
+                                      context: context,
+                                      account: account,
+                                      userId: user.id,
+                                    ),
+                                    child: UsernameWidget(
+                                      account: account,
+                                      user: user,
+                                      trailingSpans: [
+                                        const WidgetSpan(
+                                          child: SizedBox(width: 4.0),
                                         ),
-                                      ),
+                                        TextSpan(
+                                          text: '@${user.username}',
+                                          style: TextStyle(
+                                            color: colors.fg.withValues(
+                                              alpha: 0.8,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
                                     ),
                                   ),
-                                DefaultTextStyle.merge(
-                                  style: style.apply(fontSizeFactor: 0.9),
-                                  child: TimeWidget(time: invitation.createdAt),
+                                ),
+                              ),
+                            DefaultTextStyle.merge(
+                              style: style.apply(fontSizeFactor: 0.9),
+                              child: TimeWidget(time: invitation.createdAt),
+                            ),
+                          ],
+                        ),
+                        if (invitation.room?.name case final name?)
+                          Text.rich(
+                            TextSpan(
+                              text: name,
+                              children: [
+                                const WidgetSpan(child: SizedBox(width: 4.0)),
+                                WidgetSpan(
+                                  alignment: PlaceholderAlignment.middle,
+                                  child: Tooltip(
+                                    message: t.misskey.chat_.roomChat,
+                                    child: Icon(
+                                      Icons.meeting_room,
+                                      size: style.fontSize,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
-                            if (invitation.room?.name case final name?)
-                              Text.rich(
-                                TextSpan(
-                                  text: name,
-                                  children: [
-                                    const WidgetSpan(
-                                      child: SizedBox(width: 4.0),
-                                    ),
-                                    WidgetSpan(
-                                      alignment: PlaceholderAlignment.middle,
-                                      child: Tooltip(
-                                        message: t.misskey.chat_.roomChat,
-                                        child: Icon(
-                                          Icons.meeting_room,
-                                          size: style.fontSize,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            if (invitation.room?.description
-                                case final description?)
-                              Text(
-                                description.isNotEmpty
-                                    ? description
-                                    : '(${t.misskey.noDescription})',
-                                style: style.apply(
-                                  fontSizeFactor: 0.9,
-                                  color: colors.fg.withValues(alpha: 0.8),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(height: 4.0),
-                  Wrap(
-                    spacing: 4.0,
-                    runSpacing: 4.0,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () async {
-                          final result = await futureWithDialog(
-                            context,
-                            ref
-                                .read(
-                                  chatInvitationsNotifierProvider(
-                                    account,
-                                  ).notifier,
-                                )
-                                .join(invitation.roomId)
-                                .then((_) => ()),
-                          );
-                          if (!context.mounted) return;
-                          if (result != null) {
-                            await context.push(
-                              '/$account/chat/room/${invitation.roomId}',
-                            );
-                          }
-                        },
-                        icon: const Icon(Icons.add),
-                        label: Text(t.misskey.chat_.join),
-                      ),
-                      ElevatedButton.icon(
-                        onPressed:
-                            () => futureWithDialog(
-                              context,
-                              ref
-                                  .read(
-                                    chatInvitationsNotifierProvider(
-                                      account,
-                                    ).notifier,
-                                  )
-                                  .ignore(invitation.roomId)
-                                  .then((_) => ()),
+                          ),
+                        if (invitation.room?.description
+                            case final description?)
+                          Text(
+                            description.isNotEmpty
+                                ? description
+                                : '(${t.misskey.noDescription})',
+                            style: style.apply(
+                              fontSizeFactor: 0.9,
+                              color: colors.fg.withValues(alpha: 0.8),
                             ),
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: colors.error,
-                          backgroundColor: colors.buttonBg,
-                          iconColor: colors.error,
-                        ),
-                        icon: const Icon(Icons.close),
-                        label: Text(t.misskey.chat_.ignore),
-                      ),
-                    ],
+                          ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
+              const Divider(height: 4.0),
+              Wrap(
+                spacing: 4.0,
+                runSpacing: 4.0,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () async {
+                      final result = await futureWithDialog(
+                        context,
+                        ref
+                            .read(
+                              chatInvitationsNotifierProvider(account).notifier,
+                            )
+                            .join(invitation.roomId)
+                            .then((_) => ()),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await context.push(
+                          '/$account/chat/room/${invitation.roomId}',
+                        );
+                      }
+                    },
+                    icon: const Icon(Icons.add),
+                    label: Text(t.misskey.chat_.join),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () => futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            chatInvitationsNotifierProvider(account).notifier,
+                          )
+                          .ignore(invitation.roomId)
+                          .then((_) => ()),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: colors.error,
+                      backgroundColor: colors.buttonBg,
+                      iconColor: colors.error,
+                    ),
+                    icon: const Icon(Icons.close),
+                    label: Text(t.misskey.chat_.ignore),
+                  ),
+                ],
+              ),
+            ],
           ),
-      onRefresh:
-          () => ref.refresh(chatInvitationsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(chatInvitationsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+        ),
+      ),
+      onRefresh: () =>
+          ref.refresh(chatInvitationsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(chatInvitationsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.chat_.noInvitations,
     );
