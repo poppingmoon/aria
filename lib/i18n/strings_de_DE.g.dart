@@ -3028,7 +3028,6 @@ class _TranslationsMisskeyDataSaverDeDe extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaDeDe media_ = _TranslationsMisskeyDataSaverMediaDeDe._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarDeDe avatar_ = _TranslationsMisskeyDataSaverAvatarDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewDeDe urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewDeDe._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeDeDe code_ = _TranslationsMisskeyDataSaverCodeDeDe._(_root);
 }
 
@@ -3689,7 +3688,6 @@ class _TranslationsMisskeyThemeKeysDeDe extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Hintergrund von Schaltflächen';
 	@override String get buttonHoverBg => 'Hintergrund von Schaltflächen (Mouseover)';
 	@override String get inputBorder => 'Rahmen von Eingabefeldern';
-	@override String get driveFolderBg => 'Hintergrund von Drive-Ordnern';
 	@override String get badge => 'Wappen';
 	@override String get messageBg => 'Hintergrund von Chats';
 	@override String get fgHighlighted => 'Hervorgehobener Text';
@@ -3924,17 +3922,6 @@ class _TranslationsMisskeyDataSaverAvatarDeDe extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => 'Animierte Profilbilder deaktivieren';
 	@override String get description => 'Die Animation von Profilbildern wird angehalten. Da animierte Bilder eine größere Dateigröße haben können als normale Bilder, kann dies den Datenverkehr weiter reduzieren.';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewDeDe extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
-
-	final TranslationsDeDe _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'URL-Vorschaubilder ausblenden';
-	@override String get description => 'URL-Vorschaubilder werden nicht mehr geladen.';
 }
 
 // Path: misskey.dataSaver_.code_
@@ -5146,10 +5133,6 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe extends Translati
 	@override String get uploadSettingDescription => 'Hier kannst du das Verhalten beim Hochladen von Emojis konfigurieren.';
 	@override String get directoryToCategoryLabel => 'Gib den Namen des Verzeichnisses in das Feld „Kategorie“ ein';
 	@override String get directoryToCategoryCaption => 'Wenn du ein Verzeichnis ziehst und ablegst, gib den Verzeichnisnamen in das Feld „Kategorie“ ein.';
-	@override String get emojiInputAreaCaption => 'Wählen Sie die Emojis aus, die Sie mit einer der folgenden Methoden speichern möchten.';
-	@override String get emojiInputAreaList1 => 'Ziehe Bilddateien oder Verzeichnisse per Drag-and-drop in diesen Rahmen';
-	@override String get emojiInputAreaList2 => 'Klicke auf diesen Link, um von deinem PC aus zu wählen';
-	@override String get emojiInputAreaList3 => 'Klicke auf diesen Link, um vom Drive aus zu wählen';
 	@override String confirmRegisterEmojisDescription({required Object count}) => 'Füge die in der Liste aufgeführten Emojis als neue benutzerdefinierte Emojis hinzu. Bist du sicher? (Um eine Überlastung zu vermeiden, können nur ${count} Emoji(s) in einem Vorgang hinzugefügt werden)';
 	@override String get confirmClearEmojisDescription => 'Verwerfe die Bearbeitungen und lösche die Emojis aus der Liste. Bist du sicher, dass du fortfahren möchtest?';
 	@override String confirmUploadEmojisDescription({required Object count}) => 'Lade die ${count} abgelegte(n) Datei(en) in das Drive hoch. Bist du sicher, dass du fortfahren möchtest?';

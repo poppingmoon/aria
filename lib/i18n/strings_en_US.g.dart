@@ -588,6 +588,7 @@ class TranslationsMisskeyEnUs {
 	String get uploadFromUrlDescription => 'URL of the file you want to upload';
 	String get uploadFromUrlRequested => 'Upload requested';
 	String get uploadFromUrlMayTakeTime => 'It may take some time until the upload is complete.';
+	String uploadNFiles({required Object n}) => 'Upload ${n} files';
 	String get explore => 'Explore';
 	String get messageRead => 'Read';
 	String get noMoreHistory => 'There is no further history';
@@ -865,6 +866,7 @@ class TranslationsMisskeyEnUs {
 	String get showFixedPostFormInChannel => 'Display the posting form at the top of the timeline (Channels)';
 	String get withRepliesByDefaultForNewlyFollowed => 'Include replies by newly followed users in the timeline by default';
 	String get newNoteRecived => 'There are new notes';
+	String get newNote => 'New Note';
 	String get sounds => 'Sounds';
 	String get sound => 'Sounds';
 	String get listen => 'Listen';
@@ -1081,6 +1083,7 @@ class TranslationsMisskeyEnUs {
 	String get narrow => 'Narrow';
 	String get reloadToApplySetting => 'This setting will only apply after a page reload. Reload now?';
 	String get needReloadToApply => 'A reload is required for this to be reflected.';
+	String get needToRestartServerToApply => 'A Misskey restart is required to reflect the change.';
 	String get showTitlebar => 'Show title bar';
 	String get clearCache => 'Clear cache';
 	String onlineUsersCount({required Object n}) => '${n} users are online';
@@ -1636,6 +1639,14 @@ class TranslationsMisskeyEnUs {
 	String get federationJobs => 'Federation Jobs';
 	String get driveAboutTip => 'In Drive, a list of files you\'ve uploaded in the past will be displayed. <br>  \nYou can reuse these files when attaching them to notes, or you can upload files in advance to post later. <br>  \n<b>Be careful when deleting a file, as it will not be available in all places where it was used (such as notes, pages, avatars, banners, etc.).</b> <br>  \nYou can also create folders to organize your files.';
 	String get scrollToClose => 'Scroll to close';
+	String get advice => 'Advice';
+	String get realtimeMode => 'Real-time mode';
+	String get turnItOn => 'Turn on';
+	String get turnItOff => 'Turn off';
+	String get emojiMute => 'Mute emoji';
+	String get emojiUnmute => 'Unmute emoji';
+	String muteX({required Object x}) => 'Mute ${x}';
+	String unmuteX({required Object x}) => 'Unmute ${x}';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1725,6 +1736,9 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyCaptchaEnUs captcha_ = TranslationsMisskeyCaptchaEnUs.internal(_root);
 	late final TranslationsMisskeyBootErrorsEnUs bootErrors_ = TranslationsMisskeyBootErrorsEnUs.internal(_root);
 	late final TranslationsMisskeySearchEnUs search_ = TranslationsMisskeySearchEnUs.internal(_root);
+	late final TranslationsMisskeyServerSetupWizardEnUs serverSetupWizard_ = TranslationsMisskeyServerSetupWizardEnUs.internal(_root);
+	late final TranslationsMisskeyUploaderEnUs uploader_ = TranslationsMisskeyUploaderEnUs.internal(_root);
+	late final TranslationsMisskeyClientPerformanceIssueTipEnUs clientPerformanceIssueTip_ = TranslationsMisskeyClientPerformanceIssueTipEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -1776,6 +1790,8 @@ class TranslationsMisskeyChatEnUs {
 	String get chatNotAvailableInOtherAccount => 'The chat function is disabled for the other user.';
 	String get cannotChatWithTheUser => 'Cannot start a chat with this user';
 	String get cannotChatWithTheUser_description => 'Chat is either unavailable or the other party has not enabled chat.';
+	String get youAreNotAMemberOfThisRoomButInvited => 'You are not a participant in this room, but you have received an invitation. Please accept the invitation to join.';
+	String get doYouAcceptInvitation => 'Do you accept the invitation?';
 	String get chatWithThisUser => 'Chat with user';
 	String get thisUserAllowsChatOnlyFromFollowers => 'This user accepts chats from followers only.';
 	String get thisUserAllowsChatOnlyFromFollowing => 'This user accepts chats only from users they follow.';
@@ -1826,12 +1842,19 @@ class TranslationsMisskeySettingsEnUs {
 	String get makeEveryTextElementsSelectable => 'Make all text elements selectable';
 	String get makeEveryTextElementsSelectable_description => 'Enabling this may reduce usability in some situations.';
 	String get useStickyIcons => 'Make icons follow while scrolling';
+	String get enableHighQualityImagePlaceholders => 'Display placeholders for high quality images';
+	String get uiAnimations => 'UI Animations';
 	String get showNavbarSubButtons => 'Show sub-buttons on the navigation bar';
 	String get ifOn => 'When turned on';
 	String get ifOff => 'When turned off';
 	String get enableSyncThemesBetweenDevices => 'Synchronize installed themes across devices';
 	String get enablePullToRefresh => 'Pull to Refresh';
 	String get enablePullToRefresh_description => 'When using a mouse, drag while pressing in the scroll wheel.';
+	String get realtimeMode_description => 'Establishes a connection with the server and updates content in real time. This may increase traffic and memory consumption.';
+	String get contentsUpdateFrequency => 'Frequency of content retrieval';
+	String get contentsUpdateFrequency_description => 'The higher the value the more the content updates but it lowers the performance and increases the traffic and memory consumption.';
+	String get contentsUpdateFrequency_description2 => 'When real-time mode is on, content is updated in real time regardless of this setting.';
+	String get showUrlPreview => 'Show URL preview';
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
@@ -2041,6 +2064,18 @@ class TranslationsMisskeyServerSettingsEnUs {
 	String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'If no moderator activity is detected for a while, this setting will be automatically turned off to prevent spam.';
 	String get deliverSuspendedSoftware => 'Suspended Software';
 	String get deliverSuspendedSoftwareDescription => 'You can specify a range of names and versions of the server\'s software to stop delivery for vulnerability or other reasons. This version information is provided by the server and is not guaranteed to be reliable. A semver range specification can be used to specify the version, but specifying >= 2024.3.1 will not include custom versions such as 2024.3.1-custom.0, so it is recommended that a prerelease specification be used, such as >= 2024.3.1-0';
+	String get singleUserMode => 'Single user mode';
+	String get singleUserMode_description => 'If you are the only user of this server, enabling this mode will optimize its performance.';
+	String get signToActivityPubGet => 'Sign ActivityPub GET requests';
+	String get signToActivityPubGet_description => 'Normally, this should be enabled. Disabling it may improve issues related to federation, but on the other hand it could disable federation towards some other servers.';
+	String get proxyRemoteFiles => 'Proxy remote files';
+	String get proxyRemoteFiles_description => 'When enabled, the server will proxy and serve remote files. This is useful for generating image thumbnails and protecting user privacy.';
+	String get allowExternalApRedirect => 'Allow redirects for queries via ActivityPub';
+	String get allowExternalApRedirect_description => 'If enabled, other servers can query third-party content through this server but this may result in content spoofing.';
+	String get userGeneratedContentsVisibilityForVisitor => 'Visibility of user-generated content to guests';
+	String get userGeneratedContentsVisibilityForVisitor_description => 'This is useful for preventing problems caused by inappropriate remote content that is not well moderated from being unintentionally published on the Internet via your own server.';
+	String get userGeneratedContentsVisibilityForVisitor_description2 => 'Unconditionally publishing all content on the server to the Internet, including remote content received by the server is risky. This is especially important for guests who are unaware of the distributed nature of the content, as they may mistakenly believe that even remote content is content created by users on the server.';
+	late final TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs userGeneratedContentsVisibilityForVisitor_ = TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs.internal(_root);
 }
 
 // Path: misskey.accountMigration_
@@ -3244,7 +3279,8 @@ class TranslationsMisskeyDataSaverEnUs {
 	// Translations
 	late final TranslationsMisskeyDataSaverMediaEnUs media_ = TranslationsMisskeyDataSaverMediaEnUs.internal(_root);
 	late final TranslationsMisskeyDataSaverAvatarEnUs avatar_ = TranslationsMisskeyDataSaverAvatarEnUs.internal(_root);
-	late final TranslationsMisskeyDataSaverUrlPreviewEnUs urlPreview_ = TranslationsMisskeyDataSaverUrlPreviewEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs urlPreviewThumbnail_ = TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverDisableUrlPreviewEnUs disableUrlPreview_ = TranslationsMisskeyDataSaverDisableUrlPreviewEnUs.internal(_root);
 	late final TranslationsMisskeyDataSaverCodeEnUs code_ = TranslationsMisskeyDataSaverCodeEnUs.internal(_root);
 }
 
@@ -3512,6 +3548,73 @@ class TranslationsMisskeySearchEnUs {
 	String get serverHostPlaceholder => 'Example: misskey.example.com';
 }
 
+// Path: misskey.serverSetupWizard_
+class TranslationsMisskeyServerSetupWizardEnUs {
+	TranslationsMisskeyServerSetupWizardEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get installCompleted => 'Misskey installation is now complete!';
+	String get firstCreateAccount => 'To begin, create an administrator account.';
+	String get accountCreated => 'Administrator account has been created!';
+	String get serverSetting => 'Server Settings';
+	String get youCanEasilyConfigureOptimalServerSettingsWithThisWizard => 'This wizard makes it easier to configure the server settings.';
+	String get settingsYouMakeHereCanBeChangedLater => 'The settings that were changed via this wizard can be adjusted later.';
+	String get howWillYouUseMisskey => 'How will you use Misskey?';
+	late final TranslationsMisskeyServerSetupWizardUseEnUs use_ = TranslationsMisskeyServerSetupWizardUseEnUs.internal(_root);
+	String get openServerAdvice => 'Accepting a large number of unknown users involves risk. We recommend that you operate with a reliable moderation system to handle any problems.';
+	String get openServerAntiSpamAdvice => 'To prevent your server from becoming a stepping stone for spam, you should also pay close attention to security by enabling anti-bot functions such as reCAPTCHA.';
+	String get howManyUsersDoYouExpect => 'How many users do you expect?';
+	late final TranslationsMisskeyServerSetupWizardScaleEnUs scale_ = TranslationsMisskeyServerSetupWizardScaleEnUs.internal(_root);
+	String get largeScaleServerAdvice => 'Large servers may require advanced infrastructure knowledge, such as load balancing and database replication.';
+	String get doYouConnectToFediverse => 'Do you want to connect to the Fediverse?';
+	String get doYouConnectToFediverse_description1 => 'When connected to a network of distributed servers (Fediverse) content can be exchanged with other servers.';
+	String get doYouConnectToFediverse_description2 => 'Connecting with the Fediverse is also called "federation"';
+	String get youCanConfigureMoreFederationSettingsLater => 'Advanced settings such as specifying federated servers can be configured later.';
+	String get adminInfo => 'Administrator information';
+	String get adminInfo_description => 'Sets the administrator information used to receive inquiries.';
+	String get adminInfo_mustBeFilled => 'Must be entered if public server or federation is on.';
+	String get followingSettingsAreRecommended => 'The following settings are recommended';
+	String get applyTheseSettings => 'Apply these settings';
+	String get skipSettings => 'Skip settings';
+	String get settingsCompleted => 'Setup is now complete!';
+	String get settingsCompleted_description => 'Thank you for your time. Now that everything is ready, you can start using the server right away.';
+	String get settingsCompleted_description2 => 'The server settings can be changed from the “Control Panel”';
+	String get donationRequest => 'Donation Request';
+	late final TranslationsMisskeyServerSetupWizardDonationRequestEnUs donationRequest_ = TranslationsMisskeyServerSetupWizardDonationRequestEnUs.internal(_root);
+}
+
+// Path: misskey.uploader_
+class TranslationsMisskeyUploaderEnUs {
+	TranslationsMisskeyUploaderEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String compressedToX({required Object x}) => 'Compressed to ${x}';
+	String savedXPercent({required Object x}) => 'Saving ${x}%';
+	String get abortConfirm => 'Some files have not been uploaded, do you want to abort?';
+	String get doneConfirm => 'Some files have not been uploaded, do you want to continue anyway?';
+	String maxFileSizeIsX({required Object x}) => 'The maximum file size that can be uploaded is ${x}';
+}
+
+// Path: misskey.clientPerformanceIssueTip_
+class TranslationsMisskeyClientPerformanceIssueTipEnUs {
+	TranslationsMisskeyClientPerformanceIssueTipEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Performance tips';
+	String get makeSureDisabledAdBlocker => 'Disable your adblocker';
+	String get makeSureDisabledAdBlocker_description => 'Adblockers can affect performance, please make sure that adblockers are not enabled by your system or browser features/extensions.';
+	String get makeSureDisabledCustomCss => 'Disable custom CSS';
+	String get makeSureDisabledCustomCss_description => 'Overriding styles can affect performance. Please make sure that custom CSS or extensions that override styles are not enabled.';
+	String get makeSureDisabledAddons => 'Disable extensions';
+	String get makeSureDisabledAddons_description => 'Some extensions may interfere with client behavior and affect performance. Please disable your browser extensions and see if this improves the situation.';
+}
+
 // Path: misskeyIO.skebStatus_
 class TranslationsMisskeyIOSkebStatusEnUs {
 	TranslationsMisskeyIOSkebStatusEnUs.internal(this._root);
@@ -3691,6 +3794,18 @@ class TranslationsMisskeyInitialTutorialDoneEnUs {
 	// Translations
 	String get title => 'You\'ve completed the tutorial! 🎉';
 	String description({required Object link}) => 'The functions introduced here are just a small part. For a more detailed understanding of using Misskey, please refer to ${link}.';
+}
+
+// Path: misskey.serverSettings_.userGeneratedContentsVisibilityForVisitor_
+class TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs {
+	TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get all => 'Everything is public';
+	String get localOnly => 'Only local content is published, remote content is kept private';
+	String get none => 'Everything is private';
 }
 
 // Path: misskey.achievements_.types_
@@ -3921,7 +4036,6 @@ class TranslationsMisskeyThemeKeysEnUs {
 	String get buttonBg => 'Button background';
 	String get buttonHoverBg => 'Button background (Hover)';
 	String get inputBorder => 'Input field border';
-	String get driveFolderBg => 'Drive folder background';
 	String get badge => 'Badge';
 	String get messageBg => 'Chat background';
 	String get fgHighlighted => 'Highlighted Text';
@@ -4158,15 +4272,26 @@ class TranslationsMisskeyDataSaverAvatarEnUs {
 	String get description => 'Stop avatar image animation. Animated images can be larger in file size than normal images, potentially leading to further reductions in data traffic.';
 }
 
-// Path: misskey.dataSaver_.urlPreview_
-class TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	TranslationsMisskeyDataSaverUrlPreviewEnUs.internal(this._root);
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
+	TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get title => 'URL preview thumbnails';
+	String get title => 'Hide URL preview thumbnails';
 	String get description => 'URL preview thumbnail images will no longer be loaded.';
+}
+
+// Path: misskey.dataSaver_.disableUrlPreview_
+class TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
+	TranslationsMisskeyDataSaverDisableUrlPreviewEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Disable URL preview';
+	String get description => 'Disables the URL preview function. Unlike thumbnail images, this function reduces the loading of the linked information itself.';
 }
 
 // Path: misskey.dataSaver_.code_
@@ -4318,6 +4443,46 @@ class TranslationsMisskeyCaptchaErrorEnUs {
 	late final TranslationsMisskeyCaptchaErrorRequestFailedEnUs requestFailed_ = TranslationsMisskeyCaptchaErrorRequestFailedEnUs.internal(_root);
 	late final TranslationsMisskeyCaptchaErrorVerificationFailedEnUs verificationFailed_ = TranslationsMisskeyCaptchaErrorVerificationFailedEnUs.internal(_root);
 	late final TranslationsMisskeyCaptchaErrorUnknownEnUs unknown_ = TranslationsMisskeyCaptchaErrorUnknownEnUs.internal(_root);
+}
+
+// Path: misskey.serverSetupWizard_.use_
+class TranslationsMisskeyServerSetupWizardUseEnUs {
+	TranslationsMisskeyServerSetupWizardUseEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get single => 'Single User server';
+	String get single_description => 'Use it alone as your own server.';
+	String get single_youCanCreateMultipleAccounts => 'Multiple accounts can be created as needed, even when operated as a single user server.';
+	String get group => 'Group server';
+	String get group_description => 'Invite other trusted users to use it with more than one user.';
+	String get open => 'Public server';
+	String get open_description => 'Allow anyone to register.';
+}
+
+// Path: misskey.serverSetupWizard_.scale_
+class TranslationsMisskeyServerSetupWizardScaleEnUs {
+	TranslationsMisskeyServerSetupWizardScaleEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get small => 'Less than 100 (small scale)';
+	String get medium => 'More than 100 and less than 1000 users (medium size)';
+	String get large => 'More than 1000 (Large scale)';
+}
+
+// Path: misskey.serverSetupWizard_.donationRequest_
+class TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
+	TranslationsMisskeyServerSetupWizardDonationRequestEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get text1 => 'Misskey is a free software developed by volunteers.';
+	String get text2 => 'We would appreciate your support so that we can continue to develop this software further into the future.';
+	String get text3 => 'There are also special benefits for supporters!';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -5394,10 +5559,6 @@ class TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
 	String get uploadSettingDescription => 'On this screen, you can configure the behavior when uploading Emojis.';
 	String get directoryToCategoryLabel => 'Enter the directory name in the "category" field';
 	String get directoryToCategoryCaption => 'When you drag and drop a directory, enter the directory name in the "category" field.';
-	String get emojiInputAreaCaption => 'Select the Emojis you wish to register using one of the methods.';
-	String get emojiInputAreaList1 => 'Drag and drop image files or a directory into this frame';
-	String get emojiInputAreaList2 => 'Click this link to select from your computer';
-	String get emojiInputAreaList3 => 'Click this link to select from the drive';
 	String confirmRegisterEmojisDescription({required Object count}) => 'Register the Emojis from the list as new custom Emojis. Are you sure to continue? (To avoid overload, only ${count} Emoji(s) can be registered in a single operation)';
 	String get confirmClearEmojisDescription => 'Discard the edits and clear the Emojis from the list. Are you sure to continue?';
 	String confirmUploadEmojisDescription({required Object count}) => 'Upload the dragged and dropped ${count} file(s) to the drive. Are you sure to continue?';

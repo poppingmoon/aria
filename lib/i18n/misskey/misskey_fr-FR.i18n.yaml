@@ -1838,7 +1838,6 @@ theme_:
     buttonBg: "Arrière-plan du bouton"
     buttonHoverBg: "Arrière-plan du bouton (survolé)"
     inputBorder: "Cadre de la zone de texte"
-    driveFolderBg: "Arrière-plan du dossier de disque"
     badge: "Badge"
     messageBg: "Arrière plan de la discussion"
     fgHighlighted: "Texte mis en évidence"
@@ -2337,9 +2336,6 @@ dataSaver_:
   avatar_:
     title: "Animation d'avatars"
     description: "Arrête l'animation d'avatars. Comme les images animées peuvent être plus volumineuses que les images normales, cela permet de réduire davantage le trafic de données."
-  urlPreview_:
-    title: "Vignettes d'aperçu des URL"
-    description: "Les vignettes d'aperçu des URL ne seront plus chargées."
   code_:
     title: "Mise en évidence du code"
     description: "Si la notation de mise en évidence du code est utilisée, par exemple dans la MFM, elle ne sera pas chargée tant qu'elle n'aura pas été tapée. La mise en évidence du code nécessite le chargement du fichier de définition de chaque langue à mettre en évidence, mais comme ces fichiers ne sont plus chargés automatiquement, on peut s'attendre à une réduction du trafic de données."

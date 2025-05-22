@@ -383,6 +383,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => 'Enllaç del fitxer que vols carregar';
 	@override String get uploadFromUrlRequested => 'Càrrega sol·licitada';
 	@override String get uploadFromUrlMayTakeTime => 'La càrrega des de l\'enllaç pot trigar un temps';
+	@override String uploadNFiles({required Object n}) => 'Pujar ${n} arxius';
 	@override String get explore => 'Explora';
 	@override String get messageRead => 'Vist';
 	@override String get noMoreHistory => 'No hi ha res més per veure';
@@ -660,6 +661,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulari d\'escriptura al principi de la línia de temps (Canals)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Inclou les respostes d\'usuaris nous que segueixes a la línia de temps per defecte.';
 	@override String get newNoteRecived => 'Hi ha publicacions noves';
+	@override String get newNote => 'Notes noves';
 	@override String get sounds => 'Sons';
 	@override String get sound => 'So';
 	@override String get listen => 'Escoltar';
@@ -876,6 +878,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get narrow => 'Estret';
 	@override String get reloadToApplySetting => 'Aquest ajust només s\'aplicarà després de recarregar la pàgina. Vols fer-ho ara?';
 	@override String get needReloadToApply => 'Es requereix recarregar per reflectir aquesta opció ';
+	@override String get needToRestartServerToApply => 'És necessari reiniciar el servidor perquè tinguin efecte els canvis.';
 	@override String get showTitlebar => 'Mostra la barra del títol ';
 	@override String get clearCache => 'Esborra la memòria cau';
 	@override String onlineUsersCount({required Object n}) => '${n} Usuaris es troben en línia ';
@@ -1431,6 +1434,14 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get federationJobs => 'Treballs sindicats ';
 	@override String get driveAboutTip => 'Al Disc veure\'s una llista de tots els arxius que has anat pujant.<br>\nPots tornar-los a fer servir adjuntant-los a notes noves o pots adelantar-te i pujar arxius per publicar-los més tard!<br>\n<b>Tingués en compte que si esborres un arxiu també desapareixerà de tots els llocs on l\'has fet servir (notes, pàgines, avatars, imatges de capçalera, etc.)</b><br>\nTambé pots crear carpetes per organitzar les.';
 	@override String get scrollToClose => 'Desplaçar per tancar';
+	@override String get advice => 'Consell';
+	@override String get realtimeMode => 'Mode en temps real';
+	@override String get turnItOn => 'Activar';
+	@override String get turnItOff => 'Desactivar';
+	@override String get emojiMute => 'Silenciar emojis';
+	@override String get emojiUnmute => 'Deixar de silenciar emojis';
+	@override String muteX({required Object x}) => 'Silenciar ${x}';
+	@override String unmuteX({required Object x}) => 'Deixar de silenciar ${x}';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1520,6 +1531,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCaptchaCaEs captcha_ = _TranslationsMisskeyCaptchaCaEs._(_root);
 	@override late final _TranslationsMisskeyBootErrorsCaEs bootErrors_ = _TranslationsMisskeyBootErrorsCaEs._(_root);
 	@override late final _TranslationsMisskeySearchCaEs search_ = _TranslationsMisskeySearchCaEs._(_root);
+	@override late final _TranslationsMisskeyServerSetupWizardCaEs serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardCaEs._(_root);
+	@override late final _TranslationsMisskeyUploaderCaEs uploader_ = _TranslationsMisskeyUploaderCaEs._(_root);
+	@override late final _TranslationsMisskeyClientPerformanceIssueTipCaEs clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipCaEs._(_root);
 }
 
 // Path: misskey.chat_
@@ -1561,6 +1575,8 @@ class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
 	@override String get chatNotAvailableInOtherAccount => 'La funció de xat es troba desactivada al compte de l\'altre usuari.';
 	@override String get cannotChatWithTheUser => 'No pots xatejar amb aquest usuari';
 	@override String get cannotChatWithTheUser_description => 'El xat està desactivat o l\'altra part encara no l\'ha obert.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'No participes en aquesta sala, però has rebut una invitació. Per participar accepta la invitació.';
+	@override String get doYouAcceptInvitation => 'Acceptes la invitació?';
 	@override String get chatWithThisUser => 'Xateja amb aquest usuari';
 	@override String get thisUserAllowsChatOnlyFromFollowers => 'Aquest usuari només accepta xats d\'usuaris que el segueixen.';
 	@override String get thisUserAllowsChatOnlyFromFollowing => 'Aquest usuari només accepta xats d\'usuaris que segueix.';
@@ -1611,12 +1627,19 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get makeEveryTextElementsSelectable => 'Fes que tots els elements del text siguin seleccionables';
 	@override String get makeEveryTextElementsSelectable_description => 'L\'activació pot reduir la usabilitat en determinades ocasions.';
 	@override String get useStickyIcons => 'Utilitza icones fixes';
+	@override String get enableHighQualityImagePlaceholders => 'Mostrar marcadors de posició per imatges d\'alta qualitat';
+	@override String get uiAnimations => 'Animacions de la interfície';
 	@override String get showNavbarSubButtons => 'Mostrar sub botons a la barra de navegació ';
 	@override String get ifOn => 'Quan s\'activa';
 	@override String get ifOff => 'Quan es desactiva';
 	@override String get enableSyncThemesBetweenDevices => 'Sincronitzar els temes instal·lats entre dispositius';
 	@override String get enablePullToRefresh => 'Lliscar i actualitzar ';
 	@override String get enablePullToRefresh_description => 'Amb el ratolí, llisca mentre prems la roda.';
+	@override String get realtimeMode_description => 'Estableix una connexió amb el servidor i actualitza el contingut en temps real. Pot consumir més dades i bateria.';
+	@override String get contentsUpdateFrequency => 'Freqüència d\'adquisició del contingut';
+	@override String get contentsUpdateFrequency_description => 'Com més alt sigui l\'adquisició de contingut en temps real, més baixa el rendiment i més consum de dades i bateria.';
+	@override String get contentsUpdateFrequency_description2 => 'Quan s\'activa el mode en temps real, el contingut s\'actualitza en temps real, independentment d\'aquesta configuració.';
+	@override String get showUrlPreview => 'Mostrar vista prèvia d\'URL';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -1826,6 +1849,18 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Si no es detecta activitat per part del moderador durant un període de temps, aquesta opció es desactiva automàticament per evitar el correu brossa.';
 	@override String get deliverSuspendedSoftware => 'Programari que ja no es distribueix';
 	@override String get deliverSuspendedSoftwareDescription => 'Pots especificar un rang de noms i versions del programari del servidor per detenir l\'entrega, per exemple, degut a vulnerabilitats. Aquesta informació la proporciona el servidor i la seva fiabilitat no es garantitzada. Es pot fer servir una especificació de rang sencer per especificar una versió, però es recomana especificar una versió anterior, com >= 2024.3.1-0, perquè especificar  >= 2024.3.1 no incloure versions personalitzades com 2024.3.1-custom.0.';
+	@override String get singleUserMode => 'Mode un usuari';
+	@override String get singleUserMode_description => 'Si ets l\'únic usuari d\'aquesta instància, activant aquest mode optimitzaràs el funcionament.';
+	@override String get signToActivityPubGet => 'Formar sol·licituds GET';
+	@override String get signToActivityPubGet_description => ' Això normalment hauria d\'estar activat. Desactivar aquesta opció pot millorar els problemes de comunicació amb algunes de les instàncies federades, però també pot fer impossibles les comunicacions amb altres servidors.';
+	@override String get proxyRemoteFiles => 'Proxy d\'arxius remots';
+	@override String get proxyRemoteFiles_description => 'Quan està habilitat, fa de proxy i serveix arxius remots. Això ajuda a generar les miniatures de les imatges i a protegir la privacitat dels usuaris.';
+	@override String get allowExternalApRedirect => 'Permetre el reencaminament per consultes fent servir ActivityPub.';
+	@override String get allowExternalApRedirect_description => 'Si aquesta opció s\'activa, altres servidors poden consultar continguts de tercers mitjançant aquest servidor, però això pot donar peu a la suplantació de continguts.';
+	@override String get userGeneratedContentsVisibilityForVisitor => 'L\'abast de la publicació del contingut generat per l\'usuari';
+	@override String get userGeneratedContentsVisibilityForVisitor_description => 'Això ajuda a evitar problemes com que continguts remots inadequats que no hagin estat moderats correctament es publiquin a internet mitjançant el teu servidor.';
+	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'La publicació incondicional de tots els continguts del servidor a internet, incloent-hi els continguts remots rebuts pel servidor, comporta riscos. Això és extremadament important per els espectadors que desconeixen el caràcter descentralitzat dels continguts, ja que poden percebre erroneament els continguts remots com contingut generat per el propi servidor.';
+	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs._(_root);
 }
 
 // Path: misskey.accountMigration_
@@ -3029,7 +3064,8 @@ class _TranslationsMisskeyDataSaverCaEs extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaCaEs media_ = _TranslationsMisskeyDataSaverMediaCaEs._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarCaEs avatar_ = _TranslationsMisskeyDataSaverAvatarCaEs._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewCaEs urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewThumbnailCaEs urlPreviewThumbnail_ = _TranslationsMisskeyDataSaverUrlPreviewThumbnailCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverDisableUrlPreviewCaEs disableUrlPreview_ = _TranslationsMisskeyDataSaverDisableUrlPreviewCaEs._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeCaEs code_ = _TranslationsMisskeyDataSaverCodeCaEs._(_root);
 }
 
@@ -3297,6 +3333,73 @@ class _TranslationsMisskeySearchCaEs extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => 'Ex: misskey.example.com';
 }
 
+// Path: misskey.serverSetupWizard_
+class _TranslationsMisskeyServerSetupWizardCaEs extends TranslationsMisskeyServerSetupWizardEnUs {
+	_TranslationsMisskeyServerSetupWizardCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get installCompleted => 'La instal·lació de Misskey ha finalitzat!';
+	@override String get firstCreateAccount => 'Primer crea un compte d\'administrador.';
+	@override String get accountCreated => 'Compte d\'administrador creat.';
+	@override String get serverSetting => 'Configuració del servidor';
+	@override String get youCanEasilyConfigureOptimalServerSettingsWithThisWizard => 'Aquest assistent t\'ajuda a fer una configuració òptima del servidor.';
+	@override String get settingsYouMakeHereCanBeChangedLater => 'Els canvis que facis ara poden modificar-se més tard.';
+	@override String get howWillYouUseMisskey => 'Com es fa servir Misskey?';
+	@override late final _TranslationsMisskeyServerSetupWizardUseCaEs use_ = _TranslationsMisskeyServerSetupWizardUseCaEs._(_root);
+	@override String get openServerAdvice => 'Acceptar un nombre no determinat d\'usuaris comporta alguns riscos. Es recomana operar amb un sistema de moderació fiable per fer front als problemes.';
+	@override String get openServerAntiSpamAdvice => 'També s\'ha de tenir molta cura amb la seguretat, per exemple habilitant funcions anti-bot com reCAPTCHA, per assegurar-te que el teu servidor no es converteix en un trampolí per contingut brossa.';
+	@override String get howManyUsersDoYouExpect => 'Quantes persones preveus?';
+	@override late final _TranslationsMisskeyServerSetupWizardScaleCaEs scale_ = _TranslationsMisskeyServerSetupWizardScaleCaEs._(_root);
+	@override String get largeScaleServerAdvice => 'Els grans servidors poden requerir coneixements avançats d\'infraestructures, com balanceig de càrregues i replicació de base de dades.';
+	@override String get doYouConnectToFediverse => 'Desitges connectar-te amb el Fedivers?';
+	@override String get doYouConnectToFediverse_description1 => 'Quan es connecta amb una xarxa de servidors distribuïts (Fedivers), els continguts poden intercanviar-se amb altres servidors i entre ells.';
+	@override String get doYouConnectToFediverse_description2 => 'La connexió amb el Fedivers també es coneix com a "federació".';
+	@override String get youCanConfigureMoreFederationSettingsLater => 'Les configuracions avançades, com especificar els servidors amb els quals es pot federar, es poden fer més tard.';
+	@override String get adminInfo => 'Informació de l\'administrador ';
+	@override String get adminInfo_description => 'Estableix la informació de l\'administrador que es farà servir per rebre consultes.';
+	@override String get adminInfo_mustBeFilled => 'Aquesta informació ha de ser omplerta si el servidor té els registres oberts o la federació es troba activada.';
+	@override String get followingSettingsAreRecommended => 'Es recomana la següent configuració ';
+	@override String get applyTheseSettings => 'Aplicar aquesta configuració ';
+	@override String get skipSettings => 'Saltar la configuració ';
+	@override String get settingsCompleted => 'Configuració finalitzada ';
+	@override String get settingsCompleted_description => 'Gràcies per la teva ajuda. Ara que ja està tot llest, pots començar a fer servir el servidor immediatament.';
+	@override String get settingsCompleted_description2 => 'La configuració avançada del servidor també poden fer-se des del "Tauler de control".';
+	@override String get donationRequest => 'Una donació, si us plau';
+	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestCaEs donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestCaEs._(_root);
+}
+
+// Path: misskey.uploader_
+class _TranslationsMisskeyUploaderCaEs extends TranslationsMisskeyUploaderEnUs {
+	_TranslationsMisskeyUploaderCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String compressedToX({required Object x}) => 'Comprimit a ${x}';
+	@override String savedXPercent({required Object x}) => '${x}% d\'estalvi ';
+	@override String get abortConfirm => 'Hi ha un arxiu que no s\'ha pujat, vols cancel·lar?';
+	@override String get doneConfirm => 'Hi han fitxers no pujats, vols completar-los?';
+	@override String maxFileSizeIsX({required Object x}) => 'La mida màxima d\'arxiu que es pot pujar és ${x}.';
+}
+
+// Path: misskey.clientPerformanceIssueTip_
+class _TranslationsMisskeyClientPerformanceIssueTipCaEs extends TranslationsMisskeyClientPerformanceIssueTipEnUs {
+	_TranslationsMisskeyClientPerformanceIssueTipCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Si creus que el consum de bateria és molt alt';
+	@override String get makeSureDisabledAdBlocker => 'Desactiva els bloquejadors de publicitat';
+	@override String get makeSureDisabledAdBlocker_description => 'Els bloquejadors d\'anuncis pot afectar el rendiment, comprova que no estiguin activats per característiques del sistema operatiu o del navegador.';
+	@override String get makeSureDisabledCustomCss => 'Desactiva CSS personalitzat';
+	@override String get makeSureDisabledCustomCss_description => 'L\'anul·lació dels estils pot afectar el rendiment. Comprova que el CSS personalitzat o les extensions que reescriuen estils no estiguin activats.';
+	@override String get makeSureDisabledAddons => 'Desactiva extensions';
+	@override String get makeSureDisabledAddons_description => 'Algunes extensions poden interferir en el comportament del client i afectar el rendiment. Desactiva les extensions del navegador i comprovar-ho.';
+}
+
 // Path: misskey.chat_.chatAllowedUsers_
 class _TranslationsMisskeyChatChatAllowedUsersCaEs extends TranslationsMisskeyChatChatAllowedUsersEnUs {
 	_TranslationsMisskeyChatChatAllowedUsersCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -3460,6 +3563,18 @@ class _TranslationsMisskeyInitialTutorialDoneCaEs extends TranslationsMisskeyIni
 	// Translations
 	@override String get title => 'Has completat el tutorial 🎉';
 	@override String description({required Object link}) => 'Les funcions explicades aquí és una petita mostra. Per una explicació més detallada de com fer servir MissKey consulta ${link}.';
+}
+
+// Path: misskey.serverSettings_.userGeneratedContentsVisibilityForVisitor_
+class _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs extends TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs {
+	_TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get all => 'Tot obert al públic ';
+	@override String get localOnly => 'Només es publiquen els continguts locals, el contingut remot es manté privat';
+	@override String get none => 'Tot privat';
 }
 
 // Path: misskey.achievements_.types_
@@ -3690,7 +3805,6 @@ class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Fons botó ';
 	@override String get buttonHoverBg => 'Fons botó (en passar-hi per sobre)';
 	@override String get inputBorder => 'Contorn del cap d\'introducció ';
-	@override String get driveFolderBg => 'Fons de la carpeta Disc';
 	@override String get badge => 'Insígnia ';
 	@override String get messageBg => 'Fons del xat';
 	@override String get fgHighlighted => 'Text ressaltat';
@@ -3927,15 +4041,26 @@ class _TranslationsMisskeyDataSaverAvatarCaEs extends TranslationsMisskeyDataSav
 	@override String get description => 'Detenir l\'animació dels avatars animats. Les imatges animades solen tenir un pes més gran que les imatges normals, reduint el tràfic disponible.';
 }
 
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewCaEs extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class _TranslationsMisskeyDataSaverUrlPreviewThumbnailCaEs extends TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewThumbnailCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Miniatures vista prèvia de l\'URL';
-	@override String get description => 'Les imatges en miniatura que serveixen com a vista prèvia de les URLs no es tornaran a carregar.';
+	@override String get title => 'Amagar les miniatures de la vista prèvia d\'URL';
+	@override String get description => 'Les imatges en miniatura de la vista prèvia d\'URL ja no es carreguen';
+}
+
+// Path: misskey.dataSaver_.disableUrlPreview_
+class _TranslationsMisskeyDataSaverDisableUrlPreviewCaEs extends TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverDisableUrlPreviewCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Desactivar la vista prèvia d\'URL';
+	@override String get description => 'Desactiva la funció de previsualització d\'URL. A diferència de les imatges en miniatura soles, això redueix la càrrega de la mateixa informació vinculada.';
 }
 
 // Path: misskey.dataSaver_.code_
@@ -4087,6 +4212,46 @@ class _TranslationsMisskeyCaptchaErrorCaEs extends TranslationsMisskeyCaptchaErr
 	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedCaEs requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedCaEs._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedCaEs verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedCaEs._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorUnknownCaEs unknown_ = _TranslationsMisskeyCaptchaErrorUnknownCaEs._(_root);
+}
+
+// Path: misskey.serverSetupWizard_.use_
+class _TranslationsMisskeyServerSetupWizardUseCaEs extends TranslationsMisskeyServerSetupWizardUseEnUs {
+	_TranslationsMisskeyServerSetupWizardUseCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get single => 'Servidor per una sola persona';
+	@override String get single_description => 'Fes-ho servir com el teu propi servidor dedicat';
+	@override String get single_youCanCreateMultipleAccounts => 'Es poden crear diferents comptes segons siguin les teves necessitats, inclús quan es fa servir com a servidor unipersonal.';
+	@override String get group => 'Servidor per a grups';
+	@override String get group_description => 'Invita altres usuaris de la teva confiança i fes-ho servir amb més d\'una persona.';
+	@override String get open => 'Servidor obert';
+	@override String get open_description => 'Operar per donar cabuda a un nombre no determinat d\'usuaris.';
+}
+
+// Path: misskey.serverSetupWizard_.scale_
+class _TranslationsMisskeyServerSetupWizardScaleCaEs extends TranslationsMisskeyServerSetupWizardScaleEnUs {
+	_TranslationsMisskeyServerSetupWizardScaleCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get small => 'Menys de 100 (petita escala)';
+	@override String get medium => 'Més de 100 i menys de 1000 (mida mitjana)';
+	@override String get large => 'Més de 1000 persones (gran escala)';
+}
+
+// Path: misskey.serverSetupWizard_.donationRequest_
+class _TranslationsMisskeyServerSetupWizardDonationRequestCaEs extends TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
+	_TranslationsMisskeyServerSetupWizardDonationRequestCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get text1 => 'Misskey és un programari gratuït fet per voluntaris.';
+	@override String get text2 => 'Si ho desitges, agrairíem molt la teva donació per poder seguir desenvolupant el projecte.';
+	@override String get text3 => 'També hi ha privilegis especials per als donants!';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -5147,10 +5312,6 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterCaEs extends Translati
 	@override String get uploadSettingDescription => 'En aquesta pantalla pots configurar el que s\'ha de fer quan es puja un Emoji.';
 	@override String get directoryToCategoryLabel => 'Escriu el nom del directori al camp de "categoria"';
 	@override String get directoryToCategoryCaption => 'Quan arrossegues un directori, escriu el nom del directori al camp categoria.';
-	@override String get emojiInputAreaCaption => 'Selecciona els Emojis que vols registrar gent servir un dels mètodes.';
-	@override String get emojiInputAreaList1 => 'Arrossega i deixar anar fitxers o directoris dintre del quadrat.';
-	@override String get emojiInputAreaList2 => 'Clica l\'enllaç per seleccionar un fitxer des del teu ordinador.';
-	@override String get emojiInputAreaList3 => 'Clica aquest enllaç per seleccionar del Disc';
 	@override String confirmRegisterEmojisDescription({required Object count}) => 'Registrar els Emojis de la llista com a nous Emojis personalitzats. Vols continuar? (Per evitar una sobrecàrrega només ${count} Emojis es poden registrar d\'una sola vegada)';
 	@override String get confirmClearEmojisDescription => 'Descartar els canvis i esborrar els Emojis de la llista. Vols continuar?';
 	@override String confirmUploadEmojisDescription({required Object count}) => 'Pujar els ${count} fitxers que has arrossegat al disc. Vols continuar?';

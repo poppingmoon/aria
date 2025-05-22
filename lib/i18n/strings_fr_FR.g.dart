@@ -2619,7 +2619,6 @@ class _TranslationsMisskeyDataSaverFrFr extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaFrFr media_ = _TranslationsMisskeyDataSaverMediaFrFr._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarFrFr avatar_ = _TranslationsMisskeyDataSaverAvatarFrFr._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewFrFr urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewFrFr._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeFrFr code_ = _TranslationsMisskeyDataSaverCodeFrFr._(_root);
 }
 
@@ -2976,7 +2975,6 @@ class _TranslationsMisskeyThemeKeysFrFr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Arrière-plan du bouton';
 	@override String get buttonHoverBg => 'Arrière-plan du bouton (survolé)';
 	@override String get inputBorder => 'Cadre de la zone de texte';
-	@override String get driveFolderBg => 'Arrière-plan du dossier de disque';
 	@override String get badge => 'Badge';
 	@override String get messageBg => 'Arrière plan de la discussion';
 	@override String get fgHighlighted => 'Texte mis en évidence';
@@ -3167,17 +3165,6 @@ class _TranslationsMisskeyDataSaverAvatarFrFr extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => 'Animation d\'avatars';
 	@override String get description => 'Arrête l\'animation d\'avatars. Comme les images animées peuvent être plus volumineuses que les images normales, cela permet de réduire davantage le trafic de données.';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewFrFr extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
-
-	final TranslationsFrFr _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'Vignettes d\'aperçu des URL';
-	@override String get description => 'Les vignettes d\'aperçu des URL ne seront plus chargées.';
 }
 
 // Path: misskey.dataSaver_.code_

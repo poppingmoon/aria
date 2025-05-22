@@ -1306,7 +1306,6 @@ theme_:
     buttonBg: "Фон кнопки"
     buttonHoverBg: "Фон кнопки (при наведенні)"
     inputBorder: "Край поля вводу"
-    driveFolderBg: "Фон папки на диску"
     badge: "Значок"
     messageBg: "Фон переписки"
     fgHighlighted: "Виділений текст"

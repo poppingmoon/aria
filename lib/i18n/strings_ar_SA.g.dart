@@ -2150,7 +2150,6 @@ class _TranslationsMisskeyThemeKeysArSa extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'خلفية الأزرار';
 	@override String get buttonHoverBg => 'خلفية الأزرار (عند التمرير فوقها)';
 	@override String get inputBorder => 'حواف حقل الإدخال';
-	@override String get driveFolderBg => 'خلفية مجلد قرص التخزين';
 	@override String get messageBg => 'خلفية المحادثة';
 }
 

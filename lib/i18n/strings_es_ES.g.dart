@@ -496,6 +496,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'Silencia la Multimedia(Imágenes,videos...) para este servidor';
 	@override String get operations => 'Operaciones';
 	@override String get software => 'Software';
+	@override String get softwareName => 'Nombre del software';
 	@override String get version => 'Versión';
 	@override String get metadata => 'Metadatos';
 	@override String withNFiles({required Object n}) => '${n} archivos';
@@ -850,6 +851,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulario de publicación por encima de la cronología (Canales)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Incluir por defecto respuestas de usuarios recién seguidos en la línea de tiempo';
 	@override String get newNoteRecived => 'Tienes una nota nueva';
+	@override String get newNote => 'Nueva nota';
 	@override String get sounds => 'Sonidos';
 	@override String get sound => 'Sonidos';
 	@override String get listen => 'Escuchar';
@@ -1066,6 +1068,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get narrow => 'Estrecho';
 	@override String get reloadToApplySetting => 'Esta configuración sólo se aplicará después de recargar la página. ¿Recargar ahora?';
 	@override String get needReloadToApply => 'Se requiere un reinicio para la aplicar los cambios';
+	@override String get needToRestartServerToApply => 'Se requiere un reinicio para la aplicar los cambios';
 	@override String get showTitlebar => 'Mostrar la barra de título';
 	@override String get clearCache => 'Limpiar caché';
 	@override String onlineUsersCount({required Object n}) => '${n} usuarios en línea';
@@ -1601,12 +1604,16 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get preferenceSyncConflictText => 'Los ajustes de sincronización activados guardarán sus valores en el servidor. Sin embargo, hay valores existentes en el servidor. ¿Qué conjunto de valores desea sobrescribir?';
 	@override String get preferenceSyncConflictChoiceServer => 'Valores de configuración del servidor';
 	@override String get preferenceSyncConflictChoiceDevice => 'Valor configurado en el dispositivo';
+	@override String get preferenceSyncConflictChoiceCancel => 'Cancelar la activación de la sincronización';
 	@override String get paste => 'Pegar';
 	@override String get emojiPalette => 'Paleta emoji';
 	@override String get postForm => 'Formulario';
+	@override String get textCount => 'caracteres';
 	@override String get information => 'Información';
 	@override String get chat => 'Chat';
 	@override String get migrateOldSettings => 'Migrar la configuración anterior';
+	@override String get migrateOldSettings_description => 'Esto debería hacerse automáticamente, pero si por alguna razón la migración no ha tenido éxito, puede activar usted mismo el proceso de migración manualmente. Se sobrescribirá la información de configuración actual.';
+	@override String get compress => 'Comprimir';
 	@override String get right => 'Derecha';
 	@override String get bottom => 'Abajo';
 	@override String get top => 'Arriba';
@@ -1615,6 +1622,16 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get readonly => 'Solo Lectura';
 	@override String get goToDeck => 'Volver al Deck';
 	@override String get federationJobs => 'Trabajos de Federación';
+	@override String get driveAboutTip => 'En Drive, aparecerá una lista de los archivos que has subido en el pasado. <br> \nPuedes reutilizar estos archivos al adjuntarlos a notas, o puedes subir archivos por adelantado para publicarlos más tarde. <br> \n<b>Ten cuidado al eliminar un archivo, ya que no estará disponible en todos los lugares donde se utilizó (como notas, páginas, avatares, banners, etc.).</b> <br> \nTambién puedes crear carpetas para organizar tus archivos.';
+	@override String get scrollToClose => 'Desliza para cerrar';
+	@override String get advice => 'Consejos';
+	@override String get realtimeMode => 'Modo en tiempo real';
+	@override String get turnItOn => 'Activar';
+	@override String get turnItOff => 'Desactivar';
+	@override String get emojiMute => 'Silenciar emojis';
+	@override String get emojiUnmute => 'No Silenciar emojis';
+	@override String muteX({required Object x}) => 'Silenciar ${x}';
+	@override String unmuteX({required Object x}) => 'Dejar de silenciar ${x}';
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteEsEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteEsEs._(_root);
 	@override late final _TranslationsMisskeySettingsEsEs settings_ = _TranslationsMisskeySettingsEsEs._(_root);
@@ -1736,6 +1753,8 @@ class _TranslationsMisskeyChatEsEs extends TranslationsMisskeyChatEnUs {
 	@override String get chatNotAvailableInOtherAccount => 'La función de chat está desactivada para el otro usuario.';
 	@override String get cannotChatWithTheUser => 'No se puede iniciar un chat con este usuario';
 	@override String get cannotChatWithTheUser_description => 'El chat no está disponible o la otra parte no ha habilitado el chat.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'No eres participante en esta sala, pero has recibido una invitación. Por favor, acepta la invitación para unirte.';
+	@override String get doYouAcceptInvitation => '¿Aceptas la invitación?';
 	@override String get chatWithThisUser => 'Chatear';
 	@override String get thisUserAllowsChatOnlyFromFollowers => 'Este usuario sólo acepta chats de seguidores.';
 	@override String get thisUserAllowsChatOnlyFromFollowing => 'Este usuario sólo acepta chats de los usuarios a los que sigue.';
@@ -1755,6 +1774,8 @@ class _TranslationsMisskeyEmojiPaletteEsEs extends TranslationsMisskeyEmojiPalet
 	// Translations
 	@override String get palettes => 'Paleta\n';
 	@override String get enableSyncBetweenDevicesForPalettes => 'Activar la sincronización de paletas entre dispositivos';
+	@override String get paletteForMain => 'Paleta principal';
+	@override String get paletteForReaction => 'Paleta de reacción';
 }
 
 // Path: misskey.settings_
@@ -1764,14 +1785,26 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get driveBanner => 'Puedes gestionar y configurar la unidad, comprobar su uso y configurar los ajustes de carga de archivos.';
+	@override String get pluginBanner => 'Puedes ampliar las funciones del cliente con plugins. Puedes instalar plugins, configurarlos y gestionarlos individualmente.';
+	@override String get notificationsBanner => 'Puede configurar los tipos y el alcance de las notificaciones del servidor y las notificaciones push.';
 	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
+	@override String get serviceConnection => 'Integraciones';
+	@override String get serviceConnectionBanner => 'Gestione y configure tokens de acceso y Webhooks para integrarse con aplicaciones o servicios externos.';
+	@override String get accountData => 'Datos de la cuenta';
+	@override String get accountDataBanner => 'Exportación e importación para gestionar los datos de la cuenta.';
+	@override String get muteAndBlockBanner => 'Puedes configurar y gestionar ajustes para ocultar contenidos y restringir acciones a usuarios específicos.';
+	@override String get accessibilityBanner => 'Puedes personalizar los visuales y el comportamiento del cliente, y configurar los ajustes para optimizar el uso.';
 	@override String get timelineAndNote => 'Líneas del tiempo y notas';
 	@override String get makeEveryTextElementsSelectable_description => 'Activar esta opción puede reducir la usabilidad en algunas situaciones.';
 	@override String get useStickyIcons => 'Hacer que los iconos te sigan cuando desplaces';
 	@override String get showNavbarSubButtons => 'Mostrar los sub-botones en la barra de navegación.';
 	@override String get ifOn => 'Si está activado';
+	@override String get ifOff => 'Si está desactivado';
 	@override String get enableSyncThemesBetweenDevices => 'Sincronizar los temas instalados entre dispositivos.';
+	@override String get enablePullToRefresh => 'Tirar para actualizar';
+	@override String get enablePullToRefresh_description => 'Si utiliza un ratón, arrastre mientras pulsa la rueda de desplazamiento.';
 	@override late final _TranslationsMisskeySettingsChatEsEs chat_ = _TranslationsMisskeySettingsChatEsEs._(_root);
 }
 
@@ -3110,7 +3143,6 @@ class _TranslationsMisskeyDataSaverEsEs extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaEsEs media_ = _TranslationsMisskeyDataSaverMediaEsEs._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarEsEs avatar_ = _TranslationsMisskeyDataSaverAvatarEsEs._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewEsEs urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewEsEs._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeEsEs code_ = _TranslationsMisskeyDataSaverCodeEsEs._(_root);
 }
 
@@ -3575,7 +3607,6 @@ class _TranslationsMisskeyThemeKeysEsEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Fondo de botón';
 	@override String get buttonHoverBg => 'Fondo de botón (hover)';
 	@override String get inputBorder => 'Borde de los campos de entrada';
-	@override String get driveFolderBg => 'Fondo de capeta del drive';
 	@override String get badge => 'Medalla';
 	@override String get messageBg => 'Fondo de chat';
 	@override String get fgHighlighted => 'Texto resaltado';
@@ -3797,17 +3828,6 @@ class _TranslationsMisskeyDataSaverAvatarEsEs extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => 'Avatares animados';
 	@override String get description => 'Desactiva la animación de los avatares. Las imágenes animadas pueden llegar a ser de mayor tamaño que las normales, por lo que al desactivarlas puedes reducir el consumo de datos.';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewEsEs extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
-
-	final TranslationsEsEs _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'Vista previa de URLs';
-	@override String get description => 'Desactiva la carga de vistas previas de las URLs.';
 }
 
 // Path: misskey.dataSaver_.code_

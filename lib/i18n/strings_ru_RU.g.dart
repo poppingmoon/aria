@@ -2763,7 +2763,6 @@ class _TranslationsMisskeyThemeKeysRuRu extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Фон кнопки';
 	@override String get buttonHoverBg => 'Текст кнопки';
 	@override String get inputBorder => 'Рамка поля ввода';
-	@override String get driveFolderBg => 'Фон папки «Диска»';
 	@override String get badge => 'Значок';
 	@override String get messageBg => 'Фон беседы';
 	@override String get fgHighlighted => 'Подсвеченный текст';

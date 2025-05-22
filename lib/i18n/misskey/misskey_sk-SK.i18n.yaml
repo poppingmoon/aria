@@ -1112,7 +1112,6 @@ theme_:
     buttonBg: "Pozadie tlačidla"
     buttonHoverBg: "Pozadie tlačidla (pod kurzorom)"
     inputBorder: "Okraj vstupného poľa"
-    driveFolderBg: "Pozadie priečinu disku"
     badge: "Odznak"
     messageBg: "Pozadie chatu"
     fgHighlighted: "Zvýraznený text"

@@ -1256,7 +1256,6 @@ theme_:
     buttonBg: "خلفية الأزرار"
     buttonHoverBg: "خلفية الأزرار (عند التمرير فوقها)"
     inputBorder: "حواف حقل الإدخال"
-    driveFolderBg: "خلفية مجلد قرص التخزين"
     messageBg: "خلفية المحادثة"
 sfx_:
   note: "الملاحظات"

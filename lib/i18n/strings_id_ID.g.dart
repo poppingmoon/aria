@@ -2930,7 +2930,6 @@ class _TranslationsMisskeyDataSaverIdId extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaIdId media_ = _TranslationsMisskeyDataSaverMediaIdId._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarIdId avatar_ = _TranslationsMisskeyDataSaverAvatarIdId._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewIdId urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewIdId._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeIdId code_ = _TranslationsMisskeyDataSaverCodeIdId._(_root);
 }
 
@@ -3426,7 +3425,6 @@ class _TranslationsMisskeyThemeKeysIdId extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Latar belakang tombol';
 	@override String get buttonHoverBg => 'Latar belakang tombol (Mengambang)';
 	@override String get inputBorder => 'Batas bidang masukan';
-	@override String get driveFolderBg => 'Latar belakang folder drive';
 	@override String get badge => 'Lencana';
 	@override String get messageBg => 'Latar belakang obrolan';
 	@override String get fgHighlighted => 'Teks yang disorot';
@@ -3636,17 +3634,6 @@ class _TranslationsMisskeyDataSaverAvatarIdId extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => 'Gambar avatar';
 	@override String get description => 'Hentikan animasi gambar avatar. Gambar animasi dapat berukuran lebih besar dari gambar biasa, berpotensi pada pengurangan lalu lintas data lebih jauh.';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewIdId extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
-
-	final TranslationsIdId _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'Gambar kecil URL pratinjau';
-	@override String get description => 'Gambar kecil URL pratinjau tidak akan dimuat lagi.';
 }
 
 // Path: misskey.dataSaver_.code_

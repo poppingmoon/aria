@@ -3200,7 +3200,6 @@ class _TranslationsMisskeyDataSaverKoKr extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaKoKr media_ = _TranslationsMisskeyDataSaverMediaKoKr._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarKoKr avatar_ = _TranslationsMisskeyDataSaverAvatarKoKr._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewKoKr urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewKoKr._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeKoKr code_ = _TranslationsMisskeyDataSaverCodeKoKr._(_root);
 }
 
@@ -3877,7 +3876,6 @@ class _TranslationsMisskeyThemeKeysKoKr extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => '버튼 배경';
 	@override String get buttonHoverBg => '버튼 배경 (호버)';
 	@override String get inputBorder => '입력 필드 테두리';
-	@override String get driveFolderBg => '드라이브 폴더 배경';
 	@override String get badge => '배지';
 	@override String get messageBg => '대화 배경';
 	@override String get fgHighlighted => '강조된 텍스트';
@@ -4112,17 +4110,6 @@ class _TranslationsMisskeyDataSaverAvatarKoKr extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => '아이콘 이미지';
 	@override String get description => '아이콘 이미지의 애니메이션을 멈춥니다. 애니메이션 이미지는 일반 이미지보다 파일 크기가 클 수 있으므로 데이터 사용량을 더 줄일 수 있습니다.';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewKoKr extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
-
-	final TranslationsKoKr _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'URL 미리보기의 섬네일';
-	@override String get description => 'URL 미리보기의 섬네일 이미지를 불러오지 않게 됩니다.';
 }
 
 // Path: misskey.dataSaver_.code_
@@ -5350,10 +5337,6 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterKoKr extends Translati
 	@override String get uploadSettingDescription => '여기서 이모지를 업로드 할 때의 동작을 설정할 수 있습니다.';
 	@override String get directoryToCategoryLabel => '디렉토리 이름을 "category"로 입력하기';
 	@override String get directoryToCategoryCaption => '디렉토리를 드래그 앤 드롭한 경우, 디렉토리 이름을 "category"로 입력합니다.';
-	@override String get emojiInputAreaCaption => '이모지를 등록할 방법을 선택해주세요.';
-	@override String get emojiInputAreaList1 => '이 틀 안에 이미지 파일 또는 디렉토리를 끌어서 가져오기';
-	@override String get emojiInputAreaList2 => '이 링크를 클릭해서 PC에서 선택하기';
-	@override String get emojiInputAreaList3 => '이 링크를 클릭해서 드라이브에서 선택하기';
 	@override String confirmRegisterEmojisDescription({required Object count}) => '리스트에 표시되어진 이모지를 새로운 커스텀 이모지로 등록합니다. 실행할까요? (부하를 피하기 위해, 한 번에 등록할 수 있는 이모지는 ${count}건까지 입니다.)';
 	@override String get confirmClearEmojisDescription => '편집 내용을 지우고, 목록에 표시되어진 이모지를 지웁니다. 실행할까요?';
 	@override String confirmUploadEmojisDescription({required Object count}) => '드래그 앤 드롭한 ${count}개의 파일을 드라이브에 업로드 합니다. 실행할까요?';

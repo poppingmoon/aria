@@ -67,8 +67,10 @@ class AppearancePage extends HookConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
               child: SwitchListTile(
-                title: Text(t.misskey.dataSaver_.urlPreview_.title),
-                subtitle: Text(t.misskey.dataSaver_.urlPreview_.description),
+                title: Text(t.misskey.dataSaver_.urlPreviewThumbnail_.title),
+                subtitle: Text(
+                  t.misskey.dataSaver_.urlPreviewThumbnail_.description,
+                ),
                 value: settings.dataSaverUrlPreview,
                 onChanged: (value) => ref
                     .read(generalSettingsNotifierProvider.notifier)

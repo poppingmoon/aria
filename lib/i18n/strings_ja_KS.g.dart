@@ -86,7 +86,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	);
 	@override String get deleteTabConfirm => 'このタブほかしてええか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを止めとく';
-	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新をやめるで';
+	@override String get disableStreamingTimeline => 'タイムラインをいちいち更新せんようにする';
 	@override String get disableSubscribingNotes => 'ツッコミをいちいち更新せんようにする';
 	@override String get discardChangesConfirm => '変えんと戻ってええか？';
 	@override String get displayOfThumbnail => 'サムネイルの表示';
@@ -520,7 +520,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get clearQueueConfirmTitle => 'キューをほかしとこか？';
 	@override String get clearQueueConfirmText => '未配達の投稿は配送されんなるで。ふつうこの操作を行う必要は無いんやけどな。';
 	@override String get clearCachedFiles => 'キャッシュをほかす';
-	@override String get clearCachedFilesConfirm => 'キャッシュされとるリモートファイルをみんなほかしてええか？';
+	@override String get clearCachedFilesConfirm => 'キャッシュされとるリモートファイルを全部ほかしてええか？';
 	@override String get blockedInstances => 'ブロックしたサーバー';
 	@override String get blockedInstancesDescription => 'ブロックしたいサーバーのホストを改行で区切って設定してな。ブロックされてもうたサーバーとはもう金輪際やり取りできひんくなるで。';
 	@override String get silencedInstances => 'サーバーサイレンスされてんねん';
@@ -583,6 +583,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => 'このURLのファイルをアップロードしたいねん';
 	@override String get uploadFromUrlRequested => 'アップロードしたい言うといたで';
 	@override String get uploadFromUrlMayTakeTime => 'アップロード終わるんにちょい時間かかるかもしれへんわ。';
+	@override String uploadNFiles({required Object n}) => '${n}個のファイルをアップロード';
 	@override String get explore => 'みつける';
 	@override String get messageRead => 'もう読んだ';
 	@override String get noMoreHistory => 'これより昔のんはあらへんで';
@@ -860,6 +861,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'タイムラインの上の方で投稿できるようにするわ(チャンネル)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'フォローする時、デフォルトで返信をタイムラインに含むようにしよか';
 	@override String get newNoteRecived => '新しいノートがあるで';
+	@override String get newNote => '新しいノート';
 	@override String get sounds => '音';
 	@override String get sound => '音';
 	@override String get listen => '聴く';
@@ -1076,6 +1078,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get narrow => '狭い';
 	@override String get reloadToApplySetting => '設定はページリロード後に反映されるで。今リロードしとくか？';
 	@override String get needReloadToApply => '反映には再起動せなあかんで';
+	@override String get needToRestartServerToApply => '反映にはサーバーの再起動が必要です。';
 	@override String get showTitlebar => 'タイトルバーを見せる';
 	@override String get clearCache => 'キャッシュをほかす';
 	@override String onlineUsersCount({required Object n}) => '${n}人が起きとるで';
@@ -1631,6 +1634,14 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get federationJobs => '連合ジョブ';
 	@override String get driveAboutTip => 'ドライブでは、過去にアップロードしたファイルの一覧が表示されます。<br>\nノートに添付する際に再利用したり、あとで投稿するファイルを予めアップロードしておくこともできます。<br>\n<b>ファイルを削除すると、今までそのファイルを使用した全ての場所(ノート、ページ、アバター、バナー等)からも見えなくなるので注意してください。</b><br>\nフォルダを作って整理することもできます。';
 	@override String get scrollToClose => 'スクロールして閉じる';
+	@override String get advice => 'アドバイス';
+	@override String get realtimeMode => 'リアルタイムモード';
+	@override String get turnItOn => 'オンにする';
+	@override String get turnItOff => 'オフにする';
+	@override String get emojiMute => '絵文字ミュート';
+	@override String get emojiUnmute => '絵文字ミュート解除';
+	@override String muteX({required Object x}) => '${x}をミュート';
+	@override String unmuteX({required Object x}) => '${x}のミュートを解除';
 	@override late final _TranslationsMisskeyChatJaKs chat_ = _TranslationsMisskeyChatJaKs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaKs emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaKs._(_root);
 	@override late final _TranslationsMisskeySettingsJaKs settings_ = _TranslationsMisskeySettingsJaKs._(_root);
@@ -1720,6 +1731,9 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCaptchaJaKs captcha_ = _TranslationsMisskeyCaptchaJaKs._(_root);
 	@override late final _TranslationsMisskeyBootErrorsJaKs bootErrors_ = _TranslationsMisskeyBootErrorsJaKs._(_root);
 	@override late final _TranslationsMisskeySearchJaKs search_ = _TranslationsMisskeySearchJaKs._(_root);
+	@override late final _TranslationsMisskeyServerSetupWizardJaKs serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardJaKs._(_root);
+	@override late final _TranslationsMisskeyUploaderJaKs uploader_ = _TranslationsMisskeyUploaderJaKs._(_root);
+	@override late final _TranslationsMisskeyClientPerformanceIssueTipJaKs clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -1771,6 +1785,8 @@ class _TranslationsMisskeyChatJaKs extends TranslationsMisskeyChatEnUs {
 	@override String get chatNotAvailableInOtherAccount => '相手のアカウントでチャット機能が使えない状態になっています。';
 	@override String get cannotChatWithTheUser => 'このユーザーとのチャットを開始できません';
 	@override String get cannotChatWithTheUser_description => 'チャットが使えない状態になっているか、相手がチャットを開放していません。';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'あなたはこのルームの参加者ではありませんが、招待が届いています。参加するには、招待を承認してください。';
+	@override String get doYouAcceptInvitation => '招待を承認しますか？';
 	@override String get chatWithThisUser => 'チャットする';
 	@override String get thisUserAllowsChatOnlyFromFollowers => 'このユーザーはフォロワーからのみチャットを受け付けています。';
 	@override String get thisUserAllowsChatOnlyFromFollowing => 'このユーザーは、このユーザーがフォローしているユーザーからのみチャットを受け付けています。';
@@ -1821,12 +1837,19 @@ class _TranslationsMisskeySettingsJaKs extends TranslationsMisskeySettingsEnUs {
 	@override String get makeEveryTextElementsSelectable => '全てのテキスト要素を選択可能にする';
 	@override String get makeEveryTextElementsSelectable_description => '有効にすると、一部のシチュエーションでのユーザビリティが低下する場合があります。';
 	@override String get useStickyIcons => 'アイコンをスクロールに追従させる';
+	@override String get enableHighQualityImagePlaceholders => '高品質な画像のプレースホルダを表示';
+	@override String get uiAnimations => 'UIのアニメーション';
 	@override String get showNavbarSubButtons => 'ナビゲーションバーに副ボタンを表示';
 	@override String get ifOn => 'オンのとき';
 	@override String get ifOff => 'オフのとき';
 	@override String get enableSyncThemesBetweenDevices => 'デバイス間でインストールしたテーマを同期';
 	@override String get enablePullToRefresh => 'ひっぱって更新';
 	@override String get enablePullToRefresh_description => 'マウスでは、ホイールを押し込みながらドラッグします。';
+	@override String get realtimeMode_description => 'サーバーと接続を確立し、リアルタイムでコンテンツを更新します。通信量とバッテリーの消費が多くなる場合があります。';
+	@override String get contentsUpdateFrequency => 'コンテンツの取得頻度';
+	@override String get contentsUpdateFrequency_description => '高いほどリアルタイムにコンテンツが更新されますが、パフォーマンスが低下し、通信量とバッテリーの消費が多くなります。';
+	@override String get contentsUpdateFrequency_description2 => 'リアルタイムモードがオンのときは、この設定に関わらずリアルタイムでコンテンツが更新されます。';
+	@override String get showUrlPreview => 'URLプレビューを表示する';
 	@override late final _TranslationsMisskeySettingsChatJaKs chat_ = _TranslationsMisskeySettingsChatJaKs._(_root);
 }
 
@@ -2036,6 +2059,18 @@ class _TranslationsMisskeyServerSettingsJaKs extends TranslationsMisskeyServerSe
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターがおらんかったら、スパムを防ぐためにこの設定は勝手に切られるで。';
 	@override String get deliverSuspendedSoftware => '配信停止中のソフトウェア';
 	@override String get deliverSuspendedSoftwareDescription => '脆弱性などの理由で、サーバーのソフトウェアの名前及びバージョンの範囲を指定して配信を停止できます。このバージョン情報はサーバーが提供したものであり、信頼性は保証されません。バージョン指定には semver の範囲指定が使用できますが、>= 2024.3.1 と指定すると 2024.3.1-custom.0 のようなカスタムバージョンが含まれないため、>= 2024.3.1-0 のように prerelease の指定を行うことを推奨します。';
+	@override String get singleUserMode => 'お一人様モード';
+	@override String get singleUserMode_description => 'このサーバーを利用するのが自分だけの場合、このモードを有効にすることで動作が最適化されます。';
+	@override String get signToActivityPubGet => 'GETリクエストに署名する';
+	@override String get signToActivityPubGet_description => '通常は有効にしてください。連合の通信に関する問題がある場合に、無効にすると改善することがありますが、逆にサーバーによっては通信が不可になることがあります。';
+	@override String get proxyRemoteFiles => 'リモートファイルをプロキシする';
+	@override String get proxyRemoteFiles_description => '有効にすると、リモートのファイルをプロキシして提供します。画像のサムネイル生成やユーザーのプライバシー保護に役立ちます。';
+	@override String get allowExternalApRedirect => 'ActivityPub経由の照会にリダイレクトを許可する';
+	@override String get allowExternalApRedirect_description => '有効にすると、他のサーバーがこのサーバーを通して第三者のコンテンツを照会することが可能になりますが、コンテンツのなりすましが発生する可能性があります。';
+	@override String get userGeneratedContentsVisibilityForVisitor => '非利用者に対するユーザー作成コンテンツの公開範囲';
+	@override String get userGeneratedContentsVisibilityForVisitor_description => 'モデレーションが行き届きにくい不適切なリモートコンテンツなどが、自サーバー経由で図らずもインターネットに公開されてしまうことによるトラブル防止などに役立ちます。';
+	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'サーバーで受信したリモートのコンテンツを含め、サーバー内の全てのコンテンツを無条件でインターネットに公開することはリスクが伴います。特に、分散型の特性を知らない閲覧者にとっては、リモートのコンテンツであってもサーバー内で作成されたコンテンツであると誤って認識してしまう可能性があるため、注意が必要です。';
+	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaKs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaKs._(_root);
 }
 
 // Path: misskey.accountMigration_
@@ -3239,7 +3274,8 @@ class _TranslationsMisskeyDataSaverJaKs extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaJaKs media_ = _TranslationsMisskeyDataSaverMediaJaKs._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarJaKs avatar_ = _TranslationsMisskeyDataSaverAvatarJaKs._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewJaKs urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewJaKs._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewThumbnailJaKs urlPreviewThumbnail_ = _TranslationsMisskeyDataSaverUrlPreviewThumbnailJaKs._(_root);
+	@override late final _TranslationsMisskeyDataSaverDisableUrlPreviewJaKs disableUrlPreview_ = _TranslationsMisskeyDataSaverDisableUrlPreviewJaKs._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeJaKs code_ = _TranslationsMisskeyDataSaverCodeJaKs._(_root);
 }
 
@@ -3507,6 +3543,73 @@ class _TranslationsMisskeySearchJaKs extends TranslationsMisskeySearchEnUs {
 	@override String get serverHostPlaceholder => '例: misskey.example.com';
 }
 
+// Path: misskey.serverSetupWizard_
+class _TranslationsMisskeyServerSetupWizardJaKs extends TranslationsMisskeyServerSetupWizardEnUs {
+	_TranslationsMisskeyServerSetupWizardJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get installCompleted => 'Misskeyのインストールが完了しました！';
+	@override String get firstCreateAccount => 'まずは、管理者アカウントを作成しましょう。';
+	@override String get accountCreated => '管理者アカウントが作成されました！';
+	@override String get serverSetting => 'サーバーの設定';
+	@override String get youCanEasilyConfigureOptimalServerSettingsWithThisWizard => 'このウィザードで簡単に最適なサーバーの設定が行えます。';
+	@override String get settingsYouMakeHereCanBeChangedLater => 'ここでの設定は、あとからでも変更できます。';
+	@override String get howWillYouUseMisskey => 'Misskeyをどのように使いますか？';
+	@override late final _TranslationsMisskeyServerSetupWizardUseJaKs use_ = _TranslationsMisskeyServerSetupWizardUseJaKs._(_root);
+	@override String get openServerAdvice => '不特定多数の利用者を受け入れることはリスクが伴います。トラブルに対処できるよう、確実なモデレーション体制で運営することを推奨します。';
+	@override String get openServerAntiSpamAdvice => '自サーバーがスパムの踏み台にならないように、reCAPTCHAといったアンチボット機能を有効にするなど、セキュリティについても細心の注意が必要です。';
+	@override String get howManyUsersDoYouExpect => 'どれくらいの人数を想定していますか？';
+	@override late final _TranslationsMisskeyServerSetupWizardScaleJaKs scale_ = _TranslationsMisskeyServerSetupWizardScaleJaKs._(_root);
+	@override String get largeScaleServerAdvice => '大規模なサーバーでは、ロードバランシングやデータベースのレプリケーションなど、高度なインフラストラクチャーの知識が必要になる場合があります。';
+	@override String get doYouConnectToFediverse => 'Fediverseと接続しますか？';
+	@override String get doYouConnectToFediverse_description1 => '分散型サーバーで構成されるネットワーク(Fediverse)に接続すると、他のサーバーと相互にコンテンツのやり取りが可能です。';
+	@override String get doYouConnectToFediverse_description2 => 'Fediverseと接続することは「連合」とも呼ばれます。';
+	@override String get youCanConfigureMoreFederationSettingsLater => '連合可能なサーバーの指定など、高度な設定も後ほど可能です。';
+	@override String get adminInfo => '管理者情報';
+	@override String get adminInfo_description => '問い合わせを受け付けるために使用される管理者情報を設定します。';
+	@override String get adminInfo_mustBeFilled => 'オープンサーバー、または連合がオンの場合は必ず入力が必要です。';
+	@override String get followingSettingsAreRecommended => '以下の設定が推奨されます';
+	@override String get applyTheseSettings => 'この設定を適用';
+	@override String get skipSettings => '設定をスキップ';
+	@override String get settingsCompleted => '設定が完了しました！';
+	@override String get settingsCompleted_description => 'お疲れ様でした。準備が整ったので、さっそくサーバーの使用を開始できます。';
+	@override String get settingsCompleted_description2 => '詳細なサーバー設定は、「コントロールパネル」から行えます。';
+	@override String get donationRequest => '寄付のお願い';
+	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestJaKs donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestJaKs._(_root);
+}
+
+// Path: misskey.uploader_
+class _TranslationsMisskeyUploaderJaKs extends TranslationsMisskeyUploaderEnUs {
+	_TranslationsMisskeyUploaderJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String compressedToX({required Object x}) => '${x}に圧縮';
+	@override String savedXPercent({required Object x}) => '${x}%節約';
+	@override String get abortConfirm => 'アップロードされていないファイルがありますが、中止しますか？';
+	@override String get doneConfirm => 'アップロードされていないファイルがありますが、完了しますか？';
+	@override String maxFileSizeIsX({required Object x}) => 'アップロード可能な最大ファイルサイズは${x}です。';
+}
+
+// Path: misskey.clientPerformanceIssueTip_
+class _TranslationsMisskeyClientPerformanceIssueTipJaKs extends TranslationsMisskeyClientPerformanceIssueTipEnUs {
+	_TranslationsMisskeyClientPerformanceIssueTipJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'バッテリー消費が多いと感じたら';
+	@override String get makeSureDisabledAdBlocker => 'アドブロッカーを無効にしてください';
+	@override String get makeSureDisabledAdBlocker_description => 'アドブロッカーはパフォーマンスに影響を及ぼすことがあります。OSの機能やブラウザの機能・アドオンなどでアドブロッカーが有効になっていないか確認してください。';
+	@override String get makeSureDisabledCustomCss => 'カスタムCSSを無効にしてください';
+	@override String get makeSureDisabledCustomCss_description => 'スタイルを上書きするとパフォーマンスに影響を及ぼすことがあります。カスタムCSSや、スタイルを上書きする拡張機能が有効になっていないか確認してください。';
+	@override String get makeSureDisabledAddons => '拡張機能を無効にしてください';
+	@override String get makeSureDisabledAddons_description => '一部の拡張機能はクライアントの動作に干渉しパフォーマンスに影響を及ぼすことがあります。ブラウザの拡張機能を無効にして改善するか確認してください。';
+}
+
 // Path: misskeyIO.skebStatus_
 class _TranslationsMisskeyIOSkebStatusJaKs extends TranslationsMisskeyIOSkebStatusEnUs {
 	_TranslationsMisskeyIOSkebStatusJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
@@ -3686,6 +3789,18 @@ class _TranslationsMisskeyInitialTutorialDoneJaKs extends TranslationsMisskeyIni
 	// Translations
 	@override String get title => 'チュートリアル終わり！おつかれさん🎉';
 	@override String description({required Object link}) => 'ここで紹介したのは全部の中のちょび～っとだけや。もっと使い方知りたいんやったら、${link}を見ときや。';
+}
+
+// Path: misskey.serverSettings_.userGeneratedContentsVisibilityForVisitor_
+class _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaKs extends TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs {
+	_TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get all => '全て公開';
+	@override String get localOnly => 'ローカルコンテンツのみ公開し、リモートコンテンツは非公開';
+	@override String get none => '全て非公開';
 }
 
 // Path: misskey.achievements_.types_
@@ -3916,7 +4031,6 @@ class _TranslationsMisskeyThemeKeysJaKs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'ボタンの背景';
 	@override String get buttonHoverBg => 'ボタンの背景 (ホバー)';
 	@override String get inputBorder => '入力ボックスの縁取り';
-	@override String get driveFolderBg => 'ドライブフォルダーの背景';
 	@override String get badge => 'バッジ';
 	@override String get messageBg => 'チャットの背景';
 	@override String get fgHighlighted => '強調されとる文字';
@@ -4153,15 +4267,26 @@ class _TranslationsMisskeyDataSaverAvatarJaKs extends TranslationsMisskeyDataSav
 	@override String get description => 'アイコン画像のアニメが止まるで。普通の画像よりもデータ量がでかいから、もっと通信量を節約できるねん。';
 }
 
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewJaKs extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class _TranslationsMisskeyDataSaverUrlPreviewThumbnailJaKs extends TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewThumbnailJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
 
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'URLプレビューのサムネイル画像';
-	@override String get description => 'URLプレビューのサムネイル画像が読み込まへんなるで。';
+	@override String get title => 'URLプレビューのサムネイルを非表示';
+	@override String get description => 'URLプレビューのサムネイル画像が読み込まれなくなります。';
+}
+
+// Path: misskey.dataSaver_.disableUrlPreview_
+class _TranslationsMisskeyDataSaverDisableUrlPreviewJaKs extends TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverDisableUrlPreviewJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URLプレビューを無効化';
+	@override String get description => 'URLプレビュー機能を無効化します。サムネイル画像だけと違い、リンク先の情報の読み込み自体を削減できます。';
 }
 
 // Path: misskey.dataSaver_.code_
@@ -4313,6 +4438,46 @@ class _TranslationsMisskeyCaptchaErrorJaKs extends TranslationsMisskeyCaptchaErr
 	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedJaKs requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedJaKs._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedJaKs verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedJaKs._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorUnknownJaKs unknown_ = _TranslationsMisskeyCaptchaErrorUnknownJaKs._(_root);
+}
+
+// Path: misskey.serverSetupWizard_.use_
+class _TranslationsMisskeyServerSetupWizardUseJaKs extends TranslationsMisskeyServerSetupWizardUseEnUs {
+	_TranslationsMisskeyServerSetupWizardUseJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get single => 'お一人様サーバー';
+	@override String get single_description => '自分専用のサーバーとして、一人で使う';
+	@override String get single_youCanCreateMultipleAccounts => 'お一人様サーバーとして運用する場合でも、アカウントは必要に応じて複数作成可能です。';
+	@override String get group => 'グループサーバー';
+	@override String get group_description => '信頼できる他の利用者を招待して、複数人で使う';
+	@override String get open => 'オープンサーバー';
+	@override String get open_description => '不特定多数の利用者を受け入れる運営を行う';
+}
+
+// Path: misskey.serverSetupWizard_.scale_
+class _TranslationsMisskeyServerSetupWizardScaleJaKs extends TranslationsMisskeyServerSetupWizardScaleEnUs {
+	_TranslationsMisskeyServerSetupWizardScaleJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get small => '100人以下 (小規模)';
+	@override String get medium => '100人以上1000人以下 (中規模)';
+	@override String get large => '1000人以上 (大規模)';
+}
+
+// Path: misskey.serverSetupWizard_.donationRequest_
+class _TranslationsMisskeyServerSetupWizardDonationRequestJaKs extends TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
+	_TranslationsMisskeyServerSetupWizardDonationRequestJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get text1 => 'Misskeyは有志によって開発されている無料のソフトウェアです。';
+	@override String get text2 => '今後も開発を続けられるように、よろしければぜひカンパをお願いいたします。';
+	@override String get text3 => '支援者向け特典もあります！';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -5389,10 +5554,6 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterJaKs extends Translati
 	@override String get uploadSettingDescription => 'この画面で絵文字アップロードするときの動きを設定できるで。';
 	@override String get directoryToCategoryLabel => 'ディレクトリ名を"category"に入力する';
 	@override String get directoryToCategoryCaption => 'ディレクトリをドラッグ・ドロップした時に、ディレクトリ名を"category"に入力します。';
-	@override String get emojiInputAreaCaption => 'どれかの方法で登録する絵文字を選択して。';
-	@override String get emojiInputAreaList1 => 'この枠に画像ファイルかディレクトリをドラッグ&ドロップ';
-	@override String get emojiInputAreaList2 => 'このリンクをクリックしてPCから選択する';
-	@override String get emojiInputAreaList3 => 'このリンクをクリックしてドライブから選択する';
 	@override String confirmRegisterEmojisDescription({required Object count}) => 'リストに表示されてる絵文字を新たなカスタム絵文字として登録するで。ほんまにええか？ (サーバーがしんどくなるから、一回で登録できる絵文字は${count}件までやで)';
 	@override String get confirmClearEmojisDescription => '編集内容をほかして、リストに表示されている絵文字をクリアするで。ほんまにええか？';
 	@override String confirmUploadEmojisDescription({required Object count}) => 'ドラッグ&ドロップされた${count}個のファイルをドライブにアップロードするで。ほんまにええか？';

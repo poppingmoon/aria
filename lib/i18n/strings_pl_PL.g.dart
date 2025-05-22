@@ -2151,7 +2151,6 @@ class _TranslationsMisskeyThemeKeysPlPl extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Tło przycisku';
 	@override String get buttonHoverBg => 'Tło przycisku (po najechaniu)';
 	@override String get inputBorder => 'Obramowanie pola wejścia';
-	@override String get driveFolderBg => 'Tło folderu na dysku';
 	@override String get badge => 'Odznaka';
 	@override String get messageBg => 'Tło czatu';
 	@override String get fgHighlighted => 'Wyróżniony tekst';
