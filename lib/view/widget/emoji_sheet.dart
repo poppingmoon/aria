@@ -41,22 +41,17 @@ class EmojiSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final targetNote =
-        targetNoteId?.isNotEmpty ?? false
-            ? ref.watch(noteProvider(account, targetNoteId!))
-            : null;
-    final targetMessage =
-        targetMessageId?.isNotEmpty ?? false
-            ? ref
-                .watch(chatMessageProvider(account, targetMessageId!))
-                .valueOrNull
-            : null;
+    final targetNote = targetNoteId?.isNotEmpty ?? false
+        ? ref.watch(noteProvider(account, targetNoteId!))
+        : null;
+    final targetMessage = targetMessageId?.isNotEmpty ?? false
+        ? ref.watch(chatMessageProvider(account, targetMessageId!)).valueOrNull
+        : null;
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
-    final data =
-        isCustomEmoji
-            ? ref.watch(emojiProvider(account.host, ':$name:'))
-            : null;
+    final data = isCustomEmoji
+        ? ref.watch(emojiProvider(account.host, ':$name:'))
+        : null;
     final canReact =
         !account.isGuest &&
         targetNote != null &&
@@ -92,11 +87,8 @@ class EmojiSheet extends ConsumerWidget {
                 account: account,
                 emoji: emoji,
                 height: 32.0,
-                url:
-                    targetNote?.reactionEmojis[emoji.substring(
-                      1,
-                      emoji.length - 1,
-                    )],
+                url: targetNote
+                    ?.reactionEmojis[emoji.substring(1, emoji.length - 1)],
               ),
             ),
             subtitle: Text(emoji.replaceAll('@.', '')),
@@ -224,19 +216,17 @@ class EmojiSheet extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.visibility),
               title: Text(t.misskey.unmute),
-              onTap:
-                  () => ref
-                      .read(mutedEmojisNotifierProvider(account).notifier)
-                      .remove(emoji),
+              onTap: () => ref
+                  .read(mutedEmojisNotifierProvider(account).notifier)
+                  .remove(emoji),
             )
           else
             ListTile(
               leading: const Icon(Icons.visibility_off),
               title: Text(t.misskey.mute),
-              onTap:
-                  () => ref
-                      .read(mutedEmojisNotifierProvider(account).notifier)
-                      .add(emoji),
+              onTap: () => ref
+                  .read(mutedEmojisNotifierProvider(account).notifier)
+                  .add(emoji),
             ),
         if (isCustomEmoji)
           ListTile(

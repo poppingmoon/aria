@@ -72,10 +72,8 @@ class TimelineNote extends HookConsumerWidget {
       if (muted.value) {
         final (verticalPadding, horizontalPadding) = ref.watch(
           generalSettingsNotifierProvider.select(
-            (settings) => (
-              settings.noteVerticalPadding,
-              settings.noteHorizontalPadding,
-            ),
+            (settings) =>
+                (settings.noteVerticalPadding, settings.noteHorizontalPadding),
           ),
         );
         final style = TextStyle(
@@ -91,18 +89,17 @@ class TimelineNote extends HookConsumerWidget {
               child: UsernameWidget(
                 account: account,
                 user: appearNote.user,
-                builder:
-                    (context, span) => Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: verticalPadding,
-                        horizontal: horizontalPadding,
-                      ),
-                      child: Text.rich(
-                        t.aria.userSaysSomethingSensitive(name: span),
-                        style: style,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                builder: (context, span) => Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: verticalPadding,
+                    horizontal: horizontalPadding,
+                  ),
+                  child: Text.rich(
+                    t.aria.userSaysSomethingSensitive(name: span),
+                    style: style,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
             ),
           ),

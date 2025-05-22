@@ -34,9 +34,8 @@ class ClipSettingsDialog extends HookWidget {
                   labelText: t.misskey.name,
                   enabledBorder: theme.inputDecorationTheme.border,
                 ),
-                onChanged:
-                    (value) =>
-                        settings.value = settings.value.copyWith(name: value),
+                onChanged: (value) =>
+                    settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
                 onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
@@ -53,11 +52,9 @@ class ClipSettingsDialog extends HookWidget {
                   enabledBorder: theme.inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
-                onChanged:
-                    (value) =>
-                        settings.value = settings.value.copyWith(
-                          description: value.isNotEmpty ? value : null,
-                        ),
+                onChanged: (value) => settings.value = settings.value.copyWith(
+                  description: value.isNotEmpty ? value : null,
+                ),
                 maxLines: 5,
                 textInputAction: TextInputAction.done,
                 onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -67,9 +64,8 @@ class ClipSettingsDialog extends HookWidget {
           SwitchListTile(
             title: Text(t.misskey.public),
             value: settings.value.isPublic ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(isPublic: value),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(isPublic: value),
           ),
         ],
       ),

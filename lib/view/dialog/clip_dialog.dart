@@ -42,30 +42,28 @@ class ClipDialog extends HookConsumerWidget {
         ...?clips?.mapIndexed((index, clip) {
           final isClipped = noteClips.any((noteClip) => noteClip.id == clip.id);
           return ListTile(
-            leading:
-                clip.id == clipId.value || isClipped
-                    ? const Icon(Icons.check)
-                    : SizedBox(width: Theme.of(context).iconTheme.size),
+            leading: clip.id == clipId.value || isClipped
+                ? const Icon(Icons.check)
+                : SizedBox(width: Theme.of(context).iconTheme.size),
             title: Text(clip.name ?? ''),
-            subtitle:
-                clip.notesCount != null
-                    ? Text(
-                      [
-                        '${t.misskey.notesCount}: ',
-                        NumberFormat().format(clip.notesCount),
-                        if (i?.policies?.noteEachClipsLimit
-                            case final noteEachClipsLimit?) ...[
-                          ' / ',
-                          NumberFormat().format(noteEachClipsLimit),
-                          ' (',
-                          t.misskey.remainingN(
-                            n: noteEachClipsLimit - clip.notesCount!,
-                          ),
-                          ')',
-                        ],
-                      ].join(),
-                    )
-                    : null,
+            subtitle: clip.notesCount != null
+                ? Text(
+                    [
+                      '${t.misskey.notesCount}: ',
+                      NumberFormat().format(clip.notesCount),
+                      if (i?.policies?.noteEachClipsLimit
+                          case final noteEachClipsLimit?) ...[
+                        ' / ',
+                        NumberFormat().format(noteEachClipsLimit),
+                        ' (',
+                        t.misskey.remainingN(
+                          n: noteEachClipsLimit - clip.notesCount!,
+                        ),
+                        ')',
+                      ],
+                    ].join(),
+                  )
+                : null,
             onTap: () async {
               await futureWithDialog(
                 context,

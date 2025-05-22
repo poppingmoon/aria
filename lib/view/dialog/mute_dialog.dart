@@ -40,19 +40,18 @@ class MuteDialog extends HookConsumerWidget {
           children: [
             DropdownButtonFormField(
               decoration: InputDecoration(labelText: t.misskey.mutePeriod),
-              items:
-                  _MutePeriod.values
-                      .map(
-                        (value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(switch (value) {
-                            _MutePeriod.indefinite => t.misskey.indefinitely,
-                            _MutePeriod.at => t.misskey.poll_.at,
-                            _MutePeriod.after => t.misskey.poll_.after,
-                          }),
-                        ),
-                      )
-                      .toList(),
+              items: _MutePeriod.values
+                  .map(
+                    (value) => DropdownMenuItem(
+                      value: value,
+                      child: Text(switch (value) {
+                        _MutePeriod.indefinite => t.misskey.indefinitely,
+                        _MutePeriod.at => t.misskey.poll_.at,
+                        _MutePeriod.after => t.misskey.poll_.after,
+                      }),
+                    ),
+                  )
+                  .toList(),
               value: period.value,
               onChanged: (v) {
                 if (v != null) {

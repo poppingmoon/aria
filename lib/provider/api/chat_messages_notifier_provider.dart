@@ -71,23 +71,18 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map(
-                  (message) =>
-                      message.id == messageId
-                          ? message.copyWith(
-                            reactions: [
-                              ...message.reactions,
-                              ChatMessageReaction(
-                                reaction: reaction,
-                                user: user,
-                              ),
-                            ],
-                          )
-                          : message,
-                )
-                .toList(),
+        items: value.items
+            .map(
+              (message) => message.id == messageId
+                  ? message.copyWith(
+                      reactions: [
+                        ...message.reactions,
+                        ChatMessageReaction(reaction: reaction, user: user),
+                      ],
+                    )
+                  : message,
+            )
+            .toList(),
       ),
     );
   }
@@ -100,24 +95,21 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map(
-                  (message) =>
-                      message.id == messageId
-                          ? message.copyWith(
-                            reactions:
-                                message.reactions
-                                    .where(
-                                      (r) =>
-                                          r.reaction != reaction ||
-                                          r.user?.id != user?.id,
-                                    )
-                                    .toList(),
+        items: value.items
+            .map(
+              (message) => message.id == messageId
+                  ? message.copyWith(
+                      reactions: message.reactions
+                          .where(
+                            (r) =>
+                                r.reaction != reaction ||
+                                r.user?.id != user?.id,
                           )
-                          : message,
-                )
-                .toList(),
+                          .toList(),
+                    )
+                  : message,
+            )
+            .toList(),
       ),
     );
   }
@@ -129,10 +121,9 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items:
-            value.items
-                .map((message) => message.id == updated.id ? updated : message)
-                .toList(),
+        items: value.items
+            .map((message) => message.id == updated.id ? updated : message)
+            .toList(),
       ),
     );
   }

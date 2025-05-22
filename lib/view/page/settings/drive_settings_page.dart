@@ -27,18 +27,20 @@ class DriveSettingsPage extends ConsumerWidget {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final stats = ref.watch(driveStatsProvider(account)).valueOrNull;
-    final usageRatio =
-        stats != null
-            ? stats.usage / max(max(1, stats.usage), stats.capacity).toDouble()
-            : 0.0;
-    final barColor =
-        HSLColor.fromAHSL(1.0, (1 - usageRatio) * 180, 0.7, 0.5).toColor();
-    final uploadFolder =
-        settings.uploadFolder != null
-            ? ref
-                .watch(driveFolderProvider(account, settings.uploadFolder!))
-                .valueOrNull
-            : null;
+    final usageRatio = stats != null
+        ? stats.usage / max(max(1, stats.usage), stats.capacity).toDouble()
+        : 0.0;
+    final barColor = HSLColor.fromAHSL(
+      1.0,
+      (1 - usageRatio) * 180,
+      0.7,
+      0.5,
+    ).toColor();
+    final uploadFolder = settings.uploadFolder != null
+        ? ref
+              .watch(driveFolderProvider(account, settings.uploadFolder!))
+              .valueOrNull
+        : null;
 
     return AccountSettingsScaffold(
       account: account,
@@ -107,17 +109,15 @@ class DriveSettingsPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.misskey.uploadFolder),
-                subtitle:
-                    settings.uploadFolder == null || uploadFolder != null
-                        ? Text(uploadFolder?.name ?? '/')
-                        : null,
+                subtitle: settings.uploadFolder == null || uploadFolder != null
+                    ? Text(uploadFolder?.name ?? '/')
+                    : null,
                 trailing: const Icon(Icons.navigate_next),
                 onTap: () async {
                   final result = await showDialog<(DriveFolder?,)>(
                     context: ref.context,
-                    builder:
-                        (context) =>
-                            DrivePage(account: account, selectFolder: true),
+                    builder: (context) =>
+                        DrivePage(account: account, selectFolder: true),
                   );
                   if (result == null) return;
                   await ref
@@ -135,10 +135,9 @@ class DriveSettingsPage extends ConsumerWidget {
                 title: Text(t.misskey.keepOriginalUploading),
                 subtitle: Text(t.misskey.keepOriginalUploadingDescription),
                 value: settings.keepOriginalUploading,
-                onChanged:
-                    (value) => ref
-                        .read(accountSettingsNotifierProvider(account).notifier)
-                        .setKeepOriginalUploading(value),
+                onChanged: (value) => ref
+                    .read(accountSettingsNotifierProvider(account).notifier)
+                    .setKeepOriginalUploading(value),
               ),
             ),
           ),
@@ -150,10 +149,9 @@ class DriveSettingsPage extends ConsumerWidget {
                 title: Text(t.misskey.keepOriginalFilename),
                 subtitle: Text(t.misskey.keepOriginalFilenameDescription),
                 value: settings.keepOriginalFilename,
-                onChanged:
-                    (value) => ref
-                        .read(accountSettingsNotifierProvider(account).notifier)
-                        .setKeepOriginalFilename(value),
+                onChanged: (value) => ref
+                    .read(accountSettingsNotifierProvider(account).notifier)
+                    .setKeepOriginalFilename(value),
               ),
             ),
           ),
@@ -165,13 +163,12 @@ class DriveSettingsPage extends ConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.misskey.alwaysMarkSensitive),
                   value: i.alwaysMarkNsfw,
-                  onChanged:
-                      (value) => futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setAlwaysMarkSensitive(value),
-                      ),
+                  onChanged: (value) => futureWithDialog(
+                    context,
+                    ref
+                        .read(iNotifierProvider(account).notifier)
+                        .setAlwaysMarkSensitive(value),
+                  ),
                 ),
               ),
             ),
@@ -183,13 +180,12 @@ class DriveSettingsPage extends ConsumerWidget {
                   title: Text(t.misskey.enableAutoSensitive),
                   subtitle: Text(t.misskey.enableAutoSensitiveDescription),
                   value: i.autoSensitive,
-                  onChanged:
-                      (value) => futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setAutoSensitive(value),
-                      ),
+                  onChanged: (value) => futureWithDialog(
+                    context,
+                    ref
+                        .read(iNotifierProvider(account).notifier)
+                        .setAutoSensitive(value),
+                  ),
                 ),
               ),
             ),

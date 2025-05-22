@@ -47,20 +47,20 @@ class ReactionsViewer extends HookConsumerWidget {
           (reaction) => reaction.name,
           (acc, reaction) =>
               (acc == null ||
-                      reaction.host == null ||
-                      (acc.host != null && acc.count < reaction.count))
-                  ? (
-                    emoji: reaction.emoji,
-                    host: reaction.host,
-                    count: reaction.count,
-                    totalCount: (acc?.totalCount ?? 0) + reaction.count,
-                  )
-                  : (
-                    emoji: acc.emoji,
-                    host: acc.host,
-                    count: acc.count,
-                    totalCount: acc.totalCount + reaction.count,
-                  ),
+                  reaction.host == null ||
+                  (acc.host != null && acc.count < reaction.count))
+              ? (
+                  emoji: reaction.emoji,
+                  host: reaction.host,
+                  count: reaction.count,
+                  totalCount: (acc?.totalCount ?? 0) + reaction.count,
+                )
+              : (
+                  emoji: acc.emoji,
+                  host: acc.host,
+                  count: acc.count,
+                  totalCount: acc.totalCount + reaction.count,
+                ),
         )
         .map((key, value) => MapEntry(value.emoji, value.totalCount));
     return Map.fromEntries(
@@ -84,19 +84,18 @@ class ReactionsViewer extends HookConsumerWidget {
           case final RenderBox renderBox) {
         final offset = renderBox.localToGlobal(Offset.zero);
         final entry = OverlayEntry(
-          builder:
-              (context) => Positioned(
-                left: offset.dx,
-                top: offset.dy,
-                child: Material(
-                  color: Colors.transparent,
-                  child: ReactionEffect(
-                    account: account,
-                    emoji: emoji,
-                    emojis: emojis,
-                  ),
-                ),
+          builder: (context) => Positioned(
+            left: offset.dx,
+            top: offset.dy,
+            child: Material(
+              color: Colors.transparent,
+              child: ReactionEffect(
+                account: account,
+                emoji: emoji,
+                emojis: emojis,
               ),
+            ),
+          ),
         );
         Overlay.of(context).insert(entry);
         Future.delayed(const Duration(milliseconds: 1100), () {
@@ -135,10 +134,9 @@ class ReactionsViewer extends HookConsumerWidget {
       initialReactions.map((key, value) => MapEntry(key, GlobalKey())),
     );
     useEffect(() {
-      final newSource =
-          shouldMergeReactions
-              ? _mergeReactions(ref, note.reactions)
-              : Map.of(note.reactions);
+      final newSource = shouldMergeReactions
+          ? _mergeReactions(ref, note.reactions)
+          : Map.of(note.reactions);
       final newReactions = <String, int>{};
       final emojis = {...note.emojis, ...note.reactionEmojis};
       for (final reaction in reactions.value.entries) {

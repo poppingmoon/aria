@@ -31,9 +31,8 @@ class ListSettingsDialog extends HookWidget {
                   labelText: t.misskey.name,
                   enabledBorder: theme.inputDecorationTheme.border,
                 ),
-                onChanged:
-                    (value) =>
-                        settings.value = settings.value.copyWith(name: value),
+                onChanged: (value) =>
+                    settings.value = settings.value.copyWith(name: value),
                 onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
@@ -41,9 +40,8 @@ class ListSettingsDialog extends HookWidget {
           SwitchListTile(
             title: Text(t.misskey.public),
             value: settings.value.isPublic ?? false,
-            onChanged:
-                (value) =>
-                    settings.value = settings.value.copyWith(isPublic: value),
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(isPublic: value),
           ),
         ],
       ),

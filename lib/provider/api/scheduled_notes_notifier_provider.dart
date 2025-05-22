@@ -53,8 +53,9 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
               files: files,
               fileIds: schedule.note.fileIds,
               reactionAcceptance: schedule.note.reactionAcceptance,
-              visibleUserIds:
-                  schedule.note.visibleUsers.map((user) => user.id).toList(),
+              visibleUserIds: schedule.note.visibleUsers
+                  .map((user) => user.id)
+                  .toList(),
             );
           }),
         );

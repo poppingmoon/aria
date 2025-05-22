@@ -24,8 +24,9 @@ class UserListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final list =
-        ref.watch(listProvider(account, listId, forPublic: true)).valueOrNull;
+    final list = ref
+        .watch(listProvider(account, listId, forPublic: true))
+        .valueOrNull;
     final users = ref.watch(
       listUsersNotifierProvider(account, listId, forPublic: true),
     );
@@ -56,14 +57,12 @@ class UserListPage extends HookConsumerWidget {
                     child: ListTileTheme.merge(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
-                          top:
-                              index == 0
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
-                          bottom:
-                              index == users.length - 1
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
+                          top: index == 0
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom: index == users.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
                         ),
                       ),
                       tileColor: Theme.of(context).colorScheme.surface,
@@ -71,12 +70,11 @@ class UserListPage extends HookConsumerWidget {
                         account: account,
                         user: user,
                         onTap: () => context.push('/$account/users/${user.id}'),
-                        onLongPress:
-                            () => showUserSheet(
-                              context: context,
-                              account: account,
-                              userId: user.id,
-                            ),
+                        onLongPress: () => showUserSheet(
+                          context: context,
+                          account: account,
+                          userId: user.id,
+                        ),
                       ),
                     ),
                   ),
@@ -124,45 +122,40 @@ class UserListPage extends HookConsumerWidget {
                     LikeButton(
                       isLiked: isLiked,
                       likedCount: likedCount,
-                      onTap:
-                          !account.isGuest
-                              ? () async {
-                                if (isLiked) {
-                                  await futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(misskeyProvider(account))
-                                        .users
-                                        .list
-                                        .unfavorite(
-                                          UsersListsUnfavoriteRequest(
-                                            listId: listId,
-                                          ),
+                      onTap: !account.isGuest
+                          ? () async {
+                              if (isLiked) {
+                                await futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(misskeyProvider(account))
+                                      .users
+                                      .list
+                                      .unfavorite(
+                                        UsersListsUnfavoriteRequest(
+                                          listId: listId,
                                         ),
-                                  );
-                                } else {
-                                  await futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(misskeyProvider(account))
-                                        .users
-                                        .list
-                                        .favorite(
-                                          UsersListsFavoriteRequest(
-                                            listId: listId,
-                                          ),
+                                      ),
+                                );
+                              } else {
+                                await futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(misskeyProvider(account))
+                                      .users
+                                      .list
+                                      .favorite(
+                                        UsersListsFavoriteRequest(
+                                          listId: listId,
                                         ),
-                                  );
-                                }
-                                ref.invalidate(
-                                  listProvider(
-                                    account,
-                                    listId,
-                                    forPublic: true,
-                                  ),
+                                      ),
                                 );
                               }
-                              : null,
+                              ref.invalidate(
+                                listProvider(account, listId, forPublic: true),
+                              );
+                            }
+                          : null,
                     ),
                     OutlinedButton.icon(
                       onPressed: () async {

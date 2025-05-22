@@ -51,12 +51,11 @@ class TokenLoginPage extends HookConsumerWidget {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
     final queryController = useTextEditingController(text: this.query);
     final query = useState(this.query ?? '');
-    final host =
-        query.value
-            .trim()
-            .replaceFirst(RegExp('https?://'), '')
-            .split('/')
-            .first;
+    final host = query.value
+        .trim()
+        .replaceFirst(RegExp('https?://'), '')
+        .split('/')
+        .first;
     final queryFocusNode = useFocusNode();
     final server = servers.firstWhereOrNull((server) => server.url == host);
     final iconUrl =
@@ -69,11 +68,10 @@ class TokenLoginPage extends HookConsumerWidget {
     final tokenFocusNode = useFocusNode();
     useEffect(() {
       queryController.addListener(
-        () =>
-            query.value = queryController.text.replaceFirst(
-              RegExp('^https://'),
-              '',
-            ),
+        () => query.value = queryController.text.replaceFirst(
+          RegExp('^https://'),
+          '',
+        ),
       );
       tokenController.addListener(() => token.value = tokenController.text);
       return;
@@ -111,17 +109,16 @@ class TokenLoginPage extends HookConsumerWidget {
                               color: Color(0xffdddddd),
                               shape: BoxShape.circle,
                             ),
-                            child:
-                                iconUrl != null
-                                    ? ClipRRect(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      child: ImageWidget(
-                                        url: iconUrl,
-                                        width: 50.0,
-                                        height: 50.0,
-                                      ),
-                                    )
-                                    : const SizedBox.square(dimension: 50.0),
+                            child: iconUrl != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    child: ImageWidget(
+                                      url: iconUrl,
+                                      width: 50.0,
+                                      height: 50.0,
+                                    ),
+                                  )
+                                : const SizedBox.square(dimension: 50.0),
                           ),
                           const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
@@ -140,9 +137,8 @@ class TokenLoginPage extends HookConsumerWidget {
                               onPressed: () async {
                                 final host = await showDialog<String>(
                                   context: context,
-                                  builder:
-                                      (context) =>
-                                          const MisskeyServerListDialog(),
+                                  builder: (context) =>
+                                      const MisskeyServerListDialog(),
                                 );
                                 if (host != null) {
                                   queryController.text = host;
@@ -160,16 +156,16 @@ class TokenLoginPage extends HookConsumerWidget {
                               submitActivator: VoidCallbackIntent(
                                 () =>
                                     queryController.text.isNotEmpty &&
-                                            tokenController.text.isNotEmpty
-                                        ? futureWithDialog(
-                                          context,
-                                          _login(
-                                            ref,
-                                            queryController.text,
-                                            tokenController.text,
-                                          ),
-                                        )
-                                        : null,
+                                        tokenController.text.isNotEmpty
+                                    ? futureWithDialog(
+                                        context,
+                                        _login(
+                                          ref,
+                                          queryController.text,
+                                          tokenController.text,
+                                        ),
+                                      )
+                                    : null,
                               ),
                             },
                             child: TextField(
@@ -192,15 +188,15 @@ class TokenLoginPage extends HookConsumerWidget {
                           ElevatedButton.icon(
                             onPressed:
                                 query.value.isNotEmpty && token.value.isNotEmpty
-                                    ? () => futureWithDialog(
-                                      context,
-                                      _login(
-                                        ref,
-                                        queryController.text,
-                                        tokenController.text,
-                                      ),
-                                    )
-                                    : null,
+                                ? () => futureWithDialog(
+                                    context,
+                                    _login(
+                                      ref,
+                                      queryController.text,
+                                      tokenController.text,
+                                    ),
+                                  )
+                                : null,
                             icon: const Icon(Icons.key),
                             label: Text(t.misskey.login),
                           ),

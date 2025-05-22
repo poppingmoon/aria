@@ -29,16 +29,14 @@ class KeyValueWidget extends ConsumerWidget {
         SizedBox(width: double.infinity, height: style.lineHeight * 0.25),
         child ??
             InkWell(
-              onLongPress:
-                  text != null ? () => copyToClipboard(context, text!) : null,
+              onLongPress: text != null
+                  ? () => copyToClipboard(context, text!)
+                  : null,
               child: Text(
                 text ?? '(${t.misskey.none})',
-                style:
-                    text == null
-                        ? style.apply(
-                          color: style.color?.withValues(alpha: 0.5),
-                        )
-                        : null,
+                style: text == null
+                    ? style.apply(color: style.color?.withValues(alpha: 0.5))
+                    : null,
               ),
             ),
       ],

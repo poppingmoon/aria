@@ -33,82 +33,35 @@ class ServerEmojis extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(
-      onRefresh:
-          () => ref
-              .read(emojisNotifierProvider(host).notifier)
-              .reloadEmojis(force: true),
-      child:
-          groups.isNotEmpty
-              ? ListView.builder(
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Shortcuts(
-                            shortcuts: disablingTextShortcuts,
-                            child: TextField(
-                              controller: controller,
-                              decoration: InputDecoration(
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: t.misskey.search,
-                                suffixIcon: IconButton(
-                                  onPressed: () => controller.clear(),
-                                  icon: const Icon(Icons.close),
-                                ),
-                              ),
-                              textInputAction: TextInputAction.search,
-                              onTapOutside: (_) => primaryFocus?.unfocus(),
-                            ),
-                          ),
-                        ),
-                        if (customEmojis.isNotEmpty) ...[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Align(
-                              alignment: AlignmentDirectional.centerStart,
-                              child: Wrap(
-                                spacing: 4.0,
-                                runSpacing: 4.0,
-                                children: [
-                                  ...customEmojis.map(
-                                    (emoji) => CustomEmoji(
-                                      account: Account(host: host),
-                                      emoji: emoji.emoji,
-                                      onTap:
-                                          () => context.push(
-                                            '/$host/emojis/${emoji.name}',
-                                          ),
-                                      height: style.lineHeight * 2.0,
-                                      fallbackTextStyle: style.apply(
-                                        fontSizeFactor: 2.0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+      onRefresh: () => ref
+          .read(emojisNotifierProvider(host).notifier)
+          .reloadEmojis(force: true),
+      child: groups.isNotEmpty
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Shortcuts(
+                          shortcuts: disablingTextShortcuts,
+                          child: TextField(
+                            controller: controller,
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(Icons.search),
+                              hintText: t.misskey.search,
+                              suffixIcon: IconButton(
+                                onPressed: () => controller.clear(),
+                                icon: const Icon(Icons.close),
                               ),
                             ),
+                            textInputAction: TextInputAction.search,
+                            onTapOutside: (_) => primaryFocus?.unfocus(),
                           ),
-                          const Divider(),
-                        ],
-                      ],
-                    );
-                  } else {
-                    final e = groups.entries.elementAt(index - 1);
-                    return ExpansionTile(
-                      title: Text.rich(
-                        TextSpan(
-                          text: e.key,
-                          children: [
-                            TextSpan(
-                              text: ' (${e.value.length})',
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
                         ),
                       ),
-                      children: [
+                      if (customEmojis.isNotEmpty) ...[
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Align(
@@ -116,42 +69,83 @@ class ServerEmojis extends HookConsumerWidget {
                             child: Wrap(
                               spacing: 4.0,
                               runSpacing: 4.0,
-                              children:
-                                  e.value
-                                      .map(
-                                        (emoji) => CustomEmoji(
-                                          account: Account(host: host),
-                                          emoji: emoji.emoji,
-                                          onTap:
-                                              () => context.push(
-                                                '/$host/emojis/${emoji.name}',
-                                              ),
-                                          height: style.lineHeight * 2.0,
-                                          fallbackTextStyle: style.apply(
-                                            fontSizeFactor: 2.0,
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                              children: [
+                                ...customEmojis.map(
+                                  (emoji) => CustomEmoji(
+                                    account: Account(host: host),
+                                    emoji: emoji.emoji,
+                                    onTap: () => context.push(
+                                      '/$host/emojis/${emoji.name}',
+                                    ),
+                                    height: style.lineHeight * 2.0,
+                                    fallbackTextStyle: style.apply(
+                                      fontSizeFactor: 2.0,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
+                        const Divider(),
                       ],
-                    );
-                  }
-                },
-                itemCount: groups.length + 1,
-              )
-              : LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.noCustomEmojis)),
+                    ],
+                  );
+                } else {
+                  final e = groups.entries.elementAt(index - 1);
+                  return ExpansionTile(
+                    title: Text.rich(
+                      TextSpan(
+                        text: e.key,
+                        children: [
+                          TextSpan(
+                            text: ' (${e.value.length})',
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
                       ),
                     ),
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Wrap(
+                            spacing: 4.0,
+                            runSpacing: 4.0,
+                            children: e.value
+                                .map(
+                                  (emoji) => CustomEmoji(
+                                    account: Account(host: host),
+                                    emoji: emoji.emoji,
+                                    onTap: () => context.push(
+                                      '/$host/emojis/${emoji.name}',
+                                    ),
+                                    height: style.lineHeight * 2.0,
+                                    fallbackTextStyle: style.apply(
+                                      fontSizeFactor: 2.0,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+              itemCount: groups.length + 1,
+            )
+          : LayoutBuilder(
+              builder: (context, constraint) => SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: SizedBox(
+                  height: constraint.maxHeight,
+                  child: Center(child: Text(t.misskey.noCustomEmojis)),
+                ),
               ),
+            ),
     );
   }
 }

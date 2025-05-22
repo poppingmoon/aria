@@ -36,15 +36,14 @@ Future<ProviderContainer> setupWidget(
           routes: [
             GoRoute(
               path: '/',
-              builder:
-                  (_, _) => Scaffold(
-                    body: ReactionButton(
-                      account: account,
-                      note: note,
-                      emoji: emoji,
-                      count: count,
-                    ),
-                  ),
+              builder: (_, _) => Scaffold(
+                body: ReactionButton(
+                  account: account,
+                  note: note,
+                  emoji: emoji,
+                  count: count,
+                ),
+              ),
             ),
           ],
         ),
@@ -73,8 +72,9 @@ void main() {
         count: 1,
       );
       final colors = container.read(misskeyColorsProvider(Brightness.light));
-      final buttonStyle =
-          tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+      final buttonStyle = tester
+          .widget<ElevatedButton>(find.byType(ElevatedButton))
+          .style;
       expect(buttonStyle?.shape?.resolve({})?.side, BorderSide.none);
       expect(buttonStyle?.foregroundColor?.resolve({}), colors.fg);
       expect(buttonStyle?.backgroundColor?.resolve({}), Colors.transparent);
@@ -96,8 +96,9 @@ void main() {
           .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       final colors = container.read(misskeyColorsProvider(Brightness.light));
-      final buttonStyle =
-          tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+      final buttonStyle = tester
+          .widget<ElevatedButton>(find.byType(ElevatedButton))
+          .style;
       expect(buttonStyle?.shape?.resolve({})?.side.color, colors.divider);
       expect(buttonStyle?.foregroundColor?.resolve({}), colors.fg);
       expect(buttonStyle?.backgroundColor?.resolve({}), Colors.transparent);
@@ -117,8 +118,9 @@ void main() {
           .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       final colors = container.read(misskeyColorsProvider(Brightness.light));
-      final buttonStyle =
-          tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+      final buttonStyle = tester
+          .widget<ElevatedButton>(find.byType(ElevatedButton))
+          .style;
       expect(buttonStyle?.shape?.resolve({})?.side, BorderSide.none);
       expect(buttonStyle?.foregroundColor?.resolve({}), colors.fg);
       expect(buttonStyle?.backgroundColor?.resolve({}), colors.buttonBg);
@@ -136,8 +138,9 @@ void main() {
         count: 1,
       );
       final colors = container.read(misskeyColorsProvider(Brightness.light));
-      final buttonStyle =
-          tester.widget<ElevatedButton>(find.byType(ElevatedButton)).style;
+      final buttonStyle = tester
+          .widget<ElevatedButton>(find.byType(ElevatedButton))
+          .style;
       expect(buttonStyle?.shape?.resolve({})?.side.color, colors.accent);
       expect(buttonStyle?.foregroundColor?.resolve({}), colors.accent);
       expect(buttonStyle?.backgroundColor?.resolve({}), colors.accentedBg);

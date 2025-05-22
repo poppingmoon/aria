@@ -21,42 +21,45 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AiScriptPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScriptPtr;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsApiLibPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLibPtr;
+  CrossPlatformFinalizerArg
+  get rust_arc_decrement_strong_count_AiScriptPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScriptPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallbackPtr;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsUiLibPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLibPtr;
+  get rust_arc_decrement_strong_count_AsApiLibPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLibPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallbackPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiLibPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLibPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallbackPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallbackPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallbackPtr;
 
   CrossPlatformFinalizerArg
-  get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr =>
-      wire._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallbackPtr;
+
+  CrossPlatformFinalizerArg
+  get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallbackPtr;
+
+  CrossPlatformFinalizerArg
+  get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr => wire
+      ._rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallbackPtr;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);

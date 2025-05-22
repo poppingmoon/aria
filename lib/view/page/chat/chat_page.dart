@@ -48,12 +48,11 @@ class ChatPage extends ConsumerWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(
-          onPressed:
-              () => showModalBottomSheet<void>(
-                context: context,
-                clipBehavior: Clip.hardEdge,
-                builder: (context) => _ChatCreateSheet(account: account),
-              ),
+          onPressed: () => showModalBottomSheet<void>(
+            context: context,
+            clipBehavior: Clip.hardEdge,
+            builder: (context) => _ChatCreateSheet(account: account),
+          ),
           icon: const Icon(Icons.add),
           label: Text(t.misskey.startChat),
         ),
@@ -89,45 +88,41 @@ class _ChatCreateSheet extends ConsumerWidget {
           leading: const Icon(Icons.meeting_room),
           title: Text(t.misskey.chat_.roomChat),
           subtitle: Text(t.misskey.chat_.roomChat_description),
-          onTap:
-              () => showModalBottomSheet<void>(
-                context: context,
-                clipBehavior: Clip.hardEdge,
-                builder:
-                    (context) => ListView(
-                      shrinkWrap: true,
-                      children: [
-                        ListTile(
-                          leading: const Icon(Icons.add),
-                          title: Text(t.misskey.chat_.createRoom),
-                          onTap: () async {
-                            final name = await showTextFieldDialog(
-                              context,
-                              title: Text(t.misskey.name),
-                            );
-                            if (!context.mounted) return;
-                            if (name != null) {
-                              final room = await futureWithDialog(
-                                context,
-                                ref
-                                    .read(misskeyProvider(account))
-                                    .chat
-                                    .rooms
-                                    .create(ChatRoomsCreateRequest(name: name)),
-                              );
-                              if (!context.mounted) return;
-                              if (room != null) {
-                                context.pop();
-                                await context.push(
-                                  '/$account/chat/room/${room.id}',
-                                );
-                              }
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-              ),
+          onTap: () => showModalBottomSheet<void>(
+            context: context,
+            clipBehavior: Clip.hardEdge,
+            builder: (context) => ListView(
+              shrinkWrap: true,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.add),
+                  title: Text(t.misskey.chat_.createRoom),
+                  onTap: () async {
+                    final name = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.name),
+                    );
+                    if (!context.mounted) return;
+                    if (name != null) {
+                      final room = await futureWithDialog(
+                        context,
+                        ref
+                            .read(misskeyProvider(account))
+                            .chat
+                            .rooms
+                            .create(ChatRoomsCreateRequest(name: name)),
+                      );
+                      if (!context.mounted) return;
+                      if (room != null) {
+                        context.pop();
+                        await context.push('/$account/chat/room/${room.id}');
+                      }
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

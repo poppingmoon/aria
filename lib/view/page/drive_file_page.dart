@@ -31,9 +31,8 @@ class DriveFilePage extends ConsumerWidget {
                 onPressed: () async {
                   final result = await showModalBottomSheet<({bool deleted})?>(
                     context: context,
-                    builder:
-                        (context) =>
-                            DriveFileSheet(account: account, file: file),
+                    builder: (context) =>
+                        DriveFileSheet(account: account, file: file),
                     clipBehavior: Clip.antiAlias,
                   );
                   if (!context.mounted) return;

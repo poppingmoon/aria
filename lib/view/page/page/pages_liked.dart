@@ -19,17 +19,15 @@ class PagesLiked extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: likes,
-      itemBuilder:
-          (context, like) => PagePreview(
-            account: account,
-            page: like.page,
-            onTap: () => context.push('/$account/pages/${like.page.id}'),
-          ),
+      itemBuilder: (context, like) => PagePreview(
+        account: account,
+        page: like.page,
+        onTap: () => context.push('/$account/pages/${like.page.id}'),
+      ),
       onRefresh: () => ref.refresh(likedPagesNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(likedPagesNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+      loadMore: (skipError) => ref
+          .read(likedPagesNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

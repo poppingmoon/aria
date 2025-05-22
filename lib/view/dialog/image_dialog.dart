@@ -38,28 +38,24 @@ class ImageDialog extends HookConsumerWidget {
       children: [
         Dismissible(
           key: const ValueKey('ImageDialog'),
-          direction:
-              !isZoomed.value
-                  ? DismissDirection.vertical
-                  : DismissDirection.none,
-          onUpdate:
-              (details) =>
-                  overlayOpacity.value = clampDouble(
-                    1.0 - details.progress * 1.5,
-                    0.0,
-                    1.0,
-                  ),
+          direction: !isZoomed.value
+              ? DismissDirection.vertical
+              : DismissDirection.none,
+          onUpdate: (details) => overlayOpacity.value = clampDouble(
+            1.0 - details.progress * 1.5,
+            0.0,
+            1.0,
+          ),
           onDismissed: (_) => context.pop(),
           child: PhotoView(
-            imageProvider:
-                file != null
-                    ? FileImage(file!) as ImageProvider
-                    : url != null
-                    ? CachedNetworkImageProvider(
-                      url!,
-                      cacheManager: ref.watch(cacheManagerProvider),
-                    )
-                    : null,
+            imageProvider: file != null
+                ? FileImage(file!) as ImageProvider
+                : url != null
+                ? CachedNetworkImageProvider(
+                    url!,
+                    cacheManager: ref.watch(cacheManagerProvider),
+                  )
+                : null,
             backgroundDecoration: const BoxDecoration(
               color: Colors.transparent,
             ),
@@ -101,10 +97,9 @@ class ImageDialog extends HookConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(
-                        tooltip:
-                            MaterialLocalizations.of(
-                              context,
-                            ).closeButtonTooltip,
+                        tooltip: MaterialLocalizations.of(
+                          context,
+                        ).closeButtonTooltip,
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),
@@ -116,43 +111,42 @@ class ImageDialog extends HookConsumerWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: PopupMenuButton<void>(
-                          itemBuilder:
-                              (context) => [
-                                PopupMenuItem(
-                                  onTap: () async {
-                                    if (!await Gal.requestAccess()) {
-                                      if (!context.mounted) return;
-                                      await showMessageDialog(
-                                        context,
-                                        t.misskey.permissionDeniedError,
-                                      );
-                                      return;
-                                    }
-                                    if (!context.mounted) return;
-                                    await futureWithDialog(
-                                      context,
-                                      Future(() async {
-                                        final file = await ref
-                                            .read(cacheManagerProvider)
-                                            .getSingleFile(url);
-                                        await Gal.putImage(file.path);
-                                      }),
-                                      message: t.aria.downloaded,
-                                    );
-                                  },
-                                  child: ListTile(
-                                    leading: const Icon(Icons.download),
-                                    title: Text(t.misskey.download),
-                                  ),
-                                ),
-                                PopupMenuItem(
-                                  onTap: () => launchUrl(ref, Uri.parse(url)),
-                                  child: ListTile(
-                                    leading: const Icon(Icons.open_in_browser),
-                                    title: Text(t.aria.openInBrowser),
-                                  ),
-                                ),
-                              ],
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              onTap: () async {
+                                if (!await Gal.requestAccess()) {
+                                  if (!context.mounted) return;
+                                  await showMessageDialog(
+                                    context,
+                                    t.misskey.permissionDeniedError,
+                                  );
+                                  return;
+                                }
+                                if (!context.mounted) return;
+                                await futureWithDialog(
+                                  context,
+                                  Future(() async {
+                                    final file = await ref
+                                        .read(cacheManagerProvider)
+                                        .getSingleFile(url);
+                                    await Gal.putImage(file.path);
+                                  }),
+                                  message: t.aria.downloaded,
+                                );
+                              },
+                              child: ListTile(
+                                leading: const Icon(Icons.download),
+                                title: Text(t.misskey.download),
+                              ),
+                            ),
+                            PopupMenuItem(
+                              onTap: () => launchUrl(ref, Uri.parse(url)),
+                              child: ListTile(
+                                leading: const Icon(Icons.open_in_browser),
+                                title: Text(t.aria.openInBrowser),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

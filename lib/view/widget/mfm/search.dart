@@ -37,22 +37,18 @@ class Search extends HookConsumerWidget {
             ),
             clipBehavior: Clip.hardEdge,
             child: InkWell(
-              onTap:
-                  () => launchUrl(
-                    ref,
-                    Uri.https('google.com', 'search', {'q': query}),
-                  ),
-              onLongPress:
-                  () => showModalBottomSheet<void>(
-                    context: context,
-                    builder:
-                        (context) => UrlSheet(
-                          url:
-                              Uri.https('google.com', 'search', {
-                                'q': query,
-                              }).toString(),
-                        ),
-                  ),
+              onTap: () => launchUrl(
+                ref,
+                Uri.https('google.com', 'search', {'q': query}),
+              ),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => UrlSheet(
+                  url: Uri.https('google.com', 'search', {
+                    'q': query,
+                  }).toString(),
+                ),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(

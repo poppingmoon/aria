@@ -25,8 +25,8 @@ class ListUsers extends ConsumerWidget {
     final theme = Theme.of(context);
 
     return RefreshIndicator(
-      onRefresh:
-          () => ref.refresh(listUsersNotifierProvider(account, listId).future),
+      onRefresh: () =>
+          ref.refresh(listUsersNotifierProvider(account, listId).future),
       child: switch (users) {
         AsyncValue(valueOrNull: final users?) => ListView(
           children: [
@@ -72,14 +72,12 @@ class ListUsers extends ConsumerWidget {
                     child: ListTileTheme.merge(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.vertical(
-                          top:
-                              index == 0
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
-                          bottom:
-                              index == users.length - 1
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
+                          top: index == 0
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom: index == users.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
                         ),
                       ),
                       tileColor: theme.colorScheme.surface,
@@ -112,12 +110,11 @@ class ListUsers extends ConsumerWidget {
                           color: theme.colorScheme.error,
                         ),
                         onTap: () => context.push('/$account/users/${user.id}'),
-                        onLongPress:
-                            () => showUserSheet(
-                              context: context,
-                              account: account,
-                              userId: user.id,
-                            ),
+                        onLongPress: () => showUserSheet(
+                          context: context,
+                          account: account,
+                          userId: user.id,
+                        ),
                       ),
                     ),
                   ),

@@ -28,70 +28,63 @@ class AntennasPage extends ConsumerWidget {
           AsyncValue(valueOrNull: final antennas?) =>
             antennas.isEmpty
                 ? LayoutBuilder(
-                  builder:
-                      (context, constraint) => SingleChildScrollView(
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        child: SizedBox(
-                          height: constraint.maxHeight,
-                          child: Center(child: Text(t.misskey.nothing)),
+                    builder: (context, constraint) => SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: SizedBox(
+                        height: constraint.maxHeight,
+                        child: Center(child: Text(t.misskey.nothing)),
+                      ),
+                    ),
+                  )
+                : ListTileTheme(
+                    tileColor: Theme.of(context).colorScheme.surface,
+                    child: ListView.separated(
+                      itemBuilder: (context, index) => Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            left: 8.0,
+                            top: index == 0 ? 8.0 : 0.0,
+                            right: 8.0,
+                            bottom: index == antennas.length - 1 ? 120.0 : 0.0,
+                          ),
+                          width: maxContentWidth,
+                          child: ListTile(
+                            title: Text(antennas[index].name),
+                            subtitle: Text(
+                              antennas[index].keywords
+                                  .map((line) => line.join(' '))
+                                  .join(' | '),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: index == 0
+                                    ? const Radius.circular(8.0)
+                                    : Radius.zero,
+                                bottom: index == antennas.length - 1
+                                    ? const Radius.circular(8.0)
+                                    : Radius.zero,
+                              ),
+                            ),
+                            onTap: () => context.push(
+                              '/$account/antennas/${antennas[index].id}',
+                            ),
+                          ),
                         ),
                       ),
-                )
-                : ListTileTheme(
-                  tileColor: Theme.of(context).colorScheme.surface,
-                  child: ListView.separated(
-                    itemBuilder:
-                        (context, index) => Center(
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              left: 8.0,
-                              top: index == 0 ? 8.0 : 0.0,
-                              right: 8.0,
-                              bottom:
-                                  index == antennas.length - 1 ? 120.0 : 0.0,
-                            ),
+                      separatorBuilder: (context, index) => const Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: SizedBox(
                             width: maxContentWidth,
-                            child: ListTile(
-                              title: Text(antennas[index].name),
-                              subtitle: Text(
-                                antennas[index].keywords
-                                    .map((line) => line.join(' '))
-                                    .join(' | '),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top:
-                                      index == 0
-                                          ? const Radius.circular(8.0)
-                                          : Radius.zero,
-                                  bottom:
-                                      index == antennas.length - 1
-                                          ? const Radius.circular(8.0)
-                                          : Radius.zero,
-                                ),
-                              ),
-                              onTap:
-                                  () => context.push(
-                                    '/$account/antennas/${antennas[index].id}',
-                                  ),
-                            ),
+                            child: Divider(height: 0.0),
                           ),
                         ),
-                    separatorBuilder:
-                        (context, index) => const Center(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: SizedBox(
-                              width: maxContentWidth,
-                              child: Divider(height: 0.0),
-                            ),
-                          ),
-                        ),
-                    itemCount: antennas.length,
+                      ),
+                      itemCount: antennas.length,
+                    ),
                   ),
-                ),
           AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Center(

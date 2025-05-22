@@ -50,10 +50,9 @@ class ExploreUsers extends HookConsumerWidget {
         ),
       ),
     };
-    final pinnedUsers =
-        type.value == _UserType.pinned
-            ? ref.watch(pinnedUsersProvider(account))
-            : null;
+    final pinnedUsers = type.value == _UserType.pinned
+        ? ref.watch(pinnedUsersProvider(account))
+        : null;
 
     return PaginatedListView(
       header: SliverList.list(
@@ -86,25 +85,25 @@ class ExploreUsers extends HookConsumerWidget {
               AsyncValue(valueOrNull: final users?) =>
                 users.isNotEmpty
                     ? users.map(
-                      (user) => Center(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 4.0,
-                            horizontal: 8.0,
+                        (user) => Center(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 4.0,
+                              horizontal: 8.0,
+                            ),
+                            width: maxContentWidth,
+                            child: UserInfo(account: account, user: user),
                           ),
-                          width: maxContentWidth,
-                          child: UserInfo(account: account, user: user),
                         ),
-                      ),
-                    )
+                      )
                     : [
-                      Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(t.misskey.noUsers),
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Text(t.misskey.noUsers),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
               AsyncValue(:final error?, :final stackTrace) => [
                 Center(
                   child: Container(
@@ -136,15 +135,14 @@ class ExploreUsers extends HookConsumerWidget {
                       flex: 3,
                       child: DropdownButton(
                         isExpanded: true,
-                        items:
-                            UsersSortType.values
-                                .map(
-                                  (sort) => DropdownMenuItem(
-                                    value: sort,
-                                    child: UsersSortTypeWidget(sort: sort),
-                                  ),
-                                )
-                                .toList(),
+                        items: UsersSortType.values
+                            .map(
+                              (sort) => DropdownMenuItem(
+                                value: sort,
+                                child: UsersSortTypeWidget(sort: sort),
+                              ),
+                            )
+                            .toList(),
                         value: sort.value,
                         onChanged: (value) {
                           if (value != null) {
@@ -167,14 +165,13 @@ class ExploreUsers extends HookConsumerWidget {
                     controller: controller,
                     focusNode: focusNode,
                     onSubmitted: (value) {
-                      final text =
-                          toAscii(
-                            value
-                                .trim()
-                                .replaceFirst('https://', '')
-                                .split('/')
-                                .first,
-                          ).toLowerCase();
+                      final text = toAscii(
+                        value
+                            .trim()
+                            .replaceFirst('https://', '')
+                            .split('/')
+                            .first,
+                      ).toLowerCase();
                       host.value = text.isNotEmpty ? text : null;
                     },
                   ),
@@ -186,27 +183,24 @@ class ExploreUsers extends HookConsumerWidget {
       ),
       paginationState: users,
       itemBuilder: (context, user) => UserInfo(account: account, user: user),
-      onRefresh:
-          () => switch (type.value) {
-            _UserType.pinned => ref.refresh(
-              pinnedUsersProvider(account).future,
-            ),
-            _UserType.local => ref.refresh(
-              usersNotifierProvider(
-                account,
-                userOrigin: Origin.local,
-                sort: sort.value,
-              ).future,
-            ),
-            _UserType.remote => ref.refresh(
-              usersNotifierProvider(
-                account,
-                userOrigin: Origin.remote,
-                sort: sort.value,
-                host: host.value,
-              ).future,
-            ),
-          },
+      onRefresh: () => switch (type.value) {
+        _UserType.pinned => ref.refresh(pinnedUsersProvider(account).future),
+        _UserType.local => ref.refresh(
+          usersNotifierProvider(
+            account,
+            userOrigin: Origin.local,
+            sort: sort.value,
+          ).future,
+        ),
+        _UserType.remote => ref.refresh(
+          usersNotifierProvider(
+            account,
+            userOrigin: Origin.remote,
+            sort: sort.value,
+            host: host.value,
+          ).future,
+        ),
+      },
       loadMore: switch (type.value) {
         _UserType.pinned => null,
         _UserType.local =>

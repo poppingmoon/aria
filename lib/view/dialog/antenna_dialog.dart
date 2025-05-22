@@ -58,11 +58,10 @@ class AntennaDialog extends HookConsumerWidget {
           onTap: () async {
             final result = await showDialog<AntennaSettings>(
               context: context,
-              builder:
-                  (context) => AntennaSettingsDialog(
-                    account: account,
-                    settings: const AntennaSettings(src: AntennaSource.users),
-                  ),
+              builder: (context) => AntennaSettingsDialog(
+                account: account,
+                settings: const AntennaSettings(src: AntennaSource.users),
+              ),
             );
             if (!ref.context.mounted) return;
             if (result != null) {

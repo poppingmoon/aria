@@ -12,8 +12,9 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
   if (query.isEmpty) {
     return {};
   }
-  final customEmojiIndex =
-      ref.watch(customEmojiIndexProvider(host)).valueOrNull;
+  final customEmojiIndex = ref
+      .watch(customEmojiIndexProvider(host))
+      .valueOrNull;
   if (customEmojiIndex == null) {
     return {};
   }

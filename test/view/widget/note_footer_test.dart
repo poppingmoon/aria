@@ -55,15 +55,14 @@ Future<ProviderContainer> setupWidget(
           routes: [
             GoRoute(
               path: '/',
-              builder:
-                  (_, _) => Scaffold(
-                    body: NoteFooter(
-                      account: account,
-                      note: note,
-                      appearNote: appearNote,
-                      focusPostForm: focusPostForm,
-                    ),
-                  ),
+              builder: (_, _) => Scaffold(
+                body: NoteFooter(
+                  account: account,
+                  note: note,
+                  appearNote: appearNote,
+                  focusPostForm: focusPostForm,
+                ),
+              ),
             ),
           ],
         ),
@@ -1425,10 +1424,9 @@ void main() {
         }),
         data: {
           'noteId': 'test',
-          'targetLang':
-              Localizations.localeOf(
-                tester.element(find.byType(NoteFooter)),
-              ).toLanguageTag(),
+          'targetLang': Localizations.localeOf(
+            tester.element(find.byType(NoteFooter)),
+          ).toLanguageTag(),
         },
       );
       await tester.runAsync(
@@ -1478,10 +1476,9 @@ void main() {
         }),
         data: {
           'noteId': 'test',
-          'targetLang':
-              Localizations.localeOf(
-                tester.element(find.byType(NoteFooter)),
-              ).toLanguageTag(),
+          'targetLang': Localizations.localeOf(
+            tester.element(find.byType(NoteFooter)),
+          ).toLanguageTag(),
         },
       );
       await tester.runAsync(
@@ -1536,10 +1533,9 @@ void main() {
         }),
         data: {
           'noteId': 'renote',
-          'targetLang':
-              Localizations.localeOf(
-                tester.element(find.byType(NoteFooter)),
-              ).toLanguageTag(),
+          'targetLang': Localizations.localeOf(
+            tester.element(find.byType(NoteFooter)),
+          ).toLanguageTag(),
         },
       );
       await tester.runAsync(
@@ -1595,10 +1591,9 @@ void main() {
         }),
         data: {
           'noteId': 'test',
-          'targetLang':
-              Localizations.localeOf(
-                tester.element(find.byType(NoteFooter)),
-              ).toLanguageTag(),
+          'targetLang': Localizations.localeOf(
+            tester.element(find.byType(NoteFooter)),
+          ).toLanguageTag(),
         },
       );
       await tester.runAsync(
@@ -1642,8 +1637,8 @@ void main() {
         data: <String, dynamic>{},
       );
       final completer = Completer<String>();
-      final urlLauncher =
-          FakeUrlLauncher()..onLaunchUrl = (url, _) => completer.complete(url);
+      final urlLauncher = FakeUrlLauncher()
+        ..onLaunchUrl = (url, _) => completer.complete(url);
       UrlLauncherPlatform.instance = urlLauncher;
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.translate));
@@ -1681,8 +1676,8 @@ void main() {
         data: <String, dynamic>{},
       );
       final completer = Completer<String>();
-      final urlLauncher =
-          FakeUrlLauncher()..onLaunchUrl = (url, _) => completer.complete(url);
+      final urlLauncher = FakeUrlLauncher()
+        ..onLaunchUrl = (url, _) => completer.complete(url);
       UrlLauncherPlatform.instance = urlLauncher;
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.translate));

@@ -20,17 +20,15 @@ class FavoritesPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.favorites)),
       body: PaginatedListView(
         paginationState: favorites,
-        itemBuilder:
-            (context, favorite) => NoteWidget(
-              account: account,
-              noteId: favorite.noteId,
-              withHardMute: false,
-            ),
+        itemBuilder: (context, favorite) => NoteWidget(
+          account: account,
+          noteId: favorite.noteId,
+          withHardMute: false,
+        ),
         onRefresh: () => ref.refresh(favoritesNotifierProvider(account).future),
-        loadMore:
-            (skipError) => ref
-                .read(favoritesNotifierProvider(account).notifier)
-                .loadMore(skipError: skipError),
+        loadMore: (skipError) => ref
+            .read(favoritesNotifierProvider(account).notifier)
+            .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noNotes,
       ),
     );

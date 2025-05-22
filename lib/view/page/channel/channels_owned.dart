@@ -19,19 +19,16 @@ class ChannelsOwned extends ConsumerWidget {
     final channels = ref.watch(ownedChannelsNotifierProvider(account));
     return PaginatedListView(
       paginationState: channels,
-      itemBuilder:
-          (context, channel) => ChannelPreview(
-            account: account,
-            channel: channel,
-            onTap:
-                onChannelTap != null ? () => onChannelTap?.call(channel) : null,
-          ),
-      onRefresh:
-          () => ref.refresh(ownedChannelsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(ownedChannelsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, channel) => ChannelPreview(
+        account: account,
+        channel: channel,
+        onTap: onChannelTap != null ? () => onChannelTap?.call(channel) : null,
+      ),
+      onRefresh: () =>
+          ref.refresh(ownedChannelsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(ownedChannelsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

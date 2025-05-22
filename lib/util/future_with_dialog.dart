@@ -14,23 +14,19 @@ Future<T?> futureWithDialog<T>(
   OverlayEntry? entry;
   if (overlay) {
     entry = OverlayEntry(
-      builder:
-          (context) => Stack(
-            children: [
-              ModalBarrier(
-                color: Colors.black54,
-                onDismiss: () => entry?.remove(),
+      builder: (context) => Stack(
+        children: [
+          ModalBarrier(color: Colors.black54, onDismiss: () => entry?.remove()),
+          const Center(
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(32.0),
+                child: CircularProgressIndicator(),
               ),
-              const Center(
-                child: Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(32.0),
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
+        ],
+      ),
     );
     Overlay.of(context).insert(entry);
   }

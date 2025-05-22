@@ -88,11 +88,10 @@ class NotificationsNotifier extends _$NotificationsNotifier {
                   type: NotificationType.renoteGrouped,
                   userId: null,
                   user: null,
-                  users:
-                      [
-                        previousNotification.user,
-                        notification.user,
-                      ].nonNulls.toList(),
+                  users: [
+                    previousNotification.user,
+                    notification.user,
+                  ].nonNulls.toList(),
                 )
               else ...[
                 previousNotification,
@@ -105,11 +104,10 @@ class NotificationsNotifier extends _$NotificationsNotifier {
                   notification.note?.renoteId)
                 previousNotification.copyWith(
                   id: notification.id,
-                  users:
-                      [
-                        ...?previousNotification.users,
-                        notification.user,
-                      ].nonNulls.toList(),
+                  users: [
+                    ...?previousNotification.users,
+                    notification.user,
+                  ].nonNulls.toList(),
                 )
               else ...[
                 previousNotification,

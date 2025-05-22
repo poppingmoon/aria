@@ -26,10 +26,9 @@ class UserBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:
-          expandOnTap && user.bannerUrl != null
-              ? () => showImageDialog(context, url: user.bannerUrl.toString())
-              : null,
+      onTap: expandOnTap && user.bannerUrl != null
+          ? () => showImageDialog(context, url: user.bannerUrl.toString())
+          : null,
       child: Stack(
         children: [
           Container(height: height, color: bannerBackgroundColor),

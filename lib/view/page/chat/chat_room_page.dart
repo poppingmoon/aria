@@ -34,16 +34,12 @@ class ChatRoomPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user =
-        userId != null
-            ? ref
-                .watch(userNotifierProvider(account, userId: userId))
-                .valueOrNull
-            : null;
-    final room =
-        roomId != null
-            ? ref.watch(chatRoomNotifierProvider(account, roomId!)).valueOrNull
-            : null;
+    final user = userId != null
+        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        : null;
+    final room = roomId != null
+        ? ref.watch(chatRoomNotifierProvider(account, roomId!)).valueOrNull
+        : null;
     final isMyRoom = room != null && room.owner.username == account.username;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(
@@ -60,93 +56,88 @@ class ChatRoomPage extends ConsumerWidget {
     );
 
     return PopScope(
-      onPopInvokedWithResult:
-          (_, _) =>
-              ref
-                  .read(
-                    sendChatMessageNotifierProvider(
-                      account,
-                      userId: userId,
-                      roomId: roomId,
-                    ).notifier,
-                  )
-                  .save(),
+      onPopInvokedWithResult: (_, _) => ref
+          .read(
+            sendChatMessageNotifierProvider(
+              account,
+              userId: userId,
+              roomId: roomId,
+            ).notifier,
+          )
+          .save(),
       child: DefaultTabController(
         length: roomId != null ? 3 : 1,
         child: Scaffold(
           appBar: AppBar(
-            title:
-                user != null
-                    ? UsernameWidget(account: account, user: user)
-                    : Text(room != null ? room.name : t.misskey.chat),
-            bottom:
-                roomId != null
-                    ? TabBar(
-                      tabs: [
-                        Tab(text: t.misskey.chat),
-                        Tab(text: t.misskey.chat_.members),
-                        Tab(text: t.misskey.info),
-                      ],
-                    )
-                    : null,
+            title: user != null
+                ? UsernameWidget(account: account, user: user)
+                : Text(room != null ? room.name : t.misskey.chat),
+            bottom: roomId != null
+                ? TabBar(
+                    tabs: [
+                      Tab(text: t.misskey.chat),
+                      Tab(text: t.misskey.chat_.members),
+                      Tab(text: t.misskey.info),
+                    ],
+                  )
+                : null,
             actions: [
               StreamingErrorIcon(
                 tabSettings: TabSettings.homeTimeline(account),
               ),
               PopupMenuButton<void>(
-                itemBuilder:
-                    (context) => [
-                      PopupMenuItem(
-                        onTap: () => copyToClipboard(context, url.toString()),
-                        child: ListTile(
-                          leading: const Icon(Icons.copy),
-                          title: Text(t.misskey.copyLink),
-                        ),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    onTap: () => copyToClipboard(context, url.toString()),
+                    child: ListTile(
+                      leading: const Icon(Icons.copy),
+                      title: Text(t.misskey.copyLink),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => launchUrl(ref, url),
+                    child: ListTile(
+                      leading: const Icon(Icons.open_in_browser),
+                      title: Text(t.aria.openInBrowser),
+                    ),
+                  ),
+                  if (userId != null)
+                    PopupMenuItem(
+                      onTap: () => context.push('/$account/users/$userId'),
+                      child: ListTile(
+                        leading: const Icon(Icons.person),
+                        title: Text(t.misskey.user),
                       ),
-                      PopupMenuItem(
-                        onTap: () => launchUrl(ref, url),
-                        child: ListTile(
-                          leading: const Icon(Icons.open_in_browser),
-                          title: Text(t.aria.openInBrowser),
-                        ),
+                    ),
+                  if (isMyRoom)
+                    PopupMenuItem(
+                      onTap: () async {
+                        final user = await selectUser(
+                          context,
+                          account,
+                          localOnly: true,
+                        );
+                        if (!context.mounted) return;
+                        if (user != null) {
+                          await futureWithDialog(
+                            context,
+                            ref
+                                .read(
+                                  chatRoomInvitationsNotifierProvider(
+                                    account,
+                                    room.id,
+                                  ).notifier,
+                                )
+                                .invite(user.id),
+                          );
+                        }
+                      },
+                      child: ListTile(
+                        leading: const Icon(Icons.person_add),
+                        title: Text(t.misskey.chat_.inviteUser),
                       ),
-                      if (userId != null)
-                        PopupMenuItem(
-                          onTap: () => context.push('/$account/users/$userId'),
-                          child: ListTile(
-                            leading: const Icon(Icons.person),
-                            title: Text(t.misskey.user),
-                          ),
-                        ),
-                      if (isMyRoom)
-                        PopupMenuItem(
-                          onTap: () async {
-                            final user = await selectUser(
-                              context,
-                              account,
-                              localOnly: true,
-                            );
-                            if (!context.mounted) return;
-                            if (user != null) {
-                              await futureWithDialog(
-                                context,
-                                ref
-                                    .read(
-                                      chatRoomInvitationsNotifierProvider(
-                                        account,
-                                        room.id,
-                                      ).notifier,
-                                    )
-                                    .invite(user.id),
-                              );
-                            }
-                          },
-                          child: ListTile(
-                            leading: const Icon(Icons.person_add),
-                            title: Text(t.misskey.chat_.inviteUser),
-                          ),
-                        ),
-                    ],
+                    ),
+                ],
               ),
             ],
           ),

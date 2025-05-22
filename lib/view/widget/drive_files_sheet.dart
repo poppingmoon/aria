@@ -93,12 +93,10 @@ class DriveFilesSheet extends ConsumerWidget {
           leading: const Icon(Icons.collections),
           title: Text(t.misskey.gallery),
           trailing: const Icon(Icons.navigate_next),
-          onTap:
-              () => showDialog<void>(
-                context: context,
-                builder:
-                    (context) => GalleryDialog(account: account, files: files),
-              ),
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (context) => GalleryDialog(account: account, files: files),
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

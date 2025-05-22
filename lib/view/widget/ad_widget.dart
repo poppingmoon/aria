@@ -56,8 +56,10 @@ class AdWidget extends HookConsumerWidget {
         }
       }
     }
-    final allAds =
-        ref.watch(metaNotifierProvider(account.host)).valueOrNull?.ads;
+    final allAds = ref
+        .watch(metaNotifierProvider(account.host))
+        .valueOrNull
+        ?.ads;
     if (allAds == null || allAds.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -93,11 +95,10 @@ class AdWidget extends HookConsumerWidget {
           Center(
             child: InkWell(
               onTap: () => navigate(ref, account, ad.url.toString()),
-              onLongPress:
-                  () => showModalBottomSheet<void>(
-                    context: context,
-                    builder: (context) => UrlSheet(url: ad.url.toString()),
-                  ),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => UrlSheet(url: ad.url.toString()),
+              ),
               child: ImageWidget(
                 url: ad.imageUrl.toString(),
                 height: ad.place == 'square' ? 200 : null,

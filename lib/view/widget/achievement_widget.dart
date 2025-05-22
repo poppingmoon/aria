@@ -375,13 +375,12 @@ class AchievementWidget extends StatelessWidget {
         child: Text(t.misskey.achievements_.types_.viewInstanceChart_.title),
       ),
       'outputHelloWorldOnScratchpad' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .outputHelloWorldOnScratchpad_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .outputHelloWorldOnScratchpad_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.outputHelloWorldOnScratchpad_.title,
         ),
@@ -391,13 +390,12 @@ class AchievementWidget extends StatelessWidget {
         child: Text(t.misskey.achievements_.types_.open3windows_.title),
       ),
       'driveFolderCircularReference' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .driveFolderCircularReference_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .driveFolderCircularReference_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.driveFolderCircularReference_.title,
         ),
@@ -419,37 +417,34 @@ class AchievementWidget extends StatelessWidget {
         child: Text(t.misskey.achievements_.types_.setNameToSyuilo_.title),
       ),
       'passedSinceAccountCreated1' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .passedSinceAccountCreated1_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .passedSinceAccountCreated1_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.passedSinceAccountCreated1_.title,
         ),
       ),
       'passedSinceAccountCreated2' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .passedSinceAccountCreated2_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .passedSinceAccountCreated2_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.passedSinceAccountCreated2_.title,
         ),
       ),
       'passedSinceAccountCreated3' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .passedSinceAccountCreated3_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .passedSinceAccountCreated3_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.passedSinceAccountCreated3_.title,
         ),
@@ -462,13 +457,12 @@ class AchievementWidget extends StatelessWidget {
         richMessage: TextSpan(
           children: [
             TextSpan(
-              text:
-                  t
-                      .misskey
-                      .achievements_
-                      .types_
-                      .loggedInOnNewYearsDay_
-                      .description,
+              text: t
+                  .misskey
+                  .achievements_
+                  .types_
+                  .loggedInOnNewYearsDay_
+                  .description,
             ),
             const TextSpan(text: '\n\n'),
             TextSpan(
@@ -513,13 +507,12 @@ class AchievementWidget extends StatelessWidget {
         child: Text(t.misskey.achievements_.types_.brainDiver_.title),
       ),
       'smashTestNotificationButton' => Tooltip(
-        message:
-            t
-                .misskey
-                .achievements_
-                .types_
-                .smashTestNotificationButton_
-                .description,
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .smashTestNotificationButton_
+            .description,
         child: Text(
           t.misskey.achievements_.types_.smashTestNotificationButton_.title,
         ),

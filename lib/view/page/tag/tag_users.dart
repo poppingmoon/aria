@@ -51,8 +51,8 @@ class TagUsers extends HookConsumerWidget {
                         title: Text(t.misskey.sort),
                         values: UsersSortType.values,
                         initialValue: sort.value,
-                        itemBuilder:
-                            (context, sort) => UsersSortTypeWidget(sort: sort),
+                        itemBuilder: (context, sort) =>
+                            UsersSortTypeWidget(sort: sort),
                       );
                       if (!context.mounted) return;
                       if (result != null) {
@@ -74,21 +74,21 @@ class TagUsers extends HookConsumerWidget {
               users.isEmpty
                   ? [Center(child: Text(t.misskey.noUsers))]
                   : [
-                    const SizedBox(height: 8.0),
-                    for (final (index, user) in users.indexed) ...[
-                      Center(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          width: maxContentWidth,
-                          child: UserInfo(account: account, user: user),
+                      const SizedBox(height: 8.0),
+                      for (final (index, user) in users.indexed) ...[
+                        Center(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                            width: maxContentWidth,
+                            child: UserInfo(account: account, user: user),
+                          ),
                         ),
-                      ),
-                      if (index < users.length - 1)
-                        const SizedBox(height: 8.0)
-                      else
-                        const SizedBox(height: 120.0),
+                        if (index < users.length - 1)
+                          const SizedBox(height: 8.0)
+                        else
+                          const SizedBox(height: 120.0),
+                      ],
                     ],
-                  ],
             AsyncValue(:final error?, :final stackTrace) => [
               ErrorMessage(error: error, stackTrace: stackTrace),
             ],

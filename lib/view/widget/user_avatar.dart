@@ -54,12 +54,11 @@ class UserAvatar extends ConsumerWidget {
     final useStaticImage =
         disableShowingAnimatedImages ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
-    final url =
-        useStaticImage
-            ? ref.watch(
-              staticImageUrlProvider(account.host, user.avatarUrl.toString()),
-            )
-            : user.avatarUrl;
+    final url = useStaticImage
+        ? ref.watch(
+            staticImageUrlProvider(account.host, user.avatarUrl.toString()),
+          )
+        : user.avatarUrl;
     final blurHash = user.avatarBlurhash;
     final decorations = this.decorations ?? user.avatarDecorations;
     final borderRadius = BorderRadius.circular(
@@ -67,10 +66,9 @@ class UserAvatar extends ConsumerWidget {
     );
 
     if (user.isCat) {
-      final catEarColor =
-          blurHash != null
-              ? ref.watch(averageColorProvider(blurHash))
-              : Theme.of(context).colorScheme.primary;
+      final catEarColor = blurHash != null
+          ? ref.watch(averageColorProvider(blurHash))
+          : Theme.of(context).colorScheme.primary;
 
       return CatAvatar(
         account: account,

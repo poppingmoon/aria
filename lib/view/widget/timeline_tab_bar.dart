@@ -19,15 +19,14 @@ class TimelineTabBar extends HookConsumerWidget {
     final tabs = ref.watch(timelineTabsNotifierProvider);
 
     return TabBar(
-      tabs:
-          tabs
-              .map(
-                (settings) => Tooltip(
-                  message: settings.name ?? '',
-                  child: Tab(icon: TabIconWidget(tabSettings: settings)),
-                ),
-              )
-              .toList(),
+      tabs: tabs
+          .map(
+            (settings) => Tooltip(
+              message: settings.name ?? '',
+              child: Tab(icon: TabIconWidget(tabSettings: settings)),
+            ),
+          )
+          .toList(),
       controller: controller,
       indicator: BoxDecoration(
         color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),

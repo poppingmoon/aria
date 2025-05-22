@@ -26,8 +26,9 @@ class CatEar extends AnimatedWidget {
         child: CustomPaint(
           painter: CatEarPainter(
             color: color,
-            animation:
-                flipped ? _angleOffset - animation.value : animation.value,
+            animation: flipped
+                ? _angleOffset - animation.value
+                : animation.value,
           ),
         ),
       ),

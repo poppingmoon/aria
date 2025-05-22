@@ -35,15 +35,14 @@ class ChatPostForm extends HookConsumerWidget {
     final text = controller.text.isNotEmpty ? controller.text : null;
     final attaches = ref.read(attachesNotifierProvider(account, chat: true));
     final hasFile = attaches.isNotEmpty;
-    final file =
-        hasFile
-            ? await futureWithDialog(
-              ref.context,
-              ref
-                  .read(attachesNotifierProvider(account, chat: true).notifier)
-                  .upload(0),
-            )
-            : null;
+    final file = hasFile
+        ? await futureWithDialog(
+            ref.context,
+            ref
+                .read(attachesNotifierProvider(account, chat: true).notifier)
+                .upload(0),
+          )
+        : null;
     if (hasFile && file == null) return;
     if (!ref.context.mounted) return;
     if (ref.read(generalSettingsNotifierProvider).confirmBeforePost) {
@@ -171,8 +170,9 @@ class ChatPostForm extends HookConsumerWidget {
                   ),
                   minLines: 1,
                   maxLines: 3,
-                  spellCheckConfiguration:
-                      enableSpellCheck ? const SpellCheckConfiguration() : null,
+                  spellCheckConfiguration: enableSpellCheck
+                      ? const SpellCheckConfiguration()
+                      : null,
                 ),
               ),
             ),
@@ -204,8 +204,8 @@ class ChatPostForm extends HookConsumerWidget {
                       } else {
                         final file = await showModalBottomSheet<PostFile>(
                           context: context,
-                          builder:
-                              (context) => FilePickerSheet(account: account),
+                          builder: (context) =>
+                              FilePickerSheet(account: account),
                           clipBehavior: Clip.hardEdge,
                         );
                         if (file != null) {
@@ -222,33 +222,27 @@ class ChatPostForm extends HookConsumerWidget {
                     },
                     icon: Icon(
                       Icons.add_photo_alternate,
-                      color:
-                          attaches.isNotEmpty
-                              ? theme.colorScheme.primary
-                              : null,
+                      color: attaches.isNotEmpty
+                          ? theme.colorScheme.primary
+                          : null,
                     ),
                   ),
                   IconButton(
                     tooltip: t.misskey.emoji,
-                    onPressed:
-                        () => pickEmoji(
-                          ref,
-                          account,
-                          post: true,
-                          onTapEmoji:
-                              (emoji) => controller.insert(
-                                emoji.replaceFirst('@.', ''),
-                              ),
-                        ),
+                    onPressed: () => pickEmoji(
+                      ref,
+                      account,
+                      post: true,
+                      onTapEmoji: (emoji) =>
+                          controller.insert(emoji.replaceFirst('@.', '')),
+                    ),
                     icon: const Icon(Icons.mood),
                   ),
                   Expanded(
                     child: GestureDetector(
-                      onTap:
-                          () =>
-                              isFocused.value
-                                  ? focusNode.unfocus()
-                                  : focusNode.requestFocus(),
+                      onTap: () => isFocused.value
+                          ? focusNode.unfocus()
+                          : focusNode.requestFocus(),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Visibility.maintain(

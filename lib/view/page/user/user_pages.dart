@@ -20,18 +20,16 @@ class UserPages extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: pages,
-      itemBuilder:
-          (context, page) => PagePreview(
-            account: account,
-            page: page,
-            onTap: () => context.push('/$account/pages/${page.id}'),
-          ),
-      onRefresh:
-          () => ref.refresh(userPagesNotifierProvider(account, userId).future),
-      loadMore:
-          (skipError) => ref
-              .read(userPagesNotifierProvider(account, userId).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, page) => PagePreview(
+        account: account,
+        page: page,
+        onTap: () => context.push('/$account/pages/${page.id}'),
+      ),
+      onRefresh: () =>
+          ref.refresh(userPagesNotifierProvider(account, userId).future),
+      loadMore: (skipError) => ref
+          .read(userPagesNotifierProvider(account, userId).notifier)
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

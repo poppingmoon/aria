@@ -40,12 +40,9 @@ class ChatListView extends HookConsumerWidget {
     );
     final nextMessages = useState(<ChatMessage>[]);
     final deletedMessageIds = useState(<String>{});
-    final user =
-        userId != null
-            ? ref
-                .watch(userNotifierProvider(account, userId: userId))
-                .valueOrNull
-            : null;
+    final user = userId != null
+        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        : null;
     final (showPopup, enableInfiniteScroll, reduceAnimation) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
@@ -147,10 +144,9 @@ class ChatListView extends HookConsumerWidget {
             ];
             listKey.currentState?.insertItem(
               isDuplicate ? index : index + 1,
-              duration:
-                  reduceAnimation
-                      ? Duration.zero
-                      : const Duration(milliseconds: 125),
+              duration: reduceAnimation
+                  ? Duration.zero
+                  : const Duration(milliseconds: 125),
             );
             notifier.read();
             if (!keepAnimation.value) {
@@ -161,23 +157,21 @@ class ChatListView extends HookConsumerWidget {
           case React(:final reaction, :final user, :final messageId):
             final messages = nextMessages.value;
             if (messages.any((message) => message.id == messageId)) {
-              nextMessages.value =
-                  messages
-                      .map(
-                        (message) =>
-                            message.id == messageId
-                                ? message.copyWith(
-                                  reactions: [
-                                    ...message.reactions,
-                                    ChatMessageReaction(
-                                      reaction: reaction,
-                                      user: user,
-                                    ),
-                                  ],
-                                )
-                                : message,
-                      )
-                      .toList();
+              nextMessages.value = messages
+                  .map(
+                    (message) => message.id == messageId
+                        ? message.copyWith(
+                            reactions: [
+                              ...message.reactions,
+                              ChatMessageReaction(
+                                reaction: reaction,
+                                user: user,
+                              ),
+                            ],
+                          )
+                        : message,
+                  )
+                  .toList();
             } else {
               ref
                   .read(
@@ -201,14 +195,11 @@ class ChatListView extends HookConsumerWidget {
               nextMessages.value = [
                 if (index > 0) ...messages.take(index - 1),
                 message.copyWith(
-                  reactions:
-                      message.reactions
-                          .where(
-                            (r) =>
-                                r.reaction != reaction ||
-                                r.user?.id != user?.id,
-                          )
-                          .toList(),
+                  reactions: message.reactions
+                      .where(
+                        (r) => r.reaction != reaction || r.user?.id != user?.id,
+                      )
+                      .toList(),
                 ),
                 ...messages.sublist(index),
               ];
@@ -298,13 +289,13 @@ class ChatListView extends HookConsumerWidget {
                                   message.fromUserId !=
                                   (index == 0
                                       ? messages
-                                          .valueOrNull
-                                          ?.items
-                                          .firstOrNull
-                                          ?.fromUserId
+                                            .valueOrNull
+                                            ?.items
+                                            .firstOrNull
+                                            ?.fromUserId
                                       : nextMessages.value
-                                          .elementAtOrNull(index - 1)
-                                          ?.fromUserId),
+                                            .elementAtOrNull(index - 1)
+                                            ?.fromUserId),
                               updateMessage: ({deleted = false}) async {
                                 if (deleted) {
                                   deletedMessageIds.value = {
@@ -321,15 +312,13 @@ class ChatListView extends HookConsumerWidget {
                                           messageId: message.id,
                                         ),
                                       );
-                                  nextMessages.value =
-                                      nextMessages.value
-                                          .map(
-                                            (message) =>
-                                                message.id == updated.id
-                                                    ? updated
-                                                    : message,
-                                          )
-                                          .toList();
+                                  nextMessages.value = nextMessages.value
+                                      .map(
+                                        (message) => message.id == updated.id
+                                            ? updated
+                                            : message,
+                                      )
+                                      .toList();
                                 }
                               },
                             ),
@@ -400,16 +389,15 @@ class ChatListView extends HookConsumerWidget {
                       child: PaginationBottomWidget(
                         paginationState: messages,
                         noItemsLabel: t.misskey.chat_.noMessagesYet,
-                        loadMore:
-                            () => ref
-                                .read(
-                                  chatMessagesNotifierProvider(
-                                    account,
-                                    userId: userId,
-                                    roomId: roomId,
-                                  ).notifier,
-                                )
-                                .loadMore(skipError: true),
+                        loadMore: () => ref
+                            .read(
+                              chatMessagesNotifierProvider(
+                                account,
+                                userId: userId,
+                                roomId: roomId,
+                              ).notifier,
+                            )
+                            .loadMore(skipError: true),
                         reversed: true,
                       ),
                     ),

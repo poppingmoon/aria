@@ -67,36 +67,31 @@ class TimelineButtonsPage extends ConsumerWidget {
                             children: [
                               if (type != null)
                                 IconButton(
-                                  onPressed:
-                                      () => ref
-                                          .read(
-                                            generalSettingsNotifierProvider
-                                                .notifier,
-                                          )
-                                          .setTimelinesPageButtonTypes(
-                                            settings.timelinesPageButtonTypes
-                                                .mapIndexed(
-                                                  (i, type) =>
-                                                      i != index ? type : null,
-                                                )
-                                                .toList(),
-                                          ),
+                                  onPressed: () => ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setTimelinesPageButtonTypes(
+                                        settings.timelinesPageButtonTypes
+                                            .mapIndexed(
+                                              (i, type) =>
+                                                  i != index ? type : null,
+                                            )
+                                            .toList(),
+                                      ),
                                   icon: const Icon(Icons.close),
                                 ),
                               IconButton(
-                                onPressed:
-                                    () => ref
-                                        .read(
-                                          generalSettingsNotifierProvider
-                                              .notifier,
-                                        )
-                                        .setTimelinesPageButtonTypes(
-                                          settings.timelinesPageButtonTypes
-                                              .whereIndexed(
-                                                (i, _) => i != index,
-                                              )
-                                              .toList(),
-                                        ),
+                                onPressed: () => ref
+                                    .read(
+                                      generalSettingsNotifierProvider.notifier,
+                                    )
+                                    .setTimelinesPageButtonTypes(
+                                      settings.timelinesPageButtonTypes
+                                          .whereIndexed((i, _) => i != index)
+                                          .toList(),
+                                    ),
                                 icon: const Icon(Icons.delete),
                               ),
                             ],
@@ -108,11 +103,10 @@ class TimelineButtonsPage extends ConsumerWidget {
                             values: TimelinesPageButtonType.values,
                             initialValue: type,
                             title: Text(t.aria.buttonTypes),
-                            itemBuilder:
-                                (context, type) =>
-                                    _TimelinesPageButtonTypeNameWidget(
-                                      buttonType: type,
-                                    ),
+                            itemBuilder: (context, type) =>
+                                _TimelinesPageButtonTypeNameWidget(
+                                  buttonType: type,
+                                ),
                           );
                           if (result != null && result != type) {
                             await ref
@@ -133,27 +127,21 @@ class TimelineButtonsPage extends ConsumerWidget {
                       runSpacing: 8.0,
                       children: [
                         OutlinedButton.icon(
-                          onPressed:
-                              () => ref
-                                  .read(
-                                    generalSettingsNotifierProvider.notifier,
-                                  )
-                                  .setTimelinesPageButtonTypes([
-                                    ...settings.timelinesPageButtonTypes,
-                                    null,
-                                  ]),
+                          onPressed: () => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setTimelinesPageButtonTypes([
+                                ...settings.timelinesPageButtonTypes,
+                                null,
+                              ]),
                           icon: const Icon(Icons.add),
                           label: Text(t.misskey.add),
                         ),
                         OutlinedButton.icon(
-                          onPressed:
-                              () => ref
-                                  .read(
-                                    generalSettingsNotifierProvider.notifier,
-                                  )
-                                  .setTimelinesPageButtonTypes(
-                                    defaultTimelinesPageButtonTypes,
-                                  ),
+                          onPressed: () => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setTimelinesPageButtonTypes(
+                                defaultTimelinesPageButtonTypes,
+                              ),
                           icon: const Icon(Icons.refresh),
                           label: Text(t.misskey.default_),
                         ),
@@ -172,10 +160,9 @@ class TimelineButtonsPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showSmallButtons),
                 value: settings.showSmallTimelinesPageButtons,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowSmallTimelinesPageButtons(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowSmallTimelinesPageButtons(value),
               ),
             ),
           ),
@@ -186,10 +173,9 @@ class TimelineButtonsPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showSquaredButtons),
                 value: settings.showSquaredTimelinesPageButtons,
-                onChanged:
-                    (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowSquaredTimelinesPageButtons(value),
+                onChanged: (value) => ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setShowSquaredTimelinesPageButtons(value),
               ),
             ),
           ),
@@ -198,48 +184,42 @@ class TimelineButtonsPage extends ConsumerWidget {
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children:
-            settings.timelinesPageButtonTypes
-                .where(
-                  (type) =>
-                      !isLargeScreen || type != TimelinesPageButtonType.menu,
-                )
-                .mapIndexed(
-                  (index, type) => _TimelinePageButton(
-                    buttonType: type,
-                    index: index,
-                    onPressed: () async {
-                      final result = await showRadioDialog(
-                        context,
-                        values: TimelinesPageButtonType.values,
-                        initialValue: type,
-                        title: Text(t.aria.buttonTypes),
-                        itemBuilder:
-                            (context, type) =>
-                                _TimelinesPageButtonTypeNameWidget(
-                                  buttonType: type,
-                                ),
-                      );
-                      if (result != null && result != type) {
-                        await ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setTimelinesPageButtonTypes(
-                              settings.timelinesPageButtonTypes
-                                  .mapIndexed(
-                                    (i, type) => i != index ? type : result,
-                                  )
-                                  .toList(),
-                            );
-                      }
-                    },
-                  ),
-                )
-                .toList(),
+        children: settings.timelinesPageButtonTypes
+            .where(
+              (type) => !isLargeScreen || type != TimelinesPageButtonType.menu,
+            )
+            .mapIndexed(
+              (index, type) => _TimelinePageButton(
+                buttonType: type,
+                index: index,
+                onPressed: () async {
+                  final result = await showRadioDialog(
+                    context,
+                    values: TimelinesPageButtonType.values,
+                    initialValue: type,
+                    title: Text(t.aria.buttonTypes),
+                    itemBuilder: (context, type) =>
+                        _TimelinesPageButtonTypeNameWidget(buttonType: type),
+                  );
+                  if (result != null && result != type) {
+                    await ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setTimelinesPageButtonTypes(
+                          settings.timelinesPageButtonTypes
+                              .mapIndexed(
+                                (i, type) => i != index ? type : result,
+                              )
+                              .toList(),
+                        );
+                  }
+                },
+              ),
+            )
+            .toList(),
       ),
-      floatingActionButtonLocation:
-          settings.showSmallTimelinesPageButtons
-              ? FloatingActionButtonLocation.miniCenterFloat
-              : FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: settings.showSmallTimelinesPageButtons
+          ? FloatingActionButtonLocation.miniCenterFloat
+          : FloatingActionButtonLocation.centerFloat,
     );
   }
 }
@@ -345,38 +325,35 @@ class _TimelinePageButton extends ConsumerWidget {
     if (buttonType case final buttonType?) {
       return FloatingActionButton(
         heroTag: ValueKey('<_TimelineButtonsPageButton tag $index>'),
-        foregroundColor:
-            buttonType == TimelinesPageButtonType.note
-                ? colors.fgOnAccent
-                : colors.fg,
-        backgroundColor:
-            buttonType == TimelinesPageButtonType.note
-                ? Colors.transparent
-                : colors.panel,
+        foregroundColor: buttonType == TimelinesPageButtonType.note
+            ? colors.fgOnAccent
+            : colors.fg,
+        backgroundColor: buttonType == TimelinesPageButtonType.note
+            ? Colors.transparent
+            : colors.panel,
         shape: square ? null : const CircleBorder(),
         mini: mini,
         onPressed: onPressed,
-        child:
-            buttonType == TimelinesPageButtonType.note
-                ? Ink(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [colors.buttonGradateA, colors.buttonGradateB],
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      square
-                          ? mini
+        child: buttonType == TimelinesPageButtonType.note
+            ? Ink(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [colors.buttonGradateA, colors.buttonGradateB],
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    square
+                        ? mini
                               ? 12.0
                               : 16.0
-                          : 32.0,
-                    ),
+                        : 32.0,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(mini ? 8.0 : 16.0),
-                    child: const Icon(Icons.edit),
-                  ),
-                )
-                : _TimelinesPageButtonIcon(buttonType: buttonType),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(mini ? 8.0 : 16.0),
+                  child: const Icon(Icons.edit),
+                ),
+              )
+            : _TimelinesPageButtonIcon(buttonType: buttonType),
       );
     } else {
       return InkWell(

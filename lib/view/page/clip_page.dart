@@ -35,9 +35,8 @@ class ClipPage extends HookConsumerWidget {
   Future<void> _edit(WidgetRef ref, Clip clip) async {
     final result = await showDialog<ClipSettings>(
       context: ref.context,
-      builder:
-          (context) =>
-              ClipSettingsDialog(settings: ClipSettings.fromClip(clip)),
+      builder: (context) =>
+          ClipSettingsDialog(settings: ClipSettings.fromClip(clip)),
     );
     if (!ref.context.mounted) return;
     if (result != null) {
@@ -72,56 +71,52 @@ class ClipPage extends HookConsumerWidget {
         title: Text(clip?.name ?? ''),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder:
-                (context) => [
-                  PopupMenuItem(
-                    onTap: () => launchUrl(ref, url),
-                    child: Text(t.aria.openInBrowser),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                onTap: () => launchUrl(ref, url),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              if (clip?.isPublic ?? false)
+                PopupMenuItem(
+                  onTap: () => SharePlus.instance.share(ShareParams(uri: url)),
+                  child: Text(t.misskey.share),
+                ),
+              if (myClip != null) ...[
+                PopupMenuItem(
+                  onTap: () => _edit(ref, myClip),
+                  child: Text(t.misskey.edit),
+                ),
+                PopupMenuItem(
+                  onTap: () async {
+                    final confirmed = await confirm(
+                      context,
+                      message: t.misskey.deleteAreYouSure(x: myClip.name ?? ''),
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(clipsNotifierProvider(account).notifier)
+                            .delete(clipId),
+                      );
+                      if (!context.mounted) return;
+                      context.pop();
+                    }
+                  },
+                  child: Text(
+                    t.misskey.delete,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
                   ),
-                  PopupMenuItem(
-                    onTap: () => copyToClipboard(context, url.toString()),
-                    child: Text(t.misskey.copyLink),
-                  ),
-                  if (clip?.isPublic ?? false)
-                    PopupMenuItem(
-                      onTap:
-                          () => SharePlus.instance.share(ShareParams(uri: url)),
-                      child: Text(t.misskey.share),
-                    ),
-                  if (myClip != null) ...[
-                    PopupMenuItem(
-                      onTap: () => _edit(ref, myClip),
-                      child: Text(t.misskey.edit),
-                    ),
-                    PopupMenuItem(
-                      onTap: () async {
-                        final confirmed = await confirm(
-                          context,
-                          message: t.misskey.deleteAreYouSure(
-                            x: myClip.name ?? '',
-                          ),
-                        );
-                        if (!context.mounted) return;
-                        if (confirmed) {
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(clipsNotifierProvider(account).notifier)
-                                .delete(clipId),
-                          );
-                          if (!context.mounted) return;
-                          context.pop();
-                        }
-                      },
-                      child: Text(
-                        t.misskey.delete,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+                ),
+              ],
+            ],
           ),
         ],
       ),
@@ -149,30 +144,26 @@ class ClipPage extends HookConsumerWidget {
           ),
         ),
         paginationState: notes,
-        itemBuilder:
-            (context, note) => NoteWidget(
-              account: account,
-              noteId: note.id,
-              clipId: clipId,
-              withHardMute: false,
-            ),
-        onRefresh:
-            () =>
-                ref.refresh(clipNotesNotifierProvider(account, clipId).future),
-        loadMore:
-            (skipError) => ref
-                .read(clipNotesNotifierProvider(account, clipId).notifier)
-                .loadMore(skipError: skipError),
+        itemBuilder: (context, note) => NoteWidget(
+          account: account,
+          noteId: note.id,
+          clipId: clipId,
+          withHardMute: false,
+        ),
+        onRefresh: () =>
+            ref.refresh(clipNotesNotifierProvider(account, clipId).future),
+        loadMore: (skipError) => ref
+            .read(clipNotesNotifierProvider(account, clipId).notifier)
+            .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noNotes,
       ),
-      floatingActionButton:
-          myClip != null
-              ? FloatingActionButton(
-                tooltip: t.misskey.edit,
-                onPressed: () => _edit(ref, myClip),
-                child: const Icon(Icons.edit),
-              )
-              : null,
+      floatingActionButton: myClip != null
+          ? FloatingActionButton(
+              tooltip: t.misskey.edit,
+              onPressed: () => _edit(ref, myClip),
+              child: const Icon(Icons.edit),
+            )
+          : null,
     );
   }
 }
@@ -210,54 +201,47 @@ class _ClipDescription extends ConsumerWidget {
           child: LikeButton(
             isLiked: clip?.isFavorited ?? false,
             likedCount: clip?.favoritedCount ?? 0,
-            onTap:
-                !account.isGuest
-                    ? () {
-                      if (isMyClip) {
-                        if (clip?.isFavorited ?? false) {
-                          futureWithDialog(
-                            context,
-                            ref
-                                .read(clipsNotifierProvider(account).notifier)
-                                .unfavorite(clipId),
-                          );
-                        } else {
-                          futureWithDialog(
-                            context,
-                            ref
-                                .read(clipsNotifierProvider(account).notifier)
-                                .favorite(clipId),
-                          );
-                        }
+            onTap: !account.isGuest
+                ? () {
+                    if (isMyClip) {
+                      if (clip?.isFavorited ?? false) {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .unfavorite(clipId),
+                        );
                       } else {
-                        if (clip?.isFavorited ?? false) {
-                          futureWithDialog(
-                            context,
-                            ref
-                                .read(
-                                  clipNotifierProvider(
-                                    account,
-                                    clipId,
-                                  ).notifier,
-                                )
-                                .unfavorite(),
-                          );
-                        } else {
-                          futureWithDialog(
-                            context,
-                            ref
-                                .read(
-                                  clipNotifierProvider(
-                                    account,
-                                    clipId,
-                                  ).notifier,
-                                )
-                                .favorite(),
-                          );
-                        }
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .favorite(clipId),
+                        );
+                      }
+                    } else {
+                      if (clip?.isFavorited ?? false) {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(
+                                clipNotifierProvider(account, clipId).notifier,
+                              )
+                              .unfavorite(),
+                        );
+                      } else {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(
+                                clipNotifierProvider(account, clipId).notifier,
+                              )
+                              .favorite(),
+                        );
                       }
                     }
-                    : null,
+                  }
+                : null,
           ),
         ),
         if (clip case Clip(:final user)) ...[
@@ -279,12 +263,11 @@ class _ClipDescription extends ConsumerWidget {
                     alignment: AlignmentDirectional.centerStart,
                     child: InkWell(
                       onTap: () => context.push('/$account/users/${user.id}'),
-                      onLongPress:
-                          () => showUserSheet(
-                            context: context,
-                            account: account,
-                            userId: user.id,
-                          ),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: user.id,
+                      ),
                       child: UsernameWidget(account: account, user: user),
                     ),
                   ),

@@ -39,14 +39,13 @@ class PlaysPage extends ConsumerWidget {
             ],
           ],
         ),
-        floatingActionButton:
-            !account.isGuest
-                ? FloatingActionButton(
-                  tooltip: t.misskey.play_.new_,
-                  onPressed: () => context.push('/$account/play/new'),
-                  child: const Icon(Icons.add),
-                )
-                : null,
+        floatingActionButton: !account.isGuest
+            ? FloatingActionButton(
+                tooltip: t.misskey.play_.new_,
+                onPressed: () => context.push('/$account/play/new'),
+                child: const Icon(Icons.add),
+              )
+            : null,
       ),
     );
   }

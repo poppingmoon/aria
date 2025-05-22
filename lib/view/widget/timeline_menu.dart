@@ -129,9 +129,8 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap:
-                      () =>
-                          context.push('/$account/roles/${tabSettings.roleId}'),
+                  onTap: () =>
+                      context.push('/$account/roles/${tabSettings.roleId}'),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -145,9 +144,8 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap:
-                      () =>
-                          context.push('/$account/lists/${tabSettings.listId}'),
+                  onTap: () =>
+                      context.push('/$account/lists/${tabSettings.listId}'),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -161,10 +159,9 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap:
-                      () => context.push(
-                        '/$account/channels/${tabSettings.channelId}',
-                      ),
+                  onTap: () => context.push(
+                    '/$account/channels/${tabSettings.channelId}',
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -178,10 +175,9 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap:
-                      () => context.push(
-                        '/$account/antennas/${tabSettings.antennaId}',
-                      ),
+                  onTap: () => context.push(
+                    '/$account/antennas/${tabSettings.antennaId}',
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -217,12 +213,11 @@ class TimelineMenu extends ConsumerWidget {
                     );
                     final date = await pickDateTime(
                       context,
-                      initialDate:
-                          centerId != null
-                              ? Id.parse(centerId).date
-                              : lastViewedNoteId != null
-                              ? Id.parse(lastViewedNoteId).date
-                              : null,
+                      initialDate: centerId != null
+                          ? Id.parse(centerId).date
+                          : lastViewedNoteId != null
+                          ? Id.parse(lastViewedNoteId).date
+                          : null,
                       lastDate: DateTime.now(),
                     );
                     if (date != null) {

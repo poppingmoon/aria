@@ -132,11 +132,10 @@ class ImageWidget extends ConsumerWidget {
         fit: fit,
         alignment: alignment,
         opacity: AlwaysStoppedAnimation(opacity),
-        frameBuilder:
-            (context, child, frame, wasSynchronouslyLoaded) =>
-                wasSynchronouslyLoaded || frame != null
-                    ? child
-                    : _buildPlaceholder(),
+        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
+            wasSynchronouslyLoaded || frame != null
+            ? child
+            : _buildPlaceholder(),
         errorBuilder: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
         semanticLabel: semanticLabel,
       );

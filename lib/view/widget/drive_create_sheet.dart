@@ -35,10 +35,9 @@ class DriveCreateSheet extends HookConsumerWidget {
     bool keepOriginalFilename,
   ) async {
     final result = await FilePicker.platform.pickFiles(
-      type:
-          defaultTargetPlatform == TargetPlatform.iOS
-              ? FileType.media
-              : FileType.any,
+      type: defaultTargetPlatform == TargetPlatform.iOS
+          ? FileType.media
+          : FileType.any,
       allowMultiple: true,
     );
     if (result == null || result.files.isEmpty) return;
@@ -48,19 +47,21 @@ class DriveCreateSheet extends HookConsumerWidget {
       Future.wait(
         result.files.map((file) async {
           if (file case PlatformFile(:final path?)) {
-            final data =
-                await ref.read(fileSystemProvider).file(path).readAsBytes();
+            final data = await ref
+                .read(fileSystemProvider)
+                .file(path)
+                .readAsBytes();
             final type = lookupMimeType(path);
-            final resized =
-                keepOriginalUploading ? null : await compressImage(data, type);
+            final resized = keepOriginalUploading
+                ? null
+                : await compressImage(data, type);
             await ref
                 .read(driveFilesNotifierProvider(account, folder?.id).notifier)
                 .uploadBinary(
                   resized ?? data,
-                  name:
-                      keepOriginalFilename
-                          ? file.name
-                          : randomizeFilename(file.name),
+                  name: keepOriginalFilename
+                      ? file.name
+                      : randomizeFilename(file.name),
                 );
           }
         }),
@@ -116,10 +117,8 @@ class DriveCreateSheet extends HookConsumerWidget {
     final (initialKeepOriginalUploading, initialKeepOriginalFilename) = ref
         .watch(
           accountSettingsNotifierProvider(account).select(
-            (settings) => (
-              settings.keepOriginalUploading,
-              settings.keepOriginalFilename,
-            ),
+            (settings) =>
+                (settings.keepOriginalUploading, settings.keepOriginalFilename),
           ),
         );
     final keepOriginalUploading = useState(initialKeepOriginalUploading);
@@ -141,12 +140,11 @@ class DriveCreateSheet extends HookConsumerWidget {
         ListTile(
           leading: const Icon(Icons.upload),
           title: Text(t.misskey.upload),
-          onTap:
-              () => _upload(
-                ref,
-                keepOriginalUploading.value,
-                keepOriginalFilename.value,
-              ),
+          onTap: () => _upload(
+            ref,
+            keepOriginalUploading.value,
+            keepOriginalFilename.value,
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.link),

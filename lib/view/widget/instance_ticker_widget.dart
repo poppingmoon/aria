@@ -34,10 +34,10 @@ class InstanceTickerWidget extends ConsumerWidget {
     final faviconUrl = instance?.faviconUrl;
     final proxiedUrl =
         instance != null && faviconUrl != null && account.host.isNotEmpty
-            ? ref.watch(
-              proxiedImageUrlProvider(account.host, faviconUrl, preview: true),
-            )
-            : faviconUrl;
+        ? ref.watch(
+            proxiedImageUrlProvider(account.host, faviconUrl, preview: true),
+          )
+        : faviconUrl;
     final style = DefaultTextStyle.of(context).style;
 
     return DecoratedBox(
@@ -52,11 +52,9 @@ class InstanceTickerWidget extends ConsumerWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(4.0),
         child: InkWell(
-          onTap:
-              account.host.isNotEmpty
-                  ? () =>
-                      context.push('/$account/servers/${host ?? account.host}')
-                  : null,
+          onTap: account.host.isNotEmpty
+              ? () => context.push('/$account/servers/${host ?? account.host}')
+              : null,
           child: SizedBox(
             width: double.infinity,
             child: Row(
@@ -79,10 +77,9 @@ class InstanceTickerWidget extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: _ShadowText(
-                      text:
-                          instance != null
-                              ? instance?.name ?? host ?? ''
-                              : meta?.name ?? account.host,
+                      text: instance != null
+                          ? instance?.name ?? host ?? ''
+                          : meta?.name ?? account.host,
                       style: style.copyWith(height: 1.0),
                     ),
                   ),
@@ -112,11 +109,10 @@ class _ShadowText extends StatelessWidget {
           Text(
             text,
             style: style.copyWith(
-              foreground:
-                  Paint()
-                    ..color = Colors.black38
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2.0,
+              foreground: Paint()
+                ..color = Colors.black38
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 2.0,
             ),
             softWrap: false,
             overflow: TextOverflow.fade,

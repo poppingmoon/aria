@@ -101,10 +101,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final children = ref.watch(
       childrenNotesNotifierProvider(account, appearNote.id),
     );
-    final conversation =
-        appearNote.replyId != null
-            ? ref.watch(conversationNotesProvider(account, appearNote.id))
-            : null;
+    final conversation = appearNote.replyId != null
+        ? ref.watch(conversationNotesProvider(account, appearNote.id))
+        : null;
     if (enableInfiniteScroll) {
       ref.listen(
         childrenNotesNotifierProvider(
@@ -134,39 +133,36 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
-      onTap:
-          tapAction != NoteActionType.expand
-              ? getNoteAction(
-                ref,
-                account: account,
-                type: tapAction,
-                note: note,
-                appearNote: appearNote,
-                disableHeader: true,
-              )
-              : null,
-      onDoubleTap:
-          doubleTapAction != NoteActionType.expand
-              ? getNoteAction(
-                ref,
-                account: account,
-                type: doubleTapAction,
-                note: note,
-                appearNote: appearNote,
-                disableHeader: true,
-              )
-              : null,
-      onLongPress:
-          longPressAction != NoteActionType.expand
-              ? getNoteAction(
-                ref,
-                account: account,
-                type: longPressAction,
-                note: note,
-                appearNote: appearNote,
-                disableHeader: true,
-              )
-              : null,
+      onTap: tapAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: tapAction,
+              note: note,
+              appearNote: appearNote,
+              disableHeader: true,
+            )
+          : null,
+      onDoubleTap: doubleTapAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: doubleTapAction,
+              note: note,
+              appearNote: appearNote,
+              disableHeader: true,
+            )
+          : null,
+      onLongPress: longPressAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: longPressAction,
+              note: note,
+              appearNote: appearNote,
+              disableHeader: true,
+            )
+          : null,
       child: Padding(
         padding: EdgeInsetsDirectional.only(
           start: 4.0,
@@ -237,65 +233,60 @@ class NoteDetailedWidget extends HookConsumerWidget {
               const SizedBox(height: 8.0),
               ListView.separated(
                 padding: EdgeInsets.zero,
-                itemBuilder:
-                    (context, index) =>
-                        index < notes.length
-                            ? ChannelColorBarBox(
-                              note: notes[index],
-                              child: Container(
-                                margin: EdgeInsetsDirectional.only(
-                                  start: horizontalPadding - 4.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: BorderDirectional(
-                                    start: BorderSide(
-                                      color: theme.colorScheme.outlineVariant,
-                                      width: 2.0,
-                                    ),
-                                  ),
-                                ),
-                                padding: const EdgeInsetsDirectional.only(
-                                  start: 4.0,
-                                  top: 4.0,
-                                  bottom: 4.0,
-                                ),
-                                child: NoteSubWidget(
-                                  account: account,
-                                  noteId: notes[index].id,
-                                  showReplies: true,
-                                ),
+                itemBuilder: (context, index) => index < notes.length
+                    ? ChannelColorBarBox(
+                        note: notes[index],
+                        child: Container(
+                          margin: EdgeInsetsDirectional.only(
+                            start: horizontalPadding - 4.0,
+                          ),
+                          decoration: BoxDecoration(
+                            border: BorderDirectional(
+                              start: BorderSide(
+                                color: theme.colorScheme.outlineVariant,
+                                width: 2.0,
                               ),
-                            )
-                            : PaginationBottomWidget(
-                              paginationState: children,
-                              loadMore:
-                                  () => ref
-                                      .read(
-                                        childrenNotesNotifierProvider(
-                                          account,
-                                          appearNote.id,
-                                        ).notifier,
-                                      )
-                                      .loadMore(skipError: true),
                             ),
-                separatorBuilder:
-                    (context, index) =>
-                        index < notes.length - 1
-                            ? Container(
-                              margin: EdgeInsetsDirectional.only(
-                                start: horizontalPadding - 4.0,
-                              ),
-                              decoration: BoxDecoration(
-                                border: BorderDirectional(
-                                  start: BorderSide(
-                                    color: theme.colorScheme.outlineVariant,
-                                    width: 2.0,
-                                  ),
-                                ),
-                              ),
-                              child: const Divider(height: 0.0),
+                          ),
+                          padding: const EdgeInsetsDirectional.only(
+                            start: 4.0,
+                            top: 4.0,
+                            bottom: 4.0,
+                          ),
+                          child: NoteSubWidget(
+                            account: account,
+                            noteId: notes[index].id,
+                            showReplies: true,
+                          ),
+                        ),
+                      )
+                    : PaginationBottomWidget(
+                        paginationState: children,
+                        loadMore: () => ref
+                            .read(
+                              childrenNotesNotifierProvider(
+                                account,
+                                appearNote.id,
+                              ).notifier,
                             )
-                            : const SizedBox.shrink(),
+                            .loadMore(skipError: true),
+                      ),
+                separatorBuilder: (context, index) => index < notes.length - 1
+                    ? Container(
+                        margin: EdgeInsetsDirectional.only(
+                          start: horizontalPadding - 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: BorderDirectional(
+                            start: BorderSide(
+                              color: theme.colorScheme.outlineVariant,
+                              width: 2.0,
+                            ),
+                          ),
+                        ),
+                        child: const Divider(height: 0.0),
+                      )
+                    : const SizedBox.shrink(),
                 itemCount: notes.length + 1,
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -330,16 +321,14 @@ class _NoteDetailedContent extends HookConsumerWidget {
         ),
       ),
     );
-    final parsed =
-        appearNote.text != null
-            ? ref.watch(parsedMfmProvider(appearNote.text!))
-            : null;
+    final parsed = appearNote.text != null
+        ? ref.watch(parsedMfmProvider(appearNote.text!))
+        : null;
     final renoteUrl = note.uri?.toString() ?? note.url?.toString();
     final urls = useMemoized(
-      () =>
-          parsed != null
-              ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
-              : null,
+      () => parsed != null
+          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+          : null,
       [parsed],
     );
     final (avatarScale, showTicker, showAllReactions) = ref.watch(
@@ -387,16 +376,14 @@ class _NoteDetailedContent extends HookConsumerWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               child: InkWell(
-                                onTap:
-                                    () => context.push(
-                                      '/$account/users/${appearNote.userId}',
-                                    ),
-                                onLongPress:
-                                    () => showUserSheet(
-                                      context: context,
-                                      account: account,
-                                      userId: appearNote.userId,
-                                    ),
+                                onTap: () => context.push(
+                                  '/$account/users/${appearNote.userId}',
+                                ),
+                                onLongPress: () => showUserSheet(
+                                  context: context,
+                                  account: account,
+                                  userId: appearNote.userId,
+                                ),
                                 child: UsernameWidget(
                                   account: account,
                                   user: appearNote.user,

@@ -37,12 +37,8 @@ class UserInfo extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/$account/users/${user.id}'),
-        onLongPress:
-            () => showUserSheet(
-              context: context,
-              account: account,
-              userId: user.id,
-            ),
+        onLongPress: () =>
+            showUserSheet(context: context, account: account, userId: user.id),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -143,12 +139,11 @@ class UserInfo extends ConsumerWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap:
-                          user.isFollowingVisibleForMe
-                              ? () => context.push(
-                                '/$account/users/${user.id}/following',
-                              )
-                              : null,
+                      onTap: user.isFollowingVisibleForMe
+                          ? () => context.push(
+                              '/$account/users/${user.id}/following',
+                            )
+                          : null,
                       child: Column(
                         children: [
                           Text(
@@ -176,12 +171,11 @@ class UserInfo extends ConsumerWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap:
-                          user.isFollowersVisibleForMe
-                              ? () => context.push(
-                                '/$account/users/${user.id}/followers',
-                              )
-                              : null,
+                      onTap: user.isFollowersVisibleForMe
+                          ? () => context.push(
+                              '/$account/users/${user.id}/followers',
+                            )
+                          : null,
                       child: Column(
                         children: [
                           Text(

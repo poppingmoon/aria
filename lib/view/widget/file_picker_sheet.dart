@@ -111,12 +111,11 @@ class FilePickerSheet extends ConsumerWidget {
             if (allowMultiple) {
               final result = await showDialog<List<DriveFile>>(
                 context: context,
-                builder:
-                    (context) => DrivePage(
-                      account: account,
-                      selectFiles: true,
-                      type: type ?? FileType.any,
-                    ),
+                builder: (context) => DrivePage(
+                  account: account,
+                  selectFiles: true,
+                  type: type ?? FileType.any,
+                ),
               );
               if (!context.mounted) return;
               if (result != null) {
@@ -129,12 +128,11 @@ class FilePickerSheet extends ConsumerWidget {
             } else {
               final result = await showDialog<DriveFile>(
                 context: context,
-                builder:
-                    (context) => DrivePage(
-                      account: account,
-                      selectFile: true,
-                      type: type ?? FileType.any,
-                    ),
+                builder: (context) => DrivePage(
+                  account: account,
+                  selectFile: true,
+                  type: type ?? FileType.any,
+                ),
               );
               if (!context.mounted) return;
               if (result != null) {
@@ -179,8 +177,9 @@ class FilePickerSheet extends ConsumerWidget {
                 }
               },
             );
-            final folderId =
-                ref.read(accountSettingsNotifierProvider(account)).uploadFolder;
+            final folderId = ref
+                .read(accountSettingsNotifierProvider(account))
+                .uploadFolder;
             await futureWithDialog(
               context,
               ref

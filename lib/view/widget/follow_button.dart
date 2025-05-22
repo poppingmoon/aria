@@ -21,8 +21,9 @@ class FollowButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user =
-        ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull;
+    final user = ref
+        .watch(userNotifierProvider(account, userId: userId))
+        .valueOrNull;
     if (user is! UserDetailedNotMeWithRelations) {
       return const SizedBox.shrink();
     }
@@ -48,9 +49,8 @@ class FollowButton extends HookConsumerWidget {
             content: UsernameWidget(
               account: account,
               user: user,
-              builder:
-                  (context, span) =>
-                      Text.rich(t.aria.unfollowConfirm(name: span)),
+              builder: (context, span) =>
+                  Text.rich(t.aria.unfollowConfirm(name: span)),
             ),
           );
           if (!context.mounted) return;
@@ -106,12 +106,12 @@ class FollowButton extends HookConsumerWidget {
               content: UsernameWidget(
                 account: account,
                 user: user,
-                builder:
-                    (context, span) =>
-                        Text.rich(t.aria.followConfirm(name: span)),
+                builder: (context, span) =>
+                    Text.rich(t.aria.followConfirm(name: span)),
               ),
-              okText:
-                  user.isLocked ? t.misskey.followRequest : t.misskey.follow,
+              okText: user.isLocked
+                  ? t.misskey.followRequest
+                  : t.misskey.follow,
             );
             if (!confirmed) return;
           }

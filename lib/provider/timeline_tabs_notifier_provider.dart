@@ -39,25 +39,28 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
 
   TabSettings _removeUnusedValues(TabSettings tabSettings) {
     return tabSettings.copyWith(
-      roleId:
-          tabSettings.tabType == TabType.roleTimeline
-              ? tabSettings.roleId
-              : null,
-      channelId:
-          tabSettings.tabType == TabType.channel ? tabSettings.channelId : null,
-      listId:
-          tabSettings.tabType == TabType.userList ? tabSettings.listId : null,
-      antennaId:
-          tabSettings.tabType == TabType.antenna ? tabSettings.antennaId : null,
+      roleId: tabSettings.tabType == TabType.roleTimeline
+          ? tabSettings.roleId
+          : null,
+      channelId: tabSettings.tabType == TabType.channel
+          ? tabSettings.channelId
+          : null,
+      listId: tabSettings.tabType == TabType.userList
+          ? tabSettings.listId
+          : null,
+      antennaId: tabSettings.tabType == TabType.antenna
+          ? tabSettings.antennaId
+          : null,
       userId: tabSettings.tabType == TabType.user ? tabSettings.userId : null,
-      endpoint:
-          tabSettings.tabType == TabType.custom ? tabSettings.endpoint : null,
-      streamingChannel:
-          tabSettings.tabType == TabType.custom
-              ? tabSettings.streamingChannel
-              : null,
-      parameters:
-          tabSettings.tabType == TabType.custom ? tabSettings.parameters : null,
+      endpoint: tabSettings.tabType == TabType.custom
+          ? tabSettings.endpoint
+          : null,
+      streamingChannel: tabSettings.tabType == TabType.custom
+          ? tabSettings.streamingChannel
+          : null,
+      parameters: tabSettings.tabType == TabType.custom
+          ? tabSettings.parameters
+          : null,
     );
   }
 
@@ -70,12 +73,9 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
   }
 
   Future<void> replace(String tabId, TabSettings tabSettings) async {
-    state =
-        state
-            .map(
-              (tab) => tab.id == tabId ? _removeUnusedValues(tabSettings) : tab,
-            )
-            .toList();
+    state = state
+        .map((tab) => tab.id == tabId ? _removeUnusedValues(tabSettings) : tab)
+        .toList();
     await _save();
   }
 

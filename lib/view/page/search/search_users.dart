@@ -22,16 +22,15 @@ class SearchUsers extends HookConsumerWidget {
     final controller = useTextEditingController();
     final query = useState('');
     final origin = useState(Origin.combined);
-    final users =
-        query.value.isNotEmpty
-            ? ref.watch(
-              searchUsersNotifierProvider(
-                account,
-                query.value,
-                userOrigin: origin.value,
-              ),
-            )
-            : null;
+    final users = query.value.isNotEmpty
+        ? ref.watch(
+            searchUsersNotifierProvider(
+              account,
+              query.value,
+              userOrigin: origin.value,
+            ),
+          )
+        : null;
 
     return PaginatedListView(
       header: SliverList.list(
@@ -76,8 +75,8 @@ class SearchUsers extends HookConsumerWidget {
                   ),
                 ],
                 selected: {origin.value},
-                onSelectionChanged:
-                    (selection) => origin.value = selection.single,
+                onSelectionChanged: (selection) =>
+                    origin.value = selection.single,
               ),
             ),
           ),
@@ -96,24 +95,22 @@ class SearchUsers extends HookConsumerWidget {
       ),
       paginationState: users,
       itemBuilder: (context, user) => UserInfo(account: account, user: user),
-      onRefresh:
-          () => ref.refresh(
+      onRefresh: () => ref.refresh(
+        searchUsersNotifierProvider(
+          account,
+          query.value,
+          userOrigin: origin.value,
+        ).future,
+      ),
+      loadMore: (skipError) => ref
+          .read(
             searchUsersNotifierProvider(
               account,
               query.value,
               userOrigin: origin.value,
-            ).future,
-          ),
-      loadMore:
-          (skipError) => ref
-              .read(
-                searchUsersNotifierProvider(
-                  account,
-                  query.value,
-                  userOrigin: origin.value,
-                ).notifier,
-              )
-              .loadMore(skipError: skipError),
+            ).notifier,
+          )
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.noUsers,
     );

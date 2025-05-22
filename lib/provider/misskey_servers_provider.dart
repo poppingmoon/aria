@@ -15,8 +15,9 @@ FutureOr<List<JoinMisskeyInstanceInfo>> misskeyServers(Ref ref) async {
   ref.onResume(() => timer?.cancel());
   ref.onDispose(() => timer?.cancel());
   try {
-    final response =
-        await JoinMisskey(host: 'instanceapp.misskey.page').instances();
+    final response = await JoinMisskey(
+      host: 'instanceapp.misskey.page',
+    ).instances();
     return response.instancesInfos.sortedByCompare(
       (server) => server.nodeInfo?.usage?.users?.total ?? 0,
       (a, b) => b.compareTo(a),

@@ -70,13 +70,11 @@ class DriveFolderWidget extends ConsumerWidget {
               ),
             ),
             IconButton(
-              onPressed:
-                  () => showModalBottomSheet<void>(
-                    context: context,
-                    builder:
-                        (context) =>
-                            DriveFolderSheet(account: account, folder: folder),
-                  ),
+              onPressed: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) =>
+                    DriveFolderSheet(account: account, folder: folder),
+              ),
               icon: const Icon(Icons.more_vert),
             ),
           ],

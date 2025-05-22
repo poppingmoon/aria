@@ -19,18 +19,16 @@ class PlaysFeatured extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: plays,
-      itemBuilder:
-          (context, play) => PlayPreview(
-            account: account,
-            play: play,
-            onTap: () => context.push('/$account/play/${play.id}'),
-          ),
-      onRefresh:
-          () => ref.refresh(featuredPlaysNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(featuredPlaysNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, play) => PlayPreview(
+        account: account,
+        play: play,
+        onTap: () => context.push('/$account/play/${play.id}'),
+      ),
+      onRefresh: () =>
+          ref.refresh(featuredPlaysNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(featuredPlaysNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

@@ -27,17 +27,15 @@ extension NoteExtension on Note {
       renoteId: renoteId,
       channelId: channelId,
       text: text,
-      poll:
-          poll != null
-              ? NotesCreatePollRequest(
-                choices: poll.choices.map((choice) => choice.text).toList(),
-                multiple: poll.multiple,
-                expiresAt:
-                    poll.expiresAt?.isAfter(DateTime.now()) ?? false
-                        ? poll.expiresAt
-                        : null,
-              )
-              : null,
+      poll: poll != null
+          ? NotesCreatePollRequest(
+              choices: poll.choices.map((choice) => choice.text).toList(),
+              multiple: poll.multiple,
+              expiresAt: poll.expiresAt?.isAfter(DateTime.now()) ?? false
+                  ? poll.expiresAt
+                  : null,
+            )
+          : null,
     );
   }
 }

@@ -66,10 +66,9 @@ class NotePage extends HookConsumerWidget {
 
     final centerKey = useMemoized(() => GlobalKey(), []);
     final remoteUrl = note.uri ?? note.url;
-    final remoteNoteId =
-        remoteUrl?.pathSegments
-            .where((segment) => segment != 'activity')
-            .lastOrNull;
+    final remoteNoteId = remoteUrl?.pathSegments
+        .where((segment) => segment != 'activity')
+        .lastOrNull;
     final isChannelNote = note.channelId != null;
     final showUserNextNotes = useState(false);
     final showTimelineNextNotes = useState(false);
@@ -81,42 +80,39 @@ class NotePage extends HookConsumerWidget {
         i?.policies?.ltlAvailable ?? meta?.policies?.ltlAvailable ?? true;
     final gtlAvailable =
         i?.policies?.ltlAvailable ?? meta?.policies?.ltlAvailable ?? true;
-    final tabSettings =
-        isChannelNote
-            ? TabSettings.channel(account, note.channelId!)
-            : ltlAvailable && note.user.host == null
-            ? TabSettings.localTimeline(account)
-            : gtlAvailable
-            ? TabSettings.globalTimeline(account)
-            : !account.isGuest
-            ? TabSettings.homeTimeline(account)
-            : null;
-    final nextNotesState =
-        showNextNotes
-            ? ref.watch(
-              timelineNotesAfterNoteNotifierProvider(
-                showTimelineNextNotes.value && tabSettings != null
-                    ? tabSettings
-                    : TabSettings.user(account, note.userId),
-                sinceId: noteId,
-              ),
-            )
-            : null;
+    final tabSettings = isChannelNote
+        ? TabSettings.channel(account, note.channelId!)
+        : ltlAvailable && note.user.host == null
+        ? TabSettings.localTimeline(account)
+        : gtlAvailable
+        ? TabSettings.globalTimeline(account)
+        : !account.isGuest
+        ? TabSettings.homeTimeline(account)
+        : null;
+    final nextNotesState = showNextNotes
+        ? ref.watch(
+            timelineNotesAfterNoteNotifierProvider(
+              showTimelineNextNotes.value && tabSettings != null
+                  ? tabSettings
+                  : TabSettings.user(account, note.userId),
+              sinceId: noteId,
+            ),
+          )
+        : null;
     final showUserPreviousNotes = useState(false);
     final showTimelinePreviousNotes = useState(false);
     final showPreviousNotes =
         showTimelinePreviousNotes.value || showUserPreviousNotes.value;
-    final previousNotesState =
-        showPreviousNotes
-            ? ref.watch(
-              timelineNotesNotifierProvider(
-                showTimelinePreviousNotes.value && tabSettings != null
-                    ? tabSettings
-                    : TabSettings.user(account, note.userId),
-                untilId: noteId,
-              ),
-            )
-            : null;
+    final previousNotesState = showPreviousNotes
+        ? ref.watch(
+            timelineNotesNotifierProvider(
+              showTimelinePreviousNotes.value && tabSettings != null
+                  ? tabSettings
+                  : TabSettings.user(account, note.userId),
+              untilId: noteId,
+            ),
+          )
+        : null;
     final controller = useScrollController();
     useEffect(() {
       if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
@@ -193,18 +189,16 @@ class NotePage extends HookConsumerWidget {
                   width: maxContentWidth,
                   child: PaginationBottomWidget(
                     paginationState: nextNotesState,
-                    loadMore:
-                        () => ref
-                            .read(
-                              timelineNotesAfterNoteNotifierProvider(
-                                showTimelineNextNotes.value &&
-                                        tabSettings != null
-                                    ? tabSettings
-                                    : TabSettings.user(account, note.userId),
-                                sinceId: noteId,
-                              ).notifier,
-                            )
-                            .loadMore(skipError: true),
+                    loadMore: () => ref
+                        .read(
+                          timelineNotesAfterNoteNotifierProvider(
+                            showTimelineNextNotes.value && tabSettings != null
+                                ? tabSettings
+                                : TabSettings.user(account, note.userId),
+                            sinceId: noteId,
+                          ).notifier,
+                        )
+                        .loadMore(skipError: true),
                     reversed: true,
                   ),
                 ),
@@ -213,42 +207,38 @@ class NotePage extends HookConsumerWidget {
             if (nextNotesState.valueOrNull?.items case final notes?
                 when notes.isNotEmpty)
               SliverList.separated(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == notes.length - 1 ? 4.0 : 0.0,
-                          right: 8.0,
-                          bottom: index == 0 ? 4.0 : 0.0,
-                        ),
-                        width: maxContentWidth,
-                        child: NoteWidget(
-                          account: account,
-                          noteId: notes[notes.length - index - 1].id,
-                          borderRadius: BorderRadius.vertical(
-                            top:
-                                index == notes.length - 1
-                                    ? const Radius.circular(8.0)
-                                    : Radius.zero,
-                            bottom:
-                                index == 0
-                                    ? const Radius.circular(8.0)
-                                    : Radius.zero,
-                          ),
-                        ),
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == notes.length - 1 ? 4.0 : 0.0,
+                      right: 8.0,
+                      bottom: index == 0 ? 4.0 : 0.0,
+                    ),
+                    width: maxContentWidth,
+                    child: NoteWidget(
+                      account: account,
+                      noteId: notes[notes.length - index - 1].id,
+                      borderRadius: BorderRadius.vertical(
+                        top: index == notes.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
                       ),
                     ),
-                separatorBuilder:
-                    (context, index) => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: SizedBox(
-                          width: maxContentWidth,
-                          child: Divider(height: 1.0),
-                        ),
-                      ),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 1.0),
                     ),
+                  ),
+                ),
                 itemCount: notes.length,
               ),
           ] else
@@ -283,68 +273,64 @@ class NotePage extends HookConsumerWidget {
             ),
           SliverToBoxAdapter(
             key: centerKey,
-            child:
-                remoteUrl != null
-                    ? Center(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 4.0,
-                          horizontal: 8.0,
-                        ),
-                        width: maxContentWidth,
-                        child: Card.filled(
-                          color: colors.infoWarnBg,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        WidgetSpan(
-                                          alignment:
-                                              PlaceholderAlignment.middle,
-                                          child: Icon(
-                                            Icons.warning,
-                                            color: colors.infoWarnFg,
-                                          ),
+            child: remoteUrl != null
+                ? Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 4.0,
+                        horizontal: 8.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Card.filled(
+                        color: colors.infoWarnBg,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.middle,
+                                        child: Icon(
+                                          Icons.warning,
+                                          color: colors.infoWarnFg,
                                         ),
-                                        TextSpan(
-                                          text: t.misskey.remoteUserCaution,
-                                          style: TextStyle(
-                                            color: colors.infoWarnFg,
-                                          ),
+                                      ),
+                                      TextSpan(
+                                        text: t.misskey.remoteUserCaution,
+                                        style: TextStyle(
+                                          color: colors.infoWarnFg,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Wrap(
-                                  children: [
+                              ),
+                              Wrap(
+                                children: [
+                                  TextButton(
+                                    onPressed: () => launchUrl(ref, remoteUrl),
+                                    child: Text(t.misskey.showOnRemote),
+                                  ),
+                                  if (remoteNoteId != null)
                                     TextButton(
-                                      onPressed:
-                                          () => launchUrl(ref, remoteUrl),
-                                      child: Text(t.misskey.showOnRemote),
-                                    ),
-                                    if (remoteNoteId != null)
-                                      TextButton(
-                                        onPressed:
-                                            () => context.push(
-                                              '/${remoteUrl.host}/notes/$remoteNoteId',
-                                            ),
-                                        child: Text(t.aria.openAsGuest),
+                                      onPressed: () => context.push(
+                                        '/${remoteUrl.host}/notes/$remoteNoteId',
                                       ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                      child: Text(t.aria.openAsGuest),
+                                    ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    )
-                    : null,
+                    ),
+                  )
+                : null,
           ),
           SliverToBoxAdapter(
             child: Center(
@@ -370,59 +356,53 @@ class NotePage extends HookConsumerWidget {
             if (previousNotesState.valueOrNull?.items case final notes?
                 when notes.isNotEmpty)
               SliverList.separated(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 4.0 : 0.0,
-                          right: 8.0,
-                          bottom: index == notes.length - 1 ? 4.0 : 0.0,
-                        ),
-                        width: maxContentWidth,
-                        child: NoteWidget(
-                          account: account,
-                          noteId: notes[index].id,
-                          borderRadius: BorderRadius.vertical(
-                            top:
-                                index == 0
-                                    ? const Radius.circular(8.0)
-                                    : Radius.zero,
-                            bottom:
-                                index == notes.length - 1
-                                    ? const Radius.circular(8.0)
-                                    : Radius.zero,
-                          ),
-                        ),
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == 0 ? 4.0 : 0.0,
+                      right: 8.0,
+                      bottom: index == notes.length - 1 ? 4.0 : 0.0,
+                    ),
+                    width: maxContentWidth,
+                    child: NoteWidget(
+                      account: account,
+                      noteId: notes[index].id,
+                      borderRadius: BorderRadius.vertical(
+                        top: index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: index == notes.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
                       ),
                     ),
-                separatorBuilder:
-                    (context, index) => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: SizedBox(
-                          width: maxContentWidth,
-                          child: Divider(height: 0.0),
-                        ),
-                      ),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 0.0),
                     ),
+                  ),
+                ),
                 itemCount: notes.length,
               ),
             SliverToBoxAdapter(
               child: PaginationBottomWidget(
                 paginationState: previousNotesState,
-                loadMore:
-                    () => ref
-                        .read(
-                          timelineNotesNotifierProvider(
-                            showTimelinePreviousNotes.value &&
-                                    tabSettings != null
-                                ? tabSettings
-                                : TabSettings.user(account, note.userId),
-                            untilId: noteId,
-                          ).notifier,
-                        )
-                        .loadMore(skipError: true),
+                loadMore: () => ref
+                    .read(
+                      timelineNotesNotifierProvider(
+                        showTimelinePreviousNotes.value && tabSettings != null
+                            ? tabSettings
+                            : TabSettings.user(account, note.userId),
+                        untilId: noteId,
+                      ).notifier,
+                    )
+                    .loadMore(skipError: true),
               ),
             ),
           ] else

@@ -42,8 +42,8 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
             );
             return servers.map((server) => server.url).toList();
           },
-          fieldViewBuilder:
-              (context, textEditingController, focusNode, _) => TextField(
+          fieldViewBuilder: (context, textEditingController, focusNode, _) =>
+              TextField(
                 key: textFieldKey,
                 controller: textEditingController,
                 focusNode: focusNode,
@@ -53,10 +53,10 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
                   hintText: 'misskey.io',
                   prefixText:
                       textEditingController.value.text.startsWith(
-                            RegExp('https?://'),
-                          )
-                          ? null
-                          : 'https://',
+                        RegExp('https?://'),
+                      )
+                      ? null
+                      : 'https://',
                   suffixIcon: IconButton(
                     onPressed: () => controller.clear(),
                     icon: const Icon(Icons.close),
@@ -66,121 +66,105 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
                 onSubmitted: onSubmitted,
                 keyboardType: TextInputType.url,
                 textInputAction: TextInputAction.done,
-                contextMenuBuilder:
-                    (context, editableTextState) =>
-                        AdaptiveTextSelectionToolbar.editable(
-                          clipboardStatus: ClipboardStatus.pasteable,
-                          onCopy:
-                              editableTextState.copyEnabled
-                                  ? () => editableTextState.copySelection(
-                                    SelectionChangedCause.toolbar,
-                                  )
-                                  : null,
-                          onCut:
-                              editableTextState.cutEnabled
-                                  ? () => editableTextState.cutSelection(
-                                    SelectionChangedCause.toolbar,
-                                  )
-                                  : null,
-                          onPaste:
-                              editableTextState.pasteEnabled
-                                  ? () async {
-                                    final data = await Clipboard.getData(
-                                      Clipboard.kTextPlain,
-                                    );
-                                    if (data case ClipboardData(:final text?)) {
-                                      final trimmed = text.trim();
-                                      final match = RegExp(
-                                        '^(https?://)?([^/]*)',
-                                        caseSensitive: false,
-                                      ).firstMatch(trimmed);
-                                      final scheme = match?[1];
-                                      final host = match?[2] ?? trimmed;
-                                      await Clipboard.setData(
-                                        ClipboardData(
-                                          text:
-                                              [
-                                                if (scheme case final scheme?
-                                                    when scheme.toLowerCase() !=
-                                                        'https://')
-                                                  scheme,
-                                                toAscii(host).toLowerCase(),
-                                              ].join(),
-                                        ),
-                                      );
-                                      await editableTextState.pasteText(
-                                        SelectionChangedCause.toolbar,
-                                      );
-                                    }
-                                  }
-                                  : null,
-                          onSelectAll:
-                              editableTextState.selectAllEnabled
-                                  ? () => editableTextState.selectAll(
-                                    SelectionChangedCause.toolbar,
-                                  )
-                                  : null,
-                          onLookUp:
-                              editableTextState.lookUpEnabled
-                                  ? () => editableTextState.lookUpSelection(
-                                    SelectionChangedCause.toolbar,
-                                  )
-                                  : null,
-                          onSearchWeb:
-                              editableTextState.searchWebEnabled
-                                  ? () =>
-                                      editableTextState.searchWebForSelection(
-                                        SelectionChangedCause.toolbar,
-                                      )
-                                  : null,
-                          onShare:
-                              editableTextState.shareEnabled
-                                  ? () => editableTextState.shareSelection(
-                                    SelectionChangedCause.toolbar,
-                                  )
-                                  : null,
-                          onLiveTextInput: null,
-                          anchors: editableTextState.contextMenuAnchors,
-                        ),
+                contextMenuBuilder: (context, editableTextState) =>
+                    AdaptiveTextSelectionToolbar.editable(
+                      clipboardStatus: ClipboardStatus.pasteable,
+                      onCopy: editableTextState.copyEnabled
+                          ? () => editableTextState.copySelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onCut: editableTextState.cutEnabled
+                          ? () => editableTextState.cutSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onPaste: editableTextState.pasteEnabled
+                          ? () async {
+                              final data = await Clipboard.getData(
+                                Clipboard.kTextPlain,
+                              );
+                              if (data case ClipboardData(:final text?)) {
+                                final trimmed = text.trim();
+                                final match = RegExp(
+                                  '^(https?://)?([^/]*)',
+                                  caseSensitive: false,
+                                ).firstMatch(trimmed);
+                                final scheme = match?[1];
+                                final host = match?[2] ?? trimmed;
+                                await Clipboard.setData(
+                                  ClipboardData(
+                                    text: [
+                                      if (scheme case final scheme?
+                                          when scheme.toLowerCase() !=
+                                              'https://')
+                                        scheme,
+                                      toAscii(host).toLowerCase(),
+                                    ].join(),
+                                  ),
+                                );
+                                await editableTextState.pasteText(
+                                  SelectionChangedCause.toolbar,
+                                );
+                              }
+                            }
+                          : null,
+                      onSelectAll: editableTextState.selectAllEnabled
+                          ? () => editableTextState.selectAll(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onLookUp: editableTextState.lookUpEnabled
+                          ? () => editableTextState.lookUpSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onSearchWeb: editableTextState.searchWebEnabled
+                          ? () => editableTextState.searchWebForSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onShare: editableTextState.shareEnabled
+                          ? () => editableTextState.shareSelection(
+                              SelectionChangedCause.toolbar,
+                            )
+                          : null,
+                      onLiveTextInput: null,
+                      anchors: editableTextState.contextMenuAnchors,
+                    ),
               ),
-          optionsViewBuilder:
-              (context, onSelected, options) => Align(
-                alignment: AlignmentDirectional.topStart,
-                child: Material(
-                  elevation: 4.0,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: 200.0,
-                      maxWidth:
-                          (textFieldKey.currentContext?.findRenderObject()
-                                  as RenderBox?)
-                              ?.size
-                              .width ??
-                          min(
-                                MediaQuery.sizeOf(context).width,
-                                maxContentWidth,
-                              ) -
-                              64.0,
+          optionsViewBuilder: (context, onSelected, options) => Align(
+            alignment: AlignmentDirectional.topStart,
+            child: Material(
+              elevation: 4.0,
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: 200.0,
+                  maxWidth:
+                      (textFieldKey.currentContext?.findRenderObject()
+                              as RenderBox?)
+                          ?.size
+                          .width ??
+                      min(MediaQuery.sizeOf(context).width, maxContentWidth) -
+                          64.0,
+                ),
+                // Use `CustomScrollView` instead of `ListView` because
+                // `ListView` shows white space on top of the options
+                // for mobile devices.
+                child: CustomScrollView(
+                  slivers: [
+                    SliverList.builder(
+                      itemBuilder: (context, index) => ListTile(
+                        title: Text(options.elementAt(index)),
+                        onTap: () => onSelected(options.elementAt(index)),
+                      ),
+                      itemCount: options.length,
                     ),
-                    // Use `CustomScrollView` instead of `ListView` because
-                    // `ListView` shows white space on top of the options
-                    // for mobile devices.
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverList.builder(
-                          itemBuilder:
-                              (context, index) => ListTile(
-                                title: Text(options.elementAt(index)),
-                                onTap:
-                                    () => onSelected(options.elementAt(index)),
-                              ),
-                          itemCount: options.length,
-                        ),
-                      ],
-                    ),
-                  ),
+                  ],
                 ),
               ),
+            ),
+          ),
         ),
       ),
     );

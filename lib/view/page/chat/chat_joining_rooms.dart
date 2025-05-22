@@ -24,89 +24,82 @@ class ChatJoiningRooms extends ConsumerWidget {
 
     if (memberships.error case MisskeyException(code: 'PERMISSION_DENIED')) {
       return RefreshIndicator(
-        onRefresh:
-            () => ref.refresh(chatMembershipsNotifierProvider(account).future),
+        onRefresh: () =>
+            ref.refresh(chatMembershipsNotifierProvider(account).future),
         child: LayoutBuilder(
-          builder:
-              (context, constraint) => SingleChildScrollView(
-                physics: const AlwaysScrollableScrollPhysics(),
-                child: SizedBox(
-                  height: constraint.maxHeight,
-                  child: Center(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      width: maxContentWidth,
-                      padding: const EdgeInsets.all(16.0),
-                      child: PermissionDeniedErrorWidget(account: account),
-                    ),
-                  ),
+          builder: (context, constraint) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: SizedBox(
+              height: constraint.maxHeight,
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.all(16.0),
+                  child: PermissionDeniedErrorWidget(account: account),
                 ),
               ),
+            ),
+          ),
         ),
       );
     }
 
     return PaginatedListView(
       paginationState: memberships,
-      itemBuilder:
-          (context, membership) => Card.filled(
-            color: theme.colorScheme.surface,
-            margin: EdgeInsets.zero,
-            clipBehavior: Clip.hardEdge,
-            child: InkWell(
-              onTap:
-                  () =>
-                      context.push('/$account/chat/room/${membership.roomId}'),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8.0,
-                  horizontal: 16.0,
-                ),
-                child: Row(
-                  spacing: 8.0,
-                  children: [
-                    if (membership.room?.owner case final user?)
-                      UserAvatar(
-                        account: account,
-                        user: user,
-                        size: 40.0,
-                        onTap: () => context.push('/$account/users/${user.id}'),
-                      ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 4.0,
-                        children: [
-                          if (membership.room?.name case final name?)
-                            Text(name),
-                          if (membership.room?.description
-                              case final description?
-                              when description.isNotEmpty)
-                            Text(
-                              description,
-                              style: style.apply(
-                                fontSizeFactor: 0.9,
-                                color: theme.colorScheme.onSurface.withValues(
-                                  alpha: 0.8,
-                                ),
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
+      itemBuilder: (context, membership) => Card.filled(
+        color: theme.colorScheme.surface,
+        margin: EdgeInsets.zero,
+        clipBehavior: Clip.hardEdge,
+        child: InkWell(
+          onTap: () => context.push('/$account/chat/room/${membership.roomId}'),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 16.0,
+            ),
+            child: Row(
+              spacing: 8.0,
+              children: [
+                if (membership.room?.owner case final user?)
+                  UserAvatar(
+                    account: account,
+                    user: user,
+                    size: 40.0,
+                    onTap: () => context.push('/$account/users/${user.id}'),
+                  ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 4.0,
+                    children: [
+                      if (membership.room?.name case final name?) Text(name),
+                      if (membership.room?.description case final description?
+                          when description.isNotEmpty)
+                        Text(
+                          description,
+                          style: style.apply(
+                            fontSizeFactor: 0.9,
+                            color: theme.colorScheme.onSurface.withValues(
+                              alpha: 0.8,
                             ),
-                        ],
-                      ),
-                    ),
-                  ],
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                        ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
-      onRefresh:
-          () => ref.refresh(chatMembershipsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(chatMembershipsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+        ),
+      ),
+      onRefresh: () =>
+          ref.refresh(chatMembershipsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(chatMembershipsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.chat_.noRooms,
     );

@@ -58,10 +58,9 @@ class NoteSubWidget extends HookConsumerWidget {
         ),
       ),
     );
-    final children =
-        showReplies && depth < 5
-            ? ref.watch(childrenNotesNotifierProvider(account, noteId))
-            : null;
+    final children = showReplies && depth < 5
+        ? ref.watch(childrenNotesNotifierProvider(account, noteId))
+        : null;
     final showContent = useState(alwaysExpandCw);
     final style = DefaultTextStyle.of(context).style;
 
@@ -110,8 +109,8 @@ class NoteSubWidget extends HookConsumerWidget {
                       account: account,
                       user: note.user,
                       size: style.lineHeight * avatarScale * 0.9,
-                      onTap:
-                          () => context.push('/$account/users/${note.userId}'),
+                      onTap: () =>
+                          context.push('/$account/users/${note.userId}'),
                     ),
                   ),
                 ),

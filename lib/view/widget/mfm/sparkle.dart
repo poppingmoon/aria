@@ -50,10 +50,9 @@ class Sparkle extends HookWidget {
         for (final particle in particles.value) {
           particle.update(diff);
         }
-        particles.value =
-            particles.value
-                .where((particle) => particle.timeAlive <= particle.duration)
-                .toList();
+        particles.value = particles.value
+            .where((particle) => particle.timeAlive <= particle.duration)
+            .toList();
         if (timer == null || !timer!.isActive) {
           timer = Timer(Duration(milliseconds: 500 + random.nextInt(500)), () {
             if (!context.mounted) return;
@@ -133,11 +132,10 @@ class _ParticlePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
-      final matrix =
-          Matrix4.identity()
-            ..translate(particle.position.dx, particle.position.dy)
-            ..scale(particle.scale, particle.scale)
-            ..rotateZ(particle.angle);
+      final matrix = Matrix4.identity()
+        ..translate(particle.position.dx, particle.position.dy)
+        ..scale(particle.scale, particle.scale)
+        ..rotateZ(particle.angle);
       canvas.drawPath(
         particle.path.transform(matrix.storage),
         particlePaint..color = particle.color,

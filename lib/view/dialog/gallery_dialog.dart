@@ -31,18 +31,17 @@ class GalleryDialog extends ConsumerWidget {
               value: files.every((file) => post.fileIds.contains(file.id)),
               onChanged: (value) async {
                 if (value == null) return;
-                final fileIds =
-                    value
-                        ? {
-                          ...post.fileIds,
-                          ...files.map((file) => file.id),
-                        }.toList()
-                        : post.fileIds
-                            .where(
-                              (fileId) =>
-                                  files.every((file) => file.id != fileId),
-                            )
-                            .toList();
+                final fileIds = value
+                    ? {
+                        ...post.fileIds,
+                        ...files.map((file) => file.id),
+                      }.toList()
+                    : post.fileIds
+                          .where(
+                            (fileId) =>
+                                files.every((file) => file.id != fileId),
+                          )
+                          .toList();
                 await futureWithDialog(
                   context,
                   ref

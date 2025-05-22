@@ -72,16 +72,15 @@ class LayersViewerState extends State<LayersViewer> {
             onInteractionStart: widget.onInteractionStart,
             onInteractionUpdate: widget.onInteractionUpdate,
             onInteractionEnd: widget.onInteractionEnd,
-            child:
-                backgroundImage != null
-                    ? CustomPaint(
-                      size: backgroundImage.size,
-                      painter: _LayersPainter(
-                        layers: widget.layers,
-                        images: widget.images,
-                      ),
-                    )
-                    : const SizedBox.shrink(),
+            child: backgroundImage != null
+                ? CustomPaint(
+                    size: backgroundImage.size,
+                    painter: _LayersPainter(
+                      layers: widget.layers,
+                      images: widget.images,
+                    ),
+                  )
+                : const SizedBox.shrink(),
           ),
         ),
       ),

@@ -26,10 +26,9 @@ class SearchChannelsNotifier extends _$SearchChannelsNotifier {
         .search(
           ChannelsSearchRequest(
             query: query,
-            type:
-                includeDescription
-                    ? ChannelSearchType.nameAndDescription
-                    : ChannelSearchType.nameOnly,
+            type: includeDescription
+                ? ChannelSearchType.nameAndDescription
+                : ChannelSearchType.nameOnly,
             untilId: untilId,
           ),
         );

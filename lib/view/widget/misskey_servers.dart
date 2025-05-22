@@ -44,11 +44,10 @@ class MisskeyServers extends HookConsumerWidget {
             onRefresh: () => ref.refresh(misskeyServersProvider.future),
             child: switch (servers) {
               AsyncValue(valueOrNull: final servers?) => ListView.builder(
-                itemBuilder:
-                    (context, index) => _ServerPreview(
-                      server: servers[index],
-                      onTap: () => onTapServer(servers[index]),
-                    ),
+                itemBuilder: (context, index) => _ServerPreview(
+                  server: servers[index],
+                  onTap: () => onTapServer(servers[index]),
+                ),
                 itemCount: servers.length,
               ),
               AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
@@ -131,15 +130,14 @@ class _ServerPreview extends ConsumerWidget {
                               children: [
                                 Text(
                                   server.name,
-                                  style: Theme.of(
-                                    context,
-                                  ).textTheme.titleMedium?.merge(
-                                    const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      shadows: [BoxShadow(blurRadius: 8.0)],
-                                    ),
-                                  ),
+                                  style: Theme.of(context).textTheme.titleMedium
+                                      ?.merge(
+                                        const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          shadows: [BoxShadow(blurRadius: 8.0)],
+                                        ),
+                                      ),
                                   maxLines: 3,
                                 ),
                                 Text(
@@ -173,9 +171,8 @@ class _ServerPreview extends ConsumerWidget {
                 if (server case JoinMisskeyInstanceInfo(:final description?))
                   Html(
                     data: description,
-                    onLinkTap:
-                        (url, _, _) =>
-                            url != null ? launchUrl(ref, Uri.parse(url)) : null,
+                    onLinkTap: (url, _, _) =>
+                        url != null ? launchUrl(ref, Uri.parse(url)) : null,
                     style: {
                       'a': Style(
                         color: colors.link,

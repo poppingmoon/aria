@@ -46,10 +46,9 @@ class ChatMessageWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final nodes =
-        message.text != null
-            ? ref.watch(parsedMfmProvider(message.text!))
-            : null;
+    final nodes = message.text != null
+        ? ref.watch(parsedMfmProvider(message.text!))
+        : null;
     final urls = useMemoized(() {
       if (nodes != null) {
         return extractUrl(nodes);
@@ -81,17 +80,15 @@ class ChatMessageWidget extends HookConsumerWidget {
             SizedBox(width: avatarSize),
         Expanded(
           child: Column(
-            crossAxisAlignment:
-                !isMyMessage
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.end,
+            crossAxisAlignment: !isMyMessage
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.end,
             children: [
               if (nodes != null)
                 Card.filled(
-                  color:
-                      isMyMessage
-                          ? theme.colorScheme.primaryContainer
-                          : theme.colorScheme.surface,
+                  color: isMyMessage
+                      ? theme.colorScheme.primaryContainer
+                      : theme.colorScheme.surface,
                   margin: EdgeInsets.zero,
                   clipBehavior: Clip.hardEdge,
                   child: InkWell(
@@ -99,13 +96,12 @@ class ChatMessageWidget extends HookConsumerWidget {
                       if (message.id.isEmpty) return;
                       showModalBottomSheet<void>(
                         context: context,
-                        builder:
-                            (context) => _ChatMessageSheet(
-                              account: account,
-                              message: message,
-                              user: user,
-                              updateMessage: updateMessage,
-                            ),
+                        builder: (context) => _ChatMessageSheet(
+                          account: account,
+                          message: message,
+                          user: user,
+                          updateMessage: updateMessage,
+                        ),
                       );
                     },
                     child: Padding(
@@ -146,13 +142,12 @@ class ChatMessageWidget extends HookConsumerWidget {
                     if (message.id.isEmpty) return;
                     showModalBottomSheet<void>(
                       context: context,
-                      builder:
-                          (context) => _ChatMessageSheet(
-                            account: account,
-                            message: message,
-                            user: user,
-                            updateMessage: updateMessage,
-                          ),
+                      builder: (context) => _ChatMessageSheet(
+                        account: account,
+                        message: message,
+                        user: user,
+                        updateMessage: updateMessage,
+                      ),
                     );
                   },
                 ),
@@ -162,10 +157,9 @@ class ChatMessageWidget extends HookConsumerWidget {
                 SizedBox(
                   width: double.infinity,
                   child: Align(
-                    alignment:
-                        !isMyMessage
-                            ? AlignmentDirectional.centerStart
-                            : AlignmentDirectional.centerEnd,
+                    alignment: !isMyMessage
+                        ? AlignmentDirectional.centerStart
+                        : AlignmentDirectional.centerEnd,
                     child: _ReactionsViewer(
                       account: account,
                       messageId: message.id,
@@ -218,15 +212,14 @@ class _ChatMessageSheet extends ConsumerWidget {
       shrinkWrap: true,
       children: [
         ListTile(
-          leading:
-              user != null
-                  ? UserAvatar(
-                    account: account,
-                    user: user,
-                    size: 32.0,
-                    onTap: () => context.push('/$account/users/${user.id}'),
-                  )
-                  : null,
+          leading: user != null
+              ? UserAvatar(
+                  account: account,
+                  user: user,
+                  size: 32.0,
+                  onTap: () => context.push('/$account/users/${user.id}'),
+                )
+              : null,
           title: Mfm(
             account: account,
             text: [
@@ -332,15 +325,14 @@ class _ReactionsViewer extends HookConsumerWidget {
           case final RenderBox renderBox) {
         final offset = renderBox.localToGlobal(Offset.zero);
         final entry = OverlayEntry(
-          builder:
-              (context) => Positioned(
-                left: offset.dx,
-                top: offset.dy,
-                child: Material(
-                  color: Colors.transparent,
-                  child: ReactionEffect(account: account, emoji: emoji),
-                ),
-              ),
+          builder: (context) => Positioned(
+            left: offset.dx,
+            top: offset.dy,
+            child: Material(
+              color: Colors.transparent,
+              child: ReactionEffect(account: account, emoji: emoji),
+            ),
+          ),
         );
         Overlay.of(context).insert(entry);
         Future.delayed(const Duration(milliseconds: 1100), () {
@@ -354,10 +346,8 @@ class _ReactionsViewer extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final (scale, reduceAnimation) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.reactionsDisplayScale,
-          settings.reduceAnimation,
-        ),
+        (settings) =>
+            (settings.reactionsDisplayScale, settings.reduceAnimation),
       ),
     );
     final reactions = useState(this.reactions);
@@ -389,19 +379,18 @@ class _ReactionsViewer extends HookConsumerWidget {
       spacing: 2.0,
       runSpacing: 2.0,
       crossAxisAlignment: WrapCrossAlignment.center,
-      children:
-          reactions.value
-              .mapIndexed(
-                (index, reaction) => _ReactionButton(
-                  account: account,
-                  messageId: messageId,
-                  reaction: reaction,
-                  user: user,
-                  emojiKey: keys.value[index],
-                  updateMessage: updateMessage,
-                ),
-              )
-              .toList(),
+      children: reactions.value
+          .mapIndexed(
+            (index, reaction) => _ReactionButton(
+              account: account,
+              messageId: messageId,
+              reaction: reaction,
+              user: user,
+              emojiKey: keys.value[index],
+              updateMessage: updateMessage,
+            ),
+          )
+          .toList(),
     );
   }
 }
@@ -431,8 +420,9 @@ class _ReactionButton extends ConsumerWidget {
         (settings) => settings.reactionsDisplayScale,
       ),
     );
-    final isMyReaction =
-        reaction.user == null ? this.user == null : reaction.user?.id == i?.id;
+    final isMyReaction = reaction.user == null
+        ? this.user == null
+        : reaction.user?.id == i?.id;
     final user = reaction.user ?? (isMyReaction ? i : this.user);
     final theme = Theme.of(context);
     final style = DefaultTextStyle.of(
@@ -442,51 +432,49 @@ class _ReactionButton extends ConsumerWidget {
 
     return Tooltip(
       richMessage: WidgetSpan(
-        child:
-            user != null
-                ? UsernameWidget(
-                  account: account,
-                  leadingSpans: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: UserAvatar(account: account, user: user),
-                    ),
-                    const WidgetSpan(child: SizedBox(width: 4.0)),
-                  ],
-                  user: user,
-                  style: TextStyle(
-                    color: switch (theme.brightness) {
-                      Brightness.light => Colors.white,
-                      Brightness.dark => Colors.black,
-                    },
+        child: user != null
+            ? UsernameWidget(
+                account: account,
+                leadingSpans: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: UserAvatar(account: account, user: user),
                   ),
-                )
-                : const SizedBox.shrink(),
+                  const WidgetSpan(child: SizedBox(width: 4.0)),
+                ],
+                user: user,
+                style: TextStyle(
+                  color: switch (theme.brightness) {
+                    Brightness.light => Colors.white,
+                    Brightness.dark => Colors.black,
+                  },
+                ),
+              )
+            : const SizedBox.shrink(),
       ),
       child: ElevatedButton(
-        onPressed:
-            isMyReaction
-                ? () async {
-                  final result = await futureWithDialog(
-                    context,
-                    ref
-                        .read(misskeyProvider(account))
-                        .chat
-                        .messages
-                        .unreact(
-                          ChatMessagesUnreactRequest(
-                            messageId: messageId,
-                            reaction: reaction.reaction,
-                          ),
-                        )
-                        .then((_) => ()),
-                    overlay: false,
-                  );
-                  if (result != null) {
-                    updateMessage?.call();
-                  }
+        onPressed: isMyReaction
+            ? () async {
+                final result = await futureWithDialog(
+                  context,
+                  ref
+                      .read(misskeyProvider(account))
+                      .chat
+                      .messages
+                      .unreact(
+                        ChatMessagesUnreactRequest(
+                          messageId: messageId,
+                          reaction: reaction.reaction,
+                        ),
+                      )
+                      .then((_) => ()),
+                  overlay: false,
+                );
+                if (result != null) {
+                  updateMessage?.call();
                 }
-                : null,
+              }
+            : null,
         style: ElevatedButton.styleFrom(
           foregroundColor: colors.accent,
           backgroundColor: colors.accentedBg,

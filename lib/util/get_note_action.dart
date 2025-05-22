@@ -25,53 +25,53 @@ void Function()? getNoteAction(
   }
   return switch (type) {
     NoteActionType.none => null,
-    NoteActionType.expand =>
-      () => ref.context.push('/$account/notes/${appearNote.id}'),
-    NoteActionType.menu =>
-      () => showNoteSheet(
-        context: ref.context,
-        account: account,
-        noteId: note.id,
-        clipId: clipId,
-        disableHeader: disableHeader,
-      ),
+    NoteActionType.expand => () => ref.context.push(
+      '/$account/notes/${appearNote.id}',
+    ),
+    NoteActionType.menu => () => showNoteSheet(
+      context: ref.context,
+      account: account,
+      noteId: note.id,
+      clipId: clipId,
+      disableHeader: disableHeader,
+    ),
     NoteActionType.reaction =>
       !account.isGuest
           ? () async {
-            final emoji =
-                appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
-                    ? '❤'
-                    : await pickEmoji(
+              final emoji =
+                  appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
+                  ? '❤'
+                  : await pickEmoji(
                       ref,
                       account,
                       saveHistory: false,
                       confirmBeforePop: true,
                     );
-            if (!ref.context.mounted) return;
-            if (emoji != null) {
-              if (appearNote.reactionAcceptance ==
-                      ReactionAcceptance.likeOnly ||
-                  ref
-                      .read(generalSettingsNotifierProvider)
-                      .confirmBeforeReact) {
-                final confirmed = await confirmReaction(
-                  ref.context,
-                  account: account,
-                  emoji: emoji,
-                  note: appearNote,
-                );
-                if (!confirmed) return;
-              }
               if (!ref.context.mounted) return;
-              await futureWithDialog(
-                ref.context,
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .react(appearNote.id, emoji),
-                overlay: false,
-              );
+              if (emoji != null) {
+                if (appearNote.reactionAcceptance ==
+                        ReactionAcceptance.likeOnly ||
+                    ref
+                        .read(generalSettingsNotifierProvider)
+                        .confirmBeforeReact) {
+                  final confirmed = await confirmReaction(
+                    ref.context,
+                    account: account,
+                    emoji: emoji,
+                    note: appearNote,
+                  );
+                  if (!confirmed) return;
+                }
+                if (!ref.context.mounted) return;
+                await futureWithDialog(
+                  ref.context,
+                  ref
+                      .read(notesNotifierProvider(account).notifier)
+                      .react(appearNote.id, emoji),
+                  overlay: false,
+                );
+              }
             }
-          }
           : null,
   };
 }

@@ -51,10 +51,9 @@ class Code extends StatelessWidget {
                   input,
                   languageId: languageId,
                   theme: theme,
-                  padding:
-                      inline
-                          ? const EdgeInsets.symmetric(horizontal: 2.0)
-                          : const EdgeInsets.all(16.0),
+                  padding: inline
+                      ? const EdgeInsets.symmetric(horizontal: 2.0)
+                      : const EdgeInsets.all(16.0),
                   textStyle: TextStyle(
                     fontSize: fontSize,
                     fontFamilyFallback: monospaceFallback,

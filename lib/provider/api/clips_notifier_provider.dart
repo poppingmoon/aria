@@ -65,10 +65,9 @@ class ClipsNotifier extends _$ClipsNotifier {
     );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) =>
-            clip.id == clipId
-                ? clip.copyWith(notesCount: (clip.notesCount ?? 0) + 1)
-                : clip,
+        (clip) => clip.id == clipId
+            ? clip.copyWith(notesCount: (clip.notesCount ?? 0) + 1)
+            : clip,
       ),
     ]);
   }
@@ -83,10 +82,9 @@ class ClipsNotifier extends _$ClipsNotifier {
   void decrementNotesCount(String clipId) {
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) =>
-            clip.id == clipId
-                ? clip.copyWith(notesCount: max(0, (clip.notesCount ?? 1) - 1))
-                : clip,
+        (clip) => clip.id == clipId
+            ? clip.copyWith(notesCount: max(0, (clip.notesCount ?? 1) - 1))
+            : clip,
       ),
     ]);
   }
@@ -95,13 +93,12 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.favorite(ClipsFavoriteRequest(clipId: clipId));
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) =>
-            clip.id == clipId
-                ? clip.copyWith(
-                  isFavorited: true,
-                  favoritedCount: (clip.favoritedCount ?? 0) + 1,
-                )
-                : clip,
+        (clip) => clip.id == clipId
+            ? clip.copyWith(
+                isFavorited: true,
+                favoritedCount: (clip.favoritedCount ?? 0) + 1,
+              )
+            : clip,
       ),
     ]);
   }
@@ -110,13 +107,12 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.unfavorite(ClipsUnfavoriteRequest(clipId: clipId));
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) =>
-            clip.id == clipId
-                ? clip.copyWith(
-                  isFavorited: false,
-                  favoritedCount: (clip.favoritedCount ?? 1) - 1,
-                )
-                : clip,
+        (clip) => clip.id == clipId
+            ? clip.copyWith(
+                isFavorited: false,
+                favoritedCount: (clip.favoritedCount ?? 1) - 1,
+              )
+            : clip,
       ),
     ]);
   }

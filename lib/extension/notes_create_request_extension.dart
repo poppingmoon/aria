@@ -20,10 +20,9 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
     createdAt: scheduledAt ?? DateTime.now(),
     text: text,
     cw: cw,
-    user:
-        i != null
-            ? UserLite.fromJson(i.toJson())
-            : UserLite(id: '', username: '', avatarUrl: Uri()),
+    user: i != null
+        ? UserLite.fromJson(i.toJson())
+        : UserLite(id: '', username: '', avatarUrl: Uri()),
     userId: i?.id ?? '',
     visibility: visibility,
     visibleUserIds: visibleUserIds ?? [],
@@ -35,28 +34,26 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
     replyId: replyId,
     renoteId: renoteId,
     channelId: channelId,
-    channel:
-        channel != null
-            ? NoteChannelInfo(
-              id: channel.id,
-              name: channel.name,
-              color: channel.color,
-              isSensitive: channel.isSensitive,
-              allowRenoteToExternal: channel.allowRenoteToExternal,
-            )
-            : null,
+    channel: channel != null
+        ? NoteChannelInfo(
+            id: channel.id,
+            name: channel.name,
+            color: channel.color,
+            isSensitive: channel.isSensitive,
+            allowRenoteToExternal: channel.allowRenoteToExternal,
+          )
+        : null,
     reactionAcceptance: reactionAcceptance,
-    poll:
-        poll != null
-            ? NotePoll(
-              multiple: poll?.multiple ?? false,
-              choices:
-                  poll?.choices
-                      .map((text) => NotePollChoice(text: text, votes: 0))
-                      .toList() ??
-                  [],
-            )
-            : null,
+    poll: poll != null
+        ? NotePoll(
+            multiple: poll?.multiple ?? false,
+            choices:
+                poll?.choices
+                    .map((text) => NotePollChoice(text: text, votes: 0))
+                    .toList() ??
+                [],
+          )
+        : null,
   );
 
   NotesCreateRequest addHashtags(List<String>? hashtags) {

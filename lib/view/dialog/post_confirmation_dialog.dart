@@ -52,12 +52,11 @@ Future<bool> confirmPost(
   }
   final result = await showDialog<bool>(
     context: ref.context,
-    builder:
-        (context) => PostConfirmationDialog(
-          account: account,
-          request: request,
-          files: files ?? [],
-        ),
+    builder: (context) => PostConfirmationDialog(
+      account: account,
+      request: request,
+      files: files ?? [],
+    ),
   );
   return result ?? false;
 }
@@ -77,12 +76,11 @@ class PostConfirmationDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final channel =
-        request.channelId != null
-            ? ref
-                .watch(channelNotifierProvider(account, request.channelId!))
-                .valueOrNull
-            : null;
+    final channel = request.channelId != null
+        ? ref
+              .watch(channelNotifierProvider(account, request.channelId!))
+              .valueOrNull
+        : null;
     final canScheduleNote =
         i?.policies?.canScheduleNote ??
         ((i?.policies?.scheduleNoteMax ?? 0) > 0);

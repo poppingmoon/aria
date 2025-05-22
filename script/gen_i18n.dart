@@ -120,24 +120,22 @@ class Converter {
     for (final e in source.entries) {
       final originalKey = e.key as String;
       final originalValue = e.value;
-      final key =
-          originalKey
-              .rotateLeadingUnderscore()
-              .prefixLeadingNumber()
-              .postfixReservedWords()
-              .replaceSeparators();
+      final key = originalKey
+          .rotateLeadingUnderscore()
+          .prefixLeadingNumber()
+          .postfixReservedWords()
+          .replaceSeparators();
       if (originalValue is String) {
         final originalParams = RegExp(
           r'\{([^}]+)}',
         ).allMatches(originalValue).map((match) => match[1]!);
         final params = {
           for (final originalParam in originalParams)
-            originalParam:
-                originalParam
-                    .rotateLeadingUnderscore()
-                    .prefixLeadingNumber()
-                    .postfixReservedWords()
-                    .replaceSeparators(),
+            originalParam: originalParam
+                .rotateLeadingUnderscore()
+                .prefixLeadingNumber()
+                .postfixReservedWords()
+                .replaceSeparators(),
         };
         children[originalKey] = Converter(key: key, params: params);
       } else {
@@ -252,7 +250,8 @@ void main() {
     final language = e.key;
     final localization = e.value;
     final lines = dumpYaml(localization);
-    final contents = """
+    final contents =
+        """
 # Generated file. Do not edit.
 #
 # Source: misskey/locales/$language.yml
@@ -260,10 +259,9 @@ void main() {
 
 ${lines.join('\n')}
 """;
-    final file =
-        language == 'en-US'
-            ? File('lib/i18n/misskey/misskey.i18n.yaml')
-            : File('lib/i18n/misskey/misskey_$language.i18n.yaml');
+    final file = language == 'en-US'
+        ? File('lib/i18n/misskey/misskey.i18n.yaml')
+        : File('lib/i18n/misskey/misskey_$language.i18n.yaml');
     file.writeAsStringSync(contents);
     print('Successfully generated ${file.path}');
   }

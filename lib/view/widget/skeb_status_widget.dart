@@ -49,11 +49,8 @@ class SkebStatusWidget extends ConsumerWidget {
           )
           .join(' | '),
       child: InkWell(
-        onTap:
-            () => launchUrl(
-              ref,
-              Uri.https('skeb.jp', '@${skebStatus.screenName}'),
-            ),
+        onTap: () =>
+            launchUrl(ref, Uri.https('skeb.jp', '@${skebStatus.screenName}')),
         child: Mfm(
           account: account,
           leadingSpans: [
@@ -62,10 +59,9 @@ class SkebStatusWidget extends ConsumerWidget {
               baseline: TextBaseline.alphabetic,
               child: Container(
                 decoration: BoxDecoration(
-                  color:
-                      skebStatus.isAcceptable
-                          ? const Color(0xFFF14668)
-                          : const Color(0xFF363636),
+                  color: skebStatus.isAcceptable
+                      ? const Color(0xFFF14668)
+                      : const Color(0xFF363636),
                   borderRadius: BorderRadius.circular(6.0),
                 ),
                 padding: const EdgeInsets.symmetric(

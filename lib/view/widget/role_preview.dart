@@ -25,10 +25,9 @@ class RolePreview extends ConsumerWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        border:
-            color != null
-                ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
-                : null,
+        border: color != null
+            ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
+            : null,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ListTile(

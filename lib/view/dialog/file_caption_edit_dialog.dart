@@ -44,17 +44,16 @@ class FileCaptionEditDialog extends HookWidget {
                 final type? when type.startsWith('video/') =>
                   () => showDialog<void>(
                     context: context,
-                    builder:
-                        (context) => VideoDialog(
-                          url: switch (file) {
-                            DrivePostFile(:final file) => file.url,
-                            _ => null,
-                          },
-                          file: switch (file) {
-                            LocalPostFile(:final file) => file,
-                            _ => null,
-                          },
-                        ),
+                    builder: (context) => VideoDialog(
+                      url: switch (file) {
+                        DrivePostFile(:final file) => file.url,
+                        _ => null,
+                      },
+                      file: switch (file) {
+                        LocalPostFile(:final file) => file,
+                        _ => null,
+                      },
+                    ),
                   ),
                 _ => null,
               },

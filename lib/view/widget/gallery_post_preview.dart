@@ -156,19 +156,18 @@ class GalleryPostPreview extends HookConsumerWidget {
                     UserAvatar(
                       account: account,
                       user: post.user,
-                      onTap:
-                          () => context.push('/$account/users/${post.userId}'),
+                      onTap: () =>
+                          context.push('/$account/users/${post.userId}'),
                     ),
                     const SizedBox(width: 2.0),
                     InkWell(
-                      onTap:
-                          () => context.push('/$account/users/${post.userId}'),
-                      onLongPress:
-                          () => showUserSheet(
-                            context: context,
-                            account: account,
-                            userId: post.userId,
-                          ),
+                      onTap: () =>
+                          context.push('/$account/users/${post.userId}'),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: post.userId,
+                      ),
                       child: UsernameWidget(account: account, user: post.user),
                     ),
                   ],

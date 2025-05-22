@@ -13,14 +13,13 @@ Future<bool> confirm(
 }) async {
   final result = await showDialog<bool>(
     context: context,
-    builder:
-        (context) => ConfirmationDialog(
-          title: title,
-          message: message,
-          content: content,
-          okText: okText,
-          cancelText: cancelText,
-        ),
+    builder: (context) => ConfirmationDialog(
+      title: title,
+      message: message,
+      content: content,
+      okText: okText,
+      cancelText: cancelText,
+    ),
   );
   return result ?? false;
 }

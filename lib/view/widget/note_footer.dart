@@ -115,10 +115,10 @@ class NoteFooter extends ConsumerWidget {
                       note: appearNote,
                       myRenotingNoteId:
                           note.isRenote &&
-                                  note.user.username == account.username &&
-                                  note.user.host == null
-                              ? note.id
-                              : null,
+                              note.user.username == account.username &&
+                              note.user.host == null
+                          ? note.id
+                          : null,
                       showQuoteButton: showQuoteButton,
                       focusPostForm: focusPostForm,
                       style: style,
@@ -200,18 +200,17 @@ class _ReplyButton extends ConsumerWidget {
 
     return IconButton(
       tooltip: t.misskey.reply,
-      onPressed:
-          !account.isGuest
-              ? () {
-                if (note.id.isEmpty) return;
-                ref.read(postNotifierProvider(account).notifier).setReply(note);
-                if (focusPostForm case final focusPostForm?) {
-                  focusPostForm();
-                } else {
-                  context.push('/$account/post');
-                }
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              ref.read(postNotifierProvider(account).notifier).setReply(note);
+              if (focusPostForm case final focusPostForm?) {
+                focusPostForm();
+              } else {
+                context.push('/$account/post');
               }
-              : null,
+            }
+          : null,
       icon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -260,92 +259,87 @@ class _RenoteButton extends HookConsumerWidget {
     );
 
     return GestureDetector(
-      onLongPress:
-          note.renoteCount > 0
-              ? () {
-                if (note.id.isEmpty) return;
-                HapticFeedback.lightImpact();
-                showModalBottomSheet<void>(
-                  context: context,
-                  builder:
-                      (context) =>
-                          RenoteUsersSheet(account: account, noteId: note.id),
-                  isScrollControlled: true,
-                );
-              }
-              : null,
+      onLongPress: note.renoteCount > 0
+          ? () {
+              if (note.id.isEmpty) return;
+              HapticFeedback.lightImpact();
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) =>
+                    RenoteUsersSheet(account: account, noteId: note.id),
+                isScrollControlled: true,
+              );
+            }
+          : null,
       child: IconButton(
         tooltip: note.renoteCount <= 0 ? t.misskey.renote : null,
-        onPressed:
-            !account.isGuest
-                ? () async {
-                  if (note.id.isEmpty) return;
-                  if (myRenotingNoteId.value case final noteId?) {
-                    final unrenote = await showModalBottomSheet<bool>(
-                      context: context,
-                      builder:
-                          (context) => ListView(
-                            shrinkWrap: true,
-                            children: [
-                              ListTile(
-                                leading: const Icon(Icons.repeat_rounded),
-                                title: Text(t.misskey.renote),
-                                onTap: () => context.pop(false),
-                              ),
-                              ListTile(
-                                leading: const Icon(Icons.delete),
-                                title: Text(t.misskey.unrenote),
-                                onTap: () => context.pop(true),
-                                iconColor: colors.error,
-                                textColor: colors.error,
-                              ),
-                            ],
-                          ),
+        onPressed: !account.isGuest
+            ? () async {
+                if (note.id.isEmpty) return;
+                if (myRenotingNoteId.value case final noteId?) {
+                  final unrenote = await showModalBottomSheet<bool>(
+                    context: context,
+                    builder: (context) => ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.repeat_rounded),
+                          title: Text(t.misskey.renote),
+                          onTap: () => context.pop(false),
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.delete),
+                          title: Text(t.misskey.unrenote),
+                          onTap: () => context.pop(true),
+                          iconColor: colors.error,
+                          textColor: colors.error,
+                        ),
+                      ],
+                    ),
+                  );
+                  if (!context.mounted) return;
+                  if (unrenote == null) return;
+                  if (unrenote) {
+                    final result = await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .notes
+                          .delete(NotesDeleteRequest(noteId: noteId))
+                          .then((_) => true),
                     );
                     if (!context.mounted) return;
-                    if (unrenote == null) return;
-                    if (unrenote) {
-                      final result = await futureWithDialog(
-                        context,
-                        ref
-                            .read(misskeyProvider(account))
-                            .notes
-                            .delete(NotesDeleteRequest(noteId: noteId))
-                            .then((_) => true),
-                      );
-                      if (!context.mounted) return;
-                      if (result != null) {
-                        ref
-                            .read(notesNotifierProvider(account).notifier)
-                            .remove(noteId);
-                        myRenotingNoteId.value = null;
-                      }
-                      return;
-                    }
-                  }
-                  if (showQuoteButton) {
-                    final result = await showModalBottomSheet<Note>(
-                      context: context,
-                      builder:
-                          (context) =>
-                              RenoteSheet(account: account, note: note),
-                      clipBehavior: Clip.hardEdge,
-                    );
                     if (result != null) {
-                      myRenotingNoteId.value = result.id;
+                      ref
+                          .read(notesNotifierProvider(account).notifier)
+                          .remove(noteId);
+                      myRenotingNoteId.value = null;
                     }
-                  } else {
-                    ref
-                        .read(postNotifierProvider(account).notifier)
-                        .setRenote(note);
-                    if (focusPostForm case final focusPostForm?) {
-                      focusPostForm();
-                    } else {
-                      await context.push('/$account/post');
-                    }
+                    return;
                   }
                 }
-                : null,
+                if (showQuoteButton) {
+                  final result = await showModalBottomSheet<Note>(
+                    context: context,
+                    builder: (context) =>
+                        RenoteSheet(account: account, note: note),
+                    clipBehavior: Clip.hardEdge,
+                  );
+                  if (result != null) {
+                    myRenotingNoteId.value = result.id;
+                  }
+                } else {
+                  ref
+                      .read(postNotifierProvider(account).notifier)
+                      .setRenote(note);
+                  if (focusPostForm case final focusPostForm?) {
+                    focusPostForm();
+                  } else {
+                    await context.push('/$account/post');
+                  }
+                }
+              }
+            : null,
         icon: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -359,10 +353,9 @@ class _RenoteButton extends HookConsumerWidget {
                 child: Text(
                   NumberFormat().format(note.renoteCount),
                   style: style?.apply(
-                    color:
-                        myRenotingNoteId.value != null
-                            ? colors.renote.withValues(alpha: 0.6)
-                            : null,
+                    color: myRenotingNoteId.value != null
+                        ? colors.renote.withValues(alpha: 0.6)
+                        : null,
                   ),
                 ),
               ),
@@ -388,20 +381,17 @@ class _QuoteButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
       tooltip: t.misskey.quote,
-      onPressed:
-          !account.isGuest
-              ? () {
-                if (note.id.isEmpty) return;
-                ref
-                    .read(postNotifierProvider(account).notifier)
-                    .setRenote(note);
-                if (focusPostForm case final focusPostForm?) {
-                  focusPostForm();
-                } else {
-                  context.push('/$account/post');
-                }
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              ref.read(postNotifierProvider(account).notifier).setRenote(note);
+              if (focusPostForm case final focusPostForm?) {
+                focusPostForm();
+              } else {
+                context.push('/$account/post');
               }
-              : null,
+            }
+          : null,
       icon: const Icon(Icons.format_quote_outlined),
     );
   }
@@ -417,36 +407,34 @@ class _LikeButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
       tooltip: t.misskey.like,
-      onPressed:
-          !account.isGuest
-              ? () async {
-                if (note.id.isEmpty) return;
-                final defaultReaction =
-                    ref
-                        .read(accountSettingsNotifierProvider(account))
-                        .defaultReaction;
-                final emoji = defaultReaction ?? '❤';
-                if (ref
-                    .read(generalSettingsNotifierProvider)
-                    .confirmBeforeReact) {
-                  final confirmed = await confirmReaction(
-                    context,
-                    account: account,
-                    emoji: emoji,
-                    note: note,
-                  );
-                  if (!confirmed) return;
-                }
-                if (!context.mounted) return;
-                await futureWithDialog(
+      onPressed: !account.isGuest
+          ? () async {
+              if (note.id.isEmpty) return;
+              final defaultReaction = ref
+                  .read(accountSettingsNotifierProvider(account))
+                  .defaultReaction;
+              final emoji = defaultReaction ?? '❤';
+              if (ref
+                  .read(generalSettingsNotifierProvider)
+                  .confirmBeforeReact) {
+                final confirmed = await confirmReaction(
                   context,
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .react(note.id, emoji),
-                  overlay: false,
+                  account: account,
+                  emoji: emoji,
+                  note: note,
                 );
+                if (!confirmed) return;
               }
-              : null,
+              if (!context.mounted) return;
+              await futureWithDialog(
+                context,
+                ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .react(note.id, emoji),
+                overlay: false,
+              );
+            }
+          : null,
       icon: const Icon(Icons.favorite_border),
     );
   }
@@ -472,73 +460,67 @@ class _AddReactionButton extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onLongPress:
-          (note.reactionCount ?? 0) > 0
-              ? () {
-                if (note.id.isEmpty) return;
-                HapticFeedback.lightImpact();
-                showModalBottomSheet<void>(
-                  context: context,
-                  builder:
-                      (context) => ReactionUsersSheet(
-                        account: account,
-                        noteId: note.id,
-                        initialReaction:
-                            note.reactions.entries.fold<(String?, int)>(
-                              (null, 0),
-                              (acc, e) =>
-                                  acc.$2 < e.value ? (e.key, e.value) : acc,
-                            ).$1,
-                      ),
-                  clipBehavior: Clip.antiAlias,
-                  isScrollControlled: true,
-                );
-              }
-              : null,
+      onLongPress: (note.reactionCount ?? 0) > 0
+          ? () {
+              if (note.id.isEmpty) return;
+              HapticFeedback.lightImpact();
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => ReactionUsersSheet(
+                  account: account,
+                  noteId: note.id,
+                  initialReaction: note.reactions.entries.fold<(String?, int)>((
+                    null,
+                    0,
+                  ), (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc).$1,
+                ),
+                clipBehavior: Clip.antiAlias,
+                isScrollControlled: true,
+              );
+            }
+          : null,
       child: IconButton(
-        tooltip:
-            (note.reactionCount ?? 0) <= 0
-                ? note.reactionAcceptance == ReactionAcceptance.likeOnly
-                    ? t.misskey.like
-                    : t.misskey.reaction
-                : null,
-        onPressed:
-            !account.isGuest
-                ? () async {
-                  if (note.id.isEmpty) return;
-                  final emoji =
-                      note.reactionAcceptance == ReactionAcceptance.likeOnly
-                          ? '❤'
-                          : await pickEmoji(
-                            ref,
-                            account,
-                            reaction: true,
-                            targetNote: note,
-                          );
-                  if (!context.mounted) return;
-                  if (emoji != null) {
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmBeforeReact) {
-                      final confirmed = await confirmReaction(
-                        context,
-                        account: account,
-                        emoji: emoji,
-                        note: note,
+        tooltip: (note.reactionCount ?? 0) <= 0
+            ? note.reactionAcceptance == ReactionAcceptance.likeOnly
+                  ? t.misskey.like
+                  : t.misskey.reaction
+            : null,
+        onPressed: !account.isGuest
+            ? () async {
+                if (note.id.isEmpty) return;
+                final emoji =
+                    note.reactionAcceptance == ReactionAcceptance.likeOnly
+                    ? '❤'
+                    : await pickEmoji(
+                        ref,
+                        account,
+                        reaction: true,
+                        targetNote: note,
                       );
-                      if (!confirmed) return;
-                    }
-                    if (!context.mounted) return;
-                    await futureWithDialog(
+                if (!context.mounted) return;
+                if (emoji != null) {
+                  if (ref
+                      .read(generalSettingsNotifierProvider)
+                      .confirmBeforeReact) {
+                    final confirmed = await confirmReaction(
                       context,
-                      ref
-                          .read(notesNotifierProvider(account).notifier)
-                          .react(note.id, emoji),
-                      overlay: false,
+                      account: account,
+                      emoji: emoji,
+                      note: note,
                     );
+                    if (!confirmed) return;
                   }
+                  if (!context.mounted) return;
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .react(note.id, emoji),
+                    overlay: false,
+                  );
                 }
-                : null,
+              }
+            : null,
         icon: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -591,16 +573,14 @@ class _RemoveReactionButton extends ConsumerWidget {
         HapticFeedback.lightImpact();
         showModalBottomSheet<void>(
           context: context,
-          builder:
-              (context) => ReactionUsersSheet(
-                account: account,
-                noteId: note.id,
-                initialReaction:
-                    note.reactions.entries.fold<(String?, int)>(
-                      (null, 0),
-                      (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc,
-                    ).$1,
-              ),
+          builder: (context) => ReactionUsersSheet(
+            account: account,
+            noteId: note.id,
+            initialReaction: note.reactions.entries.fold<(String?, int)>((
+              null,
+              0,
+            ), (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc).$1,
+          ),
           clipBehavior: Clip.antiAlias,
           isScrollControlled: true,
         );
@@ -655,21 +635,19 @@ class _ClipButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
       tooltip: t.misskey.clip,
-      onPressed:
-          !account.isGuest
-              ? () {
-                if (note.id.isEmpty) return;
-                showDialog<void>(
-                  context: context,
-                  builder:
-                      (context) => ClipDialog(
-                        account: account,
-                        noteId: note.id,
-                        clipId: clipId,
-                      ),
-                );
-              }
-              : null,
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              showDialog<void>(
+                context: context,
+                builder: (context) => ClipDialog(
+                  account: account,
+                  noteId: note.id,
+                  clipId: clipId,
+                ),
+              );
+            }
+          : null,
       icon: const Icon(Icons.attach_file),
     );
   }
@@ -694,8 +672,8 @@ class _TranslateButton extends ConsumerWidget {
             (meta?.translatorAvailable ?? false)) {
           showModalBottomSheet<void>(
             context: context,
-            builder:
-                (context) => TranslatedNoteSheet(account: account, note: note),
+            builder: (context) =>
+                TranslatedNoteSheet(account: account, note: note),
             clipBehavior: Clip.antiAlias,
             scrollControlDisabledMaxHeightRatio: 0.8,
           );

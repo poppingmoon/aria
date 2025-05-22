@@ -69,23 +69,21 @@ class RenoteHeader extends HookConsumerWidget {
                   alignment: AlignmentDirectional.centerStart,
                   child: InkWell(
                     onTap: () => context.push('/$account/users/${note.userId}'),
-                    onLongPress:
-                        () => showUserSheet(
-                          context: context,
-                          account: account,
-                          userId: note.userId,
-                        ),
+                    onLongPress: () => showUserSheet(
+                      context: context,
+                      account: account,
+                      userId: note.userId,
+                    ),
                     child: UsernameWidget(
                       account: account,
                       user: note.user,
-                      builder:
-                          (context, span) => Text.rich(
-                            (note.userId == note.renote?.userId
-                                ? t.aria.selfRenotedBy
-                                : t.aria.renotedBy)(user: span),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                      builder: (context, span) => Text.rich(
+                        (note.userId == note.renote?.userId
+                            ? t.aria.selfRenotedBy
+                            : t.aria.renotedBy)(user: span),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                       style: TextStyle(
                         color: colors.renote,
                         fontWeight: FontWeight.bold,

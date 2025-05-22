@@ -35,77 +35,73 @@ class RenoteMutedUsersPage extends ConsumerWidget {
       ),
       body: PaginatedListView(
         paginationState: renoteMutings,
-        itemBuilder:
-            (context, renoteMuting) => ListTile(
-              leading: UserAvatar(
-                account: account,
-                user: renoteMuting.mutee,
-                size: 32.0,
-                showOnlineIndicator: true,
-              ),
-              title: UsernameWidget(account: account, user: renoteMuting.mutee),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AcctWidget(account: account, user: renoteMuting.mutee),
-                  const SizedBox(height: 4.0),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: Icon(
-                            Icons.schedule,
-                            size: style?.lineHeight,
-                            color: style?.color,
-                          ),
-                        ),
-                        const WidgetSpan(child: SizedBox(width: 2.0)),
-                        TextSpan(text: absoluteTime(renoteMuting.createdAt)),
-                        const TextSpan(text: ' ('),
-                        TextSpan(text: relativeTime(renoteMuting.createdAt)),
-                        const TextSpan(text: ')'),
-                      ],
+        itemBuilder: (context, renoteMuting) => ListTile(
+          leading: UserAvatar(
+            account: account,
+            user: renoteMuting.mutee,
+            size: 32.0,
+            showOnlineIndicator: true,
+          ),
+          title: UsernameWidget(account: account, user: renoteMuting.mutee),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AcctWidget(account: account, user: renoteMuting.mutee),
+              const SizedBox(height: 4.0),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Icon(
+                        Icons.schedule,
+                        size: style?.lineHeight,
+                        color: style?.color,
+                      ),
                     ),
-                    style: style,
-                  ),
-                ],
+                    const WidgetSpan(child: SizedBox(width: 2.0)),
+                    TextSpan(text: absoluteTime(renoteMuting.createdAt)),
+                    const TextSpan(text: ' ('),
+                    TextSpan(text: relativeTime(renoteMuting.createdAt)),
+                    const TextSpan(text: ')'),
+                  ],
+                ),
+                style: style,
               ),
-              trailing: IconButton(
-                tooltip: t.misskey.renoteUnmute,
-                onPressed: () async {
-                  final confirmed = await confirm(
-                    context,
-                    message: t.misskey.deleteConfirm,
-                  );
-                  if (!context.mounted) return;
-                  if (confirmed) {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(renoteMutingsNotifierProvider(account).notifier)
-                          .delete(renoteMuting.muteeId),
-                    );
-                  }
-                },
-                icon: const Icon(Icons.close),
-                color: Theme.of(context).colorScheme.error,
-              ),
-              onTap:
-                  () => context.push('/$account/users/${renoteMuting.muteeId}'),
-              onLongPress:
-                  () => showUserSheet(
-                    context: context,
-                    account: account,
-                    userId: renoteMuting.muteeId,
-                  ),
-            ),
-        onRefresh:
-            () => ref.refresh(renoteMutingsNotifierProvider(account).future),
-        loadMore:
-            (skipError) => ref
-                .read(renoteMutingsNotifierProvider(account).notifier)
-                .loadMore(skipError: skipError),
+            ],
+          ),
+          trailing: IconButton(
+            tooltip: t.misskey.renoteUnmute,
+            onPressed: () async {
+              final confirmed = await confirm(
+                context,
+                message: t.misskey.deleteConfirm,
+              );
+              if (!context.mounted) return;
+              if (confirmed) {
+                await futureWithDialog(
+                  context,
+                  ref
+                      .read(renoteMutingsNotifierProvider(account).notifier)
+                      .delete(renoteMuting.muteeId),
+                );
+              }
+            },
+            icon: const Icon(Icons.close),
+            color: Theme.of(context).colorScheme.error,
+          ),
+          onTap: () => context.push('/$account/users/${renoteMuting.muteeId}'),
+          onLongPress: () => showUserSheet(
+            context: context,
+            account: account,
+            userId: renoteMuting.muteeId,
+          ),
+        ),
+        onRefresh: () =>
+            ref.refresh(renoteMutingsNotifierProvider(account).future),
+        loadMore: (skipError) => ref
+            .read(renoteMutingsNotifierProvider(account).notifier)
+            .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noUsers,
       ),
     );

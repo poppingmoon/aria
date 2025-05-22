@@ -34,20 +34,18 @@ class AttachesNotifier extends _$AttachesNotifier {
   }
 
   void add(PostFile file) {
-    final fileIds =
-        state
-            .map((file) => file is DrivePostFile ? file.file.id : null)
-            .nonNulls;
+    final fileIds = state
+        .map((file) => file is DrivePostFile ? file.file.id : null)
+        .nonNulls;
     if (file is! DrivePostFile || !fileIds.contains(file.file.id)) {
       state = [...state, file];
     }
   }
 
   void addAll(Iterable<PostFile> files) {
-    final fileIds =
-        state
-            .map((file) => file is DrivePostFile ? file.file.id : null)
-            .nonNulls;
+    final fileIds = state
+        .map((file) => file is DrivePostFile ? file.file.id : null)
+        .nonNulls;
     state = [
       ...state,
       ...files.where(
@@ -83,16 +81,16 @@ class AttachesNotifier extends _$AttachesNotifier {
         final data = await file.file.readAsBytes();
         final resized =
             ref
-                    .read(accountSettingsNotifierProvider(account))
-                    .keepOriginalUploading
-                ? null
-                : await compressImage(data, file.type);
+                .read(accountSettingsNotifierProvider(account))
+                .keepOriginalUploading
+            ? null
+            : await compressImage(data, file.type);
         final filename =
             ref
-                    .read(accountSettingsNotifierProvider(account))
-                    .keepOriginalFilename
-                ? file.name
-                : randomizeFilename(file.name);
+                .read(accountSettingsNotifierProvider(account))
+                .keepOriginalFilename
+            ? file.name
+            : randomizeFilename(file.name);
         try {
           final driveFile = await ref
               .read(misskeyProvider(account))
@@ -100,10 +98,9 @@ class AttachesNotifier extends _$AttachesNotifier {
               .files
               .createAsBinary(
                 DriveFilesCreateRequest(
-                  folderId:
-                      ref
-                          .read(accountSettingsNotifierProvider(account))
-                          .uploadFolder,
+                  folderId: ref
+                      .read(accountSettingsNotifierProvider(account))
+                      .uploadFolder,
                   name: filename,
                   isSensitive: file.isSensitive,
                   comment: file.comment,

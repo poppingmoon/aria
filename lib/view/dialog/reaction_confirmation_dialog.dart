@@ -17,12 +17,8 @@ Future<bool> confirmReaction(
 }) async {
   final result = await showDialog<bool>(
     context: context,
-    builder:
-        (context) => ReactionConfirmationDialog(
-          account: account,
-          emoji: emoji,
-          note: note,
-        ),
+    builder: (context) =>
+        ReactionConfirmationDialog(account: account, emoji: emoji, note: note),
   );
   return result ?? false;
 }

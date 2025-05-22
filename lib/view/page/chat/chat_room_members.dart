@@ -30,16 +30,16 @@ class ChatRoomMembers extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final room =
-        ref.watch(chatRoomNotifierProvider(account, roomId)).valueOrNull;
+    final room = ref
+        .watch(chatRoomNotifierProvider(account, roomId))
+        .valueOrNull;
     final isMyRoom = room?.owner.username == account.username;
     final memberships = ref.watch(
       chatRoomMembersNotifierProvider(account, roomId),
     );
-    final invitations =
-        isMyRoom
-            ? ref.watch(chatRoomInvitationsNotifierProvider(account, roomId))
-            : null;
+    final invitations = isMyRoom
+        ? ref.watch(chatRoomInvitationsNotifierProvider(account, roomId))
+        : null;
     final enableInfiniteScroll = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.enableInfiniteScroll,
@@ -135,17 +135,14 @@ class ChatRoomMembers extends HookConsumerWidget {
     final theme = Theme.of(context);
 
     return RefreshIndicator(
-      onRefresh:
-          () => Future.wait([
-            ref.refresh(chatRoomNotifierProvider(account, roomId).future),
-            ref.refresh(
-              chatRoomMembersNotifierProvider(account, roomId).future,
-            ),
-            if (isMyRoom)
-              ref.refresh(
-                chatRoomInvitationsNotifierProvider(account, roomId).future,
-              ),
-          ]),
+      onRefresh: () => Future.wait([
+        ref.refresh(chatRoomNotifierProvider(account, roomId).future),
+        ref.refresh(chatRoomMembersNotifierProvider(account, roomId).future),
+        if (isMyRoom)
+          ref.refresh(
+            chatRoomInvitationsNotifierProvider(account, roomId).future,
+          ),
+      ]),
       child: ListTileTheme(
         data: ListTileThemeData(
           shape: RoundedRectangleBorder(
@@ -204,12 +201,11 @@ class ChatRoomMembers extends HookConsumerWidget {
                       child: const Icon(Symbols.crown, fill: 1.0),
                     ),
                     onTap: () => context.push('/$account/users/${user.id}'),
-                    onLongPress:
-                        () => showUserSheet(
-                          context: context,
-                          account: account,
-                          userId: user.id,
-                        ),
+                    onLongPress: () => showUserSheet(
+                      context: context,
+                      account: account,
+                      userId: user.id,
+                    ),
                   ),
                 ),
               ),
@@ -225,12 +221,11 @@ class ChatRoomMembers extends HookConsumerWidget {
                         account: account,
                         user: user,
                         onTap: () => context.push('/$account/users/${user.id}'),
-                        onLongPress:
-                            () => showUserSheet(
-                              context: context,
-                              account: account,
-                              userId: user.id,
-                            ),
+                        onLongPress: () => showUserSheet(
+                          context: context,
+                          account: account,
+                          userId: user.id,
+                        ),
                       ),
                     ),
                   ),
@@ -242,15 +237,14 @@ class ChatRoomMembers extends HookConsumerWidget {
                 width: maxContentWidth,
                 child: PaginationBottomWidget(
                   paginationState: memberships,
-                  loadMore:
-                      () => ref
-                          .read(
-                            chatRoomMembersNotifierProvider(
-                              account,
-                              roomId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
+                  loadMore: () => ref
+                      .read(
+                        chatRoomMembersNotifierProvider(
+                          account,
+                          roomId,
+                        ).notifier,
+                      )
+                      .loadMore(skipError: true),
                 ),
               ),
             ),
@@ -274,14 +268,13 @@ class ChatRoomMembers extends HookConsumerWidget {
                         child: UserPreview(
                           account: account,
                           user: user,
-                          onTap:
-                              () => context.push('/$account/users/${user.id}'),
-                          onLongPress:
-                              () => showUserSheet(
-                                context: context,
-                                account: account,
-                                userId: user.id,
-                              ),
+                          onTap: () =>
+                              context.push('/$account/users/${user.id}'),
+                          onLongPress: () => showUserSheet(
+                            context: context,
+                            account: account,
+                            userId: user.id,
+                          ),
                         ),
                       ),
                     ),
@@ -294,15 +287,14 @@ class ChatRoomMembers extends HookConsumerWidget {
                   child: PaginationBottomWidget(
                     paginationState: invitations,
                     noItemsLabel: t.misskey.nothing,
-                    loadMore:
-                        () => ref
-                            .read(
-                              chatRoomInvitationsNotifierProvider(
-                                account,
-                                roomId,
-                              ).notifier,
-                            )
-                            .loadMore(skipError: true),
+                    loadMore: () => ref
+                        .read(
+                          chatRoomInvitationsNotifierProvider(
+                            account,
+                            roomId,
+                          ).notifier,
+                        )
+                        .loadMore(skipError: true),
                   ),
                 ),
               ),

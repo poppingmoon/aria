@@ -48,10 +48,9 @@ class PostNotifier extends _$PostNotifier {
 
   NotesCreateRequest get _defaultRequest {
     final settings = ref.read(accountSettingsNotifierProvider(account));
-    final localOnly =
-        settings.rememberNoteVisibility
-            ? settings.localOnly
-            : settings.defaultNoteLocalOnly;
+    final localOnly = settings.rememberNoteVisibility
+        ? settings.localOnly
+        : settings.defaultNoteLocalOnly;
     final isSilenced =
         ref.read(iNotifierProvider(account)).valueOrNull?.isSilenced ?? false;
     final visibility = NoteVisibility.min(
@@ -134,20 +133,18 @@ class PostNotifier extends _$PostNotifier {
       }
       state = request;
     } else {
-      final reply =
-          request.replyId != null
-              ? ref.read(noteProvider(origin, request.replyId!))
-              : null;
+      final reply = request.replyId != null
+          ? ref.read(noteProvider(origin, request.replyId!))
+          : null;
       String? replyId;
       if (reply != null && !reply.localOnly) {
         try {
           replyId = await _getNoteIdFromRemoteNote(origin, reply);
         } catch (_) {}
       }
-      final renote =
-          request.renoteId != null
-              ? ref.read(noteProvider(origin, request.renoteId!))
-              : null;
+      final renote = request.renoteId != null
+          ? ref.read(noteProvider(origin, request.renoteId!))
+          : null;
       String? renoteId;
       if (renote != null && !renote.localOnly) {
         try {
@@ -162,10 +159,9 @@ class PostNotifier extends _$PostNotifier {
         channelId: null,
         fileIds: null,
         poll: poll?.copyWith(
-          expiresAt:
-              poll.expiresAt?.isAfter(DateTime.now()) ?? false
-                  ? poll.expiresAt
-                  : null,
+          expiresAt: poll.expiresAt?.isAfter(DateTime.now()) ?? false
+              ? poll.expiresAt
+              : null,
         ),
       );
     }
@@ -300,18 +296,19 @@ class PostNotifier extends _$PostNotifier {
   void addVisibleUser(User user) {
     state = state.copyWith(
       visibleUserIds: {...?state.visibleUserIds, user.id}.toList(),
-      text:
-          state.text?.contains(user.acct) ?? false
-              ? state.text
-              : '${user.acct} ${state.text ?? ''}',
+      text: state.text?.contains(user.acct) ?? false
+          ? state.text
+          : '${user.acct} ${state.text ?? ''}',
     );
     _scheduleSave();
   }
 
   void addVisibleUsers(Iterable<User> users) {
     state = state.copyWith(
-      visibleUserIds:
-          {...?state.visibleUserIds, ...users.map((user) => user.id)}.toList(),
+      visibleUserIds: {
+        ...?state.visibleUserIds,
+        ...users.map((user) => user.id),
+      }.toList(),
       text: [
         ...users
             .map((user) => user.acct)
@@ -324,8 +321,9 @@ class PostNotifier extends _$PostNotifier {
 
   void removeVisibleUser(String userId) {
     state = state.copyWith(
-      visibleUserIds:
-          state.visibleUserIds?.where((id) => id != userId).toList(),
+      visibleUserIds: state.visibleUserIds
+          ?.where((id) => id != userId)
+          .toList(),
     );
     _scheduleSave();
   }
@@ -387,22 +385,20 @@ class PostNotifier extends _$PostNotifier {
           state = state.copyWith(text: null);
         }
       }
-      final visibility =
-          reply.channelId != null
-              ? NoteVisibility.public
-              : NoteVisibility.min(
-                state.visibility ?? NoteVisibility.public,
-                reply.visibility ?? NoteVisibility.public,
-              );
+      final visibility = reply.channelId != null
+          ? NoteVisibility.public
+          : NoteVisibility.min(
+              state.visibility ?? NoteVisibility.public,
+              reply.visibility ?? NoteVisibility.public,
+            );
       final i = ref.read(iNotifierProvider(account)).valueOrNull;
-      final visibleUserIds =
-          {
-            ...?state.visibleUserIds,
-            ...reply.visibleUserIds.where(
-              (userId) => userId != i?.id && userId != reply.userId,
-            ),
-            if (reply.userId != i?.id) reply.userId,
-          }.toList();
+      final visibleUserIds = {
+        ...?state.visibleUserIds,
+        ...reply.visibleUserIds.where(
+          (userId) => userId != i?.id && userId != reply.userId,
+        ),
+        if (reply.userId != i?.id) reply.userId,
+      }.toList();
       final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
       final replyMentions = extractMentions(
         parse(reply.text ?? ''),
@@ -412,12 +408,11 @@ class PostNotifier extends _$PostNotifier {
       ).map((mention) => mention.acct);
       final text = [
         ...{...replyMentions, reply.user.acct}.where(
-          (acct) =>
-              ![
-                ...textMentions,
-                '@${account.username}',
-                account.toString(),
-              ].contains(acct),
+          (acct) => ![
+            ...textMentions,
+            '@${account.username}',
+            account.toString(),
+          ].contains(acct),
         ),
         state.text ?? '',
       ].join(' ');

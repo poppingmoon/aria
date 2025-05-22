@@ -11,8 +11,8 @@ Future<void> showErrorMessageDialog(
 }) async {
   await showDialog<void>(
     context: context,
-    builder:
-        (context) => ErrorMessageDialog(error: error, stackTrace: stackTrace),
+    builder: (context) =>
+        ErrorMessageDialog(error: error, stackTrace: stackTrace),
   );
 }
 

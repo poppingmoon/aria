@@ -17,12 +17,11 @@ Future<bool> confirmSend(
 }) async {
   final result = await showDialog<bool>(
     context: context,
-    builder:
-        (context) => ChatMessageSendConfirmationDialog(
-          account: account,
-          text: text,
-          file: file,
-        ),
+    builder: (context) => ChatMessageSendConfirmationDialog(
+      account: account,
+      text: text,
+      file: file,
+    ),
   );
   return result ?? false;
 }

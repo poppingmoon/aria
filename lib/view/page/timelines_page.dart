@@ -181,162 +181,152 @@ class TimelinesPage extends HookConsumerWidget {
             ),
           Expanded(
             child: Scaffold(
-              appBar:
-                  showTimelineTabBarAtBottom
-                      ? null
-                      : AppBar(
-                        automaticallyImplyLeading:
-                            !isLargeScreen && showMenuButtonInTabBar,
-                        title: TimelineTabBar(controller: controller),
-                        titleSpacing: 0.0,
-                        centerTitle: true,
-                      ),
+              appBar: showTimelineTabBarAtBottom
+                  ? null
+                  : AppBar(
+                      automaticallyImplyLeading:
+                          !isLargeScreen && showMenuButtonInTabBar,
+                      title: TimelineTabBar(controller: controller),
+                      titleSpacing: 0.0,
+                      centerTitle: true,
+                    ),
               body: SafeArea(
                 bottom: false,
-                child:
-                    numTabs == 0
-                        ? Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(t.aria.noTabs),
-                              ),
-                              ElevatedButton(
-                                onPressed: () => context.push('/settings/tab'),
-                                child: Text(t.aria.addTab),
-                              ),
-                            ],
-                          ),
-                        )
-                        : Stack(
-                          alignment: Alignment.bottomCenter,
+                child: numTabs == 0
+                    ? Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            TabBarView(
-                              controller: controller,
-                              physics:
-                                  enableHorizontalSwipe
-                                      ? null
-                                      : const NeverScrollableScrollPhysics(),
-                              children: List.generate(
-                                numTabs,
-                                (index) => TimelineWidget(
-                                  tabIndex: index,
-                                  focusPostForm: () {
-                                    showPostForm.value = true;
-                                    postFormFocusNode.requestFocus();
-                                  },
-                                ),
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(t.aria.noTabs),
                             ),
-                            if (tabSettings != null && showPostForm.value)
-                              Material(
-                                clipBehavior: Clip.hardEdge,
-                                color: colors.panel.withValues(alpha: 0.5),
-                                child: BackdropFilter(
-                                  filter: ImageFilter.blur(
-                                    sigmaX: 16.0,
-                                    sigmaY: 16.0,
-                                  ),
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        top: BorderSide(
-                                          color: colors.divider.withValues(
-                                            alpha: 0.1,
-                                          ),
-                                          width: 2.0,
-                                        ),
-                                      ),
-                                    ),
-                                    child: SafeArea(
-                                      child: SingleChildScrollView(
-                                        child: PostForm(
-                                          account: tabSettings.account,
-                                          focusNode: postFormFocusNode,
-                                          onHide:
-                                              () => showPostForm.value = false,
-                                          onExpand:
-                                              (account) => context.push(
-                                                '/$account/post',
-                                              ),
-                                          showPostButton: true,
-                                          showKeyboard: true,
-                                          maxLines: 6,
-                                          thumbnailSize: 100.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                            ElevatedButton(
+                              onPressed: () => context.push('/settings/tab'),
+                              child: Text(t.aria.addTab),
+                            ),
                           ],
                         ),
-              ),
-              drawer: TimelineDrawer(controller: controller),
-              bottomNavigationBar:
-                  showTimelineTabBarAtBottom
-                      ? BottomAppBar(
-                        padding: EdgeInsets.zero,
-                        height: kToolbarHeight,
-                        color: colors.panel,
-                        elevation: 0.0,
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              top: BorderSide(color: colors.divider),
+                      )
+                    : Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          TabBarView(
+                            controller: controller,
+                            physics: enableHorizontalSwipe
+                                ? null
+                                : const NeverScrollableScrollPhysics(),
+                            children: List.generate(
+                              numTabs,
+                              (index) => TimelineWidget(
+                                tabIndex: index,
+                                focusPostForm: () {
+                                  showPostForm.value = true;
+                                  postFormFocusNode.requestFocus();
+                                },
+                              ),
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              if (!isLargeScreen && showMenuButtonInTabBar)
-                                const Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: DrawerButton(),
+                          if (tabSettings != null && showPostForm.value)
+                            Material(
+                              clipBehavior: Clip.hardEdge,
+                              color: colors.panel.withValues(alpha: 0.5),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: 16.0,
+                                  sigmaY: 16.0,
                                 ),
-                              Expanded(
-                                child: TimelineTabBar(controller: controller),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                        color: colors.divider.withValues(
+                                          alpha: 0.1,
+                                        ),
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                  ),
+                                  child: SafeArea(
+                                    child: SingleChildScrollView(
+                                      child: PostForm(
+                                        account: tabSettings.account,
+                                        focusNode: postFormFocusNode,
+                                        onHide: () =>
+                                            showPostForm.value = false,
+                                        onExpand: (account) =>
+                                            context.push('/$account/post'),
+                                        showPostButton: true,
+                                        showKeyboard: true,
+                                        maxLines: 6,
+                                        thumbnailSize: 100.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ],
+                            ),
+                        ],
+                      ),
+              ),
+              drawer: TimelineDrawer(controller: controller),
+              bottomNavigationBar: showTimelineTabBarAtBottom
+                  ? BottomAppBar(
+                      padding: EdgeInsets.zero,
+                      height: kToolbarHeight,
+                      color: colors.panel,
+                      elevation: 0.0,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: colors.divider),
                           ),
                         ),
-                      )
-                      : null,
-              floatingActionButton:
-                  tabSettings == null || !showPostForm.value
-                      ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children:
-                            buttonTypes
-                                .where(
-                                  (type) =>
-                                      !isLargeScreen ||
-                                      type != TimelinesPageButtonType.menu,
-                                )
-                                .mapIndexed(
-                                  (index, type) =>
-                                      type != null
-                                          ? _TimelinesPageButton(
-                                            tabSettings: tabSettings,
-                                            buttonType: type,
-                                            index: index,
-                                            mini: mini,
-                                            square: square,
-                                            showPostForm:
-                                                () => showPostForm.value = true,
-                                          )
-                                          : SizedBox.square(
-                                            dimension: mini ? 40.0 : 56.0,
-                                          ),
-                                )
-                                .toList(),
-                      )
-                      : const SizedBox.shrink(),
-              floatingActionButtonLocation:
-                  mini
-                      ? FloatingActionButtonLocation.miniCenterFloat
-                      : FloatingActionButtonLocation.centerFloat,
+                        child: Row(
+                          children: [
+                            if (!isLargeScreen && showMenuButtonInTabBar)
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: DrawerButton(),
+                              ),
+                            Expanded(
+                              child: TimelineTabBar(controller: controller),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  : null,
+              floatingActionButton: tabSettings == null || !showPostForm.value
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: buttonTypes
+                          .where(
+                            (type) =>
+                                !isLargeScreen ||
+                                type != TimelinesPageButtonType.menu,
+                          )
+                          .mapIndexed(
+                            (index, type) => type != null
+                                ? _TimelinesPageButton(
+                                    tabSettings: tabSettings,
+                                    buttonType: type,
+                                    index: index,
+                                    mini: mini,
+                                    square: square,
+                                    showPostForm: () =>
+                                        showPostForm.value = true,
+                                  )
+                                : SizedBox.square(
+                                    dimension: mini ? 40.0 : 56.0,
+                                  ),
+                          )
+                          .toList(),
+                    )
+                  : const SizedBox.shrink(),
+              floatingActionButtonLocation: mini
+                  ? FloatingActionButtonLocation.miniCenterFloat
+                  : FloatingActionButtonLocation.centerFloat,
             ),
           ),
         ],
@@ -365,10 +355,9 @@ class _TimelinesPageButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings?.account;
-    final i =
-        account != null
-            ? ref.watch(iNotifierProvider(account)).valueOrNull
-            : null;
+    final i = account != null
+        ? ref.watch(iNotifierProvider(account)).valueOrNull
+        : null;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -435,29 +424,35 @@ class _TimelinesPageButton extends ConsumerWidget {
       TimelinesPageButtonType.settings => t.misskey.settings,
     };
     final onPressed = switch (buttonType) {
-      TimelinesPageButtonType.announcements =>
-        () => context.push('/$account/announcements'),
-      TimelinesPageButtonType.antennas =>
-        () => context.push('/$account/antennas'),
-      TimelinesPageButtonType.channels =>
-        () => context.push('/$account/channels'),
+      TimelinesPageButtonType.announcements => () => context.push(
+        '/$account/announcements',
+      ),
+      TimelinesPageButtonType.antennas => () => context.push(
+        '/$account/antennas',
+      ),
+      TimelinesPageButtonType.channels => () => context.push(
+        '/$account/channels',
+      ),
       TimelinesPageButtonType.chat => () => context.push('/$account/chat'),
       TimelinesPageButtonType.clips => () => context.push('/$account/clips'),
       TimelinesPageButtonType.drive => () => context.push('/$account/drive'),
-      TimelinesPageButtonType.explore =>
-        () => context.push('/$account/explore'),
-      TimelinesPageButtonType.favorites =>
-        () => context.push('/$account/favorites'),
-      TimelinesPageButtonType.gallery =>
-        () => context.push('/$account/gallery'),
+      TimelinesPageButtonType.explore => () => context.push(
+        '/$account/explore',
+      ),
+      TimelinesPageButtonType.favorites => () => context.push(
+        '/$account/favorites',
+      ),
+      TimelinesPageButtonType.gallery => () => context.push(
+        '/$account/gallery',
+      ),
       TimelinesPageButtonType.games => () => context.push('/$account/games'),
       TimelinesPageButtonType.home =>
-        () =>
-            ref
-                .read(timelineScrollControllerProvider(tabSettings!))
-                .scrollToTop(),
-      TimelinesPageButtonType.instanceInfo =>
-        () => context.push('/$account/servers/${account!.host}'),
+        () => ref
+            .read(timelineScrollControllerProvider(tabSettings!))
+            .scrollToTop(),
+      TimelinesPageButtonType.instanceInfo => () => context.push(
+        '/$account/servers/${account!.host}',
+      ),
       TimelinesPageButtonType.lists => () => context.push('/$account/lists'),
       TimelinesPageButtonType.lookup => () async {
         final result = await showTextFieldDialog(
@@ -470,13 +465,15 @@ class _TimelinesPageButton extends ConsumerWidget {
       },
       TimelinesPageButtonType.menu => () => Scaffold.of(context).openDrawer(),
       TimelinesPageButtonType.note => () => context.push('/$account/post'),
-      TimelinesPageButtonType.notifications =>
-        () => context.push('/$account/notifications'),
+      TimelinesPageButtonType.notifications => () => context.push(
+        '/$account/notifications',
+      ),
       TimelinesPageButtonType.pages => () => context.push('/$account/pages'),
       TimelinesPageButtonType.play => () => context.push('/$account/play'),
       TimelinesPageButtonType.postForm => showPostForm,
-      TimelinesPageButtonType.profile =>
-        () => context.push('/$account/@${account!.username}'),
+      TimelinesPageButtonType.profile => () => context.push(
+        '/$account/@${account!.username}',
+      ),
       TimelinesPageButtonType.reload => () => reloadTimeline(ref, tabSettings!),
       TimelinesPageButtonType.search => () => context.push('/$account/search'),
       TimelinesPageButtonType.settings => () => context.push('/settings'),
@@ -534,8 +531,8 @@ class _TimelinesPageButton extends ConsumerWidget {
           borderRadius: BorderRadius.circular(
             square
                 ? mini
-                    ? 12.0
-                    : 16.0
+                      ? 12.0
+                      : 16.0
                 : 32.0,
           ),
         ),
@@ -575,10 +572,9 @@ class _TimelinesPageButton extends ConsumerWidget {
       foregroundColor: (primary ? colors.fgOnAccent : colors.fg).withValues(
         alpha: !disabled ? 1.0 : 0.5,
       ),
-      backgroundColor:
-          primary
-              ? Colors.transparent
-              : colors.panel.withValues(alpha: !disabled ? 1.0 : 0.5),
+      backgroundColor: primary
+          ? Colors.transparent
+          : colors.panel.withValues(alpha: !disabled ? 1.0 : 0.5),
       disabledElevation: 0.0,
       shape: square ? null : const CircleBorder(),
       mini: mini,

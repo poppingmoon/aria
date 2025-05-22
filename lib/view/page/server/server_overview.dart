@@ -29,27 +29,26 @@ class ServerOverview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
-    final instance =
-        account.host != host
-            ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
-            : null;
+    final instance = account.host != host
+        ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
+        : null;
     final nodeInfo = ref.watch(nodeInfoProvider(host)).valueOrNull;
     final softwareName =
         (nodeInfo?['software'] as Map<String, dynamic>?)?['name'] as String?;
-    final stats =
-        meta != null ? ref.watch(statsProvider(Account(host: host))) : null;
+    final stats = meta != null
+        ? ref.watch(statsProvider(Account(host: host)))
+        : null;
     final serverUrl = ref.watch(serverUrlNotifierProvider(host));
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
 
     return RefreshIndicator(
-      onRefresh:
-          () => Future.wait([
-            ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
-            if (account.host != host)
-              ref.refresh(federationInstanceProvider(account, host).future),
-          ]),
+      onRefresh: () => Future.wait([
+        ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+        if (account.host != host)
+          ref.refresh(federationInstanceProvider(account, host).future),
+      ]),
       child: ListView(
         children: [
           Stack(
@@ -118,9 +117,8 @@ class ServerOverview extends ConsumerWidget {
               label: t.misskey.description,
               child: Html(
                 data: meta?.description ?? instance?.description ?? '',
-                onLinkTap:
-                    (url, _, _) =>
-                        url != null ? launchUrl(ref, Uri.parse(url)) : null,
+                onLinkTap: (url, _, _) =>
+                    url != null ? launchUrl(ref, Uri.parse(url)) : null,
                 style: {
                   'body': Style(margin: Margins.all(0)),
                   'a': Style(
@@ -164,17 +162,16 @@ class ServerOverview extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.code),
                 title: Text(t.misskey.sourceCode),
-                onTap:
-                    () => launchUrl(
-                      ref,
-                      meta.repositoryUrl ??
-                          serverUrl.replace(
-                            pathSegments: [
-                              'tarball',
-                              'misskey-${meta.version}.tar.gz',
-                            ],
-                          ),
-                    ),
+                onTap: () => launchUrl(
+                  ref,
+                  meta.repositoryUrl ??
+                      serverUrl.replace(
+                        pathSegments: [
+                          'tarball',
+                          'misskey-${meta.version}.tar.gz',
+                        ],
+                      ),
+                ),
               ),
           ],
           const Divider(),
@@ -208,45 +205,41 @@ class ServerOverview extends ConsumerWidget {
             ExpansionTile(
               leading: const Icon(Icons.rule),
               title: Text(t.misskey.serverRules),
-              children:
-                  meta.serverRules
-                      .mapIndexed(
-                        (index, rule) => ListTile(
-                          leading: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: colors.accentedBg,
-                              shape: BoxShape.circle,
+              children: meta.serverRules
+                  .mapIndexed(
+                    (index, rule) => ListTile(
+                      leading: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: colors.accentedBg,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            (index + 1).toString(),
+                            style: TextStyle(
+                              color: colors.accent,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                (index + 1).toString(),
-                                style: TextStyle(
-                                  color: colors.accent,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                          title: Html(
-                            data: rule,
-                            onLinkTap:
-                                (url, _, _) =>
-                                    url != null
-                                        ? launchUrl(ref, Uri.parse(url))
-                                        : null,
-                            style: {
-                              'body': Style(margin: Margins.all(0)),
-                              'a': Style(
-                                color: colors.link,
-                                textDecoration: TextDecoration.none,
-                              ),
-                            },
                           ),
                         ),
-                      )
-                      .toList(),
+                      ),
+                      title: Html(
+                        data: rule,
+                        onLinkTap: (url, _, _) =>
+                            url != null ? launchUrl(ref, Uri.parse(url)) : null,
+                        style: {
+                          'body': Style(margin: Margins.all(0)),
+                          'a': Style(
+                            color: colors.link,
+                            textDecoration: TextDecoration.none,
+                          ),
+                        },
+                      ),
+                    ),
+                  )
+                  .toList(),
             ),
           if (meta case MetaResponse(:final tosUrl?))
             ListTile(

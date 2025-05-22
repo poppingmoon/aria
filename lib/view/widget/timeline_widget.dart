@@ -45,40 +45,34 @@ class TimelineWidget extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final (vibrateOnNotification, showTimelineLastViewedAt) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.vibrateNotification,
-          settings.showTimelineLastViewedAt,
-        ),
+        (settings) =>
+            (settings.vibrateNotification, settings.showTimelineLastViewedAt),
       ),
     );
-    final lastViewedNoteId =
-        tabSettings.tabType != TabType.notifications
-            ? ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings))
-            : null;
-    final lastViewedAt =
-        lastViewedNoteId != null
-            ? ref.watch(timelineLastViewedAtProvider(tabSettings))
-            : null;
+    final lastViewedNoteId = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings))
+        : null;
+    final lastViewedAt = lastViewedNoteId != null
+        ? ref.watch(timelineLastViewedAtProvider(tabSettings))
+        : null;
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
-    final nextNotes =
-        tabSettings.tabType != TabType.notifications
-            ? ref
-                .watch(
-                  timelineNotesAfterNoteNotifierProvider(
-                    tabSettings,
-                    sinceId: centerId,
-                  ),
-                )
-                .valueOrNull
-            : null;
-    final previousNotes =
-        tabSettings.tabType != TabType.notifications
-            ? ref
-                .watch(
-                  timelineNotesNotifierProvider(tabSettings, untilId: centerId),
-                )
-                .valueOrNull
-            : null;
+    final nextNotes = tabSettings.tabType != TabType.notifications
+        ? ref
+              .watch(
+                timelineNotesAfterNoteNotifierProvider(
+                  tabSettings,
+                  sinceId: centerId,
+                ),
+              )
+              .valueOrNull
+        : null;
+    final previousNotes = tabSettings.tabType != TabType.notifications
+        ? ref
+              .watch(
+                timelineNotesNotifierProvider(tabSettings, untilId: centerId),
+              )
+              .valueOrNull
+        : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
@@ -194,12 +188,12 @@ class TimelineWidget extends HookConsumerWidget {
                                       Icons.warning_amber,
                                     AnnouncementIconType.success => Icons.check,
                                   },
-                                  size:
-                                      DefaultTextStyle.of(
-                                        context,
-                                      ).style.lineHeight,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                                  size: DefaultTextStyle.of(
+                                    context,
+                                  ).style.lineHeight,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
                                 ),
                               ),
                             ),
@@ -241,12 +235,9 @@ class TimelineWidget extends HookConsumerWidget {
                         );
                         final maxScrollExtent =
                             scrollController.position.maxScrollExtent;
-                        final notes =
-                            ref
-                                .watch(
-                                  timelineNotesNotifierProvider(tabSettings),
-                                )
-                                .valueOrNull;
+                        final notes = ref
+                            .watch(timelineNotesNotifierProvider(tabSettings))
+                            .valueOrNull;
                         final oldestNote = notes?.items.lastOrNull;
                         if (centerId == null &&
                             oldestNote != null &&

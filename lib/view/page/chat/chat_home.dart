@@ -45,60 +45,56 @@ class ChatHome extends HookConsumerWidget {
     }, []);
 
     return RefreshIndicator(
-      onRefresh:
-          () => Future.wait([
-            ref.read(mainStreamNotifierProvider(account).notifier).connect(),
-            ref.refresh(chatHistoryNotifierProvider(account).future),
-          ]),
+      onRefresh: () => Future.wait([
+        ref.read(mainStreamNotifierProvider(account).notifier).connect(),
+        ref.refresh(chatHistoryNotifierProvider(account).future),
+      ]),
       child: switch (history) {
         AsyncValue(valueOrNull: final history?) =>
           history.isEmpty
               ? LayoutBuilder(
-                builder:
-                    (context, constraint) => SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: SizedBox(
-                        height: constraint.maxHeight,
-                        child: Center(child: Text(t.misskey.chat_.noHistory)),
-                      ),
+                  builder: (context, constraint) => SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: SizedBox(
+                      height: constraint.maxHeight,
+                      child: Center(child: Text(t.misskey.chat_.noHistory)),
                     ),
-              )
+                  ),
+                )
               : ListView.builder(
-                itemBuilder:
-                    (context, index) => Center(
-                      child: Container(
-                        width: maxContentWidth,
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 8.0 : 4.0,
-                          right: 8.0,
-                          bottom: index == history.length - 1 ? 120.0 : 4.0,
-                        ),
-                        child: _ChatMessagePreview(
-                          account: account,
-                          message: history[index],
-                        ),
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      width: maxContentWidth,
+                      margin: EdgeInsets.only(
+                        left: 8.0,
+                        top: index == 0 ? 8.0 : 4.0,
+                        right: 8.0,
+                        bottom: index == history.length - 1 ? 120.0 : 4.0,
                       ),
-                    ),
-                itemCount: history.length,
-              ),
-        AsyncValue(error: MisskeyException(code: 'PERMISSION_DENIED')) =>
-          LayoutBuilder(
-            builder:
-                (context, constraint) => SingleChildScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  child: SizedBox(
-                    height: constraint.maxHeight,
-                    child: Center(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                        width: maxContentWidth,
-                        padding: const EdgeInsets.all(16.0),
-                        child: PermissionDeniedErrorWidget(account: account),
+                      child: _ChatMessagePreview(
+                        account: account,
+                        message: history[index],
                       ),
                     ),
                   ),
+                  itemCount: history.length,
                 ),
+        AsyncValue(error: MisskeyException(code: 'PERMISSION_DENIED')) =>
+          LayoutBuilder(
+            builder: (context, constraint) => SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: SizedBox(
+                height: constraint.maxHeight,
+                child: Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    padding: const EdgeInsets.all(16.0),
+                    child: PermissionDeniedErrorWidget(account: account),
+                  ),
+                ),
+              ),
+            ),
           ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
@@ -127,8 +123,9 @@ class _ChatMessagePreview extends ConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final isMyMessage = message.fromUserId == i?.id;
     final room = message.toRoom;
-    final user =
-        room != null || !isMyMessage ? message.fromUser : message.toUser;
+    final user = room != null || !isMyMessage
+        ? message.fromUser
+        : message.toUser;
     final isRead = message.isRead ?? true;
     final style = DefaultTextStyle.of(context).style;
     final theme = Theme.of(context);
@@ -173,8 +170,9 @@ class _ChatMessagePreview extends ConsumerWidget {
                   children: [
                     DefaultTextStyle.merge(
                       style: TextStyle(
-                        fontWeight:
-                            !isMyMessage && !isRead ? FontWeight.bold : null,
+                        fontWeight: !isMyMessage && !isRead
+                            ? FontWeight.bold
+                            : null,
                       ),
                       child: Row(
                         spacing: 2.0,

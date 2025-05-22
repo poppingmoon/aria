@@ -19,18 +19,16 @@ class GalleryRecent extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: posts,
-      itemBuilder:
-          (context, post) => GalleryPostPreview(
-            account: account,
-            post: post,
-            onTap: () => context.push('/$account/gallery/${post.id}'),
-          ),
-      onRefresh:
-          () => ref.refresh(galleryPostsNotifierProvider(account).future),
-      loadMore:
-          (skipError) => ref
-              .read(galleryPostsNotifierProvider(account).notifier)
-              .loadMore(skipError: skipError),
+      itemBuilder: (context, post) => GalleryPostPreview(
+        account: account,
+        post: post,
+        onTap: () => context.push('/$account/gallery/${post.id}'),
+      ),
+      onRefresh: () =>
+          ref.refresh(galleryPostsNotifierProvider(account).future),
+      loadMore: (skipError) => ref
+          .read(galleryPostsNotifierProvider(account).notifier)
+          .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );
