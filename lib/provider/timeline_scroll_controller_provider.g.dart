@@ -78,10 +78,9 @@ class TimelineScrollControllerProvider
         ),
         from: timelineScrollControllerProvider,
         name: r'timelineScrollControllerProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineScrollControllerHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineScrollControllerHash,
         dependencies: TimelineScrollControllerFamily._dependencies,
         allTransitiveDependencies:
             TimelineScrollControllerFamily._allTransitiveDependencies,

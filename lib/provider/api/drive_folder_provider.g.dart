@@ -73,10 +73,9 @@ class DriveFolderProvider extends AutoDisposeFutureProvider<DriveFolder> {
         (ref) => driveFolder(ref as DriveFolderRef, account, folderId),
         from: driveFolderProvider,
         name: r'driveFolderProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$driveFolderHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$driveFolderHash,
         dependencies: DriveFolderFamily._dependencies,
         allTransitiveDependencies: DriveFolderFamily._allTransitiveDependencies,
         account: account,

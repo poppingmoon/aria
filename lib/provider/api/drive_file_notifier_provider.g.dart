@@ -79,16 +79,14 @@ class DriveFileNotifierProvider
   /// See also [DriveFileNotifier].
   DriveFileNotifierProvider(Account account, String fileId)
     : this._internal(
-        () =>
-            DriveFileNotifier()
-              ..account = account
-              ..fileId = fileId,
+        () => DriveFileNotifier()
+          ..account = account
+          ..fileId = fileId,
         from: driveFileNotifierProvider,
         name: r'driveFileNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$driveFileNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$driveFileNotifierHash,
         dependencies: DriveFileNotifierFamily._dependencies,
         allTransitiveDependencies:
             DriveFileNotifierFamily._allTransitiveDependencies,
@@ -120,10 +118,9 @@ class DriveFileNotifierProvider
     return ProviderOverride(
       origin: this,
       override: DriveFileNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..fileId = fileId,
+        () => create()
+          ..account = account
+          ..fileId = fileId,
         from: from,
         name: null,
         dependencies: null,

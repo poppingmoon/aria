@@ -82,10 +82,9 @@ class PostFormHashtagsNotifierProvider
         () => PostFormHashtagsNotifier()..account = account,
         from: postFormHashtagsNotifierProvider,
         name: r'postFormHashtagsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$postFormHashtagsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$postFormHashtagsNotifierHash,
         dependencies: PostFormHashtagsNotifierFamily._dependencies,
         allTransitiveDependencies:
             PostFormHashtagsNotifierFamily._allTransitiveDependencies,

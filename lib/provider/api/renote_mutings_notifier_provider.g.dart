@@ -87,10 +87,9 @@ class RenoteMutingsNotifierProvider
         () => RenoteMutingsNotifier()..account = account,
         from: renoteMutingsNotifierProvider,
         name: r'renoteMutingsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$renoteMutingsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$renoteMutingsNotifierHash,
         dependencies: RenoteMutingsNotifierFamily._dependencies,
         allTransitiveDependencies:
             RenoteMutingsNotifierFamily._allTransitiveDependencies,

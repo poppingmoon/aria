@@ -11,10 +11,9 @@ _TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) => _TabSettings(
   tabType: $enumDecode(_$TabTypeEnumMap, json['tabType']),
   name: json['name'] as String?,
   account: Account.fromJson(json['account'] as Map<String, dynamic>),
-  icon:
-      json['icon'] == null
-          ? null
-          : TabIcon.fromJson(json['icon'] as Map<String, dynamic>),
+  icon: json['icon'] == null
+      ? null
+      : TabIcon.fromJson(json['icon'] as Map<String, dynamic>),
   disableStreaming: json['disableStreaming'] as bool? ?? false,
   disableSubscribing: json['disableSubscribing'] as bool? ?? false,
   withReplies: json['withReplies'] as bool? ?? false,

@@ -110,18 +110,16 @@ class UsersNotifierProvider
     Origin? userOrigin,
     String? host,
   }) : this._internal(
-         () =>
-             UsersNotifier()
-               ..account = account
-               ..sort = sort
-               ..userOrigin = userOrigin
-               ..host = host,
+         () => UsersNotifier()
+           ..account = account
+           ..sort = sort
+           ..userOrigin = userOrigin
+           ..host = host,
          from: usersNotifierProvider,
          name: r'usersNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$usersNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$usersNotifierHash,
          dependencies: UsersNotifierFamily._dependencies,
          allTransitiveDependencies:
              UsersNotifierFamily._allTransitiveDependencies,
@@ -166,12 +164,11 @@ class UsersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UsersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..sort = sort
-              ..userOrigin = userOrigin
-              ..host = host,
+        () => create()
+          ..account = account
+          ..sort = sort
+          ..userOrigin = userOrigin
+          ..host = host,
         from: from,
         name: null,
         dependencies: null,

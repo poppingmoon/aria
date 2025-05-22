@@ -71,8 +71,9 @@ class StatsProvider extends AutoDisposeFutureProvider<StatsResponse> {
         (ref) => stats(ref as StatsRef, account),
         from: statsProvider,
         name: r'statsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$statsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$statsHash,
         dependencies: StatsFamily._dependencies,
         allTransitiveDependencies: StatsFamily._allTransitiveDependencies,
         account: account,

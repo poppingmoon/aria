@@ -14,10 +14,9 @@ String _$timelineTabSettingsHash() =>
 final timelineTabSettingsProvider = AutoDisposeProvider<TabSettings?>.internal(
   timelineTabSettings,
   name: r'timelineTabSettingsProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$timelineTabSettingsHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$timelineTabSettingsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

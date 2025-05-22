@@ -1875,7 +1875,6 @@ class _TranslationsMisskeyThemeKeysBnBd extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'বাটনের পটভূমি';
 	@override String get buttonHoverBg => 'বাটনের পটভূমি (হভার)';
 	@override String get inputBorder => 'ইনপুট ফিল্ডের বর্ডার';
-	@override String get driveFolderBg => 'ড্রাইভ ফোল্ডারের পটভূমি';
 	@override String get badge => 'ব্যাজ';
 	@override String get messageBg => 'চ্যাটের পটভূমি';
 	@override String get fgHighlighted => 'হাইলাইট করা পাঠ্য';

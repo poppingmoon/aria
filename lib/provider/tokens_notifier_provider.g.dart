@@ -14,10 +14,9 @@ final tokensNotifierProvider =
     NotifierProvider<TokensNotifier, Map<Account, String>>.internal(
       TokensNotifier.new,
       name: r'tokensNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$tokensNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$tokensNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

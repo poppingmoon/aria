@@ -15,10 +15,9 @@ final messageOpenedAppNotifierProvider =
     NotifierProvider<MessageOpenedAppNotifier, bool>.internal(
       MessageOpenedAppNotifier.new,
       name: r'messageOpenedAppNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$messageOpenedAppNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$messageOpenedAppNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

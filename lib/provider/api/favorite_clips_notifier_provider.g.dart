@@ -86,10 +86,9 @@ class FavoriteClipsNotifierProvider
         () => FavoriteClipsNotifier()..account = account,
         from: favoriteClipsNotifierProvider,
         name: r'favoriteClipsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$favoriteClipsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$favoriteClipsNotifierHash,
         dependencies: FavoriteClipsNotifierFamily._dependencies,
         allTransitiveDependencies:
             FavoriteClipsNotifierFamily._allTransitiveDependencies,

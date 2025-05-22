@@ -81,10 +81,9 @@ class MetaNotifierProvider
         () => MetaNotifier()..host = host,
         from: metaNotifierProvider,
         name: r'metaNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$metaNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$metaNotifierHash,
         dependencies: MetaNotifierFamily._dependencies,
         allTransitiveDependencies:
             MetaNotifierFamily._allTransitiveDependencies,

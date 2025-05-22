@@ -13,10 +13,9 @@ String _$summalyRepositoryHash() => r'1529b9d8b8c6381b1d95a147f120be1db0af8ab5';
 final summalyRepositoryProvider = Provider<SummalyRepository>.internal(
   summalyRepository,
   name: r'summalyRepositoryProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$summalyRepositoryHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$summalyRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

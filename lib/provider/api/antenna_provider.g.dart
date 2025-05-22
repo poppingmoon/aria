@@ -71,10 +71,9 @@ class AntennaProvider extends AutoDisposeFutureProvider<Antenna> {
         (ref) => antenna(ref as AntennaRef, account, antennaId),
         from: antennaProvider,
         name: r'antennaProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$antennaHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$antennaHash,
         dependencies: AntennaFamily._dependencies,
         allTransitiveDependencies: AntennaFamily._allTransitiveDependencies,
         account: account,

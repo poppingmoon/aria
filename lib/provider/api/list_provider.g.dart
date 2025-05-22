@@ -75,8 +75,9 @@ class ListProvider extends AutoDisposeFutureProvider<UsersListsShowResponse> {
         (ref) => list(ref as ListRef, account, listId, forPublic: forPublic),
         from: listProvider,
         name: r'listProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$listHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$listHash,
         dependencies: ListFamily._dependencies,
         allTransitiveDependencies: ListFamily._allTransitiveDependencies,
         account: account,

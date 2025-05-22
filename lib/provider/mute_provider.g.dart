@@ -73,8 +73,9 @@ class MuteProvider
         (ref) => mute(ref as MuteRef, mutedWords),
         from: muteProvider,
         name: r'muteProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$muteHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$muteHash,
         dependencies: MuteFamily._dependencies,
         allTransitiveDependencies: MuteFamily._allTransitiveDependencies,
         mutedWords: mutedWords,

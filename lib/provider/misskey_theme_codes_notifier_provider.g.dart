@@ -15,10 +15,9 @@ final misskeyThemeCodesNotifierProvider =
     NotifierProvider<MisskeyThemeCodesNotifier, List<String>>.internal(
       MisskeyThemeCodesNotifier.new,
       name: r'misskeyThemeCodesNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$misskeyThemeCodesNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$misskeyThemeCodesNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

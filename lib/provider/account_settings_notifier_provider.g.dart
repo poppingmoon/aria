@@ -82,10 +82,9 @@ class AccountSettingsNotifierProvider
         () => AccountSettingsNotifier()..account = account,
         from: accountSettingsNotifierProvider,
         name: r'accountSettingsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$accountSettingsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$accountSettingsNotifierHash,
         dependencies: AccountSettingsNotifierFamily._dependencies,
         allTransitiveDependencies:
             AccountSettingsNotifierFamily._allTransitiveDependencies,

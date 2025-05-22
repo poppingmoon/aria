@@ -2035,7 +2035,6 @@ class _TranslationsMisskeyThemeKeysUkUa extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Фон кнопки';
 	@override String get buttonHoverBg => 'Фон кнопки (при наведенні)';
 	@override String get inputBorder => 'Край поля вводу';
-	@override String get driveFolderBg => 'Фон папки на диску';
 	@override String get badge => 'Значок';
 	@override String get messageBg => 'Фон переписки';
 	@override String get fgHighlighted => 'Виділений текст';

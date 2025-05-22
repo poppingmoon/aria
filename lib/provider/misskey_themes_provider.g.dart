@@ -13,10 +13,9 @@ String _$misskeyThemesHash() => r'58d388567c15c55d718897ec26005e8567f024da';
 final misskeyThemesProvider = Provider<List<MisskeyTheme?>>.internal(
   misskeyThemes,
   name: r'misskeyThemesProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$misskeyThemesHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$misskeyThemesHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

@@ -73,10 +73,9 @@ class ChatMessageProvider extends AutoDisposeFutureProvider<ChatMessage> {
         (ref) => chatMessage(ref as ChatMessageRef, account, messageId),
         from: chatMessageProvider,
         name: r'chatMessageProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$chatMessageHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$chatMessageHash,
         dependencies: ChatMessageFamily._dependencies,
         allTransitiveDependencies: ChatMessageFamily._allTransitiveDependencies,
         account: account,

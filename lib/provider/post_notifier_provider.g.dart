@@ -78,16 +78,14 @@ class PostNotifierProvider
   /// See also [PostNotifier].
   PostNotifierProvider(Account account, {String? noteId})
     : this._internal(
-        () =>
-            PostNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => PostNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: postNotifierProvider,
         name: r'postNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$postNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$postNotifierHash,
         dependencies: PostNotifierFamily._dependencies,
         allTransitiveDependencies:
             PostNotifierFamily._allTransitiveDependencies,
@@ -119,10 +117,9 @@ class PostNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PostNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

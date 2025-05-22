@@ -97,16 +97,14 @@ class TimelineNotesAfterNoteNotifierProvider
     TabSettings tabSettings, {
     String? sinceId,
   }) : this._internal(
-         () =>
-             TimelineNotesAfterNoteNotifier()
-               ..tabSettings = tabSettings
-               ..sinceId = sinceId,
+         () => TimelineNotesAfterNoteNotifier()
+           ..tabSettings = tabSettings
+           ..sinceId = sinceId,
          from: timelineNotesAfterNoteNotifierProvider,
          name: r'timelineNotesAfterNoteNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$timelineNotesAfterNoteNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$timelineNotesAfterNoteNotifierHash,
          dependencies: TimelineNotesAfterNoteNotifierFamily._dependencies,
          allTransitiveDependencies:
              TimelineNotesAfterNoteNotifierFamily._allTransitiveDependencies,
@@ -140,10 +138,9 @@ class TimelineNotesAfterNoteNotifierProvider
     return ProviderOverride(
       origin: this,
       override: TimelineNotesAfterNoteNotifierProvider._internal(
-        () =>
-            create()
-              ..tabSettings = tabSettings
-              ..sinceId = sinceId,
+        () => create()
+          ..tabSettings = tabSettings
+          ..sinceId = sinceId,
         from: from,
         name: null,
         dependencies: null,

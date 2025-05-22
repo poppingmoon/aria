@@ -80,10 +80,9 @@ class MutedAdsNotifierProvider
         () => MutedAdsNotifier()..account = account,
         from: mutedAdsNotifierProvider,
         name: r'mutedAdsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mutedAdsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mutedAdsNotifierHash,
         dependencies: MutedAdsNotifierFamily._dependencies,
         allTransitiveDependencies:
             MutedAdsNotifierFamily._allTransitiveDependencies,

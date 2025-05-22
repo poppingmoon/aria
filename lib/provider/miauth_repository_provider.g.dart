@@ -13,10 +13,9 @@ String _$miAuthRepositoryHash() => r'c26494a9a41e561c457b7256fb0e15c50c1f2932';
 final miAuthRepositoryProvider = AutoDisposeProvider<MiAuthRepository>.internal(
   miAuthRepository,
   name: r'miAuthRepositoryProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$miAuthRepositoryHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$miAuthRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

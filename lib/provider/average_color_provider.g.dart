@@ -73,10 +73,9 @@ class AverageColorProvider extends AutoDisposeProvider<Color> {
         (ref) => averageColor(ref as AverageColorRef, blurHash),
         from: averageColorProvider,
         name: r'averageColorProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$averageColorHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$averageColorHash,
         dependencies: AverageColorFamily._dependencies,
         allTransitiveDependencies:
             AverageColorFamily._allTransitiveDependencies,

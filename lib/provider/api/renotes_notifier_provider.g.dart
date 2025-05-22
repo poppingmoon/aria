@@ -83,16 +83,14 @@ class RenotesNotifierProvider
   /// See also [RenotesNotifier].
   RenotesNotifierProvider(Account account, String noteId)
     : this._internal(
-        () =>
-            RenotesNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => RenotesNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: renotesNotifierProvider,
         name: r'renotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$renotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$renotesNotifierHash,
         dependencies: RenotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             RenotesNotifierFamily._allTransitiveDependencies,
@@ -126,10 +124,9 @@ class RenotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: RenotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

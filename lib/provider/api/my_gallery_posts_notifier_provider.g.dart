@@ -87,10 +87,9 @@ class MyGalleryPostsNotifierProvider
         () => MyGalleryPostsNotifier()..account = account,
         from: myGalleryPostsNotifierProvider,
         name: r'myGalleryPostsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$myGalleryPostsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$myGalleryPostsNotifierHash,
         dependencies: MyGalleryPostsNotifierFamily._dependencies,
         allTransitiveDependencies:
             MyGalleryPostsNotifierFamily._allTransitiveDependencies,

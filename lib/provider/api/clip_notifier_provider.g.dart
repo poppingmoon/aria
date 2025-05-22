@@ -78,16 +78,14 @@ class ClipNotifierProvider
   /// See also [ClipNotifier].
   ClipNotifierProvider(Account account, String clipId)
     : this._internal(
-        () =>
-            ClipNotifier()
-              ..account = account
-              ..clipId = clipId,
+        () => ClipNotifier()
+          ..account = account
+          ..clipId = clipId,
         from: clipNotifierProvider,
         name: r'clipNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clipNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clipNotifierHash,
         dependencies: ClipNotifierFamily._dependencies,
         allTransitiveDependencies:
             ClipNotifierFamily._allTransitiveDependencies,
@@ -119,10 +117,9 @@ class ClipNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ClipNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..clipId = clipId,
+        () => create()
+          ..account = account
+          ..clipId = clipId,
         from: from,
         name: null,
         dependencies: null,

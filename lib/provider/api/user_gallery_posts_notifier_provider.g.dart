@@ -85,16 +85,14 @@ class UserGalleryPostsNotifierProvider
   /// See also [UserGalleryPostsNotifier].
   UserGalleryPostsNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserGalleryPostsNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserGalleryPostsNotifier()
+          ..account = account
+          ..userId = userId,
         from: userGalleryPostsNotifierProvider,
         name: r'userGalleryPostsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userGalleryPostsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userGalleryPostsNotifierHash,
         dependencies: UserGalleryPostsNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserGalleryPostsNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class UserGalleryPostsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserGalleryPostsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

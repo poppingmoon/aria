@@ -15,10 +15,9 @@ final overlayLayersNotifierProvider =
     AutoDisposeNotifierProvider<OverlayLayersNotifier, List<Layer>>.internal(
       OverlayLayersNotifier.new,
       name: r'overlayLayersNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$overlayLayersNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$overlayLayersNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

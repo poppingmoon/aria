@@ -73,10 +73,9 @@ class IdGenMethodProvider extends AutoDisposeFutureProvider<IdGenMethod> {
         (ref) => idGenMethod(ref as IdGenMethodRef, account),
         from: idGenMethodProvider,
         name: r'idGenMethodProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$idGenMethodHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$idGenMethodHash,
         dependencies: IdGenMethodFamily._dependencies,
         allTransitiveDependencies: IdGenMethodFamily._allTransitiveDependencies,
         account: account,

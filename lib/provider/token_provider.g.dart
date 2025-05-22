@@ -71,8 +71,9 @@ class TokenProvider extends Provider<String?> {
         (ref) => token(ref as TokenRef, account),
         from: tokenProvider,
         name: r'tokenProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$tokenHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$tokenHash,
         dependencies: TokenFamily._dependencies,
         allTransitiveDependencies: TokenFamily._allTransitiveDependencies,
         account: account,

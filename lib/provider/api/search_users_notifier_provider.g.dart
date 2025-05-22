@@ -101,17 +101,15 @@ class SearchUsersNotifierProvider
     String query, {
     Origin? userOrigin,
   }) : this._internal(
-         () =>
-             SearchUsersNotifier()
-               ..account = account
-               ..query = query
-               ..userOrigin = userOrigin,
+         () => SearchUsersNotifier()
+           ..account = account
+           ..query = query
+           ..userOrigin = userOrigin,
          from: searchUsersNotifierProvider,
          name: r'searchUsersNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$searchUsersNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$searchUsersNotifierHash,
          dependencies: SearchUsersNotifierFamily._dependencies,
          allTransitiveDependencies:
              SearchUsersNotifierFamily._allTransitiveDependencies,
@@ -148,11 +146,10 @@ class SearchUsersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: SearchUsersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..query = query
-              ..userOrigin = userOrigin,
+        () => create()
+          ..account = account
+          ..query = query
+          ..userOrigin = userOrigin,
         from: from,
         name: null,
         dependencies: null,

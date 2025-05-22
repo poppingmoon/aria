@@ -74,10 +74,9 @@ class PinnedUsersProvider
         (ref) => pinnedUsers(ref as PinnedUsersRef, account),
         from: pinnedUsersProvider,
         name: r'pinnedUsersProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$pinnedUsersHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$pinnedUsersHash,
         dependencies: PinnedUsersFamily._dependencies,
         allTransitiveDependencies: PinnedUsersFamily._allTransitiveDependencies,
         account: account,

@@ -10,7 +10,7 @@ plugins {
 android {
     namespace = "com.poppingmoon.aria"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "27.2.12479018"
+    ndkVersion = "28.1.13356709"
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
@@ -59,6 +59,16 @@ flutter {
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
     implementation("org.unifiedpush.android:embedded-fcm-distributor:3.0.0")
+}
+
+configurations.all {
+    val tink = "com.google.crypto.tink:tink:1.16.0"
+    resolutionStrategy {
+        force(tink)
+        dependencySubstitution {
+            substitute(module("com.google.crypto.tink:tink-android")).using(module(tink))
+        }
+    }
 }
 
 val abiCodes = mapOf("x86_64" to 1, "armeabi-v7a" to 2, "arm64-v8a" to 3)

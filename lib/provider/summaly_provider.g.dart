@@ -71,10 +71,9 @@ class SummalyProvider extends FutureProvider<SummalyResult?> {
         (ref) => summaly(ref as SummalyRef, host, link, lang: lang),
         from: summalyProvider,
         name: r'summalyProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$summalyHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$summalyHash,
         dependencies: SummalyFamily._dependencies,
         allTransitiveDependencies: SummalyFamily._allTransitiveDependencies,
         host: host,

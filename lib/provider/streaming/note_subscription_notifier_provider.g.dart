@@ -82,10 +82,9 @@ class NoteSubscriptionNotifierProvider
         () => NoteSubscriptionNotifier()..account = account,
         from: noteSubscriptionNotifierProvider,
         name: r'noteSubscriptionNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteSubscriptionNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteSubscriptionNotifierHash,
         dependencies: NoteSubscriptionNotifierFamily._dependencies,
         allTransitiveDependencies:
             NoteSubscriptionNotifierFamily._allTransitiveDependencies,

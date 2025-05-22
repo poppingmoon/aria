@@ -84,16 +84,14 @@ class UserPagesNotifierProvider
   /// See also [UserPagesNotifier].
   UserPagesNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserPagesNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserPagesNotifier()
+          ..account = account
+          ..userId = userId,
         from: userPagesNotifierProvider,
         name: r'userPagesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userPagesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userPagesNotifierHash,
         dependencies: UserPagesNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserPagesNotifierFamily._allTransitiveDependencies,
@@ -127,10 +125,9 @@ class UserPagesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserPagesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

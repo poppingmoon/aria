@@ -86,16 +86,14 @@ class MentionsNotifierProvider
   /// See also [MentionsNotifier].
   MentionsNotifierProvider(Account account, [bool specified = false])
     : this._internal(
-        () =>
-            MentionsNotifier()
-              ..account = account
-              ..specified = specified,
+        () => MentionsNotifier()
+          ..account = account
+          ..specified = specified,
         from: mentionsNotifierProvider,
         name: r'mentionsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mentionsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mentionsNotifierHash,
         dependencies: MentionsNotifierFamily._dependencies,
         allTransitiveDependencies:
             MentionsNotifierFamily._allTransitiveDependencies,
@@ -129,10 +127,9 @@ class MentionsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: MentionsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..specified = specified,
+        () => create()
+          ..account = account
+          ..specified = specified,
         from: from,
         name: null,
         dependencies: null,

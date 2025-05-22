@@ -87,10 +87,9 @@ class FeaturedPlaysNotifierProvider
         () => FeaturedPlaysNotifier()..account = account,
         from: featuredPlaysNotifierProvider,
         name: r'featuredPlaysNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredPlaysNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredPlaysNotifierHash,
         dependencies: FeaturedPlaysNotifierFamily._dependencies,
         allTransitiveDependencies:
             FeaturedPlaysNotifierFamily._allTransitiveDependencies,

@@ -84,16 +84,14 @@ class UserPlaysNotifierProvider
   /// See also [UserPlaysNotifier].
   UserPlaysNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserPlaysNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserPlaysNotifier()
+          ..account = account
+          ..userId = userId,
         from: userPlaysNotifierProvider,
         name: r'userPlaysNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userPlaysNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userPlaysNotifierHash,
         dependencies: UserPlaysNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserPlaysNotifierFamily._allTransitiveDependencies,
@@ -127,10 +125,9 @@ class UserPlaysNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserPlaysNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

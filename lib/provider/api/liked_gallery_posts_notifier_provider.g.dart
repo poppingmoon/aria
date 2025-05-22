@@ -90,10 +90,9 @@ class LikedGalleryPostsNotifierProvider
         () => LikedGalleryPostsNotifier()..account = account,
         from: likedGalleryPostsNotifierProvider,
         name: r'likedGalleryPostsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$likedGalleryPostsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$likedGalleryPostsNotifierHash,
         dependencies: LikedGalleryPostsNotifierFamily._dependencies,
         allTransitiveDependencies:
             LikedGalleryPostsNotifierFamily._allTransitiveDependencies,

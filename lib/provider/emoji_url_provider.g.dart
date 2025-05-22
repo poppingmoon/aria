@@ -101,10 +101,9 @@ class EmojiUrlProvider extends AutoDisposeProvider<(String, String)> {
          ),
          from: emojiUrlProvider,
          name: r'emojiUrlProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$emojiUrlHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$emojiUrlHash,
          dependencies: EmojiUrlFamily._dependencies,
          allTransitiveDependencies: EmojiUrlFamily._allTransitiveDependencies,
          account: account,

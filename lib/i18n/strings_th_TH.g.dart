@@ -2834,7 +2834,6 @@ class _TranslationsMisskeyDataSaverThTh extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaThTh media_ = _TranslationsMisskeyDataSaverMediaThTh._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarThTh avatar_ = _TranslationsMisskeyDataSaverAvatarThTh._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewThTh urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewThTh._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeThTh code_ = _TranslationsMisskeyDataSaverCodeThTh._(_root);
 }
 
@@ -3369,7 +3368,6 @@ class _TranslationsMisskeyThemeKeysThTh extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'ปุ่มพื้นหลัง';
 	@override String get buttonHoverBg => 'ปุ่มพื้นหลัง (โฮเวอร์)';
 	@override String get inputBorder => 'เส้นขอบของช่องป้อนข้อมูล';
-	@override String get driveFolderBg => 'พื้นหลังโฟลเดอร์ไดรฟ์';
 	@override String get badge => 'ตรา';
 	@override String get messageBg => 'พื้นหลังแชท';
 	@override String get fgHighlighted => 'ข้อความที่ไฮไลต์';
@@ -3601,17 +3599,6 @@ class _TranslationsMisskeyDataSaverAvatarThTh extends TranslationsMisskeyDataSav
 	// Translations
 	@override String get title => 'รูปไอคอน';
 	@override String get description => 'ระงับการเคลื่อนไหวของภาพไอคอน ภาพเคลื่อนไหวอาจมีขนาดไฟล์ใหญ่กว่าภาพปกติ ดังนั้นจึงสามารถช่วยในการลดการใช้ข้อมูล';
-}
-
-// Path: misskey.dataSaver_.urlPreview_
-class _TranslationsMisskeyDataSaverUrlPreviewThTh extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
-
-	final TranslationsThTh _root; // ignore: unused_field
-
-	// Translations
-	@override String get title => 'ธัมบ์เนลแสดงตัวอย่าง URL';
-	@override String get description => 'ธัมบ์เนลแสดงตัวอย่าง URL จะไม่โหลดโดยอัตโนมัติ';
 }
 
 // Path: misskey.dataSaver_.code_

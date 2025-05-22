@@ -13,8 +13,9 @@ String _$fileSystemHash() => r'96ac0dac8d12939aa3ce95bfd916a656d76cfa5e';
 final fileSystemProvider = AutoDisposeProvider<FileSystem>.internal(
   fileSystem,
   name: r'fileSystemProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$fileSystemHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fileSystemHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

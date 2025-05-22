@@ -81,10 +81,9 @@ class ClipsNotifierProvider
         () => ClipsNotifier()..account = account,
         from: clipsNotifierProvider,
         name: r'clipsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clipsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clipsNotifierHash,
         dependencies: ClipsNotifierFamily._dependencies,
         allTransitiveDependencies:
             ClipsNotifierFamily._allTransitiveDependencies,

@@ -74,10 +74,9 @@ class ConversationNotesProvider extends AutoDisposeFutureProvider<List<Note>> {
             conversationNotes(ref as ConversationNotesRef, account, noteId),
         from: conversationNotesProvider,
         name: r'conversationNotesProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$conversationNotesHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$conversationNotesHash,
         dependencies: ConversationNotesFamily._dependencies,
         allTransitiveDependencies:
             ConversationNotesFamily._allTransitiveDependencies,

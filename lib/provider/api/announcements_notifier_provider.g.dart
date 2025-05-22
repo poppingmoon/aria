@@ -91,16 +91,14 @@ class AnnouncementsNotifierProvider
   /// See also [AnnouncementsNotifier].
   AnnouncementsNotifierProvider(Account account, {bool isActive = true})
     : this._internal(
-        () =>
-            AnnouncementsNotifier()
-              ..account = account
-              ..isActive = isActive,
+        () => AnnouncementsNotifier()
+          ..account = account
+          ..isActive = isActive,
         from: announcementsNotifierProvider,
         name: r'announcementsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$announcementsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$announcementsNotifierHash,
         dependencies: AnnouncementsNotifierFamily._dependencies,
         allTransitiveDependencies:
             AnnouncementsNotifierFamily._allTransitiveDependencies,
@@ -134,10 +132,9 @@ class AnnouncementsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AnnouncementsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..isActive = isActive,
+        () => create()
+          ..account = account
+          ..isActive = isActive,
         from: from,
         name: null,
         dependencies: null,

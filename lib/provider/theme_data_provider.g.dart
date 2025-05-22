@@ -71,10 +71,9 @@ class ThemeDataProvider extends AutoDisposeProvider<ThemeData> {
         (ref) => themeData(ref as ThemeDataRef, brightness),
         from: themeDataProvider,
         name: r'themeDataProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$themeDataHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$themeDataHash,
         dependencies: ThemeDataFamily._dependencies,
         allTransitiveDependencies: ThemeDataFamily._allTransitiveDependencies,
         brightness: brightness,

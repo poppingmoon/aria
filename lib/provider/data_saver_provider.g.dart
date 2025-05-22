@@ -13,8 +13,9 @@ String _$dataSaverHash() => r'fb67bb65abe02b99a7f49730a41d344c23819ebd';
 final dataSaverProvider = AutoDisposeProvider<DataSaver>.internal(
   dataSaver,
   name: r'dataSaverProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$dataSaverHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$dataSaverHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

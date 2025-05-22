@@ -82,10 +82,9 @@ class PushSubscriptionNotifierProvider
         () => PushSubscriptionNotifier()..account = account,
         from: pushSubscriptionNotifierProvider,
         name: r'pushSubscriptionNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$pushSubscriptionNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$pushSubscriptionNotifierHash,
         dependencies: PushSubscriptionNotifierFamily._dependencies,
         allTransitiveDependencies:
             PushSubscriptionNotifierFamily._allTransitiveDependencies,

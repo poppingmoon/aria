@@ -82,10 +82,9 @@ class UnifiedPushEndpointNotifierProvider
         () => UnifiedPushEndpointNotifier()..instance = instance,
         from: unifiedPushEndpointNotifierProvider,
         name: r'unifiedPushEndpointNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$unifiedPushEndpointNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$unifiedPushEndpointNotifierHash,
         dependencies: UnifiedPushEndpointNotifierFamily._dependencies,
         allTransitiveDependencies:
             UnifiedPushEndpointNotifierFamily._allTransitiveDependencies,

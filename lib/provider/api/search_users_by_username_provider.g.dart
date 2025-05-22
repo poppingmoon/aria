@@ -85,10 +85,9 @@ class SearchUsersByUsernameProvider
         ),
         from: searchUsersByUsernameProvider,
         name: r'searchUsersByUsernameProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$searchUsersByUsernameHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchUsersByUsernameHash,
         dependencies: SearchUsersByUsernameFamily._dependencies,
         allTransitiveDependencies:
             SearchUsersByUsernameFamily._allTransitiveDependencies,

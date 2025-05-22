@@ -85,10 +85,9 @@ class PlaysNotifierProvider
         () => PlaysNotifier()..account = account,
         from: playsNotifierProvider,
         name: r'playsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$playsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$playsNotifierHash,
         dependencies: PlaysNotifierFamily._dependencies,
         allTransitiveDependencies:
             PlaysNotifierFamily._allTransitiveDependencies,

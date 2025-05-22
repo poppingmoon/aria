@@ -85,16 +85,14 @@ class FeaturedNotesNotifierProvider
   /// See also [FeaturedNotesNotifier].
   FeaturedNotesNotifierProvider(Account account, {String? channelId})
     : this._internal(
-        () =>
-            FeaturedNotesNotifier()
-              ..account = account
-              ..channelId = channelId,
+        () => FeaturedNotesNotifier()
+          ..account = account
+          ..channelId = channelId,
         from: featuredNotesNotifierProvider,
         name: r'featuredNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredNotesNotifierHash,
         dependencies: FeaturedNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             FeaturedNotesNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class FeaturedNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: FeaturedNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..channelId = channelId,
+        () => create()
+          ..account = account
+          ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,

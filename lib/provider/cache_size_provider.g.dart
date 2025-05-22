@@ -13,8 +13,9 @@ String _$cacheSizeHash() => r'b0ca671e2da6877ebd701406cfedc7fb01174822';
 final cacheSizeProvider = AutoDisposeFutureProvider<int>.internal(
   cacheSize,
   name: r'cacheSizeProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cacheSizeHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cacheSizeHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

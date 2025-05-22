@@ -1996,7 +1996,6 @@ class _TranslationsMisskeyThemeKeysSkSk extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Pozadie tlačidla';
 	@override String get buttonHoverBg => 'Pozadie tlačidla (pod kurzorom)';
 	@override String get inputBorder => 'Okraj vstupného poľa';
-	@override String get driveFolderBg => 'Pozadie priečinu disku';
 	@override String get badge => 'Odznak';
 	@override String get messageBg => 'Pozadie chatu';
 	@override String get fgHighlighted => 'Zvýraznený text';

@@ -80,10 +80,9 @@ class ServerUrlNotifierProvider
         () => ServerUrlNotifier()..host = host,
         from: serverUrlNotifierProvider,
         name: r'serverUrlNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$serverUrlNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$serverUrlNotifierHash,
         dependencies: ServerUrlNotifierFamily._dependencies,
         allTransitiveDependencies:
             ServerUrlNotifierFamily._allTransitiveDependencies,

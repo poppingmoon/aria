@@ -81,7 +81,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	// Translations
 	@override String get lang__ => 'Čeština';
 	@override String get headlineMisskey => 'Síť propojená poznámkami';
-	@override String get introMisskey => 'Vítejte! Misskey je otevřený a decentralizovaný microblogový servis.\n"Poznámkami" můžete sdílet co se zrovna děje se všemi ve Vašem okolí. 📡\nPomocí "reakcí" můžete sdílet své názory a pocity na ostatní poznámky. 👍\nPojďte objevovat nový svět! 🚀';
+	@override String get introMisskey => 'Vítejte! Misskey je otevřená a decentralizovaná microblogovací služba.\n"Poznámkami" můžete sdílet co se zrovna děje se všemi ve Vašem okolí. 📡\nPomocí "reakcí" můžete sdílet své názory a pocity na ostatní poznámky. 👍\nPojďte objevovat nový svět! 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} je jeden ze serverů využívající open source platformu <b>Misskey<b> (nazývaná "Misskey instance").';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}. ${month}.';
 	@override String get search => 'Vyhledávání';
@@ -99,7 +99,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get cancel => 'Zrušit';
 	@override String get noThankYou => 'Ne děkuji';
 	@override String get enterUsername => 'Zadej uživatelské jméno';
-	@override String renotedBy({required Object user}) => '${user} přeposla/a';
+	@override String renotedBy({required Object user}) => '${user} přeposlal*a';
 	@override String get noNotes => 'Žádné poznámky';
 	@override String get noNotifications => 'Žádná oznámení';
 	@override String get instance => 'Instance';
@@ -145,6 +145,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => 'Kopírovat ID složky';
 	@override String get copyProfileUrl => 'Kopírovat URL profilu';
 	@override String get searchUser => 'Vyhledat uživatele';
+	@override String get searchThisUsersNotes => 'Prohledat poznámky uživatele';
 	@override String get reply => 'Odpovědět';
 	@override String get loadMore => 'Zobrazit více';
 	@override String get showMore => 'Zobrazit více';
@@ -2525,7 +2526,6 @@ class _TranslationsMisskeyThemeKeysCsCz extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Pozadí tlačítka';
 	@override String get buttonHoverBg => 'Pozadí tlačítka (Hover)';
 	@override String get inputBorder => 'Ohraničení vstupního pole';
-	@override String get driveFolderBg => 'Pozadí složky disku';
 	@override String get badge => 'Odznak';
 	@override String get messageBg => 'Pozadí chatu';
 	@override String get fgHighlighted => 'Zvýrazněný text';

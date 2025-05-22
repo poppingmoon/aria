@@ -73,10 +73,9 @@ class OnlineUsersCountProvider extends AutoDisposeFutureProvider<int> {
         (ref) => onlineUsersCount(ref as OnlineUsersCountRef, account),
         from: onlineUsersCountProvider,
         name: r'onlineUsersCountProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$onlineUsersCountHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$onlineUsersCountHash,
         dependencies: OnlineUsersCountFamily._dependencies,
         allTransitiveDependencies:
             OnlineUsersCountFamily._allTransitiveDependencies,

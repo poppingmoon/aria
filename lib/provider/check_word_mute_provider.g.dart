@@ -82,10 +82,9 @@ class CheckWordMuteProvider extends AutoDisposeProvider<bool> {
         ),
         from: checkWordMuteProvider,
         name: r'checkWordMuteProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$checkWordMuteHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$checkWordMuteHash,
         dependencies: CheckWordMuteFamily._dependencies,
         allTransitiveDependencies:
             CheckWordMuteFamily._allTransitiveDependencies,

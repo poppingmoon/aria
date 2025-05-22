@@ -88,10 +88,9 @@ class WebPushKeySetNotifierNotifierProvider
         () => WebPushKeySetNotifierNotifier()..account = account,
         from: webPushKeySetNotifierNotifierProvider,
         name: r'webPushKeySetNotifierNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$webPushKeySetNotifierNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$webPushKeySetNotifierNotifierHash,
         dependencies: WebPushKeySetNotifierNotifierFamily._dependencies,
         allTransitiveDependencies:
             WebPushKeySetNotifierNotifierFamily._allTransitiveDependencies,

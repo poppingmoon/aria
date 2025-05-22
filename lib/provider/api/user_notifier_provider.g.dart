@@ -105,18 +105,16 @@ class UserNotifierProvider
     String? username,
     String? host,
   }) : this._internal(
-         () =>
-             UserNotifier()
-               ..account = account
-               ..userId = userId
-               ..username = username
-               ..host = host,
+         () => UserNotifier()
+           ..account = account
+           ..userId = userId
+           ..username = username
+           ..host = host,
          from: userNotifierProvider,
          name: r'userNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$userNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$userNotifierHash,
          dependencies: UserNotifierFamily._dependencies,
          allTransitiveDependencies:
              UserNotifierFamily._allTransitiveDependencies,
@@ -159,12 +157,11 @@ class UserNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId
-              ..username = username
-              ..host = host,
+        () => create()
+          ..account = account
+          ..userId = userId
+          ..username = username
+          ..host = host,
         from: from,
         name: null,
         dependencies: null,

@@ -90,10 +90,9 @@ class LikedPlaysNotifierProvider
         () => LikedPlaysNotifier()..account = account,
         from: likedPlaysNotifierProvider,
         name: r'likedPlaysNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$likedPlaysNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$likedPlaysNotifierHash,
         dependencies: LikedPlaysNotifierFamily._dependencies,
         allTransitiveDependencies:
             LikedPlaysNotifierFamily._allTransitiveDependencies,

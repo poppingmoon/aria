@@ -90,17 +90,15 @@ class ChatStreamNotifierProvider
   /// See also [ChatStreamNotifier].
   ChatStreamNotifierProvider(Account account, {String? userId, String? roomId})
     : this._internal(
-        () =>
-            ChatStreamNotifier()
-              ..account = account
-              ..userId = userId
-              ..roomId = roomId,
+        () => ChatStreamNotifier()
+          ..account = account
+          ..userId = userId
+          ..roomId = roomId,
         from: chatStreamNotifierProvider,
         name: r'chatStreamNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$chatStreamNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$chatStreamNotifierHash,
         dependencies: ChatStreamNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChatStreamNotifierFamily._allTransitiveDependencies,
@@ -135,11 +133,10 @@ class ChatStreamNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChatStreamNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId
-              ..roomId = roomId,
+        () => create()
+          ..account = account
+          ..userId = userId
+          ..roomId = roomId,
         from: from,
         name: null,
         dependencies: null,

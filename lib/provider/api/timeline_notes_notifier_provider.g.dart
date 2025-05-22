@@ -91,16 +91,14 @@ class TimelineNotesNotifierProvider
   /// See also [TimelineNotesNotifier].
   TimelineNotesNotifierProvider(TabSettings tabSettings, {String? untilId})
     : this._internal(
-        () =>
-            TimelineNotesNotifier()
-              ..tabSettings = tabSettings
-              ..untilId = untilId,
+        () => TimelineNotesNotifier()
+          ..tabSettings = tabSettings
+          ..untilId = untilId,
         from: timelineNotesNotifierProvider,
         name: r'timelineNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineNotesNotifierHash,
         dependencies: TimelineNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             TimelineNotesNotifierFamily._allTransitiveDependencies,
@@ -134,10 +132,9 @@ class TimelineNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: TimelineNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..tabSettings = tabSettings
-              ..untilId = untilId,
+        () => create()
+          ..tabSettings = tabSettings
+          ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,

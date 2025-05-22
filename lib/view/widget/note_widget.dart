@@ -485,10 +485,11 @@ class _NoteContent extends HookConsumerWidget {
               ],
             if (appearNote case Note(:final renoteId?)) ...[
               DottedBorder(
-                color: colors.renote,
-                borderType: BorderType.RRect,
-                dashPattern: const [2, 4],
-                radius: const Radius.circular(8.0),
+                options: RoundedRectDottedBorderOptions(
+                  color: colors.renote,
+                  dashPattern: const [2, 4],
+                  radius: const Radius.circular(8.0),
+                ),
                 child: DefaultTextStyle.merge(
                   style: style.apply(fontSizeFactor: 0.95),
                   child: NoteSimpleWidget(

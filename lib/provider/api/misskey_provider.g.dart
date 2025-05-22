@@ -71,10 +71,9 @@ class MisskeyProvider extends Provider<Misskey> {
         (ref) => misskey(ref as MisskeyRef, account),
         from: misskeyProvider,
         name: r'misskeyProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$misskeyHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$misskeyHash,
         dependencies: MisskeyFamily._dependencies,
         allTransitiveDependencies: MisskeyFamily._allTransitiveDependencies,
         account: account,

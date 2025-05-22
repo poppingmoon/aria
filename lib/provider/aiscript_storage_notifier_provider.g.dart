@@ -86,10 +86,9 @@ class AiscriptStorageNotifierProvider
         () => AiscriptStorageNotifier()..account = account,
         from: aiscriptStorageNotifierProvider,
         name: r'aiscriptStorageNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$aiscriptStorageNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$aiscriptStorageNotifierHash,
         dependencies: AiscriptStorageNotifierFamily._dependencies,
         allTransitiveDependencies:
             AiscriptStorageNotifierFamily._allTransitiveDependencies,

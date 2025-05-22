@@ -85,10 +85,9 @@ class PagesNotifierProvider
         () => PagesNotifier()..account = account,
         from: pagesNotifierProvider,
         name: r'pagesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$pagesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$pagesNotifierHash,
         dependencies: PagesNotifierFamily._dependencies,
         allTransitiveDependencies:
             PagesNotifierFamily._allTransitiveDependencies,

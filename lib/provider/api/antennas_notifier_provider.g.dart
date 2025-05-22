@@ -82,10 +82,9 @@ class AntennasNotifierProvider
         () => AntennasNotifier()..account = account,
         from: antennasNotifierProvider,
         name: r'antennasNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$antennasNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$antennasNotifierHash,
         dependencies: AntennasNotifierFamily._dependencies,
         allTransitiveDependencies:
             AntennasNotifierFamily._allTransitiveDependencies,

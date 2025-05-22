@@ -85,16 +85,14 @@ class UserFollowersNotifierProvider
   /// See also [UserFollowersNotifier].
   UserFollowersNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserFollowersNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserFollowersNotifier()
+          ..account = account
+          ..userId = userId,
         from: userFollowersNotifierProvider,
         name: r'userFollowersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userFollowersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userFollowersNotifierHash,
         dependencies: UserFollowersNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserFollowersNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class UserFollowersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserFollowersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

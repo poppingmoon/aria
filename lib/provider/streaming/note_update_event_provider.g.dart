@@ -74,10 +74,9 @@ class NoteUpdateEventProvider
         (ref) => noteUpdateEvent(ref as NoteUpdateEventRef, account, noteId),
         from: noteUpdateEventProvider,
         name: r'noteUpdateEventProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteUpdateEventHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteUpdateEventHash,
         dependencies: NoteUpdateEventFamily._dependencies,
         allTransitiveDependencies:
             NoteUpdateEventFamily._allTransitiveDependencies,

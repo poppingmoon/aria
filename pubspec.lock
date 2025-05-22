@@ -405,10 +405,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "27eb0ae77836989a3bc541ce55595e8ceee0992807f14511552a898ddd0d88ac"
+      sha256: "5b236382b47ee411741447c1f1e111459c941ea1b3f2b540dde54c210a3662af"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.0"
   dartx:
     dependency: transitive
     description:
@@ -445,10 +445,10 @@ packages:
     dependency: "direct main"
     description:
       name: dotted_border
-      sha256: "108837e11848ca776c53b30bc870086f84b62ed6e01c503ed976e8f8c7df9c04"
+      sha256: "878eb25e76cac65b822ca920ff91f2c414c0993bc596fa055fec0d005f527b2d"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "3.0.1"
   equatable:
     dependency: transitive
     description:
@@ -737,10 +737,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: ebc86e2ff6a9ca5bc1943e675fef02b5ddaa1a99b4ef980cac576fcfc65959aa
+      sha256: b94a50aabbe56ef254f95f3be75640f99120429f0a153b2dc30143cffc9bfdf3
       url: "https://pub.dev"
     source: hosted
-    version: "19.2.0"
+    version: "19.2.1"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -798,10 +798,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge
-      sha256: "5a5c7a5deeef2cc2ffe6076a33b0429f4a20ceac22a397297aed2b1eb067e611"
+      sha256: b416ff56002789e636244fb4cc449f587656eff995e5a7169457eb0593fcaddb
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.0"
+    version: "2.10.0"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -1140,10 +1140,10 @@ packages:
     dependency: "direct main"
     description:
       name: just_audio
-      sha256: "90421d34e9ee9a407c3722e9db6a45c57b90620b51fcf3a172bae4c3c3278ed5"
+      sha256: d449d6b01ace3343dd8ca7f910db871994942dc58752d2765db35694f9ffe7e2
       url: "https://pub.dev"
     source: hosted
-    version: "0.10.2"
+    version: "0.10.3"
   just_audio_platform_interface:
     dependency: transitive
     description:
@@ -1277,8 +1277,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "5ab5354321cea91d895048cdf34fb34a8bf988ad"
-      resolved-ref: "5ab5354321cea91d895048cdf34fb34a8bf988ad"
+      ref: ccdf6ac326c313f569c10b78469573f861af874e
+      resolved-ref: ccdf6ac326c313f569c10b78469573f861af874e
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -1294,8 +1294,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: d081328f0ba7d4b97b5e820b8612dae065bad395
-      resolved-ref: d081328f0ba7d4b97b5e820b8612dae065bad395
+      ref: "3f0f4d71c1947cf42c62df6b367c08fad13a3d9f"
+      resolved-ref: "3f0f4d71c1947cf42c62df6b367c08fad13a3d9f"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
@@ -1974,8 +1974,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: unifiedpush_android
-      ref: "2e966e96560daa02c4a550129dd9d8d4e29f26c8"
-      resolved-ref: "2e966e96560daa02c4a550129dd9d8d4e29f26c8"
+      ref: b226a0a89b9df7a3d1b7a572e8cfa37dbb5dfa47
+      resolved-ref: b226a0a89b9df7a3d1b7a572e8cfa37dbb5dfa47
       url: "https://github.com/poppingmoon/flutter-connector"
     source: git
     version: "3.0.0"
@@ -2111,10 +2111,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_android
-      sha256: "1f4e8e0e02403452d699ef7cf73fe9936fac8f6f0605303d111d71acb375d1bc"
+      sha256: "28dcc4122079f40f93a0965b3679aff1a5f4251cf79611bd8011f937eb6b69de"
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.3"
+    version: "2.8.4"
   video_player_avfoundation:
     dependency: transitive
     description:
@@ -2199,8 +2199,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: "."
-      ref: "208b7e5c1d1dfbd11e4e26287e2f6eb8eab79c1c"
-      resolved-ref: "208b7e5c1d1dfbd11e4e26287e2f6eb8eab79c1c"
+      ref: "353eec0336be6ed9d785dd86606b13458456e5bf"
+      resolved-ref: "353eec0336be6ed9d785dd86606b13458456e5bf"
       url: "https://github.com/poppingmoon/webcrypto.dart"
     source: git
     version: "0.5.8"

@@ -129,21 +129,19 @@ class SearchNotesNotifierProvider
     String? sinceId,
     String? untilId,
   }) : this._internal(
-         () =>
-             SearchNotesNotifier()
-               ..account = account
-               ..query = query
-               ..userId = userId
-               ..channelId = channelId
-               ..localOnly = localOnly
-               ..sinceId = sinceId
-               ..untilId = untilId,
+         () => SearchNotesNotifier()
+           ..account = account
+           ..query = query
+           ..userId = userId
+           ..channelId = channelId
+           ..localOnly = localOnly
+           ..sinceId = sinceId
+           ..untilId = untilId,
          from: searchNotesNotifierProvider,
          name: r'searchNotesNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$searchNotesNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$searchNotesNotifierHash,
          dependencies: SearchNotesNotifierFamily._dependencies,
          allTransitiveDependencies:
              SearchNotesNotifierFamily._allTransitiveDependencies,
@@ -200,15 +198,14 @@ class SearchNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: SearchNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..query = query
-              ..userId = userId
-              ..channelId = channelId
-              ..localOnly = localOnly
-              ..sinceId = sinceId
-              ..untilId = untilId,
+        () => create()
+          ..account = account
+          ..query = query
+          ..userId = userId
+          ..channelId = channelId
+          ..localOnly = localOnly
+          ..sinceId = sinceId
+          ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,

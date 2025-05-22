@@ -13,8 +13,9 @@ String _$cacheManagerHash() => r'63556bcee54c9b9c5d46b2b588279e3033895b41';
 final cacheManagerProvider = AutoDisposeProvider<ImageCacheManager>.internal(
   cacheManager,
   name: r'cacheManagerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$cacheManagerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$cacheManagerHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );

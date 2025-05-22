@@ -73,10 +73,9 @@ class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
         (ref) => noteIsDeleted(ref as NoteIsDeletedRef, account, noteId),
         from: noteIsDeletedProvider,
         name: r'noteIsDeletedProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteIsDeletedHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteIsDeletedHash,
         dependencies: NoteIsDeletedFamily._dependencies,
         allTransitiveDependencies:
             NoteIsDeletedFamily._allTransitiveDependencies,

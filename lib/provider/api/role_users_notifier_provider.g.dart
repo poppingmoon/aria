@@ -88,16 +88,14 @@ class RoleUsersNotifierProvider
   /// See also [RoleUsersNotifier].
   RoleUsersNotifierProvider(Account account, String roleId)
     : this._internal(
-        () =>
-            RoleUsersNotifier()
-              ..account = account
-              ..roleId = roleId,
+        () => RoleUsersNotifier()
+          ..account = account
+          ..roleId = roleId,
         from: roleUsersNotifierProvider,
         name: r'roleUsersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$roleUsersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$roleUsersNotifierHash,
         dependencies: RoleUsersNotifierFamily._dependencies,
         allTransitiveDependencies:
             RoleUsersNotifierFamily._allTransitiveDependencies,
@@ -131,10 +129,9 @@ class RoleUsersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: RoleUsersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..roleId = roleId,
+        () => create()
+          ..account = account
+          ..roleId = roleId,
         from: from,
         name: null,
         dependencies: null,

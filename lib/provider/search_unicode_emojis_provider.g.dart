@@ -74,10 +74,9 @@ class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
         (ref) => searchUnicodeEmojis(ref as SearchUnicodeEmojisRef, query),
         from: searchUnicodeEmojisProvider,
         name: r'searchUnicodeEmojisProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$searchUnicodeEmojisHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchUnicodeEmojisHash,
         dependencies: SearchUnicodeEmojisFamily._dependencies,
         allTransitiveDependencies:
             SearchUnicodeEmojisFamily._allTransitiveDependencies,

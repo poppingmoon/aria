@@ -73,10 +73,9 @@ class MisskeyColorsProvider extends AutoDisposeProvider<MisskeyColors> {
         (ref) => misskeyColors(ref as MisskeyColorsRef, brightness),
         from: misskeyColorsProvider,
         name: r'misskeyColorsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$misskeyColorsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$misskeyColorsHash,
         dependencies: MisskeyColorsFamily._dependencies,
         allTransitiveDependencies:
             MisskeyColorsFamily._allTransitiveDependencies,

@@ -74,10 +74,9 @@ class SkebStatusProvider
         (ref) => skebStatus(ref as SkebStatusRef, account, userId),
         from: skebStatusProvider,
         name: r'skebStatusProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$skebStatusHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$skebStatusHash,
         dependencies: SkebStatusFamily._dependencies,
         allTransitiveDependencies: SkebStatusFamily._allTransitiveDependencies,
         account: account,

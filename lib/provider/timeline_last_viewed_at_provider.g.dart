@@ -75,10 +75,9 @@ class TimelineLastViewedAtProvider extends AutoDisposeProvider<DateTime?> {
             timelineLastViewedAt(ref as TimelineLastViewedAtRef, tabSettings),
         from: timelineLastViewedAtProvider,
         name: r'timelineLastViewedAtProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineLastViewedAtHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineLastViewedAtHash,
         dependencies: TimelineLastViewedAtFamily._dependencies,
         allTransitiveDependencies:
             TimelineLastViewedAtFamily._allTransitiveDependencies,

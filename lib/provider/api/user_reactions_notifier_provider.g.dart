@@ -91,16 +91,14 @@ class UserReactionsNotifierProvider
   /// See also [UserReactionsNotifier].
   UserReactionsNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserReactionsNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserReactionsNotifier()
+          ..account = account
+          ..userId = userId,
         from: userReactionsNotifierProvider,
         name: r'userReactionsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userReactionsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userReactionsNotifierHash,
         dependencies: UserReactionsNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserReactionsNotifierFamily._allTransitiveDependencies,
@@ -134,10 +132,9 @@ class UserReactionsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserReactionsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

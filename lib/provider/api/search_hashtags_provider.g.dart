@@ -73,10 +73,9 @@ class SearchHashtagsProvider extends AutoDisposeFutureProvider<List<String>> {
         (ref) => searchHashtags(ref as SearchHashtagsRef, account, query),
         from: searchHashtagsProvider,
         name: r'searchHashtagsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$searchHashtagsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchHashtagsHash,
         dependencies: SearchHashtagsFamily._dependencies,
         allTransitiveDependencies:
             SearchHashtagsFamily._allTransitiveDependencies,

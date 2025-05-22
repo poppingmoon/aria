@@ -13,8 +13,9 @@ String _$userAgentHash() => r'ac5a4730ac11841190db3264eda1731d8ba5b4a1';
 final userAgentProvider = AutoDisposeFutureProvider<String?>.internal(
   userAgent,
   name: r'userAgentProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userAgentHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$userAgentHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

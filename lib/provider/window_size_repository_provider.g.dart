@@ -15,10 +15,9 @@ final windowSizeRepositoryProvider =
     AutoDisposeProvider<WindowSizeRepository>.internal(
       windowSizeRepository,
       name: r'windowSizeRepositoryProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$windowSizeRepositoryHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$windowSizeRepositoryHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

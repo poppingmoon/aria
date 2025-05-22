@@ -83,10 +83,9 @@ class MainStreamNotifierProvider
         () => MainStreamNotifier()..account = account,
         from: mainStreamNotifierProvider,
         name: r'mainStreamNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mainStreamNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mainStreamNotifierHash,
         dependencies: MainStreamNotifierFamily._dependencies,
         allTransitiveDependencies:
             MainStreamNotifierFamily._allTransitiveDependencies,

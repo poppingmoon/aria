@@ -105,17 +105,15 @@ class ChatMessagesNotifierProvider
     String? userId,
     String? roomId,
   }) : this._internal(
-         () =>
-             ChatMessagesNotifier()
-               ..account = account
-               ..userId = userId
-               ..roomId = roomId,
+         () => ChatMessagesNotifier()
+           ..account = account
+           ..userId = userId
+           ..roomId = roomId,
          from: chatMessagesNotifierProvider,
          name: r'chatMessagesNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$chatMessagesNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$chatMessagesNotifierHash,
          dependencies: ChatMessagesNotifierFamily._dependencies,
          allTransitiveDependencies:
              ChatMessagesNotifierFamily._allTransitiveDependencies,
@@ -152,11 +150,10 @@ class ChatMessagesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChatMessagesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId
-              ..roomId = roomId,
+        () => create()
+          ..account = account
+          ..userId = userId
+          ..roomId = roomId,
         from: from,
         name: null,
         dependencies: null,

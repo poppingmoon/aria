@@ -82,10 +82,9 @@ class TimelineCenterNotifierProvider
         () => TimelineCenterNotifier()..tabSettings = tabSettings,
         from: timelineCenterNotifierProvider,
         name: r'timelineCenterNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineCenterNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineCenterNotifierHash,
         dependencies: TimelineCenterNotifierFamily._dependencies,
         allTransitiveDependencies:
             TimelineCenterNotifierFamily._allTransitiveDependencies,

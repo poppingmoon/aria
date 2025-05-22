@@ -88,10 +88,9 @@ class OwnedChannelsNotifierProvider
         () => OwnedChannelsNotifier()..account = account,
         from: ownedChannelsNotifierProvider,
         name: r'ownedChannelsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$ownedChannelsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$ownedChannelsNotifierHash,
         dependencies: OwnedChannelsNotifierFamily._dependencies,
         allTransitiveDependencies:
             OwnedChannelsNotifierFamily._allTransitiveDependencies,

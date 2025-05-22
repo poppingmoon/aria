@@ -8,19 +8,17 @@ part of 'aria_backup.dart';
 
 _AriaBackup _$AriaBackupFromJson(Map<String, dynamic> json) => _AriaBackup(
   metadata: json['metadata'] as Map<String, dynamic>?,
-  timelineTabs:
-      (json['timelineTabs'] as List<dynamic>?)
-          ?.map((e) => TabSettings.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  timelineTabs: (json['timelineTabs'] as List<dynamic>?)
+      ?.map((e) => TabSettings.fromJson(e as Map<String, dynamic>))
+      .toList(),
   accountSettings: (json['accountSettings'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, AccountSettings.fromJson(e as Map<String, dynamic>)),
   ),
-  generalSettings:
-      json['generalSettings'] == null
-          ? null
-          : GeneralSettings.fromJson(
-            json['generalSettings'] as Map<String, dynamic>,
-          ),
+  generalSettings: json['generalSettings'] == null
+      ? null
+      : GeneralSettings.fromJson(
+          json['generalSettings'] as Map<String, dynamic>,
+        ),
   themes: (json['themes'] as List<dynamic>?)?.map((e) => e as String).toList(),
   aiscriptStorage: (json['aiscriptStorage'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),

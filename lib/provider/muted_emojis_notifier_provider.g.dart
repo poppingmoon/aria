@@ -81,10 +81,9 @@ class MutedEmojisNotifierProvider
         () => MutedEmojisNotifier()..account = account,
         from: mutedEmojisNotifierProvider,
         name: r'mutedEmojisNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mutedEmojisNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mutedEmojisNotifierHash,
         dependencies: MutedEmojisNotifierFamily._dependencies,
         allTransitiveDependencies:
             MutedEmojisNotifierFamily._allTransitiveDependencies,

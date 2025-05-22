@@ -182,7 +182,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get serverIsDead => 'Máy chủ không phản hồi. Vui lòng thử lại sau giây lát.';
 	@override String get youShouldUpgradeClient => 'Để xem trang này, hãy làm tươi để cập nhật ứng dụng.';
 	@override String get enterListName => 'Đặt tên cho danh sách';
-	@override String get privacy => 'Bảo mật';
+	@override String get privacy => 'Riêng tư';
 	@override String get makeFollowManuallyApprove => 'Yêu cầu theo dõi cần được duyệt';
 	@override String get defaultNoteVisibility => 'Kiểu tút mặc định';
 	@override String get follow => 'Theo dõi';
@@ -2631,7 +2631,6 @@ class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonBg => 'Nền nút';
 	@override String get buttonHoverBg => 'Nền nút (Chạm)';
 	@override String get inputBorder => 'Đường viền khung soạn thảo';
-	@override String get driveFolderBg => 'Nền thư mục Ổ đĩa';
 	@override String get badge => 'Huy hiệu';
 	@override String get messageBg => 'Nền chat';
 	@override String get fgHighlighted => 'Chữ nổi bật';
