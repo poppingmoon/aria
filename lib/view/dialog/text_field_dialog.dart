@@ -1,10 +1,12 @@
+import 'dart:math';
+
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:searchfield/searchfield.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
-import '../../extension/search_input_decoration_extension.dart';
 import '../../i18n/strings.g.dart';
 
 Future<String?> showTextFieldDialog(
@@ -69,21 +71,10 @@ class TextFieldDialog extends HookWidget {
     );
 
     if (autocompleteOptions case final options? when options.isNotEmpty) {
-      return SearchField(
-        controller: controller,
-        suggestions:
-            options
-                .map((option) => SearchFieldListItem<String>(option))
-                .toList(),
-        searchInputDecoration: SearchInputDecoration(
-          searchStyle: style,
-          cursorColor: Theme.of(context).colorScheme.primary,
-        ).applyInputDecoration(decoration),
-        maxLength: maxLength,
-        onSubmit: (value) => context.pop(value),
-        autofocus: true,
-        textInputAction: maxLines == 1 ? TextInputAction.done : null,
-        onTapOutside: (_) => primaryFocus?.unfocus(),
+      return _Autocomplete(
+        textEditingController: controller,
+        options: options,
+        decoration: decoration,
       );
     } else {
       return TextField(
@@ -129,6 +120,76 @@ class TextFieldDialog extends HookWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _Autocomplete extends HookWidget {
+  const _Autocomplete({
+    required this.textEditingController,
+    required this.options,
+    this.decoration,
+  });
+
+  final TextEditingController textEditingController;
+  final List<String> options;
+  final InputDecoration? decoration;
+
+  @override
+  Widget build(BuildContext context) {
+    final textFieldKey = useMemoized(() => GlobalKey());
+    final focusNode = useFocusNode();
+
+    return RawAutocomplete(
+      textEditingController: textEditingController,
+      focusNode: focusNode,
+      optionsBuilder: (textEditingValue) {
+        final query = textEditingValue.text;
+        if (query.isEmpty) {
+          return options;
+        }
+        final groups = options
+            .where((option) => option.contains(query))
+            .groupListsBy((option) => option.startsWith(query));
+        return [...?groups[true], ...?groups[false]];
+      },
+      fieldViewBuilder:
+          (context, textEditingController, focusNode, _) => TextField(
+            key: textFieldKey,
+            controller: textEditingController,
+            focusNode: focusNode,
+            decoration: decoration,
+            autofocus: true,
+            onSubmitted: (value) => context.pop(value),
+            textInputAction: TextInputAction.done,
+          ),
+      optionsViewBuilder: (context, onSelected, options) {
+        final maxWidth =
+            (textFieldKey.currentContext?.findRenderObject() as RenderBox?)
+                ?.size
+                .width ??
+            min(MediaQuery.sizeOf(context).width, maxContentWidth) - 64.0;
+        return Align(
+          alignment: AlignmentDirectional.topStart,
+          child: Material(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 300.0, maxWidth: maxWidth),
+              child: ListView(
+                shrinkWrap: true,
+                children:
+                    options
+                        .map(
+                          (option) => ListTile(
+                            title: Text(option),
+                            onTap: () => onSelected(option),
+                          ),
+                        )
+                        .toList(),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
