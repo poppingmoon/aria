@@ -78,16 +78,14 @@ class PlayNotifierProvider
   /// See also [PlayNotifier].
   PlayNotifierProvider(Account account, String playId)
     : this._internal(
-        () =>
-            PlayNotifier()
-              ..account = account
-              ..playId = playId,
+        () => PlayNotifier()
+          ..account = account
+          ..playId = playId,
         from: playNotifierProvider,
         name: r'playNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$playNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$playNotifierHash,
         dependencies: PlayNotifierFamily._dependencies,
         allTransitiveDependencies:
             PlayNotifierFamily._allTransitiveDependencies,
@@ -119,10 +117,9 @@ class PlayNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PlayNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..playId = playId,
+        () => create()
+          ..account = account
+          ..playId = playId,
         from: from,
         name: null,
         dependencies: null,

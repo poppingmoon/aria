@@ -87,10 +87,9 @@ class ScheduledNotesNotifierProvider
         () => ScheduledNotesNotifier()..account = account,
         from: scheduledNotesNotifierProvider,
         name: r'scheduledNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$scheduledNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$scheduledNotesNotifierHash,
         dependencies: ScheduledNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             ScheduledNotesNotifierFamily._allTransitiveDependencies,

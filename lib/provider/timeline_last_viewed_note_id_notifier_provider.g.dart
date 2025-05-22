@@ -87,10 +87,9 @@ class TimelineLastViewedNoteIdNotifierProvider
         () => TimelineLastViewedNoteIdNotifier()..tabSettings = tabSettings,
         from: timelineLastViewedNoteIdNotifierProvider,
         name: r'timelineLastViewedNoteIdNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineLastViewedNoteIdNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineLastViewedNoteIdNotifierHash,
         dependencies: TimelineLastViewedNoteIdNotifierFamily._dependencies,
         allTransitiveDependencies:
             TimelineLastViewedNoteIdNotifierFamily._allTransitiveDependencies,

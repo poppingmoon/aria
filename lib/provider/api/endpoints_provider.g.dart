@@ -71,10 +71,9 @@ class EndpointsProvider extends AutoDisposeStreamProvider<List<String>> {
         (ref) => endpoints(ref as EndpointsRef, host),
         from: endpointsProvider,
         name: r'endpointsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$endpointsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$endpointsHash,
         dependencies: EndpointsFamily._dependencies,
         allTransitiveDependencies: EndpointsFamily._allTransitiveDependencies,
         host: host,

@@ -85,16 +85,14 @@ class UserFeaturedNotesNotifierProvider
   /// See also [UserFeaturedNotesNotifier].
   UserFeaturedNotesNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserFeaturedNotesNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserFeaturedNotesNotifier()
+          ..account = account
+          ..userId = userId,
         from: userFeaturedNotesNotifierProvider,
         name: r'userFeaturedNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userFeaturedNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userFeaturedNotesNotifierHash,
         dependencies: UserFeaturedNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserFeaturedNotesNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class UserFeaturedNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserFeaturedNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

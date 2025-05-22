@@ -76,10 +76,9 @@ class SearchMisskeyServersProvider
         (ref) => searchMisskeyServers(ref as SearchMisskeyServersRef, query),
         from: searchMisskeyServersProvider,
         name: r'searchMisskeyServersProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$searchMisskeyServersHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchMisskeyServersHash,
         dependencies: SearchMisskeyServersFamily._dependencies,
         allTransitiveDependencies:
             SearchMisskeyServersFamily._allTransitiveDependencies,

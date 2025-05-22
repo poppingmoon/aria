@@ -79,16 +79,14 @@ class PinnedEmojisNotifierProvider
   /// See also [PinnedEmojisNotifier].
   PinnedEmojisNotifierProvider(Account account, {bool reaction = false})
     : this._internal(
-        () =>
-            PinnedEmojisNotifier()
-              ..account = account
-              ..reaction = reaction,
+        () => PinnedEmojisNotifier()
+          ..account = account
+          ..reaction = reaction,
         from: pinnedEmojisNotifierProvider,
         name: r'pinnedEmojisNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$pinnedEmojisNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$pinnedEmojisNotifierHash,
         dependencies: PinnedEmojisNotifierFamily._dependencies,
         allTransitiveDependencies:
             PinnedEmojisNotifierFamily._allTransitiveDependencies,
@@ -120,10 +118,9 @@ class PinnedEmojisNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PinnedEmojisNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..reaction = reaction,
+        () => create()
+          ..account = account
+          ..reaction = reaction,
         from: from,
         name: null,
         dependencies: null,

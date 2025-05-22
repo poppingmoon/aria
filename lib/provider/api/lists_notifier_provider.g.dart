@@ -82,10 +82,9 @@ class ListsNotifierProvider
         () => ListsNotifier()..account = account,
         from: listsNotifierProvider,
         name: r'listsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$listsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$listsNotifierHash,
         dependencies: ListsNotifierFamily._dependencies,
         allTransitiveDependencies:
             ListsNotifierFamily._allTransitiveDependencies,

@@ -106,17 +106,15 @@ class SearchChannelsNotifierProvider
     String query, {
     bool includeDescription = true,
   }) : this._internal(
-         () =>
-             SearchChannelsNotifier()
-               ..account = account
-               ..query = query
-               ..includeDescription = includeDescription,
+         () => SearchChannelsNotifier()
+           ..account = account
+           ..query = query
+           ..includeDescription = includeDescription,
          from: searchChannelsNotifierProvider,
          name: r'searchChannelsNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$searchChannelsNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$searchChannelsNotifierHash,
          dependencies: SearchChannelsNotifierFamily._dependencies,
          allTransitiveDependencies:
              SearchChannelsNotifierFamily._allTransitiveDependencies,
@@ -157,11 +155,10 @@ class SearchChannelsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: SearchChannelsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..query = query
-              ..includeDescription = includeDescription,
+        () => create()
+          ..account = account
+          ..query = query
+          ..includeDescription = includeDescription,
         from: from,
         name: null,
         dependencies: null,

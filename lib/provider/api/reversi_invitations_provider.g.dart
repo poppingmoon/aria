@@ -74,10 +74,9 @@ class ReversiInvitationsProvider extends AutoDisposeFutureProvider<List<User>> {
         (ref) => reversiInvitations(ref as ReversiInvitationsRef, account),
         from: reversiInvitationsProvider,
         name: r'reversiInvitationsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$reversiInvitationsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$reversiInvitationsHash,
         dependencies: ReversiInvitationsFamily._dependencies,
         allTransitiveDependencies:
             ReversiInvitationsFamily._allTransitiveDependencies,

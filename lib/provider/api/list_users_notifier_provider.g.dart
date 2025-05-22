@@ -96,17 +96,15 @@ class ListUsersNotifierProvider
   /// See also [ListUsersNotifier].
   ListUsersNotifierProvider(Account account, String listId, {bool? forPublic})
     : this._internal(
-        () =>
-            ListUsersNotifier()
-              ..account = account
-              ..listId = listId
-              ..forPublic = forPublic,
+        () => ListUsersNotifier()
+          ..account = account
+          ..listId = listId
+          ..forPublic = forPublic,
         from: listUsersNotifierProvider,
         name: r'listUsersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$listUsersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$listUsersNotifierHash,
         dependencies: ListUsersNotifierFamily._dependencies,
         allTransitiveDependencies:
             ListUsersNotifierFamily._allTransitiveDependencies,
@@ -143,11 +141,10 @@ class ListUsersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ListUsersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..listId = listId
-              ..forPublic = forPublic,
+        () => create()
+          ..account = account
+          ..listId = listId
+          ..forPublic = forPublic,
         from: from,
         name: null,
         dependencies: null,

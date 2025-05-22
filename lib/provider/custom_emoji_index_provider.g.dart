@@ -74,10 +74,9 @@ class CustomEmojiIndexProvider extends FutureProvider<Map<String, Set<Emoji>>> {
         (ref) => customEmojiIndex(ref as CustomEmojiIndexRef, host),
         from: customEmojiIndexProvider,
         name: r'customEmojiIndexProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$customEmojiIndexHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$customEmojiIndexHash,
         dependencies: CustomEmojiIndexFamily._dependencies,
         allTransitiveDependencies:
             CustomEmojiIndexFamily._allTransitiveDependencies,

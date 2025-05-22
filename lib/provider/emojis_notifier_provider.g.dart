@@ -81,10 +81,9 @@ class EmojisNotifierProvider
         () => EmojisNotifier()..host = host,
         from: emojisNotifierProvider,
         name: r'emojisNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$emojisNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$emojisNotifierHash,
         dependencies: EmojisNotifierFamily._dependencies,
         allTransitiveDependencies:
             EmojisNotifierFamily._allTransitiveDependencies,

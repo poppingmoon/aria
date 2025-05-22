@@ -14,10 +14,9 @@ final accountsNotifierProvider =
     NotifierProvider<AccountsNotifier, List<Account>>.internal(
       AccountsNotifier.new,
       name: r'accountsNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$accountsNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$accountsNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

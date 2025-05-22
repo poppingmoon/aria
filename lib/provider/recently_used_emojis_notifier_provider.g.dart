@@ -82,10 +82,9 @@ class RecentlyUsedEmojisNotifierProvider
         () => RecentlyUsedEmojisNotifier()..account = account,
         from: recentlyUsedEmojisNotifierProvider,
         name: r'recentlyUsedEmojisNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$recentlyUsedEmojisNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$recentlyUsedEmojisNotifierHash,
         dependencies: RecentlyUsedEmojisNotifierFamily._dependencies,
         allTransitiveDependencies:
             RecentlyUsedEmojisNotifierFamily._allTransitiveDependencies,

@@ -75,10 +75,9 @@ class FeaturedChannelsProvider
         (ref) => featuredChannels(ref as FeaturedChannelsRef, account),
         from: featuredChannelsProvider,
         name: r'featuredChannelsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredChannelsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredChannelsHash,
         dependencies: FeaturedChannelsFamily._dependencies,
         allTransitiveDependencies:
             FeaturedChannelsFamily._allTransitiveDependencies,

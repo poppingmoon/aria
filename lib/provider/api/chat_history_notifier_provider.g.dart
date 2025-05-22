@@ -86,10 +86,9 @@ class ChatHistoryNotifierProvider
         () => ChatHistoryNotifier()..account = account,
         from: chatHistoryNotifierProvider,
         name: r'chatHistoryNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$chatHistoryNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$chatHistoryNotifierHash,
         dependencies: ChatHistoryNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChatHistoryNotifierFamily._allTransitiveDependencies,

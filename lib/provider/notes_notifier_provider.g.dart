@@ -80,10 +80,9 @@ class NotesNotifierProvider
         () => NotesNotifier()..account = account,
         from: notesNotifierProvider,
         name: r'notesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$notesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$notesNotifierHash,
         dependencies: NotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             NotesNotifierFamily._allTransitiveDependencies,

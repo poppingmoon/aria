@@ -83,10 +83,9 @@ class TranslatedNoteProvider
         ),
         from: translatedNoteProvider,
         name: r'translatedNoteProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$translatedNoteHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$translatedNoteHash,
         dependencies: TranslatedNoteFamily._dependencies,
         allTransitiveDependencies:
             TranslatedNoteFamily._allTransitiveDependencies,

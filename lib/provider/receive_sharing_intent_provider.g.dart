@@ -15,10 +15,9 @@ final receiveSharingIntentProvider =
     AutoDisposeStreamProvider<List<SharedMediaFile>>.internal(
       receiveSharingIntent,
       name: r'receiveSharingIntentProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$receiveSharingIntentHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$receiveSharingIntentHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

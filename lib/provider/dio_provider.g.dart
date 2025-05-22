@@ -13,8 +13,9 @@ String _$dioHash() => r'fe8960d513b40b38c3d2d1c5e5d493532cf85cfe';
 final dioProvider = Provider<Dio>.internal(
   dio,
   name: r'dioProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$dioHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$dioHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

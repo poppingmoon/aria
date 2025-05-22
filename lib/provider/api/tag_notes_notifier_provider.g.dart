@@ -109,18 +109,16 @@ class TagNotesNotifierProvider
     String? sinceId,
     String? untilId,
   }) : this._internal(
-         () =>
-             TagNotesNotifier()
-               ..account = account
-               ..tag = tag
-               ..sinceId = sinceId
-               ..untilId = untilId,
+         () => TagNotesNotifier()
+           ..account = account
+           ..tag = tag
+           ..sinceId = sinceId
+           ..untilId = untilId,
          from: tagNotesNotifierProvider,
          name: r'tagNotesNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$tagNotesNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$tagNotesNotifierHash,
          dependencies: TagNotesNotifierFamily._dependencies,
          allTransitiveDependencies:
              TagNotesNotifierFamily._allTransitiveDependencies,
@@ -160,12 +158,11 @@ class TagNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: TagNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..tag = tag
-              ..sinceId = sinceId
-              ..untilId = untilId,
+        () => create()
+          ..account = account
+          ..tag = tag
+          ..sinceId = sinceId
+          ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,

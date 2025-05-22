@@ -87,10 +87,9 @@ class FollowRequestsNotifierProvider
         () => FollowRequestsNotifier()..account = account,
         from: followRequestsNotifierProvider,
         name: r'followRequestsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$followRequestsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$followRequestsNotifierHash,
         dependencies: FollowRequestsNotifierFamily._dependencies,
         allTransitiveDependencies:
             FollowRequestsNotifierFamily._allTransitiveDependencies,

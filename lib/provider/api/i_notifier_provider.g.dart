@@ -79,10 +79,9 @@ class INotifierProvider
         () => INotifier()..account = account,
         from: iNotifierProvider,
         name: r'iNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$iNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$iNotifierHash,
         dependencies: INotifierFamily._dependencies,
         allTransitiveDependencies: INotifierFamily._allTransitiveDependencies,
         account: account,

@@ -71,8 +71,9 @@ class EmojiProvider extends Provider<Emoji?> {
         (ref) => emoji(ref as EmojiRef, host, code),
         from: emojiProvider,
         name: r'emojiProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$emojiHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$emojiHash,
         dependencies: EmojiFamily._dependencies,
         allTransitiveDependencies: EmojiFamily._allTransitiveDependencies,
         host: host,

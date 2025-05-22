@@ -14,10 +14,9 @@ final miAuthNotifierProvider =
     NotifierProvider<MiAuthNotifier, MiAuthState?>.internal(
       MiAuthNotifier.new,
       name: r'miAuthNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$miAuthNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$miAuthNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

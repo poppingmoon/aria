@@ -83,10 +83,9 @@ class TimelineStreamNotifierProvider
         () => TimelineStreamNotifier()..tabSettings = tabSettings,
         from: timelineStreamNotifierProvider,
         name: r'timelineStreamNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$timelineStreamNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$timelineStreamNotifierHash,
         dependencies: TimelineStreamNotifierFamily._dependencies,
         allTransitiveDependencies:
             TimelineStreamNotifierFamily._allTransitiveDependencies,

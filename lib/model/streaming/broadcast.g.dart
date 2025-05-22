@@ -11,18 +11,16 @@ _EmojiAdded _$EmojiAddedFromJson(Map<String, dynamic> json) =>
 
 _EmojiUpdated _$EmojiUpdatedFromJson(Map<String, dynamic> json) =>
     _EmojiUpdated(
-      emojis:
-          (json['emojis'] as List<dynamic>)
-              .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      emojis: (json['emojis'] as List<dynamic>)
+          .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 _EmojiDeleted _$EmojiDeletedFromJson(Map<String, dynamic> json) =>
     _EmojiDeleted(
-      emojis:
-          (json['emojis'] as List<dynamic>)
-              .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      emojis: (json['emojis'] as List<dynamic>)
+          .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 _AnnouncementCreated _$AnnouncementCreatedFromJson(Map<String, dynamic> json) =>

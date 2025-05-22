@@ -15,10 +15,9 @@ final timelineTabIndexNotifierProvider =
     AutoDisposeNotifierProvider<TimelineTabIndexNotifier, int>.internal(
       TimelineTabIndexNotifier.new,
       name: r'timelineTabIndexNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$timelineTabIndexNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$timelineTabIndexNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

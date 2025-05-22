@@ -71,8 +71,9 @@ class RolesProvider extends AutoDisposeFutureProvider<List<RolesListResponse>> {
         (ref) => roles(ref as RolesRef, account),
         from: rolesProvider,
         name: r'rolesProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$rolesHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$rolesHash,
         dependencies: RolesFamily._dependencies,
         allTransitiveDependencies: RolesFamily._allTransitiveDependencies,
         account: account,

@@ -14,10 +14,9 @@ final bootStateProvider =
     AutoDisposeAsyncNotifierProvider<BootState, bool?>.internal(
       BootState.new,
       name: r'bootStateProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$bootStateHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$bootStateHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

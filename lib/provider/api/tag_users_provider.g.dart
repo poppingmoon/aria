@@ -91,10 +91,9 @@ class TagUsersProvider extends AutoDisposeFutureProvider<List<UserDetailed>> {
          ),
          from: tagUsersProvider,
          name: r'tagUsersProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$tagUsersHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$tagUsersHash,
          dependencies: TagUsersFamily._dependencies,
          allTransitiveDependencies: TagUsersFamily._allTransitiveDependencies,
          account: account,

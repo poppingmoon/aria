@@ -74,10 +74,9 @@ class WebSocketChannelProvider
         (ref) => webSocketChannel(ref as WebSocketChannelRef, account),
         from: webSocketChannelProvider,
         name: r'webSocketChannelProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$webSocketChannelHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$webSocketChannelHash,
         dependencies: WebSocketChannelFamily._dependencies,
         allTransitiveDependencies:
             WebSocketChannelFamily._allTransitiveDependencies,

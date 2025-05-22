@@ -73,10 +73,9 @@ class DriveStatsProvider extends AutoDisposeFutureProvider<DriveResponse> {
         (ref) => driveStats(ref as DriveStatsRef, account),
         from: driveStatsProvider,
         name: r'driveStatsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$driveStatsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$driveStatsHash,
         dependencies: DriveStatsFamily._dependencies,
         allTransitiveDependencies: DriveStatsFamily._allTransitiveDependencies,
         account: account,

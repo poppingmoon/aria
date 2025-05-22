@@ -83,16 +83,14 @@ class ChannelNotifierProvider
   /// See also [ChannelNotifier].
   ChannelNotifierProvider(Account account, String channelId)
     : this._internal(
-        () =>
-            ChannelNotifier()
-              ..account = account
-              ..channelId = channelId,
+        () => ChannelNotifier()
+          ..account = account
+          ..channelId = channelId,
         from: channelNotifierProvider,
         name: r'channelNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$channelNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$channelNotifierHash,
         dependencies: ChannelNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChannelNotifierFamily._allTransitiveDependencies,
@@ -126,10 +124,9 @@ class ChannelNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChannelNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..channelId = channelId,
+        () => create()
+          ..account = account
+          ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,

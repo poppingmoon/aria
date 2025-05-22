@@ -15,10 +15,9 @@ final timelineTabsNotifierProvider =
     NotifierProvider<TimelineTabsNotifier, List<TabSettings>>.internal(
       TimelineTabsNotifier.new,
       name: r'timelineTabsNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$timelineTabsNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$timelineTabsNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

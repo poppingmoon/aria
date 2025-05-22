@@ -15,10 +15,9 @@ final windowPositionRepositoryProvider =
     AutoDisposeProvider<WindowPositionRepository>.internal(
       windowPositionRepository,
       name: r'windowPositionRepositoryProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$windowPositionRepositoryHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$windowPositionRepositoryHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

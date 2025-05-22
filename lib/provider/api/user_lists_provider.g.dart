@@ -71,10 +71,9 @@ class UserListsProvider extends AutoDisposeFutureProvider<List<UsersList>> {
         (ref) => userLists(ref as UserListsRef, account, userId),
         from: userListsProvider,
         name: r'userListsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userListsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userListsHash,
         dependencies: UserListsFamily._dependencies,
         allTransitiveDependencies: UserListsFamily._allTransitiveDependencies,
         account: account,

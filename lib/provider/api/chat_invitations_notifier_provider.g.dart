@@ -87,10 +87,9 @@ class ChatInvitationsNotifierProvider
         () => ChatInvitationsNotifier()..account = account,
         from: chatInvitationsNotifierProvider,
         name: r'chatInvitationsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$chatInvitationsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$chatInvitationsNotifierHash,
         dependencies: ChatInvitationsNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChatInvitationsNotifierFamily._allTransitiveDependencies,

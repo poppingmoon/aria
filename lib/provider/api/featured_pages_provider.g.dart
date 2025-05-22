@@ -73,10 +73,9 @@ class FeaturedPagesProvider extends AutoDisposeFutureProvider<List<Page>> {
         (ref) => featuredPages(ref as FeaturedPagesRef, account),
         from: featuredPagesProvider,
         name: r'featuredPagesProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredPagesHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredPagesHash,
         dependencies: FeaturedPagesFamily._dependencies,
         allTransitiveDependencies:
             FeaturedPagesFamily._allTransitiveDependencies,

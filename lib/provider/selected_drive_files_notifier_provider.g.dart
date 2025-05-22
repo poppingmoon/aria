@@ -11,19 +11,19 @@ String _$selectedDriveFilesNotifierHash() =>
 
 /// See also [SelectedDriveFilesNotifier].
 @ProviderFor(SelectedDriveFilesNotifier)
-final selectedDriveFilesNotifierProvider = AutoDisposeNotifierProvider<
-  SelectedDriveFilesNotifier,
-  List<DriveFile>
->.internal(
-  SelectedDriveFilesNotifier.new,
-  name: r'selectedDriveFilesNotifierProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final selectedDriveFilesNotifierProvider =
+    AutoDisposeNotifierProvider<
+      SelectedDriveFilesNotifier,
+      List<DriveFile>
+    >.internal(
+      SelectedDriveFilesNotifier.new,
+      name: r'selectedDriveFilesNotifierProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$selectedDriveFilesNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$SelectedDriveFilesNotifier = AutoDisposeNotifier<List<DriveFile>>;
 // ignore_for_file: type=lint

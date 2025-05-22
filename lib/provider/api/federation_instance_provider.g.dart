@@ -77,10 +77,9 @@ class FederationInstanceProvider
             federationInstance(ref as FederationInstanceRef, account, host),
         from: federationInstanceProvider,
         name: r'federationInstanceProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$federationInstanceHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$federationInstanceHash,
         dependencies: FederationInstanceFamily._dependencies,
         allTransitiveDependencies:
             FederationInstanceFamily._allTransitiveDependencies,

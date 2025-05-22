@@ -81,16 +81,14 @@ class MutedWordsNotifierProvider
   /// See also [MutedWordsNotifier].
   MutedWordsNotifierProvider(Account account, {bool hardMute = false})
     : this._internal(
-        () =>
-            MutedWordsNotifier()
-              ..account = account
-              ..hardMute = hardMute,
+        () => MutedWordsNotifier()
+          ..account = account
+          ..hardMute = hardMute,
         from: mutedWordsNotifierProvider,
         name: r'mutedWordsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mutedWordsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mutedWordsNotifierHash,
         dependencies: MutedWordsNotifierFamily._dependencies,
         allTransitiveDependencies:
             MutedWordsNotifierFamily._allTransitiveDependencies,
@@ -122,10 +120,9 @@ class MutedWordsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: MutedWordsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..hardMute = hardMute,
+        () => create()
+          ..account = account
+          ..hardMute = hardMute,
         from: from,
         name: null,
         dependencies: null,

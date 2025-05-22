@@ -14,10 +14,9 @@ final misskeyServersProvider =
     AutoDisposeFutureProvider<List<JoinMisskeyInstanceInfo>>.internal(
       misskeyServers,
       name: r'misskeyServersProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$misskeyServersHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$misskeyServersHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

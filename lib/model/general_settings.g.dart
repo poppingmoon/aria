@@ -260,10 +260,9 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'showOnlineStatus': instance.showOnlineStatus,
   'showTimelineTabBarAtBottom': instance.showTimelineTabBarAtBottom,
   'showMenuButtonInTabBar': instance.showMenuButtonInTabBar,
-  'timelinesPageButtonTypes':
-      instance.timelinesPageButtonTypes
-          .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
-          .toList(),
+  'timelinesPageButtonTypes': instance.timelinesPageButtonTypes
+      .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
+      .toList(),
   'showSmallTimelinesPageButtons': instance.showSmallTimelinesPageButtons,
   'showSquaredTimelinesPageButtons': instance.showSquaredTimelinesPageButtons,
   'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,

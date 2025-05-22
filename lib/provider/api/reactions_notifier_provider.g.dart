@@ -96,17 +96,15 @@ class ReactionsNotifierProvider
   /// See also [ReactionsNotifier].
   ReactionsNotifierProvider(Account account, String noteId, String reaction)
     : this._internal(
-        () =>
-            ReactionsNotifier()
-              ..account = account
-              ..noteId = noteId
-              ..reaction = reaction,
+        () => ReactionsNotifier()
+          ..account = account
+          ..noteId = noteId
+          ..reaction = reaction,
         from: reactionsNotifierProvider,
         name: r'reactionsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$reactionsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$reactionsNotifierHash,
         dependencies: ReactionsNotifierFamily._dependencies,
         allTransitiveDependencies:
             ReactionsNotifierFamily._allTransitiveDependencies,
@@ -143,11 +141,10 @@ class ReactionsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ReactionsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId
-              ..reaction = reaction,
+        () => create()
+          ..account = account
+          ..noteId = noteId
+          ..reaction = reaction,
         from: from,
         name: null,
         dependencies: null,

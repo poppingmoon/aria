@@ -84,16 +84,14 @@ class UserClipsNotifierProvider
   /// See also [UserClipsNotifier].
   UserClipsNotifierProvider(Account account, String userId)
     : this._internal(
-        () =>
-            UserClipsNotifier()
-              ..account = account
-              ..userId = userId,
+        () => UserClipsNotifier()
+          ..account = account
+          ..userId = userId,
         from: userClipsNotifierProvider,
         name: r'userClipsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$userClipsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$userClipsNotifierHash,
         dependencies: UserClipsNotifierFamily._dependencies,
         allTransitiveDependencies:
             UserClipsNotifierFamily._allTransitiveDependencies,
@@ -127,10 +125,9 @@ class UserClipsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserClipsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId,
+        () => create()
+          ..account = account
+          ..userId = userId,
         from: from,
         name: null,
         dependencies: null,

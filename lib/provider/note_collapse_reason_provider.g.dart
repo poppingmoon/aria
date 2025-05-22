@@ -75,10 +75,9 @@ class NoteCollapseReasonProvider extends AutoDisposeProvider<CollapseReason?> {
             noteCollapseReason(ref as NoteCollapseReasonRef, account, noteId),
         from: noteCollapseReasonProvider,
         name: r'noteCollapseReasonProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteCollapseReasonHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteCollapseReasonHash,
         dependencies: NoteCollapseReasonFamily._dependencies,
         allTransitiveDependencies:
             NoteCollapseReasonFamily._allTransitiveDependencies,

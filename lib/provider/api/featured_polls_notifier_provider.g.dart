@@ -85,16 +85,14 @@ class FeaturedPollsNotifierProvider
   /// See also [FeaturedPollsNotifier].
   FeaturedPollsNotifierProvider(Account account, {String? channelId})
     : this._internal(
-        () =>
-            FeaturedPollsNotifier()
-              ..account = account
-              ..channelId = channelId,
+        () => FeaturedPollsNotifier()
+          ..account = account
+          ..channelId = channelId,
         from: featuredPollsNotifierProvider,
         name: r'featuredPollsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredPollsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredPollsNotifierHash,
         dependencies: FeaturedPollsNotifierFamily._dependencies,
         allTransitiveDependencies:
             FeaturedPollsNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class FeaturedPollsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: FeaturedPollsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..channelId = channelId,
+        () => create()
+          ..account = account
+          ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,

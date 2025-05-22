@@ -81,16 +81,14 @@ class GalleryPostNotifierProvider
   /// See also [GalleryPostNotifier].
   GalleryPostNotifierProvider(Account account, String postId)
     : this._internal(
-        () =>
-            GalleryPostNotifier()
-              ..account = account
-              ..postId = postId,
+        () => GalleryPostNotifier()
+          ..account = account
+          ..postId = postId,
         from: galleryPostNotifierProvider,
         name: r'galleryPostNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$galleryPostNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$galleryPostNotifierHash,
         dependencies: GalleryPostNotifierFamily._dependencies,
         allTransitiveDependencies:
             GalleryPostNotifierFamily._allTransitiveDependencies,
@@ -124,10 +122,9 @@ class GalleryPostNotifierProvider
     return ProviderOverride(
       origin: this,
       override: GalleryPostNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..postId = postId,
+        () => create()
+          ..account = account
+          ..postId = postId,
         from: from,
         name: null,
         dependencies: null,

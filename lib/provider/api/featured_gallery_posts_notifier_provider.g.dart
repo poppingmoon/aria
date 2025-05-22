@@ -88,10 +88,9 @@ class FeaturedGalleryPostsNotifierProvider
         () => FeaturedGalleryPostsNotifier()..account = account,
         from: featuredGalleryPostsNotifierProvider,
         name: r'featuredGalleryPostsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$featuredGalleryPostsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$featuredGalleryPostsNotifierHash,
         dependencies: FeaturedGalleryPostsNotifierFamily._dependencies,
         allTransitiveDependencies:
             FeaturedGalleryPostsNotifierFamily._allTransitiveDependencies,

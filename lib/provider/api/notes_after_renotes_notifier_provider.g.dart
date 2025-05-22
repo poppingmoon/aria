@@ -85,16 +85,14 @@ class NotesAfterRenotesNotifierProvider
   /// See also [NotesAfterRenotesNotifier].
   NotesAfterRenotesNotifierProvider(Account account, String noteId)
     : this._internal(
-        () =>
-            NotesAfterRenotesNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => NotesAfterRenotesNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: notesAfterRenotesNotifierProvider,
         name: r'notesAfterRenotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$notesAfterRenotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$notesAfterRenotesNotifierHash,
         dependencies: NotesAfterRenotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             NotesAfterRenotesNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class NotesAfterRenotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: NotesAfterRenotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

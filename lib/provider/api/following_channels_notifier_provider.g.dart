@@ -88,10 +88,9 @@ class FollowingChannelsNotifierProvider
         () => FollowingChannelsNotifier()..account = account,
         from: followingChannelsNotifierProvider,
         name: r'followingChannelsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$followingChannelsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$followingChannelsNotifierHash,
         dependencies: FollowingChannelsNotifierFamily._dependencies,
         allTransitiveDependencies:
             FollowingChannelsNotifierFamily._allTransitiveDependencies,

@@ -86,10 +86,9 @@ class MutingsNotifierProvider
         () => MutingsNotifier()..account = account,
         from: mutingsNotifierProvider,
         name: r'mutingsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$mutingsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$mutingsNotifierHash,
         dependencies: MutingsNotifierFamily._dependencies,
         allTransitiveDependencies:
             MutingsNotifierFamily._allTransitiveDependencies,

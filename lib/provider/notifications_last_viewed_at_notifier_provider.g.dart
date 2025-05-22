@@ -87,10 +87,9 @@ class NotificationsLastViewedAtNotifierProvider
         () => NotificationsLastViewedAtNotifier()..account = account,
         from: notificationsLastViewedAtNotifierProvider,
         name: r'notificationsLastViewedAtNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$notificationsLastViewedAtNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$notificationsLastViewedAtNotifierHash,
         dependencies: NotificationsLastViewedAtNotifierFamily._dependencies,
         allTransitiveDependencies:
             NotificationsLastViewedAtNotifierFamily._allTransitiveDependencies,

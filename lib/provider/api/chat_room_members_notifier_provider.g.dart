@@ -85,16 +85,14 @@ class ChatRoomMembersNotifierProvider
   /// See also [ChatRoomMembersNotifier].
   ChatRoomMembersNotifierProvider(Account account, String roomId)
     : this._internal(
-        () =>
-            ChatRoomMembersNotifier()
-              ..account = account
-              ..roomId = roomId,
+        () => ChatRoomMembersNotifier()
+          ..account = account
+          ..roomId = roomId,
         from: chatRoomMembersNotifierProvider,
         name: r'chatRoomMembersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$chatRoomMembersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$chatRoomMembersNotifierHash,
         dependencies: ChatRoomMembersNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChatRoomMembersNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class ChatRoomMembersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChatRoomMembersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..roomId = roomId,
+        () => create()
+          ..account = account
+          ..roomId = roomId,
         from: from,
         name: null,
         dependencies: null,

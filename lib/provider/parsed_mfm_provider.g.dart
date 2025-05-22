@@ -71,10 +71,9 @@ class ParsedMfmProvider extends AutoDisposeProvider<List<MfmNode>> {
         (ref) => parsedMfm(ref as ParsedMfmRef, text),
         from: parsedMfmProvider,
         name: r'parsedMfmProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$parsedMfmHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$parsedMfmHash,
         dependencies: ParsedMfmFamily._dependencies,
         allTransitiveDependencies: ParsedMfmFamily._allTransitiveDependencies,
         text: text,

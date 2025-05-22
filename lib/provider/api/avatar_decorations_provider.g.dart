@@ -75,10 +75,9 @@ class AvatarDecorationsProvider
         (ref) => avatarDecorations(ref as AvatarDecorationsRef, account),
         from: avatarDecorationsProvider,
         name: r'avatarDecorationsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$avatarDecorationsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$avatarDecorationsHash,
         dependencies: AvatarDecorationsFamily._dependencies,
         allTransitiveDependencies:
             AvatarDecorationsFamily._allTransitiveDependencies,

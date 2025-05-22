@@ -68,7 +68,7 @@ jobs:
           cache: gradle
 
       - name: Dump keystore
-        uses: timheuer/base64-to-file@adaa40c0c581f276132199d4cf60afa07ce60eac # v1.2
+        uses: timheuer/base64-to-file@784a1a4a994315802b7d8e2084e116e783d157be # v1.2.4
         with:
           fileName: upload.keystore
           fileDir: ${{ env.APK_BUILD_DIR }}/android/app/
@@ -144,7 +144,7 @@ jobs:
           cache: gradle
 
       - name: Dump keystore
-        uses: timheuer/base64-to-file@adaa40c0c581f276132199d4cf60afa07ce60eac # v1.2
+        uses: timheuer/base64-to-file@784a1a4a994315802b7d8e2084e116e783d157be # v1.2.4
         with:
           fileName: upload.keystore
           fileDir: android/app/

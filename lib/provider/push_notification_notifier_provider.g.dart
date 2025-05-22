@@ -11,19 +11,19 @@ String _$pushNotificationNotifierHash() =>
 
 /// See also [PushNotificationNotifier].
 @ProviderFor(PushNotificationNotifier)
-final pushNotificationNotifierProvider = AutoDisposeStreamNotifierProvider<
-  PushNotificationNotifier,
-  PushNotification
->.internal(
-  PushNotificationNotifier.new,
-  name: r'pushNotificationNotifierProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
+final pushNotificationNotifierProvider =
+    AutoDisposeStreamNotifierProvider<
+      PushNotificationNotifier,
+      PushNotification
+    >.internal(
+      PushNotificationNotifier.new,
+      name: r'pushNotificationNotifierProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
           : _$pushNotificationNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$PushNotificationNotifier =
     AutoDisposeStreamNotifier<PushNotification>;

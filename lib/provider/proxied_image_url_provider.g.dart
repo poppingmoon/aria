@@ -103,10 +103,9 @@ class ProxiedImageUrlProvider extends AutoDisposeProvider<Uri?> {
          ),
          from: proxiedImageUrlProvider,
          name: r'proxiedImageUrlProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$proxiedImageUrlHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$proxiedImageUrlHash,
          dependencies: ProxiedImageUrlFamily._dependencies,
          allTransitiveDependencies:
              ProxiedImageUrlFamily._allTransitiveDependencies,

@@ -73,10 +73,9 @@ class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
         (ref) => staticImageUrl(ref as StaticImageUrlRef, host, baseUrl),
         from: staticImageUrlProvider,
         name: r'staticImageUrlProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$staticImageUrlHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$staticImageUrlHash,
         dependencies: StaticImageUrlFamily._dependencies,
         allTransitiveDependencies:
             StaticImageUrlFamily._allTransitiveDependencies,

@@ -71,10 +71,9 @@ class BroadcastProvider extends AutoDisposeStreamProvider<Broadcast> {
         (ref) => broadcast(ref as BroadcastRef, account),
         from: broadcastProvider,
         name: r'broadcastProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$broadcastHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$broadcastHash,
         dependencies: BroadcastFamily._dependencies,
         allTransitiveDependencies: BroadcastFamily._allTransitiveDependencies,
         account: account,

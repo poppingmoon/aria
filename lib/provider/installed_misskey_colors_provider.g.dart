@@ -15,10 +15,9 @@ final installedMisskeyColorsProvider =
     AutoDisposeProvider<List<MisskeyColors>>.internal(
       installedMisskeyColors,
       name: r'installedMisskeyColorsProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$installedMisskeyColorsHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$installedMisskeyColorsHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

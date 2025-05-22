@@ -73,10 +73,9 @@ class AhoCorasickProvider extends Provider<AhoCorasick> {
         (ref) => ahoCorasick(ref as AhoCorasickRef, words),
         from: ahoCorasickProvider,
         name: r'ahoCorasickProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$ahoCorasickHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$ahoCorasickHash,
         dependencies: AhoCorasickFamily._dependencies,
         allTransitiveDependencies: AhoCorasickFamily._allTransitiveDependencies,
         words: words,

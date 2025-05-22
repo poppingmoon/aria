@@ -71,10 +71,9 @@ class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
         (ref) => nodeInfo(ref as NodeInfoRef, host),
         from: nodeInfoProvider,
         name: r'nodeInfoProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$nodeInfoHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$nodeInfoHash,
         dependencies: NodeInfoFamily._dependencies,
         allTransitiveDependencies: NodeInfoFamily._allTransitiveDependencies,
         host: host,

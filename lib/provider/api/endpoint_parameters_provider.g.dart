@@ -77,10 +77,9 @@ class EndpointParametersProvider
             endpointParameters(ref as EndpointParametersRef, account, endpoint),
         from: endpointParametersProvider,
         name: r'endpointParametersProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$endpointParametersHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$endpointParametersHash,
         dependencies: EndpointParametersFamily._dependencies,
         allTransitiveDependencies:
             EndpointParametersFamily._allTransitiveDependencies,

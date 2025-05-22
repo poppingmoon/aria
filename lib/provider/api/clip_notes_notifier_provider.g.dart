@@ -84,16 +84,14 @@ class ClipNotesNotifierProvider
   /// See also [ClipNotesNotifier].
   ClipNotesNotifierProvider(Account account, String clipId)
     : this._internal(
-        () =>
-            ClipNotesNotifier()
-              ..account = account
-              ..clipId = clipId,
+        () => ClipNotesNotifier()
+          ..account = account
+          ..clipId = clipId,
         from: clipNotesNotifierProvider,
         name: r'clipNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$clipNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$clipNotesNotifierHash,
         dependencies: ClipNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             ClipNotesNotifierFamily._allTransitiveDependencies,
@@ -127,10 +125,9 @@ class ClipNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ClipNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..clipId = clipId,
+        () => create()
+          ..account = account
+          ..clipId = clipId,
         from: from,
         name: null,
         dependencies: null,

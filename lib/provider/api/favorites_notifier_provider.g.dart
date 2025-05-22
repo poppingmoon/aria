@@ -87,10 +87,9 @@ class FavoritesNotifierProvider
         () => FavoritesNotifier()..account = account,
         from: favoritesNotifierProvider,
         name: r'favoritesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$favoritesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$favoritesNotifierHash,
         dependencies: FavoritesNotifierFamily._dependencies,
         allTransitiveDependencies:
             FavoritesNotifierFamily._allTransitiveDependencies,

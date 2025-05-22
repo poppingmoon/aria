@@ -75,10 +75,9 @@ class PopularGalleryPostsProvider
         (ref) => popularGalleryPosts(ref as PopularGalleryPostsRef, account),
         from: popularGalleryPostsProvider,
         name: r'popularGalleryPostsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$popularGalleryPostsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$popularGalleryPostsHash,
         dependencies: PopularGalleryPostsFamily._dependencies,
         allTransitiveDependencies:
             PopularGalleryPostsFamily._allTransitiveDependencies,

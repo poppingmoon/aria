@@ -71,8 +71,9 @@ class NoteProvider extends Provider<Note?> {
         (ref) => note(ref as NoteRef, account, noteId),
         from: noteProvider,
         name: r'noteProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product') ? null : _$noteHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteHash,
         dependencies: NoteFamily._dependencies,
         allTransitiveDependencies: NoteFamily._allTransitiveDependencies,
         account: account,

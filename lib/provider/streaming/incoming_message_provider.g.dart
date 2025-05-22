@@ -74,10 +74,9 @@ class IncomingMessageProvider
         (ref) => incomingMessage(ref as IncomingMessageRef, account),
         from: incomingMessageProvider,
         name: r'incomingMessageProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$incomingMessageHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$incomingMessageHash,
         dependencies: IncomingMessageFamily._dependencies,
         allTransitiveDependencies:
             IncomingMessageFamily._allTransitiveDependencies,
@@ -203,10 +202,9 @@ class _ErrorCountNotifierProvider
         () => _ErrorCountNotifier()..account = account,
         from: _errorCountNotifierProvider,
         name: r'_errorCountNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$errorCountNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$errorCountNotifierHash,
         dependencies: _ErrorCountNotifierFamily._dependencies,
         allTransitiveDependencies:
             _ErrorCountNotifierFamily._allTransitiveDependencies,

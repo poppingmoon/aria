@@ -85,16 +85,14 @@ class AttachedNotesNotifierProvider
   /// See also [AttachedNotesNotifier].
   AttachedNotesNotifierProvider(Account account, String fileId)
     : this._internal(
-        () =>
-            AttachedNotesNotifier()
-              ..account = account
-              ..fileId = fileId,
+        () => AttachedNotesNotifier()
+          ..account = account
+          ..fileId = fileId,
         from: attachedNotesNotifierProvider,
         name: r'attachedNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$attachedNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$attachedNotesNotifierHash,
         dependencies: AttachedNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             AttachedNotesNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class AttachedNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AttachedNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..fileId = fileId,
+        () => create()
+          ..account = account
+          ..fileId = fileId,
         from: from,
         name: null,
         dependencies: null,

@@ -14,10 +14,9 @@ final userIdsNotifierProvider =
     NotifierProvider<UserIdsNotifier, Map<Account, String>>.internal(
       UserIdsNotifier.new,
       name: r'userIdsNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$userIdsNotifierHash,
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$userIdsNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );

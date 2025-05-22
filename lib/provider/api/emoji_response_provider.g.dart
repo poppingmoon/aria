@@ -73,10 +73,9 @@ class EmojiResponseProvider extends AutoDisposeFutureProvider<EmojiResponse> {
         (ref) => emojiResponse(ref as EmojiResponseRef, account, emojiName),
         from: emojiResponseProvider,
         name: r'emojiResponseProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$emojiResponseHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$emojiResponseHash,
         dependencies: EmojiResponseFamily._dependencies,
         allTransitiveDependencies:
             EmojiResponseFamily._allTransitiveDependencies,

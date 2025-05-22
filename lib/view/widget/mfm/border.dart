@@ -76,17 +76,18 @@ class Border extends StatelessWidget {
         return child;
       case _BorderStyle.dotted || _BorderStyle.dashed:
         return DottedBorder(
-          color: color,
-          strokeWidth: width,
-          borderType: BorderType.RRect,
-          dashPattern: borderStyle == _BorderStyle.dotted
-              ? [0, width * 2.0]
-              : [width * 2.5, width * 2.5],
-          radius: Radius.circular(radius),
-          padding: EdgeInsets.all(width / 2),
-          strokeCap: borderStyle == _BorderStyle.dotted
-              ? StrokeCap.round
-              : StrokeCap.butt,
+          options: RoundedRectDottedBorderOptions(
+            color: color,
+            strokeWidth: width,
+            dashPattern: borderStyle == _BorderStyle.dotted
+                ? [0, width * 2.0]
+                : [width * 2.5, width * 2.5],
+            radius: Radius.circular(radius),
+            padding: EdgeInsets.all(width / 2),
+            strokeCap: borderStyle == _BorderStyle.dotted
+                ? StrokeCap.round
+                : StrokeCap.butt,
+          ),
           child: child,
         );
       case _BorderStyle.solid:

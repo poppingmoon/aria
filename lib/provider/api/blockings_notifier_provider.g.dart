@@ -86,10 +86,9 @@ class BlockingsNotifierProvider
         () => BlockingsNotifier()..account = account,
         from: blockingsNotifierProvider,
         name: r'blockingsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$blockingsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$blockingsNotifierHash,
         dependencies: BlockingsNotifierFamily._dependencies,
         allTransitiveDependencies:
             BlockingsNotifierFamily._allTransitiveDependencies,

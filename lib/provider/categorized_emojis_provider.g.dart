@@ -73,10 +73,9 @@ class CategorizedEmojisProvider extends Provider<Map<String?, List<Emoji>>> {
         (ref) => categorizedEmojis(ref as CategorizedEmojisRef, host),
         from: categorizedEmojisProvider,
         name: r'categorizedEmojisProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$categorizedEmojisHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$categorizedEmojisHash,
         dependencies: CategorizedEmojisFamily._dependencies,
         allTransitiveDependencies:
             CategorizedEmojisFamily._allTransitiveDependencies,

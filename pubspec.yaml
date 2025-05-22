@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   aho_corasick: ^2.0.0
-  async: ^2.12.0
+  async: ^2.13.0
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
@@ -19,7 +19,7 @@ dependencies:
   confetti: ^0.8.0
   connectivity_plus: ^6.1.4
   dio: ^5.8.0+1
-  dotted_border: ^2.1.0
+  dotted_border: ^3.0.1
   extended_image: ^10.0.1
   file: ^7.0.1
   file_picker: ^10.1.9
@@ -43,11 +43,11 @@ dependencies:
   flutter_image_compress: ^2.4.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^19.2.0
+  flutter_local_notifications: ^19.2.1
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.9.0
+  flutter_rust_bridge: ^2.10.0
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.1.0
   fluttertoast: ^8.2.12
@@ -70,7 +70,7 @@ dependencies:
   intl: ^0.20.2
   json5: ^0.8.2
   json_annotation: ^4.9.0
-  just_audio: ^0.10.2
+  just_audio: ^0.10.3
   kana_kit: ^2.1.1
   material_off_icons:
     git:
@@ -80,12 +80,12 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 5ab5354321cea91d895048cdf34fb34a8bf988ad
+      ref: ccdf6ac326c313f569c10b78469573f861af874e
   mime: ^2.0.0
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: d081328f0ba7d4b97b5e820b8612dae065bad395
+      ref: 3f0f4d71c1947cf42c62df6b367c08fad13a3d9f
   multi_split_view: ^3.6.0
   package_info_plus: ^8.3.0
   path: ^1.9.1
@@ -149,12 +149,12 @@ dependency_overrides:
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
-      ref: 2e966e96560daa02c4a550129dd9d8d4e29f26c8
+      ref: b226a0a89b9df7a3d1b7a572e8cfa37dbb5dfa47
       path: unifiedpush_android
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 208b7e5c1d1dfbd11e4e26287e2f6eb8eab79c1c
+      ref: 353eec0336be6ed9d785dd86606b13458456e5bf
 
 flutter:
   uses-material-design: true

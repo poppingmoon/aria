@@ -88,10 +88,9 @@ class LikedPagesNotifierProvider
         () => LikedPagesNotifier()..account = account,
         from: likedPagesNotifierProvider,
         name: r'likedPagesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$likedPagesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$likedPagesNotifierHash,
         dependencies: LikedPagesNotifierFamily._dependencies,
         allTransitiveDependencies:
             LikedPagesNotifierFamily._allTransitiveDependencies,

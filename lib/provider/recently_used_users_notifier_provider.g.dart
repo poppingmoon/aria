@@ -87,10 +87,9 @@ class RecentlyUsedUsersNotifierProvider
         () => RecentlyUsedUsersNotifier()..account = account,
         from: recentlyUsedUsersNotifierProvider,
         name: r'recentlyUsedUsersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$recentlyUsedUsersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$recentlyUsedUsersNotifierHash,
         dependencies: RecentlyUsedUsersNotifierFamily._dependencies,
         allTransitiveDependencies:
             RecentlyUsedUsersNotifierFamily._allTransitiveDependencies,

@@ -87,10 +87,9 @@ class OwnedChatRoomsNotifierProvider
         () => OwnedChatRoomsNotifier()..account = account,
         from: ownedChatRoomsNotifierProvider,
         name: r'ownedChatRoomsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$ownedChatRoomsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$ownedChatRoomsNotifierHash,
         dependencies: OwnedChatRoomsNotifierFamily._dependencies,
         allTransitiveDependencies:
             OwnedChatRoomsNotifierFamily._allTransitiveDependencies,

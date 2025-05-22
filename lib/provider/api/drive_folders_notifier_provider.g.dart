@@ -88,16 +88,14 @@ class DriveFoldersNotifierProvider
   /// See also [DriveFoldersNotifier].
   DriveFoldersNotifierProvider(Account account, String? folderId)
     : this._internal(
-        () =>
-            DriveFoldersNotifier()
-              ..account = account
-              ..folderId = folderId,
+        () => DriveFoldersNotifier()
+          ..account = account
+          ..folderId = folderId,
         from: driveFoldersNotifierProvider,
         name: r'driveFoldersNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$driveFoldersNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$driveFoldersNotifierHash,
         dependencies: DriveFoldersNotifierFamily._dependencies,
         allTransitiveDependencies:
             DriveFoldersNotifierFamily._allTransitiveDependencies,
@@ -131,10 +129,9 @@ class DriveFoldersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: DriveFoldersNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..folderId = folderId,
+        () => create()
+          ..account = account
+          ..folderId = folderId,
         from: from,
         name: null,
         dependencies: null,

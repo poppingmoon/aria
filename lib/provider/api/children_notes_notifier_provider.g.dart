@@ -85,16 +85,14 @@ class ChildrenNotesNotifierProvider
   /// See also [ChildrenNotesNotifier].
   ChildrenNotesNotifierProvider(Account account, String noteId)
     : this._internal(
-        () =>
-            ChildrenNotesNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => ChildrenNotesNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: childrenNotesNotifierProvider,
         name: r'childrenNotesNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$childrenNotesNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$childrenNotesNotifierHash,
         dependencies: ChildrenNotesNotifierFamily._dependencies,
         allTransitiveDependencies:
             ChildrenNotesNotifierFamily._allTransitiveDependencies,
@@ -128,10 +126,9 @@ class ChildrenNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChildrenNotesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

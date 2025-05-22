@@ -105,18 +105,16 @@ class AttachesNotifierProvider
     bool gallery = false,
     bool chat = false,
   }) : this._internal(
-         () =>
-             AttachesNotifier()
-               ..account = account
-               ..noteId = noteId
-               ..gallery = gallery
-               ..chat = chat,
+         () => AttachesNotifier()
+           ..account = account
+           ..noteId = noteId
+           ..gallery = gallery
+           ..chat = chat,
          from: attachesNotifierProvider,
          name: r'attachesNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$attachesNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$attachesNotifierHash,
          dependencies: AttachesNotifierFamily._dependencies,
          allTransitiveDependencies:
              AttachesNotifierFamily._allTransitiveDependencies,
@@ -159,12 +157,11 @@ class AttachesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AttachesNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId
-              ..gallery = gallery
-              ..chat = chat,
+        () => create()
+          ..account = account
+          ..noteId = noteId
+          ..gallery = gallery
+          ..chat = chat,
         from: from,
         name: null,
         dependencies: null,

@@ -96,17 +96,15 @@ class SendChatMessageNotifierProvider
     String? userId,
     String? roomId,
   }) : this._internal(
-         () =>
-             SendChatMessageNotifier()
-               ..account = account
-               ..userId = userId
-               ..roomId = roomId,
+         () => SendChatMessageNotifier()
+           ..account = account
+           ..userId = userId
+           ..roomId = roomId,
          from: sendChatMessageNotifierProvider,
          name: r'sendChatMessageNotifierProvider',
-         debugGetCreateSourceHash:
-             const bool.fromEnvironment('dart.vm.product')
-                 ? null
-                 : _$sendChatMessageNotifierHash,
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$sendChatMessageNotifierHash,
          dependencies: SendChatMessageNotifierFamily._dependencies,
          allTransitiveDependencies:
              SendChatMessageNotifierFamily._allTransitiveDependencies,
@@ -141,11 +139,10 @@ class SendChatMessageNotifierProvider
     return ProviderOverride(
       origin: this,
       override: SendChatMessageNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..userId = userId
-              ..roomId = roomId,
+        () => create()
+          ..account = account
+          ..userId = userId
+          ..roomId = roomId,
         from: from,
         name: null,
         dependencies: null,

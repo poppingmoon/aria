@@ -90,10 +90,9 @@ class NotificationsNotifierProvider
         () => NotificationsNotifier()..account = account,
         from: notificationsNotifierProvider,
         name: r'notificationsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$notificationsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$notificationsNotifierHash,
         dependencies: NotificationsNotifierFamily._dependencies,
         allTransitiveDependencies:
             NotificationsNotifierFamily._allTransitiveDependencies,

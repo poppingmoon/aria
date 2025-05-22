@@ -74,10 +74,9 @@ class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
         (ref) => searchCustomEmojis(ref as SearchCustomEmojisRef, host, query),
         from: searchCustomEmojisProvider,
         name: r'searchCustomEmojisProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$searchCustomEmojisHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$searchCustomEmojisHash,
         dependencies: SearchCustomEmojisFamily._dependencies,
         allTransitiveDependencies:
             SearchCustomEmojisFamily._allTransitiveDependencies,

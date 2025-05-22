@@ -83,16 +83,14 @@ class NoteStateNotifierProvider
   /// See also [NoteStateNotifier].
   NoteStateNotifierProvider(Account account, String noteId)
     : this._internal(
-        () =>
-            NoteStateNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => NoteStateNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: noteStateNotifierProvider,
         name: r'noteStateNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteStateNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteStateNotifierHash,
         dependencies: NoteStateNotifierFamily._dependencies,
         allTransitiveDependencies:
             NoteStateNotifierFamily._allTransitiveDependencies,
@@ -126,10 +124,9 @@ class NoteStateNotifierProvider
     return ProviderOverride(
       origin: this,
       override: NoteStateNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

@@ -73,10 +73,9 @@ class AppearNoteProvider extends AutoDisposeProvider<Note?> {
         (ref) => appearNote(ref as AppearNoteRef, account, noteId),
         from: appearNoteProvider,
         name: r'appearNoteProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$appearNoteHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$appearNoteHash,
         dependencies: AppearNoteFamily._dependencies,
         allTransitiveDependencies: AppearNoteFamily._allTransitiveDependencies,
         account: account,

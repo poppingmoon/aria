@@ -80,16 +80,14 @@ class NoteClipsNotifierProvider
   /// See also [NoteClipsNotifier].
   NoteClipsNotifierProvider(Account account, String noteId)
     : this._internal(
-        () =>
-            NoteClipsNotifier()
-              ..account = account
-              ..noteId = noteId,
+        () => NoteClipsNotifier()
+          ..account = account
+          ..noteId = noteId,
         from: noteClipsNotifierProvider,
         name: r'noteClipsNotifierProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$noteClipsNotifierHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$noteClipsNotifierHash,
         dependencies: NoteClipsNotifierFamily._dependencies,
         allTransitiveDependencies:
             NoteClipsNotifierFamily._allTransitiveDependencies,
@@ -121,10 +119,9 @@ class NoteClipsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: NoteClipsNotifierProvider._internal(
-        () =>
-            create()
-              ..account = account
-              ..noteId = noteId,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,

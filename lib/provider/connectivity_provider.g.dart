@@ -13,8 +13,9 @@ String _$connectivityHash() => r'bf12454d78bf3189236d0c99e4f0d5afc772458f';
 final connectivityProvider = StreamProvider<List<ConnectivityResult>>.internal(
   connectivity,
   name: r'connectivityProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$connectivityHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$connectivityHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

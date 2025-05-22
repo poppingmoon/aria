@@ -75,10 +75,9 @@ class FavoriteChannelsProvider
         (ref) => favoriteChannels(ref as FavoriteChannelsRef, account),
         from: favoriteChannelsProvider,
         name: r'favoriteChannelsProvider',
-        debugGetCreateSourceHash:
-            const bool.fromEnvironment('dart.vm.product')
-                ? null
-                : _$favoriteChannelsHash,
+        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+            ? null
+            : _$favoriteChannelsHash,
         dependencies: FavoriteChannelsFamily._dependencies,
         allTransitiveDependencies:
             FavoriteChannelsFamily._allTransitiveDependencies,
