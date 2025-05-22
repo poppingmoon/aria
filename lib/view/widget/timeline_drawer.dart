@@ -32,7 +32,7 @@ class TimelineDrawer extends HookConsumerWidget {
             )
             : null;
     final expansionTileControllers = useMemoized(
-      () => List.generate(accounts.length, (_) => ExpansionTileController()),
+      () => List.generate(accounts.length, (_) => ExpansibleController()),
       [accounts],
     );
     useEffect(() {
