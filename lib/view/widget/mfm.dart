@@ -32,6 +32,7 @@ import 'mfm/blur.dart';
 import 'mfm/border.dart';
 import 'mfm/bounce.dart';
 import 'mfm/code.dart';
+import 'mfm/crop.dart';
 import 'mfm/jelly.dart';
 import 'mfm/jump.dart';
 import 'mfm/rainbow.dart';
@@ -1164,6 +1165,23 @@ class _Mfm extends StatelessWidget {
                 textScaler: TextScaler.noScaling,
                 maxLines: maxLines,
               ),
+            ),
+          ),
+        );
+      case 'crop':
+        return WidgetSpan(
+          alignment: children.any(_containsNewLine)
+              ? PlaceholderAlignment.bottom
+              : PlaceholderAlignment.baseline,
+          baseline: TextBaseline.alphabetic,
+          child: Crop(
+            args: args,
+            child: Text.rich(
+              TextSpan(children: _buildNodes(context, config, children)),
+              textAlign: config.align,
+              overflow: overflow,
+              textScaler: TextScaler.noScaling,
+              maxLines: maxLines,
             ),
           ),
         );
