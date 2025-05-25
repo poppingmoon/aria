@@ -27,6 +27,7 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/nyaize.dart';
+import '../../util/show_toast.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/error_message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
@@ -331,6 +332,10 @@ class PlayWidget extends HookConsumerWidget {
                                     );
                                     return result ?? false;
                                   },
+                                  toast: (text) => showToast(
+                                    context: context,
+                                    message: text,
+                                  ),
                                   api: (ep, param, token) async {
                                     final json = jsonDecode(param);
                                     final misskey = Misskey(

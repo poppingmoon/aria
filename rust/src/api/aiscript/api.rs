@@ -28,6 +28,7 @@ pub struct AsApiLib {
     server_url: String,
     dialog: Arc<DialogCallback>,
     confirm: Arc<ConfirmCallback>,
+    toast: Arc<dyn Fn(String) -> DartFnFuture<()> + Sync + Send + 'static>,
     token: Option<String>,
     api: Arc<ApiCallback>,
     save: Arc<dyn Fn(String, String) -> DartFnFuture<()> + Sync + Send + 'static>,
@@ -48,6 +49,7 @@ impl AsApiLib {
         server_url: String,
         dialog: impl Fn(String, String, String) -> DartFnFuture<()> + Sync + Send + 'static,
         confirm: impl Fn(String, String, String) -> DartFnFuture<bool> + Sync + Send + 'static,
+        toast: impl Fn(String) -> DartFnFuture<()> + Sync + Send + 'static,
         token: Option<String>,
         api: impl Fn(String, String, Option<String>) -> DartFnFuture<(String, Option<String>)>
         + Sync
@@ -67,6 +69,7 @@ impl AsApiLib {
             server_url,
             dialog: Arc::new(dialog),
             confirm: Arc::new(confirm),
+            toast: Arc::new(toast),
             token,
             api: Arc::new(api),
             save: Arc::new(save),
@@ -189,6 +192,23 @@ impl AsApiLib {
                             .unwrap_or("info".to_string());
                         let result = confirm(title, text, type_).await;
                         Ok(Value::bool(result))
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:toast".to_string(),
+            Value::fn_native({
+                let toast = self.toast.clone();
+                move |args, _| {
+                    let toast = toast.clone();
+                    async move {
+                        let mut args = args.into_iter();
+                        let text = String::try_from(args.next().unwrap_or_default())?;
+                        toast(text).await;
+                        Ok(Value::null())
                     }
                     .boxed()
                 }
