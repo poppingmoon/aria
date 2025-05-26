@@ -229,6 +229,7 @@ class TranslationsAriaEnUs {
 	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
 	String get showMenuButtonInTabBar => 'Show menu button in tab bar';
+	String get showNote => 'Show note';
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';

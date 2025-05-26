@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/user_extension.dart';
+import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/audio_handler_provider.dart';
 import '../widget/user_avatar.dart';
@@ -17,11 +18,13 @@ class AudioDialog extends HookConsumerWidget {
     required this.account,
     required this.file,
     this.user,
+    this.noteId,
   });
 
   final Account account;
   final DriveFile file;
   final User? user;
+  final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -67,6 +70,15 @@ class AudioDialog extends HookConsumerWidget {
                     ),
                   ),
                 Expanded(child: Text(mediaItem.valueOrNull?.title ?? '')),
+                if (noteId case final noteId?)
+                  IconButton(
+                    tooltip: t.aria.showNote,
+                    onPressed: () {
+                      audioHandler.valueOrNull?.pause();
+                      context.push('/$account/notes/$noteId');
+                    },
+                    icon: const Icon(Icons.open_in_new),
+                  ),
               ],
             ),
             Row(

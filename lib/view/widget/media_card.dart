@@ -36,6 +36,7 @@ class MediaCard extends HookConsumerWidget {
     required this.files,
     required this.index,
     this.user,
+    this.noteId,
     this.fit = BoxFit.contain,
   });
 
@@ -43,6 +44,7 @@ class MediaCard extends HookConsumerWidget {
   final List<DriveFile> files;
   final int index;
   final User? user;
+  final String? noteId;
   final BoxFit fit;
 
   @override
@@ -78,13 +80,12 @@ class MediaCard extends HookConsumerWidget {
             (file.isSensitive && sensitive != SensitiveMediaDisplay.ignore);
       },
     );
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
     final style = DefaultTextStyle.of(context).style;
 
     return Card.filled(
-      color: Theme.of(context).colorScheme.surfaceContainerLow,
+      color: theme.colorScheme.surfaceContainerLow,
       clipBehavior: Clip.antiAlias,
       shape: file.isSensitive && highlightSensitiveMedia
           ? RoundedRectangleBorder(
@@ -127,8 +128,12 @@ class MediaCard extends HookConsumerWidget {
                 },
                 onLongPress: () => showModalBottomSheet<void>(
                   context: context,
-                  builder: (context) =>
-                      _MediaCardSheet(account: account, file: file, user: user),
+                  builder: (context) => _MediaCardSheet(
+                    account: account,
+                    file: file,
+                    user: user,
+                    noteId: noteId,
+                  ),
                 ),
                 child: Stack(
                   alignment: Alignment.center,
@@ -254,6 +259,7 @@ class MediaCard extends HookConsumerWidget {
                         file: file,
                         files: files,
                         user: user,
+                        noteId: noteId,
                         fit: fit,
                         onLongPress: () => showModalBottomSheet<void>(
                           context: context,
@@ -261,6 +267,7 @@ class MediaCard extends HookConsumerWidget {
                             account: account,
                             file: file,
                             user: user,
+                            noteId: noteId,
                             hideMedia: () => hide.value = true,
                           ),
                         ),
@@ -272,7 +279,9 @@ class MediaCard extends HookConsumerWidget {
                             TargetPlatform.macOS,
                       ) =>
                         _VideoPreview(
+                          account: account,
                           file: file,
+                          noteId: noteId,
                           fit: fit,
                           onLongPress: () => showModalBottomSheet<void>(
                             context: context,
@@ -280,6 +289,7 @@ class MediaCard extends HookConsumerWidget {
                               account: account,
                               file: file,
                               user: user,
+                              noteId: noteId,
                               hideMedia: () => hide.value = true,
                             ),
                           ),
@@ -294,18 +304,22 @@ class MediaCard extends HookConsumerWidget {
                           account: account,
                           file: file,
                           user: user,
+                          noteId: noteId,
                           onLongPress: () => showModalBottomSheet<void>(
                             context: context,
                             builder: (context) => _MediaCardSheet(
                               account: account,
                               file: file,
                               user: user,
+                              noteId: noteId,
                               hideMedia: () => hide.value = true,
                             ),
                           ),
                         ),
                       _ => _FilePreview(
+                        account: account,
                         file: file,
+                        noteId: noteId,
                         fit: fit,
                         onLongPress: () => showModalBottomSheet<void>(
                           context: context,
@@ -313,6 +327,7 @@ class MediaCard extends HookConsumerWidget {
                             account: account,
                             file: file,
                             user: user,
+                            noteId: noteId,
                             hideMedia: () => hide.value = true,
                           ),
                         ),
@@ -423,6 +438,7 @@ class MediaCard extends HookConsumerWidget {
                             account: account,
                             file: file,
                             user: user,
+                            noteId: noteId,
                             hideMedia: () => hide.value = true,
                           ),
                         ),
@@ -443,6 +459,7 @@ class _ImagePreview extends ConsumerWidget {
     required this.file,
     required this.files,
     this.user,
+    this.noteId,
     this.fit,
     this.onLongPress,
   });
@@ -451,6 +468,7 @@ class _ImagePreview extends ConsumerWidget {
   final DriveFile file;
   final List<DriveFile> files;
   final User? user;
+  final String? noteId;
   final BoxFit? fit;
   final void Function()? onLongPress;
 
@@ -460,7 +478,9 @@ class _ImagePreview extends ConsumerWidget {
         .toList();
     showImageGalleryDialog(
       context,
+      account: account,
       files: imageFiles,
+      noteId: noteId,
       initialIndex: imageFiles.indexOf(file),
     );
   }
@@ -500,21 +520,32 @@ class _ImagePreview extends ConsumerWidget {
 }
 
 class _VideoPreview extends StatelessWidget {
-  const _VideoPreview({required this.file, this.fit, this.onLongPress});
+  const _VideoPreview({
+    required this.account,
+    required this.file,
+    this.noteId,
+    this.fit,
+    this.onLongPress,
+  });
 
+  final Account account;
   final DriveFile file;
+  final String? noteId;
   final BoxFit? fit;
   final void Function()? onLongPress;
 
   void _openVideo(BuildContext context) {
     showDialog<void>(
       context: context,
-      builder: (context) => VideoDialog(url: file.url),
+      builder: (context) =>
+          VideoDialog(account: account, url: file.url, noteId: noteId),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return InkWell(
       onTap: () => _openVideo(context),
       onDoubleTap: () => _openVideo(context),
@@ -526,7 +557,7 @@ class _VideoPreview extends StatelessWidget {
             ImageWidget(url: thumbnailUrl, blurHash: file.blurhash, fit: fit),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
+              color: theme.colorScheme.primary,
               shape: BoxShape.circle,
             ),
             child: Padding(
@@ -534,7 +565,7 @@ class _VideoPreview extends StatelessWidget {
               child: Icon(
                 Icons.play_arrow,
                 size: 36.0,
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: theme.colorScheme.onPrimary,
               ),
             ),
           ),
@@ -549,24 +580,28 @@ class _AudioPreview extends StatelessWidget {
     required this.account,
     required this.file,
     this.user,
+    this.noteId,
     this.onLongPress,
   });
 
   final Account account;
   final DriveFile file;
   final User? user;
+  final String? noteId;
   final void Function()? onLongPress;
 
   void _openAudio(BuildContext context) {
     showDialog<void>(
       context: context,
       builder: (context) =>
-          AudioDialog(account: account, file: file, user: user),
+          AudioDialog(account: account, file: file, user: user, noteId: noteId),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return InkWell(
       onTap: () => _openAudio(context),
       onDoubleTap: () => _openAudio(context),
@@ -574,7 +609,7 @@ class _AudioPreview extends StatelessWidget {
       child: Center(
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
+            color: theme.colorScheme.primary,
             shape: BoxShape.circle,
           ),
           child: Padding(
@@ -582,7 +617,7 @@ class _AudioPreview extends StatelessWidget {
             child: Icon(
               Icons.play_arrow,
               size: 36.0,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: theme.colorScheme.onPrimary,
             ),
           ),
         ),
@@ -592,18 +627,32 @@ class _AudioPreview extends StatelessWidget {
 }
 
 class _FilePreview extends ConsumerWidget {
-  const _FilePreview({required this.file, this.fit, this.onLongPress});
+  const _FilePreview({
+    required this.account,
+    required this.file,
+    this.noteId,
+    this.fit,
+    this.onLongPress,
+  });
 
+  final Account account;
   final DriveFile file;
+  final String? noteId;
   final BoxFit? fit;
   final void Function()? onLongPress;
 
   void _openFile(WidgetRef ref) {
-    launchUrl(ref, Uri.parse(file.url));
+    if (noteId case final noteId?) {
+      ref.context.push('/$account/notes/$noteId');
+    } else {
+      launchUrl(ref, Uri.parse(file.url));
+    }
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+
     return InkWell(
       onTap: () => _openFile(ref),
       onDoubleTap: () => _openFile(ref),
@@ -617,21 +666,24 @@ class _FilePreview extends ConsumerWidget {
             BlurHash(
               hash: blurhash,
               optimizationMode: BlurHashOptimizationMode.approximation,
-            ),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary,
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.open_in_browser,
-                size: 36.0,
-                color: Theme.of(context).colorScheme.onPrimary,
+            )
+          else if (noteId != null)
+            MediaIcon(mimeType: file.type, size: 50.0),
+          if (noteId == null)
+            DecoratedBox(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.open_in_browser,
+                  size: 36.0,
+                  color: theme.colorScheme.onPrimary,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
@@ -643,12 +695,14 @@ class _MediaCardSheet extends ConsumerWidget {
     required this.account,
     required this.file,
     this.user,
+    this.noteId,
     this.hideMedia,
   });
 
   final Account account;
   final DriveFile file;
   final User? user;
+  final String? noteId;
   final void Function()? hideMedia;
 
   Future<void> _download(WidgetRef ref) async {
@@ -718,6 +772,12 @@ class _MediaCardSheet extends ConsumerWidget {
               hideMedia();
               context.pop();
             },
+          ),
+        if (noteId case final noteId?)
+          ListTile(
+            leading: const Icon(Icons.open_in_new),
+            title: Text(t.aria.showNote),
+            onTap: () => context.push('/$account/notes/$noteId'),
           ),
         ListTile(
           leading: const Icon(Icons.download),

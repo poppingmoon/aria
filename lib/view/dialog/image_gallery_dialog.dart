@@ -11,6 +11,7 @@ import 'package:photo_view/photo_view_gallery.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
@@ -20,13 +21,19 @@ import 'message_dialog.dart';
 
 Future<void> showImageGalleryDialog(
   BuildContext context, {
+  Account? account,
   required List<DriveFile> files,
+  String? noteId,
   int initialIndex = 0,
 }) {
   return showDialog(
     context: context,
-    builder: (context) =>
-        ImageGalleryDialog(files: files, initialIndex: initialIndex),
+    builder: (context) => ImageGalleryDialog(
+      account: account,
+      files: files,
+      noteId: noteId,
+      initialIndex: initialIndex,
+    ),
     useSafeArea: false,
   );
 }
@@ -34,11 +41,15 @@ Future<void> showImageGalleryDialog(
 class ImageGalleryDialog extends HookConsumerWidget {
   const ImageGalleryDialog({
     super.key,
+    this.account,
     required this.files,
+    this.noteId,
     this.initialIndex = 0,
   });
 
+  final Account? account;
   final List<DriveFile> files;
+  final String? noteId;
   final int initialIndex;
 
   @override
@@ -197,6 +208,18 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: PopupMenuButton<void>(
                         itemBuilder: (context) => [
+                          if ((account, noteId) case (
+                            final account?,
+                            final noteId?,
+                          ))
+                            PopupMenuItem(
+                              onTap: () =>
+                                  context.push('/$account/notes/$noteId'),
+                              child: ListTile(
+                                leading: const Icon(Icons.open_in_new),
+                                title: Text(t.aria.showNote),
+                              ),
+                            ),
                           PopupMenuItem(
                             onTap: () async {
                               if (!await Gal.requestAccess()) {

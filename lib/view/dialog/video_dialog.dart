@@ -8,17 +8,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../hook/chewie_controller_hook.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
 class VideoDialog extends HookConsumerWidget {
-  const VideoDialog({super.key, this.url, this.file})
+  const VideoDialog({super.key, this.account, this.url, this.file, this.noteId})
     : assert(url != null || file != null);
 
+  final Account? account;
   final String? url;
   final File? file;
+  final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -59,6 +62,17 @@ class VideoDialog extends HookConsumerWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: PopupMenuButton<void>(
                   itemBuilder: (context) => [
+                    if ((account, noteId) case (final account?, final noteId?))
+                      PopupMenuItem(
+                        onTap: () {
+                          controller?.pause();
+                          context.push('/$account/notes/$noteId');
+                        },
+                        child: ListTile(
+                          leading: const Icon(Icons.open_in_new),
+                          title: Text(t.aria.showNote),
+                        ),
+                      ),
                     PopupMenuItem(
                       onTap: () async {
                         if (!await Gal.requestAccess()) {
