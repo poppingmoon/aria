@@ -22,6 +22,9 @@ enum CollapseReason { long, large }
       case MfmCodeBlock(:final code):
         length -= code.length;
         newLines -= '\n'.allMatches(code).length;
+        if (newLines < 0) {
+          return (CollapseReason.large, null);
+        }
       case MfmPlain(:final text):
         length -= text.length;
         newLines -= '\n'.allMatches(text).length;
