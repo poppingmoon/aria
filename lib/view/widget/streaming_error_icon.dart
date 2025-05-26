@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../model/tab_settings.dart';
 import '../../provider/streaming/incoming_message_provider.dart';
@@ -15,7 +18,8 @@ class StreamingErrorIcon extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     if (!tabSettings.disableStreaming || !tabSettings.disableSubscribing) {
       final message = ref.watch(incomingMessageProvider(tabSettings.account));
-      if (message.error != null) {
+      if (message.error
+          case WebSocketChannelException() || TimeoutException()) {
         return IconButton(
           onPressed: () {
             ref.invalidate(incomingMessageProvider(tabSettings.account));
