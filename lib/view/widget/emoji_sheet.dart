@@ -201,7 +201,7 @@ class EmojiSheet extends ConsumerWidget {
             ),
           if (!isPinned)
             ListTile(
-              leading: const Icon(Symbols.keep_off, fill: 1.0),
+              leading: const Icon(Symbols.keep),
               title: Text('${t.aria.pinToEmojiPicker} (${t.misskey.general})'),
               onTap: () {
                 ref
