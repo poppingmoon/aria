@@ -39,7 +39,20 @@ enum CollapseReason { long, large }
         length -= hashtag.length;
       case MfmUrl(:final url):
         length -= url.length;
-      case MfmFn(name: 'scale' || 'x2' || 'x3' || 'x4'):
+      case MfmFn(name: 'x2', :final children?):
+        final result = _checkShouldCollapse(
+          children,
+          maxLength: length ~/ 2,
+          maxNewLines: newLines ~/ 2 - 1,
+        );
+        if (result.$1 != null) {
+          return (CollapseReason.large, null);
+        }
+        if (result.$2 case final result?) {
+          length = result.maxLength * 2;
+          newLines = result.maxNewLines * 2;
+        }
+      case MfmFn(name: 'x3' || 'x4'):
         return (CollapseReason.large, null);
       case MfmNode(:final children?):
         final result = _checkShouldCollapse(
