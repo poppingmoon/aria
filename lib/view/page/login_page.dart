@@ -109,7 +109,7 @@ class LoginPage extends HookConsumerWidget {
       );
       unawaited(ref.context.push('/login/authenticate'));
     } else {
-      unawaited(ref.context.push('/login/token?host=$trimmed'));
+      unawaited(ref.context.push('/login/token?query=$trimmed'));
     }
   }
 
