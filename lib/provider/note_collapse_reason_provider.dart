@@ -39,7 +39,7 @@ enum CollapseReason { long, large }
         length -= hashtag.length;
       case MfmUrl(:final url):
         length -= url.length;
-      case MfmFn(name: 'scale' || 'x2' || 'x3' || 'x4'):
+      case MfmFn(name: 'x2' || 'x3' || 'x4'):
         return (CollapseReason.large, null);
       case MfmNode(:final children?):
         final result = _checkShouldCollapse(
