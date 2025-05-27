@@ -222,6 +222,7 @@ class Assets {
   static const AssetGenImage ariaAndroidMonochrome = AssetGenImage(
     'assets/aria_android_monochrome.png',
   );
+  static const String ariaMac = 'assets/aria_mac.icns';
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const String flower = 'assets/flower.svg';
@@ -233,6 +234,7 @@ class Assets {
     aria,
     ariaAndroid,
     ariaAndroidMonochrome,
+    ariaMac,
     bird,
     cat,
     flower,
