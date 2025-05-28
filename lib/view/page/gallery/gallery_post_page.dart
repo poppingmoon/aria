@@ -141,7 +141,7 @@ class GalleryPostPage extends ConsumerWidget {
                     width: maxContentWidth,
                     child: InkWell(
                       onTap: () => showImageGalleryDialog(
-                        ref.context,
+                        context,
                         files: post.files,
                         initialIndex: index,
                       ),

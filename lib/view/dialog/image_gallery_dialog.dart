@@ -54,6 +54,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
     final comment = files[index.value].comment;
     final isZoomed = useState(false);
     final overlayOpacity = useState(1.0);
+    final theme = Theme.of(context);
 
     return Stack(
       children: [
@@ -279,11 +280,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
                               ? comment
                               : files[index.value].name,
                         ),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: Colors.white38,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
+                        child: Material(
+                          color: Colors.white38,
+                          borderRadius: BorderRadius.circular(8.0),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: ConstrainedBox(
@@ -299,11 +298,11 @@ class ImageGalleryDialog extends HookConsumerWidget {
                                     shadows: [
                                       Shadow(
                                         blurRadius: 2.0,
-                                        color: Theme.of(context).canvasColor,
+                                        color: theme.canvasColor,
                                       ),
                                       Shadow(
                                         blurRadius: 2.0,
-                                        color: Theme.of(context).canvasColor,
+                                        color: theme.canvasColor,
                                       ),
                                     ],
                                   ),
