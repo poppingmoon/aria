@@ -21,19 +21,13 @@ import 'message_dialog.dart';
 
 Future<void> showImageGalleryDialog(
   BuildContext context, {
-  Account? account,
   required List<DriveFile> files,
-  String? noteId,
   int initialIndex = 0,
 }) {
   return showDialog(
     context: context,
-    builder: (context) => ImageGalleryDialog(
-      account: account,
-      files: files,
-      noteId: noteId,
-      initialIndex: initialIndex,
-    ),
+    builder: (context) =>
+        ImageGalleryDialog(files: files, initialIndex: initialIndex),
     useSafeArea: false,
   );
 }
@@ -43,18 +37,21 @@ class ImageGalleryDialog extends HookConsumerWidget {
     super.key,
     this.account,
     required this.files,
-    this.noteId,
+    this.noteIds,
+    this.controller,
     this.initialIndex = 0,
   });
 
   final Account? account;
   final List<DriveFile> files;
-  final String? noteId;
+  final List<String>? noteIds;
+  final PageController? controller;
   final int initialIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = usePageController(initialPage: initialIndex);
+    final controller =
+        this.controller ?? usePageController(initialPage: initialIndex);
     final index = useState(initialIndex);
     useEffect(() {
       controller.addListener(() {
@@ -208,18 +205,17 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: PopupMenuButton<void>(
                         itemBuilder: (context) => [
-                          if ((account, noteId) case (
-                            final account?,
-                            final noteId?,
-                          ))
-                            PopupMenuItem(
-                              onTap: () =>
-                                  context.push('/$account/notes/$noteId'),
-                              child: ListTile(
-                                leading: const Icon(Icons.open_in_new),
-                                title: Text(t.aria.showNote),
+                          if (account case final account?)
+                            if (noteIds?.elementAtOrNull(index.value)
+                                case final noteId?)
+                              PopupMenuItem(
+                                onTap: () =>
+                                    context.push('/$account/notes/$noteId'),
+                                child: ListTile(
+                                  leading: const Icon(Icons.open_in_new),
+                                  title: Text(t.aria.showNote),
+                                ),
                               ),
-                            ),
                           PopupMenuItem(
                             onTap: () async {
                               if (!await Gal.requestAccess()) {

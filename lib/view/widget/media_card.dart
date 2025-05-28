@@ -23,6 +23,7 @@ import '../dialog/audio_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
 import '../dialog/message_dialog.dart';
+import '../dialog/user_image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'image_widget.dart';
 import 'media_icon.dart';
@@ -473,16 +474,24 @@ class _ImagePreview extends ConsumerWidget {
   final void Function()? onLongPress;
 
   void _openImage(BuildContext context) {
-    final imageFiles = files
-        .where((file) => file.type.startsWith('image/'))
-        .toList();
-    showImageGalleryDialog(
-      context,
-      account: account,
-      files: imageFiles,
-      noteId: noteId,
-      initialIndex: imageFiles.indexOf(file),
-    );
+    if (user?.id case final userId? when noteId != null) {
+      showUserImageGalleryDialog(
+        context,
+        account: account,
+        userId: userId,
+        initialNoteId: noteId,
+        initialFileId: file.id,
+      );
+    } else {
+      final imageFiles = files
+          .where((file) => file.type.startsWith('image/'))
+          .toList();
+      showImageGalleryDialog(
+        context,
+        files: imageFiles,
+        initialIndex: imageFiles.indexOf(file),
+      );
+    }
   }
 
   @override
