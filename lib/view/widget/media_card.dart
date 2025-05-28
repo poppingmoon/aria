@@ -358,6 +358,48 @@ class MediaCard extends HookConsumerWidget {
                                   child: Text('GIF'),
                                 ),
                               ),
+                            )
+                          else if (file.type.startsWith('video/'))
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: Colors.black45,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Tooltip(
+                                    message: t.misskey.video,
+                                    child: Icon(
+                                      Icons.movie,
+                                      size: style.lineHeight * 0.8,
+                                      color: colors.accentLighten,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          else if (file.type.startsWith('audio/'))
+                            Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: Colors.black45,
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Tooltip(
+                                    message: t.misskey.audio,
+                                    child: Icon(
+                                      Icons.music_note,
+                                      size: style.lineHeight * 0.8,
+                                      color: colors.accentLighten,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           if (file case DriveFile(:final comment?))
                             if (comment.isNotEmpty)
