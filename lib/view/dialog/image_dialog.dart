@@ -37,6 +37,8 @@ class ImageDialog extends HookConsumerWidget {
       initialValue: 1.0,
     );
     final overlayOpacity = useAnimation(overlayOpacityController);
+    final theme = Theme.of(context);
+    final materialLocalizations = MaterialLocalizations.of(context);
 
     return Stack(
       children: [
@@ -105,7 +107,9 @@ class ImageDialog extends HookConsumerWidget {
           child: SafeArea(
             child: IconButtonTheme(
               data: IconButtonThemeData(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+                style: IconButton.styleFrom(
+                  backgroundColor: theme.canvasColor.withValues(alpha: 0.6),
+                ),
               ),
               child: Stack(
                 children: [
@@ -114,9 +118,7 @@ class ImageDialog extends HookConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(
-                        tooltip: MaterialLocalizations.of(
-                          context,
-                        ).closeButtonTooltip,
+                        tooltip: materialLocalizations.closeButtonTooltip,
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),

@@ -76,6 +76,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
     );
     final overlayOpacity = useAnimation(overlayOpacityController);
     final theme = Theme.of(context);
+    final materialLocalizations = MaterialLocalizations.of(context);
 
     return Stack(
       children: [
@@ -207,7 +208,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
           opacity: overlayOpacity,
           child: IconButtonTheme(
             data: IconButtonThemeData(
-              style: IconButton.styleFrom(backgroundColor: Colors.white54),
+              style: IconButton.styleFrom(
+                backgroundColor: theme.canvasColor.withValues(alpha: 0.6),
+              ),
             ),
             child: Stack(
               children: [
@@ -217,9 +220,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(
-                        tooltip: MaterialLocalizations.of(
-                          context,
-                        ).closeButtonTooltip,
+                        tooltip: materialLocalizations.closeButtonTooltip,
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),
@@ -307,9 +308,6 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: IconButton(
-                          style: IconButton.styleFrom(
-                            backgroundColor: Colors.white54,
-                          ),
                           onPressed: () => controller.nextPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeIn,
@@ -336,7 +334,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                                   : files[index.value].name,
                             ),
                             child: Material(
-                              color: Colors.white54,
+                              color: theme.canvasColor.withValues(alpha: 0.6),
                               borderRadius: BorderRadius.circular(8.0),
                               child: Container(
                                 constraints: const BoxConstraints(
