@@ -9,13 +9,19 @@ import 'package:misskey_dart/misskey_dart.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/note_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../widget/image_widget.dart';
+import '../widget/note_summary.dart';
+import '../widget/time_widget.dart';
+import '../widget/user_avatar.dart';
 import 'message_dialog.dart';
 
 Future<void> showImageGalleryDialog(
@@ -34,16 +40,23 @@ Future<void> showImageGalleryDialog(
 class ImageGalleryDialog extends HookConsumerWidget {
   const ImageGalleryDialog({
     super.key,
+    this.account,
     required this.files,
+    this.noteIds,
+    this.controller,
     this.initialIndex = 0,
   });
 
+  final Account? account;
   final List<DriveFile> files;
+  final List<String>? noteIds;
+  final PageController? controller;
   final int initialIndex;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = usePageController(initialPage: initialIndex);
+    final controller =
+        this.controller ?? usePageController(initialPage: initialIndex);
     final index = useState(initialIndex);
     useEffect(() {
       controller.addListener(() {
@@ -51,10 +64,19 @@ class ImageGalleryDialog extends HookConsumerWidget {
       });
       return;
     }, []);
-    final comment = files[index.value].comment;
+    final comment = files.elementAtOrNull(index.value)?.comment;
+    final noteId = noteIds?.elementAtOrNull(index.value);
+    final note = account != null && noteId != null
+        ? ref.watch(noteProvider(account!, noteId))
+        : null;
     final isZoomed = useState(false);
-    final overlayOpacity = useState(1.0);
+    final overlayOpacityController = useAnimationController(
+      duration: const Duration(milliseconds: 100),
+      initialValue: 1.0,
+    );
+    final overlayOpacity = useAnimation(overlayOpacityController);
     final theme = Theme.of(context);
+    final materialLocalizations = MaterialLocalizations.of(context);
 
     return Stack(
       children: [
@@ -63,11 +85,14 @@ class ImageGalleryDialog extends HookConsumerWidget {
           direction: !isZoomed.value
               ? DismissDirection.vertical
               : DismissDirection.none,
-          onUpdate: (details) => overlayOpacity.value = clampDouble(
-            1.0 - details.progress * 1.5,
-            0.0,
-            1.0,
-          ),
+          onUpdate: (details) {
+            if (overlayOpacity > 0.0) {
+              overlayOpacityController.animateTo(
+                clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
+                duration: Duration.zero,
+              );
+            }
+          },
           onDismissed: (_) => context.pop(),
           child: FocusableActionDetector(
             autofocus: true,
@@ -113,10 +138,16 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       }
                     }
                   }
-                  if (overlayOpacity.value < 0.5) {
-                    overlayOpacity.value = 1.0;
+                  if (overlayOpacity < 0.5) {
+                    overlayOpacityController.animateTo(
+                      1.0,
+                      curve: Curves.easeInOut,
+                    );
                   } else {
-                    overlayOpacity.value = 0.0;
+                    overlayOpacityController.animateTo(
+                      0.0,
+                      curve: Curves.easeInOut,
+                    );
                   }
                 },
               ),
@@ -156,47 +187,62 @@ class ImageGalleryDialog extends HookConsumerWidget {
                   case PhotoViewScaleState.initial ||
                       PhotoViewScaleState.zoomedOut:
                     isZoomed.value = false;
-                    overlayOpacity.value = 1.0;
+                    overlayOpacityController.animateTo(
+                      1.0,
+                      curve: Curves.easeInOut,
+                    );
                   case PhotoViewScaleState.covering ||
                       PhotoViewScaleState.originalSize ||
                       PhotoViewScaleState.zoomedIn:
                     isZoomed.value = true;
-                    overlayOpacity.value = 0.0;
+                    overlayOpacityController.animateTo(
+                      0.0,
+                      curve: Curves.easeInOut,
+                    );
                 }
               },
             ),
           ),
         ),
-        AnimatedOpacity(
-          opacity: overlayOpacity.value,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeInOut,
-          child: SafeArea(
-            child: IconButtonTheme(
-              data: IconButtonThemeData(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+        Opacity(
+          opacity: overlayOpacity,
+          child: IconButtonTheme(
+            data: IconButtonThemeData(
+              style: IconButton.styleFrom(
+                backgroundColor: theme.canvasColor.withValues(alpha: 0.6),
               ),
-              child: Stack(
-                children: [
-                  Align(
+            ),
+            child: Stack(
+              children: [
+                SafeArea(
+                  child: Align(
                     alignment: AlignmentDirectional.topStart,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(
-                        tooltip: MaterialLocalizations.of(
-                          context,
-                        ).closeButtonTooltip,
+                        tooltip: materialLocalizations.closeButtonTooltip,
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),
                     ),
                   ),
-                  Align(
+                ),
+                SafeArea(
+                  child: Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: PopupMenuButton<void>(
                         itemBuilder: (context) => [
+                          if (account case final account? when noteId != null)
+                            PopupMenuItem(
+                              onTap: () =>
+                                  context.push('/$account/notes/$noteId'),
+                              child: ListTile(
+                                leading: const Icon(Icons.open_in_new),
+                                title: Text(t.aria.showNote),
+                              ),
+                            ),
                           PopupMenuItem(
                             onTap: () async {
                               if (!await Gal.requestAccess()) {
@@ -238,8 +284,10 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  if (index.value > 0)
-                    Align(
+                ),
+                if (index.value > 0)
+                  SafeArea(
+                    child: Align(
                       alignment: AlignmentDirectional.centerStart,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -252,15 +300,14 @@ class ImageGalleryDialog extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  if (index.value < files.length - 1)
-                    Align(
+                  ),
+                if (index.value < files.length - 1)
+                  SafeArea(
+                    child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: IconButton(
-                          style: IconButton.styleFrom(
-                            backgroundColor: Colors.white54,
-                          ),
                           onPressed: () => controller.nextPage(
                             duration: const Duration(milliseconds: 300),
                             curve: Curves.easeIn,
@@ -269,42 +316,53 @@ class ImageGalleryDialog extends HookConsumerWidget {
                         ),
                       ),
                     ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onLongPress: () => copyToClipboard(
-                          context,
-                          comment != null && comment.isNotEmpty
-                              ? comment
-                              : files[index.value].name,
-                        ),
-                        child: Material(
-                          color: Colors.white38,
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                maxHeight: 100.0,
-                              ),
-                              child: SingleChildScrollView(
-                                child: Text(
-                                  comment != null && comment.isNotEmpty
-                                      ? comment
-                                      : files[index.value].name,
-                                  style: TextStyle(
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 2.0,
-                                        color: theme.canvasColor,
+                  ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SafeArea(
+                        bottom: note == null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: GestureDetector(
+                            onLongPress: () => copyToClipboard(
+                              context,
+                              comment != null && comment.isNotEmpty
+                                  ? comment
+                                  : files[index.value].name,
+                            ),
+                            child: Material(
+                              color: theme.canvasColor.withValues(alpha: 0.6),
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                  maxWidth: maxContentWidth,
+                                ),
+                                padding: const EdgeInsets.all(8.0),
+                                child: ConstrainedBox(
+                                  constraints: const BoxConstraints(
+                                    maxHeight: 100.0,
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Text(
+                                      comment != null && comment.isNotEmpty
+                                          ? comment
+                                          : files[index.value].name,
+                                      style: TextStyle(
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 2.0,
+                                            color: theme.canvasColor,
+                                          ),
+                                          Shadow(
+                                            blurRadius: 2.0,
+                                            color: theme.canvasColor,
+                                          ),
+                                        ],
                                       ),
-                                      Shadow(
-                                        blurRadius: 2.0,
-                                        color: theme.canvasColor,
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -312,10 +370,47 @@ class ImageGalleryDialog extends HookConsumerWidget {
                           ),
                         ),
                       ),
-                    ),
+                      if (account case final account? when note != null)
+                        SizedBox(
+                          width: maxContentWidth,
+                          child: Material(
+                            color: theme.colorScheme.surface.withValues(
+                              alpha: 0.8,
+                            ),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(24.0),
+                              ),
+                            ),
+                            child: SafeArea(
+                              top: false,
+                              child: ListTile(
+                                leading: UserAvatar(
+                                  account: account,
+                                  user: note.user,
+                                  size: 32.0,
+                                  onTap: () => context.push(
+                                    '/$account/users/${note.userId}',
+                                  ),
+                                ),
+                                title: NoteSummary(
+                                  account: account,
+                                  noteId: note.id,
+                                ),
+                                subtitle: TimeWidget(
+                                  time: note.createdAt,
+                                  detailed: true,
+                                ),
+                                onTap: () =>
+                                    context.push('/$account/notes/${note.id}'),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

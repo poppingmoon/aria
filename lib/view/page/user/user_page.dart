@@ -10,6 +10,7 @@ import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 import 'user_clips.dart';
 import 'user_featured.dart';
+import 'user_files.dart';
 import 'user_gallery.dart';
 import 'user_home.dart';
 import 'user_lists.dart';
@@ -55,7 +56,7 @@ class UserPage extends HookConsumerWidget {
                 user.host == null));
 
     return DefaultTabController(
-      length: 2 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0),
+      length: 3 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0),
       child: Scaffold(
         appBar: AppBar(
           title: user != null
@@ -67,6 +68,7 @@ class UserPage extends HookConsumerWidget {
                     Tab(text: t.misskey.overview),
                     Tab(text: t.misskey.notes),
                     if (isLocal) Tab(text: t.misskey.featured),
+                    Tab(text: t.misskey.files),
                     if (isReactionsVisibile) Tab(text: t.misskey.reactions),
                     if (isLocal) ...[
                       Tab(text: t.misskey.clips),
@@ -106,6 +108,7 @@ class UserPage extends HookConsumerWidget {
                 if (userId != null) ...[
                   UserNotes(account: account, userId: userId),
                   if (isLocal) UserFeatured(account: account, userId: userId),
+                  UserFiles(account: account, userId: userId),
                   if (isReactionsVisibile)
                     UserReactions(account: account, userId: userId),
                   if (isLocal) ...[

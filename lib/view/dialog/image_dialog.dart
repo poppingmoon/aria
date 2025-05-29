@@ -32,7 +32,13 @@ class ImageDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isZoomed = useState(false);
-    final overlayOpacity = useState(1.0);
+    final overlayOpacityController = useAnimationController(
+      duration: const Duration(milliseconds: 100),
+      initialValue: 1.0,
+    );
+    final overlayOpacity = useAnimation(overlayOpacityController);
+    final theme = Theme.of(context);
+    final materialLocalizations = MaterialLocalizations.of(context);
 
     return Stack(
       children: [
@@ -41,11 +47,14 @@ class ImageDialog extends HookConsumerWidget {
           direction: !isZoomed.value
               ? DismissDirection.vertical
               : DismissDirection.none,
-          onUpdate: (details) => overlayOpacity.value = clampDouble(
-            1.0 - details.progress * 1.5,
-            0.0,
-            1.0,
-          ),
+          onUpdate: (details) {
+            if (overlayOpacity > 0.0) {
+              overlayOpacityController.animateTo(
+                clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
+                duration: Duration.zero,
+              );
+            }
+          },
           onDismissed: (_) => context.pop(),
           child: PhotoView(
             imageProvider: file != null
@@ -64,31 +73,43 @@ class ImageDialog extends HookConsumerWidget {
                 case PhotoViewScaleState.initial ||
                     PhotoViewScaleState.zoomedOut:
                   isZoomed.value = false;
-                  overlayOpacity.value = 1.0;
+                  overlayOpacityController.animateTo(
+                    1.0,
+                    curve: Curves.easeInOut,
+                  );
                 case PhotoViewScaleState.covering ||
                     PhotoViewScaleState.originalSize ||
                     PhotoViewScaleState.zoomedIn:
                   isZoomed.value = true;
-                  overlayOpacity.value = 0.0;
+                  overlayOpacityController.animateTo(
+                    0.0,
+                    curve: Curves.easeInOut,
+                  );
               }
             },
             onTapUp: (_, _, _) {
-              if (overlayOpacity.value < 0.5) {
-                overlayOpacity.value = 1.0;
+              if (overlayOpacity < 0.5) {
+                overlayOpacityController.animateTo(
+                  1.0,
+                  curve: Curves.easeInOut,
+                );
               } else {
-                overlayOpacity.value = 0.0;
+                overlayOpacityController.animateTo(
+                  0.0,
+                  curve: Curves.easeInOut,
+                );
               }
             },
           ),
         ),
-        AnimatedOpacity(
-          opacity: overlayOpacity.value,
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeInOut,
+        Opacity(
+          opacity: overlayOpacity,
           child: SafeArea(
             child: IconButtonTheme(
               data: IconButtonThemeData(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+                style: IconButton.styleFrom(
+                  backgroundColor: theme.canvasColor.withValues(alpha: 0.6),
+                ),
               ),
               child: Stack(
                 children: [
@@ -97,9 +118,7 @@ class ImageDialog extends HookConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(
-                        tooltip: MaterialLocalizations.of(
-                          context,
-                        ).closeButtonTooltip,
+                        tooltip: materialLocalizations.closeButtonTooltip,
                         onPressed: () => context.pop(),
                         icon: const Icon(Icons.close),
                       ),

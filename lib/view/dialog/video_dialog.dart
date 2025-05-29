@@ -5,23 +5,33 @@ import 'package:flutter/material.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:video_player/video_player.dart';
 
+import '../../hook/chewie_controller_hook.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
-class VideoDialog extends ConsumerWidget {
-  const VideoDialog({super.key, this.url, this.file})
+class VideoDialog extends HookConsumerWidget {
+  const VideoDialog({super.key, this.account, this.url, this.file, this.noteId})
     : assert(url != null || file != null);
 
+  final Account? account;
   final String? url;
   final File? file;
+  final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final controller = useChewieController(
+      url: url != null ? Uri.parse(url!) : null,
+      file: file,
+      autoPlay: true,
+      showControlsOnInitialize: false,
+    );
+
     return IconButtonTheme(
       data: IconButtonThemeData(
         style: IconButton.styleFrom(backgroundColor: Colors.white54),
@@ -29,12 +39,10 @@ class VideoDialog extends ConsumerWidget {
       child: Stack(
         children: [
           Dismissible(
-            key: const ValueKey(0),
+            key: const ValueKey('VideoDialog'),
             onDismissed: (_) => context.pop(),
             direction: DismissDirection.vertical,
-            child: Center(
-              child: _VideoWidget(url: url, file: file),
-            ),
+            child: Center(child: _VideoWidget(controller: controller)),
           ),
           Align(
             alignment: AlignmentDirectional.topStart,
@@ -54,6 +62,17 @@ class VideoDialog extends ConsumerWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: PopupMenuButton<void>(
                   itemBuilder: (context) => [
+                    if ((account, noteId) case (final account?, final noteId?))
+                      PopupMenuItem(
+                        onTap: () {
+                          controller?.pause();
+                          context.push('/$account/notes/$noteId');
+                        },
+                        child: ListTile(
+                          leading: const Icon(Icons.open_in_new),
+                          title: Text(t.aria.showNote),
+                        ),
+                      ),
                     PopupMenuItem(
                       onTap: () async {
                         if (!await Gal.requestAccess()) {
@@ -98,54 +117,18 @@ class VideoDialog extends ConsumerWidget {
   }
 }
 
-class _VideoWidget extends StatefulWidget {
-  const _VideoWidget({this.url, this.file});
+class _VideoWidget extends StatelessWidget {
+  const _VideoWidget({required this.controller});
 
-  final String? url;
-  final File? file;
-
-  @override
-  State<_VideoWidget> createState() => _VideoWidgetState();
-}
-
-class _VideoWidgetState extends State<_VideoWidget> {
-  late VideoPlayerController _videoPlayerController;
-  ChewieController? _chewieController;
-  int? bufferDelay;
-
-  @override
-  void initState() {
-    super.initState();
-    initializePlayer();
-  }
-
-  @override
-  void dispose() {
-    _videoPlayerController.dispose();
-    _chewieController?.dispose();
-    super.dispose();
-  }
-
-  Future<void> initializePlayer() async {
-    _videoPlayerController = widget.url != null
-        ? VideoPlayerController.networkUrl(Uri.parse(widget.url!))
-        : VideoPlayerController.file(widget.file!);
-    await _videoPlayerController.initialize();
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: true,
-      showControlsOnInitialize: false,
-    );
-    setState(() {});
-  }
+  final ChewieController? controller;
 
   @override
   Widget build(BuildContext context) {
-    if (_chewieController != null &&
-        _chewieController!.videoPlayerController.value.isInitialized) {
+    if (controller case final controller?
+        when controller.videoPlayerController.value.isInitialized) {
       return AspectRatio(
-        aspectRatio: _chewieController!.videoPlayerController.value.aspectRatio,
-        child: Chewie(controller: _chewieController!),
+        aspectRatio: controller.videoPlayerController.value.aspectRatio,
+        child: Chewie(controller: controller),
       );
     } else {
       return const Center(child: CircularProgressIndicator());
