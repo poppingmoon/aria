@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../../constant/max_content_width.dart';
-import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/id.dart';
@@ -27,20 +26,18 @@ class SearchNotes extends HookConsumerWidget {
   const SearchNotes({
     super.key,
     required this.account,
+    required this.query,
     this.userId,
     this.channelId,
-    this.focusNode,
   });
 
   final Account account;
+  final String query;
   final String? userId;
   final String? channelId;
-  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = useTextEditingController();
-    final query = useState('');
     final userId = useState(this.userId);
     final user = userId.value != null
         ? ref
@@ -63,11 +60,11 @@ class SearchNotes extends HookConsumerWidget {
     final untilId = method != null && untilDate.value != null
         ? Id(method: method, date: untilDate.value!).toString()
         : null;
-    final notes = query.value.isNotEmpty
+    final notes = query.isNotEmpty
         ? ref.watch(
             searchNotesNotifierProvider(
               account,
-              query.value,
+              query,
               userId: userId.value,
               channelId: channelId.value,
               localOnly: localOnly.value,
@@ -81,27 +78,6 @@ class SearchNotes extends HookConsumerWidget {
     return PaginatedListView(
       header: SliverList.list(
         children: [
-          const SizedBox(height: 8.0),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: Shortcuts(
-                shortcuts: disablingTextShortcuts,
-                child: TextField(
-                  controller: controller,
-                  focusNode: focusNode,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                  ),
-                  autofocus: true,
-                  onSubmitted: (value) => query.value = value.trim(),
-                  textInputAction: TextInputAction.search,
-                  onTapOutside: (_) => focusNode?.unfocus(),
-                ),
-              ),
-            ),
-          ),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -238,16 +214,6 @@ class SearchNotes extends HookConsumerWidget {
               ),
             ),
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ElevatedButton(
-                onPressed: () => query.value = controller.text.trim(),
-                child: Text(t.misskey.search),
-              ),
-            ),
-          ),
         ],
       ),
       paginationState: notes,
@@ -256,7 +222,7 @@ class SearchNotes extends HookConsumerWidget {
       onRefresh: () => ref.refresh(
         searchNotesNotifierProvider(
           account,
-          query.value,
+          query,
           userId: userId.value,
           channelId: channelId.value,
           localOnly: localOnly.value,
@@ -268,7 +234,7 @@ class SearchNotes extends HookConsumerWidget {
           .read(
             searchNotesNotifierProvider(
               account,
-              query.value,
+              query,
               userId: userId.value,
               channelId: channelId.value,
               localOnly: localOnly.value,
