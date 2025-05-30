@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:collection/collection.dart';
 import 'package:file/file.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
 import '../../model/pagination_state.dart';
+import 'endpoints_provider.dart';
 import 'misskey_provider.dart';
 
 part 'drive_files_notifier_provider.g.dart';
@@ -169,9 +171,54 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     ref.read(driveFilesNotifierProvider(account, folderId).notifier).add(file);
   }
 
+  Future<void> moveBulkFrom(List<DriveFile> files) async {
+    bool isMoveBulkAvailable = false;
+    try {
+      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      isMoveBulkAvailable = endpoints.contains('drive/files/move-bulk');
+    } catch (_) {}
+    if (isMoveBulkAvailable) {
+      await _misskey.drive.files.moveBulk(
+        DriveFilesMoveBulkRequest(
+          fileIds: files.map((file) => file.id).toList(),
+          folderId: folderId,
+        ),
+      );
+      final groups = files.groupListsBy((file) => file.folderId);
+      for (final MapEntry(key: folderId, value: files) in groups.entries) {
+        ref
+            .read(driveFilesNotifierProvider(account, folderId).notifier)
+            .removeAll(files.map((file) => file.id));
+      }
+      addAll(files.map((file) => file.copyWith(folderId: folderId)));
+    } else {
+      await Future.wait(
+        files.map(
+          (file) => ref
+              .read(driveFilesNotifierProvider(account, file.folderId).notifier)
+              .move(fileId: file.id, folderId: folderId),
+        ),
+      );
+    }
+  }
+
   void add(DriveFile file) {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [file, ...value.items]));
+  }
+
+  void addAll(Iterable<DriveFile> files) {
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(value.copyWith(items: [...files, ...value.items]));
+  }
+
+  void removeAll(Iterable<String> fileIds) {
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items.where((file) => !fileIds.contains(file.id)).toList(),
+      ),
+    );
   }
 
   void replace(DriveFile file) {

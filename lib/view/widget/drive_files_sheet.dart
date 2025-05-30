@@ -33,13 +33,9 @@ class DriveFilesSheet extends ConsumerWidget {
     if (!ref.context.mounted) return;
     await futureWithDialog(
       ref.context,
-      Future.wait(
-        files.map(
-          (file) => ref
-              .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-              .move(fileId: file.id, folderId: result.$1?.id),
-        ),
-      ),
+      ref
+          .read(driveFilesNotifierProvider(account, result.$1?.id).notifier)
+          .moveBulkFrom(files),
       message: t.aria.moved,
     );
     ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
