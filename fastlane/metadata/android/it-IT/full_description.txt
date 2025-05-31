@@ -1,13 +1,13 @@
-Aria is a client app for Misskey, a federated social media platform.
+Aria è un'app client per Misskey, una piattaforma di social media federata.
 
-Supports most of Misskey's features
-Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
+Supporta la maggior parte delle funzionalità di Misskey
+Aria supporta la maggior parte delle funzioni disponibili in Misskey, tra cui la visualizzazione di vari tipi di timeline, note di pubblicazione, clip di modifica, liste o antenne, ecc.
 
-Swipe to switch between multiple accounts (of multiple servers)
-Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+Scorri per passare tra più account (di più server)
+Aria rende facile la visualizzazione di timeline diverse salvando le timeline che si desidera visualizzare come schede. Aggiungendo la timeline di qualsiasi account a una scheda è facile seguire gli argomenti attraverso i server.
 
-Based on the design of the official Misskey Web client
-The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+Basato sul design del client Web Misskey ufficiale
+L'interfaccia utente è progettata per sembrare familiare, simile al front-end ufficiale di Misskey. Supporta anche la decorazione di note con MFM.
 
-Highly customizable
-Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+Altamente personalizzabile
+Numerose impostazioni, come la dimensione del display della reazione e la visualizzazione delle icone dell'utente, possono essere modificate e regolate a proprio piacimento. Inoltre, è possibile modificare il tema per decorare l'applicazione con i colori preferiti.
