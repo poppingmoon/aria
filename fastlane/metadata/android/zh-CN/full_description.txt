@@ -1,13 +1,13 @@
-Aria是Misskey（一个联邦式社交媒体平台）的一个客户端。
+Aria 是一款为联邦社交平台 Misskey 开发的客户端。
 
 支持Misskey绝大部分的功能
 Aria支持绝大多数在Misskey中可用的功能，包括：查看不同类型的时间线、发布帖子、编辑附件、列表和天线等。
 
-Swipe to switch between multiple accounts (of multiple servers)
-Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+轻松切换不同服务器的账户​
+Aria 通过将您想查看的时间线保存为标签页，轻松实现多时间线浏览。将任意账户的时间线添加至标签页，即可便捷追踪跨服务器话题。
 
-Based on the design of the official Misskey Web client
-The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+设计基于官方 Misskey Web 客户端
+用户界面延续官方 Misskey 前端风格，确保使用体验一致。同时支持通过 MFM 进行笔记装饰。
 
-高度可定制
+高度自定义
 可以根据自己的喜好，调整回应的显示大小、用户头像等众多的设置。您也可以更改主题，用您喜欢的颜色装饰应用程序。

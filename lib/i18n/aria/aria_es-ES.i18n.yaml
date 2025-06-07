@@ -32,6 +32,7 @@ deleteFilesConfirm:
   other: "¿Estás seguro de que deseas eliminar {n} archivos?"
 deleteTabConfirm: "¿Estás seguro de eliminar esta pestaña?"
 disableDataSaverWhenOnWifi: "Desactivar el ahorro de datos en Wi-Fi"
+disableStreamingTimeline: "Deshabilitar las actualizaciones de línea de tiempo en tiempo real."
 disableSubscribingNotes: "Desactivar reacciones en tiempo real"
 discardChangesConfirm: "¿Está seguro que desea descartar los cambios?"
 displayOfThumbnail: "Mostrar miniatura"
