@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -92,21 +94,20 @@ class _UserImageGalleryDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final noteIds = notes
-        .map((note) => List.generate(note.files.length, (_) => note.id))
+    final noteIdFilePairs = notes
+        .map(
+          (note) => note.files
+              .where((file) => file.type.startsWith('image/'))
+              .map((file) => (noteId: note.id, file: file)),
+        )
         .flattenedToList;
-    final files = notes.map((note) => note.files).flattenedToList;
+    final noteIds = noteIdFilePairs.map((pair) => pair.noteId).toList();
+    final files = noteIdFilePairs.map((pair) => pair.file).toList();
     final initialIndex = useMemoized(() {
-      int index = -1;
-      while (true) {
-        index = files.indexWhere((file) => file.id == initialFileId, index + 1);
-        if (index < 0) {
-          return 0;
-        }
-        if (noteIds.elementAtOrNull(index) == initialNoteId) {
-          return index;
-        }
-      }
+      final index = noteIdFilePairs.indexWhere(
+        (pair) => pair.noteId == initialNoteId && pair.file.id == initialFileId,
+      );
+      return max(0, index);
     });
     final controller = usePageController(initialPage: initialIndex);
     useEffect(() {
