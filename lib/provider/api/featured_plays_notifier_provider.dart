@@ -10,9 +10,12 @@ part 'featured_plays_notifier_provider.g.dart';
 @riverpod
 class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
   @override
-  FutureOr<PaginationState<Flash>> build(Account account) async {
+  Stream<PaginationState<Flash>> build(Account account) async* {
     final response = await _fetchPlays();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Flash>> _fetchPlays({int? offset}) {
@@ -30,6 +33,7 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPlays(offset: value.items.length);
@@ -38,11 +42,15 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
         // until Misskey 2024.10.0.
         return value.copyWith(isLastLoaded: true);
       } else {
+        shouldLoadMore = response.isNotEmpty && response.length < 5;
         return PaginationState(
           items: [...value.items, ...response],
           isLastLoaded: response.isEmpty,
         );
       }
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

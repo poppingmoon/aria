@@ -7,7 +7,7 @@ part of 'notifications_notifier_provider.dart';
 // **************************************************************************
 
 String _$notificationsNotifierHash() =>
-    r'bbb5c5c5543aa8c43168070e7a13f2995b2cc914';
+    r'5f02d7d2dfc63128a6619f918408cc9eabd9d827';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,12 +32,12 @@ class _SystemHash {
 
 abstract class _$NotificationsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<INotificationsResponse>
         > {
   late final Account account;
 
-  FutureOr<PaginationState<INotificationsResponse>> build(Account account);
+  Stream<PaginationState<INotificationsResponse>> build(Account account);
 }
 
 /// See also [NotificationsNotifier].
@@ -80,7 +80,7 @@ class NotificationsNotifierFamily
 /// See also [NotificationsNotifier].
 class NotificationsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           NotificationsNotifier,
           PaginationState<INotificationsResponse>
         > {
@@ -112,7 +112,7 @@ class NotificationsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<INotificationsResponse>> runNotifierBuild(
+  Stream<PaginationState<INotificationsResponse>> runNotifierBuild(
     covariant NotificationsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -135,7 +135,7 @@ class NotificationsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     NotificationsNotifier,
     PaginationState<INotificationsResponse>
   >
@@ -161,7 +161,7 @@ class NotificationsNotifierProvider
 // ignore: unused_element
 mixin NotificationsNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<INotificationsResponse>
         > {
   /// The parameter `account` of this provider.
@@ -170,7 +170,7 @@ mixin NotificationsNotifierRef
 
 class _NotificationsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           NotificationsNotifier,
           PaginationState<INotificationsResponse>
         >

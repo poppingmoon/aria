@@ -9,6 +9,7 @@ import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../constant/max_content_width.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/id.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
@@ -124,13 +125,28 @@ class TimelineListView extends HookConsumerWidget {
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
+    final eager = !tabSettings.keepPosition;
     final nextNotes = ref.watch(
-      timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
+      timelineNotesAfterNoteNotifierProvider(
+        tabSettings,
+        sinceId: centerId,
+        eager: eager,
+      ),
     );
     final hasNextNote = nextNotes.valueOrNull?.items.isNotEmpty ?? false;
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
+    final untilId = switch (centerId) {
+      final centerId? => switch (Id.tryParse(centerId)) {
+        final centerId? => Id(
+          method: centerId.method,
+          date: centerId.date.add(const Duration(milliseconds: 1)),
+        ).toString(),
+        null => centerId,
+      },
+      null => null,
+    };
     final previousNotes = ref.watch(
-      timelineNotesNotifierProvider(tabSettings, untilId: centerId),
+      timelineNotesNotifierProvider(tabSettings, untilId: untilId),
     );
     final partialPreviousNoteIds =
         previousNotes.valueOrNull?.items.take(5).map((note) => note.id) ?? [];
@@ -202,6 +218,7 @@ class TimelineListView extends HookConsumerWidget {
                   timelineNotesAfterNoteNotifierProvider(
                     tabSettings,
                     sinceId: centerId,
+                    eager: eager,
                   ).notifier,
                 )
                 .addNote(note);
@@ -249,6 +266,7 @@ class TimelineListView extends HookConsumerWidget {
                     timelineNotesAfterNoteNotifierProvider(
                       tabSettings,
                       sinceId: centerId,
+                      eager: eager,
                     ).notifier,
                   )
                   .loadMore();
@@ -264,7 +282,7 @@ class TimelineListView extends HookConsumerWidget {
                 .read(
                   timelineNotesNotifierProvider(
                     tabSettings,
-                    untilId: centerId,
+                    untilId: untilId,
                   ).notifier,
                 )
                 .loadMore();
@@ -288,6 +306,7 @@ class TimelineListView extends HookConsumerWidget {
                 timelineNotesAfterNoteNotifierProvider(
                   tabSettings,
                   sinceId: centerId,
+                  eager: eager,
                 ),
               )
               .valueOrNull
@@ -336,6 +355,7 @@ class TimelineListView extends HookConsumerWidget {
                             timelineNotesAfterNoteNotifierProvider(
                               tabSettings,
                               sinceId: centerId,
+                              eager: eager,
                             ).notifier,
                           )
                           .loadMore(skipError: true),
@@ -515,7 +535,7 @@ class TimelineListView extends HookConsumerWidget {
                           .read(
                             timelineNotesNotifierProvider(
                               tabSettings,
-                              untilId: centerId,
+                              untilId: untilId,
                             ).notifier,
                           )
                           .loadMore(skipError: true),
@@ -546,12 +566,13 @@ class TimelineListView extends HookConsumerWidget {
                       timelineNotesAfterNoteNotifierProvider(
                         tabSettings,
                         sinceId: centerId,
+                        eager: eager,
                       ),
                     );
                     ref.invalidate(
                       timelineNotesNotifierProvider(
                         tabSettings,
-                        untilId: centerId,
+                        untilId: untilId,
                       ),
                     );
                     keepAnimation.value = true;

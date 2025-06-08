@@ -10,9 +10,12 @@ part 'plays_notifier_provider.g.dart';
 @riverpod
 class PlaysNotifier extends _$PlaysNotifier {
   @override
-  FutureOr<PaginationState<Flash>> build(Account account) async {
+  Stream<PaginationState<Flash>> build(Account account) async* {
     final response = await _fetchPlays();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Flash>> _fetchPlays({String? untilId}) async {
@@ -31,13 +34,18 @@ class PlaysNotifier extends _$PlaysNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPlays(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

@@ -7,7 +7,7 @@ part of 'chat_messages_notifier_provider.dart';
 // **************************************************************************
 
 String _$chatMessagesNotifierHash() =>
-    r'b9f8e5889c20242e90e094967784a8ede647754b';
+    r'e1da3bffa7afc6b462d39500feb45be938d43fd9';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,12 +31,12 @@ class _SystemHash {
 }
 
 abstract class _$ChatMessagesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<ChatMessage>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatMessage>> {
   late final Account account;
   late final String? userId;
   late final String? roomId;
 
-  FutureOr<PaginationState<ChatMessage>> build(
+  Stream<PaginationState<ChatMessage>> build(
     Account account, {
     String? userId,
     String? roomId,
@@ -95,7 +95,7 @@ class ChatMessagesNotifierFamily
 /// See also [ChatMessagesNotifier].
 class ChatMessagesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ChatMessagesNotifier,
           PaginationState<ChatMessage>
         > {
@@ -139,7 +139,7 @@ class ChatMessagesNotifierProvider
   final String? roomId;
 
   @override
-  FutureOr<PaginationState<ChatMessage>> runNotifierBuild(
+  Stream<PaginationState<ChatMessage>> runNotifierBuild(
     covariant ChatMessagesNotifier notifier,
   ) {
     return notifier.build(account, userId: userId, roomId: roomId);
@@ -167,7 +167,7 @@ class ChatMessagesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ChatMessagesNotifier,
     PaginationState<ChatMessage>
   >
@@ -197,7 +197,7 @@ class ChatMessagesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ChatMessagesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<ChatMessage>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatMessage>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -210,7 +210,7 @@ mixin ChatMessagesNotifierRef
 
 class _ChatMessagesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ChatMessagesNotifier,
           PaginationState<ChatMessage>
         >

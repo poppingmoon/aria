@@ -80,58 +80,6 @@ class ChatRoomMembers extends HookConsumerWidget {
         }
       };
     }, []);
-    if (enableInfiniteScroll) {
-      ref.listen(
-        chatRoomMembersNotifierProvider(
-          account,
-          roomId,
-        ).select((memberships) => memberships.valueOrNull),
-        (prev, next) {
-          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-              ((prev?.isLastLoaded ?? false) &&
-                  (!(next?.isLastLoaded ?? true)))) {
-            Future.delayed(const Duration(milliseconds: 10), () {
-              if (controller.position.extentAfter <
-                      infiniteScrollExtentThreshold ||
-                  (next?.items.length ?? 0) < 20) {
-                ref
-                    .read(
-                      chatRoomMembersNotifierProvider(account, roomId).notifier,
-                    )
-                    .loadMore();
-              }
-            });
-          }
-        },
-      );
-      if (isMyRoom) {
-        ref.listen(
-          chatRoomInvitationsNotifierProvider(
-            account,
-            roomId,
-          ).select((invitations) => invitations.valueOrNull),
-          (prev, next) {
-            if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-                ((prev?.isLastLoaded ?? false) &&
-                    (!(next?.isLastLoaded ?? true)))) {
-              Future.delayed(const Duration(milliseconds: 10), () {
-                if (controller.position.extentAfter <
-                    infiniteScrollExtentThreshold) {
-                  ref
-                      .read(
-                        chatRoomInvitationsNotifierProvider(
-                          account,
-                          roomId,
-                        ).notifier,
-                      )
-                      .loadMore();
-                }
-              });
-            }
-          },
-        );
-      }
-    }
     final theme = Theme.of(context);
 
     return RefreshIndicator(

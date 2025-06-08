@@ -7,7 +7,7 @@ part of 'announcements_notifier_provider.dart';
 // **************************************************************************
 
 String _$announcementsNotifierHash() =>
-    r'76a537d58d0428270fc9f1e13d514588a56be21c';
+    r'9fe22e1a301df5e687f725fa7702c374e8c9c2bc';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,13 +32,13 @@ class _SystemHash {
 
 abstract class _$AnnouncementsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<AnnouncementsResponse>
         > {
   late final Account account;
   late final bool isActive;
 
-  FutureOr<PaginationState<AnnouncementsResponse>> build(
+  Stream<PaginationState<AnnouncementsResponse>> build(
     Account account, {
     bool isActive = true,
   });
@@ -84,7 +84,7 @@ class AnnouncementsNotifierFamily
 /// See also [AnnouncementsNotifier].
 class AnnouncementsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           AnnouncementsNotifier,
           PaginationState<AnnouncementsResponse>
         > {
@@ -121,7 +121,7 @@ class AnnouncementsNotifierProvider
   final bool isActive;
 
   @override
-  FutureOr<PaginationState<AnnouncementsResponse>> runNotifierBuild(
+  Stream<PaginationState<AnnouncementsResponse>> runNotifierBuild(
     covariant AnnouncementsNotifier notifier,
   ) {
     return notifier.build(account, isActive: isActive);
@@ -147,7 +147,7 @@ class AnnouncementsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     AnnouncementsNotifier,
     PaginationState<AnnouncementsResponse>
   >
@@ -176,7 +176,7 @@ class AnnouncementsNotifierProvider
 // ignore: unused_element
 mixin AnnouncementsNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<AnnouncementsResponse>
         > {
   /// The parameter `account` of this provider.
@@ -188,7 +188,7 @@ mixin AnnouncementsNotifierRef
 
 class _AnnouncementsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           AnnouncementsNotifier,
           PaginationState<AnnouncementsResponse>
         >

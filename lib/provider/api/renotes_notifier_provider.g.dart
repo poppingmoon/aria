@@ -6,7 +6,7 @@ part of 'renotes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$renotesNotifierHash() => r'd79ca29020bacdcb89606b11627de02afa70026a';
+String _$renotesNotifierHash() => r'1e28ba79b23698961b5d0ca11daeace007561782';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$RenotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String noteId);
+  Stream<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [RenotesNotifier].
@@ -76,7 +76,7 @@ class RenotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 /// See also [RenotesNotifier].
 class RenotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           RenotesNotifier,
           PaginationState<Note>
         > {
@@ -113,7 +113,7 @@ class RenotesNotifierProvider
   final String noteId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant RenotesNotifier notifier,
   ) {
     return notifier.build(account, noteId);
@@ -139,7 +139,7 @@ class RenotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     RenotesNotifier,
     PaginationState<Note>
   >
@@ -167,7 +167,7 @@ class RenotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin RenotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -177,7 +177,7 @@ mixin RenotesNotifierRef
 
 class _RenotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           RenotesNotifier,
           PaginationState<Note>
         >

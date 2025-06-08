@@ -6,7 +6,7 @@ part of 'reactions_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$reactionsNotifierHash() => r'365c3705e92929ebf0efcc16c25407145c156145';
+String _$reactionsNotifierHash() => r'1f70e350b36096e60e0d6d5133efff6bfc8e71db';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,14 +31,14 @@ class _SystemHash {
 
 abstract class _$ReactionsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<NotesReactionsResponse>
         > {
   late final Account account;
   late final String noteId;
   late final String reaction;
 
-  FutureOr<PaginationState<NotesReactionsResponse>> build(
+  Stream<PaginationState<NotesReactionsResponse>> build(
     Account account,
     String noteId,
     String reaction,
@@ -89,7 +89,7 @@ class ReactionsNotifierFamily
 /// See also [ReactionsNotifier].
 class ReactionsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ReactionsNotifier,
           PaginationState<NotesReactionsResponse>
         > {
@@ -130,7 +130,7 @@ class ReactionsNotifierProvider
   final String reaction;
 
   @override
-  FutureOr<PaginationState<NotesReactionsResponse>> runNotifierBuild(
+  Stream<PaginationState<NotesReactionsResponse>> runNotifierBuild(
     covariant ReactionsNotifier notifier,
   ) {
     return notifier.build(account, noteId, reaction);
@@ -158,7 +158,7 @@ class ReactionsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ReactionsNotifier,
     PaginationState<NotesReactionsResponse>
   >
@@ -189,7 +189,7 @@ class ReactionsNotifierProvider
 // ignore: unused_element
 mixin ReactionsNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<NotesReactionsResponse>
         > {
   /// The parameter `account` of this provider.
@@ -204,7 +204,7 @@ mixin ReactionsNotifierRef
 
 class _ReactionsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ReactionsNotifier,
           PaginationState<NotesReactionsResponse>
         >

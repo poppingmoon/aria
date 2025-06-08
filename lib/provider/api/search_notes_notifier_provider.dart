@@ -13,7 +13,7 @@ part 'search_notes_notifier_provider.g.dart';
 @riverpod
 class SearchNotesNotifier extends _$SearchNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     Account account,
     String query, {
     String? userId,
@@ -21,7 +21,7 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
     bool? localOnly,
     String? sinceId,
     String? untilId,
-  }) async {
+  }) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -29,7 +29,10 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchNotes(untilId: untilId);
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -63,13 +66,18 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

@@ -6,7 +6,7 @@ part of 'favorites_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$favoritesNotifierHash() => r'63492723b4f1f3d766af6b55e65b2ec7783cc95e';
+String _$favoritesNotifierHash() => r'6fd50be5bb7eacd486e5ed5d0dbb345d210d77c3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,12 @@ class _SystemHash {
 
 abstract class _$FavoritesNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<IFavoritesResponse>> {
+        BuildlessAutoDisposeStreamNotifier<
+          PaginationState<IFavoritesResponse>
+        > {
   late final Account account;
 
-  FutureOr<PaginationState<IFavoritesResponse>> build(Account account);
+  Stream<PaginationState<IFavoritesResponse>> build(Account account);
 }
 
 /// See also [FavoritesNotifier].
@@ -77,7 +79,7 @@ class FavoritesNotifierFamily
 /// See also [FavoritesNotifier].
 class FavoritesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           FavoritesNotifier,
           PaginationState<IFavoritesResponse>
         > {
@@ -109,7 +111,7 @@ class FavoritesNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<IFavoritesResponse>> runNotifierBuild(
+  Stream<PaginationState<IFavoritesResponse>> runNotifierBuild(
     covariant FavoritesNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +134,7 @@ class FavoritesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     FavoritesNotifier,
     PaginationState<IFavoritesResponse>
   >
@@ -158,7 +160,7 @@ class FavoritesNotifierProvider
 // ignore: unused_element
 mixin FavoritesNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<IFavoritesResponse>
         > {
   /// The parameter `account` of this provider.
@@ -167,7 +169,7 @@ mixin FavoritesNotifierRef
 
 class _FavoritesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           FavoritesNotifier,
           PaginationState<IFavoritesResponse>
         >

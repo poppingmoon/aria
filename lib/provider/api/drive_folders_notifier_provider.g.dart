@@ -7,7 +7,7 @@ part of 'drive_folders_notifier_provider.dart';
 // **************************************************************************
 
 String _$driveFoldersNotifierHash() =>
-    r'f09699cf4fdee8ab475064df0649339fad36955a';
+    r'83bc84a3be8adf1eb3814aed5564ca6d25b9a19f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,14 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$DriveFoldersNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<DriveFolder>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<DriveFolder>> {
   late final Account account;
   late final String? folderId;
 
-  FutureOr<PaginationState<DriveFolder>> build(
-    Account account,
-    String? folderId,
-  );
+  Stream<PaginationState<DriveFolder>> build(Account account, String? folderId);
 }
 
 /// See also [DriveFoldersNotifier].
@@ -81,7 +78,7 @@ class DriveFoldersNotifierFamily
 /// See also [DriveFoldersNotifier].
 class DriveFoldersNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           DriveFoldersNotifier,
           PaginationState<DriveFolder>
         > {
@@ -118,7 +115,7 @@ class DriveFoldersNotifierProvider
   final String? folderId;
 
   @override
-  FutureOr<PaginationState<DriveFolder>> runNotifierBuild(
+  Stream<PaginationState<DriveFolder>> runNotifierBuild(
     covariant DriveFoldersNotifier notifier,
   ) {
     return notifier.build(account, folderId);
@@ -144,7 +141,7 @@ class DriveFoldersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     DriveFoldersNotifier,
     PaginationState<DriveFolder>
   >
@@ -172,7 +169,7 @@ class DriveFoldersNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin DriveFoldersNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<DriveFolder>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<DriveFolder>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -182,7 +179,7 @@ mixin DriveFoldersNotifierRef
 
 class _DriveFoldersNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           DriveFoldersNotifier,
           PaginationState<DriveFolder>
         >

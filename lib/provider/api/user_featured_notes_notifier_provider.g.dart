@@ -7,7 +7,7 @@ part of 'user_featured_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$userFeaturedNotesNotifierHash() =>
-    r'28621462bba5fffa2d08366db393cc94abaeebb8';
+    r'da412a0c68d28d36460d4cae615b408e42549703';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$UserFeaturedNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String userId);
+  Stream<PaginationState<Note>> build(Account account, String userId);
 }
 
 /// See also [UserFeaturedNotesNotifier].
@@ -78,7 +78,7 @@ class UserFeaturedNotesNotifierFamily
 /// See also [UserFeaturedNotesNotifier].
 class UserFeaturedNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserFeaturedNotesNotifier,
           PaginationState<Note>
         > {
@@ -115,7 +115,7 @@ class UserFeaturedNotesNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant UserFeaturedNotesNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -141,7 +141,7 @@ class UserFeaturedNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserFeaturedNotesNotifier,
     PaginationState<Note>
   >
@@ -169,7 +169,7 @@ class UserFeaturedNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserFeaturedNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin UserFeaturedNotesNotifierRef
 
 class _UserFeaturedNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserFeaturedNotesNotifier,
           PaginationState<Note>
         >

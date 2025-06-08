@@ -6,7 +6,7 @@ part of 'tag_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagNotesNotifierHash() => r'6ce3571990427b008bd2f168af102093bc91f68f';
+String _$tagNotesNotifierHash() => r'ab10969bce3eb3c18d328189bbbba609b830023c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,13 +30,13 @@ class _SystemHash {
 }
 
 abstract class _$TagNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String tag;
   late final String? sinceId;
   late final String? untilId;
 
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     Account account,
     String tag, {
     String? sinceId,
@@ -98,7 +98,7 @@ class TagNotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 /// See also [TagNotesNotifier].
 class TagNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           TagNotesNotifier,
           PaginationState<Note>
         > {
@@ -147,7 +147,7 @@ class TagNotesNotifierProvider
   final String? untilId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant TagNotesNotifier notifier,
   ) {
     return notifier.build(account, tag, sinceId: sinceId, untilId: untilId);
@@ -177,7 +177,7 @@ class TagNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     TagNotesNotifier,
     PaginationState<Note>
   >
@@ -209,7 +209,7 @@ class TagNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin TagNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -225,7 +225,7 @@ mixin TagNotesNotifierRef
 
 class _TagNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           TagNotesNotifier,
           PaginationState<Note>
         >

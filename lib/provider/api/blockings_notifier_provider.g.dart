@@ -6,7 +6,7 @@ part of 'blockings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$blockingsNotifierHash() => r'aaf31810c3457cb16aacf0110c674a8af9684a46';
+String _$blockingsNotifierHash() => r'7b434f8b5e089cf71a34f0a794df3aeec351b83a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$BlockingsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Blocking>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Blocking>> {
   late final Account account;
 
-  FutureOr<PaginationState<Blocking>> build(Account account);
+  Stream<PaginationState<Blocking>> build(Account account);
 }
 
 /// See also [BlockingsNotifier].
@@ -76,7 +76,7 @@ class BlockingsNotifierFamily
 /// See also [BlockingsNotifier].
 class BlockingsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           BlockingsNotifier,
           PaginationState<Blocking>
         > {
@@ -108,7 +108,7 @@ class BlockingsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<Blocking>> runNotifierBuild(
+  Stream<PaginationState<Blocking>> runNotifierBuild(
     covariant BlockingsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -131,7 +131,7 @@ class BlockingsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     BlockingsNotifier,
     PaginationState<Blocking>
   >
@@ -156,14 +156,14 @@ class BlockingsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin BlockingsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Blocking>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Blocking>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _BlockingsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           BlockingsNotifier,
           PaginationState<Blocking>
         >

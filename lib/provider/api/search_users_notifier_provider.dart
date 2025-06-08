@@ -12,11 +12,11 @@ part 'search_users_notifier_provider.g.dart';
 @riverpod
 class SearchUsersNotifier extends _$SearchUsersNotifier {
   @override
-  FutureOr<PaginationState<UserDetailed>> build(
+  Stream<PaginationState<UserDetailed>> build(
     Account account,
     String query, {
     Origin? userOrigin,
-  }) async {
+  }) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -24,7 +24,10 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchUsers();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -50,13 +53,18 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchUsers(offset: value.items.length);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

@@ -10,12 +10,15 @@ part 'announcements_notifier_provider.g.dart';
 @riverpod
 class AnnouncementsNotifier extends _$AnnouncementsNotifier {
   @override
-  FutureOr<PaginationState<AnnouncementsResponse>> build(
+  Stream<PaginationState<AnnouncementsResponse>> build(
     Account account, {
     bool isActive = true,
-  }) async {
+  }) async* {
     final response = await _fetchAnnouncements();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
@@ -41,17 +44,22 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchAnnouncements(
         untilId: value.items.lastOrNull?.id,
         offset: value.items.length,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   Future<void> readAnnouncement(String announcementId) async {

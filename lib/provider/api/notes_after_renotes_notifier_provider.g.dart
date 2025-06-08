@@ -7,7 +7,7 @@ part of 'notes_after_renotes_notifier_provider.dart';
 // **************************************************************************
 
 String _$notesAfterRenotesNotifierHash() =>
-    r'93c5a3eaa1715bde75118db175e1d64d2ff9fd17';
+    r'efc284c1f1a213389df352a48c5f6261bca08dcb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$NotesAfterRenotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String noteId);
+  Stream<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [NotesAfterRenotesNotifier].
@@ -78,7 +78,7 @@ class NotesAfterRenotesNotifierFamily
 /// See also [NotesAfterRenotesNotifier].
 class NotesAfterRenotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           NotesAfterRenotesNotifier,
           PaginationState<Note>
         > {
@@ -115,7 +115,7 @@ class NotesAfterRenotesNotifierProvider
   final String noteId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant NotesAfterRenotesNotifier notifier,
   ) {
     return notifier.build(account, noteId);
@@ -141,7 +141,7 @@ class NotesAfterRenotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     NotesAfterRenotesNotifier,
     PaginationState<Note>
   >
@@ -169,7 +169,7 @@ class NotesAfterRenotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin NotesAfterRenotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin NotesAfterRenotesNotifierRef
 
 class _NotesAfterRenotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           NotesAfterRenotesNotifier,
           PaginationState<Note>
         >

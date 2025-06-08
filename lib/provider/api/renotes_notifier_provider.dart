@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,9 +13,12 @@ part 'renotes_notifier_provider.g.dart';
 @riverpod
 class RenotesNotifier extends _$RenotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(Account account, String noteId) async {
+  Stream<PaginationState<Note>> build(Account account, String noteId) async* {
     final response = await _fetchNotes();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
@@ -35,13 +40,18 @@ class RenotesNotifier extends _$RenotesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

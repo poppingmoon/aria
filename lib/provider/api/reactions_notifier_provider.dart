@@ -10,13 +10,16 @@ part 'reactions_notifier_provider.g.dart';
 @riverpod
 class ReactionsNotifier extends _$ReactionsNotifier {
   @override
-  FutureOr<PaginationState<NotesReactionsResponse>> build(
+  Stream<PaginationState<NotesReactionsResponse>> build(
     Account account,
     String noteId,
     String reaction,
-  ) async {
+  ) async* {
     final response = await _fetchReactions();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<NotesReactionsResponse>> _fetchReactions({String? untilId}) {
@@ -42,15 +45,20 @@ class ReactionsNotifier extends _$ReactionsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchReactions(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

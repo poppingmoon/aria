@@ -11,12 +11,15 @@ part 'mentions_notifier_provider.g.dart';
 @riverpod
 class MentionsNotifier extends _$MentionsNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     Account account, [
     bool specified = false,
-  ]) async {
+  ]) async* {
     final response = await _fetchNotes();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
@@ -41,13 +44,18 @@ class MentionsNotifier extends _$MentionsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

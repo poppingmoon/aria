@@ -6,7 +6,7 @@ part of 'mutings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mutingsNotifierHash() => r'92fc7ab2e0152e40bcf4e285375c58ece0b1aa29';
+String _$mutingsNotifierHash() => r'5a178415cadf778585573ee220ae7307ac245115';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$MutingsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Muting>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Muting>> {
   late final Account account;
 
-  FutureOr<PaginationState<Muting>> build(Account account);
+  Stream<PaginationState<Muting>> build(Account account);
 }
 
 /// See also [MutingsNotifier].
@@ -76,7 +76,7 @@ class MutingsNotifierFamily
 /// See also [MutingsNotifier].
 class MutingsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           MutingsNotifier,
           PaginationState<Muting>
         > {
@@ -108,7 +108,7 @@ class MutingsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<Muting>> runNotifierBuild(
+  Stream<PaginationState<Muting>> runNotifierBuild(
     covariant MutingsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -131,7 +131,7 @@ class MutingsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     MutingsNotifier,
     PaginationState<Muting>
   >
@@ -156,14 +156,14 @@ class MutingsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin MutingsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Muting>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Muting>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _MutingsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           MutingsNotifier,
           PaginationState<Muting>
         >

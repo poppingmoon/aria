@@ -12,7 +12,7 @@ part 'user_pages_notifier_provider.g.dart';
 @riverpod
 class UserPagesNotifier extends _$UserPagesNotifier {
   @override
-  FutureOr<PaginationState<Page>> build(Account account, String userId) async {
+  Stream<PaginationState<Page>> build(Account account, String userId) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -20,7 +20,10 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchPages();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -43,13 +46,18 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPages(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

@@ -6,7 +6,7 @@ part of 'user_plays_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userPlaysNotifierHash() => r'25ce9bf2974a84281b18facaf02b6af266dd700d';
+String _$userPlaysNotifierHash() => r'106a3c576cc3456df0acdd90c46b326bd1289db1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$UserPlaysNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Flash>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Flash>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Flash>> build(Account account, String userId);
+  Stream<PaginationState<Flash>> build(Account account, String userId);
 }
 
 /// See also [UserPlaysNotifier].
@@ -77,7 +77,7 @@ class UserPlaysNotifierFamily
 /// See also [UserPlaysNotifier].
 class UserPlaysNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserPlaysNotifier,
           PaginationState<Flash>
         > {
@@ -114,7 +114,7 @@ class UserPlaysNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<Flash>> runNotifierBuild(
+  Stream<PaginationState<Flash>> runNotifierBuild(
     covariant UserPlaysNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -140,7 +140,7 @@ class UserPlaysNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserPlaysNotifier,
     PaginationState<Flash>
   >
@@ -168,7 +168,7 @@ class UserPlaysNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserPlaysNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Flash>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Flash>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -178,7 +178,7 @@ mixin UserPlaysNotifierRef
 
 class _UserPlaysNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserPlaysNotifier,
           PaginationState<Flash>
         >

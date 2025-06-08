@@ -24,7 +24,7 @@ String _toCrockfordsBase32(BigInt i) {
 enum IdGenMethod { aid, aidx, meid, meidg, ulid, objectid }
 
 class Id {
-  Id({required this.method, required this.date, this.random = ''});
+  const Id({required this.method, required this.date, this.random = ''});
 
   final IdGenMethod method;
   final DateTime date;

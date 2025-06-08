@@ -7,7 +7,7 @@ part of 'renote_mutings_notifier_provider.dart';
 // **************************************************************************
 
 String _$renoteMutingsNotifierHash() =>
-    r'4deb2e3748aea77506a83110fccbb3726eca624e';
+    r'126c882bbf5bf8902200669b33fe8f8aefd7f717';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$RenoteMutingsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<RenoteMuting>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<RenoteMuting>> {
   late final Account account;
 
-  FutureOr<PaginationState<RenoteMuting>> build(Account account);
+  Stream<PaginationState<RenoteMuting>> build(Account account);
 }
 
 /// See also [RenoteMutingsNotifier].
@@ -77,7 +77,7 @@ class RenoteMutingsNotifierFamily
 /// See also [RenoteMutingsNotifier].
 class RenoteMutingsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           RenoteMutingsNotifier,
           PaginationState<RenoteMuting>
         > {
@@ -109,7 +109,7 @@ class RenoteMutingsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<RenoteMuting>> runNotifierBuild(
+  Stream<PaginationState<RenoteMuting>> runNotifierBuild(
     covariant RenoteMutingsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +132,7 @@ class RenoteMutingsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     RenoteMutingsNotifier,
     PaginationState<RenoteMuting>
   >
@@ -157,14 +157,14 @@ class RenoteMutingsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin RenoteMutingsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<RenoteMuting>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<RenoteMuting>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _RenoteMutingsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           RenoteMutingsNotifier,
           PaginationState<RenoteMuting>
         >

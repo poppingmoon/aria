@@ -7,7 +7,7 @@ part of 'liked_gallery_posts_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedGalleryPostsNotifierHash() =>
-    r'68d321907cbf36ba3fa2e3ac9a60f372c45f232a';
+    r'd0a141660ebfba6c2a67de8d6aec5e392e8c3662';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,12 +32,12 @@ class _SystemHash {
 
 abstract class _$LikedGalleryPostsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<IGalleryLikesResponse>
         > {
   late final Account account;
 
-  FutureOr<PaginationState<IGalleryLikesResponse>> build(Account account);
+  Stream<PaginationState<IGalleryLikesResponse>> build(Account account);
 }
 
 /// See also [LikedGalleryPostsNotifier].
@@ -80,7 +80,7 @@ class LikedGalleryPostsNotifierFamily
 /// See also [LikedGalleryPostsNotifier].
 class LikedGalleryPostsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           LikedGalleryPostsNotifier,
           PaginationState<IGalleryLikesResponse>
         > {
@@ -112,7 +112,7 @@ class LikedGalleryPostsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<IGalleryLikesResponse>> runNotifierBuild(
+  Stream<PaginationState<IGalleryLikesResponse>> runNotifierBuild(
     covariant LikedGalleryPostsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -135,7 +135,7 @@ class LikedGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     LikedGalleryPostsNotifier,
     PaginationState<IGalleryLikesResponse>
   >
@@ -162,7 +162,7 @@ class LikedGalleryPostsNotifierProvider
 // ignore: unused_element
 mixin LikedGalleryPostsNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<IGalleryLikesResponse>
         > {
   /// The parameter `account` of this provider.
@@ -171,7 +171,7 @@ mixin LikedGalleryPostsNotifierRef
 
 class _LikedGalleryPostsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           LikedGalleryPostsNotifier,
           PaginationState<IGalleryLikesResponse>
         >

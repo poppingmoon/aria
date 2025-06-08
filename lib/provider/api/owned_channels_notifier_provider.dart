@@ -10,9 +10,12 @@ part 'owned_channels_notifier_provider.g.dart';
 @riverpod
 class OwnedChannelsNotifier extends _$OwnedChannelsNotifier {
   @override
-  FutureOr<PaginationState<CommunityChannel>> build(Account account) async {
+  Stream<PaginationState<CommunityChannel>> build(Account account) async* {
     final response = await _fetchChannels();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<CommunityChannel>> _fetchChannels({String? untilId}) async {
@@ -31,15 +34,20 @@ class OwnedChannelsNotifier extends _$OwnedChannelsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchChannels(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

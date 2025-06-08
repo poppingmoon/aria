@@ -10,14 +10,17 @@ part 'users_notifier_provider.g.dart';
 @riverpod
 class UsersNotifier extends _$UsersNotifier {
   @override
-  FutureOr<PaginationState<UserDetailed>> build(
+  Stream<PaginationState<UserDetailed>> build(
     Account account, {
     UsersSortType? sort,
     Origin? userOrigin,
     String? host,
-  }) async {
+  }) async* {
     final response = await _fetchUsers();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<UserDetailed>> _fetchUsers({int? offset}) {
@@ -42,13 +45,18 @@ class UsersNotifier extends _$UsersNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchUsers(offset: value.items.length);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

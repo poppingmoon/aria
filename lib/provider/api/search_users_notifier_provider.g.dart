@@ -7,7 +7,7 @@ part of 'search_users_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchUsersNotifierHash() =>
-    r'7b1e23b43a692f47357451b82c59e4f204c7c1de';
+    r'cf3b8a789b2b292f6237473713e0db80777cc75e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,12 +31,12 @@ class _SystemHash {
 }
 
 abstract class _$SearchUsersNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<UserDetailed>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<UserDetailed>> {
   late final Account account;
   late final String query;
   late final Origin? userOrigin;
 
-  FutureOr<PaginationState<UserDetailed>> build(
+  Stream<PaginationState<UserDetailed>> build(
     Account account,
     String query, {
     Origin? userOrigin,
@@ -91,7 +91,7 @@ class SearchUsersNotifierFamily
 /// See also [SearchUsersNotifier].
 class SearchUsersNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           SearchUsersNotifier,
           PaginationState<UserDetailed>
         > {
@@ -135,7 +135,7 @@ class SearchUsersNotifierProvider
   final Origin? userOrigin;
 
   @override
-  FutureOr<PaginationState<UserDetailed>> runNotifierBuild(
+  Stream<PaginationState<UserDetailed>> runNotifierBuild(
     covariant SearchUsersNotifier notifier,
   ) {
     return notifier.build(account, query, userOrigin: userOrigin);
@@ -163,7 +163,7 @@ class SearchUsersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     SearchUsersNotifier,
     PaginationState<UserDetailed>
   >
@@ -193,7 +193,7 @@ class SearchUsersNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin SearchUsersNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<UserDetailed>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<UserDetailed>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -206,7 +206,7 @@ mixin SearchUsersNotifierRef
 
 class _SearchUsersNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           SearchUsersNotifier,
           PaginationState<UserDetailed>
         >

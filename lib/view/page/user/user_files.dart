@@ -59,27 +59,6 @@ class UserFiles extends HookConsumerWidget {
         }
       };
     }, []);
-    if (enableInfiniteScroll) {
-      ref.listen(
-        timelineNotesNotifierProvider(
-          tabSettings,
-        ).select((notes) => notes.valueOrNull),
-        (prev, next) {
-          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-              ((prev?.isLastLoaded ?? false) &&
-                  (!(next?.isLastLoaded ?? true)))) {
-            Future.delayed(const Duration(milliseconds: 10), () {
-              if (controller.position.extentAfter <
-                  infiniteScrollExtentThreshold) {
-                ref
-                    .read(timelineNotesNotifierProvider(tabSettings).notifier)
-                    .loadMore();
-              }
-            });
-          }
-        },
-      );
-    }
 
     return RefreshIndicator(
       onRefresh: () =>

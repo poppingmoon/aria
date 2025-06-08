@@ -7,7 +7,7 @@ part of 'following_channels_notifier_provider.dart';
 // **************************************************************************
 
 String _$followingChannelsNotifierHash() =>
-    r'847b810bf9a101b133b751f47b144bee8cf191e3';
+    r'37bf1de0aa0a402f017b39ac8286258a15420493';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,10 +32,10 @@ class _SystemHash {
 
 abstract class _$FollowingChannelsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
+        BuildlessAutoDisposeStreamNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
 
-  FutureOr<PaginationState<CommunityChannel>> build(Account account);
+  Stream<PaginationState<CommunityChannel>> build(Account account);
 }
 
 /// See also [FollowingChannelsNotifier].
@@ -78,7 +78,7 @@ class FollowingChannelsNotifierFamily
 /// See also [FollowingChannelsNotifier].
 class FollowingChannelsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           FollowingChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
@@ -110,7 +110,7 @@ class FollowingChannelsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<CommunityChannel>> runNotifierBuild(
+  Stream<PaginationState<CommunityChannel>> runNotifierBuild(
     covariant FollowingChannelsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -133,7 +133,7 @@ class FollowingChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     FollowingChannelsNotifier,
     PaginationState<CommunityChannel>
   >
@@ -159,14 +159,14 @@ class FollowingChannelsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin FollowingChannelsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<CommunityChannel>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<CommunityChannel>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _FollowingChannelsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           FollowingChannelsNotifier,
           PaginationState<CommunityChannel>
         >

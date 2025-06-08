@@ -6,7 +6,7 @@ part of 'role_users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roleUsersNotifierHash() => r'eab591ce39fe9093e7a29855850a6b65693e8db5';
+String _$roleUsersNotifierHash() => r'51c3f9d3b0b4b5f656629c9917b23e362e833ad3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,13 @@ class _SystemHash {
 
 abstract class _$RoleUsersNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<RolesUsersResponse>> {
+        BuildlessAutoDisposeStreamNotifier<
+          PaginationState<RolesUsersResponse>
+        > {
   late final Account account;
   late final String roleId;
 
-  FutureOr<PaginationState<RolesUsersResponse>> build(
+  Stream<PaginationState<RolesUsersResponse>> build(
     Account account,
     String roleId,
   );
@@ -81,7 +83,7 @@ class RoleUsersNotifierFamily
 /// See also [RoleUsersNotifier].
 class RoleUsersNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           RoleUsersNotifier,
           PaginationState<RolesUsersResponse>
         > {
@@ -118,7 +120,7 @@ class RoleUsersNotifierProvider
   final String roleId;
 
   @override
-  FutureOr<PaginationState<RolesUsersResponse>> runNotifierBuild(
+  Stream<PaginationState<RolesUsersResponse>> runNotifierBuild(
     covariant RoleUsersNotifier notifier,
   ) {
     return notifier.build(account, roleId);
@@ -144,7 +146,7 @@ class RoleUsersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     RoleUsersNotifier,
     PaginationState<RolesUsersResponse>
   >
@@ -173,7 +175,7 @@ class RoleUsersNotifierProvider
 // ignore: unused_element
 mixin RoleUsersNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<RolesUsersResponse>
         > {
   /// The parameter `account` of this provider.
@@ -185,7 +187,7 @@ mixin RoleUsersNotifierRef
 
 class _RoleUsersNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           RoleUsersNotifier,
           PaginationState<RolesUsersResponse>
         >

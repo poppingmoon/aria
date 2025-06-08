@@ -98,35 +98,6 @@ class ChatListView extends HookConsumerWidget {
         }
       };
     }, []);
-    if (enableInfiniteScroll) {
-      ref.listen(
-        chatMessagesNotifierProvider(
-          account,
-          userId: userId,
-          roomId: roomId,
-        ).select((messages) => messages.valueOrNull),
-        (prev, next) {
-          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-              ((prev?.isLastLoaded ?? false) &&
-                  (!(next?.isLastLoaded ?? true)))) {
-            Future.delayed(const Duration(milliseconds: 10), () {
-              if (controller.position.extentAfter <
-                  infiniteScrollExtentThreshold) {
-                ref
-                    .read(
-                      chatMessagesNotifierProvider(
-                        account,
-                        userId: userId,
-                        roomId: roomId,
-                      ).notifier,
-                    )
-                    .loadMore();
-              }
-            });
-          }
-        },
-      );
-    }
     ref.listen(
       chatStreamNotifierProvider(account, userId: userId, roomId: roomId),
       (_, next) => next.whenData((event) {

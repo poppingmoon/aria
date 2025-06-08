@@ -6,7 +6,7 @@ part of 'clip_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clipNotesNotifierHash() => r'93439d458ba64b92f8440ef6c43d885bdd0c81e9';
+String _$clipNotesNotifierHash() => r'1464d7186ff40c8a18e9dac3d4d7f95155049ece';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$ClipNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String clipId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String clipId);
+  Stream<PaginationState<Note>> build(Account account, String clipId);
 }
 
 /// See also [ClipNotesNotifier].
@@ -77,7 +77,7 @@ class ClipNotesNotifierFamily
 /// See also [ClipNotesNotifier].
 class ClipNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ClipNotesNotifier,
           PaginationState<Note>
         > {
@@ -114,7 +114,7 @@ class ClipNotesNotifierProvider
   final String clipId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant ClipNotesNotifier notifier,
   ) {
     return notifier.build(account, clipId);
@@ -140,7 +140,7 @@ class ClipNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ClipNotesNotifier,
     PaginationState<Note>
   >
@@ -168,7 +168,7 @@ class ClipNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ClipNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -178,7 +178,7 @@ mixin ClipNotesNotifierRef
 
 class _ClipNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ClipNotesNotifier,
           PaginationState<Note>
         >

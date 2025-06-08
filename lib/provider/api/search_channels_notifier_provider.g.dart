@@ -7,7 +7,7 @@ part of 'search_channels_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchChannelsNotifierHash() =>
-    r'e449911361ba1e292cf8aff909a6a0161247ae46';
+    r'a55746109ac5b62aee0f55e499ae0c872309add7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,12 +32,12 @@ class _SystemHash {
 
 abstract class _$SearchChannelsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
+        BuildlessAutoDisposeStreamNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
   late final String query;
   late final bool includeDescription;
 
-  FutureOr<PaginationState<CommunityChannel>> build(
+  Stream<PaginationState<CommunityChannel>> build(
     Account account,
     String query, {
     bool includeDescription = true,
@@ -96,7 +96,7 @@ class SearchChannelsNotifierFamily
 /// See also [SearchChannelsNotifier].
 class SearchChannelsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           SearchChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
@@ -140,7 +140,7 @@ class SearchChannelsNotifierProvider
   final bool includeDescription;
 
   @override
-  FutureOr<PaginationState<CommunityChannel>> runNotifierBuild(
+  Stream<PaginationState<CommunityChannel>> runNotifierBuild(
     covariant SearchChannelsNotifier notifier,
   ) {
     return notifier.build(
@@ -172,7 +172,7 @@ class SearchChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     SearchChannelsNotifier,
     PaginationState<CommunityChannel>
   >
@@ -202,7 +202,7 @@ class SearchChannelsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin SearchChannelsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<CommunityChannel>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<CommunityChannel>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -215,7 +215,7 @@ mixin SearchChannelsNotifierRef
 
 class _SearchChannelsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           SearchChannelsNotifier,
           PaginationState<CommunityChannel>
         >

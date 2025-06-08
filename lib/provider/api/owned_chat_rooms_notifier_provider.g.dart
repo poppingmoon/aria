@@ -7,7 +7,7 @@ part of 'owned_chat_rooms_notifier_provider.dart';
 // **************************************************************************
 
 String _$ownedChatRoomsNotifierHash() =>
-    r'8ee4cd478531009c2187f6d62cfd31a1a0bdc2e8';
+    r'f18a82e9cf9131e807455a53b3245e64a9493436';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$OwnedChatRoomsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<ChatRoom>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatRoom>> {
   late final Account account;
 
-  FutureOr<PaginationState<ChatRoom>> build(Account account);
+  Stream<PaginationState<ChatRoom>> build(Account account);
 }
 
 /// See also [OwnedChatRoomsNotifier].
@@ -77,7 +77,7 @@ class OwnedChatRoomsNotifierFamily
 /// See also [OwnedChatRoomsNotifier].
 class OwnedChatRoomsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           OwnedChatRoomsNotifier,
           PaginationState<ChatRoom>
         > {
@@ -109,7 +109,7 @@ class OwnedChatRoomsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<ChatRoom>> runNotifierBuild(
+  Stream<PaginationState<ChatRoom>> runNotifierBuild(
     covariant OwnedChatRoomsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +132,7 @@ class OwnedChatRoomsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     OwnedChatRoomsNotifier,
     PaginationState<ChatRoom>
   >
@@ -157,14 +157,14 @@ class OwnedChatRoomsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin OwnedChatRoomsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<ChatRoom>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatRoom>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _OwnedChatRoomsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           OwnedChatRoomsNotifier,
           PaginationState<ChatRoom>
         >
