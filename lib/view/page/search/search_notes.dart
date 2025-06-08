@@ -73,20 +73,48 @@ class SearchNotes extends HookConsumerWidget {
             ),
           )
         : null;
+    final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
     return PaginatedListView(
       header: SliverList.list(
         children: [
+          const SizedBox(height: 8.0),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
               child: ExpansionTile(
+                leading: Stack(
+                  children: [
+                    const Icon(Icons.tune),
+                    if (userId.value != null ||
+                        channelId.value != null ||
+                        localOnly.value ||
+                        sinceDate.value != null ||
+                        untilDate.value != null)
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: theme.colorScheme.primary,
+                        ),
+                        child: const SizedBox(height: 12.0, width: 12.0),
+                      ),
+                  ],
+                ),
                 title: Text(t.misskey.options),
                 initiallyExpanded:
                     this.userId != null || this.channelId != null,
+                backgroundColor: theme.colorScheme.surface,
+                collapsedBackgroundColor: theme.colorScheme.surface,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                collapsedShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
                 children: [
+                  const Divider(height: 1.0),
                   SwitchListTile(
                     title: Text(t.misskey.localOnly),
                     value: localOnly.value,
