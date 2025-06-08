@@ -1,8 +1,8 @@
 import 'package:kana_kit/kana_kit.dart';
 
-String safeToHiragana(String input) {
+String safeToKatakana(String input) {
   try {
-    return const KanaKit().toHiragana(input);
+    return const KanaKit().toKatakana(input);
   } catch (_) {
     return input;
   }

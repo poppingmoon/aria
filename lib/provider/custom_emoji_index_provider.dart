@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../util/safe_to_hiragana.dart';
+import '../extension/string_extension.dart';
+import '../util/safe_to_katakana.dart';
 import 'emojis_notifier_provider.dart';
 
 part 'custom_emoji_index_provider.g.dart';
@@ -13,13 +14,15 @@ final _separators = RegExp('[_+-]+');
 Map<String, Set<Emoji>> _buildCustomEmojiIndex(Iterable<Emoji> emojis) {
   final index = <String, Set<Emoji>>{};
   for (final emoji in emojis) {
-    index.putIfAbsent(emoji.name, () => {}).add(emoji);
-    final kanaName = safeToHiragana(emoji.name.replaceAll(_separators, ''));
+    final name = emoji.name.toLowerCase();
+    index.putIfAbsent(name, () => {}).add(emoji);
+    final kanaName = safeToKatakana(name).replaceAll(_separators, '');
     index.putIfAbsent(kanaName, () => {}).add(emoji);
     for (final alias in emoji.aliases) {
       if (alias.isNotEmpty) {
-        index.putIfAbsent(alias, () => {}).add(emoji);
-        final kanaAlias = safeToHiragana(alias.replaceAll(_separators, ''));
+        final hankakuAlias = alias.toHankaku().toLowerCase();
+        index.putIfAbsent(hankakuAlias, () => {}).add(emoji);
+        final kanaAlias = safeToKatakana(hankakuAlias);
         index.putIfAbsent(kanaAlias, () => {}).add(emoji);
       }
     }
