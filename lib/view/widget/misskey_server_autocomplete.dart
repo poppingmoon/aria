@@ -1,17 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/search_misskey_servers_provider.dart';
 import '../../util/punycode.dart';
 
-class MisskeyServerAutocomplete extends HookConsumerWidget {
+class MisskeyServerAutocomplete extends ConsumerWidget {
   const MisskeyServerAutocomplete({
     super.key,
     required this.controller,
@@ -27,8 +23,6 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final textFieldKey = useMemoized(() => GlobalKey());
-
     return TextFieldTapRegion(
       onTapOutside: (_) => focusNode.unfocus(),
       child: Shortcuts(
@@ -44,7 +38,6 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
           },
           fieldViewBuilder: (context, textEditingController, focusNode, _) =>
               TextField(
-                key: textFieldKey,
                 controller: textEditingController,
                 focusNode: focusNode,
                 decoration: InputDecoration(
@@ -137,30 +130,27 @@ class MisskeyServerAutocomplete extends HookConsumerWidget {
             alignment: AlignmentDirectional.topStart,
             child: Material(
               elevation: 4.0,
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(24.0),
+              ),
+              clipBehavior: Clip.hardEdge,
               child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: 200.0,
-                  maxWidth:
-                      (textFieldKey.currentContext?.findRenderObject()
-                              as RenderBox?)
-                          ?.size
-                          .width ??
-                      min(MediaQuery.sizeOf(context).width, maxContentWidth) -
-                          64.0,
-                ),
-                // Use `CustomScrollView` instead of `ListView` because
-                // `ListView` shows white space on top of the options
-                // for mobile devices.
-                child: CustomScrollView(
-                  slivers: [
-                    SliverList.builder(
-                      itemBuilder: (context, index) => ListTile(
-                        title: Text(options.elementAt(index)),
-                        onTap: () => onSelected(options.elementAt(index)),
-                      ),
-                      itemCount: options.length,
-                    ),
-                  ],
+                constraints: const BoxConstraints(maxHeight: 200.0),
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  removeBottom: true,
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: options
+                        .map(
+                          (option) => ListTile(
+                            title: Text(option),
+                            onTap: () => onSelected(option),
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
             ),

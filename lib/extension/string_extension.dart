@@ -6,4 +6,11 @@ extension StringExtension on String {
   String replaceLineBreaks() {
     return replaceAll('\n', ' ');
   }
+
+  String toHankaku() {
+    return replaceAllMapped(
+      RegExp('[Ａ-Ｚａ-ｚ０-９]'),
+      (match) => String.fromCharCode(match[0]!.codeUnitAt(0) - 65248),
+    );
+  }
 }

@@ -1,11 +1,8 @@
-import 'dart:math';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 
@@ -135,7 +132,6 @@ class _Autocomplete extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textFieldKey = useMemoized(() => GlobalKey());
     final focusNode = useFocusNode();
 
     return RawAutocomplete(
@@ -153,40 +149,38 @@ class _Autocomplete extends HookWidget {
       },
       fieldViewBuilder: (context, textEditingController, focusNode, _) =>
           TextField(
-            key: textFieldKey,
             controller: textEditingController,
             focusNode: focusNode,
             decoration: decoration,
             autofocus: true,
             onSubmitted: (value) => context.pop(value),
             textInputAction: TextInputAction.done,
+            onTapOutside: (_) => focusNode.unfocus(),
           ),
-      optionsViewBuilder: (context, onSelected, options) {
-        final maxWidth =
-            (textFieldKey.currentContext?.findRenderObject() as RenderBox?)
-                ?.size
-                .width ??
-            min(MediaQuery.sizeOf(context).width, maxContentWidth) - 64.0;
-        return Align(
-          alignment: AlignmentDirectional.topStart,
-          child: Material(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: 300.0, maxWidth: maxWidth),
-              child: ListView(
-                shrinkWrap: true,
-                children: options
-                    .map(
-                      (option) => ListTile(
-                        title: Text(option),
-                        onTap: () => onSelected(option),
-                      ),
-                    )
-                    .toList(),
-              ),
+      optionsViewBuilder: (context, onSelected, options) => Align(
+        alignment: AlignmentDirectional.topStart,
+        child: Material(
+          elevation: 4.0,
+          borderRadius: const BorderRadius.vertical(
+            bottom: Radius.circular(24.0),
+          ),
+          clipBehavior: Clip.hardEdge,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 300.0),
+            child: ListView(
+              shrinkWrap: true,
+              children: options
+                  .map(
+                    (option) => ListTile(
+                      title: Text(option),
+                      onTap: () => onSelected(option),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

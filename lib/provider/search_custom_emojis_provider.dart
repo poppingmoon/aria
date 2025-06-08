@@ -2,7 +2,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../util/safe_to_hiragana.dart';
+import '../extension/string_extension.dart';
+import '../util/safe_to_katakana.dart';
 import 'custom_emoji_index_provider.dart';
 
 part 'search_custom_emojis_provider.g.dart';
@@ -19,14 +20,11 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
     return {};
   }
   const maxEmojis = 50;
-  final hankakuQuery = query.replaceAllMapped(
-    RegExp('[Ａ-Ｚａ-ｚ０-９]'),
-    (match) => String.fromCharCode(match[0]!.codeUnitAt(0) - 65248),
-  );
-  final hiraganaQuery = safeToHiragana(hankakuQuery);
+  final hankakuQuery = query.toHankaku().toLowerCase();
+  final kanaQuery = safeToKatakana(hankakuQuery);
   final result = {
     ...?customEmojiIndex[hankakuQuery],
-    ...?customEmojiIndex[hiraganaQuery],
+    ...?customEmojiIndex[kanaQuery],
   };
   if (result.length >= maxEmojis) {
     return result;
@@ -38,7 +36,7 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
         if (result.length >= maxEmojis) {
           return result;
         }
-      } else if (entry.key.startsWith(hiraganaQuery)) {
+      } else if (entry.key.startsWith(kanaQuery)) {
         result.addAll(entry.value);
         if (result.length >= maxEmojis) {
           return result;
@@ -52,7 +50,7 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
         if (result.length >= maxEmojis) {
           return result;
         }
-      } else if (entry.key.contains(hiraganaQuery)) {
+      } else if (entry.key.contains(kanaQuery)) {
         result.addAll(entry.value);
         if (result.length >= maxEmojis) {
           return result;
