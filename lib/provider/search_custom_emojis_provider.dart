@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../extension/string_extension.dart';
 import '../util/safe_to_hiragana.dart';
 import 'custom_emoji_index_provider.dart';
 
@@ -19,10 +20,7 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
     return {};
   }
   const maxEmojis = 50;
-  final hankakuQuery = query.replaceAllMapped(
-    RegExp('[Ａ-Ｚａ-ｚ０-９]'),
-    (match) => String.fromCharCode(match[0]!.codeUnitAt(0) - 65248),
-  );
+  final hankakuQuery = query.toHankaku();
   final hiraganaQuery = safeToHiragana(hankakuQuery);
   final result = {
     ...?customEmojiIndex[hankakuQuery],

@@ -7,7 +7,7 @@ part of 'search_custom_emojis_provider.dart';
 // **************************************************************************
 
 String _$searchCustomEmojisHash() =>
-    r'90b7d6e0f82b378a19bb71937eb1cb2b8eed747f';
+    r'64475f170aa9933674d4a951f02e5e6ff7759983';
 
 /// Copied from Dart SDK
 class _SystemHash {
