@@ -924,9 +924,13 @@ class _NotificationTile extends ConsumerWidget {
                                       account: account,
                                       userId: user!.id,
                                     ),
-                                    child: UsernameWidget(
-                                      account: account,
-                                      user: user!,
+                                    child: DefaultTextStyle.merge(
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                      child: UsernameWidget(
+                                        account: account,
+                                        user: user!,
+                                      ),
                                     ),
                                   )
                                 : null),
