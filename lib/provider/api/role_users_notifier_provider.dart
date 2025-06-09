@@ -10,12 +10,15 @@ part 'role_users_notifier_provider.g.dart';
 @riverpod
 class RoleUsersNotifier extends _$RoleUsersNotifier {
   @override
-  FutureOr<PaginationState<RolesUsersResponse>> build(
+  Stream<PaginationState<RolesUsersResponse>> build(
     Account account,
     String roleId,
-  ) async {
+  ) async* {
     final response = await _fetchUsers();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<RolesUsersResponse>> _fetchUsers({String? untilId}) {
@@ -33,13 +36,18 @@ class RoleUsersNotifier extends _$RoleUsersNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchUsers(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

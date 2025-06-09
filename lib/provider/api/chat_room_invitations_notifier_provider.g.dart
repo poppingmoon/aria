@@ -7,7 +7,7 @@ part of 'chat_room_invitations_notifier_provider.dart';
 // **************************************************************************
 
 String _$chatRoomInvitationsNotifierHash() =>
-    r'09ef947a4e2b45cc6045c8eb474e3b4000988e94';
+    r'78f17eb6b9a9760f0f62542a38b0ae93045e2c69';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$ChatRoomInvitationsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<ChatJoining>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatJoining>> {
   late final Account account;
   late final String roomId;
 
-  FutureOr<PaginationState<ChatJoining>> build(Account account, String roomId);
+  Stream<PaginationState<ChatJoining>> build(Account account, String roomId);
 }
 
 /// See also [ChatRoomInvitationsNotifier].
@@ -78,7 +78,7 @@ class ChatRoomInvitationsNotifierFamily
 /// See also [ChatRoomInvitationsNotifier].
 class ChatRoomInvitationsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ChatRoomInvitationsNotifier,
           PaginationState<ChatJoining>
         > {
@@ -115,7 +115,7 @@ class ChatRoomInvitationsNotifierProvider
   final String roomId;
 
   @override
-  FutureOr<PaginationState<ChatJoining>> runNotifierBuild(
+  Stream<PaginationState<ChatJoining>> runNotifierBuild(
     covariant ChatRoomInvitationsNotifier notifier,
   ) {
     return notifier.build(account, roomId);
@@ -141,7 +141,7 @@ class ChatRoomInvitationsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ChatRoomInvitationsNotifier,
     PaginationState<ChatJoining>
   >
@@ -169,7 +169,7 @@ class ChatRoomInvitationsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ChatRoomInvitationsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<ChatJoining>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatJoining>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin ChatRoomInvitationsNotifierRef
 
 class _ChatRoomInvitationsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ChatRoomInvitationsNotifier,
           PaginationState<ChatJoining>
         >

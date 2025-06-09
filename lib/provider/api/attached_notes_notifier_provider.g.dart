@@ -7,7 +7,7 @@ part of 'attached_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$attachedNotesNotifierHash() =>
-    r'2a60edbb1115c67d9ce7bd6bba621deb7fb50ea6';
+    r'05a9598fae8a8f0b90fb0292dd49153016acaf18';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$AttachedNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String fileId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String fileId);
+  Stream<PaginationState<Note>> build(Account account, String fileId);
 }
 
 /// See also [AttachedNotesNotifier].
@@ -78,7 +78,7 @@ class AttachedNotesNotifierFamily
 /// See also [AttachedNotesNotifier].
 class AttachedNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           AttachedNotesNotifier,
           PaginationState<Note>
         > {
@@ -115,7 +115,7 @@ class AttachedNotesNotifierProvider
   final String fileId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant AttachedNotesNotifier notifier,
   ) {
     return notifier.build(account, fileId);
@@ -141,7 +141,7 @@ class AttachedNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     AttachedNotesNotifier,
     PaginationState<Note>
   >
@@ -169,7 +169,7 @@ class AttachedNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin AttachedNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin AttachedNotesNotifierRef
 
 class _AttachedNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           AttachedNotesNotifier,
           PaginationState<Note>
         >

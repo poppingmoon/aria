@@ -7,7 +7,7 @@ part of 'search_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchNotesNotifierHash() =>
-    r'0851060573de7fe188c8631f2c25c824b81ccacc';
+    r'b74e64d9f6dcff92572b71ee8658f4490b07d459';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,7 +31,7 @@ class _SystemHash {
 }
 
 abstract class _$SearchNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String query;
   late final String? userId;
@@ -40,7 +40,7 @@ abstract class _$SearchNotesNotifier
   late final String? sinceId;
   late final String? untilId;
 
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     Account account,
     String query, {
     String? userId,
@@ -115,7 +115,7 @@ class SearchNotesNotifierFamily
 /// See also [SearchNotesNotifier].
 class SearchNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           SearchNotesNotifier,
           PaginationState<Note>
         > {
@@ -179,7 +179,7 @@ class SearchNotesNotifierProvider
   final String? untilId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant SearchNotesNotifier notifier,
   ) {
     return notifier.build(
@@ -223,7 +223,7 @@ class SearchNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     SearchNotesNotifier,
     PaginationState<Note>
   >
@@ -261,7 +261,7 @@ class SearchNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin SearchNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -286,7 +286,7 @@ mixin SearchNotesNotifierRef
 
 class _SearchNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           SearchNotesNotifier,
           PaginationState<Note>
         >

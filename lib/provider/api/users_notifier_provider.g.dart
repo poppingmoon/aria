@@ -6,7 +6,7 @@ part of 'users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$usersNotifierHash() => r'80644e3ea72a7973b0985ccb1d86bacd3e817ba1';
+String _$usersNotifierHash() => r'599ab1f8c17f08eab04e6888b284fc5982a21ecf';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,13 +30,13 @@ class _SystemHash {
 }
 
 abstract class _$UsersNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<UserDetailed>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<UserDetailed>> {
   late final Account account;
   late final UsersSortType? sort;
   late final Origin? userOrigin;
   late final String? host;
 
-  FutureOr<PaginationState<UserDetailed>> build(
+  Stream<PaginationState<UserDetailed>> build(
     Account account, {
     UsersSortType? sort,
     Origin? userOrigin,
@@ -99,7 +99,7 @@ class UsersNotifierFamily
 /// See also [UsersNotifier].
 class UsersNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UsersNotifier,
           PaginationState<UserDetailed>
         > {
@@ -148,7 +148,7 @@ class UsersNotifierProvider
   final String? host;
 
   @override
-  FutureOr<PaginationState<UserDetailed>> runNotifierBuild(
+  Stream<PaginationState<UserDetailed>> runNotifierBuild(
     covariant UsersNotifier notifier,
   ) {
     return notifier.build(
@@ -183,7 +183,7 @@ class UsersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UsersNotifier,
     PaginationState<UserDetailed>
   >
@@ -215,7 +215,7 @@ class UsersNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UsersNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<UserDetailed>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<UserDetailed>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -231,7 +231,7 @@ mixin UsersNotifierRef
 
 class _UsersNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UsersNotifier,
           PaginationState<UserDetailed>
         >

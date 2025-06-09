@@ -7,7 +7,7 @@ part of 'follow_requests_notifier_provider.dart';
 // **************************************************************************
 
 String _$followRequestsNotifierHash() =>
-    r'fae2e55552cbf62d0e91d197f54729920d22c2cd';
+    r'ab11bba240369467da78cfa4922f2710ff54c10c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$FollowRequestsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<FollowRequest>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<FollowRequest>> {
   late final Account account;
 
-  FutureOr<PaginationState<FollowRequest>> build(Account account);
+  Stream<PaginationState<FollowRequest>> build(Account account);
 }
 
 /// See also [FollowRequestsNotifier].
@@ -77,7 +77,7 @@ class FollowRequestsNotifierFamily
 /// See also [FollowRequestsNotifier].
 class FollowRequestsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           FollowRequestsNotifier,
           PaginationState<FollowRequest>
         > {
@@ -109,7 +109,7 @@ class FollowRequestsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<FollowRequest>> runNotifierBuild(
+  Stream<PaginationState<FollowRequest>> runNotifierBuild(
     covariant FollowRequestsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +132,7 @@ class FollowRequestsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     FollowRequestsNotifier,
     PaginationState<FollowRequest>
   >
@@ -157,14 +157,14 @@ class FollowRequestsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin FollowRequestsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<FollowRequest>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<FollowRequest>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _FollowRequestsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           FollowRequestsNotifier,
           PaginationState<FollowRequest>
         >

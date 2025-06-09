@@ -6,7 +6,7 @@ part of 'user_clips_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userClipsNotifierHash() => r'e8523de2fd17faab26a093e81b9e342e705311fe';
+String _$userClipsNotifierHash() => r'ac4b328367a1f90db2d6830c5c9b7de2f27644c3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$UserClipsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Clip>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Clip>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Clip>> build(Account account, String userId);
+  Stream<PaginationState<Clip>> build(Account account, String userId);
 }
 
 /// See also [UserClipsNotifier].
@@ -77,7 +77,7 @@ class UserClipsNotifierFamily
 /// See also [UserClipsNotifier].
 class UserClipsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserClipsNotifier,
           PaginationState<Clip>
         > {
@@ -114,7 +114,7 @@ class UserClipsNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<Clip>> runNotifierBuild(
+  Stream<PaginationState<Clip>> runNotifierBuild(
     covariant UserClipsNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -140,7 +140,7 @@ class UserClipsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserClipsNotifier,
     PaginationState<Clip>
   >
@@ -168,7 +168,7 @@ class UserClipsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserClipsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Clip>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Clip>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -178,7 +178,7 @@ mixin UserClipsNotifierRef
 
 class _UserClipsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserClipsNotifier,
           PaginationState<Clip>
         >

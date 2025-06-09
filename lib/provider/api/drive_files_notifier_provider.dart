@@ -16,10 +16,10 @@ part 'drive_files_notifier_provider.g.dart';
 @riverpod
 class DriveFilesNotifier extends _$DriveFilesNotifier {
   @override
-  FutureOr<PaginationState<DriveFile>> build(
+  Stream<PaginationState<DriveFile>> build(
     Account account,
     String? folderId,
-  ) async {
+  ) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 1), link.close));
@@ -27,7 +27,10 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchFiles();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -51,14 +54,19 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchFiles(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   Future<void> upload(

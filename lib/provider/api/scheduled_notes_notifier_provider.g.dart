@@ -7,7 +7,7 @@ part of 'scheduled_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$scheduledNotesNotifierHash() =>
-    r'e4c79f48f20a3cd3df333cc3539161fe9faa5308';
+    r'81fb9163fa85d1a694cde4deeaa89e6070465765';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$ScheduledNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
 
-  FutureOr<PaginationState<Note>> build(Account account);
+  Stream<PaginationState<Note>> build(Account account);
 }
 
 /// See also [ScheduledNotesNotifier].
@@ -77,7 +77,7 @@ class ScheduledNotesNotifierFamily
 /// See also [ScheduledNotesNotifier].
 class ScheduledNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ScheduledNotesNotifier,
           PaginationState<Note>
         > {
@@ -109,7 +109,7 @@ class ScheduledNotesNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant ScheduledNotesNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +132,7 @@ class ScheduledNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ScheduledNotesNotifier,
     PaginationState<Note>
   >
@@ -157,14 +157,14 @@ class ScheduledNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ScheduledNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _ScheduledNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ScheduledNotesNotifier,
           PaginationState<Note>
         >

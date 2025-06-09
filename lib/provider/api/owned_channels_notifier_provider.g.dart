@@ -7,7 +7,7 @@ part of 'owned_channels_notifier_provider.dart';
 // **************************************************************************
 
 String _$ownedChannelsNotifierHash() =>
-    r'fbf80f3c0ac4b999cf1eb1597dc1822335f902f5';
+    r'5b038f996c44a68c4cb3591c44cf98b90d7dbc83';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,10 +32,10 @@ class _SystemHash {
 
 abstract class _$OwnedChannelsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
+        BuildlessAutoDisposeStreamNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
 
-  FutureOr<PaginationState<CommunityChannel>> build(Account account);
+  Stream<PaginationState<CommunityChannel>> build(Account account);
 }
 
 /// See also [OwnedChannelsNotifier].
@@ -78,7 +78,7 @@ class OwnedChannelsNotifierFamily
 /// See also [OwnedChannelsNotifier].
 class OwnedChannelsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           OwnedChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
@@ -110,7 +110,7 @@ class OwnedChannelsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<CommunityChannel>> runNotifierBuild(
+  Stream<PaginationState<CommunityChannel>> runNotifierBuild(
     covariant OwnedChannelsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -133,7 +133,7 @@ class OwnedChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     OwnedChannelsNotifier,
     PaginationState<CommunityChannel>
   >
@@ -158,14 +158,14 @@ class OwnedChannelsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin OwnedChannelsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<CommunityChannel>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<CommunityChannel>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _OwnedChannelsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           OwnedChannelsNotifier,
           PaginationState<CommunityChannel>
         >

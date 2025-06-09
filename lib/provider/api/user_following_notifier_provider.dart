@@ -10,12 +10,15 @@ part 'user_following_notifier_provider.g.dart';
 @riverpod
 class UserFollowingNotifier extends _$UserFollowingNotifier {
   @override
-  FutureOr<PaginationState<Following>> build(
+  Stream<PaginationState<Following>> build(
     Account account,
     String userId,
-  ) async {
+  ) async* {
     final response = await _fetchFollowing();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Following>> _fetchFollowing({String? untilId}) {
@@ -33,15 +36,20 @@ class UserFollowingNotifier extends _$UserFollowingNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchFollowing(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

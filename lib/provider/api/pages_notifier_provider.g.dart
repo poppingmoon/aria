@@ -6,7 +6,7 @@ part of 'pages_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pagesNotifierHash() => r'7cfe385db0f8501143bef85276f04078cafe2886';
+String _$pagesNotifierHash() => r'6ff454e674b794fb243ad58c506a54abaced7259';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$PagesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Page>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Page>> {
   late final Account account;
 
-  FutureOr<PaginationState<Page>> build(Account account);
+  Stream<PaginationState<Page>> build(Account account);
 }
 
 /// See also [PagesNotifier].
@@ -75,7 +75,7 @@ class PagesNotifierFamily extends Family<AsyncValue<PaginationState<Page>>> {
 /// See also [PagesNotifier].
 class PagesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           PagesNotifier,
           PaginationState<Page>
         > {
@@ -107,7 +107,7 @@ class PagesNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<Page>> runNotifierBuild(
+  Stream<PaginationState<Page>> runNotifierBuild(
     covariant PagesNotifier notifier,
   ) {
     return notifier.build(account);
@@ -130,7 +130,7 @@ class PagesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<PagesNotifier, PaginationState<Page>>
+  AutoDisposeStreamNotifierProviderElement<PagesNotifier, PaginationState<Page>>
   createElement() {
     return _PagesNotifierProviderElement(this);
   }
@@ -152,14 +152,14 @@ class PagesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin PagesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Page>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Page>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _PagesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           PagesNotifier,
           PaginationState<Page>
         >

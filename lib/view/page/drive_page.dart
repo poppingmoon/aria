@@ -67,44 +67,6 @@ class DrivePage extends HookConsumerWidget {
         (settings) => settings.enableInfiniteScroll,
       ),
     );
-    if (enableInfiniteScroll) {
-      ref.listen(
-        driveFoldersNotifierProvider(
-          account,
-          folderId,
-        ).select((folders) => folders.valueOrNull),
-        (prev, next) {
-          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-              ((prev?.isLastLoaded ?? false) &&
-                  (!(next?.isLastLoaded ?? true)))) {
-            if ((next?.items.length ?? 0) < 30) {
-              ref
-                  .read(
-                    driveFoldersNotifierProvider(account, folderId).notifier,
-                  )
-                  .loadMore();
-            }
-          }
-        },
-      );
-      ref.listen(
-        driveFilesNotifierProvider(
-          account,
-          folderId,
-        ).select((files) => files.valueOrNull),
-        (prev, next) {
-          if ((prev?.items.length ?? 0) < (next?.items.length ?? 0) ||
-              ((prev?.isLastLoaded ?? false) &&
-                  (!(next?.isLastLoaded ?? true)))) {
-            if ((next?.items.length ?? 0) < 30) {
-              ref
-                  .read(driveFilesNotifierProvider(account, folderId).notifier)
-                  .loadMore();
-            }
-          }
-        },
-      );
-    }
     final isSelecting =
         selectFiles || (!selectFolder && selectedFiles.isNotEmpty);
     final controller = useScrollController();

@@ -10,9 +10,12 @@ part 'chat_memberships_notifier_provider.g.dart';
 @riverpod
 class ChatMembershipsNotifier extends _$ChatMembershipsNotifier {
   @override
-  FutureOr<PaginationState<ChatJoining>> build(Account account) async {
+  Stream<PaginationState<ChatJoining>> build(Account account) async* {
     final response = await _fetchMemberships();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<ChatJoining>> _fetchMemberships({String? untilId}) {
@@ -31,15 +34,20 @@ class ChatMembershipsNotifier extends _$ChatMembershipsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchMemberships(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

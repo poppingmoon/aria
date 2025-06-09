@@ -7,7 +7,7 @@ part of 'featured_polls_notifier_provider.dart';
 // **************************************************************************
 
 String _$featuredPollsNotifierHash() =>
-    r'4d7a0d91bb06617738bdc6d689a6635482575791';
+    r'ccc761d8a7bd02bb1a513bb2e76bc48dc87111ab';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$FeaturedPollsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String? channelId;
 
-  FutureOr<PaginationState<Note>> build(Account account, {String? channelId});
+  Stream<PaginationState<Note>> build(Account account, {String? channelId});
 }
 
 /// See also [FeaturedPollsNotifier].
@@ -78,7 +78,7 @@ class FeaturedPollsNotifierFamily
 /// See also [FeaturedPollsNotifier].
 class FeaturedPollsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           FeaturedPollsNotifier,
           PaginationState<Note>
         > {
@@ -115,7 +115,7 @@ class FeaturedPollsNotifierProvider
   final String? channelId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant FeaturedPollsNotifier notifier,
   ) {
     return notifier.build(account, channelId: channelId);
@@ -141,7 +141,7 @@ class FeaturedPollsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     FeaturedPollsNotifier,
     PaginationState<Note>
   >
@@ -169,7 +169,7 @@ class FeaturedPollsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin FeaturedPollsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin FeaturedPollsNotifierRef
 
 class _FeaturedPollsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           FeaturedPollsNotifier,
           PaginationState<Note>
         >

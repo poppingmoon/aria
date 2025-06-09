@@ -7,7 +7,7 @@ part of 'drive_files_notifier_provider.dart';
 // **************************************************************************
 
 String _$driveFilesNotifierHash() =>
-    r'3153a37d26fa5103652a5cc1e39c7e556532ff1f';
+    r'3152302d3606625ec93a3885d26b54676415e1b4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$DriveFilesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<DriveFile>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<DriveFile>> {
   late final Account account;
   late final String? folderId;
 
-  FutureOr<PaginationState<DriveFile>> build(Account account, String? folderId);
+  Stream<PaginationState<DriveFile>> build(Account account, String? folderId);
 }
 
 /// See also [DriveFilesNotifier].
@@ -78,7 +78,7 @@ class DriveFilesNotifierFamily
 /// See also [DriveFilesNotifier].
 class DriveFilesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           DriveFilesNotifier,
           PaginationState<DriveFile>
         > {
@@ -115,7 +115,7 @@ class DriveFilesNotifierProvider
   final String? folderId;
 
   @override
-  FutureOr<PaginationState<DriveFile>> runNotifierBuild(
+  Stream<PaginationState<DriveFile>> runNotifierBuild(
     covariant DriveFilesNotifier notifier,
   ) {
     return notifier.build(account, folderId);
@@ -141,7 +141,7 @@ class DriveFilesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     DriveFilesNotifier,
     PaginationState<DriveFile>
   >
@@ -169,7 +169,7 @@ class DriveFilesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin DriveFilesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<DriveFile>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<DriveFile>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin DriveFilesNotifierRef
 
 class _DriveFilesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           DriveFilesNotifier,
           PaginationState<DriveFile>
         >

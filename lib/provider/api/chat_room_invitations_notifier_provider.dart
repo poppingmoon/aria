@@ -10,12 +10,15 @@ part 'chat_room_invitations_notifier_provider.g.dart';
 @riverpod
 class ChatRoomInvitationsNotifier extends _$ChatRoomInvitationsNotifier {
   @override
-  FutureOr<PaginationState<ChatJoining>> build(
+  Stream<PaginationState<ChatJoining>> build(
     Account account,
     String roomId,
-  ) async {
+  ) async* {
     final response = await _fetchInvitations();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
@@ -38,16 +41,21 @@ class ChatRoomInvitationsNotifier extends _$ChatRoomInvitationsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchInvitations(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   Future<void> invite(String userId) async {

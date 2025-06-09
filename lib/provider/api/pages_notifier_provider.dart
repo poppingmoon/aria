@@ -10,9 +10,12 @@ part 'pages_notifier_provider.g.dart';
 @riverpod
 class PagesNotifier extends _$PagesNotifier {
   @override
-  FutureOr<PaginationState<Page>> build(Account account) async {
+  Stream<PaginationState<Page>> build(Account account) async* {
     final response = await _fetchPages();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Future<Iterable<Page>> _fetchPages({String? untilId}) async {
@@ -31,13 +34,18 @@ class PagesNotifier extends _$PagesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPages(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

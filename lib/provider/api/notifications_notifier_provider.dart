@@ -13,11 +13,14 @@ part 'notifications_notifier_provider.g.dart';
 @riverpod
 class NotificationsNotifier extends _$NotificationsNotifier {
   @override
-  FutureOr<PaginationState<INotificationsResponse>> build(
+  Stream<PaginationState<INotificationsResponse>> build(
     Account account,
-  ) async {
+  ) async* {
     final response = await _fetchNotifications();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   List<INotificationsResponse> _foldNotifications(
@@ -170,15 +173,20 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotifications(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

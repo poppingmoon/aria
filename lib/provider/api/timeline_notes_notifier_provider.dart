@@ -15,12 +15,15 @@ part 'timeline_notes_notifier_provider.g.dart';
 @riverpod
 class TimelineNotesNotifier extends _$TimelineNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? untilId,
-  }) async {
+  }) async* {
     final response = await _fetchNotes(untilId: untilId, limit: 30);
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(tabSettings.account));
@@ -159,13 +162,18 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(untilId: value.items.lastOrNull?.id);
-      return value.copyWith(
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
+      return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

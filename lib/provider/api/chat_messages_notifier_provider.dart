@@ -10,13 +10,16 @@ part 'chat_messages_notifier_provider.g.dart';
 @riverpod
 class ChatMessagesNotifier extends _$ChatMessagesNotifier {
   @override
-  FutureOr<PaginationState<ChatMessage>> build(
+  Stream<PaginationState<ChatMessage>> build(
     Account account, {
     String? userId,
     String? roomId,
-  }) async {
+  }) async* {
     final response = await _fetchMessages();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
@@ -51,16 +54,21 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchMessages(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   void addReaction({

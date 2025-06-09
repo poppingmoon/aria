@@ -7,7 +7,7 @@ part of 'timeline_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$timelineNotesNotifierHash() =>
-    r'0a4451fa2d7dadda4978450b4803f9c0f05a9279';
+    r'c2c1510678e2fc6c9575d96f89052e1f495a4bf0';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$TimelineNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final TabSettings tabSettings;
   late final String? untilId;
 
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? untilId,
   });
@@ -84,7 +84,7 @@ class TimelineNotesNotifierFamily
 /// See also [TimelineNotesNotifier].
 class TimelineNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           TimelineNotesNotifier,
           PaginationState<Note>
         > {
@@ -121,7 +121,7 @@ class TimelineNotesNotifierProvider
   final String? untilId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant TimelineNotesNotifier notifier,
   ) {
     return notifier.build(tabSettings, untilId: untilId);
@@ -147,7 +147,7 @@ class TimelineNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     TimelineNotesNotifier,
     PaginationState<Note>
   >
@@ -175,7 +175,7 @@ class TimelineNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin TimelineNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `tabSettings` of this provider.
   TabSettings get tabSettings;
 
@@ -185,7 +185,7 @@ mixin TimelineNotesNotifierRef
 
 class _TimelineNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           TimelineNotesNotifier,
           PaginationState<Note>
         >

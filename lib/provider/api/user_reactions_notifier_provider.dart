@@ -13,10 +13,10 @@ part 'user_reactions_notifier_provider.g.dart';
 @riverpod
 class UserReactionsNotifier extends _$UserReactionsNotifier {
   @override
-  FutureOr<PaginationState<UsersReactionsResponse>> build(
+  Stream<PaginationState<UsersReactionsResponse>> build(
     Account account,
     String userId,
-  ) async {
+  ) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -24,7 +24,10 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchReactions();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -52,15 +55,20 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchReactions(
         untilId: value.items.lastOrNull?.id,
       );
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

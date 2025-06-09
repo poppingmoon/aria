@@ -7,7 +7,7 @@ part of 'chat_memberships_notifier_provider.dart';
 // **************************************************************************
 
 String _$chatMembershipsNotifierHash() =>
-    r'29266ec0c4d4cf1a048aab7d914e9113c3ca3aba';
+    r'91eac011998b70d1f21c880d9a41c9f0d4adc17b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$ChatMembershipsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<ChatJoining>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatJoining>> {
   late final Account account;
 
-  FutureOr<PaginationState<ChatJoining>> build(Account account);
+  Stream<PaginationState<ChatJoining>> build(Account account);
 }
 
 /// See also [ChatMembershipsNotifier].
@@ -77,7 +77,7 @@ class ChatMembershipsNotifierFamily
 /// See also [ChatMembershipsNotifier].
 class ChatMembershipsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ChatMembershipsNotifier,
           PaginationState<ChatJoining>
         > {
@@ -109,7 +109,7 @@ class ChatMembershipsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<ChatJoining>> runNotifierBuild(
+  Stream<PaginationState<ChatJoining>> runNotifierBuild(
     covariant ChatMembershipsNotifier notifier,
   ) {
     return notifier.build(account);
@@ -132,7 +132,7 @@ class ChatMembershipsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ChatMembershipsNotifier,
     PaginationState<ChatJoining>
   >
@@ -157,14 +157,14 @@ class ChatMembershipsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ChatMembershipsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<ChatJoining>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatJoining>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _ChatMembershipsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ChatMembershipsNotifier,
           PaginationState<ChatJoining>
         >

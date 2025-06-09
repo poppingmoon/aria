@@ -7,7 +7,7 @@ part of 'timeline_notes_after_note_notifier_provider.dart';
 // **************************************************************************
 
 String _$timelineNotesAfterNoteNotifierHash() =>
-    r'807935d681491796690db3ae4b82f8c8fae281e7';
+    r'fb616c1b70dd1e2f6a0134861a2a1b6238e439f2';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,13 +31,15 @@ class _SystemHash {
 }
 
 abstract class _$TimelineNotesAfterNoteNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final TabSettings tabSettings;
   late final String? sinceId;
+  late final bool eager;
 
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? sinceId,
+    bool eager = false,
   });
 }
 
@@ -56,10 +58,12 @@ class TimelineNotesAfterNoteNotifierFamily
   TimelineNotesAfterNoteNotifierProvider call(
     TabSettings tabSettings, {
     String? sinceId,
+    bool eager = false,
   }) {
     return TimelineNotesAfterNoteNotifierProvider(
       tabSettings,
       sinceId: sinceId,
+      eager: eager,
     );
   }
 
@@ -67,7 +71,11 @@ class TimelineNotesAfterNoteNotifierFamily
   TimelineNotesAfterNoteNotifierProvider getProviderOverride(
     covariant TimelineNotesAfterNoteNotifierProvider provider,
   ) {
-    return call(provider.tabSettings, sinceId: provider.sinceId);
+    return call(
+      provider.tabSettings,
+      sinceId: provider.sinceId,
+      eager: provider.eager,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -88,7 +96,7 @@ class TimelineNotesAfterNoteNotifierFamily
 /// See also [TimelineNotesAfterNoteNotifier].
 class TimelineNotesAfterNoteNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           TimelineNotesAfterNoteNotifier,
           PaginationState<Note>
         > {
@@ -96,10 +104,12 @@ class TimelineNotesAfterNoteNotifierProvider
   TimelineNotesAfterNoteNotifierProvider(
     TabSettings tabSettings, {
     String? sinceId,
+    bool eager = false,
   }) : this._internal(
          () => TimelineNotesAfterNoteNotifier()
            ..tabSettings = tabSettings
-           ..sinceId = sinceId,
+           ..sinceId = sinceId
+           ..eager = eager,
          from: timelineNotesAfterNoteNotifierProvider,
          name: r'timelineNotesAfterNoteNotifierProvider',
          debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -110,6 +120,7 @@ class TimelineNotesAfterNoteNotifierProvider
              TimelineNotesAfterNoteNotifierFamily._allTransitiveDependencies,
          tabSettings: tabSettings,
          sinceId: sinceId,
+         eager: eager,
        );
 
   TimelineNotesAfterNoteNotifierProvider._internal(
@@ -121,16 +132,18 @@ class TimelineNotesAfterNoteNotifierProvider
     required super.from,
     required this.tabSettings,
     required this.sinceId,
+    required this.eager,
   }) : super.internal();
 
   final TabSettings tabSettings;
   final String? sinceId;
+  final bool eager;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant TimelineNotesAfterNoteNotifier notifier,
   ) {
-    return notifier.build(tabSettings, sinceId: sinceId);
+    return notifier.build(tabSettings, sinceId: sinceId, eager: eager);
   }
 
   @override
@@ -140,7 +153,8 @@ class TimelineNotesAfterNoteNotifierProvider
       override: TimelineNotesAfterNoteNotifierProvider._internal(
         () => create()
           ..tabSettings = tabSettings
-          ..sinceId = sinceId,
+          ..sinceId = sinceId
+          ..eager = eager,
         from: from,
         name: null,
         dependencies: null,
@@ -148,12 +162,13 @@ class TimelineNotesAfterNoteNotifierProvider
         debugGetCreateSourceHash: null,
         tabSettings: tabSettings,
         sinceId: sinceId,
+        eager: eager,
       ),
     );
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     TimelineNotesAfterNoteNotifier,
     PaginationState<Note>
   >
@@ -165,7 +180,8 @@ class TimelineNotesAfterNoteNotifierProvider
   bool operator ==(Object other) {
     return other is TimelineNotesAfterNoteNotifierProvider &&
         other.tabSettings == tabSettings &&
-        other.sinceId == sinceId;
+        other.sinceId == sinceId &&
+        other.eager == eager;
   }
 
   @override
@@ -173,6 +189,7 @@ class TimelineNotesAfterNoteNotifierProvider
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, tabSettings.hashCode);
     hash = _SystemHash.combine(hash, sinceId.hashCode);
+    hash = _SystemHash.combine(hash, eager.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -181,17 +198,20 @@ class TimelineNotesAfterNoteNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin TimelineNotesAfterNoteNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `tabSettings` of this provider.
   TabSettings get tabSettings;
 
   /// The parameter `sinceId` of this provider.
   String? get sinceId;
+
+  /// The parameter `eager` of this provider.
+  bool get eager;
 }
 
 class _TimelineNotesAfterNoteNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           TimelineNotesAfterNoteNotifier,
           PaginationState<Note>
         >
@@ -204,6 +224,8 @@ class _TimelineNotesAfterNoteNotifierProviderElement
   @override
   String? get sinceId =>
       (origin as TimelineNotesAfterNoteNotifierProvider).sinceId;
+  @override
+  bool get eager => (origin as TimelineNotesAfterNoteNotifierProvider).eager;
 }
 
 // ignore_for_file: type=lint

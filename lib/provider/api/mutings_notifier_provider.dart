@@ -10,9 +10,12 @@ part 'mutings_notifier_provider.g.dart';
 @riverpod
 class MutingsNotifier extends _$MutingsNotifier {
   @override
-  FutureOr<PaginationState<Muting>> build(Account account) async {
+  Stream<PaginationState<Muting>> build(Account account) async* {
     final response = await _fetchMutings();
-    return PaginationState.fromIterable(response);
+    yield PaginationState.fromIterable(response);
+    if (response.isNotEmpty && response.length < 10) {
+      await loadMore();
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
@@ -29,14 +32,19 @@ class MutingsNotifier extends _$MutingsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchMutings(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   Future<void> delete(String userId) async {

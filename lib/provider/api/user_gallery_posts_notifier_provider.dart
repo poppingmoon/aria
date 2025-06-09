@@ -12,10 +12,10 @@ part 'user_gallery_posts_notifier_provider.g.dart';
 @riverpod
 class UserGalleryPostsNotifier extends _$UserGalleryPostsNotifier {
   @override
-  FutureOr<PaginationState<GalleryPost>> build(
+  Stream<PaginationState<GalleryPost>> build(
     Account account,
     String userId,
-  ) async {
+  ) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -23,7 +23,10 @@ class UserGalleryPostsNotifier extends _$UserGalleryPostsNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchPosts();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -48,13 +51,18 @@ class UserGalleryPostsNotifier extends _$UserGalleryPostsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPosts(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

@@ -7,7 +7,7 @@ part of 'liked_pages_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedPagesNotifierHash() =>
-    r'39a43e97279b15965e39c6796da3de54d05003a2';
+    r'a3f141dee262d19f4c339818503a512c4b76abde';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,10 +32,12 @@ class _SystemHash {
 
 abstract class _$LikedPagesNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<PaginationState<IPageLikesResponse>> {
+        BuildlessAutoDisposeStreamNotifier<
+          PaginationState<IPageLikesResponse>
+        > {
   late final Account account;
 
-  FutureOr<PaginationState<IPageLikesResponse>> build(Account account);
+  Stream<PaginationState<IPageLikesResponse>> build(Account account);
 }
 
 /// See also [LikedPagesNotifier].
@@ -78,7 +80,7 @@ class LikedPagesNotifierFamily
 /// See also [LikedPagesNotifier].
 class LikedPagesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           LikedPagesNotifier,
           PaginationState<IPageLikesResponse>
         > {
@@ -110,7 +112,7 @@ class LikedPagesNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<IPageLikesResponse>> runNotifierBuild(
+  Stream<PaginationState<IPageLikesResponse>> runNotifierBuild(
     covariant LikedPagesNotifier notifier,
   ) {
     return notifier.build(account);
@@ -133,7 +135,7 @@ class LikedPagesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     LikedPagesNotifier,
     PaginationState<IPageLikesResponse>
   >
@@ -159,7 +161,7 @@ class LikedPagesNotifierProvider
 // ignore: unused_element
 mixin LikedPagesNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<IPageLikesResponse>
         > {
   /// The parameter `account` of this provider.
@@ -168,7 +170,7 @@ mixin LikedPagesNotifierRef
 
 class _LikedPagesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           LikedPagesNotifier,
           PaginationState<IPageLikesResponse>
         >

@@ -12,9 +12,7 @@ part 'liked_gallery_posts_notifier_provider.g.dart';
 @riverpod
 class LikedGalleryPostsNotifier extends _$LikedGalleryPostsNotifier {
   @override
-  FutureOr<PaginationState<IGalleryLikesResponse>> build(
-    Account account,
-  ) async {
+  Stream<PaginationState<IGalleryLikesResponse>> build(Account account) async* {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -22,7 +20,10 @@ class LikedGalleryPostsNotifier extends _$LikedGalleryPostsNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchPosts();
-      return PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } catch (_) {
       timer?.cancel();
       link.close();
@@ -47,13 +48,18 @@ class LikedGalleryPostsNotifier extends _$LikedGalleryPostsNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPosts(untilId: value.items.lastOrNull?.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 }

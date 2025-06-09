@@ -7,7 +7,7 @@ part of 'user_gallery_posts_notifier_provider.dart';
 // **************************************************************************
 
 String _$userGalleryPostsNotifierHash() =>
-    r'd80180c705bf9ca8301d5ae7c3c7056de33aa49a';
+    r'33de368cc73097706dd882275463ab2a64f10780';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$UserGalleryPostsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<GalleryPost>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<GalleryPost>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<GalleryPost>> build(Account account, String userId);
+  Stream<PaginationState<GalleryPost>> build(Account account, String userId);
 }
 
 /// See also [UserGalleryPostsNotifier].
@@ -78,7 +78,7 @@ class UserGalleryPostsNotifierFamily
 /// See also [UserGalleryPostsNotifier].
 class UserGalleryPostsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserGalleryPostsNotifier,
           PaginationState<GalleryPost>
         > {
@@ -115,7 +115,7 @@ class UserGalleryPostsNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<GalleryPost>> runNotifierBuild(
+  Stream<PaginationState<GalleryPost>> runNotifierBuild(
     covariant UserGalleryPostsNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -141,7 +141,7 @@ class UserGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserGalleryPostsNotifier,
     PaginationState<GalleryPost>
   >
@@ -169,7 +169,7 @@ class UserGalleryPostsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserGalleryPostsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<GalleryPost>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<GalleryPost>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin UserGalleryPostsNotifierRef
 
 class _UserGalleryPostsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserGalleryPostsNotifier,
           PaginationState<GalleryPost>
         >

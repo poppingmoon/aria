@@ -7,7 +7,7 @@ part of 'liked_plays_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedPlaysNotifierHash() =>
-    r'7b18b1e2f068995b38e3b4a9c07c14235092bf33';
+    r'4a012e0e18eb1724fe32c68095e4481d4d2e9c9f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,12 +32,12 @@ class _SystemHash {
 
 abstract class _$LikedPlaysNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<FlashMyLikesResponse>
         > {
   late final Account account;
 
-  FutureOr<PaginationState<FlashMyLikesResponse>> build(Account account);
+  Stream<PaginationState<FlashMyLikesResponse>> build(Account account);
 }
 
 /// See also [LikedPlaysNotifier].
@@ -80,7 +80,7 @@ class LikedPlaysNotifierFamily
 /// See also [LikedPlaysNotifier].
 class LikedPlaysNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           LikedPlaysNotifier,
           PaginationState<FlashMyLikesResponse>
         > {
@@ -112,7 +112,7 @@ class LikedPlaysNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<FlashMyLikesResponse>> runNotifierBuild(
+  Stream<PaginationState<FlashMyLikesResponse>> runNotifierBuild(
     covariant LikedPlaysNotifier notifier,
   ) {
     return notifier.build(account);
@@ -135,7 +135,7 @@ class LikedPlaysNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     LikedPlaysNotifier,
     PaginationState<FlashMyLikesResponse>
   >
@@ -161,7 +161,7 @@ class LikedPlaysNotifierProvider
 // ignore: unused_element
 mixin LikedPlaysNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<FlashMyLikesResponse>
         > {
   /// The parameter `account` of this provider.
@@ -170,7 +170,7 @@ mixin LikedPlaysNotifierRef
 
 class _LikedPlaysNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           LikedPlaysNotifier,
           PaginationState<FlashMyLikesResponse>
         >

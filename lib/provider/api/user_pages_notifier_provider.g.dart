@@ -6,7 +6,7 @@ part of 'user_pages_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userPagesNotifierHash() => r'd28f3bb77d6ba11b9475dd51bd1dd0da1ae20f75';
+String _$userPagesNotifierHash() => r'04501d3b9903d6d1b459e048b7490e3b3ae46758';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$UserPagesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Page>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Page>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Page>> build(Account account, String userId);
+  Stream<PaginationState<Page>> build(Account account, String userId);
 }
 
 /// See also [UserPagesNotifier].
@@ -77,7 +77,7 @@ class UserPagesNotifierFamily
 /// See also [UserPagesNotifier].
 class UserPagesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserPagesNotifier,
           PaginationState<Page>
         > {
@@ -114,7 +114,7 @@ class UserPagesNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<Page>> runNotifierBuild(
+  Stream<PaginationState<Page>> runNotifierBuild(
     covariant UserPagesNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -140,7 +140,7 @@ class UserPagesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserPagesNotifier,
     PaginationState<Page>
   >
@@ -168,7 +168,7 @@ class UserPagesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserPagesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Page>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Page>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -178,7 +178,7 @@ mixin UserPagesNotifierRef
 
 class _UserPagesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserPagesNotifier,
           PaginationState<Page>
         >

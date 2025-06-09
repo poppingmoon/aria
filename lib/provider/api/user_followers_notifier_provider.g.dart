@@ -7,7 +7,7 @@ part of 'user_followers_notifier_provider.dart';
 // **************************************************************************
 
 String _$userFollowersNotifierHash() =>
-    r'48bed243a6c807c34f94aa30182bc3bfbba352fd';
+    r'f138457be065a165fc35355cdae1386b1e33c5f7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$UserFollowersNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Following>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Following>> {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Following>> build(Account account, String userId);
+  Stream<PaginationState<Following>> build(Account account, String userId);
 }
 
 /// See also [UserFollowersNotifier].
@@ -78,7 +78,7 @@ class UserFollowersNotifierFamily
 /// See also [UserFollowersNotifier].
 class UserFollowersNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserFollowersNotifier,
           PaginationState<Following>
         > {
@@ -115,7 +115,7 @@ class UserFollowersNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<Following>> runNotifierBuild(
+  Stream<PaginationState<Following>> runNotifierBuild(
     covariant UserFollowersNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -141,7 +141,7 @@ class UserFollowersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserFollowersNotifier,
     PaginationState<Following>
   >
@@ -169,7 +169,7 @@ class UserFollowersNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin UserFollowersNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Following>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Following>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin UserFollowersNotifierRef
 
 class _UserFollowersNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserFollowersNotifier,
           PaginationState<Following>
         >

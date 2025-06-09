@@ -6,7 +6,7 @@ part of 'plays_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playsNotifierHash() => r'0806317c5a590a3c2c5814a3d01818a71181eb70';
+String _$playsNotifierHash() => r'f02154d1c6cc58b51b18422d28bb120fa5232b92';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$PlaysNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Flash>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Flash>> {
   late final Account account;
 
-  FutureOr<PaginationState<Flash>> build(Account account);
+  Stream<PaginationState<Flash>> build(Account account);
 }
 
 /// See also [PlaysNotifier].
@@ -75,7 +75,7 @@ class PlaysNotifierFamily extends Family<AsyncValue<PaginationState<Flash>>> {
 /// See also [PlaysNotifier].
 class PlaysNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           PlaysNotifier,
           PaginationState<Flash>
         > {
@@ -107,7 +107,7 @@ class PlaysNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<Flash>> runNotifierBuild(
+  Stream<PaginationState<Flash>> runNotifierBuild(
     covariant PlaysNotifier notifier,
   ) {
     return notifier.build(account);
@@ -130,7 +130,10 @@ class PlaysNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<PlaysNotifier, PaginationState<Flash>>
+  AutoDisposeStreamNotifierProviderElement<
+    PlaysNotifier,
+    PaginationState<Flash>
+  >
   createElement() {
     return _PlaysNotifierProviderElement(this);
   }
@@ -152,14 +155,14 @@ class PlaysNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin PlaysNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Flash>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Flash>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _PlaysNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           PlaysNotifier,
           PaginationState<Flash>
         >

@@ -7,7 +7,7 @@ part of 'children_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$childrenNotesNotifierHash() =>
-    r'0482d29fa9f7b53ddc233ae1f107c470e2c6ffa7';
+    r'37a2455b97e7441dea8596704b6d540ef123e027';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,11 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$ChildrenNotesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(Account account, String noteId);
+  Stream<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [ChildrenNotesNotifier].
@@ -78,7 +78,7 @@ class ChildrenNotesNotifierFamily
 /// See also [ChildrenNotesNotifier].
 class ChildrenNotesNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           ChildrenNotesNotifier,
           PaginationState<Note>
         > {
@@ -115,7 +115,7 @@ class ChildrenNotesNotifierProvider
   final String noteId;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant ChildrenNotesNotifier notifier,
   ) {
     return notifier.build(account, noteId);
@@ -141,7 +141,7 @@ class ChildrenNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     ChildrenNotesNotifier,
     PaginationState<Note>
   >
@@ -169,7 +169,7 @@ class ChildrenNotesNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin ChildrenNotesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -179,7 +179,7 @@ mixin ChildrenNotesNotifierRef
 
 class _ChildrenNotesNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           ChildrenNotesNotifier,
           PaginationState<Note>
         >

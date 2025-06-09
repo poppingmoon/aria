@@ -7,7 +7,7 @@ part of 'user_reactions_notifier_provider.dart';
 // **************************************************************************
 
 String _$userReactionsNotifierHash() =>
-    r'ad7c60dcaad5174a489202f7eae00ff03718b671';
+    r'a2bf8dee78f8eed0871734db8d4395b4278518a0';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,13 +32,13 @@ class _SystemHash {
 
 abstract class _$UserReactionsNotifier
     extends
-        BuildlessAutoDisposeAsyncNotifier<
+        BuildlessAutoDisposeStreamNotifier<
           PaginationState<UsersReactionsResponse>
         > {
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<UsersReactionsResponse>> build(
+  Stream<PaginationState<UsersReactionsResponse>> build(
     Account account,
     String userId,
   );
@@ -84,7 +84,7 @@ class UserReactionsNotifierFamily
 /// See also [UserReactionsNotifier].
 class UserReactionsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           UserReactionsNotifier,
           PaginationState<UsersReactionsResponse>
         > {
@@ -121,7 +121,7 @@ class UserReactionsNotifierProvider
   final String userId;
 
   @override
-  FutureOr<PaginationState<UsersReactionsResponse>> runNotifierBuild(
+  Stream<PaginationState<UsersReactionsResponse>> runNotifierBuild(
     covariant UserReactionsNotifier notifier,
   ) {
     return notifier.build(account, userId);
@@ -147,7 +147,7 @@ class UserReactionsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     UserReactionsNotifier,
     PaginationState<UsersReactionsResponse>
   >
@@ -176,7 +176,7 @@ class UserReactionsNotifierProvider
 // ignore: unused_element
 mixin UserReactionsNotifierRef
     on
-        AutoDisposeAsyncNotifierProviderRef<
+        AutoDisposeStreamNotifierProviderRef<
           PaginationState<UsersReactionsResponse>
         > {
   /// The parameter `account` of this provider.
@@ -188,7 +188,7 @@ mixin UserReactionsNotifierRef
 
 class _UserReactionsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           UserReactionsNotifier,
           PaginationState<UsersReactionsResponse>
         >

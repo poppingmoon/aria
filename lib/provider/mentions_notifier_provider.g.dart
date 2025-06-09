@@ -6,7 +6,7 @@ part of 'mentions_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mentionsNotifierHash() => r'048a36616ed642311212d6181c291d427164d5b4';
+String _$mentionsNotifierHash() => r'df29b48deacd4dd5beec274c568c80cd807c4a18';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,11 +30,11 @@ class _SystemHash {
 }
 
 abstract class _$MentionsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
   late final Account account;
   late final bool specified;
 
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     Account account, [
     bool specified = false,
   ]);
@@ -79,7 +79,7 @@ class MentionsNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 /// See also [MentionsNotifier].
 class MentionsNotifierProvider
     extends
-        AutoDisposeAsyncNotifierProviderImpl<
+        AutoDisposeStreamNotifierProviderImpl<
           MentionsNotifier,
           PaginationState<Note>
         > {
@@ -116,7 +116,7 @@ class MentionsNotifierProvider
   final bool specified;
 
   @override
-  FutureOr<PaginationState<Note>> runNotifierBuild(
+  Stream<PaginationState<Note>> runNotifierBuild(
     covariant MentionsNotifier notifier,
   ) {
     return notifier.build(account, specified);
@@ -142,7 +142,7 @@ class MentionsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
+  AutoDisposeStreamNotifierProviderElement<
     MentionsNotifier,
     PaginationState<Note>
   >
@@ -170,7 +170,7 @@ class MentionsNotifierProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin MentionsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -180,7 +180,7 @@ mixin MentionsNotifierRef
 
 class _MentionsNotifierProviderElement
     extends
-        AutoDisposeAsyncNotifierProviderElement<
+        AutoDisposeStreamNotifierProviderElement<
           MentionsNotifier,
           PaginationState<Note>
         >

@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../model/id.dart';
 import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
@@ -13,27 +14,35 @@ part 'timeline_notes_after_note_notifier_provider.g.dart';
 @riverpod
 class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
+  Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? sinceId,
-  }) async {
+    bool eager = false,
+  }) async* {
     if (sinceId != null) {
-      final response = await _fetchNotes(sinceId);
-      return PaginationState.fromIterable(response);
+      final response = eager
+          ? await _fetchNotesEagerly(sinceId)
+          : await _fetchNotes(sinceId: sinceId);
+      yield PaginationState.fromIterable(response);
+      if (response.isNotEmpty && response.length < 10) {
+        await loadMore();
+      }
     } else {
-      return const PaginationState(items: [], isLastLoaded: true);
+      yield const PaginationState(items: [], isLastLoaded: true);
     }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(tabSettings.account));
 
-  Future<Iterable<Note>> _fetchNotesFromCustomTimeline(String sinceId) async {
+  Duration _duration = const Duration(minutes: 1);
+
+  Future<Iterable<Note>> _fetchNotesFromCustomTimeline(String? sinceId) async {
     final endpoint = tabSettings.endpoint;
     if (endpoint == null) {
       return [];
     }
     final response = await _misskey.apiService.post<List<dynamic>>(endpoint, {
-      'sinceId': sinceId,
+      'sinceId': ?sinceId,
       'withRenotes': tabSettings.withRenotes,
       'withReplies': tabSettings.withReplies,
       'withFiles': tabSettings.withFiles,
@@ -42,11 +51,19 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     return response.map((e) => Note.fromJson(e as Map<String, dynamic>));
   }
 
-  Future<Iterable<Note>> _fetchNotes(String sinceId) async {
+  Future<Iterable<Note>> _fetchNotes({
+    String? sinceId,
+    DateTime? sinceDate,
+    DateTime? untilDate,
+    int? limit,
+  }) async {
     final notes = await switch (tabSettings.tabType) {
       TabType.homeTimeline => _misskey.notes.homeTimeline(
         NotesTimelineRequest(
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withFiles: tabSettings.withFiles,
         ),
@@ -54,6 +71,9 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.localTimeline => _misskey.notes.localTimeline(
         NotesLocalTimelineRequest(
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withReplies: tabSettings.withReplies,
           withFiles: tabSettings.withFiles,
@@ -62,6 +82,9 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.hybridTimeline => _misskey.notes.hybridTimeline(
         NotesHybridTimelineRequest(
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withReplies: tabSettings.withReplies,
           withFiles: tabSettings.withFiles,
@@ -70,17 +93,29 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.globalTimeline => _misskey.notes.globalTimeline(
         NotesGlobalTimelineRequest(
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withFiles: tabSettings.withFiles,
         ),
       ),
       TabType.roleTimeline => _misskey.roles.notes(
-        RolesNotesRequest(roleId: tabSettings.roleId!, sinceId: sinceId),
+        RolesNotesRequest(
+          roleId: tabSettings.roleId!,
+          sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
+        ),
       ),
       TabType.userList => _misskey.notes.userListTimeline(
         UserListTimelineRequest(
           listId: tabSettings.listId!,
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withFiles: tabSettings.withFiles,
         ),
@@ -89,20 +124,27 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         AntennasNotesRequest(
           antennaId: tabSettings.antennaId!,
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
         ),
       ),
       TabType.channel => _misskey.channels.timeline(
         ChannelsTimelineRequest(
           channelId: tabSettings.channelId!,
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
         ),
       ),
       TabType.mention => _misskey.notes.mentions(
-        NotesMentionsRequest(sinceId: sinceId),
+        NotesMentionsRequest(sinceId: sinceId, limit: limit),
       ),
       TabType.direct => _misskey.notes.mentions(
         NotesMentionsRequest(
           sinceId: sinceId,
+          limit: limit,
           visibility: NoteVisibility.specified,
         ),
       ),
@@ -110,6 +152,9 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         UsersNotesRequest(
           userId: tabSettings.userId!,
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
           withRenotes: tabSettings.withRenotes,
           withReplies: tabSettings.withReplies,
           withFiles: tabSettings.withFiles,
@@ -125,6 +170,34 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     return notes.sortedBy((note) => note.id).reversed;
   }
 
+  Future<Iterable<Note>> _fetchNotesEagerly(String sinceId) async {
+    if (tabSettings.tabType
+        case TabType.mention || TabType.direct || TabType.custom) {
+      return _fetchNotes(sinceId: sinceId);
+    }
+    final id = Id.parse(sinceId);
+    DateTime sinceDate = id.date.add(const Duration(milliseconds: 1));
+    while (sinceDate.isBefore(DateTime.now())) {
+      final untilDate = sinceDate.add(_duration);
+      final notes = await _fetchNotes(
+        sinceDate: sinceDate,
+        untilDate: untilDate,
+        limit: 100,
+      );
+      if (notes.length < 5) {
+        _duration *= 2;
+      } else if (notes.length > 80) {
+        _duration ~/= 2;
+      }
+      if (notes.isNotEmpty) {
+        return notes;
+      } else {
+        sinceDate = untilDate;
+      }
+    }
+    return [];
+  }
+
   Future<void> loadMore({bool skipError = false}) async {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
@@ -133,14 +206,21 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     if (value.isLastLoaded) {
       return;
     }
+    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = await _fetchNotes(value.items.first.id);
+      final response = eager
+          ? await _fetchNotesEagerly(value.items.first.id)
+          : await _fetchNotes(sinceId: value.items.first.id);
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...response, ...value.items],
         isLastLoaded: response.isEmpty,
       );
     });
+    if (shouldLoadMore) {
+      await loadMore();
+    }
   }
 
   void addNote(Note note) {
