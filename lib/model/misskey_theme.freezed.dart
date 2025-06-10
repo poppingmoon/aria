@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MisskeyTheme {
 
- String get id; String get name; String? get author; String? get desc; String? get base; Map<String, String> get props;
+ String get id; String get name; String? get author; String? get desc; String? get base; Map<String, String> get props; Map<String, dynamic>? get codeHighlighter;
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,16 @@ $MisskeyThemeCopyWith<MisskeyTheme> get copyWith => _$MisskeyThemeCopyWithImpl<M
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other.props, props));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other.props, props)&&const DeepCollectionEquality().equals(other.codeHighlighter, codeHighlighter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(props));
+int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(props),const DeepCollectionEquality().hash(codeHighlighter));
 
 @override
 String toString() {
-  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props)';
+  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props, codeHighlighter: $codeHighlighter)';
 }
 
 
@@ -47,7 +47,7 @@ abstract mixin class $MisskeyThemeCopyWith<$Res>  {
   factory $MisskeyThemeCopyWith(MisskeyTheme value, $Res Function(MisskeyTheme) _then) = _$MisskeyThemeCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String? author, String? desc, String? base, Map<String, String> props
+ String id, String name, String? author, String? desc, String? base, Map<String, String> props, Map<String, dynamic>? codeHighlighter
 });
 
 
@@ -64,7 +64,7 @@ class _$MisskeyThemeCopyWithImpl<$Res>
 
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? author = freezed,Object? desc = freezed,Object? base = freezed,Object? props = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? author = freezed,Object? desc = freezed,Object? base = freezed,Object? props = null,Object? codeHighlighter = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -72,7 +72,8 @@ as String,author: freezed == author ? _self.author : author // ignore: cast_null
 as String?,desc: freezed == desc ? _self.desc : desc // ignore: cast_nullable_to_non_nullable
 as String?,base: freezed == base ? _self.base : base // ignore: cast_nullable_to_non_nullable
 as String?,props: null == props ? _self.props : props // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,
+as Map<String, String>,codeHighlighter: freezed == codeHighlighter ? _self.codeHighlighter : codeHighlighter // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>?,
   ));
 }
 
@@ -83,7 +84,7 @@ as Map<String, String>,
 @JsonSerializable(createToJson: false)
 
 class _MisskeyTheme implements MisskeyTheme {
-  const _MisskeyTheme({required this.id, required this.name, this.author, this.desc, this.base, required final  Map<String, String> props}): _props = props;
+  const _MisskeyTheme({required this.id, required this.name, this.author, this.desc, this.base, required final  Map<String, String> props, final  Map<String, dynamic>? codeHighlighter}): _props = props,_codeHighlighter = codeHighlighter;
   factory _MisskeyTheme.fromJson(Map<String, dynamic> json) => _$MisskeyThemeFromJson(json);
 
 @override final  String id;
@@ -98,6 +99,15 @@ class _MisskeyTheme implements MisskeyTheme {
   return EqualUnmodifiableMapView(_props);
 }
 
+ final  Map<String, dynamic>? _codeHighlighter;
+@override Map<String, dynamic>? get codeHighlighter {
+  final value = _codeHighlighter;
+  if (value == null) return null;
+  if (_codeHighlighter is EqualUnmodifiableMapView) return _codeHighlighter;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(value);
+}
+
 
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
@@ -109,16 +119,16 @@ _$MisskeyThemeCopyWith<_MisskeyTheme> get copyWith => __$MisskeyThemeCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other._props, _props));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other._props, _props)&&const DeepCollectionEquality().equals(other._codeHighlighter, _codeHighlighter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(_props));
+int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(_props),const DeepCollectionEquality().hash(_codeHighlighter));
 
 @override
 String toString() {
-  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props)';
+  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props, codeHighlighter: $codeHighlighter)';
 }
 
 
@@ -129,7 +139,7 @@ abstract mixin class _$MisskeyThemeCopyWith<$Res> implements $MisskeyThemeCopyWi
   factory _$MisskeyThemeCopyWith(_MisskeyTheme value, $Res Function(_MisskeyTheme) _then) = __$MisskeyThemeCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String? author, String? desc, String? base, Map<String, String> props
+ String id, String name, String? author, String? desc, String? base, Map<String, String> props, Map<String, dynamic>? codeHighlighter
 });
 
 
@@ -146,7 +156,7 @@ class __$MisskeyThemeCopyWithImpl<$Res>
 
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? author = freezed,Object? desc = freezed,Object? base = freezed,Object? props = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? author = freezed,Object? desc = freezed,Object? base = freezed,Object? props = null,Object? codeHighlighter = freezed,}) {
   return _then(_MisskeyTheme(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -154,7 +164,8 @@ as String,author: freezed == author ? _self.author : author // ignore: cast_null
 as String?,desc: freezed == desc ? _self.desc : desc // ignore: cast_nullable_to_non_nullable
 as String?,base: freezed == base ? _self.base : base // ignore: cast_nullable_to_non_nullable
 as String?,props: null == props ? _self._props : props // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,
+as Map<String, String>,codeHighlighter: freezed == codeHighlighter ? _self._codeHighlighter : codeHighlighter // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>?,
   ));
 }
 

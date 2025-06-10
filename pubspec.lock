@@ -584,8 +584,8 @@ packages:
     dependency: "direct main"
     description:
       path: flutter_highlighting
-      ref: f8722192d6a92582299a8a0c3756862d31298388
-      resolved-ref: f8722192d6a92582299a8a0c3756862d31298388
+      ref: "0e214d04590ba808d49d3de5d6e1eb520fd69b8c"
+      resolved-ref: "0e214d04590ba808d49d3de5d6e1eb520fd69b8c"
       url: "https://github.com/poppingmoon/dart-highlighting"
     source: git
     version: "0.9.1+11.8.0"
@@ -957,8 +957,8 @@ packages:
     dependency: "direct main"
     description:
       path: highlighting
-      ref: "76d9f984d53de07b445965f13a5e02c3bd3ed83a"
-      resolved-ref: "76d9f984d53de07b445965f13a5e02c3bd3ed83a"
+      ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
+      resolved-ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       url: "https://github.com/poppingmoon/dart-highlighting"
     source: git
     version: "0.9.1+11.8.0"
@@ -2262,4 +2262,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.8.0 <4.0.0"
-  flutter: ">=3.29.0"
+  flutter: ">=3.32.0"

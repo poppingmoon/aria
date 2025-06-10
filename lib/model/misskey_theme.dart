@@ -12,6 +12,7 @@ abstract class MisskeyTheme with _$MisskeyTheme {
     String? desc,
     String? base,
     required Map<String, String> props,
+    Map<String, dynamic>? codeHighlighter,
   }) = _MisskeyTheme;
 
   factory MisskeyTheme.fromJson(Map<String, dynamic> json) =>
