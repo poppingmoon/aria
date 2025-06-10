@@ -12,6 +12,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/categorized_emojis_provider.dart';
+import '../../provider/custom_emoji_index_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
@@ -21,7 +22,6 @@ import '../../provider/search_unicode_emojis_provider.dart';
 import '../../util/check_reaction_permissions.dart';
 import '../page/emoji_page.dart';
 import 'custom_emoji.dart';
-import 'emoji_widget.dart';
 import 'unicode_emoji.dart';
 
 Future<String?> pickEmoji(
@@ -130,11 +130,9 @@ class EmojiPicker extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final style = DefaultTextStyle.of(context).style;
     final controller = useTextEditingController();
+    final focusNode = useFocusNode();
+    final scrollController = this.scrollController ?? useScrollController();
     final query = useState('');
-    useEffect(() {
-      controller.addListener(() => query.value = controller.text);
-      return;
-    }, []);
     final generalSettings = ref.watch(generalSettingsNotifierProvider);
     final emojiPickerAutofocus = generalSettings.emojiPickerAutofocus;
     final emojiPickerScale = generalSettings.emojiPickerScale;
@@ -156,6 +154,28 @@ class EmojiPicker extends HookConsumerWidget {
             (settings) => settings.emojiPickerKeepOpen,
           ),
         );
+    useEffect(() {
+      void controllerCallback() {
+        query.value = controller.text;
+      }
+
+      bool previouslyFocused = false;
+
+      void focusNodeCallback() {
+        if (!previouslyFocused) {
+          ref.read(customEmojiIndexProvider(account.host));
+          previouslyFocused = true;
+        }
+      }
+
+      controller.addListener(controllerCallback);
+      focusNode.addListener(focusNodeCallback);
+      return () {
+        controller.removeListener(controllerCallback);
+        focusNode.removeListener(focusNodeCallback);
+      };
+    }, []);
+    final theme = Theme.of(context);
 
     return ListView(
       controller: scrollController,
@@ -174,7 +194,7 @@ class EmojiPicker extends HookConsumerWidget {
             shortcuts: disablingTextShortcuts,
             child: TextField(
               controller: controller,
-              autofocus: emojiPickerAutofocus,
+              focusNode: focusNode,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
                 hintText: t.misskey.search,
@@ -185,6 +205,7 @@ class EmojiPicker extends HookConsumerWidget {
                 ),
               ),
               textInputAction: TextInputAction.search,
+              autofocus: emojiPickerAutofocus,
               onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
@@ -200,7 +221,8 @@ class EmojiPicker extends HookConsumerWidget {
                   final enabled =
                       targetNote == null ||
                       checkReactionPermissions(i, targetNote!, emoji);
-                  return CustomEmoji(
+
+                  return _CustomEmoji(
                     account: account,
                     emoji: emoji.emoji,
                     onTap: enabled
@@ -233,22 +255,33 @@ class EmojiPicker extends HookConsumerWidget {
               spacing: 4.0,
               runSpacing: 4.0,
               children: pinnedEmojis.map((emoji) {
-                final customEmoji = emoji.startsWith(':')
-                    ? ref.watch(emojiProvider(account.host, emoji))
-                    : null;
-                final enabled =
-                    targetNote == null ||
-                    customEmoji == null ||
-                    checkReactionPermissions(i, targetNote!, customEmoji);
-                return EmojiWidget(
-                  account: account,
-                  emoji: emoji,
-                  onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
-                  style: style.apply(
-                    fontSizeFactor: fontScaleFactor,
-                    color: style.color?.withValues(alpha: enabled ? 1.0 : 0.1),
-                  ),
-                );
+                if (emoji.startsWith(':')) {
+                  final customEmoji = ref.watch(
+                    emojiProvider(account.host, emoji),
+                  );
+                  final enabled =
+                      targetNote == null ||
+                      customEmoji == null ||
+                      checkReactionPermissions(i, targetNote!, customEmoji);
+
+                  return _CustomEmoji(
+                    account: account,
+                    emoji: emoji,
+                    onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    height: style.lineHeight * fontScaleFactor,
+                    opacity: enabled ? 1.0 : 0.1,
+                    fallbackTextStyle: style.apply(
+                      fontSizeFactor: fontScaleFactor,
+                    ),
+                  );
+                } else {
+                  return UnicodeEmoji(
+                    account: account,
+                    emoji: emoji,
+                    style: style.apply(fontSizeFactor: fontScaleFactor),
+                    onTap: () => onTapEmoji(emoji, keepOpen),
+                  );
+                }
               }).toList(),
             ),
           ),
@@ -266,22 +299,33 @@ class EmojiPicker extends HookConsumerWidget {
               spacing: 4.0,
               runSpacing: 4.0,
               children: recentlyUsedEmojis.map((emoji) {
-                final customEmoji = emoji.startsWith(':')
-                    ? ref.watch(emojiProvider(account.host, emoji))
-                    : null;
-                final enabled =
-                    targetNote == null ||
-                    customEmoji == null ||
-                    checkReactionPermissions(i, targetNote!, customEmoji);
-                return EmojiWidget(
-                  account: account,
-                  emoji: emoji,
-                  onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
-                  style: style.apply(
-                    fontSizeFactor: fontScaleFactor,
-                    color: style.color?.withValues(alpha: enabled ? 1.0 : 0.1),
-                  ),
-                );
+                if (emoji.startsWith(':')) {
+                  final customEmoji = ref.watch(
+                    emojiProvider(account.host, emoji),
+                  );
+                  final enabled =
+                      targetNote == null ||
+                      customEmoji == null ||
+                      checkReactionPermissions(i, targetNote!, customEmoji);
+
+                  return _CustomEmoji(
+                    account: account,
+                    emoji: emoji,
+                    onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    height: style.lineHeight * fontScaleFactor,
+                    opacity: enabled ? 1.0 : 0.1,
+                    fallbackTextStyle: style.apply(
+                      fontSizeFactor: fontScaleFactor,
+                    ),
+                  );
+                } else {
+                  return UnicodeEmoji(
+                    account: account,
+                    emoji: emoji,
+                    style: style.apply(fontSizeFactor: fontScaleFactor),
+                    onTap: () => onTapEmoji(emoji, keepOpen),
+                  );
+                }
               }).toList(),
             ),
           ),
@@ -300,7 +344,7 @@ class EmojiPicker extends HookConsumerWidget {
                   children: [
                     TextSpan(
                       text: ' (${e.value.length})',
-                      style: Theme.of(context).textTheme.bodyMedium,
+                      style: theme.textTheme.bodyMedium,
                     ),
                   ],
                 ),
@@ -317,7 +361,8 @@ class EmojiPicker extends HookConsumerWidget {
                         final enabled =
                             targetNote == null ||
                             checkReactionPermissions(i, targetNote!, emoji);
-                        return CustomEmoji(
+
+                        return _CustomEmoji(
                           account: account,
                           emoji: emoji.emoji,
                           onTap: enabled
@@ -372,6 +417,47 @@ class EmojiPicker extends HookConsumerWidget {
           );
         }),
       ],
+    );
+  }
+}
+
+class _CustomEmoji extends StatelessWidget {
+  const _CustomEmoji({
+    required this.account,
+    required this.emoji,
+    required this.onTap,
+    required this.height,
+    this.opacity = 1.0,
+    required this.fallbackTextStyle,
+  });
+
+  final Account account;
+  final String emoji;
+  final void Function()? onTap;
+  final double height;
+  final double opacity;
+  final TextStyle fallbackTextStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return CustomEmoji(
+      account: account,
+      emoji: emoji,
+      onTap: onTap,
+      height: height,
+      opacity: opacity,
+      fallbackTextStyle: fallbackTextStyle,
+      placeholderBuilder: (context) => SizedBox.square(
+        dimension: height,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceContainerHigh,
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -16,6 +16,7 @@ class ImageWidget extends ConsumerWidget {
     this.opacity = 1.0,
     this.fit,
     this.alignment = Alignment.center,
+    this.placeholderBuilder,
     this.errorBuilder,
     this.semanticLabel,
     this.enableFadeIn = true,
@@ -28,11 +29,15 @@ class ImageWidget extends ConsumerWidget {
   final double opacity;
   final BoxFit? fit;
   final Alignment alignment;
+  final Widget Function(BuildContext context)? placeholderBuilder;
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
   final bool enableFadeIn;
 
-  Widget _buildPlaceholder() {
+  Widget _buildPlaceholder(BuildContext context) {
+    if (placeholderBuilder case final placeholderBuilder?) {
+      return placeholderBuilder(context);
+    }
     if (blurHash case final blurHash?) {
       return SizedBox(
         width: width,
@@ -51,7 +56,7 @@ class ImageWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final url = this.url;
     if (url == null || url.isEmpty) {
-      return _buildPlaceholder();
+      return _buildPlaceholder(context);
     }
     if (url.startsWith('data')) {
       final data = UriData.fromString(url);
@@ -62,7 +67,7 @@ class ImageWidget extends ConsumerWidget {
           height: height,
           fit: fit ?? BoxFit.contain,
           alignment: alignment,
-          placeholderBuilder: (_) => _buildPlaceholder(),
+          placeholderBuilder: _buildPlaceholder,
           colorFilter: ColorFilter.mode(
             Color.fromRGBO(255, 255, 255, opacity),
             BlendMode.modulate,
@@ -77,7 +82,12 @@ class ImageWidget extends ConsumerWidget {
           fit: fit,
           alignment: alignment,
           opacity: AlwaysStoppedAnimation(opacity),
-          errorBuilder: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
+          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
+              wasSynchronouslyLoaded || frame != null
+              ? child
+              : _buildPlaceholder(context),
+          errorBuilder:
+              errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
           semanticLabel: semanticLabel,
         );
       }
@@ -93,7 +103,7 @@ class ImageWidget extends ConsumerWidget {
               height: height,
               fit: fit ?? BoxFit.contain,
               alignment: alignment,
-              placeholderBuilder: (_) => _buildPlaceholder(),
+              placeholderBuilder: _buildPlaceholder,
               colorFilter: ColorFilter.mode(
                 Color.fromRGBO(255, 255, 255, opacity),
                 BlendMode.modulate,
@@ -101,7 +111,7 @@ class ImageWidget extends ConsumerWidget {
               semanticsLabel: semanticLabel,
             );
           } else {
-            return _buildPlaceholder();
+            return _buildPlaceholder(context);
           }
         },
       );
@@ -117,8 +127,9 @@ class ImageWidget extends ConsumerWidget {
           fit: fit,
           alignment: alignment,
           cacheManager: cacheManager,
-          placeholder: (_, _) => _buildPlaceholder(),
-          errorWidget: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
+          placeholder: (context, _) => _buildPlaceholder(context),
+          errorWidget:
+              errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
           color: opacity < 1.0 ? Color.fromRGBO(255, 255, 255, opacity) : null,
           colorBlendMode: BlendMode.modulate,
           fadeOutDuration: Duration.zero,
@@ -135,8 +146,9 @@ class ImageWidget extends ConsumerWidget {
         frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
             wasSynchronouslyLoaded || frame != null
             ? child
-            : _buildPlaceholder(),
-        errorBuilder: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
+            : _buildPlaceholder(context),
+        errorBuilder:
+            errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
         semanticLabel: semanticLabel,
       );
     }
