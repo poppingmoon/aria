@@ -27,6 +27,7 @@ class CustomEmoji extends ConsumerWidget {
     this.fallbackTextStyle,
     this.fallbackToImage = true,
     this.enableFadeIn,
+    this.placeholderBuilder,
   });
 
   final Account account;
@@ -43,6 +44,7 @@ class CustomEmoji extends ConsumerWidget {
   final TextStyle? fallbackTextStyle;
   final bool fallbackToImage;
   final bool? enableFadeIn;
+  final Widget Function(BuildContext context)? placeholderBuilder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -114,12 +116,14 @@ class CustomEmoji extends ConsumerWidget {
               opacity: opacity,
               fit: fit,
               alignment: alignment,
+              placeholderBuilder: placeholderBuilder,
               errorBuilder: (_, _, _) => ImageWidget(
                 url: rawUrl,
                 height: height,
                 opacity: opacity,
                 fit: fit,
                 alignment: alignment,
+                placeholderBuilder: placeholderBuilder,
                 errorBuilder: (_, _, _) => fallbackToImage
                     ? Assets.misskey.packages.frontend.assets.dummy.image(
                         height: height,
