@@ -14,4 +14,5 @@ _MisskeyTheme _$MisskeyThemeFromJson(Map<String, dynamic> json) =>
       desc: json['desc'] as String?,
       base: json['base'] as String?,
       props: Map<String, String>.from(json['props'] as Map),
+      codeHighlighter: json['codeHighlighter'] as Map<String, dynamic>?,
     );

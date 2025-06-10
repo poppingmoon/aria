@@ -36,7 +36,7 @@ dependencies:
   flutter_highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
-      ref: f8722192d6a92582299a8a0c3756862d31298388
+      ref: 0e214d04590ba808d49d3de5d6e1eb520fd69b8c
       path: flutter_highlighting
   flutter_hooks: ^0.21.2
   flutter_html: ^3.0.0
@@ -58,7 +58,7 @@ dependencies:
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
-      ref: 76d9f984d53de07b445965f13a5e02c3bd3ed83a
+      ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
   hooks_riverpod: ^2.6.1
   image: ^4.5.4
