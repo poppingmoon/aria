@@ -103,6 +103,12 @@ class AsUiWidget extends HookConsumerWidget {
             _ => null,
           },
           child: Container(
+            alignment: switch (align) {
+              'left' => Alignment.centerLeft,
+              'center' => Alignment.center,
+              'right' => Alignment.centerRight,
+              _ => null,
+            },
             padding: padding != null ? EdgeInsets.all(padding) : null,
             decoration: BoxDecoration(
               color: safeParseColor(bgColor),
