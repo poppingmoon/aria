@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -64,6 +63,7 @@ class AsUiWidget extends HookConsumerWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 12.0,
             children: [
               ...children
                   .where(
@@ -75,18 +75,14 @@ class AsUiWidget extends HookConsumerWidget {
                       _ => true,
                     },
                   )
-                  .mapIndexed(
-                    (index, id) => [
-                      if (index > 0) const SizedBox(height: 12.0),
-                      AsUiWidget(
-                        account: account,
-                        host: host,
-                        componentId: id,
-                        components: components,
-                      ),
-                    ],
-                  )
-                  .flattenedToList,
+                  .map(
+                    (id) => AsUiWidget(
+                      account: account,
+                      host: host,
+                      componentId: id,
+                      components: components,
+                    ),
+                  ),
             ],
           ),
         );
@@ -134,6 +130,7 @@ class AsUiWidget extends HookConsumerWidget {
                 'right' => CrossAxisAlignment.end,
                 _ => CrossAxisAlignment.start,
               },
+              spacing: 12.0,
               children: [
                 ...?children
                     ?.where(
@@ -145,18 +142,14 @@ class AsUiWidget extends HookConsumerWidget {
                         _ => true,
                       },
                     )
-                    .mapIndexed(
-                      (index, id) => [
-                        if (index > 0) const SizedBox(height: 12.0),
-                        AsUiWidget(
-                          account: account,
-                          host: host,
-                          componentId: id,
-                          components: components,
-                        ),
-                      ],
-                    )
-                    .flattenedToList,
+                    .map(
+                      (id) => AsUiWidget(
+                        account: account,
+                        host: host,
+                        componentId: id,
+                        components: components,
+                      ),
+                    ),
               ],
             ),
           ),
