@@ -68,7 +68,10 @@ class AsUiWidget extends HookConsumerWidget {
               ...children
                   .where(
                     (id) => switch (components[id]) {
-                      AsUiContainer(hidden: true) => false,
+                      AsUiComponent_Container(
+                        field0: AsUiContainer(hidden: true),
+                      ) =>
+                        false,
                       _ => true,
                     },
                   )
@@ -135,7 +138,10 @@ class AsUiWidget extends HookConsumerWidget {
                 ...?children
                     ?.where(
                       (id) => switch (components[id]) {
-                        AsUiContainer(hidden: true) => false,
+                        AsUiComponent_Container(
+                          field0: AsUiContainer(hidden: true),
+                        ) =>
+                          false,
                         _ => true,
                       },
                     )
@@ -460,7 +466,10 @@ class AsUiWidget extends HookConsumerWidget {
           children: children
               ?.where(
                 (id) => switch (components[id]) {
-                  AsUiContainer(hidden: true) => false,
+                  AsUiComponent_Container(
+                    field0: AsUiContainer(hidden: true),
+                  ) =>
+                    false,
                   _ => true,
                 },
               )
