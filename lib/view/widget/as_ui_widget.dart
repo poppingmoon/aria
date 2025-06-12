@@ -32,30 +32,25 @@ class AsUiWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     switch (components[componentId]) {
       case AsUiComponent_Root(field0: AsUiRoot(:final children)):
+        final theme = Theme.of(context);
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: theme.copyWith(
             inputDecorationTheme: InputDecorationTheme(
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                ),
+                borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                borderSide: BorderSide(color: theme.colorScheme.primary),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6.0),
               ),
               filled: true,
-              fillColor: Theme.of(context).colorScheme.surface,
+              fillColor: theme.colorScheme.surface,
               helperStyle: TextStyle(
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.75),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
               ),
               helperMaxLines: 100,
               isDense: true,
