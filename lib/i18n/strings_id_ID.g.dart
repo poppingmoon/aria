@@ -1597,6 +1597,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
 	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorIdId watermarkEditor_ = _TranslationsMisskeyWatermarkEditorIdId._(_root);
 }
 
 // Path: misskey.chat_
@@ -3062,6 +3063,24 @@ class _TranslationsMisskeySearchIdId extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeAll => 'Semua';
 	@override String get searchScopeLocal => 'Lokal';
 	@override String get searchScopeUser => 'Pengguna spesifik';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorIdId extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveFileTypeWarn => 'Berkas ini tidak didukung';
+	@override String get opacity => 'Opasitas';
+	@override String get scale => 'Ukuran';
+	@override String get text => 'Teks';
+	@override String get position => 'Posisi';
+	@override String get type => 'Tipe';
+	@override String get image => 'Gambar';
+	@override String get advanced => 'Tingkat lanjut';
+	@override String get angle => 'Sudut';
 }
 
 // Path: misskey.delivery_.type_

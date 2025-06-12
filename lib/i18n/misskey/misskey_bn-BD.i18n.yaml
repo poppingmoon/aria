@@ -1353,3 +1353,9 @@ remoteLookupErrors_:
 search_:
   searchScopeAll: "সবগুলো"
   searchScopeLocal: "স্থানীয়"
+watermarkEditor_:
+  opacity: "অস্বচ্ছতা"
+  scale: "আকার"
+  text: "লেখা"
+  image: "ছবি"
+  advanced: "উন্নত"

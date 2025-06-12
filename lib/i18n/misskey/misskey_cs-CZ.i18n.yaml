@@ -2047,3 +2047,11 @@ search_:
   searchScopeAll: "Vše"
   searchScopeLocal: "Místní"
   searchScopeUser: "Upřesnit uživatele"
+watermarkEditor_:
+  opacity: "Průhlednost"
+  scale: "Velikost"
+  text: "Text"
+  position: "Pozice"
+  type: "Typ"
+  image: "Obrázky"
+  advanced: "Pokročilé"

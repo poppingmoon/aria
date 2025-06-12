@@ -1427,6 +1427,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenFrFr embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenFrFr._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsFrFr remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsFrFr._(_root);
 	@override late final _TranslationsMisskeySearchFrFr search_ = _TranslationsMisskeySearchFrFr._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorFrFr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorFrFr._(_root);
 }
 
 // Path: misskey.chat_
@@ -2684,6 +2685,24 @@ class _TranslationsMisskeySearchFrFr extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeAll => 'Tous';
 	@override String get searchScopeLocal => 'Local';
 	@override String get searchScopeUser => 'Spécifier l\'utilisateur·rice';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorFrFr extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveFileTypeWarn => 'Ce fichier n\'est pas pris en charge';
+	@override String get opacity => 'Transparence';
+	@override String get scale => 'Taille';
+	@override String get text => 'Texte';
+	@override String get position => 'Position';
+	@override String get type => 'Type';
+	@override String get image => 'Images';
+	@override String get advanced => 'Avancé';
+	@override String get angle => 'Angle';
 }
 
 // Path: misskey.delivery_.type_

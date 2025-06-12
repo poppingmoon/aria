@@ -1173,6 +1173,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiPlPl reversi_ = _TranslationsMisskeyReversiPlPl._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPlPl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPlPl._(_root);
 	@override late final _TranslationsMisskeySearchPlPl search_ = _TranslationsMisskeySearchPlPl._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorPlPl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPlPl._(_root);
 }
 
 // Path: misskey.chat_
@@ -2048,6 +2049,21 @@ class _TranslationsMisskeySearchPlPl extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Wszystkie';
 	@override String get searchScopeLocal => 'Lokalne';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorPlPl extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'Przezroczystość';
+	@override String get scale => 'Rozmiar';
+	@override String get text => 'Tekst';
+	@override String get type => 'Typ';
+	@override String get image => 'Zdjęcia';
+	@override String get advanced => 'Zaawansowane';
 }
 
 // Path: misskey.delivery_.type_

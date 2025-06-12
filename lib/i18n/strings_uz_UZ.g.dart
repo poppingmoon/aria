@@ -950,6 +950,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiUzUz reversi_ = _TranslationsMisskeyReversiUzUz._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUzUz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUzUz._(_root);
 	@override late final _TranslationsMisskeySearchUzUz search_ = _TranslationsMisskeySearchUzUz._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorUzUz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUzUz._(_root);
 }
 
 // Path: misskey.chat_
@@ -1436,6 +1437,19 @@ class _TranslationsMisskeySearchUzUz extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Barcha';
 	@override String get searchScopeLocal => 'Mahalliy';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorUzUz extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get text => 'Matn';
+	@override String get type => 'turi';
+	@override String get image => 'Rasmlar';
+	@override String get advanced => 'Murakkab';
 }
 
 // Path: misskey.delivery_.type_

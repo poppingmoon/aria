@@ -464,6 +464,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDeckTrTr deck_ = _TranslationsMisskeyDeckTrTr._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesTrTr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesTrTr._(_root);
 	@override late final _TranslationsMisskeySearchTrTr search_ = _TranslationsMisskeySearchTrTr._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorTrTr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorTrTr._(_root);
 }
 
 // Path: misskey.chat_
@@ -698,6 +699,16 @@ class _TranslationsMisskeySearchTrTr extends TranslationsMisskeySearchEnUs {
 
 	// Translations
 	@override String get searchScopeAll => 'Tümü';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorTrTr extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get image => 'Görseller';
 }
 
 // Path: misskey.delivery_.type_

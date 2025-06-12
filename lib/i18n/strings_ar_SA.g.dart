@@ -1140,6 +1140,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyOfflineScreenArSa offlineScreen_ = _TranslationsMisskeyOfflineScreenArSa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsArSa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsArSa._(_root);
 	@override late final _TranslationsMisskeySearchArSa search_ = _TranslationsMisskeySearchArSa._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorArSa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorArSa._(_root);
 }
 
 // Path: misskey.chat_
@@ -2035,6 +2036,22 @@ class _TranslationsMisskeySearchArSa extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeAll => 'الكل';
 	@override String get searchScopeLocal => 'المحلي';
 	@override String get searchScopeUser => 'مستخدم محدد';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorArSa extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'الشفافية';
+	@override String get scale => 'الحجم';
+	@override String get text => 'نص';
+	@override String get position => 'الموضع';
+	@override String get type => 'نوع';
+	@override String get image => 'صور';
+	@override String get advanced => 'متقدم';
 }
 
 // Path: misskey.achievements_.types_

@@ -673,6 +673,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiSvSe reversi_ = _TranslationsMisskeyReversiSvSe._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionSvSe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionSvSe._(_root);
 	@override late final _TranslationsMisskeySearchSvSe search_ = _TranslationsMisskeySearchSvSe._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorSvSe watermarkEditor_ = _TranslationsMisskeyWatermarkEditorSvSe._(_root);
 }
 
 // Path: misskey.chat_
@@ -1103,6 +1104,17 @@ class _TranslationsMisskeySearchSvSe extends TranslationsMisskeySearchEnUs {
 
 	// Translations
 	@override String get searchScopeAll => 'Allt';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorSvSe extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Storlek';
+	@override String get image => 'Bilder';
 }
 
 // Path: misskey.delivery_.type_

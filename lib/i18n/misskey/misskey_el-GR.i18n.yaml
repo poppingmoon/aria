@@ -407,3 +407,5 @@ reversi_:
   total: "Σύνολο"
 search_:
   searchScopeLocal: "Τοπικό"
+watermarkEditor_:
+  image: "Εικόνες"

@@ -1588,3 +1588,10 @@ remoteLookupErrors_:
 search_:
   searchScopeAll: "Wszystkie"
   searchScopeLocal: "Lokalne"
+watermarkEditor_:
+  opacity: "Przezroczystość"
+  scale: "Rozmiar"
+  text: "Tekst"
+  type: "Typ"
+  image: "Zdjęcia"
+  advanced: "Zaawansowane"

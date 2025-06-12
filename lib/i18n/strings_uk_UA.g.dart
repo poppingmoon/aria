@@ -1036,6 +1036,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiUkUa reversi_ = _TranslationsMisskeyReversiUkUa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUkUa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUkUa._(_root);
 	@override late final _TranslationsMisskeySearchUkUa search_ = _TranslationsMisskeySearchUkUa._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorUkUa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUkUa._(_root);
 }
 
 // Path: misskey.chat_
@@ -1873,6 +1874,21 @@ class _TranslationsMisskeySearchUkUa extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Всі';
 	@override String get searchScopeLocal => 'Локальна';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorUkUa extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'Непрозорість';
+	@override String get scale => 'Розмір';
+	@override String get text => 'Текст';
+	@override String get type => 'Тип';
+	@override String get image => 'Зображення';
+	@override String get advanced => 'Розширені';
 }
 
 // Path: misskey.delivery_.type_

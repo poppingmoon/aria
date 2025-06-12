@@ -300,6 +300,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'Tắt nội dung đa phương tiện từ máy chủ này';
 	@override String get operations => 'Vận hành';
 	@override String get software => 'Phần mềm';
+	@override String get softwareName => 'Tên phần mềm';
 	@override String get version => 'Phiên bản';
 	@override String get metadata => 'Metadata';
 	@override String withNFiles({required Object n}) => '${n} tập tin';
@@ -377,6 +378,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => 'URL của tập tin bạn muốn tải lên';
 	@override String get uploadFromUrlRequested => 'Đã yêu cầu tải lên';
 	@override String get uploadFromUrlMayTakeTime => 'Sẽ mất một khoảng thời gian để tải lên xong.';
+	@override String uploadNFiles({required Object n}) => 'Tải lên ${n} tập tin';
 	@override String get explore => 'Khám phá';
 	@override String get messageRead => 'Đã đọc';
 	@override String get noMoreHistory => 'Không còn gì để đọc';
@@ -656,6 +658,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get newNoteRecived => 'Đã nhận tút mới';
 	@override String get sounds => 'Âm thanh';
 	@override String get sound => 'Âm thanh';
+	@override String get notificationSoundSettings => 'Cài đặt âm thanh thông báo';
 	@override String get listen => 'Nghe';
 	@override String get none => 'Không';
 	@override String get showInPage => 'Hiện trong trang';
@@ -1254,9 +1257,12 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get followingOrFollower => 'Đang theo dõi hoặc người theo dõi';
 	@override String get externalServices => 'Các dịch vụ bên ngoài';
 	@override String get sourceCode => 'Mã nguồn';
+	@override String get sourceCodeIsNotYetProvided => 'Mã nguồn hiện chưa có sẵn, vui lòng liên hệ với quản trị viên để khắc phục sự cố này.';
 	@override String get repositoryUrlDescription => 'Nếu bạn có kho lưu trữ mã nguồn có thể truy cập công khai, hãy nhập URL. Nếu bạn đang sử dụng Misskey theo mặc định (không thực hiện bất kỳ thay đổi nào đối với mã nguồn), hãy nhập https://github.com/misskey-dev/misskey.';
 	@override String get feedback => 'Phản hồi';
 	@override String get feedbackUrl => 'URL phản hồi';
+	@override String get impressum => 'Thông tin nhà điều hành';
+	@override String get impressumUrl => 'URL thông tin nhà điều hành';
 	@override String get privacyPolicy => 'Chính sách bảo mật';
 	@override String get privacyPolicyUrl => 'URL Chính sách bảo mật';
 	@override String get tosAndPrivacyPolicy => 'Điều khoản sử dụng và Chính sách bảo mật';
@@ -1270,6 +1276,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Thả để làm mới';
 	@override String get refreshing => 'Đang làm mới';
 	@override String get pullDownToRefresh => 'Kéo xuống để làm mới';
+	@override String get signupPendingError => 'Đã xảy ra sự cố khi xác minh địa chỉ email của bạn. Liên kết có thể đã hết hạn.';
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
 	@override String get decorate => 'Trang trí';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
@@ -1280,12 +1287,22 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get messageToFollower => 'Tin nhắn cho người theo dõi';
 	@override String get yourNameContainsProhibitedWords => 'Tên bạn đang cố gắng đổi có chứa chuỗi ký tự bị cấm.';
 	@override String get yourNameContainsProhibitedWordsDescription => 'Tên có chứa chuỗi ký tự bị cấm. Nếu bạn muốn sử dụng tên này, hãy liên hệ với quản trị viên máy chủ của bạn.';
+	@override String get pleaseSelectAccount => 'Chọn tài khoản của bạn';
 	@override String get federationDisabled => 'Liên kết bị vô hiệu hóa trên máy chủ này. Bạn không thể tương tác với người dùng trên các máy chủ khác.';
 	@override String reactAreYouSure({required Object emoji}) => 'Bạn có muốn phản hồi với " ${emoji} " không?';
+	@override String get preferences => 'Thiết lập môi trường';
+	@override String get accessibility => 'Khả năng tiếp cận';
+	@override String get preferencesProfile => 'Hồ sơ sở thích';
+	@override String get preferenceSyncConflictTitle => 'Cài đặt tồn tại trên máy chủ';
+	@override String get preferenceSyncConflictText => 'Các thiết lập đồng bộ hóa được bật sẽ lưu các giá trị của chúng vào máy chủ. Tuy nhiên, có những giá trị hiện có trên máy chủ. Bạn muốn ghi đè lên bộ giá trị nào?';
 	@override String get paste => 'dán';
 	@override String get postForm => 'Mẫu đăng';
 	@override String get information => 'Giới thiệu';
+	@override String get chat => 'Trò chuyện';
+	@override String get migrateOldSettings => 'Di chuyển cài đặt cũ';
+	@override String get migrateOldSettings_description => 'Thông thường, quá trình này diễn ra tự động, nhưng nếu vì lý do nào đó mà quá trình di chuyển không thành công, bạn có thể kích hoạt thủ công quy trình di chuyển, quá trình này sẽ ghi đè lên thông tin cấu hình hiện tại của bạn.';
 	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
+	@override late final _TranslationsMisskeySettingsViVn settings_ = _TranslationsMisskeySettingsViVn._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);
 	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
 	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
@@ -1347,6 +1364,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCustomEmojisManagerViVn customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerViVn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
 	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorViVn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorViVn._(_root);
 }
 
 // Path: misskey.chat_
@@ -1361,6 +1379,16 @@ class _TranslationsMisskeyChatViVn extends TranslationsMisskeyChatEnUs {
 	@override String get members => 'Thành viên';
 	@override String get home => 'Trang chính';
 	@override String get send => 'Gửi';
+}
+
+// Path: misskey.settings_
+class _TranslationsMisskeySettingsViVn extends TranslationsMisskeySettingsEnUs {
+	_TranslationsMisskeySettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get preferencesBanner => 'Bạn có thể cấu hình hành vi chung của máy khách theo sở thích của mình.';
 }
 
 // Path: misskey.accountSettings_
@@ -2009,6 +2037,7 @@ class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => 'Danh sách người dùng';
 	@override late final _TranslationsMisskeyWidgetsUserListViVn userList_ = _TranslationsMisskeyWidgetsUserListViVn._(_root);
 	@override String get clicker => 'clicker';
+	@override String get chat => 'Trò chuyện';
 }
 
 // Path: misskey.cw_
@@ -2402,6 +2431,23 @@ class _TranslationsMisskeySearchViVn extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeUser => 'Người dùng chỉ định';
 }
 
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorViVn extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'Độ trong suốt';
+	@override String get scale => 'Kích thước';
+	@override String get text => 'Văn bản';
+	@override String get position => 'Vị trí';
+	@override String get type => 'Loại';
+	@override String get image => 'Hình ảnh';
+	@override String get advanced => 'Nâng cao';
+	@override String get angle => 'Góc';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2727,6 +2773,7 @@ class _TranslationsMisskeyDeckColumnsViVn extends TranslationsMisskeyDeckColumns
 	@override String get channel => 'Kênh';
 	@override String get mentions => 'Lượt nhắc';
 	@override String get direct => 'Nhắn riêng';
+	@override String get chat => 'Trò chuyện';
 }
 
 // Path: misskey.webhookSettings_.events_

@@ -976,6 +976,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiBnBd reversi_ = _TranslationsMisskeyReversiBnBd._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsBnBd remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsBnBd._(_root);
 	@override late final _TranslationsMisskeySearchBnBd search_ = _TranslationsMisskeySearchBnBd._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorBnBd watermarkEditor_ = _TranslationsMisskeyWatermarkEditorBnBd._(_root);
 }
 
 // Path: misskey.chat_
@@ -1793,6 +1794,20 @@ class _TranslationsMisskeySearchBnBd extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'সবগুলো';
 	@override String get searchScopeLocal => 'স্থানীয়';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorBnBd extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'অস্বচ্ছতা';
+	@override String get scale => 'আকার';
+	@override String get text => 'লেখা';
+	@override String get image => 'ছবি';
+	@override String get advanced => 'উন্নত';
 }
 
 // Path: misskey.delivery_.type_

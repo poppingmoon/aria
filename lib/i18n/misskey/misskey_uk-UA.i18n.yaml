@@ -1629,3 +1629,10 @@ remoteLookupErrors_:
 search_:
   searchScopeAll: "Всі"
   searchScopeLocal: "Локальна"
+watermarkEditor_:
+  opacity: "Непрозорість"
+  scale: "Розмір"
+  text: "Текст"
+  type: "Тип"
+  image: "Зображення"
+  advanced: "Розширені"

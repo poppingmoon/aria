@@ -1206,6 +1206,12 @@
             "value": "Someone logged in"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alguien ha iniciado sesión"
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
@@ -1485,6 +1491,12 @@
             "value": "You have been invited to a chat room"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invitado a la sala de chat."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -1542,6 +1554,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "An access token has been created"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token de acceso creado"
           }
         },
         "it": {
@@ -1763,6 +1781,12 @@
             "value": "If you have no idea, delete the access token through \"Manage access tokens\"."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si no tienes ni idea, elimina el token de acceso a través de \"Administrar tokens de acceso\"."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -1814,6 +1838,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La publicación de la nota programada ha fallado"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pubblicazione pianificata delle note non è riuscita"
           }
         },
         "ja": {
@@ -1874,6 +1904,12 @@
             "value": "La nota programada ha sido publicada"
           }
         },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La nota pianificata è stata pubblicata"
+          }
+        },
         "ja": {
           "stringUnit": {
             "state": "translated",
@@ -1901,6 +1937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La publicación de la nota programada ha fallado"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La pubblicazione pianificata delle note non è riuscita"
           }
         },
         "ja": {
@@ -1936,6 +1978,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Export of Antennas has been completed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Antenas ha sido completada."
           }
         },
         "it": {
@@ -2003,6 +2051,12 @@
             "value": "Export of Blocked users has been completed"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Usuarios bloqueados ha sido completada."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2066,6 +2120,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Export of Clips has been completed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Clip ha sido completada."
           }
         },
         "it": {
@@ -2133,6 +2193,12 @@
             "value": "Export of Custom Emoji has been completed"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Emojis personalizados ha sido completada."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2196,6 +2262,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Export of Favorites has been completed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Favoritos ha sido completada."
           }
         },
         "it": {
@@ -2263,6 +2335,12 @@
             "value": "Export of Following has been completed"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Siguiendo ha sido completada."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2326,6 +2404,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Export of Muted users has been completed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Usuarios silenciados ha sido completada."
           }
         },
         "it": {
@@ -2393,6 +2477,12 @@
             "value": "Export of Notes has been completed"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Notas ha sido completada."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2456,6 +2546,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Export of Lists has been completed"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La exportación de Listas ha sido completada."
           }
         },
         "it": {
