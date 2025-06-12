@@ -377,6 +377,7 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesElGr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesElGr._(_root);
 	@override late final _TranslationsMisskeyReversiElGr reversi_ = _TranslationsMisskeyReversiElGr._(_root);
 	@override late final _TranslationsMisskeySearchElGr search_ = _TranslationsMisskeySearchElGr._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorElGr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorElGr._(_root);
 }
 
 // Path: misskey.chat_
@@ -648,6 +649,16 @@ class _TranslationsMisskeySearchElGr extends TranslationsMisskeySearchEnUs {
 
 	// Translations
 	@override String get searchScopeLocal => 'Τοπικό';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorElGr extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorElGr._(TranslationsElGr root) : this._root = root, super.internal(root);
+
+	final TranslationsElGr _root; // ignore: unused_field
+
+	// Translations
+	@override String get image => 'Εικόνες';
 }
 
 // Path: misskey.email_.follow_

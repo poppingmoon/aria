@@ -1366,6 +1366,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiRuRu reversi_ = _TranslationsMisskeyReversiRuRu._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRuRu remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRuRu._(_root);
 	@override late final _TranslationsMisskeySearchRuRu search_ = _TranslationsMisskeySearchRuRu._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorRuRu watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRuRu._(_root);
 }
 
 // Path: misskey.chat_
@@ -2519,6 +2520,23 @@ class _TranslationsMisskeySearchRuRu extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeAll => 'Все';
 	@override String get searchScopeLocal => 'Местная';
 	@override String get searchScopeUser => 'Указанный пользователь';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorRuRu extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'Непрозрачность';
+	@override String get scale => 'Размер';
+	@override String get text => 'Текст';
+	@override String get position => 'Позиция';
+	@override String get type => 'Тип';
+	@override String get image => 'Изображения';
+	@override String get advanced => 'Для продвинутых';
+	@override String get angle => 'Угол';
 }
 
 // Path: misskey.delivery_.type_

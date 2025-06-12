@@ -578,6 +578,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNoNo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoNo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNoNo._(_root);
 	@override late final _TranslationsMisskeySearchNoNo search_ = _TranslationsMisskeySearchNoNo._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorNoNo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNoNo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1082,6 +1083,19 @@ class _TranslationsMisskeySearchNoNo extends TranslationsMisskeySearchEnUs {
 
 	// Translations
 	@override String get searchScopeAll => 'Alle';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorNoNo extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Størrelse';
+	@override String get text => 'Tekst';
+	@override String get type => 'Type';
+	@override String get image => 'Bilder';
 }
 
 // Path: misskey.achievements_.types_

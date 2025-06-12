@@ -739,3 +739,8 @@ remoteLookupErrors_:
     title: "Ikke funnet"
 search_:
   searchScopeAll: "Alle"
+watermarkEditor_:
+  scale: "Størrelse"
+  text: "Tekst"
+  type: "Type"
+  image: "Bilder"

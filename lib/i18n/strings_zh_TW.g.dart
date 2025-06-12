@@ -412,6 +412,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get lightThemes => '淺色佈景主題';
 	@override String get darkThemes => '深色佈景主題';
 	@override String get syncDeviceDarkMode => '與裝置的深色模式同步';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '「${x}」已開啟。要關閉同步並手動切換模式嗎？\n';
 	@override String get drive => '雲端硬碟';
 	@override String get fileName => '檔案名稱';
 	@override String get selectFile => '選擇檔案';
@@ -664,6 +665,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get newNote => '新的貼文';
 	@override String get sounds => '音效';
 	@override String get sound => '音效';
+	@override String get notificationSoundSettings => '設定通知音效';
 	@override String get listen => '聆聽';
 	@override String get none => '無';
 	@override String get showInPage => '在頁面中顯示';
@@ -1085,6 +1087,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get cannotUploadBecauseInappropriate => '由於判定可能包含不適當的內容，因此無法上傳。';
 	@override String get cannotUploadBecauseNoFreeSpace => '由於雲端硬碟沒有可用空間，因此無法上傳。';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => '由於超過了檔案大小的限制，無法上傳。';
+	@override String get cannotUploadBecauseUnallowedFileType => '由於檔案類型不被允許，無法上傳。\n';
 	@override String get beta => '測試版';
 	@override String get enableAutoSensitive => '自動 NSFW 判定';
 	@override String get enableAutoSensitiveDescription => '如果可行，它將使用機器學習技術判斷檔案是否需要標記為敏感。即使關閉此功能，也可能會依伺服器規則而自動啟用。';
@@ -1412,6 +1415,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get syncBetweenDevices => '裝置之間的同步化';
 	@override String get preferenceSyncConflictTitle => '伺服器上存在設定值';
 	@override String get preferenceSyncConflictText => '已啟用同步的設定項目會將設定值儲存至伺服器，並已找到該設定項目在伺服器上儲存的設定值。請選擇要使用哪個設定值進行覆寫。';
+	@override String get preferenceSyncConflictChoiceMerge => '合併至';
 	@override String get preferenceSyncConflictChoiceServer => '伺服器設定值';
 	@override String get preferenceSyncConflictChoiceDevice => '裝置的設定值';
 	@override String get preferenceSyncConflictChoiceCancel => '取消啟用同步';
@@ -1442,6 +1446,12 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get emojiUnmute => '表情符號解除靜音';
 	@override String muteX({required Object x}) => '將 ${x} 靜音';
 	@override String unmuteX({required Object x}) => '將 ${x} 解除靜音';
+	@override String get abort => '取消';
+	@override String get tip => '提示與技巧';
+	@override String get redisplayAllTips => '重新顯示所有「提示與技巧」';
+	@override String get hideAllTips => '隱藏所有「提示與技巧」';
+	@override String get defaultImageCompressionLevel => '預設的影像壓縮程度';
+	@override String get defaultImageCompressionLevel_description => '低的話可以保留畫質，但是會增加檔案的大小。<br>高的話可以減少檔案大小，但是會降低畫質。';
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1534,6 +1544,12 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyServerSetupWizardZhTw serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardZhTw._(_root);
 	@override late final _TranslationsMisskeyUploaderZhTw uploader_ = _TranslationsMisskeyUploaderZhTw._(_root);
 	@override late final _TranslationsMisskeyClientPerformanceIssueTipZhTw clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipZhTw._(_root);
+	@override late final _TranslationsMisskeyClipZhTw clip_ = _TranslationsMisskeyClipZhTw._(_root);
+	@override late final _TranslationsMisskeyUserListsZhTw userLists_ = _TranslationsMisskeyUserListsZhTw._(_root);
+	@override String get watermark => '浮水印';
+	@override String get defaultPreset => '預設值';
+	@override late final _TranslationsMisskeyWatermarkEditorZhTw watermarkEditor_ = _TranslationsMisskeyWatermarkEditorZhTw._(_root);
+	@override late final _TranslationsMisskeyImageEffectorZhTw imageEffector_ = _TranslationsMisskeyImageEffectorZhTw._(_root);
 }
 
 // Path: misskey.chat_
@@ -1640,6 +1656,7 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description => '頻率越高，內容更新越即時，但可能會降低效能，並增加資料傳輸量與電池消耗。\n';
 	@override String get contentsUpdateFrequency_description2 => '當即時模式開啟時，不論此設定為何，內容都會即時更新。';
 	@override String get showUrlPreview => '顯示網址預覽';
+	@override String get showAvailableReactionsFirstInNote => '將可用的反應顯示在頂部';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -3153,6 +3170,8 @@ class _TranslationsMisskeyUrlPreviewSettingZhTw extends TranslationsMisskeyUrlPr
 	// Translations
 	@override String get title => 'URL 預覽設定';
 	@override String get enable => '啟用 URL 預覽';
+	@override String get allowRedirect => '允許預覽目標的重新導向';
+	@override String get allowRedirectDescription => '設定當輸入的 URL 發生重新導向時，是否追蹤該重新導向並顯示預覽。若停用此功能，雖可節省伺服器資源，但將無法顯示重新導向後的內容。\n';
 	@override String get timeout => '取得預覽的逾時時間 (ms)';
 	@override String get timeoutDescription => '若取得預覽所需的時間超過這個值，則不會產生預覽。';
 	@override String get maximumContentLength => 'Content-Length 的最大値 (byte)';
@@ -3382,6 +3401,8 @@ class _TranslationsMisskeyUploaderZhTw extends TranslationsMisskeyUploaderEnUs {
 	@override String get abortConfirm => '有些檔案尚未上傳，您要中止嗎？';
 	@override String get doneConfirm => '有些檔案尚未上傳，是否要完成上傳？';
 	@override String maxFileSizeIsX({required Object x}) => '可上傳的最大檔案大小為 ${x}。';
+	@override String get allowedTypes => '可上傳的檔案類型';
+	@override String get tip => '檔案尚未上傳。您可以在此對話框中進行上傳前的確認、重新命名、壓縮、裁切等操作。準備完成後，請點選「上傳」按鈕開始上傳。\n';
 }
 
 // Path: misskey.clientPerformanceIssueTip_
@@ -3398,6 +3419,73 @@ class _TranslationsMisskeyClientPerformanceIssueTipZhTw extends TranslationsMiss
 	@override String get makeSureDisabledCustomCss_description => '覆蓋樣式可能會影響效能。請確認是否啟用了自訂 CSS 或其他會覆蓋樣式的擴充功能。\n';
 	@override String get makeSureDisabledAddons => '請停用擴充功能';
 	@override String get makeSureDisabledAddons_description => '部分擴充功能可能會干擾用戶端的運作並影響效能。請嘗試停用瀏覽器的擴充功能，以確認是否能改善情況';
+}
+
+// Path: misskey.clip_
+class _TranslationsMisskeyClipZhTw extends TranslationsMisskeyClipEnUs {
+	_TranslationsMisskeyClipZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '摘錄是一項可以用來整理貼文的功能。';
+}
+
+// Path: misskey.userLists_
+class _TranslationsMisskeyUserListsZhTw extends TranslationsMisskeyUserListsEnUs {
+	_TranslationsMisskeyUserListsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '您可以建立包含任意使用者的清單。建立後的清單可以作為時間軸顯示。\n';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorZhTw extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '可以在圖片中以浮水印加上出處等資訊。';
+	@override String get quitWithoutSaveConfirm => '不儲存就退出嗎？';
+	@override String get driveFileTypeWarn => '不支援此檔案';
+	@override String get driveFileTypeWarnDescription => '請選擇圖片檔案';
+	@override String get title => '編輯浮水印';
+	@override String get cover => '覆蓋整體';
+	@override String get repeat => '佈局';
+	@override String get opacity => '透明度';
+	@override String get scale => '大小';
+	@override String get text => '文字';
+	@override String get position => '位置';
+	@override String get type => '類型';
+	@override String get image => '圖片';
+	@override String get advanced => '進階';
+	@override String get stripe => '條紋';
+	@override String get stripeWidth => '線條寬度';
+	@override String get stripeFrequency => '線條數量';
+	@override String get angle => '角度';
+	@override String get polkadot => '波卡圓點';
+	@override String get checker => '棋盤格';
+	@override String get polkadotMainDotOpacity => '主圓點的不透明度';
+	@override String get polkadotMainDotRadius => '主圓點的尺寸';
+	@override String get polkadotSubDotOpacity => '子圓點的不透明度';
+	@override String get polkadotSubDotRadius => '子圓點的尺寸';
+	@override String get polkadotSubDotDivisions => '子圓點的數量';
+}
+
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorZhTw extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '特效';
+	@override String get addEffect => '新增特效';
+	@override String get discardChangesConfirm => '捨棄更改並退出嗎？';
+	@override late final _TranslationsMisskeyImageEffectorFxsZhTw fxs_ = _TranslationsMisskeyImageEffectorFxsZhTw._(_root);
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3717,6 +3805,9 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get canImportMuting => '允許匯入靜音名單';
 	@override String get canImportUserLists => '允許匯入清單';
 	@override String get chatAvailability => '允許聊天';
+	@override String get uploadableFileTypes => '可上傳的檔案類型';
+	@override String get uploadableFileTypes_caption => '請指定 MIME 類型。可以用換行區隔多個類型，也可以使用星號（*）作為萬用字元進行指定。（例如：image/*）\n';
+	@override String uploadableFileTypes_caption2({required Object x}) => '有些檔案可能無法判斷其類型。若要允許這類檔案，請在指定中加入 ${x}。';
 }
 
 // Path: misskey.role_.condition_
@@ -4252,6 +4343,29 @@ class _TranslationsMisskeyServerSetupWizardDonationRequestZhTw extends Translati
 	@override String get text1 => 'Misskey 是由志願者開發的免費軟體。';
 	@override String get text2 => '為了能夠繼續開發，若您願意的話，請考慮進行捐款。\n';
 	@override String get text3 => '也有提供支援者專屬的特典！\n';
+}
+
+// Path: misskey.imageEffector_.fxs_
+class _TranslationsMisskeyImageEffectorFxsZhTw extends TranslationsMisskeyImageEffectorFxsEnUs {
+	_TranslationsMisskeyImageEffectorFxsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get chromaticAberration => '色差';
+	@override String get glitch => '異常雜訊效果';
+	@override String get mirror => '鏡像';
+	@override String get invert => '反轉色彩';
+	@override String get grayscale => '黑白';
+	@override String get colorAdjust => '色彩校正';
+	@override String get colorClamp => '壓縮色彩';
+	@override String get colorClampAdvanced => '壓縮色彩（進階）';
+	@override String get distort => '變形';
+	@override String get threshold => '閾值';
+	@override String get zoomLines => '速度線';
+	@override String get stripe => '條紋';
+	@override String get polkadot => '波卡圓點';
+	@override String get checker => '棋盤格';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

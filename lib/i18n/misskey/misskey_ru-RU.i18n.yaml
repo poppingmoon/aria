@@ -2195,3 +2195,12 @@ search_:
   searchScopeAll: "Все"
   searchScopeLocal: "Местная"
   searchScopeUser: "Указанный пользователь"
+watermarkEditor_:
+  opacity: "Непрозрачность"
+  scale: "Размер"
+  text: "Текст"
+  position: "Позиция"
+  type: "Тип"
+  image: "Изображения"
+  advanced: "Для продвинутых"
+  angle: "Угол"

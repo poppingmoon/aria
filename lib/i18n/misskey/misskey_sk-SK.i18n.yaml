@@ -1454,3 +1454,10 @@ remoteLookupErrors_:
 search_:
   searchScopeAll: "Všetko"
   searchScopeLocal: "Lokálne"
+watermarkEditor_:
+  opacity: "Priehľadnosť"
+  scale: "Veľkosť"
+  text: "Text"
+  type: "Typ"
+  image: "Obrázky"
+  advanced: "Rozšírené"

@@ -478,6 +478,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesLoLa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsLoLa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsLoLa._(_root);
 	@override late final _TranslationsMisskeySearchLoLa search_ = _TranslationsMisskeySearchLoLa._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorLoLa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorLoLa._(_root);
 }
 
 // Path: misskey.chat_
@@ -729,6 +730,16 @@ class _TranslationsMisskeySearchLoLa extends TranslationsMisskeySearchEnUs {
 
 	// Translations
 	@override String get searchScopeAll => 'ທັງໝົດ';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorLoLa extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get image => 'ຮູບພາບ';
 }
 
 // Path: misskey.delivery_.type_

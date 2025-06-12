@@ -715,3 +715,6 @@ selfXssPrevention_:
   warning: "VARNING"
 search_:
   searchScopeAll: "Allt"
+watermarkEditor_:
+  scale: "Storlek"
+  image: "Bilder"

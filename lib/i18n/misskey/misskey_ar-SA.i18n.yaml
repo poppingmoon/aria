@@ -1593,3 +1593,11 @@ search_:
   searchScopeAll: "الكل"
   searchScopeLocal: "المحلي"
   searchScopeUser: "مستخدم محدد"
+watermarkEditor_:
+  opacity: "الشفافية"
+  scale: "الحجم"
+  text: "نص"
+  position: "الموضع"
+  type: "نوع"
+  image: "صور"
+  advanced: "متقدم"

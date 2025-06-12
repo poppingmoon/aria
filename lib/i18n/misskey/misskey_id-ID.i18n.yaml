@@ -2612,3 +2612,13 @@ search_:
   searchScopeAll: "Semua"
   searchScopeLocal: "Lokal"
   searchScopeUser: "Pengguna spesifik"
+watermarkEditor_:
+  driveFileTypeWarn: "Berkas ini tidak didukung"
+  opacity: "Opasitas"
+  scale: "Ukuran"
+  text: "Teks"
+  position: "Posisi"
+  type: "Tipe"
+  image: "Gambar"
+  advanced: "Tingkat lanjut"
+  angle: "Sudut"

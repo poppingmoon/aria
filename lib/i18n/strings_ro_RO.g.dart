@@ -1323,6 +1323,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCustomEmojisManagerRoRo customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerRoRo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRoRo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRoRo._(_root);
 	@override late final _TranslationsMisskeySearchRoRo search_ = _TranslationsMisskeySearchRoRo._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorRoRo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRoRo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1743,6 +1744,21 @@ class _TranslationsMisskeySearchRoRo extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeLocal => 'Local';
 	@override String get searchScopeUser => 'Utilizator specific';
 	@override String get serverHostPlaceholder => 'Exemplu: misskey.example.com';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorRoRo extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Dimensiune';
+	@override String get text => 'Text';
+	@override String get position => 'Poziție';
+	@override String get type => 'Tip';
+	@override String get image => 'Imagini';
+	@override String get advanced => 'Avansat';
 }
 
 // Path: misskey.delivery_.type_

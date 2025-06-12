@@ -1082,3 +1082,6 @@ remoteLookupErrors_:
     title: "Niet gevonden"
 search_:
   searchScopeAll: "Alle"
+watermarkEditor_:
+  image: "Afbeeldingen"
+  advanced: "Geavanceerd"

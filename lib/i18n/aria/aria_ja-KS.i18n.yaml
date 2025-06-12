@@ -138,6 +138,7 @@ showGapBetweenNotesInTimeline: "タイムラインのノートを離して表示
 showImage: "画像を表示"
 showLikeButtonInNoteFooter: "ノートのアクションにいいねを追加"
 showMenuButtonInTabBar: "タイムラインのタブバーにメニューボタンを追加"
+showNote: "ノートを表示"
 showNoteCreatedAt: "ノートの作成日時を表示するで"
 showNoteFooter: "ノートにアクションボタンを表示するで"
 showNoteReactionsViewer: "ノートにツッコミを表示するで"

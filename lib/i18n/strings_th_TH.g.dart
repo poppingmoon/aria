@@ -303,6 +303,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get mediaSilenceThisInstance => 'ปิดปากสื่อของเซิร์ฟเวอร์นี้';
 	@override String get operations => 'ดำเนินการ';
 	@override String get software => 'ซอฟต์แวร์';
+	@override String get softwareName => 'ชื่อซอฟต์แวร์';
 	@override String get version => 'เวอร์ชั่น';
 	@override String get metadata => 'Metadata';
 	@override String withNFiles({required Object n}) => '${n} ไฟล์';
@@ -1376,6 +1377,10 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => 'คุณต้องการที่จะตอบสนองต่อ " ${emoji}" หรือไม่?';
 	@override String get markAsSensitiveConfirm => 'คุณต้องการทำเครื่องหมายสื่อนี้ว่าละเอียดอ่อนหรือไม่?';
 	@override String get unmarkAsSensitiveConfirm => 'คุณต้องการลบการกำหนดความไวของสื่อนี้หรือไม่?';
+	@override String get preferences => 'การตั้งค่าสภาพแวดล้อม';
+	@override String get preferencesProfile => 'โปรไฟล์การกำหนดค่า';
+	@override String get preferenceSyncConflictTitle => 'การตั้งค่ามีอยู่บนเซิร์ฟเวอร์';
+	@override String get preferenceSyncConflictText => 'รายการการตั้งค่าที่เปิดใช้งานการซิงโครไนซ์จะจัดเก็บค่าไว้บนเซิร์ฟเวอร์ และพบค่าที่จัดเก็บบนเซิร์ฟเวอร์สำหรับรายการการตั้งค่านี้ คุณต้องการทำอย่างไร?';
 	@override String get postForm => 'แบบฟอร์มการโพสต์';
 	@override String get information => 'เกี่ยวกับ';
 	@override String get right => 'ขวา';
@@ -1459,6 +1464,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsThTh remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsThTh._(_root);
 	@override late final _TranslationsMisskeySearchThTh search_ = _TranslationsMisskeySearchThTh._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorThTh watermarkEditor_ = _TranslationsMisskeyWatermarkEditorThTh._(_root);
 }
 
 // Path: misskey.chat_
@@ -1483,6 +1489,7 @@ class _TranslationsMisskeySettingsThTh extends TranslationsMisskeySettingsEnUs {
 
 	// Translations
 	@override String get webhook => 'Webhook';
+	@override String get preferencesBanner => 'คุณสามารถกำหนดค่าพฤติกรรมโดยรวมของไคลเอนต์ได้ตามความต้องการของคุณ';
 }
 
 // Path: misskey.accountSettings_
@@ -3001,6 +3008,24 @@ class _TranslationsMisskeySearchThTh extends TranslationsMisskeySearchEnUs {
 	@override String get searchScopeAll => 'ทั้งหมด';
 	@override String get searchScopeLocal => 'ท้องถิ่น';
 	@override String get searchScopeUser => 'ผู้ใช้เฉพาะ';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorThTh extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveFileTypeWarn => 'ไม่รองรับไฟล์นี้';
+	@override String get opacity => 'ความทึบแสง';
+	@override String get scale => 'ขนาด';
+	@override String get text => 'ข้อความ';
+	@override String get position => 'ตำแหน่ง';
+	@override String get type => 'รูปแบบ';
+	@override String get image => 'รูปภาพ';
+	@override String get advanced => 'ขั้นสูง';
+	@override String get angle => 'แองเกิล';
 }
 
 // Path: misskey.delivery_.type_

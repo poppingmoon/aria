@@ -1045,6 +1045,7 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiSkSk reversi_ = _TranslationsMisskeyReversiSkSk._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsSkSk remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsSkSk._(_root);
 	@override late final _TranslationsMisskeySearchSkSk search_ = _TranslationsMisskeySearchSkSk._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorSkSk watermarkEditor_ = _TranslationsMisskeyWatermarkEditorSkSk._(_root);
 }
 
 // Path: misskey.chat_
@@ -1914,6 +1915,21 @@ class _TranslationsMisskeySearchSkSk extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Všetko';
 	@override String get searchScopeLocal => 'Lokálne';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorSkSk extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get opacity => 'Priehľadnosť';
+	@override String get scale => 'Veľkosť';
+	@override String get text => 'Text';
+	@override String get type => 'Typ';
+	@override String get image => 'Obrázky';
+	@override String get advanced => 'Rozšírené';
 }
 
 // Path: misskey.delivery_.type_

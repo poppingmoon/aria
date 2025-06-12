@@ -544,6 +544,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => '업로드하려는 파일의 URL';
 	@override String get uploadFromUrlRequested => '업로드를 요청했습니다';
 	@override String get uploadFromUrlMayTakeTime => '업로드가 완료될 때까지 시간이 소요될 수 있습니다.';
+	@override String uploadNFiles({required Object n}) => '${n}개의 파일을 업로';
 	@override String get explore => '둘러보기';
 	@override String get messageRead => '읽음';
 	@override String get noMoreHistory => '이것보다 과거의 기록이 없습니다';
@@ -572,6 +573,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get lightThemes => '밝은 테마';
 	@override String get darkThemes => '어두운 테마';
 	@override String get syncDeviceDarkMode => '디바이스의 다크 모드 설정과 동기화';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '\'${x}\'가 켜져 있습니다. 동기화를 끄고 수동으로 모드를 변경하겠습니까?';
 	@override String get drive => '드라이브';
 	@override String get fileName => '파일명';
 	@override String get selectFile => '파일 선택';
@@ -821,8 +823,10 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => '채널 타임라인 상단에 글 입력란을 표시';
 	@override String get withRepliesByDefaultForNewlyFollowed => '팔로우 할 때 기본적으로 답글을 타임라인에 나오게 하기';
 	@override String get newNoteRecived => '새 노트가 있습니다';
+	@override String get newNote => '새로운 노트';
 	@override String get sounds => '소리';
 	@override String get sound => '소리';
+	@override String get notificationSoundSettings => '알림 설정';
 	@override String get listen => '듣기';
 	@override String get none => '없음';
 	@override String get showInPage => '페이지로 보기';
@@ -1037,6 +1041,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get narrow => '좁게';
 	@override String get reloadToApplySetting => '이 설정을 적용하려면 페이지를 새로고침해야 합니다. 바로 새로고침하시겠습니까?';
 	@override String get needReloadToApply => '변경 사항은 새로고침하면 적용됩니다.';
+	@override String get needToRestartServerToApply => '변경 사항은 새로고침이 필요합니다.';
 	@override String get showTitlebar => '타이틀 바를 표시하기';
 	@override String get clearCache => '캐시 비우기';
 	@override String onlineUsersCount({required Object n}) => '${n}명이 접속 중';
@@ -1243,6 +1248,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get cannotUploadBecauseInappropriate => '이 파일은 부적절한 내용을 포함한다고 판단되어 업로드할 수 없습니다.';
 	@override String get cannotUploadBecauseNoFreeSpace => '드라이브 용량이 부족하여 업로드할 수 없습니다.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => '파일 크기가 너무 크기 때문에 업로드할 수 없습니다.';
+	@override String get cannotUploadBecauseUnallowedFileType => '허가되지 않은 유형의 파일이기에 업로드할 수 없습니다.';
 	@override String get beta => '베타';
 	@override String get enableAutoSensitive => '자동 NSFW 탐지';
 	@override String get enableAutoSensitiveDescription => '이용 가능할 경우 기계학습을 통해 자동으로 미디어 NSFW를 설정합니다. 이 기능을 해제하더라도, 서버 정책에 따라 자동으로 설정될 수 있습니다.';
@@ -1570,6 +1576,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get syncBetweenDevices => '장치간 동기화';
 	@override String get preferenceSyncConflictTitle => '서버에 설정값이 존재합니다.';
 	@override String get preferenceSyncConflictText => '동기화를 활성화 한 항목의 설정 값은 서버에 저장되지만, 해당 항목은 이미 서버에 설정 값이 저장되어져 있습니다. 어느 쪽의 설정 값을 덮어씌울까요?';
+	@override String get preferenceSyncConflictChoiceMerge => '병합';
 	@override String get preferenceSyncConflictChoiceServer => '서버 설정값';
 	@override String get preferenceSyncConflictChoiceDevice => '장치 설정값';
 	@override String get preferenceSyncConflictChoiceCancel => '동기화 취소';
@@ -1592,6 +1599,20 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get federationJobs => '연합 작업';
 	@override String get driveAboutTip => '드라이브는 이전에 업로드한 파일 목록을 표시해요. <br>\n노트에 첨부할 때 다시 사용하거나 나중에 게시할 파일을 미리 업로드할 수 있어요. <br>\n<b>파일을 삭제하면, 지금까지 그 파일을 사용한 모든 장소(노트, 페이지, 아바타, 배너 등)에서도 보이지 않게 되므로 주의해 주세요. 폴더를 만들고 정리할 수도 있어요.</b><br>';
 	@override String get scrollToClose => '스크롤하여 닫기';
+	@override String get advice => '참고';
+	@override String get realtimeMode => '실시간 모드';
+	@override String get turnItOn => '켜기';
+	@override String get turnItOff => '끄기';
+	@override String get emojiMute => '이모티콘 뮤트';
+	@override String get emojiUnmute => '이모티콘 뮤트 해제';
+	@override String muteX({required Object x}) => '${x}를 뮤트';
+	@override String unmuteX({required Object x}) => '${x}의 뮤트를 해제';
+	@override String get abort => '중지';
+	@override String get tip => '팁과 유용한 정보';
+	@override String get redisplayAllTips => '모든 \'팁과 유용한 정보\'를 재표시';
+	@override String get hideAllTips => '모든 \'팁과 유용한 정보\'를 비표시';
+	@override String get defaultImageCompressionLevel => '기본 이미지 압축 정도';
+	@override String get defaultImageCompressionLevel_description => '낮추면 화질을 유지합니다만 파일 크기는 증가합니다. <br>높이면 파일 크기를 줄일 수 있습니다만 화질은 저하됩니다.';
 	@override late final _TranslationsMisskeyChatKoKr chat_ = _TranslationsMisskeyChatKoKr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoKr emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoKr._(_root);
 	@override late final _TranslationsMisskeySettingsKoKr settings_ = _TranslationsMisskeySettingsKoKr._(_root);
@@ -1681,6 +1702,15 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCaptchaKoKr captcha_ = _TranslationsMisskeyCaptchaKoKr._(_root);
 	@override late final _TranslationsMisskeyBootErrorsKoKr bootErrors_ = _TranslationsMisskeyBootErrorsKoKr._(_root);
 	@override late final _TranslationsMisskeySearchKoKr search_ = _TranslationsMisskeySearchKoKr._(_root);
+	@override late final _TranslationsMisskeyServerSetupWizardKoKr serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardKoKr._(_root);
+	@override late final _TranslationsMisskeyUploaderKoKr uploader_ = _TranslationsMisskeyUploaderKoKr._(_root);
+	@override late final _TranslationsMisskeyClientPerformanceIssueTipKoKr clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipKoKr._(_root);
+	@override late final _TranslationsMisskeyClipKoKr clip_ = _TranslationsMisskeyClipKoKr._(_root);
+	@override late final _TranslationsMisskeyUserListsKoKr userLists_ = _TranslationsMisskeyUserListsKoKr._(_root);
+	@override String get watermark => '워터마크';
+	@override String get defaultPreset => '기본 프리셋';
+	@override late final _TranslationsMisskeyWatermarkEditorKoKr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorKoKr._(_root);
+	@override late final _TranslationsMisskeyImageEffectorKoKr imageEffector_ = _TranslationsMisskeyImageEffectorKoKr._(_root);
 }
 
 // Path: misskeyIO
@@ -1732,6 +1762,8 @@ class _TranslationsMisskeyChatKoKr extends TranslationsMisskeyChatEnUs {
 	@override String get chatNotAvailableInOtherAccount => '상대방 계정에서 채팅 기능을 사용할 수 없는 상태입니다.';
 	@override String get cannotChatWithTheUser => '이 유저와 채팅을 시작할 수 없습니다';
 	@override String get cannotChatWithTheUser_description => '채팅을 사용할 수 없는 상태이거나 상대방이 채팅을 열지 않은 상태입니다.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => '당신은 이 룸의 참가자가 아닙니다만 초대 신청을 받으셨습니다. 참가하려면 초대를  수락해주십시오.';
+	@override String get doYouAcceptInvitation => '초대를 수락하시겠습니까?';
 	@override String get chatWithThisUser => '채팅하기';
 	@override String get thisUserAllowsChatOnlyFromFollowers => '이 유저는 팔로워만 채팅을 할 수 있습니다.';
 	@override String get thisUserAllowsChatOnlyFromFollowing => '이 유저는 이 유저가 팔로우하는 유저만 채팅을 허용합니다.';
@@ -1782,12 +1814,20 @@ class _TranslationsMisskeySettingsKoKr extends TranslationsMisskeySettingsEnUs {
 	@override String get makeEveryTextElementsSelectable => '모든 텍스트 요소를 선택할 수 있도록 함';
 	@override String get makeEveryTextElementsSelectable_description => '활성화 시, 일부 동작에서 유저의 접근성이 나빠질 수도 있습니다.';
 	@override String get useStickyIcons => '아이콘이 스크롤을 따라가도록 하기';
+	@override String get enableHighQualityImagePlaceholders => '고화질 이미지의 플레이스홀더를 표시';
+	@override String get uiAnimations => 'UI 애니메이션';
 	@override String get showNavbarSubButtons => '내비게이션 바에 보조 버튼 표시';
 	@override String get ifOn => '켜져 있을 때';
 	@override String get ifOff => '꺼져 있을 때';
 	@override String get enableSyncThemesBetweenDevices => '기기 간 설치한 테마 동기화';
 	@override String get enablePullToRefresh => '계속해서 갱신';
 	@override String get enablePullToRefresh_description => '마우스에서 휠을 누르면서 드래그해요.';
+	@override String get realtimeMode_description => '서버에 접속하고 실시간으로 콘텐츠를 업데이트합니다. 데이터 사용량과 배터리의 소비가 증가할 수 있습니다.';
+	@override String get contentsUpdateFrequency => '콘텐츠의 업데이트 빈도';
+	@override String get contentsUpdateFrequency_description => '높을수록 실시간으로 콘텐츠가 업데이트됩니다만, 성능이 저하되고 데이터 사용량과 배터리의 소비가 증가합니다.';
+	@override String get contentsUpdateFrequency_description2 => '실시간 모드가 켜져 있을 때는 이 설정과 상관없이 실시간으로 콘텐츠가 업데이트됩니다.';
+	@override String get showUrlPreview => 'URL 미리보기 표시';
+	@override String get showAvailableReactionsFirstInNote => '이용 가능한 리액션을 선두로 표시';
 	@override late final _TranslationsMisskeySettingsChatKoKr chat_ = _TranslationsMisskeySettingsChatKoKr._(_root);
 }
 
@@ -1997,6 +2037,18 @@ class _TranslationsMisskeyServerSettingsKoKr extends TranslationsMisskeyServerSe
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '일정 기간동안 모더레이터의 활동이 감지되지 않는 경우, 스팸 방지를 위해 이 설정은 자동으로 꺼집니다.';
 	@override String get deliverSuspendedSoftware => '전달 정지 중인 소프트웨어';
 	@override String get deliverSuspendedSoftwareDescription => '취약성 등의 이유로 서버의 소프트웨어 이름 및 버전 범위를 지정하여 전달을 정지할 수 있어요. 이 버전 정보는 서버가 제공한 것이며 신뢰성은 보장되지 않아요. 버전 지정에는 semver의 범위 지정을 사용할 수 있지만, >= 2024.3.1로 지정하면 2024.3.1-custom.0과 같은 custom.0과 같은 custom 버전이 포함되지 않기 때문에 >= 2024.3.1-0과 같이 prerelease를 지정하는 것이 좋아요.';
+	@override String get singleUserMode => '1인 모드';
+	@override String get singleUserMode_description => '이 서버의 이용자가 자신 뿐인 경우, 이 모드를 활성화하면 동작이 최적화됩니다.';
+	@override String get signToActivityPubGet => 'GET 요청에 사인';
+	@override String get signToActivityPubGet_description => '보통의 경우 활성화해 주십시오. 연합의 통신에 관한 문제가 있는 경우, 비활성화하면 개선되는 경우도 있습니다만, 서버에 따라서는 통신이 불가능해지는 경우도 있습니다.';
+	@override String get proxyRemoteFiles => '리모트 파일 프록시';
+	@override String get proxyRemoteFiles_description => '활성화하면 리모트 파일을 프록시로 제공합니다. 이미지의 섬네일 생성이나 유저의 개인정보 보호에 도움을 줍니다.';
+	@override String get allowExternalApRedirect => 'ActivityPub 경유 조회에 리디렉션 허가';
+	@override String get allowExternalApRedirect_description => '활성화하면 다른 서버가 이 서버를 통해 제3자의 콘텐츠를 조회할 수 있습니다만, 콘텐츠의 사칭 문제가 생길 수 있습니다.';
+	@override String get userGeneratedContentsVisibilityForVisitor => '비이용자에 대한 유저 작성 콘텐츠의 공개 범위';
+	@override String get userGeneratedContentsVisibilityForVisitor_description => '조정을 하기 힘든 부적절한 리모트 콘텐츠 등이 자신의 서버 경유로 의도치 않게 인터넷에 공개되는 문제의 방지 등에 도움을 줍니다.';
+	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '서버에서 받은 리모트 콘텐츠를 포함해 서버 내의 모든 콘텐츠를 무조건 인터넷에 공개하는 것에는 위험이 따릅니다. 특히, 분산형 특성에 대해 모르는 열람자에게는 리모트 콘텐츠여도 서버 내에서 작성된 콘텐츠라고 잘못 인식할 수 있기에 주의가 필요합니다.';
+	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoKr userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoKr._(_root);
 }
 
 // Path: misskey.accountMigration_
@@ -3200,6 +3252,8 @@ class _TranslationsMisskeyDataSaverKoKr extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaKoKr media_ = _TranslationsMisskeyDataSaverMediaKoKr._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarKoKr avatar_ = _TranslationsMisskeyDataSaverAvatarKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewThumbnailKoKr urlPreviewThumbnail_ = _TranslationsMisskeyDataSaverUrlPreviewThumbnailKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverDisableUrlPreviewKoKr disableUrlPreview_ = _TranslationsMisskeyDataSaverDisableUrlPreviewKoKr._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodeKoKr code_ = _TranslationsMisskeyDataSaverCodeKoKr._(_root);
 }
 
@@ -3287,6 +3341,8 @@ class _TranslationsMisskeyUrlPreviewSettingKoKr extends TranslationsMisskeyUrlPr
 	// Translations
 	@override String get title => 'URL 미리보기 설정';
 	@override String get enable => 'URL 미리보기 활성화';
+	@override String get allowRedirect => '미리보기 위치의 리디렉션 허가';
+	@override String get allowRedirectDescription => '입력된 URL이 리디렉션될 경우, 그 리디렉션 위치를 따라 미리보기를 표시할 것인지 설정합니다. 비활성화하면 서버 리소스를 절약할 수 있습니다만, 리디렉션 위치의 내용은 표시되지 않습니다.';
 	@override String get timeout => '미리보기를 불러올 때의 타임아웃 (ms)';
 	@override String get timeoutDescription => '미리보기를 로딩하는데 걸리는 시간이 정한 시간보다 오래 걸리는 경우, 미리보기를 생성하지 않습니다.';
 	@override String get maximumContentLength => 'Content-Length의 최대치 (byte)';
@@ -3465,6 +3521,142 @@ class _TranslationsMisskeySearchKoKr extends TranslationsMisskeySearchEnUs {
 	@override String get pleaseEnterServerHost => '서버의 호스트를 입력해 주세요.';
 	@override String get pleaseSelectUser => '유저를 선택해주세요';
 	@override String get serverHostPlaceholder => '예: misskey.example.com';
+}
+
+// Path: misskey.serverSetupWizard_
+class _TranslationsMisskeyServerSetupWizardKoKr extends TranslationsMisskeyServerSetupWizardEnUs {
+	_TranslationsMisskeyServerSetupWizardKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get installCompleted => 'Misskey의 설치가 완료됐습니다!';
+	@override String get firstCreateAccount => '먼저 관리자 계정을 만듭시다.';
+	@override String get accountCreated => '관리자 계정이 만들어졌습니다!';
+	@override String get serverSetting => '서버 설정';
+	@override String get youCanEasilyConfigureOptimalServerSettingsWithThisWizard => '이 위자드로 쉽게 최적화된 서버의 설정을 할 수 있습니다.';
+	@override String get settingsYouMakeHereCanBeChangedLater => '이 설정은 나중에 변경 가능합니다.';
+	@override String get howWillYouUseMisskey => 'Misskey를 어떻게 사용하십니까?';
+	@override late final _TranslationsMisskeyServerSetupWizardUseKoKr use_ = _TranslationsMisskeyServerSetupWizardUseKoKr._(_root);
+	@override String get openServerAdvice => '불특정 다수의 유저를 받아들이는 것에는 위험이 따릅니다. 문제에 대처할 수 있도록 확실한 조정 체제로 운영하는 것을 권장합니다.';
+	@override String get openServerAntiSpamAdvice => '자신의 서버가 스팸으로 사용되지 않게끔 reCAPTCHA라는 안티 봇 기능을 활성화하는 등 보안에 대해서도 세심한 주의가 필요합니다.';
+	@override String get howManyUsersDoYouExpect => '어느 정도의 인원으로 생각 중이십니까?';
+	@override late final _TranslationsMisskeyServerSetupWizardScaleKoKr scale_ = _TranslationsMisskeyServerSetupWizardScaleKoKr._(_root);
+	@override String get largeScaleServerAdvice => '대규모 서버에서는 부하분산이나 데이터베이스의 복제 등 높은 인프라스트럭처 지식이 필요할 수 있습니다.';
+	@override String get doYouConnectToFediverse => 'Fediverse에 접속하시겠습니까?';
+	@override String get doYouConnectToFediverse_description1 => '분산형 서버로 구성된 네트워크(Fediverse)에 접속하면 다른 서버와 서로 콘텐츠의 주고받기를 할 수 있습니다.';
+	@override String get doYouConnectToFediverse_description2 => 'Fediverse에 접속하는 것을 \'연합\'이라고도 부릅니다.';
+	@override String get youCanConfigureMoreFederationSettingsLater => '나중에 연합 가능한 서버의 지정 등 고급 설정을 할 수 있습니다.';
+	@override String get adminInfo => '관리자 정보';
+	@override String get adminInfo_description => '문의 접수를 위해 사용되는 관리자 정보를 설정합니다.';
+	@override String get adminInfo_mustBeFilled => '오픈 서버 혹은 연합이 켜져 있는 경우 반드시 입력해야 합니다.';
+	@override String get followingSettingsAreRecommended => '아래의 설정이 권장됩니다.';
+	@override String get applyTheseSettings => '이 설정을 적용';
+	@override String get skipSettings => '설정 건너뛰기';
+	@override String get settingsCompleted => '설정이 완료됐습니다!';
+	@override String get settingsCompleted_description => '수고하셨습니다. 준비를 마쳤으므로 바로 서버의 이용을 시작하실 수 있습니다.';
+	@override String get settingsCompleted_description2 => '상세한 서버 설정은 \'제어판\'에서 하실 수 있습니다.';
+	@override String get donationRequest => '기부 요청';
+	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestKoKr donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestKoKr._(_root);
+}
+
+// Path: misskey.uploader_
+class _TranslationsMisskeyUploaderKoKr extends TranslationsMisskeyUploaderEnUs {
+	_TranslationsMisskeyUploaderKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String compressedToX({required Object x}) => '${x}로 압축';
+	@override String savedXPercent({required Object x}) => '${x}% 절약';
+	@override String get abortConfirm => '업로드되지 않은 파일이 있습니다만, 그만 두시겠습니까?';
+	@override String get doneConfirm => '업로드되지 않은 파일이 있습니다만, 완료하시겠습니까?';
+	@override String maxFileSizeIsX({required Object x}) => '업오드 가능한 최대 파일 크기는 ${x}입니다.';
+	@override String get allowedTypes => '업로드 가능한 파일 유형';
+	@override String get tip => '파일은 아직 업로드되지 않았습니다. 이 다이얼로그에서 업로드 전의 확인, 이름 바꾸기, 압축, 자르기 등을 하실 수 있습니다. 준비가 되셨다면 \'업로드\' 버튼을 클릭해 업로드를 시작하실 수 있습니다.';
+}
+
+// Path: misskey.clientPerformanceIssueTip_
+class _TranslationsMisskeyClientPerformanceIssueTipKoKr extends TranslationsMisskeyClientPerformanceIssueTipEnUs {
+	_TranslationsMisskeyClientPerformanceIssueTipKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '배터리 소비가 심하다고 생각되시면';
+	@override String get makeSureDisabledAdBlocker => '광고 차단을 비활성화해 주십시오.';
+	@override String get makeSureDisabledAdBlocker_description => '광고 차단은 성능에 영향을 미칠 수 있습니다. OS의 기능이나 브라우저의 기능, 애드온 등으로 광고 차단이 활성화돼있지 않은지 확인해 주십시오.';
+	@override String get makeSureDisabledCustomCss => '커스텀 CSS를 무효로 해주십시오.';
+	@override String get makeSureDisabledCustomCss_description => '스타일을 덮어쓰기하면 성능에 영향을 미칠 수 있습니다. 커스텀 CSS나 스타일을 덮어쓰기하는 확장 기능이 유효로 돼있는지 확인해주십시오.';
+	@override String get makeSureDisabledAddons => '확장 기능을 비활성화해 주십시오.';
+	@override String get makeSureDisabledAddons_description => '일부 확장 기능은 클라이언트의 동작에 간섭해 성능에 영향을 미칠 수 있습니다. 브라우저의 확장 기능을 비활성화해 개선할지 확인해주십시오.';
+}
+
+// Path: misskey.clip_
+class _TranslationsMisskeyClipKoKr extends TranslationsMisskeyClipEnUs {
+	_TranslationsMisskeyClipKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '클립은 노트를 정리할 수 있는 기능입니다.';
+}
+
+// Path: misskey.userLists_
+class _TranslationsMisskeyUserListsKoKr extends TranslationsMisskeyUserListsEnUs {
+	_TranslationsMisskeyUserListsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '임의의 유저가 포함된 리스트를 작성할 수 있습니다. 작성한 리스트는 타임라인으로 표시가 가능합니다.';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorKoKr extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => '이미지에 크레딧 정보 등의 워터마크를 추가할 수 있습니다.';
+	@override String get quitWithoutSaveConfirm => '보존하지 않고 종료하시겠습니까?';
+	@override String get driveFileTypeWarn => '이 파이';
+	@override String get driveFileTypeWarnDescription => '이미지 파일을 선택해주십시오.';
+	@override String get title => '워터마크 편집';
+	@override String get cover => '전체에 붙이기';
+	@override String get repeat => '전면에 깔기';
+	@override String get opacity => '불투명도';
+	@override String get scale => '크기';
+	@override String get text => '텍스트';
+	@override String get position => '위치';
+	@override String get type => '종류';
+	@override String get image => '이미지';
+	@override String get advanced => '고급';
+	@override String get stripe => '줄무늬';
+	@override String get stripeWidth => '라인의 폭';
+	@override String get stripeFrequency => '라인의 수';
+	@override String get angle => '각도';
+	@override String get polkadot => '물방울 무늬';
+	@override String get checker => '체크 무늬';
+	@override String get polkadotMainDotOpacity => '주요 물방울의 불투명도';
+	@override String get polkadotMainDotRadius => '주요 물방울의 크기';
+	@override String get polkadotSubDotOpacity => '서브 물방울의 불투명도';
+	@override String get polkadotSubDotRadius => '서브 물방울의 크기';
+	@override String get polkadotSubDotDivisions => '서브 물방울의 수';
+}
+
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorKoKr extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '이펙트';
+	@override String get addEffect => '이펙트를 추가';
+	@override String get discardChangesConfirm => '변경을 취소하고 종료하시겠습니까?';
+	@override late final _TranslationsMisskeyImageEffectorFxsKoKr fxs_ = _TranslationsMisskeyImageEffectorFxsKoKr._(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3648,6 +3840,18 @@ class _TranslationsMisskeyInitialTutorialDoneKoKr extends TranslationsMisskeyIni
 	@override String description({required Object link}) => '여기에서 소개한 기능은 극히 일부에 지나지 않습니다. Misskey의 사용 방법을 더 자세히 알아보려면 ${link}를 확인해 주세요!';
 }
 
+// Path: misskey.serverSettings_.userGeneratedContentsVisibilityForVisitor_
+class _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoKr extends TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs {
+	_TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get all => '모두 공개';
+	@override String get localOnly => '로컬 콘텐츠만 공개하고 리모트 콘텐츠는 비공개';
+	@override String get none => '모두 비공개';
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesKoKr extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
@@ -3788,6 +3992,9 @@ class _TranslationsMisskeyRoleOptionsKoKr extends TranslationsMisskeyRoleOptions
 	@override String get canImportMuting => '뮤트 목록 가져오기 허용';
 	@override String get canImportUserLists => '리스트 목록 가져오기 허용';
 	@override String get chatAvailability => '채팅을 허락';
+	@override String get uploadableFileTypes => '업로드 가능한 파일 유형';
+	@override String get uploadableFileTypes_caption => 'MIME 유형을 ';
+	@override String uploadableFileTypes_caption2({required Object x}) => '파일에 따라서는 유형을 검사하지 못하는 경우가 있습니다. 그러한 파일을 허가하는 경우에는 ${x}를 지정으로 추가해주십시오.';
 }
 
 // Path: misskey.role_.condition_
@@ -4112,6 +4319,28 @@ class _TranslationsMisskeyDataSaverAvatarKoKr extends TranslationsMisskeyDataSav
 	@override String get description => '아이콘 이미지의 애니메이션을 멈춥니다. 애니메이션 이미지는 일반 이미지보다 파일 크기가 클 수 있으므로 데이터 사용량을 더 줄일 수 있습니다.';
 }
 
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class _TranslationsMisskeyDataSaverUrlPreviewThumbnailKoKr extends TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewThumbnailKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URL 미리보기의 섬네일을 비표시';
+	@override String get description => 'URL 미리보기의 섬네일 이미지를 불러올 수 없게 됩니다.';
+}
+
+// Path: misskey.dataSaver_.disableUrlPreview_
+class _TranslationsMisskeyDataSaverDisableUrlPreviewKoKr extends TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverDisableUrlPreviewKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URL 미리보기 비활성화';
+	@override String get description => 'URL 미리보기 기능을 비활성화합니다. 섬네일 이미지와 달리 링크 정보 불러오기 자체를 줄일 수 있습니다.';
+}
+
 // Path: misskey.dataSaver_.code_
 class _TranslationsMisskeyDataSaverCodeKoKr extends TranslationsMisskeyDataSaverCodeEnUs {
 	_TranslationsMisskeyDataSaverCodeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
@@ -4261,6 +4490,69 @@ class _TranslationsMisskeyCaptchaErrorKoKr extends TranslationsMisskeyCaptchaErr
 	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedKoKr requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedKoKr._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedKoKr verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedKoKr._(_root);
 	@override late final _TranslationsMisskeyCaptchaErrorUnknownKoKr unknown_ = _TranslationsMisskeyCaptchaErrorUnknownKoKr._(_root);
+}
+
+// Path: misskey.serverSetupWizard_.use_
+class _TranslationsMisskeyServerSetupWizardUseKoKr extends TranslationsMisskeyServerSetupWizardUseEnUs {
+	_TranslationsMisskeyServerSetupWizardUseKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get single => '1인 서버';
+	@override String get single_description => '자신 전용 서버로 혼자서 사용';
+	@override String get single_youCanCreateMultipleAccounts => '1인 서버로 운영하는 경우에도 계정은 필요에 따라 여러 개 만들 수 있습니다.';
+	@override String get group => '그룹 서버';
+	@override String get group_description => '신뢰 가능한 다른 유저를 초대해 여러 명이 사용';
+	@override String get open => '오픈 서버';
+	@override String get open_description => '불특정 다수의 유저를 받아들이는 운영을 함';
+}
+
+// Path: misskey.serverSetupWizard_.scale_
+class _TranslationsMisskeyServerSetupWizardScaleKoKr extends TranslationsMisskeyServerSetupWizardScaleEnUs {
+	_TranslationsMisskeyServerSetupWizardScaleKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get small => '100명 이하(소규모)';
+	@override String get medium => '100명 이상 1000명 이하(중간 규모)';
+	@override String get large => '1000명 이상(대규모)';
+}
+
+// Path: misskey.serverSetupWizard_.donationRequest_
+class _TranslationsMisskeyServerSetupWizardDonationRequestKoKr extends TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
+	_TranslationsMisskeyServerSetupWizardDonationRequestKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get text1 => 'Misskey는 자원봉사자들에 의해 개발되는 무료 소프트웨어입니다.';
+	@override String get text2 => '앞으로도 계속해서 개발을 할 수 있도록 괜찮으시다면 부디 기부를 부탁드립니다.';
+	@override String get text3 => '지원자 대상 특전도 있습니다!';
+}
+
+// Path: misskey.imageEffector_.fxs_
+class _TranslationsMisskeyImageEffectorFxsKoKr extends TranslationsMisskeyImageEffectorFxsEnUs {
+	_TranslationsMisskeyImageEffectorFxsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get chromaticAberration => '색수차';
+	@override String get glitch => '글리치';
+	@override String get mirror => '미러';
+	@override String get invert => '색 반전';
+	@override String get grayscale => '흑백';
+	@override String get colorAdjust => '색조 보정';
+	@override String get colorClamp => '색 압축';
+	@override String get colorClampAdvanced => '색 압축(고급)';
+	@override String get distort => '뒤틀림';
+	@override String get threshold => '이진화';
+	@override String get zoomLines => '집중선';
+	@override String get stripe => '줄무늬';
+	@override String get polkadot => '물방울 무늬';
+	@override String get checker => '체크 무늬';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

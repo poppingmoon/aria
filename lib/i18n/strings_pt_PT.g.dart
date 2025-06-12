@@ -1579,6 +1579,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchPtPt search_ = _TranslationsMisskeySearchPtPt._(_root);
 	@override late final _TranslationsMisskeyServerSetupWizardPtPt serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardPtPt._(_root);
 	@override late final _TranslationsMisskeyClientPerformanceIssueTipPtPt clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipPtPt._(_root);
+	@override late final _TranslationsMisskeyWatermarkEditorPtPt watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPtPt._(_root);
 }
 
 // Path: misskey.chat_
@@ -3426,6 +3427,24 @@ class _TranslationsMisskeyClientPerformanceIssueTipPtPt extends TranslationsMiss
 	@override String get makeSureDisabledCustomCss_description => 'Substituir o estilo da página pode afetar o desempenho. Certifique-se que o CSS personalizado ou extensões que modifiquem o estilo da página estejam desabilitados.';
 	@override String get makeSureDisabledAddons => 'Desabilite extensões';
 	@override String get makeSureDisabledAddons_description => 'Algumas extensões podem afetar comportamentos do cliente e afetar o desempenho. Por favor, desative as extensões do seu navegador e veja se isso melhora a situação.';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorPtPt extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveFileTypeWarn => 'Esse arquivo não é compatível';
+	@override String get opacity => 'Opacidade';
+	@override String get scale => 'Tamanho';
+	@override String get text => 'Texto';
+	@override String get position => 'Posição';
+	@override String get type => 'Tipo';
+	@override String get image => 'imagem';
+	@override String get advanced => 'Avançado';
+	@override String get angle => 'Ângulo';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_

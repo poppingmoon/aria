@@ -618,6 +618,7 @@ class TranslationsMisskeyEnUs {
 	String get lightThemes => 'Light themes';
 	String get darkThemes => 'Dark themes';
 	String get syncDeviceDarkMode => 'Sync Dark Mode with your device settings';
+	String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" is turned on, Would you like to turn off synchronization and switch modes manually?';
 	String get drive => 'Drive';
 	String get fileName => 'Filename';
 	String get selectFile => 'Select a file';
@@ -870,6 +871,7 @@ class TranslationsMisskeyEnUs {
 	String get newNote => 'New Note';
 	String get sounds => 'Sounds';
 	String get sound => 'Sounds';
+	String get notificationSoundSettings => 'Notification sound settings';
 	String get listen => 'Listen';
 	String get none => 'None';
 	String get showInPage => 'Show in page';
@@ -1291,6 +1293,7 @@ class TranslationsMisskeyEnUs {
 	String get cannotUploadBecauseInappropriate => 'This file could not be uploaded because parts of it have been detected as potentially inappropriate.';
 	String get cannotUploadBecauseNoFreeSpace => 'Upload failed due to lack of Drive capacity.';
 	String get cannotUploadBecauseExceedsFileSizeLimit => 'This file cannot be uploaded as it exceeds the file size limit.';
+	String get cannotUploadBecauseUnallowedFileType => 'Unable to upload due to unauthorized file type.';
 	String get beta => 'Beta';
 	String get enableAutoSensitive => 'Automatic marking as sensitive';
 	String get enableAutoSensitiveDescription => 'Allows automatic detection and marking of sensitive media through Machine Learning where possible. Even if this option is disabled, it may be enabled instance-wide.';
@@ -1618,6 +1621,7 @@ class TranslationsMisskeyEnUs {
 	String get syncBetweenDevices => 'Sync between devices';
 	String get preferenceSyncConflictTitle => 'The configured value exists on the server.';
 	String get preferenceSyncConflictText => 'The sync enabled settings will save their values to the server. However, there are existing values on the server. Which set of values would you like to overwrite?';
+	String get preferenceSyncConflictChoiceMerge => 'Merge';
 	String get preferenceSyncConflictChoiceServer => 'Configured value on server';
 	String get preferenceSyncConflictChoiceDevice => 'Configured value on device';
 	String get preferenceSyncConflictChoiceCancel => 'Cancel enabling sync';
@@ -1648,6 +1652,12 @@ class TranslationsMisskeyEnUs {
 	String get emojiUnmute => 'Unmute emoji';
 	String muteX({required Object x}) => 'Mute ${x}';
 	String unmuteX({required Object x}) => 'Unmute ${x}';
+	String get abort => 'Abort';
+	String get tip => 'Tips & Tricks';
+	String get redisplayAllTips => 'Show all “Tips & Tricks” again';
+	String get hideAllTips => 'Hide all "Tips & Tricks"';
+	String get defaultImageCompressionLevel => 'Default image compression level';
+	String get defaultImageCompressionLevel_description => 'High, reduces the file size but also the image quality. <br>High, reduces the file size but also the image quality.';
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1740,6 +1750,12 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyServerSetupWizardEnUs serverSetupWizard_ = TranslationsMisskeyServerSetupWizardEnUs.internal(_root);
 	late final TranslationsMisskeyUploaderEnUs uploader_ = TranslationsMisskeyUploaderEnUs.internal(_root);
 	late final TranslationsMisskeyClientPerformanceIssueTipEnUs clientPerformanceIssueTip_ = TranslationsMisskeyClientPerformanceIssueTipEnUs.internal(_root);
+	late final TranslationsMisskeyClipEnUs clip_ = TranslationsMisskeyClipEnUs.internal(_root);
+	late final TranslationsMisskeyUserListsEnUs userLists_ = TranslationsMisskeyUserListsEnUs.internal(_root);
+	String get watermark => 'Watermark';
+	String get defaultPreset => 'Default Preset';
+	late final TranslationsMisskeyWatermarkEditorEnUs watermarkEditor_ = TranslationsMisskeyWatermarkEditorEnUs.internal(_root);
+	late final TranslationsMisskeyImageEffectorEnUs imageEffector_ = TranslationsMisskeyImageEffectorEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -1856,6 +1872,7 @@ class TranslationsMisskeySettingsEnUs {
 	String get contentsUpdateFrequency_description => 'The higher the value the more the content updates but it lowers the performance and increases the traffic and memory consumption.';
 	String get contentsUpdateFrequency_description2 => 'When real-time mode is on, content is updated in real time regardless of this setting.';
 	String get showUrlPreview => 'Show URL preview';
+	String get showAvailableReactionsFirstInNote => 'Show available reactions at the top.';
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
@@ -3369,6 +3386,8 @@ class TranslationsMisskeyUrlPreviewSettingEnUs {
 	// Translations
 	String get title => 'URL preview settings';
 	String get enable => 'Enable URL preview';
+	String get allowRedirect => 'Allow URL preview redirection';
+	String get allowRedirectDescription => 'If a URL has a redirection set, you can enable this feature to follow the redirection and display a preview of the redirected content. Disabling this will save server resources, but redirected content will not be displayed.';
 	String get timeout => 'Time out when getting preview (ms)';
 	String get timeoutDescription => 'If it takes longer than this value to get the preview, the preview won’t be generated.';
 	String get maximumContentLength => 'Maximum Content-Length (bytes)';
@@ -3598,6 +3617,8 @@ class TranslationsMisskeyUploaderEnUs {
 	String get abortConfirm => 'Some files have not been uploaded, do you want to abort?';
 	String get doneConfirm => 'Some files have not been uploaded, do you want to continue anyway?';
 	String maxFileSizeIsX({required Object x}) => 'The maximum file size that can be uploaded is ${x}';
+	String get allowedTypes => 'Uploadable file types';
+	String get tip => 'The file has not yet been uploaded so this dialog allows you to confirm, rename, compress, and crop the file before uploading. When ready, you can start uploading by pressing the “Upload” button.';
 }
 
 // Path: misskey.clientPerformanceIssueTip_
@@ -3614,6 +3635,73 @@ class TranslationsMisskeyClientPerformanceIssueTipEnUs {
 	String get makeSureDisabledCustomCss_description => 'Overriding styles can affect performance. Please make sure that custom CSS or extensions that override styles are not enabled.';
 	String get makeSureDisabledAddons => 'Disable extensions';
 	String get makeSureDisabledAddons_description => 'Some extensions may interfere with client behavior and affect performance. Please disable your browser extensions and see if this improves the situation.';
+}
+
+// Path: misskey.clip_
+class TranslationsMisskeyClipEnUs {
+	TranslationsMisskeyClipEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tip => 'Clip is a feature that allows you to organize your notes.';
+}
+
+// Path: misskey.userLists_
+class TranslationsMisskeyUserListsEnUs {
+	TranslationsMisskeyUserListsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tip => 'Lists can contain any user you specify when creating, the created list can then be displayed as a timeline showing only the specified users.';
+}
+
+// Path: misskey.watermarkEditor_
+class TranslationsMisskeyWatermarkEditorEnUs {
+	TranslationsMisskeyWatermarkEditorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tip => 'A watermark, such as credit information, can be added to the image.';
+	String get quitWithoutSaveConfirm => 'Discard unsaved changes?';
+	String get driveFileTypeWarn => 'This file is not supported';
+	String get driveFileTypeWarnDescription => 'Choose an image file';
+	String get title => 'Edit Watermark';
+	String get cover => 'Cover everything';
+	String get repeat => 'spread all over';
+	String get opacity => 'Opacity';
+	String get scale => 'Size';
+	String get text => 'Text';
+	String get position => 'Position';
+	String get type => 'Type';
+	String get image => 'Images';
+	String get advanced => 'Advanced';
+	String get stripe => 'Stripes';
+	String get stripeWidth => 'Line width';
+	String get stripeFrequency => 'Lines count';
+	String get angle => 'Angle';
+	String get polkadot => 'Polkadot';
+	String get checker => 'Checker';
+	String get polkadotMainDotOpacity => 'Opacity of the main dot';
+	String get polkadotMainDotRadius => 'Size of the main dot';
+	String get polkadotSubDotOpacity => 'Opacity of the secondary dot';
+	String get polkadotSubDotRadius => 'Size of the secondary dot';
+	String get polkadotSubDotDivisions => 'Number of sub-dots.';
+}
+
+// Path: misskey.imageEffector_
+class TranslationsMisskeyImageEffectorEnUs {
+	TranslationsMisskeyImageEffectorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Effects';
+	String get addEffect => 'Add Effects';
+	String get discardChangesConfirm => 'Are you sure you want to leave? You have unsaved changes.';
+	late final TranslationsMisskeyImageEffectorFxsEnUs fxs_ = TranslationsMisskeyImageEffectorFxsEnUs.internal(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3949,6 +4037,9 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	String get canImportMuting => 'Allow importing muting';
 	String get canImportUserLists => 'Allow importing lists';
 	String get chatAvailability => 'Allow Chat';
+	String get uploadableFileTypes => 'Uploadable file types';
+	String get uploadableFileTypes_caption => 'Specifies the allowed MIME/file types. Multiple MIME types can be specified by separating them with a new line, and wildcards can be specified with an asterisk (*). (e.g., image/*)';
+	String uploadableFileTypes_caption2({required Object x}) => 'Some files types might fail to be detected. To allow such files, add ${x} to the specification.';
 }
 
 // Path: misskey.role_.condition_
@@ -4484,6 +4575,29 @@ class TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
 	String get text1 => 'Misskey is a free software developed by volunteers.';
 	String get text2 => 'We would appreciate your support so that we can continue to develop this software further into the future.';
 	String get text3 => 'There are also special benefits for supporters!';
+}
+
+// Path: misskey.imageEffector_.fxs_
+class TranslationsMisskeyImageEffectorFxsEnUs {
+	TranslationsMisskeyImageEffectorFxsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get chromaticAberration => 'Chromatic Aberration';
+	String get glitch => 'Glitch';
+	String get mirror => 'Mirror';
+	String get invert => 'Invert Colors';
+	String get grayscale => 'white-black';
+	String get colorAdjust => 'Colour Correction';
+	String get colorClamp => 'Color Compression';
+	String get colorClampAdvanced => 'Color Compression (Advanced)';
+	String get distort => 'Distortion';
+	String get threshold => 'Binarize';
+	String get zoomLines => 'Saturated lines';
+	String get stripe => 'Stripes';
+	String get polkadot => 'Polkadot';
+	String get checker => 'Checker';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -5540,7 +5654,7 @@ class TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
 	String get markAsDeleteTargetRanges => 'Mark rows in the selection as a target to delete';
 	String get alertUpdateEmojisNothingDescription => 'There are no updated Emojis.';
 	String get alertDeleteEmojisNothingDescription => 'There are no Emojis to be deleted.';
-	String get confirmMovePage => '';
+	String get confirmMovePage => 'Would you like to move pages?';
 	String get confirmChangeView => '';
 	String confirmUpdateEmojisDescription({required Object count}) => 'Update ${count} Emoji(s). Are you sure to continue?';
 	String confirmDeleteEmojisDescription({required Object count}) => 'Delete checked ${count} Emoji(s). Are you sure to continue?';

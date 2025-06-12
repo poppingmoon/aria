@@ -70,7 +70,7 @@ impl AiScript {
         Ok(())
     }
 
-    pub fn abort(&self) {
-        self.interpreter.abort();
+    pub async fn abort(&self) {
+        self.interpreter.abort().await;
     }
 }

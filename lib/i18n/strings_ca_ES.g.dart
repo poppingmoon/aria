@@ -412,6 +412,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get lightThemes => 'Temes clars';
 	@override String get darkThemes => 'Temes foscos';
 	@override String get syncDeviceDarkMode => 'Sincronitza el mode fosc amb la configuració del dispositiu';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" es troba activat. Vols desactivar la sincronització i canviar de mode manualment?';
 	@override String get drive => 'Disc';
 	@override String get fileName => 'Nom del Fitxer';
 	@override String get selectFile => 'Selecciona un fitxer';
@@ -664,6 +665,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get newNote => 'Notes noves';
 	@override String get sounds => 'Sons';
 	@override String get sound => 'So';
+	@override String get notificationSoundSettings => 'Configuració del so de notificació';
 	@override String get listen => 'Escoltar';
 	@override String get none => 'Res';
 	@override String get showInPage => 'Mostrar a la pàgina ';
@@ -1085,6 +1087,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get cannotUploadBecauseInappropriate => 'Aquest fitxer no es pot pujar perquè s\'ha trobat que algunes parts són inapropiades.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Ha fallat la pujada del fitxer perquè no hi ha capacitat al Disc.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Aquest fitxer no es pot pujar perquè supera la mida permesa.';
+	@override String get cannotUploadBecauseUnallowedFileType => 'Impossible pujar l\'arxiu no és un tipus de fitxer autoritzat.';
 	@override String get beta => 'Proves';
 	@override String get enableAutoSensitive => 'Marcar com a sensible automàticament ';
 	@override String get enableAutoSensitiveDescription => 'Permet la detecció i el marcat automàtic dels mitjans sensibles fent servir aprenentatge automàtic quan sigui possible. Si aquesta opció es troba desactivada potser que estigui activada per a tota la instància. ';
@@ -1412,6 +1415,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get syncBetweenDevices => 'Sincronització entre dispositius';
 	@override String get preferenceSyncConflictTitle => 'Els valors de la configuració ja existeixen al dispositiu';
 	@override String get preferenceSyncConflictText => 'Un element de la configuració amb sincronització activada desa els seus valors al servidor, però s\'ha trobat un valor a la configuració desat al servidor per aquest element de la configuració. Quin valor us sobreescriure?';
+	@override String get preferenceSyncConflictChoiceMerge => 'Integració ';
 	@override String get preferenceSyncConflictChoiceServer => 'Valors de configuració del servidor';
 	@override String get preferenceSyncConflictChoiceDevice => 'Punts d\'ajustos del dispositiu ';
 	@override String get preferenceSyncConflictChoiceCancel => 'Cancel·lar l\'activació de la sincronització ';
@@ -1442,6 +1446,12 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get emojiUnmute => 'Deixar de silenciar emojis';
 	@override String muteX({required Object x}) => 'Silenciar ${x}';
 	@override String unmuteX({required Object x}) => 'Deixar de silenciar ${x}';
+	@override String get abort => 'Cancel·lar';
+	@override String get tip => 'Trucs i consells';
+	@override String get redisplayAllTips => 'Torna ha mostrat tots els trucs i consells';
+	@override String get hideAllTips => 'Amagar tots els trucs i consells';
+	@override String get defaultImageCompressionLevel => 'Nivell de comprensió de la imatge per defecte';
+	@override String get defaultImageCompressionLevel_description => 'Baixa, conserva la qualitat de la imatge però la mida de l\'arxiu és més gran. <br>Alta, redueix la mida de l\'arxiu però també la qualitat de la imatge.';
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1534,6 +1544,12 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyServerSetupWizardCaEs serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardCaEs._(_root);
 	@override late final _TranslationsMisskeyUploaderCaEs uploader_ = _TranslationsMisskeyUploaderCaEs._(_root);
 	@override late final _TranslationsMisskeyClientPerformanceIssueTipCaEs clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipCaEs._(_root);
+	@override late final _TranslationsMisskeyClipCaEs clip_ = _TranslationsMisskeyClipCaEs._(_root);
+	@override late final _TranslationsMisskeyUserListsCaEs userLists_ = _TranslationsMisskeyUserListsCaEs._(_root);
+	@override String get watermark => 'Marca d\'aigua ';
+	@override String get defaultPreset => 'Per defecte';
+	@override late final _TranslationsMisskeyWatermarkEditorCaEs watermarkEditor_ = _TranslationsMisskeyWatermarkEditorCaEs._(_root);
+	@override late final _TranslationsMisskeyImageEffectorCaEs imageEffector_ = _TranslationsMisskeyImageEffectorCaEs._(_root);
 }
 
 // Path: misskey.chat_
@@ -1640,6 +1656,7 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description => 'Com més alt sigui l\'adquisició de contingut en temps real, més baixa el rendiment i més consum de dades i bateria.';
 	@override String get contentsUpdateFrequency_description2 => 'Quan s\'activa el mode en temps real, el contingut s\'actualitza en temps real, independentment d\'aquesta configuració.';
 	@override String get showUrlPreview => 'Mostrar vista prèvia d\'URL';
+	@override String get showAvailableReactionsFirstInNote => 'Mostra les reacciones que pots fer servir al damunt';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -3153,6 +3170,8 @@ class _TranslationsMisskeyUrlPreviewSettingCaEs extends TranslationsMisskeyUrlPr
 	// Translations
 	@override String get title => 'Configuració per a la previsualització de l\'URL';
 	@override String get enable => 'Activa la previsualització de l\'URL';
+	@override String get allowRedirect => 'Permet la redirecció de la visualització prèvia ';
+	@override String get allowRedirectDescription => 'Estableix si es mostra o no la redirecció a la vista prèvia quan l\'adreça URL introduïda té una redirecció. Si es desactiva s\'estalvien recursos del servidor, però no es mostrarà el contingut de la redirecció.';
 	@override String get timeout => 'Temps màxim per carregar la previsualització de l\'URL (ms)';
 	@override String get timeoutDescription => 'Si l\'obtenció de la previsualització triga més que el temps establert, no es generarà la vista prèvia.';
 	@override String get maximumContentLength => 'Longitud màxima del contingut (bytes)';
@@ -3382,6 +3401,8 @@ class _TranslationsMisskeyUploaderCaEs extends TranslationsMisskeyUploaderEnUs {
 	@override String get abortConfirm => 'Hi ha un arxiu que no s\'ha pujat, vols cancel·lar?';
 	@override String get doneConfirm => 'Hi han fitxers no pujats, vols completar-los?';
 	@override String maxFileSizeIsX({required Object x}) => 'La mida màxima d\'arxiu que es pot pujar és ${x}.';
+	@override String get allowedTypes => 'Tipus de fitxers que en podeu pujar';
+	@override String get tip => 'L\'arxiu encara no s\'ha carregat. En aquest quadre de diàleg, pots comprovar, canviar el nom, comprimir i retallar l\'arxiu abans de pujar-lo. Quan estigui llest pots iniciar la càrrega polsant el boto "Pujar"';
 }
 
 // Path: misskey.clientPerformanceIssueTip_
@@ -3398,6 +3419,73 @@ class _TranslationsMisskeyClientPerformanceIssueTipCaEs extends TranslationsMiss
 	@override String get makeSureDisabledCustomCss_description => 'L\'anul·lació dels estils pot afectar el rendiment. Comprova que el CSS personalitzat o les extensions que reescriuen estils no estiguin activats.';
 	@override String get makeSureDisabledAddons => 'Desactiva extensions';
 	@override String get makeSureDisabledAddons_description => 'Algunes extensions poden interferir en el comportament del client i afectar el rendiment. Desactiva les extensions del navegador i comprovar-ho.';
+}
+
+// Path: misskey.clip_
+class _TranslationsMisskeyClipCaEs extends TranslationsMisskeyClipEnUs {
+	_TranslationsMisskeyClipCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => 'Clip és una funció que permet organitzar les teves notes.';
+}
+
+// Path: misskey.userLists_
+class _TranslationsMisskeyUserListsCaEs extends TranslationsMisskeyUserListsEnUs {
+	_TranslationsMisskeyUserListsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => 'Es poden crear llistes amb qualsevol usuari. La llista creada es pot mostrar com una línia de temps.';
+}
+
+// Path: misskey.watermarkEditor_
+class _TranslationsMisskeyWatermarkEditorCaEs extends TranslationsMisskeyWatermarkEditorEnUs {
+	_TranslationsMisskeyWatermarkEditorCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => 'A la imatge es pot afegir una marca d\'aigua com informació sobre drets.';
+	@override String get quitWithoutSaveConfirm => 'Sortir sense desar?';
+	@override String get driveFileTypeWarn => 'Aquest arxiu no és compatible';
+	@override String get driveFileTypeWarnDescription => 'Selecciona un arxiu d\'imatge ';
+	@override String get title => 'Editar la marca d\'aigua ';
+	@override String get cover => 'Cobrir-ho tot';
+	@override String get repeat => 'Repetir';
+	@override String get opacity => 'Opacitat';
+	@override String get scale => 'Mida';
+	@override String get text => 'Text';
+	@override String get position => 'Posició ';
+	@override String get type => 'Tipus';
+	@override String get image => 'Imatges';
+	@override String get advanced => 'Avançat';
+	@override String get stripe => 'Bandes';
+	@override String get stripeWidth => 'Amplada de la banda';
+	@override String get stripeFrequency => 'Freqüència de la banda';
+	@override String get angle => 'Angle';
+	@override String get polkadot => 'Lunars';
+	@override String get checker => 'Escacs';
+	@override String get polkadotMainDotOpacity => 'Opacitat del lunar principal';
+	@override String get polkadotMainDotRadius => 'Mida del lunar principal';
+	@override String get polkadotSubDotOpacity => 'Opacitat del lunar secundari';
+	@override String get polkadotSubDotRadius => 'Mida del lunar secundari';
+	@override String get polkadotSubDotDivisions => 'Nombre de punts secundaris';
+}
+
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorCaEs extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Efecte';
+	@override String get addEffect => 'Afegeix un efecte';
+	@override String get discardChangesConfirm => 'Vols descartar els canvis i sortir?';
+	@override late final _TranslationsMisskeyImageEffectorFxsCaEs fxs_ = _TranslationsMisskeyImageEffectorFxsCaEs._(_root);
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3717,6 +3805,9 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get canImportMuting => 'Autoritza la importació de silenciats';
 	@override String get canImportUserLists => 'Autoritza la importació de llistes d\'usuaris ';
 	@override String get chatAvailability => 'Es permet xatejar';
+	@override String get uploadableFileTypes => 'Tipus de fitxers que en podeu pujar';
+	@override String get uploadableFileTypes_caption => 'Especifica el tipus MIME. Es poden especificar diferents tipus MIME separats amb una nova línia, i es poden especificar comodins amb asteriscs (*). (Per exemple: image/*)';
+	@override String uploadableFileTypes_caption2({required Object x}) => 'Pot que no sigui possible determinar el tipus MIME d\'alguns arxius. Per permetre aquests tipus d\'arxius afegeix ${x} a les especificacions.';
 }
 
 // Path: misskey.role_.condition_
@@ -4252,6 +4343,29 @@ class _TranslationsMisskeyServerSetupWizardDonationRequestCaEs extends Translati
 	@override String get text1 => 'Misskey és un programari gratuït fet per voluntaris.';
 	@override String get text2 => 'Si ho desitges, agrairíem molt la teva donació per poder seguir desenvolupant el projecte.';
 	@override String get text3 => 'També hi ha privilegis especials per als donants!';
+}
+
+// Path: misskey.imageEffector_.fxs_
+class _TranslationsMisskeyImageEffectorFxsCaEs extends TranslationsMisskeyImageEffectorFxsEnUs {
+	_TranslationsMisskeyImageEffectorFxsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get chromaticAberration => 'Aberració cromàtica';
+	@override String get glitch => 'Glitch';
+	@override String get mirror => 'Mirall';
+	@override String get invert => 'Inversió cromàtica ';
+	@override String get grayscale => 'Monocrom ';
+	@override String get colorAdjust => 'Correcció de color';
+	@override String get colorClamp => 'Compressió cromàtica ';
+	@override String get colorClampAdvanced => 'Compressió de cromàtica avançada ';
+	@override String get distort => 'Distorsió ';
+	@override String get threshold => 'Binarització';
+	@override String get zoomLines => 'Saturació de línies ';
+	@override String get stripe => 'Bandes';
+	@override String get polkadot => 'Lunars';
+	@override String get checker => 'Escacs';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
