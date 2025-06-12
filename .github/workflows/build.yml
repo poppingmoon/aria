@@ -49,7 +49,7 @@ jobs:
           cp -r . $APK_BUILD_DIR
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -104,7 +104,7 @@ jobs:
 
       - name: Release APK
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: |
             ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
@@ -127,7 +127,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -202,7 +202,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -242,7 +242,7 @@ jobs:
 
       - name: Release IPA (Unsigned)
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: aria-${{ github.ref_name }}.ipa
           draft: true
@@ -313,7 +313,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -339,7 +339,7 @@ jobs:
 
       - name: Release ZIP
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: aria-${{ github.ref_name }}-windows-x64.zip
           draft: true
@@ -364,7 +364,7 @@ jobs:
 
       - name: Release installer
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
           draft: true
@@ -386,7 +386,7 @@ jobs:
         run: rustup update
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -460,7 +460,7 @@ jobs:
 
       - name: Release DMG
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: aria-${{ github.ref_name }}.dmg
           draft: true
@@ -512,7 +512,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: master
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -546,7 +546,7 @@ jobs:
 
       - name: Release TAR
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
         with:
           files: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
           draft: true

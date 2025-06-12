@@ -62,11 +62,11 @@ dependencies {
 }
 
 configurations.all {
-    val tink = "com.google.crypto.tink:tink:1.16.0"
+    val tink = "com.google.crypto.tink:tink-android:1.17.0"
     resolutionStrategy {
         force(tink)
         dependencySubstitution {
-            substitute(module("com.google.crypto.tink:tink-android")).using(module(tink))
+            substitute(module("com.google.crypto.tink:tink")).using(module(tink))
         }
     }
 }

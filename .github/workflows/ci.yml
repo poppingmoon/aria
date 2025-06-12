@@ -43,7 +43,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -85,7 +85,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -114,7 +114,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -140,7 +140,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -188,7 +188,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -228,7 +228,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@e938fdf56512cc96ef2f93601a5a40bde3801046 # v2.19.0
+        uses: subosito/flutter-action@395322a6cded4e9ed503aebd4cc1965625f8e59a # v2.20.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -244,5 +244,4 @@ jobs:
           fail_level: error
 
       - name: Check diff
-        if: github.event_name != 'pull_request'
         run: git diff --exit-code
