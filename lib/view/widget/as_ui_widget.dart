@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -33,30 +32,25 @@ class AsUiWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     switch (components[componentId]) {
       case AsUiComponent_Root(field0: AsUiRoot(:final children)):
+        final theme = Theme.of(context);
         return Theme(
-          data: Theme.of(context).copyWith(
+          data: theme.copyWith(
             inputDecorationTheme: InputDecorationTheme(
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                ),
+                borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                borderSide: BorderSide(color: theme.colorScheme.primary),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6.0),
               ),
               filled: true,
-              fillColor: Theme.of(context).colorScheme.surface,
+              fillColor: theme.colorScheme.surface,
               helperStyle: TextStyle(
-                color: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.75),
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
               ),
               helperMaxLines: 100,
               isDense: true,
@@ -64,26 +58,26 @@ class AsUiWidget extends HookConsumerWidget {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 12.0,
             children: [
               ...children
                   .where(
                     (id) => switch (components[id]) {
-                      AsUiContainer(hidden: true) => false,
+                      AsUiComponent_Container(
+                        field0: AsUiContainer(hidden: true),
+                      ) =>
+                        false,
                       _ => true,
                     },
                   )
-                  .mapIndexed(
-                    (index, id) => [
-                      if (index > 0) const SizedBox(height: 12.0),
-                      AsUiWidget(
-                        account: account,
-                        host: host,
-                        componentId: id,
-                        components: components,
-                      ),
-                    ],
-                  )
-                  .flattenedToList,
+                  .map(
+                    (id) => AsUiWidget(
+                      account: account,
+                      host: host,
+                      componentId: id,
+                      components: components,
+                    ),
+                  ),
             ],
           ),
         );
@@ -109,6 +103,12 @@ class AsUiWidget extends HookConsumerWidget {
             _ => null,
           },
           child: Container(
+            alignment: switch (align) {
+              'left' => Alignment.centerLeft,
+              'center' => Alignment.center,
+              'right' => Alignment.centerRight,
+              _ => null,
+            },
             padding: padding != null ? EdgeInsets.all(padding) : null,
             decoration: BoxDecoration(
               color: safeParseColor(bgColor),
@@ -131,26 +131,26 @@ class AsUiWidget extends HookConsumerWidget {
                 'right' => CrossAxisAlignment.end,
                 _ => CrossAxisAlignment.start,
               },
+              spacing: 12.0,
               children: [
                 ...?children
                     ?.where(
                       (id) => switch (components[id]) {
-                        AsUiContainer(hidden: true) => false,
+                        AsUiComponent_Container(
+                          field0: AsUiContainer(hidden: true),
+                        ) =>
+                          false,
                         _ => true,
                       },
                     )
-                    .mapIndexed(
-                      (index, id) => [
-                        if (index > 0) const SizedBox(height: 12.0),
-                        AsUiWidget(
-                          account: account,
-                          host: host,
-                          componentId: id,
-                          components: components,
-                        ),
-                      ],
-                    )
-                    .flattenedToList,
+                    .map(
+                      (id) => AsUiWidget(
+                        account: account,
+                        host: host,
+                        componentId: id,
+                        components: components,
+                      ),
+                    ),
               ],
             ),
           ),
@@ -460,7 +460,10 @@ class AsUiWidget extends HookConsumerWidget {
           children: children
               ?.where(
                 (id) => switch (components[id]) {
-                  AsUiContainer(hidden: true) => false,
+                  AsUiComponent_Container(
+                    field0: AsUiContainer(hidden: true),
+                  ) =>
+                    false,
                   _ => true,
                 },
               )
