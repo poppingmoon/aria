@@ -96,7 +96,6 @@ class NotePage extends HookConsumerWidget {
                   ? tabSettings
                   : TabSettings.user(account, note.userId),
               sinceId: noteId,
-              eager: true,
             ),
           )
         : null;
@@ -127,7 +126,6 @@ class NotePage extends HookConsumerWidget {
                         ? tabSettings
                         : TabSettings.user(account, note.userId),
                     sinceId: noteId,
-                    eager: true,
                   ).notifier,
                 )
                 .loadMore();
@@ -198,7 +196,6 @@ class NotePage extends HookConsumerWidget {
                                 ? tabSettings
                                 : TabSettings.user(account, note.userId),
                             sinceId: noteId,
-                            eager: true,
                           ).notifier,
                         )
                         .loadMore(skipError: true),
