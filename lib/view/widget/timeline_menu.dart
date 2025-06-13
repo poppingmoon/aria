@@ -22,238 +22,232 @@ class TimelineMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final theme = Theme.of(context);
 
     return IconTheme.merge(
       data: const IconThemeData(size: 32.0),
-      child: Padding(
+      child: GridView.custom(
+        shrinkWrap: true,
         padding: const EdgeInsets.all(8.0),
-        child: GridView.custom(
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 250.0,
-            mainAxisExtent:
-                48.0 + DefaultTextStyle.of(context).style.lineHeight,
-          ),
-          childrenDelegate: SliverChildListDelegate.fixed([
-            if (!account.isGuest)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () => context.push('/$account/notifications'),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        children: [
-                          const Icon(Icons.notifications),
-                          if (i?.hasUnreadNotification ?? false)
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              child: const SizedBox(height: 12.0, width: 12.0),
-                            ),
-                        ],
-                      ),
-                      FittedBox(child: Text(t.misskey.notifications)),
-                    ],
-                  ),
-                ),
-              ),
-            if (i?.canChat != null)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () => context.push('/$account/chat'),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        children: [
-                          const Icon(Icons.message),
-                          if (i?.hasUnreadChatMessages ?? false)
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                              child: const SizedBox(height: 12.0, width: 12.0),
-                            ),
-                        ],
-                      ),
-                      FittedBox(child: Text(t.misskey.chat)),
-                    ],
-                  ),
-                ),
-              ),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 250.0,
+          mainAxisExtent: 48.0 + DefaultTextStyle.of(context).style.lineHeight,
+        ),
+        childrenDelegate: SliverChildListDelegate.fixed([
+          if (!account.isGuest)
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(
-                onTap: () => context.push('/$account/announcements'),
+                onTap: () => context.push('/$account/notifications'),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Stack(
                       children: [
-                        const Icon(Icons.campaign),
-                        if (i?.hasUnreadAnnouncement ?? false)
+                        const Icon(Icons.notifications),
+                        if (i?.hasUnreadNotification ?? false)
                           DecoratedBox(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Theme.of(context).colorScheme.primary,
+                              color: theme.colorScheme.primary,
                             ),
                             child: const SizedBox(height: 12.0, width: 12.0),
                           ),
                       ],
                     ),
-                    FittedBox(child: Text(t.misskey.announcements)),
+                    FittedBox(child: Text(t.misskey.notifications)),
                   ],
                 ),
               ),
             ),
+          if (i?.canChat != null)
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(
-                onTap: () => context.push('/$account/servers/${account.host}'),
+                onTap: () => context.push('/$account/chat'),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.dns),
-                    FittedBox(child: Text(t.misskey.instanceInfo)),
+                    Stack(
+                      children: [
+                        const Icon(Icons.message),
+                        if (i?.hasUnreadChatMessages ?? false)
+                          DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: theme.colorScheme.primary,
+                            ),
+                            child: const SizedBox(height: 12.0, width: 12.0),
+                          ),
+                      ],
+                    ),
+                    FittedBox(child: Text(t.misskey.chat)),
                   ],
                 ),
               ),
             ),
-            if (tabSettings.tabType == TabType.roleTimeline)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () =>
-                      context.push('/$account/roles/${tabSettings.roleId}'),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+          Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () => context.push('/$account/announcements'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Stack(
                     children: [
-                      const Icon(Icons.workspace_premium),
-                      FittedBox(child: Text(t.misskey.role)),
+                      const Icon(Icons.campaign),
+                      if (i?.hasUnreadAnnouncement ?? false)
+                        DecoratedBox(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: theme.colorScheme.primary,
+                          ),
+                          child: const SizedBox(height: 12.0, width: 12.0),
+                        ),
                     ],
                   ),
-                ),
+                  FittedBox(child: Text(t.misskey.announcements)),
+                ],
               ),
-            if (tabSettings.tabType == TabType.userList)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () =>
-                      context.push('/$account/lists/${tabSettings.listId}'),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.list),
-                      FittedBox(child: Text(t.misskey.userList)),
-                    ],
-                  ),
-                ),
+            ),
+          ),
+          Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () => context.push('/$account/servers/${account.host}'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.dns),
+                  FittedBox(child: Text(t.misskey.instanceInfo)),
+                ],
               ),
-            if (tabSettings.tabType == TabType.channel)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () => context.push(
-                    '/$account/channels/${tabSettings.channelId}',
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.tv),
-                      FittedBox(child: Text(t.misskey.channel)),
-                    ],
-                  ),
-                ),
-              ),
-            if (tabSettings.tabType == TabType.antenna)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () => context.push(
-                    '/$account/antennas/${tabSettings.antennaId}',
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.settings_input_antenna),
-                      FittedBox(child: Text(t.misskey.antennas)),
-                    ],
-                  ),
-                ),
-              ),
+            ),
+          ),
+          if (tabSettings.tabType == TabType.roleTimeline)
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(
-                onTap: () => context.push('/settings/tab/${tabSettings.id}'),
+                onTap: () =>
+                    context.push('/$account/roles/${tabSettings.roleId}'),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.settings),
-                    FittedBox(child: Text(t.misskey.settings)),
+                    const Icon(Icons.workspace_premium),
+                    FittedBox(child: Text(t.misskey.role)),
                   ],
                 ),
               ),
             ),
-            if (tabSettings.tabType != TabType.notifications)
-              Card(
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () async {
-                    final centerId = ref.read(
-                      timelineCenterNotifierProvider(tabSettings),
-                    );
-                    final lastViewedNoteId = ref.read(
-                      timelineLastViewedNoteIdNotifierProvider(tabSettings),
-                    );
-                    final date = await pickDateTime(
-                      context,
-                      initialDate: centerId != null
-                          ? Id.parse(centerId).date
-                          : lastViewedNoteId != null
-                          ? Id.parse(lastViewedNoteId).date
-                          : null,
-                      lastDate: DateTime.now(),
-                    );
-                    if (date != null) {
-                      await ref
-                          .read(
-                            timelineCenterNotifierProvider(
-                              tabSettings,
-                            ).notifier,
-                          )
-                          .setCenterFromDate(date);
-                    }
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.history),
-                      FittedBox(child: Text(t.aria.timeMachine)),
-                    ],
-                  ),
-                ),
-              ),
+          if (tabSettings.tabType == TabType.userList)
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(
-                onTap: () => reloadTimeline(ref, tabSettings),
+                onTap: () =>
+                    context.push('/$account/lists/${tabSettings.listId}'),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.refresh),
-                    FittedBox(child: Text(t.misskey.reload)),
+                    const Icon(Icons.list),
+                    FittedBox(child: Text(t.misskey.userList)),
                   ],
                 ),
               ),
             ),
-          ]),
-        ),
+          if (tabSettings.tabType == TabType.channel)
+            Card(
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+                onTap: () =>
+                    context.push('/$account/channels/${tabSettings.channelId}'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.tv),
+                    FittedBox(child: Text(t.misskey.channel)),
+                  ],
+                ),
+              ),
+            ),
+          if (tabSettings.tabType == TabType.antenna)
+            Card(
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+                onTap: () =>
+                    context.push('/$account/antennas/${tabSettings.antennaId}'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.settings_input_antenna),
+                    FittedBox(child: Text(t.misskey.antennas)),
+                  ],
+                ),
+              ),
+            ),
+          Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () => context.push('/settings/tab/${tabSettings.id}'),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.settings),
+                  FittedBox(child: Text(t.misskey.settings)),
+                ],
+              ),
+            ),
+          ),
+          if (tabSettings.tabType != TabType.notifications)
+            Card(
+              clipBehavior: Clip.hardEdge,
+              child: InkWell(
+                onTap: () async {
+                  final centerId = ref.read(
+                    timelineCenterNotifierProvider(tabSettings),
+                  );
+                  final lastViewedNoteId = ref.read(
+                    timelineLastViewedNoteIdNotifierProvider(tabSettings),
+                  );
+                  final date = await pickDateTime(
+                    context,
+                    initialDate: centerId != null
+                        ? Id.parse(centerId).date
+                        : lastViewedNoteId != null
+                        ? Id.parse(lastViewedNoteId).date
+                        : null,
+                    lastDate: DateTime.now(),
+                  );
+                  if (date != null) {
+                    await ref
+                        .read(
+                          timelineCenterNotifierProvider(tabSettings).notifier,
+                        )
+                        .setCenterFromDate(date);
+                  }
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.history),
+                    FittedBox(child: Text(t.aria.timeMachine)),
+                  ],
+                ),
+              ),
+            ),
+          Card(
+            clipBehavior: Clip.hardEdge,
+            child: InkWell(
+              onTap: () => reloadTimeline(ref, tabSettings),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(Icons.refresh),
+                  FittedBox(child: Text(t.misskey.reload)),
+                ],
+              ),
+            ),
+          ),
+        ]),
       ),
     );
   }
