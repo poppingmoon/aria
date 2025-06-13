@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.2.0+64
+version: 1.2.1+65
 
 environment:
   sdk: ">=3.8.0 <4.0.0"
@@ -54,7 +54,7 @@ dependencies:
   freezed_annotation: ^3.0.0
   gal: ^2.3.1
   gal_linux: ^0.1.2
-  go_router: ^15.1.3
+  go_router: ^15.2.0
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting

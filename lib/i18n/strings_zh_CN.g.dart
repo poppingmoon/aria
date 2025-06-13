@@ -134,10 +134,10 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get keepTimelinePosition => '记住上次浏览位置​';
 	@override String get lineHeight => '行高';
 	@override String get loginWithAccessToken => '使用访问令牌登录';
-	@override String get margin => '范围';
+	@override String get margin => '边距';
 	@override String get media => '媒体';
 	@override String get mentionToRemoteWarning => '此帖子提及了远程用户';
-	@override String get mergeReactionsByName => '统一显示同名用户反应';
+	@override String get mergeReactionsByName => '统一显示同名回应';
 	@override String get moved => '移动';
 	@override String get muted => '已静音/禁言';
 	@override String get mutedEmojis => '静音/拉黑 表情';
@@ -191,7 +191,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get pleaseCopyResponse => '请复制此回复';
 	@override String pleaseLoginAs({required Object user}) => '请以 ${user} 登录';
 	@override String get postConfirm => '你确定要发布这个帖子吗？';
-	@override String get reactionConfirm => '您确定要添加一个反应吗？';
+	@override String get reactionConfirm => '您确定要添加一个回应吗？';
 	@override String get recentlyUsedEmojis => '最近使用的表情';
 	@override String get renoteConfirm => '您确定要转发这个帖子吗？';
 	@override String get renoteToChannel => '转发至频道';
@@ -222,28 +222,28 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showAvatarsInSubNote => '在子贴中显示用户头像';
 	@override String get showEntireImage => '显示整个图像';
 	@override String get showExpandedImage => '显示扩展图像';
-	@override String get showGapBetweenNotesInTimeline => '显示时间线上帖子之间的间隔';
+	@override String get showGapBetweenNotesInTimeline => '在帖子之间添加间隔';
 	@override String get showImage => '显示图片';
 	@override String get showLikeButtonInNoteFooter => '在帖子菜单中添加喜欢按钮';
 	@override String get showMenuButtonInTabBar => '在标签栏中显示菜单按钮';
 	@override String get showNote => '查看帖子';
 	@override String get showNoteCreatedAt => '显示帖子的发布时间';
 	@override String get showNoteFooter => '在帖子下显示操作菜单';
-	@override String get showNoteReactionsViewer => '在帖子中显示反应表情';
+	@override String get showNoteReactionsViewer => '在帖子中显示回应表情';
 	@override String get showOnlineStatus => '显示在线状态';
 	@override String get showPopupOnNewNote => '在新帖子上显示弹出窗口';
 	@override String get showQuoteButtonInNoteFooter => '在帖子菜单中添加引用按钮';
-	@override String get showReactionsCountForEachTypes => '查看每个反应类型的反应数量';
-	@override String get showRenotesCount => '查看帖子中的转发数量';
-	@override String get showRepliesCount => '查看帖子中的回复数量';
+	@override String get showReactionsCountForEachTypes => '显示每种回应的数量';
+	@override String get showRenotesCount => '显示帖子的转发数量';
+	@override String get showRepliesCount => '显示帖子的回复数量';
 	@override String get showSelfRenotes => '显示自己转发';
 	@override String get showSmallButtons => '显示小按钮';
 	@override String get showSquaredButtons => '显示方形按钮';
 	@override String get showStackTrace => '显示错误详情';
 	@override String get showSubNoteFooter => '在子贴中显示操作菜单';
-	@override String get showSubNoteReactionsViewer => '在子贴中显示反应表情';
+	@override String get showSubNoteReactionsViewer => '在子贴中显示回应表情';
 	@override String get showTabHeaderInOneLine => '显示标签信息在一行内';
-	@override String get showTimelineLastViewedAt => '显示​​各版块最近浏览时间​';
+	@override String get showTimelineLastViewedAt => '显示​​最近浏览日期';
 	@override String get showTimelineTabBarAtBottom => '在底部显示标签栏';
 	@override String get showTranslateButtonInNoteFooter => '在帖子菜单中添加翻译按钮';
 	@override String get sinceDate => '从……开始';
@@ -2065,7 +2065,7 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get inquiryUrl => '联络地址';
 	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
 	@override String get openRegistration => '开放注册';
-	@override String get openRegistrationWarning => '开放注册有风险。建议仅当能够持续监控服务器并在出现问题时能够立即响应时才打开它。';
+	@override String get openRegistrationWarning => '开放注册有风险。建议仅当能够持续监控服务器，并在出现问题时能够立即响应时才打开它。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '若在一段时间内没有检测到管理活动，为防止垃圾信息，此设定将自动关闭。';
 	@override String get deliverSuspendedSoftware => '停止投递的软件';
 	@override String get deliverSuspendedSoftwareDescription => '可因安全漏洞之类的原因，停止向指定的服务器及服务器版本送信。版本信息由服务器提供，不保证可靠性。可使用 semver 范围来指定版本，但指定 >= 2024.3.1 将不包括如 2024.3.1-custom.0 等自定义版本，因此建议像 >= 2024.3.1-0 这样指定 prerelease 版本。';
@@ -2448,7 +2448,7 @@ class _TranslationsMisskeyInstanceMuteZhCn extends TranslationsMisskeyInstanceMu
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get instanceMuteDescription => '隐藏服务器中的所有帖子和转帖，包括这些服务器上的用户回复。';
+	@override String get instanceMuteDescription => '隐藏服务器中所有的帖子和转帖，包括这些服务器上用户的回复。';
 	@override String get instanceMuteDescription2 => '一行一个';
 	@override String get title => '下面实例中的帖子将被隐藏。';
 	@override String get heading => '已隐藏的服务器';
@@ -2891,7 +2891,7 @@ class _TranslationsMisskeyProfileZhCn extends TranslationsMisskeyProfileEnUs {
 	@override String avatarDecorationMax({required Object max}) => '最多可添加 ${max} 个挂件';
 	@override String get followedMessage => '被关注时显示的消息';
 	@override String get followedMessageDescription => '可以设置被关注时向对方显示的短消息。';
-	@override String get followedMessageDescriptionForLockedAccount => '需要批准才能关注的情况下，消息是在请求被批准后显示。';
+	@override String get followedMessageDescriptionForLockedAccount => '需要批准才能关注的情况下，消息会在请求被批准后显示。';
 }
 
 // Path: misskey.exportOrImport_
