@@ -17,12 +17,11 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
   Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? sinceId,
-    bool eager = false,
   }) async* {
     if (sinceId != null) {
-      final response = eager
-          ? await _fetchNotesEagerly(sinceId)
-          : await _fetchNotes(sinceId: sinceId);
+      final response = tabSettings.keepPosition
+          ? await _fetchNotes(sinceId: sinceId)
+          : await _fetchNotesEagerly(sinceId);
       yield PaginationState.fromIterable(response);
       if (response.isNotEmpty && response.length < 10) {
         await loadMore();
@@ -175,7 +174,10 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         case TabType.mention || TabType.direct || TabType.custom) {
       return _fetchNotes(sinceId: sinceId);
     }
-    final id = Id.parse(sinceId);
+    final id = Id.tryParse(sinceId);
+    if (id == null) {
+      return _fetchNotes(sinceId: sinceId);
+    }
     DateTime sinceDate = id.date.add(const Duration(milliseconds: 1));
     while (sinceDate.isBefore(DateTime.now())) {
       final untilDate = sinceDate.add(_duration);
@@ -209,9 +211,9 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = eager
-          ? await _fetchNotesEagerly(value.items.first.id)
-          : await _fetchNotes(sinceId: value.items.first.id);
+      final response = tabSettings.keepPosition
+          ? await _fetchNotes(sinceId: value.items.first.id)
+          : await _fetchNotesEagerly(value.items.first.id);
       shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...response, ...value.items],

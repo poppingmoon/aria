@@ -126,4 +126,8 @@ class Id {
         return '$timeStr$randomStr';
     }
   }
+
+  Id next() {
+    return Id(method: method, date: date.add(const Duration(milliseconds: 1)));
+  }
 }

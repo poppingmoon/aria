@@ -56,22 +56,23 @@ class TimelineWidget extends HookConsumerWidget {
         ? ref.watch(timelineLastViewedAtProvider(tabSettings))
         : null;
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
-    final nextNotes = tabSettings.tabType != TabType.notifications
-        ? ref
-              .watch(
-                timelineNotesAfterNoteNotifierProvider(
-                  tabSettings,
-                  sinceId: centerId,
-                ),
-              )
-              .valueOrNull
+    final nextNoteId = tabSettings.tabType != TabType.notifications
+        ? ref.watch(
+            timelineNotesAfterNoteNotifierProvider(
+              tabSettings,
+              sinceId: centerId,
+            ).select((notes) => notes.valueOrNull?.items.firstOrNull?.id),
+          )
         : null;
-    final previousNotes = tabSettings.tabType != TabType.notifications
-        ? ref
-              .watch(
-                timelineNotesNotifierProvider(tabSettings, untilId: centerId),
-              )
-              .valueOrNull
+    final previousNoteId = tabSettings.tabType != TabType.notifications
+        ? ref.watch(
+            timelineNotesNotifierProvider(
+              tabSettings,
+              untilId: centerId != null
+                  ? Id.tryParse(centerId)?.next().toString() ?? centerId
+                  : null,
+            ).select((notes) => notes.valueOrNull?.items.firstOrNull?.id),
+          )
         : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
     final scrollController = ref.watch(
@@ -218,9 +219,8 @@ class TimelineWidget extends HookConsumerWidget {
               ),
             ),
             if (lastViewedNoteId != null && showLastViewedAt.value)
-              if (previousNotes?.items.firstOrNull?.id
-                  case final previousNoteId?
-                  when lastViewedNoteId.compareTo(previousNoteId) < 0)
+              if (previousNoteId != null &&
+                  lastViewedNoteId.compareTo(previousNoteId) < 0)
                 Container(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -300,8 +300,8 @@ class TimelineWidget extends HookConsumerWidget {
                     ),
                   ),
                 )
-              else if (nextNotes?.items.firstOrNull?.id case final nextNoteId?
-                  when lastViewedNoteId.compareTo(nextNoteId) < 0)
+              else if (nextNoteId != null &&
+                  lastViewedNoteId.compareTo(nextNoteId) < 0)
                 Container(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),

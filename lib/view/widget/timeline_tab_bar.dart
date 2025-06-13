@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/scroll_controller_extension.dart';
-import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
-import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/reload_timeline.dart';
 import 'tab_icon_widget.dart';
 
 class TimelineTabBar extends HookConsumerWidget {
@@ -40,17 +39,15 @@ class TimelineTabBar extends HookConsumerWidget {
       isScrollable: true,
       onTap: (index) {
         if (index == controller.index) {
+          final tabSettings = tabs[index];
           final scrollController = ref.read(
-            timelineScrollControllerProvider(tabs[index]),
+            timelineScrollControllerProvider(tabSettings),
           );
           if (scrollController.hasClients) {
             if (scrollController.position.extentBefore < 10000) {
               scrollController.scrollToTop();
             } else {
-              ref.invalidate(
-                timelineNotesAfterNoteNotifierProvider(tabs[index]),
-              );
-              ref.invalidate(timelineNotesNotifierProvider(tabs[index]));
+              reloadTimeline(ref, tabSettings);
             }
           }
         } else {
