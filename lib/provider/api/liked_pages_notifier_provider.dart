@@ -18,11 +18,16 @@ class LikedPagesNotifier extends _$LikedPagesNotifier {
     }
   }
 
-  Future<Iterable<IPageLikesResponse>> _fetchPages({String? untilId}) {
-    return ref
+  Future<Iterable<IPageLikesResponse>> _fetchPages({String? untilId}) async {
+    final pages = await ref
         .read(misskeyProvider(account))
         .i
         .pageLikes(IPageLikesRequest(untilId: untilId));
+    if (untilId != null) {
+      return pages.where((page) => page.id.compareTo(untilId) < 0);
+    } else {
+      return pages;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

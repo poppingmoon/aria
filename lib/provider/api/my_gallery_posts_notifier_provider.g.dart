@@ -7,7 +7,7 @@ part of 'my_gallery_posts_notifier_provider.dart';
 // **************************************************************************
 
 String _$myGalleryPostsNotifierHash() =>
-    r'5936f4760cc284edfaef4ed386bda9561dcadc33';
+    r'c4752462097ee3233a03eab520f0995a02f6afb4';
 
 /// Copied from Dart SDK
 class _SystemHash {

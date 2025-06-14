@@ -7,7 +7,7 @@ part of 'following_channels_notifier_provider.dart';
 // **************************************************************************
 
 String _$followingChannelsNotifierHash() =>
-    r'37bf1de0aa0a402f017b39ac8286258a15420493';
+    r'72ebaa497f627bf8ac026b315ae60214d5a882e9';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -44,7 +44,11 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
         .reactions(UsersReactionsRequest(userId: userId, untilId: untilId));
     final notes = reactions.map((reaction) => reaction.note);
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
-    return reactions;
+    if (untilId != null) {
+      return reactions.where((reaction) => reaction.id.compareTo(untilId) < 0);
+    } else {
+      return reactions;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

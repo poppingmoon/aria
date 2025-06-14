@@ -162,7 +162,13 @@ class NotificationsNotifier extends _$NotificationsNotifier {
         .addAll(
           notifications.map((notification) => notification.note).nonNulls,
         );
-    return notifications.where((notification) => notification.id != untilId);
+    if (untilId != null) {
+      return notifications.where(
+        (notification) => notification.id.compareTo(untilId) < 0,
+      );
+    } else {
+      return notifications;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

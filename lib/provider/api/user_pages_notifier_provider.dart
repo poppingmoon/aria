@@ -31,11 +31,16 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     }
   }
 
-  Future<Iterable<Page>> _fetchPages({String? untilId}) {
-    return ref
+  Future<Iterable<Page>> _fetchPages({String? untilId}) async {
+    final pages = await ref
         .read(misskeyProvider(account))
         .users
         .pages(UsersPagesRequest(userId: userId, untilId: untilId));
+    if (untilId != null) {
+      return pages.where((page) => page.id.compareTo(untilId) < 0);
+    } else {
+      return pages;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

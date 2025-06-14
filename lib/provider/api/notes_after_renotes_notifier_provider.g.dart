@@ -7,7 +7,7 @@ part of 'notes_after_renotes_notifier_provider.dart';
 // **************************************************************************
 
 String _$notesAfterRenotesNotifierHash() =>
-    r'efc284c1f1a213389df352a48c5f6261bca08dcb';
+    r'e02d55f4ba7cc91418a176268eddf7452bf8f2b8';
 
 /// Copied from Dart SDK
 class _SystemHash {

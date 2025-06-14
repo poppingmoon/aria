@@ -23,7 +23,11 @@ class FollowingChannelsNotifier extends _$FollowingChannelsNotifier {
         .read(misskeyProvider(account))
         .channels
         .followed(ChannelsFollowedRequest(untilId: untilId));
-    return channels;
+    if (untilId != null) {
+      return channels.where((channel) => channel.id.compareTo(untilId) < 0);
+    } else {
+      return channels;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

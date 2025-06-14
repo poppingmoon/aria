@@ -7,7 +7,7 @@ part of 'renote_mutings_notifier_provider.dart';
 // **************************************************************************
 
 String _$renoteMutingsNotifierHash() =>
-    r'126c882bbf5bf8902200669b33fe8f8aefd7f717';
+    r'370dc2e750e9af580b7a2a26e01ccd621a410dc1';
 
 /// Copied from Dart SDK
 class _SystemHash {

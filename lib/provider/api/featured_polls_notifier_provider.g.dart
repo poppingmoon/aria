@@ -7,7 +7,7 @@ part of 'featured_polls_notifier_provider.dart';
 // **************************************************************************
 
 String _$featuredPollsNotifierHash() =>
-    r'ccc761d8a7bd02bb1a513bb2e76bc48dc87111ab';
+    r'daf0d0cf4a58398f3a652b7d138acb33b115cb20';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -7,7 +7,7 @@ part of 'search_channels_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchChannelsNotifierHash() =>
-    r'a55746109ac5b62aee0f55e499ae0c872309add7';
+    r'41044bf6ed530505db087e4dea7984a23d1927c4';
 
 /// Copied from Dart SDK
 class _SystemHash {

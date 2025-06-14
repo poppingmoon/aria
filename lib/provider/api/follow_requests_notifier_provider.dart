@@ -24,7 +24,11 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     final requests = await _misskey.following.requests.list(
       FollowingRequestsListRequest(untilId: untilId),
     );
-    return requests;
+    if (untilId != null) {
+      return requests.where((request) => request.id.compareTo(untilId) < 0);
+    } else {
+      return requests;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

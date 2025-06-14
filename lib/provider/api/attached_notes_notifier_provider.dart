@@ -28,7 +28,11 @@ class AttachedNotesNotifier extends _$AttachedNotesNotifier {
           DriveFilesAttachedNotesRequest(fileId: fileId, untilId: untilId),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
-    return notes;
+    if (untilId != null) {
+      return notes.where((note) => note.id.compareTo(untilId) < 0);
+    } else {
+      return notes;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {
@@ -43,17 +47,11 @@ class AttachedNotesNotifier extends _$AttachedNotesNotifier {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(untilId: value.items.lastOrNull?.id);
-      if (response.any((note) => note.id == value.items.firstOrNull?.id)) {
-        // Pagination was not supported for `drive/files/attached-notes`
-        // until Misskey 2023.10.0.
-        return value.copyWith(isLastLoaded: true);
-      } else {
-        shouldLoadMore = response.isNotEmpty && response.length < 5;
-        return PaginationState(
-          items: [...value.items, ...response],
-          isLastLoaded: response.isEmpty,
-        );
-      }
+      shouldLoadMore = response.isNotEmpty && response.length < 5;
+      return PaginationState(
+        items: [...value.items, ...response],
+        isLastLoaded: response.isEmpty,
+      );
     });
     if (shouldLoadMore) {
       await loadMore();

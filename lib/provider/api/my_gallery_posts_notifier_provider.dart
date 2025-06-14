@@ -37,7 +37,11 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
     final posts = await _misskey.i.gallery.posts(
       IGalleryPostsRequest(limit: 100, untilId: untilId),
     );
-    return posts;
+    if (untilId != null) {
+      return posts.where((post) => post.id.compareTo(untilId) < 0);
+    } else {
+      return posts;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

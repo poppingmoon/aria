@@ -7,7 +7,7 @@ part of 'attached_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$attachedNotesNotifierHash() =>
-    r'05a9598fae8a8f0b90fb0292dd49153016acaf18';
+    r'8153805bcef0d6aff4e68662ca9f72c736aa11e8';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -6,7 +6,7 @@ part of 'role_users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roleUsersNotifierHash() => r'51c3f9d3b0b4b5f656629c9917b23e362e833ad3';
+String _$roleUsersNotifierHash() => r'40ca4fc4c2b261bc67a90f6f33e82e3f498466ab';
 
 /// Copied from Dart SDK
 class _SystemHash {

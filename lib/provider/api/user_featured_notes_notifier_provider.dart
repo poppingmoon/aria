@@ -27,7 +27,11 @@ class UserFeaturedNotesNotifier extends _$UserFeaturedNotesNotifier {
           UsersFeaturedNotesRequest(userId: userId, untilId: untilId),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
-    return notes;
+    if (untilId != null) {
+      return notes.where((note) => note.id.compareTo(untilId) < 0);
+    } else {
+      return notes;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

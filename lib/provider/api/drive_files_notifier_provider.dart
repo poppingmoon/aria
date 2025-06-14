@@ -40,10 +40,15 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<Iterable<DriveFile>> _fetchFiles({String? untilId}) {
-    return _misskey.drive.files.files(
+  Future<Iterable<DriveFile>> _fetchFiles({String? untilId}) async {
+    final files = await _misskey.drive.files.files(
       DriveFilesRequest(folderId: folderId, untilId: untilId, limit: 30),
     );
+    if (untilId != null) {
+      return files.where((file) => file.id.compareTo(untilId) < 0);
+    } else {
+      return files;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

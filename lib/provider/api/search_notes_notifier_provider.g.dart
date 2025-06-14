@@ -7,7 +7,7 @@ part of 'search_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchNotesNotifierHash() =>
-    r'b74e64d9f6dcff92572b71ee8658f4490b07d459';
+    r'778e8d621b5a6af8b02f3e425b7c44be22bd50a9';
 
 /// Copied from Dart SDK
 class _SystemHash {

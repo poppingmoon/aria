@@ -53,18 +53,13 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     if (value.isLastLoaded) {
       return;
     }
-    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchUsers(offset: value.items.length);
-      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
-    if (shouldLoadMore) {
-      await loadMore();
-    }
   }
 }

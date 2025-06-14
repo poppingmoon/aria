@@ -7,7 +7,7 @@ part of 'owned_chat_rooms_notifier_provider.dart';
 // **************************************************************************
 
 String _$ownedChatRoomsNotifierHash() =>
-    r'f18a82e9cf9131e807455a53b3245e64a9493436';
+    r'b090a8404f77cb1680a0f5de2098ff98b69dcd1e';
 
 /// Copied from Dart SDK
 class _SystemHash {

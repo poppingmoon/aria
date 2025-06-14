@@ -23,7 +23,11 @@ class PlaysNotifier extends _$PlaysNotifier {
         .read(misskeyProvider(account))
         .flash
         .my(FlashMyRequest(untilId: untilId));
-    return plays;
+    if (untilId != null) {
+      return plays.where((play) => play.id.compareTo(untilId) < 0);
+    } else {
+      return plays;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

@@ -18,11 +18,16 @@ class LikedPlaysNotifier extends _$LikedPlaysNotifier {
     }
   }
 
-  Future<Iterable<FlashMyLikesResponse>> _fetchPlays({String? untilId}) {
-    return ref
+  Future<Iterable<FlashMyLikesResponse>> _fetchPlays({String? untilId}) async {
+    final plays = await ref
         .read(misskeyProvider(account))
         .flash
         .myLikes(FlashMyLikesRequest(untilId: untilId));
+    if (untilId != null) {
+      return plays.where((play) => play.id.compareTo(untilId) < 0);
+    } else {
+      return plays;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

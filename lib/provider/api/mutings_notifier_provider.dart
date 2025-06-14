@@ -21,7 +21,12 @@ class MutingsNotifier extends _$MutingsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<Muting>> _fetchMutings({String? untilId}) async {
-    return await _misskey.mute.list(MuteListRequest(untilId: untilId));
+    final mutings = await _misskey.mute.list(MuteListRequest(untilId: untilId));
+    if (untilId != null) {
+      return mutings.where((muting) => muting.id.compareTo(untilId) < 0);
+    } else {
+      return mutings;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

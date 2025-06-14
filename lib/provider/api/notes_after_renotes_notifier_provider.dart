@@ -27,13 +27,18 @@ class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
   String? _untilId;
 
   Future<Iterable<Note>> _fetchRenotes() async {
+    final untilId = _untilId;
     final notes = await ref
         .read(misskeyProvider(account))
         .notes
-        .renotes(NotesRenoteRequest(noteId: noteId, untilId: _untilId));
+        .renotes(NotesRenoteRequest(noteId: noteId, untilId: untilId));
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     _untilId = notes.lastOrNull?.id;
-    return notes;
+    if (untilId != null) {
+      return notes.where((post) => post.id.compareTo(untilId) < 0);
+    } else {
+      return notes;
+    }
   }
 
   Future<Note?> _fetchNote(Note renote) async {

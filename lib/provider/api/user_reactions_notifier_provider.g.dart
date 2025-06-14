@@ -7,7 +7,7 @@ part of 'user_reactions_notifier_provider.dart';
 // **************************************************************************
 
 String _$userReactionsNotifierHash() =>
-    r'a2bf8dee78f8eed0871734db8d4395b4278518a0';
+    r'a80f1c0d1abd3c6e2e423237c41cb6d25279fa89';
 
 /// Copied from Dart SDK
 class _SystemHash {
