@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
@@ -382,6 +382,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                                 top: Radius.circular(24.0),
                               ),
                             ),
+                            clipBehavior: Clip.hardEdge,
                             child: SafeArea(
                               top: false,
                               child: ListTile(
