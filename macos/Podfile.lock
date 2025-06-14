@@ -20,8 +20,6 @@ PODS:
   - webcrypto (0.1.1):
     - Flutter
     - FlutterMacOS
-  - window_manager (0.2.0):
-    - FlutterMacOS
 
 DEPENDENCIES:
   - flutter_image_compress_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_image_compress_macos/macos`)
@@ -33,7 +31,6 @@ DEPENDENCIES:
   - screen_retriever_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos`)
   - wakelock_plus (from `Flutter/ephemeral/.symlinks/plugins/wakelock_plus/macos`)
   - webcrypto (from `Flutter/ephemeral/.symlinks/plugins/webcrypto/darwin`)
-  - window_manager (from `Flutter/ephemeral/.symlinks/plugins/window_manager/macos`)
 
 SPEC REPOS:
   trunk:
@@ -58,8 +55,6 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/wakelock_plus/macos
   webcrypto:
     :path: Flutter/ephemeral/.symlinks/plugins/webcrypto/darwin
-  window_manager:
-    :path: Flutter/ephemeral/.symlinks/plugins/window_manager/macos
 
 SPEC CHECKSUMS:
   flutter_image_compress_macos: c26c3c13ea0f28ae6dea4e139b3292e7729f99f1
@@ -72,7 +67,6 @@ SPEC CHECKSUMS:
   screen_retriever_macos: 776e0fa5d42c6163d2bf772d22478df4b302b161
   wakelock_plus: 4783562c9a43d209c458cb9b30692134af456269
   webcrypto: aa788ff6b0a956e5d6e613b35b99c13e220ca2d0
-  window_manager: 3a1844359a6295ab1e47659b1a777e36773cd6e8
 
 PODFILE CHECKSUM: c2e95c8c0fe03c5c57e438583cae4cc732296009
 

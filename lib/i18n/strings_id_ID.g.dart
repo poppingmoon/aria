@@ -255,6 +255,7 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get vibrateNote => 'Getarkan untuk note baru';
 	@override String get vibrateNotification => 'Getarkan untuk notifikasi baru';
 	@override String get webBrowser => 'Peramban web';
+	@override String willBePostedOn({required Object date}) => 'Akan diposting pada ${date} ';
 }
 
 // Path: misskey
