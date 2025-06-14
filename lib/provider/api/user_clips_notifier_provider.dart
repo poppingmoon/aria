@@ -31,11 +31,16 @@ class UserClipsNotifier extends _$UserClipsNotifier {
     }
   }
 
-  Future<Iterable<Clip>> _fetchClips({String? untilId}) {
-    return ref
+  Future<Iterable<Clip>> _fetchClips({String? untilId}) async {
+    final clips = await ref
         .read(misskeyProvider(account))
         .users
         .clips(UsersClipsRequest(userId: userId, untilId: untilId));
+    if (untilId != null) {
+      return clips.where((clip) => clip.id.compareTo(untilId) < 0);
+    } else {
+      return clips;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

@@ -18,12 +18,17 @@ class OwnedChatRoomsNotifier extends _$OwnedChatRoomsNotifier {
     }
   }
 
-  Future<Iterable<ChatRoom>> _fetchRooms({String? untilId}) {
-    return ref
+  Future<Iterable<ChatRoom>> _fetchRooms({String? untilId}) async {
+    final rooms = await ref
         .read(misskeyProvider(account))
         .chat
         .rooms
         .owned(ChatRoomsOwnedRequest(untilId: untilId));
+    if (untilId != null) {
+      return rooms.where((room) => room.id.compareTo(untilId) < 0);
+    } else {
+      return rooms;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

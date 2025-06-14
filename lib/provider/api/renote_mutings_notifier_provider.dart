@@ -21,10 +21,17 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<RenoteMuting>> _fetchRenoteMutings({String? untilId}) async {
-    return await ref
+    final renoteMutings = await ref
         .read(misskeyProvider(account))
         .renoteMute
         .list(RenoteMuteListRequest(untilId: untilId));
+    if (untilId != null) {
+      return renoteMutings.where(
+        (renoteMuting) => renoteMuting.id.compareTo(untilId) < 0,
+      );
+    } else {
+      return renoteMutings;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

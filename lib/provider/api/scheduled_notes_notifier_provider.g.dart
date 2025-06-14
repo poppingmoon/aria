@@ -7,7 +7,7 @@ part of 'scheduled_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$scheduledNotesNotifierHash() =>
-    r'81fb9163fa85d1a694cde4deeaa89e6070465765';
+    r'b15761fbe0a24f5a403fbf7852d7dba2de226559';
 
 /// Copied from Dart SDK
 class _SystemHash {

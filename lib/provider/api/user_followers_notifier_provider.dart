@@ -21,11 +21,16 @@ class UserFollowersNotifier extends _$UserFollowersNotifier {
     }
   }
 
-  Future<Iterable<Following>> _fetchFollowers({String? untilId}) {
-    return ref
+  Future<Iterable<Following>> _fetchFollowers({String? untilId}) async {
+    final followers = await ref
         .read(misskeyProvider(account))
         .users
         .followers(UsersFollowersRequest(userId: userId, untilId: untilId));
+    if (untilId != null) {
+      return followers.where((follower) => follower.id.compareTo(untilId) < 0);
+    } else {
+      return followers;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

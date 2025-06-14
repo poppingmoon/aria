@@ -6,7 +6,7 @@ part of 'reactions_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$reactionsNotifierHash() => r'1f70e350b36096e60e0d6d5133efff6bfc8e71db';
+String _$reactionsNotifierHash() => r'62aa3850df4059c9edbb14e69f2f9fb40484f01e';
 
 /// Copied from Dart SDK
 class _SystemHash {

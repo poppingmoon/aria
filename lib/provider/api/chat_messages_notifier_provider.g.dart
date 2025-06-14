@@ -7,7 +7,7 @@ part of 'chat_messages_notifier_provider.dart';
 // **************************************************************************
 
 String _$chatMessagesNotifierHash() =>
-    r'e1da3bffa7afc6b462d39500feb45be938d43fd9';
+    r'2bc79f966b2d8af94e89b0bf1ab04e8704f5b121';
 
 /// Copied from Dart SDK
 class _SystemHash {

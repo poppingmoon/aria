@@ -7,7 +7,7 @@ part of 'children_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$childrenNotesNotifierHash() =>
-    r'37a2455b97e7441dea8596704b6d540ef123e027';
+    r'2138578ca535573bd36a3dc7aaf83d07cf958e5f';
 
 /// Copied from Dart SDK
 class _SystemHash {

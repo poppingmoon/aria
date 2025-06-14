@@ -21,11 +21,16 @@ class RoleUsersNotifier extends _$RoleUsersNotifier {
     }
   }
 
-  Future<Iterable<RolesUsersResponse>> _fetchUsers({String? untilId}) {
-    return ref
+  Future<Iterable<RolesUsersResponse>> _fetchUsers({String? untilId}) async {
+    final users = await ref
         .read(misskeyProvider(account))
         .roles
         .users(RolesUsersRequest(roleId: roleId, untilId: untilId));
+    if (untilId != null) {
+      return users.where((user) => user.id.compareTo(untilId) < 0);
+    } else {
+      return users;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

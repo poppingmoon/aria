@@ -7,7 +7,7 @@ part of 'liked_pages_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedPagesNotifierHash() =>
-    r'a3f141dee262d19f4c339818503a512c4b76abde';
+    r'bfcfad309a7f34b0ed6392280c50d1e537360905';
 
 /// Copied from Dart SDK
 class _SystemHash {

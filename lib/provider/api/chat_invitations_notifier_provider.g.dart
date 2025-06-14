@@ -7,7 +7,7 @@ part of 'chat_invitations_notifier_provider.dart';
 // **************************************************************************
 
 String _$chatInvitationsNotifierHash() =>
-    r'80619bda877ceb2ba187fdf580d00d557589bc15';
+    r'017908eeee8872177d0aa9aadb152aa2368cc3fb';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -40,18 +40,13 @@ class FeaturedPollsNotifier extends _$FeaturedPollsNotifier {
     if (value.isLastLoaded) {
       return;
     }
-    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchNotes(offset: value.items.length);
-      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
-    if (shouldLoadMore) {
-      await loadMore();
-    }
   }
 }

@@ -6,7 +6,7 @@ part of 'user_pages_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userPagesNotifierHash() => r'04501d3b9903d6d1b459e048b7490e3b3ae46758';
+String _$userPagesNotifierHash() => r'63981b92124f16e1dcca0d676ef5735e4ca8fce5';
 
 /// Copied from Dart SDK
 class _SystemHash {

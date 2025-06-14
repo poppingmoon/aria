@@ -29,7 +29,11 @@ class FavoritesNotifier extends _$FavoritesNotifier {
     ref
         .read(notesNotifierProvider(account).notifier)
         .addAll(favorites.map((favorite) => favorite.note));
-    return favorites;
+    if (untilId != null) {
+      return favorites.where((favorite) => favorite.id.compareTo(untilId) < 0);
+    } else {
+      return favorites;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

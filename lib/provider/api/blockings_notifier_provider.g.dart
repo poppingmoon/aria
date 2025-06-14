@@ -6,7 +6,7 @@ part of 'blockings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$blockingsNotifierHash() => r'7b434f8b5e089cf71a34f0a794df3aeec351b83a';
+String _$blockingsNotifierHash() => r'ecede0be28721cbd9a7b96099b1185b32710f447';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -44,22 +44,17 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
     if (value.isLastLoaded) {
       return;
     }
-    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchAnnouncements(
         untilId: value.items.lastOrNull?.id,
         offset: value.items.length,
       );
-      shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });
-    if (shouldLoadMore) {
-      await loadMore();
-    }
   }
 
   Future<void> readAnnouncement(String announcementId) async {

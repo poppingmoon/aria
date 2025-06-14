@@ -36,11 +36,15 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<List<DriveFolder>> _fetchFolders({String? untilId}) async {
-    final response = await _misskey.drive.folders.folders(
+  Future<Iterable<DriveFolder>> _fetchFolders({String? untilId}) async {
+    final folders = await _misskey.drive.folders.folders(
       DriveFoldersRequest(folderId: folderId, untilId: untilId, limit: 30),
     );
-    return response.toList();
+    if (untilId != null) {
+      return folders.where((folder) => folder.id.compareTo(untilId) < 0);
+    } else {
+      return folders;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

@@ -33,7 +33,6 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
     if (value.isLastLoaded) {
       return;
     }
-    bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchPlays(offset: value.items.length);
@@ -42,15 +41,11 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
         // until Misskey 2024.10.0.
         return value.copyWith(isLastLoaded: true);
       } else {
-        shouldLoadMore = response.isNotEmpty && response.length < 5;
         return PaginationState(
           items: [...value.items, ...response],
           isLastLoaded: response.isEmpty,
         );
       }
     });
-    if (shouldLoadMore) {
-      await loadMore();
-    }
   }
 }

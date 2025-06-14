@@ -6,7 +6,7 @@ part of 'users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$usersNotifierHash() => r'599ab1f8c17f08eab04e6888b284fc5982a21ecf';
+String _$usersNotifierHash() => r'e054ad084a328b8dea2b770e85737649c6c1cfa9';
 
 /// Copied from Dart SDK
 class _SystemHash {

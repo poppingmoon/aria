@@ -6,7 +6,7 @@ part of 'mutings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mutingsNotifierHash() => r'5a178415cadf778585573ee220ae7307ac245115';
+String _$mutingsNotifierHash() => r'8823083a289421c8373b8210eec9555a8c417d8b';
 
 /// Copied from Dart SDK
 class _SystemHash {

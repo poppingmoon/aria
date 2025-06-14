@@ -18,12 +18,19 @@ class ChatMembershipsNotifier extends _$ChatMembershipsNotifier {
     }
   }
 
-  Future<Iterable<ChatJoining>> _fetchMemberships({String? untilId}) {
-    return ref
+  Future<Iterable<ChatJoining>> _fetchMemberships({String? untilId}) async {
+    final memberships = await ref
         .read(misskeyProvider(account))
         .chat
         .rooms
         .joining(ChatRoomsJoiningRequest(untilId: untilId));
+    if (untilId != null) {
+      return memberships.where(
+        (membership) => membership.id.compareTo(untilId) < 0,
+      );
+    } else {
+      return memberships;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

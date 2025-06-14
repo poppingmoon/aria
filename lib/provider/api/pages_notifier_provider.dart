@@ -23,7 +23,11 @@ class PagesNotifier extends _$PagesNotifier {
         .read(misskeyProvider(account))
         .i
         .pages(IPagesRequest(untilId: untilId));
-    return pages;
+    if (untilId != null) {
+      return pages.where((page) => page.id.compareTo(untilId) < 0);
+    } else {
+      return pages;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

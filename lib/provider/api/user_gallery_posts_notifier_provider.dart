@@ -40,7 +40,11 @@ class UserGalleryPostsNotifier extends _$UserGalleryPostsNotifier {
         .users
         .gallery
         .posts(UsersGalleryPostsRequest(userId: userId, untilId: untilId));
-    return posts;
+    if (untilId != null) {
+      return posts.where((post) => post.id.compareTo(untilId) < 0);
+    } else {
+      return posts;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

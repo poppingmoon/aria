@@ -31,11 +31,16 @@ class UserPlaysNotifier extends _$UserPlaysNotifier {
     }
   }
 
-  Future<Iterable<Flash>> _fetchPlays({String? untilId}) {
-    return ref
+  Future<Iterable<Flash>> _fetchPlays({String? untilId}) async {
+    final plays = await ref
         .read(misskeyProvider(account))
         .users
         .flashs(UsersFlashsRequest(userId: userId, untilId: untilId));
+    if (untilId != null) {
+      return plays.where((play) => play.id.compareTo(untilId) < 0);
+    } else {
+      return plays;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

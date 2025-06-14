@@ -166,7 +166,10 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.custom => _fetchNotesFromCustomTimeline(sinceId),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
-    return notes.sortedBy((note) => note.id).reversed;
+    return (sinceId != null
+            ? notes.where((note) => sinceId.compareTo(note.id) < 0)
+            : notes)
+        .sortedByCompare((note) => note.id, (a, b) => b.compareTo(a));
   }
 
   Future<Iterable<Note>> _fetchNotesEagerly(String sinceId) async {
@@ -192,7 +195,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         _duration ~/= 2;
       }
       if (notes.isNotEmpty) {
-        return notes;
+        return notes.where((note) => sinceId.compareTo(note.id) < 0);
       } else {
         sinceDate = untilDate;
       }

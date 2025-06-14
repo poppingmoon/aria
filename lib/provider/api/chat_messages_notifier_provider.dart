@@ -24,9 +24,10 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<Iterable<ChatMessage>> _fetchMessages({String? untilId}) {
+  Future<Iterable<ChatMessage>> _fetchMessages({String? untilId}) async {
+    Iterable<ChatMessage> messages = [];
     if (userId case final userId?) {
-      return _misskey.chat.messages.userTimeline(
+      messages = await _misskey.chat.messages.userTimeline(
         ChatMessagesUserTimelineRequest(
           userId: userId,
           untilId: untilId,
@@ -35,7 +36,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
       );
     }
     if (roomId case final roomId?) {
-      return _misskey.chat.messages.roomTimeline(
+      messages = await _misskey.chat.messages.roomTimeline(
         ChatMessagesRoomTimelineRequest(
           roomId: roomId,
           untilId: untilId,
@@ -43,7 +44,11 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
         ),
       );
     }
-    return Future.value([]);
+    if (untilId != null) {
+      return messages.where((message) => message.id.compareTo(untilId) < 0);
+    } else {
+      return messages;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

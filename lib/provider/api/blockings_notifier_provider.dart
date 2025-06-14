@@ -21,7 +21,14 @@ class BlockingsNotifier extends _$BlockingsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<Blocking>> _fetchBlockings({String? untilId}) async {
-    return await _misskey.blocking.list(BlockingListRequest(untilId: untilId));
+    final blockings = await _misskey.blocking.list(
+      BlockingListRequest(untilId: untilId),
+    );
+    if (untilId != null) {
+      return blockings.where((blocking) => blocking.id.compareTo(untilId) < 0);
+    } else {
+      return blockings;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

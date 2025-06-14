@@ -22,8 +22,10 @@ class ReactionsNotifier extends _$ReactionsNotifier {
     }
   }
 
-  Future<Iterable<NotesReactionsResponse>> _fetchReactions({String? untilId}) {
-    return ref
+  Future<Iterable<NotesReactionsResponse>> _fetchReactions({
+    String? untilId,
+  }) async {
+    final reactions = await ref
         .read(misskeyProvider(account))
         .notes
         .reactions
@@ -35,6 +37,11 @@ class ReactionsNotifier extends _$ReactionsNotifier {
             limit: 20,
           ),
         );
+    if (untilId != null) {
+      return reactions.where((reaction) => reaction.id.compareTo(untilId) < 0);
+    } else {
+      return reactions;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {

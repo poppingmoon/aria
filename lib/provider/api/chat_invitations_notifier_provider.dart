@@ -20,10 +20,17 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<Iterable<ChatJoining>> _fetchInvitations({String? untilId}) {
-    return _misskey.chat.rooms.invitations.inbox(
+  Future<Iterable<ChatJoining>> _fetchInvitations({String? untilId}) async {
+    final invitations = await _misskey.chat.rooms.invitations.inbox(
       ChatRoomsInvitationsInboxRequest(untilId: untilId),
     );
+    if (untilId != null) {
+      return invitations.where(
+        (invitation) => invitation.id.compareTo(untilId) < 0,
+      );
+    } else {
+      return invitations;
+    }
   }
 
   Future<void> loadMore({bool skipError = false}) async {
