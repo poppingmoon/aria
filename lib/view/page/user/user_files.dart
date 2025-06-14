@@ -93,6 +93,7 @@ class UserFiles extends HookConsumerWidget {
                                 index: index,
                                 user: note.user,
                                 noteId: note.id,
+                                fit: BoxFit.cover,
                               ),
                         ],
                       ),
