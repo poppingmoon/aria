@@ -254,6 +254,8 @@ class _RenoteButton extends HookConsumerWidget {
       ),
     );
     final myRenotingNoteId = useState(this.myRenotingNoteId);
+    final isRenoted =
+        myRenotingNoteId.value != null || (note.isRenoted ?? false);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -276,7 +278,7 @@ class _RenoteButton extends HookConsumerWidget {
         onPressed: !account.isGuest
             ? () async {
                 if (note.id.isEmpty) return;
-                if (myRenotingNoteId.value case final noteId?) {
+                if (isRenoted) {
                   final unrenote = await showModalBottomSheet<bool>(
                     context: context,
                     builder: (context) => ListView(
@@ -300,22 +302,40 @@ class _RenoteButton extends HookConsumerWidget {
                   if (!context.mounted) return;
                   if (unrenote == null) return;
                   if (unrenote) {
-                    final result = await futureWithDialog(
-                      context,
-                      ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: noteId))
-                          .then((_) => true),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      ref
-                          .read(notesNotifierProvider(account).notifier)
-                          .remove(noteId);
-                      myRenotingNoteId.value = null;
+                    if (myRenotingNoteId.value case final noteId?) {
+                      final result = await futureWithDialog(
+                        context,
+                        ref
+                            .read(misskeyProvider(account))
+                            .notes
+                            .delete(NotesDeleteRequest(noteId: noteId))
+                            .then((_) => true),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        ref
+                            .read(notesNotifierProvider(account).notifier)
+                            .remove(noteId);
+                        myRenotingNoteId.value = null;
+                      }
+                      return;
+                    } else {
+                      final result = await futureWithDialog(
+                        context,
+                        ref
+                            .read(misskeyProvider(account))
+                            .notes
+                            .unrenote(NotesUnrenoteRequest(noteId: note.id))
+                            .then((_) => true),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        ref
+                            .read(notesNotifierProvider(account).notifier)
+                            .add(note.copyWith(isRenoted: false));
+                      }
+                      return;
                     }
-                    return;
                   }
                 }
                 if (showQuoteButton) {
@@ -343,10 +363,7 @@ class _RenoteButton extends HookConsumerWidget {
         icon: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.repeat_rounded,
-              color: myRenotingNoteId.value != null ? colors.renote : null,
-            ),
+            Icon(Icons.repeat_rounded, color: isRenoted ? colors.renote : null),
             if (showRenotesCount && note.renoteCount > 0)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
