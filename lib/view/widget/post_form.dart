@@ -46,7 +46,6 @@ import 'account_preview.dart';
 import 'emoji_picker.dart';
 import 'file_picker_sheet.dart';
 import 'mention_widget.dart';
-import 'mfm_keyboard.dart';
 import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_visibility_icon.dart';
@@ -72,7 +71,6 @@ class PostForm extends HookConsumerWidget {
     this.onExpand,
     this.onAccountChanged,
     this.showPostButton = false,
-    this.showKeyboard = false,
     this.maxLines,
     this.thumbnailSize = 200.0,
   });
@@ -89,7 +87,6 @@ class PostForm extends HookConsumerWidget {
   final void Function(Account account)? onExpand;
   final void Function(Account account)? onAccountChanged;
   final bool showPostButton;
-  final bool showKeyboard;
   final int? maxLines;
   final double thumbnailSize;
 
@@ -326,9 +323,6 @@ class PostForm extends HookConsumerWidget {
     final cwFocusNode = this.cwFocusNode ?? useFocusNode();
     final focusNode = this.focusNode ?? useFocusNode();
     final hashtagsFocusNode = this.hashtagsFocusNode ?? useFocusNode();
-    final isCwFocused = useState(false);
-    final isFocused = useState(false);
-    final isHashtagsFocused = useState(false);
     ref.listen(
       postNotifierProvider(
         account.value,
@@ -397,35 +391,17 @@ class PostForm extends HookConsumerWidget {
             .updateFromString(hashtagsController.text);
       }
 
-      void cwFocusNodeCallback() {
-        isCwFocused.value = cwFocusNode.hasFocus;
-      }
-
-      void focusNodeCallback() {
-        isFocused.value = focusNode.hasFocus;
-      }
-
-      void hashtagsFocusNodeCallback() {
-        isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
-      }
-
       cwController.text = request.cw ?? '';
       controller.text = request.text ?? '';
 
       cwController.addListener(cwControllerCallback);
       controller.addListener(controllerCallback);
       hashtagsController.addListener(hashtagsControllerCallback);
-      cwFocusNode.addListener(cwFocusNodeCallback);
-      focusNode.addListener(focusNodeCallback);
-      hashtagsFocusNode.addListener(hashtagsFocusNodeCallback);
 
       return () {
         cwController.removeListener(cwControllerCallback);
         controller.removeListener(controllerCallback);
         hashtagsController.removeListener(hashtagsControllerCallback);
-        cwFocusNode.removeListener(cwFocusNodeCallback);
-        focusNode.removeListener(focusNodeCallback);
-        hashtagsFocusNode.removeListener(hashtagsFocusNodeCallback);
       };
     }, [account.value]);
     final placeholderPrefix = [
@@ -1237,41 +1213,6 @@ class PostForm extends HookConsumerWidget {
                 child: PollEditor(account: account.value, noteId: noteId),
               ),
               const SizedBox(height: 8.0),
-            ],
-            if (showKeyboard) ...[
-              Visibility(
-                visible: isCwFocused.value,
-                maintainState: true,
-                child: TextFieldTapRegion(
-                  onTapOutside: (_) => primaryFocus?.unfocus(),
-                  child: MfmKeyboard(
-                    account: account.value,
-                    controller: cwController,
-                  ),
-                ),
-              ),
-              Visibility(
-                visible: isFocused.value,
-                maintainState: true,
-                child: TextFieldTapRegion(
-                  onTapOutside: (_) => primaryFocus?.unfocus(),
-                  child: MfmKeyboard(
-                    account: account.value,
-                    controller: controller,
-                  ),
-                ),
-              ),
-              Visibility(
-                visible: isHashtagsFocused.value,
-                maintainState: true,
-                child: TextFieldTapRegion(
-                  onTapOutside: (_) => primaryFocus?.unfocus(),
-                  child: MfmHashtagKeyboard(
-                    account: account.value,
-                    controller: hashtagsController,
-                  ),
-                ),
-              ),
             ],
           ],
         ),

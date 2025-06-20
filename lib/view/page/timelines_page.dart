@@ -9,6 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../constant/shortcuts.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../model/general_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
@@ -16,6 +17,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
@@ -25,6 +27,7 @@ import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/lookup.dart';
 import '../../util/reload_timeline.dart';
 import '../dialog/text_field_dialog.dart';
+import '../widget/mfm_keyboard.dart';
 import '../widget/post_form.dart';
 import '../widget/timeline_drawer.dart';
 import '../widget/timeline_tab_bar.dart';
@@ -248,19 +251,10 @@ class TimelinesPage extends HookConsumerWidget {
                                     ),
                                   ),
                                   child: SafeArea(
-                                    child: SingleChildScrollView(
-                                      child: PostForm(
-                                        account: tabSettings.account,
-                                        focusNode: postFormFocusNode,
-                                        onHide: () =>
-                                            showPostForm.value = false,
-                                        onExpand: (account) =>
-                                            context.push('/$account/post'),
-                                        showPostButton: true,
-                                        showKeyboard: true,
-                                        maxLines: 6,
-                                        thumbnailSize: 100.0,
-                                      ),
+                                    child: _PostForm(
+                                      account: tabSettings.account,
+                                      focusNode: postFormFocusNode,
+                                      onHide: () => showPostForm.value = false,
                                     ),
                                   ),
                                 ),
@@ -331,6 +325,114 @@ class TimelinesPage extends HookConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PostForm extends HookConsumerWidget {
+  const _PostForm({
+    required this.account,
+    required this.focusNode,
+    required this.onHide,
+  });
+
+  final Account account;
+  final FocusNode focusNode;
+  final void Function() onHide;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final account = useState(this.account);
+    final request = ref.watch(postNotifierProvider(account.value));
+    final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
+    final cwController = useTextEditingController(text: request.cw);
+    final controller = useTextEditingController(text: request.text);
+    final hashtagsController = useTextEditingController(
+      text: hashtags.join(' '),
+    );
+    final cwFocusNode = useFocusNode();
+    final focusNode = this.focusNode;
+    final hashtagsFocusNode = useFocusNode();
+    final isCwFocused = useState(false);
+    final isFocused = useState(false);
+    final isHashtagsFocused = useState(false);
+    useEffect(() {
+      void cwFocusNodeCallback() {
+        isCwFocused.value = cwFocusNode.hasFocus;
+      }
+
+      void focusNodeCallback() {
+        isFocused.value = focusNode.hasFocus;
+      }
+
+      void hashtagsFocusNodeCallback() {
+        isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
+      }
+
+      cwFocusNode.addListener(cwFocusNodeCallback);
+      focusNode.addListener(focusNodeCallback);
+      hashtagsFocusNode.addListener(hashtagsFocusNodeCallback);
+
+      return () {
+        cwFocusNode.removeListener(cwFocusNodeCallback);
+        focusNode.removeListener(focusNodeCallback);
+        hashtagsFocusNode.removeListener(hashtagsFocusNodeCallback);
+      };
+    }, []);
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: SingleChildScrollView(
+            child: PostForm(
+              account: this.account,
+              cwController: cwController,
+              controller: controller,
+              hashtagsController: hashtagsController,
+              cwFocusNode: cwFocusNode,
+              focusNode: focusNode,
+              hashtagsFocusNode: hashtagsFocusNode,
+              onHide: onHide,
+              onExpand: (account) => context.push('/$account/post'),
+              onAccountChanged: (newAccount) => account.value = newAccount,
+              showPostButton: true,
+              maxLines: 6,
+              thumbnailSize: 100.0,
+            ),
+          ),
+        ),
+        Visibility(
+          visible: isCwFocused.value,
+          maintainState: true,
+          child: TextFieldTapRegion(
+            onTapOutside: (_) => primaryFocus?.unfocus(),
+            child: MfmKeyboard(
+              account: account.value,
+              controller: cwController,
+            ),
+          ),
+        ),
+        Visibility(
+          visible: isFocused.value,
+          maintainState: true,
+          child: TextFieldTapRegion(
+            onTapOutside: (_) => primaryFocus?.unfocus(),
+            child: MfmKeyboard(account: account.value, controller: controller),
+          ),
+        ),
+        Visibility(
+          visible: isHashtagsFocused.value,
+          maintainState: true,
+          child: TextFieldTapRegion(
+            onTapOutside: (_) => primaryFocus?.unfocus(),
+            child: MfmHashtagKeyboard(
+              account: account.value,
+              controller: hashtagsController,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
