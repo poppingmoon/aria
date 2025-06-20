@@ -91,6 +91,7 @@ class AccountsNotifier extends _$AccountsNotifier {
   Future<void> remove(Account account) async {
     state = state.where((acct) => acct != account).toList();
     await ref.read(tokensNotifierProvider.notifier).remove(account);
+    await _save();
   }
 
   Future<void> reorder(int oldIndex, int newIndex) async {
