@@ -2469,6 +2469,8 @@ visibility_:
   disableFederation: "연합에 보내지 않기"
   disableFederationDescription: "다른 서버로 보내지 않습니다"
 postForm_:
+  quitInspiteOfThereAreUnuploadedFilesConfirm: "업로드되지 않은 파일이 있습니다만, 없애고 폼을 닫겠습니까?"
+  uploaderTip: "파일이 아직 업로드돼있지 않습니다. 파일 메뉴에서 이름 바꾸기나 이미지의 자르기, 워터마크 넣기, 압축의 유무 등을 설정할 수 있습니다. 파일은 노트 게시 시 자동으로 업로드됩니다."
   replyPlaceholder: "이 노트에 답글..."
   quotePlaceholder: "이 노트를 인용..."
   channelPlaceholder: "채널에 게시하기..."
@@ -3109,7 +3111,7 @@ uploader_:
   savedXPercent: "{x}% 절약"
   abortConfirm: "업로드되지 않은 파일이 있습니다만, 그만 두시겠습니까?"
   doneConfirm: "업로드되지 않은 파일이 있습니다만, 완료하시겠습니까?"
-  maxFileSizeIsX: "업오드 가능한 최대 파일 크기는 {x}입니다."
+  maxFileSizeIsX: "업로드 가능한 최대 파일 크기는 {x}입니다."
   allowedTypes: "업로드 가능한 파일 유형"
   tip: "파일은 아직 업로드되지 않았습니다. 이 다이얼로그에서 업로드 전의 확인, 이름 바꾸기, 압축, 자르기 등을 하실 수 있습니다. 준비가 되셨다면 '업로드' 버튼을 클릭해 업로드를 시작하실 수 있습니다."
 clientPerformanceIssueTip_:
@@ -3171,3 +3173,5 @@ imageEffector_:
     stripe: "줄무늬"
     polkadot: "물방울 무늬"
     checker: "체크 무늬"
+    blockNoise: "노이즈 방지"
+    tearing: "티어링"

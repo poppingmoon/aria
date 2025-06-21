@@ -2871,6 +2871,8 @@ class _TranslationsMisskeyPostFormJaJp extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'アップロードされていないファイルがありますが、破棄してフォームを閉じますか？';
+	@override String get uploaderTip => 'ファイルはまだアップロードされていません。ファイルのメニューから、リネームや画像のクロップ、ウォーターマークの付与、圧縮の有無などを設定できます。ファイルはノート投稿時に自動でアップロードされます。';
 	@override String get replyPlaceholder => 'このノートに返信...';
 	@override String get quotePlaceholder => 'このノートを引用...';
 	@override String get channelPlaceholder => 'チャンネルに投稿...';
@@ -4593,6 +4595,8 @@ class _TranslationsMisskeyImageEffectorFxsJaJp extends TranslationsMisskeyImageE
 	@override String get stripe => 'ストライプ';
 	@override String get polkadot => 'ポルカドット';
 	@override String get checker => 'チェッカー';
+	@override String get blockNoise => 'ブロックノイズ';
+	@override String get tearing => 'ティアリング';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

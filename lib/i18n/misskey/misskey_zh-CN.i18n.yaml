@@ -2469,6 +2469,8 @@ visibility_:
   disableFederation: "不参与联合"
   disableFederationDescription: "不发送到其他服务器"
 postForm_:
+  quitInspiteOfThereAreUnuploadedFilesConfirm: "还有未上传的文件，要丢弃并关闭窗口吗？"
+  uploaderTip: "文件还未上传。可以在文件菜单中进行重命名、裁剪、添加水印、设置是否压缩等操作。文件将在发帖时自动上传。"
   replyPlaceholder: "回复这个帖子..."
   quotePlaceholder: "引用这个帖子..."
   channelPlaceholder: "发布到频道…"
@@ -3171,3 +3173,5 @@ imageEffector_:
     stripe: "条纹"
     polkadot: "波点"
     checker: "检查"
+    blockNoise: "块状噪点"
+    tearing: "撕裂"

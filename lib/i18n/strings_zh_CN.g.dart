@@ -174,7 +174,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		scratchpad,
 		const TextSpan(text: ' ，然后输入以下代码并运行。'),
 	]);
-	@override String get openSensitiveMediaOnDoubleTap => '遇到敏感媒体时双击以显示';
+	@override String get openSensitiveMediaOnDoubleTap => '双击显示敏感媒体';
 	@override String get owner => '所有者';
 	@override String get parameters => '参数';
 	@override String get paste => '粘贴';
@@ -2863,6 +2863,8 @@ class _TranslationsMisskeyPostFormZhCn extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => '还有未上传的文件，要丢弃并关闭窗口吗？';
+	@override String get uploaderTip => '文件还未上传。可以在文件菜单中进行重命名、裁剪、添加水印、设置是否压缩等操作。文件将在发帖时自动上传。';
 	@override String get replyPlaceholder => '回复这个帖子...';
 	@override String get quotePlaceholder => '引用这个帖子...';
 	@override String get channelPlaceholder => '发布到频道…';
@@ -4569,6 +4571,8 @@ class _TranslationsMisskeyImageEffectorFxsZhCn extends TranslationsMisskeyImageE
 	@override String get stripe => '条纹';
 	@override String get polkadot => '波点';
 	@override String get checker => '检查';
+	@override String get blockNoise => '块状噪点';
+	@override String get tearing => '撕裂';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

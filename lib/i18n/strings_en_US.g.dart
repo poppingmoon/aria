@@ -2876,6 +2876,8 @@ class TranslationsMisskeyPostFormEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'There are files that have not been uploaded, do you want to discard them and close the form?';
+	String get uploaderTip => 'The file has not yet been uploaded. From the file menu, you can rename, crop images, watermark and compress or uncompress the file. Files are automatically uploaded when you publish a note.';
 	String get replyPlaceholder => 'Reply to this note...';
 	String get quotePlaceholder => 'Quote this note...';
 	String get channelPlaceholder => 'Post to a channel...';
@@ -4598,6 +4600,8 @@ class TranslationsMisskeyImageEffectorFxsEnUs {
 	String get stripe => 'Stripes';
 	String get polkadot => 'Polkadot';
 	String get checker => 'Checker';
+	String get blockNoise => 'Block Noise';
+	String get tearing => 'Tearing';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
