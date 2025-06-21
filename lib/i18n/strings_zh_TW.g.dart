@@ -2660,6 +2660,8 @@ class _TranslationsMisskeyPostFormZhTw extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => '尚有未上傳的檔案，確定要放棄並關閉表單嗎？';
+	@override String get uploaderTip => '檔案尚未上傳。您可以從檔案選單中設定重新命名、裁切圖片、加上浮水印、是否壓縮等選項。檔案會在發布貼文時自動上傳。\n';
 	@override String get replyPlaceholder => '回覆此貼文...';
 	@override String get quotePlaceholder => '引用此貼文...';
 	@override String get channelPlaceholder => '發佈到頻道';
@@ -4366,6 +4368,8 @@ class _TranslationsMisskeyImageEffectorFxsZhTw extends TranslationsMisskeyImageE
 	@override String get stripe => '條紋';
 	@override String get polkadot => '波卡圓點';
 	@override String get checker => '棋盤格';
+	@override String get blockNoise => '阻擋雜訊';
+	@override String get tearing => '撕裂';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

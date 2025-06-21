@@ -2852,6 +2852,8 @@ class _TranslationsMisskeyPostFormEsEs extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Hay archivos que no se han cargado, ¿deseas descartarlos y cerrar el formulario?';
+	@override String get uploaderTip => 'El archivo aún no se ha cargado. Desde el menú Archivo, puedes cambiar el nombre, recortar imágenes, poner marcas de agua y comprimir o no el archivo. Los archivos se cargan automáticamente al publicar una nota.';
 	@override String get replyPlaceholder => 'Responder a esta nota';
 	@override String get quotePlaceholder => 'Citar esta nota';
 	@override String get channelPlaceholder => 'Publicar en el canal';
@@ -4558,6 +4560,8 @@ class _TranslationsMisskeyImageEffectorFxsEsEs extends TranslationsMisskeyImageE
 	@override String get stripe => 'Rayas';
 	@override String get polkadot => 'Lunares';
 	@override String get checker => 'Corrector';
+	@override String get blockNoise => 'Bloquear Ruido';
+	@override String get tearing => 'Rasgado de Imagen (Tearing)';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

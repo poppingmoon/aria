@@ -79,7 +79,7 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	);
 	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('it'))(n,
 		one: 'Sei sicuro di voler eliminare il file?',
-		other: 'Sei sicuro di voler eliminare il file?',
+		other: 'Sei sicuro di voler eliminare il file ${n} ?',
 	);
 	@override String get deleteTabConfirm => 'Sei sicuro di voler eliminare questa scheda?';
 	@override String get disableDataSaverWhenOnWifi => 'Disabilita il risparmio dati su Wi-Fi';
@@ -2769,6 +2769,8 @@ class _TranslationsMisskeyPostFormItIt extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Alcuni file non sono stati caricati. Vuoi annullare l\'operazione?';
+	@override String get uploaderTip => 'Il file non è ancora stato caricato. Nel menu file (tre puntini), puoi ritagliare l\'immagine, mettere la filigrana, decidere la presenza o l\'assenza di compressione... Il file verrà caricato automaticamente quando pubblichi la Nota.';
 	@override String get replyPlaceholder => 'Rispondi a questa nota...';
 	@override String get quotePlaceholder => 'Cita questa nota...';
 	@override String get channelPlaceholder => 'Pubblica sul canale...';

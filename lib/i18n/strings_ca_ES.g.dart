@@ -2660,6 +2660,8 @@ class _TranslationsMisskeyPostFormCaEs extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Hi ha arxius que no s\'han carregat, vols descartar-los i tancar el formulari?';
+	@override String get uploaderTip => 'L\'arxiu encara no s\'ha carregat. Des del menú arxiu pots canviar el nom, retallar imatges, posar marques d\'aigua i comprimir o no l\'arxiu. Els arxius es carreguen automàticament quan públiques una nota.';
 	@override String get replyPlaceholder => 'Contestar...';
 	@override String get quotePlaceholder => 'Citar...';
 	@override String get channelPlaceholder => 'Publicar a un canal...';
@@ -4366,6 +4368,8 @@ class _TranslationsMisskeyImageEffectorFxsCaEs extends TranslationsMisskeyImageE
 	@override String get stripe => 'Bandes';
 	@override String get polkadot => 'Lunars';
 	@override String get checker => 'Escacs';
+	@override String get blockNoise => 'Bloqueig de soroll';
+	@override String get tearing => 'Trencament d\'imatge ';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

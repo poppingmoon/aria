@@ -2469,6 +2469,8 @@ visibility_:
   disableFederation: "停用聯邦"
   disableFederationDescription: "不發送到其他伺服器"
 postForm_:
+  quitInspiteOfThereAreUnuploadedFilesConfirm: "尚有未上傳的檔案，確定要放棄並關閉表單嗎？"
+  uploaderTip: "檔案尚未上傳。您可以從檔案選單中設定重新命名、裁切圖片、加上浮水印、是否壓縮等選項。檔案會在發布貼文時自動上傳。\n"
   replyPlaceholder: "回覆此貼文..."
   quotePlaceholder: "引用此貼文..."
   channelPlaceholder: "發佈到頻道"
@@ -3171,3 +3173,5 @@ imageEffector_:
     stripe: "條紋"
     polkadot: "波卡圓點"
     checker: "棋盤格"
+    blockNoise: "阻擋雜訊"
+    tearing: "撕裂"

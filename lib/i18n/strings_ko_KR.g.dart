@@ -2831,6 +2831,8 @@ class _TranslationsMisskeyPostFormKoKr extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => '업로드되지 않은 파일이 있습니다만, 없애고 폼을 닫겠습니까?';
+	@override String get uploaderTip => '파일이 아직 업로드돼있지 않습니다. 파일 메뉴에서 이름 바꾸기나 이미지의 자르기, 워터마크 넣기, 압축의 유무 등을 설정할 수 있습니다. 파일은 노트 게시 시 자동으로 업로드됩니다.';
 	@override String get replyPlaceholder => '이 노트에 답글...';
 	@override String get quotePlaceholder => '이 노트를 인용...';
 	@override String get channelPlaceholder => '채널에 게시하기...';
@@ -3571,7 +3573,7 @@ class _TranslationsMisskeyUploaderKoKr extends TranslationsMisskeyUploaderEnUs {
 	@override String savedXPercent({required Object x}) => '${x}% 절약';
 	@override String get abortConfirm => '업로드되지 않은 파일이 있습니다만, 그만 두시겠습니까?';
 	@override String get doneConfirm => '업로드되지 않은 파일이 있습니다만, 완료하시겠습니까?';
-	@override String maxFileSizeIsX({required Object x}) => '업오드 가능한 최대 파일 크기는 ${x}입니다.';
+	@override String maxFileSizeIsX({required Object x}) => '업로드 가능한 최대 파일 크기는 ${x}입니다.';
 	@override String get allowedTypes => '업로드 가능한 파일 유형';
 	@override String get tip => '파일은 아직 업로드되지 않았습니다. 이 다이얼로그에서 업로드 전의 확인, 이름 바꾸기, 압축, 자르기 등을 하실 수 있습니다. 준비가 되셨다면 \'업로드\' 버튼을 클릭해 업로드를 시작하실 수 있습니다.';
 }
@@ -4553,6 +4555,8 @@ class _TranslationsMisskeyImageEffectorFxsKoKr extends TranslationsMisskeyImageE
 	@override String get stripe => '줄무늬';
 	@override String get polkadot => '물방울 무늬';
 	@override String get checker => '체크 무늬';
+	@override String get blockNoise => '노이즈 방지';
+	@override String get tearing => '티어링';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

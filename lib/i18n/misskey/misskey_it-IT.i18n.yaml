@@ -2469,6 +2469,8 @@ visibility_:
   disableFederation: "Senza federazione"
   disableFederationDescription: "Non spedire attività alle altre istanze remote"
 postForm_:
+  quitInspiteOfThereAreUnuploadedFilesConfirm: "Alcuni file non sono stati caricati. Vuoi annullare l'operazione?"
+  uploaderTip: "Il file non è ancora stato caricato. Nel menu file (tre puntini), puoi ritagliare l'immagine, mettere la filigrana, decidere la presenza o l'assenza di compressione... Il file verrà caricato automaticamente quando pubblichi la Nota."
   replyPlaceholder: "Rispondi a questa nota..."
   quotePlaceholder: "Cita questa nota..."
   channelPlaceholder: "Pubblica sul canale..."

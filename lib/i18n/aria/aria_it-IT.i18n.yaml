@@ -27,7 +27,7 @@ deleteAccountTabsConfirm:
   other: "Vuoi eliminare le schede {n} relative a questo account?"
 deleteFilesConfirm:
   one: "Sei sicuro di voler eliminare il file?"
-  other: "Sei sicuro di voler eliminare il file?"
+  other: "Sei sicuro di voler eliminare il file {n} ?"
 deleteTabConfirm: "Sei sicuro di voler eliminare questa scheda?"
 disableDataSaverWhenOnWifi: "Disabilita il risparmio dati su Wi-Fi"
 disableStreamingTimeline: "Disabilita gli aggiornamenti della timeline in tempo reale"
