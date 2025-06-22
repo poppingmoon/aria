@@ -56,7 +56,9 @@ class UserPage extends HookConsumerWidget {
                 user.host == null));
 
     return DefaultTabController(
-      length: 3 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0),
+      length: userId != null
+          ? 3 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0)
+          : 1,
       child: Scaffold(
         appBar: AppBar(
           title: user != null
