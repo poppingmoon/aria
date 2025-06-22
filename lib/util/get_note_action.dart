@@ -44,8 +44,8 @@ void Function()? getNoteAction(
                   : await pickEmoji(
                       ref,
                       account,
-                      saveHistory: false,
-                      confirmBeforePop: true,
+                      reaction: true,
+                      targetNote: appearNote,
                     );
               if (!ref.context.mounted) return;
               if (emoji != null) {
