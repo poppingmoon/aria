@@ -20,59 +20,55 @@ class SettingsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.settings)),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 8.0),
-            for (final (index, account) in accounts.indexed) ...[
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: _AccountSettingsTile(
-                    account: account,
-                    borderRadius: BorderRadius.vertical(
-                      top: index == 0
-                          ? const Radius.circular(8.0)
-                          : Radius.zero,
-                      bottom: index == accounts.length - 1
-                          ? const Radius.circular(8.0)
-                          : Radius.zero,
-                    ),
-                  ),
-                ),
-              ),
-              if (index < accounts.length - 1)
-                const Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: SizedBox(
-                      width: maxContentWidth,
-                      child: Divider(height: 0.0),
-                    ),
-                  ),
-                )
-              else
-                const SizedBox(height: 8.0),
-            ],
-            ListTileTheme.merge(
-              tileColor: Theme.of(context).colorScheme.surface,
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  // Adding "const" to this prevents update of translations.
-                  // ignore: prefer_const_constructors
-                  child: GeneralSettingsNavigation(
-                    round: true,
-                    physics: const NeverScrollableScrollPhysics(),
+      body: ListView(
+        children: [
+          const SizedBox(height: 8.0),
+          for (final (index, account) in accounts.indexed) ...[
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: _AccountSettingsTile(
+                  account: account,
+                  borderRadius: BorderRadius.vertical(
+                    top: index == 0 ? const Radius.circular(8.0) : Radius.zero,
+                    bottom: index == accounts.length - 1
+                        ? const Radius.circular(8.0)
+                        : Radius.zero,
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 8.0),
+            if (index < accounts.length - 1)
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    width: maxContentWidth,
+                    child: Divider(height: 0.0),
+                  ),
+                ),
+              )
+            else
+              const SizedBox(height: 8.0),
           ],
-        ),
+          ListTileTheme.merge(
+            tileColor: Theme.of(context).colorScheme.surface,
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                // Adding "const" to this prevents update of translations.
+                // ignore: prefer_const_constructors
+                child: GeneralSettingsNavigation(
+                  round: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8.0),
+        ],
       ),
     );
   }
