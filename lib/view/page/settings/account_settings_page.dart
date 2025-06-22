@@ -32,21 +32,23 @@ class AccountSettingsPage extends HookConsumerWidget {
                 ),
               ),
       ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.all(8.0),
-            width: maxContentWidth,
-            child: ListTileTheme(
-              tileColor: Theme.of(context).colorScheme.surface,
-              child: AccountSettingsNavigation(
-                account: account,
-                round: true,
-                physics: const NeverScrollableScrollPhysics(),
+      body: ListView(
+        children: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.all(8.0),
+              width: maxContentWidth,
+              child: ListTileTheme(
+                tileColor: Theme.of(context).colorScheme.surface,
+                child: AccountSettingsNavigation(
+                  account: account,
+                  round: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
