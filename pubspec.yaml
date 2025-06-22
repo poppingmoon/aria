@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.2.3+67
+version: 1.2.4+68
 
 environment:
   sdk: ">=3.8.0 <4.0.0"
@@ -43,7 +43,7 @@ dependencies:
   flutter_image_compress: ^2.4.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^19.2.1
+  flutter_local_notifications: ^19.3.0
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
@@ -154,7 +154,7 @@ dependency_overrides:
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
-      ref: f66dfeff281f605a5df27bcf02a2b1427980f0d7
+      ref: 90316c05d59da5b31c9861992b07b572e859676f
       path: unifiedpush_android
   webcrypto:
     git:
