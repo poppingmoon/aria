@@ -18,6 +18,7 @@ class IconSelectDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showEmojiPicker = useState(false);
+
     return AlertDialog(
       title: Row(
         children: [
@@ -52,19 +53,18 @@ class IconSelectDialog extends HookConsumerWidget {
                   }
                 },
               )
-            : SingleChildScrollView(
-                child: Wrap(
-                  children: tabIconData
-                      .map(
-                        (icon) => IconButton(
-                          onPressed: () => context.pop(
-                            MaterialIcon(codePoint: icon.codePoint),
-                          ),
-                          icon: Icon(icon),
+            : GridView.extent(
+                maxCrossAxisExtent: 52.0,
+                children: tabIconData
+                    .map(
+                      (icon) => IconButton(
+                        onPressed: () => context.pop(
+                          MaterialIcon(codePoint: icon.codePoint),
                         ),
-                      )
-                      .toList(),
-                ),
+                        icon: Icon(icon),
+                      ),
+                    )
+                    .toList(),
               ),
       ),
     );
