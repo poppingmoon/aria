@@ -84,10 +84,10 @@ class PlayWidget extends HookConsumerWidget {
                 }
               },
               child: Column(
+                spacing: 8.0,
                 children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    elevation: 0.0,
+                  Card.filled(
+                    margin: EdgeInsets.zero,
                     color: colors.panel,
                     child: Container(
                       width: double.infinity,
@@ -100,9 +100,8 @@ class PlayWidget extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    elevation: 0.0,
+                  Card.filled(
+                    margin: EdgeInsets.zero,
                     color: colors.panel,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -187,9 +186,8 @@ class PlayWidget extends HookConsumerWidget {
                 ],
               ),
             )
-          : Card(
-              margin: const EdgeInsets.symmetric(vertical: 8.0),
-              elevation: 0.0,
+          : Card.filled(
+              margin: EdgeInsets.zero,
               color: colors.panel,
               child: Column(
                 children: [

@@ -133,6 +133,7 @@ class PlayPage extends HookConsumerWidget {
             margin: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ListView(
               children: [
+                const SizedBox(height: 8.0),
                 PlayWidget(
                   account: account.value,
                   host: this.account.host,
@@ -146,28 +147,31 @@ class PlayPage extends HookConsumerWidget {
                     }
                   },
                 ),
-                Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  elevation: 0.0,
-                  color: colors.panel,
-                  clipBehavior: Clip.hardEdge,
-                  child: ExpansionTile(
-                    leading: const Icon(Icons.code),
-                    title: Text(t.misskey.play_.viewSource),
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Code(code: play.script),
-                        ),
-                      ),
-                    ],
+                const SizedBox(height: 8.0),
+                ExpansionTile(
+                  leading: const Icon(Icons.code),
+                  title: Text(t.misskey.play_.viewSource),
+                  backgroundColor: colors.panel,
+                  collapsedBackgroundColor: colors.panel,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
+                  collapsedShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Code(code: play.script),
+                      ),
+                    ),
+                  ],
                 ),
-                Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
-                  elevation: 0.0,
+                const SizedBox(height: 8.0),
+                Card.filled(
+                  margin: EdgeInsets.zero,
                   color: colors.panel,
                   clipBehavior: Clip.hardEdge,
                   child: Padding(
@@ -201,9 +205,7 @@ class PlayPage extends HookConsumerWidget {
                         const Divider(),
                         DefaultTextStyle.merge(
                           style: TextStyle(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.75),
+                            color: colors.fg.withValues(alpha: 0.75),
                           ),
                           child: Text.rich(
                             TextSpan(
@@ -224,9 +226,7 @@ class PlayPage extends HookConsumerWidget {
                         if (play.updatedAt != play.createdAt)
                           DefaultTextStyle.merge(
                             style: TextStyle(
-                              color: Theme.of(
-                                context,
-                              ).colorScheme.onSurface.withValues(alpha: 0.75),
+                              color: colors.fg.withValues(alpha: 0.75),
                             ),
                             child: Text.rich(
                               TextSpan(
@@ -248,13 +248,12 @@ class PlayPage extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: AdWidget(account: this.account),
-                  ),
+                const SizedBox(height: 8.0),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: AdWidget(account: this.account),
                 ),
+                const SizedBox(height: 8.0),
               ],
             ),
           ),
