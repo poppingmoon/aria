@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -11,27 +9,20 @@ import 'package:share_plus/share_plus.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
-import '../../provider/aiscript_storage_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/play_notifier_provider.dart';
-import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../rust/api/aiscript.dart';
-import '../../rust/api/aiscript/api.dart';
-import '../../rust/api/aiscript/play.dart';
 import '../../rust/api/aiscript/ui.dart';
 import '../../rust/frb_generated.dart';
 import '../../util/copy_text.dart';
+import '../../util/create_aiscript.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
-import '../../util/nyaize.dart';
-import '../../util/show_toast.dart';
-import '../dialog/aiscript_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/error_message_dialog.dart';
-import '../dialog/text_field_dialog.dart';
 import 'account_preview.dart';
 import 'as_ui_widget.dart';
 import 'like_button.dart';
@@ -61,7 +52,6 @@ class PlayWidget extends HookConsumerWidget {
     final started = useState(false);
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
-    final locale = Localizations.localeOf(context).toLanguageTag();
     final style = DefaultTextStyle.of(context).style;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
@@ -271,146 +261,15 @@ class PlayWidget extends HookConsumerWidget {
                               await RustLib.init();
                             }
                             await aiscript.value?.abort();
-                            MeDetailed? i;
                             try {
-                              i = await ref.read(
-                                iNotifierProvider(account).future,
-                              );
-                            } catch (_) {}
-                            List<Emoji>? emojis;
-                            try {
-                              final response = await ref.read(
-                                emojisNotifierProvider(account.host).future,
-                              );
-                              emojis = response.values.toList();
-                            } catch (_) {}
-                            components.value = {};
-                            final serverUrl = ref.read(
-                              serverUrlNotifierProvider(account.host),
-                            );
-                            try {
-                              aiscript.value = await AiScript.newInstance(
-                                read: (prompt) async {
-                                  final result = await showTextFieldDialog(
-                                    context,
-                                    title: Text(prompt),
-                                  );
-                                  return result ?? '';
-                                },
-                                write: (_) {},
-                                api: AsApiLib(
-                                  userId: i?.id,
-                                  userName: i?.name,
-                                  userUsername: i?.username,
-                                  customEmojis: jsonEncode(emojis ?? []),
-                                  locale: locale,
-                                  serverUrl: serverUrl.toString(),
-                                  dialog: (title, text, type) => showDialog(
-                                    context: context,
-                                    builder: (context) => AiScriptDialog(
-                                      account: account.host == host
-                                          ? account
-                                          : Account(host: host),
-                                      title: title,
-                                      text: text,
-                                      type: type,
-                                    ),
-                                  ),
-                                  confirm: (title, text, type) async {
-                                    final result = await showDialog<bool>(
-                                      context: context,
-                                      builder: (context) => AiScriptDialog(
-                                        account: account.host == host
-                                            ? account
-                                            : Account(host: host),
-                                        title: title,
-                                        text: text,
-                                        type: type,
-                                        showCancelButton: true,
-                                      ),
-                                    );
-                                    return result ?? false;
-                                  },
-                                  toast: (text) => showToast(
-                                    context: context,
-                                    message: text,
-                                  ),
-                                  api: (ep, param, token) async {
-                                    final json = jsonDecode(param);
-                                    final misskey = Misskey(
-                                      serverUrl: serverUrl,
-                                      token: token,
-                                    );
-                                    try {
-                                      final response = await misskey.apiService
-                                          .post<dynamic>(
-                                            ep,
-                                            json is Map<String, dynamic>
-                                                ? json
-                                                : {},
-                                            excludeRemoveNullPredicate:
-                                                (_, _) => true,
-                                          );
-                                      return (jsonEncode(response), null);
-                                    } on MisskeyException catch (e) {
-                                      if (account.host != host) {
-                                        final serverUrl = ref.read(
-                                          serverUrlNotifierProvider(host),
-                                        );
-                                        final misskey = Misskey(
-                                          serverUrl: serverUrl,
-                                        );
-                                        try {
-                                          final response = await misskey
-                                              .apiService
-                                              .post<dynamic>(
-                                                ep,
-                                                json is Map<String, dynamic>
-                                                    ? json
-                                                    : {},
-                                                excludeRemoveNullPredicate:
-                                                    (_, _) => true,
-                                              );
-                                          return (jsonEncode(response), null);
-                                        } catch (e) {
-                                          return ('', e.toString());
-                                        }
-                                      }
-                                      return ('', e.toString());
-                                    } catch (e) {
-                                      return ('', e.toString());
-                                    }
-                                  },
-                                  save: (key, value) => ref
-                                      .read(
-                                        aiscriptStorageNotifierProvider(
-                                          account,
-                                        ).notifier,
-                                      )
-                                      .save('${play.id}:$key', value),
-                                  load: (key) =>
-                                      ref
-                                          .read(
-                                            aiscriptStorageNotifierProvider(
-                                              account,
-                                            ).notifier,
-                                          )
-                                          .load('${play.id}:$key') ??
-                                      '',
-                                  url: url.toString(),
-                                  nyaize: nyaize,
-                                ),
-                                ui: AsUiLib(
-                                  onUpdate: (id, component) =>
-                                      components.value = {
-                                        ...components.value,
-                                        id: component,
-                                      },
-                                ),
-                                play: AsPlayLib(
-                                  thisId: play.id,
-                                  thisUrl: url.toString(),
-                                ),
+                              aiscript.value = await createAiScript(
+                                ref,
+                                account: account,
+                                host: host,
+                                storageKey: play.id,
+                                url: url,
+                                components: components,
+                                playId: play.id,
                               );
                               started.value = true;
                               await aiscript.value?.exec(input: play.script);
