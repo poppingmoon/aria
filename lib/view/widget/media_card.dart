@@ -16,6 +16,7 @@ import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
+import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/pretty_bytes.dart';
@@ -829,6 +830,33 @@ class _MediaCardSheet extends ConsumerWidget {
             leading: const Icon(Icons.open_in_new),
             title: Text(t.aria.showNote),
             onTap: () => context.push('/$account/notes/$noteId'),
+          ),
+        if (file.comment case final comment? when comment.isNotEmpty)
+          ListTile(
+            leading: const Icon(Icons.notes),
+            title: Text(t.aria.showCaption),
+            onTap: () => showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => ListView(
+                shrinkWrap: true,
+                children: [
+                  ListTile(
+                    title: Text(t.misskey.caption),
+                    trailing: IconButton(
+                      onPressed: () => copyToClipboard(context, comment),
+                      icon: const Icon(Icons.copy),
+                    ),
+                  ),
+                  const Divider(height: 0.0),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(comment),
+                  ),
+                ],
+              ),
+              clipBehavior: Clip.antiAlias,
+              scrollControlDisabledMaxHeightRatio: 0.8,
+            ),
           ),
         ListTile(
           leading: const Icon(Icons.download),

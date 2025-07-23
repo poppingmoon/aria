@@ -223,6 +223,7 @@ class TranslationsAriaEnUs {
 	]);
 	String get showAvatarsInNote => 'Show avatars in notes';
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
+	String get showCaption => 'Show alt text';
 	String get showEntireImage => 'Show entire image';
 	String get showExpandedImage => 'Show expanded image';
 	String get showGapBetweenNotesInTimeline => 'Show a gap between posts on the timeline';
