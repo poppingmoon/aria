@@ -34,6 +34,13 @@ class AiscriptStorageNotifier extends _$AiscriptStorageNotifier {
     return state[key];
   }
 
+  Future<void> remove(String key) async {
+    state = Map.fromEntries(state.entries.where((e) => e.key != key));
+    await ref
+        .read(sharedPreferencesProvider)
+        .setString(_key, jsonEncode(state));
+  }
+
   Future<void> import(Map<String, String> storage) async {
     state = storage;
     await ref

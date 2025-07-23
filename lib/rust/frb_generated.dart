@@ -107,6 +107,7 @@ abstract class RustLibApi extends BaseApi {
     required FutureOr<(String, String?)> Function(String, String, String?) api,
     required FutureOr<void> Function(String, String) save,
     required FutureOr<String> Function(String) load,
+    required FutureOr<void> Function(String) remove,
     required String url,
     required FutureOr<String> Function(String) nyaize,
   });
@@ -381,6 +382,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     required FutureOr<(String, String?)> Function(String, String, String?) api,
     required FutureOr<void> Function(String, String) save,
     required FutureOr<String> Function(String) load,
+    required FutureOr<void> Function(String) remove,
     required String url,
     required FutureOr<String> Function(String) nyaize,
   }) {
@@ -419,6 +421,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             load,
             serializer,
           );
+          sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
+            remove,
+            serializer,
+          );
           sse_encode_String(url, serializer);
           sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
             nyaize,
@@ -446,6 +452,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           api,
           save,
           load,
+          remove,
           url,
           nyaize,
         ],
@@ -471,6 +478,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           "api",
           "save",
           "load",
+          "remove",
           "url",
           "nyaize",
         ],

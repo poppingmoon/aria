@@ -7,7 +7,7 @@ part of 'aiscript_storage_notifier_provider.dart';
 // **************************************************************************
 
 String _$aiscriptStorageNotifierHash() =>
-    r'98f3510b7a9b94d0a03dbb8839b4679738c0ae27';
+    r'7db948673c9ab7cf747cd8327aae2e4367192053';
 
 /// Copied from Dart SDK
 class _SystemHash {

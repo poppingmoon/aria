@@ -24,6 +24,7 @@ abstract class AsApiLib implements RustOpaqueInterface {
     required FutureOr<(String, String?)> Function(String, String, String?) api,
     required FutureOr<void> Function(String, String) save,
     required FutureOr<String> Function(String) load,
+    required FutureOr<void> Function(String) remove,
     required String url,
     required FutureOr<String> Function(String) nyaize,
   }) => RustLib.instance.api.crateApiAiscriptApiAsApiLibNew(
@@ -40,6 +41,7 @@ abstract class AsApiLib implements RustOpaqueInterface {
     api: api,
     save: save,
     load: load,
+    remove: remove,
     url: url,
     nyaize: nyaize,
   );

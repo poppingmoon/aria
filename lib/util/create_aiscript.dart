@@ -125,6 +125,9 @@ Future<AiScript> createAiScript(
               .read(aiscriptStorageNotifierProvider(account).notifier)
               .load('$storageKey:$key') ??
           '',
+      remove: (key) => ref
+          .read(aiscriptStorageNotifierProvider(account).notifier)
+          .remove('$storageKey:$key'),
       url: url.toString(),
       nyaize: nyaize,
     ),

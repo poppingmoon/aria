@@ -33,6 +33,7 @@ pub struct AsApiLib {
     api: Arc<ApiCallback>,
     save: Arc<dyn Fn(String, String) -> DartFnFuture<()> + Sync + Send + 'static>,
     load: Arc<dyn Fn(String) -> DartFnFuture<String> + Sync + Send + 'static>,
+    remove: Arc<dyn Fn(String) -> DartFnFuture<()> + Sync + Send + 'static>,
     url: String,
     nyaize: Arc<dyn Fn(String) -> DartFnFuture<String> + Sync + Send + 'static>,
 }
@@ -57,6 +58,7 @@ impl AsApiLib {
         + 'static,
         save: impl Fn(String, String) -> DartFnFuture<()> + Sync + Send + 'static,
         load: impl Fn(String) -> DartFnFuture<String> + Sync + Send + 'static,
+        remove: impl Fn(String) -> DartFnFuture<()> + Sync + Send + 'static,
         url: String,
         nyaize: impl Fn(String) -> DartFnFuture<String> + Sync + Send + 'static,
     ) -> Self {
@@ -74,6 +76,7 @@ impl AsApiLib {
             api: Arc::new(api),
             save: Arc::new(save),
             load: Arc::new(load),
+            remove: Arc::new(remove),
             url,
             nyaize: Arc::new(nyaize),
         }
@@ -279,6 +282,22 @@ impl AsApiLib {
                         let value = load?.await;
                         let value = Value::new(serde_json::from_str(&value).unwrap_or_default());
                         Ok(value)
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:remove".to_string(),
+            Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let remove = String::try_from(args.next().unwrap_or_default())
+                        .map(|key| (self.remove)(key));
+                    async {
+                        remove?.await;
+                        Ok(Value::null())
                     }
                     .boxed()
                 }
