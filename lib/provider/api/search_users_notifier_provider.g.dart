@@ -7,7 +7,7 @@ part of 'search_users_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchUsersNotifierHash() =>
-    r'5ce185ef378356d401eb4e4850314601425f44ba';
+    r'2e35b46edaf172ecee9b89ac05b9dd93925070a3';
 
 /// Copied from Dart SDK
 class _SystemHash {

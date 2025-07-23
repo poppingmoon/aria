@@ -26,7 +26,11 @@ FutureOr<List<UserDetailed>> searchUsersByUsername(
         .read(misskeyProvider(account))
         .users
         .searchByUsernameAndHost(
-          UsersSearchByUsernameAndHostRequest(username: username, host: host),
+          UsersSearchByUsernameAndHostRequest(
+            username: username,
+            host: host,
+            limit: 30,
+          ),
         );
     return response.whereType<UserDetailed>().toList();
   } catch (_) {
