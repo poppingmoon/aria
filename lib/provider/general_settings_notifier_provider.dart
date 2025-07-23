@@ -572,4 +572,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     state = state.copyWith(darkThemeId: darkThemeId);
     await _save();
   }
+
+  Future<void> setSearchUsersByUsername(bool searchUsersByUsername) async {
+    state = state.copyWith(searchUsersByUsername: searchUsersByUsername);
+    await _save();
+  }
 }

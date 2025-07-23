@@ -142,6 +142,9 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default('a58a0abb-ff8c-476a-8dec-0ad7837e7e96') String lightThemeId,
     @Default('66e7e5a9-cd43-42cd-837d-12f47841fa34') String darkThemeId,
+
+    // User select dialog
+    @Default(true) bool searchUsersByUsername,
   }) = _GeneralSettings;
 
   factory GeneralSettings.fromJson(Map<String, dynamic> json) =>

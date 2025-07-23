@@ -7,7 +7,7 @@ part of 'search_users_by_username_provider.dart';
 // **************************************************************************
 
 String _$searchUsersByUsernameHash() =>
-    r'c2d893883e74d15f335931cf6fc0616906c771dc';
+    r'b3f547d55642bc3f0b720057f1cae1b532959e78';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -168,6 +168,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
       json['lightThemeId'] as String? ?? 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
   darkThemeId:
       json['darkThemeId'] as String? ?? '66e7e5a9-cd43-42cd-837d-12f47841fa34',
+  searchUsersByUsername: json['searchUsersByUsername'] as bool? ?? true,
 );
 
 Map<String, dynamic> _$GeneralSettingsToJson(
@@ -290,6 +291,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
   'lightThemeId': instance.lightThemeId,
   'darkThemeId': instance.darkThemeId,
+  'searchUsersByUsername': instance.searchUsersByUsername,
 };
 
 const _$AppLocaleEnumMap = {

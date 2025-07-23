@@ -24,7 +24,9 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchUsers();
-      yield PaginationState.fromIterable(response);
+      yield PaginationState.fromIterable(
+        Map.fromEntries(response.map((user) => MapEntry(user.id, user))).values,
+      );
       if (response.isNotEmpty && response.length < 10) {
         await loadMore();
       }
@@ -40,7 +42,12 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
         .read(misskeyProvider(account))
         .users
         .search(
-          UsersSearchRequest(query: query, origin: userOrigin, offset: offset),
+          UsersSearchRequest(
+            query: query,
+            origin: userOrigin,
+            offset: offset,
+            limit: 30,
+          ),
         );
     return response.whereType<UserDetailed>();
   }
@@ -57,7 +64,9 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     state = await AsyncValue.guard(() async {
       final response = await _fetchUsers(offset: value.items.length);
       return PaginationState(
-        items: [...value.items, ...response],
+        items: Map.fromEntries(
+          [...value.items, ...response].map((user) => MapEntry(user.id, user)),
+        ).values.toList(),
         isLastLoaded: response.isEmpty,
       );
     });
