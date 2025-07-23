@@ -47,14 +47,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.10.0
+  flutter_rust_bridge: 2.11.1
   flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.0
   fluttertoast: ^8.2.12
   freezed_annotation: ^3.0.0
   gal: ^2.3.1
   gal_linux: ^0.1.2
-  go_router: ^15.2.3
+  go_router: ^16.0.0
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting

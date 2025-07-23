@@ -1,4 +1,8 @@
-use std::{collections::HashMap, ops::Deref, sync::Arc};
+use std::{
+    collections::HashMap,
+    ops::Deref,
+    sync::{Arc, Mutex},
+};
 
 use aiscript::v0::{
     Interpreter,
@@ -6,8 +10,8 @@ use aiscript::v0::{
     values::{V, VArr, VFn, VObj, Value},
 };
 use flutter_rust_bridge::{DartFnFuture, frb};
+use futures::FutureExt;
 pub use futures::future::BoxFuture;
-use futures::{FutureExt, lock::Mutex};
 use indexmap::IndexMap;
 use uuid::Uuid;
 
@@ -21,16 +25,16 @@ impl TryFrom<Value> for AsUiRoot {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let children = <Vec<Value>>::try_from(def.get("children").cloned().unwrap_or_default())?;
         let mut ids = Vec::new();
         for value in children {
             let value = <IndexMap<String, Value>>::try_from(value)?;
-            if let Some(Value { value, .. }) = value.get("id") {
-                if let V::Str(id) = value.deref() {
-                    ids.push(id.clone());
-                }
+            if let Some(Value { value, .. }) = value.get("id")
+                && let V::Str(id) = value.deref()
+            {
+                ids.push(id.clone());
             }
         }
 
@@ -64,7 +68,7 @@ impl TryFrom<Value> for AsUiContainer {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let children = def
             .get("children")
@@ -75,10 +79,10 @@ impl TryFrom<Value> for AsUiContainer {
                 let mut ids = Vec::new();
                 for value in children {
                     let value = <IndexMap<String, Value>>::try_from(value)?;
-                    if let Some(Value { value, .. }) = value.get("id") {
-                        if let V::Str(id) = value.deref() {
-                            ids.push(id.clone());
-                        }
+                    if let Some(Value { value, .. }) = value.get("id")
+                        && let V::Str(id) = value.deref()
+                    {
+                        ids.push(id.clone());
                     }
                 }
                 Ok::<Vec<String>, AiScriptError>(ids)
@@ -206,7 +210,7 @@ impl TryFrom<Value> for AsUiText {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let text = def
             .get("text")
@@ -297,7 +301,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiMfm {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let text = def
             .get("text")
@@ -414,7 +418,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiButton {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let text = def
             .get("text")
@@ -506,7 +510,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiButtons {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let buttons = def
             .get("buttons")
@@ -558,7 +562,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiSwitch {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let on_change = def
             .get("onChange")
@@ -654,7 +658,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiTextarea {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let on_input = def
             .get("onInput")
@@ -750,7 +754,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiTextInput {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let on_input = def
             .get("onInput")
@@ -846,7 +850,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiNumberInput {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let on_input = def
             .get("onInput")
@@ -943,7 +947,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiSelect {
 
     fn try_from((value, interpreter): (Value, &Interpreter)) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let items = def
             .get("items")
@@ -955,7 +959,7 @@ impl TryFrom<(Value, &Interpreter)> for AsUiSelect {
                     .into_iter()
                     .map(|item| {
                         let item = VObj::try_from(item)?;
-                        let item = item.read().unwrap();
+                        let item = item.read().map_err(AiScriptError::internal)?;
                         let text = item.get("text");
                         let text = String::try_from(text.cloned().unwrap_or_default())?;
                         let value = item.get("value");
@@ -1055,7 +1059,7 @@ impl TryFrom<Value> for AsUiFolder {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let children = def.get("children");
         let children = children
@@ -1066,11 +1070,11 @@ impl TryFrom<Value> for AsUiFolder {
                 let mut ids = Vec::new();
                 for value in children {
                     let value = VObj::try_from(value)?;
-                    let value = value.read().unwrap();
-                    if let Some(Value { value, .. }) = value.get("id") {
-                        if let V::Str(id) = value.deref() {
-                            ids.push(id.clone());
-                        }
+                    let value = value.read().map_err(AiScriptError::internal)?;
+                    if let Some(Value { value, .. }) = value.get("id")
+                        && let V::Str(id) = value.deref()
+                    {
+                        ids.push(id.clone());
                     }
                 }
                 Ok::<Vec<String>, AiScriptError>(ids)
@@ -1127,7 +1131,7 @@ impl TryFrom<Value> for PostFormPropsForAsUi {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let form = VObj::try_from(value)?;
-        let form = form.read().unwrap();
+        let form = form.read().map_err(AiScriptError::internal)?;
 
         let text = form.get("text");
         let text = String::try_from(text.cloned().unwrap_or_default())?;
@@ -1169,7 +1173,7 @@ impl TryFrom<Value> for AsUiPostFormButton {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let text = def.get("text");
         let text = text
@@ -1233,7 +1237,7 @@ impl TryFrom<Value> for AsUiPostForm {
 
     fn try_from(value: Value) -> Result<Self, Self::Error> {
         let def = VObj::try_from(value)?;
-        let def = def.read().unwrap();
+        let def = def.read().map_err(AiScriptError::internal)?;
 
         let form = def.get("form");
         let form = form
@@ -1340,7 +1344,7 @@ impl AsUiLib {
         }
     }
 
-    async fn create_component_instance(
+    fn create_component_instance(
         &self,
         def: Value,
         id: Option<Value>,
@@ -1357,7 +1361,7 @@ impl AsUiLib {
         let component = get_options(def)?;
         self.components
             .lock()
-            .await
+            .map_err(AiScriptError::internal)?
             .insert(id.clone(), component.clone());
         let instance = Value::obj([
             ("id", Value::str(&id)),
@@ -1368,14 +1372,10 @@ impl AsUiLib {
                     let components = self.components.clone();
                     let on_update = self.on_update.clone();
                     move |args, _| {
-                        let id = id.clone();
-                        let components = components.clone();
-                        let on_update = on_update.clone();
-                        let get_options = get_options.clone();
-                        async move {
-                            let def = args.first().cloned().unwrap_or_else(Value::null);
-                            let updates = get_options(def)?;
-                            let mut components = components.lock().await;
+                        let def = args.first().cloned().unwrap_or_else(Value::null);
+                        let result = get_options(def).and_then(|updates| {
+                            let mut components =
+                                components.lock().map_err(AiScriptError::internal)?;
                             let component = match components.get_mut(&id) {
                                 Some(component) => {
                                     component.update(updates);
@@ -1386,46 +1386,45 @@ impl AsUiLib {
                                     updates
                                 }
                             };
-                            on_update(id, component).await;
+                            tokio::spawn(on_update(id.clone(), component));
                             Ok(Value::null())
-                        }
-                        .boxed()
+                        });
+                        async { result }.boxed()
                     }
                 }),
             ),
         ]);
         self.instances
             .lock()
-            .await
+            .map_err(AiScriptError::internal)?
             .insert(id.clone(), instance.clone());
-        (self.on_update)(id, component).await;
+        tokio::spawn((self.on_update)(id, component));
         Ok(instance)
     }
 
-    pub(crate) async fn register(&self, consts: &mut HashMap<String, Value>) {
+    pub(crate) fn register(&self, consts: &mut HashMap<String, Value>) {
         let root_id = "___root___";
-        let root_instance = self
-            .create_component_instance(
+
+        consts.insert(
+            "Ui:root".to_string(),
+            self.create_component_instance(
                 Value::obj([("children", Value::arr([]))]),
                 Some(Value::str(root_id)),
                 |value| Ok(AsUiComponent::Root(AsUiRoot::try_from(value)?)),
             )
-            .await
-            .unwrap();
-
-        consts.insert("Ui:root".to_string(), root_instance);
+            .unwrap_or_default(),
+        );
 
         consts.insert(
             "Ui:patch".to_string(),
             Value::fn_native(|args, _| {
-                async move {
-                    let mut args = args.into_iter();
-                    String::try_from(args.next().unwrap_or_default())?;
+                let mut args = args.into_iter();
+                let result = String::try_from(args.next().unwrap_or_default()).and_then(|_| {
                     VArr::try_from(args.next().unwrap_or_default())?;
                     // Not implemented
                     Ok(Value::null())
-                }
-                .boxed()
+                });
+                async { result }.boxed()
             }),
         );
 
@@ -1434,14 +1433,16 @@ impl AsUiLib {
             Value::fn_native({
                 let instances = self.instances.clone();
                 move |args, _| {
-                    let instances = instances.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        let id = String::try_from(args.next().unwrap_or_default())?;
-                        let instance = instances.lock().await.get(&id).cloned();
-                        Ok(instance.unwrap_or_else(Value::null))
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let result = String::try_from(args.next().unwrap_or_default()).and_then(|id| {
+                        let instance = instances
+                            .lock()
+                            .map_err(AiScriptError::internal)?
+                            .get(&id)
+                            .cloned();
+                        Ok(instance.unwrap_or_default())
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1452,30 +1453,29 @@ impl AsUiLib {
                 let components = self.components.clone();
                 let on_update = self.on_update.clone();
                 move |args, _| {
-                    let components = components.clone();
-                    let on_update = on_update.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        let children = <Vec<Value>>::try_from(args.next().unwrap_or_default())?;
-                        let mut ids = Vec::new();
-                        for value in children {
-                            let value = VObj::try_from(value)?;
-                            let value = value.read().unwrap();
-                            if let Some(Value { value, .. }) = value.get("id") {
-                                if let V::Str(id) = value.deref() {
+                    let mut args = args.into_iter();
+                    let result = <Vec<Value>>::try_from(args.next().unwrap_or_default()).and_then(
+                        |children| {
+                            let mut ids = Vec::new();
+                            for value in children {
+                                let value = VObj::try_from(value)?;
+                                let value = value.read().map_err(AiScriptError::internal)?;
+                                if let Some(Value { value, .. }) = value.get("id")
+                                    && let V::Str(id) = value.deref()
+                                {
                                     ids.push(id.clone());
                                 }
                             }
-                        }
-                        let component = AsUiComponent::Root(AsUiRoot { children: ids });
-                        components
-                            .lock()
-                            .await
-                            .insert(root_id.to_string(), component.clone());
-                        on_update(root_id.to_string(), component).await;
-                        Ok(Value::null())
-                    }
-                    .boxed()
+                            let component = AsUiComponent::Root(AsUiRoot { children: ids });
+                            components
+                                .lock()
+                                .map_err(AiScriptError::internal)?
+                                .insert(root_id.to_string(), component.clone());
+                            tokio::spawn(on_update(root_id.to_string(), component));
+                            Ok(Value::null())
+                        },
+                    );
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1485,17 +1485,13 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, _| {
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            |value| Ok(AsUiComponent::Container(AsUiContainer::try_from(value)?)),
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, |value| {
+                        Ok(AsUiComponent::Container(AsUiContainer::try_from(value)?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1505,17 +1501,13 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, _| {
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            |value| Ok(AsUiComponent::Text(AsUiText::try_from(value)?)),
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, |value| {
+                        Ok(AsUiComponent::Text(AsUiText::try_from(value)?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1525,23 +1517,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::Mfm(AsUiMfm::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::Mfm(AsUiMfm::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1551,23 +1537,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::Textarea(AsUiTextarea::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::Textarea(AsUiTextarea::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1577,23 +1557,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::TextInput(AsUiTextInput::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::TextInput(AsUiTextInput::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1603,23 +1577,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::NumberInput(AsUiNumberInput::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::NumberInput(AsUiNumberInput::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1629,23 +1597,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::Button(AsUiButton::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::Button(AsUiButton::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1655,23 +1617,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::Buttons(AsUiButtons::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::Buttons(AsUiButtons::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1681,23 +1637,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::ToggleSwitch(AsUiSwitch::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::ToggleSwitch(AsUiSwitch::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1707,23 +1657,17 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, interpreter| {
+                    let mut args = args.into_iter();
                     let interpreter = interpreter.clone();
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            move |value| {
-                                Ok(AsUiComponent::Select(AsUiSelect::try_from((
-                                    value,
-                                    &interpreter,
-                                ))?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, move |value| {
+                        Ok(AsUiComponent::Select(AsUiSelect::try_from((
+                            value,
+                            &interpreter,
+                        ))?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1733,17 +1677,13 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, _| {
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            |value| Ok(AsUiComponent::Folder(AsUiFolder::try_from(value)?)),
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, |value| {
+                        Ok(AsUiComponent::Folder(AsUiFolder::try_from(value)?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1753,21 +1693,15 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, _| {
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            |value| {
-                                Ok(AsUiComponent::PostFormButton(AsUiPostFormButton::try_from(
-                                    value,
-                                )?))
-                            },
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, |value| {
+                        Ok(AsUiComponent::PostFormButton(AsUiPostFormButton::try_from(
+                            value,
+                        )?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
@@ -1777,17 +1711,13 @@ impl AsUiLib {
             Value::fn_native({
                 let ui = self.clone();
                 move |args, _| {
-                    let ui = ui.clone();
-                    async move {
-                        let mut args = args.into_iter();
-                        ui.create_component_instance(
-                            args.next().unwrap_or_default(),
-                            args.next(),
-                            |value| Ok(AsUiComponent::PostForm(AsUiPostForm::try_from(value)?)),
-                        )
-                        .await
-                    }
-                    .boxed()
+                    let mut args = args.into_iter();
+                    let def = args.next().unwrap_or_default();
+                    let id = args.next();
+                    let result = ui.create_component_instance(def, id, |value| {
+                        Ok(AsUiComponent::PostForm(AsUiPostForm::try_from(value)?))
+                    });
+                    async { result }.boxed()
                 }
             }),
         );
