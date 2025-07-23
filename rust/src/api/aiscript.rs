@@ -30,7 +30,7 @@ impl AiScript {
             api.register(&mut consts);
         }
         if let Some(ui) = ui {
-            ui.register(&mut consts).await;
+            ui.register(&mut consts);
         }
         if let Some(play) = play {
             play.register(&mut consts);

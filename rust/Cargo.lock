@@ -29,7 +29,7 @@ dependencies = [
 [[package]]
 name = "aiscript"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=8e56bb9af7968a17add84f866c5c0b77c5d8fedf#8e56bb9af7968a17add84f866c5c0b77c5d8fedf"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=77c45a3ed517765060a132dd1e0f5111833b2f9c#77c45a3ed517765060a132dd1e0f5111833b2f9c"
 dependencies = [
  "aiscript-v0",
 ]
@@ -37,7 +37,7 @@ dependencies = [
 [[package]]
 name = "aiscript-v0"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=8e56bb9af7968a17add84f866c5c0b77c5d8fedf#8e56bb9af7968a17add84f866c5c0b77c5d8fedf"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=77c45a3ed517765060a132dd1e0f5111833b2f9c#77c45a3ed517765060a132dd1e0f5111833b2f9c"
 dependencies = [
  "chrono",
  "futures",
@@ -809,6 +809,7 @@ dependencies = [
  "futures",
  "indexmap",
  "serde_json",
+ "tokio",
  "uuid",
 ]
 
@@ -939,6 +940,18 @@ dependencies = [
  "mio",
  "pin-project-lite",
  "slab",
+ "tokio-macros",
+]
+
+[[package]]
+name = "tokio-macros"
+version = "2.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e06d43f1345a3bcd39f6a56dbb7dcab2ba47e68e8ac134855e7e2bdbaf8cab8"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
