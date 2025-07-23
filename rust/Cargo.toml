@@ -11,7 +11,7 @@ unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 
 [dependencies]
 aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "8e56bb9af7968a17add84f866c5c0b77c5d8fedf" }
-flutter_rust_bridge = "=2.10.0"
+flutter_rust_bridge = "=2.11.1"
 futures = "0.3"
 indexmap = "2.3"
 serde_json = { version = "1.0", features = ["preserve_order"] }
