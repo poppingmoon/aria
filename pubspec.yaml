@@ -18,6 +18,7 @@ dependencies:
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
   connectivity_plus: ^6.1.4
+  device_info_plus: ^11.5.0
   dio: ^5.8.0+1
   dotted_border: ^3.0.1
   extended_image: ^10.0.1

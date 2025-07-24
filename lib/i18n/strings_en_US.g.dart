@@ -69,6 +69,7 @@ class TranslationsAriaEnUs {
 	String get background => 'Background';
 	String get buttonTypes => 'Button types';
 	String get calculating => 'Calculating...';
+	String get clientInfo => 'Client info';
 	String get confirmBeforeFollow => 'Confirm before follow';
 	String get confirmBeforePost => 'Confirm before post';
 	String get confirmBeforeReact => 'Confirm before react';
@@ -87,6 +88,7 @@ class TranslationsAriaEnUs {
 		other: 'Are you sure you want to delete ${n} files?',
 	);
 	String get deleteTabConfirm => 'Are you sure you want to delete this tab?';
+	String get device => 'Device';
 	String get disableDataSaverWhenOnWifi => 'Disable data saver when on Wi-Fi';
 	String get disableStreamingTimeline => 'Disable real-time timeline updates';
 	String get disableSubscribingNotes => 'Disable real-time reaction updates';
