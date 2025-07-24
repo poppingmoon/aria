@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -311,12 +312,19 @@ class BehaviorPage extends ConsumerWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.aria.enablePredictiveBack),
-                  value: settings.enablePredictiveBack,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEnablePredictiveBack(value),
+                child: FutureBuilder(
+                  future: DeviceInfoPlugin().androidInfo,
+                  builder: (context, snapshot) => SwitchListTile(
+                    title: Text(t.aria.enablePredictiveBack),
+                    value: settings.enablePredictiveBack,
+                    onChanged: switch (snapshot.data?.version.sdkInt) {
+                      final sdk? when sdk >= 34 =>
+                        (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setEnablePredictiveBack(value),
+                      _ => null,
+                    },
+                  ),
                 ),
               ),
             ),
