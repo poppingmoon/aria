@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -100,6 +99,136 @@ as Color,
 
 }
 
+
+/// Adds pattern-matching-related methods to [MisskeyColors].
+extension MisskeyColorsPatterns on MisskeyColors {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MisskeyColors value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _MisskeyColors() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MisskeyColors value)  $default,){
+final _that = this;
+switch (_that) {
+case _MisskeyColors():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MisskeyColors value)?  $default,){
+final _that = this;
+switch (_that) {
+case _MisskeyColors() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _MisskeyColors() when $default != null:
+return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)  $default,) {final _that = this;
+switch (_that) {
+case _MisskeyColors():
+return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)?  $default,) {final _that = this;
+switch (_that) {
+case _MisskeyColors() when $default != null:
+return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

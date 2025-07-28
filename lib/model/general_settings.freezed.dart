@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -173,6 +172,136 @@ as bool,
 
 }
 
+
+/// Adds pattern-matching-related methods to [GeneralSettings].
+extension GeneralSettingsPatterns on GeneralSettings {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _GeneralSettings value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _GeneralSettings() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _GeneralSettings value)  $default,){
+final _that = this;
+switch (_that) {
+case _GeneralSettings():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _GeneralSettings value)?  $default,){
+final _that = this;
+switch (_that) {
+case _GeneralSettings() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  AppLocale? locale,  bool collapseRenotes,  SensitiveMediaDisplay sensitive,  bool highlightSensitiveMedia,  bool animatedMfm,  bool advancedMfm,  bool showRepliesCount,  bool showRenotesCount,  bool showReactionsCount,  bool showReactionsCountInReactionButton,  bool showGapBetweenNotesInTimeline,  bool loadRawImages,  InstanceTicker instanceTicker,  bool showNoteCreatedAt,  bool showAvatarsInNote,  bool showAvatarsInSubNote,  bool squareAvatars,  bool showAvatarDecorations,  bool showQuoteButtonInNoteFooter,  bool showLikeButtonInNoteFooter,  bool showClipButtonInNoteFooter,  bool showTranslateButtonInNoteFooter,  bool showNoteReactionsViewer,  bool showSubNoteReactionsViewer,  bool showNoteFooter,  bool showSubNoteFooter,  bool alwaysExpandCw,  bool alwaysExpandLongNote,  bool alwaysExpandMediaInSubNote,  bool mergeReactionsByName,  bool alwaysShowAllReactions,  MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,  BoxFit thumbnailBoxFit,  EmojiStyle emojiStyle,  String? fontFamily,  double fontSize,  double lineHeight,  double avatarScale,  double reactionsDisplayScale,  bool limitWidthOfReaction,  double noteFooterScale,  double noteVerticalPadding,  double noteHorizontalPadding, @_ColorConverter()  Color? publicNoteBackgroundColor, @_ColorConverter()  Color? homeNoteBackgroundColor, @_ColorConverter()  Color? followersNoteBackgroundColor, @_ColorConverter()  Color? specifiedNoteBackgroundColor,  bool emojiPickerUseDialog,  double emojiPickerScale,  bool emojiPickerAutofocus,  bool emojiPickerKeepOpen,  bool dataSaverMedia,  bool dataSaverAvatar,  bool dataSaverUrlPreview,  bool disableDataSaverWhenOnWifi,  bool reduceAnimation,  bool disableShowingAnimatedImages,  bool enableEmojiFadeIn,  bool forceShowAds,  bool useGroupedNotifications,  bool showOnlineStatus,  bool showTimelineTabBarAtBottom,  bool showMenuButtonInTabBar,  List<TimelinesPageButtonType?> timelinesPageButtonTypes,  bool showSmallTimelinesPageButtons,  bool showSquaredTimelinesPageButtons,  bool showTabHeaderInOneLine,  bool alwaysShowTabHeader,  bool showTimelineLastViewedAt,  bool showPopupOnNewNote,  bool vibrateNote,  bool vibrateNotification,  bool enableInfiniteScroll,  bool keepScreenOn,  bool enableHorizontalSwipe,  bool openSensitiveMediaOnDoubleTap,  NoteActionType noteTapAction,  NoteActionType noteDoubleTapAction,  NoteActionType noteLongPressAction,  bool confirmBeforePost,  bool confirmBeforeRenote,  bool confirmBeforeReact,  bool confirmBeforeFollow,  bool confirmWhenRevealingSensitiveMedia,  LaunchMode launchMode,  bool enableSpellCheck,  bool enablePredictiveBack,  ThemeMode themeMode,  String lightThemeId,  String darkThemeId,  bool searchUsersByUsername)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _GeneralSettings() when $default != null:
+return $default(_that.locale,_that.collapseRenotes,_that.sensitive,_that.highlightSensitiveMedia,_that.animatedMfm,_that.advancedMfm,_that.showRepliesCount,_that.showRenotesCount,_that.showReactionsCount,_that.showReactionsCountInReactionButton,_that.showGapBetweenNotesInTimeline,_that.loadRawImages,_that.instanceTicker,_that.showNoteCreatedAt,_that.showAvatarsInNote,_that.showAvatarsInSubNote,_that.squareAvatars,_that.showAvatarDecorations,_that.showQuoteButtonInNoteFooter,_that.showLikeButtonInNoteFooter,_that.showClipButtonInNoteFooter,_that.showTranslateButtonInNoteFooter,_that.showNoteReactionsViewer,_that.showSubNoteReactionsViewer,_that.showNoteFooter,_that.showSubNoteFooter,_that.alwaysExpandCw,_that.alwaysExpandLongNote,_that.alwaysExpandMediaInSubNote,_that.mergeReactionsByName,_that.alwaysShowAllReactions,_that.mediaListWithOneImageAppearance,_that.thumbnailBoxFit,_that.emojiStyle,_that.fontFamily,_that.fontSize,_that.lineHeight,_that.avatarScale,_that.reactionsDisplayScale,_that.limitWidthOfReaction,_that.noteFooterScale,_that.noteVerticalPadding,_that.noteHorizontalPadding,_that.publicNoteBackgroundColor,_that.homeNoteBackgroundColor,_that.followersNoteBackgroundColor,_that.specifiedNoteBackgroundColor,_that.emojiPickerUseDialog,_that.emojiPickerScale,_that.emojiPickerAutofocus,_that.emojiPickerKeepOpen,_that.dataSaverMedia,_that.dataSaverAvatar,_that.dataSaverUrlPreview,_that.disableDataSaverWhenOnWifi,_that.reduceAnimation,_that.disableShowingAnimatedImages,_that.enableEmojiFadeIn,_that.forceShowAds,_that.useGroupedNotifications,_that.showOnlineStatus,_that.showTimelineTabBarAtBottom,_that.showMenuButtonInTabBar,_that.timelinesPageButtonTypes,_that.showSmallTimelinesPageButtons,_that.showSquaredTimelinesPageButtons,_that.showTabHeaderInOneLine,_that.alwaysShowTabHeader,_that.showTimelineLastViewedAt,_that.showPopupOnNewNote,_that.vibrateNote,_that.vibrateNotification,_that.enableInfiniteScroll,_that.keepScreenOn,_that.enableHorizontalSwipe,_that.openSensitiveMediaOnDoubleTap,_that.noteTapAction,_that.noteDoubleTapAction,_that.noteLongPressAction,_that.confirmBeforePost,_that.confirmBeforeRenote,_that.confirmBeforeReact,_that.confirmBeforeFollow,_that.confirmWhenRevealingSensitiveMedia,_that.launchMode,_that.enableSpellCheck,_that.enablePredictiveBack,_that.themeMode,_that.lightThemeId,_that.darkThemeId,_that.searchUsersByUsername);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  AppLocale? locale,  bool collapseRenotes,  SensitiveMediaDisplay sensitive,  bool highlightSensitiveMedia,  bool animatedMfm,  bool advancedMfm,  bool showRepliesCount,  bool showRenotesCount,  bool showReactionsCount,  bool showReactionsCountInReactionButton,  bool showGapBetweenNotesInTimeline,  bool loadRawImages,  InstanceTicker instanceTicker,  bool showNoteCreatedAt,  bool showAvatarsInNote,  bool showAvatarsInSubNote,  bool squareAvatars,  bool showAvatarDecorations,  bool showQuoteButtonInNoteFooter,  bool showLikeButtonInNoteFooter,  bool showClipButtonInNoteFooter,  bool showTranslateButtonInNoteFooter,  bool showNoteReactionsViewer,  bool showSubNoteReactionsViewer,  bool showNoteFooter,  bool showSubNoteFooter,  bool alwaysExpandCw,  bool alwaysExpandLongNote,  bool alwaysExpandMediaInSubNote,  bool mergeReactionsByName,  bool alwaysShowAllReactions,  MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,  BoxFit thumbnailBoxFit,  EmojiStyle emojiStyle,  String? fontFamily,  double fontSize,  double lineHeight,  double avatarScale,  double reactionsDisplayScale,  bool limitWidthOfReaction,  double noteFooterScale,  double noteVerticalPadding,  double noteHorizontalPadding, @_ColorConverter()  Color? publicNoteBackgroundColor, @_ColorConverter()  Color? homeNoteBackgroundColor, @_ColorConverter()  Color? followersNoteBackgroundColor, @_ColorConverter()  Color? specifiedNoteBackgroundColor,  bool emojiPickerUseDialog,  double emojiPickerScale,  bool emojiPickerAutofocus,  bool emojiPickerKeepOpen,  bool dataSaverMedia,  bool dataSaverAvatar,  bool dataSaverUrlPreview,  bool disableDataSaverWhenOnWifi,  bool reduceAnimation,  bool disableShowingAnimatedImages,  bool enableEmojiFadeIn,  bool forceShowAds,  bool useGroupedNotifications,  bool showOnlineStatus,  bool showTimelineTabBarAtBottom,  bool showMenuButtonInTabBar,  List<TimelinesPageButtonType?> timelinesPageButtonTypes,  bool showSmallTimelinesPageButtons,  bool showSquaredTimelinesPageButtons,  bool showTabHeaderInOneLine,  bool alwaysShowTabHeader,  bool showTimelineLastViewedAt,  bool showPopupOnNewNote,  bool vibrateNote,  bool vibrateNotification,  bool enableInfiniteScroll,  bool keepScreenOn,  bool enableHorizontalSwipe,  bool openSensitiveMediaOnDoubleTap,  NoteActionType noteTapAction,  NoteActionType noteDoubleTapAction,  NoteActionType noteLongPressAction,  bool confirmBeforePost,  bool confirmBeforeRenote,  bool confirmBeforeReact,  bool confirmBeforeFollow,  bool confirmWhenRevealingSensitiveMedia,  LaunchMode launchMode,  bool enableSpellCheck,  bool enablePredictiveBack,  ThemeMode themeMode,  String lightThemeId,  String darkThemeId,  bool searchUsersByUsername)  $default,) {final _that = this;
+switch (_that) {
+case _GeneralSettings():
+return $default(_that.locale,_that.collapseRenotes,_that.sensitive,_that.highlightSensitiveMedia,_that.animatedMfm,_that.advancedMfm,_that.showRepliesCount,_that.showRenotesCount,_that.showReactionsCount,_that.showReactionsCountInReactionButton,_that.showGapBetweenNotesInTimeline,_that.loadRawImages,_that.instanceTicker,_that.showNoteCreatedAt,_that.showAvatarsInNote,_that.showAvatarsInSubNote,_that.squareAvatars,_that.showAvatarDecorations,_that.showQuoteButtonInNoteFooter,_that.showLikeButtonInNoteFooter,_that.showClipButtonInNoteFooter,_that.showTranslateButtonInNoteFooter,_that.showNoteReactionsViewer,_that.showSubNoteReactionsViewer,_that.showNoteFooter,_that.showSubNoteFooter,_that.alwaysExpandCw,_that.alwaysExpandLongNote,_that.alwaysExpandMediaInSubNote,_that.mergeReactionsByName,_that.alwaysShowAllReactions,_that.mediaListWithOneImageAppearance,_that.thumbnailBoxFit,_that.emojiStyle,_that.fontFamily,_that.fontSize,_that.lineHeight,_that.avatarScale,_that.reactionsDisplayScale,_that.limitWidthOfReaction,_that.noteFooterScale,_that.noteVerticalPadding,_that.noteHorizontalPadding,_that.publicNoteBackgroundColor,_that.homeNoteBackgroundColor,_that.followersNoteBackgroundColor,_that.specifiedNoteBackgroundColor,_that.emojiPickerUseDialog,_that.emojiPickerScale,_that.emojiPickerAutofocus,_that.emojiPickerKeepOpen,_that.dataSaverMedia,_that.dataSaverAvatar,_that.dataSaverUrlPreview,_that.disableDataSaverWhenOnWifi,_that.reduceAnimation,_that.disableShowingAnimatedImages,_that.enableEmojiFadeIn,_that.forceShowAds,_that.useGroupedNotifications,_that.showOnlineStatus,_that.showTimelineTabBarAtBottom,_that.showMenuButtonInTabBar,_that.timelinesPageButtonTypes,_that.showSmallTimelinesPageButtons,_that.showSquaredTimelinesPageButtons,_that.showTabHeaderInOneLine,_that.alwaysShowTabHeader,_that.showTimelineLastViewedAt,_that.showPopupOnNewNote,_that.vibrateNote,_that.vibrateNotification,_that.enableInfiniteScroll,_that.keepScreenOn,_that.enableHorizontalSwipe,_that.openSensitiveMediaOnDoubleTap,_that.noteTapAction,_that.noteDoubleTapAction,_that.noteLongPressAction,_that.confirmBeforePost,_that.confirmBeforeRenote,_that.confirmBeforeReact,_that.confirmBeforeFollow,_that.confirmWhenRevealingSensitiveMedia,_that.launchMode,_that.enableSpellCheck,_that.enablePredictiveBack,_that.themeMode,_that.lightThemeId,_that.darkThemeId,_that.searchUsersByUsername);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  AppLocale? locale,  bool collapseRenotes,  SensitiveMediaDisplay sensitive,  bool highlightSensitiveMedia,  bool animatedMfm,  bool advancedMfm,  bool showRepliesCount,  bool showRenotesCount,  bool showReactionsCount,  bool showReactionsCountInReactionButton,  bool showGapBetweenNotesInTimeline,  bool loadRawImages,  InstanceTicker instanceTicker,  bool showNoteCreatedAt,  bool showAvatarsInNote,  bool showAvatarsInSubNote,  bool squareAvatars,  bool showAvatarDecorations,  bool showQuoteButtonInNoteFooter,  bool showLikeButtonInNoteFooter,  bool showClipButtonInNoteFooter,  bool showTranslateButtonInNoteFooter,  bool showNoteReactionsViewer,  bool showSubNoteReactionsViewer,  bool showNoteFooter,  bool showSubNoteFooter,  bool alwaysExpandCw,  bool alwaysExpandLongNote,  bool alwaysExpandMediaInSubNote,  bool mergeReactionsByName,  bool alwaysShowAllReactions,  MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,  BoxFit thumbnailBoxFit,  EmojiStyle emojiStyle,  String? fontFamily,  double fontSize,  double lineHeight,  double avatarScale,  double reactionsDisplayScale,  bool limitWidthOfReaction,  double noteFooterScale,  double noteVerticalPadding,  double noteHorizontalPadding, @_ColorConverter()  Color? publicNoteBackgroundColor, @_ColorConverter()  Color? homeNoteBackgroundColor, @_ColorConverter()  Color? followersNoteBackgroundColor, @_ColorConverter()  Color? specifiedNoteBackgroundColor,  bool emojiPickerUseDialog,  double emojiPickerScale,  bool emojiPickerAutofocus,  bool emojiPickerKeepOpen,  bool dataSaverMedia,  bool dataSaverAvatar,  bool dataSaverUrlPreview,  bool disableDataSaverWhenOnWifi,  bool reduceAnimation,  bool disableShowingAnimatedImages,  bool enableEmojiFadeIn,  bool forceShowAds,  bool useGroupedNotifications,  bool showOnlineStatus,  bool showTimelineTabBarAtBottom,  bool showMenuButtonInTabBar,  List<TimelinesPageButtonType?> timelinesPageButtonTypes,  bool showSmallTimelinesPageButtons,  bool showSquaredTimelinesPageButtons,  bool showTabHeaderInOneLine,  bool alwaysShowTabHeader,  bool showTimelineLastViewedAt,  bool showPopupOnNewNote,  bool vibrateNote,  bool vibrateNotification,  bool enableInfiniteScroll,  bool keepScreenOn,  bool enableHorizontalSwipe,  bool openSensitiveMediaOnDoubleTap,  NoteActionType noteTapAction,  NoteActionType noteDoubleTapAction,  NoteActionType noteLongPressAction,  bool confirmBeforePost,  bool confirmBeforeRenote,  bool confirmBeforeReact,  bool confirmBeforeFollow,  bool confirmWhenRevealingSensitiveMedia,  LaunchMode launchMode,  bool enableSpellCheck,  bool enablePredictiveBack,  ThemeMode themeMode,  String lightThemeId,  String darkThemeId,  bool searchUsersByUsername)?  $default,) {final _that = this;
+switch (_that) {
+case _GeneralSettings() when $default != null:
+return $default(_that.locale,_that.collapseRenotes,_that.sensitive,_that.highlightSensitiveMedia,_that.animatedMfm,_that.advancedMfm,_that.showRepliesCount,_that.showRenotesCount,_that.showReactionsCount,_that.showReactionsCountInReactionButton,_that.showGapBetweenNotesInTimeline,_that.loadRawImages,_that.instanceTicker,_that.showNoteCreatedAt,_that.showAvatarsInNote,_that.showAvatarsInSubNote,_that.squareAvatars,_that.showAvatarDecorations,_that.showQuoteButtonInNoteFooter,_that.showLikeButtonInNoteFooter,_that.showClipButtonInNoteFooter,_that.showTranslateButtonInNoteFooter,_that.showNoteReactionsViewer,_that.showSubNoteReactionsViewer,_that.showNoteFooter,_that.showSubNoteFooter,_that.alwaysExpandCw,_that.alwaysExpandLongNote,_that.alwaysExpandMediaInSubNote,_that.mergeReactionsByName,_that.alwaysShowAllReactions,_that.mediaListWithOneImageAppearance,_that.thumbnailBoxFit,_that.emojiStyle,_that.fontFamily,_that.fontSize,_that.lineHeight,_that.avatarScale,_that.reactionsDisplayScale,_that.limitWidthOfReaction,_that.noteFooterScale,_that.noteVerticalPadding,_that.noteHorizontalPadding,_that.publicNoteBackgroundColor,_that.homeNoteBackgroundColor,_that.followersNoteBackgroundColor,_that.specifiedNoteBackgroundColor,_that.emojiPickerUseDialog,_that.emojiPickerScale,_that.emojiPickerAutofocus,_that.emojiPickerKeepOpen,_that.dataSaverMedia,_that.dataSaverAvatar,_that.dataSaverUrlPreview,_that.disableDataSaverWhenOnWifi,_that.reduceAnimation,_that.disableShowingAnimatedImages,_that.enableEmojiFadeIn,_that.forceShowAds,_that.useGroupedNotifications,_that.showOnlineStatus,_that.showTimelineTabBarAtBottom,_that.showMenuButtonInTabBar,_that.timelinesPageButtonTypes,_that.showSmallTimelinesPageButtons,_that.showSquaredTimelinesPageButtons,_that.showTabHeaderInOneLine,_that.alwaysShowTabHeader,_that.showTimelineLastViewedAt,_that.showPopupOnNewNote,_that.vibrateNote,_that.vibrateNotification,_that.enableInfiniteScroll,_that.keepScreenOn,_that.enableHorizontalSwipe,_that.openSensitiveMediaOnDoubleTap,_that.noteTapAction,_that.noteDoubleTapAction,_that.noteLongPressAction,_that.confirmBeforePost,_that.confirmBeforeRenote,_that.confirmBeforeReact,_that.confirmBeforeFollow,_that.confirmWhenRevealingSensitiveMedia,_that.launchMode,_that.enableSpellCheck,_that.enablePredictiveBack,_that.themeMode,_that.lightThemeId,_that.darkThemeId,_that.searchUsersByUsername);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
