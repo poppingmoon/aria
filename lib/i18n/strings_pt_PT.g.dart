@@ -430,6 +430,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => 'URL do arquivo que você deseja enviar';
 	@override String get uploadFromUrlRequested => 'Upload solicitado';
 	@override String get uploadFromUrlMayTakeTime => 'Pode levar algum tempo para que o upload seja concluído.';
+	@override String uploadNFiles({required Object n}) => 'Enviar ${n} arquivos';
 	@override String get explore => 'Explorar';
 	@override String get messageRead => 'Lida';
 	@override String get noMoreHistory => 'Não existe histórico anterior';
@@ -458,6 +459,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get lightThemes => 'Tema claro';
 	@override String get darkThemes => 'Tema escuro';
 	@override String get syncDeviceDarkMode => 'Sincronize com o modo escuro do dispositivo';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" está ativado. Você gostaria de desligar a sincronização e alterar manualmente?';
 	@override String get drive => 'Drive';
 	@override String get fileName => 'Nome do Ficheiro';
 	@override String get selectFile => 'Selecione os arquivos';
@@ -576,7 +578,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get exploreFediverse => 'Explorar Fediverse';
 	@override String get popularTags => 'Tags populares';
 	@override String get userList => 'Listas';
-	@override String get about => 'Informações';
+	@override String get about => 'Sobre';
 	@override String get aboutMisskey => 'Sobre Misskey';
 	@override String get administrator => 'Administrador';
 	@override String get token => 'Símbolo';
@@ -710,6 +712,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get newNote => 'Nova Nota';
 	@override String get sounds => 'Sons';
 	@override String get sound => 'Sons';
+	@override String get notificationSoundSettings => 'Configurações de som de notificações';
 	@override String get listen => 'Ouvir';
 	@override String get none => 'Nenhum';
 	@override String get showInPage => 'Ver na página';
@@ -1131,6 +1134,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get cannotUploadBecauseInappropriate => 'Esse arquivo não pôde ser enviado porque partes dele foram detectadas como potencialmente inapropriadas.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Envio falhou devido à falta de capacidade no Drive.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Não é possível realizar o upload deste arquivo porque ele excede o tamanho máximo permitido.';
+	@override String get cannotUploadBecauseUnallowedFileType => 'Não foi possível fazer o envio, pois o formato do arquivo não foi autorizado.';
 	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Marcar automaticamente como conteúdo sensível';
 	@override String get enableAutoSensitiveDescription => 'Quando disponível, a marcação de mídia sensível será automaticamente atribuído ao conteúdo de mídia usando aprendizado de máquina. Mesmo que você desative essa função, em alguns servidores, isso pode ser configurado automaticamente.';
@@ -1441,6 +1445,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Ative após compreender as precauções.';
 	@override String get federationSpecified => 'Esse servidor opera com uma lista branca de federação. Interagir com servidores diferentes daqueles designados pela administração não é permitido.';
 	@override String get federationDisabled => 'Federação está desabilitada nesse servidor. Você não pode interagir com usuários de outros servidores.';
+	@override String get draft => 'Rascunhos';
 	@override String get confirmOnReact => 'Confirmar ao reagir';
 	@override String reactAreYouSure({required Object emoji}) => 'Você deseja adicionar uma reação "${emoji}"?';
 	@override String get markAsSensitiveConfirm => 'Você deseja definir essa mídia como sensível?';
@@ -1458,6 +1463,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get syncBetweenDevices => 'Sincronizar entre dispositivos';
 	@override String get preferenceSyncConflictTitle => 'O valor configurado já existe no servidor.';
 	@override String get preferenceSyncConflictText => 'As preferências com a sincronização ativada irão salvar os seus valores no servidor. Porém, já existem valores no servidor. Qual conjunto de valores você deseja sobrescrever?';
+	@override String get preferenceSyncConflictChoiceMerge => 'Combinar';
 	@override String get preferenceSyncConflictChoiceServer => 'Valor configurado no servidor';
 	@override String get preferenceSyncConflictChoiceDevice => 'Valor configurado no dispositivo';
 	@override String get preferenceSyncConflictChoiceCancel => 'Cancelar a habilitação de sincronização';
@@ -1465,7 +1471,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get emojiPalette => 'Paleta de emojis';
 	@override String get postForm => 'Campo de postagem';
 	@override String get textCount => 'Contagem de caracteres';
-	@override String get information => 'Informações';
+	@override String get information => 'Sobre';
 	@override String get chat => 'Conversas';
 	@override String get migrateOldSettings => 'Migrar configurações antigas de cliente';
 	@override String get migrateOldSettings_description => 'Isso deve ser feito automaticamente. Caso o processo de migração tenha falhado, você pode acioná-lo manualmente. As informações atuais de migração serão substituídas.';
@@ -1488,6 +1494,13 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get emojiUnmute => 'Reativar emoji';
 	@override String muteX({required Object x}) => 'Silenciar ${x}';
 	@override String unmuteX({required Object x}) => 'Reativar ${x}';
+	@override String get abort => 'Abortar';
+	@override String get tip => 'Dicas e Truques';
+	@override String get redisplayAllTips => 'Mostrar todas as "Dicas e Truques" novamente';
+	@override String get hideAllTips => 'Ocultas todas as "Dicas e Truques"';
+	@override String get defaultImageCompressionLevel => 'Nível de compressão de imagem padrão';
+	@override String get defaultImageCompressionLevel_description => 'Alto, reduz o tamanho do arquivo mas, também, a qualidade da imagem.<br>Alto, reduz o tamanho do arquivo mas, também, a qualidade da imagem.';
+	@override late final _TranslationsMisskeyOrderPtPt order_ = _TranslationsMisskeyOrderPtPt._(_root);
 	@override late final _TranslationsMisskeyChatPtPt chat_ = _TranslationsMisskeyChatPtPt._(_root);
 	@override late final _TranslationsMisskeyEmojiPalettePtPt emojiPalette_ = _TranslationsMisskeyEmojiPalettePtPt._(_root);
 	@override late final _TranslationsMisskeySettingsPtPt settings_ = _TranslationsMisskeySettingsPtPt._(_root);
@@ -1578,8 +1591,27 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyBootErrorsPtPt bootErrors_ = _TranslationsMisskeyBootErrorsPtPt._(_root);
 	@override late final _TranslationsMisskeySearchPtPt search_ = _TranslationsMisskeySearchPtPt._(_root);
 	@override late final _TranslationsMisskeyServerSetupWizardPtPt serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardPtPt._(_root);
+	@override late final _TranslationsMisskeyUploaderPtPt uploader_ = _TranslationsMisskeyUploaderPtPt._(_root);
 	@override late final _TranslationsMisskeyClientPerformanceIssueTipPtPt clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipPtPt._(_root);
+	@override late final _TranslationsMisskeyClipPtPt clip_ = _TranslationsMisskeyClipPtPt._(_root);
+	@override late final _TranslationsMisskeyUserListsPtPt userLists_ = _TranslationsMisskeyUserListsPtPt._(_root);
+	@override String get watermark => 'Marca d\'água';
+	@override String get defaultPreset => 'Predefinição Padrão';
 	@override late final _TranslationsMisskeyWatermarkEditorPtPt watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPtPt._(_root);
+	@override late final _TranslationsMisskeyImageEffectorPtPt imageEffector_ = _TranslationsMisskeyImageEffectorPtPt._(_root);
+	@override String get drafts => 'Rascunhos';
+	@override late final _TranslationsMisskeyDraftsPtPt drafts_ = _TranslationsMisskeyDraftsPtPt._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderPtPt extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Priorizar Mais Novos';
+	@override String get oldest => 'Priorizar Mais Antigos';
 }
 
 // Path: misskey.chat_
@@ -1685,6 +1717,8 @@ class _TranslationsMisskeySettingsPtPt extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency => 'Frequência da obtenção de conteúdo';
 	@override String get contentsUpdateFrequency_description => 'Quanto maior o valor, mais o conteúdo atualiza. Porém, há uma diminuição do desempenho e aumento do tráfego e consumo de memória.';
 	@override String get contentsUpdateFrequency_description2 => 'Quando o modo tempo-real está ativado, o conteúdo é atualizado em tempo real, ignorando essa opção.';
+	@override String get showUrlPreview => 'Exibir prévia de URL';
+	@override String get showAvailableReactionsFirstInNote => 'Exibir reações disponíveis no topo.';
 	@override late final _TranslationsMisskeySettingsChatPtPt chat_ = _TranslationsMisskeySettingsChatPtPt._(_root);
 }
 
@@ -2290,6 +2324,7 @@ class _TranslationsMisskeyThemePtPt extends TranslationsMisskeyThemeEnUs {
 	@override String get install => 'Instalar um tema';
 	@override String get manage => 'Gerenciar temas';
 	@override String get code => 'Código do tema';
+	@override String get copyThemeCode => 'Copiar código do tema';
 	@override String get description => 'Descrição';
 	@override String installed({required Object name}) => '${name} foi instalado';
 	@override String get installedThemes => 'Temas instalados';
@@ -2688,6 +2723,8 @@ class _TranslationsMisskeyPostFormPtPt extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsPtPt _root; // ignore: unused_field
 
 	// Translations
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Há arquivos que não foram enviados, gostaria de descartá-los e fechar o editor?';
+	@override String get uploaderTip => 'O arquivo ainda não foi enviado. No menu do arquivo, você pode renomear, cortar, adicionar uma marca d\'água, comprimir ou descomprimir um arquivo. Arquivos serão enviados automaticamente ao publicar a nota.';
 	@override String get replyPlaceholder => 'Responder a essa nota...';
 	@override String get quotePlaceholder => 'Citar essa nota...';
 	@override String get channelPlaceholder => 'Postar em canal...';
@@ -3081,6 +3118,7 @@ class _TranslationsMisskeyFileViewerPtPt extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => 'Adicionado em';
 	@override String get attachedNotes => 'Notas anexadas';
+	@override String get usage => 'Usado';
 	@override String get thisPageCanBeSeenFromTheAuthor => 'Essa página só pode ser vista pelo usuário que enviou esse arquivo.';
 }
 
@@ -3109,6 +3147,8 @@ class _TranslationsMisskeyDataSaverPtPt extends TranslationsMisskeyDataSaverEnUs
 	// Translations
 	@override late final _TranslationsMisskeyDataSaverMediaPtPt media_ = _TranslationsMisskeyDataSaverMediaPtPt._(_root);
 	@override late final _TranslationsMisskeyDataSaverAvatarPtPt avatar_ = _TranslationsMisskeyDataSaverAvatarPtPt._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewThumbnailPtPt urlPreviewThumbnail_ = _TranslationsMisskeyDataSaverUrlPreviewThumbnailPtPt._(_root);
+	@override late final _TranslationsMisskeyDataSaverDisableUrlPreviewPtPt disableUrlPreview_ = _TranslationsMisskeyDataSaverDisableUrlPreviewPtPt._(_root);
 	@override late final _TranslationsMisskeyDataSaverCodePtPt code_ = _TranslationsMisskeyDataSaverCodePtPt._(_root);
 }
 
@@ -3196,6 +3236,8 @@ class _TranslationsMisskeyUrlPreviewSettingPtPt extends TranslationsMisskeyUrlPr
 	// Translations
 	@override String get title => 'Configurações da prévia de URL';
 	@override String get enable => 'Habilitar prévia de URL';
+	@override String get allowRedirect => 'Permitir redirecionamentos de URL em prévias.';
+	@override String get allowRedirectDescription => 'Se um URL tem um redirecionamento, você pode habilitar essa função para segui-lo e exibir a prévia do conteúdo redirecionado. Desabilitar isso irá economizar recursos, mas o conteúdo não será exibido.';
 	@override String get timeout => 'Tempo máximo para obter a prévia (ms)';
 	@override String get timeoutDescription => 'Se demorar mais que esse valor para obter uma prévia, ela não será gerada.';
 	@override String get maximumContentLength => 'Content-Length máximo (em bytes)';
@@ -3413,6 +3455,23 @@ class _TranslationsMisskeyServerSetupWizardPtPt extends TranslationsMisskeyServe
 	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestPtPt donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestPtPt._(_root);
 }
 
+// Path: misskey.uploader_
+class _TranslationsMisskeyUploaderPtPt extends TranslationsMisskeyUploaderEnUs {
+	_TranslationsMisskeyUploaderPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get editImage => 'Editar Imagem';
+	@override String compressedToX({required Object x}) => 'Comprimido para ${x}';
+	@override String savedXPercent({required Object x}) => 'Salvando ${x}%';
+	@override String get abortConfirm => 'Alguns arquivos não foram enviados, deseja abortar?';
+	@override String get doneConfirm => 'Alguns arquivos não foram enviados, deseja continuar mesmo assim?';
+	@override String maxFileSizeIsX({required Object x}) => 'O tamanho máximo de arquivos enviados é ${x}';
+	@override String get allowedTypes => 'Tipos de arquivo enviáveis';
+	@override String get tip => 'O arquivo não foi enviado. Então, esse diálogo permite que você confirme, renomeie, comprima e recorte o arquivo antes de enviar. Quando estiver pronto, você pode enviar apertando  o botão "Enviar".';
+}
+
 // Path: misskey.clientPerformanceIssueTip_
 class _TranslationsMisskeyClientPerformanceIssueTipPtPt extends TranslationsMisskeyClientPerformanceIssueTipEnUs {
 	_TranslationsMisskeyClientPerformanceIssueTipPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
@@ -3429,6 +3488,26 @@ class _TranslationsMisskeyClientPerformanceIssueTipPtPt extends TranslationsMiss
 	@override String get makeSureDisabledAddons_description => 'Algumas extensões podem afetar comportamentos do cliente e afetar o desempenho. Por favor, desative as extensões do seu navegador e veja se isso melhora a situação.';
 }
 
+// Path: misskey.clip_
+class _TranslationsMisskeyClipPtPt extends TranslationsMisskeyClipEnUs {
+	_TranslationsMisskeyClipPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => 'Clip é uma função que permite organização das suas notas.';
+}
+
+// Path: misskey.userLists_
+class _TranslationsMisskeyUserListsPtPt extends TranslationsMisskeyUserListsEnUs {
+	_TranslationsMisskeyUserListsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get tip => 'Listas podem conter qualquer usuário que você especificar em sua criação. A lista criada aparece como uma linha do tempo exibindo usuários selecionados.';
+}
+
 // Path: misskey.watermarkEditor_
 class _TranslationsMisskeyWatermarkEditorPtPt extends TranslationsMisskeyWatermarkEditorEnUs {
 	_TranslationsMisskeyWatermarkEditorPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
@@ -3436,7 +3515,13 @@ class _TranslationsMisskeyWatermarkEditorPtPt extends TranslationsMisskeyWaterma
 	final TranslationsPtPt _root; // ignore: unused_field
 
 	// Translations
+	@override String get tip => 'Uma marca d\'água, como informação de autoria, pode ser adicionada à imagem.';
+	@override String get quitWithoutSaveConfirm => 'Descartar mudanças?';
 	@override String get driveFileTypeWarn => 'Esse arquivo não é compatível';
+	@override String get driveFileTypeWarnDescription => 'Escolha um arquivo de imagem';
+	@override String get title => 'Editar marca d\'água';
+	@override String get cover => 'Cobrir tudo';
+	@override String get repeat => 'Espalhar pelo conteúdo';
 	@override String get opacity => 'Opacidade';
 	@override String get scale => 'Tamanho';
 	@override String get text => 'Texto';
@@ -3444,7 +3529,52 @@ class _TranslationsMisskeyWatermarkEditorPtPt extends TranslationsMisskeyWaterma
 	@override String get type => 'Tipo';
 	@override String get image => 'imagem';
 	@override String get advanced => 'Avançado';
+	@override String get stripe => 'Listras';
+	@override String get stripeWidth => 'Largura da linha';
+	@override String get stripeFrequency => 'Número de linhas';
 	@override String get angle => 'Ângulo';
+	@override String get polkadot => 'Bolinhas';
+	@override String get checker => 'Xadrez';
+	@override String get polkadotMainDotOpacity => 'Opacidade da bolinha principal';
+	@override String get polkadotMainDotRadius => 'Raio da bolinha principal';
+	@override String get polkadotSubDotOpacity => 'Opacidade da bolinha secundária';
+	@override String get polkadotSubDotRadius => 'Raio das bolinhas adicionais';
+	@override String get polkadotSubDotDivisions => 'Número de bolinhas adicionais';
+}
+
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorPtPt extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Efeitos';
+	@override String get addEffect => 'Adicionar efeitos';
+	@override String get discardChangesConfirm => 'Tem certeza que deseja sair? Há mudanças não salvas.';
+	@override late final _TranslationsMisskeyImageEffectorFxsPtPt fxs_ = _TranslationsMisskeyImageEffectorFxsPtPt._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsPtPt extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => 'Selecionar Rascunho';
+	@override String get cannotCreateDraftAnymore => 'O número máximo de rascunhos foi excedido.';
+	@override String get cannotCreateDraft => 'Você não pode criar um rascunho com esse conteúdo.';
+	@override String get delete => 'Excluir Rascunho';
+	@override String get deleteAreYouSure => 'Excluir rascunho?';
+	@override String get noDrafts => 'Sem rascunhos';
+	@override String replyTo({required Object user}) => 'Resposta a ${user}';
+	@override String quoteOf({required Object user}) => 'Citação à nota de ${user}';
+	@override String postTo({required Object channel}) => 'Publicando em ${channel}';
+	@override String get saveToDraft => 'Salvar como Rascunho';
+	@override String get restoreFromDraft => 'Restaurar de Rascunho';
+	@override String get restore => 'Redefinir';
+	@override String get listDrafts => 'Lista de Rascunhos';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3764,6 +3894,11 @@ class _TranslationsMisskeyRoleOptionsPtPt extends TranslationsMisskeyRoleOptions
 	@override String get canImportMuting => 'Permitir importação de silenciamentos';
 	@override String get canImportUserLists => 'Permitir importação de listas';
 	@override String get chatAvailability => 'Permitir Conversas';
+	@override String get uploadableFileTypes => 'Tipos de arquivo enviáveis';
+	@override String get uploadableFileTypes_caption => 'Especifica tipos MIME permitidos. Múltiplos tipos MIME podem ser especificados separando-os por linha. Curingas podem ser especificados com um asterisco (*). (exemplo, image/*)';
+	@override String uploadableFileTypes_caption2({required Object x}) => 'Alguns tipos de arquivos podem não ser detectados. Para permiti-los, adicione ${x} à especificação.';
+	@override String get noteDraftLimit => 'Limite de rascunhos possíveis';
+	@override String get watermarkAvailable => 'Disponibilidade da função de marca d\'água';
 }
 
 // Path: misskey.role_.condition_
@@ -4088,6 +4223,28 @@ class _TranslationsMisskeyDataSaverAvatarPtPt extends TranslationsMisskeyDataSav
 	@override String get description => 'Parar animação de avatares. Imagens animadas podem ter um arquivo mais pesado do que imagens normais, potencialmente levando a reduções no tráfego de dados.';
 }
 
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class _TranslationsMisskeyDataSaverUrlPreviewThumbnailPtPt extends TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewThumbnailPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Esconder miniaturas em prévias de URL';
+	@override String get description => 'Miniaturas em prévias de URL não serão carregadas.';
+}
+
+// Path: misskey.dataSaver_.disableUrlPreview_
+class _TranslationsMisskeyDataSaverDisableUrlPreviewPtPt extends TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverDisableUrlPreviewPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Desabilitar prévias de URL';
+	@override String get description => 'Desabilita a função de prévias de URL. Diferente das miniaturas, essa função impede o carregamento de toda informação do link.';
+}
+
 // Path: misskey.dataSaver_.code_
 class _TranslationsMisskeyDataSaverCodePtPt extends TranslationsMisskeyDataSaverCodeEnUs {
 	_TranslationsMisskeyDataSaverCodePtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
@@ -4277,6 +4434,31 @@ class _TranslationsMisskeyServerSetupWizardDonationRequestPtPt extends Translati
 	@override String get text1 => 'Misskey é software aberto desenvolvido por voluntários.';
 	@override String get text2 => 'Nós apreciaríamos o seu apoio para podermos continuar o desenvolvimento desse software no futuro.';
 	@override String get text3 => 'Também há benefícios especiais para apoiadores!';
+}
+
+// Path: misskey.imageEffector_.fxs_
+class _TranslationsMisskeyImageEffectorFxsPtPt extends TranslationsMisskeyImageEffectorFxsEnUs {
+	_TranslationsMisskeyImageEffectorFxsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get chromaticAberration => 'Aberração cromática';
+	@override String get glitch => 'Glitch';
+	@override String get mirror => 'Espelho';
+	@override String get invert => 'Inverter Cores';
+	@override String get grayscale => 'Tons de Cinza';
+	@override String get colorAdjust => 'Correção de Cores';
+	@override String get colorClamp => 'Compressão de Cores';
+	@override String get colorClampAdvanced => 'Compressão Avançada de Cores';
+	@override String get distort => 'Distorção';
+	@override String get threshold => 'Limiarização Binária';
+	@override String get zoomLines => 'Linhas de Ação';
+	@override String get stripe => 'Listras';
+	@override String get polkadot => 'Bolinhas';
+	@override String get checker => 'Xadrez';
+	@override String get blockNoise => 'Bloquear Ruído';
+	@override String get tearing => 'Descontinuidade';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

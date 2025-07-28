@@ -338,11 +338,11 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get copyUsername => 'Copiar nombre de usuario';
 	@override String get copyUserId => 'Copiar ID del usuario';
 	@override String get copyNoteId => 'Copiar ID de la nota';
-	@override String get copyFileId => 'Copiar ID del archivo';
+	@override String get copyFileId => 'Copiar ID de archivo';
 	@override String get copyFolderId => 'Copiar ID de carpeta';
 	@override String get copyProfileUrl => 'Copiar la URL del perfil';
 	@override String get searchUser => 'Buscar un usuario';
-	@override String get searchThisUsersNotes => '';
+	@override String get searchThisUsersNotes => 'Buscar en las notas de este usuario';
 	@override String get reply => 'Responder';
 	@override String get loadMore => 'Ver más';
 	@override String get showMore => 'Ver más';
@@ -360,10 +360,10 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get download => 'Descargar';
 	@override String driveFileDeleteConfirm({required Object name}) => '¿Desea borrar el archivo "${name}"? Las notas que tengan este archivo como adjunto serán eliminadas';
 	@override String unfollowConfirm({required Object name}) => '¿Desea dejar de seguir a ${name}?';
-	@override String get exportRequested => 'Se ha solicitado la exportación. Puede tomar un tiempo. Cuando termine la exportación, se añadirá en el drive';
-	@override String get importRequested => 'Se ha solicitado la importación. Puede tomar un tiempo.';
+	@override String get exportRequested => 'Has solicitado la exportación. Puede llevar un tiempo. Cuando termine la exportación, se añadirá al drive';
+	@override String get importRequested => 'Has solicitado la importación. Puede llevar un tiempo.';
 	@override String get lists => 'Listas';
-	@override String get noLists => 'No tiene listas';
+	@override String get noLists => 'No tienes ninguna lista';
 	@override String get note => 'Notas';
 	@override String get notes => 'Notas';
 	@override String get following => 'Siguiendo';
@@ -376,9 +376,9 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get retry => 'Reintentar';
 	@override String get pageLoadError => 'Error al leer la página';
 	@override String get pageLoadErrorDescription => 'Normalmente es debido a la red o al caché del navegador. Por favor limpie el caché o intente más tarde.';
-	@override String get serverIsDead => 'No hay respuesta del servidor. Espere un momento y vuelva a intentarlo.';
-	@override String get youShouldUpgradeClient => 'Para ver esta página, por favor refrezca el navegador y utiliza una versión más reciente del cliente.';
-	@override String get enterListName => 'Ingrese nombre de lista';
+	@override String get serverIsDead => 'No hay respuesta del servidor. Espera un momento y vuelve a intentarlo.';
+	@override String get youShouldUpgradeClient => 'Para ver esta página, recarga el navegador para actualizar el cliente.';
+	@override String get enterListName => 'Introduce un nombre para la lista';
 	@override String get privacy => 'Privacidad';
 	@override String get makeFollowManuallyApprove => 'Aprobar manualmente las solicitudes de seguimiento';
 	@override String get defaultNoteVisibility => 'Visibilidad por defecto';
@@ -402,7 +402,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get pinnedNote => 'Nota fijada';
 	@override String get pinned => 'Fijar al perfil';
 	@override String get you => 'Tú';
-	@override String get clickToShow => 'Click para ver';
+	@override String get clickToShow => 'Haz clic para verlo';
 	@override String get sensitive => 'Marcado como sensible';
 	@override String get add => 'Agregar';
 	@override String get reaction => 'Reacción';
@@ -411,28 +411,28 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get pinnedEmojisForReactionSettingDescription => 'Puedes seleccionar reacciones para fijarlos en el selector';
 	@override String get pinnedEmojisSettingDescription => 'Puedes seleccionar emojis para fijarlos en el selector';
 	@override String get emojiPickerDisplay => 'Mostrar el selector de emojis';
-	@override String get overwriteFromPinnedEmojisForReaction => 'Sobreescribir las reacciones fijadas';
-	@override String get overwriteFromPinnedEmojis => 'Sobreescribir los emojis fijados';
-	@override String get reactionSettingDescription2 => 'Arrastre para reordenar, click para borrar, apriete la tecla + para añadir.';
+	@override String get overwriteFromPinnedEmojisForReaction => 'Sobreescribir los ajustes de reacciones';
+	@override String get overwriteFromPinnedEmojis => 'Sobreescribir los ajustes generales';
+	@override String get reactionSettingDescription2 => 'Arrastra para reordenar, click para borrar, pulsa "+" para añadir.';
 	@override String get rememberNoteVisibility => 'Recordar visibilidad';
 	@override String get attachCancel => 'Quitar adjunto';
-	@override String get deleteFile => 'Archivo eliminado';
+	@override String get deleteFile => 'Eliminar archivo';
 	@override String get markAsSensitive => 'Marcar como sensible';
 	@override String get unmarkAsSensitive => 'Desmarcar como sensible';
-	@override String get enterFileName => 'Ingrese el nombre del archivo';
+	@override String get enterFileName => 'Introduce el nombre del archivo';
 	@override String get mute => 'Silenciar';
 	@override String get unmute => 'Dejar de silenciar';
 	@override String get renoteMute => 'Silenciar renota';
 	@override String get renoteUnmute => 'Desilenciar renota';
 	@override String get block => 'Bloquear';
-	@override String get unblock => 'Dejar de bloquear';
+	@override String get unblock => 'Desbloquear';
 	@override String get suspend => 'Suspender';
 	@override String get unsuspend => 'Dejar de suspender';
-	@override String get blockConfirm => '¿Quiere bloquear esta cuenta?';
-	@override String get unblockConfirm => '¿Quiere dejar de bloquear esta cuenta?';
-	@override String get suspendConfirm => '¿Quiere suspender esta cuenta?';
-	@override String get unsuspendConfirm => '¿Quiere dejar de suspender esta cuenta?';
-	@override String get selectList => 'Seleccione una lista';
+	@override String get blockConfirm => '¿Quieres bloquear esta cuenta?';
+	@override String get unblockConfirm => '¿Quieres desbloquear esta cuenta?';
+	@override String get suspendConfirm => '¿Quieres suspender esta cuenta?';
+	@override String get unsuspendConfirm => '¿Quieres dejar de suspender esta cuenta?';
+	@override String get selectList => 'Selecciona una lista';
 	@override String get editList => 'Editar lista';
 	@override String get selectChannel => 'Seleccionar canal';
 	@override String get selectAntenna => 'Seleccionar antena';
@@ -440,55 +440,55 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get createAntenna => 'Crear una antena';
 	@override String get selectWidget => 'Seleccionar widget';
 	@override String get editWidgets => 'Editar widgets';
-	@override String get editWidgetsExit => 'Terminar edición';
+	@override String get editWidgetsExit => 'Hecho';
 	@override String get customEmojis => 'Emojis personalizados';
 	@override String get emoji => 'Emoji';
-	@override String get emojis => 'Emoji';
+	@override String get emojis => 'Emojis';
 	@override String get emojiName => 'Nombre del emoji';
-	@override String get emojiUrl => 'URL de la imágen del emoji';
-	@override String get addEmoji => 'Agregar emoji';
-	@override String get settingGuide => 'Configuración sugerida';
-	@override String get cacheRemoteFiles => 'Mantener en cache los archivos remotos';
-	@override String get cacheRemoteFilesDescription => 'Si desactiva esta configuración, Los archivos remotos se cargarán desde el link directo sin usar la caché. Con eso se puede ahorrar almacenamiento del servidor, pero eso aumentará el tráfico al no crear miniaturas.';
+	@override String get emojiUrl => 'URL del emoji';
+	@override String get addEmoji => 'Añadir emoji';
+	@override String get settingGuide => 'Configuración recomendada';
+	@override String get cacheRemoteFiles => 'Mantener los archivos remotos en caché';
+	@override String get cacheRemoteFilesDescription => 'Si desactivas esta configuración, los archivos remotos se cargarán directamente de los servidores remotos. Desactivar esto reducirá el uso de almacenamiento, pero incrementará el uso de tráfico, ya que no se generarán miniaturas.';
 	@override String get youCanCleanRemoteFilesCache => 'Puedes vaciar la caché pulsando en el botón 🗑️ en el administrador de archivos.';
-	@override String get cacheRemoteSensitiveFiles => 'Cachear archivos remotos sensibles';
-	@override String get cacheRemoteSensitiveFilesDescription => 'Cuando esta opción está desactivada, los archivos remotos sensibles son cargador directamente de la instancia origen sin ser cacheados.';
+	@override String get cacheRemoteSensitiveFiles => 'Mantener los archivos remotos sensibles en caché';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Cuando esta opción está desactivada, los archivos remotos sensibles se cargarán directamente desde los servidores remotos.';
 	@override String get flagAsBot => 'Esta cuenta es un bot';
-	@override String get flagAsBotDescription => 'En caso de que esta cuenta fuera usada por un programa, active esta opción. Al hacerlo, esta opción servirá para otros desarrolladores para evitar cadenas infinitas de reacciones, y ajustará los sistemas internos de Misskey para que trate a esta cuenta como un bot.';
-	@override String get flagAsCat => 'Esta cuenta es un gato';
-	@override String get flagAsCatDescription => 'En caso de que declare que esta cuenta es de un gato, active esta opción.';
-	@override String get flagShowTimelineReplies => 'Mostrar respuestas a las notas en la biografía';
-	@override String get flagShowTimelineRepliesDescription => 'Cuando se marca, la línea de tiempo muestra respuestas a otras notas además de las notas del usuario';
+	@override String get flagAsBotDescription => 'Activa esta opción si la cuenta es utilizada por un programa. Si se activa, actuará como una etiqueta para otros desarrolladores para prevenir cadenas eternas de interacción con otros bots, y ajustará los sistemas internos de Misskey para tratar esta cuenta de manera acorde.';
+	@override String get flagAsCat => 'Marcar esta cuenta como gato';
+	@override String get flagAsCatDescription => 'Activa esta opción para marcar esta cuenta como un gato.';
+	@override String get flagShowTimelineReplies => 'Mostrar respuestas en la línea de tiempo';
+	@override String get flagShowTimelineRepliesDescription => 'Muestra respuestas de los usuarios a las notas de otros usuarios en la línea de tiempo al activar esta opción.';
 	@override String get autoAcceptFollowed => 'Aceptar automáticamente las solicitudes de seguimiento de los usuarios que sigues';
-	@override String get addAccount => 'Agregar Cuenta';
+	@override String get addAccount => 'Agregar cuenta';
 	@override String get reloadAccountsList => 'Recargar lista de cuentas';
 	@override String get loginFailed => 'Error al iniciar sesión.';
-	@override String get showOnRemote => 'Ver en una instancia remota';
-	@override String get continueOnRemote => 'Ver en una instancia remota';
+	@override String get showOnRemote => 'Ver en instancia remota';
+	@override String get continueOnRemote => 'Continuar en una instancia remota';
 	@override String get chooseServerOnMisskeyHub => 'Elegir un servidor en Misskey Hub';
 	@override String get specifyServerHost => 'Especifica una instancia directamente';
-	@override String get inputHostName => 'Introduzca el dominio';
+	@override String get inputHostName => 'Introduce el dominio';
 	@override String get general => 'General';
 	@override String get wallpaper => 'Fondo de pantalla';
 	@override String get setWallpaper => 'Establecer fondo de pantalla';
 	@override String get removeWallpaper => 'Quitar fondo de pantalla';
 	@override String searchWith({required Object q}) => 'Buscar: ${q}';
-	@override String get youHaveNoLists => 'No tienes listas';
-	@override String followConfirm({required Object name}) => '¿Desea seguir a ${name}?';
+	@override String get youHaveNoLists => 'No tienes ninguna lista';
+	@override String followConfirm({required Object name}) => '¿Quieres seguir a ${name}?';
 	@override String get proxyAccount => 'Cuenta proxy';
-	@override String get proxyAccountDescription => 'Una cuenta proxy es una cuenta que actúa como un seguidor remoto de un usuario bajo ciertas condiciones. Por ejemplo, cuando un usuario añade un usuario remoto a una lista, si ningún usuario local sigue al usuario agregado a la lista, la instancia no puede obtener su actividad. Así que la cuenta proxy sigue al usuario añadido a la lista';
-	@override String get host => 'Host';
+	@override String get proxyAccountDescription => 'Una cuenta proxy es una cuenta que actúa como un seguidor remoto de un usuario bajo ciertas condiciones. Por ejemplo, cuando un usuario añade un usuario remoto a una lista, si ningún usuario local sigue al usuario agregado a la lista, la instancia no puede obtener su actividad, así que la cuenta proxy sigue al usuario añadido a la lista';
+	@override String get host => 'Instancia';
 	@override String get selectSelf => 'Elígete a ti mismo';
 	@override String get selectUser => 'Elegir usuario';
-	@override String get recipient => 'Recipiente';
+	@override String get recipient => 'Receptor';
 	@override String get annotation => 'Anotación';
 	@override String get federation => 'Federación';
-	@override String get instances => 'Instancia';
+	@override String get instances => 'Instancias';
 	@override String get registeredAt => 'Registrado en';
-	@override String get latestRequestReceivedAt => 'Ultimo pedido recibido';
-	@override String get latestStatus => 'Último status';
+	@override String get latestRequestReceivedAt => 'Última petición recibida';
+	@override String get latestStatus => 'Último estado';
 	@override String get storageUsage => 'Almacenamiento usado';
-	@override String get charts => 'Chat';
+	@override String get charts => 'Métricas';
 	@override String get perHour => 'por hora';
 	@override String get perDay => 'por día';
 	@override String get stopActivityDelivery => 'Dejar de enviar actividades';
@@ -503,40 +503,40 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String withNFiles({required Object n}) => '${n} archivos';
 	@override String get monitor => 'Monitor';
 	@override String get jobQueue => 'Cola de trabajos';
-	@override String get cpuAndMemory => 'CPU y Memoria';
+	@override String get cpuAndMemory => 'CPU y memoria';
 	@override String get network => 'Red';
 	@override String get disk => 'Disco';
-	@override String get instanceInfo => 'información de la instancia';
+	@override String get instanceInfo => 'Información de la instancia';
 	@override String get statistics => 'Estadísticas';
 	@override String get clearQueue => 'Limpiar cola';
-	@override String get clearQueueConfirmTitle => '¿Desea limpiar la cola?';
+	@override String get clearQueueConfirmTitle => '¿Quieres limpiar la cola?';
 	@override String get clearQueueConfirmText => 'Las notas aún no entregadas no se federarán. Normalmente no se necesita ejecutar esta operación';
 	@override String get clearCachedFiles => 'Limpiar caché';
-	@override String get clearCachedFilesConfirm => '¿Desea borrar todos los archivos remotos cacheados?';
+	@override String get clearCachedFilesConfirm => '¿Quieres borrar todos los archivos remotos en caché?';
 	@override String get blockedInstances => 'Instancias bloqueadas';
-	@override String get blockedInstancesDescription => 'Seleccione los hosts de las instancias que desea bloquear, separadas por una linea nueva. Las instancias bloqueadas no podrán comunicarse con esta instancia.';
+	@override String get blockedInstancesDescription => 'La lista de los dominios de las instancias que quieres bloquear, separadas por una linea nueva. Las instancias bloqueadas no podrán comunicarse con esta instancia.';
 	@override String get silencedInstances => 'Instancias silenciadas';
-	@override String get silencedInstancesDescription => 'Listar los hostname de las instancias que quieres silenciar. Todas las cuentas de las instancias listadas serán tratadas como silenciadas, solo podrán hacer peticiones de seguimiento, y no podrán mencionar cuentas locales si no las siguen. Esto no afecta a las instancias bloqueadas.';
-	@override String get mediaSilencedInstances => 'Servidores silenciados (Multimedia)';
-	@override String get mediaSilencedInstancesDescription => 'Listar las instancias que quieres silenciar. Todas las cuentas de las instancias listadas serán tratadas como silenciadas, solo podrán hacer peticiones de seguimiento, y no podrán mencionar cuentas locales si no las siguen. Esto no afecta a las instancias bloqueadas.';
+	@override String get silencedInstancesDescription => 'La lista de los dominios de las instancias que quieres silenciar. Todas las cuentas de las instancias listadas serán tratadas como silenciadas, solo podrán hacer peticiones de seguimiento, y no podrán mencionar cuentas locales si no las siguen. Esto no afecta a las instancias bloqueadas.';
+	@override String get mediaSilencedInstances => 'Servidores con multimedia silenciada';
+	@override String get mediaSilencedInstancesDescription => 'La lista de los dominios de las instancias cuya multimedia quieres silenciar. Todas las cuentas que pertenezcan a estas instancias serán marcadas como sensibles, y no podrán usar sus emojis personalizados. Esto no afectará a las instancias bloqueadas';
 	@override String get federationAllowedHosts => 'Servidores federados';
-	@override String get federationAllowedHostsDescription => 'Establezca los nombres  de los servidores que pueden federarse, separados por una nueva línea.';
+	@override String get federationAllowedHostsDescription => 'La lista de los dominios de las instancias cuya federación está permitida, separadas por saltos de línea.';
 	@override String get muteAndBlock => 'Silenciar y bloquear';
 	@override String get mutedUsers => 'Usuarios silenciados';
 	@override String get blockedUsers => 'Usuarios bloqueados';
 	@override String get noUsers => 'No hay usuarios';
 	@override String get editProfile => 'Editar perfil';
-	@override String get noteDeleteConfirm => '¿Desea borrar esta nota?';
-	@override String get pinLimitExceeded => 'Ya no se pueden fijar más posts';
+	@override String get noteDeleteConfirm => '¿Quieres borrar esta nota?';
+	@override String get pinLimitExceeded => 'Ya no se pueden fijar más notas';
 	@override String get done => 'Terminado';
-	@override String get processing => 'Procesando';
+	@override String get processing => 'Procesando...';
 	@override String get preview => 'Vista previa';
 	@override String get default_ => 'Predeterminado';
 	@override String defaultValueIs({required Object value}) => 'Por defecto: ${value}';
 	@override String get noCustomEmojis => 'No hay emojis personalizados';
 	@override String get noJobs => 'No hay trabajos';
 	@override String get federating => 'Federando';
-	@override String get blocked => 'Bloqueando';
+	@override String get blocked => 'Bloqueado';
 	@override String get suspended => 'Suspendido';
 	@override String get all => 'Todo';
 	@override String get subscribing => 'Suscribiendo';
@@ -1125,7 +1125,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get userInfo => 'Información del usuario';
 	@override String get unknown => 'Desconocido';
 	@override String get onlineStatus => 'En línea';
-	@override String get hideOnlineStatus => 'mostrarse como desconectado';
+	@override String get hideOnlineStatus => 'Mostrarse como desconectado';
 	@override String get hideOnlineStatusDescription => 'Ocultar su estado en línea puede reducir la eficacia de algunas funciones, como la búsqueda';
 	@override String get online => 'En línea';
 	@override String get active => 'Activo';
@@ -1590,6 +1590,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Activar después de comprender las precauciones';
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
+	@override String get draft => 'Borrador';
 	@override String get confirmOnReact => 'Confirmar la reacción';
 	@override String reactAreYouSure({required Object emoji}) => '¿Quieres añadir una reacción «${emoji}»?';
 	@override String get markAsSensitiveConfirm => '¿Desea establecer este medio multimedia(Imagen,vídeo...) como sensible?';
@@ -1644,6 +1645,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Ocultar todos los "Trucos y consejos"';
 	@override String get defaultImageCompressionLevel => 'Nivel de compresión de la imagen por defecto';
 	@override String get defaultImageCompressionLevel_description => 'Baja, conserva la calidad de la imagen pero la medida del archivo es más grande. <br>Alta, reduce la medida del archivo pero también la calidad de la imagen.';
+	@override late final _TranslationsMisskeyOrderEsEs order_ = _TranslationsMisskeyOrderEsEs._(_root);
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteEsEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteEsEs._(_root);
 	@override late final _TranslationsMisskeySettingsEsEs settings_ = _TranslationsMisskeySettingsEsEs._(_root);
@@ -1742,6 +1744,19 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'Por defecto';
 	@override late final _TranslationsMisskeyWatermarkEditorEsEs watermarkEditor_ = _TranslationsMisskeyWatermarkEditorEsEs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorEsEs imageEffector_ = _TranslationsMisskeyImageEffectorEsEs._(_root);
+	@override String get drafts => 'Borrador';
+	@override late final _TranslationsMisskeyDraftsEsEs drafts_ = _TranslationsMisskeyDraftsEsEs._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderEsEs extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Los más recientes primero';
+	@override String get oldest => 'Los más antiguos primero';
 }
 
 // Path: misskey.chat_
@@ -1765,7 +1780,7 @@ class _TranslationsMisskeyChatEsEs extends TranslationsMisskeyChatEnUs {
 	@override String get noInvitations => 'No hay invitación.';
 	@override String get history => 'Historial';
 	@override String get noHistory => 'No hay datos en el historial';
-	@override String get noRooms => 'Sala no encontrada';
+	@override String get noRooms => 'No te has unido a ninguna sala ';
 	@override String get inviteUser => 'Invitar  usuarios';
 	@override String get sentInvitations => 'Invitaciones enviadas';
 	@override String get join => 'Unirse';
@@ -1899,7 +1914,7 @@ class _TranslationsMisskeyAccountSettingsEsEs extends TranslationsMisskeyAccount
 	@override String get makeNotesHiddenBeforeDescription => 'Mientras esta función esté activada, las notas que hayan pasado la fecha y hora fijadas o hayan transcurrido el tiempo establecido sólo serán visibles para ti (se harán privadas). Si la desactivas, también se restablecerá el estado público de las notas.';
 	@override String get mayNotEffectForFederatedNotes => 'Notas federadas por un servidor remoto pueden no verse afectadas.';
 	@override String get mayNotEffectSomeSituations => 'Estas restricciones son simplificadas. Pueden no aplicarse en algunas situaciones, como cuando se visualiza en un servidor remoto o durante la moderación.';
-	@override String get notesHavePassedSpecifiedPeriod => 'Ten en cuenta que el tiempo especificado ha pasado';
+	@override String get notesHavePassedSpecifiedPeriod => 'Notas publicadas durante el siguiente tiempo específico';
 	@override String get notesOlderThanSpecifiedDateAndTime => 'Notas antes de la fecha y hora especificadas';
 }
 
@@ -2454,6 +2469,7 @@ class _TranslationsMisskeyThemeEsEs extends TranslationsMisskeyThemeEnUs {
 	@override String get install => 'Instalar tema';
 	@override String get manage => 'Gestor de temas';
 	@override String get code => 'Código del tema';
+	@override String get copyThemeCode => 'Copiar el código del tema';
 	@override String get description => 'Descripción';
 	@override String installed({required Object name}) => '${name} ha sido instalado';
 	@override String get installedThemes => 'Temas instalados';
@@ -2578,7 +2594,7 @@ class _TranslationsMisskeyX2faEsEs extends TranslationsMisskeyX2faEnUs {
 	@override String get setupCompleted => 'Configuración completada';
 	@override String get step4 => 'Ahora cuando inicie sesión, ingrese el mismo token';
 	@override String get securityKeyNotSupported => 'Tu navegador no soporta claves de autenticación.';
-	@override String get registerTOTPBeforeKey => 'Please set up an authenticator app to register a security or pass key.\npor favor. configura una aplicación de autenticación para registrar una llave de seguridad.';
+	@override String get registerTOTPBeforeKey => 'Por favor. configura una aplicación de autenticación para registrar una llave de seguridad.';
 	@override String get securityKeyInfo => 'Se puede configurar el inicio de sesión usando una clave de seguridad de hardware que soporte FIDO2 o con un certificado de huella digital o con un PIN';
 	@override String get registerSecurityKey => 'Registrar una llave de seguridad';
 	@override String get securityKeyName => 'Ingresa un nombre para la clave';
@@ -3247,6 +3263,7 @@ class _TranslationsMisskeyFileViewerEsEs extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => 'Subido el';
 	@override String get attachedNotes => 'Notas adjuntas';
+	@override String get usage => 'Utilizado';
 	@override String get thisPageCanBeSeenFromTheAuthor => 'Esta página solo puede ser vista por el autor.';
 }
 
@@ -3340,7 +3357,7 @@ class _TranslationsMisskeyReversiEsEs extends TranslationsMisskeyReversiEnUs {
 	@override String get opponentHasSettingsChanged => 'El oponente ha cambiado su configuración';
 	@override String get allowIrregularRules => 'Reglas irregulares (completamente libre)';
 	@override String get disallowIrregularRules => 'Sin reglas irregulares ';
-	@override String get showBoardLabels => 'Mostrar el número de línea y de columna en el tablero de juego.';
+	@override String get showBoardLabels => 'Mostrar el número de línea y la letra de columna en el tablero de juego.';
 	@override String get useAvatarAsStone => 'Usar los avatares de los usuarios como fichas\n';
 }
 
@@ -3590,6 +3607,7 @@ class _TranslationsMisskeyUploaderEsEs extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => 'Editar la imagen';
 	@override String compressedToX({required Object x}) => 'Comprimir a ${x}';
 	@override String savedXPercent({required Object x}) => 'Guardando ${x}%';
 	@override String get abortConfirm => 'Algunos archivos no se han cargado, ¿deseas cancelar?';
@@ -3680,6 +3698,28 @@ class _TranslationsMisskeyImageEffectorEsEs extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Añadir Efecto';
 	@override String get discardChangesConfirm => '¿Ignorar cambios y salir?';
 	@override late final _TranslationsMisskeyImageEffectorFxsEsEs fxs_ = _TranslationsMisskeyImageEffectorFxsEsEs._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsEsEs extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => 'Seleccionar borradores';
+	@override String get cannotCreateDraftAnymore => 'Se ha superado el número de borradores que se pueden crear.';
+	@override String get cannotCreateDraft => 'No se pueden crear borradores con este contenido.';
+	@override String get delete => 'Eliminar borrador';
+	@override String get deleteAreYouSure => '¿Quieres borrar el borrador?';
+	@override String get noDrafts => 'No hay borradores disponibles.';
+	@override String replyTo({required Object user}) => 'Responder a ${user}';
+	@override String quoteOf({required Object user}) => 'Citar las notas de ${user}';
+	@override String postTo({required Object channel}) => 'Destino a ${channel}';
+	@override String get saveToDraft => 'Guardar como borrador';
+	@override String get restoreFromDraft => 'Restaurar desde los borradores';
+	@override String get restore => 'Restaurar';
+	@override String get listDrafts => 'Listar los borradores';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -4002,6 +4042,8 @@ class _TranslationsMisskeyRoleOptionsEsEs extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => 'Tipos de archivos que se pueden cargar.';
 	@override String get uploadableFileTypes_caption => 'Especifica los tipos MIME/archivos permitidos. Se pueden especificar varios tipos MIME separándolos con una nueva línea, y se pueden especificar comodines con un asterisco (*). (por ejemplo, image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'Es posible que no se detecten algunos tipos de archivos. Para permitir estos archivos, añade ${x} a la especificación.';
+	@override String get noteDraftLimit => 'Número de posibles borradores de notas del servidor';
+	@override String get watermarkAvailable => 'Disponibilidad de la función de marca de agua';
 }
 
 // Path: misskey.role_.condition_

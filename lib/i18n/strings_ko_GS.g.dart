@@ -1559,6 +1559,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '활성화 하기 전에 주의 사항을 확인했습니다.';
 	@override String get federationSpecified => '이 서버는 화이트 리스트 제도로 운영 중 입니다. 정해진 리모트 서버가 아닌 경우 연합되지 않습니다.';
 	@override String get federationDisabled => '이 서버는 연합을 하지 않고 있습니다. 리모트 서버 유저와 통신을 할 수 없습니다.';
+	@override String get draft => '초안';
 	@override String get confirmOnReact => '리액션할 때 확인';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} "로 리액션하시겠습니까?';
 	@override String get markAsSensitiveConfirm => '이 미디어를 민감한 미디어로 설정하시겠습니까?';
@@ -1613,6 +1614,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '모든 \'팁과 유용한 정보\'를 비표시';
 	@override String get defaultImageCompressionLevel => '기본 이미지 압축 정도';
 	@override String get defaultImageCompressionLevel_description => '낮추면 화질을 유지합니다만 파일 크기는 증가합니다. <br>높이면 파일 크기를 줄일 수 있습니다만 화질은 저하됩니다.';
+	@override late final _TranslationsMisskeyOrderKoGs order_ = _TranslationsMisskeyOrderKoGs._(_root);
 	@override late final _TranslationsMisskeyChatKoGs chat_ = _TranslationsMisskeyChatKoGs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoGs emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoGs._(_root);
 	@override late final _TranslationsMisskeySettingsKoGs settings_ = _TranslationsMisskeySettingsKoGs._(_root);
@@ -1711,6 +1713,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => '기본 프리셋';
 	@override late final _TranslationsMisskeyWatermarkEditorKoGs watermarkEditor_ = _TranslationsMisskeyWatermarkEditorKoGs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorKoGs imageEffector_ = _TranslationsMisskeyImageEffectorKoGs._(_root);
+	@override String get drafts => '초안';
+	@override late final _TranslationsMisskeyDraftsKoGs drafts_ = _TranslationsMisskeyDraftsKoGs._(_root);
 }
 
 // Path: misskeyIO
@@ -1721,6 +1725,17 @@ class _TranslationsMisskeyIOKoGs extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusKoGs skebStatus_ = _TranslationsMisskeyIOSkebStatusKoGs._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderKoGs extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => '최신 순';
+	@override String get oldest => '오래된 순';
 }
 
 // Path: misskey.chat_
@@ -2433,6 +2448,7 @@ class _TranslationsMisskeyThemeKoGs extends TranslationsMisskeyThemeEnUs {
 	@override String get install => '테마 설치';
 	@override String get manage => '테마 관리';
 	@override String get code => '테마 코드';
+	@override String get copyThemeCode => '테마 코드 복사';
 	@override String get description => '설멩';
 	@override String installed({required Object name}) => '${name} 테마가 설치되었습니다';
 	@override String get installedThemes => '설치된 테마';
@@ -3226,6 +3242,7 @@ class _TranslationsMisskeyFileViewerKoGs extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => '업로드 날짜';
 	@override String get attachedNotes => '첨부된 노트';
+	@override String get usage => '이용';
 	@override String get thisPageCanBeSeenFromTheAuthor => '이 페이지는 파일 소유자만 열람할 수 있습니다';
 }
 
@@ -3569,6 +3586,7 @@ class _TranslationsMisskeyUploaderKoGs extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => '이미지 편집';
 	@override String compressedToX({required Object x}) => '${x}로 압축';
 	@override String savedXPercent({required Object x}) => '${x}% 절약';
 	@override String get abortConfirm => '업로드되지 않은 파일이 있습니다만, 그만 두시겠습니까?';
@@ -3659,6 +3677,28 @@ class _TranslationsMisskeyImageEffectorKoGs extends TranslationsMisskeyImageEffe
 	@override String get addEffect => '이펙트를 추가';
 	@override String get discardChangesConfirm => '변경을 취소하고 종료하시겠습니까?';
 	@override late final _TranslationsMisskeyImageEffectorFxsKoGs fxs_ = _TranslationsMisskeyImageEffectorFxsKoGs._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsKoGs extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => '초안 선택';
+	@override String get cannotCreateDraftAnymore => '초안 작성 가능 수를 초과했습니다.';
+	@override String get cannotCreateDraft => '이 내용으로는 초안을 작성할 수 없습니다. ';
+	@override String get delete => '초안 삭제\n';
+	@override String get deleteAreYouSure => '초안을 삭제하시겠습니까?';
+	@override String get noDrafts => '초안 없음\n';
+	@override String replyTo({required Object user}) => '${user}에 회신';
+	@override String quoteOf({required Object user}) => '${user} 노트에 인용';
+	@override String postTo({required Object channel}) => '${channel}에 게시';
+	@override String get saveToDraft => '초안에 저장';
+	@override String get restoreFromDraft => '초안에서 복원\n';
+	@override String get restore => '복원';
+	@override String get listDrafts => '초안 목록';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3997,6 +4037,8 @@ class _TranslationsMisskeyRoleOptionsKoGs extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => '업로드 가능한 파일 유형';
 	@override String get uploadableFileTypes_caption => 'MIME 유형을 ';
 	@override String uploadableFileTypes_caption2({required Object x}) => '파일에 따라서는 유형을 검사하지 못하는 경우가 있습니다. 그러한 파일을 허가하는 경우에는 ${x}를 지정으로 추가해주십시오.';
+	@override String get noteDraftLimit => '서버측 노트 초안 작성 가능 수';
+	@override String get watermarkAvailable => '워터마크 기능의 사용 여부';
 }
 
 // Path: misskey.role_.condition_

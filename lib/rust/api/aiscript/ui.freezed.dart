@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -41,6 +40,208 @@ class $AsUiComponentCopyWith<$Res>  {
 $AsUiComponentCopyWith(AsUiComponent _, $Res Function(AsUiComponent) __);
 }
 
+
+/// Adds pattern-matching-related methods to [AsUiComponent].
+extension AsUiComponentPatterns on AsUiComponent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AsUiComponent_Root value)?  root,TResult Function( AsUiComponent_Container value)?  container,TResult Function( AsUiComponent_Text value)?  text,TResult Function( AsUiComponent_Mfm value)?  mfm,TResult Function( AsUiComponent_Button value)?  button,TResult Function( AsUiComponent_Buttons value)?  buttons,TResult Function( AsUiComponent_ToggleSwitch value)?  toggleSwitch,TResult Function( AsUiComponent_Textarea value)?  textarea,TResult Function( AsUiComponent_TextInput value)?  textInput,TResult Function( AsUiComponent_NumberInput value)?  numberInput,TResult Function( AsUiComponent_Select value)?  select,TResult Function( AsUiComponent_Folder value)?  folder,TResult Function( AsUiComponent_PostFormButton value)?  postFormButton,TResult Function( AsUiComponent_PostForm value)?  postForm,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case AsUiComponent_Root() when root != null:
+return root(_that);case AsUiComponent_Container() when container != null:
+return container(_that);case AsUiComponent_Text() when text != null:
+return text(_that);case AsUiComponent_Mfm() when mfm != null:
+return mfm(_that);case AsUiComponent_Button() when button != null:
+return button(_that);case AsUiComponent_Buttons() when buttons != null:
+return buttons(_that);case AsUiComponent_ToggleSwitch() when toggleSwitch != null:
+return toggleSwitch(_that);case AsUiComponent_Textarea() when textarea != null:
+return textarea(_that);case AsUiComponent_TextInput() when textInput != null:
+return textInput(_that);case AsUiComponent_NumberInput() when numberInput != null:
+return numberInput(_that);case AsUiComponent_Select() when select != null:
+return select(_that);case AsUiComponent_Folder() when folder != null:
+return folder(_that);case AsUiComponent_PostFormButton() when postFormButton != null:
+return postFormButton(_that);case AsUiComponent_PostForm() when postForm != null:
+return postForm(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AsUiComponent_Root value)  root,required TResult Function( AsUiComponent_Container value)  container,required TResult Function( AsUiComponent_Text value)  text,required TResult Function( AsUiComponent_Mfm value)  mfm,required TResult Function( AsUiComponent_Button value)  button,required TResult Function( AsUiComponent_Buttons value)  buttons,required TResult Function( AsUiComponent_ToggleSwitch value)  toggleSwitch,required TResult Function( AsUiComponent_Textarea value)  textarea,required TResult Function( AsUiComponent_TextInput value)  textInput,required TResult Function( AsUiComponent_NumberInput value)  numberInput,required TResult Function( AsUiComponent_Select value)  select,required TResult Function( AsUiComponent_Folder value)  folder,required TResult Function( AsUiComponent_PostFormButton value)  postFormButton,required TResult Function( AsUiComponent_PostForm value)  postForm,}){
+final _that = this;
+switch (_that) {
+case AsUiComponent_Root():
+return root(_that);case AsUiComponent_Container():
+return container(_that);case AsUiComponent_Text():
+return text(_that);case AsUiComponent_Mfm():
+return mfm(_that);case AsUiComponent_Button():
+return button(_that);case AsUiComponent_Buttons():
+return buttons(_that);case AsUiComponent_ToggleSwitch():
+return toggleSwitch(_that);case AsUiComponent_Textarea():
+return textarea(_that);case AsUiComponent_TextInput():
+return textInput(_that);case AsUiComponent_NumberInput():
+return numberInput(_that);case AsUiComponent_Select():
+return select(_that);case AsUiComponent_Folder():
+return folder(_that);case AsUiComponent_PostFormButton():
+return postFormButton(_that);case AsUiComponent_PostForm():
+return postForm(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AsUiComponent_Root value)?  root,TResult? Function( AsUiComponent_Container value)?  container,TResult? Function( AsUiComponent_Text value)?  text,TResult? Function( AsUiComponent_Mfm value)?  mfm,TResult? Function( AsUiComponent_Button value)?  button,TResult? Function( AsUiComponent_Buttons value)?  buttons,TResult? Function( AsUiComponent_ToggleSwitch value)?  toggleSwitch,TResult? Function( AsUiComponent_Textarea value)?  textarea,TResult? Function( AsUiComponent_TextInput value)?  textInput,TResult? Function( AsUiComponent_NumberInput value)?  numberInput,TResult? Function( AsUiComponent_Select value)?  select,TResult? Function( AsUiComponent_Folder value)?  folder,TResult? Function( AsUiComponent_PostFormButton value)?  postFormButton,TResult? Function( AsUiComponent_PostForm value)?  postForm,}){
+final _that = this;
+switch (_that) {
+case AsUiComponent_Root() when root != null:
+return root(_that);case AsUiComponent_Container() when container != null:
+return container(_that);case AsUiComponent_Text() when text != null:
+return text(_that);case AsUiComponent_Mfm() when mfm != null:
+return mfm(_that);case AsUiComponent_Button() when button != null:
+return button(_that);case AsUiComponent_Buttons() when buttons != null:
+return buttons(_that);case AsUiComponent_ToggleSwitch() when toggleSwitch != null:
+return toggleSwitch(_that);case AsUiComponent_Textarea() when textarea != null:
+return textarea(_that);case AsUiComponent_TextInput() when textInput != null:
+return textInput(_that);case AsUiComponent_NumberInput() when numberInput != null:
+return numberInput(_that);case AsUiComponent_Select() when select != null:
+return select(_that);case AsUiComponent_Folder() when folder != null:
+return folder(_that);case AsUiComponent_PostFormButton() when postFormButton != null:
+return postFormButton(_that);case AsUiComponent_PostForm() when postForm != null:
+return postForm(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( AsUiRoot field0)?  root,TResult Function( AsUiContainer field0)?  container,TResult Function( AsUiText field0)?  text,TResult Function( AsUiMfm field0)?  mfm,TResult Function( AsUiButton field0)?  button,TResult Function( AsUiButtons field0)?  buttons,TResult Function( AsUiSwitch field0)?  toggleSwitch,TResult Function( AsUiTextarea field0)?  textarea,TResult Function( AsUiTextInput field0)?  textInput,TResult Function( AsUiNumberInput field0)?  numberInput,TResult Function( AsUiSelect field0)?  select,TResult Function( AsUiFolder field0)?  folder,TResult Function( AsUiPostFormButton field0)?  postFormButton,TResult Function( AsUiPostForm field0)?  postForm,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case AsUiComponent_Root() when root != null:
+return root(_that.field0);case AsUiComponent_Container() when container != null:
+return container(_that.field0);case AsUiComponent_Text() when text != null:
+return text(_that.field0);case AsUiComponent_Mfm() when mfm != null:
+return mfm(_that.field0);case AsUiComponent_Button() when button != null:
+return button(_that.field0);case AsUiComponent_Buttons() when buttons != null:
+return buttons(_that.field0);case AsUiComponent_ToggleSwitch() when toggleSwitch != null:
+return toggleSwitch(_that.field0);case AsUiComponent_Textarea() when textarea != null:
+return textarea(_that.field0);case AsUiComponent_TextInput() when textInput != null:
+return textInput(_that.field0);case AsUiComponent_NumberInput() when numberInput != null:
+return numberInput(_that.field0);case AsUiComponent_Select() when select != null:
+return select(_that.field0);case AsUiComponent_Folder() when folder != null:
+return folder(_that.field0);case AsUiComponent_PostFormButton() when postFormButton != null:
+return postFormButton(_that.field0);case AsUiComponent_PostForm() when postForm != null:
+return postForm(_that.field0);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( AsUiRoot field0)  root,required TResult Function( AsUiContainer field0)  container,required TResult Function( AsUiText field0)  text,required TResult Function( AsUiMfm field0)  mfm,required TResult Function( AsUiButton field0)  button,required TResult Function( AsUiButtons field0)  buttons,required TResult Function( AsUiSwitch field0)  toggleSwitch,required TResult Function( AsUiTextarea field0)  textarea,required TResult Function( AsUiTextInput field0)  textInput,required TResult Function( AsUiNumberInput field0)  numberInput,required TResult Function( AsUiSelect field0)  select,required TResult Function( AsUiFolder field0)  folder,required TResult Function( AsUiPostFormButton field0)  postFormButton,required TResult Function( AsUiPostForm field0)  postForm,}) {final _that = this;
+switch (_that) {
+case AsUiComponent_Root():
+return root(_that.field0);case AsUiComponent_Container():
+return container(_that.field0);case AsUiComponent_Text():
+return text(_that.field0);case AsUiComponent_Mfm():
+return mfm(_that.field0);case AsUiComponent_Button():
+return button(_that.field0);case AsUiComponent_Buttons():
+return buttons(_that.field0);case AsUiComponent_ToggleSwitch():
+return toggleSwitch(_that.field0);case AsUiComponent_Textarea():
+return textarea(_that.field0);case AsUiComponent_TextInput():
+return textInput(_that.field0);case AsUiComponent_NumberInput():
+return numberInput(_that.field0);case AsUiComponent_Select():
+return select(_that.field0);case AsUiComponent_Folder():
+return folder(_that.field0);case AsUiComponent_PostFormButton():
+return postFormButton(_that.field0);case AsUiComponent_PostForm():
+return postForm(_that.field0);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( AsUiRoot field0)?  root,TResult? Function( AsUiContainer field0)?  container,TResult? Function( AsUiText field0)?  text,TResult? Function( AsUiMfm field0)?  mfm,TResult? Function( AsUiButton field0)?  button,TResult? Function( AsUiButtons field0)?  buttons,TResult? Function( AsUiSwitch field0)?  toggleSwitch,TResult? Function( AsUiTextarea field0)?  textarea,TResult? Function( AsUiTextInput field0)?  textInput,TResult? Function( AsUiNumberInput field0)?  numberInput,TResult? Function( AsUiSelect field0)?  select,TResult? Function( AsUiFolder field0)?  folder,TResult? Function( AsUiPostFormButton field0)?  postFormButton,TResult? Function( AsUiPostForm field0)?  postForm,}) {final _that = this;
+switch (_that) {
+case AsUiComponent_Root() when root != null:
+return root(_that.field0);case AsUiComponent_Container() when container != null:
+return container(_that.field0);case AsUiComponent_Text() when text != null:
+return text(_that.field0);case AsUiComponent_Mfm() when mfm != null:
+return mfm(_that.field0);case AsUiComponent_Button() when button != null:
+return button(_that.field0);case AsUiComponent_Buttons() when buttons != null:
+return buttons(_that.field0);case AsUiComponent_ToggleSwitch() when toggleSwitch != null:
+return toggleSwitch(_that.field0);case AsUiComponent_Textarea() when textarea != null:
+return textarea(_that.field0);case AsUiComponent_TextInput() when textInput != null:
+return textInput(_that.field0);case AsUiComponent_NumberInput() when numberInput != null:
+return numberInput(_that.field0);case AsUiComponent_Select() when select != null:
+return select(_that.field0);case AsUiComponent_Folder() when folder != null:
+return folder(_that.field0);case AsUiComponent_PostFormButton() when postFormButton != null:
+return postFormButton(_that.field0);case AsUiComponent_PostForm() when postForm != null:
+return postForm(_that.field0);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 

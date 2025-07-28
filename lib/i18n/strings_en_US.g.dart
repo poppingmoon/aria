@@ -206,7 +206,6 @@ class TranslationsAriaEnUs {
 	]);
 	String get reset => 'Reset';
 	String get rotate => 'Rotate';
-	String get scale => 'Scale';
 	String get schedule => 'Schedule';
 	String get scheduledNoteError => 'Scheduled note posting has failed';
 	String get scheduledNotePosted => 'Scheduled note has been posted';
@@ -621,7 +620,7 @@ class TranslationsMisskeyEnUs {
 	String get lightThemes => 'Light themes';
 	String get darkThemes => 'Dark themes';
 	String get syncDeviceDarkMode => 'Sync Dark Mode with your device settings';
-	String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" is turned on, Would you like to turn off synchronization and switch modes manually?';
+	String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" is turned on. Would you like to turn off synchronization and switch modes manually?';
 	String get drive => 'Drive';
 	String get fileName => 'Filename';
 	String get selectFile => 'Select a file';
@@ -1607,6 +1606,7 @@ class TranslationsMisskeyEnUs {
 	String get acknowledgeNotesAndEnable => 'Turn on after understanding the precautions.';
 	String get federationSpecified => 'This server is operated in a whitelist federation. Interacting with servers other than those designated by the administrator is not allowed.';
 	String get federationDisabled => 'Federation is disabled on this server. You cannot interact with users on other servers.';
+	String get draft => 'Drafts';
 	String get confirmOnReact => 'Confirm when reacting';
 	String reactAreYouSure({required Object emoji}) => 'Would you like to add a "${emoji}" reaction?';
 	String get markAsSensitiveConfirm => 'Do you want to set this media as sensitive?';
@@ -1660,7 +1660,8 @@ class TranslationsMisskeyEnUs {
 	String get redisplayAllTips => 'Show all “Tips & Tricks” again';
 	String get hideAllTips => 'Hide all "Tips & Tricks"';
 	String get defaultImageCompressionLevel => 'Default image compression level';
-	String get defaultImageCompressionLevel_description => 'High, reduces the file size but also the image quality. <br>High, reduces the file size but also the image quality.';
+	String get defaultImageCompressionLevel_description => 'Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality.';
+	late final TranslationsMisskeyOrderEnUs order_ = TranslationsMisskeyOrderEnUs.internal(_root);
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
 	late final TranslationsMisskeySettingsEnUs settings_ = TranslationsMisskeySettingsEnUs.internal(_root);
@@ -1759,6 +1760,8 @@ class TranslationsMisskeyEnUs {
 	String get defaultPreset => 'Default Preset';
 	late final TranslationsMisskeyWatermarkEditorEnUs watermarkEditor_ = TranslationsMisskeyWatermarkEditorEnUs.internal(_root);
 	late final TranslationsMisskeyImageEffectorEnUs imageEffector_ = TranslationsMisskeyImageEffectorEnUs.internal(_root);
+	String get drafts => 'Drafts';
+	late final TranslationsMisskeyDraftsEnUs drafts_ = TranslationsMisskeyDraftsEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -1769,6 +1772,17 @@ class TranslationsMisskeyIOEnUs {
 
 	// Translations
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
+}
+
+// Path: misskey.order_
+class TranslationsMisskeyOrderEnUs {
+	TranslationsMisskeyOrderEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get newest => 'Newest First';
+	String get oldest => 'Oldest First';
 }
 
 // Path: misskey.chat_
@@ -2481,6 +2495,7 @@ class TranslationsMisskeyThemeEnUs {
 	String get install => 'Install a theme';
 	String get manage => 'Manage themes';
 	String get code => 'Theme code';
+	String get copyThemeCode => 'Copy theme code';
 	String get description => 'Description';
 	String installed({required Object name}) => '${name} has been installed';
 	String get installedThemes => 'Installed themes';
@@ -3274,6 +3289,7 @@ class TranslationsMisskeyFileViewerEnUs {
 	String get url => 'URL';
 	String get uploadedAt => 'Uploaded at';
 	String get attachedNotes => 'Attached notes';
+	String get usage => 'Used';
 	String get thisPageCanBeSeenFromTheAuthor => 'This page can only be seen by the user who uploaded this file.';
 }
 
@@ -3617,6 +3633,7 @@ class TranslationsMisskeyUploaderEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+	String get editImage => 'Edit Image';
 	String compressedToX({required Object x}) => 'Compressed to ${x}';
 	String savedXPercent({required Object x}) => 'Saving ${x}%';
 	String get abortConfirm => 'Some files have not been uploaded, do you want to abort?';
@@ -3707,6 +3724,28 @@ class TranslationsMisskeyImageEffectorEnUs {
 	String get addEffect => 'Add Effects';
 	String get discardChangesConfirm => 'Are you sure you want to leave? You have unsaved changes.';
 	late final TranslationsMisskeyImageEffectorFxsEnUs fxs_ = TranslationsMisskeyImageEffectorFxsEnUs.internal(_root);
+}
+
+// Path: misskey.drafts_
+class TranslationsMisskeyDraftsEnUs {
+	TranslationsMisskeyDraftsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get select => 'Select Draft';
+	String get cannotCreateDraftAnymore => 'The number of drafts that can be created has been exceeded.';
+	String get cannotCreateDraft => 'You cannot create a draft with this content.';
+	String get delete => 'Delete Draft';
+	String get deleteAreYouSure => 'Delete draft?';
+	String get noDrafts => 'No drafts';
+	String replyTo({required Object user}) => 'Reply to ${user}';
+	String quoteOf({required Object user}) => 'Citation to ${user}\'s note';
+	String postTo({required Object channel}) => 'Posting to ${channel}';
+	String get saveToDraft => 'Save to Draft';
+	String get restoreFromDraft => 'Restore from Draft';
+	String get restore => 'Restore';
+	String get listDrafts => 'List of Drafts';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -4045,6 +4084,8 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	String get uploadableFileTypes => 'Uploadable file types';
 	String get uploadableFileTypes_caption => 'Specifies the allowed MIME/file types. Multiple MIME types can be specified by separating them with a new line, and wildcards can be specified with an asterisk (*). (e.g., image/*)';
 	String uploadableFileTypes_caption2({required Object x}) => 'Some files types might fail to be detected. To allow such files, add ${x} to the specification.';
+	String get noteDraftLimit => 'Number of possible drafts of server notes';
+	String get watermarkAvailable => 'Availability of watermark function';
 }
 
 // Path: misskey.role_.condition_
@@ -4593,8 +4634,8 @@ class TranslationsMisskeyImageEffectorFxsEnUs {
 	String get glitch => 'Glitch';
 	String get mirror => 'Mirror';
 	String get invert => 'Invert Colors';
-	String get grayscale => 'white-black';
-	String get colorAdjust => 'Colour Correction';
+	String get grayscale => 'Grayscale';
+	String get colorAdjust => 'Color Correction';
 	String get colorClamp => 'Color Compression';
 	String get colorClampAdvanced => 'Color Compression (Advanced)';
 	String get distort => 'Distortion';

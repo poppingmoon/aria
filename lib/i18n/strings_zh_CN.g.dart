@@ -66,6 +66,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get background => '背景';
 	@override String get buttonTypes => '按钮类型';
 	@override String get calculating => '计算中...';
+	@override String get clientInfo => '客户端信息';
 	@override String get confirmBeforeFollow => '在关注之前确认';
 	@override String get confirmBeforePost => '在发布帖子前确认';
 	@override String get confirmBeforeReact => '在表情回应前确认';
@@ -84,6 +85,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		other: '您确定要删除 ${n} 个文件吗？',
 	);
 	@override String get deleteTabConfirm => '你确定要删除此标签吗？';
+	@override String get device => '设备';
 	@override String get disableDataSaverWhenOnWifi => '连接 Wi-Fi 时关闭省流量模式';
 	@override String get disableStreamingTimeline => '关闭动态实时刷新​';
 	@override String get disableSubscribingNotes => '关闭实时表情回应更新';
@@ -184,7 +186,6 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		const TextSpan(text: ' 复制 Misskey Web 端已固定的表情。'),
 	]);
 	@override String get pasteResponseBelow => '粘贴下面的回复';
-	@override String get permissionDeniedErrorDescription => '当前登录状态已过期，请重新登录​。';
 	@override String get pinToEmojiPicker => '固定到表情选择器';
 	@override String get playAudio => '播放音频';
 	@override String get playVideo => '播放视频';
@@ -220,6 +221,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get showAvatarsInNote => '在帖子中显示用户头像';
 	@override String get showAvatarsInSubNote => '在子贴中显示用户头像';
+	@override String get showCaption => '显示图像描述文本';
 	@override String get showEntireImage => '显示整个图像';
 	@override String get showExpandedImage => '显示扩展图像';
 	@override String get showGapBetweenNotesInTimeline => '在帖子之间添加间隔';
@@ -1601,6 +1603,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '理解注意事项后再开启。';
 	@override String get federationSpecified => '此服务器已开启联合白名单。只能与管理员指定的服务器通信。';
 	@override String get federationDisabled => '此服务器已禁用联合。无法与其它服务器上的用户通信。';
+	@override String get draft => '草稿';
 	@override String get confirmOnReact => '发送回应前需要确认';
 	@override String reactAreYouSure({required Object emoji}) => '要用「${emoji}」进行回应吗？';
 	@override String get markAsSensitiveConfirm => '要将此媒体标记为敏感吗？';
@@ -1655,6 +1658,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '隐藏所有的提示和技巧';
 	@override String get defaultImageCompressionLevel => '默认图像压缩等级';
 	@override String get defaultImageCompressionLevel_description => '较低的等级可以保持画质，但会增加文件大小。<br>较高的等级可以减少文件大小，但相对应的画质将会降低。';
+	@override late final _TranslationsMisskeyOrderZhCn order_ = _TranslationsMisskeyOrderZhCn._(_root);
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
 	@override late final _TranslationsMisskeySettingsZhCn settings_ = _TranslationsMisskeySettingsZhCn._(_root);
@@ -1753,6 +1757,19 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => '默认预设';
 	@override late final _TranslationsMisskeyWatermarkEditorZhCn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorZhCn._(_root);
 	@override late final _TranslationsMisskeyImageEffectorZhCn imageEffector_ = _TranslationsMisskeyImageEffectorZhCn._(_root);
+	@override String get drafts => '草稿';
+	@override late final _TranslationsMisskeyDraftsZhCn drafts_ = _TranslationsMisskeyDraftsZhCn._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderZhCn extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => '从新到旧';
+	@override String get oldest => '从旧到新';
 }
 
 // Path: misskey.chat_
@@ -2465,6 +2482,7 @@ class _TranslationsMisskeyThemeZhCn extends TranslationsMisskeyThemeEnUs {
 	@override String get install => '安装主题';
 	@override String get manage => '主题管理';
 	@override String get code => '主题代码';
+	@override String get copyThemeCode => '复制主题代码';
 	@override String get description => '描述';
 	@override String installed({required Object name}) => '${name} 已安装';
 	@override String get installedThemes => '已安装的主题';
@@ -3258,6 +3276,7 @@ class _TranslationsMisskeyFileViewerZhCn extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => '添加日期';
 	@override String get attachedNotes => '附加到的帖子';
+	@override String get usage => '使用';
 	@override String get thisPageCanBeSeenFromTheAuthor => '此页只能被该文件的上传者查看。';
 }
 
@@ -3601,6 +3620,7 @@ class _TranslationsMisskeyUploaderZhCn extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => '编辑图像';
 	@override String compressedToX({required Object x}) => '压缩 ${x}';
 	@override String savedXPercent({required Object x}) => '节省了 ${x}% 的空间';
 	@override String get abortConfirm => '还有未上传的文件，要中止吗？';
@@ -3691,6 +3711,28 @@ class _TranslationsMisskeyImageEffectorZhCn extends TranslationsMisskeyImageEffe
 	@override String get addEffect => '添加效果';
 	@override String get discardChangesConfirm => '丢弃当前设置并退出？';
 	@override late final _TranslationsMisskeyImageEffectorFxsZhCn fxs_ = _TranslationsMisskeyImageEffectorFxsZhCn._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsZhCn extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => '选择草稿';
+	@override String get cannotCreateDraftAnymore => '已超过可创建的草稿数量。';
+	@override String get cannotCreateDraft => '此内容无法创建草稿。';
+	@override String get delete => '删除草稿';
+	@override String get deleteAreYouSure => '要删除草稿吗？';
+	@override String get noDrafts => '没有草稿';
+	@override String replyTo({required Object user}) => '回复给 ${user}';
+	@override String quoteOf({required Object user}) => '对 ${user} 帖子的引用';
+	@override String postTo({required Object channel}) => '向 ${channel} 的投稿';
+	@override String get saveToDraft => '保存到草稿';
+	@override String get restoreFromDraft => '从草稿恢复';
+	@override String get restore => '恢复';
+	@override String get listDrafts => '草稿一览';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -4013,6 +4055,8 @@ class _TranslationsMisskeyRoleOptionsZhCn extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => '可上传的文件类型';
 	@override String get uploadableFileTypes_caption => '指定 MIME 类型。可用换行指定多个类型，也可以用星号（*）作为通配符。（如 image/*）';
 	@override String uploadableFileTypes_caption2({required Object x}) => '文件根据文件的不同，可能无法判断其类型。若要允许此类文件，请在指定中添加 ${x}。';
+	@override String get noteDraftLimit => '可在服务器上创建多少草稿';
+	@override String get watermarkAvailable => '能否使用水印功能';
 }
 
 // Path: misskey.role_.condition_

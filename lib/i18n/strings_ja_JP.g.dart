@@ -67,6 +67,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get background => '背景';
 	@override String get buttonTypes => 'ボタンのタイプ';
 	@override String get calculating => '計算中';
+	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
@@ -85,6 +86,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 		other: '${n}個のファイルを削除しますか？',
 	);
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
+	@override String get device => 'デバイス';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';
 	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新を無効にする';
 	@override String get disableSubscribingNotes => 'リアクションのリアルタイム更新を無効にする';
@@ -220,6 +222,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	]);
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示する';
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示する';
+	@override String get showCaption => 'キャプションを表示';
 	@override String get showEntireImage => '全体を表示する';
 	@override String get showExpandedImage => '拡大して表示する';
 	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示';
@@ -1589,7 +1592,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get target => '対象';
 	@override String get testCaptchaWarning => 'CAPTCHAのテストを目的とした機能です。<strong>本番環境で使用しないでください。</strong>';
 	@override String get prohibitedWordsForNameOfUser => '禁止ワード（ユーザーの名前）';
-	@override String get prohibitedWordsForNameOfUserDescription => 'このリストに含まれる文字列がユーザーの名前に含まれる場合、ユーザーの名前の変更を拒否します。モデレーター権限を持つユーザーはこの制限の影響を受けません。';
+	@override String get prohibitedWordsForNameOfUserDescription => 'このリストに含まれる文字列がユーザーの名前に含まれる場合、ユーザーの名前の変更を拒否します。モデレーター権限を持つユーザーはこの制限の影響を受けません。ユーザー名(username)に対しても全て小文字に置き換えて検査します。';
 	@override String get yourNameContainsProhibitedWords => '変更しようとした名前に禁止された文字列が含まれています';
 	@override String get yourNameContainsProhibitedWordsDescription => '名前に禁止されている文字列が含まれています。この名前を使用したい場合は、サーバー管理者にお問い合わせください。';
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者により、表示にはログインが必要と設定されています';
@@ -1599,6 +1602,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '注意事項を理解した上でオンにします。';
 	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。';
 	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
+	@override String get draft => '下書き';
 	@override String get confirmOnReact => 'リアクションする際に確認する';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " をリアクションしますか？';
 	@override String get markAsSensitiveConfirm => 'このメディアをセンシティブとして設定しますか？';
@@ -1653,6 +1657,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '全ての「ヒントとコツ」を非表示';
 	@override String get defaultImageCompressionLevel => 'デフォルトの画像圧縮度';
 	@override String get defaultImageCompressionLevel_description => '低くすると画質を保てますが、ファイルサイズは増加します。<br>高くするとファイルサイズを減らせますが、画質は低下します。';
+	@override late final _TranslationsMisskeyOrderJaJp order_ = _TranslationsMisskeyOrderJaJp._(_root);
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
 	@override late final _TranslationsMisskeySettingsJaJp settings_ = _TranslationsMisskeySettingsJaJp._(_root);
@@ -1751,6 +1756,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'デフォルトのプリセット';
 	@override late final _TranslationsMisskeyWatermarkEditorJaJp watermarkEditor_ = _TranslationsMisskeyWatermarkEditorJaJp._(_root);
 	@override late final _TranslationsMisskeyImageEffectorJaJp imageEffector_ = _TranslationsMisskeyImageEffectorJaJp._(_root);
+	@override String get drafts => '下書き';
+	@override late final _TranslationsMisskeyDraftsJaJp drafts_ = _TranslationsMisskeyDraftsJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -1761,6 +1768,17 @@ class _TranslationsMisskeyIOJaJp extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusJaJp skebStatus_ = _TranslationsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderJaJp extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => '新しい順';
+	@override String get oldest => '古い順';
 }
 
 // Path: misskey.chat_
@@ -2473,6 +2491,7 @@ class _TranslationsMisskeyThemeJaJp extends TranslationsMisskeyThemeEnUs {
 	@override String get install => 'テーマのインストール';
 	@override String get manage => 'テーマの管理';
 	@override String get code => 'テーマコード';
+	@override String get copyThemeCode => 'テーマコードをコピー';
 	@override String get description => '説明';
 	@override String installed({required Object name}) => '${name}をインストールしました';
 	@override String get installedThemes => 'インストールされたテーマ';
@@ -3266,6 +3285,7 @@ class _TranslationsMisskeyFileViewerJaJp extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => '追加日';
 	@override String get attachedNotes => '添付されているノート';
+	@override String get usage => '利用';
 	@override String get thisPageCanBeSeenFromTheAuthor => 'このページは、このファイルをアップロードしたユーザーしか閲覧できません。';
 }
 
@@ -3609,6 +3629,7 @@ class _TranslationsMisskeyUploaderJaJp extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => '画像の編集';
 	@override String compressedToX({required Object x}) => '${x}に圧縮';
 	@override String savedXPercent({required Object x}) => '${x}%節約';
 	@override String get abortConfirm => 'アップロードされていないファイルがありますが、中止しますか？';
@@ -3699,6 +3720,28 @@ class _TranslationsMisskeyImageEffectorJaJp extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'エフェクトを追加';
 	@override String get discardChangesConfirm => '変更を破棄して終了しますか？';
 	@override late final _TranslationsMisskeyImageEffectorFxsJaJp fxs_ = _TranslationsMisskeyImageEffectorFxsJaJp._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsJaJp extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => '下書きを選択';
+	@override String get cannotCreateDraftAnymore => '下書きの作成可能数を超えています。';
+	@override String get cannotCreateDraft => 'この内容では下書きを作成できません。';
+	@override String get delete => '下書きを削除';
+	@override String get deleteAreYouSure => '下書きを削除しますか？';
+	@override String get noDrafts => '下書きはありません';
+	@override String replyTo({required Object user}) => '${user}への返信';
+	@override String quoteOf({required Object user}) => '${user}のノートへの引用';
+	@override String postTo({required Object channel}) => '${channel}への投稿';
+	@override String get saveToDraft => '下書きへ保存';
+	@override String get restoreFromDraft => '下書きから復元';
+	@override String get restore => '復元';
+	@override String get listDrafts => '下書き一覧';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -4037,6 +4080,8 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => 'アップロード可能なファイル種別';
 	@override String get uploadableFileTypes_caption => 'MIMEタイプを指定します。改行で区切って複数指定できるほか、アスタリスク(*)でワイルドカード指定できます。(例: image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'ファイルによっては種別を判定できないことがあります。そのようなファイルを許可する場合は ${x} を指定に追加してください。';
+	@override String get noteDraftLimit => 'サーバーサイドのノートの下書きの作成可能数';
+	@override String get watermarkAvailable => 'ウォーターマーク機能の使用可否';
 }
 
 // Path: misskey.role_.condition_

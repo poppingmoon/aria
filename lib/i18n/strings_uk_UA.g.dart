@@ -87,6 +87,9 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Сповіщення';
 	@override String get username => 'Ім\'я користувача';
 	@override String get password => 'Пароль';
+	@override String get initialPasswordForSetup => 'Початковий пароль для налаштування';
+	@override String get initialPasswordIsIncorrect => 'Початковий пароль для налаштування неправильний';
+	@override String get initialPasswordForSetupDescription => 'Використайте пароль, вказаний у конфігураційному файлі, якщо ви встановлювали Misskey власноруч.\nЯкщо використовуєте сервіси хостингу Misskey, використайте наданий пароль.\nЯкщо ви не маєте паролю, лишіть порожнім щоб продовжити. ';
 	@override String get forgotPassword => 'Я забув пароль';
 	@override String get fetchingAsApObject => 'Отримуємо з федіверсу...';
 	@override String get ok => 'OK';
@@ -124,6 +127,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Відкріпити';
 	@override String get copyContent => 'Скопіювати контент';
 	@override String get copyLink => 'Скопіювати посилання';
+	@override String get copyRemoteLink => 'Копіювати віддалене посилання';
 	@override String get delete => 'Видалити';
 	@override String get deleteAndEdit => 'Видалити й редагувати';
 	@override String get deleteAndEditConfirm => 'Ви впевнені, що хочете видалити цю нотатку та відредагувати її? Ви втратите всі реакції, поширення та відповіді на неї.';
@@ -136,6 +140,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get copyNoteId => 'блокнот ID користувача';
 	@override String get copyFileId => 'Скопіювати ідентифікатор файлу.';
 	@override String get searchUser => 'Пошук користувачів';
+	@override String get searchThisUsersNotes => 'Пошук нотаток користувача';
 	@override String get reply => 'Відповісти';
 	@override String get loadMore => 'Показати більше';
 	@override String get showMore => 'Показати більше';
@@ -184,9 +189,11 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get renote => 'Поширити';
 	@override String get unrenote => 'Відміна поширення';
 	@override String get renoted => 'Поширити запис.';
+	@override String renotedToX({required Object name}) => 'Поширено до ${name}';
 	@override String get cantRenote => 'Неможливо поширити.';
 	@override String get cantReRenote => 'Поширення не можливо поширити.';
 	@override String get quote => 'Цитата';
+	@override String get inChannelRenote => 'Поширено у канал';
 	@override String get pinnedNote => 'Закріплений запис';
 	@override String get pinned => 'Закріпити';
 	@override String get you => 'Ви';
@@ -195,6 +202,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get add => 'Додати';
 	@override String get reaction => 'Реакції';
 	@override String get reactions => 'Реакції';
+	@override String get emojiPicker => 'Вибір реакції';
 	@override String get reactionSettingDescription2 => 'Перемістити щоб змінити порядок, Клацнути мишою щоб видалити, Натиснути "+" щоб додати.';
 	@override String get rememberNoteVisibility => 'Пам’ятати параметри видимісті';
 	@override String get attachCancel => 'Видалити вкладення';
@@ -368,7 +376,9 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get createFolder => 'Створити теку';
 	@override String get renameFolder => 'Перейменувати теку';
 	@override String get deleteFolder => 'Видалити теку';
+	@override String get folder => 'Тека';
 	@override String get addFile => 'Додати файл';
+	@override String get showFile => 'Показати файл';
 	@override String get emptyDrive => 'Диск порожній';
 	@override String get emptyFolder => 'Тека порожня';
 	@override String get unableToDelete => 'Видалення неможливе';
@@ -381,6 +391,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get rename => 'Перейменувати';
 	@override String get avatar => 'Аватар';
 	@override String get banner => 'Банер';
+	@override String get displayOfSensitiveMedia => 'Показ чутливого медіа';
 	@override String get whenServerDisconnected => 'Коли зв’язок із сервером втрачено';
 	@override String get disconnectedFromServer => 'Зв’язок із сервером було перервано';
 	@override String get reload => 'Оновити';
@@ -427,8 +438,11 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get enableHcaptcha => 'Увімкнути hCaptcha';
 	@override String get hcaptchaSiteKey => 'Ключ сайту';
 	@override String get hcaptchaSecretKey => 'Секретний ключ';
+	@override String get mcaptcha => 'MCaptcha';
+	@override String get enableMcaptcha => 'Увімкнути MCaptcha';
 	@override String get mcaptchaSiteKey => 'Ключ сайту';
 	@override String get mcaptchaSecretKey => 'Секретний ключ';
+	@override String get mcaptchaInstanceUrl => 'Посилання на сервер MCaptcha';
 	@override String get recaptcha => 'reCAPTCHA';
 	@override String get enableRecaptcha => 'Увімкнути reCAPTCHA';
 	@override String get recaptchaSiteKey => 'Ключ сайту';

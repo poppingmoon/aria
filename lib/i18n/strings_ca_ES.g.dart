@@ -1398,6 +1398,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Activa\'l després de comprendre els possibles perills.';
 	@override String get federationSpecified => 'Aquest servidor treballa amb una federació de llistes blanques. No pot interactuar amb altres servidors que no siguin els especificats per l\'administrador.';
 	@override String get federationDisabled => 'La unió es troba deshabilitada en aquest servidor. No es pot interactuar amb usuaris d\'altres servidors.';
+	@override String get draft => 'Esborrany ';
 	@override String get confirmOnReact => 'Confirmar en reaccionar';
 	@override String reactAreYouSure({required Object emoji}) => 'Vols reaccionar amb "${emoji}"?';
 	@override String get markAsSensitiveConfirm => 'Vols marcar aquest contingut com a sensible?';
@@ -1435,7 +1436,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get settingsMigrating => 'Estem migrant la teva configuració. Si us plau espera un moment... (També pots fer la migració més tard, manualment, anant a Preferències → Altres → Migrar configuració antiga)';
 	@override String get readonly => 'Només lectura';
 	@override String get goToDeck => 'Tornar al tauler';
-	@override String get federationJobs => 'Treballs sindicats ';
+	@override String get federationJobs => 'Treballs de federació';
 	@override String get driveAboutTip => 'Al Disc veure\'s una llista de tots els arxius que has anat pujant.<br>\nPots tornar-los a fer servir adjuntant-los a notes noves o pots adelantar-te i pujar arxius per publicar-los més tard!<br>\n<b>Tingués en compte que si esborres un arxiu també desapareixerà de tots els llocs on l\'has fet servir (notes, pàgines, avatars, imatges de capçalera, etc.)</b><br>\nTambé pots crear carpetes per organitzar les.';
 	@override String get scrollToClose => 'Desplaçar per tancar';
 	@override String get advice => 'Consell';
@@ -1452,6 +1453,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Amagar tots els trucs i consells';
 	@override String get defaultImageCompressionLevel => 'Nivell de comprensió de la imatge per defecte';
 	@override String get defaultImageCompressionLevel_description => 'Baixa, conserva la qualitat de la imatge però la mida de l\'arxiu és més gran. <br>Alta, redueix la mida de l\'arxiu però també la qualitat de la imatge.';
+	@override late final _TranslationsMisskeyOrderCaEs order_ = _TranslationsMisskeyOrderCaEs._(_root);
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
 	@override late final _TranslationsMisskeySettingsCaEs settings_ = _TranslationsMisskeySettingsCaEs._(_root);
@@ -1550,6 +1552,19 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'Per defecte';
 	@override late final _TranslationsMisskeyWatermarkEditorCaEs watermarkEditor_ = _TranslationsMisskeyWatermarkEditorCaEs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorCaEs imageEffector_ = _TranslationsMisskeyImageEffectorCaEs._(_root);
+	@override String get drafts => 'Esborrany ';
+	@override late final _TranslationsMisskeyDraftsCaEs drafts_ = _TranslationsMisskeyDraftsCaEs._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderCaEs extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Més recent';
+	@override String get oldest => 'Cronològic';
 }
 
 // Path: misskey.chat_
@@ -2262,6 +2277,7 @@ class _TranslationsMisskeyThemeCaEs extends TranslationsMisskeyThemeEnUs {
 	@override String get install => 'Instal·lar un tema';
 	@override String get manage => 'Gestionar els temes ';
 	@override String get code => 'Codi del tema';
+	@override String get copyThemeCode => 'Copiar el codi del tema';
 	@override String get description => 'Descripció';
 	@override String installed({required Object name}) => '${name} Instal·lat ';
 	@override String get installedThemes => 'Temes instal·lats ';
@@ -3055,6 +3071,7 @@ class _TranslationsMisskeyFileViewerCaEs extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => 'Pujat el';
 	@override String get attachedNotes => 'Notes amb aquest fitxer';
+	@override String get usage => 'Ús ';
 	@override String get thisPageCanBeSeenFromTheAuthor => 'Aquesta pàgina només la pot veure l\'usuari que ha pujat aquest fitxer.';
 }
 
@@ -3398,6 +3415,7 @@ class _TranslationsMisskeyUploaderCaEs extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => 'Edició d\'imatges';
 	@override String compressedToX({required Object x}) => 'Comprimit a ${x}';
 	@override String savedXPercent({required Object x}) => '${x}% d\'estalvi ';
 	@override String get abortConfirm => 'Hi ha un arxiu que no s\'ha pujat, vols cancel·lar?';
@@ -3488,6 +3506,28 @@ class _TranslationsMisskeyImageEffectorCaEs extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Afegeix un efecte';
 	@override String get discardChangesConfirm => 'Vols descartar els canvis i sortir?';
 	@override late final _TranslationsMisskeyImageEffectorFxsCaEs fxs_ = _TranslationsMisskeyImageEffectorFxsCaEs._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsCaEs extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => 'Seleccionar esborrany';
+	@override String get cannotCreateDraftAnymore => 'S\'ha sobrepassat el nombre màxim d\'esborranys que es poden crear.';
+	@override String get cannotCreateDraft => 'Amb aquest contingut no es poden crear esborranys.';
+	@override String get delete => 'Esborrar esborranys';
+	@override String get deleteAreYouSure => 'Vols esborrar els esborranys?';
+	@override String get noDrafts => 'No hi ha esborranys';
+	@override String replyTo({required Object user}) => 'Respondre a ${user}';
+	@override String quoteOf({required Object user}) => 'Citar les notes de ${user}';
+	@override String postTo({required Object channel}) => 'Destinat a ${channel}';
+	@override String get saveToDraft => 'Desar com a esborrany';
+	@override String get restoreFromDraft => 'Restaurar des dels esborranys';
+	@override String get restore => 'Restaurar esborrany';
+	@override String get listDrafts => 'Llistat d\'esborranys';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3810,6 +3850,8 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => 'Tipus de fitxers que en podeu pujar';
 	@override String get uploadableFileTypes_caption => 'Especifica el tipus MIME. Es poden especificar diferents tipus MIME separats amb una nova línia, i es poden especificar comodins amb asteriscs (*). (Per exemple: image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'Pot que no sigui possible determinar el tipus MIME d\'alguns arxius. Per permetre aquests tipus d\'arxius afegeix ${x} a les especificacions.';
+	@override String get noteDraftLimit => 'Nombre possible d\'esborranys de notes al servidor';
+	@override String get watermarkAvailable => 'Pots fer servir la marca d\'aigua';
 }
 
 // Path: misskey.role_.condition_

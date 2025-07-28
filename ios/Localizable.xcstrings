@@ -1245,7 +1245,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "มีคนล็อกอิน"
+            "value": "มีการเข้าสู่ระบบ"
           }
         },
         "zh-Hans": {
@@ -1521,6 +1521,12 @@
             "value": "Você foi convidado para uma conversa"
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ได้รับคำเชิญเข้าร่วมห้องแชต"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1584,6 +1590,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Uma token de acesso foi criada"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สร้างโทเค็นการเข้าถึงแล้ว"
           }
         },
         "zh-Hans": {
@@ -1809,6 +1821,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se você não faz ideia, exclua o token de acesso através de \"Gerenciar tokens de acesso\"."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หากไม่ทราบสาเหตุของคำเชิญ กรุณาลบโทเค็นการเข้าถึงผ่านทาง “การจัดการโทเค็นการเข้าถึง”"
           }
         },
         "zh-Hans": {
