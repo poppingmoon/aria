@@ -118,7 +118,6 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	@override String get parameters => 'Parametri';
 	@override String get paste => 'Incolla';
 	@override String get pasteResponseBelow => 'Incolla la risposta qui sotto.';
-	@override String get permissionDeniedErrorDescription => 'Il token di accesso non ha il permesso di eseguire questa azione. Effettua nuovamente il login.';
 	@override String get playAudio => 'Riproduci audio';
 	@override String get playVideo => 'Riproduci video';
 	@override String get pleaseCopyResponse => 'Copia questa risposta';
@@ -1659,6 +1658,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'Impostazioni predefinite';
 	@override late final _TranslationsMisskeyWatermarkEditorItIt watermarkEditor_ = _TranslationsMisskeyWatermarkEditorItIt._(_root);
 	@override late final _TranslationsMisskeyImageEffectorItIt imageEffector_ = _TranslationsMisskeyImageEffectorItIt._(_root);
+	@override late final _TranslationsMisskeyDraftsItIt drafts_ = _TranslationsMisskeyDraftsItIt._(_root);
 }
 
 // Path: misskey.chat_
@@ -3597,6 +3597,16 @@ class _TranslationsMisskeyImageEffectorItIt extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Aggiungi effetto';
 	@override String get discardChangesConfirm => 'Scarta le modifiche ed esci?';
 	@override late final _TranslationsMisskeyImageEffectorFxsItIt fxs_ = _TranslationsMisskeyImageEffectorFxsItIt._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsItIt extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get restore => 'Ripristina';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_

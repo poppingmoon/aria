@@ -271,9 +271,13 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} adalah sebuah layanan (instance) yang menggunakan platform sumber terbuka <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day} ${month}';
 	@override String get search => 'Penelusuran';
+	@override String get reset => 'Reset';
 	@override String get notifications => 'Notifikasi';
 	@override String get username => 'Nama Pengguna';
 	@override String get password => 'Kata sandi';
+	@override String get initialPasswordForSetup => 'Kata sandi untuk memulai konfigurasi awal';
+	@override String get initialPasswordIsIncorrect => 'Kata sandi untuk memulai konfigurasi awal salah.';
+	@override String get initialPasswordForSetupDescription => 'Jika Anda menginstal Misskey sendiri, gunakan kata sandi yang Anda masukkan di berkas konfigurasi.\nJika Anda menggunakan layanan hosting Misskey, gunakan kata sandi yang diberikan.\nJika Anda belum mengatur kata sandi, biarkan kosong dan lanjutkan.';
 	@override String get forgotPassword => 'Lupa Kata Sandi';
 	@override String get fetchingAsApObject => 'Mengambil data dari Fediverse...';
 	@override String get ok => 'OK';
@@ -311,6 +315,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Lepas sematan dari profil';
 	@override String get copyContent => 'Salin konten';
 	@override String get copyLink => 'Salin tautan';
+	@override String get copyRemoteLink => 'Salin tautan jarak jauh';
 	@override String get copyLinkRenote => 'Salin tautan renote';
 	@override String get delete => 'Hapus';
 	@override String get deleteAndEdit => 'Hapus dan sunting';
@@ -478,8 +483,10 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get stopActivityDelivery => 'Berhenti mengirim aktivitas';
 	@override String get blockThisInstance => 'Blokir instansi ini';
 	@override String get silenceThisInstance => 'Senyapkan instansi ini';
+	@override String get mediaSilenceThisInstance => 'Server media senyap';
 	@override String get operations => 'Tindakan';
 	@override String get software => 'Perangkat lunak';
+	@override String get softwareName => 'Nama Perangkat Lunak';
 	@override String get version => 'Versi';
 	@override String get metadata => 'Metadata';
 	@override String withNFiles({required Object n}) => '${n} berkas';
@@ -1306,7 +1313,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get disableFederationOk => 'Matikan federasi';
 	@override String get invitationRequiredToRegister => 'Instansi ini dalam mode undangan-saja. Kamu harus memasukkan kode undangan yang valid untuk mendaftar.';
 	@override String get emailNotSupported => 'Instansi ini tidak mendukung mengirim surel';
-	@override String get postToTheChannel => 'Catat ke kanal';
+	@override String get postToTheChannel => 'Buat Catatan ke Kanal';
 	@override String get cannotBeChangedLater => 'Hal ini nantinya tidak dapat diubah lagi.';
 	@override String get reactionAcceptance => 'Penerimaan reaksi';
 	@override String get likeOnly => 'Hanya suka';
@@ -3539,7 +3546,7 @@ class _TranslationsMisskeyDeckColumnsIdId extends TranslationsMisskeyDeckColumns
 	@override String get main => 'Utama';
 	@override String get widgets => 'Widget';
 	@override String get notifications => 'Notifikasi';
-	@override String get tl => 'Lini masa';
+	@override String get tl => 'Beranda';
 	@override String get antenna => 'Antena';
 	@override String get list => 'Daftar';
 	@override String get channel => 'Kanal';

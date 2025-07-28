@@ -1398,6 +1398,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '了解注意事項後再開啟。';
 	@override String get federationSpecified => '此伺服器以白名單聯邦的方式運作。除了管理員指定的伺服器外，它無法與其他伺服器互動。';
 	@override String get federationDisabled => '此伺服器未開啟站台聯邦。無法與其他伺服器上的使用者互動。';
+	@override String get draft => '草稿\n';
 	@override String get confirmOnReact => '在做出反應前先確認';
 	@override String reactAreYouSure({required Object emoji}) => '用「 ${emoji} 」反應嗎？';
 	@override String get markAsSensitiveConfirm => '要將這個媒體設定為敏感嗎？';
@@ -1452,6 +1453,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '隱藏所有「提示與技巧」';
 	@override String get defaultImageCompressionLevel => '預設的影像壓縮程度';
 	@override String get defaultImageCompressionLevel_description => '低的話可以保留畫質，但是會增加檔案的大小。<br>高的話可以減少檔案大小，但是會降低畫質。';
+	@override late final _TranslationsMisskeyOrderZhTw order_ = _TranslationsMisskeyOrderZhTw._(_root);
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
 	@override late final _TranslationsMisskeySettingsZhTw settings_ = _TranslationsMisskeySettingsZhTw._(_root);
@@ -1550,6 +1552,19 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => '預設值';
 	@override late final _TranslationsMisskeyWatermarkEditorZhTw watermarkEditor_ = _TranslationsMisskeyWatermarkEditorZhTw._(_root);
 	@override late final _TranslationsMisskeyImageEffectorZhTw imageEffector_ = _TranslationsMisskeyImageEffectorZhTw._(_root);
+	@override String get drafts => '草稿\n';
+	@override late final _TranslationsMisskeyDraftsZhTw drafts_ = _TranslationsMisskeyDraftsZhTw._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderZhTw extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => '最新的在前';
+	@override String get oldest => '最舊的在前';
 }
 
 // Path: misskey.chat_
@@ -2262,6 +2277,7 @@ class _TranslationsMisskeyThemeZhTw extends TranslationsMisskeyThemeEnUs {
 	@override String get install => '安裝佈景主題';
 	@override String get manage => '管理佈景主題';
 	@override String get code => '佈景主題代碼';
+	@override String get copyThemeCode => '複製主題代碼';
 	@override String get description => '描述';
 	@override String installed({required Object name}) => '${name}已安裝';
 	@override String get installedThemes => '已經安裝的佈景主題';
@@ -3055,6 +3071,7 @@ class _TranslationsMisskeyFileViewerZhTw extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => '加入日期';
 	@override String get attachedNotes => '含有附件的貼文';
+	@override String get usage => '使用情況';
 	@override String get thisPageCanBeSeenFromTheAuthor => '本頁面僅限上傳了這個檔案的使用者可以檢視。';
 }
 
@@ -3398,6 +3415,7 @@ class _TranslationsMisskeyUploaderZhTw extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => '編輯圖片';
 	@override String compressedToX({required Object x}) => '壓縮為 ${x}';
 	@override String savedXPercent({required Object x}) => '節省了 ${x}%';
 	@override String get abortConfirm => '有些檔案尚未上傳，您要中止嗎？';
@@ -3488,6 +3506,28 @@ class _TranslationsMisskeyImageEffectorZhTw extends TranslationsMisskeyImageEffe
 	@override String get addEffect => '新增特效';
 	@override String get discardChangesConfirm => '捨棄更改並退出嗎？';
 	@override late final _TranslationsMisskeyImageEffectorFxsZhTw fxs_ = _TranslationsMisskeyImageEffectorFxsZhTw._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsZhTw extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => '選擇草槁';
+	@override String get cannotCreateDraftAnymore => '已超出可建立的草稿數量上限。\n';
+	@override String get cannotCreateDraft => '無法以此內容建立草稿。\n';
+	@override String get delete => '刪除草稿';
+	@override String get deleteAreYouSure => '確定要刪除草稿嗎？\n';
+	@override String get noDrafts => '沒有草稿。\n';
+	@override String replyTo({required Object user}) => '回覆給 ${user}\n';
+	@override String quoteOf({required Object user}) => '引用自 ${user} 的貼文\n';
+	@override String postTo({required Object channel}) => '發佈到 ${channel}\n';
+	@override String get saveToDraft => '儲存為草稿';
+	@override String get restoreFromDraft => '從草稿復原\n';
+	@override String get restore => '還原';
+	@override String get listDrafts => '草稿清單';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3810,6 +3850,8 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => '可上傳的檔案類型';
 	@override String get uploadableFileTypes_caption => '請指定 MIME 類型。可以用換行區隔多個類型，也可以使用星號（*）作為萬用字元進行指定。（例如：image/*）\n';
 	@override String uploadableFileTypes_caption2({required Object x}) => '有些檔案可能無法判斷其類型。若要允許這類檔案，請在指定中加入 ${x}。';
+	@override String get noteDraftLimit => '伺服器端可建立的貼文草稿數量上限\n';
+	@override String get watermarkAvailable => '浮水印功能是否可用';
 }
 
 // Path: misskey.role_.condition_
