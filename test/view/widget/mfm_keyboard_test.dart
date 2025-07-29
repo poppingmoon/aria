@@ -390,7 +390,7 @@ void main() {
         );
         controller.text = '@testuser';
         controller.selection = const TextSelection.collapsed(offset: 9);
-        await tester.pumpAndSettle();
+        await tester.pumpAndSettle(const Duration(seconds: 1));
         expect(find.text('@testuser'), findsOne);
         await tester.tap(find.text('@testuser@misskey2.tld'));
         expect(controller.text, '@testuser@misskey2.tld ');
@@ -493,7 +493,7 @@ void main() {
         );
         controller.text = '#t';
         controller.selection = const TextSelection.collapsed(offset: 2);
-        await tester.pumpAndSettle();
+        await tester.pumpAndSettle(const Duration(seconds: 1));
         await tester.tap(find.text('test'));
         expect(controller.text, '#test ');
       });

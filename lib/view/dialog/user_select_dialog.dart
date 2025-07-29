@@ -76,6 +76,7 @@ class UserSelectDialog extends HookConsumerWidget {
                 : debouncedHost.isNotEmpty
                 ? toAscii(debouncedHost)
                 : null,
+            limit: 30,
           ).select<AsyncValue<PaginationState<UserDetailed>>>(
             (users) => switch (users) {
               AsyncValue(valueOrNull: final users?) => AsyncValue.data(

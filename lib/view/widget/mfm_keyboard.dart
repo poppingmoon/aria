@@ -552,19 +552,29 @@ class MfmMentionKeyboard extends HookConsumerWidget {
         final match = RegExp(
           r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$',
         ).firstMatch(textBeforeSelection);
-        query.value = match?[0]?.substring(1) ?? '';
+        final q = match?[0]?.substring(1) ?? '';
+        query.value = q;
         final first = match?[2];
         final second = match?[3];
         final username = first ?? second;
-        final host = first != null && second != null ? toAscii(second) : null;
+        final host = first != null && second != null && second.isNotEmpty
+            ? toAscii(second)
+            : null;
         if (username != null && username.isNotEmpty) {
-          users.value = await ref.read(
-            searchUsersByUsernameProvider(
-              account,
-              username,
-              host != null && host.isNotEmpty ? host : null,
-            ).future,
-          );
+          if (ref.exists(
+            searchUsersByUsernameProvider(account, username, host),
+          )) {
+            users.value = await ref.read(
+              searchUsersByUsernameProvider(account, username, host).future,
+            );
+          } else {
+            await Future<void>.delayed(const Duration(milliseconds: 500));
+            if (query.value == q) {
+              users.value = await ref.read(
+                searchUsersByUsernameProvider(account, username, host).future,
+              );
+            }
+          }
         } else {
           users.value = [];
         }
@@ -631,10 +641,19 @@ class MfmHashtagKeyboard extends HookConsumerWidget {
             RegExp(r'#(\S*)$').firstMatch(textBeforeSelection) ??
             RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
         query.value = match?[1] ?? '';
-        if (query.value case final query when query.isNotEmpty) {
-          hashtags.value = await ref.read(
-            searchHashtagsProvider(account, query).future,
-          );
+        if (query.value case final q when q.isNotEmpty) {
+          if (ref.exists(searchHashtagsProvider(account, q))) {
+            hashtags.value = await ref.read(
+              searchHashtagsProvider(account, q).future,
+            );
+          } else {
+            await Future<void>.delayed(const Duration(milliseconds: 500));
+            if (query.value == q) {
+              hashtags.value = await ref.read(
+                searchHashtagsProvider(account, q).future,
+              );
+            }
+          }
         } else {
           hashtags.value = [];
         }
