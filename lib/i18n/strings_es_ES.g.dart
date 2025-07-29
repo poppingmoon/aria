@@ -193,7 +193,6 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'Restablecer';
 	@override String get rotate => 'Rotar';
-	@override String get scale => 'Escala';
 	@override String get schedule => 'Calendario';
 	@override String get scheduledNoteError => 'La publicación de la nota programada ha fallado';
 	@override String get scheduledNotePosted => 'La nota programada ha sido publicada';

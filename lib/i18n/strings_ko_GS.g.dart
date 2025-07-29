@@ -177,7 +177,6 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 		const TextSpan(text: '님이 리노트했다야'),
 	]);
 	@override String get rotate => '돌리기';
-	@override String get scale => '크기';
 	@override String get selectIcon => '아이콘 함 골라보래이';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,

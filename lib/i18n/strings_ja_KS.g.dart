@@ -203,7 +203,6 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'リセット';
 	@override String get rotate => '回転';
-	@override String get scale => '拡大';
 	@override String get schedule => '予約';
 	@override String get scheduledNoteError => '予約済みのノートの投稿がうまいこといかんかったで';
 	@override String get scheduledNotePosted => '予約済みのノートが投稿されたで';
