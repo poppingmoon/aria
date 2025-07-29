@@ -202,7 +202,6 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => '重置';
 	@override String get rotate => '旋转';
-	@override String get scale => '缩放';
 	@override String get schedule => '定时发布';
 	@override String get scheduledNoteError => '定时帖子发布失败';
 	@override String get scheduledNotePosted => '定时帖子已发布';

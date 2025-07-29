@@ -187,7 +187,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'Atur ulang';
 	@override String get rotate => 'Putar';
-	@override String get scale => 'Skala';
 	@override String get selectIcon => 'Pilih icon';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Swa-renote oleh '),

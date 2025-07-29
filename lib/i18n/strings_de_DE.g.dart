@@ -201,7 +201,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'Zurücksetzen';
 	@override String get rotate => 'Drehen';
-	@override String get scale => 'Skalieren';
 	@override String get schedule => 'Zeitplan';
 	@override String get scheduledNoteError => 'Geplante Notiz konnte nicht veröffentlicht werden';
 	@override String get scheduledNotePosted => 'Geplante Notiz wurde veröffentlicht';

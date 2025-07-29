@@ -132,7 +132,6 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 		user,
 	]);
 	@override String get rotate => 'Ruota';
-	@override String get scale => 'Ridimensiona';
 	@override String get schedule => 'Pianifica';
 	@override String get scheduledNoteError => 'La pubblicazione pianificata delle note non è riuscita';
 	@override String get scheduledNotePosted => 'La nota pianificata è stata pubblicata';
