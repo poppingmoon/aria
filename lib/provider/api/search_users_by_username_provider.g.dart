@@ -7,7 +7,7 @@ part of 'search_users_by_username_provider.dart';
 // **************************************************************************
 
 String _$searchUsersByUsernameHash() =>
-    r'b3f547d55642bc3f0b720057f1cae1b532959e78';
+    r'20df0d6393dc73c844f80984ba13916c3be7fa77';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -44,16 +44,22 @@ class SearchUsersByUsernameFamily
   SearchUsersByUsernameProvider call(
     Account account,
     String? username,
-    String? host,
-  ) {
-    return SearchUsersByUsernameProvider(account, username, host);
+    String? host, {
+    int? limit,
+  }) {
+    return SearchUsersByUsernameProvider(account, username, host, limit: limit);
   }
 
   @override
   SearchUsersByUsernameProvider getProviderOverride(
     covariant SearchUsersByUsernameProvider provider,
   ) {
-    return call(provider.account, provider.username, provider.host);
+    return call(
+      provider.account,
+      provider.username,
+      provider.host,
+      limit: provider.limit,
+    );
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,26 +81,32 @@ class SearchUsersByUsernameFamily
 class SearchUsersByUsernameProvider
     extends AutoDisposeFutureProvider<List<UserDetailed>> {
   /// See also [searchUsersByUsername].
-  SearchUsersByUsernameProvider(Account account, String? username, String? host)
-    : this._internal(
-        (ref) => searchUsersByUsername(
-          ref as SearchUsersByUsernameRef,
-          account,
-          username,
-          host,
-        ),
-        from: searchUsersByUsernameProvider,
-        name: r'searchUsersByUsernameProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$searchUsersByUsernameHash,
-        dependencies: SearchUsersByUsernameFamily._dependencies,
-        allTransitiveDependencies:
-            SearchUsersByUsernameFamily._allTransitiveDependencies,
-        account: account,
-        username: username,
-        host: host,
-      );
+  SearchUsersByUsernameProvider(
+    Account account,
+    String? username,
+    String? host, {
+    int? limit,
+  }) : this._internal(
+         (ref) => searchUsersByUsername(
+           ref as SearchUsersByUsernameRef,
+           account,
+           username,
+           host,
+           limit: limit,
+         ),
+         from: searchUsersByUsernameProvider,
+         name: r'searchUsersByUsernameProvider',
+         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+             ? null
+             : _$searchUsersByUsernameHash,
+         dependencies: SearchUsersByUsernameFamily._dependencies,
+         allTransitiveDependencies:
+             SearchUsersByUsernameFamily._allTransitiveDependencies,
+         account: account,
+         username: username,
+         host: host,
+         limit: limit,
+       );
 
   SearchUsersByUsernameProvider._internal(
     super._createNotifier, {
@@ -106,11 +118,13 @@ class SearchUsersByUsernameProvider
     required this.account,
     required this.username,
     required this.host,
+    required this.limit,
   }) : super.internal();
 
   final Account account;
   final String? username;
   final String? host;
+  final int? limit;
 
   @override
   Override overrideWith(
@@ -129,6 +143,7 @@ class SearchUsersByUsernameProvider
         account: account,
         username: username,
         host: host,
+        limit: limit,
       ),
     );
   }
@@ -143,7 +158,8 @@ class SearchUsersByUsernameProvider
     return other is SearchUsersByUsernameProvider &&
         other.account == account &&
         other.username == username &&
-        other.host == host;
+        other.host == host &&
+        other.limit == limit;
   }
 
   @override
@@ -152,6 +168,7 @@ class SearchUsersByUsernameProvider
     hash = _SystemHash.combine(hash, account.hashCode);
     hash = _SystemHash.combine(hash, username.hashCode);
     hash = _SystemHash.combine(hash, host.hashCode);
+    hash = _SystemHash.combine(hash, limit.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -169,6 +186,9 @@ mixin SearchUsersByUsernameRef
 
   /// The parameter `host` of this provider.
   String? get host;
+
+  /// The parameter `limit` of this provider.
+  int? get limit;
 }
 
 class _SearchUsersByUsernameProviderElement
@@ -182,6 +202,8 @@ class _SearchUsersByUsernameProviderElement
   String? get username => (origin as SearchUsersByUsernameProvider).username;
   @override
   String? get host => (origin as SearchUsersByUsernameProvider).host;
+  @override
+  int? get limit => (origin as SearchUsersByUsernameProvider).limit;
 }
 
 // ignore_for_file: type=lint

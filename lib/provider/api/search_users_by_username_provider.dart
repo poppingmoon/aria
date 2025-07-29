@@ -14,8 +14,9 @@ FutureOr<List<UserDetailed>> searchUsersByUsername(
   Ref ref,
   Account account,
   String? username,
-  String? host,
-) async {
+  String? host, {
+  int? limit,
+}) async {
   final link = ref.keepAlive();
   Timer? timer;
   ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -29,7 +30,7 @@ FutureOr<List<UserDetailed>> searchUsersByUsername(
           UsersSearchByUsernameAndHostRequest(
             username: username,
             host: host,
-            limit: 30,
+            limit: limit,
           ),
         );
     return response.whereType<UserDetailed>().toList();
