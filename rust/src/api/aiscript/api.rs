@@ -239,7 +239,10 @@ impl AsApiLib {
                         Ok(Value::new(if let Some(err) = &result.1 {
                             V::Error {
                                 value: "request_failed".to_string(),
-                                info: Some(Value::str(err).into()),
+                                info: serde_json::from_str(&err)
+                                    .ok()
+                                    .map(Value::new)
+                                    .map(Into::into),
                             }
                         } else {
                             serde_json::from_str(&result.0).unwrap_or_default()

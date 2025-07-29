@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -109,12 +110,12 @@ Future<AiScript> createAiScript(
               );
               return (jsonEncode(response), null);
             } catch (e) {
-              return ('', e.toString());
+              return ('', _jsonEncodeError(e));
             }
           }
-          return ('', e.toString());
+          return ('', jsonEncode(e));
         } catch (e) {
-          return ('', e.toString());
+          return ('', _jsonEncodeError(e));
         }
       },
       save: (key, value) => ref
@@ -141,4 +142,33 @@ Future<AiScript> createAiScript(
         ? AsPlayLib(thisId: playId, thisUrl: url.toString())
         : null,
   );
+}
+
+String _jsonEncodeError(Object error) {
+  switch (error) {
+    case MisskeyException():
+      return jsonEncode(error);
+    case DioException(:final type, :final response, :final error):
+      if (response?.data case final data?) {
+        if (data case {'error': final error}) {
+          try {
+            return jsonEncode(error);
+          } catch (_) {}
+        }
+        try {
+          return jsonEncode(data);
+        } catch (_) {}
+      }
+      return jsonEncode({
+        'type': type.toString(),
+        'response': ?response?.toString(),
+        'error': ?error?.toString(),
+      });
+    default:
+      try {
+        return jsonEncode(error);
+      } catch (_) {
+        return jsonEncode(error.toString());
+      }
+  }
 }
