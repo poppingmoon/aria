@@ -14,26 +14,30 @@ class SharePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(onPressed: () => context.go('/timelines')),
-        title: Text(t.misskey.share),
-      ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          final account = accounts[index];
-          return AccountPreview(
-            account: account,
-            trailing: const Icon(Icons.navigate_next),
-            avatarSize: 40.0,
-            onTap: () async {
-              await ref.read(shareNotifierProvider.notifier).share(account);
-              if (!context.mounted) return;
-              context.go('/$account/post');
-            },
-          );
-        },
-        itemCount: accounts.length,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (_, _) => context.go('/'),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: BackButton(onPressed: () => context.go('/')),
+          title: Text(t.misskey.share),
+        ),
+        body: ListView.builder(
+          itemBuilder: (context, index) {
+            final account = accounts[index];
+            return AccountPreview(
+              account: account,
+              trailing: const Icon(Icons.navigate_next),
+              avatarSize: 40.0,
+              onTap: () async {
+                await ref.read(shareNotifierProvider.notifier).share(account);
+                if (!context.mounted) return;
+                context.go('/$account/post');
+              },
+            );
+          },
+          itemCount: accounts.length,
+        ),
       ),
     );
   }
