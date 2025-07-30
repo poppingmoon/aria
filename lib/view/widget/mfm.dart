@@ -372,27 +372,29 @@ class _Mfm extends StatelessWidget {
               context: context,
               builder: (context) => UrlSheet(url: url),
             ),
-            child: Text.rich(
-              TextSpan(
-                children: [
-                  ..._buildNodes(
-                    context,
-                    config.copyWith(
-                      style: config.style.apply(color: colors.link),
+            child: AbsorbPointer(
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    ..._buildNodes(
+                      context,
+                      config.copyWith(
+                        style: config.style.apply(color: colors.link),
+                      ),
+                      children,
                     ),
-                    children,
-                  ),
-                  WidgetSpan(
-                    child: Icon(
-                      Icons.open_in_new,
-                      color: colors.link.withValues(alpha: config.opacity),
-                      size: config.style.fontSize! * config.scale,
+                    WidgetSpan(
+                      child: Icon(
+                        Icons.open_in_new,
+                        color: colors.link.withValues(alpha: config.opacity),
+                        size: config.style.fontSize! * config.scale,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+                textAlign: config.align,
+                textScaler: TextScaler.noScaling,
               ),
-              textAlign: config.align,
-              textScaler: TextScaler.noScaling,
             ),
           ),
         ),
