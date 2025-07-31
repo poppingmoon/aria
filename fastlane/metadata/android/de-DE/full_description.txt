@@ -1,13 +1,13 @@
-Aria is a client app for Misskey, a federated social media platform.
+Aria ist eine Client-App für Misskey, einer föderierten Social-Media-Plattform.
 
-Supports most of Misskey's features
-Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
+Unterstützt den Großteil von Misskeys Funktionen
+Aria unterstützt die meisten Funktionen, die in Misskey verfügbar sind, einschließlich der Anzeige verschiedener Arten von Chroniken, Posten von Notizen, Bearbeiten von Clips, Listen oder Antennen, usw.
 
-Swipe to switch between multiple accounts (of multiple servers)
-Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+Zwischen mehreren Konten (mehrere Server) wechseln durch Wischen
+Aria erleichtert es, verschiedene Chroniken anzuzeigen, indem man sie als Tabs speichert. Es können beliebige Chroniken von Benutzern als Tabs gespeichert werden, um verschiedenen Themen über Server hinweg zu folgen.
 
-Based on the design of the official Misskey Web client
-The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+Design basiert auf dem offiziellen Misskey Web Client
+Die Oberfläche ist so gestaltet, dass sie weitgehend der offiziellen Misskey-Oberfläche entspricht. Notizen können ebenfalls mit MFM gestaltet werden.
 
-Highly customizable
-Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+Umfangreich anpassbar
+Zahlreiche Einstellungen, wie die Darstellungsgröße von Reaktionen und die Anzeige von Avataren, können geändert und den eigenen Vorlieben angepasst werden. Zudem kann das Anwendungsthema mit eigenen Farben angepasst werden.
