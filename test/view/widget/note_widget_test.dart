@@ -88,7 +88,7 @@ Future<ProviderContainer> setupWidget(
 }
 
 void main() {
-  group('mute', () {
+  group('deleted', () {
     testWidgets('should not show a note if not stored', (tester) async {
       const account = Account(host: 'misskey.tld');
       await setupWidget(tester, account: account, noteId: 'test');
@@ -96,11 +96,27 @@ void main() {
       expect(find.byType(Text), findsNothing);
     });
 
-    testWidgets('should not show a note if the renote target is not stored', (
+    testWidgets(
+      'should show a placeholder if the renote target is not stored',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(id: 'test', renoteId: 'renote');
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await tester.pumpAndSettle();
+        expect(find.text(t.misskey.deletedNote), findsOne);
+      },
+    );
+
+    testWidgets('should show a placeholder if the reply target is not stored', (
       tester,
     ) async {
       const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(id: 'test', renoteId: 'renote');
+      final note = dummyNote.copyWith(id: 'test', replyId: 'reply');
       final container = await setupWidget(
         tester,
         account: account,
@@ -108,9 +124,11 @@ void main() {
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
-      expect(find.byType(Text), findsNothing);
+      expect(find.text(t.misskey.deletedNote), findsOne);
     });
+  });
 
+  group('mute', () {
     testWidgets('should not show a hard muted note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
