@@ -106,13 +106,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
         ? ref.watch(conversationNotesProvider(account, appearNote.id))
         : null;
     final isRenote = note.isRenote;
-    final theme = Theme.of(context);
-    final style = DefaultTextStyle.of(context).style;
-
-    return InkWell(
-      onTap: tapAction != NoteActionType.expand
+    final onTap = useMemoized(
+      () => tapAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: tapAction,
               note: note,
@@ -120,9 +116,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
-      onDoubleTap: doubleTapAction != NoteActionType.expand
+      [account, tapAction, noteId],
+    );
+    final onDoubleTap = useMemoized(
+      () => doubleTapAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: doubleTapAction,
               note: note,
@@ -130,9 +128,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
-      onLongPress: longPressAction != NoteActionType.expand
+      [account, doubleTapAction, noteId],
+    );
+    final onLongPress = useMemoized(
+      () => longPressAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: longPressAction,
               note: note,
@@ -140,6 +140,15 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
+      [account, longPressAction, noteId],
+    );
+    final theme = Theme.of(context);
+    final style = DefaultTextStyle.of(context).style;
+
+    return InkWell(
+      onTap: onTap != null ? () => onTap(ref) : null,
+      onDoubleTap: onDoubleTap != null ? () => onDoubleTap(ref) : null,
+      onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
       child: Padding(
         padding: EdgeInsetsDirectional.only(
           start: 4.0,

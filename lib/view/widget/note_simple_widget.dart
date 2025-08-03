@@ -58,38 +58,38 @@ class NoteSimpleWidget extends HookConsumerWidget {
       ),
     );
     final showContent = useState(alwaysExpandCw);
+    final onTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: tapAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, tapAction, noteId],
+    );
+    final onDoubleTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: doubleTapAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, doubleTapAction, noteId],
+    );
+    final onLongPress = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: longPressAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, longPressAction, noteId],
+    );
 
     return InkWell(
-      onTap: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: tapAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, tapAction, note.id],
-      ),
-      onDoubleTap: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: doubleTapAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, doubleTapAction, note.id],
-      ),
-      onLongPress: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: longPressAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, longPressAction, note.id],
-      ),
+      onTap: onTap != null ? () => onTap(ref) : null,
+      onDoubleTap: onDoubleTap != null ? () => onDoubleTap(ref) : null,
+      onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
       borderRadius: borderRadius,
       child: Padding(
         padding: const EdgeInsets.all(4.0),

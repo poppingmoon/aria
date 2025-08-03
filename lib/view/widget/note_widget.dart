@@ -139,6 +139,36 @@ class NoteWidget extends HookConsumerWidget {
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
     final backgroundColor = this.backgroundColor ?? noteBackgroundColor;
+    final onTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: tapAction,
+        note: note,
+        appearNote: appearNote,
+        clipId: clipId,
+      ),
+      [account, tapAction, noteId, clipId],
+    );
+    final onDoubleTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: doubleTapAction,
+        note: note,
+        appearNote: appearNote,
+        clipId: clipId,
+      ),
+      [account, doubleTapAction, noteId, clipId],
+    );
+    final onLongPress = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: longPressAction,
+        note: note,
+        appearNote: appearNote,
+        clipId: clipId,
+      ),
+      [account, longPressAction, noteId, clipId],
+    );
     final style = DefaultTextStyle.of(context).style;
 
     return Padding(
@@ -148,39 +178,9 @@ class NoteWidget extends HookConsumerWidget {
         clipBehavior: Clip.hardEdge,
         borderRadius: borderRadius,
         child: InkWell(
-          onTap: useMemoized(
-            () => getNoteAction(
-              ref,
-              account: account,
-              type: tapAction,
-              note: note,
-              appearNote: appearNote,
-              clipId: clipId,
-            ),
-            [account, tapAction, noteId, clipId],
-          ),
-          onDoubleTap: useMemoized(
-            () => getNoteAction(
-              ref,
-              account: account,
-              type: doubleTapAction,
-              note: note,
-              appearNote: appearNote,
-              clipId: clipId,
-            ),
-            [account, doubleTapAction, noteId, clipId],
-          ),
-          onLongPress: useMemoized(
-            () => getNoteAction(
-              ref,
-              account: account,
-              type: longPressAction,
-              note: note,
-              appearNote: appearNote,
-              clipId: clipId,
-            ),
-            [account, longPressAction, noteId, clipId],
-          ),
+          onTap: onTap != null ? () => onTap(ref) : null,
+          onDoubleTap: onDoubleTap != null ? () => onDoubleTap(ref) : null,
+          onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
           child: Padding(
             padding: EdgeInsetsDirectional.only(
               start: 4.0,
