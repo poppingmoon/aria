@@ -39,6 +39,7 @@ Future<void> showNoteSheet({
   required BuildContext context,
   required Account account,
   required String noteId,
+  bool renote = false,
   String? clipId,
   bool disableHeader = false,
 }) {
@@ -47,6 +48,7 @@ Future<void> showNoteSheet({
     builder: (context) => NoteSheet(
       account: account,
       noteId: noteId,
+      renote: renote,
       clipId: clipId,
       disableHeader: disableHeader,
     ),
@@ -60,12 +62,14 @@ class NoteSheet extends ConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
+    this.renote = false,
     this.clipId,
     this.disableHeader = false,
   });
 
   final Account account;
   final String noteId;
+  final bool renote;
   final String? clipId;
   final bool disableHeader;
 
@@ -73,8 +77,26 @@ class NoteSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
-    if (note == null || appearNote == null) {
+    if (note == null) {
       return NoteFallbackWidget(account: account, noteId: noteId);
+    }
+    if (renote) {
+      return _RenoteSheet(
+        account: account,
+        note: note,
+        disableHeader: disableHeader,
+      );
+    }
+    if (appearNote == null) {
+      if (note.isRenote) {
+        return _RenoteSheet(
+          account: account,
+          note: note,
+          disableHeader: disableHeader,
+        );
+      } else {
+        return NoteFallbackWidget(account: account, noteId: noteId);
+      }
     }
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['notes', appearNote.id]);
@@ -609,6 +631,65 @@ class NoteSheet extends ConsumerWidget {
           ],
         ],
       ),
+    );
+  }
+}
+
+class _RenoteSheet extends ConsumerWidget {
+  const _RenoteSheet({
+    required this.account,
+    required this.note,
+    required this.disableHeader,
+  });
+
+  final Account account;
+  final Note note;
+  final bool disableHeader;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final url = serverUrl.replace(pathSegments: ['notes', note.id]);
+    final theme = Theme.of(context);
+
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        if (!disableHeader)
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: Text(t.misskey.renoteDetails),
+            onTap: () => context.push('/$account/notes/${note.id}'),
+          ),
+        ListTile(
+          leading: const Icon(Icons.link),
+          title: Text(t.misskey.copyLinkRenote),
+          onTap: () => copyToClipboard(context, url.toString()),
+        ),
+        if (account.username == note.user.username && note.user.host == null)
+          ListTile(
+            leading: const Icon(Icons.delete),
+            title: Text(t.misskey.unrenote),
+            onTap: () async {
+              await futureWithDialog(
+                context,
+                ref
+                    .read(misskeyProvider(account))
+                    .notes
+                    .delete(NotesDeleteRequest(noteId: note.id))
+                    .then(
+                      (_) => ref
+                          .read(notesNotifierProvider(account).notifier)
+                          .remove(note.id),
+                    ),
+              );
+              if (!context.mounted) return;
+              context.pop();
+            },
+            iconColor: theme.colorScheme.error,
+            textColor: theme.colorScheme.error,
+          ),
+      ],
     );
   }
 }

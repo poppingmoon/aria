@@ -22,6 +22,7 @@ import '../../util/extract_url.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
+import 'deleted_renote_widget.dart';
 import 'hard_muted_note_widget.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
@@ -29,6 +30,7 @@ import 'mfm.dart';
 import 'muted_note_widget.dart';
 import 'note_footer.dart';
 import 'note_header.dart';
+import 'note_sheet.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
 import 'note_summary.dart';
@@ -73,7 +75,15 @@ class NoteWidget extends HookConsumerWidget {
     final appearNote =
         this.note ?? ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
-      return HardMutedNoteWidget(borderRadius: borderRadius);
+      return Padding(
+        padding: margin,
+        child: DeletedRenoteWidget(
+          account: account,
+          note: note,
+          backgroundColor: this.backgroundColor,
+          borderRadius: borderRadius,
+        ),
+      );
     }
     final hardMuted = ref.watch(
       checkWordMuteProvider(account, appearNote.id, hardMute: true),
@@ -230,6 +240,12 @@ class NoteWidget extends HookConsumerWidget {
                         account: account,
                         noteId: noteId,
                         onTap: () => context.push('/$account/notes/$noteId'),
+                        onLongPress: () => showNoteSheet(
+                          context: context,
+                          account: account,
+                          noteId: noteId,
+                          renote: true,
+                        ),
                       ),
                     ),
                   ),

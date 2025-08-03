@@ -9,6 +9,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../util/get_note_action.dart';
 import 'cw_button.dart';
+import 'deleted_note_widget.dart';
 import 'mfm.dart';
 import 'note_header.dart';
 import 'sub_note_content.dart';
@@ -36,7 +37,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const SizedBox.shrink();
+      return DeletedNoteWidget(borderRadius: borderRadius);
     }
     final (
       tapAction,

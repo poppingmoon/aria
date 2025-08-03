@@ -12,6 +12,7 @@ import '../../provider/note_provider.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
+import 'deleted_note_widget.dart';
 import 'mfm.dart';
 import 'note_header.dart';
 import 'sub_note_content.dart';
@@ -37,7 +38,7 @@ class NoteSubWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const SizedBox.shrink();
+      return const DeletedNoteWidget();
     }
     final (
       tapAction,

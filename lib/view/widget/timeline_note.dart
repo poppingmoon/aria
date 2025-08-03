@@ -48,7 +48,7 @@ class TimelineNote extends HookConsumerWidget {
     final notifier = ref.watch(
       noteSubscriptionNotifierProvider(account).notifier,
     );
-    if (note == null || appearNote == null) {
+    if (note == null) {
       return Padding(
         padding: margin,
         child: Material(
@@ -56,6 +56,15 @@ class TimelineNote extends HookConsumerWidget {
           borderRadius: borderRadius,
           child: NoteFallbackWidget(account: account, noteId: noteId),
         ),
+      );
+    }
+    if (appearNote == null) {
+      return NoteWidget(
+        account: account,
+        noteId: noteId,
+        focusPostForm: focusPostForm,
+        margin: margin,
+        borderRadius: borderRadius,
       );
     }
     if ((tabSettings.withFiles && appearNote.fileIds.isEmpty) || hide) {

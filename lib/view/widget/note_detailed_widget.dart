@@ -27,11 +27,14 @@ import 'acct_widget.dart';
 import 'bot_badge.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
+import 'deleted_note_widget.dart';
+import 'deleted_renote_widget.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
 import 'muted_note_widget.dart';
 import 'note_footer.dart';
+import 'note_sheet.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
 import 'note_visibility_icon.dart';
@@ -63,7 +66,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
     }
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
-      return const SizedBox.shrink();
+      return DeletedRenoteWidget(
+        account: account,
+        note: note,
+        backgroundColor: Colors.transparent,
+      );
     }
     final muted = useState(
       ref.watch(checkWordMuteProvider(account, appearNote.id)) ||
@@ -170,19 +177,24 @@ class NoteDetailedWidget extends HookConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      for (final note in conversation.reversed) ...[
-                        ChannelColorBarBox(
-                          note: appearNote.reply,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.only(
-                              start: horizontalPadding - 4.0,
-                            ),
-                            child: NoteSubWidget(
-                              account: account,
-                              noteId: note.id,
+                      if (conversation.isNotEmpty)
+                        for (final note in conversation.reversed) ...[
+                          ChannelColorBarBox(
+                            note: appearNote.reply,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                start: horizontalPadding - 4.0,
+                              ),
+                              child: NoteSubWidget(
+                                account: account,
+                                noteId: note.id,
+                              ),
                             ),
                           ),
-                        ),
+                          const SizedBox(height: 8.0),
+                        ]
+                      else ...[
+                        const DeletedNoteWidget(),
                         const SizedBox(height: 8.0),
                       ],
                     ],
@@ -196,7 +208,17 @@ class NoteDetailedWidget extends HookConsumerWidget {
                   padding: EdgeInsetsDirectional.only(
                     start: horizontalPadding - 4.0,
                   ),
-                  child: RenoteHeader(account: account, noteId: noteId),
+                  child: RenoteHeader(
+                    account: account,
+                    noteId: noteId,
+                    onLongPress: () => showNoteSheet(
+                      context: context,
+                      account: account,
+                      noteId: noteId,
+                      renote: true,
+                      disableHeader: true,
+                    ),
+                  ),
                 ),
               ),
             ChannelColorBarBox(

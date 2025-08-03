@@ -22,11 +22,13 @@ class RenoteHeader extends HookConsumerWidget {
     required this.account,
     required this.noteId,
     this.onTap,
+    this.onLongPress,
   });
 
   final Account account;
   final String noteId;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,6 +50,7 @@ class RenoteHeader extends HookConsumerWidget {
 
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: DefaultTextStyle.merge(
         style: style,
         child: IconTheme.merge(
