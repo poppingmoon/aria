@@ -25,15 +25,26 @@ class MutedNoteWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final (verticalPadding, horizontalPadding) = ref.watch(
+    final (verticalPadding, horizontalPadding, noteBackgroundColor) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+        (settings) => (
+          settings.noteVerticalPadding,
+          settings.noteHorizontalPadding,
+          switch (note.visibility) {
+            NoteVisibility.public => settings.publicNoteBackgroundColor,
+            NoteVisibility.home => settings.homeNoteBackgroundColor,
+            NoteVisibility.followers => settings.followersNoteBackgroundColor,
+            NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
+            null => null,
+          },
+        ),
       ),
     );
+    final backgroundColor = this.backgroundColor ?? noteBackgroundColor;
+    final theme = Theme.of(context);
 
     return Material(
-      color: Theme.of(context).colorScheme.surface,
+      color: backgroundColor ?? theme.colorScheme.surface,
       clipBehavior: Clip.hardEdge,
       borderRadius: borderRadius,
       child: InkWell(
@@ -51,9 +62,7 @@ class MutedNoteWidget extends ConsumerWidget {
               builder: (context, span) => Text.rich(
                 t.aria.userSaysSomething(name: span),
                 style: TextStyle(
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withValues(alpha: 0.7),
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
                 ),
                 textAlign: TextAlign.center,
               ),

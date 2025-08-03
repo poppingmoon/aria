@@ -91,7 +91,6 @@ class NoteWidget extends HookConsumerWidget {
           account: account,
           note: appearNote,
           onTap: () => muted.value = false,
-          backgroundColor: Theme.of(context).colorScheme.surface,
           borderRadius: borderRadius,
         ),
       );

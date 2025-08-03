@@ -76,6 +76,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
         account: account,
         note: note,
         onTap: () => muted.value = false,
+        backgroundColor: Colors.transparent,
       );
     }
 
