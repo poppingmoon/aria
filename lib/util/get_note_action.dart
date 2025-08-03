@@ -11,8 +11,7 @@ import '../view/widget/emoji_picker.dart';
 import '../view/widget/note_sheet.dart';
 import 'future_with_dialog.dart';
 
-void Function()? getNoteAction(
-  WidgetRef ref, {
+void Function(WidgetRef ref)? getNoteAction({
   required Account account,
   required NoteActionType type,
   required Note note,
@@ -25,10 +24,10 @@ void Function()? getNoteAction(
   }
   return switch (type) {
     NoteActionType.none => null,
-    NoteActionType.expand => () => ref.context.push(
+    NoteActionType.expand => (ref) => ref.context.push(
       '/$account/notes/${appearNote.id}',
     ),
-    NoteActionType.menu => () => showNoteSheet(
+    NoteActionType.menu => (ref) => showNoteSheet(
       context: ref.context,
       account: account,
       noteId: note.id,
@@ -37,7 +36,7 @@ void Function()? getNoteAction(
     ),
     NoteActionType.reaction =>
       !account.isGuest
-          ? () async {
+          ? (ref) async {
               final emoji =
                   appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
                   ? '❤'

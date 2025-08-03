@@ -9,6 +9,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../util/get_note_action.dart';
 import 'cw_button.dart';
+import 'deleted_note_widget.dart';
 import 'mfm.dart';
 import 'note_header.dart';
 import 'sub_note_content.dart';
@@ -36,7 +37,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const SizedBox.shrink();
+      return DeletedNoteWidget(borderRadius: borderRadius);
     }
     final (
       tapAction,
@@ -58,38 +59,38 @@ class NoteSimpleWidget extends HookConsumerWidget {
       ),
     );
     final showContent = useState(alwaysExpandCw);
+    final onTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: tapAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, tapAction, noteId],
+    );
+    final onDoubleTap = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: doubleTapAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, doubleTapAction, noteId],
+    );
+    final onLongPress = useMemoized(
+      () => getNoteAction(
+        account: account,
+        type: longPressAction,
+        note: note,
+        appearNote: note,
+      ),
+      [account, longPressAction, noteId],
+    );
 
     return InkWell(
-      onTap: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: tapAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, tapAction, note.id],
-      ),
-      onDoubleTap: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: doubleTapAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, doubleTapAction, note.id],
-      ),
-      onLongPress: useMemoized(
-        () => getNoteAction(
-          ref,
-          account: account,
-          type: longPressAction,
-          note: note,
-          appearNote: note,
-        ),
-        [account, longPressAction, note.id],
-      ),
+      onTap: onTap != null ? () => onTap(ref) : null,
+      onDoubleTap: onDoubleTap != null ? () => onDoubleTap(ref) : null,
+      onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
       borderRadius: borderRadius,
       child: Padding(
         padding: const EdgeInsets.all(4.0),

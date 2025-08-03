@@ -27,11 +27,14 @@ import 'acct_widget.dart';
 import 'bot_badge.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
+import 'deleted_note_widget.dart';
+import 'deleted_renote_widget.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
 import 'muted_note_widget.dart';
 import 'note_footer.dart';
+import 'note_sheet.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
 import 'note_visibility_icon.dart';
@@ -63,7 +66,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
     }
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
-      return const SizedBox.shrink();
+      return DeletedRenoteWidget(
+        account: account,
+        note: note,
+        backgroundColor: Colors.transparent,
+      );
     }
     final muted = useState(
       ref.watch(checkWordMuteProvider(account, appearNote.id)) ||
@@ -76,6 +83,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
         account: account,
         note: note,
         onTap: () => muted.value = false,
+        backgroundColor: Colors.transparent,
       );
     }
 
@@ -105,13 +113,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
         ? ref.watch(conversationNotesProvider(account, appearNote.id))
         : null;
     final isRenote = note.isRenote;
-    final theme = Theme.of(context);
-    final style = DefaultTextStyle.of(context).style;
-
-    return InkWell(
-      onTap: tapAction != NoteActionType.expand
+    final onTap = useMemoized(
+      () => tapAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: tapAction,
               note: note,
@@ -119,9 +123,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
-      onDoubleTap: doubleTapAction != NoteActionType.expand
+      [account, tapAction, noteId],
+    );
+    final onDoubleTap = useMemoized(
+      () => doubleTapAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: doubleTapAction,
               note: note,
@@ -129,9 +135,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
-      onLongPress: longPressAction != NoteActionType.expand
+      [account, doubleTapAction, noteId],
+    );
+    final onLongPress = useMemoized(
+      () => longPressAction != NoteActionType.expand
           ? getNoteAction(
-              ref,
               account: account,
               type: longPressAction,
               note: note,
@@ -139,6 +147,15 @@ class NoteDetailedWidget extends HookConsumerWidget {
               disableHeader: true,
             )
           : null,
+      [account, longPressAction, noteId],
+    );
+    final theme = Theme.of(context);
+    final style = DefaultTextStyle.of(context).style;
+
+    return InkWell(
+      onTap: onTap != null ? () => onTap(ref) : null,
+      onDoubleTap: onDoubleTap != null ? () => onDoubleTap(ref) : null,
+      onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
       child: Padding(
         padding: EdgeInsetsDirectional.only(
           start: 4.0,
@@ -160,19 +177,24 @@ class NoteDetailedWidget extends HookConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      for (final note in conversation.reversed) ...[
-                        ChannelColorBarBox(
-                          note: appearNote.reply,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.only(
-                              start: horizontalPadding - 4.0,
-                            ),
-                            child: NoteSubWidget(
-                              account: account,
-                              noteId: note.id,
+                      if (conversation.isNotEmpty)
+                        for (final note in conversation.reversed) ...[
+                          ChannelColorBarBox(
+                            note: appearNote.reply,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                start: horizontalPadding - 4.0,
+                              ),
+                              child: NoteSubWidget(
+                                account: account,
+                                noteId: note.id,
+                              ),
                             ),
                           ),
-                        ),
+                          const SizedBox(height: 8.0),
+                        ]
+                      else ...[
+                        const DeletedNoteWidget(),
                         const SizedBox(height: 8.0),
                       ],
                     ],
@@ -186,7 +208,17 @@ class NoteDetailedWidget extends HookConsumerWidget {
                   padding: EdgeInsetsDirectional.only(
                     start: horizontalPadding - 4.0,
                   ),
-                  child: RenoteHeader(account: account, noteId: noteId),
+                  child: RenoteHeader(
+                    account: account,
+                    noteId: noteId,
+                    onLongPress: () => showNoteSheet(
+                      context: context,
+                      account: account,
+                      noteId: noteId,
+                      renote: true,
+                      disableHeader: true,
+                    ),
+                  ),
                 ),
               ),
             ChannelColorBarBox(
