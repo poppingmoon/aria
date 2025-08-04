@@ -66,6 +66,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get background => 'Hintergrund';
 	@override String get buttonTypes => 'Schaltflächentyp';
 	@override String get calculating => 'Berechne...';
+	@override String get clientInfo => 'Client-Informationen';
 	@override String get confirmBeforeFollow => 'Folgen bestätigen';
 	@override String get confirmBeforePost => 'Posten bestätigen';
 	@override String get confirmBeforeReact => 'Reaktion bestätigen';
@@ -84,6 +85,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 		other: 'Willst du ${n} Dateien wirklich löschen?',
 	);
 	@override String get deleteTabConfirm => 'Willst du diesen Tab wirklich löschen?';
+	@override String get device => 'Gerät';
 	@override String get disableDataSaverWhenOnWifi => 'Datensparmodus bei Wi-Fi deaktivieren';
 	@override String get disableStreamingTimeline => 'Echtzeitaktualisierung der Chronik deaktivieren';
 	@override String get disableSubscribingNotes => 'Echtzeitaktualisierung der Reaktionen deaktivieren';
@@ -219,6 +221,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get showAvatarsInNote => 'Avatare in Notizen anzeigen';
 	@override String get showAvatarsInSubNote => 'Avatare in Zitaten und Antworten anzeigen';
+	@override String get showCaption => 'Alternativtext anzeigen';
 	@override String get showEntireImage => 'Seitenverhältnis beibehalten';
 	@override String get showExpandedImage => 'Anzeigebereich ausfüllen';
 	@override String get showGapBetweenNotesInTimeline => 'Abstände zwischen Notizen in der Chronik anzeigen';
