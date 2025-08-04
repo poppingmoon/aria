@@ -517,10 +517,10 @@ packages:
     dependency: "direct main"
     description:
       name: file_picker
-      sha256: ef9908739bdd9c476353d6adff72e88fd00c625f5b959ae23f7567bd5137db0a
+      sha256: "13ba4e627ef24503a465d1d61b32596ce10eb6b8903678d362a528f9939b4aa8"
       url: "https://pub.dev"
     source: hosted
-    version: "10.2.0"
+    version: "10.2.1"
   fixnum:
     dependency: transitive
     description:
@@ -1270,10 +1270,10 @@ packages:
     dependency: "direct main"
     description:
       name: material_symbols_icons
-      sha256: "7c50901b39d1ad645ee25d920aed008061e1fd541a897b4ebf2c01d966dbf16b"
+      sha256: ef20d86fb34c2b59eb7553c4d795bb8a7ec8c890c53ffd3148c64f7adc46ae50
       url: "https://pub.dev"
     source: hosted
-    version: "4.2815.1"
+    version: "4.2858.1"
   matrix2d:
     dependency: transitive
     description:
@@ -1294,8 +1294,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: ccdf6ac326c313f569c10b78469573f861af874e
-      resolved-ref: ccdf6ac326c313f569c10b78469573f861af874e
+      ref: "1b9072e84c2437ebe13237dca7ff82c1e74520a1"
+      resolved-ref: "1b9072e84c2437ebe13237dca7ff82c1e74520a1"
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -1311,8 +1311,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: d85919032731f0b0c0b9999959103c9cd3f9527f
-      resolved-ref: d85919032731f0b0c0b9999959103c9cd3f9527f
+      ref: a9704f10ffe7b2c195741f54e8b6c59b3fabdf57
+      resolved-ref: a9704f10ffe7b2c195741f54e8b6c59b3fabdf57
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
@@ -1749,26 +1749,26 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: bc9488b19acbc4756aa60a9de19720045f9d49a4a7524d56475e0a6965bcd8bd
+      sha256: b02c531f453c328a1343818c64d730357ac140860147c9a29030fdfc82039266
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.3"
+    version: "4.8.1"
   slang_build_runner:
     dependency: "direct dev"
     description:
       name: slang_build_runner
-      sha256: dac0afb5a88ddd90e59d4c71ee228e078879cffbcbeca5fae2befef3c2896dd2
+      sha256: "3679d6ab1373a9e5c0894d29d612abd2f75f969b0ef2f19cafaed2d1b9e49d39"
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.0"
+    version: "4.8.0"
   slang_flutter:
     dependency: "direct main"
     description:
       name: slang_flutter
-      sha256: fff13b6fc8b0378ee23856c4f9fd7f8e2777b430090681f4d19ab14c47de9bc6
+      sha256: "7a5e55f2b1ec99e06354a5213b992d34017efacccba8ffc6066cfc5517cc0282"
       url: "https://pub.dev"
     source: hosted
-    version: "4.7.0"
+    version: "4.8.0"
   source_gen:
     dependency: transitive
     description:
@@ -1958,8 +1958,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "05d864e84b6d6028d457ee9b03f61836a4c1f316"
-      resolved-ref: "05d864e84b6d6028d457ee9b03f61836a4c1f316"
+      ref: "34eb94b6837386144b25cb02526e398b4d83fe06"
+      resolved-ref: "34eb94b6837386144b25cb02526e398b4d83fe06"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
@@ -2128,10 +2128,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_avfoundation
-      sha256: "9fedd55023249f3a02738c195c906b4e530956191febf0838e37d0dac912f953"
+      sha256: "509ef9cfe7a3379783ccf306d45f5b5fc9db747401f956ce31c963417019e48e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.0"
+    version: "2.8.2"
   video_player_platform_interface:
     dependency: transitive
     description:
