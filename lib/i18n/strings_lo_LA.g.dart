@@ -593,6 +593,7 @@ class _TranslationsMisskeyVisibilityLoLa extends TranslationsMisskeyVisibilityEn
 	// Translations
 	@override String get home => 'ໜ້າຫຼັກ';
 	@override String get followers => 'ຜູ້ຕິດຕາມ';
+	@override String get specified => 'ໂພສ Direct note';
 }
 
 // Path: misskey.profile_
@@ -841,6 +842,7 @@ class _TranslationsMisskeyDeckColumnsLoLa extends TranslationsMisskeyDeckColumns
 	@override String get list => 'ລາຍການ';
 	@override String get channel => 'ຊ່ອງ';
 	@override String get mentions => 'ກ່າວເຖິງເຈົ້າ';
+	@override String get direct => 'ໂພສ Direct note';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

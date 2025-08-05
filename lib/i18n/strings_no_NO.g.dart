@@ -537,6 +537,8 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get renotes => 'Renote';
 	@override String get surrender => 'Avbryt';
 	@override String get information => 'Informasjon';
+	@override String get inMinutes => 'Minutter';
+	@override String get inDays => 'Dager';
 	@override late final _TranslationsMisskeyChatNoNo chat_ = _TranslationsMisskeyChatNoNo._(_root);
 	@override late final _TranslationsMisskeyDeliveryNoNo delivery_ = _TranslationsMisskeyDeliveryNoNo._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingNoNo initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingNoNo._(_root);

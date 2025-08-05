@@ -362,8 +362,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get receiveFollowRequest => 'フォローリクエストされました';
 	@override String get followRequestAccepted => 'フォローが承認されました';
 	@override String get mention => 'メンション';
-	@override String get mentions => 'あなた宛て';
-	@override String get directNotes => 'ダイレクト投稿';
+	@override String get mentions => 'メンション';
+	@override String get directNotes => '指名';
 	@override String get importAndExport => 'インポートとエクスポート';
 	@override String get import => 'インポート';
 	@override String get export => 'エクスポート';
@@ -925,8 +925,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get inboxUrl => 'inboxのURL';
 	@override String get addedRelays => '追加済みのリレー';
 	@override String get serviceworkerInfo => 'プッシュ通知を行うには有効にする必要があります。';
-	@override String get deletedNote => '削除された投稿';
-	@override String get invisibleNote => '非公開の投稿';
+	@override String get deletedNote => '削除されたノート';
+	@override String get invisibleNote => '非公開のノート';
 	@override String get enableInfiniteScroll => '自動でもっと見る';
 	@override String get visibility => '公開範囲';
 	@override String get poll => 'アンケート';
@@ -1656,6 +1656,12 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '全ての「ヒントとコツ」を非表示';
 	@override String get defaultImageCompressionLevel => 'デフォルトの画像圧縮度';
 	@override String get defaultImageCompressionLevel_description => '低くすると画質を保てますが、ファイルサイズは増加します。<br>高くするとファイルサイズを減らせますが、画質は低下します。';
+	@override String get inMinutes => '分';
+	@override String get inDays => '日';
+	@override String get safeModeEnabled => 'セーフモードが有効です';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'セーフモードが有効なため、プラグインはすべて無効化されています。';
+	@override String get customCssIsDisabledBecauseSafeMode => 'セーフモードが有効なため、カスタムCSSは適用されていません。';
+	@override String get themeIsDefaultBecauseSafeMode => 'セーフモードが有効な間はデフォルトのテーマが使用されます。セーフモードをオフにすると元に戻ります。';
 	@override late final _TranslationsMisskeyOrderJaJp order_ = _TranslationsMisskeyOrderJaJp._(_root);
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
@@ -2087,6 +2093,10 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => 'データベースへのフォールバック';
 	@override String get fanoutTimelineDbFallbackDescription => '有効にすると、タイムラインがキャッシュされていない場合にDBへ追加で問い合わせを行うフォールバック処理を行います。無効にすると、フォールバック処理を行わないことでさらにサーバーの負荷を軽減することができますが、タイムラインが取得できる範囲に制限が生じます。';
 	@override String get reactionsBufferingDescription => '有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。';
+	@override String get remoteNotesCleaning => 'リモート投稿の自動クリーニング';
+	@override String get remoteNotesCleaning_description => '有効にすると、参照されていない古いリモートの投稿を定期的にクリーンアップしてデータベースの肥大化を抑制します。';
+	@override String get remoteNotesCleaningMaxProcessingDuration => '最大クリーニング処理継続時間';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => '最低ノート保持日数';
 	@override String get inquiryUrl => '問い合わせ先URL';
 	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定します。';
 	@override String get openRegistration => 'アカウントの作成をオープンにする';
@@ -2105,6 +2115,8 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => '非利用者に対するユーザー作成コンテンツの公開範囲';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'モデレーションが行き届きにくい不適切なリモートコンテンツなどが、自サーバー経由で図らずもインターネットに公開されてしまうことによるトラブル防止などに役立ちます。';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'サーバーで受信したリモートのコンテンツを含め、サーバー内の全てのコンテンツを無条件でインターネットに公開することはリスクが伴います。特に、分散型の特性を知らない閲覧者にとっては、リモートのコンテンツであってもサーバー内で作成されたコンテンツであると誤って認識してしまう可能性があるため、注意が必要です。';
+	@override String get restartServerSetupWizardConfirm_title => 'サーバーの初期設定ウィザードをやり直しますか？';
+	@override String get restartServerSetupWizardConfirm_text => '現在の一部の設定はリセットされます。';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaJp userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaJp._(_root);
 }
 
@@ -2876,7 +2888,7 @@ class _TranslationsMisskeyVisibilityJaJp extends TranslationsMisskeyVisibilityEn
 	@override String get homeDescription => 'ホームタイムラインのみに公開';
 	@override String get followers => 'フォロワー';
 	@override String get followersDescription => '自分のフォロワーのみに公開';
-	@override String get specified => 'ダイレクト';
+	@override String get specified => '指名';
 	@override String get specifiedDescription => '指定したユーザーのみに公開';
 	@override String get disableFederation => '連合なし';
 	@override String get disableFederationDescription => '他サーバーへの配信を行いません';
@@ -3566,6 +3578,7 @@ class _TranslationsMisskeyBootErrorsJaJp extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => 'クライアント設定とキャッシュを削除';
 	@override String get otherOption2 => '簡易クライアントを起動';
 	@override String get otherOption3 => '修復ツールを起動';
+	@override String get otherOption4 => 'Misskeyをセーフモードで起動';
 }
 
 // Path: misskey.search_
@@ -3608,6 +3621,8 @@ class _TranslationsMisskeyServerSetupWizardJaJp extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => '分散型サーバーで構成されるネットワーク(Fediverse)に接続すると、他のサーバーと相互にコンテンツのやり取りが可能です。';
 	@override String get doYouConnectToFediverse_description2 => 'Fediverseと接続することは「連合」とも呼ばれます。';
 	@override String get youCanConfigureMoreFederationSettingsLater => '連合可能なサーバーの指定など、高度な設定も後ほど可能です。';
+	@override String get remoteContentsCleaning => '受信コンテンツの自動クリーニング';
+	@override String get remoteContentsCleaning_description => '連合を行うと、継続して多くのコンテンツを受信します。自動クリーニングを有効にすると、参照されていない古くなったコンテンツを自動でサーバーから削除し、ストレージを節約できます。';
 	@override String get adminInfo => '管理者情報';
 	@override String get adminInfo_description => '問い合わせを受け付けるために使用される管理者情報を設定します。';
 	@override String get adminInfo_mustBeFilled => 'オープンサーバー、または連合がオンの場合は必ず入力が必要です。';
@@ -4271,8 +4286,8 @@ class _TranslationsMisskeyDeckColumnsJaJp extends TranslationsMisskeyDeckColumns
 	@override String get antenna => 'アンテナ';
 	@override String get list => 'リスト';
 	@override String get channel => 'チャンネル';
-	@override String get mentions => 'あなた宛て';
-	@override String get direct => 'ダイレクト';
+	@override String get mentions => 'メンション';
+	@override String get direct => '指名';
 	@override String get roleTimeline => 'ロールタイムライン';
 	@override String get chat => 'チャット';
 }
@@ -4670,9 +4685,9 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityJaJp extends Translat
 	@override String get public => 'すべてのユーザーに公開。';
 	@override String get home => 'ホームタイムラインのみに公開。フォロワー・プロフィールを見に来た人・リノートから、他のユーザーも見ることができます。';
 	@override String get followers => 'フォロワーにのみ公開。本人以外がリノートすることはできず、またフォロワー以外は閲覧できません。';
-	@override String get direct => '指定したユーザーにのみ公開され、また相手に通知が入ります。ダイレクトメッセージのかわりにお使いいただけます。';
+	@override String get direct => '指定したユーザーにのみ公開され、また相手に通知が入ります。';
 	@override String get doNotSendConfidencialOnDirect1 => '機密情報は送信する際は注意してください。';
-	@override String get doNotSendConfidencialOnDirect2 => '送信先のサーバーの管理者は投稿内容を見ることが可能なので、信頼できないサーバーのユーザーにダイレクト投稿を送信する場合は、機密情報の扱いに注意が必要です。';
+	@override String get doNotSendConfidencialOnDirect2 => '送信先のサーバーの管理者は投稿内容を見ることが可能なので、信頼できないサーバーのユーザーが含まれる限定公開のノートを作成する際は、機密情報の扱いに注意が必要です。';
 	@override String get localOnly => '他のサーバーに投稿を連合しません。上記の公開範囲に関わらず、他のサーバーのユーザーは、この設定がついたノートを直接閲覧することができなくなります。';
 }
 

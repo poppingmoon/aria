@@ -1120,6 +1120,8 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get gameRetry => 'Spróbuj ponownie';
 	@override String get postForm => 'Formularz tworzenia wpisu';
 	@override String get information => 'Informacje';
+	@override String get inMinutes => 'minuta';
+	@override String get inDays => 'dzień';
 	@override late final _TranslationsMisskeyChatPlPl chat_ = _TranslationsMisskeyChatPlPl._(_root);
 	@override late final _TranslationsMisskeyDeliveryPlPl delivery_ = _TranslationsMisskeyDeliveryPlPl._(_root);
 	@override late final _TranslationsMisskeyBubbleGamePlPl bubbleGame_ = _TranslationsMisskeyBubbleGamePlPl._(_root);

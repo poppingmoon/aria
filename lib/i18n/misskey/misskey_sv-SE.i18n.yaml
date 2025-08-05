@@ -650,6 +650,7 @@ poll_:
 visibility_:
   home: "Hem"
   followers: "Följare"
+  specified: "Direktnoter"
 profile_:
   name: "Namn"
   username: "Användarnamn"
@@ -696,6 +697,7 @@ deck_:
     list: "Listor"
     channel: "kanal"
     mentions: "Omnämningar"
+    direct: "Direktnoter"
 webhookSettings_:
   name: "Namn"
   active: "Aktiverad"

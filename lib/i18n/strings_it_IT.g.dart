@@ -1505,6 +1505,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Attivare dopo averne compreso il comportamento.';
 	@override String get federationSpecified => 'Questo server è federato solo con istanze specifiche del Fediverso. Puoi interagire solo con quelle scelte dall\'amministrazione.';
 	@override String get federationDisabled => 'Questo server ha la federazione disabilitata. Non puoi interagire con profili provenienti da altri server.';
+	@override String get draft => 'Bozza';
 	@override String get confirmOnReact => 'Confermare le reazioni';
 	@override String reactAreYouSure({required Object emoji}) => 'Vuoi davvero reagire con ${emoji} ?';
 	@override String get markAsSensitiveConfirm => 'Vuoi davvero indicare questo contenuto multimediale come esplicito?';
@@ -1559,6 +1560,9 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Nascondi tutti i suggerimenti';
 	@override String get defaultImageCompressionLevel => 'Livello predefinito di compressione immagini';
 	@override String get defaultImageCompressionLevel_description => 'La compressione diminuisce la qualità dell\'immagine, poca compressione mantiene alta qualità delle immagini. Aumentandola, si riducono le dimensioni del file, a discapito della qualità dell\'immagine.';
+	@override String get inMinutes => 'min';
+	@override String get inDays => 'giorni';
+	@override late final _TranslationsMisskeyOrderItIt order_ = _TranslationsMisskeyOrderItIt._(_root);
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
 	@override late final _TranslationsMisskeySettingsItIt settings_ = _TranslationsMisskeySettingsItIt._(_root);
@@ -1657,7 +1661,19 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'Impostazioni predefinite';
 	@override late final _TranslationsMisskeyWatermarkEditorItIt watermarkEditor_ = _TranslationsMisskeyWatermarkEditorItIt._(_root);
 	@override late final _TranslationsMisskeyImageEffectorItIt imageEffector_ = _TranslationsMisskeyImageEffectorItIt._(_root);
+	@override String get drafts => 'Bozza';
 	@override late final _TranslationsMisskeyDraftsItIt drafts_ = _TranslationsMisskeyDraftsItIt._(_root);
+}
+
+// Path: misskey.order_
+class _TranslationsMisskeyOrderItIt extends TranslationsMisskeyOrderEnUs {
+	_TranslationsMisskeyOrderItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Prima i più recenti';
+	@override String get oldest => 'Meno recenti prima';
 }
 
 // Path: misskey.chat_
@@ -2370,6 +2386,7 @@ class _TranslationsMisskeyThemeItIt extends TranslationsMisskeyThemeEnUs {
 	@override String get install => 'Installa un tema';
 	@override String get manage => 'Gestione dei temi';
 	@override String get code => 'Codice tema';
+	@override String get copyThemeCode => 'Copia il codice del Tema';
 	@override String get description => 'Descrizione';
 	@override String installed({required Object name}) => '${name} è installato';
 	@override String get installedThemes => 'Temi installati';
@@ -3163,6 +3180,7 @@ class _TranslationsMisskeyFileViewerItIt extends TranslationsMisskeyFileViewerEn
 	@override String get url => 'URL';
 	@override String get uploadedAt => 'Caricato il';
 	@override String get attachedNotes => 'Note a cui è allegato';
+	@override String get usage => 'In uso';
 	@override String get thisPageCanBeSeenFromTheAuthor => 'Questa pagina può essere vista solo da chi ha caricato il file.';
 }
 
@@ -3506,6 +3524,7 @@ class _TranslationsMisskeyUploaderItIt extends TranslationsMisskeyUploaderEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get editImage => 'Modifica immagine';
 	@override String compressedToX({required Object x}) => 'Compresso in ${x}';
 	@override String savedXPercent({required Object x}) => '${x}% risparmiati';
 	@override String get abortConfirm => 'Alcuni file non sono stati caricati. Vuoi annullare l\'operazione?';
@@ -3605,7 +3624,19 @@ class _TranslationsMisskeyDraftsItIt extends TranslationsMisskeyDraftsEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get select => 'Selezionare bozza';
+	@override String get cannotCreateDraftAnymore => 'Hai superato il numero massimo di bozze ammissibili.';
+	@override String get cannotCreateDraft => 'Impossibile creare una bozza di questo contenuto.';
+	@override String get delete => 'Elimina bozza';
+	@override String get deleteAreYouSure => 'Vuoi davvero eliminare la bozza?';
+	@override String get noDrafts => 'Non c\'è nessuna bozza.';
+	@override String replyTo({required Object user}) => 'Rispondere a ${user}';
+	@override String quoteOf({required Object user}) => 'Citare la nota di ${user}';
+	@override String postTo({required Object channel}) => 'Inserire in ${channel}';
+	@override String get saveToDraft => 'Salva come bozza';
+	@override String get restoreFromDraft => 'Recuperare dalle bozze';
 	@override String get restore => 'Ripristina';
+	@override String get listDrafts => 'Elenco bozze';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3928,6 +3959,8 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes => 'Tipi di file caricabili';
 	@override String get uploadableFileTypes_caption => 'Specifica il tipo MIME. Puoi specificare più valori separandoli andando a capo, oppure indicare caratteri jolly con un asterisco (*). Ad esempio: image/*';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'A seconda del file, il tipo potrebbe non essere determinato. Se si desidera consentire tali file, aggiungere ${x} alla specifica.';
+	@override String get noteDraftLimit => 'Numero massimo di Note in bozza, lato server';
+	@override String get watermarkAvailable => 'Disponibilità della funzione filigrana';
 }
 
 // Path: misskey.role_.condition_
@@ -4486,6 +4519,8 @@ class _TranslationsMisskeyImageEffectorFxsItIt extends TranslationsMisskeyImageE
 	@override String get stripe => 'Strisce';
 	@override String get polkadot => 'A pallini';
 	@override String get checker => 'revisore';
+	@override String get blockNoise => 'Attenua rumore';
+	@override String get tearing => 'Strappa immagine';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

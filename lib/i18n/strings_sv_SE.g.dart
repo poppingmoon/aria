@@ -944,6 +944,7 @@ class _TranslationsMisskeyVisibilitySvSe extends TranslationsMisskeyVisibilityEn
 	// Translations
 	@override String get home => 'Hem';
 	@override String get followers => 'Följare';
+	@override String get specified => 'Direktnoter';
 }
 
 // Path: misskey.profile_
@@ -1227,6 +1228,7 @@ class _TranslationsMisskeyDeckColumnsSvSe extends TranslationsMisskeyDeckColumns
 	@override String get list => 'Listor';
 	@override String get channel => 'kanal';
 	@override String get mentions => 'Omnämningar';
+	@override String get direct => 'Direktnoter';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

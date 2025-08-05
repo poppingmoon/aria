@@ -998,6 +998,8 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'Останні ${n} днів';
 	@override String get postForm => 'Створення нотатки';
 	@override String get information => 'Інформація';
+	@override String get inMinutes => 'х';
+	@override String get inDays => 'д';
 	@override late final _TranslationsMisskeyChatUkUa chat_ = _TranslationsMisskeyChatUkUa._(_root);
 	@override late final _TranslationsMisskeyDeliveryUkUa delivery_ = _TranslationsMisskeyDeliveryUkUa._(_root);
 	@override late final _TranslationsMisskeyAchievementsUkUa achievements_ = _TranslationsMisskeyAchievementsUkUa._(_root);

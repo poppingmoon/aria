@@ -556,8 +556,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get usernameOrUserId => 'Nombre o ID del usuario';
 	@override String get noSuchUser => 'No se encuentra el usuario';
 	@override String get lookup => 'Búsqueda';
-	@override String get announcements => 'Anuncios';
-	@override String get imageUrl => 'URL de la imágen';
+	@override String get announcements => 'Avisos';
+	@override String get imageUrl => 'URL de la imagen.';
 	@override String get remove => 'Borrar';
 	@override String get removed => 'Borrado';
 	@override String removeAreYouSure({required Object x}) => '¿Desea borrar "${x}"?';
@@ -1118,7 +1118,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get fullView => 'Vista completa';
 	@override String get quitFullView => 'quitar vista completa';
 	@override String get addDescription => 'Agregar descripción';
-	@override String get userPagePinTip => 'Puede mantener sus notas visibles aquí seleccionando Pin en el menú de notas individuales';
+	@override String get userPagePinTip => 'Puede mantener sus notas visibles aquí seleccionando \'Fijar al perfil\' en el menú de notas individuales';
 	@override String get notSpecifiedMentionWarning => 'Algunas menciones no están incluidas en el destino';
 	@override String get info => 'Información';
 	@override String get userInfo => 'Información del usuario';
@@ -1153,7 +1153,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get shareWithNote => 'Compartir con una nota';
 	@override String get ads => 'Anuncios';
 	@override String get expiration => 'Termina el';
-	@override String get startingperiod => 'periodo de inicio';
+	@override String get startingperiod => 'Comienzo';
 	@override String get memo => 'Notas';
 	@override String get priority => 'Prioridad';
 	@override String get high => 'Alta';
@@ -1419,7 +1419,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get channelArchiveConfirmDescription => 'Un canal archivado no aparecerá en la lista de canales ni en los resultados. Las nuevas publicaciones tampoco serán añadidas.';
 	@override String get thisChannelArchived => 'El canal ha sido archivado.';
 	@override String get displayOfNote => 'Mostrar notas';
-	@override String get initialAccountSetting => 'Configración inicial de su cuenta\nか\nConfigración de inicio';
+	@override String get initialAccountSetting => 'Configración inicial de su cuenta';
 	@override String get youFollowing => 'Siguiendo';
 	@override String get preventAiLearning => 'Rechazar el uso en el Aprendizaje de Máquinas. (IA Generativa)';
 	@override String get preventAiLearningDescription => 'Pedirle a las arañas (crawlers) no usar los textos publicados o imágenes en el aprendizaje automático (IA Predictiva / Generativa). Ésto se logra añadiendo una marca respuesta HTML con la cadena "noai" al cantenido. Una prevención total no podría lograrse sólo usando ésta marca, ya que puede ser simplemente ignorada.';
@@ -1634,8 +1634,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get realtimeMode => 'Modo en tiempo real';
 	@override String get turnItOn => 'Activar';
 	@override String get turnItOff => 'Desactivar';
-	@override String get emojiMute => 'Silenciar emojis';
-	@override String get emojiUnmute => 'No Silenciar emojis';
+	@override String get emojiMute => 'Silenciar emoji';
+	@override String get emojiUnmute => 'No silenciar emoji';
 	@override String muteX({required Object x}) => 'Silenciar ${x}';
 	@override String unmuteX({required Object x}) => 'Dejar de silenciar ${x}';
 	@override String get abort => 'Abortar';
@@ -1644,6 +1644,12 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Ocultar todos los "Trucos y consejos"';
 	@override String get defaultImageCompressionLevel => 'Nivel de compresión de la imagen por defecto';
 	@override String get defaultImageCompressionLevel_description => 'Baja, conserva la calidad de la imagen pero la medida del archivo es más grande. <br>Alta, reduce la medida del archivo pero también la calidad de la imagen.';
+	@override String get inMinutes => 'Minutos';
+	@override String get inDays => 'Días';
+	@override String get safeModeEnabled => 'El modo seguro está activado';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'El modo seguro está activado, por lo que todos los plugins están desactivados.';
+	@override String get customCssIsDisabledBecauseSafeMode => 'El modo seguro está activado, por lo que no se aplica el CSS personalizado.';
+	@override String get themeIsDefaultBecauseSafeMode => 'Mientras el modo seguro esté activado, se utilizará el tema predeterminado. Cuando se desactive el modo seguro, se volverá al tema original.';
 	@override late final _TranslationsMisskeyOrderEsEs order_ = _TranslationsMisskeyOrderEsEs._(_root);
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteEsEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteEsEs._(_root);
@@ -1973,7 +1979,7 @@ class _TranslationsMisskeyAnnouncementEsEs extends TranslationsMisskeyAnnounceme
 	@override String get tooManyActiveAnnouncementDescription => 'Tener demasiados anuncios activos empeora la experiencia de usuario. Por favor, considera archivar aquellos anuncios que hayan quedado obsoletos.';
 	@override String get readConfirmTitle => '¿Marcar como leído?';
 	@override String readConfirmText({required Object title}) => 'Esto marcará el contenido de "${title}" como leído.';
-	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Dado que puede impactar en la experiencia de usuario de forma significativa, es recomendable usar notificaciones en el flujo de información en vez de información persistente.';
+	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Se recomienda utilizar los avisos para publicar información que requiera inmediatez, en lugar de hacerlo constantemente, ya que esto perjudica especialmente la UX de los nuevos usuarios.';
 	@override String get dialogAnnouncementUxWarn => 'Mostrar dos o más notificaciones en formato diálogo a la vez puede impactar en la experiencia de usuario de forma significativa, úsalos con cuidado.';
 	@override String get silence => 'Silenciar notificaciones';
 	@override String get silenceDescription => 'Si lo activas, no enviarás notificación sobre este anuncio y el usuario no tendrá que leerlo.';
@@ -2065,6 +2071,10 @@ class _TranslationsMisskeyServerSettingsEsEs extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => 'Cargar desde la base de datos';
 	@override String get fanoutTimelineDbFallbackDescription => 'Cuando esta opción está habilitada, la carga de peticiones adicionales de la línea de tiempo se hará desde la base de datos cuando éstas no se encuentren en la caché. Al deshabilitar esta opción se reduce la carga del servidor, pero limita el número de líneas de tiempo que pueden obtenerse.';
 	@override String get reactionsBufferingDescription => 'Cuando se activa, el rendimiento durante la creación de reacciones mejorará considerablemente, reduciendo la carga de la base de datos. Sin embargo, aumentará el uso de memoria de Redis.';
+	@override String get remoteNotesCleaning => 'Limpieza automática de notas (publicaciones) remotas';
+	@override String get remoteNotesCleaning_description => 'Al habilitar esta opción, se limpiarán periódicamente las entradas remotas antiguas que no se consultan, lo que evitará que la base de datos se sature.';
+	@override String get remoteNotesCleaningMaxProcessingDuration => 'Tiempo máximo de funcionamiento continuo del proceso de limpieza';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'Días mínimos para conservar las notas';
 	@override String get inquiryUrl => 'URL de consulta ';
 	@override String get inquiryUrlDescription => 'Especifica una URL para el formulario de consulta al responsable del servidor o una página web para la información de contacto.';
 	@override String get openRegistration => 'Registros Abiertos';
@@ -2083,6 +2093,8 @@ class _TranslationsMisskeyServerSettingsEsEs extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => 'Visibilidad de contenido generado por un usuario a invitados';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'Esto es útil para evitar problemas causados por contenidos remotos inapropiados que no estén bien moderados y que se publiquen involuntariamente en Internet a través de su propio servidor.';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'Publicar incondicionalmente todo el contenido del servidor en Internet, incluido el contenido remoto recibido por el servidor, es arriesgado. Esto es especialmente importante para los invitados que desconocen la naturaleza distribuida del contenido, ya que pueden creer erróneamente que incluso el contenido remoto es contenido creado por usuarios en el servidor.';
+	@override String get restartServerSetupWizardConfirm_title => '¿Reiniciar el asistente de configuración del servidor?';
+	@override String get restartServerSetupWizardConfirm_text => 'Algunas configuraciones actuales se restablecerán';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEsEs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEsEs._(_root);
 }
 
@@ -3544,6 +3556,7 @@ class _TranslationsMisskeyBootErrorsEsEs extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => 'Borra la configuración y la memoria caché del cliente';
 	@override String get otherOption2 => 'Iniciar el cliente simple';
 	@override String get otherOption3 => 'Iniciar la herramienta de reparación';
+	@override String get otherOption4 => 'Iniciar Misskey en modo seguro';
 }
 
 // Path: misskey.search_
@@ -3586,6 +3599,8 @@ class _TranslationsMisskeyServerSetupWizardEsEs extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => 'Cuando se conecta a una red de servidores distribuidos (Fediverso), el contenido puede intercambiarse con otros servidores.';
 	@override String get doYouConnectToFediverse_description2 => 'Conectarse con el Fediverso también se conoce como "federación".';
 	@override String get youCanConfigureMoreFederationSettingsLater => 'Los ajustes avanzados, como la especificación de servidores federados, pueden configurarse más adelante.';
+	@override String get remoteContentsCleaning => 'Limpieza automática de los contenidos recibidos';
+	@override String get remoteContentsCleaning_description => 'La federación puede dar lugar a un flujo continuo de contenido. Al habilitar la limpieza automática, se eliminará del servidor el contenido obsoleto y sin referencias para ahorrar espacio de almacenamiento.';
 	@override String get adminInfo => 'Información del administrador';
 	@override String get adminInfo_description => 'Establece la información del administrador para recibir consultas.';
 	@override String get adminInfo_mustBeFilled => 'Esta información debe ser introducida en el caso de registros abiertos o la federación esté activada.';
@@ -3624,7 +3639,7 @@ class _TranslationsMisskeyClientPerformanceIssueTipEsEs extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'Si crees que el consumo de batería es demasiado alto';
-	@override String get makeSureDisabledAdBlocker => 'Por favor, desactive el bloqueador de publicidad.';
+	@override String get makeSureDisabledAdBlocker => 'Por favor, desactiva el bloqueador de publicidad.';
 	@override String get makeSureDisabledAdBlocker_description => 'Los bloqueadores de anuncios pueden afectar al rendimiento. Asegúrate de que no están activados en tu sistema o en las funciones/extensiones de tu navegador.';
 	@override String get makeSureDisabledCustomCss => 'Desactiva el CSS personalizado';
 	@override String get makeSureDisabledCustomCss_description => 'Anular estilos puede afectar al rendimiento. Asegúrate de que el CSS personalizado o las extensiones que sobrescriben estilos no están activados.';

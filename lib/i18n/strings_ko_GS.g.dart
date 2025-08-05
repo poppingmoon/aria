@@ -1613,6 +1613,12 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '모든 \'팁과 유용한 정보\'를 비표시';
 	@override String get defaultImageCompressionLevel => '기본 이미지 압축 정도';
 	@override String get defaultImageCompressionLevel_description => '낮추면 화질을 유지합니다만 파일 크기는 증가합니다. <br>높이면 파일 크기를 줄일 수 있습니다만 화질은 저하됩니다.';
+	@override String get inMinutes => '분';
+	@override String get inDays => '일';
+	@override String get safeModeEnabled => '세이프 모드가 활성화돼있습니다';
+	@override String get pluginsAreDisabledBecauseSafeMode => '세이프 모드가 활성화돼있기에 플러그인은 전부 비활성화됩니다.';
+	@override String get customCssIsDisabledBecauseSafeMode => '세이프 모드가 활성화돼있기에 커스텀 CSS는 적용되지 않습니다.';
+	@override String get themeIsDefaultBecauseSafeMode => '세이프 모드가 활성화돼있는 동안에는 기본 테마가 사용됩니다. 세이프 모드를 끄면 원래대로 돌아옵니다.';
 	@override late final _TranslationsMisskeyOrderKoGs order_ = _TranslationsMisskeyOrderKoGs._(_root);
 	@override late final _TranslationsMisskeyChatKoGs chat_ = _TranslationsMisskeyChatKoGs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoGs emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoGs._(_root);
@@ -2044,6 +2050,10 @@ class _TranslationsMisskeyServerSettingsKoGs extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => '데이터베이스를 예비로 사용하기';
 	@override String get fanoutTimelineDbFallbackDescription => '활성화하면 타임라인의 캐시되어 있지 않은 부분에 대해 DB에 질의하여 정보를 가져옵니다. 비활성화하면 이를 실행하지 않음으로써 서버의 부하를 줄일 수 있지만, 타임라인에서 가져올 수 있는 게시물 범위가 한정됩니다.';
 	@override String get reactionsBufferingDescription => '활성화 한 경우, 리액션 작성 퍼포먼스가 대폭 향상되어 DB의 부하를 줄일 수 있으나, Redis의 메모리 사용량이 많아집니다.';
+	@override String get remoteNotesCleaning => '리모트 서버 노트 자동 정리 ';
+	@override String get remoteNotesCleaning_description => '더 이상 사용되지 않는 오래된 리모트 노트를 정기적으로 정리하여, 데이터 베이스의 사용량을 절약할 수 있습니다.';
+	@override String get remoteNotesCleaningMaxProcessingDuration => '리모트 노트 자동 정리 최대 실행 시간';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => '리모트 노트 저장 최소 일수';
 	@override String get inquiryUrl => '문의처 URL';
 	@override String get inquiryUrlDescription => '서버 운영자에게 보내는 문의 양식의 URL이나 운영자의 연락처 등이 적힌 웹 페이지의 URL을 설정합니다.';
 	@override String get openRegistration => '회원 가입을 활성화 하기';
@@ -2062,6 +2072,8 @@ class _TranslationsMisskeyServerSettingsKoGs extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => '비이용자에 대한 유저 작성 콘텐츠의 공개 범위';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => '조정을 하기 힘든 부적절한 리모트 콘텐츠 등이 자신의 서버 경유로 의도치 않게 인터넷에 공개되는 문제의 방지 등에 도움을 줍니다.';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '서버에서 받은 리모트 콘텐츠를 포함해 서버 내의 모든 콘텐츠를 무조건 인터넷에 공개하는 것에는 위험이 따릅니다. 특히, 분산형 특성에 대해 모르는 열람자에게는 리모트 콘텐츠여도 서버 내에서 작성된 콘텐츠라고 잘못 인식할 수 있기에 주의가 필요합니다.';
+	@override String get restartServerSetupWizardConfirm_title => '서버의 초기 설정 위자드를 재시도하시겠습니까?';
+	@override String get restartServerSetupWizardConfirm_text => '현재 일부 설정은 리셋됩니다.';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoGs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoGs._(_root);
 }
 
@@ -2833,7 +2845,7 @@ class _TranslationsMisskeyVisibilityKoGs extends TranslationsMisskeyVisibilityEn
 	@override String get homeDescription => '홈 타임라인에만 공개';
 	@override String get followers => '팔로워';
 	@override String get followersDescription => '팔로워에게만 공개';
-	@override String get specified => '다이렉트';
+	@override String get specified => '쪽지 서기';
 	@override String get specifiedDescription => '지정한 유저에게만 공개';
 	@override String get disableFederation => '연합에 보내지 않기';
 	@override String get disableFederationDescription => '다른 서버로 보내지 않습니다';
@@ -3523,6 +3535,7 @@ class _TranslationsMisskeyBootErrorsKoGs extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => '클라이언트 설정 및 캐시 삭제';
 	@override String get otherOption2 => '간편 클라이언트 실행';
 	@override String get otherOption3 => '복구 툴 실행';
+	@override String get otherOption4 => 'Misskey를 세이프 모드로 열기';
 }
 
 // Path: misskey.search_
@@ -3565,6 +3578,8 @@ class _TranslationsMisskeyServerSetupWizardKoGs extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => '분산형 서버로 구성된 네트워크(Fediverse)에 접속하면 다른 서버와 서로 콘텐츠의 주고받기를 할 수 있습니다.';
 	@override String get doYouConnectToFediverse_description2 => 'Fediverse에 접속하는 것을 \'연합\'이라고도 부릅니다.';
 	@override String get youCanConfigureMoreFederationSettingsLater => '나중에 연합 가능한 서버의 지정 등 고급 설정을 할 수 있습니다.';
+	@override String get remoteContentsCleaning => '리모트 콘텐츠 자동 정리';
+	@override String get remoteContentsCleaning_description => '연합 중인 서버가 있는 경우, 리모트 서버에서 대단히 많은 콘텐츠를 받아오게 됩니다. 자동 정리 기능을 활성화하면, 오래되고 서버에서 더 이상 조회되지 않는 콘텐츠를 자동으로 서버에서 삭제하여, 스토리지를 절약할 수 있습니다.';
 	@override String get adminInfo => '관리자 정보';
 	@override String get adminInfo_description => '문의 접수를 위해 사용되는 관리자 정보를 설정합니다.';
 	@override String get adminInfo_mustBeFilled => '오픈 서버 혹은 연합이 켜져 있는 경우 반드시 입력해야 합니다.';
@@ -4109,7 +4124,7 @@ class _TranslationsMisskeyThemeKeysKoGs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get navIndicator => '사이드바 인디케이터';
 	@override String get link => '링크';
 	@override String get hashtag => '해시태그';
-	@override String get mention => '멘션';
+	@override String get mention => '받언 멘션';
 	@override String get mentionMe => '나에게 보낸 멘션';
 	@override String get renote => '리노트';
 	@override String get modalBg => '모달 배경';
@@ -4184,7 +4199,7 @@ class _TranslationsMisskeyNotificationTypesKoGs extends TranslationsMisskeyNotif
 	@override String get all => '전부';
 	@override String get note => '유저의 새 글';
 	@override String get follow => '팔로잉';
-	@override String get mention => '멘션';
+	@override String get mention => '받언 멘션';
 	@override String get reply => '답글';
 	@override String get renote => '리노트';
 	@override String get quote => '따오기';
@@ -4229,7 +4244,7 @@ class _TranslationsMisskeyDeckColumnsKoGs extends TranslationsMisskeyDeckColumns
 	@override String get list => '리스트';
 	@override String get channel => '채널';
 	@override String get mentions => '받언 멘션';
-	@override String get direct => '다이렉트';
+	@override String get direct => '쪽지 서기';
 	@override String get roleTimeline => '역할 타임라인';
 	@override String get chat => '채팅';
 }

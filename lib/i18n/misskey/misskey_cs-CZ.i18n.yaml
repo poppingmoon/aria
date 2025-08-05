@@ -1111,6 +1111,8 @@ lastNDays: "Posledních {n} dnů"
 surrender: "Zrušit"
 postForm: "Formulář pro odeslání"
 information: "Informace"
+inMinutes: "Minut"
+inDays: "Dnů"
 chat_:
   invitations: "Pozvat"
   noHistory: "Žádná historie"
@@ -2006,7 +2008,7 @@ deck_:
     list: "Seznamy"
     channel: "Kanály"
     mentions: "Zmínění"
-    direct: "Přímý"
+    direct: "Přímé poznámky"
     roleTimeline: "Časová osa role"
 dialog_:
   charactersExceeded: "Překročili jste maximální počet znaků! V současné době je na hodnotě {current} z {max}."

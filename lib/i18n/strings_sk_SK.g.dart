@@ -993,6 +993,8 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'Posledných ${n} dní';
 	@override String get postForm => 'Napísať poznámku';
 	@override String get information => 'Informácie';
+	@override String get inMinutes => 'min';
+	@override String get inDays => 'dní';
 	@override late final _TranslationsMisskeyChatSkSk chat_ = _TranslationsMisskeyChatSkSk._(_root);
 	@override late final _TranslationsMisskeyDeliverySkSk delivery_ = _TranslationsMisskeyDeliverySkSk._(_root);
 	@override late final _TranslationsMisskeyRoleSkSk role_ = _TranslationsMisskeyRoleSkSk._(_root);

@@ -1541,6 +1541,7 @@ class _TranslationsMisskeyVisibilityRoRo extends TranslationsMisskeyVisibilityEn
 	// Translations
 	@override String get home => 'Acasă';
 	@override String get followers => 'Urmăritori';
+	@override String get specified => 'Note directe';
 }
 
 // Path: misskey.postForm_
@@ -1926,6 +1927,7 @@ class _TranslationsMisskeyDeckColumnsRoRo extends TranslationsMisskeyDeckColumns
 	@override String get list => 'Liste';
 	@override String get channel => 'Canale';
 	@override String get mentions => 'Mențiuni';
+	@override String get direct => 'Note directe';
 	@override String get roleTimeline => 'Cronologia rolului';
 }
 

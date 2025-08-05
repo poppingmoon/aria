@@ -926,6 +926,8 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get flip => 'উল্টান';
 	@override String get postForm => 'নোট লিখুন';
 	@override String get information => 'আপনার সম্পর্কে';
+	@override String get inMinutes => 'মিনিট';
+	@override String get inDays => 'দিন';
 	@override late final _TranslationsMisskeyChatBnBd chat_ = _TranslationsMisskeyChatBnBd._(_root);
 	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
 	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);

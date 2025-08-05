@@ -723,7 +723,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get addedRelays => '已加入的中繼器';
 	@override String get serviceworkerInfo => '如要使用推播通知，需要啟用此選項並設定金鑰。';
 	@override String get deletedNote => '已刪除的貼文';
-	@override String get invisibleNote => '私人貼文';
+	@override String get invisibleNote => '私密的貼文';
 	@override String get enableInfiniteScroll => '啟用自動滾動頁面模式';
 	@override String get visibility => '可見性';
 	@override String get poll => '票選活動';
@@ -1453,6 +1453,12 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '隱藏所有「提示與技巧」';
 	@override String get defaultImageCompressionLevel => '預設的影像壓縮程度';
 	@override String get defaultImageCompressionLevel_description => '低的話可以保留畫質，但是會增加檔案的大小。<br>高的話可以減少檔案大小，但是會降低畫質。';
+	@override String get inMinutes => '分鐘';
+	@override String get inDays => '日';
+	@override String get safeModeEnabled => '啟用安全模式';
+	@override String get pluginsAreDisabledBecauseSafeMode => '由於啟用安全模式，所有的外掛都被停用。';
+	@override String get customCssIsDisabledBecauseSafeMode => '由於啟用安全模式，所有的客製 CSS 都被停用。';
+	@override String get themeIsDefaultBecauseSafeMode => '啟用安全模式時將使用預設主題，關閉安全模式時將恢復預設主題。';
 	@override late final _TranslationsMisskeyOrderZhTw order_ = _TranslationsMisskeyOrderZhTw._(_root);
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
@@ -1874,6 +1880,10 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => '資料庫的回退';
 	@override String get fanoutTimelineDbFallbackDescription => '若啟用，在時間軸沒有快取的情況下將執行回退處理以額外查詢資料庫。若停用，可以透過不執行回退處理來進一步減少伺服器的負荷，但會限制可取得的時間軸範圍。';
 	@override String get reactionsBufferingDescription => '啟用時，可以顯著提高建立反應時的效能並減少資料庫的負載。 但是，Redis 記憶體使用量會增加。';
+	@override String get remoteNotesCleaning => '自動清除遠端發佈內容';
+	@override String get remoteNotesCleaning_description => '啟用後，系統會定期清理未被參照的舊遠端貼文，以抑制資料庫的膨脹。';
+	@override String get remoteNotesCleaningMaxProcessingDuration => '清理作業的最長持續時間';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => '貼文最短保留天數';
 	@override String get inquiryUrl => '聯絡表單網址';
 	@override String get inquiryUrlDescription => '指定伺服器運營者的聯絡表單網址，或包含運營者聯絡資訊網頁的網址。';
 	@override String get openRegistration => '允許建立帳戶';
@@ -1892,6 +1902,8 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => '使用者建立的內容對訪客的公開範圍';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => '這有助於防止一些問題的發生，例如未經適當審核的不適當遠端內容無意中透過您自己的伺服器發佈到網際網路上。';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '包括伺服器接收到的遠端內容在內，無條件地將伺服器內所有內容公開到網際網路上是具有風險的。特別是對於不了解分散式架構特性的瀏覽者來說，他們可能會誤以為這些遠端內容是由該伺服器所創建的，因此需要特別留意。';
+	@override String get restartServerSetupWizardConfirm_title => '要重新執行伺服器的初始設定精靈嗎？';
+	@override String get restartServerSetupWizardConfirm_text => '當前的部分設定將會被重設。';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhTw userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhTw._(_root);
 }
 
@@ -3353,6 +3365,7 @@ class _TranslationsMisskeyBootErrorsZhTw extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => '刪除用戶端設定和快取';
 	@override String get otherOption2 => '啟動簡易用戶端';
 	@override String get otherOption3 => '啟動修復工具';
+	@override String get otherOption4 => '以安全模式啟動 Misskey';
 }
 
 // Path: misskey.search_
@@ -3395,6 +3408,8 @@ class _TranslationsMisskeyServerSetupWizardZhTw extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => '連接到由分散型伺服器構成的網絡（聯邦宇宙）後，您可以與其他伺服器進行內容的互相交流。\n';
 	@override String get doYouConnectToFediverse_description2 => '連接到聯邦宇宙被稱為「聯邦」。\n';
 	@override String get youCanConfigureMoreFederationSettingsLater => '您可以在稍後進行更高級的設定，例如指定可以聯繫的伺服器等。\n';
+	@override String get remoteContentsCleaning => '自動清理接收的內容';
+	@override String get remoteContentsCleaning_description => '進行聯邦後，會持續接收大量內容。啟用自動清理功能後，系統會自動從伺服器中刪除未被參照的過時內容，以節省儲存空間。';
 	@override String get adminInfo => '管理員資訊';
 	@override String get adminInfo_description => '設定用於接收查詢的管理者資訊。\n';
 	@override String get adminInfo_mustBeFilled => '當設置為開放伺服器或啟用聯邦時，必須填寫此資訊。\n';

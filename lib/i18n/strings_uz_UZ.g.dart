@@ -1510,7 +1510,7 @@ class _TranslationsMisskeyThemeKeysUzUz extends TranslationsMisskeyThemeKeysEnUs
 	@override String get header => 'Sarlavha';
 	@override String get navBg => 'Yon panel foni';
 	@override String get navFg => 'Yon panel matni';
-	@override String get mention => 'Murojat';
+	@override String get mention => 'Eslatib o\'tish';
 	@override String get renote => 'Qayta qayd etish';
 	@override String get divider => 'Ajratrmoq';
 	@override String get fgHighlighted => 'Belgilangan matn';
@@ -1551,7 +1551,7 @@ class _TranslationsMisskeyNotificationTypesUzUz extends TranslationsMisskeyNotif
 	// Translations
 	@override String get all => 'Barchasi';
 	@override String get follow => 'Obuna bo‘lish';
-	@override String get mention => 'Murojat';
+	@override String get mention => 'Eslatib o\'tish';
 	@override String get renote => 'Qayta qayd etish';
 	@override String get quote => 'Iqtibos keltirish';
 	@override String get reaction => 'Reaktsiyalar';

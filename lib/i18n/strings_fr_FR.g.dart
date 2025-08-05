@@ -1357,6 +1357,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get availableRoles => 'Rôles disponibles';
 	@override String get postForm => 'Formulaire de publication';
 	@override String get information => 'Informations';
+	@override String get inMinutes => 'min';
+	@override String get inDays => 'j';
 	@override late final _TranslationsMisskeyChatFrFr chat_ = _TranslationsMisskeyChatFrFr._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportFrFr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportFrFr._(_root);
 	@override late final _TranslationsMisskeyDeliveryFrFr delivery_ = _TranslationsMisskeyDeliveryFrFr._(_root);

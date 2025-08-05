@@ -981,7 +981,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get hashtags => 'Etiquetes';
 	@override String get troubleshooting => 'Solucionar problemes';
 	@override String get useBlurEffect => 'Fes servir efectes de desenfocament a la interfície';
-	@override String get learnMore => 'Saber més ';
+	@override String get learnMore => 'Saber-ne més ';
 	@override String get misskeyUpdated => 'Misskey s\'ha actualitzat ';
 	@override String get whatIsNew => 'Mostra canvis';
 	@override String get translate => 'Traduir ';
@@ -1453,6 +1453,12 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Amagar tots els trucs i consells';
 	@override String get defaultImageCompressionLevel => 'Nivell de comprensió de la imatge per defecte';
 	@override String get defaultImageCompressionLevel_description => 'Baixa, conserva la qualitat de la imatge però la mida de l\'arxiu és més gran. <br>Alta, redueix la mida de l\'arxiu però també la qualitat de la imatge.';
+	@override String get inMinutes => 'Minut(s)';
+	@override String get inDays => 'Di(a)(es)';
+	@override String get safeModeEnabled => 'Mode segur activat';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Els afegits no estan activats perquè el mode segur està activat.';
+	@override String get customCssIsDisabledBecauseSafeMode => 'El CSS personalitzat no s\'aplica perquè el mode segur es troba activat.';
+	@override String get themeIsDefaultBecauseSafeMode => 'El tema predeterminat es farà servir mentre el mode segur estigui activat. Una vegada es desactivi el mode segur es restablirà el tema escollit.';
 	@override late final _TranslationsMisskeyOrderCaEs order_ = _TranslationsMisskeyOrderCaEs._(_root);
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
@@ -1564,7 +1570,7 @@ class _TranslationsMisskeyOrderCaEs extends TranslationsMisskeyOrderEnUs {
 
 	// Translations
 	@override String get newest => 'Més recent';
-	@override String get oldest => 'Cronològic';
+	@override String get oldest => 'Antigues primer';
 }
 
 // Path: misskey.chat_
@@ -1874,6 +1880,10 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => 'Carregar de la base de dades';
 	@override String get fanoutTimelineDbFallbackDescription => 'Quan s\'activa, la línia de temps fa servir la base de dades per consultes adicionals si la línia de temps no es troba a la memòria cau. Si és desactiva la càrrega del servidor és veure reduïda, però també és reduirà el nombre de línies de temps que és poden obtenir.';
 	@override String get reactionsBufferingDescription => 'Quan s\'activa aquesta opció millora bastant el rendiment en recuperar les línies de temps reduint la càrrega de la base. Com a contrapunt, augmentarà  l\'ús de memòria de Redís. Desactiva aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes d\'inestabilitat.';
+	@override String get remoteNotesCleaning => 'Neteja automàtica de notes remotes';
+	@override String get remoteNotesCleaning_description => 'Quan activis aquesta opció, periòdicament es netejaran les notes remotes que no es consultin, això evitarà que la base de dades se';
+	@override String get remoteNotesCleaningMaxProcessingDuration => 'D\'oració màxima del temps de funcionament del procés de neteja';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'Duració mínima de conservació de les notes';
 	@override String get inquiryUrl => 'URL de consulta ';
 	@override String get inquiryUrlDescription => 'Escriu adreça URL per al formulari de consulta per al mantenidor del servidor o una pàgina web amb el contacte d\'informació.';
 	@override String get openRegistration => 'Registres oberts';
@@ -1892,6 +1902,8 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => 'L\'abast de la publicació del contingut generat per l\'usuari';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'Això ajuda a evitar problemes com que continguts remots inadequats que no hagin estat moderats correctament es publiquin a internet mitjançant el teu servidor.';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'La publicació incondicional de tots els continguts del servidor a internet, incloent-hi els continguts remots rebuts pel servidor, comporta riscos. Això és extremadament important per els espectadors que desconeixen el caràcter descentralitzat dels continguts, ja que poden percebre erroneament els continguts remots com contingut generat per el propi servidor.';
+	@override String get restartServerSetupWizardConfirm_title => 'Vols tornar a executar l\'assistent de configuració inicial del servidor?';
+	@override String get restartServerSetupWizardConfirm_text => 'Algunes configuracions actuals seran restablertes.';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorCaEs._(_root);
 }
 
@@ -3353,6 +3365,7 @@ class _TranslationsMisskeyBootErrorsCaEs extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => 'Esborrar la configuració i la memòria cau del client';
 	@override String get otherOption2 => 'Iniciar client senzill';
 	@override String get otherOption3 => 'Iniciar l\'eina de reparació ';
+	@override String get otherOption4 => 'Iniciar Misskey en mode segur';
 }
 
 // Path: misskey.search_
@@ -3395,6 +3408,8 @@ class _TranslationsMisskeyServerSetupWizardCaEs extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => 'Quan es connecta amb una xarxa de servidors distribuïts (Fedivers), els continguts poden intercanviar-se amb altres servidors i entre ells.';
 	@override String get doYouConnectToFediverse_description2 => 'La connexió amb el Fedivers també es coneix com a "federació".';
 	@override String get youCanConfigureMoreFederationSettingsLater => 'Les configuracions avançades, com especificar els servidors amb els quals es pot federar, es poden fer més tard.';
+	@override String get remoteContentsCleaning => 'Neteja automàtica del contingut rebut';
+	@override String get remoteContentsCleaning_description => 'Quan es comença a federar es rep un munt de contingut, quan s\'activa la neteja automàtica el contingut antic que no es consulta serà eliminat del servidor, el que permet estalviar espai d\'emmagatzematge.';
 	@override String get adminInfo => 'Informació de l\'administrador ';
 	@override String get adminInfo_description => 'Estableix la informació de l\'administrador que es farà servir per rebre consultes.';
 	@override String get adminInfo_mustBeFilled => 'Aquesta informació ha de ser omplerta si el servidor té els registres oberts o la federació es troba activada.';
