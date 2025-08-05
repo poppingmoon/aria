@@ -21,13 +21,15 @@ class NotesNotifier extends _$NotesNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   void add(Note note, {bool detail = true}) {
-    final renote = note.renote;
-    if (renote != null) {
+    if (note.renote case final renote?) {
       add(renote);
+    } else if (note.renoteId case final renoteId? when detail) {
+      remove(renoteId);
     }
-    final reply = note.reply;
-    if (reply != null) {
+    if (note.reply case final reply?) {
       add(reply, detail: false);
+    } else if (note.replyId case final replyId? when detail) {
+      remove(replyId);
     }
     final cachedNote = state[note.id];
     state = {
@@ -42,8 +44,8 @@ class NotesNotifier extends _$NotesNotifier {
               0,
               (acc, reaction) => acc + reaction,
             ),
-        renote: renote ?? state[note.renoteId],
-        reply: reply ?? state[note.replyId],
+        renote: note.renote ?? state[note.renoteId],
+        reply: note.reply ?? state[note.replyId],
         poll: detail ? note.poll : cachedNote?.poll,
         myReaction: detail ? note.myReaction : cachedNote?.myReaction,
       ),

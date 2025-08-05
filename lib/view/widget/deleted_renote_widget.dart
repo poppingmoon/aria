@@ -128,7 +128,8 @@ class DeletedRenoteWidget extends HookConsumerWidget {
                 ),
               ),
               const SizedBox(height: 4.0),
-              const DeletedNoteWidget(),
+              if (note.renoteId case final renoteId?)
+                DeletedNoteWidget(account: account, noteId: renoteId),
             ],
           ),
         ),

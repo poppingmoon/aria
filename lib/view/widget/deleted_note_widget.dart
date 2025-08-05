@@ -1,14 +1,42 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
+import '../../provider/note_is_deleted_provider.dart';
+import 'note_fallback_widget.dart';
 
-class DeletedNoteWidget extends StatelessWidget {
+class DeletedNoteWidget extends ConsumerWidget {
   const DeletedNoteWidget({
     super.key,
+    this.account,
+    this.noteId,
     this.borderRadius = const BorderRadius.all(Radius.circular(16.0)),
   });
+
+  final Account? account;
+  final String? noteId;
+  final BorderRadiusGeometry? borderRadius;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if ((account, noteId) case (final account?, final noteId?)) {
+      final isDeleted = ref.watch(noteIsDeletedProvider(account, noteId));
+      if (isDeleted) {
+        return _DeletedNoteWidget(borderRadius: borderRadius);
+      } else {
+        return NoteFallbackWidget(account: account, noteId: noteId);
+      }
+    } else {
+      return _DeletedNoteWidget(borderRadius: borderRadius);
+    }
+  }
+}
+
+class _DeletedNoteWidget extends StatelessWidget {
+  const _DeletedNoteWidget({required this.borderRadius});
 
   final BorderRadiusGeometry? borderRadius;
 
