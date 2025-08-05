@@ -38,7 +38,7 @@ class NoteSubWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const DeletedNoteWidget();
+      return DeletedNoteWidget(account: account, noteId: noteId);
     }
     final (
       tapAction,
