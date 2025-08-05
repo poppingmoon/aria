@@ -465,6 +465,8 @@ replies: "Svar"
 renotes: "Renote"
 surrender: "Avbryt"
 information: "Informasjon"
+inMinutes: "Minutter"
+inDays: "Dager"
 chat_:
   invitations: "Inviter"
   members: "Medlemmer"

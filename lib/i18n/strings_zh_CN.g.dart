@@ -1432,7 +1432,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get channelArchiveConfirmDescription => '归档后，在频道列表与搜索结果中不会显示，也无法发布新的贴文。';
 	@override String get thisChannelArchived => '该频道已被归档。';
 	@override String get displayOfNote => '显示帖子';
-	@override String get initialAccountSetting => '初始设置';
+	@override String get initialAccountSetting => '初始设定';
 	@override String get youFollowing => '正在关注';
 	@override String get preventAiLearning => '拒绝接受生成式 AI 的学习';
 	@override String get preventAiLearningDescription => '要求文章生成 AI 或图像生成 AI 不能够以发布的帖子和图像等内容作为学习对象。这是通过在 HTML 响应中包含 noai 标志来实现的，这不能完全阻止 AI 学习你的发布内容，并不是所有 AI 都会遵守这类请求。';
@@ -1607,7 +1607,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String reactAreYouSure({required Object emoji}) => '要用「${emoji}」进行回应吗？';
 	@override String get markAsSensitiveConfirm => '要将此媒体标记为敏感吗？';
 	@override String get unmarkAsSensitiveConfirm => '要将此媒体解除敏感标记吗？';
-	@override String get preferences => '设置';
+	@override String get preferences => '偏好设置';
 	@override String get accessibility => '辅助功能';
 	@override String get preferencesProfile => '设置的配置';
 	@override String get copyPreferenceId => '复制设置 ID';
@@ -1657,6 +1657,12 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '隐藏所有的提示和技巧';
 	@override String get defaultImageCompressionLevel => '默认图像压缩等级';
 	@override String get defaultImageCompressionLevel_description => '较低的等级可以保持画质，但会增加文件大小。<br>较高的等级可以减少文件大小，但相对应的画质将会降低。';
+	@override String get inMinutes => '分';
+	@override String get inDays => '日';
+	@override String get safeModeEnabled => '已启用安全模式';
+	@override String get pluginsAreDisabledBecauseSafeMode => '因启用了安全模式，所有插件均已被禁用。';
+	@override String get customCssIsDisabledBecauseSafeMode => '因启用了安全模式，无法应用自定义 CSS。';
+	@override String get themeIsDefaultBecauseSafeMode => '启用安全模式时将使用默认主题。关闭安全模式后将还原。';
 	@override late final _TranslationsMisskeyOrderZhCn order_ = _TranslationsMisskeyOrderZhCn._(_root);
 	@override late final _TranslationsMisskeyChatZhCn chat_ = _TranslationsMisskeyChatZhCn._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhCn emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhCn._(_root);
@@ -2000,7 +2006,7 @@ class _TranslationsMisskeyInitialAccountSettingZhCn extends TranslationsMisskeyI
 
 	// Translations
 	@override String get accountCreated => '账户创建完成了！';
-	@override String get letsStartAccountSetup => '来进行帐户的初始设置吧。';
+	@override String get letsStartAccountSetup => '马上来进行账户的初始设定吧。';
 	@override String get letsFillYourProfile => '首先，来设定你的个人档案吧！';
 	@override String get profileSetting => '个人资料设置';
 	@override String get privacySetting => '隐私设置';
@@ -2012,7 +2018,7 @@ class _TranslationsMisskeyInitialAccountSettingZhCn extends TranslationsMisskeyI
 	@override String haveFun({required Object name}) => '希望 ${name} 在这里玩得开心！';
 	@override String youCanContinueTutorial({required Object name}) => '您可以继续了解 ${name}(Misskey) 的使用教程，也可以在此停止教程并立即开始使用它。\n';
 	@override String get startTutorial => '开始教学';
-	@override String get skipAreYouSure => '要跳过初始设置吗？';
+	@override String get skipAreYouSure => '要跳过初始设定吗？';
 	@override String get laterAreYouSure => '要稍后再进行初始设定吗？';
 }
 
@@ -2078,6 +2084,10 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => '回退到数据库';
 	@override String get fanoutTimelineDbFallbackDescription => '当启用时，若时间线未被缓存，则将额外查询数据库。禁用该功能可通过不执行回退处理进一步减少服务器负载，但会限制可检索的时间线范围。';
 	@override String get reactionsBufferingDescription => '开启时可显著提高发送回应时的性能，及减轻数据库负荷。但 Redis 的内存用量会相应增加。';
+	@override String get remoteNotesCleaning => '自动清理远程投稿';
+	@override String get remoteNotesCleaning_description => '启用后，将自动清理已无法找到的旧的远程投稿，可减缓数据库的增长。';
+	@override String get remoteNotesCleaningMaxProcessingDuration => '最长清理持续时间';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => '最短帖子保留期限';
 	@override String get inquiryUrl => '联络地址';
 	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
 	@override String get openRegistration => '开放注册';
@@ -2096,6 +2106,8 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => '用户生成内容对非用户的可见性';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => '对于防止难以审核的不适当的远程内容等，通过自己的服务器无意中在互联网上公开等问题很有用。';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '包含服务器接收到的远程内容在内，无条件将服务器上的所有内容公开在互联网上存在风险。特别是对去中心化的特性不是很了解的访问者有可能将远程服务器上的内容误认为是在此服务器内生成的，需要特别留意。';
+	@override String get restartServerSetupWizardConfirm_title => '要重新开始服务器初始设定向导吗？';
+	@override String get restartServerSetupWizardConfirm_text => '现有的部分设定将重置。';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhCn userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhCn._(_root);
 }
 
@@ -2145,7 +2157,7 @@ class _TranslationsMisskeyRoleZhCn extends TranslationsMisskeyRoleEnUs {
 	@override String get name => '角色名称';
 	@override String get description => '角色描述';
 	@override String get permission => '角色权限';
-	@override String get descriptionOfPermission => '<b>监察员</b>可以执行基本地审核操作。\n<b>管理员</b>可以更改服务器的所有设置。';
+	@override String get descriptionOfPermission => '<b>监察员</b>可以执行基本的审核操作。\n<b>管理员</b>可以更改实例的所有设置。';
 	@override String get assignTarget => '授权对象';
 	@override String get descriptionOfAssignTarget => '<b>手动</b>指手动选择谁被包括在这个角色中。\n<b>符合条件</b>指设置条件以自动包括符合条件的用户。';
 	@override String get manual => '手动';
@@ -3557,6 +3569,7 @@ class _TranslationsMisskeyBootErrorsZhCn extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => '清除客户端设定与缓存';
 	@override String get otherOption2 => '使用简易客户端';
 	@override String get otherOption3 => '启动修复工具';
+	@override String get otherOption4 => '以安全模式启动 Misskey';
 }
 
 // Path: misskey.search_
@@ -3599,6 +3612,8 @@ class _TranslationsMisskeyServerSetupWizardZhCn extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => '若加入由分散性服务器所构成的网络（Fediverse），将能与其它服务器交换内容。';
 	@override String get doYouConnectToFediverse_description2 => '加入 Fediverse 在这里被称为「联合」。';
 	@override String get youCanConfigureMoreFederationSettingsLater => '可在之后进行如哪些服务器可以进行联合等高级设置。';
+	@override String get remoteContentsCleaning => '自动清理传入内容';
+	@override String get remoteContentsCleaning_description => '加入联合后，服务器将持续接收大量内容。打开自动清理后，将自动删除无法找到的旧内容，可节省存储空间。';
 	@override String get adminInfo => '管理员信息';
 	@override String get adminInfo_description => '设置用于接受询问的管理员信息。';
 	@override String get adminInfo_mustBeFilled => '开放服务器或开启了联合的情况下必须输入。';

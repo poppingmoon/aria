@@ -1200,6 +1200,7 @@ class _TranslationsMisskeyVisibilityNlNl extends TranslationsMisskeyVisibilityEn
 	// Translations
 	@override String get home => 'Startpagina';
 	@override String get followers => 'Volgers';
+	@override String get specified => 'Directe notities';
 }
 
 // Path: misskey.profile_
@@ -1469,6 +1470,7 @@ class _TranslationsMisskeyDeckColumnsNlNl extends TranslationsMisskeyDeckColumns
 	@override String get list => 'Lijsten';
 	@override String get channel => 'Kanalen';
 	@override String get mentions => 'Vermeldingen';
+	@override String get direct => 'Directe notities';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

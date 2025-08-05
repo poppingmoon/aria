@@ -859,7 +859,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get verificationEmailSent => 'ได้ส่งอีเมลยืนยันแล้ว กรุณาเข้าลิงก์ที่ระบุในอีเมลเพื่อทำการตั้งค่าให้เสร็จสิ้น';
 	@override String get notSet => 'ไม่ได้ตั้งค่า';
 	@override String get emailVerified => 'อีเมลได้รับการยืนยันแล้ว';
-	@override String get noteFavoritesCount => 'จำนวนโน้ตที่ชื่นชอบ';
+	@override String get noteFavoritesCount => 'จำนวนโน้ตโปรด';
 	@override String get pageLikesCount => 'จำนวนเพจที่ถูกใจ';
 	@override String get pageLikedCount => 'จำนวนการกดถูกใจเพจที่ได้รับแล้ว';
 	@override String get contact => 'ติดต่อ';
@@ -1451,6 +1451,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'ซ่อนคำแนะนำและเคล็ดลับทั้งหมด';
 	@override String get defaultImageCompressionLevel => 'ความละเอียดเริ่มต้นสำหรับการบีบอัดภาพ';
 	@override String get defaultImageCompressionLevel_description => 'หากตั้งค่าต่ำ จะรักษาคุณภาพภาพได้ดีขึ้นแต่ขนาดไฟล์จะเพิ่มขึ้น<br>หากตั้งค่าสูง จะลดขนาดไฟล์ได้ แต่คุณภาพภาพจะลดลง';
+	@override String get inMinutes => 'นาที';
+	@override String get inDays => 'วัน';
 	@override late final _TranslationsMisskeyOrderThTh order_ = _TranslationsMisskeyOrderThTh._(_root);
 	@override late final _TranslationsMisskeyChatThTh chat_ = _TranslationsMisskeyChatThTh._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteThTh emojiPalette_ = _TranslationsMisskeyEmojiPaletteThTh._(_root);
@@ -1642,7 +1644,7 @@ class _TranslationsMisskeySettingsThTh extends TranslationsMisskeySettingsEnUs {
 	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
 	@override String get serviceConnection => 'การเชื่อมต่อกับบริการ';
-	@override String get serviceConnectionBanner => 'สามารถจัดการและตั้งค่า Access Token และ Webhook เพื่อเชื่อมต่อกับแอปหรือบริการภายนอกได้';
+	@override String get serviceConnectionBanner => 'สามารถจัดการและตั้งค่าโทเค็นการเข้าถึงและ Webhook เพื่อเชื่อมต่อกับแอปหรือบริการภายนอกได้';
 	@override String get accountData => 'ข้อมูลบัญชี';
 	@override String get accountDataBanner => 'สามารถจัดการข้อมูลบัญชีได้โดยส่งออกหรือนำเข้าไฟล์เก็บถาวร';
 	@override String get muteAndBlockBanner => 'สามารถตั้งค่าการซ่อนเนื้อหา และจำกัดการกระทำจากผู้ใช้เฉพาะรายได้';
@@ -1872,6 +1874,10 @@ class _TranslationsMisskeyServerSettingsThTh extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => 'ฟอลแบ๊กกลับฐานข้อมูล';
 	@override String get fanoutTimelineDbFallbackDescription => 'เมื่อเปิดใช้งาน หากไม่ได้แคชไทม์ไลน์ ไทม์ไลน์จะฟอลแบ๊กไปยังฐานข้อมูลสำหรับการ query เพิ่มเติม การปิดใช้งานจะช่วยลดภาระของเซิร์ฟเวอร์ด้วยการกำจัดกระบวนฟอลแบ๊ก แต่มันก็จะจำกัดช่วงเวลาไทม์ไลน์ที่สามารถดึงข้อมูลได้';
 	@override String get reactionsBufferingDescription => 'เมื่อเปิดใช้งานฟังก์ชันนี้ก็จะช่วยลด latency ในการสร้างปฏิกิริยา แต่อาจจะส่งผลให้ memory footprint ของ Redis เพิ่มขึ้นนะ';
+	@override String get remoteNotesCleaning => 'การล้างข้อมูลโพสต์จากระยะไกลโดยอัตโนมัติ';
+	@override String get remoteNotesCleaning_description => 'เมื่อเปิดใช้งาน จะทำการล้างโพสต์จากระยะไกลเก่าที่ไม่ถูกอ้างอิง เป็นระยะ เพื่อลดการขยายตัวของฐานข้อมูล';
+	@override String get remoteNotesCleaningMaxProcessingDuration => 'ระยะเวลาสูงสุดของการประมวลผลการล้างข้อมูล';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'จำนวนวันที่ต้องเก็บโน้ตไว้อย่างน้อย';
 	@override String get inquiryUrl => 'URL สำหรับการติดต่อสอบถาม';
 	@override String get inquiryUrlDescription => 'ระบุ URL ของหน้าเว็บที่มีแบบฟอร์มสำหรับติดต่อผู้ดูแลเซิร์ฟเวอร์ หรือข้อมูลการติดต่อของผู้ดูแลเซิร์ฟเวอร์';
 	@override String get openRegistration => 'เปิดให้สร้างบัญชีได้';
@@ -1890,6 +1896,8 @@ class _TranslationsMisskeyServerSettingsThTh extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => 'ขอบเขตการเปิดเผยเนื้อหาที่ผู้ใช้สร้างต่อบุคคลที่ไม่ได้เข้าร่วม (แขก)';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'ช่วยป้องกันปัญหาที่อาจเกิดขึ้นจากเนื้อหาระยะไกลที่ไม่เหมาะสม ซึ่งอาจถูกเผยแพร่ออกสู่อินเทอร์เน็ตโดยไม่ตั้งใจผ่านเซิร์ฟเวอร์ของตนเอง โดยเฉพาะในกรณีที่การดูแลควบคุมไม่ทั่วถึง';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'การเปิดเผยเนื้อหาทั้งหมดในเซิร์ฟเวอร์รวมทั้งเนื้อหาที่รับมาจากระยะไกลสู่สาธารณะบนอินเทอร์เน็ตโดยไม่มีข้อจำกัดใดๆ มีความเสี่ยงโดยเฉพาะอย่างยิ่งสำหรับผู้ชมที่ไม่เข้าใจลักษณะของระบบแบบกระจาย อาจทำให้เกิดความเข้าใจผิดคิดว่าเนื้อหาที่มาจากระยะไกลนั้นเป็นเนื้อหาที่สร้างขึ้นภายในเซิร์ฟเวอร์นี้ จึงควรใช้ความระมัดระวังอย่างมาก';
+	@override String get restartServerSetupWizardConfirm_title => 'ต้องการเริ่มวิซาร์ดการตั้งค่าเซิร์ฟเวอร์ใหม่หรือไม่?';
+	@override String get restartServerSetupWizardConfirm_text => 'การตั้งค่าบางส่วนในปัจจุบันจะถูกรีเซ็ต';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorThTh userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorThTh._(_root);
 }
 
@@ -3393,6 +3401,8 @@ class _TranslationsMisskeyServerSetupWizardThTh extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => 'หากเชื่อมต่อกับเครือข่ายที่ประกอบด้วยเซิร์ฟเวอร์แบบกระจาย (Fediverse) จะสามารถแลกเปลี่ยนเนื้อหากับเซิร์ฟเวอร์อื่นๆ ได้';
 	@override String get doYouConnectToFediverse_description2 => 'การเชื่อมต่อกับ Fediverse เรียกว่า “สหพันธ์”';
 	@override String get youCanConfigureMoreFederationSettingsLater => 'หลังจากนี้ยังสามารถตั้งค่าแบบขั้นสูง เช่น การกำหนดเซิร์ฟเวอร์ที่อนุญาตให้สหพันธ์ต่อกันได้เพิ่มเติม';
+	@override String get remoteContentsCleaning => 'การล้างข้อมูลเนื้อหาที่ได้รับโดยอัตโนมัติ';
+	@override String get remoteContentsCleaning_description => 'เมื่อมีการเชื่อมโยงสหพันธ์ จะได้รับเนื้อหาเป็นจำนวนมากอย่างต่อเนื่อง เมื่อเปิดใช้งานการล้างข้อมูลอัตโนมัติ จะทำการลบเนื้อหาเก่าที่ไม่ถูกอ้างอิง ไปจากเซิร์ฟเวอร์โดยอัตโนมัติ เพื่อประหยัดพื้นที่จัดเก็บข้อมูล';
 	@override String get adminInfo => 'ข้อมูลผู้ดูแลระบ';
 	@override String get adminInfo_description => 'ตั้งค่าข้อมูลผู้ดูแลระบบที่จะใช้รับคำถามและติดต่อ';
 	@override String get adminInfo_mustBeFilled => 'หากเปิดใช้เซิร์ฟเวอร์สาธารณะ หรือเปิดใช้งานสหพันธ์ จะต้องกรอกข้อมูลนี้';

@@ -526,6 +526,7 @@ class _TranslationsMisskeyVisibilityElGr extends TranslationsMisskeyVisibilityEn
 	@override String get home => 'Κεντρικό';
 	@override String get homeDescription => 'Δημοσίευση στο κεντρικό χρονολόγιο μόνο';
 	@override String get followers => 'Ακολουθούν';
+	@override String get specified => 'Απευθείας σημειώματα';
 }
 
 // Path: misskey.profile_
@@ -742,4 +743,5 @@ class _TranslationsMisskeyDeckColumnsElGr extends TranslationsMisskeyDeckColumns
 	@override String get antenna => 'Αντένες';
 	@override String get list => 'Λίστα';
 	@override String get mentions => 'Επισημάνσεις';
+	@override String get direct => 'Απευθείας σημειώματα';
 }

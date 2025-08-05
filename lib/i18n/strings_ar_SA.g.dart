@@ -144,7 +144,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get followRequestAccepted => 'قُبل طلب المتابعة';
 	@override String get mention => 'أشر الى';
 	@override String get mentions => 'الإشارات';
-	@override String get directNotes => 'الملاحظات المباشرة';
+	@override String get directNotes => 'رسالة خاصة';
 	@override String get importAndExport => 'إستورد / صدر';
 	@override String get import => 'استيراد';
 	@override String get export => 'تصدير';
@@ -1084,6 +1084,8 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get surrender => 'ألغِ';
 	@override String get postForm => 'أنشئ ملاحظة';
 	@override String get information => 'عن';
+	@override String get inMinutes => 'د';
+	@override String get inDays => 'ي';
 	@override late final _TranslationsMisskeyChatArSa chat_ = _TranslationsMisskeyChatArSa._(_root);
 	@override late final _TranslationsMisskeyDeliveryArSa delivery_ = _TranslationsMisskeyDeliveryArSa._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingArSa._(_root);

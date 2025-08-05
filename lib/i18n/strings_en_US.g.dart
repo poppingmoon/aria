@@ -893,8 +893,8 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Download'
 	String get download => 'Download';
 
-	/// en-US: 'Do you want to remove the file "{name}"? Some content using this file will also be removed.'
-	String driveFileDeleteConfirm({required Object name}) => 'Do you want to remove the file "${name}"? Some content using this file will also be removed.';
+	/// en-US: 'Are you sure you want to delete "{name}"? All notes with this file attached will also be deleted.'
+	String driveFileDeleteConfirm({required Object name}) => 'Are you sure you want to delete "${name}"? All notes with this file attached will also be deleted.';
 
 	/// en-US: 'Are you sure you want to unfollow {name}?'
 	String unfollowConfirm({required Object name}) => 'Are you sure you want to unfollow ${name}?';
@@ -4556,8 +4556,8 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'This function is intended for CAPTCHA testing purposes. <strong>Do not use in a production environment.</strong>'
 	String get testCaptchaWarning => 'This function is intended for CAPTCHA testing purposes.\n<strong>Do not use in a production environment.</strong>';
 
-	/// en-US: 'Prohibited words for user names'
-	String get prohibitedWordsForNameOfUser => 'Prohibited words for user names';
+	/// en-US: 'Prohibited words for usernames'
+	String get prohibitedWordsForNameOfUser => 'Prohibited words for usernames';
 
 	/// en-US: 'If any of the strings in this list are included in the user's name, the name will be denied. Users with moderator privileges are not affected by this restriction.'
 	String get prohibitedWordsForNameOfUserDescription => 'If any of the strings in this list are included in the user\'s name, the name will be denied. Users with moderator privileges are not affected by this restriction.';
@@ -4753,6 +4753,24 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality.'
 	String get defaultImageCompressionLevel_description => 'Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality.';
+
+	/// en-US: 'Minute(s)'
+	String get inMinutes => 'Minute(s)';
+
+	/// en-US: 'Day(s)'
+	String get inDays => 'Day(s)';
+
+	/// en-US: 'Safe mode is enabled'
+	String get safeModeEnabled => 'Safe mode is enabled';
+
+	/// en-US: 'All plugins are disabled because safe mode is enabled.'
+	String get pluginsAreDisabledBecauseSafeMode => 'All plugins are disabled because safe mode is enabled.';
+
+	/// en-US: 'Custom CSS is not applied because safe mode is enabled.'
+	String get customCssIsDisabledBecauseSafeMode => 'Custom CSS is not applied because safe mode is enabled.';
+
+	/// en-US: 'While safe mode is active, the default theme is used. Disabling safe mode will revert these changes.'
+	String get themeIsDefaultBecauseSafeMode => 'While safe mode is active, the default theme is used. Disabling safe mode will revert these changes.';
 
 	late final TranslationsMisskeyOrderEnUs order_ = TranslationsMisskeyOrderEnUs.internal(_root);
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
@@ -4982,8 +5000,8 @@ class TranslationsMisskeyChatEnUs {
 	/// en-US: 'Chat is not enabled on this server or for this account.'
 	String get chatNotAvailableForThisAccountOrServer => 'Chat is not enabled on this server or for this account.';
 
-	/// en-US: 'Chat is read-only on this instance or this account. You cannot write new messages or create/join chat rooms.'
-	String get chatIsReadOnlyForThisAccountOrServer => 'Chat is read-only on this instance or this account. You cannot write new messages or create/join chat rooms.';
+	/// en-US: 'Chat is read-only on this server or this account. You cannot write new messages or create/join chat rooms.'
+	String get chatIsReadOnlyForThisAccountOrServer => 'Chat is read-only on this server or this account. You cannot write new messages or create/join chat rooms.';
 
 	/// en-US: 'The chat function is disabled for the other user.'
 	String get chatNotAvailableInOtherAccount => 'The chat function is disabled for the other user.';
@@ -5295,8 +5313,8 @@ class TranslationsMisskeyDeliveryEnUs {
 	/// en-US: 'Delivery status'
 	String get status => 'Delivery status';
 
-	/// en-US: 'Suspended'
-	String get stop => 'Suspended';
+	/// en-US: 'Suspend'
+	String get stop => 'Suspend';
 
 	/// en-US: 'Delivery resume'
 	String get resume => 'Delivery resume';
@@ -5527,6 +5545,18 @@ class TranslationsMisskeyServerSettingsEnUs {
 	/// en-US: 'When enabled, performance during reaction creation will be greatly improved, reducing the load on the database. However, Redis memory usage will increase.'
 	String get reactionsBufferingDescription => 'When enabled, performance during reaction creation will be greatly improved, reducing the load on the database. However, Redis memory usage will increase.';
 
+	/// en-US: 'Automatic cleanup of remote notes'
+	String get remoteNotesCleaning => 'Automatic cleanup of remote notes';
+
+	/// en-US: 'When enabled, unused and outdated remote notes will be periodically cleaned up to prevent database bloat.'
+	String get remoteNotesCleaning_description => 'When enabled, unused and outdated remote notes will be periodically cleaned up to prevent database bloat.';
+
+	/// en-US: 'Maximum cleanup processing time'
+	String get remoteNotesCleaningMaxProcessingDuration => 'Maximum cleanup processing time';
+
+	/// en-US: 'Minimum days to retain notes'
+	String get remoteNotesCleaningExpiryDaysForEachNotes => 'Minimum days to retain notes';
+
 	/// en-US: 'Inquiry URL'
 	String get inquiryUrl => 'Inquiry URL';
 
@@ -5580,6 +5610,12 @@ class TranslationsMisskeyServerSettingsEnUs {
 
 	/// en-US: 'Unconditionally publishing all content on the server to the Internet, including remote content received by the server is risky. This is especially important for guests who are unaware of the distributed nature of the content, as they may mistakenly believe that even remote content is content created by users on the server.'
 	String get userGeneratedContentsVisibilityForVisitor_description2 => 'Unconditionally publishing all content on the server to the Internet, including remote content received by the server is risky. This is especially important for guests who are unaware of the distributed nature of the content, as they may mistakenly believe that even remote content is content created by users on the server.';
+
+	/// en-US: 'Restart server setup wizard?'
+	String get restartServerSetupWizardConfirm_title => 'Restart server setup wizard?';
+
+	/// en-US: 'Some current settings will be reset.'
+	String get restartServerSetupWizardConfirm_text => 'Some current settings will be reset.';
 
 	late final TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs userGeneratedContentsVisibilityForVisitor_ = TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs.internal(_root);
 }
@@ -6748,8 +6784,8 @@ class TranslationsMisskeyPermissionsEnUs {
 	/// en-US: 'View user IP addresses'
 	String get readAdminUserIps => 'View user IP addresses';
 
-	/// en-US: 'View instance metadata'
-	String get readAdminMeta => 'View instance metadata';
+	/// en-US: 'View server metadata'
+	String get readAdminMeta => 'View server metadata';
 
 	/// en-US: 'Reset user password'
 	String get writeAdminResetPassword => 'Reset user password';
@@ -6781,8 +6817,8 @@ class TranslationsMisskeyPermissionsEnUs {
 	/// en-US: 'Unsuspend user'
 	String get writeAdminUnsuspendUser => 'Unsuspend user';
 
-	/// en-US: 'Manage instance metadata'
-	String get writeAdminMeta => 'Manage instance metadata';
+	/// en-US: 'Manage server metadata'
+	String get writeAdminMeta => 'Manage server metadata';
 
 	/// en-US: 'Manage moderation note'
 	String get writeAdminUserNote => 'Manage moderation note';
@@ -7978,8 +8014,8 @@ class TranslationsMisskeyModerationLogTypesEnUs {
 	/// en-US: 'Remote instance unsuspended'
 	String get unsuspendRemoteInstance => 'Remote instance unsuspended';
 
-	/// en-US: 'Moderation note updated for remote instance.'
-	String get updateRemoteInstanceNote => 'Moderation note updated for remote instance.';
+	/// en-US: 'Updated moderation note for remote servers'
+	String get updateRemoteInstanceNote => 'Updated moderation note for remote servers';
 
 	/// en-US: 'File marked as sensitive'
 	String get markSensitiveDriveFile => 'File marked as sensitive';
@@ -8585,6 +8621,9 @@ class TranslationsMisskeyBootErrorsEnUs {
 
 	/// en-US: 'Launch the repair tool'
 	String get otherOption3 => 'Launch the repair tool';
+
+	/// en-US: 'Launch Misskey in safe mode'
+	String get otherOption4 => 'Launch Misskey in safe mode';
 }
 
 // Path: misskey.search_
@@ -8673,6 +8712,12 @@ class TranslationsMisskeyServerSetupWizardEnUs {
 
 	/// en-US: 'Advanced settings such as specifying federated servers can be configured later.'
 	String get youCanConfigureMoreFederationSettingsLater => 'Advanced settings such as specifying federated servers can be configured later.';
+
+	/// en-US: 'Automatic cleanup of received contents'
+	String get remoteContentsCleaning => 'Automatic cleanup of received contents';
+
+	/// en-US: 'Federation may result in a continuous inflow of content. Enabling automatic cleanup will remove outdated and unreferenced content from the server to save storage.'
+	String get remoteContentsCleaning_description => 'Federation may result in a continuous inflow of content. Enabling automatic cleanup will remove outdated and unreferenced content from the server to save storage.';
 
 	/// en-US: 'Administrator information'
 	String get adminInfo => 'Administrator information';

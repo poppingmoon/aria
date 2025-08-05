@@ -290,6 +290,12 @@
             "value": "%@ กล่าวถึงคุณ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ sizden bahsetti."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -425,6 +431,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ ตอบกลับถึงคุณ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ size yanıt verdi"
           }
         },
         "uk": {
@@ -564,6 +576,12 @@
             "value": "รีโน้ตจาก %@"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'den Renote"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -701,6 +719,12 @@
             "value": "%@ อ้างอิงคุณ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ sizden alıntı yaptı"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -794,6 +818,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "โพสต์ใหม่"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni not"
           }
         },
         "zh-Hans": {
@@ -913,6 +943,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ได้รับคำขอติดตาม"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir takip isteği aldınız."
           }
         },
         "uk": {
@@ -1046,6 +1082,12 @@
             "value": "คำขอติดตามได้รับการอนุมัติแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takip isteğiniz kabul edildi."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -1159,6 +1201,12 @@
             "value": "รับความสำเร็จ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achievement unlocked"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -1246,6 +1294,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "มีการเข้าสู่ระบบ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birisi oturum açtı"
           }
         },
         "zh-Hans": {
@@ -1367,6 +1421,12 @@
             "value": "ผลโพลออกมาแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anket sonuçları açıklandı."
+          }
+        },
         "vi": {
           "stringUnit": {
             "state": "translated",
@@ -1456,6 +1516,12 @@
             "value": "ได้รับบทบาท"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilen rol"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1527,6 +1593,12 @@
             "value": "ได้รับคำเชิญเข้าร่วมห้องแชต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sohbet odasına davet edildiniz."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1596,6 +1668,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "สร้างโทเค็นการเข้าถึงแล้ว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir erişim jetonu oluşturuldu."
           }
         },
         "zh-Hans": {
@@ -1681,6 +1759,12 @@
             "value": "ทดสอบการแจ้งเตือน"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test bildirimi"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1758,6 +1842,12 @@
             "value": "การแจ้งเตือนมีลักษณะแบบนี้"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler şöyle görünür"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1829,6 +1919,12 @@
             "value": "หากไม่ทราบสาเหตุของคำเชิญ กรุณาลบโทเค็นการเข้าถึงผ่านทาง “การจัดการโทเค็นการเข้าถึง”"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eğer bilmiyorsanız, “Manage access tokens” aracılığıyla erişim jetonunu silin."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1846,6 +1942,12 @@
     "_notification._types.scheduleNote": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geplante Notiz konnte nicht veröffentlicht werden"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1881,6 +1983,12 @@
     "_notification.noteScheduled": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notiz wurde geplant"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1910,6 +2018,12 @@
     "_notification.scheduledNotePosted": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geplante Notiz wurde veröffentlicht"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1945,6 +2059,12 @@
     "_notification.scheduledNoteError": {
       "extractionState": "manual",
       "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geplante Notiz konnte nicht veröffentlicht werden"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -2034,6 +2154,12 @@
             "value": "การดำเนินการส่งออก เสาอากาศ ได้เสร็จสิ้นลงแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Antenler ihracatı tamamlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -2103,6 +2229,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "การดำเนินการส่งออก ผู้ใช้ที่ถูกบล็อก ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Engellenen kullanıcılar ihracatı tamamlandı."
           }
         },
         "zh-Hans": {
@@ -2176,6 +2308,12 @@
             "value": "การดำเนินการส่งออก คลิป ได้เสร็จสิ้นลงแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klipler ihracatı tamamlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -2245,6 +2383,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "การดำเนินการส่งออก เอโมจิที่กำหนดเอง ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özel Emoji ihracatı tamamlandı."
           }
         },
         "zh-Hans": {
@@ -2318,6 +2462,12 @@
             "value": "การดำเนินการส่งออก รายการโปรด ได้เสร็จสิ้นลงแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favoriler ihracatı tamamlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -2387,6 +2537,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "การดำเนินการส่งออก กำลังติดตาม ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takip eden ihracatı tamamlandı."
           }
         },
         "zh-Hans": {
@@ -2460,6 +2616,12 @@
             "value": "การดำเนินการส่งออก ผู้ใช้ที่ถูกปิดเสียง ได้เสร็จสิ้นลงแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessize alınan kullanıcılar ihracatı tamamlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -2531,6 +2693,12 @@
             "value": "การดำเนินการส่งออก  โน้ต ได้เสร็จสิ้นลงแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar ihracatı tamamlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -2600,6 +2768,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "การดำเนินการส่งออก รายชื่อ ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listeler ihracatı tamamlandı."
           }
         },
         "zh-Hans": {
@@ -2695,6 +2869,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "just setting up my msky"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "msky'ımı kuruyorum"
           }
         },
         "uk": {
@@ -2816,6 +2996,12 @@
             "value": "โน้ตไม่กี่ชิ้น"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazı notlar"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -2935,6 +3121,12 @@
             "value": "โน้ตเยอะอยู่"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok sayıda not"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3046,6 +3238,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "จมคากองโน้ต"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlarla kaplı"
           }
         },
         "uk": {
@@ -3167,6 +3365,12 @@
             "value": "ภูเขาแห่งโน้ต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlardan oluşan bir dağ"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3280,6 +3484,12 @@
             "value": "โน้ตล้นไปแล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taşan notlar"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3391,6 +3601,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ซุปเปอร์โน้ต"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süper not"
           }
         },
         "uk": {
@@ -3512,6 +3728,12 @@
             "value": "ต้ อ ง ก า ร โ น้ ต เ พิ่ ม อี ก !"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha... fazla... not... lazım..."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3629,6 +3851,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "โน้ต โน้ต โน้ต!"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notlar notlar notlar!"
           }
         },
         "uk": {
@@ -3750,6 +3978,12 @@
             "value": "โรงงานผลิตโน้ต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not fabrikası"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3869,6 +4103,12 @@
             "value": "ดาวเคราะห์แห่งโน้ต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notların gezegeni"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -3982,6 +4222,12 @@
             "value": "โน้ตควอซาร์"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not kuasar"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -4087,6 +4333,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "หลุม-โน้ต-ดำ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not kara deliği"
           }
         },
         "uk": {
@@ -4196,6 +4448,12 @@
             "value": "ดาราจักรโน้ต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not galaksisi"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -4303,6 +4561,12 @@
             "value": "จักรวาลโน้ต"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not evreni"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -4408,6 +4672,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ALL YOUR NOTE ARE BELONG TO US"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TÜM NOTLARINIZ BİZE AİTTİR"
           }
         },
         "uk": {
@@ -4523,6 +4793,12 @@
             "value": "มือใหม่ I"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç I"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -4628,6 +4904,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "มือใหม่ II"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç II"
           }
         },
         "uk": {
@@ -4737,6 +5019,12 @@
             "value": "มือใหม่ III"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlangıç III"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -4842,6 +5130,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "มิสคิสต์ I"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskist I"
           }
         },
         "uk": {
@@ -4951,6 +5245,12 @@
             "value": "มิสคิสต์ II"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskist II"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5056,6 +5356,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "มิสคิสต์ III"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskist III"
           }
         },
         "uk": {
@@ -5165,6 +5471,12 @@
             "value": "ลูกค้าประจำ I"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli I"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5270,6 +5582,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ลูกค้าประจำ II"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli II"
           }
         },
         "uk": {
@@ -5379,6 +5697,12 @@
             "value": "ลูกค้าประจำ III"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düzenli III"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5486,6 +5810,12 @@
             "value": "ผู้เชี่ยวชาญ I"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uzman I"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5585,6 +5915,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ผู้เชี่ยวชาญ II"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uzman II"
           }
         },
         "uk": {
@@ -5688,6 +6024,12 @@
             "value": "ผู้เชี่ยวชาญ III"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uzman III"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5787,6 +6129,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ปรมาจารย์ด้านโน้ต I"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notların Ustası I"
           }
         },
         "uk": {
@@ -5890,6 +6238,12 @@
             "value": "ปรมาจารย์ด้านโน้ต II"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notların Ustası II"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -5989,6 +6343,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ปรมาจารย์ด้านโน้ต III"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notların Ustası III"
           }
         },
         "uk": {
@@ -6092,6 +6452,12 @@
             "value": "อดไม่ได้ที่จะต้องคลิปมันเอาไว้"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kesinlikle... kesmeliyim..."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -6191,6 +6557,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "สตาร์เกเซอร์"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıldız gözlemcisi"
           }
         },
         "uk": {
@@ -6306,6 +6678,12 @@
             "value": "แสวงหาดวงดาว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıldızları Arayış"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -6417,6 +6795,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "เตรียมตัวอย่างดี"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyi hazırlanmış"
           }
         },
         "uk": {
@@ -6532,6 +6916,12 @@
             "value": "ฉันเป็นแมว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ben bir kediyim."
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -6639,6 +7029,12 @@
             "value": "ก้าวแรกสู่...กดติดตาม"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk kullanıcınızı takip edin"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -6738,6 +7134,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ทำต่อไป... ทำต่อไป..."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Devam et... devam et..."
           }
         },
         "uk": {
@@ -6853,6 +7255,12 @@
             "value": "มีเพื่อนมากมาย"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sürü arkadaş"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -6958,6 +7366,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "เพื่อน 100 คน"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "100 Arkadaş"
           }
         },
         "uk": {
@@ -7067,6 +7481,12 @@
             "value": "มีเพื่อนมากเกินไปละ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arkadaş yüklemesi"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -7166,6 +7586,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ผู้ติดตามคนแรก"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk takipçi"
           }
         },
         "uk": {
@@ -7281,6 +7707,12 @@
             "value": "ติดตามฉัน!"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beni takip edin!"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -7380,6 +7812,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "มากันเป็นฝูง"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalabalıklar halinde gelmek"
           }
         },
         "vi": {
@@ -7489,6 +7927,12 @@
             "value": "บุคคลที่เป็นที่นิยม"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Popüler"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -7588,6 +8032,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "กรุณาสร้างบรรทัดเดียวนะคะ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lütfen tek sıra halinde dizilin."
           }
         },
         "uk": {
@@ -7697,6 +8147,12 @@
             "value": "เสาสัญญาณ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Radyo Kulesi"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -7804,6 +8260,12 @@
             "value": "ผู้ทรงอิทธิพล"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etkileyici"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -7905,6 +8367,12 @@
             "value": "นักสะสมความสำเร็จ"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başarı Koleksiyoncusu"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -8004,6 +8472,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ชอบบรรลุความสําเร็จ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beğeniler Başarılar"
           }
         },
         "uk": {
@@ -8113,6 +8587,12 @@
             "value": "ฉันรัก Misskey"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskey'i seviyorum"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -8218,6 +8698,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ล่าสมบัติ"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazine Avı"
           }
         },
         "uk": {
@@ -8327,6 +8813,12 @@
             "value": "พักผ่อนสักหน่อย"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa mola"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -8428,6 +8920,12 @@
             "value": "Misskey ต้องไม่มีสิ่งใด “Miss”"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskey'de “Miss” yok"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -8515,6 +9013,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ไม่เป็นไร"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nevermind"
           }
         },
         "uk": {
@@ -8616,6 +9120,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ออกหากินยามดึกดื่น"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gececi"
           }
         },
         "uk": {
@@ -8725,6 +9235,12 @@
             "value": "นาฬิกาเทียบเวลา"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konuşan Saat"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -8826,6 +9342,12 @@
             "value": "อ้างอิงตนเอง"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öz Referans"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -8925,6 +9447,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ไทม์ไลน์ไหล"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akış Zaman Çizelgesi"
           }
         },
         "uk": {
@@ -9032,6 +9560,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "วิเคราะห์"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analist"
           }
         },
         "uk": {
@@ -9147,6 +9681,12 @@
             "value": "หวัดดีชาวโลก!"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merhaba, dünya!"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -9260,6 +9800,12 @@
             "value": "มัลติวินโดว์"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çoklu Pencere"
+          }
+        },
         "vi": {
           "stringUnit": {
             "state": "translated",
@@ -9367,6 +9913,12 @@
             "value": "อ้างอิงวงจร"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Döngüsel Referans"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -9460,6 +10012,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "คุณอ่านมันจริงๆหรือเปล่า?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerçekten okudun mu?"
           }
         },
         "uk": {
@@ -9569,6 +10127,12 @@
             "value": "คลิกที่นี่"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buraya tıklayın"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -9676,6 +10240,12 @@
             "value": "แค่ลัคกี้ธรรมดา"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sadece Şanslı"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -9781,6 +10351,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "คอมเพล็กซ์ของพระเจ้า"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanrı Kompleksi"
           }
         },
         "uk": {
@@ -9896,6 +10472,12 @@
             "value": "ครบรอบหนึ่งปี"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birinci Yıl Dönümü"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -10009,6 +10591,12 @@
             "value": "ครบรอบสองปี"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İki Yıllık Yıldönümü"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -10116,6 +10704,12 @@
             "value": "ครบรอบสามปี"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üçüncü Yıl Dönümü"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -10221,6 +10815,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "สุขสันต์วันเกิด"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doğum günün kutlu olsun"
           }
         },
         "uk": {
@@ -10336,6 +10936,12 @@
             "value": "สวัสดีปีใหม่!"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yılınız kutlu olsun!"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -10443,6 +11049,12 @@
             "value": "เกมที่คุณคลิกที่คุกกี้"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çerezleri tıklayarak oynanan bir oyun"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -10544,6 +11156,12 @@
             "value": "Brain Diver"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brain Diver"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -10633,6 +11251,12 @@
             "value": "ทดสอบโอเวอร์โฟลว์"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test taşması"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -10716,6 +11340,12 @@
             "value": "ใบรับรองการสำเร็จหลักสูตร Misskey มือใหม่"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Misskey Temel Kurs Diploması"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -10794,6 +11424,12 @@
           }
         },
         "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🤯"
+          }
+        },
+        "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "🤯"
@@ -10880,6 +11516,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ดับเบิ้ล"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çift🤯"
           }
         },
         "zh-Hans": {

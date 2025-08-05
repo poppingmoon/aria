@@ -1528,6 +1528,8 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
 	@override String get postForm => 'Buat catatan';
 	@override String get information => 'Informasi';
+	@override String get inMinutes => 'menit';
+	@override String get inDays => 'hari';
 	@override late final _TranslationsMisskeyChatIdId chat_ = _TranslationsMisskeyChatIdId._(_root);
 	@override late final _TranslationsMisskeySettingsIdId settings_ = _TranslationsMisskeySettingsIdId._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);

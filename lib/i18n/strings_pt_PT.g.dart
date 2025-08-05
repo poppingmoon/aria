@@ -1500,6 +1500,8 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Ocultas todas as "Dicas e Truques"';
 	@override String get defaultImageCompressionLevel => 'Nível de compressão de imagem padrão';
 	@override String get defaultImageCompressionLevel_description => 'Alto, reduz o tamanho do arquivo mas, também, a qualidade da imagem.<br>Alto, reduz o tamanho do arquivo mas, também, a qualidade da imagem.';
+	@override String get inMinutes => 'Minuto(s)';
+	@override String get inDays => 'Dia(s)';
 	@override late final _TranslationsMisskeyOrderPtPt order_ = _TranslationsMisskeyOrderPtPt._(_root);
 	@override late final _TranslationsMisskeyChatPtPt chat_ = _TranslationsMisskeyChatPtPt._(_root);
 	@override late final _TranslationsMisskeyEmojiPalettePtPt emojiPalette_ = _TranslationsMisskeyEmojiPalettePtPt._(_root);

@@ -1301,6 +1301,8 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get chat => 'Trò chuyện';
 	@override String get migrateOldSettings => 'Di chuyển cài đặt cũ';
 	@override String get migrateOldSettings_description => 'Thông thường, quá trình này diễn ra tự động, nhưng nếu vì lý do nào đó mà quá trình di chuyển không thành công, bạn có thể kích hoạt thủ công quy trình di chuyển, quá trình này sẽ ghi đè lên thông tin cấu hình hiện tại của bạn.';
+	@override String get inMinutes => 'phút';
+	@override String get inDays => 'ngày';
 	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
 	@override late final _TranslationsMisskeySettingsViVn settings_ = _TranslationsMisskeySettingsViVn._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);

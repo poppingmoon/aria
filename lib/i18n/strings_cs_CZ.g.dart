@@ -1187,6 +1187,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get surrender => 'Zrušit';
 	@override String get postForm => 'Formulář pro odeslání';
 	@override String get information => 'Informace';
+	@override String get inMinutes => 'Minut';
+	@override String get inDays => 'Dnů';
 	@override late final _TranslationsMisskeyChatCsCz chat_ = _TranslationsMisskeyChatCsCz._(_root);
 	@override late final _TranslationsMisskeyDeliveryCsCz delivery_ = _TranslationsMisskeyDeliveryCsCz._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCsCz._(_root);
@@ -2638,7 +2640,7 @@ class _TranslationsMisskeyDeckColumnsCsCz extends TranslationsMisskeyDeckColumns
 	@override String get list => 'Seznamy';
 	@override String get channel => 'Kanály';
 	@override String get mentions => 'Zmínění';
-	@override String get direct => 'Přímý';
+	@override String get direct => 'Přímé poznámky';
 	@override String get roleTimeline => 'Časová osa role';
 }
 

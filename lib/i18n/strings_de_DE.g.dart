@@ -1657,6 +1657,8 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Alle „Tipps und Tricks“ ausblenden';
 	@override String get defaultImageCompressionLevel => 'Standard-Bildkomprimierungsstufe';
 	@override String get defaultImageCompressionLevel_description => 'Ein niedrigerer Wert erhält die Bildqualität, erhöht aber die Dateigröße. <br>Höhere Werte reduzieren die Dateigröße, verringern aber die Bildqualität.';
+	@override String get inMinutes => 'Minute(n)';
+	@override String get inDays => 'Tag(en)';
 	@override late final _TranslationsMisskeyOrderDeDe order_ = _TranslationsMisskeyOrderDeDe._(_root);
 	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
