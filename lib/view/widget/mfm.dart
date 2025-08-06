@@ -515,7 +515,7 @@ class _Mfm extends StatelessWidget {
                   ),
                 )
               : null,
-          fallbackTextStyle: config.style,
+          fallbackTextStyle: config.style.copyWith(height: simple ? 1.0 : null),
           fallbackToImage: false,
           enableFadeIn: enableEmojiFadeIn,
         ),
