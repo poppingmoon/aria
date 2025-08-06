@@ -30,9 +30,16 @@ class _ErrorCountNotifier extends _$ErrorCountNotifier {
 
 @riverpod
 Stream<IncomingMessage> incomingMessage(Ref ref, Account account) async* {
-  final webSocketChannel = ref.watch(webSocketChannelProvider(account)).$1;
+  KeepAliveLink? link;
   Timer? timer;
+  ref.onCancel(() {
+    if (!(timer?.isActive ?? false)) {
+      link?.close();
+    }
+  });
   ref.onDispose(() => timer?.cancel());
+
+  final webSocketChannel = ref.watch(webSocketChannelProvider(account)).$1;
 
   yield const IncomingMessage();
   try {
@@ -44,6 +51,7 @@ Stream<IncomingMessage> incomingMessage(Ref ref, Account account) async* {
       yield IncomingMessage.fromJson(message as Map<String, dynamic>);
     }
   } catch (e, st) {
+    link = ref.keepAlive();
     final errorCount = ref.read(_errorCountNotifierProvider(account));
     if (kDebugMode) {
       debugPrint('webSocketChannel($account): error $errorCount $e $st');
