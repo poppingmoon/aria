@@ -24,12 +24,16 @@ class NotesNotifier extends _$NotesNotifier {
     if (note.renote case final renote?) {
       add(renote);
     } else if (note.renoteId case final renoteId? when detail) {
-      remove(renoteId);
+      if (!state.containsKey(renoteId)) {
+        remove(renoteId);
+      }
     }
     if (note.reply case final reply?) {
       add(reply, detail: false);
     } else if (note.replyId case final replyId? when detail) {
-      remove(replyId);
+      if (!state.containsKey(replyId)) {
+        remove(replyId);
+      }
     }
     final cachedNote = state[note.id];
     state = {
