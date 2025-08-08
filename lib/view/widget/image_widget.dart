@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/user_agent_provider.dart';
 
 class ImageWidget extends ConsumerWidget {
   const ImageWidget({
@@ -92,9 +93,16 @@ class ImageWidget extends ConsumerWidget {
         );
       }
     }
+
+    final cacheManager = ref.watch(cacheManagerProvider);
+    final userAgent = ref.watch(userAgentProvider).valueOrNull;
+
     if (url.split('?').first.endsWith('.svg')) {
       return FutureBuilder(
-        future: ref.read(cacheManagerProvider).getSingleFile(url),
+        future: cacheManager.getSingleFile(
+          url,
+          headers: {'User-Agent': ?userAgent},
+        ),
         builder: (context, snapshot) {
           if (snapshot case AsyncSnapshot(:final data?)) {
             return SvgPicture.file(
@@ -116,12 +124,12 @@ class ImageWidget extends ConsumerWidget {
         },
       );
     }
-    final cacheManager = ref.watch(cacheManagerProvider);
     if (enableFadeIn) {
       return Semantics(
         label: semanticLabel,
         child: CachedNetworkImage(
           imageUrl: url,
+          httpHeaders: {'User-Agent': ?userAgent},
           width: width,
           height: height,
           fit: fit,
@@ -137,7 +145,11 @@ class ImageWidget extends ConsumerWidget {
       );
     } else {
       return Image(
-        image: CachedNetworkImageProvider(url, cacheManager: cacheManager),
+        image: CachedNetworkImageProvider(
+          url,
+          headers: {'User-Agent': ?userAgent},
+          cacheManager: cacheManager,
+        ),
         width: width,
         height: height,
         fit: fit,
