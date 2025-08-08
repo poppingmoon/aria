@@ -19,11 +19,11 @@ dependencies:
   confetti: ^0.8.0
   connectivity_plus: ^6.1.4
   device_info_plus: ^11.5.0
-  dio: ^5.8.0+1
+  dio: ^5.9.0
   dotted_border: ^3.1.0
   extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker: ^10.2.1
+  file_picker: ^10.2.3
   flex_color_picker: ^3.7.1
   flutter:
     sdk: flutter
