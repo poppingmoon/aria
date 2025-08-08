@@ -1458,7 +1458,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get safeModeEnabled => '啟用安全模式';
 	@override String get pluginsAreDisabledBecauseSafeMode => '由於啟用安全模式，所有的外掛都被停用。';
 	@override String get customCssIsDisabledBecauseSafeMode => '由於啟用安全模式，所有的客製 CSS 都被停用。';
-	@override String get themeIsDefaultBecauseSafeMode => '啟用安全模式時將使用預設主題，關閉安全模式時將恢復預設主題。';
+	@override String get themeIsDefaultBecauseSafeMode => '在安全模式啟用期間將使用預設主題。關閉安全模式後會恢復原本的設定。';
 	@override late final _TranslationsMisskeyOrderZhTw order_ = _TranslationsMisskeyOrderZhTw._(_root);
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
@@ -1809,7 +1809,7 @@ class _TranslationsMisskeyInitialAccountSettingZhTw extends TranslationsMisskeyI
 	@override String get theseSettingsCanEditLater => '這裡的設定可以在之後變更。';
 	@override String get youCanEditMoreSettingsInSettingsPageLater => '除此之外，還可以在「設定」頁面進行各種設定。之後請確認看看。';
 	@override String get followUsers => '為了構築時間軸，試著追隨您感興趣的使用者吧。';
-	@override String pushNotificationDescription({required Object name}) => '啟用推送通知後，就可以在裝置上接收來自${name}的通知了。';
+	@override String pushNotificationDescription({required Object name}) => '啟用推送通知後，就可以在裝置上接收來自 ${name} 的通知了。';
 	@override String get initialAccountSettingCompleted => '初始設定完成了！';
 	@override String haveFun({required Object name}) => '盡情享受${name}吧！';
 	@override String youCanContinueTutorial({required Object name}) => '您可以繼續學習如何使用${name}(Misskey)，也可以就此打住，立即開始使用。';

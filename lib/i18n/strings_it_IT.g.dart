@@ -1390,7 +1390,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get renotes => 'Rinota';
 	@override String get loadReplies => 'Leggi le risposte';
 	@override String get loadConversation => 'Leggi la conversazione';
-	@override String get pinnedList => 'Elenco in primo piano';
+	@override String get pinnedList => 'Lista in primo piano';
 	@override String get keepScreenOn => 'Mantenere lo schermo acceso';
 	@override String get verifiedLink => 'Abbiamo confermato la validità di questo collegamento';
 	@override String get notifyNotes => 'Notifica nuove Note';
@@ -1562,6 +1562,10 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get defaultImageCompressionLevel_description => 'La compressione diminuisce la qualità dell\'immagine, poca compressione mantiene alta qualità delle immagini. Aumentandola, si riducono le dimensioni del file, a discapito della qualità dell\'immagine.';
 	@override String get inMinutes => 'min';
 	@override String get inDays => 'giorni';
+	@override String get safeModeEnabled => 'La modalità sicura è attiva';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Tutti i plugin sono disattivati, poiché la modalità sicura è attiva.';
+	@override String get customCssIsDisabledBecauseSafeMode => 'Il CSS personalizzato non è stato applicato, poiché la modalità sicura è attiva.';
+	@override String get themeIsDefaultBecauseSafeMode => 'Quando la modalità sicura è attiva, viene utilizzato il tema predefinito. Quando la modalità sicura viene disattivata, il tema torna a essere quello precedente.';
 	@override late final _TranslationsMisskeyOrderItIt order_ = _TranslationsMisskeyOrderItIt._(_root);
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
@@ -1983,6 +1987,10 @@ class _TranslationsMisskeyServerSettingsItIt extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallback => 'Elaborazione dati alternativa';
 	@override String get fanoutTimelineDbFallbackDescription => 'Attivando l\'elaborazione alternativa, verrà interrogato ulteriormente il database se la timeline non è nella cache. \nDisattivando, si può ridurre ulteriormente il carico del server, evitando l\'elaborazione alternativa, ma limitando l\'intervallo recuperabile delle timeline.';
 	@override String get reactionsBufferingDescription => 'Attivando questa opzione, puoi migliorare significativamente le prestazioni durante la creazione delle reazioni e ridurre il carico sul database. Tuttavia, aumenterà l\'impiego di memoria Redis.';
+	@override String get remoteNotesCleaning => 'Pulizia automatica dei contenuti remoti';
+	@override String get remoteNotesCleaning_description => 'Se abilitata, verranno periodicamente rimosse le vecchie Note remote senza relazioni, per ridurre il sovraccarico del sistema.';
+	@override String get remoteNotesCleaningMaxProcessingDuration => 'Durata massima del processo di pulizia';
+	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'Periodo minimo di conservazione delle note';
 	@override String get inquiryUrl => 'URL di contatto';
 	@override String get inquiryUrlDescription => 'Specificare l\'URL al modulo di contatto, oppure le informazioni con i dati di contatto dell\'amministrazione.';
 	@override String get openRegistration => 'Registrazioni aperte';
@@ -2001,6 +2009,8 @@ class _TranslationsMisskeyServerSettingsItIt extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => 'Visibilità dei contenuti generati dagli utenti ai non utenti';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'Questa funzionalità è utile per impedire che contenuti remoti inappropriati e difficili da moderare vengano inavvertitamente resi pubblici su Internet tramite il proprio server.';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'Esistono dei rischi nell\'esporre incondizionatamente su internet tutto il contenuto del tuo server, incluso il contenuto remoto ricevuto da altri server. In particolare, occorre prestare attenzione, perché le persone non consapevoli della federazione potrebbero erroneamente credere che il contenuto remoto sia stato invece creato all\'interno del proprio server.';
+	@override String get restartServerSetupWizardConfirm_title => 'Vuoi ripetere la procedura guidata di configurazione iniziale del server?';
+	@override String get restartServerSetupWizardConfirm_text => 'Verranno ripristinate alcune tue impostazioni personalizzate.';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorItIt userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorItIt._(_root);
 }
 
@@ -3462,6 +3472,7 @@ class _TranslationsMisskeyBootErrorsItIt extends TranslationsMisskeyBootErrorsEn
 	@override String get otherOption1 => 'Nelle impostazioni, cancellare le impostazioni del client e svuotare la cache';
 	@override String get otherOption2 => 'Avviare il client predefinito';
 	@override String get otherOption3 => 'Avviare lo strumento di riparazione';
+	@override String get otherOption4 => 'Avvia Misskey in modalità sicura';
 }
 
 // Path: misskey.search_
@@ -3504,6 +3515,8 @@ class _TranslationsMisskeyServerSetupWizardItIt extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => 'Collegandosi a una rete di server distribuiti, denominata Fediverso, potrai scambiare contenuti con altri server, tramite il protocollo di comunicazione ActivityPub.';
 	@override String get doYouConnectToFediverse_description2 => 'Connettersi al Fediverso è anche detto "federazione".';
 	@override String get youCanConfigureMoreFederationSettingsLater => 'Puoi svolgere la configurazione avanzata anche dopo. Ad esempio specificando quali server possono federarsi.';
+	@override String get remoteContentsCleaning => 'Pulizia automatica dei contenuti in arrivo';
+	@override String get remoteContentsCleaning_description => 'Con la federazione funzionante, riceverai sempre più contenuti. Abilitando la pulizia automatica, i contenuti non referenziati e obsoleti verranno rimossi automaticamente dai tuoi server, risparmiando spazio di archiviazione.';
 	@override String get adminInfo => 'Informazioni sull\'amministratore';
 	@override String get adminInfo_description => 'Imposta le informazioni dell\'amministratore utilizzate per accettare le richieste.';
 	@override String get adminInfo_mustBeFilled => 'Questa operazione è necessaria su un server aperto o se è attiva la federazione.';
