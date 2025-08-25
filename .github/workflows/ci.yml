@@ -127,7 +127,7 @@ jobs:
         run: flutter test
 
   integration-test-ios:
-    runs-on: macos-latest
+    runs-on: macos-14
 
     needs: get-flutter-version
 
