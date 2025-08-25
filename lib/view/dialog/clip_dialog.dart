@@ -13,6 +13,7 @@ import '../../provider/api/clips_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/note_clips_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../widget/pagination_bottom_widget.dart';
 import 'clip_settings_dialog.dart';
 import 'confirmation_dialog.dart';
 
@@ -30,7 +31,7 @@ class ClipDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final clips = ref.watch(clipsNotifierProvider(account)).valueOrNull;
+    final clips = ref.watch(clipsNotifierProvider(account));
     final noteClips =
         ref.watch(noteClipsNotifierProvider(account, noteId)).valueOrNull ?? [];
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
@@ -39,7 +40,7 @@ class ClipDialog extends HookConsumerWidget {
     return SimpleDialog(
       title: Text(t.misskey.clip),
       children: [
-        ...?clips?.mapIndexed((index, clip) {
+        ...?clips.valueOrNull?.items.mapIndexed((index, clip) {
           final isClipped = noteClips.any((noteClip) => noteClip.id == clip.id);
           return ListTile(
             leading: clip.id == clipId.value || isClipped
@@ -129,6 +130,12 @@ class ClipDialog extends HookConsumerWidget {
             },
           );
         }),
+        PaginationBottomWidget(
+          paginationState: clips,
+          loadMore: () => ref
+              .read(clipsNotifierProvider(account).notifier)
+              .loadMore(skipError: true),
+        ),
         ListTile(
           leading: const Icon(Icons.add),
           title: Text(t.misskey.createNewClip),

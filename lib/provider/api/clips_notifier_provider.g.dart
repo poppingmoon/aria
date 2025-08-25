@@ -6,7 +6,7 @@ part of 'clips_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clipsNotifierHash() => r'2119d09fe9b04a727993fe2866a6d08595f9b61e';
+String _$clipsNotifierHash() => r'3a540961b5bcc94951037ae87b5d23aa85fee6a9';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$ClipsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<List<Clip>> {
+    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Clip>> {
   late final Account account;
 
-  FutureOr<List<Clip>> build(Account account);
+  Stream<PaginationState<Clip>> build(Account account);
 }
 
 /// See also [ClipsNotifier].
@@ -41,7 +41,7 @@ abstract class _$ClipsNotifier
 const clipsNotifierProvider = ClipsNotifierFamily();
 
 /// See also [ClipsNotifier].
-class ClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
+class ClipsNotifierFamily extends Family<AsyncValue<PaginationState<Clip>>> {
   /// See also [ClipsNotifier].
   const ClipsNotifierFamily();
 
@@ -74,7 +74,11 @@ class ClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
 
 /// See also [ClipsNotifier].
 class ClipsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<ClipsNotifier, List<Clip>> {
+    extends
+        AutoDisposeStreamNotifierProviderImpl<
+          ClipsNotifier,
+          PaginationState<Clip>
+        > {
   /// See also [ClipsNotifier].
   ClipsNotifierProvider(Account account)
     : this._internal(
@@ -103,7 +107,9 @@ class ClipsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<List<Clip>> runNotifierBuild(covariant ClipsNotifier notifier) {
+  Stream<PaginationState<Clip>> runNotifierBuild(
+    covariant ClipsNotifier notifier,
+  ) {
     return notifier.build(account);
   }
 
@@ -124,7 +130,7 @@ class ClipsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ClipsNotifier, List<Clip>>
+  AutoDisposeStreamNotifierProviderElement<ClipsNotifier, PaginationState<Clip>>
   createElement() {
     return _ClipsNotifierProviderElement(this);
   }
@@ -145,13 +151,18 @@ class ClipsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ClipsNotifierRef on AutoDisposeAsyncNotifierProviderRef<List<Clip>> {
+mixin ClipsNotifierRef
+    on AutoDisposeStreamNotifierProviderRef<PaginationState<Clip>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _ClipsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ClipsNotifier, List<Clip>>
+    extends
+        AutoDisposeStreamNotifierProviderElement<
+          ClipsNotifier,
+          PaginationState<Clip>
+        >
     with ClipsNotifierRef {
   _ClipsNotifierProviderElement(super.provider);
 

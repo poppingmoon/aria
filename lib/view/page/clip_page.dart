@@ -59,7 +59,8 @@ class ClipPage extends HookConsumerWidget {
     final myClip = ref
         .watch(clipsNotifierProvider(account))
         .valueOrNull
-        ?.firstWhereOrNull((clip) => clip.id == clipId);
+        ?.items
+        .firstWhereOrNull((clip) => clip.id == clipId);
     final clip =
         myClip ?? ref.watch(clipNotifierProvider(account, clipId)).valueOrNull;
     final notes = ref.watch(clipNotesNotifierProvider(account, clipId));

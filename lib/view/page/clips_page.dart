@@ -12,6 +12,7 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/clip_settings_dialog.dart';
 import '../widget/clip_preview.dart';
 import '../widget/error_message.dart';
+import '../widget/paginated_list_view.dart';
 
 class ClipsPage extends ConsumerWidget {
   const ClipsPage({super.key, required this.account});
@@ -42,8 +43,8 @@ class ClipsPage extends ConsumerWidget {
               onRefresh: () =>
                   ref.refresh(clipsNotifierProvider(account).future),
               child: switch (clips) {
-                AsyncValue(valueOrNull: final clips?) =>
-                  clips.isEmpty
+                AsyncValue(valueOrNull: final value?) =>
+                  value.items.isEmpty
                       ? LayoutBuilder(
                           builder: (context, constraint) =>
                               SingleChildScrollView(
@@ -54,49 +55,21 @@ class ClipsPage extends ConsumerWidget {
                                 ),
                               ),
                         )
-                      : ListView.separated(
-                          itemBuilder: (context, index) => Center(
-                            child: Container(
-                              margin: EdgeInsets.only(
-                                left: 8.0,
-                                top: index == 0 ? 8.0 : 0.0,
-                                right: 8.0,
-                                bottom: index == clips.length - 1 ? 120.0 : 0.0,
-                              ),
-                              width: maxContentWidth,
-                              child: ListTileTheme.merge(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                    top: index == 0
-                                        ? const Radius.circular(8.0)
-                                        : Radius.zero,
-                                    bottom: index == clips.length - 1
-                                        ? const Radius.circular(8.0)
-                                        : Radius.zero,
-                                  ),
-                                ),
-                                tileColor: theme.colorScheme.surface,
-                                child: ClipPreview(
-                                  account: account,
-                                  clip: clips[index],
-                                  hideUserInfo: true,
-                                  onTap: () => context.push(
-                                    '/$account/clips/${clips[index].id}',
-                                  ),
-                                ),
-                              ),
-                            ),
+                      : PaginatedListView(
+                          paginationState: clips,
+                          itemBuilder: (context, clip) => ClipPreview(
+                            account: account,
+                            clip: clip,
+                            hideUserInfo: true,
+                            onTap: () =>
+                                context.push('/$account/clips/${clip.id}'),
                           ),
-                          separatorBuilder: (context, index) => const Center(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              child: SizedBox(
-                                width: maxContentWidth,
-                                child: Divider(height: 0.0),
-                              ),
-                            ),
+                          onRefresh: () => ref.refresh(
+                            clipsNotifierProvider(account).future,
                           ),
-                          itemCount: clips.length,
+                          loadMore: (skipError) => ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .loadMore(skipError: skipError),
                         ),
                 AsyncValue(:final error?, :final stackTrace) =>
                   SingleChildScrollView(
