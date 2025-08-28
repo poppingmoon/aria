@@ -58,13 +58,19 @@ class AiScriptDialog extends ConsumerWidget {
         right: 32.0,
       ),
       title: title != null
-          ? Mfm(account: account, text: title, textAlign: TextAlign.center)
+          ? IntrinsicWidth(
+              child: Mfm(
+                account: account,
+                text: title,
+                textAlign: TextAlign.center,
+              ),
+            )
           : null,
       titlePadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 32.0),
       titleTextStyle: style
           .apply(fontSizeFactor: 1.1)
           .copyWith(fontWeight: FontWeight.bold),
-      content: SingleChildScrollView(
+      content: IntrinsicWidth(
         child: Mfm(account: account, text: text, textAlign: TextAlign.center),
       ),
       contentPadding: const EdgeInsets.symmetric(
@@ -105,6 +111,7 @@ class AiScriptDialog extends ConsumerWidget {
         right: 32.0,
       ),
       actionsAlignment: MainAxisAlignment.center,
+      scrollable: true,
     );
   }
 }
