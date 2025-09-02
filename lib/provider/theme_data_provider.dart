@@ -101,7 +101,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       backgroundColor: colors.accent,
     ),
     sliderTheme: const SliderThemeData(
-      showValueIndicator: ShowValueIndicator.always,
+      showValueIndicator: ShowValueIndicator.onDrag,
       // Opting into the new appearance.
       // ignore: deprecated_member_use
       year2023: false,
