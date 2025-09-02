@@ -45,6 +45,7 @@ class AntennaPage extends ConsumerWidget {
               antenna,
               name: result.name,
               src: result.src,
+              userListId: result.userListId,
               keywords: result.keywords,
               excludeKeywords: result.excludeKeywords,
               users: result.users,
