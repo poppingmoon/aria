@@ -1477,7 +1477,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Sedang memuat ulang...';
 	@override String get pullDownToRefresh => 'Tarik ke bawah untuk memuat ulang';
 	@override String get useGroupedNotifications => 'Tampilkan notifikasi secara dikelompokkan';
-	@override String get signupPendingError => 'Terdapat masalah ketika memverifikasi alamat surel. Tautan kemungkinan telah kedaluwarsa.';
 	@override String get cwNotationRequired => 'Jika "Sembunyikan konten" diaktifkan, deskripsi harus disediakan.';
 	@override String get doReaction => 'Tambahkan reaksi';
 	@override String get code => 'Kode';
@@ -1607,6 +1606,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
 	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorIdId watermarkEditor_ = _TranslationsMisskeyWatermarkEditorIdId._(_root);
+	@override late final _TranslationsMisskeyImageEffectorIdId imageEffector_ = _TranslationsMisskeyImageEffectorIdId._(_root);
 }
 
 // Path: misskey.chat_
@@ -3092,6 +3092,16 @@ class _TranslationsMisskeyWatermarkEditorIdId extends TranslationsMisskeyWaterma
 	@override String get angle => 'Sudut';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorIdId extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsIdId fxProps_ = _TranslationsMisskeyImageEffectorFxPropsIdId._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeIdId extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3683,6 +3693,21 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId extends Translation
 
 	// Translations
 	@override String get title => 'Tidak dapat ditemukan';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsIdId extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Sudut';
+	@override String get scale => 'Ukuran';
+	@override String get size => 'Ukuran';
+	@override String get color => 'Warna';
+	@override String get opacity => 'Opasitas';
+	@override String get lightness => 'Menerangkan';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

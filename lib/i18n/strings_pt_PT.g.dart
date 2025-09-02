@@ -1375,7 +1375,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Atualizando...';
 	@override String get pullDownToRefresh => 'Puxe para baixo para atualizar';
 	@override String get useGroupedNotifications => 'Agrupar notificações';
-	@override String get signupPendingError => 'Houve um problema ao verificar o endereço de email. O link pode ter expirado.';
 	@override String get cwNotationRequired => 'Se "Esconder conteúdo" está habilitado, uma descrição deve ser adicionada.';
 	@override String get doReaction => 'Adicionar reação';
 	@override String get code => 'Código';
@@ -3531,10 +3530,10 @@ class _TranslationsMisskeyWatermarkEditorPtPt extends TranslationsMisskeyWaterma
 	@override String get type => 'Tipo';
 	@override String get image => 'imagem';
 	@override String get advanced => 'Avançado';
+	@override String get angle => 'Ângulo';
 	@override String get stripe => 'Listras';
 	@override String get stripeWidth => 'Largura da linha';
 	@override String get stripeFrequency => 'Número de linhas';
-	@override String get angle => 'Ângulo';
 	@override String get polkadot => 'Bolinhas';
 	@override String get checker => 'Xadrez';
 	@override String get polkadotMainDotOpacity => 'Opacidade da bolinha principal';
@@ -3555,6 +3554,7 @@ class _TranslationsMisskeyImageEffectorPtPt extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Adicionar efeitos';
 	@override String get discardChangesConfirm => 'Tem certeza que deseja sair? Há mudanças não salvas.';
 	@override late final _TranslationsMisskeyImageEffectorFxsPtPt fxs_ = _TranslationsMisskeyImageEffectorFxsPtPt._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsPtPt fxProps_ = _TranslationsMisskeyImageEffectorFxPropsPtPt._(_root);
 }
 
 // Path: misskey.drafts_
@@ -4461,6 +4461,21 @@ class _TranslationsMisskeyImageEffectorFxsPtPt extends TranslationsMisskeyImageE
 	@override String get checker => 'Xadrez';
 	@override String get blockNoise => 'Bloquear Ruído';
 	@override String get tearing => 'Descontinuidade';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsPtPt extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Ângulo';
+	@override String get scale => 'Tamanho';
+	@override String get size => 'Tamanho';
+	@override String get color => 'Cor';
+	@override String get opacity => 'Opacidade';
+	@override String get lightness => 'Esclarecer';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

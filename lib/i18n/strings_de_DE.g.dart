@@ -1532,7 +1532,6 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Wird aktualisiert...';
 	@override String get pullDownToRefresh => 'Zum Aktualisieren ziehen';
 	@override String get useGroupedNotifications => 'Benachrichtigungen gruppieren';
-	@override String get signupPendingError => 'Beim Überprüfen der Mailadresse ist etwas schiefgelaufen. Der Link könnte abgelaufen sein.';
 	@override String get cwNotationRequired => 'Ist "Inhaltswarnung verwenden" aktiviert, muss eine Beschreibung gegeben werden.';
 	@override String get doReaction => 'Reagieren';
 	@override String get code => 'Code';
@@ -3685,10 +3684,10 @@ class _TranslationsMisskeyWatermarkEditorDeDe extends TranslationsMisskeyWaterma
 	@override String get type => 'Art';
 	@override String get image => 'Bilder';
 	@override String get advanced => 'Fortgeschritten';
+	@override String get angle => 'Winkel';
 	@override String get stripe => 'Streifen';
 	@override String get stripeWidth => 'Linienbreite';
 	@override String get stripeFrequency => 'Linienanzahl';
-	@override String get angle => 'Winkel';
 	@override String get polkadot => 'Punktmuster';
 	@override String get polkadotMainDotOpacity => 'Deckkraft des Hauptpunktes';
 	@override String get polkadotMainDotRadius => 'Größe des Hauptpunktes';
@@ -3708,6 +3707,7 @@ class _TranslationsMisskeyImageEffectorDeDe extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Effekte hinzufügen';
 	@override String get discardChangesConfirm => 'Änderungen verwerfen und beenden?';
 	@override late final _TranslationsMisskeyImageEffectorFxsDeDe fxs_ = _TranslationsMisskeyImageEffectorFxsDeDe._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsDeDe fxProps_ = _TranslationsMisskeyImageEffectorFxPropsDeDe._(_root);
 }
 
 // Path: misskey.drafts_
@@ -4608,6 +4608,21 @@ class _TranslationsMisskeyImageEffectorFxsDeDe extends TranslationsMisskeyImageE
 	@override String get distort => 'Verzerrung';
 	@override String get stripe => 'Streifen';
 	@override String get polkadot => 'Punktmuster';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsDeDe extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Winkel';
+	@override String get scale => 'Größe';
+	@override String get size => 'Größe';
+	@override String get color => 'Farbe';
+	@override String get opacity => 'Transparenz';
+	@override String get lightness => 'Erhellen';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

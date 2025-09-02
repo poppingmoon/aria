@@ -581,6 +581,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoNo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNoNo._(_root);
 	@override late final _TranslationsMisskeySearchNoNo search_ = _TranslationsMisskeySearchNoNo._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorNoNo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNoNo._(_root);
+	@override late final _TranslationsMisskeyImageEffectorNoNo imageEffector_ = _TranslationsMisskeyImageEffectorNoNo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1100,6 +1101,16 @@ class _TranslationsMisskeyWatermarkEditorNoNo extends TranslationsMisskeyWaterma
 	@override String get image => 'Bilder';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorNoNo extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsNoNo fxProps_ = _TranslationsMisskeyImageEffectorFxPropsNoNo._(_root);
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesNoNo extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
@@ -1264,6 +1275,18 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo extends Translation
 
 	// Translations
 	@override String get title => 'Ikke funnet';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsNoNo extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Størrelse';
+	@override String get size => 'Størrelse';
+	@override String get color => 'Farge';
 }
 
 // Path: misskey.achievements_.types_.notes10_

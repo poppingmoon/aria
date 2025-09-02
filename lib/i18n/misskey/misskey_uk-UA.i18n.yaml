@@ -1652,3 +1652,10 @@ watermarkEditor_:
   type: "Тип"
   image: "Зображення"
   advanced: "Розширені"
+imageEffector_:
+  fxProps_:
+    scale: "Розмір"
+    size: "Розмір"
+    color: "Колір"
+    opacity: "Непрозорість"
+    lightness: "Яскравість"

@@ -1361,3 +1361,10 @@ watermarkEditor_:
   text: "লেখা"
   image: "ছবি"
   advanced: "উন্নত"
+imageEffector_:
+  fxProps_:
+    scale: "আকার"
+    size: "আকার"
+    color: "রং"
+    opacity: "অস্বচ্ছতা"
+    lightness: "উজ্জ্বল করুন"

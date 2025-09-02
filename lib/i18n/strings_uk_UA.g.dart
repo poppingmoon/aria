@@ -1053,6 +1053,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUkUa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUkUa._(_root);
 	@override late final _TranslationsMisskeySearchUkUa search_ = _TranslationsMisskeySearchUkUa._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorUkUa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUkUa._(_root);
+	@override late final _TranslationsMisskeyImageEffectorUkUa imageEffector_ = _TranslationsMisskeyImageEffectorUkUa._(_root);
 }
 
 // Path: misskey.chat_
@@ -1907,6 +1908,16 @@ class _TranslationsMisskeyWatermarkEditorUkUa extends TranslationsMisskeyWaterma
 	@override String get advanced => 'Розширені';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorUkUa extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsUkUa fxProps_ = _TranslationsMisskeyImageEffectorFxPropsUkUa._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUkUa extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
@@ -2180,6 +2191,20 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUkUa extends Translation
 
 	// Translations
 	@override String get title => 'Не знайдено';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsUkUa extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Розмір';
+	@override String get size => 'Розмір';
+	@override String get color => 'Колір';
+	@override String get opacity => 'Непрозорість';
+	@override String get lightness => 'Яскравість';
 }
 
 // Path: misskey.achievements_.types_.notes1_

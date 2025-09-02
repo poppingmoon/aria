@@ -1143,6 +1143,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsArSa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsArSa._(_root);
 	@override late final _TranslationsMisskeySearchArSa search_ = _TranslationsMisskeySearchArSa._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorArSa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorArSa._(_root);
+	@override late final _TranslationsMisskeyImageEffectorArSa imageEffector_ = _TranslationsMisskeyImageEffectorArSa._(_root);
 }
 
 // Path: misskey.chat_
@@ -2056,6 +2057,16 @@ class _TranslationsMisskeyWatermarkEditorArSa extends TranslationsMisskeyWaterma
 	@override String get advanced => 'متقدم';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorArSa extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsArSa fxProps_ = _TranslationsMisskeyImageEffectorFxPropsArSa._(_root);
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesArSa extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
@@ -2291,6 +2302,19 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa extends Translation
 
 	// Translations
 	@override String get title => 'غير موجود';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsArSa extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'الحجم';
+	@override String get size => 'الحجم';
+	@override String get color => 'اللون';
+	@override String get opacity => 'الشفافية';
 }
 
 // Path: misskey.achievements_.types_.notes1_

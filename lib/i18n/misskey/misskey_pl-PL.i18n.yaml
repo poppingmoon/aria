@@ -1597,3 +1597,10 @@ watermarkEditor_:
   type: "Typ"
   image: "Zdjęcia"
   advanced: "Zaawansowane"
+imageEffector_:
+  fxProps_:
+    scale: "Rozmiar"
+    size: "Rozmiar"
+    color: "Kolor"
+    opacity: "Przezroczystość"
+    lightness: "Rozjaśnij"

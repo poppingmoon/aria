@@ -2057,3 +2057,10 @@ watermarkEditor_:
   type: "Typ"
   image: "Obrázky"
   advanced: "Pokročilé"
+imageEffector_:
+  fxProps_:
+    scale: "Velikost"
+    size: "Velikost"
+    color: "Barva"
+    opacity: "Průhlednost"
+    lightness: "Zesvětlit"

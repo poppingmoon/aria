@@ -1085,7 +1085,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Takip isteğiniz kabul edildi."
+            "value": "Takip isteğin kabul edildi."
           }
         },
         "uk": {
@@ -1299,7 +1299,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Birisi oturum açtı"
+            "value": "Biri oturum açtı"
           }
         },
         "zh-Hans": {
@@ -1596,7 +1596,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sohbet odasına davet edildiniz."
+            "value": "Sohbet odasına davet edildin."
           }
         },
         "zh-Hans": {
@@ -1922,7 +1922,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eğer bilmiyorsanız, “Manage access tokens” aracılığıyla erişim jetonunu silin."
+            "value": "Eğer bilmiyorsanız, “Acces Tokens yönet” aracılığıyla erişim jetonunu silin."
           }
         },
         "zh-Hans": {
@@ -2542,7 +2542,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Takip eden ihracatı tamamlandı."
+            "value": "Takip ihracatı tamamlandı."
           }
         },
         "zh-Hans": {
@@ -10017,7 +10017,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gerçekten okudun mu?"
+            "value": "Cidden okudun mu?"
           }
         },
         "uk": {

@@ -979,6 +979,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsBnBd remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsBnBd._(_root);
 	@override late final _TranslationsMisskeySearchBnBd search_ = _TranslationsMisskeySearchBnBd._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorBnBd watermarkEditor_ = _TranslationsMisskeyWatermarkEditorBnBd._(_root);
+	@override late final _TranslationsMisskeyImageEffectorBnBd imageEffector_ = _TranslationsMisskeyImageEffectorBnBd._(_root);
 }
 
 // Path: misskey.chat_
@@ -1812,6 +1813,16 @@ class _TranslationsMisskeyWatermarkEditorBnBd extends TranslationsMisskeyWaterma
 	@override String get advanced => 'উন্নত';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorBnBd extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsBnBd fxProps_ = _TranslationsMisskeyImageEffectorFxPropsBnBd._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeBnBd extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
@@ -2007,6 +2018,20 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd extends Translation
 
 	// Translations
 	@override String get title => 'পাওয়া যায়নি';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsBnBd extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'আকার';
+	@override String get size => 'আকার';
+	@override String get color => 'রং';
+	@override String get opacity => 'অস্বচ্ছতা';
+	@override String get lightness => 'উজ্জ্বল করুন';
 }
 
 // Path: misskey.pages_.blocks.note_

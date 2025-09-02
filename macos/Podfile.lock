@@ -60,7 +60,7 @@ SPEC CHECKSUMS:
   flutter_image_compress_macos: c26c3c13ea0f28ae6dea4e139b3292e7729f99f1
   flutter_inappwebview_macos: bdf207b8f4ebd58e86ae06cd96b147de99a67c9b
   flutter_secure_storage_macos: c2754d3483d20bb207bb9e5a14f1b8e771abcdb9
-  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34

@@ -1276,7 +1276,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get releaseToRefresh => 'Thả để làm mới';
 	@override String get refreshing => 'Đang làm mới';
 	@override String get pullDownToRefresh => 'Kéo xuống để làm mới';
-	@override String get signupPendingError => 'Đã xảy ra sự cố khi xác minh địa chỉ email của bạn. Liên kết có thể đã hết hạn.';
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
 	@override String get decorate => 'Trang trí';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
@@ -1367,6 +1366,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
 	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorViVn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorViVn._(_root);
+	@override late final _TranslationsMisskeyImageEffectorViVn imageEffector_ = _TranslationsMisskeyImageEffectorViVn._(_root);
 }
 
 // Path: misskey.chat_
@@ -2450,6 +2450,16 @@ class _TranslationsMisskeyWatermarkEditorViVn extends TranslationsMisskeyWaterma
 	@override String get angle => 'Góc';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorViVn extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsViVn fxProps_ = _TranslationsMisskeyImageEffectorFxPropsViVn._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2817,6 +2827,21 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn extends Translation
 
 	// Translations
 	@override String get title => 'Không tìm thấy';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsViVn extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Góc';
+	@override String get scale => 'Kích thước';
+	@override String get size => 'Kích thước';
+	@override String get color => 'Màu sắc';
+	@override String get opacity => 'Độ trong suốt';
+	@override String get lightness => 'Độ sáng';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

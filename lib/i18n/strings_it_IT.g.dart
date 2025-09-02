@@ -331,7 +331,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get reactionSettingDescription2 => 'Trascina per riorganizzare, clicca per cancellare, usa il pulsante "+" per aggiungere.';
 	@override String get rememberNoteVisibility => 'Ricordare le impostazioni di visibilità delle note';
 	@override String get attachCancel => 'Rimuovi allegato';
-	@override String get deleteFile => 'File da Drive eliminato';
+	@override String get deleteFile => 'Elimina un file dal Drive';
 	@override String get markAsSensitive => 'Segna come esplicito';
 	@override String get unmarkAsSensitive => 'Non segnare come esplicito ';
 	@override String get enterFileName => 'Nome del file';
@@ -1246,6 +1246,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'Non si dispone dell\'autorizzazione per eseguire questa operazione.';
 	@override String get preset => 'Preimpostato';
 	@override String get selectFromPresets => 'Seleziona preimpostato';
+	@override String get custom => 'Personalizzato';
 	@override String get achievements => 'Conquiste';
 	@override String get gotInvalidResponseError => 'Risposta del server non valida';
 	@override String get gotInvalidResponseErrorDescription => 'Il server potrebbe essere irraggiungibile o in manutenzione. Riprova più tardi.';
@@ -1284,6 +1285,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => 'Hashtag nascosti';
 	@override String get hiddenTagsDescription => 'Impedire la visualizzazione del tag impostato nei trend. Puoi impostare più valori, uno per riga.';
 	@override String get notesSearchNotAvailable => 'Non è possibile cercare tra le Note.';
+	@override String get usersSearchNotAvailable => 'La ricerca profili non è disponibile.';
 	@override String get license => 'Licenza';
 	@override String get unfavoriteConfirm => 'Vuoi davvero rimuovere la preferenza?';
 	@override String get myClips => 'Le mie Clip';
@@ -1435,7 +1437,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Aggiornamento...';
 	@override String get pullDownToRefresh => 'Trascinare per aggiornare';
 	@override String get useGroupedNotifications => 'Mostra le notifiche raggruppate';
-	@override String get signupPendingError => 'Si è verificato un problema durante la verifica del tuo indirizzo email. Potrebbe essere scaduto il collegamento temporaneo.';
+	@override String get emailVerificationFailedError => 'La verifica dell\'indirizzo e-mail non è andata a buon fine. Il link potrebbe essere scaduto.';
 	@override String get cwNotationRequired => 'Devi indicare perché il contenuto è indicato come esplicito.';
 	@override String get doReaction => 'Reagisci';
 	@override String get code => 'Codice';
@@ -1566,6 +1568,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => 'Tutti i plugin sono disattivati, poiché la modalità sicura è attiva.';
 	@override String get customCssIsDisabledBecauseSafeMode => 'Il CSS personalizzato non è stato applicato, poiché la modalità sicura è attiva.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Quando la modalità sicura è attiva, viene utilizzato il tema predefinito. Quando la modalità sicura viene disattivata, il tema torna a essere quello precedente.';
+	@override String get thankYouForTestingBeta => 'Grazie per la tua collaborazione nella verifica delle versioni beta!';
 	@override late final _TranslationsMisskeyOrderItIt order_ = _TranslationsMisskeyOrderItIt._(_root);
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
@@ -1665,7 +1668,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get defaultPreset => 'Impostazioni predefinite';
 	@override late final _TranslationsMisskeyWatermarkEditorItIt watermarkEditor_ = _TranslationsMisskeyWatermarkEditorItIt._(_root);
 	@override late final _TranslationsMisskeyImageEffectorItIt imageEffector_ = _TranslationsMisskeyImageEffectorItIt._(_root);
-	@override String get drafts => 'Bozza';
+	@override String get drafts => 'Bozze';
 	@override late final _TranslationsMisskeyDraftsItIt drafts_ = _TranslationsMisskeyDraftsItIt._(_root);
 }
 
@@ -1785,6 +1788,7 @@ class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description2 => 'Quando la modalità è in tempo reale, arriveranno a prescindere.';
 	@override String get showUrlPreview => 'Mostra anteprima dell\'URL';
 	@override String get showAvailableReactionsFirstInNote => 'Mostra le reazioni disponibili in alto';
+	@override String get showPageTabBarBottom => 'Visualizza le schede della pagina nella parte inferiore';
 	@override late final _TranslationsMisskeySettingsChatItIt chat_ = _TranslationsMisskeySettingsChatItIt._(_root);
 }
 
@@ -2011,6 +2015,9 @@ class _TranslationsMisskeyServerSettingsItIt extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'Esistono dei rischi nell\'esporre incondizionatamente su internet tutto il contenuto del tuo server, incluso il contenuto remoto ricevuto da altri server. In particolare, occorre prestare attenzione, perché le persone non consapevoli della federazione potrebbero erroneamente credere che il contenuto remoto sia stato invece creato all\'interno del proprio server.';
 	@override String get restartServerSetupWizardConfirm_title => 'Vuoi ripetere la procedura guidata di configurazione iniziale del server?';
 	@override String get restartServerSetupWizardConfirm_text => 'Verranno ripristinate alcune tue impostazioni personalizzate.';
+	@override String get entrancePageStyle => 'Stile della pagina di ingresso';
+	@override String get showTimelineForVisitor => 'Mostra la Timeline a visitatori non autenticati';
+	@override String get showActivitiesForVisitor => 'Mostrare la propria attività';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorItIt userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorItIt._(_root);
 }
 
@@ -2502,6 +2509,7 @@ class _TranslationsMisskeyTimeItIt extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => 'min';
 	@override String get hour => 'ore';
 	@override String get day => 'giorni';
+	@override String get month => 'Mese';
 }
 
 // Path: misskey.x2fa_
@@ -3125,56 +3133,56 @@ class _TranslationsMisskeyModerationLogTypesItIt extends TranslationsMisskeyMode
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get createRole => 'Ruolo creato';
-	@override String get deleteRole => 'Ruolo eliminato';
-	@override String get updateRole => 'Ruolo aggiornato';
-	@override String get assignRole => 'Ruolo assegnato';
-	@override String get unassignRole => 'Ruolo disassegnato';
-	@override String get suspend => 'Sospensione';
-	@override String get unsuspend => 'Sospensione rimossa';
-	@override String get addCustomEmoji => 'Emoji personalizzata aggiunta';
-	@override String get updateCustomEmoji => 'Emoji personalizzata aggiornata';
-	@override String get deleteCustomEmoji => 'Emoji personalizzata eliminata';
-	@override String get updateServerSettings => 'Impostazioni del server aggiornate';
-	@override String get updateUserNote => 'Promemoria di moderazione aggiornato';
-	@override String get deleteDriveFile => 'File da Drive eliminato';
-	@override String get deleteNote => 'Nota eliminata';
-	@override String get createGlobalAnnouncement => 'Annuncio globale creato';
-	@override String get createUserAnnouncement => 'Annuncio ai profili iscritti creato';
-	@override String get updateGlobalAnnouncement => 'Annuncio globale aggiornato';
-	@override String get updateUserAnnouncement => 'Annuncio ai profili iscritti aggiornato';
-	@override String get deleteGlobalAnnouncement => 'Annuncio globale eliminato';
-	@override String get deleteUserAnnouncement => 'Annuncio ai profili iscritti eliminato';
-	@override String get resetPassword => 'Password azzerata';
-	@override String get suspendRemoteInstance => 'Istanza remota sospesa';
-	@override String get unsuspendRemoteInstance => 'Istanza remota riattivata';
-	@override String get updateRemoteInstanceNote => 'Aggiornamento del promemoria di moderazione per il server remoto';
-	@override String get markSensitiveDriveFile => 'File nel Drive segnato come esplicito';
-	@override String get unmarkSensitiveDriveFile => 'File nel Drive segnato come non esplicito';
-	@override String get resolveAbuseReport => 'Segnalazione risolta';
-	@override String get forwardAbuseReport => 'Segnalazione inoltrata';
-	@override String get updateAbuseReportNote => 'Ha aggiornato la segnalazione';
-	@override String get createInvitation => 'Genera codice di invito';
-	@override String get createAd => 'Banner creato';
-	@override String get deleteAd => 'Banner eliminato';
-	@override String get updateAd => 'Banner aggiornato';
-	@override String get createAvatarDecoration => 'Creazione decorazione della foto profilo';
-	@override String get updateAvatarDecoration => 'Aggiornamento decorazione foto profilo';
-	@override String get deleteAvatarDecoration => 'Eliminazione decorazione della foto profilo';
-	@override String get unsetUserAvatar => 'Rimossa foto profilo';
-	@override String get unsetUserBanner => 'Rimossa intestazione profilo';
-	@override String get createSystemWebhook => 'Crea un SystemWebhook';
-	@override String get updateSystemWebhook => 'Modifica SystemWebhook';
-	@override String get deleteSystemWebhook => 'Elimina SystemWebhook';
+	@override String get createRole => 'Crea un Ruolo';
+	@override String get deleteRole => 'Elimina un Ruolo';
+	@override String get updateRole => 'Modifica un ruolo';
+	@override String get assignRole => 'Assegna un Ruolo';
+	@override String get unassignRole => 'Toglie un Ruolo al Profilo';
+	@override String get suspend => 'Sospende';
+	@override String get unsuspend => 'Solleva la sospensione';
+	@override String get addCustomEmoji => 'Aggiunge Emoji personalizzata';
+	@override String get updateCustomEmoji => 'Modifica Emoji personalizzata';
+	@override String get deleteCustomEmoji => 'Elimina Emoji personalizzata';
+	@override String get updateServerSettings => 'Modifica le impostazioni del server';
+	@override String get updateUserNote => 'Modifica un promemoria di moderazione';
+	@override String get deleteDriveFile => 'Elimina un file dal Drive';
+	@override String get deleteNote => 'Elimina una Nota';
+	@override String get createGlobalAnnouncement => 'Crea un annuncio globale';
+	@override String get createUserAnnouncement => 'Crea un annuncio ai profili già iscritti';
+	@override String get updateGlobalAnnouncement => 'Modifica un annuncio globale';
+	@override String get updateUserAnnouncement => 'Modifica un annuncio ai profili già iscritti';
+	@override String get deleteGlobalAnnouncement => 'Elimina un annuncio globale';
+	@override String get deleteUserAnnouncement => 'Elimina un annuncio ai profili già iscritti';
+	@override String get resetPassword => 'Azzera la password';
+	@override String get suspendRemoteInstance => 'Sospende una istanza remota';
+	@override String get unsuspendRemoteInstance => 'Riattiva una istanza remota';
+	@override String get updateRemoteInstanceNote => 'Modifica il promemoria di moderazione per il server remoto';
+	@override String get markSensitiveDriveFile => 'Aggiunge NSFW a un file nel Drive';
+	@override String get unmarkSensitiveDriveFile => 'Toglie NSFW da un file nel Drive';
+	@override String get resolveAbuseReport => 'Risolve una segnalazione';
+	@override String get forwardAbuseReport => 'Inoltra una segnalazione';
+	@override String get updateAbuseReportNote => 'Modifica una segnalazione';
+	@override String get createInvitation => 'Genera un codice di invito';
+	@override String get createAd => 'Aggiunge un Banner';
+	@override String get deleteAd => 'Elimina un Banner';
+	@override String get updateAd => 'Modifica un Banner';
+	@override String get createAvatarDecoration => 'Crea una decorazione della foto profilo';
+	@override String get updateAvatarDecoration => 'Modifica una decorazione della foto profilo';
+	@override String get deleteAvatarDecoration => 'Elimina una decorazione della foto profilo';
+	@override String get unsetUserAvatar => 'Toglie una foto profilo';
+	@override String get unsetUserBanner => 'Toglie una immagine di intestazione profilo';
+	@override String get createSystemWebhook => 'Aggiunge un System Webhook';
+	@override String get updateSystemWebhook => 'Modifica un System Webhook';
+	@override String get deleteSystemWebhook => 'Elimina un System Webhook';
 	@override String get createAbuseReportNotificationRecipient => 'Crea destinatario per le notifiche di segnalazioni';
-	@override String get updateAbuseReportNotificationRecipient => 'Aggiorna destinatario notifiche di segnalazioni';
-	@override String get deleteAbuseReportNotificationRecipient => 'Elimina destinatario notifiche di segnalazioni';
-	@override String get deleteAccount => 'Quando viene eliminato un profilo';
-	@override String get deletePage => 'Pagina eliminata';
-	@override String get deleteFlash => 'Play eliminato';
-	@override String get deleteGalleryPost => 'Eliminazione pubblicazione nella Galleria';
-	@override String get deleteChatRoom => 'Elimina chat';
-	@override String get updateProxyAccountDescription => 'Aggiornata la descrizione del profilo proxy';
+	@override String get updateAbuseReportNotificationRecipient => 'Modifica un destinatario per le notifiche di segnalazioni';
+	@override String get deleteAbuseReportNotificationRecipient => 'Elimina un destinatario per le notifiche di segnalazioni';
+	@override String get deleteAccount => 'Elimina un profilo';
+	@override String get deletePage => 'Elimina una Pagina';
+	@override String get deleteFlash => 'Elimina un Play';
+	@override String get deleteGalleryPost => 'Elimina pubblicazione nella Galleria';
+	@override String get deleteChatRoom => 'Elimina una Chat';
+	@override String get updateProxyAccountDescription => 'Aggiorna la descrizione del profilo proxy';
 }
 
 // Path: misskey.fileViewer_
@@ -3604,10 +3612,10 @@ class _TranslationsMisskeyWatermarkEditorItIt extends TranslationsMisskeyWaterma
 	@override String get type => 'Tipo';
 	@override String get image => 'Immagini';
 	@override String get advanced => 'Avanzato';
+	@override String get angle => 'Angolo';
 	@override String get stripe => 'Strisce';
 	@override String get stripeWidth => 'Larghezza della linea';
 	@override String get stripeFrequency => 'Il numero di linee';
-	@override String get angle => 'Angolo';
 	@override String get polkadot => 'A pallini';
 	@override String get checker => 'revisore';
 	@override String get polkadotMainDotOpacity => 'Opacità del punto principale';
@@ -3627,7 +3635,9 @@ class _TranslationsMisskeyImageEffectorItIt extends TranslationsMisskeyImageEffe
 	@override String get title => 'Effetto';
 	@override String get addEffect => 'Aggiungi effetto';
 	@override String get discardChangesConfirm => 'Scarta le modifiche ed esci?';
+	@override String get nothingToConfigure => 'Nessuna impostazione configurabile.';
 	@override late final _TranslationsMisskeyImageEffectorFxsItIt fxs_ = _TranslationsMisskeyImageEffectorFxsItIt._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsItIt fxProps_ = _TranslationsMisskeyImageEffectorFxPropsItIt._(_root);
 }
 
 // Path: misskey.drafts_
@@ -3961,6 +3971,7 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get descriptionOfRateLimitFactor => 'I rapporti più bassi sono meno restrittivi, quelli più alti lo sono di più.';
 	@override String get canHideAds => 'Nascondere i banner';
 	@override String get canSearchNotes => 'Ricercare nelle Note';
+	@override String get canSearchUsers => 'Può cercare profili';
 	@override String get canUseTranslator => 'Tradurre le Note';
 	@override String get avatarDecorationLimit => 'Numero massimo di decorazioni foto profilo installabili';
 	@override String get canImportAntennas => 'Può importare Antenne';
@@ -4047,7 +4058,7 @@ class _TranslationsMisskeyThemeKeysItIt extends TranslationsMisskeyThemeKeysEnUs
 	@override String get hashtag => 'Hashtag';
 	@override String get mention => 'Menzioni';
 	@override String get mentionMe => 'Menzioni (di me)';
-	@override String get renote => 'Renota';
+	@override String get renote => 'Rinota';
 	@override String get modalBg => 'Sfondo modale.';
 	@override String get divider => 'Interruzione di linea';
 	@override String get scrollbarHandle => 'Maniglie della barra di scorrimento';
@@ -4117,7 +4128,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get all => 'Tutto';
+	@override String get all => 'Tutte';
 	@override String get note => 'Nuove Note';
 	@override String get follow => 'Follower';
 	@override String get mention => 'Menzioni';
@@ -4125,7 +4136,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	@override String get renote => 'Rinota';
 	@override String get quote => 'Cita';
 	@override String get reaction => 'Reazioni';
-	@override String get pollEnded => 'Sondaggio chiuso.';
+	@override String get pollEnded => 'Sondaggio terminato';
 	@override String get receiveFollowRequest => 'Richieste di follow in arrivo';
 	@override String get followRequestAccepted => 'Richieste di follow accettate';
 	@override String get roleAssigned => 'Ruolo concesso';
@@ -4133,7 +4144,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	@override String get achievementEarned => 'Risultato raggiunto';
 	@override String get exportCompleted => 'Esportazione completata';
 	@override String get login => 'Accessi';
-	@override String get createToken => 'Creare un token di accesso';
+	@override String get createToken => 'Aggiunto un token di accesso';
 	@override String get test => 'Notifiche di test';
 	@override String get app => 'Notifiche da applicazioni';
 }
@@ -4534,6 +4545,46 @@ class _TranslationsMisskeyImageEffectorFxsItIt extends TranslationsMisskeyImageE
 	@override String get checker => 'revisore';
 	@override String get blockNoise => 'Attenua rumore';
 	@override String get tearing => 'Strappa immagine';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsItIt extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Angolo';
+	@override String get scale => 'Dimensioni';
+	@override String get size => 'Dimensioni';
+	@override String get color => 'Colore';
+	@override String get opacity => 'Opacità';
+	@override String get normalize => 'Normalizza';
+	@override String get amount => 'Quantità';
+	@override String get lightness => 'Chiaro';
+	@override String get contrast => 'Contrasto';
+	@override String get hue => 'Tinta';
+	@override String get brightness => 'Luminosità';
+	@override String get saturation => 'Saturazione';
+	@override String get max => 'Valore massimo';
+	@override String get min => 'Valore minimo';
+	@override String get direction => 'Orientamento';
+	@override String get phase => 'Fasare';
+	@override String get frequency => 'Frequenza';
+	@override String get strength => 'Forza';
+	@override String get glitchChannelShift => 'Glitch cambio canale';
+	@override String get seed => 'Seme';
+	@override String get redComponent => 'Rosso composito';
+	@override String get greenComponent => 'Verde composito';
+	@override String get blueComponent => 'Blu composito';
+	@override String get threshold => 'Soglia';
+	@override String get centerX => 'Centro orizzontale';
+	@override String get centerY => 'Centro verticale';
+	@override String get zoomLinesSmoothing => 'Levigatura';
+	@override String get zoomLinesSmoothingDescription => 'Non si possono usare insieme la levigatura e la larghezza della linea centrale.';
+	@override String get zoomLinesThreshold => 'Limite delle linee zoom';
+	@override String get zoomLinesMaskSize => 'Ampiezza del diametro';
+	@override String get zoomLinesBlack => 'Bande nere';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

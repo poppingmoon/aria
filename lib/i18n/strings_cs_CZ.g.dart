@@ -1251,6 +1251,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsCsCz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCsCz._(_root);
 	@override late final _TranslationsMisskeySearchCsCz search_ = _TranslationsMisskeySearchCsCz._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorCsCz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorCsCz._(_root);
+	@override late final _TranslationsMisskeyImageEffectorCsCz imageEffector_ = _TranslationsMisskeyImageEffectorCsCz._(_root);
 }
 
 // Path: misskey.chat_
@@ -2329,6 +2330,16 @@ class _TranslationsMisskeyWatermarkEditorCsCz extends TranslationsMisskeyWaterma
 	@override String get advanced => 'Pokročilé';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorCsCz extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsCsCz fxProps_ = _TranslationsMisskeyImageEffectorFxPropsCsCz._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCsCz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
@@ -2678,6 +2689,20 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz extends Translation
 
 	// Translations
 	@override String get title => 'Nenalezeno';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsCsCz extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Velikost';
+	@override String get size => 'Velikost';
+	@override String get color => 'Barva';
+	@override String get opacity => 'Průhlednost';
+	@override String get lightness => 'Zesvětlit';
 }
 
 // Path: misskey.achievements_.types_.notes1_

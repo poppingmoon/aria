@@ -1342,6 +1342,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'このアカウントにはこの操作を行うための権限がありません。';
 	@override String get preset => 'プリセット';
 	@override String get selectFromPresets => 'プリセットから選択';
+	@override String get custom => 'カスタム';
 	@override String get achievements => '実績';
 	@override String get gotInvalidResponseError => 'サーバーの応答が無効です';
 	@override String get gotInvalidResponseErrorDescription => 'サーバーがダウンまたはメンテナンスしている可能性があります。しばらくしてから再度お試しください。';
@@ -1380,6 +1381,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => '非表示ハッシュタグ';
 	@override String get hiddenTagsDescription => '設定したタグをトレンドに表示させないようにします。改行で区切って複数設定できます。';
 	@override String get notesSearchNotAvailable => 'ノート検索は利用できません。';
+	@override String get usersSearchNotAvailable => 'ユーザー検索は利用できません。';
 	@override String get license => 'ライセンス';
 	@override String get unfavoriteConfirm => 'お気に入り解除しますか？';
 	@override String get myClips => '自分のクリップ';
@@ -1531,7 +1533,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'リロード中';
 	@override String get pullDownToRefresh => '引っ張ってリロード';
 	@override String get useGroupedNotifications => '通知をグルーピング';
-	@override String get signupPendingError => 'メールアドレスの確認中に問題が発生しました。リンクの有効期限が切れている可能性があります。';
+	@override String get emailVerificationFailedError => 'メールアドレスの確認中に問題が発生しました。リンクの有効期限が切れている可能性があります。';
 	@override String get cwNotationRequired => '「内容を隠す」がオンの場合は注釈の記述が必要です。';
 	@override String get doReaction => 'リアクションする';
 	@override String get code => 'コード';
@@ -1662,6 +1664,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => 'セーフモードが有効なため、プラグインはすべて無効化されています。';
 	@override String get customCssIsDisabledBecauseSafeMode => 'セーフモードが有効なため、カスタムCSSは適用されていません。';
 	@override String get themeIsDefaultBecauseSafeMode => 'セーフモードが有効な間はデフォルトのテーマが使用されます。セーフモードをオフにすると元に戻ります。';
+	@override String get thankYouForTestingBeta => 'ベータ版の検証にご協力いただきありがとうございます！';
 	@override late final _TranslationsMisskeyOrderJaJp order_ = _TranslationsMisskeyOrderJaJp._(_root);
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
@@ -1891,6 +1894,7 @@ class _TranslationsMisskeySettingsJaJp extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description2 => 'リアルタイムモードがオンのときは、この設定に関わらずリアルタイムでコンテンツが更新されます。';
 	@override String get showUrlPreview => 'URLプレビューを表示する';
 	@override String get showAvailableReactionsFirstInNote => '利用できるリアクションを先頭に表示';
+	@override String get showPageTabBarBottom => 'ページのタブバーを下部に表示';
 	@override late final _TranslationsMisskeySettingsChatJaJp chat_ = _TranslationsMisskeySettingsChatJaJp._(_root);
 }
 
@@ -2094,7 +2098,7 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDbFallbackDescription => '有効にすると、タイムラインがキャッシュされていない場合にDBへ追加で問い合わせを行うフォールバック処理を行います。無効にすると、フォールバック処理を行わないことでさらにサーバーの負荷を軽減することができますが、タイムラインが取得できる範囲に制限が生じます。';
 	@override String get reactionsBufferingDescription => '有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。';
 	@override String get remoteNotesCleaning => 'リモート投稿の自動クリーニング';
-	@override String get remoteNotesCleaning_description => '有効にすると、参照されていない古いリモートの投稿を定期的にクリーンアップしてデータベースの肥大化を抑制します。';
+	@override String get remoteNotesCleaning_description => '有効にすると、一定期間経過したリモートの投稿を定期的にクリーンアップしてデータベースの肥大化を抑制します。';
 	@override String get remoteNotesCleaningMaxProcessingDuration => '最大クリーニング処理継続時間';
 	@override String get remoteNotesCleaningExpiryDaysForEachNotes => '最低ノート保持日数';
 	@override String get inquiryUrl => '問い合わせ先URL';
@@ -2117,6 +2121,9 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'サーバーで受信したリモートのコンテンツを含め、サーバー内の全てのコンテンツを無条件でインターネットに公開することはリスクが伴います。特に、分散型の特性を知らない閲覧者にとっては、リモートのコンテンツであってもサーバー内で作成されたコンテンツであると誤って認識してしまう可能性があるため、注意が必要です。';
 	@override String get restartServerSetupWizardConfirm_title => 'サーバーの初期設定ウィザードをやり直しますか？';
 	@override String get restartServerSetupWizardConfirm_text => '現在の一部の設定はリセットされます。';
+	@override String get entrancePageStyle => 'エントランスページのスタイル';
+	@override String get showTimelineForVisitor => 'タイムラインを表示する';
+	@override String get showActivitiesForVisitor => 'アクティビティを表示する';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaJp userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorJaJp._(_root);
 }
 
@@ -2608,6 +2615,7 @@ class _TranslationsMisskeyTimeJaJp extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => '分';
 	@override String get hour => '時間';
 	@override String get day => '日';
+	@override String get month => 'ヶ月';
 }
 
 // Path: misskey.x2fa_
@@ -3621,8 +3629,8 @@ class _TranslationsMisskeyServerSetupWizardJaJp extends TranslationsMisskeyServe
 	@override String get doYouConnectToFediverse_description1 => '分散型サーバーで構成されるネットワーク(Fediverse)に接続すると、他のサーバーと相互にコンテンツのやり取りが可能です。';
 	@override String get doYouConnectToFediverse_description2 => 'Fediverseと接続することは「連合」とも呼ばれます。';
 	@override String get youCanConfigureMoreFederationSettingsLater => '連合可能なサーバーの指定など、高度な設定も後ほど可能です。';
-	@override String get remoteContentsCleaning => '受信コンテンツの自動クリーニング';
-	@override String get remoteContentsCleaning_description => '連合を行うと、継続して多くのコンテンツを受信します。自動クリーニングを有効にすると、参照されていない古くなったコンテンツを自動でサーバーから削除し、ストレージを節約できます。';
+	@override String get remoteContentsCleaning => 'リモートコンテンツの自動クリーニング';
+	@override String get remoteContentsCleaning_description => '連合を行うと、継続して多くのコンテンツを受信します。自動クリーニングを有効にすると、一定期間経過したリモートコンテンツを自動でサーバーから削除し、ストレージを節約できます。';
 	@override String get adminInfo => '管理者情報';
 	@override String get adminInfo_description => '問い合わせを受け付けるために使用される管理者情報を設定します。';
 	@override String get adminInfo_mustBeFilled => 'オープンサーバー、または連合がオンの場合は必ず入力が必要です。';
@@ -3710,10 +3718,10 @@ class _TranslationsMisskeyWatermarkEditorJaJp extends TranslationsMisskeyWaterma
 	@override String get type => 'タイプ';
 	@override String get image => '画像';
 	@override String get advanced => '高度';
+	@override String get angle => '角度';
 	@override String get stripe => 'ストライプ';
 	@override String get stripeWidth => 'ラインの幅';
 	@override String get stripeFrequency => 'ラインの数';
-	@override String get angle => '角度';
 	@override String get polkadot => 'ポルカドット';
 	@override String get checker => 'チェッカー';
 	@override String get polkadotMainDotOpacity => 'メインドットの不透明度';
@@ -3733,7 +3741,9 @@ class _TranslationsMisskeyImageEffectorJaJp extends TranslationsMisskeyImageEffe
 	@override String get title => 'エフェクト';
 	@override String get addEffect => 'エフェクトを追加';
 	@override String get discardChangesConfirm => '変更を破棄して終了しますか？';
+	@override String get nothingToConfigure => '設定項目はありません';
 	@override late final _TranslationsMisskeyImageEffectorFxsJaJp fxs_ = _TranslationsMisskeyImageEffectorFxsJaJp._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsJaJp fxProps_ = _TranslationsMisskeyImageEffectorFxPropsJaJp._(_root);
 }
 
 // Path: misskey.drafts_
@@ -4083,6 +4093,7 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get descriptionOfRateLimitFactor => '小さいほど制限が緩和され、大きいほど制限が強化されます。';
 	@override String get canHideAds => '広告の非表示';
 	@override String get canSearchNotes => 'ノート検索の利用';
+	@override String get canSearchUsers => 'ユーザー検索の利用';
 	@override String get canUseTranslator => '翻訳機能の利用';
 	@override String get avatarDecorationLimit => 'アイコンデコレーションの最大取付個数';
 	@override String get canImportAntennas => 'アンテナのインポートを許可';
@@ -4656,6 +4667,46 @@ class _TranslationsMisskeyImageEffectorFxsJaJp extends TranslationsMisskeyImageE
 	@override String get checker => 'チェッカー';
 	@override String get blockNoise => 'ブロックノイズ';
 	@override String get tearing => 'ティアリング';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsJaJp extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => '角度';
+	@override String get scale => 'サイズ';
+	@override String get size => 'サイズ';
+	@override String get color => '色';
+	@override String get opacity => '不透明度';
+	@override String get normalize => '正規化';
+	@override String get amount => '量';
+	@override String get lightness => '明るさ';
+	@override String get contrast => 'コントラスト';
+	@override String get hue => '色相';
+	@override String get brightness => '輝度';
+	@override String get saturation => '彩度';
+	@override String get max => '最大値';
+	@override String get min => '最小値';
+	@override String get direction => '方向';
+	@override String get phase => '位相';
+	@override String get frequency => '頻度';
+	@override String get strength => '強さ';
+	@override String get glitchChannelShift => 'ズレ';
+	@override String get seed => 'シード値';
+	@override String get redComponent => '赤色成分';
+	@override String get greenComponent => '緑色成分';
+	@override String get blueComponent => '青色成分';
+	@override String get threshold => 'しきい値';
+	@override String get centerX => '中心X';
+	@override String get centerY => '中心Y';
+	@override String get zoomLinesSmoothing => 'スムージング';
+	@override String get zoomLinesSmoothingDescription => 'スムージングと集中線の幅の設定は併用できません。';
+	@override String get zoomLinesThreshold => '集中線の幅';
+	@override String get zoomLinesMaskSize => '中心径';
+	@override String get zoomLinesBlack => '黒色にする';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
