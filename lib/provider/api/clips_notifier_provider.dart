@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -21,8 +22,16 @@ class ClipsNotifier extends _$ClipsNotifier {
     ref.onDispose(() => timer?.cancel());
     try {
       final response = await _fetchClips();
-      yield PaginationState.fromIterable(response);
-      if (response.isNotEmpty && response.length < 20) {
+      // Pagination for clips/list was added in Misskey 2025.8.0. In the
+      // previous versions, clips are returned in a random order. By checking
+      // if the response is sorted, we can determine whether pagination is
+      // supported.
+      final isSorted = response.isSorted((a, b) => b.id.compareTo(a.id));
+      yield PaginationState(
+        items: response.toList(),
+        isLastLoaded: response.isEmpty || !isSorted,
+      );
+      if (response.isNotEmpty && isSorted && response.length < 20) {
         await loadMore();
       }
     } catch (_) {
