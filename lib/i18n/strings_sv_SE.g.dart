@@ -674,6 +674,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySelfXssPreventionSvSe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionSvSe._(_root);
 	@override late final _TranslationsMisskeySearchSvSe search_ = _TranslationsMisskeySearchSvSe._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorSvSe watermarkEditor_ = _TranslationsMisskeyWatermarkEditorSvSe._(_root);
+	@override late final _TranslationsMisskeyImageEffectorSvSe imageEffector_ = _TranslationsMisskeyImageEffectorSvSe._(_root);
 }
 
 // Path: misskey.chat_
@@ -1118,6 +1119,16 @@ class _TranslationsMisskeyWatermarkEditorSvSe extends TranslationsMisskeyWaterma
 	@override String get image => 'Bilder';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorSvSe extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsSvSe fxProps_ = _TranslationsMisskeyImageEffectorFxPropsSvSe._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeSvSe extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -1239,6 +1250,18 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientSvSe extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_root);
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsSvSe extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Storlek';
+	@override String get size => 'Storlek';
+	@override String get color => 'Färg';
 }
 
 // Path: misskey.achievements_.types_.open3windows_

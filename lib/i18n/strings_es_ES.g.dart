@@ -1330,6 +1330,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'Esta cuenta no tiene permisos para hacer esa acción.';
 	@override String get preset => 'Predefinido';
 	@override String get selectFromPresets => 'Escoger desde predefinidos';
+	@override String get custom => 'Personalizado';
 	@override String get achievements => 'Logros';
 	@override String get gotInvalidResponseError => 'Respuesta del servidor inválida';
 	@override String get gotInvalidResponseErrorDescription => 'Puede que el servidor esté caído o en mantenimiento. Favor de intentar más tarde';
@@ -1368,6 +1369,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => 'Hashtags ocultos';
 	@override String get hiddenTagsDescription => 'Selecciona las etiquetas que no se mostrarán en tendencias. Una etiqueta por línea.';
 	@override String get notesSearchNotAvailable => 'No se puede buscar una nota';
+	@override String get usersSearchNotAvailable => 'La búsqueda de usuarios no está disponible.';
 	@override String get license => 'Licencia';
 	@override String get unfavoriteConfirm => '¿Desea quitar de favoritos?';
 	@override String get myClips => 'Mis clips';
@@ -1519,7 +1521,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Recargando...';
 	@override String get pullDownToRefresh => 'Tira hacia abajo para recargar';
 	@override String get useGroupedNotifications => 'Mostrar notificaciones agrupadas';
-	@override String get signupPendingError => 'Ha habido un problema al verificar tu dirección de correo electrónico. Es posible que el enlace haya caducado.';
+	@override String get emailVerificationFailedError => 'Se ha producido un error al confirmar tu dirección de correo electrónico. Es posible que el enlace haya caducado.';
 	@override String get cwNotationRequired => 'Si se ha activado "ocultar contenido", es necesario proporcionar una descripción.';
 	@override String get doReaction => 'Añadir reacción';
 	@override String get code => 'Código';
@@ -1650,6 +1652,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => 'El modo seguro está activado, por lo que todos los plugins están desactivados.';
 	@override String get customCssIsDisabledBecauseSafeMode => 'El modo seguro está activado, por lo que no se aplica el CSS personalizado.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Mientras el modo seguro esté activado, se utilizará el tema predeterminado. Cuando se desactive el modo seguro, se volverá al tema original.';
+	@override String get thankYouForTestingBeta => '¡Gracias por tu colaboración en la prueba de la versión beta!';
 	@override late final _TranslationsMisskeyOrderEsEs order_ = _TranslationsMisskeyOrderEsEs._(_root);
 	@override late final _TranslationsMisskeyChatEsEs chat_ = _TranslationsMisskeyChatEsEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteEsEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteEsEs._(_root);
@@ -1869,6 +1872,7 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description2 => 'Cuando el modo en tiempo real está activado, el contenido se actualiza en tiempo real independientemente de esta configuración.';
 	@override String get showUrlPreview => 'Mostrar la vista previa de la URL';
 	@override String get showAvailableReactionsFirstInNote => 'Mostrar las reacciones disponibles en la parte superior.';
+	@override String get showPageTabBarBottom => 'Mostrar la barra de pestañas de la página en la parte inferior.';
 	@override late final _TranslationsMisskeySettingsChatEsEs chat_ = _TranslationsMisskeySettingsChatEsEs._(_root);
 }
 
@@ -2095,6 +2099,9 @@ class _TranslationsMisskeyServerSettingsEsEs extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'Publicar incondicionalmente todo el contenido del servidor en Internet, incluido el contenido remoto recibido por el servidor, es arriesgado. Esto es especialmente importante para los invitados que desconocen la naturaleza distribuida del contenido, ya que pueden creer erróneamente que incluso el contenido remoto es contenido creado por usuarios en el servidor.';
 	@override String get restartServerSetupWizardConfirm_title => '¿Reiniciar el asistente de configuración del servidor?';
 	@override String get restartServerSetupWizardConfirm_text => 'Algunas configuraciones actuales se restablecerán';
+	@override String get entrancePageStyle => 'Estilo de la página de inicio';
+	@override String get showTimelineForVisitor => 'Mostrar la línea de tiempo';
+	@override String get showActivitiesForVisitor => 'Mostrar actividades';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEsEs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEsEs._(_root);
 }
 
@@ -2586,6 +2593,7 @@ class _TranslationsMisskeyTimeEsEs extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => 'Minutos';
 	@override String get hour => 'Horas';
 	@override String get day => 'Días';
+	@override String get month => 'Mes(es)';
 }
 
 // Path: misskey.x2fa_
@@ -3688,10 +3696,10 @@ class _TranslationsMisskeyWatermarkEditorEsEs extends TranslationsMisskeyWaterma
 	@override String get type => 'Tipo';
 	@override String get image => 'Imágenes';
 	@override String get advanced => 'Avanzado';
+	@override String get angle => 'Ángulo';
 	@override String get stripe => 'Rayas';
 	@override String get stripeWidth => 'Anchura de línea';
 	@override String get stripeFrequency => 'Número de líneas.';
-	@override String get angle => 'Ángulo';
 	@override String get polkadot => 'Lunares';
 	@override String get checker => 'verificador';
 	@override String get polkadotMainDotOpacity => 'Opacidad del círculo principal';
@@ -3711,7 +3719,9 @@ class _TranslationsMisskeyImageEffectorEsEs extends TranslationsMisskeyImageEffe
 	@override String get title => 'Efecto';
 	@override String get addEffect => 'Añadir Efecto';
 	@override String get discardChangesConfirm => '¿Ignorar cambios y salir?';
+	@override String get nothingToConfigure => 'No hay opciones configurables disponibles.';
 	@override late final _TranslationsMisskeyImageEffectorFxsEsEs fxs_ = _TranslationsMisskeyImageEffectorFxsEsEs._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsEsEs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsEsEs._(_root);
 }
 
 // Path: misskey.drafts_
@@ -4045,6 +4055,7 @@ class _TranslationsMisskeyRoleOptionsEsEs extends TranslationsMisskeyRoleOptions
 	@override String get descriptionOfRateLimitFactor => 'Límites más bajos son menos restrictivos, más altos menos restrictivos';
 	@override String get canHideAds => 'Puede ocultar anuncios';
 	@override String get canSearchNotes => 'Uso de la búsqueda de notas';
+	@override String get canSearchUsers => 'Uso de la búsqueda de usuarios';
 	@override String get canUseTranslator => 'Uso de traductor';
 	@override String get avatarDecorationLimit => 'Número máximo de decoraciones de avatar';
 	@override String get canImportAntennas => 'Permitir la importación de antenas';
@@ -4618,6 +4629,46 @@ class _TranslationsMisskeyImageEffectorFxsEsEs extends TranslationsMisskeyImageE
 	@override String get checker => 'Corrector';
 	@override String get blockNoise => 'Bloquear Ruido';
 	@override String get tearing => 'Rasgado de Imagen (Tearing)';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsEsEs extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Ángulo';
+	@override String get scale => 'Tamaño';
+	@override String get size => 'Tamaño';
+	@override String get color => 'Color';
+	@override String get opacity => 'Opacidad';
+	@override String get normalize => 'Normalización';
+	@override String get amount => 'Cantidad';
+	@override String get lightness => 'Brillo';
+	@override String get contrast => 'Contraste';
+	@override String get hue => 'Tonalidad';
+	@override String get brightness => 'Brillo';
+	@override String get saturation => 'Saturación';
+	@override String get max => 'Valor máximo';
+	@override String get min => 'Valor mínimo';
+	@override String get direction => 'Dirección';
+	@override String get phase => 'Fase';
+	@override String get frequency => 'Frecuencia';
+	@override String get strength => 'Intensidad';
+	@override String get glitchChannelShift => 'cambio de canal de imagen';
+	@override String get seed => 'Valor de la semilla';
+	@override String get redComponent => 'Componente rojo';
+	@override String get greenComponent => 'Componente Verde';
+	@override String get blueComponent => 'Componente Azul';
+	@override String get threshold => 'Umbral';
+	@override String get centerX => 'Centrar X';
+	@override String get centerY => 'Centrar Y';
+	@override String get zoomLinesSmoothing => 'Suavizado';
+	@override String get zoomLinesSmoothingDescription => 'El suavizado y el ancho de línea de zoom no se pueden utilizar juntos.';
+	@override String get zoomLinesThreshold => 'Ancho de línea del zoom';
+	@override String get zoomLinesMaskSize => 'Diámetro del centro';
+	@override String get zoomLinesBlack => 'Hacer oscuro';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

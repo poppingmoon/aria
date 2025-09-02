@@ -70,25 +70,25 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	// Translations
 	@override String get lang__ => 'Türkçe';
 	@override String get headlineMisskey => 'Notlarla birbirine bağlı bir ağ';
-	@override String get introMisskey => 'Hoş geldiniz! Misskey, açık kaynaklı, merkezi olmayan bir mikroblog hizmetidir.\nDüşüncelerinizi çevrenizdeki herkesle paylaşmak için “notlar” oluşturun. 📡\n“Tepkiler” ile herkesin notları hakkındaki duygularınızı hızlıca ifade edebilirsiniz. 👍\nYeni bir dünyayı keşfedelim! 🚀';
+	@override String get introMisskey => 'Hoş geldiniz! Misskey, merkezi olmayan bir açık kaynaklı mikroblog platformudur.\n“Notlar” yazarak şu anda neler olduğunu anlatabilir veya olayları başkalarıyla paylaşabilirsiniz. 📡\n“Tepkiler” ile diğer kullanıcıların notları hakkındaki duygularınızı hızlı bir şekilde ifade edebilirsiniz. 👍\nYeni bir dünya sizi bekliyor! 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name}, açık kaynak platformu <b>Misskey</b> (kısaca “Misskey örneği” olarak anılır) tarafından desteklenen hizmetlerden biridir.';
-	@override String monthAndDay({required Object month, required Object day}) => '${month}/${day}';
-	@override String get search => 'Arama';
+	@override String monthAndDay({required Object day, required Object month}) => '${day}.${month}.';
+	@override String get search => 'Ara';
 	@override String get reset => 'Sıfırla';
 	@override String get notifications => 'Bildirimler';
 	@override String get username => 'Kullanıcı Adı';
 	@override String get password => 'Şifre';
 	@override String get initialPasswordForSetup => 'Kurulum için ilk şifre';
-	@override String get initialPasswordIsIncorrect => 'Kurulum için ilk parola yanlış';
-	@override String get initialPasswordForSetupDescription => 'Misskey\'i kendiniz kurduysanız, yapılandırma dosyasına girdiğiniz parolayı kullanın.\nMisskey barındırma hizmeti kullanıyorsanız, verilen parolayı kullanın.\nParola belirlemediyseniz, devam etmek için boş bırakın.';
+	@override String get initialPasswordIsIncorrect => 'Kurulum için ilk şifre yanlış';
+	@override String get initialPasswordForSetupDescription => 'Misskey\'i kendiniz kurduysan, yapılandırma dosyasında belirtilen şifreyi kullan.\nMisskey barındırma hizmeti veya benzeri bir hizmet kullanıyorsan, orada belirtilen şifreyi kullan.\nŞifre belirlemediysen, devam etmek için boş bırak.';
 	@override String get forgotPassword => 'Şifremi unuttum';
-	@override String get fetchingAsApObject => 'Fediverse\'den getiriliyor...';
+	@override String get fetchingAsApObject => 'Fediverse\'den talep ediliyor...';
 	@override String get ok => 'Tamam';
 	@override String get gotIt => 'Anladım!';
-	@override String get cancel => 'İptal';
-	@override String get noThankYou => 'Şimdi değil';
-	@override String get enterUsername => 'Kullanıcı adını girin';
-	@override String renotedBy({required Object user}) => '${user} tarafından renot edildi';
+	@override String get cancel => 'Vazgeç';
+	@override String get noThankYou => 'Hayır, teşekkürler.';
+	@override String get enterUsername => 'Kullanıcı adı gir';
+	@override String renotedBy({required Object user}) => '${user} renote etti';
 	@override String get noNotes => 'Not yok';
 	@override String get noNotifications => 'Bildirim yok';
 	@override String get instance => 'Sunucu';
@@ -98,31 +98,31 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get otherSettings => 'Diğer Ayarlar';
 	@override String get openInWindow => 'Pencerede aç';
 	@override String get profile => 'Profil';
-	@override String get timeline => 'Timeline';
+	@override String get timeline => 'Pano';
 	@override String get noAccountDescription => 'Bu kullanıcı henüz biyografisini yazmamış.';
-	@override String get login => 'Giriş Yap';
-	@override String get loggingIn => 'Giriş yapılıyor';
+	@override String get login => 'Oturum Aç';
+	@override String get loggingIn => 'Giriş Yapılıyor...';
 	@override String get logout => 'Çıkış Yap';
 	@override String get signup => 'Kaydol';
 	@override String get uploading => 'Yükleniyor...';
 	@override String get save => 'Kaydet';
 	@override String get users => 'Kullanıcılar';
 	@override String get addUser => 'Kullanıcı ekle';
-	@override String get favorite => 'Favorilere ekle';
+	@override String get favorite => 'Favori';
 	@override String get favorites => 'Favoriler';
-	@override String get unfavorite => 'Favorilerden kaldır';
-	@override String get favorited => 'Favorilere eklendi.';
-	@override String get alreadyFavorited => 'Zaten favorilere eklendi';
-	@override String get cantFavorite => 'Favorilere ekleyemedim.';
+	@override String get unfavorite => 'Favoriden kaldır';
+	@override String get favorited => 'Favoriye eklendi.';
+	@override String get alreadyFavorited => 'Zaten favoride';
+	@override String get cantFavorite => 'Favoriye eklenemedi';
 	@override String get pin => 'Profiline sabitle';
 	@override String get unpin => 'Profilden sabitlemeyi kaldır';
 	@override String get copyContent => 'İçeriği kopyala';
-	@override String get copyLink => 'Linki kopyala';
+	@override String get copyLink => 'Link kopyala';
 	@override String get copyRemoteLink => 'Uzak linki kopyala';
 	@override String get copyLinkRenote => 'Renote linkini kopyala';
 	@override String get delete => 'Sil';
 	@override String get deleteAndEdit => 'Sil ve yeniden düzenle';
-	@override String get deleteAndEditConfirm => 'Bu notu silip yeniden düzenlemek ister misiniz? Bu notla ilgili tüm Tepkiler, Yeniden Notlar ve Yanıtlar da silinecektir.';
+	@override String get deleteAndEditConfirm => 'Bu notu silip yeniden düzenlemek ister misin? Bu notla ilgili tüm Tepki, Renote ve Yanıtlar da silinecek.';
 	@override String get addToList => 'Listeye ekle';
 	@override String get addToAntenna => 'Anten\'e ekle';
 	@override String get sendMessage => 'Mesaj gönder';
@@ -134,7 +134,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => 'Klasör ID\'yi kopyala';
 	@override String get copyProfileUrl => 'Profil URL kopyala';
 	@override String get searchUser => 'Kullanıcı ara';
-	@override String get searchThisUsersNotes => 'Bu kullanıcının notlarını ara';
+	@override String get searchThisUsersNotes => 'Kullanıcının notlarını ara';
 	@override String get reply => 'Yanıtla';
 	@override String get loadMore => 'Daha fazla yükle';
 	@override String get showMore => 'Daha fazlasını göster';
@@ -150,16 +150,16 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get export => 'Dışa aktar';
 	@override String get files => 'Dosyalar';
 	@override String get download => 'İndir';
-	@override String driveFileDeleteConfirm({required Object name}) => '“${name}” dosyasını silmek istediğinizden emin misiniz? Bu dosyaya ekli tüm notlar da silinecektir.';
-	@override String unfollowConfirm({required Object name}) => '${name}\'yi takipten çıkarmak istediğinizden emin misiniz?';
-	@override String get exportRequested => 'Dışa aktarma işlemi talep ettiniz. Bu işlem biraz zaman alabilir. İşlem tamamlandığında Drive\'ınıza eklenecektir.';
-	@override String get importRequested => 'İçe aktarma talebinde bulundunuz. Bu işlem biraz zaman alabilir.';
+	@override String driveFileDeleteConfirm({required Object name}) => '“${name}” dosyasını silmek istediğinden emin misin? Bu dosyaya ekli tüm notlar da silinecek.';
+	@override String unfollowConfirm({required Object name}) => '${name} kullanıcısını cidden takipden çıkmak istiyor musun?';
+	@override String get exportRequested => 'Dışa aktarma işlemi talep ettin. Bu işlem biraz zaman alabilir. İşlem tamamlandığında Drive\'ına eklenecek.';
+	@override String get importRequested => 'İçe aktarma talebinde bulundun. Bu işlem biraz zaman alabilir.';
 	@override String get lists => 'Listeler';
-	@override String get noLists => 'Hiçbir listeniz yok.';
+	@override String get noLists => 'Hiç liste yok';
 	@override String get note => 'Not';
 	@override String get notes => 'Notlar';
-	@override String get following => 'Takip eden';
-	@override String get followers => 'Takipçiler';
+	@override String get following => 'Takip';
+	@override String get followers => 'Takipçi';
 	@override String get followsYou => 'Sizi takip ediyor';
 	@override String get createList => 'Liste oluştur';
 	@override String get manageLists => 'Listeleri yönet';
@@ -167,9 +167,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get somethingHappened => 'Bir hata oluştu';
 	@override String get retry => 'Tekrar dene';
 	@override String get pageLoadError => 'Sayfa yüklenirken bir hata oluştu.';
-	@override String get pageLoadErrorDescription => 'Bu durum genellikle ağ hataları veya tarayıcının önbelleği nedeniyle oluşur. Önbelleği temizleyin ve bir süre bekledikten sonra tekrar deneyin.';
-	@override String get serverIsDead => 'Bu sunucu yanıt vermiyor. Lütfen bir süre bekleyin ve tekrar deneyin.';
-	@override String get youShouldUpgradeClient => 'Bu sayfayı görüntülemek için lütfen yenileyerek istemcinizi güncelleyin.';
+	@override String get pageLoadErrorDescription => 'Bu durum genellikle ağ hataları veya tarayıcının önbelleği nedeniyle oluşur. Önbelleği temizleyin ve bir süre bekledikten sonra tekrar dene.';
+	@override String get serverIsDead => 'Bu sunucu yanıt vermiyor. Lütfen bir süre bekleyin ve tekrar dene.';
+	@override String get youShouldUpgradeClient => 'Bu sayfayı görüntülemek için lütfen yenileyerek istemcini güncelle.';
 	@override String get enterListName => 'Listeye bir ad girin';
 	@override String get privacy => 'Gizlilik';
 	@override String get makeFollowManuallyApprove => 'Takip istekleri onay gerektirir';
@@ -179,18 +179,18 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get followRequests => 'Takip istekleri';
 	@override String get unfollow => 'Takibi bırak';
 	@override String get followRequestPending => 'Takip isteği beklemede';
-	@override String get enterEmoji => 'Bir emoji girin';
+	@override String get enterEmoji => 'Bir emoji gir';
 	@override String get renote => 'Renote';
-	@override String get unrenote => 'Renote\'u kaldır';
-	@override String get renoted => 'Renote edildi';
-	@override String renotedToX({required Object name}) => '${name} adına kayıtlıdır.';
-	@override String get cantRenote => 'Bu gönderi renote edilemez.';
-	@override String get cantReRenote => 'Bir renote yeniden renote edilemez.';
+	@override String get unrenote => 'Renote geri al';
+	@override String get renoted => 'Renote yapıldı.';
+	@override String renotedToX({required Object name}) => '${name} adresine Renote';
+	@override String get cantRenote => 'Bu not renote edilemez.';
+	@override String get cantReRenote => 'Renote yeniden Renote edilemez.';
 	@override String get quote => 'Alıntı';
 	@override String get inChannelRenote => 'Kanal içi renote';
 	@override String get inChannelQuote => 'Kanal içi alıntı';
-	@override String get renoteToChannel => 'Kanala not et';
-	@override String get renoteToOtherChannel => 'Diğer kanala not edin\n';
+	@override String get renoteToChannel => 'Kanala Renote';
+	@override String get renoteToOtherChannel => 'Diğer kanala Renote\n';
 	@override String get pinnedNote => 'Sabit not';
 	@override String get pinned => 'Profiline sabitle';
 	@override String get you => 'Sen';
@@ -198,14 +198,14 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get sensitive => 'Hassas';
 	@override String get add => 'Ekle';
 	@override String get reaction => 'Tepki';
-	@override String get reactions => 'Tepki';
+	@override String get reactions => 'Tepkiler';
 	@override String get emojiPicker => 'Emoji seçici';
 	@override String get pinnedEmojisForReactionSettingDescription => 'Tepki verirken sabitlenecek ve görüntülenecek emojileri ayarlayın.';
 	@override String get pinnedEmojisSettingDescription => 'Emoji seçiciyi görüntülerken sabitlenecek ve görüntülenecek emojileri ayarlayın';
 	@override String get emojiPickerDisplay => 'Emoji seçici ekranı';
 	@override String get overwriteFromPinnedEmojisForReaction => 'Tepki ayarlarından geçersiz kılma';
 	@override String get overwriteFromPinnedEmojis => 'Genel ayarlardan geçersiz kılma';
-	@override String get reactionSettingDescription2 => 'Sıralamayı değiştirmek için sürükleyin, silmek için tıklayın, eklemek için “+” tuşuna basın.';
+	@override String get reactionSettingDescription2 => 'Sıralamayı değiştirmek için sürükle, silmek için tıkla, eklemek için “+” tuşuna bas.';
 	@override String get rememberNoteVisibility => 'Not görünürlük ayarlarını hatırla';
 	@override String get attachCancel => 'Eki kaldır';
 	@override String get deleteFile => 'Dosyayı sil';
@@ -215,15 +215,15 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get mute => 'Gizle';
 	@override String get unmute => 'sesi aç';
 	@override String get renoteMute => 'sesi kapat';
-	@override String get renoteUnmute => 'sesi açmayı iptal et';
+	@override String get renoteUnmute => 'Renote sessiz modunu kaldır';
 	@override String get block => 'engelle';
 	@override String get unblock => 'engellemeyi kaldır';
 	@override String get suspend => 'askıya al';
-	@override String get unsuspend => 'askıya alma';
-	@override String get blockConfirm => 'Onayı engelle';
-	@override String get unblockConfirm => 'engellemeyi kaldır onayla';
+	@override String get unsuspend => 'askıya almayı kaldır';
+	@override String get blockConfirm => 'Engeli onayla';
+	@override String get unblockConfirm => 'Engel kaldırmayı onayla';
 	@override String get suspendConfirm => 'Hesap askıya alınsın mı?';
-	@override String get unsuspendConfirm => 'Hesap askıdan kaldırılsın mı';
+	@override String get unsuspendConfirm => 'Hesap askıdan kaldırılsın mı?';
 	@override String get selectList => 'Bir liste seç';
 	@override String get editList => 'Listeyi düzenle';
 	@override String get selectChannel => 'Kanal seç';
@@ -241,16 +241,16 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get addEmoji => 'Emoji ekle';
 	@override String get settingGuide => 'Önerilen ayarlar';
 	@override String get cacheRemoteFiles => 'Uzak dosyalar ön belleğe alınsın';
-	@override String get cacheRemoteFilesDescription => 'Bu ayar açık olduğunda diğer sitelerin dosyaları doğrudan uzak sunucudan yüklenecektir. Bu ayarı kapatmak depolama kullanımını azaltacak ama küçük resimler oluşturulmadığından trafiği arttıracaktır.';
-	@override String get youCanCleanRemoteFilesCache => 'Dosya yönetimi görünümünde 🗑️ düğmesine tıklayarak önbelleği temizleyebilirsiniz.';
+	@override String get cacheRemoteFilesDescription => 'Bu ayar açık olduğunda diğer sitelerin dosyaları doğrudan uzak sunucudan yüklenece. Bu ayarı kapatmak depolama kullanımını azaltacak ama küçük resimler oluşturulmadığından trafiği arttıracak.';
+	@override String get youCanCleanRemoteFilesCache => 'Dosya yönetimi görünümünde 🗑️ düğmesine tıklayarak önbelleği temizleyebilirsin.';
 	@override String get cacheRemoteSensitiveFiles => 'Hassas uzak dosyalar ön belleğe alınsın';
-	@override String get cacheRemoteSensitiveFilesDescription => 'Bu ayar kapalı olduğunda hassas uzak dosyalar ön belleğe alınmadan doğrudan uzak sunucudan yüklenecektir.';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Bu ayar kapalı olduğunda hassas uzak dosyalar ön belleğe alınmadan doğrudan uzak sunucudan yüklenecek.';
 	@override String get flagAsBot => 'Bot olarak işaretle';
-	@override String get flagAsBotDescription => 'Bu hesap bir program tarafından kontrol ediliyorsa bu seçeneği etkinleştirin. Etkinleştirildiğinde, diğer geliştiriciler için bir işaret görevi görerek diğer botlarla sonsuz etkileşim zincirlerini önleyecek ve Misskey\'in iç sistemlerini bu hesabı bir bot olarak ele alacak şekilde ayarlayacaktır.';
+	@override String get flagAsBotDescription => 'Bu hesap bir program tarafından kontrol ediliyorsa bu seçeneği etkinleştir. Etkinleştirildiğinde, diğer geliştiriciler için bir işaret görevi görerek diğer botlarla sonsuz etkileşim zincirlerini önleyecek ve Misskey\'in iç sistemlerini bu hesabı bir bot olarak ele alacak şekilde ayarlayacak.';
 	@override String get flagAsCat => 'Kedi hesabı';
 	@override String get flagAsCatDescription => 'Kedi hesabı';
-	@override String get flagShowTimelineReplies => 'Timeline\'da notlara gelen cevapları göster';
-	@override String get flagShowTimelineRepliesDescription => 'Açık olduğu durumda, Timeline\'da kullanıcıların başkalarına verdiği cevaplar gözükür.';
+	@override String get flagShowTimelineReplies => 'Pano\'da notlara gelen cevapları göster';
+	@override String get flagShowTimelineRepliesDescription => 'Açık olduğu durumda, Pano\'da kullanıcıların başkalarına verdiği cevaplar gözükür.';
 	@override String get autoAcceptFollowed => 'Takip edilen hesapların takip isteklerini kabul et';
 	@override String get addAccount => 'Hesap ekle';
 	@override String get reloadAccountsList => 'Hesap listesini güncelle';
@@ -264,14 +264,14 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get wallpaper => 'Duvar kağıdı';
 	@override String get setWallpaper => 'Duvar kağıdını ayarla';
 	@override String get removeWallpaper => 'Duvar kağıdını kaldır';
-	@override String searchWith({required Object q}) => 'Arama: ${q}';
-	@override String get youHaveNoLists => 'Hiçbir listeniz yok.';
-	@override String followConfirm({required Object name}) => '${name}\'i takip etmek istediğinizden emin misiniz?';
+	@override String searchWith({required Object q}) => 'Ara: ${q}';
+	@override String get youHaveNoLists => 'Hiç listeniz yok.';
+	@override String followConfirm({required Object name}) => '${name} kullanıcısını takip etmek istediğinden emin misin?';
 	@override String get proxyAccount => 'Proxy hesabı';
-	@override String get proxyAccountDescription => 'Proxy hesabı, belirli koşullar altında kullanıcılar için uzaktan takipçi görevi gören bir hesaptır. Örneğin, bir kullanıcı listeye uzaktan bir kullanıcı eklediğinde, o kullanıcıyı takip eden yerel kullanıcı yoksa uzaktan kullanıcının etkinliği örneğe iletilmez, bunun yerine proxy hesabı takip eder.';
+	@override String get proxyAccountDescription => 'Proxy hesabı, belirli koşullar altında kullanıcılar için uzaktan takipçi görevi gören bir hesap. Örneğin, bir kullanıcı listeye uzaktan bir kullanıcı eklediğinde, o kullanıcıyı takip eden yerel kullanıcı yoksa uzaktan kullanıcının etkinliği örneğe iletilmez, bunun yerine proxy hesabı takip eder.';
 	@override String get host => 'Host';
 	@override String get selectSelf => 'Kendimi seç';
-	@override String get selectUser => 'Bir kullanıcı seçin';
+	@override String get selectUser => 'Kullanıcı seç';
 	@override String get recipient => 'Alıcı';
 	@override String get annotation => 'Yorumlar';
 	@override String get federation => 'Federasyon';
@@ -292,7 +292,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get softwareName => 'Yazılım';
 	@override String get version => 'Sürüm';
 	@override String get metadata => 'Meta veri';
-	@override String withNFiles({required Object n}) => '${n} dosya(lar)';
+	@override String withNFiles({required Object n}) => '${n} dosya';
 	@override String get monitor => 'Monitör';
 	@override String get jobQueue => 'İşlem sırası';
 	@override String get cpuAndMemory => 'CPU ve Bellek';
@@ -301,16 +301,16 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get instanceInfo => 'Sunucu Bilgisi';
 	@override String get statistics => 'İstatistikler';
 	@override String get clearQueue => 'Kuyruğu temizle';
-	@override String get clearQueueConfirmTitle => 'Kuyruğu silmek istediğinizden emin misiniz?';
-	@override String get clearQueueConfirmText => 'Kuyrukta kalan teslim edilmemiş notlar birleştirilmeyecektir. Genellikle bu işlem gerekli değildir.';
-	@override String get clearCachedFiles => 'Clear cache';
-	@override String get clearCachedFilesConfirm => 'Tüm önbelleğe alınmış uzak dosyaları silmek istediğinizden emin misiniz?';
+	@override String get clearQueueConfirmTitle => 'Kuyruğu silmek istediğinden emin misin?';
+	@override String get clearQueueConfirmText => 'Kuyrukta kalan teslim edilmemiş notlar birleştirilmeyecek. Genellikle bu işlem gerekli değildir.';
+	@override String get clearCachedFiles => 'Önbelleği temizle';
+	@override String get clearCachedFilesConfirm => 'Tüm önbelleğe alınmış uzak dosyaları silmek istediğinden emin misin?';
 	@override String get blockedInstances => 'Engellenen Sunucu';
-	@override String get blockedInstancesDescription => 'Engellemek istediğiniz sunucuların ana bilgisayar adlarını satır sonlarıyla ayırarak listeleyin. Listelenen örnekler artık bu örnekle iletişim kuramayacaktır.';
+	@override String get blockedInstancesDescription => 'Engellemek istediğin sunucuların ana bilgisayar adlarını satır sonlarıyla ayırarak liste. Listelenen örnekler artık bu örnekle iletişim kuramayacaktır.';
 	@override String get silencedInstances => 'Susturulmuş sunucular';
-	@override String get silencedInstancesDescription => 'Sessize almak istediğiniz sunucuların ana bilgisayar adlarını yeni bir satırla ayırarak listeleyin. Listelenen sunuculara ait tüm hesaplar sessize alınmış olarak kabul edilecek ve yalnızca takip isteklerinde bulunabilecek, takip edilmedikleri takdirde yerel hesapları etiketleyemeyeceklerdir. Bu, engellenen sunucuları etkilemeyecektir.';
+	@override String get silencedInstancesDescription => 'Sessize almak istediğin sunucuların ana bilgisayar adlarını yeni bir satırla ayırarak listele. Listelenen sunuculara ait tüm hesaplar sessize alınmış olarak kabul edilecek ve yalnızca takip isteklerinde bulunabilecek, takip edilmedikleri takdirde yerel hesapları etiketleyemeyeceklerdir. Bu, engellenen sunucuları etkilemeyecek.';
 	@override String get mediaSilencedInstances => 'Medya susturulmuş sunucular';
-	@override String get mediaSilencedInstancesDescription => 'Medya sessize almak istediğiniz sunucuların ana bilgisayar adlarını yeni bir satırla ayırarak listeleyin. Listelenen sunuculara ait tüm hesaplar hassas hesap olarak değerlendirilecek ve özel emojiler kullanılamayacaktır. Bu durum, engellenen sunucuları etkilemeyecektir.';
+	@override String get mediaSilencedInstancesDescription => 'Medya sessize almak istediğin sunucuların ana bilgisayar adlarını yeni bir satırla ayırarak liste. Listelenen sunuculara ait tüm hesaplar hassas hesap olarak değerlendirilecek ve özel emojiler kullanılamayacaktır. Bu durum, engellenen sunucuları etkilemeyecek.';
 	@override String get federationAllowedHosts => 'Federasyona izin verilen sunucular';
 	@override String get federationAllowedHostsDescription => 'Federasyona izin vermek istediğiniz sunucuların ana bilgisayar adlarını satır sonlarıyla ayırın.';
 	@override String get muteAndBlock => 'Sessize Alma ve Engelleme';
@@ -318,15 +318,15 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get blockedUsers => 'Engellenen kullanıcılar';
 	@override String get noUsers => 'Kullanıcı yok';
 	@override String get editProfile => 'Profili düzenle';
-	@override String get noteDeleteConfirm => 'Bu notu silmek istediğinizden emin misiniz?';
-	@override String get pinLimitExceeded => 'Artık daha fazla not sabitleyemezsiniz';
+	@override String get noteDeleteConfirm => 'Bu notu silmek istediğinden emin misin?';
+	@override String get pinLimitExceeded => 'Artık daha fazla not sabitleyemezsin';
 	@override String get done => 'Tamam';
-	@override String get processing => 'İşleme...';
+	@override String get processing => 'İşleniyor...';
 	@override String get preview => 'Önizleme';
 	@override String get default_ => 'Varsayılan';
 	@override String defaultValueIs({required Object value}) => 'Varsayılan: ${value}';
 	@override String get noCustomEmojis => 'Emoji yok';
-	@override String get noJobs => 'Hiç iş yok';
+	@override String get noJobs => 'Hiç ş yok';
 	@override String get federating => 'Birleştirme';
 	@override String get blocked => 'Engellenmiş';
 	@override String get suspended => 'Askıya alınmış';
@@ -346,31 +346,31 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get attachFile => 'Dosyaları ekle';
 	@override String get more => 'Daha fazlası!';
 	@override String get featured => 'Öne çıkan';
-	@override String get usernameOrUserId => 'Kullanıcı adı veya ID\'si';
+	@override String get usernameOrUserId => 'Kullanıcı adı veya ID';
 	@override String get noSuchUser => 'Kullanıcı bulunamadı';
 	@override String get lookup => 'Sorgu';
 	@override String get announcements => 'Duyurular';
 	@override String get imageUrl => 'Görsel URL';
 	@override String get remove => 'Sil';
 	@override String get removed => 'Silindi';
-	@override String removeAreYouSure({required Object x}) => '“${x}” öğesini kaldırmak istediğinizden emin misiniz?';
-	@override String deleteAreYouSure({required Object x}) => '“${x}” öğesini silmek istediğinizden emin misiniz?';
-	@override String get resetAreYouSure => 'Gerçekten sıfırlansın mı?';
-	@override String get areYouSure => 'Emin misiniz?';
+	@override String removeAreYouSure({required Object x}) => '“${x}” öğesini kaldırmak istediğinizden emin misin?';
+	@override String deleteAreYouSure({required Object x}) => '“${x}” öğesini silmek istediğinizden emin misin?';
+	@override String get resetAreYouSure => 'Cidden sıfırlansın mı?';
+	@override String get areYouSure => 'Emin misin?';
 	@override String get saved => 'Kaydedildi';
 	@override String get upload => 'Yükle';
 	@override String get keepOriginalUploading => 'Orijinal görüntüyü koru';
 	@override String get keepOriginalUploadingDescription => 'Orijinal olarak yüklenen görüntüyü olduğu gibi kaydeder. Kapalıysa, yükleme sırasında web\'de görüntülenecek bir sürüm oluşturulur.';
-	@override String get fromDrive => 'Sürücüden';
+	@override String get fromDrive => 'Drive\'den';
 	@override String get fromUrl => 'URL\'den';
-	@override String get uploadFromUrl => 'Bir URL\'den yükle';
+	@override String get uploadFromUrl => 'URL\'den yükle';
 	@override String get uploadFromUrlDescription => 'Yüklemek istediğiniz dosyanın URL\'si';
 	@override String get uploadFromUrlRequested => 'Yükleme istendi';
 	@override String get uploadFromUrlMayTakeTime => 'Yükleme işleminin tamamlanması biraz zaman alabilir.';
 	@override String uploadNFiles({required Object n}) => '${n} dosya yükle';
 	@override String get explore => 'Keşfet';
 	@override String get messageRead => 'Oku';
-	@override String get noMoreHistory => 'Daha fazla geçmiş bilgisi yoktur.';
+	@override String get noMoreHistory => 'Daha fazla geçmiş bilgisi yok.';
 	@override String get startChat => 'Sohbete başla';
 	@override String nUsersRead({required Object n}) => '${n} tarafından okundu';
 	@override String agreeTo({required Object x0}) => '${x0}\'ı kabul ediyorum.';
@@ -379,48 +379,48 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get basicNotesBeforeCreateAccount => 'Önemli notlar';
 	@override String get termsOfService => 'Hizmet Şartları';
 	@override String get start => 'Başla';
-	@override String get home => 'Ana sayfa';
+	@override String get home => 'Pano';
 	@override String get remoteUserCaution => 'Bu kullanıcı uzak bir sunucudan geldiği için, gösterilen bilgiler eksik olabilir.';
 	@override String get activity => 'Etkinlik';
 	@override String get images => 'Görseller';
 	@override String get image => 'Görsel';
 	@override String get birthday => 'Doğum günü';
 	@override String yearsOld({required Object age}) => '${age} yaşında';
-	@override String get registeredDate => 'Katılım tarihi';
+	@override String get registeredDate => 'Katılma tarihi';
 	@override String get location => 'Konum';
-	@override String get theme => 'Temalar';
+	@override String get theme => 'Tema';
 	@override String get themeForLightMode => 'Aydınlık Mod\'da kullanılacak tema';
 	@override String get themeForDarkMode => 'Karanlık Mod\'da kullanılacak tema';
 	@override String get light => 'Aydınlık';
 	@override String get dark => 'Karanlık';
 	@override String get lightThemes => 'Aydınlık temalar';
 	@override String get darkThemes => 'Karanlık temalar';
-	@override String get syncDeviceDarkMode => 'Karanlık Modu cihaz ayarlarınızla senkronize edin';
-	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" açık. Senkronizasyonu kapatıp modları manuel olarak değiştirmek ister misiniz?';
-	@override String get drive => 'Sürücü';
+	@override String get syncDeviceDarkMode => 'Karanlık Modu cihaz ayarlarınızla senkronize et';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" açık. Senkronizasyonu kapatıp modları manuel olarak değiştirmek ister misin?';
+	@override String get drive => 'Drive';
 	@override String get fileName => 'Dosya adı';
-	@override String get selectFile => 'Bir dosya seçin';
+	@override String get selectFile => 'Dosya seçin';
 	@override String get selectFiles => 'Dosyaları seçin';
-	@override String get selectFolder => 'Bir klasör seçin';
+	@override String get selectFolder => 'Klasör seçin';
 	@override String get selectFolders => 'Klasörleri seçin';
-	@override String get fileNotSelected => 'Hiçbir dosya seçilmedi';
+	@override String get fileNotSelected => 'Hiç dosya seçilmedi';
 	@override String get renameFile => 'Dosyayı yeniden adlandır';
 	@override String get folderName => 'Klasör adı';
 	@override String get createFolder => 'Bir klasör oluşturun';
-	@override String get renameFolder => 'Bu klasörü yeniden adlandırın';
+	@override String get renameFolder => 'Bu klasörü yeniden adlandır';
 	@override String get deleteFolder => 'Bu klasörü sil';
 	@override String get folder => 'Dosya';
 	@override String get addFile => 'Bir dosya ekle';
 	@override String get showFile => 'Dosyaları göster';
-	@override String get emptyDrive => 'Sürücünüz boş';
+	@override String get emptyDrive => 'Drive boş';
 	@override String get emptyFolder => 'Bu klasör boş';
 	@override String get unableToDelete => 'Silinemiyor';
 	@override String get inputNewFileName => 'Yeni bir dosya adı girin';
 	@override String get inputNewDescription => 'Yeni alternatif metin girin';
 	@override String get inputNewFolderName => 'Yeni bir klasör adı girin';
-	@override String get circularReferenceFolder => 'Hedef klasör, taşımak istediğiniz klasörün bir alt klasörüdür.';
+	@override String get circularReferenceFolder => 'Hedef klasör, taşımak istediğiniz klasörün bir alt klasörü.';
 	@override String get hasChildFilesOrFolders => 'Bu klasör boş olmadığı için silinemez.';
-	@override String get copyUrl => 'URL\'yi kopyala';
+	@override String get copyUrl => 'URL kopyala';
 	@override String get rename => 'Yeniden adlandır';
 	@override String get avatar => 'Avatar';
 	@override String get banner => 'Banner';
@@ -429,7 +429,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get disconnectedFromServer => 'Sunucu bağlantısı kesildi';
 	@override String get reload => 'Yenile';
 	@override String get doNothing => 'Yoksay';
-	@override String get reloadConfirm => 'Zaman çizelgesini yenilemek ister misiniz?';
+	@override String get reloadConfirm => 'Zaman çizelgesini yenilemek ister misin?';
 	@override String get watch => 'İzle';
 	@override String get unwatch => 'İzlemeyi bırak';
 	@override String get accept => 'Kabul et';
@@ -450,41 +450,41 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get integration => 'Entegrasyon';
 	@override String get connectService => 'Bağlan';
 	@override String get disconnectService => 'Bağlantıyı kes';
-	@override String get enableLocalTimeline => 'Yerel Timeline\'ı etkinleştir';
-	@override String get enableGlobalTimeline => 'Küresel Timeline\'ı etkinleştir';
-	@override String get disablingTimelinesInfo => 'Yöneticiler ve Moderatörler, etkinleştirilmemiş olsalar bile her zaman tüm Timeline\'a erişebilecekler.';
+	@override String get enableLocalTimeline => 'Yerel Pano\'yu etkinleştir';
+	@override String get enableGlobalTimeline => 'Global Pano\'yu etkinleştir';
+	@override String get disablingTimelinesInfo => 'Yöneticiler ve Moderatörler, etkinleştirilmemiş olsalar bile her zaman tüm Pano\'ya erişebilecekler.';
 	@override String get registration => 'Kaydol';
 	@override String get invite => 'Davet et';
-	@override String get driveCapacityPerLocalAccount => 'Yerel kullanıcı başına sürücü kapasitesi';
-	@override String get driveCapacityPerRemoteAccount => 'Uzak kullanıcı başına sürücü kapasitesi';
+	@override String get driveCapacityPerLocalAccount => 'Yerel kullanıcı başına Drive kapasitesi';
+	@override String get driveCapacityPerRemoteAccount => 'Uzak kullanıcı başına Drive kapasitesi';
 	@override String get inMb => 'Megabayt cinsinden';
-	@override String get bannerUrl => 'Banner görseli URL\'si';
-	@override String get backgroundImageUrl => 'Arka plan görseli URL\'si';
+	@override String get bannerUrl => 'Banner görseli URL';
+	@override String get backgroundImageUrl => 'Arka plan görseli URL';
 	@override String get basicInfo => 'Temel bilgiler';
 	@override String get pinnedUsers => 'Sabitlenmiş kullanıcılar';
-	@override String get pinnedUsersDescription => '“Keşfet” sekmesinde sabitlenecek kullanıcı adlarını satır sonlarıyla ayırarak listeleyin.';
+	@override String get pinnedUsersDescription => '“Keşfet” sekmesinde sabitlenecek kullanıcı adlarını satır sonlarıyla ayırarak liste.';
 	@override String get pinnedPages => 'Sabitlenmiş Sayfalar';
-	@override String get pinnedPagesDescription => 'Bu örneğin üst sayfasına sabitlemek istediğiniz Sayfaların yollarını satır sonlarıyla ayırarak girin.';
+	@override String get pinnedPagesDescription => 'Bu örneğin üst sayfasına sabitlemek istediğin Sayfaların yollarını satır sonlarıyla ayırarak gir.';
 	@override String get pinnedClipId => 'Sabitlenecek klibin ID';
 	@override String get pinnedNotes => 'Sabitlenmiş notlar';
 	@override String get hcaptcha => 'hCaptcha';
-	@override String get enableHcaptcha => 'hCaptcha\'yı etkinleştir';
+	@override String get enableHcaptcha => 'hCaptcha etkinleştir';
 	@override String get hcaptchaSiteKey => 'Site anahtar';
 	@override String get hcaptchaSecretKey => 'Gizli anahtar';
 	@override String get mcaptcha => 'mCaptcha';
-	@override String get enableMcaptcha => 'mCaptcha\'yı etkinleştir';
+	@override String get enableMcaptcha => 'mCaptcha etkinleştir';
 	@override String get mcaptchaSiteKey => 'Site anahtarı';
 	@override String get mcaptchaSecretKey => 'Gizli anahtar';
 	@override String get mcaptchaInstanceUrl => 'mCaptcha sunucu URL\'si';
 	@override String get recaptcha => 'reCAPTCHA';
-	@override String get enableRecaptcha => 'reCAPTCHA\'yı etkinleştir';
+	@override String get enableRecaptcha => 'reCAPTCHA etkinleştir';
 	@override String get recaptchaSiteKey => 'Site anahtar';
 	@override String get recaptchaSecretKey => 'Gizli anahtar';
 	@override String get turnstile => 'Turnstile';
-	@override String get enableTurnstile => 'Turnstile\'yi etkinleştir';
+	@override String get enableTurnstile => 'Turnstile etkinleştir';
 	@override String get turnstileSiteKey => 'Site anahtar';
 	@override String get turnstileSecretKey => 'Gizli anahtar';
-	@override String get avoidMultiCaptchaConfirm => 'Birden fazla Captcha sistemi kullanmak, aralarında çakışmaya neden olabilir. Şu anda etkin olan diğer Captcha sistemlerini devre dışı bırakmak ister misiniz? Etkin kalmalarını istiyorsanız, iptal düğmesine basın.';
+	@override String get avoidMultiCaptchaConfirm => 'Birden fazla Captcha sistemi kullanmak, aralarında çakışmaya neden olabilir. Şu anda etkin olan diğer Captcha sistemlerini devre dışı bırakmak ister misiniz? Etkin kalmalarını istiyorsan, iptal düğmesine bas.';
 	@override String get antennas => 'Antenler';
 	@override String get manageAntennas => 'Antenleri Yönet';
 	@override String get name => 'İsim';
@@ -496,17 +496,17 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get notifyAntenna => 'Yeni notlar hakkında bildirimde bulunun';
 	@override String get withFileAntenna => 'Sadece dosyalı notlar';
 	@override String get excludeNotesInSensitiveChannel => 'Hassas kanallardan gelen notları hariç tutun';
-	@override String get enableServiceworker => 'Tarayıcınız için Push Bildirimlerini Etkinleştirin';
-	@override String get antennaUsersDescription => 'Satır başına bir kullanıcı adı listeleyin';
+	@override String get enableServiceworker => 'Tarayıcınız için Push Bildirimlerini Etkinleştir';
+	@override String get antennaUsersDescription => 'Satır başına bir kullanıcı adı listele';
 	@override String get caseSensitive => 'Harfe duyarlı';
 	@override String get withReplies => 'Yanıtları ekle';
 	@override String get connectedTo => 'Aşağıdaki hesap(lar) bağlı';
 	@override String get notesAndReplies => 'Notlar ve yanıtlar';
 	@override String get withFiles => 'Dosyalar dahil';
 	@override String get silence => 'Sessize al';
-	@override String get silenceConfirm => 'Bu kullanıcıyı susturmak istediğinizden emin misiniz?';
+	@override String get silenceConfirm => 'Bu kullanıcıyı susturmak istediğinden emin misin?';
 	@override String get unsilence => 'Sessize almayı geri al';
-	@override String get unsilenceConfirm => 'Bu kullanıcının sessize alınmasını geri almak istediğinizden emin misiniz?';
+	@override String get unsilenceConfirm => 'Bu kullanıcının sessize alınmasını geri almak istediğinden emin misin?';
 	@override String get popularUsers => 'Popüler kullanıcılar';
 	@override String get recentlyUpdatedUsers => 'Son zamanlarda aktif olan kullanıcılar';
 	@override String get recentlyRegisteredUsers => 'Yeni katılan kullanıcılar';
@@ -526,10 +526,10 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get moderator => 'Moderatör';
 	@override String get moderation => 'Moderasyon';
 	@override String get moderationNote => 'Moderasyon notu';
-	@override String get moderationNoteDescription => 'Moderatörler arasında paylaşılacak notları girebilirsiniz.';
+	@override String get moderationNoteDescription => 'Moderatörler arasında paylaşılacak notları girebilirsin.';
 	@override String get addModerationNote => 'Moderasyon notu ekle';
 	@override String get moderationLogs => 'Moderasyon günlükleri';
-	@override String nUsersMentioned({required Object n}) => '${n} kullanıcı tarafından bahsedildi';
+	@override String nUsersMentioned({required Object n}) => '${n} kullanıcı bahsetti';
 	@override String get securityKeyAndPasskey => 'Güvenlik ve geçiş anahtarları';
 	@override String get securityKey => 'Güvenlik anahtarı';
 	@override String get lastUsed => 'Son kullanılan';
@@ -558,11 +558,11 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get enable => 'Etkin';
 	@override String get next => 'Sonraki';
 	@override String get retype => 'Tekrar girin';
-	@override String noteOf({required Object user}) => '${user} tarafından not';
+	@override String noteOf({required Object user}) => '${user} not\'u';
 	@override String get quoteAttached => 'Alıntı';
 	@override String get quoteQuestion => 'Alıntı olarak ekle?';
-	@override String get attachAsFileQuestion => 'Panodaki metin uzun. Metin dosyası olarak eklemek ister misiniz?';
-	@override String get onlyOneFileCanBeAttached => 'Bir mesaja yalnızca bir dosya ekleyebilirsiniz.';
+	@override String get attachAsFileQuestion => 'Panodaki metin uzun. Metin dosyası olarak eklemek ister misin?';
+	@override String get onlyOneFileCanBeAttached => 'Bir mesaja yalnızca bir dosya ekleyebilirsin.';
 	@override String get signinRequired => 'Devam etmeden önce lütfen kayıt olun veya giriş yapın.';
 	@override String get signinOrContinueOnRemote => 'Devam etmek için sunucunuzu taşıyın veya bu sunucuya kaydolun / giriş yapın.';
 	@override String get invitations => 'Davetler';
@@ -570,7 +570,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get checking => 'Kontrol ediliyor...';
 	@override String get available => 'Kullanılabilir';
 	@override String get unavailable => 'Kullanılamaz';
-	@override String get usernameInvalidFormat => 'Büyük ve küçük harfler, rakamlar ve alt çizgi kullanabilirsiniz. (a~z、A~Z、0~9)';
+	@override String get usernameInvalidFormat => 'Büyük ve küçük harfler, rakamlar ve alt çizgi kullanabilirsin. (a~z、A~Z、0~9)';
 	@override String get tooShort => 'Çok kısa';
 	@override String get tooLong => 'Çok uzun';
 	@override String get weakPassword => 'Zayıf şifre';
@@ -606,13 +606,13 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get fontSize => 'Yazı tipi boyutu';
 	@override String get mediaListWithOneImageAppearance => 'Tek bir resim içeren medya listelerinin yüksekliği';
 	@override String limitTo({required Object x}) => '${x} ile sınırlandır';
-	@override String get noFollowRequests => 'Bekleyen takip istekleriniz yok.';
+	@override String get noFollowRequests => 'Bekleyen takip istekleri yok.';
 	@override String get openImageInNewTab => 'Görüntüleri yeni sekmede aç';
 	@override String get dashboard => 'Gösterge paneli';
 	@override String get local => 'Yerel';
-	@override String get remote => 'Uzaktan';
+	@override String get remote => 'Uzak';
 	@override String get total => 'Toplam';
-	@override String get weekOverWeekChanges => 'Geçen haftadan bu yana yapılan değişiklikler';
+	@override String get weekOverWeekChanges => 'Geçen haftadan beri yapılan değişiklikler';
 	@override String get dayOverDayChanges => 'Dünkü değişiklikler';
 	@override String get appearance => 'Görünüm';
 	@override String get clientSettings => 'İstemci Ayarları';
@@ -621,31 +621,31 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get promote => 'Tanıtıldı';
 	@override String get numberOfDays => 'Gün sayısı';
 	@override String get hideThisNote => 'Bu notu gizle';
-	@override String get showFeaturedNotesInTimeline => 'Timeline\'da öne çıkan notları göster';
+	@override String get showFeaturedNotesInTimeline => 'Pano\'da öne çıkan notları göster';
 	@override String get objectStorage => 'Nesne Depolama';
 	@override String get useObjectStorage => 'Nesne depolamayı kullanın';
 	@override String get objectStorageBaseUrl => 'Temel URL';
 	@override String get objectStorageBaseUrlDesc => 'Referans olarak kullanılan URL. CDN veya Proxy kullanıyorsanız, bunların URL\'sini belirtin.\nS3 için ‘https://<bucket>.s3.amazonaws.com’ ve GCS veya eşdeğer hizmetler için ‘https://storage.googleapis.com/<bucket>’ vb. kullanın.';
 	@override String get objectStorageBucket => 'Kova';
 	@override String get objectStorageBucketDesc => 'Lütfen sağlayıcınızda kullanılan kova adını belirtin.';
-	@override String get objectStoragePrefix => 'Önek';
+	@override String get objectStoragePrefix => 'Ön ek';
 	@override String get objectStoragePrefixDesc => 'Dosyalar bu öneke sahip dizinler altında saklanacaktır.';
 	@override String get objectStorageEndpoint => 'Uç nokta';
 	@override String get objectStorageEndpointDesc => 'AWS S3 kullanıyorsanız bu alanı boş bırakın, aksi takdirde kullandığınız hizmete bağlı olarak uç noktayı ‘<host>’ veya ‘<host>:<port>’ olarak belirtin.';
 	@override String get objectStorageRegion => 'Bölge';
-	@override String get objectStorageRegionDesc => '\'xx-east-1\' gibi bir bölge belirtin. Hizmetiniz bölgeler arasında ayrım yapmıyorsa, ‘us-east-1’ girin. AWS yapılandırma dosyalarını veya ortam değişkenlerini kullanıyorsanız boş bırakın.';
+	@override String get objectStorageRegionDesc => '\'xx-east-1\' gibi bir bölge belirt. Hizmetin bölgeler arasında ayrım yapmıyorsa, ‘us-east-1’ girin. AWS yapılandırma dosyalarını veya ortam değişkenlerini kullanıyorsan boş bırak.';
 	@override String get objectStorageUseSSL => 'SSL kullanın';
 	@override String get objectStorageUseSSLDesc => 'API bağlantıları için HTTPS kullanmayacaksanız bunu kapatın.';
 	@override String get objectStorageUseProxy => 'Proxy üzerinden bağlan';
 	@override String get objectStorageUseProxyDesc => 'API bağlantıları için Proxy kullanmayacaksanız bunu kapatın.';
 	@override String get objectStorageSetPublicRead => 'Yükleme sırasında "genel-okuma" ayarını yapın';
-	@override String get s3ForcePathStyleDesc => 's3ForcePathStyle etkinleştirilirse, kova adı URL\'nin ana bilgisayar adı yerine URL yoluna eklenmelidir. Kendi kendine barındırılan bir Minio örneği gibi hizmetleri kullanırken bu ayarı etkinleştirmeniz gerekebilir.';
+	@override String get s3ForcePathStyleDesc => 's3ForcePathStyle etkinleştirilirse, kova adı URL\'nin ana bilgisayar adı yerine URL yoluna eklenmelidir. Kendi kendine barındırılan bir Minio örneği gibi hizmetleri kullanırken bu ayarı etkinleştirmen gerekebilir.';
 	@override String get serverLogs => 'Sunucu log kayıtları';
 	@override String get deleteAll => 'Tümünü sil';
 	@override String get showFixedPostForm => 'Gönderi formunu zaman çizelgesinin en üstünde görüntüle';
 	@override String get showFixedPostFormInChannel => 'Gönderi formunu zaman çizelgesinin en üstünde görüntüle (Kanallar)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Yeni takip edilen kullanıcıların yanıtlarını varsayılan olarak zaman çizelgesine dahil et';
-	@override String get newNoteRecived => 'Yeni notlar var';
+	@override String get newNoteRecived => 'Yeni Not\'lar var';
 	@override String get newNote => 'Yeni Not';
 	@override String get sounds => 'Sesler';
 	@override String get sound => 'Ses';
@@ -671,41 +671,41 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get lastUsedDate => 'En son kullanıldığı tarih';
 	@override String get state => 'Durum';
 	@override String get sort => 'Sıralama düzeni';
-	@override String get ascendingOrder => 'Yükselme';
-	@override String get descendingOrder => 'Alçalma';
+	@override String get ascendingOrder => 'Artan';
+	@override String get descendingOrder => 'Azalan';
 	@override String get scratchpad => 'Not defteri';
-	@override String get scratchpadDescription => 'Scratchpad, AiScript deneyleri için bir ortam sağlar. Misskey ile etkileşim halindeyken yazabilir, çalıştırabilir ve sonuçlarını kontrol edebilirsiniz.';
+	@override String get scratchpadDescription => 'Scratchpad, AiScript deneyleri için bir ortam sağlar. Misskey ile etkileşim halindeyken yazabilir, çalıştırabilir ve sonuçlarını kontrol edebilirsin.';
 	@override String get uiInspector => 'UI denetçisi';
-	@override String get uiInspectorDescription => 'Bellekteki UI bileşeni sunucu listesini görebilirsiniz. UI bileşeni, Ui:C: işlevi tarafından oluşturulacaktır.';
+	@override String get uiInspectorDescription => 'Bellekteki UI bileşeni sunucu listesini görebilirsin. UI bileşeni, Ui:C: işlevi tarafından oluşturulacak.';
 	@override String get output => 'Çıktı';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Sayfalarda AiScript\'i devre dışı bırak';
 	@override String get updateRemoteUser => 'Uzak kullanıcı bilgilerini güncelle';
 	@override String get unsetUserAvatar => 'Avatar\'ı kaldır';
-	@override String get unsetUserAvatarConfirm => 'Avatarı silmek istediğinizden emin misiniz?';
+	@override String get unsetUserAvatarConfirm => 'Avatarı silmek istediğinden emin misin?';
 	@override String get unsetUserBanner => 'Banner\'ı kaldır';
-	@override String get unsetUserBannerConfirm => 'Banner\'ı kaldırmak istediğinizden emin misiniz?';
+	@override String get unsetUserBannerConfirm => 'Banner\'ı kaldırmak istediğinden emin misin?';
 	@override String get deleteAllFiles => 'Tüm dosyaları sil';
-	@override String get deleteAllFilesConfirm => 'Tüm dosyaları silmek istediğinizden emin misiniz?';
-	@override String get removeAllFollowing => 'Takip ettiğiniz tüm kullanıcıları takipten çıkarın';
+	@override String get deleteAllFilesConfirm => 'Tüm dosyaları silmek istediğinden emin misin?';
+	@override String get removeAllFollowing => 'Takip ettiğin tüm kullanıcıları takipten çıkar';
 	@override String removeAllFollowingDescription({required Object host}) => 'Bu komutu çalıştırmak, ${host} adresindeki tüm hesapları takipten çıkarır. Örneğin, sunucu artık mevcut değilse bu komutu çalıştırın.';
 	@override String get userSuspended => 'Bu kullanıcı askıya alınmıştır.';
 	@override String get userSilenced => 'Bu kullanıcı susturuluyor.';
 	@override String get yourAccountSuspendedTitle => 'Bu hesap askıya alınmıştır.';
-	@override String get yourAccountSuspendedDescription => 'Bu hesap, sunucunun hizmet şartlarını veya benzerlerini ihlal ettiği için askıya alınmıştır. Daha ayrıntılı bir neden öğrenmek isterseniz yöneticiyle iletişime geçin. Lütfen yeni bir hesap oluşturmayın.';
+	@override String get yourAccountSuspendedDescription => 'Bu hesap, sunucunun hizmet şartlarını veya benzerlerini ihlal ettiği için askıya alınmıştır. Daha ayrıntılı bir neden öğrenmek istersen yöneticiyle iletişime geç. Lütfen yeni bir hesap oluşturma.';
 	@override String get tokenRevoked => 'Geçersiz jeton';
 	@override String get tokenRevokedDescription => 'Bu jetonun süresi doldu. Lütfen tekrar giriş yapın.';
 	@override String get accountDeleted => 'Hesap silindi';
-	@override String get accountDeletedDescription => 'Bu hesap silinmiştir.';
+	@override String get accountDeletedDescription => 'Bu hesap silinmiş.';
 	@override String get menu => 'Menü';
 	@override String get divider => 'Bölücü';
 	@override String get addItem => 'Öğe Ekle';
 	@override String get rearrange => 'Yeniden düzenle';
 	@override String get relays => 'Röleler';
 	@override String get addRelay => 'Röle ekle';
-	@override String get inboxUrl => 'Gelen Kutusu URL\'si';
+	@override String get inboxUrl => 'Gelen Kutusu URL';
 	@override String get addedRelays => 'Eklenen Röleler';
-	@override String get serviceworkerInfo => 'Push bildirimleri için etkinleştirilmelidir.';
+	@override String get serviceworkerInfo => 'Push bildirimleri için etkinleştirilmeli.';
 	@override String get deletedNote => 'Silinen not';
 	@override String get invisibleNote => 'Görünmez not';
 	@override String get enableInfiniteScroll => 'Otomatik olarak daha fazlasını yükle';
@@ -739,12 +739,12 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get enableAll => 'Tümünü etkinleştir';
 	@override String get disableAll => 'Tümünü devre dışı bırak';
 	@override String get tokenRequested => 'Hesaba erişim izni ver';
-	@override String get pluginTokenRequestedDescription => 'Bu eklenti, burada ayarlanan izinleri kullanabilecektir.';
+	@override String get pluginTokenRequestedDescription => 'Bu eklenti, burada ayarlanan izinleri kullanabilecek.';
 	@override String get notificationType => 'Bildirim türü';
 	@override String get edit => 'Düzenle';
 	@override String get emailServer => 'E-posta sunucusu';
 	@override String get enableEmail => 'E-posta dağıtımını etkinleştir';
-	@override String get emailConfigInfo => 'Kayıt sırasında veya şifrenizi unuttuğunuzda E-postanızı doğrulamak için kullanılır.';
+	@override String get emailConfigInfo => 'Kayıt sırasında veya şifreni unuttuğunda E-postanı doğrulamak için kullanılır.';
 	@override String get email => 'E-Posta';
 	@override String get emailAddress => 'E-Posta adresi';
 	@override String get smtpConfig => 'SMTP Sunucu yapılandırması';
@@ -760,7 +760,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get wordMuteDescription => 'Belirtilen kelime veya kelime öbeğini içeren notları küçültün. Küçültülmüş notlar, üzerlerine tıklanarak görüntülenebilir.';
 	@override String get hardWordMute => 'Zorla kelime sustur';
 	@override String get showMutedWord => 'Sessize alınan kelimeleri göster';
-	@override String get hardWordMuteDescription => 'Belirtilen kelime veya kelime öbeğini içeren notları gizleyin. Kelime sessize alma özelliğinden farklı olarak, not tamamen görünmez hale gelir.';
+	@override String get hardWordMuteDescription => 'Belirtilen kelime veya kelime öbeğini içeren notları gizle. Kelime sessize alma özelliğinden farklı olarak, not tamamen görünmez hale gelir.';
 	@override String get regexpError => 'Düzenli ifade hatası';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} kelimesinin ${line} satırındaki düzenli ifadede bir hata oluştu:';
 	@override String get instanceMute => 'Sunucu Sessizleştirme';
@@ -793,7 +793,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get reportAbuse => 'Rapor';
 	@override String get reportAbuseRenote => 'Raporu yeniden gönder';
 	@override String reportAbuseOf({required Object name}) => '${name} raporu';
-	@override String get fillAbuseReportDescription => 'Bu raporla ilgili ayrıntıları lütfen doldurun. Belirli bir notla ilgiliyse, lütfen URL\'sini de ekleyin.';
+	@override String get fillAbuseReportDescription => 'Bu raporla ilgili ayrıntıları lütfen doldur. Belirli bir notla ilgiliyse, lütfen URL\'sini de ekle.';
 	@override String get abuseReported => 'Raporunuz gönderildi. Çok teşekkür ederiz.';
 	@override String get reporter => 'Raporlayan';
 	@override String get reporteeOrigin => 'Bildirim Kaynağı';
@@ -814,27 +814,27 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get optional => 'Opsiyonel';
 	@override String get createNewClip => 'Klip oluştur';
 	@override String get unclip => 'Klip kaldır';
-	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Bu not zaten “${name}” klibinin bir parçasıdır. Bu klipten silmek ister misiniz?';
-	@override String get public => 'Halka açık';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Bu not zaten “${name}” klibinin bir parçası. Bu klipten silmek ister misin?';
+	@override String get public => 'Herkese açık';
 	@override String get private => 'Özel';
-	@override String i18nInfo({required Object link}) => 'Misskey, gönüllüler tarafından çeşitli dillere çevrilmektedir. ${link} adresinden yardımcı olabilirsiniz.';
-	@override String get manageAccessTokens => 'Manage access tokens';
-	@override String get accountInfo => 'Erişim belirteçlerini yönetme';
+	@override String i18nInfo({required Object link}) => 'Misskey, gönüllüler tarafından çeşitli dillere çevrilmektedir. ${link} adresinden yardımcı olabilirsin.';
+	@override String get manageAccessTokens => 'Acces Tokens yönet';
+	@override String get accountInfo => 'Hesap bilgileri';
 	@override String get notesCount => 'Not sayısı';
-	@override String get repliesCount => 'Gönderilen yanıt sayısı';
-	@override String get renotesCount => 'Gönderilen renote sayısı';
+	@override String get repliesCount => 'Yanıt sayısı';
+	@override String get renotesCount => 'Renote sayısı';
 	@override String get repliedCount => 'Alınan yanıt sayısı';
-	@override String get renotedCount => 'Alınan renot sayısı';
-	@override String get followingCount => 'Takip edilen hesap sayısı';
+	@override String get renotedCount => 'Alınan Renote sayısı';
+	@override String get followingCount => 'Takip sayısı';
 	@override String get followersCount => 'Takipçi sayısı';
-	@override String get sentReactionsCount => 'Gönderilen tepki sayısı';
+	@override String get sentReactionsCount => 'Tepki sayısı';
 	@override String get receivedReactionsCount => 'Alınan tepki sayısı';
-	@override String get pollVotesCount => 'Gönderilen anket oylarının sayısı';
-	@override String get pollVotedCount => 'Alınan anket oylarının sayısı';
+	@override String get pollVotesCount => 'Anket oy sayısı';
+	@override String get pollVotedCount => 'Alınan anket oy sayısı';
 	@override String get yes => 'Evet';
 	@override String get no => 'Hayır';
-	@override String get driveFilesCount => 'Sürücü dosya sayısı';
-	@override String get driveUsage => 'Sürücü alanı kullanımı';
+	@override String get driveFilesCount => 'Drive dosya sayısı';
+	@override String get driveUsage => 'Drive alanı kullanımı';
 	@override String get noCrawle => 'Tarayıcı indekslemesini reddet';
 	@override String get noCrawleDescription => 'Arama motorlarından profilinde, notlarında, sayfalarında  vb. dolaşılmamasını ve dizine eklememesini talep et.';
 	@override String get lockedAccountInfo => 'Notunuzun görünürlüğünü “Yalnızca takipçiler” olarak ayarlamadığınız sürece, takipçilerin manuel olarak onaylanmasını gerektirse bile notlarınız herkes tarafından görülebilir.';
@@ -844,84 +844,84 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get highlightSensitiveMedia => 'Hassas medyayı vurgulayın';
 	@override String get verificationEmailSent => 'Doğrulama e-postası gönderildi. Doğrulamayı tamamlamak için e-postadaki bağlantıyı takip edin.';
 	@override String get notSet => 'Ayarlı değil';
-	@override String get emailVerified => 'E-posta adresi doğrulanmıştır.';
-	@override String get noteFavoritesCount => 'Favori notların sayısı';
-	@override String get pageLikesCount => 'Beğenilen Sayfa Sayısı';
-	@override String get pageLikedCount => 'Alınan sayfa beğenileri sayısı';
-	@override String get contact => 'Alınan Sayfa beğenileri sayısı';
+	@override String get emailVerified => 'E-posta adresi doğrulandı.';
+	@override String get noteFavoritesCount => 'Favori not sayısı';
+	@override String get pageLikesCount => 'Beğenilen sayfa sayısı';
+	@override String get pageLikedCount => 'Alınan sayfa beğen sayısı';
+	@override String get contact => 'İletişim';
 	@override String get useSystemFont => 'Sistemin varsayılan yazı tipini kullanın';
 	@override String get clips => 'Klipler';
 	@override String get experimentalFeatures => 'Deneysel özellikler';
 	@override String get experimental => 'Deneysel';
-	@override String get thisIsExperimentalFeature => 'Bu deneysel bir özelliktir. İşlevselliği değişebilir ve amaçlandığı gibi çalışmayabilir.';
+	@override String get thisIsExperimentalFeature => 'Bu deneysel bir özellik. İşlevselliği değişebilir ve amaçlandığı gibi çalışmayabilir.';
 	@override String get developer => 'Geliştirici';
-	@override String get makeExplorable => 'Hesabı “Keşfet” bölümünde görünür hale getirin';
+	@override String get makeExplorable => 'Hesabı “Keşfet” bölümünde görünür hale getir';
 	@override String get makeExplorableDescription => 'Bunu kapatırsanız, hesabınız “Keşfet” bölümünde görünmez.';
 	@override String get duplicate => 'Çoğalt';
 	@override String get left => 'Sol';
 	@override String get center => 'Merkez';
 	@override String get wide => 'Geniş';
 	@override String get narrow => 'Dar';
-	@override String get reloadToApplySetting => 'Bu ayar, sayfa yeniden yüklendikten sonra geçerli olacaktır. Şimdi yeniden yüklemek ister misiniz?';
+	@override String get reloadToApplySetting => 'Bu ayar, sayfa yeniden yüklendikten sonra geçerli olacaktır. Şimdi yeniden yüklemek ister misin?';
 	@override String get needReloadToApply => 'Bunun yansıtılması için yeniden yükleme yapılması gerekir.';
 	@override String get needToRestartServerToApply => 'Değişikliğin yansıtılması için Misskey\'in yeniden başlatılması gerekir.';
 	@override String get showTitlebar => 'Başlık çubuğunu göster';
-	@override String get clearCache => 'Clear cache';
+	@override String get clearCache => 'Önbellek temizle';
 	@override String onlineUsersCount({required Object n}) => '${n} kullanıcı çevrim içi';
 	@override String nUsers({required Object n}) => '${n} Kullanıcı';
 	@override String nNotes({required Object n}) => '${n} Not';
 	@override String get sendErrorReports => 'Hata raporları gönder';
-	@override String get sendErrorReportsDescription => 'Etkinleştirildiğinde, bir sorun oluştuğunda ayrıntılı hata bilgileri Misskey ile paylaşılacak ve bu da Misskey\'in kalitesinin iyileştirilmesine yardımcı olacaktır.\nBu bilgiler arasında işletim sisteminizin sürümü, kullandığınız tarayıcı, Misskey\'deki faaliyetleriniz vb. yer alacaktır.';
+	@override String get sendErrorReportsDescription => 'Etkinleştirildiğinde, bir sorun oluştuğunda ayrıntılı hata bilgileri Misskey ile paylaşılacak ve bu da Misskey\'in kalitesinin iyileştirilmesine yardımcı olacak.\nBu bilgiler arasında işletim sisteminizin sürümü, kullandığınız tarayıcı, Misskey\'deki faaliyetlerin vb. yer alacaktır.';
 	@override String get myTheme => 'Benim temam';
 	@override String get backgroundColor => 'Arka plan rengi';
 	@override String get accentColor => 'Vurgu rengi';
 	@override String get textColor => 'Metin rengi';
-	@override String get saveAs => 'Farklı kaydet...';
+	@override String get saveAs => 'Farklı kaydet';
 	@override String get advanced => 'Gelişmiş';
 	@override String get advancedSettings => 'Gelişmiş ayarlar';
 	@override String get value => 'Değer';
 	@override String get createdAt => 'Oluşturuldu';
 	@override String get updatedAt => 'Güncellendi';
-	@override String get saveConfirm => 'Değişiklikleri kaydetmek ister misiniz?';
-	@override String get deleteConfirm => 'Gerçekten silmek istiyor musunuz?';
+	@override String get saveConfirm => 'Değişiklikleri kaydetmek ister misin?';
+	@override String get deleteConfirm => 'Cidden silmek istiyor musunuz?';
 	@override String get invalidValue => 'Geçersiz değer.';
 	@override String get registry => 'Kayıt Defteri';
 	@override String get closeAccount => 'Hesabı kapat';
 	@override String get currentVersion => 'Şu anki sürüm';
 	@override String get latestVersion => 'En yeni sürüm';
-	@override String get youAreRunningUpToDateClient => 'Müşteri yazılımınızın en yeni sürümünü kullanıyorsunuz.';
+	@override String get youAreRunningUpToDateClient => 'İstemci yazılımınızın en yeni sürümünü kullanıyorsunuz.';
 	@override String get newVersionOfClientAvailable => 'İstemcinin daha yeni bir sürümü var.';
 	@override String get usageAmount => 'Kullanım';
 	@override String get capacity => 'Kapasite';
-	@override String get inUse => 'Kullanılmış';
+	@override String get inUse => 'Kullanılıyor';
 	@override String get editCode => 'Kodu düzenle';
 	@override String get apply => 'Uygula';
 	@override String get receiveAnnouncementFromInstance => 'Bu sunucudan bildirimler alın';
-	@override String get emailNotification => 'E-posta bildirimleri';
+	@override String get emailNotification => 'E-posta bildirimi';
 	@override String get publish => 'Yayınla';
 	@override String get inChannelSearch => 'Kanalda ara';
 	@override String get useReactionPickerForContextMenu => 'Sağ tıklama ile tepki seçiciyi aç';
 	@override String typingUsers({required Object users}) => '${users} yazıyor...';
 	@override String get jumpToSpecifiedDate => 'Belirli bir tarihe atla';
-	@override String get showingPastTimeline => 'Şu anda eski bir Timeline görüntüleniyor.';
-	@override String get clear => 'Geri dön';
+	@override String get showingPastTimeline => 'Şu anda eski bir Pano görüntüleniyor.';
+	@override String get clear => 'Temizle';
 	@override String get markAllAsRead => 'Tümünü okundu olarak işaretle';
 	@override String get goBack => 'Geri';
-	@override String get unlikeConfirm => 'Gerçekten beğenini kaldırmak mı istiyorsun?';
+	@override String get unlikeConfirm => 'Cidden beğenini kaldırmak mı istiyorsun?';
 	@override String get fullView => 'Tam görünüm';
 	@override String get quitFullView => 'Tam ekranı kapat';
 	@override String get addDescription => 'Açıklama ekle';
-	@override String get userPagePinTip => 'Bireysel notların menüsünden “Profiline sabitle” seçeneğini seçerek notları burada görüntüleyebilirsiniz.';
+	@override String get userPagePinTip => 'Bireysel notların menüsünden “Profiline sabitle” seçeneğini seçerek notları burada görüntüleyebilirsin.';
 	@override String get notSpecifiedMentionWarning => 'Bu notta, alıcılar arasında yer almayan kullanıcılar hakkında bilgiler bulunmaktadır.';
 	@override String get info => 'Hakkında';
-	@override String get userInfo => 'Kullanıcı bilgileri';
+	@override String get userInfo => 'Kullanıcı hakkında';
 	@override String get unknown => 'Bilinmiyor';
 	@override String get onlineStatus => 'Çevrimiçi durumu';
 	@override String get hideOnlineStatus => 'Çevrimiçi durumunu gizle';
 	@override String get hideOnlineStatusDescription => 'Çevrimiçi durumunuzu gizlemek, arama gibi bazı özelliklerin kullanışlılığını azaltır.';
-	@override String get online => 'Çevrimiçi';
+	@override String get online => 'Online';
 	@override String get active => 'Aktif';
-	@override String get offline => 'Çevrimdışı';
+	@override String get offline => 'Offline';
 	@override String get notRecommended => 'Tavsiye edilmez';
 	@override String get botProtection => 'Bot Koruması';
 	@override String get instanceBlocking => 'Blocked/Silenced Instances';
@@ -957,7 +957,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get previewNoteText => 'Önizlemeyi göster';
 	@override String get customCss => 'Özel CSS';
 	@override String get customCssWarn => 'Bu ayar, yalnızca ne işe yaradığını biliyorsanız kullanılmalıdır. Yanlış değerler girilmesi, istemcinin normal şekilde çalışmamasına neden olabilir.';
-	@override String get global => 'Küresel';
+	@override String get global => 'Global';
 	@override String get squareAvatars => 'Kare avatarlar';
 	@override String get sent => 'Gönderilen';
 	@override String get received => 'Alınan';
@@ -971,7 +971,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get translate => 'Çevir';
 	@override String translatedFrom({required Object x}) => '${x}\'ten çevrilmiştir.';
 	@override String get accountDeletionInProgress => 'Hesap silme işlemi şu anda devam ediyor.';
-	@override String get usernameInfo => 'Bu sunucudaki diğer hesaplardan hesabınızı ayıran bir isim.  Alfabe (a~z, A~Z), rakamlar (0~9) veya alt çizgi (_) kullanabilirsiniz. Kullanıcı adları daha sonra değiştirilemez.';
+	@override String get usernameInfo => 'Bu sunucudaki diğer hesaplardan hesabını ayıran bir isim.  Alfabe (a~z, A~Z), rakamlar (0~9) veya alt çizgi (_) kullanabilirsin. Kullanıcı adları daha sonra değiştirilemez.';
 	@override String get aiChanMode => 'Ai Modu';
 	@override String get devMode => 'Geliştirici modu';
 	@override String get keepCw => 'İçerik uyarılarını sakla';
@@ -980,7 +980,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get resolved => 'Çözülmüş';
 	@override String get unresolved => 'Çözülmemiş';
 	@override String get breakFollow => 'Takipçiyi kaldır';
-	@override String get breakFollowConfirm => 'Bu takipçiyi gerçekten silmek istiyor musun?';
+	@override String get breakFollowConfirm => 'Bu takipçiyi ciddden silmek istiyor musun?';
 	@override String get itsOn => 'Etkin';
 	@override String get itsOff => 'Devre Dışı';
 	@override String get on => 'Açık';
@@ -991,14 +991,14 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get controlPanel => 'Kontrol Paneli';
 	@override String get manageAccounts => 'Hesapları Yönet';
 	@override String get makeReactionsPublic => 'Tepki geçmişini herkese açık olarak ayarla';
-	@override String get makeReactionsPublicDescription => 'Bu, geçmişteki tüm tepkilerinizin listesini herkese açık hale getirecektir.';
+	@override String get makeReactionsPublicDescription => 'Bu, geçmişteki tüm tepkilerinin listesini herkese açık hale getirecek.';
 	@override String get classic => 'Klasik';
 	@override String get muteThread => 'Konuyu sessize al';
 	@override String get unmuteThread => 'Konuyu sessizden çıkar';
 	@override String get followingVisibility => 'Takip edilenlerin görünürlüğü';
 	@override String get followersVisibility => 'Takipçilerin görünürlüğü';
 	@override String get continueThread => 'Konunun devamını görüntüle';
-	@override String get deleteAccountConfirm => 'Bu, hesabınızı geri dönüşü olmayan bir şekilde silecektir. Devam etmek istiyor musunuz?';
+	@override String get deleteAccountConfirm => 'Bu, hesabını geri dönüşü olmayan bir şekilde silecek. Devam etmek istiyor musun?';
 	@override String get incorrectPassword => 'Yanlış şifre.';
 	@override String get incorrectTotp => 'Tek kullanımlık şifre yanlış veya süresi dolmuş.';
 	@override String voteConfirm({required Object choice}) => '"${choice}" için oyunuzu onaylıyor musunuz?';
@@ -1032,7 +1032,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get failedToFetchAccountInformation => 'Hesap bilgileri alınamadı';
 	@override String get rateLimitExceeded => 'Hız sınırı aşıldı';
 	@override String get cropImage => 'Görüntüyü kırp';
-	@override String get cropImageAsk => 'Bu görüntüyü kırpmak ister misiniz?';
+	@override String get cropImageAsk => 'Bu görüntüyü kırpmak ister misin?';
 	@override String get cropYes => 'Kırp';
 	@override String get cropNo => 'Olduğu gibi kullanın';
 	@override String get file => 'Dosyalar';
@@ -1042,7 +1042,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get thereIsUnresolvedAbuseReportWarning => 'Çözülmemiş raporlar var.';
 	@override String get recommended => 'Önerilen';
 	@override String get check => 'Kontrol';
-	@override String get driveCapOverrideLabel => 'Bu kullanıcının sürücü kapasitesini değiştirin';
+	@override String get driveCapOverrideLabel => 'Bu kullanıcının Drive kapasitesini değiştir';
 	@override String get driveCapOverrideCaption => 'Kapasiteyi varsayılan değere sıfırlamak için 0 veya daha düşük bir değer girin.';
 	@override String get requireAdminForView => 'Bunu görüntülemek için yönetici hesabıyla oturum açmanız gerekir.';
 	@override String get isSystemAccount => 'Sistem tarafından oluşturulan ve otomatik olarak işletilen bir hesap.';
@@ -1051,8 +1051,8 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get document => 'Dokümantasyon';
 	@override String get numberOfPageCache => 'Önbelleğe alınmış sayfa sayısı';
 	@override String get numberOfPageCacheDescription => 'Bu sayıyı artırmak, kullanıcının cihazında daha fazla bellek kullanımı nedeniyle daha fazla yük oluşturmakla birlikte, kullanıcının rahatlığını artıracaktır.';
-	@override String get logoutConfirm => 'Çıkmak istediğinizden emin misiniz?';
-	@override String get logoutWillClearClientData => 'Oturumu kapatmak, tarayıcıdan istemcinin ayarlarını siler. Tekrar oturum açtığınızda ayarları geri yükleyebilmek için, ayarlarınızın otomatik yedeklenmesini etkinleştirmeniz gerekir.';
+	@override String get logoutConfirm => 'Çıkmak istediğinden emin misin?';
+	@override String get logoutWillClearClientData => 'Oturumu kapatmak, tarayıcıdan istemcinin ayarlarını siler. Tekrar oturum açtığında ayarları geri yükleyebilmek için, ayarlarının otomatik yedeklenmesini etkinleştirmen gerekir.';
 	@override String get lastActiveDate => 'Son kullanımı';
 	@override String get statusbar => 'Durum çubuğu';
 	@override String get pleaseSelect => 'Bir seçenek seçin';
@@ -1069,7 +1069,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get remoteOnly => 'Sadece uzaktan';
 	@override String get failedToUpload => 'Yükleme başarısız';
 	@override String get cannotUploadBecauseInappropriate => 'Bu dosya, dosyanın bazı kısımlarının uygunsuz olabileceği tespit edildiği için yüklenemiyor.';
-	@override String get cannotUploadBecauseNoFreeSpace => 'Sürücü kapasitesi yetersiz olduğu için yükleme başarısız oldu.';
+	@override String get cannotUploadBecauseNoFreeSpace => 'Drive kapasitesi yetersiz olduğu için yükleme başarısız oldu.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Bu dosya, dosya boyutu sınırını aştığı için yüklenemiyor.';
 	@override String get cannotUploadBecauseUnallowedFileType => 'Yetkisiz dosya türü nedeniyle yükleme yapılamıyor.';
 	@override String get beta => 'Beta';
@@ -1101,7 +1101,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get show => 'Göster';
 	@override String get neverShow => 'Bir daha gösterme';
 	@override String get remindMeLater => 'Belki daha sonra';
-	@override String get didYouLikeMisskey => 'Misskey\'i sevdiniz mi?';
+	@override String get didYouLikeMisskey => 'Misskey\'i sevdin mi?';
 	@override String pleaseDonate({required Object host}) => '${host} ücretsiz yazılım Misskey kullanmaktadır. Misskey\'in geliştirilmesinin devam edebilmesi için bağışlarınızı çok takdir ederiz!';
 	@override String correspondingSourceIsAvailable({required Object anchor}) => 'İlgili kaynak kodu ${anchor} adresinde mevcuttur.';
 	@override String get roles => 'Roller';
@@ -1113,33 +1113,34 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get unassign => 'Atamayı kaldır';
 	@override String get color => 'Renk';
 	@override String get manageCustomEmojis => 'Özel Emojileri Yönet';
-	@override String get manageAvatarDecorations => 'Avatar süslemelerini yönet';
+	@override String get manageAvatarDecorations => 'Avatar süslerini yönet';
 	@override String get youCannotCreateAnymore => 'Oluşturma sınırına ulaştınız.';
 	@override String get cannotPerformTemporary => 'Geçici olarak kullanılamıyor';
-	@override String get cannotPerformTemporaryDescription => 'Bu işlem, yürütme sınırını aştığı için geçici olarak gerçekleştirilememektedir. Lütfen bir süre bekleyin ve tekrar deneyin.';
+	@override String get cannotPerformTemporaryDescription => 'Bu işlem, yürütme sınırını aştığı için geçici olarak gerçekleştirilememekte. Lütfen bir süre bekle ve tekrar dene.';
 	@override String get invalidParamError => 'Geçersiz parametreler';
 	@override String get invalidParamErrorDescription => 'İstek parametreleri geçersiz. Bu durum genellikle bir hata nedeniyle oluşur, ancak boyut sınırlarını aşan girdiler veya benzer nedenlerden de kaynaklanabilir.';
 	@override String get permissionDeniedError => 'İşlem reddedildi';
 	@override String get permissionDeniedErrorDescription => 'Bu hesap bu işlemi gerçekleştirmek için gerekli izne sahip değildir.';
 	@override String get preset => 'Ön ayar';
 	@override String get selectFromPresets => 'Ön ayarlardan seçim yapın';
+	@override String get custom => 'Özel';
 	@override String get achievements => 'Başarılar';
 	@override String get gotInvalidResponseError => 'Geçersiz sunucu yanıtı';
-	@override String get gotInvalidResponseErrorDescription => 'Sunucu erişilemez durumda olabilir veya bakım çalışması yapılmaktadır. Lütfen daha sonra tekrar deneyin.';
+	@override String get gotInvalidResponseErrorDescription => 'Sunucu erişilemez durumda olabilir veya bakım çalışması yapılmaktadır. Lütfen daha sonra tekrar dene.';
 	@override String get thisPostMayBeAnnoying => 'Bu not başkalarını rahatsız edebilir.';
 	@override String get thisPostMayBeAnnoyingHome => 'Ana zaman çizelgesine gönder';
 	@override String get thisPostMayBeAnnoyingCancel => 'İptal';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Yine de gönder';
-	@override String get collapseRenotes => 'Zaten gördüğünüz notları daraltın';
-	@override String get collapseRenotesDescription => 'Daha önce tepki verdiğiniz veya yeniden not aldığınız notları daraltın.';
+	@override String get collapseRenotes => 'Daha önce görüntülenen Renote\'lari kısaltılmış olarak göster';
+	@override String get collapseRenotesDescription => 'Zaten yanıtladığın veya renote aldığın notları kapat.';
 	@override String get internalServerError => 'İç Sunucu Hatası';
 	@override String get internalServerErrorDescription => 'Sunucu beklenmedik bir hatayla karşılaştı.';
 	@override String get copyErrorInfo => 'Hata ayrıntılarını kopyala';
-	@override String get joinThisServer => 'Bu sunucuda kaydolun';
-	@override String get exploreOtherServers => 'Başka bir sunucu arayın';
-	@override String get letsLookAtTimeline => 'Timeline\'a bir göz atın';
-	@override String get disableFederationConfirm => 'Federasyonu gerçekten devre dışı bırakmak mı?';
-	@override String get disableFederationConfirmWarn => 'Federasyondan ayrılsa bile, aksi belirtilmedikçe gönderiler herkese açık olmaya devam edecektir. Genellikle bunu yapmanız gerekmez.';
+	@override String get joinThisServer => 'Kaydol';
+	@override String get exploreOtherServers => 'Diğer sunucuları keşfet';
+	@override String get letsLookAtTimeline => 'Pano\'ya bir göz atın';
+	@override String get disableFederationConfirm => 'Federasyonu cidden devre dışı bırakmak istiyor musun?';
+	@override String get disableFederationConfirmWarn => 'Federasyondan ayrılsa bile, aksi belirtilmedikçe gönderiler herkese açık olmaya devam edecek. Genellikle bunu yapmanız gerekmez.';
 	@override String get disableFederationOk => 'Devre Dışı';
 	@override String get invitationRequiredToRegister => 'Bu etkinlik davetle katılımlıdır. Geçerli bir davet kodu girerek kaydolmanız gerekir.';
 	@override String get emailNotSupported => 'Bu sunucu, E-Posta göndermeyi desteklemiyor.';
@@ -1151,9 +1152,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get nonSensitiveOnly => 'Hassas olmayanlar için';
 	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => 'Yalnızca hassas olmayanlar (Yalnızca uzaktan beğeniler)';
 	@override String get rolesAssignedToMe => 'Bana atanan roller';
-	@override String get resetPasswordConfirm => 'Şifrenizi gerçekten sıfırlamak istiyor musunuz?';
+	@override String get resetPasswordConfirm => 'Şifreni gerçekten sıfırlamak istiyor musun?';
 	@override String get sensitiveWords => 'Hassas kelimeler';
-	@override String get sensitiveWordsDescription => 'Yapılandırılan kelimelerden herhangi birini içeren tüm notların görünürlüğü otomatik olarak “Ana Sayfa” olarak ayarlanacaktır. Satır sonları ile ayırarak birden fazla not listeleyebilirsiniz.';
+	@override String get sensitiveWordsDescription => 'Yapılandırılan kelimelerden herhangi birini içeren tüm notların görünürlüğü otomatik olarak “Ana Sayfa” olarak ayarlanacaktır. Satır sonları ile ayırarak birden fazla not listeleyebilirsin.';
 	@override String get sensitiveWordsDescription2 => 'Boşluk kullanmak AND ifadeleri oluşturur ve anahtar kelimeleri eğik çizgi ile çevrelemek bunları düzenli ifadeye dönüştürür.';
 	@override String get prohibitedWords => 'Yasaklanmış kelimeler';
 	@override String get prohibitedWordsDescription => 'Belirlenen kelime(ler)i içeren bir not göndermeye çalışıldığında hata verir. Birden fazla kelime, yeni satırla ayrılmış olarak ayarlanabilir.';
@@ -1161,19 +1162,20 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => 'Gizli hashtag\'ler';
 	@override String get hiddenTagsDescription => 'Trend listesinde gösterilmeyecek etiketleri seçin.\nSatırlarla birden fazla etiket kaydedilebilir.';
 	@override String get notesSearchNotAvailable => 'Not arama özelliği kullanılamıyor.';
+	@override String get usersSearchNotAvailable => 'Kullanıcı araması mevcut değildir.';
 	@override String get license => 'Lisans';
-	@override String get unfavoriteConfirm => 'Gerçekten favorilerden kaldırmak istiyor musunuz?';
+	@override String get unfavoriteConfirm => 'Cidden favorilerden kaldırmak istiyor musunuz?';
 	@override String get myClips => 'Kliplerim';
-	@override String get drivecleaner => 'Sürücü Temizleyici';
+	@override String get drivecleaner => 'Drive Temizleyici';
 	@override String get retryAllQueuesNow => 'Tüm kuyrukları yeniden çalıştırmayı deneyin';
-	@override String get retryAllQueuesConfirmTitle => 'Gerçekten hepsini tekrar denemek istiyor musunuz?';
+	@override String get retryAllQueuesConfirmTitle => 'Cidden hepsini tekrar denemek istiyor musunuz?';
 	@override String get retryAllQueuesConfirmText => 'Bu, sunucu yükünü geçici olarak artıracaktır.';
 	@override String get enableChartsForRemoteUser => 'Uzak kullanıcı veri grafikleri oluşturun';
 	@override String get enableChartsForFederatedInstances => 'Uzak sunucu veri grafikleri oluşturun';
 	@override String get enableStatsForFederatedInstances => 'Uzak sunucu istatistiklerini alın';
 	@override String get showClipButtonInNoteFooter => 'Not eylem menüsüne “Klip” ekle';
 	@override String get reactionsDisplaySize => 'Tepki ekran boyutu';
-	@override String get limitWidthOfReaction => 'Tepkilerin maksimum genişliğini sınırlayın ve bunları küçültülmüş boyutta görüntüleyin.';
+	@override String get limitWidthOfReaction => 'Tepkilerin maksimum genişliğini sınırla ve bunları küçültülmüş boyutta görüntüle.';
 	@override String get noteIdOrUrl => 'Not ID veya URL';
 	@override String get video => 'Video';
 	@override String get videos => 'Videolar';
@@ -1199,18 +1201,18 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get horizontal => 'Yatay';
 	@override String get position => 'Pozisyon';
 	@override String get serverRules => 'Sunucu kuralları';
-	@override String get pleaseConfirmBelowBeforeSignup => 'Bu sunucuya kaydolmak için aşağıdakileri gözden geçirip kabul etmelisiniz:';
-	@override String get pleaseAgreeAllToContinue => 'Devam etmek için yukarıdaki tüm alanları kabul etmelisiniz.';
+	@override String get pleaseConfirmBelowBeforeSignup => 'Bu sunucuya kaydolmak için aşağıdakileri gözden geçirip kabul etmelisin:';
+	@override String get pleaseAgreeAllToContinue => 'Devam etmek için yukarıdaki tüm alanları kabul etmelisin.';
 	@override String get continue_ => 'Devam et';
 	@override String get preservedUsernames => 'Rezerve edilmiş kullanıcı adları';
-	@override String get preservedUsernamesDescription => 'Rezervasyon yapmak için kullanıcı adlarını satır sonlarıyla ayırarak listeleyin. Bu kullanıcı adları normal hesap oluşturma sırasında kullanılamaz hale gelir, ancak yöneticiler tarafından manuel olarak hesap oluşturmak için kullanılabilir. Bu kullanıcı adlarını kullanan mevcut hesaplar etkilenmez.';
+	@override String get preservedUsernamesDescription => 'Rezervasyon yapmak için kullanıcı adlarını satır sonlarıyla ayırarak listele. Bu kullanıcı adları normal hesap oluşturma sırasında kullanılamaz hale gelir, ancak yöneticiler tarafından manuel olarak hesap oluşturmak için kullanılabilir. Bu kullanıcı adlarını kullanan mevcut hesaplar etkilenmez.';
 	@override String get createNoteFromTheFile => 'Bu dosyadan not oluşturun';
 	@override String get archive => 'Arşiv';
 	@override String get archived => 'Arşivle';
 	@override String get unarchive => 'Arşivden çıkar';
-	@override String channelArchiveConfirmTitle({required Object name}) => 'Gerçekten ${name} arşivlemek mi istiyorsunuz?';
-	@override String get channelArchiveConfirmDescription => 'Arşivlenmiş bir kanal artık kanal listesinde veya arama sonuçlarında görünmeyecektir. Ayrıca, bu kanala yeni gönderiler eklenemeyecektir.';
-	@override String get thisChannelArchived => 'Bu kanal arşivlenmiştir.';
+	@override String channelArchiveConfirmTitle({required Object name}) => 'Cidden ${name} arşivlemek mi istiyorsun?';
+	@override String get channelArchiveConfirmDescription => 'Arşivlenmiş bir kanal artık kanal listesinde veya arama sonuçlarında görünmeyecektir. Ayrıca, bu kanala yeni gönderiler eklenemeyecek.';
+	@override String get thisChannelArchived => 'Bu kanal arşivlenmiş.';
 	@override String get displayOfNote => 'Not ekranı';
 	@override String get initialAccountSetting => 'Profil ayarları';
 	@override String get youFollowing => 'Takip edildi';
@@ -1218,16 +1220,16 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Tarayıcılardan, makine öğrenimi (Tahminsel / Üretken Ai) veri kümelerinde yayınlanan metin veya görsel materyalleri vb. kullanmamalarını talep eder. Bu, ilgili içeriğe “noai” HTML-Response bayrağı eklenerek gerçekleştirilir. Ancak, bu bayrakla tam bir önleme sağlanamaz, çünkü bu bayrak basitçe göz ardı edilebilir.';
 	@override String get options => 'Seçenekler';
 	@override String get specifyUser => 'Belirli kullanıcı';
-	@override String get lookupConfirm => 'Yukarı bakmak ister misiniz?';
-	@override String get openTagPageConfirm => 'Bir hashtag sayfası açmak ister misiniz?';
+	@override String get lookupConfirm => 'Yukarı bakmak ister misin?';
+	@override String get openTagPageConfirm => 'Bir hashtag sayfası açmak ister misin?';
 	@override String get specifyHost => 'Belirli ana bilgisayar';
 	@override String get failedToPreviewUrl => 'Önizleme yapılamadı';
 	@override String get update => 'Güncelle';
-	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Bu emojiyi tepki olarak kullanabileceğiniz roller';
+	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Bu emojiyi tepki olarak kullanabileceğin roller';
 	@override String get rolesThatCanBeUsedThisEmojiAsReactionEmptyDescription => 'Herhangi bir rol belirtilmezse, herkes bu emojiyi tepki olarak kullanabilir.';
 	@override String get rolesThatCanBeUsedThisEmojiAsReactionPublicRoleWarn => 'Bu roller herkese açık olmalıdır.';
-	@override String get cancelReactionConfirm => 'Tepkinizi gerçekten silmek istiyor musunuz?';
-	@override String get changeReactionConfirm => 'Tepkinizi gerçekten değiştirmek istiyor musunuz?';
+	@override String get cancelReactionConfirm => 'Tepkini cidden silmek istiyor musun?';
+	@override String get changeReactionConfirm => 'Tepkini cidden değiştirmek istiyor musun?';
 	@override String get later => 'Daha sonra';
 	@override String get goToMisskey => 'Misskey\'e';
 	@override String get additionalEmojiDictionary => 'Ek emoji sözlükleri';
@@ -1240,7 +1242,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get createWithOptions => 'Seçeneklerle oluştur';
 	@override String get createCount => 'Davet sayısı';
 	@override String get inviteCodeCreated => 'Davet oluşturuldu';
-	@override String get inviteLimitExceeded => 'Oluşturulabilecek davetiyelerin maksimum sayısına ulaştınız.';
+	@override String get inviteLimitExceeded => 'Oluşturulabilecek davetiyelerin maksimum sayısına ulaştın.';
 	@override String createLimitRemaining({required Object limit}) => '${limit} Davet limiti kaldı';
 	@override String inviteLimitResetCycle({required Object time, required Object limit}) => 'Bu limit ${time} tarihinde ${limit} değerine sıfırlanacaktır.';
 	@override String get expirationDate => 'Son kullanma tarihi';
@@ -1262,7 +1264,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get currentAnnouncements => 'Güncel duyurular';
 	@override String get pastAnnouncements => 'Geçmiş duyurular';
 	@override String get youHaveUnreadAnnouncements => 'Okunmamış duyurular var.';
-	@override String get useSecurityKey => 'Güvenlik anahtarınızı veya şifrenizi kullanmak için lütfen tarayıcınızın veya cihazınızın talimatlarını izleyin.';
+	@override String get useSecurityKey => 'Güvenlik anahtarını veya şifreni kullanmak için lütfen tarayıcının veya cihazının talimatlarını izle.';
 	@override String get replies => 'Yanıtla';
 	@override String get renotes => 'Renote\'lar';
 	@override String get loadReplies => 'Yanıtları göster';
@@ -1275,18 +1277,18 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get authentication => 'Kimlik doğrulama';
 	@override String get authenticationRequiredToContinue => 'Devam etmek için lütfen kimlik doğrulaması yapın.';
 	@override String get dateAndTime => 'Zaman damgası';
-	@override String get showRenotes => 'Renot\'ları göster';
+	@override String get showRenotes => 'Renote\'ları göster';
 	@override String get edited => 'Düzenlendi';
 	@override String get notificationRecieveConfig => 'Bildirim Ayarları';
 	@override String get mutualFollow => 'Karşılıklı takip';
 	@override String get followingOrFollower => 'Takip eden veya takipçi';
 	@override String get fileAttachedOnly => 'Yalnızca dosya içeren notlar';
-	@override String get showRepliesToOthersInTimeline => 'Timeline\'da diğer kişilere verilen yanıtları göster';
-	@override String get hideRepliesToOthersInTimeline => 'Timeline\'dan diğer kişilerin yanıtlarını gizle';
-	@override String get showRepliesToOthersInTimelineAll => 'Timeline\'da takip ettiğiniz herkesin diğerlerine verdiği yanıtları göster';
-	@override String get hideRepliesToOthersInTimelineAll => 'Timeline\'de takip ettiğiniz herkesten diğer kişilere verilen yanıtları gizleyin';
-	@override String get confirmShowRepliesAll => 'Bu işlem geri alınamaz. Takip ettiğiniz herkesin yanıtlarını zaman çizelgenizde diğer kullanıcılara göstermek istiyor musunuz?';
-	@override String get confirmHideRepliesAll => 'Bu işlem geri alınamaz. Şu anda takip ettiğiniz tüm kullanıcıların yanıtlarını zaman tünelinde gerçekten göstermeyecek misiniz?';
+	@override String get showRepliesToOthersInTimeline => 'Pano\'da diğer kişilere verilen yanıtları göster';
+	@override String get hideRepliesToOthersInTimeline => 'Pano\'dan diğer kişilerin yanıtlarını gizle';
+	@override String get showRepliesToOthersInTimelineAll => 'Pano\'da takip ettiğin herkesin diğerlerine verdiği yanıtları göster';
+	@override String get hideRepliesToOthersInTimelineAll => 'Pano\'da takip ettiğin herkesten diğer kişilere verilen yanıtları gizle';
+	@override String get confirmShowRepliesAll => 'Bu işlem geri alınamaz. Takip ettiğin herkesin yanıtlarını zaman çizelgende diğer kullanıcılara göstermek istiyor musun?';
+	@override String get confirmHideRepliesAll => 'Bu işlem geri alınamaz. Şu anda takip ettiğin tüm kullanıcıların yanıtlarını zaman tünelinde cidden göstermeyecek misin?';
 	@override String get externalServices => 'Dış Hizmetler';
 	@override String get sourceCode => 'Kaynak kodu';
 	@override String get sourceCodeIsNotYetProvided => 'Kaynak kodu henüz mevcut değildir. Bu sorunu gidermek için yöneticiyle iletişime geçin.';
@@ -1301,24 +1303,24 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get privacyPolicy => 'Gizlilik Politikası';
 	@override String get privacyPolicyUrl => 'Gizlilik Politikası URL\'si';
 	@override String get tosAndPrivacyPolicy => 'Hizmet Şartları ve Gizlilik Politikası';
-	@override String get avatarDecorations => 'Avatar süslemeleri';
+	@override String get avatarDecorations => 'Avatar süsleri';
 	@override String get attach => 'Ek';
 	@override String get detach => 'Kaldır';
 	@override String get detachAll => 'Tümünü Kaldır';
 	@override String get angle => 'Açı';
 	@override String get flip => 'Çevir';
-	@override String get showAvatarDecorations => 'Avatar süslemelerini göster';
+	@override String get showAvatarDecorations => 'Avatar süslerini göster';
 	@override String get releaseToRefresh => 'Yenilemek için serbest bırak';
 	@override String get refreshing => 'Yenileniyor...';
 	@override String get pullDownToRefresh => 'Yenilemek için aşağı çekin';
 	@override String get useGroupedNotifications => 'Gruplandırılmış bildirimleri göster';
-	@override String get signupPendingError => 'E-posta adresini doğrulamada bir sorun oluştu. Bağlantının süresi dolmuş olabilir.';
-	@override String get cwNotationRequired => '“İçeriği gizle” seçeneği etkinleştirilirse, bir açıklama sağlanmalıdır.';
+	@override String get emailVerificationFailedError => 'E-posta adresi doğrulanırken bir sorun oluştu. Bağlantının geçerlilik süresi dolmuş olabilir.';
+	@override String get cwNotationRequired => '“İçeriği gizle” seçeneği etkinleştirilirse, bir açıklama sağlanmalı.';
 	@override String get doReaction => 'Tepki ekle';
 	@override String get code => 'Kod';
 	@override String get reloadRequiredToApplySettings => 'Ayarları uygulamak için yeniden yükleme gereklidir.';
 	@override String remainingN({required Object n}) => 'Kalan: ${n}';
-	@override String get overwriteContentConfirm => 'Mevcut içeriği üzerine yazmak istediğinizden emin misiniz?';
+	@override String get overwriteContentConfirm => 'Mevcut içeriği üzerine yazmak istediğinden emin misin?';
 	@override String get seasonalScreenEffect => 'Mevsimsel Ekran Efekti';
 	@override String get decorate => 'Süsle';
 	@override String get addMfmFunction => 'MFM ekle';
@@ -1335,7 +1337,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'Son ${n} gün';
 	@override String get backToTitle => 'Başlığa geri dön';
 	@override String get hemisphere => 'Yaşadığınız yer';
-	@override String get withSensitive => 'Hassas dosyalara notlar ekleyin';
+	@override String get withSensitive => 'Hassas dosyalara notlar ekle';
 	@override String userSaysSomethingSensitive({required Object name}) => '${name} tarafından gönderilen mesaj hassas içerik barındırmaktadır.';
 	@override String get enableHorizontalSwipe => 'Kaydırarak sekmeler arasında geçiş yapın';
 	@override String get loading => 'Yükleniyor';
@@ -1347,13 +1349,13 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get launchApp => 'Uygulamayı başlatın';
 	@override String get useNativeUIForVideoAudioPlayer => 'Video ve ses oynatımı için tarayıcı kullanıcı arayüzünü kullan';
 	@override String get keepOriginalFilename => 'Orijinal dosya adını koru';
-	@override String get keepOriginalFilenameDescription => 'Bu ayarı kapatırsanız, dosya yüklediğinizde dosya adları otomatik olarak rastgele bir dizeyle değiştirilecektir.';
+	@override String get keepOriginalFilenameDescription => 'Bu ayarı kapatırsan, dosya yüklediğinde dosya adları otomatik olarak rastgele bir dizeyle değiştirilecek.';
 	@override String get noDescription => 'Açıklama yok';
 	@override String get alwaysConfirmFollow => 'Takip ederken her zaman onaylayın';
 	@override String get inquiry => 'İletişim';
-	@override String get tryAgain => 'Lütfen daha sonra tekrar deneyin.';
+	@override String get tryAgain => 'Lütfen daha sonra tekrar dene.';
 	@override String get confirmWhenRevealingSensitiveMedia => 'Confirm when revealing sensitive media';
-	@override String get sensitiveMediaRevealConfirm => 'Bu hassas bir medya olabilir. Açıklamakta emin misiniz?';
+	@override String get sensitiveMediaRevealConfirm => 'Bu hassas bir medya olabilir. Açıklamakta emin misin?';
 	@override String get createdLists => 'Oluşturulan listeler';
 	@override String get createdAntennas => 'Oluşturulan antenler';
 	@override String fromX({required Object x}) => '${x}\'den';
@@ -1374,7 +1376,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get prohibitedWordsForNameOfUser => 'Kullanıcı adları için yasaklanmış kelimeler';
 	@override String get prohibitedWordsForNameOfUserDescription => 'Bu listedeki dizilerden herhangi biri kullanıcının adında yer alıyorsa, ad reddedilecektir. Moderatör ayrıcalıklarına sahip kullanıcılar bu kısıtlamadan etkilenmez.';
 	@override String get yourNameContainsProhibitedWords => 'Adınız yasaklanmış kelimeler içeriyor';
-	@override String get yourNameContainsProhibitedWordsDescription => 'Bu adı kullanmak istiyorsanız, lütfen sunucu yöneticinizle iletişime geçin.';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Bu adı kullanmak istiyorsan, lütfen sunucu yöneticinizle iletişime geç.';
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'Yazar tarafından görüntülemek için oturum açma gerektirir.';
 	@override String get lockdown => 'Karantina';
 	@override String get pleaseSelectAccount => 'Hesap seçin';
@@ -1384,9 +1386,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'Bu sunucuda federasyon devre dışıdır. Diğer sunuculardaki kullanıcılarla etkileşim kuramazsınız.';
 	@override String get draft => 'Taslaklar';
 	@override String get confirmOnReact => 'Tepki verirken onaylayın';
-	@override String reactAreYouSure({required Object emoji}) => '“${emoji}” tepkisini eklemek ister misiniz?';
-	@override String get markAsSensitiveConfirm => 'Bu medyayı hassas olarak ayarlamak ister misiniz?';
-	@override String get unmarkAsSensitiveConfirm => 'Bu medya için hassas işaretini kaldırmak ister misiniz?';
+	@override String reactAreYouSure({required Object emoji}) => '“${emoji}” tepkisini eklemek ister misin?';
+	@override String get markAsSensitiveConfirm => 'Bu medyayı hassas olarak ayarlamak ister misin?';
+	@override String get unmarkAsSensitiveConfirm => 'Bu medya için hassas işaretini kaldırmak ister misin?';
 	@override String get preferences => 'Tercihler';
 	@override String get accessibility => 'Erişilebilirlik';
 	@override String get preferencesProfile => 'Tercihler profili';
@@ -1399,7 +1401,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get restore => 'Geri yükle';
 	@override String get syncBetweenDevices => 'Cihazlar arasında senkronizasyon';
 	@override String get preferenceSyncConflictTitle => 'Yapılandırılan değer sunucuda mevcuttur.';
-	@override String get preferenceSyncConflictText => 'Senkronizasyon etkin ayarlar, değerlerini sunucuya kaydeder. Ancak, sunucuda mevcut değerler bulunmaktadır. Hangi değerleri üzerine yazmak istersiniz?';
+	@override String get preferenceSyncConflictText => 'Senkronizasyon etkin ayarlar, değerlerini sunucuya kaydeder. Ancak, sunucuda mevcut değerler bulunmaktadır. Hangi değerleri üzerine yazmak istersin?';
 	@override String get preferenceSyncConflictChoiceMerge => 'Birleştir';
 	@override String get preferenceSyncConflictChoiceServer => 'Sunucuda yapılandırılan değer';
 	@override String get preferenceSyncConflictChoiceDevice => 'Cihazda yapılandırılan değer';
@@ -1411,17 +1413,17 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get information => 'Hakkında';
 	@override String get chat => 'Sohbet';
 	@override String get migrateOldSettings => 'Eski istemci ayarlarını taşıma';
-	@override String get migrateOldSettings_description => 'Bu işlem otomatik olarak yapılmalıdır, ancak herhangi bir nedenle geçiş başarısız olursa, geçiş işlemini manuel olarak kendiniz başlatabilirsiniz. Mevcut yapılandırma bilgileri üzerine yazılacaktır.';
+	@override String get migrateOldSettings_description => 'Bu işlem otomatik olarak yapılmalıdır, ancak herhangi bir nedenle geçiş başarısız olursa, geçiş işlemini manuel olarak kendin başlatabilirsin. Mevcut yapılandırma bilgileri üzerine yazılacaktır.';
 	@override String get compress => 'Sıkıştır';
 	@override String get right => 'Sağ';
 	@override String get bottom => 'Alt';
 	@override String get top => 'Üst';
 	@override String get embed => 'Göm';
-	@override String get settingsMigrating => 'Ayarlar taşınıyor, lütfen bir dakika bekleyin... (Daha sonra Ayarlar→Diğerler→Eski ayarları taşı seçeneğine giderek manuel olarak da taşıyabilirsiniz)';
+	@override String get settingsMigrating => 'Ayarlar taşınıyor, lütfen bir dakika bekle... (Daha sonra Ayarlar→Diğerler→Eski ayarları taşı seçeneğine giderek manuel olarak da taşıyabilirsin)';
 	@override String get readonly => 'Sadece okuma';
 	@override String get goToDeck => 'Güverteye Dön';
 	@override String get federationJobs => 'Federasyon İşleri';
-	@override String get driveAboutTip => 'Drive\'da, geçmişte yüklediğiniz dosyaların bir listesi görüntülenir. <br>\nBu dosyaları notlara eklerken yeniden kullanabilir veya daha sonra paylaşmak üzere önceden yükleyebilirsiniz. <br>\n<b>Bir dosyayı silerken dikkatli olun, çünkü kullanıldığı her yerde (notlar, sayfalar, avatarlar, afişler vb.) mevcut olmayacaktır.</b> <br>\nAyrıca dosyalarınızı düzenlemek için klasörler oluşturabilirsiniz.';
+	@override String get driveAboutTip => 'Drive\'da, geçmişte yüklediğin dosyaların bir listesi görüntülenir. <br>\nBu dosyaları notlara eklerken yeniden kullanabilir veya daha sonra paylaşmak üzere önceden yükleyebilirsin. <br>\n<b>Bir dosyayı silerken dikkatli ol, çünkü kullanıldığı her yerde (notlar, sayfalar, avatarlar, afişler vb.) mevcut olmayacakt.</b> <br>\nAyrıca dosyalarını düzenlemek için klasörler oluşturabilirsin.';
 	@override String get scrollToClose => 'Kaydırarak kapatın';
 	@override String get advice => 'Tavsiye';
 	@override String get realtimeMode => 'Gerçek zamanlı mod';
@@ -1432,9 +1434,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String muteX({required Object x}) => 'Sessiz ${x}';
 	@override String unmuteX({required Object x}) => 'Sesi aç ${x}';
 	@override String get abort => 'İptal';
-	@override String get tip => 'İpuçları & Püf Noktaları';
-	@override String get redisplayAllTips => 'Tüm “İpuçları & Püf Noktaları” tekrar göster';
-	@override String get hideAllTips => 'Tüm “İpuçları & Püf Noktaları” gizle';
+	@override String get tip => 'İpucu & Püf Nokta';
+	@override String get redisplayAllTips => 'Tüm “İpucu & Püf Nokta” tekrar göster';
+	@override String get hideAllTips => 'Tüm “İpucu & Püf Nokta” gizle';
 	@override String get defaultImageCompressionLevel => 'Varsayılan görüntü sıkıştırma düzeyi';
 	@override String get defaultImageCompressionLevel_description => 'Düşük seviye görüntü kalitesini korur ancak dosya boyutunu artırır.<br>Yüksek seviye dosya boyutunu azaltır ancak görüntü kalitesini düşürür.';
 	@override String get inMinutes => 'Dakika(lar)';
@@ -1443,6 +1445,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => 'Güvenli mod etkinleştirildiği için tüm eklentiler devre dışı bırakılmıştır.';
 	@override String get customCssIsDisabledBecauseSafeMode => 'Güvenli mod etkin olduğu için özel CSS uygulanmıyor.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Güvenli mod etkinken, varsayılan tema kullanılır. Güvenli modu devre dışı bırakmak bu değişiklikleri geri alır.';
+	@override String get thankYouForTestingBeta => 'Beta sürümünü test ettiğin için teşekkür ederiz!';
 	@override late final _TranslationsMisskeyOrderTrTr order_ = _TranslationsMisskeyOrderTrTr._(_root);
 	@override late final _TranslationsMisskeyChatTrTr chat_ = _TranslationsMisskeyChatTrTr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteTrTr emojiPalette_ = _TranslationsMisskeyEmojiPaletteTrTr._(_root);
@@ -1596,7 +1599,7 @@ class _TranslationsMisskeyChatTrTr extends TranslationsMisskeyChatEnUs {
 	@override String get chatNotAvailableInOtherAccount => 'Sohbet işlevi diğer kullanıcı için devre dışı bırakılmıştır.';
 	@override String get cannotChatWithTheUser => 'Bu kullanıcıyla sohbet başlatılamıyor.';
 	@override String get cannotChatWithTheUser_description => 'Sohbet kullanılamıyor veya karşı taraf sohbeti etkinleştirmedi.';
-	@override String get youAreNotAMemberOfThisRoomButInvited => 'Bu odanın katılımcısı değilsiniz, ancak bir davet aldınız. Lütfen daveti kabul ederek katılın.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'Bu odanın katılımcısı değilsin, ancak bir davet aldın. Lütfen daveti kabul ederek katıl.';
 	@override String get doYouAcceptInvitation => 'Daveti kabul ediyor musunuz?';
 	@override String get chatWithThisUser => 'Kullanıcıyla sohbet et';
 	@override String get thisUserAllowsChatOnlyFromFollowers => 'Bu kullanıcı yalnızca takipçilerinden gelen sohbetleri kabul eder.';
@@ -1604,7 +1607,7 @@ class _TranslationsMisskeyChatTrTr extends TranslationsMisskeyChatEnUs {
 	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Bu kullanıcı, yalnızca karşılıklı takip eden kullanıcıların sohbetlerini kabul eder.';
 	@override String get thisUserNotAllowedChatAnyone => 'Bu kullanıcı kimseyle sohbet etmiyor.';
 	@override String get chatAllowedUsers => 'Sohbet etmesine izin verilecek kişiler';
-	@override String get chatAllowedUsers_note => 'Bu ayardan bağımsız olarak, sohbet mesajı gönderdiğiniz herkesle sohbet edebilirsiniz.';
+	@override String get chatAllowedUsers_note => 'Bu ayardan bağımsız olarak, sohbet mesajı gönderdiğin herkesle sohbet edebilirsin.';
 	@override late final _TranslationsMisskeyChatChatAllowedUsersTrTr chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersTrTr._(_root);
 }
 
@@ -1628,24 +1631,24 @@ class _TranslationsMisskeySettingsTrTr extends TranslationsMisskeySettingsEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get driveBanner => 'Sürücüyü yönetebilir ve yapılandırabilir, kullanımı kontrol edebilir ve dosya yükleme ayarlarını yapılandırabilirsiniz.';
-	@override String get pluginBanner => 'Eklentilerle istemci özelliklerini genişletebilirsiniz. Eklentileri yükleyebilir, ayrı ayrı yapılandırabilir ve yönetebilirsiniz.';
-	@override String get notificationsBanner => 'Sunucudan gelen bildirimlerin türlerini ve kapsamını ve push bildirimlerini yapılandırabilirsiniz.';
+	@override String get driveBanner => 'Drive\'ı yönetebilir ve yapılandırabilir, kullanımı kontrol edebilir ve dosya yükleme ayarlarını yapılandırabilirsin.';
+	@override String get pluginBanner => 'Eklentilerle istemci özelliklerini genişletebilirsin. Eklentileri yükleyebilir, ayrı ayrı yapılandırabilir ve yönetebilirsin.';
+	@override String get notificationsBanner => 'Sunucudan gelen bildirimlerin türlerini ve kapsamını ve push bildirimlerini yapılandırabilirsin.';
 	@override String get api => 'API';
 	@override String get webhook => 'Webhook';
 	@override String get serviceConnection => 'Hizmet entegrasyonu';
 	@override String get serviceConnectionBanner => 'Dış uygulamalar veya hizmetlerle entegrasyon sağlamak için erişim belirteçlerini ve Webhook\'ları yönetin ve yapılandırın.';
 	@override String get accountData => 'Hesap verileri';
 	@override String get accountDataBanner => 'Hesap verilerini yönetmek için dışa ve içe aktarma.';
-	@override String get muteAndBlockBanner => 'İçeriği gizlemek ve belirli kullanıcıların eylemlerini kısıtlamak için ayarları yapılandırabilir ve yönetebilirsiniz.';
-	@override String get accessibilityBanner => 'Müşterinin görsellerini ve davranışını kişiselleştirebilir ve kullanımı optimize etmek için ayarları yapılandırabilirsiniz.';
-	@override String get privacyBanner => 'Hesap gizliliği ile ilgili ayarları, örneğin içerik görünürlüğü, bulunabilirlik ve takip onayı gibi ayarları yapılandırabilirsiniz.';
-	@override String get securityBanner => 'Şifre, oturum açma yöntemleri, kimlik doğrulama uygulamaları ve Passkeys gibi hesap güvenliği ile ilgili ayarları yapılandırabilirsiniz.';
-	@override String get preferencesBanner => 'İstediğiniz şekilde istemcinin genel davranışını yapılandırabilirsiniz.';
-	@override String get appearanceBanner => 'İstemcinin görünüm ve ekran ayarlarını tercihlerinize göre yapılandırabilirsiniz.';
-	@override String get soundsBanner => 'İstemcide oynatma için ses ayarlarını yapılandırabilirsiniz.';
-	@override String get timelineAndNote => 'Timeline ve not';
-	@override String get makeEveryTextElementsSelectable => 'Tüm metin öğelerini seçilebilir hale getirin';
+	@override String get muteAndBlockBanner => 'İçeriği gizlemek ve belirli kullanıcıların eylemlerini kısıtlamak için ayarları yapılandırabilir ve yönetebilirsin.';
+	@override String get accessibilityBanner => 'İstemci, görünüm ve davranışları açısından en iyi şekilde kullanılmak üzere kişiselleştirilebilir ve ayarlanabilir.';
+	@override String get privacyBanner => 'Hesap gizliliği ile ilgili ayarları, örneğin içerik görünürlüğü, bulunabilirlik ve takip onayı gibi ayarları yapılandırabilirsin.';
+	@override String get securityBanner => 'Şifre, oturum açma yöntemleri, kimlik doğrulama uygulamaları ve Passkeys gibi hesap güvenliği ile ilgili ayarları yapılandırabilirsin.';
+	@override String get preferencesBanner => 'İstediğin şekilde istemcinin genel davranışını yapılandırabilirsin.';
+	@override String get appearanceBanner => 'İstemcinin görünüm ve ekran ayarlarını tercihlerini göre yapılandırabilirsin.';
+	@override String get soundsBanner => 'İstemcide oynatma için ses ayarlarını yapılandırabilirsin.';
+	@override String get timelineAndNote => 'Pano ve not';
+	@override String get makeEveryTextElementsSelectable => 'Tüm metin öğelerini seçilebilir hale getir';
 	@override String get makeEveryTextElementsSelectable_description => 'Bunu etkinleştirmek bazı durumlarda kullanılabilirliği azaltabilir.';
 	@override String get useStickyIcons => 'Kaydırma sırasında simgeleri takip et';
 	@override String get enableHighQualityImagePlaceholders => 'Yüksek kaliteli görüntüler için yer tutucuları göster';
@@ -1655,13 +1658,14 @@ class _TranslationsMisskeySettingsTrTr extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOff => 'Kapalıyken';
 	@override String get enableSyncThemesBetweenDevices => 'Yüklü temaları cihazlar arasında senkronize edin';
 	@override String get enablePullToRefresh => 'Yenilemek için çekin';
-	@override String get enablePullToRefresh_description => 'Fareyi kullanırken, kaydırma tekerleğini basılı tutarken sürükleyin.';
+	@override String get enablePullToRefresh_description => 'Fareyi kullanırken, kaydırma tekerleğini basılı tutarken sürükle.';
 	@override String get realtimeMode_description => 'Sunucu ile bağlantı kurar ve içeriği gerçek zamanlı olarak günceller. Bu, trafik ve bellek tüketimini artırabilir.';
 	@override String get contentsUpdateFrequency => 'İçerik erişim sıklığı';
 	@override String get contentsUpdateFrequency_description => 'Değer ne kadar yüksek olursa içerik o kadar sık güncellenir, ancak bu durum performansı düşürür ve trafik ile bellek tüketimini artırır.';
 	@override String get contentsUpdateFrequency_description2 => 'Gerçek zamanlı mod açık olduğunda, bu ayardan bağımsız olarak içerik gerçek zamanlı olarak güncellenir.';
-	@override String get showUrlPreview => 'URL önizlemesini göster';
+	@override String get showUrlPreview => 'URL önizlemesi';
 	@override String get showAvailableReactionsFirstInNote => 'Mevcut tepkileri en üstte göster.';
+	@override String get showPageTabBarBottom => 'Sayfa sekme çubuğunu aşağıda göster';
 	@override late final _TranslationsMisskeySettingsChatTrTr chat_ = _TranslationsMisskeySettingsChatTrTr._(_root);
 }
 
@@ -1673,7 +1677,7 @@ class _TranslationsMisskeyPreferencesProfileTrTr extends TranslationsMisskeyPref
 
 	// Translations
 	@override String get profileName => 'Profil adı';
-	@override String get profileNameDescription => 'Bu cihazı tanımlayan bir ad belirleyin.';
+	@override String get profileNameDescription => 'Bu cihazı tanımlayan bir ad belirle.';
 	@override String get profileNameDescription2 => 'Örnek: “Ana bilgisayar”, “Akıllı telefon”';
 	@override String get manageProfiles => 'Profilleri Yönet';
 }
@@ -1688,10 +1692,10 @@ class _TranslationsMisskeyPreferencesBackupTrTr extends TranslationsMisskeyPrefe
 	@override String get autoBackup => 'Otomatik yedekleme';
 	@override String get restoreFromBackup => 'Yedeklemeden geri yükle';
 	@override String get noBackupsFoundTitle => 'Yedekleme bulunamadı';
-	@override String get noBackupsFoundDescription => 'Otomatik olarak oluşturulan yedekleme bulunamadı, ancak manuel olarak bir yedekleme dosyası kaydettiyseniz, bunu içe aktarabilir ve geri yükleyebilirsiniz.';
+	@override String get noBackupsFoundDescription => 'Otomatik olarak oluşturulan yedekleme bulunamadı, ancak manuel olarak bir yedekleme dosyası kaydettiysen, bunu içe aktarabilir ve geri yükleyebilirsin.';
 	@override String get selectBackupToRestore => 'Geri yüklemek için bir yedekleme seçin';
 	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Otomatik yedeklemeyi etkinleştirmek için bir profil adı ayarlanmalıdır.';
-	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Bu cihazda ayarların otomatik yedeklemesi etkinleştirilmemiştir.';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Bu cihazda ayarların otomatik yedeklemesi etkinleştirilmemiş.';
 	@override String get backupFound => 'Ayarların yedeği bulundu';
 }
 
@@ -1703,13 +1707,13 @@ class _TranslationsMisskeyAccountSettingsTrTr extends TranslationsMisskeyAccount
 
 	// Translations
 	@override String get requireSigninToViewContents => 'İçeriği görüntülemek için oturum açmanız gerekir.';
-	@override String get requireSigninToViewContentsDescription1 => 'Oluşturduğunuz tüm notları ve diğer içeriği görüntülemek için oturum açmanız gerekir. Bu, tarayıcıların bilgilerinizi toplamasına engel olacaktır.';
-	@override String get requireSigninToViewContentsDescription2 => 'İçerik, URL önizlemelerinde (OGP), web sayfalarına gömülü olarak veya not alıntıları desteklemeyen sunucularda görüntülenmeyecektir.';
+	@override String get requireSigninToViewContentsDescription1 => 'Oluşturduğun tüm notları ve diğer içeriği görüntülemek için oturum açman gerekir. Bu, tarayıcıların bilgilerini toplamasına engel olacaktır.';
+	@override String get requireSigninToViewContentsDescription2 => 'İçerik, URL önizlemelerinde (OGP), web sayfalarına gömülü olarak veya not alıntıları desteklemeyen sunucularda görüntülenmeyecek.';
 	@override String get requireSigninToViewContentsDescription3 => 'Bu kısıtlamalar, diğer uzak sunuculardan gelen birleştirilmiş içerik için geçerli olmayabilir.';
 	@override String get makeNotesFollowersOnlyBefore => 'Geçmiş notların yalnızca takipçilere gösterilmesini sağlayın';
 	@override String get makeNotesFollowersOnlyBeforeDescription => 'Bu özellik etkinleştirildiğinde, yalnızca takipçiler belirlenen tarih ve saatten sonra veya belirlenen süre boyunca görünür olan notları görebilir. Bu özellik devre dışı bırakıldığında, notun yayın durumu da geri yüklenir.';
 	@override String get makeNotesHiddenBefore => 'Geçmiş notları gizli yap';
-	@override String get makeNotesHiddenBeforeDescription => 'Bu özellik etkinleştirildiğinde, belirlenen tarih ve saatten geçmiş olan veya yalnızca sizin görebildiğiniz notlar. Bu özellik devre dışı bırakıldığında, notun yayın durumu da geri yüklenecektir.';
+	@override String get makeNotesHiddenBeforeDescription => 'Bu özellik etkinleştirildiğinde, belirlenen tarih ve saatten geçmiş olan veya yalnızca sizin görebildiğiniz notlar. Bu özellik devre dışı bırakıldığında, notun yayın durumu da geri yüklenecek.';
 	@override String get mayNotEffectForFederatedNotes => 'Uzak sunucuya bağlı notlar etkilenmeyebilir.';
 	@override String get mayNotEffectSomeSituations => 'Bu kısıtlamalar basitleştirilmiştir. Uzaktaki bir sunucuda görüntüleme veya moderasyon sırasında gibi bazı durumlarda geçerli olmayabilir.';
 	@override String get notesHavePassedSpecifiedPeriod => 'Belirtilen sürenin geçtiğini unutmayın.';
@@ -1728,7 +1732,7 @@ class _TranslationsMisskeyAbuseUserReportTrTr extends TranslationsMisskeyAbuseUs
 	@override String get resolve => 'Çözüm';
 	@override String get accept => 'Kabul et';
 	@override String get reject => 'Reddet';
-	@override String get resolveTutorial => 'Raporun içeriği meşruysa, “Kabul Et” seçeneğini seçerek sorunu çözülmüş olarak işaretleyin.\nRaporun içeriği meşru değilse, “Reddet” seçeneğini seçerek raporu yok sayın.';
+	@override String get resolveTutorial => 'Raporun içeriği meşruysa, “Kabul Et” seçeneğini seçerek sorunu çözülmüş olarak işaretle.\nRaporun içeriği meşru değilse, “Reddet” seçeneğini seçerek raporu yok say.';
 }
 
 // Path: misskey.delivery_
@@ -1765,17 +1769,17 @@ class _TranslationsMisskeyAnnouncementTrTr extends TranslationsMisskeyAnnounceme
 
 	// Translations
 	@override String get forExistingUsers => 'Sadece mevcut kullanıcılar';
-	@override String get forExistingUsersDescription => 'Bu duyuru, etkinleştirildiğinde yalnızca yayınlandığı anda mevcut olan kullanıcılara gösterilecektir. Devre dışı bırakıldığında, yayınlandıktan sonra yeni kaydolan kullanıcılar da bu duyuruyu görecektir.';
+	@override String get forExistingUsersDescription => 'Bu duyuru, etkinleştirildiğinde yalnızca yayınlandığı anda mevcut olan kullanıcılara gösterilecek. Devre dışı bırakıldığında, yayınlandıktan sonra yeni kaydolan kullanıcılar da bu duyuruyu görecek.';
 	@override String get needConfirmationToRead => 'Ayrı okuma onayı gerektirir';
 	@override String get needConfirmationToReadDescription => 'Etkinleştirildiğinde, bu duyuruyu okundu olarak işaretlemek için ayrı bir onay mesajı görüntülenir. Bu duyuru, “Tümünü okundu olarak işaretle” işlevinden de hariç tutulur.';
 	@override String get end => 'Arşiv duyurusu';
-	@override String get tooManyActiveAnnouncementDescription => 'Çok fazla aktif duyuru olması kullanıcı deneyimini kötüleştirebilir. Artık geçerliliğini yitirmiş duyuruları arşivlemeyi düşünün.';
+	@override String get tooManyActiveAnnouncementDescription => 'Çok fazla aktif duyuru olması kullanıcı deneyimini kötüleştirebilir. Artık geçerliliğini yitirmiş duyuruları arşivlemeyi düşün.';
 	@override String get readConfirmTitle => 'Okundu olarak işaretle?';
-	@override String readConfirmText({required Object title}) => 'Bu, “${title}” içeriğini okundu olarak işaretleyecektir.';
+	@override String readConfirmText({required Object title}) => 'Bu, “${title}” içeriğini okundu olarak işaretleyecek.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Duyuruları, uzun vadede geçerli olacak bilgiler için değil, güncel ve zaman sınırlı bilgileri yayınlamak için kullanmak en iyisidir.';
 	@override String get dialogAnnouncementUxWarn => 'Aynı anda iki veya daha fazla diyalog tarzı bildirim olması, kullanıcı deneyimini önemli ölçüde etkileyebilir, bu nedenle lütfen bunları dikkatli kullanın.';
 	@override String get silence => 'Bildirim yok';
-	@override String get silenceDescription => 'Bu seçeneği etkinleştirdiğinizde, bu duyurunun bildirimi atlanacak ve kullanıcı bunu okumak zorunda kalmayacaktır.';
+	@override String get silenceDescription => 'Bu seçeneği etkinleştirdiğinde, bu duyurunun bildirimi atlanacak ve kullanıcı bunu okumak zorunda kalmayacak.';
 }
 
 // Path: misskey.initialAccountSetting_
@@ -1786,20 +1790,20 @@ class _TranslationsMisskeyInitialAccountSettingTrTr extends TranslationsMisskeyI
 
 	// Translations
 	@override String get accountCreated => 'Hesabınız başarıyla oluşturuldu!';
-	@override String get letsStartAccountSetup => 'Öncelikle, profilinizi oluşturalım.';
-	@override String get letsFillYourProfile => 'Öncelikle profilinizi oluşturalım.';
+	@override String get letsStartAccountSetup => 'Şimdi hesabını oluşturalım.';
+	@override String get letsFillYourProfile => 'Önce profilini oluşturalım.';
 	@override String get profileSetting => 'Profil ayarları';
 	@override String get privacySetting => 'Gizlilik ayarları';
-	@override String get theseSettingsCanEditLater => 'Bu ayarları daha sonra istediğiniz zaman değiştirebilirsiniz.';
-	@override String get youCanEditMoreSettingsInSettingsPageLater => '“Ayarlar” sayfasından yapılandırabileceğiniz daha birçok ayar bulunmaktadır. Daha sonra mutlaka ziyaret edin.';
-	@override String get followUsers => 'İlgilendiğiniz bazı kullanıcıları takip ederek zaman akışınızı oluşturmaya çalışın.';
-	@override String pushNotificationDescription({required Object name}) => 'Push bildirimlerini etkinleştirdiğinizde, ${name} adresinden gelen bildirimleri doğrudan cihazınıza alabilirsiniz.';
+	@override String get theseSettingsCanEditLater => 'Bu ayarları daha sonra istediğin zaman değiştirebilirsin.';
+	@override String get youCanEditMoreSettingsInSettingsPageLater => '“Ayarlar” sayfasından yapılandırabileceğin daha birçok ayar bulunmaktadır. Daha sonra mutlaka ziyaret et.';
+	@override String get followUsers => 'İlgilendiğiniz bazı kullanıcıları takip ederek zaman akışını oluşturmaya çalış.';
+	@override String pushNotificationDescription({required Object name}) => 'Push bildirimlerini etkinleştirdiğinde, ${name} adresinden gelen bildirimleri doğrudan cihazınıza alabilirsin.';
 	@override String get initialAccountSettingCompleted => 'Profil kurulumu tamamlandı!';
-	@override String haveFun({required Object name}) => '${name}\'in keyfini çıkarın!';
-	@override String youCanContinueTutorial({required Object name}) => '${name} (Misskey) kullanımına ilişkin bir eğiticiye geçebilir veya buradan kurulumu sonlandırıp hemen kullanmaya başlayabilirsiniz.';
+	@override String haveFun({required Object name}) => '${name} ile iyi eğlenceler!';
+	@override String youCanContinueTutorial({required Object name}) => '${name} (Misskey) öğreticisine geçebilir veya buradan kurulumu sonlandırıp hemen kullanabilirsin.';
 	@override String get startTutorial => 'Öğreticiye başla';
-	@override String get skipAreYouSure => 'Profil kurulumunu gerçekten atlamak mı istiyorsunuz?';
-	@override String get laterAreYouSure => 'Profil ayarlarını gerçekten daha sonra mı yapacaksınız?';
+	@override String get skipAreYouSure => 'Profil kurulumunu cidden atlamak mı istiyorsun?';
+	@override String get laterAreYouSure => 'Profil ayarlarını cidden daha sonra mı yapacaksın?';
 }
 
 // Path: misskey.initialTutorial_
@@ -1829,10 +1833,10 @@ class _TranslationsMisskeyTimelineDescriptionTrTr extends TranslationsMisskeyTim
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get home => 'Ana Timeline\'da, takip ettiğiniz hesapların notlarını görebilirsiniz.';
-	@override String get local => 'Yerel Timeline\'de, bu sunucudaki tüm kullanıcıların notlarını görebilirsiniz.';
-	@override String get social => 'Sosyal Timeline, Ana Sayfa ve Yerel Timeline\'dan gelen notları görüntüler.';
-	@override String get global => 'Global Timeline\'da, bağlı tüm sunuculardan gelen notları görebilirsiniz.';
+	@override String get home => 'Ana Pano\'da, takip ettiğin hesapların notlarını görebilirsin.';
+	@override String get local => 'Yerel Pano\'da, bu sunucudaki tüm kullanıcıların notlarını görebilirsin.';
+	@override String get social => 'Pano, Sosyal Pano ve Yerel Pano\'dan gelen notları görüntüler.';
+	@override String get global => 'Global Pano\'da, bağlı tüm sunuculardan gelen notları görebilirsin.';
 }
 
 // Path: misskey.serverRules_
@@ -1842,7 +1846,7 @@ class _TranslationsMisskeyServerRulesTrTr extends TranslationsMisskeyServerRules
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get description => 'Kayıt öncesinde gösterilecek bir dizi kural. Hizmet Şartlarının özetini belirlemeniz önerilir.';
+	@override String get description => 'Kayıt öncesinde gösterilecek bir dizi kural. Hizmet Şartlarının özetini belirlemen önerilir.';
 }
 
 // Path: misskey.serverSettings_
@@ -1860,23 +1864,23 @@ class _TranslationsMisskeyServerSettingsTrTr extends TranslationsMisskeyServerSe
 	@override String get manifestJsonOverride => 'manifest.json Geçersiz Kılma';
 	@override String get shortName => 'Kısa ad';
 	@override String get shortNameDescription => 'Resmi adın uzun olması durumunda görüntülenebilen, örneğin adının kısaltması.';
-	@override String get fanoutTimelineDescription => 'Etkinleştirildiğinde Timeline alma performansını büyük ölçüde artırır ve veritabanı yükünü azaltır. Bunun karşılığında Redis\'in bellek kullanımı artacaktır. Sunucu belleği düşükse veya sunucu kararsızsa bunu devre dışı bırakmayı düşünün.';
+	@override String get fanoutTimelineDescription => 'Etkinleştirildiğinde Pano alma performansını büyük ölçüde artırır ve veritabanı yükünü azaltır. Bunun karşılığında Redis\'in bellek kullanımı artacaktır. Sunucu belleği düşükse veya sunucu kararsızsa bunu devre dışı bırakmayı düşün.';
 	@override String get fanoutTimelineDbFallback => 'Veritabanına geri dön';
-	@override String get fanoutTimelineDbFallbackDescription => 'Etkinleştirildiğinde, Timeline önbelleğe alınmamışsa ek sorgular için veritabanına geri döner. Bu özelliği devre dışı bırakmak, geri dönüş sürecini ortadan kaldırarak sunucu yükünü daha da azaltır, ancak alınabilecek zaman çizelgelerinin aralığını sınırlar.';
-	@override String get reactionsBufferingDescription => 'Etkinleştirildiğinde, reaksiyon oluşturma sırasında performans büyük ölçüde artacak ve veritabanı üzerindeki yük azalacaktır. Ancak, Redis bellek kullanımı artacaktır.';
+	@override String get fanoutTimelineDbFallbackDescription => 'Etkinleştirildiğinde, Pano önbelleğe alınmamışsa ek sorgular için veritabanına geri döner. Bu özelliği devre dışı bırakmak, geri dönüş sürecini ortadan kaldırarak sunucu yükünü daha da azaltır, ancak alınabilecek zaman çizelgelerinin aralığını sınırlar.';
+	@override String get reactionsBufferingDescription => 'Etkinleştirildiğinde, reaksiyon oluşturma sırasında performans büyük ölçüde artacak ve veritabanı üzerindeki yük azalacaktır. Ancak, Redis bellek kullanımı artacakt.';
 	@override String get remoteNotesCleaning => 'Uzak notların otomatik olarak temizlenmesi';
-	@override String get remoteNotesCleaning_description => 'Etkinleştirildiğinde, kullanılmayan ve güncelliğini yitirmiş uzak notlar, veritabanının şişmesini önlemek için periyodik olarak temizlenecektir.';
+	@override String get remoteNotesCleaning_description => 'Etkinleştirildiğinde, kullanılmayan ve güncelliğini yitirmiş uzak notlar, veritabanının şişmesini önlemek için periyodik olarak temizlenecek.';
 	@override String get remoteNotesCleaningMaxProcessingDuration => 'Maksimum temizleme işlem süresi';
 	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'Notları saklamak için minimum gün sayısı';
 	@override String get inquiryUrl => 'Sorgu URL\'si';
 	@override String get inquiryUrlDescription => 'Sorgu formu için sunucu yöneticisine bir URL veya iletişim bilgileri için bir web sayfası belirtin.';
-	@override String get openRegistration => 'Hesap oluşturmayı açık hale getirin';
-	@override String get openRegistrationWarning => 'Kayıt açma işlemi riskler içerir. Sunucuyu sürekli olarak izleyen ve herhangi bir sorun durumunda hemen müdahale edebilen bir sisteminiz varsa, bu işlemi etkinleştirmeniz önerilir.';
+	@override String get openRegistration => 'Hesap oluşturmayı açık hale getir';
+	@override String get openRegistrationWarning => 'Kayıt açma işlemi riskler içerir. Sunucuyu sürekli olarak izleyen ve herhangi bir sorun durumunda hemen müdahale edebilen bir sistemin varsa, bu işlemi etkinleştirmen önerilir.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Bir süre boyunca moderatör etkinliği algılanmazsa, spam\'ı önlemek için bu ayar otomatik olarak kapatılır.';
 	@override String get deliverSuspendedSoftware => 'Askıya Alınan Yazılım';
 	@override String get deliverSuspendedSoftwareDescription => 'Güvenlik açığı veya diğer nedenlerle sunucunun yazılımının belirli bir isim ve sürüm aralığı için teslimatı durdurabilirsiniz. Bu sürüm bilgileri sunucu tarafından sağlanır ve güvenilirliği garanti edilmez. Sürümü belirtmek için semver aralığı belirtilebilir, ancak >= 2024.3.1 belirtildiğinde 2024.3.1-custom.0 gibi özel sürümler dahil edilmez, bu nedenle >= 2024.3.1-0 gibi ön sürüm belirtimi kullanılması önerilir.';
 	@override String get singleUserMode => 'Tek kullanıcı modu';
-	@override String get singleUserMode_description => 'Bu sunucunun tek kullanıcısıysanız, bu modu etkinleştirerek performansını optimize edebilirsiniz.';
+	@override String get singleUserMode_description => 'Bu sunucunun tek kullanıcısıysanız, bu modu etkinleştirerek performansını optimize edebilirsin.';
 	@override String get signToActivityPubGet => 'ActivityPub GET isteklerini imzalayın';
 	@override String get signToActivityPubGet_description => 'Normalde bu özellik etkinleştirilmiş olmalıdır. Bu özelliği devre dışı bırakmak federasyonla ilgili sorunları iyileştirebilir, ancak diğer yandan bazı diğer sunuculara yönelik federasyonu devre dışı bırakabilir.';
 	@override String get proxyRemoteFiles => 'Proxy uzak dosyalar';
@@ -1886,8 +1890,10 @@ class _TranslationsMisskeyServerSettingsTrTr extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor => 'Kullanıcılar tarafından oluşturulan içeriğin misafirlere görünürlüğü';
 	@override String get userGeneratedContentsVisibilityForVisitor_description => 'Bu, uygunsuz ve iyi denetlenmemiş uzaktaki içeriğin kendi sunucunuz aracılığıyla istemeden internette yayınlanmasını önlemek için yararlıdır.';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'Sunucu tarafından alınan uzak içerik dahil olmak üzere sunucudaki tüm içeriği koşulsuz olarak İnternet\'e yayınlamak risklidir. Bu, içeriğin dağıtılmış yapısından haberdar olmayan misafirler için özellikle önemlidir, çünkü onlar yanlışlıkla uzak içeriğin bile sunucudaki kullanıcılar tarafından oluşturulan içerik olduğunu düşünebilirler.';
-	@override String get restartServerSetupWizardConfirm_title => 'Sunucu kurulum sihirbazını yeniden başlatmak ister misiniz?';
+	@override String get restartServerSetupWizardConfirm_title => 'Sunucu kurulum sihirbazını yeniden başlatmak ister misin?';
 	@override String get restartServerSetupWizardConfirm_text => 'Bazı mevcut ayarlar sıfırlanacaktır.';
+	@override String get entrancePageStyle => 'Giriş sayfası stili';
+	@override String get showTimelineForVisitor => 'Panoyu göster';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorTrTr userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorTrTr._(_root);
 }
 
@@ -1905,12 +1911,12 @@ class _TranslationsMisskeyAccountMigrationTrTr extends TranslationsMisskeyAccoun
 	@override String get moveTo => 'Bu hesabı başka bir hesaba taşıyın';
 	@override String get moveToLabel => 'Taşınacak hesap:';
 	@override String get moveCannotBeUndone => 'Hesap taşıma işlemi geri alınamaz.';
-	@override String get moveAccountDescription => 'Bu işlem, hesabınızı farklı bir hesaba taşıyacaktır.\n・Bu hesabın takipçileri otomatik olarak yeni hesaba taşınacaktır.\n・Bu hesap, şu anda takip ettiği tüm kullanıcıları takipten çıkaracaktır.\n・Bu hesapta yeni notlar vb. oluşturamayacaksınız.\n\nTakipçilerin taşınması otomatik olarak gerçekleşirken, takip ettiğiniz kullanıcıların listesini taşımak için bazı adımları manuel olarak hazırlamanız gerekir. Bunu yapmak için, ayarlar menüsünden takipçilerinizi dışa aktarın ve daha sonra yeni hesaba içe aktarın. Aynı prosedür, listelerinizin yanı sıra sessize aldığınız ve engellediğiniz kullanıcılar için de geçerlidir.\n\n(Bu açıklama Misskey v13.12.0 ve sonraki sürümler için geçerlidir. Mastodon gibi diğer ActivityPub yazılımları farklı şekilde çalışabilir.)';
+	@override String get moveAccountDescription => 'Bu işlem, hesabını farklı bir hesaba taşıyacaktır.\n・Bu hesabın takipçileri otomatik olarak yeni hesaba taşınacak.\n・Bu hesap, şu anda takip ettiği tüm kullanıcıları takipten çıkaracak.\n・Bu hesapta yeni notlar vb. oluşturamayacaksın.\n\nTakipçilerin taşınması otomatik olarak gerçekleşirken, takip ettiğin kullanıcıların listesini taşımak için bazı adımları manuel olarak hazırlaman gerekir. Bunu yapmak için, ayarlar menüsünden takipçilerini dışa aktar ve daha sonra yeni hesaba içe aktar. Aynı prosedür, listelerinin yanı sıra sessize aldığın ve engellediğin kullanıcılar için de geçerli.\n\n(Bu açıklama Misskey v13.12.0 ve sonraki sürümler için geçerlidir. Mastodon gibi diğer ActivityPub yazılımları farklı şekilde çalışabilir.)';
 	@override String get moveAccountHowTo => 'Geçiş yapmak için, önce taşınacak hesapta bu hesap için bir takma ad oluşturun.\nTakma adı oluşturduktan sonra, taşınacak hesabı aşağıdaki biçimde girin: @username@server.example.com';
 	@override String get startMigration => 'Taşın';
-	@override String migrationConfirm({required Object account}) => 'Bu hesabı ${account} hesabına gerçekten taşımak istiyor musunuz? Bu işlem başlatıldıktan sonra durdurulamaz veya geri alınamaz ve bu hesabı artık orijinal haliyle kullanamazsınız.';
+	@override String migrationConfirm({required Object account}) => 'Bu hesabı ${account} hesabına gerçekten taşımak istiyor musun? Bu işlem başlatıldıktan sonra durdurulamaz veya geri alınamaz ve bu hesabı artık orijinal haliyle kullanamazsın.';
 	@override String get movedAndCannotBeUndone => '\nBu hesap taşınmıştır.\nTaşıma işlemi geri alınamaz.';
-	@override String get postMigrationNote => 'Bu hesap, geçiş işlemi tamamlandıktan 24 saat sonra şu anda takip ettiği tüm hesapları takipten çıkaracaktır.\nHem takipçi sayısı hem de takip edilenler sayısı sıfır olacaktır. Takipçilerinizin bu hesabın yalnızca takipçilere açık gönderilerini görememesi durumunu önlemek için, takipçileriniz bu hesabı takip etmeye devam edecektir.';
+	@override String get postMigrationNote => 'Bu hesap, geçiş işlemi tamamlandıktan 24 saat sonra şu anda takip ettiği tüm hesapları takipten çıkaracak.\nHem takipçi sayısı hem de takip edilenler sayısı sıfır olacak. Takipçilerinin bu hesabın yalnızca takipçilere açık gönderilerini görememesi durumunu önlemek için, takipçilerin bu hesabı takip etmeye devam edecek.';
 	@override String get movedTo => 'Yeni hesap:';
 }
 
@@ -1947,21 +1953,21 @@ class _TranslationsMisskeyRoleTrTr extends TranslationsMisskeyRoleEnUs {
 	@override String get condition => 'Durum';
 	@override String get isConditionalRole => 'Bu, koşullu bir roldür.';
 	@override String get isPublic => 'Kamu rolü';
-	@override String get descriptionOfIsPublic => 'Bu rol, atanan kullanıcıların profillerinde görüntülenecektir.';
+	@override String get descriptionOfIsPublic => 'Bu rol, atanan kullanıcıların profillerinde görüntülenecek.';
 	@override String get options => 'Seçenekler';
 	@override String get policies => 'Politikalar';
 	@override String get baseRole => 'Rol şablonu';
 	@override String get useBaseValue => 'Rol şablonu değerini kullan';
-	@override String get chooseRoleToAssign => 'Atamak istediğiniz rolü seçin';
+	@override String get chooseRoleToAssign => 'Atamak istediğin rolü seç';
 	@override String get iconUrl => 'Simge URL\'si';
 	@override String get asBadge => 'Rozet olarak göster';
 	@override String get descriptionOfAsBadge => 'This role\'s icon will be displayed next to the username of users with this role if turned on.';
-	@override String get isExplorable => 'Rolü keşfedilebilir hale getirin';
-	@override String get descriptionOfIsExplorable => 'Bu rolün zaman çizelgesi ve bu role sahip kullanıcıların listesi, etkinleştirilirse kamuya açık hale getirilecektir.';
+	@override String get isExplorable => 'Rolü keşfedilebilir hale getir';
+	@override String get descriptionOfIsExplorable => 'Bu rolün zaman çizelgesi ve bu role sahip kullanıcıların listesi, etkinleştirilirse kamuya açık hale getirilecek.';
 	@override String get displayOrder => 'Pozisyon';
 	@override String get descriptionOfDisplayOrder => 'Sayı ne kadar yüksekse, UI pozisyonu da o kadar yüksek olur.';
 	@override String get preserveAssignmentOnMoveAccount => 'Geçiş sırasında rol atamalarını koruyun';
-	@override String get preserveAssignmentOnMoveAccount_description => 'Etkinleştirildiğinde, bu rol, bu role sahip bir hesap taşındığında hedef hesaba aktarılacaktır.';
+	@override String get preserveAssignmentOnMoveAccount_description => 'Etkinleştirildiğinde, bu rol, bu role sahip bir hesap taşındığında hedef hesaba aktarılacak.';
 	@override String get canEditMembersByModerator => 'Moderatörlerin bu rol için üye listesini düzenlemesine izin ver';
 	@override String get descriptionOfCanEditMembersByModerator => 'Etkinleştirildiğinde, moderatörler ve yöneticiler bu role kullanıcıları atayabilir ve atamalarını kaldırabilir. Devre dışı bırakıldığında, yalnızca yöneticiler kullanıcıları atayabilir.';
 	@override String get priority => 'Öncelik';
@@ -2021,8 +2027,8 @@ class _TranslationsMisskeySignupTrTr extends TranslationsMisskeySignupEnUs {
 
 	// Translations
 	@override String get almostThere => 'Neredeyse vardık';
-	@override String get emailAddressInfo => 'Lütfen E-Posta adresinizi girin. Bu adres kamuya açık hale getirilmeyecektir.';
-	@override String emailSent({required Object email}) => 'Onay e-postası E-Posta adresinize (${email}) gönderilmiştir. Hesap oluşturma işlemini tamamlamak için e-postadaki bağlantıya tıklayın.';
+	@override String get emailAddressInfo => 'Lütfen E-Posta adresini gir. Bu adres kamuya açık hale getirilmeyecek.';
+	@override String emailSent({required Object email}) => 'Onay e-postası E-Posta adresine (${email}) gönderilmiştir. Hesap oluşturma işlemini tamamlamak için e-postadaki bağlantıya tıkla.';
 }
 
 // Path: misskey.accountDelete_
@@ -2033,8 +2039,8 @@ class _TranslationsMisskeyAccountDeleteTrTr extends TranslationsMisskeyAccountDe
 
 	// Translations
 	@override String get accountDelete => 'Hesabı sil';
-	@override String get mayTakeTime => 'Hesap silme işlemi kaynak yoğun bir işlem olduğundan, oluşturduğunuz içerik miktarına ve yüklediğiniz dosya sayısına bağlı olarak tamamlanması biraz zaman alabilir.';
-	@override String get sendEmail => 'Hesap silme işlemi tamamlandıktan sonra, bu hesaba kayıtlı E-Posta adresine bir e-posta gönderilecektir.';
+	@override String get mayTakeTime => 'Hesap silme işlemi kaynak yoğun bir işlem olduğundan, oluşturduğun içerik miktarına ve yüklediğin dosya sayısına bağlı olarak tamamlanması biraz zaman alabilir.';
+	@override String get sendEmail => 'Hesap silme işlemi tamamlandıktan sonra, bu hesaba kayıtlı E-Posta adresine bir e-posta gönderilecek.';
 	@override String get requestAccountDelete => 'Hesap silme talebi';
 	@override String get started => 'Silme işlemi başlatıldı.';
 	@override String get inProgress => 'Silme işlemi şu anda devam ediyor.';
@@ -2064,7 +2070,7 @@ class _TranslationsMisskeyForgotPasswordTrTr extends TranslationsMisskeyForgotPa
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get enterEmail => 'Kayıt olurken kullandığınız E-Posta adresini girin. Şifrenizi sıfırlayabileceğiniz bir bağlantı bu adrese gönderilecektir.';
+	@override String get enterEmail => 'Kayıt olurken kullandığın E-Posta adresini gir. Şifreni sıfırlayabileceğin bir bağlantı bu adrese gönderilecek.';
 	@override String get ifNoEmail => 'Kayıt sırasında E-Posta kullanmadıysanız, lütfen bunun yerine sunucu yöneticisiyle iletişime geçin.';
 	@override String get contactAdmin => 'This instance does not support using email addresses, please contact the instance administrator to reset your password instead.';
 }
@@ -2101,7 +2107,7 @@ class _TranslationsMisskeyPluginTrTr extends TranslationsMisskeyPluginEnUs {
 
 	// Translations
 	@override String get install => 'Eklentileri yükle takip isteği aldınız';
-	@override String get installWarn => 'Güvenilir olmayan eklentileri yüklemeyiniz.';
+	@override String get installWarn => 'Güvenilir olmayan eklentileri yükleme.';
 	@override String get manage => 'Eklentileri yönet';
 	@override String get viewSource => 'Kaynak görüntüle';
 	@override String get viewLog => 'Günlüğü göster';
@@ -2122,11 +2128,11 @@ class _TranslationsMisskeyPreferencesBackupsTrTr extends TranslationsMisskeyPref
 	@override String get inputName => 'Lütfen bu yedekleme için bir ad girin.';
 	@override String get cannotSave => 'Kaydetme başarısız oldu';
 	@override String nameAlreadyExists({required Object name}) => '“${name}” adlı bir yedekleme zaten mevcut. Lütfen farklı bir ad girin.';
-	@override String applyConfirm({required Object name}) => 'Bu cihaza “${name}” yedeklemesini gerçekten uygulamak istiyor musunuz? Bu cihazın mevcut ayarları üzerine yazılacaktır.';
+	@override String applyConfirm({required Object name}) => 'Bu cihaza “${name}” yedeklemesini cidden uygulamak istiyor musun? Bu cihazın mevcut ayarları üzerine yazılacaktır.';
 	@override String saveConfirm({required Object name}) => 'Yedeklemeyi ${name} olarak kaydedin?';
-	@override String deleteConfirm({required Object name}) => '${name} yedeklemesini silmek ister misiniz?';
-	@override String renameConfirm({required Object old, required Object new_}) => 'Bu yedeğin adını “${old}” den “${new_}” ye değiştirmek ister misiniz?';
-	@override String get noBackups => 'Yedekleme mevcut değildir. “Yeni yedekleme oluştur” seçeneğini kullanarak bu sunucudaki istemci ayarlarınızı yedekleyebilirsiniz.';
+	@override String deleteConfirm({required Object name}) => '${name} yedeklemesini silmek ister misin?';
+	@override String renameConfirm({required Object old, required Object new_}) => 'Bu yedeğin adını “${old}” den “${new_}” ye değiştirmek ister misin?';
+	@override String get noBackups => 'Yedekleme mevcut değil. “Yeni yedekleme oluştur” seçeneğini kullanarak bu sunucudaki istemci ayarlarınızı yedekleyebilirsin.';
 	@override String createdAt({required Object date, required Object time}) => 'Oluşturulma tarihi: ${date} ${time}';
 	@override String updatedAt({required Object date, required Object time}) => 'Güncelleme tarihi: ${date} ${time}';
 	@override String get cannotLoad => 'Yükleme başarısız';
@@ -2270,7 +2276,7 @@ class _TranslationsMisskeyThemeTrTr extends TranslationsMisskeyThemeEnUs {
 
 	// Translations
 	@override String get explore => 'Temaları Keşfedin';
-	@override String get install => 'Bir tema yükleyin';
+	@override String get install => 'Bir tema yükle';
 	@override String get manage => 'Temaları yönet';
 	@override String get code => 'Tema kodu';
 	@override String get copyThemeCode => 'Tema kodunu kopyala';
@@ -2279,7 +2285,7 @@ class _TranslationsMisskeyThemeTrTr extends TranslationsMisskeyThemeEnUs {
 	@override String get installedThemes => 'Yüklü temalar';
 	@override String get builtinThemes => 'Yerleşik temalar';
 	@override String get instanceTheme => 'Sunucu teması';
-	@override String get alreadyInstalled => 'Bu tema zaten yüklenmiştir.';
+	@override String get alreadyInstalled => 'Bu tema zaten yüklenmiş.';
 	@override String get invalid => 'Bu temanın biçimi geçersizdir.';
 	@override String get make => 'Bir tema oluşturun';
 	@override String get base => 'Base';
@@ -2298,8 +2304,8 @@ class _TranslationsMisskeyThemeTrTr extends TranslationsMisskeyThemeEnUs {
 	@override String get darken => 'Koyulaştır';
 	@override String get lighten => 'Hafiflet';
 	@override String get inputConstantName => 'Bu sabit için bir ad girin';
-	@override String get importInfo => 'Buraya tema kodunu girerseniz, onu tema düzenleyicisine aktarabilirsiniz.';
-	@override String deleteConstantConfirm({required Object const_}) => '${const_} sabitini gerçekten silmek istiyor musunuz?';
+	@override String get importInfo => 'Buraya tema kodunu girersen, onu tema düzenleyicisine aktarabilirsin.';
+	@override String deleteConstantConfirm({required Object const_}) => '${const_} sabitini cidden silmek istiyor musun?';
 	@override late final _TranslationsMisskeyThemeKeysTrTr keys = _TranslationsMisskeyThemeKeysTrTr._(_root);
 }
 
@@ -2330,7 +2336,7 @@ class _TranslationsMisskeySoundSettingsTrTr extends TranslationsMisskeySoundSett
 	@override String get driveFileTypeWarnDescription => 'Bir ses dosyası seçin';
 	@override String get driveFileDurationWarn => 'Ses kaydı çok uzun.';
 	@override String get driveFileDurationWarnDescription => 'Uzun sesli mesajlar Misskey\'in kullanımını engelleyebilir. Devam etmek istiyor musunuz?';
-	@override String get driveFileError => 'Ses yüklenemedi. Lütfen ayarları değiştirin.';
+	@override String get driveFileError => 'Ses yüklenemedi. Lütfen ayarları değiştir.';
 }
 
 // Path: misskey.ago_
@@ -2340,16 +2346,16 @@ class _TranslationsMisskeyAgoTrTr extends TranslationsMisskeyAgoEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get future => 'Gelecekte';
-	@override String get justNow => 'Şu anda';
-	@override String secondsAgo({required Object n}) => '${n} saniye önce';
-	@override String minutesAgo({required Object n}) => '${n} dakika önce';
-	@override String hoursAgo({required Object n}) => '${n} saat önce';
-	@override String daysAgo({required Object n}) => '${n} gün önce';
-	@override String weeksAgo({required Object n}) => '${n} hafta önce';
-	@override String monthsAgo({required Object n}) => '${n} ay önce';
-	@override String yearsAgo({required Object n}) => '${n} yıl önce';
-	@override String get invalid => 'Yok';
+	@override String get future => 'Gelecek';
+	@override String get justNow => 'Şimdi';
+	@override String secondsAgo({required Object n}) => '${n} sn';
+	@override String minutesAgo({required Object n}) => '${n} dk';
+	@override String hoursAgo({required Object n}) => '${n} sa';
+	@override String daysAgo({required Object n}) => '${n} gün';
+	@override String weeksAgo({required Object n}) => '${n} hafta';
+	@override String monthsAgo({required Object n}) => '${n} ay';
+	@override String yearsAgo({required Object n}) => '${n} yıl';
+	@override String get invalid => 'Geçersiz';
 }
 
 // Path: misskey.timeIn_
@@ -2379,6 +2385,7 @@ class _TranslationsMisskeyTimeTrTr extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => 'Dakika(lar)';
 	@override String get hour => 'Saat(ler)';
 	@override String get day => 'Gün(ler)';
+	@override String get month => 'Ay';
 }
 
 // Path: misskey.x2fa_
@@ -2388,7 +2395,7 @@ class _TranslationsMisskeyX2faTrTr extends TranslationsMisskeyX2faEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get alreadyRegistered => '2 faktörlü kimlik doğrulama cihazını zaten kaydettiniz.';
+	@override String get alreadyRegistered => '2fa kimlik doğrulama cihazını zaten kaydettin.';
 	@override String get registerTOTP => 'Kimlik doğrulama uygulamasını kaydet';
 	@override String step1({required Object a, required Object b}) => 'Öncelikle, cihazınıza bir kimlik doğrulama uygulaması (örneğin ${a} veya ${b}) yükleyin.';
 	@override String get step2 => 'Ardından, bu ekranda görüntülenen QR kodunu tarayın.';
@@ -2396,15 +2403,15 @@ class _TranslationsMisskeyX2faTrTr extends TranslationsMisskeyX2faEnUs {
 	@override String get step3Title => 'Doğrulama kodunu girin';
 	@override String get step3 => 'Uygulamanız tarafından sağlanan kimlik doğrulama kodunu (token) girerek kurulumu tamamlayın.';
 	@override String get setupCompleted => 'Kurulum tamamlandı';
-	@override String get step4 => 'Bundan sonra, gelecekteki tüm oturum açma girişimlerinde bu tür bir oturum açma jetonu istenecektir.';
+	@override String get step4 => 'Bundan sonra, gelecekteki tüm oturum açma girişimlerinde bu tür bir oturum açma jetonu istenecek.';
 	@override String get securityKeyNotSupported => 'Tarayıcınız güvenlik anahtarlarını desteklemiyor.';
 	@override String get registerTOTPBeforeKey => 'Güvenlik veya geçiş anahtarını kaydetmek için bir kimlik doğrulama uygulaması kurun.';
-	@override String get securityKeyInfo => 'Parmak izi veya PIN kimlik doğrulamasının yanı sıra, hesabınızı daha da güvenli hale getirmek için FIDO2\'yi destekleyen donanım güvenlik anahtarları aracılığıyla kimlik doğrulama da ayarlayabilirsiniz.';
+	@override String get securityKeyInfo => 'Parmak izi veya PIN kimlik doğrulamasının yanı sıra, hesabını daha da güvenli hale getirmek için FIDO2\'yi destekleyen donanım güvenlik anahtarları aracılığıyla kimlik doğrulama da ayarlayabilirsin.';
 	@override String get registerSecurityKey => 'Güvenlik veya geçiş anahtarını kaydedin';
 	@override String get securityKeyName => 'Bir anahtar adı girin';
 	@override String get tapSecurityKey => 'Güvenlik veya geçiş anahtarını kaydetmek için lütfen tarayıcınızı takip edin.';
 	@override String get removeKey => 'Güvenlik anahtarını kaldır';
-	@override String removeKeyConfirm({required Object name}) => '${name} anahtarını gerçekten silmek istiyor musunuz?';
+	@override String removeKeyConfirm({required Object name}) => '${name} anahtarını cidden silmek istiyor musun?';
 	@override String get whyTOTPOnlyRenew => 'Güvenlik anahtarı kayıtlı olduğu sürece kimlik doğrulama uygulaması kaldırılamaz.';
 	@override String get renewTOTP => 'Kimlik doğrulama uygulamasını yeniden yapılandırın';
 	@override String get renewTOTPConfirm => 'Bu, önceki uygulamanızdaki doğrulama kodlarının çalışmamasına neden olacaktır.';
@@ -2412,9 +2419,9 @@ class _TranslationsMisskeyX2faTrTr extends TranslationsMisskeyX2faEnUs {
 	@override String get renewTOTPCancel => 'İptal';
 	@override String get checkBackupCodesBeforeCloseThisWizard => 'Bu pencereyi kapatmadan önce, lütfen aşağıdaki yedek kodları not edin.';
 	@override String get backupCodes => 'Yedek kodlar';
-	@override String get backupCodesDescription => 'İki faktörlü kimlik doğrulama uygulamasını kullanamaz hale gelmeniz durumunda, bu kodları kullanarak hesabınıza erişebilirsiniz. Her kod yalnızca bir kez kullanılabilir. Lütfen bu kodları güvenli bir yerde saklayın.';
+	@override String get backupCodesDescription => 'İki faktörlü kimlik doğrulama uygulamasını kullanamaz hale gelmen durumunda, bu kodları kullanarak hesabınıza erişebilirsin. Her kod yalnızca bir kez kullanılabilir. Lütfen bu kodları güvenli bir yerde sakla.';
 	@override String get backupCodeUsedWarning => 'Yedek kod kullanıldı. Artık kullanamıyorsanız, lütfen iki faktörlü kimlik doğrulamayı mümkün olan en kısa sürede yeniden yapılandırın.';
-	@override String get backupCodesExhaustedWarning => 'Tüm yedek kodlar kullanıldı. İki faktörlü kimlik doğrulama uygulamanıza erişiminizi kaybederseniz, bu hesaba erişemezsiniz. Lütfen iki faktörlü kimlik doğrulamayı yeniden yapılandırın.';
+	@override String get backupCodesExhaustedWarning => 'Tüm yedek kodlar kullanıldı. İki faktörlü kimlik doğrulama uygulamana erişimini kaybedersen, bu hesaba erişemezsin. Lütfen iki faktörlü kimlik doğrulamayı yeniden yapılandır.';
 	@override String get moreDetailedGuideHere => 'İşte ayrıntılı kılavuz';
 }
 
@@ -2425,38 +2432,38 @@ class _TranslationsMisskeyPermissionsTrTr extends TranslationsMisskeyPermissions
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get readAccount => 'Hesap bilgilerinizi görüntüleyin';
-	@override String get writeAccount => 'Hesap bilgilerinizi düzenleyin';
-	@override String get readBlocks => 'Engellenen kullanıcıların listesini görüntüleyin';
-	@override String get writeBlocks => 'Engellenen kullanıcılar listenizi düzenleyin';
-	@override String get readDrive => 'Drive dosyalarınıza ve klasörlerinize erişin';
-	@override String get writeDrive => 'Drive dosyalarınızı ve klasörlerinizi düzenleyin veya silin';
-	@override String get readFavorites => 'Favoriler listenizi görüntüleyin';
-	@override String get writeFavorites => 'Favoriler listenizi düzenleyin';
-	@override String get readFollowing => 'Takip ettiğiniz kişilerle ilgili bilgileri görüntüleyin';
+	@override String get readAccount => 'Hesap bilgilerini gör';
+	@override String get writeAccount => 'Hesap bilgilerini düzenle';
+	@override String get readBlocks => 'Engellenen kullanıcıların listesini görüntüle';
+	@override String get writeBlocks => 'Engellenen kullanıcılar listeni düzenle';
+	@override String get readDrive => 'Drive dosyalarına ve klasörlerine eriş';
+	@override String get writeDrive => 'Drive dosyalarını ve klasörlerini düzenle veya sil';
+	@override String get readFavorites => 'Favoriler listeni görüntüle';
+	@override String get writeFavorites => 'Favoriler listeni düzenle';
+	@override String get readFollowing => 'Takip ettiğin kişilerle ilgili bilgileri görüntüle';
 	@override String get writeFollowing => 'Diğer hesapları takip et veya takipten çıkar';
-	@override String get readMessaging => 'Sohbetlerinizi görüntüleyin';
+	@override String get readMessaging => 'Sohbetlerini görüntüle';
 	@override String get writeMessaging => 'Sohbet mesajlarını oluşturun veya silin';
-	@override String get readMutes => 'Sessize alınan kullanıcıların listesini görüntüleyin';
-	@override String get writeMutes => 'Sessize alınan kullanıcıların listesini düzenleyin';
+	@override String get readMutes => 'Sessize alınan kullanıcıların listesini görüntüle';
+	@override String get writeMutes => 'Sessize alınan kullanıcıların listesini düzenle';
 	@override String get writeNotes => 'Notlar oluşturun veya silin';
-	@override String get readNotifications => 'Bildirimlerinizi görüntüleyin';
-	@override String get writeNotifications => 'Bildirimlerinizi yönetin';
-	@override String get readReactions => 'Tepkilerinizi görüntüleyin';
-	@override String get writeReactions => 'Tepkilerinizi düzenleyin';
+	@override String get readNotifications => 'Bildirimlerini görüntüle';
+	@override String get writeNotifications => 'Bildirimlerini yönet';
+	@override String get readReactions => 'Tepkilerini görüntüle';
+	@override String get writeReactions => 'Tepkilerini düzenle';
 	@override String get writeVotes => 'Ankete oy verin';
-	@override String get readPages => 'Sayfalarınızı görüntüleyin';
-	@override String get writePages => 'Sayfalarınızı düzenleyin veya silin';
+	@override String get readPages => 'Sayfalarını görüntüle';
+	@override String get writePages => 'Sayfalarını düzenle veya sil';
 	@override String get readPageLikes => 'Beğenilen sayfaların listesini görüntüle';
 	@override String get writePageLikes => 'Beğenilen sayfaların listesini düzenle';
-	@override String get readUserGroups => 'Kullanıcı gruplarınızı görüntüleyin';
-	@override String get writeUserGroups => 'Kullanıcı gruplarınızı düzenleyin veya silin';
-	@override String get readChannels => 'Kanallarınızı görüntüleyin';
-	@override String get writeChannels => 'Kanallarınızı düzenleyin';
+	@override String get readUserGroups => 'Kullanıcı gruplarını görüntüle';
+	@override String get writeUserGroups => 'Kullanıcı gruplarını düzenle veya sil';
+	@override String get readChannels => 'Kanallarını görüntüle';
+	@override String get writeChannels => 'Kanallarını düzenle';
 	@override String get readGallery => 'Galeriyi görüntüle';
 	@override String get writeGallery => 'Galeri düzenle';
-	@override String get readGalleryLikes => 'Beğendiğiniz galeri gönderilerinin listesini görüntüleyin';
-	@override String get writeGalleryLikes => 'Beğendiğiniz galeri gönderilerinin listesini düzenleyin';
+	@override String get readGalleryLikes => 'Beğendiğin galeri gönderilerinin listesini görüntüle';
+	@override String get writeGalleryLikes => 'Beğendiğin galeri gönderilerinin listesini düzenle';
 	@override String get readFlash => 'Oynat';
 	@override String get writeFlash => 'Oyunları Düzenle';
 	@override String get readFlashLikes => 'Beğenilen Oyunların listesini görüntüle';
@@ -2466,7 +2473,7 @@ class _TranslationsMisskeyPermissionsTrTr extends TranslationsMisskeyPermissions
 	@override String get writeAdminDeleteAllFilesOfAUser => 'Bir kullanıcının tüm dosyalarını sil';
 	@override String get readAdminIndexStats => 'Veritabanı dizin istatistiklerini görüntüle';
 	@override String get readAdminTableStats => 'Veritabanı tablosu istatistiklerini görüntüle';
-	@override String get readAdminUserIps => 'Kullanıcı IP adreslerini görüntüleyin';
+	@override String get readAdminUserIps => 'Kullanıcı IP adreslerini görüntüle';
 	@override String get readAdminMeta => 'Sunucu meta verilerini görüntüle';
 	@override String get writeAdminResetPassword => 'Kullanıcı şifresini sıfırla';
 	@override String get writeAdminResolveAbuseUserReport => 'Kullanıcı raporunu çözme';
@@ -2488,8 +2495,8 @@ class _TranslationsMisskeyPermissionsTrTr extends TranslationsMisskeyPermissions
 	@override String get readAdminInviteCodes => 'Davet kodlarını görüntüle';
 	@override String get writeAdminAnnouncements => 'Duyuruları yönet';
 	@override String get readAdminAnnouncements => 'Duyuruları görüntüle';
-	@override String get writeAdminAvatarDecorations => 'Avatar süslemelerini yönetebilir';
-	@override String get readAdminAvatarDecorations => 'Avatar süslemelerini görüntüle';
+	@override String get writeAdminAvatarDecorations => 'Avatar süslerini yönetebilir';
+	@override String get readAdminAvatarDecorations => 'Avatar süslerini görüntüle';
 	@override String get writeAdminFederation => 'Federasyon verilerini yönetme';
 	@override String get writeAdminAccount => 'Kullanıcı hesabını yönet';
 	@override String get readAdminAccount => 'Kullanıcı hesabını görüntüle';
@@ -2498,8 +2505,8 @@ class _TranslationsMisskeyPermissionsTrTr extends TranslationsMisskeyPermissions
 	@override String get writeAdminQueue => 'İş kuyruğunu yönet';
 	@override String get readAdminQueue => 'İş kuyruğu bilgilerini görüntüle';
 	@override String get writeAdminPromo => 'Promosyon notlarını yönet';
-	@override String get writeAdminDrive => 'Kullanıcı sürücüsünü yönet';
-	@override String get readAdminDrive => 'Kullanıcı sürücü bilgilerini görüntüle';
+	@override String get writeAdminDrive => 'Kullanıcı Drive\'ını yönet';
+	@override String get readAdminDrive => 'Kullanıcı Drive bilgilerini görüntüle';
 	@override String get readAdminStream => 'Yönetici için WebSocket API\'sını kullanın';
 	@override String get writeAdminAd => 'Reklamları yönet';
 	@override String get readAdminAd => 'Reklamları görüntüle';
@@ -2522,7 +2529,7 @@ class _TranslationsMisskeyAuthTrTr extends TranslationsMisskeyAuthEnUs {
 	// Translations
 	@override String get shareAccessTitle => 'Uygulama izinlerinin verilmesi';
 	@override String shareAccess({required Object name}) => '“${name}”nin bu hesaba erişmesine izin vermek ister misiniz?';
-	@override String get shareAccessAsk => 'Bu uygulamanın hesabınıza erişmesine izin vermek istediğinizden emin misiniz?';
+	@override String get shareAccessAsk => 'Bu uygulamanın hesabınıza erişmesine izin vermek istediğinden emin misin?';
 	@override String permission({required Object name}) => '${name} aşağıdaki izinleri talep etmektedir.';
 	@override String get permissionAsk => 'Bu uygulama aşağıdaki izinleri talep etmektedir';
 	@override String get pleaseGoBack => 'Lütfen uygulamaya geri dönün.';
@@ -2531,7 +2538,7 @@ class _TranslationsMisskeyAuthTrTr extends TranslationsMisskeyAuthEnUs {
 	@override String get denied => 'Erişim reddedildi';
 	@override String get scopeUser => 'Aşağıdaki kullanıcı olarak çalıştırın';
 	@override String get pleaseLogin => 'Uygulamaları yetkilendirmek için lütfen giriş yapın.';
-	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Erişim izni verildiğinde, otomatik olarak aşağıdaki URL\'ye yönlendirileceksiniz.';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Erişim izni verildiğinde, otomatik olarak aşağıdaki URL\'ye yönlendirileceksin.';
 }
 
 // Path: misskey.antennaSources_
@@ -2575,7 +2582,7 @@ class _TranslationsMisskeyWidgetsTrTr extends TranslationsMisskeyWidgetsEnUs {
 	@override String get instanceInfo => 'Sunucu Bilgisi';
 	@override String get memo => 'Yapışkan notlar';
 	@override String get notifications => 'Bildirimler';
-	@override String get timeline => 'Timeline';
+	@override String get timeline => 'Pano';
 	@override String get calendar => 'Takvim';
 	@override String get trends => 'Trend olan';
 	@override String get clock => 'Saat';
@@ -2625,7 +2632,7 @@ class _TranslationsMisskeyPollTrTr extends TranslationsMisskeyPollEnUs {
 	// Translations
 	@override String get noOnlyOneChoice => 'En az iki seçenek gereklidir.';
 	@override String choiceN({required Object n}) => 'Seçim ${n}';
-	@override String get noMore => 'Daha fazla seçenek ekleyemezsiniz.';
+	@override String get noMore => 'Daha fazla seçenek ekleyemezsin.';
 	@override String get canMultipleVote => 'Birden fazla seçenek seçilmesine izin ver';
 	@override String get expiration => 'Anketi sonlandır';
 	@override String get infinite => 'Asla';
@@ -2655,10 +2662,10 @@ class _TranslationsMisskeyVisibilityTrTr extends TranslationsMisskeyVisibilityEn
 	// Translations
 	@override String get public => 'Halka açık';
 	@override String get publicDescription => 'Notunuz tüm kullanıcılar tarafından görülebilir olacaktır.';
-	@override String get home => 'Ana sayfa';
+	@override String get home => 'Pano';
 	@override String get homeDescription => 'Yalnızca ana zaman çizelgesine gönder';
 	@override String get followers => 'Takipçiler';
-	@override String get followersDescription => 'Sadece takipçilerinize görünür hale getirin';
+	@override String get followersDescription => 'Sadece takipçilerine görünür hale getir';
 	@override String get specified => 'Doğrudan';
 	@override String get specifiedDescription => 'Yalnızca belirli kullanıcılar için görünür hale getir';
 	@override String get disableFederation => 'Federasyon olmadan';
@@ -2672,8 +2679,8 @@ class _TranslationsMisskeyPostFormTrTr extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Yüklenmemiş dosyalar var, bunları silip formu kapatmak ister misiniz?';
-	@override String get uploaderTip => 'Dosya henüz yüklenmemiştir. Dosya menüsünden dosyayı yeniden adlandırabilir, görüntüleri kırpabilir, filigran ekleyebilir ve dosyayı sıkıştırabilir veya sıkıştırmayı kaldırabilirsiniz. Notu yayınladığınızda dosyalar otomatik olarak yüklenir.';
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => 'Yüklenmemiş dosyalar var, bunları silip formu kapatmak ister misin?';
+	@override String get uploaderTip => 'Dosya henüz yüklenmemiş. Dosya menüsünden dosyayı yeniden adlandırabilir, görüntüleri kırpabilir, filigran ekleyebilir ve dosyayı sıkıştırabilir veya sıkıştırmayı kaldırabilirsin. Notu yayınladığında dosyalar otomatik olarak yüklenir.';
 	@override String get replyPlaceholder => 'Bu notu yanıtla...';
 	@override String get quotePlaceholder => 'Bu notu alıntı yap...';
 	@override String get channelPlaceholder => 'Bir kanala gönder...';
@@ -2693,16 +2700,16 @@ class _TranslationsMisskeyProfileTrTr extends TranslationsMisskeyProfileEnUs {
 	@override String get youCanIncludeHashtags => 'Biyografinize hashtag\'ler de ekleyebilirsiniz.';
 	@override String get metadata => 'Ek Bilgiler';
 	@override String get metadataEdit => 'Ek bilgileri düzenle';
-	@override String get metadataDescription => 'Bunları kullanarak profilinizde ek bilgi alanları görüntüleyebilirsiniz.';
+	@override String get metadataDescription => 'Bunları kullanarak profilinde ek bilgi alanları görüntüleyebilirsin.';
 	@override String get metadataLabel => 'Etiket';
 	@override String get metadataContent => 'İçerik';
-	@override String get changeAvatar => 'Avatarı değiştir';
-	@override String get changeBanner => 'Change banner';
-	@override String get verifiedLinkDescription => 'Buraya profilinize bağlantı içeren bir URL girerek, alanın yanında bir sahiplik doğrulama simgesi görüntülenebilir.';
-	@override String avatarDecorationMax({required Object max}) => 'En fazla ${max} dekorasyon ekleyebilirsiniz.';
+	@override String get changeAvatar => 'Avatar değiştir';
+	@override String get changeBanner => 'Banner değiştir';
+	@override String get verifiedLinkDescription => 'Buraya profiline bağlantı içeren bir URL girerek, alanın yanında bir sahiplik doğrulama simgesi görüntülenebilir.';
+	@override String avatarDecorationMax({required Object max}) => 'En fazla ${max} süs ekleyebilirsin.';
 	@override String get followedMessage => 'Takip edildiğinizde gönderilen mesaj';
-	@override String get followedMessageDescription => 'Aboneleriniz sizi takip ettiklerinde görüntülenmesini istediğiniz kısa bir mesaj ayarlayabilirsiniz.';
-	@override String get followedMessageDescriptionForLockedAccount => 'Takip isteklerinin onay gerektirdiğini ayarladıysanız, bir takip isteğini kabul ettiğinizde bu mesaj görüntülenir.';
+	@override String get followedMessageDescription => 'Abonelerin seni takip ettiklerinde görüntülenmesini istediğin kısa bir mesaj ayarlayabilirsin.';
+	@override String get followedMessageDescriptionForLockedAccount => 'Takip isteklerinin onay gerektirmesini ayarladıysan, bir takip isteğini kabul ettiğinde bu mesaj görüntülenir.';
 }
 
 // Path: misskey.exportOrImport_
@@ -2755,13 +2762,13 @@ class _TranslationsMisskeyInstanceChartsTrTr extends TranslationsMisskeyInstance
 	// Translations
 	@override String get requests => 'Talepler';
 	@override String get users => 'Kullanıcı sayısındaki fark';
-	@override String get usersTotal => 'Kümülatif kullanıcı sayısı';
+	@override String get usersTotal => 'Toplam kullanıcı sayısı';
 	@override String get notes => 'Not sayısındaki fark';
-	@override String get notesTotal => 'Kümülatif not sayısı';
-	@override String get ff => 'Takip edilen kullanıcı sayısı / takipçi sayısı farkı';
-	@override String get ffTotal => 'Takip edilen kullanıcıların / takipçilerin toplam sayısı';
+	@override String get notesTotal => 'Toplam not sayısı';
+	@override String get ff => 'Takip  / Takipçi sayısı farkı';
+	@override String get ffTotal => 'Takip  / Takipçi toplam sayısı';
 	@override String get cacheSize => 'Önbellek boyutundaki fark';
-	@override String get cacheSizeTotal => 'Kümülatif önbellek boyutu';
+	@override String get cacheSizeTotal => 'Önbelleğin toplam boyutu';
 	@override String get files => 'Dosya sayısındaki fark';
 	@override String get filesTotal => 'Toplam dosya sayısı';
 }
@@ -2773,10 +2780,10 @@ class _TranslationsMisskeyTimelinesTrTr extends TranslationsMisskeyTimelinesEnUs
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get home => 'Ana Sayfa';
+	@override String get home => 'Pano';
 	@override String get local => 'Yerel';
 	@override String get social => 'Sosyal';
-	@override String get global => 'Küresel';
+	@override String get global => 'Global';
 }
 
 // Path: misskey.play_
@@ -2800,7 +2807,7 @@ class _TranslationsMisskeyPlayTrTr extends TranslationsMisskeyPlayEnUs {
 	@override String get title => 'Başlık';
 	@override String get script => 'Senaryo';
 	@override String get summary => 'Açıklama';
-	@override String get visibilityDescription => 'Özel olarak ayarlamak, profilinizde görünmeyeceği anlamına gelir, ancak URL\'ye sahip olan herkes yine de erişebilir.';
+	@override String get visibilityDescription => 'Özel olarak ayarlamak, profilinde görünmeyeceği anlamına gelir, ancak URL\'ye sahip olan herkes yine de erişebilir.';
 }
 
 // Path: misskey.pages_
@@ -2815,11 +2822,11 @@ class _TranslationsMisskeyPagesTrTr extends TranslationsMisskeyPagesEnUs {
 	@override String get readPage => 'Bu Sayfanın Kaynağını Görüntüleme';
 	@override String get pageSetting => 'Sayfa ayarları';
 	@override String get nameAlreadyExists => 'Belirtilen Sayfa URL\'si zaten mevcut.';
-	@override String get invalidNameTitle => 'Belirtilen Sayfa URL\'si geçersiz';
+	@override String get invalidNameTitle => 'Belirtilen Sayfa URL geçersiz';
 	@override String get invalidNameText => 'Sayfa başlığının boş olmadığından emin olun.';
 	@override String get editThisPage => 'Bu sayfayı düzenle';
 	@override String get viewSource => 'Kaynak görüntüle';
-	@override String get viewPage => 'Sayfalarınızı görüntüleyin';
+	@override String get viewPage => 'Sayfalarını görüntüle';
 	@override String get like => 'Beğen';
 	@override String get unlike => 'Benzerlerini kaldır';
 	@override String get my => 'Benzerlerini kaldır';
@@ -2874,12 +2881,12 @@ class _TranslationsMisskeyNotificationTrTr extends TranslationsMisskeyNotificati
 	@override String youRenoted({required Object name}) => '${name}\'den Renote';
 	@override String get youWereFollowed => 'seni takip etti';
 	@override String get youReceivedFollowRequest => 'Bir takip isteği aldınız.';
-	@override String get yourFollowRequestAccepted => 'Takip isteğiniz kabul edildi.';
+	@override String get yourFollowRequestAccepted => 'Takip isteğin kabul edildi.';
 	@override String get pollEnded => 'Anket sonuçları açıklandı.';
 	@override String get newNote => 'Yeni not';
 	@override String unreadAntennaNote({required Object name}) => '${name} anteni';
 	@override String get roleAssigned => 'Verilen rol';
-	@override String get chatRoomInvitationReceived => 'Sohbet odasına davet edildiniz.';
+	@override String get chatRoomInvitationReceived => 'Sohbet odasına davet edildin.';
 	@override String get emptyPushNotificationMessage => 'Push bildirimleri güncellendi';
 	@override String get achievementEarned => 'Achievement unlocked';
 	@override String get testNotification => 'Test bildirimi';
@@ -2892,7 +2899,7 @@ class _TranslationsMisskeyNotificationTrTr extends TranslationsMisskeyNotificati
 	@override String followedBySomeUsers({required Object n}) => '${n} kullanıcı tarafından takip ediliyor';
 	@override String get flushNotification => 'Bildirimleri temizle';
 	@override String exportOfXCompleted({required Object x}) => '${x} ihracatı tamamlandı.';
-	@override String get login => 'Birisi oturum açtı';
+	@override String get login => 'Biri oturum açtı';
 	@override String get createToken => 'Bir erişim jetonu oluşturuldu.';
 	@override String createTokenDescription({required Object text}) => 'Eğer bilmiyorsanız, “${text}” aracılığıyla erişim jetonunu silin.';
 	@override late final _TranslationsMisskeyNotificationTypesTrTr types_ = _TranslationsMisskeyNotificationTypesTrTr._(_root);
@@ -2916,20 +2923,20 @@ class _TranslationsMisskeyDeckTrTr extends TranslationsMisskeyDeckEnUs {
 	@override String get configureColumn => 'Sütun ayarları';
 	@override String get swapLeft => 'Sol sütunla değiştir';
 	@override String get swapRight => 'Sağ sütunla değiştir';
-	@override String get swapUp => 'Yukarıdaki sütunla değiştirin';
-	@override String get swapDown => 'Aşağıdaki sütunla değiştirin';
+	@override String get swapUp => 'Yukarıdaki sütunla değiştir';
+	@override String get swapDown => 'Aşağıdaki sütunla değiştir';
 	@override String get stackLeft => 'Sol sütunda yığın';
 	@override String get popRight => 'Sağdaki pop sütunu';
 	@override String get profile => 'Profil';
 	@override String get newProfile => 'Yeni profil';
 	@override String get deleteProfile => 'Profili sil';
 	@override String get introduction => 'Sütunları serbestçe düzenleyerek size en uygun arayüzü oluşturun!';
-	@override String get introduction2 => 'Ekranın sağındaki + işaretine tıklayarak istediğiniz zaman yeni sütunlar ekleyebilirsiniz.';
-	@override String get widgetsIntroduction => 'Lütfen sütun menüsünden “Widget\'ları düzenle” seçeneğini seçin ve bir widget ekleyin.';
+	@override String get introduction2 => 'Ekranın sağındaki + işaretine tıklayarak istediğin zaman yeni sütunlar ekleyebilirsin.';
+	@override String get widgetsIntroduction => 'Lütfen sütun menüsünden “Widget\'ları düzenle” seçeneğini seç ve bir widget ekle.';
 	@override String get useSimpleUiForNonRootPages => 'Gezinilen sayfalar için basit kullanıcı arayüzü kullanın';
-	@override String get usedAsMinWidthWhenFlexible => '“Otomatik genişlik ayarı” seçeneği etkinleştirildiğinde, bunun için minimum genişlik kullanılacaktır.';
+	@override String get usedAsMinWidthWhenFlexible => '“Otomatik genişlik ayarı” seçeneği etkinleştirildiğinde, bunun için minimum genişlik kullanılacak.';
 	@override String get flexible => 'Otomatik genişlik ayarı';
-	@override String get enableSyncBetweenDevicesForProfiles => 'Cihazlar arasında profil bilgilerinin senkronizasyonunu etkinleştirin';
+	@override String get enableSyncBetweenDevicesForProfiles => 'Cihazlar arasında profil bilgilerinin senkronizasyonunu etkinleştir';
 	@override late final _TranslationsMisskeyDeckColumnsTrTr columns_ = _TranslationsMisskeyDeckColumnsTrTr._(_root);
 }
 
@@ -2951,8 +2958,8 @@ class _TranslationsMisskeyDisabledTimelineTrTr extends TranslationsMisskeyDisabl
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Timeline devre dışı bırakıldı';
-	@override String get description => 'Mevcut rolleriniz altında bu Timeline\'ı kullanamazsınız.';
+	@override String get title => 'Pano devre dışı bırakıldı';
+	@override String get description => 'Mevcut rollerinle bu Pano kullanılamaz.';
 }
 
 // Path: misskey.drivecleaner_
@@ -2981,7 +2988,7 @@ class _TranslationsMisskeyWebhookSettingsTrTr extends TranslationsMisskeyWebhook
 	@override String get active => 'Etkin';
 	@override late final _TranslationsMisskeyWebhookSettingsEventsTrTr events_ = _TranslationsMisskeyWebhookSettingsEventsTrTr._(_root);
 	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsTrTr systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsTrTr._(_root);
-	@override String get deleteConfirm => 'Webhook\'u silmek istediğinizden emin misiniz?';
+	@override String get deleteConfirm => 'Webhook\'u silmek istediğinden emin misin?';
 	@override String get testRemarks => 'Anahtarın sağındaki düğmeyi tıklayarak sahte verilerle bir test Webhook gönderin.';
 }
 
@@ -3016,11 +3023,11 @@ class _TranslationsMisskeyModerationLogTypesTrTr extends TranslationsMisskeyMode
 	@override String get updateUserNote => 'Moderasyon notu güncellendi';
 	@override String get deleteDriveFile => 'Dosya silindi';
 	@override String get deleteNote => 'Not silindi';
-	@override String get createGlobalAnnouncement => 'Küresel duyuru oluşturuldu';
+	@override String get createGlobalAnnouncement => 'Global duyuru oluşturuldu';
 	@override String get createUserAnnouncement => 'Kullanıcı duyurusu oluşturuldu';
-	@override String get updateGlobalAnnouncement => 'Küresel duyuru güncellendi';
+	@override String get updateGlobalAnnouncement => 'Global duyuru güncellendi';
 	@override String get updateUserAnnouncement => 'Kullanıcı duyurusu güncellendi';
-	@override String get deleteGlobalAnnouncement => 'Küresel duyuru silindi';
+	@override String get deleteGlobalAnnouncement => 'Global duyuru silindi';
 	@override String get deleteUserAnnouncement => 'Kullanıcı duyurusu silindi';
 	@override String get resetPassword => 'Şifreyi sıfırla';
 	@override String get suspendRemoteInstance => 'Uzak sunucu askıya alındı';
@@ -3037,7 +3044,7 @@ class _TranslationsMisskeyModerationLogTypesTrTr extends TranslationsMisskeyMode
 	@override String get updateAd => 'Reklam güncellendi';
 	@override String get createAvatarDecoration => 'Avatar dekorasyonu oluşturuldu';
 	@override String get updateAvatarDecoration => 'Avatar dekorasyonu güncellendi';
-	@override String get deleteAvatarDecoration => 'Avatar süslemesi silindi';
+	@override String get deleteAvatarDecoration => 'Avatar süsü silindi';
 	@override String get unsetUserAvatar => 'Kullanıcı avatarı ayarlanmamış';
 	@override String get unsetUserBanner => 'Kullanıcı başlığı ayarlanmamış';
 	@override String get createSystemWebhook => 'Sistem Webhook oluşturuldu';
@@ -3051,7 +3058,7 @@ class _TranslationsMisskeyModerationLogTypesTrTr extends TranslationsMisskeyMode
 	@override String get deleteFlash => 'Oyun silindi';
 	@override String get deleteGalleryPost => 'Galeri gönderisi silindi';
 	@override String get deleteChatRoom => 'Deleted Chat Room';
-	@override String get updateProxyAccountDescription => 'Proxy hesabının açıklamasını güncelleyin';
+	@override String get updateProxyAccountDescription => 'Proxy hesabının açıklamasını güncelle';
 }
 
 // Path: misskey.fileViewer_
@@ -3127,8 +3134,8 @@ class _TranslationsMisskeyReversiTrTr extends TranslationsMisskeyReversiEnUs {
 	@override String blackIs({required Object name}) => '${name} siyah oynuyor.';
 	@override String get rules => 'Kurallar';
 	@override String get thisGameIsStartedSoon => 'Oyun kısa süre içinde başlayacak.';
-	@override String get waitingForOther => 'Rakibin sırasını beklemek';
-	@override String get waitingForMe => 'Sıranızı bekliyorsunuz';
+	@override String get waitingForOther => 'Rakibin sırasını bekle';
+	@override String get waitingForMe => 'Sıranı bekliyorsun';
 	@override String get waitingBoth => 'Hazır olun';
 	@override String get ready => 'Hazır';
 	@override String get cancelReady => 'Hazır değil';
@@ -3158,7 +3165,7 @@ class _TranslationsMisskeyReversiTrTr extends TranslationsMisskeyReversiEnUs {
 	@override String get gameCanceled => 'Oyun iptal edildi.';
 	@override String get shareToTlTheGameWhenStart => 'Oyun başlatıldığında zaman çizelgesinde paylaş';
 	@override String get iStartedAGame => 'Oyun başladı! #MisskeyReversi';
-	@override String get opponentHasSettingsChanged => 'Rakip ayarlarını değiştirmiştir.';
+	@override String get opponentHasSettingsChanged => 'Rakip ayarlarını değiştirmiş.';
 	@override String get allowIrregularRules => 'Düzensiz kurallar (tamamen ücretsiz)';
 	@override String get disallowIrregularRules => 'Düzensiz kurallar yok';
 	@override String get showBoardLabels => 'Tahtada satır ve sütun numaralarını göster';
@@ -3186,7 +3193,7 @@ class _TranslationsMisskeyUrlPreviewSettingTrTr extends TranslationsMisskeyUrlPr
 	@override String get title => 'URL önizleme ayarları';
 	@override String get enable => 'URL önizlemesini etkinleştir';
 	@override String get allowRedirect => 'URL önizleme yönlendirmesine izin ver';
-	@override String get allowRedirectDescription => 'Bir URL\'de yönlendirme ayarlanmışsa, bu özelliği etkinleştirerek yönlendirmeyi takip edebilir ve yönlendirilen içeriğin önizlemesini görüntüleyebilirsiniz. Bu özelliği devre dışı bırakmak sunucu kaynaklarından tasarruf sağlar, ancak yönlendirilen içerik görüntülenmez.';
+	@override String get allowRedirectDescription => 'Bir URL\'de yönlendirme ayarlanmışsa, bu özelliği etkinleştirerek yönlendirmeyi takip edebilir ve yönlendirilen içeriğin önizlemesini görüntüleyebilirsin. Bu özelliği devre dışı bırakmak sunucu kaynaklarından tasarruf sağlar, ancak yönlendirilen içerik görüntülenmez.';
 	@override String get timeout => 'Önizleme alırken zaman aşımı (ms)';
 	@override String get timeoutDescription => 'Önizlemeyi almak bu değerden daha uzun sürerse, önizleme oluşturulmaz.';
 	@override String get maximumContentLength => 'Maksimum İçerik Uzunluğu (bayt)';
@@ -3196,7 +3203,7 @@ class _TranslationsMisskeyUrlPreviewSettingTrTr extends TranslationsMisskeyUrlPr
 	@override String get userAgent => 'Kullanıcı Aracısı';
 	@override String get userAgentDescription => 'Önizlemeleri alırken kullanılacak Kullanıcı Aracısını ayarlar. Boş bırakılırsa, varsayılan Kullanıcı Aracısı kullanılır.';
 	@override String get summaryProxy => 'Önizlemeler oluşturan proxy uç noktaları';
-	@override String get summaryProxyDescription => 'Misskey\'in kendisi değil, Summaly Proxy kullanarak önizlemeler oluşturun.';
+	@override String get summaryProxyDescription => 'Misskey\'in kendisi değil, Summaly Proxy kullanarak önizlemeler oluştur.';
 	@override String get summaryProxyDescription2 => 'Aşağıdaki parametreler, sorgu dizesi olarak proxy\'ye bağlanır. Proxy bunları desteklemiyorsa, değerler yok sayılır.';
 }
 
@@ -3269,15 +3276,15 @@ class _TranslationsMisskeyEmbedCodeGenTrTr extends TranslationsMisskeyEmbedCodeG
 	@override String get header => 'Başlığı göster';
 	@override String get autoload => 'Otomatik olarak daha fazlasını yükle (kullanımdan kaldırıldı)';
 	@override String get maxHeight => 'Maksimum yükseklik';
-	@override String get maxHeightDescription => '0 olarak ayarlandığında maksimum yükseklik ayarı devre dışı bırakılır. Widget\'ın dikey olarak genişlemeye devam etmesini önlemek için bir değer belirtin.';
-	@override String get maxHeightWarn => 'Maksimum yükseklik sınırı devre dışıdır (0). Bu istenmeyen bir durumsa, maksimum yüksekliği bir değer olarak ayarlayın.';
+	@override String get maxHeightDescription => '0 olarak ayarlandığında maksimum yükseklik ayarı devre dışı bırakılır. Widget\'ın dikey olarak genişlemeye devam etmesini önlemek için bir değer belirt.';
+	@override String get maxHeightWarn => 'Maksimum yükseklik sınırı devre dışıdır (0). Bu istenmeyen bir durumsa, maksimum yüksekliği bir değer olarak ayarla.';
 	@override String get previewIsNotActual => 'Ekran, önizleme ekranında görüntülenen aralığı aştığı için gerçek gömme işleminden farklıdır.';
-	@override String get rounded => 'Yuvarlak hale getirin';
+	@override String get rounded => 'Yuvarlak hale getir';
 	@override String get border => 'Dış çerçeveye kenarlık ekle';
 	@override String get applyToPreview => 'Önizlemeye başvur';
 	@override String get generateCode => 'Gömme kodu oluştur';
 	@override String get codeGenerated => 'Kod oluşturuldu';
-	@override String get codeGeneratedDescription => 'Oluşturulan kodu web sitenize yapıştırarak içeriği gömün.';
+	@override String get codeGeneratedDescription => 'Oluşturulan kodu web sitene yapıştırarak içeriği göm.';
 }
 
 // Path: misskey.selfXssPrevention_
@@ -3288,8 +3295,8 @@ class _TranslationsMisskeySelfXssPreventionTrTr extends TranslationsMisskeySelfX
 
 	// Translations
 	@override String get warning => 'UYARI';
-	@override String get title => '“Bu ekrana bir şey yapıştırın” tamamen bir aldatmacadır.';
-	@override String get description1 => 'Buraya bir şey yapıştırırsanız, kötü niyetli bir kullanıcı hesabınızı ele geçirebilir veya kişisel bilgilerinizi çalabilir.';
+	@override String get title => '“Bu ekrana bir şey yapıştırın” tamamen bir aldatmaca.';
+	@override String get description1 => 'Buraya bir şey yapıştırırsan, kötü niyetli bir kullanıcı hesabını ele geçirebilir veya kişisel bilgilerini çalabilir.';
 	@override String get description2 => 'Yapıştırmaya çalıştığınız şeyi tam olarak anlamıyorsanız, %c hemen çalışmayı bırakın ve bu pencereyi kapatın.';
 	@override String description3({required Object link}) => 'Daha fazla bilgi için lütfen buraya bakın. ${link}';
 }
@@ -3327,7 +3334,7 @@ class _TranslationsMisskeyCaptchaTrTr extends TranslationsMisskeyCaptchaEnUs {
 
 	// Translations
 	@override String get verify => 'Lütfen CAPTCHA\'yı doğrulayın';
-	@override String get testSiteKeyMessage => 'Site ve gizli anahtarlar için test değerlerini girerek önizlemeyi kontrol edebilirsiniz.\nAyrıntılar için lütfen aşağıdaki sayfaya bakın.';
+	@override String get testSiteKeyMessage => 'Site ve gizli anahtarlar için test değerlerini girerek önizlemeyi kontrol edebilirsin.\nAyrıntılar için lütfen aşağıdaki sayfaya bak.';
 	@override late final _TranslationsMisskeyCaptchaErrorTrTr error_ = _TranslationsMisskeyCaptchaErrorTrTr._(_root);
 }
 
@@ -3341,7 +3348,7 @@ class _TranslationsMisskeyBootErrorsTrTr extends TranslationsMisskeyBootErrorsEn
 	@override String get title => 'Yükleme başarısız';
 	@override String get serverError => 'Bir süre bekledikten ve yeniden yükledikten sonra sorun devam ederse, lütfen aşağıdaki Hata ID ile sunucu yöneticisine başvurun.';
 	@override String get solution => 'Aşağıdakiler sorunu çözebilir.';
-	@override String get solution1 => 'Tarayıcınızı ve işletim sisteminizi en son sürüme güncelleyin.';
+	@override String get solution1 => 'Tarayıcını ve işletim sistemini en son sürüme güncelle.';
 	@override String get solution2 => 'Reklam engelleyiciyi devre dışı bırak';
 	@override String get solution3 => 'Tarayıcı önbelleğini temizle';
 	@override String get solution4 => 'Tor Tarayıcı için dom.webaudio.enabled değerini true olarak ayarlayın.';
@@ -3384,16 +3391,16 @@ class _TranslationsMisskeyServerSetupWizardTrTr extends TranslationsMisskeyServe
 	@override String get howWillYouUseMisskey => 'Misskey\'i nasıl kullanacaksınız?';
 	@override late final _TranslationsMisskeyServerSetupWizardUseTrTr use_ = _TranslationsMisskeyServerSetupWizardUseTrTr._(_root);
 	@override String get openServerAdvice => 'Çok sayıda bilinmeyen kullanıcıyı kabul etmek risklidir. Herhangi bir sorunu çözmek için güvenilir bir moderasyon sistemi kullanmanızı öneririz.';
-	@override String get openServerAntiSpamAdvice => 'Sunucunuzun spam için bir basamak haline gelmesini önlemek için, reCAPTCHA gibi anti-bot işlevlerini etkinleştirerek güvenliğe de özen göstermelisiniz.';
+	@override String get openServerAntiSpamAdvice => 'Sunucunuzun spam için bir basamak haline gelmesini önlemek için, reCAPTCHA gibi anti-bot işlevlerini etkinleştirerek güvenliğe de özen göstermelisin.';
 	@override String get howManyUsersDoYouExpect => 'Kaç kullanıcı bekliyorsunuz?';
 	@override late final _TranslationsMisskeyServerSetupWizardScaleTrTr scale_ = _TranslationsMisskeyServerSetupWizardScaleTrTr._(_root);
 	@override String get largeScaleServerAdvice => 'Büyük sunucular, yük dengeleme ve veritabanı çoğaltma gibi gelişmiş altyapı bilgisi gerektirebilir.';
-	@override String get doYouConnectToFediverse => 'Fediverse\'e bağlanmak ister misiniz?';
+	@override String get doYouConnectToFediverse => 'Fediverse\'e bağlanmak ister misin?';
 	@override String get doYouConnectToFediverse_description1 => 'Dağıtılmış sunucular ağına (Fediverse) bağlandığında, içerik diğer sunucularla paylaşılabilir.';
 	@override String get doYouConnectToFediverse_description2 => 'Fediverse ile bağlantı kurmak “federasyon” olarak da adlandırılır.';
 	@override String get youCanConfigureMoreFederationSettingsLater => 'Birleştirilmiş sunucuları belirtme gibi gelişmiş ayarlar daha sonra yapılandırılabilir.';
 	@override String get remoteContentsCleaning => 'Alınan içeriklerin otomatik olarak temizlenmesi';
-	@override String get remoteContentsCleaning_description => 'Federasyon, sürekli içerik akışına neden olabilir. Otomatik temizleme özelliğini etkinleştirmek, depolama alanından tasarruf etmek için sunucudan eski ve referanslanmamış içeriği kaldıracaktır.';
+	@override String get remoteContentsCleaning_description => 'Federasyon, sürekli içerik akışına neden olabilir. Otomatik temizleme özelliğini etkinleştirmek, depolama alanından tasarruf etmek için sunucudan eski ve referanslanmamış içeriği kaldıracak.';
 	@override String get adminInfo => 'Yönetici bilgileri';
 	@override String get adminInfo_description => 'Sorguları almak için kullanılan yönetici bilgilerini ayarlar.';
 	@override String get adminInfo_mustBeFilled => 'Genel sunucu veya federasyon açıksa girilmelidir.';
@@ -3401,7 +3408,7 @@ class _TranslationsMisskeyServerSetupWizardTrTr extends TranslationsMisskeyServe
 	@override String get applyTheseSettings => 'Bu ayarları uygulayın';
 	@override String get skipSettings => 'Ayarları atla';
 	@override String get settingsCompleted => 'Kurulum tamamlandı!';
-	@override String get settingsCompleted_description => 'Zaman ayırdığınız için teşekkür ederiz. Artık her şey hazır olduğuna göre, sunucuyu hemen kullanmaya başlayabilirsiniz.';
+	@override String get settingsCompleted_description => 'Zaman ayırdığınız için teşekkür ederiz. Artık her şey hazır olduğuna göre, sunucuyu hemen kullanmaya başlayabilirsin.';
 	@override String get settingsCompleted_description2 => 'Sunucu ayarları “Kontrol Paneli”nden değiştirilebilir.';
 	@override String get donationRequest => 'Bağış Talebi';
 	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestTrTr donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestTrTr._(_root);
@@ -3417,11 +3424,11 @@ class _TranslationsMisskeyUploaderTrTr extends TranslationsMisskeyUploaderEnUs {
 	@override String get editImage => 'Resmi Düzenle';
 	@override String compressedToX({required Object x}) => '${x} boyutuna sıkıştırıldı';
 	@override String savedXPercent({required Object x}) => '${x}% tasarruf';
-	@override String get abortConfirm => 'Bazı dosyalar yüklenmedi, iptal etmek ister misiniz?';
-	@override String get doneConfirm => 'Bazı dosyalar yüklenmedi, yine de devam etmek istiyor musunuz?';
-	@override String maxFileSizeIsX({required Object x}) => 'Yükleyebileceğiniz maksimum dosya boyutu ${x}';
+	@override String get abortConfirm => 'Bazı dosyalar yüklenmedi, iptal etmek ister misin?';
+	@override String get doneConfirm => 'Bazı dosyalar yüklenmedi, yine de devam etmek istiyor musun?';
+	@override String maxFileSizeIsX({required Object x}) => 'Yükleyebileceğin maksimum dosya boyutu ${x}';
 	@override String get allowedTypes => 'Yüklenebilir dosya türleri';
-	@override String get tip => 'Dosya henüz yüklenmediğinden, bu iletişim kutusu yüklemeden önce dosyayı onaylamanıza, yeniden adlandırmanıza, sıkıştırmanıza ve kırpmanıza olanak tanır. Hazır olduğunuzda, “Yükle” düğmesine basarak yüklemeyi başlatabilirsiniz.';
+	@override String get tip => 'Dosya henüz yüklenmediğinden, bu iletişim kutusu yüklemeden önce dosyayı onaylamanıza, yeniden adlandırmana, sıkıştırmana ve kırpmana olanak tanır. Hazır olduğunda, “Yükle” düğmesine basarak yüklemeyi başlatabilirsin.';
 }
 
 // Path: misskey.clientPerformanceIssueTip_
@@ -3432,10 +3439,10 @@ class _TranslationsMisskeyClientPerformanceIssueTipTrTr extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'Performans ipuçları';
-	@override String get makeSureDisabledAdBlocker => 'Reklam engelleyicinizi devre dışı bırakın';
-	@override String get makeSureDisabledAdBlocker_description => 'Reklam engelleyiciler performansı etkileyebilir, lütfen sisteminizde veya tarayıcınızın özelliklerinde/uzantılarında reklam engelleyicilerin etkinleştirilmediğinden emin olun.';
+	@override String get makeSureDisabledAdBlocker => 'Reklam engelleyicini devre dışı bırak';
+	@override String get makeSureDisabledAdBlocker_description => 'Reklam engelleyiciler performansı etkileyebilir, lütfen sisteminde veya tarayıcının özelliklerinde/uzantılarında reklam engelleyicilerin etkinleştirilmediğinden emin ol.';
 	@override String get makeSureDisabledCustomCss => 'Özel CSS\'yi devre dışı bırak';
-	@override String get makeSureDisabledCustomCss_description => 'Stil geçersiz kılma, performansı etkileyebilir. Stil geçersiz kılan özel CSS veya uzantıların etkinleştirilmediğinden emin olun.';
+	@override String get makeSureDisabledCustomCss_description => 'Stil geçersiz kılma, performansı etkileyebilir. Stil geçersiz kılan özel CSS veya uzantıların etkinleştirilmediğinden emin ol.';
 	@override String get makeSureDisabledAddons => 'Uzantıları devre dışı bırak';
 	@override String get makeSureDisabledAddons_description => 'Bazı uzantılar istemci davranışını engelleyebilir ve performansı etkileyebilir. Lütfen tarayıcı uzantılarınızı devre dışı bırakın ve durumun düzelip düzelmediğini kontrol edin.';
 }
@@ -3447,7 +3454,7 @@ class _TranslationsMisskeyClipTrTr extends TranslationsMisskeyClipEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get tip => 'Clip, notlarınızı düzenlemenizi sağlayan bir özelliktir.';
+	@override String get tip => 'Klip, notları gruplandırmanıza olanak tanıyan bir özelliktir.';
 }
 
 // Path: misskey.userLists_
@@ -3457,7 +3464,7 @@ class _TranslationsMisskeyUserListsTrTr extends TranslationsMisskeyUserListsEnUs
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get tip => 'Listeler, oluşturulurken belirttiğiniz herhangi bir kullanıcıyı içerebilir. Oluşturulan liste, yalnızca belirtilen kullanıcıları gösteren bir zaman çizelgesi olarak görüntülenebilir.';
+	@override String get tip => 'Listeler, oluşturulurken belirttiğin herhangi bir kullanıcıyı içerebilir. Oluşturulan liste, yalnızca belirtilen kullanıcıları gösteren bir zaman çizelgesi olarak görüntülenebilir.';
 }
 
 // Path: misskey.watermarkEditor_
@@ -3468,7 +3475,7 @@ class _TranslationsMisskeyWatermarkEditorTrTr extends TranslationsMisskeyWaterma
 
 	// Translations
 	@override String get tip => 'Kredi bilgileri gibi bir filigran görüntüye eklenebilir.';
-	@override String get quitWithoutSaveConfirm => 'Kaydedilmemiş değişiklikleri silmek ister misiniz?';
+	@override String get quitWithoutSaveConfirm => 'Kaydedilmemiş değişiklikleri silmek ister misin?';
 	@override String get driveFileTypeWarn => 'Bu dosya desteklenmiyor';
 	@override String get driveFileTypeWarnDescription => 'Bir görüntü dosyası seçin';
 	@override String get title => 'Filigranı Düzenle';
@@ -3481,10 +3488,10 @@ class _TranslationsMisskeyWatermarkEditorTrTr extends TranslationsMisskeyWaterma
 	@override String get type => 'Tür';
 	@override String get image => 'Görseller';
 	@override String get advanced => 'Gelişmiş';
+	@override String get angle => 'Açı';
 	@override String get stripe => 'Çizgiler';
 	@override String get stripeWidth => 'Çizgi genişliği';
 	@override String get stripeFrequency => 'Satır sayısı';
-	@override String get angle => 'Açı';
 	@override String get polkadot => 'Nokta deseni';
 	@override String get checker => 'Kontrolcü';
 	@override String get polkadotMainDotOpacity => 'Ana noktanın opaklığı';
@@ -3503,8 +3510,10 @@ class _TranslationsMisskeyImageEffectorTrTr extends TranslationsMisskeyImageEffe
 	// Translations
 	@override String get title => 'Effektler';
 	@override String get addEffect => 'Efektler Ekle';
-	@override String get discardChangesConfirm => 'Gerçekten çıkmak istiyor musunuz? Kaydedilmemiş değişiklikleriniz var.';
+	@override String get discardChangesConfirm => 'Cidden çıkmak istiyor musun? Kaydedilmemiş değişikliklerin var.';
+	@override String get nothingToConfigure => 'Yapılandırılabilir seçenekler mevcut değildir.';
 	@override late final _TranslationsMisskeyImageEffectorFxsTrTr fxs_ = _TranslationsMisskeyImageEffectorFxsTrTr._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsTrTr fxProps_ = _TranslationsMisskeyImageEffectorFxPropsTrTr._(_root);
 }
 
 // Path: misskey.drafts_
@@ -3518,7 +3527,7 @@ class _TranslationsMisskeyDraftsTrTr extends TranslationsMisskeyDraftsEnUs {
 	@override String get cannotCreateDraftAnymore => 'Oluşturulabilecek taslak sayısı aşılmıştır.';
 	@override String get cannotCreateDraft => 'Bu içerikle taslak oluşturamazsınız.';
 	@override String get delete => 'Taslak Sil';
-	@override String get deleteAreYouSure => 'Taslağı silmek ister misiniz?';
+	@override String get deleteAreYouSure => 'Taslağı silmek ister misin?';
 	@override String get noDrafts => 'Taslak yok';
 	@override String replyTo({required Object user}) => '${user} notunu yanıtla';
 	@override String quoteOf({required Object user}) => '${user} notuna alıntı';
@@ -3537,9 +3546,9 @@ class _TranslationsMisskeyChatChatAllowedUsersTrTr extends TranslationsMisskeyCh
 
 	// Translations
 	@override String get everyone => 'Herkes';
-	@override String get followers => 'Sadece takipçileriniz';
+	@override String get followers => 'Sadece takipçilerin';
 	@override String get following => 'Only users you are following';
-	@override String get mutual => 'Sadece takip ettiğiniz kullanıcılar';
+	@override String get mutual => 'Sadece takiplerin';
 	@override String get none => 'Kimse';
 }
 
@@ -3593,7 +3602,7 @@ class _TranslationsMisskeyBubbleGameHowToPlayTrTr extends TranslationsMisskeyBub
 	// Translations
 	@override String get section1 => 'Konumu ayarlayın ve nesneyi kutuya bırakın.';
 	@override String get section2 => 'Aynı türden iki nesne birbirine dokunduğunda, farklı bir nesneye dönüşür ve puan kazanırsınız.';
-	@override String get section3 => 'Kutu dolduğunda oyun biter. Kutuyu doldurmadan nesneleri birleştirerek yüksek puan almaya çalışın!';
+	@override String get section3 => 'Kutu dolduğunda oyun biter. Kutuyu doldurmadan nesneleri birleştirerek yüksek puan almaya çalış!';
 }
 
 // Path: misskey.initialTutorial_.landing_
@@ -3603,8 +3612,8 @@ class _TranslationsMisskeyInitialTutorialLandingTrTr extends TranslationsMisskey
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Öğreticiye hoş geldiniz';
-	@override String get description => 'Burada, Misskey\'i kullanmanın temellerini ve özelliklerini öğrenebilirsiniz.';
+	@override String get title => 'Öğreticiye hoş geldin';
+	@override String get description => 'Burada, Misskey\'i kullanmanın temellerini ve özelliklerini öğrenebilirsin.';
 }
 
 // Path: misskey.initialTutorial_.note_
@@ -3617,9 +3626,9 @@ class _TranslationsMisskeyInitialTutorialNoteTrTr extends TranslationsMisskeyIni
 	@override String get title => 'Not nedir?';
 	@override String get description => 'Misskey\'deki gönderiler “Notlar” olarak adlandırılır. Notlar zaman çizelgesinde kronolojik olarak düzenlenir ve gerçek zamanlı olarak güncellenir.';
 	@override String get reply => 'Bir mesaja yanıt vermek için bu düğmeye tıklayın. Yanıtlara yanıt vermek de mümkündür, böylece konuşma bir konu başlığı gibi devam eder.';
-	@override String get renote => 'Bu notu kendi zaman çizelgenizde paylaşabilirsiniz. Ayrıca yorumlarınızla birlikte alıntı da yapabilirsiniz.';
-	@override String get reaction => 'Not\'a tepkiler ekleyebilirsiniz. Daha fazla ayrıntı bir sonraki sayfada açıklanacaktır.';
-	@override String get menu => 'Not ayrıntılarını görüntüleyebilir, bağlantıları kopyalayabilir ve çeşitli diğer işlemleri gerçekleştirebilirsiniz.';
+	@override String get renote => 'Bu notu kendi zaman çizelgende paylaşabilirsiniz. Ayrıca yorumlarınızla birlikte alıntı da yapabilirsin.';
+	@override String get reaction => 'Not\'a tepkiler ekleyebilirsin. Daha fazla ayrıntı bir sonraki sayfada açıklanacak.';
+	@override String get menu => 'Not ayrıntılarını görüntüleyebilir, bağlantıları kopyalayabilir ve çeşitli diğer işlemleri gerçekleştirebilirsin.';
 }
 
 // Path: misskey.initialTutorial_.reaction_
@@ -3630,11 +3639,11 @@ class _TranslationsMisskeyInitialTutorialReactionTrTr extends TranslationsMisske
 
 	// Translations
 	@override String get title => 'Reaksiyonlar nedir?';
-	@override String get description => 'Notlara çeşitli emojilerle tepki verilebilir. Tepkiler, sadece bir ‘beğeni’ ile ifade edilemeyen nüansları ifade etmenizi sağlar.';
+	@override String get description => 'Notlara çeşitli emojilerle tepki verilebilir. Tepkiler, sadece bir ‘beğeni’ ile ifade edilemeyen nüansları ifade etmeni sağlar.';
 	@override String get letsTryReacting => 'Notun üzerindeki ‘+’ düğmesine tıklayarak tepkiler eklenebilir. Bu örnek nota tepki verin!';
-	@override String get reactToContinue => 'Devam etmek için bir tepki ekleyin.';
-	@override String get reactNotification => 'Birisi notunuza tepki verdiğinde gerçek zamanlı bildirimler alacaksınız.';
-	@override String get reactDone => '“-” düğmesine basarak bir tepkiyi geri alabilirsiniz.';
+	@override String get reactToContinue => 'Devam etmek için bir tepki ekle.';
+	@override String get reactNotification => 'Biri notunuza tepki verdiğinde gerçek zamanlı bildirimler alacaksınız.';
+	@override String get reactDone => '“-” düğmesine basarak bir tepkiyi geri alabilirsin.';
 }
 
 // Path: misskey.initialTutorial_.timeline_
@@ -3644,14 +3653,14 @@ class _TranslationsMisskeyInitialTutorialTimelineTrTr extends TranslationsMisske
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Timeline Kavramı';
-	@override String get description1 => 'Misskey, kullanıma göre birden fazla Timeline sunar (bazı Timeline\'lar sunucunun politikalarına bağlı olarak kullanılamayabilir).';
-	@override String get home => 'Takip ettiğiniz hesapların notlarını görüntüleyebilirsiniz.';
-	@override String get local => 'Bu sunucudaki tüm kullanıcıların notlarını görüntüleyebilirsiniz.';
-	@override String get social => 'Ev ve Yerel Timeline\'dan notlar görüntülenecektir.';
-	@override String get global => 'Bağlı tüm sunuculardan gelen notları görüntüleyebilirsiniz.';
-	@override String get description2 => 'Ekranın üst kısmındaki Timeline\'lar arasında istediğiniz zaman geçiş yapabilirsiniz.';
-	@override String description3({required Object link}) => 'Ayrıca, Liste Timeline\'ı ve Kanal Timeline\'ı da bulunmaktadır. Daha fazla ayrıntı için lütfen ${link} adresine bakın.';
+	@override String get title => 'Pano Kavramı';
+	@override String get description1 => 'Misskey, kullanıma göre birden fazla Pano sunar (Bazı Pano\'lar sunucunun politikalarına bağlı olarak kullanılamayabilir).';
+	@override String get home => 'Takip ettiğin hesapların notlarını görüntüleyebilirsin.';
+	@override String get local => 'Bu sunucudaki tüm kullanıcıların notlarını görüntüleyebilirsin.';
+	@override String get social => 'Ev ve Yerel Pano\'dan notlar görüntülenecek.';
+	@override String get global => 'Bağlı tüm sunuculardan gelen notları görüntüleyebilirsin.';
+	@override String get description2 => 'Ekranın üst kısmındaki Pano\'lar arasında istediğin zaman geçiş yapabilirsin.';
+	@override String description3({required Object link}) => 'Ayrıca, Liste Pano ve Kanal Pano da bulunmaktadır. Daha fazla ayrıntı için lütfen ${link} adresine bakın.';
 }
 
 // Path: misskey.initialTutorial_.postNote_
@@ -3675,12 +3684,12 @@ class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveTrTr exten
 
 	// Translations
 	@override String get title => 'Ekleri Hassas Olarak İşaretleme';
-	@override String get description => 'Sunucu kuralları gereği gerekli olan veya bozulmaması gereken ekler için “hassas” bayrağı ekleyin.';
-	@override String get tryThisFile => 'Bu forma ekli resmi hassas olarak işaretlemeyi deneyin!';
+	@override String get description => 'Sunucu kuralları gereği gerekli olan veya bozulmaması gereken ekler için “hassas” bayrağı ekle.';
+	@override String get tryThisFile => 'Bu forma ekli resmi hassas olarak işaretlemeyi dene!';
 	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteTrTr exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteTrTr._(_root);
 	@override String get method => 'Bir eki hassas olarak işaretlemek için, dosya küçük resmini tıklayın, menüyü açın ve “Hassas Olarak İşaretle” seçeneğini tıklayın.';
 	@override String get sensitiveSucceeded => 'Dosya eklerken, lütfen sunucu kurallarına uygun olarak hassasiyet ayarlarını yapın.';
-	@override String get doItToContinue => 'Devam etmek için ek dosyayı hassas olarak işaretleyin.';
+	@override String get doItToContinue => 'Devam etmek için ek dosyayı hassas olarak işaretle.';
 }
 
 // Path: misskey.initialTutorial_.done_
@@ -3812,7 +3821,7 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get gtlAvailable => 'Küresel zaman çizelgesini görüntüleyebilir';
+	@override String get gtlAvailable => 'Global Pano\'yu görüntüleyebilir';
 	@override String get ltlAvailable => 'Yerel zaman çizelgesini görüntüleyebilir';
 	@override String get canPublicNote => 'Halka açık notlar gönderebilir';
 	@override String get mentionMax => 'Bir notta maksimum bahsetme sayısı';
@@ -3821,25 +3830,26 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 	@override String get inviteLimitCycle => 'Davet sınırı bekleme süresi';
 	@override String get inviteExpirationTime => 'Davet süresi dolma aralığı';
 	@override String get canManageCustomEmojis => 'Özel emojileri yönetebilir';
-	@override String get canManageAvatarDecorations => 'Avatar süslemelerini yönet';
-	@override String get driveCapacity => 'Sürücü kapasitesi';
-	@override String get maxFileSize => 'Yükleyebileceğiniz maksimum dosya boyutu';
-	@override String get alwaysMarkNsfw => 'Dosyaları her zaman NSFW olarak işaretleyin';
+	@override String get canManageAvatarDecorations => 'Avatar süslerini yönet';
+	@override String get driveCapacity => 'Drive kapasitesi';
+	@override String get maxFileSize => 'Yükleyebileceğin maksimum dosya boyutu';
+	@override String get alwaysMarkNsfw => 'Dosyaları her zaman NSFW olarak işaretle';
 	@override String get canUpdateBioMedia => 'Bir simge veya banner görüntüsünü düzenleyebilir';
 	@override String get pinMax => 'Sabitlenmiş notların maksimum sayısı';
 	@override String get antennaMax => 'Maksimum anten sayısı';
 	@override String get wordMuteMax => 'Kelime sessizlerinde izin verilen maksimum karakter sayısı';
 	@override String get webhookMax => 'Maksimum Webhook sayısı';
 	@override String get clipMax => 'Maksimum klip sayısı';
-	@override String get noteEachClipsMax => 'Bir klip içindeki maksimum nota sayısı';
+	@override String get noteEachClipsMax => 'Bir klip içindeki maksimum not sayısı';
 	@override String get userListMax => 'Maksimum kullanıcı listesi sayısı';
 	@override String get userEachUserListsMax => 'Kullanıcı listesindeki maksimum kullanıcı sayısı';
 	@override String get rateLimitFactor => 'Hız Sınırı';
 	@override String get descriptionOfRateLimitFactor => 'Daha düşük oran sınırları daha az kısıtlayıcıdır, daha yüksek olanlar ise daha kısıtlayıcıdır.';
 	@override String get canHideAds => 'Reklamları gizleyebilir';
 	@override String get canSearchNotes => 'Not arama kullanımı';
+	@override String get canSearchUsers => 'Kullanıcı arama';
 	@override String get canUseTranslator => 'Çevirmen kullanımı';
-	@override String get avatarDecorationLimit => 'Uygulanabilecek maksimum avatar süsleme sayısı';
+	@override String get avatarDecorationLimit => 'Maksimum avatar süsü sayısı';
 	@override String get canImportAntennas => 'Antenlerin içe aktarılmasına izin ver';
 	@override String get canImportBlocking => 'Engellemeyi içe aktarmaya izin ver';
 	@override String get canImportFollowing => 'Aşağıdakilerin içe aktarılmasına izin ver';
@@ -3848,7 +3858,7 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 	@override String get chatAvailability => 'Sohbeti İzin Ver';
 	@override String get uploadableFileTypes => 'Yüklenebilir dosya türleri';
 	@override String get uploadableFileTypes_caption => 'İzin verilen MIME/dosya türlerini belirtir. Birden fazla MIME türü, yeni bir satırla ayırarak belirtilebilir ve joker karakterler yıldız işareti (*) ile belirtilebilir. (örneğin, image/*)';
-	@override String uploadableFileTypes_caption2({required Object x}) => 'Bazı dosya türleri algılanamayabilir. Bu tür dosyalara izin vermek için, spesifikasyona ${x} ekleyin.';
+	@override String uploadableFileTypes_caption2({required Object x}) => 'Bazı dosya türleri algılanamayabilir. Bu tür dosyalara izin vermek için, spesifikasyona ${x} ekle.';
 	@override String get noteDraftLimit => 'Sunucu notlarının olası taslak sayısı';
 	@override String get watermarkAvailable => 'Filigran işlevinin kullanılabilirliği';
 }
@@ -3962,7 +3972,7 @@ class _TranslationsMisskeyPostFormPlaceholdersTrTr extends TranslationsMisskeyPo
 
 	// Translations
 	@override String get a => 'Ne yapıyorsun?';
-	@override String get b => 'Çevrenizde neler oluyor?';
+	@override String get b => 'Çevrende neler oluyor?';
 	@override String get c => 'Aklında ne var?';
 	@override String get d => 'Ne söylemek istiyorsun?';
 	@override String get e => 'Yazmaya başlayın...';
@@ -4009,7 +4019,7 @@ class _TranslationsMisskeyNotificationTypesTrTr extends TranslationsMisskeyNotif
 	@override String get chatRoomInvitationReceived => 'Sohbet odasına davet edildi';
 	@override String get achievementEarned => 'Başarı kilidi açıldı';
 	@override String get exportCompleted => 'İhracat işlemi tamamlandı.';
-	@override String get login => 'Giriş Yap';
+	@override String get login => 'Oturum Aç';
 	@override String get createToken => 'Erişim jetonu oluştur';
 	@override String get test => 'Bildirim testi';
 	@override String get app => 'Bağlı uygulamalardan gelen bildirimler';
@@ -4037,13 +4047,13 @@ class _TranslationsMisskeyDeckColumnsTrTr extends TranslationsMisskeyDeckColumns
 	@override String get main => 'Ana';
 	@override String get widgets => 'Widget\'lar';
 	@override String get notifications => 'Bildirimler';
-	@override String get tl => 'Ana Sayfa';
+	@override String get tl => 'Pano';
 	@override String get antenna => 'Antenler';
 	@override String get list => 'Liste';
 	@override String get channel => 'Kanal';
 	@override String get mentions => 'Bahsetmeler';
 	@override String get direct => 'Doğrudan notlar';
-	@override String get roleTimeline => 'Rol Timeline';
+	@override String get roleTimeline => 'Rol Pano';
 	@override String get chat => 'Sohbet';
 }
 
@@ -4091,7 +4101,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientTrTr extends Translati
 	@override String get keywords => 'Anahtar kelimeler';
 	@override String get notifiedUser => 'Bildirilecek kullanıcılar';
 	@override String get notifiedWebhook => 'Kullanılacak webhook';
-	@override String get deleteConfirm => 'Bildirim alıcısını silmek istediğinizden emin misiniz?';
+	@override String get deleteConfirm => 'Bildirim alıcısını silmek istediğinden emin misin?';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4101,7 +4111,7 @@ class _TranslationsMisskeyExternalResourceInstallerPluginTrTr extends Translatio
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Bu eklentiyi yüklemek ister misiniz?';
+	@override String get title => 'Bu eklentiyi yüklemek ister misin?';
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
@@ -4111,7 +4121,7 @@ class _TranslationsMisskeyExternalResourceInstallerThemeTrTr extends Translation
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Bu temayı yüklemek ister misiniz?';
+	@override String get title => 'Bu temayı yüklemek ister misin?';
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
@@ -4183,7 +4193,7 @@ class _TranslationsMisskeyDataSaverUrlPreviewThumbnailTrTr extends TranslationsM
 
 	// Translations
 	@override String get title => 'URL önizleme küçük resimlerini gizle';
-	@override String get description => 'URL önizleme küçük resimleri artık yüklenmeyecektir.';
+	@override String get description => 'URL önizleme küçük resimleri artık yüklenmeyecek.';
 }
 
 // Path: misskey.dataSaver_.disableUrlPreview_
@@ -4233,11 +4243,11 @@ class _TranslationsMisskeyCustomEmojisManagerGridCommonTrTr extends Translations
 	@override String get deleteSelectionRows => 'Seçili satırları sil';
 	@override String get deleteSelectionRanges => 'Seçimdeki satırları sil';
 	@override String get searchSettings => 'Arama ayarları';
-	@override String get searchSettingCaption => 'Ayrıntılı arama kriterleri belirleyin.';
+	@override String get searchSettingCaption => 'Ayrıntılı arama kriterleri belirle.';
 	@override String get searchLimit => 'Sonuç sayısı';
 	@override String get sortOrder => 'Sıralama düzeni';
 	@override String get registrationLogs => 'Kayıt günlüğü';
-	@override String get registrationLogsCaption => 'Emojileri güncellerken veya silerken günlükler görüntülenecektir. Güncelleme veya silme işleminden sonra, yeni bir sayfaya geçildiğinde veya yeniden yüklendiğinde günlükler kaybolacaktır.';
+	@override String get registrationLogsCaption => 'Emojileri güncellerken veya silerken günlükler görüntülenecek. Güncelleme veya silme işleminden sonra, yeni bir sayfaya geçildiğinde veya yeniden yüklendiğinde günlükler kaybolacak.';
 	@override String get alertEmojisRegisterFailedDescription => 'Emojileri güncelleyemedi veya silemedi. Ayrıntılar için kayıt günlüğünü kontrol edin.';
 }
 
@@ -4300,7 +4310,7 @@ class _TranslationsMisskeyRemoteLookupErrorsUriInvalidTrTr extends TranslationsM
 
 	// Translations
 	@override String get title => 'URI geçersiz';
-	@override String get description => 'Girdiğiniz URI ile ilgili bir sorun var. Lütfen URI\'da kullanılamayan karakterler girip girmediğinizi kontrol edin.';
+	@override String get description => 'Girdiğin URI ile ilgili bir sorun var. Lütfen URI\'da kullanılamayan karakterler girip girmediğini kontrol et.';
 }
 
 // Path: misskey.remoteLookupErrors_.requestFailed_
@@ -4311,7 +4321,7 @@ class _TranslationsMisskeyRemoteLookupErrorsRequestFailedTrTr extends Translatio
 
 	// Translations
 	@override String get title => 'İstek başarısız oldu';
-	@override String get description => 'Bu sunucuyla iletişim kurulamadı. Sunucu kapalı olabilir. Ayrıca, geçersiz veya mevcut olmayan bir URI girmediğinizden emin olun.';
+	@override String get description => 'Bu sunucuyla iletişim kurulamadı. Sunucu kapalı olabilir. Ayrıca, geçersiz veya mevcut olmayan bir URI girmediğinizden emin ol.';
 }
 
 // Path: misskey.remoteLookupErrors_.responseInvalid_
@@ -4384,7 +4394,7 @@ class _TranslationsMisskeyServerSetupWizardDonationRequestTrTr extends Translati
 
 	// Translations
 	@override String get text1 => 'Misskey, gönüllüler tarafından geliştirilen ücretsiz bir yazılımdır.';
-	@override String get text2 => 'Bu yazılımı gelecekte de geliştirmeye devam edebilmemiz için desteğinizi rica ederiz.';
+	@override String get text2 => 'Bu yazılımı gelecekte de geliştirmeye devam edebilmemiz için desteğini rica ederiz.';
 	@override String get text3 => 'Destekçilere özel avantajlar da var!';
 }
 
@@ -4404,13 +4414,53 @@ class _TranslationsMisskeyImageEffectorFxsTrTr extends TranslationsMisskeyImageE
 	@override String get colorClamp => 'Renk Sıkıştırma';
 	@override String get colorClampAdvanced => 'Renk Sıkıştırma (Gelişmiş)';
 	@override String get distort => 'Bozulma';
-	@override String get threshold => 'İkilileştir';
+	@override String get threshold => 'Binarize';
 	@override String get zoomLines => 'Doymuş hatlar';
 	@override String get stripe => 'Çizgiler';
 	@override String get polkadot => 'Nokta deseni';
 	@override String get checker => 'Denetleyici';
 	@override String get blockNoise => 'Gürültüyü Engelle';
 	@override String get tearing => 'Yırtılma';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsTrTr extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Açı';
+	@override String get scale => 'Boyut';
+	@override String get size => 'Boyut';
+	@override String get color => 'Renk';
+	@override String get opacity => 'Opaklık';
+	@override String get normalize => 'Normalize';
+	@override String get amount => 'Miktar';
+	@override String get lightness => 'Hafiflet';
+	@override String get contrast => 'Kontrast';
+	@override String get hue => 'Hue';
+	@override String get brightness => 'Parlaklık';
+	@override String get saturation => 'Doygunluk';
+	@override String get max => 'Maksimum';
+	@override String get min => 'Minimum';
+	@override String get direction => 'Yön';
+	@override String get phase => 'Aşama';
+	@override String get frequency => 'Sıklık';
+	@override String get strength => 'Güç';
+	@override String get glitchChannelShift => 'Kanal değişimi';
+	@override String get seed => 'Tohum değeri';
+	@override String get redComponent => 'Kırmızı bileşen';
+	@override String get greenComponent => 'Yeşil bileşen';
+	@override String get blueComponent => 'Mavi bileşen';
+	@override String get threshold => 'Eşik';
+	@override String get centerX => 'Merkez X';
+	@override String get centerY => 'Merkez Y';
+	@override String get zoomLinesSmoothing => 'Düzeltme';
+	@override String get zoomLinesSmoothingDescription => 'Düzeltme ve yakınlaştırma çizgi genişliği birlikte kullanılamaz.';
+	@override String get zoomLinesThreshold => 'Zoom çizgi genişliği';
+	@override String get zoomLinesMaskSize => 'Merkez çapı';
+	@override String get zoomLinesBlack => 'Siyah yap';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4420,9 +4470,9 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityTrTr extends Translat
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get description => 'Notunuzu kimlerin görüntüleyebileceğini sınırlayabilirsiniz.';
+	@override String get description => 'Notunu kimlerin görüntüleyebileceğini sınırlayabilirsin.';
 	@override String get public => 'Notunuz tüm kullanıcılar tarafından görülebilir olacaktır.';
-	@override String get home => 'Yalnızca Ana zaman akışında herkese açık. Profilinizi ziyaret edenler, takipçileriniz ve yeniden notlar aracılığıyla bunu görebilirler.';
+	@override String get home => 'Yalnızca Ana zaman akışında herkese açık. Profilinizi ziyaret edenler, takipçilerin ve yeniden notlar aracılığıyla bunu görebilirler.';
 	@override String get followers => 'Sadece takipçiler tarafından görülebilir. Sadece takipçiler görebilir, başkaları göremez ve başkaları tarafından yeniden not edilemez.';
 	@override String get direct => 'Yalnızca belirli kullanıcılar tarafından görülebilir ve alıcıya bildirim gönderilir. Doğrudan mesajlaşma yerine alternatif olarak kullanılabilir.';
 	@override String get doNotSendConfidencialOnDirect1 => 'Hassas bilgileri gönderirken dikkatli olun!';
@@ -4438,7 +4488,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwTrTr extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'İçerik Uyarısı';
-	@override String get description => 'Gövde yerine, “yorumlar” alanına yazılan içerik görüntülenecektir. “Devamını oku” düğmesine basıldığında gövde görüntülenecektir.';
+	@override String get description => 'Gövde yerine, “Yorumlar” alanına yazılan içerik görüntülenecek. “Devamını oku” düğmesine basıldığında gövde görüntülenecek.';
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteTrTr exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteTrTr._(_root);
 	@override String get useCases => 'Bu, sunucu kurallarına uyulurken, gerekli notlar için veya spoiler veya hassas metinlerin kendi kendine kısıtlanması için kullanılır.';
 }
@@ -4809,7 +4859,7 @@ class _TranslationsMisskeyAchievementsTypesNoteClipped1TrTr extends Translations
 
 	// Translations
 	@override String get title => 'Kesinlikle... kesmeliyim...';
-	@override String get description => 'İlk notunuzu ekleyin';
+	@override String get description => 'İlk notunu ekle';
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
@@ -4842,7 +4892,7 @@ class _TranslationsMisskeyAchievementsTypesProfileFilledTrTr extends Translation
 
 	// Translations
 	@override String get title => 'İyi hazırlanmış';
-	@override String get description => 'Profilinizi oluşturun';
+	@override String get description => 'Profilini oluştur';
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
@@ -4853,7 +4903,7 @@ class _TranslationsMisskeyAchievementsTypesMarkedAsCatTrTr extends TranslationsM
 
 	// Translations
 	@override String get title => 'Ben bir kediyim.';
-	@override String get description => 'Hesabınızı kedi olarak işaretleyin';
+	@override String get description => 'Hesabını kedi olarak işaretle';
 	@override String get flavor => 'Sana daha sonra bir isim vereceğim.';
 }
 
@@ -5020,7 +5070,7 @@ class _TranslationsMisskeyAchievementsTypesILoveMisskeyTrTr extends Translations
 	// Translations
 	@override String get title => 'Misskey\'i seviyorum';
 	@override String get description => '“I ❤ #Misskey” yazısını paylaş';
-	@override String get flavor => 'Misskey geliştirme ekibi desteğiniz için çok teşekkür eder!';
+	@override String get flavor => 'Misskey geliştirme ekibi desteğin için çok teşekkür eder!';
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
@@ -5121,7 +5171,7 @@ class _TranslationsMisskeyAchievementsTypesViewInstanceChartTrTr extends Transla
 
 	// Translations
 	@override String get title => 'Analist';
-	@override String get description => 'Sunucunuzun grafiklerini görüntüleyin';
+	@override String get description => 'Sunucunun grafiklerini görüntüle';
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
@@ -5154,7 +5204,7 @@ class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceTrTr exte
 
 	// Translations
 	@override String get title => 'Döngüsel Referans';
-	@override String get description => 'Drive\'da yinelemeli olarak iç içe geçmiş bir klasör oluşturmaya çalışın.';
+	@override String get description => 'Drive\'da yinelemeli olarak iç içe geçmiş bir klasör oluşturmaya çalış.';
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
@@ -5164,7 +5214,7 @@ class _TranslationsMisskeyAchievementsTypesReactWithoutReadTrTr extends Translat
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Gerçekten okudun mu?';
+	@override String get title => 'Cidden okudun mu?';
 	@override String get description => '100 karakterden uzun bir notun yayınlanmasından itibaren 3 saniye içinde yanıt verin.';
 }
 
@@ -5289,7 +5339,7 @@ class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonTrTr exten
 
 	// Translations
 	@override String get title => 'Test taşması';
-	@override String get description => 'Bildirim testini çok kısa bir süre içinde tekrar tekrar tetikleyin.';
+	@override String get description => 'Bildirim testini çok kısa bir süre içinde tekrar tekrar tetikle.';
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
@@ -5323,7 +5373,7 @@ class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadTrTr ext
 	// Translations
 	@override String get title => 'Çift🤯';
 	@override String get description => 'Aynı anda balon oyunundaki en büyük iki nesne';
-	@override String get flavor => 'Öğle yemeği kutunuzu şöyle doldurabilirsiniz 🤯 🤯 biraz.';
+	@override String get flavor => 'Öğle yemeği kutunu şöyle doldurabilirsin 🤯 🤯 biraz.';
 }
 
 // Path: misskey.pages_.blocks.note_
@@ -5334,7 +5384,7 @@ class _TranslationsMisskeyPagesBlocksNoteTrTr extends TranslationsMisskeyPagesBl
 
 	// Translations
 	@override String get id => 'Not Kimliği';
-	@override String get idDescription => 'Alternatif olarak notun URL\'sini buraya yapıştırabilirsiniz.';
+	@override String get idDescription => 'Alternatif olarak notun URL buraya yapıştırabilirsin.';
 	@override String get detailed => 'Ayrıntılı görünüm';
 }
 
@@ -5358,7 +5408,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsTrTr exten
 
 	// Translations
 	@override String get title => 'Geçersiz parametreler';
-	@override String get description => 'Harici bir siteden veri yüklemek için yeterli bilgi yok. Lütfen girdiğiniz URL\'yi kontrol edin.';
+	@override String get description => 'Harici bir siteden veri yüklemek için yeterli bilgi yok. Lütfen girdiğin URL\'yi kontrol et.';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
@@ -5369,7 +5419,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupporte
 
 	// Translations
 	@override String get title => 'Bu harici kaynak desteklenmemektedir.';
-	@override String get description => 'Bu harici kaynağın türü desteklenmemektedir. Lütfen site yöneticisiyle iletişime geçin.';
+	@override String get description => 'Bu harici kaynağın türü desteklenmemektedir. Lütfen site yöneticisiyle iletişime geç.';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
@@ -5380,7 +5430,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchTrTr exten
 
 	// Translations
 	@override String get title => 'Veriler alınamadı';
-	@override String get fetchErrorDescription => 'Harici siteyle iletişim sırasında bir hata oluştu. Tekrar denemeniz sorunu çözmezse, lütfen site yöneticisine başvurun.';
+	@override String get fetchErrorDescription => 'Harici siteyle iletişim sırasında bir hata oluştu. Tekrar denemen sorunu çözmezse, lütfen site yöneticisine başvur.';
 	@override String get parseErrorDescription => 'Harici siteden yüklenen veriler işlenirken bir hata oluştu. Lütfen site yöneticisiyle iletişime geçin.';
 }
 
@@ -5414,7 +5464,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedTrTr
 
 	// Translations
 	@override String get title => 'Eklenti kurulumu başarısız oldu';
-	@override String get description => 'Eklenti yükleme sırasında bir sorun oluştu. Lütfen tekrar deneyin. Hata ayrıntıları Javascript konsolunda görüntülenebilir.';
+	@override String get description => 'Eklenti yükleme sırasında bir sorun oluştu. Lütfen tekrar dene. Hata ayrıntıları Javascript konsolunda görüntülenebilir.';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
@@ -5436,7 +5486,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedTrTr 
 
 	// Translations
 	@override String get title => 'Tema yüklenemedi';
-	@override String get description => 'Tema yükleme sırasında bir sorun oluştu. Lütfen tekrar deneyin. Hata ayrıntıları Javascript konsolunda görüntülenebilir.';
+	@override String get description => 'Tema yükleme sırasında bir sorun oluştu. Lütfen tekrar dene. Hata ayrıntıları Javascript konsolunda görüntülenebilir.';
 }
 
 // Path: misskey.customEmojisManager_.local_.list_
@@ -5447,16 +5497,16 @@ class _TranslationsMisskeyCustomEmojisManagerLocalListTrTr extends TranslationsM
 
 	// Translations
 	@override String get emojisNothing => 'Kayıtlı Emoji yok.';
-	@override String get markAsDeleteTargetRows => 'Silinecek hedef olarak seçilen satırları işaretleyin';
-	@override String get markAsDeleteTargetRanges => 'Seçimdeki satırları silinecek hedef olarak işaretleyin';
+	@override String get markAsDeleteTargetRows => 'Silinecek hedef olarak seçilen satırları işaretle';
+	@override String get markAsDeleteTargetRanges => 'Seçimdeki satırları silinecek hedef olarak işaretle';
 	@override String get alertUpdateEmojisNothingDescription => 'Güncellenmiş Emoji yok.';
 	@override String get alertDeleteEmojisNothingDescription => 'Silinecek Emoji yok.';
-	@override String get confirmMovePage => 'Sayfaları taşımak ister misiniz?';
-	@override String get confirmChangeView => 'Görüntüleme şeklini değiştirmek ister misiniz?';
+	@override String get confirmMovePage => 'Sayfaları taşımak ister misin?';
+	@override String get confirmChangeView => 'Görüntüleme şeklini değiştirmek ister misn?';
 	@override String confirmUpdateEmojisDescription({required Object count}) => '${count} Emoji\'yi güncelle. Devam etmek istediğinden emin misin?';
-	@override String confirmDeleteEmojisDescription({required Object count}) => 'İşaretli ${count} Emoji(leri) silin. Devam etmek istediğinizden emin misiniz?';
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'İşaretli ${count} Emoji(leri) silin. Devam etmek istediğinden emin misin?';
 	@override String get confirmResetDescription => 'Şimdiye kadar yapılan tüm değişiklikler geri alınacaktır.';
-	@override String get confirmMovePageDesciption => 'Bu sayfadaki Emojilerde değişiklikler yapılmıştır.\nSayfayı kaydetmeden terk ederseniz, bu sayfada yapılan tüm değişiklikler silinecektir.';
+	@override String get confirmMovePageDesciption => 'Bu sayfadaki Emojilerde değişiklikler yapılmış.\nSayfayı kaydetmeden terk ederseniz, bu sayfada yapılan tüm değişiklikler silinecek.';
 	@override String get dialogSelectRoleTitle => 'Emojilerde rol setine göre arama yapın';
 }
 
@@ -5468,12 +5518,12 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterTrTr extends Translati
 
 	// Translations
 	@override String get uploadSettingTitle => 'Yükleme ayarları';
-	@override String get uploadSettingDescription => 'Bu ekranda, Emoji yüklerken davranışı yapılandırabilirsiniz.';
+	@override String get uploadSettingDescription => 'Bu ekranda, Emoji yüklerken davranışı yapılandırabilirsin.';
 	@override String get directoryToCategoryLabel => '“Kategori” alanına dizin adını girin.';
 	@override String get directoryToCategoryCaption => 'Bir dizini sürükleyip bıraktığınızda, “kategori” alanına dizin adını girin.';
-	@override String confirmRegisterEmojisDescription({required Object count}) => 'Listeden Emojileri yeni özel Emojiler olarak kaydedin. Devam etmek istediğinizden emin misiniz? (Aşırı yüklemeyi önlemek için, tek bir işlemde yalnızca ${count} Emoji kaydedilebilir)';
-	@override String get confirmClearEmojisDescription => 'Düzenlemeleri silin ve listeden Emojileri temizleyin. Devam etmek istediğinizden emin misiniz?';
-	@override String confirmUploadEmojisDescription({required Object count}) => 'Sürücüye sürüklenip bırakılan ${count} dosyayı/dosyaları yükleyin. Devam etmek istediğinizden emin misiniz?';
+	@override String confirmRegisterEmojisDescription({required Object count}) => 'Listeden Emojileri yeni özel Emojiler olarak kaydet. Devam etmek istediğinden emin misin? (Aşırı yüklemeyi önlemek için, tek bir işlemde yalnızca ${count} Emoji kaydedilebilir)';
+	@override String get confirmClearEmojisDescription => 'Düzenlemeleri sil ve listeden Emojileri temizle. Devam etmek istediğinden emin misiniz?';
+	@override String confirmUploadEmojisDescription({required Object count}) => 'Drive\'a sürüklenip bırakılan ${count} dosyayı yükle. Devam etmek istediğinden emin misin?';
 }
 
 // Path: misskey.captcha_.error_.requestFailed_

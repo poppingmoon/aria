@@ -1293,7 +1293,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Rafraîchissement...';
 	@override String get pullDownToRefresh => 'Tirer vers le bas pour rafraîchir';
 	@override String get useGroupedNotifications => 'Grouper les notifications';
-	@override String get signupPendingError => 'Un problème est survenu lors de la vérification de votre adresse e-mail. Le lien a peut-être expiré.';
 	@override String get cwNotationRequired => 'Si « Masquer le contenu » est activé, une description doit être fournie.';
 	@override String get doReaction => 'Réagir';
 	@override String get code => 'Code';
@@ -1430,6 +1429,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsFrFr remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsFrFr._(_root);
 	@override late final _TranslationsMisskeySearchFrFr search_ = _TranslationsMisskeySearchFrFr._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorFrFr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorFrFr._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFrFr imageEffector_ = _TranslationsMisskeyImageEffectorFrFr._(_root);
 }
 
 // Path: misskey.chat_
@@ -2707,6 +2707,16 @@ class _TranslationsMisskeyWatermarkEditorFrFr extends TranslationsMisskeyWaterma
 	@override String get angle => 'Angle';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorFrFr extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsFrFr fxProps_ = _TranslationsMisskeyImageEffectorFxPropsFrFr._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeFrFr extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
@@ -3207,6 +3217,21 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectFrFr extends Translation
 
 	// Translations
 	@override String get title => 'Non trouvé';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsFrFr extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => 'Angle';
+	@override String get scale => 'Taille';
+	@override String get size => 'Taille';
+	@override String get color => 'Couleur';
+	@override String get opacity => 'Transparence';
+	@override String get lightness => 'Clair';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

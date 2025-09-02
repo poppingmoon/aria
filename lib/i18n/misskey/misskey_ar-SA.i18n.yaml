@@ -1603,3 +1603,9 @@ watermarkEditor_:
   type: "نوع"
   image: "صور"
   advanced: "متقدم"
+imageEffector_:
+  fxProps_:
+    scale: "الحجم"
+    size: "الحجم"
+    color: "اللون"
+    opacity: "الشفافية"

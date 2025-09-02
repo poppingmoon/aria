@@ -1299,6 +1299,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => '이 작업을 수행할 권한이 없습니다.';
 	@override String get preset => '프리셋';
 	@override String get selectFromPresets => '프리셋에서 선택';
+	@override String get custom => '커스텀';
 	@override String get achievements => '도전 과제';
 	@override String get gotInvalidResponseError => '서버의 응답이 올바르지 않습니다';
 	@override String get gotInvalidResponseErrorDescription => ' 서버가 다운되었거나 점검중일 가능성이 있습니다. 잠시후에 다시 시도해 주십시오.';
@@ -1337,6 +1338,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => '수ᇚ훈 해시태그';
 	@override String get hiddenTagsDescription => '설정한 태그를 트렌드에 표시하지 않도록 합니다. 줄 바꿈으로 하나씩 나눠서 설정할 수 있습니다.';
 	@override String get notesSearchNotAvailable => '노트 검색을 이용하실 수 없습니다.';
+	@override String get usersSearchNotAvailable => '유저 검색을 이용하실 수 없습니다.';
 	@override String get license => '라이선스';
 	@override String get unfavoriteConfirm => '즐겨찾기를 해제하시겠습니까?';
 	@override String get myClips => '내 클립';
@@ -1488,7 +1490,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get refreshing => '새로고침 중';
 	@override String get pullDownToRefresh => '아래로 내려서 새로고침';
 	@override String get useGroupedNotifications => '알림을 그룹화하고 표시';
-	@override String get signupPendingError => '메일 주소 확인중에 문제가 발생했습니다. 링크의 유효기간이 지났을 가능성이 있습니다.';
+	@override String get emailVerificationFailedError => '메일 주소 확인에 실패했습니다. 확인에 필요한 URL의 유효기간이 지났을 가능성이 있습니다.';
 	@override String get cwNotationRequired => '\'내용을 숨기기\'를 체크한 경우 주석을 써야 합니다.';
 	@override String get doReaction => '리액션 추가';
 	@override String get code => '문자열';
@@ -1619,6 +1621,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => '세이프 모드가 활성화돼있기에 플러그인은 전부 비활성화됩니다.';
 	@override String get customCssIsDisabledBecauseSafeMode => '세이프 모드가 활성화돼있기에 커스텀 CSS는 적용되지 않습니다.';
 	@override String get themeIsDefaultBecauseSafeMode => '세이프 모드가 활성화돼있는 동안에는 기본 테마가 사용됩니다. 세이프 모드를 끄면 원래대로 돌아옵니다.';
+	@override String get thankYouForTestingBeta => '베타 버전의 검증에 협력해 주셔서 감사합니다!';
 	@override late final _TranslationsMisskeyOrderKoGs order_ = _TranslationsMisskeyOrderKoGs._(_root);
 	@override late final _TranslationsMisskeyChatKoGs chat_ = _TranslationsMisskeyChatKoGs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoGs emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoGs._(_root);
@@ -1848,6 +1851,7 @@ class _TranslationsMisskeySettingsKoGs extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description2 => '실시간 모드가 켜져 있을 때는 이 설정과 상관없이 실시간으로 콘텐츠가 업데이트됩니다.';
 	@override String get showUrlPreview => 'URL 미리보기 표시';
 	@override String get showAvailableReactionsFirstInNote => '이용 가능한 리액션을 선두로 표시';
+	@override String get showPageTabBarBottom => '페이지의 탭 바를 아래쪽에 표시';
 	@override late final _TranslationsMisskeySettingsChatKoGs chat_ = _TranslationsMisskeySettingsChatKoGs._(_root);
 }
 
@@ -2074,6 +2078,9 @@ class _TranslationsMisskeyServerSettingsKoGs extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '서버에서 받은 리모트 콘텐츠를 포함해 서버 내의 모든 콘텐츠를 무조건 인터넷에 공개하는 것에는 위험이 따릅니다. 특히, 분산형 특성에 대해 모르는 열람자에게는 리모트 콘텐츠여도 서버 내에서 작성된 콘텐츠라고 잘못 인식할 수 있기에 주의가 필요합니다.';
 	@override String get restartServerSetupWizardConfirm_title => '서버의 초기 설정 위자드를 재시도하시겠습니까?';
 	@override String get restartServerSetupWizardConfirm_text => '현재 일부 설정은 리셋됩니다.';
+	@override String get entrancePageStyle => '입구 페이지의 스타일';
+	@override String get showTimelineForVisitor => '타임라인 표시';
+	@override String get showActivitiesForVisitor => '액티비티 표시하기';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoGs userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorKoGs._(_root);
 }
 
@@ -2565,6 +2572,7 @@ class _TranslationsMisskeyTimeKoGs extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => '분';
 	@override String get hour => '시간';
 	@override String get day => '일';
+	@override String get month => '개월';
 }
 
 // Path: misskey.x2fa_
@@ -3667,10 +3675,10 @@ class _TranslationsMisskeyWatermarkEditorKoGs extends TranslationsMisskeyWaterma
 	@override String get type => '종류';
 	@override String get image => '이미지';
 	@override String get advanced => '고급';
+	@override String get angle => '각도';
 	@override String get stripe => '줄무늬';
 	@override String get stripeWidth => '라인의 폭';
 	@override String get stripeFrequency => '라인의 수';
-	@override String get angle => '각도';
 	@override String get polkadot => '물방울 무늬';
 	@override String get checker => '체크 무늬';
 	@override String get polkadotMainDotOpacity => '주요 물방울의 불투명도';
@@ -3690,7 +3698,9 @@ class _TranslationsMisskeyImageEffectorKoGs extends TranslationsMisskeyImageEffe
 	@override String get title => '이펙트';
 	@override String get addEffect => '이펙트를 추가';
 	@override String get discardChangesConfirm => '변경을 취소하고 종료하시겠습니까?';
+	@override String get nothingToConfigure => '설정 항목이 없습니다.';
 	@override late final _TranslationsMisskeyImageEffectorFxsKoGs fxs_ = _TranslationsMisskeyImageEffectorFxsKoGs._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsKoGs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsKoGs._(_root);
 }
 
 // Path: misskey.drafts_
@@ -4040,6 +4050,7 @@ class _TranslationsMisskeyRoleOptionsKoGs extends TranslationsMisskeyRoleOptions
 	@override String get descriptionOfRateLimitFactor => '작을수록 제한이 완화되고, 클수록 제한이 강화됩니다.';
 	@override String get canHideAds => '강고 수ᇚ후기';
 	@override String get canSearchNotes => '노트 검색 이용 가능 여부';
+	@override String get canSearchUsers => '유저 검색 이용';
 	@override String get canUseTranslator => '번역 기능의 사용';
 	@override String get avatarDecorationLimit => '아바타 장식의 최대 붙임 개수';
 	@override String get canImportAntennas => '안테나 가져오기 허용';
@@ -4613,6 +4624,46 @@ class _TranslationsMisskeyImageEffectorFxsKoGs extends TranslationsMisskeyImageE
 	@override String get checker => '체크 무늬';
 	@override String get blockNoise => '노이즈 방지';
 	@override String get tearing => '티어링';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsKoGs extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => '각도';
+	@override String get scale => '크기';
+	@override String get size => '크기';
+	@override String get color => '색';
+	@override String get opacity => '불투명도';
+	@override String get normalize => '노멀라이즈';
+	@override String get amount => '양';
+	@override String get lightness => '밝음';
+	@override String get contrast => '대비';
+	@override String get hue => '색조';
+	@override String get brightness => '밝기';
+	@override String get saturation => '채도';
+	@override String get max => '최대 값';
+	@override String get min => '최소 값';
+	@override String get direction => '방향';
+	@override String get phase => '위상';
+	@override String get frequency => '빈도';
+	@override String get strength => '강도';
+	@override String get glitchChannelShift => '글리치';
+	@override String get seed => '시드 값';
+	@override String get redComponent => '빨간색 요소';
+	@override String get greenComponent => '녹색 요소';
+	@override String get blueComponent => '파란색 요소';
+	@override String get threshold => '한계 값';
+	@override String get centerX => 'X축 중심';
+	@override String get centerY => 'Y축 중심';
+	@override String get zoomLinesSmoothing => '다듬기';
+	@override String get zoomLinesSmoothingDescription => '다듬기와 집중선 폭 설정은 같이 쓸 수 없습니다.';
+	@override String get zoomLinesThreshold => '집중선 폭';
+	@override String get zoomLinesMaskSize => '중앙 값';
+	@override String get zoomLinesBlack => '검은색으로 하기';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

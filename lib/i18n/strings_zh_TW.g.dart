@@ -1139,6 +1139,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => '此帳戶沒有執行這個操作的權限。';
 	@override String get preset => '預設值';
 	@override String get selectFromPresets => '從預設值中選擇';
+	@override String get custom => '自訂';
 	@override String get achievements => '成就';
 	@override String get gotInvalidResponseError => '伺服器的回應無效';
 	@override String get gotInvalidResponseErrorDescription => '伺服器可能已關閉或者在維護中，請稍後再試。';
@@ -1177,6 +1178,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => '隱藏標籤';
 	@override String get hiddenTagsDescription => '設定的標籤不會在趨勢中顯示，換行可以設定多個標籤。';
 	@override String get notesSearchNotAvailable => '無法使用搜尋貼文功能。';
+	@override String get usersSearchNotAvailable => '無法使用使用者搜尋功能。';
 	@override String get license => '授權';
 	@override String get unfavoriteConfirm => '要取消收錄我的最愛嗎？';
 	@override String get myClips => '我的摘錄';
@@ -1328,7 +1330,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get refreshing => '載入更新中';
 	@override String get pullDownToRefresh => '往下拉來更新內容';
 	@override String get useGroupedNotifications => '分組顯示通知訊息';
-	@override String get signupPendingError => '驗證您的電子郵件地址時出現問題。連結可能已過期。';
+	@override String get emailVerificationFailedError => '驗證您的電子郵件地址時出現問題。連結可能已過期。';
 	@override String get cwNotationRequired => '如果開啟「隱藏內容」，則需要註解說明。';
 	@override String get doReaction => '做出反應';
 	@override String get code => '程式碼';
@@ -1459,6 +1461,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get pluginsAreDisabledBecauseSafeMode => '由於啟用安全模式，所有的外掛都被停用。';
 	@override String get customCssIsDisabledBecauseSafeMode => '由於啟用安全模式，所有的客製 CSS 都被停用。';
 	@override String get themeIsDefaultBecauseSafeMode => '在安全模式啟用期間將使用預設主題。關閉安全模式後會恢復原本的設定。';
+	@override String get thankYouForTestingBeta => '感謝您協助驗證 beta 版！';
 	@override late final _TranslationsMisskeyOrderZhTw order_ = _TranslationsMisskeyOrderZhTw._(_root);
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteZhTw emojiPalette_ = _TranslationsMisskeyEmojiPaletteZhTw._(_root);
@@ -1678,6 +1681,7 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get contentsUpdateFrequency_description2 => '當即時模式開啟時，不論此設定為何，內容都會即時更新。';
 	@override String get showUrlPreview => '顯示網址預覽';
 	@override String get showAvailableReactionsFirstInNote => '將可用的反應顯示在頂部';
+	@override String get showPageTabBarBottom => '在底部顯示頁面的標籤列';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -1904,6 +1908,9 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '包括伺服器接收到的遠端內容在內，無條件地將伺服器內所有內容公開到網際網路上是具有風險的。特別是對於不了解分散式架構特性的瀏覽者來說，他們可能會誤以為這些遠端內容是由該伺服器所創建的，因此需要特別留意。';
 	@override String get restartServerSetupWizardConfirm_title => '要重新執行伺服器的初始設定精靈嗎？';
 	@override String get restartServerSetupWizardConfirm_text => '當前的部分設定將會被重設。';
+	@override String get entrancePageStyle => '入口頁面的樣式';
+	@override String get showTimelineForVisitor => '顯示時間軸';
+	@override String get showActivitiesForVisitor => '顯示活動';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhTw userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorZhTw._(_root);
 }
 
@@ -2395,6 +2402,7 @@ class _TranslationsMisskeyTimeZhTw extends TranslationsMisskeyTimeEnUs {
 	@override String get minute => '分鐘';
 	@override String get hour => '小時';
 	@override String get day => '日';
+	@override String get month => '個月';
 }
 
 // Path: misskey.x2fa_
@@ -3497,10 +3505,10 @@ class _TranslationsMisskeyWatermarkEditorZhTw extends TranslationsMisskeyWaterma
 	@override String get type => '類型';
 	@override String get image => '圖片';
 	@override String get advanced => '進階';
+	@override String get angle => '角度';
 	@override String get stripe => '條紋';
 	@override String get stripeWidth => '線條寬度';
 	@override String get stripeFrequency => '線條數量';
-	@override String get angle => '角度';
 	@override String get polkadot => '波卡圓點';
 	@override String get checker => '棋盤格';
 	@override String get polkadotMainDotOpacity => '主圓點的不透明度';
@@ -3520,7 +3528,9 @@ class _TranslationsMisskeyImageEffectorZhTw extends TranslationsMisskeyImageEffe
 	@override String get title => '特效';
 	@override String get addEffect => '新增特效';
 	@override String get discardChangesConfirm => '捨棄更改並退出嗎？';
+	@override String get nothingToConfigure => '無可設定的項目';
 	@override late final _TranslationsMisskeyImageEffectorFxsZhTw fxs_ = _TranslationsMisskeyImageEffectorFxsZhTw._(_root);
+	@override late final _TranslationsMisskeyImageEffectorFxPropsZhTw fxProps_ = _TranslationsMisskeyImageEffectorFxPropsZhTw._(_root);
 }
 
 // Path: misskey.drafts_
@@ -3854,6 +3864,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get descriptionOfRateLimitFactor => '值越小限制越少，值越大限制越多。';
 	@override String get canHideAds => '不顯示廣告';
 	@override String get canSearchNotes => '可否搜尋貼文';
+	@override String get canSearchUsers => '可使用使用者搜尋功能';
 	@override String get canUseTranslator => '使用翻譯功能';
 	@override String get avatarDecorationLimit => '頭像可掛上的最大裝飾數量';
 	@override String get canImportAntennas => '允許匯入天線';
@@ -4427,6 +4438,46 @@ class _TranslationsMisskeyImageEffectorFxsZhTw extends TranslationsMisskeyImageE
 	@override String get checker => '棋盤格';
 	@override String get blockNoise => '阻擋雜訊';
 	@override String get tearing => '撕裂';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsZhTw extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get angle => '角度';
+	@override String get scale => '大小';
+	@override String get size => '大小';
+	@override String get color => '顏色';
+	@override String get opacity => '透明度';
+	@override String get normalize => '正規化';
+	@override String get amount => '數量';
+	@override String get lightness => '亮度';
+	@override String get contrast => '對比度';
+	@override String get hue => '色相';
+	@override String get brightness => '亮度';
+	@override String get saturation => '彩度';
+	@override String get max => '最大值';
+	@override String get min => '最小值';
+	@override String get direction => '方向';
+	@override String get phase => '相位';
+	@override String get frequency => '頻率';
+	@override String get strength => '強度';
+	@override String get glitchChannelShift => '偏移';
+	@override String get seed => '種子值';
+	@override String get redComponent => '紅色成分';
+	@override String get greenComponent => '綠色成分';
+	@override String get blueComponent => '青色成分';
+	@override String get threshold => '閾值';
+	@override String get centerX => 'X中心座標';
+	@override String get centerY => 'Y中心座標';
+	@override String get zoomLinesSmoothing => '平滑化';
+	@override String get zoomLinesSmoothingDescription => '平滑化與集中線寬度設定不能同時使用。';
+	@override String get zoomLinesThreshold => '集中線的寬度';
+	@override String get zoomLinesMaskSize => '中心直徑';
+	@override String get zoomLinesBlack => '變成黑色';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

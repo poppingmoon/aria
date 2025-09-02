@@ -746,3 +746,8 @@ watermarkEditor_:
   text: "Tekst"
   type: "Type"
   image: "Bilder"
+imageEffector_:
+  fxProps_:
+    scale: "Størrelse"
+    size: "Størrelse"
+    color: "Farge"

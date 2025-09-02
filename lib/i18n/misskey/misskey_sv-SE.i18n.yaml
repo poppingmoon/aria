@@ -720,3 +720,8 @@ search_:
 watermarkEditor_:
   scale: "Storlek"
   image: "Bilder"
+imageEffector_:
+  fxProps_:
+    scale: "Storlek"
+    size: "Storlek"
+    color: "Färg"

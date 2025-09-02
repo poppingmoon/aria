@@ -1176,6 +1176,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPlPl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPlPl._(_root);
 	@override late final _TranslationsMisskeySearchPlPl search_ = _TranslationsMisskeySearchPlPl._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorPlPl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPlPl._(_root);
+	@override late final _TranslationsMisskeyImageEffectorPlPl imageEffector_ = _TranslationsMisskeyImageEffectorPlPl._(_root);
 }
 
 // Path: misskey.chat_
@@ -2068,6 +2069,16 @@ class _TranslationsMisskeyWatermarkEditorPlPl extends TranslationsMisskeyWaterma
 	@override String get advanced => 'Zaawansowane';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorPlPl extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsPlPl fxProps_ = _TranslationsMisskeyImageEffectorFxPropsPlPl._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypePlPl extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypePlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
@@ -2299,6 +2310,20 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPlPl extends Translation
 
 	// Translations
 	@override String get title => 'Nie znaleziono';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsPlPl extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Rozmiar';
+	@override String get size => 'Rozmiar';
+	@override String get color => 'Kolor';
+	@override String get opacity => 'Przezroczystość';
+	@override String get lightness => 'Rozjaśnij';
 }
 
 // Path: misskey.pages_.blocks.note_

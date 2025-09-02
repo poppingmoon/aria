@@ -3812,6 +3812,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Choose from presets'
 	String get selectFromPresets => 'Choose from presets';
 
+	/// en-US: 'Custom'
+	String get custom => 'Custom';
+
 	/// en-US: 'Achievements'
 	String get achievements => 'Achievements';
 
@@ -3925,6 +3928,9 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'Note search is unavailable.'
 	String get notesSearchNotAvailable => 'Note search is unavailable.';
+
+	/// en-US: 'User search is not available.'
+	String get usersSearchNotAvailable => 'User search is not available.';
 
 	/// en-US: 'License'
 	String get license => 'License';
@@ -4298,11 +4304,11 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Hide replies to others from everyone you follow in timeline'
 	String get hideRepliesToOthersInTimelineAll => 'Hide replies to others from everyone you follow in timeline';
 
-	/// en-US: 'This operation is irreversible. Would you really like to show replies to others from everyone you follow in your timeline?'
-	String get confirmShowRepliesAll => 'This operation is irreversible. Would you really like to show replies to others from everyone you follow in your timeline?';
+	/// en-US: 'Are you sure you want to show replies from everyone you follow in your timeline? This action is irreversible.'
+	String get confirmShowRepliesAll => 'Are you sure you want to show replies from everyone you follow in your timeline? This action is irreversible.';
 
-	/// en-US: 'This operation is irreversible. Would you really like to hide replies to others from everyone you follow in your timeline?'
-	String get confirmHideRepliesAll => 'This operation is irreversible. Would you really like to hide replies to others from everyone you follow in your timeline?';
+	/// en-US: 'Are you sure you want to hide replies from everyone you follow in your timeline? This action is irreversible.'
+	String get confirmHideRepliesAll => 'Are you sure you want to hide replies from everyone you follow in your timeline? This action is irreversible.';
 
 	/// en-US: 'External Services'
 	String get externalServices => 'External Services';
@@ -4379,8 +4385,8 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Display grouped notifications'
 	String get useGroupedNotifications => 'Display grouped notifications';
 
-	/// en-US: 'There was a problem verifying the email address. The link may have expired.'
-	String get signupPendingError => 'There was a problem verifying the email address. The link may have expired.';
+	/// en-US: 'A problem occurred while verifying your email address. The link may have expired.'
+	String get emailVerificationFailedError => 'A problem occurred while verifying your email address. The link may have expired.';
 
 	/// en-US: 'If "Hide content" is enabled, a description must be provided.'
 	String get cwNotationRequired => 'If "Hide content" is enabled, a description must be provided.';
@@ -4771,6 +4777,9 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'While safe mode is active, the default theme is used. Disabling safe mode will revert these changes.'
 	String get themeIsDefaultBecauseSafeMode => 'While safe mode is active, the default theme is used. Disabling safe mode will revert these changes.';
+
+	/// en-US: 'Thank you for helping us test the beta version!'
+	String get thankYouForTestingBeta => 'Thank you for helping us test the beta version!';
 
 	late final TranslationsMisskeyOrderEnUs order_ = TranslationsMisskeyOrderEnUs.internal(_root);
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
@@ -5172,6 +5181,9 @@ class TranslationsMisskeySettingsEnUs {
 
 	/// en-US: 'Show available reactions at the top.'
 	String get showAvailableReactionsFirstInNote => 'Show available reactions at the top.';
+
+	/// en-US: 'Show page tab bar at the bottom'
+	String get showPageTabBarBottom => 'Show page tab bar at the bottom';
 
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
@@ -5616,6 +5628,15 @@ class TranslationsMisskeyServerSettingsEnUs {
 
 	/// en-US: 'Some current settings will be reset.'
 	String get restartServerSetupWizardConfirm_text => 'Some current settings will be reset.';
+
+	/// en-US: 'Entrance page style'
+	String get entrancePageStyle => 'Entrance page style';
+
+	/// en-US: 'Show timeline'
+	String get showTimelineForVisitor => 'Show timeline';
+
+	/// en-US: 'Show activities'
+	String get showActivitiesForVisitor => 'Show activities';
 
 	late final TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs userGeneratedContentsVisibilityForVisitor_ = TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs.internal(_root);
 }
@@ -6555,6 +6576,9 @@ class TranslationsMisskeyTimeEnUs {
 
 	/// en-US: 'Day(s)'
 	String get day => 'Day(s)';
+
+	/// en-US: 'Month(s)'
+	String get month => 'Month(s)';
 }
 
 // Path: misskey.x2fa_
@@ -8889,6 +8913,9 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 	/// en-US: 'Advanced'
 	String get advanced => 'Advanced';
 
+	/// en-US: 'Angle'
+	String get angle => 'Angle';
+
 	/// en-US: 'Stripes'
 	String get stripe => 'Stripes';
 
@@ -8897,9 +8924,6 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 
 	/// en-US: 'Lines count'
 	String get stripeFrequency => 'Lines count';
-
-	/// en-US: 'Angle'
-	String get angle => 'Angle';
 
 	/// en-US: 'Polkadot'
 	String get polkadot => 'Polkadot';
@@ -8940,7 +8964,11 @@ class TranslationsMisskeyImageEffectorEnUs {
 	/// en-US: 'Are you sure you want to leave? You have unsaved changes.'
 	String get discardChangesConfirm => 'Are you sure you want to leave? You have unsaved changes.';
 
+	/// en-US: 'No configurable options available'
+	String get nothingToConfigure => 'No configurable options available';
+
 	late final TranslationsMisskeyImageEffectorFxsEnUs fxs_ = TranslationsMisskeyImageEffectorFxsEnUs.internal(_root);
+	late final TranslationsMisskeyImageEffectorFxPropsEnUs fxProps_ = TranslationsMisskeyImageEffectorFxPropsEnUs.internal(_root);
 }
 
 // Path: misskey.drafts_
@@ -9503,29 +9531,32 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	/// en-US: 'Usage of note search'
 	String get canSearchNotes => 'Usage of note search';
 
+	/// en-US: 'User search'
+	String get canSearchUsers => 'User search';
+
 	/// en-US: 'Translator usage'
 	String get canUseTranslator => 'Translator usage';
 
-	/// en-US: 'Maximum number of avatar decorations that can be applied'
-	String get avatarDecorationLimit => 'Maximum number of avatar decorations that can be applied';
+	/// en-US: 'Maximum number of avatar decorations'
+	String get avatarDecorationLimit => 'Maximum number of avatar decorations';
 
-	/// en-US: 'Allow importing antennas'
-	String get canImportAntennas => 'Allow importing antennas';
+	/// en-US: 'Can import antennas'
+	String get canImportAntennas => 'Can import antennas';
 
-	/// en-US: 'Allow importing blocking'
-	String get canImportBlocking => 'Allow importing blocking';
+	/// en-US: 'Can import blocking'
+	String get canImportBlocking => 'Can import blocking';
 
-	/// en-US: 'Allow importing following'
-	String get canImportFollowing => 'Allow importing following';
+	/// en-US: 'Can import following'
+	String get canImportFollowing => 'Can import following';
 
-	/// en-US: 'Allow importing muting'
-	String get canImportMuting => 'Allow importing muting';
+	/// en-US: 'Can import muting'
+	String get canImportMuting => 'Can import muting';
 
-	/// en-US: 'Allow importing lists'
-	String get canImportUserLists => 'Allow importing lists';
+	/// en-US: 'Can import lists'
+	String get canImportUserLists => 'Can import lists';
 
-	/// en-US: 'Allow Chat'
-	String get chatAvailability => 'Allow Chat';
+	/// en-US: 'Chat'
+	String get chatAvailability => 'Chat';
 
 	/// en-US: 'Uploadable file types'
 	String get uploadableFileTypes => 'Uploadable file types';
@@ -9539,8 +9570,8 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	/// en-US: 'Number of possible drafts of server notes'
 	String get noteDraftLimit => 'Number of possible drafts of server notes';
 
-	/// en-US: 'Availability of watermark function'
-	String get watermarkAvailable => 'Availability of watermark function';
+	/// en-US: 'Watermark function'
+	String get watermarkAvailable => 'Watermark function';
 }
 
 // Path: misskey.role_.condition_
@@ -10510,6 +10541,108 @@ class TranslationsMisskeyImageEffectorFxsEnUs {
 
 	/// en-US: 'Tearing'
 	String get tearing => 'Tearing';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class TranslationsMisskeyImageEffectorFxPropsEnUs {
+	TranslationsMisskeyImageEffectorFxPropsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Angle'
+	String get angle => 'Angle';
+
+	/// en-US: 'Size'
+	String get scale => 'Size';
+
+	/// en-US: 'Size'
+	String get size => 'Size';
+
+	/// en-US: 'Color'
+	String get color => 'Color';
+
+	/// en-US: 'Opacity'
+	String get opacity => 'Opacity';
+
+	/// en-US: 'Normalize'
+	String get normalize => 'Normalize';
+
+	/// en-US: 'Amount'
+	String get amount => 'Amount';
+
+	/// en-US: 'Lighten'
+	String get lightness => 'Lighten';
+
+	/// en-US: 'Contrast'
+	String get contrast => 'Contrast';
+
+	/// en-US: 'Hue'
+	String get hue => 'Hue';
+
+	/// en-US: 'Brightness'
+	String get brightness => 'Brightness';
+
+	/// en-US: 'Saturation'
+	String get saturation => 'Saturation';
+
+	/// en-US: 'Maximum'
+	String get max => 'Maximum';
+
+	/// en-US: 'Minimum'
+	String get min => 'Minimum';
+
+	/// en-US: 'Direction'
+	String get direction => 'Direction';
+
+	/// en-US: 'Phase'
+	String get phase => 'Phase';
+
+	/// en-US: 'Frequency'
+	String get frequency => 'Frequency';
+
+	/// en-US: 'Strength'
+	String get strength => 'Strength';
+
+	/// en-US: 'Channel shift'
+	String get glitchChannelShift => 'Channel shift';
+
+	/// en-US: 'Seed value'
+	String get seed => 'Seed value';
+
+	/// en-US: 'Red component'
+	String get redComponent => 'Red component';
+
+	/// en-US: 'Green component'
+	String get greenComponent => 'Green component';
+
+	/// en-US: 'Blue component'
+	String get blueComponent => 'Blue component';
+
+	/// en-US: 'Threshold'
+	String get threshold => 'Threshold';
+
+	/// en-US: 'Center X'
+	String get centerX => 'Center X';
+
+	/// en-US: 'Center Y'
+	String get centerY => 'Center Y';
+
+	/// en-US: 'Smoothing'
+	String get zoomLinesSmoothing => 'Smoothing';
+
+	/// en-US: 'Smoothing and zoom line width cannot be used together.'
+	String get zoomLinesSmoothingDescription => 'Smoothing and zoom line width cannot be used together.';
+
+	/// en-US: 'Zoom line width'
+	String get zoomLinesThreshold => 'Zoom line width';
+
+	/// en-US: 'Center diameter'
+	String get zoomLinesMaskSize => 'Center diameter';
+
+	/// en-US: 'Make black'
+	String get zoomLinesBlack => 'Make black';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

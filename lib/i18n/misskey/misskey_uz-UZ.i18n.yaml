@@ -1106,3 +1106,7 @@ watermarkEditor_:
   type: "turi"
   image: "Rasmlar"
   advanced: "Murakkab"
+imageEffector_:
+  fxProps_:
+    color: "Rang"
+    lightness: "Yoritish"

@@ -951,6 +951,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUzUz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUzUz._(_root);
 	@override late final _TranslationsMisskeySearchUzUz search_ = _TranslationsMisskeySearchUzUz._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorUzUz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUzUz._(_root);
+	@override late final _TranslationsMisskeyImageEffectorUzUz imageEffector_ = _TranslationsMisskeyImageEffectorUzUz._(_root);
 }
 
 // Path: misskey.chat_
@@ -1452,6 +1453,16 @@ class _TranslationsMisskeyWatermarkEditorUzUz extends TranslationsMisskeyWaterma
 	@override String get advanced => 'Murakkab';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorUzUz extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsUzUz fxProps_ = _TranslationsMisskeyImageEffectorFxPropsUzUz._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUzUz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
@@ -1617,6 +1628,17 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUzUz extends Translation
 
 	// Translations
 	@override String get title => 'Topilmadi';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsUzUz extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get color => 'Rang';
+	@override String get lightness => 'Yoritish';
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_

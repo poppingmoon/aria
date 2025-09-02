@@ -1324,6 +1324,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRoRo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRoRo._(_root);
 	@override late final _TranslationsMisskeySearchRoRo search_ = _TranslationsMisskeySearchRoRo._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorRoRo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRoRo._(_root);
+	@override late final _TranslationsMisskeyImageEffectorRoRo imageEffector_ = _TranslationsMisskeyImageEffectorRoRo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1762,6 +1763,16 @@ class _TranslationsMisskeyWatermarkEditorRoRo extends TranslationsMisskeyWaterma
 	@override String get advanced => 'Avansat';
 }
 
+// Path: misskey.imageEffector_
+class _TranslationsMisskeyImageEffectorRoRo extends TranslationsMisskeyImageEffectorEnUs {
+	_TranslationsMisskeyImageEffectorRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEffectorFxPropsRoRo fxProps_ = _TranslationsMisskeyImageEffectorFxPropsRoRo._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRoRo extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
@@ -1971,6 +1982,17 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo extends Translation
 
 	// Translations
 	@override String get title => 'Nu a fost găsit';
+}
+
+// Path: misskey.imageEffector_.fxProps_
+class _TranslationsMisskeyImageEffectorFxPropsRoRo extends TranslationsMisskeyImageEffectorFxPropsEnUs {
+	_TranslationsMisskeyImageEffectorFxPropsRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get scale => 'Dimensiune';
+	@override String get size => 'Dimensiune';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
