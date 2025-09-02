@@ -133,8 +133,13 @@ class _ParticlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
       final matrix = Matrix4.identity()
-        ..translate(particle.position.dx, particle.position.dy)
-        ..scale(particle.scale, particle.scale)
+        ..translateByDouble(
+          particle.position.dx,
+          particle.position.dy,
+          0.0,
+          1.0,
+        )
+        ..scaleByDouble(particle.scale, particle.scale, particle.scale, 1.0)
         ..rotateZ(particle.angle);
       canvas.drawPath(
         particle.path.transform(matrix.storage),
