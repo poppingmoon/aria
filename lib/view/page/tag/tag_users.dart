@@ -51,7 +51,7 @@ class TagUsers extends HookConsumerWidget {
                         title: Text(t.misskey.sort),
                         values: UsersSortType.values,
                         initialValue: sort.value,
-                        itemBuilder: (context, sort) =>
+                        titleBuilder: (context, sort) =>
                             UsersSortTypeWidget(sort: sort),
                       );
                       if (!context.mounted) return;

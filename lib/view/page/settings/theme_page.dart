@@ -44,7 +44,7 @@ class ThemePage extends ConsumerWidget {
                     title: Text(t.misskey.theme),
                     values: ThemeMode.values,
                     initialValue: generalSettings.themeMode,
-                    itemBuilder: (context, value) =>
+                    titleBuilder: (context, value) =>
                         ThemeModeWidget(themeMode: value),
                   );
                   if (result != null) {
@@ -73,7 +73,7 @@ class ThemePage extends ConsumerWidget {
                       ...installedColors,
                     ].where((colors) => !colors.isDark).toList(),
                     initialValue: lightColors,
-                    itemBuilder: (context, value) => Text(value.name),
+                    titleBuilder: (context, value) => Text(value.name),
                   );
                   if (result != null) {
                     await ref
@@ -101,7 +101,7 @@ class ThemePage extends ConsumerWidget {
                       ...installedColors,
                     ].where((colors) => colors.isDark).toList(),
                     initialValue: darkColors,
-                    itemBuilder: (context, value) => Text(value.name),
+                    titleBuilder: (context, value) => Text(value.name),
                   );
                   if (result != null) {
                     await ref

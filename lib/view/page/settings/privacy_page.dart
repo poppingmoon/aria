@@ -100,7 +100,7 @@ class PrivacyPage extends ConsumerWidget {
                       title: Text(t.misskey.followingVisibility),
                       values: FFVisibility.values,
                       initialValue: i.followingVisibility ?? i.ffVisibility,
-                      itemBuilder: (context, visibility) =>
+                      titleBuilder: (context, visibility) =>
                           FfVisibilityWidget(visibility: visibility),
                     );
                     if (!context.mounted) return;
@@ -132,7 +132,7 @@ class PrivacyPage extends ConsumerWidget {
                       title: Text(t.misskey.followersVisibility),
                       values: FFVisibility.values,
                       initialValue: i.followersVisibility ?? i.ffVisibility,
-                      itemBuilder: (context, visibility) =>
+                      titleBuilder: (context, visibility) =>
                           FfVisibilityWidget(visibility: visibility),
                     );
                     if (!context.mounted) return;
@@ -250,7 +250,7 @@ class PrivacyPage extends ConsumerWidget {
                       ),
                       values: ChatScope.values,
                       initialValue: i?.chatScope,
-                      itemBuilder: (context, chatScope) => ListTile(
+                      titleBuilder: (context, chatScope) => ListTile(
                         title: _ChatScopeWidget(chatScope: chatScope),
                       ),
                     );
@@ -317,7 +317,7 @@ class PrivacyPage extends ConsumerWidget {
                       title: Text(t.misskey.defaultNoteVisibility),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultNoteVisibility,
-                      itemBuilder: (context, visibility) => ListTile(
+                      titleBuilder: (context, visibility) => ListTile(
                         title: NoteVisibilityWidget(visibility: visibility),
                         subtitle: Text(switch (visibility) {
                           NoteVisibility.public =>
@@ -393,7 +393,7 @@ class PrivacyPage extends ConsumerWidget {
                       ),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultRenoteVisibility,
-                      itemBuilder: (context, visibility) => ListTile(
+                      titleBuilder: (context, visibility) => ListTile(
                         title: NoteVisibilityWidget(visibility: visibility),
                         subtitle: Text(switch (visibility) {
                           NoteVisibility.public =>
@@ -454,7 +454,7 @@ class PrivacyPage extends ConsumerWidget {
                       ...ReactionAcceptance.values,
                     ].map((value) => (value,)).toList(),
                     initialValue: (settings.reactionAcceptance,),
-                    itemBuilder: (context, acceptance) =>
+                    titleBuilder: (context, acceptance) =>
                         ReactionAcceptanceWidget(acceptance: acceptance.$1),
                   );
                   if (result != null) {

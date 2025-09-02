@@ -8,7 +8,7 @@ Future<T?> showRadioDialog<T>(
   Widget? header,
   required Iterable<T> values,
   T? initialValue,
-  required Widget Function(BuildContext context, T value) itemBuilder,
+  required Widget Function(BuildContext context, T value) titleBuilder,
 }) {
   return showDialog<T>(
     context: context,
@@ -17,7 +17,7 @@ Future<T?> showRadioDialog<T>(
       header: header,
       values: values,
       initialValue: initialValue,
-      itemBuilder: itemBuilder,
+      titleBuilder: titleBuilder,
     ),
   );
 }
@@ -29,14 +29,14 @@ class RadioDialog<T> extends HookWidget {
     this.header,
     required this.values,
     this.initialValue,
-    required this.itemBuilder,
+    required this.titleBuilder,
   });
 
   final Widget? title;
   final Widget? header;
   final Iterable<T> values;
   final T? initialValue;
-  final Widget Function(BuildContext context, T value) itemBuilder;
+  final Widget Function(BuildContext context, T value) titleBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class RadioDialog<T> extends HookWidget {
             ],
             ...values.map(
               (value) => RadioListTile(
-                title: itemBuilder(context, value),
+                title: titleBuilder(context, value),
                 value: value,
               ),
             ),

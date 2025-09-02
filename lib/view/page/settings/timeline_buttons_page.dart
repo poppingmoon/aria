@@ -103,7 +103,7 @@ class TimelineButtonsPage extends ConsumerWidget {
                             values: TimelinesPageButtonType.values,
                             initialValue: type,
                             title: Text(t.aria.buttonTypes),
-                            itemBuilder: (context, type) =>
+                            titleBuilder: (context, type) =>
                                 _TimelinesPageButtonTypeNameWidget(
                                   buttonType: type,
                                 ),
@@ -198,7 +198,7 @@ class TimelineButtonsPage extends ConsumerWidget {
                     values: TimelinesPageButtonType.values,
                     initialValue: type,
                     title: Text(t.aria.buttonTypes),
-                    itemBuilder: (context, type) =>
+                    titleBuilder: (context, type) =>
                         _TimelinesPageButtonTypeNameWidget(buttonType: type),
                   );
                   if (result != null && result != type) {

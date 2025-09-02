@@ -63,7 +63,7 @@ class TabSettingsPage extends HookConsumerWidget {
       title: Text(t.misskey.role),
       values: roles,
       initialValue: role,
-      itemBuilder: (context, role) => Text(role.name),
+      titleBuilder: (context, role) => Text(role.name),
     );
   }
 
@@ -84,7 +84,7 @@ class TabSettingsPage extends HookConsumerWidget {
       title: Text(t.misskey.selectList),
       values: lists,
       initialValue: list != null ? UsersList.fromJson(list.toJson()) : null,
-      itemBuilder: (context, list) => Text(list.name ?? ''),
+      titleBuilder: (context, list) => Text(list.name ?? ''),
     );
   }
 
@@ -105,7 +105,7 @@ class TabSettingsPage extends HookConsumerWidget {
       title: Text(t.misskey.selectAntenna),
       values: antennas,
       initialValue: antenna,
-      itemBuilder: (context, antenna) => Text(antenna.name),
+      titleBuilder: (context, antenna) => Text(antenna.name),
     );
   }
 
@@ -335,7 +335,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         },
                       ),
                       initialValue: tabType,
-                      itemBuilder: (context, value) =>
+                      titleBuilder: (context, value) =>
                           TabTypeWidget(tabType: value),
                     );
                     if (!ref.context.mounted) return;

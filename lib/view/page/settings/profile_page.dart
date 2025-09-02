@@ -525,7 +525,7 @@ class ProfilePage extends HookConsumerWidget {
                         (final key?, final value?) => (key, value),
                         _ => null,
                       },
-                      itemBuilder: (context, lang) => Text(lang.$2.nativeName),
+                      titleBuilder: (context, lang) => Text(lang.$2.nativeName),
                     );
                     if (!context.mounted) return;
                     if (result != null) {
