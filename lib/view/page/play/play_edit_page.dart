@@ -168,7 +168,7 @@ class PlayEditPage extends HookConsumerWidget {
                     child: Text(t.misskey.private),
                   ),
                 ],
-                value: visibility.value,
+                initialValue: visibility.value,
                 onChanged: (value) => visibility.value = value,
                 isExpanded: true,
               ),
