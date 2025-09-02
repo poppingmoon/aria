@@ -9,6 +9,7 @@ Future<T?> showRadioDialog<T>(
   required Iterable<T> values,
   T? initialValue,
   required Widget Function(BuildContext context, T value) titleBuilder,
+  Widget Function(BuildContext context, T value)? subtitleBuilder,
 }) {
   return showDialog<T>(
     context: context,
@@ -18,6 +19,7 @@ Future<T?> showRadioDialog<T>(
       values: values,
       initialValue: initialValue,
       titleBuilder: titleBuilder,
+      subtitleBuilder: subtitleBuilder,
     ),
   );
 }
@@ -30,6 +32,7 @@ class RadioDialog<T> extends HookWidget {
     required this.values,
     this.initialValue,
     required this.titleBuilder,
+    this.subtitleBuilder,
   });
 
   final Widget? title;
@@ -37,6 +40,7 @@ class RadioDialog<T> extends HookWidget {
   final Iterable<T> values;
   final T? initialValue;
   final Widget Function(BuildContext context, T value) titleBuilder;
+  final Widget Function(BuildContext context, T value)? subtitleBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +59,7 @@ class RadioDialog<T> extends HookWidget {
             ...values.map(
               (value) => RadioListTile(
                 title: titleBuilder(context, value),
+                subtitle: subtitleBuilder?.call(context, value),
                 value: value,
               ),
             ),

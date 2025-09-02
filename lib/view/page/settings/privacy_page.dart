@@ -250,9 +250,8 @@ class PrivacyPage extends ConsumerWidget {
                       ),
                       values: ChatScope.values,
                       initialValue: i?.chatScope,
-                      titleBuilder: (context, chatScope) => ListTile(
-                        title: _ChatScopeWidget(chatScope: chatScope),
-                      ),
+                      titleBuilder: (context, chatScope) =>
+                          _ChatScopeWidget(chatScope: chatScope),
                     );
                     if (!context.mounted) return;
                     if (result != null) {
@@ -317,19 +316,12 @@ class PrivacyPage extends ConsumerWidget {
                       title: Text(t.misskey.defaultNoteVisibility),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultNoteVisibility,
-                      titleBuilder: (context, visibility) => ListTile(
-                        title: NoteVisibilityWidget(visibility: visibility),
-                        subtitle: Text(switch (visibility) {
-                          NoteVisibility.public =>
-                            t.misskey.visibility_.publicDescription,
-                          NoteVisibility.home =>
-                            t.misskey.visibility_.homeDescription,
-                          NoteVisibility.followers =>
-                            t.misskey.visibility_.followersDescription,
-                          NoteVisibility.specified =>
-                            t.misskey.visibility_.specifiedDescription,
-                        }),
-                      ),
+                      titleBuilder: (context, visibility) =>
+                          NoteVisibilityWidget(visibility: visibility),
+                      subtitleBuilder: (context, visibility) =>
+                          _NoteVisibilityDescriptionWidget(
+                            visibility: visibility,
+                          ),
                     );
                     if (result != null) {
                       await ref
@@ -393,19 +385,12 @@ class PrivacyPage extends ConsumerWidget {
                       ),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultRenoteVisibility,
-                      titleBuilder: (context, visibility) => ListTile(
-                        title: NoteVisibilityWidget(visibility: visibility),
-                        subtitle: Text(switch (visibility) {
-                          NoteVisibility.public =>
-                            t.misskey.visibility_.publicDescription,
-                          NoteVisibility.home =>
-                            t.misskey.visibility_.homeDescription,
-                          NoteVisibility.followers =>
-                            t.misskey.visibility_.followersDescription,
-                          NoteVisibility.specified =>
-                            t.misskey.visibility_.specifiedDescription,
-                        }),
-                      ),
+                      titleBuilder: (context, visibility) =>
+                          NoteVisibilityWidget(visibility: visibility),
+                      subtitleBuilder: (context, visibility) =>
+                          _NoteVisibilityDescriptionWidget(
+                            visibility: visibility,
+                          ),
                     );
                     if (result != null) {
                       await ref
@@ -487,6 +472,22 @@ class _ChatScopeWidget extends StatelessWidget {
       ChatScope.mutual => t.misskey.chat_.chatAllowedUsers_.mutual,
       ChatScope.none => t.misskey.chat_.chatAllowedUsers_.none,
       null => t.misskey.unknown,
+    });
+  }
+}
+
+class _NoteVisibilityDescriptionWidget extends StatelessWidget {
+  const _NoteVisibilityDescriptionWidget({required this.visibility});
+
+  final NoteVisibility visibility;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(switch (visibility) {
+      NoteVisibility.public => t.misskey.visibility_.publicDescription,
+      NoteVisibility.home => t.misskey.visibility_.homeDescription,
+      NoteVisibility.followers => t.misskey.visibility_.followersDescription,
+      NoteVisibility.specified => t.misskey.visibility_.specifiedDescription,
     });
   }
 }
