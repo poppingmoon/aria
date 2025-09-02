@@ -40,48 +40,59 @@ class AccountSelectDialog extends HookConsumerWidget {
     return AlertDialog(
       title: Text(t.misskey.selectAccount),
       scrollable: true,
-      content: Column(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.add),
-            title: Text(t.misskey.addAccount),
-            trailing: const Icon(Icons.navigate_next),
-            onTap: () => context.push('/login'),
-          ),
-          ...accounts.map(
-            (acct) => RadioListTile(
-              title: Text(acct.toString()),
-              value: acct,
-              groupValue: account.value,
-              onChanged: (value) => account.value = value,
+      content: RadioGroup<(Account?,)>(
+        groupValue: switch (account.value) {
+          Account(isGuest: true) => (null,),
+          Account(isGuest: false) => (account.value,),
+          null => null,
+        },
+        onChanged: (value) {
+          if (value != null) {
+            if (value.$1 != null) {
+              account.value = value.$1;
+            } else {
+              account.value = Account(host: controller.text);
+            }
+          }
+        },
+        child: Column(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.add),
+              title: Text(t.misskey.addAccount),
+              trailing: const Icon(Icons.navigate_next),
+              onTap: () => context.push('/login'),
             ),
-          ),
-          RadioListTile(
-            title: Text(t.aria.guest),
-            value: true,
-            groupValue: account.value?.isGuest ?? false,
-            onChanged: (value) =>
-                account.value = Account(host: controller.text),
-          ),
-          if (account.value?.isGuest ?? false) ...[
-            MisskeyServerAutocomplete(
-              controller: controller,
-              focusNode: focusNode,
+            ...accounts.map(
+              (account) => RadioListTile<(Account?,)>(
+                title: Text(account.toString()),
+                value: (account,),
+              ),
             ),
-            TextButton(
-              onPressed: () async {
-                final host = await showDialog<String>(
-                  context: context,
-                  builder: (context) => const MisskeyServerListDialog(),
-                );
-                if (host != null) {
-                  controller.text = host;
-                }
-              },
-              child: Text(t.aria.findServer),
+            RadioListTile<(Account?,)>(
+              title: Text(t.aria.guest),
+              value: (null,),
             ),
+            if (account.value?.isGuest ?? false) ...[
+              MisskeyServerAutocomplete(
+                controller: controller,
+                focusNode: focusNode,
+              ),
+              TextButton(
+                onPressed: () async {
+                  final host = await showDialog<String>(
+                    context: context,
+                    builder: (context) => const MisskeyServerListDialog(),
+                  );
+                  if (host != null) {
+                    controller.text = host;
+                  }
+                },
+                child: Text(t.aria.findServer),
+              ),
+            ],
           ],
-        ],
+        ),
       ),
       actions: [
         ElevatedButton(
