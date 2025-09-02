@@ -19,6 +19,7 @@ class AntennasNotifier extends _$AntennasNotifier {
   Future<void> create({
     required String name,
     AntennaSource? src,
+    String? userListId,
     List<List<String>>? keywords,
     List<List<String>>? excludeKeywords,
     List<String>? users,
@@ -33,6 +34,7 @@ class AntennasNotifier extends _$AntennasNotifier {
       AntennasCreateRequest(
         name: name,
         src: src ?? AntennaSource.all,
+        userListId: userListId,
         keywords: keywords ?? [],
         excludeKeywords: excludeKeywords ?? [],
         users: users ?? [],
@@ -52,6 +54,7 @@ class AntennasNotifier extends _$AntennasNotifier {
     Antenna antenna, {
     String? name,
     AntennaSource? src,
+    String? userListId,
     List<List<String>>? keywords,
     List<List<String>>? excludeKeywords,
     List<String>? users,
@@ -67,6 +70,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         antennaId: antenna.id,
         name: name ?? antenna.name,
         src: src ?? antenna.src ?? AntennaSource.all,
+        userListId: userListId ?? antenna.userListId,
         keywords: keywords ?? antenna.keywords,
         excludeKeywords: excludeKeywords ?? antenna.excludeKeywords,
         users: users ?? antenna.users,
@@ -88,6 +92,7 @@ class AntennasNotifier extends _$AntennasNotifier {
             ? e.copyWith(
                 name: name ?? antenna.name,
                 src: src ?? antenna.src ?? AntennaSource.all,
+                userListId: userListId ?? antenna.userListId,
                 keywords: keywords ?? antenna.keywords,
                 excludeKeywords: excludeKeywords ?? antenna.excludeKeywords,
                 users: users ?? antenna.users,
@@ -120,6 +125,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         antennaId: antennaId,
         name: antenna.name,
         src: antenna.src ?? AntennaSource.users,
+        userListId: antenna.userListId,
         keywords: antenna.keywords,
         excludeKeywords: antenna.excludeKeywords,
         users: users,
@@ -149,6 +155,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         antennaId: antennaId,
         name: antenna.name,
         src: antenna.src ?? AntennaSource.users,
+        userListId: antenna.userListId,
         keywords: antenna.keywords,
         excludeKeywords: antenna.excludeKeywords,
         users: users,

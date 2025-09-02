@@ -12,6 +12,7 @@ import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../provider/api/endpoint_parameters_provider.dart';
 import '../../provider/api/lists_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../widget/antenna_source_widget.dart';
 import '../widget/mention_widget.dart';
 import 'radio_dialog.dart';
@@ -92,19 +93,37 @@ class AntennaSettingsDialog extends HookConsumerWidget {
           if (settings.value.src == AntennaSource.list)
             ListTile(
               title: Text(t.misskey.userList),
-              subtitle: Text(list?.name ?? ''),
-              trailing: const Icon(Icons.navigate_next),
+              subtitle: Text(
+                settings.value.userListId != null
+                    ? list?.name ?? ''
+                    : t.misskey.notSet,
+              ),
+              trailing: settings.value.userListId != null
+                  ? IconButton(
+                      onPressed: () => settings.value = settings.value.copyWith(
+                        userListId: null,
+                      ),
+                      icon: const Icon(Icons.close),
+                    )
+                  : const Icon(Icons.navigate_next),
               onTap: () async {
+                final lists = await futureWithDialog(
+                  ref.context,
+                  ref.read(listsNotifierProvider(account).future),
+                );
+                if (!ref.context.mounted) return;
+                if (lists == null) return;
                 final result = await showRadioDialog(
                   context,
-                  title: Text(t.misskey.userList),
-                  values: AntennaSource.values,
-                  initialValue: settings.value.src,
-                  titleBuilder: (context, antennaSource) =>
-                      AntennaSourceWidget(antennaSource: antennaSource),
+                  title: Text(t.misskey.selectList),
+                  values: lists,
+                  initialValue: list,
+                  titleBuilder: (context, list) => Text(list.name ?? ''),
                 );
                 if (result != null) {
-                  settings.value = settings.value.copyWith(src: result);
+                  settings.value = settings.value.copyWith(
+                    userListId: result.id,
+                  );
                 }
               },
             ),

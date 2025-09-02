@@ -72,6 +72,7 @@ class AntennaDialog extends HookConsumerWidget {
                     .create(
                       name: result.name ?? '',
                       src: result.src,
+                      userListId: result.userListId,
                       keywords: result.keywords,
                       excludeKeywords: result.excludeKeywords,
                       users: result.users,
