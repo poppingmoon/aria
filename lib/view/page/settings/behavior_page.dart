@@ -102,7 +102,7 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteTapAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteTapAction,
-                    itemBuilder: (context, value) => Text(switch (value) {
+                    titleBuilder: (context, value) => Text(switch (value) {
                       NoteActionType.none => t.misskey.doNothing,
                       NoteActionType.expand => t.aria.expandNote,
                       NoteActionType.menu => t.aria.openMenu,
@@ -137,7 +137,7 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteDoubleTapAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteDoubleTapAction,
-                    itemBuilder: (context, value) => Text(switch (value) {
+                    titleBuilder: (context, value) => Text(switch (value) {
                       NoteActionType.none => t.misskey.doNothing,
                       NoteActionType.expand => t.aria.expandNote,
                       NoteActionType.menu => t.aria.openMenu,
@@ -172,7 +172,7 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteLongPressAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteLongPressAction,
-                    itemBuilder: (context, value) => Text(switch (value) {
+                    titleBuilder: (context, value) => Text(switch (value) {
                       NoteActionType.none => t.misskey.doNothing,
                       NoteActionType.expand => t.aria.expandNote,
                       NoteActionType.menu => t.aria.openMenu,
@@ -275,7 +275,7 @@ class BehaviorPage extends ConsumerWidget {
                       LaunchMode.externalApplication,
                     ],
                     initialValue: settings.launchMode,
-                    itemBuilder: (context, value) => Text(switch (value) {
+                    titleBuilder: (context, value) => Text(switch (value) {
                       LaunchMode.inAppBrowserView =>
                         t.aria.openInInternalBrowser,
                       LaunchMode.externalApplication =>

@@ -125,14 +125,15 @@ class NoteDisplayPage extends HookConsumerWidget {
                           title: Text(t.misskey.displayOfSensitiveMedia),
                           values: SensitiveMediaDisplay.values,
                           initialValue: settings.sensitive,
-                          itemBuilder: (context, value) => Text(switch (value) {
-                            SensitiveMediaDisplay.respect =>
-                              t.misskey.displayOfSensitiveMedia_.respect,
-                            SensitiveMediaDisplay.ignore =>
-                              t.misskey.displayOfSensitiveMedia_.ignore,
-                            SensitiveMediaDisplay.force =>
-                              t.misskey.displayOfSensitiveMedia_.force,
-                          }),
+                          titleBuilder: (context, value) =>
+                              Text(switch (value) {
+                                SensitiveMediaDisplay.respect =>
+                                  t.misskey.displayOfSensitiveMedia_.respect,
+                                SensitiveMediaDisplay.ignore =>
+                                  t.misskey.displayOfSensitiveMedia_.ignore,
+                                SensitiveMediaDisplay.force =>
+                                  t.misskey.displayOfSensitiveMedia_.force,
+                              }),
                         );
                         if (result != null) {
                           await ref
@@ -280,14 +281,15 @@ class NoteDisplayPage extends HookConsumerWidget {
                           title: Text(t.misskey.instanceTicker),
                           values: InstanceTicker.values,
                           initialValue: settings.instanceTicker,
-                          itemBuilder: (context, value) => Text(switch (value) {
-                            InstanceTicker.none =>
-                              t.misskey.instanceTicker_.none,
-                            InstanceTicker.remote =>
-                              t.misskey.instanceTicker_.remote,
-                            InstanceTicker.always =>
-                              t.misskey.instanceTicker_.always,
-                          }),
+                          titleBuilder: (context, value) =>
+                              Text(switch (value) {
+                                InstanceTicker.none =>
+                                  t.misskey.instanceTicker_.none,
+                                InstanceTicker.remote =>
+                                  t.misskey.instanceTicker_.remote,
+                                InstanceTicker.always =>
+                                  t.misskey.instanceTicker_.always,
+                              }),
                         );
                         if (result != null) {
                           await ref
@@ -549,10 +551,11 @@ class NoteDisplayPage extends HookConsumerWidget {
                           title: Text(t.misskey.emojiStyle),
                           values: EmojiStyle.values,
                           initialValue: settings.emojiStyle,
-                          itemBuilder: (context, value) => Text(switch (value) {
-                            EmojiStyle.native => t.misskey.native,
-                            EmojiStyle.twemoji => 'Twemoji',
-                          }),
+                          titleBuilder: (context, value) =>
+                              Text(switch (value) {
+                                EmojiStyle.native => t.misskey.native,
+                                EmojiStyle.twemoji => 'Twemoji',
+                              }),
                         );
                         if (result != null) {
                           await ref
@@ -594,7 +597,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                           initialValue: (
                             settings.mediaListWithOneImageAppearance,
                           ),
-                          itemBuilder: (context, value) =>
+                          titleBuilder: (context, value) =>
                               Text(switch (value.$1) {
                                 null => t.misskey.default_,
                                 MediaListWithOneImageAppearance.r16_9 =>
@@ -632,11 +635,12 @@ class NoteDisplayPage extends HookConsumerWidget {
                           title: Text(t.aria.displayOfThumbnail),
                           values: [BoxFit.contain, BoxFit.cover],
                           initialValue: settings.thumbnailBoxFit,
-                          itemBuilder: (context, value) => Text(switch (value) {
-                            BoxFit.contain => t.aria.showEntireImage,
-                            BoxFit.cover => t.aria.showExpandedImage,
-                            _ => t.misskey.unknown,
-                          }),
+                          titleBuilder: (context, value) =>
+                              Text(switch (value) {
+                                BoxFit.contain => t.aria.showEntireImage,
+                                BoxFit.cover => t.aria.showExpandedImage,
+                                _ => t.misskey.unknown,
+                              }),
                         );
                         if (result != null) {
                           await ref
@@ -674,7 +678,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                             (FontFamily.pretendard,),
                           ],
                           initialValue: (settings.fontFamily,),
-                          itemBuilder: (context, value) => Text(
+                          titleBuilder: (context, value) => Text(
                             value.$1 ?? t.misskey.system,
                             style: TextStyle(fontFamily: value.$1),
                           ),

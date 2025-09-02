@@ -81,7 +81,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 title: Text(t.misskey.antennaSource),
                 values: AntennaSource.values,
                 initialValue: settings.value.src,
-                itemBuilder: (context, antennaSource) =>
+                titleBuilder: (context, antennaSource) =>
                     AntennaSourceWidget(antennaSource: antennaSource),
               );
               if (result != null) {
@@ -100,7 +100,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                   title: Text(t.misskey.userList),
                   values: AntennaSource.values,
                   initialValue: settings.value.src,
-                  itemBuilder: (context, antennaSource) =>
+                  titleBuilder: (context, antennaSource) =>
                       AntennaSourceWidget(antennaSource: antennaSource),
                 );
                 if (result != null) {
