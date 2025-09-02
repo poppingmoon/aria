@@ -43,21 +43,23 @@ class RadioDialog<T> extends HookWidget {
     return AlertDialog(
       title: title,
       scrollable: true,
-      content: Column(
-        children: [
-          if (header case final header?) ...[
-            header,
-            const SizedBox(height: 8.0),
-          ],
-          ...values.map(
-            (value) => RadioListTile(
-              title: itemBuilder(context, value),
-              value: value,
-              groupValue: initialValue,
-              onChanged: (value) => context.pop(value),
+      content: RadioGroup(
+        groupValue: initialValue,
+        onChanged: (value) => context.pop(value),
+        child: Column(
+          children: [
+            if (header case final header?) ...[
+              header,
+              const SizedBox(height: 8.0),
+            ],
+            ...values.map(
+              (value) => RadioListTile(
+                title: itemBuilder(context, value),
+                value: value,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

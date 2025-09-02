@@ -442,7 +442,7 @@ class AsUiWidget extends HookConsumerWidget {
                     DropdownMenuItem(value: item.$2, child: Text(item.$1)),
               )
               .toList(),
-          value: value.value,
+          initialValue: value.value,
           onChanged: (v) async {
             value.value = v;
             if (v != null) {
