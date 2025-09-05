@@ -50,7 +50,7 @@ dependencies:
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: 2.11.1
   flutter_secure_storage: ^9.2.4
-  flutter_svg: ^2.2.0
+  flutter_svg: ^2.2.1
   fluttertoast: ^8.2.12
   freezed_annotation: ^3.1.0
   gal: ^2.3.2
@@ -71,13 +71,13 @@ dependencies:
   intl: ^0.20.2
   json5: ^0.8.2
   json_annotation: ^4.9.0
-  just_audio: ^0.10.4
+  just_audio: ^0.10.5
   kana_kit: ^2.1.1
   material_off_icons:
     git:
       url: https://github.com/poppingmoon/material_off_icons
       ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
-  material_symbols_icons: ^4.2867.0
+  material_symbols_icons: ^4.2872.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
