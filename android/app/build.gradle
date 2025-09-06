@@ -1,5 +1,4 @@
-import com.android.build.api.variant.FilterConfiguration.FilterType
-import com.android.build.api.variant.impl.getFilter
+import com.android.build.OutputFile
 
 plugins {
     id("com.android.application")
@@ -13,7 +12,7 @@ android {
     ndkVersion = "28.1.13356709"
 
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
+        coreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -24,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId = "com.poppingmoon.aria"
-        minSdk = 23
+        minSdk = flutter.minSdkVersion
         multiDexEnabled = true
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -32,7 +31,7 @@ android {
     }
 
     signingConfigs {
-        create("release") {
+        register("release") {
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")
             storeFile = file("upload.keystore")
@@ -61,8 +60,8 @@ dependencies {
     implementation("org.unifiedpush.android:embedded-fcm-distributor:3.0.0")
 }
 
-configurations.all {
-    val tink = "com.google.crypto.tink:tink-android:1.17.0"
+configurations.configureEach {
+    def tink = "com.google.crypto.tink:tink-android:1.17.0"
     resolutionStrategy {
         force(tink)
         dependencySubstitution {
@@ -71,14 +70,12 @@ configurations.all {
     }
 }
 
-val abiCodes = mapOf("x86_64" to 1, "armeabi-v7a" to 2, "arm64-v8a" to 3)
-androidComponents {
-    onVariants { variant ->
-        variant.outputs.forEach { output ->
-            val abiVersionCode = abiCodes[output.getFilter(FilterType.ABI)?.identifier]
-            if (abiVersionCode != null) {
-                output.versionCode.set((output.versionCode.get() ?: 0) * 10 + abiVersionCode)
-            }
+def abiCodes = ["x86_64": 1, "armeabi-v7a": 2, "arm64-v8a": 3]
+android.applicationVariants.all { variant ->
+    variant.outputs.forEach { output ->
+        def abiVersionCode = abiCodes.get(output.getFilter(OutputFile.ABI))
+        if (abiVersionCode != null) {
+            output.versionCodeOverride = variant.versionCode * 10 + abiVersionCode
         }
     }
 }
