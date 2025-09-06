@@ -156,6 +156,7 @@ class ChatPostForm extends HookConsumerWidget {
             Visibility(
               visible: showTextField,
               maintainState: true,
+              maintainFocusability: true,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: TextField(
