@@ -27,10 +27,52 @@ jobs:
           echo version=$(grep flutter .fvmrc | cut -d ':' -f 2 | cut -d '"' -f 2)
           >> $GITHUB_OUTPUT
 
+  get-build-name:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    outputs:
+      build-name: ${{ steps.get-build-name.outputs.build-name }}
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Get build name
+        id: get-build-name
+        run: |
+          build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
+          echo build-name=$build_name >> $GITHUB_OUTPUT
+
+  get-build-number:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    outputs:
+      build-number: ${{ steps.get-build-number.outputs.build-number }}
+
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+
+      - name: Get build number
+        id: get-build-number
+        run: |
+          build_number=$(grep version pubspec.yaml | cut -d '+' -f 2)
+          echo build-number=$build_number >> $GITHUB_OUTPUT
+
   build-apk:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
+    needs:
+      - get-flutter-version
+      - get-build-number
 
     permissions:
       contents: write
@@ -112,10 +154,31 @@ jobs:
             ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
           draft: true
 
+      - name: Check version codes
+        working-directory: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
+        run: |
+          check_version_code() {
+            summary=$(
+              $ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer apk summary \
+                aria-${{ github.ref_name }}-$1.apk
+            )
+            echo aria-${{ github.ref_name }}-$1.apk: $summary
+            version_code=$(echo $summary | cut -d ' ' -f 2)
+            if [ $version_code -ne $2 ]; then
+              echo ::error::Invalid version code. Expected: $2. Actual: $version_code.
+              exit 1
+            fi
+          }
+          check_version_code armeabi-v7a ${{ needs.get-build-number.outputs.build-number }}2
+          check_version_code arm64-v8a ${{ needs.get-build-number.outputs.build-number }}3
+          check_version_code x86_64 ${{ needs.get-build-number.outputs.build-number }}1
+
   build-appbundle:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
+    needs:
+      - get-flutter-version
+      - get-build-number
 
     permissions:
       contents: write
@@ -150,12 +213,6 @@ jobs:
           fileDir: android/app/
           encodedString: ${{ secrets.UPLOAD_KEYSTORE }}
 
-      - name: Get build number
-        id: get-build-number
-        run: |
-          build_number=$(grep version pubspec.yaml | cut -d '+' -f 2)
-          echo build-number=$build_number >> $GITHUB_OUTPUT
-
       - name: Build App Bundle
         env:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
@@ -163,7 +220,7 @@ jobs:
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
         run: >
           flutter build appbundle
-          --build-number ${{ steps.get-build-number.outputs.build-number }}3
+          --build-number ${{ needs.get-build-number.outputs.build-number }}3
 
       - name: Upload App Bundle
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -191,7 +248,9 @@ jobs:
   build-ios:
     runs-on: macos-latest
 
-    needs: get-flutter-version
+    needs:
+      - get-flutter-version
+      - get-build-name
 
     permissions:
       contents: write
@@ -214,17 +273,11 @@ jobs:
       - name: Update Rust
         run: rustup update
 
-      - name: Get build name
-        id: get-build-name
-        run: |
-          build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
-          echo build-name=$build_name >> $GITHUB_OUTPUT
-
       - name: Build for iOS
         run: >
           flutter build ios
           --no-codesign
-          --build-name ${{ steps.get-build-name.outputs.build-name }}
+          --build-name ${{ needs.get-build-name.outputs.build-name }}
 
       - name: Copy Runner.app
         run: |
@@ -372,7 +425,9 @@ jobs:
   build-macos:
     runs-on: macos-latest
 
-    needs: get-flutter-version
+    needs:
+      - get-flutter-version
+      - get-build-name
 
     permissions:
       contents: write
@@ -394,12 +449,6 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
-
-      - name: Get build name
-        id: get-build-name
-        run: |
-          build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
-          echo build-name=$build_name >> $GITHUB_OUTPUT
 
       - name: Install codemagic-cli-tools
         run: pip install codemagic-cli-tools
@@ -437,7 +486,7 @@ jobs:
         run: xcode-project use-profiles
 
       - name: Build for macOS
-        run: flutter build macos --build-name ${{ steps.get-build-name.outputs.build-name }}
+        run: flutter build macos --build-name ${{ needs.get-build-name.outputs.build-name }}
 
       - name: Install create-dmg
         run: brew install create-dmg
