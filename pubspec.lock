@@ -1983,8 +1983,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: unifiedpush_android
-      ref: "90316c05d59da5b31c9861992b07b572e859676f"
-      resolved-ref: "90316c05d59da5b31c9861992b07b572e859676f"
+      ref: "05596c24df16c1249acaf3741f5811b90ef9d2a5"
+      resolved-ref: "05596c24df16c1249acaf3741f5811b90ef9d2a5"
       url: "https://github.com/poppingmoon/flutter-connector"
     source: git
     version: "3.1.1"
