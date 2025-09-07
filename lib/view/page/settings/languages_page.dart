@@ -28,13 +28,11 @@ class LanguagesPage extends ConsumerWidget {
         child: RadioGroup<AppLocale?>(
           groupValue: locale,
           onChanged: (value) {
-            ref
-                .read(generalSettingsNotifierProvider.notifier)
-                .setLocale(locale);
-            if (locale == null) {
+            ref.read(generalSettingsNotifierProvider.notifier).setLocale(value);
+            if (value == null) {
               LocaleSettings.useDeviceLocale();
             } else {
-              LocaleSettings.setLocale(locale);
+              LocaleSettings.setLocale(value);
             }
           },
           child: ListView(
