@@ -1295,6 +1295,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get tosAndPrivacyPolicy => 'Условия использования и политика конфиденциальности';
 	@override String get avatarDecorations => 'Украшения для аватара';
 	@override String get attach => 'Прикрепить';
+	@override String get detachAll => 'Убрать всё';
 	@override String get angle => 'Угол';
 	@override String get flip => 'Переворот';
 	@override String get showAvatarDecorations => 'Показать украшения для аватара';
@@ -1333,7 +1334,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get performance => 'Производительность';
 	@override String get modified => 'Изменено';
 	@override String get signinWithPasskey => 'Войдите в систему, используя свой пароль';
-	@override String get unknownWebAuthnKey => 'Не известный ключ ';
+	@override String get unknownWebAuthnKey => 'Неизвестный ключ';
 	@override String get passkeyVerificationFailed => 'Ошибка проверка ключа доступа ';
 	@override String get messageToFollower => 'Сообщение подписчикам';
 	@override String get testCaptchaWarning => 'Эта функция предназначена для тестирования CAPTCHA. <strong>Не использовать это в рабочей среде</strong>';
@@ -1348,8 +1349,11 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'Федерация отключена для этого сервера. Вы не можете взаимодействовать с пользователями на других серверах.';
 	@override String get draft => 'Черновик';
 	@override String get markAsSensitiveConfirm => 'Отметить контент как чувствительный?';
+	@override String get preferences => 'Основное';
 	@override String get resetToDefaultValue => 'Сбросить настройки до стандартных';
+	@override String get syncBetweenDevices => 'Синхронизировать между устройствами';
 	@override String get postForm => 'Форма отправки';
+	@override String get textCount => 'Количество символов';
 	@override String get information => 'Описание';
 	@override String get inMinutes => 'мин';
 	@override String get inDays => 'сут';
@@ -1449,6 +1453,9 @@ class _TranslationsMisskeySettingsRuRu extends TranslationsMisskeySettingsEnUs {
 
 	// Translations
 	@override String get webhook => 'Вебхук';
+	@override String get preferencesBanner => 'Вы можете настроить общее поведение клиента по вашим предпочтениям';
+	@override String get timelineAndNote => 'Лента и заметки';
+	@override late final _TranslationsMisskeySettingsChatRuRu chat_ = _TranslationsMisskeySettingsChatRuRu._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2607,6 +2614,17 @@ class _TranslationsMisskeyImageEffectorRuRu extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsRuRu fxProps_ = _TranslationsMisskeyImageEffectorFxPropsRuRu._(_root);
 }
 
+// Path: misskey.settings_.chat_
+class _TranslationsMisskeySettingsChatRuRu extends TranslationsMisskeySettingsChatEnUs {
+	_TranslationsMisskeySettingsChatRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Показывать имя отправителя';
+	@override String get sendOnEnter => 'Использовать Enter для отправки';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRuRu extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2728,6 +2746,8 @@ class _TranslationsMisskeyAchievementsTypesRuRu extends TranslationsMisskeyAchie
 	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayRuRu loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayRuRu._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedRuRu cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedRuRu._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverRuRu brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverRuRu._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadRuRu bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadRuRu._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadRuRu bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadRuRu._(_root);
 }
 
 // Path: misskey.role_.priority_
@@ -3859,6 +3879,28 @@ class _TranslationsMisskeyAchievementsTypesBrainDiverRuRu extends TranslationsMi
 	@override String get title => 'Brain Diver';
 	@override String get description => 'Опубликована ссылка на песню «Brain Diver»';
 	@override String get flavor => 'Мисски-Мисски Ла-Ту-Ма';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameExplodingHead_
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadRuRu extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '🤯';
+	@override String get description => 'Самый большой объект в Bubble game';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadRuRu extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Двойной🤯';
+	@override String get description => 'Два самых больших объекта в Bubble game одновременно!';
 }
 
 // Path: misskey.pages_.blocks.note_

@@ -9,7 +9,7 @@ plugins {
 android {
     namespace = "com.poppingmoon.aria"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "28.1.13356709"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         coreLibraryDesugaringEnabled = true
@@ -61,7 +61,7 @@ dependencies {
 }
 
 configurations.configureEach {
-    def tink = "com.google.crypto.tink:tink-android:1.17.0"
+    def tink = "com.google.crypto.tink:tink-android:1.18.0"
     resolutionStrategy {
         force(tink)
         dependencySubstitution {

@@ -11423,6 +11423,12 @@
             "value": "🤯"
           }
         },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "🤯"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -11510,6 +11516,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "🤯 Duplo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Двойной🤯"
           }
         },
         "th": {
