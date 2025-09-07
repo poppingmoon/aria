@@ -2390,7 +2390,7 @@ class _TranslationsMisskeyDisplayOfSensitiveMediaEsEs extends TranslationsMisske
 	// Translations
 	@override String get respect => 'Esconder medios marcados como sensibles';
 	@override String get ignore => 'Mostrar medios marcados como sensibles';
-	@override String get force => 'Esconder todala multimedia';
+	@override String get force => 'Esconder toda la multimedia';
 }
 
 // Path: misskey.instanceTicker_

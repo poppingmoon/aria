@@ -1886,7 +1886,7 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => 'Quan s\'activa aquesta opció millora bastant el rendiment en recuperar les línies de temps reduint la càrrega de la base. Com a contrapunt, augmentarà  l\'ús de memòria de Redís. Desactiva aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes d\'inestabilitat.';
 	@override String get remoteNotesCleaning => 'Neteja automàtica de notes remotes';
 	@override String get remoteNotesCleaning_description => 'Quan activis aquesta opció, periòdicament es netejaran les notes remotes que no es consultin, això evitarà que la base de dades se';
-	@override String get remoteNotesCleaningMaxProcessingDuration => 'D\'oració màxima del temps de funcionament del procés de neteja';
+	@override String get remoteNotesCleaningMaxProcessingDuration => 'Duració màxima del temps de funcionament del procés de neteja';
 	@override String get remoteNotesCleaningExpiryDaysForEachNotes => 'Duració mínima de conservació de les notes';
 	@override String get inquiryUrl => 'URL de consulta ';
 	@override String get inquiryUrlDescription => 'Escriu adreça URL per al formulari de consulta per al mantenidor del servidor o una pàgina web amb el contacte d\'informació.';
