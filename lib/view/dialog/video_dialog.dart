@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,6 +41,11 @@ class VideoDialog extends HookConsumerWidget {
         children: [
           Dismissible(
             key: const ValueKey('VideoDialog'),
+            onUpdate: (details) {
+              if (!details.previousReached && details.reached) {
+                HapticFeedback.lightImpact();
+              }
+            },
             onDismissed: (_) => context.pop(),
             direction: DismissDirection.vertical,
             child: Center(child: _VideoWidget(controller: controller)),

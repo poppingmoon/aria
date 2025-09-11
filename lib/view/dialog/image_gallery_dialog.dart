@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
@@ -60,7 +61,11 @@ class ImageGalleryDialog extends HookConsumerWidget {
     final index = useState(initialIndex);
     useEffect(() {
       controller.addListener(() {
-        index.value = controller.page?.round() ?? 0;
+        final nextIndex = controller.page?.round() ?? 0;
+        if (index.value != nextIndex) {
+          index.value = nextIndex;
+          HapticFeedback.lightImpact();
+        }
       });
       return;
     }, []);
@@ -91,6 +96,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
                 duration: Duration.zero,
               );
+            }
+            if (!details.previousReached && details.reached) {
+              HapticFeedback.lightImpact();
             }
           },
           onDismissed: (_) => context.pop(),
