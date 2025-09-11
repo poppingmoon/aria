@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,13 +19,37 @@ import '../../../util/pretty_bytes.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
-class BehaviorPage extends ConsumerWidget {
+double _minFlingFactorToSensitivity(double minFlingFactor) {
+  return pow(maxTimelinesPageMinFlingFactor - minFlingFactor, 2).toDouble();
+}
+
+double _sensitivityToMinFlingFactor(double sensitivity) {
+  return maxTimelinesPageMinFlingFactor - sqrt(sensitivity);
+}
+
+class BehaviorPage extends HookConsumerWidget {
   const BehaviorPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
     final cacheSize = ref.watch(cacheSizeProvider);
+    final sqrtStiffness = useState(
+      sqrt(
+        clampDouble(
+          settings.timelinesPageSpringStiffness,
+          0.0,
+          maxTimelinesPageSpringStiffness,
+        ),
+      ),
+    );
+    final sensitivity = useState(
+      clampDouble(
+        _minFlingFactorToSensitivity(settings.timelinesPageMinFlingFactor),
+        0.0,
+        _minFlingFactorToSensitivity(0.0),
+      ),
+    );
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.behavior)),
@@ -64,19 +91,6 @@ class BehaviorPage extends ConsumerWidget {
                         .setKeepScreenOn(value);
                     WakelockPlus.toggle(enable: value);
                   },
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.enableHorizontalSwipe),
-                  value: settings.enableHorizontalSwipe,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEnableHorizontalSwipe(value),
                 ),
               ),
             ),
@@ -358,6 +372,116 @@ class BehaviorPage extends ConsumerWidget {
                   ),
                 ),
               ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.aria.tabSwitching,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.misskey.enableHorizontalSwipe),
+                  value: settings.enableHorizontalSwipe,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setEnableHorizontalSwipe(value),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.aria.springStiffness),
+                  subtitle: Slider(
+                    value: sqrtStiffness.value,
+                    max: sqrt(maxTimelinesPageSpringStiffness),
+                    label: pow(sqrtStiffness.value, 2).toStringAsFixed(1),
+                    onChanged: settings.enableHorizontalSwipe
+                        ? (value) => sqrtStiffness.value = value
+                        : null,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setTimelinesPageSpringStiffness(
+                          pow(value, 2).toDouble(),
+                        ),
+                  ),
+                  trailing: IconButton(
+                    onPressed: settings.enableHorizontalSwipe
+                        ? () {
+                            sqrtStiffness.value = sqrt(
+                              defaultTimelinesPageSpringStiffness,
+                            );
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setTimelinesPageSpringStiffness(
+                                  defaultTimelinesPageSpringStiffness,
+                                );
+                          }
+                        : null,
+                    icon: const Icon(Icons.refresh),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.aria.swipeSensitivity),
+                  subtitle: Slider(
+                    value: sensitivity.value,
+                    max: _minFlingFactorToSensitivity(0.0),
+                    label: sqrt(sensitivity.value).toStringAsFixed(1),
+                    onChanged: settings.enableHorizontalSwipe
+                        ? (value) => sensitivity.value = value
+                        : null,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setTimelinesPageMinFlingFactor(
+                          _sensitivityToMinFlingFactor(value),
+                        ),
+                  ),
+                  trailing: IconButton(
+                    onPressed: settings.enableHorizontalSwipe
+                        ? () {
+                            sensitivity.value = _minFlingFactorToSensitivity(
+                              defaultTimelinesPageMinFlingFactor,
+                            );
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setTimelinesPageMinFlingFactor(
+                                  defaultTimelinesPageMinFlingFactor,
+                                );
+                          }
+                        : null,
+                    icon: const Icon(Icons.refresh),
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(height: 16.0),
             Center(
               child: Container(

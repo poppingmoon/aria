@@ -579,6 +579,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Since'
 	String get sinceDate => 'Since';
 
+	/// en-US: 'Spring stiffness'
+	String get springStiffness => 'Spring stiffness';
+
 	/// en-US: 'Stack trace'
 	String get stackTrace => 'Stack trace';
 
@@ -588,8 +591,14 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Swap comments with the body'
 	String get swapCw => 'Swap comments with the body';
 
+	/// en-US: 'Swipe sensitivity'
+	String get swipeSensitivity => 'Swipe sensitivity';
+
 	/// en-US: 'Tab name'
 	String get tabName => 'Tab name';
+
+	/// en-US: 'Tab switching'
+	String get tabSwitching => 'Tab switching';
 
 	/// en-US: 'Tab type'
 	String get tabType => 'Tab type';

@@ -34,6 +34,10 @@ const defaultTimelinesPageButtonTypes = [
   TimelinesPageButtonType.postForm,
   TimelinesPageButtonType.note,
 ];
+const defaultTimelinesPageSpringStiffness = 100.0;
+const maxTimelinesPageSpringStiffness = 500.0;
+const defaultTimelinesPageMinFlingFactor = 2.0;
+const maxTimelinesPageMinFlingFactor = 10.0;
 
 @freezed
 abstract class GeneralSettings with _$GeneralSettings {
@@ -122,7 +126,6 @@ abstract class GeneralSettings with _$GeneralSettings {
     // Behavior
     @Default(true) bool enableInfiniteScroll,
     @Default(false) bool keepScreenOn,
-    @Default(true) bool enableHorizontalSwipe,
     @Default(false) bool openSensitiveMediaOnDoubleTap,
     @Default(NoteActionType.expand) NoteActionType noteTapAction,
     @Default(NoteActionType.menu) NoteActionType noteDoubleTapAction,
@@ -136,6 +139,11 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(false) bool enableSpellCheck,
     @Default(false) bool enablePredictiveBack,
     @Default(true) bool enableHapticFeedback,
+    @Default(true) bool enableHorizontalSwipe,
+    @Default(defaultTimelinesPageSpringStiffness)
+    double timelinesPageSpringStiffness,
+    @Default(defaultTimelinesPageMinFlingFactor)
+    double timelinesPageMinFlingFactor,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
 
