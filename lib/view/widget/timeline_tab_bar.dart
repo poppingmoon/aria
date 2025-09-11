@@ -28,7 +28,8 @@ class TimelineTabBar extends HookConsumerWidget {
           .toList(),
       controller: controller,
       indicator: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
+        color: Theme.of(context).colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(12.0),
       ),
       labelPadding: const EdgeInsets.symmetric(
         horizontal: (tabHeight - 24.0) / 2,
@@ -54,6 +55,7 @@ class TimelineTabBar extends HookConsumerWidget {
           controller.animateTo(index);
         }
       },
+      splashBorderRadius: BorderRadius.circular(12.0),
       tabAlignment: TabAlignment.center,
     );
   }
