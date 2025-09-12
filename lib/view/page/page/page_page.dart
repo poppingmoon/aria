@@ -27,6 +27,7 @@ import '../../dialog/text_field_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/like_button.dart';
 import '../../widget/media_list.dart';
@@ -260,7 +261,7 @@ class PagePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: RefreshIndicator(
+      body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(
           pageNotifierProvider(
             account,

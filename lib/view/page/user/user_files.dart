@@ -11,6 +11,7 @@ import '../../../model/tab_type.dart';
 import '../../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/media_card.dart';
 import '../../widget/pagination_bottom_widget.dart';
 
@@ -60,7 +61,7 @@ class UserFiles extends HookConsumerWidget {
       };
     }, []);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
           ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
       child: switch (notes) {

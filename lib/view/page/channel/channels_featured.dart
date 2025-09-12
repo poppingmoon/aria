@@ -8,6 +8,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/featured_channels_provider.dart';
 import '../../widget/channel_preview.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class ChannelsFeatured extends ConsumerWidget {
   const ChannelsFeatured({super.key, required this.account, this.onChannelTap});
@@ -18,7 +19,7 @@ class ChannelsFeatured extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channels = ref.watch(featuredChannelsProvider(account));
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(featuredChannelsProvider(account).future),
       child: switch (channels) {
         AsyncValue(valueOrNull: final channels?) =>

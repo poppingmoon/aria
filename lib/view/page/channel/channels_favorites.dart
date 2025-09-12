@@ -8,6 +8,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/favorite_channels_provider.dart';
 import '../../widget/channel_preview.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class ChannelsFavorites extends ConsumerWidget {
   const ChannelsFavorites({
@@ -22,7 +23,7 @@ class ChannelsFavorites extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channels = ref.watch(favoriteChannelsProvider(account));
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(favoriteChannelsProvider(account).future),
       child: switch (channels) {
         AsyncValue(valueOrNull: final channels?) =>

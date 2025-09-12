@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/featured_pages_provider.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/page_preview.dart';
 
 class PagesFeatured extends ConsumerWidget {
@@ -18,7 +19,7 @@ class PagesFeatured extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = ref.watch(featuredPagesProvider(account));
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(featuredPagesProvider(account).future),
       child: switch (pages) {
         AsyncValue(valueOrNull: final pages?) =>

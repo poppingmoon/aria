@@ -7,6 +7,7 @@ import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/owned_chat_rooms_notifier_provider.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/user_avatar.dart';
@@ -23,7 +24,7 @@ class ChatOwnedRooms extends ConsumerWidget {
     final theme = Theme.of(context);
 
     if (rooms.error case MisskeyException(code: 'PERMISSION_DENIED')) {
-      return RefreshIndicator(
+      return HapticFeedbackRefreshIndicator(
         onRefresh: () =>
             ref.refresh(ownedChatRoomsNotifierProvider(account).future),
         child: LayoutBuilder(

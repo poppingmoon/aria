@@ -12,6 +12,7 @@ import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/key_value_widget.dart';
 
 class ChatRoomInfo extends ConsumerWidget {
@@ -27,7 +28,7 @@ class ChatRoomInfo extends ConsumerWidget {
     final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
           ref.refresh(chatRoomNotifierProvider(account, roomId).future),
       child: switch (room) {

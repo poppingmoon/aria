@@ -12,6 +12,7 @@ import '../../../provider/api/lists_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class ListsPage extends ConsumerWidget {
   const ListsPage({super.key, required this.account});
@@ -26,7 +27,7 @@ class ListsPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.lists)),
-      body: RefreshIndicator(
+      body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(listsNotifierProvider(account).future),
         child: switch (lists) {
           AsyncValue(valueOrNull: final lists?) =>

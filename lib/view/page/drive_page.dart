@@ -22,6 +22,7 @@ import '../widget/drive_file_widget.dart';
 import '../widget/drive_files_sheet.dart';
 import '../widget/drive_folder_sheet.dart';
 import '../widget/drive_folder_widget.dart';
+import '../widget/haptic_feedback_refresh_indicator.dart';
 import '../widget/pagination_bottom_widget.dart';
 
 class DrivePage extends HookConsumerWidget {
@@ -297,7 +298,7 @@ class DrivePage extends HookConsumerWidget {
             ),
           ),
         ),
-        body: RefreshIndicator(
+        body: HapticFeedbackRefreshIndicator(
           onRefresh: () => Future.wait([
             ref.refresh(driveFoldersNotifierProvider(account, folderId).future),
             ref.refresh(driveFilesNotifierProvider(account, folderId).future),

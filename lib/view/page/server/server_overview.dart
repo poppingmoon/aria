@@ -17,6 +17,7 @@ import '../../../provider/node_info_provider.dart';
 import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/launch_url.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/key_value_widget.dart';
 
@@ -43,7 +44,7 @@ class ServerOverview extends ConsumerWidget {
       misskeyColorsProvider(Theme.of(context).brightness),
     );
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => Future.wait([
         ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
         if (account.host != host)

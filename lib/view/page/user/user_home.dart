@@ -24,6 +24,7 @@ import '../../../util/punycode.dart';
 import '../../dialog/image_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/note_widget.dart';
@@ -62,7 +63,7 @@ class UserHome extends ConsumerWidget {
       ),
     );
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(
         userNotifierProvider(
           account,

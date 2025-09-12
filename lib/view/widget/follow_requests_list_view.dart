@@ -19,6 +19,7 @@ import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'acct_widget.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 import 'user_avatar.dart';
 import 'user_sheet.dart';
@@ -97,7 +98,7 @@ class FollowRequestsListView extends HookConsumerWidget {
       return;
     }, []);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () async {
         ref.invalidate(webSocketChannelProvider(account));
         nextRequests.value = [];

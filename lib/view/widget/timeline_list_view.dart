@@ -21,6 +21,7 @@ import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../util/reload_timeline.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
 import 'timeline_note.dart';
@@ -317,7 +318,7 @@ class TimelineListView extends HookConsumerWidget {
       return () => controller.removeListener(callback);
     }, [tabSettings, centerId]);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => reloadTimeline(ref, tabSettings),
       notificationPredicate: (_) =>
           nextNotes.valueOrNull?.isLastLoaded ?? false,

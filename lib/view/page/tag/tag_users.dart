@@ -9,6 +9,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/tag_users_provider.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/user_info.dart';
 import '../../widget/users_sort_type_widget.dart';
 
@@ -31,7 +32,7 @@ class TagUsers extends HookConsumerWidget {
       ),
     );
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(tagUsersProvider(account, tag).future),
       child: ListView(
         children: [

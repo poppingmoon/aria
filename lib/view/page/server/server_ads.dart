@@ -7,6 +7,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class ServerAds extends ConsumerWidget {
   const ServerAds({super.key, required this.host});
@@ -17,7 +18,7 @@ class ServerAds extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host));
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
           ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
       child: switch (meta) {
