@@ -521,7 +521,25 @@ class AchievementWidget extends StatelessWidget {
         message: t.misskey.achievements_.types_.tutorialCompleted_.description,
         child: Text(t.misskey.achievements_.types_.tutorialCompleted_.title),
       ),
-      _ => const SizedBox.shrink(),
+      'bubbleGameExplodingHead' => Tooltip(
+        message:
+            t.misskey.achievements_.types_.bubbleGameExplodingHead_.description,
+        child: Text(
+          t.misskey.achievements_.types_.bubbleGameExplodingHead_.title,
+        ),
+      ),
+      'bubbleGameDoubleExplodingHead' => Tooltip(
+        message: t
+            .misskey
+            .achievements_
+            .types_
+            .bubbleGameDoubleExplodingHead_
+            .description,
+        child: Text(
+          t.misskey.achievements_.types_.bubbleGameDoubleExplodingHead_.title,
+        ),
+      ),
+      _ => Text(achievement),
     };
   }
 }
