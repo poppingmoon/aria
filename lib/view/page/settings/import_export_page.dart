@@ -282,6 +282,7 @@ class ImportExportPage extends ConsumerWidget {
                             await showMessageDialog(
                               context,
                               t.aria.importCompleted,
+                              icon: const Icon(Icons.info_outline),
                             );
                           }
                         } catch (_) {
@@ -325,6 +326,7 @@ class ImportExportPage extends ConsumerWidget {
                             await showMessageDialog(
                               context,
                               t.aria.importCompleted,
+                              icon: const Icon(Icons.info_outline),
                             );
                           }
                         } catch (_) {
