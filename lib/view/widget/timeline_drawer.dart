@@ -8,6 +8,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
+import '../../provider/api/endpoints_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/lookup.dart';
@@ -114,6 +115,7 @@ class _TimelineDrawerExpansionTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
     final theme = Theme.of(context);
 
     return ExpansionTile(
@@ -172,7 +174,8 @@ class _TimelineDrawerExpansionTile extends ConsumerWidget {
           title: Text(t.misskey.drive),
           onTap: () => context.push('/$account/drive'),
         ),
-        if (i?.canChat != null && i?.chatScope != ChatScope.none)
+        if (i?.policies?.chatAvailability != ChatAvailability.unavailable &&
+            (endpoints?.contains('chat/history') ?? true))
           ListTile(
             leading: Stack(
               children: [
