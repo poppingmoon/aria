@@ -30,7 +30,10 @@ class PinnedEmojisEditor extends HookConsumerWidget {
       pinnedEmojisNotifierProvider(account, reaction: reaction),
     );
     final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
-    final useEmojiPalette = endpoints?.contains('chat/history') ?? false;
+    final useEmojiPalette =
+        endpoints == null ||
+        endpoints.contains('chat/history') ||
+        !endpoints.contains('i/read-all-unread-notes');
 
     return ExpansionTile(
       leading: Icon(reaction ? Icons.push_pin : Icons.push_pin_outlined),
