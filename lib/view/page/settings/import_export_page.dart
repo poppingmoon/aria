@@ -115,231 +115,278 @@ class ImportExportPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
+    final theme = Theme.of(context);
 
     return GeneralSettingsScaffold(
-      appBar: AppBar(title: Text(t.misskey.importAndExport)),
+      appBar: AppBar(title: Text(t.misskey.preferencesBackups)),
       body: ListView(
         children: [
+          const SizedBox(height: 16.0),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
-              child: ExpansionTile(
-                leading: const Icon(Icons.file_upload),
-                title: Text(t.misskey.export),
-                initiallyExpanded: true,
-                children: [
-                  if (accounts.isNotEmpty)
-                    ListTile(
-                      leading: const Icon(Icons.cloud),
-                      title: Text(t.misskey.drive),
-                      onTap: () async {
-                        final account = await _selectAccount(context, accounts);
-                        if (!context.mounted) return;
-                        if (account != null) {
-                          final result = await showDialog<(DriveFolder?,)>(
-                            context: ref.context,
-                            builder: (context) =>
-                                DrivePage(account: account, selectFolder: true),
-                          );
-                          if (!context.mounted) return;
-                          if (result == null) return;
-                          final folderId = result.$1?.id;
-                          final tempDirectory = await ref
-                              .read(fileSystemProvider)
-                              .systemTempDirectory
-                              .createTemp();
-                          final tempFile = tempDirectory.childFile('aria.json');
-                          if (!context.mounted) return;
-                          final data = await futureWithDialog(
-                            context,
-                            _export(ref),
-                          );
-                          if (data == null) return;
-                          if (!context.mounted) return;
-                          await futureWithDialog(
-                            context,
-                            tempFile.writeAsString(jsonEncode(data)),
-                          );
-                          if (!context.mounted) return;
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(
-                                  driveFilesNotifierProvider(
-                                    account,
-                                    folderId,
-                                  ).notifier,
-                                )
-                                .upload(
-                                  tempFile,
-                                  comment: t.aria.settingsFileForAria,
-                                ),
-                            message: t.aria.uploaded,
-                          );
-                        }
-                      },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.misskey.export,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8.0),
+          if (accounts.isNotEmpty)
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.cloud_upload_outlined),
+                  title: Text(t.aria.saveToDrive),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
                     ),
-                  ListTile(
-                    leading: const Icon(Icons.copy),
-                    title: Text(t.misskey.copy),
-                    onTap: () async {
+                  ),
+                  tileColor: theme.colorScheme.surface,
+                  onTap: () async {
+                    final account = await _selectAccount(context, accounts);
+                    if (!context.mounted) return;
+                    if (account != null) {
+                      final result = await showDialog<(DriveFolder?,)>(
+                        context: ref.context,
+                        builder: (context) =>
+                            DrivePage(account: account, selectFolder: true),
+                      );
+                      if (!context.mounted) return;
+                      if (result == null) return;
+                      final folderId = result.$1?.id;
+                      final tempDirectory = await ref
+                          .read(fileSystemProvider)
+                          .systemTempDirectory
+                          .createTemp();
+                      final tempFile = tempDirectory.childFile('aria.json');
+                      if (!context.mounted) return;
                       final data = await futureWithDialog(
                         context,
                         _export(ref),
                       );
+                      if (data == null) return;
                       if (!context.mounted) return;
-                      await copyToClipboard(context, jsonEncode(data));
-                    },
-                  ),
-                ],
+                      await futureWithDialog(
+                        context,
+                        tempFile.writeAsString(jsonEncode(data)),
+                      );
+                      if (!context.mounted) return;
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(
+                              driveFilesNotifierProvider(
+                                account,
+                                folderId,
+                              ).notifier,
+                            )
+                            .upload(
+                              tempFile,
+                              comment: t.aria.settingsFileForAria,
+                            ),
+                        message: t.aria.uploaded,
+                      );
+                    }
+                  },
+                ),
               ),
             ),
-          ),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
-              child: ExpansionTile(
-                leading: const Icon(Icons.file_download),
-                title: Text(t.misskey.import),
-                initiallyExpanded: true,
-                children: [
-                  if (accounts.isNotEmpty)
-                    ListTile(
-                      leading: const Icon(Icons.cloud),
-                      title: Text(t.misskey.drive),
-                      onTap: () async {
-                        final account = await _selectAccount(context, accounts);
-                        if (!context.mounted || account == null) return;
-                        final result = await showDialog<(DriveFolder?,)>(
-                          context: ref.context,
-                          builder: (context) =>
-                              DrivePage(account: account, selectFolder: true),
-                        );
-                        if (!context.mounted) return;
-                        if (result == null) return;
-                        final folderId = result.$1?.id;
-                        if (!context.mounted) return;
-                        final files = await futureWithDialog(
-                          context,
-                          Future.wait(
-                            ['aria.json', 'aria.json.unknown'].map(
-                              (name) => ref
-                                  .read(misskeyProvider(account))
-                                  .drive
-                                  .files
-                                  .find(
-                                    DriveFilesFindRequest(
-                                      name: name,
-                                      folderId: folderId,
-                                    ),
-                                  ),
-                            ),
-                          ),
-                        );
-                        if (files == null) return;
-                        final latest = files.flattenedToList
-                            .sortedBy((file) => file.createdAt)
-                            .lastOrNull;
-                        if (!context.mounted) return;
-                        if (latest == null) {
-                          await showMessageDialog(context, t.aria.fileNotFound);
-                          return;
-                        }
-                        final file = await futureWithDialog(
-                          context,
-                          ref
-                              .read(cacheManagerProvider)
-                              .getSingleFile(latest.url),
-                        );
-                        try {
-                          final json =
-                              json5Decode(await file!.readAsString())
-                                  as Map<String, dynamic>;
-                          final backup = AriaBackup.fromJson(json);
-                          if (!context.mounted) return;
-                          final confirmed = await confirm(
-                            context,
-                            content: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(t.aria.importConfirm),
-                                Text(
-                                  '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
-                                ),
-                              ],
-                            ),
-                          );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            final result = await futureWithDialog(
-                              context,
-                              _import(ref, backup),
-                            );
-                            if (result == null) return;
-                            if (!context.mounted) return;
-                            await showMessageDialog(
-                              context,
-                              t.aria.importCompleted,
-                              icon: const Icon(Icons.info_outline),
-                            );
-                          }
-                        } catch (_) {
-                          if (!context.mounted) return;
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
-                        }
-                      },
+              child: ListTile(
+                leading: const Icon(Icons.copy),
+                title: Text(t.misskey.copy),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: accounts.isEmpty
+                        ? const Radius.circular(8.0)
+                        : Radius.zero,
+                    bottom: const Radius.circular(8.0),
+                  ),
+                ),
+                tileColor: theme.colorScheme.surface,
+                onTap: () async {
+                  final data = await futureWithDialog(context, _export(ref));
+                  if (!context.mounted) return;
+                  await copyToClipboard(context, jsonEncode(data));
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.misskey.import,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 8.0),
+          if (accounts.isNotEmpty)
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.cloud_download_outlined),
+                  title: Text(t.aria.loadFromDrive),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
                     ),
-                  ListTile(
-                    leading: const Icon(Icons.paste),
-                    title: Text(t.aria.paste),
-                    onTap: () async {
-                      final result = await showDialog<String>(
-                        context: context,
-                        builder: (context) => TextFieldDialog(
-                          title: Text(t.aria.paste),
-                          maxLines: 10,
+                  ),
+                  tileColor: theme.colorScheme.surface,
+                  onTap: () async {
+                    final account = await _selectAccount(context, accounts);
+                    if (!context.mounted || account == null) return;
+                    final result = await showDialog<(DriveFolder?,)>(
+                      context: ref.context,
+                      builder: (context) =>
+                          DrivePage(account: account, selectFolder: true),
+                    );
+                    if (!context.mounted) return;
+                    if (result == null) return;
+                    final folderId = result.$1?.id;
+                    if (!context.mounted) return;
+                    final files = await futureWithDialog(
+                      context,
+                      Future.wait(
+                        ['aria.json', 'aria.json.unknown'].map(
+                          (name) => ref
+                              .read(misskeyProvider(account))
+                              .drive
+                              .files
+                              .find(
+                                DriveFilesFindRequest(
+                                  name: name,
+                                  folderId: folderId,
+                                ),
+                              ),
+                        ),
+                      ),
+                    );
+                    if (files == null) return;
+                    final latest = files.flattenedToList
+                        .sortedBy((file) => file.createdAt)
+                        .lastOrNull;
+                    if (!context.mounted) return;
+                    if (latest == null) {
+                      await showMessageDialog(context, t.aria.fileNotFound);
+                      return;
+                    }
+                    final file = await futureWithDialog(
+                      context,
+                      ref.read(cacheManagerProvider).getSingleFile(latest.url),
+                    );
+                    try {
+                      final json =
+                          json5Decode(await file!.readAsString())
+                              as Map<String, dynamic>;
+                      final backup = AriaBackup.fromJson(json);
+                      if (!context.mounted) return;
+                      final confirmed = await confirm(
+                        context,
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(t.aria.importConfirm),
+                            Text(
+                              '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
+                            ),
+                          ],
                         ),
                       );
-                      if (result != null) {
-                        try {
-                          final json =
-                              json5Decode(result) as Map<String, dynamic>;
-                          final backup = AriaBackup.fromJson(json);
-                          if (!context.mounted) return;
-                          final confirmed = await confirm(
-                            context,
-                            message: t.aria.importConfirm,
-                          );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            final result = await futureWithDialog(
-                              context,
-                              _import(ref, backup),
-                            );
-                            if (result == null) return;
-                            if (!context.mounted) return;
-                            await showMessageDialog(
-                              context,
-                              t.aria.importCompleted,
-                              icon: const Icon(Icons.info_outline),
-                            );
-                          }
-                        } catch (_) {
-                          if (!context.mounted) return;
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
-                        }
+                      if (!context.mounted) return;
+                      if (confirmed) {
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
+                        if (!context.mounted) return;
+                        await showMessageDialog(
+                          context,
+                          t.aria.importCompleted,
+                          icon: const Icon(Icons.info_outline),
+                        );
                       }
-                    },
+                    } catch (_) {
+                      if (!context.mounted) return;
+                      await showMessageDialog(context, t.misskey.invalidValue);
+                    }
+                  },
+                ),
+              ),
+            ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ListTile(
+                leading: const Icon(Icons.paste),
+                title: Text(t.aria.paste),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: accounts.isEmpty
+                        ? const Radius.circular(8.0)
+                        : Radius.zero,
+                    bottom: const Radius.circular(8.0),
                   ),
-                ],
+                ),
+                tileColor: theme.colorScheme.surface,
+                onTap: () async {
+                  final result = await showDialog<String>(
+                    context: context,
+                    builder: (context) => TextFieldDialog(
+                      title: Text(t.aria.paste),
+                      maxLines: 10,
+                    ),
+                  );
+                  if (result != null) {
+                    try {
+                      final json = json5Decode(result) as Map<String, dynamic>;
+                      final backup = AriaBackup.fromJson(json);
+                      if (!context.mounted) return;
+                      final confirmed = await confirm(
+                        context,
+                        message: t.aria.importConfirm,
+                      );
+                      if (!context.mounted) return;
+                      if (confirmed) {
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
+                        if (!context.mounted) return;
+                        await showMessageDialog(
+                          context,
+                          t.aria.importCompleted,
+                          icon: const Icon(Icons.info_outline),
+                        );
+                      }
+                    } catch (_) {
+                      if (!context.mounted) return;
+                      await showMessageDialog(context, t.misskey.invalidValue);
+                    }
+                  }
+                },
               ),
             ),
           ),
