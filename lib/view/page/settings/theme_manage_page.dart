@@ -55,6 +55,7 @@ class ThemeManagePage extends ConsumerWidget {
       await showMessageDialog(
         ref.context,
         t.misskey.theme_.installed(name: theme.name),
+        icon: const Icon(Icons.info_outline),
       );
     } catch (e, st) {
       if (!ref.context.mounted) return;
