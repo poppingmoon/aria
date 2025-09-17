@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
+import '../../provider/api/endpoints_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
@@ -22,6 +24,7 @@ class TimelineMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
     final theme = Theme.of(context);
 
     return IconTheme.merge(
@@ -60,7 +63,8 @@ class TimelineMenu extends ConsumerWidget {
                 ),
               ),
             ),
-          if (i?.canChat != null)
+          if (i?.policies?.chatAvailability != ChatAvailability.unavailable &&
+              (endpoints?.contains('chat/history') ?? true))
             Card(
               clipBehavior: Clip.hardEdge,
               child: InkWell(
