@@ -32,7 +32,10 @@ class PasteEmojisDialog extends HookConsumerWidget {
     final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
     final isThirdPartyRegistrySupported =
         endpoints?.contains('i/registry/scopes-with-domain') ?? true;
-    final useEmojiPalette = endpoints?.contains('chat/history') ?? false;
+    final useEmojiPalette =
+        endpoints == null ||
+        endpoints.contains('chat/history') ||
+        !endpoints.contains('i/read-all-unread-notes');
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final registryUrl = serverUrl.replace(
       pathSegments: [
