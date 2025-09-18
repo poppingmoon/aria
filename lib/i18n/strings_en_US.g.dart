@@ -271,6 +271,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Line height'
 	String get lineHeight => 'Line height';
 
+	/// en-US: 'Load from Drive'
+	String get loadFromDrive => 'Load from Drive';
+
 	/// en-US: 'Sign in with an access token'
 	String get loginWithAccessToken => 'Sign in with an access token';
 
@@ -440,6 +443,9 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Rotate'
 	String get rotate => 'Rotate';
+
+	/// en-US: 'Save to Drive'
+	String get saveToDrive => 'Save to Drive';
 
 	/// en-US: 'Schedule'
 	String get schedule => 'Schedule';

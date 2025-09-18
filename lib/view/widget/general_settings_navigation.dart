@@ -41,9 +41,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => const Icon(Icons.brush),
       GeneralSettingsDestination.behavior => const Icon(Icons.gesture),
       GeneralSettingsDestination.theme => const Icon(Icons.palette),
-      GeneralSettingsDestination.importExport => const Icon(
-        Icons.import_export,
-      ),
+      GeneralSettingsDestination.importExport => const Icon(Icons.save),
       GeneralSettingsDestination.aboutAria => const Icon(Icons.info_outline),
     };
   }
@@ -58,7 +56,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => t.misskey.appearance,
       GeneralSettingsDestination.behavior => t.misskey.behavior,
       GeneralSettingsDestination.theme => t.misskey.theme,
-      GeneralSettingsDestination.importExport => t.misskey.importAndExport,
+      GeneralSettingsDestination.importExport => t.misskey.preferencesBackups,
       GeneralSettingsDestination.aboutAria => t.aria.aboutAria,
     };
   }
