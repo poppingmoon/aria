@@ -1,5 +1,4 @@
-import com.android.build.api.variant.FilterConfiguration.FilterType
-import com.android.build.api.variant.impl.getFilter
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
 
 plugins {
     id("com.android.application")
@@ -72,13 +71,12 @@ configurations.all {
 }
 
 val abiCodes = mapOf("x86_64" to 1, "armeabi-v7a" to 2, "arm64-v8a" to 3)
-androidComponents {
-    onVariants { variant ->
-        variant.outputs.forEach { output ->
-            val abiVersionCode = abiCodes[output.getFilter(FilterType.ABI)?.identifier]
-            if (abiVersionCode != null) {
-                output.versionCode.set((output.versionCode.get() ?: 0) * 10 + abiVersionCode)
-            }
+android.applicationVariants.configureEach {
+    outputs.forEach { output ->
+        val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
+        if (abiVersionCode != null) {
+            (output as ApkVariantOutputImpl).versionCodeOverride =
+                this.versionCode * 10 + abiVersionCode
         }
     }
 }
