@@ -41,13 +41,16 @@ class DriveSettingsPage extends ConsumerWidget {
               .watch(driveFolderProvider(account, settings.uploadFolder!))
               .valueOrNull
         : null;
+    final theme = Theme.of(context);
 
     return AccountSettingsScaffold(
       account: account,
       appBar: AppBar(title: Text(t.misskey.drive)),
-      body: ListView(
-        children: [
-          if (stats != null) ...[
+      body: ListTileTheme(
+        data: ListTileThemeData(tileColor: theme.colorScheme.surface),
+        child: ListView(
+          children: [
+            const SizedBox(height: 8.0),
             Center(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -66,6 +69,11 @@ class DriveSettingsPage extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -73,102 +81,135 @@ class DriveSettingsPage extends ConsumerWidget {
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8.0,
-                  horizontal: 16.0,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: KeyValueWidget(
-                        label: t.misskey.inUse,
-                        text: prettyBytes(stats.usage),
-                      ),
+                child: Material(
+                  color: theme.colorScheme.surface,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
                     ),
-                    Expanded(
-                      child: KeyValueWidget(
-                        label: t.misskey.capacity,
-                        text: prettyBytes(stats.capacity),
-                      ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 16.0,
                     ),
-                  ],
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: KeyValueWidget(
+                            label: t.misskey.inUse,
+                            text: stats != null
+                                ? prettyBytes(stats.usage)
+                                : null,
+                            child: stats == null
+                                ? Text(
+                                    t.misskey.loading,
+                                    style: TextStyle(
+                                      color: theme.colorScheme.onSurface
+                                          .withValues(alpha: 0.5),
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                        Expanded(
+                          child: KeyValueWidget(
+                            label: t.misskey.capacity,
+                            text: stats != null
+                                ? prettyBytes(stats.capacity)
+                                : t.misskey.loading,
+                            child: stats == null
+                                ? Text(
+                                    t.misskey.loading,
+                                    style: TextStyle(
+                                      color: theme.colorScheme.onSurface
+                                          .withValues(alpha: 0.5),
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: SizedBox(width: maxContentWidth, child: Divider()),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.misskey.uploadFolder),
+                  subtitle:
+                      settings.uploadFolder == null || uploadFolder != null
+                      ? Text(uploadFolder?.name ?? '/')
+                      : null,
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showDialog<(DriveFolder?,)>(
+                      context: ref.context,
+                      builder: (context) =>
+                          DrivePage(account: account, selectFolder: true),
+                    );
+                    if (result == null) return;
+                    await ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setUploadFolder(result.$1?.id);
+                  },
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ],
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                title: Text(t.misskey.uploadFolder),
-                subtitle: settings.uploadFolder == null || uploadFolder != null
-                    ? Text(uploadFolder?.name ?? '/')
-                    : null,
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await showDialog<(DriveFolder?,)>(
-                    context: ref.context,
-                    builder: (context) =>
-                        DrivePage(account: account, selectFolder: true),
-                  );
-                  if (result == null) return;
-                  await ref
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.misskey.keepOriginalUploading),
+                  subtitle: Text(t.misskey.keepOriginalUploadingDescription),
+                  value: settings.keepOriginalUploading,
+                  onChanged: (value) => ref
                       .read(accountSettingsNotifierProvider(account).notifier)
-                      .setUploadFolder(result.$1?.id);
-                },
+                      .setKeepOriginalUploading(value),
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: SwitchListTile(
-                title: Text(t.misskey.keepOriginalUploading),
-                subtitle: Text(t.misskey.keepOriginalUploadingDescription),
-                value: settings.keepOriginalUploading,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setKeepOriginalUploading(value),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.misskey.keepOriginalFilename),
+                  subtitle: Text(t.misskey.keepOriginalFilenameDescription),
+                  value: settings.keepOriginalFilename,
+                  onChanged: (value) => ref
+                      .read(accountSettingsNotifierProvider(account).notifier)
+                      .setKeepOriginalFilename(value),
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: SwitchListTile(
-                title: Text(t.misskey.keepOriginalFilename),
-                subtitle: Text(t.misskey.keepOriginalFilenameDescription),
-                value: settings.keepOriginalFilename,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setKeepOriginalFilename(value),
-              ),
-            ),
-          ),
-          if (i != null) ...[
             Center(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
                 child: SwitchListTile(
                   title: Text(t.misskey.alwaysMarkSensitive),
-                  value: i.alwaysMarkNsfw,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setAlwaysMarkSensitive(value),
-                  ),
+                  value: i?.alwaysMarkNsfw ?? false,
+                  onChanged: i != null
+                      ? (value) => futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setAlwaysMarkSensitive(value),
+                        )
+                      : null,
                 ),
               ),
             ),
@@ -179,18 +220,26 @@ class DriveSettingsPage extends ConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.misskey.enableAutoSensitive),
                   subtitle: Text(t.misskey.enableAutoSensitiveDescription),
-                  value: i.autoSensitive,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setAutoSensitive(value),
+                  value: i?.autoSensitive ?? false,
+                  onChanged: i != null
+                      ? (value) => futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setAutoSensitive(value),
+                        )
+                      : null,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
                   ),
                 ),
               ),
             ),
+            const SizedBox(height: 8.0),
           ],
-        ],
+        ),
       ),
       selectedDestination: AccountSettingsDestination.drive,
     );

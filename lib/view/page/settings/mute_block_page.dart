@@ -26,82 +26,120 @@ class MuteBlockPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return AccountSettingsScaffold(
       account: account,
       appBar: AppBar(title: Text(t.misskey.muteAndBlock)),
-      body: ListView(
-        children: [
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: MutedWordsEditor(account: account),
+      body: Theme(
+        data: theme.copyWith(
+          inputDecorationTheme: theme.inputDecorationTheme.copyWith(
+            enabledBorder: theme.inputDecorationTheme.border,
+          ),
+          expansionTileTheme: ExpansionTileThemeData(
+            backgroundColor: theme.colorScheme.surface,
+            collapsedBackgroundColor: theme.colorScheme.surface,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            collapsedShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
             ),
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: MutedWordsEditor(account: account, hardMute: true),
-            ),
+          listTileTheme: ListTileThemeData(
+            tileColor: theme.colorScheme.surface,
           ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: _MutedEmojisEditor(account: account),
+        ),
+        child: ListView(
+          children: [
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: MutedWordsEditor(account: account),
+              ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: _InstanceMuteEditor(account: account),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: MutedWordsEditor(account: account, hardMute: true),
+              ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(OffIcons.repeat_rounded),
-                title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () => context.push(
-                  '/settings/accounts/$account/mute-block/renote-muted',
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: _MutedEmojisEditor(account: account),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: _InstanceMuteEditor(account: account),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(OffIcons.repeat_rounded),
+                  title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () => context.push(
+                    '/settings/accounts/$account/mute-block/renote-muted',
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(Icons.visibility_off),
-                title: Text(t.misskey.mutedUsers),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () => context.push(
-                  '/settings/accounts/$account/mute-block/muted',
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.visibility_off),
+                  title: Text(t.misskey.mutedUsers),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () => context.push(
+                    '/settings/accounts/$account/mute-block/muted',
+                  ),
                 ),
               ),
             ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(Icons.block),
-                title: Text(t.misskey.blockedUsers),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () => context.push(
-                  '/settings/accounts/$account/mute-block/blocked',
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.block),
+                  title: Text(t.misskey.blockedUsers),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () => context.push(
+                    '/settings/accounts/$account/mute-block/blocked',
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8.0),
+          ],
+        ),
       ),
       selectedDestination: AccountSettingsDestination.muteBlock,
     );
@@ -259,10 +297,9 @@ class _InstanceMuteEditor extends HookConsumerWidget {
       childrenPadding: const EdgeInsets.all(8.0),
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Card(
-          margin: EdgeInsets.zero,
+        Card.filled(
           color: colors.infoBg,
-          elevation: 0.0,
+          margin: EdgeInsets.zero,
           child: Container(
             width: double.infinity,
             padding: const EdgeInsets.all(8.0),

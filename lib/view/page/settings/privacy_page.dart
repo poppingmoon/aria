@@ -30,307 +30,306 @@ class PrivacyPage extends ConsumerWidget {
     return AccountSettingsScaffold(
       account: account,
       appBar: AppBar(title: Text(t.misskey.privacy)),
-      body: ListView(
-        children: [
-          if (i != null) ...[
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.makeFollowManuallyApprove),
-                  subtitle: Text(t.misskey.lockedAccountInfo),
-                  value: i.isLocked,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setIsLocked(value),
+      body: ListTileTheme(
+        data: ListTileThemeData(tileColor: theme.colorScheme.surface),
+        child: ListView(
+          children: [
+            if (i != null) ...[
+              const SizedBox(height: 16.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    t.misskey.privacy,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-            ),
-            if (i.isLocked)
+              const SizedBox(height: 8.0),
               Center(
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
                   child: SwitchListTile(
-                    title: Text(t.misskey.autoAcceptFollowed),
-                    value: i.autoAcceptFollowed,
+                    title: Text(t.misskey.makeFollowManuallyApprove),
+                    subtitle: Text(t.misskey.lockedAccountInfo),
+                    value: i.isLocked,
                     onChanged: (value) => futureWithDialog(
                       context,
                       ref
                           .read(iNotifierProvider(account).notifier)
-                          .setAutoAcceptFollowed(value),
+                          .setIsLocked(value),
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),
               ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.makeReactionsPublic),
-                  subtitle: Text(t.misskey.makeReactionsPublicDescription),
-                  value: i.publicReactions,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setPublicReactions(value),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.followingVisibility),
-                  subtitle: FfVisibilityWidget(
-                    visibility: i.followingVisibility ?? i.ffVisibility,
-                  ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showRadioDialog(
-                      context,
-                      title: Text(t.misskey.followingVisibility),
-                      values: FFVisibility.values,
-                      initialValue: i.followingVisibility ?? i.ffVisibility,
-                      titleBuilder: (context, visibility) =>
-                          FfVisibilityWidget(visibility: visibility),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      await futureWithDialog(
+              if (i.isLocked)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
+                      title: Text(t.misskey.autoAcceptFollowed),
+                      value: i.autoAcceptFollowed,
+                      onChanged: (value) => futureWithDialog(
                         context,
                         ref
                             .read(iNotifierProvider(account).notifier)
-                            .setFollowingVisibility(result),
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.followersVisibility),
-                  subtitle: FfVisibilityWidget(
-                    visibility: i.followersVisibility ?? i.ffVisibility,
-                  ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showRadioDialog(
-                      context,
-                      title: Text(t.misskey.followersVisibility),
-                      values: FFVisibility.values,
-                      initialValue: i.followersVisibility ?? i.ffVisibility,
-                      titleBuilder: (context, visibility) =>
-                          FfVisibilityWidget(visibility: visibility),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setFollowersVisibility(result),
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.hideOnlineStatus),
-                  subtitle: Text(t.misskey.hideOnlineStatusDescription),
-                  value: i.hideOnlineStatus,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setHideOnlineStatus(value),
+                            .setAutoAcceptFollowed(value),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.noCrawle),
-                  subtitle: Text(t.misskey.noCrawleDescription),
-                  value: i.noCrawle,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setNoCrawle(value),
-                  ),
-                ),
-              ),
-            ),
-            if (i case MeDetailed(:final preventAiLearning?))
               Center(
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
                   child: SwitchListTile(
-                    title: Text(t.misskey.preventAiLearning),
-                    subtitle: Text(t.misskey.preventAiLearningDescription),
-                    value: preventAiLearning,
+                    title: Text(t.misskey.makeReactionsPublic),
+                    subtitle: Text(t.misskey.makeReactionsPublicDescription),
+                    value: i.publicReactions,
                     onChanged: (value) => futureWithDialog(
                       context,
                       ref
                           .read(iNotifierProvider(account).notifier)
-                          .setPreventAiLearning(value),
+                          .setPublicReactions(value),
                     ),
                   ),
                 ),
               ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.misskey.makeExplorable),
-                  subtitle: Text(t.misskey.makeExplorableDescription),
-                  value: i.isExplorable,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setIsExplorable(value),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.followingVisibility),
+                    subtitle: FfVisibilityWidget(
+                      visibility: i.followingVisibility ?? i.ffVisibility,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.followingVisibility),
+                        values: FFVisibility.values,
+                        initialValue: i.followingVisibility ?? i.ffVisibility,
+                        titleBuilder: (context, visibility) =>
+                            FfVisibilityWidget(visibility: visibility),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setFollowingVisibility(result),
+                        );
+                      }
+                    },
                   ),
                 ),
               ),
-            ),
-          ],
-          if (i?.canChat != null) ...[
-            const Center(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: SizedBox(width: maxContentWidth, child: Divider()),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.followersVisibility),
+                    subtitle: FfVisibilityWidget(
+                      visibility: i.followersVisibility ?? i.ffVisibility,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.followersVisibility),
+                        values: FFVisibility.values,
+                        initialValue: i.followersVisibility ?? i.ffVisibility,
+                        titleBuilder: (context, visibility) =>
+                            FfVisibilityWidget(visibility: visibility),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setFollowersVisibility(result),
+                        );
+                      }
+                    },
+                  ),
+                ),
               ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.chat_.chatAllowedUsers),
-                  subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showRadioDialog(
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(t.misskey.hideOnlineStatus),
+                    subtitle: Text(t.misskey.hideOnlineStatusDescription),
+                    value: i.hideOnlineStatus,
+                    onChanged: (value) => futureWithDialog(
                       context,
-                      title: Text(t.misskey.chat_.chatAllowedUsers),
-                      header: Card.filled(
-                        color: colors.infoBg,
-                        margin: EdgeInsets.zero,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            t.misskey.chat_.chatAllowedUsers_note,
-                            style: TextStyle(color: colors.infoFg),
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .setHideOnlineStatus(value),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(t.misskey.noCrawle),
+                    subtitle: Text(t.misskey.noCrawleDescription),
+                    value: i.noCrawle,
+                    onChanged: (value) => futureWithDialog(
+                      context,
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .setNoCrawle(value),
+                    ),
+                  ),
+                ),
+              ),
+              if (i case MeDetailed(:final preventAiLearning?))
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
+                      title: Text(t.misskey.preventAiLearning),
+                      subtitle: Text(t.misskey.preventAiLearningDescription),
+                      value: preventAiLearning,
+                      onChanged: (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setPreventAiLearning(value),
+                      ),
+                    ),
+                  ),
+                ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(t.misskey.makeExplorable),
+                    subtitle: Text(t.misskey.makeExplorableDescription),
+                    value: i.isExplorable,
+                    onChanged: (value) => futureWithDialog(
+                      context,
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .setIsExplorable(value),
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+            if (i?.canChat != null) ...[
+              const SizedBox(height: 16.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    t.misskey.chat,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.chat_.chatAllowedUsers),
+                    subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.chat_.chatAllowedUsers),
+                        header: Card.filled(
+                          color: colors.infoBg,
+                          margin: EdgeInsets.zero,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              t.misskey.chat_.chatAllowedUsers_note,
+                              style: TextStyle(color: colors.infoFg),
+                            ),
                           ),
                         ),
-                      ),
-                      values: ChatScope.values,
-                      initialValue: i?.chatScope,
-                      titleBuilder: (context, chatScope) =>
-                          _ChatScopeWidget(chatScope: chatScope),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setChatScope(result),
+                        values: ChatScope.values,
+                        initialValue: i?.chatScope,
+                        titleBuilder: (context, chatScope) =>
+                            _ChatScopeWidget(chatScope: chatScope),
                       );
-                    }
-                  },
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setChatScope(result),
+                        );
+                      }
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
-          const Center(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
-              child: SizedBox(width: maxContentWidth, child: Divider()),
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: SwitchListTile(
-                title: Text(t.misskey.keepCw),
-                value: settings.keepCw,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setKeepCw(value),
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: SwitchListTile(
-                title: Text(t.misskey.rememberNoteVisibility),
-                value: settings.rememberNoteVisibility,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setRememberNoteVisibility(value),
-              ),
-            ),
-          ),
-          if (!settings.rememberNoteVisibility) ...[
+            ],
+            const SizedBox(height: 16.0),
             Center(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.defaultNoteVisibility),
-                  subtitle: NoteVisibilityWidget(
-                    visibility: settings.defaultNoteVisibility,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.misskey.postForm,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.misskey.keepCw),
+                  value: settings.keepCw,
+                  onChanged: (value) => ref
+                      .read(accountSettingsNotifierProvider(account).notifier)
+                      .setKeepCw(value),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
                   ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showRadioDialog(
-                      context,
-                      title: Text(t.misskey.defaultNoteVisibility),
-                      values: NoteVisibility.values,
-                      initialValue: settings.defaultNoteVisibility,
-                      titleBuilder: (context, visibility) =>
-                          NoteVisibilityWidget(visibility: visibility),
-                      subtitleBuilder: (context, visibility) =>
-                          _NoteVisibilityDescriptionWidget(
-                            visibility: visibility,
-                          ),
-                    );
-                    if (result != null) {
-                      await ref
-                          .read(
-                            accountSettingsNotifierProvider(account).notifier,
-                          )
-                          .setDefaultNoteVisibility(result);
-                    }
-                  },
                 ),
               ),
             ),
@@ -339,119 +338,176 @@ class PrivacyPage extends ConsumerWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
                 child: SwitchListTile(
-                  title: Text(t.misskey.visibility_.disableFederation),
-                  subtitle: Text(t.misskey.disableFederationConfirmWarn),
-                  value: settings.defaultNoteLocalOnly,
+                  title: Text(t.misskey.rememberNoteVisibility),
+                  value: settings.rememberNoteVisibility,
                   onChanged: (value) => ref
                       .read(accountSettingsNotifierProvider(account).notifier)
-                      .setDefaultNoteLocalOnly(value),
+                      .setRememberNoteVisibility(value),
                 ),
               ),
             ),
-          ],
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: SwitchListTile(
-                title: Text(
-                  '${t.misskey.rememberNoteVisibility} (${t.misskey.renote})',
-                ),
-                value: settings.rememberRenoteVisibility,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setRememberRenoteVisibility(value),
-              ),
-            ),
-          ),
-          if (!settings.rememberRenoteVisibility) ...[
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(
-                    '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
+            if (!settings.rememberNoteVisibility) ...[
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.defaultNoteVisibility),
+                    subtitle: NoteVisibilityWidget(
+                      visibility: settings.defaultNoteVisibility,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.defaultNoteVisibility),
+                        values: NoteVisibility.values,
+                        initialValue: settings.defaultNoteVisibility,
+                        titleBuilder: (context, visibility) =>
+                            NoteVisibilityWidget(visibility: visibility),
+                        subtitleBuilder: (context, visibility) =>
+                            _NoteVisibilityDescriptionWidget(
+                              visibility: visibility,
+                            ),
+                      );
+                      if (result != null) {
+                        await ref
+                            .read(
+                              accountSettingsNotifierProvider(account).notifier,
+                            )
+                            .setDefaultNoteVisibility(result);
+                      }
+                    },
                   ),
-                  subtitle: NoteVisibilityWidget(
-                    visibility: settings.defaultRenoteVisibility,
-                  ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showRadioDialog(
-                      context,
-                      title: Text(
-                        '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
-                      ),
-                      values: NoteVisibility.values,
-                      initialValue: settings.defaultRenoteVisibility,
-                      titleBuilder: (context, visibility) =>
-                          NoteVisibilityWidget(visibility: visibility),
-                      subtitleBuilder: (context, visibility) =>
-                          _NoteVisibilityDescriptionWidget(
-                            visibility: visibility,
-                          ),
-                    );
-                    if (result != null) {
-                      await ref
-                          .read(
-                            accountSettingsNotifierProvider(account).notifier,
-                          )
-                          .setDefaultRenoteVisibility(result);
-                    }
-                  },
                 ),
               ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(
-                    '${t.misskey.visibility_.disableFederation} (${t.misskey.renote})',
-                  ),
-                  subtitle: Text(t.misskey.disableFederationConfirmWarn),
-                  value: settings.defaultRenoteLocalOnly,
-                  onChanged: (value) => ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setDefaultRenoteLocalOnly(value),
-                ),
-              ),
-            ),
-          ],
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                title: Text(t.misskey.reactionAcceptance),
-                subtitle: ReactionAcceptanceWidget(
-                  acceptance: settings.reactionAcceptance,
-                ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await showRadioDialog(
-                    context,
-                    title: Text(t.misskey.reactionAcceptance),
-                    values: [
-                      null,
-                      ...ReactionAcceptance.values,
-                    ].map((value) => (value,)).toList(),
-                    initialValue: (settings.reactionAcceptance,),
-                    titleBuilder: (context, acceptance) =>
-                        ReactionAcceptanceWidget(acceptance: acceptance.$1),
-                  );
-                  if (result != null) {
-                    await ref
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(t.misskey.visibility_.disableFederation),
+                    subtitle: Text(t.misskey.disableFederationConfirmWarn),
+                    value: settings.defaultNoteLocalOnly,
+                    onChanged: (value) => ref
                         .read(accountSettingsNotifierProvider(account).notifier)
-                        .setReactionAcceptance(result.$1);
-                  }
-                },
+                        .setDefaultNoteLocalOnly(value),
+                  ),
+                ),
+              ),
+            ],
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(
+                    '${t.misskey.rememberNoteVisibility} (${t.misskey.renote})',
+                  ),
+                  value: settings.rememberRenoteVisibility,
+                  onChanged: (value) => ref
+                      .read(accountSettingsNotifierProvider(account).notifier)
+                      .setRememberRenoteVisibility(value),
+                ),
               ),
             ),
-          ),
-        ],
+            if (!settings.rememberRenoteVisibility) ...[
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(
+                      '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
+                    ),
+                    subtitle: NoteVisibilityWidget(
+                      visibility: settings.defaultRenoteVisibility,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(
+                          '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
+                        ),
+                        values: NoteVisibility.values,
+                        initialValue: settings.defaultRenoteVisibility,
+                        titleBuilder: (context, visibility) =>
+                            NoteVisibilityWidget(visibility: visibility),
+                        subtitleBuilder: (context, visibility) =>
+                            _NoteVisibilityDescriptionWidget(
+                              visibility: visibility,
+                            ),
+                      );
+                      if (result != null) {
+                        await ref
+                            .read(
+                              accountSettingsNotifierProvider(account).notifier,
+                            )
+                            .setDefaultRenoteVisibility(result);
+                      }
+                    },
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
+                    title: Text(
+                      '${t.misskey.visibility_.disableFederation} (${t.misskey.renote})',
+                    ),
+                    subtitle: Text(t.misskey.disableFederationConfirmWarn),
+                    value: settings.defaultRenoteLocalOnly,
+                    onChanged: (value) => ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setDefaultRenoteLocalOnly(value),
+                  ),
+                ),
+              ),
+            ],
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.misskey.reactionAcceptance),
+                  subtitle: ReactionAcceptanceWidget(
+                    acceptance: settings.reactionAcceptance,
+                  ),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.reactionAcceptance),
+                      values: [
+                        null,
+                        ...ReactionAcceptance.values,
+                      ].map((value) => (value,)).toList(),
+                      initialValue: (settings.reactionAcceptance,),
+                      titleBuilder: (context, acceptance) =>
+                          ReactionAcceptanceWidget(acceptance: acceptance.$1),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(
+                            accountSettingsNotifierProvider(account).notifier,
+                          )
+                          .setReactionAcceptance(result.$1);
+                    }
+                  },
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+          ],
+        ),
       ),
       selectedDestination: AccountSettingsDestination.privacy,
     );

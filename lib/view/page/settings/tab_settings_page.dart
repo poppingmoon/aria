@@ -160,6 +160,7 @@ class TabSettingsPage extends HookConsumerWidget {
           TabType.user => userId != null,
           _ => true,
         };
+    final theme = Theme.of(context);
 
     return PopScope(
       canPop: (initialTabSettings ?? TabSettings.dummy()) == tabSettings.value,
@@ -200,691 +201,711 @@ class TabSettingsPage extends HookConsumerWidget {
                     },
                     child: Text(
                       t.misskey.delete,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.error),
                     ),
                   ),
                 ],
               ),
           ],
         ),
-        body: ListView(
-          children: [
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.account),
-                  subtitle: account.value != null
-                      ? Text(account.value.toString())
-                      : Text(
-                          t.misskey.pleaseSelect,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.error,
+        body: ListTileTheme(
+          data: ListTileThemeData(tileColor: theme.colorScheme.surface),
+          child: ListView(
+            children: [
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.account),
+                    subtitle: account.value != null
+                        ? Text(account.value.toString())
+                        : Text(
+                            t.misskey.pleaseSelect,
+                            style: TextStyle(color: theme.colorScheme.error),
                           ),
-                        ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showDialog<Account>(
-                      context: context,
-                      builder: (context) =>
-                          AccountSelectDialog(initialAccount: account.value),
-                    );
-                    if (!context.mounted) return;
-                    if (result != null) {
-                      if (account.value != result) {
-                        tabSettings.value = tabSettings.value.copyWith(
-                          listId: null,
-                          antennaId: null,
-                        );
-                        if (account.value?.host != result.host) {
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showDialog<Account>(
+                        context: context,
+                        builder: (context) =>
+                            AccountSelectDialog(initialAccount: account.value),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        if (account.value != result) {
                           tabSettings.value = tabSettings.value.copyWith(
-                            roleId: null,
-                            channelId: null,
-                            userId: null,
+                            listId: null,
+                            antennaId: null,
                           );
-                        }
-                        account.value = result;
-                        if (result.isGuest) {
-                          if (tabType
-                              case TabType.homeTimeline ||
-                                  TabType.hybridTimeline ||
-                                  TabType.roleTimeline ||
-                                  TabType.userList ||
-                                  TabType.antenna ||
-                                  TabType.mention ||
-                                  TabType.direct) {
+                          if (account.value?.host != result.host) {
                             tabSettings.value = tabSettings.value.copyWith(
-                              tabType: TabType.localTimeline,
+                              roleId: null,
+                              channelId: null,
+                              userId: null,
                             );
                           }
-                          if (tabSettings.value.icon == null) {
-                            final meta = await futureWithDialog(
+                          account.value = result;
+                          if (result.isGuest) {
+                            if (tabType
+                                case TabType.homeTimeline ||
+                                    TabType.hybridTimeline ||
+                                    TabType.roleTimeline ||
+                                    TabType.userList ||
+                                    TabType.antenna ||
+                                    TabType.mention ||
+                                    TabType.direct) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                tabType: TabType.localTimeline,
+                              );
+                            }
+                            if (tabSettings.value.icon == null) {
+                              final meta = await futureWithDialog(
+                                context,
+                                ref.read(
+                                  metaNotifierProvider(result.host).future,
+                                ),
+                              );
+                              if (meta case MetaResponse(:final iconUrl?)) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  icon: ImageIcon(url: iconUrl.toString()),
+                                );
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.aria.tabType),
+                    subtitle: TabTypeWidget(tabType: tabType),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final i = account.value != null
+                          ? await futureWithDialog(
                               context,
                               ref.read(
-                                metaNotifierProvider(result.host).future,
+                                iNotifierProvider(account.value!).future,
                               ),
-                            );
-                            if (meta case MetaResponse(:final iconUrl?)) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                icon: ImageIcon(url: iconUrl.toString()),
+                            )
+                          : null;
+                      if (!context.mounted) return;
+                      final meta = account.value != null
+                          ? await futureWithDialog(
+                              context,
+                              ref.read(
+                                metaNotifierProvider(
+                                  account.value!.host,
+                                ).future,
+                              ),
+                            )
+                          : null;
+                      if (!context.mounted) return;
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.aria.tabType),
+                        values: TabType.values.where(
+                          (tabType) => switch (tabType) {
+                            TabType.homeTimeline ||
+                            TabType.roleTimeline ||
+                            TabType.userList ||
+                            TabType.antenna ||
+                            TabType.mention ||
+                            TabType.direct ||
+                            TabType.notifications =>
+                              !(account.value?.isGuest ?? true),
+                            TabType.localTimeline =>
+                              account.value?.isGuest ?? true
+                                  ? meta?.policies?.ltlAvailable ?? true
+                                  : i?.policies?.ltlAvailable ?? true,
+                            TabType.hybridTimeline =>
+                              !(account.value?.isGuest ?? true) &&
+                                  (i?.policies?.ltlAvailable ?? true),
+                            TabType.globalTimeline =>
+                              account.value?.isGuest ?? true
+                                  ? meta?.policies?.gtlAvailable ?? true
+                                  : i?.policies?.gtlAvailable ?? true,
+                            TabType.channel ||
+                            TabType.user ||
+                            TabType.custom => true,
+                          },
+                        ),
+                        initialValue: tabType,
+                        titleBuilder: (context, value) =>
+                            TabTypeWidget(tabType: value),
+                      );
+                      if (!ref.context.mounted) return;
+                      if (result != null) {
+                        tabSettings.value = tabSettings.value.copyWith(
+                          tabType: result,
+                        );
+                        if (account case ValueNotifier(value: final account?)) {
+                          switch (result) {
+                            case TabType.roleTimeline:
+                              final result = await _selectRole(
+                                ref,
+                                account,
+                                role,
                               );
-                            }
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  roleId: result.id,
+                                  name: tabSettings.value.name ?? result.name,
+                                );
+                              }
+                            case TabType.userList:
+                              final result = await _selectList(
+                                ref,
+                                account,
+                                list != null
+                                    ? UsersList.fromJson(list.toJson())
+                                    : null,
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  listId: result.id,
+                                  name: tabSettings.value.name ?? result.name,
+                                );
+                              }
+                            case TabType.antenna:
+                              final result = await _selectAntenna(
+                                ref,
+                                account,
+                                antenna,
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  antennaId: result.id,
+                                  name: tabSettings.value.name ?? result.name,
+                                );
+                              }
+                            case TabType.channel:
+                              final result = await showDialog<CommunityChannel>(
+                                context: context,
+                                builder: (context) => ChannelsPage(
+                                  account: account,
+                                  onChannelTap: (channel) =>
+                                      context.pop(channel),
+                                  initialIndex: account.isGuest ? 1 : 2,
+                                ),
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  channelId: result.id,
+                                  name: tabSettings.value.name ?? result.name,
+                                );
+                              }
+                            case TabType.user:
+                              final result = await selectUser(
+                                context,
+                                account,
+                                includeSelf: true,
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  userId: result.id,
+                                  name: tabSettings.value.name ?? result.acct,
+                                  icon:
+                                      tabSettings.value.icon ??
+                                      (result.avatarUrl != null
+                                          ? ImageIcon(
+                                              url: result.avatarUrl.toString(),
+                                            )
+                                          : null),
+                                );
+                              }
+                            default:
                           }
                         }
                       }
-                    }
-                  },
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.aria.tabType),
-                  subtitle: TabTypeWidget(tabType: tabType),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final i = account.value != null
-                        ? await futureWithDialog(
-                            context,
-                            ref.read(iNotifierProvider(account.value!).future),
-                          )
-                        : null;
-                    if (!context.mounted) return;
-                    final meta = account.value != null
-                        ? await futureWithDialog(
-                            context,
-                            ref.read(
-                              metaNotifierProvider(account.value!.host).future,
-                            ),
-                          )
-                        : null;
-                    if (!context.mounted) return;
-                    final result = await showRadioDialog(
-                      context,
-                      title: Text(t.aria.tabType),
-                      values: TabType.values.where(
-                        (tabType) => switch (tabType) {
-                          TabType.homeTimeline ||
-                          TabType.roleTimeline ||
-                          TabType.userList ||
-                          TabType.antenna ||
-                          TabType.mention ||
-                          TabType.direct ||
-                          TabType.notifications =>
-                            !(account.value?.isGuest ?? true),
-                          TabType.localTimeline =>
-                            account.value?.isGuest ?? true
-                                ? meta?.policies?.ltlAvailable ?? true
-                                : i?.policies?.ltlAvailable ?? true,
-                          TabType.hybridTimeline =>
-                            !(account.value?.isGuest ?? true) &&
-                                (i?.policies?.ltlAvailable ?? true),
-                          TabType.globalTimeline =>
-                            account.value?.isGuest ?? true
-                                ? meta?.policies?.gtlAvailable ?? true
-                                : i?.policies?.gtlAvailable ?? true,
-                          TabType.channel ||
-                          TabType.user ||
-                          TabType.custom => true,
-                        },
-                      ),
-                      initialValue: tabType,
-                      titleBuilder: (context, value) =>
-                          TabTypeWidget(tabType: value),
-                    );
-                    if (!ref.context.mounted) return;
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        tabType: result,
-                      );
-                      if (account case ValueNotifier(value: final account?)) {
-                        switch (result) {
-                          case TabType.roleTimeline:
-                            final result = await _selectRole(
-                              ref,
-                              account,
-                              role,
-                            );
-                            if (result != null) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                roleId: result.id,
-                                name: tabSettings.value.name ?? result.name,
-                              );
-                            }
-                          case TabType.userList:
-                            final result = await _selectList(
-                              ref,
-                              account,
-                              list != null
-                                  ? UsersList.fromJson(list.toJson())
-                                  : null,
-                            );
-                            if (result != null) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                listId: result.id,
-                                name: tabSettings.value.name ?? result.name,
-                              );
-                            }
-                          case TabType.antenna:
-                            final result = await _selectAntenna(
-                              ref,
-                              account,
-                              antenna,
-                            );
-                            if (result != null) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                antennaId: result.id,
-                                name: tabSettings.value.name ?? result.name,
-                              );
-                            }
-                          case TabType.channel:
-                            final result = await showDialog<CommunityChannel>(
-                              context: context,
-                              builder: (context) => ChannelsPage(
-                                account: account,
-                                onChannelTap: (channel) => context.pop(channel),
-                                initialIndex: account.isGuest ? 1 : 2,
-                              ),
-                            );
-                            if (result != null) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                channelId: result.id,
-                                name: tabSettings.value.name ?? result.name,
-                              );
-                            }
-                          case TabType.user:
-                            final result = await selectUser(
-                              context,
-                              account,
-                              includeSelf: true,
-                            );
-                            if (result != null) {
-                              tabSettings.value = tabSettings.value.copyWith(
-                                userId: result.id,
-                                name: tabSettings.value.name ?? result.acct,
-                                icon:
-                                    tabSettings.value.icon ??
-                                    (result.avatarUrl != null
-                                        ? ImageIcon(
-                                            url: result.avatarUrl.toString(),
-                                          )
-                                        : null),
-                              );
-                            }
-                          default:
-                        }
-                      }
-                    }
-                  },
-                ),
-              ),
-            ),
-            if (tabType == TabType.roleTimeline)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.role),
-                    subtitle: roleId != null
-                        ? Text(role?.name ?? '')
-                        : Text(
-                            t.misskey.pleaseSelect,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      if (account case ValueNotifier(value: final account?)) {
-                        final result = await _selectRole(ref, account, role);
-                        if (result != null) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            roleId: result.id,
-                            name: tabSettings.value.name ?? result.name,
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              )
-            else if (tabType == TabType.userList)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.userList),
-                    subtitle: listId != null
-                        ? Text(list?.name ?? '')
-                        : Text(
-                            t.misskey.pleaseSelect,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      if (account case ValueNotifier(value: final account?)) {
-                        final result = await _selectList(
-                          ref,
-                          account,
-                          list != null
-                              ? UsersList.fromJson(list.toJson())
-                              : null,
-                        );
-                        if (result != null) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            listId: result.id,
-                            name: tabSettings.value.name ?? result.name,
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              )
-            else if (tabType == TabType.antenna)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.antennas),
-                    subtitle: antennaId != null
-                        ? Text(antenna?.name ?? '')
-                        : Text(
-                            t.misskey.pleaseSelect,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      if (account case ValueNotifier(value: final account?)) {
-                        final result = await _selectAntenna(
-                          ref,
-                          account,
-                          antenna,
-                        );
-                        if (result != null) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            antennaId: result.id,
-                            name: tabSettings.value.name ?? result.name,
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              )
-            else if (tabType == TabType.channel)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.channel),
-                    subtitle: tabSettings.value.channelId != null
-                        ? Text(channel?.name ?? '')
-                        : Text(
-                            t.misskey.pleaseSelect,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      if (account case ValueNotifier(value: final account?)) {
-                        final result = await showDialog<CommunityChannel>(
-                          context: context,
-                          builder: (context) => ChannelsPage(
-                            account: account,
-                            onChannelTap: (channel) => context.pop(channel),
-                            initialIndex: account.isGuest ? 1 : 2,
-                          ),
-                        );
-                        if (result != null) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            channelId: result.id,
-                            name: tabSettings.value.name ?? result.name,
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              )
-            else if (tabType == TabType.user)
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.user),
-                    subtitle: user != null && account.value != null
-                        ? UsernameWidget(account: account.value!, user: user)
-                        : Text(
-                            userId != null ? '' : t.misskey.pleaseSelect,
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      if (account case ValueNotifier(value: final account?)) {
-                        final result = await selectUser(context, account);
-                        if (result != null) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            userId: result.id,
-                            name: tabSettings.value.name ?? result.acct,
-                            icon:
-                                tabSettings.value.icon ??
-                                (result.avatarUrl != null
-                                    ? ImageIcon(
-                                        url: result.avatarUrl.toString(),
-                                      )
-                                    : null),
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              )
-            else if (tabType == TabType.custom) ...[
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.aria.endpoint),
-                    subtitle: Text(
-                      tabSettings.value.endpoint != null
-                          ? tabSettings.value.endpoint!
-                          : t.misskey.notSet,
-                    ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      List<String>? endpoints;
-                      if (account.value case final account?) {
-                        try {
-                          endpoints = await ref.read(
-                            endpointsProvider(account.host).future,
-                          );
-                        } catch (_) {}
-                      }
-                      if (!context.mounted) return;
-                      final result = await showTextFieldDialog(
-                        context,
-                        title: Text(t.aria.endpoint),
-                        initialText: tabSettings.value.endpoint,
-                        decoration: const InputDecoration(
-                          hintText: 'notes/timeline',
-                        ),
-                        maxLength: 100,
-                        autocompleteOptions: endpoints,
-                      );
-                      if (result != null) {
-                        if (!context.mounted) return;
-                        if (RegExp(r'^[\w\/\-]{0,100}$').hasMatch(result)) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            endpoint: result.isNotEmpty ? result : null,
-                          );
-                        } else {
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
-                        }
-                      }
                     },
                   ),
                 ),
               ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.aria.streamingChannel),
-                    subtitle: Text(
-                      tabSettings.value.streamingChannel != null
-                          ? tabSettings.value.streamingChannel!
-                          : t.misskey.notSet,
-                    ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      final result = await showTextFieldDialog(
-                        context,
-                        title: Text(t.aria.streamingChannel),
-                        initialText: tabSettings.value.streamingChannel,
-                        decoration: const InputDecoration(
-                          hintText: 'homeTimeline',
-                        ),
-                        maxLength: 100,
-                      );
-                      if (result != null) {
-                        if (!context.mounted) return;
-                        if (RegExp(r'^\w{0,100}$').hasMatch(result)) {
-                          tabSettings.value = tabSettings.value.copyWith(
-                            streamingChannel: result.isNotEmpty ? result : null,
-                          );
-                        } else {
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
-                        }
-                      }
-                    },
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text('${t.aria.parameters} (JSON)'),
-                    subtitle: Text(
-                      tabSettings.value.parameters != null
-                          ? tabSettings.value.parameters!.keys.join(', ')
-                          : t.misskey.notSet,
-                    ),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      final params = tabSettings.value.parameters;
-                      final result = await showTextFieldDialog(
-                        context,
-                        title: Text('${t.aria.parameters} (JSON)'),
-                        initialText: params != null
-                            ? json5Encode(params, space: 2)
-                            : '{\n  \n}',
-                        minLines: 5,
-                        maxLines: null,
-                        maxLength: 200,
-                      );
-                      if (result != null) {
-                        if (!context.mounted) return;
-                        try {
-                          if (result.isEmpty) {
+              if (tabType == TabType.roleTimeline)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.role),
+                      subtitle: roleId != null
+                          ? Text(role?.name ?? '')
+                          : Text(
+                              t.misskey.pleaseSelect,
+                              style: TextStyle(color: theme.colorScheme.error),
+                            ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        if (account case ValueNotifier(value: final account?)) {
+                          final result = await _selectRole(ref, account, role);
+                          if (result != null) {
                             tabSettings.value = tabSettings.value.copyWith(
-                              parameters: null,
+                              roleId: result.id,
+                              name: tabSettings.value.name ?? result.name,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.userList)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.userList),
+                      subtitle: listId != null
+                          ? Text(list?.name ?? '')
+                          : Text(
+                              t.misskey.pleaseSelect,
+                              style: TextStyle(color: theme.colorScheme.error),
+                            ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        if (account case ValueNotifier(value: final account?)) {
+                          final result = await _selectList(
+                            ref,
+                            account,
+                            list != null
+                                ? UsersList.fromJson(list.toJson())
+                                : null,
+                          );
+                          if (result != null) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              listId: result.id,
+                              name: tabSettings.value.name ?? result.name,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.antenna)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.antennas),
+                      subtitle: antennaId != null
+                          ? Text(antenna?.name ?? '')
+                          : Text(
+                              t.misskey.pleaseSelect,
+                              style: TextStyle(color: theme.colorScheme.error),
+                            ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        if (account case ValueNotifier(value: final account?)) {
+                          final result = await _selectAntenna(
+                            ref,
+                            account,
+                            antenna,
+                          );
+                          if (result != null) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              antennaId: result.id,
+                              name: tabSettings.value.name ?? result.name,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.channel)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.channel),
+                      subtitle: tabSettings.value.channelId != null
+                          ? Text(channel?.name ?? '')
+                          : Text(
+                              t.misskey.pleaseSelect,
+                              style: TextStyle(color: theme.colorScheme.error),
+                            ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        if (account case ValueNotifier(value: final account?)) {
+                          final result = await showDialog<CommunityChannel>(
+                            context: context,
+                            builder: (context) => ChannelsPage(
+                              account: account,
+                              onChannelTap: (channel) => context.pop(channel),
+                              initialIndex: account.isGuest ? 1 : 2,
+                            ),
+                          );
+                          if (result != null) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              channelId: result.id,
+                              name: tabSettings.value.name ?? result.name,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.user)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.user),
+                      subtitle: user != null && account.value != null
+                          ? UsernameWidget(account: account.value!, user: user)
+                          : Text(
+                              userId != null ? '' : t.misskey.pleaseSelect,
+                              style: TextStyle(color: theme.colorScheme.error),
+                            ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        if (account case ValueNotifier(value: final account?)) {
+                          final result = await selectUser(context, account);
+                          if (result != null) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              userId: result.id,
+                              name: tabSettings.value.name ?? result.acct,
+                              icon:
+                                  tabSettings.value.icon ??
+                                  (result.avatarUrl != null
+                                      ? ImageIcon(
+                                          url: result.avatarUrl.toString(),
+                                        )
+                                      : null),
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.custom) ...[
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.aria.endpoint),
+                      subtitle: Text(
+                        tabSettings.value.endpoint != null
+                            ? tabSettings.value.endpoint!
+                            : t.misskey.notSet,
+                      ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        List<String>? endpoints;
+                        if (account.value case final account?) {
+                          try {
+                            endpoints = await ref.read(
+                              endpointsProvider(account.host).future,
+                            );
+                          } catch (_) {}
+                        }
+                        if (!context.mounted) return;
+                        final result = await showTextFieldDialog(
+                          context,
+                          title: Text(t.aria.endpoint),
+                          initialText: tabSettings.value.endpoint,
+                          decoration: const InputDecoration(
+                            hintText: 'notes/timeline',
+                          ),
+                          maxLength: 100,
+                          autocompleteOptions: endpoints,
+                        );
+                        if (result != null) {
+                          if (!context.mounted) return;
+                          if (RegExp(r'^[\w\/\-]{0,100}$').hasMatch(result)) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              endpoint: result.isNotEmpty ? result : null,
                             );
                           } else {
-                            final params = json5Decode(result);
-                            tabSettings.value = tabSettings.value.copyWith(
-                              parameters:
-                                  params is Map<String, dynamic> &&
-                                      params.isNotEmpty
-                                  ? params
-                                  : null,
+                            await showMessageDialog(
+                              context,
+                              t.misskey.invalidValue,
                             );
                           }
-                        } catch (_) {
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
                         }
+                      },
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.aria.streamingChannel),
+                      subtitle: Text(
+                        tabSettings.value.streamingChannel != null
+                            ? tabSettings.value.streamingChannel!
+                            : t.misskey.notSet,
+                      ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        final result = await showTextFieldDialog(
+                          context,
+                          title: Text(t.aria.streamingChannel),
+                          initialText: tabSettings.value.streamingChannel,
+                          decoration: const InputDecoration(
+                            hintText: 'homeTimeline',
+                          ),
+                          maxLength: 100,
+                        );
+                        if (result != null) {
+                          if (!context.mounted) return;
+                          if (RegExp(r'^\w{0,100}$').hasMatch(result)) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              streamingChannel: result.isNotEmpty
+                                  ? result
+                                  : null,
+                            );
+                          } else {
+                            await showMessageDialog(
+                              context,
+                              t.misskey.invalidValue,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text('${t.aria.parameters} (JSON)'),
+                      subtitle: Text(
+                        tabSettings.value.parameters != null
+                            ? tabSettings.value.parameters!.keys.join(', ')
+                            : t.misskey.notSet,
+                      ),
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        final params = tabSettings.value.parameters;
+                        final result = await showTextFieldDialog(
+                          context,
+                          title: Text('${t.aria.parameters} (JSON)'),
+                          initialText: params != null
+                              ? json5Encode(params, space: 2)
+                              : '{\n  \n}',
+                          minLines: 5,
+                          maxLines: null,
+                          maxLength: 200,
+                        );
+                        if (result != null) {
+                          if (!context.mounted) return;
+                          try {
+                            if (result.isEmpty) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                parameters: null,
+                              );
+                            } else {
+                              final params = json5Decode(result);
+                              tabSettings.value = tabSettings.value.copyWith(
+                                parameters:
+                                    params is Map<String, dynamic> &&
+                                        params.isNotEmpty
+                                    ? params
+                                    : null,
+                              );
+                            }
+                          } catch (_) {
+                            await showMessageDialog(
+                              context,
+                              t.misskey.invalidValue,
+                            );
+                          }
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.aria.tabName),
+                    subtitle: Text(
+                      tabSettings.value.name != null
+                          ? tabSettings.value.name!
+                          : t.misskey.notSet,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showTextFieldDialog(
+                        context,
+                        title: Text(t.aria.tabName),
+                        initialText: tabSettings.value.name,
+                      );
+                      if (result != null) {
+                        tabSettings.value = tabSettings.value.copyWith(
+                          name: result.isNotEmpty ? result : null,
+                        );
                       }
                     },
                   ),
                 ),
               ),
-            ],
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.aria.tabName),
-                  subtitle: Text(
-                    tabSettings.value.name != null
-                        ? tabSettings.value.name!
-                        : t.misskey.notSet,
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.icon),
+                    subtitle: tabSettings.value.icon != null
+                        ? null
+                        : Text(t.misskey.notSet),
+                    trailing: tabSettings.value.icon != null
+                        ? TabIconWidget(tabSettings: tabSettings.value)
+                        : const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showDialog<TabIcon>(
+                        context: context,
+                        builder: (context) =>
+                            IconSelectDialog(account: account.value),
+                      );
+                      if (result != null) {
+                        tabSettings.value = tabSettings.value.copyWith(
+                          icon: result,
+                        );
+                      }
+                    },
+                    shape: tabType == TabType.notifications
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              bottom: Radius.circular(8.0),
+                            ),
+                          )
+                        : null,
                   ),
-                  trailing: const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showTextFieldDialog(
-                      context,
-                      title: Text(t.aria.tabName),
-                      initialText: tabSettings.value.name,
-                    );
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        name: result.isNotEmpty ? result : null,
-                      );
-                    }
-                  },
                 ),
               ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  title: Text(t.misskey.icon),
-                  subtitle: tabSettings.value.icon != null
-                      ? null
-                      : Text(t.misskey.notSet),
-                  trailing: tabSettings.value.icon != null
-                      ? TabIconWidget(tabSettings: tabSettings.value)
-                      : const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await showDialog<TabIcon>(
-                      context: context,
-                      builder: (context) =>
-                          IconSelectDialog(account: account.value),
-                    );
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        icon: result,
-                      );
-                    }
-                  },
-                ),
-              ),
-            ),
-            if (tabType != TabType.notifications) ...[
-              if (tabType != TabType.user)
+              if (tabType != TabType.notifications) ...[
+                if (tabType != TabType.user)
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.disableStreamingTimeline),
+                        value: tabSettings.value.disableStreaming,
+                        onChanged: (value) => tabSettings.value = tabSettings
+                            .value
+                            .copyWith(disableStreaming: value),
+                      ),
+                    ),
+                  ),
                 Center(
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     width: maxContentWidth,
                     child: SwitchListTile(
-                      title: Text(t.aria.disableStreamingTimeline),
-                      value: tabSettings.value.disableStreaming,
+                      title: Text(t.aria.disableSubscribingNotes),
+                      value: tabSettings.value.disableSubscribing,
                       onChanged: (value) => tabSettings.value = tabSettings
                           .value
-                          .copyWith(disableStreaming: value),
+                          .copyWith(disableSubscribing: value),
                     ),
                   ),
                 ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.aria.disableSubscribingNotes),
-                    value: tabSettings.value.disableSubscribing,
-                    onChanged: (value) => tabSettings.value = tabSettings.value
-                        .copyWith(disableSubscribing: value),
+                if (tabType
+                    case TabType.localTimeline || TabType.hybridTimeline)
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.showRepliesToOthersInTimeline),
+                        value: tabSettings.value.withReplies,
+                        onChanged: (value) => tabSettings.value = tabSettings
+                            .value
+                            .copyWith(withReplies: value),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              if (tabType case TabType.localTimeline || TabType.hybridTimeline)
                 Center(
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     width: maxContentWidth,
                     child: SwitchListTile(
-                      title: Text(t.misskey.showRepliesToOthersInTimeline),
-                      value: tabSettings.value.withReplies,
+                      title: Text(t.misskey.showRenotes),
+                      value: tabSettings.value.withRenotes,
                       onChanged: (value) => tabSettings.value = tabSettings
                           .value
-                          .copyWith(withReplies: value),
+                          .copyWith(withRenotes: value),
                     ),
                   ),
                 ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.misskey.showRenotes),
-                    value: tabSettings.value.withRenotes,
-                    onChanged: (value) => tabSettings.value = tabSettings.value
-                        .copyWith(withRenotes: value),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
+                      title: Text(t.aria.showSelfRenotes),
+                      value: tabSettings.value.withSelfRenotes,
+                      onChanged: (value) => tabSettings.value = tabSettings
+                          .value
+                          .copyWith(withSelfRenotes: value),
+                    ),
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.aria.showSelfRenotes),
-                    value: tabSettings.value.withSelfRenotes,
-                    onChanged: (value) => tabSettings.value = tabSettings.value
-                        .copyWith(withSelfRenotes: value),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
+                      title: Text(t.misskey.fileAttachedOnly),
+                      value: tabSettings.value.withFiles,
+                      onChanged: (value) => tabSettings.value = tabSettings
+                          .value
+                          .copyWith(withFiles: value),
+                    ),
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.misskey.fileAttachedOnly),
-                    value: tabSettings.value.withFiles,
-                    onChanged: (value) => tabSettings.value = tabSettings.value
-                        .copyWith(withFiles: value),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
+                      title: Text(t.misskey.withSensitive),
+                      value: tabSettings.value.withSensitive,
+                      onChanged: (value) => tabSettings.value = tabSettings
+                          .value
+                          .copyWith(withSensitive: value),
+                      shape: tabType == TabType.notifications
+                          ? const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(8.0),
+                              ),
+                            )
+                          : null,
+                    ),
                   ),
                 ),
-              ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: SwitchListTile(
-                    title: Text(t.misskey.withSensitive),
-                    value: tabSettings.value.withSensitive,
-                    onChanged: (value) => tabSettings.value = tabSettings.value
-                        .copyWith(withSensitive: value),
-                  ),
-                ),
-              ),
-              if (tabType != TabType.notifications)
                 Center(
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -895,17 +916,23 @@ class TabSettingsPage extends HookConsumerWidget {
                       onChanged: (value) => tabSettings.value = tabSettings
                           .value
                           .copyWith(keepPosition: value),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(8.0),
+                        ),
+                      ),
                     ),
                   ),
                 ),
+              ],
+              const SizedBox(height: 120.0),
             ],
-            const SizedBox(height: 120.0),
-          ],
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Theme.of(
-            context,
-          ).colorScheme.primary.withValues(alpha: canSave ? 1.0 : 0.5),
+          backgroundColor: theme.colorScheme.primary.withValues(
+            alpha: canSave ? 1.0 : 0.5,
+          ),
           elevation: canSave ? 6.0 : 0.0,
           onPressed: canSave
               ? () async {

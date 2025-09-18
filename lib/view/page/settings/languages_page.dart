@@ -17,9 +17,8 @@ class LanguagesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(generalSettingsNotifierProvider).locale;
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.uiLanguage)),
@@ -53,9 +52,7 @@ class LanguagesPage extends ConsumerWidget {
                               '[Crowdin](https://crowdin.com/project/misskey)',
                         ),
                         style: TextStyle(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSecondaryContainer,
+                          color: theme.colorScheme.onSecondaryContainer,
                         ),
                       ),
                     ),
@@ -111,9 +108,7 @@ class LanguagesPage extends ConsumerWidget {
                           ),
                         ),
                         style: TextStyle(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onSecondaryContainer,
+                          color: theme.colorScheme.onSecondaryContainer,
                         ),
                       ),
                     ),
