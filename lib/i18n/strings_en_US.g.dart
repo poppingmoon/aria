@@ -638,6 +638,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Vibrate on new notification'
 	String get vibrateNotification => 'Vibrate on new notification';
 
+	/// en-US: 'Vibration'
+	String get vibration => 'Vibration';
+
 	/// en-US: 'Web browser'
 	String get webBrowser => 'Web browser';
 

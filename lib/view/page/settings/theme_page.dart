@@ -24,109 +24,128 @@ class ThemePage extends ConsumerWidget {
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.theme)),
-      body: ListView(
-        children: [
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: Icon(switch (generalSettings.themeMode) {
-                  ThemeMode.system => Icons.mode_night,
-                  ThemeMode.light => Icons.light_mode,
-                  ThemeMode.dark => Icons.dark_mode,
-                }),
-                title: Text(t.misskey.theme),
-                subtitle: ThemeModeWidget(themeMode: generalSettings.themeMode),
-                onTap: () async {
-                  final result = await showRadioDialog(
-                    context,
-                    title: Text(t.misskey.theme),
-                    values: ThemeMode.values,
-                    initialValue: generalSettings.themeMode,
-                    titleBuilder: (context, value) =>
-                        ThemeModeWidget(themeMode: value),
-                  );
-                  if (result != null) {
-                    await ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setThemeMode(result);
-                  }
-                },
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(Icons.light_mode_outlined),
-                title: Text(t.misskey.themeForLightMode),
-                subtitle: Text(lightColors.name),
-                onTap: () async {
-                  final result = await showRadioDialog(
-                    context,
-                    title: Text(t.misskey.themeForLightMode),
-                    values: [
-                      ...builtinMisskeyColors,
-                      ...installedColors,
-                    ].where((colors) => !colors.isDark).toList(),
-                    initialValue: lightColors,
-                    titleBuilder: (context, value) => Text(value.name),
-                  );
-                  if (result != null) {
-                    await ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setLightThemeId(result.id);
-                  }
-                },
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(Icons.dark_mode_outlined),
-                title: Text(t.misskey.themeForDarkMode),
-                subtitle: Text(darkColors.name),
-                onTap: () async {
-                  final result = await showRadioDialog(
-                    context,
-                    title: Text(t.misskey.themeForDarkMode),
-                    values: [
-                      ...builtinMisskeyColors,
-                      ...installedColors,
-                    ].where((colors) => colors.isDark).toList(),
-                    initialValue: darkColors,
-                    titleBuilder: (context, value) => Text(value.name),
-                  );
-                  if (result != null) {
-                    await ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setDarkThemeId(result.id);
-                  }
-                },
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ListTile(
-                leading: const Icon(Icons.settings),
-                title: Text(t.misskey.theme_.manage),
-                subtitle: Text(
-                  '${t.misskey.theme_.installedThemes}: ${installedColors.length}',
+      body: ListTileTheme(
+        data: ListTileThemeData(
+          tileColor: Theme.of(context).colorScheme.surface,
+        ),
+        child: ListView(
+          children: [
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: Icon(switch (generalSettings.themeMode) {
+                    ThemeMode.system => Icons.mode_night,
+                    ThemeMode.light => Icons.light_mode,
+                    ThemeMode.dark => Icons.dark_mode,
+                  }),
+                  title: Text(t.misskey.theme),
+                  subtitle: ThemeModeWidget(
+                    themeMode: generalSettings.themeMode,
+                  ),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.theme),
+                      values: ThemeMode.values,
+                      initialValue: generalSettings.themeMode,
+                      titleBuilder: (context, value) =>
+                          ThemeModeWidget(themeMode: value),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setThemeMode(result);
+                    }
+                  },
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
                 ),
-                onTap: () => context.push('/settings/theme/manage'),
               ),
             ),
-          ),
-        ],
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.light_mode_outlined),
+                  title: Text(t.misskey.themeForLightMode),
+                  subtitle: Text(lightColors.name),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.themeForLightMode),
+                      values: [
+                        ...builtinMisskeyColors,
+                        ...installedColors,
+                      ].where((colors) => !colors.isDark).toList(),
+                      initialValue: lightColors,
+                      titleBuilder: (context, value) => Text(value.name),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setLightThemeId(result.id);
+                    }
+                  },
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.dark_mode_outlined),
+                  title: Text(t.misskey.themeForDarkMode),
+                  subtitle: Text(darkColors.name),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.themeForDarkMode),
+                      values: [
+                        ...builtinMisskeyColors,
+                        ...installedColors,
+                      ].where((colors) => colors.isDark).toList(),
+                      initialValue: darkColors,
+                      titleBuilder: (context, value) => Text(value.name),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setDarkThemeId(result.id);
+                    }
+                  },
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: Text(t.misskey.theme_.manage),
+                  subtitle: Text(
+                    '${t.misskey.theme_.installedThemes}: ${installedColors.length}',
+                  ),
+                  onTap: () => context.push('/settings/theme/manage'),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+          ],
+        ),
       ),
       selectedDestination: GeneralSettingsDestination.theme,
     );

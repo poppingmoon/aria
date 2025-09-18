@@ -63,6 +63,7 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxNoteHorizontalPadding,
       ),
     );
+    final theme = Theme.of(context);
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.displayOfNote)),
@@ -70,13 +71,12 @@ class NoteDisplayPage extends HookConsumerWidget {
         data: MultiSplitViewThemeData(
           dividerPainter: DividerPainters.grooved1(
             size: 40.0,
+            backgroundColor: theme.scaffoldBackgroundColor,
             highlightedSize: 60.0,
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurface.withValues(alpha: 0.3),
-            highlightedColor: Theme.of(
-              context,
-            ).colorScheme.onSurface.withValues(alpha: 0.9),
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
+            highlightedColor: theme.colorScheme.onSurface.withValues(
+              alpha: 0.9,
+            ),
             thickness: 4.0,
             highlightedThickness: 6.0,
           ),
@@ -88,992 +88,1132 @@ class NoteDisplayPage extends HookConsumerWidget {
             Area(data: _NoteDisplayArea.preview),
           ],
           builder: (context, area) => switch (area.data as _NoteDisplayArea) {
-            _NoteDisplayArea.settings => ListView(
-              children: [
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.collapseRenotes),
-                      subtitle: Text(t.misskey.collapseRenotesDescription),
-                      value: settings.collapseRenotes,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setCollapseRenotes(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.displayOfSensitiveMedia),
-                      subtitle: Text(switch (settings.sensitive) {
-                        SensitiveMediaDisplay.respect =>
-                          t.misskey.displayOfSensitiveMedia_.respect,
-                        SensitiveMediaDisplay.ignore =>
-                          t.misskey.displayOfSensitiveMedia_.ignore,
-                        SensitiveMediaDisplay.force =>
-                          t.misskey.displayOfSensitiveMedia_.force,
-                      }),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(t.misskey.displayOfSensitiveMedia),
-                          values: SensitiveMediaDisplay.values,
-                          initialValue: settings.sensitive,
-                          titleBuilder: (context, value) =>
-                              Text(switch (value) {
-                                SensitiveMediaDisplay.respect =>
-                                  t.misskey.displayOfSensitiveMedia_.respect,
-                                SensitiveMediaDisplay.ignore =>
-                                  t.misskey.displayOfSensitiveMedia_.ignore,
-                                SensitiveMediaDisplay.force =>
-                                  t.misskey.displayOfSensitiveMedia_.force,
-                              }),
-                        );
-                        if (result != null) {
-                          await ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setSensitive(result);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.highlightSensitiveMedia),
-                      value: settings.highlightSensitiveMedia,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setHighlightSensitiveMedia(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.enableAnimatedMfm),
-                      value: settings.animatedMfm,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAnimatedMfm(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.enableAdvancedMfm),
-                      value: settings.advancedMfm,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAdvancedMfm(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showRepliesCount),
-                      value: settings.showRepliesCount,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowRepliesCount(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showRenotesCount),
-                      value: settings.showRenotesCount,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowRenotesCount(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.showReactionsCount),
-                      value: settings.showReactionsCount,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowReactionsCount(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showReactionsCountForEachTypes),
-                      value: settings.showReactionsCountInReactionButton,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowReactionsCountInReactionButton(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showGapBetweenNotesInTimeline),
-                      value: settings.showGapBetweenNotesInTimeline,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowGapBetweenNotesInTimeline(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.loadRawImages),
-                      value: settings.loadRawImages,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setLoadRawImages(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.instanceTicker),
-                      subtitle: Text(switch (settings.instanceTicker) {
-                        InstanceTicker.none => t.misskey.instanceTicker_.none,
-                        InstanceTicker.remote =>
-                          t.misskey.instanceTicker_.remote,
-                        InstanceTicker.always =>
-                          t.misskey.instanceTicker_.always,
-                      }),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(t.misskey.instanceTicker),
-                          values: InstanceTicker.values,
-                          initialValue: settings.instanceTicker,
-                          titleBuilder: (context, value) =>
-                              Text(switch (value) {
-                                InstanceTicker.none =>
-                                  t.misskey.instanceTicker_.none,
-                                InstanceTicker.remote =>
-                                  t.misskey.instanceTicker_.remote,
-                                InstanceTicker.always =>
-                                  t.misskey.instanceTicker_.always,
-                              }),
-                        );
-                        if (result != null) {
-                          await ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setInstanceTicker(result);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showNoteCreatedAt),
-                      value: settings.showNoteCreatedAt,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowNoteCreatedAt(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showAvatarsInNote),
-                      value: settings.showAvatarsInNote,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowAvatarsInNote(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showAvatarsInSubNote),
-                      value: settings.showAvatarsInSubNote,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowAvatarsInSubNote(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.squareAvatars),
-                      value: settings.squareAvatars,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setSquareAvatars(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.showAvatarDecorations),
-                      value: settings.showAvatarDecorations,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowAvatarDecorations(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showQuoteButtonInNoteFooter),
-                      value: settings.showQuoteButtonInNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowQuoteButtonInNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showLikeButtonInNoteFooter),
-                      value: settings.showLikeButtonInNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowLikeButtonInNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.misskey.showClipButtonInNoteFooter),
-                      value: settings.showClipButtonInNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowClipButtonInNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showTranslateButtonInNoteFooter),
-                      value: settings.showTranslateButtonInNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowTranslateButtonInNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showNoteReactionsViewer),
-                      value: settings.showNoteReactionsViewer,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowNoteReactionsViewer(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showNoteFooter),
-                      value: settings.showNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showSubNoteReactionsViewer),
-                      value: settings.showSubNoteReactionsViewer,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowSubNoteReactionsViewer(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.showSubNoteFooter),
-                      value: settings.showSubNoteFooter,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setShowSubNoteFooter(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.alwaysExpandCw),
-                      value: settings.alwaysExpandCw,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAlwaysExpandCw(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.alwaysExpandLongNote),
-                      value: settings.alwaysExpandLongNote,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAlwaysExpandLongNote(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.alwaysExpandMediaInSubNote),
-                      value: settings.alwaysExpandMediaInSubNote,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAlwaysExpandMediaInSubNote(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.mergeReactionsByName),
-                      value: settings.mergeReactionsByName,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setMergeReactionsByName(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: SwitchListTile(
-                      title: Text(t.aria.alwaysShowAllReactions),
-                      value: settings.alwaysShowAllReactions,
-                      onChanged: (value) => ref
-                          .read(generalSettingsNotifierProvider.notifier)
-                          .setAlwaysShowAllReactions(value),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.emojiStyle),
-                      subtitle: Text(switch (settings.emojiStyle) {
-                        EmojiStyle.native => t.misskey.native,
-                        EmojiStyle.twemoji => 'Twemoji',
-                      }),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(t.misskey.emojiStyle),
-                          values: EmojiStyle.values,
-                          initialValue: settings.emojiStyle,
-                          titleBuilder: (context, value) =>
-                              Text(switch (value) {
-                                EmojiStyle.native => t.misskey.native,
-                                EmojiStyle.twemoji => 'Twemoji',
-                              }),
-                        );
-                        if (result != null) {
-                          await ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setEmojiStyle(result);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.mediaListWithOneImageAppearance),
-                      subtitle: Text(
-                        switch (settings.mediaListWithOneImageAppearance) {
-                          null => t.misskey.default_,
-                          MediaListWithOneImageAppearance.r16_9 =>
-                            t.misskey.limitTo(x: '16:9'),
-                          MediaListWithOneImageAppearance.r1_1 =>
-                            t.misskey.limitTo(x: '1:1'),
-                          MediaListWithOneImageAppearance.r2_3 =>
-                            t.misskey.limitTo(x: '2:3'),
-                        },
-                      ),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(
-                            t.misskey.mediaListWithOneImageAppearance,
+            _NoteDisplayArea.settings => ListTileTheme(
+              data: ListTileThemeData(tileColor: theme.colorScheme.surface),
+              child: ListView(
+                children: [
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.collapseRenotes),
+                        subtitle: Text(t.misskey.collapseRenotesDescription),
+                        value: settings.collapseRenotes,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setCollapseRenotes(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
                           ),
-                          values: [
-                            null,
-                            ...MediaListWithOneImageAppearance.values,
-                          ].map((value) => (value,)),
-                          initialValue: (
-                            settings.mediaListWithOneImageAppearance,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.displayOfSensitiveMedia),
+                        subtitle: Text(switch (settings.sensitive) {
+                          SensitiveMediaDisplay.respect =>
+                            t.misskey.displayOfSensitiveMedia_.respect,
+                          SensitiveMediaDisplay.ignore =>
+                            t.misskey.displayOfSensitiveMedia_.ignore,
+                          SensitiveMediaDisplay.force =>
+                            t.misskey.displayOfSensitiveMedia_.force,
+                        }),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(t.misskey.displayOfSensitiveMedia),
+                            values: SensitiveMediaDisplay.values,
+                            initialValue: settings.sensitive,
+                            titleBuilder: (context, value) =>
+                                Text(switch (value) {
+                                  SensitiveMediaDisplay.respect =>
+                                    t.misskey.displayOfSensitiveMedia_.respect,
+                                  SensitiveMediaDisplay.ignore =>
+                                    t.misskey.displayOfSensitiveMedia_.ignore,
+                                  SensitiveMediaDisplay.force =>
+                                    t.misskey.displayOfSensitiveMedia_.force,
+                                }),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setSensitive(result);
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.highlightSensitiveMedia),
+                        value: settings.highlightSensitiveMedia,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setHighlightSensitiveMedia(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
                           ),
-                          titleBuilder: (context, value) =>
-                              Text(switch (value.$1) {
-                                null => t.misskey.default_,
-                                MediaListWithOneImageAppearance.r16_9 =>
-                                  t.misskey.limitTo(x: '16:9'),
-                                MediaListWithOneImageAppearance.r1_1 =>
-                                  t.misskey.limitTo(x: '1:1'),
-                                MediaListWithOneImageAppearance.r2_3 =>
-                                  t.misskey.limitTo(x: '2:3'),
-                              }),
-                        );
-                        if (result != null) {
-                          await ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setMediaListWithOneImageAppearance(result.$1);
-                        }
-                      },
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.aria.displayOfThumbnail),
-                      subtitle: Text(switch (settings.thumbnailBoxFit) {
-                        BoxFit.contain => t.aria.showEntireImage,
-                        BoxFit.cover => t.aria.showExpandedImage,
-                        _ => t.misskey.unknown,
-                      }),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(t.aria.displayOfThumbnail),
-                          values: [BoxFit.contain, BoxFit.cover],
-                          initialValue: settings.thumbnailBoxFit,
-                          titleBuilder: (context, value) =>
-                              Text(switch (value) {
-                                BoxFit.contain => t.aria.showEntireImage,
-                                BoxFit.cover => t.aria.showExpandedImage,
-                                _ => t.misskey.unknown,
-                              }),
-                        );
-                        if (result != null) {
-                          await ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setThumbnailBoxFit(result);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.aria.font),
-                      subtitle: Text(settings.fontFamily ?? t.misskey.system),
-                      trailing: const Icon(Icons.navigate_next),
-                      onTap: () async {
-                        final result = await showRadioDialog(
-                          context,
-                          title: Text(t.aria.font),
-                          values: [
-                            (null,),
-                            (FontFamily.bIZUDGothic,),
-                            (FontFamily.bIZUDMincho,),
-                            (FontFamily.mPlus1,),
-                            (FontFamily.mPlus2,),
-                            (FontFamily.notoSansJP,),
-                            (FontFamily.notoSansKR,),
-                            (FontFamily.notoSansSC,),
-                            (FontFamily.notoSansTC,),
-                            (FontFamily.notoSerifJP,),
-                            (FontFamily.nunito,),
-                            (FontFamily.pretendard,),
-                          ],
-                          initialValue: (settings.fontFamily,),
-                          titleBuilder: (context, value) => Text(
-                            value.$1 ?? t.misskey.system,
-                            style: TextStyle(fontFamily: value.$1),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.enableAnimatedMfm),
+                        value: settings.animatedMfm,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAnimatedMfm(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
                           ),
-                        );
-                        if (result != null) {
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.enableAdvancedMfm),
+                        value: settings.advancedMfm,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAdvancedMfm(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showRepliesCount),
+                        value: settings.showRepliesCount,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowRepliesCount(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showRenotesCount),
+                        value: settings.showRenotesCount,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowRenotesCount(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.showReactionsCount),
+                        value: settings.showReactionsCount,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowReactionsCount(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showReactionsCountForEachTypes),
+                        value: settings.showReactionsCountInReactionButton,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowReactionsCountInReactionButton(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showGapBetweenNotesInTimeline),
+                        value: settings.showGapBetweenNotesInTimeline,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowGapBetweenNotesInTimeline(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.loadRawImages),
+                        value: settings.loadRawImages,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setLoadRawImages(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.instanceTicker),
+                        subtitle: Text(switch (settings.instanceTicker) {
+                          InstanceTicker.none => t.misskey.instanceTicker_.none,
+                          InstanceTicker.remote =>
+                            t.misskey.instanceTicker_.remote,
+                          InstanceTicker.always =>
+                            t.misskey.instanceTicker_.always,
+                        }),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(t.misskey.instanceTicker),
+                            values: InstanceTicker.values,
+                            initialValue: settings.instanceTicker,
+                            titleBuilder: (context, value) =>
+                                Text(switch (value) {
+                                  InstanceTicker.none =>
+                                    t.misskey.instanceTicker_.none,
+                                  InstanceTicker.remote =>
+                                    t.misskey.instanceTicker_.remote,
+                                  InstanceTicker.always =>
+                                    t.misskey.instanceTicker_.always,
+                                }),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setInstanceTicker(result);
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showNoteCreatedAt),
+                        value: settings.showNoteCreatedAt,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowNoteCreatedAt(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showAvatarsInNote),
+                        value: settings.showAvatarsInNote,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowAvatarsInNote(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showAvatarsInSubNote),
+                        value: settings.showAvatarsInSubNote,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowAvatarsInSubNote(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.squareAvatars),
+                        value: settings.squareAvatars,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setSquareAvatars(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.showAvatarDecorations),
+                        value: settings.showAvatarDecorations,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowAvatarDecorations(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showQuoteButtonInNoteFooter),
+                        value: settings.showQuoteButtonInNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowQuoteButtonInNoteFooter(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showLikeButtonInNoteFooter),
+                        value: settings.showLikeButtonInNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowLikeButtonInNoteFooter(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.misskey.showClipButtonInNoteFooter),
+                        value: settings.showClipButtonInNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowClipButtonInNoteFooter(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showTranslateButtonInNoteFooter),
+                        value: settings.showTranslateButtonInNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowTranslateButtonInNoteFooter(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showNoteReactionsViewer),
+                        value: settings.showNoteReactionsViewer,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowNoteReactionsViewer(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showNoteFooter),
+                        value: settings.showNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowNoteFooter(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showSubNoteReactionsViewer),
+                        value: settings.showSubNoteReactionsViewer,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowSubNoteReactionsViewer(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.showSubNoteFooter),
+                        value: settings.showSubNoteFooter,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowSubNoteFooter(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.alwaysExpandCw),
+                        value: settings.alwaysExpandCw,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAlwaysExpandCw(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.alwaysExpandLongNote),
+                        value: settings.alwaysExpandLongNote,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAlwaysExpandLongNote(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.alwaysExpandMediaInSubNote),
+                        value: settings.alwaysExpandMediaInSubNote,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAlwaysExpandMediaInSubNote(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.mergeReactionsByName),
+                        value: settings.mergeReactionsByName,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setMergeReactionsByName(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
+                        title: Text(t.aria.alwaysShowAllReactions),
+                        value: settings.alwaysShowAllReactions,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setAlwaysShowAllReactions(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.emojiStyle),
+                        subtitle: Text(switch (settings.emojiStyle) {
+                          EmojiStyle.native => t.misskey.native,
+                          EmojiStyle.twemoji => 'Twemoji',
+                        }),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(t.misskey.emojiStyle),
+                            values: EmojiStyle.values,
+                            initialValue: settings.emojiStyle,
+                            titleBuilder: (context, value) =>
+                                Text(switch (value) {
+                                  EmojiStyle.native => t.misskey.native,
+                                  EmojiStyle.twemoji => 'Twemoji',
+                                }),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setEmojiStyle(result);
+                          }
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        t.aria.media,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.mediaListWithOneImageAppearance),
+                        subtitle: Text(
+                          switch (settings.mediaListWithOneImageAppearance) {
+                            null => t.misskey.default_,
+                            MediaListWithOneImageAppearance.r16_9 =>
+                              t.misskey.limitTo(x: '16:9'),
+                            MediaListWithOneImageAppearance.r1_1 =>
+                              t.misskey.limitTo(x: '1:1'),
+                            MediaListWithOneImageAppearance.r2_3 =>
+                              t.misskey.limitTo(x: '2:3'),
+                          },
+                        ),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(
+                              t.misskey.mediaListWithOneImageAppearance,
+                            ),
+                            values: [
+                              null,
+                              ...MediaListWithOneImageAppearance.values,
+                            ].map((value) => (value,)),
+                            initialValue: (
+                              settings.mediaListWithOneImageAppearance,
+                            ),
+                            titleBuilder: (context, value) =>
+                                Text(switch (value.$1) {
+                                  null => t.misskey.default_,
+                                  MediaListWithOneImageAppearance.r16_9 =>
+                                    t.misskey.limitTo(x: '16:9'),
+                                  MediaListWithOneImageAppearance.r1_1 =>
+                                    t.misskey.limitTo(x: '1:1'),
+                                  MediaListWithOneImageAppearance.r2_3 =>
+                                    t.misskey.limitTo(x: '2:3'),
+                                }),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setMediaListWithOneImageAppearance(result.$1);
+                          }
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.aria.displayOfThumbnail),
+                        subtitle: Text(switch (settings.thumbnailBoxFit) {
+                          BoxFit.contain => t.aria.showEntireImage,
+                          BoxFit.cover => t.aria.showExpandedImage,
+                          _ => t.misskey.unknown,
+                        }),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(t.aria.displayOfThumbnail),
+                            values: [BoxFit.contain, BoxFit.cover],
+                            initialValue: settings.thumbnailBoxFit,
+                            titleBuilder: (context, value) =>
+                                Text(switch (value) {
+                                  BoxFit.contain => t.aria.showEntireImage,
+                                  BoxFit.cover => t.aria.showExpandedImage,
+                                  _ => t.misskey.unknown,
+                                }),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setThumbnailBoxFit(result);
+                          }
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        t.aria.font,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.aria.font),
+                        subtitle: Text(settings.fontFamily ?? t.misskey.system),
+                        trailing: const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showRadioDialog(
+                            context,
+                            title: Text(t.aria.font),
+                            values: [
+                              (null,),
+                              (FontFamily.bIZUDGothic,),
+                              (FontFamily.bIZUDMincho,),
+                              (FontFamily.mPlus1,),
+                              (FontFamily.mPlus2,),
+                              (FontFamily.notoSansJP,),
+                              (FontFamily.notoSansKR,),
+                              (FontFamily.notoSansSC,),
+                              (FontFamily.notoSansTC,),
+                              (FontFamily.notoSerifJP,),
+                              (FontFamily.nunito,),
+                              (FontFamily.pretendard,),
+                            ],
+                            initialValue: (settings.fontFamily,),
+                            titleBuilder: (context, value) => Text(
+                              value.$1 ?? t.misskey.system,
+                              style: TextStyle(fontFamily: value.$1),
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setFontFamily(result.$1);
+                          }
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.fontSize),
+                        subtitle: Slider(
+                          value: fontSize.value,
+                          min: minFontSize,
+                          max: maxFontSize,
+                          label: fontSize.value.toStringAsFixed(1),
+                          onChanged: (value) => fontSize.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setFontSize(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            fontSize.value = defaultFontSize;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setFontSize(defaultFontSize);
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.aria.lineHeight),
+                        subtitle: Slider(
+                          value: lineHeight.value,
+                          min: minLineHeight,
+                          max: maxLineHeight,
+                          label: lineHeight.value.toStringAsFixed(1),
+                          onChanged: (value) => lineHeight.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setLineHeight(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            lineHeight.value = defaultLineHeight;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setLineHeight(defaultLineHeight);
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        t.misskey.size,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.aria.avatarSize),
+                        subtitle: Slider(
+                          value: avatarScale.value,
+                          min: minAvatarScale,
+                          max: maxAvatarScale,
+                          label: avatarScale.value.toStringAsFixed(1),
+                          onChanged: (value) => avatarScale.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setAvatarScale(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            avatarScale.value = defaultAvatarScale;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setAvatarScale(defaultAvatarScale);
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.reactionsDisplaySize),
+                        subtitle: Slider(
+                          value: reactionsDisplayScale.value,
+                          min: minReactionsDisplayScale,
+                          max: maxReactionsDisplayScale,
+                          label: reactionsDisplayScale.value.toStringAsFixed(3),
+                          onChanged: (value) =>
+                              reactionsDisplayScale.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setReactionsDisplayScale(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            reactionsDisplayScale.value = 1.0;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setReactionsDisplayScale(1.0);
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.aria.noteFooterSize),
+                        subtitle: Slider(
+                          value: noteFooterScale.value,
+                          min: minNoteFooterScale,
+                          max: maxNoteFooterScale,
+                          label: noteFooterScale.value.toStringAsFixed(3),
+                          onChanged: (value) => noteFooterScale.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setNoteFooterScale(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            noteFooterScale.value = 1.0;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setNoteFooterScale(1.0);
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        t.aria.margin,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.vertical),
+                        subtitle: Slider(
+                          value: noteVerticalPadding.value,
+                          max: maxNoteVerticalPadding,
+                          label: noteVerticalPadding.value.toStringAsFixed(1),
+                          onChanged: (value) =>
+                              noteVerticalPadding.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setNoteVerticalPadding(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            noteVerticalPadding.value =
+                                defaultNoteVerticalPadding;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setNoteVerticalPadding(
+                                  defaultNoteVerticalPadding,
+                                );
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.horizontal),
+                        subtitle: Slider(
+                          value: noteHorizontalPadding.value,
+                          min: minNoteHorizontalPadding,
+                          max: maxNoteHorizontalPadding,
+                          label: noteHorizontalPadding.value.toStringAsFixed(1),
+                          onChanged: (value) =>
+                              noteHorizontalPadding.value = value,
+                          onChangeEnd: (value) => ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setNoteHorizontalPadding(value),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            noteHorizontalPadding.value =
+                                defaultNoteHorizontalPadding;
+                            ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setNoteHorizontalPadding(
+                                  defaultNoteHorizontalPadding,
+                                );
+                          },
+                          icon: const Icon(Icons.refresh),
+                        ),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        t.misskey.backgroundColor,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.visibility_.public),
+                        trailing: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: settings.publicNoteBackgroundColor,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const SizedBox(width: 28.0, height: 28.0),
+                        ),
+                        onTap: () async {
+                          final result = await showColorPickerDialog(
+                            context,
+                            settings.publicNoteBackgroundColor ??
+                                Colors.transparent,
+                            pickersEnabled: {
+                              ColorPickerType.primary: false,
+                              ColorPickerType.accent: false,
+                              ColorPickerType.wheel: true,
+                            },
+                            enableOpacity: true,
+                          );
                           await ref
                               .read(generalSettingsNotifierProvider.notifier)
-                              .setFontFamily(result.$1);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.fontSize),
-                      subtitle: Slider(
-                        value: fontSize.value,
-                        min: minFontSize,
-                        max: maxFontSize,
-                        label: fontSize.value.toStringAsFixed(1),
-                        onChanged: (value) => fontSize.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setFontSize(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          fontSize.value = defaultFontSize;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setFontSize(defaultFontSize);
-                        },
-                        icon: const Icon(Icons.refresh),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.aria.lineHeight),
-                      subtitle: Slider(
-                        value: lineHeight.value,
-                        min: minLineHeight,
-                        max: maxLineHeight,
-                        label: lineHeight.value.toStringAsFixed(1),
-                        onChanged: (value) => lineHeight.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setLineHeight(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          lineHeight.value = defaultLineHeight;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setLineHeight(defaultLineHeight);
-                        },
-                        icon: const Icon(Icons.refresh),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.aria.avatarSize),
-                      subtitle: Slider(
-                        value: avatarScale.value,
-                        min: minAvatarScale,
-                        max: maxAvatarScale,
-                        label: avatarScale.value.toStringAsFixed(1),
-                        onChanged: (value) => avatarScale.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setAvatarScale(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          avatarScale.value = defaultAvatarScale;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setAvatarScale(defaultAvatarScale);
-                        },
-                        icon: const Icon(Icons.refresh),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.reactionsDisplaySize),
-                      subtitle: Slider(
-                        value: reactionsDisplayScale.value,
-                        min: minReactionsDisplayScale,
-                        max: maxReactionsDisplayScale,
-                        label: reactionsDisplayScale.value.toStringAsFixed(3),
-                        onChanged: (value) =>
-                            reactionsDisplayScale.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setReactionsDisplayScale(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          reactionsDisplayScale.value = 1.0;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setReactionsDisplayScale(1.0);
-                        },
-                        icon: const Icon(Icons.refresh),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.aria.noteFooterSize),
-                      subtitle: Slider(
-                        value: noteFooterScale.value,
-                        min: minNoteFooterScale,
-                        max: maxNoteFooterScale,
-                        label: noteFooterScale.value.toStringAsFixed(3),
-                        onChanged: (value) => noteFooterScale.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setNoteFooterScale(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          noteFooterScale.value = 1.0;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setNoteFooterScale(1.0);
-                        },
-                        icon: const Icon(Icons.refresh),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      t.aria.margin,
-                      style: TextStyle(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurface.withValues(alpha: 0.8),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.vertical),
-                      subtitle: Slider(
-                        value: noteVerticalPadding.value,
-                        max: maxNoteVerticalPadding,
-                        label: noteVerticalPadding.value.toStringAsFixed(1),
-                        onChanged: (value) => noteVerticalPadding.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setNoteVerticalPadding(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          noteVerticalPadding.value =
-                              defaultNoteVerticalPadding;
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setNoteVerticalPadding(
-                                defaultNoteVerticalPadding,
+                              .setPublicNoteBackgroundColor(
+                                result != Colors.transparent ? result : null,
                               );
                         },
-                        icon: const Icon(Icons.refresh),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.horizontal),
-                      subtitle: Slider(
-                        value: noteHorizontalPadding.value,
-                        min: minNoteHorizontalPadding,
-                        max: maxNoteHorizontalPadding,
-                        label: noteHorizontalPadding.value.toStringAsFixed(1),
-                        onChanged: (value) =>
-                            noteHorizontalPadding.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setNoteHorizontalPadding(value),
-                      ),
-                      trailing: IconButton(
-                        onPressed: () {
-                          noteHorizontalPadding.value =
-                              defaultNoteHorizontalPadding;
-                          ref
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.visibility_.home),
+                        trailing: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: settings.homeNoteBackgroundColor,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const SizedBox(width: 28.0, height: 28.0),
+                        ),
+                        onTap: () async {
+                          final result = await showColorPickerDialog(
+                            context,
+                            settings.homeNoteBackgroundColor ??
+                                Colors.transparent,
+                            pickersEnabled: {
+                              ColorPickerType.primary: false,
+                              ColorPickerType.accent: false,
+                              ColorPickerType.wheel: true,
+                            },
+                            enableOpacity: true,
+                          );
+                          await ref
                               .read(generalSettingsNotifierProvider.notifier)
-                              .setNoteHorizontalPadding(
-                                defaultNoteHorizontalPadding,
+                              .setHomeNoteBackgroundColor(
+                                result != Colors.transparent ? result : null,
                               );
                         },
-                        icon: const Icon(Icons.refresh),
                       ),
                     ),
                   ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      t.misskey.backgroundColor,
-                      style: TextStyle(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onSurface.withValues(alpha: 0.8),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.visibility_.public),
-                      trailing: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: settings.publicNoteBackgroundColor,
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.outline,
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.visibility_.followers),
+                        trailing: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: settings.followersNoteBackgroundColor,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
+                            shape: BoxShape.circle,
                           ),
-                          shape: BoxShape.circle,
+                          child: const SizedBox(width: 28.0, height: 28.0),
                         ),
-                        child: const SizedBox(width: 28.0, height: 28.0),
+                        onTap: () async {
+                          final result = await showColorPickerDialog(
+                            context,
+                            settings.followersNoteBackgroundColor ??
+                                Colors.transparent,
+                            pickersEnabled: {
+                              ColorPickerType.primary: false,
+                              ColorPickerType.accent: false,
+                              ColorPickerType.wheel: true,
+                            },
+                            enableOpacity: true,
+                          );
+                          await ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setFollowersNoteBackgroundColor(
+                                result != Colors.transparent ? result : null,
+                              );
+                        },
                       ),
-                      onTap: () async {
-                        final result = await showColorPickerDialog(
-                          context,
-                          settings.publicNoteBackgroundColor ??
-                              Colors.transparent,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
-                          enableOpacity: true,
-                        );
-                        await ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setPublicNoteBackgroundColor(
-                              result != Colors.transparent ? result : null,
-                            );
-                      },
                     ),
                   ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.visibility_.home),
-                      trailing: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: settings.homeNoteBackgroundColor,
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.outline,
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text(t.misskey.visibility_.specified),
+                        trailing: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: settings.specifiedNoteBackgroundColor,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.outline,
+                            ),
+                            shape: BoxShape.circle,
                           ),
-                          shape: BoxShape.circle,
+                          child: const SizedBox(width: 28.0, height: 28.0),
                         ),
-                        child: const SizedBox(width: 28.0, height: 28.0),
-                      ),
-                      onTap: () async {
-                        final result = await showColorPickerDialog(
-                          context,
-                          settings.homeNoteBackgroundColor ??
-                              Colors.transparent,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
-                          enableOpacity: true,
-                        );
-                        await ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setHomeNoteBackgroundColor(
-                              result != Colors.transparent ? result : null,
-                            );
-                      },
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.visibility_.followers),
-                      trailing: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: settings.followersNoteBackgroundColor,
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.outline,
+                        onTap: () async {
+                          final result = await showColorPickerDialog(
+                            context,
+                            settings.specifiedNoteBackgroundColor ??
+                                Colors.transparent,
+                            pickersEnabled: {
+                              ColorPickerType.primary: false,
+                              ColorPickerType.accent: false,
+                              ColorPickerType.wheel: true,
+                            },
+                            enableOpacity: true,
+                          );
+                          await ref
+                              .read(generalSettingsNotifierProvider.notifier)
+                              .setSpecifiedNoteBackgroundColor(
+                                result != Colors.transparent ? result : null,
+                              );
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
                           ),
-                          shape: BoxShape.circle,
                         ),
-                        child: const SizedBox(width: 28.0, height: 28.0),
                       ),
-                      onTap: () async {
-                        final result = await showColorPickerDialog(
-                          context,
-                          settings.followersNoteBackgroundColor ??
-                              Colors.transparent,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
-                          enableOpacity: true,
-                        );
-                        await ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setFollowersNoteBackgroundColor(
-                              result != Colors.transparent ? result : null,
-                            );
-                      },
                     ),
                   ),
-                ),
-                Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: ListTile(
-                      title: Text(t.misskey.visibility_.specified),
-                      trailing: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: settings.specifiedNoteBackgroundColor,
-                          border: Border.all(
-                            color: Theme.of(context).colorScheme.outline,
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const SizedBox(width: 28.0, height: 28.0),
-                      ),
-                      onTap: () async {
-                        final result = await showColorPickerDialog(
-                          context,
-                          settings.specifiedNoteBackgroundColor ??
-                              Colors.transparent,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
-                          enableOpacity: true,
-                        );
-                        await ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setSpecifiedNoteBackgroundColor(
-                              result != Colors.transparent ? result : null,
-                            );
-                      },
-                    ),
-                  ),
-                ),
-              ],
+                  const SizedBox(height: 8.0),
+                ],
+              ),
             ),
             _NoteDisplayArea.preview => SingleChildScrollView(
               child: Center(

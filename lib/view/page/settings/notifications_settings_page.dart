@@ -209,7 +209,7 @@ class NotificationsSettingsPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.notifications)),
       body: ListView(
         children: [
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -217,12 +217,11 @@ class NotificationsSettingsPage extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
                 t.misskey.pushNotification,
-                style: TextStyle(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
-                ),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
           ),
+          const SizedBox(height: 8.0),
           Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -240,6 +239,10 @@ class NotificationsSettingsPage extends ConsumerWidget {
                             .add(account, i.id);
                       }
                     : null,
+                tileColor: theme.colorScheme.surface,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
             ),
           ),

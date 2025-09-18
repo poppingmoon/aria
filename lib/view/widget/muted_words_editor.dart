@@ -9,6 +9,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../provider/muted_words_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
@@ -72,6 +73,9 @@ class MutedWordsEditor extends HookConsumerWidget {
       });
       return;
     }, []);
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.brightnessOf(context)),
+    );
 
     return ExpansionTile(
       leading: Icon(
@@ -81,6 +85,21 @@ class MutedWordsEditor extends HookConsumerWidget {
       childrenPadding: const EdgeInsets.all(8.0),
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Card.filled(
+          color: colors.infoBg,
+          margin: EdgeInsets.zero,
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              hardMute
+                  ? t.misskey.hardWordMuteDescription
+                  : t.misskey.wordMuteDescription,
+              style: TextStyle(color: colors.infoFg),
+            ),
+          ),
+        ),
+        const SizedBox(height: 8.0),
         Shortcuts(
           shortcuts: {
             ...disablingTextShortcuts,

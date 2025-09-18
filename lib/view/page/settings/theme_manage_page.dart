@@ -73,15 +73,16 @@ class ThemeManagePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final codes = ref.watch(misskeyThemeCodesNotifierProvider);
     final themes = ref.watch(misskeyThemesProvider);
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.theme_.installedThemes)),
       body: codes.isNotEmpty
-          ? ListView.builder(
-              itemBuilder: (context, index) {
-                if (index < codes.length) {
-                  final theme = themes[index];
-                  return Center(
+          ? ListView(
+              children: [
+                for (final (index, theme) in themes.indexed) ...[
+                  const SizedBox(height: 8.0),
+                  Center(
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       width: maxContentWidth,
@@ -97,6 +98,14 @@ class ThemeManagePage extends ConsumerWidget {
                         expandedCrossAxisAlignment: CrossAxisAlignment.start,
                         childrenPadding: const EdgeInsets.symmetric(
                           horizontal: 16.0,
+                        ),
+                        backgroundColor: colorScheme.surface,
+                        collapsedBackgroundColor: colorScheme.surface,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        collapsedShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         children: [
                           if (theme case MisskeyTheme(:final author?)) ...[
@@ -147,10 +156,8 @@ class ThemeManagePage extends ConsumerWidget {
                               }
                             },
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: Theme.of(
-                                context,
-                              ).colorScheme.error,
-                              iconColor: Theme.of(context).colorScheme.error,
+                              foregroundColor: colorScheme.error,
+                              iconColor: colorScheme.error,
                             ),
                             icon: const Icon(Icons.delete),
                             label: Text(t.misskey.uninstall),
@@ -159,12 +166,10 @@ class ThemeManagePage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                  );
-                } else {
-                  return const SizedBox(height: 120.0);
-                }
-              },
-              itemCount: codes.length + 1,
+                  ),
+                ],
+                const SizedBox(height: 120.0),
+              ],
             )
           : Center(child: Text(t.aria.noThemes)),
       floatingActionButton: FloatingActionButton.extended(
