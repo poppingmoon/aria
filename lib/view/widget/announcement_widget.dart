@@ -8,11 +8,11 @@ import '../../model/account.dart';
 import '../../provider/api/announcements_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../util/format_datetime.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_dialog.dart';
 import 'image_widget.dart';
 import 'mfm.dart';
-import 'time_widget.dart';
 
 class AnnouncementWidget extends ConsumerWidget {
   const AnnouncementWidget({
@@ -30,7 +30,9 @@ class AnnouncementWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final icon = announcement.icon;
     final imageUrl = announcement.imageUrl;
-    final titleStyle = DefaultTextStyle.of(context).style
+    final theme = Theme.of(context);
+    final style = DefaultTextStyle.of(context).style;
+    final titleStyle = style
         .apply(fontSizeFactor: 1.5)
         .merge(const TextStyle(fontWeight: FontWeight.bold));
     final showButton =
@@ -38,9 +40,7 @@ class AnnouncementWidget extends ConsumerWidget {
         !account.isGuest &&
         !announcement.silence &&
         !(announcement.isRead ?? false);
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
@@ -51,11 +51,7 @@ class AnnouncementWidget extends ConsumerWidget {
           if (announcement.forYou ?? false) ...[
             Row(
               children: [
-                Icon(
-                  Icons.push_pin,
-                  size: DefaultTextStyle.of(context).style.fontSize,
-                  color: pinColor,
-                ),
+                Icon(Icons.push_pin, size: style.fontSize, color: pinColor),
                 const SizedBox(width: 2.0),
                 Text(t.misskey.forYou, style: const TextStyle(color: pinColor)),
               ],
@@ -105,17 +101,36 @@ class AnnouncementWidget extends ConsumerWidget {
             const SizedBox(height: 8.0),
           ],
           DefaultTextStyle(
-            style: DefaultTextStyle.of(context).style.apply(
+            style: style.apply(
               fontSizeFactor: 0.9,
-              color: Theme.of(
-                context,
-              ).colorScheme.onSurface.withValues(alpha: 0.7),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
-            child: TimeWidget(
-              time: announcement.updatedAt ?? announcement.createdAt,
-              detailed: true,
+            child: Text.rich(
+              TextSpan(
+                text: '${t.misskey.createdAt}: ',
+                children: [
+                  TextSpan(text: '${absoluteTime(announcement.createdAt)} '),
+                  TextSpan(text: '(${relativeTime(announcement.createdAt)})'),
+                ],
+              ),
             ),
           ),
+          if (announcement.updatedAt case final updatedAt?)
+            DefaultTextStyle(
+              style: style.apply(
+                fontSizeFactor: 0.9,
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
+              child: Text.rich(
+                TextSpan(
+                  text: '${t.misskey.updatedAt}: ',
+                  children: [
+                    TextSpan(text: '${absoluteTime(updatedAt)} '),
+                    TextSpan(text: '(${relativeTime(updatedAt)})'),
+                  ],
+                ),
+              ),
+            ),
           if (showButton) ...[
             const SizedBox(height: 8.0),
             ElevatedButton(
