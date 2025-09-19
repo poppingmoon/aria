@@ -135,6 +135,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get keepOpen => '開いたままにする';
 	@override String get keepTimelinePosition => 'タイムラインの位置を保持する';
 	@override String get lineHeight => '行間';
+	@override String get loadFromDrive => 'ドライブから読み込み';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get margin => '余白';
 	@override String get media => 'メディア';
@@ -203,6 +204,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'リセット';
 	@override String get rotate => '回転';
+	@override String get saveToDrive => 'ドライブに保存';
 	@override String get schedule => '予約';
 	@override String get scheduledNoteError => '予約済みのノートの投稿に失敗しました';
 	@override String get scheduledNotePosted => '予約済みのノートが投稿されました';
@@ -276,6 +278,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	]);
 	@override String get vibrateNote => 'ノートを受信したときに振動する';
 	@override String get vibrateNotification => '通知を受信したときに振動する';
+	@override String get vibration => 'バイブレーション';
 	@override String get webBrowser => 'ウェブブラウザ';
 	@override String willBePostedOn({required Object date}) => '${date}に投稿されます';
 }

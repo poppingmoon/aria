@@ -1,4 +1,4 @@
-import com.android.build.OutputFile
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
 
 plugins {
     id("com.android.application")
@@ -12,7 +12,7 @@ android {
     ndkVersion = "28.2.13676358"
 
     compileOptions {
-        coreLibraryDesugaringEnabled = true
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
@@ -31,7 +31,7 @@ android {
     }
 
     signingConfigs {
-        register("release") {
+        create("release") {
             keyAlias = System.getenv("KEY_ALIAS")
             keyPassword = System.getenv("KEY_PASSWORD")
             storeFile = file("upload.keystore")
@@ -60,8 +60,8 @@ dependencies {
     implementation("org.unifiedpush.android:embedded-fcm-distributor:3.0.0")
 }
 
-configurations.configureEach {
-    def tink = "com.google.crypto.tink:tink-android:1.18.0"
+configurations.all {
+    val tink = "com.google.crypto.tink:tink-android:1.18.0"
     resolutionStrategy {
         force(tink)
         dependencySubstitution {
@@ -70,12 +70,13 @@ configurations.configureEach {
     }
 }
 
-def abiCodes = ["x86_64": 1, "armeabi-v7a": 2, "arm64-v8a": 3]
-android.applicationVariants.all { variant ->
-    variant.outputs.forEach { output ->
-        def abiVersionCode = abiCodes.get(output.getFilter(OutputFile.ABI))
+val abiCodes = mapOf("x86_64" to 1, "armeabi-v7a" to 2, "arm64-v8a" to 3)
+android.applicationVariants.configureEach {
+    outputs.forEach { output ->
+        val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
         if (abiVersionCode != null) {
-            output.versionCodeOverride = variant.versionCode * 10 + abiVersionCode
+            (output as ApkVariantOutputImpl).versionCodeOverride =
+                this.versionCode * 10 + abiVersionCode
         }
     }
 }
