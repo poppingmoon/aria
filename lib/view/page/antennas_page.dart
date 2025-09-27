@@ -10,6 +10,7 @@ import '../../provider/api/antennas_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../widget/error_message.dart';
+import '../widget/haptic_feedback_refresh_indicator.dart';
 
 class AntennasPage extends ConsumerWidget {
   const AntennasPage({super.key, required this.account});
@@ -22,7 +23,7 @@ class AntennasPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.antennas)),
-      body: RefreshIndicator(
+      body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(antennasNotifierProvider(account).future),
         child: switch (antennas) {
           AsyncValue(valueOrNull: final antennas?) =>

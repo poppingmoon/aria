@@ -9,6 +9,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/chat_invitations_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/time_widget.dart';
@@ -30,7 +31,7 @@ class ChatInvitations extends ConsumerWidget {
     );
 
     if (invitations.error case MisskeyException(code: 'PERMISSION_DENIED')) {
-      return RefreshIndicator(
+      return HapticFeedbackRefreshIndicator(
         onRefresh: () =>
             ref.refresh(chatInvitationsNotifierProvider(account).future),
         child: LayoutBuilder(

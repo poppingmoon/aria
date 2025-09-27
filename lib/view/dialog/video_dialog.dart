@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -10,6 +11,7 @@ import '../../hook/chewie_controller_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
@@ -25,6 +27,11 @@ class VideoDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final controller = useChewieController(
       url: url != null ? Uri.parse(url!) : null,
       file: file,
@@ -40,6 +47,13 @@ class VideoDialog extends HookConsumerWidget {
         children: [
           Dismissible(
             key: const ValueKey('VideoDialog'),
+            onUpdate: enableHapticFeedback
+                ? (details) {
+                    if (!details.previousReached && details.reached) {
+                      HapticFeedback.lightImpact();
+                    }
+                  }
+                : null,
             onDismissed: (_) => context.pop(),
             direction: DismissDirection.vertical,
             child: Center(child: _VideoWidget(controller: controller)),

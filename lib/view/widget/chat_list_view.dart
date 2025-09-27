@@ -19,6 +19,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/chat_stream_notifier.dart';
 import '../../provider/streaming/incoming_message_provider.dart';
 import 'chat_message_widget.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 
 class ChatListView extends HookConsumerWidget {
@@ -193,7 +194,7 @@ class ChatListView extends HookConsumerWidget {
       }),
     );
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () async {
         nextMessages.value = [];
         listKey.currentState?.removeAllItems(

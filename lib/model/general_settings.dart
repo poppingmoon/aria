@@ -118,8 +118,6 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(false) bool alwaysShowTabHeader,
     @Default(true) bool showTimelineLastViewedAt,
     @Default(true) bool showPopupOnNewNote,
-    @Default(false) bool vibrateNote,
-    @Default(false) bool vibrateNotification,
 
     // Behavior
     @Default(true) bool enableInfiniteScroll,
@@ -137,6 +135,9 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
     @Default(false) bool enableSpellCheck,
     @Default(false) bool enablePredictiveBack,
+    @Default(true) bool enableHapticFeedback,
+    @Default(false) bool vibrateNote,
+    @Default(false) bool vibrateNotification,
 
     // Theme
     @Default(ThemeMode.system) ThemeMode themeMode,

@@ -10,6 +10,7 @@ import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/user_select_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
@@ -24,7 +25,7 @@ class ListUsers extends ConsumerWidget {
     final users = ref.watch(listUsersNotifierProvider(account, listId));
     final theme = Theme.of(context);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
           ref.refresh(listUsersNotifierProvider(account, listId).future),
       child: switch (users) {

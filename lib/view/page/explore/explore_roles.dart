@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/roles_provider.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/role_preview.dart';
 
 class ExploreRoles extends ConsumerWidget {
@@ -18,7 +19,7 @@ class ExploreRoles extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final roles = ref.watch(rolesProvider(account));
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(rolesProvider(account).future),
       child: switch (roles) {
         AsyncValue(valueOrNull: final roles?) => Builder(

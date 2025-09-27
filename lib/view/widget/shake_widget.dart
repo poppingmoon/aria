@@ -3,8 +3,11 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ShakeWidget extends HookWidget {
+import '../../provider/general_settings_notifier_provider.dart';
+
+class ShakeWidget extends HookConsumerWidget {
   const ShakeWidget({super.key, required this.child});
 
   final Widget child;
@@ -290,7 +293,12 @@ class ShakeWidget extends HookWidget {
   ]);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final controller = useAnimationController(
       duration: const Duration(seconds: 1),
     );
@@ -304,7 +312,9 @@ class ShakeWidget extends HookWidget {
         child: GestureDetector(
           onTap: () {
             controller.forward(from: 0.0);
-            HapticFeedback.vibrate();
+            if (enableHapticFeedback) {
+              HapticFeedback.vibrate();
+            }
           },
           child: child,
         ),

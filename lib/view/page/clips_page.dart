@@ -12,6 +12,7 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/clip_settings_dialog.dart';
 import '../widget/clip_preview.dart';
 import '../widget/error_message.dart';
+import '../widget/haptic_feedback_refresh_indicator.dart';
 import '../widget/paginated_list_view.dart';
 
 class ClipsPage extends ConsumerWidget {
@@ -39,7 +40,7 @@ class ClipsPage extends ConsumerWidget {
         ),
         body: TabBarView(
           children: [
-            RefreshIndicator(
+            HapticFeedbackRefreshIndicator(
               onRefresh: () =>
                   ref.refresh(clipsNotifierProvider(account).future),
               child: switch (clips) {
@@ -64,9 +65,6 @@ class ClipsPage extends ConsumerWidget {
                             onTap: () =>
                                 context.push('/$account/clips/${clip.id}'),
                           ),
-                          onRefresh: () => ref.refresh(
-                            clipsNotifierProvider(account).future,
-                          ),
                           loadMore: (skipError) => ref
                               .read(clipsNotifierProvider(account).notifier)
                               .loadMore(skipError: skipError),
@@ -88,7 +86,7 @@ class ClipsPage extends ConsumerWidget {
                 _ => const Center(child: CircularProgressIndicator()),
               },
             ),
-            RefreshIndicator(
+            HapticFeedbackRefreshIndicator(
               onRefresh: () =>
                   ref.refresh(favoriteClipsNotifierProvider(account).future),
               child: switch (favoriteClips) {

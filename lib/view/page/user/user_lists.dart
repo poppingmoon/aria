@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/user_lists_provider.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class UserLists extends ConsumerWidget {
   const UserLists({super.key, required this.account, required this.userId});
@@ -18,7 +19,7 @@ class UserLists extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(userListsProvider(account, userId));
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(userListsProvider(account, userId).future),
       child: switch (lists) {
         AsyncValue(valueOrNull: final lists?) =>

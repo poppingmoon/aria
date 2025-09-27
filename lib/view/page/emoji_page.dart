@@ -11,6 +11,7 @@ import '../../util/copy_text.dart';
 import '../../util/launch_url.dart';
 import '../dialog/image_dialog.dart';
 import '../widget/error_message.dart';
+import '../widget/haptic_feedback_refresh_indicator.dart';
 import '../widget/image_widget.dart';
 import '../widget/key_value_widget.dart';
 import '../widget/mfm.dart';
@@ -37,7 +38,7 @@ class EmojiPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(name)),
-      body: RefreshIndicator(
+      body: HapticFeedbackRefreshIndicator(
         onRefresh: () =>
             ref.refresh(emojiResponseProvider(account, name).future),
         child: switch (emoji) {

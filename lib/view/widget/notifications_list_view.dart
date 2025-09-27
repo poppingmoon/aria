@@ -18,6 +18,7 @@ import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
 import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'notification_widget.dart';
 import 'pagination_bottom_widget.dart';
 
@@ -107,7 +108,7 @@ class NotificationsListView extends HookConsumerWidget {
       }
     });
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () async {
         ref.invalidate(webSocketChannelProvider(account));
         nextNotifications.value = [];

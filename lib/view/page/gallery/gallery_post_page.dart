@@ -25,6 +25,7 @@ import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
 import '../../widget/gallery_post_preview.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/like_button.dart';
 import '../../widget/mfm.dart';
@@ -129,7 +130,7 @@ class GalleryPostPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: RefreshIndicator(
+      body: HapticFeedbackRefreshIndicator(
         onRefresh: () =>
             ref.refresh(galleryPostNotifierProvider(account, postId).future),
         child: switch (post) {

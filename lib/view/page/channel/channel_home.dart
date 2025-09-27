@@ -8,6 +8,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_dialog.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/note_widget.dart';
@@ -33,7 +34,7 @@ class ChannelHome extends ConsumerWidget {
     final bannerUrl = channel.bannerUrl?.toString();
     final description = channel.description;
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
           ref.refresh(channelNotifierProvider(account, channelId).future),
       child: CustomScrollView(

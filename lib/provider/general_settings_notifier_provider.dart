@@ -461,16 +461,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setVibrateNote(bool vibrateNote) async {
-    state = state.copyWith(vibrateNote: vibrateNote);
-    await _save();
-  }
-
-  Future<void> setVibrateNotification(bool vibrateNotification) async {
-    state = state.copyWith(vibrateNotification: vibrateNotification);
-    await _save();
-  }
-
   Future<void> setEnableInfiniteScroll(bool enableInfiniteScroll) async {
     state = state.copyWith(enableInfiniteScroll: enableInfiniteScroll);
     await _save();
@@ -555,6 +545,21 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setEnablePredictiveBack(bool enablePredictiveBack) async {
     state = state.copyWith(enablePredictiveBack: enablePredictiveBack);
+    await _save();
+  }
+
+  Future<void> setEnableHapticFeedback(bool enableHapticFeedback) async {
+    state = state.copyWith(enableHapticFeedback: enableHapticFeedback);
+    await _save();
+  }
+
+  Future<void> setVibrateNote(bool vibrateNote) async {
+    state = state.copyWith(vibrateNote: vibrateNote);
+    await _save();
+  }
+
+  Future<void> setVibrateNotification(bool vibrateNotification) async {
+    state = state.copyWith(vibrateNotification: vibrateNotification);
     await _save();
   }
 

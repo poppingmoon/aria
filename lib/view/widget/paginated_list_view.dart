@@ -6,6 +6,7 @@ import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../constant/max_content_width.dart';
 import '../../model/pagination_state.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 
 class PaginatedListView<T> extends HookConsumerWidget {
@@ -54,7 +55,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
       return () => controller.removeListener(callback);
     }, [loadMore]);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: onRefresh ?? () async {},
       child: CustomScrollView(
         controller: controller,

@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +12,7 @@ import 'package:photo_view/photo_view.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
@@ -31,6 +33,11 @@ class ImageDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final isZoomed = useState(false);
     final overlayOpacityController = useAnimationController(
       duration: const Duration(milliseconds: 100),
@@ -53,6 +60,11 @@ class ImageDialog extends HookConsumerWidget {
                 clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
                 duration: Duration.zero,
               );
+            }
+            if (enableHapticFeedback &&
+                !details.previousReached &&
+                details.reached) {
+              HapticFeedback.lightImpact();
             }
           },
           onDismissed: (_) => context.pop(),

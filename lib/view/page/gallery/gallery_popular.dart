@@ -8,6 +8,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/popular_gallery_posts_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/gallery_post_preview.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 
 class GalleryPopular extends ConsumerWidget {
   const GalleryPopular({super.key, required this.account});
@@ -18,7 +19,7 @@ class GalleryPopular extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = ref.watch(popularGalleryPostsProvider(account));
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(popularGalleryPostsProvider(account).future),
       child: switch (pages) {
         AsyncValue(valueOrNull: final posts?) =>

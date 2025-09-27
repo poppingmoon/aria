@@ -101,6 +101,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Button types'
 	String get buttonTypes => 'Button types';
 
+	/// en-US: 'Cache'
+	String get cache => 'Cache';
+
 	/// en-US: 'Calculating...'
 	String get calculating => 'Calculating...';
 
@@ -193,6 +196,9 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Enable federation'
 	String get enableFederation => 'Enable federation';
+
+	/// en-US: 'Enable haptic feedback'
+	String get enableHapticFeedback => 'Enable haptic feedback';
 
 	/// en-US: 'Enable predictive back animations'
 	String get enablePredictiveBack => 'Enable predictive back animations';

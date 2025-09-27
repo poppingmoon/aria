@@ -13,6 +13,7 @@ import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/streaming/incoming_message_provider.dart';
 import '../../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../widget/error_message.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/mfm.dart';
 import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/time_widget.dart';
@@ -44,7 +45,7 @@ class ChatHome extends HookConsumerWidget {
       return;
     }, []);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => Future.wait([
         ref.read(mainStreamNotifierProvider(account).notifier).connect(),
         ref.refresh(chatHistoryNotifierProvider(account).future),

@@ -14,6 +14,7 @@ import '../../../provider/api/chat_room_notifier_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/user_select_dialog.dart';
+import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/pagination_bottom_widget.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
@@ -82,7 +83,7 @@ class ChatRoomMembers extends HookConsumerWidget {
     }, []);
     final theme = Theme.of(context);
 
-    return RefreshIndicator(
+    return HapticFeedbackRefreshIndicator(
       onRefresh: () => Future.wait([
         ref.refresh(chatRoomNotifierProvider(account, roomId).future),
         ref.refresh(chatRoomMembersNotifierProvider(account, roomId).future),

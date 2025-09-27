@@ -13,6 +13,7 @@ import '../../provider/misskey_servers_provider.dart';
 import '../../provider/search_misskey_servers_provider.dart';
 import '../../util/launch_url.dart';
 import 'error_message.dart';
+import 'haptic_feedback_refresh_indicator.dart';
 import 'image_widget.dart';
 
 class MisskeyServers extends HookConsumerWidget {
@@ -40,7 +41,7 @@ class MisskeyServers extends HookConsumerWidget {
           ),
         ),
         Expanded(
-          child: RefreshIndicator(
+          child: HapticFeedbackRefreshIndicator(
             onRefresh: () => ref.refresh(misskeyServersProvider.future),
             child: switch (servers) {
               AsyncValue(valueOrNull: final servers?) => ListView.builder(
