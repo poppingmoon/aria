@@ -101,6 +101,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Button types'
 	String get buttonTypes => 'Button types';
 
+	/// en-US: 'Cache'
+	String get cache => 'Cache';
+
 	/// en-US: 'Calculating...'
 	String get calculating => 'Calculating...';
 

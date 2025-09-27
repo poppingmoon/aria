@@ -299,6 +299,14 @@ class BehaviorPage extends ConsumerWidget {
                           .setLaunchMode(result);
                     }
                   },
+                  shape: switch (defaultTargetPlatform) {
+                    TargetPlatform.android || TargetPlatform.iOS => null,
+                    _ => const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
+                      ),
+                    ),
+                  },
                 ),
               ),
             ),
@@ -314,6 +322,13 @@ class BehaviorPage extends ConsumerWidget {
                     onChanged: (value) => ref
                         .read(generalSettingsNotifierProvider.notifier)
                         .setEnableSpellCheck(value),
+                    shape: defaultTargetPlatform == TargetPlatform.iOS
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              bottom: Radius.circular(8.0),
+                            ),
+                          )
+                        : null,
                   ),
                 ),
               ),
@@ -334,10 +349,77 @@ class BehaviorPage extends ConsumerWidget {
                               .setEnablePredictiveBack(value),
                         _ => null,
                       },
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(8.0),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.aria.vibration,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.vibrateNote),
+                  value: settings.vibrateNote,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setVibrateNote(value),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.vibrateNotification),
+                  value: settings.vibrateNotification,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setVibrateNotification(value),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  t.aria.cache,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
             Center(
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -366,10 +448,8 @@ class BehaviorPage extends ConsumerWidget {
                     );
                     ref.invalidate(cacheSizeProvider);
                   },
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(8.0),
-                    ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),

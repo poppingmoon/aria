@@ -218,6 +218,11 @@ class NoteDisplayPage extends HookConsumerWidget {
                         onChanged: (value) => ref
                             .read(generalSettingsNotifierProvider.notifier)
                             .setShowRepliesCount(value),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(8.0),
+                          ),
+                        ),
                       ),
                     ),
                   ),
