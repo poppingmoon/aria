@@ -51,6 +51,7 @@ class TimelinesPage extends HookConsumerWidget {
       mini,
       square,
       enableHorizontalSwipe,
+      enableHapticFeedback,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
@@ -63,6 +64,7 @@ class TimelinesPage extends HookConsumerWidget {
           settings.showSmallTimelinesPageButtons,
           settings.showSquaredTimelinesPageButtons,
           settings.enableHorizontalSwipe,
+          settings.enableHapticFeedback,
         ),
       ),
     );
@@ -88,7 +90,9 @@ class TimelinesPage extends HookConsumerWidget {
           nextIndex = controller.animation?.value.round() ?? index;
         }
         if (nextIndex == index) return;
-        HapticFeedback.lightImpact();
+        if (enableHapticFeedback) {
+          HapticFeedback.lightImpact();
+        }
         ref
             .read(timelineTabIndexNotifierProvider.notifier)
             .updateIndex(nextIndex);
@@ -145,7 +149,7 @@ class TimelinesPage extends HookConsumerWidget {
       }
       controller.animation?.addListener(callback);
       return () => controller.animation?.removeListener(callback);
-    }, [tabs]);
+    }, [tabs, enableHapticFeedback]);
     final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
     final rootFocusNode = useFocusNode();
     final postFormFocusNode = useFocusNode();

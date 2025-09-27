@@ -12,6 +12,7 @@ import 'package:photo_view/photo_view.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
@@ -32,6 +33,11 @@ class ImageDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final isZoomed = useState(false);
     final overlayOpacityController = useAnimationController(
       duration: const Duration(milliseconds: 100),
@@ -55,7 +61,9 @@ class ImageDialog extends HookConsumerWidget {
                 duration: Duration.zero,
               );
             }
-            if (!details.previousReached && details.reached) {
+            if (enableHapticFeedback &&
+                !details.previousReached &&
+                details.reached) {
               HapticFeedback.lightImpact();
             }
           },

@@ -15,6 +15,7 @@ import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
@@ -56,19 +57,28 @@ class ImageGalleryDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final controller =
         this.controller ?? usePageController(initialPage: initialIndex);
     final index = useState(initialIndex);
     useEffect(() {
-      controller.addListener(() {
+      void callback() {
         final nextIndex = controller.page?.round() ?? 0;
         if (index.value != nextIndex) {
           index.value = nextIndex;
           HapticFeedback.lightImpact();
         }
-      });
-      return;
-    }, []);
+      }
+
+      if (enableHapticFeedback) {
+        controller.addListener(callback);
+      }
+      return () => controller.removeListener(callback);
+    }, [enableHapticFeedback]);
     final comment = files.elementAtOrNull(index.value)?.comment;
     final noteId = noteIds?.elementAtOrNull(index.value);
     final note = account != null && noteId != null
@@ -97,7 +107,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 duration: Duration.zero,
               );
             }
-            if (!details.previousReached && details.reached) {
+            if (enableHapticFeedback &&
+                !details.previousReached &&
+                details.reached) {
               HapticFeedback.lightImpact();
             }
           },

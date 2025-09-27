@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import 'avatar_decorations.dart';
 import 'cat_ear.dart';
 import 'image_widget.dart';
@@ -24,7 +26,7 @@ final _catEarWiggleTween = TweenSequence([
   TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.65624379), weight: 25),
 ]);
 
-class CatAvatar extends HookWidget {
+class CatAvatar extends HookConsumerWidget {
   const CatAvatar({
     super.key,
     required this.account,
@@ -53,27 +55,36 @@ class CatAvatar extends HookWidget {
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final enableHapticFeedback = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.enableHapticFeedback,
+      ),
+    );
     final controller = useAnimationController(
       duration: const Duration(seconds: 1),
     );
     final animation = _catEarWiggleTween.animate(controller);
     final loopAnimation = useState(false);
     useEffect(() {
-      animation.addStatusListener((status) async {
+      Future<void> callback(AnimationStatus status) async {
         if (status == AnimationStatus.completed) {
           if (loopAnimation.value) {
             unawaited(controller.forward(from: 0.0));
-            await Future<void>.delayed(const Duration(milliseconds: 550));
-            await HapticFeedback.lightImpact();
-            await HapticFeedback.lightImpact();
+            if (enableHapticFeedback) {
+              await Future<void>.delayed(const Duration(milliseconds: 550));
+              await HapticFeedback.lightImpact();
+              await HapticFeedback.lightImpact();
+            }
           } else {
             controller.reset();
           }
         }
-      });
-      return;
-    }, []);
+      }
+
+      animation.addStatusListener(callback);
+      return () => animation.removeStatusListener(callback);
+    }, [enableHapticFeedback]);
 
     return InkWell(
       onTap: onTap,

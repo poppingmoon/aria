@@ -159,6 +159,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
       LaunchMode.externalApplication,
   enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
   enablePredictiveBack: json['enablePredictiveBack'] as bool? ?? false,
+  enableHapticFeedback: json['enableHapticFeedback'] as bool? ?? true,
   vibrateNote: json['vibrateNote'] as bool? ?? false,
   vibrateNotification: json['vibrateNotification'] as bool? ?? false,
   themeMode:
@@ -286,6 +287,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
   'enableSpellCheck': instance.enableSpellCheck,
   'enablePredictiveBack': instance.enablePredictiveBack,
+  'enableHapticFeedback': instance.enableHapticFeedback,
   'vibrateNote': instance.vibrateNote,
   'vibrateNotification': instance.vibrateNotification,
   'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,

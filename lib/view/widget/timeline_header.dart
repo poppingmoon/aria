@@ -35,10 +35,13 @@ class TimelineHeader extends HookConsumerWidget {
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
     );
-    final (alwaysShowHeader, oneLine) = ref.watch(
+    final (alwaysShowHeader, oneLine, enableHapticFeedback) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.alwaysShowTabHeader, settings.showTabHeaderInOneLine),
+        (settings) => (
+          settings.alwaysShowTabHeader,
+          settings.showTabHeaderInOneLine,
+          settings.enableHapticFeedback,
+        ),
       ),
     );
     final isMenuExpanded = useState(false);
@@ -152,7 +155,9 @@ class TimelineHeader extends HookConsumerWidget {
               )
             : null,
         onExpansionChanged: (value) {
-          HapticFeedback.lightImpact();
+          if (enableHapticFeedback) {
+            HapticFeedback.lightImpact();
+          }
           isMenuExpanded.value = value;
           if (value) {
             sizeFactor.value = 1.0;

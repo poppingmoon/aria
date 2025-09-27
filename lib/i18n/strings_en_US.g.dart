@@ -197,6 +197,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Enable federation'
 	String get enableFederation => 'Enable federation';
 
+	/// en-US: 'Enable haptic feedback'
+	String get enableHapticFeedback => 'Enable haptic feedback';
+
 	/// en-US: 'Enable predictive back animations'
 	String get enablePredictiveBack => 'Enable predictive back animations';
 

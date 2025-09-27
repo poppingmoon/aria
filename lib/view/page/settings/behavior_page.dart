@@ -376,16 +376,29 @@ class BehaviorPage extends ConsumerWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
                 child: SwitchListTile(
-                  title: Text(t.aria.vibrateNote),
-                  value: settings.vibrateNote,
+                  title: Text(t.aria.enableHapticFeedback),
+                  value: settings.enableHapticFeedback,
                   onChanged: (value) => ref
                       .read(generalSettingsNotifierProvider.notifier)
-                      .setVibrateNote(value),
+                      .setEnableHapticFeedback(value),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(8.0),
                     ),
                   ),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
+                  title: Text(t.aria.vibrateNote),
+                  value: settings.vibrateNote,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setVibrateNote(value),
                 ),
               ),
             ),

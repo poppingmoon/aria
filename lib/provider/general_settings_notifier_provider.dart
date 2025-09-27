@@ -548,6 +548,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setEnableHapticFeedback(bool enableHapticFeedback) async {
+    state = state.copyWith(enableHapticFeedback: enableHapticFeedback);
+    await _save();
+  }
+
   Future<void> setVibrateNote(bool vibrateNote) async {
     state = state.copyWith(vibrateNote: vibrateNote);
     await _save();

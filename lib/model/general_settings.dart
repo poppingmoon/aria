@@ -135,6 +135,7 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
     @Default(false) bool enableSpellCheck,
     @Default(false) bool enablePredictiveBack,
+    @Default(true) bool enableHapticFeedback,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
 
