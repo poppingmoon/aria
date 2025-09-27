@@ -72,7 +72,7 @@ class SwRegisterDialog extends HookConsumerWidget {
             code:
                 """
 if (USER_USERNAME != '${account.username}') {
-  return Mk:dialog('${t.misskey.permissionDeniedError}', '${t.aria.pleaseLoginAs(user: '@${account.username}')}', 'warning')
+  Core:abort(`**${t.misskey.permissionDeniedError}**{Str:lf}${t.aria.pleaseLoginAs(user: '@${account.username}')}`)
 }
 let params = {
   endpoint: '${request.endpoint}',
