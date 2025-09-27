@@ -626,8 +626,8 @@ class _TimelinesPageButton extends ConsumerWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              colors.buttonGradateA.withValues(alpha: !disabled ? 1.0 : 0.5),
-              colors.buttonGradateB.withValues(alpha: !disabled ? 1.0 : 0.5),
+              colors.buttonGradateA.withValues(alpha: !disabled ? 0.9 : 0.5),
+              colors.buttonGradateB.withValues(alpha: !disabled ? 0.9 : 0.5),
             ],
           ),
           borderRadius: BorderRadius.circular(
@@ -672,11 +672,11 @@ class _TimelinesPageButton extends ConsumerWidget {
       heroTag: ValueKey('<_TimelinesPageButton tag $index>'),
       tooltip: tooltip,
       foregroundColor: (primary ? colors.fgOnAccent : colors.fg).withValues(
-        alpha: !disabled ? 1.0 : 0.5,
+        alpha: !disabled ? 0.9 : 0.5,
       ),
       backgroundColor: primary
           ? Colors.transparent
-          : colors.panel.withValues(alpha: !disabled ? 1.0 : 0.5),
+          : colors.panel.withValues(alpha: !disabled ? 0.9 : 0.5),
       disabledElevation: 0.0,
       shape: square ? null : const CircleBorder(),
       mini: mini,
