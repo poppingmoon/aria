@@ -471,11 +471,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setEnableHorizontalSwipe(bool enableHorizontalSwipe) async {
-    state = state.copyWith(enableHorizontalSwipe: enableHorizontalSwipe);
-    await _save();
-  }
-
   Future<void> setOpenSensitiveMediaOnDoubleTap(
     bool openSensitiveMediaOnDoubleTap,
   ) async {
@@ -545,6 +540,29 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setEnablePredictiveBack(bool enablePredictiveBack) async {
     state = state.copyWith(enablePredictiveBack: enablePredictiveBack);
+    await _save();
+  }
+
+  Future<void> setEnableHorizontalSwipe(bool enableHorizontalSwipe) async {
+    state = state.copyWith(enableHorizontalSwipe: enableHorizontalSwipe);
+    await _save();
+  }
+
+  Future<void> setTimelinesPageSpringStiffness(
+    double timelinesPageSpringStiffness,
+  ) async {
+    state = state.copyWith(
+      timelinesPageSpringStiffness: timelinesPageSpringStiffness,
+    );
+    await _save();
+  }
+
+  Future<void> setTimelinesPageMinFlingFactor(
+    double timelinesPageMinFlingFactor,
+  ) async {
+    state = state.copyWith(
+      timelinesPageMinFlingFactor: timelinesPageMinFlingFactor,
+    );
     await _save();
   }
 

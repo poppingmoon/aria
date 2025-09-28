@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -51,6 +52,8 @@ class TimelinesPage extends HookConsumerWidget {
       mini,
       square,
       enableHorizontalSwipe,
+      stiffness,
+      minFlingFactor,
       enableHapticFeedback,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -64,6 +67,8 @@ class TimelinesPage extends HookConsumerWidget {
           settings.showSmallTimelinesPageButtons,
           settings.showSquaredTimelinesPageButtons,
           settings.enableHorizontalSwipe,
+          settings.timelinesPageSpringStiffness,
+          settings.timelinesPageMinFlingFactor,
           settings.enableHapticFeedback,
         ),
       ),
@@ -223,7 +228,20 @@ class TimelinesPage extends HookConsumerWidget {
                           TabBarView(
                             controller: controller,
                             physics: enableHorizontalSwipe
-                                ? null
+                                ? ClampingScrollPhysics(
+                                    parent: _TimelinesPageScrollPhysics(
+                                      spring:
+                                          SpringDescription.withDampingRatio(
+                                            mass: 0.5,
+                                            stiffness: stiffness,
+                                            ratio: 1.1,
+                                          ),
+                                      minFlingDistance:
+                                          kTouchSlop * minFlingFactor,
+                                      minFlingVelocity:
+                                          kMinFlingVelocity * minFlingFactor,
+                                    ),
+                                  )
                                 : const NeverScrollableScrollPhysics(),
                             children: List.generate(
                               numTabs,
@@ -688,6 +706,38 @@ class _TimelinesPageButton extends ConsumerWidget {
       mini: mini,
       onPressed: !disabled ? onPressed : null,
       child: child,
+    );
+  }
+}
+
+class _TimelinesPageScrollPhysics extends ScrollPhysics {
+  const _TimelinesPageScrollPhysics({
+    super.parent,
+    this.spring = const SpringDescription(
+      mass: 0.5,
+      stiffness: 100.0,
+      damping: 15.556349186104047,
+    ),
+    this.minFlingDistance = kTouchSlop,
+    this.minFlingVelocity = kMinFlingVelocity,
+  });
+
+  @override
+  final SpringDescription spring;
+
+  @override
+  final double minFlingDistance;
+
+  @override
+  final double minFlingVelocity;
+
+  @override
+  _TimelinesPageScrollPhysics applyTo(ScrollPhysics? ancestor) {
+    return _TimelinesPageScrollPhysics(
+      parent: buildParent(ancestor),
+      spring: spring,
+      minFlingDistance: minFlingDistance,
+      minFlingVelocity: minFlingVelocity,
     );
   }
 }

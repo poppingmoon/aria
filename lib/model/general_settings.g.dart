@@ -130,7 +130,6 @@ _GeneralSettings _$GeneralSettingsFromJson(
   showPopupOnNewNote: json['showPopupOnNewNote'] as bool? ?? true,
   enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
   keepScreenOn: json['keepScreenOn'] as bool? ?? false,
-  enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
   openSensitiveMediaOnDoubleTap:
       json['openSensitiveMediaOnDoubleTap'] as bool? ?? false,
   noteTapAction:
@@ -160,6 +159,13 @@ _GeneralSettings _$GeneralSettingsFromJson(
   enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
   enablePredictiveBack: json['enablePredictiveBack'] as bool? ?? false,
   enableHapticFeedback: json['enableHapticFeedback'] as bool? ?? true,
+  enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
+  timelinesPageSpringStiffness:
+      (json['timelinesPageSpringStiffness'] as num?)?.toDouble() ??
+      defaultTimelinesPageSpringStiffness,
+  timelinesPageMinFlingFactor:
+      (json['timelinesPageMinFlingFactor'] as num?)?.toDouble() ??
+      defaultTimelinesPageMinFlingFactor,
   vibrateNote: json['vibrateNote'] as bool? ?? false,
   vibrateNotification: json['vibrateNotification'] as bool? ?? false,
   themeMode:
@@ -273,7 +279,6 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'showPopupOnNewNote': instance.showPopupOnNewNote,
   'enableInfiniteScroll': instance.enableInfiniteScroll,
   'keepScreenOn': instance.keepScreenOn,
-  'enableHorizontalSwipe': instance.enableHorizontalSwipe,
   'openSensitiveMediaOnDoubleTap': instance.openSensitiveMediaOnDoubleTap,
   'noteTapAction': _$NoteActionTypeEnumMap[instance.noteTapAction]!,
   'noteDoubleTapAction': _$NoteActionTypeEnumMap[instance.noteDoubleTapAction]!,
@@ -288,6 +293,9 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'enableSpellCheck': instance.enableSpellCheck,
   'enablePredictiveBack': instance.enablePredictiveBack,
   'enableHapticFeedback': instance.enableHapticFeedback,
+  'enableHorizontalSwipe': instance.enableHorizontalSwipe,
+  'timelinesPageSpringStiffness': instance.timelinesPageSpringStiffness,
+  'timelinesPageMinFlingFactor': instance.timelinesPageMinFlingFactor,
   'vibrateNote': instance.vibrateNote,
   'vibrateNotification': instance.vibrateNotification,
   'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,

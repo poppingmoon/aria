@@ -76,6 +76,7 @@ class TimelineHeader extends HookConsumerWidget {
       }
       return () => scrollController.removeListener(callback);
     }, [alwaysShowHeader]);
+    final theme = Theme.of(context);
 
     return SizeTransition(
       sizeFactor: Animation.fromValueListenable(sizeFactor),
@@ -93,7 +94,7 @@ class TimelineHeader extends HookConsumerWidget {
                   DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: theme.colorScheme.primary,
                     ),
                     child: const SizedBox(height: 12.0, width: 12.0),
                   ),
@@ -130,9 +131,7 @@ class TimelineHeader extends HookConsumerWidget {
                 TextSpan(
                   text: tabSettings.account.toString(),
                   style: DefaultTextStyle.of(context).style.apply(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.85),
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
                   ),
                 ),
                 if (defaultTargetPlatform != TargetPlatform.linux)
@@ -163,8 +162,10 @@ class TimelineHeader extends HookConsumerWidget {
             sizeFactor.value = 1.0;
           }
         },
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        collapsedBackgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: theme.colorScheme.surface,
+        collapsedBackgroundColor: theme.colorScheme.surface,
+        shape: const Border(),
+        collapsedShape: const Border(),
         visualDensity: VisualDensity.compact,
         children: [
           if (onlineUsersCount != null)
