@@ -178,18 +178,9 @@ class _ColorConverter extends JsonConverter<Color, int> {
     return Color(json);
   }
 
-  // https://github.com/flutter/engine/blob/3.27.0/lib/ui/painting.dart#L188-L190
-  static int _floatToInt8(double x) {
-    return (x * 255.0).round() & 0xff;
-  }
-
-  // https://github.com/flutter/engine/blob/3.27.0/lib/ui/painting.dart#L201-L206
   @override
   int toJson(Color color) {
-    return _floatToInt8(color.a) << 24 |
-        _floatToInt8(color.r) << 16 |
-        _floatToInt8(color.g) << 8 |
-        _floatToInt8(color.b) << 0;
+    return color.toARGB32();
   }
 }
 
