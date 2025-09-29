@@ -1,8 +1,11 @@
+import 'package:dynamic_color/dynamic_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../gen/fonts.gen.dart';
+import 'dynamic_color_provider.dart';
 import 'general_settings_notifier_provider.dart';
 import 'misskey_colors_provider.dart';
 
@@ -11,6 +14,18 @@ part 'theme_data_provider.g.dart';
 @riverpod
 ThemeData themeData(Ref ref, Brightness brightness) {
   final colors = ref.watch(misskeyColorsProvider(brightness));
+  final colorScheme =
+      (defaultTargetPlatform == TargetPlatform.android
+          ? switch ((brightness, colors.id)) {
+              (Brightness.light, lightDynamicColorThemeId) ||
+              (Brightness.dark, darkDynamicColorThemeId) =>
+                ref
+                    .watch(corePaletteNotifierProvider)
+                    ?.toColorScheme(brightness: brightness),
+              _ => null,
+            }
+          : null) ??
+      ColorScheme.fromSeed(seedColor: colors.accent, brightness: brightness);
   final (fontSize, fontFamily, height, enablePredictiveBack) = ref.watch(
     generalSettingsNotifierProvider.select(
       (settings) => (
@@ -23,9 +38,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
   );
 
   return ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: colors.accent,
-      brightness: colors.isDark ? Brightness.dark : Brightness.light,
+    colorScheme: colorScheme.copyWith(
       primary: colors.accent,
       onPrimary: colors.fgOnAccent,
       surface: colors.panel,

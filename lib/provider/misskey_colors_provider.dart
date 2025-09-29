@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constant/builtin_misskey_colors.g.dart';
 import '../model/misskey_colors.dart';
+import 'dynamic_color_provider.dart';
 import 'general_settings_notifier_provider.dart';
 import 'installed_misskey_colors_provider.dart';
 
@@ -20,6 +21,12 @@ MisskeyColors misskeyColors(Ref ref, Brightness brightness) {
       },
     ),
   );
+  if (themeId case lightDynamicColorThemeId || darkDynamicColorThemeId) {
+    final colors = ref.watch(dynamicColorProvider(brightness));
+    if (colors != null) {
+      return colors;
+    }
+  }
   final colors = builtinMisskeyColors.firstWhereOrNull(
     (colors) => colors.id == themeId,
   );

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -5,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../constant/builtin_misskey_colors.g.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
+import '../../../provider/dynamic_color_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/installed_misskey_colors_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
@@ -81,10 +83,27 @@ class ThemePage extends ConsumerWidget {
                       context,
                       title: Text(t.misskey.themeForLightMode),
                       values: [
-                        ...builtinMisskeyColors,
-                        ...installedColors,
-                      ].where((colors) => !colors.isDark).toList(),
-                      initialValue: lightColors,
+                        ...builtinMisskeyColors
+                            .where((colors) => !colors.isDark)
+                            .map(
+                              (colors) => (id: colors.id, name: colors.name),
+                            ),
+                        if (defaultTargetPlatform
+                            case TargetPlatform.android ||
+                                TargetPlatform.windows ||
+                                TargetPlatform.macOS ||
+                                TargetPlatform.linux)
+                          (id: lightDynamicColorThemeId, name: 'Dynamic Color'),
+                        ...installedColors
+                            .where((colors) => !colors.isDark)
+                            .map(
+                              (colors) => (id: colors.id, name: colors.name),
+                            ),
+                      ],
+                      initialValue: (
+                        id: lightColors.id,
+                        name: lightColors.name,
+                      ),
                       titleBuilder: (context, value) => Text(value.name),
                     );
                     if (result != null) {
@@ -109,10 +128,24 @@ class ThemePage extends ConsumerWidget {
                       context,
                       title: Text(t.misskey.themeForDarkMode),
                       values: [
-                        ...builtinMisskeyColors,
-                        ...installedColors,
-                      ].where((colors) => colors.isDark).toList(),
-                      initialValue: darkColors,
+                        ...builtinMisskeyColors
+                            .where((colors) => colors.isDark)
+                            .map(
+                              (colors) => (id: colors.id, name: colors.name),
+                            ),
+                        if (defaultTargetPlatform
+                            case TargetPlatform.android ||
+                                TargetPlatform.windows ||
+                                TargetPlatform.macOS ||
+                                TargetPlatform.linux)
+                          (id: darkDynamicColorThemeId, name: 'Dynamic Color'),
+                        ...installedColors
+                            .where((colors) => colors.isDark)
+                            .map(
+                              (colors) => (id: colors.id, name: colors.name),
+                            ),
+                      ],
+                      initialValue: (id: darkColors.id, name: darkColors.name),
                       titleBuilder: (context, value) => Text(value.name),
                     );
                     if (result != null) {
