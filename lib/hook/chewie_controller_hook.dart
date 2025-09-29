@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:video_player/video_player.dart';
 
+import 'video_player_controller_hook.dart';
+
 ChewieController? useChewieController({
   List<Object?>? keys,
   Uri? url,
@@ -12,11 +14,11 @@ ChewieController? useChewieController({
   bool autoPlay = false,
   bool showControlsOnInitialize = true,
 }) {
+  final videoPlayerController = useVideoPlayerController(url: url, file: file);
   return use(
     _ChewieControllerHook(
       keys: keys,
-      url: url,
-      file: file,
+      videoPlayerController: videoPlayerController,
       autoPlay: autoPlay,
       showControlsOnInitialize: showControlsOnInitialize,
     ),
@@ -26,14 +28,12 @@ ChewieController? useChewieController({
 class _ChewieControllerHook extends Hook<ChewieController?> {
   const _ChewieControllerHook({
     super.keys,
-    this.url,
-    this.file,
+    this.videoPlayerController,
     this.autoPlay = false,
     this.showControlsOnInitialize = true,
   });
 
-  final Uri? url;
-  final File? file;
+  final VideoPlayerController? videoPlayerController;
   final bool autoPlay;
   final bool showControlsOnInitialize;
 
@@ -44,7 +44,6 @@ class _ChewieControllerHook extends Hook<ChewieController?> {
 
 class _ChewieControllerHookState
     extends HookState<ChewieController?, _ChewieControllerHook> {
-  late final VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
 
   @override
@@ -58,23 +57,26 @@ class _ChewieControllerHookState
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
     _chewieController?.dispose();
     super.dispose();
   }
 
   Future<void> _initializePlayer() async {
-    if (hook.url case final url?) {
-      _videoPlayerController = VideoPlayerController.networkUrl(url);
-    } else if (hook.file case final file?) {
-      _videoPlayerController = VideoPlayerController.file(file);
+    if (hook.videoPlayerController case final videoPlayerController?) {
+      _chewieController = ChewieController(
+        videoPlayerController: videoPlayerController,
+        autoPlay: hook.autoPlay,
+        showControlsOnInitialize: hook.showControlsOnInitialize,
+      );
+      setState(() {});
     }
-    await _videoPlayerController.initialize();
-    _chewieController = ChewieController(
-      videoPlayerController: _videoPlayerController,
-      autoPlay: hook.autoPlay,
-      showControlsOnInitialize: hook.showControlsOnInitialize,
-    );
-    setState(() {});
+  }
+
+  @override
+  void didUpdateHook(_ChewieControllerHook oldHook) {
+    if (_chewieController == null) {
+      _initializePlayer();
+    }
+    super.didUpdateHook(oldHook);
   }
 }
