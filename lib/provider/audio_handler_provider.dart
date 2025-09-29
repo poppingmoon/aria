@@ -12,10 +12,11 @@ FutureOr<AudioHandler> audioHandler(Ref ref) {
     TargetPlatform.android ||
     TargetPlatform.iOS ||
     TargetPlatform.macOS => AudioService.init(
-      builder: () => AudioPlayerHandler(),
+      builder: () => _AudioPlayerHandler(),
       config: const AudioServiceConfig(
         androidNotificationChannelId: 'com.poppingmoon.aria.channel.audio',
         androidNotificationChannelName: 'Audio playback',
+        androidNotificationIcon: 'drawable/ic_notification',
         androidNotificationOngoing: true,
       ),
     ),
@@ -23,35 +24,15 @@ FutureOr<AudioHandler> audioHandler(Ref ref) {
   };
 }
 
-@riverpod
-Stream<MediaItem?> mediaItem(Ref ref) {
-  return ref.watch(audioHandlerProvider).valueOrNull?.mediaItem ??
-      const Stream.empty();
-}
-
-@riverpod
-Stream<PlaybackState> playbackState(Ref ref) {
-  return ref.watch(audioHandlerProvider).valueOrNull?.playbackState ??
-      const Stream.empty();
-}
-
-@riverpod
-Stream<Duration> position(Ref ref) {
-  ref.listen(audioHandlerProvider, (_, _) => ref.invalidateSelf());
-  return AudioService.position;
-}
-
-class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
+class _AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
   final _player = AudioPlayer();
 
-  AudioPlayerHandler() {
-    _player.playbackEventStream.map(_transformEvent).pipe(this.playbackState);
+  _AudioPlayerHandler() {
+    _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
   }
 
   @override
-  Future<void> play() async {
-    await _player.play();
-  }
+  Future<void> play() => _player.play();
 
   @override
   Future<void> pause() => _player.pause();
@@ -65,7 +46,7 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
   @override
   Future<void> updateMediaItem(MediaItem item) async {
     await _player.setAudioSource(AudioSource.uri(Uri.parse(item.id)));
-    this.mediaItem.value = item.copyWith(duration: _player.duration);
+    mediaItem.value = item.copyWith(duration: _player.duration);
   }
 
   PlaybackState _transformEvent(PlaybackEvent event) {
@@ -81,13 +62,13 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
         MediaAction.seekForward,
         MediaAction.seekBackward,
       },
-      processingState: const {
-        ProcessingState.idle: AudioProcessingState.idle,
-        ProcessingState.loading: AudioProcessingState.loading,
-        ProcessingState.buffering: AudioProcessingState.buffering,
-        ProcessingState.ready: AudioProcessingState.ready,
-        ProcessingState.completed: AudioProcessingState.completed,
-      }[_player.processingState]!,
+      processingState: switch (_player.processingState) {
+        ProcessingState.idle => AudioProcessingState.idle,
+        ProcessingState.loading => AudioProcessingState.loading,
+        ProcessingState.buffering => AudioProcessingState.buffering,
+        ProcessingState.ready => AudioProcessingState.ready,
+        ProcessingState.completed => AudioProcessingState.completed,
+      },
       playing: _player.playing,
       updatePosition: _player.position,
       bufferedPosition: _player.bufferedPosition,

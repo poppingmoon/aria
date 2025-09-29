@@ -33,7 +33,10 @@ class VideoDialog extends HookConsumerWidget {
       ),
     );
     final controller = useChewieController(
-      url: url != null ? Uri.parse(url!) : null,
+      url: switch (url) {
+        final url? => Uri.tryParse(url),
+        _ => null,
+      },
       file: file,
       autoPlay: true,
       showControlsOnInitialize: false,
