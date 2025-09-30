@@ -258,9 +258,5 @@ flutter_launcher_icons:
   adaptive_icon_foreground: assets/icons/aria_android.png
   adaptive_icon_background: "#ffffff"
   adaptive_icon_monochrome: assets/icons/aria_android_monochrome.png
-  ios: true
-  remove_alpha_ios: true
   windows:
-    generate: true
-  macos:
     generate: true
