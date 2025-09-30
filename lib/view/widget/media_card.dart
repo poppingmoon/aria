@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,6 +10,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
+import '../../provider/average_color_provider.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -87,7 +87,16 @@ class MediaCard extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return Card.filled(
-      color: theme.colorScheme.surfaceContainerLow,
+      color: switch ((
+        file.thumbnailUrl != null ||
+            file.type.startsWith('image/') ||
+            (noteId != null && !file.type.startsWith(RegExp('(video|audio)/'))),
+        user?.avatarBlurhash,
+      )) {
+        (true, _) => theme.colorScheme.surfaceContainerLow,
+        (_, final blurHash?) => ref.watch(averageColorProvider(blurHash)),
+        _ => theme.colorScheme.secondaryContainer,
+      },
       clipBehavior: Clip.antiAlias,
       shape: file.isSensitive && highlightSensitiveMedia
           ? RoundedRectangleBorder(
@@ -252,11 +261,8 @@ class MediaCard extends HookConsumerWidget {
                 alignment: Alignment.center,
                 children: [
                   Positioned.fill(
-                    child: switch ((
-                      file.type.split('/').first,
-                      defaultTargetPlatform,
-                    )) {
-                      ('image', _) => _ImagePreview(
+                    child: switch (file.type.split('/').first) {
+                      'image' => _ImagePreview(
                         account: account,
                         file: file,
                         files: files,
@@ -274,53 +280,43 @@ class MediaCard extends HookConsumerWidget {
                           ),
                         ),
                       ),
-                      (
-                        'video',
-                        TargetPlatform.android ||
-                            TargetPlatform.iOS ||
-                            TargetPlatform.macOS,
-                      ) =>
-                        _VideoPreview(
-                          account: account,
-                          file: file,
-                          noteId: noteId,
-                          fit: fit,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              noteId: noteId,
-                              hideMedia: () => hide.value = true,
-                            ),
+                      'video' => _VideoPreview(
+                        account: account,
+                        file: file,
+                        user: user,
+                        noteId: noteId,
+                        fit: fit,
+                        onLongPress: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) => _MediaCardSheet(
+                            account: account,
+                            file: file,
+                            user: user,
+                            noteId: noteId,
+                            hideMedia: () => hide.value = true,
                           ),
                         ),
-                      (
-                        'audio',
-                        TargetPlatform.android ||
-                            TargetPlatform.iOS ||
-                            TargetPlatform.macOS,
-                      ) =>
-                        _AudioPreview(
-                          account: account,
-                          file: file,
-                          user: user,
-                          noteId: noteId,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              noteId: noteId,
-                              hideMedia: () => hide.value = true,
-                            ),
+                      ),
+                      'audio' => _AudioPreview(
+                        account: account,
+                        file: file,
+                        user: user,
+                        noteId: noteId,
+                        onLongPress: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) => _MediaCardSheet(
+                            account: account,
+                            file: file,
+                            user: user,
+                            noteId: noteId,
+                            hideMedia: () => hide.value = true,
                           ),
                         ),
+                      ),
                       _ => _FilePreview(
                         account: account,
                         file: file,
+                        user: user,
                         noteId: noteId,
                         fit: fit,
                         onLongPress: () => showModalBottomSheet<void>(
@@ -360,7 +356,7 @@ class MediaCard extends HookConsumerWidget {
                                 ),
                               ),
                             )
-                          else if (file.type.startsWith('video/'))
+                          else if (!file.type.startsWith('image/'))
                             Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: DecoratedBox(
@@ -371,30 +367,13 @@ class MediaCard extends HookConsumerWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(4.0),
                                   child: Tooltip(
-                                    message: t.misskey.video,
-                                    child: Icon(
-                                      Icons.movie,
-                                      size: style.lineHeight * 0.8,
-                                      color: colors.accentLighten,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          else if (file.type.startsWith('audio/'))
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: Colors.black45,
-                                  borderRadius: BorderRadius.circular(6.0),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Tooltip(
-                                    message: t.misskey.audio,
-                                    child: Icon(
-                                      Icons.music_note,
+                                    message: file.type.startsWith('video/')
+                                        ? t.misskey.video
+                                        : file.type.startsWith('audio/')
+                                        ? t.misskey.audio
+                                        : t.misskey.file,
+                                    child: MediaIcon(
+                                      mimeType: file.type,
                                       size: style.lineHeight * 0.8,
                                       color: colors.accentLighten,
                                     ),
@@ -575,6 +554,7 @@ class _VideoPreview extends StatelessWidget {
   const _VideoPreview({
     required this.account,
     required this.file,
+    this.user,
     this.noteId,
     this.fit,
     this.onLongPress,
@@ -582,6 +562,7 @@ class _VideoPreview extends StatelessWidget {
 
   final Account account;
   final DriveFile file;
+  final User? user;
   final String? noteId;
   final BoxFit? fit;
   final void Function()? onLongPress;
@@ -606,10 +587,18 @@ class _VideoPreview extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           if (file case DriveFile(:final thumbnailUrl?))
-            ImageWidget(url: thumbnailUrl, blurHash: file.blurhash, fit: fit),
+            Positioned.fill(
+              child: ImageWidget(
+                url: thumbnailUrl,
+                blurHash: file.blurhash,
+                fit: fit,
+              ),
+            )
+          else if (user case final user?)
+            UserAvatar(account: account, user: user, size: 78.0),
           DecoratedBox(
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary,
+              color: theme.colorScheme.primary.withValues(alpha: 0.9),
               shape: BoxShape.circle,
             ),
             child: Padding(
@@ -617,7 +606,7 @@ class _VideoPreview extends StatelessWidget {
               child: Icon(
                 Icons.play_arrow,
                 size: 36.0,
-                color: theme.colorScheme.onPrimary,
+                color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
               ),
             ),
           ),
@@ -658,21 +647,26 @@ class _AudioPreview extends StatelessWidget {
       onTap: () => _openAudio(context),
       onDoubleTap: () => _openAudio(context),
       onLongPress: onLongPress,
-      child: Center(
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primary,
-            shape: BoxShape.circle,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.play_arrow,
-              size: 36.0,
-              color: theme.colorScheme.onPrimary,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          if (user case final user?)
+            UserAvatar(account: account, user: user, size: 78.0),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary.withValues(alpha: 0.9),
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.play_arrow,
+                size: 36.0,
+                color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -682,6 +676,7 @@ class _FilePreview extends ConsumerWidget {
   const _FilePreview({
     required this.account,
     required this.file,
+    this.user,
     this.noteId,
     this.fit,
     this.onLongPress,
@@ -689,6 +684,7 @@ class _FilePreview extends ConsumerWidget {
 
   final Account account;
   final DriveFile file;
+  final User? user;
   final String? noteId;
   final BoxFit? fit;
   final void Function()? onLongPress;
@@ -720,11 +716,13 @@ class _FilePreview extends ConsumerWidget {
               optimizationMode: BlurHashOptimizationMode.approximation,
             )
           else if (noteId != null)
-            MediaIcon(mimeType: file.type, size: 50.0),
+            MediaIcon(mimeType: file.type, size: 50.0)
+          else if (user case final user?)
+            UserAvatar(account: account, user: user, size: 78.0),
           if (noteId == null)
             DecoratedBox(
               decoration: BoxDecoration(
-                color: theme.colorScheme.primary,
+                color: theme.colorScheme.primary.withValues(alpha: 0.9),
                 shape: BoxShape.circle,
               ),
               child: Padding(
@@ -732,7 +730,7 @@ class _FilePreview extends ConsumerWidget {
                 child: Icon(
                   Icons.open_in_browser,
                   size: 36.0,
-                  color: theme.colorScheme.onPrimary,
+                  color: theme.colorScheme.onPrimary.withValues(alpha: 0.9),
                 ),
               ),
             ),

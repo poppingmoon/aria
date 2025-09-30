@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   dynamic_color
   flutter_inappwebview_windows
   flutter_secure_storage_windows
+  fvp
   gal
   screen_retriever_windows
   share_plus
