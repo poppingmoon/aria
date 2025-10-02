@@ -436,7 +436,9 @@ class NotificationWidget extends ConsumerWidget {
             ),
           );
         }
-      case NotificationType.scheduleNote || NotificationType.scheduledNoteError:
+      case NotificationType.scheduledNotePostFailed ||
+          NotificationType.scheduleNote ||
+          NotificationType.scheduledNoteError:
         return _NotificationTile(
           account: account,
           user: i,

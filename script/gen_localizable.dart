@@ -47,6 +47,8 @@ const notificationKeys = [
   'achievementEarned',
   'login',
   'pollEnded',
+  'scheduledNotePosted',
+  'scheduledNotePostFailed',
   'roleAssigned',
   'chatRoomInvitationReceived',
   'createToken',
@@ -61,6 +63,7 @@ const scheduleNote = '_types.scheduleNote';
 const noteScheduled = 'noteScheduled';
 const scheduledNotePosted = 'scheduledNotePosted';
 const scheduledNoteError = 'scheduledNoteError';
+const scheduledNotePostFailed = 'scheduledNotePostFailed';
 
 const achievementTypes = [
   'notes1',
@@ -229,6 +232,7 @@ void main() {
       strings['_notification.$scheduledNotePosted']?[locale] = value;
     }
     if (ariaI18n[scheduledNoteError] case final String value) {
+      strings['_notification.$scheduledNotePostFailed']?[locale] = value;
       strings['_notification.$scheduleNote']?[locale] = value;
       strings['_notification.$scheduledNoteError']?[locale] = value;
     }
