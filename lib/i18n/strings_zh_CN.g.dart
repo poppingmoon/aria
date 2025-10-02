@@ -65,6 +65,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get avatarSize => '头像大小';
 	@override String get background => '背景';
 	@override String get buttonTypes => '按钮类型';
+	@override String get cache => '缓存';
 	@override String get calculating => '计算中...';
 	@override String get clientInfo => '客户端信息';
 	@override String get confirmBeforeFollow => '在关注之前确认';
@@ -92,7 +93,6 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => '您确定要放弃更改并返回吗？';
 	@override String get displayOfThumbnail => '缩略图显示方式';
 	@override String get doubleTapToShow => '双击显示';
-	@override String get downloaded => '已下载';
 	@override String get draw => '绘制';
 	@override String get editImage => '编辑图片';
 	@override String get emojiPickerAutofocus => '打开表情选择器时展开键盘';
@@ -100,6 +100,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get emojiPickerUseDialog => '将表情选择器显示为对话框';
 	@override String get enableEmojiFadeIn => '为自定义表情启用淡入动画';
 	@override String get enableFederation => '启用跨服务器互联';
+	@override String get enableHapticFeedback => '启用触觉反馈';
 	@override String get enablePredictiveBack => '启用预测性返回动画';
 	@override String get enableSpellCheck => '启用拼写检查';
 	@override String get endpoint => '端点';
@@ -135,14 +136,15 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get keepOpen => '保持打开状态';
 	@override String get keepTimelinePosition => '记住上次浏览位置​';
 	@override String get lineHeight => '行高';
+	@override String get loadFromDrive => '从云盘加载';
 	@override String get loginWithAccessToken => '使用访问令牌登录';
 	@override String get margin => '边距';
 	@override String get media => '媒体';
 	@override String get mentionToRemoteWarning => '此帖子提及了远程用户';
 	@override String get mergeReactionsByName => '统一显示同名回应';
 	@override String get moved => '移动';
-	@override String get muted => '已静音/禁言';
-	@override String get mutedEmojis => '静音/拉黑 表情';
+	@override String get muted => '已屏蔽';
+	@override String get mutedEmojis => '屏蔽回应表情';
 	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('zh'))(n,
 		one: '${n} 文件',
 		other: '${n} 多个文件',
@@ -202,6 +204,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => '重置';
 	@override String get rotate => '旋转';
+	@override String get saveToDrive => '保存到云盘';
 	@override String get schedule => '定时发布';
 	@override String get scheduledNoteError => '定时帖子发布失败';
 	@override String get scheduledNotePosted => '定时帖子已发布';
@@ -251,7 +254,9 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get stackTrace => '错误详情';
 	@override String get streamingChannel => '直播频道';
 	@override String get swapCw => '交换注释与正文';
+	@override String get swipeSensitivity => '滑动灵敏度';
 	@override String get tabName => '标签名称';
+	@override String get tabSwitching => '切换标签';
 	@override String get tabType => '标签类型';
 	@override String get tabs => '标签卡';
 	@override String get tapToShow => '点击显示';
@@ -275,8 +280,9 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' 敏感文件的帖子'),
 	]);
-	@override String get vibrateNote => '在有新帖子时震动';
-	@override String get vibrateNotification => '在有通知时震动';
+	@override String get vibrateNote => '有新帖子时振动';
+	@override String get vibrateNotification => '有新通知时振动';
+	@override String get vibration => '振动';
 	@override String get webBrowser => '网页浏览器';
 	@override String willBePostedOn({required Object date}) => '帖子将于 ${date} 发布';
 }

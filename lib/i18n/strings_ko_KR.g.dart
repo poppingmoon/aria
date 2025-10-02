@@ -84,7 +84,6 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => '변경 사항을 취소하고 돌아가시겠습니까?';
 	@override String get displayOfThumbnail => '썸네일 표시';
 	@override String get doubleTapToShow => '더블 탭하여 표시';
-	@override String get downloaded => '다운로드 완료';
 	@override String get draw => '그리기';
 	@override String get editImage => '이미지 수정';
 	@override String get emojiPickerAutofocus => '이모지 선택기를 열 때 키보드 확장하기';

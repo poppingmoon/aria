@@ -88,7 +88,6 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => 'Sei sicuro di voler scartare le modifiche e tornare indietro?';
 	@override String get displayOfThumbnail => 'Mostra miniatura';
 	@override String get doubleTapToShow => 'Doppio tap per mostrare';
-	@override String get downloaded => 'Scaricato';
 	@override String get draw => 'Disegna';
 	@override String get editImage => 'Modifica immagine';
 	@override String get emojiPickerAutofocus => 'Espandi tastiera all\'apertura del selettore emoji';

@@ -92,7 +92,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => 'Änderungen verwerfen und zurück?';
 	@override String get displayOfThumbnail => 'Anzeige von Vorschaubildern';
 	@override String get doubleTapToShow => 'Zum Anzeigen doppelt antippen';
-	@override String get downloaded => 'Heruntergeladen';
 	@override String get draw => 'Zeichnen';
 	@override String get editImage => 'Bild bearbeiten';
 	@override String get emojiPickerAutofocus => 'Tastatur beim Öffnen des Emoji-Pickers erweitern';
