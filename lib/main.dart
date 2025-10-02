@@ -263,11 +263,12 @@ class Aria extends HookConsumerWidget {
                 t.misskey.notification_.chatRoomInvitationReceived,
               NotificationType.createToken =>
                 t.misskey.notification_.createToken,
+              NotificationType.scheduledNotePosted =>
+                t.aria.scheduledNotePosted,
+              NotificationType.scheduledNotePostFailed ||
               NotificationType.scheduleNote ||
               NotificationType.scheduledNoteError => t.aria.scheduledNoteError,
               NotificationType.noteScheduled => t.aria.noteScheduled,
-              NotificationType.scheduledNotePosted =>
-                t.aria.scheduledNotePosted,
               NotificationType.app => body.header ?? body.body,
               NotificationType.test => t.misskey.notification_.testNotification,
               NotificationType.edited ||
@@ -482,6 +483,7 @@ class Aria extends HookConsumerWidget {
               NotificationType.app => body.header != null ? body.body : null,
               NotificationType.test =>
                 t.misskey.notification_.notificationWillBeDisplayedLikeThis,
+              NotificationType.scheduledNotePostFailed ||
               NotificationType.edited ||
               NotificationType.exportCompleted ||
               NotificationType.login ||
