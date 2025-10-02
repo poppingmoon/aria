@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -41,6 +42,7 @@ class UserAvatar extends ConsumerWidget {
       squareAvatars,
       disableShowingAnimatedImages,
       showOnlineStatus,
+      enableHapticFeedback,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
@@ -48,6 +50,7 @@ class UserAvatar extends ConsumerWidget {
           settings.squareAvatars,
           settings.disableShowingAnimatedImages,
           settings.showOnlineStatus,
+          settings.enableHapticFeedback,
         ),
       ),
     );
@@ -60,7 +63,13 @@ class UserAvatar extends ConsumerWidget {
           )
         : user.avatarUrl;
     final blurHash = user.avatarBlurhash;
-    final decorations = this.decorations ?? user.avatarDecorations;
+    final decorationsGrouped = forceShowDecoration || showAvatarDecorations
+        ? (this.decorations ?? user.avatarDecorations).groupListsBy(
+            (decoration) => decoration.showBelow ?? false,
+          )
+        : null;
+    final decorations = decorationsGrouped?[false];
+    final decorationsBelowAvatar = decorationsGrouped?[true];
     final borderRadius = BorderRadius.circular(
       squareAvatars ? size * 0.2 : size,
     );
@@ -75,10 +84,11 @@ class UserAvatar extends ConsumerWidget {
         url: url,
         blurHash: blurHash,
         catEarColor: catEarColor,
-        showAvatarDecorations: forceShowDecoration || showAvatarDecorations,
         decorations: decorations,
+        decorationsBelowAvatar: decorationsBelowAvatar,
         showOnlineStatus: showOnlineIndicator && showOnlineStatus,
         onlineStatus: user.onlineStatus,
+        enableHapticFeedback: enableHapticFeedback,
         size: size,
         borderRadius: borderRadius,
         onTap: onTap,
@@ -90,6 +100,12 @@ class UserAvatar extends ConsumerWidget {
       borderRadius: borderRadius,
       child: Stack(
         children: [
+          if (decorationsBelowAvatar case final decorations?)
+            AvatarDecorations(
+              account: account,
+              decorations: decorations,
+              size: size,
+            ),
           ClipRRect(
             borderRadius: borderRadius,
             child: ImageWidget(
@@ -100,7 +116,7 @@ class UserAvatar extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
           ),
-          if (forceShowDecoration || showAvatarDecorations)
+          if (decorations case final decorations?)
             AvatarDecorations(
               account: account,
               decorations: decorations,
