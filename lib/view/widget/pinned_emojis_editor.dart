@@ -117,7 +117,9 @@ class PinnedEmojisEditor extends HookConsumerWidget {
           onTap: () => copyToClipboard(
             context,
             useEmojiPalette
-                ? pinnedEmojis.join(' ')
+                ? pinnedEmojis
+                      .map((emoji) => emoji.replaceAll('@.', ''))
+                      .join(' ')
                 : json5Encode(pinnedEmojis),
           ),
           dense: true,
