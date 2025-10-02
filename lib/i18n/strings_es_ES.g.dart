@@ -90,7 +90,6 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => '¿Está seguro que desea descartar los cambios?';
 	@override String get displayOfThumbnail => 'Mostrar miniatura';
 	@override String get doubleTapToShow => 'Doble toque para mostrar';
-	@override String get downloaded => 'Descargado';
 	@override String get draw => 'Dibujar';
 	@override String get editImage => 'Editar imagen';
 	@override String get emojiPickerAutofocus => 'Mostrar el teclado al abrir el selector de emoji';

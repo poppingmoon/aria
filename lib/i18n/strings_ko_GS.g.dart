@@ -84,7 +84,6 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => '그거 적용 안 해도 되나?';
 	@override String get displayOfThumbnail => '썸네일 표시';
 	@override String get doubleTapToShow => '볼라믄 두 번 누르래이';
-	@override String get downloaded => '받았대이';
 	@override String get draw => '그리기';
 	@override String get editImage => '사진 수정';
 	@override String get emojiPickerAutofocus => '이모지 선택할 때 키보드도 열어달래이';

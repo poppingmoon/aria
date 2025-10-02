@@ -66,6 +66,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get avatarSize => 'アイコンのサイズ';
 	@override String get background => '背景';
 	@override String get buttonTypes => 'ボタンのタイプ';
+	@override String get cache => 'キャッシュ';
 	@override String get calculating => '計算しとる';
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
@@ -93,7 +94,6 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => '変えんと戻ってええか？';
 	@override String get displayOfThumbnail => 'サムネイルの表示';
 	@override String get doubleTapToShow => '二度押ししたら見えるで';
-	@override String get downloaded => 'ダウンロードしたで';
 	@override String get draw => '手描き';
 	@override String get editImage => '画像いじる';
 	@override String get emojiPickerAutofocus => '絵文字ピッカーでキーボードを自動で開く';
@@ -101,6 +101,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get emojiPickerUseDialog => '絵文字ピッカーをダイアログで表示するで';
 	@override String get enableEmojiFadeIn => 'カスタム絵文字のフェードインを有効にするで';
 	@override String get enableFederation => '連合ありにするで';
+	@override String get enableHapticFeedback => '触覚フィードバックを有効にするで';
 	@override String get enablePredictiveBack => '予測型「戻る」アニメーションを有効にするで';
 	@override String get enableSpellCheck => 'スペルチェックを有効にするで';
 	@override String get endpoint => 'エンドポイント';
@@ -251,10 +252,13 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get sinceDate => 'この日から';
+	@override String get springStiffness => 'ばねの強さ';
 	@override String get stackTrace => 'スタックトレース';
 	@override String get streamingChannel => 'ストリーミングチャンネル';
 	@override String get swapCw => '注釈と本文を入れ替える';
+	@override String get swipeSensitivity => 'スワイプの感度';
 	@override String get tabName => 'タブの名前';
+	@override String get tabSwitching => 'タブの切り替え';
 	@override String get tabType => 'タブの種類';
 	@override String get tabs => 'タブ';
 	@override String get tapToShow => '押したら見えるで';

@@ -86,7 +86,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get discardChangesConfirm => 'Apa anda yakin untuk membuang pengubahan pengaturan dan kembali?';
 	@override String get displayOfThumbnail => 'Tampilan thumbnail';
 	@override String get doubleTapToShow => 'Tab dua kali untuk menampilkan';
-	@override String get downloaded => 'Terunduh';
 	@override String get draw => 'Gambar';
 	@override String get editImage => 'Sunting gambar';
 	@override String get emojiPickerAutofocus => 'Tampilkan keyboard saat membuka pemilih emoji';
