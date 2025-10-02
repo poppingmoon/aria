@@ -1381,8 +1381,8 @@ void main() {
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.tv), findsExactly(2));
-      expect(find.text('channel name'), findsOne);
-      await tester.tap(find.text('channel name'));
+      expect(find.textContaining('channel name'), findsOne);
+      await tester.tap(find.textContaining('channel name'));
       await tester.pump(kDoubleTapTimeout);
       await tester.pumpAndSettle();
       expect(
