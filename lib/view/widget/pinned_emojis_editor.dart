@@ -34,6 +34,8 @@ class PinnedEmojisEditor extends HookConsumerWidget {
         endpoints == null ||
         endpoints.contains('chat/history') ||
         !endpoints.contains('i/read-all-unread-notes');
+    final theme = Theme.of(context);
+    final style = DefaultTextStyle.of(context).style;
 
     return ExpansionTile(
       leading: Icon(reaction ? Icons.push_pin : Icons.push_pin_outlined),
@@ -46,6 +48,12 @@ class PinnedEmojisEditor extends HookConsumerWidget {
             : t.misskey.pinnedEmojisSettingDescription,
       ),
       initiallyExpanded: true,
+      backgroundColor: theme.colorScheme.surface,
+      collapsedBackgroundColor: theme.colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      collapsedShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
       children: [
         if (pinnedEmojis.isNotEmpty)
           Card(
@@ -77,9 +85,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
                               ).notifier,
                             )
                             .delete(index),
-                        style: DefaultTextStyle.of(
-                          context,
-                        ).style.apply(fontSizeFactor: 2.0),
+                        style: style.apply(fontSizeFactor: 2.0),
                         disableTooltip: true,
                       ),
                     )
@@ -157,8 +163,8 @@ class PinnedEmojisEditor extends HookConsumerWidget {
                   .reset();
             }
           },
-          iconColor: Theme.of(context).colorScheme.error,
-          textColor: Theme.of(context).colorScheme.error,
+          iconColor: theme.colorScheme.error,
+          textColor: theme.colorScheme.error,
           dense: true,
         ),
       ],
