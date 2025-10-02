@@ -494,31 +494,55 @@ class _Mfm extends StatelessWidget {
       ),
       MfmEmojiCode(:final name) => WidgetSpan(
         alignment: PlaceholderAlignment.middle,
-        child: CustomEmoji(
-          account: account,
-          emoji: ':$name:',
-          url: emojis?[name],
-          host: author?.host,
-          useOriginalSize: config.scale >= 2.5,
-          height: config.style.fontSize! * config.scale * (simple ? 1.0 : 2.0),
-          opacity: config.opacity,
-          fit: BoxFit.cover,
-          alignment: Alignment.centerLeft,
-          onTap: !simple
-              ? () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => EmojiSheet(
-                    account: account,
-                    emoji: ':$name@${author?.host ?? '.'}:',
-                    targetNoteId: noteId,
-                    targetMessageId: messageId,
+        child: simple && maxLines == 1
+            ? LayoutBuilder(
+                builder: (context, constraints) => ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: constraints.maxWidth - config.style.fontSize!,
                   ),
-                )
-              : null,
-          fallbackTextStyle: config.style.copyWith(height: simple ? 1.0 : null),
-          fallbackToImage: false,
-          enableFadeIn: enableEmojiFadeIn,
-        ),
+                  child: CustomEmoji(
+                    account: account,
+                    emoji: ':$name:',
+                    url: emojis?[name],
+                    host: author?.host,
+                    opacity: config.opacity,
+                    alignment: Alignment.centerLeft,
+                    fallbackTextStyle: config.style.copyWith(height: 1.0),
+                    fallbackToImage: false,
+                    enableFadeIn: enableEmojiFadeIn,
+                  ),
+                ),
+              )
+            : CustomEmoji(
+                account: account,
+                emoji: ':$name:',
+                url: emojis?[name],
+                host: author?.host,
+                useOriginalSize: config.scale >= 2.5,
+                height:
+                    config.style.fontSize! *
+                    config.scale *
+                    (simple ? 1.0 : 2.0),
+                opacity: config.opacity,
+                fit: BoxFit.cover,
+                alignment: Alignment.centerLeft,
+                onTap: !simple
+                    ? () => showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) => EmojiSheet(
+                          account: account,
+                          emoji: ':$name@${author?.host ?? '.'}:',
+                          targetNoteId: noteId,
+                          targetMessageId: messageId,
+                        ),
+                      )
+                    : null,
+                fallbackTextStyle: config.style.copyWith(
+                  height: simple ? 1.0 : null,
+                ),
+                fallbackToImage: false,
+                enableFadeIn: enableEmojiFadeIn,
+              ),
       ),
       MfmUnicodeEmoji(:final emoji) => WidgetSpan(
         alignment: switch (emojiStyle) {
