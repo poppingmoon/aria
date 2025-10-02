@@ -632,15 +632,21 @@ class _UserHome extends ConsumerWidget {
                                   padding: const EdgeInsets.all(4.0),
                                   child:
                                       user.verifiedLinks.contains(field.value)
-                                      ? UrlWidget(
-                                          url: field.value,
-                                          verified: true,
-                                          onTap: () => navigate(
-                                            ref,
-                                            account,
-                                            field.value,
+                                      ? Align(
+                                          alignment:
+                                              AlignmentDirectional.centerStart,
+                                          child: UrlWidget(
+                                            url: field.value,
+                                            verified: true,
+                                            onTap: () => navigate(
+                                              ref,
+                                              account,
+                                              field.value,
+                                            ),
+                                            style: TextStyle(
+                                              color: colors.link,
+                                            ),
                                           ),
-                                          style: TextStyle(color: colors.link),
                                         )
                                       : Mfm(
                                           account: account,

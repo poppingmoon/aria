@@ -549,27 +549,27 @@ class _NoteContent extends HookConsumerWidget {
         if (appearNote case Note(:final channel?)) ...[
           InkWell(
             onTap: () => context.push('/$account/channels/${channel.id}'),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.tv,
-                  color: style.color?.withValues(alpha: 0.7),
-                  size: style.lineHeight * 0.8,
-                ),
-                const SizedBox(width: 2.0),
-                Expanded(
-                  child: Text(
-                    channel.name,
-                    style: style.apply(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Icon(
+                      Icons.tv,
                       color: style.color?.withValues(alpha: 0.7),
-                      fontSizeFactor: 0.8,
+                      size: style.lineHeight * 0.8,
                     ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
                   ),
-                ),
-              ],
+                  const WidgetSpan(child: SizedBox(width: 2.0)),
+                  TextSpan(text: channel.name),
+                ],
+              ),
+              style: style.apply(
+                color: style.color?.withValues(alpha: 0.7),
+                fontSizeFactor: 0.8,
+              ),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ),
           const SizedBox(height: 4.0),

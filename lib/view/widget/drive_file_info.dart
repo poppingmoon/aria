@@ -267,10 +267,13 @@ class DriveFileInfo extends ConsumerWidget {
                       onLongPress: () => copyToClipboard(context, file.url),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: UrlWidget(
-                          url: file.url,
-                          onTap: () => navigate(ref, account, file.url),
-                          style: TextStyle(color: colors.link),
+                        child: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: UrlWidget(
+                            url: file.url,
+                            onTap: () => navigate(ref, account, file.url),
+                            style: TextStyle(color: colors.link),
+                          ),
                         ),
                       ),
                     ),
