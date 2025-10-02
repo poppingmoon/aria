@@ -26,6 +26,10 @@ class RecentlyUsedEmojisNotifier extends _$RecentlyUsedEmojisNotifier {
     await _save({emoji, ...state}.take(32).toList());
   }
 
+  Future<void> remove(int index) async {
+    await _save([...state.take(index), ...state.skip(index + 1)]);
+  }
+
   Future<void> reset() async {
     await _save([]);
   }

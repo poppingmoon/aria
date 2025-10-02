@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../constant/max_content_width.dart';
@@ -149,11 +150,22 @@ class _RecentlyUsedEmojisEditor extends ConsumerWidget {
                         emoji: emoji,
                         onTap: () => showModalBottomSheet<void>(
                           context: context,
-                          builder: (context) =>
-                              EmojiSheet(account: account, emoji: emoji),
+                          builder: (context) => EmojiSheet(
+                            account: account,
+                            emoji: emoji,
+                            remove: () {
+                              ref
+                                  .read(
+                                    recentlyUsedEmojisNotifierProvider(
+                                      account,
+                                    ).notifier,
+                                  )
+                                  .remove(index);
+                              context.pop();
+                            },
+                          ),
                         ),
                         style: style.apply(fontSizeFactor: 2.0),
-                        disableTooltip: true,
                       ),
                     )
                     .toList(),

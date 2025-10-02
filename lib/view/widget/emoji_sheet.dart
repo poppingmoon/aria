@@ -31,12 +31,14 @@ class EmojiSheet extends ConsumerWidget {
     required this.emoji,
     this.targetNoteId,
     this.targetMessageId,
+    this.remove,
   });
 
   final Account account;
   final String emoji;
   final String? targetNoteId;
   final String? targetMessageId;
+  final void Function()? remove;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -75,6 +77,7 @@ class EmojiSheet extends ConsumerWidget {
     final isMuted = ref
         .watch(mutedEmojisNotifierProvider(account))
         .contains(emoji.replaceFirst('@.', ''));
+    final theme = Theme.of(context);
 
     return ListView(
       shrinkWrap: true,
@@ -95,7 +98,15 @@ class EmojiSheet extends ConsumerWidget {
           )
         else
           ListTile(title: Text(emoji)),
-        const Divider(height: 0),
+        const Divider(height: 0.0),
+        if (remove case final remove?)
+          ListTile(
+            leading: const Icon(Icons.clear),
+            title: Text(t.misskey.remove),
+            onTap: remove,
+            iconColor: theme.colorScheme.error,
+            textColor: theme.colorScheme.error,
+          ),
         ListTile(
           leading: const Icon(Icons.copy),
           title: Text(t.misskey.copy),
