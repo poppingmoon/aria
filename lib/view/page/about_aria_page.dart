@@ -52,7 +52,10 @@ class AboutAriaPage extends HookConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(16.0),
-                        child: Assets.aria.image(width: 80.0, height: 80.0),
+                        child: Assets.icons.aria.image(
+                          width: 80.0,
+                          height: 80.0,
+                        ),
                       ),
                     ),
                     const Text('Aria'),
@@ -214,7 +217,7 @@ class AboutAriaPage extends HookConsumerWidget {
                     applicationVersion: version,
                     applicationIcon: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
-                      child: Assets.aria.image(width: 80.0, height: 80.0),
+                      child: Assets.icons.aria.image(width: 80.0, height: 80.0),
                     ),
                     applicationLegalese: 'Licensed under AGPL v3',
                   );

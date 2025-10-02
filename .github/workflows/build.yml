@@ -246,7 +246,7 @@ jobs:
           serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
 
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-26
 
     needs:
       - get-flutter-version
@@ -423,7 +423,7 @@ jobs:
           draft: true
 
   build-macos:
-    runs-on: macos-latest
+    runs-on: macos-26
 
     needs:
       - get-flutter-version

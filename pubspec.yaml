@@ -180,6 +180,7 @@ flutter:
     - assets/fonts/Noto_Serif_JP/OFL.txt
     - assets/fonts/Nunito/OFL.txt
     - assets/fonts/Pretendard/LICENSE.txt
+    - assets/icons/aria.png
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
     - assets/misskey/packages/frontend/assets/
@@ -252,14 +253,10 @@ flutter:
           weight: 700
 
 flutter_launcher_icons:
-  image_path: "assets/aria.png"
+  image_path: assets/icons/aria.png
   android: true
-  adaptive_icon_foreground: "assets/aria_android.png"
+  adaptive_icon_foreground: assets/icons/aria_android.png
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_monochrome: "assets/aria_android_monochrome.png"
-  ios: true
-  remove_alpha_ios: true
+  adaptive_icon_monochrome: assets/icons/aria_android_monochrome.png
   windows:
-    generate: true
-  macos:
     generate: true

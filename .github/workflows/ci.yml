@@ -127,7 +127,7 @@ jobs:
         run: flutter test
 
   integration-test-ios:
-    runs-on: macos-latest
+    runs-on: macos-26
 
     needs: get-flutter-version
 
@@ -163,7 +163,7 @@ jobs:
           timeout_minutes: 30
           max_attempts: 5
           command: >
-            flutter build ios --simulator
+            flutter build ios --debug --simulator
             --target=integration_test/timeline_test.dart
 
       - name: Integration test

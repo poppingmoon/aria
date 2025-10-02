@@ -51,6 +51,16 @@ class $AssetsFontsGen {
   $AssetsFontsPretendardGen get pretendard => const $AssetsFontsPretendardGen();
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/aria.png
+  AssetGenImage get aria => const AssetGenImage('assets/icons/aria.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [aria];
+}
+
 class $AssetsMisskeyGen {
   const $AssetsMisskeyGen();
 
@@ -217,30 +227,15 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
 class Assets {
   const Assets._();
 
-  static const AssetGenImage aria = AssetGenImage('assets/aria.png');
-  static const AssetGenImage ariaAndroid = AssetGenImage(
-    'assets/aria_android.png',
-  );
-  static const AssetGenImage ariaAndroidMonochrome = AssetGenImage(
-    'assets/aria_android_monochrome.png',
-  );
-  static const String ariaMac = 'assets/aria_mac.icns';
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const String flower = 'assets/flower.svg';
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsMisskeyGen misskey = $AssetsMisskeyGen();
 
   /// List of all assets
-  static List<dynamic> get values => [
-    aria,
-    ariaAndroid,
-    ariaAndroidMonochrome,
-    ariaMac,
-    bird,
-    cat,
-    flower,
-  ];
+  static List<dynamic> get values => [bird, cat, flower];
 }
 
 class AssetGenImage {

@@ -1,5 +1,4 @@
 {
-  "originHash" : "4da1948434733d99ba4542e461f5a35cd1973d160374338678d0927eeaeae2c0",
   "pins" : [
     {
       "identity" : "dkcamera",
@@ -33,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SDWebImage/SDWebImage",
       "state" : {
-        "revision" : "10d06f6a33bafae8c164fbfd1f03391f6d4692b3",
-        "version" : "5.20.0"
+        "revision" : "34cf2423a2c4088d06a3b08655603b5bc3eeeb3a",
+        "version" : "5.21.2"
       }
     },
     {
@@ -51,10 +50,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TimOliver/TOCropViewController",
       "state" : {
-        "revision" : "a634cb7cdfd580006e79a6e74e64417fe9e9783b",
-        "version" : "2.7.4"
+        "revision" : "d4a6d8100f4b886fdbc8ae399bf144ff3e9afb7e",
+        "version" : "2.8.0"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }
