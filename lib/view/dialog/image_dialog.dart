@@ -2,10 +2,10 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:photo_view/photo_view.dart';
@@ -15,7 +15,7 @@ import '../../provider/cache_manager_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
-import 'message_dialog.dart';
+import '../../util/show_toast.dart';
 
 Future<void> showImageDialog(BuildContext context, {String? url, File? file}) {
   return showDialog(
@@ -33,6 +33,10 @@ class ImageDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final url = switch (this.url) {
+      final url? => Uri.tryParse(url),
+      _ => null,
+    };
     final enableHapticFeedback = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.enableHapticFeedback,
@@ -69,14 +73,14 @@ class ImageDialog extends HookConsumerWidget {
           },
           onDismissed: (_) => context.pop(),
           child: PhotoView(
-            imageProvider: file != null
-                ? FileImage(file!) as ImageProvider
-                : url != null
-                ? CachedNetworkImageProvider(
-                    url!,
-                    cacheManager: ref.watch(cacheManagerProvider),
-                  )
-                : null,
+            imageProvider: switch ((file, this.url)) {
+              (final file?, _) => FileImage(file) as ImageProvider,
+              (_, final url?) => CachedNetworkImageProvider(
+                url,
+                cacheManager: ref.watch(cacheManagerProvider),
+              ),
+              _ => null,
+            },
             backgroundDecoration: const BoxDecoration(
               color: Colors.transparent,
             ),
@@ -145,25 +149,26 @@ class ImageDialog extends HookConsumerWidget {
                           itemBuilder: (context) => [
                             PopupMenuItem(
                               onTap: () async {
-                                if (!await Gal.requestAccess()) {
-                                  if (!context.mounted) return;
-                                  await showMessageDialog(
-                                    context,
-                                    t.misskey.permissionDeniedError,
-                                  );
-                                  return;
-                                }
-                                if (!context.mounted) return;
-                                await futureWithDialog(
+                                final result = await futureWithDialog(
                                   context,
-                                  Future(() async {
-                                    final file = await ref
-                                        .read(cacheManagerProvider)
-                                        .getSingleFile(url);
-                                    await Gal.putImage(file.path);
-                                  }),
-                                  message: t.aria.downloaded,
+                                  ref
+                                      .read(cacheManagerProvider)
+                                      .getSingleFile(url.toString())
+                                      .then((file) => file.readAsBytes())
+                                      .then(
+                                        (bytes) => FilePicker.platform.saveFile(
+                                          fileName: url.pathSegments.lastOrNull,
+                                          bytes: bytes,
+                                        ),
+                                      ),
                                 );
+                                if (!context.mounted) return;
+                                if (result != null) {
+                                  showToast(
+                                    context: context,
+                                    message: t.misskey.saved,
+                                  );
+                                }
                               },
                               child: ListTile(
                                 leading: const Icon(Icons.download),
@@ -171,7 +176,7 @@ class ImageDialog extends HookConsumerWidget {
                               ),
                             ),
                             PopupMenuItem(
-                              onTap: () => launchUrl(ref, Uri.parse(url)),
+                              onTap: () => launchUrl(ref, url),
                               child: ListTile(
                                 leading: const Icon(Icons.open_in_browser),
                                 title: Text(t.aria.openInBrowser),

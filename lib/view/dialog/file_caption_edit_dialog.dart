@@ -7,6 +7,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/post_file.dart';
 import '../widget/post_file_thumbnail.dart';
 import 'image_dialog.dart';
+import 'image_gallery_dialog.dart';
 import 'video_dialog.dart';
 
 class FileCaptionEditDialog extends HookWidget {
@@ -30,17 +31,16 @@ class FileCaptionEditDialog extends HookWidget {
             child: InkWell(
               onTap: switch (file.type) {
                 final type? when type.startsWith('image/') =>
-                  () => showImageDialog(
-                    context,
-                    url: switch (file) {
-                      DrivePostFile(:final file) => file.url,
-                      _ => null,
-                    },
-                    file: switch (file) {
-                      LocalPostFile(:final file) => file,
-                      _ => null,
-                    },
-                  ),
+                  () => switch (file) {
+                    LocalPostFile(:final file) => showImageDialog(
+                      context,
+                      file: file,
+                    ),
+                    DrivePostFile(:final file) => showImageGalleryDialog(
+                      context,
+                      files: [file],
+                    ),
+                  },
                 final type? when type.startsWith('video/') =>
                   () => showDialog<void>(
                     context: context,
@@ -53,6 +53,7 @@ class FileCaptionEditDialog extends HookWidget {
                         LocalPostFile(:final file) => file,
                         _ => null,
                       },
+                      fileName: file.name,
                     ),
                   ),
                 _ => null,

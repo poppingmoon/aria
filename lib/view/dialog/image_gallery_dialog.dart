@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
@@ -20,11 +20,11 @@ import '../../provider/note_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
+import '../../util/show_toast.dart';
 import '../widget/image_widget.dart';
 import '../widget/note_summary.dart';
 import '../widget/time_widget.dart';
 import '../widget/user_avatar.dart';
-import 'message_dialog.dart';
 
 Future<void> showImageGalleryDialog(
   BuildContext context, {
@@ -265,25 +265,27 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             ),
                           PopupMenuItem(
                             onTap: () async {
-                              if (!await Gal.requestAccess()) {
-                                if (!context.mounted) return;
-                                await showMessageDialog(
-                                  context,
-                                  t.misskey.permissionDeniedError,
-                                );
-                                return;
-                              }
-                              if (!context.mounted) return;
-                              await futureWithDialog(
+                              final file = files[index.value];
+                              final result = await futureWithDialog(
                                 context,
-                                Future(() async {
-                                  final file = await ref
-                                      .read(cacheManagerProvider)
-                                      .getSingleFile(files[index.value].url);
-                                  await Gal.putImage(file.path);
-                                }),
-                                message: t.aria.downloaded,
+                                ref
+                                    .read(cacheManagerProvider)
+                                    .getSingleFile(file.url)
+                                    .then((file) => file.readAsBytes())
+                                    .then(
+                                      (bytes) => FilePicker.platform.saveFile(
+                                        fileName: file.name,
+                                        bytes: bytes,
+                                      ),
+                                    ),
                               );
+                              if (!context.mounted) return;
+                              if (result != null) {
+                                showToast(
+                                  context: context,
+                                  message: t.misskey.saved,
+                                );
+                              }
                             },
                             child: ListTile(
                               leading: const Icon(Icons.download),
