@@ -928,6 +928,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get information => 'আপনার সম্পর্কে';
 	@override String get inMinutes => 'মিনিট';
 	@override String get inDays => 'দিন';
+	@override String get widgets => 'উইজেটগুলি';
 	@override late final _TranslationsMisskeyChatBnBd chat_ = _TranslationsMisskeyChatBnBd._(_root);
 	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
 	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);
@@ -980,6 +981,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchBnBd search_ = _TranslationsMisskeySearchBnBd._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorBnBd watermarkEditor_ = _TranslationsMisskeyWatermarkEditorBnBd._(_root);
 	@override late final _TranslationsMisskeyImageEffectorBnBd imageEffector_ = _TranslationsMisskeyImageEffectorBnBd._(_root);
+	@override late final _TranslationsMisskeyQrBnBd qr_ = _TranslationsMisskeyQrBnBd._(_root);
 }
 
 // Path: misskey.chat_
@@ -1821,6 +1823,17 @@ class _TranslationsMisskeyImageEffectorBnBd extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsBnBd fxProps_ = _TranslationsMisskeyImageEffectorFxPropsBnBd._(_root);
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrBnBd extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'প্রদর্শন';
+	@override String get raw => 'লেখা';
 }
 
 // Path: misskey.delivery_.type_

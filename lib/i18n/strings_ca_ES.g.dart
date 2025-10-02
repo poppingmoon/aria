@@ -338,6 +338,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'No podeu fixar més publicacions';
 	@override String get done => 'Fet';
 	@override String get processing => 'S\'està processant...';
+	@override String get preprocessing => 'Preparant';
 	@override String get preview => 'Vista prèvia';
 	@override String get default_ => 'Per defecte';
 	@override String defaultValueIs({required Object value}) => 'Per defecte: ${value}';
@@ -1401,6 +1402,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'Aquest servidor treballa amb una federació de llistes blanques. No pot interactuar amb altres servidors que no siguin els especificats per l\'administrador.';
 	@override String get federationDisabled => 'La unió es troba deshabilitada en aquest servidor. No es pot interactuar amb usuaris d\'altres servidors.';
 	@override String get draft => 'Esborrany ';
+	@override String get draftsAndScheduledNotes => 'Esborranys i publicacions programades';
 	@override String get confirmOnReact => 'Confirmar en reaccionar';
 	@override String reactAreYouSure({required Object emoji}) => 'Vols reaccionar amb "${emoji}"?';
 	@override String get markAsSensitiveConfirm => 'Vols marcar aquest contingut com a sensible?';
@@ -1428,6 +1430,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'Nombre de caràcters ';
 	@override String get information => 'Informació';
 	@override String get chat => 'Xat';
+	@override String get directMessage => 'Xateja amb aquest usuari';
+	@override String get directMessage_short => 'Missatge';
 	@override String get migrateOldSettings => 'Migrar la configuració anterior';
 	@override String get migrateOldSettings_description => 'Normalment això es fa automàticament, però si la transició no es fa, el procés es pot iniciar manualment. S\'esborrarà la configuració actual.';
 	@override String get compress => 'Comprimir ';
@@ -1455,6 +1459,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Amagar tots els trucs i consells';
 	@override String get defaultImageCompressionLevel => 'Nivell de comprensió de la imatge per defecte';
 	@override String get defaultImageCompressionLevel_description => 'Baixa, conserva la qualitat de la imatge però la mida de l\'arxiu és més gran. <br>Alta, redueix la mida de l\'arxiu però també la qualitat de la imatge.';
+	@override String get defaultCompressionLevel => 'Nivell de compressió predeterminat';
+	@override String get defaultCompressionLevel_description => 'Si el redueixes augmentaràs la qualitat de la imatge, però la mida de l\'arxiu serà més gran. <br>Si augmentes l\'opció redueixes la mida de l\'arxiu i la qualitat de la imatge és pitjor.';
 	@override String get inMinutes => 'Minut(s)';
 	@override String get inDays => 'Di(a)(es)';
 	@override String get safeModeEnabled => 'Mode segur activat';
@@ -1462,6 +1468,14 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'El CSS personalitzat no s\'aplica perquè el mode segur es troba activat.';
 	@override String get themeIsDefaultBecauseSafeMode => 'El tema predeterminat es farà servir mentre el mode segur estigui activat. Una vegada es desactivi el mode segur es restablirà el tema escollit.';
 	@override String get thankYouForTestingBeta => 'Gràcies per ajudar-nos a provar la versió beta!';
+	@override String get createUserSpecifiedNote => 'Crear notes especificades per l\'usuari ';
+	@override String get schedulePost => 'Programar una nota';
+	@override String scheduleToPostOnX({required Object x}) => 'Programar una nota per ${x}';
+	@override String scheduledToPostOnX({required Object x}) => 'S\'ha programat la nota per ${x}';
+	@override String get schedule => 'Programa';
+	@override String get scheduled => 'Programat';
+	@override String get widgets => 'Ginys';
+	@override late final _TranslationsMisskeyCompressionCaEs compression_ = _TranslationsMisskeyCompressionCaEs._(_root);
 	@override late final _TranslationsMisskeyOrderCaEs order_ = _TranslationsMisskeyOrderCaEs._(_root);
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteCaEs emojiPalette_ = _TranslationsMisskeyEmojiPaletteCaEs._(_root);
@@ -1563,6 +1577,19 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorCaEs imageEffector_ = _TranslationsMisskeyImageEffectorCaEs._(_root);
 	@override String get drafts => 'Esborrany ';
 	@override late final _TranslationsMisskeyDraftsCaEs drafts_ = _TranslationsMisskeyDraftsCaEs._(_root);
+	@override String get qr => 'Codi QR';
+	@override late final _TranslationsMisskeyQrCaEs qr_ = _TranslationsMisskeyQrCaEs._(_root);
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionCaEs extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityCaEs quality_ = _TranslationsMisskeyCompressionQualityCaEs._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeCaEs size_ = _TranslationsMisskeyCompressionSizeCaEs._(_root);
 }
 
 // Path: misskey.order_
@@ -1583,6 +1610,7 @@ class _TranslationsMisskeyChatCaEs extends TranslationsMisskeyChatEnUs {
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Missatge';
 	@override String get noMessagesYet => 'Encara no tens missatges ';
 	@override String get newMessage => 'Missatge nou';
 	@override String get individualChat => 'Xat individual ';
@@ -1789,7 +1817,7 @@ class _TranslationsMisskeyAnnouncementCaEs extends TranslationsMisskeyAnnounceme
 	@override String get needConfirmationToRead => 'Es necessita confirmació de lectura de la notificació ';
 	@override String get needConfirmationToReadDescription => 'Si s\'activa es mostrarà un diàleg per confirmar la lectura d\'aquesta notificació. A més aquesta notificació serà exclosa de qualsevol funcionalitat com "Marcar tot com a llegit".';
 	@override String get end => 'Final de la notificació ';
-	@override String get tooManyActiveAnnouncementDescription => 'Tenir massa notificacions actives pot empitjorar l\'experiència de l\'usuari. Considera finalitzar els avisos que siguin antics.';
+	@override String get tooManyActiveAnnouncementDescription => 'Tenir masses notificacions actives pot empitjorar l\'experiència de l\'usuari. Considera finalitzar els avisos que siguin antics.';
 	@override String get readConfirmTitle => 'Marcar com llegida?';
 	@override String readConfirmText({required Object title}) => 'Això marcarà el contingut de "${title}" com llegit.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Ja que l\'ús de notificacions pot impactar l\'experiència dels nous usuaris, és recomanable fer servir les notificacions amb el flux d\'informació en comptes de fer-les servir en un únic bloc.';
@@ -2076,7 +2104,7 @@ class _TranslationsMisskeyAdCaEs extends TranslationsMisskeyAdEnUs {
 	@override String get timezoneinfo => 'El dia de la setmana ve determinat del fus horari del servidor.';
 	@override String get adsSettings => 'Configurar la publicitat';
 	@override String get notesPerOneAd => 'Interval d\'emplaçament publicitari en temps real (Notes per anuncis)';
-	@override String get setZeroToDisable => 'Ajusta aquest valor a 0 per deshabilitar l\'actualització d\'anuncis en temps real';
+	@override String get setZeroToDisable => 'Ajusta aquest valor a 0 per deshabilitar l\'actualització de publicitat en temps real';
 	@override String get adsTooClose => 'L\'interval actual pot fer que l\'experiència de l\'usuari sigui dolenta perquè l\'interval és molt baix.';
 }
 
@@ -2624,7 +2652,7 @@ class _TranslationsMisskeyWidgetsCaEs extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListCaEs userList_ = _TranslationsMisskeyWidgetsUserListCaEs._(_root);
 	@override String get clicker => 'Clicker';
 	@override String get birthdayFollowings => 'Usuaris que fan l\'aniversari avui';
-	@override String get chat => 'Xat';
+	@override String get chat => 'Xateja amb aquest usuari';
 }
 
 // Path: misskey.cw_
@@ -2900,6 +2928,8 @@ class _TranslationsMisskeyNotificationCaEs extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => 'Has rebut una petició de seguiment';
 	@override String get yourFollowRequestAccepted => 'La teva petició de seguiment ha sigut acceptada';
 	@override String get pollEnded => 'Ja pots veure els resultats de l\'enquesta ';
+	@override String get scheduledNotePosted => 'Una nota programada ha sigut publicada';
+	@override String get scheduledNotePostFailed => 'Ha fallat la publicació d\'una nota programada';
 	@override String get newNote => 'Nota nova';
 	@override String unreadAntennaNote({required Object name}) => 'Antena ${name}';
 	@override String get roleAssigned => 'Rol assignat ';
@@ -3501,7 +3531,9 @@ class _TranslationsMisskeyWatermarkEditorCaEs extends TranslationsMisskeyWaterma
 	@override String get opacity => 'Opacitat';
 	@override String get scale => 'Mida';
 	@override String get text => 'Text';
+	@override String get qr => 'Codi QR';
 	@override String get position => 'Posició ';
+	@override String get margin => 'Marge';
 	@override String get type => 'Tipus';
 	@override String get image => 'Imatges';
 	@override String get advanced => 'Avançat';
@@ -3516,6 +3548,7 @@ class _TranslationsMisskeyWatermarkEditorCaEs extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => 'Opacitat del lunar secundari';
 	@override String get polkadotSubDotRadius => 'Mida del lunar secundari';
 	@override String get polkadotSubDotDivisions => 'Nombre de punts secundaris';
+	@override String get leaveBlankToAccountUrl => 'Si deixes aquest camp buit, es farà servir l\'URL del teu compte';
 }
 
 // Path: misskey.imageEffector_
@@ -3553,6 +3586,56 @@ class _TranslationsMisskeyDraftsCaEs extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => 'Restaurar des dels esborranys';
 	@override String get restore => 'Restaurar esborrany';
 	@override String get listDrafts => 'Llistat d\'esborranys';
+	@override String get schedule => 'Programació esborranys';
+	@override String get listScheduledNotes => 'Llista de notes programades';
+	@override String get cancelSchedule => 'Cancel·lar la programació';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrCaEs extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Veure';
+	@override String get readTabTitle => 'Escanejar ';
+	@override String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
+	@override String get shareText => 'Segueix-me al Fediverse';
+	@override String get chooseCamera => 'Seleccionar càmera ';
+	@override String get cannotToggleFlash => 'No es pot activar el flaix';
+	@override String get turnOnFlash => 'Activar el flaix';
+	@override String get turnOffFlash => 'Apagar el flaix';
+	@override String get startQr => 'Reiniciar el lector de codis QR';
+	@override String get stopQr => 'Parar el lector de codis QR';
+	@override String get noQrCodeFound => 'No s\'ha trobat cap codi QR';
+	@override String get scanFile => 'Escanejar la imatge des del dispositiu';
+	@override String get raw => 'Text';
+	@override String get mfm => 'MFM';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityCaEs extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'Qualitat alta';
+	@override String get medium => 'Qualitat mitjana';
+	@override String get low => 'Qualitat baixa';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeCaEs extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'Mida gran';
+	@override String get medium => 'Mida mitjana';
+	@override String get small => 'Mida petita';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3877,6 +3960,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes_caption => 'Especifica el tipus MIME. Es poden especificar diferents tipus MIME separats amb una nova línia, i es poden especificar comodins amb asteriscs (*). (Per exemple: image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'Pot que no sigui possible determinar el tipus MIME d\'alguns arxius. Per permetre aquests tipus d\'arxius afegeix ${x} a les especificacions.';
 	@override String get noteDraftLimit => 'Nombre possible d\'esborranys de notes al servidor';
+	@override String get scheduledNoteLimit => 'Màxim nombre de notes programades que es poden crear simultàniament';
 	@override String get watermarkAvailable => 'Pots fer servir la marca d\'aigua';
 }
 
@@ -4071,7 +4155,7 @@ class _TranslationsMisskeyDeckColumnsCaEs extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Mencions';
 	@override String get direct => 'Publicacions directes';
 	@override String get roleTimeline => 'Línia de temps dels rols';
-	@override String get chat => 'Xat';
+	@override String get chat => 'Xateja amb aquest usuari';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4427,6 +4511,8 @@ class _TranslationsMisskeyImageEffectorFxsCaEs extends TranslationsMisskeyImageE
 	@override String get mirror => 'Mirall';
 	@override String get invert => 'Inversió cromàtica ';
 	@override String get grayscale => 'Monocrom ';
+	@override String get blur => 'Desenfocament';
+	@override String get pixelate => 'Mosaic';
 	@override String get colorAdjust => 'Correcció de color';
 	@override String get colorClamp => 'Compressió cromàtica ';
 	@override String get colorClampAdvanced => 'Compressió de cromàtica avançada ';
@@ -4438,6 +4524,7 @@ class _TranslationsMisskeyImageEffectorFxsCaEs extends TranslationsMisskeyImageE
 	@override String get checker => 'Escacs';
 	@override String get blockNoise => 'Bloqueig de soroll';
 	@override String get tearing => 'Trencament d\'imatge ';
+	@override String get fill => 'Omplir';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4450,6 +4537,9 @@ class _TranslationsMisskeyImageEffectorFxPropsCaEs extends TranslationsMisskeyIm
 	@override String get angle => 'Angle';
 	@override String get scale => 'Mida';
 	@override String get size => 'Mida';
+	@override String get radius => 'Radi';
+	@override String get samples => 'Mida de la mostra';
+	@override String get offset => 'Posició ';
 	@override String get color => 'Color';
 	@override String get opacity => 'Opacitat';
 	@override String get normalize => 'Normalitzar';
@@ -4478,6 +4568,7 @@ class _TranslationsMisskeyImageEffectorFxPropsCaEs extends TranslationsMisskeyIm
 	@override String get zoomLinesThreshold => 'Amplada de línia a l\'augmentar ';
 	@override String get zoomLinesMaskSize => 'Diàmetre del centre';
 	@override String get zoomLinesBlack => 'Obscurir';
+	@override String get circle => 'Cercle';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

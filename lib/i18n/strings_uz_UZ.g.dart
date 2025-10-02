@@ -952,6 +952,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchUzUz search_ = _TranslationsMisskeySearchUzUz._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorUzUz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUzUz._(_root);
 	@override late final _TranslationsMisskeyImageEffectorUzUz imageEffector_ = _TranslationsMisskeyImageEffectorUzUz._(_root);
+	@override late final _TranslationsMisskeyQrUzUz qr_ = _TranslationsMisskeyQrUzUz._(_root);
 }
 
 // Path: misskey.chat_
@@ -1461,6 +1462,17 @@ class _TranslationsMisskeyImageEffectorUzUz extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsUzUz fxProps_ = _TranslationsMisskeyImageEffectorFxPropsUzUz._(_root);
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrUzUz extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Displey';
+	@override String get raw => 'Matn';
 }
 
 // Path: misskey.delivery_.type_

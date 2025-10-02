@@ -1302,6 +1302,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get migrateOldSettings_description => 'Thông thường, quá trình này diễn ra tự động, nhưng nếu vì lý do nào đó mà quá trình di chuyển không thành công, bạn có thể kích hoạt thủ công quy trình di chuyển, quá trình này sẽ ghi đè lên thông tin cấu hình hiện tại của bạn.';
 	@override String get inMinutes => 'phút';
 	@override String get inDays => 'ngày';
+	@override String get widgets => 'Tiện ích';
 	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
 	@override late final _TranslationsMisskeySettingsViVn settings_ = _TranslationsMisskeySettingsViVn._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);
@@ -1367,6 +1368,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorViVn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorViVn._(_root);
 	@override late final _TranslationsMisskeyImageEffectorViVn imageEffector_ = _TranslationsMisskeyImageEffectorViVn._(_root);
+	@override late final _TranslationsMisskeyQrViVn qr_ = _TranslationsMisskeyQrViVn._(_root);
 }
 
 // Path: misskey.chat_
@@ -2039,7 +2041,6 @@ class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => 'Danh sách người dùng';
 	@override late final _TranslationsMisskeyWidgetsUserListViVn userList_ = _TranslationsMisskeyWidgetsUserListViVn._(_root);
 	@override String get clicker => 'clicker';
-	@override String get chat => 'Trò chuyện';
 }
 
 // Path: misskey.cw_
@@ -2460,6 +2461,17 @@ class _TranslationsMisskeyImageEffectorViVn extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsViVn fxProps_ = _TranslationsMisskeyImageEffectorFxPropsViVn._(_root);
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrViVn extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Hiển thị';
+	@override String get raw => 'Văn bản';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2785,7 +2797,6 @@ class _TranslationsMisskeyDeckColumnsViVn extends TranslationsMisskeyDeckColumns
 	@override String get channel => 'Kênh';
 	@override String get mentions => 'Lượt nhắc';
 	@override String get direct => 'Nhắn riêng';
-	@override String get chat => 'Trò chuyện';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -2839,6 +2850,7 @@ class _TranslationsMisskeyImageEffectorFxPropsViVn extends TranslationsMisskeyIm
 	@override String get angle => 'Góc';
 	@override String get scale => 'Kích thước';
 	@override String get size => 'Kích thước';
+	@override String get offset => 'Vị trí';
 	@override String get color => 'Màu sắc';
 	@override String get opacity => 'Độ trong suốt';
 	@override String get lightness => 'Độ sáng';

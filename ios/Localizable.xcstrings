@@ -174,7 +174,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "关注了你。"
+            "value": "关注了你"
           }
         },
         "zh-Hant": {
@@ -1654,7 +1654,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "チャットルームへ招待されました"
+            "value": "ダイレクトメッセージのグループへ招待されました"
           }
         },
         "ko": {
@@ -2281,7 +2281,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已屏蔽的用户 的导出"
+            "value": "已完成 已拉黑的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2666,7 +2666,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已隐藏用户 的导出"
+            "value": "已完成 已屏蔽用户 的导出"
           }
         },
         "zh-Hant": {
@@ -9493,7 +9493,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Akış Zaman Çizelgesi"
+            "value": "Akış Panosu"
           }
         },
         "uk": {

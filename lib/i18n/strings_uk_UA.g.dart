@@ -1000,6 +1000,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get information => 'Інформація';
 	@override String get inMinutes => 'х';
 	@override String get inDays => 'д';
+	@override String get widgets => 'Віджети';
 	@override late final _TranslationsMisskeyChatUkUa chat_ = _TranslationsMisskeyChatUkUa._(_root);
 	@override late final _TranslationsMisskeyDeliveryUkUa delivery_ = _TranslationsMisskeyDeliveryUkUa._(_root);
 	@override late final _TranslationsMisskeyAchievementsUkUa achievements_ = _TranslationsMisskeyAchievementsUkUa._(_root);
@@ -1054,6 +1055,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchUkUa search_ = _TranslationsMisskeySearchUkUa._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorUkUa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUkUa._(_root);
 	@override late final _TranslationsMisskeyImageEffectorUkUa imageEffector_ = _TranslationsMisskeyImageEffectorUkUa._(_root);
+	@override late final _TranslationsMisskeyQrUkUa qr_ = _TranslationsMisskeyQrUkUa._(_root);
 }
 
 // Path: misskey.chat_
@@ -1916,6 +1918,17 @@ class _TranslationsMisskeyImageEffectorUkUa extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsUkUa fxProps_ = _TranslationsMisskeyImageEffectorFxPropsUkUa._(_root);
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrUkUa extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Відображення';
+	@override String get raw => 'Текст';
 }
 
 // Path: misskey.delivery_.type_

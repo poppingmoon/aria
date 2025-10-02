@@ -1281,6 +1281,7 @@ textCount: "Количество символов"
 information: "Описание"
 inMinutes: "мин"
 inDays: "сут"
+widgets: "Виджеты"
 chat_:
   invitations: "Пригласить"
   noHistory: "История пока пуста"
@@ -1542,7 +1543,7 @@ achievements_:
       description: "Нажато здесь"
     justPlainLucky_:
       title: "Чистая удача"
-      description: "Может достаться с вероятностью 0,01% каждые 10 секунд."
+      description: "Может достаться с вероятностью 0,005% каждые 10 секунд."
     setNameToSyuilo_:
       title: "Комплекс бога"
       description: "Установлено «syuilo» в качестве имени"
@@ -2280,7 +2281,11 @@ imageEffector_:
     angle: "Угол"
     scale: "Размер"
     size: "Размер"
+    offset: "Позиция"
     color: "Цвет"
     opacity: "Непрозрачность"
     lightness: "Осветление"
 drafts: "Черновик"
+qr_:
+  showTabTitle: "Отображение"
+  raw: "Текст"

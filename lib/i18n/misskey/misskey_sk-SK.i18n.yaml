@@ -919,6 +919,7 @@ postForm: "Napísať poznámku"
 information: "Informácie"
 inMinutes: "min"
 inDays: "dní"
+widgets: "Widgety"
 chat_:
   invitations: "Pozvať"
   noHistory: "Žiadna história"
@@ -1470,3 +1471,6 @@ imageEffector_:
     color: "Farba"
     opacity: "Priehľadnosť"
     lightness: "Zosvetliť"
+qr_:
+  showTabTitle: "Zobraziť"
+  raw: "Text"

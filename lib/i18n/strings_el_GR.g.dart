@@ -355,6 +355,7 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override String get renotes => 'Κοινοποίηση σημειώματος';
 	@override String get postForm => 'Φόρμα δημοσίευσης';
 	@override String get information => 'Πληροφορίες';
+	@override String get widgets => 'Μαραφέτια';
 	@override late final _TranslationsMisskeyChatElGr chat_ = _TranslationsMisskeyChatElGr._(_root);
 	@override late final _TranslationsMisskeyEmailElGr email_ = _TranslationsMisskeyEmailElGr._(_root);
 	@override late final _TranslationsMisskeyChannelElGr channel_ = _TranslationsMisskeyChannelElGr._(_root);

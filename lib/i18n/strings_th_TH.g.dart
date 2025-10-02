@@ -336,6 +336,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'คุณไม่สามารถปักหมุดโน้ตเพิ่มเติมใดๆได้อีก';
 	@override String get done => 'เสร็จสิ้น';
 	@override String get processing => 'กำลังประมวลผล...';
+	@override String get preprocessing => 'กำลังจัดเตรียม...';
 	@override String get preview => 'แสดงตัวอย่าง';
 	@override String get default_ => 'ค่าเริ่มต้น';
 	@override String defaultValueIs({required Object value}) => 'ค่าเริ่มต้น: ${value}';
@@ -1328,6 +1329,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'กำลังรีเฟรช...';
 	@override String get pullDownToRefresh => 'ดึงลงเพื่อรีเฟรช';
 	@override String get useGroupedNotifications => 'แสดงผลการแจ้งเตือนแบบกลุ่มแล้ว';
+	@override String get emailVerificationFailedError => 'เกิดปัญหาในขณะตรวจสอบอีเมล อาจเป็นไปได้ว่าลิงก์หมดอายุแล้ว';
 	@override String get cwNotationRequired => 'หากเปิดใช้งาน “ซ่อนเนื้อหา” จะต้องระบุคำอธิบาย';
 	@override String get doReaction => 'เพิ่มรีแอคชั่น';
 	@override String get code => 'โค้ด';
@@ -1398,6 +1400,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'เซิร์ฟเวอร์นี้ดำเนินงานในระบบกลุ่มไวท์ลิสต์ ไม่สามารถติดต่อกับเซิร์ฟเวอร์อื่นที่ไม่ได้รับอนุญาตจากผู้ดูแลระบบได้';
 	@override String get federationDisabled => 'เซิร์ฟเวอร์นี้ปิดใช้งานสหพันธ์ ไม่สามารถติดต่อหรือแลกเปลี่ยนข้อมูลกับผู้ใช้จากเซิร์ฟเวอร์อื่นได้';
 	@override String get draft => 'ร่าง';
+	@override String get draftsAndScheduledNotes => 'ร่างและกำหนดเวลาโพสต์';
 	@override String get confirmOnReact => 'ยืนยันเมื่อทำการรีแอคชั่น';
 	@override String reactAreYouSure({required Object emoji}) => 'ต้องการใส่รีแอคชั่นด้วย "${emoji}" หรือไม่?';
 	@override String get markAsSensitiveConfirm => 'ต้องการตั้งค่าสื่อนี้ว่าเป็นเนื้อหาละเอียดอ่อนหรือไม่?';
@@ -1425,6 +1428,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'จำนวนอักขระ';
 	@override String get information => 'เกี่ยวกับ';
 	@override String get chat => 'แชต';
+	@override String get directMessage => 'แชตเลย';
+	@override String get directMessage_short => 'ข้อความ';
 	@override String get migrateOldSettings => 'ย้ายข้อมูลการตั้งค่าเก่า';
 	@override String get migrateOldSettings_description => 'โดยปกติจะทำโดยอัตโนมัติ แต่หากด้วยเหตุผลบางประการที่ไม่สามารถย้ายได้สำเร็จ สามารถสั่งย้ายด้วยตนเองได้ การตั้งค่าปัจจุบันจะถูกเขียนทับ';
 	@override String get compress => 'บีบอัด';
@@ -1450,8 +1455,10 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get tip => 'คำแนะนำและเคล็ดลับ';
 	@override String get redisplayAllTips => 'แสดงคำแนะนำและเคล็ดลับทั้งหมดอีกครั้ง';
 	@override String get hideAllTips => 'ซ่อนคำแนะนำและเคล็ดลับทั้งหมด';
-	@override String get defaultImageCompressionLevel => 'ความละเอียดเริ่มต้นสำหรับการบีบอัดภาพ';
+	@override String get defaultImageCompressionLevel => 'ค่าการบีบอัดภาพเริ่มต้น';
 	@override String get defaultImageCompressionLevel_description => 'หากตั้งค่าต่ำ จะรักษาคุณภาพภาพได้ดีขึ้นแต่ขนาดไฟล์จะเพิ่มขึ้น<br>หากตั้งค่าสูง จะลดขนาดไฟล์ได้ แต่คุณภาพภาพจะลดลง';
+	@override String get defaultCompressionLevel => 'ค่าการบีบอัดเริ่มต้น';
+	@override String get defaultCompressionLevel_description => 'ถ้าต่ำ จะรักษาคุณภาพได้ แต่ขนาดไฟล์จะเพิ่มขึ้น<br>ถ้าสูง จะลดขนาดไฟล์ได้ แต่คุณภาพจะลดลง';
 	@override String get inMinutes => 'นาที';
 	@override String get inDays => 'วัน';
 	@override String get safeModeEnabled => 'โหมดปลอดภัยถูกเปิดใช้งาน';
@@ -1459,6 +1466,14 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'เนื่องจากโหมดปลอดภัยถูกเปิดใช้งาน CSS แบบกำหนดเองจึงไม่ได้ถูกนำมาใช้';
 	@override String get themeIsDefaultBecauseSafeMode => 'ในระหว่างที่โหมดปลอดภัยถูกเปิดใช้งาน จะใช้ธีมเริ่มต้น เมื่อปิดโหมดปลอดภัยจะกลับคืนดังเดิม';
 	@override String get thankYouForTestingBeta => 'ขอบคุณที่ให้ความร่วมมือในการทดสอบเวอร์ชันเบต้า!';
+	@override String get createUserSpecifiedNote => 'สร้างโน้ตแบบไดเร็กต์';
+	@override String get schedulePost => 'กำหนดเวลาให้โพสต์';
+	@override String scheduleToPostOnX({required Object x}) => 'กำหนดเวลาให้โพสต์ไว้ที่ ${x}';
+	@override String scheduledToPostOnX({required Object x}) => 'มีการกำหนดเวลาให้โพสต์ไว้ที่ ${x}';
+	@override String get schedule => 'กำหนดเวลา';
+	@override String get scheduled => 'กำหนดเวลา';
+	@override String get widgets => 'วิดเจ็ต';
+	@override late final _TranslationsMisskeyCompressionThTh compression_ = _TranslationsMisskeyCompressionThTh._(_root);
 	@override late final _TranslationsMisskeyOrderThTh order_ = _TranslationsMisskeyOrderThTh._(_root);
 	@override late final _TranslationsMisskeyChatThTh chat_ = _TranslationsMisskeyChatThTh._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteThTh emojiPalette_ = _TranslationsMisskeyEmojiPaletteThTh._(_root);
@@ -1560,6 +1575,19 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorThTh imageEffector_ = _TranslationsMisskeyImageEffectorThTh._(_root);
 	@override String get drafts => 'ร่าง';
 	@override late final _TranslationsMisskeyDraftsThTh drafts_ = _TranslationsMisskeyDraftsThTh._(_root);
+	@override String get qr => 'QR โค้ด';
+	@override late final _TranslationsMisskeyQrThTh qr_ = _TranslationsMisskeyQrThTh._(_root);
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionThTh extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityThTh quality_ = _TranslationsMisskeyCompressionQualityThTh._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeThTh size_ = _TranslationsMisskeyCompressionSizeThTh._(_root);
 }
 
 // Path: misskey.order_
@@ -1580,6 +1608,7 @@ class _TranslationsMisskeyChatThTh extends TranslationsMisskeyChatEnUs {
 	final TranslationsThTh _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'ข้อความ';
 	@override String get noMessagesYet => 'ยังไม่มีข้อความ';
 	@override String get newMessage => 'ข้อความใหม่';
 	@override String get individualChat => 'แชตส่วนตัว';
@@ -1905,6 +1934,9 @@ class _TranslationsMisskeyServerSettingsThTh extends TranslationsMisskeyServerSe
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => 'การเปิดเผยเนื้อหาทั้งหมดในเซิร์ฟเวอร์รวมทั้งเนื้อหาที่รับมาจากระยะไกลสู่สาธารณะบนอินเทอร์เน็ตโดยไม่มีข้อจำกัดใดๆ มีความเสี่ยงโดยเฉพาะอย่างยิ่งสำหรับผู้ชมที่ไม่เข้าใจลักษณะของระบบแบบกระจาย อาจทำให้เกิดความเข้าใจผิดคิดว่าเนื้อหาที่มาจากระยะไกลนั้นเป็นเนื้อหาที่สร้างขึ้นภายในเซิร์ฟเวอร์นี้ จึงควรใช้ความระมัดระวังอย่างมาก';
 	@override String get restartServerSetupWizardConfirm_title => 'ต้องการเริ่มวิซาร์ดการตั้งค่าเซิร์ฟเวอร์ใหม่หรือไม่?';
 	@override String get restartServerSetupWizardConfirm_text => 'การตั้งค่าบางส่วนในปัจจุบันจะถูกรีเซ็ต';
+	@override String get entrancePageStyle => 'สไตล์ของหน้าเพจทางเข้า';
+	@override String get showTimelineForVisitor => 'แสดงไทม์ไลน์';
+	@override String get showActivitiesForVisitor => 'แสดงกิจกรรม';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorThTh userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorThTh._(_root);
 }
 
@@ -2618,7 +2650,7 @@ class _TranslationsMisskeyWidgetsThTh extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListThTh userList_ = _TranslationsMisskeyWidgetsUserListThTh._(_root);
 	@override String get clicker => 'คลิกเกอร์';
 	@override String get birthdayFollowings => 'วันเกิดผู้ใช้ในวันนี้';
-	@override String get chat => 'แชต';
+	@override String get chat => 'แชตเลย';
 }
 
 // Path: misskey.cw_
@@ -2894,6 +2926,8 @@ class _TranslationsMisskeyNotificationThTh extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => 'ได้รับคำขอติดตาม';
 	@override String get yourFollowRequestAccepted => 'คำขอติดตามได้รับการอนุมัติแล้ว';
 	@override String get pollEnded => 'ผลโพลออกมาแล้ว';
+	@override String get scheduledNotePosted => 'โน้ตที่กำหนดเวลาไว้ได้ถูกโพสต์แล้ว';
+	@override String get scheduledNotePostFailed => 'ล้มเหลวในการโพสต์โน้ตที่กำหนดเวลาไว้';
 	@override String get newNote => 'โพสต์ใหม่';
 	@override String unreadAntennaNote({required Object name}) => 'เสาอากาศ ${name}';
 	@override String get roleAssigned => 'ได้รับบทบาท';
@@ -3495,7 +3529,9 @@ class _TranslationsMisskeyWatermarkEditorThTh extends TranslationsMisskeyWaterma
 	@override String get opacity => 'ความทึบแสง';
 	@override String get scale => 'ขนาด';
 	@override String get text => 'ข้อความ';
+	@override String get qr => 'QR โค้ด';
 	@override String get position => 'ตำแหน่ง';
+	@override String get margin => 'ระยะขอบ';
 	@override String get type => 'รูปแบบ';
 	@override String get image => 'รูปภาพ';
 	@override String get advanced => 'ขั้นสูง';
@@ -3510,6 +3546,7 @@ class _TranslationsMisskeyWatermarkEditorThTh extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => 'ความทึบของจุดรอง';
 	@override String get polkadotSubDotRadius => 'ขนาดของจุดรอง';
 	@override String get polkadotSubDotDivisions => 'จำนวนจุดรอง';
+	@override String get leaveBlankToAccountUrl => 'เว้นว่างไว้หากต้องการใช้ URL ของบัญชีแทน';
 }
 
 // Path: misskey.imageEffector_
@@ -3547,6 +3584,56 @@ class _TranslationsMisskeyDraftsThTh extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => 'คืนค่าจากฉบับร่าง';
 	@override String get restore => 'กู้คืน';
 	@override String get listDrafts => 'รายการฉบับร่าง';
+	@override String get schedule => 'โพสต์กำหนดเวลา';
+	@override String get listScheduledNotes => 'รายการโน้ตที่กำหนดเวลาไว้';
+	@override String get cancelSchedule => 'ยกเลิกกำหนดเวลา';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrThTh extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'แสดงผล';
+	@override String get readTabTitle => 'แสกน';
+	@override String shareTitle({required Object name, required Object acct}) => '${name}${acct}';
+	@override String get shareText => 'โปรดติดตามฉันบน Fediverse ด้วย!';
+	@override String get chooseCamera => 'เลือกกล้อง';
+	@override String get cannotToggleFlash => 'ไม่สามารถเลือกแสงแฟลชได้';
+	@override String get turnOnFlash => 'ปิดแสงแฟลช';
+	@override String get turnOffFlash => 'เปิดแสงแฟลช';
+	@override String get startQr => 'เริ่มตัวอ่าน QR โค้ด';
+	@override String get stopQr => 'หยุดตัวอ่าน QR โค้ด';
+	@override String get noQrCodeFound => 'ไม่พบ QR โค้ด';
+	@override String get scanFile => 'สแกนภาพจากอุปกรณ์';
+	@override String get raw => 'ข้อความ';
+	@override String get mfm => 'MFM';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityThTh extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'คุณภาพสูง';
+	@override String get medium => 'คุณภาพปานกลาง';
+	@override String get low => 'คุณภาพต่ำ';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeThTh extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'ขนาดใหญ่';
+	@override String get medium => 'ขนาดปานกลาง';
+	@override String get small => 'ขนาดเล็ก';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3871,6 +3958,7 @@ class _TranslationsMisskeyRoleOptionsThTh extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes_caption => 'สามารถระบุ MIME type ได้ โดยใช้การขึ้นบรรทัดใหม่เพื่อแยกหลายรายการ และสามารถใช้ดอกจัน (*) เพื่อระบุแบบไวลด์การ์ดได้ (เช่น: image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'ไฟล์บางประเภทอาจไม่สามารถระบุชนิดได้ หากต้องการอนุญาตไฟล์ลักษณะนั้น กรุณาเพิ่ม ${x} ลงในรายการที่อนุญาต';
 	@override String get noteDraftLimit => 'จำนวนโน้ตฉบับร่างที่สามารถสร้างได้บนฝั่งเซิร์ฟเวอร์';
+	@override String get scheduledNoteLimit => 'จำนวนโพสต์กำหนดเวลาที่สร้างพร้อมกันได้';
 	@override String get watermarkAvailable => 'มีฟังก์ชั่นลายน้ำให้เลือกใช้';
 }
 
@@ -4065,7 +4153,7 @@ class _TranslationsMisskeyDeckColumnsThTh extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'กล่าวถึงคุณ';
 	@override String get direct => 'ไดเร็กต์';
 	@override String get roleTimeline => 'บทบาทไทม์ไลน์';
-	@override String get chat => 'แชต';
+	@override String get chat => 'แชตเลย';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4421,6 +4509,8 @@ class _TranslationsMisskeyImageEffectorFxsThTh extends TranslationsMisskeyImageE
 	@override String get mirror => 'กระจก';
 	@override String get invert => 'กลับสี';
 	@override String get grayscale => 'ขาวดำเทา';
+	@override String get blur => 'มัว';
+	@override String get pixelate => 'โมเสก';
 	@override String get colorAdjust => 'ปรับแก้สี';
 	@override String get colorClamp => 'บีบอัดสี';
 	@override String get colorClampAdvanced => 'บีบอัดสี (ขั้นสูง)';
@@ -4432,6 +4522,7 @@ class _TranslationsMisskeyImageEffectorFxsThTh extends TranslationsMisskeyImageE
 	@override String get checker => 'ช่องตาราง';
 	@override String get blockNoise => 'บล็อกที่มีการรบกวน';
 	@override String get tearing => 'ฉีกขาด';
+	@override String get fill => 'เติมเต็ม';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4444,6 +4535,9 @@ class _TranslationsMisskeyImageEffectorFxPropsThTh extends TranslationsMisskeyIm
 	@override String get angle => 'แองเกิล';
 	@override String get scale => 'ขนาด';
 	@override String get size => 'ขนาด';
+	@override String get radius => 'รัศสี';
+	@override String get samples => 'จำนวนตัวอย่าง';
+	@override String get offset => 'ตำแหน่ง';
 	@override String get color => 'สี';
 	@override String get opacity => 'ความทึบแสง';
 	@override String get normalize => 'นอร์มัลไลซ์';
@@ -4472,6 +4566,7 @@ class _TranslationsMisskeyImageEffectorFxPropsThTh extends TranslationsMisskeyIm
 	@override String get zoomLinesThreshold => 'ความกว้างเส้นรวมศูนย์';
 	@override String get zoomLinesMaskSize => 'ขนาดพื้นที่ตรงกลาง';
 	@override String get zoomLinesBlack => 'ทำให้ดำ';
+	@override String get circle => 'ทรงกลม';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

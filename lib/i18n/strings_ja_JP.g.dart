@@ -548,6 +548,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'これ以上ピン留めできません';
 	@override String get done => '完了';
 	@override String get processing => '処理中';
+	@override String get preprocessing => '準備中';
 	@override String get preview => 'プレビュー';
 	@override String get default_ => 'デフォルト';
 	@override String defaultValueIs({required Object value}) => 'デフォルト: ${value}';
@@ -597,7 +598,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get explore => 'みつける';
 	@override String get messageRead => '既読';
 	@override String get noMoreHistory => 'これより過去の履歴はありません';
-	@override String get startChat => 'チャットを始める';
+	@override String get startChat => 'メッセージを送る';
 	@override String nUsersRead({required Object n}) => '${n}人が読みました';
 	@override String agreeTo({required Object x0}) => '${x0}に同意';
 	@override String get agree => '同意する';
@@ -772,7 +773,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get uploadFolder => '既定アップロード先';
 	@override String get markAsReadAllNotifications => 'すべての通知を既読にする';
 	@override String get markAsReadAllUnreadNotes => 'すべての投稿を既読にする';
-	@override String get markAsReadAllTalkMessages => 'すべてのチャットを既読にする';
+	@override String get markAsReadAllTalkMessages => 'すべてのダイレクトメッセージを既読にする';
 	@override String get help => 'ヘルプ';
 	@override String get inputMessageHere => 'ここにメッセージを入力';
 	@override String get close => '閉じる';
@@ -1611,6 +1612,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。';
 	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
 	@override String get draft => '下書き';
+	@override String get draftsAndScheduledNotes => '下書きと予約投稿';
 	@override String get confirmOnReact => 'リアクションする際に確認する';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " をリアクションしますか？';
 	@override String get markAsSensitiveConfirm => 'このメディアをセンシティブとして設定しますか？';
@@ -1638,6 +1640,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get textCount => '文字数';
 	@override String get information => '情報';
 	@override String get chat => 'チャット';
+	@override String get directMessage => 'ダイレクトメッセージ';
+	@override String get directMessage_short => 'メッセージ';
 	@override String get migrateOldSettings => '旧設定情報を移行';
 	@override String get migrateOldSettings_description => '通常これは自動で行われていますが、何らかの理由により上手く移行されなかった場合は手動で移行処理をトリガーできます。現在の設定情報は上書きされます。';
 	@override String get compress => '圧縮';
@@ -1665,6 +1669,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '全ての「ヒントとコツ」を非表示';
 	@override String get defaultImageCompressionLevel => 'デフォルトの画像圧縮度';
 	@override String get defaultImageCompressionLevel_description => '低くすると画質を保てますが、ファイルサイズは増加します。<br>高くするとファイルサイズを減らせますが、画質は低下します。';
+	@override String get defaultCompressionLevel => 'デフォルトの圧縮度';
+	@override String get defaultCompressionLevel_description => '低くすると品質を保てますが、ファイルサイズは増加します。<br>高くするとファイルサイズを減らせますが、品質は低下します。';
 	@override String get inMinutes => '分';
 	@override String get inDays => '日';
 	@override String get safeModeEnabled => 'セーフモードが有効です';
@@ -1672,6 +1678,14 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'セーフモードが有効なため、カスタムCSSは適用されていません。';
 	@override String get themeIsDefaultBecauseSafeMode => 'セーフモードが有効な間はデフォルトのテーマが使用されます。セーフモードをオフにすると元に戻ります。';
 	@override String get thankYouForTestingBeta => 'ベータ版の検証にご協力いただきありがとうございます！';
+	@override String get createUserSpecifiedNote => 'ユーザー指定ノートを作成';
+	@override String get schedulePost => '投稿を予約';
+	@override String scheduleToPostOnX({required Object x}) => '${x}に投稿を予約します';
+	@override String scheduledToPostOnX({required Object x}) => '${x}に投稿が予約されています';
+	@override String get schedule => '予約';
+	@override String get scheduled => '予約';
+	@override String get widgets => 'ウィジェット';
+	@override late final _TranslationsMisskeyCompressionJaJp compression_ = _TranslationsMisskeyCompressionJaJp._(_root);
 	@override late final _TranslationsMisskeyOrderJaJp order_ = _TranslationsMisskeyOrderJaJp._(_root);
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteJaJp emojiPalette_ = _TranslationsMisskeyEmojiPaletteJaJp._(_root);
@@ -1773,6 +1787,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorJaJp imageEffector_ = _TranslationsMisskeyImageEffectorJaJp._(_root);
 	@override String get drafts => '下書き';
 	@override late final _TranslationsMisskeyDraftsJaJp drafts_ = _TranslationsMisskeyDraftsJaJp._(_root);
+	@override String get qr => '二次元コード';
+	@override late final _TranslationsMisskeyQrJaJp qr_ = _TranslationsMisskeyQrJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -1783,6 +1799,17 @@ class _TranslationsMisskeyIOJaJp extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusJaJp skebStatus_ = _TranslationsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionJaJp extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityJaJp quality_ = _TranslationsMisskeyCompressionQualityJaJp._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeJaJp size_ = _TranslationsMisskeyCompressionSizeJaJp._(_root);
 }
 
 // Path: misskey.order_
@@ -1803,47 +1830,48 @@ class _TranslationsMisskeyChatJaJp extends TranslationsMisskeyChatEnUs {
 	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'メッセージ';
 	@override String get noMessagesYet => 'まだメッセージはありません';
 	@override String get newMessage => '新しいメッセージ';
-	@override String get individualChat => '個人チャット';
-	@override String get individualChat_description => '特定ユーザーとの一対一のチャットができます。';
-	@override String get roomChat => 'ルームチャット';
-	@override String get roomChat_description => '複数人でのチャットができます。\nまた、個人チャットを許可していないユーザーとでも、相手が受け入れればチャットができます。';
-	@override String get createRoom => 'ルームを作成';
-	@override String get inviteUserToChat => 'ユーザーを招待してチャットを始めましょう';
-	@override String get yourRooms => '作成したルーム';
-	@override String get joiningRooms => '参加中のルーム';
+	@override String get individualChat => '個別';
+	@override String get individualChat_description => '特定ユーザーと個別にメッセージのやりとりができます。';
+	@override String get roomChat => 'グループ';
+	@override String get roomChat_description => '複数人でメッセージのやりとりができます。\nまた、個別のメッセージを許可していないユーザーとでも、相手が受け入れればやりとりできます。';
+	@override String get createRoom => 'グループを作成';
+	@override String get inviteUserToChat => 'ユーザーを招待してメッセージを送信しましょう';
+	@override String get yourRooms => '作成したグループ';
+	@override String get joiningRooms => '参加中のグループ';
 	@override String get invitations => '招待';
 	@override String get noInvitations => '招待はありません';
 	@override String get history => '履歴';
 	@override String get noHistory => '履歴はありません';
-	@override String get noRooms => 'ルームはありません';
+	@override String get noRooms => 'グループはありません';
 	@override String get inviteUser => 'ユーザーを招待';
 	@override String get sentInvitations => '送信した招待';
 	@override String get join => '参加';
 	@override String get ignore => '無視';
-	@override String get leave => 'ルームから退出';
+	@override String get leave => 'グループから退出';
 	@override String get members => 'メンバー';
 	@override String get searchMessages => 'メッセージを検索';
 	@override String get home => 'ホーム';
 	@override String get send => '送信';
 	@override String get newline => '改行';
-	@override String get muteThisRoom => 'このルームをミュート';
-	@override String get deleteRoom => 'ルームを削除';
-	@override String get chatNotAvailableForThisAccountOrServer => 'このサーバー、またはこのアカウントでチャットは有効化されていません。';
-	@override String get chatIsReadOnlyForThisAccountOrServer => 'このサーバー、またはこのアカウントでチャットは読み取り専用となっています。新たに書き込んだり、チャットルームを作成・参加したりすることはできません。';
-	@override String get chatNotAvailableInOtherAccount => '相手のアカウントでチャット機能が使えない状態になっています。';
-	@override String get cannotChatWithTheUser => 'このユーザーとのチャットを開始できません';
-	@override String get cannotChatWithTheUser_description => 'チャットが使えない状態になっているか、相手がチャットを開放していません。';
-	@override String get youAreNotAMemberOfThisRoomButInvited => 'あなたはこのルームの参加者ではありませんが、招待が届いています。参加するには、招待を承認してください。';
+	@override String get muteThisRoom => 'このグループをミュート';
+	@override String get deleteRoom => 'グループを削除';
+	@override String get chatNotAvailableForThisAccountOrServer => 'このサーバー、またはこのアカウントでダイレクトメッセージは有効化されていません。';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'このサーバー、またはこのアカウントでダイレクトメッセージは読み取り専用となっています。新たに書き込んだり、グループを作成・参加したりすることはできません。';
+	@override String get chatNotAvailableInOtherAccount => '相手のアカウントでダイレクトメッセージが使えない状態になっています。';
+	@override String get cannotChatWithTheUser => 'このユーザーとのダイレクトメッセージを開始できません';
+	@override String get cannotChatWithTheUser_description => 'ダイレクトメッセージが使えない状態になっているか、相手がダイレクトメッセージを開放していません。';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'あなたはこのグループの参加者ではありませんが、招待が届いています。参加するには、招待を承認してください。';
 	@override String get doYouAcceptInvitation => '招待を承認しますか？';
-	@override String get chatWithThisUser => 'チャットする';
-	@override String get thisUserAllowsChatOnlyFromFollowers => 'このユーザーはフォロワーからのみチャットを受け付けています。';
-	@override String get thisUserAllowsChatOnlyFromFollowing => 'このユーザーは、このユーザーがフォローしているユーザーからのみチャットを受け付けています。';
-	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'このユーザーは相互フォローのユーザーからのみチャットを受け付けています。';
-	@override String get thisUserNotAllowedChatAnyone => 'このユーザーは誰からもチャットを受け付けていません。';
-	@override String get chatAllowedUsers => 'チャットを許可する相手';
-	@override String get chatAllowedUsers_note => '自分からチャットメッセージを送った相手とはこの設定に関わらずチャットが可能です。';
+	@override String get chatWithThisUser => 'ダイレクトメッセージ';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'このユーザーはフォロワーからのみメッセージを受け付けています。';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'このユーザーは、このユーザーがフォローしているユーザーからのみメッセージを受け付けています。';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'このユーザーは相互フォローのユーザーからのみメッセージを受け付けています。';
+	@override String get thisUserNotAllowedChatAnyone => 'このユーザーは誰からもメッセージを受け付けていません。';
+	@override String get chatAllowedUsers => 'メッセージを許可する相手';
+	@override String get chatAllowedUsers_note => '自分からメッセージを送った相手とはこの設定に関わらずメッセージの送受信が可能です。';
 	@override late final _TranslationsMisskeyChatChatAllowedUsersJaJp chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersJaJp._(_root);
 }
 
@@ -2557,7 +2585,7 @@ class _TranslationsMisskeySfxJaJp extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'ノート(自分)';
 	@override String get notification => '通知';
 	@override String get reaction => 'リアクション選択時';
-	@override String get chatMessage => 'チャットのメッセージ';
+	@override String get chatMessage => 'ダイレクトメッセージ';
 }
 
 // Path: misskey.soundSettings_
@@ -2679,8 +2707,8 @@ class _TranslationsMisskeyPermissionsJaJp extends TranslationsMisskeyPermissions
 	@override String get writeFavorites => 'お気に入りを操作する';
 	@override String get readFollowing => 'フォローの情報を見る';
 	@override String get writeFollowing => 'フォロー・フォロー解除する';
-	@override String get readMessaging => 'チャットを見る';
-	@override String get writeMessaging => 'チャットを操作する';
+	@override String get readMessaging => 'ダイレクトメッセージを見る';
+	@override String get writeMessaging => 'ダイレクトメッセージを操作する';
 	@override String get readMutes => 'ミュートを見る';
 	@override String get writeMutes => 'ミュートを操作する';
 	@override String get writeNotes => 'ノートを作成・削除する';
@@ -2753,8 +2781,8 @@ class _TranslationsMisskeyPermissionsJaJp extends TranslationsMisskeyPermissions
 	@override String get readClipFavorite => 'クリップのいいねを見る';
 	@override String get readFederation => '連合に関する情報を取得する';
 	@override String get writeReportAbuse => '違反を報告する';
-	@override String get writeChat => 'チャットを操作する';
-	@override String get readChat => 'チャットを閲覧する';
+	@override String get writeChat => 'ダイレクトメッセージを操作する';
+	@override String get readChat => 'ダイレクトメッセージを閲覧する';
 }
 
 // Path: misskey.auth_
@@ -2844,7 +2872,7 @@ class _TranslationsMisskeyWidgetsJaJp extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListJaJp userList_ = _TranslationsMisskeyWidgetsUserListJaJp._(_root);
 	@override String get clicker => 'クリッカー';
 	@override String get birthdayFollowings => '今日誕生日のユーザー';
-	@override String get chat => 'チャット';
+	@override String get chat => 'ダイレクトメッセージ';
 }
 
 // Path: misskey.cw_
@@ -3120,10 +3148,12 @@ class _TranslationsMisskeyNotificationJaJp extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => 'フォローリクエストが来ました';
 	@override String get yourFollowRequestAccepted => 'フォローリクエストが承認されました';
 	@override String get pollEnded => 'アンケートの結果が出ました';
+	@override String get scheduledNotePosted => '予約ノートが投稿されました';
+	@override String get scheduledNotePostFailed => '予約ノートの投稿に失敗しました';
 	@override String get newNote => '新しい投稿';
 	@override String unreadAntennaNote({required Object name}) => 'アンテナ ${name}';
 	@override String get roleAssigned => 'ロールが付与されました';
-	@override String get chatRoomInvitationReceived => 'チャットルームへ招待されました';
+	@override String get chatRoomInvitationReceived => 'ダイレクトメッセージのグループへ招待されました';
 	@override String get emptyPushNotificationMessage => 'プッシュ通知の更新をしました';
 	@override String get achievementEarned => '実績を獲得';
 	@override String get testNotification => '通知テスト';
@@ -3294,7 +3324,7 @@ class _TranslationsMisskeyModerationLogTypesJaJp extends TranslationsMisskeyMode
 	@override String get deletePage => 'ページを削除';
 	@override String get deleteFlash => 'Playを削除';
 	@override String get deleteGalleryPost => 'ギャラリーの投稿を削除';
-	@override String get deleteChatRoom => 'チャットルームを削除';
+	@override String get deleteChatRoom => 'ダイレクトメッセージのグループを削除';
 	@override String get updateProxyAccountDescription => 'プロキシアカウントの説明を更新';
 }
 
@@ -3721,7 +3751,9 @@ class _TranslationsMisskeyWatermarkEditorJaJp extends TranslationsMisskeyWaterma
 	@override String get opacity => '不透明度';
 	@override String get scale => 'サイズ';
 	@override String get text => 'テキスト';
+	@override String get qr => '二次元コード';
 	@override String get position => '位置';
+	@override String get margin => 'マージン';
 	@override String get type => 'タイプ';
 	@override String get image => '画像';
 	@override String get advanced => '高度';
@@ -3736,6 +3768,7 @@ class _TranslationsMisskeyWatermarkEditorJaJp extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => 'サブドットの不透明度';
 	@override String get polkadotSubDotRadius => 'サブドットの大きさ';
 	@override String get polkadotSubDotDivisions => 'サブドットの数';
+	@override String get leaveBlankToAccountUrl => '空欄にするとアカウントのURLになります';
 }
 
 // Path: misskey.imageEffector_
@@ -3773,6 +3806,32 @@ class _TranslationsMisskeyDraftsJaJp extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => '下書きから復元';
 	@override String get restore => '復元';
 	@override String get listDrafts => '下書き一覧';
+	@override String get schedule => '投稿予約';
+	@override String get listScheduledNotes => '予約投稿一覧';
+	@override String get cancelSchedule => '予約解除';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrJaJp extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => '表示';
+	@override String get readTabTitle => '読み取る';
+	@override String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
+	@override String get shareText => 'Fediverseで私をフォローしてください！';
+	@override String get chooseCamera => 'カメラを選択';
+	@override String get cannotToggleFlash => 'ライト選択不可';
+	@override String get turnOnFlash => 'ライトをオンにする';
+	@override String get turnOffFlash => 'ライトをオフにする';
+	@override String get startQr => 'コードリーダーを再開';
+	@override String get stopQr => 'コードリーダーを停止';
+	@override String get noQrCodeFound => 'QRコードが見つかりません';
+	@override String get scanFile => '端末の画像をスキャン';
+	@override String get raw => 'テキスト';
+	@override String get mfm => 'MFM';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3789,6 +3848,30 @@ class _TranslationsMisskeyIOSkebStatusJaJp extends TranslationsMisskeyIOSkebStat
 	@override String yenX({required Object x}) => '${x}円';
 	@override String nWorks({required Object n}) => '納品実績 ${n}件';
 	@override String nRequests({required Object n}) => '取引実績 ${n}件';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityJaJp extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => '高品質';
+	@override String get medium => '中品質';
+	@override String get low => '低品質';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeJaJp extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'サイズ大';
+	@override String get medium => 'サイズ中';
+	@override String get small => 'サイズ小';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -4108,11 +4191,12 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get canImportFollowing => 'フォローのインポートを許可';
 	@override String get canImportMuting => 'ミュートのインポートを許可';
 	@override String get canImportUserLists => 'リストのインポートを許可';
-	@override String get chatAvailability => 'チャットを許可';
+	@override String get chatAvailability => 'ダイレクトメッセージを許可';
 	@override String get uploadableFileTypes => 'アップロード可能なファイル種別';
 	@override String get uploadableFileTypes_caption => 'MIMEタイプを指定します。改行で区切って複数指定できるほか、アスタリスク(*)でワイルドカード指定できます。(例: image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'ファイルによっては種別を判定できないことがあります。そのようなファイルを許可する場合は ${x} を指定に追加してください。';
 	@override String get noteDraftLimit => 'サーバーサイドのノートの下書きの作成可能数';
+	@override String get scheduledNoteLimit => '予約投稿の同時作成可能数';
 	@override String get watermarkAvailable => 'ウォーターマーク機能の使用可否';
 }
 
@@ -4203,7 +4287,7 @@ class _TranslationsMisskeyThemeKeysJaJp extends TranslationsMisskeyThemeKeysEnUs
 	@override String get buttonHoverBg => 'ボタンの背景 (ホバー)';
 	@override String get inputBorder => '入力ボックスの縁取り';
 	@override String get badge => 'バッジ';
-	@override String get messageBg => 'チャットの背景';
+	@override String get messageBg => 'メッセージの背景';
 	@override String get fgHighlighted => '強調された文字';
 }
 
@@ -4269,7 +4353,7 @@ class _TranslationsMisskeyNotificationTypesJaJp extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => 'フォロー申請を受け取った';
 	@override String get followRequestAccepted => 'フォローが受理された';
 	@override String get roleAssigned => 'ロールが付与された';
-	@override String get chatRoomInvitationReceived => 'チャットルームへ招待された';
+	@override String get chatRoomInvitationReceived => 'ダイレクトメッセージのグループへ招待された';
 	@override String get achievementEarned => '実績の獲得';
 	@override String get exportCompleted => 'エクスポートが完了した';
 	@override String get login => 'ログイン';
@@ -4307,7 +4391,7 @@ class _TranslationsMisskeyDeckColumnsJaJp extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'メンション';
 	@override String get direct => '指名';
 	@override String get roleTimeline => 'ロールタイムライン';
-	@override String get chat => 'チャット';
+	@override String get chat => 'ダイレクトメッセージ';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4663,6 +4747,8 @@ class _TranslationsMisskeyImageEffectorFxsJaJp extends TranslationsMisskeyImageE
 	@override String get mirror => 'ミラー';
 	@override String get invert => '色の反転';
 	@override String get grayscale => '白黒';
+	@override String get blur => 'ぼかし';
+	@override String get pixelate => 'モザイク';
 	@override String get colorAdjust => '色調補正';
 	@override String get colorClamp => '色の圧縮';
 	@override String get colorClampAdvanced => '色の圧縮(高度)';
@@ -4674,6 +4760,7 @@ class _TranslationsMisskeyImageEffectorFxsJaJp extends TranslationsMisskeyImageE
 	@override String get checker => 'チェッカー';
 	@override String get blockNoise => 'ブロックノイズ';
 	@override String get tearing => 'ティアリング';
+	@override String get fill => '塗りつぶし';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4686,6 +4773,9 @@ class _TranslationsMisskeyImageEffectorFxPropsJaJp extends TranslationsMisskeyIm
 	@override String get angle => '角度';
 	@override String get scale => 'サイズ';
 	@override String get size => 'サイズ';
+	@override String get radius => '半径';
+	@override String get samples => 'サンプル数';
+	@override String get offset => '位置';
 	@override String get color => '色';
 	@override String get opacity => '不透明度';
 	@override String get normalize => '正規化';
@@ -4714,6 +4804,7 @@ class _TranslationsMisskeyImageEffectorFxPropsJaJp extends TranslationsMisskeyIm
 	@override String get zoomLinesThreshold => '集中線の幅';
 	@override String get zoomLinesMaskSize => '中心径';
 	@override String get zoomLinesBlack => '黒色にする';
+	@override String get circle => '円形';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

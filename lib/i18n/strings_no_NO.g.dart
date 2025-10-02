@@ -582,6 +582,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchNoNo search_ = _TranslationsMisskeySearchNoNo._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorNoNo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNoNo._(_root);
 	@override late final _TranslationsMisskeyImageEffectorNoNo imageEffector_ = _TranslationsMisskeyImageEffectorNoNo._(_root);
+	@override late final _TranslationsMisskeyQrNoNo qr_ = _TranslationsMisskeyQrNoNo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1109,6 +1110,16 @@ class _TranslationsMisskeyImageEffectorNoNo extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsNoNo fxProps_ = _TranslationsMisskeyImageEffectorFxPropsNoNo._(_root);
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrNoNo extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get raw => 'Tekst';
 }
 
 // Path: misskey.achievements_.types_

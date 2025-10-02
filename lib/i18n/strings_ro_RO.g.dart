@@ -1325,6 +1325,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchRoRo search_ = _TranslationsMisskeySearchRoRo._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorRoRo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRoRo._(_root);
 	@override late final _TranslationsMisskeyImageEffectorRoRo imageEffector_ = _TranslationsMisskeyImageEffectorRoRo._(_root);
+	@override late final _TranslationsMisskeyQrRoRo qr_ = _TranslationsMisskeyQrRoRo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1773,6 +1774,17 @@ class _TranslationsMisskeyImageEffectorRoRo extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsRoRo fxProps_ = _TranslationsMisskeyImageEffectorFxPropsRoRo._(_root);
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrRoRo extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Arată';
+	@override String get raw => 'Text';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRoRo extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
@@ -1993,6 +2005,7 @@ class _TranslationsMisskeyImageEffectorFxPropsRoRo extends TranslationsMisskeyIm
 	// Translations
 	@override String get scale => 'Dimensiune';
 	@override String get size => 'Dimensiune';
+	@override String get offset => 'Poziție';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

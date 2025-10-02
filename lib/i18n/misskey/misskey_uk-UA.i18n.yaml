@@ -925,6 +925,7 @@ postForm: "Створення нотатки"
 information: "Інформація"
 inMinutes: "х"
 inDays: "д"
+widgets: "Віджети"
 chat_:
   invitations: "Запросити"
   noHistory: "Історія порожня"
@@ -1659,3 +1660,6 @@ imageEffector_:
     color: "Колір"
     opacity: "Непрозорість"
     lightness: "Яскравість"
+qr_:
+  showTabTitle: "Відображення"
+  raw: "Текст"
