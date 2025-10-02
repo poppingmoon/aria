@@ -173,9 +173,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Double tap to show'
 	String get doubleTapToShow => 'Double tap to show';
 
-	/// en-US: 'Downloaded'
-	String get downloaded => 'Downloaded';
-
 	/// en-US: 'Draw'
 	String get draw => 'Draw';
 

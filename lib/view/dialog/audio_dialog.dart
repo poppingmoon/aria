@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -15,6 +16,10 @@ import '../../hook/video_player_controller_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/audio_handler_provider.dart';
+import '../../provider/cache_manager_provider.dart';
+import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
+import '../../util/show_toast.dart';
 import '../widget/user_avatar.dart';
 
 class AudioDialog extends HookConsumerWidget {
@@ -63,8 +68,8 @@ class _AudioWidget extends HookConsumerWidget {
   const _AudioWidget({
     required this.account,
     required this.file,
-    this.user,
-    this.noteId,
+    required this.user,
+    required this.noteId,
   });
 
   final Account account;
@@ -106,30 +111,12 @@ class _AudioWidget extends HookConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (user case final user?)
-              Padding(
-                padding: const EdgeInsetsDirectional.only(end: 8.0),
-                child: UserAvatar(
-                  account: account,
-                  user: user,
-                  size: 30,
-                  onTap: () => context.push('/$account/users/${user.id}'),
-                ),
-              ),
-            Expanded(child: Text(mediaItem?.title ?? file.name)),
-            if (noteId case final noteId?)
-              IconButton(
-                tooltip: t.aria.showNote,
-                onPressed: () {
-                  audioHandler?.pause();
-                  context.push('/$account/notes/$noteId');
-                },
-                icon: const Icon(Icons.open_in_new),
-              ),
-          ],
+        _AudioHeader(
+          account: account,
+          file: file,
+          user: user,
+          noteId: noteId,
+          pause: audioHandler?.pause,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -177,8 +164,8 @@ class _VideoPlayerAudioWidget extends HookWidget {
   const _VideoPlayerAudioWidget({
     required this.account,
     required this.file,
-    this.user,
-    this.noteId,
+    required this.user,
+    required this.noteId,
   });
 
   final Account account;
@@ -201,30 +188,12 @@ class _VideoPlayerAudioWidget extends HookWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (user case final user?)
-              Padding(
-                padding: const EdgeInsetsDirectional.only(end: 8.0),
-                child: UserAvatar(
-                  account: account,
-                  user: user,
-                  size: 30,
-                  onTap: () => context.push('/$account/users/${user.id}'),
-                ),
-              ),
-            Expanded(child: Text(file.name)),
-            if (noteId case final noteId?)
-              IconButton(
-                tooltip: t.aria.showNote,
-                onPressed: () {
-                  videoPlayerController?.pause();
-                  context.push('/$account/notes/$noteId');
-                },
-                icon: const Icon(Icons.open_in_new),
-              ),
-          ],
+        _AudioHeader(
+          account: account,
+          file: file,
+          user: user,
+          noteId: noteId,
+          pause: videoPlayerController?.pause,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -273,6 +242,97 @@ class _VideoPlayerAudioWidget extends HookWidget {
             }
             await videoPlayerController?.seekTo(position);
           },
+        ),
+      ],
+    );
+  }
+}
+
+class _AudioHeader extends ConsumerWidget {
+  const _AudioHeader({
+    required this.account,
+    required this.file,
+    required this.user,
+    required this.noteId,
+    required this.pause,
+  });
+
+  final Account account;
+  final DriveFile file;
+  final User? user;
+  final String? noteId;
+  final void Function()? pause;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (user case final user?)
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: 8.0),
+            child: UserAvatar(
+              account: account,
+              user: user,
+              size: 32.0,
+              onTap: () => context.push('/$account/users/${user.id}'),
+            ),
+          ),
+        Expanded(child: Text(file.name)),
+        PopupMenuButton<void>(
+          itemBuilder: (context) => [
+            if (noteId case final noteId?)
+              PopupMenuItem(
+                onTap: () {
+                  pause?.call();
+                  context.push('/$account/notes/$noteId');
+                },
+                child: ListTile(
+                  leading: const Icon(Icons.open_in_new),
+                  title: Text(t.aria.showNote),
+                ),
+              ),
+            PopupMenuItem(
+              onTap: () async {
+                final result = await futureWithDialog(
+                  context,
+                  ref
+                      .read(cacheManagerProvider)
+                      .getSingleFile(file.url)
+                      .then((file) => file.readAsBytes())
+                      .then(
+                        (bytes) => FilePicker.platform.saveFile(
+                          fileName: file.name,
+                          bytes: bytes,
+                        ),
+                      ),
+                );
+                if (!context.mounted) return;
+                if (result != null) {
+                  showToast(context: context, message: t.misskey.saved);
+                }
+              },
+              child: ListTile(
+                leading: const Icon(Icons.download),
+                title: Text(t.misskey.download),
+              ),
+            ),
+            PopupMenuItem(
+              onTap: () {
+                pause?.call();
+                launchUrl(ref, Uri.parse(file.url));
+              },
+              child: ListTile(
+                leading: const Icon(Icons.open_in_browser),
+                title: Text(t.aria.openInBrowser),
+              ),
+            ),
+          ],
+          padding: const EdgeInsets.all(4.0),
+          style: IconButton.styleFrom(
+            minimumSize: const Size.square(32.0),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
         ),
       ],
     );

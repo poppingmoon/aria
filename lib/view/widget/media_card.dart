@@ -1,7 +1,7 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
@@ -20,10 +20,10 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/pretty_bytes.dart';
+import '../../util/show_toast.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
-import '../dialog/message_dialog.dart';
 import '../dialog/user_image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'image_widget.dart';
@@ -570,8 +570,12 @@ class _VideoPreview extends StatelessWidget {
   void _openVideo(BuildContext context) {
     showDialog<void>(
       context: context,
-      builder: (context) =>
-          VideoDialog(account: account, url: file.url, noteId: noteId),
+      builder: (context) => VideoDialog(
+        account: account,
+        url: file.url,
+        fileName: file.name,
+        noteId: noteId,
+      ),
     );
   }
 
@@ -756,32 +760,21 @@ class _MediaCardSheet extends ConsumerWidget {
   final void Function()? hideMedia;
 
   Future<void> _download(WidgetRef ref) async {
-    final isImage = file.type.startsWith('image/');
-    final isVideo = file.type.startsWith('video/');
-    if (!isImage && !isVideo) {
-      await launchUrl(ref, Uri.parse(file.url));
-      return;
-    }
-    if (!await Gal.requestAccess()) {
-      if (!ref.context.mounted) return;
-      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
-      return;
-    }
-    if (!ref.context.mounted) return;
-    await futureWithDialog(
+    final result = await futureWithDialog(
       ref.context,
-      Future(() async {
-        final file = await ref
-            .read(cacheManagerProvider)
-            .getSingleFile(this.file.url);
-        if (isImage) {
-          await Gal.putImage(file.path);
-        } else {
-          await Gal.putVideo(file.path);
-        }
-      }),
-      message: t.aria.downloaded,
+      ref
+          .read(cacheManagerProvider)
+          .getSingleFile(file.url)
+          .then((file) => file.readAsBytes())
+          .then(
+            (bytes) =>
+                FilePicker.platform.saveFile(fileName: file.name, bytes: bytes),
+          ),
     );
+    if (!ref.context.mounted) return;
+    if (result != null) {
+      showToast(context: ref.context, message: t.misskey.saved);
+    }
     if (!ref.context.mounted) return;
     ref.context.pop();
   }

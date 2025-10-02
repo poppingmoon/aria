@@ -22,7 +22,7 @@ import '../../../util/extract_url.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
 import '../../dialog/confirmation_dialog.dart';
-import '../../dialog/image_dialog.dart';
+import '../../dialog/image_gallery_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
@@ -287,8 +287,10 @@ class PagePage extends ConsumerWidget {
                     ),
                     clipBehavior: Clip.antiAlias,
                     child: InkWell(
-                      onTap: () =>
-                          showImageDialog(context, url: eyeCatchingImage.url),
+                      onTap: () => showImageGalleryDialog(
+                        context,
+                        files: [eyeCatchingImage],
+                      ),
                       child: ImageWidget(
                         url: eyeCatchingImage.url,
                         blurHash: eyeCatchingImage.blurhash,

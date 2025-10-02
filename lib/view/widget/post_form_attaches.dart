@@ -20,6 +20,7 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/file_caption_edit_dialog.dart';
 import '../dialog/image_dialog.dart';
+import '../dialog/image_gallery_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'post_file_thumbnail.dart';
@@ -326,17 +327,14 @@ class PostFormAttaches extends ConsumerWidget {
                         ListTile(
                           leading: const Icon(Icons.visibility),
                           title: Text(t.aria.showImage),
-                          onTap: () => showImageDialog(
-                            context,
-                            url: switch (files[index]) {
-                              DrivePostFile(:final file) => file.url,
-                              _ => null,
-                            },
-                            file: switch (files[index]) {
-                              LocalPostFile(:final file) => file,
-                              _ => null,
-                            },
-                          ),
+                          onTap: () => switch (files[index]) {
+                            LocalPostFile(:final file) => showImageDialog(
+                              context,
+                              file: file,
+                            ),
+                            DrivePostFile(:final file) =>
+                              showImageGalleryDialog(context, files: [file]),
+                          },
                         ),
                       if (files[index].type?.startsWith('video/') ?? false)
                         ListTile(
@@ -353,6 +351,7 @@ class PostFormAttaches extends ConsumerWidget {
                                 LocalPostFile(:final file) => file,
                                 _ => null,
                               },
+                              fileName: files[index].name,
                             ),
                           ),
                         ),

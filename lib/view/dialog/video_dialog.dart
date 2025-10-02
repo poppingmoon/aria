@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:chewie/chewie.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,29 +14,37 @@ import '../../provider/cache_manager_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
-import 'message_dialog.dart';
+import '../../util/show_toast.dart';
 
 class VideoDialog extends HookConsumerWidget {
-  const VideoDialog({super.key, this.account, this.url, this.file, this.noteId})
-    : assert(url != null || file != null);
+  const VideoDialog({
+    super.key,
+    this.account,
+    this.url,
+    this.file,
+    this.fileName,
+    this.noteId,
+  }) : assert(url != null || file != null);
 
   final Account? account;
   final String? url;
   final File? file;
+  final String? fileName;
   final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final url = switch (this.url) {
+      final url? => Uri.tryParse(url),
+      _ => null,
+    };
     final enableHapticFeedback = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.enableHapticFeedback,
       ),
     );
     final controller = useChewieController(
-      url: switch (url) {
-        final url? => Uri.tryParse(url),
-        _ => null,
-      },
+      url: url,
       file: file,
       autoPlay: true,
       showControlsOnInitialize: false,
@@ -92,25 +100,24 @@ class VideoDialog extends HookConsumerWidget {
                       ),
                     PopupMenuItem(
                       onTap: () async {
-                        if (!await Gal.requestAccess()) {
-                          if (!context.mounted) return;
-                          await showMessageDialog(
-                            context,
-                            t.misskey.permissionDeniedError,
-                          );
-                          return;
-                        }
-                        if (!context.mounted) return;
-                        await futureWithDialog(
+                        final result = await futureWithDialog(
                           context,
-                          Future(() async {
-                            final file = await ref
-                                .read(cacheManagerProvider)
-                                .getSingleFile(url);
-                            await Gal.putVideo(file.path);
-                          }),
-                          message: t.aria.downloaded,
+                          ref
+                              .read(cacheManagerProvider)
+                              .getSingleFile(url.toString())
+                              .then((file) => file.readAsBytes())
+                              .then(
+                                (bytes) => FilePicker.platform.saveFile(
+                                  fileName:
+                                      fileName ?? url.pathSegments.lastOrNull,
+                                  bytes: bytes,
+                                ),
+                              ),
                         );
+                        if (!context.mounted) return;
+                        if (result != null) {
+                          showToast(context: context, message: t.misskey.saved);
+                        }
                       },
                       child: ListTile(
                         leading: const Icon(Icons.download),
@@ -118,7 +125,7 @@ class VideoDialog extends HookConsumerWidget {
                       ),
                     ),
                     PopupMenuItem(
-                      onTap: () => launchUrl(ref, Uri.parse(url)),
+                      onTap: () => launchUrl(ref, url),
                       child: ListTile(
                         leading: const Icon(Icons.open_in_browser),
                         title: Text(t.aria.openInBrowser),
