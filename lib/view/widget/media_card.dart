@@ -574,6 +574,7 @@ class _VideoPreview extends StatelessWidget {
         account: account,
         url: file.url,
         fileName: file.name,
+        thumbnailUrl: file.thumbnailUrl,
         noteId: noteId,
       ),
     );

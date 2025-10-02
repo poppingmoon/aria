@@ -54,6 +54,10 @@ class FileCaptionEditDialog extends HookWidget {
                         _ => null,
                       },
                       fileName: file.name,
+                      thumbnailUrl: switch (file) {
+                        DrivePostFile(:final file) => file.thumbnailUrl,
+                        _ => null,
+                      },
                     ),
                   ),
                 _ => null,

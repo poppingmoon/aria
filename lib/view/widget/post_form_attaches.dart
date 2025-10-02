@@ -352,6 +352,10 @@ class PostFormAttaches extends ConsumerWidget {
                                 _ => null,
                               },
                               fileName: files[index].name,
+                              thumbnailUrl: switch (files[index]) {
+                                DrivePostFile(:final file) => file.thumbnailUrl,
+                                _ => null,
+                              },
                             ),
                           ),
                         ),

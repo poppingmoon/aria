@@ -15,6 +15,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/show_toast.dart';
+import '../widget/image_widget.dart';
 
 class VideoDialog extends HookConsumerWidget {
   const VideoDialog({
@@ -23,6 +24,7 @@ class VideoDialog extends HookConsumerWidget {
     this.url,
     this.file,
     this.fileName,
+    this.thumbnailUrl,
     this.noteId,
   }) : assert(url != null || file != null);
 
@@ -30,6 +32,7 @@ class VideoDialog extends HookConsumerWidget {
   final String? url;
   final File? file;
   final String? fileName;
+  final String? thumbnailUrl;
   final String? noteId;
 
   @override
@@ -67,7 +70,28 @@ class VideoDialog extends HookConsumerWidget {
                 : null,
             onDismissed: (_) => context.pop(),
             direction: DismissDirection.vertical,
-            child: Center(child: _VideoWidget(controller: controller)),
+            child:
+                controller != null &&
+                    controller.videoPlayerController.value.isInitialized
+                ? Center(
+                    child: AspectRatio(
+                      aspectRatio:
+                          controller.videoPlayerController.value.aspectRatio,
+                      child: Chewie(controller: controller),
+                    ),
+                  )
+                : SizedBox.expand(
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        if (thumbnailUrl case final url?)
+                          Positioned.fill(
+                            child: ImageWidget(url: url, fit: BoxFit.contain),
+                          ),
+                        const CircularProgressIndicator(),
+                      ],
+                    ),
+                  ),
           ),
           Align(
             alignment: AlignmentDirectional.topStart,
@@ -138,24 +162,5 @@ class VideoDialog extends HookConsumerWidget {
         ],
       ),
     );
-  }
-}
-
-class _VideoWidget extends StatelessWidget {
-  const _VideoWidget({required this.controller});
-
-  final ChewieController? controller;
-
-  @override
-  Widget build(BuildContext context) {
-    if (controller case final controller?
-        when controller.videoPlayerController.value.isInitialized) {
-      return AspectRatio(
-        aspectRatio: controller.videoPlayerController.value.aspectRatio,
-        child: Chewie(controller: controller),
-      );
-    } else {
-      return const Center(child: CircularProgressIndicator());
-    }
   }
 }
