@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -22,6 +23,7 @@ import '../../provider/search_unicode_emojis_provider.dart';
 import '../../util/check_reaction_permissions.dart';
 import '../page/emoji_page.dart';
 import 'custom_emoji.dart';
+import 'emoji_sheet.dart';
 import 'unicode_emoji.dart';
 
 Future<String?> pickEmoji(
@@ -228,6 +230,11 @@ class EmojiPicker extends HookConsumerWidget {
                     onTap: enabled
                         ? () => onTapEmoji(emoji.emoji, keepOpen)
                         : null,
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) =>
+                          EmojiSheet(account: account, emoji: emoji.emoji),
+                    ),
                     height: style.lineHeight * fontScaleFactor,
                     opacity: enabled ? 1.0 : 0.1,
                     fallbackTextStyle: style.apply(
@@ -241,6 +248,11 @@ class EmojiPicker extends HookConsumerWidget {
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
                     onTap: () => onTapEmoji(emoji, keepOpen),
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) =>
+                          EmojiSheet(account: account, emoji: emoji),
+                    ),
                   ),
                 ),
               ],
@@ -254,7 +266,7 @@ class EmojiPicker extends HookConsumerWidget {
             child: Wrap(
               spacing: 4.0,
               runSpacing: 4.0,
-              children: pinnedEmojis.map((emoji) {
+              children: pinnedEmojis.mapIndexed((index, emoji) {
                 if (emoji.startsWith(':')) {
                   final customEmoji = ref.watch(
                     emojiProvider(account.host, emoji),
@@ -268,6 +280,24 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji,
                     onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => EmojiSheet(
+                        account: account,
+                        emoji: emoji,
+                        remove: () {
+                          ref
+                              .read(
+                                pinnedEmojisNotifierProvider(
+                                  account,
+                                  reaction: reaction,
+                                ).notifier,
+                              )
+                              .remove(index);
+                          context.pop();
+                        },
+                      ),
+                    ),
                     height: style.lineHeight * fontScaleFactor,
                     opacity: enabled ? 1.0 : 0.1,
                     fallbackTextStyle: style.apply(
@@ -280,6 +310,24 @@ class EmojiPicker extends HookConsumerWidget {
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
                     onTap: () => onTapEmoji(emoji, keepOpen),
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => EmojiSheet(
+                        account: account,
+                        emoji: emoji,
+                        remove: () {
+                          ref
+                              .read(
+                                pinnedEmojisNotifierProvider(
+                                  account,
+                                  reaction: reaction,
+                                ).notifier,
+                              )
+                              .remove(index);
+                          context.pop();
+                        },
+                      ),
+                    ),
                   );
                 }
               }).toList(),
@@ -298,7 +346,7 @@ class EmojiPicker extends HookConsumerWidget {
             child: Wrap(
               spacing: 4.0,
               runSpacing: 4.0,
-              children: recentlyUsedEmojis.map((emoji) {
+              children: recentlyUsedEmojis.mapIndexed((index, emoji) {
                 if (emoji.startsWith(':')) {
                   final customEmoji = ref.watch(
                     emojiProvider(account.host, emoji),
@@ -312,6 +360,23 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji,
                     onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => EmojiSheet(
+                        account: account,
+                        emoji: emoji,
+                        remove: () {
+                          ref
+                              .read(
+                                recentlyUsedEmojisNotifierProvider(
+                                  account,
+                                ).notifier,
+                              )
+                              .remove(index);
+                          context.pop();
+                        },
+                      ),
+                    ),
                     height: style.lineHeight * fontScaleFactor,
                     opacity: enabled ? 1.0 : 0.1,
                     fallbackTextStyle: style.apply(
@@ -324,6 +389,23 @@ class EmojiPicker extends HookConsumerWidget {
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
                     onTap: () => onTapEmoji(emoji, keepOpen),
+                    onLongPress: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => EmojiSheet(
+                        account: account,
+                        emoji: emoji,
+                        remove: () {
+                          ref
+                              .read(
+                                recentlyUsedEmojisNotifierProvider(
+                                  account,
+                                ).notifier,
+                              )
+                              .remove(index);
+                          context.pop();
+                        },
+                      ),
+                    ),
                   );
                 }
               }).toList(),
@@ -368,6 +450,13 @@ class EmojiPicker extends HookConsumerWidget {
                           onTap: enabled
                               ? () => onTapEmoji(emoji.emoji, keepOpen)
                               : null,
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => EmojiSheet(
+                              account: account,
+                              emoji: emoji.emoji,
+                            ),
+                          ),
                           height: style.lineHeight * fontScaleFactor,
                           opacity: enabled ? 1.0 : 0.1,
                           fallbackTextStyle: style.apply(
@@ -426,6 +515,7 @@ class _CustomEmoji extends StatelessWidget {
     required this.account,
     required this.emoji,
     required this.onTap,
+    required this.onLongPress,
     required this.height,
     this.opacity = 1.0,
     required this.fallbackTextStyle,
@@ -434,6 +524,7 @@ class _CustomEmoji extends StatelessWidget {
   final Account account;
   final String emoji;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final double height;
   final double opacity;
   final TextStyle fallbackTextStyle;
@@ -446,6 +537,7 @@ class _CustomEmoji extends StatelessWidget {
       account: account,
       emoji: emoji,
       onTap: onTap,
+      onLongPress: onLongPress,
       height: height,
       opacity: opacity,
       fallbackTextStyle: fallbackTextStyle,

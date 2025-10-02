@@ -32,6 +32,7 @@ class UnicodeEmoji extends ConsumerWidget {
     this.fit = BoxFit.contain,
     this.alignment = Alignment.center,
     this.onTap,
+    this.onLongPress,
     this.inline = false,
   });
 
@@ -41,6 +42,7 @@ class UnicodeEmoji extends ConsumerWidget {
   final BoxFit fit;
   final Alignment alignment;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final bool inline;
 
   @override
@@ -69,12 +71,14 @@ class UnicodeEmoji extends ConsumerWidget {
       case EmojiStyle.native:
         return InkWell(
           onTap: onTap,
+          onLongPress: onLongPress,
           child: Text(emoji, style: style),
         );
       case EmojiStyle.twemoji:
         final padding = style.fontSize! * ((style.height ?? 1.0) - 1.0) / 2;
         return InkWell(
           onTap: onTap,
+          onLongPress: onLongPress,
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: padding,

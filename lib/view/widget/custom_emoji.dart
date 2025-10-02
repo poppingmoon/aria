@@ -23,6 +23,7 @@ class CustomEmoji extends ConsumerWidget {
     this.fit = BoxFit.contain,
     this.alignment = Alignment.center,
     this.onTap,
+    this.onLongPress,
     this.disableTooltip = false,
     this.fallbackTextStyle,
     this.fallbackToImage = true,
@@ -40,6 +41,7 @@ class CustomEmoji extends ConsumerWidget {
   final BoxFit fit;
   final Alignment alignment;
   final void Function()? onTap;
+  final void Function()? onLongPress;
   final bool disableTooltip;
   final TextStyle? fallbackTextStyle;
   final bool fallbackToImage;
@@ -101,8 +103,9 @@ class CustomEmoji extends ConsumerWidget {
 
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: TooltipVisibility(
-        visible: !disableTooltip,
+        visible: onLongPress == null && !disableTooltip,
         child: Tooltip(
           message: emoji.replaceFirst('@.', ''),
           child: RepaintBoundary(

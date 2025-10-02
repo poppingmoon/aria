@@ -84,7 +84,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
                                 reaction: reaction,
                               ).notifier,
                             )
-                            .delete(index),
+                            .remove(index),
                         style: style.apply(fontSizeFactor: 2.0),
                         disableTooltip: true,
                       ),
