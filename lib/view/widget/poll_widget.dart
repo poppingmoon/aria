@@ -91,6 +91,7 @@ class PollWidget extends HookConsumerWidget {
                         }
                       }
                     : null,
+                borderRadius: BorderRadius.circular(4.0),
                 child: Align(
                   alignment: AlignmentDirectional.centerStart,
                   child: Padding(
