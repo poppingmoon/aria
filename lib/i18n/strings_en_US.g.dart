@@ -125,9 +125,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Copied to clipboard'
 	String get copied => 'Copied to clipboard';
 
-	/// en-US: 'Copy image location'
-	String get copyImageLocation => 'Copy image location';
-
 	/// en-US: 'Copy name'
 	String get copyName => 'Copy name';
 

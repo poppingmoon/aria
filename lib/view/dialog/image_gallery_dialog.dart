@@ -309,7 +309,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             ),
                             child: ListTile(
                               leading: const Icon(Icons.copy),
-                              title: Text(t.aria.copyImageLocation),
+                              title: Text(t.misskey.copyLink),
                             ),
                           ),
                         ],
