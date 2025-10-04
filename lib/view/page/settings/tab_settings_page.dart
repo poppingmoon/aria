@@ -352,7 +352,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         tabSettings.value = tabSettings.value.copyWith(
                           tabType: result,
                         );
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           switch (result) {
                             case TabType.roleTimeline:
                               final result = await _selectRole(
@@ -450,7 +450,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectRole(ref, account, role);
                           if (result != null) {
                             tabSettings.value = tabSettings.value.copyWith(
@@ -478,7 +478,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectList(
                             ref,
                             account,
@@ -512,7 +512,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectAntenna(
                             ref,
                             account,
@@ -579,7 +579,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await selectUser(context, account);
                           if (result != null) {
                             tabSettings.value = tabSettings.value.copyWith(
@@ -936,7 +936,7 @@ class TabSettingsPage extends HookConsumerWidget {
           elevation: canSave ? 6.0 : 0.0,
           onPressed: canSave
               ? () async {
-                  if (account case ValueNotifier(value: final account?)) {
+                  if (account.value case final account?) {
                     if (initialTabSettings == null) {
                       await ref
                           .read(timelineTabsNotifierProvider.notifier)
