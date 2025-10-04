@@ -27,6 +27,7 @@ abstract class TabSettings with _$TabSettings {
     String? channelId,
     String? listId,
     String? antennaId,
+    String? hashtag,
     String? userId,
     String? endpoint,
     String? streamingChannel,

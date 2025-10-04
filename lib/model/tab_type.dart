@@ -7,6 +7,7 @@ enum TabType {
   userList,
   antenna,
   channel,
+  hashtag,
   mention,
   direct,
   user,

@@ -15,6 +15,7 @@ import '../../../model/account.dart';
 import '../../../model/tab_icon.dart';
 import '../../../model/tab_settings.dart';
 import '../../../model/tab_type.dart';
+import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/antenna_provider.dart';
 import '../../../provider/api/antennas_notifier_provider.dart';
@@ -107,6 +108,28 @@ class TabSettingsPage extends HookConsumerWidget {
       initialValue: antenna,
       titleBuilder: (context, antenna) => Text(antenna.name),
     );
+  }
+
+  Future<({String? hashtag})?> _selectHashtag(
+    WidgetRef ref,
+    Account? account,
+    String? hashtag,
+  ) async {
+    final recentlyUsedHashtags = account != null
+        ? ref.read(accountSettingsNotifierProvider(account)).hashtags
+        : null;
+    final result = await showTextFieldDialog(
+      ref.context,
+      title: Text(t.misskey.hashtags),
+      initialText: hashtag,
+      decoration: const InputDecoration(prefixText: '#'),
+      autocompleteOptions: recentlyUsedHashtags,
+    );
+    if (result == null) {
+      return null;
+    }
+    final trimmed = result.trim();
+    return (hashtag: trimmed.isNotEmpty ? trimmed : null);
   }
 
   @override
@@ -339,6 +362,7 @@ class TabSettingsPage extends HookConsumerWidget {
                                   ? meta?.policies?.gtlAvailable ?? true
                                   : i?.policies?.gtlAvailable ?? true,
                             TabType.channel ||
+                            TabType.hashtag ||
                             TabType.user ||
                             TabType.custom => true,
                           },
@@ -406,6 +430,22 @@ class TabSettingsPage extends HookConsumerWidget {
                                 tabSettings.value = tabSettings.value.copyWith(
                                   channelId: result.id,
                                   name: tabSettings.value.name ?? result.name,
+                                );
+                              }
+                            case TabType.hashtag:
+                              final result = await _selectHashtag(
+                                ref,
+                                account,
+                                tabSettings.value.hashtag,
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  hashtag: result.hashtag,
+                                  name:
+                                      tabSettings.value.name ??
+                                      (result.hashtag != null
+                                          ? '#${result.hashtag}'
+                                          : null),
                                 );
                               }
                             case TabType.user:
@@ -544,7 +584,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await showDialog<CommunityChannel>(
                             context: context,
                             builder: (context) => ChannelsPage(
@@ -559,6 +599,41 @@ class TabSettingsPage extends HookConsumerWidget {
                               name: tabSettings.value.name ?? result.name,
                             );
                           }
+                        }
+                      },
+                    ),
+                  ),
+                )
+              else if (tabType == TabType.hashtag)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.hashtags),
+                      subtitle: switch (tabSettings.value.hashtag) {
+                        final hashtag? => Text(hashtag),
+                        _ => Text(
+                          t.misskey.notSet,
+                          style: TextStyle(color: theme.colorScheme.error),
+                        ),
+                      },
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        final result = await _selectHashtag(
+                          ref,
+                          account.value,
+                          tabSettings.value.hashtag,
+                        );
+                        if (result != null) {
+                          tabSettings.value = tabSettings.value.copyWith(
+                            hashtag: result.hashtag,
+                            name:
+                                tabSettings.value.name ??
+                                (result.hashtag != null
+                                    ? '#${result.hashtag}'
+                                    : null),
+                          );
                         }
                       },
                     ),
@@ -833,7 +908,9 @@ class TabSettingsPage extends HookConsumerWidget {
                   ),
                 ),
                 if (tabType
-                    case TabType.localTimeline || TabType.hybridTimeline)
+                    case TabType.localTimeline ||
+                        TabType.hybridTimeline ||
+                        TabType.hashtag)
                   Center(
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
