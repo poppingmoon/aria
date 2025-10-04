@@ -28,7 +28,7 @@ A [Misskey](https://github.com/misskey-dev/misskey) client app forked from
 
 ## Icon
 
-![aria.png](https://raw.githubusercontent.com/poppingmoon/aria/main/assets/aria.png)
+![aria.png](https://raw.githubusercontent.com/poppingmoon/aria/main/assets/icons/aria.png)
 
 The icon of Aria was created by
 [@sevenc_nanashi@voskey.icalo.net](https://voskey.icalo.net/@sevenc_nanashi) and
