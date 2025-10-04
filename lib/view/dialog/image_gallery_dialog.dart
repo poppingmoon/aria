@@ -302,6 +302,16 @@ class ImageGalleryDialog extends HookConsumerWidget {
                               title: Text(t.aria.openInBrowser),
                             ),
                           ),
+                          PopupMenuItem(
+                            onTap: () => copyToClipboard(
+                              context,
+                              files[index.value].url,
+                            ),
+                            child: ListTile(
+                              leading: const Icon(Icons.copy),
+                              title: Text(t.aria.copyImageLocation),
+                            ),
+                          ),
                         ],
                       ),
                     ),
