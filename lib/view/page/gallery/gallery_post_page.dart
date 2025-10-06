@@ -74,12 +74,12 @@ class GalleryPostPage extends ConsumerWidget {
                 ),
               ],
               PopupMenuItem(
-                onTap: () => copyToClipboard(context, url.toString()),
-                child: Text(t.misskey.copyLink),
-              ),
-              PopupMenuItem(
                 onTap: () => launchUrl(ref, url),
                 child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
               ),
               PopupMenuItem(
                 onTap: () => SharePlus.instance.share(
@@ -233,15 +233,15 @@ class GalleryPostPage extends ConsumerWidget {
                           icon: const Icon(Icons.repeat_rounded),
                         ),
                       IconButton(
+                        tooltip: t.aria.openInBrowser,
+                        onPressed: () => launchUrl(ref, url),
+                        icon: const Icon(Icons.open_in_browser),
+                      ),
+                      IconButton(
                         tooltip: t.misskey.copyLink,
                         onPressed: () =>
                             copyToClipboard(context, url.toString()),
                         icon: const Icon(Icons.link),
-                      ),
-                      IconButton(
-                        tooltip: t.aria.openInBrowser,
-                        onPressed: () => launchUrl(ref, url),
-                        icon: const Icon(Icons.open_in_browser),
                       ),
                       IconButton(
                         tooltip: t.misskey.share,

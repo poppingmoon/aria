@@ -88,17 +88,17 @@ class ChatRoomPage extends ConsumerWidget {
               PopupMenuButton<void>(
                 itemBuilder: (context) => [
                   PopupMenuItem(
-                    onTap: () => copyToClipboard(context, url.toString()),
-                    child: ListTile(
-                      leading: const Icon(Icons.copy),
-                      title: Text(t.misskey.copyLink),
-                    ),
-                  ),
-                  PopupMenuItem(
                     onTap: () => launchUrl(ref, url),
                     child: ListTile(
                       leading: const Icon(Icons.open_in_browser),
                       title: Text(t.aria.openInBrowser),
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => copyToClipboard(context, url.toString()),
+                    child: ListTile(
+                      leading: const Icon(Icons.copy),
+                      title: Text(t.misskey.copyLink),
                     ),
                   ),
                   if (userId != null)

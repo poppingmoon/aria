@@ -62,12 +62,12 @@ class PlayPage extends HookConsumerWidget {
                   child: Text(t.misskey.shareWithNote),
                 ),
               PopupMenuItem(
-                onTap: () => copyToClipboard(context, url.toString()),
-                child: Text(t.misskey.copyLink),
-              ),
-              PopupMenuItem(
                 onTap: () => launchUrl(ref, url),
                 child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
               ),
               PopupMenuItem(
                 onTap: () => SharePlus.instance.share(
