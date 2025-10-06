@@ -6,12 +6,11 @@ import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/id.dart';
-import '../../../provider/api/id_gen_method_provider.dart';
-import '../../../provider/api/tag_notes_notifier_provider.dart';
-import '../../../util/format_datetime.dart';
+import '../../../model/tab_settings.dart';
+import '../../../model/tab_type.dart';
+import '../../../provider/timeline_center_notifier_provider.dart';
 import '../../../util/pick_date_time.dart';
-import '../../widget/note_widget.dart';
-import '../../widget/paginated_list_view.dart';
+import '../../widget/timeline_list_view.dart';
 
 class TagNotes extends HookConsumerWidget {
   const TagNotes({super.key, required this.account, required this.tag});
@@ -21,106 +20,99 @@ class TagNotes extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sinceDate = useState<DateTime?>(null);
-    final untilDate = useState<DateTime?>(null);
-    final method = ref.watch(idGenMethodProvider(account)).valueOrNull;
-    final sinceId = method != null && sinceDate.value != null
-        ? Id(method: method, date: sinceDate.value!).toString()
-        : null;
-    final untilId = method != null && untilDate.value != null
-        ? Id(method: method, date: untilDate.value!).toString()
-        : null;
-    final notes = ref.watch(
-      tagNotesNotifierProvider(
-        account,
-        tag,
-        sinceId: sinceId,
-        untilId: untilId,
-      ),
+    final withReplies = useState(true);
+    final withFiles = useState(false);
+    final tabSettings = TabSettings(
+      tabType: TabType.hashtag,
+      account: account,
+      hashtag: tag,
+      withReplies: withReplies.value,
+      withFiles: withFiles.value,
     );
+    final controller = useScrollController();
+    final hasScrolled = useState(false);
+    useEffect(() {
+      void callback() {
+        hasScrolled.value =
+            hasScrolled.value || controller.position.extentBefore > 0.0;
+      }
 
-    return PaginatedListView(
-      header: SliverToBoxAdapter(
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-            width: maxContentWidth,
-            child: ExpansionTile(
-              title: Text(t.misskey.options),
-              children: [
-                ListTile(
-                  title: Text(t.aria.sinceDate),
-                  subtitle: Text(
-                    sinceDate.value != null
-                        ? absoluteTime(sinceDate.value!)
-                        : t.misskey.notSet,
-                  ),
-                  trailing: sinceDate.value != null
-                      ? IconButton(
-                          onPressed: () => sinceDate.value = null,
-                          icon: const Icon(Icons.close),
-                        )
-                      : const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await pickDateTime(
-                      context,
-                      initialDate: sinceDate.value,
-                    );
-                    if (result != null) {
-                      sinceDate.value = result;
-                    }
-                  },
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, []);
+    final theme = Theme.of(context);
+
+    return NestedScrollView(
+      controller: controller,
+      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+        const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
+        SliverToBoxAdapter(
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ExpansionTile(
+                leading: const Icon(Icons.tune),
+                title: Text(t.misskey.options),
+                backgroundColor: theme.colorScheme.surface,
+                collapsedBackgroundColor: theme.colorScheme.surface,
+                shape: RoundedRectangleBorder(
+                  side: hasScrolled.value && innerBoxIsScrolled
+                      ? BorderSide(color: theme.colorScheme.outlineVariant)
+                      : BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                ListTile(
-                  title: Text(t.aria.untilDate),
-                  subtitle: Text(
-                    untilDate.value != null
-                        ? absoluteTime(untilDate.value!)
-                        : t.misskey.notSet,
-                  ),
-                  trailing: untilDate.value != null
-                      ? IconButton(
-                          onPressed: () => untilDate.value = null,
-                          icon: const Icon(Icons.close),
-                        )
-                      : const Icon(Icons.navigate_next),
-                  onTap: () async {
-                    final result = await pickDateTime(
-                      context,
-                      initialDate: untilDate.value,
-                    );
-                    if (result != null) {
-                      untilDate.value = result;
-                    }
-                  },
+                collapsedShape: RoundedRectangleBorder(
+                  side: hasScrolled.value && innerBoxIsScrolled
+                      ? BorderSide(color: theme.colorScheme.outlineVariant)
+                      : BorderSide.none,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-              ],
+                children: [
+                  const Divider(height: 1.0),
+                  SwitchListTile(
+                    title: Text(t.misskey.showRepliesToOthersInTimeline),
+                    value: withReplies.value,
+                    onChanged: (value) => withReplies.value = value,
+                  ),
+                  SwitchListTile(
+                    title: Text(t.misskey.fileAttachedOnly),
+                    value: withFiles.value,
+                    onChanged: (value) => withFiles.value = value,
+                  ),
+                  ListTile(
+                    title: Text(t.aria.timeMachine),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final centerId = ref.read(
+                        timelineCenterNotifierProvider(tabSettings),
+                      );
+                      final date = await pickDateTime(
+                        context,
+                        initialDate: centerId != null
+                            ? Id.parse(centerId).date
+                            : null,
+                        lastDate: DateTime.now(),
+                      );
+                      if (date != null) {
+                        await ref
+                            .read(
+                              timelineCenterNotifierProvider(
+                                tabSettings,
+                              ).notifier,
+                            )
+                            .setCenterFromDate(date);
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-      paginationState: notes,
-      itemBuilder: (context, note) =>
-          NoteWidget(account: account, noteId: note.id),
-      onRefresh: () => ref.refresh(
-        tagNotesNotifierProvider(
-          account,
-          tag,
-          sinceId: sinceId,
-          untilId: untilId,
-        ).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            tagNotesNotifierProvider(
-              account,
-              tag,
-              sinceId: sinceId,
-              untilId: untilId,
-            ).notifier,
-          )
-          .loadMore(skipError: skipError),
-      noItemsLabel: t.misskey.noNotes,
+      ],
+      body: TimelineListView(tabSettings: tabSettings, nested: true),
+      floatHeaderSlivers: true,
     );
   }
 }
