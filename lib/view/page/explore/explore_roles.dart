@@ -60,9 +60,15 @@ class ExploreRoles extends ConsumerWidget {
                   );
           },
         ),
-        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
-          error: error,
-          stackTrace: stackTrace,
+        AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ErrorMessage(error: error, stackTrace: stackTrace),
+            ),
+          ),
         ),
         _ => const Center(child: CircularProgressIndicator()),
       },
