@@ -113,14 +113,14 @@ class ServerPage extends HookConsumerWidget {
                       context.push('/$account/explore/users?host=$host'),
                 ),
               ListTile(
-                leading: const Icon(Icons.copy),
-                title: Text(t.misskey.copyLink),
-                onTap: () => copyToClipboard(context, host),
-              ),
-              ListTile(
                 leading: const Icon(Icons.open_in_browser),
                 title: Text(t.aria.openInBrowser),
                 onTap: () => launchUrl(ref, serverUrl),
+              ),
+              ListTile(
+                leading: const Icon(Icons.copy),
+                title: Text(t.misskey.copyLink),
+                onTap: () => copyToClipboard(context, host),
               ),
             ],
           ),

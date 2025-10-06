@@ -12,6 +12,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/show_toast.dart';
@@ -153,6 +154,13 @@ class VideoDialog extends HookConsumerWidget {
                       child: ListTile(
                         leading: const Icon(Icons.open_in_browser),
                         title: Text(t.aria.openInBrowser),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () => copyToClipboard(context, url.toString()),
+                      child: ListTile(
+                        leading: const Icon(Icons.copy),
+                        title: Text(t.misskey.copyLink),
                       ),
                     ),
                   ],
