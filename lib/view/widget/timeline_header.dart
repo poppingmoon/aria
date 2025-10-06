@@ -117,6 +117,7 @@ class TimelineHeader extends HookConsumerWidget {
                       TabType.userList => t.misskey.userList,
                       TabType.antenna => t.misskey.antennas,
                       TabType.channel => t.misskey.channel,
+                      TabType.hashtag => t.misskey.hashtags,
                       TabType.mention => t.misskey.mentions,
                       TabType.direct => t.misskey.directNotes,
                       TabType.user => t.misskey.user,

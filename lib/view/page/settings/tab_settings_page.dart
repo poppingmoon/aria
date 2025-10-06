@@ -15,6 +15,7 @@ import '../../../model/account.dart';
 import '../../../model/tab_icon.dart';
 import '../../../model/tab_settings.dart';
 import '../../../model/tab_type.dart';
+import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/antenna_provider.dart';
 import '../../../provider/api/antennas_notifier_provider.dart';
@@ -109,6 +110,28 @@ class TabSettingsPage extends HookConsumerWidget {
     );
   }
 
+  Future<({String? hashtag})?> _selectHashtag(
+    WidgetRef ref,
+    Account? account,
+    String? hashtag,
+  ) async {
+    final recentlyUsedHashtags = account != null
+        ? ref.read(accountSettingsNotifierProvider(account)).hashtags
+        : null;
+    final result = await showTextFieldDialog(
+      ref.context,
+      title: Text(t.misskey.hashtags),
+      initialText: hashtag,
+      decoration: const InputDecoration(prefixText: '#'),
+      autocompleteOptions: recentlyUsedHashtags,
+    );
+    if (result == null) {
+      return null;
+    }
+    final trimmed = result.trim();
+    return (hashtag: trimmed.isNotEmpty ? trimmed : null);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final initialTabSettings = tabId != null
@@ -126,38 +149,40 @@ class TabSettingsPage extends HookConsumerWidget {
           ),
     );
     final tabType = tabSettings.value.tabType;
-    final roleId = tabSettings.value.roleId;
-    final role = roleId != null && account.value != null
-        ? ref.watch(roleProvider(account.value!, roleId)).valueOrNull
-        : null;
-    final channelId = tabSettings.value.channelId;
-    final channel = channelId != null && account.value != null
-        ? ref
-              .watch(channelNotifierProvider(account.value!, channelId))
-              .valueOrNull
-        : null;
-    final listId = tabSettings.value.listId;
-    final list = listId != null && account.value != null
-        ? ref.watch(listProvider(account.value!, listId)).valueOrNull
-        : null;
-    final antennaId = tabSettings.value.antennaId;
-    final antenna = antennaId != null && account.value != null
-        ? ref.watch(antennaProvider(account.value!, antennaId)).valueOrNull
-        : null;
-    final userId = tabSettings.value.userId;
-    final user = userId != null && account.value != null
-        ? ref
-              .watch(userNotifierProvider(account.value!, userId: userId))
-              .valueOrNull
-        : null;
+    final role = switch ((account.value, tabSettings.value.roleId)) {
+      (final account?, final roleId?) =>
+        ref.watch(roleProvider(account, roleId)).valueOrNull,
+      _ => null,
+    };
+    final list = switch ((account.value, tabSettings.value.listId)) {
+      (final account?, final listId?) =>
+        ref.watch(listProvider(account, listId)).valueOrNull,
+      _ => null,
+    };
+    final antenna = switch ((account.value, tabSettings.value.antennaId)) {
+      (final account?, final antennaId?) =>
+        ref.watch(antennaProvider(account, antennaId)).valueOrNull,
+      _ => null,
+    };
+    final channel = switch ((account.value, tabSettings.value.channelId)) {
+      (final account?, final channelId?) =>
+        ref.watch(channelNotifierProvider(account, channelId)).valueOrNull,
+      _ => null,
+    };
+    final user = switch ((account.value, tabSettings.value.userId)) {
+      (final account?, final userId?) =>
+        ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull,
+      _ => null,
+    };
     final canSave =
         account.value != null &&
-        switch (tabType) {
-          TabType.roleTimeline => roleId != null,
-          TabType.userList => listId != null,
-          TabType.antenna => antennaId != null,
-          TabType.channel => channelId != null,
-          TabType.user => userId != null,
+        switch (tabSettings.value) {
+          TabSettings(tabType: TabType.roleTimeline, roleId: null) ||
+          TabSettings(tabType: TabType.userList, listId: null) ||
+          TabSettings(tabType: TabType.antenna, antennaId: null) ||
+          TabSettings(tabType: TabType.channel, channelId: null) ||
+          TabSettings(tabType: TabType.hashtag, hashtag: null) ||
+          TabSettings(tabType: TabType.user, userId: null) => false,
           _ => true,
         };
     final theme = Theme.of(context);
@@ -180,7 +205,7 @@ class TabSettingsPage extends HookConsumerWidget {
         appBar: AppBar(
           title: Text(t.aria.tabs),
           actions: [
-            if (initialTabSettings != null)
+            if (initialTabSettings?.id case final tabId?)
               PopupMenuButton<void>(
                 itemBuilder: (context) => [
                   PopupMenuItem(
@@ -193,7 +218,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         unawaited(
                           ref
                               .read(timelineTabsNotifierProvider.notifier)
-                              .delete(initialTabSettings.id!),
+                              .delete(tabId),
                         );
                         if (!context.mounted) return;
                         context.pop();
@@ -294,25 +319,21 @@ class TabSettingsPage extends HookConsumerWidget {
                     subtitle: TabTypeWidget(tabType: tabType),
                     trailing: const Icon(Icons.navigate_next),
                     onTap: () async {
-                      final i = account.value != null
-                          ? await futureWithDialog(
-                              context,
-                              ref.read(
-                                iNotifierProvider(account.value!).future,
-                              ),
-                            )
-                          : null;
+                      final i = switch (account.value) {
+                        final account? => await futureWithDialog(
+                          context,
+                          ref.read(iNotifierProvider(account).future),
+                        ),
+                        _ => null,
+                      };
                       if (!context.mounted) return;
-                      final meta = account.value != null
-                          ? await futureWithDialog(
-                              context,
-                              ref.read(
-                                metaNotifierProvider(
-                                  account.value!.host,
-                                ).future,
-                              ),
-                            )
-                          : null;
+                      final meta = switch (account.value) {
+                        final account? => await futureWithDialog(
+                          context,
+                          ref.read(metaNotifierProvider(account.host).future),
+                        ),
+                        _ => null,
+                      };
                       if (!context.mounted) return;
                       final result = await showRadioDialog(
                         context,
@@ -339,6 +360,7 @@ class TabSettingsPage extends HookConsumerWidget {
                                   ? meta?.policies?.gtlAvailable ?? true
                                   : i?.policies?.gtlAvailable ?? true,
                             TabType.channel ||
+                            TabType.hashtag ||
                             TabType.user ||
                             TabType.custom => true,
                           },
@@ -352,7 +374,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         tabSettings.value = tabSettings.value.copyWith(
                           tabType: result,
                         );
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           switch (result) {
                             case TabType.roleTimeline:
                               final result = await _selectRole(
@@ -408,6 +430,22 @@ class TabSettingsPage extends HookConsumerWidget {
                                   name: tabSettings.value.name ?? result.name,
                                 );
                               }
+                            case TabType.hashtag:
+                              final result = await _selectHashtag(
+                                ref,
+                                account,
+                                tabSettings.value.hashtag,
+                              );
+                              if (result != null) {
+                                tabSettings.value = tabSettings.value.copyWith(
+                                  hashtag: result.hashtag,
+                                  name:
+                                      tabSettings.value.name ??
+                                      (result.hashtag != null
+                                          ? '#${result.hashtag}'
+                                          : null),
+                                );
+                              }
                             case TabType.user:
                               final result = await selectUser(
                                 context,
@@ -442,7 +480,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: ListTile(
                       title: Text(t.misskey.role),
-                      subtitle: roleId != null
+                      subtitle: tabSettings.value.roleId != null
                           ? Text(role?.name ?? '')
                           : Text(
                               t.misskey.pleaseSelect,
@@ -450,7 +488,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectRole(ref, account, role);
                           if (result != null) {
                             tabSettings.value = tabSettings.value.copyWith(
@@ -470,7 +508,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: ListTile(
                       title: Text(t.misskey.userList),
-                      subtitle: listId != null
+                      subtitle: tabSettings.value.listId != null
                           ? Text(list?.name ?? '')
                           : Text(
                               t.misskey.pleaseSelect,
@@ -478,7 +516,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectList(
                             ref,
                             account,
@@ -504,7 +542,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: ListTile(
                       title: Text(t.misskey.antennas),
-                      subtitle: antennaId != null
+                      subtitle: tabSettings.value.antennaId != null
                           ? Text(antenna?.name ?? '')
                           : Text(
                               t.misskey.pleaseSelect,
@@ -512,7 +550,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await _selectAntenna(
                             ref,
                             account,
@@ -544,7 +582,7 @@ class TabSettingsPage extends HookConsumerWidget {
                             ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await showDialog<CommunityChannel>(
                             context: context,
                             builder: (context) => ChannelsPage(
@@ -564,6 +602,41 @@ class TabSettingsPage extends HookConsumerWidget {
                     ),
                   ),
                 )
+              else if (tabType == TabType.hashtag)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(t.misskey.hashtags),
+                      subtitle: switch (tabSettings.value.hashtag) {
+                        final hashtag? => Text(hashtag),
+                        _ => Text(
+                          t.misskey.notSet,
+                          style: TextStyle(color: theme.colorScheme.error),
+                        ),
+                      },
+                      trailing: const Icon(Icons.navigate_next),
+                      onTap: () async {
+                        final result = await _selectHashtag(
+                          ref,
+                          account.value,
+                          tabSettings.value.hashtag,
+                        );
+                        if (result != null) {
+                          tabSettings.value = tabSettings.value.copyWith(
+                            hashtag: result.hashtag,
+                            name:
+                                tabSettings.value.name ??
+                                (result.hashtag != null
+                                    ? '#${result.hashtag}'
+                                    : null),
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                )
               else if (tabType == TabType.user)
                 Center(
                   child: Container(
@@ -571,15 +644,21 @@ class TabSettingsPage extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: ListTile(
                       title: Text(t.misskey.user),
-                      subtitle: user != null && account.value != null
-                          ? UsernameWidget(account: account.value!, user: user)
-                          : Text(
-                              userId != null ? '' : t.misskey.pleaseSelect,
-                              style: TextStyle(color: theme.colorScheme.error),
-                            ),
+                      subtitle: switch ((account.value, user)) {
+                        (final account?, final user?) => UsernameWidget(
+                          account: account,
+                          user: user,
+                        ),
+                        _ => Text(
+                          tabSettings.value.userId != null
+                              ? ''
+                              : t.misskey.pleaseSelect,
+                          style: TextStyle(color: theme.colorScheme.error),
+                        ),
+                      },
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
-                        if (account case ValueNotifier(value: final account?)) {
+                        if (account.value case final account?) {
                           final result = await selectUser(context, account);
                           if (result != null) {
                             tabSettings.value = tabSettings.value.copyWith(
@@ -607,9 +686,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     child: ListTile(
                       title: Text(t.aria.endpoint),
                       subtitle: Text(
-                        tabSettings.value.endpoint != null
-                            ? tabSettings.value.endpoint!
-                            : t.misskey.notSet,
+                        tabSettings.value.endpoint ?? t.misskey.notSet,
                       ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
@@ -656,9 +733,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     child: ListTile(
                       title: Text(t.aria.streamingChannel),
                       subtitle: Text(
-                        tabSettings.value.streamingChannel != null
-                            ? tabSettings.value.streamingChannel!
-                            : t.misskey.notSet,
+                        tabSettings.value.streamingChannel ?? t.misskey.notSet,
                       ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
@@ -697,9 +772,8 @@ class TabSettingsPage extends HookConsumerWidget {
                     child: ListTile(
                       title: Text('${t.aria.parameters} (JSON)'),
                       subtitle: Text(
-                        tabSettings.value.parameters != null
-                            ? tabSettings.value.parameters!.keys.join(', ')
-                            : t.misskey.notSet,
+                        tabSettings.value.parameters?.keys.join(', ') ??
+                            t.misskey.notSet,
                       ),
                       trailing: const Icon(Icons.navigate_next),
                       onTap: () async {
@@ -749,11 +823,7 @@ class TabSettingsPage extends HookConsumerWidget {
                   width: maxContentWidth,
                   child: ListTile(
                     title: Text(t.aria.tabName),
-                    subtitle: Text(
-                      tabSettings.value.name != null
-                          ? tabSettings.value.name!
-                          : t.misskey.notSet,
-                    ),
+                    subtitle: Text(tabSettings.value.name ?? t.misskey.notSet),
                     trailing: const Icon(Icons.navigate_next),
                     onTap: () async {
                       final result = await showTextFieldDialog(
@@ -833,7 +903,9 @@ class TabSettingsPage extends HookConsumerWidget {
                   ),
                 ),
                 if (tabType
-                    case TabType.localTimeline || TabType.hybridTimeline)
+                    case TabType.localTimeline ||
+                        TabType.hybridTimeline ||
+                        TabType.hashtag)
                   Center(
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -936,18 +1008,18 @@ class TabSettingsPage extends HookConsumerWidget {
           elevation: canSave ? 6.0 : 0.0,
           onPressed: canSave
               ? () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    if (initialTabSettings == null) {
-                      await ref
-                          .read(timelineTabsNotifierProvider.notifier)
-                          .add(tabSettings.value.copyWith(account: account));
-                    } else {
+                  if (account.value case final account?) {
+                    if (initialTabSettings?.id case final tabId?) {
                       await ref
                           .read(timelineTabsNotifierProvider.notifier)
                           .replace(
-                            initialTabSettings.id!,
+                            tabId,
                             tabSettings.value.copyWith(account: account),
                           );
+                    } else {
+                      await ref
+                          .read(timelineTabsNotifierProvider.notifier)
+                          .add(tabSettings.value.copyWith(account: account));
                     }
                     if (!context.mounted) return;
                     context.pop();

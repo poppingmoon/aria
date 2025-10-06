@@ -121,6 +121,15 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           allowPartial: true,
         ),
       ),
+      TabType.hashtag => _misskey.notes.searchByTag(
+        NotesSearchByTagRequest(
+          tag: tabSettings.hashtag!,
+          untilId: untilId,
+          limit: limit,
+          reply: tabSettings.withReplies ? null : false,
+          withFiles: tabSettings.withFiles,
+        ),
+      ),
       TabType.mention => _misskey.notes.mentions(
         NotesMentionsRequest(untilId: untilId, limit: limit),
       ),

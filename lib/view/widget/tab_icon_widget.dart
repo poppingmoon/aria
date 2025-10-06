@@ -37,6 +37,7 @@ class TabIconWidget extends StatelessWidget {
         TabType.userList => Icons.list,
         TabType.antenna => Icons.settings_input_antenna,
         TabType.channel => Icons.tv,
+        TabType.hashtag => Icons.tag,
         TabType.mention => Icons.alternate_email,
         TabType.direct => Icons.mail,
         TabType.user => Icons.person,

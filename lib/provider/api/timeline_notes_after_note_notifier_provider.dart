@@ -137,6 +137,15 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
           limit: limit,
         ),
       ),
+      TabType.hashtag => _misskey.notes.searchByTag(
+        NotesSearchByTagRequest(
+          tag: tabSettings.hashtag!,
+          sinceId: sinceId,
+          limit: limit,
+          reply: tabSettings.withReplies ? null : false,
+          withFiles: tabSettings.withFiles,
+        ),
+      ),
       TabType.mention => _misskey.notes.mentions(
         NotesMentionsRequest(sinceId: sinceId, limit: limit),
       ),
@@ -174,7 +183,10 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
 
   Future<Iterable<Note>> _fetchNotesEagerly(String sinceId) async {
     if (tabSettings.tabType
-        case TabType.mention || TabType.direct || TabType.custom) {
+        case TabType.hashtag ||
+            TabType.mention ||
+            TabType.direct ||
+            TabType.custom) {
       return _fetchNotes(sinceId: sinceId);
     }
     final id = Id.tryParse(sinceId);

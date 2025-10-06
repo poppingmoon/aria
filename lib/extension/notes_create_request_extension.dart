@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:misskey_dart/misskey_dart.dart';
 
 extension NotesCreateRequestExtension on NotesCreateRequest {
@@ -59,7 +61,7 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
   NotesCreateRequest addHashtags(List<String>? hashtags) {
     if (hashtags case final hashtags? when hashtags.isNotEmpty) {
       if (text case final text? when text.isNotEmpty) {
-        if (text.split('\n').last.trim().isEmpty) {
+        if (LineSplitter.split(text).last.trim().isEmpty) {
           return copyWith(
             text: '$text${hashtags.map((tag) => '#$tag').join(' ')}',
           );

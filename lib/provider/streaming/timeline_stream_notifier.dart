@@ -28,6 +28,7 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           TabType.userList ||
           TabType.antenna ||
           TabType.channel ||
+          TabType.hashtag ||
           TabType.custom:
         ref.listen(
           webSocketChannelProvider(tabSettings.account),
@@ -76,6 +77,7 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           TabType.roleTimeline ||
           TabType.userList ||
           TabType.antenna ||
+          TabType.hashtag ||
           TabType.channel:
         await _webSocketChannel.ready;
         _webSocketChannel.sink.add(
@@ -88,12 +90,14 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
                 if (!tabSettings.withRenotes) 'withRenotes': false,
                 if (tabSettings.withReplies) 'withRenotes': true,
                 if (tabSettings.withFiles) 'withFiles': true,
-                if (tabSettings.roleId != null) 'roleId': tabSettings.roleId,
-                if (tabSettings.channelId != null)
-                  'channelId': tabSettings.channelId,
-                if (tabSettings.listId != null) 'listId': tabSettings.listId,
-                if (tabSettings.antennaId != null)
-                  'antennaId': tabSettings.antennaId,
+                'roleId': ?tabSettings.roleId,
+                'channelId': ?tabSettings.channelId,
+                'listId': ?tabSettings.listId,
+                'antennaId': ?tabSettings.antennaId,
+                if (tabSettings.hashtag case final hashtag?)
+                  'q': [
+                    [hashtag],
+                  ],
               },
             },
           }),

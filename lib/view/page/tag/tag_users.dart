@@ -31,18 +31,29 @@ class TagUsers extends HookConsumerWidget {
         userOrigin: localOnly.value ? Origin.local : Origin.combined,
       ),
     );
+    final theme = Theme.of(context);
 
-    return HapticFeedbackRefreshIndicator(
-      onRefresh: () => ref.refresh(tagUsersProvider(account, tag).future),
-      child: ListView(
-        children: [
-          Center(
+    return NestedScrollView(
+      headerSliverBuilder: (context, _) => [
+        SliverToBoxAdapter(
+          child: Center(
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: ExpansionTile(
+                leading: const Icon(Icons.tune),
                 title: Text(t.misskey.options),
+                backgroundColor: theme.colorScheme.surface,
+                collapsedBackgroundColor: theme.colorScheme.surface,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                collapsedShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
                 children: [
+                  const Divider(height: 1.0),
                   ListTile(
                     title: Text(t.misskey.sort),
                     subtitle: UsersSortTypeWidget(sort: sort.value),
@@ -70,33 +81,38 @@ class TagUsers extends HookConsumerWidget {
               ),
             ),
           ),
-          ...switch (users) {
-            AsyncValue(valueOrNull: final users?) =>
-              users.isEmpty
-                  ? [Center(child: Text(t.misskey.noUsers))]
-                  : [
-                      const SizedBox(height: 8.0),
-                      for (final (index, user) in users.indexed) ...[
-                        Center(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                            width: maxContentWidth,
-                            child: UserInfo(account: account, user: user),
-                          ),
-                        ),
-                        if (index < users.length - 1)
-                          const SizedBox(height: 8.0)
-                        else
-                          const SizedBox(height: 120.0),
-                      ],
-                    ],
-            AsyncValue(:final error?, :final stackTrace) => [
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            ],
-            _ => const [Center(child: CircularProgressIndicator())],
-          },
-        ],
+        ),
+      ],
+      body: HapticFeedbackRefreshIndicator(
+        onRefresh: () => ref.refresh(tagUsersProvider(account, tag).future),
+        child: switch (users) {
+          AsyncValue(valueOrNull: final users?) =>
+            users.isEmpty
+                ? Center(child: Text(t.misskey.noUsers))
+                : ListView.separated(
+                    itemBuilder: (context, index) => Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        padding: index == users.length - 1
+                            ? const EdgeInsets.only(bottom: 120.0)
+                            : null,
+                        child: UserInfo(account: account, user: users[index]),
+                      ),
+                    ),
+                    separatorBuilder: (context, _) =>
+                        const SizedBox(height: 8.0),
+                    itemCount: users.length,
+                  ),
+          AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+            child: ErrorMessage(error: error, stackTrace: stackTrace),
+          ),
+          _ => const Center(child: CircularProgressIndicator()),
+        },
       ),
+      physics: users.valueOrNull?.isEmpty ?? true
+          ? const NeverScrollableScrollPhysics()
+          : null,
     );
   }
 }
