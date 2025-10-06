@@ -85,7 +85,7 @@ class TimelineMenu extends ConsumerWidget {
                           ),
                       ],
                     ),
-                    FittedBox(child: Text(t.misskey.chat)),
+                    FittedBox(child: Text(t.misskey.directMessage_short)),
                   ],
                 ),
               ),

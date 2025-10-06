@@ -296,7 +296,7 @@ class _TimelinesPageButtonTypeNameWidget extends StatelessWidget {
       TimelinesPageButtonType.announcements => t.misskey.announcements,
       TimelinesPageButtonType.antennas => t.misskey.antennas,
       TimelinesPageButtonType.channels => t.misskey.channel,
-      TimelinesPageButtonType.chat => t.misskey.chat,
+      TimelinesPageButtonType.chat => t.misskey.directMessage_short,
       TimelinesPageButtonType.clips => t.misskey.clips,
       TimelinesPageButtonType.drive => t.misskey.drive,
       TimelinesPageButtonType.explore => t.misskey.explore,

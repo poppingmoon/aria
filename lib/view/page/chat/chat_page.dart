@@ -27,7 +27,7 @@ class ChatPage extends ConsumerWidget {
       initialIndex: initialIndex,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(t.misskey.chat),
+          title: Text(t.misskey.directMessage),
           bottom: TabBar(
             tabs: [
               Tab(text: t.misskey.chat_.home),

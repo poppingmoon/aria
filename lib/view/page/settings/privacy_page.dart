@@ -251,7 +251,7 @@ class PrivacyPage extends ConsumerWidget {
                   width: maxContentWidth,
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    t.misskey.chat,
+                    t.misskey.directMessage,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
