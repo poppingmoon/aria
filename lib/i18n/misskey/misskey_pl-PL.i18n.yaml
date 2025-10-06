@@ -1046,6 +1046,7 @@ postForm: "Formularz tworzenia wpisu"
 information: "Informacje"
 inMinutes: "minuta"
 inDays: "dzień"
+widgets: "Widżety"
 chat_:
   invitations: "Zaproś"
   noHistory: "Brak historii"
@@ -1604,3 +1605,6 @@ imageEffector_:
     color: "Kolor"
     opacity: "Przezroczystość"
     lightness: "Rozjaśnij"
+qr_:
+  showTabTitle: "Wyświetlanie"
+  raw: "Tekst"

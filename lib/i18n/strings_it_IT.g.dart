@@ -444,6 +444,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'Non puoi fissare altre note ';
 	@override String get done => 'Fine';
 	@override String get processing => 'In elaborazione';
+	@override String get preprocessing => 'In preparazione';
 	@override String get preview => 'Anteprima';
 	@override String get default_ => 'Predefinito';
 	@override String defaultValueIs({required Object value}) => 'Predefinito: ${value}';
@@ -768,7 +769,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'Per i canali, mostra il modulo di pubblicazione in cima alla timeline';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Quando segui nuovi profili, includi le risposte in TL come impostazione predefinita';
 	@override String get newNoteRecived => 'Nuove Note da leggere';
-	@override String get newNote => 'Nuova Nota';
+	@override String get newNote => 'Nuove Note';
 	@override String get sounds => 'Impostazioni suoni';
 	@override String get sound => 'Suono';
 	@override String get notificationSoundSettings => 'Preferenze di notifica';
@@ -1507,13 +1508,14 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'Questo server è federato solo con istanze specifiche del Fediverso. Puoi interagire solo con quelle scelte dall\'amministrazione.';
 	@override String get federationDisabled => 'Questo server ha la federazione disabilitata. Non puoi interagire con profili provenienti da altri server.';
 	@override String get draft => 'Bozza';
+	@override String get draftsAndScheduledNotes => 'Bozze e Note pianificate';
 	@override String get confirmOnReact => 'Confermare le reazioni';
 	@override String reactAreYouSure({required Object emoji}) => 'Vuoi davvero reagire con ${emoji} ?';
 	@override String get markAsSensitiveConfirm => 'Vuoi davvero indicare questo contenuto multimediale come esplicito?';
 	@override String get unmarkAsSensitiveConfirm => 'Vuoi davvero indicare come non esplicito il contenuto multimediale?';
 	@override String get preferences => 'Preferenze';
 	@override String get accessibility => 'Accessibilità';
-	@override String get preferencesProfile => 'Profilo preferenze';
+	@override String get preferencesProfile => 'Preferenze del profilo';
 	@override String get copyPreferenceId => 'Copia ID preferenze';
 	@override String get resetToDefaultValue => 'Ripristina a predefinito';
 	@override String get overrideByAccount => 'Sovrascrivere col profilo';
@@ -1534,6 +1536,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'Il numero di caratteri';
 	@override String get information => 'Informazioni';
 	@override String get chat => 'Chat';
+	@override String get directMessage => 'Chatta con questa persona';
+	@override String get directMessage_short => 'Messaggio';
 	@override String get migrateOldSettings => 'Migrare le vecchie impostazioni';
 	@override String get migrateOldSettings_description => 'Di solito, viene fatto automaticamente. Se per qualche motivo non fossero migrate con successo, è possibile avviare il processo di migrazione manualmente, sovrascrivendo le configurazioni attuali.';
 	@override String get compress => 'Compressione';
@@ -1561,6 +1565,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Nascondi tutti i suggerimenti';
 	@override String get defaultImageCompressionLevel => 'Livello predefinito di compressione immagini';
 	@override String get defaultImageCompressionLevel_description => 'La compressione diminuisce la qualità dell\'immagine, poca compressione mantiene alta qualità delle immagini. Aumentandola, si riducono le dimensioni del file, a discapito della qualità dell\'immagine.';
+	@override String get defaultCompressionLevel => 'Compressione predefinita';
+	@override String get defaultCompressionLevel_description => 'Diminuisci per mantenere la qualità aumentando le dimensioni del file.<br> Aumenta per ridurre le dimensioni del file e anche la qualità.';
 	@override String get inMinutes => 'min';
 	@override String get inDays => 'giorni';
 	@override String get safeModeEnabled => 'La modalità sicura è attiva';
@@ -1568,6 +1574,14 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'Il CSS personalizzato non è stato applicato, poiché la modalità sicura è attiva.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Quando la modalità sicura è attiva, viene utilizzato il tema predefinito. Quando la modalità sicura viene disattivata, il tema torna a essere quello precedente.';
 	@override String get thankYouForTestingBeta => 'Grazie per la tua collaborazione nella verifica delle versioni beta!';
+	@override String get createUserSpecifiedNote => 'Creare Nota personalizzata';
+	@override String get schedulePost => 'Pianificare la pubblicazione';
+	@override String scheduleToPostOnX({required Object x}) => 'Pianificare la pubblicazione ${x}';
+	@override String scheduledToPostOnX({required Object x}) => 'Pubblicazione pianificata ${x}';
+	@override String get schedule => 'Pianificare';
+	@override String get scheduled => 'Pianificata';
+	@override String get widgets => 'Riquadri';
+	@override late final _TranslationsMisskeyCompressionItIt compression_ = _TranslationsMisskeyCompressionItIt._(_root);
 	@override late final _TranslationsMisskeyOrderItIt order_ = _TranslationsMisskeyOrderItIt._(_root);
 	@override late final _TranslationsMisskeyChatItIt chat_ = _TranslationsMisskeyChatItIt._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteItIt emojiPalette_ = _TranslationsMisskeyEmojiPaletteItIt._(_root);
@@ -1669,6 +1683,19 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorItIt imageEffector_ = _TranslationsMisskeyImageEffectorItIt._(_root);
 	@override String get drafts => 'Bozze';
 	@override late final _TranslationsMisskeyDraftsItIt drafts_ = _TranslationsMisskeyDraftsItIt._(_root);
+	@override String get qr => 'QR Code';
+	@override late final _TranslationsMisskeyQrItIt qr_ = _TranslationsMisskeyQrItIt._(_root);
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionItIt extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityItIt quality_ = _TranslationsMisskeyCompressionQualityItIt._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeItIt size_ = _TranslationsMisskeyCompressionSizeItIt._(_root);
 }
 
 // Path: misskey.order_
@@ -1689,6 +1716,7 @@ class _TranslationsMisskeyChatItIt extends TranslationsMisskeyChatEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Messaggi';
 	@override String get noMessagesYet => 'Ancora nessun messaggio';
 	@override String get newMessage => 'Nuovo messaggio';
 	@override String get individualChat => 'Chat individuale';
@@ -2730,7 +2758,7 @@ class _TranslationsMisskeyWidgetsItIt extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListItIt userList_ = _TranslationsMisskeyWidgetsUserListItIt._(_root);
 	@override String get clicker => 'Cliccheria';
 	@override String get birthdayFollowings => 'Compleanni del giorno';
-	@override String get chat => 'Chat';
+	@override String get chat => 'Chatta con questa persona';
 }
 
 // Path: misskey.cw_
@@ -3006,6 +3034,8 @@ class _TranslationsMisskeyNotificationItIt extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => 'Hai ricevuto una richiesta di follow';
 	@override String get yourFollowRequestAccepted => 'La tua richiesta di follow è stata accettata';
 	@override String get pollEnded => 'Risultati del sondaggio.';
+	@override String get scheduledNotePosted => 'Pubblicazione Nota pianificata';
+	@override String get scheduledNotePostFailed => 'Impossibile pubblicare la Nota pianificata';
 	@override String get newNote => 'Nuove Note';
 	@override String unreadAntennaNote({required Object name}) => 'Antenna ${name}';
 	@override String get roleAssigned => 'Ruolo assegnato';
@@ -3036,7 +3066,7 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get alwaysShowMainColumn => 'Mostra sempre la colonna principale';
+	@override String get alwaysShowMainColumn => 'Mostrare sempre la colonna Principale';
 	@override String get columnAlign => 'Allineamento delle colonne';
 	@override String get columnGap => 'Spessore del margine tra colonne';
 	@override String get deckMenuPosition => 'Posizione del menu Deck';
@@ -3053,8 +3083,8 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 	@override String get profile => 'Profilo';
 	@override String get newProfile => 'Nuovo profilo';
 	@override String get deleteProfile => 'Cancellare il profilo.';
-	@override String get introduction => 'Combinate le colonne per creare la vostra interfaccia!';
-	@override String get introduction2 => 'È possibile aggiungere colonne in qualsiasi momento premendo + sulla destra dello schermo.';
+	@override String get introduction => 'Crea la tua interfaccia combinando le colonne!';
+	@override String get introduction2 => 'Per aggiungere una colonna, cliccare il bottone + (più) visibile al margine dello schermo.';
 	@override String get widgetsIntroduction => 'Dal menu della colonna, selezionare "Modifica i riquadri" per aggiungere un un riquadro con funzionalità';
 	@override String get useSimpleUiForNonRootPages => 'Visualizza sotto pagine con interfaccia web semplice';
 	@override String get usedAsMinWidthWhenFlexible => 'Se "larghezza flessibile" è abilitato, questa diventa la larghezza minima';
@@ -3607,7 +3637,9 @@ class _TranslationsMisskeyWatermarkEditorItIt extends TranslationsMisskeyWaterma
 	@override String get opacity => 'Opacità';
 	@override String get scale => 'Dimensioni';
 	@override String get text => 'Testo';
+	@override String get qr => 'QR Code';
 	@override String get position => 'Posizione';
+	@override String get margin => 'Margine';
 	@override String get type => 'Tipo';
 	@override String get image => 'Immagini';
 	@override String get advanced => 'Avanzato';
@@ -3622,6 +3654,7 @@ class _TranslationsMisskeyWatermarkEditorItIt extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => 'Opacità del punto secondario';
 	@override String get polkadotSubDotRadius => 'Dimensione del punto secondario';
 	@override String get polkadotSubDotDivisions => 'Quantità di punti secondari';
+	@override String get leaveBlankToAccountUrl => 'Il valore vuoto indica la URL dell\'account';
 }
 
 // Path: misskey.imageEffector_
@@ -3659,6 +3692,56 @@ class _TranslationsMisskeyDraftsItIt extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => 'Recuperare dalle bozze';
 	@override String get restore => 'Ripristina';
 	@override String get listDrafts => 'Elenco bozze';
+	@override String get schedule => 'Pianifica pubblicazione';
+	@override String get listScheduledNotes => 'Elenca Note pianificate';
+	@override String get cancelSchedule => 'Annulla pianificazione';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrItIt extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Visualizza';
+	@override String get readTabTitle => 'Leggere';
+	@override String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
+	@override String get shareText => 'Seguimi nel Fediverso!';
+	@override String get chooseCamera => 'Seleziona fotocamera';
+	@override String get cannotToggleFlash => 'Flash non controllabile';
+	@override String get turnOnFlash => 'Accendi il flash';
+	@override String get turnOffFlash => 'Spegni il flash';
+	@override String get startQr => 'Inizia lettura QR Code';
+	@override String get stopQr => 'Interrompi lettura QR Code';
+	@override String get noQrCodeFound => 'Non trovo alcun QR Code';
+	@override String get scanFile => 'Scansiona immagine nel dispositivo';
+	@override String get raw => 'Testo';
+	@override String get mfm => 'MFM';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityItIt extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'Alta qualità';
+	@override String get medium => 'Media qualità';
+	@override String get low => 'Bassa qualità';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeItIt extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'Taglia grande';
+	@override String get medium => 'Taglia media';
+	@override String get small => 'Taglia piccola';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3983,6 +4066,7 @@ class _TranslationsMisskeyRoleOptionsItIt extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes_caption => 'Specifica il tipo MIME. Puoi specificare più valori separandoli andando a capo, oppure indicare caratteri jolly con un asterisco (*). Ad esempio: image/*';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'A seconda del file, il tipo potrebbe non essere determinato. Se si desidera consentire tali file, aggiungere ${x} alla specifica.';
 	@override String get noteDraftLimit => 'Numero massimo di Note in bozza, lato server';
+	@override String get scheduledNoteLimit => 'Quantità di Note pianificabili contemporaneamente';
 	@override String get watermarkAvailable => 'Disponibilità della funzione filigrana';
 }
 
@@ -4177,7 +4261,7 @@ class _TranslationsMisskeyDeckColumnsItIt extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Menzioni';
 	@override String get direct => 'Note Dirette';
 	@override String get roleTimeline => 'Timeline Ruolo';
-	@override String get chat => 'Chat';
+	@override String get chat => 'Chatta con questa persona';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4533,6 +4617,8 @@ class _TranslationsMisskeyImageEffectorFxsItIt extends TranslationsMisskeyImageE
 	@override String get mirror => 'Specchio';
 	@override String get invert => 'Inversione colore';
 	@override String get grayscale => 'Bianco e nero';
+	@override String get blur => 'Sfocatura';
+	@override String get pixelate => 'Mosaico';
 	@override String get colorAdjust => 'Correzione Colore';
 	@override String get colorClamp => 'Compressione del colore';
 	@override String get colorClampAdvanced => 'Compressione del colore (avanzata)';
@@ -4544,6 +4630,7 @@ class _TranslationsMisskeyImageEffectorFxsItIt extends TranslationsMisskeyImageE
 	@override String get checker => 'revisore';
 	@override String get blockNoise => 'Attenua rumore';
 	@override String get tearing => 'Strappa immagine';
+	@override String get fill => 'Riempimento';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4556,6 +4643,9 @@ class _TranslationsMisskeyImageEffectorFxPropsItIt extends TranslationsMisskeyIm
 	@override String get angle => 'Angolo';
 	@override String get scale => 'Dimensioni';
 	@override String get size => 'Dimensioni';
+	@override String get radius => 'Raggio';
+	@override String get samples => 'Quantità di campioni';
+	@override String get offset => 'Posizione';
 	@override String get color => 'Colore';
 	@override String get opacity => 'Opacità';
 	@override String get normalize => 'Normalizza';
@@ -4584,6 +4674,7 @@ class _TranslationsMisskeyImageEffectorFxPropsItIt extends TranslationsMisskeyIm
 	@override String get zoomLinesThreshold => 'Limite delle linee zoom';
 	@override String get zoomLinesMaskSize => 'Ampiezza del diametro';
 	@override String get zoomLinesBlack => 'Bande nere';
+	@override String get circle => 'Circolare';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

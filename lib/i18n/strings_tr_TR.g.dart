@@ -429,7 +429,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get disconnectedFromServer => 'Sunucu bağlantısı kesildi';
 	@override String get reload => 'Yenile';
 	@override String get doNothing => 'Yoksay';
-	@override String get reloadConfirm => 'Zaman çizelgesini yenilemek ister misin?';
+	@override String get reloadConfirm => 'Panoyu yenilemek ister misin?';
 	@override String get watch => 'İzle';
 	@override String get unwatch => 'İzlemeyi bırak';
 	@override String get accept => 'Kabul et';
@@ -642,9 +642,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get s3ForcePathStyleDesc => 's3ForcePathStyle etkinleştirilirse, kova adı URL\'nin ana bilgisayar adı yerine URL yoluna eklenmelidir. Kendi kendine barındırılan bir Minio örneği gibi hizmetleri kullanırken bu ayarı etkinleştirmen gerekebilir.';
 	@override String get serverLogs => 'Sunucu log kayıtları';
 	@override String get deleteAll => 'Tümünü sil';
-	@override String get showFixedPostForm => 'Gönderi formunu zaman çizelgesinin en üstünde görüntüle';
-	@override String get showFixedPostFormInChannel => 'Gönderi formunu zaman çizelgesinin en üstünde görüntüle (Kanallar)';
-	@override String get withRepliesByDefaultForNewlyFollowed => 'Yeni takip edilen kullanıcıların yanıtlarını varsayılan olarak zaman çizelgesine dahil et';
+	@override String get showFixedPostForm => 'Gönderi formunu pano üstünde görüntüle';
+	@override String get showFixedPostFormInChannel => 'Gönderi formunu pano üstünde görüntüle (Kanallar)';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Yeni takip edilen kullanıcıların yanıtlarını varsayılan olarak panoya dahil et';
 	@override String get newNoteRecived => 'Yeni Not\'lar var';
 	@override String get newNote => 'Yeni Not';
 	@override String get sounds => 'Sesler';
@@ -1128,7 +1128,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get gotInvalidResponseError => 'Geçersiz sunucu yanıtı';
 	@override String get gotInvalidResponseErrorDescription => 'Sunucu erişilemez durumda olabilir veya bakım çalışması yapılmaktadır. Lütfen daha sonra tekrar dene.';
 	@override String get thisPostMayBeAnnoying => 'Bu not başkalarını rahatsız edebilir.';
-	@override String get thisPostMayBeAnnoyingHome => 'Ana zaman çizelgesine gönder';
+	@override String get thisPostMayBeAnnoyingHome => 'Ana panoya gönder';
 	@override String get thisPostMayBeAnnoyingCancel => 'İptal';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Yine de gönder';
 	@override String get collapseRenotes => 'Daha önce görüntülenen Renote\'lari kısaltılmış olarak göster';
@@ -1287,8 +1287,8 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get hideRepliesToOthersInTimeline => 'Pano\'dan diğer kişilerin yanıtlarını gizle';
 	@override String get showRepliesToOthersInTimelineAll => 'Pano\'da takip ettiğin herkesin diğerlerine verdiği yanıtları göster';
 	@override String get hideRepliesToOthersInTimelineAll => 'Pano\'da takip ettiğin herkesten diğer kişilere verilen yanıtları gizle';
-	@override String get confirmShowRepliesAll => 'Bu işlem geri alınamaz. Takip ettiğin herkesin yanıtlarını zaman çizelgende diğer kullanıcılara göstermek istiyor musun?';
-	@override String get confirmHideRepliesAll => 'Bu işlem geri alınamaz. Şu anda takip ettiğin tüm kullanıcıların yanıtlarını zaman tünelinde cidden göstermeyecek misin?';
+	@override String get confirmShowRepliesAll => 'Bu işlem geri alınamaz. Takip ettiğin herkesin yanıtlarını panoda diğer kullanıcılara göstermek istiyor musun?';
+	@override String get confirmHideRepliesAll => 'Bu işlem geri alınamaz. Şu anda takip ettiğin tüm kullanıcıların yanıtlarını panoda cidden göstermeyecek misin?';
 	@override String get externalServices => 'Dış Hizmetler';
 	@override String get sourceCode => 'Kaynak kodu';
 	@override String get sourceCodeIsNotYetProvided => 'Kaynak kodu henüz mevcut değildir. Bu sorunu gidermek için yöneticiyle iletişime geçin.';
@@ -1412,6 +1412,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'Karakter sayısı';
 	@override String get information => 'Hakkında';
 	@override String get chat => 'Sohbet';
+	@override String get directMessage => 'Kullanıcıyla sohbet et';
 	@override String get migrateOldSettings => 'Eski istemci ayarlarını taşıma';
 	@override String get migrateOldSettings_description => 'Bu işlem otomatik olarak yapılmalıdır, ancak herhangi bir nedenle geçiş başarısız olursa, geçiş işlemini manuel olarak kendin başlatabilirsin. Mevcut yapılandırma bilgileri üzerine yazılacaktır.';
 	@override String get compress => 'Sıkıştır';
@@ -1446,6 +1447,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'Güvenli mod etkin olduğu için özel CSS uygulanmıyor.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Güvenli mod etkinken, varsayılan tema kullanılır. Güvenli modu devre dışı bırakmak bu değişiklikleri geri alır.';
 	@override String get thankYouForTestingBeta => 'Beta sürümünü test ettiğin için teşekkür ederiz!';
+	@override String get widgets => 'Widget\'lar';
 	@override late final _TranslationsMisskeyOrderTrTr order_ = _TranslationsMisskeyOrderTrTr._(_root);
 	@override late final _TranslationsMisskeyChatTrTr chat_ = _TranslationsMisskeyChatTrTr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteTrTr emojiPalette_ = _TranslationsMisskeyEmojiPaletteTrTr._(_root);
@@ -1547,6 +1549,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorTrTr imageEffector_ = _TranslationsMisskeyImageEffectorTrTr._(_root);
 	@override String get drafts => 'Taslaklar';
 	@override late final _TranslationsMisskeyDraftsTrTr drafts_ = _TranslationsMisskeyDraftsTrTr._(_root);
+	@override late final _TranslationsMisskeyQrTrTr qr_ = _TranslationsMisskeyQrTrTr._(_root);
 }
 
 // Path: misskey.order_
@@ -1866,7 +1869,7 @@ class _TranslationsMisskeyServerSettingsTrTr extends TranslationsMisskeyServerSe
 	@override String get shortNameDescription => 'Resmi adın uzun olması durumunda görüntülenebilen, örneğin adının kısaltması.';
 	@override String get fanoutTimelineDescription => 'Etkinleştirildiğinde Pano alma performansını büyük ölçüde artırır ve veritabanı yükünü azaltır. Bunun karşılığında Redis\'in bellek kullanımı artacaktır. Sunucu belleği düşükse veya sunucu kararsızsa bunu devre dışı bırakmayı düşün.';
 	@override String get fanoutTimelineDbFallback => 'Veritabanına geri dön';
-	@override String get fanoutTimelineDbFallbackDescription => 'Etkinleştirildiğinde, Pano önbelleğe alınmamışsa ek sorgular için veritabanına geri döner. Bu özelliği devre dışı bırakmak, geri dönüş sürecini ortadan kaldırarak sunucu yükünü daha da azaltır, ancak alınabilecek zaman çizelgelerinin aralığını sınırlar.';
+	@override String get fanoutTimelineDbFallbackDescription => 'Etkinleştirildiğinde, Pano önbelleğe alınmamışsa ek sorgular için veritabanına geri döner. Bu özelliği devre dışı bırakmak, geri dönüş sürecini ortadan kaldırarak sunucu yükünü daha da azaltır, ancak alınabilecek panoların aralığını sınırlar.';
 	@override String get reactionsBufferingDescription => 'Etkinleştirildiğinde, reaksiyon oluşturma sırasında performans büyük ölçüde artacak ve veritabanı üzerindeki yük azalacaktır. Ancak, Redis bellek kullanımı artacakt.';
 	@override String get remoteNotesCleaning => 'Uzak notların otomatik olarak temizlenmesi';
 	@override String get remoteNotesCleaning_description => 'Etkinleştirildiğinde, kullanılmayan ve güncelliğini yitirmiş uzak notlar, veritabanının şişmesini önlemek için periyodik olarak temizlenecek.';
@@ -1894,6 +1897,7 @@ class _TranslationsMisskeyServerSettingsTrTr extends TranslationsMisskeyServerSe
 	@override String get restartServerSetupWizardConfirm_text => 'Bazı mevcut ayarlar sıfırlanacaktır.';
 	@override String get entrancePageStyle => 'Giriş sayfası stili';
 	@override String get showTimelineForVisitor => 'Panoyu göster';
+	@override String get showActivitiesForVisitor => 'Aktiviteleri göster';
 	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorTrTr userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorTrTr._(_root);
 }
 
@@ -1963,7 +1967,7 @@ class _TranslationsMisskeyRoleTrTr extends TranslationsMisskeyRoleEnUs {
 	@override String get asBadge => 'Rozet olarak göster';
 	@override String get descriptionOfAsBadge => 'This role\'s icon will be displayed next to the username of users with this role if turned on.';
 	@override String get isExplorable => 'Rolü keşfedilebilir hale getir';
-	@override String get descriptionOfIsExplorable => 'Bu rolün zaman çizelgesi ve bu role sahip kullanıcıların listesi, etkinleştirilirse kamuya açık hale getirilecek.';
+	@override String get descriptionOfIsExplorable => 'Bu rolün panosu ve bu role sahip kullanıcıların listesi, etkinleştirilirse kamuya açık hale getirilecek.';
 	@override String get displayOrder => 'Pozisyon';
 	@override String get descriptionOfDisplayOrder => 'Sayı ne kadar yüksekse, UI pozisyonu da o kadar yüksek olur.';
 	@override String get preserveAssignmentOnMoveAccount => 'Geçiş sırasında rol atamalarını koruyun';
@@ -2663,7 +2667,7 @@ class _TranslationsMisskeyVisibilityTrTr extends TranslationsMisskeyVisibilityEn
 	@override String get public => 'Halka açık';
 	@override String get publicDescription => 'Notunuz tüm kullanıcılar tarafından görülebilir olacaktır.';
 	@override String get home => 'Pano';
-	@override String get homeDescription => 'Yalnızca ana zaman çizelgesine gönder';
+	@override String get homeDescription => 'Yalnızca ana panoya gönder';
 	@override String get followers => 'Takipçiler';
 	@override String get followersDescription => 'Sadece takipçilerine görünür hale getir';
 	@override String get specified => 'Doğrudan';
@@ -2728,7 +2732,7 @@ class _TranslationsMisskeyExportOrImportTrTr extends TranslationsMisskeyExportOr
 	@override String get userLists => 'Kullanıcı listeleri';
 	@override String get excludeMutingUsers => 'Sessize alınan kullanıcıları hariç tut';
 	@override String get excludeInactiveUsers => 'Etkin olmayan kullanıcıları hariç tut';
-	@override String get withReplies => 'İçe aktarılan kullanıcıların yanıtlarını zaman çizelgesine dahil edin';
+	@override String get withReplies => 'İçe aktarılan kullanıcıların yanıtlarını panoya dahil edin';
 }
 
 // Path: misskey.charts_
@@ -3163,7 +3167,7 @@ class _TranslationsMisskeyReversiTrTr extends TranslationsMisskeyReversiEnUs {
 	@override String get freeMatch => 'Ücretsiz Eşleştirme';
 	@override String get lookingForPlayer => 'Rakip aranıyor...';
 	@override String get gameCanceled => 'Oyun iptal edildi.';
-	@override String get shareToTlTheGameWhenStart => 'Oyun başlatıldığında zaman çizelgesinde paylaş';
+	@override String get shareToTlTheGameWhenStart => 'Oyun başlatıldığında panoda paylaş';
 	@override String get iStartedAGame => 'Oyun başladı! #MisskeyReversi';
 	@override String get opponentHasSettingsChanged => 'Rakip ayarlarını değiştirmiş.';
 	@override String get allowIrregularRules => 'Düzensiz kurallar (tamamen ücretsiz)';
@@ -3464,7 +3468,7 @@ class _TranslationsMisskeyUserListsTrTr extends TranslationsMisskeyUserListsEnUs
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get tip => 'Listeler, oluşturulurken belirttiğin herhangi bir kullanıcıyı içerebilir. Oluşturulan liste, yalnızca belirtilen kullanıcıları gösteren bir zaman çizelgesi olarak görüntülenebilir.';
+	@override String get tip => 'Listeler, oluşturulurken belirttiğin herhangi bir kullanıcıyı içerebilir. Oluşturulan liste, yalnızca belirtilen kullanıcıları gösteren bir pano olarak görüntülenebilir.';
 }
 
 // Path: misskey.watermarkEditor_
@@ -3536,6 +3540,17 @@ class _TranslationsMisskeyDraftsTrTr extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => 'Taslaktan geri yükle';
 	@override String get restore => 'Geri yükle';
 	@override String get listDrafts => 'Taslaklar Listesi';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrTrTr extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Ekran';
+	@override String get raw => 'Metin';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3624,9 +3639,9 @@ class _TranslationsMisskeyInitialTutorialNoteTrTr extends TranslationsMisskeyIni
 
 	// Translations
 	@override String get title => 'Not nedir?';
-	@override String get description => 'Misskey\'deki gönderiler “Notlar” olarak adlandırılır. Notlar zaman çizelgesinde kronolojik olarak düzenlenir ve gerçek zamanlı olarak güncellenir.';
+	@override String get description => 'Misskey\'deki gönderiler “Notlar” olarak adlandırılır. Notlar panoda kronolojik olarak düzenlenir ve gerçek zamanlı olarak güncellenir.';
 	@override String get reply => 'Bir mesaja yanıt vermek için bu düğmeye tıklayın. Yanıtlara yanıt vermek de mümkündür, böylece konuşma bir konu başlığı gibi devam eder.';
-	@override String get renote => 'Bu notu kendi zaman çizelgende paylaşabilirsiniz. Ayrıca yorumlarınızla birlikte alıntı da yapabilirsin.';
+	@override String get renote => 'Bu notu kendi panonda paylaşabilirsin. Ayrıca yorumlarınla birlikte alıntı da yapabilirsin.';
 	@override String get reaction => 'Not\'a tepkiler ekleyebilirsin. Daha fazla ayrıntı bir sonraki sayfada açıklanacak.';
 	@override String get menu => 'Not ayrıntılarını görüntüleyebilir, bağlantıları kopyalayabilir ve çeşitli diğer işlemleri gerçekleştirebilirsin.';
 }
@@ -3822,7 +3837,7 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 
 	// Translations
 	@override String get gtlAvailable => 'Global Pano\'yu görüntüleyebilir';
-	@override String get ltlAvailable => 'Yerel zaman çizelgesini görüntüleyebilir';
+	@override String get ltlAvailable => 'Yerel panoyu görüntüleyebilir';
 	@override String get canPublicNote => 'Halka açık notlar gönderebilir';
 	@override String get mentionMax => 'Bir notta maksimum bahsetme sayısı';
 	@override String get canInvite => 'Sunucu davet kodları oluşturabilir';
@@ -4433,6 +4448,7 @@ class _TranslationsMisskeyImageEffectorFxPropsTrTr extends TranslationsMisskeyIm
 	@override String get angle => 'Açı';
 	@override String get scale => 'Boyut';
 	@override String get size => 'Boyut';
+	@override String get offset => 'Pozisyon';
 	@override String get color => 'Renk';
 	@override String get opacity => 'Opaklık';
 	@override String get normalize => 'Normalize';
@@ -5159,7 +5175,7 @@ class _TranslationsMisskeyAchievementsTypesHtl20npmTrTr extends TranslationsMiss
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Akış Zaman Çizelgesi';
+	@override String get title => 'Akış Panosu';
 	@override String get description => 'Ev zaman çizelgenizin hızı 20 npm\'yi (dakika başına not sayısı) aşıyor mu?';
 }
 

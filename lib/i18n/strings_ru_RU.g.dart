@@ -1357,6 +1357,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get information => 'Описание';
 	@override String get inMinutes => 'мин';
 	@override String get inDays => 'сут';
+	@override String get widgets => 'Виджеты';
 	@override late final _TranslationsMisskeyChatRuRu chat_ = _TranslationsMisskeyChatRuRu._(_root);
 	@override late final _TranslationsMisskeySettingsRuRu settings_ = _TranslationsMisskeySettingsRuRu._(_root);
 	@override late final _TranslationsMisskeyDeliveryRuRu delivery_ = _TranslationsMisskeyDeliveryRuRu._(_root);
@@ -1429,6 +1430,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorRuRu watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRuRu._(_root);
 	@override late final _TranslationsMisskeyImageEffectorRuRu imageEffector_ = _TranslationsMisskeyImageEffectorRuRu._(_root);
 	@override String get drafts => 'Черновик';
+	@override late final _TranslationsMisskeyQrRuRu qr_ = _TranslationsMisskeyQrRuRu._(_root);
 }
 
 // Path: misskey.chat_
@@ -2614,6 +2616,17 @@ class _TranslationsMisskeyImageEffectorRuRu extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsRuRu fxProps_ = _TranslationsMisskeyImageEffectorFxPropsRuRu._(_root);
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrRuRu extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Отображение';
+	@override String get raw => 'Текст';
+}
+
 // Path: misskey.settings_.chat_
 class _TranslationsMisskeySettingsChatRuRu extends TranslationsMisskeySettingsChatEnUs {
 	_TranslationsMisskeySettingsChatRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -3037,6 +3050,7 @@ class _TranslationsMisskeyImageEffectorFxPropsRuRu extends TranslationsMisskeyIm
 	@override String get angle => 'Угол';
 	@override String get scale => 'Размер';
 	@override String get size => 'Размер';
+	@override String get offset => 'Позиция';
 	@override String get color => 'Цвет';
 	@override String get opacity => 'Непрозрачность';
 	@override String get lightness => 'Осветление';
@@ -3787,7 +3801,7 @@ class _TranslationsMisskeyAchievementsTypesJustPlainLuckyRuRu extends Translatio
 
 	// Translations
 	@override String get title => 'Чистая удача';
-	@override String get description => 'Может достаться с вероятностью 0,01% каждые 10 секунд.';
+	@override String get description => 'Может достаться с вероятностью 0,005% каждые 10 секунд.';
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_

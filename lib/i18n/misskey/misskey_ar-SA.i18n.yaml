@@ -1014,6 +1014,7 @@ postForm: "أنشئ ملاحظة"
 information: "عن"
 inMinutes: "د"
 inDays: "ي"
+widgets: "التطبيقات المُصغّرة"
 chat_:
   invitations: "دعوة"
   noHistory: "السجل فارغ"
@@ -1607,5 +1608,9 @@ imageEffector_:
   fxProps_:
     scale: "الحجم"
     size: "الحجم"
+    offset: "الموضع"
     color: "اللون"
     opacity: "الشفافية"
+qr_:
+  showTabTitle: "المظهر"
+  raw: "نص"

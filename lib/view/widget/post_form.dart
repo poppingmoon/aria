@@ -289,7 +289,7 @@ class PostForm extends HookConsumerWidget {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
       NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
-        t.aria.schedule,
+        t.misskey.schedule,
         Icons.send,
       ),
       NotesCreateRequest(isRenote: true) => (
@@ -612,7 +612,7 @@ class PostForm extends HookConsumerWidget {
                               context.push('/${account.value}/scheduled-notes'),
                           child: ListTile(
                             leading: const Icon(Icons.schedule),
-                            title: Text(t.aria.scheduledNotes),
+                            title: Text(t.misskey.drafts_.listScheduledNotes),
                           ),
                         ),
                       PopupMenuItem(
@@ -863,7 +863,9 @@ class PostForm extends HookConsumerWidget {
                     ),
                     Expanded(
                       child: Text(
-                        t.aria.willBePostedOn(date: absoluteTime(scheduledAt)),
+                        t.misskey.scheduleToPostOnX(
+                          x: absoluteTime(scheduledAt),
+                        ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
@@ -1437,7 +1439,7 @@ class _PostFormFooter extends HookConsumerWidget {
                       ),
                       if (canScheduleNote)
                         IconButton(
-                          tooltip: t.aria.schedule,
+                          tooltip: t.misskey.schedulePost,
                           onPressed: () async {
                             final now = DateTime.now();
                             final DateTime initialDate;

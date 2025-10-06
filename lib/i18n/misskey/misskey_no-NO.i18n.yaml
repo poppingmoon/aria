@@ -751,3 +751,5 @@ imageEffector_:
     scale: "Størrelse"
     size: "Størrelse"
     color: "Farge"
+qr_:
+  raw: "Tekst"

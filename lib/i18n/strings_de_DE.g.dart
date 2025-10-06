@@ -1628,6 +1628,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get textCount => 'Zeichenanzahl';
 	@override String get information => 'Über';
 	@override String get chat => 'Chat';
+	@override String get directMessage => 'Mit dem Benutzer chatten';
 	@override String get migrateOldSettings => 'Alte Client-Einstellungen migrieren';
 	@override String get migrateOldSettings_description => 'Dies sollte normalerweise automatisch geschehen, aber wenn die Migration aus irgendeinem Grund nicht erfolgreich war, kannst du den Migrationsprozess selbst manuell auslösen. Die aktuellen Konfigurationsinformationen werden dabei überschrieben.';
 	@override String get compress => 'Komprimieren';
@@ -1657,6 +1658,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get defaultImageCompressionLevel_description => 'Ein niedrigerer Wert erhält die Bildqualität, erhöht aber die Dateigröße. <br>Höhere Werte reduzieren die Dateigröße, verringern aber die Bildqualität.';
 	@override String get inMinutes => 'Minute(n)';
 	@override String get inDays => 'Tag(en)';
+	@override String get widgets => 'Widgets';
 	@override late final _TranslationsMisskeyOrderDeDe order_ = _TranslationsMisskeyOrderDeDe._(_root);
 	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
@@ -1758,6 +1760,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorDeDe imageEffector_ = _TranslationsMisskeyImageEffectorDeDe._(_root);
 	@override String get drafts => 'Entwurf';
 	@override late final _TranslationsMisskeyDraftsDeDe drafts_ = _TranslationsMisskeyDraftsDeDe._(_root);
+	@override late final _TranslationsMisskeyQrDeDe qr_ = _TranslationsMisskeyQrDeDe._(_root);
 }
 
 // Path: misskey.order_
@@ -2808,7 +2811,7 @@ class _TranslationsMisskeyWidgetsDeDe extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListDeDe userList_ = _TranslationsMisskeyWidgetsUserListDeDe._(_root);
 	@override String get clicker => 'Klickzähler';
 	@override String get birthdayFollowings => 'Nutzer, die heute Geburtstag haben';
-	@override String get chat => 'Chat';
+	@override String get chat => 'Mit dem Benutzer chatten';
 }
 
 // Path: misskey.cw_
@@ -3730,6 +3733,17 @@ class _TranslationsMisskeyDraftsDeDe extends TranslationsMisskeyDraftsEnUs {
 	@override String get listDrafts => 'Liste der Entwürfe';
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrDeDe extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Anzeigeart';
+	@override String get raw => 'Text';
+}
+
 // Path: misskey.chat_.chatAllowedUsers_
 class _TranslationsMisskeyChatChatAllowedUsersDeDe extends TranslationsMisskeyChatChatAllowedUsersEnUs {
 	_TranslationsMisskeyChatChatAllowedUsersDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -4245,7 +4259,7 @@ class _TranslationsMisskeyDeckColumnsDeDe extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Erwähnungen';
 	@override String get direct => 'Direktnachrichten';
 	@override String get roleTimeline => 'Rollenchronik';
-	@override String get chat => 'Chat';
+	@override String get chat => 'Mit dem Benutzer chatten';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4619,6 +4633,7 @@ class _TranslationsMisskeyImageEffectorFxPropsDeDe extends TranslationsMisskeyIm
 	@override String get angle => 'Winkel';
 	@override String get scale => 'Größe';
 	@override String get size => 'Größe';
+	@override String get offset => 'Position';
 	@override String get color => 'Farbe';
 	@override String get opacity => 'Transparenz';
 	@override String get lightness => 'Erhellen';

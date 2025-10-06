@@ -1122,6 +1122,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get information => 'Informacje';
 	@override String get inMinutes => 'minuta';
 	@override String get inDays => 'dzień';
+	@override String get widgets => 'Widżety';
 	@override late final _TranslationsMisskeyChatPlPl chat_ = _TranslationsMisskeyChatPlPl._(_root);
 	@override late final _TranslationsMisskeyDeliveryPlPl delivery_ = _TranslationsMisskeyDeliveryPlPl._(_root);
 	@override late final _TranslationsMisskeyBubbleGamePlPl bubbleGame_ = _TranslationsMisskeyBubbleGamePlPl._(_root);
@@ -1177,6 +1178,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchPlPl search_ = _TranslationsMisskeySearchPlPl._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorPlPl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPlPl._(_root);
 	@override late final _TranslationsMisskeyImageEffectorPlPl imageEffector_ = _TranslationsMisskeyImageEffectorPlPl._(_root);
+	@override late final _TranslationsMisskeyQrPlPl qr_ = _TranslationsMisskeyQrPlPl._(_root);
 }
 
 // Path: misskey.chat_
@@ -2077,6 +2079,17 @@ class _TranslationsMisskeyImageEffectorPlPl extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsPlPl fxProps_ = _TranslationsMisskeyImageEffectorFxPropsPlPl._(_root);
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrPlPl extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Wyświetlanie';
+	@override String get raw => 'Tekst';
 }
 
 // Path: misskey.delivery_.type_

@@ -60,7 +60,7 @@ class PostPage extends HookConsumerWidget {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
       NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
-        t.aria.schedule,
+        t.misskey.schedule,
         Icons.send,
       ),
       NotesCreateRequest(isRenote: true) => (

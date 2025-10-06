@@ -126,8 +126,8 @@ class PostConfirmationDialog extends ConsumerWidget {
                             ),
                             const WidgetSpan(child: SizedBox(width: 8.0)),
                             TextSpan(
-                              text: t.aria.willBePostedOn(
-                                date: absoluteTime(date),
+                              text: t.misskey.scheduleToPostOnX(
+                                x: absoluteTime(date),
                               ),
                             ),
                           ],

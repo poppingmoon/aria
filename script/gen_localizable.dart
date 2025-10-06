@@ -59,11 +59,7 @@ const notificationKeys = [
 const exportOfXCompleted = 'exportOfXCompleted';
 const createTokenDescription = 'createTokenDescription';
 const manageAccessTokens = 'manageAccessTokens';
-const scheduleNote = '_types.scheduleNote';
 const noteScheduled = 'noteScheduled';
-const scheduledNotePosted = 'scheduledNotePosted';
-const scheduledNoteError = 'scheduledNoteError';
-const scheduledNotePostFailed = 'scheduledNotePostFailed';
 
 const achievementTypes = [
   'notes1',
@@ -167,10 +163,7 @@ void main() {
     ...[
       ...notificationKeys,
       createTokenDescription,
-      scheduleNote,
       noteScheduled,
-      scheduledNotePosted,
-      scheduledNoteError,
     ].map((key) => '_notification.$key'),
     ...userExportableEntityKeys.map(
       (key) => '_notification.exportOf${key.capitalize}Completed',
@@ -227,14 +220,6 @@ void main() {
     final ariaI18n = loadYaml(ariaFile.readAsStringSync()) as YamlMap;
     if (ariaI18n[noteScheduled] case final String value) {
       strings['_notification.$noteScheduled']?[locale] = value;
-    }
-    if (ariaI18n[scheduledNotePosted] case final String value) {
-      strings['_notification.$scheduledNotePosted']?[locale] = value;
-    }
-    if (ariaI18n[scheduledNoteError] case final String value) {
-      strings['_notification.$scheduledNotePostFailed']?[locale] = value;
-      strings['_notification.$scheduleNote']?[locale] = value;
-      strings['_notification.$scheduledNoteError']?[locale] = value;
     }
   }
   final file = File('ios/Localizable.xcstrings');

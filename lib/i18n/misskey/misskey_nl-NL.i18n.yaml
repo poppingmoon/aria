@@ -1087,3 +1087,5 @@ search_:
 watermarkEditor_:
   image: "Afbeeldingen"
   advanced: "Geavanceerd"
+qr_:
+  showTabTitle: "Weergave"

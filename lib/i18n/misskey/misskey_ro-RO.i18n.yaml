@@ -1408,3 +1408,7 @@ imageEffector_:
   fxProps_:
     scale: "Dimensiune"
     size: "Dimensiune"
+    offset: "Poziție"
+qr_:
+  showTabTitle: "Arată"
+  raw: "Text"

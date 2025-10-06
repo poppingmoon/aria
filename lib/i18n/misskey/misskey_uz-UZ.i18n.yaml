@@ -1110,3 +1110,6 @@ imageEffector_:
   fxProps_:
     color: "Rang"
     lightness: "Yoritish"
+qr_:
+  showTabTitle: "Displey"
+  raw: "Matn"

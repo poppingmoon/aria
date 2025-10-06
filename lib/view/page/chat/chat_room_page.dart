@@ -71,11 +71,11 @@ class ChatRoomPage extends ConsumerWidget {
           appBar: AppBar(
             title: user != null
                 ? UsernameWidget(account: account, user: user)
-                : Text(room != null ? room.name : t.misskey.chat),
+                : Text(room != null ? room.name : t.misskey.directMessage),
             bottom: roomId != null
                 ? TabBar(
                     tabs: [
-                      Tab(text: t.misskey.chat),
+                      Tab(text: t.misskey.chat_.messages),
                       Tab(text: t.misskey.chat_.members),
                       Tab(text: t.misskey.info),
                     ],

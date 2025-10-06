@@ -190,7 +190,7 @@ class _TimelineDrawerExpansionTile extends ConsumerWidget {
                   ),
               ],
             ),
-            title: Text(t.misskey.chat),
+            title: Text(t.misskey.directMessage_short),
             onTap: () => context.push('/$account/chat'),
           ),
         ListTile(

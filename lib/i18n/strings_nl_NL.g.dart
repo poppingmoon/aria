@@ -1064,6 +1064,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNlNl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNlNl._(_root);
 	@override late final _TranslationsMisskeySearchNlNl search_ = _TranslationsMisskeySearchNlNl._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorNlNl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNlNl._(_root);
+	@override late final _TranslationsMisskeyQrNlNl qr_ = _TranslationsMisskeyQrNlNl._(_root);
 }
 
 // Path: misskey.chat_
@@ -1365,6 +1366,16 @@ class _TranslationsMisskeyWatermarkEditorNlNl extends TranslationsMisskeyWaterma
 	// Translations
 	@override String get image => 'Afbeeldingen';
 	@override String get advanced => 'Geavanceerd';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrNlNl extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Weergave';
 }
 
 // Path: misskey.delivery_.type_

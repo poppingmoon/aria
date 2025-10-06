@@ -450,18 +450,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Save to Drive'
 	String get saveToDrive => 'Save to Drive';
 
-	/// en-US: 'Schedule'
-	String get schedule => 'Schedule';
-
-	/// en-US: 'Scheduled note posting has failed'
-	String get scheduledNoteError => 'Scheduled note posting has failed';
-
-	/// en-US: 'Scheduled note has been posted'
-	String get scheduledNotePosted => 'Scheduled note has been posted';
-
-	/// en-US: 'Scheduled notes'
-	String get scheduledNotes => 'Scheduled notes';
-
 	/// en-US: 'Select an icon'
 	String get selectIcon => 'Select an icon';
 
@@ -655,9 +643,6 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Web browser'
 	String get webBrowser => 'Web browser';
-
-	/// en-US: 'Will be posted on {date}'
-	String willBePostedOn({required Object date}) => 'Will be posted on ${date}';
 }
 
 // Path: misskey
@@ -1429,6 +1414,9 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'Processing...'
 	String get processing => 'Processing...';
+
+	/// en-US: 'Preparing...'
+	String get preprocessing => 'Preparing...';
 
 	/// en-US: 'Preview'
 	String get preview => 'Preview';
@@ -4619,6 +4607,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Drafts'
 	String get draft => 'Drafts';
 
+	/// en-US: 'Drafts and scheduled notes'
+	String get draftsAndScheduledNotes => 'Drafts and scheduled notes';
+
 	/// en-US: 'Confirm when reacting'
 	String get confirmOnReact => 'Confirm when reacting';
 
@@ -4699,6 +4690,12 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'Chat'
 	String get chat => 'Chat';
+
+	/// en-US: 'Chat with user'
+	String get directMessage => 'Chat with user';
+
+	/// en-US: 'Message'
+	String get directMessage_short => 'Message';
 
 	/// en-US: 'Migrate old client settings'
 	String get migrateOldSettings => 'Migrate old client settings';
@@ -4781,6 +4778,12 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality.'
 	String get defaultImageCompressionLevel_description => 'Lower level preserves image quality but increases file size.<br>Higher level reduce file size, but reduce image quality.';
 
+	/// en-US: 'Default compression level'
+	String get defaultCompressionLevel => 'Default compression level';
+
+	/// en-US: 'Lower compression preserves quality but increases file size.<br>Higher compression reduces file size but lowers quality.'
+	String get defaultCompressionLevel_description => 'Lower compression preserves quality but increases file size.<br>Higher compression reduces file size but lowers quality.';
+
 	/// en-US: 'Minute(s)'
 	String get inMinutes => 'Minute(s)';
 
@@ -4802,6 +4805,28 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Thank you for helping us test the beta version!'
 	String get thankYouForTestingBeta => 'Thank you for helping us test the beta version!';
 
+	/// en-US: 'Create a direct note'
+	String get createUserSpecifiedNote => 'Create a direct note';
+
+	/// en-US: 'Schedule note'
+	String get schedulePost => 'Schedule note';
+
+	/// en-US: 'Scheduled to note on {x}'
+	String scheduleToPostOnX({required Object x}) => 'Scheduled to note on ${x}';
+
+	/// en-US: 'Note is scheduled for {x}'
+	String scheduledToPostOnX({required Object x}) => 'Note is scheduled for ${x}';
+
+	/// en-US: 'Schedule'
+	String get schedule => 'Schedule';
+
+	/// en-US: 'Scheduled'
+	String get scheduled => 'Scheduled';
+
+	/// en-US: 'Widgets'
+	String get widgets => 'Widgets';
+
+	late final TranslationsMisskeyCompressionEnUs compression_ = TranslationsMisskeyCompressionEnUs.internal(_root);
 	late final TranslationsMisskeyOrderEnUs order_ = TranslationsMisskeyOrderEnUs.internal(_root);
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
 	late final TranslationsMisskeyEmojiPaletteEnUs emojiPalette_ = TranslationsMisskeyEmojiPaletteEnUs.internal(_root);
@@ -4911,6 +4936,11 @@ class TranslationsMisskeyEnUs {
 	String get drafts => 'Drafts';
 
 	late final TranslationsMisskeyDraftsEnUs drafts_ = TranslationsMisskeyDraftsEnUs.internal(_root);
+
+	/// en-US: 'QR Code'
+	String get qr => 'QR Code';
+
+	late final TranslationsMisskeyQrEnUs qr_ = TranslationsMisskeyQrEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -4921,6 +4951,17 @@ class TranslationsMisskeyIOEnUs {
 
 	// Translations
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
+}
+
+// Path: misskey.compression_
+class TranslationsMisskeyCompressionEnUs {
+	TranslationsMisskeyCompressionEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyCompressionQualityEnUs quality_ = TranslationsMisskeyCompressionQualityEnUs.internal(_root);
+	late final TranslationsMisskeyCompressionSizeEnUs size_ = TranslationsMisskeyCompressionSizeEnUs.internal(_root);
 }
 
 // Path: misskey.order_
@@ -4945,6 +4986,9 @@ class TranslationsMisskeyChatEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en-US: 'Messages'
+	String get messages => 'Messages';
 
 	/// en-US: 'No messages yet'
 	String get noMessagesYet => 'No messages yet';
@@ -7155,8 +7199,8 @@ class TranslationsMisskeyWidgetsEnUs {
 	/// en-US: 'Today's Birthdays'
 	String get birthdayFollowings => 'Today\'s Birthdays';
 
-	/// en-US: 'Chat'
-	String get chat => 'Chat';
+	/// en-US: 'Chat with user'
+	String get chat => 'Chat with user';
 }
 
 // Path: misskey.cw_
@@ -7746,6 +7790,12 @@ class TranslationsMisskeyNotificationEnUs {
 
 	/// en-US: 'Poll results have become available'
 	String get pollEnded => 'Poll results have become available';
+
+	/// en-US: 'Scheduled note has been posted'
+	String get scheduledNotePosted => 'Scheduled note has been posted';
+
+	/// en-US: 'Failed to post scheduled note'
+	String get scheduledNotePostFailed => 'Failed to post scheduled note';
 
 	/// en-US: 'New note'
 	String get newNote => 'New note';
@@ -8922,8 +8972,14 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 	/// en-US: 'Text'
 	String get text => 'Text';
 
+	/// en-US: 'QR Code'
+	String get qr => 'QR Code';
+
 	/// en-US: 'Position'
 	String get position => 'Position';
+
+	/// en-US: 'Margin'
+	String get margin => 'Margin';
 
 	/// en-US: 'Type'
 	String get type => 'Type';
@@ -8966,6 +9022,9 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 
 	/// en-US: 'Number of sub-dots.'
 	String get polkadotSubDotDivisions => 'Number of sub-dots.';
+
+	/// en-US: 'Leave blank to use account URL'
+	String get leaveBlankToAccountUrl => 'Leave blank to use account URL';
 }
 
 // Path: misskey.imageEffector_
@@ -9038,6 +9097,66 @@ class TranslationsMisskeyDraftsEnUs {
 
 	/// en-US: 'List of Drafts'
 	String get listDrafts => 'List of Drafts';
+
+	/// en-US: 'Schedule note'
+	String get schedule => 'Schedule note';
+
+	/// en-US: 'Scheduled notes list'
+	String get listScheduledNotes => 'Scheduled notes list';
+
+	/// en-US: 'Cancel schedule'
+	String get cancelSchedule => 'Cancel schedule';
+}
+
+// Path: misskey.qr_
+class TranslationsMisskeyQrEnUs {
+	TranslationsMisskeyQrEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Display'
+	String get showTabTitle => 'Display';
+
+	/// en-US: 'Scan'
+	String get readTabTitle => 'Scan';
+
+	/// en-US: '{name} {acct}'
+	String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
+
+	/// en-US: 'Follow me on the Fediverse!'
+	String get shareText => 'Follow me on the Fediverse!';
+
+	/// en-US: 'Choose camera'
+	String get chooseCamera => 'Choose camera';
+
+	/// en-US: 'Unable to toggle flashlight'
+	String get cannotToggleFlash => 'Unable to toggle flashlight';
+
+	/// en-US: 'Turn on flashlight'
+	String get turnOnFlash => 'Turn on flashlight';
+
+	/// en-US: 'Turn off flashlight'
+	String get turnOffFlash => 'Turn off flashlight';
+
+	/// en-US: 'Resume QR code reader'
+	String get startQr => 'Resume QR code reader';
+
+	/// en-US: 'Stop QR code reader'
+	String get stopQr => 'Stop QR code reader';
+
+	/// en-US: 'No QR code found'
+	String get noQrCodeFound => 'No QR code found';
+
+	/// en-US: 'Scan image from device'
+	String get scanFile => 'Scan image from device';
+
+	/// en-US: 'Text'
+	String get raw => 'Text';
+
+	/// en-US: 'MFM'
+	String get mfm => 'MFM';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -9066,6 +9185,42 @@ class TranslationsMisskeyIOSkebStatusEnUs {
 
 	/// en-US: 'Requested {n} times'
 	String nRequests({required Object n}) => 'Requested ${n} times';
+}
+
+// Path: misskey.compression_.quality_
+class TranslationsMisskeyCompressionQualityEnUs {
+	TranslationsMisskeyCompressionQualityEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'High quality'
+	String get high => 'High quality';
+
+	/// en-US: 'Medium quality'
+	String get medium => 'Medium quality';
+
+	/// en-US: 'Low quality'
+	String get low => 'Low quality';
+}
+
+// Path: misskey.compression_.size_
+class TranslationsMisskeyCompressionSizeEnUs {
+	TranslationsMisskeyCompressionSizeEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Large size'
+	String get large => 'Large size';
+
+	/// en-US: 'Medium size'
+	String get medium => 'Medium size';
+
+	/// en-US: 'Small size'
+	String get small => 'Small size';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -9591,6 +9746,9 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	/// en-US: 'Number of possible drafts of server notes'
 	String get noteDraftLimit => 'Number of possible drafts of server notes';
 
+	/// en-US: 'Maximum number of simultaneous scheduled notes'
+	String get scheduledNoteLimit => 'Maximum number of simultaneous scheduled notes';
+
 	/// en-US: 'Watermark function'
 	String get watermarkAvailable => 'Watermark function';
 }
@@ -9992,8 +10150,8 @@ class TranslationsMisskeyDeckColumnsEnUs {
 	/// en-US: 'Role Timeline'
 	String get roleTimeline => 'Role Timeline';
 
-	/// en-US: 'Chat'
-	String get chat => 'Chat';
+	/// en-US: 'Chat with user'
+	String get chat => 'Chat with user';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -10530,6 +10688,12 @@ class TranslationsMisskeyImageEffectorFxsEnUs {
 	/// en-US: 'Grayscale'
 	String get grayscale => 'Grayscale';
 
+	/// en-US: 'Blur'
+	String get blur => 'Blur';
+
+	/// en-US: 'Pixelate'
+	String get pixelate => 'Pixelate';
+
 	/// en-US: 'Color Correction'
 	String get colorAdjust => 'Color Correction';
 
@@ -10562,6 +10726,9 @@ class TranslationsMisskeyImageEffectorFxsEnUs {
 
 	/// en-US: 'Tearing'
 	String get tearing => 'Tearing';
+
+	/// en-US: 'Fill'
+	String get fill => 'Fill';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -10580,6 +10747,15 @@ class TranslationsMisskeyImageEffectorFxPropsEnUs {
 
 	/// en-US: 'Size'
 	String get size => 'Size';
+
+	/// en-US: 'Radius'
+	String get radius => 'Radius';
+
+	/// en-US: 'Sample count'
+	String get samples => 'Sample count';
+
+	/// en-US: 'Position'
+	String get offset => 'Position';
 
 	/// en-US: 'Color'
 	String get color => 'Color';
@@ -10664,6 +10840,9 @@ class TranslationsMisskeyImageEffectorFxPropsEnUs {
 
 	/// en-US: 'Make black'
 	String get zoomLinesBlack => 'Make black';
+
+	/// en-US: 'Circular'
+	String get circle => 'Circular';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

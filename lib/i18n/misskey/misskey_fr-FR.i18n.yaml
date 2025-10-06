@@ -1277,6 +1277,7 @@ postForm: "Formulaire de publication"
 information: "Informations"
 inMinutes: "min"
 inDays: "j"
+widgets: "Widgets"
 chat_:
   invitations: "Inviter"
   noHistory: "Pas d'historique"
@@ -2380,6 +2381,10 @@ imageEffector_:
     angle: "Angle"
     scale: "Taille"
     size: "Taille"
+    offset: "Position"
     color: "Couleur"
     opacity: "Transparence"
     lightness: "Clair"
+qr_:
+  showTabTitle: "Affichage"
+  raw: "Texte"

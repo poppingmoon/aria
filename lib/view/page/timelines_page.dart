@@ -526,7 +526,7 @@ class _TimelinesPageButton extends ConsumerWidget {
     final tooltip = switch (buttonType) {
       TimelinesPageButtonType.announcements => t.misskey.announcements,
       TimelinesPageButtonType.antennas => t.misskey.antennas,
-      TimelinesPageButtonType.chat => t.misskey.chat,
+      TimelinesPageButtonType.chat => t.misskey.directMessage_short,
       TimelinesPageButtonType.channels => t.misskey.channel,
       TimelinesPageButtonType.clips => t.misskey.clips,
       TimelinesPageButtonType.drive => t.misskey.drive,

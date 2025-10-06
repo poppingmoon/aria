@@ -1189,6 +1189,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get information => 'Informace';
 	@override String get inMinutes => 'Minut';
 	@override String get inDays => 'Dnů';
+	@override String get widgets => 'Widgety';
 	@override late final _TranslationsMisskeyChatCsCz chat_ = _TranslationsMisskeyChatCsCz._(_root);
 	@override late final _TranslationsMisskeyDeliveryCsCz delivery_ = _TranslationsMisskeyDeliveryCsCz._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCsCz._(_root);
@@ -1252,6 +1253,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchCsCz search_ = _TranslationsMisskeySearchCsCz._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorCsCz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorCsCz._(_root);
 	@override late final _TranslationsMisskeyImageEffectorCsCz imageEffector_ = _TranslationsMisskeyImageEffectorCsCz._(_root);
+	@override late final _TranslationsMisskeyQrCsCz qr_ = _TranslationsMisskeyQrCsCz._(_root);
 }
 
 // Path: misskey.chat_
@@ -2340,6 +2342,17 @@ class _TranslationsMisskeyImageEffectorCsCz extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsCsCz fxProps_ = _TranslationsMisskeyImageEffectorFxPropsCsCz._(_root);
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrCsCz extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Zobrazit';
+	@override String get raw => 'Text';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCsCz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
@@ -2700,6 +2713,7 @@ class _TranslationsMisskeyImageEffectorFxPropsCsCz extends TranslationsMisskeyIm
 	// Translations
 	@override String get scale => 'Velikost';
 	@override String get size => 'Velikost';
+	@override String get offset => 'Pozice';
 	@override String get color => 'Barva';
 	@override String get opacity => 'Průhlednost';
 	@override String get lightness => 'Zesvětlit';

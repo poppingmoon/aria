@@ -1528,6 +1528,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get information => 'Informasi';
 	@override String get inMinutes => 'menit';
 	@override String get inDays => 'hari';
+	@override String get widgets => 'Widget';
 	@override late final _TranslationsMisskeyChatIdId chat_ = _TranslationsMisskeyChatIdId._(_root);
 	@override late final _TranslationsMisskeySettingsIdId settings_ = _TranslationsMisskeySettingsIdId._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);
@@ -1606,6 +1607,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorIdId watermarkEditor_ = _TranslationsMisskeyWatermarkEditorIdId._(_root);
 	@override late final _TranslationsMisskeyImageEffectorIdId imageEffector_ = _TranslationsMisskeyImageEffectorIdId._(_root);
+	@override late final _TranslationsMisskeyQrIdId qr_ = _TranslationsMisskeyQrIdId._(_root);
 }
 
 // Path: misskey.chat_
@@ -3101,6 +3103,17 @@ class _TranslationsMisskeyImageEffectorIdId extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsIdId fxProps_ = _TranslationsMisskeyImageEffectorFxPropsIdId._(_root);
 }
 
+// Path: misskey.qr_
+class _TranslationsMisskeyQrIdId extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => 'Tampilkan';
+	@override String get raw => 'Teks';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeIdId extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3704,6 +3717,7 @@ class _TranslationsMisskeyImageEffectorFxPropsIdId extends TranslationsMisskeyIm
 	@override String get angle => 'Sudut';
 	@override String get scale => 'Ukuran';
 	@override String get size => 'Ukuran';
+	@override String get offset => 'Posisi';
 	@override String get color => 'Warna';
 	@override String get opacity => 'Opasitas';
 	@override String get lightness => 'Menerangkan';

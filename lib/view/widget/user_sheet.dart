@@ -151,7 +151,7 @@ class UserSheet extends ConsumerWidget {
                 if (!account.isGuest)
                   ListTile(
                     leading: const Icon(Icons.mail),
-                    title: Text(t.misskey.sendMessage),
+                    title: Text(t.misskey.createUserSpecifiedNote),
                     onTap: () {
                       ref
                           .read(postNotifierProvider(account).notifier)

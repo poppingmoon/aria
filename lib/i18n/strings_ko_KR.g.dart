@@ -497,6 +497,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => '더 이상 고정할 수 없습니다.';
 	@override String get done => '완료';
 	@override String get processing => '처리중';
+	@override String get preprocessing => '준비중';
 	@override String get preview => '미리보기';
 	@override String get default_ => '기본값';
 	@override String defaultValueIs({required Object value}) => '기본값: ${value}';
@@ -1560,6 +1561,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => '이 서버는 화이트 리스트 제도로 운영 중 입니다. 정해진 리모트 서버가 아닌 경우 연합되지 않습니다.';
 	@override String get federationDisabled => '이 서버는 연합을 하지 않고 있습니다. 리모트 서버 유저와 통신을 할 수 없습니다.';
 	@override String get draft => '초안';
+	@override String get draftsAndScheduledNotes => '초안과 예약 게시물';
 	@override String get confirmOnReact => '리액션할 때 확인';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} "로 리액션하시겠습니까?';
 	@override String get markAsSensitiveConfirm => '이 미디어를 민감한 미디어로 설정하시겠습니까?';
@@ -1587,6 +1589,8 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get textCount => '문자 수';
 	@override String get information => '정보';
 	@override String get chat => '채팅';
+	@override String get directMessage => '채팅하기';
+	@override String get directMessage_short => '메시지';
 	@override String get migrateOldSettings => '기존 설정 정보를 이전';
 	@override String get migrateOldSettings_description => '보통은 자동으로 이루어지지만, 어떤 이유로 인해 성공적으로 이전이 이루어지지 않는 경우 수동으로 이전을 실행할 수 있습니다. 현재 설정 정보는 덮어쓰게 됩니다.';
 	@override String get compress => '압축';
@@ -1614,6 +1618,8 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => '모든 \'팁과 유용한 정보\'를 비표시';
 	@override String get defaultImageCompressionLevel => '기본 이미지 압축 정도';
 	@override String get defaultImageCompressionLevel_description => '낮추면 화질을 유지합니다만 파일 크기는 증가합니다. <br>높이면 파일 크기를 줄일 수 있습니다만 화질은 저하됩니다.';
+	@override String get defaultCompressionLevel => '기본 압축 정도 ';
+	@override String get defaultCompressionLevel_description => '낮추면 품질을 유지합니다만 파일 크기는 증가합니다. <br>높이면 파일 크기를 줄일 수 있습니다만 품질은 저하됩니다.';
 	@override String get inMinutes => '분';
 	@override String get inDays => '일';
 	@override String get safeModeEnabled => '세이프 모드가 활성화돼있습니다';
@@ -1621,6 +1627,14 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => '세이프 모드가 활성화돼있기에 커스텀 CSS는 적용되지 않습니다.';
 	@override String get themeIsDefaultBecauseSafeMode => '세이프 모드가 활성화돼있는 동안에는 기본 테마가 사용됩니다. 세이프 모드를 끄면 원래대로 돌아옵니다.';
 	@override String get thankYouForTestingBeta => '베타 버전의 검증에 협력해 주셔서 감사합니다!';
+	@override String get createUserSpecifiedNote => '사용자 지정 노트를 작성';
+	@override String get schedulePost => '게시 예약';
+	@override String scheduleToPostOnX({required Object x}) => '${x}에 게시를 예약합니다.';
+	@override String scheduledToPostOnX({required Object x}) => '${x}에 게시가 예약돼있습니다.';
+	@override String get schedule => '예약';
+	@override String get scheduled => '예약';
+	@override String get widgets => '위젯';
+	@override late final _TranslationsMisskeyCompressionKoKr compression_ = _TranslationsMisskeyCompressionKoKr._(_root);
 	@override late final _TranslationsMisskeyOrderKoKr order_ = _TranslationsMisskeyOrderKoKr._(_root);
 	@override late final _TranslationsMisskeyChatKoKr chat_ = _TranslationsMisskeyChatKoKr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteKoKr emojiPalette_ = _TranslationsMisskeyEmojiPaletteKoKr._(_root);
@@ -1722,6 +1736,8 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorKoKr imageEffector_ = _TranslationsMisskeyImageEffectorKoKr._(_root);
 	@override String get drafts => '초안';
 	@override late final _TranslationsMisskeyDraftsKoKr drafts_ = _TranslationsMisskeyDraftsKoKr._(_root);
+	@override String get qr => 'QR 코드';
+	@override late final _TranslationsMisskeyQrKoKr qr_ = _TranslationsMisskeyQrKoKr._(_root);
 }
 
 // Path: misskeyIO
@@ -1732,6 +1748,17 @@ class _TranslationsMisskeyIOKoKr extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusKoKr skebStatus_ = _TranslationsMisskeyIOSkebStatusKoKr._(_root);
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionKoKr extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityKoKr quality_ = _TranslationsMisskeyCompressionQualityKoKr._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeKoKr size_ = _TranslationsMisskeyCompressionSizeKoKr._(_root);
 }
 
 // Path: misskey.order_
@@ -1752,6 +1779,7 @@ class _TranslationsMisskeyChatKoKr extends TranslationsMisskeyChatEnUs {
 	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => '메시지';
 	@override String get noMessagesYet => '아직 메시지가 없습니다';
 	@override String get newMessage => '새로운 메시지';
 	@override String get individualChat => '개인 대화';
@@ -2793,7 +2821,7 @@ class _TranslationsMisskeyWidgetsKoKr extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListKoKr userList_ = _TranslationsMisskeyWidgetsUserListKoKr._(_root);
 	@override String get clicker => '클리커';
 	@override String get birthdayFollowings => '오늘이 생일인 유저';
-	@override String get chat => '채팅';
+	@override String get chat => '채팅하기';
 }
 
 // Path: misskey.cw_
@@ -3069,6 +3097,8 @@ class _TranslationsMisskeyNotificationKoKr extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => '새로운 팔로우 요청이 있습니다';
 	@override String get yourFollowRequestAccepted => '팔로우 요청이 수락되었습니다';
 	@override String get pollEnded => '투표 결과가 발표되었습니다';
+	@override String get scheduledNotePosted => '예약 노트가 게시됐습니다.';
+	@override String get scheduledNotePostFailed => '예약 노트의 게시에 실패했습니다.';
 	@override String get newNote => '새 게시물';
 	@override String unreadAntennaNote({required Object name}) => '안테나 ${name}';
 	@override String get roleAssigned => '역할이 부여 되었습니다.';
@@ -3670,7 +3700,9 @@ class _TranslationsMisskeyWatermarkEditorKoKr extends TranslationsMisskeyWaterma
 	@override String get opacity => '불투명도';
 	@override String get scale => '크기';
 	@override String get text => '텍스트';
+	@override String get qr => 'QR 코드';
 	@override String get position => '위치';
+	@override String get margin => '여백';
 	@override String get type => '종류';
 	@override String get image => '이미지';
 	@override String get advanced => '고급';
@@ -3685,6 +3717,7 @@ class _TranslationsMisskeyWatermarkEditorKoKr extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => '서브 물방울의 불투명도';
 	@override String get polkadotSubDotRadius => '서브 물방울의 크기';
 	@override String get polkadotSubDotDivisions => '서브 물방울의 수';
+	@override String get leaveBlankToAccountUrl => '빈칸일 경우 계정의 URL로 됩니다.';
 }
 
 // Path: misskey.imageEffector_
@@ -3722,6 +3755,32 @@ class _TranslationsMisskeyDraftsKoKr extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => '초안에서 복원\n';
 	@override String get restore => '복원';
 	@override String get listDrafts => '초안 목록';
+	@override String get schedule => '게시 예약';
+	@override String get listScheduledNotes => '예약 게시물 목록';
+	@override String get cancelSchedule => '예약 해제';
+}
+
+// Path: misskey.qr_
+class _TranslationsMisskeyQrKoKr extends TranslationsMisskeyQrEnUs {
+	_TranslationsMisskeyQrKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get showTabTitle => '보기';
+	@override String get readTabTitle => '읽어들이기';
+	@override String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
+	@override String get shareText => 'Fediverse로 저를 팔로우해 주세요!';
+	@override String get chooseCamera => '카메라 선택';
+	@override String get cannotToggleFlash => '플래시 선택 불가';
+	@override String get turnOnFlash => '플래시 켜기';
+	@override String get turnOffFlash => '플래시 끄기';
+	@override String get startQr => '코드 리더 재개';
+	@override String get stopQr => '코드 리더 정지';
+	@override String get noQrCodeFound => 'QR 코드를 찾을 수 없습니다.';
+	@override String get scanFile => '단말기의 이미지 스캔';
+	@override String get raw => '텍스트';
+	@override String get mfm => 'MFM';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3738,6 +3797,30 @@ class _TranslationsMisskeyIOSkebStatusKoKr extends TranslationsMisskeyIOSkebStat
 	@override String yenX({required Object x}) => 'JPY ${x}';
 	@override String nWorks({required Object n}) => '납품 실적 ${n}건';
 	@override String nRequests({required Object n}) => '거래 실적 ${n}건';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityKoKr extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => '고품질';
+	@override String get medium => '중간 품질';
+	@override String get low => '저품질';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeKoKr extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => '대형';
+	@override String get medium => '중형';
+	@override String get small => '소형';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -4062,6 +4145,7 @@ class _TranslationsMisskeyRoleOptionsKoKr extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes_caption => 'MIME 유형을 ';
 	@override String uploadableFileTypes_caption2({required Object x}) => '파일에 따라서는 유형을 검사하지 못하는 경우가 있습니다. 그러한 파일을 허가하는 경우에는 ${x}를 지정으로 추가해주십시오.';
 	@override String get noteDraftLimit => '서버측 노트 초안 작성 가능 수';
+	@override String get scheduledNoteLimit => '예약 게시물의 동시 작성 가능 수';
 	@override String get watermarkAvailable => '워터마크 기능의 사용 여부';
 }
 
@@ -4256,7 +4340,7 @@ class _TranslationsMisskeyDeckColumnsKoKr extends TranslationsMisskeyDeckColumns
 	@override String get mentions => '받은 멘션';
 	@override String get direct => '다이렉트';
 	@override String get roleTimeline => '역할 타임라인';
-	@override String get chat => '채팅';
+	@override String get chat => '채팅하기';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -4612,6 +4696,8 @@ class _TranslationsMisskeyImageEffectorFxsKoKr extends TranslationsMisskeyImageE
 	@override String get mirror => '미러';
 	@override String get invert => '색 반전';
 	@override String get grayscale => '흑백';
+	@override String get blur => '흐림 효과';
+	@override String get pixelate => '모자이크';
 	@override String get colorAdjust => '색조 보정';
 	@override String get colorClamp => '색 압축';
 	@override String get colorClampAdvanced => '색 압축(고급)';
@@ -4623,6 +4709,7 @@ class _TranslationsMisskeyImageEffectorFxsKoKr extends TranslationsMisskeyImageE
 	@override String get checker => '체크 무늬';
 	@override String get blockNoise => '노이즈 방지';
 	@override String get tearing => '티어링';
+	@override String get fill => '채우기';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4635,6 +4722,9 @@ class _TranslationsMisskeyImageEffectorFxPropsKoKr extends TranslationsMisskeyIm
 	@override String get angle => '각도';
 	@override String get scale => '크기';
 	@override String get size => '크기';
+	@override String get radius => '반지름';
+	@override String get samples => '샘플 수';
+	@override String get offset => '위치';
 	@override String get color => '색';
 	@override String get opacity => '불투명도';
 	@override String get normalize => '노멀라이즈';
@@ -4663,6 +4753,7 @@ class _TranslationsMisskeyImageEffectorFxPropsKoKr extends TranslationsMisskeyIm
 	@override String get zoomLinesThreshold => '집중선 폭';
 	@override String get zoomLinesMaskSize => '중앙 값';
 	@override String get zoomLinesBlack => '검은색으로 하기';
+	@override String get circle => '원형';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
