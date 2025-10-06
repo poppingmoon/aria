@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import 'explore_featured.dart';
+import 'explore_hashtags.dart';
 import 'explore_roles.dart';
 import 'explore_users.dart';
 
@@ -15,7 +16,7 @@ class ExplorePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(
-      length: 2 + (account.isGuest ? 0 : 1),
+      length: 3 + (account.isGuest ? 0 : 1),
       child: Scaffold(
         appBar: AppBar(
           title: Text(t.misskey.explore),
@@ -24,7 +25,10 @@ class ExplorePage extends ConsumerWidget {
               Tab(text: t.misskey.featured),
               Tab(text: t.misskey.users),
               if (!account.isGuest) Tab(text: t.misskey.roles),
+              Tab(text: t.misskey.hashtags),
             ],
+            isScrollable: !account.isGuest,
+            tabAlignment: !account.isGuest ? TabAlignment.center : null,
           ),
         ),
         body: TabBarView(
@@ -32,6 +36,7 @@ class ExplorePage extends ConsumerWidget {
             ExploreFeatured(account: account),
             ExploreUsers(account: account),
             if (!account.isGuest) ExploreRoles(account: account),
+            ExploreHashtags(account: account),
           ],
         ),
       ),
