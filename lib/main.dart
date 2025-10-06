@@ -264,10 +264,11 @@ class Aria extends HookConsumerWidget {
               NotificationType.createToken =>
                 t.misskey.notification_.createToken,
               NotificationType.scheduledNotePosted =>
-                t.aria.scheduledNotePosted,
+                t.misskey.notification_.scheduledNotePosted,
               NotificationType.scheduledNotePostFailed ||
               NotificationType.scheduleNote ||
-              NotificationType.scheduledNoteError => t.aria.scheduledNoteError,
+              NotificationType.scheduledNoteError =>
+                t.misskey.notification_.scheduledNotePostFailed,
               NotificationType.noteScheduled => t.aria.noteScheduled,
               NotificationType.app => body.header ?? body.body,
               NotificationType.test => t.misskey.notification_.testNotification,

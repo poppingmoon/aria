@@ -24,7 +24,7 @@ class ScheduledNotesPage extends ConsumerWidget {
     final notes = ref.watch(scheduledNotesNotifierProvider(account));
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.aria.scheduledNotes)),
+      appBar: AppBar(title: Text(t.misskey.scheduled)),
       body: PaginatedListView(
         paginationState: notes,
         itemBuilder: (context, note) => Column(
@@ -46,7 +46,9 @@ class ScheduledNotesPage extends ConsumerWidget {
                   const SizedBox(width: 8.0),
                   Expanded(
                     child: Text(
-                      t.aria.willBePostedOn(date: absoluteTime(note.createdAt)),
+                      t.misskey.scheduledToPostOnX(
+                        x: absoluteTime(note.createdAt),
+                      ),
                     ),
                   ),
                   const SizedBox(width: 8.0),

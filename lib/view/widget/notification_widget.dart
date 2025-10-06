@@ -425,7 +425,7 @@ class NotificationWidget extends ConsumerWidget {
             user: i,
             icon: const Icon(Icons.send),
             iconBackgroundColor: eventOther,
-            title: Text(t.aria.scheduledNotePosted),
+            title: Text(t.misskey.notification_.scheduledNotePosted),
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
@@ -444,7 +444,7 @@ class NotificationWidget extends ConsumerWidget {
           user: i,
           icon: const Icon(Icons.error_outline),
           iconBackgroundColor: eventOther,
-          title: Text(t.aria.scheduledNoteError),
+          title: Text(t.misskey.notification_.scheduledNotePostFailed),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

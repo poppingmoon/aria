@@ -450,18 +450,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Save to Drive'
 	String get saveToDrive => 'Save to Drive';
 
-	/// en-US: 'Schedule'
-	String get schedule => 'Schedule';
-
-	/// en-US: 'Scheduled note posting has failed'
-	String get scheduledNoteError => 'Scheduled note posting has failed';
-
-	/// en-US: 'Scheduled note has been posted'
-	String get scheduledNotePosted => 'Scheduled note has been posted';
-
-	/// en-US: 'Scheduled notes'
-	String get scheduledNotes => 'Scheduled notes';
-
 	/// en-US: 'Select an icon'
 	String get selectIcon => 'Select an icon';
 
@@ -655,9 +643,6 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Web browser'
 	String get webBrowser => 'Web browser';
-
-	/// en-US: 'Will be posted on {date}'
-	String willBePostedOn({required Object date}) => 'Will be posted on ${date}';
 }
 
 // Path: misskey

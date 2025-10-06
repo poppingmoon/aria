@@ -1450,10 +1450,10 @@
     "_notification.scheduledNotePosted": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
+        "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geplante Notiz wurde veröffentlicht"
+            "value": "Una nota programada ha sigut publicada"
           }
         },
         "en": {
@@ -1465,19 +1465,37 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La nota programada ha sido publicada"
+            "value": "Una nota programada ha sido publicada"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "La nota pianificata è stata pubblicata"
+            "value": "Pubblicazione Nota pianificata"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "予約済みのノートが投稿されました"
+            "value": "予約ノートが投稿されました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예약 노트가 게시됐습니다."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nota agendada foi publicada"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โน้ตที่กำหนดเวลาไว้ได้ถูกโพสต์แล้ว"
           }
         },
         "zh-Hans": {
@@ -1485,46 +1503,76 @@
             "state": "translated",
             "value": "定时帖子已发布"
           }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已排定發布貼文"
+          }
         }
       }
     },
     "_notification.scheduledNotePostFailed": {
       "extractionState": "manual",
       "localizations": {
-        "de": {
+        "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geplante Notiz konnte nicht veröffentlicht werden"
+            "value": "Ha fallat la publicació d'una nota programada"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scheduled note posting has failed"
+            "value": "Failed to post scheduled note"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La publicación de la nota programada ha fallado"
+            "value": "Ha fallado la publicación de una nota programada"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "La pubblicazione pianificata delle note non è riuscita"
+            "value": "Impossibile pubblicare la Nota pianificata"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "予約済みのノートの投稿に失敗しました"
+            "value": "予約ノートの投稿に失敗しました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예약 노트의 게시에 실패했습니다."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível publicar nota agendada"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ล้มเหลวในการโพสต์โน้ตที่กำหนดเวลาไว้"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "定时帖子发布失败"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "排定發布貼文失敗了"
           }
         }
       }
@@ -2021,47 +2069,6 @@
         }
       }
     },
-    "_notification._types.scheduleNote": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geplante Notiz konnte nicht veröffentlicht werden"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scheduled note posting has failed"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La publicación de la nota programada ha fallado"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La pubblicazione pianificata delle note non è riuscita"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "予約済みのノートの投稿に失敗しました"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "定时帖子发布失败"
-          }
-        }
-      }
-    },
     "_notification.noteScheduled": {
       "extractionState": "manual",
       "localizations": {
@@ -2093,47 +2100,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "帖子已定时"
-          }
-        }
-      }
-    },
-    "_notification.scheduledNoteError": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geplante Notiz konnte nicht veröffentlicht werden"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Scheduled note posting has failed"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La publicación de la nota programada ha fallado"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La pubblicazione pianificata delle note non è riuscita"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "予約済みのノートの投稿に失敗しました"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "定时帖子发布失败"
           }
         }
       }
