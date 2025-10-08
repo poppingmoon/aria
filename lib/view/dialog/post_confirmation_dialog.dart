@@ -75,11 +75,9 @@ class PostConfirmationDialog extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final channel = request.channelId != null
-        ? ref
-              .watch(channelNotifierProvider(account, request.channelId!))
-              .valueOrNull
+        ? ref.watch(channelNotifierProvider(account, request.channelId!)).value
         : null;
     final canScheduleNote =
         i?.policies?.canScheduleNote ??

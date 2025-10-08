@@ -42,7 +42,7 @@ class EmojiPage extends ConsumerWidget {
         onRefresh: () =>
             ref.refresh(emojiResponseProvider(account, name).future),
         child: switch (emoji) {
-          AsyncValue(valueOrNull: final emoji?) => ListView(
+          AsyncValue(value: final emoji?) => ListView(
             physics: const AlwaysScrollableScrollPhysics(),
             children: [
               const SizedBox(height: 8.0),

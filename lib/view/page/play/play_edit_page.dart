@@ -22,7 +22,7 @@ class PlayEditPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final play = playId != null
-        ? ref.watch(playNotifierProvider(account, playId!)).valueOrNull
+        ? ref.watch(playNotifierProvider(account, playId!)).value
         : null;
     final title = useState(play?.title);
     final summary = useState(play?.summary);

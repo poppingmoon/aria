@@ -1,5 +1,4 @@
 import 'package:flutter_apns_only/flutter_apns_only.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'apns_push_connector_provider.g.dart';

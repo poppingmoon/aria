@@ -124,7 +124,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                         right: 8.0,
                         bottom:
                             index == 0 &&
-                                (requests.valueOrNull?.items.isEmpty ?? true)
+                                (requests.value?.items.isEmpty ?? true)
                             ? 8.0
                             : 0.0,
                       ),
@@ -137,7 +137,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                               : Radius.zero,
                           bottom:
                               index == 0 &&
-                                  (requests.valueOrNull?.items.isEmpty ?? true)
+                                  (requests.value?.items.isEmpty ?? true)
                               ? const Radius.circular(8.0)
                               : Radius.zero,
                         ),
@@ -163,7 +163,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                   itemCount: nextRequests.value.length,
                 ),
                 if (nextRequests.value.isNotEmpty &&
-                    (requests.valueOrNull?.items.isNotEmpty ?? false))
+                    (requests.value?.items.isNotEmpty ?? false))
                   SliverToBoxAdapter(
                     child: Center(
                       child: Container(
@@ -204,7 +204,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                       child: const Divider(height: 0.0),
                     ),
                   ),
-                  itemCount: requests.valueOrNull?.items.length ?? 0,
+                  itemCount: requests.value?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
                   child: Center(

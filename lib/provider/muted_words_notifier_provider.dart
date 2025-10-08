@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -12,11 +13,9 @@ class MutedWordsNotifier extends _$MutedWordsNotifier {
   @override
   List<MuteWord> build(Account account, {bool hardMute = false}) {
     final mutedWords = ref.watch(
-      iNotifierProvider(account).select(
-        (i) => hardMute
-            ? i.valueOrNull?.hardMutedWords
-            : i.valueOrNull?.mutedWords,
-      ),
+      iNotifierProvider(
+        account,
+      ).select((i) => hardMute ? i.value?.hardMutedWords : i.value?.mutedWords),
     );
     if (mutedWords != null) {
       _save(mutedWords);

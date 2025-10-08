@@ -28,7 +28,7 @@ class ChannelPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final channel = ref
         .watch(channelNotifierProvider(account, channelId))
-        .valueOrNull;
+        .value;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['channels', channelId]);
 

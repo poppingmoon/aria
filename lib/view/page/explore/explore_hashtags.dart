@@ -23,7 +23,7 @@ class ExploreHashtags extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(hashtagsTrendProvider(account).future),
       child: switch (trend) {
-        AsyncValue(valueOrNull: final trend?) =>
+        AsyncValue(value: final trend?) =>
           trend.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

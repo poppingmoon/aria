@@ -482,7 +482,7 @@ class _TimelinesPageButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings?.account;
     final i = account != null
-        ? ref.watch(iNotifierProvider(account)).valueOrNull
+        ? ref.watch(iNotifierProvider(account)).value
         : null;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

@@ -6,22 +6,59 @@ part of 'overlay_layers_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(OverlayLayersNotifier)
+const overlayLayersNotifierProvider = OverlayLayersNotifierProvider._();
+
+final class OverlayLayersNotifierProvider
+    extends $NotifierProvider<OverlayLayersNotifier, List<Layer>> {
+  const OverlayLayersNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'overlayLayersNotifierProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$overlayLayersNotifierHash();
+
+  @$internal
+  @override
+  OverlayLayersNotifier create() => OverlayLayersNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<Layer> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<Layer>>(value),
+    );
+  }
+}
+
 String _$overlayLayersNotifierHash() =>
     r'578deffd986dd4c8a74a68d4da3f3020da90be08';
 
-/// See also [OverlayLayersNotifier].
-@ProviderFor(OverlayLayersNotifier)
-final overlayLayersNotifierProvider =
-    AutoDisposeNotifierProvider<OverlayLayersNotifier, List<Layer>>.internal(
-      OverlayLayersNotifier.new,
-      name: r'overlayLayersNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$overlayLayersNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$OverlayLayersNotifier = AutoDisposeNotifier<List<Layer>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
+  List<Layer> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<List<Layer>, List<Layer>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<Layer>, List<Layer>>,
+              List<Layer>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

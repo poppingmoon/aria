@@ -46,7 +46,7 @@ class ListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final list = ref
         .watch(listsNotifierProvider(account))
-        .valueOrNull
+        .value
         ?.firstWhereOrNull((list) => list.id == listId);
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['my', 'lists', listId]);

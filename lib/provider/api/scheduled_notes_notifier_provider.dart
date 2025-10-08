@@ -101,7 +101,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -127,7 +127,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
             .notes
             .schedule
             .delete(NotesScheduleDeleteRequest(noteId: noteId));
-        final value = state.valueOrNull;
+        final value = state.value;
         if (value != null) {
           state = AsyncValue.data(
             value.copyWith(
@@ -145,7 +145,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
         .notes
         .scheduled
         .cancel(NotesScheduledCancelRequest(draftId: noteId));
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

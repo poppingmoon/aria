@@ -29,7 +29,7 @@ class PostPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
-    final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account.value)).value;
     final request = ref.watch(
       postNotifierProvider(account.value, noteId: noteId),
     );
@@ -39,7 +39,7 @@ class PostPage extends HookConsumerWidget {
     final channel = request.channelId != null
         ? ref
               .watch(channelNotifierProvider(account.value, request.channelId!))
-              .valueOrNull
+              .value
         : null;
     final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
     final useHashtags = ref.watch(

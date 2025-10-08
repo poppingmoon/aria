@@ -11,6 +11,6 @@ Emoji? emoji(Ref ref, String host, String code) {
   assert(code.startsWith(':') && code.endsWith(':'));
   final name = code.substring(1, code.length - 1).replaceAll('@.', '');
   return ref.watch(
-    emojisNotifierProvider(host).select((emojis) => emojis.valueOrNull?[name]),
+    emojisNotifierProvider(host).select((emojis) => emojis.value?[name]),
   );
 }

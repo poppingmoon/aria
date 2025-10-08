@@ -19,12 +19,12 @@ class NoteClipsNotifier extends _$NoteClipsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   void addClip(Clip clip) {
-    state = AsyncValue.data([...?state.valueOrNull, clip]);
+    state = AsyncValue.data([...?state.value, clip]);
   }
 
   void removeClip(String clipId) {
     state = AsyncValue.data([
-      ...?state.valueOrNull?.where((clip) => clip.id != clipId),
+      ...?state.value?.where((clip) => clip.id != clipId),
     ]);
   }
 }

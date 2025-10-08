@@ -6,25 +6,47 @@ part of 'receive_sharing_intent_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(receiveSharingIntent)
+const receiveSharingIntentProvider = ReceiveSharingIntentProvider._();
+
+final class ReceiveSharingIntentProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<SharedMediaFile>>,
+          List<SharedMediaFile>,
+          Stream<List<SharedMediaFile>>
+        >
+    with
+        $FutureModifier<List<SharedMediaFile>>,
+        $StreamProvider<List<SharedMediaFile>> {
+  const ReceiveSharingIntentProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'receiveSharingIntentProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$receiveSharingIntentHash();
+
+  @$internal
+  @override
+  $StreamProviderElement<List<SharedMediaFile>> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<List<SharedMediaFile>> create(Ref ref) {
+    return receiveSharingIntent(ref);
+  }
+}
+
 String _$receiveSharingIntentHash() =>
     r'46ef562192a7b42d470b288eb18b4257868bdf75';
-
-/// See also [receiveSharingIntent].
-@ProviderFor(receiveSharingIntent)
-final receiveSharingIntentProvider =
-    AutoDisposeStreamProvider<List<SharedMediaFile>>.internal(
-      receiveSharingIntent,
-      name: r'receiveSharingIntentProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$receiveSharingIntentHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ReceiveSharingIntentRef =
-    AutoDisposeStreamProviderRef<List<SharedMediaFile>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,6 +1,33 @@
 targets:
   $default:
     builders:
+      freezed:
+        generate_for:
+          include:
+            - lib/model/**.dart
+            - lib/rust/**.dart
+          exclude:
+            - "**.freezed.dart"
+            - "**.g.dart"
+      json_serializable:
+        generate_for:
+          include:
+            - lib/model/**.dart
+          exclude:
+            - "**.freezed.dart"
+            - "**.g.dart"
+        options:
+          explicit_to_json: true
+          include_if_null: false
+      riverpod_generator:
+        generate_for:
+          include:
+            - lib/provider/**.dart
+            - lib/router/**.dart
+          exclude:
+            - "**.g.dart"
+        options:
+          provider_name_strip_pattern: ""
       slang_build_runner:
         options:
           base_locale: en-US
@@ -12,12 +39,3 @@ targets:
           string_interpolation: braces
           flat_map: false
           timestamp: false
-      json_serializable:
-        generate_for:
-          include:
-            - lib/**/*.dart
-          exclude:
-            - lib/**/*.g.dart
-        options:
-          explicit_to_json: true
-          include_if_null: false

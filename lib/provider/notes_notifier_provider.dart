@@ -77,7 +77,7 @@ class NotesNotifier extends _$NotesNotifier {
     if (note == null) {
       return;
     }
-    final i = ref.read(iNotifierProvider(account)).valueOrNull;
+    final i = ref.read(iNotifierProvider(account)).value;
     final isMyReaction = reacted.userId == i?.id;
     if (isMyReaction && note.myReaction == reacted.reaction) {
       return;
@@ -107,7 +107,7 @@ class NotesNotifier extends _$NotesNotifier {
     if (note == null) {
       return;
     }
-    final i = ref.read(iNotifierProvider(account)).valueOrNull;
+    final i = ref.read(iNotifierProvider(account)).value;
     final isMyReaction = unreacted.userId == i?.id;
     if (isMyReaction && note.myReaction == null) {
       return;
@@ -139,7 +139,7 @@ class NotesNotifier extends _$NotesNotifier {
     }
     final poll = note.poll;
     if (poll == null) return;
-    final i = ref.read(iNotifierProvider(account)).valueOrNull;
+    final i = ref.read(iNotifierProvider(account)).value;
     final isMyVote = pollVoted.userId == i?.id;
     if (isMyVote && poll.choices[pollVoted.choice].isVoted) {
       return;

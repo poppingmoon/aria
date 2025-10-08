@@ -6,190 +6,102 @@ part of 'user_clips_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userClipsNotifierHash() => r'85322d93ecf1fb1f5b434a89cc7a051cd913805d';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$UserClipsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Clip>> {
-  late final Account account;
-  late final String userId;
-
-  Stream<PaginationState<Clip>> build(Account account, String userId);
-}
-
-/// See also [UserClipsNotifier].
 @ProviderFor(UserClipsNotifier)
-const userClipsNotifierProvider = UserClipsNotifierFamily();
+const userClipsNotifierProvider = UserClipsNotifierFamily._();
 
-/// See also [UserClipsNotifier].
-class UserClipsNotifierFamily
-    extends Family<AsyncValue<PaginationState<Clip>>> {
-  /// See also [UserClipsNotifier].
-  const UserClipsNotifierFamily();
+final class UserClipsNotifierProvider
+    extends $StreamNotifierProvider<UserClipsNotifier, PaginationState<Clip>> {
+  const UserClipsNotifierProvider._({
+    required UserClipsNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'userClipsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [UserClipsNotifier].
-  UserClipsNotifierProvider call(Account account, String userId) {
-    return UserClipsNotifierProvider(account, userId);
+  @override
+  String debugGetCreateSourceHash() => _$userClipsNotifierHash();
+
+  @override
+  String toString() {
+    return r'userClipsNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  UserClipsNotifierProvider getProviderOverride(
-    covariant UserClipsNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.userId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'userClipsNotifierProvider';
-}
-
-/// See also [UserClipsNotifier].
-class UserClipsNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          UserClipsNotifier,
-          PaginationState<Clip>
-        > {
-  /// See also [UserClipsNotifier].
-  UserClipsNotifierProvider(Account account, String userId)
-    : this._internal(
-        () => UserClipsNotifier()
-          ..account = account
-          ..userId = userId,
-        from: userClipsNotifierProvider,
-        name: r'userClipsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$userClipsNotifierHash,
-        dependencies: UserClipsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            UserClipsNotifierFamily._allTransitiveDependencies,
-        account: account,
-        userId: userId,
-      );
-
-  UserClipsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.userId,
-  }) : super.internal();
-
-  final Account account;
-  final String userId;
-
-  @override
-  Stream<PaginationState<Clip>> runNotifierBuild(
-    covariant UserClipsNotifier notifier,
-  ) {
-    return notifier.build(account, userId);
-  }
-
-  @override
-  Override overrideWith(UserClipsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: UserClipsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        userId: userId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    UserClipsNotifier,
-    PaginationState<Clip>
-  >
-  createElement() {
-    return _UserClipsNotifierProviderElement(this);
-  }
+  UserClipsNotifier create() => UserClipsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is UserClipsNotifierProvider &&
-        other.account == account &&
-        other.userId == userId;
+    return other is UserClipsNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin UserClipsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Clip>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$userClipsNotifierHash() => r'acc98ccdcb5063831892d50dff6e6b92144d5eb4';
 
-  /// The parameter `userId` of this provider.
-  String get userId;
-}
-
-class _UserClipsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class UserClipsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           UserClipsNotifier,
-          PaginationState<Clip>
-        >
-    with UserClipsNotifierRef {
-  _UserClipsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Clip>>,
+          PaginationState<Clip>,
+          Stream<PaginationState<Clip>>,
+          (Account, String)
+        > {
+  const UserClipsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'userClipsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  UserClipsNotifierProvider call(Account account, String userId) =>
+      UserClipsNotifierProvider._(argument: (account, userId), from: this);
 
   @override
-  Account get account => (origin as UserClipsNotifierProvider).account;
-  @override
-  String get userId => (origin as UserClipsNotifierProvider).userId;
+  String toString() => r'userClipsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$UserClipsNotifier
+    extends $StreamNotifier<PaginationState<Clip>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get userId => _$args.$2;
+
+  Stream<PaginationState<Clip>> build(Account account, String userId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Clip>>, PaginationState<Clip>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Clip>>,
+                PaginationState<Clip>
+              >,
+              AsyncValue<PaginationState<Clip>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -29,7 +29,7 @@ class ListUsers extends ConsumerWidget {
       onRefresh: () =>
           ref.refresh(listUsersNotifierProvider(account, listId).future),
       child: switch (users) {
-        AsyncValue(valueOrNull: final users?) => ListView(
+        AsyncValue(value: final users?) => ListView(
           children: [
             Center(
               child: Container(

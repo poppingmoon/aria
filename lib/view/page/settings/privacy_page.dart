@@ -23,7 +23,7 @@ class PrivacyPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final theme = Theme.of(context);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 

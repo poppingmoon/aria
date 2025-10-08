@@ -25,13 +25,13 @@ class TimelineHeader extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(tabSettings.account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(tabSettings.account)).value;
     final hasUnreadNotification = i?.hasUnreadNotification ?? false;
     final hasUnreadAnnouncement = i?.hasUnreadAnnouncement ?? false;
     final hasUnreadChatMessages = i?.hasUnreadChatMessages ?? false;
     final onlineUsersCount = ref
         .watch(onlineUsersCountProvider(tabSettings.account))
-        .valueOrNull;
+        .value;
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
     );

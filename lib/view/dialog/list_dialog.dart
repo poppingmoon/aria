@@ -18,8 +18,8 @@ class ListDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final lists = ref.watch(listsNotifierProvider(account)).valueOrNull;
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final lists = ref.watch(listsNotifierProvider(account)).value;
+    final i = ref.watch(iNotifierProvider(account)).value;
 
     return SimpleDialog(
       title: Text(t.misskey.addToList),

@@ -6,151 +6,81 @@ part of 'note_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteHash() => r'a667fa12e07a5dd4bf19f2b5836fc85490a8106f';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [note].
 @ProviderFor(note)
-const noteProvider = NoteFamily();
+const noteProvider = NoteFamily._();
 
-/// See also [note].
-class NoteFamily extends Family<Note?> {
-  /// See also [note].
-  const NoteFamily();
+final class NoteProvider extends $FunctionalProvider<Note?, Note?, Note?>
+    with $Provider<Note?> {
+  const NoteProvider._({
+    required NoteFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'noteProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [note].
-  NoteProvider call(Account account, String noteId) {
-    return NoteProvider(account, noteId);
+  @override
+  String debugGetCreateSourceHash() => _$noteHash();
+
+  @override
+  String toString() {
+    return r'noteProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  NoteProvider getProviderOverride(covariant NoteProvider provider) {
-    return call(provider.account, provider.noteId);
+  $ProviderElement<Note?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Note? create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return note(ref, argument.$1, argument.$2);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'noteProvider';
-}
-
-/// See also [note].
-class NoteProvider extends Provider<Note?> {
-  /// See also [note].
-  NoteProvider(Account account, String noteId)
-    : this._internal(
-        (ref) => note(ref as NoteRef, account, noteId),
-        from: noteProvider,
-        name: r'noteProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$noteHash,
-        dependencies: NoteFamily._dependencies,
-        allTransitiveDependencies: NoteFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-      );
-
-  NoteProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-  }) : super.internal();
-
-  final Account account;
-  final String noteId;
-
-  @override
-  Override overrideWith(Note? Function(NoteRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Note? value) {
+    return $ProviderOverride(
       origin: this,
-      override: NoteProvider._internal(
-        (ref) => create(ref as NoteRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-      ),
+      providerOverride: $SyncValueProvider<Note?>(value),
     );
   }
 
   @override
-  ProviderElement<Note?> createElement() {
-    return _NoteProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is NoteProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is NoteProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NoteRef on ProviderRef<Note?> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$noteHash() => r'a667fa12e07a5dd4bf19f2b5836fc85490a8106f';
 
-  /// The parameter `noteId` of this provider.
-  String get noteId;
-}
+final class NoteFamily extends $Family
+    with $FunctionalFamilyOverride<Note?, (Account, String)> {
+  const NoteFamily._()
+    : super(
+        retry: null,
+        name: r'noteProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
 
-class _NoteProviderElement extends ProviderElement<Note?> with NoteRef {
-  _NoteProviderElement(super.provider);
+  NoteProvider call(Account account, String noteId) =>
+      NoteProvider._(argument: (account, noteId), from: this);
 
   @override
-  Account get account => (origin as NoteProvider).account;
-  @override
-  String get noteId => (origin as NoteProvider).noteId;
+  String toString() => r'noteProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -23,7 +23,7 @@ class AccountPreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
 
     return ListTile(
       leading: i != null

@@ -73,7 +73,7 @@ class UserHome extends ConsumerWidget {
         ).future,
       ),
       child: switch (user) {
-        AsyncValue(valueOrNull: final user?) => _UserHome(
+        AsyncValue(value: final user?) => _UserHome(
           account: account,
           user: user,
         ),
@@ -106,9 +106,9 @@ class _UserHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final skebStatus = meta?.enableSkebStatus ?? false
-        ? ref.watch(skebStatusProvider(account, user.id)).valueOrNull
+        ? ref.watch(skebStatusProvider(account, user.id)).value
         : null;
     final squareAvatars = ref.watch(
       generalSettingsNotifierProvider.select(

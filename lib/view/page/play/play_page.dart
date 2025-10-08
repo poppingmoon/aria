@@ -37,7 +37,7 @@ class PlayPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
-    final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account.value)).value;
     final play = ref.watch(playNotifierProvider(this.account, playId));
     final serverUrl = ref.watch(serverUrlNotifierProvider(this.account.host));
     final url = serverUrl.replace(pathSegments: ['play', playId]);
@@ -47,7 +47,7 @@ class PlayPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(play.valueOrNull?.title ?? 'Play'),
+        title: Text(play.value?.title ?? 'Play'),
         actions: [
           PopupMenuButton<void>(
             itemBuilder: (context) => [
@@ -56,7 +56,7 @@ class PlayPage extends HookConsumerWidget {
                   onTap: () {
                     ref
                         .read(postNotifierProvider(account.value).notifier)
-                        .setText('${play.valueOrNull?.title} $url');
+                        .setText('${play.value?.title} $url');
                     context.push('/${account.value}/post');
                   },
                   child: Text(t.misskey.shareWithNote),
@@ -71,18 +71,18 @@ class PlayPage extends HookConsumerWidget {
               ),
               PopupMenuItem(
                 onTap: () => SharePlus.instance.share(
-                  ShareParams(text: '${play.valueOrNull?.title} $url'),
+                  ShareParams(text: '${play.value?.title} $url'),
                 ),
                 child: Text(t.misskey.share),
               ),
               if (!account.value.isGuest &&
-                  play.valueOrNull?.user.username == account.value.username)
+                  play.value?.user.username == account.value.username)
                 PopupMenuItem(
                   onTap: () =>
                       context.push('/${account.value}/play/$playId/edit'),
                   child: Text(t.misskey.edit),
                 ),
-              if (play.valueOrNull?.user case final user?
+              if (play.value?.user case final user?
                   when !account.value.isGuest && i?.id != user.id)
                 PopupMenuItem(
                   onTap: () async {
@@ -126,7 +126,7 @@ class PlayPage extends HookConsumerWidget {
         ],
       ),
       body: switch (play) {
-        AsyncValue(valueOrNull: final play?) => Center(
+        AsyncValue(value: final play?) => Center(
           child: Container(
             width: 700.0,
             height: double.infinity,
@@ -267,7 +267,7 @@ class PlayPage extends HookConsumerWidget {
       floatingActionButton:
           !account.value.isGuest &&
               this.account == account.value &&
-              play.valueOrNull?.user.username == account.value.username
+              play.value?.user.username == account.value.username
           ? FloatingActionButton(
               tooltip: t.misskey.edit,
               onPressed: () =>

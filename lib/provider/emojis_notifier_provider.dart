@@ -92,7 +92,7 @@ class EmojisNotifier extends _$EmojisNotifier {
   }
 
   Future<void> reloadEmojis({bool force = false}) async {
-    if (force || (state.valueOrNull?.isEmpty ?? true) || !_recentlyFetched) {
+    if (force || (state.value?.isEmpty ?? true) || !_recentlyFetched) {
       final emojis = await _fetchEmojis();
       state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
       await _save(emojis);
@@ -104,18 +104,18 @@ class EmojisNotifier extends _$EmojisNotifier {
   }
 
   void add(Emoji emoji) {
-    state = AsyncData({...?state.valueOrNull, emoji.name: emoji});
+    state = AsyncData({...?state.value, emoji.name: emoji});
   }
 
   void addAll(Iterable<Emoji> emojis) {
     state = AsyncData({
-      ...?state.valueOrNull,
+      ...?state.value,
       for (final emoji in emojis) emoji.name: emoji,
     });
   }
 
   void deleteAll(Iterable<String> names) {
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value == null) return;
     final emojis = Map.of(value);
     emojis.removeWhere((key, _) => names.contains(key));

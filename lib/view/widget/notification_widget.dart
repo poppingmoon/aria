@@ -42,13 +42,9 @@ class NotificationWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final followRequests = (i?.isLocked ?? false)
-        ? ref
-                  .watch(followRequestsNotifierProvider(account))
-                  .valueOrNull
-                  ?.items ??
-              []
+        ? ref.watch(followRequestsNotifierProvider(account)).value?.items ?? []
         : <FollowRequest>[];
     final avatarScale = ref.watch(
       generalSettingsNotifierProvider.select(

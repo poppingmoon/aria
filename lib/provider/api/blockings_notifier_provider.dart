@@ -35,7 +35,7 @@ class BlockingsNotifier extends _$BlockingsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -58,7 +58,7 @@ class BlockingsNotifier extends _$BlockingsNotifier {
 
   Future<void> delete(String userId) async {
     await _misskey.blocking.delete(BlockDeleteRequest(userId: userId));
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

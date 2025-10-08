@@ -58,7 +58,7 @@ class ClipsNotifier extends _$ClipsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -89,7 +89,7 @@ class ClipsNotifier extends _$ClipsNotifier {
         isPublic: isPublic,
       ),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [clip, ...value.items]));
   }
 
@@ -107,7 +107,7 @@ class ClipsNotifier extends _$ClipsNotifier {
         isPublic: isPublic,
       ),
     );
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items
@@ -120,7 +120,7 @@ class ClipsNotifier extends _$ClipsNotifier {
 
   Future<void> delete(String clipId) async {
     await _misskey.clips.delete(ClipsDeleteRequest(clipId: clipId));
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items.where((clip) => clip.id != clipId).toList(),
@@ -133,7 +133,7 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.addNote(
       ClipsAddNoteRequest(clipId: clipId, noteId: noteId),
     );
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items
@@ -156,7 +156,7 @@ class ClipsNotifier extends _$ClipsNotifier {
   }
 
   void decrementNotesCount(String clipId) {
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items
@@ -175,7 +175,7 @@ class ClipsNotifier extends _$ClipsNotifier {
 
   Future<void> favorite(String clipId) async {
     await _misskey.clips.favorite(ClipsFavoriteRequest(clipId: clipId));
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items
@@ -195,7 +195,7 @@ class ClipsNotifier extends _$ClipsNotifier {
 
   Future<void> unfavorite(String clipId) async {
     await _misskey.clips.unfavorite(ClipsUnfavoriteRequest(clipId: clipId));
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value.copyWith(
           items: value.items

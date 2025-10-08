@@ -54,7 +54,7 @@ class UrlPreview extends HookConsumerWidget {
             lang: Localizations.localeOf(context).toLanguageTag(),
           ),
         )
-        .valueOrNull;
+        .value;
     final isPlayerOpen = useState(false);
     final thumbnail = summalyResult?.thumbnail;
     final hideThumbnail =

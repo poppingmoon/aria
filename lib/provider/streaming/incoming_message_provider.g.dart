@@ -6,278 +6,172 @@ part of 'incoming_message_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$incomingMessageHash() => r'61d2bd51c99de48e11c19e30957ffcc0e8e62420';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(_ErrorCountNotifier)
+const _errorCountNotifierProvider = _ErrorCountNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class _ErrorCountNotifierProvider
+    extends $NotifierProvider<_ErrorCountNotifier, int> {
+  const _ErrorCountNotifierProvider._({
+    required _ErrorCountNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'_errorCountNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$_errorCountNotifierHash();
+
+  @override
+  String toString() {
+    return r'_errorCountNotifierProvider'
+        ''
+        '($argument)';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [incomingMessage].
-@ProviderFor(incomingMessage)
-const incomingMessageProvider = IncomingMessageFamily();
-
-/// See also [incomingMessage].
-class IncomingMessageFamily extends Family<AsyncValue<IncomingMessage>> {
-  /// See also [incomingMessage].
-  const IncomingMessageFamily();
-
-  /// See also [incomingMessage].
-  IncomingMessageProvider call(Account account) {
-    return IncomingMessageProvider(account);
-  }
-
+  @$internal
   @override
-  IncomingMessageProvider getProviderOverride(
-    covariant IncomingMessageProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  _ErrorCountNotifier create() => _ErrorCountNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'incomingMessageProvider';
-}
-
-/// See also [incomingMessage].
-class IncomingMessageProvider
-    extends AutoDisposeStreamProvider<IncomingMessage> {
-  /// See also [incomingMessage].
-  IncomingMessageProvider(Account account)
-    : this._internal(
-        (ref) => incomingMessage(ref as IncomingMessageRef, account),
-        from: incomingMessageProvider,
-        name: r'incomingMessageProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$incomingMessageHash,
-        dependencies: IncomingMessageFamily._dependencies,
-        allTransitiveDependencies:
-            IncomingMessageFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  IncomingMessageProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Override overrideWith(
-    Stream<IncomingMessage> Function(IncomingMessageRef provider) create,
-  ) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(int value) {
+    return $ProviderOverride(
       origin: this,
-      override: IncomingMessageProvider._internal(
-        (ref) => create(ref as IncomingMessageRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<int>(value),
     );
   }
 
   @override
-  AutoDisposeStreamProviderElement<IncomingMessage> createElement() {
-    return _IncomingMessageProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is IncomingMessageProvider && other.account == account;
+    return other is _ErrorCountNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin IncomingMessageRef on AutoDisposeStreamProviderRef<IncomingMessage> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
-
-class _IncomingMessageProviderElement
-    extends AutoDisposeStreamProviderElement<IncomingMessage>
-    with IncomingMessageRef {
-  _IncomingMessageProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as IncomingMessageProvider).account;
-}
-
-String _$errorCountNotifierHash() =>
+String _$_errorCountNotifierHash() =>
     r'e8fae60d8a4e02c13cf9eb77505725782503ab84';
 
-abstract class _$ErrorCountNotifier extends BuildlessNotifier<int> {
-  late final Account account;
-
-  int build(Account account);
-}
-
-/// See also [_ErrorCountNotifier].
-@ProviderFor(_ErrorCountNotifier)
-const _errorCountNotifierProvider = _ErrorCountNotifierFamily();
-
-/// See also [_ErrorCountNotifier].
-class _ErrorCountNotifierFamily extends Family<int> {
-  /// See also [_ErrorCountNotifier].
-  const _ErrorCountNotifierFamily();
-
-  /// See also [_ErrorCountNotifier].
-  _ErrorCountNotifierProvider call(Account account) {
-    return _ErrorCountNotifierProvider(account);
-  }
-
-  @override
-  _ErrorCountNotifierProvider getProviderOverride(
-    covariant _ErrorCountNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'_errorCountNotifierProvider';
-}
-
-/// See also [_ErrorCountNotifier].
-class _ErrorCountNotifierProvider
-    extends NotifierProviderImpl<_ErrorCountNotifier, int> {
-  /// See also [_ErrorCountNotifier].
-  _ErrorCountNotifierProvider(Account account)
-    : this._internal(
-        () => _ErrorCountNotifier()..account = account,
-        from: _errorCountNotifierProvider,
+final class _ErrorCountNotifierFamily extends $Family
+    with $ClassFamilyOverride<_ErrorCountNotifier, int, int, int, Account> {
+  const _ErrorCountNotifierFamily._()
+    : super(
+        retry: null,
         name: r'_errorCountNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$errorCountNotifierHash,
-        dependencies: _ErrorCountNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            _ErrorCountNotifierFamily._allTransitiveDependencies,
-        account: account,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
       );
 
-  _ErrorCountNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+  _ErrorCountNotifierProvider call(Account account) =>
+      _ErrorCountNotifierProvider._(argument: account, from: this);
 
   @override
-  int runNotifierBuild(covariant _ErrorCountNotifier notifier) {
-    return notifier.build(account);
+  String toString() => r'_errorCountNotifierProvider';
+}
+
+abstract class _$ErrorCountNotifier extends $Notifier<int> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  int build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<int, int>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<int, int>,
+              int,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+@ProviderFor(incomingMessage)
+const incomingMessageProvider = IncomingMessageFamily._();
+
+final class IncomingMessageProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<IncomingMessage>,
+          IncomingMessage,
+          Stream<IncomingMessage>
+        >
+    with $FutureModifier<IncomingMessage>, $StreamProvider<IncomingMessage> {
+  const IncomingMessageProvider._({
+    required IncomingMessageFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'incomingMessageProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$incomingMessageHash();
+
+  @override
+  String toString() {
+    return r'incomingMessageProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  Override overrideWith(_ErrorCountNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: _ErrorCountNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
+  $StreamProviderElement<IncomingMessage> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
 
   @override
-  NotifierProviderElement<_ErrorCountNotifier, int> createElement() {
-    return _ErrorCountNotifierProviderElement(this);
+  Stream<IncomingMessage> create(Ref ref) {
+    final argument = this.argument as Account;
+    return incomingMessage(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is _ErrorCountNotifierProvider && other.account == account;
+    return other is IncomingMessageProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin _ErrorCountNotifierRef on NotifierProviderRef<int> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$incomingMessageHash() => r'61d2bd51c99de48e11c19e30957ffcc0e8e62420';
 
-class _ErrorCountNotifierProviderElement
-    extends NotifierProviderElement<_ErrorCountNotifier, int>
-    with _ErrorCountNotifierRef {
-  _ErrorCountNotifierProviderElement(super.provider);
+final class IncomingMessageFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<IncomingMessage>, Account> {
+  const IncomingMessageFamily._()
+    : super(
+        retry: null,
+        name: r'incomingMessageProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  IncomingMessageProvider call(Account account) =>
+      IncomingMessageProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as _ErrorCountNotifierProvider).account;
+  String toString() => r'incomingMessageProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

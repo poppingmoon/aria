@@ -33,7 +33,7 @@ class MutingsNotifier extends _$MutingsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -54,7 +54,7 @@ class MutingsNotifier extends _$MutingsNotifier {
 
   Future<void> delete(String userId) async {
     await _misskey.mute.delete(MuteDeleteRequest(userId: userId));
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

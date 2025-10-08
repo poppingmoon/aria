@@ -47,7 +47,7 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }

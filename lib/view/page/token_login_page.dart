@@ -48,7 +48,7 @@ class TokenLoginPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
+    final servers = ref.watch(misskeyServersProvider).value ?? [];
     final queryController = useTextEditingController(text: this.query);
     final query = useState(this.query ?? '');
     final host = query.value

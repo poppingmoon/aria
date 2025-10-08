@@ -6,22 +6,52 @@ part of 'misskey_themes_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyThemesHash() => r'58d388567c15c55d718897ec26005e8567f024da';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [misskeyThemes].
 @ProviderFor(misskeyThemes)
-final misskeyThemesProvider = Provider<List<MisskeyTheme?>>.internal(
-  misskeyThemes,
-  name: r'misskeyThemesProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$misskeyThemesHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const misskeyThemesProvider = MisskeyThemesProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef MisskeyThemesRef = ProviderRef<List<MisskeyTheme?>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class MisskeyThemesProvider
+    extends
+        $FunctionalProvider<
+          List<MisskeyTheme?>,
+          List<MisskeyTheme?>,
+          List<MisskeyTheme?>
+        >
+    with $Provider<List<MisskeyTheme?>> {
+  const MisskeyThemesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'misskeyThemesProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$misskeyThemesHash();
+
+  @$internal
+  @override
+  $ProviderElement<List<MisskeyTheme?>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  List<MisskeyTheme?> create(Ref ref) {
+    return misskeyThemes(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<MisskeyTheme?> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<MisskeyTheme?>>(value),
+    );
+  }
+}
+
+String _$misskeyThemesHash() => r'58d388567c15c55d718897ec26005e8567f024da';

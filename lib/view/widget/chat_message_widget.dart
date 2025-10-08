@@ -45,7 +45,7 @@ class ChatMessageWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final nodes = message.text != null
         ? ref.watch(parsedMfmProvider(message.text!))
         : null;
@@ -203,7 +203,7 @@ class _ChatMessageSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final isMyMessage = message.fromUserId == i?.id;
     final user = message.fromUser ?? (isMyMessage ? i : this.user);
     final theme = Theme.of(context);
@@ -414,7 +414,7 @@ class _ReactionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final scale = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.reactionsDisplayScale,

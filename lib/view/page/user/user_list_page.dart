@@ -26,7 +26,7 @@ class UserListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final list = ref
         .watch(listProvider(account, listId, forPublic: true))
-        .valueOrNull;
+        .value;
     final users = ref.watch(
       listUsersNotifierProvider(account, listId, forPublic: true),
     );
@@ -48,7 +48,7 @@ class UserListPage extends HookConsumerWidget {
           ),
           const SizedBox(height: 8.0),
           ...switch (users) {
-            AsyncValue(valueOrNull: final users?) => [
+            AsyncValue(value: final users?) => [
               for (final (index, user) in users.indexed) ...[
                 Center(
                   child: Container(

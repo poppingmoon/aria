@@ -37,7 +37,7 @@ class ChannelNotifier extends _$ChannelNotifier {
 
   Future<void> follow() async {
     await _misskey.channels.follow(ChannelsFollowRequest(channelId: channelId));
-    final channel = state.valueOrNull;
+    final channel = state.value;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFollowing: true));
     }
@@ -47,7 +47,7 @@ class ChannelNotifier extends _$ChannelNotifier {
     await _misskey.channels.unfollow(
       ChannelsUnfollowRequest(channelId: channelId),
     );
-    final channel = state.valueOrNull;
+    final channel = state.value;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFollowing: false));
     }
@@ -57,7 +57,7 @@ class ChannelNotifier extends _$ChannelNotifier {
     await _misskey.channels.favorite(
       ChannelsFavoriteRequest(channelId: channelId),
     );
-    final channel = state.valueOrNull;
+    final channel = state.value;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFavorited: true));
     }
@@ -67,7 +67,7 @@ class ChannelNotifier extends _$ChannelNotifier {
     await _misskey.channels.unfavorite(
       ChannelsUnfavoriteRequest(channelId: channelId),
     );
-    final channel = state.valueOrNull;
+    final channel = state.value;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFavorited: false));
     }

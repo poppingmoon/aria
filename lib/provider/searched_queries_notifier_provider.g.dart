@@ -6,165 +6,105 @@ part of 'searched_queries_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchedQueriesNotifierHash() =>
-    r'1b32cc72895e422e8c03d9d0d97566a3917fc46a';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$SearchedQueriesNotifier
-    extends BuildlessAutoDisposeNotifier<List<String>> {
-  late final Account account;
-
-  List<String> build(Account account);
-}
-
-/// See also [SearchedQueriesNotifier].
 @ProviderFor(SearchedQueriesNotifier)
-const searchedQueriesNotifierProvider = SearchedQueriesNotifierFamily();
+const searchedQueriesNotifierProvider = SearchedQueriesNotifierFamily._();
 
-/// See also [SearchedQueriesNotifier].
-class SearchedQueriesNotifierFamily extends Family<List<String>> {
-  /// See also [SearchedQueriesNotifier].
-  const SearchedQueriesNotifierFamily();
+final class SearchedQueriesNotifierProvider
+    extends $NotifierProvider<SearchedQueriesNotifier, List<String>> {
+  const SearchedQueriesNotifierProvider._({
+    required SearchedQueriesNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'searchedQueriesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [SearchedQueriesNotifier].
-  SearchedQueriesNotifierProvider call(Account account) {
-    return SearchedQueriesNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$searchedQueriesNotifierHash();
+
+  @override
+  String toString() {
+    return r'searchedQueriesNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  SearchedQueriesNotifierProvider getProviderOverride(
-    covariant SearchedQueriesNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  SearchedQueriesNotifier create() => SearchedQueriesNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'searchedQueriesNotifierProvider';
-}
-
-/// See also [SearchedQueriesNotifier].
-class SearchedQueriesNotifierProvider
-    extends
-        AutoDisposeNotifierProviderImpl<SearchedQueriesNotifier, List<String>> {
-  /// See also [SearchedQueriesNotifier].
-  SearchedQueriesNotifierProvider(Account account)
-    : this._internal(
-        () => SearchedQueriesNotifier()..account = account,
-        from: searchedQueriesNotifierProvider,
-        name: r'searchedQueriesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$searchedQueriesNotifierHash,
-        dependencies: SearchedQueriesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            SearchedQueriesNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  SearchedQueriesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  List<String> runNotifierBuild(covariant SearchedQueriesNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(SearchedQueriesNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<String> value) {
+    return $ProviderOverride(
       origin: this,
-      override: SearchedQueriesNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<List<String>>(value),
     );
   }
 
   @override
-  AutoDisposeNotifierProviderElement<SearchedQueriesNotifier, List<String>>
-  createElement() {
-    return _SearchedQueriesNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is SearchedQueriesNotifierProvider && other.account == account;
+    return other is SearchedQueriesNotifierProvider &&
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin SearchedQueriesNotifierRef
-    on AutoDisposeNotifierProviderRef<List<String>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$searchedQueriesNotifierHash() =>
+    r'1b32cc72895e422e8c03d9d0d97566a3917fc46a';
 
-class _SearchedQueriesNotifierProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<
+final class SearchedQueriesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           SearchedQueriesNotifier,
-          List<String>
-        >
-    with SearchedQueriesNotifierRef {
-  _SearchedQueriesNotifierProviderElement(super.provider);
+          List<String>,
+          List<String>,
+          List<String>,
+          Account
+        > {
+  const SearchedQueriesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'searchedQueriesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  SearchedQueriesNotifierProvider call(Account account) =>
+      SearchedQueriesNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as SearchedQueriesNotifierProvider).account;
+  String toString() => r'searchedQueriesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$SearchedQueriesNotifier extends $Notifier<List<String>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  List<String> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<List<String>, List<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<String>, List<String>>,
+              List<String>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

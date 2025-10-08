@@ -6,218 +6,127 @@ part of 'emoji_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojiUrlHash() => r'4d37f9640e496e591bfeb4bbf9f9c97ff6a6004b';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(emojiUrl)
+const emojiUrlProvider = EmojiUrlFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class EmojiUrlProvider
+    extends
+        $FunctionalProvider<
+          (String, String),
+          (String, String),
+          (String, String)
+        >
+    with $Provider<(String, String)> {
+  const EmojiUrlProvider._({
+    required EmojiUrlFamily super.from,
+    required (
+      Account,
+      String, {
+      String? url,
+      String? host,
+      bool useOriginalSize,
+    })
+    super.argument,
+  }) : super(
+         retry: null,
+         name: r'emojiUrlProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$emojiUrlHash();
+
+  @override
+  String toString() {
+    return r'emojiUrlProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  $ProviderElement<(String, String)> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  (String, String) create(Ref ref) {
+    final argument =
+        this.argument
+            as (
+              Account,
+              String, {
+              String? url,
+              String? host,
+              bool useOriginalSize,
+            });
+    return emojiUrl(
+      ref,
+      argument.$1,
+      argument.$2,
+      url: argument.url,
+      host: argument.host,
+      useOriginalSize: argument.useOriginalSize,
+    );
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue((String, String) value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<(String, String)>(value),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is EmojiUrlProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-/// See also [emojiUrl].
-@ProviderFor(emojiUrl)
-const emojiUrlProvider = EmojiUrlFamily();
+String _$emojiUrlHash() => r'4d37f9640e496e591bfeb4bbf9f9c97ff6a6004b';
 
-/// See also [emojiUrl].
-class EmojiUrlFamily extends Family<(String, String)> {
-  /// See also [emojiUrl].
-  const EmojiUrlFamily();
+final class EmojiUrlFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          (String, String),
+          (Account, String, {String? url, String? host, bool useOriginalSize})
+        > {
+  const EmojiUrlFamily._()
+    : super(
+        retry: null,
+        name: r'emojiUrlProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-  /// See also [emojiUrl].
   EmojiUrlProvider call(
     Account account,
     String emoji, {
     String? url,
     String? host,
     bool useOriginalSize = false,
-  }) {
-    return EmojiUrlProvider(
+  }) => EmojiUrlProvider._(
+    argument: (
       account,
       emoji,
       url: url,
       host: host,
       useOriginalSize: useOriginalSize,
-    );
-  }
+    ),
+    from: this,
+  );
 
   @override
-  EmojiUrlProvider getProviderOverride(covariant EmojiUrlProvider provider) {
-    return call(
-      provider.account,
-      provider.emoji,
-      url: provider.url,
-      host: provider.host,
-      useOriginalSize: provider.useOriginalSize,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'emojiUrlProvider';
+  String toString() => r'emojiUrlProvider';
 }
-
-/// See also [emojiUrl].
-class EmojiUrlProvider extends AutoDisposeProvider<(String, String)> {
-  /// See also [emojiUrl].
-  EmojiUrlProvider(
-    Account account,
-    String emoji, {
-    String? url,
-    String? host,
-    bool useOriginalSize = false,
-  }) : this._internal(
-         (ref) => emojiUrl(
-           ref as EmojiUrlRef,
-           account,
-           emoji,
-           url: url,
-           host: host,
-           useOriginalSize: useOriginalSize,
-         ),
-         from: emojiUrlProvider,
-         name: r'emojiUrlProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$emojiUrlHash,
-         dependencies: EmojiUrlFamily._dependencies,
-         allTransitiveDependencies: EmojiUrlFamily._allTransitiveDependencies,
-         account: account,
-         emoji: emoji,
-         url: url,
-         host: host,
-         useOriginalSize: useOriginalSize,
-       );
-
-  EmojiUrlProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.emoji,
-    required this.url,
-    required this.host,
-    required this.useOriginalSize,
-  }) : super.internal();
-
-  final Account account;
-  final String emoji;
-  final String? url;
-  final String? host;
-  final bool useOriginalSize;
-
-  @override
-  Override overrideWith(
-    (String, String) Function(EmojiUrlRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: EmojiUrlProvider._internal(
-        (ref) => create(ref as EmojiUrlRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        emoji: emoji,
-        url: url,
-        host: host,
-        useOriginalSize: useOriginalSize,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeProviderElement<(String, String)> createElement() {
-    return _EmojiUrlProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is EmojiUrlProvider &&
-        other.account == account &&
-        other.emoji == emoji &&
-        other.url == url &&
-        other.host == host &&
-        other.useOriginalSize == useOriginalSize;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, emoji.hashCode);
-    hash = _SystemHash.combine(hash, url.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-    hash = _SystemHash.combine(hash, useOriginalSize.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin EmojiUrlRef on AutoDisposeProviderRef<(String, String)> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `emoji` of this provider.
-  String get emoji;
-
-  /// The parameter `url` of this provider.
-  String? get url;
-
-  /// The parameter `host` of this provider.
-  String? get host;
-
-  /// The parameter `useOriginalSize` of this provider.
-  bool get useOriginalSize;
-}
-
-class _EmojiUrlProviderElement
-    extends AutoDisposeProviderElement<(String, String)>
-    with EmojiUrlRef {
-  _EmojiUrlProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as EmojiUrlProvider).account;
-  @override
-  String get emoji => (origin as EmojiUrlProvider).emoji;
-  @override
-  String? get url => (origin as EmojiUrlProvider).url;
-  @override
-  String? get host => (origin as EmojiUrlProvider).host;
-  @override
-  bool get useOriginalSize => (origin as EmojiUrlProvider).useOriginalSize;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

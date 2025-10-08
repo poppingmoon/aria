@@ -6,22 +6,52 @@ part of 'cache_manager_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cacheManagerHash() => r'a532851d179703511355bf609f0ab32a8d418e85';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [cacheManager].
 @ProviderFor(cacheManager)
-final cacheManagerProvider = AutoDisposeProvider<ImageCacheManager>.internal(
-  cacheManager,
-  name: r'cacheManagerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$cacheManagerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const cacheManagerProvider = CacheManagerProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CacheManagerRef = AutoDisposeProviderRef<ImageCacheManager>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class CacheManagerProvider
+    extends
+        $FunctionalProvider<
+          ImageCacheManager,
+          ImageCacheManager,
+          ImageCacheManager
+        >
+    with $Provider<ImageCacheManager> {
+  const CacheManagerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cacheManagerProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cacheManagerHash();
+
+  @$internal
+  @override
+  $ProviderElement<ImageCacheManager> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ImageCacheManager create(Ref ref) {
+    return cacheManager(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ImageCacheManager value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ImageCacheManager>(value),
+    );
+  }
+}
+
+String _$cacheManagerHash() => r'a532851d179703511355bf609f0ab32a8d418e85';

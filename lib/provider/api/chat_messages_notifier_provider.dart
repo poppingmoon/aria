@@ -55,7 +55,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -81,7 +81,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     required String reaction,
     UserLite? user,
   }) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items
@@ -105,7 +105,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     required String reaction,
     UserLite? user,
   }) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items
@@ -131,7 +131,7 @@ class ChatMessagesNotifier extends _$ChatMessagesNotifier {
     final updated = await _misskey.chat.messages.show(
       ChatMessagesShowRequest(messageId: messageId),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items

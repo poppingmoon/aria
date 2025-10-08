@@ -51,7 +51,7 @@ class ChatHome extends HookConsumerWidget {
         ref.refresh(chatHistoryNotifierProvider(account).future),
       ]),
       child: switch (history) {
-        AsyncValue(valueOrNull: final history?) =>
+        AsyncValue(value: final history?) =>
           history.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(
@@ -121,7 +121,7 @@ class _ChatMessagePreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final isMyMessage = message.fromUserId == i?.id;
     final room = message.toRoom;
     final user = room != null || !isMyMessage

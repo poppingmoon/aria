@@ -35,10 +35,10 @@ class ChatRoomPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = userId != null
-        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        ? ref.watch(userNotifierProvider(account, userId: userId)).value
         : null;
     final room = roomId != null
-        ? ref.watch(chatRoomNotifierProvider(account, roomId!)).valueOrNull
+        ? ref.watch(chatRoomNotifierProvider(account, roomId!)).value
         : null;
     final isMyRoom = room != null && room.owner.username == account.username;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));

@@ -6,192 +6,105 @@ part of 'mentions_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mentionsNotifierHash() => r'0b66641d0a1f86c1bfcec3756b5ce8053ffd7d8b';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(MentionsNotifier)
+const mentionsNotifierProvider = MentionsNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class MentionsNotifierProvider
+    extends $StreamNotifierProvider<MentionsNotifier, PaginationState<Note>> {
+  const MentionsNotifierProvider._({
+    required MentionsNotifierFamily super.from,
+    required (Account, bool) super.argument,
+  }) : super(
+         retry: null,
+         name: r'mentionsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$mentionsNotifierHash();
+
+  @override
+  String toString() {
+    return r'mentionsNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  MentionsNotifier create() => MentionsNotifier();
+
+  @override
+  bool operator ==(Object other) {
+    return other is MentionsNotifierProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
+String _$mentionsNotifierHash() => r'e86c097249c8ec7ebfef5f5ca8bd6ef9bfe84c1c';
+
+final class MentionsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          MentionsNotifier,
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (Account, bool)
+        > {
+  const MentionsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'mentionsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  MentionsNotifierProvider call(Account account, [bool specified = false]) =>
+      MentionsNotifierProvider._(argument: (account, specified), from: this);
+
+  @override
+  String toString() => r'mentionsNotifierProvider';
+}
+
 abstract class _$MentionsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-  late final bool specified;
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as (Account, bool);
+  Account get account => _$args.$1;
+  bool get specified => _$args.$2;
 
   Stream<PaginationState<Note>> build(
     Account account, [
     bool specified = false,
   ]);
-}
-
-/// See also [MentionsNotifier].
-@ProviderFor(MentionsNotifier)
-const mentionsNotifierProvider = MentionsNotifierFamily();
-
-/// See also [MentionsNotifier].
-class MentionsNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [MentionsNotifier].
-  const MentionsNotifierFamily();
-
-  /// See also [MentionsNotifier].
-  MentionsNotifierProvider call(Account account, [bool specified = false]) {
-    return MentionsNotifierProvider(account, specified);
-  }
-
+  @$mustCallSuper
   @override
-  MentionsNotifierProvider getProviderOverride(
-    covariant MentionsNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.specified);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'mentionsNotifierProvider';
-}
-
-/// See also [MentionsNotifier].
-class MentionsNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          MentionsNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [MentionsNotifier].
-  MentionsNotifierProvider(Account account, [bool specified = false])
-    : this._internal(
-        () => MentionsNotifier()
-          ..account = account
-          ..specified = specified,
-        from: mentionsNotifierProvider,
-        name: r'mentionsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$mentionsNotifierHash,
-        dependencies: MentionsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            MentionsNotifierFamily._allTransitiveDependencies,
-        account: account,
-        specified: specified,
-      );
-
-  MentionsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.specified,
-  }) : super.internal();
-
-  final Account account;
-  final bool specified;
-
-  @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant MentionsNotifier notifier,
-  ) {
-    return notifier.build(account, specified);
-  }
-
-  @override
-  Override overrideWith(MentionsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: MentionsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..specified = specified,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        specified: specified,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    MentionsNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _MentionsNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is MentionsNotifierProvider &&
-        other.account == account &&
-        other.specified == specified;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, specified.hashCode);
-
-    return _SystemHash.finish(hash);
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin MentionsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `specified` of this provider.
-  bool get specified;
-}
-
-class _MentionsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
-          MentionsNotifier,
-          PaginationState<Note>
-        >
-    with MentionsNotifierRef {
-  _MentionsNotifierProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as MentionsNotifierProvider).account;
-  @override
-  bool get specified => (origin as MentionsNotifierProvider).specified;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

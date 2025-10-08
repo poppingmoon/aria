@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'api/meta_notifier_provider.dart';
@@ -22,10 +21,7 @@ Uri? proxiedImageUrl(
 
   final serverUrl = ref.watch(serverUrlNotifierProvider(host));
   Uri imageUrl = baseUrl.hasScheme ? baseUrl : serverUrl.resolveUri(baseUrl);
-  final mediaProxy = ref
-      .watch(metaNotifierProvider(host))
-      .valueOrNull
-      ?.mediaProxy;
+  final mediaProxy = ref.watch(metaNotifierProvider(host)).value?.mediaProxy;
   final mediaProxyUrl =
       (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
       serverUrl.replace(pathSegments: ['proxy']);

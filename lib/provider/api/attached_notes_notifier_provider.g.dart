@@ -6,191 +6,104 @@ part of 'attached_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$attachedNotesNotifierHash() =>
-    r'8153805bcef0d6aff4e68662ca9f72c736aa11e8';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$AttachedNotesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-  late final String fileId;
-
-  Stream<PaginationState<Note>> build(Account account, String fileId);
-}
-
-/// See also [AttachedNotesNotifier].
 @ProviderFor(AttachedNotesNotifier)
-const attachedNotesNotifierProvider = AttachedNotesNotifierFamily();
+const attachedNotesNotifierProvider = AttachedNotesNotifierFamily._();
 
-/// See also [AttachedNotesNotifier].
-class AttachedNotesNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [AttachedNotesNotifier].
-  const AttachedNotesNotifierFamily();
-
-  /// See also [AttachedNotesNotifier].
-  AttachedNotesNotifierProvider call(Account account, String fileId) {
-    return AttachedNotesNotifierProvider(account, fileId);
-  }
-
-  @override
-  AttachedNotesNotifierProvider getProviderOverride(
-    covariant AttachedNotesNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.fileId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'attachedNotesNotifierProvider';
-}
-
-/// See also [AttachedNotesNotifier].
-class AttachedNotesNotifierProvider
+final class AttachedNotesNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
-          AttachedNotesNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [AttachedNotesNotifier].
-  AttachedNotesNotifierProvider(Account account, String fileId)
-    : this._internal(
-        () => AttachedNotesNotifier()
-          ..account = account
-          ..fileId = fileId,
-        from: attachedNotesNotifierProvider,
-        name: r'attachedNotesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$attachedNotesNotifierHash,
-        dependencies: AttachedNotesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            AttachedNotesNotifierFamily._allTransitiveDependencies,
-        account: account,
-        fileId: fileId,
-      );
-
-  AttachedNotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.fileId,
-  }) : super.internal();
-
-  final Account account;
-  final String fileId;
+        $StreamNotifierProvider<AttachedNotesNotifier, PaginationState<Note>> {
+  const AttachedNotesNotifierProvider._({
+    required AttachedNotesNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'attachedNotesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant AttachedNotesNotifier notifier,
-  ) {
-    return notifier.build(account, fileId);
-  }
+  String debugGetCreateSourceHash() => _$attachedNotesNotifierHash();
 
   @override
-  Override overrideWith(AttachedNotesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: AttachedNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..fileId = fileId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        fileId: fileId,
-      ),
-    );
+  String toString() {
+    return r'attachedNotesNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    AttachedNotesNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _AttachedNotesNotifierProviderElement(this);
-  }
+  AttachedNotesNotifier create() => AttachedNotesNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is AttachedNotesNotifierProvider &&
-        other.account == account &&
-        other.fileId == fileId;
+    return other is AttachedNotesNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, fileId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin AttachedNotesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$attachedNotesNotifierHash() =>
+    r'0c8d766cd0a5fc3ef4165149b9b50d2d1ce0ff88';
 
-  /// The parameter `fileId` of this provider.
-  String get fileId;
-}
-
-class _AttachedNotesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class AttachedNotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           AttachedNotesNotifier,
-          PaginationState<Note>
-        >
-    with AttachedNotesNotifierRef {
-  _AttachedNotesNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (Account, String)
+        > {
+  const AttachedNotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'attachedNotesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  AttachedNotesNotifierProvider call(Account account, String fileId) =>
+      AttachedNotesNotifierProvider._(argument: (account, fileId), from: this);
 
   @override
-  Account get account => (origin as AttachedNotesNotifierProvider).account;
-  @override
-  String get fileId => (origin as AttachedNotesNotifierProvider).fileId;
+  String toString() => r'attachedNotesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$AttachedNotesNotifier
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get fileId => _$args.$2;
+
+  Stream<PaginationState<Note>> build(Account account, String fileId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

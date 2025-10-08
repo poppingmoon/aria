@@ -48,7 +48,7 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -81,7 +81,7 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
         isSensitive: isSensitive,
       ),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [...value.items, post]));
   }
 
@@ -101,7 +101,7 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
         isSensitive: isSensitive,
       ),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items

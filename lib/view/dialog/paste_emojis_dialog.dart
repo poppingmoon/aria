@@ -29,7 +29,7 @@ class PasteEmojisDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final endpoints = ref.watch(endpointsProvider(account.host)).value;
     final isThirdPartyRegistrySupported =
         endpoints?.contains('i/registry/scopes-with-domain') ?? true;
     final useEmojiPalette =

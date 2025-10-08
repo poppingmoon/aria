@@ -6,25 +6,53 @@ part of 'window_position_repository_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(windowPositionRepository)
+const windowPositionRepositoryProvider = WindowPositionRepositoryProvider._();
+
+final class WindowPositionRepositoryProvider
+    extends
+        $FunctionalProvider<
+          WindowPositionRepository,
+          WindowPositionRepository,
+          WindowPositionRepository
+        >
+    with $Provider<WindowPositionRepository> {
+  const WindowPositionRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'windowPositionRepositoryProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$windowPositionRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<WindowPositionRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  WindowPositionRepository create(Ref ref) {
+    return windowPositionRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(WindowPositionRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<WindowPositionRepository>(value),
+    );
+  }
+}
+
 String _$windowPositionRepositoryHash() =>
     r'6973b711e2977ce2f4c54bd8b11103665cb27658';
-
-/// See also [windowPositionRepository].
-@ProviderFor(windowPositionRepository)
-final windowPositionRepositoryProvider =
-    AutoDisposeProvider<WindowPositionRepository>.internal(
-      windowPositionRepository,
-      name: r'windowPositionRepositoryProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$windowPositionRepositoryHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef WindowPositionRepositoryRef =
-    AutoDisposeProviderRef<WindowPositionRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

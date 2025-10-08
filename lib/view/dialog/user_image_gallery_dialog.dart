@@ -57,7 +57,7 @@ class UserImageGalleryDialog extends HookConsumerWidget {
     final notes = ref.watch(timelineNotesNotifierProvider(tabSettings));
 
     return switch (notes) {
-      AsyncValue(valueOrNull: final notes?) => _UserImageGalleryDialog(
+      AsyncValue(value: final notes?) => _UserImageGalleryDialog(
         tabSettings: tabSettings,
         notes: notes.items,
         initialNoteId: initialNoteId,

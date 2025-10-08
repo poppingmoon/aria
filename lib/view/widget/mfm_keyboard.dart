@@ -586,7 +586,7 @@ class MfmMentionKeyboard extends HookConsumerWidget {
     }, [account, controller]);
     final recentlyUsedUsers = ref
         .watch(recentlyUsedUsersNotifierProvider(account))
-        .valueOrNull;
+        .value;
 
     if (query.value.isEmpty ? recentlyUsedUsers : users.value case final users?
         when users.isNotEmpty) {

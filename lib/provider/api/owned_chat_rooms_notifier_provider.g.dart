@@ -6,174 +6,110 @@ part of 'owned_chat_rooms_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ownedChatRoomsNotifierHash() =>
-    r'b090a8404f77cb1680a0f5de2098ff98b69dcd1e';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$OwnedChatRoomsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatRoom>> {
-  late final Account account;
-
-  Stream<PaginationState<ChatRoom>> build(Account account);
-}
-
-/// See also [OwnedChatRoomsNotifier].
 @ProviderFor(OwnedChatRoomsNotifier)
-const ownedChatRoomsNotifierProvider = OwnedChatRoomsNotifierFamily();
+const ownedChatRoomsNotifierProvider = OwnedChatRoomsNotifierFamily._();
 
-/// See also [OwnedChatRoomsNotifier].
-class OwnedChatRoomsNotifierFamily
-    extends Family<AsyncValue<PaginationState<ChatRoom>>> {
-  /// See also [OwnedChatRoomsNotifier].
-  const OwnedChatRoomsNotifierFamily();
-
-  /// See also [OwnedChatRoomsNotifier].
-  OwnedChatRoomsNotifierProvider call(Account account) {
-    return OwnedChatRoomsNotifierProvider(account);
-  }
-
-  @override
-  OwnedChatRoomsNotifierProvider getProviderOverride(
-    covariant OwnedChatRoomsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'ownedChatRoomsNotifierProvider';
-}
-
-/// See also [OwnedChatRoomsNotifier].
-class OwnedChatRoomsNotifierProvider
+final class OwnedChatRoomsNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           OwnedChatRoomsNotifier,
           PaginationState<ChatRoom>
         > {
-  /// See also [OwnedChatRoomsNotifier].
-  OwnedChatRoomsNotifierProvider(Account account)
-    : this._internal(
-        () => OwnedChatRoomsNotifier()..account = account,
-        from: ownedChatRoomsNotifierProvider,
-        name: r'ownedChatRoomsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$ownedChatRoomsNotifierHash,
-        dependencies: OwnedChatRoomsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            OwnedChatRoomsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  OwnedChatRoomsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+  const OwnedChatRoomsNotifierProvider._({
+    required OwnedChatRoomsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'ownedChatRoomsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<ChatRoom>> runNotifierBuild(
-    covariant OwnedChatRoomsNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
+  String debugGetCreateSourceHash() => _$ownedChatRoomsNotifierHash();
 
   @override
-  Override overrideWith(OwnedChatRoomsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: OwnedChatRoomsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
+  String toString() {
+    return r'ownedChatRoomsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    OwnedChatRoomsNotifier,
-    PaginationState<ChatRoom>
-  >
-  createElement() {
-    return _OwnedChatRoomsNotifierProviderElement(this);
-  }
+  OwnedChatRoomsNotifier create() => OwnedChatRoomsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is OwnedChatRoomsNotifierProvider && other.account == account;
+    return other is OwnedChatRoomsNotifierProvider &&
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin OwnedChatRoomsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatRoom>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$ownedChatRoomsNotifierHash() =>
+    r'a8fb559689e9710348dfab294b4824b3f31af599';
 
-class _OwnedChatRoomsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class OwnedChatRoomsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           OwnedChatRoomsNotifier,
-          PaginationState<ChatRoom>
-        >
-    with OwnedChatRoomsNotifierRef {
-  _OwnedChatRoomsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<ChatRoom>>,
+          PaginationState<ChatRoom>,
+          Stream<PaginationState<ChatRoom>>,
+          Account
+        > {
+  const OwnedChatRoomsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'ownedChatRoomsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  OwnedChatRoomsNotifierProvider call(Account account) =>
+      OwnedChatRoomsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as OwnedChatRoomsNotifierProvider).account;
+  String toString() => r'ownedChatRoomsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$OwnedChatRoomsNotifier
+    extends $StreamNotifier<PaginationState<ChatRoom>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<ChatRoom>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<ChatRoom>>,
+              PaginationState<ChatRoom>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<ChatRoom>>,
+                PaginationState<ChatRoom>
+              >,
+              AsyncValue<PaginationState<ChatRoom>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

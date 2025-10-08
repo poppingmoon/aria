@@ -51,7 +51,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -74,7 +74,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     final response = await _misskey.drive.folders.create(
       DriveFoldersCreateRequest(name: name, parentId: folderId),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
@@ -82,7 +82,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     await _misskey.drive.folders.delete(
       DriveFoldersDeleteRequest(folderId: folderId),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((folder) => folder.id != folderId).toList(),
@@ -94,7 +94,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     final response = await _misskey.drive.folders.update(
       DriveFoldersUpdateRequest(folderId: folderId, name: name),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items
@@ -118,7 +118,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
       excludeRemoveNullPredicate: (key, _) => key == 'parentId',
     );
     final folder = DriveFolder.fromJson(response);
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((folder) => folder.id != folderId).toList(),
@@ -130,7 +130,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
   }
 
   void add(DriveFolder folder) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [folder, ...value.items]));
   }
 }

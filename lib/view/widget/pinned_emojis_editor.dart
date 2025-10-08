@@ -29,7 +29,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
     final pinnedEmojis = ref.watch(
       pinnedEmojisNotifierProvider(account, reaction: reaction),
     );
-    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final endpoints = ref.watch(endpointsProvider(account.host)).value;
     final useEmojiPalette =
         endpoints == null ||
         endpoints.contains('chat/history') ||

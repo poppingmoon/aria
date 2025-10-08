@@ -6,22 +6,46 @@ part of 'data_saver_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dataSaverHash() => r'fb67bb65abe02b99a7f49730a41d344c23819ebd';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [dataSaver].
 @ProviderFor(dataSaver)
-final dataSaverProvider = AutoDisposeProvider<DataSaver>.internal(
-  dataSaver,
-  name: r'dataSaverProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$dataSaverHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const dataSaverProvider = DataSaverProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DataSaverRef = AutoDisposeProviderRef<DataSaver>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class DataSaverProvider
+    extends $FunctionalProvider<DataSaver, DataSaver, DataSaver>
+    with $Provider<DataSaver> {
+  const DataSaverProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'dataSaverProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$dataSaverHash();
+
+  @$internal
+  @override
+  $ProviderElement<DataSaver> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  DataSaver create(Ref ref) {
+    return dataSaver(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(DataSaver value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<DataSaver>(value),
+    );
+  }
+}
+
+String _$dataSaverHash() => r'41b8ce9b550cd5a639af3a6a7bef8dc370c1b752';

@@ -195,9 +195,9 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final endpoint = ref.watch(pushSubscriptionNotifierProvider(account));
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final isPushNotificationSupported = switch (defaultTargetPlatform) {
       TargetPlatform.android || TargetPlatform.iOS => meta?.swPublickey != null,
       _ => false,

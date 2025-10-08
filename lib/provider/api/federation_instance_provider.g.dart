@@ -6,167 +6,87 @@ part of 'federation_instance_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$federationInstanceHash() =>
-    r'7d839c4af8d32812bd8e80fedd7af3cffe4d0c82';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [federationInstance].
 @ProviderFor(federationInstance)
-const federationInstanceProvider = FederationInstanceFamily();
+const federationInstanceProvider = FederationInstanceFamily._();
 
-/// See also [federationInstance].
-class FederationInstanceFamily
-    extends Family<AsyncValue<FederationShowInstanceResponse>> {
-  /// See also [federationInstance].
-  const FederationInstanceFamily();
+final class FederationInstanceProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<FederationShowInstanceResponse>,
+          FederationShowInstanceResponse,
+          FutureOr<FederationShowInstanceResponse>
+        >
+    with
+        $FutureModifier<FederationShowInstanceResponse>,
+        $FutureProvider<FederationShowInstanceResponse> {
+  const FederationInstanceProvider._({
+    required FederationInstanceFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'federationInstanceProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [federationInstance].
-  FederationInstanceProvider call(Account account, String host) {
-    return FederationInstanceProvider(account, host);
+  @override
+  String debugGetCreateSourceHash() => _$federationInstanceHash();
+
+  @override
+  String toString() {
+    return r'federationInstanceProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  FederationInstanceProvider getProviderOverride(
-    covariant FederationInstanceProvider provider,
-  ) {
-    return call(provider.account, provider.host);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
+  $FutureProviderElement<FederationShowInstanceResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
 
   @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'federationInstanceProvider';
-}
-
-/// See also [federationInstance].
-class FederationInstanceProvider
-    extends AutoDisposeFutureProvider<FederationShowInstanceResponse> {
-  /// See also [federationInstance].
-  FederationInstanceProvider(Account account, String host)
-    : this._internal(
-        (ref) =>
-            federationInstance(ref as FederationInstanceRef, account, host),
-        from: federationInstanceProvider,
-        name: r'federationInstanceProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$federationInstanceHash,
-        dependencies: FederationInstanceFamily._dependencies,
-        allTransitiveDependencies:
-            FederationInstanceFamily._allTransitiveDependencies,
-        account: account,
-        host: host,
-      );
-
-  FederationInstanceProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.host,
-  }) : super.internal();
-
-  final Account account;
-  final String host;
-
-  @override
-  Override overrideWith(
-    FutureOr<FederationShowInstanceResponse> Function(
-      FederationInstanceRef provider,
-    )
-    create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: FederationInstanceProvider._internal(
-        (ref) => create(ref as FederationInstanceRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        host: host,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<FederationShowInstanceResponse>
-  createElement() {
-    return _FederationInstanceProviderElement(this);
+  FutureOr<FederationShowInstanceResponse> create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return federationInstance(ref, argument.$1, argument.$2);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FederationInstanceProvider &&
-        other.account == account &&
-        other.host == host;
+    return other is FederationInstanceProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FederationInstanceRef
-    on AutoDisposeFutureProviderRef<FederationShowInstanceResponse> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$federationInstanceHash() =>
+    r'7d839c4af8d32812bd8e80fedd7af3cffe4d0c82';
 
-  /// The parameter `host` of this provider.
-  String get host;
-}
+final class FederationInstanceFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<FederationShowInstanceResponse>,
+          (Account, String)
+        > {
+  const FederationInstanceFamily._()
+    : super(
+        retry: null,
+        name: r'federationInstanceProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _FederationInstanceProviderElement
-    extends AutoDisposeFutureProviderElement<FederationShowInstanceResponse>
-    with FederationInstanceRef {
-  _FederationInstanceProviderElement(super.provider);
+  FederationInstanceProvider call(Account account, String host) =>
+      FederationInstanceProvider._(argument: (account, host), from: this);
 
   @override
-  Account get account => (origin as FederationInstanceProvider).account;
-  @override
-  String get host => (origin as FederationInstanceProvider).host;
+  String toString() => r'federationInstanceProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

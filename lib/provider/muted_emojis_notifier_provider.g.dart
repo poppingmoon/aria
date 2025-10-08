@@ -6,157 +6,104 @@ part of 'muted_emojis_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mutedEmojisNotifierHash() =>
-    r'c921f6a34042e74faef53fb85cfe083ae70c74b3';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$MutedEmojisNotifier extends BuildlessNotifier<Set<String>> {
-  late final Account account;
-
-  Set<String> build(Account account);
-}
-
-/// See also [MutedEmojisNotifier].
 @ProviderFor(MutedEmojisNotifier)
-const mutedEmojisNotifierProvider = MutedEmojisNotifierFamily();
+const mutedEmojisNotifierProvider = MutedEmojisNotifierFamily._();
 
-/// See also [MutedEmojisNotifier].
-class MutedEmojisNotifierFamily extends Family<Set<String>> {
-  /// See also [MutedEmojisNotifier].
-  const MutedEmojisNotifierFamily();
+final class MutedEmojisNotifierProvider
+    extends $NotifierProvider<MutedEmojisNotifier, Set<String>> {
+  const MutedEmojisNotifierProvider._({
+    required MutedEmojisNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'mutedEmojisNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [MutedEmojisNotifier].
-  MutedEmojisNotifierProvider call(Account account) {
-    return MutedEmojisNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$mutedEmojisNotifierHash();
+
+  @override
+  String toString() {
+    return r'mutedEmojisNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  MutedEmojisNotifierProvider getProviderOverride(
-    covariant MutedEmojisNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  MutedEmojisNotifier create() => MutedEmojisNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'mutedEmojisNotifierProvider';
-}
-
-/// See also [MutedEmojisNotifier].
-class MutedEmojisNotifierProvider
-    extends NotifierProviderImpl<MutedEmojisNotifier, Set<String>> {
-  /// See also [MutedEmojisNotifier].
-  MutedEmojisNotifierProvider(Account account)
-    : this._internal(
-        () => MutedEmojisNotifier()..account = account,
-        from: mutedEmojisNotifierProvider,
-        name: r'mutedEmojisNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$mutedEmojisNotifierHash,
-        dependencies: MutedEmojisNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            MutedEmojisNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  MutedEmojisNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Set<String> runNotifierBuild(covariant MutedEmojisNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(MutedEmojisNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Set<String> value) {
+    return $ProviderOverride(
       origin: this,
-      override: MutedEmojisNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<Set<String>>(value),
     );
   }
 
   @override
-  NotifierProviderElement<MutedEmojisNotifier, Set<String>> createElement() {
-    return _MutedEmojisNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is MutedEmojisNotifierProvider && other.account == account;
+    return other is MutedEmojisNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin MutedEmojisNotifierRef on NotifierProviderRef<Set<String>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$mutedEmojisNotifierHash() =>
+    r'c921f6a34042e74faef53fb85cfe083ae70c74b3';
 
-class _MutedEmojisNotifierProviderElement
-    extends NotifierProviderElement<MutedEmojisNotifier, Set<String>>
-    with MutedEmojisNotifierRef {
-  _MutedEmojisNotifierProviderElement(super.provider);
+final class MutedEmojisNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          MutedEmojisNotifier,
+          Set<String>,
+          Set<String>,
+          Set<String>,
+          Account
+        > {
+  const MutedEmojisNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'mutedEmojisNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  MutedEmojisNotifierProvider call(Account account) =>
+      MutedEmojisNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as MutedEmojisNotifierProvider).account;
+  String toString() => r'mutedEmojisNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$MutedEmojisNotifier extends $Notifier<Set<String>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Set<String> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<Set<String>, Set<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Set<String>, Set<String>>,
+              Set<String>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

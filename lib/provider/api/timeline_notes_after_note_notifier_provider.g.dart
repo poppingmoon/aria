@@ -6,205 +6,117 @@ part of 'timeline_notes_after_note_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timelineNotesAfterNoteNotifierHash() =>
-    r'ca34c8dd4c266b4753187295b486b03e3af263ff';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(TimelineNotesAfterNoteNotifier)
+const timelineNotesAfterNoteNotifierProvider =
+    TimelineNotesAfterNoteNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class TimelineNotesAfterNoteNotifierProvider
+    extends
+        $StreamNotifierProvider<
+          TimelineNotesAfterNoteNotifier,
+          PaginationState<Note>
+        > {
+  const TimelineNotesAfterNoteNotifierProvider._({
+    required TimelineNotesAfterNoteNotifierFamily super.from,
+    required (TabSettings, {String? sinceId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'timelineNotesAfterNoteNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$timelineNotesAfterNoteNotifierHash();
+
+  @override
+  String toString() {
+    return r'timelineNotesAfterNoteNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  TimelineNotesAfterNoteNotifier create() => TimelineNotesAfterNoteNotifier();
+
+  @override
+  bool operator ==(Object other) {
+    return other is TimelineNotesAfterNoteNotifierProvider &&
+        other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
+String _$timelineNotesAfterNoteNotifierHash() =>
+    r'd071e2d9e82d4fee47b6ab832c9da6789d4f821e';
+
+final class TimelineNotesAfterNoteNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          TimelineNotesAfterNoteNotifier,
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (TabSettings, {String? sinceId})
+        > {
+  const TimelineNotesAfterNoteNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'timelineNotesAfterNoteNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  TimelineNotesAfterNoteNotifierProvider call(
+    TabSettings tabSettings, {
+    String? sinceId,
+  }) => TimelineNotesAfterNoteNotifierProvider._(
+    argument: (tabSettings, sinceId: sinceId),
+    from: this,
+  );
+
+  @override
+  String toString() => r'timelineNotesAfterNoteNotifierProvider';
+}
+
 abstract class _$TimelineNotesAfterNoteNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final TabSettings tabSettings;
-  late final String? sinceId;
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as (TabSettings, {String? sinceId});
+  TabSettings get tabSettings => _$args.$1;
+  String? get sinceId => _$args.sinceId;
 
   Stream<PaginationState<Note>> build(
     TabSettings tabSettings, {
     String? sinceId,
   });
-}
-
-/// See also [TimelineNotesAfterNoteNotifier].
-@ProviderFor(TimelineNotesAfterNoteNotifier)
-const timelineNotesAfterNoteNotifierProvider =
-    TimelineNotesAfterNoteNotifierFamily();
-
-/// See also [TimelineNotesAfterNoteNotifier].
-class TimelineNotesAfterNoteNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [TimelineNotesAfterNoteNotifier].
-  const TimelineNotesAfterNoteNotifierFamily();
-
-  /// See also [TimelineNotesAfterNoteNotifier].
-  TimelineNotesAfterNoteNotifierProvider call(
-    TabSettings tabSettings, {
-    String? sinceId,
-  }) {
-    return TimelineNotesAfterNoteNotifierProvider(
-      tabSettings,
-      sinceId: sinceId,
-    );
-  }
-
+  @$mustCallSuper
   @override
-  TimelineNotesAfterNoteNotifierProvider getProviderOverride(
-    covariant TimelineNotesAfterNoteNotifierProvider provider,
-  ) {
-    return call(provider.tabSettings, sinceId: provider.sinceId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'timelineNotesAfterNoteNotifierProvider';
-}
-
-/// See also [TimelineNotesAfterNoteNotifier].
-class TimelineNotesAfterNoteNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          TimelineNotesAfterNoteNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [TimelineNotesAfterNoteNotifier].
-  TimelineNotesAfterNoteNotifierProvider(
-    TabSettings tabSettings, {
-    String? sinceId,
-  }) : this._internal(
-         () => TimelineNotesAfterNoteNotifier()
-           ..tabSettings = tabSettings
-           ..sinceId = sinceId,
-         from: timelineNotesAfterNoteNotifierProvider,
-         name: r'timelineNotesAfterNoteNotifierProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$timelineNotesAfterNoteNotifierHash,
-         dependencies: TimelineNotesAfterNoteNotifierFamily._dependencies,
-         allTransitiveDependencies:
-             TimelineNotesAfterNoteNotifierFamily._allTransitiveDependencies,
-         tabSettings: tabSettings,
-         sinceId: sinceId,
-       );
-
-  TimelineNotesAfterNoteNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.tabSettings,
-    required this.sinceId,
-  }) : super.internal();
-
-  final TabSettings tabSettings;
-  final String? sinceId;
-
-  @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant TimelineNotesAfterNoteNotifier notifier,
-  ) {
-    return notifier.build(tabSettings, sinceId: sinceId);
-  }
-
-  @override
-  Override overrideWith(TimelineNotesAfterNoteNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: TimelineNotesAfterNoteNotifierProvider._internal(
-        () => create()
-          ..tabSettings = tabSettings
-          ..sinceId = sinceId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        tabSettings: tabSettings,
-        sinceId: sinceId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    TimelineNotesAfterNoteNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _TimelineNotesAfterNoteNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is TimelineNotesAfterNoteNotifierProvider &&
-        other.tabSettings == tabSettings &&
-        other.sinceId == sinceId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, tabSettings.hashCode);
-    hash = _SystemHash.combine(hash, sinceId.hashCode);
-
-    return _SystemHash.finish(hash);
+  void runBuild() {
+    final created = build(_$args.$1, sinceId: _$args.sinceId);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin TimelineNotesAfterNoteNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `tabSettings` of this provider.
-  TabSettings get tabSettings;
-
-  /// The parameter `sinceId` of this provider.
-  String? get sinceId;
-}
-
-class _TimelineNotesAfterNoteNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
-          TimelineNotesAfterNoteNotifier,
-          PaginationState<Note>
-        >
-    with TimelineNotesAfterNoteNotifierRef {
-  _TimelineNotesAfterNoteNotifierProviderElement(super.provider);
-
-  @override
-  TabSettings get tabSettings =>
-      (origin as TimelineNotesAfterNoteNotifierProvider).tabSettings;
-  @override
-  String? get sinceId =>
-      (origin as TimelineNotesAfterNoteNotifierProvider).sinceId;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

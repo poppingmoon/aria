@@ -86,7 +86,7 @@ class TagUsers extends HookConsumerWidget {
       body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(tagUsersProvider(account, tag).future),
         child: switch (users) {
-          AsyncValue(valueOrNull: final users?) =>
+          AsyncValue(value: final users?) =>
             users.isEmpty
                 ? Center(child: Text(t.misskey.noUsers))
                 : ListView.separated(
@@ -110,7 +110,7 @@ class TagUsers extends HookConsumerWidget {
           _ => const Center(child: CircularProgressIndicator()),
         },
       ),
-      physics: users.valueOrNull?.isEmpty ?? true
+      physics: users.value?.isEmpty ?? true
           ? const NeverScrollableScrollPhysics()
           : null,
     );

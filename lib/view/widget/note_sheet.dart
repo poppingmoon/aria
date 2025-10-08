@@ -100,8 +100,8 @@ class NoteSheet extends ConsumerWidget {
     }
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['notes', appearNote.id]);
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final canUseTranslator =
         (i?.policies?.canUseTranslator ?? false) &&
         (meta?.translatorAvailable ?? false);
@@ -117,9 +117,7 @@ class NoteSheet extends ConsumerWidget {
               ),
             ));
     final noteState = i != null
-        ? ref
-              .watch(noteStateNotifierProvider(account, appearNote.id))
-              .valueOrNull
+        ? ref.watch(noteStateNotifierProvider(account, appearNote.id)).value
         : null;
     final remoteUrl = appearNote.url ?? appearNote.uri;
     final remoteNoteId = remoteUrl?.pathSegments.lastOrNull;

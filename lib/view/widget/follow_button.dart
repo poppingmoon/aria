@@ -21,9 +21,7 @@ class FollowButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref
-        .watch(userNotifierProvider(account, userId: userId))
-        .valueOrNull;
+    final user = ref.watch(userNotifierProvider(account, userId: userId)).value;
     if (user is! UserDetailedNotMeWithRelations) {
       return const SizedBox.shrink();
     }
@@ -66,7 +64,7 @@ class FollowButton extends HookConsumerWidget {
         child: Text(t.misskey.unfollow),
       );
     } else {
-      final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+      final i = ref.watch(iNotifierProvider(account)).value;
       final theme = Theme.of(context);
 
       return ElevatedButton(

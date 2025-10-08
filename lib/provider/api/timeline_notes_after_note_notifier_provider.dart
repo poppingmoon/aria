@@ -219,7 +219,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -241,7 +241,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
   }
 
   void addNote(Note note) {
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value?.items.firstOrNull?.id != note.id) {
       state = AsyncValue.data(
         PaginationState(

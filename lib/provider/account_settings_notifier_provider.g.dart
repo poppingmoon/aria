@@ -6,159 +6,105 @@ part of 'account_settings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountSettingsNotifierHash() =>
-    r'f4aafb2d7072ca2ab428674abd69667529b8f178';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$AccountSettingsNotifier
-    extends BuildlessNotifier<AccountSettings> {
-  late final Account account;
-
-  AccountSettings build(Account account);
-}
-
-/// See also [AccountSettingsNotifier].
 @ProviderFor(AccountSettingsNotifier)
-const accountSettingsNotifierProvider = AccountSettingsNotifierFamily();
+const accountSettingsNotifierProvider = AccountSettingsNotifierFamily._();
 
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierFamily extends Family<AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  const AccountSettingsNotifierFamily();
+final class AccountSettingsNotifierProvider
+    extends $NotifierProvider<AccountSettingsNotifier, AccountSettings> {
+  const AccountSettingsNotifierProvider._({
+    required AccountSettingsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'accountSettingsNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider call(Account account) {
-    return AccountSettingsNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$accountSettingsNotifierHash();
+
+  @override
+  String toString() {
+    return r'accountSettingsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AccountSettingsNotifierProvider getProviderOverride(
-    covariant AccountSettingsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  AccountSettingsNotifier create() => AccountSettingsNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'accountSettingsNotifierProvider';
-}
-
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierProvider
-    extends NotifierProviderImpl<AccountSettingsNotifier, AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider(Account account)
-    : this._internal(
-        () => AccountSettingsNotifier()..account = account,
-        from: accountSettingsNotifierProvider,
-        name: r'accountSettingsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$accountSettingsNotifierHash,
-        dependencies: AccountSettingsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            AccountSettingsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  AccountSettingsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  AccountSettings runNotifierBuild(covariant AccountSettingsNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(AccountSettingsNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AccountSettings value) {
+    return $ProviderOverride(
       origin: this,
-      override: AccountSettingsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<AccountSettings>(value),
     );
   }
 
   @override
-  NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-  createElement() {
-    return _AccountSettingsNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is AccountSettingsNotifierProvider && other.account == account;
+    return other is AccountSettingsNotifierProvider &&
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin AccountSettingsNotifierRef on NotifierProviderRef<AccountSettings> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$accountSettingsNotifierHash() =>
+    r'f4aafb2d7072ca2ab428674abd69667529b8f178';
 
-class _AccountSettingsNotifierProviderElement
-    extends NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-    with AccountSettingsNotifierRef {
-  _AccountSettingsNotifierProviderElement(super.provider);
+final class AccountSettingsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          AccountSettingsNotifier,
+          AccountSettings,
+          AccountSettings,
+          AccountSettings,
+          Account
+        > {
+  const AccountSettingsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'accountSettingsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  AccountSettingsNotifierProvider call(Account account) =>
+      AccountSettingsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as AccountSettingsNotifierProvider).account;
+  String toString() => r'accountSettingsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$AccountSettingsNotifier extends $Notifier<AccountSettings> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  AccountSettings build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AccountSettings, AccountSettings>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AccountSettings, AccountSettings>,
+              AccountSettings,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

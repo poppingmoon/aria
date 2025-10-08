@@ -45,7 +45,7 @@ class GalleryPostPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final post = ref.watch(galleryPostNotifierProvider(account, postId));
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['gallery', postId]);
@@ -53,12 +53,12 @@ class GalleryPostPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(post.valueOrNull?.title ?? ''),
+        title: Text(post.value?.title ?? ''),
         actions: [
           PopupMenuButton<void>(
             itemBuilder: (context) => [
               if (!account.isGuest) ...[
-                if (post.valueOrNull?.user.username == account.username)
+                if (post.value?.user.username == account.username)
                   PopupMenuItem(
                     onTap: () => context.push('/$account/gallery/$postId/edit'),
                     child: Text(t.misskey.edit),
@@ -67,7 +67,7 @@ class GalleryPostPage extends ConsumerWidget {
                   onTap: () {
                     ref
                         .read(postNotifierProvider(account).notifier)
-                        .setText('${post.valueOrNull?.title} $url');
+                        .setText('${post.value?.title} $url');
                     context.push('/$account/post');
                   },
                   child: Text(t.misskey.shareWithNote),
@@ -83,11 +83,11 @@ class GalleryPostPage extends ConsumerWidget {
               ),
               PopupMenuItem(
                 onTap: () => SharePlus.instance.share(
-                  ShareParams(text: '${post.valueOrNull?.title} $url'),
+                  ShareParams(text: '${post.value?.title} $url'),
                 ),
                 child: Text(t.misskey.share),
               ),
-              if (post.valueOrNull?.user case final user?
+              if (post.value?.user case final user?
                   when !account.isGuest && i?.id != user.id)
                 PopupMenuItem(
                   onTap: () async {
@@ -134,7 +134,7 @@ class GalleryPostPage extends ConsumerWidget {
         onRefresh: () =>
             ref.refresh(galleryPostNotifierProvider(account, postId).future),
         child: switch (post) {
-          AsyncValue(valueOrNull: final post?) => ListView(
+          AsyncValue(value: final post?) => ListView(
             children: [
               ...post.files.mapIndexed(
                 (index, file) => Center(
@@ -395,7 +395,7 @@ class GalleryPostPage extends ConsumerWidget {
                                 post.userId,
                               ),
                             )
-                            .valueOrNull
+                            .value
                             ?.items
                             .map(
                               (post) => Padding(
@@ -434,8 +434,7 @@ class GalleryPostPage extends ConsumerWidget {
         },
       ),
       floatingActionButton:
-          !account.isGuest &&
-              post.valueOrNull?.user.username == account.username
+          !account.isGuest && post.value?.user.username == account.username
           ? FloatingActionButton(
               tooltip: t.misskey.edit,
               onPressed: () => context.push('/$account/gallery/$postId/edit'),

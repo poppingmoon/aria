@@ -65,7 +65,7 @@ class AntennaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final antenna = ref
         .watch(antennasNotifierProvider(account))
-        .valueOrNull
+        .value
         ?.firstWhereOrNull((antenna) => antenna.id == antennaId);
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['my', 'antennas', antennaId]);

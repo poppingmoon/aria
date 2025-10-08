@@ -20,7 +20,7 @@ class ListsNotifier extends _$ListsNotifier {
     final list = await _misskey.users.list.create(
       UsersListsCreateRequest(name: name),
     );
-    state = AsyncValue.data([list, ...?state.valueOrNull]);
+    state = AsyncValue.data([list, ...?state.value]);
   }
 
   Future<void> updateList(String listId, {String? name, bool? isPublic}) async {
@@ -28,14 +28,14 @@ class ListsNotifier extends _$ListsNotifier {
       UsersListsUpdateRequest(listId: listId, name: name, isPublic: isPublic),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map((list) => list.id == listId ? updated : list),
+      ...?state.value?.map((list) => list.id == listId ? updated : list),
     ]);
   }
 
   Future<void> delete(String listId) async {
     await _misskey.users.list.delete(UsersListsDeleteRequest(listId: listId));
     state = AsyncValue.data([
-      ...?state.valueOrNull?.where((list) => list.id != listId),
+      ...?state.value?.where((list) => list.id != listId),
     ]);
   }
 
@@ -44,7 +44,7 @@ class ListsNotifier extends _$ListsNotifier {
       UsersListsPushRequest(listId: listId, userId: userId),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map(
+      ...?state.value?.map(
         (list) => list.id == listId
             ? list.copyWith(userIds: [...list.userIds, userId])
             : list,
@@ -57,7 +57,7 @@ class ListsNotifier extends _$ListsNotifier {
       UsersListsPullRequest(listId: listId, userId: userId),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map(
+      ...?state.value?.map(
         (list) => list.id == listId
             ? list.copyWith(
                 userIds: list.userIds.where((id) => id != userId).toList(),

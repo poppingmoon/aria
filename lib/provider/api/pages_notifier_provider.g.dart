@@ -6,169 +6,100 @@ part of 'pages_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pagesNotifierHash() => r'05a5931a27cf21ab6e367c5698902830f45a3066';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$PagesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Page>> {
-  late final Account account;
-
-  Stream<PaginationState<Page>> build(Account account);
-}
-
-/// See also [PagesNotifier].
 @ProviderFor(PagesNotifier)
-const pagesNotifierProvider = PagesNotifierFamily();
+const pagesNotifierProvider = PagesNotifierFamily._();
 
-/// See also [PagesNotifier].
-class PagesNotifierFamily extends Family<AsyncValue<PaginationState<Page>>> {
-  /// See also [PagesNotifier].
-  const PagesNotifierFamily();
+final class PagesNotifierProvider
+    extends $StreamNotifierProvider<PagesNotifier, PaginationState<Page>> {
+  const PagesNotifierProvider._({
+    required PagesNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'pagesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [PagesNotifier].
-  PagesNotifierProvider call(Account account) {
-    return PagesNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$pagesNotifierHash();
+
+  @override
+  String toString() {
+    return r'pagesNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  PagesNotifierProvider getProviderOverride(
-    covariant PagesNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'pagesNotifierProvider';
-}
-
-/// See also [PagesNotifier].
-class PagesNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          PagesNotifier,
-          PaginationState<Page>
-        > {
-  /// See also [PagesNotifier].
-  PagesNotifierProvider(Account account)
-    : this._internal(
-        () => PagesNotifier()..account = account,
-        from: pagesNotifierProvider,
-        name: r'pagesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$pagesNotifierHash,
-        dependencies: PagesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            PagesNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  PagesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Stream<PaginationState<Page>> runNotifierBuild(
-    covariant PagesNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(PagesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: PagesNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<PagesNotifier, PaginationState<Page>>
-  createElement() {
-    return _PagesNotifierProviderElement(this);
-  }
+  PagesNotifier create() => PagesNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is PagesNotifierProvider && other.account == account;
+    return other is PagesNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin PagesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Page>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$pagesNotifierHash() => r'6cccdb20cad731159939d0c23e0382618314846f';
 
-class _PagesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class PagesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           PagesNotifier,
-          PaginationState<Page>
-        >
-    with PagesNotifierRef {
-  _PagesNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Page>>,
+          PaginationState<Page>,
+          Stream<PaginationState<Page>>,
+          Account
+        > {
+  const PagesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'pagesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PagesNotifierProvider call(Account account) =>
+      PagesNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as PagesNotifierProvider).account;
+  String toString() => r'pagesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$PagesNotifier extends $StreamNotifier<PaginationState<Page>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<Page>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Page>>, PaginationState<Page>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Page>>,
+                PaginationState<Page>
+              >,
+              AsyncValue<PaginationState<Page>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -80,8 +80,8 @@ class _AudioWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final audioHandler = ref.watch(audioHandlerProvider).valueOrNull;
-    final mediaItem = audioHandler?.mediaItem.valueOrNull;
+    final audioHandler = ref.watch(audioHandlerProvider).value;
+    final mediaItem = audioHandler?.mediaItem.value;
     final playbackState = useStream(
       audioHandler?.playbackState ?? const Stream<PlaybackState>.empty(),
     ).data;

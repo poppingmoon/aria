@@ -6,139 +6,82 @@ part of 'misskey_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyHash() => r'4d0958c3df375c44bb5495b631c952133ecaafcd';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [misskey].
 @ProviderFor(misskey)
-const misskeyProvider = MisskeyFamily();
+const misskeyProvider = MisskeyFamily._();
 
-/// See also [misskey].
-class MisskeyFamily extends Family<Misskey> {
-  /// See also [misskey].
-  const MisskeyFamily();
+final class MisskeyProvider
+    extends $FunctionalProvider<Misskey, Misskey, Misskey>
+    with $Provider<Misskey> {
+  const MisskeyProvider._({
+    required MisskeyFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'misskeyProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [misskey].
-  MisskeyProvider call(Account account) {
-    return MisskeyProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$misskeyHash();
+
+  @override
+  String toString() {
+    return r'misskeyProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  MisskeyProvider getProviderOverride(covariant MisskeyProvider provider) {
-    return call(provider.account);
+  $ProviderElement<Misskey> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Misskey create(Ref ref) {
+    final argument = this.argument as Account;
+    return misskey(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'misskeyProvider';
-}
-
-/// See also [misskey].
-class MisskeyProvider extends Provider<Misskey> {
-  /// See also [misskey].
-  MisskeyProvider(Account account)
-    : this._internal(
-        (ref) => misskey(ref as MisskeyRef, account),
-        from: misskeyProvider,
-        name: r'misskeyProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$misskeyHash,
-        dependencies: MisskeyFamily._dependencies,
-        allTransitiveDependencies: MisskeyFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  MisskeyProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Override overrideWith(Misskey Function(MisskeyRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Misskey value) {
+    return $ProviderOverride(
       origin: this,
-      override: MisskeyProvider._internal(
-        (ref) => create(ref as MisskeyRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<Misskey>(value),
     );
   }
 
   @override
-  ProviderElement<Misskey> createElement() {
-    return _MisskeyProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is MisskeyProvider && other.account == account;
+    return other is MisskeyProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin MisskeyRef on ProviderRef<Misskey> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$misskeyHash() => r'4d0958c3df375c44bb5495b631c952133ecaafcd';
 
-class _MisskeyProviderElement extends ProviderElement<Misskey> with MisskeyRef {
-  _MisskeyProviderElement(super.provider);
+final class MisskeyFamily extends $Family
+    with $FunctionalFamilyOverride<Misskey, Account> {
+  const MisskeyFamily._()
+    : super(
+        retry: null,
+        name: r'misskeyProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  MisskeyProvider call(Account account) =>
+      MisskeyProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as MisskeyProvider).account;
+  String toString() => r'misskeyProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

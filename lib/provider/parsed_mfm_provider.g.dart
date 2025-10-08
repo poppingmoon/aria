@@ -6,141 +6,82 @@ part of 'parsed_mfm_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$parsedMfmHash() => r'00c66c7182a87069f2102f463cf53f4c053ec3e9';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [parsedMfm].
 @ProviderFor(parsedMfm)
-const parsedMfmProvider = ParsedMfmFamily();
+const parsedMfmProvider = ParsedMfmFamily._();
 
-/// See also [parsedMfm].
-class ParsedMfmFamily extends Family<List<MfmNode>> {
-  /// See also [parsedMfm].
-  const ParsedMfmFamily();
+final class ParsedMfmProvider
+    extends $FunctionalProvider<List<MfmNode>, List<MfmNode>, List<MfmNode>>
+    with $Provider<List<MfmNode>> {
+  const ParsedMfmProvider._({
+    required ParsedMfmFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'parsedMfmProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [parsedMfm].
-  ParsedMfmProvider call(String text) {
-    return ParsedMfmProvider(text);
+  @override
+  String debugGetCreateSourceHash() => _$parsedMfmHash();
+
+  @override
+  String toString() {
+    return r'parsedMfmProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ParsedMfmProvider getProviderOverride(covariant ParsedMfmProvider provider) {
-    return call(provider.text);
+  $ProviderElement<List<MfmNode>> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  List<MfmNode> create(Ref ref) {
+    final argument = this.argument as String;
+    return parsedMfm(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'parsedMfmProvider';
-}
-
-/// See also [parsedMfm].
-class ParsedMfmProvider extends AutoDisposeProvider<List<MfmNode>> {
-  /// See also [parsedMfm].
-  ParsedMfmProvider(String text)
-    : this._internal(
-        (ref) => parsedMfm(ref as ParsedMfmRef, text),
-        from: parsedMfmProvider,
-        name: r'parsedMfmProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$parsedMfmHash,
-        dependencies: ParsedMfmFamily._dependencies,
-        allTransitiveDependencies: ParsedMfmFamily._allTransitiveDependencies,
-        text: text,
-      );
-
-  ParsedMfmProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.text,
-  }) : super.internal();
-
-  final String text;
-
-  @override
-  Override overrideWith(List<MfmNode> Function(ParsedMfmRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<MfmNode> value) {
+    return $ProviderOverride(
       origin: this,
-      override: ParsedMfmProvider._internal(
-        (ref) => create(ref as ParsedMfmRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        text: text,
-      ),
+      providerOverride: $SyncValueProvider<List<MfmNode>>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<List<MfmNode>> createElement() {
-    return _ParsedMfmProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is ParsedMfmProvider && other.text == text;
+    return other is ParsedMfmProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, text.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ParsedMfmRef on AutoDisposeProviderRef<List<MfmNode>> {
-  /// The parameter `text` of this provider.
-  String get text;
-}
+String _$parsedMfmHash() => r'00c66c7182a87069f2102f463cf53f4c053ec3e9';
 
-class _ParsedMfmProviderElement
-    extends AutoDisposeProviderElement<List<MfmNode>>
-    with ParsedMfmRef {
-  _ParsedMfmProviderElement(super.provider);
+final class ParsedMfmFamily extends $Family
+    with $FunctionalFamilyOverride<List<MfmNode>, String> {
+  const ParsedMfmFamily._()
+    : super(
+        retry: null,
+        name: r'parsedMfmProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ParsedMfmProvider call(String text) =>
+      ParsedMfmProvider._(argument: text, from: this);
 
   @override
-  String get text => (origin as ParsedMfmProvider).text;
+  String toString() => r'parsedMfmProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

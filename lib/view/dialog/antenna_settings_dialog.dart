@@ -42,13 +42,13 @@ class AntennaSettingsDialog extends HookConsumerWidget {
     final excludeKeywordsController = useTextEditingController(
       text: this.settings?.excludeKeywords?.map((e) => e.join(' ')).join('\n'),
     );
-    final lists = ref.watch(listsNotifierProvider(account)).valueOrNull;
+    final lists = ref.watch(listsNotifierProvider(account)).value;
     final list = lists?.firstWhereOrNull(
       (list) => list.id == settings.value.userListId,
     );
     final params = ref
         .watch(endpointParametersProvider(account, 'antennas/create'))
-        .valueOrNull;
+        .value;
     final theme = Theme.of(context);
 
     return AlertDialog(

@@ -117,21 +117,21 @@ class ProfilePage extends HookConsumerWidget {
         account,
       ).select((settings) => settings.uploadFolder),
     );
-    final nameController = useTextEditingController(text: i.valueOrNull?.name);
+    final nameController = useTextEditingController(text: i.value?.name);
     final descriptionController = useTextEditingController(
-      text: i.valueOrNull?.description,
+      text: i.value?.description,
     );
     final locationController = useTextEditingController(
-      text: i.valueOrNull?.location,
+      text: i.value?.location,
     );
     final followedMessageController = useTextEditingController(
-      text: i.valueOrNull?.followedMessage,
+      text: i.value?.followedMessage,
     );
-    final name = useState(i.valueOrNull?.name);
-    final description = useState(i.valueOrNull?.description);
-    final location = useState(i.valueOrNull?.location);
-    final fields = useState(i.valueOrNull?.fields ?? []);
-    final followedMessage = useState(i.valueOrNull?.followedMessage);
+    final name = useState(i.value?.name);
+    final description = useState(i.value?.description);
+    final location = useState(i.value?.location);
+    final fields = useState(i.value?.fields ?? []);
+    final followedMessage = useState(i.value?.followedMessage);
     final showPreview = useState(false);
     ref.listen(iNotifierProvider(account), (_, i) {
       if (i case AsyncData(value: final i?)) {
@@ -189,7 +189,7 @@ class ProfilePage extends HookConsumerWidget {
         ],
       ),
       body: switch (i) {
-        AsyncValue(valueOrNull: final i?) => ListView(
+        AsyncValue(value: final i, hasValue: true) when i != null => ListView(
           children: [
             Stack(
               alignment: Alignment.bottomCenter,

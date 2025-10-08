@@ -22,7 +22,7 @@ class PagesFeatured extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(featuredPagesProvider(account).future),
       child: switch (pages) {
-        AsyncValue(valueOrNull: final pages?) =>
+        AsyncValue(value: final pages?) =>
           pages.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

@@ -6,200 +6,108 @@ part of 'chat_stream_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chatStreamNotifierHash() =>
-    r'a1b1214abde950ca1a28861c7bc01faa4af4fd45';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ChatStreamNotifier
-    extends BuildlessAutoDisposeStreamNotifier<ChatEvent> {
-  late final Account account;
-  late final String? userId;
-  late final String? roomId;
-
-  Stream<ChatEvent> build(Account account, {String? userId, String? roomId});
-}
-
-/// See also [ChatStreamNotifier].
 @ProviderFor(ChatStreamNotifier)
-const chatStreamNotifierProvider = ChatStreamNotifierFamily();
+const chatStreamNotifierProvider = ChatStreamNotifierFamily._();
 
-/// See also [ChatStreamNotifier].
-class ChatStreamNotifierFamily extends Family<AsyncValue<ChatEvent>> {
-  /// See also [ChatStreamNotifier].
-  const ChatStreamNotifierFamily();
+final class ChatStreamNotifierProvider
+    extends $StreamNotifierProvider<ChatStreamNotifier, ChatEvent> {
+  const ChatStreamNotifierProvider._({
+    required ChatStreamNotifierFamily super.from,
+    required (Account, {String? userId, String? roomId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'chatStreamNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ChatStreamNotifier].
-  ChatStreamNotifierProvider call(
-    Account account, {
-    String? userId,
-    String? roomId,
-  }) {
-    return ChatStreamNotifierProvider(account, userId: userId, roomId: roomId);
+  @override
+  String debugGetCreateSourceHash() => _$chatStreamNotifierHash();
+
+  @override
+  String toString() {
+    return r'chatStreamNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  ChatStreamNotifierProvider getProviderOverride(
-    covariant ChatStreamNotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-      userId: provider.userId,
-      roomId: provider.roomId,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'chatStreamNotifierProvider';
-}
-
-/// See also [ChatStreamNotifier].
-class ChatStreamNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<ChatStreamNotifier, ChatEvent> {
-  /// See also [ChatStreamNotifier].
-  ChatStreamNotifierProvider(Account account, {String? userId, String? roomId})
-    : this._internal(
-        () => ChatStreamNotifier()
-          ..account = account
-          ..userId = userId
-          ..roomId = roomId,
-        from: chatStreamNotifierProvider,
-        name: r'chatStreamNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$chatStreamNotifierHash,
-        dependencies: ChatStreamNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            ChatStreamNotifierFamily._allTransitiveDependencies,
-        account: account,
-        userId: userId,
-        roomId: roomId,
-      );
-
-  ChatStreamNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.userId,
-    required this.roomId,
-  }) : super.internal();
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
-
-  @override
-  Stream<ChatEvent> runNotifierBuild(covariant ChatStreamNotifier notifier) {
-    return notifier.build(account, userId: userId, roomId: roomId);
-  }
-
-  @override
-  Override overrideWith(ChatStreamNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ChatStreamNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId
-          ..roomId = roomId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        userId: userId,
-        roomId: roomId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<ChatStreamNotifier, ChatEvent>
-  createElement() {
-    return _ChatStreamNotifierProviderElement(this);
-  }
+  ChatStreamNotifier create() => ChatStreamNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is ChatStreamNotifierProvider &&
-        other.account == account &&
-        other.userId == userId &&
-        other.roomId == roomId;
+    return other is ChatStreamNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-    hash = _SystemHash.combine(hash, roomId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ChatStreamNotifierRef on AutoDisposeStreamNotifierProviderRef<ChatEvent> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$chatStreamNotifierHash() =>
+    r'a1b1214abde950ca1a28861c7bc01faa4af4fd45';
 
-  /// The parameter `userId` of this provider.
-  String? get userId;
+final class ChatStreamNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          ChatStreamNotifier,
+          AsyncValue<ChatEvent>,
+          ChatEvent,
+          Stream<ChatEvent>,
+          (Account, {String? userId, String? roomId})
+        > {
+  const ChatStreamNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'chatStreamNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-  /// The parameter `roomId` of this provider.
-  String? get roomId;
+  ChatStreamNotifierProvider call(
+    Account account, {
+    String? userId,
+    String? roomId,
+  }) => ChatStreamNotifierProvider._(
+    argument: (account, userId: userId, roomId: roomId),
+    from: this,
+  );
+
+  @override
+  String toString() => r'chatStreamNotifierProvider';
 }
 
-class _ChatStreamNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<ChatStreamNotifier, ChatEvent>
-    with ChatStreamNotifierRef {
-  _ChatStreamNotifierProviderElement(super.provider);
+abstract class _$ChatStreamNotifier extends $StreamNotifier<ChatEvent> {
+  late final _$args = ref.$arg as (Account, {String? userId, String? roomId});
+  Account get account => _$args.$1;
+  String? get userId => _$args.userId;
+  String? get roomId => _$args.roomId;
 
+  Stream<ChatEvent> build(Account account, {String? userId, String? roomId});
+  @$mustCallSuper
   @override
-  Account get account => (origin as ChatStreamNotifierProvider).account;
-  @override
-  String? get userId => (origin as ChatStreamNotifierProvider).userId;
-  @override
-  String? get roomId => (origin as ChatStreamNotifierProvider).roomId;
+  void runBuild() {
+    final created = build(
+      _$args.$1,
+      userId: _$args.userId,
+      roomId: _$args.roomId,
+    );
+    final ref = this.ref as $Ref<AsyncValue<ChatEvent>, ChatEvent>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<ChatEvent>, ChatEvent>,
+              AsyncValue<ChatEvent>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

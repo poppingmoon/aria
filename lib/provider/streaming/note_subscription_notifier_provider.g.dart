@@ -6,162 +6,105 @@ part of 'note_subscription_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteSubscriptionNotifierHash() =>
-    r'd16216637a218914ecd35664cca30a24c3d544ac';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$NoteSubscriptionNotifier
-    extends BuildlessNotifier<Map<String, int>> {
-  late final Account account;
-
-  Map<String, int> build(Account account);
-}
-
-/// See also [NoteSubscriptionNotifier].
 @ProviderFor(NoteSubscriptionNotifier)
-const noteSubscriptionNotifierProvider = NoteSubscriptionNotifierFamily();
+const noteSubscriptionNotifierProvider = NoteSubscriptionNotifierFamily._();
 
-/// See also [NoteSubscriptionNotifier].
-class NoteSubscriptionNotifierFamily extends Family<Map<String, int>> {
-  /// See also [NoteSubscriptionNotifier].
-  const NoteSubscriptionNotifierFamily();
+final class NoteSubscriptionNotifierProvider
+    extends $NotifierProvider<NoteSubscriptionNotifier, Map<String, int>> {
+  const NoteSubscriptionNotifierProvider._({
+    required NoteSubscriptionNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'noteSubscriptionNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [NoteSubscriptionNotifier].
-  NoteSubscriptionNotifierProvider call(Account account) {
-    return NoteSubscriptionNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$noteSubscriptionNotifierHash();
+
+  @override
+  String toString() {
+    return r'noteSubscriptionNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  NoteSubscriptionNotifierProvider getProviderOverride(
-    covariant NoteSubscriptionNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  NoteSubscriptionNotifier create() => NoteSubscriptionNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'noteSubscriptionNotifierProvider';
-}
-
-/// See also [NoteSubscriptionNotifier].
-class NoteSubscriptionNotifierProvider
-    extends NotifierProviderImpl<NoteSubscriptionNotifier, Map<String, int>> {
-  /// See also [NoteSubscriptionNotifier].
-  NoteSubscriptionNotifierProvider(Account account)
-    : this._internal(
-        () => NoteSubscriptionNotifier()..account = account,
-        from: noteSubscriptionNotifierProvider,
-        name: r'noteSubscriptionNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$noteSubscriptionNotifierHash,
-        dependencies: NoteSubscriptionNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            NoteSubscriptionNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  NoteSubscriptionNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Map<String, int> runNotifierBuild(
-    covariant NoteSubscriptionNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(NoteSubscriptionNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Map<String, int> value) {
+    return $ProviderOverride(
       origin: this,
-      override: NoteSubscriptionNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<Map<String, int>>(value),
     );
-  }
-
-  @override
-  NotifierProviderElement<NoteSubscriptionNotifier, Map<String, int>>
-  createElement() {
-    return _NoteSubscriptionNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is NoteSubscriptionNotifierProvider &&
-        other.account == account;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NoteSubscriptionNotifierRef on NotifierProviderRef<Map<String, int>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$noteSubscriptionNotifierHash() =>
+    r'd16216637a218914ecd35664cca30a24c3d544ac';
 
-class _NoteSubscriptionNotifierProviderElement
-    extends NotifierProviderElement<NoteSubscriptionNotifier, Map<String, int>>
-    with NoteSubscriptionNotifierRef {
-  _NoteSubscriptionNotifierProviderElement(super.provider);
+final class NoteSubscriptionNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          NoteSubscriptionNotifier,
+          Map<String, int>,
+          Map<String, int>,
+          Map<String, int>,
+          Account
+        > {
+  const NoteSubscriptionNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'noteSubscriptionNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  NoteSubscriptionNotifierProvider call(Account account) =>
+      NoteSubscriptionNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as NoteSubscriptionNotifierProvider).account;
+  String toString() => r'noteSubscriptionNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$NoteSubscriptionNotifier extends $Notifier<Map<String, int>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Map<String, int> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<Map<String, int>, Map<String, int>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Map<String, int>, Map<String, int>>,
+              Map<String, int>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

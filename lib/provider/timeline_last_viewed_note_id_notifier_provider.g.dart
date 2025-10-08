@@ -6,173 +6,110 @@ part of 'timeline_last_viewed_note_id_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timelineLastViewedNoteIdNotifierHash() =>
-    r'74d17ffe8a3f5f248d74c04815dc7d497a0b4630';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$TimelineLastViewedNoteIdNotifier
-    extends BuildlessAutoDisposeNotifier<String?> {
-  late final TabSettings tabSettings;
-
-  String? build(TabSettings tabSettings);
-}
-
-/// See also [TimelineLastViewedNoteIdNotifier].
 @ProviderFor(TimelineLastViewedNoteIdNotifier)
 const timelineLastViewedNoteIdNotifierProvider =
-    TimelineLastViewedNoteIdNotifierFamily();
+    TimelineLastViewedNoteIdNotifierFamily._();
 
-/// See also [TimelineLastViewedNoteIdNotifier].
-class TimelineLastViewedNoteIdNotifierFamily extends Family<String?> {
-  /// See also [TimelineLastViewedNoteIdNotifier].
-  const TimelineLastViewedNoteIdNotifierFamily();
+final class TimelineLastViewedNoteIdNotifierProvider
+    extends $NotifierProvider<TimelineLastViewedNoteIdNotifier, String?> {
+  const TimelineLastViewedNoteIdNotifierProvider._({
+    required TimelineLastViewedNoteIdNotifierFamily super.from,
+    required TabSettings super.argument,
+  }) : super(
+         retry: null,
+         name: r'timelineLastViewedNoteIdNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [TimelineLastViewedNoteIdNotifier].
-  TimelineLastViewedNoteIdNotifierProvider call(TabSettings tabSettings) {
-    return TimelineLastViewedNoteIdNotifierProvider(tabSettings);
+  @override
+  String debugGetCreateSourceHash() => _$timelineLastViewedNoteIdNotifierHash();
+
+  @override
+  String toString() {
+    return r'timelineLastViewedNoteIdNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  TimelineLastViewedNoteIdNotifierProvider getProviderOverride(
-    covariant TimelineLastViewedNoteIdNotifierProvider provider,
-  ) {
-    return call(provider.tabSettings);
-  }
+  TimelineLastViewedNoteIdNotifier create() =>
+      TimelineLastViewedNoteIdNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'timelineLastViewedNoteIdNotifierProvider';
-}
-
-/// See also [TimelineLastViewedNoteIdNotifier].
-class TimelineLastViewedNoteIdNotifierProvider
-    extends
-        AutoDisposeNotifierProviderImpl<
-          TimelineLastViewedNoteIdNotifier,
-          String?
-        > {
-  /// See also [TimelineLastViewedNoteIdNotifier].
-  TimelineLastViewedNoteIdNotifierProvider(TabSettings tabSettings)
-    : this._internal(
-        () => TimelineLastViewedNoteIdNotifier()..tabSettings = tabSettings,
-        from: timelineLastViewedNoteIdNotifierProvider,
-        name: r'timelineLastViewedNoteIdNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$timelineLastViewedNoteIdNotifierHash,
-        dependencies: TimelineLastViewedNoteIdNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            TimelineLastViewedNoteIdNotifierFamily._allTransitiveDependencies,
-        tabSettings: tabSettings,
-      );
-
-  TimelineLastViewedNoteIdNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.tabSettings,
-  }) : super.internal();
-
-  final TabSettings tabSettings;
-
-  @override
-  String? runNotifierBuild(
-    covariant TimelineLastViewedNoteIdNotifier notifier,
-  ) {
-    return notifier.build(tabSettings);
-  }
-
-  @override
-  Override overrideWith(TimelineLastViewedNoteIdNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
       origin: this,
-      override: TimelineLastViewedNoteIdNotifierProvider._internal(
-        () => create()..tabSettings = tabSettings,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        tabSettings: tabSettings,
-      ),
+      providerOverride: $SyncValueProvider<String?>(value),
     );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<TimelineLastViewedNoteIdNotifier, String?>
-  createElement() {
-    return _TimelineLastViewedNoteIdNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is TimelineLastViewedNoteIdNotifierProvider &&
-        other.tabSettings == tabSettings;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, tabSettings.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin TimelineLastViewedNoteIdNotifierRef
-    on AutoDisposeNotifierProviderRef<String?> {
-  /// The parameter `tabSettings` of this provider.
-  TabSettings get tabSettings;
-}
+String _$timelineLastViewedNoteIdNotifierHash() =>
+    r'74d17ffe8a3f5f248d74c04815dc7d497a0b4630';
 
-class _TimelineLastViewedNoteIdNotifierProviderElement
-    extends
-        AutoDisposeNotifierProviderElement<
+final class TimelineLastViewedNoteIdNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           TimelineLastViewedNoteIdNotifier,
-          String?
-        >
-    with TimelineLastViewedNoteIdNotifierRef {
-  _TimelineLastViewedNoteIdNotifierProviderElement(super.provider);
+          String?,
+          String?,
+          String?,
+          TabSettings
+        > {
+  const TimelineLastViewedNoteIdNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'timelineLastViewedNoteIdNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  TimelineLastViewedNoteIdNotifierProvider call(TabSettings tabSettings) =>
+      TimelineLastViewedNoteIdNotifierProvider._(
+        argument: tabSettings,
+        from: this,
+      );
 
   @override
-  TabSettings get tabSettings =>
-      (origin as TimelineLastViewedNoteIdNotifierProvider).tabSettings;
+  String toString() => r'timelineLastViewedNoteIdNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$TimelineLastViewedNoteIdNotifier extends $Notifier<String?> {
+  late final _$args = ref.$arg as TabSettings;
+  TabSettings get tabSettings => _$args;
+
+  String? build(TabSettings tabSettings);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<String?, String?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String?, String?>,
+              String?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

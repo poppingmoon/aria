@@ -37,7 +37,7 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -60,7 +60,7 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
 
   Future<void> join(String roomId) async {
     await _misskey.chat.rooms.join(ChatRoomsJoinRequest(roomId: roomId));
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items
@@ -74,7 +74,7 @@ class ChatInvitationsNotifier extends _$ChatInvitationsNotifier {
     await _misskey.chat.rooms.invitations.ignore(
       ChatRoomsInvitationsIgnoreRequest(roomId: roomId),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items

@@ -27,8 +27,8 @@ class SearchPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final canSearchNotes =
         (i == null && (meta?.policies?.canSearchNotes ?? true)) ||
         (i != null && (i.policies?.canSearchNotes ?? true));

@@ -6,177 +6,111 @@ part of 'featured_gallery_posts_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$featuredGalleryPostsNotifierHash() =>
-    r'41904d409482f217a44e3163ead80542d3ca3830';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$FeaturedGalleryPostsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<GalleryPost>> {
-  late final Account account;
-
-  Stream<PaginationState<GalleryPost>> build(Account account);
-}
-
-/// See also [FeaturedGalleryPostsNotifier].
 @ProviderFor(FeaturedGalleryPostsNotifier)
 const featuredGalleryPostsNotifierProvider =
-    FeaturedGalleryPostsNotifierFamily();
+    FeaturedGalleryPostsNotifierFamily._();
 
-/// See also [FeaturedGalleryPostsNotifier].
-class FeaturedGalleryPostsNotifierFamily
-    extends Family<AsyncValue<PaginationState<GalleryPost>>> {
-  /// See also [FeaturedGalleryPostsNotifier].
-  const FeaturedGalleryPostsNotifierFamily();
-
-  /// See also [FeaturedGalleryPostsNotifier].
-  FeaturedGalleryPostsNotifierProvider call(Account account) {
-    return FeaturedGalleryPostsNotifierProvider(account);
-  }
-
-  @override
-  FeaturedGalleryPostsNotifierProvider getProviderOverride(
-    covariant FeaturedGalleryPostsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'featuredGalleryPostsNotifierProvider';
-}
-
-/// See also [FeaturedGalleryPostsNotifier].
-class FeaturedGalleryPostsNotifierProvider
+final class FeaturedGalleryPostsNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           FeaturedGalleryPostsNotifier,
           PaginationState<GalleryPost>
         > {
-  /// See also [FeaturedGalleryPostsNotifier].
-  FeaturedGalleryPostsNotifierProvider(Account account)
-    : this._internal(
-        () => FeaturedGalleryPostsNotifier()..account = account,
-        from: featuredGalleryPostsNotifierProvider,
-        name: r'featuredGalleryPostsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$featuredGalleryPostsNotifierHash,
-        dependencies: FeaturedGalleryPostsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            FeaturedGalleryPostsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  FeaturedGalleryPostsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+  const FeaturedGalleryPostsNotifierProvider._({
+    required FeaturedGalleryPostsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'featuredGalleryPostsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<GalleryPost>> runNotifierBuild(
-    covariant FeaturedGalleryPostsNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
+  String debugGetCreateSourceHash() => _$featuredGalleryPostsNotifierHash();
 
   @override
-  Override overrideWith(FeaturedGalleryPostsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: FeaturedGalleryPostsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
+  String toString() {
+    return r'featuredGalleryPostsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    FeaturedGalleryPostsNotifier,
-    PaginationState<GalleryPost>
-  >
-  createElement() {
-    return _FeaturedGalleryPostsNotifierProviderElement(this);
-  }
+  FeaturedGalleryPostsNotifier create() => FeaturedGalleryPostsNotifier();
 
   @override
   bool operator ==(Object other) {
     return other is FeaturedGalleryPostsNotifierProvider &&
-        other.account == account;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FeaturedGalleryPostsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<GalleryPost>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$featuredGalleryPostsNotifierHash() =>
+    r'89f504bdc619eaef3b7e203a1327af571dc629fc';
 
-class _FeaturedGalleryPostsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class FeaturedGalleryPostsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           FeaturedGalleryPostsNotifier,
-          PaginationState<GalleryPost>
-        >
-    with FeaturedGalleryPostsNotifierRef {
-  _FeaturedGalleryPostsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<GalleryPost>>,
+          PaginationState<GalleryPost>,
+          Stream<PaginationState<GalleryPost>>,
+          Account
+        > {
+  const FeaturedGalleryPostsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'featuredGalleryPostsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  FeaturedGalleryPostsNotifierProvider call(Account account) =>
+      FeaturedGalleryPostsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account =>
-      (origin as FeaturedGalleryPostsNotifierProvider).account;
+  String toString() => r'featuredGalleryPostsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$FeaturedGalleryPostsNotifier
+    extends $StreamNotifier<PaginationState<GalleryPost>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<GalleryPost>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<GalleryPost>>,
+              PaginationState<GalleryPost>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<GalleryPost>>,
+                PaginationState<GalleryPost>
+              >,
+              AsyncValue<PaginationState<GalleryPost>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
