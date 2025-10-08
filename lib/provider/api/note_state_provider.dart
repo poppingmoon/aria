@@ -19,7 +19,7 @@ class NoteStateNotifier extends _$NoteStateNotifier {
     await _misskey.notes.favorites.create(
       NotesFavoritesCreateRequest(noteId: noteId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isFavorited: true));
     }
@@ -29,7 +29,7 @@ class NoteStateNotifier extends _$NoteStateNotifier {
     await _misskey.notes.favorites.delete(
       NotesFavoritesDeleteRequest(noteId: noteId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isFavorited: false));
     }
@@ -39,7 +39,7 @@ class NoteStateNotifier extends _$NoteStateNotifier {
     await _misskey.notes.threadMuting.create(
       NotesThreadMutingCreateRequest(noteId: noteId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isMutedThread: true));
     }
@@ -49,7 +49,7 @@ class NoteStateNotifier extends _$NoteStateNotifier {
     await _misskey.notes.threadMuting.delete(
       NotesThreadMutingDeleteRequest(noteId: noteId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isMutedThread: false));
     }

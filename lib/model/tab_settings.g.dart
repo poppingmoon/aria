@@ -33,32 +33,31 @@ _TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) => _TabSettings(
   parameters: json['parameters'] as Map<String, dynamic>?,
 );
 
-Map<String, dynamic> _$TabSettingsToJson(
-  _TabSettings instance,
-) => <String, dynamic>{
-  if (instance.id case final value?) 'id': value,
-  'tabType': _$TabTypeEnumMap[instance.tabType]!,
-  if (instance.name case final value?) 'name': value,
-  'account': instance.account.toJson(),
-  if (instance.icon?.toJson() case final value?) 'icon': value,
-  'disableStreaming': instance.disableStreaming,
-  'disableSubscribing': instance.disableSubscribing,
-  'withReplies': instance.withReplies,
-  'withRenotes': instance.withRenotes,
-  'withSelfRenotes': instance.withSelfRenotes,
-  'withFiles': instance.withFiles,
-  'withSensitive': instance.withSensitive,
-  'keepPosition': instance.keepPosition,
-  if (instance.roleId case final value?) 'roleId': value,
-  if (instance.channelId case final value?) 'channelId': value,
-  if (instance.listId case final value?) 'listId': value,
-  if (instance.antennaId case final value?) 'antennaId': value,
-  if (instance.hashtag case final value?) 'hashtag': value,
-  if (instance.userId case final value?) 'userId': value,
-  if (instance.endpoint case final value?) 'endpoint': value,
-  if (instance.streamingChannel case final value?) 'streamingChannel': value,
-  if (instance.parameters case final value?) 'parameters': value,
-};
+Map<String, dynamic> _$TabSettingsToJson(_TabSettings instance) =>
+    <String, dynamic>{
+      'id': ?instance.id,
+      'tabType': _$TabTypeEnumMap[instance.tabType]!,
+      'name': ?instance.name,
+      'account': instance.account.toJson(),
+      'icon': ?instance.icon?.toJson(),
+      'disableStreaming': instance.disableStreaming,
+      'disableSubscribing': instance.disableSubscribing,
+      'withReplies': instance.withReplies,
+      'withRenotes': instance.withRenotes,
+      'withSelfRenotes': instance.withSelfRenotes,
+      'withFiles': instance.withFiles,
+      'withSensitive': instance.withSensitive,
+      'keepPosition': instance.keepPosition,
+      'roleId': ?instance.roleId,
+      'channelId': ?instance.channelId,
+      'listId': ?instance.listId,
+      'antennaId': ?instance.antennaId,
+      'hashtag': ?instance.hashtag,
+      'userId': ?instance.userId,
+      'endpoint': ?instance.endpoint,
+      'streamingChannel': ?instance.streamingChannel,
+      'parameters': ?instance.parameters,
+    };
 
 const _$TabTypeEnumMap = {
   TabType.homeTimeline: 'homeTimeline',

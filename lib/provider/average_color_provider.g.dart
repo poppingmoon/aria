@@ -6,143 +6,82 @@ part of 'average_color_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$averageColorHash() => r'06665cfb6770de47493dab0049f170bb74039f4c';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [averageColor].
 @ProviderFor(averageColor)
-const averageColorProvider = AverageColorFamily();
+const averageColorProvider = AverageColorFamily._();
 
-/// See also [averageColor].
-class AverageColorFamily extends Family<Color> {
-  /// See also [averageColor].
-  const AverageColorFamily();
+final class AverageColorProvider
+    extends $FunctionalProvider<Color, Color, Color>
+    with $Provider<Color> {
+  const AverageColorProvider._({
+    required AverageColorFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'averageColorProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [averageColor].
-  AverageColorProvider call(String blurHash) {
-    return AverageColorProvider(blurHash);
+  @override
+  String debugGetCreateSourceHash() => _$averageColorHash();
+
+  @override
+  String toString() {
+    return r'averageColorProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AverageColorProvider getProviderOverride(
-    covariant AverageColorProvider provider,
-  ) {
-    return call(provider.blurHash);
+  $ProviderElement<Color> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Color create(Ref ref) {
+    final argument = this.argument as String;
+    return averageColor(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'averageColorProvider';
-}
-
-/// See also [averageColor].
-class AverageColorProvider extends AutoDisposeProvider<Color> {
-  /// See also [averageColor].
-  AverageColorProvider(String blurHash)
-    : this._internal(
-        (ref) => averageColor(ref as AverageColorRef, blurHash),
-        from: averageColorProvider,
-        name: r'averageColorProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$averageColorHash,
-        dependencies: AverageColorFamily._dependencies,
-        allTransitiveDependencies:
-            AverageColorFamily._allTransitiveDependencies,
-        blurHash: blurHash,
-      );
-
-  AverageColorProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.blurHash,
-  }) : super.internal();
-
-  final String blurHash;
-
-  @override
-  Override overrideWith(Color Function(AverageColorRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Color value) {
+    return $ProviderOverride(
       origin: this,
-      override: AverageColorProvider._internal(
-        (ref) => create(ref as AverageColorRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        blurHash: blurHash,
-      ),
+      providerOverride: $SyncValueProvider<Color>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<Color> createElement() {
-    return _AverageColorProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is AverageColorProvider && other.blurHash == blurHash;
+    return other is AverageColorProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, blurHash.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin AverageColorRef on AutoDisposeProviderRef<Color> {
-  /// The parameter `blurHash` of this provider.
-  String get blurHash;
-}
+String _$averageColorHash() => r'06665cfb6770de47493dab0049f170bb74039f4c';
 
-class _AverageColorProviderElement extends AutoDisposeProviderElement<Color>
-    with AverageColorRef {
-  _AverageColorProviderElement(super.provider);
+final class AverageColorFamily extends $Family
+    with $FunctionalFamilyOverride<Color, String> {
+  const AverageColorFamily._()
+    : super(
+        retry: null,
+        name: r'averageColorProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  AverageColorProvider call(String blurHash) =>
+      AverageColorProvider._(argument: blurHash, from: this);
 
   @override
-  String get blurHash => (origin as AverageColorProvider).blurHash;
+  String toString() => r'averageColorProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

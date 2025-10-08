@@ -6,160 +6,105 @@ part of 'recently_used_emojis_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recentlyUsedEmojisNotifierHash() =>
-    r'3c3d090191a2faa7cb9cb6fc0246208738213430';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$RecentlyUsedEmojisNotifier
-    extends BuildlessNotifier<List<String>> {
-  late final Account account;
-
-  List<String> build(Account account);
-}
-
-/// See also [RecentlyUsedEmojisNotifier].
 @ProviderFor(RecentlyUsedEmojisNotifier)
-const recentlyUsedEmojisNotifierProvider = RecentlyUsedEmojisNotifierFamily();
+const recentlyUsedEmojisNotifierProvider = RecentlyUsedEmojisNotifierFamily._();
 
-/// See also [RecentlyUsedEmojisNotifier].
-class RecentlyUsedEmojisNotifierFamily extends Family<List<String>> {
-  /// See also [RecentlyUsedEmojisNotifier].
-  const RecentlyUsedEmojisNotifierFamily();
+final class RecentlyUsedEmojisNotifierProvider
+    extends $NotifierProvider<RecentlyUsedEmojisNotifier, List<String>> {
+  const RecentlyUsedEmojisNotifierProvider._({
+    required RecentlyUsedEmojisNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'recentlyUsedEmojisNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [RecentlyUsedEmojisNotifier].
-  RecentlyUsedEmojisNotifierProvider call(Account account) {
-    return RecentlyUsedEmojisNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$recentlyUsedEmojisNotifierHash();
+
+  @override
+  String toString() {
+    return r'recentlyUsedEmojisNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  RecentlyUsedEmojisNotifierProvider getProviderOverride(
-    covariant RecentlyUsedEmojisNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  RecentlyUsedEmojisNotifier create() => RecentlyUsedEmojisNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'recentlyUsedEmojisNotifierProvider';
-}
-
-/// See also [RecentlyUsedEmojisNotifier].
-class RecentlyUsedEmojisNotifierProvider
-    extends NotifierProviderImpl<RecentlyUsedEmojisNotifier, List<String>> {
-  /// See also [RecentlyUsedEmojisNotifier].
-  RecentlyUsedEmojisNotifierProvider(Account account)
-    : this._internal(
-        () => RecentlyUsedEmojisNotifier()..account = account,
-        from: recentlyUsedEmojisNotifierProvider,
-        name: r'recentlyUsedEmojisNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$recentlyUsedEmojisNotifierHash,
-        dependencies: RecentlyUsedEmojisNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            RecentlyUsedEmojisNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  RecentlyUsedEmojisNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  List<String> runNotifierBuild(covariant RecentlyUsedEmojisNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(RecentlyUsedEmojisNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<String> value) {
+    return $ProviderOverride(
       origin: this,
-      override: RecentlyUsedEmojisNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<List<String>>(value),
     );
-  }
-
-  @override
-  NotifierProviderElement<RecentlyUsedEmojisNotifier, List<String>>
-  createElement() {
-    return _RecentlyUsedEmojisNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is RecentlyUsedEmojisNotifierProvider &&
-        other.account == account;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin RecentlyUsedEmojisNotifierRef on NotifierProviderRef<List<String>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$recentlyUsedEmojisNotifierHash() =>
+    r'3c3d090191a2faa7cb9cb6fc0246208738213430';
 
-class _RecentlyUsedEmojisNotifierProviderElement
-    extends NotifierProviderElement<RecentlyUsedEmojisNotifier, List<String>>
-    with RecentlyUsedEmojisNotifierRef {
-  _RecentlyUsedEmojisNotifierProviderElement(super.provider);
+final class RecentlyUsedEmojisNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          RecentlyUsedEmojisNotifier,
+          List<String>,
+          List<String>,
+          List<String>,
+          Account
+        > {
+  const RecentlyUsedEmojisNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'recentlyUsedEmojisNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  RecentlyUsedEmojisNotifierProvider call(Account account) =>
+      RecentlyUsedEmojisNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as RecentlyUsedEmojisNotifierProvider).account;
+  String toString() => r'recentlyUsedEmojisNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$RecentlyUsedEmojisNotifier extends $Notifier<List<String>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  List<String> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<List<String>, List<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<String>, List<String>>,
+              List<String>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

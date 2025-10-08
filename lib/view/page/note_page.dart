@@ -74,8 +74,8 @@ class NotePage extends HookConsumerWidget {
     final showTimelineNextNotes = useState(false);
     final showNextNotes =
         showTimelineNextNotes.value || showUserNextNotes.value;
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final ltlAvailable =
         i?.policies?.ltlAvailable ?? meta?.policies?.ltlAvailable ?? true;
     final gtlAvailable =
@@ -204,7 +204,7 @@ class NotePage extends HookConsumerWidget {
                 ),
               ),
             ),
-            if (nextNotesState.valueOrNull?.items case final notes?
+            if (nextNotesState.value?.items case final notes?
                 when notes.isNotEmpty)
               SliverList.separated(
                 itemBuilder: (context, index) => Center(
@@ -353,7 +353,7 @@ class NotePage extends HookConsumerWidget {
             ),
           ),
           if (previousNotesState != null) ...[
-            if (previousNotesState.valueOrNull?.items case final notes?
+            if (previousNotesState.value?.items case final notes?
                 when notes.isNotEmpty)
               SliverList.separated(
                 itemBuilder: (context, index) => Center(

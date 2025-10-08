@@ -22,7 +22,7 @@ class PaginationBottomWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = paginationState.valueOrNull;
+    final value = paginationState.value;
 
     return ConstrainedBox(
       constraints: BoxConstraints(minHeight: height ?? 0.0),

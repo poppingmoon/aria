@@ -25,7 +25,7 @@ class InstanceTickerWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final color =
         safeParseColor(
           instance != null ? instance?.themeColor : meta?.themeColor,

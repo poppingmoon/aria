@@ -42,7 +42,7 @@ class TimelineWidget extends HookConsumerWidget {
       timelineTabsNotifierProvider.select((tabs) => tabs[tabIndex]),
     );
     final account = tabSettings.account;
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final (vibrateOnNotification, showTimelineLastViewedAt) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) =>
@@ -61,7 +61,7 @@ class TimelineWidget extends HookConsumerWidget {
             timelineNotesAfterNoteNotifierProvider(
               tabSettings,
               sinceId: centerId,
-            ).select((notes) => notes.valueOrNull?.items.firstOrNull?.id),
+            ).select((notes) => notes.value?.items.firstOrNull?.id),
           )
         : null;
     final previousNoteId = tabSettings.tabType != TabType.notifications
@@ -71,7 +71,7 @@ class TimelineWidget extends HookConsumerWidget {
               untilId: centerId != null
                   ? Id.tryParse(centerId)?.next().toString() ?? centerId
                   : null,
-            ).select((notes) => notes.valueOrNull?.items.firstOrNull?.id),
+            ).select((notes) => notes.value?.items.firstOrNull?.id),
           )
         : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
@@ -237,7 +237,7 @@ class TimelineWidget extends HookConsumerWidget {
                             scrollController.position.maxScrollExtent;
                         final notes = ref
                             .watch(timelineNotesNotifierProvider(tabSettings))
-                            .valueOrNull;
+                            .value;
                         final oldestNote = notes?.items.lastOrNull;
                         if (centerId == null &&
                             oldestNote != null &&

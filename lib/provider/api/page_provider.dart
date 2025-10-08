@@ -42,7 +42,7 @@ class PageNotifier extends _$PageNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  String get _pageId => pageId ?? state.valueOrNull!.id;
+  String get _pageId => pageId ?? state.value!.id;
 
   Iterable<String> _getNoteIds(AbstractPageContent block) {
     return switch (block) {

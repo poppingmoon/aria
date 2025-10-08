@@ -6,22 +6,38 @@ part of 'user_agent_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userAgentHash() => r'ac5a4730ac11841190db3264eda1731d8ba5b4a1';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [userAgent].
 @ProviderFor(userAgent)
-final userAgentProvider = AutoDisposeFutureProvider<String?>.internal(
-  userAgent,
-  name: r'userAgentProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$userAgentHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const userAgentProvider = UserAgentProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef UserAgentRef = AutoDisposeFutureProviderRef<String?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class UserAgentProvider
+    extends $FunctionalProvider<AsyncValue<String?>, String?, FutureOr<String?>>
+    with $FutureModifier<String?>, $FutureProvider<String?> {
+  const UserAgentProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'userAgentProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$userAgentHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<String?> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<String?> create(Ref ref) {
+    return userAgent(ref);
+  }
+}
+
+String _$userAgentHash() => r'ac5a4730ac11841190db3264eda1731d8ba5b4a1';

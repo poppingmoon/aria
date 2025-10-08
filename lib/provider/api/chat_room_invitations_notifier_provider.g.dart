@@ -6,192 +6,115 @@ part of 'chat_room_invitations_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chatRoomInvitationsNotifierHash() =>
-    r'ba24d298c29b4db0d588b417e2b3e937e53a4b1b';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ChatRoomInvitationsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<ChatJoining>> {
-  late final Account account;
-  late final String roomId;
-
-  Stream<PaginationState<ChatJoining>> build(Account account, String roomId);
-}
-
-/// See also [ChatRoomInvitationsNotifier].
 @ProviderFor(ChatRoomInvitationsNotifier)
-const chatRoomInvitationsNotifierProvider = ChatRoomInvitationsNotifierFamily();
+const chatRoomInvitationsNotifierProvider =
+    ChatRoomInvitationsNotifierFamily._();
 
-/// See also [ChatRoomInvitationsNotifier].
-class ChatRoomInvitationsNotifierFamily
-    extends Family<AsyncValue<PaginationState<ChatJoining>>> {
-  /// See also [ChatRoomInvitationsNotifier].
-  const ChatRoomInvitationsNotifierFamily();
-
-  /// See also [ChatRoomInvitationsNotifier].
-  ChatRoomInvitationsNotifierProvider call(Account account, String roomId) {
-    return ChatRoomInvitationsNotifierProvider(account, roomId);
-  }
-
-  @override
-  ChatRoomInvitationsNotifierProvider getProviderOverride(
-    covariant ChatRoomInvitationsNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.roomId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'chatRoomInvitationsNotifierProvider';
-}
-
-/// See also [ChatRoomInvitationsNotifier].
-class ChatRoomInvitationsNotifierProvider
+final class ChatRoomInvitationsNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           ChatRoomInvitationsNotifier,
           PaginationState<ChatJoining>
         > {
-  /// See also [ChatRoomInvitationsNotifier].
-  ChatRoomInvitationsNotifierProvider(Account account, String roomId)
-    : this._internal(
-        () => ChatRoomInvitationsNotifier()
-          ..account = account
-          ..roomId = roomId,
-        from: chatRoomInvitationsNotifierProvider,
-        name: r'chatRoomInvitationsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$chatRoomInvitationsNotifierHash,
-        dependencies: ChatRoomInvitationsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            ChatRoomInvitationsNotifierFamily._allTransitiveDependencies,
-        account: account,
-        roomId: roomId,
-      );
-
-  ChatRoomInvitationsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.roomId,
-  }) : super.internal();
-
-  final Account account;
-  final String roomId;
+  const ChatRoomInvitationsNotifierProvider._({
+    required ChatRoomInvitationsNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'chatRoomInvitationsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<ChatJoining>> runNotifierBuild(
-    covariant ChatRoomInvitationsNotifier notifier,
-  ) {
-    return notifier.build(account, roomId);
-  }
+  String debugGetCreateSourceHash() => _$chatRoomInvitationsNotifierHash();
 
   @override
-  Override overrideWith(ChatRoomInvitationsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ChatRoomInvitationsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..roomId = roomId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        roomId: roomId,
-      ),
-    );
+  String toString() {
+    return r'chatRoomInvitationsNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    ChatRoomInvitationsNotifier,
-    PaginationState<ChatJoining>
-  >
-  createElement() {
-    return _ChatRoomInvitationsNotifierProviderElement(this);
-  }
+  ChatRoomInvitationsNotifier create() => ChatRoomInvitationsNotifier();
 
   @override
   bool operator ==(Object other) {
     return other is ChatRoomInvitationsNotifierProvider &&
-        other.account == account &&
-        other.roomId == roomId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, roomId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ChatRoomInvitationsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<ChatJoining>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$chatRoomInvitationsNotifierHash() =>
+    r'a0ae4c31a559478bcec07ac19b6c2605a350527e';
 
-  /// The parameter `roomId` of this provider.
-  String get roomId;
-}
-
-class _ChatRoomInvitationsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class ChatRoomInvitationsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ChatRoomInvitationsNotifier,
-          PaginationState<ChatJoining>
-        >
-    with ChatRoomInvitationsNotifierRef {
-  _ChatRoomInvitationsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<ChatJoining>>,
+          PaginationState<ChatJoining>,
+          Stream<PaginationState<ChatJoining>>,
+          (Account, String)
+        > {
+  const ChatRoomInvitationsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'chatRoomInvitationsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ChatRoomInvitationsNotifierProvider call(Account account, String roomId) =>
+      ChatRoomInvitationsNotifierProvider._(
+        argument: (account, roomId),
+        from: this,
+      );
 
   @override
-  Account get account =>
-      (origin as ChatRoomInvitationsNotifierProvider).account;
-  @override
-  String get roomId => (origin as ChatRoomInvitationsNotifierProvider).roomId;
+  String toString() => r'chatRoomInvitationsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ChatRoomInvitationsNotifier
+    extends $StreamNotifier<PaginationState<ChatJoining>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get roomId => _$args.$2;
+
+  Stream<PaginationState<ChatJoining>> build(Account account, String roomId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<ChatJoining>>,
+              PaginationState<ChatJoining>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<ChatJoining>>,
+                PaginationState<ChatJoining>
+              >,
+              AsyncValue<PaginationState<ChatJoining>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

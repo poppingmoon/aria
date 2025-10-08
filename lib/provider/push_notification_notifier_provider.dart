@@ -11,7 +11,7 @@ class PushNotificationNotifier extends _$PushNotificationNotifier {
   Stream<PushNotification> build() async* {}
 
   void add(PushNotification notification) {
-    if (state.valueOrNull != notification) {
+    if (state.value != notification) {
       state = AsyncValue.data(notification);
       ref.read(messageOpenedAppNotifierProvider.notifier).markShouldRedirect();
     }

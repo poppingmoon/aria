@@ -31,9 +31,7 @@ class ChatRoomMembers extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final room = ref
-        .watch(chatRoomNotifierProvider(account, roomId))
-        .valueOrNull;
+    final room = ref.watch(chatRoomNotifierProvider(account, roomId)).value;
     final isMyRoom = room?.owner.username == account.username;
     final memberships = ref.watch(
       chatRoomMembersNotifierProvider(account, roomId),
@@ -158,7 +156,7 @@ class ChatRoomMembers extends HookConsumerWidget {
                   ),
                 ),
               ),
-            if (memberships.valueOrNull?.items case final memberships?)
+            if (memberships.value?.items case final memberships?)
               for (final membership in memberships)
                 if (membership.user case final user?) ...[
                   const SizedBox(height: 8.0),
@@ -206,7 +204,7 @@ class ChatRoomMembers extends HookConsumerWidget {
                   child: Text(t.misskey.chat_.sentInvitations),
                 ),
               ),
-              if (invitations.valueOrNull?.items case final invitations?)
+              if (invitations.value?.items case final invitations?)
                 for (final invitation in invitations)
                   if (invitation.user case final user?) ...[
                     const SizedBox(height: 8.0),

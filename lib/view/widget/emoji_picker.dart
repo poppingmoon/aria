@@ -129,7 +129,7 @@ class EmojiPicker extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref.watch(categorizedEmojisProvider(account.host));
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final style = DefaultTextStyle.of(context).style;
     final controller = useTextEditingController();
     final focusNode = useFocusNode();

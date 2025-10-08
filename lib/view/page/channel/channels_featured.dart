@@ -22,7 +22,7 @@ class ChannelsFeatured extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(featuredChannelsProvider(account).future),
       child: switch (channels) {
-        AsyncValue(valueOrNull: final channels?) =>
+        AsyncValue(value: final channels?) =>
           channels.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

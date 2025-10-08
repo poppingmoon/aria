@@ -6,173 +6,104 @@ part of 'post_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postNotifierHash() => r'76724eefb9e820afb9c986e2c5662e5790900b7e';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$PostNotifier extends BuildlessNotifier<NotesCreateRequest> {
-  late final Account account;
-  late final String? noteId;
-
-  NotesCreateRequest build(Account account, {String? noteId});
-}
-
-/// See also [PostNotifier].
 @ProviderFor(PostNotifier)
-const postNotifierProvider = PostNotifierFamily();
+const postNotifierProvider = PostNotifierFamily._();
 
-/// See also [PostNotifier].
-class PostNotifierFamily extends Family<NotesCreateRequest> {
-  /// See also [PostNotifier].
-  const PostNotifierFamily();
+final class PostNotifierProvider
+    extends $NotifierProvider<PostNotifier, NotesCreateRequest> {
+  const PostNotifierProvider._({
+    required PostNotifierFamily super.from,
+    required (Account, {String? noteId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'postNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [PostNotifier].
-  PostNotifierProvider call(Account account, {String? noteId}) {
-    return PostNotifierProvider(account, noteId: noteId);
+  @override
+  String debugGetCreateSourceHash() => _$postNotifierHash();
+
+  @override
+  String toString() {
+    return r'postNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  PostNotifierProvider getProviderOverride(
-    covariant PostNotifierProvider provider,
-  ) {
-    return call(provider.account, noteId: provider.noteId);
-  }
+  PostNotifier create() => PostNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'postNotifierProvider';
-}
-
-/// See also [PostNotifier].
-class PostNotifierProvider
-    extends NotifierProviderImpl<PostNotifier, NotesCreateRequest> {
-  /// See also [PostNotifier].
-  PostNotifierProvider(Account account, {String? noteId})
-    : this._internal(
-        () => PostNotifier()
-          ..account = account
-          ..noteId = noteId,
-        from: postNotifierProvider,
-        name: r'postNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$postNotifierHash,
-        dependencies: PostNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            PostNotifierFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-      );
-
-  PostNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-  }) : super.internal();
-
-  final Account account;
-  final String? noteId;
-
-  @override
-  NotesCreateRequest runNotifierBuild(covariant PostNotifier notifier) {
-    return notifier.build(account, noteId: noteId);
-  }
-
-  @override
-  Override overrideWith(PostNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(NotesCreateRequest value) {
+    return $ProviderOverride(
       origin: this,
-      override: PostNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-      ),
+      providerOverride: $SyncValueProvider<NotesCreateRequest>(value),
     );
   }
 
   @override
-  NotifierProviderElement<PostNotifier, NotesCreateRequest> createElement() {
-    return _PostNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is PostNotifierProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is PostNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin PostNotifierRef on NotifierProviderRef<NotesCreateRequest> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$postNotifierHash() => r'72407d1bc2a1976bb12a169a593e2c86fdba5ad0';
 
-  /// The parameter `noteId` of this provider.
-  String? get noteId;
-}
+final class PostNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          PostNotifier,
+          NotesCreateRequest,
+          NotesCreateRequest,
+          NotesCreateRequest,
+          (Account, {String? noteId})
+        > {
+  const PostNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'postNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
 
-class _PostNotifierProviderElement
-    extends NotifierProviderElement<PostNotifier, NotesCreateRequest>
-    with PostNotifierRef {
-  _PostNotifierProviderElement(super.provider);
+  PostNotifierProvider call(Account account, {String? noteId}) =>
+      PostNotifierProvider._(argument: (account, noteId: noteId), from: this);
 
   @override
-  Account get account => (origin as PostNotifierProvider).account;
-  @override
-  String? get noteId => (origin as PostNotifierProvider).noteId;
+  String toString() => r'postNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$PostNotifier extends $Notifier<NotesCreateRequest> {
+  late final _$args = ref.$arg as (Account, {String? noteId});
+  Account get account => _$args.$1;
+  String? get noteId => _$args.noteId;
+
+  NotesCreateRequest build(Account account, {String? noteId});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, noteId: _$args.noteId);
+    final ref = this.ref as $Ref<NotesCreateRequest, NotesCreateRequest>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<NotesCreateRequest, NotesCreateRequest>,
+              NotesCreateRequest,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

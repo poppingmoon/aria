@@ -46,7 +46,7 @@ class PlayWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final serverUrl = ref.watch(serverUrlNotifierProvider(host));
     final url = serverUrl.replace(pathSegments: ['play', play.id]);
     final started = useState(false);

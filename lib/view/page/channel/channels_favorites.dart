@@ -26,7 +26,7 @@ class ChannelsFavorites extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(favoriteChannelsProvider(account).future),
       child: switch (channels) {
-        AsyncValue(valueOrNull: final channels?) =>
+        AsyncValue(value: final channels?) =>
           channels.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

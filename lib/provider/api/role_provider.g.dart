@@ -6,155 +6,86 @@ part of 'role_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roleHash() => r'869afb2d1f442e12aca741864e6c27d18d61631f';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [role].
 @ProviderFor(role)
-const roleProvider = RoleFamily();
+const roleProvider = RoleFamily._();
 
-/// See also [role].
-class RoleFamily extends Family<AsyncValue<RolesListResponse>> {
-  /// See also [role].
-  const RoleFamily();
+final class RoleProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<RolesListResponse>,
+          RolesListResponse,
+          FutureOr<RolesListResponse>
+        >
+    with
+        $FutureModifier<RolesListResponse>,
+        $FutureProvider<RolesListResponse> {
+  const RoleProvider._({
+    required RoleFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'roleProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [role].
-  RoleProvider call(Account account, String roleId) {
-    return RoleProvider(account, roleId);
+  @override
+  String debugGetCreateSourceHash() => _$roleHash();
+
+  @override
+  String toString() {
+    return r'roleProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  RoleProvider getProviderOverride(covariant RoleProvider provider) {
-    return call(provider.account, provider.roleId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+  $FutureProviderElement<RolesListResponse> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'roleProvider';
-}
-
-/// See also [role].
-class RoleProvider extends AutoDisposeFutureProvider<RolesListResponse> {
-  /// See also [role].
-  RoleProvider(Account account, String roleId)
-    : this._internal(
-        (ref) => role(ref as RoleRef, account, roleId),
-        from: roleProvider,
-        name: r'roleProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$roleHash,
-        dependencies: RoleFamily._dependencies,
-        allTransitiveDependencies: RoleFamily._allTransitiveDependencies,
-        account: account,
-        roleId: roleId,
-      );
-
-  RoleProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.roleId,
-  }) : super.internal();
-
-  final Account account;
-  final String roleId;
-
-  @override
-  Override overrideWith(
-    FutureOr<RolesListResponse> Function(RoleRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: RoleProvider._internal(
-        (ref) => create(ref as RoleRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        roleId: roleId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<RolesListResponse> createElement() {
-    return _RoleProviderElement(this);
+  FutureOr<RolesListResponse> create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return role(ref, argument.$1, argument.$2);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is RoleProvider &&
-        other.account == account &&
-        other.roleId == roleId;
+    return other is RoleProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, roleId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin RoleRef on AutoDisposeFutureProviderRef<RolesListResponse> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$roleHash() => r'869afb2d1f442e12aca741864e6c27d18d61631f';
 
-  /// The parameter `roleId` of this provider.
-  String get roleId;
-}
+final class RoleFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<RolesListResponse>,
+          (Account, String)
+        > {
+  const RoleFamily._()
+    : super(
+        retry: null,
+        name: r'roleProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _RoleProviderElement
-    extends AutoDisposeFutureProviderElement<RolesListResponse>
-    with RoleRef {
-  _RoleProviderElement(super.provider);
+  RoleProvider call(Account account, String roleId) =>
+      RoleProvider._(argument: (account, roleId), from: this);
 
   @override
-  Account get account => (origin as RoleProvider).account;
-  @override
-  String get roleId => (origin as RoleProvider).roleId;
+  String toString() => r'roleProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -33,7 +33,7 @@ class TranslatedNoteSheet extends ConsumerWidget {
       shrinkWrap: true,
       children: [
         ...switch (translatedNote) {
-          AsyncValue(valueOrNull: final translatedNote?) => [
+          AsyncValue(value: final translatedNote?) => [
             ListTile(
               title: Text(
                 t.misskey.translatedFrom(x: translatedNote.sourceLang),

@@ -6,149 +6,81 @@ part of 'emoji_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojiHash() => r'eca2d22aaf0880f7d02890984911e0eaa4ce27ca';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [emoji].
 @ProviderFor(emoji)
-const emojiProvider = EmojiFamily();
+const emojiProvider = EmojiFamily._();
 
-/// See also [emoji].
-class EmojiFamily extends Family<Emoji?> {
-  /// See also [emoji].
-  const EmojiFamily();
+final class EmojiProvider extends $FunctionalProvider<Emoji?, Emoji?, Emoji?>
+    with $Provider<Emoji?> {
+  const EmojiProvider._({
+    required EmojiFamily super.from,
+    required (String, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'emojiProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [emoji].
-  EmojiProvider call(String host, String code) {
-    return EmojiProvider(host, code);
+  @override
+  String debugGetCreateSourceHash() => _$emojiHash();
+
+  @override
+  String toString() {
+    return r'emojiProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  EmojiProvider getProviderOverride(covariant EmojiProvider provider) {
-    return call(provider.host, provider.code);
+  $ProviderElement<Emoji?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Emoji? create(Ref ref) {
+    final argument = this.argument as (String, String);
+    return emoji(ref, argument.$1, argument.$2);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'emojiProvider';
-}
-
-/// See also [emoji].
-class EmojiProvider extends Provider<Emoji?> {
-  /// See also [emoji].
-  EmojiProvider(String host, String code)
-    : this._internal(
-        (ref) => emoji(ref as EmojiRef, host, code),
-        from: emojiProvider,
-        name: r'emojiProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$emojiHash,
-        dependencies: EmojiFamily._dependencies,
-        allTransitiveDependencies: EmojiFamily._allTransitiveDependencies,
-        host: host,
-        code: code,
-      );
-
-  EmojiProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.host,
-    required this.code,
-  }) : super.internal();
-
-  final String host;
-  final String code;
-
-  @override
-  Override overrideWith(Emoji? Function(EmojiRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Emoji? value) {
+    return $ProviderOverride(
       origin: this,
-      override: EmojiProvider._internal(
-        (ref) => create(ref as EmojiRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        host: host,
-        code: code,
-      ),
+      providerOverride: $SyncValueProvider<Emoji?>(value),
     );
   }
 
   @override
-  ProviderElement<Emoji?> createElement() {
-    return _EmojiProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is EmojiProvider && other.host == host && other.code == code;
+    return other is EmojiProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-    hash = _SystemHash.combine(hash, code.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin EmojiRef on ProviderRef<Emoji?> {
-  /// The parameter `host` of this provider.
-  String get host;
+String _$emojiHash() => r'4e77e11f3cca2b80ad4a5598ee5033f47c7dc3d6';
 
-  /// The parameter `code` of this provider.
-  String get code;
-}
+final class EmojiFamily extends $Family
+    with $FunctionalFamilyOverride<Emoji?, (String, String)> {
+  const EmojiFamily._()
+    : super(
+        retry: null,
+        name: r'emojiProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
 
-class _EmojiProviderElement extends ProviderElement<Emoji?> with EmojiRef {
-  _EmojiProviderElement(super.provider);
+  EmojiProvider call(String host, String code) =>
+      EmojiProvider._(argument: (host, code), from: this);
 
   @override
-  String get host => (origin as EmojiProvider).host;
-  @override
-  String get code => (origin as EmojiProvider).code;
+  String toString() => r'emojiProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -36,7 +36,7 @@ class ClipNotesNotifier extends _$ClipNotesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -60,7 +60,7 @@ class ClipNotesNotifier extends _$ClipNotesNotifier {
         .read(misskeyProvider(account))
         .clips
         .removeNote(ClipsRemoveNoteRequest(clipId: clipId, noteId: noteId));
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((note) => note.id != noteId).toList(),

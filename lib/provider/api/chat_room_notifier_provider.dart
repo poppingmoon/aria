@@ -34,7 +34,7 @@ class ChatRoomNotifier extends _$ChatRoomNotifier {
     await _misskey.chat.rooms.mute(
       ChatRoomsMuteRequest(roomId: roomId, mute: mute),
     );
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(value.copyWith(isMuted: mute));
     }
   }

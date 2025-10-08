@@ -21,9 +21,9 @@ class ServerPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(host)).value;
     final instance = account.host != host
-        ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
+        ? ref.watch(federationInstanceProvider(account, host)).value
         : null;
     final serverUrl = ref.watch(serverUrlNotifierProvider(host));
 

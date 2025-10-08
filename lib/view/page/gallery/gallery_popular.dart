@@ -22,7 +22,7 @@ class GalleryPopular extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(popularGalleryPostsProvider(account).future),
       child: switch (pages) {
-        AsyncValue(valueOrNull: final posts?) =>
+        AsyncValue(value: final posts?) =>
           posts.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

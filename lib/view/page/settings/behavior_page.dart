@@ -565,14 +565,14 @@ class BehaviorPage extends HookConsumerWidget {
                 child: ListTile(
                   title: Text(t.misskey.clearCache),
                   subtitle: Text(switch (cacheSize) {
-                    AsyncValue(valueOrNull: final cacheSize?) => prettyBytes(
+                    AsyncValue(value: final cacheSize?) => prettyBytes(
                       cacheSize,
                     ),
-                    AsyncValue(error: final _?) => t.misskey.unknown,
+                    AsyncValue(error: _?) => t.misskey.unknown,
                     _ => t.aria.calculating,
                   }),
                   trailing: const Icon(Icons.navigate_next),
-                  enabled: cacheSize.valueOrNull != 0,
+                  enabled: cacheSize.value != 0,
                   onTap: () => futureWithDialog(
                     context,
                     Future(() async {

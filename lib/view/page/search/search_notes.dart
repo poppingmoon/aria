@@ -40,20 +40,16 @@ class SearchNotes extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = useState(this.userId);
     final user = userId.value != null
-        ? ref
-              .watch(userNotifierProvider(account, userId: userId.value))
-              .valueOrNull
+        ? ref.watch(userNotifierProvider(account, userId: userId.value)).value
         : null;
     final channelId = useState(this.channelId);
     final channel = channelId.value != null
-        ? ref
-              .watch(channelNotifierProvider(account, channelId.value!))
-              .valueOrNull
+        ? ref.watch(channelNotifierProvider(account, channelId.value!)).value
         : null;
     final localOnly = useState(this.channelId != null);
     final sinceDate = useState<DateTime?>(null);
     final untilDate = useState<DateTime?>(null);
-    final method = ref.watch(idGenMethodProvider(account)).valueOrNull;
+    final method = ref.watch(idGenMethodProvider(account)).value;
     final sinceId = method != null && sinceDate.value != null
         ? Id(method: method, date: sinceDate.value!).toString()
         : null;

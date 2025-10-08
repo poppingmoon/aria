@@ -23,7 +23,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final avatarDecorations = ref.watch(avatarDecorationsProvider(account));
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final maxAvatarDecorations = i?.policies?.avatarDecorationLimit;
     final remaining =
         (maxAvatarDecorations ?? 0) - (i?.avatarDecorations.length ?? 0);
@@ -34,7 +34,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.avatarDecorations)),
       body: switch (avatarDecorations) {
-        AsyncValue(valueOrNull: final avatarDecorations?) => CustomScrollView(
+        AsyncValue(value: final avatarDecorations?) => CustomScrollView(
           slivers: [
             if (!account.isGuest)
               SliverToBoxAdapter(

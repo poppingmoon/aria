@@ -6,156 +6,103 @@ part of 'muted_ads_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mutedAdsNotifierHash() => r'0bb501756e6c19ce365a1e3ff636799c7ff3ddf7';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$MutedAdsNotifier extends BuildlessNotifier<List<String>> {
-  late final Account account;
-
-  List<String> build(Account account);
-}
-
-/// See also [MutedAdsNotifier].
 @ProviderFor(MutedAdsNotifier)
-const mutedAdsNotifierProvider = MutedAdsNotifierFamily();
+const mutedAdsNotifierProvider = MutedAdsNotifierFamily._();
 
-/// See also [MutedAdsNotifier].
-class MutedAdsNotifierFamily extends Family<List<String>> {
-  /// See also [MutedAdsNotifier].
-  const MutedAdsNotifierFamily();
+final class MutedAdsNotifierProvider
+    extends $NotifierProvider<MutedAdsNotifier, List<String>> {
+  const MutedAdsNotifierProvider._({
+    required MutedAdsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'mutedAdsNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [MutedAdsNotifier].
-  MutedAdsNotifierProvider call(Account account) {
-    return MutedAdsNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$mutedAdsNotifierHash();
+
+  @override
+  String toString() {
+    return r'mutedAdsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  MutedAdsNotifierProvider getProviderOverride(
-    covariant MutedAdsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  MutedAdsNotifier create() => MutedAdsNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'mutedAdsNotifierProvider';
-}
-
-/// See also [MutedAdsNotifier].
-class MutedAdsNotifierProvider
-    extends NotifierProviderImpl<MutedAdsNotifier, List<String>> {
-  /// See also [MutedAdsNotifier].
-  MutedAdsNotifierProvider(Account account)
-    : this._internal(
-        () => MutedAdsNotifier()..account = account,
-        from: mutedAdsNotifierProvider,
-        name: r'mutedAdsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$mutedAdsNotifierHash,
-        dependencies: MutedAdsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            MutedAdsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  MutedAdsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  List<String> runNotifierBuild(covariant MutedAdsNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(MutedAdsNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<String> value) {
+    return $ProviderOverride(
       origin: this,
-      override: MutedAdsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<List<String>>(value),
     );
   }
 
   @override
-  NotifierProviderElement<MutedAdsNotifier, List<String>> createElement() {
-    return _MutedAdsNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is MutedAdsNotifierProvider && other.account == account;
+    return other is MutedAdsNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin MutedAdsNotifierRef on NotifierProviderRef<List<String>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$mutedAdsNotifierHash() => r'0bb501756e6c19ce365a1e3ff636799c7ff3ddf7';
 
-class _MutedAdsNotifierProviderElement
-    extends NotifierProviderElement<MutedAdsNotifier, List<String>>
-    with MutedAdsNotifierRef {
-  _MutedAdsNotifierProviderElement(super.provider);
+final class MutedAdsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          MutedAdsNotifier,
+          List<String>,
+          List<String>,
+          List<String>,
+          Account
+        > {
+  const MutedAdsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'mutedAdsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  MutedAdsNotifierProvider call(Account account) =>
+      MutedAdsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as MutedAdsNotifierProvider).account;
+  String toString() => r'mutedAdsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$MutedAdsNotifier extends $Notifier<List<String>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  List<String> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<List<String>, List<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<String>, List<String>>,
+              List<String>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

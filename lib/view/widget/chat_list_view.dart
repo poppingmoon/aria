@@ -42,7 +42,7 @@ class ChatListView extends HookConsumerWidget {
     final nextMessages = useState(<ChatMessage>[]);
     final deletedMessageIds = useState(<String>{});
     final user = userId != null
-        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        ? ref.watch(userNotifierProvider(account, userId: userId)).value
         : null;
     final (showPopup, enableInfiniteScroll, reduceAnimation) = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -261,7 +261,7 @@ class ChatListView extends HookConsumerWidget {
                                   message.fromUserId !=
                                   (index == 0
                                       ? messages
-                                            .valueOrNull
+                                            .value
                                             ?.items
                                             .firstOrNull
                                             ?.fromUserId
@@ -303,7 +303,7 @@ class ChatListView extends HookConsumerWidget {
                 SliverList.builder(
                   key: centerKey,
                   itemBuilder: (context, index) {
-                    if (messages.valueOrNull?.items case final messages?) {
+                    if (messages.value?.items case final messages?) {
                       final message = messages[index];
                       if (deletedMessageIds.value.contains(message.id) ||
                           (index < 5 &&
@@ -351,7 +351,7 @@ class ChatListView extends HookConsumerWidget {
                     }
                     return const SizedBox.shrink();
                   },
-                  itemCount: messages.valueOrNull?.items.length ?? 0,
+                  itemCount: messages.value?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
                   child: Center(

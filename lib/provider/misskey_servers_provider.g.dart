@@ -6,24 +6,46 @@ part of 'misskey_servers_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyServersHash() => r'077962f82fddd91c6eaec960da4c049726445eaf';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [misskeyServers].
 @ProviderFor(misskeyServers)
-final misskeyServersProvider =
-    AutoDisposeFutureProvider<List<JoinMisskeyInstanceInfo>>.internal(
-      misskeyServers,
-      name: r'misskeyServersProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$misskeyServersHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+const misskeyServersProvider = MisskeyServersProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef MisskeyServersRef =
-    AutoDisposeFutureProviderRef<List<JoinMisskeyInstanceInfo>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class MisskeyServersProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<JoinMisskeyInstanceInfo>>,
+          List<JoinMisskeyInstanceInfo>,
+          FutureOr<List<JoinMisskeyInstanceInfo>>
+        >
+    with
+        $FutureModifier<List<JoinMisskeyInstanceInfo>>,
+        $FutureProvider<List<JoinMisskeyInstanceInfo>> {
+  const MisskeyServersProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'misskeyServersProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$misskeyServersHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<JoinMisskeyInstanceInfo>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<JoinMisskeyInstanceInfo>> create(Ref ref) {
+    return misskeyServers(ref);
+  }
+}
+
+String _$misskeyServersHash() => r'077962f82fddd91c6eaec960da4c049726445eaf';

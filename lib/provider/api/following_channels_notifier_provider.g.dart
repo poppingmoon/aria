@@ -6,176 +6,110 @@ part of 'following_channels_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$followingChannelsNotifierHash() =>
-    r'72ebaa497f627bf8ac026b315ae60214d5a882e9';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$FollowingChannelsNotifier
-    extends
-        BuildlessAutoDisposeStreamNotifier<PaginationState<CommunityChannel>> {
-  late final Account account;
-
-  Stream<PaginationState<CommunityChannel>> build(Account account);
-}
-
-/// See also [FollowingChannelsNotifier].
 @ProviderFor(FollowingChannelsNotifier)
-const followingChannelsNotifierProvider = FollowingChannelsNotifierFamily();
+const followingChannelsNotifierProvider = FollowingChannelsNotifierFamily._();
 
-/// See also [FollowingChannelsNotifier].
-class FollowingChannelsNotifierFamily
-    extends Family<AsyncValue<PaginationState<CommunityChannel>>> {
-  /// See also [FollowingChannelsNotifier].
-  const FollowingChannelsNotifierFamily();
-
-  /// See also [FollowingChannelsNotifier].
-  FollowingChannelsNotifierProvider call(Account account) {
-    return FollowingChannelsNotifierProvider(account);
-  }
-
-  @override
-  FollowingChannelsNotifierProvider getProviderOverride(
-    covariant FollowingChannelsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'followingChannelsNotifierProvider';
-}
-
-/// See also [FollowingChannelsNotifier].
-class FollowingChannelsNotifierProvider
+final class FollowingChannelsNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           FollowingChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
-  /// See also [FollowingChannelsNotifier].
-  FollowingChannelsNotifierProvider(Account account)
-    : this._internal(
-        () => FollowingChannelsNotifier()..account = account,
-        from: followingChannelsNotifierProvider,
-        name: r'followingChannelsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$followingChannelsNotifierHash,
-        dependencies: FollowingChannelsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            FollowingChannelsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  FollowingChannelsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+  const FollowingChannelsNotifierProvider._({
+    required FollowingChannelsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'followingChannelsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<CommunityChannel>> runNotifierBuild(
-    covariant FollowingChannelsNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
+  String debugGetCreateSourceHash() => _$followingChannelsNotifierHash();
 
   @override
-  Override overrideWith(FollowingChannelsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: FollowingChannelsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
+  String toString() {
+    return r'followingChannelsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    FollowingChannelsNotifier,
-    PaginationState<CommunityChannel>
-  >
-  createElement() {
-    return _FollowingChannelsNotifierProviderElement(this);
-  }
+  FollowingChannelsNotifier create() => FollowingChannelsNotifier();
 
   @override
   bool operator ==(Object other) {
     return other is FollowingChannelsNotifierProvider &&
-        other.account == account;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FollowingChannelsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<CommunityChannel>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$followingChannelsNotifierHash() =>
+    r'c88a531402bb859e0d9eebf98f25a57ff45f17fc';
 
-class _FollowingChannelsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class FollowingChannelsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           FollowingChannelsNotifier,
-          PaginationState<CommunityChannel>
-        >
-    with FollowingChannelsNotifierRef {
-  _FollowingChannelsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<CommunityChannel>>,
+          PaginationState<CommunityChannel>,
+          Stream<PaginationState<CommunityChannel>>,
+          Account
+        > {
+  const FollowingChannelsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'followingChannelsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  FollowingChannelsNotifierProvider call(Account account) =>
+      FollowingChannelsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as FollowingChannelsNotifierProvider).account;
+  String toString() => r'followingChannelsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$FollowingChannelsNotifier
+    extends $StreamNotifier<PaginationState<CommunityChannel>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<CommunityChannel>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<CommunityChannel>>,
+              PaginationState<CommunityChannel>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<CommunityChannel>>,
+                PaginationState<CommunityChannel>
+              >,
+              AsyncValue<PaginationState<CommunityChannel>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

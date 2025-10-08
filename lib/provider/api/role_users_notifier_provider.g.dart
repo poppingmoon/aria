@@ -6,199 +6,112 @@ part of 'role_users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roleUsersNotifierHash() => r'40ca4fc4c2b261bc67a90f6f33e82e3f498466ab';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(RoleUsersNotifier)
+const roleUsersNotifierProvider = RoleUsersNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class RoleUsersNotifierProvider
+    extends
+        $StreamNotifierProvider<
+          RoleUsersNotifier,
+          PaginationState<RolesUsersResponse>
+        > {
+  const RoleUsersNotifierProvider._({
+    required RoleUsersNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'roleUsersNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$roleUsersNotifierHash();
+
+  @override
+  String toString() {
+    return r'roleUsersNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  RoleUsersNotifier create() => RoleUsersNotifier();
+
+  @override
+  bool operator ==(Object other) {
+    return other is RoleUsersNotifierProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-abstract class _$RoleUsersNotifier
-    extends
-        BuildlessAutoDisposeStreamNotifier<
-          PaginationState<RolesUsersResponse>
+String _$roleUsersNotifierHash() => r'22616a56e85834765b55410a38565e98dd768368';
+
+final class RoleUsersNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          RoleUsersNotifier,
+          AsyncValue<PaginationState<RolesUsersResponse>>,
+          PaginationState<RolesUsersResponse>,
+          Stream<PaginationState<RolesUsersResponse>>,
+          (Account, String)
         > {
-  late final Account account;
-  late final String roleId;
+  const RoleUsersNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'roleUsersNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  RoleUsersNotifierProvider call(Account account, String roleId) =>
+      RoleUsersNotifierProvider._(argument: (account, roleId), from: this);
+
+  @override
+  String toString() => r'roleUsersNotifierProvider';
+}
+
+abstract class _$RoleUsersNotifier
+    extends $StreamNotifier<PaginationState<RolesUsersResponse>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get roleId => _$args.$2;
 
   Stream<PaginationState<RolesUsersResponse>> build(
     Account account,
     String roleId,
   );
-}
-
-/// See also [RoleUsersNotifier].
-@ProviderFor(RoleUsersNotifier)
-const roleUsersNotifierProvider = RoleUsersNotifierFamily();
-
-/// See also [RoleUsersNotifier].
-class RoleUsersNotifierFamily
-    extends Family<AsyncValue<PaginationState<RolesUsersResponse>>> {
-  /// See also [RoleUsersNotifier].
-  const RoleUsersNotifierFamily();
-
-  /// See also [RoleUsersNotifier].
-  RoleUsersNotifierProvider call(Account account, String roleId) {
-    return RoleUsersNotifierProvider(account, roleId);
-  }
-
+  @$mustCallSuper
   @override
-  RoleUsersNotifierProvider getProviderOverride(
-    covariant RoleUsersNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.roleId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'roleUsersNotifierProvider';
-}
-
-/// See also [RoleUsersNotifier].
-class RoleUsersNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          RoleUsersNotifier,
-          PaginationState<RolesUsersResponse>
-        > {
-  /// See also [RoleUsersNotifier].
-  RoleUsersNotifierProvider(Account account, String roleId)
-    : this._internal(
-        () => RoleUsersNotifier()
-          ..account = account
-          ..roleId = roleId,
-        from: roleUsersNotifierProvider,
-        name: r'roleUsersNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$roleUsersNotifierHash,
-        dependencies: RoleUsersNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            RoleUsersNotifierFamily._allTransitiveDependencies,
-        account: account,
-        roleId: roleId,
-      );
-
-  RoleUsersNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.roleId,
-  }) : super.internal();
-
-  final Account account;
-  final String roleId;
-
-  @override
-  Stream<PaginationState<RolesUsersResponse>> runNotifierBuild(
-    covariant RoleUsersNotifier notifier,
-  ) {
-    return notifier.build(account, roleId);
-  }
-
-  @override
-  Override overrideWith(RoleUsersNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: RoleUsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..roleId = roleId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        roleId: roleId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    RoleUsersNotifier,
-    PaginationState<RolesUsersResponse>
-  >
-  createElement() {
-    return _RoleUsersNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is RoleUsersNotifierProvider &&
-        other.account == account &&
-        other.roleId == roleId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, roleId.hashCode);
-
-    return _SystemHash.finish(hash);
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<RolesUsersResponse>>,
+              PaginationState<RolesUsersResponse>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<RolesUsersResponse>>,
+                PaginationState<RolesUsersResponse>
+              >,
+              AsyncValue<PaginationState<RolesUsersResponse>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin RoleUsersNotifierRef
-    on
-        AutoDisposeStreamNotifierProviderRef<
-          PaginationState<RolesUsersResponse>
-        > {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `roleId` of this provider.
-  String get roleId;
-}
-
-class _RoleUsersNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
-          RoleUsersNotifier,
-          PaginationState<RolesUsersResponse>
-        >
-    with RoleUsersNotifierRef {
-  _RoleUsersNotifierProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as RoleUsersNotifierProvider).account;
-  @override
-  String get roleId => (origin as RoleUsersNotifierProvider).roleId;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

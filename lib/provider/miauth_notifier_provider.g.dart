@@ -6,21 +6,58 @@ part of 'miauth_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(MiAuthNotifier)
+const miAuthNotifierProvider = MiAuthNotifierProvider._();
+
+final class MiAuthNotifierProvider
+    extends $NotifierProvider<MiAuthNotifier, MiAuthState?> {
+  const MiAuthNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'miAuthNotifierProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$miAuthNotifierHash();
+
+  @$internal
+  @override
+  MiAuthNotifier create() => MiAuthNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MiAuthState? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MiAuthState?>(value),
+    );
+  }
+}
+
 String _$miAuthNotifierHash() => r'b0117d76e4ed5d5bbed1537721c4c81b020b47c2';
 
-/// See also [MiAuthNotifier].
-@ProviderFor(MiAuthNotifier)
-final miAuthNotifierProvider =
-    NotifierProvider<MiAuthNotifier, MiAuthState?>.internal(
-      MiAuthNotifier.new,
-      name: r'miAuthNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$miAuthNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$MiAuthNotifier = Notifier<MiAuthState?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$MiAuthNotifier extends $Notifier<MiAuthState?> {
+  MiAuthState? build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<MiAuthState?, MiAuthState?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<MiAuthState?, MiAuthState?>,
+              MiAuthState?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

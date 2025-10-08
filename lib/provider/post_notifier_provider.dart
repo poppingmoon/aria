@@ -52,7 +52,7 @@ class PostNotifier extends _$PostNotifier {
         ? settings.localOnly
         : settings.defaultNoteLocalOnly;
     final isSilenced =
-        ref.read(iNotifierProvider(account)).valueOrNull?.isSilenced ?? false;
+        ref.read(iNotifierProvider(account)).value?.isSilenced ?? false;
     final visibility = NoteVisibility.min(
       settings.rememberNoteVisibility
           ? settings.visibility
@@ -391,7 +391,7 @@ class PostNotifier extends _$PostNotifier {
               state.visibility ?? NoteVisibility.public,
               reply.visibility ?? NoteVisibility.public,
             );
-      final i = ref.read(iNotifierProvider(account)).valueOrNull;
+      final i = ref.read(iNotifierProvider(account)).value;
       final visibleUserIds = {
         ...?state.visibleUserIds,
         ...reply.visibleUserIds.where(

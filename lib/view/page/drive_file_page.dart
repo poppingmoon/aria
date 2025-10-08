@@ -26,7 +26,7 @@ class DriveFilePage extends ConsumerWidget {
         appBar: AppBar(
           title: Text(t.misskey.fileViewer_.title),
           actions: [
-            if (file.valueOrNull case final file?)
+            if (file.value case final file?)
               IconButton(
                 onPressed: () async {
                   final result = await showModalBottomSheet<({bool deleted})?>(
@@ -55,7 +55,7 @@ class DriveFilePage extends ConsumerWidget {
         body: TabBarView(
           children: [
             switch (file) {
-              AsyncValue(valueOrNull: final file?) => DriveFileInfo(
+              AsyncValue(value: final file?) => DriveFileInfo(
                 account: account,
                 file: file,
               ),

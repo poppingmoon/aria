@@ -44,7 +44,7 @@ class MentionWidget extends ConsumerWidget {
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
-    final userAgent = ref.watch(userAgentProvider).valueOrNull;
+    final userAgent = ref.watch(userAgentProvider).value;
     final url = serverUrl.replace(pathSegments: ['avatar', '@$username@$host']);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

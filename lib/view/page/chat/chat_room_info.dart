@@ -24,7 +24,7 @@ class ChatRoomInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final room = ref.watch(chatRoomNotifierProvider(account, roomId));
-    final isMyRoom = room.valueOrNull?.owner.username == account.username;
+    final isMyRoom = room.value?.owner.username == account.username;
     final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
@@ -32,7 +32,7 @@ class ChatRoomInfo extends ConsumerWidget {
       onRefresh: () =>
           ref.refresh(chatRoomNotifierProvider(account, roomId).future),
       child: switch (room) {
-        AsyncValue(valueOrNull: final room?) => IconTheme(
+        AsyncValue(value: final room?) => IconTheme(
           data: IconThemeData(
             color: theme.colorScheme.primary,
             size: style.lineHeight,

@@ -6,155 +6,95 @@ part of 'i_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$iNotifierHash() => r'1b3aef2ede05aa0a0f1ddf2a81f9264b3ecac8e5';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$INotifier
-    extends BuildlessAutoDisposeStreamNotifier<MeDetailed?> {
-  late final Account account;
-
-  Stream<MeDetailed?> build(Account account);
-}
-
-/// See also [INotifier].
 @ProviderFor(INotifier)
-const iNotifierProvider = INotifierFamily();
+const iNotifierProvider = INotifierFamily._();
 
-/// See also [INotifier].
-class INotifierFamily extends Family<AsyncValue<MeDetailed?>> {
-  /// See also [INotifier].
-  const INotifierFamily();
+final class INotifierProvider
+    extends $StreamNotifierProvider<INotifier, MeDetailed?> {
+  const INotifierProvider._({
+    required INotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'iNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [INotifier].
-  INotifierProvider call(Account account) {
-    return INotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$iNotifierHash();
+
+  @override
+  String toString() {
+    return r'iNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  INotifierProvider getProviderOverride(covariant INotifierProvider provider) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'iNotifierProvider';
-}
-
-/// See also [INotifier].
-class INotifierProvider
-    extends AutoDisposeStreamNotifierProviderImpl<INotifier, MeDetailed?> {
-  /// See also [INotifier].
-  INotifierProvider(Account account)
-    : this._internal(
-        () => INotifier()..account = account,
-        from: iNotifierProvider,
-        name: r'iNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$iNotifierHash,
-        dependencies: INotifierFamily._dependencies,
-        allTransitiveDependencies: INotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  INotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Stream<MeDetailed?> runNotifierBuild(covariant INotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(INotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: INotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<INotifier, MeDetailed?>
-  createElement() {
-    return _INotifierProviderElement(this);
-  }
+  INotifier create() => INotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is INotifierProvider && other.account == account;
+    return other is INotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin INotifierRef on AutoDisposeStreamNotifierProviderRef<MeDetailed?> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$iNotifierHash() => r'1b3aef2ede05aa0a0f1ddf2a81f9264b3ecac8e5';
 
-class _INotifierProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<INotifier, MeDetailed?>
-    with INotifierRef {
-  _INotifierProviderElement(super.provider);
+final class INotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          INotifier,
+          AsyncValue<MeDetailed?>,
+          MeDetailed?,
+          Stream<MeDetailed?>,
+          Account
+        > {
+  const INotifierFamily._()
+    : super(
+        retry: null,
+        name: r'iNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  INotifierProvider call(Account account) =>
+      INotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as INotifierProvider).account;
+  String toString() => r'iNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$INotifier extends $StreamNotifier<MeDetailed?> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<MeDetailed?> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<MeDetailed?>, MeDetailed?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<MeDetailed?>, MeDetailed?>,
+              AsyncValue<MeDetailed?>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

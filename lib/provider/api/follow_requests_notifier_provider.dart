@@ -35,7 +35,7 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -60,7 +60,7 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     await _misskey.following.requests.accept(
       FollowingRequestsAcceptRequest(userId: userId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
@@ -76,7 +76,7 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     await _misskey.following.requests.reject(
       FollowingRequestsRejectRequest(userId: userId),
     );
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

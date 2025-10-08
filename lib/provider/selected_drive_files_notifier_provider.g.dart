@@ -6,25 +6,60 @@ part of 'selected_drive_files_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(SelectedDriveFilesNotifier)
+const selectedDriveFilesNotifierProvider =
+    SelectedDriveFilesNotifierProvider._();
+
+final class SelectedDriveFilesNotifierProvider
+    extends $NotifierProvider<SelectedDriveFilesNotifier, List<DriveFile>> {
+  const SelectedDriveFilesNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'selectedDriveFilesNotifierProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$selectedDriveFilesNotifierHash();
+
+  @$internal
+  @override
+  SelectedDriveFilesNotifier create() => SelectedDriveFilesNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<DriveFile> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<DriveFile>>(value),
+    );
+  }
+}
+
 String _$selectedDriveFilesNotifierHash() =>
     r'b3bf6a5e8877eec0eb4cc311c3a31d4dad390f21';
 
-/// See also [SelectedDriveFilesNotifier].
-@ProviderFor(SelectedDriveFilesNotifier)
-final selectedDriveFilesNotifierProvider =
-    AutoDisposeNotifierProvider<
-      SelectedDriveFilesNotifier,
-      List<DriveFile>
-    >.internal(
-      SelectedDriveFilesNotifier.new,
-      name: r'selectedDriveFilesNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$selectedDriveFilesNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$SelectedDriveFilesNotifier = AutoDisposeNotifier<List<DriveFile>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$SelectedDriveFilesNotifier extends $Notifier<List<DriveFile>> {
+  List<DriveFile> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<List<DriveFile>, List<DriveFile>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<DriveFile>, List<DriveFile>>,
+              List<DriveFile>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

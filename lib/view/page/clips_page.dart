@@ -44,7 +44,7 @@ class ClipsPage extends ConsumerWidget {
               onRefresh: () =>
                   ref.refresh(clipsNotifierProvider(account).future),
               child: switch (clips) {
-                AsyncValue(valueOrNull: final value?) =>
+                AsyncValue(:final value?) =>
                   value.items.isEmpty
                       ? LayoutBuilder(
                           builder: (context, constraint) =>
@@ -90,7 +90,7 @@ class ClipsPage extends ConsumerWidget {
               onRefresh: () =>
                   ref.refresh(favoriteClipsNotifierProvider(account).future),
               child: switch (favoriteClips) {
-                AsyncValue(valueOrNull: final clips?) =>
+                AsyncValue(value: final clips?) =>
                   clips.isEmpty
                       ? LayoutBuilder(
                           builder: (context, constraint) =>

@@ -16,7 +16,7 @@ class MisskeyGamesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final invitations =
-        ref.watch(reversiInvitationsProvider(account)).valueOrNull ?? [];
+        ref.watch(reversiInvitationsProvider(account)).value ?? [];
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
 
     return Scaffold(

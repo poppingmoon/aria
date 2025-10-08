@@ -678,8 +678,8 @@ class _TranslateButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
 
     return IconButton(
       tooltip: t.misskey.translate,

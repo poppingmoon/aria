@@ -45,7 +45,7 @@ class NotificationsListView extends HookConsumerWidget {
       ),
     );
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
@@ -137,8 +137,7 @@ class NotificationsListView extends HookConsumerWidget {
                         right: 8.0,
                         bottom:
                             index == 0 &&
-                                (notifications.valueOrNull?.items.isEmpty ??
-                                    true)
+                                (notifications.value?.items.isEmpty ?? true)
                             ? 8.0
                             : 0.0,
                       ),
@@ -151,8 +150,7 @@ class NotificationsListView extends HookConsumerWidget {
                               : Radius.zero,
                           bottom:
                               index == 0 &&
-                                  (notifications.valueOrNull?.items.isEmpty ??
-                                      true)
+                                  (notifications.value?.items.isEmpty ?? true)
                               ? const Radius.circular(8.0)
                               : Radius.zero,
                         ),
@@ -174,7 +172,7 @@ class NotificationsListView extends HookConsumerWidget {
                   itemCount: nextNotifications.value.length,
                 ),
                 if (nextNotifications.value.isNotEmpty &&
-                    (notifications.valueOrNull?.items.isNotEmpty ?? false))
+                    (notifications.value?.items.isNotEmpty ?? false))
                   SliverToBoxAdapter(
                     child: Center(
                       child: Container(
@@ -183,7 +181,7 @@ class NotificationsListView extends HookConsumerWidget {
                         child:
                             lastViewedAt?.isBetween(
                                   notifications
-                                      .valueOrNull
+                                      .value
                                       ?.items
                                       .firstOrNull
                                       ?.createdAt,
@@ -234,10 +232,10 @@ class NotificationsListView extends HookConsumerWidget {
                       width: maxContentWidth,
                       child:
                           lastViewedAt?.isBetween(
-                                notifications.valueOrNull?.items
+                                notifications.value?.items
                                     .elementAtOrNull(index + 1)
                                     ?.createdAt,
-                                notifications.valueOrNull?.items
+                                notifications.value?.items
                                     .elementAtOrNull(index)
                                     ?.createdAt,
                               ) ??
@@ -246,7 +244,7 @@ class NotificationsListView extends HookConsumerWidget {
                           : const Divider(height: 0.0),
                     ),
                   ),
-                  itemCount: notifications.valueOrNull?.items.length ?? 0,
+                  itemCount: notifications.value?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
                   child: Center(

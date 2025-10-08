@@ -6,172 +6,100 @@ part of 'plays_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playsNotifierHash() => r'df062927540cc28111dd6335a3f3a894119007af';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$PlaysNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Flash>> {
-  late final Account account;
-
-  Stream<PaginationState<Flash>> build(Account account);
-}
-
-/// See also [PlaysNotifier].
 @ProviderFor(PlaysNotifier)
-const playsNotifierProvider = PlaysNotifierFamily();
+const playsNotifierProvider = PlaysNotifierFamily._();
 
-/// See also [PlaysNotifier].
-class PlaysNotifierFamily extends Family<AsyncValue<PaginationState<Flash>>> {
-  /// See also [PlaysNotifier].
-  const PlaysNotifierFamily();
+final class PlaysNotifierProvider
+    extends $StreamNotifierProvider<PlaysNotifier, PaginationState<Flash>> {
+  const PlaysNotifierProvider._({
+    required PlaysNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'playsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [PlaysNotifier].
-  PlaysNotifierProvider call(Account account) {
-    return PlaysNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$playsNotifierHash();
+
+  @override
+  String toString() {
+    return r'playsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  PlaysNotifierProvider getProviderOverride(
-    covariant PlaysNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'playsNotifierProvider';
-}
-
-/// See also [PlaysNotifier].
-class PlaysNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          PlaysNotifier,
-          PaginationState<Flash>
-        > {
-  /// See also [PlaysNotifier].
-  PlaysNotifierProvider(Account account)
-    : this._internal(
-        () => PlaysNotifier()..account = account,
-        from: playsNotifierProvider,
-        name: r'playsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$playsNotifierHash,
-        dependencies: PlaysNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            PlaysNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  PlaysNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Stream<PaginationState<Flash>> runNotifierBuild(
-    covariant PlaysNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(PlaysNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: PlaysNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    PlaysNotifier,
-    PaginationState<Flash>
-  >
-  createElement() {
-    return _PlaysNotifierProviderElement(this);
-  }
+  PlaysNotifier create() => PlaysNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is PlaysNotifierProvider && other.account == account;
+    return other is PlaysNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin PlaysNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Flash>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$playsNotifierHash() => r'bb015d7dc17afd5f127455002dada719d92ad200';
 
-class _PlaysNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class PlaysNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           PlaysNotifier,
-          PaginationState<Flash>
-        >
-    with PlaysNotifierRef {
-  _PlaysNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Flash>>,
+          PaginationState<Flash>,
+          Stream<PaginationState<Flash>>,
+          Account
+        > {
+  const PlaysNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'playsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  PlaysNotifierProvider call(Account account) =>
+      PlaysNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as PlaysNotifierProvider).account;
+  String toString() => r'playsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$PlaysNotifier extends $StreamNotifier<PaginationState<Flash>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<Flash>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Flash>>, PaginationState<Flash>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Flash>>,
+                PaginationState<Flash>
+              >,
+              AsyncValue<PaginationState<Flash>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

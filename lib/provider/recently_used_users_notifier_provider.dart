@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -34,10 +35,7 @@ class RecentlyUsedUsersNotifier extends _$RecentlyUsedUsersNotifier {
 
   Future<void> add(User user) async {
     await _save(
-      {
-        user.id,
-        ...?state.valueOrNull?.map((user) => user.id),
-      }.take(16).toList(),
+      {user.id, ...?state.value?.map((user) => user.id)}.take(16).toList(),
     );
   }
 

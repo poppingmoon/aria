@@ -6,148 +6,88 @@ part of 'web_socket_channel_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webSocketChannelHash() => r'e30b2364f99bb94031a62ae01df616e5e260b12a';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [webSocketChannel].
 @ProviderFor(webSocketChannel)
-const webSocketChannelProvider = WebSocketChannelFamily();
+const webSocketChannelProvider = WebSocketChannelFamily._();
 
-/// See also [webSocketChannel].
-class WebSocketChannelFamily extends Family<(WebSocketChannel, DateTime)> {
-  /// See also [webSocketChannel].
-  const WebSocketChannelFamily();
+final class WebSocketChannelProvider
+    extends
+        $FunctionalProvider<
+          (WebSocketChannel, DateTime),
+          (WebSocketChannel, DateTime),
+          (WebSocketChannel, DateTime)
+        >
+    with $Provider<(WebSocketChannel, DateTime)> {
+  const WebSocketChannelProvider._({
+    required WebSocketChannelFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'webSocketChannelProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [webSocketChannel].
-  WebSocketChannelProvider call(Account account) {
-    return WebSocketChannelProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$webSocketChannelHash();
+
+  @override
+  String toString() {
+    return r'webSocketChannelProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  WebSocketChannelProvider getProviderOverride(
-    covariant WebSocketChannelProvider provider,
-  ) {
-    return call(provider.account);
+  $ProviderElement<(WebSocketChannel, DateTime)> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  (WebSocketChannel, DateTime) create(Ref ref) {
+    final argument = this.argument as Account;
+    return webSocketChannel(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'webSocketChannelProvider';
-}
-
-/// See also [webSocketChannel].
-class WebSocketChannelProvider
-    extends AutoDisposeProvider<(WebSocketChannel, DateTime)> {
-  /// See also [webSocketChannel].
-  WebSocketChannelProvider(Account account)
-    : this._internal(
-        (ref) => webSocketChannel(ref as WebSocketChannelRef, account),
-        from: webSocketChannelProvider,
-        name: r'webSocketChannelProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$webSocketChannelHash,
-        dependencies: WebSocketChannelFamily._dependencies,
-        allTransitiveDependencies:
-            WebSocketChannelFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  WebSocketChannelProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Override overrideWith(
-    (WebSocketChannel, DateTime) Function(WebSocketChannelRef provider) create,
-  ) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue((WebSocketChannel, DateTime) value) {
+    return $ProviderOverride(
       origin: this,
-      override: WebSocketChannelProvider._internal(
-        (ref) => create(ref as WebSocketChannelRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<(WebSocketChannel, DateTime)>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<(WebSocketChannel, DateTime)> createElement() {
-    return _WebSocketChannelProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is WebSocketChannelProvider && other.account == account;
+    return other is WebSocketChannelProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin WebSocketChannelRef
-    on AutoDisposeProviderRef<(WebSocketChannel, DateTime)> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$webSocketChannelHash() => r'e30b2364f99bb94031a62ae01df616e5e260b12a';
 
-class _WebSocketChannelProviderElement
-    extends AutoDisposeProviderElement<(WebSocketChannel, DateTime)>
-    with WebSocketChannelRef {
-  _WebSocketChannelProviderElement(super.provider);
+final class WebSocketChannelFamily extends $Family
+    with $FunctionalFamilyOverride<(WebSocketChannel, DateTime), Account> {
+  const WebSocketChannelFamily._()
+    : super(
+        retry: null,
+        name: r'webSocketChannelProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  WebSocketChannelProvider call(Account account) =>
+      WebSocketChannelProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as WebSocketChannelProvider).account;
+  String toString() => r'webSocketChannelProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

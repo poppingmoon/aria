@@ -6,143 +6,80 @@ part of 'endpoints_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$endpointsHash() => r'052eadc161bae2bd86e8229c1e48c6f3e3674afe';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [endpoints].
 @ProviderFor(endpoints)
-const endpointsProvider = EndpointsFamily();
+const endpointsProvider = EndpointsFamily._();
 
-/// See also [endpoints].
-class EndpointsFamily extends Family<AsyncValue<List<String>>> {
-  /// See also [endpoints].
-  const EndpointsFamily();
+final class EndpointsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<String>>,
+          List<String>,
+          Stream<List<String>>
+        >
+    with $FutureModifier<List<String>>, $StreamProvider<List<String>> {
+  const EndpointsProvider._({
+    required EndpointsFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'endpointsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [endpoints].
-  EndpointsProvider call(String host) {
-    return EndpointsProvider(host);
+  @override
+  String debugGetCreateSourceHash() => _$endpointsHash();
+
+  @override
+  String toString() {
+    return r'endpointsProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  EndpointsProvider getProviderOverride(covariant EndpointsProvider provider) {
-    return call(provider.host);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+  $StreamProviderElement<List<String>> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'endpointsProvider';
-}
-
-/// See also [endpoints].
-class EndpointsProvider extends AutoDisposeStreamProvider<List<String>> {
-  /// See also [endpoints].
-  EndpointsProvider(String host)
-    : this._internal(
-        (ref) => endpoints(ref as EndpointsRef, host),
-        from: endpointsProvider,
-        name: r'endpointsProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$endpointsHash,
-        dependencies: EndpointsFamily._dependencies,
-        allTransitiveDependencies: EndpointsFamily._allTransitiveDependencies,
-        host: host,
-      );
-
-  EndpointsProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.host,
-  }) : super.internal();
-
-  final String host;
-
-  @override
-  Override overrideWith(
-    Stream<List<String>> Function(EndpointsRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: EndpointsProvider._internal(
-        (ref) => create(ref as EndpointsRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        host: host,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamProviderElement<List<String>> createElement() {
-    return _EndpointsProviderElement(this);
+  Stream<List<String>> create(Ref ref) {
+    final argument = this.argument as String;
+    return endpoints(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is EndpointsProvider && other.host == host;
+    return other is EndpointsProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin EndpointsRef on AutoDisposeStreamProviderRef<List<String>> {
-  /// The parameter `host` of this provider.
-  String get host;
-}
+String _$endpointsHash() => r'052eadc161bae2bd86e8229c1e48c6f3e3674afe';
 
-class _EndpointsProviderElement
-    extends AutoDisposeStreamProviderElement<List<String>>
-    with EndpointsRef {
-  _EndpointsProviderElement(super.provider);
+final class EndpointsFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<List<String>>, String> {
+  const EndpointsFamily._()
+    : super(
+        retry: null,
+        name: r'endpointsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  EndpointsProvider call(String host) =>
+      EndpointsProvider._(argument: host, from: this);
 
   @override
-  String get host => (origin as EndpointsProvider).host;
+  String toString() => r'endpointsProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

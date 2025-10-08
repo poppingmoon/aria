@@ -6,35 +6,100 @@ part of 'attaches_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$attachesNotifierHash() => r'383d958c23010db42b46d23a39637cb62e6918e1';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(AttachesNotifier)
+const attachesNotifierProvider = AttachesNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class AttachesNotifierProvider
+    extends $NotifierProvider<AttachesNotifier, List<PostFile>> {
+  const AttachesNotifierProvider._({
+    required AttachesNotifierFamily super.from,
+    required (Account, {String? noteId, bool gallery, bool chat})
+    super.argument,
+  }) : super(
+         retry: null,
+         name: r'attachesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$attachesNotifierHash();
+
+  @override
+  String toString() {
+    return r'attachesNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  AttachesNotifier create() => AttachesNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<PostFile> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<PostFile>>(value),
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is AttachesNotifierProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-abstract class _$AttachesNotifier
-    extends BuildlessAutoDisposeNotifier<List<PostFile>> {
-  late final Account account;
-  late final String? noteId;
-  late final bool gallery;
-  late final bool chat;
+String _$attachesNotifierHash() => r'383d958c23010db42b46d23a39637cb62e6918e1';
+
+final class AttachesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          AttachesNotifier,
+          List<PostFile>,
+          List<PostFile>,
+          List<PostFile>,
+          (Account, {String? noteId, bool gallery, bool chat})
+        > {
+  const AttachesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'attachesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  AttachesNotifierProvider call(
+    Account account, {
+    String? noteId,
+    bool gallery = false,
+    bool chat = false,
+  }) => AttachesNotifierProvider._(
+    argument: (account, noteId: noteId, gallery: gallery, chat: chat),
+    from: this,
+  );
+
+  @override
+  String toString() => r'attachesNotifierProvider';
+}
+
+abstract class _$AttachesNotifier extends $Notifier<List<PostFile>> {
+  late final _$args =
+      ref.$arg as (Account, {String? noteId, bool gallery, bool chat});
+  Account get account => _$args.$1;
+  String? get noteId => _$args.noteId;
+  bool get gallery => _$args.gallery;
+  bool get chat => _$args.chat;
 
   List<PostFile> build(
     Account account, {
@@ -42,196 +107,24 @@ abstract class _$AttachesNotifier
     bool gallery = false,
     bool chat = false,
   });
-}
-
-/// See also [AttachesNotifier].
-@ProviderFor(AttachesNotifier)
-const attachesNotifierProvider = AttachesNotifierFamily();
-
-/// See also [AttachesNotifier].
-class AttachesNotifierFamily extends Family<List<PostFile>> {
-  /// See also [AttachesNotifier].
-  const AttachesNotifierFamily();
-
-  /// See also [AttachesNotifier].
-  AttachesNotifierProvider call(
-    Account account, {
-    String? noteId,
-    bool gallery = false,
-    bool chat = false,
-  }) {
-    return AttachesNotifierProvider(
-      account,
-      noteId: noteId,
-      gallery: gallery,
-      chat: chat,
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(
+      _$args.$1,
+      noteId: _$args.noteId,
+      gallery: _$args.gallery,
+      chat: _$args.chat,
     );
-  }
-
-  @override
-  AttachesNotifierProvider getProviderOverride(
-    covariant AttachesNotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-      noteId: provider.noteId,
-      gallery: provider.gallery,
-      chat: provider.chat,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'attachesNotifierProvider';
-}
-
-/// See also [AttachesNotifier].
-class AttachesNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<AttachesNotifier, List<PostFile>> {
-  /// See also [AttachesNotifier].
-  AttachesNotifierProvider(
-    Account account, {
-    String? noteId,
-    bool gallery = false,
-    bool chat = false,
-  }) : this._internal(
-         () => AttachesNotifier()
-           ..account = account
-           ..noteId = noteId
-           ..gallery = gallery
-           ..chat = chat,
-         from: attachesNotifierProvider,
-         name: r'attachesNotifierProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$attachesNotifierHash,
-         dependencies: AttachesNotifierFamily._dependencies,
-         allTransitiveDependencies:
-             AttachesNotifierFamily._allTransitiveDependencies,
-         account: account,
-         noteId: noteId,
-         gallery: gallery,
-         chat: chat,
-       );
-
-  AttachesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-    required this.gallery,
-    required this.chat,
-  }) : super.internal();
-
-  final Account account;
-  final String? noteId;
-  final bool gallery;
-  final bool chat;
-
-  @override
-  List<PostFile> runNotifierBuild(covariant AttachesNotifier notifier) {
-    return notifier.build(
-      account,
-      noteId: noteId,
-      gallery: gallery,
-      chat: chat,
-    );
-  }
-
-  @override
-  Override overrideWith(AttachesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: AttachesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId
-          ..gallery = gallery
-          ..chat = chat,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-        gallery: gallery,
-        chat: chat,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<AttachesNotifier, List<PostFile>>
-  createElement() {
-    return _AttachesNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is AttachesNotifierProvider &&
-        other.account == account &&
-        other.noteId == noteId &&
-        other.gallery == gallery &&
-        other.chat == chat;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-    hash = _SystemHash.combine(hash, gallery.hashCode);
-    hash = _SystemHash.combine(hash, chat.hashCode);
-
-    return _SystemHash.finish(hash);
+    final ref = this.ref as $Ref<List<PostFile>, List<PostFile>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<PostFile>, List<PostFile>>,
+              List<PostFile>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin AttachesNotifierRef on AutoDisposeNotifierProviderRef<List<PostFile>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `noteId` of this provider.
-  String? get noteId;
-
-  /// The parameter `gallery` of this provider.
-  bool get gallery;
-
-  /// The parameter `chat` of this provider.
-  bool get chat;
-}
-
-class _AttachesNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<AttachesNotifier, List<PostFile>>
-    with AttachesNotifierRef {
-  _AttachesNotifierProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as AttachesNotifierProvider).account;
-  @override
-  String? get noteId => (origin as AttachesNotifierProvider).noteId;
-  @override
-  bool get gallery => (origin as AttachesNotifierProvider).gallery;
-  @override
-  bool get chat => (origin as AttachesNotifierProvider).chat;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -30,7 +30,7 @@ class SwRegisterDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final scratchPadUrl = serverUrl.replace(pathSegments: ['scratchpad']);
     final responseText = useState('');

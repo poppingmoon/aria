@@ -47,7 +47,7 @@ class LoginPage extends HookConsumerWidget {
     if (!skipValidation) {
       final server = ref
           .read(misskeyServersProvider)
-          .valueOrNull
+          .value
           ?.firstWhereOrNull((server) => server.url == host);
       if (server?.meta case final meta?) {
         if (meta['features'] case {'miauth': true}) {
@@ -115,7 +115,7 @@ class LoginPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
+    final servers = ref.watch(misskeyServersProvider).value ?? [];
     final controller = useTextEditingController(text: this.query);
     final focusNode = useFocusNode();
     final query = useState(this.query ?? '');

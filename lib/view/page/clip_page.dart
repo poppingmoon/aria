@@ -58,11 +58,11 @@ class ClipPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final myClip = ref
         .watch(clipsNotifierProvider(account))
-        .valueOrNull
+        .value
         ?.items
         .firstWhereOrNull((clip) => clip.id == clipId);
     final clip =
-        myClip ?? ref.watch(clipNotifierProvider(account, clipId)).valueOrNull;
+        myClip ?? ref.watch(clipNotifierProvider(account, clipId)).value;
     final notes = ref.watch(clipNotesNotifierProvider(account, clipId));
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['clips', clipId]);

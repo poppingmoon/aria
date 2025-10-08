@@ -6,26 +6,54 @@ part of 'push_notification_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pushNotificationNotifierHash() =>
-    r'0038af0017549b44788ce6e7a4bb6a8eafb48e07';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [PushNotificationNotifier].
 @ProviderFor(PushNotificationNotifier)
-final pushNotificationNotifierProvider =
-    AutoDisposeStreamNotifierProvider<
-      PushNotificationNotifier,
-      PushNotification
-    >.internal(
-      PushNotificationNotifier.new,
-      name: r'pushNotificationNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$pushNotificationNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+const pushNotificationNotifierProvider = PushNotificationNotifierProvider._();
 
-typedef _$PushNotificationNotifier =
-    AutoDisposeStreamNotifier<PushNotification>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class PushNotificationNotifierProvider
+    extends
+        $StreamNotifierProvider<PushNotificationNotifier, PushNotification> {
+  const PushNotificationNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'pushNotificationNotifierProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$pushNotificationNotifierHash();
+
+  @$internal
+  @override
+  PushNotificationNotifier create() => PushNotificationNotifier();
+}
+
+String _$pushNotificationNotifierHash() =>
+    r'2140f46cfdce9af72c908919db105c6b5c753cec';
+
+abstract class _$PushNotificationNotifier
+    extends $StreamNotifier<PushNotification> {
+  Stream<PushNotification> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref =
+        this.ref as $Ref<AsyncValue<PushNotification>, PushNotification>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<PushNotification>, PushNotification>,
+              AsyncValue<PushNotification>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

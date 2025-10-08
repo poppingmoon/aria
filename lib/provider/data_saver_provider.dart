@@ -27,7 +27,7 @@ DataSaver dataSaver(Ref ref) {
     final isOnWifi =
         ref
             .watch(connectivityProvider)
-            .valueOrNull
+            .value
             ?.contains(ConnectivityResult.wifi) ??
         false;
     if (isOnWifi) {

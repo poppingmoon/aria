@@ -43,7 +43,7 @@ class AdWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     if (i != null && specify == null) {
       if (i.policies?.canHideAds ?? true) {
         final forceShowAds = ref.watch(
@@ -56,10 +56,7 @@ class AdWidget extends HookConsumerWidget {
         }
       }
     }
-    final allAds = ref
-        .watch(metaNotifierProvider(account.host))
-        .valueOrNull
-        ?.ads;
+    final allAds = ref.watch(metaNotifierProvider(account.host)).value?.ads;
     if (allAds == null || allAds.isEmpty) {
       return const SizedBox.shrink();
     }

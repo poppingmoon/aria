@@ -45,7 +45,7 @@ class MisskeyServerBackground extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
+    final servers = ref.watch(misskeyServersProvider).value ?? [];
     final opacityController = useAnimationController(
       duration: const Duration(seconds: 1),
     );

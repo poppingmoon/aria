@@ -33,7 +33,7 @@ class ListUsersNotifier extends _$ListUsersNotifier {
     await _misskey.users.list.push(
       UsersListsPushRequest(listId: listId, userId: user.id),
     );
-    state = AsyncValue.data([...?state.valueOrNull, user]);
+    state = AsyncValue.data([...?state.value, user]);
   }
 
   Future<void> remove(String userId) async {
@@ -41,7 +41,7 @@ class ListUsersNotifier extends _$ListUsersNotifier {
       UsersListsPullRequest(listId: listId, userId: userId),
     );
     state = AsyncValue.data(
-      state.valueOrNull?.where((user) => user.id != userId).toList() ?? [],
+      state.value?.where((user) => user.id != userId).toList() ?? [],
     );
   }
 }

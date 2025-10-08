@@ -22,7 +22,7 @@ class UserLists extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(userListsProvider(account, userId).future),
       child: switch (lists) {
-        AsyncValue(valueOrNull: final lists?) =>
+        AsyncValue(value: final lists?) =>
           lists.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

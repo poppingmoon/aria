@@ -6,160 +6,84 @@ part of 'note_collapse_reason_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteCollapseReasonHash() =>
-    r'84a1cc2d6ac623dc91b4289d9948759c32ded006';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [noteCollapseReason].
 @ProviderFor(noteCollapseReason)
-const noteCollapseReasonProvider = NoteCollapseReasonFamily();
+const noteCollapseReasonProvider = NoteCollapseReasonFamily._();
 
-/// See also [noteCollapseReason].
-class NoteCollapseReasonFamily extends Family<CollapseReason?> {
-  /// See also [noteCollapseReason].
-  const NoteCollapseReasonFamily();
+final class NoteCollapseReasonProvider
+    extends
+        $FunctionalProvider<CollapseReason?, CollapseReason?, CollapseReason?>
+    with $Provider<CollapseReason?> {
+  const NoteCollapseReasonProvider._({
+    required NoteCollapseReasonFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'noteCollapseReasonProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [noteCollapseReason].
-  NoteCollapseReasonProvider call(Account account, String noteId) {
-    return NoteCollapseReasonProvider(account, noteId);
+  @override
+  String debugGetCreateSourceHash() => _$noteCollapseReasonHash();
+
+  @override
+  String toString() {
+    return r'noteCollapseReasonProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  NoteCollapseReasonProvider getProviderOverride(
-    covariant NoteCollapseReasonProvider provider,
-  ) {
-    return call(provider.account, provider.noteId);
+  $ProviderElement<CollapseReason?> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  CollapseReason? create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return noteCollapseReason(ref, argument.$1, argument.$2);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'noteCollapseReasonProvider';
-}
-
-/// See also [noteCollapseReason].
-class NoteCollapseReasonProvider extends AutoDisposeProvider<CollapseReason?> {
-  /// See also [noteCollapseReason].
-  NoteCollapseReasonProvider(Account account, String noteId)
-    : this._internal(
-        (ref) =>
-            noteCollapseReason(ref as NoteCollapseReasonRef, account, noteId),
-        from: noteCollapseReasonProvider,
-        name: r'noteCollapseReasonProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$noteCollapseReasonHash,
-        dependencies: NoteCollapseReasonFamily._dependencies,
-        allTransitiveDependencies:
-            NoteCollapseReasonFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-      );
-
-  NoteCollapseReasonProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-  }) : super.internal();
-
-  final Account account;
-  final String noteId;
-
-  @override
-  Override overrideWith(
-    CollapseReason? Function(NoteCollapseReasonRef provider) create,
-  ) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(CollapseReason? value) {
+    return $ProviderOverride(
       origin: this,
-      override: NoteCollapseReasonProvider._internal(
-        (ref) => create(ref as NoteCollapseReasonRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-      ),
+      providerOverride: $SyncValueProvider<CollapseReason?>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<CollapseReason?> createElement() {
-    return _NoteCollapseReasonProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is NoteCollapseReasonProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is NoteCollapseReasonProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NoteCollapseReasonRef on AutoDisposeProviderRef<CollapseReason?> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$noteCollapseReasonHash() =>
+    r'84a1cc2d6ac623dc91b4289d9948759c32ded006';
 
-  /// The parameter `noteId` of this provider.
-  String get noteId;
-}
+final class NoteCollapseReasonFamily extends $Family
+    with $FunctionalFamilyOverride<CollapseReason?, (Account, String)> {
+  const NoteCollapseReasonFamily._()
+    : super(
+        retry: null,
+        name: r'noteCollapseReasonProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _NoteCollapseReasonProviderElement
-    extends AutoDisposeProviderElement<CollapseReason?>
-    with NoteCollapseReasonRef {
-  _NoteCollapseReasonProviderElement(super.provider);
+  NoteCollapseReasonProvider call(Account account, String noteId) =>
+      NoteCollapseReasonProvider._(argument: (account, noteId), from: this);
 
   @override
-  Account get account => (origin as NoteCollapseReasonProvider).account;
-  @override
-  String get noteId => (origin as NoteCollapseReasonProvider).noteId;
+  String toString() => r'noteCollapseReasonProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

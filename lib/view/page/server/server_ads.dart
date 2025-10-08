@@ -22,7 +22,7 @@ class ServerAds extends ConsumerWidget {
       onRefresh: () =>
           ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
       child: switch (meta) {
-        AsyncValue(valueOrNull: MetaResponse(:final ads)) =>
+        AsyncValue(value: MetaResponse(:final ads)) =>
           ads.isNotEmpty
               ? ListView.builder(
                   itemBuilder: (context, index) => AdWidget(

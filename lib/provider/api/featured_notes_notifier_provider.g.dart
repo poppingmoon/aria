@@ -6,191 +6,107 @@ part of 'featured_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$featuredNotesNotifierHash() =>
-    r'0e63bb9be150f1ca59f840139c125d80cb58f353';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$FeaturedNotesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-  late final String? channelId;
-
-  Stream<PaginationState<Note>> build(Account account, {String? channelId});
-}
-
-/// See also [FeaturedNotesNotifier].
 @ProviderFor(FeaturedNotesNotifier)
-const featuredNotesNotifierProvider = FeaturedNotesNotifierFamily();
+const featuredNotesNotifierProvider = FeaturedNotesNotifierFamily._();
 
-/// See also [FeaturedNotesNotifier].
-class FeaturedNotesNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [FeaturedNotesNotifier].
-  const FeaturedNotesNotifierFamily();
-
-  /// See also [FeaturedNotesNotifier].
-  FeaturedNotesNotifierProvider call(Account account, {String? channelId}) {
-    return FeaturedNotesNotifierProvider(account, channelId: channelId);
-  }
-
-  @override
-  FeaturedNotesNotifierProvider getProviderOverride(
-    covariant FeaturedNotesNotifierProvider provider,
-  ) {
-    return call(provider.account, channelId: provider.channelId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'featuredNotesNotifierProvider';
-}
-
-/// See also [FeaturedNotesNotifier].
-class FeaturedNotesNotifierProvider
+final class FeaturedNotesNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
-          FeaturedNotesNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [FeaturedNotesNotifier].
-  FeaturedNotesNotifierProvider(Account account, {String? channelId})
-    : this._internal(
-        () => FeaturedNotesNotifier()
-          ..account = account
-          ..channelId = channelId,
-        from: featuredNotesNotifierProvider,
-        name: r'featuredNotesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$featuredNotesNotifierHash,
-        dependencies: FeaturedNotesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            FeaturedNotesNotifierFamily._allTransitiveDependencies,
-        account: account,
-        channelId: channelId,
-      );
-
-  FeaturedNotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.channelId,
-  }) : super.internal();
-
-  final Account account;
-  final String? channelId;
+        $StreamNotifierProvider<FeaturedNotesNotifier, PaginationState<Note>> {
+  const FeaturedNotesNotifierProvider._({
+    required FeaturedNotesNotifierFamily super.from,
+    required (Account, {String? channelId}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'featuredNotesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant FeaturedNotesNotifier notifier,
-  ) {
-    return notifier.build(account, channelId: channelId);
-  }
+  String debugGetCreateSourceHash() => _$featuredNotesNotifierHash();
 
   @override
-  Override overrideWith(FeaturedNotesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: FeaturedNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..channelId = channelId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        channelId: channelId,
-      ),
-    );
+  String toString() {
+    return r'featuredNotesNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    FeaturedNotesNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _FeaturedNotesNotifierProviderElement(this);
-  }
+  FeaturedNotesNotifier create() => FeaturedNotesNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is FeaturedNotesNotifierProvider &&
-        other.account == account &&
-        other.channelId == channelId;
+    return other is FeaturedNotesNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, channelId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FeaturedNotesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$featuredNotesNotifierHash() =>
+    r'48686a73dcd0b50daba59c479cef79d5c8ec00fb';
 
-  /// The parameter `channelId` of this provider.
-  String? get channelId;
-}
-
-class _FeaturedNotesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class FeaturedNotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           FeaturedNotesNotifier,
-          PaginationState<Note>
-        >
-    with FeaturedNotesNotifierRef {
-  _FeaturedNotesNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (Account, {String? channelId})
+        > {
+  const FeaturedNotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'featuredNotesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  FeaturedNotesNotifierProvider call(Account account, {String? channelId}) =>
+      FeaturedNotesNotifierProvider._(
+        argument: (account, channelId: channelId),
+        from: this,
+      );
 
   @override
-  Account get account => (origin as FeaturedNotesNotifierProvider).account;
-  @override
-  String? get channelId => (origin as FeaturedNotesNotifierProvider).channelId;
+  String toString() => r'featuredNotesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$FeaturedNotesNotifier
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as (Account, {String? channelId});
+  Account get account => _$args.$1;
+  String? get channelId => _$args.channelId;
+
+  Stream<PaginationState<Note>> build(Account account, {String? channelId});
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, channelId: _$args.channelId);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

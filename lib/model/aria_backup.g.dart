@@ -25,17 +25,14 @@ _AriaBackup _$AriaBackupFromJson(Map<String, dynamic> json) => _AriaBackup(
   ),
 );
 
-Map<String, dynamic> _$AriaBackupToJson(
-  _AriaBackup instance,
-) => <String, dynamic>{
-  if (instance.metadata case final value?) 'metadata': value,
-  if (instance.timelineTabs?.map((e) => e.toJson()).toList() case final value?)
-    'timelineTabs': value,
-  if (instance.accountSettings?.map((k, e) => MapEntry(k, e.toJson()))
-      case final value?)
-    'accountSettings': value,
-  if (instance.generalSettings?.toJson() case final value?)
-    'generalSettings': value,
-  if (instance.themes case final value?) 'themes': value,
-  if (instance.aiscriptStorage case final value?) 'aiscriptStorage': value,
-};
+Map<String, dynamic> _$AriaBackupToJson(_AriaBackup instance) =>
+    <String, dynamic>{
+      'metadata': ?instance.metadata,
+      'timelineTabs': ?instance.timelineTabs?.map((e) => e.toJson()).toList(),
+      'accountSettings': ?instance.accountSettings?.map(
+        (k, e) => MapEntry(k, e.toJson()),
+      ),
+      'generalSettings': ?instance.generalSettings?.toJson(),
+      'themes': ?instance.themes,
+      'aiscriptStorage': ?instance.aiscriptStorage,
+    };

@@ -6,175 +6,92 @@ part of 'check_word_mute_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkWordMuteHash() => r'32c20dc273731a735b17b1337abf112c45385d39';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [checkWordMute].
 @ProviderFor(checkWordMute)
-const checkWordMuteProvider = CheckWordMuteFamily();
+const checkWordMuteProvider = CheckWordMuteFamily._();
 
-/// See also [checkWordMute].
-class CheckWordMuteFamily extends Family<bool> {
-  /// See also [checkWordMute].
-  const CheckWordMuteFamily();
+final class CheckWordMuteProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  const CheckWordMuteProvider._({
+    required CheckWordMuteFamily super.from,
+    required (Account, String, {bool hardMute}) super.argument,
+  }) : super(
+         retry: null,
+         name: r'checkWordMuteProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [checkWordMute].
-  CheckWordMuteProvider call(
-    Account account,
-    String noteId, {
-    bool hardMute = false,
-  }) {
-    return CheckWordMuteProvider(account, noteId, hardMute: hardMute);
+  @override
+  String debugGetCreateSourceHash() => _$checkWordMuteHash();
+
+  @override
+  String toString() {
+    return r'checkWordMuteProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  CheckWordMuteProvider getProviderOverride(
-    covariant CheckWordMuteProvider provider,
-  ) {
-    return call(provider.account, provider.noteId, hardMute: provider.hardMute);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    final argument = this.argument as (Account, String, {bool hardMute});
+    return checkWordMute(
+      ref,
+      argument.$1,
+      argument.$2,
+      hardMute: argument.hardMute,
+    );
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'checkWordMuteProvider';
-}
-
-/// See also [checkWordMute].
-class CheckWordMuteProvider extends AutoDisposeProvider<bool> {
-  /// See also [checkWordMute].
-  CheckWordMuteProvider(Account account, String noteId, {bool hardMute = false})
-    : this._internal(
-        (ref) => checkWordMute(
-          ref as CheckWordMuteRef,
-          account,
-          noteId,
-          hardMute: hardMute,
-        ),
-        from: checkWordMuteProvider,
-        name: r'checkWordMuteProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$checkWordMuteHash,
-        dependencies: CheckWordMuteFamily._dependencies,
-        allTransitiveDependencies:
-            CheckWordMuteFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-        hardMute: hardMute,
-      );
-
-  CheckWordMuteProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-    required this.hardMute,
-  }) : super.internal();
-
-  final Account account;
-  final String noteId;
-  final bool hardMute;
-
-  @override
-  Override overrideWith(bool Function(CheckWordMuteRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
       origin: this,
-      override: CheckWordMuteProvider._internal(
-        (ref) => create(ref as CheckWordMuteRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-        hardMute: hardMute,
-      ),
+      providerOverride: $SyncValueProvider<bool>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<bool> createElement() {
-    return _CheckWordMuteProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is CheckWordMuteProvider &&
-        other.account == account &&
-        other.noteId == noteId &&
-        other.hardMute == hardMute;
+    return other is CheckWordMuteProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-    hash = _SystemHash.combine(hash, hardMute.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin CheckWordMuteRef on AutoDisposeProviderRef<bool> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$checkWordMuteHash() => r'32c20dc273731a735b17b1337abf112c45385d39';
 
-  /// The parameter `noteId` of this provider.
-  String get noteId;
+final class CheckWordMuteFamily extends $Family
+    with $FunctionalFamilyOverride<bool, (Account, String, {bool hardMute})> {
+  const CheckWordMuteFamily._()
+    : super(
+        retry: null,
+        name: r'checkWordMuteProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-  /// The parameter `hardMute` of this provider.
-  bool get hardMute;
+  CheckWordMuteProvider call(
+    Account account,
+    String noteId, {
+    bool hardMute = false,
+  }) => CheckWordMuteProvider._(
+    argument: (account, noteId, hardMute: hardMute),
+    from: this,
+  );
+
+  @override
+  String toString() => r'checkWordMuteProvider';
 }
-
-class _CheckWordMuteProviderElement extends AutoDisposeProviderElement<bool>
-    with CheckWordMuteRef {
-  _CheckWordMuteProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as CheckWordMuteProvider).account;
-  @override
-  String get noteId => (origin as CheckWordMuteProvider).noteId;
-  @override
-  bool get hardMute => (origin as CheckWordMuteProvider).hardMute;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -22,7 +22,7 @@ class ExploreRoles extends ConsumerWidget {
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => ref.refresh(rolesProvider(account).future),
       child: switch (roles) {
-        AsyncValue(valueOrNull: final roles?) => Builder(
+        AsyncValue(value: final roles?) => Builder(
           builder: (context) {
             final manualRoles = roles
                 .where((role) => role.target == 'manual')

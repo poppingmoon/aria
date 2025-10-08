@@ -6,191 +6,110 @@ part of 'user_followers_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userFollowersNotifierHash() =>
-    r'a51bbcd36e54b5c88667d87c63a332454b00bbf4';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$UserFollowersNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Following>> {
-  late final Account account;
-  late final String userId;
-
-  Stream<PaginationState<Following>> build(Account account, String userId);
-}
-
-/// See also [UserFollowersNotifier].
 @ProviderFor(UserFollowersNotifier)
-const userFollowersNotifierProvider = UserFollowersNotifierFamily();
+const userFollowersNotifierProvider = UserFollowersNotifierFamily._();
 
-/// See also [UserFollowersNotifier].
-class UserFollowersNotifierFamily
-    extends Family<AsyncValue<PaginationState<Following>>> {
-  /// See also [UserFollowersNotifier].
-  const UserFollowersNotifierFamily();
-
-  /// See also [UserFollowersNotifier].
-  UserFollowersNotifierProvider call(Account account, String userId) {
-    return UserFollowersNotifierProvider(account, userId);
-  }
-
-  @override
-  UserFollowersNotifierProvider getProviderOverride(
-    covariant UserFollowersNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.userId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'userFollowersNotifierProvider';
-}
-
-/// See also [UserFollowersNotifier].
-class UserFollowersNotifierProvider
+final class UserFollowersNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           UserFollowersNotifier,
           PaginationState<Following>
         > {
-  /// See also [UserFollowersNotifier].
-  UserFollowersNotifierProvider(Account account, String userId)
-    : this._internal(
-        () => UserFollowersNotifier()
-          ..account = account
-          ..userId = userId,
-        from: userFollowersNotifierProvider,
-        name: r'userFollowersNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$userFollowersNotifierHash,
-        dependencies: UserFollowersNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            UserFollowersNotifierFamily._allTransitiveDependencies,
-        account: account,
-        userId: userId,
-      );
-
-  UserFollowersNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.userId,
-  }) : super.internal();
-
-  final Account account;
-  final String userId;
+  const UserFollowersNotifierProvider._({
+    required UserFollowersNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'userFollowersNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<Following>> runNotifierBuild(
-    covariant UserFollowersNotifier notifier,
-  ) {
-    return notifier.build(account, userId);
-  }
+  String debugGetCreateSourceHash() => _$userFollowersNotifierHash();
 
   @override
-  Override overrideWith(UserFollowersNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: UserFollowersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        userId: userId,
-      ),
-    );
+  String toString() {
+    return r'userFollowersNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    UserFollowersNotifier,
-    PaginationState<Following>
-  >
-  createElement() {
-    return _UserFollowersNotifierProviderElement(this);
-  }
+  UserFollowersNotifier create() => UserFollowersNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is UserFollowersNotifierProvider &&
-        other.account == account &&
-        other.userId == userId;
+    return other is UserFollowersNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin UserFollowersNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Following>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$userFollowersNotifierHash() =>
+    r'77b51c21ae542161c58df737fbd378e071bd84c2';
 
-  /// The parameter `userId` of this provider.
-  String get userId;
-}
-
-class _UserFollowersNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class UserFollowersNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           UserFollowersNotifier,
-          PaginationState<Following>
-        >
-    with UserFollowersNotifierRef {
-  _UserFollowersNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Following>>,
+          PaginationState<Following>,
+          Stream<PaginationState<Following>>,
+          (Account, String)
+        > {
+  const UserFollowersNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'userFollowersNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  UserFollowersNotifierProvider call(Account account, String userId) =>
+      UserFollowersNotifierProvider._(argument: (account, userId), from: this);
 
   @override
-  Account get account => (origin as UserFollowersNotifierProvider).account;
-  @override
-  String get userId => (origin as UserFollowersNotifierProvider).userId;
+  String toString() => r'userFollowersNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$UserFollowersNotifier
+    extends $StreamNotifier<PaginationState<Following>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get userId => _$args.$2;
+
+  Stream<PaginationState<Following>> build(Account account, String userId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<Following>>,
+              PaginationState<Following>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Following>>,
+                PaginationState<Following>
+              >,
+              AsyncValue<PaginationState<Following>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
