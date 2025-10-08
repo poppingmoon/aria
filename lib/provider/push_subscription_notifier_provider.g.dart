@@ -7,7 +7,7 @@ part of 'push_subscription_notifier_provider.dart';
 // **************************************************************************
 
 String _$pushSubscriptionNotifierHash() =>
-    r'5b13c0d9361a00c48aae4750f4fbfe2895b6fb07';
+    r'f5c3380f0dfbf57b9723b4551e8ee46882588d76';
 
 /// Copied from Dart SDK
 class _SystemHash {

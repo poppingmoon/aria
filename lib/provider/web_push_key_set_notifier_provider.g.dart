@@ -6,8 +6,8 @@ part of 'web_push_key_set_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webPushKeySetNotifierNotifierHash() =>
-    r'b498be4c3fccaf0eb6bb5df4701af403634699f8';
+String _$webPushKeySetNotifierHash() =>
+    r'd1740faccd1248acc40b5045ef15f1dbcb215252';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,32 +30,30 @@ class _SystemHash {
   }
 }
 
-abstract class _$WebPushKeySetNotifierNotifier
+abstract class _$WebPushKeySetNotifier
     extends BuildlessAsyncNotifier<WebPushKeySet?> {
   late final Account account;
 
   FutureOr<WebPushKeySet?> build(Account account);
 }
 
-/// See also [WebPushKeySetNotifierNotifier].
-@ProviderFor(WebPushKeySetNotifierNotifier)
-const webPushKeySetNotifierNotifierProvider =
-    WebPushKeySetNotifierNotifierFamily();
+/// See also [WebPushKeySetNotifier].
+@ProviderFor(WebPushKeySetNotifier)
+const webPushKeySetNotifierProvider = WebPushKeySetNotifierFamily();
 
-/// See also [WebPushKeySetNotifierNotifier].
-class WebPushKeySetNotifierNotifierFamily
-    extends Family<AsyncValue<WebPushKeySet?>> {
-  /// See also [WebPushKeySetNotifierNotifier].
-  const WebPushKeySetNotifierNotifierFamily();
+/// See also [WebPushKeySetNotifier].
+class WebPushKeySetNotifierFamily extends Family<AsyncValue<WebPushKeySet?>> {
+  /// See also [WebPushKeySetNotifier].
+  const WebPushKeySetNotifierFamily();
 
-  /// See also [WebPushKeySetNotifierNotifier].
-  WebPushKeySetNotifierNotifierProvider call(Account account) {
-    return WebPushKeySetNotifierNotifierProvider(account);
+  /// See also [WebPushKeySetNotifier].
+  WebPushKeySetNotifierProvider call(Account account) {
+    return WebPushKeySetNotifierProvider(account);
   }
 
   @override
-  WebPushKeySetNotifierNotifierProvider getProviderOverride(
-    covariant WebPushKeySetNotifierNotifierProvider provider,
+  WebPushKeySetNotifierProvider getProviderOverride(
+    covariant WebPushKeySetNotifierProvider provider,
   ) {
     return call(provider.account);
   }
@@ -72,32 +70,28 @@ class WebPushKeySetNotifierNotifierFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'webPushKeySetNotifierNotifierProvider';
+  String? get name => r'webPushKeySetNotifierProvider';
 }
 
-/// See also [WebPushKeySetNotifierNotifier].
-class WebPushKeySetNotifierNotifierProvider
-    extends
-        AsyncNotifierProviderImpl<
-          WebPushKeySetNotifierNotifier,
-          WebPushKeySet?
-        > {
-  /// See also [WebPushKeySetNotifierNotifier].
-  WebPushKeySetNotifierNotifierProvider(Account account)
+/// See also [WebPushKeySetNotifier].
+class WebPushKeySetNotifierProvider
+    extends AsyncNotifierProviderImpl<WebPushKeySetNotifier, WebPushKeySet?> {
+  /// See also [WebPushKeySetNotifier].
+  WebPushKeySetNotifierProvider(Account account)
     : this._internal(
-        () => WebPushKeySetNotifierNotifier()..account = account,
-        from: webPushKeySetNotifierNotifierProvider,
-        name: r'webPushKeySetNotifierNotifierProvider',
+        () => WebPushKeySetNotifier()..account = account,
+        from: webPushKeySetNotifierProvider,
+        name: r'webPushKeySetNotifierProvider',
         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
             ? null
-            : _$webPushKeySetNotifierNotifierHash,
-        dependencies: WebPushKeySetNotifierNotifierFamily._dependencies,
+            : _$webPushKeySetNotifierHash,
+        dependencies: WebPushKeySetNotifierFamily._dependencies,
         allTransitiveDependencies:
-            WebPushKeySetNotifierNotifierFamily._allTransitiveDependencies,
+            WebPushKeySetNotifierFamily._allTransitiveDependencies,
         account: account,
       );
 
-  WebPushKeySetNotifierNotifierProvider._internal(
+  WebPushKeySetNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -111,16 +105,16 @@ class WebPushKeySetNotifierNotifierProvider
 
   @override
   FutureOr<WebPushKeySet?> runNotifierBuild(
-    covariant WebPushKeySetNotifierNotifier notifier,
+    covariant WebPushKeySetNotifier notifier,
   ) {
     return notifier.build(account);
   }
 
   @override
-  Override overrideWith(WebPushKeySetNotifierNotifier Function() create) {
+  Override overrideWith(WebPushKeySetNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: WebPushKeySetNotifierNotifierProvider._internal(
+      override: WebPushKeySetNotifierProvider._internal(
         () => create()..account = account,
         from: from,
         name: null,
@@ -133,15 +127,14 @@ class WebPushKeySetNotifierNotifierProvider
   }
 
   @override
-  AsyncNotifierProviderElement<WebPushKeySetNotifierNotifier, WebPushKeySet?>
+  AsyncNotifierProviderElement<WebPushKeySetNotifier, WebPushKeySet?>
   createElement() {
-    return _WebPushKeySetNotifierNotifierProviderElement(this);
+    return _WebPushKeySetNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is WebPushKeySetNotifierNotifierProvider &&
-        other.account == account;
+    return other is WebPushKeySetNotifierProvider && other.account == account;
   }
 
   @override
@@ -155,24 +148,18 @@ class WebPushKeySetNotifierNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin WebPushKeySetNotifierNotifierRef
-    on AsyncNotifierProviderRef<WebPushKeySet?> {
+mixin WebPushKeySetNotifierRef on AsyncNotifierProviderRef<WebPushKeySet?> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _WebPushKeySetNotifierNotifierProviderElement
-    extends
-        AsyncNotifierProviderElement<
-          WebPushKeySetNotifierNotifier,
-          WebPushKeySet?
-        >
-    with WebPushKeySetNotifierNotifierRef {
-  _WebPushKeySetNotifierNotifierProviderElement(super.provider);
+class _WebPushKeySetNotifierProviderElement
+    extends AsyncNotifierProviderElement<WebPushKeySetNotifier, WebPushKeySet?>
+    with WebPushKeySetNotifierRef {
+  _WebPushKeySetNotifierProviderElement(super.provider);
 
   @override
-  Account get account =>
-      (origin as WebPushKeySetNotifierNotifierProvider).account;
+  Account get account => (origin as WebPushKeySetNotifierProvider).account;
 }
 
 // ignore_for_file: type=lint

@@ -173,7 +173,7 @@ class Aria extends HookConsumerWidget {
             notification = PushNotification.fromJson(webPushMessage);
           } else {
             final keySet = await ref.read(
-              webPushKeySetNotifierNotifierProvider(account).future,
+              webPushKeySetNotifierProvider(account).future,
             );
             if (keySet != null) {
               final decrypted = await WebPush().decrypt(
