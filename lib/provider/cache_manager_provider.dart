@@ -8,21 +8,24 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cache_manager_provider.g.dart';
 
+const _key = 'libCachedImageData';
+
 @Riverpod(dependencies: [])
 ImageCacheManager cacheManager(Ref ref) {
-  return _CacheManager();
+  final cacheManager = _ImageCacheManager(
+    Config(
+      _key,
+      maxNrOfCacheObjects: 100000,
+      repo: JsonCacheInfoRepository(databaseName: _key),
+      fileSystem: _IOFileSystem(_key),
+    ),
+  );
+  cacheManager.store.cleanupRunMinInterval = const Duration(minutes: 1);
+  return cacheManager;
 }
 
-class _CacheManager extends CacheManager with ImageCacheManager {
-  static const key = 'libCachedImageData';
-
-  static final _CacheManager _instance = _CacheManager._();
-
-  factory _CacheManager() {
-    return _instance;
-  }
-
-  _CacheManager._() : super(Config(key, fileSystem: _IOFileSystem(key)));
+class _ImageCacheManager extends CacheManager with ImageCacheManager {
+  _ImageCacheManager(super.config);
 }
 
 class _IOFileSystem implements FileSystem {
@@ -44,7 +47,7 @@ class _IOFileSystem implements FileSystem {
   @override
   Future<File> createFile(String name) async {
     final directory = await _fileDir;
-    if (!(await directory.exists())) {
+    if (!directory.existsSync()) {
       await createDirectory(_cacheKey);
     }
     return directory.childFile(name);
