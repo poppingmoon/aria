@@ -12,6 +12,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/general_settings.dart';
+import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/cache_size_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
@@ -572,19 +573,19 @@ class BehaviorPage extends HookConsumerWidget {
                   }),
                   trailing: const Icon(Icons.navigate_next),
                   enabled: cacheSize.valueOrNull != 0,
-                  onTap: () async {
-                    await futureWithDialog(
-                      context,
-                      getApplicationCacheDirectory().then(
-                        (cacheDir) => Future.wait(
-                          cacheDir.listSync().map(
-                            (e) => e.delete(recursive: true),
-                          ),
+                  onTap: () => futureWithDialog(
+                    context,
+                    Future(() async {
+                      await ref.read(cacheManagerProvider).emptyCache();
+                      final cacheDir = await getApplicationCacheDirectory();
+                      await Future.wait(
+                        cacheDir.listSync().map(
+                          (e) => e.delete(recursive: true),
                         ),
-                      ),
-                    );
-                    ref.invalidate(cacheSizeProvider);
-                  },
+                      );
+                      ref.invalidate(cacheSizeProvider);
+                    }),
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
