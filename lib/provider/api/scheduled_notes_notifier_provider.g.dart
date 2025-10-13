@@ -53,7 +53,7 @@ final class ScheduledNotesNotifierProvider
 }
 
 String _$scheduledNotesNotifierHash() =>
-    r'f2de5caff5f42729073dbcdd1f38972ed3cfc4fa';
+    r'df28d87ba1e8cd0939b17884d60a124809f551ab';
 
 final class ScheduledNotesNotifierFamily extends $Family
     with

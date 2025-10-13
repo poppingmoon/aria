@@ -60,7 +60,7 @@ final class TimelineCenterNotifierProvider
 }
 
 String _$timelineCenterNotifierHash() =>
-    r'8591d2acf197213bf5abdefe739f1abf3f449d22';
+    r'0ea51f653c465aff26c6a321c9a3a04b37ed87ce';
 
 final class TimelineCenterNotifierFamily extends $Family
     with

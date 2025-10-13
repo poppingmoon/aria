@@ -694,7 +694,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         if (account.value case final account?) {
                           try {
                             endpoints = await ref.read(
-                              endpointsProvider(account.host).future,
+                              endpointsNotifierProvider(account.host).future,
                             );
                           } catch (_) {}
                         }

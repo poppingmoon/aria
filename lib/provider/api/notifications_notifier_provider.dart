@@ -133,7 +133,7 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     if (ref.read(generalSettingsNotifierProvider).useGroupedNotifications) {
       try {
         final endpoints = await ref.read(
-          endpointsProvider(account.host).future,
+          endpointsNotifierProvider(account.host).future,
         );
         if (endpoints.contains('i/notifications-grouped')) {
           notifications = await ref

@@ -10,17 +10,19 @@ part of 'i_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(INotifier)
+@JsonPersist()
 const iNotifierProvider = INotifierFamily._();
 
+@JsonPersist()
 final class INotifierProvider
-    extends $StreamNotifierProvider<INotifier, MeDetailed?> {
+    extends $AsyncNotifierProvider<INotifier, MeDetailed?> {
   const INotifierProvider._({
     required INotifierFamily super.from,
     required Account super.argument,
   }) : super(
          retry: null,
          name: r'iNotifierProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -50,15 +52,16 @@ final class INotifierProvider
   }
 }
 
-String _$iNotifierHash() => r'1b3aef2ede05aa0a0f1ddf2a81f9264b3ecac8e5';
+String _$iNotifierHash() => r'f12894c41f9a91b7f35a76f471fe49b0b125de6e';
 
+@JsonPersist()
 final class INotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           INotifier,
           AsyncValue<MeDetailed?>,
           MeDetailed?,
-          Stream<MeDetailed?>,
+          FutureOr<MeDetailed?>,
           Account
         > {
   const INotifierFamily._()
@@ -67,9 +70,10 @@ final class INotifierFamily extends $Family
         name: r'iNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
+  @JsonPersist()
   INotifierProvider call(Account account) =>
       INotifierProvider._(argument: account, from: this);
 
@@ -77,11 +81,12 @@ final class INotifierFamily extends $Family
   String toString() => r'iNotifierProvider';
 }
 
-abstract class _$INotifier extends $StreamNotifier<MeDetailed?> {
+@JsonPersist()
+abstract class _$INotifierBase extends $AsyncNotifier<MeDetailed?> {
   late final _$args = ref.$arg as Account;
   Account get account => _$args;
 
-  Stream<MeDetailed?> build(Account account);
+  FutureOr<MeDetailed?> build(Account account);
   @$mustCallSuper
   @override
   void runBuild() {
@@ -96,5 +101,46 @@ abstract class _$INotifier extends $StreamNotifier<MeDetailed?> {
               Object?
             >;
     element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$INotifier extends _$INotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = account;
+    late final resolvedKey = 'INotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(MeDetailed? state)? encode,
+    MeDetailed? Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return e == null
+                ? null
+                : MeDetailed?.fromJson(e as Map<String, Object?>);
+          },
+      options: options,
+    );
   }
 }

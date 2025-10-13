@@ -46,7 +46,7 @@ class ServerOverview extends ConsumerWidget {
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => Future.wait([
-        ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+        ref.refresh(metaNotifierProvider(host).future),
         if (account.host != host)
           ref.refresh(federationInstanceProvider(account, host).future),
       ]),

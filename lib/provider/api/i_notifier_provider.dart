@@ -1,59 +1,32 @@
-import 'dart:convert';
-
+import 'package:hooks_riverpod/experimental/persist.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:riverpod_annotation/experimental/json_persist.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
-import '../cache_manager_provider.dart';
 import '../notes_notifier_provider.dart';
+import '../riverpod_storage_provider.dart';
 import 'misskey_provider.dart';
 
 part 'i_notifier_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
+@JsonPersist()
 class INotifier extends _$INotifier {
   @override
-  Stream<MeDetailed?> build(Account account) async* {
-    final link = ref.keepAlive();
+  FutureOr<MeDetailed?> build(Account account) async {
     if (account.isGuest) {
-      yield null;
-    } else {
-      try {
-        final file = await ref
-            .read(cacheManagerProvider)
-            .getFileFromCache(_key);
-        if (file != null) {
-          final s = await file.file.readAsString();
-          final i = MeDetailed.fromJson(jsonDecode(s) as Map<String, dynamic>);
-          yield i;
-          ref
-              .read(notesNotifierProvider(account).notifier)
-              .addAll(i.pinnedNotes ?? []);
-        }
-      } catch (_) {}
-      try {
-        final i = await _misskey.i.i();
-        yield i;
-        ref
-            .read(notesNotifierProvider(account).notifier)
-            .addAll(i.pinnedNotes ?? []);
-        await _save(i);
-      } catch (_) {
-        link.close();
-        rethrow;
-      }
+      return null;
     }
+    persist(ref.watch(riverpodStorageProvider.future));
+    final i = await _misskey.i.i();
+    ref
+        .read(notesNotifierProvider(account).notifier)
+        .addAll(i.pinnedNotes ?? []);
+    return i;
   }
-
-  String get _key => '$account/i';
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
-
-  Future<void> _save(Object i) async {
-    await ref
-        .read(cacheManagerProvider)
-        .putFile(_key, utf8.encode(jsonEncode(i)), eTag: _key);
-  }
 
   Future<void> setName(String? name) async {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
@@ -62,7 +35,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setDescription(String? description) async {
@@ -72,7 +44,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setFollowedMessage(String? followedMessage) async {
@@ -82,7 +53,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setLocation(String? location) async {
@@ -92,7 +62,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setBirthday(DateTime? birthday) async {
@@ -103,7 +72,6 @@ class INotifier extends _$INotifier {
               : null,
         }, excludeRemoveNullPredicate: (_, _) => true);
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setLang(String? lang) async {
@@ -113,7 +81,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setAvatarId(String? avatarId) async {
@@ -123,7 +90,6 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setAvatarDecorations(
@@ -145,7 +111,6 @@ class INotifier extends _$INotifier {
       ),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setBannerId(String? bannerId) async {
@@ -155,31 +120,26 @@ class INotifier extends _$INotifier {
       excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
-    await _save(response);
   }
 
   Future<void> setIsCat(bool isCat) async {
     final i = await _misskey.i.update(IUpdateRequest(isCat: isCat));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setIsBot(bool isBot) async {
     final i = await _misskey.i.update(IUpdateRequest(isBot: isBot));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setFields(List<UserField> fields) async {
     final i = await _misskey.i.update(IUpdateRequest(fields: fields));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setIsLocked(bool isLocked) async {
     final i = await _misskey.i.update(IUpdateRequest(isLocked: isLocked));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setAutoAcceptFollowed(bool autoAcceptFollowed) async {
@@ -187,7 +147,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(autoAcceptFollowed: autoAcceptFollowed),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setPublicReactions(bool publicReactions) async {
@@ -195,7 +154,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(publicReactions: publicReactions),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setFfVisibility(FFVisibility ffVisibility) async {
@@ -203,7 +161,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(ffVisibility: ffVisibility),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setFollowingVisibility(FFVisibility followingVisibility) async {
@@ -212,7 +169,6 @@ class INotifier extends _$INotifier {
         IUpdateRequest(followingVisibility: followingVisibility),
       );
       state = AsyncValue.data(i);
-      await _save(i);
     } catch (_) {
       await setFfVisibility(followingVisibility);
     }
@@ -224,7 +180,6 @@ class INotifier extends _$INotifier {
         IUpdateRequest(followersVisibility: followersVisibility),
       );
       state = AsyncValue.data(i);
-      await _save(i);
     } catch (_) {
       await setFfVisibility(followersVisibility);
     }
@@ -235,13 +190,11 @@ class INotifier extends _$INotifier {
       IUpdateRequest(hideOnlineStatus: hideOnlineStatus),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setNoCrawle(bool noCrawle) async {
     final i = await _misskey.i.update(IUpdateRequest(noCrawle: noCrawle));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setPreventAiLearning(bool preventAiLearning) async {
@@ -249,7 +202,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(preventAiLearning: preventAiLearning),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setIsExplorable(bool isExplorable) async {
@@ -257,13 +209,11 @@ class INotifier extends _$INotifier {
       IUpdateRequest(isExplorable: isExplorable),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setChatScope(ChatScope chatScope) async {
     final i = await _misskey.i.update(IUpdateRequest(chatScope: chatScope));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setAlwaysMarkSensitive(bool alwaysMarkSensitive) async {
@@ -271,7 +221,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(alwaysMarkNsfw: alwaysMarkSensitive),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setAutoSensitive(bool autoSensitive) async {
@@ -279,13 +228,11 @@ class INotifier extends _$INotifier {
       IUpdateRequest(autoSensitive: autoSensitive),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setMutedWords(List<MuteWord> mutedWords) async {
     final i = await _misskey.i.update(IUpdateRequest(mutedWords: mutedWords));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setHardMutedWords(List<MuteWord> hardMutedWords) async {
@@ -293,7 +240,6 @@ class INotifier extends _$INotifier {
       IUpdateRequest(hardMutedWords: hardMutedWords),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> setMutedServers(List<String> mutedServers) async {
@@ -301,19 +247,16 @@ class INotifier extends _$INotifier {
       IUpdateRequest(mutedInstances: mutedServers),
     );
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> pin(String noteId) async {
     final i = await _misskey.i.pin(IPinRequest(noteId: noteId));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> unpin(String noteId) async {
     final i = await _misskey.i.unpin(IUnpinRequest(noteId: noteId));
     state = AsyncValue.data(i);
-    await _save(i);
   }
 
   Future<void> addUnreadNotification() async {
@@ -372,7 +315,6 @@ class INotifier extends _$INotifier {
         hasUnreadAnnouncement: unreadAnnouncements.isNotEmpty,
       );
       state = AsyncValue.data(updated);
-      await _save(updated);
     }
   }
 }

@@ -22,7 +22,7 @@ final class TokenRepositoryProvider
         argument: null,
         retry: null,
         name: r'tokenRepositoryProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -49,4 +49,4 @@ final class TokenRepositoryProvider
   }
 }
 
-String _$tokenRepositoryHash() => r'9a2bc79396194648b96d2abc288c6d6ae29d71ff';
+String _$tokenRepositoryHash() => r'bdb0718a3f9cc60f931be7c9f7361d59f9a22c02';

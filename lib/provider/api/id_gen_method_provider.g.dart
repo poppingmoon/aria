@@ -9,53 +9,41 @@ part of 'id_gen_method_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(idGenMethod)
-const idGenMethodProvider = IdGenMethodFamily._();
+@ProviderFor(IdGenMethodNotifier)
+@JsonPersist()
+const idGenMethodNotifierProvider = IdGenMethodNotifierFamily._();
 
-final class IdGenMethodProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<IdGenMethod>,
-          IdGenMethod,
-          FutureOr<IdGenMethod>
-        >
-    with $FutureModifier<IdGenMethod>, $FutureProvider<IdGenMethod> {
-  const IdGenMethodProvider._({
-    required IdGenMethodFamily super.from,
+@JsonPersist()
+final class IdGenMethodNotifierProvider
+    extends $AsyncNotifierProvider<IdGenMethodNotifier, IdGenMethod> {
+  const IdGenMethodNotifierProvider._({
+    required IdGenMethodNotifierFamily super.from,
     required Account super.argument,
   }) : super(
          retry: null,
-         name: r'idGenMethodProvider',
-         isAutoDispose: true,
+         name: r'idGenMethodNotifierProvider',
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$idGenMethodHash();
+  String debugGetCreateSourceHash() => _$idGenMethodNotifierHash();
 
   @override
   String toString() {
-    return r'idGenMethodProvider'
+    return r'idGenMethodNotifierProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  $FutureProviderElement<IdGenMethod> $createElement(
-    $ProviderPointer pointer,
-  ) => $FutureProviderElement(pointer);
-
-  @override
-  FutureOr<IdGenMethod> create(Ref ref) {
-    final argument = this.argument as Account;
-    return idGenMethod(ref, argument);
-  }
+  IdGenMethodNotifier create() => IdGenMethodNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is IdGenMethodProvider && other.argument == argument;
+    return other is IdGenMethodNotifierProvider && other.argument == argument;
   }
 
   @override
@@ -64,22 +52,94 @@ final class IdGenMethodProvider
   }
 }
 
-String _$idGenMethodHash() => r'4f44a0ae972e787cadd83071e7a8dfc007987f35';
+String _$idGenMethodNotifierHash() =>
+    r'83cc905a0605c4cefee2ee435ded9a8c06b78d09';
 
-final class IdGenMethodFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<IdGenMethod>, Account> {
-  const IdGenMethodFamily._()
+@JsonPersist()
+final class IdGenMethodNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          IdGenMethodNotifier,
+          AsyncValue<IdGenMethod>,
+          IdGenMethod,
+          FutureOr<IdGenMethod>,
+          Account
+        > {
+  const IdGenMethodNotifierFamily._()
     : super(
         retry: null,
-        name: r'idGenMethodProvider',
+        name: r'idGenMethodNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
-  IdGenMethodProvider call(Account account) =>
-      IdGenMethodProvider._(argument: account, from: this);
+  @JsonPersist()
+  IdGenMethodNotifierProvider call(Account account) =>
+      IdGenMethodNotifierProvider._(argument: account, from: this);
 
   @override
-  String toString() => r'idGenMethodProvider';
+  String toString() => r'idGenMethodNotifierProvider';
+}
+
+@JsonPersist()
+abstract class _$IdGenMethodNotifierBase extends $AsyncNotifier<IdGenMethod> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  FutureOr<IdGenMethod> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<IdGenMethod>, IdGenMethod>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<IdGenMethod>, IdGenMethod>,
+              AsyncValue<IdGenMethod>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$IdGenMethodNotifier extends _$IdGenMethodNotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = account;
+    late final resolvedKey = 'IdGenMethodNotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(IdGenMethod state)? encode,
+    IdGenMethod Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return IdGenMethod.fromJson(e as Map<String, Object?>);
+          },
+      options: options,
+    );
+  }
 }

@@ -5,7 +5,7 @@ import 'dio_provider.dart';
 
 part 'miauth_repository_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 MiAuthRepository miAuthRepository(Ref ref) {
   final dio = ref.watch(dioProvider);
   return MiAuthRepository(dio);

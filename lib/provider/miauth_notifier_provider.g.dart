@@ -41,7 +41,7 @@ final class MiAuthNotifierProvider
   }
 }
 
-String _$miAuthNotifierHash() => r'b0117d76e4ed5d5bbed1537721c4c81b020b47c2';
+String _$miAuthNotifierHash() => r'1d31c393d6b9dc031cb25772e2b9600c82089f10';
 
 abstract class _$MiAuthNotifier extends $Notifier<MiAuthState?> {
   MiAuthState? build();

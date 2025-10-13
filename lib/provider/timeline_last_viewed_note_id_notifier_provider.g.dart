@@ -62,7 +62,7 @@ final class TimelineLastViewedNoteIdNotifierProvider
 }
 
 String _$timelineLastViewedNoteIdNotifierHash() =>
-    r'74d17ffe8a3f5f248d74c04815dc7d497a0b4630';
+    r'27be1178149bbc91e7b3791643a82e1cc2cefcb5';
 
 final class TimelineLastViewedNoteIdNotifierFamily extends $Family
     with

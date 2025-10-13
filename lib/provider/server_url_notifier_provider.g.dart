@@ -20,7 +20,7 @@ final class ServerUrlNotifierProvider
   }) : super(
          retry: null,
          name: r'serverUrlNotifierProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -58,7 +58,7 @@ final class ServerUrlNotifierProvider
   }
 }
 
-String _$serverUrlNotifierHash() => r'f1d26cd49ffae5fe9cf7cd15eae5387d3160ceb7';
+String _$serverUrlNotifierHash() => r'fdb259591cc72d97dc0d46744a1d99c690c8ae07';
 
 final class ServerUrlNotifierFamily extends $Family
     with $ClassFamilyOverride<ServerUrlNotifier, Uri, Uri, Uri, String> {
@@ -68,7 +68,7 @@ final class ServerUrlNotifierFamily extends $Family
         name: r'serverUrlNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
   ServerUrlNotifierProvider call(String host) =>

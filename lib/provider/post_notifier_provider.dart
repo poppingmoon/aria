@@ -42,6 +42,10 @@ class PostNotifier extends _$PostNotifier {
 
   String get _key => '$account/draft';
 
+  Misskey get _misskey => ref.read(misskeyProvider(account));
+
+  MeDetailed? get _i => ref.read(iNotifierProvider(account)).value;
+
   Timer? _timer;
 
   bool _saveScheduled = false;
@@ -51,8 +55,7 @@ class PostNotifier extends _$PostNotifier {
     final localOnly = settings.rememberNoteVisibility
         ? settings.localOnly
         : settings.defaultNoteLocalOnly;
-    final isSilenced =
-        ref.read(iNotifierProvider(account)).value?.isSilenced ?? false;
+    final isSilenced = _i?.isSilenced ?? false;
     final visibility = NoteVisibility.min(
       settings.rememberNoteVisibility
           ? settings.visibility
@@ -102,14 +105,11 @@ class PostNotifier extends _$PostNotifier {
       } catch (_) {}
       return remoteNoteId;
     }
-    final response = await ref
-        .read(misskeyProvider(account))
-        .ap
-        .show(
-          ApShowRequest(
-            uri: remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'),
-          ),
-        );
+    final response = await _misskey.ap.show(
+      ApShowRequest(
+        uri: remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'),
+      ),
+    );
     try {
       final note = Note.fromJson(response.object);
       ref.read(notesNotifierProvider(account).notifier).add(note);
@@ -187,39 +187,34 @@ class PostNotifier extends _$PostNotifier {
           i = await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
-          await ref.read(misskeyProvider(account)).notes.create(request);
+          await _misskey.notes.create(request);
           reset();
           return request.toNote();
         } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
             when scheduleNoteMax > 0) {
-          await ref
-              .read(misskeyProvider(account))
-              .notes
-              .schedule
-              .create(
-                NotesScheduleCreateRequest(
-                  visibility: request.visibility,
-                  visibleUserIds: request.visibleUserIds,
-                  cw: request.cw,
-                  reactionAcceptance: request.reactionAcceptance,
-                  replyId: request.replyId,
-                  renoteId: request.renoteId,
-                  text: request.text,
-                  fileIds: request.fileIds,
-                  channelId: request.channelId,
-                  localOnly: request.localOnly,
-                  poll: request.poll,
-                  scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
-                ),
-              );
+          await _misskey.notes.schedule.create(
+            NotesScheduleCreateRequest(
+              visibility: request.visibility,
+              visibleUserIds: request.visibleUserIds,
+              cw: request.cw,
+              reactionAcceptance: request.reactionAcceptance,
+              replyId: request.replyId,
+              renoteId: request.renoteId,
+              text: request.text,
+              fileIds: request.fileIds,
+              channelId: request.channelId,
+              localOnly: request.localOnly,
+              poll: request.poll,
+              scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
+            ),
+          );
           reset();
           return request.toNote();
         }
       }
-      final response = await ref
-          .read(misskeyProvider(account))
-          .notes
-          .create(request.copyWith(scheduledAt: null));
+      final response = await _misskey.notes.create(
+        request.copyWith(scheduledAt: null),
+      );
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
       }
@@ -228,43 +223,39 @@ class PostNotifier extends _$PostNotifier {
     } else {
       List<String>? endpoints;
       try {
-        endpoints = await ref.read(endpointsProvider(account.host).future);
+        endpoints = await ref.read(
+          endpointsNotifierProvider(account.host).future,
+        );
       } catch (_) {}
       if (endpoints?.contains('notes/update') ?? true) {
-        await ref
-            .read(misskeyProvider(account))
-            .notes
-            .update(
-              NotesUpdateRequest(
-                noteId: noteId!,
-                text: request.text,
-                cw: request.cw,
-                fileIds: fileIds,
-                poll: request.poll,
-              ),
-            );
+        await _misskey.notes.update(
+          NotesUpdateRequest(
+            noteId: noteId!,
+            text: request.text,
+            cw: request.cw,
+            fileIds: fileIds,
+            poll: request.poll,
+          ),
+        );
         final note = request.toNote();
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
-        final response = await ref
-            .read(misskeyProvider(account))
-            .notes
-            .edit(
-              NotesEditRequest(
-                editId: noteId!,
-                visibility: request.visibility,
-                visibleUserIds: request.visibleUserIds,
-                text: request.text,
-                cw: request.cw,
-                localOnly: request.localOnly,
-                fileIds: fileIds,
-                replyId: request.replyId,
-                renoteId: request.renoteId,
-                channelId: request.channelId,
-                poll: request.poll,
-              ),
-            );
+        final response = await _misskey.notes.edit(
+          NotesEditRequest(
+            editId: noteId!,
+            visibility: request.visibility,
+            visibleUserIds: request.visibleUserIds,
+            text: request.text,
+            cw: request.cw,
+            localOnly: request.localOnly,
+            fileIds: fileIds,
+            replyId: request.replyId,
+            renoteId: request.renoteId,
+            channelId: request.channelId,
+            poll: request.poll,
+          ),
+        );
         ref.read(notesNotifierProvider(account).notifier).add(response);
         return response;
       }
@@ -391,7 +382,7 @@ class PostNotifier extends _$PostNotifier {
               state.visibility ?? NoteVisibility.public,
               reply.visibility ?? NoteVisibility.public,
             );
-      final i = ref.read(iNotifierProvider(account)).value;
+      final i = _i;
       final visibleUserIds = {
         ...?state.visibleUserIds,
         ...reply.visibleUserIds.where(

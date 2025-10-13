@@ -28,7 +28,7 @@ final class MisskeyServersProvider
         argument: null,
         retry: null,
         name: r'misskeyServersProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -48,4 +48,4 @@ final class MisskeyServersProvider
   }
 }
 
-String _$misskeyServersHash() => r'077962f82fddd91c6eaec960da4c049726445eaf';
+String _$misskeyServersHash() => r'c0680d8788ad3bb694401aa6c62140f0a77b1a90';

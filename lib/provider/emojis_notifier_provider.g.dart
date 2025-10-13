@@ -10,10 +10,12 @@ part of 'emojis_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(EmojisNotifier)
+@JsonPersist()
 const emojisNotifierProvider = EmojisNotifierFamily._();
 
+@JsonPersist()
 final class EmojisNotifierProvider
-    extends $StreamNotifierProvider<EmojisNotifier, Map<String, Emoji>> {
+    extends $AsyncNotifierProvider<EmojisNotifier, Map<String, Emoji>> {
   const EmojisNotifierProvider._({
     required EmojisNotifierFamily super.from,
     required String super.argument,
@@ -50,15 +52,16 @@ final class EmojisNotifierProvider
   }
 }
 
-String _$emojisNotifierHash() => r'23cf00d4ae61216402def2d92c2ea327db472a57';
+String _$emojisNotifierHash() => r'5875eb71caeccaa56af45ec213531c4b05e4fe6f';
 
+@JsonPersist()
 final class EmojisNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           EmojisNotifier,
           AsyncValue<Map<String, Emoji>>,
           Map<String, Emoji>,
-          Stream<Map<String, Emoji>>,
+          FutureOr<Map<String, Emoji>>,
           String
         > {
   const EmojisNotifierFamily._()
@@ -70,6 +73,7 @@ final class EmojisNotifierFamily extends $Family
         isAutoDispose: false,
       );
 
+  @JsonPersist()
   EmojisNotifierProvider call(String host) =>
       EmojisNotifierProvider._(argument: host, from: this);
 
@@ -77,11 +81,12 @@ final class EmojisNotifierFamily extends $Family
   String toString() => r'emojisNotifierProvider';
 }
 
-abstract class _$EmojisNotifier extends $StreamNotifier<Map<String, Emoji>> {
+@JsonPersist()
+abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
   late final _$args = ref.$arg as String;
   String get host => _$args;
 
-  Stream<Map<String, Emoji>> build(String host);
+  FutureOr<Map<String, Emoji>> build(String host);
   @$mustCallSuper
   @override
   void runBuild() {
@@ -97,5 +102,49 @@ abstract class _$EmojisNotifier extends $StreamNotifier<Map<String, Emoji>> {
               Object?
             >;
     element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$EmojisNotifier extends _$EmojisNotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = host;
+    late final resolvedKey = 'EmojisNotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(Map<String, Emoji> state)? encode,
+    Map<String, Emoji> Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return (e as Map).map(
+              (k, v) => MapEntry(
+                k as String,
+                Emoji.fromJson(v as Map<String, Object?>),
+              ),
+            );
+          },
+      options: options,
+    );
   }
 }

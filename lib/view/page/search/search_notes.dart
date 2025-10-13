@@ -49,7 +49,7 @@ class SearchNotes extends HookConsumerWidget {
     final localOnly = useState(this.channelId != null);
     final sinceDate = useState<DateTime?>(null);
     final untilDate = useState<DateTime?>(null);
-    final method = ref.watch(idGenMethodProvider(account)).value;
+    final method = ref.watch(idGenMethodNotifierProvider(account)).value;
     final sinceId = method != null && sinceDate.value != null
         ? Id(method: method, date: sinceDate.value!).toString()
         : null;
