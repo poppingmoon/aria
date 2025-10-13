@@ -187,7 +187,9 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
   Future<void> moveBulkFrom(List<DriveFile> files) async {
     bool isMoveBulkAvailable = false;
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       isMoveBulkAvailable = endpoints.contains('drive/files/move-bulk');
     } catch (_) {}
     if (isMoveBulkAvailable) {

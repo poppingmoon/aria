@@ -21,7 +21,7 @@ final class PushNotificationNotifierProvider
         argument: null,
         retry: null,
         name: r'pushNotificationNotifierProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -35,7 +35,7 @@ final class PushNotificationNotifierProvider
 }
 
 String _$pushNotificationNotifierHash() =>
-    r'2140f46cfdce9af72c908919db105c6b5c753cec';
+    r'17c894cd2ee72bc7d0a4c9f58308903f64bf71cf';
 
 abstract class _$PushNotificationNotifier
     extends $StreamNotifier<PushNotification> {

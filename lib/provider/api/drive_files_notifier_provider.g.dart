@@ -55,7 +55,7 @@ final class DriveFilesNotifierProvider
 }
 
 String _$driveFilesNotifierHash() =>
-    r'0c5fe001496502ad772966f9bc8f9185c83bf216';
+    r'25f14394f1613b4797d429719051b968d8c52428';
 
 final class DriveFilesNotifierFamily extends $Family
     with

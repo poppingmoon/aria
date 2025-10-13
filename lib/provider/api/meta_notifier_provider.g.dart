@@ -10,17 +10,19 @@ part of 'meta_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MetaNotifier)
+@JsonPersist()
 const metaNotifierProvider = MetaNotifierFamily._();
 
+@JsonPersist()
 final class MetaNotifierProvider
-    extends $StreamNotifierProvider<MetaNotifier, MetaResponse> {
+    extends $AsyncNotifierProvider<MetaNotifier, MetaResponse> {
   const MetaNotifierProvider._({
     required MetaNotifierFamily super.from,
     required String super.argument,
   }) : super(
          retry: null,
          name: r'metaNotifierProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -50,15 +52,16 @@ final class MetaNotifierProvider
   }
 }
 
-String _$metaNotifierHash() => r'ee92b6930ea875fa0e0546e3756345689f13f2b6';
+String _$metaNotifierHash() => r'90bbbee141b53b46d01eeca89138979483a7d308';
 
+@JsonPersist()
 final class MetaNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           MetaNotifier,
           AsyncValue<MetaResponse>,
           MetaResponse,
-          Stream<MetaResponse>,
+          FutureOr<MetaResponse>,
           String
         > {
   const MetaNotifierFamily._()
@@ -67,9 +70,10 @@ final class MetaNotifierFamily extends $Family
         name: r'metaNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
+  @JsonPersist()
   MetaNotifierProvider call(String host) =>
       MetaNotifierProvider._(argument: host, from: this);
 
@@ -77,11 +81,12 @@ final class MetaNotifierFamily extends $Family
   String toString() => r'metaNotifierProvider';
 }
 
-abstract class _$MetaNotifier extends $StreamNotifier<MetaResponse> {
+@JsonPersist()
+abstract class _$MetaNotifierBase extends $AsyncNotifier<MetaResponse> {
   late final _$args = ref.$arg as String;
   String get host => _$args;
 
-  Stream<MetaResponse> build(String host);
+  FutureOr<MetaResponse> build(String host);
   @$mustCallSuper
   @override
   void runBuild() {
@@ -96,5 +101,44 @@ abstract class _$MetaNotifier extends $StreamNotifier<MetaResponse> {
               Object?
             >;
     element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$MetaNotifier extends _$MetaNotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = host;
+    late final resolvedKey = 'MetaNotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(MetaResponse state)? encode,
+    MetaResponse Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return MetaResponse.fromJson(e as Map<String, Object?>);
+          },
+      options: options,
+    );
   }
 }

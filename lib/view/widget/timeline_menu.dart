@@ -24,7 +24,7 @@ class TimelineMenu extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).value;
-    final endpoints = ref.watch(endpointsProvider(account.host)).value;
+    final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
     final theme = Theme.of(context);
 
     return IconTheme.merge(

@@ -108,6 +108,7 @@ class ShareNotifier extends _$ShareNotifier {
       ref.read(postNotifierProvider(account).notifier).setText(text.join(' '));
     }
     if (files.isNotEmpty) {
+      // ignore: only_use_keep_alive_inside_keep_alive
       ref.read(attachesNotifierProvider(account).notifier).addAll(files);
     }
   }

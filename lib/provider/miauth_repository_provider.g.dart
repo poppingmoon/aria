@@ -26,7 +26,7 @@ final class MiAuthRepositoryProvider
         argument: null,
         retry: null,
         name: r'miAuthRepositoryProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -53,4 +53,4 @@ final class MiAuthRepositoryProvider
   }
 }
 
-String _$miAuthRepositoryHash() => r'c26494a9a41e561c457b7256fb0e15c50c1f2932';
+String _$miAuthRepositoryHash() => r'08fd152543cb5330a4407ca851d42f37aca0ce0d';

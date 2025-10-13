@@ -1,34 +1,19 @@
-import 'dart:convert';
-
+import 'package:hooks_riverpod/experimental/persist.dart';
+import 'package:riverpod_annotation/experimental/json_persist.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
-import '../cache_manager_provider.dart';
+import '../riverpod_storage_provider.dart';
 import 'misskey_provider.dart';
 
 part 'endpoints_provider.g.dart';
 
-@riverpod
-Stream<List<String>> endpoints(Ref ref, String host) async* {
-  final link = ref.keepAlive();
-  final key = '$host/endpoints';
-  try {
-    final file = await ref.read(cacheManagerProvider).getFileFromCache(key);
-    if (file != null) {
-      final s = await file.file.readAsString();
-      yield (jsonDecode(s) as List).whereType<String>().toList();
-    }
-  } catch (_) {}
-  try {
-    final endpoints = await ref
-        .watch(misskeyProvider(Account(host: host)))
-        .endpoints();
-    yield endpoints;
-    await ref
-        .read(cacheManagerProvider)
-        .putFile(key, utf8.encode(jsonEncode(endpoints)), eTag: key);
-  } catch (_) {
-    link.close();
-    rethrow;
+@Riverpod(keepAlive: true)
+@JsonPersist()
+class EndpointsNotifier extends _$EndpointsNotifier {
+  @override
+  FutureOr<List<String>> build(String host) {
+    persist(ref.watch(riverpodStorageProvider.future));
+    return ref.watch(misskeyProvider(Account(host: host))).endpoints();
   }
 }

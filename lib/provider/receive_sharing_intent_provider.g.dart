@@ -28,7 +28,7 @@ final class ReceiveSharingIntentProvider
         argument: null,
         retry: null,
         name: r'receiveSharingIntentProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -49,4 +49,4 @@ final class ReceiveSharingIntentProvider
 }
 
 String _$receiveSharingIntentHash() =>
-    r'46ef562192a7b42d470b288eb18b4257868bdf75';
+    r'c9ebee3810a3c6188bc92191eae6fba1d1b7c604';

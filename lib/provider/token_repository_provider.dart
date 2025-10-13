@@ -4,7 +4,7 @@ import '../repository/token_repository.dart';
 
 part 'token_repository_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 TokenRepository tokenRepository(Ref ref) {
   return const TokenRepository();
 }

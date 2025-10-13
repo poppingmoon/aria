@@ -23,7 +23,9 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
 
   Future<Iterable<Note>> _fetchNotes({String? untilId, int? offset}) async {
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       if (endpoints.contains('notes/schedule/list')) {
         final response = await ref
             .read(misskeyProvider(account))
@@ -120,7 +122,9 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
 
   Future<void> cancel(String noteId) async {
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       if (endpoints.contains('notes/schedule/delete')) {
         await ref
             .read(misskeyProvider(account))

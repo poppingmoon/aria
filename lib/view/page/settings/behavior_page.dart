@@ -11,10 +11,12 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
+import '../../../model/database/riverpod_storage_item.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/cache_size_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/isar_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/pretty_bytes.dart';
 import '../../dialog/radio_dialog.dart';
@@ -584,6 +586,10 @@ class BehaviorPage extends HookConsumerWidget {
                         ),
                       );
                       ref.invalidate(cacheSizeProvider);
+                      final isar = await ref.read(isarProvider.future);
+                      await isar.writeTxn(
+                        () => isar.riverpodStorageItems.clear(),
+                      );
                     }),
                   ),
                   shape: RoundedRectangleBorder(

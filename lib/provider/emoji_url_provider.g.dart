@@ -33,7 +33,7 @@ final class EmojiUrlProvider
   }) : super(
          retry: null,
          name: r'emojiUrlProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -93,7 +93,7 @@ final class EmojiUrlProvider
   }
 }
 
-String _$emojiUrlHash() => r'4d37f9640e496e591bfeb4bbf9f9c97ff6a6004b';
+String _$emojiUrlHash() => r'587be2efdd6269a8ca1fe26ef8484eab03280ded';
 
 final class EmojiUrlFamily extends $Family
     with
@@ -107,7 +107,7 @@ final class EmojiUrlFamily extends $Family
         name: r'emojiUrlProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
   EmojiUrlProvider call(

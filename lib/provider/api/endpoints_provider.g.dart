@@ -9,53 +9,41 @@ part of 'endpoints_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(endpoints)
-const endpointsProvider = EndpointsFamily._();
+@ProviderFor(EndpointsNotifier)
+@JsonPersist()
+const endpointsNotifierProvider = EndpointsNotifierFamily._();
 
-final class EndpointsProvider
-    extends
-        $FunctionalProvider<
-          AsyncValue<List<String>>,
-          List<String>,
-          Stream<List<String>>
-        >
-    with $FutureModifier<List<String>>, $StreamProvider<List<String>> {
-  const EndpointsProvider._({
-    required EndpointsFamily super.from,
+@JsonPersist()
+final class EndpointsNotifierProvider
+    extends $AsyncNotifierProvider<EndpointsNotifier, List<String>> {
+  const EndpointsNotifierProvider._({
+    required EndpointsNotifierFamily super.from,
     required String super.argument,
   }) : super(
          retry: null,
-         name: r'endpointsProvider',
-         isAutoDispose: true,
+         name: r'endpointsNotifierProvider',
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$endpointsHash();
+  String debugGetCreateSourceHash() => _$endpointsNotifierHash();
 
   @override
   String toString() {
-    return r'endpointsProvider'
+    return r'endpointsNotifierProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  $StreamProviderElement<List<String>> $createElement(
-    $ProviderPointer pointer,
-  ) => $StreamProviderElement(pointer);
-
-  @override
-  Stream<List<String>> create(Ref ref) {
-    final argument = this.argument as String;
-    return endpoints(ref, argument);
-  }
+  EndpointsNotifier create() => EndpointsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is EndpointsProvider && other.argument == argument;
+    return other is EndpointsNotifierProvider && other.argument == argument;
   }
 
   @override
@@ -64,22 +52,93 @@ final class EndpointsProvider
   }
 }
 
-String _$endpointsHash() => r'052eadc161bae2bd86e8229c1e48c6f3e3674afe';
+String _$endpointsNotifierHash() => r'a191db0165b927b837cff7afbe75ea0151ff1209';
 
-final class EndpointsFamily extends $Family
-    with $FunctionalFamilyOverride<Stream<List<String>>, String> {
-  const EndpointsFamily._()
+@JsonPersist()
+final class EndpointsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          EndpointsNotifier,
+          AsyncValue<List<String>>,
+          List<String>,
+          FutureOr<List<String>>,
+          String
+        > {
+  const EndpointsNotifierFamily._()
     : super(
         retry: null,
-        name: r'endpointsProvider',
+        name: r'endpointsNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
-  EndpointsProvider call(String host) =>
-      EndpointsProvider._(argument: host, from: this);
+  @JsonPersist()
+  EndpointsNotifierProvider call(String host) =>
+      EndpointsNotifierProvider._(argument: host, from: this);
 
   @override
-  String toString() => r'endpointsProvider';
+  String toString() => r'endpointsNotifierProvider';
+}
+
+@JsonPersist()
+abstract class _$EndpointsNotifierBase extends $AsyncNotifier<List<String>> {
+  late final _$args = ref.$arg as String;
+  String get host => _$args;
+
+  FutureOr<List<String>> build(String host);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<List<String>>, List<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<String>>, List<String>>,
+              AsyncValue<List<String>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$EndpointsNotifier extends _$EndpointsNotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = host;
+    late final resolvedKey = 'EndpointsNotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(List<String> state)? encode,
+    List<String> Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return (e as List).map((e) => e as String).toList();
+          },
+      options: options,
+    );
+  }
 }

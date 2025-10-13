@@ -21,7 +21,7 @@ final class FileSystemProvider
         argument: null,
         retry: null,
         name: r'fileSystemProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -48,4 +48,4 @@ final class FileSystemProvider
   }
 }
 
-String _$fileSystemHash() => r'96ac0dac8d12939aa3ce95bfd916a656d76cfa5e';
+String _$fileSystemHash() => r'13ebfaafe11a745ba261f5fc7ee19c47c18f12f7';

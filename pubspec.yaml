@@ -72,6 +72,8 @@ dependencies:
       ref: 37b78624635c42f51524cdfc001ae9073ec468ee
   image_editor: ^1.6.0
   intl: ^0.20.2
+  isar_community: ^3.3.0
+  isar_community_flutter_libs: ^3.3.0
   json5: ^0.8.2
   json_annotation: ^4.9.0
   just_audio: ^0.10.5
@@ -141,6 +143,7 @@ dev_dependencies:
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
+  isar_community_generator: ^3.3.0
   json_serializable: ^6.11.1
   lint: ^2.8.0
   plugin_platform_interface: ^2.1.8

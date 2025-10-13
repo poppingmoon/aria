@@ -1146,6 +1146,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  isar_community:
+    dependency: "direct main"
+    description:
+      name: isar_community
+      sha256: d92315e1862448f236489c2b2b1f9a7ad5ba2405f42d87216234be4fb2e1dd2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
+  isar_community_flutter_libs:
+    dependency: "direct main"
+    description:
+      name: isar_community_flutter_libs
+      sha256: "3c072d8d77e820196fa23839b88481c50d903c73b3c0db6e647b29509d04fe3b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
+  isar_community_generator:
+    dependency: "direct dev"
+    description:
+      name: isar_community_generator
+      sha256: "6ca1487b7551850f7896443aa8079a12b23cdf71a99dafb1f567c83d6e031042"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
   js:
     dependency: transitive
     description:
@@ -2366,6 +2390,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.6.1"
+  xxh3:
+    dependency: transitive
+    description:
+      name: xxh3
+      sha256: "399a0438f5d426785723c99da6b16e136f4953fb1e9db0bf270bd41dd4619916"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   yaml:
     dependency: "direct dev"
     description:

@@ -109,7 +109,7 @@ class NoteSheet extends ConsumerWidget {
         i != null &&
         (i.policies?.canEditNote ??
             ref.watch(
-              endpointsProvider(account.host).select(
+              endpointsNotifierProvider(account.host).select(
                 (value) => value.maybeWhen(
                   data: (endpoints) => endpoints.contains('notes/edit'),
                   orElse: () => false,
