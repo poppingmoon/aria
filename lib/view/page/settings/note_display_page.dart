@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -15,9 +16,7 @@ import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/general_settings.dart';
-import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
-import '../../../util/asset_cache_manager.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/note_widget.dart';
@@ -1222,111 +1221,10 @@ class NoteDisplayPage extends HookConsumerWidget {
             ),
             _NoteDisplayArea.preview => SingleChildScrollView(
               child: Center(
-                child: ProviderScope(
-                  overrides: [
-                    cacheManagerProvider.overrideWithValue(AssetCacheManager()),
-                  ],
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: NoteWidget(
-                      account: const Account(host: '', username: ''),
-                      noteId: '',
-                      note: Note(
-                        id: '',
-                        createdAt: DateTime.now(),
-                        text: r'$[jelly.speed=2s $[x4 🍮]]',
-                        user: UserLite(
-                          id: '',
-                          username: 'user',
-                          avatarUrl: Uri(
-                            path:
-                                'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🫠')}.svg',
-                          ),
-                          avatarDecorations: [
-                            const UserAvatarDecoration(
-                              id: '',
-                              url: Assets.flower,
-                            ),
-                          ],
-                          instance: UserInstanceInfo(
-                            name: 'example.tld',
-                            faviconUrl: Uri(
-                              path: Assets
-                                  .misskey
-                                  .packages
-                                  .frontend
-                                  .assets
-                                  .aboutIcon
-                                  .path,
-                            ),
-                            themeColor: '86b300',
-                          ),
-                        ),
-                        userId: '',
-                        visibility: NoteVisibility.public,
-                        reactionCount: 55,
-                        reactions: defaultPinnedEmojis.asMap().map(
-                          (key, value) => MapEntry(value, key + 1),
-                        ),
-                        fileIds: [],
-                        files: [
-                          DriveFile(
-                            id: '',
-                            createdAt: DateTime.now(),
-                            name: '',
-                            type: 'image/webp',
-                            md5: '',
-                            size: 0,
-                            isSensitive: false,
-                            properties: const DriveFileProperties(),
-                            thumbnailUrl: Assets.bird.path,
-                            url: Assets.bird.path,
-                          ),
-                          DriveFile(
-                            id: '',
-                            createdAt: DateTime.now(),
-                            name: '',
-                            type: 'image/webp',
-                            md5: '',
-                            size: 0,
-                            isSensitive: true,
-                            properties: const DriveFileProperties(),
-                            thumbnailUrl: Assets.cat.path,
-                            url: Assets.cat.path,
-                          ),
-                        ],
-                        renoteId: '',
-                        renote: Note(
-                          id: '',
-                          createdAt: DateTime.now().subtract(
-                            const Duration(hours: 1),
-                          ),
-                          text: 'just setting up my msky',
-                          user: UserLite(
-                            id: '',
-                            username: 'admin',
-                            avatarUrl: Uri(
-                              path:
-                                  'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🌆')}.svg',
-                            ),
-                          ),
-                          userId: '',
-                          visibility: NoteVisibility.public,
-                          renoteCount: 1,
-                          reactionCount: 55,
-                          reactions: defaultPinnedEmojis.asMap().map(
-                            (key, value) => MapEntry(value, key + 1),
-                          ),
-                          fileIds: [],
-                          files: [],
-                        ),
-                      ),
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(8.0),
-                      ),
-                    ),
-                  ),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: const _NotePreview(),
                 ),
               ),
             ),
@@ -1334,6 +1232,163 @@ class NoteDisplayPage extends HookConsumerWidget {
         ),
       ),
       selectedDestination: GeneralSettingsDestination.noteDisplay,
+    );
+  }
+}
+
+class _NotePreview extends HookWidget {
+  const _NotePreview();
+
+  @override
+  Widget build(BuildContext context) {
+    final meltingFace = useFuture(
+      useMemoized(
+        () => rootBundle
+            .load(
+              'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🫠')}.svg',
+            )
+            .then(
+              (bytes) => Uri.dataFromBytes(
+                bytes.buffer.asUint8List(),
+                mimeType: 'image/svg+xml',
+              ),
+            ),
+      ),
+    );
+    final flower = useFuture(
+      useMemoized(
+        () => rootBundle
+            .loadString(Assets.flower)
+            .then(
+              (content) =>
+                  Uri.dataFromString(content, mimeType: 'image/svg+xml'),
+            ),
+      ),
+    );
+    final aboutIcon = useFuture(
+      useMemoized(
+        () => rootBundle
+            .load(Assets.misskey.packages.frontend.assets.aboutIcon.path)
+            .then(
+              (bytes) => Uri.dataFromBytes(
+                bytes.buffer.asUint8List(),
+                mimeType: 'image/png',
+              ),
+            ),
+      ),
+    );
+    final bird = useFuture(
+      useMemoized(
+        () => rootBundle
+            .load(Assets.bird.path)
+            .then(
+              (bytes) => Uri.dataFromBytes(
+                bytes.buffer.asUint8List(),
+                mimeType: 'image/webp',
+              ),
+            ),
+      ),
+    );
+    final cat = useFuture(
+      useMemoized(
+        () => rootBundle
+            .load(Assets.cat.path)
+            .then(
+              (bytes) => Uri.dataFromBytes(
+                bytes.buffer.asUint8List(),
+                mimeType: 'image/webp',
+              ),
+            ),
+      ),
+    );
+    final cityscapeAtDusk = useFuture(
+      useMemoized(
+        () => rootBundle
+            .loadString(
+              'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🌆')}.svg',
+            )
+            .then(
+              (content) =>
+                  Uri.dataFromString(content, mimeType: 'image/svg+xml'),
+            ),
+      ),
+    );
+
+    return NoteWidget(
+      account: const Account(host: '', username: ''),
+      noteId: '',
+      note: Note(
+        id: '',
+        createdAt: DateTime.now(),
+        text: r'$[jelly.speed=2s $[x4 🍮]]',
+        user: UserLite(
+          id: '',
+          username: 'user',
+          avatarUrl: meltingFace.data,
+          avatarDecorations: [
+            UserAvatarDecoration(id: '', url: flower.data?.toString() ?? ''),
+          ],
+          instance: UserInstanceInfo(
+            name: 'example.tld',
+            faviconUrl: aboutIcon.data,
+            themeColor: '86b300',
+          ),
+        ),
+        userId: '',
+        visibility: NoteVisibility.public,
+        reactionCount: 55,
+        reactions: defaultPinnedEmojis.asMap().map(
+          (key, value) => MapEntry(value, key + 1),
+        ),
+        fileIds: [],
+        files: [
+          DriveFile(
+            id: '',
+            createdAt: DateTime.now(),
+            name: 'bird.webp',
+            type: 'image/webp',
+            md5: '',
+            size: 0,
+            isSensitive: false,
+            properties: const DriveFileProperties(),
+            thumbnailUrl: bird.data?.toString(),
+            url: bird.data?.toString() ?? '',
+          ),
+          DriveFile(
+            id: '',
+            createdAt: DateTime.now(),
+            name: 'cat.webp',
+            type: 'image/webp',
+            md5: '',
+            size: 0,
+            isSensitive: true,
+            properties: const DriveFileProperties(),
+            thumbnailUrl: cat.data?.toString(),
+            url: cat.data?.toString() ?? '',
+          ),
+        ],
+        renoteId: '',
+        renote: Note(
+          id: '',
+          createdAt: DateTime.now().subtract(const Duration(hours: 1)),
+          text: 'just setting up my msky',
+          user: UserLite(
+            id: '',
+            username: 'admin',
+            avatarUrl: cityscapeAtDusk.data,
+          ),
+          userId: '',
+          visibility: NoteVisibility.public,
+          renoteCount: 1,
+          reactionCount: 55,
+          reactions: defaultPinnedEmojis.asMap().map(
+            (key, value) => MapEntry(value, key + 1),
+          ),
+          fileIds: [],
+          files: [],
+        ),
+      ),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
     );
   }
 }

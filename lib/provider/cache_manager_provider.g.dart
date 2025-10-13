@@ -6,7 +6,7 @@ part of 'cache_manager_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cacheManagerHash() => r'221bc87cca5305060ad2e49b22ea483ce9b9126b';
+String _$cacheManagerHash() => r'a532851d179703511355bf609f0ab32a8d418e85';
 
 /// See also [cacheManager].
 @ProviderFor(cacheManager)
@@ -16,8 +16,8 @@ final cacheManagerProvider = AutoDisposeProvider<ImageCacheManager>.internal(
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$cacheManagerHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
+  dependencies: null,
+  allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
