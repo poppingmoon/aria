@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -59,54 +60,21 @@ class ImageWidget extends ConsumerWidget {
     if (url == null || url.isEmpty) {
       return _buildPlaceholder(context);
     }
-    if (url.startsWith('data')) {
-      final data = UriData.fromString(url);
-      if (data.isMimeType('image/svg+xml')) {
-        return SvgPicture.string(
-          data.contentText,
-          width: width,
-          height: height,
-          fit: fit ?? BoxFit.contain,
-          alignment: alignment,
-          placeholderBuilder: _buildPlaceholder,
-          colorFilter: ColorFilter.mode(
-            Color.fromRGBO(255, 255, 255, opacity),
-            BlendMode.modulate,
-          ),
-          semanticsLabel: semanticLabel,
-        );
-      } else {
-        return Image.memory(
-          data.contentAsBytes(),
-          width: width,
-          height: height,
-          fit: fit,
-          alignment: alignment,
-          opacity: AlwaysStoppedAnimation(opacity),
-          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
-              wasSynchronouslyLoaded || frame != null
-              ? child
-              : _buildPlaceholder(context),
-          errorBuilder:
-              errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
-          semanticLabel: semanticLabel,
-        );
-      }
-    }
 
     final cacheManager = ref.watch(cacheManagerProvider);
     final userAgent = ref.watch(userAgentProvider).valueOrNull;
 
-    if (url.split('?').first.endsWith('.svg')) {
-      return FutureBuilder(
-        future: cacheManager.getSingleFile(
+    if (url.startsWith('data:image/svg+xml') ||
+        url.split('?').first.endsWith('.svg')) {
+      return StreamBuilder(
+        stream: cacheManager.getFileStream(
           url,
           headers: {'User-Agent': ?userAgent},
         ),
         builder: (context, snapshot) {
-          if (snapshot case AsyncSnapshot(:final data?)) {
+          if (snapshot.data case FileInfo(:final file)) {
             return SvgPicture.file(
-              data,
+              file,
               width: width,
               height: height,
               fit: fit ?? BoxFit.contain,

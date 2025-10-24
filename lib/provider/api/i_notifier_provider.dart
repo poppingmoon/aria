@@ -10,9 +10,6 @@ import 'misskey_provider.dart';
 
 part 'i_notifier_provider.g.dart';
 
-// This provider depends on the `cacheManagerProvider`, but whether it is scoped
-// does not matter here.
-// ignore: provider_dependencies
 @riverpod
 class INotifier extends _$INotifier {
   @override

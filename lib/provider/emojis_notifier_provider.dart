@@ -12,9 +12,6 @@ import 'cache_manager_provider.dart';
 
 part 'emojis_notifier_provider.g.dart';
 
-// This provider depends on the `cacheManagerProvider`, but whether it is scoped
-// does not matter here.
-// ignore: provider_dependencies
 @Riverpod(keepAlive: true)
 class EmojisNotifier extends _$EmojisNotifier {
   @override

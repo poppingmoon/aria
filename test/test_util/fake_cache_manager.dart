@@ -4,10 +4,10 @@ import 'package:file/memory.dart';
 import 'package:flutter_cache_manager/file.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-class FakeFileSystem implements FileSystem {
+class _FakeFileSystem implements FileSystem {
   @override
   Future<File> createFile(String name) async {
-    return MemoryFileSystem().file(name);
+    return MemoryFileSystem.test().file(name);
   }
 }
 
@@ -17,7 +17,7 @@ class FakeCacheManager extends CacheManager with ImageCacheManager {
         Config(
           'fakeCacheManager',
           repo: JsonCacheInfoRepository(path: 'fake.json'),
-          fileSystem: FakeFileSystem(),
+          fileSystem: _FakeFileSystem(),
         ),
       );
 
@@ -38,7 +38,7 @@ class FakeCacheManager extends CacheManager with ImageCacheManager {
     Duration maxAge = const Duration(days: 30),
     String fileExtension = 'file',
   }) async {
-    return MemoryFileSystem().file(url);
+    return MemoryFileSystem.test().file(url);
   }
 
   @override
