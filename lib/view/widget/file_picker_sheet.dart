@@ -15,7 +15,6 @@ import '../../model/streaming/main_event.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/file_system_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
@@ -158,25 +157,16 @@ class FilePickerSheet extends ConsumerWidget {
             }
             final marker = const Uuid().v4();
             final completer = Completer<DriveFile>();
-            unawaited(
-              ref.read(mainStreamNotifierProvider(account).notifier).connect(),
-            );
-            final messageSub = ref.listenManual(
-              incomingMessageProvider(account),
-              (_, _) {},
-            );
-            final mainSub = ref.listenManual(
-              mainStreamNotifierProvider(account),
-              (_, next) {
-                if (next case AsyncData(
-                  value: UrlUploadFinished(marker: final m?, :final file),
-                )) {
-                  if (m == marker) {
-                    completer.complete(file);
-                  }
-                }
-              },
-            );
+            final sub = ref.listenManual(mainStreamProvider(account), (
+              _,
+              next,
+            ) {
+              if (next case AsyncData(
+                value: UrlUploadFinished(marker: final m?, :final file),
+              ) when m == marker) {
+                completer.complete(file);
+              }
+            });
             final folderId = ref
                 .read(accountSettingsNotifierProvider(account))
                 .uploadFolder;
@@ -215,8 +205,7 @@ class FilePickerSheet extends ConsumerWidget {
               context,
               completer.future.timeout(const Duration(minutes: 1)),
             );
-            messageSub.close();
-            mainSub.close();
+            sub.close();
             timer.cancel();
             if (!context.mounted) return;
             if (file == null) return;
@@ -224,11 +213,13 @@ class FilePickerSheet extends ConsumerWidget {
               context,
               ref
                   .read(misskeyProvider(account))
-                  .drive
-                  .files
-                  .update(
-                    DriveFilesUpdateRequest(fileId: file.id, comment: ''),
-                  ),
+                  .apiService
+                  .post<Map<String, dynamic>>(
+                    'drive/files/update',
+                    DriveFilesUpdateRequest(fileId: file.id).toJson(),
+                    excludeRemoveNullPredicate: (key, _) => key == 'comment',
+                  )
+                  .then((response) => DriveFile.fromJson(response)),
             );
             if (!context.mounted) return;
             if (updated == null) return;

@@ -21,7 +21,6 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tab_index_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
@@ -111,15 +110,7 @@ class TimelinesPage extends HookConsumerWidget {
                 .read(emojisNotifierProvider(nextAccount.host).notifier)
                 .reloadEmojis();
           }
-          if (!previousAccount.isGuest) {
-            ref
-                .read(mainStreamNotifierProvider(previousAccount).notifier)
-                .disconnect();
-          }
           if (!nextAccount.isGuest) {
-            ref
-                .read(mainStreamNotifierProvider(nextAccount).notifier)
-                .connect();
             ref.invalidate(iNotifierProvider(nextAccount));
           }
         }
@@ -140,7 +131,6 @@ class TimelinesPage extends HookConsumerWidget {
         final account = tabSettings.account;
         ref.read(emojisNotifierProvider(account.host).notifier).reloadEmojis();
         if (!account.isGuest) {
-          ref.read(mainStreamNotifierProvider(account).notifier).connect();
           Future(() {
             if (tabSettings.tabType == TabType.channel) {
               ref

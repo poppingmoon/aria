@@ -14,7 +14,6 @@ import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -33,21 +32,18 @@ class FollowRequestsListView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final requests = ref.watch(followRequestsNotifierProvider(account));
-    final nextRequests = useState(<User>[]);
+    final nextRequests = useState(<UserLite>[]);
     final showPopup = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.showPopupOnNewNote,
       ),
     );
-    final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final controller = useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
-    ref.listen(incomingMessageProvider(account), (_, _) {});
     useEffect(() {
-      notifier.connect();
       controller.addListener(() {
         if (controller.position.userScrollDirection ==
             ScrollDirection.reverse) {
@@ -59,24 +55,36 @@ class FollowRequestsListView extends HookConsumerWidget {
       });
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) {
-      if (next case AsyncData(value: ReceiveFollowRequest(:final user))) {
-        nextRequests.value = [...nextRequests.value, user];
-        if (keepAnimation.value) {
-          if (controller.offset < 400.0) {
-            Future<void>.delayed(const Duration(milliseconds: 100), () async {
-              await controller.scrollToTop();
-              await Future<void>.delayed(
-                const Duration(milliseconds: 100),
-                controller.scrollToTop,
-              );
-            });
+    ref.listen(mainStreamProvider(account), (_, next) {
+      if (next case AsyncData(value: final event)) {
+        if (event
+            case ReceiveFollowRequest(:final user) ||
+                Notification(
+                  notification: INotificationsResponse(
+                    type: NotificationType.receiveFollowRequest,
+                    :final user?,
+                  ),
+                )) {
+          if (nextRequests.value.any((u) => u.id == user.id)) {
+            return;
+          }
+          nextRequests.value = [...nextRequests.value, user];
+          if (keepAnimation.value) {
+            if (controller.offset < 400.0) {
+              Future<void>.delayed(const Duration(milliseconds: 100), () async {
+                await controller.scrollToTop();
+                await Future<void>.delayed(
+                  const Duration(milliseconds: 100),
+                  controller.scrollToTop,
+                );
+              });
+            } else {
+              keepAnimation.value = false;
+              hasUnread.value = true;
+            }
           } else {
-            keepAnimation.value = false;
             hasUnread.value = true;
           }
-        } else {
-          hasUnread.value = true;
         }
       }
     });
@@ -102,10 +110,7 @@ class FollowRequestsListView extends HookConsumerWidget {
       onRefresh: () async {
         ref.invalidate(webSocketChannelProvider(account));
         nextRequests.value = [];
-        await Future.wait([
-          ref.refresh(followRequestsNotifierProvider(account).future),
-          ref.read(mainStreamNotifierProvider(account).notifier).connect(),
-        ]);
+        return ref.refresh(followRequestsNotifierProvider(account).future);
       },
       child: Center(
         child: Stack(

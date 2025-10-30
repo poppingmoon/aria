@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +19,6 @@ import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/broadcast_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
-import '../../provider/streaming/note_subscription_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_at_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
@@ -86,20 +85,20 @@ class TimelineWidget extends HookConsumerWidget {
             )
             .saveFromDate(DateTime.now());
       }
-      if (!tabSettings.disableSubscribing) {
-        final notifier = ref.read(
-          noteSubscriptionNotifierProvider(account).notifier,
-        );
-        return notifier.unsubscribeAll;
-      }
-      return null;
+      return;
     }, []);
     if (!account.isGuest) {
-      ref.listen(
-        mainStreamNotifierProvider(account),
-        (_, next) => next.whenData((event) async {
+      ref.listen(mainStreamProvider(account), (prev, next) async {
+        if (next case AsyncData(value: final event)) {
           switch (event) {
-            case UnreadNotification():
+            case Notification(:final notification) ||
+                UnreadNotification(:final notification):
+              if (prev?.value
+                  case Notification(notification: final prev) ||
+                      UnreadNotification(notification: final prev)
+                  when prev.id == notification.id) {
+                break;
+              }
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadNotification();
@@ -119,12 +118,11 @@ class TimelineWidget extends HookConsumerWidget {
                   .addUnreadAnnouncement(announcement);
             default:
           }
-        }),
-      );
+        }
+      });
     }
-    ref.listen(
-      broadcastProvider(account),
-      (_, next) => next.whenData((event) async {
+    ref.listen(broadcastProvider(account), (_, next) async {
+      if (next case AsyncData(value: final event)) {
         switch (event) {
           case broadcast.EmojiAdded(:final emoji):
             ref.read(emojisNotifierProvider(account.host).notifier).add(emoji);
@@ -143,8 +141,8 @@ class TimelineWidget extends HookConsumerWidget {
                   .addUnreadAnnouncement(announcement);
             }
         }
-      }),
-    );
+      }
+    });
     final dialogAnnouncements = i?.unreadAnnouncements.where(
       (announcement) => announcement.display == AnnouncementDisplayType.dialog,
     );

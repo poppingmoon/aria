@@ -215,7 +215,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     return [];
   }
 
-  Future<void> loadMore({bool skipError = false}) async {
+  Future<void> loadMore({bool skipError = false, String? sinceId}) async {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
@@ -226,14 +226,18 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = tabSettings.keepPosition
-          ? await _fetchNotes(sinceId: value.items.first.id)
-          : await _fetchNotesEagerly(value.items.first.id);
-      shouldLoadMore = response.isNotEmpty && response.length < 5;
-      return PaginationState(
-        items: [...response, ...value.items],
-        isLastLoaded: response.isEmpty,
-      );
+      if (value.items.firstOrNull?.id ?? sinceId case final sinceId?) {
+        final response = tabSettings.keepPosition
+            ? await _fetchNotes(sinceId: sinceId)
+            : await _fetchNotesEagerly(sinceId);
+        shouldLoadMore = response.isNotEmpty && response.length < 5;
+        return PaginationState(
+          items: [...response, ...value.items],
+          isLastLoaded: response.isEmpty,
+        );
+      } else {
+        return value.copyWith(isLastLoaded: true);
+      }
     });
     if (shouldLoadMore) {
       await loadMore();
@@ -246,9 +250,13 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       state = AsyncValue.data(
         PaginationState(
           items: [note, ...?value?.items],
-          isLastLoaded: value?.isLastLoaded ?? false,
+          isLastLoaded: value?.isLastLoaded ?? true,
         ),
       );
     }
+  }
+
+  void pause() {
+    state = state.whenData((value) => value.copyWith(isLastLoaded: false));
   }
 }

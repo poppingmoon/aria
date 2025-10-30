@@ -15,7 +15,6 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import 'haptic_feedback_refresh_indicator.dart';
@@ -44,16 +43,13 @@ class NotificationsListView extends HookConsumerWidget {
         (settings) => settings.showPopupOnNewNote,
       ),
     );
-    final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final i = ref.watch(iNotifierProvider(account)).value;
     final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
-    ref.listen(incomingMessageProvider(account), (_, _) {});
     useEffect(() {
-      notifier.connect();
       ref
           .read(notificationsLastViewedAtNotifierProvider(account).notifier)
           .save(DateTime.now());
@@ -86,7 +82,7 @@ class NotificationsListView extends HookConsumerWidget {
       }
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) {
+    ref.listen(mainStreamProvider(account), (_, next) {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
         if (keepAnimation.value) {
@@ -115,7 +111,6 @@ class NotificationsListView extends HookConsumerWidget {
         await Future.wait([
           ref.refresh(iNotifierProvider(account).future),
           ref.refresh(notificationsNotifierProvider(account).future),
-          ref.read(mainStreamNotifierProvider(account).notifier).connect(),
         ]);
       },
       child: Center(
