@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:hooks_riverpod/misc.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
@@ -12,61 +10,26 @@ import 'web_socket_channel_provider.dart';
 
 part 'incoming_message_provider.g.dart';
 
-@Riverpod(keepAlive: true)
-class _ErrorCountNotifier extends _$ErrorCountNotifier {
-  @override
-  int build(Account account) {
-    return 0;
-  }
-
-  void increment() {
-    state += 1;
-  }
-
-  void reset() {
-    state = 0;
-  }
-}
-
 @riverpod
 Stream<IncomingMessage> incomingMessage(Ref ref, Account account) async* {
-  KeepAliveLink? link;
-  Timer? timer;
-  ref.onCancel(() {
-    if (!(timer?.isActive ?? false)) {
-      link?.close();
-    }
-  });
-  ref.onDispose(() => timer?.cancel());
-
-  final webSocketChannel = ref.watch(webSocketChannelProvider(account)).$1;
+  final webSocketChannel = (await ref.watch(
+    webSocketChannelProvider(account).future,
+  )).$1;
 
   yield const IncomingMessage();
-  try {
-    await for (final msg in webSocketChannel.stream) {
-      if (kDebugMode) {
-        debugPrint('webSocketChannel($account): $msg');
-      }
-      final message = jsonDecode(msg as String);
-      yield IncomingMessage.fromJson(message as Map<String, dynamic>);
-    }
-  } catch (e, st) {
-    link = ref.keepAlive();
-    final errorCount = ref.read(_errorCountNotifierProvider(account));
+  await for (final msg in webSocketChannel.stream) {
     if (kDebugMode) {
-      debugPrint('webSocketChannel($account): error $errorCount $e $st');
+      debugPrint('webSocketChannel($account): $msg');
     }
-    timer = Timer(
-      Duration(seconds: pow(2, errorCount).toInt()),
-      () => ref.invalidate(webSocketChannelProvider(account)),
-    );
-    ref.read(_errorCountNotifierProvider(account).notifier).increment();
-    rethrow;
+    if (msg is String) {
+      if (jsonDecode(msg) case final Map<String, dynamic> message) {
+        yield IncomingMessage.fromJson(message);
+      }
+    }
   }
 
   if (kDebugMode) {
     debugPrint('webSocketChannel($account): done');
   }
-  ref.read(_errorCountNotifierProvider(account).notifier).reset();
   ref.invalidate(webSocketChannelProvider(account));
 }

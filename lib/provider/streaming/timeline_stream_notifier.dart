@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../model/streaming/incoming_message.dart';
 import '../../model/streaming/main_event.dart';
@@ -16,132 +16,144 @@ import 'web_socket_channel_provider.dart';
 part 'timeline_stream_notifier.g.dart';
 
 @riverpod
-class TimelineStreamNotifier extends _$TimelineStreamNotifier {
-  @override
-  Stream<Note> build(TabSettings tabSettings) async* {
-    switch (tabSettings.tabType) {
-      case TabType.homeTimeline ||
-          TabType.localTimeline ||
-          TabType.hybridTimeline ||
-          TabType.globalTimeline ||
-          TabType.roleTimeline ||
-          TabType.userList ||
-          TabType.antenna ||
-          TabType.channel ||
-          TabType.hashtag ||
-          TabType.custom:
-        ref.listen(
-          webSocketChannelProvider(tabSettings.account),
-          (_, _) => connect(),
-        );
-        final message = await ref.watch(
-          incomingMessageProvider(tabSettings.account).future,
-        );
-        if (message.type == IncomingMessageType.channel &&
-            message.body['id'] == _id) {
-          final event = message.body;
-          if (event['type'] == 'note') {
-            final note = Note.fromJson(event['body'] as Map<String, dynamic>);
-            ref
-                .read(notesNotifierProvider(tabSettings.account).notifier)
-                .add(note);
-            yield note;
-          }
+FutureOr<String> _timelineStreamConnection(
+  Ref ref,
+  TabSettings tabSettings,
+) async {
+  final id = tabSettings.id ?? tabSettings.tabType.toString();
+  switch (tabSettings.tabType) {
+    case TabType.homeTimeline ||
+        TabType.localTimeline ||
+        TabType.hybridTimeline ||
+        TabType.globalTimeline ||
+        TabType.roleTimeline ||
+        TabType.userList ||
+        TabType.antenna ||
+        TabType.channel ||
+        TabType.hashtag:
+      final webSocketChannel = (await ref.watch(
+        webSocketChannelProvider(tabSettings.account).future,
+      )).$1;
+      webSocketChannel.sink.add(
+        jsonEncode({
+          'type': 'connect',
+          'body': {
+            'channel': tabSettings.tabType.name,
+            'id': id,
+            'params': {
+              if (!tabSettings.withRenotes) 'withRenotes': false,
+              if (tabSettings.withReplies) 'withRenotes': true,
+              if (tabSettings.withFiles) 'withFiles': true,
+              'roleId': ?tabSettings.roleId,
+              'channelId': ?tabSettings.channelId,
+              'listId': ?tabSettings.listId,
+              'antennaId': ?tabSettings.antennaId,
+              if (tabSettings.hashtag case final hashtag?)
+                'q': [
+                  [hashtag],
+                ],
+            },
+          },
+        }),
+      );
+      ref.onDispose(() {
+        if (webSocketChannel.closeCode == null) {
+          webSocketChannel.sink.add(
+            jsonEncode({
+              'type': 'disconnect',
+              'body': {'id': id},
+            }),
+          );
         }
-      case TabType.mention || TabType.direct:
-        final event = await ref.watch(
-          mainStreamNotifierProvider(tabSettings.account).future,
-        );
-        if (event case Mention(:final note)) {
-          if (tabSettings.tabType == TabType.mention ||
-              note.visibility == NoteVisibility.specified) {
-            yield note;
-          }
-        }
-      case TabType.user || TabType.notifications:
-        return;
-    }
-  }
-
-  String get _id => tabSettings.id ?? tabSettings.tabType.toString();
-
-  WebSocketChannel get _webSocketChannel =>
-      ref.read(webSocketChannelProvider(tabSettings.account)).$1;
-
-  Future<void> connect() async {
-    switch (tabSettings.tabType) {
-      case TabType.homeTimeline ||
-          TabType.localTimeline ||
-          TabType.hybridTimeline ||
-          TabType.globalTimeline ||
-          TabType.roleTimeline ||
-          TabType.userList ||
-          TabType.antenna ||
-          TabType.hashtag ||
-          TabType.channel:
-        await _webSocketChannel.ready;
-        _webSocketChannel.sink.add(
+      });
+    case TabType.mention ||
+        TabType.direct ||
+        TabType.user ||
+        TabType.notifications:
+      break;
+    case TabType.custom:
+      if (tabSettings case TabSettings(:final streamingChannel?)) {
+        final webSocketChannel = (await ref.watch(
+          webSocketChannelProvider(tabSettings.account).future,
+        )).$1;
+        webSocketChannel.sink.add(
           jsonEncode({
             'type': 'connect',
             'body': {
-              'channel': tabSettings.tabType.name,
-              'id': _id,
+              'channel': streamingChannel,
+              'id': id,
               'params': {
                 if (!tabSettings.withRenotes) 'withRenotes': false,
                 if (tabSettings.withReplies) 'withRenotes': true,
                 if (tabSettings.withFiles) 'withFiles': true,
-                'roleId': ?tabSettings.roleId,
-                'channelId': ?tabSettings.channelId,
-                'listId': ?tabSettings.listId,
-                'antennaId': ?tabSettings.antennaId,
-                if (tabSettings.hashtag case final hashtag?)
-                  'q': [
-                    [hashtag],
-                  ],
+                ...?tabSettings.parameters,
               },
             },
           }),
         );
-      case TabType.mention || TabType.direct:
-        return ref
-            .read(mainStreamNotifierProvider(tabSettings.account).notifier)
-            .connect();
-      case TabType.user || TabType.notifications:
-        return;
-      case TabType.custom:
-        if (tabSettings case TabSettings(:final streamingChannel?)) {
-          await _webSocketChannel.ready;
-          _webSocketChannel.sink.add(
-            jsonEncode({
-              'type': 'connect',
-              'body': {
-                'channel': streamingChannel,
-                'id': _id,
-                'params': {
-                  if (!tabSettings.withRenotes) 'withRenotes': false,
-                  if (tabSettings.withReplies) 'withRenotes': true,
-                  if (tabSettings.withFiles) 'withFiles': true,
-                  ...?tabSettings.parameters,
-                },
-              },
-            }),
-          );
-        }
-        return;
-    }
+        ref.onDispose(() {
+          if (webSocketChannel.closeCode == null) {
+            webSocketChannel.sink.add(
+              jsonEncode({
+                'type': 'disconnect',
+                'body': {'id': id},
+              }),
+            );
+          }
+        });
+      }
   }
+  return id;
+}
 
-  Future<void> disconnect() async {
-    if (tabSettings.tabType
-        case TabType.mention || TabType.direct || TabType.user) {
-      return;
-    }
-    await _webSocketChannel.ready;
-    _webSocketChannel.sink.add(
-      jsonEncode({
-        'type': 'disconnect',
-        'body': {'id': _id},
-      }),
-    );
+@riverpod
+Stream<Note> timelineStream(Ref ref, TabSettings tabSettings) async* {
+  final controller = StreamController<Note>();
+  switch (tabSettings.tabType) {
+    case TabType.homeTimeline ||
+        TabType.localTimeline ||
+        TabType.hybridTimeline ||
+        TabType.globalTimeline ||
+        TabType.roleTimeline ||
+        TabType.userList ||
+        TabType.antenna ||
+        TabType.hashtag ||
+        TabType.channel ||
+        TabType.custom:
+      final id = await ref.watch(
+        _timelineStreamConnectionProvider(tabSettings).future,
+      );
+      ref.listen(incomingMessageProvider(tabSettings.account), (prev, next) {
+        if (next case AsyncData(value: final message)) {
+          if (prev?.value != message) {
+            if (message.type == IncomingMessageType.channel &&
+                message.body['id'] == id) {
+              if (message.body case {
+                'type': 'note',
+                'body': final Map<String, dynamic> body,
+              }) {
+                final note = Note.fromJson(body);
+                ref
+                    .read(notesNotifierProvider(tabSettings.account).notifier)
+                    .add(note);
+                controller.sink.add(note);
+              }
+            }
+          }
+        }
+      });
+    case TabType.mention || TabType.direct:
+      ref.listen(mainStreamProvider(tabSettings.account), (prev, next) {
+        if (next case AsyncData(value: final event)) {
+          if (event case Mention(:final note) when prev?.value != event) {
+            if (tabSettings.tabType == TabType.mention ||
+                note.visibility == NoteVisibility.specified) {
+              controller.sink.add(note);
+            }
+          }
+        }
+      });
+    case TabType.user || TabType.notifications:
   }
+  yield* controller.stream;
 }

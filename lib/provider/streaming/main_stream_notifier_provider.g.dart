@@ -9,39 +9,47 @@ part of 'main_stream_notifier_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(MainStreamNotifier)
-const mainStreamNotifierProvider = MainStreamNotifierFamily._();
+@ProviderFor(_mainStreamConnection)
+const _mainStreamConnectionProvider = _MainStreamConnectionFamily._();
 
-final class MainStreamNotifierProvider
-    extends $StreamNotifierProvider<MainStreamNotifier, MainEvent> {
-  const MainStreamNotifierProvider._({
-    required MainStreamNotifierFamily super.from,
+final class _MainStreamConnectionProvider
+    extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
+    with $FutureModifier<String>, $FutureProvider<String> {
+  const _MainStreamConnectionProvider._({
+    required _MainStreamConnectionFamily super.from,
     required Account super.argument,
   }) : super(
          retry: null,
-         name: r'mainStreamNotifierProvider',
+         name: r'_mainStreamConnectionProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$mainStreamNotifierHash();
+  String debugGetCreateSourceHash() => _$_mainStreamConnectionHash();
 
   @override
   String toString() {
-    return r'mainStreamNotifierProvider'
+    return r'_mainStreamConnectionProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  MainStreamNotifier create() => MainStreamNotifier();
+  $FutureProviderElement<String> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<String> create(Ref ref) {
+    final argument = this.argument as Account;
+    return _mainStreamConnection(ref, argument);
+  }
 
   @override
   bool operator ==(Object other) {
-    return other is MainStreamNotifierProvider && other.argument == argument;
+    return other is _MainStreamConnectionProvider && other.argument == argument;
   }
 
   @override
@@ -50,52 +58,93 @@ final class MainStreamNotifierProvider
   }
 }
 
-String _$mainStreamNotifierHash() =>
-    r'5b5525a09956d5299036162fcd3ec219a1b6a047';
+String _$_mainStreamConnectionHash() =>
+    r'67f8057e22d997ea947cb62fed483e874b3268ef';
 
-final class MainStreamNotifierFamily extends $Family
-    with
-        $ClassFamilyOverride<
-          MainStreamNotifier,
-          AsyncValue<MainEvent>,
-          MainEvent,
-          Stream<MainEvent>,
-          Account
-        > {
-  const MainStreamNotifierFamily._()
+final class _MainStreamConnectionFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<String>, Account> {
+  const _MainStreamConnectionFamily._()
     : super(
         retry: null,
-        name: r'mainStreamNotifierProvider',
+        name: r'_mainStreamConnectionProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  MainStreamNotifierProvider call(Account account) =>
-      MainStreamNotifierProvider._(argument: account, from: this);
+  _MainStreamConnectionProvider call(Account account) =>
+      _MainStreamConnectionProvider._(argument: account, from: this);
 
   @override
-  String toString() => r'mainStreamNotifierProvider';
+  String toString() => r'_mainStreamConnectionProvider';
 }
 
-abstract class _$MainStreamNotifier extends $StreamNotifier<MainEvent> {
-  late final _$args = ref.$arg as Account;
-  Account get account => _$args;
+@ProviderFor(mainStream)
+const mainStreamProvider = MainStreamFamily._();
 
-  Stream<MainEvent> build(Account account);
-  @$mustCallSuper
+final class MainStreamProvider
+    extends
+        $FunctionalProvider<AsyncValue<MainEvent>, MainEvent, Stream<MainEvent>>
+    with $FutureModifier<MainEvent>, $StreamProvider<MainEvent> {
+  const MainStreamProvider._({
+    required MainStreamFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'mainStreamProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
   @override
-  void runBuild() {
-    final created = build(_$args);
-    final ref = this.ref as $Ref<AsyncValue<MainEvent>, MainEvent>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<MainEvent>, MainEvent>,
-              AsyncValue<MainEvent>,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
+  String debugGetCreateSourceHash() => _$mainStreamHash();
+
+  @override
+  String toString() {
+    return r'mainStreamProvider'
+        ''
+        '($argument)';
   }
+
+  @$internal
+  @override
+  $StreamProviderElement<MainEvent> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<MainEvent> create(Ref ref) {
+    final argument = this.argument as Account;
+    return mainStream(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is MainStreamProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$mainStreamHash() => r'64516a65202e98291f9cbb189cb6e444cee56b51';
+
+final class MainStreamFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<MainEvent>, Account> {
+  const MainStreamFamily._()
+    : super(
+        retry: null,
+        name: r'mainStreamProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  MainStreamProvider call(Account account) =>
+      MainStreamProvider._(argument: account, from: this);
+
+  @override
+  String toString() => r'mainStreamProvider';
 }

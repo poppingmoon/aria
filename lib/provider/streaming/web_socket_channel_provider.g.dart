@@ -15,16 +15,18 @@ const webSocketChannelProvider = WebSocketChannelFamily._();
 final class WebSocketChannelProvider
     extends
         $FunctionalProvider<
-          (WebSocketChannel, DateTime),
-          (WebSocketChannel, DateTime),
-          (WebSocketChannel, DateTime)
+          AsyncValue<(IOWebSocketChannel, DateTime)>,
+          (IOWebSocketChannel, DateTime),
+          FutureOr<(IOWebSocketChannel, DateTime)>
         >
-    with $Provider<(WebSocketChannel, DateTime)> {
+    with
+        $FutureModifier<(IOWebSocketChannel, DateTime)>,
+        $FutureProvider<(IOWebSocketChannel, DateTime)> {
   const WebSocketChannelProvider._({
     required WebSocketChannelFamily super.from,
     required Account super.argument,
   }) : super(
-         retry: null,
+         retry: _retry,
          name: r'webSocketChannelProvider',
          isAutoDispose: true,
          dependencies: null,
@@ -43,22 +45,14 @@ final class WebSocketChannelProvider
 
   @$internal
   @override
-  $ProviderElement<(WebSocketChannel, DateTime)> $createElement(
+  $FutureProviderElement<(IOWebSocketChannel, DateTime)> $createElement(
     $ProviderPointer pointer,
-  ) => $ProviderElement(pointer);
+  ) => $FutureProviderElement(pointer);
 
   @override
-  (WebSocketChannel, DateTime) create(Ref ref) {
+  FutureOr<(IOWebSocketChannel, DateTime)> create(Ref ref) {
     final argument = this.argument as Account;
     return webSocketChannel(ref, argument);
-  }
-
-  /// {@macro riverpod.override_with_value}
-  Override overrideWithValue((WebSocketChannel, DateTime) value) {
-    return $ProviderOverride(
-      origin: this,
-      providerOverride: $SyncValueProvider<(WebSocketChannel, DateTime)>(value),
-    );
   }
 
   @override
@@ -72,13 +66,17 @@ final class WebSocketChannelProvider
   }
 }
 
-String _$webSocketChannelHash() => r'e30b2364f99bb94031a62ae01df616e5e260b12a';
+String _$webSocketChannelHash() => r'532c2d2579309be5ce586606110e0efc57bd60f3';
 
 final class WebSocketChannelFamily extends $Family
-    with $FunctionalFamilyOverride<(WebSocketChannel, DateTime), Account> {
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<(IOWebSocketChannel, DateTime)>,
+          Account
+        > {
   const WebSocketChannelFamily._()
     : super(
-        retry: null,
+        retry: _retry,
         name: r'webSocketChannelProvider',
         dependencies: null,
         $allTransitiveDependencies: null,

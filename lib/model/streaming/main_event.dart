@@ -66,7 +66,7 @@ class ReceiveFollowRequest with _$ReceiveFollowRequest implements MainEvent {
   const ReceiveFollowRequest(this.user);
 
   @override
-  final UserDetailed user;
+  final UserLite user;
 }
 
 @freezed

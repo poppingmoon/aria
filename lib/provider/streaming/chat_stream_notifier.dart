@@ -1,8 +1,8 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 import '../../model/account.dart';
 import '../../model/streaming/chat_event.dart';
@@ -13,6 +13,40 @@ import 'web_socket_channel_provider.dart';
 part 'chat_stream_notifier.g.dart';
 
 @riverpod
+FutureOr<String> _chatStreamConnection(
+  Ref ref,
+  Account account, {
+  String? userId,
+  String? roomId,
+}) async {
+  final webSocketChannel = (await ref.watch(
+    webSocketChannelProvider(account).future,
+  )).$1;
+  final id = 'chat/${userId ?? roomId}';
+  webSocketChannel.sink.add(
+    jsonEncode({
+      'type': 'connect',
+      'body': {
+        'channel': userId != null ? 'chatUser' : 'chatRoom',
+        'id': id,
+        'params': {'otherId': ?userId, 'roomId': ?roomId},
+      },
+    }),
+  );
+  ref.onDispose(() {
+    if (webSocketChannel.closeCode == null) {
+      webSocketChannel.sink.add(
+        jsonEncode({
+          'type': 'disconnect',
+          'body': {'id': id},
+        }),
+      );
+    }
+  });
+  return id;
+}
+
+@riverpod
 class ChatStreamNotifier extends _$ChatStreamNotifier {
   @override
   Stream<ChatEvent> build(
@@ -20,68 +54,41 @@ class ChatStreamNotifier extends _$ChatStreamNotifier {
     String? userId,
     String? roomId,
   }) async* {
-    ref.listen(webSocketChannelProvider(account), (_, _) => connect());
-    final message = await ref.watch(incomingMessageProvider(account).future);
-    if (message.type == IncomingMessageType.channel &&
-        message.body['id'] == _id) {
-      final event = message.body;
-      switch (event['type']) {
-        case 'message':
-          if (event['body'] case final Map<String, dynamic> body) {
-            final message = ChatMessage.fromJson(body);
-            yield Message(message);
+    _id = await ref.watch(
+      _chatStreamConnectionProvider(
+        account,
+        userId: userId,
+        roomId: roomId,
+      ).future,
+    );
+    final controller = StreamController<ChatEvent>();
+    ref.listen(incomingMessageProvider(account), (prev, next) {
+      if (next case AsyncData(value: final message)) {
+        if (prev?.value != message) {
+          if (message.type == IncomingMessageType.channel &&
+              message.body['id'] == _id) {
+            switch (message.body) {
+              case {'type': 'message', 'body': final Map<String, dynamic> body}:
+                final message = ChatMessage.fromJson(body);
+                controller.sink.add(Message(message));
+              case {'type': 'deleted', 'body': final String messageId}:
+                controller.sink.add(Deleted(messageId));
+              case {'type': 'react', 'body': final Map<String, dynamic> body}:
+                controller.sink.add(React.fromJson(body));
+              case {'type': 'unreact', 'body': final Map<String, dynamic> body}:
+                controller.sink.add(Unreact.fromJson(body));
+            }
           }
-        case 'deleted':
-          if (event['body'] case final String messageId) {
-            yield Deleted(messageId);
-          }
-        case 'react':
-          if (event['body'] case final Map<String, dynamic> body) {
-            yield React.fromJson(body);
-          }
-        case 'unreact':
-          if (event['body'] case final Map<String, dynamic> body) {
-            yield Unreact.fromJson(body);
-          }
+        }
       }
-    }
+    });
+    yield* controller.stream;
   }
 
-  WebSocketChannel get _webSocketChannel =>
-      ref.read(webSocketChannelProvider(account)).$1;
-
-  String get _id => 'chat/${userId ?? roomId}';
-
-  Future<void> connect() async {
-    await _webSocketChannel.ready;
-    _webSocketChannel.sink.add(
-      jsonEncode({
-        'type': 'connect',
-        'body': {
-          'channel': userId != null ? 'chatUser' : 'chatRoom',
-          'id': _id,
-          'params': {
-            if (userId != null) 'otherId': userId,
-            if (roomId != null) 'roomId': roomId,
-          },
-        },
-      }),
-    );
-  }
-
-  Future<void> disconnect() async {
-    await _webSocketChannel.ready;
-    _webSocketChannel.sink.add(
-      jsonEncode({
-        'type': 'disconnect',
-        'body': {'id': _id},
-      }),
-    );
-  }
+  String? _id;
 
   Future<void> read() async {
-    await _webSocketChannel.ready;
-    _webSocketChannel.sink.add(
+    (await ref.read(webSocketChannelProvider(account).future)).$1.sink.add(
       jsonEncode({
         'type': 'ch',
         'body': {'id': _id, 'type': 'read', 'body': null},

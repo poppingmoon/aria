@@ -9,39 +9,47 @@ part of 'timeline_stream_notifier.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(TimelineStreamNotifier)
-const timelineStreamNotifierProvider = TimelineStreamNotifierFamily._();
+@ProviderFor(_timelineStreamConnection)
+const _timelineStreamConnectionProvider = _TimelineStreamConnectionFamily._();
 
-final class TimelineStreamNotifierProvider
-    extends $StreamNotifierProvider<TimelineStreamNotifier, Note> {
-  const TimelineStreamNotifierProvider._({
-    required TimelineStreamNotifierFamily super.from,
+final class _TimelineStreamConnectionProvider
+    extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
+    with $FutureModifier<String>, $FutureProvider<String> {
+  const _TimelineStreamConnectionProvider._({
+    required _TimelineStreamConnectionFamily super.from,
     required TabSettings super.argument,
   }) : super(
          retry: null,
-         name: r'timelineStreamNotifierProvider',
+         name: r'_timelineStreamConnectionProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$timelineStreamNotifierHash();
+  String debugGetCreateSourceHash() => _$_timelineStreamConnectionHash();
 
   @override
   String toString() {
-    return r'timelineStreamNotifierProvider'
+    return r'_timelineStreamConnectionProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  TimelineStreamNotifier create() => TimelineStreamNotifier();
+  $FutureProviderElement<String> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<String> create(Ref ref) {
+    final argument = this.argument as TabSettings;
+    return _timelineStreamConnection(ref, argument);
+  }
 
   @override
   bool operator ==(Object other) {
-    return other is TimelineStreamNotifierProvider &&
+    return other is _TimelineStreamConnectionProvider &&
         other.argument == argument;
   }
 
@@ -51,52 +59,92 @@ final class TimelineStreamNotifierProvider
   }
 }
 
-String _$timelineStreamNotifierHash() =>
-    r'e9ec2db45571953895bdeab66cb099a932e0833e';
+String _$_timelineStreamConnectionHash() =>
+    r'383fff4ff91992527feb664ad94b98c29d77a298';
 
-final class TimelineStreamNotifierFamily extends $Family
-    with
-        $ClassFamilyOverride<
-          TimelineStreamNotifier,
-          AsyncValue<Note>,
-          Note,
-          Stream<Note>,
-          TabSettings
-        > {
-  const TimelineStreamNotifierFamily._()
+final class _TimelineStreamConnectionFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<String>, TabSettings> {
+  const _TimelineStreamConnectionFamily._()
     : super(
         retry: null,
-        name: r'timelineStreamNotifierProvider',
+        name: r'_timelineStreamConnectionProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  TimelineStreamNotifierProvider call(TabSettings tabSettings) =>
-      TimelineStreamNotifierProvider._(argument: tabSettings, from: this);
+  _TimelineStreamConnectionProvider call(TabSettings tabSettings) =>
+      _TimelineStreamConnectionProvider._(argument: tabSettings, from: this);
 
   @override
-  String toString() => r'timelineStreamNotifierProvider';
+  String toString() => r'_timelineStreamConnectionProvider';
 }
 
-abstract class _$TimelineStreamNotifier extends $StreamNotifier<Note> {
-  late final _$args = ref.$arg as TabSettings;
-  TabSettings get tabSettings => _$args;
+@ProviderFor(timelineStream)
+const timelineStreamProvider = TimelineStreamFamily._();
 
-  Stream<Note> build(TabSettings tabSettings);
-  @$mustCallSuper
+final class TimelineStreamProvider
+    extends $FunctionalProvider<AsyncValue<Note>, Note, Stream<Note>>
+    with $FutureModifier<Note>, $StreamProvider<Note> {
+  const TimelineStreamProvider._({
+    required TimelineStreamFamily super.from,
+    required TabSettings super.argument,
+  }) : super(
+         retry: null,
+         name: r'timelineStreamProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
   @override
-  void runBuild() {
-    final created = build(_$args);
-    final ref = this.ref as $Ref<AsyncValue<Note>, Note>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<Note>, Note>,
-              AsyncValue<Note>,
-              Object?,
-              Object?
-            >;
-    element.handleValue(ref, created);
+  String debugGetCreateSourceHash() => _$timelineStreamHash();
+
+  @override
+  String toString() {
+    return r'timelineStreamProvider'
+        ''
+        '($argument)';
   }
+
+  @$internal
+  @override
+  $StreamProviderElement<Note> $createElement($ProviderPointer pointer) =>
+      $StreamProviderElement(pointer);
+
+  @override
+  Stream<Note> create(Ref ref) {
+    final argument = this.argument as TabSettings;
+    return timelineStream(ref, argument);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is TimelineStreamProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$timelineStreamHash() => r'8b3f89aec58a9ff14db5cedf4de8bfe604678d3f';
+
+final class TimelineStreamFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<Note>, TabSettings> {
+  const TimelineStreamFamily._()
+    : super(
+        retry: null,
+        name: r'timelineStreamProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  TimelineStreamProvider call(TabSettings tabSettings) =>
+      TimelineStreamProvider._(argument: tabSettings, from: this);
+
+  @override
+  String toString() => r'timelineStreamProvider';
 }

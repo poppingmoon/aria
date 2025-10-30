@@ -15,8 +15,8 @@ import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
+import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
@@ -165,13 +165,7 @@ class TimelineListView extends HookConsumerWidget {
       return;
     }, [tabSettings, nextNotes.value?.items, previousNotes.value?.items]);
     final keepAnimation = useState(true);
-    final isAtTop = useState(false);
-    final isAtBottom = useState(false);
     if (!tabSettings.disableStreaming) {
-      ref.listen(incomingMessageProvider(tabSettings.account), (_, _) {});
-      final notifier = ref.watch(
-        timelineStreamNotifierProvider(tabSettings).notifier,
-      );
       useEffect(() {
         void callback() {
           if (controller.position.userScrollDirection ==
@@ -183,18 +177,14 @@ class TimelineListView extends HookConsumerWidget {
           }
         }
 
-        if (centerId == null || isLatestLoaded) {
-          notifier.connect();
+        if (isLatestLoaded) {
           controller.addListener(callback);
         }
-        return () {
-          notifier.disconnect();
-          controller.removeListener(callback);
-        };
-      }, [tabSettings, centerId, isLatestLoaded]);
-      ref.listen(timelineStreamNotifierProvider(tabSettings), (_, next) {
-        next.whenData((note) {
-          if (centerId == null || isLatestLoaded) {
+        return () => controller.removeListener(callback);
+      }, [tabSettings, isLatestLoaded]);
+      if (isLatestLoaded) {
+        ref.listen(timelineStreamProvider(tabSettings), (_, next) {
+          if (next case AsyncData(value: final note)) {
             ref
                 .read(
                   timelineNotesAfterNoteNotifierProvider(
@@ -234,14 +224,36 @@ class TimelineListView extends HookConsumerWidget {
             }
           }
         });
-      });
+        ref.listen(
+          webSocketChannelProvider(
+            tabSettings.account,
+          ).select((value) => value.error),
+          (_, next) {
+            if (next != null) {
+              if (WidgetsBinding.instance.lifecycleState !=
+                  AppLifecycleState.resumed) {
+                ref
+                    .read(
+                      timelineNotesAfterNoteNotifierProvider(
+                        tabSettings,
+                        sinceId: centerId,
+                      ).notifier,
+                    )
+                    .pause();
+              }
+            }
+          },
+        );
+      }
     }
     useEffect(() {
       void callback() {
-        if (centerId != null) {
+        bool isAtTop = false;
+        bool isAtBottom = false;
+        if (!isLatestLoaded) {
           if (controller.position.extentBefore <
               infiniteScrollExtentThreshold) {
-            if (!isAtTop.value) {
+            if (!isAtTop) {
               ref
                   .read(
                     timelineNotesAfterNoteNotifierProvider(
@@ -249,15 +261,19 @@ class TimelineListView extends HookConsumerWidget {
                       sinceId: centerId,
                     ).notifier,
                   )
-                  .loadMore();
-              isAtTop.value = true;
+                  .loadMore(
+                    sinceId:
+                        nextNotes.value?.items.firstOrNull?.id ??
+                        previousNotes.value?.items.firstOrNull?.id,
+                  );
+              isAtTop = true;
             }
           } else {
-            isAtTop.value = false;
+            isAtTop = false;
           }
         }
         if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-          if (!isAtBottom.value) {
+          if (!isAtBottom) {
             ref
                 .read(
                   timelineNotesNotifierProvider(
@@ -266,10 +282,10 @@ class TimelineListView extends HookConsumerWidget {
                   ).notifier,
                 )
                 .loadMore();
-            isAtBottom.value = true;
+            isAtBottom = true;
           }
         } else {
-          isAtBottom.value = false;
+          isAtBottom = false;
         }
       }
 
@@ -277,7 +293,7 @@ class TimelineListView extends HookConsumerWidget {
         controller.addListener(callback);
       }
       return () => controller.removeListener(callback);
-    }, [tabSettings, centerId]);
+    }, [tabSettings, centerId, isLatestLoaded]);
     useEffect(() {
       void callback() {
         if (controller.position.extentBefore < infiniteScrollExtentThreshold) {
@@ -313,7 +329,7 @@ class TimelineListView extends HookConsumerWidget {
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => reloadTimeline(ref, tabSettings),
-      notificationPredicate: (_) => nextNotes.value?.isLastLoaded ?? false,
+      notificationPredicate: (_) => isLatestLoaded,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -335,7 +351,12 @@ class TimelineListView extends HookConsumerWidget {
                               sinceId: centerId,
                             ).notifier,
                           )
-                          .loadMore(skipError: true),
+                          .loadMore(
+                            skipError: true,
+                            sinceId:
+                                nextNotes.value?.items.firstOrNull?.id ??
+                                previousNotes.value?.items.firstOrNull?.id,
+                          ),
                       reversed: true,
                     ),
                   ),

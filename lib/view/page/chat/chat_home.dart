@@ -10,7 +10,6 @@ import '../../../model/account.dart';
 import '../../../model/streaming/main_event.dart';
 import '../../../provider/api/chat_history_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
-import '../../../provider/streaming/incoming_message_provider.dart';
 import '../../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
@@ -28,28 +27,23 @@ class ChatHome extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final history = ref.watch(chatHistoryNotifierProvider(account));
-    ref.listen(incomingMessageProvider(account), (_, _) {});
-    ref.listen(
-      mainStreamNotifierProvider(account),
-      (_, next) => next.whenData((event) {
-        if (event case NewChatMessage(:final message)) {
-          ref
-              .read(chatHistoryNotifierProvider(account).notifier)
-              .updateHistory(message);
-        }
-      }),
-    );
+    ref.listen(mainStreamProvider(account), (_, next) {
+      if (next case AsyncData(value: NewChatMessage(:final message))) {
+        ref
+            .read(chatHistoryNotifierProvider(account).notifier)
+            .updateHistory(message);
+      }
+    });
     useEffect(() {
-      ref.read(mainStreamNotifierProvider(account).notifier).connect();
       ref.read(iNotifierProvider(account).notifier).readChatMessages();
       return;
     }, []);
 
     return HapticFeedbackRefreshIndicator(
-      onRefresh: () => Future.wait([
-        ref.read(mainStreamNotifierProvider(account).notifier).connect(),
-        ref.refresh(chatHistoryNotifierProvider(account).future),
-      ]),
+      onRefresh: () {
+        ref.invalidate(mainStreamProvider(account));
+        return ref.refresh(chatHistoryNotifierProvider(account).future);
+      },
       child: switch (history) {
         AsyncValue(value: final history?) =>
           history.isEmpty

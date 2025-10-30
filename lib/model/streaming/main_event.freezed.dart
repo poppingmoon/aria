@@ -1126,7 +1126,7 @@ case _:
 /// @nodoc
 mixin _$ReceiveFollowRequest {
 
- UserDetailed get user;
+ UserLite get user;
 /// Create a copy of ReceiveFollowRequest
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1157,7 +1157,7 @@ abstract mixin class $ReceiveFollowRequestCopyWith<$Res>  {
   factory $ReceiveFollowRequestCopyWith(ReceiveFollowRequest value, $Res Function(ReceiveFollowRequest) _then) = _$ReceiveFollowRequestCopyWithImpl;
 @useResult
 $Res call({
- UserDetailed user
+ UserLite user
 });
 
 
@@ -1177,7 +1177,7 @@ class _$ReceiveFollowRequestCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? user = null,}) {
   return _then(ReceiveFollowRequest(
 null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as UserDetailed,
+as UserLite,
   ));
 }
 
