@@ -131,7 +131,9 @@ const categorizedUnicodeEmojis = {
     "😽",
     "🙀",
     "😿",
-    "😾"
+    "😾",
+    "🫪",
+    "🫯"
   ],
   "people": [
     "🤲",
@@ -512,7 +514,9 @@ const categorizedUnicodeEmojis = {
     "🕶",
     "🥽",
     "💍",
-    "🌂"
+    "🌂",
+    "🫈",
+    "🧑‍🩰"
   ],
   "animals_and_nature": [
     "🐶",
@@ -726,7 +730,8 @@ const categorizedUnicodeEmojis = {
     "🪷",
     "🪸",
     "🪹",
-    "🪺"
+    "🪺",
+    "🫍"
   ],
   "food_and_drink": [
     "🍋‍🟩",
@@ -987,7 +992,8 @@ const categorizedUnicodeEmojis = {
     "🪅",
     "🪆",
     "🪬",
-    "🪩"
+    "🪩",
+    "🛘"
   ],
   "travel_and_places": [
     "🚗",
@@ -1359,7 +1365,9 @@ const categorizedUnicodeEmojis = {
     "🔍",
     "🔎",
     "🪦",
-    "🪧"
+    "🪧",
+    "🪎",
+    "🪊"
   ],
   "symbols": [
     "💯",

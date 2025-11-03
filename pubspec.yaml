@@ -82,7 +82,7 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 1b9072e84c2437ebe13237dca7ff82c1e74520a1
+      ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
   mime: ^2.0.0
   misskey_dart:
     git:
@@ -115,7 +115,7 @@ dependencies:
   twemoji_v2:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
-      ref: 34eb94b6837386144b25cb02526e398b4d83fe06
+      ref: 535ea95511bc93623264e1027087495a17bd68b9
   unifiedpush: ^6.0.2
   unifiedpush_ui: ^0.1.0
   url_launcher: ^6.3.2
