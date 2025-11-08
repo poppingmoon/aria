@@ -66,6 +66,9 @@ void main() async {
     yield LicenseEntryWithLineBreaks([
       'Pretendard',
     ], await rootBundle.loadString(Assets.fonts.pretendard.license));
+    yield LicenseEntryWithLineBreaks([
+      'Twemoji Mozilla',
+    ], await rootBundle.loadString(Assets.fonts.twemojiMozilla.license));
     for (final asset in Assets.emojis.values) {
       yield LicenseEntryWithLineBreaks([
         'emojis',

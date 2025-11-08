@@ -219,6 +219,7 @@ flutter:
     - assets/fonts/BIZ_UDGothic/OFL.txt
     - assets/fonts/Noto_Serif_JP/OFL.txt
     - assets/fonts/Pretendard/LICENSE.txt
+    - assets/fonts/Twemoji_Mozilla/LICENSE.md
     - assets/icons/aria.png
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
@@ -239,6 +240,9 @@ flutter:
     - family: Pretendard
       fonts:
         - asset: assets/fonts/Pretendard/PretendardVariable.ttf
+    - family: Twemoji Mozilla
+      fonts:
+        - asset: assets/fonts/Twemoji_Mozilla/TwemojiMozilla.ttf
 
 flutter_launcher_icons:
   image_path: assets/icons/aria.png

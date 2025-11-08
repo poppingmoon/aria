@@ -60,6 +60,10 @@ class $AssetsFontsGen {
 
   /// Directory path: assets/fonts/Pretendard
   $AssetsFontsPretendardGen get pretendard => const $AssetsFontsPretendardGen();
+
+  /// Directory path: assets/fonts/Twemoji_Mozilla
+  $AssetsFontsTwemojiMozillaGen get twemojiMozilla =>
+      const $AssetsFontsTwemojiMozillaGen();
 }
 
 class $AssetsIconsGen {
@@ -113,6 +117,16 @@ class $AssetsFontsPretendardGen {
 
   /// File path: assets/fonts/Pretendard/LICENSE.txt
   String get license => 'assets/fonts/Pretendard/LICENSE.txt';
+
+  /// List of all assets
+  List<String> get values => [license];
+}
+
+class $AssetsFontsTwemojiMozillaGen {
+  const $AssetsFontsTwemojiMozillaGen();
+
+  /// File path: assets/fonts/Twemoji_Mozilla/LICENSE.md
+  String get license => 'assets/fonts/Twemoji_Mozilla/LICENSE.md';
 
   /// List of all assets
   List<String> get values => [license];

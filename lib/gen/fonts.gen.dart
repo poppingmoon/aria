@@ -17,4 +17,7 @@ abstract final class FontFamily {
 
   /// Font family: Pretendard
   static const String pretendard = 'Pretendard';
+
+  /// Font family: Twemoji Mozilla
+  static const String twemojiMozilla = 'Twemoji Mozilla';
 }
