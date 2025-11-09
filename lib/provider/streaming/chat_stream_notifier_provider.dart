@@ -10,7 +10,7 @@ import '../../model/streaming/incoming_message.dart';
 import 'incoming_message_provider.dart';
 import 'web_socket_channel_provider.dart';
 
-part 'chat_stream_notifier.g.dart';
+part 'chat_stream_notifier_provider.g.dart';
 
 @riverpod
 FutureOr<String> _chatStreamConnection(

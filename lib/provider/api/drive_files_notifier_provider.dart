@@ -8,7 +8,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
 import '../../model/pagination_state.dart';
-import 'endpoints_provider.dart';
+import 'endpoints_notifier_provider.dart';
 import 'misskey_provider.dart';
 
 part 'drive_files_notifier_provider.g.dart';

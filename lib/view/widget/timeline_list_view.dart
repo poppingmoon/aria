@@ -15,7 +15,7 @@ import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/timeline_stream_notifier.dart';
+import '../../provider/streaming/timeline_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';

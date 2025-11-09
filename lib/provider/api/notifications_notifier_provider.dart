@@ -5,7 +5,7 @@ import '../../model/account.dart';
 import '../../model/pagination_state.dart';
 import '../general_settings_notifier_provider.dart';
 import '../notes_notifier_provider.dart';
-import 'endpoints_provider.dart';
+import 'endpoints_notifier_provider.dart';
 import 'misskey_provider.dart';
 
 part 'notifications_notifier_provider.g.dart';

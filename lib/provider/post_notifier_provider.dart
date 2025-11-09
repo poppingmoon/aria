@@ -11,7 +11,7 @@ import '../extension/user_extension.dart';
 import '../model/account.dart';
 import '../util/extract_mentions.dart';
 import 'account_settings_notifier_provider.dart';
-import 'api/endpoints_provider.dart';
+import 'api/endpoints_notifier_provider.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
 import 'note_provider.dart';

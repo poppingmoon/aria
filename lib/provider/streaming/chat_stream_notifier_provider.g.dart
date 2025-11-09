@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chat_stream_notifier.dart';
+part of 'chat_stream_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

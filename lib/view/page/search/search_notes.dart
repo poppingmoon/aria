@@ -9,7 +9,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/id.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
-import '../../../provider/api/id_gen_method_provider.dart';
+import '../../../provider/api/id_gen_method_notifier_provider.dart';
 import '../../../provider/api/search_notes_notifier_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
 import '../../../util/format_datetime.dart';

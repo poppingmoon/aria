@@ -8,7 +8,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';

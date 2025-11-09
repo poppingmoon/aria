@@ -8,7 +8,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/lookup.dart';

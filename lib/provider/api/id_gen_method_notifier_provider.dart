@@ -11,7 +11,7 @@ import '../riverpod_storage_provider.dart';
 import 'i_notifier_provider.dart';
 import 'misskey_provider.dart';
 
-part 'id_gen_method_provider.g.dart';
+part 'id_gen_method_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 @JsonPersist()

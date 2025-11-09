@@ -11,7 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/clip_notes_notifier_provider.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';

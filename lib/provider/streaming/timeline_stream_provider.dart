@@ -10,10 +10,10 @@ import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../notes_notifier_provider.dart';
 import 'incoming_message_provider.dart';
-import 'main_stream_notifier_provider.dart';
+import 'main_stream_provider.dart';
 import 'web_socket_channel_provider.dart';
 
-part 'timeline_stream_notifier.g.dart';
+part 'timeline_stream_provider.g.dart';
 
 @riverpod
 FutureOr<String> _timelineStreamConnection(

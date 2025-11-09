@@ -15,7 +15,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'notification_widget.dart';
