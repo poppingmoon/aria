@@ -6,7 +6,7 @@ import '../../model/account.dart';
 import '../riverpod_storage_provider.dart';
 import 'misskey_provider.dart';
 
-part 'endpoints_provider.g.dart';
+part 'endpoints_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 @JsonPersist()

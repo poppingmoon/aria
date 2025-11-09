@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'endpoints_provider.dart';
+part of 'endpoints_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

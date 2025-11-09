@@ -14,7 +14,7 @@ import '../../provider/api/chat_messages_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/chat_stream_notifier.dart';
+import '../../provider/streaming/chat_stream_notifier_provider.dart';
 import 'chat_message_widget.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';

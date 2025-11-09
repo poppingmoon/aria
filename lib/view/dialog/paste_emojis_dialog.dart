@@ -9,7 +9,7 @@ import '../../extension/string_extension.dart';
 import '../../hook/tap_gesture_recognizer_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';

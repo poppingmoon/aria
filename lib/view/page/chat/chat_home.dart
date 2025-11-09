@@ -10,7 +10,7 @@ import '../../../model/account.dart';
 import '../../../model/streaming/main_event.dart';
 import '../../../provider/api/chat_history_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
-import '../../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../../provider/streaming/main_stream_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/mfm.dart';

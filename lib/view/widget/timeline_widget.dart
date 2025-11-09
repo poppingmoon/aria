@@ -18,7 +18,7 @@ import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/broadcast_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_at_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';

@@ -14,7 +14,7 @@ import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'acct_widget.dart';

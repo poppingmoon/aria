@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/experimental/json_persist.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
-import 'api/endpoints_provider.dart';
+import 'api/endpoints_notifier_provider.dart';
 import 'api/misskey_provider.dart';
 import 'riverpod_storage_provider.dart';
 

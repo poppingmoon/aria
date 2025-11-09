@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'timeline_stream_notifier.dart';
+part of 'timeline_stream_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator

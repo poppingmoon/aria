@@ -20,7 +20,7 @@ import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/antenna_provider.dart';
 import '../../../provider/api/antennas_notifier_provider.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
-import '../../../provider/api/endpoints_provider.dart';
+import '../../../provider/api/endpoints_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/lists_notifier_provider.dart';

@@ -15,7 +15,7 @@ import '../../model/streaming/main_event.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/file_system_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/streaming/main_stream_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
