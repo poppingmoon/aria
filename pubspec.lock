@@ -933,11 +933,12 @@ packages:
   fvp:
     dependency: "direct main"
     description:
-      name: fvp
-      sha256: a2850b856e177cb48f3e49940613f2180f3375bcceab2f75e3d7b915009a2840
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.34.0"
+      path: "."
+      ref: "179602adaddc48963c8650f8ee12e99ab1183df7"
+      resolved-ref: "179602adaddc48963c8650f8ee12e99ab1183df7"
+      url: "https://github.com/poppingmoon/fvp"
+    source: git
+    version: "0.35.0"
   glob:
     dependency: transitive
     description:
