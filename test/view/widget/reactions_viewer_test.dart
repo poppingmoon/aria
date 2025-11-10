@@ -1,24 +1,36 @@
 import 'package:aria/model/account.dart';
+import 'package:aria/model/general_settings.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
+import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/reaction_button.dart';
 import 'package:aria/view/widget/reactions_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../test_util/create_overrides.dart';
 import '../../test_util/dummy_note.dart';
 
-Future<ProviderContainer> setupWidget(
+Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   required String noteId,
   bool showAllReactions = false,
+  GeneralSettings generalSettings = const GeneralSettings(),
+  required Note note,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(account),
+      overrides: [
+        generalSettingsNotifierProvider.overrideWithValue(generalSettings),
+        notesNotifierProvider(
+          account,
+        ).overrideWithBuild((_, _) => {note.id: note}),
+        serverUrlNotifierProvider(
+          account.host,
+        ).overrideWithValue(Uri.https(account.host)),
+      ],
       child: MaterialApp(
         home: ReactionsViewer(
           account: account,
@@ -29,10 +41,6 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container = ProviderScope.containerOf(
-    tester.element(find.byType(ReactionsViewer)),
-  );
-  return container;
 }
 
 void main() {
@@ -44,13 +52,12 @@ void main() {
         final note = dummyNote.copyWith(
           reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          note: note,
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await tester.pumpAndSettle();
         final reactions = tester.widgetList<ReactionButton>(
           find.byType(ReactionButton),
         );
@@ -68,13 +75,7 @@ void main() {
           List.generate(21, (i) => MapEntry(':emoji$i:', i + 1)),
         ),
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
+      await setupWidget(tester, account: account, noteId: note.id, note: note);
       expect(find.byType(ReactionButton), findsExactly(20));
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -89,14 +90,13 @@ void main() {
           List.generate(21, (i) => MapEntry(':emoji$i:', i + 1)),
         ),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
         showAllReactions: true,
+        note: note,
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(ReactionButton), findsExactly(21));
       expect(find.byType(TextButton), findsNothing);
     });
@@ -108,14 +108,9 @@ void main() {
       final note = dummyNote.copyWith(
         reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
-      container
+      await setupWidget(tester, account: account, noteId: note.id, note: note);
+      tester
+          .container()
           .read(notesNotifierProvider(account).notifier)
           .add(
             note.copyWith(
@@ -141,14 +136,9 @@ void main() {
       final note = dummyNote.copyWith(
         reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
-      container
+      await setupWidget(tester, account: account, noteId: note.id, note: note);
+      tester
+          .container()
           .read(notesNotifierProvider(account).notifier)
           .add(
             note.copyWith(
@@ -179,14 +169,10 @@ void main() {
       final note = dummyNote.copyWith(
         reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
+      await setupWidget(tester, account: account, noteId: note.id, note: note);
       await tester.pumpAndSettle();
-      container
+      tester
+          .container()
           .read(notesNotifierProvider(account).notifier)
           .add(note.copyWith(reactions: {':emoji1:': 4, ':emoji2:': 3}));
       await tester.pumpAndSettle();
@@ -212,16 +198,13 @@ void main() {
           ':emoji@misskey2.tld:': 2,
         },
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(mergeReactionsByName: true),
+        note: note,
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setMergeReactionsByName(true);
-      await tester.pumpAndSettle();
       final reaction = tester.widget<ReactionButton>(
         find.byType(ReactionButton),
       );
@@ -240,16 +223,13 @@ void main() {
             ':emoji@misskey3.tld:': 2,
           },
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(mergeReactionsByName: true),
+          note: note,
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setMergeReactionsByName(true);
-        await tester.pumpAndSettle();
         final reaction = tester.widget<ReactionButton>(
           find.byType(ReactionButton),
         );

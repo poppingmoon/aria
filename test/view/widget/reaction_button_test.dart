@@ -1,25 +1,30 @@
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
-import 'package:aria/provider/dio_provider.dart';
+import 'package:aria/model/account_settings.dart';
+import 'package:aria/model/general_settings.dart';
+import 'package:aria/provider/account_settings_notifier_provider.dart';
+import 'package:aria/provider/api/misskey_provider.dart';
 import 'package:aria/provider/emojis_notifier_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/misskey_colors_provider.dart';
 import 'package:aria/provider/note_provider.dart';
+import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/dialog/reaction_confirmation_dialog.dart';
 import 'package:aria/view/widget/reaction_button.dart';
 import 'package:aria/view/widget/reaction_users_sheet.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:hooks_riverpod/misc.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../test_util/create_overrides.dart';
 import '../../test_util/dummy_note.dart';
 import '../../test_util/dummy_user_lite.dart';
 
-Future<ProviderContainer> setupWidget(
+Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   required Note note,
@@ -27,10 +32,25 @@ Future<ProviderContainer> setupWidget(
   required int count,
   double? scale,
   Key? emojiKey,
+  GeneralSettings generalSettings = const GeneralSettings(),
+  Dio? dio,
+  List<Override> overrides = const [],
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(account),
+      overrides: [
+        accountSettingsNotifierProvider(
+          account,
+        ).overrideWithValue(const AccountSettings()),
+        generalSettingsNotifierProvider.overrideWithValue(generalSettings),
+        misskeyProvider(account).overrideWithValue(
+          Misskey(serverUrl: Uri.https(account.host), dio: dio),
+        ),
+        serverUrlNotifierProvider(
+          account.host,
+        ).overrideWithValue(Uri.https(account.host)),
+        ...overrides,
+      ],
       child: MaterialApp.router(
         routerConfig: GoRouter(
           routes: [
@@ -52,10 +72,6 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container = ProviderScope.containerOf(
-    tester.element(find.byType(ReactionButton)),
-  );
-  return container;
 }
 
 void main() {
@@ -64,14 +80,16 @@ void main() {
       tester,
     ) async {
       const account = Account(host: 'misskey.tld');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote,
         emoji: ':emoji:',
         count: 1,
       );
-      final colors = container.read(misskeyColorsProvider(Brightness.light));
+      final colors = tester.container().read(
+        misskeyColorsProvider(Brightness.light),
+      );
       final buttonStyle = tester
           .widget<ElevatedButton>(find.byType(ElevatedButton))
           .style;
@@ -84,18 +102,21 @@ void main() {
       tester,
     ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote,
         emoji: ':emoji@misskey2.tld:',
         count: 1,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
       );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      await tester.pumpAndSettle();
-      final colors = container.read(misskeyColorsProvider(Brightness.light));
+      final colors = tester.container().read(
+        misskeyColorsProvider(Brightness.light),
+      );
       final buttonStyle = tester
           .widget<ElevatedButton>(find.byType(ElevatedButton))
           .style;
@@ -106,18 +127,21 @@ void main() {
 
     testWidgets('background should be buttonBg if can react', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote,
         emoji: ':emoji:',
         count: 1,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
       );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      await tester.pumpAndSettle();
-      final colors = container.read(misskeyColorsProvider(Brightness.light));
+      final colors = tester.container().read(
+        misskeyColorsProvider(Brightness.light),
+      );
       final buttonStyle = tester
           .widget<ElevatedButton>(find.byType(ElevatedButton))
           .style;
@@ -130,14 +154,16 @@ void main() {
       tester,
     ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote.copyWith(myReaction: ':emoji:'),
         emoji: ':emoji:',
         count: 1,
       );
-      final colors = container.read(misskeyColorsProvider(Brightness.light));
+      final colors = tester.container().read(
+        misskeyColorsProvider(Brightness.light),
+      );
       final buttonStyle = tester
           .widget<ElevatedButton>(find.byType(ElevatedButton))
           .style;
@@ -148,19 +174,17 @@ void main() {
 
     testWidgets('should not show a reaction count if disabled', (tester) async {
       const account = Account(host: 'misskey.tld');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote,
         emoji: ':emoji:',
         count: 1,
+        generalSettings: const GeneralSettings(
+          showReactionsCountInReactionButton: false,
+        ),
       );
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setShowReactionsCountInReactionButton(false);
-      await tester.pumpAndSettle();
       expect(find.text('1'), findsNothing);
-      await tester.pumpAndSettle();
     });
 
     testWidgets('should show a reaction count', (tester) async {
@@ -172,43 +196,43 @@ void main() {
         emoji: ':emoji:',
         count: 1,
       );
-      await tester.pumpAndSettle();
       expect(find.text('1'), findsOne);
-      await tester.pumpAndSettle();
     });
   });
 
   group('on tap', () {
     testWidgets('should not react if guest', (tester) async {
       const account = Account(host: 'misskey.tld');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote.copyWith(id: 'test'),
         emoji: ':emoji:',
         count: 1,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
       );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       expect(find.byType(ReactionConfirmationDialog), findsNothing);
     });
 
     testWidgets('should not react to a dummy note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote,
         emoji: ':emoji:',
         count: 1,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
       );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       expect(find.byType(ReactionConfirmationDialog), findsNothing);
     });
@@ -217,7 +241,7 @@ void main() {
       tester,
     ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         note: dummyNote.copyWith(
@@ -226,11 +250,12 @@ void main() {
         ),
         emoji: ':emoji:',
         count: 1,
+        overrides: [
+          emojisNotifierProvider(account.host).overrideWithBuild(
+            (_, _) => {'emoji': const Emoji(name: 'emoji', localOnly: true)},
+          ),
+        ],
       );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji', localOnly: true));
-      await tester.pumpAndSettle();
       expect(
         tester
             .widget<ElevatedButton>(find.byType(ElevatedButton))
@@ -247,17 +272,20 @@ void main() {
       'should not react a sensitive emoji to a non-sensitive only note',
       (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           note: dummyNote.copyWith(id: 'test'),
           emoji: ':emoji:',
           count: 1,
+          overrides: [
+            emojisNotifierProvider(account.host).overrideWithBuild(
+              (_, _) => {
+                'emoji': const Emoji(name: 'emoji', isSensitive: true),
+              },
+            ),
+          ],
         );
-        container
-            .read(emojisNotifierProvider(account.host).notifier)
-            .add(const Emoji(name: 'emoji', isSensitive: true));
-        await tester.pumpAndSettle();
         await tester.tap(find.byType(ElevatedButton));
         expect(find.byType(ReactionConfirmationDialog), findsNothing);
       },
@@ -266,17 +294,8 @@ void main() {
     testWidgets('should react to a note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(id: 'test', reactions: {':emoji:': 1});
-      final container = await setupWidget(
-        tester,
-        account: account,
-        note: note,
-        emoji: ':emoji:',
-        count: 1,
-      );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      final dio = Dio();
+      final dioAdapter = DioAdapter(dio: dio);
       dioAdapter.onPost(
         'notes/reactions/create',
         (server) => server.reply(200, null),
@@ -290,14 +309,26 @@ void main() {
         ),
         data: {'noteId': 'test'},
       );
-      await tester.pumpAndSettle();
+      await setupWidget(
+        tester,
+        account: account,
+        note: note,
+        emoji: ':emoji:',
+        count: 1,
+        dio: dio,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
+      );
       await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
       expect(find.text(t.aria.reactionConfirm), findsOne);
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        container.read(noteProvider(account, note.id))?.myReaction,
+        tester.container().read(noteProvider(account, note.id))?.myReaction,
         ':emoji:',
       );
     });
@@ -309,17 +340,8 @@ void main() {
         reactions: {':emoji:': 1},
         myReaction: ':emoji:',
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        note: note,
-        emoji: ':emoji:',
-        count: 1,
-      );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      final dio = Dio();
+      final dioAdapter = DioAdapter(dio: dio);
       dioAdapter.onPost(
         'notes/reactions/delete',
         (server) => server.reply(200, null),
@@ -331,14 +353,26 @@ void main() {
             server.reply(200, note.copyWith(reactions: {}, myReaction: null)),
         data: {'noteId': 'test'},
       );
-      await tester.pumpAndSettle();
+      await setupWidget(
+        tester,
+        account: account,
+        note: note,
+        emoji: ':emoji:',
+        count: 1,
+        dio: dio,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
+      );
       await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
       expect(find.text(t.misskey.cancelReactionConfirm), findsOne);
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        container.read(noteProvider(account, note.id))?.myReaction,
+        tester.container().read(noteProvider(account, note.id))?.myReaction,
         isNull,
       );
     });
@@ -352,17 +386,8 @@ void main() {
         reactions: {':emoji:': 1, ':emoji2:': 2},
         myReaction: ':emoji2:',
       );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        note: note,
-        emoji: ':emoji:',
-        count: 1,
-      );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(name: 'emoji'));
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      final dio = Dio();
+      final dioAdapter = DioAdapter(dio: dio);
       dioAdapter.onPost(
         'notes/reactions/delete',
         (server) => server.reply(200, null),
@@ -384,14 +409,26 @@ void main() {
         ),
         data: {'noteId': 'test'},
       );
-      await tester.pumpAndSettle();
+      await setupWidget(
+        tester,
+        account: account,
+        note: note,
+        emoji: ':emoji:',
+        count: 1,
+        dio: dio,
+        overrides: [
+          emojisNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => {'emoji': const Emoji(name: 'emoji')}),
+        ],
+      );
       await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
       expect(find.text(t.misskey.changeReactionConfirm), findsOne);
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        container.read(noteProvider(account, note.id))?.myReaction,
+        tester.container().read(noteProvider(account, note.id))?.myReaction,
         ':emoji:',
       );
     });
