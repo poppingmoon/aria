@@ -1,24 +1,42 @@
 import 'package:aria/model/account.dart';
+import 'package:aria/model/account_settings.dart';
+import 'package:aria/model/general_settings.dart';
 import 'package:aria/provider/account_settings_notifier_provider.dart';
-import 'package:aria/provider/dio_provider.dart';
+import 'package:aria/provider/api/search_hashtags_provider.dart';
+import 'package:aria/provider/api/search_users_by_username_provider.dart';
+import 'package:aria/provider/general_settings_notifier_provider.dart';
+import 'package:aria/provider/recently_used_users_notifier_provider.dart';
+import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/mfm_keyboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http_mock_adapter/http_mock_adapter.dart';
+import 'package:hooks_riverpod/misc.dart';
 
-import '../../test_util/create_overrides.dart';
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_user_detailed_not_me.dart';
 
-Future<ProviderContainer> setupWidget(
+Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   required TextEditingController controller,
+  AccountSettings accountSettings = const AccountSettings(),
+  List<Override> overrides = const [],
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(account),
+      overrides: [
+        accountSettingsNotifierProvider(
+          account,
+        ).overrideWithValue(accountSettings),
+        generalSettingsNotifierProvider.overrideWithValue(
+          const GeneralSettings(),
+        ),
+        serverUrlNotifierProvider(
+          account.host,
+        ).overrideWithValue(Uri.https(account.host)),
+        ...overrides,
+      ],
       child: MaterialApp(
         home: Material(
           child: MfmKeyboard(account: account, controller: controller),
@@ -27,10 +45,6 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container = ProviderScope.containerOf(
-    tester.element(find.byType(MfmKeyboard)),
-  );
-  return container;
 }
 
 void main() {
@@ -153,14 +167,12 @@ void main() {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController(text: ':');
         controller.selection = const TextSelection.collapsed(offset: 1);
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          accountSettings: const AccountSettings(recentlyUsedEmojis: ['❤️']),
         );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setRecentlyUsedEmojis(['❤️']);
         await tester.pumpAndSettle();
         await tester.tap(find.byKey(const ValueKey('❤️')));
         expect(controller.text, '❤️');
@@ -171,7 +183,6 @@ void main() {
         final controller = TextEditingController(text: ':heart');
         controller.selection = const TextSelection.collapsed(offset: 6);
         await setupWidget(tester, account: account, controller: controller);
-        await tester.pumpAndSettle();
         await tester.tap(find.byKey(const ValueKey('❤️')));
         await tester.pumpAndSettle();
         expect(controller.text, '❤️');
@@ -183,15 +194,12 @@ void main() {
           const account = Account(host: 'misskey.tld', username: 'testuser');
           final controller = TextEditingController(text: 'a:b');
           controller.selection = const TextSelection.collapsed(offset: 2);
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             controller: controller,
+            accountSettings: const AccountSettings(recentlyUsedEmojis: ['❤️']),
           );
-          await container
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .setRecentlyUsedEmojis(['❤️']);
-          await tester.pumpAndSettle();
           await tester.tap(find.byKey(const ValueKey('❤️')));
           expect(controller.text, 'a❤️b');
         },
@@ -203,15 +211,12 @@ void main() {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController(text: ':heart:');
         controller.selection = const TextSelection.collapsed(offset: 7);
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          accountSettings: const AccountSettings(recentlyUsedEmojis: ['❤️']),
         );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setRecentlyUsedEmojis(['❤️']);
-        await tester.pumpAndSettle();
         expect(find.text(':'), findsOne);
         expect(find.byKey(const ValueKey('❤️')), findsNothing);
       });
@@ -222,15 +227,12 @@ void main() {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController(text: ': ');
         controller.selection = const TextSelection.collapsed(offset: 2);
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          accountSettings: const AccountSettings(recentlyUsedEmojis: ['❤️']),
         );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setRecentlyUsedEmojis(['❤️']);
-        await tester.pumpAndSettle();
         expect(find.text(':'), findsOne);
         expect(find.byKey(const ValueKey('❤️')), findsNothing);
       });
@@ -241,15 +243,12 @@ void main() {
           const account = Account(host: 'misskey.tld', username: 'testuser');
           final controller = TextEditingController(text: ':heart::');
           controller.selection = const TextSelection.collapsed(offset: 8);
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             controller: controller,
+            accountSettings: const AccountSettings(recentlyUsedEmojis: ['❤️']),
           );
-          await container
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .setRecentlyUsedEmojis(['❤️']);
-          await tester.pumpAndSettle();
           await tester.tap(find.byKey(const ValueKey('❤️')));
           await tester.pumpAndSettle();
           expect(controller.text, ':heart:❤️');
@@ -263,7 +262,6 @@ void main() {
         final controller = TextEditingController(text: r'$[');
         controller.selection = const TextSelection.collapsed(offset: 2);
         await setupWidget(tester, account: account, controller: controller);
-        await tester.pumpAndSettle();
         expect(find.text('tada'), findsOne);
         controller.text = r'$[x';
         controller.selection = const TextSelection.collapsed(offset: 3);
@@ -278,7 +276,6 @@ void main() {
         final controller = TextEditingController(text: r'$[spin');
         controller.selection = const TextSelection.collapsed(offset: 6);
         await setupWidget(tester, account: account, controller: controller);
-        await tester.pumpAndSettle();
         expect(find.text('speed'), findsOne);
         expect(find.text('x'), findsOne);
         controller.text = r'$[spin.';
@@ -305,7 +302,6 @@ void main() {
           final controller = TextEditingController(text: r'a$[b');
           controller.selection = const TextSelection.collapsed(offset: 3);
           await setupWidget(tester, account: account, controller: controller);
-          await tester.pumpAndSettle();
           await tester.tap(find.text('tada'));
           expect(controller.text, r'a$[tada b');
         },
@@ -318,7 +314,6 @@ void main() {
         final controller = TextEditingController(text: r'$[]');
         controller.selection = const TextSelection.collapsed(offset: 3);
         await setupWidget(tester, account: account, controller: controller);
-        await tester.pumpAndSettle();
         expect(find.text(':'), findsOne);
         expect(find.text('tada'), findsNothing);
       });
@@ -330,7 +325,6 @@ void main() {
         final controller = TextEditingController(text: r'$[ ');
         controller.selection = const TextSelection.collapsed(offset: 3);
         await setupWidget(tester, account: account, controller: controller);
-        await tester.pumpAndSettle();
         expect(find.text(':'), findsOne);
         expect(find.text('tada'), findsNothing);
       });
@@ -340,27 +334,22 @@ void main() {
       testWidgets('should show recently used users', (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          overrides: [
+            recentlyUsedUsersNotifierProvider(account).overrideWithBuild(
+              (_, _) => [
+                dummyMeDetailed.copyWith(username: 'testuser'),
+                dummyUserDetailedNotMe.copyWith(
+                  username: 'testuser',
+                  host: 'misskey2.tld',
+                ),
+              ],
+            ),
+          ],
         );
-        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-        dioAdapter.onPost(
-          'users/show',
-          (server) => server.reply(200, [
-            dummyMeDetailed.copyWith(username: 'testuser').toJson(),
-            dummyUserDetailedNotMe
-                .copyWith(username: 'testuser', host: 'misskey2.tld')
-                .toJson(),
-          ]),
-          data: {
-            'userIds': ['testuser', 'testuser@misskey2.tld'],
-          },
-        );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setRecentlyUsedUsers(['testuser', 'testuser@misskey2.tld']);
         controller.text = '@';
         controller.selection = const TextSelection.collapsed(offset: 1);
         await tester.pumpAndSettle();
@@ -372,21 +361,25 @@ void main() {
       testWidgets('should search users', (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
-        );
-        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-        dioAdapter.onPost(
-          'users/search-by-username-and-host',
-          (server) => server.reply(200, [
-            dummyMeDetailed.copyWith(username: 'testuser').toJson(),
-            dummyUserDetailedNotMe
-                .copyWith(username: 'testuser', host: 'misskey2.tld')
-                .toJson(),
-          ]),
-          data: {'username': 'testuser'},
+          overrides: [
+            searchUsersByUsernameProvider(
+              account,
+              'testuser',
+              null,
+            ).overrideWithValue(
+              AsyncValue.data([
+                dummyMeDetailed.copyWith(username: 'testuser'),
+                dummyUserDetailedNotMe.copyWith(
+                  username: 'testuser',
+                  host: 'misskey2.tld',
+                ),
+              ]),
+            ),
+          ],
         );
         controller.text = '@testuser';
         controller.selection = const TextSelection.collapsed(offset: 9);
@@ -401,24 +394,16 @@ void main() {
         (tester) async {
           const account = Account(host: 'misskey.tld', username: 'testuser');
           final controller = TextEditingController();
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             controller: controller,
+            overrides: [
+              recentlyUsedUsersNotifierProvider(account).overrideWithBuild(
+                (_, _) => [dummyMeDetailed.copyWith(username: 'testuser')],
+              ),
+            ],
           );
-          final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-          dioAdapter.onPost(
-            'users/show',
-            (server) => server.reply(200, [
-              dummyMeDetailed.copyWith(username: 'testuser').toJson(),
-            ]),
-            data: {
-              'userIds': ['testuser'],
-            },
-          );
-          await container
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .setRecentlyUsedUsers(['testuser']);
           controller.text = 'a@b';
           controller.selection = const TextSelection.collapsed(offset: 2);
           await tester.pumpAndSettle();
@@ -432,24 +417,16 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          overrides: [
+            recentlyUsedUsersNotifierProvider(account).overrideWithBuild(
+              (_, _) => [dummyMeDetailed.copyWith(username: 'testuser')],
+            ),
+          ],
         );
-        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-        dioAdapter.onPost(
-          'users/show',
-          (server) => server.reply(200, [
-            dummyMeDetailed.copyWith(username: 'testuser').toJson(),
-          ]),
-          data: {
-            'userIds': ['testuser'],
-          },
-        );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setRecentlyUsedUsers(['testuser']);
         controller.text = '@ ';
         controller.selection = const TextSelection.collapsed(offset: 2);
         await tester.pumpAndSettle();
@@ -462,14 +439,12 @@ void main() {
       testWidgets('should show recently used hashtags', (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          accountSettings: const AccountSettings(hashtags: ['test']),
         );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setHashtags(['test']);
         controller.text = '#';
         controller.selection = const TextSelection.collapsed(offset: 1);
         await tester.pumpAndSettle();
@@ -480,16 +455,16 @@ void main() {
       testWidgets('should search hashtags', (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
-        );
-        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-        dioAdapter.onPost(
-          'hashtags/search',
-          (server) => server.reply(200, ['test']),
-          data: {'query': 't'},
+          overrides: [
+            searchHashtagsProvider(
+              account,
+              't',
+            ).overrideWithValue(const AsyncValue.data(['test'])),
+          ],
         );
         controller.text = '#t';
         controller.selection = const TextSelection.collapsed(offset: 2);
@@ -503,14 +478,12 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           controller: controller,
+          accountSettings: const AccountSettings(hashtags: ['test']),
         );
-        await container
-            .read(accountSettingsNotifierProvider(account).notifier)
-            .setHashtags(['test']);
         controller.text = '# ';
         controller.selection = const TextSelection.collapsed(offset: 2);
         await tester.pumpAndSettle();

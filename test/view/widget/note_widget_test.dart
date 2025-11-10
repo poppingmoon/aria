@@ -1,12 +1,15 @@
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
+import 'package:aria/model/account_settings.dart';
 import 'package:aria/model/general_settings.dart';
+import 'package:aria/provider/account_settings_notifier_provider.dart';
+import 'package:aria/provider/accounts_notifier_provider.dart';
 import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
-import 'package:aria/provider/dio_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
-import 'package:aria/provider/muted_words_notifier_provider.dart';
+import 'package:aria/provider/note_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
+import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/emoji_picker.dart';
 import 'package:aria/view/widget/instance_ticker_widget.dart';
 import 'package:aria/view/widget/media_list.dart';
@@ -25,16 +28,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http_mock_adapter/http_mock_adapter.dart';
+import 'package:hooks_riverpod/misc.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../test_util/create_overrides.dart';
 import '../../test_util/dummy_drive_file.dart';
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_note.dart';
 import '../../test_util/dummy_user_lite.dart';
 
-Future<ProviderContainer> setupWidget(
+Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   required String noteId,
@@ -43,14 +45,29 @@ Future<ProviderContainer> setupWidget(
   Note? note,
   bool? showFooter,
   Color? backgroundColor,
+  GeneralSettings generalSettings = const GeneralSettings(),
+  MeDetailed? i,
+  List<Override> overrides = const [],
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(
-        account,
-        i: dummyMeDetailed.copyWith(id: 'testuser'),
-        meta: const MetaResponse(),
-      ),
+      overrides: [
+        accountsNotifierProvider.overrideWithValue([account]),
+        accountSettingsNotifierProvider(
+          account,
+        ).overrideWithValue(const AccountSettings()),
+        generalSettingsNotifierProvider.overrideWithValue(generalSettings),
+        iNotifierProvider(account).overrideWithBuild(
+          (_, _) => i ?? dummyMeDetailed.copyWith(id: 'testuser'),
+        ),
+        metaNotifierProvider(
+          account.host,
+        ).overrideWithBuild((_, _) => const MetaResponse()),
+        serverUrlNotifierProvider(
+          account.host,
+        ).overrideWithValue(Uri.https(account.host)),
+        ...overrides,
+      ],
       child: MaterialApp.router(
         routerConfig: GoRouter(
           routes: [
@@ -75,16 +92,6 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container = ProviderScope.containerOf(
-    tester.element(find.byType(NoteWidget)),
-  );
-  await tester.runAsync(
-    () => container.read(iNotifierProvider(account).future),
-  );
-  await tester.runAsync(
-    () => container.read(metaNotifierProvider(account.host).future),
-  );
-  return container;
 }
 
 void main() {
@@ -101,13 +108,16 @@ void main() {
       (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', renoteId: 'renote');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [
+            notesNotifierProvider(
+              account,
+            ).overrideWithValue({note.id: note, note.renoteId!: null}),
+          ],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await tester.pumpAndSettle();
         expect(find.text(t.misskey.deletedNote), findsOne);
       },
     );
@@ -117,13 +127,16 @@ void main() {
     ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', replyId: 'reply');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          notesNotifierProvider(
+            account,
+          ).overrideWithValue({note.id: note, note.replyId!: null}),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.text(t.misskey.deletedNote), findsOne);
     });
   });
@@ -136,40 +149,20 @@ void main() {
         text: 'this note should be muted',
         user: const UserLite(id: '', username: 'testuser2'),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-      dioAdapter.onPost(
-        'i/update',
-        (server) => server.reply(
-          200,
-          dummyMeDetailed.copyWith(
-            hardMutedWords: const [
-              MuteWord(content: ['mute']),
-            ],
-          ),
-        ),
-        data: {
-          'hardMutedWords': [
-            ['mute'],
+        i: dummyMeDetailed.copyWith(
+          id: 'testuser',
+          hardMutedWords: const [
+            MuteWord(content: ['mute']),
           ],
-        },
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      await tester.runAsync(
-        () => container
-            .read(mutedWordsNotifierProvider(account, hardMute: true).notifier)
-            .updateMutedWords(const [
-              MuteWord(content: ['mute']),
-            ]),
-      );
-      await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsNothing);
-      await tester.pumpAndSettle();
     });
 
     testWidgets('should show a hard muted note if disabled', (tester) async {
@@ -179,41 +172,21 @@ void main() {
         text: 'this note should be muted',
         user: const UserLite(id: '', username: 'testuser2'),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
         withHardMute: false,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-      dioAdapter.onPost(
-        'i/update',
-        (server) => server.reply(
-          200,
-          dummyMeDetailed.copyWith(
-            hardMutedWords: const [
-              MuteWord(content: ['mute']),
-            ],
-          ),
-        ),
-        data: {
-          'hardMutedWords': [
-            ['mute'],
+        i: dummyMeDetailed.copyWith(
+          id: 'testuser',
+          hardMutedWords: const [
+            MuteWord(content: ['mute']),
           ],
-        },
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      await tester.runAsync(
-        () => container
-            .read(mutedWordsNotifierProvider(account, hardMute: true).notifier)
-            .updateMutedWords(const [
-              MuteWord(content: ['mute']),
-            ]),
-      );
-      await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsOne);
-      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
 
     testWidgets('should not show a muted note', (tester) async {
@@ -223,43 +196,23 @@ void main() {
         text: 'this note should be muted',
         user: const UserLite(id: '', username: 'testuser2'),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
-      dioAdapter.onPost(
-        'i/update',
-        (server) => server.reply(
-          200,
-          dummyMeDetailed.copyWith(
-            mutedWords: const [
-              MuteWord(content: ['mute']),
-            ],
-          ),
-        ),
-        data: {
-          'mutedWords': [
-            ['mute'],
+        i: dummyMeDetailed.copyWith(
+          id: 'testuser',
+          mutedWords: const [
+            MuteWord(content: ['mute']),
           ],
-        },
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      await tester.runAsync(
-        () => container
-            .read(mutedWordsNotifierProvider(account).notifier)
-            .updateMutedWords(const [
-              MuteWord(content: ['mute']),
-            ]),
-      );
-      await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsOne);
       await tester.tap(find.byType(InkWell));
       await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsOne);
-      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
   });
 
@@ -267,13 +220,12 @@ void main() {
     testWidgets('should be panel color', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(
         tester
             .firstWidget<Material>(
@@ -290,17 +242,16 @@ void main() {
     testWidgets('should override default color if specified', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
         backgroundColor: Colors.amber,
+        generalSettings: const GeneralSettings(
+          publicNoteBackgroundColor: Colors.blue,
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setPublicNoteBackgroundColor(Colors.blue);
-      await tester.pumpAndSettle();
       expect(
         tester
             .firstWidget<Material>(
@@ -319,16 +270,15 @@ void main() {
       (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            publicNoteBackgroundColor: Colors.amber,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setPublicNoteBackgroundColor(Colors.amber);
-        await tester.pumpAndSettle();
         expect(
           tester
               .firstWidget<Material>(
@@ -351,16 +301,15 @@ void main() {
         id: 'test',
         visibility: NoteVisibility.home,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(
+          homeNoteBackgroundColor: Colors.amber,
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setHomeNoteBackgroundColor(Colors.amber);
-      await tester.pumpAndSettle();
       expect(
         tester
             .firstWidget<Material>(
@@ -382,16 +331,15 @@ void main() {
           id: 'test',
           visibility: NoteVisibility.followers,
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            followersNoteBackgroundColor: Colors.amber,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setFollowersNoteBackgroundColor(Colors.amber);
-        await tester.pumpAndSettle();
         expect(
           tester
               .firstWidget<Material>(
@@ -414,16 +362,15 @@ void main() {
           id: 'test',
           visibility: NoteVisibility.specified,
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            specifiedNoteBackgroundColor: Colors.amber,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setSpecifiedNoteBackgroundColor(Colors.amber);
-        await tester.pumpAndSettle();
         expect(
           tester
               .firstWidget<Material>(
@@ -443,25 +390,18 @@ void main() {
     ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', visibility: null);
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(
+          publicNoteBackgroundColor: Colors.amber,
+          homeNoteBackgroundColor: Colors.amber,
+          followersNoteBackgroundColor: Colors.amber,
+          specifiedNoteBackgroundColor: Colors.amber,
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setPublicNoteBackgroundColor(Colors.amber);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setHomeNoteBackgroundColor(Colors.amber);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setFollowersNoteBackgroundColor(Colors.amber);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setSpecifiedNoteBackgroundColor(Colors.amber);
-      await tester.pumpAndSettle();
       expect(
         tester
             .firstWidget<Material>(
@@ -480,16 +420,12 @@ void main() {
     group('tap', () {
       testWidgets('should do nothing for a dummy note', (tester) async {
         const account = Account(host: 'misskey.tld');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: '',
           note: dummyNote.copyWith(text: 'text'),
         );
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -501,16 +437,15 @@ void main() {
       testWidgets('should do nothing if action type is none', (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteTapAction: NoteActionType.none,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.none);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -524,21 +459,16 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
         expect(find.textContaining('/misskey.tld/notes/test'), findsOne);
-        await tester.pumpAndSettle();
       });
 
       testWidgets('should open a note sheet if action type is menu', (
@@ -546,16 +476,15 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteTapAction: NoteActionType.menu,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.menu);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -567,16 +496,15 @@ void main() {
         (tester) async {
           const account = Account(host: 'misskey.tld');
           final note = dummyNote.copyWith(id: 'test', text: 'text');
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             noteId: note.id,
+            generalSettings: const GeneralSettings(
+              noteTapAction: NoteActionType.reaction,
+            ),
+            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
           );
-          container.read(notesNotifierProvider(account).notifier).add(note);
-          await container
-              .read(generalSettingsNotifierProvider.notifier)
-              .setNoteTapAction(NoteActionType.reaction);
-          await tester.pumpAndSettle();
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapTimeout);
           await tester.pumpAndSettle();
@@ -589,16 +517,15 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteTapAction: NoteActionType.reaction,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -609,16 +536,15 @@ void main() {
     group('long press', () {
       testWidgets('should do nothing for a dummy note', (tester) async {
         const account = Account(host: 'misskey.tld');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: '',
           note: dummyNote.copyWith(text: 'text'),
+          generalSettings: const GeneralSettings(
+            noteLongPressAction: NoteActionType.expand,
+          ),
         );
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -630,19 +556,16 @@ void main() {
       testWidgets('should do nothing if action type is none', (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteTapAction: NoteActionType.none,
+            noteLongPressAction: NoteActionType.none,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.none);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.none);
-        await tester.pumpAndSettle();
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
         expect(find.textContaining('/misskey.tld/notes/'), findsNothing);
@@ -655,16 +578,15 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteLongPressAction: NoteActionType.expand,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
         expect(find.textContaining('/misskey.tld/notes/test'), findsOne);
@@ -675,16 +597,15 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteLongPressAction: NoteActionType.menu,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.menu);
-        await tester.pumpAndSettle();
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
         expect(find.byType(NoteSheet), findsOne);
@@ -695,16 +616,12 @@ void main() {
         (tester) async {
           const account = Account(host: 'misskey.tld');
           final note = dummyNote.copyWith(id: 'test', text: 'text');
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             noteId: note.id,
+            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
           );
-          container.read(notesNotifierProvider(account).notifier).add(note);
-          await container
-              .read(generalSettingsNotifierProvider.notifier)
-              .setNoteLongPressAction(NoteActionType.reaction);
-          await tester.pumpAndSettle();
           await tester.longPress(find.text('text'));
           await tester.pumpAndSettle();
           expect(find.byType(EmojiPicker), findsNothing);
@@ -716,16 +633,12 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
         expect(find.byType(EmojiPicker), findsOne);
@@ -735,16 +648,15 @@ void main() {
     group('double tap', () {
       testWidgets('should do nothing for a dummy note', (tester) async {
         const account = Account(host: 'misskey.tld');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: '',
           note: dummyNote.copyWith(text: 'text'),
+          generalSettings: const GeneralSettings(
+            noteDoubleTapAction: NoteActionType.expand,
+          ),
         );
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
         await tester.tap(find.text('text'));
@@ -757,19 +669,16 @@ void main() {
       testWidgets('should do nothing if action type is none', (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteTapAction: NoteActionType.none,
+            noteDoubleTapAction: NoteActionType.none,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.none);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.none);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -783,22 +692,20 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteDoubleTapAction: NoteActionType.expand,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.expand);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
         await tester.tap(find.text('text'));
         await tester.pumpAndSettle();
         expect(find.textContaining('/misskey.tld/notes/test'), findsOne);
-        await tester.pumpAndSettle();
       });
 
       testWidgets('should open a note sheet if action type is menu', (
@@ -806,16 +713,12 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.menu);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
         await tester.tap(find.text('text'));
@@ -828,16 +731,15 @@ void main() {
         (tester) async {
           const account = Account(host: 'misskey.tld');
           final note = dummyNote.copyWith(id: 'test', text: 'text');
-          final container = await setupWidget(
+          await setupWidget(
             tester,
             account: account,
             noteId: note.id,
+            generalSettings: const GeneralSettings(
+              noteDoubleTapAction: NoteActionType.reaction,
+            ),
+            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
           );
-          container.read(notesNotifierProvider(account).notifier).add(note);
-          await container
-              .read(generalSettingsNotifierProvider.notifier)
-              .setNoteDoubleTapAction(NoteActionType.reaction);
-          await tester.pumpAndSettle();
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapMinTime);
           await tester.tap(find.text('text'), warnIfMissed: false);
@@ -851,16 +753,15 @@ void main() {
       ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(
+            noteDoubleTapAction: NoteActionType.reaction,
+          ),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
         await tester.tap(find.text('text'));
@@ -880,13 +781,15 @@ void main() {
         replyId: reply.id,
         reply: reply,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, reply.id).overrideWithValue(reply),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(NoteSubWidget), findsOne);
       expect(find.text('reply text'), findsOne);
       expect(find.byIcon(Icons.reply), findsExactly(2));
@@ -907,13 +810,15 @@ void main() {
         renoteId: renote.id,
         renote: renote,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, renote.id).overrideWithValue(renote),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(RenoteHeader), findsOne);
       expect(find.text('renote text'), findsOne);
       expect(find.byType(NoteFooter), findsOne);
@@ -933,16 +838,16 @@ void main() {
         renoteId: renote.id,
         renote: renote,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(collapseRenotes: false),
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, renote.id).overrideWithValue(renote),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setCollapseRenotes(false);
-      await tester.pumpAndSettle();
       expect(find.byType(RenoteHeader), findsOne);
       expect(find.text('renote text'), findsOne);
       expect(find.byType(NoteFooter), findsOne);
@@ -958,13 +863,15 @@ void main() {
         renoteId: renote.id,
         renote: renote,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, renote.id).overrideWithValue(renote),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(RenoteHeader), findsOne);
       expect(find.text('renote text'), findsOne);
       expect(find.byType(NoteFooter), findsNothing);
@@ -991,13 +898,15 @@ void main() {
         renoteId: renote.id,
         renote: renote,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, renote.id).overrideWithValue(renote),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(RenoteHeader), findsOne);
       expect(find.text('renote text'), findsOne);
       expect(find.byType(NoteFooter), findsNothing);
@@ -1023,13 +932,15 @@ void main() {
         renoteId: renote.id,
         renote: renote,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [
+          noteProvider(account, note.id).overrideWithValue(note),
+          noteProvider(account, renote.id).overrideWithValue(renote),
+        ],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
       expect(find.byType(RenoteHeader), findsOne);
       expect(find.text('renote text'), findsOne);
       expect(find.byType(NoteFooter), findsNothing);
@@ -1058,16 +969,16 @@ void main() {
           renoteId: renote.id,
           renote: renote,
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(showAvatarsInNote: false),
+          overrides: [
+            noteProvider(account, note.id).overrideWithValue(note),
+            noteProvider(account, renote.id).overrideWithValue(renote),
+          ],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setShowAvatarsInNote(false);
-        await tester.pumpAndSettle();
         expect(find.byType(UserAvatar), findsNothing);
       });
 
@@ -1085,13 +996,15 @@ void main() {
           renoteId: renote.id,
           renote: renote,
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [
+            noteProvider(account, note.id).overrideWithValue(note),
+            noteProvider(account, renote.id).overrideWithValue(renote),
+          ],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await tester.pumpAndSettle();
         await tester.tap(find.byType(UserAvatar).last);
         await tester.pump(kDoubleTapTimeout);
         await tester.pumpAndSettle();
@@ -1111,16 +1024,13 @@ void main() {
           userId: 'testuser',
           user: dummyUserLite.copyWith(id: 'testuser'),
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          generalSettings: const GeneralSettings(showAvatarsInNote: false),
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setShowAvatarsInNote(false);
-        await tester.pumpAndSettle();
         expect(find.byType(UserAvatar), findsNothing);
       });
 
@@ -1132,12 +1042,12 @@ void main() {
           userId: 'testuser',
           user: dummyUserLite.copyWith(id: 'testuser'),
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
         await tester.pumpAndSettle();
         await tester.tap(find.byType(UserAvatar));
         await tester.pump(kDoubleTapTimeout);
@@ -1159,16 +1069,15 @@ void main() {
           instance: const UserInstanceInfo(),
         ),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(
+          instanceTicker: InstanceTicker.none,
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setInstanceTicker(InstanceTicker.none);
-      await tester.pumpAndSettle();
       expect(find.byType(InstanceTickerWidget), findsNothing);
     });
 
@@ -1177,16 +1086,12 @@ void main() {
       (tester) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', user: dummyUserLite);
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setInstanceTicker(InstanceTicker.remote);
-        await tester.pumpAndSettle();
         expect(find.byType(InstanceTickerWidget), findsNothing);
       },
     );
@@ -1202,16 +1107,12 @@ void main() {
             instance: const UserInstanceInfo(),
           ),
         );
-        final container = await setupWidget(
+        await setupWidget(
           tester,
           account: account,
           noteId: note.id,
+          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
         );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setInstanceTicker(InstanceTicker.remote);
-        await tester.pumpAndSettle();
         expect(find.byType(InstanceTickerWidget), findsOne);
       },
     );
@@ -1221,16 +1122,15 @@ void main() {
     ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', user: dummyUserLite);
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(
+          instanceTicker: InstanceTicker.always,
+        ),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setInstanceTicker(InstanceTicker.always);
-      await tester.pumpAndSettle();
       expect(find.byType(InstanceTickerWidget), findsOne);
     });
   });
@@ -1243,12 +1143,12 @@ void main() {
         cw: 'cw text',
         text: 'note text',
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.text('cw text'), findsOne);
       expect(find.textContaining(t.misskey.cw_.show), findsOne);
@@ -1286,12 +1186,12 @@ void main() {
         renote: renote,
         poll: const NotePoll(multiple: false, choices: []),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(MediaList), findsNothing);
       expect(find.byType(PollWidget), findsNothing);
@@ -1332,12 +1232,12 @@ void main() {
         renote: renote,
         poll: const NotePoll(multiple: false, choices: []),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(MediaList), findsNothing);
       expect(find.byType(PollWidget), findsNothing);
@@ -1373,12 +1273,12 @@ void main() {
         id: 'test',
         channel: const NoteChannelInfo(id: 'testchannel', name: 'channel name'),
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.tv), findsExactly(2));
       expect(find.textContaining('channel name'), findsOne);
@@ -1402,12 +1302,12 @@ void main() {
         reactions: {'❤': 1},
         reactionAcceptance: ReactionAcceptance.likeOnly,
       );
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsNothing);
     });
@@ -1417,16 +1317,13 @@ void main() {
     ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', reactions: {'❤': 1});
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(showNoteReactionsViewer: false),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setShowNoteReactionsViewer(false);
-      await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsNothing);
     });
 
@@ -1435,12 +1332,12 @@ void main() {
     ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsNothing);
     });
@@ -1448,12 +1345,12 @@ void main() {
     testWidgets('should show a reactions viewer', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', reactions: {'❤': 1});
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsOne);
     });
@@ -1463,45 +1360,38 @@ void main() {
     testWidgets('should not show a footer if disabled', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        generalSettings: const GeneralSettings(showNoteFooter: false),
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setShowNoteFooter(false);
-      await tester.pumpAndSettle();
       expect(find.byType(NoteFooter), findsNothing);
     });
 
     testWidgets('should not show a footer if force disabled', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
         showFooter: false,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setShowNoteFooter(true);
-      await tester.pumpAndSettle();
       expect(find.byType(NoteFooter), findsNothing);
     });
 
     testWidgets('should show a footer', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
+      await setupWidget(
         tester,
         account: account,
         noteId: note.id,
+        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
       );
-      container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.byType(NoteFooter), findsOne);
     });

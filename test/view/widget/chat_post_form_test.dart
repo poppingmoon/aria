@@ -1,13 +1,14 @@
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
+import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:aria/view/widget/chat_post_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../test_util/create_overrides.dart';
+import '../../test_util/fake_shared_preferences.dart';
 
-Future<ProviderContainer> setupWidget(
+Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   String? userId,
@@ -15,7 +16,9 @@ Future<ProviderContainer> setupWidget(
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(account),
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
+      ],
       child: MaterialApp(
         home: Material(
           child: ChatPostForm(account: account, userId: userId, roomId: roomId),
@@ -24,10 +27,6 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container = ProviderScope.containerOf(
-    tester.element(find.byType(ChatPostForm)),
-  );
-  return container;
 }
 
 void main() {
