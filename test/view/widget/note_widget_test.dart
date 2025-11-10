@@ -7,8 +7,8 @@ import 'package:aria/provider/accounts_notifier_provider.dart';
 import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
-import 'package:aria/provider/note_provider.dart';
-import 'package:aria/provider/notes_notifier_provider.dart';
+import 'package:aria/provider/note_is_deleted_notifier_provider.dart';
+import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/emoji_picker.dart';
 import 'package:aria/view/widget/instance_ticker_widget.dart';
@@ -113,9 +113,11 @@ void main() {
           account: account,
           noteId: note.id,
           overrides: [
-            notesNotifierProvider(
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+            noteIsDeletedNotifierProvider(
               account,
-            ).overrideWithValue({note.id: note, note.renoteId!: null}),
+              note.renoteId!,
+            ).overrideWithValue(true),
           ],
         );
         expect(find.text(t.misskey.deletedNote), findsOne);
@@ -132,9 +134,11 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          notesNotifierProvider(
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteIsDeletedNotifierProvider(
             account,
-          ).overrideWithValue({note.id: note, note.replyId!: null}),
+            note.replyId!,
+          ).overrideWithValue(true),
         ],
       );
       expect(find.text(t.misskey.deletedNote), findsOne);
@@ -159,7 +163,9 @@ void main() {
             MuteWord(content: ['mute']),
           ],
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsNothing);
@@ -183,7 +189,9 @@ void main() {
             MuteWord(content: ['mute']),
           ],
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsOne);
@@ -206,7 +214,9 @@ void main() {
             MuteWord(content: ['mute']),
           ],
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsOne);
@@ -224,7 +234,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(
         tester
@@ -250,7 +262,9 @@ void main() {
         generalSettings: const GeneralSettings(
           publicNoteBackgroundColor: Colors.blue,
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(
         tester
@@ -277,7 +291,9 @@ void main() {
           generalSettings: const GeneralSettings(
             publicNoteBackgroundColor: Colors.amber,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(
           tester
@@ -308,7 +324,9 @@ void main() {
         generalSettings: const GeneralSettings(
           homeNoteBackgroundColor: Colors.amber,
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(
         tester
@@ -338,7 +356,9 @@ void main() {
           generalSettings: const GeneralSettings(
             followersNoteBackgroundColor: Colors.amber,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(
           tester
@@ -369,7 +389,9 @@ void main() {
           generalSettings: const GeneralSettings(
             specifiedNoteBackgroundColor: Colors.amber,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(
           tester
@@ -400,7 +422,9 @@ void main() {
           followersNoteBackgroundColor: Colors.amber,
           specifiedNoteBackgroundColor: Colors.amber,
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(
         tester
@@ -444,7 +468,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteTapAction: NoteActionType.none,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
@@ -463,7 +489,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
@@ -483,7 +511,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteTapAction: NoteActionType.menu,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
@@ -503,7 +533,9 @@ void main() {
             generalSettings: const GeneralSettings(
               noteTapAction: NoteActionType.reaction,
             ),
-            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+            overrides: [
+              noteNotifierProvider(account, note.id).overrideWithValue(note),
+            ],
           );
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapTimeout);
@@ -524,7 +556,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteTapAction: NoteActionType.reaction,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
@@ -564,7 +598,9 @@ void main() {
             noteTapAction: NoteActionType.none,
             noteLongPressAction: NoteActionType.none,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
@@ -585,7 +621,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteLongPressAction: NoteActionType.expand,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
@@ -604,7 +642,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteLongPressAction: NoteActionType.menu,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
@@ -620,7 +660,9 @@ void main() {
             tester,
             account: account,
             noteId: note.id,
-            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+            overrides: [
+              noteNotifierProvider(account, note.id).overrideWithValue(note),
+            ],
           );
           await tester.longPress(find.text('text'));
           await tester.pumpAndSettle();
@@ -637,7 +679,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.longPress(find.text('text'));
         await tester.pumpAndSettle();
@@ -677,7 +721,9 @@ void main() {
             noteTapAction: NoteActionType.none,
             noteDoubleTapAction: NoteActionType.none,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapTimeout);
@@ -699,7 +745,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteDoubleTapAction: NoteActionType.expand,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
@@ -717,7 +765,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
@@ -738,7 +788,9 @@ void main() {
             generalSettings: const GeneralSettings(
               noteDoubleTapAction: NoteActionType.reaction,
             ),
-            overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+            overrides: [
+              noteNotifierProvider(account, note.id).overrideWithValue(note),
+            ],
           );
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapMinTime);
@@ -760,7 +812,9 @@ void main() {
           generalSettings: const GeneralSettings(
             noteDoubleTapAction: NoteActionType.reaction,
           ),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.tap(find.text('text'));
         await tester.pump(kDoubleTapMinTime);
@@ -786,8 +840,8 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, reply.id).overrideWithValue(reply),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, reply.id).overrideWithValue(reply),
         ],
       );
       expect(find.byType(NoteSubWidget), findsOne);
@@ -815,8 +869,8 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, renote.id).overrideWithValue(renote),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, renote.id).overrideWithValue(renote),
         ],
       );
       expect(find.byType(RenoteHeader), findsOne);
@@ -844,8 +898,8 @@ void main() {
         noteId: note.id,
         generalSettings: const GeneralSettings(collapseRenotes: false),
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, renote.id).overrideWithValue(renote),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, renote.id).overrideWithValue(renote),
         ],
       );
       expect(find.byType(RenoteHeader), findsOne);
@@ -868,8 +922,8 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, renote.id).overrideWithValue(renote),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, renote.id).overrideWithValue(renote),
         ],
       );
       expect(find.byType(RenoteHeader), findsOne);
@@ -903,8 +957,8 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, renote.id).overrideWithValue(renote),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, renote.id).overrideWithValue(renote),
         ],
       );
       expect(find.byType(RenoteHeader), findsOne);
@@ -937,8 +991,8 @@ void main() {
         account: account,
         noteId: note.id,
         overrides: [
-          noteProvider(account, note.id).overrideWithValue(note),
-          noteProvider(account, renote.id).overrideWithValue(renote),
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+          noteNotifierProvider(account, renote.id).overrideWithValue(renote),
         ],
       );
       expect(find.byType(RenoteHeader), findsOne);
@@ -975,8 +1029,8 @@ void main() {
           noteId: note.id,
           generalSettings: const GeneralSettings(showAvatarsInNote: false),
           overrides: [
-            noteProvider(account, note.id).overrideWithValue(note),
-            noteProvider(account, renote.id).overrideWithValue(renote),
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+            noteNotifierProvider(account, renote.id).overrideWithValue(renote),
           ],
         );
         expect(find.byType(UserAvatar), findsNothing);
@@ -1001,8 +1055,8 @@ void main() {
           account: account,
           noteId: note.id,
           overrides: [
-            noteProvider(account, note.id).overrideWithValue(note),
-            noteProvider(account, renote.id).overrideWithValue(renote),
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+            noteNotifierProvider(account, renote.id).overrideWithValue(renote),
           ],
         );
         await tester.tap(find.byType(UserAvatar).last);
@@ -1029,7 +1083,9 @@ void main() {
           account: account,
           noteId: note.id,
           generalSettings: const GeneralSettings(showAvatarsInNote: false),
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(find.byType(UserAvatar), findsNothing);
       });
@@ -1046,7 +1102,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         await tester.pumpAndSettle();
         await tester.tap(find.byType(UserAvatar));
@@ -1076,7 +1134,9 @@ void main() {
         generalSettings: const GeneralSettings(
           instanceTicker: InstanceTicker.none,
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.byType(InstanceTickerWidget), findsNothing);
     });
@@ -1090,7 +1150,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(find.byType(InstanceTickerWidget), findsNothing);
       },
@@ -1111,7 +1173,9 @@ void main() {
           tester,
           account: account,
           noteId: note.id,
-          overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+          overrides: [
+            noteNotifierProvider(account, note.id).overrideWithValue(note),
+          ],
         );
         expect(find.byType(InstanceTickerWidget), findsOne);
       },
@@ -1129,7 +1193,9 @@ void main() {
         generalSettings: const GeneralSettings(
           instanceTicker: InstanceTicker.always,
         ),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.byType(InstanceTickerWidget), findsOne);
     });
@@ -1147,7 +1213,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.text('cw text'), findsOne);
@@ -1190,7 +1258,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(MediaList), findsNothing);
@@ -1236,7 +1306,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(MediaList), findsNothing);
@@ -1277,7 +1349,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byIcon(Icons.tv), findsExactly(2));
@@ -1306,7 +1380,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsNothing);
@@ -1322,7 +1398,9 @@ void main() {
         account: account,
         noteId: note.id,
         generalSettings: const GeneralSettings(showNoteReactionsViewer: false),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.byType(ReactionsViewer), findsNothing);
     });
@@ -1336,7 +1414,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsNothing);
@@ -1349,7 +1429,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(ReactionsViewer), findsOne);
@@ -1365,7 +1447,9 @@ void main() {
         account: account,
         noteId: note.id,
         generalSettings: const GeneralSettings(showNoteFooter: false),
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.byType(NoteFooter), findsNothing);
     });
@@ -1378,7 +1462,9 @@ void main() {
         account: account,
         noteId: note.id,
         showFooter: false,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       expect(find.byType(NoteFooter), findsNothing);
     });
@@ -1390,7 +1476,9 @@ void main() {
         tester,
         account: account,
         noteId: note.id,
-        overrides: [noteProvider(account, note.id).overrideWithValue(note)],
+        overrides: [
+          noteNotifierProvider(account, note.id).overrideWithValue(note),
+        ],
       );
       await tester.pumpAndSettle();
       expect(find.byType(NoteFooter), findsOne);

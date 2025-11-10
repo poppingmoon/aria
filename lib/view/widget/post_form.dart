@@ -30,7 +30,7 @@ import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
@@ -221,10 +221,10 @@ class PostForm extends HookConsumerWidget {
       attachesNotifierProvider(account.value, noteId: noteId),
     );
     final reply = request.replyId != null
-        ? ref.watch(noteProvider(account.value, request.replyId!))
+        ? ref.watch(noteNotifierProvider(account.value, request.replyId!))
         : null;
     final renote = request.renoteId != null
-        ? ref.watch(noteProvider(account.value, request.renoteId!))
+        ? ref.watch(noteNotifierProvider(account.value, request.renoteId!))
         : null;
     final channel = request.channelId != null
         ? ref

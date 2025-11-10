@@ -8,15 +8,15 @@ import '../model/streaming/note_update_event.dart';
 import '../util/append_content_warning.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
+import 'note_is_deleted_notifier_provider.dart';
+import 'note_notifier_provider.dart';
 
 part 'notes_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class NotesNotifier extends _$NotesNotifier {
   @override
-  Map<String, Note?> build(Account account) {
-    return {};
-  }
+  void build(Account account) {}
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
@@ -24,36 +24,51 @@ class NotesNotifier extends _$NotesNotifier {
     if (note.renote case final renote?) {
       add(renote);
     } else if (note.renoteId case final renoteId? when detail) {
-      if (!state.containsKey(renoteId)) {
+      if (ref.read(noteNotifierProvider(account, renoteId)) == null) {
         remove(renoteId);
       }
     }
     if (note.reply case final reply?) {
       add(reply, detail: false);
     } else if (note.replyId case final replyId? when detail) {
-      if (!state.containsKey(replyId)) {
+      if (ref.read(noteNotifierProvider(account, replyId)) == null) {
         remove(replyId);
       }
     }
-    final cachedNote = state[note.id];
-    state = {
-      ...state,
-      note.id: note.copyWith(
-        cw: note.user.mandatoryCW != null
-            ? appendContentWarning(note.cw, note.user.mandatoryCW)
-            : note.cw,
-        reactionCount:
-            note.reactionCount ??
-            note.reactions.values.fold<int>(
-              0,
-              (acc, reaction) => acc + reaction,
-            ),
-        renote: note.renote ?? state[note.renoteId],
-        reply: note.reply ?? state[note.replyId],
-        poll: detail ? note.poll : cachedNote?.poll,
-        myReaction: detail ? note.myReaction : cachedNote?.myReaction,
-      ),
-    };
+    final cachedNote = ref.read(noteNotifierProvider(account, note.id));
+    ref
+        .read(noteNotifierProvider(account, note.id).notifier)
+        .updateNote(
+          note.copyWith(
+            cw: note.user.mandatoryCW != null
+                ? appendContentWarning(note.cw, note.user.mandatoryCW)
+                : note.cw,
+            reactionCount:
+                note.reactionCount ??
+                note.reactions.values.fold<int>(
+                  0,
+                  (acc, reaction) => acc + reaction,
+                ),
+            renote:
+                note.renote ??
+                switch (note.renoteId) {
+                  final renoteId? => ref.read(
+                    noteNotifierProvider(account, renoteId),
+                  ),
+                  _ => null,
+                },
+            reply:
+                note.reply ??
+                switch (note.replyId) {
+                  final replyId? => ref.read(
+                    noteNotifierProvider(account, replyId),
+                  ),
+                  _ => null,
+                },
+            poll: detail ? note.poll : cachedNote?.poll,
+            myReaction: detail ? note.myReaction : cachedNote?.myReaction,
+          ),
+        );
   }
 
   void addAll(Iterable<Note> notes) {
@@ -69,11 +84,14 @@ class NotesNotifier extends _$NotesNotifier {
   }
 
   void remove(String noteId) {
-    state = {...state, noteId: null};
+    ref.invalidate(noteNotifierProvider(account, noteId));
+    ref
+        .read(noteIsDeletedNotifierProvider(account, noteId).notifier)
+        .markAsDeleted();
   }
 
   void addReaction(String noteId, Reacted reacted) {
-    final note = state[noteId];
+    final note = ref.read(noteNotifierProvider(account, noteId));
     if (note == null) {
       return;
     }
@@ -91,19 +109,20 @@ class NotesNotifier extends _$NotesNotifier {
         !reacted.reaction.endsWith('@.:')) {
       reactionEmojis[emoji.name] = emoji.url;
     }
-    state = {
-      ...state,
-      noteId: note.copyWith(
-        reactionCount: (note.reactionCount ?? 0) + 1,
-        reactions: reactions,
-        reactionEmojis: reactionEmojis,
-        myReaction: isMyReaction ? reacted.reaction : note.myReaction,
-      ),
-    };
+    ref
+        .read(noteNotifierProvider(account, noteId).notifier)
+        .updateNote(
+          note.copyWith(
+            reactionCount: (note.reactionCount ?? 0) + 1,
+            reactions: reactions,
+            reactionEmojis: reactionEmojis,
+            myReaction: isMyReaction ? reacted.reaction : note.myReaction,
+          ),
+        );
   }
 
   void removeReaction(String noteId, Unreacted unreacted) {
-    final note = state[noteId];
+    final note = ref.read(noteNotifierProvider(account, noteId));
     if (note == null) {
       return;
     }
@@ -122,18 +141,19 @@ class NotesNotifier extends _$NotesNotifier {
     } else {
       reactions[unreacted.reaction] = reactionCount - 1;
     }
-    state = {
-      ...state,
-      noteId: note.copyWith(
-        reactionCount: max(0, (note.reactionCount ?? 0) - 1),
-        reactions: reactions,
-        myReaction: isMyReaction ? null : note.myReaction,
-      ),
-    };
+    ref
+        .read(noteNotifierProvider(account, noteId).notifier)
+        .updateNote(
+          note.copyWith(
+            reactionCount: max(0, (note.reactionCount ?? 0) - 1),
+            reactions: reactions,
+            myReaction: isMyReaction ? null : note.myReaction,
+          ),
+        );
   }
 
   void addVote(String noteId, PollVoted pollVoted) {
-    final note = state[noteId];
+    final note = ref.read(noteNotifierProvider(account, noteId));
     if (note == null) {
       return;
     }
@@ -149,16 +169,16 @@ class NotesNotifier extends _$NotesNotifier {
       votes: choices[pollVoted.choice].votes + 1,
       isVoted: isMyVote,
     );
-    final notes = Map.of(state);
-    notes[noteId] = note.copyWith(poll: poll.copyWith(choices: choices));
-    state = notes;
+    ref
+        .read(noteNotifierProvider(account, noteId).notifier)
+        .updateNote(note.copyWith(poll: poll.copyWith(choices: choices)));
   }
 
   void updateNote(String noteId, Updated updated) {
     if (updated.note case final note?) {
       add(note);
     } else {
-      final note = state[noteId];
+      final note = ref.read(noteNotifierProvider(account, noteId));
       if (note == null) return;
       add(
         note.copyWith(
@@ -177,7 +197,7 @@ class NotesNotifier extends _$NotesNotifier {
     final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
         ? '${reaction.substring(0, reaction.length - 1)}@.:'
         : reaction;
-    final cachedNote = state[noteId];
+    final cachedNote = ref.read(noteNotifierProvider(account, noteId));
     if (cachedNote != null && cachedNote.myReaction != emoji) {
       add(
         cachedNote.copyWith(
@@ -211,7 +231,7 @@ class NotesNotifier extends _$NotesNotifier {
     await _misskey.notes.reactions.delete(
       NotesReactionsDeleteRequest(noteId: noteId),
     );
-    final cachedNote = state[noteId];
+    final cachedNote = ref.read(noteNotifierProvider(account, noteId));
     if (cachedNote case Note(:final myReaction?)) {
       final reactions = Map.of(cachedNote.reactions);
       final count = reactions[myReaction] ?? 0;

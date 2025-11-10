@@ -6,7 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../extension/text_style_extension.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../util/get_note_action.dart';
 import 'cw_button.dart';
 import 'deleted_note_widget.dart';
@@ -35,7 +35,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return DeletedNoteWidget(
         account: account,

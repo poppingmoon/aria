@@ -5,6 +5,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
+import '../note_notifier_provider.dart';
 import '../notes_notifier_provider.dart';
 import 'misskey_provider.dart';
 
@@ -26,8 +27,7 @@ class PageNotifier extends _$PageNotifier {
         .map(_getNoteIds)
         .flattenedToSet
         .where(
-          (noteId) =>
-              !ref.read(notesNotifierProvider(account)).containsKey(noteId),
+          (noteId) => ref.read(noteNotifierProvider(account, noteId)) == null,
         );
     unawaited(
       Future.wait(

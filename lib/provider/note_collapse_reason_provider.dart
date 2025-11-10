@@ -3,7 +3,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
-import 'note_provider.dart';
+import 'note_notifier_provider.dart';
 import 'parsed_mfm_provider.dart';
 
 part 'note_collapse_reason_provider.g.dart';
@@ -79,7 +79,7 @@ enum CollapseReason { long, large }
 @riverpod
 CollapseReason? noteCollapseReason(Ref ref, Account account, String noteId) {
   final text = ref.watch(
-    noteProvider(account, noteId).select((note) => note?.text),
+    noteNotifierProvider(account, noteId).select((note) => note?.text),
   );
   if (text != null) {
     final nodes = ref.watch(parsedMfmProvider(text));

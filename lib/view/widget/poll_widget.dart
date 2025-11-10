@@ -10,7 +10,7 @@ import '../../hook/tap_gesture_recognizer_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
@@ -38,7 +38,7 @@ class PollWidget extends HookConsumerWidget {
         !poll.multiple && poll.choices.any((choice) => choice.isVoted);
     final showResult = useState(closed || isVoted);
     final emojis = ref.watch(
-      noteProvider(account, noteId).select((note) => note?.emojis),
+      noteNotifierProvider(account, noteId).select((note) => note?.emojis),
     );
     final recognizer = useTapGestureRecognizer();
     final colors = ref.watch(

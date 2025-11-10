@@ -7,7 +7,7 @@ import 'package:aria/provider/api/misskey_provider.dart';
 import 'package:aria/provider/emojis_notifier_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/misskey_colors_provider.dart';
-import 'package:aria/provider/note_provider.dart';
+import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/dialog/reaction_confirmation_dialog.dart';
 import 'package:aria/view/widget/reaction_button.dart';
@@ -328,7 +328,10 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, note.id))?.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, note.id))
+            ?.myReaction,
         ':emoji:',
       );
     });
@@ -372,7 +375,10 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, note.id))?.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, note.id))
+            ?.myReaction,
         isNull,
       );
     });
@@ -428,7 +434,10 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, note.id))?.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, note.id))
+            ?.myReaction,
         ':emoji:',
       );
     });

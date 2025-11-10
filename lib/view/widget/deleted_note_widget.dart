@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/note_is_deleted_provider.dart';
+import '../../provider/note_is_deleted_notifier_provider.dart';
 import 'note_fallback_widget.dart';
 
 class DeletedNoteWidget extends ConsumerWidget {
@@ -23,7 +23,9 @@ class DeletedNoteWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if ((account, noteId) case (final account?, final noteId?)) {
-      final isDeleted = ref.watch(noteIsDeletedProvider(account, noteId));
+      final isDeleted = ref.watch(
+        noteIsDeletedNotifierProvider(account, noteId),
+      );
       if (isDeleted) {
         return _DeletedNoteWidget(borderRadius: borderRadius);
       } else {

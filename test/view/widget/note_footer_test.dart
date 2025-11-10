@@ -11,8 +11,7 @@ import 'package:aria/provider/api/misskey_provider.dart';
 import 'package:aria/provider/api/translated_note_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/misskey_colors_provider.dart';
-import 'package:aria/provider/note_provider.dart';
-import 'package:aria/provider/notes_notifier_provider.dart';
+import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:aria/provider/post_notifier_provider.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:aria/view/dialog/clip_dialog.dart';
@@ -65,12 +64,15 @@ Future<void> setupWidget(
         misskeyProvider(account).overrideWithValue(
           Misskey(serverUrl: Uri.https(account.host), dio: dio),
         ),
-        notesNotifierProvider(account).overrideWithBuild(
-          (_, _) => {
-            note.id: note,
-            if (note.renote case final renote?) renote.id: renote,
-          },
-        ),
+        noteNotifierProvider(
+          account,
+          note.id,
+        ).overrideWithBuild((_, _) => note),
+        if (note.renote case final renote?)
+          noteNotifierProvider(
+            account,
+            renote.id,
+          ).overrideWithBuild((_, _) => renote),
         sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
         ...overrides,
       ],
@@ -804,11 +806,17 @@ void main() {
       await tester.tap(find.byIcon(Icons.favorite_border));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         isNull,
       );
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         '❤',
       );
     });
@@ -850,11 +858,17 @@ void main() {
       await tester.tap(find.byIcon(Icons.favorite_border));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         '❤',
       );
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         isNull,
       );
     });
@@ -983,7 +997,10 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         ':test:',
       );
     });
@@ -1026,11 +1043,17 @@ void main() {
       tester.element(find.byType(EmojiPicker)).pop(':test:');
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         isNull,
       );
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         ':test:',
       );
     });
@@ -1074,11 +1097,17 @@ void main() {
       tester.element(find.byType(EmojiPicker)).pop(':test:');
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         ':test:',
       );
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         isNull,
       );
     });
@@ -1245,7 +1274,10 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         isNull,
       );
     });
@@ -1288,11 +1320,17 @@ void main() {
       await tester.tap(find.text(t.misskey.ok));
       await tester.pumpAndSettle();
       expect(
-        tester.container().read(noteProvider(account, 'test'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'test'))!
+            .myReaction,
         isNull,
       );
       expect(
-        tester.container().read(noteProvider(account, 'renote'))!.myReaction,
+        tester
+            .container()
+            .read(noteNotifierProvider(account, 'renote'))!
+            .myReaction,
         '❤',
       );
     });

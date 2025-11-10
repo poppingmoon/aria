@@ -10,7 +10,7 @@ import '../../model/account.dart';
 import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
@@ -23,7 +23,7 @@ Future<bool> confirmPost(
   List<DriveFile>? files,
 }) async {
   if (request.replyId case final replyId?) {
-    final reply = ref.read(noteProvider(account, replyId));
+    final reply = ref.read(noteNotifierProvider(account, replyId));
     if (reply == null) {
       final reply = await futureWithDialog(
         ref.context,
@@ -35,7 +35,7 @@ Future<bool> confirmPost(
     }
   }
   if (request.renoteId case final renoteId?) {
-    final renote = ref.read(noteProvider(account, renoteId));
+    final renote = ref.read(noteNotifierProvider(account, renoteId));
     if (renote == null) {
       if (!ref.context.mounted) return false;
       final renote = await futureWithDialog(

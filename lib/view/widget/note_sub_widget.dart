@@ -8,7 +8,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
@@ -36,7 +36,7 @@ class NoteSubWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return DeletedNoteWidget(account: account, noteId: noteId);
     }

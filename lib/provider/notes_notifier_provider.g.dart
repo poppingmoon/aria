@@ -13,7 +13,7 @@ part of 'notes_notifier_provider.dart';
 const notesNotifierProvider = NotesNotifierFamily._();
 
 final class NotesNotifierProvider
-    extends $NotifierProvider<NotesNotifier, Map<String, Note?>> {
+    extends $NotifierProvider<NotesNotifier, void> {
   const NotesNotifierProvider._({
     required NotesNotifierFamily super.from,
     required Account super.argument,
@@ -40,10 +40,10 @@ final class NotesNotifierProvider
   NotesNotifier create() => NotesNotifier();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Map<String, Note?> value) {
+  Override overrideWithValue(void value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<Map<String, Note?>>(value),
+      providerOverride: $SyncValueProvider<void>(value),
     );
   }
 
@@ -58,17 +58,10 @@ final class NotesNotifierProvider
   }
 }
 
-String _$notesNotifierHash() => r'df76dea655824d33c1b4cb79ebd4d44eba3867bc';
+String _$notesNotifierHash() => r'90b8787afd898e84bfcb1daf7e5574265fe9167b';
 
 final class NotesNotifierFamily extends $Family
-    with
-        $ClassFamilyOverride<
-          NotesNotifier,
-          Map<String, Note?>,
-          Map<String, Note?>,
-          Map<String, Note?>,
-          Account
-        > {
+    with $ClassFamilyOverride<NotesNotifier, void, void, void, Account> {
   const NotesNotifierFamily._()
     : super(
         retry: null,
@@ -85,24 +78,24 @@ final class NotesNotifierFamily extends $Family
   String toString() => r'notesNotifierProvider';
 }
 
-abstract class _$NotesNotifier extends $Notifier<Map<String, Note?>> {
+abstract class _$NotesNotifier extends $Notifier<void> {
   late final _$args = ref.$arg as Account;
   Account get account => _$args;
 
-  Map<String, Note?> build(Account account);
+  void build(Account account);
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
-    final ref = this.ref as $Ref<Map<String, Note?>, Map<String, Note?>>;
+    build(_$args);
+    final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<Map<String, Note?>, Map<String, Note?>>,
-              Map<String, Note?>,
+              AnyNotifier<void, void>,
+              void,
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleValue(ref, null);
   }
 }

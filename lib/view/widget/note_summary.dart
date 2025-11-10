@@ -4,7 +4,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import 'mfm.dart';
 
@@ -48,7 +48,7 @@ class NoteSummary extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return FutureBuilder(
         future: ref.read(notesNotifierProvider(account).notifier).show(noteId),

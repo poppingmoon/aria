@@ -1,6 +1,7 @@
 import 'package:aria/model/account.dart';
 import 'package:aria/model/general_settings.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
+import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/reaction_button.dart';
@@ -24,9 +25,10 @@ Future<void> setupWidget(
     ProviderScope(
       overrides: [
         generalSettingsNotifierProvider.overrideWithValue(generalSettings),
-        notesNotifierProvider(
+        noteNotifierProvider(
           account,
-        ).overrideWithBuild((_, _) => {note.id: note}),
+          note.id,
+        ).overrideWithBuild((_, _) => note),
         serverUrlNotifierProvider(
           account.host,
         ).overrideWithValue(Uri.https(account.host)),

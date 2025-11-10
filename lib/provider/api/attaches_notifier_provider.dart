@@ -6,7 +6,7 @@ import '../../model/post_file.dart';
 import '../../util/compress_image.dart';
 import '../../util/randomize_filename.dart';
 import '../account_settings_notifier_provider.dart';
-import '../note_provider.dart';
+import '../note_notifier_provider.dart';
 import 'misskey_provider.dart';
 
 part 'attaches_notifier_provider.g.dart';
@@ -21,7 +21,7 @@ class AttachesNotifier extends _$AttachesNotifier {
     bool chat = false,
   }) {
     if (noteId != null) {
-      final note = ref.read(noteProvider(account, noteId));
+      final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.files
               .map((file) => DrivePostFile.fromDriveFile(file))
               .toList() ??

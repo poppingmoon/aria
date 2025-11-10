@@ -59,7 +59,7 @@ final class AttachesNotifierProvider
   }
 }
 
-String _$attachesNotifierHash() => r'383d958c23010db42b46d23a39637cb62e6918e1';
+String _$attachesNotifierHash() => r'd82e0021bc9734dd7f152965c4b9204443f3b0ab';
 
 final class AttachesNotifierFamily extends $Family
     with

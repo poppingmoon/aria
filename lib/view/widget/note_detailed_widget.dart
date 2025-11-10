@@ -18,7 +18,7 @@ import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
 import '../../util/format_datetime.dart';
@@ -60,7 +60,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
@@ -180,7 +180,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                       if (conversation.isNotEmpty)
                         for (final note in conversation.reversed) ...[
                           ChannelColorBarBox(
-                            note: appearNote.reply,
+                            note: note,
                             child: Padding(
                               padding: EdgeInsetsDirectional.only(
                                 start: horizontalPadding - 4.0,
