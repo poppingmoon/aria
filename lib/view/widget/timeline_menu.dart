@@ -63,7 +63,8 @@ class TimelineMenu extends ConsumerWidget {
                 ),
               ),
             ),
-          if (i?.policies?.chatAvailability != ChatAvailability.unavailable &&
+          if (i != null &&
+              i.policies?.chatAvailability != ChatAvailability.unavailable &&
               (endpoints?.contains('chat/history') ?? true))
             Card(
               clipBehavior: Clip.hardEdge,
@@ -75,7 +76,7 @@ class TimelineMenu extends ConsumerWidget {
                     Stack(
                       children: [
                         const Icon(Icons.message),
-                        if (i?.hasUnreadChatMessages ?? false)
+                        if (i.hasUnreadChatMessages ?? false)
                           DecoratedBox(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
