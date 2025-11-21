@@ -3,9 +3,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
 import '../../model/id.dart';
-import '../shared_preferences_provider.dart';
-import 'i_notifier_provider.dart';
-import 'misskey_provider.dart';
+import 'api/i_notifier_provider.dart';
+import 'api/misskey_provider.dart';
+import 'shared_preferences_provider.dart';
 
 part 'id_gen_method_provider.g.dart';
 
