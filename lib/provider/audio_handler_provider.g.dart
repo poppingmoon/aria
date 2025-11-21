@@ -6,22 +6,44 @@ part of 'audio_handler_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$audioHandlerHash() => r'cb3558d0b718a886914349508659c01a5c803db5';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [audioHandler].
 @ProviderFor(audioHandler)
-final audioHandlerProvider = FutureProvider<AudioHandler>.internal(
-  audioHandler,
-  name: r'audioHandlerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$audioHandlerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const audioHandlerProvider = AudioHandlerProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AudioHandlerRef = FutureProviderRef<AudioHandler>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class AudioHandlerProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<AudioHandler>,
+          AudioHandler,
+          FutureOr<AudioHandler>
+        >
+    with $FutureModifier<AudioHandler>, $FutureProvider<AudioHandler> {
+  const AudioHandlerProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'audioHandlerProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$audioHandlerHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<AudioHandler> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<AudioHandler> create(Ref ref) {
+    return audioHandler(ref);
+  }
+}
+
+String _$audioHandlerHash() => r'cb3558d0b718a886914349508659c01a5c803db5';

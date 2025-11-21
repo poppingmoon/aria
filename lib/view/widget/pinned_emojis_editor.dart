@@ -6,7 +6,7 @@ import 'package:reorderables/reorderables.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../dialog/confirmation_dialog.dart';
@@ -29,7 +29,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
     final pinnedEmojis = ref.watch(
       pinnedEmojisNotifierProvider(account, reaction: reaction),
     );
-    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
     final useEmojiPalette =
         endpoints == null ||
         endpoints.contains('chat/history') ||

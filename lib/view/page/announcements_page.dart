@@ -52,9 +52,7 @@ class _Announcements extends ConsumerWidget {
       announcementsNotifierProvider(account, isActive: isActive),
     );
     final hasUnreadAnnouncement = ref.watch(
-      iNotifierProvider(
-        account,
-      ).select((i) => i.valueOrNull?.hasUnreadAnnouncement),
+      iNotifierProvider(account).select((i) => i.value?.hasUnreadAnnouncement),
     );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

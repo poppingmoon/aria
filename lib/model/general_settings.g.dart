@@ -181,7 +181,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
 Map<String, dynamic> _$GeneralSettingsToJson(
   _GeneralSettings instance,
 ) => <String, dynamic>{
-  if (_$AppLocaleEnumMap[instance.locale] case final value?) 'locale': value,
+  'locale': ?_$AppLocaleEnumMap[instance.locale],
   'collapseRenotes': instance.collapseRenotes,
   'sensitive': _$SensitiveMediaDisplayEnumMap[instance.sensitive]!,
   'highlightSensitiveMedia': instance.highlightSensitiveMedia,
@@ -213,13 +213,12 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'alwaysExpandMediaInSubNote': instance.alwaysExpandMediaInSubNote,
   'mergeReactionsByName': instance.mergeReactionsByName,
   'alwaysShowAllReactions': instance.alwaysShowAllReactions,
-  if (_$MediaListWithOneImageAppearanceEnumMap[instance
-          .mediaListWithOneImageAppearance]
-      case final value?)
-    'mediaListWithOneImageAppearance': value,
+  'mediaListWithOneImageAppearance':
+      ?_$MediaListWithOneImageAppearanceEnumMap[instance
+          .mediaListWithOneImageAppearance],
   'thumbnailBoxFit': _$BoxFitEnumMap[instance.thumbnailBoxFit]!,
   'emojiStyle': _$EmojiStyleEnumMap[instance.emojiStyle]!,
-  if (instance.fontFamily case final value?) 'fontFamily': value,
+  'fontFamily': ?instance.fontFamily,
   'fontSize': instance.fontSize,
   'lineHeight': instance.lineHeight,
   'avatarScale': instance.avatarScale,
@@ -228,30 +227,22 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'noteFooterScale': instance.noteFooterScale,
   'noteVerticalPadding': instance.noteVerticalPadding,
   'noteHorizontalPadding': instance.noteHorizontalPadding,
-  if (_$JsonConverterToJson<int, Color>(
-        instance.publicNoteBackgroundColor,
-        const _ColorConverter().toJson,
-      )
-      case final value?)
-    'publicNoteBackgroundColor': value,
-  if (_$JsonConverterToJson<int, Color>(
-        instance.homeNoteBackgroundColor,
-        const _ColorConverter().toJson,
-      )
-      case final value?)
-    'homeNoteBackgroundColor': value,
-  if (_$JsonConverterToJson<int, Color>(
-        instance.followersNoteBackgroundColor,
-        const _ColorConverter().toJson,
-      )
-      case final value?)
-    'followersNoteBackgroundColor': value,
-  if (_$JsonConverterToJson<int, Color>(
-        instance.specifiedNoteBackgroundColor,
-        const _ColorConverter().toJson,
-      )
-      case final value?)
-    'specifiedNoteBackgroundColor': value,
+  'publicNoteBackgroundColor': ?_$JsonConverterToJson<int, Color>(
+    instance.publicNoteBackgroundColor,
+    const _ColorConverter().toJson,
+  ),
+  'homeNoteBackgroundColor': ?_$JsonConverterToJson<int, Color>(
+    instance.homeNoteBackgroundColor,
+    const _ColorConverter().toJson,
+  ),
+  'followersNoteBackgroundColor': ?_$JsonConverterToJson<int, Color>(
+    instance.followersNoteBackgroundColor,
+    const _ColorConverter().toJson,
+  ),
+  'specifiedNoteBackgroundColor': ?_$JsonConverterToJson<int, Color>(
+    instance.specifiedNoteBackgroundColor,
+    const _ColorConverter().toJson,
+  ),
   'emojiPickerUseDialog': instance.emojiPickerUseDialog,
   'emojiPickerScale': instance.emojiPickerScale,
   'emojiPickerAutofocus': instance.emojiPickerAutofocus,

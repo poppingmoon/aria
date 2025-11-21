@@ -63,7 +63,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
         slivers: [
           if (header case final header?) header,
           if (paginationState case final paginationState?) ...[
-            if (paginationState.valueOrNull?.items case final items?
+            if (paginationState.value?.items case final items?
                 when items.isNotEmpty)
               SliverList.separated(
                 itemBuilder: (context, index) => Center(

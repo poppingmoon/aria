@@ -42,7 +42,7 @@ class UserNotifier extends _$UserNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  String get _userId => userId ?? state.valueOrNull!.id;
+  String get _userId => userId ?? state.value!.id;
 
   Future<void> follow() async {
     await _misskey.following.create(FollowingCreateRequest(userId: _userId));
@@ -52,7 +52,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> unfollow() async {
     await _misskey.following.delete(FollowingDeleteRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isFollowing: false));
     }
@@ -62,7 +62,7 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.following.requests.cancel(
       FollowingRequestsCancelRequest(userId: _userId),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(
         user.copyWith(hasPendingFollowRequestFromYou: false),
@@ -74,7 +74,7 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.mute.create(
       MuteCreateRequest(userId: _userId, expiresAt: expiresAt),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isMuted: true));
     }
@@ -82,7 +82,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> unmute() async {
     await _misskey.mute.delete(MuteDeleteRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isMuted: false));
     }
@@ -90,7 +90,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> renoteMute() async {
     await _misskey.renoteMute.create(RenoteMuteCreateRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isRenoteMuted: true));
     }
@@ -98,7 +98,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> renoteUnmute() async {
     await _misskey.renoteMute.delete(RenoteMuteDeleteRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isRenoteMuted: false));
     }
@@ -106,7 +106,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> block() async {
     await _misskey.blocking.create(BlockCreateRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isBlocking: true));
     }
@@ -114,7 +114,7 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> unblock() async {
     await _misskey.blocking.delete(BlockDeleteRequest(userId: _userId));
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isBlocking: false));
     }
@@ -124,7 +124,7 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.following.invalidate(
       FollowingInvalidateRequest(userId: _userId),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isFollowed: false));
     }
@@ -134,7 +134,7 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.users.updateMemo(
       UsersUpdateMemoRequest(userId: _userId, memo: memo),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMe) {
       state = AsyncValue.data(user.copyWith(memo: memo));
     } else if (user is UserDetailedNotMeWithRelations) {
@@ -148,7 +148,7 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.following.update(
       FollowingUpdateRequest(userId: _userId, withReplies: withReplies),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(withReplies: withReplies));
     }
@@ -163,7 +163,7 @@ class UserNotifier extends _$UserNotifier {
             : FollowingUpdateAllNotifyType.none,
       ),
     );
-    final user = state.valueOrNull;
+    final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(
         user.copyWith(notify: notify ? Notify.normal : Notify.none),

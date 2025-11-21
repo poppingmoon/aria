@@ -6,205 +6,117 @@ part of 'send_chat_message_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sendChatMessageNotifierHash() =>
-    r'c61f0225635795f271f2284f7929627b791653bd';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$SendChatMessageNotifier
-    extends BuildlessAutoDisposeNotifier<String?> {
-  late final Account account;
-  late final String? userId;
-  late final String? roomId;
-
-  String? build(Account account, {String? userId, String? roomId});
-}
-
-/// See also [SendChatMessageNotifier].
 @ProviderFor(SendChatMessageNotifier)
-const sendChatMessageNotifierProvider = SendChatMessageNotifierFamily();
+const sendChatMessageNotifierProvider = SendChatMessageNotifierFamily._();
 
-/// See also [SendChatMessageNotifier].
-class SendChatMessageNotifierFamily extends Family<String?> {
-  /// See also [SendChatMessageNotifier].
-  const SendChatMessageNotifierFamily();
-
-  /// See also [SendChatMessageNotifier].
-  SendChatMessageNotifierProvider call(
-    Account account, {
-    String? userId,
-    String? roomId,
-  }) {
-    return SendChatMessageNotifierProvider(
-      account,
-      userId: userId,
-      roomId: roomId,
-    );
-  }
-
-  @override
-  SendChatMessageNotifierProvider getProviderOverride(
-    covariant SendChatMessageNotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-      userId: provider.userId,
-      roomId: provider.roomId,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'sendChatMessageNotifierProvider';
-}
-
-/// See also [SendChatMessageNotifier].
-class SendChatMessageNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<SendChatMessageNotifier, String?> {
-  /// See also [SendChatMessageNotifier].
-  SendChatMessageNotifierProvider(
-    Account account, {
-    String? userId,
-    String? roomId,
-  }) : this._internal(
-         () => SendChatMessageNotifier()
-           ..account = account
-           ..userId = userId
-           ..roomId = roomId,
-         from: sendChatMessageNotifierProvider,
+final class SendChatMessageNotifierProvider
+    extends $NotifierProvider<SendChatMessageNotifier, String?> {
+  const SendChatMessageNotifierProvider._({
+    required SendChatMessageNotifierFamily super.from,
+    required (Account, {String? userId, String? roomId}) super.argument,
+  }) : super(
+         retry: null,
          name: r'sendChatMessageNotifierProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$sendChatMessageNotifierHash,
-         dependencies: SendChatMessageNotifierFamily._dependencies,
-         allTransitiveDependencies:
-             SendChatMessageNotifierFamily._allTransitiveDependencies,
-         account: account,
-         userId: userId,
-         roomId: roomId,
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
        );
 
-  SendChatMessageNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.userId,
-    required this.roomId,
-  }) : super.internal();
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
+  @override
+  String debugGetCreateSourceHash() => _$sendChatMessageNotifierHash();
 
   @override
-  String? runNotifierBuild(covariant SendChatMessageNotifier notifier) {
-    return notifier.build(account, userId: userId, roomId: roomId);
+  String toString() {
+    return r'sendChatMessageNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  Override overrideWith(SendChatMessageNotifier Function() create) {
-    return ProviderOverride(
+  SendChatMessageNotifier create() => SendChatMessageNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(String? value) {
+    return $ProviderOverride(
       origin: this,
-      override: SendChatMessageNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId
-          ..roomId = roomId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        userId: userId,
-        roomId: roomId,
-      ),
+      providerOverride: $SyncValueProvider<String?>(value),
     );
-  }
-
-  @override
-  AutoDisposeNotifierProviderElement<SendChatMessageNotifier, String?>
-  createElement() {
-    return _SendChatMessageNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
     return other is SendChatMessageNotifierProvider &&
-        other.account == account &&
-        other.userId == userId &&
-        other.roomId == roomId;
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-    hash = _SystemHash.combine(hash, roomId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin SendChatMessageNotifierRef on AutoDisposeNotifierProviderRef<String?> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$sendChatMessageNotifierHash() =>
+    r'c61f0225635795f271f2284f7929627b791653bd';
 
-  /// The parameter `userId` of this provider.
-  String? get userId;
+final class SendChatMessageNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          SendChatMessageNotifier,
+          String?,
+          String?,
+          String?,
+          (Account, {String? userId, String? roomId})
+        > {
+  const SendChatMessageNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'sendChatMessageNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-  /// The parameter `roomId` of this provider.
-  String? get roomId;
+  SendChatMessageNotifierProvider call(
+    Account account, {
+    String? userId,
+    String? roomId,
+  }) => SendChatMessageNotifierProvider._(
+    argument: (account, userId: userId, roomId: roomId),
+    from: this,
+  );
+
+  @override
+  String toString() => r'sendChatMessageNotifierProvider';
 }
 
-class _SendChatMessageNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<SendChatMessageNotifier, String?>
-    with SendChatMessageNotifierRef {
-  _SendChatMessageNotifierProviderElement(super.provider);
+abstract class _$SendChatMessageNotifier extends $Notifier<String?> {
+  late final _$args = ref.$arg as (Account, {String? userId, String? roomId});
+  Account get account => _$args.$1;
+  String? get userId => _$args.userId;
+  String? get roomId => _$args.roomId;
 
+  String? build(Account account, {String? userId, String? roomId});
+  @$mustCallSuper
   @override
-  Account get account => (origin as SendChatMessageNotifierProvider).account;
-  @override
-  String? get userId => (origin as SendChatMessageNotifierProvider).userId;
-  @override
-  String? get roomId => (origin as SendChatMessageNotifierProvider).roomId;
+  void runBuild() {
+    final created = build(
+      _$args.$1,
+      userId: _$args.userId,
+      roomId: _$args.roomId,
+    );
+    final ref = this.ref as $Ref<String?, String?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<String?, String?>,
+              String?,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

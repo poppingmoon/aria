@@ -6,22 +6,51 @@ part of 'miauth_repository_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$miAuthRepositoryHash() => r'c26494a9a41e561c457b7256fb0e15c50c1f2932';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [miAuthRepository].
 @ProviderFor(miAuthRepository)
-final miAuthRepositoryProvider = AutoDisposeProvider<MiAuthRepository>.internal(
-  miAuthRepository,
-  name: r'miAuthRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$miAuthRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const miAuthRepositoryProvider = MiAuthRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef MiAuthRepositoryRef = AutoDisposeProviderRef<MiAuthRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class MiAuthRepositoryProvider
+    extends
+        $FunctionalProvider<
+          MiAuthRepository,
+          MiAuthRepository,
+          MiAuthRepository
+        >
+    with $Provider<MiAuthRepository> {
+  const MiAuthRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'miAuthRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$miAuthRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<MiAuthRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  MiAuthRepository create(Ref ref) {
+    return miAuthRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(MiAuthRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<MiAuthRepository>(value),
+    );
+  }
+}
+
+String _$miAuthRepositoryHash() => r'08fd152543cb5330a4407ca851d42f37aca0ce0d';

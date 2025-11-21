@@ -8,7 +8,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
 import '../../model/pagination_state.dart';
-import 'endpoints_provider.dart';
+import 'endpoints_notifier_provider.dart';
 import 'misskey_provider.dart';
 
 part 'drive_files_notifier_provider.g.dart';
@@ -55,7 +55,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -90,7 +90,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
       ),
       file,
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
@@ -110,7 +110,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
       ),
       data,
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
@@ -132,7 +132,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
 
   Future<void> delete(String fileId) async {
     await _misskey.drive.files.delete(DriveFilesDeleteRequest(fileId: fileId));
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((file) => file.id != fileId).toList(),
@@ -154,7 +154,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
         comment: comment,
       ),
     );
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items
@@ -175,7 +175,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
       excludeRemoveNullPredicate: (key, _) => key == 'folderId',
     );
     final file = DriveFile.fromJson(response);
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((file) => file.id != fileId).toList(),
@@ -187,7 +187,9 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
   Future<void> moveBulkFrom(List<DriveFile> files) async {
     bool isMoveBulkAvailable = false;
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       isMoveBulkAvailable = endpoints.contains('drive/files/move-bulk');
     } catch (_) {}
     if (isMoveBulkAvailable) {
@@ -216,17 +218,17 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
   }
 
   void add(DriveFile file) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [file, ...value.items]));
   }
 
   void addAll(Iterable<DriveFile> files) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [...files, ...value.items]));
   }
 
   void removeAll(Iterable<String> fileIds) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.where((file) => !fileIds.contains(file.id)).toList(),
@@ -235,7 +237,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
   }
 
   void replace(DriveFile file) {
-    final value = state.valueOrNull ?? const PaginationState();
+    final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
         items: value.items.map((f) => f.id == file.id ? file : f).toList(),

@@ -1,4 +1,6 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'dart:async';
+import 'dart:math';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -9,8 +11,19 @@ import '../token_provider.dart';
 
 part 'web_socket_channel_provider.g.dart';
 
-@riverpod
-(WebSocketChannel, DateTime) webSocketChannel(Ref ref, Account account) {
+Duration? _retry(int retryCount, Object error) {
+  if (error case WebSocketChannelException() || TimeoutException()) {
+    return Duration(seconds: pow(2, retryCount).toInt());
+  } else {
+    return null;
+  }
+}
+
+@Riverpod(retry: _retry)
+FutureOr<(IOWebSocketChannel, DateTime)> webSocketChannel(
+  Ref ref,
+  Account account,
+) async {
   final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
   final token = ref.watch(tokenProvider(account));
   final streamingUrl = serverUrl.replace(
@@ -27,6 +40,7 @@ part 'web_socket_channel_provider.g.dart';
     await webSocketChannel.sink.done;
     await webSocketChannel.sink.close();
   });
+  await webSocketChannel.ready;
 
   return (webSocketChannel, DateTime.now());
 }

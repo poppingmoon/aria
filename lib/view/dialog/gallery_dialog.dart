@@ -25,7 +25,7 @@ class GalleryDialog extends ConsumerWidget {
       title: Text(t.misskey.gallery),
       children: [
         ...switch (posts) {
-          AsyncValue(valueOrNull: final posts?) => posts.items.map(
+          AsyncValue(value: final posts?) => posts.items.map(
             (post) => CheckboxListTile(
               title: Text(post.title),
               value: files.every((file) => post.fileIds.contains(file.id)),

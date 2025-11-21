@@ -6,174 +6,109 @@ part of 'renote_mutings_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$renoteMutingsNotifierHash() =>
-    r'370dc2e750e9af580b7a2a26e01ccd621a410dc1';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$RenoteMutingsNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<RenoteMuting>> {
-  late final Account account;
-
-  Stream<PaginationState<RenoteMuting>> build(Account account);
-}
-
-/// See also [RenoteMutingsNotifier].
 @ProviderFor(RenoteMutingsNotifier)
-const renoteMutingsNotifierProvider = RenoteMutingsNotifierFamily();
+const renoteMutingsNotifierProvider = RenoteMutingsNotifierFamily._();
 
-/// See also [RenoteMutingsNotifier].
-class RenoteMutingsNotifierFamily
-    extends Family<AsyncValue<PaginationState<RenoteMuting>>> {
-  /// See also [RenoteMutingsNotifier].
-  const RenoteMutingsNotifierFamily();
-
-  /// See also [RenoteMutingsNotifier].
-  RenoteMutingsNotifierProvider call(Account account) {
-    return RenoteMutingsNotifierProvider(account);
-  }
-
-  @override
-  RenoteMutingsNotifierProvider getProviderOverride(
-    covariant RenoteMutingsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'renoteMutingsNotifierProvider';
-}
-
-/// See also [RenoteMutingsNotifier].
-class RenoteMutingsNotifierProvider
+final class RenoteMutingsNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
+        $StreamNotifierProvider<
           RenoteMutingsNotifier,
           PaginationState<RenoteMuting>
         > {
-  /// See also [RenoteMutingsNotifier].
-  RenoteMutingsNotifierProvider(Account account)
-    : this._internal(
-        () => RenoteMutingsNotifier()..account = account,
-        from: renoteMutingsNotifierProvider,
-        name: r'renoteMutingsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$renoteMutingsNotifierHash,
-        dependencies: RenoteMutingsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            RenoteMutingsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  RenoteMutingsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+  const RenoteMutingsNotifierProvider._({
+    required RenoteMutingsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'renoteMutingsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<RenoteMuting>> runNotifierBuild(
-    covariant RenoteMutingsNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
+  String debugGetCreateSourceHash() => _$renoteMutingsNotifierHash();
 
   @override
-  Override overrideWith(RenoteMutingsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: RenoteMutingsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
+  String toString() {
+    return r'renoteMutingsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    RenoteMutingsNotifier,
-    PaginationState<RenoteMuting>
-  >
-  createElement() {
-    return _RenoteMutingsNotifierProviderElement(this);
-  }
+  RenoteMutingsNotifier create() => RenoteMutingsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is RenoteMutingsNotifierProvider && other.account == account;
+    return other is RenoteMutingsNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin RenoteMutingsNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<RenoteMuting>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$renoteMutingsNotifierHash() =>
+    r'1a4f49024f4e8f5d427d87719883fb2b6f2a0ec0';
 
-class _RenoteMutingsNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class RenoteMutingsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           RenoteMutingsNotifier,
-          PaginationState<RenoteMuting>
-        >
-    with RenoteMutingsNotifierRef {
-  _RenoteMutingsNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<RenoteMuting>>,
+          PaginationState<RenoteMuting>,
+          Stream<PaginationState<RenoteMuting>>,
+          Account
+        > {
+  const RenoteMutingsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'renoteMutingsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  RenoteMutingsNotifierProvider call(Account account) =>
+      RenoteMutingsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as RenoteMutingsNotifierProvider).account;
+  String toString() => r'renoteMutingsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$RenoteMutingsNotifier
+    extends $StreamNotifier<PaginationState<RenoteMuting>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<RenoteMuting>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<RenoteMuting>>,
+              PaginationState<RenoteMuting>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<RenoteMuting>>,
+                PaginationState<RenoteMuting>
+              >,
+              AsyncValue<PaginationState<RenoteMuting>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

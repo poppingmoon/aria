@@ -46,6 +46,7 @@ import 'provider/window_size_repository_provider.dart';
 import 'repository/window_position_repository.dart';
 import 'repository/window_size_repository.dart';
 import 'router/router.dart';
+import 'util/get_retry_delay.dart';
 import 'view/dialog/error_message_dialog.dart';
 
 void main() async {
@@ -119,6 +120,7 @@ void main() async {
   runApp(
     ProviderScope(
       overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+      retry: getRetryDelay,
       child: TranslationProvider(child: const Aria()),
     ),
   );
@@ -173,7 +175,7 @@ class Aria extends HookConsumerWidget {
             notification = PushNotification.fromJson(webPushMessage);
           } else {
             final keySet = await ref.read(
-              webPushKeySetNotifierNotifierProvider(account).future,
+              webPushKeySetNotifierProvider(account).future,
             );
             if (keySet != null) {
               final decrypted = await WebPush().decrypt(

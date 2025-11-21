@@ -11,7 +11,6 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_is_deleted_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
-import '../../provider/streaming/note_subscription_notifier_provider.dart';
 import '../../provider/streaming/note_update_event_provider.dart';
 import 'hard_muted_note_widget.dart';
 import 'note_fallback_widget.dart';
@@ -45,9 +44,6 @@ class TimelineNote extends HookConsumerWidget {
     }
     final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
-    final notifier = ref.watch(
-      noteSubscriptionNotifierProvider(account).notifier,
-    );
     if (note == null) {
       return Padding(
         padding: margin,
@@ -116,12 +112,8 @@ class TimelineNote extends HookConsumerWidget {
       }
     }
     if (!tabSettings.disableSubscribing) {
-      useEffect(() {
-        Future(() => notifier.subscribe(appearNote.id));
-        return () => Future(() => notifier.unsubscribe(appearNote.id));
-      }, []);
       ref.listen(noteUpdateEventProvider(account, appearNote.id), (_, next) {
-        next.whenData((event) {
+        if (next case AsyncData(value: final event)) {
           switch (event) {
             case Reacted():
               ref
@@ -144,7 +136,7 @@ class TimelineNote extends HookConsumerWidget {
                   .read(notesNotifierProvider(account).notifier)
                   .updateNote(appearNote.id, event);
           }
-        });
+        }
       });
     }
 

@@ -6,174 +6,104 @@ part of 'scheduled_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scheduledNotesNotifierHash() =>
-    r'b15761fbe0a24f5a403fbf7852d7dba2de226559';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ScheduledNotesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-
-  Stream<PaginationState<Note>> build(Account account);
-}
-
-/// See also [ScheduledNotesNotifier].
 @ProviderFor(ScheduledNotesNotifier)
-const scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily();
+const scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily._();
 
-/// See also [ScheduledNotesNotifier].
-class ScheduledNotesNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [ScheduledNotesNotifier].
-  const ScheduledNotesNotifierFamily();
-
-  /// See also [ScheduledNotesNotifier].
-  ScheduledNotesNotifierProvider call(Account account) {
-    return ScheduledNotesNotifierProvider(account);
-  }
-
-  @override
-  ScheduledNotesNotifierProvider getProviderOverride(
-    covariant ScheduledNotesNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'scheduledNotesNotifierProvider';
-}
-
-/// See also [ScheduledNotesNotifier].
-class ScheduledNotesNotifierProvider
+final class ScheduledNotesNotifierProvider
     extends
-        AutoDisposeStreamNotifierProviderImpl<
-          ScheduledNotesNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [ScheduledNotesNotifier].
-  ScheduledNotesNotifierProvider(Account account)
-    : this._internal(
-        () => ScheduledNotesNotifier()..account = account,
-        from: scheduledNotesNotifierProvider,
-        name: r'scheduledNotesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$scheduledNotesNotifierHash,
-        dependencies: ScheduledNotesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            ScheduledNotesNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  ScheduledNotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
+        $StreamNotifierProvider<ScheduledNotesNotifier, PaginationState<Note>> {
+  const ScheduledNotesNotifierProvider._({
+    required ScheduledNotesNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'scheduledNotesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant ScheduledNotesNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
+  String debugGetCreateSourceHash() => _$scheduledNotesNotifierHash();
 
   @override
-  Override overrideWith(ScheduledNotesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ScheduledNotesNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
+  String toString() {
+    return r'scheduledNotesNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  AutoDisposeStreamNotifierProviderElement<
-    ScheduledNotesNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _ScheduledNotesNotifierProviderElement(this);
-  }
+  ScheduledNotesNotifier create() => ScheduledNotesNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is ScheduledNotesNotifierProvider && other.account == account;
+    return other is ScheduledNotesNotifierProvider &&
+        other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ScheduledNotesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$scheduledNotesNotifierHash() =>
+    r'df28d87ba1e8cd0939b17884d60a124809f551ab';
 
-class _ScheduledNotesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class ScheduledNotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ScheduledNotesNotifier,
-          PaginationState<Note>
-        >
-    with ScheduledNotesNotifierRef {
-  _ScheduledNotesNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          Account
+        > {
+  const ScheduledNotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'scheduledNotesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ScheduledNotesNotifierProvider call(Account account) =>
+      ScheduledNotesNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as ScheduledNotesNotifierProvider).account;
+  String toString() => r'scheduledNotesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ScheduledNotesNotifier
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Stream<PaginationState<Note>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

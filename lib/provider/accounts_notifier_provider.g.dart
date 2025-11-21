@@ -6,21 +6,58 @@ part of 'accounts_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(AccountsNotifier)
+const accountsNotifierProvider = AccountsNotifierProvider._();
+
+final class AccountsNotifierProvider
+    extends $NotifierProvider<AccountsNotifier, List<Account>> {
+  const AccountsNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'accountsNotifierProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$accountsNotifierHash();
+
+  @$internal
+  @override
+  AccountsNotifier create() => AccountsNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<Account> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<Account>>(value),
+    );
+  }
+}
+
 String _$accountsNotifierHash() => r'9dc83b91685d182b59dc7080ff1f88c98394e3c7';
 
-/// See also [AccountsNotifier].
-@ProviderFor(AccountsNotifier)
-final accountsNotifierProvider =
-    NotifierProvider<AccountsNotifier, List<Account>>.internal(
-      AccountsNotifier.new,
-      name: r'accountsNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$accountsNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$AccountsNotifier = Notifier<List<Account>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$AccountsNotifier extends $Notifier<List<Account>> {
+  List<Account> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<List<Account>, List<Account>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<Account>, List<Account>>,
+              List<Account>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

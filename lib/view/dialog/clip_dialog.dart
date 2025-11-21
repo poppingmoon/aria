@@ -33,14 +33,14 @@ class ClipDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(clipsNotifierProvider(account));
     final noteClips =
-        ref.watch(noteClipsNotifierProvider(account, noteId)).valueOrNull ?? [];
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+        ref.watch(noteClipsNotifierProvider(account, noteId)).value ?? [];
+    final i = ref.watch(iNotifierProvider(account)).value;
     final clipId = useState(this.clipId);
 
     return SimpleDialog(
       title: Text(t.misskey.clip),
       children: [
-        ...?clips.valueOrNull?.items.mapIndexed((index, clip) {
+        ...?clips.value?.items.mapIndexed((index, clip) {
           final isClipped = noteClips.any((noteClip) => noteClip.id == clip.id);
           return ListTile(
             leading: clip.id == clipId.value || isClipped

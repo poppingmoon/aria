@@ -6,150 +6,82 @@ part of 'featured_channels_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$featuredChannelsHash() => r'ac273d56e2784bcd565e57130ea78c9e54809b8c';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [featuredChannels].
 @ProviderFor(featuredChannels)
-const featuredChannelsProvider = FeaturedChannelsFamily();
+const featuredChannelsProvider = FeaturedChannelsFamily._();
 
-/// See also [featuredChannels].
-class FeaturedChannelsFamily
-    extends Family<AsyncValue<List<CommunityChannel>>> {
-  /// See also [featuredChannels].
-  const FeaturedChannelsFamily();
+final class FeaturedChannelsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<CommunityChannel>>,
+          List<CommunityChannel>,
+          FutureOr<List<CommunityChannel>>
+        >
+    with
+        $FutureModifier<List<CommunityChannel>>,
+        $FutureProvider<List<CommunityChannel>> {
+  const FeaturedChannelsProvider._({
+    required FeaturedChannelsFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'featuredChannelsProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [featuredChannels].
-  FeaturedChannelsProvider call(Account account) {
-    return FeaturedChannelsProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$featuredChannelsHash();
+
+  @override
+  String toString() {
+    return r'featuredChannelsProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  FeaturedChannelsProvider getProviderOverride(
-    covariant FeaturedChannelsProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
+  $FutureProviderElement<List<CommunityChannel>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
 
   @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'featuredChannelsProvider';
-}
-
-/// See also [featuredChannels].
-class FeaturedChannelsProvider
-    extends AutoDisposeFutureProvider<List<CommunityChannel>> {
-  /// See also [featuredChannels].
-  FeaturedChannelsProvider(Account account)
-    : this._internal(
-        (ref) => featuredChannels(ref as FeaturedChannelsRef, account),
-        from: featuredChannelsProvider,
-        name: r'featuredChannelsProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$featuredChannelsHash,
-        dependencies: FeaturedChannelsFamily._dependencies,
-        allTransitiveDependencies:
-            FeaturedChannelsFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  FeaturedChannelsProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Override overrideWith(
-    FutureOr<List<CommunityChannel>> Function(FeaturedChannelsRef provider)
-    create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: FeaturedChannelsProvider._internal(
-        (ref) => create(ref as FeaturedChannelsRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<List<CommunityChannel>> createElement() {
-    return _FeaturedChannelsProviderElement(this);
+  FutureOr<List<CommunityChannel>> create(Ref ref) {
+    final argument = this.argument as Account;
+    return featuredChannels(ref, argument);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is FeaturedChannelsProvider && other.account == account;
+    return other is FeaturedChannelsProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FeaturedChannelsRef
-    on AutoDisposeFutureProviderRef<List<CommunityChannel>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$featuredChannelsHash() => r'ac273d56e2784bcd565e57130ea78c9e54809b8c';
 
-class _FeaturedChannelsProviderElement
-    extends AutoDisposeFutureProviderElement<List<CommunityChannel>>
-    with FeaturedChannelsRef {
-  _FeaturedChannelsProviderElement(super.provider);
+final class FeaturedChannelsFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<List<CommunityChannel>>, Account> {
+  const FeaturedChannelsFamily._()
+    : super(
+        retry: null,
+        name: r'featuredChannelsProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  FeaturedChannelsProvider call(Account account) =>
+      FeaturedChannelsProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as FeaturedChannelsProvider).account;
+  String toString() => r'featuredChannelsProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

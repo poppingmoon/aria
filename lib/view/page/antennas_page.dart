@@ -26,7 +26,7 @@ class AntennasPage extends ConsumerWidget {
       body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(antennasNotifierProvider(account).future),
         child: switch (antennas) {
-          AsyncValue(valueOrNull: final antennas?) =>
+          AsyncValue(value: final antennas?) =>
             antennas.isEmpty
                 ? LayoutBuilder(
                     builder: (context, constraint) => SingleChildScrollView(

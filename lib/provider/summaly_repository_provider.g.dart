@@ -6,22 +6,52 @@ part of 'summaly_repository_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$summalyRepositoryHash() => r'1529b9d8b8c6381b1d95a147f120be1db0af8ab5';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [summalyRepository].
 @ProviderFor(summalyRepository)
-final summalyRepositoryProvider = Provider<SummalyRepository>.internal(
-  summalyRepository,
-  name: r'summalyRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$summalyRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const summalyRepositoryProvider = SummalyRepositoryProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SummalyRepositoryRef = ProviderRef<SummalyRepository>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class SummalyRepositoryProvider
+    extends
+        $FunctionalProvider<
+          SummalyRepository,
+          SummalyRepository,
+          SummalyRepository
+        >
+    with $Provider<SummalyRepository> {
+  const SummalyRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'summalyRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$summalyRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<SummalyRepository> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  SummalyRepository create(Ref ref) {
+    return summalyRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(SummalyRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SummalyRepository>(value),
+    );
+  }
+}
+
+String _$summalyRepositoryHash() => r'1529b9d8b8c6381b1d95a147f120be1db0af8ab5';

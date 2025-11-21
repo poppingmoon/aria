@@ -81,7 +81,7 @@ class DriveFileInfo extends ConsumerWidget {
             child: MediaList(
               account: account,
               files: [file],
-              user: ref.watch(iNotifierProvider(account)).valueOrNull,
+              user: ref.watch(iNotifierProvider(account)).value,
             ),
           ),
           IconTheme(

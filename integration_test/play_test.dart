@@ -1,15 +1,24 @@
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/main.dart';
 import 'package:aria/model/account.dart';
-import 'package:aria/provider/api/misskey_provider.dart';
+import 'package:aria/model/general_settings.dart';
+import 'package:aria/provider/accounts_notifier_provider.dart';
+import 'package:aria/provider/api/endpoints_notifier_provider.dart';
+import 'package:aria/provider/api/i_notifier_provider.dart';
+import 'package:aria/provider/api/play_notifier_provider.dart';
+import 'package:aria/provider/api/user_notifier_provider.dart';
+import 'package:aria/provider/emojis_notifier_provider.dart';
+import 'package:aria/provider/general_settings_notifier_provider.dart';
+import 'package:aria/provider/server_url_notifier_provider.dart';
+import 'package:aria/provider/timeline_tabs_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../test/test_util/create_overrides.dart';
+import '../test/test_util/dummy_me_detailed.dart';
+import '../test/test_util/dummy_user_detailed_not_me.dart';
 import '../test/test_util/dummy_user_lite.dart';
 
 void main() {
@@ -19,32 +28,26 @@ void main() {
     const account = Account(host: 'misskey.tld', username: 'testuser');
     await tester.pumpWidget(
       ProviderScope(
-        overrides: createOverrides(
-          account,
-          prefs: {
-            'accounts': ['{"host": "misskey.tld", "username": "testuser"}'],
-          },
-        ),
-        child: TranslationProvider(child: const Aria()),
-      ),
-    );
-    final container = ProviderScope.containerOf(
-      tester.element(find.byType(Aria)),
-    );
-    final dioAdapter = DioAdapter(
-      dio: container.read(misskeyProvider(account)).apiService.dio,
-    );
-    dioAdapter.onPost(
-      'flash/show',
-      (server) => server.reply(
-        200,
-        Flash(
-          id: 'testplay',
-          createdAt: DateTime(0),
-          updatedAt: DateTime(0),
-          title: 'Test Play',
-          summary: 'Test Play summary',
-          script: '''
+        overrides: [
+          accountsNotifierProvider.overrideWithValue([account]),
+          emojisNotifierProvider.overrideWithBuild((_, _) => {}),
+          endpointsNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => []),
+          generalSettingsNotifierProvider.overrideWithValue(
+            const GeneralSettings(),
+          ),
+          iNotifierProvider(
+            account,
+          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          playNotifierProvider(account, 'testplay').overrideWithBuild(
+            (_, _) => Flash(
+              id: 'testplay',
+              createdAt: DateTime(0),
+              updatedAt: DateTime(0),
+              title: 'Test Play',
+              summary: 'Test Play summary',
+              script: '''
 /// @ 0.19.0
 
 var input = ""
@@ -64,11 +67,21 @@ Ui:render([
   }),
 ])
 ''',
-          userId: '',
-          user: dummyUserLite,
-        ),
+              userId: '',
+              user: dummyUserLite,
+            ),
+          ),
+          serverUrlNotifierProvider(
+            account.host,
+          ).overrideWithValue(Uri.https(account.host)),
+          timelineTabsNotifierProvider.overrideWithValue([]),
+          userNotifierProvider(
+            account,
+            userId: '',
+          ).overrideWithBuild((_, _) => dummyUserDetailedNotMe),
+        ],
+        child: TranslationProvider(child: const Aria()),
       ),
-      data: {'flashId': 'testplay'},
     );
     await tester.pumpAndSettle();
     if (find.byIcon(Icons.menu).evaluate().isNotEmpty) {

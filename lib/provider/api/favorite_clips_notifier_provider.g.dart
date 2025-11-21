@@ -6,170 +6,96 @@ part of 'favorite_clips_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$favoriteClipsNotifierHash() =>
-    r'5173544d0d712afe6ae8802dc167310a61160f8f';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$FavoriteClipsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<List<Clip>> {
-  late final Account account;
-
-  FutureOr<List<Clip>> build(Account account);
-}
-
-/// See also [FavoriteClipsNotifier].
 @ProviderFor(FavoriteClipsNotifier)
-const favoriteClipsNotifierProvider = FavoriteClipsNotifierFamily();
+const favoriteClipsNotifierProvider = FavoriteClipsNotifierFamily._();
 
-/// See also [FavoriteClipsNotifier].
-class FavoriteClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
-  /// See also [FavoriteClipsNotifier].
-  const FavoriteClipsNotifierFamily();
+final class FavoriteClipsNotifierProvider
+    extends $AsyncNotifierProvider<FavoriteClipsNotifier, List<Clip>> {
+  const FavoriteClipsNotifierProvider._({
+    required FavoriteClipsNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'favoriteClipsNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [FavoriteClipsNotifier].
-  FavoriteClipsNotifierProvider call(Account account) {
-    return FavoriteClipsNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$favoriteClipsNotifierHash();
+
+  @override
+  String toString() {
+    return r'favoriteClipsNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  FavoriteClipsNotifierProvider getProviderOverride(
-    covariant FavoriteClipsNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'favoriteClipsNotifierProvider';
-}
-
-/// See also [FavoriteClipsNotifier].
-class FavoriteClipsNotifierProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          FavoriteClipsNotifier,
-          List<Clip>
-        > {
-  /// See also [FavoriteClipsNotifier].
-  FavoriteClipsNotifierProvider(Account account)
-    : this._internal(
-        () => FavoriteClipsNotifier()..account = account,
-        from: favoriteClipsNotifierProvider,
-        name: r'favoriteClipsNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$favoriteClipsNotifierHash,
-        dependencies: FavoriteClipsNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            FavoriteClipsNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  FavoriteClipsNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  FutureOr<List<Clip>> runNotifierBuild(
-    covariant FavoriteClipsNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(FavoriteClipsNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: FavoriteClipsNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeAsyncNotifierProviderElement<FavoriteClipsNotifier, List<Clip>>
-  createElement() {
-    return _FavoriteClipsNotifierProviderElement(this);
-  }
+  FavoriteClipsNotifier create() => FavoriteClipsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is FavoriteClipsNotifierProvider && other.account == account;
+    return other is FavoriteClipsNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin FavoriteClipsNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<List<Clip>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$favoriteClipsNotifierHash() =>
+    r'5173544d0d712afe6ae8802dc167310a61160f8f';
 
-class _FavoriteClipsNotifierProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
+final class FavoriteClipsNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           FavoriteClipsNotifier,
-          List<Clip>
-        >
-    with FavoriteClipsNotifierRef {
-  _FavoriteClipsNotifierProviderElement(super.provider);
+          AsyncValue<List<Clip>>,
+          List<Clip>,
+          FutureOr<List<Clip>>,
+          Account
+        > {
+  const FavoriteClipsNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'favoriteClipsNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  FavoriteClipsNotifierProvider call(Account account) =>
+      FavoriteClipsNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as FavoriteClipsNotifierProvider).account;
+  String toString() => r'favoriteClipsNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$FavoriteClipsNotifier extends $AsyncNotifier<List<Clip>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  FutureOr<List<Clip>> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<List<Clip>>, List<Clip>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<Clip>>, List<Clip>>,
+              AsyncValue<List<Clip>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

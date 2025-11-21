@@ -99,9 +99,8 @@ Map<String, dynamic> _$AccountSettingsToJson(_AccountSettings instance) =>
       'defaultRenoteVisibility':
           _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
       'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
-      if (_$ReactionAcceptanceEnumMap[instance.reactionAcceptance]
-          case final value?)
-        'reactionAcceptance': value,
+      'reactionAcceptance':
+          ?_$ReactionAcceptanceEnumMap[instance.reactionAcceptance],
       'visibility': _$NoteVisibilityEnumMap[instance.visibility]!,
       'localOnly': instance.localOnly,
       'renoteVisibility': _$NoteVisibilityEnumMap[instance.renoteVisibility]!,
@@ -109,8 +108,8 @@ Map<String, dynamic> _$AccountSettingsToJson(_AccountSettings instance) =>
       'pinnedEmojisForReaction': instance.pinnedEmojisForReaction,
       'pinnedEmojis': instance.pinnedEmojis,
       'recentlyUsedEmojis': instance.recentlyUsedEmojis,
-      if (instance.defaultReaction case final value?) 'defaultReaction': value,
-      if (instance.uploadFolder case final value?) 'uploadFolder': value,
+      'defaultReaction': ?instance.defaultReaction,
+      'uploadFolder': ?instance.uploadFolder,
       'keepOriginalUploading': instance.keepOriginalUploading,
       'keepOriginalFilename': instance.keepOriginalFilename,
       'mutedWords': instance.mutedWords.map((e) => e.toJson()).toList(),

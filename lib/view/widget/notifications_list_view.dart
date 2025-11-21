@@ -15,8 +15,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
-import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'notification_widget.dart';
@@ -44,16 +43,13 @@ class NotificationsListView extends HookConsumerWidget {
         (settings) => settings.showPopupOnNewNote,
       ),
     );
-    final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
-    ref.listen(incomingMessageProvider(account), (_, _) {});
     useEffect(() {
-      notifier.connect();
       ref
           .read(notificationsLastViewedAtNotifierProvider(account).notifier)
           .save(DateTime.now());
@@ -86,7 +82,7 @@ class NotificationsListView extends HookConsumerWidget {
       }
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) {
+    ref.listen(mainStreamProvider(account), (_, next) {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
         if (keepAnimation.value) {
@@ -115,7 +111,6 @@ class NotificationsListView extends HookConsumerWidget {
         await Future.wait([
           ref.refresh(iNotifierProvider(account).future),
           ref.refresh(notificationsNotifierProvider(account).future),
-          ref.read(mainStreamNotifierProvider(account).notifier).connect(),
         ]);
       },
       child: Center(
@@ -137,8 +132,7 @@ class NotificationsListView extends HookConsumerWidget {
                         right: 8.0,
                         bottom:
                             index == 0 &&
-                                (notifications.valueOrNull?.items.isEmpty ??
-                                    true)
+                                (notifications.value?.items.isEmpty ?? true)
                             ? 8.0
                             : 0.0,
                       ),
@@ -151,8 +145,7 @@ class NotificationsListView extends HookConsumerWidget {
                               : Radius.zero,
                           bottom:
                               index == 0 &&
-                                  (notifications.valueOrNull?.items.isEmpty ??
-                                      true)
+                                  (notifications.value?.items.isEmpty ?? true)
                               ? const Radius.circular(8.0)
                               : Radius.zero,
                         ),
@@ -174,7 +167,7 @@ class NotificationsListView extends HookConsumerWidget {
                   itemCount: nextNotifications.value.length,
                 ),
                 if (nextNotifications.value.isNotEmpty &&
-                    (notifications.valueOrNull?.items.isNotEmpty ?? false))
+                    (notifications.value?.items.isNotEmpty ?? false))
                   SliverToBoxAdapter(
                     child: Center(
                       child: Container(
@@ -183,7 +176,7 @@ class NotificationsListView extends HookConsumerWidget {
                         child:
                             lastViewedAt?.isBetween(
                                   notifications
-                                      .valueOrNull
+                                      .value
                                       ?.items
                                       .firstOrNull
                                       ?.createdAt,
@@ -234,10 +227,10 @@ class NotificationsListView extends HookConsumerWidget {
                       width: maxContentWidth,
                       child:
                           lastViewedAt?.isBetween(
-                                notifications.valueOrNull?.items
+                                notifications.value?.items
                                     .elementAtOrNull(index + 1)
                                     ?.createdAt,
-                                notifications.valueOrNull?.items
+                                notifications.value?.items
                                     .elementAtOrNull(index)
                                     ?.createdAt,
                               ) ??
@@ -246,7 +239,7 @@ class NotificationsListView extends HookConsumerWidget {
                           : const Divider(height: 0.0),
                     ),
                   ),
-                  itemCount: notifications.valueOrNull?.items.length ?? 0,
+                  itemCount: notifications.value?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
                   child: Center(

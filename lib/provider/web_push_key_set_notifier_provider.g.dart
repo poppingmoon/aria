@@ -6,174 +6,96 @@ part of 'web_push_key_set_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webPushKeySetNotifierNotifierHash() =>
-    r'b498be4c3fccaf0eb6bb5df4701af403634699f8';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(WebPushKeySetNotifier)
+const webPushKeySetNotifierProvider = WebPushKeySetNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$WebPushKeySetNotifierNotifier
-    extends BuildlessAsyncNotifier<WebPushKeySet?> {
-  late final Account account;
-
-  FutureOr<WebPushKeySet?> build(Account account);
-}
-
-/// See also [WebPushKeySetNotifierNotifier].
-@ProviderFor(WebPushKeySetNotifierNotifier)
-const webPushKeySetNotifierNotifierProvider =
-    WebPushKeySetNotifierNotifierFamily();
-
-/// See also [WebPushKeySetNotifierNotifier].
-class WebPushKeySetNotifierNotifierFamily
-    extends Family<AsyncValue<WebPushKeySet?>> {
-  /// See also [WebPushKeySetNotifierNotifier].
-  const WebPushKeySetNotifierNotifierFamily();
-
-  /// See also [WebPushKeySetNotifierNotifier].
-  WebPushKeySetNotifierNotifierProvider call(Account account) {
-    return WebPushKeySetNotifierNotifierProvider(account);
-  }
+final class WebPushKeySetNotifierProvider
+    extends $AsyncNotifierProvider<WebPushKeySetNotifier, WebPushKeySet?> {
+  const WebPushKeySetNotifierProvider._({
+    required WebPushKeySetNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'webPushKeySetNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
   @override
-  WebPushKeySetNotifierNotifierProvider getProviderOverride(
-    covariant WebPushKeySetNotifierNotifierProvider provider,
-  ) {
-    return call(provider.account);
+  String debugGetCreateSourceHash() => _$webPushKeySetNotifierHash();
+
+  @override
+  String toString() {
+    return r'webPushKeySetNotifierProvider'
+        ''
+        '($argument)';
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
+  @$internal
   @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'webPushKeySetNotifierNotifierProvider';
-}
-
-/// See also [WebPushKeySetNotifierNotifier].
-class WebPushKeySetNotifierNotifierProvider
-    extends
-        AsyncNotifierProviderImpl<
-          WebPushKeySetNotifierNotifier,
-          WebPushKeySet?
-        > {
-  /// See also [WebPushKeySetNotifierNotifier].
-  WebPushKeySetNotifierNotifierProvider(Account account)
-    : this._internal(
-        () => WebPushKeySetNotifierNotifier()..account = account,
-        from: webPushKeySetNotifierNotifierProvider,
-        name: r'webPushKeySetNotifierNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$webPushKeySetNotifierNotifierHash,
-        dependencies: WebPushKeySetNotifierNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            WebPushKeySetNotifierNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  WebPushKeySetNotifierNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  FutureOr<WebPushKeySet?> runNotifierBuild(
-    covariant WebPushKeySetNotifierNotifier notifier,
-  ) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(WebPushKeySetNotifierNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: WebPushKeySetNotifierNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
-    );
-  }
-
-  @override
-  AsyncNotifierProviderElement<WebPushKeySetNotifierNotifier, WebPushKeySet?>
-  createElement() {
-    return _WebPushKeySetNotifierNotifierProviderElement(this);
-  }
+  WebPushKeySetNotifier create() => WebPushKeySetNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is WebPushKeySetNotifierNotifierProvider &&
-        other.account == account;
+    return other is WebPushKeySetNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin WebPushKeySetNotifierNotifierRef
-    on AsyncNotifierProviderRef<WebPushKeySet?> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$webPushKeySetNotifierHash() =>
+    r'd1740faccd1248acc40b5045ef15f1dbcb215252';
 
-class _WebPushKeySetNotifierNotifierProviderElement
-    extends
-        AsyncNotifierProviderElement<
-          WebPushKeySetNotifierNotifier,
-          WebPushKeySet?
-        >
-    with WebPushKeySetNotifierNotifierRef {
-  _WebPushKeySetNotifierNotifierProviderElement(super.provider);
+final class WebPushKeySetNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          WebPushKeySetNotifier,
+          AsyncValue<WebPushKeySet?>,
+          WebPushKeySet?,
+          FutureOr<WebPushKeySet?>,
+          Account
+        > {
+  const WebPushKeySetNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'webPushKeySetNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  WebPushKeySetNotifierProvider call(Account account) =>
+      WebPushKeySetNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account =>
-      (origin as WebPushKeySetNotifierNotifierProvider).account;
+  String toString() => r'webPushKeySetNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$WebPushKeySetNotifier extends $AsyncNotifier<WebPushKeySet?> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  FutureOr<WebPushKeySet?> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<AsyncValue<WebPushKeySet?>, WebPushKeySet?>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<WebPushKeySet?>, WebPushKeySet?>,
+              AsyncValue<WebPushKeySet?>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

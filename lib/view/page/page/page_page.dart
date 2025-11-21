@@ -169,7 +169,7 @@ class PagePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final page = ref.watch(
       pageNotifierProvider(
         account,
@@ -181,16 +181,16 @@ class PagePage extends ConsumerWidget {
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(
       pathSegments: [
-        '@${page.valueOrNull?.user.username}',
+        '@${page.value?.user.username}',
         'pages',
-        '${page.valueOrNull?.name}',
+        '${page.value?.name}',
       ],
     );
     final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(page.valueOrNull?.title ?? ''),
+        title: Text(page.value?.title ?? ''),
         actions: [
           PopupMenuButton<void>(
             itemBuilder: (context) => [
@@ -199,7 +199,7 @@ class PagePage extends ConsumerWidget {
                   onTap: () {
                     ref
                         .read(postNotifierProvider(account).notifier)
-                        .setText('${page.valueOrNull?.title} $url');
+                        .setText('${page.value?.title} $url');
                     context.push('/$account/post');
                   },
                   child: Text(t.misskey.shareWithNote),
@@ -214,11 +214,11 @@ class PagePage extends ConsumerWidget {
               ),
               PopupMenuItem(
                 onTap: () => SharePlus.instance.share(
-                  ShareParams(text: '${page.valueOrNull?.title} $url'),
+                  ShareParams(text: '${page.value?.title} $url'),
                 ),
                 child: Text(t.misskey.share),
               ),
-              if (page.valueOrNull?.user case final user?
+              if (page.value?.user case final user?
                   when !account.isGuest && i?.id != user.id)
                 PopupMenuItem(
                   onTap: () async {
@@ -271,7 +271,7 @@ class PagePage extends ConsumerWidget {
           ).future,
         ),
         child: switch (page) {
-          AsyncValue(valueOrNull: final page?) => ListView(
+          AsyncValue(value: final page?) => ListView(
             children: [
               const SizedBox(height: 8.0),
               if (page case Page(:final eyeCatchingImage?))
@@ -599,7 +599,7 @@ class PagePage extends ConsumerWidget {
                             .watch(
                               userPagesNotifierProvider(account, page.userId),
                             )
-                            .valueOrNull
+                            .value
                             ?.items
                             .map(
                               (page) => Padding(

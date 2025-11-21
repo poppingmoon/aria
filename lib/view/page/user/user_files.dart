@@ -65,7 +65,7 @@ class UserFiles extends HookConsumerWidget {
       onRefresh: () =>
           ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
       child: switch (notes) {
-        AsyncValue(valueOrNull: final value?) =>
+        AsyncValue(:final value?) =>
           value.items.isEmpty
               ? LayoutBuilder(
                   builder: (context, constraint) => SingleChildScrollView(

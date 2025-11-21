@@ -52,7 +52,7 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
             );
       } else {
         await ref
-            .read(webPushKeySetNotifierNotifierProvider(account).notifier)
+            .read(webPushKeySetNotifierProvider(account).notifier)
             .save(keySet);
       }
     }
@@ -69,7 +69,7 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
     }
     final isProxy = ref.read(sharedPreferencesProvider).getBool(_isProxyKey);
     final keySet = await ref.read(
-      webPushKeySetNotifierNotifierProvider(account).future,
+      webPushKeySetNotifierProvider(account).future,
     );
     if (isProxy ?? keySet == null) {
       await ref.read(dioProvider).delete<void>(endpoint);
@@ -79,9 +79,7 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
         .sw
         .unregister(SwUnregisterRequest(endpoint: endpoint));
     if (keySet != null) {
-      await ref
-          .read(webPushKeySetNotifierNotifierProvider(account).notifier)
-          .delete();
+      await ref.read(webPushKeySetNotifierProvider(account).notifier).delete();
     }
     await ref.read(sharedPreferencesProvider).remove(_key);
     await ref.read(sharedPreferencesProvider).remove(_isProxyKey);

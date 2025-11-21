@@ -213,7 +213,7 @@ class PostForm extends HookConsumerWidget {
       account.value = this.account;
       return;
     }, [this.account]);
-    final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account.value)).value;
     final request = ref.watch(
       postNotifierProvider(account.value, noteId: noteId),
     );
@@ -229,7 +229,7 @@ class PostForm extends HookConsumerWidget {
     final channel = request.channelId != null
         ? ref
               .watch(channelNotifierProvider(account.value, request.channelId!))
-              .valueOrNull
+              .value
         : null;
     final mentions = useMemoized(
       () => extractMentions(parse(request.text ?? '')),
@@ -1256,7 +1256,7 @@ class _PostFormFooter extends HookConsumerWidget {
         account,
       ).select((settings) => settings.postFormUseHashtags),
     );
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final canScheduleNote =
         noteId == null &&
         (i?.policies?.canScheduleNote ??

@@ -44,7 +44,7 @@ class UserPage extends HookConsumerWidget {
             host: host,
           ),
         )
-        .valueOrNull;
+        .value;
     final userId = this.userId ?? user?.id;
     final now = DateTime.now();
     final isLocal = user != null && user.host == null;

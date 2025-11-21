@@ -29,11 +29,11 @@ class RenoteSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final renoteToChannel = useState(note.channel != null);
     final channel = useState(note.channel);
     final isSilenced =
-        ref.watch(iNotifierProvider(account)).valueOrNull?.isSilenced ?? false;
+        ref.watch(iNotifierProvider(account)).value?.isSilenced ?? false;
     final (renoteVisibility, renoteLocalOnly) = ref.watch(
       accountSettingsNotifierProvider(account).select(
         (settings) => settings.rememberRenoteVisibility

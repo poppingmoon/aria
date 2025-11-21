@@ -5,7 +5,7 @@ import '../../model/account.dart';
 import '../../model/pagination_state.dart';
 import '../general_settings_notifier_provider.dart';
 import '../notes_notifier_provider.dart';
-import 'endpoints_provider.dart';
+import 'endpoints_notifier_provider.dart';
 import 'misskey_provider.dart';
 
 part 'notifications_notifier_provider.g.dart';
@@ -133,7 +133,7 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     if (ref.read(generalSettingsNotifierProvider).useGroupedNotifications) {
       try {
         final endpoints = await ref.read(
-          endpointsProvider(account.host).future,
+          endpointsNotifierProvider(account.host).future,
         );
         if (endpoints.contains('i/notifications-grouped')) {
           notifications = await ref
@@ -175,7 +175,7 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }

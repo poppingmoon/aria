@@ -42,12 +42,12 @@ class EmojiSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final targetNote = targetNoteId?.isNotEmpty ?? false
         ? ref.watch(noteProvider(account, targetNoteId!))
         : null;
     final targetMessage = targetMessageId?.isNotEmpty ?? false
-        ? ref.watch(chatMessageProvider(account, targetMessageId!)).valueOrNull
+        ? ref.watch(chatMessageProvider(account, targetMessageId!)).value
         : null;
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);

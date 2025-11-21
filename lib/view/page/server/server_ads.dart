@@ -19,10 +19,9 @@ class ServerAds extends ConsumerWidget {
     final meta = ref.watch(metaNotifierProvider(host));
 
     return HapticFeedbackRefreshIndicator(
-      onRefresh: () =>
-          ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+      onRefresh: () => ref.refresh(metaNotifierProvider(host).future),
       child: switch (meta) {
-        AsyncValue(valueOrNull: MetaResponse(:final ads)) =>
+        AsyncValue(value: MetaResponse(:final ads)) =>
           ads.isNotEmpty
               ? ListView.builder(
                   itemBuilder: (context, index) => AdWidget(

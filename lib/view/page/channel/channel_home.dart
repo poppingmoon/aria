@@ -27,7 +27,7 @@ class ChannelHome extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final channel = ref
         .watch(channelNotifierProvider(account, channelId))
-        .valueOrNull;
+        .value;
     if (channel == null) {
       return const Center(child: CircularProgressIndicator());
     }

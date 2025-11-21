@@ -6,35 +6,95 @@ part of 'users_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$usersNotifierHash() => r'e054ad084a328b8dea2b770e85737649c6c1cfa9';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(UsersNotifier)
+const usersNotifierProvider = UsersNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class UsersNotifierProvider
+    extends
+        $StreamNotifierProvider<UsersNotifier, PaginationState<UserDetailed>> {
+  const UsersNotifierProvider._({
+    required UsersNotifierFamily super.from,
+    required (Account, {UsersSortType? sort, Origin? userOrigin, String? host})
+    super.argument,
+  }) : super(
+         retry: null,
+         name: r'usersNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$usersNotifierHash();
+
+  @override
+  String toString() {
+    return r'usersNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  UsersNotifier create() => UsersNotifier();
+
+  @override
+  bool operator ==(Object other) {
+    return other is UsersNotifierProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
+String _$usersNotifierHash() => r'79b1679e7b54bcc0d143c5bdde0bc6053213dfc5';
+
+final class UsersNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          UsersNotifier,
+          AsyncValue<PaginationState<UserDetailed>>,
+          PaginationState<UserDetailed>,
+          Stream<PaginationState<UserDetailed>>,
+          (Account, {UsersSortType? sort, Origin? userOrigin, String? host})
+        > {
+  const UsersNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'usersNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  UsersNotifierProvider call(
+    Account account, {
+    UsersSortType? sort,
+    Origin? userOrigin,
+    String? host,
+  }) => UsersNotifierProvider._(
+    argument: (account, sort: sort, userOrigin: userOrigin, host: host),
+    from: this,
+  );
+
+  @override
+  String toString() => r'usersNotifierProvider';
+}
+
 abstract class _$UsersNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<UserDetailed>> {
-  late final Account account;
-  late final UsersSortType? sort;
-  late final Origin? userOrigin;
-  late final String? host;
+    extends $StreamNotifier<PaginationState<UserDetailed>> {
+  late final _$args =
+      ref.$arg
+          as (Account, {UsersSortType? sort, Origin? userOrigin, String? host});
+  Account get account => _$args.$1;
+  UsersSortType? get sort => _$args.sort;
+  Origin? get userOrigin => _$args.userOrigin;
+  String? get host => _$args.host;
 
   Stream<PaginationState<UserDetailed>> build(
     Account account, {
@@ -42,211 +102,32 @@ abstract class _$UsersNotifier
     Origin? userOrigin,
     String? host,
   });
-}
-
-/// See also [UsersNotifier].
-@ProviderFor(UsersNotifier)
-const usersNotifierProvider = UsersNotifierFamily();
-
-/// See also [UsersNotifier].
-class UsersNotifierFamily
-    extends Family<AsyncValue<PaginationState<UserDetailed>>> {
-  /// See also [UsersNotifier].
-  const UsersNotifierFamily();
-
-  /// See also [UsersNotifier].
-  UsersNotifierProvider call(
-    Account account, {
-    UsersSortType? sort,
-    Origin? userOrigin,
-    String? host,
-  }) {
-    return UsersNotifierProvider(
-      account,
-      sort: sort,
-      userOrigin: userOrigin,
-      host: host,
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(
+      _$args.$1,
+      sort: _$args.sort,
+      userOrigin: _$args.userOrigin,
+      host: _$args.host,
     );
-  }
-
-  @override
-  UsersNotifierProvider getProviderOverride(
-    covariant UsersNotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-      sort: provider.sort,
-      userOrigin: provider.userOrigin,
-      host: provider.host,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'usersNotifierProvider';
-}
-
-/// See also [UsersNotifier].
-class UsersNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          UsersNotifier,
-          PaginationState<UserDetailed>
-        > {
-  /// See also [UsersNotifier].
-  UsersNotifierProvider(
-    Account account, {
-    UsersSortType? sort,
-    Origin? userOrigin,
-    String? host,
-  }) : this._internal(
-         () => UsersNotifier()
-           ..account = account
-           ..sort = sort
-           ..userOrigin = userOrigin
-           ..host = host,
-         from: usersNotifierProvider,
-         name: r'usersNotifierProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$usersNotifierHash,
-         dependencies: UsersNotifierFamily._dependencies,
-         allTransitiveDependencies:
-             UsersNotifierFamily._allTransitiveDependencies,
-         account: account,
-         sort: sort,
-         userOrigin: userOrigin,
-         host: host,
-       );
-
-  UsersNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.sort,
-    required this.userOrigin,
-    required this.host,
-  }) : super.internal();
-
-  final Account account;
-  final UsersSortType? sort;
-  final Origin? userOrigin;
-  final String? host;
-
-  @override
-  Stream<PaginationState<UserDetailed>> runNotifierBuild(
-    covariant UsersNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      sort: sort,
-      userOrigin: userOrigin,
-      host: host,
-    );
-  }
-
-  @override
-  Override overrideWith(UsersNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: UsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..sort = sort
-          ..userOrigin = userOrigin
-          ..host = host,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        sort: sort,
-        userOrigin: userOrigin,
-        host: host,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    UsersNotifier,
-    PaginationState<UserDetailed>
-  >
-  createElement() {
-    return _UsersNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is UsersNotifierProvider &&
-        other.account == account &&
-        other.sort == sort &&
-        other.userOrigin == userOrigin &&
-        other.host == host;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, sort.hashCode);
-    hash = _SystemHash.combine(hash, userOrigin.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-
-    return _SystemHash.finish(hash);
+    final ref =
+        this.ref
+            as $Ref<
+              AsyncValue<PaginationState<UserDetailed>>,
+              PaginationState<UserDetailed>
+            >;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<UserDetailed>>,
+                PaginationState<UserDetailed>
+              >,
+              AsyncValue<PaginationState<UserDetailed>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin UsersNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<UserDetailed>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `sort` of this provider.
-  UsersSortType? get sort;
-
-  /// The parameter `userOrigin` of this provider.
-  Origin? get userOrigin;
-
-  /// The parameter `host` of this provider.
-  String? get host;
-}
-
-class _UsersNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
-          UsersNotifier,
-          PaginationState<UserDetailed>
-        >
-    with UsersNotifierRef {
-  _UsersNotifierProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as UsersNotifierProvider).account;
-  @override
-  UsersSortType? get sort => (origin as UsersNotifierProvider).sort;
-  @override
-  Origin? get userOrigin => (origin as UsersNotifierProvider).userOrigin;
-  @override
-  String? get host => (origin as UsersNotifierProvider).host;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

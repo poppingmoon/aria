@@ -22,7 +22,7 @@ class RolePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final role = ref.watch(roleProvider(account, roleId)).valueOrNull;
+    final role = ref.watch(roleProvider(account, roleId)).value;
     final description = role?.description;
     final users = role?.isExplorable ?? true
         ? ref.watch(roleUsersNotifierProvider(account, roleId))

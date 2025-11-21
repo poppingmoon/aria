@@ -6,39 +6,134 @@ part of 'search_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchNotesNotifierHash() =>
-    r'778e8d621b5a6af8b02f3e425b7c44be22bd50a9';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(SearchNotesNotifier)
+const searchNotesNotifierProvider = SearchNotesNotifierFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class SearchNotesNotifierProvider
+    extends
+        $StreamNotifierProvider<SearchNotesNotifier, PaginationState<Note>> {
+  const SearchNotesNotifierProvider._({
+    required SearchNotesNotifierFamily super.from,
+    required (
+      Account,
+      String, {
+      String? userId,
+      String? channelId,
+      bool? localOnly,
+      String? sinceId,
+      String? untilId,
+    })
+    super.argument,
+  }) : super(
+         retry: null,
+         name: r'searchNotesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$searchNotesNotifierHash();
+
+  @override
+  String toString() {
+    return r'searchNotesNotifierProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  SearchNotesNotifier create() => SearchNotesNotifier();
+
+  @override
+  bool operator ==(Object other) {
+    return other is SearchNotesNotifierProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
+String _$searchNotesNotifierHash() =>
+    r'02f553cddb209095727514a347669ee623a00ea5';
+
+final class SearchNotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          SearchNotesNotifier,
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (
+            Account,
+            String, {
+            String? userId,
+            String? channelId,
+            bool? localOnly,
+            String? sinceId,
+            String? untilId,
+          })
+        > {
+  const SearchNotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'searchNotesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  SearchNotesNotifierProvider call(
+    Account account,
+    String query, {
+    String? userId,
+    String? channelId,
+    bool? localOnly,
+    String? sinceId,
+    String? untilId,
+  }) => SearchNotesNotifierProvider._(
+    argument: (
+      account,
+      query,
+      userId: userId,
+      channelId: channelId,
+      localOnly: localOnly,
+      sinceId: sinceId,
+      untilId: untilId,
+    ),
+    from: this,
+  );
+
+  @override
+  String toString() => r'searchNotesNotifierProvider';
+}
+
 abstract class _$SearchNotesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-  late final String query;
-  late final String? userId;
-  late final String? channelId;
-  late final bool? localOnly;
-  late final String? sinceId;
-  late final String? untilId;
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args =
+      ref.$arg
+          as (
+            Account,
+            String, {
+            String? userId,
+            String? channelId,
+            bool? localOnly,
+            String? sinceId,
+            String? untilId,
+          });
+  Account get account => _$args.$1;
+  String get query => _$args.$2;
+  String? get userId => _$args.userId;
+  String? get channelId => _$args.channelId;
+  bool? get localOnly => _$args.localOnly;
+  String? get sinceId => _$args.sinceId;
+  String? get untilId => _$args.untilId;
 
   Stream<PaginationState<Note>> build(
     Account account,
@@ -49,265 +144,32 @@ abstract class _$SearchNotesNotifier
     String? sinceId,
     String? untilId,
   });
-}
-
-/// See also [SearchNotesNotifier].
-@ProviderFor(SearchNotesNotifier)
-const searchNotesNotifierProvider = SearchNotesNotifierFamily();
-
-/// See also [SearchNotesNotifier].
-class SearchNotesNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [SearchNotesNotifier].
-  const SearchNotesNotifierFamily();
-
-  /// See also [SearchNotesNotifier].
-  SearchNotesNotifierProvider call(
-    Account account,
-    String query, {
-    String? userId,
-    String? channelId,
-    bool? localOnly,
-    String? sinceId,
-    String? untilId,
-  }) {
-    return SearchNotesNotifierProvider(
-      account,
-      query,
-      userId: userId,
-      channelId: channelId,
-      localOnly: localOnly,
-      sinceId: sinceId,
-      untilId: untilId,
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(
+      _$args.$1,
+      _$args.$2,
+      userId: _$args.userId,
+      channelId: _$args.channelId,
+      localOnly: _$args.localOnly,
+      sinceId: _$args.sinceId,
+      untilId: _$args.untilId,
     );
-  }
-
-  @override
-  SearchNotesNotifierProvider getProviderOverride(
-    covariant SearchNotesNotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-      provider.query,
-      userId: provider.userId,
-      channelId: provider.channelId,
-      localOnly: provider.localOnly,
-      sinceId: provider.sinceId,
-      untilId: provider.untilId,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'searchNotesNotifierProvider';
-}
-
-/// See also [SearchNotesNotifier].
-class SearchNotesNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          SearchNotesNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [SearchNotesNotifier].
-  SearchNotesNotifierProvider(
-    Account account,
-    String query, {
-    String? userId,
-    String? channelId,
-    bool? localOnly,
-    String? sinceId,
-    String? untilId,
-  }) : this._internal(
-         () => SearchNotesNotifier()
-           ..account = account
-           ..query = query
-           ..userId = userId
-           ..channelId = channelId
-           ..localOnly = localOnly
-           ..sinceId = sinceId
-           ..untilId = untilId,
-         from: searchNotesNotifierProvider,
-         name: r'searchNotesNotifierProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$searchNotesNotifierHash,
-         dependencies: SearchNotesNotifierFamily._dependencies,
-         allTransitiveDependencies:
-             SearchNotesNotifierFamily._allTransitiveDependencies,
-         account: account,
-         query: query,
-         userId: userId,
-         channelId: channelId,
-         localOnly: localOnly,
-         sinceId: sinceId,
-         untilId: untilId,
-       );
-
-  SearchNotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.query,
-    required this.userId,
-    required this.channelId,
-    required this.localOnly,
-    required this.sinceId,
-    required this.untilId,
-  }) : super.internal();
-
-  final Account account;
-  final String query;
-  final String? userId;
-  final String? channelId;
-  final bool? localOnly;
-  final String? sinceId;
-  final String? untilId;
-
-  @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant SearchNotesNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      query,
-      userId: userId,
-      channelId: channelId,
-      localOnly: localOnly,
-      sinceId: sinceId,
-      untilId: untilId,
-    );
-  }
-
-  @override
-  Override overrideWith(SearchNotesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: SearchNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..query = query
-          ..userId = userId
-          ..channelId = channelId
-          ..localOnly = localOnly
-          ..sinceId = sinceId
-          ..untilId = untilId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        query: query,
-        userId: userId,
-        channelId: channelId,
-        localOnly: localOnly,
-        sinceId: sinceId,
-        untilId: untilId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    SearchNotesNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _SearchNotesNotifierProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is SearchNotesNotifierProvider &&
-        other.account == account &&
-        other.query == query &&
-        other.userId == userId &&
-        other.channelId == channelId &&
-        other.localOnly == localOnly &&
-        other.sinceId == sinceId &&
-        other.untilId == untilId;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, query.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-    hash = _SystemHash.combine(hash, channelId.hashCode);
-    hash = _SystemHash.combine(hash, localOnly.hashCode);
-    hash = _SystemHash.combine(hash, sinceId.hashCode);
-    hash = _SystemHash.combine(hash, untilId.hashCode);
-
-    return _SystemHash.finish(hash);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
   }
 }
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin SearchNotesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `query` of this provider.
-  String get query;
-
-  /// The parameter `userId` of this provider.
-  String? get userId;
-
-  /// The parameter `channelId` of this provider.
-  String? get channelId;
-
-  /// The parameter `localOnly` of this provider.
-  bool? get localOnly;
-
-  /// The parameter `sinceId` of this provider.
-  String? get sinceId;
-
-  /// The parameter `untilId` of this provider.
-  String? get untilId;
-}
-
-class _SearchNotesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
-          SearchNotesNotifier,
-          PaginationState<Note>
-        >
-    with SearchNotesNotifierRef {
-  _SearchNotesNotifierProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as SearchNotesNotifierProvider).account;
-  @override
-  String get query => (origin as SearchNotesNotifierProvider).query;
-  @override
-  String? get userId => (origin as SearchNotesNotifierProvider).userId;
-  @override
-  String? get channelId => (origin as SearchNotesNotifierProvider).channelId;
-  @override
-  bool? get localOnly => (origin as SearchNotesNotifierProvider).localOnly;
-  @override
-  String? get sinceId => (origin as SearchNotesNotifierProvider).sinceId;
-  @override
-  String? get untilId => (origin as SearchNotesNotifierProvider).untilId;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

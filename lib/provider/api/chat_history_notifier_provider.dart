@@ -25,7 +25,7 @@ class ChatHistoryNotifier extends _$ChatHistoryNotifier {
   void updateHistory(ChatMessage message) {
     state = AsyncValue.data([
       message.copyWith(isRead: false),
-      ...?state.valueOrNull?.where(
+      ...?state.value?.where(
         (e) =>
             (message.toRoomId != null && e.toRoomId != message.toRoomId) ||
             (e.toUserId != message.toUserId &&
@@ -35,7 +35,7 @@ class ChatHistoryNotifier extends _$ChatHistoryNotifier {
   }
 
   void read(String messageId) {
-    if (state.valueOrNull case final value?) {
+    if (state.value case final value?) {
       state = AsyncValue.data(
         value
             .map(

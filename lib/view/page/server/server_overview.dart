@@ -29,11 +29,11 @@ class ServerOverview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(host)).value;
     final instance = account.host != host
-        ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
+        ? ref.watch(federationInstanceProvider(account, host)).value
         : null;
-    final nodeInfo = ref.watch(nodeInfoProvider(host)).valueOrNull;
+    final nodeInfo = ref.watch(nodeInfoProvider(host)).value;
     final softwareName =
         (nodeInfo?['software'] as Map<String, dynamic>?)?['name'] as String?;
     final stats = meta != null
@@ -46,7 +46,7 @@ class ServerOverview extends ConsumerWidget {
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => Future.wait([
-        ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+        ref.refresh(metaNotifierProvider(host).future),
         if (account.host != host)
           ref.refresh(federationInstanceProvider(account, host).future),
       ]),
@@ -275,7 +275,7 @@ class ServerOverview extends ConsumerWidget {
                 horizontal: 16.0,
               ),
               child: switch (stats) {
-                AsyncValue(valueOrNull: final stats?) => Row(
+                AsyncValue(value: final stats?) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(

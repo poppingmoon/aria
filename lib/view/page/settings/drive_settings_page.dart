@@ -25,8 +25,8 @@ class DriveSettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final stats = ref.watch(driveStatsProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final stats = ref.watch(driveStatsProvider(account)).value;
     final usageRatio = stats != null
         ? stats.usage / max(max(1, stats.usage), stats.capacity).toDouble()
         : 0.0;
@@ -37,9 +37,7 @@ class DriveSettingsPage extends ConsumerWidget {
       0.5,
     ).toColor();
     final uploadFolder = settings.uploadFolder != null
-        ? ref
-              .watch(driveFolderProvider(account, settings.uploadFolder!))
-              .valueOrNull
+        ? ref.watch(driveFolderProvider(account, settings.uploadFolder!)).value
         : null;
     final theme = Theme.of(context);
 

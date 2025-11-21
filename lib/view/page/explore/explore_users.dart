@@ -82,7 +82,7 @@ class ExploreUsers extends HookConsumerWidget {
           const SizedBox(height: 4.0),
           if (type.value == _UserType.pinned)
             ...switch (pinnedUsers) {
-              AsyncValue(valueOrNull: final users?) =>
+              AsyncValue(value: final users?) =>
                 users.isNotEmpty
                     ? users.map(
                         (user) => Center(

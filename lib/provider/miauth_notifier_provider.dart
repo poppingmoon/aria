@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/miauth_state.dart';
+import '../repository/miauth_repository.dart';
 import 'accounts_notifier_provider.dart';
 import 'miauth_repository_provider.dart';
 
@@ -13,19 +14,17 @@ class MiAuthNotifier extends _$MiAuthNotifier {
     return null;
   }
 
+  MiAuthRepository get _miAuthRepository => ref.read(miAuthRepositoryProvider);
+
   Uri buildMiAuthUrl(Uri serverUrl) {
-    final (:sessionId, :url) = ref
-        .read(miAuthRepositoryProvider)
-        .buildMiAuthUrl(serverUrl);
+    final (:sessionId, :url) = _miAuthRepository.buildMiAuthUrl(serverUrl);
     state = MiAuthState(serverUrl: serverUrl, sessionId: sessionId, url: url);
     return url;
   }
 
   Future<({bool success, bool? added})> check() async {
     if (state case MiAuthState(:final serverUrl, :final sessionId)) {
-      final result = await ref
-          .read(miAuthRepositoryProvider)
-          .check(serverUrl, sessionId);
+      final result = await _miAuthRepository.check(serverUrl, sessionId);
       if (result case (:final token, :final user)) {
         final result = await ref
             .read(accountsNotifierProvider.notifier)

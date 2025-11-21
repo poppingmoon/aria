@@ -170,7 +170,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
       return;
     }
     final value = state.hasError
-        ? state.valueOrNull ?? const PaginationState()
+        ? state.value ?? const PaginationState()
         : await future;
     if (value.isLastLoaded) {
       return;

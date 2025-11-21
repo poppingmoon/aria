@@ -62,7 +62,7 @@ class ImageWidget extends ConsumerWidget {
     }
 
     final cacheManager = ref.watch(cacheManagerProvider);
-    final userAgent = ref.watch(userAgentProvider).valueOrNull;
+    final userAgent = ref.watch(userAgentProvider).value;
 
     if (url.startsWith('data:image/svg+xml') ||
         url.split('?').first.endsWith('.svg')) {

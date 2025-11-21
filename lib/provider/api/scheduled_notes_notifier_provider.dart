@@ -4,7 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../model/account.dart';
 import '../../model/pagination_state.dart';
 import '../notes_notifier_provider.dart';
-import 'endpoints_provider.dart';
+import 'endpoints_notifier_provider.dart';
 import 'i_notifier_provider.dart';
 import 'misskey_provider.dart';
 
@@ -23,7 +23,9 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
 
   Future<Iterable<Note>> _fetchNotes({String? untilId, int? offset}) async {
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       if (endpoints.contains('notes/schedule/list')) {
         final response = await ref
             .read(misskeyProvider(account))
@@ -101,7 +103,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -120,14 +122,16 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
 
   Future<void> cancel(String noteId) async {
     try {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      final endpoints = await ref.read(
+        endpointsNotifierProvider(account.host).future,
+      );
       if (endpoints.contains('notes/schedule/delete')) {
         await ref
             .read(misskeyProvider(account))
             .notes
             .schedule
             .delete(NotesScheduleDeleteRequest(noteId: noteId));
-        final value = state.valueOrNull;
+        final value = state.value;
         if (value != null) {
           state = AsyncValue.data(
             value.copyWith(
@@ -145,7 +149,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
         .notes
         .scheduled
         .cancel(NotesScheduledCancelRequest(draftId: noteId));
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

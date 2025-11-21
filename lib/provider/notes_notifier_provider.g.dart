@@ -6,156 +6,103 @@ part of 'notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$notesNotifierHash() => r'9a6e49fa5574247faa6819335e76348b72f5298f';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$NotesNotifier extends BuildlessNotifier<Map<String, Note?>> {
-  late final Account account;
-
-  Map<String, Note?> build(Account account);
-}
-
-/// See also [NotesNotifier].
 @ProviderFor(NotesNotifier)
-const notesNotifierProvider = NotesNotifierFamily();
+const notesNotifierProvider = NotesNotifierFamily._();
 
-/// See also [NotesNotifier].
-class NotesNotifierFamily extends Family<Map<String, Note?>> {
-  /// See also [NotesNotifier].
-  const NotesNotifierFamily();
+final class NotesNotifierProvider
+    extends $NotifierProvider<NotesNotifier, Map<String, Note?>> {
+  const NotesNotifierProvider._({
+    required NotesNotifierFamily super.from,
+    required Account super.argument,
+  }) : super(
+         retry: null,
+         name: r'notesNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [NotesNotifier].
-  NotesNotifierProvider call(Account account) {
-    return NotesNotifierProvider(account);
+  @override
+  String debugGetCreateSourceHash() => _$notesNotifierHash();
+
+  @override
+  String toString() {
+    return r'notesNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  NotesNotifierProvider getProviderOverride(
-    covariant NotesNotifierProvider provider,
-  ) {
-    return call(provider.account);
-  }
+  NotesNotifier create() => NotesNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'notesNotifierProvider';
-}
-
-/// See also [NotesNotifier].
-class NotesNotifierProvider
-    extends NotifierProviderImpl<NotesNotifier, Map<String, Note?>> {
-  /// See also [NotesNotifier].
-  NotesNotifierProvider(Account account)
-    : this._internal(
-        () => NotesNotifier()..account = account,
-        from: notesNotifierProvider,
-        name: r'notesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$notesNotifierHash,
-        dependencies: NotesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            NotesNotifierFamily._allTransitiveDependencies,
-        account: account,
-      );
-
-  NotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-  }) : super.internal();
-
-  final Account account;
-
-  @override
-  Map<String, Note?> runNotifierBuild(covariant NotesNotifier notifier) {
-    return notifier.build(account);
-  }
-
-  @override
-  Override overrideWith(NotesNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Map<String, Note?> value) {
+    return $ProviderOverride(
       origin: this,
-      override: NotesNotifierProvider._internal(
-        () => create()..account = account,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-      ),
+      providerOverride: $SyncValueProvider<Map<String, Note?>>(value),
     );
   }
 
   @override
-  NotifierProviderElement<NotesNotifier, Map<String, Note?>> createElement() {
-    return _NotesNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is NotesNotifierProvider && other.account == account;
+    return other is NotesNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NotesNotifierRef on NotifierProviderRef<Map<String, Note?>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-}
+String _$notesNotifierHash() => r'df76dea655824d33c1b4cb79ebd4d44eba3867bc';
 
-class _NotesNotifierProviderElement
-    extends NotifierProviderElement<NotesNotifier, Map<String, Note?>>
-    with NotesNotifierRef {
-  _NotesNotifierProviderElement(super.provider);
+final class NotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          NotesNotifier,
+          Map<String, Note?>,
+          Map<String, Note?>,
+          Map<String, Note?>,
+          Account
+        > {
+  const NotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'notesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  NotesNotifierProvider call(Account account) =>
+      NotesNotifierProvider._(argument: account, from: this);
 
   @override
-  Account get account => (origin as NotesNotifierProvider).account;
+  String toString() => r'notesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$NotesNotifier extends $Notifier<Map<String, Note?>> {
+  late final _$args = ref.$arg as Account;
+  Account get account => _$args;
+
+  Map<String, Note?> build(Account account);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<Map<String, Note?>, Map<String, Note?>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Map<String, Note?>, Map<String, Note?>>,
+              Map<String, Note?>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

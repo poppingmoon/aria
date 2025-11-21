@@ -6,190 +6,102 @@ part of 'user_plays_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userPlaysNotifierHash() => r'76944d61597898d3499b3c3c521a025c03fe1d66';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$UserPlaysNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Flash>> {
-  late final Account account;
-  late final String userId;
-
-  Stream<PaginationState<Flash>> build(Account account, String userId);
-}
-
-/// See also [UserPlaysNotifier].
 @ProviderFor(UserPlaysNotifier)
-const userPlaysNotifierProvider = UserPlaysNotifierFamily();
+const userPlaysNotifierProvider = UserPlaysNotifierFamily._();
 
-/// See also [UserPlaysNotifier].
-class UserPlaysNotifierFamily
-    extends Family<AsyncValue<PaginationState<Flash>>> {
-  /// See also [UserPlaysNotifier].
-  const UserPlaysNotifierFamily();
+final class UserPlaysNotifierProvider
+    extends $StreamNotifierProvider<UserPlaysNotifier, PaginationState<Flash>> {
+  const UserPlaysNotifierProvider._({
+    required UserPlaysNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'userPlaysNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [UserPlaysNotifier].
-  UserPlaysNotifierProvider call(Account account, String userId) {
-    return UserPlaysNotifierProvider(account, userId);
+  @override
+  String debugGetCreateSourceHash() => _$userPlaysNotifierHash();
+
+  @override
+  String toString() {
+    return r'userPlaysNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  UserPlaysNotifierProvider getProviderOverride(
-    covariant UserPlaysNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.userId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'userPlaysNotifierProvider';
-}
-
-/// See also [UserPlaysNotifier].
-class UserPlaysNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          UserPlaysNotifier,
-          PaginationState<Flash>
-        > {
-  /// See also [UserPlaysNotifier].
-  UserPlaysNotifierProvider(Account account, String userId)
-    : this._internal(
-        () => UserPlaysNotifier()
-          ..account = account
-          ..userId = userId,
-        from: userPlaysNotifierProvider,
-        name: r'userPlaysNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$userPlaysNotifierHash,
-        dependencies: UserPlaysNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            UserPlaysNotifierFamily._allTransitiveDependencies,
-        account: account,
-        userId: userId,
-      );
-
-  UserPlaysNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.userId,
-  }) : super.internal();
-
-  final Account account;
-  final String userId;
-
-  @override
-  Stream<PaginationState<Flash>> runNotifierBuild(
-    covariant UserPlaysNotifier notifier,
-  ) {
-    return notifier.build(account, userId);
-  }
-
-  @override
-  Override overrideWith(UserPlaysNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: UserPlaysNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        userId: userId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    UserPlaysNotifier,
-    PaginationState<Flash>
-  >
-  createElement() {
-    return _UserPlaysNotifierProviderElement(this);
-  }
+  UserPlaysNotifier create() => UserPlaysNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is UserPlaysNotifierProvider &&
-        other.account == account &&
-        other.userId == userId;
+    return other is UserPlaysNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, userId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin UserPlaysNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Flash>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$userPlaysNotifierHash() => r'005484ab65efef54301f6a8b7c3dc96324cc6d96';
 
-  /// The parameter `userId` of this provider.
-  String get userId;
-}
-
-class _UserPlaysNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class UserPlaysNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           UserPlaysNotifier,
-          PaginationState<Flash>
-        >
-    with UserPlaysNotifierRef {
-  _UserPlaysNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Flash>>,
+          PaginationState<Flash>,
+          Stream<PaginationState<Flash>>,
+          (Account, String)
+        > {
+  const UserPlaysNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'userPlaysNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  UserPlaysNotifierProvider call(Account account, String userId) =>
+      UserPlaysNotifierProvider._(argument: (account, userId), from: this);
 
   @override
-  Account get account => (origin as UserPlaysNotifierProvider).account;
-  @override
-  String get userId => (origin as UserPlaysNotifierProvider).userId;
+  String toString() => r'userPlaysNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$UserPlaysNotifier
+    extends $StreamNotifier<PaginationState<Flash>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get userId => _$args.$2;
+
+  Stream<PaginationState<Flash>> build(Account account, String userId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Flash>>, PaginationState<Flash>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Flash>>,
+                PaginationState<Flash>
+              >,
+              AsyncValue<PaginationState<Flash>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

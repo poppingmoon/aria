@@ -6,190 +6,102 @@ part of 'clip_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clipNotesNotifierHash() => r'9f10f2f3ae18fb49d3cc032290e08ecdcf67fb31';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ClipNotesNotifier
-    extends BuildlessAutoDisposeStreamNotifier<PaginationState<Note>> {
-  late final Account account;
-  late final String clipId;
-
-  Stream<PaginationState<Note>> build(Account account, String clipId);
-}
-
-/// See also [ClipNotesNotifier].
 @ProviderFor(ClipNotesNotifier)
-const clipNotesNotifierProvider = ClipNotesNotifierFamily();
+const clipNotesNotifierProvider = ClipNotesNotifierFamily._();
 
-/// See also [ClipNotesNotifier].
-class ClipNotesNotifierFamily
-    extends Family<AsyncValue<PaginationState<Note>>> {
-  /// See also [ClipNotesNotifier].
-  const ClipNotesNotifierFamily();
+final class ClipNotesNotifierProvider
+    extends $StreamNotifierProvider<ClipNotesNotifier, PaginationState<Note>> {
+  const ClipNotesNotifierProvider._({
+    required ClipNotesNotifierFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'clipNotesNotifierProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ClipNotesNotifier].
-  ClipNotesNotifierProvider call(Account account, String clipId) {
-    return ClipNotesNotifierProvider(account, clipId);
+  @override
+  String debugGetCreateSourceHash() => _$clipNotesNotifierHash();
+
+  @override
+  String toString() {
+    return r'clipNotesNotifierProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  ClipNotesNotifierProvider getProviderOverride(
-    covariant ClipNotesNotifierProvider provider,
-  ) {
-    return call(provider.account, provider.clipId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'clipNotesNotifierProvider';
-}
-
-/// See also [ClipNotesNotifier].
-class ClipNotesNotifierProvider
-    extends
-        AutoDisposeStreamNotifierProviderImpl<
-          ClipNotesNotifier,
-          PaginationState<Note>
-        > {
-  /// See also [ClipNotesNotifier].
-  ClipNotesNotifierProvider(Account account, String clipId)
-    : this._internal(
-        () => ClipNotesNotifier()
-          ..account = account
-          ..clipId = clipId,
-        from: clipNotesNotifierProvider,
-        name: r'clipNotesNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$clipNotesNotifierHash,
-        dependencies: ClipNotesNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            ClipNotesNotifierFamily._allTransitiveDependencies,
-        account: account,
-        clipId: clipId,
-      );
-
-  ClipNotesNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.clipId,
-  }) : super.internal();
-
-  final Account account;
-  final String clipId;
-
-  @override
-  Stream<PaginationState<Note>> runNotifierBuild(
-    covariant ClipNotesNotifier notifier,
-  ) {
-    return notifier.build(account, clipId);
-  }
-
-  @override
-  Override overrideWith(ClipNotesNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: ClipNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..clipId = clipId,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        clipId: clipId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamNotifierProviderElement<
-    ClipNotesNotifier,
-    PaginationState<Note>
-  >
-  createElement() {
-    return _ClipNotesNotifierProviderElement(this);
-  }
+  ClipNotesNotifier create() => ClipNotesNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is ClipNotesNotifierProvider &&
-        other.account == account &&
-        other.clipId == clipId;
+    return other is ClipNotesNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, clipId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ClipNotesNotifierRef
-    on AutoDisposeStreamNotifierProviderRef<PaginationState<Note>> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$clipNotesNotifierHash() => r'30f5bdc1f6a0b1de87ba3ebfa919d1de329f6dbf';
 
-  /// The parameter `clipId` of this provider.
-  String get clipId;
-}
-
-class _ClipNotesNotifierProviderElement
-    extends
-        AutoDisposeStreamNotifierProviderElement<
+final class ClipNotesNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
           ClipNotesNotifier,
-          PaginationState<Note>
-        >
-    with ClipNotesNotifierRef {
-  _ClipNotesNotifierProviderElement(super.provider);
+          AsyncValue<PaginationState<Note>>,
+          PaginationState<Note>,
+          Stream<PaginationState<Note>>,
+          (Account, String)
+        > {
+  const ClipNotesNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'clipNotesNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  ClipNotesNotifierProvider call(Account account, String clipId) =>
+      ClipNotesNotifierProvider._(argument: (account, clipId), from: this);
 
   @override
-  Account get account => (origin as ClipNotesNotifierProvider).account;
-  @override
-  String get clipId => (origin as ClipNotesNotifierProvider).clipId;
+  String toString() => r'clipNotesNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ClipNotesNotifier
+    extends $StreamNotifier<PaginationState<Note>> {
+  late final _$args = ref.$arg as (Account, String);
+  Account get account => _$args.$1;
+  String get clipId => _$args.$2;
+
+  Stream<PaginationState<Note>> build(Account account, String clipId);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args.$1, _$args.$2);
+    final ref =
+        this.ref
+            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<
+                AsyncValue<PaginationState<Note>>,
+                PaginationState<Note>
+              >,
+              AsyncValue<PaginationState<Note>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

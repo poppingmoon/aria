@@ -6,22 +6,38 @@ part of 'cache_size_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$cacheSizeHash() => r'b0ca671e2da6877ebd701406cfedc7fb01174822';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [cacheSize].
 @ProviderFor(cacheSize)
-final cacheSizeProvider = AutoDisposeFutureProvider<int>.internal(
-  cacheSize,
-  name: r'cacheSizeProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$cacheSizeHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const cacheSizeProvider = CacheSizeProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef CacheSizeRef = AutoDisposeFutureProviderRef<int>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class CacheSizeProvider
+    extends $FunctionalProvider<AsyncValue<int>, int, FutureOr<int>>
+    with $FutureModifier<int>, $FutureProvider<int> {
+  const CacheSizeProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'cacheSizeProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$cacheSizeHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<int> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<int> create(Ref ref) {
+    return cacheSize(ref);
+  }
+}
+
+String _$cacheSizeHash() => r'b0ca671e2da6877ebd701406cfedc7fb01174822';

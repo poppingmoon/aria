@@ -64,7 +64,7 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
-  hooks_riverpod: ^2.6.1
+  hooks_riverpod: ^3.0.3
   image: ^4.5.4
   image_compression:
     git:
@@ -72,6 +72,8 @@ dependencies:
       ref: 37b78624635c42f51524cdfc001ae9073ec468ee
   image_editor: ^1.6.0
   intl: ^0.20.2
+  isar_community: ^3.3.0
+  isar_community_flutter_libs: ^3.3.0
   json5: ^0.8.2
   json_annotation: ^4.9.0
   just_audio: ^0.10.5
@@ -103,7 +105,7 @@ dependencies:
       ref: 2cea396843cd3ab1b5ec4334be4233864637874e
   reorderable_grid: ^1.0.12
   reorderables: ^0.6.0
-  riverpod_annotation: ^2.6.1
+  riverpod_annotation: ^3.0.3
   rust_lib_aria:
     path: rust_builder
   share_plus: ^11.1.0
@@ -131,22 +133,23 @@ dependencies:
   window_manager: ^0.5.1
 
 dev_dependencies:
-  build_runner: ^2.5.4
-  custom_lint: ^0.7.6
+  build_runner: ^2.7.1
+  custom_lint: ^0.8.0
   flutter_gen_runner: ^5.12.0
   flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
-  freezed: ^3.1.0
+  freezed: ^3.2.3
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
-  json_serializable: ^6.9.5
+  isar_community_generator: ^3.3.0
+  json_serializable: ^6.11.1
   lint: ^2.8.0
   plugin_platform_interface: ^2.1.8
-  riverpod_generator: ^2.6.5
-  riverpod_lint: ^2.6.5
-  slang_build_runner: ^4.8.1
+  riverpod_generator: ^3.0.3
+  riverpod_lint: ^3.0.3
+  slang_build_runner: ^4.9.0
   url_launcher_platform_interface: ^2.3.2
   yaml: ^3.1.3
 

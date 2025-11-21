@@ -47,7 +47,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         excludeNotesInSensitiveChannel: excludeNotesInSensitiveChannel,
       ),
     );
-    state = AsyncValue.data([antenna, ...?state.valueOrNull]);
+    state = AsyncValue.data([antenna, ...?state.value]);
   }
 
   Future<void> updateAntenna(
@@ -87,7 +87,7 @@ class AntennasNotifier extends _$AntennasNotifier {
       ),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map(
+      ...?state.value?.map(
         (e) => e.id == antenna.id
             ? e.copyWith(
                 name: name ?? antenna.name,
@@ -113,7 +113,7 @@ class AntennasNotifier extends _$AntennasNotifier {
   Future<void> delete(String antennaId) async {
     await _misskey.antennas.delete(AntennasDeleteRequest(antennaId: antennaId));
     state = AsyncValue.data([
-      ...?state.valueOrNull?.where((antenna) => antenna.id != antennaId),
+      ...?state.value?.where((antenna) => antenna.id != antennaId),
     ]);
   }
 
@@ -140,7 +140,7 @@ class AntennasNotifier extends _$AntennasNotifier {
       ),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map(
+      ...?state.value?.map(
         (antenna) =>
             antenna.id == antennaId ? antenna.copyWith(users: users) : antenna,
       ),
@@ -170,7 +170,7 @@ class AntennasNotifier extends _$AntennasNotifier {
       ),
     );
     state = AsyncValue.data([
-      ...?state.valueOrNull?.map(
+      ...?state.value?.map(
         (antenna) =>
             antenna.id == antennaId ? antenna.copyWith(users: users) : antenna,
       ),

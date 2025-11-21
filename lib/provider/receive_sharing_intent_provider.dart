@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -6,7 +5,7 @@ import 'share_notifier_provider.dart';
 
 part 'receive_sharing_intent_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Stream<List<SharedMediaFile>> receiveSharingIntent(Ref ref) async* {
   final files = await ReceiveSharingIntent.instance.getInitialMedia();
   if (files.isNotEmpty) {

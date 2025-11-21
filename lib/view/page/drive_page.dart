@@ -51,7 +51,7 @@ class DrivePage extends HookConsumerWidget {
     final currentFolder =
         ref.watch(
           driveFoldersNotifierProvider(account, parentId).select(
-            (folders) => folders.valueOrNull?.items.firstWhereOrNull(
+            (folders) => folders.value?.items.firstWhereOrNull(
               (folder) => folder.id == folderId,
             ),
           ),
@@ -61,7 +61,7 @@ class DrivePage extends HookConsumerWidget {
     final files = ref.watch(driveFilesNotifierProvider(account, folderId));
     final selectedFiles = ref.watch(selectedDriveFilesNotifierProvider);
     final stats = !selectFiles && !selectFolder
-        ? ref.watch(driveStatsProvider(account)).valueOrNull
+        ? ref.watch(driveStatsProvider(account)).value
         : null;
     final enableInfiniteScroll = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -168,7 +168,7 @@ class DrivePage extends HookConsumerWidget {
               ),
             if (isSelecting) ...[
               if (files case AsyncValue(
-                valueOrNull: PaginationState(items: final files),
+                value: PaginationState(items: final files),
               ))
                 if (files.isNotEmpty)
                   if (files.every(
@@ -308,7 +308,7 @@ class DrivePage extends HookConsumerWidget {
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               if (folders case AsyncValue(
-                valueOrNull: PaginationState(items: final folders),
+                value: PaginationState(items: final folders),
               ))
                 SliverGrid.builder(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -346,7 +346,7 @@ class DrivePage extends HookConsumerWidget {
                 ),
               ),
               if (files case AsyncValue(
-                valueOrNull: PaginationState(items: final files),
+                value: PaginationState(items: final files),
               ))
                 Builder(
                   builder: (context) {
@@ -415,7 +415,7 @@ class DrivePage extends HookConsumerWidget {
                         driveFilesNotifierProvider(account, folderId).notifier,
                       )
                       .loadMore(skipError: true),
-                  noItemsLabel: folders.valueOrNull?.items.isEmpty ?? false
+                  noItemsLabel: folders.value?.items.isEmpty ?? false
                       ? folderId == null
                             ? t.misskey.emptyDrive
                             : t.misskey.emptyFolder

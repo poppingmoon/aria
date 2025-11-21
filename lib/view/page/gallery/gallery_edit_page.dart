@@ -26,7 +26,7 @@ class GalleryEditPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(attachesNotifierProvider(account, gallery: true));
     final post = postId != null
-        ? ref.watch(galleryPostNotifierProvider(account, postId!)).valueOrNull
+        ? ref.watch(galleryPostNotifierProvider(account, postId!)).value
         : null;
     final title = useState('');
     final description = useState<String?>(null);

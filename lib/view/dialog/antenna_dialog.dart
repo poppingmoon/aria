@@ -18,7 +18,7 @@ class AntennaDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final antennas = ref.watch(antennasNotifierProvider(account)).valueOrNull;
+    final antennas = ref.watch(antennasNotifierProvider(account)).value;
     final userAntennas = antennas?.where(
       (antenna) => antenna.src == AntennaSource.users,
     );

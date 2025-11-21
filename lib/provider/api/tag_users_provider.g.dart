@@ -6,197 +6,102 @@ part of 'tag_users_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagUsersHash() => r'47cbf3d98fe606420e4a451f037d565374cfff25';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(tagUsers)
+const tagUsersProvider = TagUsersFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class TagUsersProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<UserDetailed>>,
+          List<UserDetailed>,
+          FutureOr<List<UserDetailed>>
+        >
+    with
+        $FutureModifier<List<UserDetailed>>,
+        $FutureProvider<List<UserDetailed>> {
+  const TagUsersProvider._({
+    required TagUsersFamily super.from,
+    required (Account, String, {UsersSortType sort, Origin? userOrigin})
+    super.argument,
+  }) : super(
+         retry: null,
+         name: r'tagUsersProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$tagUsersHash();
+
+  @override
+  String toString() {
+    return r'tagUsersProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  @$internal
+  @override
+  $FutureProviderElement<List<UserDetailed>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<UserDetailed>> create(Ref ref) {
+    final argument =
+        this.argument
+            as (Account, String, {UsersSortType sort, Origin? userOrigin});
+    return tagUsers(
+      ref,
+      argument.$1,
+      argument.$2,
+      sort: argument.sort,
+      userOrigin: argument.userOrigin,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is TagUsersProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
   }
 }
 
-/// See also [tagUsers].
-@ProviderFor(tagUsers)
-const tagUsersProvider = TagUsersFamily();
+String _$tagUsersHash() => r'47cbf3d98fe606420e4a451f037d565374cfff25';
 
-/// See also [tagUsers].
-class TagUsersFamily extends Family<AsyncValue<List<UserDetailed>>> {
-  /// See also [tagUsers].
-  const TagUsersFamily();
+final class TagUsersFamily extends $Family
+    with
+        $FunctionalFamilyOverride<
+          FutureOr<List<UserDetailed>>,
+          (Account, String, {UsersSortType sort, Origin? userOrigin})
+        > {
+  const TagUsersFamily._()
+    : super(
+        retry: null,
+        name: r'tagUsersProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-  /// See also [tagUsers].
   TagUsersProvider call(
     Account account,
     String tag, {
     UsersSortType sort = UsersSortType.followerDescendant,
     Origin? userOrigin,
-  }) {
-    return TagUsersProvider(account, tag, sort: sort, userOrigin: userOrigin);
-  }
+  }) => TagUsersProvider._(
+    argument: (account, tag, sort: sort, userOrigin: userOrigin),
+    from: this,
+  );
 
   @override
-  TagUsersProvider getProviderOverride(covariant TagUsersProvider provider) {
-    return call(
-      provider.account,
-      provider.tag,
-      sort: provider.sort,
-      userOrigin: provider.userOrigin,
-    );
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'tagUsersProvider';
+  String toString() => r'tagUsersProvider';
 }
-
-/// See also [tagUsers].
-class TagUsersProvider extends AutoDisposeFutureProvider<List<UserDetailed>> {
-  /// See also [tagUsers].
-  TagUsersProvider(
-    Account account,
-    String tag, {
-    UsersSortType sort = UsersSortType.followerDescendant,
-    Origin? userOrigin,
-  }) : this._internal(
-         (ref) => tagUsers(
-           ref as TagUsersRef,
-           account,
-           tag,
-           sort: sort,
-           userOrigin: userOrigin,
-         ),
-         from: tagUsersProvider,
-         name: r'tagUsersProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$tagUsersHash,
-         dependencies: TagUsersFamily._dependencies,
-         allTransitiveDependencies: TagUsersFamily._allTransitiveDependencies,
-         account: account,
-         tag: tag,
-         sort: sort,
-         userOrigin: userOrigin,
-       );
-
-  TagUsersProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.tag,
-    required this.sort,
-    required this.userOrigin,
-  }) : super.internal();
-
-  final Account account;
-  final String tag;
-  final UsersSortType sort;
-  final Origin? userOrigin;
-
-  @override
-  Override overrideWith(
-    FutureOr<List<UserDetailed>> Function(TagUsersRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: TagUsersProvider._internal(
-        (ref) => create(ref as TagUsersRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        tag: tag,
-        sort: sort,
-        userOrigin: userOrigin,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeFutureProviderElement<List<UserDetailed>> createElement() {
-    return _TagUsersProviderElement(this);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return other is TagUsersProvider &&
-        other.account == account &&
-        other.tag == tag &&
-        other.sort == sort &&
-        other.userOrigin == userOrigin;
-  }
-
-  @override
-  int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, tag.hashCode);
-    hash = _SystemHash.combine(hash, sort.hashCode);
-    hash = _SystemHash.combine(hash, userOrigin.hashCode);
-
-    return _SystemHash.finish(hash);
-  }
-}
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin TagUsersRef on AutoDisposeFutureProviderRef<List<UserDetailed>> {
-  /// The parameter `account` of this provider.
-  Account get account;
-
-  /// The parameter `tag` of this provider.
-  String get tag;
-
-  /// The parameter `sort` of this provider.
-  UsersSortType get sort;
-
-  /// The parameter `userOrigin` of this provider.
-  Origin? get userOrigin;
-}
-
-class _TagUsersProviderElement
-    extends AutoDisposeFutureProviderElement<List<UserDetailed>>
-    with TagUsersRef {
-  _TagUsersProviderElement(super.provider);
-
-  @override
-  Account get account => (origin as TagUsersProvider).account;
-  @override
-  String get tag => (origin as TagUsersProvider).tag;
-  @override
-  UsersSortType get sort => (origin as TagUsersProvider).sort;
-  @override
-  Origin? get userOrigin => (origin as TagUsersProvider).userOrigin;
-}
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

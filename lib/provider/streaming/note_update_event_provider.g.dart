@@ -6,159 +6,149 @@ part of 'note_update_event_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteUpdateEventHash() => r'4b07c4472790fbf502b442ddfcd9754e1104f057';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
+@ProviderFor(_noteSubscription)
+const _noteSubscriptionProvider = _NoteSubscriptionFamily._();
 
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
+final class _NoteSubscriptionProvider
+    extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
+    with $FutureModifier<String>, $FutureProvider<String> {
+  const _NoteSubscriptionProvider._({
+    required _NoteSubscriptionFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'_noteSubscriptionProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$_noteSubscriptionHash();
+
+  @override
+  String toString() {
+    return r'_noteSubscriptionProvider'
+        ''
+        '$argument';
   }
 
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [noteUpdateEvent].
-@ProviderFor(noteUpdateEvent)
-const noteUpdateEventProvider = NoteUpdateEventFamily();
-
-/// See also [noteUpdateEvent].
-class NoteUpdateEventFamily extends Family<AsyncValue<NoteUpdateEvent>> {
-  /// See also [noteUpdateEvent].
-  const NoteUpdateEventFamily();
-
-  /// See also [noteUpdateEvent].
-  NoteUpdateEventProvider call(Account account, String noteId) {
-    return NoteUpdateEventProvider(account, noteId);
-  }
+  @$internal
+  @override
+  $FutureProviderElement<String> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
 
   @override
-  NoteUpdateEventProvider getProviderOverride(
-    covariant NoteUpdateEventProvider provider,
-  ) {
-    return call(provider.account, provider.noteId);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'noteUpdateEventProvider';
-}
-
-/// See also [noteUpdateEvent].
-class NoteUpdateEventProvider
-    extends AutoDisposeStreamProvider<NoteUpdateEvent> {
-  /// See also [noteUpdateEvent].
-  NoteUpdateEventProvider(Account account, String noteId)
-    : this._internal(
-        (ref) => noteUpdateEvent(ref as NoteUpdateEventRef, account, noteId),
-        from: noteUpdateEventProvider,
-        name: r'noteUpdateEventProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$noteUpdateEventHash,
-        dependencies: NoteUpdateEventFamily._dependencies,
-        allTransitiveDependencies:
-            NoteUpdateEventFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-      );
-
-  NoteUpdateEventProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-  }) : super.internal();
-
-  final Account account;
-  final String noteId;
-
-  @override
-  Override overrideWith(
-    Stream<NoteUpdateEvent> Function(NoteUpdateEventRef provider) create,
-  ) {
-    return ProviderOverride(
-      origin: this,
-      override: NoteUpdateEventProvider._internal(
-        (ref) => create(ref as NoteUpdateEventRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-      ),
-    );
-  }
-
-  @override
-  AutoDisposeStreamProviderElement<NoteUpdateEvent> createElement() {
-    return _NoteUpdateEventProviderElement(this);
+  FutureOr<String> create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return _noteSubscription(ref, argument.$1, argument.$2);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is NoteUpdateEventProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is _NoteSubscriptionProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NoteUpdateEventRef on AutoDisposeStreamProviderRef<NoteUpdateEvent> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$_noteSubscriptionHash() => r'88fcd136cc53cf3ffc0dca27f7a725976597c0b5';
 
-  /// The parameter `noteId` of this provider.
-  String get noteId;
-}
+final class _NoteSubscriptionFamily extends $Family
+    with $FunctionalFamilyOverride<FutureOr<String>, (Account, String)> {
+  const _NoteSubscriptionFamily._()
+    : super(
+        retry: null,
+        name: r'_noteSubscriptionProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _NoteUpdateEventProviderElement
-    extends AutoDisposeStreamProviderElement<NoteUpdateEvent>
-    with NoteUpdateEventRef {
-  _NoteUpdateEventProviderElement(super.provider);
+  _NoteSubscriptionProvider call(Account account, String noteId) =>
+      _NoteSubscriptionProvider._(argument: (account, noteId), from: this);
 
   @override
-  Account get account => (origin as NoteUpdateEventProvider).account;
-  @override
-  String get noteId => (origin as NoteUpdateEventProvider).noteId;
+  String toString() => r'_noteSubscriptionProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+@ProviderFor(noteUpdateEvent)
+const noteUpdateEventProvider = NoteUpdateEventFamily._();
+
+final class NoteUpdateEventProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<NoteUpdateEvent>,
+          NoteUpdateEvent,
+          Stream<NoteUpdateEvent>
+        >
+    with $FutureModifier<NoteUpdateEvent>, $StreamProvider<NoteUpdateEvent> {
+  const NoteUpdateEventProvider._({
+    required NoteUpdateEventFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'noteUpdateEventProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$noteUpdateEventHash();
+
+  @override
+  String toString() {
+    return r'noteUpdateEventProvider'
+        ''
+        '$argument';
+  }
+
+  @$internal
+  @override
+  $StreamProviderElement<NoteUpdateEvent> $createElement(
+    $ProviderPointer pointer,
+  ) => $StreamProviderElement(pointer);
+
+  @override
+  Stream<NoteUpdateEvent> create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return noteUpdateEvent(ref, argument.$1, argument.$2);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is NoteUpdateEventProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$noteUpdateEventHash() => r'83324e4d703d1cf7682ef44cd2999ff49104bd65';
+
+final class NoteUpdateEventFamily extends $Family
+    with $FunctionalFamilyOverride<Stream<NoteUpdateEvent>, (Account, String)> {
+  const NoteUpdateEventFamily._()
+    : super(
+        retry: null,
+        name: r'noteUpdateEventProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  NoteUpdateEventProvider call(Account account, String noteId) =>
+      NoteUpdateEventProvider._(argument: (account, noteId), from: this);
+
+  @override
+  String toString() => r'noteUpdateEventProvider';
+}

@@ -8,7 +8,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/lookup.dart';
@@ -114,8 +114,8 @@ class _TimelineDrawerExpansionTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
     final theme = Theme.of(context);
 
     return ExpansionTile(

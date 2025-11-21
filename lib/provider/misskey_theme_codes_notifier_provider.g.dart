@@ -6,22 +6,59 @@ part of 'misskey_theme_codes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(MisskeyThemeCodesNotifier)
+const misskeyThemeCodesNotifierProvider = MisskeyThemeCodesNotifierProvider._();
+
+final class MisskeyThemeCodesNotifierProvider
+    extends $NotifierProvider<MisskeyThemeCodesNotifier, List<String>> {
+  const MisskeyThemeCodesNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'misskeyThemeCodesNotifierProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$misskeyThemeCodesNotifierHash();
+
+  @$internal
+  @override
+  MisskeyThemeCodesNotifier create() => MisskeyThemeCodesNotifier();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<String> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<String>>(value),
+    );
+  }
+}
+
 String _$misskeyThemeCodesNotifierHash() =>
     r'caa89102b765a907e6a114239fac86339e6827e2';
 
-/// See also [MisskeyThemeCodesNotifier].
-@ProviderFor(MisskeyThemeCodesNotifier)
-final misskeyThemeCodesNotifierProvider =
-    NotifierProvider<MisskeyThemeCodesNotifier, List<String>>.internal(
-      MisskeyThemeCodesNotifier.new,
-      name: r'misskeyThemeCodesNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$misskeyThemeCodesNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$MisskeyThemeCodesNotifier = Notifier<List<String>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$MisskeyThemeCodesNotifier extends $Notifier<List<String>> {
+  List<String> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build();
+    final ref = this.ref as $Ref<List<String>, List<String>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<String>, List<String>>,
+              List<String>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

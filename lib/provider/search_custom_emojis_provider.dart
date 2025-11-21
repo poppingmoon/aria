@@ -1,4 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,9 +12,7 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
   if (query.isEmpty) {
     return {};
   }
-  final customEmojiIndex = ref
-      .watch(customEmojiIndexProvider(host))
-      .valueOrNull;
+  final customEmojiIndex = ref.watch(customEmojiIndexProvider(host)).value;
   if (customEmojiIndex == null) {
     return {};
   }

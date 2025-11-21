@@ -13,5 +13,5 @@ _Account _$AccountFromJson(Map<String, dynamic> json) => _Account(
 
 Map<String, dynamic> _$AccountToJson(_Account instance) => <String, dynamic>{
   'host': instance.host,
-  if (instance.username case final value?) 'username': value,
+  'username': ?instance.username,
 };

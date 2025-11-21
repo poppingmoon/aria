@@ -147,7 +147,7 @@ class NoteSubWidget extends HookConsumerWidget {
               ),
             ],
           ),
-          if (children?.valueOrNull?.items case final children?
+          if (children?.value?.items case final children?
               when children.isNotEmpty) ...[
             const SizedBox(height: 8.0),
             for (final (index, reply) in children.indexed)

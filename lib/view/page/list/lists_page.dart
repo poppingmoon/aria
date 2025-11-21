@@ -22,7 +22,7 @@ class ListsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account));
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -30,7 +30,7 @@ class ListsPage extends ConsumerWidget {
       body: HapticFeedbackRefreshIndicator(
         onRefresh: () => ref.refresh(listsNotifierProvider(account).future),
         child: switch (lists) {
-          AsyncValue(valueOrNull: final lists?) =>
+          AsyncValue(value: final lists?) =>
             lists.isEmpty
                 ? LayoutBuilder(
                     builder: (context, constraint) => SingleChildScrollView(

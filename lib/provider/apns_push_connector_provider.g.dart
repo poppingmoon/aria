@@ -6,22 +6,52 @@ part of 'apns_push_connector_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apnsPushConnectorHash() => r'045174b8a22cf4f125e76bc9707c0b7eaeb53ce3';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [apnsPushConnector].
 @ProviderFor(apnsPushConnector)
-final apnsPushConnectorProvider = Provider<ApnsPushConnectorOnly>.internal(
-  apnsPushConnector,
-  name: r'apnsPushConnectorProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$apnsPushConnectorHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const apnsPushConnectorProvider = ApnsPushConnectorProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ApnsPushConnectorRef = ProviderRef<ApnsPushConnectorOnly>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class ApnsPushConnectorProvider
+    extends
+        $FunctionalProvider<
+          ApnsPushConnectorOnly,
+          ApnsPushConnectorOnly,
+          ApnsPushConnectorOnly
+        >
+    with $Provider<ApnsPushConnectorOnly> {
+  const ApnsPushConnectorProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'apnsPushConnectorProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$apnsPushConnectorHash();
+
+  @$internal
+  @override
+  $ProviderElement<ApnsPushConnectorOnly> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  ApnsPushConnectorOnly create(Ref ref) {
+    return apnsPushConnector(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(ApnsPushConnectorOnly value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<ApnsPushConnectorOnly>(value),
+    );
+  }
+}
+
+String _$apnsPushConnectorHash() => r'045174b8a22cf4f125e76bc9707c0b7eaeb53ce3';

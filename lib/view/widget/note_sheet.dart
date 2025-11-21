@@ -11,7 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/clip_notes_notifier_provider.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
@@ -100,8 +100,8 @@ class NoteSheet extends ConsumerWidget {
     }
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final url = serverUrl.replace(pathSegments: ['notes', appearNote.id]);
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final canUseTranslator =
         (i?.policies?.canUseTranslator ?? false) &&
         (meta?.translatorAvailable ?? false);
@@ -109,7 +109,7 @@ class NoteSheet extends ConsumerWidget {
         i != null &&
         (i.policies?.canEditNote ??
             ref.watch(
-              endpointsProvider(account.host).select(
+              endpointsNotifierProvider(account.host).select(
                 (value) => value.maybeWhen(
                   data: (endpoints) => endpoints.contains('notes/edit'),
                   orElse: () => false,
@@ -117,9 +117,7 @@ class NoteSheet extends ConsumerWidget {
               ),
             ));
     final noteState = i != null
-        ? ref
-              .watch(noteStateNotifierProvider(account, appearNote.id))
-              .valueOrNull
+        ? ref.watch(noteStateNotifierProvider(account, appearNote.id)).value
         : null;
     final remoteUrl = appearNote.url ?? appearNote.uri;
     final remoteNoteId = remoteUrl?.pathSegments.lastOrNull;

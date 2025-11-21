@@ -6,160 +6,145 @@ part of 'emojis_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojisNotifierHash() => r'e169a59cd33318a819bfd2993a5a7b642e11ab3a';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$EmojisNotifier
-    extends BuildlessStreamNotifier<Map<String, Emoji>> {
-  late final String host;
-
-  Stream<Map<String, Emoji>> build(String host);
-}
-
-/// See also [EmojisNotifier].
 @ProviderFor(EmojisNotifier)
-const emojisNotifierProvider = EmojisNotifierFamily();
+@JsonPersist()
+const emojisNotifierProvider = EmojisNotifierFamily._();
 
-/// See also [EmojisNotifier].
-class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
-  /// See also [EmojisNotifier].
-  const EmojisNotifierFamily();
+@JsonPersist()
+final class EmojisNotifierProvider
+    extends $AsyncNotifierProvider<EmojisNotifier, Map<String, Emoji>> {
+  const EmojisNotifierProvider._({
+    required EmojisNotifierFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'emojisNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [EmojisNotifier].
-  EmojisNotifierProvider call(String host) {
-    return EmojisNotifierProvider(host);
+  @override
+  String debugGetCreateSourceHash() => _$emojisNotifierHash();
+
+  @override
+  String toString() {
+    return r'emojisNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  EmojisNotifierProvider getProviderOverride(
-    covariant EmojisNotifierProvider provider,
-  ) {
-    return call(provider.host);
-  }
-
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'emojisNotifierProvider';
-}
-
-/// See also [EmojisNotifier].
-class EmojisNotifierProvider
-    extends StreamNotifierProviderImpl<EmojisNotifier, Map<String, Emoji>> {
-  /// See also [EmojisNotifier].
-  EmojisNotifierProvider(String host)
-    : this._internal(
-        () => EmojisNotifier()..host = host,
-        from: emojisNotifierProvider,
-        name: r'emojisNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$emojisNotifierHash,
-        dependencies: EmojisNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            EmojisNotifierFamily._allTransitiveDependencies,
-        host: host,
-      );
-
-  EmojisNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.host,
-  }) : super.internal();
-
-  final String host;
-
-  @override
-  Stream<Map<String, Emoji>> runNotifierBuild(
-    covariant EmojisNotifier notifier,
-  ) {
-    return notifier.build(host);
-  }
-
-  @override
-  Override overrideWith(EmojisNotifier Function() create) {
-    return ProviderOverride(
-      origin: this,
-      override: EmojisNotifierProvider._internal(
-        () => create()..host = host,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        host: host,
-      ),
-    );
-  }
-
-  @override
-  StreamNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
-  createElement() {
-    return _EmojisNotifierProviderElement(this);
-  }
+  EmojisNotifier create() => EmojisNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is EmojisNotifierProvider && other.host == host;
+    return other is EmojisNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin EmojisNotifierRef on StreamNotifierProviderRef<Map<String, Emoji>> {
-  /// The parameter `host` of this provider.
-  String get host;
-}
+String _$emojisNotifierHash() => r'5875eb71caeccaa56af45ec213531c4b05e4fe6f';
 
-class _EmojisNotifierProviderElement
-    extends StreamNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
-    with EmojisNotifierRef {
-  _EmojisNotifierProviderElement(super.provider);
+@JsonPersist()
+final class EmojisNotifierFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          EmojisNotifier,
+          AsyncValue<Map<String, Emoji>>,
+          Map<String, Emoji>,
+          FutureOr<Map<String, Emoji>>,
+          String
+        > {
+  const EmojisNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'emojisNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  @JsonPersist()
+  EmojisNotifierProvider call(String host) =>
+      EmojisNotifierProvider._(argument: host, from: this);
 
   @override
-  String get host => (origin as EmojisNotifierProvider).host;
+  String toString() => r'emojisNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+@JsonPersist()
+abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
+  late final _$args = ref.$arg as String;
+  String get host => _$args;
+
+  FutureOr<Map<String, Emoji>> build(String host);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref =
+        this.ref as $Ref<AsyncValue<Map<String, Emoji>>, Map<String, Emoji>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<Map<String, Emoji>>, Map<String, Emoji>>,
+              AsyncValue<Map<String, Emoji>>,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}
+
+// **************************************************************************
+// JsonGenerator
+// **************************************************************************
+
+// GENERATED CODE - DO NOT MODIFY BY HAND
+abstract class _$EmojisNotifier extends _$EmojisNotifierBase {
+  /// The default key used by [persist].
+  String get key {
+    late final args = host;
+    late final resolvedKey = 'EmojisNotifier($args)';
+
+    return resolvedKey;
+  }
+
+  /// A variant of [persist], for JSON-specific encoding.
+  ///
+  /// You can override [key] to customize the key used for storage.
+  PersistResult persist(
+    FutureOr<Storage<String, String>> storage, {
+    String? key,
+    String Function(Map<String, Emoji> state)? encode,
+    Map<String, Emoji> Function(String encoded)? decode,
+    StorageOptions options = const StorageOptions(),
+  }) {
+    return NotifierPersistX(this).persist<String, String>(
+      storage,
+      key: key ?? this.key,
+      encode: encode ?? $jsonCodex.encode,
+      decode:
+          decode ??
+          (encoded) {
+            final e = $jsonCodex.decode(encoded);
+            return (e as Map).map(
+              (k, v) => MapEntry(
+                k as String,
+                Emoji.fromJson(v as Map<String, Object?>),
+              ),
+            );
+          },
+      options: options,
+    );
+  }
+}

@@ -4,7 +4,7 @@ import 'shared_preferences_provider.dart';
 
 part 'server_url_notifier_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ServerUrlNotifier extends _$ServerUrlNotifier {
   @override
   Uri build(String host) {

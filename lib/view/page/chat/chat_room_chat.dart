@@ -24,9 +24,9 @@ class ChatRoomChat extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final user = userId != null
-        ? ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull
+        ? ref.watch(userNotifierProvider(account, userId: userId)).value
         : null;
 
     return SafeArea(

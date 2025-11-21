@@ -58,11 +58,9 @@ class UserSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref
-        .watch(userNotifierProvider(account, userId: userId))
-        .valueOrNull;
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+    final user = ref.watch(userNotifierProvider(account, userId: userId)).value;
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final meta = ref.watch(metaNotifierProvider(account.host)).value;
     final remoteUrl = user?.uri ?? user?.url;
     final switchCandidateAccounts = ref
         .watch(accountsNotifierProvider)

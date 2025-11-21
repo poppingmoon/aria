@@ -165,7 +165,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
         ),
         child: Column(
           children: [
-            if (conversation?.valueOrNull case final conversation?)
+            if (conversation?.value case final conversation?)
               DefaultTextStyle.merge(
                 style: style.apply(
                   color: style.color?.withValues(alpha: 0.7),
@@ -236,7 +236,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
               ),
             ),
             if (children case AsyncValue(
-              valueOrNull: PaginationState(items: final notes),
+              value: PaginationState(items: final notes),
             ) when notes.isNotEmpty) ...[
               const SizedBox(height: 8.0),
               ListView.separated(

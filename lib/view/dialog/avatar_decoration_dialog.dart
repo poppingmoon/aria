@@ -34,14 +34,14 @@ class AvatarDecorationDialog extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final avatarDecorations = ref
         .watch(avatarDecorationsProvider(account))
-        .valueOrNull;
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+        .value;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final data = avatarDecorations?.firstWhereOrNull(
       (e) => e.id == decoration.id,
     );
     final roleIds = data?.roleIdsThatCanBeUsedThisDecoration ?? [];
     final roles = roleIds
-        .map((roleId) => ref.watch(roleProvider(account, roleId)).valueOrNull)
+        .map((roleId) => ref.watch(roleProvider(account, roleId)).value)
         .toList();
     final canUse =
         roleIds.isEmpty ||

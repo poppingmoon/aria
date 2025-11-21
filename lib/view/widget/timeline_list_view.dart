@@ -15,8 +15,8 @@ import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
-import '../../provider/streaming/timeline_stream_notifier.dart';
+import '../../provider/streaming/timeline_stream_provider.dart';
+import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
@@ -129,8 +129,8 @@ class TimelineListView extends HookConsumerWidget {
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
     );
-    final hasNextNote = nextNotes.valueOrNull?.items.isNotEmpty ?? false;
-    final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
+    final hasNextNote = nextNotes.value?.items.isNotEmpty ?? false;
+    final isLatestLoaded = nextNotes.value?.isLastLoaded ?? false;
     final untilId = centerId != null
         ? Id.tryParse(centerId)?.next().toString() ?? centerId
         : null;
@@ -138,7 +138,7 @@ class TimelineListView extends HookConsumerWidget {
       timelineNotesNotifierProvider(tabSettings, untilId: untilId),
     );
     final partialPreviousNoteIds =
-        previousNotes.valueOrNull?.items.take(5).map((note) => note.id) ?? [];
+        previousNotes.value?.items.take(5).map((note) => note.id) ?? [];
     final hasPreviousNote = partialPreviousNoteIds.isNotEmpty;
     final (showGap, showPopup, vibrateOnNote) = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -150,35 +150,22 @@ class TimelineListView extends HookConsumerWidget {
       ),
     );
     final newNoteDividerIndex = useState<int?>(null);
-    useEffect(
-      () {
-        if (lastViewedNoteId != null) {
-          final index = getNewNoteDividerIndex(
-            lastViewedNoteId: lastViewedNoteId,
-            nextNotes: nextNotes.valueOrNull?.items,
-            previousNotes: previousNotes.valueOrNull?.items,
-            newNoteDividerIndex: newNoteDividerIndex.value,
-          );
-          if (index != null) {
-            newNoteDividerIndex.value = index;
-          }
+    useEffect(() {
+      if (lastViewedNoteId != null) {
+        final index = getNewNoteDividerIndex(
+          lastViewedNoteId: lastViewedNoteId,
+          nextNotes: nextNotes.value?.items,
+          previousNotes: previousNotes.value?.items,
+          newNoteDividerIndex: newNoteDividerIndex.value,
+        );
+        if (index != null) {
+          newNoteDividerIndex.value = index;
         }
-        return;
-      },
-      [
-        tabSettings,
-        nextNotes.valueOrNull?.items,
-        previousNotes.valueOrNull?.items,
-      ],
-    );
+      }
+      return;
+    }, [tabSettings, nextNotes.value?.items, previousNotes.value?.items]);
     final keepAnimation = useState(true);
-    final isAtTop = useState(false);
-    final isAtBottom = useState(false);
     if (!tabSettings.disableStreaming) {
-      ref.listen(incomingMessageProvider(tabSettings.account), (_, _) {});
-      final notifier = ref.watch(
-        timelineStreamNotifierProvider(tabSettings).notifier,
-      );
       useEffect(() {
         void callback() {
           if (controller.position.userScrollDirection ==
@@ -190,18 +177,14 @@ class TimelineListView extends HookConsumerWidget {
           }
         }
 
-        if (centerId == null || isLatestLoaded) {
-          notifier.connect();
+        if (isLatestLoaded) {
           controller.addListener(callback);
         }
-        return () {
-          notifier.disconnect();
-          controller.removeListener(callback);
-        };
-      }, [tabSettings, centerId, isLatestLoaded]);
-      ref.listen(timelineStreamNotifierProvider(tabSettings), (_, next) {
-        next.whenData((note) {
-          if (centerId == null || isLatestLoaded) {
+        return () => controller.removeListener(callback);
+      }, [tabSettings, isLatestLoaded]);
+      if (isLatestLoaded) {
+        ref.listen(timelineStreamProvider(tabSettings), (_, next) {
+          if (next case AsyncData(value: final note)) {
             ref
                 .read(
                   timelineNotesAfterNoteNotifierProvider(
@@ -241,14 +224,36 @@ class TimelineListView extends HookConsumerWidget {
             }
           }
         });
-      });
+        ref.listen(
+          webSocketChannelProvider(
+            tabSettings.account,
+          ).select((value) => value.error),
+          (_, next) {
+            if (next != null) {
+              if (WidgetsBinding.instance.lifecycleState !=
+                  AppLifecycleState.resumed) {
+                ref
+                    .read(
+                      timelineNotesAfterNoteNotifierProvider(
+                        tabSettings,
+                        sinceId: centerId,
+                      ).notifier,
+                    )
+                    .pause();
+              }
+            }
+          },
+        );
+      }
     }
     useEffect(() {
       void callback() {
-        if (centerId != null) {
+        bool isAtTop = false;
+        bool isAtBottom = false;
+        if (!isLatestLoaded) {
           if (controller.position.extentBefore <
               infiniteScrollExtentThreshold) {
-            if (!isAtTop.value) {
+            if (!isAtTop) {
               ref
                   .read(
                     timelineNotesAfterNoteNotifierProvider(
@@ -256,15 +261,19 @@ class TimelineListView extends HookConsumerWidget {
                       sinceId: centerId,
                     ).notifier,
                   )
-                  .loadMore();
-              isAtTop.value = true;
+                  .loadMore(
+                    sinceId:
+                        nextNotes.value?.items.firstOrNull?.id ??
+                        previousNotes.value?.items.firstOrNull?.id,
+                  );
+              isAtTop = true;
             }
           } else {
-            isAtTop.value = false;
+            isAtTop = false;
           }
         }
         if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-          if (!isAtBottom.value) {
+          if (!isAtBottom) {
             ref
                 .read(
                   timelineNotesNotifierProvider(
@@ -273,10 +282,10 @@ class TimelineListView extends HookConsumerWidget {
                   ).notifier,
                 )
                 .loadMore();
-            isAtBottom.value = true;
+            isAtBottom = true;
           }
         } else {
-          isAtBottom.value = false;
+          isAtBottom = false;
         }
       }
 
@@ -284,7 +293,7 @@ class TimelineListView extends HookConsumerWidget {
         controller.addListener(callback);
       }
       return () => controller.removeListener(callback);
-    }, [tabSettings, centerId]);
+    }, [tabSettings, centerId, isLatestLoaded]);
     useEffect(() {
       void callback() {
         if (controller.position.extentBefore < infiniteScrollExtentThreshold) {
@@ -295,7 +304,7 @@ class TimelineListView extends HookConsumerWidget {
                   sinceId: centerId,
                 ),
               )
-              .valueOrNull
+              .value
               ?.items;
           final latestNoteId = nextNotes?.firstOrNull?.id;
           if (latestNoteId != null &&
@@ -320,8 +329,7 @@ class TimelineListView extends HookConsumerWidget {
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () => reloadTimeline(ref, tabSettings),
-      notificationPredicate: (_) =>
-          nextNotes.valueOrNull?.isLastLoaded ?? false,
+      notificationPredicate: (_) => isLatestLoaded,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -343,13 +351,18 @@ class TimelineListView extends HookConsumerWidget {
                               sinceId: centerId,
                             ).notifier,
                           )
-                          .loadMore(skipError: true),
+                          .loadMore(
+                            skipError: true,
+                            sinceId:
+                                nextNotes.value?.items.firstOrNull?.id ??
+                                previousNotes.value?.items.firstOrNull?.id,
+                          ),
                       reversed: true,
                     ),
                   ),
                 ),
               ),
-              if (nextNotes.valueOrNull?.items case final notes?)
+              if (nextNotes.value?.items case final notes?)
                 SliverList.separated(
                   itemBuilder: (context, index) {
                     final note = notes[notes.length - index - 1];
@@ -438,7 +451,7 @@ class TimelineListView extends HookConsumerWidget {
                       )
                     : null,
               ),
-              if (previousNotes.valueOrNull?.items case final notes?)
+              if (previousNotes.value?.items case final notes?)
                 SliverList.separated(
                   itemBuilder: (context, index) {
                     final note = notes[index];

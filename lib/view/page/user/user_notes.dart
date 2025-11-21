@@ -25,6 +25,7 @@ class UserNotes extends HookConsumerWidget {
     final tabSettings = TabSettings(
       tabType: TabType.user,
       account: account,
+      disableSubscribing: true,
       withReplies: type.value == _NoteType.all,
       withFiles: type.value == _NoteType.files,
       withRenotes: type.value == _NoteType.all,

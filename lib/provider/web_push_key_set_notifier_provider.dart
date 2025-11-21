@@ -9,7 +9,7 @@ import 'shared_preferences_provider.dart';
 part 'web_push_key_set_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class WebPushKeySetNotifierNotifier extends _$WebPushKeySetNotifierNotifier {
+class WebPushKeySetNotifier extends _$WebPushKeySetNotifier {
   @override
   FutureOr<WebPushKeySet?> build(Account account) {
     final keySetBase64 = ref.watch(sharedPreferencesProvider).getString(_key);

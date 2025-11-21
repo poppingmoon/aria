@@ -44,7 +44,7 @@ class MisskeyServers extends HookConsumerWidget {
           child: HapticFeedbackRefreshIndicator(
             onRefresh: () => ref.refresh(misskeyServersProvider.future),
             child: switch (servers) {
-              AsyncValue(valueOrNull: final servers?) => ListView.builder(
+              AsyncValue(value: final servers?) => ListView.builder(
                 itemBuilder: (context, index) => _ServerPreview(
                   server: servers[index],
                   onTap: () => onTapServer(servers[index]),

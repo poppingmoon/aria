@@ -38,7 +38,7 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.valueOrNull! : await future;
+    final value = skipError ? state.value! : await future;
     if (value.isLastLoaded) {
       return;
     }
@@ -61,7 +61,7 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
 
   Future<void> delete(String userId) async {
     await _misskey.renoteMute.delete(RenoteMuteDeleteRequest(userId: userId));
-    final value = state.valueOrNull;
+    final value = state.value;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(

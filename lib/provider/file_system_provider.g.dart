@@ -6,22 +6,46 @@ part of 'file_system_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fileSystemHash() => r'96ac0dac8d12939aa3ce95bfd916a656d76cfa5e';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [fileSystem].
 @ProviderFor(fileSystem)
-final fileSystemProvider = AutoDisposeProvider<FileSystem>.internal(
-  fileSystem,
-  name: r'fileSystemProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$fileSystemHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const fileSystemProvider = FileSystemProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef FileSystemRef = AutoDisposeProviderRef<FileSystem>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class FileSystemProvider
+    extends $FunctionalProvider<FileSystem, FileSystem, FileSystem>
+    with $Provider<FileSystem> {
+  const FileSystemProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'fileSystemProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$fileSystemHash();
+
+  @$internal
+  @override
+  $ProviderElement<FileSystem> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  FileSystem create(Ref ref) {
+    return fileSystem(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(FileSystem value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<FileSystem>(value),
+    );
+  }
+}
+
+String _$fileSystemHash() => r'13ebfaafe11a745ba261f5fc7ee19c47c18f12f7';

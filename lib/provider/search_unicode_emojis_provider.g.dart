@@ -6,147 +6,83 @@ part of 'search_unicode_emojis_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchUnicodeEmojisHash() =>
-    r'f0afe74cded6bf88c8815d5ac73bd9608c524acb';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [searchUnicodeEmojis].
 @ProviderFor(searchUnicodeEmojis)
-const searchUnicodeEmojisProvider = SearchUnicodeEmojisFamily();
+const searchUnicodeEmojisProvider = SearchUnicodeEmojisFamily._();
 
-/// See also [searchUnicodeEmojis].
-class SearchUnicodeEmojisFamily extends Family<Set<String>> {
-  /// See also [searchUnicodeEmojis].
-  const SearchUnicodeEmojisFamily();
+final class SearchUnicodeEmojisProvider
+    extends $FunctionalProvider<Set<String>, Set<String>, Set<String>>
+    with $Provider<Set<String>> {
+  const SearchUnicodeEmojisProvider._({
+    required SearchUnicodeEmojisFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'searchUnicodeEmojisProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [searchUnicodeEmojis].
-  SearchUnicodeEmojisProvider call(String query) {
-    return SearchUnicodeEmojisProvider(query);
+  @override
+  String debugGetCreateSourceHash() => _$searchUnicodeEmojisHash();
+
+  @override
+  String toString() {
+    return r'searchUnicodeEmojisProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  SearchUnicodeEmojisProvider getProviderOverride(
-    covariant SearchUnicodeEmojisProvider provider,
-  ) {
-    return call(provider.query);
+  $ProviderElement<Set<String>> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Set<String> create(Ref ref) {
+    final argument = this.argument as String;
+    return searchUnicodeEmojis(ref, argument);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'searchUnicodeEmojisProvider';
-}
-
-/// See also [searchUnicodeEmojis].
-class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
-  /// See also [searchUnicodeEmojis].
-  SearchUnicodeEmojisProvider(String query)
-    : this._internal(
-        (ref) => searchUnicodeEmojis(ref as SearchUnicodeEmojisRef, query),
-        from: searchUnicodeEmojisProvider,
-        name: r'searchUnicodeEmojisProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$searchUnicodeEmojisHash,
-        dependencies: SearchUnicodeEmojisFamily._dependencies,
-        allTransitiveDependencies:
-            SearchUnicodeEmojisFamily._allTransitiveDependencies,
-        query: query,
-      );
-
-  SearchUnicodeEmojisProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.query,
-  }) : super.internal();
-
-  final String query;
-
-  @override
-  Override overrideWith(
-    Set<String> Function(SearchUnicodeEmojisRef provider) create,
-  ) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Set<String> value) {
+    return $ProviderOverride(
       origin: this,
-      override: SearchUnicodeEmojisProvider._internal(
-        (ref) => create(ref as SearchUnicodeEmojisRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        query: query,
-      ),
+      providerOverride: $SyncValueProvider<Set<String>>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<Set<String>> createElement() {
-    return _SearchUnicodeEmojisProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is SearchUnicodeEmojisProvider && other.query == query;
+    return other is SearchUnicodeEmojisProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, query.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin SearchUnicodeEmojisRef on AutoDisposeProviderRef<Set<String>> {
-  /// The parameter `query` of this provider.
-  String get query;
-}
+String _$searchUnicodeEmojisHash() =>
+    r'f0afe74cded6bf88c8815d5ac73bd9608c524acb';
 
-class _SearchUnicodeEmojisProviderElement
-    extends AutoDisposeProviderElement<Set<String>>
-    with SearchUnicodeEmojisRef {
-  _SearchUnicodeEmojisProviderElement(super.provider);
+final class SearchUnicodeEmojisFamily extends $Family
+    with $FunctionalFamilyOverride<Set<String>, String> {
+  const SearchUnicodeEmojisFamily._()
+    : super(
+        retry: null,
+        name: r'searchUnicodeEmojisProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  SearchUnicodeEmojisProvider call(String query) =>
+      SearchUnicodeEmojisProvider._(argument: query, from: this);
 
   @override
-  String get query => (origin as SearchUnicodeEmojisProvider).query;
+  String toString() => r'searchUnicodeEmojisProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

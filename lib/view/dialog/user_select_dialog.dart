@@ -51,7 +51,7 @@ class UserSelectDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).value;
     final query = useState('');
     final debouncedQuery =
         useDebounced(query.value, const Duration(milliseconds: 500)) ?? '';
@@ -79,7 +79,7 @@ class UserSelectDialog extends HookConsumerWidget {
             limit: 30,
           ).select<AsyncValue<PaginationState<UserDetailed>>>(
             (users) => switch (users) {
-              AsyncValue(valueOrNull: final users?) => AsyncValue.data(
+              AsyncValue(value: final users?) => AsyncValue.data(
                 PaginationState(items: users, isLastLoaded: true),
               ),
               AsyncValue(:final error?, :final stackTrace?) => AsyncValue.error(
@@ -214,7 +214,7 @@ class UserSelectDialog extends HookConsumerWidget {
             ),
             if (users == null)
               switch (recentlyUsedUsers) {
-                AsyncValue(valueOrNull: final recentlyUsedUsers?) => Builder(
+                AsyncValue(value: final recentlyUsedUsers?) => Builder(
                   builder: (context) {
                     final users = recentlyUsedUsers
                         .where(
@@ -251,7 +251,7 @@ class UserSelectDialog extends HookConsumerWidget {
               }
             else
               ...switch (users) {
-                AsyncValue(valueOrNull: final value?) => [
+                AsyncValue(:final value?) => [
                   if (value.items
                           .where((user) => includeSelf || user.id != i?.id)
                           .toList()

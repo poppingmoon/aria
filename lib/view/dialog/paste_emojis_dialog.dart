@@ -9,7 +9,7 @@ import '../../extension/string_extension.dart';
 import '../../hook/tap_gesture_recognizer_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/endpoints_provider.dart';
+import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';
@@ -29,7 +29,7 @@ class PasteEmojisDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final endpoints = ref.watch(endpointsProvider(account.host)).valueOrNull;
+    final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
     final isThirdPartyRegistrySupported =
         endpoints?.contains('i/registry/scopes-with-domain') ?? true;
     final useEmojiPalette =

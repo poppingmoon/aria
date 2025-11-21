@@ -6,24 +6,53 @@ part of 'installed_misskey_colors_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(installedMisskeyColors)
+const installedMisskeyColorsProvider = InstalledMisskeyColorsProvider._();
+
+final class InstalledMisskeyColorsProvider
+    extends
+        $FunctionalProvider<
+          List<MisskeyColors>,
+          List<MisskeyColors>,
+          List<MisskeyColors>
+        >
+    with $Provider<List<MisskeyColors>> {
+  const InstalledMisskeyColorsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'installedMisskeyColorsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$installedMisskeyColorsHash();
+
+  @$internal
+  @override
+  $ProviderElement<List<MisskeyColors>> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  List<MisskeyColors> create(Ref ref) {
+    return installedMisskeyColors(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<MisskeyColors> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<MisskeyColors>>(value),
+    );
+  }
+}
+
 String _$installedMisskeyColorsHash() =>
     r'7823aeddeb88a14058d3233aaae2b031e56432c7';
-
-/// See also [installedMisskeyColors].
-@ProviderFor(installedMisskeyColors)
-final installedMisskeyColorsProvider =
-    AutoDisposeProvider<List<MisskeyColors>>.internal(
-      installedMisskeyColors,
-      name: r'installedMisskeyColorsProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$installedMisskeyColorsHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef InstalledMisskeyColorsRef = AutoDisposeProviderRef<List<MisskeyColors>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

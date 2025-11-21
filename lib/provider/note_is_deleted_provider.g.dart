@@ -6,155 +6,81 @@ part of 'note_is_deleted_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteIsDeletedHash() => r'cfdc143508dd237b20d034aa4cbce48bf33cf6d8';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-/// See also [noteIsDeleted].
 @ProviderFor(noteIsDeleted)
-const noteIsDeletedProvider = NoteIsDeletedFamily();
+const noteIsDeletedProvider = NoteIsDeletedFamily._();
 
-/// See also [noteIsDeleted].
-class NoteIsDeletedFamily extends Family<bool> {
-  /// See also [noteIsDeleted].
-  const NoteIsDeletedFamily();
+final class NoteIsDeletedProvider extends $FunctionalProvider<bool, bool, bool>
+    with $Provider<bool> {
+  const NoteIsDeletedProvider._({
+    required NoteIsDeletedFamily super.from,
+    required (Account, String) super.argument,
+  }) : super(
+         retry: null,
+         name: r'noteIsDeletedProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [noteIsDeleted].
-  NoteIsDeletedProvider call(Account account, String noteId) {
-    return NoteIsDeletedProvider(account, noteId);
+  @override
+  String debugGetCreateSourceHash() => _$noteIsDeletedHash();
+
+  @override
+  String toString() {
+    return r'noteIsDeletedProvider'
+        ''
+        '$argument';
   }
 
+  @$internal
   @override
-  NoteIsDeletedProvider getProviderOverride(
-    covariant NoteIsDeletedProvider provider,
-  ) {
-    return call(provider.account, provider.noteId);
+  $ProviderElement<bool> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  bool create(Ref ref) {
+    final argument = this.argument as (Account, String);
+    return noteIsDeleted(ref, argument.$1, argument.$2);
   }
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'noteIsDeletedProvider';
-}
-
-/// See also [noteIsDeleted].
-class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
-  /// See also [noteIsDeleted].
-  NoteIsDeletedProvider(Account account, String noteId)
-    : this._internal(
-        (ref) => noteIsDeleted(ref as NoteIsDeletedRef, account, noteId),
-        from: noteIsDeletedProvider,
-        name: r'noteIsDeletedProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$noteIsDeletedHash,
-        dependencies: NoteIsDeletedFamily._dependencies,
-        allTransitiveDependencies:
-            NoteIsDeletedFamily._allTransitiveDependencies,
-        account: account,
-        noteId: noteId,
-      );
-
-  NoteIsDeletedProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.account,
-    required this.noteId,
-  }) : super.internal();
-
-  final Account account;
-  final String noteId;
-
-  @override
-  Override overrideWith(bool Function(NoteIsDeletedRef provider) create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(bool value) {
+    return $ProviderOverride(
       origin: this,
-      override: NoteIsDeletedProvider._internal(
-        (ref) => create(ref as NoteIsDeletedRef),
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        account: account,
-        noteId: noteId,
-      ),
+      providerOverride: $SyncValueProvider<bool>(value),
     );
   }
 
   @override
-  AutoDisposeProviderElement<bool> createElement() {
-    return _NoteIsDeletedProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is NoteIsDeletedProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is NoteIsDeletedProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin NoteIsDeletedRef on AutoDisposeProviderRef<bool> {
-  /// The parameter `account` of this provider.
-  Account get account;
+String _$noteIsDeletedHash() => r'cfdc143508dd237b20d034aa4cbce48bf33cf6d8';
 
-  /// The parameter `noteId` of this provider.
-  String get noteId;
-}
+final class NoteIsDeletedFamily extends $Family
+    with $FunctionalFamilyOverride<bool, (Account, String)> {
+  const NoteIsDeletedFamily._()
+    : super(
+        retry: null,
+        name: r'noteIsDeletedProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
 
-class _NoteIsDeletedProviderElement extends AutoDisposeProviderElement<bool>
-    with NoteIsDeletedRef {
-  _NoteIsDeletedProviderElement(super.provider);
+  NoteIsDeletedProvider call(Account account, String noteId) =>
+      NoteIsDeletedProvider._(argument: (account, noteId), from: this);
 
   @override
-  Account get account => (origin as NoteIsDeletedProvider).account;
-  @override
-  String get noteId => (origin as NoteIsDeletedProvider).noteId;
+  String toString() => r'noteIsDeletedProvider';
 }
-
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

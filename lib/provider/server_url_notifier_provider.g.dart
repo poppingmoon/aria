@@ -6,156 +6,96 @@ part of 'server_url_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$serverUrlNotifierHash() => r'f1d26cd49ffae5fe9cf7cd15eae5387d3160ceb7';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// Copied from Dart SDK
-class _SystemHash {
-  _SystemHash._();
-
-  static int combine(int hash, int value) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + value);
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
-    return hash ^ (hash >> 6);
-  }
-
-  static int finish(int hash) {
-    // ignore: parameter_assignments
-    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
-    // ignore: parameter_assignments
-    hash = hash ^ (hash >> 11);
-    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
-  }
-}
-
-abstract class _$ServerUrlNotifier extends BuildlessAutoDisposeNotifier<Uri> {
-  late final String host;
-
-  Uri build(String host);
-}
-
-/// See also [ServerUrlNotifier].
 @ProviderFor(ServerUrlNotifier)
-const serverUrlNotifierProvider = ServerUrlNotifierFamily();
+const serverUrlNotifierProvider = ServerUrlNotifierFamily._();
 
-/// See also [ServerUrlNotifier].
-class ServerUrlNotifierFamily extends Family<Uri> {
-  /// See also [ServerUrlNotifier].
-  const ServerUrlNotifierFamily();
+final class ServerUrlNotifierProvider
+    extends $NotifierProvider<ServerUrlNotifier, Uri> {
+  const ServerUrlNotifierProvider._({
+    required ServerUrlNotifierFamily super.from,
+    required String super.argument,
+  }) : super(
+         retry: null,
+         name: r'serverUrlNotifierProvider',
+         isAutoDispose: false,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
 
-  /// See also [ServerUrlNotifier].
-  ServerUrlNotifierProvider call(String host) {
-    return ServerUrlNotifierProvider(host);
+  @override
+  String debugGetCreateSourceHash() => _$serverUrlNotifierHash();
+
+  @override
+  String toString() {
+    return r'serverUrlNotifierProvider'
+        ''
+        '($argument)';
   }
 
+  @$internal
   @override
-  ServerUrlNotifierProvider getProviderOverride(
-    covariant ServerUrlNotifierProvider provider,
-  ) {
-    return call(provider.host);
-  }
+  ServerUrlNotifier create() => ServerUrlNotifier();
 
-  static const Iterable<ProviderOrFamily>? _dependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
-
-  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
-
-  @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
-
-  @override
-  String? get name => r'serverUrlNotifierProvider';
-}
-
-/// See also [ServerUrlNotifier].
-class ServerUrlNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<ServerUrlNotifier, Uri> {
-  /// See also [ServerUrlNotifier].
-  ServerUrlNotifierProvider(String host)
-    : this._internal(
-        () => ServerUrlNotifier()..host = host,
-        from: serverUrlNotifierProvider,
-        name: r'serverUrlNotifierProvider',
-        debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-            ? null
-            : _$serverUrlNotifierHash,
-        dependencies: ServerUrlNotifierFamily._dependencies,
-        allTransitiveDependencies:
-            ServerUrlNotifierFamily._allTransitiveDependencies,
-        host: host,
-      );
-
-  ServerUrlNotifierProvider._internal(
-    super._createNotifier, {
-    required super.name,
-    required super.dependencies,
-    required super.allTransitiveDependencies,
-    required super.debugGetCreateSourceHash,
-    required super.from,
-    required this.host,
-  }) : super.internal();
-
-  final String host;
-
-  @override
-  Uri runNotifierBuild(covariant ServerUrlNotifier notifier) {
-    return notifier.build(host);
-  }
-
-  @override
-  Override overrideWith(ServerUrlNotifier Function() create) {
-    return ProviderOverride(
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Uri value) {
+    return $ProviderOverride(
       origin: this,
-      override: ServerUrlNotifierProvider._internal(
-        () => create()..host = host,
-        from: from,
-        name: null,
-        dependencies: null,
-        allTransitiveDependencies: null,
-        debugGetCreateSourceHash: null,
-        host: host,
-      ),
+      providerOverride: $SyncValueProvider<Uri>(value),
     );
   }
 
   @override
-  AutoDisposeNotifierProviderElement<ServerUrlNotifier, Uri> createElement() {
-    return _ServerUrlNotifierProviderElement(this);
-  }
-
-  @override
   bool operator ==(Object other) {
-    return other is ServerUrlNotifierProvider && other.host == host;
+    return other is ServerUrlNotifierProvider && other.argument == argument;
   }
 
   @override
   int get hashCode {
-    var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, host.hashCode);
-
-    return _SystemHash.finish(hash);
+    return argument.hashCode;
   }
 }
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-mixin ServerUrlNotifierRef on AutoDisposeNotifierProviderRef<Uri> {
-  /// The parameter `host` of this provider.
-  String get host;
-}
+String _$serverUrlNotifierHash() => r'fdb259591cc72d97dc0d46744a1d99c690c8ae07';
 
-class _ServerUrlNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<ServerUrlNotifier, Uri>
-    with ServerUrlNotifierRef {
-  _ServerUrlNotifierProviderElement(super.provider);
+final class ServerUrlNotifierFamily extends $Family
+    with $ClassFamilyOverride<ServerUrlNotifier, Uri, Uri, Uri, String> {
+  const ServerUrlNotifierFamily._()
+    : super(
+        retry: null,
+        name: r'serverUrlNotifierProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: false,
+      );
+
+  ServerUrlNotifierProvider call(String host) =>
+      ServerUrlNotifierProvider._(argument: host, from: this);
 
   @override
-  String get host => (origin as ServerUrlNotifierProvider).host;
+  String toString() => r'serverUrlNotifierProvider';
 }
 
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$ServerUrlNotifier extends $Notifier<Uri> {
+  late final _$args = ref.$arg as String;
+  String get host => _$args;
+
+  Uri build(String host);
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final created = build(_$args);
+    final ref = this.ref as $Ref<Uri, Uri>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<Uri, Uri>,
+              Uri,
+              Object?,
+              Object?
+            >;
+    element.handleValue(ref, created);
+  }
+}

@@ -20,7 +20,7 @@ import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/antenna_provider.dart';
 import '../../../provider/api/antennas_notifier_provider.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
-import '../../../provider/api/endpoints_provider.dart';
+import '../../../provider/api/endpoints_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
@@ -151,27 +151,27 @@ class TabSettingsPage extends HookConsumerWidget {
     final tabType = tabSettings.value.tabType;
     final role = switch ((account.value, tabSettings.value.roleId)) {
       (final account?, final roleId?) =>
-        ref.watch(roleProvider(account, roleId)).valueOrNull,
+        ref.watch(roleProvider(account, roleId)).value,
       _ => null,
     };
     final list = switch ((account.value, tabSettings.value.listId)) {
       (final account?, final listId?) =>
-        ref.watch(listProvider(account, listId)).valueOrNull,
+        ref.watch(listProvider(account, listId)).value,
       _ => null,
     };
     final antenna = switch ((account.value, tabSettings.value.antennaId)) {
       (final account?, final antennaId?) =>
-        ref.watch(antennaProvider(account, antennaId)).valueOrNull,
+        ref.watch(antennaProvider(account, antennaId)).value,
       _ => null,
     };
     final channel = switch ((account.value, tabSettings.value.channelId)) {
       (final account?, final channelId?) =>
-        ref.watch(channelNotifierProvider(account, channelId)).valueOrNull,
+        ref.watch(channelNotifierProvider(account, channelId)).value,
       _ => null,
     };
     final user = switch ((account.value, tabSettings.value.userId)) {
       (final account?, final userId?) =>
-        ref.watch(userNotifierProvider(account, userId: userId)).valueOrNull,
+        ref.watch(userNotifierProvider(account, userId: userId)).value,
       _ => null,
     };
     final canSave =
@@ -694,7 +694,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         if (account.value case final account?) {
                           try {
                             endpoints = await ref.read(
-                              endpointsProvider(account.host).future,
+                              endpointsNotifierProvider(account.host).future,
                             );
                           } catch (_) {}
                         }
