@@ -64,7 +64,7 @@ final class IdGenMethodProvider
   }
 }
 
-String _$idGenMethodHash() => r'7099fd278b16f6685846230b2fbfa55eb9f33112';
+String _$idGenMethodHash() => r'380df68195233de2a83cc52f21894f4e78812199';
 
 final class IdGenMethodFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<IdGenMethod>, Account> {
