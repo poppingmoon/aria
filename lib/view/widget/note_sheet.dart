@@ -187,6 +187,15 @@ class NoteSheet extends ConsumerWidget {
               context.pop();
             },
           ),
+          if (remoteUrl != null)
+            ListTile(
+              leading: const Icon(Icons.public),
+              title: Text(t.misskey.copyRemoteLink),
+              onTap: () {
+                copyToClipboard(context, remoteUrl.toString());
+                context.pop();
+              },
+            ),
           ListTile(
             leading: const Icon(Icons.open_in_browser),
             title: Text(t.aria.openInBrowser),
