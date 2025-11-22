@@ -14,11 +14,11 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../util/format_datetime.dart';
-import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
+import 'follow_request_action_button.dart';
 import 'image_widget.dart';
 import 'mfm.dart';
 import 'note_sheet.dart';
@@ -53,9 +53,8 @@ class NotificationWidget extends ConsumerWidget {
     );
     final style = DefaultTextStyle.of(context).style;
     final leadingSize = style.lineHeight * avatarScale;
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     switch (notification.type) {
       case NotificationType.mention ||
@@ -149,31 +148,15 @@ class NotificationWidget extends ConsumerWidget {
             actions:
                 followRequests.any((request) => request.follower.id == user.id)
                 ? [
-                    ElevatedButton(
-                      onPressed: () => futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              followRequestsNotifierProvider(account).notifier,
-                            )
-                            .accept(user.id),
-                      ),
-                      child: Text(t.misskey.accept),
+                    FollowRequestActionButton(
+                      account: account,
+                      user: user,
+                      accept: true,
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        backgroundColor: Theme.of(context).colorScheme.surface,
-                      ),
-                      onPressed: () => futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              followRequestsNotifierProvider(account).notifier,
-                            )
-                            .reject(user.id),
-                      ),
-                      child: Text(t.misskey.reject),
+                    FollowRequestActionButton(
+                      account: account,
+                      user: user,
+                      accept: false,
                     ),
                   ]
                 : null,
@@ -528,7 +511,7 @@ class NotificationWidget extends ConsumerWidget {
                               TextSpan(
                                 text: ' ${reaction.user.acct}',
                                 style: TextStyle(
-                                  color: switch (Theme.of(context).brightness) {
+                                  color: switch (theme.brightness) {
                                     Brightness.light => Colors.white70,
                                     Brightness.dark => Colors.black54,
                                   },
@@ -536,7 +519,7 @@ class NotificationWidget extends ConsumerWidget {
                               ),
                             ],
                             style: TextStyle(
-                              color: switch (Theme.of(context).brightness) {
+                              color: switch (theme.brightness) {
                                 Brightness.light => Colors.white,
                                 Brightness.dark => Colors.black,
                               },
@@ -636,7 +619,7 @@ class NotificationWidget extends ConsumerWidget {
                           TextSpan(
                             text: ' ${user.acct}',
                             style: TextStyle(
-                              color: switch (Theme.of(context).brightness) {
+                              color: switch (theme.brightness) {
                                 Brightness.light => Colors.white70,
                                 Brightness.dark => Colors.black54,
                               },
@@ -644,7 +627,7 @@ class NotificationWidget extends ConsumerWidget {
                           ),
                         ],
                         style: TextStyle(
-                          color: switch (Theme.of(context).brightness) {
+                          color: switch (theme.brightness) {
                             Brightness.light => Colors.white,
                             Brightness.dark => Colors.black,
                           },
@@ -695,7 +678,7 @@ class NotificationWidget extends ConsumerWidget {
                           TextSpan(
                             text: ' ${user.acct}',
                             style: TextStyle(
-                              color: switch (Theme.of(context).brightness) {
+                              color: switch (theme.brightness) {
                                 Brightness.light => Colors.white70,
                                 Brightness.dark => Colors.black54,
                               },
@@ -703,7 +686,7 @@ class NotificationWidget extends ConsumerWidget {
                           ),
                         ],
                         style: TextStyle(
-                          color: switch (Theme.of(context).brightness) {
+                          color: switch (theme.brightness) {
                             Brightness.light => Colors.white,
                             Brightness.dark => Colors.black,
                           },
@@ -741,7 +724,7 @@ class NotificationWidget extends ConsumerWidget {
                     TextSpan(
                       text: ' ${user.acct}',
                       style: TextStyle(
-                        color: switch (Theme.of(context).brightness) {
+                        color: switch (theme.brightness) {
                           Brightness.light => Colors.white70,
                           Brightness.dark => Colors.black54,
                         },
@@ -749,7 +732,7 @@ class NotificationWidget extends ConsumerWidget {
                     ),
                   ],
                   style: TextStyle(
-                    color: switch (Theme.of(context).brightness) {
+                    color: switch (theme.brightness) {
                       Brightness.light => Colors.white,
                       Brightness.dark => Colors.black,
                     },

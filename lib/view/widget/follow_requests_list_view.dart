@@ -16,8 +16,8 @@ import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
-import '../../util/future_with_dialog.dart';
 import 'acct_widget.dart';
+import 'follow_request_action_button.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 import 'user_avatar.dart';
@@ -105,6 +105,7 @@ class FollowRequestsListView extends HookConsumerWidget {
       }
       return;
     }, []);
+    final theme = Theme.of(context);
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () async {
@@ -135,7 +136,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                       ),
                       width: maxContentWidth,
                       child: Material(
-                        color: Theme.of(context).colorScheme.surface,
+                        color: theme.colorScheme.surface,
                         borderRadius: BorderRadius.vertical(
                           top: index == nextRequests.value.length - 1
                               ? const Radius.circular(8.0)
@@ -150,8 +151,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                         child: _FollowRequestTile(
                           account: account,
                           user: nextRequests.value[index],
-                          onDismissed: () => nextRequests.value = nextRequests
-                              .value
+                          onDone: () => nextRequests.value = nextRequests.value
                               .whereIndexed((i, _) => i != index)
                               .toList(),
                         ),
@@ -194,7 +194,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                       ),
                       width: maxContentWidth,
                       child: Material(
-                        color: Theme.of(context).colorScheme.surface,
+                        color: theme.colorScheme.surface,
                         child: _FollowRequestTile(
                           account: account,
                           user: requests.value!.items[index].follower,
@@ -260,12 +260,12 @@ class _FollowRequestTile extends ConsumerWidget {
   const _FollowRequestTile({
     required this.account,
     required this.user,
-    this.onDismissed,
+    this.onDone,
   });
 
   final Account account;
   final User user;
-  final void Function()? onDismissed;
+  final void Function()? onDone;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -299,37 +299,27 @@ class _FollowRequestTile extends ConsumerWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-            ),
-            onPressed: () => futureWithDialog(
-              context,
-              Future<void>(() async {
-                await ref
-                    .read(followRequestsNotifierProvider(account).notifier)
-                    .accept(user.id);
-                onDismissed?.call();
-              }),
-            ),
-            child: Text(t.misskey.accept),
-          ),
+          const SizedBox(width: 8.0),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () => futureWithDialog(
-                context,
-                Future<void>(() async {
-                  await ref
-                      .read(followRequestsNotifierProvider(account).notifier)
-                      .reject(user.id);
-                  onDismissed?.call();
-                }),
-              ),
-              child: Text(t.misskey.reject),
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: FollowRequestActionButton(
+              account: account,
+              user: user,
+              accept: true,
+              onDone: onDone,
             ),
           ),
+          const SizedBox(width: 8.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: FollowRequestActionButton(
+              account: account,
+              user: user,
+              accept: false,
+              onDone: onDone,
+            ),
+          ),
+          const SizedBox(width: 8.0),
         ],
       ),
     );

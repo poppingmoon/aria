@@ -50,6 +50,13 @@ class TranslationsAriaEnUs {
 	/// en-US: 'About Aria'
 	String get aboutAria => 'About Aria';
 
+	/// en-US: 'Are you sure that you want to accept the follow request from {name}?'
+	TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Are you sure that you want to accept the follow request from '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+
 	/// en-US: 'Access token'
 	String get accessToken => 'Access token';
 
@@ -106,6 +113,13 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Calculating...'
 	String get calculating => 'Calculating...';
+
+	/// en-US: 'Are you sure that you want to cancel your follow request to {name}?'
+	TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Are you sure that you want to cancel your follow request to '),
+		name,
+		const TextSpan(text: '?'),
+	]);
 
 	/// en-US: 'Client info'
 	String get clientInfo => 'Client info';
@@ -428,6 +442,13 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Recently used emojis'
 	String get recentlyUsedEmojis => 'Recently used emojis';
+
+	/// en-US: 'Are you sure that you want to reject the follow request from {name}?'
+	TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Are you sure that you want to reject the follow request from '),
+		name,
+		const TextSpan(text: '?'),
+	]);
 
 	/// en-US: 'Are you sure you want to renote this note?'
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
