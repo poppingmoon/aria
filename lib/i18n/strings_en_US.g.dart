@@ -114,6 +114,13 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Calculating...'
 	String get calculating => 'Calculating...';
 
+	/// en-US: 'Are you sure that you want to cancel your follow request to {name}?'
+	TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Are you sure that you want to cancel your follow request to '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+
 	/// en-US: 'Client info'
 	String get clientInfo => 'Client info';
 

@@ -28,12 +28,24 @@ class FollowButton extends HookConsumerWidget {
     if (user.hasPendingFollowRequestFromYou) {
       return ElevatedButton(
         onPressed: () async {
-          await futureWithDialog(
+          final confirmed = await confirm(
             context,
-            ref
-                .read(userNotifierProvider(account, userId: userId).notifier)
-                .cancelFollowRequest(),
+            content: UsernameWidget(
+              account: account,
+              user: user,
+              builder: (context, span) =>
+                  Text.rich(t.aria.cancelFollowRequestConfirm(name: span)),
+            ),
           );
+          if (!context.mounted) return;
+          if (confirmed) {
+            await futureWithDialog(
+              context,
+              ref
+                  .read(userNotifierProvider(account, userId: userId).notifier)
+                  .cancelFollowRequest(),
+            );
+          }
         },
         child: Text(
           user.isLocked ? t.misskey.followRequestPending : t.misskey.processing,
