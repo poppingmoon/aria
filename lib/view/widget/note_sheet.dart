@@ -17,7 +17,7 @@ import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/note_state_provider.dart';
 import '../../provider/appear_note_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../util/copy_text.dart';
@@ -75,7 +75,7 @@ class NoteSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     if (note == null) {
       return NoteFallbackWidget(account: account, noteId: noteId);

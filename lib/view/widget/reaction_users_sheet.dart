@@ -10,7 +10,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/reactions_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import 'emoji_sheet.dart';
 import 'emoji_widget.dart';
 import 'paginated_list_view.dart';
@@ -31,7 +31,7 @@ class ReactionUsersSheet extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (likeOnly, emojis, reactions) = ref.watch(
-      noteProvider(account, noteId).select(
+      noteNotifierProvider(account, noteId).select(
         (note) => (
           note?.reactionAcceptance == ReactionAcceptance.likeOnly,
           {...?note?.emojis, ...?note?.reactionEmojis},

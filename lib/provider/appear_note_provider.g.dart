@@ -65,7 +65,7 @@ final class AppearNoteProvider extends $FunctionalProvider<Note?, Note?, Note?>
   }
 }
 
-String _$appearNoteHash() => r'c57297ccaaf5dd400ef373e07904b8560a609ebe';
+String _$appearNoteHash() => r'204d634b6f23e32969bd54e16f84c51da64d33e4';
 
 final class AppearNoteFamily extends $Family
     with $FunctionalFamilyOverride<Note?, (Account, String)> {

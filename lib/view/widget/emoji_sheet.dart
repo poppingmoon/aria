@@ -12,7 +12,7 @@ import '../../provider/api/misskey_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/muted_emojis_notifier_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/check_reaction_permissions.dart';
@@ -44,7 +44,7 @@ class EmojiSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
     final targetNote = targetNoteId?.isNotEmpty ?? false
-        ? ref.watch(noteProvider(account, targetNoteId!))
+        ? ref.watch(noteNotifierProvider(account, targetNoteId!))
         : null;
     final targetMessage = targetMessageId?.isNotEmpty ?? false
         ? ref.watch(chatMessageProvider(account, targetMessageId!)).value

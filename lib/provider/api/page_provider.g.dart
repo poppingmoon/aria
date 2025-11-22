@@ -51,7 +51,7 @@ final class PageNotifierProvider
   }
 }
 
-String _$pageNotifierHash() => r'a66c1085b147df5cb314bc6f0e942e7eb8b79f14';
+String _$pageNotifierHash() => r'a6e65ee4f1fb70934c7735027ab89b7939ed2e47';
 
 final class PageNotifierFamily extends $Family
     with

@@ -16,7 +16,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -82,7 +82,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
     final comment = files.elementAtOrNull(index.value)?.comment;
     final noteId = noteIds?.elementAtOrNull(index.value);
     final note = account != null && noteId != null
-        ? ref.watch(noteProvider(account!, noteId))
+        ? ref.watch(noteNotifierProvider(account!, noteId))
         : null;
     final isZoomed = useState(false);
     final overlayOpacityController = useAnimationController(

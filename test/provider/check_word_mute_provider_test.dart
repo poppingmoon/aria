@@ -1,7 +1,7 @@
 import 'package:aria/model/account.dart';
 import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/check_word_mute_provider.dart';
-import 'package:aria/provider/note_provider.dart';
+import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -18,7 +18,7 @@ ProviderContainer setupContainer({
   return ProviderContainer.test(
     overrides: [
       iNotifierProvider(account).overrideWithBuild((_, _) => i),
-      noteProvider(account, note.id).overrideWithValue(note),
+      noteNotifierProvider(account, note.id).overrideWithValue(note),
     ],
   );
 }
@@ -33,7 +33,7 @@ void main() {
         i: dummyMeDetailed.copyWith(mutedWords: []),
         note: dummyNote.copyWith(text: 'foo'),
       );
-      expect(container.read(noteProvider(account, '')), isNotNull);
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
 
@@ -49,7 +49,7 @@ void main() {
           ),
           note: dummyNote.copyWith(text: 'foo'),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isTrue);
       },
     );
@@ -66,7 +66,7 @@ void main() {
           ),
           note: dummyNote.copyWith(text: 'foo'),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isFalse);
       },
     );
@@ -86,7 +86,7 @@ void main() {
             user: dummyUserLite.copyWith(username: 'testuser'),
           ),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isFalse);
       },
     );
@@ -103,7 +103,7 @@ void main() {
           ),
           note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isTrue);
       },
     );
@@ -121,7 +121,7 @@ void main() {
           ),
           note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isTrue);
       },
     );
@@ -138,7 +138,7 @@ void main() {
           ),
           note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isFalse);
       },
     );
@@ -155,7 +155,7 @@ void main() {
         ),
         note: dummyNote.copyWith(text: 'foo'),
       );
-      expect(container.read(noteProvider(account, '')), isNotNull);
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
 
@@ -169,7 +169,7 @@ void main() {
         ),
         note: dummyNote.copyWith(text: 'foobar'),
       );
-      expect(container.read(noteProvider(account, '')), isNotNull);
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
 
@@ -188,7 +188,7 @@ void main() {
             user: dummyUserLite.copyWith(username: 'testuser'),
           ),
         );
-        expect(container.read(noteProvider(account, '')), isNotNull);
+        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
         expect(container.read(checkWordMuteProvider(account, '')), isFalse);
       },
     );
@@ -203,7 +203,7 @@ void main() {
         ),
         note: dummyNote.copyWith(text: 'foo'),
       );
-      expect(container.read(noteProvider(account, '')), isNotNull);
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
 
@@ -215,7 +215,7 @@ void main() {
         ),
         note: dummyNote.copyWith(text: 'foobar'),
       );
-      expect(container.read(noteProvider(account, '')), isNotNull);
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
 

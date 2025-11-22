@@ -7,7 +7,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../util/decode_custom_emoji.dart';
 import 'reaction_button.dart';
 import 'reaction_effect.dart';
@@ -107,7 +107,7 @@ class ReactionsViewer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }

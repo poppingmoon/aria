@@ -14,7 +14,7 @@ import 'account_settings_notifier_provider.dart';
 import 'api/endpoints_notifier_provider.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
-import 'note_provider.dart';
+import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
 import 'shared_preferences_provider.dart';
 
@@ -26,7 +26,7 @@ class PostNotifier extends _$PostNotifier {
   NotesCreateRequest build(Account account, {String? noteId}) {
     ref.onDispose(() => _timer?.cancel());
     if (noteId != null) {
-      final note = ref.read(noteProvider(account, noteId));
+      final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNotesCreateRequest() ?? _defaultRequest;
     }
     final draft = ref.watch(sharedPreferencesProvider).getString(_key);
@@ -95,7 +95,7 @@ class PostNotifier extends _$PostNotifier {
     final remoteUrl = remoteNote.url ?? remoteNote.uri;
     if (account.host == remoteNote.user.host && remoteUrl != null) {
       final remoteNoteId = remoteUrl.pathSegments.last;
-      if (ref.read(noteProvider(account, remoteNoteId)) != null) {
+      if (ref.read(noteNotifierProvider(account, remoteNoteId)) != null) {
         return remoteNoteId;
       }
       try {
@@ -120,13 +120,13 @@ class PostNotifier extends _$PostNotifier {
   Future<void> fromRequest(NotesCreateRequest request, Account origin) async {
     if (account.host == origin.host) {
       if (request case NotesCreateRequest(:final replyId?)) {
-        final reply = ref.read(noteProvider(origin, replyId));
+        final reply = ref.read(noteNotifierProvider(origin, replyId));
         if (reply != null) {
           ref.read(notesNotifierProvider(account).notifier).add(reply);
         }
       }
       if (request case NotesCreateRequest(:final renoteId?)) {
-        final renote = ref.read(noteProvider(origin, renoteId));
+        final renote = ref.read(noteNotifierProvider(origin, renoteId));
         if (renote != null) {
           ref.read(notesNotifierProvider(account).notifier).add(renote);
         }
@@ -134,7 +134,7 @@ class PostNotifier extends _$PostNotifier {
       state = request;
     } else {
       final reply = request.replyId != null
-          ? ref.read(noteProvider(origin, request.replyId!))
+          ? ref.read(noteNotifierProvider(origin, request.replyId!))
           : null;
       String? replyId;
       if (reply != null && !reply.localOnly) {
@@ -143,7 +143,7 @@ class PostNotifier extends _$PostNotifier {
         } catch (_) {}
       }
       final renote = request.renoteId != null
-          ? ref.read(noteProvider(origin, request.renoteId!))
+          ? ref.read(noteNotifierProvider(origin, request.renoteId!))
           : null;
       String? renoteId;
       if (renote != null && !renote.localOnly) {

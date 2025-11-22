@@ -16,7 +16,7 @@ import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_collapse_reason_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
 import '../../util/get_note_action.dart';
@@ -68,7 +68,7 @@ class NoteWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return HardMutedNoteWidget(borderRadius: borderRadius);
     }
@@ -513,7 +513,7 @@ class _NoteContent extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(4.0),
                     showFooter: this.showFooter,
                     focusPostForm: focusPostForm,
-                    note: appearNote.renote,
+                    note: noteId.isEmpty ? appearNote.renote : null,
                   ),
                 ),
               ),

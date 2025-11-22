@@ -70,7 +70,7 @@ final class CheckWordMuteProvider extends $FunctionalProvider<bool, bool, bool>
   }
 }
 
-String _$checkWordMuteHash() => r'32c20dc273731a735b17b1337abf112c45385d39';
+String _$checkWordMuteHash() => r'1aa9ce3b99d3dc57e590ac6de383c8d46ac89b56';
 
 final class CheckWordMuteFamily extends $Family
     with $FunctionalFamilyOverride<bool, (Account, String, {bool hardMute})> {

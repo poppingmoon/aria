@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../model/account.dart';
 import 'mute_provider.dart';
 import 'muted_words_notifier_provider.dart';
-import 'note_provider.dart';
+import 'note_notifier_provider.dart';
 
 part 'check_word_mute_provider.g.dart';
 
@@ -14,7 +14,7 @@ bool checkWordMute(
   String noteId, {
   bool hardMute = false,
 }) {
-  final note = ref.watch(noteProvider(account, noteId));
+  final note = ref.watch(noteNotifierProvider(account, noteId));
   if (note == null ||
       (note.user.username == account.username && note.user.host == null)) {
     return false;

@@ -9,7 +9,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import 'note_visibility_icon.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
@@ -32,7 +32,7 @@ class RenoteHeader extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }

@@ -10,7 +10,7 @@ import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_collapse_reason_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import 'media_list.dart';
 import 'mfm.dart';
@@ -36,7 +36,7 @@ class SubNoteContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }

@@ -68,7 +68,7 @@ final class NoteCollapseReasonProvider
 }
 
 String _$noteCollapseReasonHash() =>
-    r'84a1cc2d6ac623dc91b4289d9948759c32ded006';
+    r'38e25a3fc4f445958352f1264437ef25414b5fcd';
 
 final class NoteCollapseReasonFamily extends $Family
     with $FunctionalFamilyOverride<CollapseReason?, (Account, String)> {

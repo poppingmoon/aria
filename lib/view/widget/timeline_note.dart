@@ -8,8 +8,8 @@ import '../../model/streaming/note_update_event.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/note_is_deleted_provider.dart';
-import '../../provider/note_provider.dart';
+import '../../provider/note_is_deleted_notifier_provider.dart';
+import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/streaming/note_update_event_provider.dart';
 import 'hard_muted_note_widget.dart';
@@ -38,11 +38,11 @@ class TimelineNote extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
-    final isDeleted = ref.watch(noteIsDeletedProvider(account, noteId));
+    final isDeleted = ref.watch(noteIsDeletedNotifierProvider(account, noteId));
     if (isDeleted) {
       return HardMutedNoteWidget(borderRadius: borderRadius);
     }
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     if (note == null) {
       return Padding(

@@ -58,7 +58,7 @@ final class PostNotifierProvider
   }
 }
 
-String _$postNotifierHash() => r'ad93927d40007441a577484b858cf61503d976b2';
+String _$postNotifierHash() => r'7f13428a981fb85983e31198f10fc80e4cee09c7';
 
 final class PostNotifierFamily extends $Family
     with
