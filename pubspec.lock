@@ -1343,8 +1343,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "1b9072e84c2437ebe13237dca7ff82c1e74520a1"
-      resolved-ref: "1b9072e84c2437ebe13237dca7ff82c1e74520a1"
+      ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
+      resolved-ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -2071,8 +2071,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "34eb94b6837386144b25cb02526e398b4d83fe06"
-      resolved-ref: "34eb94b6837386144b25cb02526e398b4d83fe06"
+      ref: "535ea95511bc93623264e1027087495a17bd68b9"
+      resolved-ref: "535ea95511bc93623264e1027087495a17bd68b9"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
