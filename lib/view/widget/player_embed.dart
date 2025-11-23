@@ -8,14 +8,13 @@ import '../../model/summaly_result.dart';
 import '../../util/launch_url.dart';
 
 class PlayerEmbed extends HookConsumerWidget {
-  const PlayerEmbed({super.key, required this.player});
+  const PlayerEmbed({super.key, required this.host, required this.player});
 
+  final String host;
   final Player player;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final width = player.width;
-    final height = player.height;
     final url = player.url != null ? Uri.tryParse(player.url!) : null;
     if (url == null) {
       return const SizedBox.shrink();
@@ -37,7 +36,10 @@ class PlayerEmbed extends HookConsumerWidget {
           allowsInlineMediaPlayback: true,
           transparentBackground: true,
         ),
-        initialUrlRequest: URLRequest(url: WebUri.uri(replacedUrl)),
+        initialUrlRequest: URLRequest(
+          headers: {'Referer': Uri.https(host).toString()},
+          url: WebUri.uri(replacedUrl),
+        ),
         shouldOverrideUrlLoading: (controller, navigationAction) async {
           final url = navigationAction.request.url;
           if (url == null) {
@@ -60,10 +62,10 @@ class PlayerEmbed extends HookConsumerWidget {
       ),
     );
 
-    if (width != null && height != null) {
+    if (player case Player(:final width?, :final height?)) {
       final aspectRatio = width / height;
       return AspectRatio(aspectRatio: aspectRatio, child: webView);
     }
-    return SizedBox(height: height ?? 200.0, child: webView);
+    return SizedBox(height: player.height ?? 200.0, child: webView);
   }
 }

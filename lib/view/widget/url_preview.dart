@@ -171,7 +171,7 @@ class UrlPreview extends HookConsumerWidget {
           if (playerUrl != null || tweetId != null) ...[
             if (isPlayerOpen.value) ...[
               if (summalyResult case SummalyResult(player: Player(url: _?)))
-                PlayerEmbed(player: summalyResult.player),
+                PlayerEmbed(host: account.host, player: summalyResult.player),
               if (tweetId != null)
                 TwitterEmbed(
                   tweetId: tweetId,
