@@ -63,9 +63,11 @@ class NotificationsSettingsPage extends ConsumerWidget {
       if (!ref.context.mounted) return;
       final instances = [account.toString()];
       await UnifiedPushUi(
-        ref.context,
-        instances,
-        _UnifiedPushFunctions(vapid: meta.swPublickey),
+        context: ref.context,
+        instances: instances,
+        unifiedPushFunctions: _UnifiedPushFunctions(vapid: meta.swPublickey),
+        showNoDistribDialog: true,
+        onNoDistribDialogDismissed: () {},
       ).registerAppWithDialog();
       if (!ref.context.mounted) return;
       final completer = Completer<PushEndpoint>();

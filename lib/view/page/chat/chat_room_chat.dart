@@ -98,7 +98,7 @@ class ChatRoomChat extends ConsumerWidget {
               margin: const EdgeInsets.all(24.0),
               width: maxContentWidth,
               child: Text(
-                i?.policies?.chatAvailability == ChatAvailability.readOnly
+                i?.policies?.chatAvailability == ChatAvailability.readonly
                     ? t.misskey.chat_.chatIsReadOnlyForThisAccountOrServer
                     : t.misskey.chat_.chatNotAvailableForThisAccountOrServer,
                 textAlign: TextAlign.center,

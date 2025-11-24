@@ -9,7 +9,7 @@ plugins {
 android {
     namespace = "com.poppingmoon.aria"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "28.2.13676358"
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
