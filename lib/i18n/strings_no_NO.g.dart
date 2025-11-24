@@ -540,6 +540,8 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get information => 'Informasjon';
 	@override String get inMinutes => 'Minutter';
 	@override String get inDays => 'Dager';
+	@override late final _TranslationsMisskeyImageEditingNoNo imageEditing_ = _TranslationsMisskeyImageEditingNoNo._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorNoNo imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorNoNo._(_root);
 	@override late final _TranslationsMisskeyChatNoNo chat_ = _TranslationsMisskeyChatNoNo._(_root);
 	@override late final _TranslationsMisskeyDeliveryNoNo delivery_ = _TranslationsMisskeyDeliveryNoNo._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingNoNo initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingNoNo._(_root);
@@ -584,6 +586,27 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorNoNo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNoNo._(_root);
 	@override late final _TranslationsMisskeyImageEffectorNoNo imageEffector_ = _TranslationsMisskeyImageEffectorNoNo._(_root);
 	@override late final _TranslationsMisskeyQrNoNo qr_ = _TranslationsMisskeyQrNoNo._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingNoNo extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsNoNo vars_ = _TranslationsMisskeyImageEditingVarsNoNo._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorNoNo extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -911,6 +934,7 @@ class _TranslationsMisskeyPostFormNoNo extends TranslationsMisskeyPostFormEnUs {
 	final TranslationsNoNo _root; // ignore: unused_field
 
 	// Translations
+	@override late final _TranslationsMisskeyPostFormHowToUseNoNo howToUse_ = _TranslationsMisskeyPostFormHowToUseNoNo._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersNoNo placeholders_ = _TranslationsMisskeyPostFormPlaceholdersNoNo._(_root);
 }
 
@@ -1123,6 +1147,16 @@ class _TranslationsMisskeyQrNoNo extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Tekst';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsNoNo extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Filnavn';
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesNoNo extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
@@ -1203,6 +1237,16 @@ class _TranslationsMisskeyWidgetsUserListNoNo extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Velg liste';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseNoNo extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get menu_title => 'Meny';
 }
 
 // Path: misskey.postForm_.placeholders_

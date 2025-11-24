@@ -1360,6 +1360,9 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'min';
 	@override String get inDays => 'j';
 	@override String get widgets => 'Widgets';
+	@override String get presets => 'Préréglage';
+	@override late final _TranslationsMisskeyImageEditingFrFr imageEditing_ = _TranslationsMisskeyImageEditingFrFr._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorFrFr imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorFrFr._(_root);
 	@override late final _TranslationsMisskeyChatFrFr chat_ = _TranslationsMisskeyChatFrFr._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportFrFr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportFrFr._(_root);
 	@override late final _TranslationsMisskeyDeliveryFrFr delivery_ = _TranslationsMisskeyDeliveryFrFr._(_root);
@@ -1433,6 +1436,29 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorFrFr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorFrFr._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFrFr imageEffector_ = _TranslationsMisskeyImageEffectorFrFr._(_root);
 	@override late final _TranslationsMisskeyQrFrFr qr_ = _TranslationsMisskeyQrFrFr._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingFrFr extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsFrFr vars_ = _TranslationsMisskeyImageEditingVarsFrFr._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorFrFr extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Entête';
+	@override String get font => 'Police de caractères';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -2273,6 +2299,7 @@ class _TranslationsMisskeyPostFormFrFr extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Répondre à cette note ...';
 	@override String get quotePlaceholder => 'Citez cette note ...';
 	@override String get channelPlaceholder => 'Publier au canal…';
+	@override late final _TranslationsMisskeyPostFormHowToUseFrFr howToUse_ = _TranslationsMisskeyPostFormHowToUseFrFr._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersFrFr placeholders_ = _TranslationsMisskeyPostFormPlaceholdersFrFr._(_root);
 }
 
@@ -2731,6 +2758,16 @@ class _TranslationsMisskeyQrFrFr extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Texte';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsFrFr extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Nom du fichier';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeFrFr extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
@@ -3033,6 +3070,17 @@ class _TranslationsMisskeyWidgetsUserListFrFr extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Sélectionner une liste';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseFrFr extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Visibilité';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.postForm_.placeholders_

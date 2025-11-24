@@ -841,6 +841,14 @@ replies: "Javob berish"
 renotes: "Qayta qayd etish"
 flip: "Teskari"
 information: "Haqida"
+imageEditing_:
+  vars_:
+    filename: "Fayl nomi"
+imageFrameEditor_:
+  header: "Sarlavha"
+  font: "Shrift"
+  fontSerif: "Serif"
+  fontSansSerif: "Sans Serif"
 chat_:
   invitations: "Taklif qilish"
   noHistory: "Tarix yo'q"
@@ -968,6 +976,10 @@ visibility_:
   home: "Bosh sahifa"
   followers: "Obunachilar"
   specified: "Bevosita"
+postForm_:
+  howToUse_:
+    visibility_title: "Ko'rinishi"
+    menu_title: "Menyu"
 profile_:
   name: "Ism"
   username: "Foydalanuvchi nomi"

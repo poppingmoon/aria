@@ -920,6 +920,14 @@ information: "Informácie"
 inMinutes: "min"
 inDays: "dní"
 widgets: "Widgety"
+imageEditing_:
+  vars_:
+    filename: "Názov súboru"
+imageFrameEditor_:
+  header: "Hlavička"
+  font: "Písmo"
+  fontSerif: "Pätkové"
+  fontSansSerif: "Bezpätkové"
 chat_:
   invitations: "Pozvať"
   noHistory: "Žiadna história"
@@ -1268,6 +1276,9 @@ postForm_:
   replyPlaceholder: "Odpoveď na túto poznámku..."
   quotePlaceholder: "Citovanie tejto poznámky..."
   channelPlaceholder: "Poslať do kanála..."
+  howToUse_:
+    visibility_title: "Viditeľnosť"
+    menu_title: "Menu"
   placeholders_:
     a: "Čo máte v pláne?"
     b: "Čo sa deje?"

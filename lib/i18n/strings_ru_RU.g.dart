@@ -168,7 +168,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get importRequested => 'Вы запросили импорт. Это может занять некоторое время.';
 	@override String get lists => 'Списки';
 	@override String get noLists => 'Нет ни одного списка';
-	@override String get note => 'Заметка';
+	@override String get note => 'Пост';
 	@override String get notes => 'Заметки';
 	@override String get following => 'Подписки';
 	@override String get followers => 'Подписчики';
@@ -203,7 +203,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get inChannelQuote => 'Заметки в канале';
 	@override String get renoteToChannel => 'Репостнуть в канал';
 	@override String get renoteToOtherChannel => 'Репостнуть в другой канал';
-	@override String get pinnedNote => 'Закреплённая заметка';
+	@override String get pinnedNote => 'Закреплённый пост';
 	@override String get pinned => 'Закрепить в профиле';
 	@override String get you => 'Вы';
 	@override String get clickToShow => 'Нажмите для просмотра';
@@ -334,6 +334,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'Нельзя закрепить ещё больше заметок';
 	@override String get done => 'Готово';
 	@override String get processing => 'Обработка';
+	@override String get preprocessing => 'Подготовка...';
 	@override String get preview => 'Предпросмотр';
 	@override String get default_ => 'По умолчанию';
 	@override String defaultValueIs({required Object value}) => 'По умолчанию: ${value}';
@@ -477,7 +478,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get pinnedPages => 'Закрепленные страницы';
 	@override String get pinnedPagesDescription => 'Если хотите закрепить страницы на главной сайта, сюда можно добавить пути к ним, каждый в отдельной строке.';
 	@override String get pinnedClipId => 'Идентификатор закреплённой подборки';
-	@override String get pinnedNotes => 'Закреплённая заметка';
+	@override String get pinnedNotes => 'Закреплённый пост';
 	@override String get hcaptcha => 'hCaptcha';
 	@override String get enableHcaptcha => 'Включить hCaptcha';
 	@override String get hcaptchaSiteKey => 'Ключ сайта';
@@ -1245,6 +1246,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get branding => 'Бренд';
 	@override String get enableServerMachineStats => 'Опубликовать характеристики сервера';
 	@override String get enableIdenticonGeneration => 'Включить генерацию иконки пользователя';
+	@override String get showRoleBadgesOfRemoteUsers => 'Display the role badges assigned to remote users';
 	@override String get turnOffToImprovePerformance => 'Отключение этого параметра может повысить производительность.';
 	@override String get createInviteCode => 'Создать код приглашения';
 	@override String get createWithOptions => 'Используйте параметры для создания';
@@ -1359,6 +1361,9 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'мин';
 	@override String get inDays => 'сут';
 	@override String get widgets => 'Виджеты';
+	@override String get presets => 'Шаблоны';
+	@override late final _TranslationsMisskeyImageEditingRuRu imageEditing_ = _TranslationsMisskeyImageEditingRuRu._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorRuRu imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorRuRu._(_root);
 	@override late final _TranslationsMisskeyChatRuRu chat_ = _TranslationsMisskeyChatRuRu._(_root);
 	@override late final _TranslationsMisskeySettingsRuRu settings_ = _TranslationsMisskeySettingsRuRu._(_root);
 	@override late final _TranslationsMisskeyDeliveryRuRu delivery_ = _TranslationsMisskeyDeliveryRuRu._(_root);
@@ -1432,6 +1437,29 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorRuRu imageEffector_ = _TranslationsMisskeyImageEffectorRuRu._(_root);
 	@override String get drafts => 'Черновик';
 	@override late final _TranslationsMisskeyQrRuRu qr_ = _TranslationsMisskeyQrRuRu._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingRuRu extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsRuRu vars_ = _TranslationsMisskeyImageEditingVarsRuRu._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorRuRu extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Заголовок';
+	@override String get font => 'Шрифт';
+	@override String get fontSerif => 'Антиква (с засечками)';
+	@override String get fontSansSerif => 'Гротеск (без засечек)';
 }
 
 // Path: misskey.chat_
@@ -2216,6 +2244,7 @@ class _TranslationsMisskeyPostFormRuRu extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Ответ на заметку...';
 	@override String get quotePlaceholder => 'Пояснение к цитате...';
 	@override String get channelPlaceholder => 'Отправить в канал';
+	@override late final _TranslationsMisskeyPostFormHowToUseRuRu howToUse_ = _TranslationsMisskeyPostFormHowToUseRuRu._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersRuRu placeholders_ = _TranslationsMisskeyPostFormPlaceholdersRuRu._(_root);
 }
 
@@ -2628,6 +2657,16 @@ class _TranslationsMisskeyQrRuRu extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Текст';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsRuRu extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Имя файла';
+}
+
 // Path: misskey.settings_.chat_
 class _TranslationsMisskeySettingsChatRuRu extends TranslationsMisskeySettingsChatEnUs {
 	_TranslationsMisskeySettingsChatRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2896,6 +2935,17 @@ class _TranslationsMisskeyWidgetsUserListRuRu extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Выберите список';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseRuRu extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Видимость';
+	@override String get menu_title => 'Меню';
 }
 
 // Path: misskey.postForm_.placeholders_

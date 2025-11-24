@@ -1002,6 +1002,8 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'х';
 	@override String get inDays => 'д';
 	@override String get widgets => 'Віджети';
+	@override late final _TranslationsMisskeyImageEditingUkUa imageEditing_ = _TranslationsMisskeyImageEditingUkUa._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorUkUa imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorUkUa._(_root);
 	@override late final _TranslationsMisskeyChatUkUa chat_ = _TranslationsMisskeyChatUkUa._(_root);
 	@override late final _TranslationsMisskeyDeliveryUkUa delivery_ = _TranslationsMisskeyDeliveryUkUa._(_root);
 	@override late final _TranslationsMisskeyAchievementsUkUa achievements_ = _TranslationsMisskeyAchievementsUkUa._(_root);
@@ -1057,6 +1059,29 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorUkUa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUkUa._(_root);
 	@override late final _TranslationsMisskeyImageEffectorUkUa imageEffector_ = _TranslationsMisskeyImageEffectorUkUa._(_root);
 	@override late final _TranslationsMisskeyQrUkUa qr_ = _TranslationsMisskeyQrUkUa._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingUkUa extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsUkUa vars_ = _TranslationsMisskeyImageEditingVarsUkUa._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorUkUa extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Заголовок';
+	@override String get font => 'Шрифт';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans serif';
 }
 
 // Path: misskey.chat_
@@ -1627,6 +1652,7 @@ class _TranslationsMisskeyPostFormUkUa extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Відповідь на цю нотатку...';
 	@override String get quotePlaceholder => 'Прокоментуйте цю нотатку...';
 	@override String get channelPlaceholder => 'Опублікувати в каналі';
+	@override late final _TranslationsMisskeyPostFormHowToUseUkUa howToUse_ = _TranslationsMisskeyPostFormHowToUseUkUa._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersUkUa placeholders_ = _TranslationsMisskeyPostFormPlaceholdersUkUa._(_root);
 }
 
@@ -1932,6 +1958,16 @@ class _TranslationsMisskeyQrUkUa extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Текст';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsUkUa extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Ім\'я файлу';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUkUa extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
@@ -2105,6 +2141,17 @@ class _TranslationsMisskeyWidgetsUserListUkUa extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Виберіть список';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseUkUa extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Видимість';
+	@override String get menu_title => 'Меню';
 }
 
 // Path: misskey.postForm_.placeholders_

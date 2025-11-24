@@ -1227,6 +1227,15 @@ migrateOldSettings_description: "Thông thường, quá trình này diễn ra t�
 inMinutes: "phút"
 inDays: "ngày"
 widgets: "Tiện ích"
+presets: "Mẫu thiết lập"
+imageEditing_:
+  vars_:
+    filename: "Tên tập tin"
+imageFrameEditor_:
+  header: "Ảnh bìa"
+  font: "Phông chữ"
+  fontSerif: "Serif"
+  fontSansSerif: "Sans Serif"
 chat_:
   invitations: "Mời"
   noHistory: "Không có dữ liệu"
@@ -1863,6 +1872,9 @@ postForm_:
   replyPlaceholder: "Trả lời tút này"
   quotePlaceholder: "Trích dẫn tút này"
   channelPlaceholder: "Đăng lên một kênh"
+  howToUse_:
+    visibility_title: "Hiển thị"
+    menu_title: "Menu"
   placeholders_:
     a: "Bạn đang định làm gì?"
     b: "Hôm nay bạn có gì vui?"

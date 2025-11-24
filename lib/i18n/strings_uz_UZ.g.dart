@@ -916,6 +916,8 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String get renotes => 'Qayta qayd etish';
 	@override String get flip => 'Teskari';
 	@override String get information => 'Haqida';
+	@override late final _TranslationsMisskeyImageEditingUzUz imageEditing_ = _TranslationsMisskeyImageEditingUzUz._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorUzUz imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorUzUz._(_root);
 	@override late final _TranslationsMisskeyChatUzUz chat_ = _TranslationsMisskeyChatUzUz._(_root);
 	@override late final _TranslationsMisskeyDeliveryUzUz delivery_ = _TranslationsMisskeyDeliveryUzUz._(_root);
 	@override late final _TranslationsMisskeyAchievementsUzUz achievements_ = _TranslationsMisskeyAchievementsUzUz._(_root);
@@ -935,6 +937,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCwUzUz cw_ = _TranslationsMisskeyCwUzUz._(_root);
 	@override late final _TranslationsMisskeyPollUzUz poll_ = _TranslationsMisskeyPollUzUz._(_root);
 	@override late final _TranslationsMisskeyVisibilityUzUz visibility_ = _TranslationsMisskeyVisibilityUzUz._(_root);
+	@override late final _TranslationsMisskeyPostFormUzUz postForm_ = _TranslationsMisskeyPostFormUzUz._(_root);
 	@override late final _TranslationsMisskeyProfileUzUz profile_ = _TranslationsMisskeyProfileUzUz._(_root);
 	@override late final _TranslationsMisskeyExportOrImportUzUz exportOrImport_ = _TranslationsMisskeyExportOrImportUzUz._(_root);
 	@override late final _TranslationsMisskeyChartsUzUz charts_ = _TranslationsMisskeyChartsUzUz._(_root);
@@ -954,6 +957,29 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorUzUz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorUzUz._(_root);
 	@override late final _TranslationsMisskeyImageEffectorUzUz imageEffector_ = _TranslationsMisskeyImageEffectorUzUz._(_root);
 	@override late final _TranslationsMisskeyQrUzUz qr_ = _TranslationsMisskeyQrUzUz._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingUzUz extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsUzUz vars_ = _TranslationsMisskeyImageEditingVarsUzUz._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorUzUz extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Sarlavha';
+	@override String get font => 'Shrift';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -1212,6 +1238,16 @@ class _TranslationsMisskeyVisibilityUzUz extends TranslationsMisskeyVisibilityEn
 	@override String get home => 'Bosh sahifa';
 	@override String get followers => 'Obunachilar';
 	@override String get specified => 'Bevosita';
+}
+
+// Path: misskey.postForm_
+class _TranslationsMisskeyPostFormUzUz extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyPostFormHowToUseUzUz howToUse_ = _TranslationsMisskeyPostFormHowToUseUzUz._(_root);
 }
 
 // Path: misskey.profile_
@@ -1476,6 +1512,16 @@ class _TranslationsMisskeyQrUzUz extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Matn';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsUzUz extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Fayl nomi';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUzUz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
@@ -1548,6 +1594,17 @@ class _TranslationsMisskeyWidgetsUserListUzUz extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Ro\'yxat tanlash';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseUzUz extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Ko\'rinishi';
+	@override String get menu_title => 'Menyu';
 }
 
 // Path: misskey.pages_.blocks

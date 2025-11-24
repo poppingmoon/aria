@@ -1038,6 +1038,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get followingOrFollower => 'Gevolgd of volger';
 	@override String get confirmShowRepliesAll => 'Dit is een onomkeerbare operatie. Weet je zeker dat reacties op anderen van iedereen die je volgt, wil weergeven in je tijdlijn?';
 	@override String get information => 'Over';
+	@override late final _TranslationsMisskeyImageEditingNlNl imageEditing_ = _TranslationsMisskeyImageEditingNlNl._(_root);
 	@override late final _TranslationsMisskeyChatNlNl chat_ = _TranslationsMisskeyChatNlNl._(_root);
 	@override late final _TranslationsMisskeyDeliveryNlNl delivery_ = _TranslationsMisskeyDeliveryNlNl._(_root);
 	@override late final _TranslationsMisskeyRoleNlNl role_ = _TranslationsMisskeyRoleNlNl._(_root);
@@ -1050,6 +1051,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWidgetsNlNl widgets_ = _TranslationsMisskeyWidgetsNlNl._(_root);
 	@override late final _TranslationsMisskeyCwNlNl cw_ = _TranslationsMisskeyCwNlNl._(_root);
 	@override late final _TranslationsMisskeyVisibilityNlNl visibility_ = _TranslationsMisskeyVisibilityNlNl._(_root);
+	@override late final _TranslationsMisskeyPostFormNlNl postForm_ = _TranslationsMisskeyPostFormNlNl._(_root);
 	@override late final _TranslationsMisskeyProfileNlNl profile_ = _TranslationsMisskeyProfileNlNl._(_root);
 	@override late final _TranslationsMisskeyExportOrImportNlNl exportOrImport_ = _TranslationsMisskeyExportOrImportNlNl._(_root);
 	@override late final _TranslationsMisskeyChartsNlNl charts_ = _TranslationsMisskeyChartsNlNl._(_root);
@@ -1066,6 +1068,16 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchNlNl search_ = _TranslationsMisskeySearchNlNl._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorNlNl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorNlNl._(_root);
 	@override late final _TranslationsMisskeyQrNlNl qr_ = _TranslationsMisskeyQrNlNl._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingNlNl extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsNlNl vars_ = _TranslationsMisskeyImageEditingVarsNlNl._(_root);
 }
 
 // Path: misskey.chat_
@@ -1203,6 +1215,16 @@ class _TranslationsMisskeyVisibilityNlNl extends TranslationsMisskeyVisibilityEn
 	@override String get home => 'Startpagina';
 	@override String get followers => 'Volgers';
 	@override String get specified => 'Directe notities';
+}
+
+// Path: misskey.postForm_
+class _TranslationsMisskeyPostFormNlNl extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyPostFormHowToUseNlNl howToUse_ = _TranslationsMisskeyPostFormHowToUseNlNl._(_root);
 }
 
 // Path: misskey.profile_
@@ -1379,6 +1401,16 @@ class _TranslationsMisskeyQrNlNl extends TranslationsMisskeyQrEnUs {
 	@override String get showTabTitle => 'Weergave';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsNlNl extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Bestandsnaam';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeNlNl extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
@@ -1431,6 +1463,17 @@ class _TranslationsMisskeyWidgetsUserListNlNl extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Kies een lijst.';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseNlNl extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Zichtbaarheid';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.pages_.blocks

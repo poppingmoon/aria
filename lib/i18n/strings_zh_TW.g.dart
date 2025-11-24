@@ -258,7 +258,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get addEmoji => '新增表情符號';
 	@override String get settingGuide => '推薦設定';
 	@override String get cacheRemoteFiles => '快取遠端檔案';
-	@override String get cacheRemoteFilesDescription => '啟用此設定後，遠端檔案會被快取在本伺服器的儲存空間中。雖然顯示圖片會變快，但會消耗較多伺服器的儲存空間。至於要快取遠端使用者到什麼程度，是依照角色的雲端硬碟容量而定。當超過這個限制時，從較舊的檔案開始自快取中刪除並改為連結。關閉這個設定時，遠端檔案從一開始就維持連結的方式，但建議將 default.yml 的 proxyRemoteFiles 設為 true，以便產生圖片的縮圖並保護使用者的隱私。';
+	@override String get cacheRemoteFilesDescription => '啟用這個設定後，遠端檔案會被快取到這台伺服器的儲存空間中。這樣能加快圖片的顯示速度，但會多占用伺服器的儲存容量。遠端使用者能保留多少快取，取決於其角色所設定的硬碟容量上限。若超過這個上限，系統會從最舊的檔案開始刪除快取並改成連結。若停用這個設定，遠端檔案一開始就只會以連結的形式保留。';
 	@override String get youCanCleanRemoteFilesCache => '按檔案管理的🗑️按鈕，可將快取全部刪除。';
 	@override String get cacheRemoteSensitiveFiles => '快取遠端的敏感檔案';
 	@override String get cacheRemoteSensitiveFilesDescription => '若停用這個設定，則不會快取遠端的敏感檔案，而是直接連結。';
@@ -388,6 +388,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String uploadNFiles({required Object n}) => '上傳了 ${n} 個檔案';
 	@override String get explore => '探索';
 	@override String get messageRead => '已讀';
+	@override String get readAllChatMessages => '將所有訊息標記為已讀';
 	@override String get noMoreHistory => '沒有更多歷史紀錄';
 	@override String get startChat => '開始聊天';
 	@override String nUsersRead({required Object n}) => '${n} 人已讀';
@@ -420,6 +421,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get selectFile => '選擇檔案';
 	@override String get selectFiles => '選擇檔案';
 	@override String get selectFolder => '選擇資料夾';
+	@override String get unselectFolder => '取消選擇資料夾';
 	@override String get selectFolders => '選擇資料夾';
 	@override String get fileNotSelected => '尚未選擇檔案';
 	@override String get renameFile => '重新命名檔案';
@@ -432,6 +434,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get showFile => '瀏覽文件';
 	@override String get emptyDrive => '雲端硬碟為空';
 	@override String get emptyFolder => '資料夾為空';
+	@override String get dropHereToUpload => '將檔案拖放至此處即可上傳';
 	@override String get unableToDelete => '無法刪除';
 	@override String get inputNewFileName => '輸入檔案名稱';
 	@override String get inputNewDescription => '請輸入新標題 ';
@@ -859,6 +862,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => '預設標記檔案為敏感內容';
 	@override String get loadRawImages => '以原始圖檔顯示附件圖檔的縮圖';
 	@override String get disableShowingAnimatedImages => '不播放動態圖檔';
+	@override String get disableShowingAnimatedImages_caption => '無論這個設定如何，如果動畫圖片無法播放，可能是因為瀏覽器或作業系統的無障礙設定、省電設定等產生了干擾。';
 	@override String get highlightSensitiveMedia => '強調敏感標記';
 	@override String get verificationEmailSent => '已發送驗證電子郵件。請點擊進入電子郵件中的連結以完成驗證。';
 	@override String get notSet => '未設定';
@@ -1105,6 +1109,9 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => '瀏覽器或伺服器不支援推播通知';
 	@override String get sendPushNotificationReadMessage => '如果已閱讀通知與訊息，就刪除推播通知';
 	@override String get sendPushNotificationReadMessageCaption => '可能會導致裝置的電池消耗量增加。';
+	@override String get pleaseAllowPushNotification => '請允許瀏覽器的通知設定';
+	@override String get browserPushNotificationDisabled => '取得通知發送權限失敗';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => '您沒有權限從 ${serverName} 發送通知。請在瀏覽器設定中允許通知，然後再試一次。';
 	@override String get windowMaximize => '最大化';
 	@override String get windowMinimize => '最小化';
 	@override String get windowRestore => '復原';
@@ -1255,6 +1262,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get branding => '品牌宣傳';
 	@override String get enableServerMachineStats => '公佈伺服器的機器資訊';
 	@override String get enableIdenticonGeneration => '啟用生成使用者的 Identicon ';
+	@override String get showRoleBadgesOfRemoteUsers => '顯示授予遠端使用者的角色徽章';
 	@override String get turnOffToImprovePerformance => '關閉時會提高性能。';
 	@override String get createInviteCode => '建立邀請碼';
 	@override String get createWithOptions => '使用選項建立';
@@ -1476,6 +1484,14 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get schedule => '排定';
 	@override String get scheduled => '排定';
 	@override String get widgets => '小工具';
+	@override String get deviceInfo => '硬體資訊';
+	@override String get deviceInfoDescription => '在提出技術性諮詢時，若能同時提供以下資訊，將有助於解決問題。';
+	@override String get youAreAdmin => '您是管理員';
+	@override String get frame => '邊框';
+	@override String get presets => '預設值';
+	@override String get zeroPadding => '補零';
+	@override late final _TranslationsMisskeyImageEditingZhTw imageEditing_ = _TranslationsMisskeyImageEditingZhTw._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorZhTw imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorZhTw._(_root);
 	@override late final _TranslationsMisskeyCompressionZhTw compression_ = _TranslationsMisskeyCompressionZhTw._(_root);
 	@override late final _TranslationsMisskeyOrderZhTw order_ = _TranslationsMisskeyOrderZhTw._(_root);
 	@override late final _TranslationsMisskeyChatZhTw chat_ = _TranslationsMisskeyChatZhTw._(_root);
@@ -1580,6 +1596,44 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDraftsZhTw drafts_ = _TranslationsMisskeyDraftsZhTw._(_root);
 	@override String get qr => '二維條碼';
 	@override late final _TranslationsMisskeyQrZhTw qr_ = _TranslationsMisskeyQrZhTw._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingZhTw extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsZhTw vars_ = _TranslationsMisskeyImageEditingVarsZhTw._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorZhTw extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '編輯邊框';
+	@override String get tip => '可以在圖片上添加包含邊框或 EXIF 的標籤來裝飾圖片。';
+	@override String get header => '標題';
+	@override String get footer => '頁尾';
+	@override String get borderThickness => '邊框寬度';
+	@override String get labelThickness => '標籤寬度';
+	@override String get labelScale => '標籤縮放比例';
+	@override String get centered => '置中對齊';
+	@override String get captionMain => '標題文字（大）';
+	@override String get captionSub => '標題文字（小）';
+	@override String get availableVariables => '可使用的變數';
+	@override String get withQrCode => '二維條碼';
+	@override String get backgroundColor => '背景顏色';
+	@override String get textColor => '文字顏色';
+	@override String get font => '字型';
+	@override String get fontSerif => '襯線體';
+	@override String get fontSansSerif => '無襯線體';
+	@override String get quitWithoutSaveConfirm => '不儲存就退出嗎？';
+	@override String get failedToLoadImage => '圖片載入失敗';
 }
 
 // Path: misskey.compression_
@@ -1711,6 +1765,8 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get showUrlPreview => '顯示網址預覽';
 	@override String get showAvailableReactionsFirstInNote => '將可用的反應顯示在頂部';
 	@override String get showPageTabBarBottom => '在底部顯示頁面的標籤列';
+	@override String get emojiPaletteBanner => '可以將固定顯示在表情符號選擇器的預設項目註冊為調色盤，或者自訂選擇器的顯示方式。';
+	@override String get enableAnimatedImages => '啟用動畫圖片';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -1725,6 +1781,8 @@ class _TranslationsMisskeyPreferencesProfileZhTw extends TranslationsMisskeyPref
 	@override String get profileNameDescription => '設定一個名稱來識別此裝置。';
 	@override String get profileNameDescription2 => '例如：「主要個人電腦」、「智慧型手機」等';
 	@override String get manageProfiles => '管理個人檔案';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => '不建議在多個裝置上共用同一個設定檔。';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => '如果您希望在多個裝置之間同步某些設定項目，請分別啟用「跨裝置同步」選項。';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1742,6 +1800,7 @@ class _TranslationsMisskeyPreferencesBackupZhTw extends TranslationsMisskeyPrefe
 	@override String get youNeedToNameYourProfileToEnableAutoBackup => '要啟用自動備份，必須設定檔案名稱。';
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '此裝置未啟用自動備份設定。';
 	@override String get backupFound => '找到設定的備份';
+	@override String get forceBackup => '強制備份設定';
 }
 
 // Path: misskey.accountSettings_
@@ -2585,6 +2644,7 @@ class _TranslationsMisskeyAuthZhTw extends TranslationsMisskeyAuthEnUs {
 	@override String get scopeUser => '以下列使用者身分操作';
 	@override String get pleaseLogin => '必須登入以提供應用程式的存取權限。';
 	@override String get byClickingYouWillBeRedirectedToThisUrl => '如果授予存取權限，就會自動導向到以下的網址';
+	@override String get alreadyAuthorized => '此應用程式已被授予存取權限。';
 }
 
 // Path: misskey.antennaSources_
@@ -2730,6 +2790,8 @@ class _TranslationsMisskeyPostFormZhTw extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => '回覆此貼文...';
 	@override String get quotePlaceholder => '引用此貼文...';
 	@override String get channelPlaceholder => '發佈到頻道';
+	@override String get showHowToUse => '顯示表單說明';
+	@override late final _TranslationsMisskeyPostFormHowToUseZhTw howToUse_ = _TranslationsMisskeyPostFormHowToUseZhTw._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersZhTw placeholders_ = _TranslationsMisskeyPostFormPlaceholdersZhTw._(_root);
 }
 
@@ -2889,7 +2951,7 @@ class _TranslationsMisskeyPagesZhTw extends TranslationsMisskeyPagesEnUs {
 	@override String get hideTitleWhenPinned => '被置頂於個人資料時隱藏頁面標題';
 	@override String get font => '字型';
 	@override String get fontSerif => '襯線體';
-	@override String get fontSansSerif => '黑體';
+	@override String get fontSansSerif => '無襯線體';
 	@override String get eyeCatchingImageSet => '設定封面影像';
 	@override String get eyeCatchingImageRemove => '刪除封面影像';
 	@override String get chooseBlock => '新增方塊';
@@ -3057,6 +3119,8 @@ class _TranslationsMisskeyModerationLogTypesZhTw extends TranslationsMisskeyMode
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
+	@override String get clearQueue => '清除佇列';
+	@override String get promoteQueue => '重新嘗試排程中的工作';
 	@override String get createRole => '新增角色';
 	@override String get deleteRole => '刪除角色 ';
 	@override String get updateRole => '更新角色設定';
@@ -3475,7 +3539,7 @@ class _TranslationsMisskeyUploaderZhTw extends TranslationsMisskeyUploaderEnUs {
 	@override String get abortConfirm => '有些檔案尚未上傳，您要中止嗎？';
 	@override String get doneConfirm => '有些檔案尚未上傳，是否要完成上傳？';
 	@override String maxFileSizeIsX({required Object x}) => '可上傳的最大檔案大小為 ${x}。';
-	@override String get allowedTypes => '可上傳的檔案類型';
+	@override String get allowedTypes => '可上傳的檔案類型。';
 	@override String get tip => '檔案尚未上傳。您可以在此對話框中進行上傳前的確認、重新命名、壓縮、裁切等操作。準備完成後，請點選「上傳」按鈕開始上傳。\n';
 }
 
@@ -3529,6 +3593,7 @@ class _TranslationsMisskeyWatermarkEditorZhTw extends TranslationsMisskeyWaterma
 	@override String get title => '編輯浮水印';
 	@override String get cover => '覆蓋整體';
 	@override String get repeat => '佈局';
+	@override String get preserveBoundingRect => '調整使其在旋轉時不會突出';
 	@override String get opacity => '透明度';
 	@override String get scale => '大小';
 	@override String get text => '文字';
@@ -3550,6 +3615,7 @@ class _TranslationsMisskeyWatermarkEditorZhTw extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotRadius => '子圓點的尺寸';
 	@override String get polkadotSubDotDivisions => '子圓點的數量';
 	@override String get leaveBlankToAccountUrl => '若留空則使用帳戶的 URL';
+	@override String get failedToLoadImage => '圖片載入失敗';
 }
 
 // Path: misskey.imageEffector_
@@ -3563,6 +3629,7 @@ class _TranslationsMisskeyImageEffectorZhTw extends TranslationsMisskeyImageEffe
 	@override String get addEffect => '新增特效';
 	@override String get discardChangesConfirm => '捨棄更改並退出嗎？';
 	@override String get nothingToConfigure => '無可設定的項目';
+	@override String get failedToLoadImage => '圖片載入失敗';
 	@override late final _TranslationsMisskeyImageEffectorFxsZhTw fxs_ = _TranslationsMisskeyImageEffectorFxsZhTw._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsZhTw fxProps_ = _TranslationsMisskeyImageEffectorFxPropsZhTw._(_root);
 }
@@ -3613,6 +3680,33 @@ class _TranslationsMisskeyQrZhTw extends TranslationsMisskeyQrEnUs {
 	@override String get scanFile => '掃描在裝置上的影像';
 	@override String get raw => '文字';
 	@override String get mfm => 'MFM';
+}
+
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsZhTw extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get caption => '檔案標題';
+	@override String get filename => '檔案名稱';
+	@override String get filename_without_ext => '無副檔名的檔案名稱';
+	@override String get year => '拍攝年份';
+	@override String get month => '拍攝月份';
+	@override String get day => '拍攝日期';
+	@override String get hour => '拍攝時間（小時）';
+	@override String get minute => '拍攝時間（分鐘）';
+	@override String get second => '拍攝時間（秒）';
+	@override String get camera_model => '相機名稱';
+	@override String get camera_lens_model => '鏡頭型號';
+	@override String get camera_mm => '焦距';
+	@override String get camera_mm_35 => '焦距（換算為 35mm 底片等效焦距）';
+	@override String get camera_f => '光圈';
+	@override String get camera_s => '快門速度';
+	@override String get camera_iso => 'ISO 感光度';
+	@override String get gps_lat => '緯度';
+	@override String get gps_long => '經度';
 }
 
 // Path: misskey.compression_.quality_
@@ -3934,6 +4028,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get canManageAvatarDecorations => '管理頭像裝飾';
 	@override String get driveCapacity => '雲端硬碟容量';
 	@override String get maxFileSize => '可上傳的最大檔案大小';
+	@override String get maxFileSize_caption => '前端可能還有其他設定值，例如反向代理或 CDN。';
 	@override String get alwaysMarkNsfw => '總是將檔案標記為NSFW';
 	@override String get canUpdateBioMedia => '允許更新大頭貼和橫幅';
 	@override String get pinMax => '置頂貼文的最大數量';
@@ -4066,6 +4161,27 @@ class _TranslationsMisskeyWidgetsUserListZhTw extends TranslationsMisskeyWidgets
 	@override String get chooseList => '選擇清單';
 }
 
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseZhTw extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get content_title => '內文';
+	@override String get content_description => '請輸入要發布的內容。';
+	@override String get toolbar_title => '工具列';
+	@override String get toolbar_description => '可以附加檔案或票選活動、設定註解與標籤、插入表情符號或提及等。';
+	@override String get account_title => '帳號選單';
+	@override String get account_description => '可以切換要發布的帳號，並查看該帳號所儲存的草稿與預約發布列表。';
+	@override String get visibility_title => '可見性';
+	@override String get visibility_description => '可以設定貼文的公開範圍。';
+	@override String get menu_title => '選單';
+	@override String get menu_description => '可以進行其他操作，例如儲存為草稿、預約發佈貼文、或設定反應等。\n';
+	@override String get submit_title => '貼文按鈕';
+	@override String get submit_description => '發布貼文。也可以使用 Ctrl + Enter 或 Cmd + Enter 來發布。';
+}
+
 // Path: misskey.postForm_.placeholders_
 class _TranslationsMisskeyPostFormPlaceholdersZhTw extends TranslationsMisskeyPostFormPlaceholdersEnUs {
 	_TranslationsMisskeyPostFormPlaceholdersZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -4115,6 +4231,8 @@ class _TranslationsMisskeyNotificationTypesZhTw extends TranslationsMisskeyNotif
 	@override String get quote => '引用';
 	@override String get reaction => '反應';
 	@override String get pollEnded => '問卷調查結束';
+	@override String get scheduledNotePosted => '預約發佈成功';
+	@override String get scheduledNotePostFailed => '預約發佈失敗';
 	@override String get receiveFollowRequest => '已收到追隨請求';
 	@override String get followRequestAccepted => '追隨請求已接受';
 	@override String get roleAssigned => '已授予角色';

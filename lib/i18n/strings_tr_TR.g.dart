@@ -1449,6 +1449,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get themeIsDefaultBecauseSafeMode => 'Güvenli mod etkinken, varsayılan tema kullanılır. Güvenli modu devre dışı bırakmak bu değişiklikleri geri alır.';
 	@override String get thankYouForTestingBeta => 'Beta sürümünü test ettiğin için teşekkür ederiz!';
 	@override String get widgets => 'Widget\'lar';
+	@override String get presets => 'Ön ayar';
+	@override late final _TranslationsMisskeyImageEditingTrTr imageEditing_ = _TranslationsMisskeyImageEditingTrTr._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorTrTr imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorTrTr._(_root);
 	@override late final _TranslationsMisskeyOrderTrTr order_ = _TranslationsMisskeyOrderTrTr._(_root);
 	@override late final _TranslationsMisskeyChatTrTr chat_ = _TranslationsMisskeyChatTrTr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteTrTr emojiPalette_ = _TranslationsMisskeyEmojiPaletteTrTr._(_root);
@@ -1551,6 +1554,30 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get drafts => 'Taslaklar';
 	@override late final _TranslationsMisskeyDraftsTrTr drafts_ = _TranslationsMisskeyDraftsTrTr._(_root);
 	@override late final _TranslationsMisskeyQrTrTr qr_ = _TranslationsMisskeyQrTrTr._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingTrTr extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsTrTr vars_ = _TranslationsMisskeyImageEditingVarsTrTr._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorTrTr extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Başlık';
+	@override String get font => 'Yazı tipi';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get quitWithoutSaveConfirm => 'Kaydedilmemiş değişiklikleri silmek ister misin?';
 }
 
 // Path: misskey.order_
@@ -2689,6 +2716,7 @@ class _TranslationsMisskeyPostFormTrTr extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Bu notu yanıtla...';
 	@override String get quotePlaceholder => 'Bu notu alıntı yap...';
 	@override String get channelPlaceholder => 'Bir kanala gönder...';
+	@override late final _TranslationsMisskeyPostFormHowToUseTrTr howToUse_ = _TranslationsMisskeyPostFormHowToUseTrTr._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersTrTr placeholders_ = _TranslationsMisskeyPostFormPlaceholdersTrTr._(_root);
 }
 
@@ -3554,6 +3582,16 @@ class _TranslationsMisskeyQrTrTr extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Metin';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsTrTr extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Dosya adı';
+}
+
 // Path: misskey.chat_.chatAllowedUsers_
 class _TranslationsMisskeyChatChatAllowedUsersTrTr extends TranslationsMisskeyChatChatAllowedUsersEnUs {
 	_TranslationsMisskeyChatChatAllowedUsersTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
@@ -3978,6 +4016,17 @@ class _TranslationsMisskeyWidgetsUserListTrTr extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Bir liste seçin';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseTrTr extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Görünürlük';
+	@override String get menu_title => 'Menü';
 }
 
 // Path: misskey.postForm_.placeholders_

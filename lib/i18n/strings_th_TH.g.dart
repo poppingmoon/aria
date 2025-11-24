@@ -1474,6 +1474,9 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get schedule => 'กำหนดเวลา';
 	@override String get scheduled => 'กำหนดเวลา';
 	@override String get widgets => 'วิดเจ็ต';
+	@override String get presets => 'พรีเซ็ต';
+	@override late final _TranslationsMisskeyImageEditingThTh imageEditing_ = _TranslationsMisskeyImageEditingThTh._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorThTh imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorThTh._(_root);
 	@override late final _TranslationsMisskeyCompressionThTh compression_ = _TranslationsMisskeyCompressionThTh._(_root);
 	@override late final _TranslationsMisskeyOrderThTh order_ = _TranslationsMisskeyOrderThTh._(_root);
 	@override late final _TranslationsMisskeyChatThTh chat_ = _TranslationsMisskeyChatThTh._(_root);
@@ -1578,6 +1581,31 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDraftsThTh drafts_ = _TranslationsMisskeyDraftsThTh._(_root);
 	@override String get qr => 'QR โค้ด';
 	@override late final _TranslationsMisskeyQrThTh qr_ = _TranslationsMisskeyQrThTh._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingThTh extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsThTh vars_ = _TranslationsMisskeyImageEditingVarsThTh._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorThTh extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'ส่วนหัว';
+	@override String get withQrCode => 'QR โค้ด';
+	@override String get font => 'แบบอักษร';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get quitWithoutSaveConfirm => 'ต้องการออกโดยไม่บันทึกหรือไม่?';
 }
 
 // Path: misskey.compression_
@@ -2728,6 +2756,7 @@ class _TranslationsMisskeyPostFormThTh extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'ตอบกลับโน้ตนี้...';
 	@override String get quotePlaceholder => 'อ้างโน้ตนี้...';
 	@override String get channelPlaceholder => 'โพสต์ลงช่อง...';
+	@override late final _TranslationsMisskeyPostFormHowToUseThTh howToUse_ = _TranslationsMisskeyPostFormHowToUseThTh._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersThTh placeholders_ = _TranslationsMisskeyPostFormPlaceholdersThTh._(_root);
 }
 
@@ -3613,6 +3642,16 @@ class _TranslationsMisskeyQrThTh extends TranslationsMisskeyQrEnUs {
 	@override String get mfm => 'MFM';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsThTh extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'ชื่อไฟล์';
+}
+
 // Path: misskey.compression_.quality_
 class _TranslationsMisskeyCompressionQualityThTh extends TranslationsMisskeyCompressionQualityEnUs {
 	_TranslationsMisskeyCompressionQualityThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
@@ -4062,6 +4101,17 @@ class _TranslationsMisskeyWidgetsUserListThTh extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'เลือกรายชื่อ';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseThTh extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'การมองเห็น';
+	@override String get menu_title => 'เมนู';
 }
 
 // Path: misskey.postForm_.placeholders_

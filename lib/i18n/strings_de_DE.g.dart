@@ -203,10 +203,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'Zurücksetzen';
 	@override String get rotate => 'Drehen';
-	@override String get schedule => 'Zeitplan';
-	@override String get scheduledNoteError => 'Geplante Notiz konnte nicht veröffentlicht werden';
-	@override String get scheduledNotePosted => 'Geplante Notiz wurde veröffentlicht';
-	@override String get scheduledNotes => 'Geplante Notizen';
 	@override String get selectIcon => 'Symbol auswählen';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Selbst-Renote von '),
@@ -278,7 +274,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get vibrateNote => 'Bei neuer Notiz vibrieren';
 	@override String get vibrateNotification => 'Bei neuer Benachrichtigung vibrieren';
 	@override String get webBrowser => 'Webbrowser';
-	@override String willBePostedOn({required Object date}) => 'Wird veröffentlicht am ${date}';
 }
 
 // Path: misskey
@@ -1660,6 +1655,9 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'Minute(n)';
 	@override String get inDays => 'Tag(en)';
 	@override String get widgets => 'Widgets';
+	@override String get presets => 'Vorlage';
+	@override late final _TranslationsMisskeyImageEditingDeDe imageEditing_ = _TranslationsMisskeyImageEditingDeDe._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorDeDe imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorDeDe._(_root);
 	@override late final _TranslationsMisskeyOrderDeDe order_ = _TranslationsMisskeyOrderDeDe._(_root);
 	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
@@ -1762,6 +1760,30 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get drafts => 'Entwurf';
 	@override late final _TranslationsMisskeyDraftsDeDe drafts_ = _TranslationsMisskeyDraftsDeDe._(_root);
 	@override late final _TranslationsMisskeyQrDeDe qr_ = _TranslationsMisskeyQrDeDe._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingDeDe extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsDeDe vars_ = _TranslationsMisskeyImageEditingVarsDeDe._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorDeDe extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Kopfzeile';
+	@override String get font => 'Schriftart';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get quitWithoutSaveConfirm => 'Nicht gespeicherte Änderungen verwerfen?';
 }
 
 // Path: misskey.order_
@@ -2889,6 +2911,7 @@ class _TranslationsMisskeyPostFormDeDe extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Dieser Notiz antworten …';
 	@override String get quotePlaceholder => 'Diese Notiz zitieren …';
 	@override String get channelPlaceholder => 'In einen Kanal senden';
+	@override late final _TranslationsMisskeyPostFormHowToUseDeDe howToUse_ = _TranslationsMisskeyPostFormHowToUseDeDe._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersDeDe placeholders_ = _TranslationsMisskeyPostFormPlaceholdersDeDe._(_root);
 }
 
@@ -3745,6 +3768,16 @@ class _TranslationsMisskeyQrDeDe extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Text';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsDeDe extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Dateiname';
+}
+
 // Path: misskey.chat_.chatAllowedUsers_
 class _TranslationsMisskeyChatChatAllowedUsersDeDe extends TranslationsMisskeyChatChatAllowedUsersEnUs {
 	_TranslationsMisskeyChatChatAllowedUsersDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -4168,6 +4201,17 @@ class _TranslationsMisskeyWidgetsUserListDeDe extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Liste auswählen';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseDeDe extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Sichtbarkeit';
+	@override String get menu_title => 'Menü';
 }
 
 // Path: misskey.postForm_.placeholders_

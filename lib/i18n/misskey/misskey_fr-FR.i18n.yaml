@@ -1278,6 +1278,15 @@ information: "Informations"
 inMinutes: "min"
 inDays: "j"
 widgets: "Widgets"
+presets: "Préréglage"
+imageEditing_:
+  vars_:
+    filename: "Nom du fichier"
+imageFrameEditor_:
+  header: "Entête"
+  font: "Police de caractères"
+  fontSerif: "Serif"
+  fontSansSerif: "Sans Serif"
 chat_:
   invitations: "Inviter"
   noHistory: "Pas d'historique"
@@ -2041,6 +2050,9 @@ postForm_:
   replyPlaceholder: "Répondre à cette note ..."
   quotePlaceholder: "Citez cette note ..."
   channelPlaceholder: "Publier au canal…"
+  howToUse_:
+    visibility_title: "Visibilité"
+    menu_title: "Menu"
   placeholders_:
     a: "Quoi de neuf ?"
     b: "Il s'est passé quelque chose ?"

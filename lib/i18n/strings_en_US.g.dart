@@ -1584,6 +1584,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Read'
 	String get messageRead => 'Read';
 
+	/// en-US: 'Mark all messages as read'
+	String get readAllChatMessages => 'Mark all messages as read';
+
 	/// en-US: 'There is no further history'
 	String get noMoreHistory => 'There is no further history';
 
@@ -1680,6 +1683,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Select a folder'
 	String get selectFolder => 'Select a folder';
 
+	/// en-US: 'Deselect folder'
+	String get unselectFolder => 'Deselect folder';
+
 	/// en-US: 'Select folders'
 	String get selectFolders => 'Select folders';
 
@@ -1715,6 +1721,9 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'This folder is empty'
 	String get emptyFolder => 'This folder is empty';
+
+	/// en-US: 'Drop files here to upload'
+	String get dropHereToUpload => 'Drop files here to upload';
 
 	/// en-US: 'Unable to delete'
 	String get unableToDelete => 'Unable to delete';
@@ -2997,6 +3006,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Don't play animated images'
 	String get disableShowingAnimatedImages => 'Don\'t play animated images';
 
+	/// en-US: 'If animated images do not play even if this setting is disabled, it may be due to browser or OS accessibility settings, power-saving settings, or similar factors.'
+	String get disableShowingAnimatedImages_caption => 'If animated images do not play even if this setting is disabled, it may be due to browser or OS accessibility settings, power-saving settings, or similar factors.';
+
 	/// en-US: 'Highlight sensitive media'
 	String get highlightSensitiveMedia => 'Highlight sensitive media';
 
@@ -3735,6 +3747,15 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'This may increase the power consumption of your device.'
 	String get sendPushNotificationReadMessageCaption => 'This may increase the power consumption of your device.';
 
+	/// en-US: 'Please enable push notifications in your browser'
+	String get pleaseAllowPushNotification => 'Please enable push notifications in your browser';
+
+	/// en-US: 'Failed to acquire permission to send notifications'
+	String get browserPushNotificationDisabled => 'Failed to acquire permission to send notifications';
+
+	/// en-US: 'You do not have permission to send notifications from {serverName}. Please allow notifications in your browser settings and try again.'
+	String browserPushNotificationDisabledDescription({required Object serverName}) => 'You do not have permission to send notifications from ${serverName}. Please allow notifications in your browser settings and try again.';
+
 	/// en-US: 'Maximize'
 	String get windowMaximize => 'Maximize';
 
@@ -4184,6 +4205,9 @@ class TranslationsMisskeyEnUs {
 
 	/// en-US: 'Enable user identicon generation'
 	String get enableIdenticonGeneration => 'Enable user identicon generation';
+
+	/// en-US: 'Display the role badges assigned to remote users'
+	String get showRoleBadgesOfRemoteUsers => 'Display the role badges assigned to remote users';
 
 	/// en-US: 'Turning this off can increase performance.'
 	String get turnOffToImprovePerformance => 'Turning this off can increase performance.';
@@ -4848,6 +4872,26 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Widgets'
 	String get widgets => 'Widgets';
 
+	/// en-US: 'Device information'
+	String get deviceInfo => 'Device information';
+
+	/// en-US: 'When making technical inquiries, including the following information may help resolve the issue.'
+	String get deviceInfoDescription => 'When making technical inquiries, including the following information may help resolve the issue.';
+
+	/// en-US: 'You are admin'
+	String get youAreAdmin => 'You are admin';
+
+	/// en-US: 'Frame'
+	String get frame => 'Frame';
+
+	/// en-US: 'Preset'
+	String get presets => 'Preset';
+
+	/// en-US: 'Zero padding'
+	String get zeroPadding => 'Zero padding';
+
+	late final TranslationsMisskeyImageEditingEnUs imageEditing_ = TranslationsMisskeyImageEditingEnUs.internal(_root);
+	late final TranslationsMisskeyImageFrameEditorEnUs imageFrameEditor_ = TranslationsMisskeyImageFrameEditorEnUs.internal(_root);
 	late final TranslationsMisskeyCompressionEnUs compression_ = TranslationsMisskeyCompressionEnUs.internal(_root);
 	late final TranslationsMisskeyOrderEnUs order_ = TranslationsMisskeyOrderEnUs.internal(_root);
 	late final TranslationsMisskeyChatEnUs chat_ = TranslationsMisskeyChatEnUs.internal(_root);
@@ -4973,6 +5017,82 @@ class TranslationsMisskeyIOEnUs {
 
 	// Translations
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
+}
+
+// Path: misskey.imageEditing_
+class TranslationsMisskeyImageEditingEnUs {
+	TranslationsMisskeyImageEditingEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyImageEditingVarsEnUs vars_ = TranslationsMisskeyImageEditingVarsEnUs.internal(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class TranslationsMisskeyImageFrameEditorEnUs {
+	TranslationsMisskeyImageFrameEditorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Edit frame'
+	String get title => 'Edit frame';
+
+	/// en-US: 'You can decorate images by adding labels that include frames and metadata.'
+	String get tip => 'You can decorate images by adding labels that include frames and metadata.';
+
+	/// en-US: 'Header'
+	String get header => 'Header';
+
+	/// en-US: 'Footer'
+	String get footer => 'Footer';
+
+	/// en-US: 'Frame width'
+	String get borderThickness => 'Frame width';
+
+	/// en-US: 'Label width'
+	String get labelThickness => 'Label width';
+
+	/// en-US: 'Label scale'
+	String get labelScale => 'Label scale';
+
+	/// en-US: 'Centered'
+	String get centered => 'Centered';
+
+	/// en-US: 'Caption (Big)'
+	String get captionMain => 'Caption (Big)';
+
+	/// en-US: 'Caption (Small)'
+	String get captionSub => 'Caption (Small)';
+
+	/// en-US: 'Supported variables'
+	String get availableVariables => 'Supported variables';
+
+	/// en-US: 'QR Code'
+	String get withQrCode => 'QR Code';
+
+	/// en-US: 'Background color'
+	String get backgroundColor => 'Background color';
+
+	/// en-US: 'Text color'
+	String get textColor => 'Text color';
+
+	/// en-US: 'Font'
+	String get font => 'Font';
+
+	/// en-US: 'Serif'
+	String get fontSerif => 'Serif';
+
+	/// en-US: 'Sans Serif'
+	String get fontSansSerif => 'Sans Serif';
+
+	/// en-US: 'Discard unsaved changes?'
+	String get quitWithoutSaveConfirm => 'Discard unsaved changes?';
+
+	/// en-US: 'Failed to load image'
+	String get failedToLoadImage => 'Failed to load image';
 }
 
 // Path: misskey.compression_
@@ -5272,6 +5392,12 @@ class TranslationsMisskeySettingsEnUs {
 	/// en-US: 'Show page tab bar at the bottom'
 	String get showPageTabBarBottom => 'Show page tab bar at the bottom';
 
+	/// en-US: 'You can register presets as palettes to display prominently in the emoji picker or customize the appearance of the picker.'
+	String get emojiPaletteBanner => 'You can register presets as palettes to display prominently in the emoji picker or customize the appearance of the picker.';
+
+	/// en-US: 'Enable animated images'
+	String get enableAnimatedImages => 'Enable animated images';
+
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
 
@@ -5294,6 +5420,12 @@ class TranslationsMisskeyPreferencesProfileEnUs {
 
 	/// en-US: 'Manage Profiles'
 	String get manageProfiles => 'Manage Profiles';
+
+	/// en-US: 'We do not recommend sharing the same profile across multiple devices.'
+	String get shareSameProfileBetweenDevicesIsNotRecommended => 'We do not recommend sharing the same profile across multiple devices.';
+
+	/// en-US: 'If there are settings you wish to synchronize across multiple devices, enable the “Synchronize across multiple devices” option individually for each device.'
+	String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => 'If there are settings you wish to synchronize across multiple devices, enable the “Synchronize across multiple devices” option individually for each device.';
 }
 
 // Path: misskey.preferencesBackup_
@@ -5327,6 +5459,9 @@ class TranslationsMisskeyPreferencesBackupEnUs {
 
 	/// en-US: 'Settings backup is found'
 	String get backupFound => 'Settings backup is found';
+
+	/// en-US: 'Force a backup of settings'
+	String get forceBackup => 'Force a backup of settings';
 }
 
 // Path: misskey.accountSettings_
@@ -7071,6 +7206,9 @@ class TranslationsMisskeyAuthEnUs {
 
 	/// en-US: 'When access is granted, you will automatically be redirected to the following URL'
 	String get byClickingYouWillBeRedirectedToThisUrl => 'When access is granted, you will automatically be redirected to the following URL';
+
+	/// en-US: 'This application already has access permission.'
+	String get alreadyAuthorized => 'This application already has access permission.';
 }
 
 // Path: misskey.antennaSources_
@@ -7380,6 +7518,10 @@ class TranslationsMisskeyPostFormEnUs {
 	/// en-US: 'Post to a channel...'
 	String get channelPlaceholder => 'Post to a channel...';
 
+	/// en-US: 'Show how to use this form'
+	String get showHowToUse => 'Show how to use this form';
+
+	late final TranslationsMisskeyPostFormHowToUseEnUs howToUse_ = TranslationsMisskeyPostFormHowToUseEnUs.internal(_root);
 	late final TranslationsMisskeyPostFormPlaceholdersEnUs placeholders_ = TranslationsMisskeyPostFormPlaceholdersEnUs.internal(_root);
 }
 
@@ -8061,6 +8203,12 @@ class TranslationsMisskeyModerationLogTypesEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
+
+	/// en-US: 'Clear queue'
+	String get clearQueue => 'Clear queue';
+
+	/// en-US: 'Promote queue'
+	String get promoteQueue => 'Promote queue';
 
 	/// en-US: 'Role created'
 	String get createRole => 'Role created';
@@ -8985,6 +9133,9 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 	/// en-US: 'spread all over'
 	String get repeat => 'spread all over';
 
+	/// en-US: 'Adjust to prevent overflow when rotating'
+	String get preserveBoundingRect => 'Adjust to prevent overflow when rotating';
+
 	/// en-US: 'Opacity'
 	String get opacity => 'Opacity';
 
@@ -9047,6 +9198,9 @@ class TranslationsMisskeyWatermarkEditorEnUs {
 
 	/// en-US: 'Leave blank to use account URL'
 	String get leaveBlankToAccountUrl => 'Leave blank to use account URL';
+
+	/// en-US: 'Failed to load image'
+	String get failedToLoadImage => 'Failed to load image';
 }
 
 // Path: misskey.imageEffector_
@@ -9068,6 +9222,9 @@ class TranslationsMisskeyImageEffectorEnUs {
 
 	/// en-US: 'No configurable options available'
 	String get nothingToConfigure => 'No configurable options available';
+
+	/// en-US: 'Failed to load image'
+	String get failedToLoadImage => 'Failed to load image';
 
 	late final TranslationsMisskeyImageEffectorFxsEnUs fxs_ = TranslationsMisskeyImageEffectorFxsEnUs.internal(_root);
 	late final TranslationsMisskeyImageEffectorFxPropsEnUs fxProps_ = TranslationsMisskeyImageEffectorFxPropsEnUs.internal(_root);
@@ -9207,6 +9364,69 @@ class TranslationsMisskeyIOSkebStatusEnUs {
 
 	/// en-US: 'Requested {n} times'
 	String nRequests({required Object n}) => 'Requested ${n} times';
+}
+
+// Path: misskey.imageEditing_.vars_
+class TranslationsMisskeyImageEditingVarsEnUs {
+	TranslationsMisskeyImageEditingVarsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'File caption'
+	String get caption => 'File caption';
+
+	/// en-US: 'Filename'
+	String get filename => 'Filename';
+
+	/// en-US: 'Filename without extension'
+	String get filename_without_ext => 'Filename without extension';
+
+	/// en-US: 'Year of photography'
+	String get year => 'Year of photography';
+
+	/// en-US: 'Month of photogrphy'
+	String get month => 'Month of photogrphy';
+
+	/// en-US: 'Date of photography'
+	String get day => 'Date of photography';
+
+	/// en-US: 'Time the photo was taken (hour)'
+	String get hour => 'Time the photo was taken (hour)';
+
+	/// en-US: 'Time the photo was taken (minute)'
+	String get minute => 'Time the photo was taken (minute)';
+
+	/// en-US: 'Time the photo was taken (second)'
+	String get second => 'Time the photo was taken (second)';
+
+	/// en-US: 'Camera Name'
+	String get camera_model => 'Camera Name';
+
+	/// en-US: 'Lens model'
+	String get camera_lens_model => 'Lens model';
+
+	/// en-US: 'Focal length'
+	String get camera_mm => 'Focal length';
+
+	/// en-US: 'Focal length (in 35 mm format)'
+	String get camera_mm_35 => 'Focal length (in 35 mm format)';
+
+	/// en-US: 'Aperture (f-number)'
+	String get camera_f => 'Aperture (f-number)';
+
+	/// en-US: 'Shutter speed'
+	String get camera_s => 'Shutter speed';
+
+	/// en-US: 'ISO'
+	String get camera_iso => 'ISO';
+
+	/// en-US: 'Latitude'
+	String get gps_lat => 'Latitude';
+
+	/// en-US: 'Longitude'
+	String get gps_long => 'Longitude';
 }
 
 // Path: misskey.compression_.quality_
@@ -9687,6 +9907,9 @@ class TranslationsMisskeyRoleOptionsEnUs {
 	/// en-US: 'Upload-able max file size'
 	String get maxFileSize => 'Upload-able max file size';
 
+	/// en-US: 'Reverse proxies, CDNs, and other front-end components may have their own configuration settings.'
+	String get maxFileSize_caption => 'Reverse proxies, CDNs, and other front-end components may have their own configuration settings.';
+
 	/// en-US: 'Always mark files as NSFW'
 	String get alwaysMarkNsfw => 'Always mark files as NSFW';
 
@@ -9988,6 +10211,51 @@ class TranslationsMisskeyWidgetsUserListEnUs {
 	String get chooseList => 'Select a list';
 }
 
+// Path: misskey.postForm_.howToUse_
+class TranslationsMisskeyPostFormHowToUseEnUs {
+	TranslationsMisskeyPostFormHowToUseEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Body'
+	String get content_title => 'Body';
+
+	/// en-US: 'Enter the content you wish to post here.'
+	String get content_description => 'Enter the content you wish to post here.';
+
+	/// en-US: 'Toolbars'
+	String get toolbar_title => 'Toolbars';
+
+	/// en-US: 'You can attach files or poll, add annotations or hashtags, and insert emojis or mentions.'
+	String get toolbar_description => 'You can attach files or poll, add annotations or hashtags, and insert emojis or mentions.';
+
+	/// en-US: 'Account menu'
+	String get account_title => 'Account menu';
+
+	/// en-US: 'You can switch between accounts for posting, or view a list of drafts and scheduled posts saved to your account.'
+	String get account_description => 'You can switch between accounts for posting, or view a list of drafts and scheduled posts saved to your account.';
+
+	/// en-US: 'Visibility'
+	String get visibility_title => 'Visibility';
+
+	/// en-US: 'You can configure the visibility of your notes.'
+	String get visibility_description => 'You can configure the visibility of your notes.';
+
+	/// en-US: 'Menu'
+	String get menu_title => 'Menu';
+
+	/// en-US: 'You can save current content to drafts, schedule posts, set reactions, and perform other actions.'
+	String get menu_description => 'You can save current content to drafts, schedule posts, set reactions, and perform other actions.';
+
+	/// en-US: 'Post button'
+	String get submit_title => 'Post button';
+
+	/// en-US: 'Post your notes by pressing this button. You can also post using Ctrl + Enter / Cmd + Enter.'
+	String get submit_description => 'Post your notes by pressing this button. You can also post using Ctrl + Enter / Cmd + Enter.';
+}
+
 // Path: misskey.postForm_.placeholders_
 class TranslationsMisskeyPostFormPlaceholdersEnUs {
 	TranslationsMisskeyPostFormPlaceholdersEnUs.internal(this._root);
@@ -10084,6 +10352,12 @@ class TranslationsMisskeyNotificationTypesEnUs {
 
 	/// en-US: 'Polls ending'
 	String get pollEnded => 'Polls ending';
+
+	/// en-US: 'Scheduled note was successful'
+	String get scheduledNotePosted => 'Scheduled note was successful';
+
+	/// en-US: 'Scheduled note failed'
+	String get scheduledNotePostFailed => 'Scheduled note failed';
 
 	/// en-US: 'Received follow requests'
 	String get receiveFollowRequest => 'Received follow requests';

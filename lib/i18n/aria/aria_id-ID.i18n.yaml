@@ -158,4 +158,3 @@ userSaysSomethingSensitive(rich): "Postingan oleh {name} mengandung konten sensi
 vibrateNote: "Getarkan untuk note baru"
 vibrateNotification: "Getarkan untuk notifikasi baru"
 webBrowser: "Peramban web"
-willBePostedOn: "Akan diposting pada {date} "
