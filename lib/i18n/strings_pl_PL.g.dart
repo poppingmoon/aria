@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsPlPl extends Translations {
+class TranslationsPlPl extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsPlPl({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1123,6 +1124,9 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'minuta';
 	@override String get inDays => 'dzień';
 	@override String get widgets => 'Widżety';
+	@override String get presets => 'Konfiguracja';
+	@override late final _TranslationsMisskeyImageEditingPlPl imageEditing_ = _TranslationsMisskeyImageEditingPlPl._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorPlPl imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorPlPl._(_root);
 	@override late final _TranslationsMisskeyChatPlPl chat_ = _TranslationsMisskeyChatPlPl._(_root);
 	@override late final _TranslationsMisskeyDeliveryPlPl delivery_ = _TranslationsMisskeyDeliveryPlPl._(_root);
 	@override late final _TranslationsMisskeyBubbleGamePlPl bubbleGame_ = _TranslationsMisskeyBubbleGamePlPl._(_root);
@@ -1179,6 +1183,29 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorPlPl watermarkEditor_ = _TranslationsMisskeyWatermarkEditorPlPl._(_root);
 	@override late final _TranslationsMisskeyImageEffectorPlPl imageEffector_ = _TranslationsMisskeyImageEffectorPlPl._(_root);
 	@override late final _TranslationsMisskeyQrPlPl qr_ = _TranslationsMisskeyQrPlPl._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingPlPl extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsPlPl vars_ = _TranslationsMisskeyImageEditingVarsPlPl._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorPlPl extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Nagłówek';
+	@override String get font => 'Czcionka';
+	@override String get fontSerif => 'Szeryfowa';
+	@override String get fontSansSerif => 'Bezszeryfowa';
 }
 
 // Path: misskey.chat_
@@ -1781,6 +1808,7 @@ class _TranslationsMisskeyPostFormPlPl extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Odpowiedz na ten wpis...';
 	@override String get quotePlaceholder => 'Zacytuj ten wpis…';
 	@override String get channelPlaceholder => 'Publikuj na kanale...';
+	@override late final _TranslationsMisskeyPostFormHowToUsePlPl howToUse_ = _TranslationsMisskeyPostFormHowToUsePlPl._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersPlPl placeholders_ = _TranslationsMisskeyPostFormPlaceholdersPlPl._(_root);
 }
 
@@ -2092,6 +2120,16 @@ class _TranslationsMisskeyQrPlPl extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Tekst';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsPlPl extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Nazwa pliku';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypePlPl extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypePlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
@@ -2206,6 +2244,17 @@ class _TranslationsMisskeyWidgetsUserListPlPl extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Wybierz listę';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUsePlPl extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUsePlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Widoczność';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.postForm_.placeholders_

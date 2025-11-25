@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsCaEs extends Translations {
+class TranslationsCaEs extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsCaEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -387,6 +388,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String uploadNFiles({required Object n}) => 'Pujar ${n} arxius';
 	@override String get explore => 'Explora';
 	@override String get messageRead => 'Vist';
+	@override String get readAllChatMessages => 'Marcar tots els missatges com a llegits';
 	@override String get noMoreHistory => 'No hi ha res més per veure';
 	@override String get startChat => 'Comença a xatejar ';
 	@override String nUsersRead({required Object n}) => 'Vist per ${n}';
@@ -419,6 +421,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get selectFile => 'Selecciona un fitxer';
 	@override String get selectFiles => 'Selecciona fitxers';
 	@override String get selectFolder => 'Selecció de carpeta';
+	@override String get unselectFolder => 'Deixa de seleccionar la carpeta';
 	@override String get selectFolders => 'Selecció de carpetes';
 	@override String get fileNotSelected => 'Cap fitxer seleccionat';
 	@override String get renameFile => 'Canvia el nom del fitxer';
@@ -431,6 +434,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get showFile => 'Mostrar fitxer';
 	@override String get emptyDrive => 'El teu Disc és buit';
 	@override String get emptyFolder => 'La carpeta està buida';
+	@override String get dropHereToUpload => 'Arrossega els arxius fins aquí per pujar-los al servidor';
 	@override String get unableToDelete => 'No es pot eliminar';
 	@override String get inputNewFileName => 'Introduïu el nom de fitxer nou';
 	@override String get inputNewDescription => 'Escriu el peu de foto.';
@@ -734,7 +738,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get expandTweet => 'Expandir post';
 	@override String get themeEditor => 'Editor de temes';
 	@override String get description => 'Descripció';
-	@override String get describeFile => 'Afegeix una descripció ';
+	@override String get describeFile => 'Afegir text alternatiu';
 	@override String get enterFileDescription => 'Escriu un peu de foto';
 	@override String get author => 'Autor';
 	@override String get leaveConfirm => 'Hi ha canvis sense guardar. Els vols descartar?';
@@ -858,6 +862,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'Marcar com a sensible per defecte';
 	@override String get loadRawImages => 'Carregar les imatges originals en comptes de miniatures ';
 	@override String get disableShowingAnimatedImages => 'No reproduir imatges animades';
+	@override String get disableShowingAnimatedImages_caption => 'Si les imatges animades no es reprodueixen, independentment d\'aquesta configuració, és possible que la configuració d\'accessibilitat del navegador i el sistema operatiu, els modes d\'estalvi d\'energia i similars estiguin interferint.';
 	@override String get highlightSensitiveMedia => 'Ressalta els medis marcats com a sensibles';
 	@override String get verificationEmailSent => 'S\'ha enviat un correu electrònic de verificació. Fes clic a l\'enllaç per completar la verificació.';
 	@override String get notSet => 'Sense definir';
@@ -1104,6 +1109,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => 'El teu navegador o la teva instància no suporta l\'enviament de notificacions ';
 	@override String get sendPushNotificationReadMessage => 'Esborrar les notificacions enviades quan s\'hagin llegit';
 	@override String get sendPushNotificationReadMessageCaption => 'Això pot fer que el teu dispositiu consumeixi més bateria';
+	@override String get pleaseAllowPushNotification => 'Si us plau, permet les notificacions del navegador';
+	@override String get browserPushNotificationDisabled => 'No s\'ha pogut obtenir permisos per les notificacions';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => 'No tens permisos per enviar notificacions des de ${serverName}. Activa les notificacions a la configuració del teu navegador i tornar-ho a intentar.';
 	@override String get windowMaximize => 'Maximitzar ';
 	@override String get windowMinimize => 'Minimitzar';
 	@override String get windowRestore => 'Restaurar';
@@ -1254,6 +1262,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get branding => 'Marca';
 	@override String get enableServerMachineStats => 'Publicar estadístiques del maquinari del servidor';
 	@override String get enableIdenticonGeneration => 'Activar la generació d\'icones d\'identificació ';
+	@override String get showRoleBadgesOfRemoteUsers => 'Mostrar insígnies de rols d\'instàncies remotes ';
 	@override String get turnOffToImprovePerformance => 'Desactivant aquesta opció es pot millorar el rendiment.';
 	@override String get createInviteCode => 'Crear codi d\'invitació ';
 	@override String get createWithOptions => 'Crear invitació amb opcions';
@@ -1475,6 +1484,14 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get schedule => 'Programa';
 	@override String get scheduled => 'Programat';
 	@override String get widgets => 'Ginys';
+	@override String get deviceInfo => 'Informació del dispositiu';
+	@override String get deviceInfoDescription => 'En fer consultes tècniques influir la següent informació pot ajudar a resoldre\'l més ràpidament.';
+	@override String get youAreAdmin => 'Ets l\'administrador ';
+	@override String get frame => 'Marc';
+	@override String get presets => 'Predefinit';
+	@override String get zeroPadding => 'Sense omplir';
+	@override late final _TranslationsMisskeyImageEditingCaEs imageEditing_ = _TranslationsMisskeyImageEditingCaEs._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorCaEs imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorCaEs._(_root);
 	@override late final _TranslationsMisskeyCompressionCaEs compression_ = _TranslationsMisskeyCompressionCaEs._(_root);
 	@override late final _TranslationsMisskeyOrderCaEs order_ = _TranslationsMisskeyOrderCaEs._(_root);
 	@override late final _TranslationsMisskeyChatCaEs chat_ = _TranslationsMisskeyChatCaEs._(_root);
@@ -1579,6 +1596,44 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDraftsCaEs drafts_ = _TranslationsMisskeyDraftsCaEs._(_root);
 	@override String get qr => 'Codi QR';
 	@override late final _TranslationsMisskeyQrCaEs qr_ = _TranslationsMisskeyQrCaEs._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingCaEs extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsCaEs vars_ = _TranslationsMisskeyImageEditingVarsCaEs._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorCaEs extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Edició de fotogrames ';
+	@override String get tip => 'Pots decorar les imatges afegint etiquetes que continguin marcs i metadades.';
+	@override String get header => 'Capçalera';
+	@override String get footer => 'Peu de pàgina ';
+	@override String get borderThickness => 'Amplada de la vora';
+	@override String get labelThickness => 'Amplada de l\'etiqueta ';
+	@override String get labelScale => 'Mida de l\'etiqueta ';
+	@override String get centered => 'Alinea al centre';
+	@override String get captionMain => 'Peu de foto (gran)';
+	@override String get captionSub => 'Peu de foto (petit)';
+	@override String get availableVariables => 'Variables disponibles';
+	@override String get withQrCode => 'Codi QR';
+	@override String get backgroundColor => 'Color del fons';
+	@override String get textColor => 'Color del text';
+	@override String get font => 'Lletra tipogràfica';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get quitWithoutSaveConfirm => 'Sortir sense desar?';
+	@override String get failedToLoadImage => 'Error en carregar la imatge';
 }
 
 // Path: misskey.compression_
@@ -1710,6 +1765,8 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get showUrlPreview => 'Mostrar vista prèvia d\'URL';
 	@override String get showAvailableReactionsFirstInNote => 'Mostra les reacciones que pots fer servir al damunt';
 	@override String get showPageTabBarBottom => 'Mostrar les pestanyes de les línies de temps a la part inferior';
+	@override String get emojiPaletteBanner => 'Pots registrar ajustos preestablerts com paletes perquè es mostrin permanentment al selector d\'emojis, o personalitzar la configuració de visió del selector.';
+	@override String get enableAnimatedImages => 'Activar imatges animades';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -1724,6 +1781,8 @@ class _TranslationsMisskeyPreferencesProfileCaEs extends TranslationsMisskeyPref
 	@override String get profileNameDescription => 'Estableix un nom que identifiqui aquest dispositiu.';
 	@override String get profileNameDescription2 => 'Per exemple: "PC Principal", "Smartphone", etc';
 	@override String get manageProfiles => 'Gestionar perfils';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => 'No recomanem compartir el mateix perfil en diferents dispositius.';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => 'Si hi ha ajustos que vols sincronitzar entre diferents dispositius activa l\'opció "Sincronitza entre diferents dispositius" individualment per cada una de les diferents opcions.';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1741,6 +1800,7 @@ class _TranslationsMisskeyPreferencesBackupCaEs extends TranslationsMisskeyPrefe
 	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Has de posar-li un nom al teu perfil per poder activar les còpies de seguretat automàtiques.';
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'La còpia de seguretat automàtica no es troba activada en aquest dispositiu.';
 	@override String get backupFound => 'Còpia de seguretat de la configuració trobada';
+	@override String get forceBackup => 'Còpia de seguretat forçada de la configuració ';
 }
 
 // Path: misskey.accountSettings_
@@ -2584,6 +2644,7 @@ class _TranslationsMisskeyAuthCaEs extends TranslationsMisskeyAuthEnUs {
 	@override String get scopeUser => 'Opera com si fossis aquest usuari';
 	@override String get pleaseLogin => 'Si us plau, identificat per autoritzar l\'aplicació.';
 	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Si es garanteix l\'accés, seràs redirigit automàticament a la següent adreça URL';
+	@override String get alreadyAuthorized => 'Aquesta aplicació ja té accés.';
 }
 
 // Path: misskey.antennaSources_
@@ -2729,6 +2790,8 @@ class _TranslationsMisskeyPostFormCaEs extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Contestar...';
 	@override String get quotePlaceholder => 'Citar...';
 	@override String get channelPlaceholder => 'Publicar a un canal...';
+	@override String get showHowToUse => 'Mostrar les instruccions';
+	@override late final _TranslationsMisskeyPostFormHowToUseCaEs howToUse_ = _TranslationsMisskeyPostFormHowToUseCaEs._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersCaEs placeholders_ = _TranslationsMisskeyPostFormPlaceholdersCaEs._(_root);
 }
 
@@ -3056,6 +3119,8 @@ class _TranslationsMisskeyModerationLogTypesCaEs extends TranslationsMisskeyMode
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get clearQueue => 'Esborra la cua de feina';
+	@override String get promoteQueue => 'Tornar a intentar la feina de la cua';
 	@override String get createRole => 'Rol creat';
 	@override String get deleteRole => 'Rol esborrat';
 	@override String get updateRole => 'Rol actualitzat';
@@ -3528,6 +3593,7 @@ class _TranslationsMisskeyWatermarkEditorCaEs extends TranslationsMisskeyWaterma
 	@override String get title => 'Editar la marca d\'aigua ';
 	@override String get cover => 'Cobrir-ho tot';
 	@override String get repeat => 'Repetir';
+	@override String get preserveBoundingRect => 'Ajusta\'l per evitar que sobresortir en fer la rotació ';
 	@override String get opacity => 'Opacitat';
 	@override String get scale => 'Mida';
 	@override String get text => 'Text';
@@ -3549,6 +3615,7 @@ class _TranslationsMisskeyWatermarkEditorCaEs extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotRadius => 'Mida del lunar secundari';
 	@override String get polkadotSubDotDivisions => 'Nombre de punts secundaris';
 	@override String get leaveBlankToAccountUrl => 'Si deixes aquest camp buit, es farà servir l\'URL del teu compte';
+	@override String get failedToLoadImage => 'Error en carregar la imatge';
 }
 
 // Path: misskey.imageEffector_
@@ -3562,6 +3629,7 @@ class _TranslationsMisskeyImageEffectorCaEs extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Afegeix un efecte';
 	@override String get discardChangesConfirm => 'Vols descartar els canvis i sortir?';
 	@override String get nothingToConfigure => 'No hi ha opcions de configuració disponibles';
+	@override String get failedToLoadImage => 'Error en carregar la imatge';
 	@override late final _TranslationsMisskeyImageEffectorFxsCaEs fxs_ = _TranslationsMisskeyImageEffectorFxsCaEs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsCaEs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsCaEs._(_root);
 }
@@ -3612,6 +3680,33 @@ class _TranslationsMisskeyQrCaEs extends TranslationsMisskeyQrEnUs {
 	@override String get scanFile => 'Escanejar la imatge des del dispositiu';
 	@override String get raw => 'Text';
 	@override String get mfm => 'MFM';
+}
+
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsCaEs extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get caption => 'Títol de l\'arxiu';
+	@override String get filename => 'Nom del Fitxer';
+	@override String get filename_without_ext => 'Nom de l\'arxiu sense extensió ';
+	@override String get year => 'Any';
+	@override String get month => 'Mes';
+	@override String get day => 'Dia';
+	@override String get hour => 'Hora';
+	@override String get minute => 'Minut';
+	@override String get second => 'Segon';
+	@override String get camera_model => 'Nom de la càmera ';
+	@override String get camera_lens_model => 'Nom de la lent';
+	@override String get camera_mm => 'Distància focal';
+	@override String get camera_mm_35 => 'Distància focal (equivalent a 35 mm)';
+	@override String get camera_f => 'Obertura';
+	@override String get camera_s => 'Velocitat d\'obturació';
+	@override String get camera_iso => 'Sensibilitat ISO';
+	@override String get gps_lat => 'Latitud ';
+	@override String get gps_long => 'Longitud ';
 }
 
 // Path: misskey.compression_.quality_
@@ -3933,6 +4028,7 @@ class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptions
 	@override String get canManageAvatarDecorations => 'Gestiona les decoracions dels avatars ';
 	@override String get driveCapacity => 'Capacitat del disc';
 	@override String get maxFileSize => 'Mida màxima de l\'arxiu que es pot carregar';
+	@override String get maxFileSize_caption => 'Pot haver-hi la possibilitat que existeixin altres opcions de configuració de l\'etapa anterior, com podria ser el proxy invers i la CDN.';
 	@override String get alwaysMarkNsfw => 'Marca sempre els fitxers com a sensibles';
 	@override String get canUpdateBioMedia => 'Permet l\'edició d\'una icona o un bàner';
 	@override String get pinMax => 'Nombre màxim de notes fixades';
@@ -4065,6 +4161,27 @@ class _TranslationsMisskeyWidgetsUserListCaEs extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'Tria una llista';
 }
 
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseCaEs extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get content_title => 'Cos principal';
+	@override String get content_description => 'Introdueix el contingut que vols publicar.';
+	@override String get toolbar_title => 'Barra d\'eines ';
+	@override String get toolbar_description => 'Pots adjuntar arxius o enquestes, afegir anotacions o etiquetes i inserir emojis o mencions.';
+	@override String get account_title => 'Menú del compte';
+	@override String get account_description => 'Pots anar canviant de comptes per publicar o veure una llista d\'esborranys i les publicacions programades del teu compte.';
+	@override String get visibility_title => 'Visibilitat';
+	@override String get visibility_description => 'Pots configurar la visibilitat de les teves notes.';
+	@override String get menu_title => 'Menú';
+	@override String get menu_description => 'Pots fer altres accions com desar esborranys, programar publicacions i configurar reaccions.';
+	@override String get submit_title => 'Botó per publicar';
+	@override String get submit_description => 'Publica les teves notes. També pots fer servir Ctrl + Enter / Cmd + Enter';
+}
+
 // Path: misskey.postForm_.placeholders_
 class _TranslationsMisskeyPostFormPlaceholdersCaEs extends TranslationsMisskeyPostFormPlaceholdersEnUs {
 	_TranslationsMisskeyPostFormPlaceholdersCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -4114,6 +4231,8 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	@override String get quote => 'Citar';
 	@override String get reaction => 'Reaccions';
 	@override String get pollEnded => 'Enquesta terminada';
+	@override String get scheduledNotePosted => 'Nota programada amb èxit ';
+	@override String get scheduledNotePostFailed => 'Ha fallat la programació de la nota';
 	@override String get receiveFollowRequest => 'Rebuda una petició de seguiment';
 	@override String get followRequestAccepted => 'Petició de seguiment acceptada';
 	@override String get roleAssigned => 'Rol donat';
@@ -4556,7 +4675,7 @@ class _TranslationsMisskeyImageEffectorFxPropsCaEs extends TranslationsMisskeyIm
 	@override String get frequency => 'Freqüència ';
 	@override String get strength => 'Intensitat';
 	@override String get glitchChannelShift => 'Canvi de canal ';
-	@override String get seed => 'Llindar';
+	@override String get seed => 'Llavors';
 	@override String get redComponent => 'Component vermell';
 	@override String get greenComponent => 'Component verd';
 	@override String get blueComponent => 'Component blau';

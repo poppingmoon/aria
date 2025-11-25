@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsLoLa extends Translations {
+class TranslationsLoLa extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsLoLa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -455,6 +456,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String get replies => 'ຕອບ​ກັບ';
 	@override String get renotes => 'Renote';
 	@override String get information => 'ກ່ຽວກັບ';
+	@override late final _TranslationsMisskeyImageEditingLoLa imageEditing_ = _TranslationsMisskeyImageEditingLoLa._(_root);
 	@override late final _TranslationsMisskeyChatLoLa chat_ = _TranslationsMisskeyChatLoLa._(_root);
 	@override late final _TranslationsMisskeyDeliveryLoLa delivery_ = _TranslationsMisskeyDeliveryLoLa._(_root);
 	@override late final _TranslationsMisskeyRoleLoLa role_ = _TranslationsMisskeyRoleLoLa._(_root);
@@ -465,6 +467,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWidgetsLoLa widgets_ = _TranslationsMisskeyWidgetsLoLa._(_root);
 	@override late final _TranslationsMisskeyCwLoLa cw_ = _TranslationsMisskeyCwLoLa._(_root);
 	@override late final _TranslationsMisskeyVisibilityLoLa visibility_ = _TranslationsMisskeyVisibilityLoLa._(_root);
+	@override late final _TranslationsMisskeyPostFormLoLa postForm_ = _TranslationsMisskeyPostFormLoLa._(_root);
 	@override late final _TranslationsMisskeyProfileLoLa profile_ = _TranslationsMisskeyProfileLoLa._(_root);
 	@override late final _TranslationsMisskeyExportOrImportLoLa exportOrImport_ = _TranslationsMisskeyExportOrImportLoLa._(_root);
 	@override late final _TranslationsMisskeyChartsLoLa charts_ = _TranslationsMisskeyChartsLoLa._(_root);
@@ -479,6 +482,16 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyRemoteLookupErrorsLoLa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsLoLa._(_root);
 	@override late final _TranslationsMisskeySearchLoLa search_ = _TranslationsMisskeySearchLoLa._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorLoLa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorLoLa._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingLoLa extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsLoLa vars_ = _TranslationsMisskeyImageEditingVarsLoLa._(_root);
 }
 
 // Path: misskey.chat_
@@ -594,6 +607,16 @@ class _TranslationsMisskeyVisibilityLoLa extends TranslationsMisskeyVisibilityEn
 	@override String get home => 'ໜ້າຫຼັກ';
 	@override String get followers => 'ຜູ້ຕິດຕາມ';
 	@override String get specified => 'ໂພສ Direct note';
+}
+
+// Path: misskey.postForm_
+class _TranslationsMisskeyPostFormLoLa extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyPostFormHowToUseLoLa howToUse_ = _TranslationsMisskeyPostFormHowToUseLoLa._(_root);
 }
 
 // Path: misskey.profile_
@@ -743,6 +766,16 @@ class _TranslationsMisskeyWatermarkEditorLoLa extends TranslationsMisskeyWaterma
 	@override String get image => 'ຮູບພາບ';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsLoLa extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'ຊື່ໄຟລ໌';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeLoLa extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
@@ -792,6 +825,16 @@ class _TranslationsMisskeyWidgetsUserListLoLa extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'ເລືອກບັນຊີລາຍການ';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseLoLa extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get menu_title => 'ເມນູ';
 }
 
 // Path: misskey.pages_.blocks

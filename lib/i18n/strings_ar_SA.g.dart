@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsArSa extends Translations {
+class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsArSa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1087,6 +1088,9 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'د';
 	@override String get inDays => 'ي';
 	@override String get widgets => 'التطبيقات المُصغّرة';
+	@override String get presets => 'إعدادات مسبقة';
+	@override late final _TranslationsMisskeyImageEditingArSa imageEditing_ = _TranslationsMisskeyImageEditingArSa._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorArSa imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorArSa._(_root);
 	@override late final _TranslationsMisskeyChatArSa chat_ = _TranslationsMisskeyChatArSa._(_root);
 	@override late final _TranslationsMisskeyDeliveryArSa delivery_ = _TranslationsMisskeyDeliveryArSa._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingArSa._(_root);
@@ -1146,6 +1150,28 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorArSa watermarkEditor_ = _TranslationsMisskeyWatermarkEditorArSa._(_root);
 	@override late final _TranslationsMisskeyImageEffectorArSa imageEffector_ = _TranslationsMisskeyImageEffectorArSa._(_root);
 	@override late final _TranslationsMisskeyQrArSa qr_ = _TranslationsMisskeyQrArSa._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingArSa extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsArSa vars_ = _TranslationsMisskeyImageEditingVarsArSa._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorArSa extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get font => 'الخط';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -1753,6 +1779,7 @@ class _TranslationsMisskeyPostFormArSa extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'رد على هذه الملاحظة…';
 	@override String get quotePlaceholder => 'اقتبس هذه الملاحظة…';
 	@override String get channelPlaceholder => 'انشر في قناة...';
+	@override late final _TranslationsMisskeyPostFormHowToUseArSa howToUse_ = _TranslationsMisskeyPostFormHowToUseArSa._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersArSa placeholders_ = _TranslationsMisskeyPostFormPlaceholdersArSa._(_root);
 }
 
@@ -2080,6 +2107,16 @@ class _TranslationsMisskeyQrArSa extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'نص';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsArSa extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'اسم الملف';
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesArSa extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
@@ -2204,6 +2241,17 @@ class _TranslationsMisskeyWidgetsUserListArSa extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'اختر قائمة';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseArSa extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'الظهور';
+	@override String get menu_title => 'القائمة';
 }
 
 // Path: misskey.postForm_.placeholders_

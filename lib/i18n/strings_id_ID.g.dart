@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsIdId extends Translations {
+class TranslationsIdId extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsIdId({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -253,7 +254,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get vibrateNote => 'Getarkan untuk note baru';
 	@override String get vibrateNotification => 'Getarkan untuk notifikasi baru';
 	@override String get webBrowser => 'Peramban web';
-	@override String willBePostedOn({required Object date}) => 'Akan diposting pada ${date} ';
 }
 
 // Path: misskey
@@ -504,6 +504,8 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Daftar nama host dari instansi yang diperlukan untuk diblokir. Instansi yang didaftarkan tidak akan dapat berkomunikasi dengan instansi ini.';
 	@override String get silencedInstances => 'Instansi yang disenyapkan';
 	@override String get silencedInstancesDescription => 'Daftar nama host dari instansi yang ingin kamu senyapkan. Semua akun dari instansi yang terdaftar akan diperlakukan sebagai disenyapkan. Hal ini membuat akun hanya dapat membuat permintaan mengikuti, dan tidak dapat menyebutkan akun lokal apabila tidak mengikuti. Hal ini tidak akan mempengaruhi instansi yang diblokir.';
+	@override String get mediaSilencedInstances => 'Server dengan media dibisukan';
+	@override String get mediaSilencedInstancesDescription => 'Masukkan host server yang medianya ingin Anda bisukan, pisahkan dengan baris baru. Semua berkas dari akun di server ini akan dianggap sebagai sensitif dan emoji kustom tidak akan tersedia. Ini tidak akan membengaruhi server yang diblokir.';
 	@override String get federationAllowedHosts => 'Server yang membolehkan federasi';
 	@override String get muteAndBlock => 'Bisukan / Blokir';
 	@override String get mutedUsers => 'Pengguna yang dibisukan';
@@ -562,6 +564,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get explore => 'Jelajahi';
 	@override String get messageRead => 'Telah dibaca';
 	@override String get noMoreHistory => 'Tidak ada sejarah lagi';
+	@override String get startChat => 'Kirim pesan';
 	@override String nUsersRead({required Object n}) => 'Dibaca oleh ${n}';
 	@override String agreeTo({required Object x0}) => 'Saya setuju kepada ${x0}';
 	@override String get agree => 'Setuju';
@@ -661,7 +664,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get hcaptchaSiteKey => 'Site Key';
 	@override String get hcaptchaSecretKey => 'Secret Key';
 	@override String get mcaptcha => 'mCaptcha';
-	@override String get enableMcaptcha => 'Nyalakan mCaptcha';
+	@override String get enableMcaptcha => '';
 	@override String get mcaptchaSiteKey => 'Site key';
 	@override String get mcaptchaSecretKey => 'Secret Key';
 	@override String get mcaptchaInstanceUrl => 'URL instansi mCaptcha';
@@ -774,6 +777,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get native => 'Native';
 	@override String get menuStyle => 'Gaya menu';
 	@override String get style => 'Gaya';
+	@override String get popup => 'Pemunculan';
 	@override String get showNoteActionsOnlyHover => 'Hanya tampilkan aksi catatan saat ditunjuk';
 	@override String get showReactionsCount => 'Lihat jumlah reaksi dalam catatan';
 	@override String get noHistory => 'Tidak ada riwayat';
@@ -830,6 +834,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'Tampilkan form posting di atas lini masa (Kanal)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Termasuk balasan dari pengguna baru yang diikuti pada lini masa secara bawaan';
 	@override String get newNoteRecived => 'Kamu mendapat catatan baru';
+	@override String get newNote => 'Catatan baru';
 	@override String get sounds => 'Bunyi';
 	@override String get sound => 'Bunyi';
 	@override String get listen => 'Dengarkan';
@@ -1292,6 +1297,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'Akun ini tidak memiliki izin untuk melakukan aksi ini.';
 	@override String get preset => 'Prasetel';
 	@override String get selectFromPresets => 'Pilih dari prasetel';
+	@override String get custom => 'Penyesuaian';
 	@override String get achievements => 'Pencapaian';
 	@override String get gotInvalidResponseError => 'Respon peladen tidak valid';
 	@override String get gotInvalidResponseErrorDescription => 'Peladen tidak dapat dijangkau atau sedang dalam perawatan. Mohon coba lagi nanti.';
@@ -1374,6 +1380,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get createNoteFromTheFile => 'Buat catatan dari berkas ini';
 	@override String get archive => 'Arsipkan';
 	@override String get archived => 'Diarsipkan';
+	@override String get unarchive => 'Batalkan pengarsipan';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Yakin untuk mengarsipkan ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Kanal yang diarsipkan tidak akan muncul pada daftar kanal atau hasil pencarian. Postingan baru juga tidak dapat ditambahkan lagi.';
 	@override String get thisChannelArchived => 'Kanal ini telah diarsipkan.';
@@ -1515,6 +1522,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
 	@override String get inquiry => 'Hubungi kami';
 	@override String get tryAgain => 'Silahkan coba lagi.';
+	@override String get sensitiveMediaRevealConfirm => 'Media sensitif. Apakah ingin melihat?';
 	@override String get createdLists => 'Senarai yang dibuat';
 	@override String get createdAntennas => 'Antena yang dibuat';
 	@override String fromX({required Object x}) => 'Dari ${x}';
@@ -1522,15 +1530,36 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get clipNoteLimitExceeded => 'Klip ini tak bisa ditambahi lagi catatan.';
 	@override String get performance => 'Kinerja';
 	@override String get modified => 'Diubah';
+	@override String get discard => 'Buang';
 	@override String thereAreNChanges({required Object n}) => 'Ada ${n} perubahan';
+	@override String get signinWithPasskey => 'Masuk dengan kunci sandi';
+	@override String get unknownWebAuthnKey => 'Kunci sandi tidak terdaftar.';
+	@override String get passkeyVerificationFailed => 'Verifikasi kunci sandi gagal.';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Verifikasi kunci sandi berhasil, namun pemasukan tanpa sandi dinonaktifkan.';
+	@override String get messageToFollower => 'Pesan kepada pengikut';
 	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
+	@override String get lockdown => 'Kuncitara';
+	@override String get noName => 'Tidak ada nama';
+	@override String get skip => 'Lewati';
+	@override String get paste => 'Tempel';
+	@override String get emojiPalette => 'Palet emoji';
 	@override String get postForm => 'Buat catatan';
 	@override String get information => 'Informasi';
+	@override String get chat => 'Obrolan';
+	@override String get directMessage => 'Obrolan pengguna';
+	@override String get right => 'Kanan';
+	@override String get bottom => 'Bawah';
+	@override String get top => 'Atas';
+	@override String get advice => 'Saran';
 	@override String get inMinutes => 'menit';
 	@override String get inDays => 'hari';
 	@override String get widgets => 'Widget';
+	@override String get presets => 'Prasetel';
+	@override late final _TranslationsMisskeyImageEditingIdId imageEditing_ = _TranslationsMisskeyImageEditingIdId._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorIdId imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorIdId._(_root);
 	@override late final _TranslationsMisskeyChatIdId chat_ = _TranslationsMisskeyChatIdId._(_root);
 	@override late final _TranslationsMisskeySettingsIdId settings_ = _TranslationsMisskeySettingsIdId._(_root);
+	@override late final _TranslationsMisskeyPreferencesProfileIdId preferencesProfile_ = _TranslationsMisskeyPreferencesProfileIdId._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);
 	@override late final _TranslationsMisskeyDeliveryIdId delivery_ = _TranslationsMisskeyDeliveryIdId._(_root);
 	@override late final _TranslationsMisskeyBubbleGameIdId bubbleGame_ = _TranslationsMisskeyBubbleGameIdId._(_root);
@@ -1610,6 +1639,29 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyQrIdId qr_ = _TranslationsMisskeyQrIdId._(_root);
 }
 
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingIdId extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsIdId vars_ = _TranslationsMisskeyImageEditingVarsIdId._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorIdId extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Header';
+	@override String get font => 'Font';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans-serif';
+}
+
 // Path: misskey.chat_
 class _TranslationsMisskeyChatIdId extends TranslationsMisskeyChatEnUs {
 	_TranslationsMisskeyChatIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -1618,10 +1670,12 @@ class _TranslationsMisskeyChatIdId extends TranslationsMisskeyChatEnUs {
 
 	// Translations
 	@override String get invitations => 'Undang';
+	@override String get history => 'Riwayat obrolan';
 	@override String get noHistory => 'Tidak ada riwayat';
 	@override String get members => 'Anggota';
 	@override String get home => 'Beranda';
 	@override String get send => 'Kirim';
+	@override String get chatWithThisUser => 'Obrolan pengguna';
 }
 
 // Path: misskey.settings_
@@ -1632,6 +1686,17 @@ class _TranslationsMisskeySettingsIdId extends TranslationsMisskeySettingsEnUs {
 
 	// Translations
 	@override String get webhook => 'Webhook';
+	@override String get contentsUpdateFrequency => 'Frekuensi pembaruan konten';
+}
+
+// Path: misskey.preferencesProfile_
+class _TranslationsMisskeyPreferencesProfileIdId extends TranslationsMisskeyPreferencesProfileEnUs {
+	_TranslationsMisskeyPreferencesProfileIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'Nama profil';
 }
 
 // Path: misskey.abuseUserReport_
@@ -2198,6 +2263,7 @@ class _TranslationsMisskeySfxIdId extends TranslationsMisskeySfxEnUs {
 	@override String get noteMy => 'Catatan (Saya)';
 	@override String get notification => 'Notifikasi';
 	@override String get reaction => 'Ketika memilih reaksi';
+	@override String get chatMessage => 'Obrolan pengguna';
 }
 
 // Path: misskey.soundSettings_
@@ -2479,6 +2545,7 @@ class _TranslationsMisskeyWidgetsIdId extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListIdId userList_ = _TranslationsMisskeyWidgetsUserListIdId._(_root);
 	@override String get clicker => 'Pengeklik';
 	@override String get birthdayFollowings => 'Pengguna yang merayakan hari ulang tahunnya hari ini';
+	@override String get chat => 'Obrolan pengguna';
 }
 
 // Path: misskey.cw_
@@ -2553,6 +2620,7 @@ class _TranslationsMisskeyPostFormIdId extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Balas ke catatan ini...';
 	@override String get quotePlaceholder => 'Kutip catatan ini...';
 	@override String get channelPlaceholder => 'Posting ke kanal';
+	@override late final _TranslationsMisskeyPostFormHowToUseIdId howToUse_ = _TranslationsMisskeyPostFormHowToUseIdId._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersIdId placeholders_ = _TranslationsMisskeyPostFormPlaceholdersIdId._(_root);
 }
 
@@ -3114,6 +3182,16 @@ class _TranslationsMisskeyQrIdId extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Teks';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsIdId extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Nama berkas';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeIdId extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3490,6 +3568,17 @@ class _TranslationsMisskeyWidgetsUserListIdId extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'Pilih daftar';
 }
 
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseIdId extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Visibilitas';
+	@override String get menu_title => 'Menu';
+}
+
 // Path: misskey.postForm_.placeholders_
 class _TranslationsMisskeyPostFormPlaceholdersIdId extends TranslationsMisskeyPostFormPlaceholdersEnUs {
 	_TranslationsMisskeyPostFormPlaceholdersIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3576,6 +3665,7 @@ class _TranslationsMisskeyDeckColumnsIdId extends TranslationsMisskeyDeckColumns
 	@override String get mentions => 'Sebutan';
 	@override String get direct => 'Langsung';
 	@override String get roleTimeline => 'Lini masa peran';
+	@override String get chat => 'Obrolan pengguna';
 }
 
 // Path: misskey.webhookSettings_.events_

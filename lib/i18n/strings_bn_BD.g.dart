@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsBnBd extends Translations {
+class TranslationsBnBd extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsBnBd({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -929,6 +930,8 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'মিনিট';
 	@override String get inDays => 'দিন';
 	@override String get widgets => 'উইজেটগুলি';
+	@override late final _TranslationsMisskeyImageEditingBnBd imageEditing_ = _TranslationsMisskeyImageEditingBnBd._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorBnBd imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorBnBd._(_root);
 	@override late final _TranslationsMisskeyChatBnBd chat_ = _TranslationsMisskeyChatBnBd._(_root);
 	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
 	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);
@@ -982,6 +985,29 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorBnBd watermarkEditor_ = _TranslationsMisskeyWatermarkEditorBnBd._(_root);
 	@override late final _TranslationsMisskeyImageEffectorBnBd imageEffector_ = _TranslationsMisskeyImageEffectorBnBd._(_root);
 	@override late final _TranslationsMisskeyQrBnBd qr_ = _TranslationsMisskeyQrBnBd._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingBnBd extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsBnBd vars_ = _TranslationsMisskeyImageEditingVarsBnBd._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorBnBd extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'হেডার';
+	@override String get font => 'ফন্ট';
+	@override String get fontSerif => 'সেরিফ';
+	@override String get fontSansSerif => 'স্যান্স সেরিফ';
 }
 
 // Path: misskey.chat_
@@ -1531,6 +1557,7 @@ class _TranslationsMisskeyPostFormBnBd extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'নোটটির জবাব দিন...';
 	@override String get quotePlaceholder => 'নোটটিকে উদ্ধৃত করুন...';
 	@override String get channelPlaceholder => 'চ্যানেলে পোস্ট করুন...';
+	@override late final _TranslationsMisskeyPostFormHowToUseBnBd howToUse_ = _TranslationsMisskeyPostFormHowToUseBnBd._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersBnBd placeholders_ = _TranslationsMisskeyPostFormPlaceholdersBnBd._(_root);
 }
 
@@ -1836,6 +1863,16 @@ class _TranslationsMisskeyQrBnBd extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'লেখা';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsBnBd extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'ফাইলের নাম';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeBnBd extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
@@ -1929,6 +1966,17 @@ class _TranslationsMisskeyWidgetsUserListBnBd extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'লিস্ট নির্বাচন করুন';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseBnBd extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'দৃশ্যমানতা';
+	@override String get menu_title => 'মেনু';
 }
 
 // Path: misskey.postForm_.placeholders_

@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsViVn extends Translations {
+class TranslationsViVn extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsViVn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1303,6 +1304,9 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'phút';
 	@override String get inDays => 'ngày';
 	@override String get widgets => 'Tiện ích';
+	@override String get presets => 'Mẫu thiết lập';
+	@override late final _TranslationsMisskeyImageEditingViVn imageEditing_ = _TranslationsMisskeyImageEditingViVn._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorViVn imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorViVn._(_root);
 	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
 	@override late final _TranslationsMisskeySettingsViVn settings_ = _TranslationsMisskeySettingsViVn._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);
@@ -1369,6 +1373,29 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorViVn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorViVn._(_root);
 	@override late final _TranslationsMisskeyImageEffectorViVn imageEffector_ = _TranslationsMisskeyImageEffectorViVn._(_root);
 	@override late final _TranslationsMisskeyQrViVn qr_ = _TranslationsMisskeyQrViVn._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingViVn extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsViVn vars_ = _TranslationsMisskeyImageEditingVarsViVn._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorViVn extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Ảnh bìa';
+	@override String get font => 'Phông chữ';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -2115,6 +2142,7 @@ class _TranslationsMisskeyPostFormViVn extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Trả lời tút này';
 	@override String get quotePlaceholder => 'Trích dẫn tút này';
 	@override String get channelPlaceholder => 'Đăng lên một kênh';
+	@override late final _TranslationsMisskeyPostFormHowToUseViVn howToUse_ = _TranslationsMisskeyPostFormHowToUseViVn._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersViVn placeholders_ = _TranslationsMisskeyPostFormPlaceholdersViVn._(_root);
 }
 
@@ -2472,6 +2500,16 @@ class _TranslationsMisskeyQrViVn extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Văn bản';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsViVn extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Tên tập tin';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2714,6 +2752,17 @@ class _TranslationsMisskeyWidgetsUserListViVn extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Chọn danh sách';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseViVn extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Hiển thị';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.postForm_.placeholders_

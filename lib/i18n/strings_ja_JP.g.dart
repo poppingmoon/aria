@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsJaJp extends Translations {
+class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsJaJp({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -45,6 +46,10 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 
 	// Translations
 	@override String get aboutAria => 'Ariaについて';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: 'からのフォロー申請を許可しますか？'),
+	]);
 	@override String get accessToken => 'アクセストークン';
 	@override String get accessTokenUpdated => 'アクセストークンを更新しました';
 	@override String get accountAdded => 'アカウントを追加しました';
@@ -68,6 +73,10 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get buttonTypes => 'ボタンのタイプ';
 	@override String get cache => 'キャッシュ';
 	@override String get calculating => '計算中';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: 'へのフォロー申請をキャンセルしますか？'),
+	]);
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
@@ -197,6 +206,10 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get postConfirm => 'このノートを投稿しますか？';
 	@override String get reactionConfirm => 'リアクションしますか？';
 	@override String get recentlyUsedEmojis => '最近使用した絵文字';
+	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: 'からのフォロー申請を拒否しますか？'),
+	]);
 	@override String get renoteConfirm => 'このノートをリノートしますか？';
 	@override String get renoteToChannel => 'チャンネルにリノート';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
@@ -206,10 +219,6 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get reset => 'リセット';
 	@override String get rotate => '回転';
 	@override String get saveToDrive => 'ドライブに保存';
-	@override String get schedule => '予約';
-	@override String get scheduledNoteError => '予約済みのノートの投稿に失敗しました';
-	@override String get scheduledNotePosted => '予約済みのノートが投稿されました';
-	@override String get scheduledNotes => '予約済みのノート';
 	@override String get selectIcon => 'アイコンを選択';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
@@ -284,7 +293,6 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get vibrateNotification => '通知を受信したときに振動する';
 	@override String get vibration => 'バイブレーション';
 	@override String get webBrowser => 'ウェブブラウザ';
-	@override String willBePostedOn({required Object date}) => '${date}に投稿されます';
 }
 
 // Path: misskey
@@ -477,7 +485,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get flagAsCatDescription => 'にゃにゃにゃ？？';
 	@override String get flagShowTimelineReplies => 'タイムラインにノートへの返信を表示する';
 	@override String get flagShowTimelineRepliesDescription => 'オンにすると、タイムラインにユーザーのノート以外にもそのユーザーの他のノートへの返信を表示します。';
-	@override String get autoAcceptFollowed => 'フォロー中ユーザーからのフォロリクを自動承認';
+	@override String get autoAcceptFollowed => 'フォロー中ユーザーからのフォロー申請を自動承認';
 	@override String get addAccount => 'アカウントを追加';
 	@override String get reloadAccountsList => 'アカウントリストの情報を更新';
 	@override String get loginFailed => 'ログインに失敗しました';
@@ -597,6 +605,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String uploadNFiles({required Object n}) => '${n}個のファイルをアップロード';
 	@override String get explore => 'みつける';
 	@override String get messageRead => '既読';
+	@override String get readAllChatMessages => 'すべてのメッセージを既読にする';
 	@override String get noMoreHistory => 'これより過去の履歴はありません';
 	@override String get startChat => 'メッセージを送る';
 	@override String nUsersRead({required Object n}) => '${n}人が読みました';
@@ -629,6 +638,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get selectFile => 'ファイルを選択';
 	@override String get selectFiles => 'ファイルを選択';
 	@override String get selectFolder => 'フォルダーを選択';
+	@override String get unselectFolder => 'フォルダーの選択を解除';
 	@override String get selectFolders => 'フォルダーを選択';
 	@override String get fileNotSelected => 'ファイルが選択されていません';
 	@override String get renameFile => 'ファイル名を変更';
@@ -641,6 +651,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get showFile => 'ファイルを表示';
 	@override String get emptyDrive => 'ドライブは空です';
 	@override String get emptyFolder => 'フォルダーは空です';
+	@override String get dropHereToUpload => 'ここにファイルをドロップしてアップロード';
 	@override String get unableToDelete => '削除できません';
 	@override String get inputNewFileName => '新しいファイル名を入力してください';
 	@override String get inputNewDescription => '新しいキャプションを入力してください';
@@ -1068,6 +1079,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'デフォルトでメディアをセンシティブ設定にする';
 	@override String get loadRawImages => '添付画像のサムネイルをオリジナル画質にする';
 	@override String get disableShowingAnimatedImages => 'アニメーション画像を再生しない';
+	@override String get disableShowingAnimatedImages_caption => 'この設定に関わらずアニメーション画像が再生されないときは、ブラウザ・OSのアクセシビリティ設定や省電力設定等が干渉している場合があります。';
 	@override String get highlightSensitiveMedia => 'メディアがセンシティブであることを分かりやすく表示';
 	@override String get verificationEmailSent => '確認のメールを送信しました。メールに記載されたリンクにアクセスして、設定を完了してください。';
 	@override String get notSet => '未設定';
@@ -1314,6 +1326,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => 'ブラウザかサーバーがプッシュ通知に非対応';
 	@override String get sendPushNotificationReadMessage => '通知が既読になったらプッシュ通知を削除する';
 	@override String get sendPushNotificationReadMessageCaption => '端末の電池消費量が増加する可能性があります。';
+	@override String get pleaseAllowPushNotification => 'ブラウザの通知設定を許可してください';
+	@override String get browserPushNotificationDisabled => '通知の送信権限の取得に失敗しました';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => '${serverName}から通知を送信する権限がありません。ブラウザの設定から通知を許可して再度お試しください。';
 	@override String get windowMaximize => '最大化';
 	@override String get windowMinimize => '最小化';
 	@override String get windowRestore => '元に戻す';
@@ -1464,6 +1479,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get branding => 'ブランディング';
 	@override String get enableServerMachineStats => 'サーバーのマシン情報を公開する';
 	@override String get enableIdenticonGeneration => 'ユーザーごとのIdenticon生成を有効にする';
+	@override String get showRoleBadgesOfRemoteUsers => 'リモートユーザーに付与したロールバッジを表示する';
 	@override String get turnOffToImprovePerformance => 'オフにするとパフォーマンスが向上します。';
 	@override String get createInviteCode => '招待コードを作成';
 	@override String get createWithOptions => 'オプションを指定して作成';
@@ -1685,6 +1701,14 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get schedule => '予約';
 	@override String get scheduled => '予約';
 	@override String get widgets => 'ウィジェット';
+	@override String get deviceInfo => 'デバイス情報';
+	@override String get deviceInfoDescription => '技術的なお問い合わせの際に、以下の情報を併記すると問題の解決に役立つことがあります。';
+	@override String get youAreAdmin => 'あなたは管理者です';
+	@override String get frame => 'フレーム';
+	@override String get presets => 'プリセット';
+	@override String get zeroPadding => 'ゼロ埋め';
+	@override late final _TranslationsMisskeyImageEditingJaJp imageEditing_ = _TranslationsMisskeyImageEditingJaJp._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorJaJp imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorJaJp._(_root);
 	@override late final _TranslationsMisskeyCompressionJaJp compression_ = _TranslationsMisskeyCompressionJaJp._(_root);
 	@override late final _TranslationsMisskeyOrderJaJp order_ = _TranslationsMisskeyOrderJaJp._(_root);
 	@override late final _TranslationsMisskeyChatJaJp chat_ = _TranslationsMisskeyChatJaJp._(_root);
@@ -1799,6 +1823,44 @@ class _TranslationsMisskeyIOJaJp extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusJaJp skebStatus_ = _TranslationsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingJaJp extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsJaJp vars_ = _TranslationsMisskeyImageEditingVarsJaJp._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorJaJp extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'フレームの編集';
+	@override String get tip => '画像にフレームやメタデータを含んだラベルを追加して装飾できます。';
+	@override String get header => 'ヘッダー';
+	@override String get footer => 'フッター';
+	@override String get borderThickness => 'フチの幅';
+	@override String get labelThickness => 'ラベルの幅';
+	@override String get labelScale => 'ラベルのスケール';
+	@override String get centered => '中央揃え';
+	@override String get captionMain => 'キャプション(大)';
+	@override String get captionSub => 'キャプション(小)';
+	@override String get availableVariables => '利用可能な変数';
+	@override String get withQrCode => '二次元コード';
+	@override String get backgroundColor => '背景色';
+	@override String get textColor => '文字色';
+	@override String get font => 'フォント';
+	@override String get fontSerif => 'セリフ';
+	@override String get fontSansSerif => 'サンセリフ';
+	@override String get quitWithoutSaveConfirm => '保存せずに終了しますか？';
+	@override String get failedToLoadImage => '画像の読み込みに失敗しました';
 }
 
 // Path: misskey.compression_
@@ -1930,6 +1992,8 @@ class _TranslationsMisskeySettingsJaJp extends TranslationsMisskeySettingsEnUs {
 	@override String get showUrlPreview => 'URLプレビューを表示する';
 	@override String get showAvailableReactionsFirstInNote => '利用できるリアクションを先頭に表示';
 	@override String get showPageTabBarBottom => 'ページのタブバーを下部に表示';
+	@override String get emojiPaletteBanner => '絵文字ピッカーに固定表示するプリセットをパレットとして登録したり、ピッカーの表示方法をカスタマイズしたりできます。';
+	@override String get enableAnimatedImages => 'アニメーション画像を有効にする';
 	@override late final _TranslationsMisskeySettingsChatJaJp chat_ = _TranslationsMisskeySettingsChatJaJp._(_root);
 }
 
@@ -1944,6 +2008,8 @@ class _TranslationsMisskeyPreferencesProfileJaJp extends TranslationsMisskeyPref
 	@override String get profileNameDescription => 'このデバイスを識別する名前を設定してください。';
 	@override String get profileNameDescription2 => '例: 「メインPC」、「スマホ」など';
 	@override String get manageProfiles => 'プロファイルの管理';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => '複数のデバイスで同一のプロファイルを共有することは推奨しません。';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => '複数のデバイスで同期したい設定項目が存在する場合は、個別に「複数のデバイスで同期」オプションを有効にしてください。';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1961,6 +2027,7 @@ class _TranslationsMisskeyPreferencesBackupJaJp extends TranslationsMisskeyPrefe
 	@override String get youNeedToNameYourProfileToEnableAutoBackup => '自動バックアップを有効にするにはプロファイル名の設定が必要です。';
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'このデバイスで設定の自動バックアップは有効になっていません。';
 	@override String get backupFound => '設定のバックアップが見つかりました';
+	@override String get forceBackup => '設定の強制バックアップ';
 }
 
 // Path: misskey.accountSettings_
@@ -2804,6 +2871,7 @@ class _TranslationsMisskeyAuthJaJp extends TranslationsMisskeyAuthEnUs {
 	@override String get scopeUser => '以下のユーザーとして操作しています';
 	@override String get pleaseLogin => 'アプリケーションにアクセス許可を与えるには、ログインが必要です。';
 	@override String get byClickingYouWillBeRedirectedToThisUrl => 'アクセスを許可すると、自動で以下のURLに遷移します';
+	@override String get alreadyAuthorized => 'このアプリケーションは既にアクセスが許可されています。';
 }
 
 // Path: misskey.antennaSources_
@@ -2949,6 +3017,8 @@ class _TranslationsMisskeyPostFormJaJp extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'このノートに返信...';
 	@override String get quotePlaceholder => 'このノートを引用...';
 	@override String get channelPlaceholder => 'チャンネルに投稿...';
+	@override String get showHowToUse => 'フォームの説明を表示';
+	@override late final _TranslationsMisskeyPostFormHowToUseJaJp howToUse_ = _TranslationsMisskeyPostFormHowToUseJaJp._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersJaJp placeholders_ = _TranslationsMisskeyPostFormPlaceholdersJaJp._(_root);
 }
 
@@ -3276,6 +3346,8 @@ class _TranslationsMisskeyModerationLogTypesJaJp extends TranslationsMisskeyMode
 	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
+	@override String get clearQueue => 'ジョブキューをクリア';
+	@override String get promoteQueue => 'キューのジョブを再試行';
 	@override String get createRole => 'ロールを作成';
 	@override String get deleteRole => 'ロールを削除';
 	@override String get updateRole => 'ロールを更新';
@@ -3741,13 +3813,14 @@ class _TranslationsMisskeyWatermarkEditorJaJp extends TranslationsMisskeyWaterma
 	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get tip => '画像にクレジット情報などのウォーターマークを追加することができます。';
+	@override String get tip => '画像にクレジット情報などのウォーターマークを追加できます。';
 	@override String get quitWithoutSaveConfirm => '保存せずに終了しますか？';
 	@override String get driveFileTypeWarn => 'このファイルは対応していません';
 	@override String get driveFileTypeWarnDescription => '画像ファイルを選択してください';
 	@override String get title => 'ウォーターマークの編集';
 	@override String get cover => '全体に被せる';
 	@override String get repeat => '敷き詰める';
+	@override String get preserveBoundingRect => '回転時はみ出ないように調整する';
 	@override String get opacity => '不透明度';
 	@override String get scale => 'サイズ';
 	@override String get text => 'テキスト';
@@ -3769,6 +3842,7 @@ class _TranslationsMisskeyWatermarkEditorJaJp extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotRadius => 'サブドットの大きさ';
 	@override String get polkadotSubDotDivisions => 'サブドットの数';
 	@override String get leaveBlankToAccountUrl => '空欄にするとアカウントのURLになります';
+	@override String get failedToLoadImage => '画像の読み込みに失敗しました';
 }
 
 // Path: misskey.imageEffector_
@@ -3782,6 +3856,7 @@ class _TranslationsMisskeyImageEffectorJaJp extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'エフェクトを追加';
 	@override String get discardChangesConfirm => '変更を破棄して終了しますか？';
 	@override String get nothingToConfigure => '設定項目はありません';
+	@override String get failedToLoadImage => '画像の読み込みに失敗しました';
 	@override late final _TranslationsMisskeyImageEffectorFxsJaJp fxs_ = _TranslationsMisskeyImageEffectorFxsJaJp._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsJaJp fxProps_ = _TranslationsMisskeyImageEffectorFxPropsJaJp._(_root);
 }
@@ -3848,6 +3923,33 @@ class _TranslationsMisskeyIOSkebStatusJaJp extends TranslationsMisskeyIOSkebStat
 	@override String yenX({required Object x}) => '${x}円';
 	@override String nWorks({required Object n}) => '納品実績 ${n}件';
 	@override String nRequests({required Object n}) => '取引実績 ${n}件';
+}
+
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsJaJp extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get caption => 'ファイルのキャプション';
+	@override String get filename => 'ファイル名';
+	@override String get filename_without_ext => '拡張子無しファイル名';
+	@override String get year => '撮影年';
+	@override String get month => '撮影月';
+	@override String get day => '撮影日';
+	@override String get hour => '撮影した時刻(時)';
+	@override String get minute => '撮影した時刻(分)';
+	@override String get second => '撮影した時刻(秒)';
+	@override String get camera_model => 'カメラ名';
+	@override String get camera_lens_model => 'レンズ名';
+	@override String get camera_mm => '焦点距離';
+	@override String get camera_mm_35 => '焦点距離(35mm判換算)';
+	@override String get camera_f => '絞り';
+	@override String get camera_s => 'シャッタースピード';
+	@override String get camera_iso => 'ISO感度';
+	@override String get gps_lat => '緯度';
+	@override String get gps_long => '経度';
 }
 
 // Path: misskey.compression_.quality_
@@ -4169,6 +4271,7 @@ class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptions
 	@override String get canManageAvatarDecorations => 'アバターデコレーションの管理';
 	@override String get driveCapacity => 'ドライブ容量';
 	@override String get maxFileSize => 'アップロード可能な最大ファイルサイズ';
+	@override String get maxFileSize_caption => 'リバースプロキシやCDNなど、前段で別の設定値が存在する場合があります。';
 	@override String get alwaysMarkNsfw => 'ファイルにNSFWを常に付与';
 	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートのピン留めの最大数';
@@ -4301,6 +4404,27 @@ class _TranslationsMisskeyWidgetsUserListJaJp extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'リストを選択';
 }
 
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseJaJp extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get content_title => '本文';
+	@override String get content_description => '投稿する内容を入力します。';
+	@override String get toolbar_title => 'ツールバー';
+	@override String get toolbar_description => 'ファイルやアンケートの添付、注釈やハッシュタグの設定、絵文字やメンションの挿入などが行えます。';
+	@override String get account_title => 'アカウントメニュー';
+	@override String get account_description => '投稿するアカウントを切り替えたり、アカウントに保存した下書き・予約投稿を一覧できます。';
+	@override String get visibility_title => '公開範囲';
+	@override String get visibility_description => 'ノートを公開する範囲の設定が行えます。';
+	@override String get menu_title => 'メニュー';
+	@override String get menu_description => '下書きへの保存、投稿の予約、リアクションの設定など、その他のアクションが行えます。';
+	@override String get submit_title => '投稿ボタン';
+	@override String get submit_description => 'ノートを投稿します。Ctrl + Enter / Cmd + Enter でも投稿できます。';
+}
+
 // Path: misskey.postForm_.placeholders_
 class _TranslationsMisskeyPostFormPlaceholdersJaJp extends TranslationsMisskeyPostFormPlaceholdersEnUs {
 	_TranslationsMisskeyPostFormPlaceholdersJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -4350,6 +4474,8 @@ class _TranslationsMisskeyNotificationTypesJaJp extends TranslationsMisskeyNotif
 	@override String get quote => '引用';
 	@override String get reaction => 'リアクション';
 	@override String get pollEnded => 'アンケートが終了';
+	@override String get scheduledNotePosted => '予約投稿が成功した';
+	@override String get scheduledNotePostFailed => '予約投稿が失敗した';
 	@override String get receiveFollowRequest => 'フォロー申請を受け取った';
 	@override String get followRequestAccepted => 'フォローが受理された';
 	@override String get roleAssigned => 'ロールが付与された';

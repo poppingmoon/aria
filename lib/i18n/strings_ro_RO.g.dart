@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsRoRo extends Translations {
+class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsRoRo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1286,6 +1287,8 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String get surrender => 'Anulează';
 	@override String get copyPreferenceId => 'Copiază ID-ul preferințelor';
 	@override String get information => 'Despre';
+	@override String get presets => 'Presetate';
+	@override late final _TranslationsMisskeyImageEditingRoRo imageEditing_ = _TranslationsMisskeyImageEditingRoRo._(_root);
 	@override late final _TranslationsMisskeyChatRoRo chat_ = _TranslationsMisskeyChatRoRo._(_root);
 	@override late final _TranslationsMisskeyAccountSettingsRoRo accountSettings_ = _TranslationsMisskeyAccountSettingsRoRo._(_root);
 	@override late final _TranslationsMisskeyDeliveryRoRo delivery_ = _TranslationsMisskeyDeliveryRoRo._(_root);
@@ -1326,6 +1329,16 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorRoRo watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRoRo._(_root);
 	@override late final _TranslationsMisskeyImageEffectorRoRo imageEffector_ = _TranslationsMisskeyImageEffectorRoRo._(_root);
 	@override late final _TranslationsMisskeyQrRoRo qr_ = _TranslationsMisskeyQrRoRo._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingRoRo extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsRoRo vars_ = _TranslationsMisskeyImageEditingVarsRoRo._(_root);
 }
 
 // Path: misskey.chat_
@@ -1556,6 +1569,7 @@ class _TranslationsMisskeyPostFormRoRo extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Răspunde la această notă...';
 	@override String get quotePlaceholder => 'Citează aceasta nota...';
 	@override String get channelPlaceholder => 'Postează pe un canal...';
+	@override late final _TranslationsMisskeyPostFormHowToUseRoRo howToUse_ = _TranslationsMisskeyPostFormHowToUseRoRo._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersRoRo placeholders_ = _TranslationsMisskeyPostFormPlaceholdersRoRo._(_root);
 }
 
@@ -1785,6 +1799,16 @@ class _TranslationsMisskeyQrRoRo extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Text';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsRoRo extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Nume fișier';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRoRo extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
@@ -1883,6 +1907,17 @@ class _TranslationsMisskeyWidgetsUserListRoRo extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Selectează o listă';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseRoRo extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Vizibilitate';
+	@override String get menu_title => 'Meniu';
 }
 
 // Path: misskey.postForm_.placeholders_

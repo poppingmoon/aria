@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsPtPt extends Translations {
+class TranslationsPtPt extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsPtPt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1522,6 +1523,9 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get schedule => 'Agendar';
 	@override String get scheduled => 'Agendado';
 	@override String get widgets => 'Widgets';
+	@override String get presets => 'Predefinições';
+	@override late final _TranslationsMisskeyImageEditingPtPt imageEditing_ = _TranslationsMisskeyImageEditingPtPt._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorPtPt imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorPtPt._(_root);
 	@override late final _TranslationsMisskeyCompressionPtPt compression_ = _TranslationsMisskeyCompressionPtPt._(_root);
 	@override late final _TranslationsMisskeyOrderPtPt order_ = _TranslationsMisskeyOrderPtPt._(_root);
 	@override late final _TranslationsMisskeyChatPtPt chat_ = _TranslationsMisskeyChatPtPt._(_root);
@@ -1626,6 +1630,31 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDraftsPtPt drafts_ = _TranslationsMisskeyDraftsPtPt._(_root);
 	@override String get qr => 'Código QR';
 	@override late final _TranslationsMisskeyQrPtPt qr_ = _TranslationsMisskeyQrPtPt._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingPtPt extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsPtPt vars_ = _TranslationsMisskeyImageEditingVarsPtPt._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorPtPt extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Cabeçalho';
+	@override String get withQrCode => 'Código QR';
+	@override String get font => 'Fonte';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get quitWithoutSaveConfirm => 'Descartar mudanças?';
 }
 
 // Path: misskey.compression_
@@ -2776,6 +2805,7 @@ class _TranslationsMisskeyPostFormPtPt extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Responder a essa nota...';
 	@override String get quotePlaceholder => 'Citar essa nota...';
 	@override String get channelPlaceholder => 'Postar em canal...';
+	@override late final _TranslationsMisskeyPostFormHowToUsePtPt howToUse_ = _TranslationsMisskeyPostFormHowToUsePtPt._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersPtPt placeholders_ = _TranslationsMisskeyPostFormPlaceholdersPtPt._(_root);
 }
 
@@ -3661,6 +3691,16 @@ class _TranslationsMisskeyQrPtPt extends TranslationsMisskeyQrEnUs {
 	@override String get mfm => 'MFM';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsPtPt extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Nome do Ficheiro';
+}
+
 // Path: misskey.compression_.quality_
 class _TranslationsMisskeyCompressionQualityPtPt extends TranslationsMisskeyCompressionQualityEnUs {
 	_TranslationsMisskeyCompressionQualityPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
@@ -4110,6 +4150,17 @@ class _TranslationsMisskeyWidgetsUserListPtPt extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Selecione uma lista';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUsePtPt extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUsePtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Visibilidade';
+	@override String get menu_title => 'Menu\n';
 }
 
 // Path: misskey.postForm_.placeholders_

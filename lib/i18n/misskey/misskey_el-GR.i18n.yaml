@@ -293,6 +293,9 @@ renotes: "Κοινοποίηση σημειώματος"
 postForm: "Φόρμα δημοσίευσης"
 information: "Πληροφορίες"
 widgets: "Μαραφέτια"
+imageEditing_:
+  vars_:
+    filename: "Όνομα αρχείου"
 chat_:
   members: "Μέλη"
   home: "Κεντρικό"

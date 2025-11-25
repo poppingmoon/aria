@@ -1114,6 +1114,15 @@ information: "Informace"
 inMinutes: "Minut"
 inDays: "Dnů"
 widgets: "Widgety"
+presets: "Předvolba"
+imageEditing_:
+  vars_:
+    filename: "Název souboru"
+imageFrameEditor_:
+  header: "Nadpis"
+  font: "Písmo"
+  fontSerif: "Serif"
+  fontSansSerif: "Sans Serif"
 chat_:
   invitations: "Pozvat"
   noHistory: "Žádná historie"
@@ -1826,6 +1835,9 @@ postForm_:
   replyPlaceholder: "Odpovědět na tuto poznámku..."
   quotePlaceholder: "Citovat tuto poznámku..."
   channelPlaceholder: "Zveřejnit příspěvek do kanálu..."
+  howToUse_:
+    visibility_title: "Viditelnost"
+    menu_title: "Menu"
   placeholders_:
     a: "Co máte v plánu?"
     b: "Co se děje kolem vás?"

@@ -926,6 +926,14 @@ information: "Інформація"
 inMinutes: "х"
 inDays: "д"
 widgets: "Віджети"
+imageEditing_:
+  vars_:
+    filename: "Ім'я файлу"
+imageFrameEditor_:
+  header: "Заголовок"
+  font: "Шрифт"
+  fontSerif: "Serif"
+  fontSansSerif: "Sans serif"
 chat_:
   invitations: "Запросити"
   noHistory: "Історія порожня"
@@ -1466,6 +1474,9 @@ postForm_:
   replyPlaceholder: "Відповідь на цю нотатку..."
   quotePlaceholder: "Прокоментуйте цю нотатку..."
   channelPlaceholder: "Опублікувати в каналі"
+  howToUse_:
+    visibility_title: "Видимість"
+    menu_title: "Меню"
   placeholders_:
     a: "Чим займаєтесь?"
     b: "Що відбувається навколо вас?"

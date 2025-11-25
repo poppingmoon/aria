@@ -563,6 +563,9 @@ tryAgain: "Försök igen senare"
 signinWithPasskey: "Logga in med nyckel"
 unknownWebAuthnKey: "Okänd nyckel"
 information: "Om"
+imageEditing_:
+  vars_:
+    filename: "Filnamn"
 chat_:
   invitations: "Inbjudan"
   members: "Medlemmar"
@@ -651,6 +654,9 @@ visibility_:
   home: "Hem"
   followers: "Följare"
   specified: "Direktnoter"
+postForm_:
+  howToUse_:
+    menu_title: "Meny"
 profile_:
   name: "Namn"
   username: "Användarnamn"

@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsSkSk extends Translations {
+class TranslationsSkSk extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsSkSk({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -996,6 +997,8 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'min';
 	@override String get inDays => 'dní';
 	@override String get widgets => 'Widgety';
+	@override late final _TranslationsMisskeyImageEditingSkSk imageEditing_ = _TranslationsMisskeyImageEditingSkSk._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorSkSk imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorSkSk._(_root);
 	@override late final _TranslationsMisskeyChatSkSk chat_ = _TranslationsMisskeyChatSkSk._(_root);
 	@override late final _TranslationsMisskeyDeliverySkSk delivery_ = _TranslationsMisskeyDeliverySkSk._(_root);
 	@override late final _TranslationsMisskeyRoleSkSk role_ = _TranslationsMisskeyRoleSkSk._(_root);
@@ -1051,6 +1054,29 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorSkSk watermarkEditor_ = _TranslationsMisskeyWatermarkEditorSkSk._(_root);
 	@override late final _TranslationsMisskeyImageEffectorSkSk imageEffector_ = _TranslationsMisskeyImageEffectorSkSk._(_root);
 	@override late final _TranslationsMisskeyQrSkSk qr_ = _TranslationsMisskeyQrSkSk._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingSkSk extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsSkSk vars_ = _TranslationsMisskeyImageEditingVarsSkSk._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorSkSk extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Hlavička';
+	@override String get font => 'Písmo';
+	@override String get fontSerif => 'Pätkové';
+	@override String get fontSansSerif => 'Bezpätkové';
 }
 
 // Path: misskey.chat_
@@ -1646,6 +1672,7 @@ class _TranslationsMisskeyPostFormSkSk extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Odpoveď na túto poznámku...';
 	@override String get quotePlaceholder => 'Citovanie tejto poznámky...';
 	@override String get channelPlaceholder => 'Poslať do kanála...';
+	@override late final _TranslationsMisskeyPostFormHowToUseSkSk howToUse_ = _TranslationsMisskeyPostFormHowToUseSkSk._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersSkSk placeholders_ = _TranslationsMisskeyPostFormPlaceholdersSkSk._(_root);
 }
 
@@ -1958,6 +1985,16 @@ class _TranslationsMisskeyQrSkSk extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Text';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsSkSk extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Názov súboru';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeSkSk extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
@@ -2051,6 +2088,17 @@ class _TranslationsMisskeyWidgetsUserListSkSk extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Vyberte zoznam';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseSkSk extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Viditeľnosť';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.postForm_.placeholders_

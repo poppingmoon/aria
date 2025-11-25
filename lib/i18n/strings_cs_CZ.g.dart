@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsCsCz extends Translations {
+class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsCsCz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -1190,6 +1191,9 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'Minut';
 	@override String get inDays => 'Dnů';
 	@override String get widgets => 'Widgety';
+	@override String get presets => 'Předvolba';
+	@override late final _TranslationsMisskeyImageEditingCsCz imageEditing_ = _TranslationsMisskeyImageEditingCsCz._(_root);
+	@override late final _TranslationsMisskeyImageFrameEditorCsCz imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorCsCz._(_root);
 	@override late final _TranslationsMisskeyChatCsCz chat_ = _TranslationsMisskeyChatCsCz._(_root);
 	@override late final _TranslationsMisskeyDeliveryCsCz delivery_ = _TranslationsMisskeyDeliveryCsCz._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCsCz._(_root);
@@ -1254,6 +1258,29 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorCsCz watermarkEditor_ = _TranslationsMisskeyWatermarkEditorCsCz._(_root);
 	@override late final _TranslationsMisskeyImageEffectorCsCz imageEffector_ = _TranslationsMisskeyImageEffectorCsCz._(_root);
 	@override late final _TranslationsMisskeyQrCsCz qr_ = _TranslationsMisskeyQrCsCz._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingCsCz extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsCsCz vars_ = _TranslationsMisskeyImageEditingVarsCsCz._(_root);
+}
+
+// Path: misskey.imageFrameEditor_
+class _TranslationsMisskeyImageFrameEditorCsCz extends TranslationsMisskeyImageFrameEditorEnUs {
+	_TranslationsMisskeyImageFrameEditorCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get header => 'Nadpis';
+	@override String get font => 'Písmo';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
 }
 
 // Path: misskey.chat_
@@ -1990,6 +2017,7 @@ class _TranslationsMisskeyPostFormCsCz extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Odpovědět na tuto poznámku...';
 	@override String get quotePlaceholder => 'Citovat tuto poznámku...';
 	@override String get channelPlaceholder => 'Zveřejnit příspěvek do kanálu...';
+	@override late final _TranslationsMisskeyPostFormHowToUseCsCz howToUse_ = _TranslationsMisskeyPostFormHowToUseCsCz._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersCsCz placeholders_ = _TranslationsMisskeyPostFormPlaceholdersCsCz._(_root);
 }
 
@@ -2353,6 +2381,16 @@ class _TranslationsMisskeyQrCsCz extends TranslationsMisskeyQrEnUs {
 	@override String get raw => 'Text';
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsCsCz extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Název souboru';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCsCz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
@@ -2582,6 +2620,17 @@ class _TranslationsMisskeyWidgetsUserListCsCz extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Vybrat seznam';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseCsCz extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get visibility_title => 'Viditelnost';
+	@override String get menu_title => 'Menu';
 }
 
 // Path: misskey.postForm_.placeholders_

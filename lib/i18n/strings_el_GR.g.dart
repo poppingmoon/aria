@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsElGr extends Translations {
+class TranslationsElGr extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsElGr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -356,6 +357,7 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override String get postForm => 'Φόρμα δημοσίευσης';
 	@override String get information => 'Πληροφορίες';
 	@override String get widgets => 'Μαραφέτια';
+	@override late final _TranslationsMisskeyImageEditingElGr imageEditing_ = _TranslationsMisskeyImageEditingElGr._(_root);
 	@override late final _TranslationsMisskeyChatElGr chat_ = _TranslationsMisskeyChatElGr._(_root);
 	@override late final _TranslationsMisskeyEmailElGr email_ = _TranslationsMisskeyEmailElGr._(_root);
 	@override late final _TranslationsMisskeyChannelElGr channel_ = _TranslationsMisskeyChannelElGr._(_root);
@@ -379,6 +381,16 @@ class _TranslationsMisskeyElGr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiElGr reversi_ = _TranslationsMisskeyReversiElGr._(_root);
 	@override late final _TranslationsMisskeySearchElGr search_ = _TranslationsMisskeySearchElGr._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorElGr watermarkEditor_ = _TranslationsMisskeyWatermarkEditorElGr._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingElGr extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingElGr._(TranslationsElGr root) : this._root = root, super.internal(root);
+
+	final TranslationsElGr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsElGr vars_ = _TranslationsMisskeyImageEditingVarsElGr._(_root);
 }
 
 // Path: misskey.chat_
@@ -661,6 +673,16 @@ class _TranslationsMisskeyWatermarkEditorElGr extends TranslationsMisskeyWaterma
 
 	// Translations
 	@override String get image => 'Εικόνες';
+}
+
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsElGr extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsElGr._(TranslationsElGr root) : this._root = root, super.internal(root);
+
+	final TranslationsElGr _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Όνομα αρχείου';
 }
 
 // Path: misskey.email_.follow_

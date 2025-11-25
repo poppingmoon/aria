@@ -3,6 +3,7 @@
 ///
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
+// dart format off
 
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
@@ -10,7 +11,7 @@ import 'package:slang/generated.dart';
 import 'strings.g.dart';
 
 // Path: <root>
-class TranslationsSvSe extends Translations {
+class TranslationsSvSe extends Translations with BaseTranslations<AppLocale, Translations> {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsSvSe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
@@ -635,6 +636,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get signinWithPasskey => 'Logga in med nyckel';
 	@override String get unknownWebAuthnKey => 'Okänd nyckel';
 	@override String get information => 'Om';
+	@override late final _TranslationsMisskeyImageEditingSvSe imageEditing_ = _TranslationsMisskeyImageEditingSvSe._(_root);
 	@override late final _TranslationsMisskeyChatSvSe chat_ = _TranslationsMisskeyChatSvSe._(_root);
 	@override late final _TranslationsMisskeyDeliverySvSe delivery_ = _TranslationsMisskeyDeliverySvSe._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingSvSe initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingSvSe._(_root);
@@ -659,6 +661,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyCwSvSe cw_ = _TranslationsMisskeyCwSvSe._(_root);
 	@override late final _TranslationsMisskeyPollSvSe poll_ = _TranslationsMisskeyPollSvSe._(_root);
 	@override late final _TranslationsMisskeyVisibilitySvSe visibility_ = _TranslationsMisskeyVisibilitySvSe._(_root);
+	@override late final _TranslationsMisskeyPostFormSvSe postForm_ = _TranslationsMisskeyPostFormSvSe._(_root);
 	@override late final _TranslationsMisskeyProfileSvSe profile_ = _TranslationsMisskeyProfileSvSe._(_root);
 	@override late final _TranslationsMisskeyExportOrImportSvSe exportOrImport_ = _TranslationsMisskeyExportOrImportSvSe._(_root);
 	@override late final _TranslationsMisskeyChartsSvSe charts_ = _TranslationsMisskeyChartsSvSe._(_root);
@@ -675,6 +678,16 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySearchSvSe search_ = _TranslationsMisskeySearchSvSe._(_root);
 	@override late final _TranslationsMisskeyWatermarkEditorSvSe watermarkEditor_ = _TranslationsMisskeyWatermarkEditorSvSe._(_root);
 	@override late final _TranslationsMisskeyImageEffectorSvSe imageEffector_ = _TranslationsMisskeyImageEffectorSvSe._(_root);
+}
+
+// Path: misskey.imageEditing_
+class _TranslationsMisskeyImageEditingSvSe extends TranslationsMisskeyImageEditingEnUs {
+	_TranslationsMisskeyImageEditingSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyImageEditingVarsSvSe vars_ = _TranslationsMisskeyImageEditingVarsSvSe._(_root);
 }
 
 // Path: misskey.chat_
@@ -948,6 +961,16 @@ class _TranslationsMisskeyVisibilitySvSe extends TranslationsMisskeyVisibilityEn
 	@override String get specified => 'Direktnoter';
 }
 
+// Path: misskey.postForm_
+class _TranslationsMisskeyPostFormSvSe extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyPostFormHowToUseSvSe howToUse_ = _TranslationsMisskeyPostFormHowToUseSvSe._(_root);
+}
+
 // Path: misskey.profile_
 class _TranslationsMisskeyProfileSvSe extends TranslationsMisskeyProfileEnUs {
 	_TranslationsMisskeyProfileSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -1129,6 +1152,16 @@ class _TranslationsMisskeyImageEffectorSvSe extends TranslationsMisskeyImageEffe
 	@override late final _TranslationsMisskeyImageEffectorFxPropsSvSe fxProps_ = _TranslationsMisskeyImageEffectorFxPropsSvSe._(_root);
 }
 
+// Path: misskey.imageEditing_.vars_
+class _TranslationsMisskeyImageEditingVarsSvSe extends TranslationsMisskeyImageEditingVarsEnUs {
+	_TranslationsMisskeyImageEditingVarsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get filename => 'Filnamn';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeSvSe extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -1188,6 +1221,16 @@ class _TranslationsMisskeyWidgetsUserListSvSe extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Välj lista';
+}
+
+// Path: misskey.postForm_.howToUse_
+class _TranslationsMisskeyPostFormHowToUseSvSe extends TranslationsMisskeyPostFormHowToUseEnUs {
+	_TranslationsMisskeyPostFormHowToUseSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get menu_title => 'Meny';
 }
 
 // Path: misskey.pages_.blocks
