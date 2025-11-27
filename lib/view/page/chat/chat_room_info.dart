@@ -32,7 +32,7 @@ class ChatRoomInfo extends ConsumerWidget {
       onRefresh: () =>
           ref.refresh(chatRoomNotifierProvider(account, roomId).future),
       child: switch (room) {
-        AsyncValue(value: final room?) => IconTheme(
+        AsyncValue(value: final room?) => IconTheme.merge(
           data: IconThemeData(
             color: theme.colorScheme.primary,
             size: style.lineHeight,

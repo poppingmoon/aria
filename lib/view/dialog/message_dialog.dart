@@ -23,7 +23,7 @@ class MessageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      icon: IconTheme(data: const IconThemeData(size: 36.0), child: icon),
+      icon: IconTheme.merge(data: const IconThemeData(size: 36.0), child: icon),
       content: Text(message),
       actions: [
         ElevatedButton(

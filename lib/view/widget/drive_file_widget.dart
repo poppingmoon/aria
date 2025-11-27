@@ -26,20 +26,22 @@ class DriveFileWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+
     return Card(
-      color: isSelected ? Theme.of(context).colorScheme.primary : null,
+      color: isSelected ? theme.colorScheme.primary : null,
       clipBehavior: Clip.hardEdge,
-      child: IconTheme(
+      child: IconTheme.merge(
         data: IconThemeData(
           color: isSelected
-              ? Theme.of(context).colorScheme.onPrimary
-              : Theme.of(context).colorScheme.onSurface,
+              ? theme.colorScheme.onPrimary
+              : theme.colorScheme.onSurface,
         ),
         child: DefaultTextStyle.merge(
           style: TextStyle(
             color: isSelected
-                ? Theme.of(context).colorScheme.onPrimary
-                : Theme.of(context).colorScheme.onSurface,
+                ? theme.colorScheme.onPrimary
+                : theme.colorScheme.onSurface,
           ),
           child: InkWell(
             onTap: onTap,

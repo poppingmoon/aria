@@ -84,7 +84,7 @@ class DriveFileInfo extends ConsumerWidget {
               user: ref.watch(iNotifierProvider(account)).value,
             ),
           ),
-          IconTheme(
+          IconTheme.merge(
             data: IconThemeData(
               color: colors.accent,
               size: DefaultTextStyle.of(context).style.lineHeight,
