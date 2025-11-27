@@ -30,7 +30,7 @@ class AiScriptDialog extends ConsumerWidget {
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return AlertDialog(
-      icon: IconTheme(
+      icon: IconTheme.merge(
         data: const IconThemeData(size: 32.0),
         child: switch (type) {
           'success' => Icon(Icons.check, color: colors.success),
@@ -41,9 +41,8 @@ class AiScriptDialog extends ConsumerWidget {
           'waiting' => const Center(
             child: Padding(
               padding: EdgeInsets.all(4.0),
-              child: SizedBox(
-                width: 24.0,
-                height: 24.0,
+              child: SizedBox.square(
+                dimension: 24.0,
                 child: CircularProgressIndicator(),
               ),
             ),
