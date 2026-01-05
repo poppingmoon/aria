@@ -10,11 +10,11 @@ part of 'gallery_post_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GalleryPostNotifier)
-const galleryPostNotifierProvider = GalleryPostNotifierFamily._();
+final galleryPostNotifierProvider = GalleryPostNotifierFamily._();
 
 final class GalleryPostNotifierProvider
     extends $AsyncNotifierProvider<GalleryPostNotifier, GalleryPost> {
-  const GalleryPostNotifierProvider._({
+  GalleryPostNotifierProvider._({
     required GalleryPostNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class GalleryPostNotifierFamily extends $Family
           FutureOr<GalleryPost>,
           (Account, String)
         > {
-  const GalleryPostNotifierFamily._()
+  GalleryPostNotifierFamily._()
     : super(
         retry: null,
         name: r'galleryPostNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$GalleryPostNotifier extends $AsyncNotifier<GalleryPost> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<GalleryPost>, GalleryPost>;
     final element =
         ref.element
@@ -97,6 +96,6 @@ abstract class _$GalleryPostNotifier extends $AsyncNotifier<GalleryPost> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

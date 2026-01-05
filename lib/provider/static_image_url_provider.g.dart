@@ -10,11 +10,11 @@ part of 'static_image_url_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(staticImageUrl)
-const staticImageUrlProvider = StaticImageUrlFamily._();
+final staticImageUrlProvider = StaticImageUrlFamily._();
 
 final class StaticImageUrlProvider extends $FunctionalProvider<Uri?, Uri?, Uri?>
     with $Provider<Uri?> {
-  const StaticImageUrlProvider._({
+  StaticImageUrlProvider._({
     required StaticImageUrlFamily super.from,
     required (String, String) super.argument,
   }) : super(
@@ -69,7 +69,7 @@ String _$staticImageUrlHash() => r'ef3c6cb2ff171b6a728dbab9ebd8ecc07e11ac6d';
 
 final class StaticImageUrlFamily extends $Family
     with $FunctionalFamilyOverride<Uri?, (String, String)> {
-  const StaticImageUrlFamily._()
+  StaticImageUrlFamily._()
     : super(
         retry: null,
         name: r'staticImageUrlProvider',

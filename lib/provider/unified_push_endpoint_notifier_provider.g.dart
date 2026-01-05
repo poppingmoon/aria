@@ -10,12 +10,12 @@ part of 'unified_push_endpoint_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UnifiedPushEndpointNotifier)
-const unifiedPushEndpointNotifierProvider =
+final unifiedPushEndpointNotifierProvider =
     UnifiedPushEndpointNotifierFamily._();
 
 final class UnifiedPushEndpointNotifierProvider
     extends $NotifierProvider<UnifiedPushEndpointNotifier, PushEndpoint?> {
-  const UnifiedPushEndpointNotifierProvider._({
+  UnifiedPushEndpointNotifierProvider._({
     required UnifiedPushEndpointNotifierFamily super.from,
     required String super.argument,
   }) : super(
@@ -72,7 +72,7 @@ final class UnifiedPushEndpointNotifierFamily extends $Family
           PushEndpoint?,
           String
         > {
-  const UnifiedPushEndpointNotifierFamily._()
+  UnifiedPushEndpointNotifierFamily._()
     : super(
         retry: null,
         name: r'unifiedPushEndpointNotifierProvider',
@@ -96,7 +96,6 @@ abstract class _$UnifiedPushEndpointNotifier extends $Notifier<PushEndpoint?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<PushEndpoint?, PushEndpoint?>;
     final element =
         ref.element
@@ -106,6 +105,6 @@ abstract class _$UnifiedPushEndpointNotifier extends $Notifier<PushEndpoint?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

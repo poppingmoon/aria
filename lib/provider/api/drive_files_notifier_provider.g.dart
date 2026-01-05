@@ -10,7 +10,7 @@ part of 'drive_files_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(DriveFilesNotifier)
-const driveFilesNotifierProvider = DriveFilesNotifierFamily._();
+final driveFilesNotifierProvider = DriveFilesNotifierFamily._();
 
 final class DriveFilesNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class DriveFilesNotifierProvider
           DriveFilesNotifier,
           PaginationState<DriveFile>
         > {
-  const DriveFilesNotifierProvider._({
+  DriveFilesNotifierProvider._({
     required DriveFilesNotifierFamily super.from,
     required (Account, String?) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class DriveFilesNotifierFamily extends $Family
           Stream<PaginationState<DriveFile>>,
           (Account, String?)
         > {
-  const DriveFilesNotifierFamily._()
+  DriveFilesNotifierFamily._()
     : super(
         retry: null,
         name: r'driveFilesNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$DriveFilesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$DriveFilesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

@@ -10,7 +10,7 @@ part of 'node_info_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(nodeInfo)
-const nodeInfoProvider = NodeInfoFamily._();
+final nodeInfoProvider = NodeInfoFamily._();
 
 final class NodeInfoProvider
     extends
@@ -22,7 +22,7 @@ final class NodeInfoProvider
     with
         $FutureModifier<Map<String, dynamic>>,
         $FutureProvider<Map<String, dynamic>> {
-  const NodeInfoProvider._({
+  NodeInfoProvider._({
     required NodeInfoFamily super.from,
     required String super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$nodeInfoHash() => r'8adb58e99d017a16df2ec2bb18977fe26cfe0fd7';
 
 final class NodeInfoFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Map<String, dynamic>>, String> {
-  const NodeInfoFamily._()
+  NodeInfoFamily._()
     : super(
         retry: null,
         name: r'nodeInfoProvider',

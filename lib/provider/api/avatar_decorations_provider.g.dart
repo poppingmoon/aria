@@ -10,7 +10,7 @@ part of 'avatar_decorations_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(avatarDecorations)
-const avatarDecorationsProvider = AvatarDecorationsFamily._();
+final avatarDecorationsProvider = AvatarDecorationsFamily._();
 
 final class AvatarDecorationsProvider
     extends
@@ -22,7 +22,7 @@ final class AvatarDecorationsProvider
     with
         $FutureModifier<List<GetAvatarDecorationsResponse>>,
         $FutureProvider<List<GetAvatarDecorationsResponse>> {
-  const AvatarDecorationsProvider._({
+  AvatarDecorationsProvider._({
     required AvatarDecorationsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class AvatarDecorationsFamily extends $Family
           FutureOr<List<GetAvatarDecorationsResponse>>,
           Account
         > {
-  const AvatarDecorationsFamily._()
+  AvatarDecorationsFamily._()
     : super(
         retry: null,
         name: r'avatarDecorationsProvider',

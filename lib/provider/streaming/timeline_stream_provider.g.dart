@@ -10,12 +10,12 @@ part of 'timeline_stream_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(_timelineStreamConnection)
-const _timelineStreamConnectionProvider = _TimelineStreamConnectionFamily._();
+final _timelineStreamConnectionProvider = _TimelineStreamConnectionFamily._();
 
 final class _TimelineStreamConnectionProvider
     extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
     with $FutureModifier<String>, $FutureProvider<String> {
-  const _TimelineStreamConnectionProvider._({
+  _TimelineStreamConnectionProvider._({
     required _TimelineStreamConnectionFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -64,7 +64,7 @@ String _$_timelineStreamConnectionHash() =>
 
 final class _TimelineStreamConnectionFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<String>, TabSettings> {
-  const _TimelineStreamConnectionFamily._()
+  _TimelineStreamConnectionFamily._()
     : super(
         retry: null,
         name: r'_timelineStreamConnectionProvider',
@@ -81,12 +81,12 @@ final class _TimelineStreamConnectionFamily extends $Family
 }
 
 @ProviderFor(timelineStream)
-const timelineStreamProvider = TimelineStreamFamily._();
+final timelineStreamProvider = TimelineStreamFamily._();
 
 final class TimelineStreamProvider
     extends $FunctionalProvider<AsyncValue<Note>, Note, Stream<Note>>
     with $FutureModifier<Note>, $StreamProvider<Note> {
-  const TimelineStreamProvider._({
+  TimelineStreamProvider._({
     required TimelineStreamFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -133,7 +133,7 @@ String _$timelineStreamHash() => r'8b3f89aec58a9ff14db5cedf4de8bfe604678d3f';
 
 final class TimelineStreamFamily extends $Family
     with $FunctionalFamilyOverride<Stream<Note>, TabSettings> {
-  const TimelineStreamFamily._()
+  TimelineStreamFamily._()
     : super(
         retry: null,
         name: r'timelineStreamProvider',

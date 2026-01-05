@@ -10,11 +10,11 @@ part of 'general_settings_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(GeneralSettingsNotifier)
-const generalSettingsNotifierProvider = GeneralSettingsNotifierProvider._();
+final generalSettingsNotifierProvider = GeneralSettingsNotifierProvider._();
 
 final class GeneralSettingsNotifierProvider
     extends $NotifierProvider<GeneralSettingsNotifier, GeneralSettings> {
-  const GeneralSettingsNotifierProvider._()
+  GeneralSettingsNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$GeneralSettingsNotifier extends $Notifier<GeneralSettings> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<GeneralSettings, GeneralSettings>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$GeneralSettingsNotifier extends $Notifier<GeneralSettings> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

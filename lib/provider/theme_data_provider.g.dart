@@ -10,12 +10,12 @@ part of 'theme_data_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(themeData)
-const themeDataProvider = ThemeDataFamily._();
+final themeDataProvider = ThemeDataFamily._();
 
 final class ThemeDataProvider
     extends $FunctionalProvider<ThemeData, ThemeData, ThemeData>
     with $Provider<ThemeData> {
-  const ThemeDataProvider._({
+  ThemeDataProvider._({
     required ThemeDataFamily super.from,
     required Brightness super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$themeDataHash() => r'9624456ff9194a6fe5b3a89cb6d45ed288f7611a';
 
 final class ThemeDataFamily extends $Family
     with $FunctionalFamilyOverride<ThemeData, Brightness> {
-  const ThemeDataFamily._()
+  ThemeDataFamily._()
     : super(
         retry: null,
         name: r'themeDataProvider',

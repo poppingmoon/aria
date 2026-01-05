@@ -10,11 +10,11 @@ part of 'aiscript_storage_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AiscriptStorageNotifier)
-const aiscriptStorageNotifierProvider = AiscriptStorageNotifierFamily._();
+final aiscriptStorageNotifierProvider = AiscriptStorageNotifierFamily._();
 
 final class AiscriptStorageNotifierProvider
     extends $NotifierProvider<AiscriptStorageNotifier, Map<String, String>> {
-  const AiscriptStorageNotifierProvider._({
+  AiscriptStorageNotifierProvider._({
     required AiscriptStorageNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class AiscriptStorageNotifierFamily extends $Family
           Map<String, String>,
           Account
         > {
-  const AiscriptStorageNotifierFamily._()
+  AiscriptStorageNotifierFamily._()
     : super(
         retry: null,
         name: r'aiscriptStorageNotifierProvider',
@@ -96,7 +96,6 @@ abstract class _$AiscriptStorageNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<Map<String, String>, Map<String, String>>;
     final element =
         ref.element
@@ -106,6 +105,6 @@ abstract class _$AiscriptStorageNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

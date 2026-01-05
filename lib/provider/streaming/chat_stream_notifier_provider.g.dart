@@ -10,12 +10,12 @@ part of 'chat_stream_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(_chatStreamConnection)
-const _chatStreamConnectionProvider = _ChatStreamConnectionFamily._();
+final _chatStreamConnectionProvider = _ChatStreamConnectionFamily._();
 
 final class _ChatStreamConnectionProvider
     extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
     with $FutureModifier<String>, $FutureProvider<String> {
-  const _ChatStreamConnectionProvider._({
+  _ChatStreamConnectionProvider._({
     required _ChatStreamConnectionFamily super.from,
     required (Account, {String? userId, String? roomId}) super.argument,
   }) : super(
@@ -73,7 +73,7 @@ final class _ChatStreamConnectionFamily extends $Family
           FutureOr<String>,
           (Account, {String? userId, String? roomId})
         > {
-  const _ChatStreamConnectionFamily._()
+  _ChatStreamConnectionFamily._()
     : super(
         retry: null,
         name: r'_chatStreamConnectionProvider',
@@ -96,11 +96,11 @@ final class _ChatStreamConnectionFamily extends $Family
 }
 
 @ProviderFor(ChatStreamNotifier)
-const chatStreamNotifierProvider = ChatStreamNotifierFamily._();
+final chatStreamNotifierProvider = ChatStreamNotifierFamily._();
 
 final class ChatStreamNotifierProvider
     extends $StreamNotifierProvider<ChatStreamNotifier, ChatEvent> {
-  const ChatStreamNotifierProvider._({
+  ChatStreamNotifierProvider._({
     required ChatStreamNotifierFamily super.from,
     required (Account, {String? userId, String? roomId}) super.argument,
   }) : super(
@@ -148,7 +148,7 @@ final class ChatStreamNotifierFamily extends $Family
           Stream<ChatEvent>,
           (Account, {String? userId, String? roomId})
         > {
-  const ChatStreamNotifierFamily._()
+  ChatStreamNotifierFamily._()
     : super(
         retry: null,
         name: r'chatStreamNotifierProvider',
@@ -180,11 +180,6 @@ abstract class _$ChatStreamNotifier extends $StreamNotifier<ChatEvent> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      userId: _$args.userId,
-      roomId: _$args.roomId,
-    );
     final ref = this.ref as $Ref<AsyncValue<ChatEvent>, ChatEvent>;
     final element =
         ref.element
@@ -194,6 +189,9 @@ abstract class _$ChatStreamNotifier extends $StreamNotifier<ChatEvent> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
+    );
   }
 }

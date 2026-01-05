@@ -10,11 +10,11 @@ part of 'antennas_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AntennasNotifier)
-const antennasNotifierProvider = AntennasNotifierFamily._();
+final antennasNotifierProvider = AntennasNotifierFamily._();
 
 final class AntennasNotifierProvider
     extends $AsyncNotifierProvider<AntennasNotifier, List<Antenna>> {
-  const AntennasNotifierProvider._({
+  AntennasNotifierProvider._({
     required AntennasNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class AntennasNotifierFamily extends $Family
           FutureOr<List<Antenna>>,
           Account
         > {
-  const AntennasNotifierFamily._()
+  AntennasNotifierFamily._()
     : super(
         retry: null,
         name: r'antennasNotifierProvider',
@@ -85,7 +85,6 @@ abstract class _$AntennasNotifier extends $AsyncNotifier<List<Antenna>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<Antenna>>, List<Antenna>>;
     final element =
         ref.element
@@ -95,6 +94,6 @@ abstract class _$AntennasNotifier extends $AsyncNotifier<List<Antenna>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

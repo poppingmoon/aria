@@ -10,11 +10,11 @@ part of 'note_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NoteNotifier)
-const noteNotifierProvider = NoteNotifierFamily._();
+final noteNotifierProvider = NoteNotifierFamily._();
 
 final class NoteNotifierProvider
     extends $NotifierProvider<NoteNotifier, Note?> {
-  const NoteNotifierProvider._({
+  NoteNotifierProvider._({
     required NoteNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -69,7 +69,7 @@ final class NoteNotifierFamily extends $Family
           Note?,
           (Account, String)
         > {
-  const NoteNotifierFamily._()
+  NoteNotifierFamily._()
     : super(
         retry: null,
         name: r'noteNotifierProvider',
@@ -94,7 +94,6 @@ abstract class _$NoteNotifier extends $Notifier<Note?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<Note?, Note?>;
     final element =
         ref.element
@@ -104,6 +103,6 @@ abstract class _$NoteNotifier extends $Notifier<Note?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

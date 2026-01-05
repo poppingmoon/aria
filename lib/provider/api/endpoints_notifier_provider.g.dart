@@ -11,12 +11,12 @@ part of 'endpoints_notifier_provider.dart';
 
 @ProviderFor(EndpointsNotifier)
 @JsonPersist()
-const endpointsNotifierProvider = EndpointsNotifierFamily._();
+final endpointsNotifierProvider = EndpointsNotifierFamily._();
 
 @JsonPersist()
 final class EndpointsNotifierProvider
     extends $AsyncNotifierProvider<EndpointsNotifier, List<String>> {
-  const EndpointsNotifierProvider._({
+  EndpointsNotifierProvider._({
     required EndpointsNotifierFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class EndpointsNotifierFamily extends $Family
           FutureOr<List<String>>,
           String
         > {
-  const EndpointsNotifierFamily._()
+  EndpointsNotifierFamily._()
     : super(
         retry: null,
         name: r'endpointsNotifierProvider',
@@ -90,7 +90,6 @@ abstract class _$EndpointsNotifierBase extends $AsyncNotifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<String>>, List<String>>;
     final element =
         ref.element
@@ -100,7 +99,7 @@ abstract class _$EndpointsNotifierBase extends $AsyncNotifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 

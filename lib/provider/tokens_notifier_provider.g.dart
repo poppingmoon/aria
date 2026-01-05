@@ -10,11 +10,11 @@ part of 'tokens_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TokensNotifier)
-const tokensNotifierProvider = TokensNotifierProvider._();
+final tokensNotifierProvider = TokensNotifierProvider._();
 
 final class TokensNotifierProvider
     extends $NotifierProvider<TokensNotifier, Map<Account, String>> {
-  const TokensNotifierProvider._()
+  TokensNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$TokensNotifier extends $Notifier<Map<Account, String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Map<Account, String>, Map<Account, String>>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$TokensNotifier extends $Notifier<Map<Account, String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

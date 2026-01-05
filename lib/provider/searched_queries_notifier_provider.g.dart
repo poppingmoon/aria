@@ -10,11 +10,11 @@ part of 'searched_queries_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SearchedQueriesNotifier)
-const searchedQueriesNotifierProvider = SearchedQueriesNotifierFamily._();
+final searchedQueriesNotifierProvider = SearchedQueriesNotifierFamily._();
 
 final class SearchedQueriesNotifierProvider
     extends $NotifierProvider<SearchedQueriesNotifier, List<String>> {
-  const SearchedQueriesNotifierProvider._({
+  SearchedQueriesNotifierProvider._({
     required SearchedQueriesNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class SearchedQueriesNotifierFamily extends $Family
           List<String>,
           Account
         > {
-  const SearchedQueriesNotifierFamily._()
+  SearchedQueriesNotifierFamily._()
     : super(
         retry: null,
         name: r'searchedQueriesNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$SearchedQueriesNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$SearchedQueriesNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

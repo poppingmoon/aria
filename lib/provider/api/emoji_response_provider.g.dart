@@ -10,7 +10,7 @@ part of 'emoji_response_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(emojiResponse)
-const emojiResponseProvider = EmojiResponseFamily._();
+final emojiResponseProvider = EmojiResponseFamily._();
 
 final class EmojiResponseProvider
     extends
@@ -20,7 +20,7 @@ final class EmojiResponseProvider
           FutureOr<EmojiResponse>
         >
     with $FutureModifier<EmojiResponse>, $FutureProvider<EmojiResponse> {
-  const EmojiResponseProvider._({
+  EmojiResponseProvider._({
     required EmojiResponseFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$emojiResponseHash() => r'be6963cabf02947ac220966cdc1b3462459db622';
 
 final class EmojiResponseFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<EmojiResponse>, (Account, String)> {
-  const EmojiResponseFamily._()
+  EmojiResponseFamily._()
     : super(
         retry: null,
         name: r'emojiResponseProvider',

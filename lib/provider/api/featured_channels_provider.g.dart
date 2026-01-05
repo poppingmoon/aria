@@ -10,7 +10,7 @@ part of 'featured_channels_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(featuredChannels)
-const featuredChannelsProvider = FeaturedChannelsFamily._();
+final featuredChannelsProvider = FeaturedChannelsFamily._();
 
 final class FeaturedChannelsProvider
     extends
@@ -22,7 +22,7 @@ final class FeaturedChannelsProvider
     with
         $FutureModifier<List<CommunityChannel>>,
         $FutureProvider<List<CommunityChannel>> {
-  const FeaturedChannelsProvider._({
+  FeaturedChannelsProvider._({
     required FeaturedChannelsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$featuredChannelsHash() => r'ac273d56e2784bcd565e57130ea78c9e54809b8c';
 
 final class FeaturedChannelsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<CommunityChannel>>, Account> {
-  const FeaturedChannelsFamily._()
+  FeaturedChannelsFamily._()
     : super(
         retry: null,
         name: r'featuredChannelsProvider',

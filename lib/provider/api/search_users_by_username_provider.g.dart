@@ -10,7 +10,7 @@ part of 'search_users_by_username_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(searchUsersByUsername)
-const searchUsersByUsernameProvider = SearchUsersByUsernameFamily._();
+final searchUsersByUsernameProvider = SearchUsersByUsernameFamily._();
 
 final class SearchUsersByUsernameProvider
     extends
@@ -22,7 +22,7 @@ final class SearchUsersByUsernameProvider
     with
         $FutureModifier<List<UserDetailed>>,
         $FutureProvider<List<UserDetailed>> {
-  const SearchUsersByUsernameProvider._({
+  SearchUsersByUsernameProvider._({
     required SearchUsersByUsernameFamily super.from,
     required (Account, String?, String?, {int? limit}) super.argument,
   }) : super(
@@ -81,7 +81,7 @@ final class SearchUsersByUsernameFamily extends $Family
           FutureOr<List<UserDetailed>>,
           (Account, String?, String?, {int? limit})
         > {
-  const SearchUsersByUsernameFamily._()
+  SearchUsersByUsernameFamily._()
     : super(
         retry: null,
         name: r'searchUsersByUsernameProvider',

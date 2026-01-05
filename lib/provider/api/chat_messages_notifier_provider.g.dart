@@ -10,7 +10,7 @@ part of 'chat_messages_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChatMessagesNotifier)
-const chatMessagesNotifierProvider = ChatMessagesNotifierFamily._();
+final chatMessagesNotifierProvider = ChatMessagesNotifierFamily._();
 
 final class ChatMessagesNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class ChatMessagesNotifierProvider
           ChatMessagesNotifier,
           PaginationState<ChatMessage>
         > {
-  const ChatMessagesNotifierProvider._({
+  ChatMessagesNotifierProvider._({
     required ChatMessagesNotifierFamily super.from,
     required (Account, {String? userId, String? roomId}) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class ChatMessagesNotifierFamily extends $Family
           Stream<PaginationState<ChatMessage>>,
           (Account, {String? userId, String? roomId})
         > {
-  const ChatMessagesNotifierFamily._()
+  ChatMessagesNotifierFamily._()
     : super(
         retry: null,
         name: r'chatMessagesNotifierProvider',
@@ -103,11 +103,6 @@ abstract class _$ChatMessagesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      userId: _$args.userId,
-      roomId: _$args.roomId,
-    );
     final ref =
         this.ref
             as $Ref<
@@ -125,6 +120,9 @@ abstract class _$ChatMessagesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
+    );
   }
 }

@@ -10,11 +10,11 @@ part of 'mutings_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MutingsNotifier)
-const mutingsNotifierProvider = MutingsNotifierFamily._();
+final mutingsNotifierProvider = MutingsNotifierFamily._();
 
 final class MutingsNotifierProvider
     extends $StreamNotifierProvider<MutingsNotifier, PaginationState<Muting>> {
-  const MutingsNotifierProvider._({
+  MutingsNotifierProvider._({
     required MutingsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class MutingsNotifierFamily extends $Family
           Stream<PaginationState<Muting>>,
           Account
         > {
-  const MutingsNotifierFamily._()
+  MutingsNotifierFamily._()
     : super(
         retry: null,
         name: r'mutingsNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$MutingsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -104,6 +103,6 @@ abstract class _$MutingsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

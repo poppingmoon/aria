@@ -10,7 +10,7 @@ part of 'reversi_invitations_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(reversiInvitations)
-const reversiInvitationsProvider = ReversiInvitationsFamily._();
+final reversiInvitationsProvider = ReversiInvitationsFamily._();
 
 final class ReversiInvitationsProvider
     extends
@@ -20,7 +20,7 @@ final class ReversiInvitationsProvider
           FutureOr<List<User>>
         >
     with $FutureModifier<List<User>>, $FutureProvider<List<User>> {
-  const ReversiInvitationsProvider._({
+  ReversiInvitationsProvider._({
     required ReversiInvitationsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$reversiInvitationsHash() =>
 
 final class ReversiInvitationsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<User>>, Account> {
-  const ReversiInvitationsFamily._()
+  ReversiInvitationsFamily._()
     : super(
         retry: null,
         name: r'reversiInvitationsProvider',

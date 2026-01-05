@@ -10,7 +10,7 @@ part of 'stats_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(stats)
-const statsProvider = StatsFamily._();
+final statsProvider = StatsFamily._();
 
 final class StatsProvider
     extends
@@ -20,7 +20,7 @@ final class StatsProvider
           FutureOr<StatsResponse>
         >
     with $FutureModifier<StatsResponse>, $FutureProvider<StatsResponse> {
-  const StatsProvider._({
+  StatsProvider._({
     required StatsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$statsHash() => r'4e64b5ecfcad20ee44fdb3329fd8e801c53a2cd4';
 
 final class StatsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<StatsResponse>, Account> {
-  const StatsFamily._()
+  StatsFamily._()
     : super(
         retry: null,
         name: r'statsProvider',

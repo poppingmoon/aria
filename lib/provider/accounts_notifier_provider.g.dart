@@ -10,11 +10,11 @@ part of 'accounts_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AccountsNotifier)
-const accountsNotifierProvider = AccountsNotifierProvider._();
+final accountsNotifierProvider = AccountsNotifierProvider._();
 
 final class AccountsNotifierProvider
     extends $NotifierProvider<AccountsNotifier, List<Account>> {
-  const AccountsNotifierProvider._()
+  AccountsNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$AccountsNotifier extends $Notifier<List<Account>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<List<Account>, List<Account>>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$AccountsNotifier extends $Notifier<List<Account>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

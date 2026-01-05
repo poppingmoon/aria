@@ -10,7 +10,7 @@ part of 'user_reactions_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UserReactionsNotifier)
-const userReactionsNotifierProvider = UserReactionsNotifierFamily._();
+final userReactionsNotifierProvider = UserReactionsNotifierFamily._();
 
 final class UserReactionsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class UserReactionsNotifierProvider
           UserReactionsNotifier,
           PaginationState<UsersReactionsResponse>
         > {
-  const UserReactionsNotifierProvider._({
+  UserReactionsNotifierProvider._({
     required UserReactionsNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class UserReactionsNotifierFamily extends $Family
           Stream<PaginationState<UsersReactionsResponse>>,
           (Account, String)
         > {
-  const UserReactionsNotifierFamily._()
+  UserReactionsNotifierFamily._()
     : super(
         retry: null,
         name: r'userReactionsNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$UserReactionsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<
@@ -113,6 +112,6 @@ abstract class _$UserReactionsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

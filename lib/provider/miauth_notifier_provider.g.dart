@@ -10,11 +10,11 @@ part of 'miauth_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MiAuthNotifier)
-const miAuthNotifierProvider = MiAuthNotifierProvider._();
+final miAuthNotifierProvider = MiAuthNotifierProvider._();
 
 final class MiAuthNotifierProvider
     extends $NotifierProvider<MiAuthNotifier, MiAuthState?> {
-  const MiAuthNotifierProvider._()
+  MiAuthNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$MiAuthNotifier extends $Notifier<MiAuthState?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<MiAuthState?, MiAuthState?>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$MiAuthNotifier extends $Notifier<MiAuthState?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

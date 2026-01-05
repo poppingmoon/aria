@@ -10,7 +10,7 @@ part of 'search_hashtags_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(searchHashtags)
-const searchHashtagsProvider = SearchHashtagsFamily._();
+final searchHashtagsProvider = SearchHashtagsFamily._();
 
 final class SearchHashtagsProvider
     extends
@@ -20,7 +20,7 @@ final class SearchHashtagsProvider
           FutureOr<List<String>>
         >
     with $FutureModifier<List<String>>, $FutureProvider<List<String>> {
-  const SearchHashtagsProvider._({
+  SearchHashtagsProvider._({
     required SearchHashtagsFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$searchHashtagsHash() => r'66e02a032f6fff9930f0d6ebf3697308e2f97799';
 
 final class SearchHashtagsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<String>>, (Account, String)> {
-  const SearchHashtagsFamily._()
+  SearchHashtagsFamily._()
     : super(
         retry: null,
         name: r'searchHashtagsProvider',

@@ -10,11 +10,11 @@ part of 'dynamic_color_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(CorePaletteNotifier)
-const corePaletteNotifierProvider = CorePaletteNotifierProvider._();
+final corePaletteNotifierProvider = CorePaletteNotifierProvider._();
 
 final class CorePaletteNotifierProvider
     extends $NotifierProvider<CorePaletteNotifier, CorePalette?> {
-  const CorePaletteNotifierProvider._()
+  CorePaletteNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$CorePaletteNotifier extends $Notifier<CorePalette?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<CorePalette?, CorePalette?>;
     final element =
         ref.element
@@ -59,16 +58,16 @@ abstract class _$CorePaletteNotifier extends $Notifier<CorePalette?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(_AccentColorNotifier)
-const _accentColorNotifierProvider = _AccentColorNotifierProvider._();
+final _accentColorNotifierProvider = _AccentColorNotifierProvider._();
 
 final class _AccentColorNotifierProvider
     extends $NotifierProvider<_AccentColorNotifier, Color?> {
-  const _AccentColorNotifierProvider._()
+  _AccentColorNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -103,7 +102,6 @@ abstract class _$AccentColorNotifier extends $Notifier<Color?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Color?, Color?>;
     final element =
         ref.element
@@ -113,17 +111,17 @@ abstract class _$AccentColorNotifier extends $Notifier<Color?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }
 
 @ProviderFor(dynamicColor)
-const dynamicColorProvider = DynamicColorFamily._();
+final dynamicColorProvider = DynamicColorFamily._();
 
 final class DynamicColorProvider
     extends $FunctionalProvider<MisskeyColors?, MisskeyColors?, MisskeyColors?>
     with $Provider<MisskeyColors?> {
-  const DynamicColorProvider._({
+  DynamicColorProvider._({
     required DynamicColorFamily super.from,
     required Brightness super.argument,
   }) : super(
@@ -178,7 +176,7 @@ String _$dynamicColorHash() => r'7d22b4869ca21666054ceef3c2a20ca2a6134372';
 
 final class DynamicColorFamily extends $Family
     with $FunctionalFamilyOverride<MisskeyColors?, Brightness> {
-  const DynamicColorFamily._()
+  DynamicColorFamily._()
     : super(
         retry: null,
         name: r'dynamicColorProvider',

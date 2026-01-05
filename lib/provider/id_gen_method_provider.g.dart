@@ -10,7 +10,7 @@ part of 'id_gen_method_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(idGenMethod)
-const idGenMethodProvider = IdGenMethodFamily._();
+final idGenMethodProvider = IdGenMethodFamily._();
 
 final class IdGenMethodProvider
     extends
@@ -20,7 +20,7 @@ final class IdGenMethodProvider
           FutureOr<IdGenMethod>
         >
     with $FutureModifier<IdGenMethod>, $FutureProvider<IdGenMethod> {
-  const IdGenMethodProvider._({
+  IdGenMethodProvider._({
     required IdGenMethodFamily super.from,
     required Account super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$idGenMethodHash() => r'380df68195233de2a83cc52f21894f4e78812199';
 
 final class IdGenMethodFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<IdGenMethod>, Account> {
-  const IdGenMethodFamily._()
+  IdGenMethodFamily._()
     : super(
         retry: null,
         name: r'idGenMethodProvider',

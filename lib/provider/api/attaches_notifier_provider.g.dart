@@ -10,11 +10,11 @@ part of 'attaches_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AttachesNotifier)
-const attachesNotifierProvider = AttachesNotifierFamily._();
+final attachesNotifierProvider = AttachesNotifierFamily._();
 
 final class AttachesNotifierProvider
     extends $NotifierProvider<AttachesNotifier, List<PostFile>> {
-  const AttachesNotifierProvider._({
+  AttachesNotifierProvider._({
     required AttachesNotifierFamily super.from,
     required (Account, {String? noteId, bool gallery, bool chat})
     super.argument,
@@ -70,7 +70,7 @@ final class AttachesNotifierFamily extends $Family
           List<PostFile>,
           (Account, {String? noteId, bool gallery, bool chat})
         > {
-  const AttachesNotifierFamily._()
+  AttachesNotifierFamily._()
     : super(
         retry: null,
         name: r'attachesNotifierProvider',
@@ -110,12 +110,6 @@ abstract class _$AttachesNotifier extends $Notifier<List<PostFile>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      noteId: _$args.noteId,
-      gallery: _$args.gallery,
-      chat: _$args.chat,
-    );
     final ref = this.ref as $Ref<List<PostFile>, List<PostFile>>;
     final element =
         ref.element
@@ -125,6 +119,14 @@ abstract class _$AttachesNotifier extends $Notifier<List<PostFile>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        noteId: _$args.noteId,
+        gallery: _$args.gallery,
+        chat: _$args.chat,
+      ),
+    );
   }
 }

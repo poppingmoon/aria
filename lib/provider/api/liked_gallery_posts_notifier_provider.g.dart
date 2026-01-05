@@ -10,7 +10,7 @@ part of 'liked_gallery_posts_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(LikedGalleryPostsNotifier)
-const likedGalleryPostsNotifierProvider = LikedGalleryPostsNotifierFamily._();
+final likedGalleryPostsNotifierProvider = LikedGalleryPostsNotifierFamily._();
 
 final class LikedGalleryPostsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class LikedGalleryPostsNotifierProvider
           LikedGalleryPostsNotifier,
           PaginationState<IGalleryLikesResponse>
         > {
-  const LikedGalleryPostsNotifierProvider._({
+  LikedGalleryPostsNotifierProvider._({
     required LikedGalleryPostsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class LikedGalleryPostsNotifierFamily extends $Family
           Stream<PaginationState<IGalleryLikesResponse>>,
           Account
         > {
-  const LikedGalleryPostsNotifierFamily._()
+  LikedGalleryPostsNotifierFamily._()
     : super(
         retry: null,
         name: r'likedGalleryPostsNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$LikedGalleryPostsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$LikedGalleryPostsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

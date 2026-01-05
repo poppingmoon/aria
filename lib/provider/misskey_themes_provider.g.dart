@@ -10,7 +10,7 @@ part of 'misskey_themes_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(misskeyThemes)
-const misskeyThemesProvider = MisskeyThemesProvider._();
+final misskeyThemesProvider = MisskeyThemesProvider._();
 
 final class MisskeyThemesProvider
     extends
@@ -20,7 +20,7 @@ final class MisskeyThemesProvider
           List<MisskeyTheme?>
         >
     with $Provider<List<MisskeyTheme?>> {
-  const MisskeyThemesProvider._()
+  MisskeyThemesProvider._()
     : super(
         from: null,
         argument: null,

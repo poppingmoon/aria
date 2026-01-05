@@ -10,11 +10,11 @@ part of 'post_form_hashtags_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PostFormHashtagsNotifier)
-const postFormHashtagsNotifierProvider = PostFormHashtagsNotifierFamily._();
+final postFormHashtagsNotifierProvider = PostFormHashtagsNotifierFamily._();
 
 final class PostFormHashtagsNotifierProvider
     extends $NotifierProvider<PostFormHashtagsNotifier, List<String>> {
-  const PostFormHashtagsNotifierProvider._({
+  PostFormHashtagsNotifierProvider._({
     required PostFormHashtagsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class PostFormHashtagsNotifierFamily extends $Family
           List<String>,
           Account
         > {
-  const PostFormHashtagsNotifierFamily._()
+  PostFormHashtagsNotifierFamily._()
     : super(
         retry: null,
         name: r'postFormHashtagsNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$PostFormHashtagsNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$PostFormHashtagsNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -10,7 +10,7 @@ part of 'tag_users_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(tagUsers)
-const tagUsersProvider = TagUsersFamily._();
+final tagUsersProvider = TagUsersFamily._();
 
 final class TagUsersProvider
     extends
@@ -22,7 +22,7 @@ final class TagUsersProvider
     with
         $FutureModifier<List<UserDetailed>>,
         $FutureProvider<List<UserDetailed>> {
-  const TagUsersProvider._({
+  TagUsersProvider._({
     required TagUsersFamily super.from,
     required (Account, String, {UsersSortType sort, Origin? userOrigin})
     super.argument,
@@ -83,7 +83,7 @@ final class TagUsersFamily extends $Family
           FutureOr<List<UserDetailed>>,
           (Account, String, {UsersSortType sort, Origin? userOrigin})
         > {
-  const TagUsersFamily._()
+  TagUsersFamily._()
     : super(
         retry: null,
         name: r'tagUsersProvider',

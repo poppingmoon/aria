@@ -10,7 +10,7 @@ part of 'summaly_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(summaly)
-const summalyProvider = SummalyFamily._();
+final summalyProvider = SummalyFamily._();
 
 final class SummalyProvider
     extends
@@ -20,7 +20,7 @@ final class SummalyProvider
           FutureOr<SummalyResult?>
         >
     with $FutureModifier<SummalyResult?>, $FutureProvider<SummalyResult?> {
-  const SummalyProvider._({
+  SummalyProvider._({
     required SummalyFamily super.from,
     required (String, String, {String? lang}) super.argument,
   }) : super(
@@ -72,7 +72,7 @@ final class SummalyFamily extends $Family
           FutureOr<SummalyResult?>,
           (String, String, {String? lang})
         > {
-  const SummalyFamily._()
+  SummalyFamily._()
     : super(
         retry: null,
         name: r'summalyProvider',

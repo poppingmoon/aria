@@ -10,11 +10,11 @@ part of 'web_push_key_set_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(WebPushKeySetNotifier)
-const webPushKeySetNotifierProvider = WebPushKeySetNotifierFamily._();
+final webPushKeySetNotifierProvider = WebPushKeySetNotifierFamily._();
 
 final class WebPushKeySetNotifierProvider
     extends $AsyncNotifierProvider<WebPushKeySetNotifier, WebPushKeySet?> {
-  const WebPushKeySetNotifierProvider._({
+  WebPushKeySetNotifierProvider._({
     required WebPushKeySetNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class WebPushKeySetNotifierFamily extends $Family
           FutureOr<WebPushKeySet?>,
           Account
         > {
-  const WebPushKeySetNotifierFamily._()
+  WebPushKeySetNotifierFamily._()
     : super(
         retry: null,
         name: r'webPushKeySetNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$WebPushKeySetNotifier extends $AsyncNotifier<WebPushKeySet?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<WebPushKeySet?>, WebPushKeySet?>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$WebPushKeySetNotifier extends $AsyncNotifier<WebPushKeySet?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

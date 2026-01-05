@@ -10,7 +10,7 @@ part of 'user_lists_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(userLists)
-const userListsProvider = UserListsFamily._();
+final userListsProvider = UserListsFamily._();
 
 final class UserListsProvider
     extends
@@ -20,7 +20,7 @@ final class UserListsProvider
           FutureOr<List<UsersList>>
         >
     with $FutureModifier<List<UsersList>>, $FutureProvider<List<UsersList>> {
-  const UserListsProvider._({
+  UserListsProvider._({
     required UserListsFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -72,7 +72,7 @@ final class UserListsFamily extends $Family
           FutureOr<List<UsersList>>,
           (Account, String)
         > {
-  const UserListsFamily._()
+  UserListsFamily._()
     : super(
         retry: null,
         name: r'userListsProvider',

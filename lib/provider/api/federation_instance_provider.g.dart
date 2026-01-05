@@ -10,7 +10,7 @@ part of 'federation_instance_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(federationInstance)
-const federationInstanceProvider = FederationInstanceFamily._();
+final federationInstanceProvider = FederationInstanceFamily._();
 
 final class FederationInstanceProvider
     extends
@@ -22,7 +22,7 @@ final class FederationInstanceProvider
     with
         $FutureModifier<FederationShowInstanceResponse>,
         $FutureProvider<FederationShowInstanceResponse> {
-  const FederationInstanceProvider._({
+  FederationInstanceProvider._({
     required FederationInstanceFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -75,7 +75,7 @@ final class FederationInstanceFamily extends $Family
           FutureOr<FederationShowInstanceResponse>,
           (Account, String)
         > {
-  const FederationInstanceFamily._()
+  FederationInstanceFamily._()
     : super(
         retry: null,
         name: r'federationInstanceProvider',

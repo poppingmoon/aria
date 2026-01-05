@@ -10,12 +10,12 @@ part of 'file_system_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(fileSystem)
-const fileSystemProvider = FileSystemProvider._();
+final fileSystemProvider = FileSystemProvider._();
 
 final class FileSystemProvider
     extends $FunctionalProvider<FileSystem, FileSystem, FileSystem>
     with $Provider<FileSystem> {
-  const FileSystemProvider._()
+  FileSystemProvider._()
     : super(
         from: null,
         argument: null,

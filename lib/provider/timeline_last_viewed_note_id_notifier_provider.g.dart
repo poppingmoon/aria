@@ -10,12 +10,12 @@ part of 'timeline_last_viewed_note_id_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TimelineLastViewedNoteIdNotifier)
-const timelineLastViewedNoteIdNotifierProvider =
+final timelineLastViewedNoteIdNotifierProvider =
     TimelineLastViewedNoteIdNotifierFamily._();
 
 final class TimelineLastViewedNoteIdNotifierProvider
     extends $NotifierProvider<TimelineLastViewedNoteIdNotifier, String?> {
-  const TimelineLastViewedNoteIdNotifierProvider._({
+  TimelineLastViewedNoteIdNotifierProvider._({
     required TimelineLastViewedNoteIdNotifierFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -73,7 +73,7 @@ final class TimelineLastViewedNoteIdNotifierFamily extends $Family
           String?,
           TabSettings
         > {
-  const TimelineLastViewedNoteIdNotifierFamily._()
+  TimelineLastViewedNoteIdNotifierFamily._()
     : super(
         retry: null,
         name: r'timelineLastViewedNoteIdNotifierProvider',
@@ -100,7 +100,6 @@ abstract class _$TimelineLastViewedNoteIdNotifier extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -110,6 +109,6 @@ abstract class _$TimelineLastViewedNoteIdNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

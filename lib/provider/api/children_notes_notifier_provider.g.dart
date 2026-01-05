@@ -10,12 +10,12 @@ part of 'children_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChildrenNotesNotifier)
-const childrenNotesNotifierProvider = ChildrenNotesNotifierFamily._();
+final childrenNotesNotifierProvider = ChildrenNotesNotifierFamily._();
 
 final class ChildrenNotesNotifierProvider
     extends
         $StreamNotifierProvider<ChildrenNotesNotifier, PaginationState<Note>> {
-  const ChildrenNotesNotifierProvider._({
+  ChildrenNotesNotifierProvider._({
     required ChildrenNotesNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class ChildrenNotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, String)
         > {
-  const ChildrenNotesNotifierFamily._()
+  ChildrenNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'childrenNotesNotifierProvider',
@@ -89,7 +89,6 @@ abstract class _$ChildrenNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -104,6 +103,6 @@ abstract class _$ChildrenNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

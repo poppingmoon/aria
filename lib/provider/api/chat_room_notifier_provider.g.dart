@@ -10,11 +10,11 @@ part of 'chat_room_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChatRoomNotifier)
-const chatRoomNotifierProvider = ChatRoomNotifierFamily._();
+final chatRoomNotifierProvider = ChatRoomNotifierFamily._();
 
 final class ChatRoomNotifierProvider
     extends $AsyncNotifierProvider<ChatRoomNotifier, ChatRoom> {
-  const ChatRoomNotifierProvider._({
+  ChatRoomNotifierProvider._({
     required ChatRoomNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ChatRoomNotifierFamily extends $Family
           FutureOr<ChatRoom>,
           (Account, String)
         > {
-  const ChatRoomNotifierFamily._()
+  ChatRoomNotifierFamily._()
     : super(
         retry: null,
         name: r'chatRoomNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$ChatRoomNotifier extends $AsyncNotifier<ChatRoom> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<ChatRoom>, ChatRoom>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$ChatRoomNotifier extends $AsyncNotifier<ChatRoom> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

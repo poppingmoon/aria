@@ -10,7 +10,7 @@ part of 'drive_folder_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(driveFolder)
-const driveFolderProvider = DriveFolderFamily._();
+final driveFolderProvider = DriveFolderFamily._();
 
 final class DriveFolderProvider
     extends
@@ -20,7 +20,7 @@ final class DriveFolderProvider
           FutureOr<DriveFolder>
         >
     with $FutureModifier<DriveFolder>, $FutureProvider<DriveFolder> {
-  const DriveFolderProvider._({
+  DriveFolderProvider._({
     required DriveFolderFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$driveFolderHash() => r'26b085d970a50384fd0e10933616d48d4365391b';
 
 final class DriveFolderFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<DriveFolder>, (Account, String)> {
-  const DriveFolderFamily._()
+  DriveFolderFamily._()
     : super(
         retry: null,
         name: r'driveFolderProvider',

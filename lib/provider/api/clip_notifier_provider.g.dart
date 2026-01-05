@@ -10,11 +10,11 @@ part of 'clip_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClipNotifier)
-const clipNotifierProvider = ClipNotifierFamily._();
+final clipNotifierProvider = ClipNotifierFamily._();
 
 final class ClipNotifierProvider
     extends $AsyncNotifierProvider<ClipNotifier, Clip> {
-  const ClipNotifierProvider._({
+  ClipNotifierProvider._({
     required ClipNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ClipNotifierFamily extends $Family
           FutureOr<Clip>,
           (Account, String)
         > {
-  const ClipNotifierFamily._()
+  ClipNotifierFamily._()
     : super(
         retry: null,
         name: r'clipNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$ClipNotifier extends $AsyncNotifier<Clip> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<Clip>, Clip>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$ClipNotifier extends $AsyncNotifier<Clip> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

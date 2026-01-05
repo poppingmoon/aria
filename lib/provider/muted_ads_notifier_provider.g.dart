@@ -10,11 +10,11 @@ part of 'muted_ads_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MutedAdsNotifier)
-const mutedAdsNotifierProvider = MutedAdsNotifierFamily._();
+final mutedAdsNotifierProvider = MutedAdsNotifierFamily._();
 
 final class MutedAdsNotifierProvider
     extends $NotifierProvider<MutedAdsNotifier, List<String>> {
-  const MutedAdsNotifierProvider._({
+  MutedAdsNotifierProvider._({
     required MutedAdsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -69,7 +69,7 @@ final class MutedAdsNotifierFamily extends $Family
           List<String>,
           Account
         > {
-  const MutedAdsNotifierFamily._()
+  MutedAdsNotifierFamily._()
     : super(
         retry: null,
         name: r'mutedAdsNotifierProvider',
@@ -93,7 +93,6 @@ abstract class _$MutedAdsNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -103,6 +102,6 @@ abstract class _$MutedAdsNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

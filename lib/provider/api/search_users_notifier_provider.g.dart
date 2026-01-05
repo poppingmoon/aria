@@ -10,7 +10,7 @@ part of 'search_users_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SearchUsersNotifier)
-const searchUsersNotifierProvider = SearchUsersNotifierFamily._();
+final searchUsersNotifierProvider = SearchUsersNotifierFamily._();
 
 final class SearchUsersNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class SearchUsersNotifierProvider
           SearchUsersNotifier,
           PaginationState<UserDetailed>
         > {
-  const SearchUsersNotifierProvider._({
+  SearchUsersNotifierProvider._({
     required SearchUsersNotifierFamily super.from,
     required (Account, String, {Origin? userOrigin}) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class SearchUsersNotifierFamily extends $Family
           Stream<PaginationState<UserDetailed>>,
           (Account, String, {Origin? userOrigin})
         > {
-  const SearchUsersNotifierFamily._()
+  SearchUsersNotifierFamily._()
     : super(
         retry: null,
         name: r'searchUsersNotifierProvider',
@@ -103,7 +103,6 @@ abstract class _$SearchUsersNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2, userOrigin: _$args.userOrigin);
     final ref =
         this.ref
             as $Ref<
@@ -121,6 +120,9 @@ abstract class _$SearchUsersNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, _$args.$2, userOrigin: _$args.userOrigin),
+    );
   }
 }

@@ -10,7 +10,7 @@ part of 'owned_channels_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(OwnedChannelsNotifier)
-const ownedChannelsNotifierProvider = OwnedChannelsNotifierFamily._();
+final ownedChannelsNotifierProvider = OwnedChannelsNotifierFamily._();
 
 final class OwnedChannelsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class OwnedChannelsNotifierProvider
           OwnedChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
-  const OwnedChannelsNotifierProvider._({
+  OwnedChannelsNotifierProvider._({
     required OwnedChannelsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class OwnedChannelsNotifierFamily extends $Family
           Stream<PaginationState<CommunityChannel>>,
           Account
         > {
-  const OwnedChannelsNotifierFamily._()
+  OwnedChannelsNotifierFamily._()
     : super(
         retry: null,
         name: r'ownedChannelsNotifierProvider',
@@ -91,7 +91,6 @@ abstract class _$OwnedChannelsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -109,6 +108,6 @@ abstract class _$OwnedChannelsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

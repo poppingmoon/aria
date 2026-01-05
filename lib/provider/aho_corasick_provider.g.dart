@@ -10,12 +10,12 @@ part of 'aho_corasick_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ahoCorasick)
-const ahoCorasickProvider = AhoCorasickFamily._();
+final ahoCorasickProvider = AhoCorasickFamily._();
 
 final class AhoCorasickProvider
     extends $FunctionalProvider<AhoCorasick, AhoCorasick, AhoCorasick>
     with $Provider<AhoCorasick> {
-  const AhoCorasickProvider._({
+  AhoCorasickProvider._({
     required AhoCorasickFamily super.from,
     required List<String> super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$ahoCorasickHash() => r'0f2fa8df1a01755f2665d95f7880eb456b2310e5';
 
 final class AhoCorasickFamily extends $Family
     with $FunctionalFamilyOverride<AhoCorasick, List<String>> {
-  const AhoCorasickFamily._()
+  AhoCorasickFamily._()
     : super(
         retry: null,
         name: r'ahoCorasickProvider',

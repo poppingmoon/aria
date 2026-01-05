@@ -10,12 +10,12 @@ part of 'timeline_tab_settings_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(timelineTabSettings)
-const timelineTabSettingsProvider = TimelineTabSettingsProvider._();
+final timelineTabSettingsProvider = TimelineTabSettingsProvider._();
 
 final class TimelineTabSettingsProvider
     extends $FunctionalProvider<TabSettings?, TabSettings?, TabSettings?>
     with $Provider<TabSettings?> {
-  const TimelineTabSettingsProvider._()
+  TimelineTabSettingsProvider._()
     : super(
         from: null,
         argument: null,

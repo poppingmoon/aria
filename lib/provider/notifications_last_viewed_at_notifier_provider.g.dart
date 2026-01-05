@@ -10,12 +10,12 @@ part of 'notifications_last_viewed_at_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NotificationsLastViewedAtNotifier)
-const notificationsLastViewedAtNotifierProvider =
+final notificationsLastViewedAtNotifierProvider =
     NotificationsLastViewedAtNotifierFamily._();
 
 final class NotificationsLastViewedAtNotifierProvider
     extends $NotifierProvider<NotificationsLastViewedAtNotifier, DateTime?> {
-  const NotificationsLastViewedAtNotifierProvider._({
+  NotificationsLastViewedAtNotifierProvider._({
     required NotificationsLastViewedAtNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class NotificationsLastViewedAtNotifierFamily extends $Family
           DateTime?,
           Account
         > {
-  const NotificationsLastViewedAtNotifierFamily._()
+  NotificationsLastViewedAtNotifierFamily._()
     : super(
         retry: null,
         name: r'notificationsLastViewedAtNotifierProvider',
@@ -102,7 +102,6 @@ abstract class _$NotificationsLastViewedAtNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<DateTime?, DateTime?>;
     final element =
         ref.element
@@ -112,6 +111,6 @@ abstract class _$NotificationsLastViewedAtNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

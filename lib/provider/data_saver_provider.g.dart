@@ -10,12 +10,12 @@ part of 'data_saver_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(dataSaver)
-const dataSaverProvider = DataSaverProvider._();
+final dataSaverProvider = DataSaverProvider._();
 
 final class DataSaverProvider
     extends $FunctionalProvider<DataSaver, DataSaver, DataSaver>
     with $Provider<DataSaver> {
-  const DataSaverProvider._()
+  DataSaverProvider._()
     : super(
         from: null,
         argument: null,

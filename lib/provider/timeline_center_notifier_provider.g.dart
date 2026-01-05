@@ -10,11 +10,11 @@ part of 'timeline_center_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TimelineCenterNotifier)
-const timelineCenterNotifierProvider = TimelineCenterNotifierFamily._();
+final timelineCenterNotifierProvider = TimelineCenterNotifierFamily._();
 
 final class TimelineCenterNotifierProvider
     extends $NotifierProvider<TimelineCenterNotifier, String?> {
-  const TimelineCenterNotifierProvider._({
+  TimelineCenterNotifierProvider._({
     required TimelineCenterNotifierFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class TimelineCenterNotifierFamily extends $Family
           String?,
           TabSettings
         > {
-  const TimelineCenterNotifierFamily._()
+  TimelineCenterNotifierFamily._()
     : super(
         retry: null,
         name: r'timelineCenterNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$TimelineCenterNotifier extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$TimelineCenterNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

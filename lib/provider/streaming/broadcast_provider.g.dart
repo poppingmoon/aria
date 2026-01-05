@@ -10,13 +10,13 @@ part of 'broadcast_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(broadcast)
-const broadcastProvider = BroadcastFamily._();
+final broadcastProvider = BroadcastFamily._();
 
 final class BroadcastProvider
     extends
         $FunctionalProvider<AsyncValue<Broadcast>, Broadcast, Stream<Broadcast>>
     with $FutureModifier<Broadcast>, $StreamProvider<Broadcast> {
-  const BroadcastProvider._({
+  BroadcastProvider._({
     required BroadcastFamily super.from,
     required Account super.argument,
   }) : super(
@@ -63,7 +63,7 @@ String _$broadcastHash() => r'7230fae404420f7385521bf9c5f4df36f101925e';
 
 final class BroadcastFamily extends $Family
     with $FunctionalFamilyOverride<Stream<Broadcast>, Account> {
-  const BroadcastFamily._()
+  BroadcastFamily._()
     : super(
         retry: null,
         name: r'broadcastProvider',

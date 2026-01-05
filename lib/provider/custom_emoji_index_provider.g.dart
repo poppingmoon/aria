@@ -10,7 +10,7 @@ part of 'custom_emoji_index_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(customEmojiIndex)
-const customEmojiIndexProvider = CustomEmojiIndexFamily._();
+final customEmojiIndexProvider = CustomEmojiIndexFamily._();
 
 final class CustomEmojiIndexProvider
     extends
@@ -22,7 +22,7 @@ final class CustomEmojiIndexProvider
     with
         $FutureModifier<Map<String, Set<Emoji>>>,
         $FutureProvider<Map<String, Set<Emoji>>> {
-  const CustomEmojiIndexProvider._({
+  CustomEmojiIndexProvider._({
     required CustomEmojiIndexFamily super.from,
     required String super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$customEmojiIndexHash() => r'b0b4f5411d2ea2ac82b7d5d09dc3b422937e6a82';
 
 final class CustomEmojiIndexFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Map<String, Set<Emoji>>>, String> {
-  const CustomEmojiIndexFamily._()
+  CustomEmojiIndexFamily._()
     : super(
         retry: null,
         name: r'customEmojiIndexProvider',

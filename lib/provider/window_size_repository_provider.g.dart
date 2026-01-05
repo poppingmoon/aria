@@ -10,7 +10,7 @@ part of 'window_size_repository_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(windowSizeRepository)
-const windowSizeRepositoryProvider = WindowSizeRepositoryProvider._();
+final windowSizeRepositoryProvider = WindowSizeRepositoryProvider._();
 
 final class WindowSizeRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class WindowSizeRepositoryProvider
           WindowSizeRepository
         >
     with $Provider<WindowSizeRepository> {
-  const WindowSizeRepositoryProvider._()
+  WindowSizeRepositoryProvider._()
     : super(
         from: null,
         argument: null,

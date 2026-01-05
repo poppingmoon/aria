@@ -10,11 +10,11 @@ part of 'appear_note_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(appearNote)
-const appearNoteProvider = AppearNoteFamily._();
+final appearNoteProvider = AppearNoteFamily._();
 
 final class AppearNoteProvider extends $FunctionalProvider<Note?, Note?, Note?>
     with $Provider<Note?> {
-  const AppearNoteProvider._({
+  AppearNoteProvider._({
     required AppearNoteFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -69,7 +69,7 @@ String _$appearNoteHash() => r'204d634b6f23e32969bd54e16f84c51da64d33e4';
 
 final class AppearNoteFamily extends $Family
     with $FunctionalFamilyOverride<Note?, (Account, String)> {
-  const AppearNoteFamily._()
+  AppearNoteFamily._()
     : super(
         retry: null,
         name: r'appearNoteProvider',

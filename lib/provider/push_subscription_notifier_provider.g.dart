@@ -10,11 +10,11 @@ part of 'push_subscription_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PushSubscriptionNotifier)
-const pushSubscriptionNotifierProvider = PushSubscriptionNotifierFamily._();
+final pushSubscriptionNotifierProvider = PushSubscriptionNotifierFamily._();
 
 final class PushSubscriptionNotifierProvider
     extends $NotifierProvider<PushSubscriptionNotifier, String?> {
-  const PushSubscriptionNotifierProvider._({
+  PushSubscriptionNotifierProvider._({
     required PushSubscriptionNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class PushSubscriptionNotifierFamily extends $Family
           String?,
           Account
         > {
-  const PushSubscriptionNotifierFamily._()
+  PushSubscriptionNotifierFamily._()
     : super(
         retry: null,
         name: r'pushSubscriptionNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$PushSubscriptionNotifier extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$PushSubscriptionNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

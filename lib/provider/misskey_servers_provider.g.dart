@@ -10,7 +10,7 @@ part of 'misskey_servers_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(misskeyServers)
-const misskeyServersProvider = MisskeyServersProvider._();
+final misskeyServersProvider = MisskeyServersProvider._();
 
 final class MisskeyServersProvider
     extends
@@ -22,7 +22,7 @@ final class MisskeyServersProvider
     with
         $FutureModifier<List<JoinMisskeyInstanceInfo>>,
         $FutureProvider<List<JoinMisskeyInstanceInfo>> {
-  const MisskeyServersProvider._()
+  MisskeyServersProvider._()
     : super(
         from: null,
         argument: null,

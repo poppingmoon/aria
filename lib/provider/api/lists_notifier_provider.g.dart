@@ -10,11 +10,11 @@ part of 'lists_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ListsNotifier)
-const listsNotifierProvider = ListsNotifierFamily._();
+final listsNotifierProvider = ListsNotifierFamily._();
 
 final class ListsNotifierProvider
     extends $AsyncNotifierProvider<ListsNotifier, List<UsersList>> {
-  const ListsNotifierProvider._({
+  ListsNotifierProvider._({
     required ListsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ListsNotifierFamily extends $Family
           FutureOr<List<UsersList>>,
           Account
         > {
-  const ListsNotifierFamily._()
+  ListsNotifierFamily._()
     : super(
         retry: null,
         name: r'listsNotifierProvider',
@@ -85,7 +85,6 @@ abstract class _$ListsNotifier extends $AsyncNotifier<List<UsersList>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<UsersList>>, List<UsersList>>;
     final element =
         ref.element
@@ -95,6 +94,6 @@ abstract class _$ListsNotifier extends $AsyncNotifier<List<UsersList>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

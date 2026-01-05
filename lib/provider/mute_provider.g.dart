@@ -10,7 +10,7 @@ part of 'mute_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(mute)
-const muteProvider = MuteFamily._();
+final muteProvider = MuteFamily._();
 
 final class MuteProvider
     extends
@@ -20,7 +20,7 @@ final class MuteProvider
           (AhoCorasick, List<List<String>>, List<RegExp>)
         >
     with $Provider<(AhoCorasick, List<List<String>>, List<RegExp>)> {
-  const MuteProvider._({
+  MuteProvider._({
     required MuteFamily super.from,
     required List<MuteWord> super.argument,
   }) : super(
@@ -84,7 +84,7 @@ final class MuteFamily extends $Family
           (AhoCorasick, List<List<String>>, List<RegExp>),
           List<MuteWord>
         > {
-  const MuteFamily._()
+  MuteFamily._()
     : super(
         retry: null,
         name: r'muteProvider',

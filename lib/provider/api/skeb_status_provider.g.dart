@@ -10,7 +10,7 @@ part of 'skeb_status_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(skebStatus)
-const skebStatusProvider = SkebStatusFamily._();
+final skebStatusProvider = SkebStatusFamily._();
 
 final class SkebStatusProvider
     extends
@@ -22,7 +22,7 @@ final class SkebStatusProvider
     with
         $FutureModifier<UsersGetSkebStatusResponse>,
         $FutureProvider<UsersGetSkebStatusResponse> {
-  const SkebStatusProvider._({
+  SkebStatusProvider._({
     required SkebStatusFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class SkebStatusFamily extends $Family
           FutureOr<UsersGetSkebStatusResponse>,
           (Account, String)
         > {
-  const SkebStatusFamily._()
+  SkebStatusFamily._()
     : super(
         retry: null,
         name: r'skebStatusProvider',

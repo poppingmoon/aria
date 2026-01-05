@@ -10,12 +10,12 @@ part of 'users_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UsersNotifier)
-const usersNotifierProvider = UsersNotifierFamily._();
+final usersNotifierProvider = UsersNotifierFamily._();
 
 final class UsersNotifierProvider
     extends
         $StreamNotifierProvider<UsersNotifier, PaginationState<UserDetailed>> {
-  const UsersNotifierProvider._({
+  UsersNotifierProvider._({
     required UsersNotifierFamily super.from,
     required (Account, {UsersSortType? sort, Origin? userOrigin, String? host})
     super.argument,
@@ -63,7 +63,7 @@ final class UsersNotifierFamily extends $Family
           Stream<PaginationState<UserDetailed>>,
           (Account, {UsersSortType? sort, Origin? userOrigin, String? host})
         > {
-  const UsersNotifierFamily._()
+  UsersNotifierFamily._()
     : super(
         retry: null,
         name: r'usersNotifierProvider',
@@ -105,12 +105,6 @@ abstract class _$UsersNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      sort: _$args.sort,
-      userOrigin: _$args.userOrigin,
-      host: _$args.host,
-    );
     final ref =
         this.ref
             as $Ref<
@@ -128,6 +122,14 @@ abstract class _$UsersNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        sort: _$args.sort,
+        userOrigin: _$args.userOrigin,
+        host: _$args.host,
+      ),
+    );
   }
 }

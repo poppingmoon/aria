@@ -10,12 +10,12 @@ part of 'online_users_count_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(onlineUsersCount)
-const onlineUsersCountProvider = OnlineUsersCountFamily._();
+final onlineUsersCountProvider = OnlineUsersCountFamily._();
 
 final class OnlineUsersCountProvider
     extends $FunctionalProvider<AsyncValue<int>, int, FutureOr<int>>
     with $FutureModifier<int>, $FutureProvider<int> {
-  const OnlineUsersCountProvider._({
+  OnlineUsersCountProvider._({
     required OnlineUsersCountFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ String _$onlineUsersCountHash() => r'621dc98d3fce2c4610a488e0b1c47cc53a714d4a';
 
 final class OnlineUsersCountFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<int>, Account> {
-  const OnlineUsersCountFamily._()
+  OnlineUsersCountFamily._()
     : super(
         retry: null,
         name: r'onlineUsersCountProvider',

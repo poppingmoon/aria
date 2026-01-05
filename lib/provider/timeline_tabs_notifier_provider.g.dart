@@ -10,11 +10,11 @@ part of 'timeline_tabs_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TimelineTabsNotifier)
-const timelineTabsNotifierProvider = TimelineTabsNotifierProvider._();
+final timelineTabsNotifierProvider = TimelineTabsNotifierProvider._();
 
 final class TimelineTabsNotifierProvider
     extends $NotifierProvider<TimelineTabsNotifier, List<TabSettings>> {
-  const TimelineTabsNotifierProvider._()
+  TimelineTabsNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$TimelineTabsNotifier extends $Notifier<List<TabSettings>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<List<TabSettings>, List<TabSettings>>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$TimelineTabsNotifier extends $Notifier<List<TabSettings>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

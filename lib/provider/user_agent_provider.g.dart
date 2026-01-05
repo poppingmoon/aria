@@ -10,12 +10,12 @@ part of 'user_agent_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(userAgent)
-const userAgentProvider = UserAgentProvider._();
+final userAgentProvider = UserAgentProvider._();
 
 final class UserAgentProvider
     extends $FunctionalProvider<AsyncValue<String?>, String?, FutureOr<String?>>
     with $FutureModifier<String?>, $FutureProvider<String?> {
-  const UserAgentProvider._()
+  UserAgentProvider._()
     : super(
         from: null,
         argument: null,

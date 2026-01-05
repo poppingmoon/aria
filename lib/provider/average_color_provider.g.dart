@@ -10,12 +10,12 @@ part of 'average_color_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(averageColor)
-const averageColorProvider = AverageColorFamily._();
+final averageColorProvider = AverageColorFamily._();
 
 final class AverageColorProvider
     extends $FunctionalProvider<Color, Color, Color>
     with $Provider<Color> {
-  const AverageColorProvider._({
+  AverageColorProvider._({
     required AverageColorFamily super.from,
     required String super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$averageColorHash() => r'06665cfb6770de47493dab0049f170bb74039f4c';
 
 final class AverageColorFamily extends $Family
     with $FunctionalFamilyOverride<Color, String> {
-  const AverageColorFamily._()
+  AverageColorFamily._()
     : super(
         retry: null,
         name: r'averageColorProvider',

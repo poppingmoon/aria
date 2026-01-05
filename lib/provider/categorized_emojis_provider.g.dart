@@ -10,7 +10,7 @@ part of 'categorized_emojis_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(categorizedEmojis)
-const categorizedEmojisProvider = CategorizedEmojisFamily._();
+final categorizedEmojisProvider = CategorizedEmojisFamily._();
 
 final class CategorizedEmojisProvider
     extends
@@ -20,7 +20,7 @@ final class CategorizedEmojisProvider
           Map<String?, List<Emoji>>
         >
     with $Provider<Map<String?, List<Emoji>>> {
-  const CategorizedEmojisProvider._({
+  CategorizedEmojisProvider._({
     required CategorizedEmojisFamily super.from,
     required String super.argument,
   }) : super(
@@ -76,7 +76,7 @@ String _$categorizedEmojisHash() => r'9a74978216c1aea1bef5ea4584ff467750ecbaa0';
 
 final class CategorizedEmojisFamily extends $Family
     with $FunctionalFamilyOverride<Map<String?, List<Emoji>>, String> {
-  const CategorizedEmojisFamily._()
+  CategorizedEmojisFamily._()
     : super(
         retry: null,
         name: r'categorizedEmojisProvider',

@@ -10,7 +10,7 @@ part of 'web_socket_channel_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(webSocketChannel)
-const webSocketChannelProvider = WebSocketChannelFamily._();
+final webSocketChannelProvider = WebSocketChannelFamily._();
 
 final class WebSocketChannelProvider
     extends
@@ -22,7 +22,7 @@ final class WebSocketChannelProvider
     with
         $FutureModifier<(IOWebSocketChannel, DateTime)>,
         $FutureProvider<(IOWebSocketChannel, DateTime)> {
-  const WebSocketChannelProvider._({
+  WebSocketChannelProvider._({
     required WebSocketChannelFamily super.from,
     required Account super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class WebSocketChannelFamily extends $Family
           FutureOr<(IOWebSocketChannel, DateTime)>,
           Account
         > {
-  const WebSocketChannelFamily._()
+  WebSocketChannelFamily._()
     : super(
         retry: _retry,
         name: r'webSocketChannelProvider',

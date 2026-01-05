@@ -10,12 +10,12 @@ part of 'search_unicode_emojis_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(searchUnicodeEmojis)
-const searchUnicodeEmojisProvider = SearchUnicodeEmojisFamily._();
+final searchUnicodeEmojisProvider = SearchUnicodeEmojisFamily._();
 
 final class SearchUnicodeEmojisProvider
     extends $FunctionalProvider<Set<String>, Set<String>, Set<String>>
     with $Provider<Set<String>> {
-  const SearchUnicodeEmojisProvider._({
+  SearchUnicodeEmojisProvider._({
     required SearchUnicodeEmojisFamily super.from,
     required String super.argument,
   }) : super(
@@ -71,7 +71,7 @@ String _$searchUnicodeEmojisHash() =>
 
 final class SearchUnicodeEmojisFamily extends $Family
     with $FunctionalFamilyOverride<Set<String>, String> {
-  const SearchUnicodeEmojisFamily._()
+  SearchUnicodeEmojisFamily._()
     : super(
         retry: null,
         name: r'searchUnicodeEmojisProvider',

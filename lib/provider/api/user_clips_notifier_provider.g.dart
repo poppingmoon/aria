@@ -10,11 +10,11 @@ part of 'user_clips_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UserClipsNotifier)
-const userClipsNotifierProvider = UserClipsNotifierFamily._();
+final userClipsNotifierProvider = UserClipsNotifierFamily._();
 
 final class UserClipsNotifierProvider
     extends $StreamNotifierProvider<UserClipsNotifier, PaginationState<Clip>> {
-  const UserClipsNotifierProvider._({
+  UserClipsNotifierProvider._({
     required UserClipsNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class UserClipsNotifierFamily extends $Family
           Stream<PaginationState<Clip>>,
           (Account, String)
         > {
-  const UserClipsNotifierFamily._()
+  UserClipsNotifierFamily._()
     : super(
         retry: null,
         name: r'userClipsNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$UserClipsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Clip>>, PaginationState<Clip>>;
@@ -102,6 +101,6 @@ abstract class _$UserClipsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

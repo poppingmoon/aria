@@ -10,11 +10,11 @@ part of 'renotes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RenotesNotifier)
-const renotesNotifierProvider = RenotesNotifierFamily._();
+final renotesNotifierProvider = RenotesNotifierFamily._();
 
 final class RenotesNotifierProvider
     extends $StreamNotifierProvider<RenotesNotifier, PaginationState<Note>> {
-  const RenotesNotifierProvider._({
+  RenotesNotifierProvider._({
     required RenotesNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class RenotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, String)
         > {
-  const RenotesNotifierFamily._()
+  RenotesNotifierFamily._()
     : super(
         retry: null,
         name: r'renotesNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$RenotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -102,6 +101,6 @@ abstract class _$RenotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

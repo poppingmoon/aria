@@ -10,7 +10,7 @@ part of 'apns_push_connector_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(apnsPushConnector)
-const apnsPushConnectorProvider = ApnsPushConnectorProvider._();
+final apnsPushConnectorProvider = ApnsPushConnectorProvider._();
 
 final class ApnsPushConnectorProvider
     extends
@@ -20,7 +20,7 @@ final class ApnsPushConnectorProvider
           ApnsPushConnectorOnly
         >
     with $Provider<ApnsPushConnectorOnly> {
-  const ApnsPushConnectorProvider._()
+  ApnsPushConnectorProvider._()
     : super(
         from: null,
         argument: null,

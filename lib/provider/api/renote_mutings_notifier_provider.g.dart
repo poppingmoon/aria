@@ -10,7 +10,7 @@ part of 'renote_mutings_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RenoteMutingsNotifier)
-const renoteMutingsNotifierProvider = RenoteMutingsNotifierFamily._();
+final renoteMutingsNotifierProvider = RenoteMutingsNotifierFamily._();
 
 final class RenoteMutingsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class RenoteMutingsNotifierProvider
           RenoteMutingsNotifier,
           PaginationState<RenoteMuting>
         > {
-  const RenoteMutingsNotifierProvider._({
+  RenoteMutingsNotifierProvider._({
     required RenoteMutingsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class RenoteMutingsNotifierFamily extends $Family
           Stream<PaginationState<RenoteMuting>>,
           Account
         > {
-  const RenoteMutingsNotifierFamily._()
+  RenoteMutingsNotifierFamily._()
     : super(
         retry: null,
         name: r'renoteMutingsNotifierProvider',
@@ -91,7 +91,6 @@ abstract class _$RenoteMutingsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -109,6 +108,6 @@ abstract class _$RenoteMutingsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

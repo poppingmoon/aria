@@ -10,11 +10,11 @@ part of 'overlay_layers_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(OverlayLayersNotifier)
-const overlayLayersNotifierProvider = OverlayLayersNotifierProvider._();
+final overlayLayersNotifierProvider = OverlayLayersNotifierProvider._();
 
 final class OverlayLayersNotifierProvider
     extends $NotifierProvider<OverlayLayersNotifier, List<Layer>> {
-  const OverlayLayersNotifierProvider._()
+  OverlayLayersNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<List<Layer>, List<Layer>>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

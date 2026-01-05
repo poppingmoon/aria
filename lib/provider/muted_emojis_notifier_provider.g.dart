@@ -10,11 +10,11 @@ part of 'muted_emojis_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MutedEmojisNotifier)
-const mutedEmojisNotifierProvider = MutedEmojisNotifierFamily._();
+final mutedEmojisNotifierProvider = MutedEmojisNotifierFamily._();
 
 final class MutedEmojisNotifierProvider
     extends $NotifierProvider<MutedEmojisNotifier, Set<String>> {
-  const MutedEmojisNotifierProvider._({
+  MutedEmojisNotifierProvider._({
     required MutedEmojisNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class MutedEmojisNotifierFamily extends $Family
           Set<String>,
           Account
         > {
-  const MutedEmojisNotifierFamily._()
+  MutedEmojisNotifierFamily._()
     : super(
         retry: null,
         name: r'mutedEmojisNotifierProvider',
@@ -94,7 +94,6 @@ abstract class _$MutedEmojisNotifier extends $Notifier<Set<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<Set<String>, Set<String>>;
     final element =
         ref.element
@@ -104,6 +103,6 @@ abstract class _$MutedEmojisNotifier extends $Notifier<Set<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

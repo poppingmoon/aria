@@ -10,7 +10,7 @@ part of 'summaly_repository_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(summalyRepository)
-const summalyRepositoryProvider = SummalyRepositoryProvider._();
+final summalyRepositoryProvider = SummalyRepositoryProvider._();
 
 final class SummalyRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class SummalyRepositoryProvider
           SummalyRepository
         >
     with $Provider<SummalyRepository> {
-  const SummalyRepositoryProvider._()
+  SummalyRepositoryProvider._()
     : super(
         from: null,
         argument: null,
