@@ -274,6 +274,12 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Are you sure you want to import settings? Existing settings will be overwritten.'
 	String get importConfirm => 'Are you sure you want to import settings? Existing settings will be overwritten.';
 
+	/// en-US: 'Invalid endpoint'
+	String get invalidEndpoint => 'Invalid endpoint';
+
+	/// en-US: 'The endpoint in the response is invalid. Please make sure that the code you are running matches the one provided in the app.'
+	String get invalidEndpointDescription => 'The endpoint in the response is invalid. Please make sure that the code you are running matches the one provided in the app.';
+
 	/// en-US: 'List format is invalid'
 	String get invalidListFormat => 'List format is invalid';
 

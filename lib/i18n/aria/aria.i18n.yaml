@@ -66,6 +66,8 @@ i18nInfo(rich): "Aria is being translated into various languages by volunteers. 
 iconAttribution(rich): "The icon of Aria was created by {sevenc_nanashi} and is licensed under {cc_by}."
 importCompleted: "Import completed"
 importConfirm: "Are you sure you want to import settings? Existing settings will be overwritten."
+invalidEndpoint: "Invalid endpoint"
+invalidEndpointDescription: "The endpoint in the response is invalid. Please make sure that the code you are running matches the one provided in the app."
 invalidListFormat: "List format is invalid"
 jumpTo: "Jump to {x}"
 keepOpen: "Keep open"

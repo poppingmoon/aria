@@ -235,10 +235,10 @@ class NotificationsSettingsPage extends ConsumerWidget {
                     ? (_) => _unsubscribe(ref)
                     : i != null && isPushNotificationSupported
                     ? (_) async {
-                        await _subscribe(ref);
                         await ref
                             .read(userIdsNotifierProvider.notifier)
                             .add(account, i.id);
+                        await _subscribe(ref);
                       }
                     : null,
                 tileColor: theme.colorScheme.surface,
