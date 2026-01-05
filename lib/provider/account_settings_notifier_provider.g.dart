@@ -10,11 +10,11 @@ part of 'account_settings_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AccountSettingsNotifier)
-const accountSettingsNotifierProvider = AccountSettingsNotifierFamily._();
+final accountSettingsNotifierProvider = AccountSettingsNotifierFamily._();
 
 final class AccountSettingsNotifierProvider
     extends $NotifierProvider<AccountSettingsNotifier, AccountSettings> {
-  const AccountSettingsNotifierProvider._({
+  AccountSettingsNotifierProvider._({
     required AccountSettingsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class AccountSettingsNotifierFamily extends $Family
           AccountSettings,
           Account
         > {
-  const AccountSettingsNotifierFamily._()
+  AccountSettingsNotifierFamily._()
     : super(
         retry: null,
         name: r'accountSettingsNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$AccountSettingsNotifier extends $Notifier<AccountSettings> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AccountSettings, AccountSettings>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$AccountSettingsNotifier extends $Notifier<AccountSettings> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -10,12 +10,12 @@ part of 'blockings_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(BlockingsNotifier)
-const blockingsNotifierProvider = BlockingsNotifierFamily._();
+final blockingsNotifierProvider = BlockingsNotifierFamily._();
 
 final class BlockingsNotifierProvider
     extends
         $StreamNotifierProvider<BlockingsNotifier, PaginationState<Blocking>> {
-  const BlockingsNotifierProvider._({
+  BlockingsNotifierProvider._({
     required BlockingsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class BlockingsNotifierFamily extends $Family
           Stream<PaginationState<Blocking>>,
           Account
         > {
-  const BlockingsNotifierFamily._()
+  BlockingsNotifierFamily._()
     : super(
         retry: null,
         name: r'blockingsNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$BlockingsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -105,6 +104,6 @@ abstract class _$BlockingsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

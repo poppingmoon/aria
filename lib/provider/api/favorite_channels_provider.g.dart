@@ -10,7 +10,7 @@ part of 'favorite_channels_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(favoriteChannels)
-const favoriteChannelsProvider = FavoriteChannelsFamily._();
+final favoriteChannelsProvider = FavoriteChannelsFamily._();
 
 final class FavoriteChannelsProvider
     extends
@@ -22,7 +22,7 @@ final class FavoriteChannelsProvider
     with
         $FutureModifier<List<CommunityChannel>>,
         $FutureProvider<List<CommunityChannel>> {
-  const FavoriteChannelsProvider._({
+  FavoriteChannelsProvider._({
     required FavoriteChannelsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$favoriteChannelsHash() => r'92da3075cd96c7e85ca280ee2fe3db24465d6615';
 
 final class FavoriteChannelsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<CommunityChannel>>, Account> {
-  const FavoriteChannelsFamily._()
+  FavoriteChannelsFamily._()
     : super(
         retry: null,
         name: r'favoriteChannelsProvider',

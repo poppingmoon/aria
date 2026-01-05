@@ -10,11 +10,11 @@ part of 'user_ids_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UserIdsNotifier)
-const userIdsNotifierProvider = UserIdsNotifierProvider._();
+final userIdsNotifierProvider = UserIdsNotifierProvider._();
 
 final class UserIdsNotifierProvider
     extends $NotifierProvider<UserIdsNotifier, Map<Account, String>> {
-  const UserIdsNotifierProvider._()
+  UserIdsNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -48,7 +48,6 @@ abstract class _$UserIdsNotifier extends $Notifier<Map<Account, String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<Map<Account, String>, Map<Account, String>>;
     final element =
         ref.element
@@ -58,6 +57,6 @@ abstract class _$UserIdsNotifier extends $Notifier<Map<Account, String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

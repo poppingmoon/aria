@@ -10,12 +10,12 @@ part of 'misskey_colors_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(misskeyColors)
-const misskeyColorsProvider = MisskeyColorsFamily._();
+final misskeyColorsProvider = MisskeyColorsFamily._();
 
 final class MisskeyColorsProvider
     extends $FunctionalProvider<MisskeyColors, MisskeyColors, MisskeyColors>
     with $Provider<MisskeyColors> {
-  const MisskeyColorsProvider._({
+  MisskeyColorsProvider._({
     required MisskeyColorsFamily super.from,
     required Brightness super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$misskeyColorsHash() => r'c4e4255aa62f9c870504bfc9a08578a1db95d27d';
 
 final class MisskeyColorsFamily extends $Family
     with $FunctionalFamilyOverride<MisskeyColors, Brightness> {
-  const MisskeyColorsFamily._()
+  MisskeyColorsFamily._()
     : super(
         retry: null,
         name: r'misskeyColorsProvider',

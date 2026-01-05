@@ -10,7 +10,7 @@ part of 'receive_sharing_intent_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(receiveSharingIntent)
-const receiveSharingIntentProvider = ReceiveSharingIntentProvider._();
+final receiveSharingIntentProvider = ReceiveSharingIntentProvider._();
 
 final class ReceiveSharingIntentProvider
     extends
@@ -22,7 +22,7 @@ final class ReceiveSharingIntentProvider
     with
         $FutureModifier<List<SharedMediaFile>>,
         $StreamProvider<List<SharedMediaFile>> {
-  const ReceiveSharingIntentProvider._()
+  ReceiveSharingIntentProvider._()
     : super(
         from: null,
         argument: null,

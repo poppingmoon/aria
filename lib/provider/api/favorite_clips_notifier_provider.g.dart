@@ -10,11 +10,11 @@ part of 'favorite_clips_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(FavoriteClipsNotifier)
-const favoriteClipsNotifierProvider = FavoriteClipsNotifierFamily._();
+final favoriteClipsNotifierProvider = FavoriteClipsNotifierFamily._();
 
 final class FavoriteClipsNotifierProvider
     extends $AsyncNotifierProvider<FavoriteClipsNotifier, List<Clip>> {
-  const FavoriteClipsNotifierProvider._({
+  FavoriteClipsNotifierProvider._({
     required FavoriteClipsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class FavoriteClipsNotifierFamily extends $Family
           FutureOr<List<Clip>>,
           Account
         > {
-  const FavoriteClipsNotifierFamily._()
+  FavoriteClipsNotifierFamily._()
     : super(
         retry: null,
         name: r'favoriteClipsNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$FavoriteClipsNotifier extends $AsyncNotifier<List<Clip>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<List<Clip>>, List<Clip>>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$FavoriteClipsNotifier extends $AsyncNotifier<List<Clip>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -10,7 +10,7 @@ part of 'window_position_repository_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(windowPositionRepository)
-const windowPositionRepositoryProvider = WindowPositionRepositoryProvider._();
+final windowPositionRepositoryProvider = WindowPositionRepositoryProvider._();
 
 final class WindowPositionRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class WindowPositionRepositoryProvider
           WindowPositionRepository
         >
     with $Provider<WindowPositionRepository> {
-  const WindowPositionRepositoryProvider._()
+  WindowPositionRepositoryProvider._()
     : super(
         from: null,
         argument: null,

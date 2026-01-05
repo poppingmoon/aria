@@ -10,11 +10,11 @@ part of 'send_chat_message_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SendChatMessageNotifier)
-const sendChatMessageNotifierProvider = SendChatMessageNotifierFamily._();
+final sendChatMessageNotifierProvider = SendChatMessageNotifierFamily._();
 
 final class SendChatMessageNotifierProvider
     extends $NotifierProvider<SendChatMessageNotifier, String?> {
-  const SendChatMessageNotifierProvider._({
+  SendChatMessageNotifierProvider._({
     required SendChatMessageNotifierFamily super.from,
     required (Account, {String? userId, String? roomId}) super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class SendChatMessageNotifierFamily extends $Family
           String?,
           (Account, {String? userId, String? roomId})
         > {
-  const SendChatMessageNotifierFamily._()
+  SendChatMessageNotifierFamily._()
     : super(
         retry: null,
         name: r'sendChatMessageNotifierProvider',
@@ -103,11 +103,6 @@ abstract class _$SendChatMessageNotifier extends $Notifier<String?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      userId: _$args.userId,
-      roomId: _$args.roomId,
-    );
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -117,6 +112,9 @@ abstract class _$SendChatMessageNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
+    );
   }
 }

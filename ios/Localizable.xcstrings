@@ -2090,6 +2090,12 @@
             "value": "La nota ha sido programada"
           }
         },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nota è stata programmata"
+          }
+        },
         "ja": {
           "stringUnit": {
             "state": "translated",
@@ -2247,7 +2253,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已拉黑的用户 的导出"
+            "value": "已完成 已屏蔽的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2632,7 +2638,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已屏蔽用户 的导出"
+            "value": "已完成 已静音的用户 的导出"
           }
         },
         "zh-Hant": {

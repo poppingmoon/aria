@@ -10,7 +10,7 @@ part of 'announcements_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(AnnouncementsNotifier)
-const announcementsNotifierProvider = AnnouncementsNotifierFamily._();
+final announcementsNotifierProvider = AnnouncementsNotifierFamily._();
 
 final class AnnouncementsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class AnnouncementsNotifierProvider
           AnnouncementsNotifier,
           PaginationState<AnnouncementsResponse>
         > {
-  const AnnouncementsNotifierProvider._({
+  AnnouncementsNotifierProvider._({
     required AnnouncementsNotifierFamily super.from,
     required (Account, {bool isActive}) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class AnnouncementsNotifierFamily extends $Family
           Stream<PaginationState<AnnouncementsResponse>>,
           (Account, {bool isActive})
         > {
-  const AnnouncementsNotifierFamily._()
+  AnnouncementsNotifierFamily._()
     : super(
         retry: null,
         name: r'announcementsNotifierProvider',
@@ -98,7 +98,6 @@ abstract class _$AnnouncementsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, isActive: _$args.isActive);
     final ref =
         this.ref
             as $Ref<
@@ -116,6 +115,9 @@ abstract class _$AnnouncementsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, isActive: _$args.isActive),
+    );
   }
 }

@@ -329,6 +329,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get download => 'Scarica';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Vuoi davvero eliminare il file "${name}", e le Note a cui è stato allegato?';
 	@override String unfollowConfirm({required Object name}) => 'Vuoi davvero togliere il Following a ${name}?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Vuoi annullare la tua richiesta di follow inviata a ${name}?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Vuoi rifiutare la richiesta di follow ricevuta da ${name}?';
 	@override String get exportRequested => 'Hai richiesto un\'esportazione, e potrebbe volerci tempo. Quando sarà compiuta, il file verrà aggiunto direttamente al Drive.';
 	@override String get importRequested => 'Hai richiesto un\'importazione. Potrebbe richiedere un po\' di tempo.';
 	@override String get lists => 'Liste';
@@ -2630,13 +2632,13 @@ class _TranslationsMisskeyTimeInItIt extends TranslationsMisskeyTimeInEnUs {
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String seconds({required Object n}) => 'Dopo ${n} secondi';
-	@override String minutes({required Object n}) => 'Dopo ${n} minuti';
-	@override String hours({required Object n}) => 'Dopo ${n} ore';
-	@override String days({required Object n}) => 'Dopo ${n} giorni';
-	@override String weeks({required Object n}) => 'Dopo ${n} settimane';
-	@override String months({required Object n}) => 'Dopo ${n} mesi';
-	@override String years({required Object n}) => 'Dopo ${n} anni';
+	@override String seconds({required Object n}) => 'Tra ${n} secondi';
+	@override String minutes({required Object n}) => 'Tra ${n} minuti';
+	@override String hours({required Object n}) => 'Tra ${n} ore';
+	@override String days({required Object n}) => 'Tra ${n} giorni';
+	@override String weeks({required Object n}) => 'Tra ${n} settimane';
+	@override String months({required Object n}) => 'Tra ${n} mesi';
+	@override String years({required Object n}) => 'Tra ${n} anni';
 }
 
 // Path: misskey.time_

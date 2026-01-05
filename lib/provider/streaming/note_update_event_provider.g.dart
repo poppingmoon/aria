@@ -10,12 +10,12 @@ part of 'note_update_event_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(_noteSubscription)
-const _noteSubscriptionProvider = _NoteSubscriptionFamily._();
+final _noteSubscriptionProvider = _NoteSubscriptionFamily._();
 
 final class _NoteSubscriptionProvider
     extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
     with $FutureModifier<String>, $FutureProvider<String> {
-  const _NoteSubscriptionProvider._({
+  _NoteSubscriptionProvider._({
     required _NoteSubscriptionFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -62,7 +62,7 @@ String _$_noteSubscriptionHash() => r'88fcd136cc53cf3ffc0dca27f7a725976597c0b5';
 
 final class _NoteSubscriptionFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<String>, (Account, String)> {
-  const _NoteSubscriptionFamily._()
+  _NoteSubscriptionFamily._()
     : super(
         retry: null,
         name: r'_noteSubscriptionProvider',
@@ -79,7 +79,7 @@ final class _NoteSubscriptionFamily extends $Family
 }
 
 @ProviderFor(noteUpdateEvent)
-const noteUpdateEventProvider = NoteUpdateEventFamily._();
+final noteUpdateEventProvider = NoteUpdateEventFamily._();
 
 final class NoteUpdateEventProvider
     extends
@@ -89,7 +89,7 @@ final class NoteUpdateEventProvider
           Stream<NoteUpdateEvent>
         >
     with $FutureModifier<NoteUpdateEvent>, $StreamProvider<NoteUpdateEvent> {
-  const NoteUpdateEventProvider._({
+  NoteUpdateEventProvider._({
     required NoteUpdateEventFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -137,7 +137,7 @@ String _$noteUpdateEventHash() => r'83324e4d703d1cf7682ef44cd2999ff49104bd65';
 
 final class NoteUpdateEventFamily extends $Family
     with $FunctionalFamilyOverride<Stream<NoteUpdateEvent>, (Account, String)> {
-  const NoteUpdateEventFamily._()
+  NoteUpdateEventFamily._()
     : super(
         retry: null,
         name: r'noteUpdateEventProvider',

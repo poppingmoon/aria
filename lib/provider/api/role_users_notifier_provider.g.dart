@@ -10,7 +10,7 @@ part of 'role_users_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RoleUsersNotifier)
-const roleUsersNotifierProvider = RoleUsersNotifierFamily._();
+final roleUsersNotifierProvider = RoleUsersNotifierFamily._();
 
 final class RoleUsersNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class RoleUsersNotifierProvider
           RoleUsersNotifier,
           PaginationState<RolesUsersResponse>
         > {
-  const RoleUsersNotifierProvider._({
+  RoleUsersNotifierProvider._({
     required RoleUsersNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -65,7 +65,7 @@ final class RoleUsersNotifierFamily extends $Family
           Stream<PaginationState<RolesUsersResponse>>,
           (Account, String)
         > {
-  const RoleUsersNotifierFamily._()
+  RoleUsersNotifierFamily._()
     : super(
         retry: null,
         name: r'roleUsersNotifierProvider',
@@ -94,7 +94,6 @@ abstract class _$RoleUsersNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<
@@ -112,6 +111,6 @@ abstract class _$RoleUsersNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

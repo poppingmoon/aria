@@ -10,12 +10,12 @@ part of 'featured_polls_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(FeaturedPollsNotifier)
-const featuredPollsNotifierProvider = FeaturedPollsNotifierFamily._();
+final featuredPollsNotifierProvider = FeaturedPollsNotifierFamily._();
 
 final class FeaturedPollsNotifierProvider
     extends
         $StreamNotifierProvider<FeaturedPollsNotifier, PaginationState<Note>> {
-  const FeaturedPollsNotifierProvider._({
+  FeaturedPollsNotifierProvider._({
     required FeaturedPollsNotifierFamily super.from,
     required (Account, {String? channelId}) super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class FeaturedPollsNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, {String? channelId})
         > {
-  const FeaturedPollsNotifierFamily._()
+  FeaturedPollsNotifierFamily._()
     : super(
         retry: null,
         name: r'featuredPollsNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$FeaturedPollsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, channelId: _$args.channelId);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -107,6 +106,9 @@ abstract class _$FeaturedPollsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, channelId: _$args.channelId),
+    );
   }
 }

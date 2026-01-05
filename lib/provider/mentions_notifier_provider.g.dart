@@ -10,11 +10,11 @@ part of 'mentions_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MentionsNotifier)
-const mentionsNotifierProvider = MentionsNotifierFamily._();
+final mentionsNotifierProvider = MentionsNotifierFamily._();
 
 final class MentionsNotifierProvider
     extends $StreamNotifierProvider<MentionsNotifier, PaginationState<Note>> {
-  const MentionsNotifierProvider._({
+  MentionsNotifierProvider._({
     required MentionsNotifierFamily super.from,
     required (Account, bool) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class MentionsNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, bool)
         > {
-  const MentionsNotifierFamily._()
+  MentionsNotifierFamily._()
     : super(
         retry: null,
         name: r'mentionsNotifierProvider',
@@ -90,7 +90,6 @@ abstract class _$MentionsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -105,6 +104,6 @@ abstract class _$MentionsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

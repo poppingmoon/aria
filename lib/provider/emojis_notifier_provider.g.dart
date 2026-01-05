@@ -11,12 +11,12 @@ part of 'emojis_notifier_provider.dart';
 
 @ProviderFor(EmojisNotifier)
 @JsonPersist()
-const emojisNotifierProvider = EmojisNotifierFamily._();
+final emojisNotifierProvider = EmojisNotifierFamily._();
 
 @JsonPersist()
 final class EmojisNotifierProvider
     extends $AsyncNotifierProvider<EmojisNotifier, Map<String, Emoji>> {
-  const EmojisNotifierProvider._({
+  EmojisNotifierProvider._({
     required EmojisNotifierFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class EmojisNotifierFamily extends $Family
           FutureOr<Map<String, Emoji>>,
           String
         > {
-  const EmojisNotifierFamily._()
+  EmojisNotifierFamily._()
     : super(
         retry: null,
         name: r'emojisNotifierProvider',
@@ -90,7 +90,6 @@ abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<Map<String, Emoji>>, Map<String, Emoji>>;
     final element =
@@ -101,7 +100,7 @@ abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 

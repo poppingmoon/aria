@@ -11,12 +11,12 @@ part of 'i_notifier_provider.dart';
 
 @ProviderFor(INotifier)
 @JsonPersist()
-const iNotifierProvider = INotifierFamily._();
+final iNotifierProvider = INotifierFamily._();
 
 @JsonPersist()
 final class INotifierProvider
     extends $AsyncNotifierProvider<INotifier, MeDetailed?> {
-  const INotifierProvider._({
+  INotifierProvider._({
     required INotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class INotifierFamily extends $Family
           FutureOr<MeDetailed?>,
           Account
         > {
-  const INotifierFamily._()
+  INotifierFamily._()
     : super(
         retry: null,
         name: r'iNotifierProvider',
@@ -90,7 +90,6 @@ abstract class _$INotifierBase extends $AsyncNotifier<MeDetailed?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<MeDetailed?>, MeDetailed?>;
     final element =
         ref.element
@@ -100,7 +99,7 @@ abstract class _$INotifierBase extends $AsyncNotifier<MeDetailed?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 

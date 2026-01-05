@@ -10,7 +10,7 @@ part of 'drive_stats_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(driveStats)
-const driveStatsProvider = DriveStatsFamily._();
+final driveStatsProvider = DriveStatsFamily._();
 
 final class DriveStatsProvider
     extends
@@ -20,7 +20,7 @@ final class DriveStatsProvider
           FutureOr<DriveResponse>
         >
     with $FutureModifier<DriveResponse>, $FutureProvider<DriveResponse> {
-  const DriveStatsProvider._({
+  DriveStatsProvider._({
     required DriveStatsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$driveStatsHash() => r'2701f57fe05b2ecc070d5510abb4b0d56d9616f7';
 
 final class DriveStatsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<DriveResponse>, Account> {
-  const DriveStatsFamily._()
+  DriveStatsFamily._()
     : super(
         retry: null,
         name: r'driveStatsProvider',

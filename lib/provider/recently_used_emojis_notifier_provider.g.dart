@@ -10,11 +10,11 @@ part of 'recently_used_emojis_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RecentlyUsedEmojisNotifier)
-const recentlyUsedEmojisNotifierProvider = RecentlyUsedEmojisNotifierFamily._();
+final recentlyUsedEmojisNotifierProvider = RecentlyUsedEmojisNotifierFamily._();
 
 final class RecentlyUsedEmojisNotifierProvider
     extends $NotifierProvider<RecentlyUsedEmojisNotifier, List<String>> {
-  const RecentlyUsedEmojisNotifierProvider._({
+  RecentlyUsedEmojisNotifierProvider._({
     required RecentlyUsedEmojisNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ final class RecentlyUsedEmojisNotifierFamily extends $Family
           List<String>,
           Account
         > {
-  const RecentlyUsedEmojisNotifierFamily._()
+  RecentlyUsedEmojisNotifierFamily._()
     : super(
         retry: null,
         name: r'recentlyUsedEmojisNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$RecentlyUsedEmojisNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$RecentlyUsedEmojisNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

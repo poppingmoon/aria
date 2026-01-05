@@ -10,7 +10,7 @@ part of 'user_following_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UserFollowingNotifier)
-const userFollowingNotifierProvider = UserFollowingNotifierFamily._();
+final userFollowingNotifierProvider = UserFollowingNotifierFamily._();
 
 final class UserFollowingNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class UserFollowingNotifierProvider
           UserFollowingNotifier,
           PaginationState<Following>
         > {
-  const UserFollowingNotifierProvider._({
+  UserFollowingNotifierProvider._({
     required UserFollowingNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class UserFollowingNotifierFamily extends $Family
           Stream<PaginationState<Following>>,
           (Account, String)
         > {
-  const UserFollowingNotifierFamily._()
+  UserFollowingNotifierFamily._()
     : super(
         retry: null,
         name: r'userFollowingNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$UserFollowingNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$UserFollowingNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

@@ -10,11 +10,11 @@ part of 'note_state_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NoteStateNotifier)
-const noteStateNotifierProvider = NoteStateNotifierFamily._();
+final noteStateNotifierProvider = NoteStateNotifierFamily._();
 
 final class NoteStateNotifierProvider
     extends $AsyncNotifierProvider<NoteStateNotifier, NotesStateResponse> {
-  const NoteStateNotifierProvider._({
+  NoteStateNotifierProvider._({
     required NoteStateNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class NoteStateNotifierFamily extends $Family
           FutureOr<NotesStateResponse>,
           (Account, String)
         > {
-  const NoteStateNotifierFamily._()
+  NoteStateNotifierFamily._()
     : super(
         retry: null,
         name: r'noteStateNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$NoteStateNotifier extends $AsyncNotifier<NotesStateResponse> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref as $Ref<AsyncValue<NotesStateResponse>, NotesStateResponse>;
     final element =
@@ -97,6 +96,6 @@ abstract class _$NoteStateNotifier extends $AsyncNotifier<NotesStateResponse> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

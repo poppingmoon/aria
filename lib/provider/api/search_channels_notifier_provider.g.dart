@@ -10,7 +10,7 @@ part of 'search_channels_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SearchChannelsNotifier)
-const searchChannelsNotifierProvider = SearchChannelsNotifierFamily._();
+final searchChannelsNotifierProvider = SearchChannelsNotifierFamily._();
 
 final class SearchChannelsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class SearchChannelsNotifierProvider
           SearchChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
-  const SearchChannelsNotifierProvider._({
+  SearchChannelsNotifierProvider._({
     required SearchChannelsNotifierFamily super.from,
     required (Account, String, {bool includeDescription}) super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class SearchChannelsNotifierFamily extends $Family
           Stream<PaginationState<CommunityChannel>>,
           (Account, String, {bool includeDescription})
         > {
-  const SearchChannelsNotifierFamily._()
+  SearchChannelsNotifierFamily._()
     : super(
         retry: null,
         name: r'searchChannelsNotifierProvider',
@@ -104,11 +104,6 @@ abstract class _$SearchChannelsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      _$args.$2,
-      includeDescription: _$args.includeDescription,
-    );
     final ref =
         this.ref
             as $Ref<
@@ -126,6 +121,13 @@ abstract class _$SearchChannelsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        _$args.$2,
+        includeDescription: _$args.includeDescription,
+      ),
+    );
   }
 }

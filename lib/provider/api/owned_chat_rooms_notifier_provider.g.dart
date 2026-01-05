@@ -10,7 +10,7 @@ part of 'owned_chat_rooms_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(OwnedChatRoomsNotifier)
-const ownedChatRoomsNotifierProvider = OwnedChatRoomsNotifierFamily._();
+final ownedChatRoomsNotifierProvider = OwnedChatRoomsNotifierFamily._();
 
 final class OwnedChatRoomsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class OwnedChatRoomsNotifierProvider
           OwnedChatRoomsNotifier,
           PaginationState<ChatRoom>
         > {
-  const OwnedChatRoomsNotifierProvider._({
+  OwnedChatRoomsNotifierProvider._({
     required OwnedChatRoomsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class OwnedChatRoomsNotifierFamily extends $Family
           Stream<PaginationState<ChatRoom>>,
           Account
         > {
-  const OwnedChatRoomsNotifierFamily._()
+  OwnedChatRoomsNotifierFamily._()
     : super(
         retry: null,
         name: r'ownedChatRoomsNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$OwnedChatRoomsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$OwnedChatRoomsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

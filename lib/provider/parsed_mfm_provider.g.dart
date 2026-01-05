@@ -10,12 +10,12 @@ part of 'parsed_mfm_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(parsedMfm)
-const parsedMfmProvider = ParsedMfmFamily._();
+final parsedMfmProvider = ParsedMfmFamily._();
 
 final class ParsedMfmProvider
     extends $FunctionalProvider<List<MfmNode>, List<MfmNode>, List<MfmNode>>
     with $Provider<List<MfmNode>> {
-  const ParsedMfmProvider._({
+  ParsedMfmProvider._({
     required ParsedMfmFamily super.from,
     required String super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$parsedMfmHash() => r'00c66c7182a87069f2102f463cf53f4c053ec3e9';
 
 final class ParsedMfmFamily extends $Family
     with $FunctionalFamilyOverride<List<MfmNode>, String> {
-  const ParsedMfmFamily._()
+  ParsedMfmFamily._()
     : super(
         retry: null,
         name: r'parsedMfmProvider',

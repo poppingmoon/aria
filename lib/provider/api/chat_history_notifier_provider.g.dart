@@ -10,11 +10,11 @@ part of 'chat_history_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChatHistoryNotifier)
-const chatHistoryNotifierProvider = ChatHistoryNotifierFamily._();
+final chatHistoryNotifierProvider = ChatHistoryNotifierFamily._();
 
 final class ChatHistoryNotifierProvider
     extends $AsyncNotifierProvider<ChatHistoryNotifier, List<ChatMessage>> {
-  const ChatHistoryNotifierProvider._({
+  ChatHistoryNotifierProvider._({
     required ChatHistoryNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ final class ChatHistoryNotifierFamily extends $Family
           FutureOr<List<ChatMessage>>,
           Account
         > {
-  const ChatHistoryNotifierFamily._()
+  ChatHistoryNotifierFamily._()
     : super(
         retry: null,
         name: r'chatHistoryNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$ChatHistoryNotifier extends $AsyncNotifier<List<ChatMessage>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<ChatMessage>>, List<ChatMessage>>;
     final element =
@@ -97,6 +96,6 @@ abstract class _$ChatHistoryNotifier extends $AsyncNotifier<List<ChatMessage>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

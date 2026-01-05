@@ -10,12 +10,12 @@ part of 'cache_size_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(cacheSize)
-const cacheSizeProvider = CacheSizeProvider._();
+final cacheSizeProvider = CacheSizeProvider._();
 
 final class CacheSizeProvider
     extends $FunctionalProvider<AsyncValue<int>, int, FutureOr<int>>
     with $FutureModifier<int>, $FutureProvider<int> {
-  const CacheSizeProvider._()
+  CacheSizeProvider._()
     : super(
         from: null,
         argument: null,

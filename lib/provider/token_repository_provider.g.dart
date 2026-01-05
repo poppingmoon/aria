@@ -10,13 +10,13 @@ part of 'token_repository_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(tokenRepository)
-const tokenRepositoryProvider = TokenRepositoryProvider._();
+final tokenRepositoryProvider = TokenRepositoryProvider._();
 
 final class TokenRepositoryProvider
     extends
         $FunctionalProvider<TokenRepository, TokenRepository, TokenRepository>
     with $Provider<TokenRepository> {
-  const TokenRepositoryProvider._()
+  TokenRepositoryProvider._()
     : super(
         from: null,
         argument: null,

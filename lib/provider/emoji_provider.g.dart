@@ -10,11 +10,11 @@ part of 'emoji_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(emoji)
-const emojiProvider = EmojiFamily._();
+final emojiProvider = EmojiFamily._();
 
 final class EmojiProvider extends $FunctionalProvider<Emoji?, Emoji?, Emoji?>
     with $Provider<Emoji?> {
-  const EmojiProvider._({
+  EmojiProvider._({
     required EmojiFamily super.from,
     required (String, String) super.argument,
   }) : super(
@@ -69,7 +69,7 @@ String _$emojiHash() => r'4e77e11f3cca2b80ad4a5598ee5033f47c7dc3d6';
 
 final class EmojiFamily extends $Family
     with $FunctionalFamilyOverride<Emoji?, (String, String)> {
-  const EmojiFamily._()
+  EmojiFamily._()
     : super(
         retry: null,
         name: r'emojiProvider',

@@ -10,11 +10,11 @@ part of 'plays_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PlaysNotifier)
-const playsNotifierProvider = PlaysNotifierFamily._();
+final playsNotifierProvider = PlaysNotifierFamily._();
 
 final class PlaysNotifierProvider
     extends $StreamNotifierProvider<PlaysNotifier, PaginationState<Flash>> {
-  const PlaysNotifierProvider._({
+  PlaysNotifierProvider._({
     required PlaysNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class PlaysNotifierFamily extends $Family
           Stream<PaginationState<Flash>>,
           Account
         > {
-  const PlaysNotifierFamily._()
+  PlaysNotifierFamily._()
     : super(
         retry: null,
         name: r'playsNotifierProvider',
@@ -85,7 +85,6 @@ abstract class _$PlaysNotifier extends $StreamNotifier<PaginationState<Flash>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Flash>>, PaginationState<Flash>>;
@@ -100,6 +99,6 @@ abstract class _$PlaysNotifier extends $StreamNotifier<PaginationState<Flash>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

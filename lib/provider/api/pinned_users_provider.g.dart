@@ -10,7 +10,7 @@ part of 'pinned_users_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(pinnedUsers)
-const pinnedUsersProvider = PinnedUsersFamily._();
+final pinnedUsersProvider = PinnedUsersFamily._();
 
 final class PinnedUsersProvider
     extends
@@ -22,7 +22,7 @@ final class PinnedUsersProvider
     with
         $FutureModifier<List<UserDetailed>>,
         $FutureProvider<List<UserDetailed>> {
-  const PinnedUsersProvider._({
+  PinnedUsersProvider._({
     required PinnedUsersFamily super.from,
     required Account super.argument,
   }) : super(
@@ -70,7 +70,7 @@ String _$pinnedUsersHash() => r'ac6b5320cbb9fdef3a8ed60484628053ce7053b2';
 
 final class PinnedUsersFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<UserDetailed>>, Account> {
-  const PinnedUsersFamily._()
+  PinnedUsersFamily._()
     : super(
         retry: null,
         name: r'pinnedUsersProvider',

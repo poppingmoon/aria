@@ -10,7 +10,7 @@ part of 'incoming_message_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(incomingMessage)
-const incomingMessageProvider = IncomingMessageFamily._();
+final incomingMessageProvider = IncomingMessageFamily._();
 
 final class IncomingMessageProvider
     extends
@@ -20,7 +20,7 @@ final class IncomingMessageProvider
           Stream<IncomingMessage>
         >
     with $FutureModifier<IncomingMessage>, $StreamProvider<IncomingMessage> {
-  const IncomingMessageProvider._({
+  IncomingMessageProvider._({
     required IncomingMessageFamily super.from,
     required Account super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$incomingMessageHash() => r'3847ce18bf862a647c4b4cd6ba22d1953798176b';
 
 final class IncomingMessageFamily extends $Family
     with $FunctionalFamilyOverride<Stream<IncomingMessage>, Account> {
-  const IncomingMessageFamily._()
+  IncomingMessageFamily._()
     : super(
         retry: null,
         name: r'incomingMessageProvider',

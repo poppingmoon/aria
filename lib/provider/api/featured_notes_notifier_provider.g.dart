@@ -10,12 +10,12 @@ part of 'featured_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(FeaturedNotesNotifier)
-const featuredNotesNotifierProvider = FeaturedNotesNotifierFamily._();
+final featuredNotesNotifierProvider = FeaturedNotesNotifierFamily._();
 
 final class FeaturedNotesNotifierProvider
     extends
         $StreamNotifierProvider<FeaturedNotesNotifier, PaginationState<Note>> {
-  const FeaturedNotesNotifierProvider._({
+  FeaturedNotesNotifierProvider._({
     required FeaturedNotesNotifierFamily super.from,
     required (Account, {String? channelId}) super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class FeaturedNotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, {String? channelId})
         > {
-  const FeaturedNotesNotifierFamily._()
+  FeaturedNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'featuredNotesNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$FeaturedNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, channelId: _$args.channelId);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -107,6 +106,9 @@ abstract class _$FeaturedNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, channelId: _$args.channelId),
+    );
   }
 }

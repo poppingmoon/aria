@@ -10,11 +10,11 @@ part of 'message_opened_app_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MessageOpenedAppNotifier)
-const messageOpenedAppNotifierProvider = MessageOpenedAppNotifierProvider._();
+final messageOpenedAppNotifierProvider = MessageOpenedAppNotifierProvider._();
 
 final class MessageOpenedAppNotifierProvider
     extends $NotifierProvider<MessageOpenedAppNotifier, bool> {
-  const MessageOpenedAppNotifierProvider._()
+  MessageOpenedAppNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$MessageOpenedAppNotifier extends $Notifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<bool, bool>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$MessageOpenedAppNotifier extends $Notifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

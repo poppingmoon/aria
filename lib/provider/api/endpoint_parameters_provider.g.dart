@@ -10,7 +10,7 @@ part of 'endpoint_parameters_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(endpointParameters)
-const endpointParametersProvider = EndpointParametersFamily._();
+final endpointParametersProvider = EndpointParametersFamily._();
 
 final class EndpointParametersProvider
     extends
@@ -22,7 +22,7 @@ final class EndpointParametersProvider
     with
         $FutureModifier<List<EndpointParameter>>,
         $FutureProvider<List<EndpointParameter>> {
-  const EndpointParametersProvider._({
+  EndpointParametersProvider._({
     required EndpointParametersFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -75,7 +75,7 @@ final class EndpointParametersFamily extends $Family
           FutureOr<List<EndpointParameter>>,
           (Account, String)
         > {
-  const EndpointParametersFamily._()
+  EndpointParametersFamily._()
     : super(
         retry: null,
         name: r'endpointParametersProvider',

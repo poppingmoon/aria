@@ -10,7 +10,7 @@ part of 'translated_note_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(translatedNote)
-const translatedNoteProvider = TranslatedNoteFamily._();
+final translatedNoteProvider = TranslatedNoteFamily._();
 
 final class TranslatedNoteProvider
     extends
@@ -22,7 +22,7 @@ final class TranslatedNoteProvider
     with
         $FutureModifier<NotesTranslateResponse>,
         $FutureProvider<NotesTranslateResponse> {
-  const TranslatedNoteProvider._({
+  TranslatedNoteProvider._({
     required TranslatedNoteFamily super.from,
     required (Account, String, String) super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class TranslatedNoteFamily extends $Family
           FutureOr<NotesTranslateResponse>,
           (Account, String, String)
         > {
-  const TranslatedNoteFamily._()
+  TranslatedNoteFamily._()
     : super(
         retry: null,
         name: r'translatedNoteProvider',

@@ -10,11 +10,11 @@ part of 'pinned_emojis_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PinnedEmojisNotifier)
-const pinnedEmojisNotifierProvider = PinnedEmojisNotifierFamily._();
+final pinnedEmojisNotifierProvider = PinnedEmojisNotifierFamily._();
 
 final class PinnedEmojisNotifierProvider
     extends $NotifierProvider<PinnedEmojisNotifier, List<String>> {
-  const PinnedEmojisNotifierProvider._({
+  PinnedEmojisNotifierProvider._({
     required PinnedEmojisNotifierFamily super.from,
     required (Account, {bool reaction}) super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class PinnedEmojisNotifierFamily extends $Family
           List<String>,
           (Account, {bool reaction})
         > {
-  const PinnedEmojisNotifierFamily._()
+  PinnedEmojisNotifierFamily._()
     : super(
         retry: null,
         name: r'pinnedEmojisNotifierProvider',
@@ -98,7 +98,6 @@ abstract class _$PinnedEmojisNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, reaction: _$args.reaction);
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -108,6 +107,9 @@ abstract class _$PinnedEmojisNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, reaction: _$args.reaction),
+    );
   }
 }

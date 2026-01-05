@@ -10,11 +10,11 @@ part of 'note_clips_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NoteClipsNotifier)
-const noteClipsNotifierProvider = NoteClipsNotifierFamily._();
+final noteClipsNotifierProvider = NoteClipsNotifierFamily._();
 
 final class NoteClipsNotifierProvider
     extends $AsyncNotifierProvider<NoteClipsNotifier, List<Clip>> {
-  const NoteClipsNotifierProvider._({
+  NoteClipsNotifierProvider._({
     required NoteClipsNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class NoteClipsNotifierFamily extends $Family
           FutureOr<List<Clip>>,
           (Account, String)
         > {
-  const NoteClipsNotifierFamily._()
+  NoteClipsNotifierFamily._()
     : super(
         retry: null,
         name: r'noteClipsNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$NoteClipsNotifier extends $AsyncNotifier<List<Clip>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<List<Clip>>, List<Clip>>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$NoteClipsNotifier extends $AsyncNotifier<List<Clip>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

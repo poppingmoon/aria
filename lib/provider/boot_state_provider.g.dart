@@ -10,10 +10,10 @@ part of 'boot_state_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(BootState)
-const bootStateProvider = BootStateProvider._();
+final bootStateProvider = BootStateProvider._();
 
 final class BootStateProvider extends $AsyncNotifierProvider<BootState, bool?> {
-  const BootStateProvider._()
+  BootStateProvider._()
     : super(
         from: null,
         argument: null,
@@ -39,7 +39,6 @@ abstract class _$BootState extends $AsyncNotifier<bool?> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<AsyncValue<bool?>, bool?>;
     final element =
         ref.element
@@ -49,6 +48,6 @@ abstract class _$BootState extends $AsyncNotifier<bool?> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

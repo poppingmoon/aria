@@ -10,12 +10,12 @@ part of 'antenna_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(antenna)
-const antennaProvider = AntennaFamily._();
+final antennaProvider = AntennaFamily._();
 
 final class AntennaProvider
     extends $FunctionalProvider<AsyncValue<Antenna>, Antenna, FutureOr<Antenna>>
     with $FutureModifier<Antenna>, $FutureProvider<Antenna> {
-  const AntennaProvider._({
+  AntennaProvider._({
     required AntennaFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -62,7 +62,7 @@ String _$antennaHash() => r'b34a56473eb124ebe5dbc928c338650f26d513c6';
 
 final class AntennaFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Antenna>, (Account, String)> {
-  const AntennaFamily._()
+  AntennaFamily._()
     : super(
         retry: null,
         name: r'antennaProvider',

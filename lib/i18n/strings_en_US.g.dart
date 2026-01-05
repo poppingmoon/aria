@@ -927,6 +927,12 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Are you sure you want to unfollow {name}?'
 	String unfollowConfirm({required Object name}) => 'Are you sure you want to unfollow ${name}?';
 
+	/// en-US: 'Are you sure that you want to cancel your follow request to {name}?'
+	String cancelFollowRequestConfirm({required Object name}) => 'Are you sure that you want to cancel your follow request to ${name}?';
+
+	/// en-US: 'Are you sure that you want to reject the follow request from {name}?'
+	String rejectFollowRequestConfirm({required Object name}) => 'Are you sure that you want to reject the follow request from ${name}?';
+
 	/// en-US: 'You've requested an export. This may take a while. It will be added to your Drive once completed.'
 	String get exportRequested => 'You\'ve requested an export. This may take a while. It will be added to your Drive once completed.';
 

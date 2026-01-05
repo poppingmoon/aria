@@ -10,7 +10,7 @@ part of 'role_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(role)
-const roleProvider = RoleFamily._();
+final roleProvider = RoleFamily._();
 
 final class RoleProvider
     extends
@@ -22,7 +22,7 @@ final class RoleProvider
     with
         $FutureModifier<RolesListResponse>,
         $FutureProvider<RolesListResponse> {
-  const RoleProvider._({
+  RoleProvider._({
     required RoleFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class RoleFamily extends $Family
           FutureOr<RolesListResponse>,
           (Account, String)
         > {
-  const RoleFamily._()
+  RoleFamily._()
     : super(
         retry: null,
         name: r'roleProvider',

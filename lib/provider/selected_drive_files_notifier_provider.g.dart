@@ -10,12 +10,12 @@ part of 'selected_drive_files_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SelectedDriveFilesNotifier)
-const selectedDriveFilesNotifierProvider =
+final selectedDriveFilesNotifierProvider =
     SelectedDriveFilesNotifierProvider._();
 
 final class SelectedDriveFilesNotifierProvider
     extends $NotifierProvider<SelectedDriveFilesNotifier, List<DriveFile>> {
-  const SelectedDriveFilesNotifierProvider._()
+  SelectedDriveFilesNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -50,7 +50,6 @@ abstract class _$SelectedDriveFilesNotifier extends $Notifier<List<DriveFile>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<List<DriveFile>, List<DriveFile>>;
     final element =
         ref.element
@@ -60,6 +59,6 @@ abstract class _$SelectedDriveFilesNotifier extends $Notifier<List<DriveFile>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

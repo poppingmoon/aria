@@ -10,7 +10,7 @@ part of 'cache_manager_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(cacheManager)
-const cacheManagerProvider = CacheManagerProvider._();
+final cacheManagerProvider = CacheManagerProvider._();
 
 final class CacheManagerProvider
     extends
@@ -20,7 +20,7 @@ final class CacheManagerProvider
           ImageCacheManager
         >
     with $Provider<ImageCacheManager> {
-  const CacheManagerProvider._()
+  CacheManagerProvider._()
     : super(
         from: null,
         argument: null,

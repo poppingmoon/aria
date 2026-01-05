@@ -10,12 +10,12 @@ part of 'timeline_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(TimelineNotesNotifier)
-const timelineNotesNotifierProvider = TimelineNotesNotifierFamily._();
+final timelineNotesNotifierProvider = TimelineNotesNotifierFamily._();
 
 final class TimelineNotesNotifierProvider
     extends
         $StreamNotifierProvider<TimelineNotesNotifier, PaginationState<Note>> {
-  const TimelineNotesNotifierProvider._({
+  TimelineNotesNotifierProvider._({
     required TimelineNotesNotifierFamily super.from,
     required (TabSettings, {String? untilId}) super.argument,
   }) : super(
@@ -63,7 +63,7 @@ final class TimelineNotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (TabSettings, {String? untilId})
         > {
-  const TimelineNotesNotifierFamily._()
+  TimelineNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'timelineNotesNotifierProvider',
@@ -97,7 +97,6 @@ abstract class _$TimelineNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, untilId: _$args.untilId);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -112,6 +111,6 @@ abstract class _$TimelineNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, untilId: _$args.untilId));
   }
 }

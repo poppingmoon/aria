@@ -10,12 +10,12 @@ part of 'proxied_image_url_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(proxiedImageUrl)
-const proxiedImageUrlProvider = ProxiedImageUrlFamily._();
+final proxiedImageUrlProvider = ProxiedImageUrlFamily._();
 
 final class ProxiedImageUrlProvider
     extends $FunctionalProvider<Uri?, Uri?, Uri?>
     with $Provider<Uri?> {
-  const ProxiedImageUrlProvider._({
+  ProxiedImageUrlProvider._({
     required ProxiedImageUrlFamily super.from,
     required (String, Uri, {bool emoji, bool preview, bool static})
     super.argument,
@@ -83,7 +83,7 @@ final class ProxiedImageUrlFamily extends $Family
           Uri?,
           (String, Uri, {bool emoji, bool preview, bool static})
         > {
-  const ProxiedImageUrlFamily._()
+  ProxiedImageUrlFamily._()
     : super(
         retry: null,
         name: r'proxiedImageUrlProvider',

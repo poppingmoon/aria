@@ -10,7 +10,7 @@ part of 'popular_gallery_posts_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(popularGalleryPosts)
-const popularGalleryPostsProvider = PopularGalleryPostsFamily._();
+final popularGalleryPostsProvider = PopularGalleryPostsFamily._();
 
 final class PopularGalleryPostsProvider
     extends
@@ -22,7 +22,7 @@ final class PopularGalleryPostsProvider
     with
         $FutureModifier<List<GalleryPost>>,
         $FutureProvider<List<GalleryPost>> {
-  const PopularGalleryPostsProvider._({
+  PopularGalleryPostsProvider._({
     required PopularGalleryPostsFamily super.from,
     required Account super.argument,
   }) : super(
@@ -71,7 +71,7 @@ String _$popularGalleryPostsHash() =>
 
 final class PopularGalleryPostsFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<GalleryPost>>, Account> {
-  const PopularGalleryPostsFamily._()
+  PopularGalleryPostsFamily._()
     : super(
         retry: null,
         name: r'popularGalleryPostsProvider',

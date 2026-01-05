@@ -10,12 +10,12 @@ part of 'timeline_last_viewed_at_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(timelineLastViewedAt)
-const timelineLastViewedAtProvider = TimelineLastViewedAtFamily._();
+final timelineLastViewedAtProvider = TimelineLastViewedAtFamily._();
 
 final class TimelineLastViewedAtProvider
     extends $FunctionalProvider<DateTime?, DateTime?, DateTime?>
     with $Provider<DateTime?> {
-  const TimelineLastViewedAtProvider._({
+  TimelineLastViewedAtProvider._({
     required TimelineLastViewedAtFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -71,7 +71,7 @@ String _$timelineLastViewedAtHash() =>
 
 final class TimelineLastViewedAtFamily extends $Family
     with $FunctionalFamilyOverride<DateTime?, TabSettings> {
-  const TimelineLastViewedAtFamily._()
+  TimelineLastViewedAtFamily._()
     : super(
         retry: null,
         name: r'timelineLastViewedAtProvider',

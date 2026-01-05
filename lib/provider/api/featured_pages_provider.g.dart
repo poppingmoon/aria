@@ -10,7 +10,7 @@ part of 'featured_pages_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(featuredPages)
-const featuredPagesProvider = FeaturedPagesFamily._();
+final featuredPagesProvider = FeaturedPagesFamily._();
 
 final class FeaturedPagesProvider
     extends
@@ -20,7 +20,7 @@ final class FeaturedPagesProvider
           FutureOr<List<Page>>
         >
     with $FutureModifier<List<Page>>, $FutureProvider<List<Page>> {
-  const FeaturedPagesProvider._({
+  FeaturedPagesProvider._({
     required FeaturedPagesFamily super.from,
     required Account super.argument,
   }) : super(
@@ -67,7 +67,7 @@ String _$featuredPagesHash() => r'4e58a17a7c2c8658e462fc9ba79a70186fd69f5a';
 
 final class FeaturedPagesFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<Page>>, Account> {
-  const FeaturedPagesFamily._()
+  FeaturedPagesFamily._()
     : super(
         retry: null,
         name: r'featuredPagesProvider',

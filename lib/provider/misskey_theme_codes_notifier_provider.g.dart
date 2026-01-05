@@ -10,11 +10,11 @@ part of 'misskey_theme_codes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MisskeyThemeCodesNotifier)
-const misskeyThemeCodesNotifierProvider = MisskeyThemeCodesNotifierProvider._();
+final misskeyThemeCodesNotifierProvider = MisskeyThemeCodesNotifierProvider._();
 
 final class MisskeyThemeCodesNotifierProvider
     extends $NotifierProvider<MisskeyThemeCodesNotifier, List<String>> {
-  const MisskeyThemeCodesNotifierProvider._()
+  MisskeyThemeCodesNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -49,7 +49,6 @@ abstract class _$MisskeyThemeCodesNotifier extends $Notifier<List<String>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -59,6 +58,6 @@ abstract class _$MisskeyThemeCodesNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

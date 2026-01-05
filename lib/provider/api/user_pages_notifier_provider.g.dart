@@ -10,11 +10,11 @@ part of 'user_pages_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(UserPagesNotifier)
-const userPagesNotifierProvider = UserPagesNotifierFamily._();
+final userPagesNotifierProvider = UserPagesNotifierFamily._();
 
 final class UserPagesNotifierProvider
     extends $StreamNotifierProvider<UserPagesNotifier, PaginationState<Page>> {
-  const UserPagesNotifierProvider._({
+  UserPagesNotifierProvider._({
     required UserPagesNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class UserPagesNotifierFamily extends $Family
           Stream<PaginationState<Page>>,
           (Account, String)
         > {
-  const UserPagesNotifierFamily._()
+  UserPagesNotifierFamily._()
     : super(
         retry: null,
         name: r'userPagesNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$UserPagesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Page>>, PaginationState<Page>>;
@@ -102,6 +101,6 @@ abstract class _$UserPagesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

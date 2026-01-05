@@ -10,7 +10,7 @@ part of 'audio_handler_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(audioHandler)
-const audioHandlerProvider = AudioHandlerProvider._();
+final audioHandlerProvider = AudioHandlerProvider._();
 
 final class AudioHandlerProvider
     extends
@@ -20,7 +20,7 @@ final class AudioHandlerProvider
           FutureOr<AudioHandler>
         >
     with $FutureModifier<AudioHandler>, $FutureProvider<AudioHandler> {
-  const AudioHandlerProvider._()
+  AudioHandlerProvider._()
     : super(
         from: null,
         argument: null,

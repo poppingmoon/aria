@@ -10,11 +10,11 @@ part of 'check_word_mute_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(checkWordMute)
-const checkWordMuteProvider = CheckWordMuteFamily._();
+final checkWordMuteProvider = CheckWordMuteFamily._();
 
 final class CheckWordMuteProvider extends $FunctionalProvider<bool, bool, bool>
     with $Provider<bool> {
-  const CheckWordMuteProvider._({
+  CheckWordMuteProvider._({
     required CheckWordMuteFamily super.from,
     required (Account, String, {bool hardMute}) super.argument,
   }) : super(
@@ -74,7 +74,7 @@ String _$checkWordMuteHash() => r'1aa9ce3b99d3dc57e590ac6de383c8d46ac89b56';
 
 final class CheckWordMuteFamily extends $Family
     with $FunctionalFamilyOverride<bool, (Account, String, {bool hardMute})> {
-  const CheckWordMuteFamily._()
+  CheckWordMuteFamily._()
     : super(
         retry: null,
         name: r'checkWordMuteProvider',

@@ -10,7 +10,7 @@ part of 'miauth_repository_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(miAuthRepository)
-const miAuthRepositoryProvider = MiAuthRepositoryProvider._();
+final miAuthRepositoryProvider = MiAuthRepositoryProvider._();
 
 final class MiAuthRepositoryProvider
     extends
@@ -20,7 +20,7 @@ final class MiAuthRepositoryProvider
           MiAuthRepository
         >
     with $Provider<MiAuthRepository> {
-  const MiAuthRepositoryProvider._()
+  MiAuthRepositoryProvider._()
     : super(
         from: null,
         argument: null,

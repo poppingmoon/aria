@@ -10,7 +10,7 @@ part of 'following_channels_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(FollowingChannelsNotifier)
-const followingChannelsNotifierProvider = FollowingChannelsNotifierFamily._();
+final followingChannelsNotifierProvider = FollowingChannelsNotifierFamily._();
 
 final class FollowingChannelsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class FollowingChannelsNotifierProvider
           FollowingChannelsNotifier,
           PaginationState<CommunityChannel>
         > {
-  const FollowingChannelsNotifierProvider._({
+  FollowingChannelsNotifierProvider._({
     required FollowingChannelsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class FollowingChannelsNotifierFamily extends $Family
           Stream<PaginationState<CommunityChannel>>,
           Account
         > {
-  const FollowingChannelsNotifierFamily._()
+  FollowingChannelsNotifierFamily._()
     : super(
         retry: null,
         name: r'followingChannelsNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$FollowingChannelsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$FollowingChannelsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

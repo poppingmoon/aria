@@ -10,13 +10,13 @@ part of 'note_collapse_reason_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(noteCollapseReason)
-const noteCollapseReasonProvider = NoteCollapseReasonFamily._();
+final noteCollapseReasonProvider = NoteCollapseReasonFamily._();
 
 final class NoteCollapseReasonProvider
     extends
         $FunctionalProvider<CollapseReason?, CollapseReason?, CollapseReason?>
     with $Provider<CollapseReason?> {
-  const NoteCollapseReasonProvider._({
+  NoteCollapseReasonProvider._({
     required NoteCollapseReasonFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -72,7 +72,7 @@ String _$noteCollapseReasonHash() =>
 
 final class NoteCollapseReasonFamily extends $Family
     with $FunctionalFamilyOverride<CollapseReason?, (Account, String)> {
-  const NoteCollapseReasonFamily._()
+  NoteCollapseReasonFamily._()
     : super(
         retry: null,
         name: r'noteCollapseReasonProvider',

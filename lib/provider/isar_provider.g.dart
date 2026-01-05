@@ -10,12 +10,12 @@ part of 'isar_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(isar)
-const isarProvider = IsarProvider._();
+final isarProvider = IsarProvider._();
 
 final class IsarProvider
     extends $FunctionalProvider<AsyncValue<Isar>, Isar, FutureOr<Isar>>
     with $FutureModifier<Isar>, $FutureProvider<Isar> {
-  const IsarProvider._()
+  IsarProvider._()
     : super(
         from: null,
         argument: null,

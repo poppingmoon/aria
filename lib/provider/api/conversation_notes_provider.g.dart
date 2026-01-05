@@ -10,7 +10,7 @@ part of 'conversation_notes_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(conversationNotes)
-const conversationNotesProvider = ConversationNotesFamily._();
+final conversationNotesProvider = ConversationNotesFamily._();
 
 final class ConversationNotesProvider
     extends
@@ -20,7 +20,7 @@ final class ConversationNotesProvider
           FutureOr<List<Note>>
         >
     with $FutureModifier<List<Note>>, $FutureProvider<List<Note>> {
-  const ConversationNotesProvider._({
+  ConversationNotesProvider._({
     required ConversationNotesFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -67,7 +67,7 @@ String _$conversationNotesHash() => r'd4125b10db9e74084e1c7fc71bbff00a92a2868b';
 
 final class ConversationNotesFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<List<Note>>, (Account, String)> {
-  const ConversationNotesFamily._()
+  ConversationNotesFamily._()
     : super(
         retry: null,
         name: r'conversationNotesProvider',

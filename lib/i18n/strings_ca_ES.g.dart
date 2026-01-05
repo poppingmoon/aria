@@ -169,6 +169,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get download => 'Descarregar';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Estàs segur que vols suprimir el fitxer "${name}"? Les notes associades a aquest fitxer també seran esborrades.';
 	@override String unfollowConfirm({required Object name}) => 'Segur que vols deixar de seguir a ${name}?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Vols cancel·lar la teva sol·licitud de seguiment a ${name}?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Vols rebutjar la sol·licitud de seguiment de ${name}?';
 	@override String get exportRequested => 'Has sol·licitat una exportació de dades. Això pot trigar una estona. S\'afegirà a la teva unitat de disc un cop estigui completada.';
 	@override String get importRequested => 'Has sol·licitat una importació de dades. Això pot trigar una estona.';
 	@override String get lists => 'Llistes';

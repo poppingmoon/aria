@@ -10,11 +10,11 @@ part of 'post_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PostNotifier)
-const postNotifierProvider = PostNotifierFamily._();
+final postNotifierProvider = PostNotifierFamily._();
 
 final class PostNotifierProvider
     extends $NotifierProvider<PostNotifier, NotesCreateRequest> {
-  const PostNotifierProvider._({
+  PostNotifierProvider._({
     required PostNotifierFamily super.from,
     required (Account, {String? noteId}) super.argument,
   }) : super(
@@ -69,7 +69,7 @@ final class PostNotifierFamily extends $Family
           NotesCreateRequest,
           (Account, {String? noteId})
         > {
-  const PostNotifierFamily._()
+  PostNotifierFamily._()
     : super(
         retry: null,
         name: r'postNotifierProvider',
@@ -94,7 +94,6 @@ abstract class _$PostNotifier extends $Notifier<NotesCreateRequest> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, noteId: _$args.noteId);
     final ref = this.ref as $Ref<NotesCreateRequest, NotesCreateRequest>;
     final element =
         ref.element
@@ -104,6 +103,6 @@ abstract class _$PostNotifier extends $Notifier<NotesCreateRequest> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, noteId: _$args.noteId));
   }
 }

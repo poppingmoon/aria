@@ -10,11 +10,11 @@ part of 'notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NotesNotifier)
-const notesNotifierProvider = NotesNotifierFamily._();
+final notesNotifierProvider = NotesNotifierFamily._();
 
 final class NotesNotifierProvider
     extends $NotifierProvider<NotesNotifier, void> {
-  const NotesNotifierProvider._({
+  NotesNotifierProvider._({
     required NotesNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -62,7 +62,7 @@ String _$notesNotifierHash() => r'90b8787afd898e84bfcb1daf7e5574265fe9167b';
 
 final class NotesNotifierFamily extends $Family
     with $ClassFamilyOverride<NotesNotifier, void, void, void, Account> {
-  const NotesNotifierFamily._()
+  NotesNotifierFamily._()
     : super(
         retry: null,
         name: r'notesNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$NotesNotifier extends $Notifier<void> {
   @$mustCallSuper
   @override
   void runBuild() {
-    build(_$args);
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$NotesNotifier extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, null);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

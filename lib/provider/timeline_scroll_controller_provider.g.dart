@@ -10,7 +10,7 @@ part of 'timeline_scroll_controller_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(timelineScrollController)
-const timelineScrollControllerProvider = TimelineScrollControllerFamily._();
+final timelineScrollControllerProvider = TimelineScrollControllerFamily._();
 
 final class TimelineScrollControllerProvider
     extends
@@ -20,7 +20,7 @@ final class TimelineScrollControllerProvider
           Raw<ScrollController>
         >
     with $Provider<Raw<ScrollController>> {
-  const TimelineScrollControllerProvider._({
+  TimelineScrollControllerProvider._({
     required TimelineScrollControllerFamily super.from,
     required TabSettings super.argument,
   }) : super(
@@ -78,7 +78,7 @@ String _$timelineScrollControllerHash() =>
 
 final class TimelineScrollControllerFamily extends $Family
     with $FunctionalFamilyOverride<Raw<ScrollController>, TabSettings> {
-  const TimelineScrollControllerFamily._()
+  TimelineScrollControllerFamily._()
     : super(
         retry: null,
         name: r'timelineScrollControllerProvider',

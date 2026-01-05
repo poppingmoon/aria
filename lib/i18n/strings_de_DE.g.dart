@@ -45,6 +45,11 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 
 	// Translations
 	@override String get aboutAria => 'Über Aria';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Möchtest du die Follower-Anfrage von '),
+		name,
+		const TextSpan(text: ' akzeptieren?'),
+	]);
 	@override String get accessToken => 'Zugangstoken';
 	@override String get accessTokenUpdated => 'Zugangstoken erfolgreich aktualisiert';
 	@override String get accountAdded => 'Konto erfolgreich hinzugefügt';
@@ -66,7 +71,13 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get avatarSize => 'Avatargröße';
 	@override String get background => 'Hintergrund';
 	@override String get buttonTypes => 'Schaltflächentyp';
+	@override String get cache => 'Cache';
 	@override String get calculating => 'Berechne...';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Möchtest du die Follower-Anfrage an '),
+		name,
+		const TextSpan(text: ' zurückziehen?'),
+	]);
 	@override String get clientInfo => 'Client-Informationen';
 	@override String get confirmBeforeFollow => 'Folgen bestätigen';
 	@override String get confirmBeforePost => 'Posten bestätigen';
@@ -100,6 +111,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get emojiPickerUseDialog => 'Emoji-Picker als Dialog anzeigen';
 	@override String get enableEmojiFadeIn => 'Einblendanimationen für benutzerdefinierte Emojis aktivieren';
 	@override String get enableFederation => 'Föderation aktivieren';
+	@override String get enableHapticFeedback => 'Haptisches Feedback aktivieren';
 	@override String get enablePredictiveBack => 'Vorausschauende Zurück-Animationen aktivieren';
 	@override String get enableSpellCheck => 'Rechtschreibprüfung aktivieren';
 	@override String get endpoint => 'Endpunkt';
@@ -135,6 +147,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get keepOpen => 'Geöffnet halten';
 	@override String get keepTimelinePosition => 'Position der Chronik beibehalten';
 	@override String get lineHeight => 'Zeilenhöhe';
+	@override String get loadFromDrive => 'Aus Drive auswählen';
 	@override String get loginWithAccessToken => 'Mit einem Zugangstoken anmelden';
 	@override String get margin => 'Außenabstand';
 	@override String get media => 'Medien';
@@ -195,6 +208,11 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get postConfirm => 'Diese Notiz veröffentlichen?';
 	@override String get reactionConfirm => 'Reaktion hinzufügen?';
 	@override String get recentlyUsedEmojis => 'Kürzlich verwendete Emojis';
+	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Möchtest du die Follower-Anfrage von '),
+		name,
+		const TextSpan(text: ' ablehnen?'),
+	]);
 	@override String get renoteConfirm => 'Diese Notiz renoten?';
 	@override String get renoteToChannel => 'In Kanal renoten';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
@@ -203,6 +221,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get reset => 'Zurücksetzen';
 	@override String get rotate => 'Drehen';
+	@override String get saveToDrive => 'In Drive speichern';
 	@override String get selectIcon => 'Symbol auswählen';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Selbst-Renote von '),
@@ -245,10 +264,13 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get showTimelineTabBarAtBottom => 'Chronik-Tableiste am unteren Rand anzeigen';
 	@override String get showTranslateButtonInNoteFooter => '"Übersetzen" den Notiz-Aktionen hinzufügen';
 	@override String get sinceDate => 'Datum von';
+	@override String get springStiffness => 'Wischwiderstand';
 	@override String get stackTrace => 'Stacktrace';
 	@override String get streamingChannel => 'Kanalstream';
 	@override String get swapCw => 'Notiz und Inhaltswarnung tauschen';
+	@override String get swipeSensitivity => 'Wischempfindlichkeit';
 	@override String get tabName => 'Tabname';
+	@override String get tabSwitching => 'Tabwechsel';
 	@override String get tabType => 'Typ';
 	@override String get tabs => 'Tabs';
 	@override String get tapToShow => 'Antippen zum Anzeigen';
@@ -273,6 +295,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get vibrateNote => 'Bei neuer Notiz vibrieren';
 	@override String get vibrateNotification => 'Bei neuer Benachrichtigung vibrieren';
+	@override String get vibration => 'Vibration';
 	@override String get webBrowser => 'Webbrowser';
 }
 
@@ -367,6 +390,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get download => 'Herunterladen';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Möchtest du die Datei „${name}“ wirklich löschen? Einige Inhalte, die diese Datei verwenden, werden auch verschwinden.';
 	@override String unfollowConfirm({required Object name}) => 'Möchtest du ${name} wirklich nicht mehr folgen?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Möchtest du die Follow-Anfrage von ${name} ablehnen?';
 	@override String get exportRequested => 'Du hast einen Export angefragt. Dies kann etwas Zeit in Anspruch nehmen. Sobald der Export abgeschlossen ist, wird er deiner Drive hinzugefügt.';
 	@override String get importRequested => 'Du hast einen Import angefragt. Dies kann etwas Zeit in Anspruch nehmen.';
 	@override String get lists => 'Listen';
@@ -1302,6 +1326,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => 'Entweder dein Browser oder deine Instanz unterstützt Push-Benachrichtigungen nicht';
 	@override String get sendPushNotificationReadMessage => 'Push-Benachrichtigungen löschen, sobald sie gelesen wurden';
 	@override String get sendPushNotificationReadMessageCaption => 'Dies kann gegebenenfalls den Batterieverbrauch deines Gerätes erhöhen.';
+	@override String get pleaseAllowPushNotification => 'Bitte erlauben Sie Benachrichtigungen in Ihrem Browser.';
 	@override String get windowMaximize => 'Maximieren';
 	@override String get windowMinimize => 'Minimieren';
 	@override String get windowRestore => 'Wiederherstellen';
@@ -1338,6 +1363,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'Dieses Benutzerkonto besitzt nicht die Berechtigung, um diese Aktion auszuführen.';
 	@override String get preset => 'Vorlage';
 	@override String get selectFromPresets => 'Aus Vorlagen wählen';
+	@override String get custom => 'Benutzerdefiniert';
 	@override String get achievements => 'Errungenschaften';
 	@override String get gotInvalidResponseError => 'Ungültige Antwort des Servers';
 	@override String get gotInvalidResponseErrorDescription => 'Eventuell ist der Server momentan nicht erreichbar oder untergeht Wartungsarbeiten. Bitte versuche es später noch einmal.';
@@ -1527,6 +1553,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'Wird aktualisiert...';
 	@override String get pullDownToRefresh => 'Zum Aktualisieren ziehen';
 	@override String get useGroupedNotifications => 'Benachrichtigungen gruppieren';
+	@override String get emailVerificationFailedError => 'Es gab ein Problem bei der Überprüfung Ihrer E-Mail-Adresse. Der Link ist möglicherweise abgelaufen.';
 	@override String get cwNotationRequired => 'Ist "Inhaltswarnung verwenden" aktiviert, muss eine Beschreibung gegeben werden.';
 	@override String get doReaction => 'Reagieren';
 	@override String get code => 'Code';
@@ -1654,7 +1681,12 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get defaultImageCompressionLevel_description => 'Ein niedrigerer Wert erhält die Bildqualität, erhöht aber die Dateigröße. <br>Höhere Werte reduzieren die Dateigröße, verringern aber die Bildqualität.';
 	@override String get inMinutes => 'Minute(n)';
 	@override String get inDays => 'Tag(en)';
+	@override String get safeModeEnabled => 'Der abgesicherte Modus ist aktiviert.';
+	@override String get schedule => 'Planen';
+	@override String get scheduled => 'Geplant';
 	@override String get widgets => 'Widgets';
+	@override String get deviceInfo => 'Geräteinformation';
+	@override String get youAreAdmin => 'Sie sind ein Administrator';
 	@override String get presets => 'Vorlage';
 	@override late final _TranslationsMisskeyImageEditingDeDe imageEditing_ = _TranslationsMisskeyImageEditingDeDe._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorDeDe imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorDeDe._(_root);

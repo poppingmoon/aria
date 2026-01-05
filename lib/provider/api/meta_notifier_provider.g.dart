@@ -11,12 +11,12 @@ part of 'meta_notifier_provider.dart';
 
 @ProviderFor(MetaNotifier)
 @JsonPersist()
-const metaNotifierProvider = MetaNotifierFamily._();
+final metaNotifierProvider = MetaNotifierFamily._();
 
 @JsonPersist()
 final class MetaNotifierProvider
     extends $AsyncNotifierProvider<MetaNotifier, MetaResponse> {
-  const MetaNotifierProvider._({
+  MetaNotifierProvider._({
     required MetaNotifierFamily super.from,
     required String super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class MetaNotifierFamily extends $Family
           FutureOr<MetaResponse>,
           String
         > {
-  const MetaNotifierFamily._()
+  MetaNotifierFamily._()
     : super(
         retry: null,
         name: r'metaNotifierProvider',
@@ -90,7 +90,6 @@ abstract class _$MetaNotifierBase extends $AsyncNotifier<MetaResponse> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<AsyncValue<MetaResponse>, MetaResponse>;
     final element =
         ref.element
@@ -100,7 +99,7 @@ abstract class _$MetaNotifierBase extends $AsyncNotifier<MetaResponse> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }
 

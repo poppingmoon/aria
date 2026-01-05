@@ -10,11 +10,11 @@ part of 'note_is_deleted_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(NoteIsDeletedNotifier)
-const noteIsDeletedNotifierProvider = NoteIsDeletedNotifierFamily._();
+final noteIsDeletedNotifierProvider = NoteIsDeletedNotifierFamily._();
 
 final class NoteIsDeletedNotifierProvider
     extends $NotifierProvider<NoteIsDeletedNotifier, bool> {
-  const NoteIsDeletedNotifierProvider._({
+  NoteIsDeletedNotifierProvider._({
     required NoteIsDeletedNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class NoteIsDeletedNotifierFamily extends $Family
           bool,
           (Account, String)
         > {
-  const NoteIsDeletedNotifierFamily._()
+  NoteIsDeletedNotifierFamily._()
     : super(
         retry: null,
         name: r'noteIsDeletedNotifierProvider',
@@ -95,7 +95,6 @@ abstract class _$NoteIsDeletedNotifier extends $Notifier<bool> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<bool, bool>;
     final element =
         ref.element
@@ -105,6 +104,6 @@ abstract class _$NoteIsDeletedNotifier extends $Notifier<bool> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

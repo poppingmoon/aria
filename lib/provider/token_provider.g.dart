@@ -10,11 +10,11 @@ part of 'token_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(token)
-const tokenProvider = TokenFamily._();
+final tokenProvider = TokenFamily._();
 
 final class TokenProvider extends $FunctionalProvider<String?, String?, String?>
     with $Provider<String?> {
-  const TokenProvider._({
+  TokenProvider._({
     required TokenFamily super.from,
     required Account super.argument,
   }) : super(
@@ -69,7 +69,7 @@ String _$tokenHash() => r'd0cf5e964101cd703c8341205f649f0793dd2261';
 
 final class TokenFamily extends $Family
     with $FunctionalFamilyOverride<String?, Account> {
-  const TokenFamily._()
+  TokenFamily._()
     : super(
         retry: null,
         name: r'tokenProvider',

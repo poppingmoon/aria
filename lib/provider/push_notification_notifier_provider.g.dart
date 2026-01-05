@@ -10,12 +10,12 @@ part of 'push_notification_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PushNotificationNotifier)
-const pushNotificationNotifierProvider = PushNotificationNotifierProvider._();
+final pushNotificationNotifierProvider = PushNotificationNotifierProvider._();
 
 final class PushNotificationNotifierProvider
     extends
         $StreamNotifierProvider<PushNotificationNotifier, PushNotification> {
-  const PushNotificationNotifierProvider._()
+  PushNotificationNotifierProvider._()
     : super(
         from: null,
         argument: null,
@@ -43,7 +43,6 @@ abstract class _$PushNotificationNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build();
     final ref =
         this.ref as $Ref<AsyncValue<PushNotification>, PushNotification>;
     final element =
@@ -54,6 +53,6 @@ abstract class _$PushNotificationNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, build);
   }
 }

@@ -10,11 +10,11 @@ part of 'server_url_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ServerUrlNotifier)
-const serverUrlNotifierProvider = ServerUrlNotifierFamily._();
+final serverUrlNotifierProvider = ServerUrlNotifierFamily._();
 
 final class ServerUrlNotifierProvider
     extends $NotifierProvider<ServerUrlNotifier, Uri> {
-  const ServerUrlNotifierProvider._({
+  ServerUrlNotifierProvider._({
     required ServerUrlNotifierFamily super.from,
     required String super.argument,
   }) : super(
@@ -62,7 +62,7 @@ String _$serverUrlNotifierHash() => r'fdb259591cc72d97dc0d46744a1d99c690c8ae07';
 
 final class ServerUrlNotifierFamily extends $Family
     with $ClassFamilyOverride<ServerUrlNotifier, Uri, Uri, Uri, String> {
-  const ServerUrlNotifierFamily._()
+  ServerUrlNotifierFamily._()
     : super(
         retry: null,
         name: r'serverUrlNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$ServerUrlNotifier extends $Notifier<Uri> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref = this.ref as $Ref<Uri, Uri>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$ServerUrlNotifier extends $Notifier<Uri> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

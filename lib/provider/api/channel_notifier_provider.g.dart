@@ -10,11 +10,11 @@ part of 'channel_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChannelNotifier)
-const channelNotifierProvider = ChannelNotifierFamily._();
+final channelNotifierProvider = ChannelNotifierFamily._();
 
 final class ChannelNotifierProvider
     extends $AsyncNotifierProvider<ChannelNotifier, CommunityChannel> {
-  const ChannelNotifierProvider._({
+  ChannelNotifierProvider._({
     required ChannelNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ChannelNotifierFamily extends $Family
           FutureOr<CommunityChannel>,
           (Account, String)
         > {
-  const ChannelNotifierFamily._()
+  ChannelNotifierFamily._()
     : super(
         retry: null,
         name: r'channelNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$ChannelNotifier extends $AsyncNotifier<CommunityChannel> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref as $Ref<AsyncValue<CommunityChannel>, CommunityChannel>;
     final element =
@@ -97,6 +96,6 @@ abstract class _$ChannelNotifier extends $AsyncNotifier<CommunityChannel> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

@@ -10,7 +10,7 @@ part of 'liked_plays_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(LikedPlaysNotifier)
-const likedPlaysNotifierProvider = LikedPlaysNotifierFamily._();
+final likedPlaysNotifierProvider = LikedPlaysNotifierFamily._();
 
 final class LikedPlaysNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class LikedPlaysNotifierProvider
           LikedPlaysNotifier,
           PaginationState<FlashMyLikesResponse>
         > {
-  const LikedPlaysNotifierProvider._({
+  LikedPlaysNotifierProvider._({
     required LikedPlaysNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -66,7 +66,7 @@ final class LikedPlaysNotifierFamily extends $Family
           Stream<PaginationState<FlashMyLikesResponse>>,
           Account
         > {
-  const LikedPlaysNotifierFamily._()
+  LikedPlaysNotifierFamily._()
     : super(
         retry: null,
         name: r'likedPlaysNotifierProvider',
@@ -91,7 +91,6 @@ abstract class _$LikedPlaysNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -109,6 +108,6 @@ abstract class _$LikedPlaysNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

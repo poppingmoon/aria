@@ -10,11 +10,11 @@ part of 'drive_file_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(DriveFileNotifier)
-const driveFileNotifierProvider = DriveFileNotifierFamily._();
+final driveFileNotifierProvider = DriveFileNotifierFamily._();
 
 final class DriveFileNotifierProvider
     extends $AsyncNotifierProvider<DriveFileNotifier, DriveFile> {
-  const DriveFileNotifierProvider._({
+  DriveFileNotifierProvider._({
     required DriveFileNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class DriveFileNotifierFamily extends $Family
           FutureOr<DriveFile>,
           (Account, String)
         > {
-  const DriveFileNotifierFamily._()
+  DriveFileNotifierFamily._()
     : super(
         retry: null,
         name: r'driveFileNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$DriveFileNotifier extends $AsyncNotifier<DriveFile> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<DriveFile>, DriveFile>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$DriveFileNotifier extends $AsyncNotifier<DriveFile> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

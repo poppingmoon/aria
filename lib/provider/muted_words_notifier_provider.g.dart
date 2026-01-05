@@ -10,11 +10,11 @@ part of 'muted_words_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(MutedWordsNotifier)
-const mutedWordsNotifierProvider = MutedWordsNotifierFamily._();
+final mutedWordsNotifierProvider = MutedWordsNotifierFamily._();
 
 final class MutedWordsNotifierProvider
     extends $NotifierProvider<MutedWordsNotifier, List<MuteWord>> {
-  const MutedWordsNotifierProvider._({
+  MutedWordsNotifierProvider._({
     required MutedWordsNotifierFamily super.from,
     required (Account, {bool hardMute}) super.argument,
   }) : super(
@@ -70,7 +70,7 @@ final class MutedWordsNotifierFamily extends $Family
           List<MuteWord>,
           (Account, {bool hardMute})
         > {
-  const MutedWordsNotifierFamily._()
+  MutedWordsNotifierFamily._()
     : super(
         retry: null,
         name: r'mutedWordsNotifierProvider',
@@ -98,7 +98,6 @@ abstract class _$MutedWordsNotifier extends $Notifier<List<MuteWord>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, hardMute: _$args.hardMute);
     final ref = this.ref as $Ref<List<MuteWord>, List<MuteWord>>;
     final element =
         ref.element
@@ -108,6 +107,9 @@ abstract class _$MutedWordsNotifier extends $Notifier<List<MuteWord>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, hardMute: _$args.hardMute),
+    );
   }
 }

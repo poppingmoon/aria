@@ -10,12 +10,12 @@ part of 'scheduled_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ScheduledNotesNotifier)
-const scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily._();
+final scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily._();
 
 final class ScheduledNotesNotifierProvider
     extends
         $StreamNotifierProvider<ScheduledNotesNotifier, PaginationState<Note>> {
-  const ScheduledNotesNotifierProvider._({
+  ScheduledNotesNotifierProvider._({
     required ScheduledNotesNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class ScheduledNotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           Account
         > {
-  const ScheduledNotesNotifierFamily._()
+  ScheduledNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'scheduledNotesNotifierProvider',
@@ -89,7 +89,6 @@ abstract class _$ScheduledNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -104,6 +103,6 @@ abstract class _$ScheduledNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -10,7 +10,7 @@ part of 'chat_memberships_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChatMembershipsNotifier)
-const chatMembershipsNotifierProvider = ChatMembershipsNotifierFamily._();
+final chatMembershipsNotifierProvider = ChatMembershipsNotifierFamily._();
 
 final class ChatMembershipsNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class ChatMembershipsNotifierProvider
           ChatMembershipsNotifier,
           PaginationState<ChatJoining>
         > {
-  const ChatMembershipsNotifierProvider._({
+  ChatMembershipsNotifierProvider._({
     required ChatMembershipsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class ChatMembershipsNotifierFamily extends $Family
           Stream<PaginationState<ChatJoining>>,
           Account
         > {
-  const ChatMembershipsNotifierFamily._()
+  ChatMembershipsNotifierFamily._()
     : super(
         retry: null,
         name: r'chatMembershipsNotifierProvider',
@@ -92,7 +92,6 @@ abstract class _$ChatMembershipsNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref
             as $Ref<
@@ -110,6 +109,6 @@ abstract class _$ChatMembershipsNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

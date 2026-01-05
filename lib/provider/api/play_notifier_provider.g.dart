@@ -10,11 +10,11 @@ part of 'play_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PlayNotifier)
-const playNotifierProvider = PlayNotifierFamily._();
+final playNotifierProvider = PlayNotifierFamily._();
 
 final class PlayNotifierProvider
     extends $AsyncNotifierProvider<PlayNotifier, Flash> {
-  const PlayNotifierProvider._({
+  PlayNotifierProvider._({
     required PlayNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class PlayNotifierFamily extends $Family
           FutureOr<Flash>,
           (Account, String)
         > {
-  const PlayNotifierFamily._()
+  PlayNotifierFamily._()
     : super(
         retry: null,
         name: r'playNotifierProvider',
@@ -86,7 +86,6 @@ abstract class _$PlayNotifier extends $AsyncNotifier<Flash> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref = this.ref as $Ref<AsyncValue<Flash>, Flash>;
     final element =
         ref.element
@@ -96,6 +95,6 @@ abstract class _$PlayNotifier extends $AsyncNotifier<Flash> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

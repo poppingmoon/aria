@@ -10,7 +10,7 @@ part of 'riverpod_storage_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(riverpodStorage)
-const riverpodStorageProvider = RiverpodStorageProvider._();
+final riverpodStorageProvider = RiverpodStorageProvider._();
 
 final class RiverpodStorageProvider
     extends
@@ -22,7 +22,7 @@ final class RiverpodStorageProvider
     with
         $FutureModifier<Storage<String, String>>,
         $FutureProvider<Storage<String, String>> {
-  const RiverpodStorageProvider._()
+  RiverpodStorageProvider._()
     : super(
         from: null,
         argument: null,

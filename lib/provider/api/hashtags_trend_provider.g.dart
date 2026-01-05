@@ -10,7 +10,7 @@ part of 'hashtags_trend_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(hashtagsTrend)
-const hashtagsTrendProvider = HashtagsTrendFamily._();
+final hashtagsTrendProvider = HashtagsTrendFamily._();
 
 final class HashtagsTrendProvider
     extends
@@ -22,7 +22,7 @@ final class HashtagsTrendProvider
     with
         $FutureModifier<List<HashtagsTrendResponse>>,
         $FutureProvider<List<HashtagsTrendResponse>> {
-  const HashtagsTrendProvider._({
+  HashtagsTrendProvider._({
     required HashtagsTrendFamily super.from,
     required Account super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class HashtagsTrendFamily extends $Family
           FutureOr<List<HashtagsTrendResponse>>,
           Account
         > {
-  const HashtagsTrendFamily._()
+  HashtagsTrendFamily._()
     : super(
         retry: null,
         name: r'hashtagsTrendProvider',

@@ -10,7 +10,7 @@ part of 'list_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(list)
-const listProvider = ListFamily._();
+final listProvider = ListFamily._();
 
 final class ListProvider
     extends
@@ -22,7 +22,7 @@ final class ListProvider
     with
         $FutureModifier<UsersListsShowResponse>,
         $FutureProvider<UsersListsShowResponse> {
-  const ListProvider._({
+  ListProvider._({
     required ListFamily super.from,
     required (Account, String, {bool? forPublic}) super.argument,
   }) : super(
@@ -74,7 +74,7 @@ final class ListFamily extends $Family
           FutureOr<UsersListsShowResponse>,
           (Account, String, {bool? forPublic})
         > {
-  const ListFamily._()
+  ListFamily._()
     : super(
         retry: null,
         name: r'listProvider',

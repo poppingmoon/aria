@@ -10,12 +10,12 @@ part of 'search_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(SearchNotesNotifier)
-const searchNotesNotifierProvider = SearchNotesNotifierFamily._();
+final searchNotesNotifierProvider = SearchNotesNotifierFamily._();
 
 final class SearchNotesNotifierProvider
     extends
         $StreamNotifierProvider<SearchNotesNotifier, PaginationState<Note>> {
-  const SearchNotesNotifierProvider._({
+  SearchNotesNotifierProvider._({
     required SearchNotesNotifierFamily super.from,
     required (
       Account,
@@ -80,7 +80,7 @@ final class SearchNotesNotifierFamily extends $Family
             String? untilId,
           })
         > {
-  const SearchNotesNotifierFamily._()
+  SearchNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'searchNotesNotifierProvider',
@@ -147,15 +147,6 @@ abstract class _$SearchNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      _$args.$2,
-      userId: _$args.userId,
-      channelId: _$args.channelId,
-      localOnly: _$args.localOnly,
-      sinceId: _$args.sinceId,
-      untilId: _$args.untilId,
-    );
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -170,6 +161,17 @@ abstract class _$SearchNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        _$args.$2,
+        userId: _$args.userId,
+        channelId: _$args.channelId,
+        localOnly: _$args.localOnly,
+        sinceId: _$args.sinceId,
+        untilId: _$args.untilId,
+      ),
+    );
   }
 }

@@ -354,6 +354,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get download => 'Descargar';
 	@override String driveFileDeleteConfirm({required Object name}) => '¿Desea borrar el archivo "${name}"? Las notas que tengan este archivo como adjunto serán eliminadas';
 	@override String unfollowConfirm({required Object name}) => '¿Desea dejar de seguir a ${name}?';
+	@override String cancelFollowRequestConfirm({required Object name}) => '¿Desea cancelar su solicitud de seguimiento a ${name}?';
+	@override String rejectFollowRequestConfirm({required Object name}) => '¿Desea rechazar la solicitud de seguimiento de ${name}?';
 	@override String get exportRequested => 'Has solicitado la exportación. Puede llevar un tiempo. Cuando termine la exportación, se añadirá al drive';
 	@override String get importRequested => 'Has solicitado la importación. Puede llevar un tiempo.';
 	@override String get lists => 'Listas';
@@ -397,7 +399,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get pinned => 'Fijar al perfil';
 	@override String get you => 'Tú';
 	@override String get clickToShow => 'Haz clic para verlo';
-	@override String get sensitive => 'Marcado como sensible';
+	@override String get sensitive => 'Marcado como sensible (NSFW)';
 	@override String get add => 'Agregar';
 	@override String get reaction => 'Reacción';
 	@override String get reactions => 'Reacciones';
@@ -412,7 +414,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get attachCancel => 'Quitar adjunto';
 	@override String get deleteFile => 'Eliminar archivo';
 	@override String get markAsSensitive => 'Marcar como sensible';
-	@override String get unmarkAsSensitive => 'Desmarcar como sensible';
+	@override String get unmarkAsSensitive => 'No marcar como sensible';
 	@override String get enterFileName => 'Introduce el nombre del archivo';
 	@override String get mute => 'Silenciar';
 	@override String get unmute => 'Dejar de silenciar';
@@ -588,10 +590,10 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get activity => 'Actividad';
 	@override String get images => 'Imágenes';
 	@override String get image => 'Imágenes';
-	@override String get birthday => 'Fecha de nacimiento';
+	@override String get birthday => 'Cumpleaños';
 	@override String yearsOld({required Object age}) => '${age} años';
 	@override String get registeredDate => 'Fecha de registro';
-	@override String get location => 'Lugar';
+	@override String get location => 'Ubicación';
 	@override String get theme => 'Tema';
 	@override String get themeForLightMode => 'Tema para usar en Modo Linterna';
 	@override String get themeForDarkMode => 'Tema para usar en Modo Oscuro';
@@ -622,7 +624,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get dropHereToUpload => 'Arrastra los archivos aquí para subirlos.';
 	@override String get unableToDelete => 'No se puede borrar';
 	@override String get inputNewFileName => 'Ingrese un nuevo nombre de archivo';
-	@override String get inputNewDescription => 'Ingrese nueva descripción';
+	@override String get inputNewDescription => 'Introducir un nuevo texto alternativo';
 	@override String get inputNewFolderName => 'Ingrese un nuevo nombre de la carpeta';
 	@override String get circularReferenceFolder => 'La carpeta de destino es una sub-carpeta de la carpeta que quieres mover.';
 	@override String get hasChildFilesOrFolders => 'No se puede borrar esta carpeta. No está vacía.';
@@ -848,7 +850,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle esta habilitado el nombre del bucket debe ser especificado como parte de la URL en lugar del nombre de host en la URL. Puede ser necesario activar esta opción cuando se utilice, por ejemplo, Minio en un servidor propio.';
 	@override String get serverLogs => 'Registros del servidor';
 	@override String get deleteAll => 'Eliminar todos';
-	@override String get showFixedPostForm => 'Mostrar el formulario de las entradas encima de la línea de tiempo';
+	@override String get showFixedPostForm => 'Visualizar la ventana de publicación en la parte superior de la línea de tiempo.';
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulario de publicación por encima de la cronología (Canales)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Incluir por defecto respuestas de usuarios recién seguidos en la línea de tiempo';
 	@override String get newNoteRecived => 'Tienes una nota nueva';
@@ -975,7 +977,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get makeActive => 'Activar';
 	@override String get display => 'Apariencia';
 	@override String get copy => 'Copiar';
-	@override String get copiedToClipboard => 'Texto copiado al portapapeles';
+	@override String get copiedToClipboard => 'Copiado al portapapeles';
 	@override String get metrics => 'Métricas';
 	@override String get overview => 'Resumen';
 	@override String get logs => 'Registros';
@@ -984,7 +986,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get channel => 'Canal';
 	@override String get create => 'Crear';
 	@override String get notificationSetting => 'Ajustes de Notificaciones';
-	@override String get notificationSettingDesc => 'Por favor elija el tipo de notificación a mostrar';
+	@override String get notificationSettingDesc => 'Por favor elige el tipo de notificación a mostrar';
 	@override String get useGlobalSetting => 'Usar ajustes globales';
 	@override String get useGlobalSettingDesc => 'Al activarse, se usará la configuración de notificaciones de la cuenta, al desactivarse se pueden hacer configuraciones particulares.';
 	@override String get other => 'Otro';
@@ -1016,7 +1018,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get switchUi => 'Cambiar interfaz de usuario';
 	@override String get desktop => 'Escritorio';
 	@override String get clip => 'Clip';
-	@override String get createNew => 'Crear';
+	@override String get createNew => 'Crear Nuevo';
 	@override String get optional => 'Opcional';
 	@override String get createNewClip => 'Crear clip nuevo';
 	@override String get unclip => 'Quitar clip';
@@ -1113,7 +1115,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get showingPastTimeline => 'Mostrar líneas de tiempo antiguas';
 	@override String get clear => 'Limpiar';
 	@override String get markAllAsRead => 'Marcar todo como leído';
-	@override String get goBack => 'Deseleccionar';
+	@override String get goBack => 'Anterior';
 	@override String get unlikeConfirm => '¿Quitar como favorito?';
 	@override String get fullView => 'Vista completa';
 	@override String get quitFullView => 'quitar vista completa';
@@ -1472,8 +1474,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get dialog => 'Diálogo';
 	@override String get icon => 'Avatar';
 	@override String get forYou => 'Para ti';
-	@override String get currentAnnouncements => 'Anuncios actuales';
-	@override String get pastAnnouncements => 'Anuncios anteriores';
+	@override String get currentAnnouncements => 'Avisos actuales';
+	@override String get pastAnnouncements => 'Avisos anteriores';
 	@override String get youHaveUnreadAnnouncements => 'Hay anuncios sin leer';
 	@override String get useSecurityKey => 'Por favor, sigue las instrucciones de tu dispositivo o navegador para usar tu clave de seguridad o tu clave de paso.';
 	@override String get replies => 'Responder';
@@ -1521,7 +1523,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get angle => 'Ángulo';
 	@override String get flip => 'Echar de un capirotazo';
 	@override String get showAvatarDecorations => 'Mostrar decoraciones de avatar';
-	@override String get releaseToRefresh => 'Soltar para recargar';
+	@override String get releaseToRefresh => 'Suelta para recargar';
 	@override String get refreshing => 'Recargando...';
 	@override String get pullDownToRefresh => 'Tira hacia abajo para recargar';
 	@override String get useGroupedNotifications => 'Mostrar notificaciones agrupadas';
@@ -1800,9 +1802,9 @@ class _TranslationsMisskeyImageFrameEditorEsEs extends TranslationsMisskeyImageF
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Edición de Fotograma';
+	@override String get title => 'Edición de Fotos';
 	@override String get tip => 'Decora tus imágenes con marcos y etiquetas que contengan metadatos.';
-	@override String get header => 'Cabezal';
+	@override String get header => 'Título';
 	@override String get footer => 'Pie de página';
 	@override String get borderThickness => 'Ancho del borde';
 	@override String get labelThickness => 'Ancho de la etiqueta';
@@ -1839,8 +1841,8 @@ class _TranslationsMisskeyOrderEsEs extends TranslationsMisskeyOrderEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get newest => 'Los más recientes primero';
-	@override String get oldest => 'Los más antiguos primero';
+	@override String get newest => 'Más reciente primero';
+	@override String get oldest => 'Más antiguos primero';
 }
 
 // Path: misskey.chat_
@@ -1905,7 +1907,7 @@ class _TranslationsMisskeyEmojiPaletteEsEs extends TranslationsMisskeyEmojiPalet
 	@override String get palettes => 'Paleta\n';
 	@override String get enableSyncBetweenDevicesForPalettes => 'Activar la sincronización de paletas entre dispositivos';
 	@override String get paletteForMain => 'Paleta principal';
-	@override String get paletteForReaction => 'Paleta de reacción';
+	@override String get paletteForReaction => 'Paleta utilizada para las reacciones';
 }
 
 // Path: misskey.settings_
@@ -1925,7 +1927,7 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	@override String get accountData => 'Datos de la cuenta';
 	@override String get accountDataBanner => 'Exportación e importación para gestionar los datos de la cuenta.';
 	@override String get muteAndBlockBanner => 'Puedes configurar y gestionar ajustes para ocultar contenidos y restringir acciones a usuarios específicos.';
-	@override String get accessibilityBanner => 'Puedes personalizar los visuales y el comportamiento del cliente, y configurar los ajustes para optimizar el uso.';
+	@override String get accessibilityBanner => 'Puedes personalizar el aspecto y el comportamiento del cliente y configurar los ajustes para optimizar su uso.';
 	@override String get privacyBanner => 'Puedes configurar opciones relacionadas con la privacidad de la cuenta, como la visibilidad del contenido, la posibilidad de descubrir la cuenta y la aprobación de seguimiento.';
 	@override String get securityBanner => 'Puedes configurar opciones relacionadas con la seguridad de la cuenta, como la contraseña, los métodos de inicio de sesión, las aplicaciones de autenticación y Passkeys.';
 	@override String get preferencesBanner => 'Puedes configurar el comportamiento general del cliente según tus preferencias.';
@@ -1942,7 +1944,7 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	@override String get ifOff => 'Si está desactivado';
 	@override String get enableSyncThemesBetweenDevices => 'Sincronizar los temas instalados entre dispositivos.';
 	@override String get enablePullToRefresh => 'Tirar para actualizar';
-	@override String get enablePullToRefresh_description => 'Si utiliza un ratón, arrastre mientras pulsa la rueda de desplazamiento.';
+	@override String get enablePullToRefresh_description => 'Si utilizas un ratón, arrastra mientras pulsas la rueda de desplazamiento.';
 	@override String get realtimeMode_description => 'Establece una conexión con el servidor y actualiza el contenido en tiempo real. Esto puede aumentar el tráfico y el consumo de memoria.';
 	@override String get contentsUpdateFrequency => 'Frecuencia de adquisición del contenido.';
 	@override String get contentsUpdateFrequency_description => 'Cuanto mayor sea el valor, más se actualiza el contenido, pero disminuye el rendimiento y aumenta el tráfico y el consumo de memoria.';
@@ -2343,7 +2345,7 @@ class _TranslationsMisskeyAdEsEs extends TranslationsMisskeyAdEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get back => 'Deseleccionar';
+	@override String get back => 'Anterior';
 	@override String get reduceFrequencyOfThisAd => 'Mostrar menos este anuncio.';
 	@override String get hide => 'No mostrar';
 	@override String get timezoneinfo => 'El día de la semana está determidado por la zona horaria del servidor.';
@@ -2990,10 +2992,10 @@ class _TranslationsMisskeyProfileEsEs extends TranslationsMisskeyProfileEnUs {
 	@override String get name => 'Nombre';
 	@override String get username => 'Nombre de usuario';
 	@override String get description => 'Descripción';
-	@override String get youCanIncludeHashtags => 'Puedes añadir hashtags';
+	@override String get youCanIncludeHashtags => 'También puedes incluir hashtags en tu biografía';
 	@override String get metadata => 'información adicional';
 	@override String get metadataEdit => 'Editar información adicional';
-	@override String get metadataDescription => 'Muestra la información adicional en el perfil';
+	@override String get metadataDescription => 'Usando esto puedes mostrar campos de información adicionales en tu perfil.';
 	@override String get metadataLabel => 'Etiqueta';
 	@override String get metadataContent => 'Contenido';
 	@override String get changeAvatar => 'Cambiar avatar';
@@ -3878,8 +3880,8 @@ class _TranslationsMisskeyImageEditingVarsEsEs extends TranslationsMisskeyImageE
 	@override String get filename => 'Nombre de archivo';
 	@override String get filename_without_ext => 'Nombre del archivo sin la extensión';
 	@override String get year => 'Año de rodaje';
-	@override String get month => 'Mes de rodaje';
-	@override String get day => 'Día de rodaje';
+	@override String get month => 'Mes de la fotografía';
+	@override String get day => 'Día de la fotografía';
 	@override String get hour => 'Hora';
 	@override String get minute => 'Minuto';
 	@override String get second => 'Segundo';
@@ -4307,7 +4309,7 @@ class _TranslationsMisskeyThemeKeysEsEs extends TranslationsMisskeyThemeKeysEnUs
 	@override String get indicator => 'Indicador';
 	@override String get panel => 'Panel';
 	@override String get shadow => 'Sombra';
-	@override String get header => 'Cabezal';
+	@override String get header => 'Título';
 	@override String get navBg => 'Fondo de la barra lateral';
 	@override String get navFg => 'Texto de la barra lateral';
 	@override String get navActive => 'Texto de la barra lateral (activo)';
@@ -4412,7 +4414,7 @@ class _TranslationsMisskeyNotificationTypesEsEs extends TranslationsMisskeyNotif
 	@override String get follow => 'Siguiendo';
 	@override String get mention => 'Menciones';
 	@override String get reply => 'Respuestas';
-	@override String get renote => 'Renotar';
+	@override String get renote => 'Renotas';
 	@override String get quote => 'Citar';
 	@override String get reaction => 'Reacción';
 	@override String get pollEnded => 'La encuesta terminó';
@@ -4888,7 +4890,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityEsEs extends Translat
 	@override String get followers => 'Visible solo para seguidores. Sólo tus seguidores podrán ver la nota, y no podrá ser renotada por otras personas.';
 	@override String get direct => 'Visible sólo para usuarios específicos, y el destinatario será notificado. Puede usarse como alternativa a la mensajería directa.';
 	@override String get doNotSendConfidencialOnDirect1 => '¡Ten cuidado cuando vayas a enviar información sensible!';
-	@override String get doNotSendConfidencialOnDirect2 => 'Los administradores del servidor pueden leer lo que escribes. Ten cuidado cuando envíes información sensible en notas directas en servidores no confiables.';
+	@override String get doNotSendConfidencialOnDirect2 => 'Los administradores del servidor, también llamado instancia, pueden leer lo que escribes. Ten cuidado cuando envíes información sensible en notas directas en servidores o instancias no confiables.';
 	@override String get localOnly => 'Publicando con esta opción seleccionada, la nota no se federará hacia otros servidores. Los usuarios de otros servidores no podrán ver estas notas directamente, sin importar los ajustes seleccionados más arriba.';
 }
 

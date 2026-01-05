@@ -10,7 +10,7 @@ part of 'installed_misskey_colors_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(installedMisskeyColors)
-const installedMisskeyColorsProvider = InstalledMisskeyColorsProvider._();
+final installedMisskeyColorsProvider = InstalledMisskeyColorsProvider._();
 
 final class InstalledMisskeyColorsProvider
     extends
@@ -20,7 +20,7 @@ final class InstalledMisskeyColorsProvider
           List<MisskeyColors>
         >
     with $Provider<List<MisskeyColors>> {
-  const InstalledMisskeyColorsProvider._()
+  InstalledMisskeyColorsProvider._()
     : super(
         from: null,
         argument: null,

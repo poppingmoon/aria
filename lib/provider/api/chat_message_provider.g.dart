@@ -10,7 +10,7 @@ part of 'chat_message_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(chatMessage)
-const chatMessageProvider = ChatMessageFamily._();
+final chatMessageProvider = ChatMessageFamily._();
 
 final class ChatMessageProvider
     extends
@@ -20,7 +20,7 @@ final class ChatMessageProvider
           FutureOr<ChatMessage>
         >
     with $FutureModifier<ChatMessage>, $FutureProvider<ChatMessage> {
-  const ChatMessageProvider._({
+  ChatMessageProvider._({
     required ChatMessageFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -68,7 +68,7 @@ String _$chatMessageHash() => r'0885033843a9fd874b39669bd1e8a0f033e75aaa';
 
 final class ChatMessageFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<ChatMessage>, (Account, String)> {
-  const ChatMessageFamily._()
+  ChatMessageFamily._()
     : super(
         retry: null,
         name: r'chatMessageProvider',

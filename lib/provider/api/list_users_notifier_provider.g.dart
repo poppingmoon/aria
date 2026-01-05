@@ -10,11 +10,11 @@ part of 'list_users_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ListUsersNotifier)
-const listUsersNotifierProvider = ListUsersNotifierFamily._();
+final listUsersNotifierProvider = ListUsersNotifierFamily._();
 
 final class ListUsersNotifierProvider
     extends $AsyncNotifierProvider<ListUsersNotifier, List<UserDetailed>> {
-  const ListUsersNotifierProvider._({
+  ListUsersNotifierProvider._({
     required ListUsersNotifierFamily super.from,
     required (Account, String, {bool? forPublic}) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ListUsersNotifierFamily extends $Family
           FutureOr<List<UserDetailed>>,
           (Account, String, {bool? forPublic})
         > {
-  const ListUsersNotifierFamily._()
+  ListUsersNotifierFamily._()
     : super(
         retry: null,
         name: r'listUsersNotifierProvider',
@@ -97,7 +97,6 @@ abstract class _$ListUsersNotifier extends $AsyncNotifier<List<UserDetailed>> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2, forPublic: _$args.forPublic);
     final ref =
         this.ref as $Ref<AsyncValue<List<UserDetailed>>, List<UserDetailed>>;
     final element =
@@ -108,6 +107,9 @@ abstract class _$ListUsersNotifier extends $AsyncNotifier<List<UserDetailed>> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(_$args.$1, _$args.$2, forPublic: _$args.forPublic),
+    );
   }
 }

@@ -10,11 +10,11 @@ part of 'clip_notes_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ClipNotesNotifier)
-const clipNotesNotifierProvider = ClipNotesNotifierFamily._();
+final clipNotesNotifierProvider = ClipNotesNotifierFamily._();
 
 final class ClipNotesNotifierProvider
     extends $StreamNotifierProvider<ClipNotesNotifier, PaginationState<Note>> {
-  const ClipNotesNotifierProvider._({
+  ClipNotesNotifierProvider._({
     required ClipNotesNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -61,7 +61,7 @@ final class ClipNotesNotifierFamily extends $Family
           Stream<PaginationState<Note>>,
           (Account, String)
         > {
-  const ClipNotesNotifierFamily._()
+  ClipNotesNotifierFamily._()
     : super(
         retry: null,
         name: r'clipNotesNotifierProvider',
@@ -87,7 +87,6 @@ abstract class _$ClipNotesNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -102,6 +101,6 @@ abstract class _$ClipNotesNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

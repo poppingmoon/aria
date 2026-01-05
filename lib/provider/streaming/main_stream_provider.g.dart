@@ -10,12 +10,12 @@ part of 'main_stream_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(_mainStreamConnection)
-const _mainStreamConnectionProvider = _MainStreamConnectionFamily._();
+final _mainStreamConnectionProvider = _MainStreamConnectionFamily._();
 
 final class _MainStreamConnectionProvider
     extends $FunctionalProvider<AsyncValue<String>, String, FutureOr<String>>
     with $FutureModifier<String>, $FutureProvider<String> {
-  const _MainStreamConnectionProvider._({
+  _MainStreamConnectionProvider._({
     required _MainStreamConnectionFamily super.from,
     required Account super.argument,
   }) : super(
@@ -63,7 +63,7 @@ String _$_mainStreamConnectionHash() =>
 
 final class _MainStreamConnectionFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<String>, Account> {
-  const _MainStreamConnectionFamily._()
+  _MainStreamConnectionFamily._()
     : super(
         retry: null,
         name: r'_mainStreamConnectionProvider',
@@ -80,13 +80,13 @@ final class _MainStreamConnectionFamily extends $Family
 }
 
 @ProviderFor(mainStream)
-const mainStreamProvider = MainStreamFamily._();
+final mainStreamProvider = MainStreamFamily._();
 
 final class MainStreamProvider
     extends
         $FunctionalProvider<AsyncValue<MainEvent>, MainEvent, Stream<MainEvent>>
     with $FutureModifier<MainEvent>, $StreamProvider<MainEvent> {
-  const MainStreamProvider._({
+  MainStreamProvider._({
     required MainStreamFamily super.from,
     required Account super.argument,
   }) : super(
@@ -133,7 +133,7 @@ String _$mainStreamHash() => r'64516a65202e98291f9cbb189cb6e444cee56b51';
 
 final class MainStreamFamily extends $Family
     with $FunctionalFamilyOverride<Stream<MainEvent>, Account> {
-  const MainStreamFamily._()
+  MainStreamFamily._()
     : super(
         retry: null,
         name: r'mainStreamProvider',

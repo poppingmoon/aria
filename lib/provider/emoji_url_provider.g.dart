@@ -10,7 +10,7 @@ part of 'emoji_url_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(emojiUrl)
-const emojiUrlProvider = EmojiUrlFamily._();
+final emojiUrlProvider = EmojiUrlFamily._();
 
 final class EmojiUrlProvider
     extends
@@ -20,7 +20,7 @@ final class EmojiUrlProvider
           (String, String)
         >
     with $Provider<(String, String)> {
-  const EmojiUrlProvider._({
+  EmojiUrlProvider._({
     required EmojiUrlFamily super.from,
     required (
       Account,
@@ -101,7 +101,7 @@ final class EmojiUrlFamily extends $Family
           (String, String),
           (Account, String, {String? url, String? host, bool useOriginalSize})
         > {
-  const EmojiUrlFamily._()
+  EmojiUrlFamily._()
     : super(
         retry: null,
         name: r'emojiUrlProvider',

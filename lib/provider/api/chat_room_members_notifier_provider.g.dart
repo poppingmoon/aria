@@ -10,7 +10,7 @@ part of 'chat_room_members_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(ChatRoomMembersNotifier)
-const chatRoomMembersNotifierProvider = ChatRoomMembersNotifierFamily._();
+final chatRoomMembersNotifierProvider = ChatRoomMembersNotifierFamily._();
 
 final class ChatRoomMembersNotifierProvider
     extends
@@ -18,7 +18,7 @@ final class ChatRoomMembersNotifierProvider
           ChatRoomMembersNotifier,
           PaginationState<ChatJoining>
         > {
-  const ChatRoomMembersNotifierProvider._({
+  ChatRoomMembersNotifierProvider._({
     required ChatRoomMembersNotifierFamily super.from,
     required (Account, String) super.argument,
   }) : super(
@@ -67,7 +67,7 @@ final class ChatRoomMembersNotifierFamily extends $Family
           Stream<PaginationState<ChatJoining>>,
           (Account, String)
         > {
-  const ChatRoomMembersNotifierFamily._()
+  ChatRoomMembersNotifierFamily._()
     : super(
         retry: null,
         name: r'chatRoomMembersNotifierProvider',
@@ -96,7 +96,6 @@ abstract class _$ChatRoomMembersNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args.$1, _$args.$2);
     final ref =
         this.ref
             as $Ref<
@@ -114,6 +113,6 @@ abstract class _$ChatRoomMembersNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

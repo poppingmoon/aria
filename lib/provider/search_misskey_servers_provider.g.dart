@@ -10,7 +10,7 @@ part of 'search_misskey_servers_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(searchMisskeyServers)
-const searchMisskeyServersProvider = SearchMisskeyServersFamily._();
+final searchMisskeyServersProvider = SearchMisskeyServersFamily._();
 
 final class SearchMisskeyServersProvider
     extends
@@ -22,7 +22,7 @@ final class SearchMisskeyServersProvider
     with
         $FutureModifier<List<JoinMisskeyInstanceInfo>>,
         $FutureProvider<List<JoinMisskeyInstanceInfo>> {
-  const SearchMisskeyServersProvider._({
+  SearchMisskeyServersProvider._({
     required SearchMisskeyServersFamily super.from,
     required String super.argument,
   }) : super(
@@ -75,7 +75,7 @@ final class SearchMisskeyServersFamily extends $Family
           FutureOr<List<JoinMisskeyInstanceInfo>>,
           String
         > {
-  const SearchMisskeyServersFamily._()
+  SearchMisskeyServersFamily._()
     : super(
         retry: null,
         name: r'searchMisskeyServersProvider',

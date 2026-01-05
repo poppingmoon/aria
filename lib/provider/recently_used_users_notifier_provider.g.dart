@@ -10,12 +10,12 @@ part of 'recently_used_users_notifier_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(RecentlyUsedUsersNotifier)
-const recentlyUsedUsersNotifierProvider = RecentlyUsedUsersNotifierFamily._();
+final recentlyUsedUsersNotifierProvider = RecentlyUsedUsersNotifierFamily._();
 
 final class RecentlyUsedUsersNotifierProvider
     extends
         $AsyncNotifierProvider<RecentlyUsedUsersNotifier, List<UserDetailed>> {
-  const RecentlyUsedUsersNotifierProvider._({
+  RecentlyUsedUsersNotifierProvider._({
     required RecentlyUsedUsersNotifierFamily super.from,
     required Account super.argument,
   }) : super(
@@ -64,7 +64,7 @@ final class RecentlyUsedUsersNotifierFamily extends $Family
           FutureOr<List<UserDetailed>>,
           Account
         > {
-  const RecentlyUsedUsersNotifierFamily._()
+  RecentlyUsedUsersNotifierFamily._()
     : super(
         retry: null,
         name: r'recentlyUsedUsersNotifierProvider',
@@ -89,7 +89,6 @@ abstract class _$RecentlyUsedUsersNotifier
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(_$args);
     final ref =
         this.ref as $Ref<AsyncValue<List<UserDetailed>>, List<UserDetailed>>;
     final element =
@@ -100,6 +99,6 @@ abstract class _$RecentlyUsedUsersNotifier
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(ref, () => build(_$args));
   }
 }

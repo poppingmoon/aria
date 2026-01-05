@@ -10,11 +10,11 @@ part of 'page_provider.dart';
 // ignore_for_file: type=lint, type=warning
 
 @ProviderFor(PageNotifier)
-const pageNotifierProvider = PageNotifierFamily._();
+final pageNotifierProvider = PageNotifierFamily._();
 
 final class PageNotifierProvider
     extends $AsyncNotifierProvider<PageNotifier, Page> {
-  const PageNotifierProvider._({
+  PageNotifierProvider._({
     required PageNotifierFamily super.from,
     required (Account, {String? pageId, String? pageName, String? username})
     super.argument,
@@ -62,7 +62,7 @@ final class PageNotifierFamily extends $Family
           FutureOr<Page>,
           (Account, {String? pageId, String? pageName, String? username})
         > {
-  const PageNotifierFamily._()
+  PageNotifierFamily._()
     : super(
         retry: null,
         name: r'pageNotifierProvider',
@@ -103,12 +103,6 @@ abstract class _$PageNotifier extends $AsyncNotifier<Page> {
   @$mustCallSuper
   @override
   void runBuild() {
-    final created = build(
-      _$args.$1,
-      pageId: _$args.pageId,
-      pageName: _$args.pageName,
-      username: _$args.username,
-    );
     final ref = this.ref as $Ref<AsyncValue<Page>, Page>;
     final element =
         ref.element
@@ -118,6 +112,14 @@ abstract class _$PageNotifier extends $AsyncNotifier<Page> {
               Object?,
               Object?
             >;
-    element.handleValue(ref, created);
+    element.handleCreate(
+      ref,
+      () => build(
+        _$args.$1,
+        pageId: _$args.pageId,
+        pageName: _$args.pageName,
+        username: _$args.username,
+      ),
+    );
   }
 }
