@@ -85,6 +85,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Remove unused files
+        run: rm -rf /opt/hostedtoolcache
+
       - name: Copy files to env.APK_BUILD_DIR
         run: |
           mkdir -p $APK_BUILD_DIR
