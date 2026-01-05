@@ -328,6 +328,8 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get download => '다운로드';
 	@override String driveFileDeleteConfirm({required Object name}) => '‘${name}’ 파일을 삭제하시겠습니까? 이 파일을 사용하는 일부 콘텐츠도 삭제됩니다.';
 	@override String unfollowConfirm({required Object name}) => '${name}님을 언팔로우하시겠습니까?';
+	@override String cancelFollowRequestConfirm({required Object name}) => '${name}(으)로의 팔로우 신청을 취소하시겠습니까?';
+	@override String rejectFollowRequestConfirm({required Object name}) => '${name}(으)로부터의 팔로우 신청을 거부하시겠습니까?';
 	@override String get exportRequested => '내보내기를 요청하였습니다. 이 작업은 시간이 걸릴 수 있습니다. 내보내기가 완료되면 "드라이브"에 추가됩니다.';
 	@override String get importRequested => '가져오기를 요청하였습니다. 이 작업에는 시간이 걸릴 수 있습니다.';
 	@override String get lists => '리스트';

@@ -328,6 +328,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get download => '내리받기';
 	@override String driveFileDeleteConfirm({required Object name}) => '‘${name}’ 파일얼 뭉캡니꺼? 요 파일얼 서넌 콘텐츠도 뭉캐집니다.';
 	@override String unfollowConfirm({required Object name}) => '${name}님얼 고마 팔로잉합니꺼?';
+	@override String cancelFollowRequestConfirm({required Object name}) => '${name}(으)로의 팔로우 신청을 취소하시겠습니까?';
+	@override String rejectFollowRequestConfirm({required Object name}) => '${name}(으)로부터의 팔로우 신청을 거부하시겠습니까?';
 	@override String get exportRequested => '내가기 요청얼 햇십니다. 시간이 쪼매 걸릴 깁니다. 요청이 껕나모 ‘드라이브’에 옇십니다.';
 	@override String get importRequested => '가오기 요청얼 햇십니다. 시간이 쪼매 걸릴 깁니다.';
 	@override String get lists => '리스트';

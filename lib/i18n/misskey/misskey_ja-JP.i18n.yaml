@@ -87,6 +87,8 @@ files: "ファイル"
 download: "ダウンロード"
 driveFileDeleteConfirm: "ファイル「{name}」を削除しますか？このファイルを使用した一部のコンテンツも削除されます。"
 unfollowConfirm: "{name}のフォローを解除しますか？"
+cancelFollowRequestConfirm: "{name}へのフォロー申請をキャンセルしますか？"
+rejectFollowRequestConfirm: "{name}からのフォロー申請を拒否しますか？"
 exportRequested: "エクスポートをリクエストしました。これには時間がかかる場合があります。エクスポートが終わると、「ドライブ」に追加されます。"
 importRequested: "インポートをリクエストしました。これには時間がかかる場合があります。"
 lists: "リスト"
@@ -2541,7 +2543,7 @@ widgets_:
   userList_:
     chooseList: "リストを選択"
   clicker: "クリッカー"
-  birthdayFollowings: "今日誕生日のユーザー"
+  birthdayFollowings: "もうすぐ誕生日のユーザー"
   chat: "ダイレクトメッセージ"
 cw_:
   hide: "隠す"
@@ -3301,7 +3303,6 @@ imageEffector_:
   title: "エフェクト"
   addEffect: "エフェクトを追加"
   discardChangesConfirm: "変更を破棄して終了しますか？"
-  nothingToConfigure: "設定項目はありません"
   failedToLoadImage: "画像の読み込みに失敗しました"
   fxs_:
     chromaticAberration: "色収差"

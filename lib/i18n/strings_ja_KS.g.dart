@@ -386,6 +386,8 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get download => 'ダウンロード';
 	@override String driveFileDeleteConfirm({required Object name}) => 'ファイル「${name}」をほかしてええか？このファイルを添付したノートも消えてまうで。';
 	@override String unfollowConfirm({required Object name}) => '${name}のフォローを解除してもええんか？';
+	@override String cancelFollowRequestConfirm({required Object name}) => '${name}へのフォロー申請をキャンセルしますか？';
+	@override String rejectFollowRequestConfirm({required Object name}) => '${name}からのフォロー申請を拒否しますか？';
 	@override String get exportRequested => 'エクスポートしてな、って言うたけど、これ多分めっちゃ時間かかるで。エクスポート終わったら「ドライブ」に突っ込んどくで。';
 	@override String get importRequested => 'インポートしてな、ってリクエストしたけど、これ多分めっちゃ時間かかるで。';
 	@override String get lists => 'リスト';
@@ -3855,7 +3857,6 @@ class _TranslationsMisskeyImageEffectorJaKs extends TranslationsMisskeyImageEffe
 	@override String get title => 'エフェクト';
 	@override String get addEffect => 'エフェクトを追加';
 	@override String get discardChangesConfirm => '変更をせんで終わるか？';
-	@override String get nothingToConfigure => '設定項目はありません';
 	@override String get failedToLoadImage => 'あかん、画像読み込まれへんわ';
 	@override late final _TranslationsMisskeyImageEffectorFxsJaKs fxs_ = _TranslationsMisskeyImageEffectorFxsJaKs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsJaKs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsJaKs._(_root);

@@ -169,6 +169,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get download => '下載';
 	@override String driveFileDeleteConfirm({required Object name}) => '確定要刪除檔案「${name}」嗎？使用此檔案的貼文也會跟著被刪除。';
 	@override String unfollowConfirm({required Object name}) => '確定要取消追隨${name}嗎？';
+	@override String cancelFollowRequestConfirm({required Object name}) => '要取消向 ${name} 送出的追隨申請嗎？';
+	@override String rejectFollowRequestConfirm({required Object name}) => '要拒絕來自 ${name} 的追隨申請嗎？';
 	@override String get exportRequested => '已請求匯出。這可能會花一點時間。匯出的檔案將會被放到雲端硬碟裡。';
 	@override String get importRequested => '已請求匯入。這可能會花一點時間。';
 	@override String get lists => '清單';

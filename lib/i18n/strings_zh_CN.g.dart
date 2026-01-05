@@ -45,6 +45,11 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 
 	// Translations
 	@override String get aboutAria => '关于 Aria';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: '确认同意 '),
+		name,
+		const TextSpan(text: ' 的关注请求吗？'),
+	]);
 	@override String get accessToken => '访问令牌';
 	@override String get accessTokenUpdated => '成功更新访问令牌';
 	@override String get accountAdded => '成功添加账户';
@@ -68,6 +73,11 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get buttonTypes => '按钮类型';
 	@override String get cache => '缓存';
 	@override String get calculating => '计算中...';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: '确认取消对 '),
+		name,
+		const TextSpan(text: ' 的关注请求吗？'),
+	]);
 	@override String get clientInfo => '客户端信息';
 	@override String get confirmBeforeFollow => '在关注之前确认';
 	@override String get confirmBeforePost => '在发布帖子前确认';
@@ -91,7 +101,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get disableDataSaverWhenOnWifi => '连接 Wi-Fi 时关闭省流量模式';
 	@override String get disableStreamingTimeline => '关闭动态实时刷新​';
 	@override String get disableSubscribingNotes => '关闭实时表情回应更新';
-	@override String get discardChangesConfirm => '您确定要放弃更改并返回吗？';
+	@override String get discardChangesConfirm => '确认放弃更改并返回吗？';
 	@override String get displayOfThumbnail => '缩略图显示方式';
 	@override String get doubleTapToShow => '双击显示';
 	@override String get draw => '绘制';
@@ -198,6 +208,11 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get postConfirm => '你确定要发布这个帖子吗？';
 	@override String get reactionConfirm => '您确定要添加一个回应吗？';
 	@override String get recentlyUsedEmojis => '最近使用的表情';
+	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: '确认拒绝 '),
+		name,
+		const TextSpan(text: ' 的关注请求吗？'),
+	]);
 	@override String get renoteConfirm => '您确定要转发这个帖子吗？';
 	@override String get renoteToChannel => '转发至频道';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
@@ -252,7 +267,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get springStiffness => '弹簧刚度';
 	@override String get stackTrace => '错误详情';
 	@override String get streamingChannel => '直播频道';
-	@override String get swapCw => '交换注释与正文';
+	@override String get swapCw => '注释与正文互换';
 	@override String get swipeSensitivity => '滑动灵敏度';
 	@override String get tabName => '标签名称';
 	@override String get tabSwitching => '切换标签';
@@ -346,7 +361,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get copyLinkRenote => '复制转帖链接';
 	@override String get delete => '删除';
 	@override String get deleteAndEdit => '删除并编辑';
-	@override String get deleteAndEditConfirm => '要删除此帖并再次编辑吗？对此帖的所有回应、转发和回复也将被删除。';
+	@override String get deleteAndEditConfirm => '要删除此帖并再次编辑吗？此帖下所有的回应、转发和回复也将被删除。';
 	@override String get addToList => '添加至列表';
 	@override String get addToAntenna => '添加到天线';
 	@override String get sendMessage => '发送消息';
@@ -376,6 +391,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get download => '下载';
 	@override String driveFileDeleteConfirm({required Object name}) => '要删除「${name}」文件吗？附加此文件的帖子也会被删除。';
 	@override String unfollowConfirm({required Object name}) => '要取消对 ${name} 的关注吗？';
+	@override String cancelFollowRequestConfirm({required Object name}) => '要取消申请关注${name}吗？';
+	@override String rejectFollowRequestConfirm({required Object name}) => '要拒绝${name}的关注申请吗？';
 	@override String get exportRequested => '导出请求已提交，这可能需要花一些时间，导出的文件将保存到网盘中。';
 	@override String get importRequested => '导入请求已提交，这可能需要花一点时间。';
 	@override String get lists => '列表';
@@ -427,7 +444,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get pinnedEmojisForReactionSettingDescription => '可以设置发表回应时置顶显示的表情符号';
 	@override String get pinnedEmojisSettingDescription => '可以设置输入表情符号时置顶显示的表情符号';
 	@override String get emojiPickerDisplay => '选择器显示设置';
-	@override String get overwriteFromPinnedEmojisForReaction => '从「置顶（回应）」设置覆盖';
+	@override String get overwriteFromPinnedEmojisForReaction => '使用「置顶（回应）」设置覆盖';
 	@override String get overwriteFromPinnedEmojis => '从全局设置覆盖';
 	@override String get reactionSettingDescription2 => '拖动重新排序，单击删除，点击 + 添加。';
 	@override String get rememberNoteVisibility => '保存上次设置的可见性';
@@ -444,8 +461,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get unblock => '取消拉黑';
 	@override String get suspend => '冻结';
 	@override String get unsuspend => '解除冻结';
-	@override String get blockConfirm => '确定要拉黑吗？';
-	@override String get unblockConfirm => '确定要取消拉黑吗？';
+	@override String get blockConfirm => '确定要屏蔽吗？';
+	@override String get unblockConfirm => '确定要取消屏蔽吗？';
 	@override String get suspendConfirm => '要冻结吗？';
 	@override String get unsuspendConfirm => '要解除冻结吗？';
 	@override String get selectList => '选择列表';
@@ -465,7 +482,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get addEmoji => '添加表情符号';
 	@override String get settingGuide => '推荐配置';
 	@override String get cacheRemoteFiles => '缓存远程文件';
-	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。此时推荐将 default.yml 的 proxyRemoteFiles 设置为 true 以优化缩略图生成及保护用户隐私。';
+	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。此时推荐将  的 proxyRemoteFiles 设置为 true 以优化缩略图生成及保护用户隐私。';
 	@override String get youCanCleanRemoteFilesCache => '可以使用文件管理的🗑️按钮来删除所有的缓存。';
 	@override String get cacheRemoteSensitiveFiles => '缓存远程敏感媒体文件';
 	@override String get cacheRemoteSensitiveFilesDescription => '如果禁用这项设定，远程服务器的敏感媒体将不会被缓存，而是直接链接。';
@@ -475,7 +492,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get flagAsCatDescription => '喵喵喵？？';
 	@override String get flagShowTimelineReplies => '在时间线上显示帖子的回复';
 	@override String get flagShowTimelineRepliesDescription => '启用时，时间线除了显示用户的帖子外，还会显示其他用户对帖子的回复。';
-	@override String get autoAcceptFollowed => '自动允许来自我关注的用户对我的关注请求';
+	@override String get autoAcceptFollowed => '自动允许回关请求';
 	@override String get addAccount => '添加账户';
 	@override String get reloadAccountsList => '更新账户列表';
 	@override String get loginFailed => '登录失败';
@@ -538,8 +555,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get federationAllowedHosts => '允许联合的服务器';
 	@override String get federationAllowedHostsDescription => '设定允许联合的服务器，以换行分隔。';
 	@override String get muteAndBlock => '屏蔽/拉黑';
-	@override String get mutedUsers => '已屏蔽用户';
-	@override String get blockedUsers => '已拉黑的用户';
+	@override String get mutedUsers => '已静音的用户';
+	@override String get blockedUsers => '已屏蔽的用户';
 	@override String get noUsers => '无用户';
 	@override String get editProfile => '编辑资料';
 	@override String get noteDeleteConfirm => '确定要删除该帖子吗？';
@@ -1168,7 +1185,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get noBotProtectionWarning => '尚未设置 Bot 防御。';
 	@override String get configure => '设置';
 	@override String get postToGallery => '创建新图集';
-	@override String get postToHashtag => '投稿到这个标签';
+	@override String get postToHashtag => '发布至该话题';
 	@override String get gallery => '图集';
 	@override String get recentPosts => '最新发布';
 	@override String get popularPosts => '热门投稿';
@@ -1635,7 +1652,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get restore => '恢复';
 	@override String get syncBetweenDevices => '设备间同步';
 	@override String get preferenceSyncConflictTitle => '服务器上已存在设定值';
-	@override String get preferenceSyncConflictText => '服务器上已有此设置的设定值。要覆盖哪个设定值？';
+	@override String get preferenceSyncConflictText => '即将保存设定值到服务器，但检测到服务器上已有此设置的设定值。要使用哪个设定值？';
 	@override String get preferenceSyncConflictChoiceMerge => '合并';
 	@override String get preferenceSyncConflictChoiceServer => '服务器上的设定值';
 	@override String get preferenceSyncConflictChoiceDevice => '设备上的设定值';
@@ -2955,13 +2972,13 @@ class _TranslationsMisskeyPollZhCn extends TranslationsMisskeyPollEnUs {
 	@override String get deadlineTime => '时间';
 	@override String get duration => '期限';
 	@override String votesCount({required Object n}) => '${n}票';
-	@override String totalVotes({required Object n}) => '总票数 ${n}';
+	@override String totalVotes({required Object n}) => '总计${n}票';
 	@override String get vote => '投票';
-	@override String get showResult => '显示结果';
+	@override String get showResult => '查看结果';
 	@override String get voted => '已投票';
 	@override String get closed => '已截止';
 	@override String remainingDays({required Object d, required Object h}) => '${d}天${h}小时后截止';
-	@override String remainingHours({required Object h, required Object m}) => '${h} 小时 ${m} 分后截止';
+	@override String remainingHours({required Object h, required Object m}) => '${h}小时${m}分后截止';
 	@override String remainingMinutes({required Object m, required Object s}) => '${m}分${s}秒后截止';
 	@override String remainingSeconds({required Object s}) => '${s}秒后截止';
 }
@@ -3628,7 +3645,7 @@ class _TranslationsMisskeyFollowRequestZhCn extends TranslationsMisskeyFollowReq
 
 	// Translations
 	@override String get recieved => '收到的请求';
-	@override String get sent => '已发送的请求';
+	@override String get sent => '发送的请求';
 }
 
 // Path: misskey.remoteLookupErrors_
@@ -3798,7 +3815,7 @@ class _TranslationsMisskeyWatermarkEditorZhCn extends TranslationsMisskeyWaterma
 	@override String get driveFileTypeWarn => '不支持此文件';
 	@override String get driveFileTypeWarnDescription => '请选择图像文件';
 	@override String get title => '编辑水印';
-	@override String get cover => '覆盖全体';
+	@override String get cover => '覆盖所有';
 	@override String get repeat => '平铺';
 	@override String get preserveBoundingRect => '调整为旋转时不超出范围';
 	@override String get opacity => '不透明度';

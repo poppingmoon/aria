@@ -386,6 +386,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get download => 'ダウンロード';
 	@override String driveFileDeleteConfirm({required Object name}) => 'ファイル「${name}」を削除しますか？このファイルを使用した一部のコンテンツも削除されます。';
 	@override String unfollowConfirm({required Object name}) => '${name}のフォローを解除しますか？';
+	@override String cancelFollowRequestConfirm({required Object name}) => '${name}へのフォロー申請をキャンセルしますか？';
+	@override String rejectFollowRequestConfirm({required Object name}) => '${name}からのフォロー申請を拒否しますか？';
 	@override String get exportRequested => 'エクスポートをリクエストしました。これには時間がかかる場合があります。エクスポートが終わると、「ドライブ」に追加されます。';
 	@override String get importRequested => 'インポートをリクエストしました。これには時間がかかる場合があります。';
 	@override String get lists => 'リスト';
@@ -2939,7 +2941,7 @@ class _TranslationsMisskeyWidgetsJaJp extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => 'ユーザーリスト';
 	@override late final _TranslationsMisskeyWidgetsUserListJaJp userList_ = _TranslationsMisskeyWidgetsUserListJaJp._(_root);
 	@override String get clicker => 'クリッカー';
-	@override String get birthdayFollowings => '今日誕生日のユーザー';
+	@override String get birthdayFollowings => 'もうすぐ誕生日のユーザー';
 	@override String get chat => 'ダイレクトメッセージ';
 }
 
@@ -3855,7 +3857,6 @@ class _TranslationsMisskeyImageEffectorJaJp extends TranslationsMisskeyImageEffe
 	@override String get title => 'エフェクト';
 	@override String get addEffect => 'エフェクトを追加';
 	@override String get discardChangesConfirm => '変更を破棄して終了しますか？';
-	@override String get nothingToConfigure => '設定項目はありません';
 	@override String get failedToLoadImage => '画像の読み込みに失敗しました';
 	@override late final _TranslationsMisskeyImageEffectorFxsJaJp fxs_ = _TranslationsMisskeyImageEffectorFxsJaJp._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsJaJp fxProps_ = _TranslationsMisskeyImageEffectorFxPropsJaJp._(_root);
