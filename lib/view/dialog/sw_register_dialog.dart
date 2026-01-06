@@ -11,12 +11,13 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
+import '../../provider/user_ids_notifier_provider.dart';
+import '../widget/mfm.dart';
 import '../widget/mfm/code.dart';
 import '../widget/url_sheet.dart';
-import 'message_dialog.dart';
+import 'error_message_dialog.dart';
 
 class SwRegisterDialog extends HookConsumerWidget {
   const SwRegisterDialog({
@@ -30,7 +31,6 @@ class SwRegisterDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).value;
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final scratchPadUrl = serverUrl.replace(pathSegments: ['scratchpad']);
     final responseText = useState('');
@@ -123,13 +123,55 @@ if (Core:type(response) == 'error') {
                       json as Map<String, dynamic>,
                     );
                     if (!context.mounted) return;
-                    if (i?.id == response.userId &&
-                        request.endpoint == response.endpoint) {
-                      context.pop(response);
+                    final userId = ref.read(userIdsNotifierProvider)[account];
+                    if (userId != response.userId) {
+                      await showDialog<void>(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(t.misskey.invalidValue),
+                          content: Mfm(
+                            account: account,
+                            text: t.aria.pleaseLoginAs(
+                              user: '@${account.username}',
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          actions: [
+                            ElevatedButton(
+                              autofocus: true,
+                              onPressed: () => context.pop(),
+                              child: Text(t.misskey.gotIt),
+                            ),
+                          ],
+                        ),
+                      );
                       return;
                     }
-                  } catch (_) {}
-                  await showMessageDialog(context, t.misskey.invalidValue);
+                    if (request.endpoint != response.endpoint) {
+                      await showDialog<void>(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(t.aria.invalidEndpoint),
+                          content: Text(t.aria.invalidEndpointDescription),
+                          actions: [
+                            ElevatedButton(
+                              autofocus: true,
+                              onPressed: () => context.pop(),
+                              child: Text(t.misskey.gotIt),
+                            ),
+                          ],
+                        ),
+                      );
+                      return;
+                    }
+                    context.pop(response);
+                  } catch (error, stackTrace) {
+                    await showErrorMessageDialog(
+                      context,
+                      error: error,
+                      stackTrace: stackTrace,
+                    );
+                  }
                 }
               : null,
           child: Text(t.misskey.ok),
