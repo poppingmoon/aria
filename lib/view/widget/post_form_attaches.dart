@@ -175,14 +175,16 @@ class PostFormAttaches extends ConsumerWidget {
             ref.context,
             ref
                 .read(misskeyProvider(account))
-                .drive
-                .files
-                .update(
+                .apiService
+                .post<Map<String, dynamic>>(
+                  'drive/files/update',
                   DriveFilesUpdateRequest(
                     fileId: file.file.id,
-                    comment: result,
-                  ),
-                ),
+                    comment: result.isNotEmpty ? result : null,
+                  ).toJson(),
+                  excludeRemoveNullPredicate: (key, _) => key == 'comment',
+                )
+                .then((response) => DriveFile.fromJson(response)),
           );
           if (driveFile != null) {
             ref
@@ -206,7 +208,10 @@ class PostFormAttaches extends ConsumerWidget {
                   chat: chat,
                 ).notifier,
               )
-              .replace(index, file.copyWith(comment: result));
+              .replace(
+                index,
+                file.copyWith(comment: result.isNotEmpty ? result : null),
+              );
       }
     }
     if (!ref.context.mounted) return;

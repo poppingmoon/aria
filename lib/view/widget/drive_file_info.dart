@@ -38,7 +38,7 @@ class DriveFileInfo extends ConsumerWidget {
         ref.context,
         ref
             .read(driveFileNotifierProvider(account, file.id).notifier)
-            .updateFile(name: name),
+            .updateName(name),
       );
     }
   }
@@ -55,7 +55,7 @@ class DriveFileInfo extends ConsumerWidget {
         ref.context,
         ref
             .read(driveFileNotifierProvider(account, file.id).notifier)
-            .updateFile(comment: comment),
+            .updateComment(comment.isNotEmpty ? comment : null),
       );
     }
   }
@@ -64,7 +64,7 @@ class DriveFileInfo extends ConsumerWidget {
     if (isSensitive == null) return;
     await ref
         .read(driveFileNotifierProvider(account, file.id).notifier)
-        .updateFile(isSensitive: isSensitive);
+        .updateIsSensitive(isSensitive);
   }
 
   @override
