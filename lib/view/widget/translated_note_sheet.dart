@@ -38,9 +38,13 @@ class TranslatedNoteSheet extends ConsumerWidget {
               title: Text(
                 t.misskey.translatedFrom(x: translatedNote.sourceLang),
               ),
-              trailing: IconButton(
-                onPressed: () => copyToClipboard(context, translatedNote.text),
-                icon: const Icon(Icons.copy),
+              trailing: IconButtonTheme(
+                data: const IconButtonThemeData(),
+                child: IconButton(
+                  onPressed: () =>
+                      copyToClipboard(context, translatedNote.text),
+                  icon: const Icon(Icons.copy),
+                ),
               ),
             ),
             const Divider(height: 0.0),
@@ -55,6 +59,19 @@ class TranslatedNoteSheet extends ConsumerWidget {
                   author: note.user,
                   noteId: note.id,
                   nyaize: true,
+                ),
+              ),
+            ),
+          ],
+          AsyncValue(hasValue: true) => [
+            ListTile(title: Text(t.misskey.translate)),
+            const Divider(height: 0.0),
+            SizedBox(
+              width: double.infinity,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(t.misskey.nothing),
                 ),
               ),
             ),

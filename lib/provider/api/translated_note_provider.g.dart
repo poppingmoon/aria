@@ -15,13 +15,13 @@ final translatedNoteProvider = TranslatedNoteFamily._();
 final class TranslatedNoteProvider
     extends
         $FunctionalProvider<
-          AsyncValue<NotesTranslateResponse>,
-          NotesTranslateResponse,
-          FutureOr<NotesTranslateResponse>
+          AsyncValue<NotesTranslateResponse?>,
+          NotesTranslateResponse?,
+          FutureOr<NotesTranslateResponse?>
         >
     with
-        $FutureModifier<NotesTranslateResponse>,
-        $FutureProvider<NotesTranslateResponse> {
+        $FutureModifier<NotesTranslateResponse?>,
+        $FutureProvider<NotesTranslateResponse?> {
   TranslatedNoteProvider._({
     required TranslatedNoteFamily super.from,
     required (Account, String, String) super.argument,
@@ -45,12 +45,12 @@ final class TranslatedNoteProvider
 
   @$internal
   @override
-  $FutureProviderElement<NotesTranslateResponse> $createElement(
+  $FutureProviderElement<NotesTranslateResponse?> $createElement(
     $ProviderPointer pointer,
   ) => $FutureProviderElement(pointer);
 
   @override
-  FutureOr<NotesTranslateResponse> create(Ref ref) {
+  FutureOr<NotesTranslateResponse?> create(Ref ref) {
     final argument = this.argument as (Account, String, String);
     return translatedNote(ref, argument.$1, argument.$2, argument.$3);
   }
@@ -66,12 +66,12 @@ final class TranslatedNoteProvider
   }
 }
 
-String _$translatedNoteHash() => r'e59caed4eda77ad53b60e79ca086d203c20a729b';
+String _$translatedNoteHash() => r'b918d5336b98438db6320e82e5f52bee2e365172';
 
 final class TranslatedNoteFamily extends $Family
     with
         $FunctionalFamilyOverride<
-          FutureOr<NotesTranslateResponse>,
+          FutureOr<NotesTranslateResponse?>,
           (Account, String, String)
         > {
   TranslatedNoteFamily._()
