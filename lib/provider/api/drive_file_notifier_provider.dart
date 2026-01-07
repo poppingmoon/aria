@@ -18,23 +18,42 @@ class DriveFileNotifier extends _$DriveFileNotifier {
         .show(DriveFilesShowRequest(fileId: fileId));
   }
 
-  Future<void> updateFile({
-    String? name,
-    bool? isSensitive,
-    String? comment,
-  }) async {
+  Future<void> updateName(String name) async {
+    final response = await ref
+        .read(misskeyProvider(account))
+        .drive
+        .files
+        .update(DriveFilesUpdateRequest(fileId: fileId, name: name));
+    state = AsyncValue.data(response);
+    ref
+        .read(driveFilesNotifierProvider(account, response.folderId).notifier)
+        .replace(response);
+  }
+
+  Future<void> updateIsSensitive(bool isSensitive) async {
     final response = await ref
         .read(misskeyProvider(account))
         .drive
         .files
         .update(
-          DriveFilesUpdateRequest(
-            fileId: fileId,
-            name: name,
-            isSensitive: isSensitive,
-            comment: comment,
-          ),
+          DriveFilesUpdateRequest(fileId: fileId, isSensitive: isSensitive),
         );
+    state = AsyncValue.data(response);
+    ref
+        .read(driveFilesNotifierProvider(account, response.folderId).notifier)
+        .replace(response);
+  }
+
+  Future<void> updateComment(String? comment) async {
+    final response = await ref
+        .read(misskeyProvider(account))
+        .apiService
+        .post<Map<String, dynamic>>(
+          'drive/files/update',
+          DriveFilesUpdateRequest(fileId: fileId, comment: comment).toJson(),
+          excludeRemoveNullPredicate: (key, _) => key == 'comment',
+        )
+        .then((response) => DriveFile.fromJson(response));
     state = AsyncValue.data(response);
     ref
         .read(driveFilesNotifierProvider(account, response.folderId).notifier)

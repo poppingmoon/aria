@@ -140,20 +140,42 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     );
   }
 
-  Future<void> updateFile({
-    required String fileId,
-    String? name,
-    bool? isSensitive,
-    String? comment,
-  }) async {
+  Future<void> updateName(String fileId, String name) async {
     final response = await _misskey.drive.files.update(
-      DriveFilesUpdateRequest(
-        fileId: fileId,
-        name: name,
-        isSensitive: isSensitive,
-        comment: comment,
+      DriveFilesUpdateRequest(fileId: fileId, name: name),
+    );
+    final value = state.value ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items
+            .map((file) => file.id == fileId ? response : file)
+            .toList(),
       ),
     );
+  }
+
+  Future<void> updateIsSensitive(String fileId, bool isSensitive) async {
+    final response = await _misskey.drive.files.update(
+      DriveFilesUpdateRequest(fileId: fileId, isSensitive: isSensitive),
+    );
+    final value = state.value ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items
+            .map((file) => file.id == fileId ? response : file)
+            .toList(),
+      ),
+    );
+  }
+
+  Future<void> updateComment(String fileId, String? comment) async {
+    final response = await _misskey.apiService
+        .post<Map<String, dynamic>>(
+          'drive/files/update',
+          DriveFilesUpdateRequest(fileId: fileId, comment: comment).toJson(),
+          excludeRemoveNullPredicate: (key, _) => key == 'comment',
+        )
+        .then((response) => DriveFile.fromJson(response));
     final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(

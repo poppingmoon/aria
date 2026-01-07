@@ -42,7 +42,7 @@ class DriveFileSheet extends ConsumerWidget {
         ref.context,
         ref
             .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-            .updateFile(fileId: file.id, name: result),
+            .updateName(file.id, result),
       );
       if (!ref.context.mounted) return;
       ref.context.pop();
@@ -54,7 +54,7 @@ class DriveFileSheet extends ConsumerWidget {
       ref.context,
       ref
           .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-          .updateFile(fileId: file.id, isSensitive: isSensitive),
+          .updateIsSensitive(file.id, isSensitive),
     );
     if (!ref.context.mounted) return;
     ref.context.pop();
@@ -72,7 +72,7 @@ class DriveFileSheet extends ConsumerWidget {
         ref.context,
         ref
             .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-            .updateFile(fileId: file.id, comment: result),
+            .updateComment(file.id, result.isNotEmpty ? result : null),
       );
       if (!ref.context.mounted) return;
       ref.context.pop();
