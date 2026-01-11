@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../../constant/fonts.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
@@ -153,7 +154,10 @@ class PlayEditPage extends HookConsumerWidget {
                     labelText: t.misskey.play_.script,
                     alignLabelWithHint: true,
                   ),
-                  style: const TextStyle(fontFamily: 'monospace'),
+                  style: const TextStyle(
+                    fontFamily: 'monospace',
+                    fontFamilyFallback: monospaceFallback,
+                  ),
                   minLines: 10,
                   maxLines: null,
                   onTapOutside: (_) => primaryFocus?.unfocus(),
