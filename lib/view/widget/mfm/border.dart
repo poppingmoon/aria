@@ -23,6 +23,47 @@ class Border extends StatelessWidget {
   final Map<String, dynamic> args;
   final Widget child;
 
+  @override
+  Widget build(BuildContext context) {
+    final style = switch (args['style']) {
+      final String style => style,
+      _ => null,
+    };
+    final color =
+        safeParseColor(args['color']) ?? Theme.of(context).colorScheme.primary;
+    final width = safeParseDouble(args['width']) ?? 1.0;
+    final radius = safeParseDouble(args['radius']) ?? 0.0;
+    final noClip = args.containsKey('noclip');
+
+    return BorderWidget(
+      style: style,
+      color: color,
+      width: width,
+      radius: radius,
+      noClip: noClip,
+      child: child,
+    );
+  }
+}
+
+class BorderWidget extends StatelessWidget {
+  const BorderWidget({
+    super.key,
+    this.style,
+    this.color,
+    this.width = 1.0,
+    this.radius = 0.0,
+    this.noClip = false,
+    required this.child,
+  });
+
+  final String? style;
+  final Color? color;
+  final double width;
+  final double radius;
+  final bool noClip;
+  final Widget child;
+
   (Color, Color) _get3DColors(Color color) {
     // https://searchfox.org/mozilla-central/source/layout/base/nsCSSColorUtils.cpp#22
     const darkerScale = 2.0 / 3.0;
@@ -46,7 +87,7 @@ class Border extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderStyle = switch (args['style']) {
+    final borderStyle = switch (style) {
       'hidden' => _BorderStyle.hidden,
       'dotted' => _BorderStyle.dotted,
       'dashed' => _BorderStyle.dashed,
@@ -57,11 +98,7 @@ class Border extends StatelessWidget {
       'outset' => _BorderStyle.outset,
       _ => _BorderStyle.solid,
     };
-    final color =
-        safeParseColor(args['color']) ?? Theme.of(context).colorScheme.primary;
-    final width = safeParseDouble(args['width']) ?? 1.0;
-    final radius = safeParseDouble(args['radius']) ?? 0.0;
-    final noClip = args.containsKey('noclip');
+    final color = this.color ?? Theme.of(context).colorScheme.primary;
     final child = ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       clipBehavior: noClip ? Clip.none : Clip.hardEdge,
@@ -74,19 +111,23 @@ class Border extends StatelessWidget {
     switch (borderStyle) {
       case _BorderStyle.hidden:
         return child;
-      case _BorderStyle.dotted || _BorderStyle.dashed:
+      case _BorderStyle.dotted:
+        return CustomPaint(
+          painter: _DotBorderPainter(
+            width: width,
+            radius: radius,
+            color: color,
+          ),
+          child: Padding(padding: EdgeInsets.all(width), child: child),
+        );
+      case _BorderStyle.dashed:
         return DottedBorder(
           options: RoundedRectDottedBorderOptions(
             color: color,
             strokeWidth: width,
-            dashPattern: borderStyle == _BorderStyle.dotted
-                ? [0, width * 2.0]
-                : [width * 2.5, width * 2.5],
+            dashPattern: [width * 2.5, width * 2.5],
             radius: Radius.circular(radius),
             padding: EdgeInsets.all(width / 2),
-            strokeCap: borderStyle == _BorderStyle.dotted
-                ? StrokeCap.round
-                : StrokeCap.butt,
           ),
           child: child,
         );
@@ -166,4 +207,55 @@ class Border extends StatelessWidget {
         );
     }
   }
+}
+
+class _DotBorderPainter extends CustomPainter {
+  _DotBorderPainter({
+    required this.width,
+    required this.radius,
+    required this.color,
+  });
+
+  final double width;
+  final double radius;
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final dotRadius = width / 2;
+    final path = Path()
+      ..addRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(
+            dotRadius,
+            dotRadius,
+            size.width - width,
+            size.height - width,
+          ),
+          Radius.circular(radius),
+        ),
+      );
+
+    for (final metric in path.computeMetrics()) {
+      final dotsNumber = (metric.length / width / 2).round();
+      final distance = metric.length / dotsNumber;
+
+      for (int i = 0; i < dotsNumber; i++) {
+        final position = metric.getTangentForOffset(distance * i)?.position;
+        if (position != null) {
+          canvas.drawCircle(position, dotRadius, paint);
+        }
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(_DotBorderPainter oldDelegate) =>
+      oldDelegate.width != width ||
+      oldDelegate.radius != radius ||
+      oldDelegate.color != color;
 }
