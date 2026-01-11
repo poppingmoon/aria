@@ -66,6 +66,8 @@ i18nInfo(rich): "Ariaは有志がいろんな言語に訳しとるで。{link}�
 iconAttribution(rich): "Ariaのアイコンは{sevenc_nanashi}によって作成され、{cc_by}の下で提供されとるで。"
 importCompleted: "インポートが終わったで"
 importConfirm: "設定をインポートしてええか？今の設定は上書きされてまうで？"
+invalidEndpoint: "無効なエンドポイント"
+invalidEndpointDescription: "レスポンスの中のエンドポイントがおかしいみたいや。実行したコードがアプリ内に見えてるやつとおんなじか確認してな。"
 invalidListFormat: "リストの形式が間違ってるみたいや"
 jumpTo: "{x}にジャンプ"
 keepOpen: "開けたまんまにする"

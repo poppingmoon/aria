@@ -66,6 +66,8 @@ i18nInfo(rich): "Aria wird durch freiwillige Helfer in viele verschiedene Sprach
 iconAttribution(rich): "Das Aria-Icon wurde von {sevenc_nanashi} erstellt und ist unter {cc_by} lizenziert."
 importCompleted: "Import abgeschlossen"
 importConfirm: "Willst du wirklich Einstellungen importieren? Bestehende Einstellungen werden überschrieben."
+invalidEndpoint: "Ungültiger Endpunkt"
+invalidEndpointDescription: "Der Endpunkt in der Antwort ist ungültig. Stelle sicher, dass der ausgeführte Code dem entspricht, der durch die App vorgegeben ist."
 invalidListFormat: "Format der Liste ist ungültig"
 jumpTo: "Zu {x} springen"
 keepOpen: "Geöffnet halten"
