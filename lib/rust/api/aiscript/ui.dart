@@ -8,8 +8,9 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:freezed_annotation/freezed_annotation.dart' hide protected;
 part 'ui.freezed.dart';
 
-// These functions are ignored because they are not marked as `pub`: `create_component_instance`, `register`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`
-// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`
+// These functions are ignored because they are not marked as `pub`: `create_component_instance`, `create_component_instance`, `new`, `new`, `register_v0`, `register_v1`, `register`, `register`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`, `update`
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `AsUiLibV0`, `AsUiLibV1`
+// These function are ignored because they are on traits that is not defined in current crate (put an empty `#[frb]` on it to unignore): `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `clone`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`, `try_from`
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AsUiButtonCallback>>
 abstract class AsUiButtonCallback implements RustOpaqueInterface {
@@ -140,6 +141,8 @@ class AsUiContainer {
   final String? font;
   final double? borderWidth;
   final String? borderColor;
+  final String? borderStyle;
+  final double? borderRadius;
   final double? padding;
   final bool? rounded;
   final bool? hidden;
@@ -152,6 +155,8 @@ class AsUiContainer {
     this.font,
     this.borderWidth,
     this.borderColor,
+    this.borderStyle,
+    this.borderRadius,
     this.padding,
     this.rounded,
     this.hidden,
@@ -166,6 +171,8 @@ class AsUiContainer {
       font.hashCode ^
       borderWidth.hashCode ^
       borderColor.hashCode ^
+      borderStyle.hashCode ^
+      borderRadius.hashCode ^
       padding.hashCode ^
       rounded.hashCode ^
       hidden.hashCode;
@@ -182,6 +189,8 @@ class AsUiContainer {
           font == other.font &&
           borderWidth == other.borderWidth &&
           borderColor == other.borderColor &&
+          borderStyle == other.borderStyle &&
+          borderRadius == other.borderRadius &&
           padding == other.padding &&
           rounded == other.rounded &&
           hidden == other.hidden;

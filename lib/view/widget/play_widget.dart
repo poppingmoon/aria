@@ -70,6 +70,7 @@ class PlayWidget extends HookConsumerWidget {
                   );
                   if (!context.mounted) return;
                   if (shouldPop) {
+                    aiscript.value?.abort().ignore();
                     context.pop();
                   }
                 }
@@ -86,7 +87,6 @@ class PlayWidget extends HookConsumerWidget {
                       child: AsUiWidget(
                         account: account,
                         host: host,
-                        componentId: '___root___',
                         components: components.value,
                       ),
                     ),
@@ -272,7 +272,24 @@ class PlayWidget extends HookConsumerWidget {
                                 playId: play.id,
                               );
                               started.value = true;
-                              await aiscript.value?.exec(input: play.script);
+                              await aiscript.value?.exec(
+                                input: play.script,
+                                isLegacy: switch (play.updatedAt) {
+                                  final updatedAt
+                                      when updatedAt.isBefore(
+                                        // 2025.8.0-alpha.5
+                                        DateTime.utc(2025, 8, 8),
+                                      ) =>
+                                    true,
+                                  final updatedAt
+                                      when updatedAt.isBefore(
+                                        // 2025.4.1-io.2
+                                        DateTime.utc(2025, 11, 23),
+                                      ) =>
+                                    null,
+                                  _ => false,
+                                },
+                              );
                             } catch (e, st) {
                               try {
                                 await aiscript.value?.abort();

@@ -40,7 +40,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.11.1";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -463493403;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 451475596;
 
 // Section: executor
 
@@ -105,6 +105,39 @@ fn wire__crate__api__aiscript__AiScript_abort_impl(
         },
     )
 }
+fn wire__crate__api__aiscript__AiScript_aiscript_version_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "AiScript_aiscript_version",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok =
+                        Result::<_, ()>::Ok(crate::api::aiscript::AiScript::aiscript_version())?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
 fn wire__crate__api__aiscript__AiScript_exec_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
@@ -131,6 +164,7 @@ fn wire__crate__api__aiscript__AiScript_exec_impl(
                 flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AiScript>,
             >>::sse_decode(&mut deserializer);
             let api_input = <String>::sse_decode(&mut deserializer);
+            let api_is_legacy = <Option<bool>>::sse_decode(&mut deserializer);
             deserializer.end();
             move |context| async move {
                 transform_result_sse::<_, String>(
@@ -152,9 +186,12 @@ fn wire__crate__api__aiscript__AiScript_exec_impl(
                             }
                         }
                         let api_that_guard = api_that_guard.unwrap();
-                        let output_ok =
-                            crate::api::aiscript::AiScript::exec(&*api_that_guard, &api_input)
-                                .await?;
+                        let output_ok = crate::api::aiscript::AiScript::exec(
+                            &*api_that_guard,
+                            &api_input,
+                            api_is_legacy,
+                        )
+                        .await?;
                         Ok(output_ok)
                     })()
                     .await,
@@ -1353,6 +1390,8 @@ impl SseDecode for crate::api::aiscript::ui::AsUiContainer {
         let mut var_font = <Option<String>>::sse_decode(deserializer);
         let mut var_borderWidth = <Option<f64>>::sse_decode(deserializer);
         let mut var_borderColor = <Option<String>>::sse_decode(deserializer);
+        let mut var_borderStyle = <Option<String>>::sse_decode(deserializer);
+        let mut var_borderRadius = <Option<f64>>::sse_decode(deserializer);
         let mut var_padding = <Option<f64>>::sse_decode(deserializer);
         let mut var_rounded = <Option<bool>>::sse_decode(deserializer);
         let mut var_hidden = <Option<bool>>::sse_decode(deserializer);
@@ -1364,6 +1403,8 @@ impl SseDecode for crate::api::aiscript::ui::AsUiContainer {
             font: var_font,
             border_width: var_borderWidth,
             border_color: var_borderColor,
+            border_style: var_borderStyle,
+            border_radius: var_borderRadius,
             padding: var_padding,
             rounded: var_rounded,
             hidden: var_hidden,
@@ -1875,45 +1916,51 @@ fn pde_ffi_dispatcher_primary_impl(
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
         1 => wire__crate__api__aiscript__AiScript_abort_impl(port, ptr, rust_vec_len, data_len),
-        2 => wire__crate__api__aiscript__AiScript_exec_impl(port, ptr, rust_vec_len, data_len),
-        3 => wire__crate__api__aiscript__AiScript_new_impl(port, ptr, rust_vec_len, data_len),
-        5 => wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(
+        2 => wire__crate__api__aiscript__AiScript_aiscript_version_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        7 => wire__crate__api__aiscript__ui__AsUiMfmCallback_call_impl(
+        3 => wire__crate__api__aiscript__AiScript_exec_impl(port, ptr, rust_vec_len, data_len),
+        4 => wire__crate__api__aiscript__AiScript_new_impl(port, ptr, rust_vec_len, data_len),
+        6 => wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        8 => wire__crate__api__aiscript__ui__AsUiNumberCallback_call_impl(
+        8 => wire__crate__api__aiscript__ui__AsUiMfmCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        9 => wire__crate__api__aiscript__ui__AsUiSelectCallback_call_impl(
+        9 => wire__crate__api__aiscript__ui__AsUiNumberCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        10 => wire__crate__api__aiscript__ui__AsUiSwitchCallback_call_impl(
+        10 => wire__crate__api__aiscript__ui__AsUiSelectCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        11 => wire__crate__api__aiscript__ui__AsUiTextInputCallback_call_impl(
+        11 => wire__crate__api__aiscript__ui__AsUiSwitchCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        12 => wire__crate__api__aiscript__ui__AsUiTextareaCallback_call_impl(
+        12 => wire__crate__api__aiscript__ui__AsUiTextInputCallback_call_impl(
+            port,
+            ptr,
+            rust_vec_len,
+            data_len,
+        ),
+        13 => wire__crate__api__aiscript__ui__AsUiTextareaCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
@@ -1931,8 +1978,8 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        4 => wire__crate__api__aiscript__api__AsApiLib_new_impl(ptr, rust_vec_len, data_len),
-        6 => wire__crate__api__aiscript__ui__AsUiLib_new_impl(ptr, rust_vec_len, data_len),
+        5 => wire__crate__api__aiscript__api__AsApiLib_new_impl(ptr, rust_vec_len, data_len),
+        7 => wire__crate__api__aiscript__ui__AsUiLib_new_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -2245,6 +2292,8 @@ impl flutter_rust_bridge::IntoDart for crate::api::aiscript::ui::AsUiContainer {
             self.font.into_into_dart().into_dart(),
             self.border_width.into_into_dart().into_dart(),
             self.border_color.into_into_dart().into_dart(),
+            self.border_style.into_into_dart().into_dart(),
+            self.border_radius.into_into_dart().into_dart(),
             self.padding.into_into_dart().into_dart(),
             self.rounded.into_into_dart().into_dart(),
             self.hidden.into_into_dart().into_dart(),
@@ -2845,6 +2894,8 @@ impl SseEncode for crate::api::aiscript::ui::AsUiContainer {
         <Option<String>>::sse_encode(self.font, serializer);
         <Option<f64>>::sse_encode(self.border_width, serializer);
         <Option<String>>::sse_encode(self.border_color, serializer);
+        <Option<String>>::sse_encode(self.border_style, serializer);
+        <Option<f64>>::sse_encode(self.border_radius, serializer);
         <Option<f64>>::sse_encode(self.padding, serializer);
         <Option<bool>>::sse_encode(self.rounded, serializer);
         <Option<bool>>::sse_encode(self.hidden, serializer);

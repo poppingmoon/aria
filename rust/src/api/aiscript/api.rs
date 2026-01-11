@@ -1,10 +1,6 @@
 use std::{collections::HashMap, sync::Arc};
 
-use aiscript::v0::{
-    errors::AiScriptError,
-    utils,
-    values::{V, Value},
-};
+use aiscript::{v0, v1};
 use flutter_rust_bridge::{DartFnFuture, frb};
 use futures::FutureExt;
 
@@ -19,6 +15,7 @@ pub type ApiCallback = dyn Fn(String, String, Option<String>) -> DartFnFuture<(S
     + Send
     + 'static;
 
+#[derive(Clone)]
 pub struct AsApiLib {
     user_id: Option<String>,
     user_name: Option<String>,
@@ -82,40 +79,47 @@ impl AsApiLib {
         }
     }
 
-    pub(crate) fn register(self, consts: &mut HashMap<String, Value>) {
+    pub(super) fn register_v0(self, consts: &mut HashMap<String, v0::values::Value>) {
         consts.insert(
             "USER_ID".to_string(),
-            self.user_id.map_or_else(Value::null, Value::str),
+            self.user_id
+                .map_or_else(v0::values::Value::null, v0::values::Value::str),
         );
 
         consts.insert(
             "USER_NAME".to_string(),
-            self.user_name.map_or_else(Value::null, Value::str),
+            self.user_name
+                .map_or_else(v0::values::Value::null, v0::values::Value::str),
         );
 
         consts.insert(
             "USER_USERNAME".to_string(),
-            self.user_username.map_or_else(Value::null, Value::str),
+            self.user_username
+                .map_or_else(v0::values::Value::null, v0::values::Value::str),
         );
 
         consts.insert(
             "CUSTOM_EMOJIS".to_string(),
-            serde_json::from_str(&self.custom_emojis).map_or_else(|_| Value::arr([]), Value::new),
+            serde_json::from_str(&self.custom_emojis)
+                .map_or_else(|_| v0::values::Value::arr([]), v0::values::Value::new),
         );
 
-        consts.insert("LOCALE".to_string(), Value::str(self.locale));
+        consts.insert("LOCALE".to_string(), v0::values::Value::str(self.locale));
 
-        consts.insert("SERVER_URL".to_string(), Value::str(self.server_url));
+        consts.insert(
+            "SERVER_URL".to_string(),
+            v0::values::Value::str(self.server_url),
+        );
 
         consts.insert(
             "Mk:dialog".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -125,7 +129,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -135,7 +139,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -145,7 +149,7 @@ impl AsApiLib {
                     let dialog = (self.dialog)(title, text, type_);
                     async {
                         dialog.await;
-                        Ok(Value::null())
+                        Ok(v0::values::Value::null())
                     }
                     .boxed()
                 }
@@ -154,13 +158,13 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:confirm".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -170,7 +174,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -180,7 +184,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = *value.value {
                                 Some(value)
                             } else {
                                 None
@@ -190,7 +194,7 @@ impl AsApiLib {
                     let confirm = (self.confirm)(title, text, type_);
                     async {
                         let result = confirm.await;
-                        Ok(Value::bool(result))
+                        Ok(v0::values::Value::bool(result))
                     }
                     .boxed()
                 }
@@ -199,14 +203,14 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:toast".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let toast = String::try_from(args.next().unwrap_or_default())
                         .map(|text| (self.toast)(text));
                     async {
                         toast?.await;
-                        Ok(Value::null())
+                        Ok(v0::values::Value::null())
                     }
                     .boxed()
                 }
@@ -215,14 +219,16 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:api".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let api = String::try_from(args.next().unwrap_or_default()).and_then(|ep| {
-                        if ep.contains("://") {
-                            Err(AiScriptError::internal("invalid endpoint"))?
+                        if ep.contains("://") || ep.contains("..") {
+                            Err(v0::errors::AiScriptRuntimeError::runtime(
+                                "invalid endpoint",
+                            ))?
                         }
-                        let param = utils::expect_any(args.next())?;
+                        let param = v0::utils::expect_any(args.next())?;
                         let token = args
                             .next()
                             .map(String::try_from)
@@ -230,18 +236,19 @@ impl AsApiLib {
                             .or_else(|| self.token.clone());
                         Ok((self.api)(
                             ep,
-                            serde_json::to_string(&param.value).map_err(AiScriptError::internal)?,
+                            serde_json::to_string(&param.value)
+                                .map_err(v0::errors::AiScriptError::internal)?,
                             token,
                         ))
                     });
                     async {
                         let result = api?.await;
-                        Ok(Value::new(if let Some(err) = &result.1 {
-                            V::Error {
+                        Ok(v0::values::Value::new(if let Some(err) = &result.1 {
+                            v0::values::V::Error {
                                 value: "request_failed".to_string(),
                                 info: serde_json::from_str(&err)
                                     .ok()
-                                    .map(Value::new)
+                                    .map(v0::values::Value::new)
                                     .map(Into::into),
                             }
                         } else {
@@ -255,19 +262,20 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:save".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let save = String::try_from(args.next().unwrap_or_default()).and_then(|key| {
-                        let value = utils::expect_any(args.next())?;
+                        let value = v0::utils::expect_any(args.next())?;
                         Ok((self.save)(
                             key,
-                            serde_json::to_string(&value.value).map_err(AiScriptError::internal)?,
+                            serde_json::to_string(&value.value)
+                                .map_err(v0::errors::AiScriptError::internal)?,
                         ))
                     });
                     async {
                         save?.await;
-                        Ok(Value::null())
+                        Ok(v0::values::Value::null())
                     }
                     .boxed()
                 }
@@ -276,14 +284,16 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:load".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let load = String::try_from(args.next().unwrap_or_default())
                         .map(|key| (self.load)(key));
                     async {
                         let value = load?.await;
-                        let value = Value::new(serde_json::from_str(&value).unwrap_or_default());
+                        let value = v0::values::Value::new(
+                            serde_json::from_str(&value).unwrap_or_default(),
+                        );
                         Ok(value)
                     }
                     .boxed()
@@ -293,14 +303,14 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:remove".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let remove = String::try_from(args.next().unwrap_or_default())
                         .map(|key| (self.remove)(key));
                     async {
                         remove?.await;
-                        Ok(Value::null())
+                        Ok(v0::values::Value::null())
                     }
                     .boxed()
                 }
@@ -309,9 +319,9 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:url".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |_, _| {
-                    let result = Ok(Value::str(&self.url));
+                    let result = Ok(v0::values::Value::str(&self.url));
                     async { result }.boxed()
                 }
             }),
@@ -319,12 +329,273 @@ impl AsApiLib {
 
         consts.insert(
             "Mk:nyaize".to_string(),
-            Value::fn_native({
+            v0::values::Value::fn_native({
                 move |args, _| {
                     let mut args = args.into_iter();
                     let nyaize = String::try_from(args.next().unwrap_or_default())
                         .map(|text| (self.nyaize)(text));
-                    async { Ok(Value::str(nyaize?.await)) }.boxed()
+                    async { Ok(v0::values::Value::str(nyaize?.await)) }.boxed()
+                }
+            }),
+        );
+    }
+
+    pub(super) fn register_v1(self, consts: &mut HashMap<String, v1::values::Value>) {
+        consts.insert(
+            "USER_ID".to_string(),
+            self.user_id
+                .map_or_else(v1::values::Value::null, v1::values::Value::str),
+        );
+
+        consts.insert(
+            "USER_NAME".to_string(),
+            self.user_name
+                .map_or_else(v1::values::Value::null, v1::values::Value::str),
+        );
+
+        consts.insert(
+            "USER_USERNAME".to_string(),
+            self.user_username
+                .map_or_else(v1::values::Value::null, v1::values::Value::str),
+        );
+
+        consts.insert(
+            "CUSTOM_EMOJIS".to_string(),
+            serde_json::from_str(&self.custom_emojis)
+                .map_or_else(|_| v1::values::Value::arr([]), v1::values::Value::new),
+        );
+
+        consts.insert("LOCALE".to_string(), v1::values::Value::str(self.locale));
+
+        consts.insert(
+            "SERVER_URL".to_string(),
+            v1::values::Value::str(self.server_url),
+        );
+
+        consts.insert(
+            "Mk:dialog".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let title = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or_default();
+                    let text = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or_default();
+                    let type_ = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or("info".to_string());
+                    let dialog = (self.dialog)(title, text, type_);
+                    async {
+                        dialog.await;
+                        Ok(v1::values::Value::null())
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:confirm".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let title = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or_default();
+                    let text = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or_default();
+                    let type_ = args
+                        .next()
+                        .and_then(|value| {
+                            if let v1::values::V::Str(value) = *value.value {
+                                Some(value)
+                            } else {
+                                None
+                            }
+                        })
+                        .unwrap_or("question".to_string());
+                    let confirm = (self.confirm)(title, text, type_);
+                    async {
+                        let result = confirm.await;
+                        Ok(v1::values::Value::bool(result))
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:toast".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let toast = String::try_from(args.next().unwrap_or_default())
+                        .map(|text| (self.toast)(text));
+                    async {
+                        toast?.await;
+                        Ok(v1::values::Value::null())
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:api".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let api = String::try_from(args.next().unwrap_or_default()).and_then(|ep| {
+                        if ep.contains("://") || ep.contains("..") {
+                            Err(v1::errors::AiScriptRuntimeError::Runtime(
+                                "invalid endpoint".to_string(),
+                            ))?
+                        }
+                        let param = v1::utils::expect_any(args.next())?;
+                        let token = args
+                            .next()
+                            .map(String::try_from)
+                            .map_or(Ok(None), |r| r.map(Some))?
+                            .or_else(|| self.token.clone());
+                        Ok((self.api)(
+                            ep,
+                            serde_json::to_string(&param.value)
+                                .map_err(v1::errors::AiScriptError::internal)?,
+                            token,
+                        ))
+                    });
+                    async {
+                        let result = api?.await;
+                        Ok(v1::values::Value::new(if let Some(err) = &result.1 {
+                            v1::values::V::Error {
+                                value: "request_failed".to_string(),
+                                info: serde_json::from_str(&err)
+                                    .ok()
+                                    .map(v1::values::Value::new)
+                                    .map(Into::into),
+                            }
+                        } else {
+                            serde_json::from_str(&result.0).unwrap_or_default()
+                        }))
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:save".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let save = String::try_from(args.next().unwrap_or_default()).and_then(|key| {
+                        let value = v1::utils::expect_any(args.next())?;
+                        Ok((self.save)(
+                            key,
+                            serde_json::to_string(&value.value)
+                                .map_err(v1::errors::AiScriptError::internal)?,
+                        ))
+                    });
+                    async {
+                        save?.await;
+                        Ok(v1::values::Value::null())
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:load".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let load = String::try_from(args.next().unwrap_or_default())
+                        .map(|key| (self.load)(key));
+                    async {
+                        let value = load?.await;
+                        let value = v1::values::Value::new(
+                            serde_json::from_str(&value).unwrap_or_default(),
+                        );
+                        Ok(value)
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:remove".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let remove = String::try_from(args.next().unwrap_or_default())
+                        .map(|key| (self.remove)(key));
+                    async {
+                        remove?.await;
+                        Ok(v1::values::Value::null())
+                    }
+                    .boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:url".to_string(),
+            v1::values::Value::fn_native({
+                move |_, _| {
+                    let result = Ok(v1::values::Value::str(&self.url));
+                    async { result }.boxed()
+                }
+            }),
+        );
+
+        consts.insert(
+            "Mk:nyaize".to_string(),
+            v1::values::Value::fn_native({
+                move |args, _| {
+                    let mut args = args.into_iter();
+                    let nyaize = String::try_from(args.next().unwrap_or_default())
+                        .map(|text| (self.nyaize)(text));
+                    async { Ok(v1::values::Value::str(nyaize?.await)) }.boxed()
                 }
             }),
         );
