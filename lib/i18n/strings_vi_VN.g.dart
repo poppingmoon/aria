@@ -1348,6 +1348,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesViVn antennaSources_ = _TranslationsMisskeyAntennaSourcesViVn._(_root);
 	@override late final _TranslationsMisskeyWeekdayViVn weekday_ = _TranslationsMisskeyWeekdayViVn._(_root);
 	@override late final _TranslationsMisskeyWidgetsViVn widgets_ = _TranslationsMisskeyWidgetsViVn._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsViVn widgetOptions_ = _TranslationsMisskeyWidgetOptionsViVn._(_root);
 	@override late final _TranslationsMisskeyCwViVn cw_ = _TranslationsMisskeyCwViVn._(_root);
 	@override late final _TranslationsMisskeyPollViVn poll_ = _TranslationsMisskeyPollViVn._(_root);
 	@override late final _TranslationsMisskeyVisibilityViVn visibility_ = _TranslationsMisskeyVisibilityViVn._(_root);
@@ -2070,6 +2071,19 @@ class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
 	@override String get clicker => 'clicker';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsViVn extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Chiều cao';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonViVn button_ = _TranslationsMisskeyWidgetOptionsButtonViVn._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockViVn clock_ = _TranslationsMisskeyWidgetOptionsClockViVn._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwViVn extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
@@ -2752,6 +2766,36 @@ class _TranslationsMisskeyWidgetsUserListViVn extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Chọn danh sách';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonViVn extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Với màu';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockViVn extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Kích thước';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Thời hạn';
 }
 
 // Path: misskey.postForm_.howToUse_

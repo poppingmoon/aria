@@ -1492,6 +1492,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get frame => 'Marc';
 	@override String get presets => 'Predefinit';
 	@override String get zeroPadding => 'Sense omplir';
+	@override String get nothingToConfigure => 'No hi ha res a configurar';
 	@override late final _TranslationsMisskeyImageEditingCaEs imageEditing_ = _TranslationsMisskeyImageEditingCaEs._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorCaEs imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorCaEs._(_root);
 	@override late final _TranslationsMisskeyCompressionCaEs compression_ = _TranslationsMisskeyCompressionCaEs._(_root);
@@ -1546,6 +1547,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesCaEs antennaSources_ = _TranslationsMisskeyAntennaSourcesCaEs._(_root);
 	@override late final _TranslationsMisskeyWeekdayCaEs weekday_ = _TranslationsMisskeyWeekdayCaEs._(_root);
 	@override late final _TranslationsMisskeyWidgetsCaEs widgets_ = _TranslationsMisskeyWidgetsCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsCaEs widgetOptions_ = _TranslationsMisskeyWidgetOptionsCaEs._(_root);
 	@override late final _TranslationsMisskeyCwCaEs cw_ = _TranslationsMisskeyCwCaEs._(_root);
 	@override late final _TranslationsMisskeyPollCaEs poll_ = _TranslationsMisskeyPollCaEs._(_root);
 	@override late final _TranslationsMisskeyVisibilityCaEs visibility_ = _TranslationsMisskeyVisibilityCaEs._(_root);
@@ -1769,6 +1771,9 @@ class _TranslationsMisskeySettingsCaEs extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => 'Mostrar les pestanyes de les línies de temps a la part inferior';
 	@override String get emojiPaletteBanner => 'Pots registrar ajustos preestablerts com paletes perquè es mostrin permanentment al selector d\'emojis, o personalitzar la configuració de visió del selector.';
 	@override String get enableAnimatedImages => 'Activar imatges animades';
+	@override String get settingsPersistence_title => 'Persistència de la configuració ';
+	@override String get settingsPersistence_description1 => 'Habilitar la persistència de la configuració permet que no es perdi la informació de la configuració ';
+	@override String get settingsPersistence_description2 => 'Depenent de l\'entorn pot ser que no puguis habilitar aquesta opció.';
 	@override late final _TranslationsMisskeySettingsChatCaEs chat_ = _TranslationsMisskeySettingsChatCaEs._(_root);
 }
 
@@ -2718,6 +2723,24 @@ class _TranslationsMisskeyWidgetsCaEs extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'Xateja amb aquest usuari';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsCaEs extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'Mostrar la capçalera';
+	@override String get transparent => 'Fons transparent';
+	@override String get height => 'Alçada ';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonCaEs button_ = _TranslationsMisskeyWidgetOptionsButtonCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockCaEs clock_ = _TranslationsMisskeyWidgetOptionsClockCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueCaEs jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssCaEs rss_ = _TranslationsMisskeyWidgetOptionsRssCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerCaEs rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsCaEs birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsCaEs._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwCaEs extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -3049,6 +3072,8 @@ class _TranslationsMisskeyDeckCaEs extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => 'L\'amplada mínima es farà servir quan "Ajust automàtic de l\'amplada" estigui activat';
 	@override String get flexible => 'Ajust automàtic de l\'amplada';
 	@override String get enableSyncBetweenDevicesForProfiles => 'Activar la sincronització de la informació de perfils de dispositiu a dispositiu';
+	@override String get showHowToUse => 'Veure la descripció de la interfície d\'usuari ';
+	@override late final _TranslationsMisskeyDeckHowToUseCaEs howToUse_ = _TranslationsMisskeyDeckHowToUseCaEs._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsCaEs columns_ = _TranslationsMisskeyDeckColumnsCaEs._(_root);
 }
 
@@ -3630,7 +3655,6 @@ class _TranslationsMisskeyImageEffectorCaEs extends TranslationsMisskeyImageEffe
 	@override String get title => 'Efecte';
 	@override String get addEffect => 'Afegeix un efecte';
 	@override String get discardChangesConfirm => 'Vols descartar els canvis i sortir?';
-	@override String get nothingToConfigure => 'No hi ha opcions de configuració disponibles';
 	@override String get failedToLoadImage => 'Error en carregar la imatge';
 	@override late final _TranslationsMisskeyImageEffectorFxsCaEs fxs_ = _TranslationsMisskeyImageEffectorFxsCaEs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsCaEs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsCaEs._(_root);
@@ -3786,8 +3810,8 @@ class _TranslationsMisskeyBubbleGameScoreCaEs extends TranslationsMisskeyBubbleG
 	@override String get highScore => 'Millor puntuació ';
 	@override String get maxChain => 'Nombre màxim de combos';
 	@override String yen({required Object yen}) => '${yen}Ien';
-	@override String estimatedQty({required Object qty}) => '${qty}peces';
-	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit}ongiris';
+	@override String estimatedQty({required Object qty}) => '${qty} Peces';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} Boles d\'arròs ';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -4163,6 +4187,88 @@ class _TranslationsMisskeyWidgetsUserListCaEs extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'Tria una llista';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonCaEs extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Colorit';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockCaEs extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Mida';
+	@override String get thickness => 'Amplada de l\'agulla ';
+	@override String get thicknessThin => 'Esvelt ';
+	@override String get thicknessMedium => 'Normal';
+	@override String get thicknessThick => 'Gruixut ';
+	@override String get graduations => 'Marques de l\'esfera ';
+	@override String get graduationDots => 'Punt';
+	@override String get graduationArabic => 'Nombres àrabs ';
+	@override String get fadeGraduations => 'Efecte gradient ';
+	@override String get sAnimation => 'Animació de la maneta dels segons';
+	@override String get sAnimationElastic => 'Real';
+	@override String get sAnimationEaseOut => 'Suau';
+	@override String get twentyFour => 'Format 24 hores';
+	@override String get labelTime => 'Temps';
+	@override String get labelTz => 'Fus horari';
+	@override String get labelTimeAndTz => 'Hora i fus horari';
+	@override String get timezone => 'Fus horari';
+	@override String get showMs => 'Mostrar mil·lisegons';
+	@override String get showLabel => 'Mostrar etiqueta';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueCaEs extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => 'Reprodueix so';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssCaEs extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'URL del canal RSS';
+	@override String get refreshIntervalSec => 'Interval d\'actualitzacions (segons)';
+	@override String get maxEntries => 'Nombre màxim d\'entrades a mostrar';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerCaEs extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => 'Visualització aleatòria ';
+	@override String get duration => 'Velocitat desplaçament bàner informatiu ';
+	@override String get reverse => 'Desplaçament contrari';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsCaEs extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Període';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseCaEs extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -4257,6 +4363,21 @@ class _TranslationsMisskeyNotificationActionsCaEs extends TranslationsMisskeyNot
 	@override String get followBack => 'També et segueix';
 	@override String get reply => 'Respondre';
 	@override String get renote => 'Impulsar';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseCaEs extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => 'Afegir columna';
+	@override String get addColumn_description => 'Pots seleccionar i afegir tipus de columnes.';
+	@override String get settings_title => 'Configuració de la interfície d\'usuari ';
+	@override String get settings_description => 'Pots configurar la interfície d\'usuari amb detall.';
+	@override String get switchProfile_title => 'Canviar perfil';
+	@override String get switchProfile_description => 'Pots desar el disseny de la interfície d\'usuari com un perfil i anar canviant entre ells quan vulguis.';
 }
 
 // Path: misskey.deck_.columns_

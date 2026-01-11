@@ -1126,6 +1126,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesArSa antennaSources_ = _TranslationsMisskeyAntennaSourcesArSa._(_root);
 	@override late final _TranslationsMisskeyWeekdayArSa weekday_ = _TranslationsMisskeyWeekdayArSa._(_root);
 	@override late final _TranslationsMisskeyWidgetsArSa widgets_ = _TranslationsMisskeyWidgetsArSa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsArSa widgetOptions_ = _TranslationsMisskeyWidgetOptionsArSa._(_root);
 	@override late final _TranslationsMisskeyCwArSa cw_ = _TranslationsMisskeyCwArSa._(_root);
 	@override late final _TranslationsMisskeyPollArSa poll_ = _TranslationsMisskeyPollArSa._(_root);
 	@override late final _TranslationsMisskeyVisibilityArSa visibility_ = _TranslationsMisskeyVisibilityArSa._(_root);
@@ -1709,6 +1710,19 @@ class _TranslationsMisskeyWidgetsArSa extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListArSa userList_ = _TranslationsMisskeyWidgetsUserListArSa._(_root);
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsArSa extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'الإرتفاع';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonArSa button_ = _TranslationsMisskeyWidgetOptionsButtonArSa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockArSa clock_ = _TranslationsMisskeyWidgetOptionsClockArSa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsArSa birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsArSa._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwArSa extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
@@ -2241,6 +2255,36 @@ class _TranslationsMisskeyWidgetsUserListArSa extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'اختر قائمة';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonArSa extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'ملوّن';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockArSa extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'الحجم';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsArSa extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'المدة';
 }
 
 // Path: misskey.postForm_.howToUse_

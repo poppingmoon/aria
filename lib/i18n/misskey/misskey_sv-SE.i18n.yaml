@@ -643,6 +643,9 @@ widgets_:
   jobQueue: "Jobbkö"
   userList_:
     chooseList: "Välj lista"
+widgetOptions_:
+  clock_:
+    size: "Storlek"
 cw_:
   hide: "Dölj"
   show: "Ladda mer"

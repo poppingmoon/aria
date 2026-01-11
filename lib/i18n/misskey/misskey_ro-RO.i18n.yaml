@@ -1305,6 +1305,12 @@ widgets_:
   jobQueue: "coada de job-uri"
   userList_:
     chooseList: "Selectează o listă"
+widgetOptions_:
+  height: "Înălţime"
+  button_:
+    colored: "Colorat"
+  clock_:
+    size: "Dimensiune"
 cw_:
   show: "Incarcă mai mult"
 visibility_:

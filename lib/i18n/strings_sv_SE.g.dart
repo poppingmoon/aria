@@ -658,6 +658,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyPermissionsSvSe permissions_ = _TranslationsMisskeyPermissionsSvSe._(_root);
 	@override late final _TranslationsMisskeyAntennaSourcesSvSe antennaSources_ = _TranslationsMisskeyAntennaSourcesSvSe._(_root);
 	@override late final _TranslationsMisskeyWidgetsSvSe widgets_ = _TranslationsMisskeyWidgetsSvSe._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsSvSe widgetOptions_ = _TranslationsMisskeyWidgetOptionsSvSe._(_root);
 	@override late final _TranslationsMisskeyCwSvSe cw_ = _TranslationsMisskeyCwSvSe._(_root);
 	@override late final _TranslationsMisskeyPollSvSe poll_ = _TranslationsMisskeyPollSvSe._(_root);
 	@override late final _TranslationsMisskeyVisibilitySvSe visibility_ = _TranslationsMisskeyVisibilitySvSe._(_root);
@@ -924,6 +925,16 @@ class _TranslationsMisskeyWidgetsSvSe extends TranslationsMisskeyWidgetsEnUs {
 	@override String get federation => 'Federation';
 	@override String get jobQueue => 'Jobbkö';
 	@override late final _TranslationsMisskeyWidgetsUserListSvSe userList_ = _TranslationsMisskeyWidgetsUserListSvSe._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsSvSe extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyWidgetOptionsClockSvSe clock_ = _TranslationsMisskeyWidgetOptionsClockSvSe._(_root);
 }
 
 // Path: misskey.cw_
@@ -1221,6 +1232,16 @@ class _TranslationsMisskeyWidgetsUserListSvSe extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Välj lista';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockSvSe extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Storlek';
 }
 
 // Path: misskey.postForm_.howToUse_

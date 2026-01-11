@@ -142,6 +142,8 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get importCompleted => 'Import abgeschlossen';
 	@override String get importConfirm => 'Willst du wirklich Einstellungen importieren? Bestehende Einstellungen werden überschrieben.';
+	@override String get invalidEndpoint => 'Ungültiger Endpunkt';
+	@override String get invalidEndpointDescription => 'Der Endpunkt in der Antwort ist ungültig. Stelle sicher, dass der ausgeführte Code dem entspricht, der durch die App vorgegeben ist.';
 	@override String get invalidListFormat => 'Format der Liste ist ungültig';
 	@override String jumpTo({required Object x}) => 'Zu ${x} springen';
 	@override String get keepOpen => 'Geöffnet halten';
@@ -390,6 +392,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get download => 'Herunterladen';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Möchtest du die Datei „${name}“ wirklich löschen? Einige Inhalte, die diese Datei verwenden, werden auch verschwinden.';
 	@override String unfollowConfirm({required Object name}) => 'Möchtest du ${name} wirklich nicht mehr folgen?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Möchten Sie die Voll-Anfrage an ${name} zurückziehen?';
 	@override String rejectFollowRequestConfirm({required Object name}) => 'Möchtest du die Follow-Anfrage von ${name} ablehnen?';
 	@override String get exportRequested => 'Du hast einen Export angefragt. Dies kann etwas Zeit in Anspruch nehmen. Sobald der Export abgeschlossen ist, wird er deiner Drive hinzugefügt.';
 	@override String get importRequested => 'Du hast einen Import angefragt. Dies kann etwas Zeit in Anspruch nehmen.';
@@ -561,6 +564,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'Du kannst nicht noch mehr Notizen anheften.';
 	@override String get done => 'Fertig';
 	@override String get processing => 'In Bearbeitung …';
+	@override String get preprocessing => 'In Vorbereitung';
 	@override String get preview => 'Vorschau';
 	@override String get default_ => 'Standard';
 	@override String defaultValueIs({required Object value}) => 'Standardwert: ${value}';
@@ -609,6 +613,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String uploadNFiles({required Object n}) => 'Lade ${n} Dateien hoch';
 	@override String get explore => 'Erkunden';
 	@override String get messageRead => 'Gelesen';
+	@override String get readAllChatMessages => 'Alle Nachrichten als gelesen markieren';
 	@override String get noMoreHistory => 'Kein weiterer Verlauf vorhanden';
 	@override String get startChat => 'Chat starten';
 	@override String nUsersRead({required Object n}) => 'Von ${n} Benutzern gelesen';
@@ -641,6 +646,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get selectFile => 'Datei auswählen';
 	@override String get selectFiles => 'Dateien auswählen';
 	@override String get selectFolder => 'Ordner auswählen';
+	@override String get unselectFolder => 'Ordnerauswahl aufheben';
 	@override String get selectFolders => 'Ordner auswählen';
 	@override String get fileNotSelected => 'Keine Datei ausgewählt';
 	@override String get renameFile => 'Datei umbenennen';
@@ -653,6 +659,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get showFile => 'Datei anzeigen';
 	@override String get emptyDrive => 'Deine Drive ist leer';
 	@override String get emptyFolder => 'Dieser Ordner ist leer';
+	@override String get dropHereToUpload => 'Dateien hier ablegen, um sie hochzuladen.';
 	@override String get unableToDelete => 'Nicht löschbar';
 	@override String get inputNewFileName => 'Gib einen neuen Dateinamen ein';
 	@override String get inputNewDescription => 'Gib eine neue Beschreibung ein';
@@ -1080,6 +1087,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'Medien standardmäßig als sensibel markieren';
 	@override String get loadRawImages => 'Anstatt Vorschaubilder immer Originalbilder anzeigen';
 	@override String get disableShowingAnimatedImages => 'Animierte Bilder nicht abspielen';
+	@override String get disableShowingAnimatedImages_caption => 'Unabhängig von dieser Einstellung kann es vorkommen, dass animierte Bilder nicht abgespielt werden, wenn z. B. die Barrierefreiheits- oder Energiespareinstellungen des Browsers oder des Betriebssystems eingreifen.';
 	@override String get highlightSensitiveMedia => 'Sensitive Medien markieren';
 	@override String get verificationEmailSent => 'Eine Bestätigungsmail wurde an deine Email-Adresse versendet. Besuche den dort enthaltenen Link, um die Verifizierung abzuschließen.';
 	@override String get notSet => 'Nicht konfiguriert';
@@ -1327,6 +1335,8 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get sendPushNotificationReadMessage => 'Push-Benachrichtigungen löschen, sobald sie gelesen wurden';
 	@override String get sendPushNotificationReadMessageCaption => 'Dies kann gegebenenfalls den Batterieverbrauch deines Gerätes erhöhen.';
 	@override String get pleaseAllowPushNotification => 'Bitte erlauben Sie Benachrichtigungen in Ihrem Browser.';
+	@override String get browserPushNotificationDisabled => 'Das Abrufen der Berechtigung zum Senden von Benachrichtigungen ist fehlgeschlagen.';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => 'Sie haben keine Berechtigung, Benachrichtigungen von ${serverName} zu senden. Bitte erlauben Sie Benachrichtigungen in den Browser-Einstellungen und versuchen Sie es erneut.';
 	@override String get windowMaximize => 'Maximieren';
 	@override String get windowMinimize => 'Minimieren';
 	@override String get windowRestore => 'Wiederherstellen';
@@ -1402,6 +1412,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get hiddenTags => 'Ausgeblendete Hashtags';
 	@override String get hiddenTagsDescription => 'Die hier eingestellten Tags werden nicht mehr in den Trends angezeigt. Mit der Umschalttaste können mehrere ausgewählt werden.';
 	@override String get notesSearchNotAvailable => 'Die Notizsuche ist nicht verfügbar.';
+	@override String get usersSearchNotAvailable => 'Die Benutzersuche ist nicht verfügbar.';
 	@override String get license => 'Lizenz';
 	@override String get unfavoriteConfirm => 'Wirklich aus Favoriten entfernen?';
 	@override String get myClips => 'Meine Clips';
@@ -1476,6 +1487,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get branding => 'Branding';
 	@override String get enableServerMachineStats => 'Hardwareinformationen des Servers veröffentlichen';
 	@override String get enableIdenticonGeneration => 'Generierung von Benutzer-Identicons aktivieren';
+	@override String get showRoleBadgesOfRemoteUsers => 'Rollensymbole anzeigen, die Remote-Benutzern zugewiesen wurden.';
 	@override String get turnOffToImprovePerformance => 'Deaktivierung kann zu höherer Leistung führen.';
 	@override String get createInviteCode => 'Einladung erstellen';
 	@override String get createWithOptions => 'Einladung mit Optionen erstellen';
@@ -1624,6 +1636,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'Dieser Server arbeitet mit Whitelist-Föderation. Er kann nicht mit anderen als den vom Administrator angegebenen Servern interagieren.';
 	@override String get federationDisabled => 'Föderation ist auf diesem Server deaktiviert. Es ist nicht möglich, mit Benutzern auf anderen Servern zu interagieren.';
 	@override String get draft => 'Entwurf';
+	@override String get draftsAndScheduledNotes => 'Entwürfe und geplante Beiträge';
 	@override String get confirmOnReact => 'Reagieren bestätigen';
 	@override String reactAreYouSure({required Object emoji}) => 'Willst du eine "${emoji}"-Reaktion hinzufügen?';
 	@override String get markAsSensitiveConfirm => 'Möchtest du dieses Medium als sensibel kennzeichnen?';
@@ -1652,6 +1665,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get information => 'Über';
 	@override String get chat => 'Chat';
 	@override String get directMessage => 'Mit dem Benutzer chatten';
+	@override String get directMessage_short => 'Nachrichten';
 	@override String get migrateOldSettings => 'Alte Client-Einstellungen migrieren';
 	@override String get migrateOldSettings_description => 'Dies sollte normalerweise automatisch geschehen, aber wenn die Migration aus irgendeinem Grund nicht erfolgreich war, kannst du den Migrationsprozess selbst manuell auslösen. Die aktuellen Konfigurationsinformationen werden dabei überschrieben.';
 	@override String get compress => 'Komprimieren';
@@ -1679,15 +1693,28 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Alle „Tipps und Tricks“ ausblenden';
 	@override String get defaultImageCompressionLevel => 'Standard-Bildkomprimierungsstufe';
 	@override String get defaultImageCompressionLevel_description => 'Ein niedrigerer Wert erhält die Bildqualität, erhöht aber die Dateigröße. <br>Höhere Werte reduzieren die Dateigröße, verringern aber die Bildqualität.';
+	@override String get defaultCompressionLevel => 'Standard-Kompressionsgrad';
+	@override String get defaultCompressionLevel_description => 'Bei einem niedrigeren Wert bleibt die Qualität erhalten, aber die Dateigröße nimmt zu.<br> Bei einem höheren Wert lässt sich die Dateigröße verringern, aber die Qualität nimmt ab.';
 	@override String get inMinutes => 'Minute(n)';
 	@override String get inDays => 'Tag(en)';
 	@override String get safeModeEnabled => 'Der abgesicherte Modus ist aktiviert.';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Da der abgesicherte Modus aktiviert ist, sind alle Plugins deaktiviert.';
+	@override String get customCssIsDisabledBecauseSafeMode => 'Da der abgesicherte Modus aktiviert ist, wird benutzerdefiniertes CSS nicht angewendet.';
+	@override String get themeIsDefaultBecauseSafeMode => 'Solange der abgesicherte Modus aktiviert ist, wird das Standard-Theme verwendet. Wenn Sie den abgesicherten Modus deaktivieren, wird es wieder zurückgesetzt.';
+	@override String get thankYouForTestingBeta => 'Vielen Dank für Ihre Unterstützung beim Testen der Beta-Version!';
+	@override String get createUserSpecifiedNote => 'Benutzerdefinierte Notiz erstellen';
+	@override String get schedulePost => 'Beitrag planen';
+	@override String scheduleToPostOnX({required Object x}) => 'Der Beitrag wird für ${x} geplant.x';
+	@override String scheduledToPostOnX({required Object x}) => 'Der Beitrag ist für ${x} geplant.';
 	@override String get schedule => 'Planen';
 	@override String get scheduled => 'Geplant';
 	@override String get widgets => 'Widgets';
 	@override String get deviceInfo => 'Geräteinformation';
+	@override String get deviceInfoDescription => 'Bei technischen Anfragen kann es hilfreich sein, die folgenden Informationen anzugeben, da dies zur Lösung des Problems beitragen kann.';
 	@override String get youAreAdmin => 'Sie sind ein Administrator';
+	@override String get frame => 'Rahmen';
 	@override String get presets => 'Vorlage';
+	@override String get zeroPadding => 'Nullauffüllung';
 	@override late final _TranslationsMisskeyImageEditingDeDe imageEditing_ = _TranslationsMisskeyImageEditingDeDe._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorDeDe imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorDeDe._(_root);
 	@override late final _TranslationsMisskeyOrderDeDe order_ = _TranslationsMisskeyOrderDeDe._(_root);
@@ -1741,6 +1768,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesDeDe antennaSources_ = _TranslationsMisskeyAntennaSourcesDeDe._(_root);
 	@override late final _TranslationsMisskeyWeekdayDeDe weekday_ = _TranslationsMisskeyWeekdayDeDe._(_root);
 	@override late final _TranslationsMisskeyWidgetsDeDe widgets_ = _TranslationsMisskeyWidgetsDeDe._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsDeDe widgetOptions_ = _TranslationsMisskeyWidgetOptionsDeDe._(_root);
 	@override late final _TranslationsMisskeyCwDeDe cw_ = _TranslationsMisskeyCwDeDe._(_root);
 	@override late final _TranslationsMisskeyPollDeDe poll_ = _TranslationsMisskeyPollDeDe._(_root);
 	@override late final _TranslationsMisskeyVisibilityDeDe visibility_ = _TranslationsMisskeyVisibilityDeDe._(_root);
@@ -1836,6 +1864,7 @@ class _TranslationsMisskeyChatDeDe extends TranslationsMisskeyChatEnUs {
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Nachrichten';
 	@override String get noMessagesYet => 'Noch keine Nachrichten';
 	@override String get newMessage => 'Neue Nachricht';
 	@override String get individualChat => 'Privater Chat';
@@ -2869,6 +2898,20 @@ class _TranslationsMisskeyWidgetsDeDe extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'Mit dem Benutzer chatten';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsDeDe extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'Kopfzeile anzeigen';
+	@override String get height => 'Höhe';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonDeDe button_ = _TranslationsMisskeyWidgetOptionsButtonDeDe._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockDeDe clock_ = _TranslationsMisskeyWidgetOptionsClockDeDe._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwDeDe extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -3807,7 +3850,19 @@ class _TranslationsMisskeyImageEditingVarsDeDe extends TranslationsMisskeyImageE
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get caption => 'Dateibeschriftung';
 	@override String get filename => 'Dateiname';
+	@override String get filename_without_ext => 'Dateiname ohne Erweiterung';
+	@override String get year => 'Jahr der Aufnahme';
+	@override String get month => 'Monat der Aufnahme';
+	@override String get day => 'Tag der Aufnahme';
+	@override String get hour => 'Stunde der Aufnahmezeit';
+	@override String get minute => 'Minute der Aufnahmezeit';
+	@override String get second => 'Sekunde der Aufnahmezeit';
+	@override String get camera_model => 'Kameraname';
+	@override String get camera_lens_model => 'Objektivname';
+	@override String get camera_mm => 'Brennweite';
+	@override String get camera_mm_35 => 'Brennweite (35-mm-Äquivalent)';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -4233,6 +4288,36 @@ class _TranslationsMisskeyWidgetsUserListDeDe extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Liste auswählen';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonDeDe extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Farbig';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockDeDe extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Größe';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Dauer';
 }
 
 // Path: misskey.postForm_.howToUse_

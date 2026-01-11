@@ -1677,6 +1677,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get frame => 'Marco';
 	@override String get presets => 'Predefinido';
 	@override String get zeroPadding => 'Relleno cero';
+	@override String get nothingToConfigure => 'No hay nada que configurar';
 	@override late final _TranslationsMisskeyImageEditingEsEs imageEditing_ = _TranslationsMisskeyImageEditingEsEs._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorEsEs imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorEsEs._(_root);
 	@override late final _TranslationsMisskeyCompressionEsEs compression_ = _TranslationsMisskeyCompressionEsEs._(_root);
@@ -1731,6 +1732,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesEsEs antennaSources_ = _TranslationsMisskeyAntennaSourcesEsEs._(_root);
 	@override late final _TranslationsMisskeyWeekdayEsEs weekday_ = _TranslationsMisskeyWeekdayEsEs._(_root);
 	@override late final _TranslationsMisskeyWidgetsEsEs widgets_ = _TranslationsMisskeyWidgetsEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsEsEs widgetOptions_ = _TranslationsMisskeyWidgetOptionsEsEs._(_root);
 	@override late final _TranslationsMisskeyCwEsEs cw_ = _TranslationsMisskeyCwEsEs._(_root);
 	@override late final _TranslationsMisskeyPollEsEs poll_ = _TranslationsMisskeyPollEsEs._(_root);
 	@override late final _TranslationsMisskeyVisibilityEsEs visibility_ = _TranslationsMisskeyVisibilityEsEs._(_root);
@@ -1954,6 +1956,9 @@ class _TranslationsMisskeySettingsEsEs extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => 'Mostrar la barra de pestañas de la página en la parte inferior.';
 	@override String get emojiPaletteBanner => 'Puedes registrar ajustes preestablecidos como paletas para que se muestren permanentemente en el selector de emojis, o personalizar el método de visualización del selector.';
 	@override String get enableAnimatedImages => 'Habilitar imágenes animadas';
+	@override String get settingsPersistence_title => 'Persistencia de la configuración';
+	@override String get settingsPersistence_description1 => 'Habilitar la persistencia de la configuración evita que se pierda la información de configuración.';
+	@override String get settingsPersistence_description2 => 'Es posible que no se pueda habilitar esta función dependiendo del entorno.';
 	@override late final _TranslationsMisskeySettingsChatEsEs chat_ = _TranslationsMisskeySettingsChatEsEs._(_root);
 }
 
@@ -2442,7 +2447,7 @@ class _TranslationsMisskeyRegistryEsEs extends TranslationsMisskeyRegistryEnUs {
 	@override String get key => 'Clave';
 	@override String get keys => 'Clave';
 	@override String get domain => 'Dominio';
-	@override String get createKey => 'Crear una llave';
+	@override String get createKey => 'Crear una clave';
 }
 
 // Path: misskey.aboutMisskey_
@@ -2903,6 +2908,24 @@ class _TranslationsMisskeyWidgetsEsEs extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'Chatear';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsEsEs extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'Mostrar encabezados';
+	@override String get transparent => 'Hacer fondo transparente';
+	@override String get height => 'Altura';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonEsEs button_ = _TranslationsMisskeyWidgetOptionsButtonEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockEsEs clock_ = _TranslationsMisskeyWidgetOptionsClockEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueEsEs jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssEsEs rss_ = _TranslationsMisskeyWidgetOptionsRssEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerEsEs rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerEsEs._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsEsEs birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsEsEs._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwEsEs extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
@@ -3234,6 +3257,8 @@ class _TranslationsMisskeyDeckEsEs extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => 'Se usará el ancho mínimo cuando la opción "Autoajustar ancho" esté habilitada';
 	@override String get flexible => 'Autoajustar ancho';
 	@override String get enableSyncBetweenDevicesForProfiles => 'Activar la sincronización de la información de perfiles entre dispositivos.';
+	@override String get showHowToUse => 'Ver la descripción de la interfaz de usuario';
+	@override late final _TranslationsMisskeyDeckHowToUseEsEs howToUse_ = _TranslationsMisskeyDeckHowToUseEsEs._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsEsEs columns_ = _TranslationsMisskeyDeckColumnsEsEs._(_root);
 }
 
@@ -3607,8 +3632,8 @@ class _TranslationsMisskeyFollowRequestEsEs extends TranslationsMisskeyFollowReq
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get recieved => 'Petición de seguimiento recibida';
-	@override String get sent => 'Petición de seguimiento enviada';
+	@override String get recieved => 'Solicitud de seguimiento recibida';
+	@override String get sent => 'Solicitud de seguimiento enviada';
 }
 
 // Path: misskey.remoteLookupErrors_
@@ -3815,7 +3840,6 @@ class _TranslationsMisskeyImageEffectorEsEs extends TranslationsMisskeyImageEffe
 	@override String get title => 'Efecto';
 	@override String get addEffect => 'Añadir Efecto';
 	@override String get discardChangesConfirm => '¿Ignorar cambios y salir?';
-	@override String get nothingToConfigure => 'No hay opciones configurables disponibles.';
 	@override String get failedToLoadImage => 'Error al cargar la imagen';
 	@override late final _TranslationsMisskeyImageEffectorFxsEsEs fxs_ = _TranslationsMisskeyImageEffectorFxsEsEs._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsEsEs fxProps_ = _TranslationsMisskeyImageEffectorFxPropsEsEs._(_root);
@@ -4038,9 +4062,9 @@ class _TranslationsMisskeyInitialTutorialTimelineEsEs extends TranslationsMisske
 	@override String get title => 'El concepto de Línea de tiempo';
 	@override String get description1 => 'Misskey proporciona múltiples líneas de tiempo basadas en su uso (algunas pueden no estar disponibles dependiendo de las políticas de la instancia).';
 	@override String get home => 'Puedes ver los posts de las cuentas que sigues.';
-	@override String get local => 'Puedes ver los posts de todos los usuarios de este servidor.';
+	@override String get local => 'Puedes ver los posts de todos los usuarios de este servidor (también llamado instancia).';
 	@override String get social => 'Se ven los posts de la línea de tiempo de inicio junto con los de la línea de tiempo local.';
-	@override String get global => 'Puedes ver notas de todos los servidores conectados.';
+	@override String get global => 'Puedes ver notas de todos los servidores (instancias) conectados.';
 	@override String get description2 => 'Puedes cambiar la línea de tiempo en la parte superior de la pantalla cuando quieras.';
 	@override String description3({required Object link}) => 'Además, hay listas de líneas de tiempo y listas de canales. Para más detalle, por favor visita este enlace: ${link}';
 }
@@ -4348,6 +4372,88 @@ class _TranslationsMisskeyWidgetsUserListEsEs extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'Seleccione una lista';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonEsEs extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Color';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockEsEs extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Tamaño';
+	@override String get thickness => 'Grosor de la aguja';
+	@override String get thicknessThin => 'Delgada';
+	@override String get thicknessMedium => 'Normal';
+	@override String get thicknessThick => 'Gruesa';
+	@override String get graduations => 'Marcas del dial';
+	@override String get graduationDots => 'Puntos';
+	@override String get graduationArabic => 'Números decimales';
+	@override String get fadeGraduations => 'Desvanecer la escala';
+	@override String get sAnimation => 'Animación de la manecilla de los segundos';
+	@override String get sAnimationElastic => 'Real';
+	@override String get sAnimationEaseOut => 'Suave';
+	@override String get twentyFour => 'Formato 24 horas';
+	@override String get labelTime => 'Hora';
+	@override String get labelTz => 'Zona horaria';
+	@override String get labelTimeAndTz => 'Hora y zona horaria';
+	@override String get timezone => 'Zona horaria';
+	@override String get showMs => 'Mostrar milisegundos';
+	@override String get showLabel => 'Mostrar etiqueta';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueEsEs extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => 'Reproducir sonido';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssEsEs extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'URL del canal RSS';
+	@override String get refreshIntervalSec => 'Intervalo de actualización (En segundos)';
+	@override String get maxEntries => 'Número máximo de elementos a mostrar';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerEsEs extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => 'Orden de visualización aleatorio';
+	@override String get duration => 'Velocidad de desplazamiento del baner (En segundos)';
+	@override String get reverse => 'Desplázate en la dirección opuesta.';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsEsEs extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Duración';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseEsEs extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
@@ -4442,6 +4548,21 @@ class _TranslationsMisskeyNotificationActionsEsEs extends TranslationsMisskeyNot
 	@override String get followBack => 'Te sigue de vuelta';
 	@override String get reply => 'Responder';
 	@override String get renote => 'Renotar';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseEsEs extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => 'Añadir columna';
+	@override String get addColumn_description => 'Puede seleccionar y añadir tipos de columnas.';
+	@override String get settings_title => 'Configuración de la interfaz de usuario';
+	@override String get settings_description => 'Puedes configurar la interfaz de usuario en detalle.';
+	@override String get switchProfile_title => 'Cambiar de perfil';
+	@override String get switchProfile_description => 'Puedes guardar diseños de interfaz de usuario como perfiles y cambiar entre ellos en cualquier momento.';
 }
 
 // Path: misskey.deck_.columns_
@@ -4887,7 +5008,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityEsEs extends Translat
 	@override String get description => 'Puedes limitar quién puede ver tu nota.';
 	@override String get public => 'Tu nota será visible para todos los usuarios.';
 	@override String get home => 'Publicar solo en la línea de tiempo de Inicio. La nota se verá en tu perfil, la verán tus seguidores y también cuando sea renotada.';
-	@override String get followers => 'Visible solo para seguidores. Sólo tus seguidores podrán ver la nota, y no podrá ser renotada por otras personas.';
+	@override String get followers => 'Visible solo para seguidores. Solo tus seguidores podrán ver la nota, y no podrá ser renotada por otras personas.';
 	@override String get direct => 'Visible sólo para usuarios específicos, y el destinatario será notificado. Puede usarse como alternativa a la mensajería directa.';
 	@override String get doNotSendConfidencialOnDirect1 => '¡Ten cuidado cuando vayas a enviar información sensible!';
 	@override String get doNotSendConfidencialOnDirect2 => 'Los administradores del servidor, también llamado instancia, pueden leer lo que escribes. Ten cuidado cuando envíes información sensible en notas directas en servidores o instancias no confiables.';
@@ -4902,7 +5023,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwEsEs extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'Alerta de contenido (CW)';
-	@override String get description => 'En lugar de mostrarse el contenido de la nota, se mostrará lo que escribas en el campo "comentarios". Pulsando en "leer más" desplegará el contenido de la nota.';
+	@override String get description => 'En lugar de mostrarse el contenido de la nota, se mostrará lo que escribas en el campo "comentarios". Pulsando en "Ver más" desplegará el contenido de la nota.';
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEsEs exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEsEs._(_root);
 	@override String get useCases => 'Esto se usa cuando las normas del servidor lo requieren, o para ocultar spoilers o contenido sensible.';
 }

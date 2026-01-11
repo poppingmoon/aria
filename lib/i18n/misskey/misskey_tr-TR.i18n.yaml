@@ -2470,6 +2470,15 @@ widgets_:
   clicker: "Tıklayıcı"
   birthdayFollowings: "Bugünün Doğum Günleri"
   chat: "Sohbet"
+widgetOptions_:
+  showHeader: "Başlığı göster"
+  height: "Yükseklik"
+  button_:
+    colored: "Renkli"
+  clock_:
+    size: "Boyut"
+  birthdayFollowings_:
+    period: "Süre"
 cw_:
   hide: "Gizle"
   show: "İçeriği göster"
@@ -3206,7 +3215,6 @@ imageEffector_:
   title: "Effektler"
   addEffect: "Efektler Ekle"
   discardChangesConfirm: "Cidden çıkmak istiyor musun? Kaydedilmemiş değişikliklerin var."
-  nothingToConfigure: "Yapılandırılabilir seçenekler mevcut değildir."
   fxs_:
     chromaticAberration: "Renk Sapması"
     glitch: "Bozulma"

@@ -949,6 +949,12 @@ widgets_:
   jobQueue: "Vazifalar navbati"
   userList_:
     chooseList: "Ro'yxat tanlash"
+widgetOptions_:
+  height: "balandligi"
+  button_:
+    colored: "rangli"
+  birthdayFollowings_:
+    period: "Davomiylik"
 cw_:
   show: "Ko‘proq ko‘rish"
   chars: "{count} ta belgi(lar)"

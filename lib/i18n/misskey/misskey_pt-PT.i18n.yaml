@@ -2493,6 +2493,15 @@ widgets_:
   clicker: "Clicker"
   birthdayFollowings: "Usuários de aniversário hoje"
   chat: "Conversar com usuário"
+widgetOptions_:
+  showHeader: "Exibir cabeçalho"
+  height: "Altura"
+  button_:
+    colored: "Colorido"
+  clock_:
+    size: "Tamanho"
+  birthdayFollowings_:
+    period: "Duração"
 cw_:
   hide: "Esconder"
   show: "Carregar mais"
@@ -3234,7 +3243,6 @@ imageEffector_:
   title: "Efeitos"
   addEffect: "Adicionar efeitos"
   discardChangesConfirm: "Tem certeza que deseja sair? Há mudanças não salvas."
-  nothingToConfigure: "Não há nada para configurar"
   fxs_:
     chromaticAberration: "Aberração cromática"
     glitch: "Glitch"

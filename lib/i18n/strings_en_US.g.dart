@@ -4902,6 +4902,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Zero padding'
 	String get zeroPadding => 'Zero padding';
 
+	/// en-US: 'No configurable options available'
+	String get nothingToConfigure => 'No configurable options available';
+
 	late final TranslationsMisskeyImageEditingEnUs imageEditing_ = TranslationsMisskeyImageEditingEnUs.internal(_root);
 	late final TranslationsMisskeyImageFrameEditorEnUs imageFrameEditor_ = TranslationsMisskeyImageFrameEditorEnUs.internal(_root);
 	late final TranslationsMisskeyCompressionEnUs compression_ = TranslationsMisskeyCompressionEnUs.internal(_root);
@@ -4956,6 +4959,7 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyAntennaSourcesEnUs antennaSources_ = TranslationsMisskeyAntennaSourcesEnUs.internal(_root);
 	late final TranslationsMisskeyWeekdayEnUs weekday_ = TranslationsMisskeyWeekdayEnUs.internal(_root);
 	late final TranslationsMisskeyWidgetsEnUs widgets_ = TranslationsMisskeyWidgetsEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsEnUs widgetOptions_ = TranslationsMisskeyWidgetOptionsEnUs.internal(_root);
 	late final TranslationsMisskeyCwEnUs cw_ = TranslationsMisskeyCwEnUs.internal(_root);
 	late final TranslationsMisskeyPollEnUs poll_ = TranslationsMisskeyPollEnUs.internal(_root);
 	late final TranslationsMisskeyVisibilityEnUs visibility_ = TranslationsMisskeyVisibilityEnUs.internal(_root);
@@ -5409,6 +5413,15 @@ class TranslationsMisskeySettingsEnUs {
 
 	/// en-US: 'Enable animated images'
 	String get enableAnimatedImages => 'Enable animated images';
+
+	/// en-US: 'Persistence of Settings'
+	String get settingsPersistence_title => 'Persistence of Settings';
+
+	/// en-US: 'Enabling setting persistence prevents configuration information from being lost.'
+	String get settingsPersistence_description1 => 'Enabling setting persistence prevents configuration information from being lost.';
+
+	/// en-US: 'It may not be possible to enable this depending on the environment.'
+	String get settingsPersistence_description2 => 'It may not be possible to enable this depending on the environment.';
 
 	late final TranslationsMisskeySettingsChatEnUs chat_ = TranslationsMisskeySettingsChatEnUs.internal(_root);
 }
@@ -7375,6 +7388,31 @@ class TranslationsMisskeyWidgetsEnUs {
 	String get chat => 'Chat with user';
 }
 
+// Path: misskey.widgetOptions_
+class TranslationsMisskeyWidgetOptionsEnUs {
+	TranslationsMisskeyWidgetOptionsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Show header'
+	String get showHeader => 'Show header';
+
+	/// en-US: 'Make background transparent'
+	String get transparent => 'Make background transparent';
+
+	/// en-US: 'Height'
+	String get height => 'Height';
+
+	late final TranslationsMisskeyWidgetOptionsButtonEnUs button_ = TranslationsMisskeyWidgetOptionsButtonEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsClockEnUs clock_ = TranslationsMisskeyWidgetOptionsClockEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsJobQueueEnUs jobQueue_ = TranslationsMisskeyWidgetOptionsJobQueueEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsRssEnUs rss_ = TranslationsMisskeyWidgetOptionsRssEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsRssTickerEnUs rssTicker_ = TranslationsMisskeyWidgetOptionsRssTickerEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs birthdayFollowings_ = TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs.internal(_root);
+}
+
 // Path: misskey.cw_
 class TranslationsMisskeyCwEnUs {
 	TranslationsMisskeyCwEnUs.internal(this._root);
@@ -8114,6 +8152,10 @@ class TranslationsMisskeyDeckEnUs {
 	/// en-US: 'Enable profile information sync between devices'
 	String get enableSyncBetweenDevicesForProfiles => 'Enable profile information sync between devices';
 
+	/// en-US: ''
+	String get showHowToUse => '';
+
+	late final TranslationsMisskeyDeckHowToUseEnUs howToUse_ = TranslationsMisskeyDeckHowToUseEnUs.internal(_root);
 	late final TranslationsMisskeyDeckColumnsEnUs columns_ = TranslationsMisskeyDeckColumnsEnUs.internal(_root);
 }
 
@@ -9232,9 +9274,6 @@ class TranslationsMisskeyImageEffectorEnUs {
 	/// en-US: 'Are you sure you want to leave? You have unsaved changes.'
 	String get discardChangesConfirm => 'Are you sure you want to leave? You have unsaved changes.';
 
-	/// en-US: 'No configurable options available'
-	String get nothingToConfigure => 'No configurable options available';
-
 	/// en-US: 'Failed to load image'
 	String get failedToLoadImage => 'Failed to load image';
 
@@ -10223,6 +10262,144 @@ class TranslationsMisskeyWidgetsUserListEnUs {
 	String get chooseList => 'Select a list';
 }
 
+// Path: misskey.widgetOptions_.button_
+class TranslationsMisskeyWidgetOptionsButtonEnUs {
+	TranslationsMisskeyWidgetOptionsButtonEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Colored'
+	String get colored => 'Colored';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class TranslationsMisskeyWidgetOptionsClockEnUs {
+	TranslationsMisskeyWidgetOptionsClockEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Size'
+	String get size => 'Size';
+
+	/// en-US: 'Needle thickness'
+	String get thickness => 'Needle thickness';
+
+	/// en-US: 'Thin'
+	String get thicknessThin => 'Thin';
+
+	/// en-US: 'Normal'
+	String get thicknessMedium => 'Normal';
+
+	/// en-US: 'Thick'
+	String get thicknessThick => 'Thick';
+
+	/// en-US: 'Dial markings'
+	String get graduations => 'Dial markings';
+
+	/// en-US: 'Dot'
+	String get graduationDots => 'Dot';
+
+	/// en-US: 'Arabic numbers'
+	String get graduationArabic => 'Arabic numbers';
+
+	/// en-US: 'Fade the scale'
+	String get fadeGraduations => 'Fade the scale';
+
+	/// en-US: 'Second hand animation'
+	String get sAnimation => 'Second hand animation';
+
+	/// en-US: 'Real'
+	String get sAnimationElastic => 'Real';
+
+	/// en-US: 'Smooth'
+	String get sAnimationEaseOut => 'Smooth';
+
+	/// en-US: '24 Hour Format'
+	String get twentyFour => '24 Hour Format';
+
+	/// en-US: 'Time'
+	String get labelTime => 'Time';
+
+	/// en-US: 'Timezone'
+	String get labelTz => 'Timezone';
+
+	/// en-US: 'Time and time zone'
+	String get labelTimeAndTz => 'Time and time zone';
+
+	/// en-US: 'Timezone'
+	String get timezone => 'Timezone';
+
+	/// en-US: 'Show Miliseconds'
+	String get showMs => 'Show Miliseconds';
+
+	/// en-US: 'Show Label'
+	String get showLabel => 'Show Label';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	TranslationsMisskeyWidgetOptionsJobQueueEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Play Sounds'
+	String get sound => 'Play Sounds';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class TranslationsMisskeyWidgetOptionsRssEnUs {
+	TranslationsMisskeyWidgetOptionsRssEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'RSS Feed Url'
+	String get url => 'RSS Feed Url';
+
+	/// en-US: 'Update interval (in seconds)'
+	String get refreshIntervalSec => 'Update interval (in seconds)';
+
+	/// en-US: 'Maximum number of items to display'
+	String get maxEntries => 'Maximum number of items to display';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	TranslationsMisskeyWidgetOptionsRssTickerEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Random display order'
+	String get shuffle => 'Random display order';
+
+	/// en-US: 'Banner scroll speed (in seconds)'
+	String get duration => 'Banner scroll speed (in seconds)';
+
+	/// en-US: 'Scroll in the opposite direction'
+	String get reverse => 'Scroll in the opposite direction';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Duration'
+	String get period => 'Duration';
+}
+
 // Path: misskey.postForm_.howToUse_
 class TranslationsMisskeyPostFormHowToUseEnUs {
 	TranslationsMisskeyPostFormHowToUseEnUs.internal(this._root);
@@ -10418,6 +10595,33 @@ class TranslationsMisskeyNotificationActionsEnUs {
 
 	/// en-US: 'Renote'
 	String get renote => 'Renote';
+}
+
+// Path: misskey.deck_.howToUse_
+class TranslationsMisskeyDeckHowToUseEnUs {
+	TranslationsMisskeyDeckHowToUseEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en-US: 'Add column'
+	String get addColumn_title => 'Add column';
+
+	/// en-US: 'You can select and add column types.'
+	String get addColumn_description => 'You can select and add column types.';
+
+	/// en-US: 'UI Settings'
+	String get settings_title => 'UI Settings';
+
+	/// en-US: 'You can configure detailed settings for the deck UI.'
+	String get settings_description => 'You can configure detailed settings for the deck UI.';
+
+	/// en-US: 'Profile Switching'
+	String get switchProfile_title => 'Profile Switching';
+
+	/// en-US: 'You can save UI layouts as profiles and switch between them at any time.'
+	String get switchProfile_description => 'You can save UI layouts as profiles and switch between them at any time.';
 }
 
 // Path: misskey.deck_.columns_

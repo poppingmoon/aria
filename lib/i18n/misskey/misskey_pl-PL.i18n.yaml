@@ -1365,6 +1365,14 @@ widgets_:
   userList_:
     chooseList: "Wybierz listę"
   clicker: "Clicker"
+widgetOptions_:
+  height: "Wysokość"
+  button_:
+    colored: "Kolorowe"
+  clock_:
+    size: "Rozmiar"
+  birthdayFollowings_:
+    period: "Czas trwania"
 cw_:
   hide: "Ukryj"
   show: "Załaduj więcej"

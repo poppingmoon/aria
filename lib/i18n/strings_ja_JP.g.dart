@@ -140,6 +140,8 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	]);
 	@override String get importCompleted => 'インポートが完了しました';
 	@override String get importConfirm => '設定をインポートしますか？現在の設定は上書きされます。';
+	@override String get invalidEndpoint => '無効なエンドポイント';
+	@override String get invalidEndpointDescription => 'レスポンスに含まれるエンドポイントが正しくありません。実行したコードがアプリ内に表示されているものと一致しているか確認してください。';
 	@override String get invalidListFormat => 'リストの形式が正しくありません';
 	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開いたままにする';
@@ -1709,6 +1711,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get frame => 'フレーム';
 	@override String get presets => 'プリセット';
 	@override String get zeroPadding => 'ゼロ埋め';
+	@override String get nothingToConfigure => '設定項目はありません';
 	@override late final _TranslationsMisskeyImageEditingJaJp imageEditing_ = _TranslationsMisskeyImageEditingJaJp._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorJaJp imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorJaJp._(_root);
 	@override late final _TranslationsMisskeyCompressionJaJp compression_ = _TranslationsMisskeyCompressionJaJp._(_root);
@@ -1763,6 +1766,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesJaJp antennaSources_ = _TranslationsMisskeyAntennaSourcesJaJp._(_root);
 	@override late final _TranslationsMisskeyWeekdayJaJp weekday_ = _TranslationsMisskeyWeekdayJaJp._(_root);
 	@override late final _TranslationsMisskeyWidgetsJaJp widgets_ = _TranslationsMisskeyWidgetsJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJaJp widgetOptions_ = _TranslationsMisskeyWidgetOptionsJaJp._(_root);
 	@override late final _TranslationsMisskeyCwJaJp cw_ = _TranslationsMisskeyCwJaJp._(_root);
 	@override late final _TranslationsMisskeyPollJaJp poll_ = _TranslationsMisskeyPollJaJp._(_root);
 	@override late final _TranslationsMisskeyVisibilityJaJp visibility_ = _TranslationsMisskeyVisibilityJaJp._(_root);
@@ -1996,6 +2000,9 @@ class _TranslationsMisskeySettingsJaJp extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => 'ページのタブバーを下部に表示';
 	@override String get emojiPaletteBanner => '絵文字ピッカーに固定表示するプリセットをパレットとして登録したり、ピッカーの表示方法をカスタマイズしたりできます。';
 	@override String get enableAnimatedImages => 'アニメーション画像を有効にする';
+	@override String get settingsPersistence_title => '設定の永続化';
+	@override String get settingsPersistence_description1 => '設定の永続化を有効にすると、設定情報が失われるのを防止できます。';
+	@override String get settingsPersistence_description2 => '環境によっては有効化できない場合があります。';
 	@override late final _TranslationsMisskeySettingsChatJaJp chat_ = _TranslationsMisskeySettingsChatJaJp._(_root);
 }
 
@@ -2945,6 +2952,24 @@ class _TranslationsMisskeyWidgetsJaJp extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'ダイレクトメッセージ';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsJaJp extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'ヘッダーを表示';
+	@override String get transparent => '背景を透明にする';
+	@override String get height => '高さ';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonJaJp button_ = _TranslationsMisskeyWidgetOptionsButtonJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockJaJp clock_ = _TranslationsMisskeyWidgetOptionsClockJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueJaJp jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssJaJp rss_ = _TranslationsMisskeyWidgetOptionsRssJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerJaJp rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsJaJp birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsJaJp._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwJaJp extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -3276,6 +3301,8 @@ class _TranslationsMisskeyDeckJaJp extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => '「幅を自動調整」が有効の場合、これが幅の最小値となります';
 	@override String get flexible => '幅を自動調整';
 	@override String get enableSyncBetweenDevicesForProfiles => 'プロファイル情報のデバイス間同期を有効にする';
+	@override String get showHowToUse => 'UIの説明を見る';
+	@override late final _TranslationsMisskeyDeckHowToUseJaJp howToUse_ = _TranslationsMisskeyDeckHowToUseJaJp._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsJaJp columns_ = _TranslationsMisskeyDeckColumnsJaJp._(_root);
 }
 
@@ -4405,6 +4432,88 @@ class _TranslationsMisskeyWidgetsUserListJaJp extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'リストを選択';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonJaJp extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => '色付き';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockJaJp extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'サイズ';
+	@override String get thickness => '針の太さ';
+	@override String get thicknessThin => '細い';
+	@override String get thicknessMedium => '普通';
+	@override String get thicknessThick => '太い';
+	@override String get graduations => '文字盤の目盛り';
+	@override String get graduationDots => 'ドット';
+	@override String get graduationArabic => 'アラビア数字';
+	@override String get fadeGraduations => '目盛りをフェード';
+	@override String get sAnimation => '秒針のアニメーション';
+	@override String get sAnimationElastic => 'リアル';
+	@override String get sAnimationEaseOut => '滑らか';
+	@override String get twentyFour => '24時間表示';
+	@override String get labelTime => '時刻';
+	@override String get labelTz => 'タイムゾーン';
+	@override String get labelTimeAndTz => '時刻とタイムゾーン';
+	@override String get timezone => 'タイムゾーン';
+	@override String get showMs => 'ミリ秒を表示';
+	@override String get showLabel => 'ラベルを表示';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueJaJp extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => '音を鳴らす';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssJaJp extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'RSSフィードのURL';
+	@override String get refreshIntervalSec => '更新間隔(秒)';
+	@override String get maxEntries => '最大表示件数';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerJaJp extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => '表示順をシャッフル';
+	@override String get duration => 'ティッカーのスクロール速度(秒)';
+	@override String get reverse => '逆方向にスクロール';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsJaJp extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => '期間';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseJaJp extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -4499,6 +4608,21 @@ class _TranslationsMisskeyNotificationActionsJaJp extends TranslationsMisskeyNot
 	@override String get followBack => 'フォローバック';
 	@override String get reply => '返信';
 	@override String get renote => 'リノート';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseJaJp extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => 'カラム追加';
+	@override String get addColumn_description => 'カラムの種類を選んで追加できます。';
+	@override String get settings_title => 'UI設定';
+	@override String get settings_description => 'デッキUIの詳細設定を行えます。';
+	@override String get switchProfile_title => 'プロファイル切り替え';
+	@override String get switchProfile_description => 'UIのレイアウトをプロファイルとして保存し、いつでも切り替えられるようにできます。';
 }
 
 // Path: misskey.deck_.columns_
