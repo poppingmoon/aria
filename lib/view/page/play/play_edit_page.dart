@@ -10,6 +10,8 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/play_notifier_provider.dart';
+import '../../../rust/api/aiscript.dart';
+import '../../../rust/frb_generated.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 
@@ -21,9 +23,10 @@ class PlayEditPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final play = playId != null
-        ? ref.watch(playNotifierProvider(account, playId!)).value
-        : null;
+    final play = switch (playId) {
+      final playId? => ref.watch(playNotifierProvider(account, playId)).value,
+      _ => null,
+    };
     final title = useState(play?.title);
     final summary = useState(play?.summary);
     final script = useState(play?.script);
@@ -37,6 +40,17 @@ class PlayEditPage extends HookConsumerWidget {
         () => summary.value = summaryController.text,
       );
       scriptController.addListener(() => script.value = scriptController.text);
+      if (playId == null) {
+        Future(() async {
+          if (!RustLib.instance.initialized) {
+            await RustLib.init();
+          }
+          final version = await AiScript.aiscriptVersion();
+          if (scriptController.text.isEmpty) {
+            scriptController.text = '/// @ $version\n\n';
+          }
+        });
+      }
       return;
     }, []);
 
