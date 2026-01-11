@@ -54,6 +54,7 @@ import '../view/page/play/plays_page.dart';
 import '../view/page/post_page.dart';
 import '../view/page/role_page.dart';
 import '../view/page/scheduled_notes_page.dart';
+import '../view/page/scratchpad_page.dart';
 import '../view/page/search/search_page.dart';
 import '../view/page/server/server_page.dart';
 import '../view/page/settings/account_settings_page.dart';
@@ -621,6 +622,12 @@ GoRouter router(Ref ref) {
           GoRoute(
             path: 'scheduled-notes',
             builder: (_, state) => ScheduledNotesPage(
+              account: Account.fromString(state.pathParameters['acct']!),
+            ),
+          ),
+          GoRoute(
+            path: 'scratchpad',
+            builder: (_, state) => ScratchpadPage(
               account: Account.fromString(state.pathParameters['acct']!),
             ),
           ),

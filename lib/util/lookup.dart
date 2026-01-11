@@ -14,19 +14,23 @@ Future<void> lookup(WidgetRef ref, Account account, String query) async {
   } else if (query.startsWith(RegExp('https?://'))) {
     final url = Uri.tryParse(query);
     if (url == null) return;
-    try {
-      final response = await ref
-          .read(misskeyProvider(account))
-          .ap
-          .show(ApShowRequest(uri: url));
-      if (!ref.context.mounted) return;
-      if (response.type == 'User') {
-        await ref.context.push('/$account/users/${response.object['id']}');
-      } else if (response.type == 'Note') {
-        await ref.context.push('/$account/notes/${response.object['id']}');
-      }
-    } catch (_) {
+    if (url.host == account.host) {
       await navigate(ref, account, query);
+    } else {
+      try {
+        final response = await ref
+            .read(misskeyProvider(account))
+            .ap
+            .show(ApShowRequest(uri: url));
+        if (!ref.context.mounted) return;
+        if (response.type == 'User') {
+          await ref.context.push('/$account/users/${response.object['id']}');
+        } else if (response.type == 'Note') {
+          await ref.context.push('/$account/notes/${response.object['id']}');
+        }
+      } catch (_) {
+        await navigate(ref, account, query);
+      }
     }
   }
 }
