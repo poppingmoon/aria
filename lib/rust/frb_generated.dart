@@ -67,7 +67,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
   String get codegenVersion => '2.11.1';
 
   @override
-  int get rustContentHash => -463493403;
+  int get rustContentHash => 451475596;
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
@@ -80,9 +80,12 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiAiscriptAiScriptAbort({required AiScript that});
 
-  Future<void> crateApiAiscriptAiScriptExec({
+  Future<String> crateApiAiscriptAiScriptAiscriptVersion();
+
+  Future<String> crateApiAiscriptAiScriptExec({
     required AiScript that,
     required String input,
+    bool? isLegacy,
   });
 
   Future<AiScript> crateApiAiscriptAiScriptNew({
@@ -276,9 +279,37 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       const TaskConstMeta(debugName: "AiScript_abort", argNames: ["that"]);
 
   @override
-  Future<void> crateApiAiscriptAiScriptExec({
+  Future<String> crateApiAiscriptAiScriptAiscriptVersion() {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 2,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_String,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiAiscriptAiScriptAiscriptVersionConstMeta,
+        argValues: [],
+        apiImpl: this,
+      ),
+    );
+  }
+
+  TaskConstMeta get kCrateApiAiscriptAiScriptAiscriptVersionConstMeta =>
+      const TaskConstMeta(debugName: "AiScript_aiscript_version", argNames: []);
+
+  @override
+  Future<String> crateApiAiscriptAiScriptExec({
     required AiScript that,
     required String input,
+    bool? isLegacy,
   }) {
     return handler.executeNormal(
       NormalTask(
@@ -289,19 +320,20 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             serializer,
           );
           sse_encode_String(input, serializer);
+          sse_encode_opt_box_autoadd_bool(isLegacy, serializer);
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 2,
+            funcId: 3,
             port: port_,
           );
         },
         codec: SseCodec(
-          decodeSuccessData: sse_decode_unit,
+          decodeSuccessData: sse_decode_String,
           decodeErrorData: sse_decode_String,
         ),
         constMeta: kCrateApiAiscriptAiScriptExecConstMeta,
-        argValues: [that, input],
+        argValues: [that, input, isLegacy],
         apiImpl: this,
       ),
     );
@@ -310,7 +342,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   TaskConstMeta get kCrateApiAiscriptAiScriptExecConstMeta =>
       const TaskConstMeta(
         debugName: "AiScript_exec",
-        argNames: ["that", "input"],
+        argNames: ["that", "input", "isLegacy"],
       );
 
   @override
@@ -345,7 +377,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 3,
+            funcId: 4,
             port: port_,
           );
         },
@@ -430,7 +462,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             nyaize,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 5)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -499,7 +531,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 5,
+            funcId: 6,
             port: port_,
           );
         },
@@ -532,7 +564,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
             onUpdate,
             serializer,
           );
-          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 7)!;
         },
         codec: SseCodec(
           decodeSuccessData:
@@ -566,7 +598,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 7,
+            funcId: 8,
             port: port_,
           );
         },
@@ -604,7 +636,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 8,
+            funcId: 9,
             port: port_,
           );
         },
@@ -642,7 +674,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 9,
+            funcId: 10,
             port: port_,
           );
         },
@@ -680,7 +712,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 10,
+            funcId: 11,
             port: port_,
           );
         },
@@ -718,7 +750,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 11,
+            funcId: 12,
             port: port_,
           );
         },
@@ -756,7 +788,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           pdeCallFfi(
             generalizedFrbRustBinding,
             serializer,
-            funcId: 12,
+            funcId: 13,
             port: port_,
           );
         },
@@ -1541,8 +1573,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   AsUiContainer dco_decode_as_ui_container(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     final arr = raw as List<dynamic>;
-    if (arr.length != 10)
-      throw Exception('unexpected arr length: expect 10 but see ${arr.length}');
+    if (arr.length != 12)
+      throw Exception('unexpected arr length: expect 12 but see ${arr.length}');
     return AsUiContainer(
       children: dco_decode_opt_list_String(arr[0]),
       align: dco_decode_opt_String(arr[1]),
@@ -1551,9 +1583,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       font: dco_decode_opt_String(arr[4]),
       borderWidth: dco_decode_opt_box_autoadd_f_64(arr[5]),
       borderColor: dco_decode_opt_String(arr[6]),
-      padding: dco_decode_opt_box_autoadd_f_64(arr[7]),
-      rounded: dco_decode_opt_box_autoadd_bool(arr[8]),
-      hidden: dco_decode_opt_box_autoadd_bool(arr[9]),
+      borderStyle: dco_decode_opt_String(arr[7]),
+      borderRadius: dco_decode_opt_box_autoadd_f_64(arr[8]),
+      padding: dco_decode_opt_box_autoadd_f_64(arr[9]),
+      rounded: dco_decode_opt_box_autoadd_bool(arr[10]),
+      hidden: dco_decode_opt_box_autoadd_bool(arr[11]),
     );
   }
 
@@ -2659,6 +2693,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_font = sse_decode_opt_String(deserializer);
     var var_borderWidth = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_borderColor = sse_decode_opt_String(deserializer);
+    var var_borderStyle = sse_decode_opt_String(deserializer);
+    var var_borderRadius = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_padding = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_rounded = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_hidden = sse_decode_opt_box_autoadd_bool(deserializer);
@@ -2670,6 +2706,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       font: var_font,
       borderWidth: var_borderWidth,
       borderColor: var_borderColor,
+      borderStyle: var_borderStyle,
+      borderRadius: var_borderRadius,
       padding: var_padding,
       rounded: var_rounded,
       hidden: var_hidden,
@@ -4022,6 +4060,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_String(self.font, serializer);
     sse_encode_opt_box_autoadd_f_64(self.borderWidth, serializer);
     sse_encode_opt_String(self.borderColor, serializer);
+    sse_encode_opt_String(self.borderStyle, serializer);
+    sse_encode_opt_box_autoadd_f_64(self.borderRadius, serializer);
     sse_encode_opt_box_autoadd_f_64(self.padding, serializer);
     sse_encode_opt_box_autoadd_bool(self.rounded, serializer);
     sse_encode_opt_box_autoadd_bool(self.hidden, serializer);
@@ -4810,8 +4850,12 @@ class AiScriptImpl extends RustOpaque implements AiScript {
   Future<void> abort() =>
       RustLib.instance.api.crateApiAiscriptAiScriptAbort(that: this);
 
-  Future<void> exec({required String input}) => RustLib.instance.api
-      .crateApiAiscriptAiScriptExec(that: this, input: input);
+  Future<String> exec({required String input, bool? isLegacy}) =>
+      RustLib.instance.api.crateApiAiscriptAiScriptExec(
+        that: this,
+        input: input,
+        isLegacy: isLegacy,
+      );
 }
 
 @sealed

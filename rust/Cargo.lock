@@ -29,20 +29,42 @@ dependencies = [
 [[package]]
 name = "aiscript"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=484364a8f5dd4626c6d712a01365c01ee467fd09#484364a8f5dd4626c6d712a01365c01ee467fd09"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=58ab038a578a98e9c57d41b0c1c49384ec6cdd39#58ab038a578a98e9c57d41b0c1c49384ec6cdd39"
 dependencies = [
  "aiscript-v0",
+ "aiscript-v1",
 ]
 
 [[package]]
 name = "aiscript-v0"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=484364a8f5dd4626c6d712a01365c01ee467fd09#484364a8f5dd4626c6d712a01365c01ee467fd09"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=58ab038a578a98e9c57d41b0c1c49384ec6cdd39#58ab038a578a98e9c57d41b0c1c49384ec6cdd39"
 dependencies = [
  "chrono",
  "futures",
  "indexmap",
  "peg",
+ "percent-encoding",
+ "rand",
+ "regex",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "unicode-segmentation",
+ "uuid",
+]
+
+[[package]]
+name = "aiscript-v1"
+version = "0.1.0"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=58ab038a578a98e9c57d41b0c1c49384ec6cdd39#58ab038a578a98e9c57d41b0c1c49384ec6cdd39"
+dependencies = [
+ "chrono",
+ "futures",
+ "indexmap",
+ "nom",
+ "nom_locate",
  "percent-encoding",
  "rand",
  "regex",
@@ -150,6 +172,12 @@ name = "bumpalo"
 version = "3.19.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5dd9dc738b7a8311c7ade152424974d8115f2cdad61e8dab8dac9f2362298510"
+
+[[package]]
+name = "bytecount"
+version = "0.6.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "175812e0be2bccb6abe50bb8d566126198344f707e304f45c648fd8f2cc0365e"
 
 [[package]]
 name = "bytemuck"
@@ -569,6 +597,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "nom"
+version = "8.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "df9761775871bdef83bee530e60050f7e54b1105350d6884eb0fb4f46c2f9405"
+dependencies = [
+ "memchr",
+]
+
+[[package]]
+name = "nom_locate"
+version = "5.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0b577e2d69827c4740cba2b52efaad1c4cc7c73042860b199710b3575c68438d"
+dependencies = [
+ "bytecount",
+ "memchr",
+ "nom",
+]
+
+[[package]]
 name = "num-traits"
 version = "0.2.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -785,6 +833,7 @@ dependencies = [
  "flutter_rust_bridge",
  "futures",
  "indexmap",
+ "nom",
  "serde_json",
  "tokio",
  "uuid",

@@ -12,6 +12,7 @@ import '../../provider/post_notifier_provider.dart';
 import '../../rust/api/aiscript/ui.dart';
 import '../../util/safe_parse_color.dart';
 import 'mfm.dart';
+import 'mfm/border.dart';
 import 'post_form.dart';
 
 class AsUiWidget extends HookConsumerWidget {
@@ -19,7 +20,7 @@ class AsUiWidget extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.host,
-    required this.componentId,
+    this.componentId = '___root___',
     required this.components,
   });
 
@@ -90,6 +91,8 @@ class AsUiWidget extends HookConsumerWidget {
           :final font,
           :final borderWidth,
           :final borderColor,
+          :final borderStyle,
+          :final borderRadius,
           :final padding,
           :final rounded,
         ),
@@ -109,49 +112,56 @@ class AsUiWidget extends HookConsumerWidget {
               'right' => Alignment.centerRight,
               _ => null,
             },
-            padding: padding != null ? EdgeInsets.all(padding) : null,
             decoration: BoxDecoration(
               color: safeParseColor(bgColor),
-              border: borderWidth != null && borderWidth > 0.0
-                  ? Border.all(
-                      color:
-                          safeParseColor(borderColor) ??
-                          Theme.of(context).colorScheme.outlineVariant,
-                      width: borderWidth,
-                    )
-                  : null,
-              borderRadius: rounded ?? false
-                  ? BorderRadius.circular(8.0)
-                  : null,
+              borderRadius: BorderRadius.circular(
+                borderRadius ?? (rounded ?? false ? 8.0 : 0.0),
+              ),
             ),
-            child: Column(
-              crossAxisAlignment: switch (align) {
-                'left' => CrossAxisAlignment.start,
-                'center' => CrossAxisAlignment.center,
-                'right' => CrossAxisAlignment.end,
-                _ => CrossAxisAlignment.start,
-              },
-              spacing: 12.0,
-              children: [
-                ...?children
-                    ?.where(
-                      (id) => switch (components[id]) {
-                        AsUiComponent_Container(
-                          field0: AsUiContainer(hidden: true),
-                        ) =>
-                          false,
-                        _ => true,
-                      },
-                    )
-                    .map(
-                      (id) => AsUiWidget(
-                        account: account,
-                        host: host,
-                        componentId: id,
-                        components: components,
-                      ),
-                    ),
-              ],
+            child: BorderWidget(
+              style: borderStyle,
+              color:
+                  safeParseColor(borderColor) ??
+                  Theme.of(context).colorScheme.outlineVariant,
+              width:
+                  borderWidth ??
+                  (borderColor != null || borderStyle != null ? 1.0 : 0.0),
+              radius: borderRadius ?? (rounded ?? false ? 8.0 : 0.0),
+              noClip: true,
+              child: Padding(
+                padding: padding != null
+                    ? EdgeInsets.all(padding)
+                    : EdgeInsets.zero,
+                child: Column(
+                  crossAxisAlignment: switch (align) {
+                    'left' => CrossAxisAlignment.start,
+                    'center' => CrossAxisAlignment.center,
+                    'right' => CrossAxisAlignment.end,
+                    _ => CrossAxisAlignment.start,
+                  },
+                  spacing: 12.0,
+                  children: [
+                    ...?children
+                        ?.where(
+                          (id) => switch (components[id]) {
+                            AsUiComponent_Container(
+                              field0: AsUiContainer(hidden: true),
+                            ) =>
+                              false,
+                            _ => true,
+                          },
+                        )
+                        .map(
+                          (id) => AsUiWidget(
+                            account: account,
+                            host: host,
+                            componentId: id,
+                            components: components,
+                          ),
+                        ),
+                  ],
+                ),
+              ),
             ),
           ),
         );
@@ -287,7 +297,11 @@ class AsUiWidget extends HookConsumerWidget {
           shortcuts: disablingTextShortcuts,
           child: TextField(
             controller: controller,
-            decoration: InputDecoration(labelText: label, helperText: caption),
+            decoration: InputDecoration(
+              labelText: label,
+              helperText: caption,
+              alignLabelWithHint: true,
+            ),
             onChanged: onInput != null
                 ? (value) => onInput.call(value: value)
                 : null,

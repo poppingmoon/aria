@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -23,6 +24,8 @@ Future<AiScript> createAiScript(
   WidgetRef ref, {
   required Account account,
   String? host,
+  FutureOr<void> Function(String value)? write,
+  String? token,
   required String storageKey,
   required Uri url,
   ValueNotifier<Map<String, AsUiComponent>>? components,
@@ -53,7 +56,7 @@ Future<AiScript> createAiScript(
       );
       return result ?? '';
     },
-    write: (_) {},
+    write: write ?? (_) {},
     api: AsApiLib(
       userId: i?.id,
       userName: i?.name,
@@ -88,6 +91,7 @@ Future<AiScript> createAiScript(
         return result ?? false;
       },
       toast: (text) => showToast(context: ref.context, message: text),
+      token: token,
       api: (ep, param, token) async {
         final json = jsonDecode(param);
         final misskey = Misskey(serverUrl: serverUrl, token: token);

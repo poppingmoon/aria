@@ -16,6 +16,7 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
           'notes' ||
           'play' ||
           'pages' ||
+          'scratchpad' ||
           'tags' ||
           'users') {
     if (url.host != account.host) {

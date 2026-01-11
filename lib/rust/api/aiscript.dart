@@ -9,11 +9,16 @@ import 'aiscript/play.dart';
 import 'aiscript/ui.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
+// These types are ignored because they are neither used by any `pub` functions nor (for structs and enums) marked `#[frb(unignore)]`: `Interpreter`, `Parser`
+
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AiScript>>
 abstract class AiScript implements RustOpaqueInterface {
   Future<void> abort();
 
-  Future<void> exec({required String input});
+  static Future<String> aiscriptVersion() =>
+      RustLib.instance.api.crateApiAiscriptAiScriptAiscriptVersion();
+
+  Future<String> exec({required String input, bool? isLegacy});
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
   static Future<AiScript> newInstance({

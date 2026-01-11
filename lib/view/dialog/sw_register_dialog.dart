@@ -8,6 +8,7 @@ import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../constant/fonts.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -105,7 +106,10 @@ if (Core:type(response) == 'error') {
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
-              style: const TextStyle(fontFamily: 'monospace'),
+              style: const TextStyle(
+                fontFamily: 'monospace',
+                fontFamilyFallback: monospaceFallback,
+              ),
               onChanged: (value) => responseText.value = value,
               maxLines: null,
               onTapOutside: (_) => primaryFocus?.unfocus(),

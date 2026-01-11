@@ -110,4 +110,139 @@ Ui:render([
     await tester.pumpAndSettle();
     expect(find.text('Nyaize is enyabled!'), findsOne);
   });
+
+  testWidgets('should run a Play written in AiScript v0', (tester) async {
+    const account = Account(host: 'misskey.tld', username: 'testuser');
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          accountsNotifierProvider.overrideWithValue([account]),
+          emojisNotifierProvider.overrideWithBuild((_, _) => {}),
+          endpointsNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => []),
+          generalSettingsNotifierProvider.overrideWithValue(
+            const GeneralSettings(),
+          ),
+          iNotifierProvider(
+            account,
+          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          playNotifierProvider(account, 'testplay').overrideWithBuild(
+            (_, _) => Flash(
+              id: 'testplay',
+              createdAt: DateTime(0),
+              updatedAt: DateTime(0),
+              title: 'Test Play',
+              summary: 'Test Play summary',
+              script: '''
+/// @ 0.19.0
+
+Ui:render([Ui:C:text({text: Core:ai}) Ui:C:text({text: Core:ai})])
+''',
+              userId: '',
+              user: dummyUserLite,
+            ),
+          ),
+          serverUrlNotifierProvider(
+            account.host,
+          ).overrideWithValue(Uri.https(account.host)),
+          timelineTabsNotifierProvider.overrideWithValue([]),
+          userNotifierProvider(
+            account,
+            userId: '',
+          ).overrideWithBuild((_, _) => dummyUserDetailedNotMe),
+        ],
+        child: TranslationProvider(child: const Aria()),
+      ),
+    );
+    await tester.pumpAndSettle();
+    if (find.byIcon(Icons.menu).evaluate().isNotEmpty) {
+      await tester.tap(find.byIcon(Icons.menu));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.byType(ExpansionTile));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.more_horiz));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.travel_explore));
+    await tester.pumpAndSettle();
+    expect(find.byType(TextField), findsOne);
+    await tester.enterText(
+      find.byType(TextField),
+      'https://misskey.tld/play/testplay',
+    );
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Play'));
+    await tester.pumpAndSettle();
+    expect(find.text('kawaii'), findsExactly(2));
+  });
+
+  testWidgets('should run a Play written in AiScript v1', (tester) async {
+    const account = Account(host: 'misskey.tld', username: 'testuser');
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          accountsNotifierProvider.overrideWithValue([account]),
+          emojisNotifierProvider.overrideWithBuild((_, _) => {}),
+          endpointsNotifierProvider(
+            account.host,
+          ).overrideWithBuild((_, _) => []),
+          generalSettingsNotifierProvider.overrideWithValue(
+            const GeneralSettings(),
+          ),
+          iNotifierProvider(
+            account,
+          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          playNotifierProvider(account, 'testplay').overrideWithBuild(
+            (_, _) => Flash(
+              id: 'testplay',
+              createdAt: DateTime(0),
+              updatedAt: DateTime(0),
+              title: 'Test Play',
+              summary: 'Test Play summary',
+              script: '''
+/// @ 1.2.1
+
+let [_, username, host] = "@testuser@misskey.tld".split("@")
+Ui:render([Ui:C:text({text: `https://{host}/@{username}`})])
+''',
+              userId: '',
+              user: dummyUserLite,
+            ),
+          ),
+          serverUrlNotifierProvider(
+            account.host,
+          ).overrideWithValue(Uri.https(account.host)),
+          timelineTabsNotifierProvider.overrideWithValue([]),
+          userNotifierProvider(
+            account,
+            userId: '',
+          ).overrideWithBuild((_, _) => dummyUserDetailedNotMe),
+        ],
+        child: TranslationProvider(child: const Aria()),
+      ),
+    );
+    await tester.pumpAndSettle();
+    if (find.byIcon(Icons.menu).evaluate().isNotEmpty) {
+      await tester.tap(find.byIcon(Icons.menu));
+      await tester.pumpAndSettle();
+    }
+    await tester.tap(find.byType(ExpansionTile));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.more_horiz));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.travel_explore));
+    await tester.pumpAndSettle();
+    expect(find.byType(TextField), findsOne);
+    await tester.enterText(
+      find.byType(TextField),
+      'https://misskey.tld/play/testplay',
+    );
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Play'));
+    await tester.pumpAndSettle();
+    expect(find.text('https://misskey.tld/@testuser'), findsOne);
+  });
 }
