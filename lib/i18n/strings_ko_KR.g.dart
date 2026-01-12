@@ -1651,6 +1651,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get frame => '프레임';
 	@override String get presets => '프리셋';
 	@override String get zeroPadding => '0으로 채우기';
+	@override String get nothingToConfigure => '설정 항목이 없습니다.';
 	@override late final _TranslationsMisskeyImageEditingKoKr imageEditing_ = _TranslationsMisskeyImageEditingKoKr._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorKoKr imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorKoKr._(_root);
 	@override late final _TranslationsMisskeyCompressionKoKr compression_ = _TranslationsMisskeyCompressionKoKr._(_root);
@@ -1705,6 +1706,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesKoKr antennaSources_ = _TranslationsMisskeyAntennaSourcesKoKr._(_root);
 	@override late final _TranslationsMisskeyWeekdayKoKr weekday_ = _TranslationsMisskeyWeekdayKoKr._(_root);
 	@override late final _TranslationsMisskeyWidgetsKoKr widgets_ = _TranslationsMisskeyWidgetsKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsKoKr widgetOptions_ = _TranslationsMisskeyWidgetOptionsKoKr._(_root);
 	@override late final _TranslationsMisskeyCwKoKr cw_ = _TranslationsMisskeyCwKoKr._(_root);
 	@override late final _TranslationsMisskeyPollKoKr poll_ = _TranslationsMisskeyPollKoKr._(_root);
 	@override late final _TranslationsMisskeyVisibilityKoKr visibility_ = _TranslationsMisskeyVisibilityKoKr._(_root);
@@ -1938,6 +1940,9 @@ class _TranslationsMisskeySettingsKoKr extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => '페이지의 탭 바를 아래쪽에 표시';
 	@override String get emojiPaletteBanner => '이모티콘 선택기에 고정 표시되는 프리셋을 팔레트로 등록하거나 선택기의 표시 방법을 커스터마이징할 수 있습니다.';
 	@override String get enableAnimatedImages => '애니메이션 이미지 활성화';
+	@override String get settingsPersistence_title => '설정 영구화';
+	@override String get settingsPersistence_description1 => '설정 영구화를 활성화하면 설정 정보를 잃어버리는 것을 방지할 수 있습니다.';
+	@override String get settingsPersistence_description2 => '환경에 따라 활성화되지 않을 수 있습니다.';
 	@override late final _TranslationsMisskeySettingsChatKoKr chat_ = _TranslationsMisskeySettingsChatKoKr._(_root);
 }
 
@@ -2887,6 +2892,24 @@ class _TranslationsMisskeyWidgetsKoKr extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => '채팅하기';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsKoKr extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => '해더를 표시';
+	@override String get transparent => '배경을 투명하게 설정';
+	@override String get height => '높이';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonKoKr button_ = _TranslationsMisskeyWidgetOptionsButtonKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockKoKr clock_ = _TranslationsMisskeyWidgetOptionsClockKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueKoKr jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssKoKr rss_ = _TranslationsMisskeyWidgetOptionsRssKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerKoKr rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsKoKr birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsKoKr._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwKoKr extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
@@ -3218,6 +3241,8 @@ class _TranslationsMisskeyDeckKoKr extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => '\'폭 자동 조정\'이 활성화된 경우 최소 폭으로 사용됩니다';
 	@override String get flexible => '폭 자동 조정';
 	@override String get enableSyncBetweenDevicesForProfiles => '프로파일 정보의 디바이스 간 동기화를 활성화';
+	@override String get showHowToUse => 'UI 설명 보기';
+	@override late final _TranslationsMisskeyDeckHowToUseKoKr howToUse_ = _TranslationsMisskeyDeckHowToUseKoKr._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsKoKr columns_ = _TranslationsMisskeyDeckColumnsKoKr._(_root);
 }
 
@@ -3799,7 +3824,6 @@ class _TranslationsMisskeyImageEffectorKoKr extends TranslationsMisskeyImageEffe
 	@override String get title => '이펙트';
 	@override String get addEffect => '이펙트를 추가';
 	@override String get discardChangesConfirm => '변경을 취소하고 종료하시겠습니까?';
-	@override String get nothingToConfigure => '설정 항목이 없습니다.';
 	@override String get failedToLoadImage => '이미지 로딩에 실패했습니다.';
 	@override late final _TranslationsMisskeyImageEffectorFxsKoKr fxs_ = _TranslationsMisskeyImageEffectorFxsKoKr._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsKoKr fxProps_ = _TranslationsMisskeyImageEffectorFxPropsKoKr._(_root);
@@ -4348,6 +4372,88 @@ class _TranslationsMisskeyWidgetsUserListKoKr extends TranslationsMisskeyWidgets
 	@override String get chooseList => '리스트 선택';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonKoKr extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => '색 입히기';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockKoKr extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => '크기';
+	@override String get thickness => '시곗바늘의 두께';
+	@override String get thicknessThin => '얇게';
+	@override String get thicknessMedium => '보통';
+	@override String get thicknessThick => '굵게';
+	@override String get graduations => '문자반의 눈금';
+	@override String get graduationDots => '도트';
+	@override String get graduationArabic => '아라비아 숫자';
+	@override String get fadeGraduations => '눈금 페이드';
+	@override String get sAnimation => '초침 애니메이션';
+	@override String get sAnimationElastic => '사실적으로';
+	@override String get sAnimationEaseOut => '매끄럽게';
+	@override String get twentyFour => '24시간 표시';
+	@override String get labelTime => '시각';
+	@override String get labelTz => '시간대';
+	@override String get labelTimeAndTz => '시각과 시간대';
+	@override String get timezone => '시간대';
+	@override String get showMs => '밀리초 표시';
+	@override String get showLabel => '레이블 표시';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueKoKr extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => '소리 재생';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssKoKr extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'RSS 필드의 URL';
+	@override String get refreshIntervalSec => '갱신 간격(초)';
+	@override String get maxEntries => '최대 표시 건수';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerKoKr extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => '표시 순서 셔플';
+	@override String get duration => '티커 스크롤 속도(초)';
+	@override String get reverse => '역방향으로 스크롤';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsKoKr extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => '기간';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseKoKr extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
@@ -4442,6 +4548,21 @@ class _TranslationsMisskeyNotificationActionsKoKr extends TranslationsMisskeyNot
 	@override String get followBack => '팔로우';
 	@override String get reply => '답글';
 	@override String get renote => '리노트';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseKoKr extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
+
+	final TranslationsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => '칼럼 추가';
+	@override String get addColumn_description => '칼럼의 종류를 선택해 추가할 수 있습니다.';
+	@override String get settings_title => 'UI 설정';
+	@override String get settings_description => '덱 UI의 상세 설정을 할 수 있습니다.';
+	@override String get switchProfile_title => '프로필 전환';
+	@override String get switchProfile_description => 'UI의 레이아웃을 프로필로 저장하고, 언제나 전환할 수 있습니다.';
 }
 
 // Path: misskey.deck_.columns_

@@ -1306,6 +1306,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyX2faRoRo x2fa_ = _TranslationsMisskeyX2faRoRo._(_root);
 	@override late final _TranslationsMisskeyPermissionsRoRo permissions_ = _TranslationsMisskeyPermissionsRoRo._(_root);
 	@override late final _TranslationsMisskeyWidgetsRoRo widgets_ = _TranslationsMisskeyWidgetsRoRo._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRoRo widgetOptions_ = _TranslationsMisskeyWidgetOptionsRoRo._(_root);
 	@override late final _TranslationsMisskeyCwRoRo cw_ = _TranslationsMisskeyCwRoRo._(_root);
 	@override late final _TranslationsMisskeyVisibilityRoRo visibility_ = _TranslationsMisskeyVisibilityRoRo._(_root);
 	@override late final _TranslationsMisskeyPostFormRoRo postForm_ = _TranslationsMisskeyPostFormRoRo._(_root);
@@ -1535,6 +1536,18 @@ class _TranslationsMisskeyWidgetsRoRo extends TranslationsMisskeyWidgetsEnUs {
 	@override String get federation => 'Federație';
 	@override String get jobQueue => 'coada de job-uri';
 	@override late final _TranslationsMisskeyWidgetsUserListRoRo userList_ = _TranslationsMisskeyWidgetsUserListRoRo._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsRoRo extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Înălţime';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonRoRo button_ = _TranslationsMisskeyWidgetOptionsButtonRoRo._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockRoRo clock_ = _TranslationsMisskeyWidgetOptionsClockRoRo._(_root);
 }
 
 // Path: misskey.cw_
@@ -1907,6 +1920,26 @@ class _TranslationsMisskeyWidgetsUserListRoRo extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Selectează o listă';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonRoRo extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Colorat';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockRoRo extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Dimensiune';
 }
 
 // Path: misskey.postForm_.howToUse_

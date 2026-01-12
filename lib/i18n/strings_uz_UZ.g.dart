@@ -934,6 +934,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyPermissionsUzUz permissions_ = _TranslationsMisskeyPermissionsUzUz._(_root);
 	@override late final _TranslationsMisskeyWeekdayUzUz weekday_ = _TranslationsMisskeyWeekdayUzUz._(_root);
 	@override late final _TranslationsMisskeyWidgetsUzUz widgets_ = _TranslationsMisskeyWidgetsUzUz._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsUzUz widgetOptions_ = _TranslationsMisskeyWidgetOptionsUzUz._(_root);
 	@override late final _TranslationsMisskeyCwUzUz cw_ = _TranslationsMisskeyCwUzUz._(_root);
 	@override late final _TranslationsMisskeyPollUzUz poll_ = _TranslationsMisskeyPollUzUz._(_root);
 	@override late final _TranslationsMisskeyVisibilityUzUz visibility_ = _TranslationsMisskeyVisibilityUzUz._(_root);
@@ -1187,6 +1188,18 @@ class _TranslationsMisskeyWidgetsUzUz extends TranslationsMisskeyWidgetsEnUs {
 	@override String get button => 'Tugma';
 	@override String get jobQueue => 'Vazifalar navbati';
 	@override late final _TranslationsMisskeyWidgetsUserListUzUz userList_ = _TranslationsMisskeyWidgetsUserListUzUz._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsUzUz extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'balandligi';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonUzUz button_ = _TranslationsMisskeyWidgetOptionsButtonUzUz._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUzUz birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUzUz._(_root);
 }
 
 // Path: misskey.cw_
@@ -1594,6 +1607,26 @@ class _TranslationsMisskeyWidgetsUserListUzUz extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Ro\'yxat tanlash';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonUzUz extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'rangli';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUzUz extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Davomiylik';
 }
 
 // Path: misskey.postForm_.howToUse_

@@ -435,6 +435,8 @@ widgets_:
   jobQueue: "ຄິວວຽກ"
   userList_:
     chooseList: "ເລືອກບັນຊີລາຍການ"
+widgetOptions_:
+  height: "ຄວາມສູງ"
 cw_:
   show: "ໂຫຼດເພີ່ມເຕີມ"
 visibility_:

@@ -1175,9 +1175,9 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get cannotBeChangedLater => '之後不能變更。';
 	@override String get reactionAcceptance => '接受表情反應';
 	@override String get likeOnly => '僅限讚';
-	@override String get likeOnlyForRemote => '遠端僅限讚';
+	@override String get likeOnlyForRemote => '全部（遠端僅限讚）';
 	@override String get nonSensitiveOnly => '僅限非敏感';
-	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => '僅限非敏感（遠端僅限按讚）';
+	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => '僅限非敏感（遠端僅限讚）';
 	@override String get rolesAssignedToMe => '指派給自己的角色';
 	@override String get resetPasswordConfirm => '重設密碼？';
 	@override String get sensitiveWords => '敏感詞';
@@ -1452,7 +1452,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get embed => '嵌入';
 	@override String get settingsMigrating => '正在移轉設定。請稍候……（之後也可以到「設定 → 其他 → 舊設定資訊移轉」中手動進行移轉）';
 	@override String get readonly => '唯讀';
-	@override String get goToDeck => '回去甲板';
+	@override String get goToDeck => '回到多欄模式';
 	@override String get federationJobs => '聯邦通訊作業';
 	@override String get driveAboutTip => '在「雲端硬碟」中，會顯示過去上傳的檔案列表。<br>\n可以在附加到貼文時重新利用，或者事先上傳之後再用於發布。<br>\n<b>請注意，刪除檔案後，之前使用過該檔案的所有地方（貼文、頁面、大頭貼、橫幅等）也會一併無法顯示。</b><br>\n也可以建立資料夾來整理檔案。';
 	@override String get scrollToClose => '用滾輪關閉';
@@ -1479,7 +1479,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => '由於啟用安全模式，所有的客製 CSS 都被停用。';
 	@override String get themeIsDefaultBecauseSafeMode => '在安全模式啟用期間將使用預設主題。關閉安全模式後會恢復原本的設定。';
 	@override String get thankYouForTestingBeta => '感謝您協助驗證 beta 版！';
-	@override String get createUserSpecifiedNote => '建立使用者指定的筆記';
+	@override String get createUserSpecifiedNote => '建立指定使用者的貼文';
 	@override String get schedulePost => '排定發布';
 	@override String scheduleToPostOnX({required Object x}) => '排定在 ${x} 發布';
 	@override String scheduledToPostOnX({required Object x}) => '已排定在 ${x} 發布貼文';
@@ -1492,6 +1492,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get frame => '邊框';
 	@override String get presets => '預設值';
 	@override String get zeroPadding => '補零';
+	@override String get nothingToConfigure => '無可設定的項目';
 	@override late final _TranslationsMisskeyImageEditingZhTw imageEditing_ = _TranslationsMisskeyImageEditingZhTw._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorZhTw imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorZhTw._(_root);
 	@override late final _TranslationsMisskeyCompressionZhTw compression_ = _TranslationsMisskeyCompressionZhTw._(_root);
@@ -1546,6 +1547,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesZhTw antennaSources_ = _TranslationsMisskeyAntennaSourcesZhTw._(_root);
 	@override late final _TranslationsMisskeyWeekdayZhTw weekday_ = _TranslationsMisskeyWeekdayZhTw._(_root);
 	@override late final _TranslationsMisskeyWidgetsZhTw widgets_ = _TranslationsMisskeyWidgetsZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsZhTw widgetOptions_ = _TranslationsMisskeyWidgetOptionsZhTw._(_root);
 	@override late final _TranslationsMisskeyCwZhTw cw_ = _TranslationsMisskeyCwZhTw._(_root);
 	@override late final _TranslationsMisskeyPollZhTw poll_ = _TranslationsMisskeyPollZhTw._(_root);
 	@override late final _TranslationsMisskeyVisibilityZhTw visibility_ = _TranslationsMisskeyVisibilityZhTw._(_root);
@@ -1769,6 +1771,9 @@ class _TranslationsMisskeySettingsZhTw extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => '在底部顯示頁面的標籤列';
 	@override String get emojiPaletteBanner => '可以將固定顯示在表情符號選擇器的預設項目註冊為調色盤，或者自訂選擇器的顯示方式。';
 	@override String get enableAnimatedImages => '啟用動畫圖片';
+	@override String get settingsPersistence_title => '設定的持久化';
+	@override String get settingsPersistence_description1 => '啟用「設定的持久化」後，可以防止設定資訊遺失。';
+	@override String get settingsPersistence_description2 => '依環境不同，可能無法啟用。';
 	@override late final _TranslationsMisskeySettingsChatZhTw chat_ = _TranslationsMisskeySettingsChatZhTw._(_root);
 }
 
@@ -2718,6 +2723,24 @@ class _TranslationsMisskeyWidgetsZhTw extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => '聊天';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsZhTw extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => '檢視標頭 ';
+	@override String get transparent => '使背景透明';
+	@override String get height => '高度';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonZhTw button_ = _TranslationsMisskeyWidgetOptionsButtonZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockZhTw clock_ = _TranslationsMisskeyWidgetOptionsClockZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueZhTw jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssZhTw rss_ = _TranslationsMisskeyWidgetOptionsRssZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerZhTw rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsZhTw birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsZhTw._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwZhTw extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -3049,6 +3072,8 @@ class _TranslationsMisskeyDeckZhTw extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => '如果啟用「自動調整寬度」，此為最小寬度';
 	@override String get flexible => '自動調整寬度';
 	@override String get enableSyncBetweenDevicesForProfiles => '啟用裝置與裝置之間的設定檔資料同步化';
+	@override String get showHowToUse => '檢視使用者界面說明';
+	@override late final _TranslationsMisskeyDeckHowToUseZhTw howToUse_ = _TranslationsMisskeyDeckHowToUseZhTw._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsZhTw columns_ = _TranslationsMisskeyDeckColumnsZhTw._(_root);
 }
 
@@ -3630,7 +3655,6 @@ class _TranslationsMisskeyImageEffectorZhTw extends TranslationsMisskeyImageEffe
 	@override String get title => '特效';
 	@override String get addEffect => '新增特效';
 	@override String get discardChangesConfirm => '捨棄更改並退出嗎？';
-	@override String get nothingToConfigure => '無可設定的項目';
 	@override String get failedToLoadImage => '圖片載入失敗';
 	@override late final _TranslationsMisskeyImageEffectorFxsZhTw fxs_ = _TranslationsMisskeyImageEffectorFxsZhTw._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsZhTw fxProps_ = _TranslationsMisskeyImageEffectorFxPropsZhTw._(_root);
@@ -4163,6 +4187,88 @@ class _TranslationsMisskeyWidgetsUserListZhTw extends TranslationsMisskeyWidgets
 	@override String get chooseList => '選擇清單';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonZhTw extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => '彩色';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockZhTw extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => '尺寸';
+	@override String get thickness => '指針粗細';
+	@override String get thicknessThin => '細';
+	@override String get thicknessMedium => '普通';
+	@override String get thicknessThick => '粗';
+	@override String get graduations => '刻度盤';
+	@override String get graduationDots => '圓點';
+	@override String get graduationArabic => '阿拉伯數字';
+	@override String get fadeGraduations => '刻度淡出';
+	@override String get sAnimation => '秒針的動畫效果';
+	@override String get sAnimationElastic => '真實的';
+	@override String get sAnimationEaseOut => '滑順';
+	@override String get twentyFour => '24 小時制';
+	@override String get labelTime => '時間';
+	@override String get labelTz => '時區';
+	@override String get labelTimeAndTz => '時間與時區';
+	@override String get timezone => '時區';
+	@override String get showMs => '顯示毫秒';
+	@override String get showLabel => '顯示標記';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueZhTw extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => '播放音效';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssZhTw extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'RSS 訂閱網址';
+	@override String get refreshIntervalSec => '更新間隔（秒）';
+	@override String get maxEntries => '最大顯示數量';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerZhTw extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => '顯示順序隨機排列';
+	@override String get duration => 'RSS 跑馬燈的捲動速度（秒）';
+	@override String get reverse => '反方向滾動';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsZhTw extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => '時長';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseZhTw extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -4257,6 +4363,21 @@ class _TranslationsMisskeyNotificationActionsZhTw extends TranslationsMisskeyNot
 	@override String get followBack => '追隨回去';
 	@override String get reply => '回覆';
 	@override String get renote => '轉發';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseZhTw extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => '新增欄位';
+	@override String get addColumn_description => '您可以選擇要新增的欄位類型。';
+	@override String get settings_title => '使用者界面設定';
+	@override String get settings_description => '您可以對多欄模式使用者界面做詳細設定。';
+	@override String get switchProfile_title => '切換設定檔';
+	@override String get switchProfile_description => '將使用者界面佈局儲存為設定檔，就可以隨時切換使用。';
 }
 
 // Path: misskey.deck_.columns_

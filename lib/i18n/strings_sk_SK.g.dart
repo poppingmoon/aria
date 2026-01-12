@@ -1031,6 +1031,7 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesSkSk antennaSources_ = _TranslationsMisskeyAntennaSourcesSkSk._(_root);
 	@override late final _TranslationsMisskeyWeekdaySkSk weekday_ = _TranslationsMisskeyWeekdaySkSk._(_root);
 	@override late final _TranslationsMisskeyWidgetsSkSk widgets_ = _TranslationsMisskeyWidgetsSkSk._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsSkSk widgetOptions_ = _TranslationsMisskeyWidgetOptionsSkSk._(_root);
 	@override late final _TranslationsMisskeyCwSkSk cw_ = _TranslationsMisskeyCwSkSk._(_root);
 	@override late final _TranslationsMisskeyPollSkSk poll_ = _TranslationsMisskeyPollSkSk._(_root);
 	@override late final _TranslationsMisskeyVisibilitySkSk visibility_ = _TranslationsMisskeyVisibilitySkSk._(_root);
@@ -1602,6 +1603,19 @@ class _TranslationsMisskeyWidgetsSkSk extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListSkSk userList_ = _TranslationsMisskeyWidgetsUserListSkSk._(_root);
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsSkSk extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Výška';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonSkSk button_ = _TranslationsMisskeyWidgetOptionsButtonSkSk._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockSkSk clock_ = _TranslationsMisskeyWidgetOptionsClockSkSk._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsSkSk birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsSkSk._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwSkSk extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
@@ -2088,6 +2102,36 @@ class _TranslationsMisskeyWidgetsUserListSkSk extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Vyberte zoznam';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonSkSk extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Farebné';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockSkSk extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Veľkosť';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsSkSk extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Trvanie';
 }
 
 // Path: misskey.postForm_.howToUse_

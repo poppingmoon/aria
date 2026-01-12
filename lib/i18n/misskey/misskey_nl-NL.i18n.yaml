@@ -1021,6 +1021,8 @@ widgets_:
   jobQueue: "Job Queue"
   userList_:
     chooseList: "Kies een lijst."
+widgetOptions_:
+  height: "Hoogte"
 cw_:
   show: "Laad meer"
 visibility_:

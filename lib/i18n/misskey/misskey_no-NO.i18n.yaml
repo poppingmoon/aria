@@ -643,6 +643,10 @@ widgets_:
   userList: "Brukerliste"
   userList_:
     chooseList: "Velg liste"
+widgetOptions_:
+  height: "Høyde"
+  clock_:
+    size: "Størrelse"
 cw_:
   hide: "Skjul"
   show: "Vis mer"

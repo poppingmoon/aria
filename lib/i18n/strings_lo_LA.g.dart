@@ -465,6 +465,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySfxLoLa sfx_ = _TranslationsMisskeySfxLoLa._(_root);
 	@override late final _TranslationsMisskeyX2faLoLa x2fa_ = _TranslationsMisskeyX2faLoLa._(_root);
 	@override late final _TranslationsMisskeyWidgetsLoLa widgets_ = _TranslationsMisskeyWidgetsLoLa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsLoLa widgetOptions_ = _TranslationsMisskeyWidgetOptionsLoLa._(_root);
 	@override late final _TranslationsMisskeyCwLoLa cw_ = _TranslationsMisskeyCwLoLa._(_root);
 	@override late final _TranslationsMisskeyVisibilityLoLa visibility_ = _TranslationsMisskeyVisibilityLoLa._(_root);
 	@override late final _TranslationsMisskeyPostFormLoLa postForm_ = _TranslationsMisskeyPostFormLoLa._(_root);
@@ -585,6 +586,16 @@ class _TranslationsMisskeyWidgetsLoLa extends TranslationsMisskeyWidgetsEnUs {
 	@override String get federation => 'ສະຫະພັນ';
 	@override String get jobQueue => 'ຄິວວຽກ';
 	@override late final _TranslationsMisskeyWidgetsUserListLoLa userList_ = _TranslationsMisskeyWidgetsUserListLoLa._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsLoLa extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'ຄວາມສູງ';
 }
 
 // Path: misskey.cw_

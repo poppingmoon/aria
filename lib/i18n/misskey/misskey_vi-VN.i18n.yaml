@@ -1830,6 +1830,14 @@ widgets_:
   userList_:
     chooseList: "Chọn danh sách"
   clicker: "clicker"
+widgetOptions_:
+  height: "Chiều cao"
+  button_:
+    colored: "Với màu"
+  clock_:
+    size: "Kích thước"
+  birthdayFollowings_:
+    period: "Thời hạn"
 cw_:
   hide: "Ẩn"
   show: "Tải thêm"

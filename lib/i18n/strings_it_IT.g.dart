@@ -859,7 +859,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get scratchpad => 'ScratchPad';
 	@override String get scratchpadDescription => 'Lo Scratchpad offre un ambiente per esperimenti di AiScript. È possibile scrivere, eseguire e confermare i risultati dell\'interazione del codice con Misskey.';
 	@override String get uiInspector => 'UI Inspector';
-	@override String get uiInspectorDescription => 'Puoi visualizzare un elenco di elementi UI presenti in memoria. I componenti dell\'interfaccia utente vengono generati dalle funzioni Ui:C:.';
+	@override String get uiInspectorDescription => 'Puoi visualizzare un elenco di elementi grafici presenti in memoria. I componenti dell\'interfaccia grafica vengono generati dalle funzioni Ui:C:.';
 	@override String get output => 'Output';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilitare AiScript nelle pagine';
@@ -1652,6 +1652,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get frame => 'Cornice';
 	@override String get presets => 'Preimpostato';
 	@override String get zeroPadding => 'Al vivo';
+	@override String get nothingToConfigure => 'Niente da configurare';
 	@override late final _TranslationsMisskeyImageEditingItIt imageEditing_ = _TranslationsMisskeyImageEditingItIt._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorItIt imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorItIt._(_root);
 	@override late final _TranslationsMisskeyCompressionItIt compression_ = _TranslationsMisskeyCompressionItIt._(_root);
@@ -1706,6 +1707,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesItIt antennaSources_ = _TranslationsMisskeyAntennaSourcesItIt._(_root);
 	@override late final _TranslationsMisskeyWeekdayItIt weekday_ = _TranslationsMisskeyWeekdayItIt._(_root);
 	@override late final _TranslationsMisskeyWidgetsItIt widgets_ = _TranslationsMisskeyWidgetsItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsItIt widgetOptions_ = _TranslationsMisskeyWidgetOptionsItIt._(_root);
 	@override late final _TranslationsMisskeyCwItIt cw_ = _TranslationsMisskeyCwItIt._(_root);
 	@override late final _TranslationsMisskeyPollItIt poll_ = _TranslationsMisskeyPollItIt._(_root);
 	@override late final _TranslationsMisskeyVisibilityItIt visibility_ = _TranslationsMisskeyVisibilityItIt._(_root);
@@ -1929,6 +1931,9 @@ class _TranslationsMisskeySettingsItIt extends TranslationsMisskeySettingsEnUs {
 	@override String get showPageTabBarBottom => 'Visualizza le schede della pagina nella parte inferiore';
 	@override String get emojiPaletteBanner => 'Puoi salvare i le emoji predefinite da appuntare in alto nel raccoglitore emoji come tavolozza e personalizzare in che modo visualizzare il raccoglitore.';
 	@override String get enableAnimatedImages => 'Attivare le immagini animate';
+	@override String get settingsPersistence_title => 'Configurazione persistente';
+	@override String get settingsPersistence_description1 => 'Attivando le impostazioni persistenti si può evitare di riconfigurare il client successivamente.';
+	@override String get settingsPersistence_description2 => 'Potrebbe non essere possibile attivare, dipende dall\'ambiente.';
 	@override late final _TranslationsMisskeySettingsChatItIt chat_ = _TranslationsMisskeySettingsChatItIt._(_root);
 }
 
@@ -2145,7 +2150,7 @@ class _TranslationsMisskeyServerSettingsItIt extends TranslationsMisskeyServerSe
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Per prevenire SPAM, questa impostazione verrà disattivata automaticamente, se non si rileva alcuna attività di moderazione durante un certo periodo di tempo.';
 	@override String get deliverSuspendedSoftware => 'Software fuori produzione';
 	@override String get deliverSuspendedSoftwareDescription => 'A causa di vulnerabilità o altri motivi, puoi interrompere la distribuzione di un software da un server specificandone il nome e la versione. Le informazioni sono fornite dall\'altro server e l\'autenticità non è garantita. Puoi indicare un intervallo di versione semantica, ma specificando >= 2024.3.1 non verranno incluse le versioni personalizzate come ad esempio 2024.3.1-custom.0, pertanto ti consigliamo di specificare una versione come >= 2024.3.1-0.';
-	@override String get singleUserMode => 'Modalità utente singolo';
+	@override String get singleUserMode => 'Modalità utenza singola';
 	@override String get singleUserMode_description => 'Se sei l\'unica persona a utilizzare questo server, l\'abilitazione di questa modalità ottimizzerà le prestazioni.';
 	@override String get signToActivityPubGet => 'Firma delle richieste GET';
 	@override String get signToActivityPubGet_description => 'Normalmente questa opzione dovrebbe essere abilitata. Se si verificano problemi con la comunicazione federata, disabilitarla potrebbe migliorare la situazione, ma d\'altro canto potrebbe rendere impossibile la comunicazione, a seconda del server.';
@@ -2878,6 +2883,24 @@ class _TranslationsMisskeyWidgetsItIt extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'Chatta con questa persona';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsItIt extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'Mostra la testata';
+	@override String get transparent => 'Sfondo trasparente';
+	@override String get height => 'Altezza';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonItIt button_ = _TranslationsMisskeyWidgetOptionsButtonItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockItIt clock_ = _TranslationsMisskeyWidgetOptionsClockItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueItIt jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssItIt rss_ = _TranslationsMisskeyWidgetOptionsRssItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerItIt rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerItIt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsItIt birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsItIt._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwItIt extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -3209,6 +3232,8 @@ class _TranslationsMisskeyDeckItIt extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => 'Se "larghezza flessibile" è abilitato, questa diventa la larghezza minima';
 	@override String get flexible => 'Larghezza flessibile';
 	@override String get enableSyncBetweenDevicesForProfiles => 'Abilita la sincronizzazione delle informazioni profilo tra dispositivi';
+	@override String get showHowToUse => 'Guarda la spiegazione dell\'interfaccia grafica';
+	@override late final _TranslationsMisskeyDeckHowToUseItIt howToUse_ = _TranslationsMisskeyDeckHowToUseItIt._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsItIt columns_ = _TranslationsMisskeyDeckColumnsItIt._(_root);
 }
 
@@ -3503,7 +3528,7 @@ class _TranslationsMisskeyContextMenuItIt extends TranslationsMisskeyContextMenu
 	@override String get title => 'Menu contestuale';
 	@override String get app => 'Applicazione';
 	@override String get appWithShift => 'Applicazione Shift+Tasto';
-	@override String get native => 'Interfaccia utente del browser';
+	@override String get native => 'Interfaccia grafica del browser';
 }
 
 // Path: misskey.gridComponent_
@@ -3790,7 +3815,6 @@ class _TranslationsMisskeyImageEffectorItIt extends TranslationsMisskeyImageEffe
 	@override String get title => 'Effetto';
 	@override String get addEffect => 'Aggiungi effetto';
 	@override String get discardChangesConfirm => 'Scarta le modifiche ed esci?';
-	@override String get nothingToConfigure => 'Nessuna impostazione configurabile.';
 	@override String get failedToLoadImage => 'Impossibile caricare l\'immagine';
 	@override late final _TranslationsMisskeyImageEffectorFxsItIt fxs_ = _TranslationsMisskeyImageEffectorFxsItIt._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsItIt fxProps_ = _TranslationsMisskeyImageEffectorFxPropsItIt._(_root);
@@ -4323,6 +4347,88 @@ class _TranslationsMisskeyWidgetsUserListItIt extends TranslationsMisskeyWidgets
 	@override String get chooseList => 'Seleziona una lista';
 }
 
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonItIt extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Colorato';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockItIt extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Dimensioni';
+	@override String get thickness => 'Spessore lancette';
+	@override String get thicknessThin => 'Sottili';
+	@override String get thicknessMedium => 'Medie';
+	@override String get thicknessThick => 'Larghe';
+	@override String get graduations => 'Quadrante';
+	@override String get graduationDots => 'Punti';
+	@override String get graduationArabic => 'Numeri';
+	@override String get fadeGraduations => 'Sfumatura';
+	@override String get sAnimation => 'Animazione dei secondi';
+	@override String get sAnimationElastic => 'Realistica';
+	@override String get sAnimationEaseOut => 'Morbida';
+	@override String get twentyFour => 'Formato 24 ore';
+	@override String get labelTime => 'Orario';
+	@override String get labelTz => 'Fuso orario';
+	@override String get labelTimeAndTz => 'Orario e fuso orario';
+	@override String get timezone => 'Fuso orario';
+	@override String get showMs => 'Millisecondi visibili';
+	@override String get showLabel => 'Etichetta visibile';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueItIt extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => 'Emetti un suono';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssItIt extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'URL del Feed RSS';
+	@override String get refreshIntervalSec => 'Intervallo di aggiornamento (in secondi)';
+	@override String get maxEntries => 'Quantità massima visualizzabile';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerItIt extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => 'Ordine casuale';
+	@override String get duration => 'Velocità di scorrimento del ticker (in secondi)';
+	@override String get reverse => 'Direzione inversa';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsItIt extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Durata';
+}
+
 // Path: misskey.postForm_.howToUse_
 class _TranslationsMisskeyPostFormHowToUseItIt extends TranslationsMisskeyPostFormHowToUseEnUs {
 	_TranslationsMisskeyPostFormHowToUseItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -4417,6 +4523,21 @@ class _TranslationsMisskeyNotificationActionsItIt extends TranslationsMisskeyNot
 	@override String get followBack => 'Following ricambiato';
 	@override String get reply => 'Rispondi';
 	@override String get renote => 'Rinota';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseItIt extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => 'Aggiungere colonne';
+	@override String get addColumn_description => 'Puoi selezionare un tipo di colonna e aggiungerlo.';
+	@override String get settings_title => 'Configurazione interfaccia grafica';
+	@override String get settings_description => 'Puoi personalizzare i dettagli dell\'interfaccia grafica.';
+	@override String get switchProfile_title => 'Selettore profilo';
+	@override String get switchProfile_description => 'Puoi salvare la disposizione dell\'interfaccia grafica nel tuo profilo, affinché cambi con comodità.';
 }
 
 // Path: misskey.deck_.columns_

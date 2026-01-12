@@ -1578,6 +1578,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesPtPt antennaSources_ = _TranslationsMisskeyAntennaSourcesPtPt._(_root);
 	@override late final _TranslationsMisskeyWeekdayPtPt weekday_ = _TranslationsMisskeyWeekdayPtPt._(_root);
 	@override late final _TranslationsMisskeyWidgetsPtPt widgets_ = _TranslationsMisskeyWidgetsPtPt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsPtPt widgetOptions_ = _TranslationsMisskeyWidgetOptionsPtPt._(_root);
 	@override late final _TranslationsMisskeyCwPtPt cw_ = _TranslationsMisskeyCwPtPt._(_root);
 	@override late final _TranslationsMisskeyPollPtPt poll_ = _TranslationsMisskeyPollPtPt._(_root);
 	@override late final _TranslationsMisskeyVisibilityPtPt visibility_ = _TranslationsMisskeyVisibilityPtPt._(_root);
@@ -2731,6 +2732,20 @@ class _TranslationsMisskeyWidgetsPtPt extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'Conversar com usuário';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsPtPt extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'Exibir cabeçalho';
+	@override String get height => 'Altura';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonPtPt button_ = _TranslationsMisskeyWidgetOptionsButtonPtPt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockPtPt clock_ = _TranslationsMisskeyWidgetOptionsClockPtPt._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsPtPt birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsPtPt._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwPtPt extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
@@ -3638,7 +3653,6 @@ class _TranslationsMisskeyImageEffectorPtPt extends TranslationsMisskeyImageEffe
 	@override String get title => 'Efeitos';
 	@override String get addEffect => 'Adicionar efeitos';
 	@override String get discardChangesConfirm => 'Tem certeza que deseja sair? Há mudanças não salvas.';
-	@override String get nothingToConfigure => 'Não há nada para configurar';
 	@override late final _TranslationsMisskeyImageEffectorFxsPtPt fxs_ = _TranslationsMisskeyImageEffectorFxsPtPt._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsPtPt fxProps_ = _TranslationsMisskeyImageEffectorFxPropsPtPt._(_root);
 }
@@ -4150,6 +4164,36 @@ class _TranslationsMisskeyWidgetsUserListPtPt extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Selecione uma lista';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonPtPt extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Colorido';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockPtPt extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Tamanho';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsPtPt extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Duração';
 }
 
 // Path: misskey.postForm_.howToUse_

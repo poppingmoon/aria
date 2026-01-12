@@ -1049,6 +1049,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySfxNlNl sfx_ = _TranslationsMisskeySfxNlNl._(_root);
 	@override late final _TranslationsMisskeyX2faNlNl x2fa_ = _TranslationsMisskeyX2faNlNl._(_root);
 	@override late final _TranslationsMisskeyWidgetsNlNl widgets_ = _TranslationsMisskeyWidgetsNlNl._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsNlNl widgetOptions_ = _TranslationsMisskeyWidgetOptionsNlNl._(_root);
 	@override late final _TranslationsMisskeyCwNlNl cw_ = _TranslationsMisskeyCwNlNl._(_root);
 	@override late final _TranslationsMisskeyVisibilityNlNl visibility_ = _TranslationsMisskeyVisibilityNlNl._(_root);
 	@override late final _TranslationsMisskeyPostFormNlNl postForm_ = _TranslationsMisskeyPostFormNlNl._(_root);
@@ -1193,6 +1194,16 @@ class _TranslationsMisskeyWidgetsNlNl extends TranslationsMisskeyWidgetsEnUs {
 	@override String get federation => 'Federatie';
 	@override String get jobQueue => 'Job Queue';
 	@override late final _TranslationsMisskeyWidgetsUserListNlNl userList_ = _TranslationsMisskeyWidgetsUserListNlNl._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsNlNl extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Hoogte';
 }
 
 // Path: misskey.cw_

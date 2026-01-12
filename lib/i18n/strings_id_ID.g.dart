@@ -1604,6 +1604,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesIdId antennaSources_ = _TranslationsMisskeyAntennaSourcesIdId._(_root);
 	@override late final _TranslationsMisskeyWeekdayIdId weekday_ = _TranslationsMisskeyWeekdayIdId._(_root);
 	@override late final _TranslationsMisskeyWidgetsIdId widgets_ = _TranslationsMisskeyWidgetsIdId._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsIdId widgetOptions_ = _TranslationsMisskeyWidgetOptionsIdId._(_root);
 	@override late final _TranslationsMisskeyCwIdId cw_ = _TranslationsMisskeyCwIdId._(_root);
 	@override late final _TranslationsMisskeyPollIdId poll_ = _TranslationsMisskeyPollIdId._(_root);
 	@override late final _TranslationsMisskeyVisibilityIdId visibility_ = _TranslationsMisskeyVisibilityIdId._(_root);
@@ -2546,6 +2547,19 @@ class _TranslationsMisskeyWidgetsIdId extends TranslationsMisskeyWidgetsEnUs {
 	@override String get clicker => 'Pengeklik';
 	@override String get birthdayFollowings => 'Pengguna yang merayakan hari ulang tahunnya hari ini';
 	@override String get chat => 'Obrolan pengguna';
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsIdId extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Tinggi';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonIdId button_ = _TranslationsMisskeyWidgetOptionsButtonIdId._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockIdId clock_ = _TranslationsMisskeyWidgetOptionsClockIdId._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsIdId birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsIdId._(_root);
 }
 
 // Path: misskey.cw_
@@ -3566,6 +3580,36 @@ class _TranslationsMisskeyWidgetsUserListIdId extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Pilih daftar';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonIdId extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Diwarnai';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockIdId extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Ukuran';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsIdId extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Durasi';
 }
 
 // Path: misskey.postForm_.howToUse_

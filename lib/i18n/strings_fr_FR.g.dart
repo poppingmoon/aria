@@ -91,11 +91,12 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} est l\'un des services propulsés par la plateforme ouverte <b>Misskey</b> (appelée "instance Misskey").';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Rechercher';
+	@override String get reset => 'Réinitialiser';
 	@override String get notifications => 'Notifications';
 	@override String get username => 'Nom d’utilisateur·rice';
 	@override String get password => 'Mot de passe';
 	@override String get initialPasswordForSetup => 'Mot de passe initial pour la configuration';
-	@override String get initialPasswordIsIncorrect => 'Mot de passe initial pour la configuration est incorrecte';
+	@override String get initialPasswordIsIncorrect => 'Le mot de passe initial pour la configuration est incorrect';
 	@override String get initialPasswordForSetupDescription => 'Utilisez le mot de passe que vous avez entré pour le fichier de configuration si vous avez installé Misskey vous-même.\nSi vous utilisez un service d\'hébergement Misskey, utilisez le mot de passe fourni.\nSi vous n\'avez pas défini de mot de passe, laissez le champ vide pour continuer.';
 	@override String get forgotPassword => 'Mot de passe oublié';
 	@override String get fetchingAsApObject => 'Récupération depuis le fédiverse …';
@@ -134,6 +135,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Désépingler';
 	@override String get copyContent => 'Copier le contenu';
 	@override String get copyLink => 'Copier le lien';
+	@override String get copyRemoteLink => 'Copier le lien de la note';
 	@override String get copyLinkRenote => 'Copier le lien de la renote';
 	@override String get delete => 'Supprimer';
 	@override String get deleteAndEdit => 'Supprimer et réécrire';
@@ -148,8 +150,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get copyFileId => 'Copier l\'identifiant du fichier';
 	@override String get copyFolderId => 'Copier l\'identifiant du dossier';
 	@override String get copyProfileUrl => 'Copier l\'URL du profil';
-	@override String get searchUser => 'Chercher un·e utilisateur·rice';
-	@override String get searchThisUsersNotes => 'Cherchez les notes de cet·te utilisateur·rice';
+	@override String get searchUser => 'Chercher un utilisateur';
+	@override String get searchThisUsersNotes => 'Cherchez les notes de cet utilisateur';
 	@override String get reply => 'Répondre';
 	@override String get loadMore => 'Afficher plus …';
 	@override String get showMore => 'Voir plus';
@@ -167,6 +169,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get download => 'Télécharger';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Êtes-vous sûr·e de vouloir supprimer le fichier « ${name} » ? Les notes avec ce fichier joint seront aussi supprimées.';
 	@override String unfollowConfirm({required Object name}) => 'Désirez-vous vous désabonner de ${name} ?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Est-te vous sur de vouloir annuler la demande de suivi de ${name} ?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Refuser la demande de suivi de ${name} ?';
 	@override String get exportRequested => 'Vous avez demandé une exportation. L’opération pourrait prendre un peu de temps. Une fois terminée, le fichier sera ajouté au Drive.';
 	@override String get importRequested => 'Vous avez initié un import. Cela pourrait prendre un peu de temps.';
 	@override String get lists => 'Listes';
@@ -204,6 +208,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get quote => 'Citer';
 	@override String get inChannelRenote => 'Renoter dans le canal';
 	@override String get inChannelQuote => 'Citer dans le canal';
+	@override String get renoteToChannel => 'Renoter sur le canal';
+	@override String get renoteToOtherChannel => 'Renoter sur un autre canal';
 	@override String get pinnedNote => 'Note épinglée';
 	@override String get pinned => 'Épingler sur le profil';
 	@override String get you => 'Vous';
@@ -298,6 +304,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get silenceThisInstance => 'Mettre cette instance en sourdine';
 	@override String get operations => 'Opérations';
 	@override String get software => 'Logiciel';
+	@override String get softwareName => 'Nom du logiciel';
 	@override String get version => 'Version';
 	@override String get metadata => 'Métadonnées';
 	@override String withNFiles({required Object n}) => '${n} fichier(s)';
@@ -317,6 +324,9 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Listez les instances que vous désirez bloquer, une par ligne. Ces instances ne seront plus en capacité d\'interagir avec votre instance.';
 	@override String get silencedInstances => 'Instances mises en sourdine';
 	@override String get silencedInstancesDescription => 'Énumérer les noms d\'hôte des instances à mettre en sourdine. Tous les comptes des instances énumérées seront traités comme mis en sourdine, ne peuvent faire que des demandes de suivi et ne peuvent pas mentionner les comptes locaux s\'ils ne sont pas suivis. Cela n\'affectera pas les instances bloquées.';
+	@override String get mediaSilencedInstances => 'Médias silencieux sur ces instances';
+	@override String get mediaSilencedInstancesDescription => 'Liste des noms de serveurs où vous voulez que les médias soient silencieux, séparés par un retour à la ligne.\nTous les comptes des instances listées seront considérés comme sensibles, et ne peuvent pas utilisés d\'émojis personnalisés. Ceci n\'affectera pas les serveurs bloquées.';
+	@override String get federationAllowedHosts => 'Serveurs qui autorisent la fédération';
 	@override String get muteAndBlock => 'Masqué·e·s / Bloqué·e·s';
 	@override String get mutedUsers => 'Utilisateur·rice·s en sourdine';
 	@override String get blockedUsers => 'Utilisateur·rice·s bloqué·e·s';
@@ -1407,6 +1417,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesFrFr antennaSources_ = _TranslationsMisskeyAntennaSourcesFrFr._(_root);
 	@override late final _TranslationsMisskeyWeekdayFrFr weekday_ = _TranslationsMisskeyWeekdayFrFr._(_root);
 	@override late final _TranslationsMisskeyWidgetsFrFr widgets_ = _TranslationsMisskeyWidgetsFrFr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsFrFr widgetOptions_ = _TranslationsMisskeyWidgetOptionsFrFr._(_root);
 	@override late final _TranslationsMisskeyCwFrFr cw_ = _TranslationsMisskeyCwFrFr._(_root);
 	@override late final _TranslationsMisskeyPollFrFr poll_ = _TranslationsMisskeyPollFrFr._(_root);
 	@override late final _TranslationsMisskeyVisibilityFrFr visibility_ = _TranslationsMisskeyVisibilityFrFr._(_root);
@@ -2226,6 +2237,19 @@ class _TranslationsMisskeyWidgetsFrFr extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => 'Liste utilisateur';
 	@override late final _TranslationsMisskeyWidgetsUserListFrFr userList_ = _TranslationsMisskeyWidgetsUserListFrFr._(_root);
 	@override String get birthdayFollowings => 'Utilisateurs qui fêtent l\'anniversaire aujourd\'hui';
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsFrFr extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Hauteur';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonFrFr button_ = _TranslationsMisskeyWidgetOptionsButtonFrFr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockFrFr clock_ = _TranslationsMisskeyWidgetOptionsClockFrFr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsFrFr birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsFrFr._(_root);
 }
 
 // Path: misskey.cw_
@@ -3070,6 +3094,36 @@ class _TranslationsMisskeyWidgetsUserListFrFr extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Sélectionner une liste';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonFrFr extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Coloré';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockFrFr extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Taille';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsFrFr extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Durée';
 }
 
 // Path: misskey.postForm_.howToUse_

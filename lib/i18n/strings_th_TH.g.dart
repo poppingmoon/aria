@@ -1529,6 +1529,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesThTh antennaSources_ = _TranslationsMisskeyAntennaSourcesThTh._(_root);
 	@override late final _TranslationsMisskeyWeekdayThTh weekday_ = _TranslationsMisskeyWeekdayThTh._(_root);
 	@override late final _TranslationsMisskeyWidgetsThTh widgets_ = _TranslationsMisskeyWidgetsThTh._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsThTh widgetOptions_ = _TranslationsMisskeyWidgetOptionsThTh._(_root);
 	@override late final _TranslationsMisskeyCwThTh cw_ = _TranslationsMisskeyCwThTh._(_root);
 	@override late final _TranslationsMisskeyPollThTh poll_ = _TranslationsMisskeyPollThTh._(_root);
 	@override late final _TranslationsMisskeyVisibilityThTh visibility_ = _TranslationsMisskeyVisibilityThTh._(_root);
@@ -2682,6 +2683,20 @@ class _TranslationsMisskeyWidgetsThTh extends TranslationsMisskeyWidgetsEnUs {
 	@override String get chat => 'แชตเลย';
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsThTh extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get showHeader => 'แสดงส่วนหัว';
+	@override String get height => 'ความสูง';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonThTh button_ = _TranslationsMisskeyWidgetOptionsButtonThTh._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockThTh clock_ = _TranslationsMisskeyWidgetOptionsClockThTh._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsThTh birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsThTh._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwThTh extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
@@ -3589,7 +3604,6 @@ class _TranslationsMisskeyImageEffectorThTh extends TranslationsMisskeyImageEffe
 	@override String get title => 'เอฟเฟกต์';
 	@override String get addEffect => 'เพิ่มเอฟเฟกต์';
 	@override String get discardChangesConfirm => 'ต้องการทิ้งการเปลี่ยนแปลงแล้วออกหรือไม่?';
-	@override String get nothingToConfigure => 'ไม่มีอะไรให้ตั้งค่า';
 	@override late final _TranslationsMisskeyImageEffectorFxsThTh fxs_ = _TranslationsMisskeyImageEffectorFxsThTh._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsThTh fxProps_ = _TranslationsMisskeyImageEffectorFxPropsThTh._(_root);
 }
@@ -4101,6 +4115,36 @@ class _TranslationsMisskeyWidgetsUserListThTh extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'เลือกรายชื่อ';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonThTh extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'สี';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockThTh extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'ขนาด';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsThTh extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'ระยะเวลา';
 }
 
 // Path: misskey.postForm_.howToUse_

@@ -1236,6 +1236,14 @@ widgets_:
   aichan: "Ai"
   userList_:
     chooseList: "Vyberte zoznam"
+widgetOptions_:
+  height: "Výška"
+  button_:
+    colored: "Farebné"
+  clock_:
+    size: "Veľkosť"
+  birthdayFollowings_:
+    period: "Trvanie"
 cw_:
   hide: "Skryť"
   show: "Zobraziť viac"

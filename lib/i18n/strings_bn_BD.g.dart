@@ -962,6 +962,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesBnBd antennaSources_ = _TranslationsMisskeyAntennaSourcesBnBd._(_root);
 	@override late final _TranslationsMisskeyWeekdayBnBd weekday_ = _TranslationsMisskeyWeekdayBnBd._(_root);
 	@override late final _TranslationsMisskeyWidgetsBnBd widgets_ = _TranslationsMisskeyWidgetsBnBd._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBnBd widgetOptions_ = _TranslationsMisskeyWidgetOptionsBnBd._(_root);
 	@override late final _TranslationsMisskeyCwBnBd cw_ = _TranslationsMisskeyCwBnBd._(_root);
 	@override late final _TranslationsMisskeyPollBnBd poll_ = _TranslationsMisskeyPollBnBd._(_root);
 	@override late final _TranslationsMisskeyVisibilityBnBd visibility_ = _TranslationsMisskeyVisibilityBnBd._(_root);
@@ -1487,6 +1488,19 @@ class _TranslationsMisskeyWidgetsBnBd extends TranslationsMisskeyWidgetsEnUs {
 	@override late final _TranslationsMisskeyWidgetsUserListBnBd userList_ = _TranslationsMisskeyWidgetsUserListBnBd._(_root);
 }
 
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsBnBd extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'উচ্চতা';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonBnBd button_ = _TranslationsMisskeyWidgetOptionsButtonBnBd._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockBnBd clock_ = _TranslationsMisskeyWidgetOptionsClockBnBd._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsBnBd birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsBnBd._(_root);
+}
+
 // Path: misskey.cw_
 class _TranslationsMisskeyCwBnBd extends TranslationsMisskeyCwEnUs {
 	_TranslationsMisskeyCwBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
@@ -1966,6 +1980,36 @@ class _TranslationsMisskeyWidgetsUserListBnBd extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'লিস্ট নির্বাচন করুন';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonBnBd extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'রঙ্গিন';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockBnBd extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'আকার';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsBnBd extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'ব্যাপ্তিকাল';
 }
 
 // Path: misskey.postForm_.howToUse_

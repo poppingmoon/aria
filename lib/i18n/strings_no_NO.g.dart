@@ -565,6 +565,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyX2faNoNo x2fa_ = _TranslationsMisskeyX2faNoNo._(_root);
 	@override late final _TranslationsMisskeyWeekdayNoNo weekday_ = _TranslationsMisskeyWeekdayNoNo._(_root);
 	@override late final _TranslationsMisskeyWidgetsNoNo widgets_ = _TranslationsMisskeyWidgetsNoNo._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsNoNo widgetOptions_ = _TranslationsMisskeyWidgetOptionsNoNo._(_root);
 	@override late final _TranslationsMisskeyCwNoNo cw_ = _TranslationsMisskeyCwNoNo._(_root);
 	@override late final _TranslationsMisskeyPollNoNo poll_ = _TranslationsMisskeyPollNoNo._(_root);
 	@override late final _TranslationsMisskeyVisibilityNoNo visibility_ = _TranslationsMisskeyVisibilityNoNo._(_root);
@@ -885,6 +886,17 @@ class _TranslationsMisskeyWidgetsNoNo extends TranslationsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript App';
 	@override String get userList => 'Brukerliste';
 	@override late final _TranslationsMisskeyWidgetsUserListNoNo userList_ = _TranslationsMisskeyWidgetsUserListNoNo._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsNoNo extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Høyde';
+	@override late final _TranslationsMisskeyWidgetOptionsClockNoNo clock_ = _TranslationsMisskeyWidgetOptionsClockNoNo._(_root);
 }
 
 // Path: misskey.cw_
@@ -1237,6 +1249,16 @@ class _TranslationsMisskeyWidgetsUserListNoNo extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Velg liste';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockNoNo extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Størrelse';
 }
 
 // Path: misskey.postForm_.howToUse_

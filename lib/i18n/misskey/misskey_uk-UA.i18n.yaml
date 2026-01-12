@@ -1434,6 +1434,14 @@ widgets_:
   userList: "Список користувачів"
   userList_:
     chooseList: "Виберіть список"
+widgetOptions_:
+  height: "Висота"
+  button_:
+    colored: "Кольоровий"
+  clock_:
+    size: "Розмір"
+  birthdayFollowings_:
+    period: "Тривалість"
 cw_:
   hide: "Сховати"
   show: "Показати більше"

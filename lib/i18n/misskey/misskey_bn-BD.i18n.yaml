@@ -1141,6 +1141,14 @@ widgets_:
   aichan: "আই চান"
   userList_:
     chooseList: "লিস্ট নির্বাচন করুন"
+widgetOptions_:
+  height: "উচ্চতা"
+  button_:
+    colored: "রঙ্গিন"
+  clock_:
+    size: "আকার"
+  birthdayFollowings_:
+    period: "ব্যাপ্তিকাল"
 cw_:
   hide: "লুকান"
   show: "আরও দেখুন"

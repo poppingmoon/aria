@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.4.0-beta.3+82
+version: 1.4.0-beta.4+83
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -111,7 +111,7 @@ dependencies:
   share_plus: ^12.0.1
   shared_preferences: ^2.5.4
   shared_preferences_platform_interface: ^2.4.1
-  slang: ^4.11.1
+  slang: ^4.11.2
   slang_flutter: ^4.11.0
   tinycolor2:
     git:

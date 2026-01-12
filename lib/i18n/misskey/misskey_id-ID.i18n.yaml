@@ -2213,6 +2213,14 @@ widgets_:
   clicker: "Pengeklik"
   birthdayFollowings: "Pengguna yang merayakan hari ulang tahunnya hari ini"
   chat: "Obrolan pengguna"
+widgetOptions_:
+  height: "Tinggi"
+  button_:
+    colored: "Diwarnai"
+  clock_:
+    size: "Ukuran"
+  birthdayFollowings_:
+    period: "Durasi"
 cw_:
   hide: "Sembunyikan"
   show: "Lihat konten"

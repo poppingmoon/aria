@@ -1793,6 +1793,14 @@ widgets_:
   userList_:
     chooseList: "Vybrat seznam"
   clicker: "Clicker"
+widgetOptions_:
+  height: "Výška"
+  button_:
+    colored: "Barevné"
+  clock_:
+    size: "Velikost"
+  birthdayFollowings_:
+    period: "Trvání"
 cw_:
   hide: "Skrýt"
   show: "Zobrazit více"

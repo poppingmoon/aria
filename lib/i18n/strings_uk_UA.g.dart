@@ -1036,6 +1036,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAntennaSourcesUkUa antennaSources_ = _TranslationsMisskeyAntennaSourcesUkUa._(_root);
 	@override late final _TranslationsMisskeyWeekdayUkUa weekday_ = _TranslationsMisskeyWeekdayUkUa._(_root);
 	@override late final _TranslationsMisskeyWidgetsUkUa widgets_ = _TranslationsMisskeyWidgetsUkUa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsUkUa widgetOptions_ = _TranslationsMisskeyWidgetOptionsUkUa._(_root);
 	@override late final _TranslationsMisskeyCwUkUa cw_ = _TranslationsMisskeyCwUkUa._(_root);
 	@override late final _TranslationsMisskeyPollUkUa poll_ = _TranslationsMisskeyPollUkUa._(_root);
 	@override late final _TranslationsMisskeyVisibilityUkUa visibility_ = _TranslationsMisskeyVisibilityUkUa._(_root);
@@ -1580,6 +1581,19 @@ class _TranslationsMisskeyWidgetsUkUa extends TranslationsMisskeyWidgetsEnUs {
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Список користувачів';
 	@override late final _TranslationsMisskeyWidgetsUserListUkUa userList_ = _TranslationsMisskeyWidgetsUserListUkUa._(_root);
+}
+
+// Path: misskey.widgetOptions_
+class _TranslationsMisskeyWidgetOptionsUkUa extends TranslationsMisskeyWidgetOptionsEnUs {
+	_TranslationsMisskeyWidgetOptionsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get height => 'Висота';
+	@override late final _TranslationsMisskeyWidgetOptionsButtonUkUa button_ = _TranslationsMisskeyWidgetOptionsButtonUkUa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsClockUkUa clock_ = _TranslationsMisskeyWidgetOptionsClockUkUa._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUkUa birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUkUa._(_root);
 }
 
 // Path: misskey.cw_
@@ -2141,6 +2155,36 @@ class _TranslationsMisskeyWidgetsUserListUkUa extends TranslationsMisskeyWidgets
 
 	// Translations
 	@override String get chooseList => 'Виберіть список';
+}
+
+// Path: misskey.widgetOptions_.button_
+class _TranslationsMisskeyWidgetOptionsButtonUkUa extends TranslationsMisskeyWidgetOptionsButtonEnUs {
+	_TranslationsMisskeyWidgetOptionsButtonUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get colored => 'Кольоровий';
+}
+
+// Path: misskey.widgetOptions_.clock_
+class _TranslationsMisskeyWidgetOptionsClockUkUa extends TranslationsMisskeyWidgetOptionsClockEnUs {
+	_TranslationsMisskeyWidgetOptionsClockUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get size => 'Розмір';
+}
+
+// Path: misskey.widgetOptions_.birthdayFollowings_
+class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsUkUa extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
+	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get period => 'Тривалість';
 }
 
 // Path: misskey.postForm_.howToUse_
