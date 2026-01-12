@@ -162,7 +162,7 @@ jobs:
         with:
           timeout_minutes: 60
           max_attempts: 3
-          command: flutter test integration_test --ignore-timeouts
+          command: flutter test integration_test/all_tests.dart --ignore-timeouts
 
   check-i18n-sorting:
     runs-on: ubuntu-latest
