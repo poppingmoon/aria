@@ -66,67 +66,81 @@ class ClipDialog extends HookConsumerWidget {
                   )
                 : null,
             onTap: () async {
-              await futureWithDialog(
-                context,
-                Future(() async {
-                  if (clip.id == clipId.value) {
-                    await ref
-                        .read(
-                          clipNotesNotifierProvider(account, clip.id).notifier,
-                        )
-                        .removeNote(noteId);
+              if (clip.id == clipId.value) {
+                final result = await futureWithDialog(
+                  context,
+                  ref
+                      .read(
+                        clipNotesNotifierProvider(account, clip.id).notifier,
+                      )
+                      .removeNote(noteId)
+                      .then((_) => ()),
+                );
+                if (result != null) {
+                  ref
+                      .read(clipsNotifierProvider(account).notifier)
+                      .decrementNotesCount(clip.id);
+                  clipId.value = null;
+                }
+              } else if (isClipped) {
+                final result = await futureWithDialog(
+                  context,
+                  ref
+                      .read(clipsNotifierProvider(account).notifier)
+                      .removeNote(clip.id, noteId)
+                      .then((_) => ()),
+                );
+                if (result != null) {
+                  ref
+                      .read(noteClipsNotifierProvider(account, noteId).notifier)
+                      .removeClip(clip.id);
+                }
+              } else {
+                try {
+                  await futureWithDialog(
+                    context,
                     ref
                         .read(clipsNotifierProvider(account).notifier)
-                        .decrementNotesCount(clip.id);
-                    clipId.value = null;
-                  } else if (isClipped) {
-                    await ref
-                        .read(clipsNotifierProvider(account).notifier)
-                        .removeNote(clip.id, noteId);
-                    ref
-                        .read(
-                          noteClipsNotifierProvider(account, noteId).notifier,
-                        )
-                        .removeClip(clip.id);
-                  } else {
-                    try {
-                      await ref
-                          .read(clipsNotifierProvider(account).notifier)
-                          .addNote(clip.id, noteId);
-                      ref
-                          .read(
-                            noteClipsNotifierProvider(account, noteId).notifier,
-                          )
-                          .addClip(clip);
-                    } on MisskeyException catch (e) {
-                      if (e.code == 'ALREADY_CLIPPED') {
-                        if (!context.mounted) return;
-                        final confirmed = await confirm(
-                          context,
-                          message: t.misskey.confirmToUnclipAlreadyClippedNote(
-                            name: clip.name ?? '',
-                          ),
-                        );
-                        if (confirmed) {
-                          await ref
-                              .read(clipsNotifierProvider(account).notifier)
-                              .removeNote(clip.id, noteId);
-                          ref
-                              .read(
-                                noteClipsNotifierProvider(
-                                  account,
-                                  noteId,
-                                ).notifier,
-                              )
-                              .removeClip(clip.id);
-                        }
-                      } else {
-                        rethrow;
+                        .addNote(clip.id, noteId),
+                    throwOnError: true,
+                  );
+                  ref
+                      .read(noteClipsNotifierProvider(account, noteId).notifier)
+                      .addClip(clip);
+                } on MisskeyException catch (e) {
+                  if (e.code == 'ALREADY_CLIPPED') {
+                    if (!context.mounted) return;
+                    final confirmed = await confirm(
+                      context,
+                      message: t.misskey.confirmToUnclipAlreadyClippedNote(
+                        name: clip.name ?? '',
+                      ),
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      final result = await futureWithDialog(
+                        context,
+                        ref
+                            .read(clipsNotifierProvider(account).notifier)
+                            .removeNote(clip.id, noteId)
+                            .then((_) => ()),
+                      );
+                      if (result != null) {
+                        ref
+                            .read(
+                              noteClipsNotifierProvider(
+                                account,
+                                noteId,
+                              ).notifier,
+                            )
+                            .removeClip(clip.id);
                       }
                     }
+                  } else {
+                    rethrow;
                   }
-                }),
-              );
+                }
+              }
             },
           );
         }),

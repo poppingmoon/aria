@@ -10,6 +10,7 @@ Future<T?> futureWithDialog<T>(
   Future<T>? future, {
   String? message,
   bool overlay = true,
+  bool throwOnError = false,
 }) async {
   OverlayEntry? entry;
   if (overlay) {
@@ -43,6 +44,9 @@ Future<T?> futureWithDialog<T>(
     try {
       entry?.remove();
     } catch (_) {}
+    if (throwOnError) {
+      rethrow;
+    }
     if (!context.mounted) return null;
     await showErrorMessageDialog(context, error: e, stackTrace: st);
     return null;
