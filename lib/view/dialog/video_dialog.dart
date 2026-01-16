@@ -4,6 +4,7 @@ import 'package:chewie/chewie.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,6 +18,7 @@ import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/show_toast.dart';
 import '../widget/image_widget.dart';
+import 'message_dialog.dart';
 
 class VideoDialog extends HookConsumerWidget {
   const VideoDialog({
@@ -123,6 +125,31 @@ class VideoDialog extends HookConsumerWidget {
                           title: Text(t.aria.showNote),
                         ),
                       ),
+                    PopupMenuItem(
+                      onTap: () async {
+                        if (!await Gal.requestAccess()) {
+                          if (!context.mounted) return;
+                          await showMessageDialog(
+                            context,
+                            t.misskey.permissionDeniedError,
+                          );
+                          return;
+                        }
+                        if (!context.mounted) return;
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(cacheManagerProvider)
+                              .getSingleFile(url.toString())
+                              .then((file) => Gal.putVideo(file.path)),
+                          message: t.misskey.saved,
+                        );
+                      },
+                      child: ListTile(
+                        leading: const Icon(Icons.download_outlined),
+                        title: Text(t.misskey.save),
+                      ),
+                    ),
                     PopupMenuItem(
                       onTap: () async {
                         final result = await futureWithDialog(

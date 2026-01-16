@@ -56,13 +56,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>To take photos or videos, please allow permission to access your camera.</string>
+	<string>To take photos or videos, please allow access to your camera.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>To record audio files, please allow permission to access your microphone.</string>
+	<string>To record audio files, please allow access to your microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>To download files, please allow permission to access your photo library.</string>
+	<string>To download files, please allow access to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To upload files, please allow permission to access your photo library.</string>
+	<string>To upload files, please allow access to your photo library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

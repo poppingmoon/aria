@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:photo_view/photo_view.dart';
@@ -17,6 +18,7 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/show_toast.dart';
+import 'message_dialog.dart';
 
 Future<void> showImageDialog(BuildContext context, {String? url, File? file}) {
   return showDialog(
@@ -150,6 +152,31 @@ class ImageDialog extends HookConsumerWidget {
                           itemBuilder: (context) => [
                             PopupMenuItem(
                               onTap: () async {
+                                if (!await Gal.requestAccess()) {
+                                  if (!context.mounted) return;
+                                  await showMessageDialog(
+                                    context,
+                                    t.misskey.permissionDeniedError,
+                                  );
+                                  return;
+                                }
+                                if (!context.mounted) return;
+                                await futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(cacheManagerProvider)
+                                      .getSingleFile(url.toString())
+                                      .then((file) => Gal.putImage(file.path)),
+                                  message: t.misskey.saved,
+                                );
+                              },
+                              child: ListTile(
+                                leading: const Icon(Icons.download),
+                                title: Text(t.misskey.save),
+                              ),
+                            ),
+                            PopupMenuItem(
+                              onTap: () async {
                                 final result = await futureWithDialog(
                                   context,
                                   ref
@@ -172,8 +199,8 @@ class ImageDialog extends HookConsumerWidget {
                                 }
                               },
                               child: ListTile(
-                                leading: const Icon(Icons.download),
-                                title: Text(t.misskey.download),
+                                leading: const Icon(Icons.download_outlined),
+                                title: Text(t.misskey.saveAs),
                               ),
                             ),
                             PopupMenuItem(

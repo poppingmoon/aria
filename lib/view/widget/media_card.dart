@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
@@ -24,6 +25,7 @@ import '../../util/show_toast.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
+import '../dialog/message_dialog.dart';
 import '../dialog/user_image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'image_widget.dart';
@@ -760,6 +762,40 @@ class _MediaCardSheet extends ConsumerWidget {
   final String? noteId;
   final void Function()? hideMedia;
 
+  Future<void> _downloadImage(WidgetRef ref) async {
+    if (!await Gal.requestAccess()) {
+      if (!ref.context.mounted) return;
+      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+      return;
+    }
+    if (!ref.context.mounted) return;
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(cacheManagerProvider)
+          .getSingleFile(file.url)
+          .then((file) => Gal.putImage(file.path)),
+      message: t.misskey.saved,
+    );
+  }
+
+  Future<void> _downloadVideo(WidgetRef ref) async {
+    if (!await Gal.requestAccess()) {
+      if (!ref.context.mounted) return;
+      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+      return;
+    }
+    if (!ref.context.mounted) return;
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(cacheManagerProvider)
+          .getSingleFile(file.url)
+          .then((file) => Gal.putVideo(file.path)),
+      message: t.misskey.saved,
+    );
+  }
+
   Future<void> _download(WidgetRef ref) async {
     final result = await futureWithDialog(
       ref.context,
@@ -850,9 +886,21 @@ class _MediaCardSheet extends ConsumerWidget {
               scrollControlDisabledMaxHeightRatio: 0.8,
             ),
           ),
+        if (file.type.startsWith('image/'))
+          ListTile(
+            leading: const Icon(Icons.download),
+            title: Text(t.misskey.save),
+            onTap: () => _downloadImage(ref),
+          )
+        else if (file.type.startsWith('video/'))
+          ListTile(
+            leading: const Icon(Icons.download),
+            title: Text(t.misskey.save),
+            onTap: () => _downloadVideo(ref),
+          ),
         ListTile(
-          leading: const Icon(Icons.download),
-          title: Text(t.misskey.download),
+          leading: const Icon(Icons.download_outlined),
+          title: Text(t.misskey.saveAs),
           onTap: () => _download(ref),
         ),
         ListTile(

@@ -314,8 +314,8 @@ class _AudioHeader extends ConsumerWidget {
                 }
               },
               child: ListTile(
-                leading: const Icon(Icons.download),
-                title: Text(t.misskey.download),
+                leading: const Icon(Icons.download_outlined),
+                title: Text(t.misskey.saveAs),
               ),
             ),
             PopupMenuItem(

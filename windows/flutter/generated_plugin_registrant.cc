@@ -11,6 +11,7 @@
 #include <flutter_inappwebview_windows/flutter_inappwebview_windows_plugin_c_api.h>
 #include <flutter_secure_storage_windows/flutter_secure_storage_windows_plugin.h>
 #include <fvp/fvp_plugin_c_api.h>
+#include <gal/gal_plugin_c_api.h>
 #include <isar_community_flutter_libs/isar_flutter_libs_plugin.h>
 #include <screen_retriever_windows/screen_retriever_windows_plugin_c_api.h>
 #include <share_plus/share_plus_windows_plugin_c_api.h>
@@ -28,6 +29,8 @@ void RegisterPlugins(flutter::PluginRegistry* registry) {
       registry->GetRegistrarForPlugin("FlutterSecureStorageWindowsPlugin"));
   FvpPluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FvpPluginCApi"));
+  GalPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("GalPluginCApi"));
   IsarFlutterLibsPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("IsarFlutterLibsPlugin"));
   ScreenRetrieverWindowsPluginCApiRegisterWithRegistrar(

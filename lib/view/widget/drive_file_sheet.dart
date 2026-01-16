@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -19,6 +20,7 @@ import '../../util/show_toast.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/file_caption_edit_dialog.dart';
 import '../dialog/gallery_dialog.dart';
+import '../dialog/message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import '../page/drive_page.dart';
 import 'post_file_thumbnail.dart';
@@ -108,6 +110,40 @@ class DriveFileSheet extends ConsumerWidget {
       if (!ref.context.mounted) return;
       ref.context.pop();
     }
+  }
+
+  Future<void> _downloadImage(WidgetRef ref) async {
+    if (!await Gal.requestAccess()) {
+      if (!ref.context.mounted) return;
+      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+      return;
+    }
+    if (!ref.context.mounted) return;
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(cacheManagerProvider)
+          .getSingleFile(file.url)
+          .then((file) => Gal.putImage(file.path)),
+      message: t.misskey.saved,
+    );
+  }
+
+  Future<void> _downloadVideo(WidgetRef ref) async {
+    if (!await Gal.requestAccess()) {
+      if (!ref.context.mounted) return;
+      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+      return;
+    }
+    if (!ref.context.mounted) return;
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(cacheManagerProvider)
+          .getSingleFile(file.url)
+          .then((file) => Gal.putVideo(file.path)),
+      message: t.misskey.saved,
+    );
   }
 
   Future<void> _download(WidgetRef ref) async {
@@ -234,9 +270,21 @@ class DriveFileSheet extends ConsumerWidget {
           title: Text(t.misskey.copyLink),
           onTap: () => copyToClipboard(context, file.url),
         ),
+        if (file.type.startsWith('image/'))
+          ListTile(
+            leading: const Icon(Icons.download),
+            title: Text(t.misskey.save),
+            onTap: () => _downloadImage(ref),
+          )
+        else if (file.type.startsWith('video/'))
+          ListTile(
+            leading: const Icon(Icons.download),
+            title: Text(t.misskey.save),
+            onTap: () => _downloadVideo(ref),
+          ),
         ListTile(
-          leading: const Icon(Icons.download),
-          title: Text(t.misskey.download),
+          leading: const Icon(Icons.download_outlined),
+          title: Text(t.misskey.saveAs),
           onTap: () => _download(ref),
         ),
         ListTile(
