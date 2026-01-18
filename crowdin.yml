@@ -3,5 +3,8 @@ files:
     ignore:
       - /fastlane/metadata/android/en-US/title.txt
     translation: /fastlane/metadata/android/%locale%/%original_file_name%
+  - source: /ios/InfoPlist.xcstrings
+    translation: /ios/InfoPlist.xcstrings
+    multilingual: true
   - source: /lib/i18n/aria/aria.i18n.yaml
     translation: /lib/i18n/aria/aria_%locale%.i18n.yaml
