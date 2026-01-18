@@ -6,7 +6,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   dynamic_color
   flutter_secure_storage_linux
   fvp
-  isar_community_flutter_libs
   screen_retriever_linux
   url_launcher_linux
   webcrypto
@@ -14,6 +13,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
+  isar_community_flutter_libs
   rust_lib_aria
 )
 

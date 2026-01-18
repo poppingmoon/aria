@@ -9,6 +9,12 @@
             "state" : "translated",
             "value" : "To download files, please allow access to your photo library."
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
         }
       }
     }

@@ -8,8 +8,7 @@ PODS:
   - image_editor_common (1.0.0):
     - Flutter
     - FlutterMacOS
-  - isar_community_flutter_libs (1.0.0):
-    - FlutterMacOS
+  - isar_community_flutter_libs (1.0.0)
   - OrderedSet (6.0.3)
   - rust_lib_aria (0.0.1):
     - FlutterMacOS
@@ -56,7 +55,7 @@ SPEC CHECKSUMS:
   flutter_inappwebview_macos: bdf207b8f4ebd58e86ae06cd96b147de99a67c9b
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
-  isar_community_flutter_libs: d3749f6775866378fc78328b10f1397a05fba673
+  isar_community_flutter_libs: 8f2a1bdaae8c53ef898270dbdc06c80b277be8ae
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34
   screen_retriever_macos: 776e0fa5d42c6163d2bf772d22478df4b302b161
