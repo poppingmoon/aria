@@ -9,7 +9,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_secure_storage_windows
   fvp
   gal
-  isar_community_flutter_libs
   screen_retriever_windows
   share_plus
   url_launcher_windows
@@ -18,6 +17,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
   flutter_local_notifications_windows
+  isar_community_flutter_libs
   rust_lib_aria
 )
 

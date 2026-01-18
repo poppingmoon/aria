@@ -88,6 +88,9 @@ jobs:
       - name: Remove unused files
         run: rm -rf /opt/hostedtoolcache
 
+      - name: Remove cargokit_options.yaml
+        run: rm cargokit_options.yaml
+
       - name: Copy files to env.APK_BUILD_DIR
         run: |
           mkdir -p $APK_BUILD_DIR
@@ -121,6 +124,23 @@ jobs:
 
       - name: Move Rust toolchain to /tmp
         run: mv $HOME/.cargo /tmp
+
+      - name: Set environment variables
+        run: |
+          COMPILER_DIR=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
+          echo $COMPILER_DIR >> $GITHUB_PATH
+          echo CC_x86_64_linux_android=$COMPILER_DIR/x86_64-linux-android21-clang >> $GITHUB_ENV
+          echo AR_x86_64_linux_android=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
+          echo CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=$COMPILER_DIR/x86_64-linux-android21-clang >> $GITHUB_ENV
+          echo CARGO_TARGET_X86_64_LINUX_ANDROID_AR=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
+          echo CC_armv7_linux_androideabi=$COMPILER_DIR/armv7a-linux-androideabi21-clang >> $GITHUB_ENV
+          echo AR_armv7_linux_androideabi=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
+          echo CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_LINKER=$COMPILER_DIR/armv7a-linux-androideabi21-clang >> $GITHUB_ENV
+          echo CARGO_TARGET_ARMV7_LINUX_ANDROIDEABI_AR=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
+          echo CC_aarch64_linux_android=$COMPILER_DIR/aarch64-linux-android21-clang >> $GITHUB_ENV
+          echo AR_aarch64_linux_android=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
+          echo CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER=$COMPILER_DIR/aarch64-linux-android21-clang >> $GITHUB_ENV
+          echo CARGO_TARGET_AARCH64_LINUX_ANDROID_AR=$COMPILER_DIR/llvm-ar >> $GITHUB_ENV
 
       - name: Build APK
         working-directory: ${{ env.APK_BUILD_DIR }}
