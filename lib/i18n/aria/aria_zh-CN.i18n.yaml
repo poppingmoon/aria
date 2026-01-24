@@ -66,6 +66,8 @@ i18nInfo(rich): "Aria 已经被志愿者们翻译成了各种语言。如果你�
 iconAttribution(rich): "Aria 应用图标由 {sevenc_nanashi} 创作，采用 {cc_by} 许可协议。"
 importCompleted: "导入已完成"
 importConfirm: "您确定要导入设置吗？当前设置将会被覆盖掉。"
+invalidEndpoint: "无效端点"
+invalidEndpointDescription: "响应中的端点无效。请确保您正在运行的代码与应用中提供的代码匹配。"
 invalidListFormat: "列表格式无效"
 jumpTo: "跳转到 {x}"
 keepOpen: "保持打开状态"
