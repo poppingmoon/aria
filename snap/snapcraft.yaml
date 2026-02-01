@@ -63,14 +63,16 @@ parts:
       - curl
       - git
       - libsecret-1-dev
+      - lld-18
+      - llvm-18-dev
       - ninja-build
       - unzip
     stage-packages:
       - libsecret-1-0
       - zenity
     override-build: |
-      VERSION=$(grep flutter .fvmrc | cut -d ":" -f2|cut -d "\"" -f2)
-      git clone https://github.com/flutter/flutter.git --branch $VERSION
+      VERSION=$(grep flutter .fvmrc | cut -d ":" -f2 | cut -d "\"" -f2)
+      git clone https://github.com/flutter/flutter.git --branch $VERSION --depth 1
       export PATH="$(pwd)/flutter/bin:$PATH"
       curl https://sh.rustup.rs -sSf | sh -s -- -y
       flutter pub get
