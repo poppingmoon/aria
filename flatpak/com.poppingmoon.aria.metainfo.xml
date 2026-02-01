@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.poppingmoon.aria</id>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>AGPL-3.0-only</project_license>
+
+  <name>Aria for Misskey</name>
+  <summary>Dive into the interplanetary microblogging platform</summary>
+  <summary xml:lang="de">Tauche ein in die interplanetare Microblogging-Plattform</summary>
+  <summary xml:lang="es">Adéntrate en la plataforma interplanetaria de microblogging</summary>
+  <summary xml:lang="id">Masuk ke dalam platform microblogging antar planet</summary>
+  <summary xml:lang="it">Immergetevi nella piattaforma interplanetaria di microblogging</summary>
+  <summary xml:lang="ja">地球で生まれた分散型SNSに飛び込もう</summary>
+  <summary xml:lang="zh-CN">潜入星际微博客平台</summary>
+
+  <developer id="com.poppingmoon">
+    <name>poppingmoon</name>
+  </developer>
+
+  <description>
+    <p>Aria is a client app for Misskey, a federated social media platform.</p>
+    <p xml:lang="de">Aria ist eine Client-App für Misskey, einer föderierten Social-Media-Plattform.</p>
+    <p xml:lang="es">Aria es un cliente para Misskey, una red social federada.</p>
+    <p xml:lang="id">Aria adalah aplikasi klien untuk Misskey, platform media sosial yang terfederasi.</p>
+    <p xml:lang="it">Aria è un'app client per Misskey, una piattaforma di social media federata.</p>
+    <p xml:lang="ja">Ariaは分散型マイクロブログプラットフォームMisskeyのクライアントアプリです。</p>
+    <p xml:lang="zh-CN">Aria 是一款为联邦社交平台 Misskey 开发的客户端。</p>
+    <p>Supports most of Misskey&apos;s features</p>
+    <p xml:lang="de">Unterstützt den Großteil von Misskeys Funktionen</p>
+    <p xml:lang="es">Soporta la mayoría de las características de Misskey</p>
+    <p xml:lang="id">Dukungan untuk sebagian besar fitur Misskey</p>
+    <p xml:lang="it">Supporta la maggior parte delle funzionalità di Misskey</p>
+    <p xml:lang="ja">Misskeyのほとんどの機能を利用可能</p>
+    <p xml:lang="zh-CN">支持Misskey绝大部分的功能</p>
+    <p>Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.</p>
+    <p xml:lang="de">Aria unterstützt die meisten Funktionen, die in Misskey verfügbar sind, einschließlich der Anzeige verschiedener Arten von Chroniken, Posten von Notizen, Bearbeiten von Clips, Listen oder Antennen, usw.</p>
+    <p xml:lang="es">Aria soporta la mayoría de las características disponibles en Misskey incluyendo ver varios tipos de líneas de tiempo postear notas, editar clips, listas de antenas, etc.</p>
+    <p xml:lang="id">Aria mendukung sebagian besar dari fitur yang tersedia di Misskey, termasuk menampilkan berbagai macam jenis timeline, mengunggah note, mengedit klip, daftar, atau antena, dll.</p>
+    <p xml:lang="it">Aria supporta la maggior parte delle funzioni disponibili in Misskey, tra cui la visualizzazione di vari tipi di timeline, note di pubblicazione, clip di modifica, liste o antenne, ecc.</p>
+    <p xml:lang="ja">各種タイムラインの閲覧や投稿、クリップやリストなどの編集をはじめとしたMisskeyの提供する機能の大部分に対応しています。</p>
+    <p xml:lang="zh-CN">Aria支持绝大多数在Misskey中可用的功能，包括：查看不同类型的时间线、发布帖子、编辑附件、列表和天线等。</p>
+    <p>Swipe to switch between multiple accounts (of multiple servers)</p>
+    <p xml:lang="de">Zwischen mehreren Konten (mehrere Server) wechseln durch Wischen</p>
+    <p xml:lang="es">Desliza para cambiar entre múltiples cuentas (de múltiples servidores)</p>
+    <p xml:lang="id">Geser untuk berpindah ke akun-akun lain (dari server yang berbeda)</p>
+    <p xml:lang="it">Scorri per passare tra più account (di più server)</p>
+    <p xml:lang="ja">複数のアカウントやサーバーをスワイプして切り替え</p>
+    <p xml:lang="zh-CN">轻松切换不同服务器的账户​</p>
+    <p>Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account&apos;s timeline to a tab makes it easy to follow topics across servers.</p>
+    <p xml:lang="de">Aria erleichtert es, verschiedene Chroniken anzuzeigen, indem man sie als Tabs speichert. Es können beliebige Chroniken von Benutzern als Tabs gespeichert werden, um verschiedenen Themen über Server hinweg zu folgen.</p>
+    <p xml:lang="es">Aria hace fácil el ver diferentes líneas de tiempo guardando las que deseas ver como pestañas. Añadir la línea de tiempo de cualquier cuenta a una pestaña hace fácil el seguir temas entre servidores.</p>
+    <p xml:lang="id">Aria mempermudah melihat timeline-timeline yang berbeda dengan menyimpan timeline yang ingin anda lihat sebagai tab. Menambahkan timeline dari akun-akun yang berbeda membuat mengikuti topik-topik yang ada di tiap server menjadi lebih mudah.</p>
+    <p xml:lang="it">Aria rende facile la visualizzazione di timeline diverse salvando le timeline che si desidera visualizzare come schede. Aggiungendo la timeline di qualsiasi account a una scheda è facile seguire gli argomenti attraverso i server.</p>
+    <p xml:lang="ja">Ariaでは見たいタイムラインをタブとして保存することで簡単に好きなタイムラインを見ることができます。どのアカウントのタイムラインでもタブに追加できるので、サーバーを横断して話題を追いかけることが簡単にできます。</p>
+    <p xml:lang="zh-CN">Aria 通过将您想查看的时间线保存为标签页，轻松实现多时间线浏览。将任意账户的时间线添加至标签页，即可便捷追踪跨服务器话题。</p>
+    <p>Based on the design of the official Misskey Web client</p>
+    <p xml:lang="de">Design basiert auf dem offiziellen Misskey Web Client</p>
+    <p xml:lang="es">Basado en el diseño oficial de Misskey</p>
+    <p xml:lang="id">Berdasarkan desain dari klien Misskey Web official</p>
+    <p xml:lang="it">Basato sul design del client Web Misskey ufficiale</p>
+    <p xml:lang="ja">公式のMisskey Webクライアントに近いUI</p>
+    <p xml:lang="zh-CN">设计基于官方 Misskey Web 客户端</p>
+    <p>The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.</p>
+    <p xml:lang="de">Die Oberfläche ist so gestaltet, dass sie weitgehend der offiziellen Misskey-Oberfläche entspricht. Notizen können ebenfalls mit MFM gestaltet werden.</p>
+    <p xml:lang="es">La interfaz de usuario está diseñada para parecer familiar, similar a la interfaz oficial de Misskey, y también soporta la decoración de notas con MFM.</p>
+    <p xml:lang="id">UI Aria didesain untuk terlihat familiar dengan front-end official dari Misskey. Aria juga mendukung dekorasi note dengan MFM.</p>
+    <p xml:lang="it">L'interfaccia utente è progettata per sembrare familiare, simile al front-end ufficiale di Misskey. Supporta anche la decorazione di note con MFM.</p>
+    <p xml:lang="ja">ブラウザから見られる公式フロントエンドに近い、馴染みやすいデザインを実現しています。MFMによるノートの装飾にも対応しています。</p>
+    <p xml:lang="zh-CN">用户界面延续官方 Misskey 前端风格，确保使用体验一致。同时支持通过 MFM 进行笔记装饰。</p>
+    <p>Highly customizable</p>
+    <p xml:lang="de">Umfangreich anpassbar</p>
+    <p xml:lang="es">Altamente personalizable</p>
+    <p xml:lang="id">Sangat mudah disesuaikan</p>
+    <p xml:lang="it">Altamente personalizzabile</p>
+    <p xml:lang="ja">高度にカスタマイズ可能</p>
+    <p xml:lang="zh-CN">高度自定义</p>
+    <p>Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.</p>
+    <p xml:lang="de">Zahlreiche Einstellungen, wie die Darstellungsgröße von Reaktionen und die Anzeige von Avataren, können geändert und den eigenen Vorlieben angepasst werden. Zudem kann das Anwendungsthema mit eigenen Farben angepasst werden.</p>
+    <p xml:lang="es">Numerosos ajustes, como tamaños de la pantalla de reacción y los iconos de usuario, pueden ser cambiados y ajustados a su gusto. Además, puedes cambiar el tema para decorar la aplicación con tus colores favoritos.</p>
+    <p xml:lang="id">Banyak pengaturan, seperti ukuran tampilan reaksi dan tampilan icon pengguna, yang dapat diganti dan diatur sesuai keinginan pengguna. Anda juga dapat mengganti tema aplikasi dengan warna favorit.</p>
+    <p xml:lang="it">Numerose impostazioni, come la dimensione del display della reazione e la visualizzazione delle icone dell'utente, possono essere modificate e regolate a proprio piacimento. Inoltre, è possibile modificare il tema per decorare l'applicazione con i colori preferiti.</p>
+    <p xml:lang="ja">リアクションの表示サイズやユーザーアイコンの表示など多数の設定を変更して自分の好みに調整することができます。テーマを変更して好きな色にアプリをデコレーションすることもできます。</p>
+    <p xml:lang="zh-CN">可以根据自己的喜好，调整回应的显示大小、用户头像等众多的设置。您也可以更改主题，用您喜欢的颜色装饰应用程序。</p>
+  </description>
+
+  <launchable type="desktop-id">com.poppingmoon.aria.desktop</launchable>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#ccdef9</color>
+    <color type="primary" scheme_preference="dark">#7293c4</color>
+  </branding>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">moderate</content_attribute>
+    <content_attribute id="social-audio">moderate</content_attribute>
+    <content_attribute id="social-contacts">intense</content_attribute>
+  </content_rating>
+
+  <url type="bugtracker">https://github.com/poppingmoon/aria/issues</url>
+  <url type="homepage">https://github.com/poppingmoon/aria</url>
+  <url type="contact">https://misskey.io/@aria_app</url>
+  <url type="translate">https://crowdin.com/project/aria-for-misskey</url>
+  <url type="vcs-browser">https://github.com/poppingmoon/aria</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/4.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/5.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/6.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/7.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/poppingmoon/aria/main/flatpak/screenshots/8.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+  </releases>
+
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+</component>

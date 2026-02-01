@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Aria
+Comment=Dive into the interplanetary microblogging platform
+Comment[de]=Tauche ein in die interplanetare Microblogging-Plattform
+Comment[es]=Adéntrate en la plataforma interplanetaria de microblogging
+Comment[id]=Masuk ke dalam platform microblogging antar planet
+Comment[it]=Immergetevi nella piattaforma interplanetaria di microblogging
+Comment[ja]=地球で生まれた分散型SNSに飛び込もう
+Comment[zh_CN]=潜入星际微博客平台
+Categories=Network;InstantMessaging;
+
+Icon=com.poppingmoon.aria
+Exec=aria
+Terminal=false
