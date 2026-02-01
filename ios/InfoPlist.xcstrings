@@ -31,7 +31,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "要上传文件，请允许访问您的照片库。"
+            "value" : "要下载文件，请允许访问您的照片库。"
           }
         }
       }
