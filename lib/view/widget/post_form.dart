@@ -31,6 +31,7 @@ import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_notifier_provider.dart';
+import '../../provider/parsed_mfm_provider.dart';
 import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
@@ -38,6 +39,7 @@ import '../../util/extract_mentions.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/pick_date_time.dart';
+import '../../util/punycode.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
@@ -231,39 +233,63 @@ class PostForm extends HookConsumerWidget {
               .watch(channelNotifierProvider(account.value, request.channelId!))
               .value
         : null;
-    final mentions = useMemoized(
-      () => extractMentions(parse(request.text ?? '')),
-      [request.text],
-    );
-    final replyMentions = useMemoized(
-      () => extractMentions(parse(reply?.text ?? '')),
-      [reply],
-    );
+    final mentions = switch (request.text) {
+      final text? when text.isNotEmpty => ref.watch(
+        parsedMfmProvider(text).select(extractMentions),
+      ),
+      _ => <MfmMention>[],
+    };
+    final normalizedMentions = useMemoized(() {
+      final localHost = toUnicode(account.value.host.toLowerCase());
+      return mentions.map((mention) => mention.normalize(localHost)).toSet();
+    }, [mentions]);
+    final replyMentions = switch (reply?.text) {
+      final text? when text.isNotEmpty => ref.watch(
+        parsedMfmProvider(text).select(extractMentions),
+      ),
+      _ => <MfmMention>[],
+    };
+    final normalizedReplyMentions = useMemoized(() {
+      final localHost = toUnicode(account.value.host.toLowerCase());
+      return replyMentions
+          .map((mention) => mention.normalize(localHost))
+          .toSet();
+    }, [replyMentions]);
     final hasMentionToRemote = useMemoized(
-      () => mentions.any((mention) => mention.host != null),
-      [mentions],
+      () => normalizedMentions.any((mention) => mention.host != null),
+      [normalizedMentions],
     );
-    final extraMentions = useMemoized(
-      () => reply != null
-          ? mentions.where(
-              (mention) =>
-                  reply.user.acct != mention.acct &&
-                  replyMentions.every(
-                    (replyMention) => replyMention.acct != mention.acct,
-                  ),
-            )
-          : <MfmMention>[],
-      [mentions, reply, replyMentions],
-    );
+    final extraMentions = useMemoized(() {
+      if (reply == null) {
+        return <MfmMention>[];
+      }
+      return normalizedMentions.where(
+        (mention) =>
+            reply.user.username.toLowerCase() != mention.username ||
+            switch (reply.user.host) {
+              final host? => toUnicode(host.toLowerCase()) != mention.host,
+              _ => mention.host != null,
+            } ||
+            normalizedReplyMentions.every(
+              (replyMention) =>
+                  replyMention.username != mention.username ||
+                  replyMention.host != mention.host,
+            ),
+      );
+    }, [normalizedMentions, normalizedReplyMentions]);
     final visibleUsers = useState(<UserDetailed>[]);
     final notSpecifiedMentions = useMemoized(
-      () => mentions.where(
-        (mention) => !visibleUsers.value.any(
+      () => normalizedMentions.where(
+        (mention) => visibleUsers.value.every(
           (user) =>
-              user.username == mention.username && user.host == mention.host,
+              user.username.toLowerCase() != mention.username ||
+              switch (user.host) {
+                final host? => toUnicode(host.toLowerCase()) != mention.host,
+                _ => mention.host != null,
+              },
         ),
       ),
-      [mentions, visibleUsers],
+      [normalizedMentions, visibleUsers],
     );
     final canChangeLocalOnly =
         noteId == null &&
@@ -950,15 +976,23 @@ class PostForm extends HookConsumerWidget {
                         if (noteId == null)
                           TextButton(
                             onPressed: () async {
+                              final mentions = notSpecifiedMentions
+                                  .map(
+                                    (mention) => (
+                                      username: mention.username,
+                                      host: mention.host,
+                                    ),
+                                  )
+                                  .toSet();
                               final users = await futureWithDialog(
                                 context,
                                 Future.wait(
-                                  notSpecifiedMentions.map(
-                                    (node) => ref.read(
+                                  mentions.map(
+                                    (mention) => ref.read(
                                       userNotifierProvider(
                                         account.value,
-                                        username: node.username,
-                                        host: node.host,
+                                        username: mention.username,
+                                        host: mention.host,
                                       ).future,
                                     ),
                                   ),
@@ -1029,7 +1063,7 @@ class PostForm extends HookConsumerWidget {
                           String text = request.text ?? '';
                           for (final mention in extraMentions) {
                             text = text.replaceAllMapped(
-                              RegExp('${mention.acct}(\$|[^\\w.-])'),
+                              RegExp('${mention.acct}(\$|[^\\w.-@])'),
                               (match) => match[1] ?? '',
                             );
                           }
@@ -1534,5 +1568,20 @@ class _PostFormFooter extends HookConsumerWidget {
           ),
       ],
     );
+  }
+}
+
+extension on MfmMention {
+  MfmMention normalize(String localHost) {
+    if (host case final host?) {
+      final normalizedHost = toUnicode(host.toLowerCase());
+      return MfmMention(
+        username: username.toLowerCase(),
+        host: normalizedHost == localHost ? null : normalizedHost,
+        acct: acct,
+      );
+    } else {
+      return MfmMention(username: username.toLowerCase(), acct: acct);
+    }
   }
 }
