@@ -4,6 +4,12 @@
     "NSPhotoLibraryAddUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Dateien herunterzuladen, erlaube bitte Zugriff auf deine Foto-Bibliothek."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16,10 +22,10 @@
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
           }
         },
-        "ja-KS" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+            "value" : "要下载文件，请允许访问您的照片库。"
           }
         }
       }
@@ -27,6 +33,12 @@
     "NSPhotoLibraryUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Dateien hochzuladen, erlaube bitte Zugriff auf deine Foto-Bibliothek."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -39,10 +51,10 @@
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
           }
         },
-        "ja-KS" : {
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+            "value" : "要上传文件，请允许访问您的照片库。"
           }
         }
       }
