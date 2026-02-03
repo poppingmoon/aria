@@ -4,6 +4,12 @@
     "NSPhotoLibraryAddUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Dateien herunterzuladen, erlaube bitte Zugriff auf deine Foto-Bibliothek."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14,6 +20,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要下载文件，请允许访问您的照片库。"
           }
         }
       }

@@ -131,6 +131,9 @@
   </screenshots>
 
   <releases>
+    <release version="1.4.2" date="2026-02-03">
+      <url type="details">https://github.com/poppingmoon/aria/releases/v1.4.2</url>
+    </release>
   </releases>
 
   <supports>

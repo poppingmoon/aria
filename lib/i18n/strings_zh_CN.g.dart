@@ -142,6 +142,8 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get importCompleted => '导入已完成';
 	@override String get importConfirm => '您确定要导入设置吗？当前设置将会被覆盖掉。';
+	@override String get invalidEndpoint => '无效端点';
+	@override String get invalidEndpointDescription => '响应中的端点无效。请确保您正在运行的代码与应用中提供的代码匹配。';
 	@override String get invalidListFormat => '列表格式无效';
 	@override String jumpTo({required Object x}) => '跳转到 ${x}';
 	@override String get keepOpen => '保持打开状态';
