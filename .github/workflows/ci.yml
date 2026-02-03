@@ -156,6 +156,7 @@ jobs:
         uses: futureware-tech/simulator-action@dab10d813144ef59b48d401cd95da151222ef8cd # v4
         with:
           model: iPhone 17
+          wait_for_boot: true
 
       - name: Integration test
         uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
