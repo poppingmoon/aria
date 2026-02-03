@@ -145,7 +145,7 @@ class Aria extends HookConsumerWidget {
     if (defaultTargetPlatform == TargetPlatform.android) {
       final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
       await flutterLocalNotificationsPlugin.initialize(
-        const InitializationSettings(
+        settings: const InitializationSettings(
           android: AndroidInitializationSettings('ic_notification'),
         ),
         onDidReceiveNotificationResponse: (response) =>
@@ -515,10 +515,10 @@ class Aria extends HookConsumerWidget {
               : null;
 
           await flutterLocalNotificationsPlugin.show(
-            DateTime.now().millisecondsSinceEpoch & 0x7fffffff,
-            title,
-            body,
-            NotificationDetails(
+            id: DateTime.now().millisecondsSinceEpoch & 0x7fffffff,
+            title: title,
+            body: body,
+            notificationDetails: NotificationDetails(
               android: AndroidNotificationDetails(
                 notificationChannelId,
                 t.misskey.notifications,
@@ -539,10 +539,10 @@ class Aria extends HookConsumerWidget {
               ? Id.tryParse(userId)?.date.millisecondsSinceEpoch
               : null;
           await flutterLocalNotificationsPlugin.show(
-            (summaryId ?? 0) & 0x7fffffff,
-            title,
-            body,
-            NotificationDetails(
+            id: (summaryId ?? 0) & 0x7fffffff,
+            title: title,
+            body: body,
+            notificationDetails: NotificationDetails(
               android: AndroidNotificationDetails(
                 notificationChannelId,
                 t.misskey.notifications,
