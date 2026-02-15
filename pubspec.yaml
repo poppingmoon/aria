@@ -84,7 +84,7 @@ dependencies:
   json_annotation: ^4.9.0
   just_audio: ^0.10.5
   kana_kit: ^2.1.1
-  material_color_utilities: ^0.11.1
+  material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
   material_symbols_icons: ^4.2906.0
   mfm_parser:
