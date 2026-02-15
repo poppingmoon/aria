@@ -239,7 +239,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showAvatarsInNote => '在帖子中显示用户头像';
 	@override String get showAvatarsInSubNote => '在子贴中显示用户头像';
 	@override String get showCaption => '显示图像描述文本';
-	@override String get showEntireImage => '显示整个图像';
+	@override String get showEntireImage => '显示完整图像';
 	@override String get showExpandedImage => '显示扩展图像';
 	@override String get showGapBetweenNotesInTimeline => '在帖子之间添加间隔';
 	@override String get showImage => '显示图片';
