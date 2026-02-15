@@ -18,6 +18,7 @@ const darkDynamicColorThemeId = 'c4143574-f085-4024-b9ca-5a33dd272d32';
 @riverpod
 class CorePaletteNotifier extends _$CorePaletteNotifier {
   @override
+  // ignore: deprecated_member_use
   CorePalette? build() {
     Future(update);
     final value = ref.watch(sharedPreferencesProvider).getString(_key);
@@ -25,6 +26,7 @@ class CorePaletteNotifier extends _$CorePaletteNotifier {
       try {
         final json = jsonDecode(value);
         if (json is List) {
+          // ignore: deprecated_member_use
           return CorePalette.fromList(json.whereType<int>().toList());
         }
       } catch (_) {}
@@ -40,6 +42,7 @@ class CorePaletteNotifier extends _$CorePaletteNotifier {
       state = palette;
       await ref
           .read(sharedPreferencesProvider)
+          // ignore: deprecated_member_use
           .setString(_key, jsonEncode(palette.asList()));
     }
   }
