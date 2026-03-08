@@ -153,7 +153,6 @@ jobs:
         run: rustup update
 
       - name: Start simulator
-        timeout-minutes: 5
         uses: futureware-tech/simulator-action@e89aa8f93d3aec35083ff49d2854d07f7186f7f5 # v5
         with:
           model: iPhone 17
