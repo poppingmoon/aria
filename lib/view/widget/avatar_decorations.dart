@@ -64,6 +64,7 @@ class AvatarDecorations extends ConsumerWidget {
                               : decoration.url,
                           height: size,
                           width: size,
+                          disableAnimations: disableShowingAnimatedImages,
                         ),
                       ),
                     ),

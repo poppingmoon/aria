@@ -132,97 +132,100 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 ),
               ),
             },
-            child: PhotoViewGallery.builder(
-              pageController: controller,
-              builder: (context, index) => PhotoViewGalleryPageOptions(
-                heroAttributes: PhotoViewHeroAttributes(tag: files[index].id),
-                imageProvider: CachedNetworkImageProvider(
-                  files[index].url,
-                  cacheManager: ref.watch(cacheManagerProvider),
-                ),
-                onTapUp: (context, details, value) {
-                  if (!isZoomed.value) {
-                    if (files[index].properties case DriveFileProperties(
-                      :final width?,
-                      :final height?,
-                    )) {
-                      if (value.scale case final scale?) {
-                        final imageWidth = width * scale;
-                        final imageHeight = height * scale;
-                        final Size(width: screenWidth, height: screenHeight) =
-                            MediaQuery.sizeOf(context);
-                        final Offset(:dx, :dy) = details.globalPosition;
-                        if (imageWidth / 2 < (dx - screenWidth / 2).abs() ||
-                            imageHeight / 2 < (dy - screenHeight / 2).abs()) {
-                          context.pop();
-                          return;
+            child: MediaQuery(
+              data: MediaQuery.of(context).copyWith(disableAnimations: false),
+              child: PhotoViewGallery.builder(
+                pageController: controller,
+                builder: (context, index) => PhotoViewGalleryPageOptions(
+                  heroAttributes: PhotoViewHeroAttributes(tag: files[index].id),
+                  imageProvider: CachedNetworkImageProvider(
+                    files[index].url,
+                    cacheManager: ref.watch(cacheManagerProvider),
+                  ),
+                  onTapUp: (context, details, value) {
+                    if (!isZoomed.value) {
+                      if (files[index].properties case DriveFileProperties(
+                        :final width?,
+                        :final height?,
+                      )) {
+                        if (value.scale case final scale?) {
+                          final imageWidth = width * scale;
+                          final imageHeight = height * scale;
+                          final Size(width: screenWidth, height: screenHeight) =
+                              MediaQuery.sizeOf(context);
+                          final Offset(:dx, :dy) = details.globalPosition;
+                          if (imageWidth / 2 < (dx - screenWidth / 2).abs() ||
+                              imageHeight / 2 < (dy - screenHeight / 2).abs()) {
+                            context.pop();
+                            return;
+                          }
                         }
                       }
                     }
-                  }
-                  if (overlayOpacity < 0.5) {
-                    overlayOpacityController.animateTo(
-                      1.0,
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    overlayOpacityController.animateTo(
-                      0.0,
-                      curve: Curves.easeInOut,
-                    );
+                    if (overlayOpacity < 0.5) {
+                      overlayOpacityController.animateTo(
+                        1.0,
+                        curve: Curves.easeInOut,
+                      );
+                    } else {
+                      overlayOpacityController.animateTo(
+                        0.0,
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  },
+                ),
+                loadingBuilder: (context, event) => Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    if (controller.page == index.value)
+                      if (files.elementAtOrNull(index.value)?.thumbnailUrl
+                          case final thumbnailUrl?)
+                        Positioned.fill(
+                          child: ImageWidget(
+                            url: thumbnailUrl,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                    SizedBox.square(
+                      dimension: 32.0,
+                      child: CircularProgressIndicator(
+                        value: switch (event) {
+                          ImageChunkEvent(
+                            :final cumulativeBytesLoaded,
+                            :final expectedTotalBytes?,
+                          ) =>
+                            cumulativeBytesLoaded / expectedTotalBytes,
+                          _ => null,
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                itemCount: files.length,
+                backgroundDecoration: const BoxDecoration(
+                  color: Colors.transparent,
+                ),
+                scaleStateChangedCallback: (state) {
+                  switch (state) {
+                    case PhotoViewScaleState.initial ||
+                        PhotoViewScaleState.zoomedOut:
+                      isZoomed.value = false;
+                      overlayOpacityController.animateTo(
+                        1.0,
+                        curve: Curves.easeInOut,
+                      );
+                    case PhotoViewScaleState.covering ||
+                        PhotoViewScaleState.originalSize ||
+                        PhotoViewScaleState.zoomedIn:
+                      isZoomed.value = true;
+                      overlayOpacityController.animateTo(
+                        0.0,
+                        curve: Curves.easeInOut,
+                      );
                   }
                 },
               ),
-              loadingBuilder: (context, event) => Stack(
-                alignment: Alignment.center,
-                children: [
-                  if (controller.page == index.value)
-                    if (files.elementAtOrNull(index.value)?.thumbnailUrl
-                        case final thumbnailUrl?)
-                      Positioned.fill(
-                        child: ImageWidget(
-                          url: thumbnailUrl,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                  SizedBox.square(
-                    dimension: 32.0,
-                    child: CircularProgressIndicator(
-                      value: switch (event) {
-                        ImageChunkEvent(
-                          :final cumulativeBytesLoaded,
-                          :final expectedTotalBytes?,
-                        ) =>
-                          cumulativeBytesLoaded / expectedTotalBytes,
-                        _ => null,
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              itemCount: files.length,
-              backgroundDecoration: const BoxDecoration(
-                color: Colors.transparent,
-              ),
-              scaleStateChangedCallback: (state) {
-                switch (state) {
-                  case PhotoViewScaleState.initial ||
-                      PhotoViewScaleState.zoomedOut:
-                    isZoomed.value = false;
-                    overlayOpacityController.animateTo(
-                      1.0,
-                      curve: Curves.easeInOut,
-                    );
-                  case PhotoViewScaleState.covering ||
-                      PhotoViewScaleState.originalSize ||
-                      PhotoViewScaleState.zoomedIn:
-                    isZoomed.value = true;
-                    overlayOpacityController.animateTo(
-                      0.0,
-                      curve: Curves.easeInOut,
-                    );
-                }
-              },
             ),
           ),
         ),

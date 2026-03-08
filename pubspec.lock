@@ -49,6 +49,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.10"
+  animated_image:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
+      resolved-ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
+      url: "https://github.com/poppingmoon/animated_image"
+    source: git
+    version: "0.1.0"
   archive:
     dependency: transitive
     description:
@@ -2432,5 +2441,5 @@ packages:
     source: hosted
     version: "2.2.4"
 sdks:
-  dart: ">=3.10.3 <4.0.0"
+  dart: ">=3.11.0 <4.0.0"
   flutter: ">=3.38.4"

@@ -75,50 +75,53 @@ class ImageDialog extends HookConsumerWidget {
             }
           },
           onDismissed: (_) => context.pop(),
-          child: PhotoView(
-            imageProvider: switch ((file, this.url)) {
-              (final file?, _) => FileImage(file) as ImageProvider,
-              (_, final url?) => CachedNetworkImageProvider(
-                url,
-                cacheManager: ref.watch(cacheManagerProvider),
+          child: MediaQuery(
+            data: MediaQuery.of(context).copyWith(disableAnimations: false),
+            child: PhotoView(
+              imageProvider: switch ((file, this.url)) {
+                (final file?, _) => FileImage(file) as ImageProvider,
+                (_, final url?) => CachedNetworkImageProvider(
+                  url,
+                  cacheManager: ref.watch(cacheManagerProvider),
+                ),
+                _ => null,
+              },
+              backgroundDecoration: const BoxDecoration(
+                color: Colors.transparent,
               ),
-              _ => null,
-            },
-            backgroundDecoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
-            scaleStateChangedCallback: (state) {
-              switch (state) {
-                case PhotoViewScaleState.initial ||
-                    PhotoViewScaleState.zoomedOut:
-                  isZoomed.value = false;
+              scaleStateChangedCallback: (state) {
+                switch (state) {
+                  case PhotoViewScaleState.initial ||
+                      PhotoViewScaleState.zoomedOut:
+                    isZoomed.value = false;
+                    overlayOpacityController.animateTo(
+                      1.0,
+                      curve: Curves.easeInOut,
+                    );
+                  case PhotoViewScaleState.covering ||
+                      PhotoViewScaleState.originalSize ||
+                      PhotoViewScaleState.zoomedIn:
+                    isZoomed.value = true;
+                    overlayOpacityController.animateTo(
+                      0.0,
+                      curve: Curves.easeInOut,
+                    );
+                }
+              },
+              onTapUp: (_, _, _) {
+                if (overlayOpacity < 0.5) {
                   overlayOpacityController.animateTo(
                     1.0,
                     curve: Curves.easeInOut,
                   );
-                case PhotoViewScaleState.covering ||
-                    PhotoViewScaleState.originalSize ||
-                    PhotoViewScaleState.zoomedIn:
-                  isZoomed.value = true;
+                } else {
                   overlayOpacityController.animateTo(
                     0.0,
                     curve: Curves.easeInOut,
                   );
-              }
-            },
-            onTapUp: (_, _, _) {
-              if (overlayOpacity < 0.5) {
-                overlayOpacityController.animateTo(
-                  1.0,
-                  curve: Curves.easeInOut,
-                );
-              } else {
-                overlayOpacityController.animateTo(
-                  0.0,
-                  curve: Curves.easeInOut,
-                );
-              }
-            },
+                }
+              },
+            ),
           ),
         ),
         Opacity(

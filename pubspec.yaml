@@ -8,6 +8,10 @@ environment:
 
 dependencies:
   aho_corasick: ^2.0.0
+  animated_image:
+    git:
+      url: https://github.com/poppingmoon/animated_image
+      ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
   async: ^2.13.0
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
