@@ -39,6 +39,7 @@ class CatAvatar extends HookWidget {
     required this.size,
     required this.borderRadius,
     required this.onTap,
+    required this.disableAnimations,
   });
 
   final Account account;
@@ -53,6 +54,7 @@ class CatAvatar extends HookWidget {
   final double size;
   final BorderRadius borderRadius;
   final void Function()? onTap;
+  final bool disableAnimations;
 
   @override
   Widget build(BuildContext context) {
@@ -137,6 +139,7 @@ class CatAvatar extends HookWidget {
                 height: size,
                 width: size,
                 fit: BoxFit.cover,
+                disableAnimations: disableAnimations,
               ),
             ),
             if (decorations case final decorations?)

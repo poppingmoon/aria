@@ -92,6 +92,7 @@ class UserAvatar extends ConsumerWidget {
         size: size,
         borderRadius: borderRadius,
         onTap: onTap,
+        disableAnimations: useStaticImage,
       );
     }
 
@@ -114,6 +115,7 @@ class UserAvatar extends ConsumerWidget {
               height: size,
               width: size,
               fit: BoxFit.cover,
+              disableAnimations: useStaticImage,
             ),
           ),
           if (decorations case final decorations?)

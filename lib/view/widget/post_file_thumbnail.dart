@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:animated_image/animated_image.dart';
 import 'package:flutter/material.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
@@ -38,7 +39,7 @@ class PostFileThumbnail extends StatelessWidget {
     }
     if (file.type?.startsWith('image/') ?? false) {
       if (file case LocalPostFile(:final file)) {
-        return Image.file(file, width: width, height: height, fit: fit);
+        return AnimatedImage.file(file, width: width, height: height, fit: fit);
       }
     }
     return SizedBox(

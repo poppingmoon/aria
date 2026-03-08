@@ -541,7 +541,12 @@ class _ImagePreview extends ConsumerWidget {
       onDoubleTap: () => _openImage(context),
       onLongPress: onLongPress,
       child: url != null
-          ? ImageWidget(url: url, blurHash: file.blurhash, fit: fit)
+          ? ImageWidget(
+              url: url,
+              blurHash: file.blurhash,
+              fit: fit,
+              disableAnimations: disableShowingAnimatedImages,
+            )
           : blurHash != null
           ? BlurHash(
               hash: blurHash,

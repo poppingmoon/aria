@@ -1,3 +1,4 @@
+import 'package:animated_image/animated_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
@@ -23,6 +24,7 @@ class ImageWidget extends ConsumerWidget {
     this.errorBuilder,
     this.semanticLabel,
     this.enableFadeIn = true,
+    this.disableAnimations = false,
   });
 
   final String? url;
@@ -36,6 +38,7 @@ class ImageWidget extends ConsumerWidget {
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
   final bool enableFadeIn;
+  final bool disableAnimations;
 
   Widget _buildPlaceholder(BuildContext context) {
     if (placeholderBuilder case final placeholderBuilder?) {
@@ -110,9 +113,10 @@ class ImageWidget extends ConsumerWidget {
         errorBuilder:
             errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
         semanticLabel: semanticLabel,
+        disableAnimations: disableAnimations,
       );
     } else {
-      return Image(
+      return AnimatedImage(
         image: CachedNetworkImageProvider(
           url,
           headers: {'User-Agent': ?userAgent},
@@ -130,6 +134,7 @@ class ImageWidget extends ConsumerWidget {
         errorBuilder:
             errorBuilder ?? (context, _, _) => _buildPlaceholder(context),
         semanticLabel: semanticLabel,
+        disableAnimations: disableAnimations,
       );
     }
   }
@@ -146,6 +151,7 @@ class _FadeImageWidget extends HookWidget {
     required this.placeholderBuilder,
     this.errorBuilder,
     this.semanticLabel,
+    this.disableAnimations = false,
   });
 
   final ImageProvider<Object> image;
@@ -157,6 +163,7 @@ class _FadeImageWidget extends HookWidget {
   final Widget Function(BuildContext context) placeholderBuilder;
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
+  final bool disableAnimations;
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +183,7 @@ class _FadeImageWidget extends HookWidget {
       return () => isLoaded.removeListener(callback);
     }, []);
 
-    return Image(
+    return AnimatedImage(
       image: image,
       width: width,
       height: height,
@@ -187,7 +194,9 @@ class _FadeImageWidget extends HookWidget {
         if (wasSynchronouslyLoaded) {
           return child;
         }
-        Future(() => isLoaded.value = frame != null);
+        if (frame != null) {
+          Future(() => isLoaded.value = true);
+        }
         return _FadeStack(
           controller: controller,
           placeholderBuilder: placeholderBuilder,
@@ -197,6 +206,7 @@ class _FadeImageWidget extends HookWidget {
       errorBuilder:
           errorBuilder ?? (context, _, _) => placeholderBuilder(context),
       semanticLabel: semanticLabel,
+      disableAnimations: disableAnimations,
     );
   }
 }

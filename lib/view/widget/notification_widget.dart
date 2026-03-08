@@ -273,9 +273,10 @@ class NotificationWidget extends ConsumerWidget {
         return _NotificationTile(
           account: account,
           user: i,
-          icon: notification.role?.iconUrl != null
-              ? ImageWidget(url: notification.role!.iconUrl!.toString())
-              : const Icon(Icons.workspace_premium),
+          icon: switch (notification.role?.iconUrl) {
+            final url? => ImageWidget(url: url.toString()),
+            _ => const Icon(Icons.workspace_premium),
+          },
           iconBackgroundColor: notification.icon == null ? eventOther : null,
           title: Text(t.misskey.notification_.roleAssigned),
           subtitle: Tooltip(
@@ -895,26 +896,26 @@ class _NotificationTile extends ConsumerWidget {
                         alignment: AlignmentDirectional.centerStart,
                         child:
                             title ??
-                            (user != null
-                                ? InkWell(
-                                    onTap: () => context.push(
-                                      '/$account/users/${user!.id}',
-                                    ),
-                                    onLongPress: () => showUserSheet(
-                                      context: context,
-                                      account: account,
-                                      userId: user!.id,
-                                    ),
-                                    child: DefaultTextStyle.merge(
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      child: UsernameWidget(
-                                        account: account,
-                                        user: user!,
-                                      ),
-                                    ),
-                                  )
-                                : null),
+                            switch (user) {
+                              final user? => InkWell(
+                                onTap: () =>
+                                    context.push('/$account/users/${user.id}'),
+                                onLongPress: () => showUserSheet(
+                                  context: context,
+                                  account: account,
+                                  userId: user.id,
+                                ),
+                                child: DefaultTextStyle.merge(
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  child: UsernameWidget(
+                                    account: account,
+                                    user: user,
+                                  ),
+                                ),
+                              ),
+                              _ => null,
+                            },
                       ),
                     ),
                     if (createdAt != null)
