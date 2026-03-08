@@ -788,6 +788,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get fontSize => '글자 크기';
 	@override String get mediaListWithOneImageAppearance => '이미지가 1개 뿐인 미디어 목록의 높이';
 	@override String limitTo({required Object x}) => '${x}로 제한';
+	@override String get showMediaListByGridInWideArea => '화면 폭이 넓을 때는 미디어 목록을 가로로 표시하기';
 	@override String get noFollowRequests => '처리되지 않은 팔로우 요청이 없습니다';
 	@override String get openImageInNewTab => '새 탭에서 이미지 열기';
 	@override String get dashboard => '대시보드';
@@ -1579,7 +1580,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get unmarkAsSensitiveConfirm => '이 미디어의 민감한 미디어 지정을 해제하시겠습니까?';
 	@override String get preferences => '환경설정';
 	@override String get accessibility => '접근성';
-	@override String get preferencesProfile => '설정 프로필';
+	@override String get preferencesProfile => '설정 프로파일';
 	@override String get copyPreferenceId => '설정한 ID를 복사';
 	@override String get resetToDefaultValue => '기본값으로 되돌리기';
 	@override String get overrideByAccount => '계정으로 덮어쓰기';
@@ -1592,7 +1593,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get preferenceSyncConflictText => '동기화를 활성화 한 항목의 설정 값은 서버에 저장되지만, 해당 항목은 이미 서버에 설정 값이 저장되어져 있습니다. 어느 쪽의 설정 값을 덮어씌울까요?';
 	@override String get preferenceSyncConflictChoiceMerge => '병합';
 	@override String get preferenceSyncConflictChoiceServer => '서버 설정값';
-	@override String get preferenceSyncConflictChoiceDevice => '장치 설정값';
+	@override String get preferenceSyncConflictChoiceDevice => '장치 설정 값';
 	@override String get preferenceSyncConflictChoiceCancel => '동기화 취소';
 	@override String get paste => '붙여넣기';
 	@override String get emojiPalette => '이모지 팔레트';
@@ -1953,11 +1954,11 @@ class _TranslationsMisskeyPreferencesProfileKoKr extends TranslationsMisskeyPref
 	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override String get profileName => '프로필 이름';
+	@override String get profileName => '프로파일 이름';
 	@override String get profileNameDescription => '이 디바이스를 식별할 이름을 설정해 주세요.';
 	@override String get profileNameDescription2 => '예: \'메인PC\', \'스마트폰\' 등';
 	@override String get manageProfiles => '프로파일 관리';
-	@override String get shareSameProfileBetweenDevicesIsNotRecommended => '여러 장치에서 동일한 프로필을 공유하는 것은 권장하지 않습니다.';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => '여러 장치에서 같은 프로파일을 공유하는 것은 권장하지 않습니다.';
 	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => '여러 장치에서 동기화하고 싶은 설정 항목이 있는 경우에는 개별로 \'여러 장치에서 동기화\' 옵션을 활성화해 주십시오.';
 }
 
@@ -1973,7 +1974,7 @@ class _TranslationsMisskeyPreferencesBackupKoKr extends TranslationsMisskeyPrefe
 	@override String get noBackupsFoundTitle => '백업을 찾을 수 없습니다';
 	@override String get noBackupsFoundDescription => '자동으로 생성된 백업은 찾을 수 없었지만, 수동으로 백업 파일을 저장한 경우 해당 파일을 가져와 복원할 수 있습니다.';
 	@override String get selectBackupToRestore => '복원할 백업을 선택하세요';
-	@override String get youNeedToNameYourProfileToEnableAutoBackup => '자동 백업을 활성화하려면 프로필 이름을 설정해야 합니다.';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => '자동 백업을 활성화하려면 프로파일 이름을 설정해야 합니다.';
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => '이 장치에서 설정 자동 백업이 활성화되어 있지 않습니다.';
 	@override String get backupFound => '설정 백업이 발견되었습니다';
 	@override String get forceBackup => '설정 강제 백업';
@@ -3240,7 +3241,7 @@ class _TranslationsMisskeyDeckKoKr extends TranslationsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '루트 이외의 페이지로 접속한 경우 UI 간략화하기';
 	@override String get usedAsMinWidthWhenFlexible => '\'폭 자동 조정\'이 활성화된 경우 최소 폭으로 사용됩니다';
 	@override String get flexible => '폭 자동 조정';
-	@override String get enableSyncBetweenDevicesForProfiles => '프로파일 정보의 디바이스 간 동기화를 활성화';
+	@override String get enableSyncBetweenDevicesForProfiles => '프로파일 정보의 장치 간 동기화를 활성화';
 	@override String get showHowToUse => 'UI 설명 보기';
 	@override late final _TranslationsMisskeyDeckHowToUseKoKr howToUse_ = _TranslationsMisskeyDeckHowToUseKoKr._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsKoKr columns_ = _TranslationsMisskeyDeckColumnsKoKr._(_root);
@@ -4561,8 +4562,8 @@ class _TranslationsMisskeyDeckHowToUseKoKr extends TranslationsMisskeyDeckHowToU
 	@override String get addColumn_description => '칼럼의 종류를 선택해 추가할 수 있습니다.';
 	@override String get settings_title => 'UI 설정';
 	@override String get settings_description => '덱 UI의 상세 설정을 할 수 있습니다.';
-	@override String get switchProfile_title => '프로필 전환';
-	@override String get switchProfile_description => 'UI의 레이아웃을 프로필로 저장하고, 언제나 전환할 수 있습니다.';
+	@override String get switchProfile_title => '프로파일 전환';
+	@override String get switchProfile_description => 'UI의 레이아웃을 프로파일로 저장하고 언제든지 전환할 수 있습니다.';
 }
 
 // Path: misskey.deck_.columns_

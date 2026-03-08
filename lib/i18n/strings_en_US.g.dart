@@ -2313,6 +2313,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'Limit to {x}'
 	String limitTo({required Object x}) => 'Limit to ${x}';
 
+	/// en-US: 'Display the media list in a grid when the screen width is wide'
+	String get showMediaListByGridInWideArea => 'Display the media list in a grid when the screen width is wide';
+
 	/// en-US: 'You don't have any pending follow requests'
 	String get noFollowRequests => 'You don\'t have any pending follow requests';
 

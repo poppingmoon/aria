@@ -848,6 +848,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get fontSize => '字の大きさ';
 	@override String get mediaListWithOneImageAppearance => '画像が1枚のみのメディアリストの高さ';
 	@override String limitTo({required Object x}) => '${x}をいっぱいに';
+	@override String get showMediaListByGridInWideArea => '画面幅が広いときはメディアリストを横並びで表示する';
 	@override String get noFollowRequests => 'フォロー申請はあらへんで';
 	@override String get openImageInNewTab => '画像を新しいタブで開くで';
 	@override String get dashboard => 'ダッシュボード';
