@@ -1312,6 +1312,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get hideRepliesToOthersInTimelineAll => 'Скрывать в ленте ответы пользователей, на которых вы подписаны';
 	@override String get confirmShowRepliesAll => 'Это нельзя будет отменить. Показать ответы от всех, на кого вы подписаны?';
 	@override String get confirmHideRepliesAll => 'Это нельзя будет отменить. Скрыть ответы от всех, на кого вы подписаны?';
+	@override String get externalServices => 'Интеграции';
 	@override String get sourceCode => 'Исходный код';
 	@override String get sourceCodeIsNotYetProvided => 'Исходный код пока не доступен. Свяжитесь с администратором, чтобы исправить эту проблему.';
 	@override String get repositoryUrl => 'Ссылка на репозиторий';

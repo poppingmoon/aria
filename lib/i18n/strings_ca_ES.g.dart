@@ -629,6 +629,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get fontSize => 'Mida del text';
 	@override String get mediaListWithOneImageAppearance => 'Altura de la llista de fitxers amb una única imatge';
 	@override String limitTo({required Object x}) => 'Limita a ${x}';
+	@override String get showMediaListByGridInWideArea => 'Mostra la llista de medis en vista quadrícula quan l\'amplada de la pantalla ho permeti';
 	@override String get noFollowRequests => 'No tens sol·licituds de seguiment';
 	@override String get openImageInNewTab => 'Obre imatges a una nova pestanya';
 	@override String get dashboard => 'Tauler de control';
@@ -1475,7 +1476,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get inMinutes => 'Minut(s)';
 	@override String get inDays => 'Di(a)(es)';
 	@override String get safeModeEnabled => 'Mode segur activat';
-	@override String get pluginsAreDisabledBecauseSafeMode => 'Els afegits no estan activats perquè el mode segur està activat.';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Les extensions no estan activades perquè el mode segur està activat.';
 	@override String get customCssIsDisabledBecauseSafeMode => 'El CSS personalitzat no s\'aplica perquè el mode segur es troba activat.';
 	@override String get themeIsDefaultBecauseSafeMode => 'El tema predeterminat es farà servir mentre el mode segur estigui activat. Una vegada es desactivi el mode segur es restablirà el tema escollit.';
 	@override String get thankYouForTestingBeta => 'Gràcies per ajudar-nos a provar la versió beta!';
@@ -2219,8 +2220,8 @@ class _TranslationsMisskeyPluginCaEs extends TranslationsMisskeyPluginEnUs {
 
 	// Translations
 	@override String get install => 'Instal·lar un afegit ';
-	@override String get installWarn => 'Si us plau, no instal·lis afegits que no siguin de confiança.';
-	@override String get manage => 'Gestionar els afegits';
+	@override String get installWarn => 'Si us plau, no instal·lis extensions que no siguin de confiança.';
+	@override String get manage => 'Gestiona les extensions';
 	@override String get viewSource => 'Veure l\'origen ';
 	@override String get viewLog => 'Mostra el registre';
 }

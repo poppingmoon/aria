@@ -65,10 +65,10 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: error
+          fail_level: any
+          cleanup: false
 
       - name: Check diff
-        if: github.event_name != 'pull_request'
         run: git diff --exit-code
 
   analyze:
@@ -153,8 +153,7 @@ jobs:
         run: rustup update
 
       - name: Start simulator
-        timeout-minutes: 5
-        uses: futureware-tech/simulator-action@dab10d813144ef59b48d401cd95da151222ef8cd # v4
+        uses: futureware-tech/simulator-action@e89aa8f93d3aec35083ff49d2854d07f7186f7f5 # v5
         with:
           model: iPhone 17
           wait_for_boot: true
@@ -200,10 +199,10 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: error
+          fail_level: any
+          cleanup: false
 
       - name: Check diff
-        if: github.event_name != 'pull_request'
         run: git diff --exit-code
 
   check-build-diff:
@@ -234,7 +233,8 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: error
+          fail_level: any
+          cleanup: false
 
       - name: Check diff
         run: git diff --exit-code

@@ -814,6 +814,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get fontSize => 'Tamaño de la letra';
 	@override String get mediaListWithOneImageAppearance => 'Altura de la lista de medios con una sola imagen.';
 	@override String limitTo({required Object x}) => '${x} hasta un máximo de';
+	@override String get showMediaListByGridInWideArea => 'Cuando el ancho de la pantalla sea grande, muestra la lista de multimedia uno al lado del otro.';
 	@override String get noFollowRequests => 'No hay solicitudes de seguimiento';
 	@override String get openImageInNewTab => 'Abrir imagen en nueva pestaña';
 	@override String get dashboard => 'Panel de control';

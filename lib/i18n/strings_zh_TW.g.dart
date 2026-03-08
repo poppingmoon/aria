@@ -383,7 +383,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get keepOriginalUploadingDescription => '上傳圖片時保留原始圖片。關閉時，瀏覽器會在上傳時生成適用於網路傳送的版本。';
 	@override String get fromDrive => '從雲端空間中選擇';
 	@override String get fromUrl => '從 URL 上傳';
-	@override String get uploadFromUrl => '從網址上傳';
+	@override String get uploadFromUrl => '從 URL 上傳';
 	@override String get uploadFromUrlDescription => '您要上傳的檔案網址';
 	@override String get uploadFromUrlRequested => '已請求上傳';
 	@override String get uploadFromUrlMayTakeTime => '還需要一些時間才能完成上傳。';
@@ -629,6 +629,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get fontSize => '字體大小';
 	@override String get mediaListWithOneImageAppearance => '只有一張圖片時的檔案列表高度';
 	@override String limitTo({required Object x}) => '上限為 ${x}';
+	@override String get showMediaListByGridInWideArea => '當畫面寬度較寬時，將媒體清單以橫向排列顯示';
 	@override String get noFollowRequests => '沒有追隨您的請求';
 	@override String get openImageInNewTab => '於新分頁中開啟圖片';
 	@override String get dashboard => '儀表板';
@@ -910,7 +911,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get deleteConfirm => '你確定要刪除嗎？';
 	@override String get invalidValue => '輸入值無效。';
 	@override String get registry => '登錄表';
-	@override String get closeAccount => '停用帳戶';
+	@override String get closeAccount => '刪除帳戶';
 	@override String get currentVersion => '目前版本';
 	@override String get latestVersion => '最新版本';
 	@override String get youAreRunningUpToDateClient => '您所使用的客戶端已經是最新的。';
@@ -2153,7 +2154,7 @@ class _TranslationsMisskeyAccountDeleteZhTw extends TranslationsMisskeyAccountDe
 	@override String get accountDelete => '刪除帳戶';
 	@override String get mayTakeTime => '刪除帳戶的處理負荷較大，如果帳戶發佈的內容以及上傳的檔案數量較多，則需要一段時間才能完成。';
 	@override String get sendEmail => '帳戶刪除完成後，將向其電子郵件地址發送通知。';
-	@override String get requestAccountDelete => '刪除帳戶請求';
+	@override String get requestAccountDelete => '請求刪除帳戶';
 	@override String get started => '已開始刪除作業。';
 	@override String get inProgress => '正在刪除';
 }
@@ -2481,7 +2482,7 @@ class _TranslationsMisskeyTimeInZhTw extends TranslationsMisskeyTimeInEnUs {
 	@override String minutes({required Object n}) => '${n}分鐘後';
 	@override String hours({required Object n}) => '${n}小時後';
 	@override String days({required Object n}) => '${n}天後';
-	@override String weeks({required Object n}) => '${n}周後';
+	@override String weeks({required Object n}) => '${n}週後';
 	@override String months({required Object n}) => '${n}個月後';
 	@override String years({required Object n}) => '${n}年後';
 }
@@ -3072,7 +3073,7 @@ class _TranslationsMisskeyDeckZhTw extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => '如果啟用「自動調整寬度」，此為最小寬度';
 	@override String get flexible => '自動調整寬度';
 	@override String get enableSyncBetweenDevicesForProfiles => '啟用裝置與裝置之間的設定檔資料同步化';
-	@override String get showHowToUse => '檢視使用者界面說明';
+	@override String get showHowToUse => '檢視使用者介面說明';
 	@override late final _TranslationsMisskeyDeckHowToUseZhTw howToUse_ = _TranslationsMisskeyDeckHowToUseZhTw._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsZhTw columns_ = _TranslationsMisskeyDeckColumnsZhTw._(_root);
 }
@@ -4374,10 +4375,10 @@ class _TranslationsMisskeyDeckHowToUseZhTw extends TranslationsMisskeyDeckHowToU
 	// Translations
 	@override String get addColumn_title => '新增欄位';
 	@override String get addColumn_description => '您可以選擇要新增的欄位類型。';
-	@override String get settings_title => '使用者界面設定';
-	@override String get settings_description => '您可以對多欄模式使用者界面做詳細設定。';
+	@override String get settings_title => '使用者介面設定';
+	@override String get settings_description => '您可以對多欄模式使用者介面做詳細設定。';
 	@override String get switchProfile_title => '切換設定檔';
-	@override String get switchProfile_description => '將使用者界面佈局儲存為設定檔，就可以隨時切換使用。';
+	@override String get switchProfile_description => '將使用者介面佈局儲存為設定檔，就可以隨時切換使用。';
 }
 
 // Path: misskey.deck_.columns_

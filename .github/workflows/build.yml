@@ -159,7 +159,7 @@ jobs:
           mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
 
       - name: Upload APK
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: APK
           path: |
@@ -246,7 +246,7 @@ jobs:
           --build-number ${{ needs.get-build-number.outputs.build-number }}3
 
       - name: Upload App Bundle
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: App Bundle
           path: build/app/outputs/bundle/release/app-release.aab
@@ -311,7 +311,7 @@ jobs:
         run: zip -r aria-${{ github.ref_name }}.ipa Payload
 
       - name: Upload IPA (Unsigned)
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: IPA
           path: aria-${{ github.ref_name }}.ipa
@@ -408,7 +408,7 @@ jobs:
           -DestinationPath aria-${{ github.ref_name }}-windows-x64.zip
 
       - name: Upload ZIP
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: Windows ZIP
           path: aria-${{ github.ref_name }}-windows-x64.zip
@@ -433,7 +433,7 @@ jobs:
         run: iscc windows/setup.iss
 
       - name: Upload installer
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: Windows Installer
           path: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
@@ -525,7 +525,7 @@ jobs:
           build/macos/Build/Products/Release/aria.app
 
       - name: Upload DMG
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: DMG
           path: aria-${{ github.ref_name }}.dmg
@@ -611,7 +611,7 @@ jobs:
         run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz *
 
       - name: Upload TAR
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: Linux ${{ matrix.arch }} TAR
           path: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz

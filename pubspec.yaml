@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.4.3+87
+version: 1.4.4+88
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -23,7 +23,7 @@ dependencies:
   confetti: ^0.8.0
   connectivity_plus: ^7.0.0
   device_info_plus: ^12.3.0
-  dio: ^5.9.1
+  dio: ^5.9.2
   dotted_border: ^3.1.0
   dynamic_color: ^1.8.1
   extended_image: ^10.0.1
@@ -49,13 +49,13 @@ dependencies:
   flutter_image_compress: ^2.4.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^20.1.0
+  flutter_local_notifications: ^21.0.0
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: 2.11.1
   flutter_secure_storage: ^10.0.0
-  flutter_svg: ^2.2.3
+  flutter_svg: ^2.2.4
   fluttertoast: ^9.0.0
   freezed_annotation: ^3.1.0
   fvp:
@@ -71,7 +71,7 @@ dependencies:
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
   hooks_riverpod: ^3.1.0
-  image: ^4.7.2
+  image: ^4.8.0
   image_compression:
     git:
       url: https://github.com/poppingmoon/image_compression
@@ -118,8 +118,8 @@ dependencies:
   share_plus: ^12.0.1
   shared_preferences: ^2.5.4
   shared_preferences_platform_interface: ^2.4.1
-  slang: ^4.12.1
-  slang_flutter: ^4.12.1
+  slang: ^4.13.0
+  slang_flutter: ^4.13.0
   tinycolor2:
     git:
       url: https://github.com/poppingmoon/tinycolor2
@@ -131,18 +131,18 @@ dependencies:
   unifiedpush: ^6.2.0
   unifiedpush_ui: ^0.2.0
   url_launcher: ^6.3.2
-  uuid: ^4.5.2
+  uuid: ^4.5.3
   vector_math: ^2.2.0
-  video_player: ^2.10.1
+  video_player: ^2.11.0
   wakelock_plus: ^1.4.0
   web_socket_channel: ^3.0.3
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.1
 
 dev_dependencies:
-  build_runner: ^2.11.1
+  build_runner: ^2.12.2
   custom_lint: ^0.8.1
-  flutter_gen_runner: ^5.12.0
+  flutter_gen_runner: ^5.13.0
   flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
@@ -160,7 +160,7 @@ dev_dependencies:
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^4.0.0+1
   riverpod_lint: ^3.1.0
-  slang_build_runner: ^4.12.1
+  slang_build_runner: ^4.13.0
   url_launcher_platform_interface: ^2.3.2
   yaml: ^3.1.3
 

@@ -674,7 +674,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ha citato la tua Nota e ha detto"
+            "value": "%@ ha scritto citando la tua Nota"
           }
         },
         "ja": {
@@ -1456,6 +1456,12 @@
             "value": "Una nota programada ha sigut publicada"
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geplante Notiz wurde veröffentlicht"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1519,6 +1525,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ha fallat la publicació d'una nota programada"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veröffentlichen der geplanten Notiz fehlgeschlagen"
           }
         },
         "en": {
@@ -2022,7 +2034,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "In caso contrario, eliminare il token di accesso tramite (Gestisci token di accesso)."
+            "value": "Se non ne sai nulla, elimina il token di accesso: Gestisci token di accesso."
           }
         },
         "ja": {

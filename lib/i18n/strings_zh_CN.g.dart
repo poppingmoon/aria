@@ -474,7 +474,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get editAntenna => '编辑天线';
 	@override String get createAntenna => '创建天线';
 	@override String get selectWidget => '选择小工具';
-	@override String get editWidgets => '编辑部件';
+	@override String get editWidgets => '编辑小工具';
 	@override String get editWidgetsExit => '完成编辑';
 	@override String get customEmojis => '自定义表情符号';
 	@override String get emoji => '表情符号';
@@ -853,6 +853,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get fontSize => '字体大小';
 	@override String get mediaListWithOneImageAppearance => '仅一张图片的媒体列表高度';
 	@override String limitTo({required Object x}) => '上限为 ${x}';
+	@override String get showMediaListByGridInWideArea => '在大屏幕上并排显示媒体列表';
 	@override String get noFollowRequests => '没有关注请求';
 	@override String get openImageInNewTab => '在新标签页中打开图片';
 	@override String get dashboard => '管理面板';
@@ -955,7 +956,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get serviceworkerInfo => '您需要启用推送通知';
 	@override String get deletedNote => '已删除的帖子';
 	@override String get invisibleNote => '隐藏的帖子';
-	@override String get enableInfiniteScroll => '启用自动滚动页面模式';
+	@override String get enableInfiniteScroll => '自动加载更多内容';
 	@override String get visibility => '可见性';
 	@override String get poll => '投票';
 	@override String get useCw => '隐藏内容';
@@ -1141,7 +1142,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get newVersionOfClientAvailable => '新版本的客户端可用。';
 	@override String get usageAmount => '使用量';
 	@override String get capacity => '容量';
-	@override String get inUse => '使用中';
+	@override String get inUse => '已使用';
 	@override String get editCode => '编辑代码';
 	@override String get apply => '应用';
 	@override String get receiveAnnouncementFromInstance => '从服务器接收通知';
@@ -2586,7 +2587,7 @@ class _TranslationsMisskeyWordMuteZhCn extends TranslationsMisskeyWordMuteEnUs {
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get muteWords => '要屏蔽的词';
+	@override String get muteWords => '要折叠的词';
 	@override String get muteWordsDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔。';
 	@override String get muteWordsDescription2 => '正则表达式用斜线包裹';
 }
