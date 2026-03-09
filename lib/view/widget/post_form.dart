@@ -265,11 +265,11 @@ class PostForm extends HookConsumerWidget {
       }
       return normalizedMentions.where(
         (mention) =>
-            reply.user.username.toLowerCase() != mention.username ||
-            switch (reply.user.host) {
-              final host? => toUnicode(host.toLowerCase()) != mention.host,
-              _ => mention.host != null,
-            } ||
+            (reply.user.username.toLowerCase() != mention.username ||
+                switch (reply.user.host) {
+                  final host? => toUnicode(host.toLowerCase()) != mention.host,
+                  _ => mention.host != null,
+                }) &&
             normalizedReplyMentions.every(
               (replyMention) =>
                   replyMention.username != mention.username ||
