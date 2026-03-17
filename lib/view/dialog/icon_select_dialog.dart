@@ -44,7 +44,7 @@ class IconSelectDialog extends HookConsumerWidget {
         child: account != null && showEmojiPicker.value
             ? EmojiPicker(
                 account: account!,
-                onTapEmoji: (emoji, _) {
+                onTapEmoji: (ref, emoji, _) {
                   if (emoji.startsWith(':')) {
                     final url = ref.read(emojiUrlProvider(account!, emoji)).$2;
                     context.pop(ImageIcon(url: url));

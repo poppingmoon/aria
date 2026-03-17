@@ -53,6 +53,7 @@ class NoteWidget extends HookConsumerWidget {
     this.backgroundColor,
     this.margin = EdgeInsets.zero,
     this.borderRadius,
+    this.listViewKey,
   });
 
   final Account account;
@@ -65,6 +66,7 @@ class NoteWidget extends HookConsumerWidget {
   final Color? backgroundColor;
   final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -320,6 +322,7 @@ class NoteWidget extends HookConsumerWidget {
                             style: style,
                             showFooter: showFooter,
                             focusPostForm: focusPostForm,
+                            listViewKey: listViewKey,
                           ),
                         ),
                       ],
@@ -344,6 +347,7 @@ class _NoteContent extends HookConsumerWidget {
     required this.style,
     required this.showFooter,
     required this.focusPostForm,
+    required this.listViewKey,
   });
 
   final Account account;
@@ -354,6 +358,7 @@ class _NoteContent extends HookConsumerWidget {
   final TextStyle style;
   final bool? showFooter;
   final void Function()? focusPostForm;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -591,6 +596,7 @@ class _NoteContent extends HookConsumerWidget {
             appearNote: appearNote,
             clipId: clipId,
             focusPostForm: focusPostForm,
+            listViewKey: listViewKey,
           ),
       ],
     );

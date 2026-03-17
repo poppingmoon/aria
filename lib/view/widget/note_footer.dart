@@ -40,6 +40,7 @@ class NoteFooter extends ConsumerWidget {
     this.clipId,
     this.disableHeader = false,
     this.focusPostForm,
+    this.listViewKey,
   });
 
   final Account account;
@@ -48,6 +49,7 @@ class NoteFooter extends ConsumerWidget {
   final String? clipId;
   final bool disableHeader;
   final void Function()? focusPostForm;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -139,18 +141,24 @@ class NoteFooter extends ConsumerWidget {
                       appearNote.reactionAcceptance !=
                           ReactionAcceptance.likeOnly &&
                       appearNote.myReaction == null)
-                    _LikeButton(account: account, note: appearNote),
+                    _LikeButton(
+                      account: account,
+                      note: appearNote,
+                      listViewKey: listViewKey,
+                    ),
                   if (appearNote.myReaction == null)
                     _AddReactionButton(
                       account: account,
                       note: appearNote,
                       style: style,
+                      listViewKey: listViewKey,
                     )
                   else
                     _RemoveReactionButton(
                       account: account,
                       note: appearNote,
                       style: style,
+                      listViewKey: listViewKey,
                     ),
                   if (showClipButton)
                     _ClipButton(
@@ -415,10 +423,15 @@ class _QuoteButton extends ConsumerWidget {
 }
 
 class _LikeButton extends ConsumerWidget {
-  const _LikeButton({required this.account, required this.note});
+  const _LikeButton({
+    required this.account,
+    required this.note,
+    required this.listViewKey,
+  });
 
   final Account account;
   final Note note;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -435,14 +448,17 @@ class _LikeButton extends ConsumerWidget {
                   .read(generalSettingsNotifierProvider)
                   .confirmBeforeReact) {
                 final confirmed = await confirmReaction(
-                  context,
+                  ref.context,
                   account: account,
                   emoji: emoji,
                   note: note,
                 );
                 if (!confirmed) return;
               }
-              if (!context.mounted) return;
+              final context = ref.context.mounted
+                  ? ref.context
+                  : listViewKey?.currentContext;
+              if (context == null || !context.mounted) return;
               await futureWithDialog(
                 context,
                 ref
@@ -462,11 +478,13 @@ class _AddReactionButton extends ConsumerWidget {
     required this.account,
     required this.note,
     required this.style,
+    required this.listViewKey,
   });
 
   final Account account;
   final Note note;
   final TextStyle? style;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -505,6 +523,12 @@ class _AddReactionButton extends ConsumerWidget {
         onPressed: !account.isGuest
             ? () async {
                 if (note.id.isEmpty) return;
+                final confirmBeforeReact = ref
+                    .read(generalSettingsNotifierProvider)
+                    .confirmBeforeReact;
+                final notifier = ref.read(
+                  notesNotifierProvider(account).notifier,
+                );
                 final emoji =
                     note.reactionAcceptance == ReactionAcceptance.likeOnly
                     ? '❤'
@@ -514,11 +538,12 @@ class _AddReactionButton extends ConsumerWidget {
                         reaction: true,
                         targetNote: note,
                       );
-                if (!context.mounted) return;
+                final context = ref.context.mounted
+                    ? ref.context
+                    : listViewKey?.currentContext;
+                if (context == null || !context.mounted) return;
                 if (emoji != null) {
-                  if (ref
-                      .read(generalSettingsNotifierProvider)
-                      .confirmBeforeReact) {
+                  if (confirmBeforeReact) {
                     final confirmed = await confirmReaction(
                       context,
                       account: account,
@@ -530,9 +555,7 @@ class _AddReactionButton extends ConsumerWidget {
                   if (!context.mounted) return;
                   await futureWithDialog(
                     context,
-                    ref
-                        .read(notesNotifierProvider(account).notifier)
-                        .react(note.id, emoji),
+                    notifier.react(note.id, emoji),
                     overlay: false,
                   );
                 }
@@ -567,11 +590,13 @@ class _RemoveReactionButton extends ConsumerWidget {
     required this.account,
     required this.note,
     required this.style,
+    required this.listViewKey,
   });
 
   final Account account;
   final Note note;
   final TextStyle? style;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -606,11 +631,14 @@ class _RemoveReactionButton extends ConsumerWidget {
         onPressed: () async {
           if (note.id.isEmpty) return;
           final confirmed = await confirm(
-            context,
+            ref.context,
             message: t.misskey.cancelReactionConfirm,
           );
           if (!confirmed) return;
-          if (!context.mounted) return;
+          final context = ref.context.mounted
+              ? ref.context
+              : listViewKey?.currentContext;
+          if (context == null || !context.mounted) return;
           await futureWithDialog(
             context,
             ref.read(notesNotifierProvider(account).notifier).unreact(note.id),

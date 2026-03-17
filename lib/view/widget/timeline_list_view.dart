@@ -416,6 +416,7 @@ class TimelineListView extends HookConsumerWidget {
                           hide:
                               index < 5 &&
                               partialPreviousNoteIds.contains(note.id),
+                          listViewKey: centerKey,
                         ),
                       ),
                     );
@@ -502,6 +503,7 @@ class TimelineListView extends HookConsumerWidget {
                                       ? const Radius.circular(8.0)
                                       : Radius.zero,
                                 ),
+                          listViewKey: centerKey,
                         ),
                       ),
                     );

@@ -26,6 +26,7 @@ class TimelineNote extends HookConsumerWidget {
     this.margin = EdgeInsets.zero,
     this.borderRadius,
     this.hide = false,
+    this.listViewKey,
   });
 
   final TabSettings tabSettings;
@@ -34,6 +35,7 @@ class TimelineNote extends HookConsumerWidget {
   final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
   final bool hide;
+  final GlobalKey? listViewKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -61,6 +63,7 @@ class TimelineNote extends HookConsumerWidget {
         focusPostForm: focusPostForm,
         margin: margin,
         borderRadius: borderRadius,
+        listViewKey: listViewKey,
       );
     }
     if ((tabSettings.withFiles && appearNote.fileIds.isEmpty) || hide) {
@@ -146,6 +149,7 @@ class TimelineNote extends HookConsumerWidget {
       focusPostForm: focusPostForm,
       margin: margin,
       borderRadius: borderRadius,
+      listViewKey: listViewKey,
     );
   }
 }
