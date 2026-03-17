@@ -181,8 +181,8 @@ class _ReplyButton extends ConsumerWidget {
   const _ReplyButton({
     required this.account,
     required this.note,
-    this.focusPostForm,
-    this.style,
+    required this.focusPostForm,
+    required this.style,
   });
 
   final Account account;
@@ -233,10 +233,10 @@ class _RenoteButton extends HookConsumerWidget {
   const _RenoteButton({
     required this.account,
     required this.note,
-    this.myRenotingNoteId,
-    this.showQuoteButton = false,
-    this.focusPostForm,
-    this.style,
+    required this.myRenotingNoteId,
+    required this.showQuoteButton,
+    required this.focusPostForm,
+    required this.style,
   });
 
   final Account account;
@@ -387,7 +387,7 @@ class _QuoteButton extends ConsumerWidget {
   const _QuoteButton({
     required this.account,
     required this.note,
-    this.focusPostForm,
+    required this.focusPostForm,
   });
 
   final Account account;
@@ -461,7 +461,7 @@ class _AddReactionButton extends ConsumerWidget {
   const _AddReactionButton({
     required this.account,
     required this.note,
-    this.style,
+    required this.style,
   });
 
   final Account account;
@@ -566,7 +566,7 @@ class _RemoveReactionButton extends ConsumerWidget {
   const _RemoveReactionButton({
     required this.account,
     required this.note,
-    this.style,
+    required this.style,
   });
 
   final Account account;
@@ -642,7 +642,11 @@ class _RemoveReactionButton extends ConsumerWidget {
 }
 
 class _ClipButton extends ConsumerWidget {
-  const _ClipButton({required this.account, required this.note, this.clipId});
+  const _ClipButton({
+    required this.account,
+    required this.note,
+    required this.clipId,
+  });
 
   final Account account;
   final Note note;
@@ -712,9 +716,9 @@ class _MenuButton extends ConsumerWidget {
   const _MenuButton({
     required this.account,
     required this.note,
-    this.disableHeader = false,
-    this.focusPostForm,
-    this.clipId,
+    required this.disableHeader,
+    required this.focusPostForm,
+    required this.clipId,
   });
 
   final Account account;
