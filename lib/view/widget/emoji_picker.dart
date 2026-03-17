@@ -36,10 +36,10 @@ Future<String?> pickEmoji(
   bool post = false,
   void Function(String emoji)? onTapEmoji,
 }) {
-  Future<void> onTap(BuildContext context, String emoji, bool keepOpen) async {
+  Future<void> onTap(WidgetRef ref, String emoji, bool keepOpen) async {
     if (confirmBeforePop && emoji.startsWith(':')) {
       final confirmed = await showDialog<bool>(
-        context: context,
+        context: ref.context,
         builder: (context) => EmojiPage(
           account: account,
           name: emoji.substring(1, emoji.length - 1).replaceAll('@.', ''),
@@ -59,9 +59,9 @@ Future<String?> pickEmoji(
       }
     }
     onTapEmoji?.call(emoji);
-    if (!context.mounted) return;
+    if (!ref.context.mounted) return;
     if (!keepOpen) {
-      context.pop(emoji);
+      ref.context.pop(emoji);
     }
   }
 
@@ -75,7 +75,7 @@ Future<String?> pickEmoji(
         ),
         child: EmojiPicker(
           account: account,
-          onTapEmoji: (emoji, keepOpen) => onTap(context, emoji, keepOpen),
+          onTapEmoji: onTap,
           reaction: reaction,
           targetNote: targetNote,
           post: post,
@@ -92,7 +92,7 @@ Future<String?> pickEmoji(
         expand: false,
         builder: (context, scrollController) => EmojiPicker(
           account: account,
-          onTapEmoji: (emoji, keepOpen) => onTap(context, emoji, keepOpen),
+          onTapEmoji: onTap,
           scrollController: scrollController,
           reaction: reaction,
           targetNote: targetNote,
@@ -120,7 +120,7 @@ class EmojiPicker extends HookConsumerWidget {
   });
 
   final Account account;
-  final void Function(String emoji, bool popEmoji) onTapEmoji;
+  final void Function(WidgetRef ref, String emoji, bool popEmoji) onTapEmoji;
   final ScrollController? scrollController;
   final bool reaction;
   final Note? targetNote;
@@ -228,7 +228,7 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji.emoji,
                     onTap: enabled
-                        ? () => onTapEmoji(emoji.emoji, keepOpen)
+                        ? () => onTapEmoji(ref, emoji.emoji, keepOpen)
                         : null,
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
@@ -247,7 +247,7 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
-                    onTap: () => onTapEmoji(emoji, keepOpen),
+                    onTap: () => onTapEmoji(ref, emoji, keepOpen),
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) =>
@@ -279,7 +279,9 @@ class EmojiPicker extends HookConsumerWidget {
                   return _CustomEmoji(
                     account: account,
                     emoji: emoji,
-                    onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    onTap: enabled
+                        ? () => onTapEmoji(ref, emoji, keepOpen)
+                        : null,
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) => EmojiSheet(
@@ -309,7 +311,7 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
-                    onTap: () => onTapEmoji(emoji, keepOpen),
+                    onTap: () => onTapEmoji(ref, emoji, keepOpen),
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) => EmojiSheet(
@@ -359,7 +361,9 @@ class EmojiPicker extends HookConsumerWidget {
                   return _CustomEmoji(
                     account: account,
                     emoji: emoji,
-                    onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
+                    onTap: enabled
+                        ? () => onTapEmoji(ref, emoji, keepOpen)
+                        : null,
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) => EmojiSheet(
@@ -388,7 +392,7 @@ class EmojiPicker extends HookConsumerWidget {
                     account: account,
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
-                    onTap: () => onTapEmoji(emoji, keepOpen),
+                    onTap: () => onTapEmoji(ref, emoji, keepOpen),
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) => EmojiSheet(
@@ -448,7 +452,7 @@ class EmojiPicker extends HookConsumerWidget {
                           account: account,
                           emoji: emoji.emoji,
                           onTap: enabled
-                              ? () => onTapEmoji(emoji.emoji, keepOpen)
+                              ? () => onTapEmoji(ref, emoji.emoji, keepOpen)
                               : null,
                           onLongPress: () => showModalBottomSheet<void>(
                             context: context,
@@ -495,7 +499,7 @@ class EmojiPicker extends HookConsumerWidget {
                             account: account,
                             emoji: emoji,
                             style: style.apply(fontSizeFactor: fontScaleFactor),
-                            onTap: () => onTapEmoji(emoji, keepOpen),
+                            onTap: () => onTapEmoji(ref, emoji, keepOpen),
                           ),
                         )
                         .toList(),
