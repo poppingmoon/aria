@@ -54,6 +54,10 @@ class UserPage extends HookConsumerWidget {
             (!account.isGuest &&
                 account.username == user.username &&
                 user.host == null));
+    final birthday = switch (user?.birthday) {
+      final birthday? => DateTime.tryParse(birthday),
+      _ => null,
+    };
 
     return DefaultTabController(
       length: userId != null
@@ -123,8 +127,13 @@ class UserPage extends HookConsumerWidget {
                 ],
               ],
             ),
-            if (user?.birthday?.day == now.day &&
-                user?.birthday?.month == now.month)
+            if ((birthday?.day == now.day && birthday?.month == now.month) ||
+                (birthday?.day == 29 &&
+                    birthday?.month == 2 &&
+                    now.day == 1 &&
+                    now.month == 3 &&
+                    (now.year % 4 != 0 ||
+                        (now.year % 100 == 0 && now.year % 400 != 0))))
               Align(
                 alignment: const Alignment(0.0, -0.5),
                 child: ConfettiWidget(
