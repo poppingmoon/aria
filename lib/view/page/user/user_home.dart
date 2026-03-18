@@ -93,11 +93,29 @@ class _UserHome extends ConsumerWidget {
   final Account account;
   final UserDetailed user;
 
-  int _calcAge(DateTime birthday) {
+  int? _calcAge(String birthday) {
+    final date = switch (DateTime.tryParse(birthday)) {
+      final date? when DateFormat('yyyy-MM-dd').format(date) == birthday => (
+        year: date.year,
+        month: date.month,
+        day: date.day,
+      ),
+      _ => switch (birthday.split('-').map(int.tryParse).toList()) {
+        [final int year, final int month, final int day] => (
+          year: year,
+          month: month,
+          day: day,
+        ),
+        _ => null,
+      },
+    };
+    if (date == null) {
+      return null;
+    }
     final now = DateTime.now();
-    final yearDiff = now.year - birthday.year;
-    final monthDiff = now.month - birthday.month;
-    if (monthDiff < 0 || (monthDiff == 0 && now.day < birthday.day)) {
+    final yearDiff = now.year - date.year;
+    final monthDiff = now.month - date.month;
+    if (monthDiff < 0 || (monthDiff == 0 && now.day < date.day)) {
       return yearDiff - 1;
     } else {
       return yearDiff;
@@ -120,11 +138,16 @@ class _UserHome extends ConsumerWidget {
     );
     final style = DefaultTextStyle.of(context).style;
     final remoteUrl = user.uri ?? user.url;
-    final birthday = user.birthday != null
-        ? DateFormat.yMMMd(
+    final birthday = switch (user.birthday) {
+      final birthday? => switch (DateTime.tryParse(birthday)) {
+        final date? when DateFormat('yyyy-MM-dd').format(date) == birthday =>
+          DateFormat.yMd(
             Localizations.localeOf(context).toLanguageTag(),
-          ).format(user.birthday!)
-        : null;
+          ).format(date),
+        _ => birthday.replaceAll('-', '/'),
+      },
+      _ => null,
+    };
 
     return CustomScrollView(
       slivers: [
@@ -555,7 +578,13 @@ class _UserHome extends ConsumerWidget {
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
                                   child: Text(
-                                    '$birthday (${t.misskey.yearsOld(age: _calcAge(date))})',
+                                    [
+                                      '$birthday (',
+                                      t.misskey.yearsOld(
+                                        age: _calcAge(date) ?? '?',
+                                      ),
+                                      ')',
+                                    ].join(),
                                   ),
                                 ),
                               ],

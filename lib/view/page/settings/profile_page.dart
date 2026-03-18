@@ -447,13 +447,18 @@ class ProfilePage extends HookConsumerWidget {
                 width: maxContentWidth,
                 child: ListTile(
                   title: Text(t.misskey.birthday),
-                  subtitle: Text(
-                    i.birthday != null
-                        ? DateFormat.yMMMd(
-                            Localizations.localeOf(context).toLanguageTag(),
-                          ).format(i.birthday!)
-                        : t.misskey.notSet,
-                  ),
+                  subtitle: Text(switch (i.birthday) {
+                    final birthday? => switch (DateTime.tryParse(birthday)) {
+                      final date?
+                          when DateFormat('yyyy-MM-dd').format(date) ==
+                              birthday =>
+                        DateFormat.yMd(
+                          Localizations.localeOf(context).toLanguageTag(),
+                        ).format(date),
+                      _ => birthday.replaceAll('-', '/'),
+                    },
+                    _ => t.misskey.notSet,
+                  }),
                   trailing: i.birthday != null
                       ? IconButton(
                           tooltip: t.misskey.delete,
@@ -472,7 +477,10 @@ class ProfilePage extends HookConsumerWidget {
                   onTap: () async {
                     final date = await showDatePicker(
                       context: context,
-                      initialDate: i.birthday,
+                      initialDate: switch (i.birthday) {
+                        final birthday? => DateTime.tryParse(birthday),
+                        _ => null,
+                      },
                       firstDate: DateTime(0),
                       lastDate: DateTime(9999, 12, 31),
                       initialEntryMode: DatePickerEntryMode.input,
