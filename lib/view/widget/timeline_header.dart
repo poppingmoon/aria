@@ -182,7 +182,10 @@ class TimelineHeader extends HookConsumerWidget {
               ),
             ),
           TimelineMenu(tabSettings: tabSettings),
-          Center(child: AdWidget(account: tabSettings.account)),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 300.0),
+            child: AdWidget(account: tabSettings.account),
+          ),
         ],
       ),
     );

@@ -24,9 +24,14 @@ class ServerAds extends ConsumerWidget {
         AsyncValue(value: MetaResponse(:final ads)) =>
           ads.isNotEmpty
               ? ListView.builder(
-                  itemBuilder: (context, index) => AdWidget(
-                    account: Account(host: host),
-                    specify: ads[index],
+                  itemBuilder: (context, index) => Center(
+                    child: SizedBox(
+                      width: 800.0,
+                      child: AdWidget(
+                        account: Account(host: host),
+                        specify: ads[index],
+                      ),
+                    ),
                   ),
                   itemCount: ads.length,
                 )

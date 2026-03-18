@@ -66,44 +66,52 @@ class AdWidget extends HookConsumerWidget {
     final showMenu = useState(false);
 
     if (showMenu.value) {
-      return Column(
-        children: [
-          Text('Ads by ${account.host}'),
-          if (ad.ratio > 0)
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Ads by ${account.host}'),
+            if (ad.ratio > 0)
+              TextButton(
+                onPressed: () async {
+                  await ref
+                      .read(mutedAdsNotifierProvider(account).notifier)
+                      .add(ad.id);
+                  if (!context.mounted) return;
+                  showMenu.value = false;
+                },
+                child: Text(t.misskey.ad_.reduceFrequencyOfThisAd),
+              ),
             TextButton(
-              onPressed: () async {
-                await ref
-                    .read(mutedAdsNotifierProvider(account).notifier)
-                    .add(ad.id);
-                if (!context.mounted) return;
-                showMenu.value = false;
-              },
-              child: Text(t.misskey.ad_.reduceFrequencyOfThisAd),
+              onPressed: () => showMenu.value = false,
+              child: Text(t.misskey.ad_.back),
             ),
-          TextButton(
-            onPressed: () => showMenu.value = false,
-            child: Text(t.misskey.ad_.back),
-          ),
-        ],
+          ],
+        ),
       );
     } else {
       return Stack(
+        alignment: Alignment.center,
         children: [
-          Center(
-            child: InkWell(
-              onTap: () => navigate(ref, account, ad.url.toString()),
-              onLongPress: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => UrlSheet(url: ad.url.toString()),
-              ),
+          InkWell(
+            onTap: () => navigate(ref, account, ad.url.toString()),
+            onLongPress: () => showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => UrlSheet(url: ad.url.toString()),
+            ),
+            child: SizedBox(
+              width: double.infinity,
               child: ImageWidget(
                 url: ad.imageUrl.toString(),
-                height: ad.place == 'square' ? 200 : null,
+                height: ad.place == 'square' ? 300.0 : null,
+                fit: BoxFit.contain,
               ),
             ),
           ),
-          Align(
-            alignment: AlignmentDirectional.topEnd,
+          PositionedDirectional(
+            top: 4.0,
+            end: 4.0,
             child: IconButton(
               style: IconButton.styleFrom(
                 backgroundColor: Theme.of(
