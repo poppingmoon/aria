@@ -197,9 +197,11 @@ class PostPage extends HookConsumerWidget {
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
-                child: MfmKeyboard(
-                  account: account.value,
-                  controller: cwController,
+                child: SafeArea(
+                  child: MfmKeyboard(
+                    account: account.value,
+                    controller: cwController,
+                  ),
                 ),
               ),
             ),
@@ -208,9 +210,11 @@ class PostPage extends HookConsumerWidget {
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
-                child: MfmKeyboard(
-                  account: account.value,
-                  controller: controller,
+                child: SafeArea(
+                  child: MfmKeyboard(
+                    account: account.value,
+                    controller: controller,
+                  ),
                 ),
               ),
             ),
@@ -219,15 +223,18 @@ class PostPage extends HookConsumerWidget {
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
-                child: MfmHashtagKeyboard(
-                  account: account.value,
-                  controller: hashtagsController,
+                child: SafeArea(
+                  child: MfmHashtagKeyboard(
+                    account: account.value,
+                    controller: hashtagsController,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-        floatingActionButton: !isCwFocused.value && !isFocused.value
+        floatingActionButton:
+            !isCwFocused.value && !isFocused.value && !isHashtagsFocused.value
             ? FloatingActionButton.extended(
                 onPressed: canPost
                     ? () => PostForm.post(ref, account.value, noteId)
