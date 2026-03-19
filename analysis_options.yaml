@@ -10,8 +10,6 @@ analyzer:
     strict-casts: true
     strict-inference: true
     strict-raw-types: true
-  plugins:
-    - custom_lint
 
 linter:
   rules:
@@ -19,3 +17,9 @@ linter:
     prefer_relative_imports: true
     prefer_single_quotes: true
     unawaited_futures: true
+
+plugins:
+  riverpod_lint:
+    version: ^3.1.3
+    diagnostics:
+      only_use_keep_alive_inside_keep_alive: false

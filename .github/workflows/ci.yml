@@ -98,7 +98,6 @@ jobs:
         uses: invertase/github-action-dart-analyzer@e981b01a458d0bab71ee5da182e5b26687b7101b # v3.0.0
         with:
           fatal-infos: true
-          custom-lint: true
 
   test:
     runs-on: ubuntu-latest
