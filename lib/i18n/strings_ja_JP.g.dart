@@ -5051,11 +5051,7 @@ class _TranslationsMisskeyImageEffectorFxPropsJaJp extends TranslationsMisskeyIm
 	@override String get threshold => 'しきい値';
 	@override String get centerX => '中心X';
 	@override String get centerY => '中心Y';
-	@override String get zoomLinesSmoothing => 'スムージング';
-	@override String get zoomLinesSmoothingDescription => 'スムージングと集中線の幅の設定は併用できません。';
-	@override String get zoomLinesThreshold => '集中線の幅';
 	@override String get zoomLinesMaskSize => '中心径';
-	@override String get zoomLinesBlack => '黒色にする';
 	@override String get circle => '円形';
 }
 

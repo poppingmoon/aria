@@ -46,7 +46,13 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 
 	// Translations
 	@override String get aboutAria => 'Aria라 카믄';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: '한테서 온 팔로우 리퀘스트 참말로 수락하는거 맞나?'),
+	]);
 	@override String get accessToken => '액세스 토큰';
+	@override String get accessTokenUpdated => '액세스 토큰 갱신 성공했디';
+	@override String get accountAdded => '계정 추가 성공했디';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: '아리아라 카믄, '),
 		miria,
@@ -58,11 +64,19 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get alwaysExpandCw => 'CW 열고 댕기라';
 	@override String get alwaysExpandLongNote => '긴 글 열고 댕기라';
 	@override String get alwaysExpandMediaInSubNote => '서브노트의 미디어 열고 댕기라';
+	@override String get alwaysShowAllReactions => '언제나 모든 리액션 보여주기';
 	@override String get alwaysShowTabHeader => '탭 정보 하루종일 뵈이라';
 	@override String get authenticate => '인증';
 	@override String get authenticated => '인증함';
 	@override String get avatarSize => '아바타 크기';
 	@override String get background => '배경';
+	@override String get buttonTypes => '버턴 종류';
+	@override String get cache => '캐시';
+	@override String get calculating => '계산중이다 쫌만 기다리라';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: '한테 한 팔로우 리퀘스트 참말로 취소하는거 맞나?'),
+	]);
 	@override String get confirmBeforeFollow => '팔로우는 확인하고 카라';
 	@override String get confirmBeforePost => '게시는 확인하고 카라';
 	@override String get confirmBeforeReact => '리액션은 확인하고 카라';
@@ -80,7 +94,9 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 		other: '파일 ${n}개를 다 내삐릴기가?',
 	);
 	@override String get deleteTabConfirm => '요 탭 읎애나?';
+	@override String get device => '기기';
 	@override String get disableDataSaverWhenOnWifi => '와이파이에서 머한다꼬 데이터 절약같은 걸 해샇노';
+	@override String get disableStreamingTimeline => '타임라인 실시간으로 갱신하지 말라카이';
 	@override String get disableSubscribingNotes => '리액션 실시간으로 달지 말라카이';
 	@override String get discardChangesConfirm => '그거 적용 안 해도 되나?';
 	@override String get displayOfThumbnail => '썸네일 표시';
@@ -234,6 +250,7 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	]);
 	@override String get vibrateNote => '새 노트에 진동 울려달래이';
 	@override String get vibrateNotification => '새 알림에 진동 울려달래이';
+	@override String get vibration => '진동';
 	@override String get webBrowser => '웹 브라우저';
 }
 
