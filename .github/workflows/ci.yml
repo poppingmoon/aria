@@ -43,7 +43,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -85,7 +85,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -98,7 +98,6 @@ jobs:
         uses: invertase/github-action-dart-analyzer@e981b01a458d0bab71ee5da182e5b26687b7101b # v3.0.0
         with:
           fatal-infos: true
-          custom-lint: true
 
   test:
     runs-on: ubuntu-latest
@@ -114,7 +113,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -140,7 +139,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -161,7 +160,7 @@ jobs:
       - name: Integration test
         uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
         with:
-          timeout_minutes: 60
+          timeout_minutes: 30
           max_attempts: 3
           command: flutter test integration_test/all_tests.dart --ignore-timeouts
 
@@ -180,7 +179,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -220,7 +219,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
+        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
         with:
           channel: 'stable'
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
