@@ -22,7 +22,7 @@ final class EndpointsNotifierProvider
   }) : super(
          retry: null,
          name: r'endpointsNotifierProvider',
-         isAutoDispose: false,
+         isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -52,7 +52,7 @@ final class EndpointsNotifierProvider
   }
 }
 
-String _$endpointsNotifierHash() => r'a191db0165b927b837cff7afbe75ea0151ff1209';
+String _$endpointsNotifierHash() => r'd602a9d3629ba5ef8cd55e590ad6bd3a8404feb5';
 
 @JsonPersist()
 final class EndpointsNotifierFamily extends $Family
@@ -70,7 +70,7 @@ final class EndpointsNotifierFamily extends $Family
         name: r'endpointsNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: false,
+        isAutoDispose: true,
       );
 
   @JsonPersist()

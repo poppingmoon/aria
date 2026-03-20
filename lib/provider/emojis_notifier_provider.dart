@@ -12,19 +12,27 @@ import 'riverpod_storage_provider.dart';
 
 part 'emojis_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 @JsonPersist()
 class EmojisNotifier extends _$EmojisNotifier {
   @override
   FutureOr<Map<String, Emoji>> build(String host) async {
     ref.onDispose(() => _timer?.cancel());
     persist(ref.watch(riverpodStorageProvider.future));
-    final response = await _fetchEmojis();
-    _recentlyFetched = true;
-    _timer = Timer(const Duration(minutes: 10), () {
-      _recentlyFetched = false;
-    });
-    return {for (final emoji in response) emoji.name: emoji};
+    try {
+      final response = await _fetchEmojis();
+      ref.keepAlive();
+      _recentlyFetched = true;
+      _timer = Timer(const Duration(minutes: 10), () {
+        _recentlyFetched = false;
+      });
+      return {for (final emoji in response) emoji.name: emoji};
+    } catch (_) {
+      if (state.value case final emojis?) {
+        return emojis;
+      }
+      rethrow;
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(Account(host: host)));

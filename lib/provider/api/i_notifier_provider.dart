@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:hooks_riverpod/experimental/persist.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/experimental/json_persist.dart';
@@ -10,7 +11,7 @@ import 'misskey_provider.dart';
 
 part 'i_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 @JsonPersist()
 class INotifier extends _$INotifier {
   @override
@@ -18,12 +19,27 @@ class INotifier extends _$INotifier {
     if (account.isGuest) {
       return null;
     }
+    listenSelf((prev, next) {
+      if (next.value?.pinnedNotes case final pinnedNotes?) {
+        if (prev?.value?.pinnedNotes case final previousNotes?) {
+          if (const ListEquality<Note>().equals(pinnedNotes, previousNotes)) {
+            return;
+          }
+        }
+        ref.read(notesNotifierProvider(account).notifier).addAll(pinnedNotes);
+      }
+    });
     persist(ref.watch(riverpodStorageProvider.future));
-    final i = await _misskey.i.i();
-    ref
-        .read(notesNotifierProvider(account).notifier)
-        .addAll(i.pinnedNotes ?? []);
-    return i;
+    try {
+      final i = await _misskey.i.i();
+      ref.keepAlive();
+      return i;
+    } catch (_) {
+      if (state.value case final i?) {
+        return i;
+      }
+      rethrow;
+    }
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));

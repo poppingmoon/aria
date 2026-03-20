@@ -22,7 +22,7 @@ final class MetaNotifierProvider
   }) : super(
          retry: null,
          name: r'metaNotifierProvider',
-         isAutoDispose: false,
+         isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -52,7 +52,7 @@ final class MetaNotifierProvider
   }
 }
 
-String _$metaNotifierHash() => r'90bbbee141b53b46d01eeca89138979483a7d308';
+String _$metaNotifierHash() => r'0e44aa07a24d7ae899624001044a8994d860aa0a';
 
 @JsonPersist()
 final class MetaNotifierFamily extends $Family
@@ -70,7 +70,7 @@ final class MetaNotifierFamily extends $Family
         name: r'metaNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: false,
+        isAutoDispose: true,
       );
 
   @JsonPersist()

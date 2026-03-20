@@ -9,12 +9,21 @@ import 'misskey_provider.dart';
 
 part 'meta_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 @JsonPersist()
 class MetaNotifier extends _$MetaNotifier {
   @override
-  FutureOr<MetaResponse> build(String host) {
+  FutureOr<MetaResponse> build(String host) async {
     persist(ref.watch(riverpodStorageProvider.future));
-    return ref.read(misskeyProvider(Account(host: host))).meta();
+    try {
+      final meta = await ref.read(misskeyProvider(Account(host: host))).meta();
+      ref.keepAlive();
+      return meta;
+    } catch (_) {
+      if (state.value case final meta?) {
+        return meta;
+      }
+      rethrow;
+    }
   }
 }
