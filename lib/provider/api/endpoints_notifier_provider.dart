@@ -13,14 +13,15 @@ part 'endpoints_notifier_provider.g.dart';
 class EndpointsNotifier extends _$EndpointsNotifier {
   @override
   FutureOr<List<String>> build(String host) async {
+    final link = ref.keepAlive();
     persist(ref.watch(riverpodStorageProvider.future));
     try {
       final endpoints = await ref
           .watch(misskeyProvider(Account(host: host)))
           .endpoints();
-      ref.keepAlive();
       return endpoints;
     } catch (_) {
+      link.close();
       if (state.value case final endpoints?) {
         return endpoints;
       }

@@ -19,6 +19,7 @@ class INotifier extends _$INotifier {
     if (account.isGuest) {
       return null;
     }
+    final link = ref.keepAlive();
     listenSelf((prev, next) {
       if (next.value?.pinnedNotes case final pinnedNotes?) {
         if (prev?.value?.pinnedNotes case final previousNotes?) {
@@ -32,9 +33,9 @@ class INotifier extends _$INotifier {
     persist(ref.watch(riverpodStorageProvider.future));
     try {
       final i = await _misskey.i.i();
-      ref.keepAlive();
       return i;
     } catch (_) {
+      link.close();
       if (state.value case final i?) {
         return i;
       }
