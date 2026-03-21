@@ -12,7 +12,7 @@ import 'riverpod_storage_provider.dart';
 
 part 'emojis_notifier_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 @JsonPersist()
 class EmojisNotifier extends _$EmojisNotifier {
   @override
@@ -21,7 +21,6 @@ class EmojisNotifier extends _$EmojisNotifier {
     persist(ref.watch(riverpodStorageProvider.future));
     try {
       final response = await _fetchEmojis();
-      ref.keepAlive();
       _recentlyFetched = true;
       _timer = Timer(const Duration(minutes: 10), () {
         _recentlyFetched = false;
@@ -42,6 +41,7 @@ class EmojisNotifier extends _$EmojisNotifier {
   bool _recentlyFetched = false;
 
   Future<List<Emoji>> _fetchEmojis() async {
+    // ignore: only_use_keep_alive_inside_keep_alive
     final endpoints = await ref.read(endpointsNotifierProvider(host).future);
     if (endpoints.contains('emojis')) {
       final emojis = await _misskey.emojis();
@@ -71,7 +71,9 @@ class EmojisNotifier extends _$EmojisNotifier {
   }
 
   Future<void> reloadEmojis({bool force = false}) async {
-    if (force || (state.value?.isEmpty ?? true) || !_recentlyFetched) {
+    if (force ||
+        (!state.isLoading &&
+            ((state.value?.isEmpty ?? true) || !_recentlyFetched))) {
       final emojis = await _fetchEmojis();
       state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
       _recentlyFetched = true;

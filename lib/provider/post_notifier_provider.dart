@@ -44,6 +44,7 @@ class PostNotifier extends _$PostNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
+  // ignore: only_use_keep_alive_inside_keep_alive
   MeDetailed? get _i => ref.read(iNotifierProvider(account)).value;
 
   Timer? _timer;
@@ -184,6 +185,7 @@ class PostNotifier extends _$PostNotifier {
       if (request.scheduledAt case final scheduledAt?) {
         MeDetailed? i;
         try {
+          // ignore: only_use_keep_alive_inside_keep_alive
           i = await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
@@ -223,6 +225,7 @@ class PostNotifier extends _$PostNotifier {
     } else {
       List<String>? endpoints;
       try {
+        // ignore: only_use_keep_alive_inside_keep_alive
         endpoints = await ref.read(
           endpointsNotifierProvider(account.host).future,
         );

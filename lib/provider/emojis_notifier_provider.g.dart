@@ -22,7 +22,7 @@ final class EmojisNotifierProvider
   }) : super(
          retry: null,
          name: r'emojisNotifierProvider',
-         isAutoDispose: true,
+         isAutoDispose: false,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -52,7 +52,7 @@ final class EmojisNotifierProvider
   }
 }
 
-String _$emojisNotifierHash() => r'3392eb9baa282b38c56ff6211d8d0aeb436896b0';
+String _$emojisNotifierHash() => r'814f4ba365e11b59627df5c8687d29f999bc0828';
 
 @JsonPersist()
 final class EmojisNotifierFamily extends $Family
@@ -70,7 +70,7 @@ final class EmojisNotifierFamily extends $Family
         name: r'emojisNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: true,
+        isAutoDispose: false,
       );
 
   @JsonPersist()

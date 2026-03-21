@@ -44,6 +44,7 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
       return null;
     }
 
+    // ignore: only_use_keep_alive_inside_keep_alive
     ref.read(iNotifierProvider(account).notifier).readNotifications().ignore();
     switch (notification) {
       case NotificationPushNotification(:final body):

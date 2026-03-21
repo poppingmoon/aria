@@ -52,7 +52,7 @@ final class INotifierProvider
   }
 }
 
-String _$iNotifierHash() => r'0e98e606414f96dd4835325f0eb0932420304655';
+String _$iNotifierHash() => r'305ab6de54e1bf6c16762395ac7ad8e3e7dcbeb3';
 
 @JsonPersist()
 final class INotifierFamily extends $Family
