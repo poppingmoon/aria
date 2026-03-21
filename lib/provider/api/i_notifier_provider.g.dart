@@ -22,7 +22,7 @@ final class INotifierProvider
   }) : super(
          retry: null,
          name: r'iNotifierProvider',
-         isAutoDispose: false,
+         isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -52,7 +52,7 @@ final class INotifierProvider
   }
 }
 
-String _$iNotifierHash() => r'f12894c41f9a91b7f35a76f471fe49b0b125de6e';
+String _$iNotifierHash() => r'0e98e606414f96dd4835325f0eb0932420304655';
 
 @JsonPersist()
 final class INotifierFamily extends $Family
@@ -70,7 +70,7 @@ final class INotifierFamily extends $Family
         name: r'iNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: false,
+        isAutoDispose: true,
       );
 
   @JsonPersist()

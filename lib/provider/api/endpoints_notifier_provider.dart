@@ -8,12 +8,23 @@ import 'misskey_provider.dart';
 
 part 'endpoints_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 @JsonPersist()
 class EndpointsNotifier extends _$EndpointsNotifier {
   @override
-  FutureOr<List<String>> build(String host) {
+  FutureOr<List<String>> build(String host) async {
     persist(ref.watch(riverpodStorageProvider.future));
-    return ref.watch(misskeyProvider(Account(host: host))).endpoints();
+    try {
+      final endpoints = await ref
+          .watch(misskeyProvider(Account(host: host)))
+          .endpoints();
+      ref.keepAlive();
+      return endpoints;
+    } catch (_) {
+      if (state.value case final endpoints?) {
+        return endpoints;
+      }
+      rethrow;
+    }
   }
 }
