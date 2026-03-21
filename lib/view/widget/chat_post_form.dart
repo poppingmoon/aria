@@ -279,7 +279,9 @@ class ChatPostForm extends HookConsumerWidget {
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
-                child: MfmKeyboard(account: account, controller: controller),
+                child: SafeArea(
+                  child: MfmKeyboard(account: account, controller: controller),
+                ),
               ),
             ),
           ],

@@ -152,24 +152,22 @@ class ChatMessageWidget extends HookConsumerWidget {
                   },
                 ),
               ),
-              if (message.reactions.isNotEmpty) ...[
-                const SizedBox(height: 2.0),
-                SizedBox(
-                  width: double.infinity,
-                  child: Align(
-                    alignment: !isMyMessage
-                        ? AlignmentDirectional.centerStart
-                        : AlignmentDirectional.centerEnd,
-                    child: _ReactionsViewer(
-                      account: account,
-                      messageId: message.id,
-                      reactions: message.reactions,
-                      user: isMyMessage ? user : null,
-                      updateMessage: updateMessage,
-                    ),
+              if (message.reactions.isNotEmpty) const SizedBox(height: 2.0),
+              SizedBox(
+                width: double.infinity,
+                child: Align(
+                  alignment: !isMyMessage
+                      ? AlignmentDirectional.centerStart
+                      : AlignmentDirectional.centerEnd,
+                  child: _ReactionsViewer(
+                    account: account,
+                    messageId: message.id,
+                    reactions: message.reactions,
+                    user: isMyMessage ? user : null,
+                    updateMessage: updateMessage,
                   ),
                 ),
-              ],
+              ),
             ],
           ),
         ),
@@ -192,8 +190,8 @@ class _ChatMessageSheet extends ConsumerWidget {
   const _ChatMessageSheet({
     required this.account,
     required this.message,
-    this.user,
-    this.updateMessage,
+    required this.user,
+    required this.updateMessage,
   });
 
   final Account account;
@@ -307,8 +305,8 @@ class _ReactionsViewer extends HookConsumerWidget {
     required this.account,
     required this.messageId,
     required this.reactions,
-    this.user,
-    this.updateMessage,
+    required this.user,
+    required this.updateMessage,
   });
 
   final Account account;
@@ -317,77 +315,32 @@ class _ReactionsViewer extends HookConsumerWidget {
   final User? user;
   final void Function()? updateMessage;
 
-  void _showReactionEffect(BuildContext context, GlobalKey key, String emoji) {
-    Future.delayed(const Duration(milliseconds: 50), () {
-      if (!context.mounted) return;
-      if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
-      if (key.currentContext?.findRenderObject()
-          case final RenderBox renderBox) {
-        final offset = renderBox.localToGlobal(Offset.zero);
-        final entry = OverlayEntry(
-          builder: (context) => Positioned(
-            left: offset.dx,
-            top: offset.dy,
-            child: Material(
-              color: Colors.transparent,
-              child: ReactionEffect(account: account, emoji: emoji),
-            ),
-          ),
-        );
-        Overlay.of(context).insert(entry);
-        Future.delayed(const Duration(milliseconds: 1100), () {
-          entry.remove();
-        });
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final (scale, reduceAnimation) = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.reactionsDisplayScale, settings.reduceAnimation),
-      ),
-    );
-    final reactions = useState(this.reactions);
-    final keys = useState(
-      List.generate(this.reactions.length, (_) => GlobalKey()),
-    );
+    final previousReactionsCount = useState<int?>(null);
+    final reactionsCount = useRef(reactions.length);
     useEffect(() {
-      final newReactionsCount = this.reactions.length - reactions.value.length;
-      if (newReactionsCount > 0) {
-        final newReactions = this.reactions.sublist(reactions.value.length);
-        for (final (i, reaction) in newReactions.indexed) {
-          GlobalKey? key = keys.value.elementAtOrNull(
-            reactions.value.length + i,
-          );
-          if (key == null) {
-            key = GlobalKey();
-            keys.value = [...keys.value, key];
-          }
-          if (!reduceAnimation) {
-            _showReactionEffect(context, key, reaction.reaction);
-          }
-        }
-      }
-      reactions.value = this.reactions;
+      previousReactionsCount.value = reactionsCount.value;
+      reactionsCount.value = reactions.length;
       return;
-    }, [this.reactions]);
+    }, [reactions]);
 
     return Wrap(
       spacing: 2.0,
       runSpacing: 2.0,
       crossAxisAlignment: WrapCrossAlignment.center,
-      children: reactions.value
+      children: reactions
           .mapIndexed(
             (index, reaction) => _ReactionButton(
               account: account,
               messageId: messageId,
               reaction: reaction,
               user: user,
-              emojiKey: keys.value[index],
               updateMessage: updateMessage,
+              isNewReaction: switch (previousReactionsCount.value) {
+                final count? => index >= count - 1,
+                _ => false,
+              },
             ),
           )
           .toList(),
@@ -400,24 +353,25 @@ class _ReactionButton extends ConsumerWidget {
     required this.account,
     required this.messageId,
     required this.reaction,
-    this.user,
-    this.emojiKey,
-    this.updateMessage,
+    required this.user,
+    required this.updateMessage,
+    required this.isNewReaction,
   });
 
   final Account account;
   final String messageId;
   final ChatMessageReaction reaction;
   final User? user;
-  final Key? emojiKey;
   final void Function()? updateMessage;
+  final bool isNewReaction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
-    final scale = ref.watch(
+    final (scale, reduceAnimation) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.reactionsDisplayScale,
+        (settings) =>
+            (settings.reactionsDisplayScale, settings.reduceAnimation),
       ),
     );
     final isMyReaction = reaction.user == null
@@ -502,19 +456,81 @@ class _ReactionButton extends ConsumerWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  EmojiWidget(
-                    key: emojiKey,
-                    account: account,
-                    emoji: reaction.reaction,
-                    style: style,
-                    disableTooltip: true,
-                  ),
+                  if (reduceAnimation)
+                    EmojiWidget(
+                      account: account,
+                      emoji: reaction.reaction,
+                      style: style,
+                      disableTooltip: true,
+                    )
+                  else
+                    _EmojiWidgetWithEffect(
+                      account: account,
+                      emoji: reaction.reaction,
+                      style: style,
+                      isNewReaction: isNewReaction,
+                    ),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _EmojiWidgetWithEffect extends HookWidget {
+  const _EmojiWidgetWithEffect({
+    required this.account,
+    required this.emoji,
+    required this.style,
+    required this.isNewReaction,
+  });
+
+  final Account account;
+  final String emoji;
+  final TextStyle style;
+  final bool isNewReaction;
+
+  @override
+  Widget build(BuildContext context) {
+    final isNewReaction = useRef(this.isNewReaction);
+    useEffect(() {
+      if (isNewReaction.value) {
+        Future.delayed(const Duration(milliseconds: 50), () {
+          if (!context.mounted) return;
+          if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
+          if (context.findRenderObject() case final RenderBox renderBox) {
+            final offset = renderBox.localToGlobal(Offset.zero);
+            final entry = OverlayEntry(
+              builder: (context) => Positioned(
+                left: offset.dx,
+                top: offset.dy,
+                child: Material(
+                  color: Colors.transparent,
+                  child: ReactionEffect(
+                    account: account,
+                    emoji: emoji,
+                    style: style,
+                  ),
+                ),
+              ),
+            );
+            Overlay.of(context).insert(entry);
+            Future.delayed(const Duration(milliseconds: 1100), entry.remove);
+          }
+        });
+        isNewReaction.value = false;
+      }
+      return;
+    }, []);
+
+    return EmojiWidget(
+      account: account,
+      emoji: emoji,
+      style: style,
+      disableTooltip: true,
     );
   }
 }

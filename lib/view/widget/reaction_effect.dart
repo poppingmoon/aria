@@ -2,26 +2,26 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/account.dart';
-import '../../provider/general_settings_notifier_provider.dart';
 import 'emoji_widget.dart';
 
-class ReactionEffect extends HookConsumerWidget {
+class ReactionEffect extends HookWidget {
   const ReactionEffect({
     super.key,
     required this.account,
     required this.emoji,
     this.emojis = const {},
+    this.style,
   });
 
   final Account account;
   final String emoji;
   final Map<String, String> emojis;
+  final TextStyle? style;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final controller = useAnimationController(
       duration: const Duration(seconds: 2),
     );
@@ -55,14 +55,6 @@ class ReactionEffect extends HookConsumerWidget {
         curve: const Interval(0.5, 1.0, curve: Cubic(0.0, 0.5, 0.5, 1.0)),
       ).animate(ReverseAnimation(controller)),
     );
-    final scale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.reactionsDisplayScale,
-      ),
-    );
-    final style = DefaultTextStyle.of(
-      context,
-    ).style.apply(fontSizeFactor: scale);
 
     return Transform.translate(
       offset: offset,

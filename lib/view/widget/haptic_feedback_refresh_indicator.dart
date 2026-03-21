@@ -37,11 +37,13 @@ class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
               }
               if (!dragging.value) {
                 if (notification case ScrollStartNotification(:final metrics)) {
-                  dragging.value =
-                      (metrics.axisDirection == AxisDirection.up &&
-                          metrics.extentAfter == 0.0) ||
-                      (metrics.axisDirection == AxisDirection.down &&
-                          metrics.extentBefore == 0.0);
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    dragging.value =
+                        (metrics.axisDirection == AxisDirection.up &&
+                            metrics.extentAfter == 0.0) ||
+                        (metrics.axisDirection == AxisDirection.down &&
+                            metrics.extentBefore == 0.0);
+                  });
                 }
               } else {
                 if (notification
