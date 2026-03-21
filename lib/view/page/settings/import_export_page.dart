@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -292,7 +291,7 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       try {
                         final json =
-                            json5Decode(await file!.readAsString())
+                            jsonDecode(await file!.readAsString())
                                 as Map<String, dynamic>;
                         final backup = AriaBackup.fromJson(json);
                         if (!context.mounted) return;
@@ -355,8 +354,7 @@ class ImportExportPage extends ConsumerWidget {
                     );
                     if (result != null) {
                       try {
-                        final json =
-                            json5Decode(result) as Map<String, dynamic>;
+                        final json = jsonDecode(result) as Map<String, dynamic>;
                         final backup = AriaBackup.fromJson(json);
                         if (!context.mounted) return;
                         final confirmed = await confirm(
