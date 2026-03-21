@@ -10,7 +10,6 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../util/decode_custom_emoji.dart';
 import 'reaction_button.dart';
-import 'reaction_effect.dart';
 
 class ReactionsViewer extends HookConsumerWidget {
   const ReactionsViewer({
@@ -71,53 +70,16 @@ class ReactionsViewer extends HookConsumerWidget {
     );
   }
 
-  void _showReactionEffect(
-    BuildContext context,
-    GlobalKey key,
-    String emoji,
-    Map<String, String> emojis,
-  ) {
-    Future.delayed(const Duration(milliseconds: 50), () {
-      if (!context.mounted) return;
-      if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
-      if (key.currentContext?.findRenderObject()
-          case final RenderBox renderBox) {
-        final offset = renderBox.localToGlobal(Offset.zero);
-        final entry = OverlayEntry(
-          builder: (context) => Positioned(
-            left: offset.dx,
-            top: offset.dy,
-            child: Material(
-              color: Colors.transparent,
-              child: ReactionEffect(
-                account: account,
-                emoji: emoji,
-                emojis: emojis,
-              ),
-            ),
-          ),
-        );
-        Overlay.of(context).insert(entry);
-        Future.delayed(const Duration(milliseconds: 1100), () {
-          entry.remove();
-        });
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final (scale, reduceAnimation, shouldMergeReactions) = ref.watch(
+    final (scale, shouldMergeReactions) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.reactionsDisplayScale,
-          settings.reduceAnimation,
-          settings.mergeReactionsByName,
-        ),
+        (settings) =>
+            (settings.reactionsDisplayScale, settings.mergeReactionsByName),
       ),
     );
     final initialReactions = useMemoized(() {
@@ -129,37 +91,24 @@ class ReactionsViewer extends HookConsumerWidget {
         );
       }
     }, [shouldMergeReactions]);
+    final previousReactionEmojis = useRef<Iterable<String>?>(null);
     final reactions = useState(initialReactions);
-    final keys = useState(
-      initialReactions.map((key, value) => MapEntry(key, GlobalKey())),
-    );
     useEffect(() {
+      if (previousReactionEmojis.value == null) {
+        previousReactionEmojis.value = initialReactions.keys;
+        return;
+      }
       final newSource = shouldMergeReactions
           ? _mergeReactions(ref, note.reactions)
           : Map.of(note.reactions);
       final newReactions = <String, int>{};
-      final emojis = {...note.emojis, ...note.reactionEmojis};
-      for (final reaction in reactions.value.entries) {
-        if (newSource.remove(reaction.key) case final count? when count > 0) {
-          newReactions[reaction.key] = count;
-          if (!reduceAnimation && reaction.value < count) {
-            _showReactionEffect(
-              context,
-              keys.value[reaction.key]!,
-              reaction.key,
-              emojis,
-            );
-          }
+      for (final emoji in reactions.value.keys) {
+        if (newSource.remove(emoji) case final count? when count > 0) {
+          newReactions[emoji] = count;
         }
       }
-      for (final newReaction in newSource.entries) {
-        newReactions[newReaction.key] = newReaction.value;
-        final key = GlobalKey();
-        keys.value = {...keys.value, newReaction.key: key};
-        if (!reduceAnimation) {
-          _showReactionEffect(context, key, newReaction.key, emojis);
-        }
-      }
+      newReactions.addAll(newSource);
+      previousReactionEmojis.value = reactions.value.keys;
       reactions.value = newReactions;
       return;
     }, [note.reactions]);
@@ -181,7 +130,10 @@ class ReactionsViewer extends HookConsumerWidget {
                 note: note,
                 emoji: reaction.key,
                 count: reaction.value,
-                emojiKey: keys.value[reaction.key],
+                isNewReaction: switch (previousReactionEmojis.value) {
+                  final emojis? => !emojis.contains(reaction.key),
+                  _ => false,
+                },
               ),
             ),
         if (!showAllReactions.value && reactions.value.length > maxReactions)

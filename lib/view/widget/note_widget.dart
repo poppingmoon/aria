@@ -580,8 +580,7 @@ class _NoteContent extends HookConsumerWidget {
           const SizedBox(height: 4.0),
         ],
         if (appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
-            showReactionsViewer &&
-            appearNote.reactions.isNotEmpty) ...[
+            showReactionsViewer) ...[
           ReactionsViewer(
             account: account,
             noteId: appearNote.id,

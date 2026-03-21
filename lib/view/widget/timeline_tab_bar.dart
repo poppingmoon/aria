@@ -21,7 +21,7 @@ class TimelineTabBar extends HookConsumerWidget {
       tabs: tabs
           .map(
             (settings) => Tooltip(
-              message: settings.name ?? '',
+              message: settings.name ?? settings.account.toString(),
               child: Tab(icon: TabIconWidget(tabSettings: settings)),
             ),
           )

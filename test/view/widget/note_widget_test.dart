@@ -1405,23 +1405,6 @@ void main() {
       expect(find.byType(ReactionsViewer), findsNothing);
     });
 
-    testWidgets('should not show a reactions viewer if no reactions', (
-      tester,
-    ) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(id: 'test');
-      await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-        overrides: [
-          noteNotifierProvider(account, note.id).overrideWithValue(note),
-        ],
-      );
-      await tester.pumpAndSettle();
-      expect(find.byType(ReactionsViewer), findsNothing);
-    });
-
     testWidgets('should show a reactions viewer', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', reactions: {'❤': 1});
