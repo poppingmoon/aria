@@ -101,7 +101,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    request.isRenote
+                    request.isRenote && files.isEmpty
                         ? t.aria.renoteConfirm
                         : t.aria.postConfirm,
                     style: theme.textTheme.titleMedium,
@@ -134,7 +134,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                     ),
                   ),
                 ),
-              if (request.isRenote)
+              if (request.isRenote && files.isEmpty)
                 NoteWidget(
                   account: account,
                   noteId: request.renoteId!,

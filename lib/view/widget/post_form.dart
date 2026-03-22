@@ -318,7 +318,7 @@ class PostForm extends HookConsumerWidget {
         t.misskey.schedule,
         Icons.send,
       ),
-      NotesCreateRequest(isRenote: true) => (
+      NotesCreateRequest(isRenote: true) when attaches.isEmpty => (
         t.misskey.renote,
         Icons.repeat_rounded,
       ),
