@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -14,7 +15,9 @@ import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
 import 'deleted_note_widget.dart';
 import 'mfm.dart';
+import 'note_footer.dart';
 import 'note_header.dart';
+import 'reactions_viewer.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
@@ -26,6 +29,7 @@ class NoteSubWidget extends HookConsumerWidget {
     this.depth = 0,
     this.showReplies = false,
     this.focusPostForm,
+    this.barBottomPadding,
   });
 
   final Account account;
@@ -33,6 +37,7 @@ class NoteSubWidget extends HookConsumerWidget {
   final int depth;
   final bool showReplies;
   final void Function()? focusPostForm;
+  final double? barBottomPadding;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,21 +46,27 @@ class NoteSubWidget extends HookConsumerWidget {
       return DeletedNoteWidget(account: account, noteId: noteId);
     }
     final (
+      showAvatars,
+      showReactionsViewer,
+      showSubNoteFooter,
+      alwaysExpandCw,
+      showAllReactions,
+      avatarScale,
       tapAction,
       doubleTapAction,
       longPressAction,
-      showAvatars,
-      avatarScale,
-      alwaysExpandCw,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
+          settings.showAvatarsInSubNote,
+          settings.showSubNoteReactionsViewer,
+          settings.showSubNoteFooter,
+          settings.alwaysExpandCw,
+          settings.alwaysShowAllReactions,
+          settings.avatarScale,
           settings.noteTapAction,
           settings.noteDoubleTapAction,
           settings.noteLongPressAction,
-          settings.showAvatarsInSubNote,
-          settings.avatarScale,
-          settings.alwaysExpandCw,
         ),
       ),
     );
@@ -90,6 +101,7 @@ class NoteSubWidget extends HookConsumerWidget {
       ),
       [account, longPressAction, noteId],
     );
+    final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
@@ -121,7 +133,7 @@ class NoteSubWidget extends HookConsumerWidget {
                   children: [
                     NoteHeader(account: account, note: note),
                     if (note.cw case final cw?) ...[
-                      if (cw.isNotEmpty)
+                      if (cw.isNotEmpty) ...[
                         Mfm(
                           account: account,
                           text: cw,
@@ -130,16 +142,41 @@ class NoteSubWidget extends HookConsumerWidget {
                           noteId: note.id,
                           nyaize: true,
                         ),
+                        const SizedBox(height: 2.0),
+                      ],
                       CwButton(
                         note: note,
                         onPressed: (value) => showContent.value = value,
                         isOpen: showContent.value,
                       ),
+                      if (showContent.value &&
+                          (note.text != null ||
+                              note.replyId != null ||
+                              note.renoteId != null))
+                        const SizedBox(height: 2.0),
                     ],
                     if (note.cw == null || showContent.value)
                       SubNoteContent(
                         account: account,
                         noteId: noteId,
+                        focusPostForm: focusPostForm,
+                      ),
+                    if (showReactionsViewer &&
+                        note.reactionAcceptance !=
+                            ReactionAcceptance.likeOnly) ...[
+                      if (note.reactions.isNotEmpty)
+                        const SizedBox(height: 4.0),
+                      ReactionsViewer(
+                        account: account,
+                        noteId: noteId,
+                        showAllReactions: showAllReactions,
+                      ),
+                    ],
+                    if (showSubNoteFooter)
+                      NoteFooter(
+                        account: account,
+                        note: note,
+                        appearNote: note,
                         focusPostForm: focusPostForm,
                       ),
                   ],
@@ -149,33 +186,53 @@ class NoteSubWidget extends HookConsumerWidget {
           ),
           if (children?.value?.items case final children?
               when children.isNotEmpty) ...[
-            const SizedBox(height: 8.0),
-            for (final (index, reply) in children.indexed)
+            if (!showSubNoteFooter) const SizedBox(height: 8.0),
+            for (final (index, reply) in children.indexed) ...[
               ChannelColorBarBox(
                 note: reply,
-                child: Container(
+                barBottomPadding: showSubNoteFooter
+                    ? index == children.length - 1
+                          ? barBottomPadding ?? 8.0
+                          : 8.0
+                    : 0.0,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 8.0),
+                  child: ColorBarBox(
+                    color: theme.colorScheme.outlineVariant,
+                    width: 2.0,
+                    barBottomPadding:
+                        showSubNoteFooter && index == children.length - 1
+                        ? barBottomPadding ?? 8.0
+                        : 0.0,
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.only(start: 6.0),
+                      child: NoteSubWidget(
+                        account: account,
+                        noteId: reply.id,
+                        showReplies: true,
+                        depth: depth + 1,
+                        barBottomPadding: index == children.length - 1
+                            ? barBottomPadding
+                            : null,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              if (index < children.length - 1)
+                Container(
                   margin: const EdgeInsetsDirectional.only(start: 8.0),
                   decoration: BoxDecoration(
                     border: BorderDirectional(
                       start: BorderSide(
-                        color: Theme.of(context).colorScheme.outlineVariant,
+                        color: theme.colorScheme.outlineVariant,
                         width: 2.0,
                       ),
                     ),
                   ),
-                  padding: EdgeInsetsDirectional.only(
-                    start: 4.0,
-                    top: index == 0 ? 0.0 : 4.0,
-                    bottom: index == children.length - 1 ? 0.0 : 4.0,
-                  ),
-                  child: NoteSubWidget(
-                    account: account,
-                    noteId: reply.id,
-                    showReplies: true,
-                    depth: depth + 1,
-                  ),
+                  height: showSubNoteFooter ? 4.0 : 12.0,
                 ),
-              ),
+            ],
           ],
           if (depth >= 5 && (note.repliesCount > 0 || note.renoteCount > 0))
             TextButton(

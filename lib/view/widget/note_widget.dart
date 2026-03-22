@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -112,6 +114,8 @@ class NoteWidget extends HookConsumerWidget {
       verticalPadding,
       horizontalPadding,
       showAvatars,
+      showNoteFooter,
+      showSubNoteFooter,
       tapAction,
       doubleTapAction,
       longPressAction,
@@ -124,6 +128,8 @@ class NoteWidget extends HookConsumerWidget {
           settings.noteVerticalPadding,
           settings.noteHorizontalPadding,
           settings.showAvatarsInNote,
+          settings.showNoteFooter,
+          settings.showSubNoteFooter,
           settings.noteTapAction,
           settings.noteDoubleTapAction,
           settings.noteLongPressAction,
@@ -198,13 +204,14 @@ class NoteWidget extends HookConsumerWidget {
               start: 4.0,
               top: verticalPadding,
               end: horizontalPadding,
-              bottom: verticalPadding,
+              bottom: showFooter ?? showNoteFooter
+                  ? max(0.0, verticalPadding - 8.0)
+                  : verticalPadding,
             ),
             child: Column(
               children: [
-                if (appearNote case Note(
-                  :final replyId?,
-                ) when !renoteCollapsed.value) ...[
+                if (appearNote.replyId case final replyId?
+                    when !renoteCollapsed.value) ...[
                   DefaultTextStyle.merge(
                     style: style.apply(
                       color: style.color?.withValues(alpha: 0.7),
@@ -216,6 +223,7 @@ class NoteWidget extends HookConsumerWidget {
                       ),
                       child: ChannelColorBarBox(
                         note: appearNote.reply,
+                        barBottomPadding: showSubNoteFooter ? 8.0 : 0.0,
                         child: Padding(
                           padding: EdgeInsetsDirectional.only(
                             start: horizontalPadding - 4.0,
@@ -229,7 +237,7 @@ class NoteWidget extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  SizedBox(height: showSubNoteFooter ? 2.0 : 8.0),
                 ],
                 if (isRenote) ...[
                   ChannelColorBarBox(
@@ -291,6 +299,9 @@ class NoteWidget extends HookConsumerWidget {
                 ] else
                   ChannelColorBarBox(
                     note: appearNote,
+                    barBottomPadding: showFooter ?? showNoteFooter
+                        ? min(verticalPadding, 8.0)
+                        : 0.0,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -412,7 +423,7 @@ class _NoteContent extends HookConsumerWidget {
         NoteHeader(account: account, note: appearNote),
         if (showTicker)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            padding: const EdgeInsets.symmetric(vertical: 1.0),
             child: DefaultTextStyle.merge(
               style: style.apply(fontSizeFactor: 0.9),
               child: InstanceTickerWidget(
@@ -422,8 +433,8 @@ class _NoteContent extends HookConsumerWidget {
               ),
             ),
           ),
-        if (appearNote case Note(:final cw?)) ...[
-          if (cw.isNotEmpty)
+        if (appearNote.cw case final cw?) ...[
+          if (cw.isNotEmpty) ...[
             Mfm(
               account: account,
               text: cw,
@@ -432,14 +443,14 @@ class _NoteContent extends HookConsumerWidget {
               noteId: appearNote.id,
               nyaize: true,
             ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: CwButton(
-              note: appearNote,
-              onPressed: (value) => showContent.value = value,
-              isOpen: showContent.value,
-            ),
+            const SizedBox(height: 2.0),
+          ],
+          CwButton(
+            note: appearNote,
+            onPressed: (value) => showContent.value = value,
+            isOpen: showContent.value,
           ),
+          if (showContent.value) const SizedBox(height: 2.0),
         ],
         if (appearNote.cw == null || showContent.value) ...[
           if (parsed != null || appearNote.replyId != null)
@@ -484,26 +495,44 @@ class _NoteContent extends HookConsumerWidget {
                 note: appearNote,
                 maxLines: isCollapsed.value ? 10 : null,
               ),
-          const SizedBox(height: 4.0),
           if (!isCollapsed.value) ...[
             if (appearNote.files.isNotEmpty) ...[
+              const SizedBox(height: 4.0),
               MediaList(
                 account: account,
                 files: appearNote.files,
                 user: appearNote.user,
               ),
-              const SizedBox(height: 8.0),
+              if (appearNote.poll != null ||
+                  (urls?.isNotEmpty ?? false) ||
+                  appearNote.renoteId != null ||
+                  collapseReason != null ||
+                  (appearNote.channel == null &&
+                      showReactionsViewer &&
+                      appearNote.reactionAcceptance !=
+                          ReactionAcceptance.likeOnly &&
+                      appearNote.reactions.isNotEmpty))
+                const SizedBox(height: 4.0),
             ],
-            if (appearNote case Note(:final poll?)) ...[
-              PollWidget(account: account, noteId: appearNote.id, poll: poll),
+            if (appearNote.poll case final poll?) ...[
               const SizedBox(height: 4.0),
+              PollWidget(account: account, noteId: appearNote.id, poll: poll),
             ],
-            if (urls != null && urls.isNotEmpty)
-              for (final url in urls) ...[
+            if (urls != null)
+              for (final (index, url) in urls.indexed) ...[
+                const SizedBox(height: 4.0),
                 UrlPreview(account: account, link: url),
-                const SizedBox(height: 8.0),
+                if (index < urls.length - 1 ||
+                    appearNote.renoteId != null ||
+                    collapseReason != null ||
+                    (showReactionsViewer &&
+                        appearNote.reactionAcceptance !=
+                            ReactionAcceptance.likeOnly &&
+                        appearNote.reactions.isNotEmpty))
+                  const SizedBox(height: 4.0),
               ],
-            if (appearNote case Note(:final renoteId?)) ...[
+            if (appearNote.renoteId case final renoteId?) ...[
+              const SizedBox(height: 4.0),
               DottedBorder(
                 options: RoundedRectDottedBorderOptions(
                   color: colors.renote,
@@ -522,10 +551,17 @@ class _NoteContent extends HookConsumerWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 4.0),
+              if (collapseReason != null ||
+                  (appearNote.channel == null &&
+                      showReactionsViewer &&
+                      appearNote.reactionAcceptance !=
+                          ReactionAcceptance.likeOnly &&
+                      appearNote.reactions.isNotEmpty))
+                const SizedBox(height: 4.0),
             ],
           ],
           if (collapseReason != null) ...[
+            const SizedBox(height: 2.0),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 foregroundColor: colors.fg,
@@ -547,11 +583,15 @@ class _NoteContent extends HookConsumerWidget {
                 isCollapsed.value ? t.misskey.showMore : t.misskey.showLess,
               ),
             ),
-            const SizedBox(height: 4.0),
+            if (appearNote.channel == null &&
+                showReactionsViewer &&
+                appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
+                appearNote.reactions.isNotEmpty)
+              const SizedBox(height: 2.0),
           ],
-        ] else
-          const SizedBox(height: 2.0),
-        if (appearNote case Note(:final channel?)) ...[
+        ],
+        if (appearNote.channel case final channel?) ...[
+          const SizedBox(height: 4.0),
           InkWell(
             onTap: () => context.push('/$account/channels/${channel.id}'),
             child: Text.rich(
@@ -577,10 +617,10 @@ class _NoteContent extends HookConsumerWidget {
               maxLines: 1,
             ),
           ),
-          const SizedBox(height: 4.0),
         ],
-        if (appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
-            showReactionsViewer) ...[
+        if (showReactionsViewer &&
+            appearNote.reactionAcceptance != ReactionAcceptance.likeOnly) ...[
+          if (appearNote.reactions.isNotEmpty) const SizedBox(height: 4.0),
           ReactionsViewer(
             account: account,
             noteId: appearNote.id,
