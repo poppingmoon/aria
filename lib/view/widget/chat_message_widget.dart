@@ -154,6 +154,7 @@ class ChatMessageWidget extends HookConsumerWidget {
               ),
               if (message.reactions.isNotEmpty) const SizedBox(height: 2.0),
               SizedBox(
+                key: Key('_ReactionsViewer(${message.id})'),
                 width: double.infinity,
                 child: Align(
                   alignment: !isMyMessage
@@ -318,9 +319,11 @@ class _ReactionsViewer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final previousReactionsCount = useState<int?>(null);
-    final reactionsCount = useRef(reactions.length);
+    final reactionsCount = useRef<int?>(null);
     useEffect(() {
-      previousReactionsCount.value = reactionsCount.value;
+      if (reactionsCount.value != null) {
+        previousReactionsCount.value = reactionsCount.value;
+      }
       reactionsCount.value = reactions.length;
       return;
     }, [reactions]);
@@ -338,7 +341,7 @@ class _ReactionsViewer extends HookConsumerWidget {
               user: user,
               updateMessage: updateMessage,
               isNewReaction: switch (previousReactionsCount.value) {
-                final count? => index >= count - 1,
+                final count? => index > count - 1,
                 _ => false,
               },
             ),
