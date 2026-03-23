@@ -78,6 +78,7 @@ class MentionWidget extends ConsumerWidget {
             cacheManager: ref.watch(cacheManagerProvider),
           ),
           onForegroundImageError: (_, _) {},
+          minRadius: style.fontSize,
         ),
         label: Text.rich(
           TextSpan(
@@ -95,8 +96,8 @@ class MentionWidget extends ConsumerWidget {
           textDirection: TextDirection.ltr,
           textScaler: textScaler,
         ),
-        padding: EdgeInsets.all(4.0 * scale),
-        labelPadding: EdgeInsets.symmetric(horizontal: 4.0 * scale),
+        padding: const EdgeInsets.all(4.0),
+        labelPadding: EdgeInsets.only(left: 2.0 * scale, right: 4.0),
         onPressed: onTap,
         onDeleted: onDeleted,
         side: BorderSide.none,
