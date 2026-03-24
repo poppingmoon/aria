@@ -4804,11 +4804,7 @@ class _TranslationsMisskeyImageEffectorFxPropsThTh extends TranslationsMisskeyIm
 	@override String get threshold => 'เทรชโฮลด์';
 	@override String get centerX => 'กลาง X';
 	@override String get centerY => 'กลาง Y';
-	@override String get zoomLinesSmoothing => 'ทำให้สมูธ';
-	@override String get zoomLinesSmoothingDescription => 'ตั้งให้สมูธไม่สามารถใช้ร่วมกับตั้งความกว้างเส้นรวมศูนย์ได้';
-	@override String get zoomLinesThreshold => 'ความกว้างเส้นรวมศูนย์';
 	@override String get zoomLinesMaskSize => 'ขนาดพื้นที่ตรงกลาง';
-	@override String get zoomLinesBlack => 'ทำให้ดำ';
 	@override String get circle => 'ทรงกลม';
 }
 

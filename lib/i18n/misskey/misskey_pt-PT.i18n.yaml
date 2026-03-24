@@ -3293,11 +3293,7 @@ imageEffector_:
     threshold: "Limiar"
     centerX: "Centralizar X"
     centerY: "Centralizar Y"
-    zoomLinesSmoothing: "Suavização"
-    zoomLinesSmoothingDescription: "Suavização e largura das linhas de zoom não podem ser utilizados simultaneamente."
-    zoomLinesThreshold: "Largura das linhas de zoom"
     zoomLinesMaskSize: "Diâmetro do centro"
-    zoomLinesBlack: "Linhas pretas"
     circle: "Circular"
 drafts: "Rascunhos"
 drafts_:

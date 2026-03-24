@@ -1844,17 +1844,17 @@ class _TranslationsMisskeyChatKoKr extends TranslationsMisskeyChatEnUs {
 	@override String get newMessage => '새로운 메시지';
 	@override String get individualChat => '개인 대화';
 	@override String get individualChat_description => '특정 유저와 일대일 채팅을 할 수 있습니다.';
-	@override String get roomChat => '룸 채팅';
+	@override String get roomChat => '그룹 채팅';
 	@override String get roomChat_description => '여러 명이 함께 채팅할 수 있습니다.\n또한, 개인 채팅을 허용하지 않은 유저와도 상대방이 수락하면 채팅을 할 수 있습니다.';
-	@override String get createRoom => '룸을 생성';
+	@override String get createRoom => '방 만들기';
 	@override String get inviteUserToChat => '유저를 초대하여 채팅을 시작하세요';
-	@override String get yourRooms => '생성한 룸';
-	@override String get joiningRooms => '참가 중인 룸';
+	@override String get yourRooms => '만들어진 방';
+	@override String get joiningRooms => '참가 중인 방';
 	@override String get invitations => '초대';
 	@override String get noInvitations => '초대장이 없습니다';
 	@override String get history => '이력';
 	@override String get noHistory => '기록이 없습니다';
-	@override String get noRooms => '룸이 없습니다';
+	@override String get noRooms => '방이 없습니다';
 	@override String get inviteUser => '유저를 초대';
 	@override String get sentInvitations => '초대를 보내기';
 	@override String get join => '참여';
@@ -1865,14 +1865,14 @@ class _TranslationsMisskeyChatKoKr extends TranslationsMisskeyChatEnUs {
 	@override String get home => '홈';
 	@override String get send => '전송';
 	@override String get newline => '줄바꿈';
-	@override String get muteThisRoom => '이 룸을 뮤트';
-	@override String get deleteRoom => '룸을 삭제';
+	@override String get muteThisRoom => '이 방을 뮤트하기';
+	@override String get deleteRoom => '방을 삭제하기';
 	@override String get chatNotAvailableForThisAccountOrServer => '이 서버 또는 이 계정에서 채팅이 활성화되어 있지 않습니다.';
 	@override String get chatIsReadOnlyForThisAccountOrServer => '이 서버 또는 이 계정에서 채팅은 읽기 전용입니다. 새로 쓰거나 채팅 룸을 만들거나 참가할 수 없습니다.';
 	@override String get chatNotAvailableInOtherAccount => '상대방 계정에서 채팅 기능을 사용할 수 없는 상태입니다.';
 	@override String get cannotChatWithTheUser => '이 유저와 채팅을 시작할 수 없습니다';
 	@override String get cannotChatWithTheUser_description => '채팅을 사용할 수 없는 상태이거나 상대방이 채팅을 열지 않은 상태입니다.';
-	@override String get youAreNotAMemberOfThisRoomButInvited => '당신은 이 룸의 참가자가 아닙니다만 초대 신청을 받으셨습니다. 참가하려면 초대를  수락해주십시오.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => '이 방의 참가자가 아니지만 초대를 받았습니다. 참가하려면 초대를 수락하세요.';
 	@override String get doYouAcceptInvitation => '초대를 수락하시겠습니까?';
 	@override String get chatWithThisUser => '채팅하기';
 	@override String get thisUserAllowsChatOnlyFromFollowers => '이 유저는 팔로워만 채팅을 할 수 있습니다.';
@@ -2889,7 +2889,7 @@ class _TranslationsMisskeyWidgetsKoKr extends TranslationsMisskeyWidgetsEnUs {
 	@override String get userList => '유저 리스트';
 	@override late final _TranslationsMisskeyWidgetsUserListKoKr userList_ = _TranslationsMisskeyWidgetsUserListKoKr._(_root);
 	@override String get clicker => '클리커';
-	@override String get birthdayFollowings => '오늘이 생일인 유저';
+	@override String get birthdayFollowings => '곧 생일인 사용자';
 	@override String get chat => '채팅하기';
 }
 
@@ -3191,7 +3191,7 @@ class _TranslationsMisskeyNotificationKoKr extends TranslationsMisskeyNotificati
 	@override String get newNote => '새 게시물';
 	@override String unreadAntennaNote({required Object name}) => '안테나 ${name}';
 	@override String get roleAssigned => '역할이 부여 되었습니다.';
-	@override String get chatRoomInvitationReceived => '채팅 룸에 초대받았습니다';
+	@override String get chatRoomInvitationReceived => '채팅방에 초대되었습니다';
 	@override String get emptyPushNotificationMessage => '푸시 알림이 갱신되었습니다';
 	@override String get achievementEarned => '도전 과제를 달성했습니다';
 	@override String get testNotification => '알림 테스트';
@@ -3366,7 +3366,7 @@ class _TranslationsMisskeyModerationLogTypesKoKr extends TranslationsMisskeyMode
 	@override String get deletePage => '페이지를 삭제';
 	@override String get deleteFlash => 'Play를 삭제';
 	@override String get deleteGalleryPost => '갤러리 게시물을 삭제';
-	@override String get deleteChatRoom => '채팅 룸 삭제';
+	@override String get deleteChatRoom => '채팅방 삭제하기';
 	@override String get updateProxyAccountDescription => '프록시 계정의 설명 업데이트';
 }
 
@@ -4530,7 +4530,7 @@ class _TranslationsMisskeyNotificationTypesKoKr extends TranslationsMisskeyNotif
 	@override String get receiveFollowRequest => '팔로우 요청을 받았을 때';
 	@override String get followRequestAccepted => '팔로우 요청이 승인되었을 때';
 	@override String get roleAssigned => '역할이 부여됨';
-	@override String get chatRoomInvitationReceived => '채팅 룸에 초대받음';
+	@override String get chatRoomInvitationReceived => '채팅방에 초대됨';
 	@override String get achievementEarned => '도전 과제 획득';
 	@override String get exportCompleted => '추출을 성공함';
 	@override String get login => '로그인';
@@ -4991,11 +4991,7 @@ class _TranslationsMisskeyImageEffectorFxPropsKoKr extends TranslationsMisskeyIm
 	@override String get threshold => '한계 값';
 	@override String get centerX => 'X축 중심';
 	@override String get centerY => 'Y축 중심';
-	@override String get zoomLinesSmoothing => '다듬기';
-	@override String get zoomLinesSmoothingDescription => '다듬기와 집중선 폭 설정은 같이 쓸 수 없습니다.';
-	@override String get zoomLinesThreshold => '집중선 폭';
 	@override String get zoomLinesMaskSize => '중앙 값';
-	@override String get zoomLinesBlack => '검은색으로 하기';
 	@override String get circle => '원형';
 }
 

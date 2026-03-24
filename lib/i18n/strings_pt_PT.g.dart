@@ -4705,11 +4705,7 @@ class _TranslationsMisskeyImageEffectorFxPropsPtPt extends TranslationsMisskeyIm
 	@override String get threshold => 'Limiar';
 	@override String get centerX => 'Centralizar X';
 	@override String get centerY => 'Centralizar Y';
-	@override String get zoomLinesSmoothing => 'Suavização';
-	@override String get zoomLinesSmoothingDescription => 'Suavização e largura das linhas de zoom não podem ser utilizados simultaneamente.';
-	@override String get zoomLinesThreshold => 'Largura das linhas de zoom';
 	@override String get zoomLinesMaskSize => 'Diâmetro do centro';
-	@override String get zoomLinesBlack => 'Linhas pretas';
 	@override String get circle => 'Circular';
 }
 

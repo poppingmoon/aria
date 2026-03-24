@@ -4806,11 +4806,7 @@ class _TranslationsMisskeyImageEffectorFxPropsZhTw extends TranslationsMisskeyIm
 	@override String get threshold => '閾值';
 	@override String get centerX => 'X中心座標';
 	@override String get centerY => 'Y中心座標';
-	@override String get zoomLinesSmoothing => '平滑化';
-	@override String get zoomLinesSmoothingDescription => '平滑化與集中線寬度設定不能同時使用。';
-	@override String get zoomLinesThreshold => '集中線的寬度';
 	@override String get zoomLinesMaskSize => '中心直徑';
-	@override String get zoomLinesBlack => '變成黑色';
 	@override String get circle => '圓形';
 }
 

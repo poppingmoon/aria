@@ -1504,6 +1504,12 @@
             "value": "โน้ตที่กำหนดเวลาไว้ได้ถูกโพสต์แล้ว"
           }
         },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rezervasyon defteri yayınlandı."
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1573,6 +1579,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "ล้มเหลวในการโพสต์โน้ตที่กำหนดเวลาไว้"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rezervasyon defterine gönderilemedi"
           }
         },
         "zh-Hans": {
@@ -1720,7 +1732,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "채팅 룸에 초대받았습니다"
+            "value": "채팅방에 초대되었습니다"
           }
         },
         "pt": {

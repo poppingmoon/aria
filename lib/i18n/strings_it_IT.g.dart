@@ -4966,11 +4966,7 @@ class _TranslationsMisskeyImageEffectorFxPropsItIt extends TranslationsMisskeyIm
 	@override String get threshold => 'Soglia';
 	@override String get centerX => 'Centro orizzontale';
 	@override String get centerY => 'Centro verticale';
-	@override String get zoomLinesSmoothing => 'Levigatura';
-	@override String get zoomLinesSmoothingDescription => 'Non si possono usare insieme la levigatura e la larghezza della linea centrale.';
-	@override String get zoomLinesThreshold => 'Limite delle linee zoom';
 	@override String get zoomLinesMaskSize => 'Ampiezza del diametro';
-	@override String get zoomLinesBlack => 'Bande nere';
 	@override String get circle => 'Circolare';
 }
 

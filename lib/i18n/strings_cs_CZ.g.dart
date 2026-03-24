@@ -211,6 +211,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get reactionSettingDescription2 => 'Přetažením změníte pořadí, kliknutím smažete, zmáčkněte "+" k přidání';
 	@override String get rememberNoteVisibility => 'Zapamatovat nastavení zobrazení poznámky';
 	@override String get attachCancel => 'Odstranit přílohu';
+	@override String get deleteFile => 'Smazat soubor';
 	@override String get markAsSensitive => 'Označit jako NSFW';
 	@override String get unmarkAsSensitive => 'Odznačit jako NSFW';
 	@override String get enterFileName => 'Zadejte název souboru';
@@ -286,6 +287,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get silenceThisInstance => 'Utišit tuto instanci';
 	@override String get operations => 'Operace';
 	@override String get software => 'Software';
+	@override String get softwareName => 'Software';
 	@override String get version => 'Verze';
 	@override String get metadata => 'Metadata';
 	@override String withNFiles({required Object n}) => '${n} soubor(ů)';
@@ -312,6 +314,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'Nemůžete připnout další poznámky.';
 	@override String get done => 'Hotovo';
 	@override String get processing => 'Zpracovávám';
+	@override String get preprocessing => 'Připravuji...';
 	@override String get preview => 'Náhled';
 	@override String get default_ => 'Výchozí';
 	@override String defaultValueIs({required Object value}) => 'Základní hodnota: ${value}';
@@ -346,6 +349,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String removeAreYouSure({required Object x}) => 'Jste si jistí že chcete smazat "${x}"?';
 	@override String deleteAreYouSure({required Object x}) => 'Jste si jistí že chcete smazat "${x}"?';
 	@override String get resetAreYouSure => 'Opravdu resetovat?';
+	@override String get areYouSure => 'Jste si jistí?';
 	@override String get saved => 'Uloženo';
 	@override String get upload => 'Nahrát soubory';
 	@override String get keepOriginalUploading => 'Ponechat originální obrázek';
@@ -356,9 +360,12 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get uploadFromUrlDescription => 'URL adresa souboru, který chcete nahrát';
 	@override String get uploadFromUrlRequested => 'Upload zažádán';
 	@override String get uploadFromUrlMayTakeTime => 'Může trvat nějakou dobu, dokud nebude dokončeno nahrávání.';
+	@override String uploadNFiles({required Object n}) => 'Uploadovat ${n} souborů';
 	@override String get explore => 'Objevovat';
 	@override String get messageRead => 'Přečtené';
+	@override String get readAllChatMessages => 'Označit všechny zprávy za přečtené';
 	@override String get noMoreHistory => 'To je vše';
+	@override String get startChat => 'Začít chat';
 	@override String nUsersRead({required Object n}) => 'přečteno ${n} uživateli';
 	@override String agreeTo({required Object x0}) => 'Souhlasím s ${x0}';
 	@override String get agree => 'Souhlasím';
@@ -389,12 +396,15 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Vybrat soubory';
 	@override String get selectFolder => 'Vyberte složku';
 	@override String get selectFolders => 'Vyberte složky';
+	@override String get fileNotSelected => 'Nebyl vybrán žádný soubor';
 	@override String get renameFile => 'Přejmenovat soubor';
 	@override String get folderName => 'Název složky';
 	@override String get createFolder => 'Vytvořit složku';
 	@override String get renameFolder => 'Přejmenovat složku';
 	@override String get deleteFolder => 'Odstranit složku';
+	@override String get folder => 'Složka ';
 	@override String get addFile => 'Přidat soubor';
+	@override String get showFile => 'Procházet soubory';
 	@override String get emptyDrive => 'Váš disk je prázdný';
 	@override String get emptyFolder => 'Tato složka je prázdná';
 	@override String get unableToDelete => 'Nelze smazat';
@@ -505,6 +515,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get totpDescription => 'Použít ověřovací aplikaci pro použití jednorázových hesel';
 	@override String get moderator => 'Moderátor';
 	@override String get moderation => 'Moderování';
+	@override String get moderationNote => 'Poznámka moderátora';
 	@override String nUsersMentioned({required Object n}) => '${n} uživatelů zmínilo';
 	@override String get securityKeyAndPasskey => 'Bezpečnostní klíče a tokeny';
 	@override String get securityKey => 'Bezpečnostní klíč';
@@ -560,7 +571,9 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'O ${x}';
 	@override String get emojiStyle => 'Styl emoji';
 	@override String get native => 'Výchozí';
+	@override String get menuStyle => 'Styl nabídky';
 	@override String get style => 'Vzhled';
+	@override String get drawer => 'Boční menu';
 	@override String get popup => 'Vyskakovací okno';
 	@override String get showNoteActionsOnlyHover => 'Zobrazit akce poznámky jenom při naběhnutí myši';
 	@override String get noHistory => 'Žádná historie';
@@ -616,6 +629,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostForm => 'Zobrazit formulář pro nové příspěvky nad časovou osou';
 	@override String get showFixedPostFormInChannel => 'Zobrazit vkládací formulář na vrcholu časové osy (Kanály)';
 	@override String get newNoteRecived => 'Jsou k dispozici nové poznámky';
+	@override String get newNote => 'Nová poznámka';
 	@override String get sounds => 'Zvuky';
 	@override String get sound => 'Zvuky';
 	@override String get listen => 'Poslouchat';
@@ -695,6 +709,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get small => 'Malé';
 	@override String get generateAccessToken => 'Vygenerovat přístupový token';
 	@override String get permission => 'Oprávnění';
+	@override String get adminPermission => 'Administrátorská práva';
 	@override String get enableAll => 'Povolit vše';
 	@override String get disableAll => 'Vypnout vše';
 	@override String get tokenRequested => 'Povolit přístup k účtu';
@@ -970,6 +985,9 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 den';
 	@override String get oneWeek => '1 týden';
 	@override String get oneMonth => '1 měsíc';
+	@override String get threeMonths => '3 měsíce';
+	@override String get oneYear => '1 rok';
+	@override String get threeDays => '3 dny';
 	@override String get reflectMayTakeTime => 'Může trvat nějakou dobu, než se projeví změny.';
 	@override String get failedToFetchAccountInformation => 'Nepodařily se načíst informace o účtě';
 	@override String get rateLimitExceeded => 'Překročení rychlostního limitu';
@@ -1107,6 +1125,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get noteIdOrUrl => 'ID nebo URL poznámky';
 	@override String get video => 'Video';
 	@override String get videos => 'Videa';
+	@override String get audio => 'Zvuk';
+	@override String get audioFiles => 'Zvuk';
 	@override String get dataSaver => 'Spořič dat';
 	@override String get accountMigration => 'Migrace účtu';
 	@override String get accountMoved => 'Tenhle uživatel se přesunul na nový účet:';
@@ -1134,6 +1154,8 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Seznam uživatelských jmén na rezervaci oddělené mezerama. Tyhle jména se potom nebudou moc použít při normálním procesu vytvoření účtu ale můžou být použiti manuálně administratorém. Existujících účtů se to nedotkne.';
 	@override String get createNoteFromTheFile => 'Vytvořit poznámku z tohodle souboru';
 	@override String get archive => 'Archiv';
+	@override String get archived => 'Archivované';
+	@override String get unarchive => 'Obnovit';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Opravdu chcete archivovat ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Archivovaný kanál se objeví v seznamu kanálů nebo ve výsledcích hledání. Nové poznámky se nedají vložit do seznamu.';
 	@override String get thisChannelArchived => 'Tenhle kanál je archivovaný';
@@ -1180,6 +1202,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get beSureToReadThisAsItIsImportant => 'Přečtěte si prosím tyto důležité informace.';
 	@override String iHaveReadXCarefullyAndAgree({required Object x}) => 'Přečetl jsem si text "${x}" a souhlasím s ním.';
 	@override String get icon => 'Avatar';
+	@override String get forYou => 'Pro vás';
 	@override String get replies => 'Odpovědět';
 	@override String get renotes => 'Přeposlat';
 	@override String get sourceCode => 'Zdrojový kód';

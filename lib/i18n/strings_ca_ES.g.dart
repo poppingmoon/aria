@@ -350,7 +350,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get federating => 'Federant';
 	@override String get blocked => 'Bloquejat';
 	@override String get suspended => 'Anul·lar subscripció ';
-	@override String get all => 'tot';
+	@override String get all => 'Tot';
 	@override String get subscribing => 'Subscrit a';
 	@override String get publishing => 'S\'està publicant';
 	@override String get notResponding => 'Sense resposta';
@@ -4806,11 +4806,7 @@ class _TranslationsMisskeyImageEffectorFxPropsCaEs extends TranslationsMisskeyIm
 	@override String get threshold => 'Llindar';
 	@override String get centerX => 'Centre de X';
 	@override String get centerY => 'Centre de Y';
-	@override String get zoomLinesSmoothing => 'Suavitzat';
-	@override String get zoomLinesSmoothingDescription => 'Els paràmetres de suavitzat i amplada de línia en augmentar no es poden fer servir junts.';
-	@override String get zoomLinesThreshold => 'Amplada de línia a l\'augmentar ';
 	@override String get zoomLinesMaskSize => 'Diàmetre del centre';
-	@override String get zoomLinesBlack => 'Obscurir';
 	@override String get circle => 'Cercle';
 }
 

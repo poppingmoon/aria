@@ -80,7 +80,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override String get lang__ => 'Tiếng Việt ';
+	@override String get lang__ => 'Tiếng Việt';
 	@override String get headlineMisskey => 'Mạng xã hội liên hợp';
 	@override String get introMisskey => 'Xin chào! Misskey là một nền tảng tiểu blog phi tập trung mã nguồn mở.\nViết "tút" để chia sẻ những suy nghĩ của bạn 📡\nBằng "biểu cảm", bạn có thể bày tỏ nhanh chóng cảm xúc của bạn với các tút 👍\nHãy khám phá một thế giới mới! 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} là một trong những chủ máy của <b>Misskey</b> là nền tảng mã nguồn mở';
@@ -657,6 +657,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get showFixedPostFormInChannel => 'Hiển thị mẫu bài đăng ở phía trên bản tin';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Mặc định hiển thị trả lời từ những người dùng mới theo dõi trong dòng thời gian';
 	@override String get newNoteRecived => 'Đã nhận tút mới';
+	@override String get newNote => 'Ghi chú mới';
 	@override String get sounds => 'Âm thanh';
 	@override String get sound => 'Âm thanh';
 	@override String get notificationSoundSettings => 'Cài đặt âm thanh thông báo';
@@ -929,7 +930,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get hideOnlineStatusDescription => 'Ẩn trạng thái online của bạn làm giảm sự tiện lợi của một số tính năng như tìm kiếm.';
 	@override String get online => 'Online';
 	@override String get active => 'Hoạt động';
-	@override String get offline => 'Offline';
+	@override String get offline => 'Ngoại tuyến';
 	@override String get notRecommended => 'Không đề xuất';
 	@override String get botProtection => 'Bảo vệ Bot';
 	@override String get instanceBlocking => 'Máy chủ đã chặn';
@@ -1301,6 +1302,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get chat => 'Trò chuyện';
 	@override String get migrateOldSettings => 'Di chuyển cài đặt cũ';
 	@override String get migrateOldSettings_description => 'Thông thường, quá trình này diễn ra tự động, nhưng nếu vì lý do nào đó mà quá trình di chuyển không thành công, bạn có thể kích hoạt thủ công quy trình di chuyển, quá trình này sẽ ghi đè lên thông tin cấu hình hiện tại của bạn.';
+	@override String get driveAboutTip => 'Trong Drive, danh sách các tệp bạn đã tải lên trước đây sẽ được hiển thị.<br>\nBạn có thể sử dụng lại chúng khi đính kèm vào ghi chú, hoặc tải lên trước các tệp để đăng sau.<br>\n<b>Lưu ý rằng nếu bạn xóa một tệp, tệp đó cũng sẽ biến mất khỏi tất cả những nơi đã sử dụng tệp đó (ghi chú, trang, ảnh đại diện, biểu ngữ, v.v.).</b><br>\nBạn cũng có thể tạo các thư mục để sắp xếp chúng.';
 	@override String get inMinutes => 'phút';
 	@override String get inDays => 'ngày';
 	@override String get widgets => 'Tiện ích';
