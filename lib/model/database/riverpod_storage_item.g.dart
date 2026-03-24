@@ -43,7 +43,7 @@ const RiverpodStorageItemSchema = CollectionSchema(
   getId: _riverpodStorageItemGetId,
   getLinks: _riverpodStorageItemGetLinks,
   attach: _riverpodStorageItemAttach,
-  version: '3.3.0',
+  version: '3.3.2',
 );
 
 int _riverpodStorageItemEstimateSize(

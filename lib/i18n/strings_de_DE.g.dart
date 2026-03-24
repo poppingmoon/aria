@@ -5029,11 +5029,7 @@ class _TranslationsMisskeyImageEffectorFxPropsDeDe extends TranslationsMisskeyIm
 	@override String get threshold => 'Schwellenwert';
 	@override String get centerX => 'Zentrum X';
 	@override String get centerY => 'Zentrum Y';
-	@override String get zoomLinesSmoothing => 'Glättung';
-	@override String get zoomLinesSmoothingDescription => 'Die Einstellungen für die Glättung und für die Breite der Konzentrationslinien können nicht gleichzeitig verwendet werden.';
-	@override String get zoomLinesThreshold => 'Breite der Konzentrationslinien';
 	@override String get zoomLinesMaskSize => 'Mitteldurchmesser';
-	@override String get zoomLinesBlack => 'Schwarz machen';
 	@override String get circle => 'Kreisförmig';
 }
 

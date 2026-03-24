@@ -4991,11 +4991,7 @@ class _TranslationsMisskeyImageEffectorFxPropsEsEs extends TranslationsMisskeyIm
 	@override String get threshold => 'Umbral';
 	@override String get centerX => 'Centrar X';
 	@override String get centerY => 'Centrar Y';
-	@override String get zoomLinesSmoothing => 'Suavizado';
-	@override String get zoomLinesSmoothingDescription => 'El suavizado y el ancho de línea de zoom no se pueden utilizar juntos.';
-	@override String get zoomLinesThreshold => 'Ancho de línea del zoom';
 	@override String get zoomLinesMaskSize => 'Diámetro del centro';
-	@override String get zoomLinesBlack => 'Cambiar color de las líneas de impacto a negro.';
 	@override String get circle => 'Círculo';
 }
 

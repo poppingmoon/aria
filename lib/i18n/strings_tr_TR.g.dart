@@ -153,6 +153,8 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get download => 'İndir';
 	@override String driveFileDeleteConfirm({required Object name}) => '“${name}” dosyasını silmek istediğinden emin misin? Bu dosyaya ekli tüm notlar da silinecek.';
 	@override String unfollowConfirm({required Object name}) => '${name} kullanıcısını cidden takipden çıkmak istiyor musun?';
+	@override String cancelFollowRequestConfirm({required Object name}) => '${name} adlı kişiye gönderdiğiniz takip isteğini iptal etmek ister misiniz?';
+	@override String rejectFollowRequestConfirm({required Object name}) => '${name} adlı kullanıcının takip isteğini reddetmek istiyor musunuz?';
 	@override String get exportRequested => 'Dışa aktarma işlemi talep ettin. Bu işlem biraz zaman alabilir. İşlem tamamlandığında Drive\'ına eklenecek.';
 	@override String get importRequested => 'İçe aktarma talebinde bulundun. Bu işlem biraz zaman alabilir.';
 	@override String get lists => 'Listeler';
@@ -323,6 +325,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get pinLimitExceeded => 'Artık daha fazla not sabitleyemezsin';
 	@override String get done => 'Tamam';
 	@override String get processing => 'İşleniyor...';
+	@override String get preprocessing => 'Hazırlık aşamasında';
 	@override String get preview => 'Önizleme';
 	@override String get default_ => 'Varsayılan';
 	@override String defaultValueIs({required Object value}) => 'Varsayılan: ${value}';
@@ -371,6 +374,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String uploadNFiles({required Object n}) => '${n} dosya yükle';
 	@override String get explore => 'Keşfet';
 	@override String get messageRead => 'Oku';
+	@override String get readAllChatMessages => 'Tüm mesajları okundu olarak işaretle';
 	@override String get noMoreHistory => 'Daha fazla geçmiş bilgisi yok.';
 	@override String get startChat => 'Sohbete başla';
 	@override String nUsersRead({required Object n}) => '${n} tarafından okundu';
@@ -403,6 +407,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get selectFile => 'Dosya seçin';
 	@override String get selectFiles => 'Dosyaları seçin';
 	@override String get selectFolder => 'Klasör seçin';
+	@override String get unselectFolder => 'Klasör seçimini kaldır';
 	@override String get selectFolders => 'Klasörleri seçin';
 	@override String get fileNotSelected => 'Hiç dosya seçilmedi';
 	@override String get renameFile => 'Dosyayı yeniden adlandır';
@@ -415,6 +420,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get showFile => 'Dosyaları göster';
 	@override String get emptyDrive => 'Drive boş';
 	@override String get emptyFolder => 'Bu klasör boş';
+	@override String get dropHereToUpload => 'Yüklemek için dosyalarınızı buraya sürükleyin.';
 	@override String get unableToDelete => 'Silinemiyor';
 	@override String get inputNewFileName => 'Yeni bir dosya adı girin';
 	@override String get inputNewDescription => 'Yeni alternatif metin girin';
@@ -607,6 +613,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get fontSize => 'Yazı tipi boyutu';
 	@override String get mediaListWithOneImageAppearance => 'Tek bir resim içeren medya listelerinin yüksekliği';
 	@override String limitTo({required Object x}) => '${x} ile sınırlandır';
+	@override String get showMediaListByGridInWideArea => 'Ekran genişliği geniş olduğunda, medya listesi yatay olarak görüntülenecektir.';
 	@override String get noFollowRequests => 'Bekleyen takip istekleri yok.';
 	@override String get openImageInNewTab => 'Görüntüleri yeni sekmede aç';
 	@override String get dashboard => 'Gösterge paneli';
@@ -842,6 +849,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'Varsayılan olarak hassas olarak işaretle';
 	@override String get loadRawImages => 'Küçük resimleri göstermek yerine orijinal resimleri yükle';
 	@override String get disableShowingAnimatedImages => 'Animasyonlu görüntüleri oynatmayın';
+	@override String get disableShowingAnimatedImages_caption => 'Bu ayara rağmen animasyonlu görüntüler oynatılmıyorsa, bunun nedeni tarayıcınızın veya işletim sisteminizin erişilebilirlik ayarları veya güç tasarrufu ayarlarından kaynaklanan parazit olabilir.';
 	@override String get highlightSensitiveMedia => 'Hassas medyayı vurgulayın';
 	@override String get verificationEmailSent => 'Doğrulama e-postası gönderildi. Doğrulamayı tamamlamak için e-postadaki bağlantıyı takip edin.';
 	@override String get notSet => 'Ayarlı değil';
@@ -1088,6 +1096,9 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => 'Push bildirimleri sunucu veya tarayıcı tarafından desteklenmiyor';
 	@override String get sendPushNotificationReadMessage => 'Okunduktan sonra push bildirimlerini silin';
 	@override String get sendPushNotificationReadMessageCaption => 'Bu, cihazınızın güç tüketimini artırabilir.';
+	@override String get pleaseAllowPushNotification => 'Lütfen tarayıcı ayarlarınızdan bildirimlere izin verin.';
+	@override String get browserPushNotificationDisabled => 'Bildirim gönderme izni alınamadı.';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => '${serverName} sunucusundan bildirim gönderme izniniz yok. Lütfen tarayıcı ayarlarınızdan bildirimlere izin verin ve tekrar deneyin.';
 	@override String get windowMaximize => 'Maksimize et';
 	@override String get windowMinimize => 'Minimize et';
 	@override String get windowRestore => 'Geri yükle';
@@ -1238,6 +1249,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get branding => 'Markalaşma';
 	@override String get enableServerMachineStats => 'Sunucu donanım istatistiklerini yayınla';
 	@override String get enableIdenticonGeneration => 'Kullanıcı identicon oluşturmayı etkinleştir';
+	@override String get showRoleBadgesOfRemoteUsers => 'Uzaktan kullanıcılara verilen rol rozetlerini görüntüle';
 	@override String get turnOffToImprovePerformance => 'Devre dışı bırakma, daha yüksek performansa yol açabilir.';
 	@override String get createInviteCode => 'Davet Kodu oluştur';
 	@override String get createWithOptions => 'Seçeneklerle oluştur';
@@ -1386,6 +1398,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get federationSpecified => 'Bu sunucu, beyaz liste federasyonunda çalıştırılmaktadır. Yönetici tarafından belirlenen sunucular dışında diğer sunucularla etkileşim kurmak yasaktır.';
 	@override String get federationDisabled => 'Bu sunucuda federasyon devre dışıdır. Diğer sunuculardaki kullanıcılarla etkileşim kuramazsınız.';
 	@override String get draft => 'Taslaklar';
+	@override String get draftsAndScheduledNotes => 'Taslaklar ve planlanmış gönderiler';
 	@override String get confirmOnReact => 'Tepki verirken onaylayın';
 	@override String reactAreYouSure({required Object emoji}) => '“${emoji}” tepkisini eklemek ister misin?';
 	@override String get markAsSensitiveConfirm => 'Bu medyayı hassas olarak ayarlamak ister misin?';
@@ -1414,6 +1427,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get information => 'Hakkında';
 	@override String get chat => 'Sohbet';
 	@override String get directMessage => 'Kullanıcıyla sohbet et';
+	@override String get directMessage_short => 'Mesaj';
 	@override String get migrateOldSettings => 'Eski istemci ayarlarını taşıma';
 	@override String get migrateOldSettings_description => 'Bu işlem otomatik olarak yapılmalıdır, ancak herhangi bir nedenle geçiş başarısız olursa, geçiş işlemini manuel olarak kendin başlatabilirsin. Mevcut yapılandırma bilgileri üzerine yazılacaktır.';
 	@override String get compress => 'Sıkıştır';
@@ -1441,6 +1455,8 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get hideAllTips => 'Tüm “İpucu & Püf Nokta” gizle';
 	@override String get defaultImageCompressionLevel => 'Varsayılan görüntü sıkıştırma düzeyi';
 	@override String get defaultImageCompressionLevel_description => 'Düşük seviye görüntü kalitesini korur ancak dosya boyutunu artırır.<br>Yüksek seviye dosya boyutunu azaltır ancak görüntü kalitesini düşürür.';
+	@override String get defaultCompressionLevel => 'Varsayılan sıkıştırma seviyesi';
+	@override String get defaultCompressionLevel_description => 'Ayarı düşürmek kaliteyi koruyacak ancak dosya boyutunu artıracaktır. <br> Ayarı yükseltmek dosya boyutunu küçültecek ancak kaliteyi düşürecektir.';
 	@override String get inMinutes => 'Dakika(lar)';
 	@override String get inDays => 'Gün(ler)';
 	@override String get safeModeEnabled => 'Güvenli mod etkinleştirildi';
@@ -1448,10 +1464,23 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get customCssIsDisabledBecauseSafeMode => 'Güvenli mod etkin olduğu için özel CSS uygulanmıyor.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Güvenli mod etkinken, varsayılan tema kullanılır. Güvenli modu devre dışı bırakmak bu değişiklikleri geri alır.';
 	@override String get thankYouForTestingBeta => 'Beta sürümünü test ettiğin için teşekkür ederiz!';
+	@override String get createUserSpecifiedNote => 'Kullanıcı tarafından belirtilen notlar oluşturun';
+	@override String get schedulePost => 'Bir gönderi planla';
+	@override String scheduleToPostOnX({required Object x}) => '${x} için bir gönderi planla';
+	@override String scheduledToPostOnX({required Object x}) => '${x} için bir gönderi planlandı.';
+	@override String get schedule => 'rezervasyon';
+	@override String get scheduled => 'rezervasyon';
 	@override String get widgets => 'Widget\'lar';
+	@override String get deviceInfo => 'Cihaz Bilgileri';
+	@override String get deviceInfoDescription => 'Teknik bir sorunuz olduğunda, aşağıdaki bilgileri eklemeniz sorunun çözülmesine yardımcı olabilir.';
+	@override String get youAreAdmin => 'Siz yöneticisiniz.';
+	@override String get frame => 'Çerçeve';
 	@override String get presets => 'Ön ayar';
+	@override String get zeroPadding => 'Sıfır doldurma';
+	@override String get nothingToConfigure => 'Ayarlar seçeneği bulunmamaktadır.';
 	@override late final _TranslationsMisskeyImageEditingTrTr imageEditing_ = _TranslationsMisskeyImageEditingTrTr._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorTrTr imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorTrTr._(_root);
+	@override late final _TranslationsMisskeyCompressionTrTr compression_ = _TranslationsMisskeyCompressionTrTr._(_root);
 	@override late final _TranslationsMisskeyOrderTrTr order_ = _TranslationsMisskeyOrderTrTr._(_root);
 	@override late final _TranslationsMisskeyChatTrTr chat_ = _TranslationsMisskeyChatTrTr._(_root);
 	@override late final _TranslationsMisskeyEmojiPaletteTrTr emojiPalette_ = _TranslationsMisskeyEmojiPaletteTrTr._(_root);
@@ -1554,6 +1583,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyImageEffectorTrTr imageEffector_ = _TranslationsMisskeyImageEffectorTrTr._(_root);
 	@override String get drafts => 'Taslaklar';
 	@override late final _TranslationsMisskeyDraftsTrTr drafts_ = _TranslationsMisskeyDraftsTrTr._(_root);
+	@override String get qr => '2 boyutlu kod';
 	@override late final _TranslationsMisskeyQrTrTr qr_ = _TranslationsMisskeyQrTrTr._(_root);
 }
 
@@ -1574,11 +1604,36 @@ class _TranslationsMisskeyImageFrameEditorTrTr extends TranslationsMisskeyImageF
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Düzenleme kareleri';
+	@override String get tip => 'Görselleri, meta verileri içeren çerçeveler ve etiketler ekleyerek süsleyebilirsiniz.';
 	@override String get header => 'Başlık';
+	@override String get footer => 'Alt bilgi';
+	@override String get borderThickness => 'jantın genişliği';
+	@override String get labelThickness => 'Etiket genişliği';
+	@override String get labelScale => 'Etiket ölçeği';
+	@override String get centered => 'Merkezlenmiş';
+	@override String get captionMain => 'Altyazı (büyük)';
+	@override String get captionSub => 'Altyazı (küçük)';
+	@override String get availableVariables => 'Mevcut değişkenler';
+	@override String get withQrCode => '2 boyutlu kod';
+	@override String get backgroundColor => 'Arka Plan Rengi ';
+	@override String get textColor => 'Metin Rengi ';
 	@override String get font => 'Yazı tipi';
 	@override String get fontSerif => 'Serif';
 	@override String get fontSansSerif => 'Sans Serif';
 	@override String get quitWithoutSaveConfirm => 'Kaydedilmemiş değişiklikleri silmek ister misin?';
+	@override String get failedToLoadImage => 'Görüntü yükleme başarısız oldu ';
+}
+
+// Path: misskey.compression_
+class _TranslationsMisskeyCompressionTrTr extends TranslationsMisskeyCompressionEnUs {
+	_TranslationsMisskeyCompressionTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCompressionQualityTrTr quality_ = _TranslationsMisskeyCompressionQualityTrTr._(_root);
+	@override late final _TranslationsMisskeyCompressionSizeTrTr size_ = _TranslationsMisskeyCompressionSizeTrTr._(_root);
 }
 
 // Path: misskey.order_
@@ -1599,6 +1654,7 @@ class _TranslationsMisskeyChatTrTr extends TranslationsMisskeyChatEnUs {
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Mesaj';
 	@override String get noMessagesYet => 'Henüz mesaj yok';
 	@override String get newMessage => 'Yeni mesaj';
 	@override String get individualChat => 'Özel Sohbet';
@@ -1698,6 +1754,11 @@ class _TranslationsMisskeySettingsTrTr extends TranslationsMisskeySettingsEnUs {
 	@override String get showUrlPreview => 'URL önizlemesi';
 	@override String get showAvailableReactionsFirstInNote => 'Mevcut tepkileri en üstte göster.';
 	@override String get showPageTabBarBottom => 'Sayfa sekme çubuğunu aşağıda göster';
+	@override String get emojiPaletteBanner => 'Emoji seçiciye kalıcı olarak bir palet olarak görüntülenecek ön ayarları kaydedebilir veya seçicinin nasıl görüntüleneceğini özelleştirebilirsiniz.';
+	@override String get enableAnimatedImages => 'Hareketli görüntüleri etkinleştirin';
+	@override String get settingsPersistence_title => 'Ayarların kalıcılığı';
+	@override String get settingsPersistence_description1 => 'Ayarların kalıcı olarak saklanmasını etkinleştirmek, yapılandırma bilgilerinin kaybolmasını önler.';
+	@override String get settingsPersistence_description2 => 'Ortamınıza bağlı olarak bu özelliği etkinleştirmek mümkün olmayabilir.';
 	@override late final _TranslationsMisskeySettingsChatTrTr chat_ = _TranslationsMisskeySettingsChatTrTr._(_root);
 }
 
@@ -1712,6 +1773,8 @@ class _TranslationsMisskeyPreferencesProfileTrTr extends TranslationsMisskeyPref
 	@override String get profileNameDescription => 'Bu cihazı tanımlayan bir ad belirle.';
 	@override String get profileNameDescription2 => 'Örnek: “Ana bilgisayar”, “Akıllı telefon”';
 	@override String get manageProfiles => 'Profilleri Yönet';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => 'Aynı profili birden fazla cihazda kullanmak önerilmez.';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => 'Birden fazla cihazda senkronize etmek istediğiniz ayarlarınız varsa, lütfen her bir ayar için "Birden fazla cihazda senkronize et" seçeneğini etkinleştirin.';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1729,6 +1792,7 @@ class _TranslationsMisskeyPreferencesBackupTrTr extends TranslationsMisskeyPrefe
 	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Otomatik yedeklemeyi etkinleştirmek için bir profil adı ayarlanmalıdır.';
 	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Bu cihazda ayarların otomatik yedeklemesi etkinleştirilmemiş.';
 	@override String get backupFound => 'Ayarların yedeği bulundu';
+	@override String get forceBackup => 'Ayarların zorunlu yedeklenmesi';
 }
 
 // Path: misskey.accountSettings_
@@ -2572,6 +2636,7 @@ class _TranslationsMisskeyAuthTrTr extends TranslationsMisskeyAuthEnUs {
 	@override String get scopeUser => 'Aşağıdaki kullanıcı olarak çalıştırın';
 	@override String get pleaseLogin => 'Uygulamaları yetkilendirmek için lütfen giriş yapın.';
 	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Erişim izni verildiğinde, otomatik olarak aşağıdaki URL\'ye yönlendirileceksin.';
+	@override String get alreadyAuthorized => 'Bu uygulamaya zaten erişim izinleri verilmiş durumda.';
 }
 
 // Path: misskey.antennaSources_
@@ -2651,9 +2716,13 @@ class _TranslationsMisskeyWidgetOptionsTrTr extends TranslationsMisskeyWidgetOpt
 
 	// Translations
 	@override String get showHeader => 'Başlığı göster';
+	@override String get transparent => 'Arka planı şeffaf yapın';
 	@override String get height => 'Yükseklik';
 	@override late final _TranslationsMisskeyWidgetOptionsButtonTrTr button_ = _TranslationsMisskeyWidgetOptionsButtonTrTr._(_root);
 	@override late final _TranslationsMisskeyWidgetOptionsClockTrTr clock_ = _TranslationsMisskeyWidgetOptionsClockTrTr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsJobQueueTrTr jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueTrTr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTrTr rss_ = _TranslationsMisskeyWidgetOptionsRssTrTr._(_root);
+	@override late final _TranslationsMisskeyWidgetOptionsRssTickerTrTr rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerTrTr._(_root);
 	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsTrTr birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsTrTr._(_root);
 }
 
@@ -2731,6 +2800,7 @@ class _TranslationsMisskeyPostFormTrTr extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Bu notu yanıtla...';
 	@override String get quotePlaceholder => 'Bu notu alıntı yap...';
 	@override String get channelPlaceholder => 'Bir kanala gönder...';
+	@override String get showHowToUse => 'Form açıklamasını göster';
 	@override late final _TranslationsMisskeyPostFormHowToUseTrTr howToUse_ = _TranslationsMisskeyPostFormHowToUseTrTr._(_root);
 	@override late final _TranslationsMisskeyPostFormPlaceholdersTrTr placeholders_ = _TranslationsMisskeyPostFormPlaceholdersTrTr._(_root);
 }
@@ -2931,6 +3001,8 @@ class _TranslationsMisskeyNotificationTrTr extends TranslationsMisskeyNotificati
 	@override String get youReceivedFollowRequest => 'Bir takip isteği aldınız.';
 	@override String get yourFollowRequestAccepted => 'Takip isteğin kabul edildi.';
 	@override String get pollEnded => 'Anket sonuçları açıklandı.';
+	@override String get scheduledNotePosted => 'Rezervasyon defteri yayınlandı.';
+	@override String get scheduledNotePostFailed => 'Rezervasyon defterine gönderilemedi';
 	@override String get newNote => 'Yeni not';
 	@override String unreadAntennaNote({required Object name}) => '${name} anteni';
 	@override String get roleAssigned => 'Verilen rol';
@@ -2985,6 +3057,8 @@ class _TranslationsMisskeyDeckTrTr extends TranslationsMisskeyDeckEnUs {
 	@override String get usedAsMinWidthWhenFlexible => '“Otomatik genişlik ayarı” seçeneği etkinleştirildiğinde, bunun için minimum genişlik kullanılacak.';
 	@override String get flexible => 'Otomatik genişlik ayarı';
 	@override String get enableSyncBetweenDevicesForProfiles => 'Cihazlar arasında profil bilgilerinin senkronizasyonunu etkinleştir';
+	@override String get showHowToUse => 'Kullanıcı arayüzü açıklamasını görüntüle';
+	@override late final _TranslationsMisskeyDeckHowToUseTrTr howToUse_ = _TranslationsMisskeyDeckHowToUseTrTr._(_root);
 	@override late final _TranslationsMisskeyDeckColumnsTrTr columns_ = _TranslationsMisskeyDeckColumnsTrTr._(_root);
 }
 
@@ -3057,6 +3131,8 @@ class _TranslationsMisskeyModerationLogTypesTrTr extends TranslationsMisskeyMode
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
+	@override String get clearQueue => 'Kuyruğu temizle';
+	@override String get promoteQueue => 'Sıraya alınmış işi yeniden deneyin.';
 	@override String get createRole => 'Rol oluşturuldu';
 	@override String get deleteRole => 'Rol silindi';
 	@override String get updateRole => 'Rol güncellendi';
@@ -3529,10 +3605,13 @@ class _TranslationsMisskeyWatermarkEditorTrTr extends TranslationsMisskeyWaterma
 	@override String get title => 'Filigranı Düzenle';
 	@override String get cover => 'Her şeyi örtün';
 	@override String get repeat => 'her yere yayılmış';
+	@override String get preserveBoundingRect => 'Döndürme sırasında dışarı çıkmayacak şekilde ayarlayın.';
 	@override String get opacity => 'Opaklık';
 	@override String get scale => 'Boyut';
 	@override String get text => 'Metin';
+	@override String get qr => '2 boyutlu kod';
 	@override String get position => 'Pozisyon';
+	@override String get margin => 'Kenar';
 	@override String get type => 'Tür';
 	@override String get image => 'Görseller';
 	@override String get advanced => 'Gelişmiş';
@@ -3547,6 +3626,8 @@ class _TranslationsMisskeyWatermarkEditorTrTr extends TranslationsMisskeyWaterma
 	@override String get polkadotSubDotOpacity => 'İkincil noktanın opaklığı';
 	@override String get polkadotSubDotRadius => 'İkincil noktanın boyutu';
 	@override String get polkadotSubDotDivisions => 'Alt nokta sayısı.';
+	@override String get leaveBlankToAccountUrl => 'Boş bırakılması durumunda hesap URL\'si görüntülenecektir.';
+	@override String get failedToLoadImage => 'Görüntü yükleme başarısız oldu ';
 }
 
 // Path: misskey.imageEffector_
@@ -3559,6 +3640,7 @@ class _TranslationsMisskeyImageEffectorTrTr extends TranslationsMisskeyImageEffe
 	@override String get title => 'Effektler';
 	@override String get addEffect => 'Efektler Ekle';
 	@override String get discardChangesConfirm => 'Cidden çıkmak istiyor musun? Kaydedilmemiş değişikliklerin var.';
+	@override String get failedToLoadImage => 'Görüntü yükleme başarısız oldu ';
 	@override late final _TranslationsMisskeyImageEffectorFxsTrTr fxs_ = _TranslationsMisskeyImageEffectorFxsTrTr._(_root);
 	@override late final _TranslationsMisskeyImageEffectorFxPropsTrTr fxProps_ = _TranslationsMisskeyImageEffectorFxPropsTrTr._(_root);
 }
@@ -3583,6 +3665,9 @@ class _TranslationsMisskeyDraftsTrTr extends TranslationsMisskeyDraftsEnUs {
 	@override String get restoreFromDraft => 'Taslaktan geri yükle';
 	@override String get restore => 'Geri yükle';
 	@override String get listDrafts => 'Taslaklar Listesi';
+	@override String get schedule => 'Planlanmış Gönderi';
+	@override String get listScheduledNotes => 'Planlanmış gönderilerin listesi';
+	@override String get cancelSchedule => 'Rezervasyonu iptal et';
 }
 
 // Path: misskey.qr_
@@ -3593,7 +3678,19 @@ class _TranslationsMisskeyQrTrTr extends TranslationsMisskeyQrEnUs {
 
 	// Translations
 	@override String get showTabTitle => 'Ekran';
+	@override String get readTabTitle => 'Okumak';
+	@override String shareTitle({required Object name, required Object acct}) => '${name}${acct}';
+	@override String get shareText => 'Beni Fediverse\'te takip edin!';
+	@override String get chooseCamera => 'Kamera Seç';
+	@override String get cannotToggleFlash => 'Işık seçeneği mevcut değil.';
+	@override String get turnOnFlash => 'Işığı açın';
+	@override String get turnOffFlash => 'Işığı kapatın';
+	@override String get startQr => 'Özgeçmiş Kodu Okuyucu';
+	@override String get stopQr => 'Kod okuyucuyu durdurun';
+	@override String get noQrCodeFound => 'QR kodu bulunamadı';
+	@override String get scanFile => 'Cihazdaki görüntüyü tarayın';
 	@override String get raw => 'Metin';
+	@override String get mfm => 'MFM';
 }
 
 // Path: misskey.imageEditing_.vars_
@@ -3603,7 +3700,48 @@ class _TranslationsMisskeyImageEditingVarsTrTr extends TranslationsMisskeyImageE
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
+	@override String get caption => 'Dosya başlığı';
 	@override String get filename => 'Dosya adı';
+	@override String get filename_without_ext => 'Uzantısız dosya adları';
+	@override String get year => 'Çekim yılı';
+	@override String get month => 'Çekim ayı';
+	@override String get day => 'Çekim tarihi';
+	@override String get hour => 'Fotoğrafın çekildiği zaman (saat)';
+	@override String get minute => 'Çekim süresi (dakika)';
+	@override String get second => 'Çekim süresi (saniye)';
+	@override String get camera_model => 'Kamera Adı';
+	@override String get camera_lens_model => 'Lens adı';
+	@override String get camera_mm => 'Odak uzaklığı';
+	@override String get camera_mm_35 => 'Genişlik (35mm)';
+	@override String get camera_f => 'açıklık';
+	@override String get camera_s => 'Enstantane hızı';
+	@override String get camera_iso => 'ISO hassasiyeti';
+	@override String get gps_lat => 'Enlem';
+	@override String get gps_long => 'Boylam';
+}
+
+// Path: misskey.compression_.quality_
+class _TranslationsMisskeyCompressionQualityTrTr extends TranslationsMisskeyCompressionQualityEnUs {
+	_TranslationsMisskeyCompressionQualityTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'Yüksek Kalite ';
+	@override String get medium => 'Orta Kalite';
+	@override String get low => 'Düşük Kalite ';
+}
+
+// Path: misskey.compression_.size_
+class _TranslationsMisskeyCompressionSizeTrTr extends TranslationsMisskeyCompressionSizeEnUs {
+	_TranslationsMisskeyCompressionSizeTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'Büyük Boyut';
+	@override String get medium => 'Orta Boyut';
+	@override String get small => 'Küçük Boyut';
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
@@ -3901,6 +4039,7 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 	@override String get canManageAvatarDecorations => 'Avatar süslerini yönet';
 	@override String get driveCapacity => 'Drive kapasitesi';
 	@override String get maxFileSize => 'Yükleyebileceğin maksimum dosya boyutu';
+	@override String get maxFileSize_caption => 'Önceki aşamada ters proxy veya CDN gibi başka yapılandırma ayarları da olabilir.';
 	@override String get alwaysMarkNsfw => 'Dosyaları her zaman NSFW olarak işaretle';
 	@override String get canUpdateBioMedia => 'Bir simge veya banner görüntüsünü düzenleyebilir';
 	@override String get pinMax => 'Sabitlenmiş notların maksimum sayısı';
@@ -3928,6 +4067,7 @@ class _TranslationsMisskeyRoleOptionsTrTr extends TranslationsMisskeyRoleOptions
 	@override String get uploadableFileTypes_caption => 'İzin verilen MIME/dosya türlerini belirtir. Birden fazla MIME türü, yeni bir satırla ayırarak belirtilebilir ve joker karakterler yıldız işareti (*) ile belirtilebilir. (örneğin, image/*)';
 	@override String uploadableFileTypes_caption2({required Object x}) => 'Bazı dosya türleri algılanamayabilir. Bu tür dosyalara izin vermek için, spesifikasyona ${x} ekle.';
 	@override String get noteDraftLimit => 'Sunucu notlarının olası taslak sayısı';
+	@override String get scheduledNoteLimit => 'Aynı anda oluşturulabilecek planlanmış gönderi sayısı';
 	@override String get watermarkAvailable => 'Filigran işlevinin kullanılabilirliği';
 }
 
@@ -4050,6 +4190,58 @@ class _TranslationsMisskeyWidgetOptionsClockTrTr extends TranslationsMisskeyWidg
 
 	// Translations
 	@override String get size => 'Boyut';
+	@override String get thickness => 'İğne kalınlığı';
+	@override String get thicknessThin => 'İnce';
+	@override String get thicknessMedium => 'Normal';
+	@override String get thicknessThick => 'Kalın';
+	@override String get graduations => 'Kadran ölçeği';
+	@override String get graduationDots => 'Nokta';
+	@override String get graduationArabic => 'Arap rakamları';
+	@override String get fadeGraduations => 'ölçeği soluklaştır';
+	@override String get sAnimation => 'İkinci el animasyon';
+	@override String get sAnimationElastic => 'Gerçek';
+	@override String get sAnimationEaseOut => 'Düz';
+	@override String get twentyFour => '24 saat ekran';
+	@override String get labelTime => 'Zaman';
+	@override String get labelTz => 'Zaman Dilimi';
+	@override String get labelTimeAndTz => 'Zaman ve Saat Dilimi';
+	@override String get timezone => 'Zaman Dilimi ';
+	@override String get showMs => 'Milisaniye cinsinden göster';
+	@override String get showLabel => 'Etiketi Göster';
+}
+
+// Path: misskey.widgetOptions_.jobQueue_
+class _TranslationsMisskeyWidgetOptionsJobQueueTrTr extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
+	_TranslationsMisskeyWidgetOptionsJobQueueTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get sound => 'Sesleri Çal';
+}
+
+// Path: misskey.widgetOptions_.rss_
+class _TranslationsMisskeyWidgetOptionsRssTrTr extends TranslationsMisskeyWidgetOptionsRssEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get url => 'RSS beslemesi URL\'si';
+	@override String get refreshIntervalSec => 'Güncelleme aralığı (saniye)';
+	@override String get maxEntries => 'Görüntülenecek maksimum öğe sayısı';
+}
+
+// Path: misskey.widgetOptions_.rssTicker_
+class _TranslationsMisskeyWidgetOptionsRssTickerTrTr extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
+	_TranslationsMisskeyWidgetOptionsRssTickerTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get shuffle => 'Görüntüleme sırasını karıştır';
+	@override String get duration => 'Kaydırma yazısı hızı (saniye)';
+	@override String get reverse => 'Geriye doğru kaydır';
 }
 
 // Path: misskey.widgetOptions_.birthdayFollowings_
@@ -4069,8 +4261,18 @@ class _TranslationsMisskeyPostFormHowToUseTrTr extends TranslationsMisskeyPostFo
 	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
+	@override String get content_title => 'Metin';
+	@override String get content_description => 'Yayınlamak istediğiniz içeriği girin.';
+	@override String get toolbar_title => 'Araç Çubuğu';
+	@override String get toolbar_description => 'Dosya ve anket ekleyebilir, açıklamalar ve etiketler ekleyebilir, emoji ve bahsetme mesajları ekleyebilirsiniz.';
+	@override String get account_title => 'Hesap Menüsü';
+	@override String get account_description => 'Paylaşım yaptığınız hesabı değiştirebilir ve hesabınıza kaydedilmiş taslak ve planlanmış paylaşımların listesini görüntüleyebilirsiniz.';
 	@override String get visibility_title => 'Görünürlük';
+	@override String get visibility_description => 'Notlarınıza kimlerin erişebileceğinin kapsamını belirleyebilirsiniz.';
 	@override String get menu_title => 'Menü';
+	@override String get menu_description => 'Taslak olarak kaydetme, gönderi planlama ve tepki ayarlama gibi diğer işlemleri de gerçekleştirebilirsiniz.';
+	@override String get submit_title => 'Gönder düğmesi';
+	@override String get submit_description => 'Bir not paylaşacağım. Ctrl + Enter / Cmd + Enter tuşlarını kullanarak da paylaşım yapabilirsiniz.';
 }
 
 // Path: misskey.postForm_.placeholders_
@@ -4122,6 +4324,8 @@ class _TranslationsMisskeyNotificationTypesTrTr extends TranslationsMisskeyNotif
 	@override String get quote => 'Alıntılar';
 	@override String get reaction => 'Tepki';
 	@override String get pollEnded => 'Anketler sona eriyor';
+	@override String get scheduledNotePosted => 'Planlanan gönderi başarılı';
+	@override String get scheduledNotePostFailed => 'Planlanan gönderi başarısız oldu';
 	@override String get receiveFollowRequest => 'Takip istekleri alındı';
 	@override String get followRequestAccepted => 'Kabul edilen takip istekleri';
 	@override String get roleAssigned => 'Verilen rol';
@@ -4144,6 +4348,21 @@ class _TranslationsMisskeyNotificationActionsTrTr extends TranslationsMisskeyNot
 	@override String get followBack => 'seni takip ettim';
 	@override String get reply => 'Yanıtla';
 	@override String get renote => 'Renote';
+}
+
+// Path: misskey.deck_.howToUse_
+class _TranslationsMisskeyDeckHowToUseTrTr extends TranslationsMisskeyDeckHowToUseEnUs {
+	_TranslationsMisskeyDeckHowToUseTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
+
+	final TranslationsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get addColumn_title => 'Sütun ekle';
+	@override String get addColumn_description => 'Sütun türlerini seçip ekleyebilirsiniz.';
+	@override String get settings_title => 'Arayüz Yapılandırması';
+	@override String get settings_description => 'Sekme kullanıcı arayüzünü ayrıntılı olarak yapılandırabilirsiniz.';
+	@override String get switchProfile_title => 'Profili Değiştir';
+	@override String get switchProfile_description => 'Kullanıcı arayüzü düzenlerini profil olarak kaydedebilir ve istediğiniz zaman bunlar arasında geçiş yapabilirsiniz.';
 }
 
 // Path: misskey.deck_.columns_
@@ -4519,6 +4738,8 @@ class _TranslationsMisskeyImageEffectorFxsTrTr extends TranslationsMisskeyImageE
 	@override String get mirror => 'Ayna';
 	@override String get invert => 'Renkleri Ters Çevir';
 	@override String get grayscale => 'Gri tonlama';
+	@override String get blur => 'Bulanıklık';
+	@override String get pixelate => 'Mozaik';
 	@override String get colorAdjust => 'Renk Düzeltme';
 	@override String get colorClamp => 'Renk Sıkıştırma';
 	@override String get colorClampAdvanced => 'Renk Sıkıştırma (Gelişmiş)';
@@ -4530,6 +4751,7 @@ class _TranslationsMisskeyImageEffectorFxsTrTr extends TranslationsMisskeyImageE
 	@override String get checker => 'Denetleyici';
 	@override String get blockNoise => 'Gürültüyü Engelle';
 	@override String get tearing => 'Yırtılma';
+	@override String get fill => 'Doldur';
 }
 
 // Path: misskey.imageEffector_.fxProps_
@@ -4542,6 +4764,8 @@ class _TranslationsMisskeyImageEffectorFxPropsTrTr extends TranslationsMisskeyIm
 	@override String get angle => 'Açı';
 	@override String get scale => 'Boyut';
 	@override String get size => 'Boyut';
+	@override String get radius => 'Yarıçap';
+	@override String get samples => 'Örnek sayısı';
 	@override String get offset => 'Pozisyon';
 	@override String get color => 'Renk';
 	@override String get opacity => 'Opaklık';
@@ -4566,11 +4790,8 @@ class _TranslationsMisskeyImageEffectorFxPropsTrTr extends TranslationsMisskeyIm
 	@override String get threshold => 'Eşik';
 	@override String get centerX => 'Merkez X';
 	@override String get centerY => 'Merkez Y';
-	@override String get zoomLinesSmoothing => 'Düzeltme';
-	@override String get zoomLinesSmoothingDescription => 'Düzeltme ve yakınlaştırma çizgi genişliği birlikte kullanılamaz.';
-	@override String get zoomLinesThreshold => 'Zoom çizgi genişliği';
 	@override String get zoomLinesMaskSize => 'Merkez çapı';
-	@override String get zoomLinesBlack => 'Siyah yap';
+	@override String get circle => 'Dairesel';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

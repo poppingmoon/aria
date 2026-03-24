@@ -11341,20 +11341,8 @@ class TranslationsMisskeyImageEffectorFxPropsEnUs {
 	/// en-US: 'Center Y'
 	String get centerY => 'Center Y';
 
-	/// en-US: 'Smoothing'
-	String get zoomLinesSmoothing => 'Smoothing';
-
-	/// en-US: 'Smoothing and zoom line width cannot be used together.'
-	String get zoomLinesSmoothingDescription => 'Smoothing and zoom line width cannot be used together.';
-
-	/// en-US: 'Zoom line width'
-	String get zoomLinesThreshold => 'Zoom line width';
-
 	/// en-US: 'Center diameter'
 	String get zoomLinesMaskSize => 'Center diameter';
-
-	/// en-US: 'Make black'
-	String get zoomLinesBlack => 'Make black';
 
 	/// en-US: 'Circular'
 	String get circle => 'Circular';

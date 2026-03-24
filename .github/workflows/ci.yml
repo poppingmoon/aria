@@ -65,7 +65,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: any
+          fail_level: error
           cleanup: false
 
       - name: Check diff
@@ -158,7 +158,7 @@ jobs:
           wait_for_boot: true
 
       - name: Integration test
-        uses: nick-fields/retry@ce71cc2ab81d554ebbe88c79ab5975992d79ba08 # v3.0.2
+        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
         with:
           timeout_minutes: 30
           max_attempts: 3
@@ -198,7 +198,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: any
+          fail_level: error
           cleanup: false
 
       - name: Check diff
@@ -232,7 +232,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
         with:
-          fail_level: any
+          fail_level: error
           cleanup: false
 
       - name: Check diff
