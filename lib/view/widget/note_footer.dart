@@ -84,9 +84,10 @@ class NoteFooter extends ConsumerWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
+        final widthFactor = maxContentWidth / constraints.maxWidth;
         final style = defaultTextStyle.apply(
           color: theme.colorScheme.onSurface.withValues(alpha: 0.6 * opacity),
-          fontSizeFactor: scale * maxContentWidth / constraints.maxWidth,
+          fontSizeFactor: scale * widthFactor,
         );
         return IconButtonTheme(
           data: IconButtonThemeData(
@@ -97,6 +98,7 @@ class NoteFooter extends ConsumerWidget {
               iconSize: style.lineHeight,
               minimumSize: Size.fromRadius(style.fontSize!),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              padding: EdgeInsets.all(8.0 * widthFactor),
             ),
           ),
           child: FittedBox(

@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -14,50 +15,35 @@ import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import 'media_list.dart';
 import 'mfm.dart';
-import 'note_footer.dart';
 import 'poll_widget.dart';
-import 'reactions_viewer.dart';
 
 class SubNoteContent extends HookConsumerWidget {
   const SubNoteContent({
     super.key,
     required this.account,
     required this.noteId,
-    this.showFooter,
     this.focusPostForm,
-    this.note,
   });
 
   final Account account;
   final String noteId;
-  final bool? showFooter;
   final void Function()? focusPostForm;
-  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
+    final note = ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final (
-      showReactionsViewer,
-      showSubNoteFooter,
-      alwaysExpandLongNote,
-      expandMedia,
-      showAllReactions,
-    ) = ref.watch(
+    final (showSubNoteFooter, alwaysExpandLongNote, expandMedia) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
-          settings.showSubNoteReactionsViewer,
           settings.showSubNoteFooter,
           settings.alwaysExpandLongNote,
           settings.alwaysExpandMediaInSubNote,
-          settings.alwaysShowAllReactions,
         ),
       ),
     );
-    final showFooter = this.showFooter ?? showSubNoteFooter;
     final parsed = note.text != null
         ? ref.watch(parsedMfmProvider(note.text!))
         : null;
@@ -121,63 +107,62 @@ class SubNoteContent extends HookConsumerWidget {
         if (!isCollapsed.value) ...[
           if (note.files.isNotEmpty) ...[
             if (!expandMedia)
-              TextButton.icon(
+              TextButton(
                 style: TextButton.styleFrom(
-                  padding: const EdgeInsetsDirectional.only(
-                    top: 4.0,
-                    end: 8.0,
-                    bottom: 4.0,
-                  ),
+                  padding: const EdgeInsetsDirectional.only(end: 8.0),
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 onPressed: () =>
                     isFilesCollapsed.value = !isFilesCollapsed.value,
-                icon: Icon(
-                  isFilesCollapsed.value
-                      ? Icons.arrow_right
-                      : Icons.arrow_drop_down,
-                ),
-                label: Text(t.misskey.withNFiles(n: note.files.length)),
-              ),
-            if (expandMedia || !isFilesCollapsed.value)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: MediaList(
-                  account: account,
-                  files: note.files,
-                  user: note.user,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      isFilesCollapsed.value
+                          ? Icons.arrow_right
+                          : Icons.arrow_drop_down,
+                      size: style.lineHeight + 8.0,
+                    ),
+                    Text(t.misskey.withNFiles(n: note.files.length)),
+                  ],
                 ),
               ),
+            if (expandMedia || !isFilesCollapsed.value) ...[
+              const SizedBox(height: 4.0),
+              MediaList(account: account, files: note.files, user: note.user),
+            ],
           ],
           if (note.poll case final poll?) ...[
             if (!expandMedia)
-              TextButton.icon(
+              TextButton(
                 style: TextButton.styleFrom(
-                  padding: const EdgeInsetsDirectional.only(
-                    top: 4.0,
-                    end: 8.0,
-                    bottom: 4.0,
-                  ),
+                  padding: const EdgeInsetsDirectional.only(end: 8.0),
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 onPressed: () => isPollCollapsed.value = !isPollCollapsed.value,
-                icon: Icon(
-                  isPollCollapsed.value
-                      ? Icons.arrow_right
-                      : Icons.arrow_drop_down,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      isPollCollapsed.value
+                          ? Icons.arrow_right
+                          : Icons.arrow_drop_down,
+                      size: style.lineHeight + 8.0,
+                    ),
+                    Text(t.misskey.poll),
+                  ],
                 ),
-                label: Text(t.misskey.poll),
               ),
-            if (expandMedia || !isPollCollapsed.value)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: PollWidget(account: account, noteId: noteId, poll: poll),
-              ),
+            if (expandMedia || !isPollCollapsed.value) ...[
+              const SizedBox(height: 4.0),
+              PollWidget(account: account, noteId: noteId, poll: poll),
+            ],
           ],
         ],
-        if (collapseReason != null)
+        if (collapseReason != null) ...[
+          const SizedBox(height: 4.0),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
               foregroundColor: colors.fg,
@@ -199,23 +184,7 @@ class SubNoteContent extends HookConsumerWidget {
               isCollapsed.value ? t.misskey.showMore : t.misskey.showLess,
             ),
           ),
-        if (showReactionsViewer &&
-            note.reactionAcceptance != ReactionAcceptance.likeOnly) ...[
-          const SizedBox(height: 4.0),
-          ReactionsViewer(
-            account: account,
-            noteId: noteId,
-            showAllReactions: showAllReactions,
-            note: this.note,
-          ),
         ],
-        if (showFooter)
-          NoteFooter(
-            account: account,
-            note: note,
-            appearNote: note,
-            focusPostForm: focusPostForm,
-          ),
       ],
     );
   }

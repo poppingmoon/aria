@@ -1219,14 +1219,16 @@ class NoteDisplayPage extends HookConsumerWidget {
                 ],
               ),
             ),
-            _NoteDisplayArea.preview => SingleChildScrollView(
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: const _NotePreview(),
+            _NoteDisplayArea.preview => ListView(
+              children: [
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: const _NotePreview(),
+                  ),
                 ),
-              ),
+              ],
             ),
           },
         ),

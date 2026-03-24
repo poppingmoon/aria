@@ -11,7 +11,9 @@ import '../../util/get_note_action.dart';
 import 'cw_button.dart';
 import 'deleted_note_widget.dart';
 import 'mfm.dart';
+import 'note_footer.dart';
 import 'note_header.dart';
+import 'reactions_viewer.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
@@ -44,21 +46,27 @@ class NoteSimpleWidget extends HookConsumerWidget {
       );
     }
     final (
+      showAvatars,
+      showReactionsViewer,
+      showSubNoteFooter,
+      alwaysExpandCw,
+      showAllReactions,
+      avatarScale,
       tapAction,
       doubleTapAction,
       longPressAction,
-      showAvatars,
-      avatarScale,
-      alwaysExpandCw,
     ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
+          settings.showAvatarsInSubNote,
+          settings.showSubNoteReactionsViewer,
+          settings.showSubNoteFooter,
+          settings.alwaysExpandCw,
+          settings.alwaysShowAllReactions,
+          settings.avatarScale,
           settings.noteTapAction,
           settings.noteDoubleTapAction,
           settings.noteLongPressAction,
-          settings.showAvatarsInSubNote,
-          settings.avatarScale,
-          settings.alwaysExpandCw,
         ),
       ),
     );
@@ -97,13 +105,18 @@ class NoteSimpleWidget extends HookConsumerWidget {
       onLongPress: onLongPress != null ? () => onLongPress(ref) : null,
       borderRadius: borderRadius,
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: EdgeInsets.only(
+          left: 4.0,
+          top: 8.0,
+          right: 4.0,
+          bottom: showFooter ?? showSubNoteFooter ? 0.0 : 8.0,
+        ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (showAvatars)
               Padding(
-                padding: const EdgeInsetsDirectional.only(top: 8.0, end: 8.0),
+                padding: const EdgeInsetsDirectional.only(top: 4.0, end: 8.0),
                 child: UserAvatar(
                   account: account,
                   user: note.user,
@@ -119,7 +132,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
                 children: [
                   NoteHeader(account: account, note: note),
                   if (note.cw case final cw?) ...[
-                    if (cw.isNotEmpty)
+                    if (cw.isNotEmpty) ...[
                       Mfm(
                         account: account,
                         text: cw,
@@ -128,19 +141,42 @@ class NoteSimpleWidget extends HookConsumerWidget {
                         noteId: note.id,
                         nyaize: true,
                       ),
+                      const SizedBox(height: 2.0),
+                    ],
                     CwButton(
                       note: note,
                       onPressed: (value) => showContent.value = value,
                       isOpen: showContent.value,
                     ),
+                    if (showContent.value &&
+                        (note.text != null ||
+                            note.replyId != null ||
+                            note.renoteId != null))
+                      const SizedBox(height: 2.0),
                   ],
                   if (note.cw == null || showContent.value)
                     SubNoteContent(
                       account: account,
                       noteId: noteId,
-                      showFooter: showFooter,
                       focusPostForm: focusPostForm,
+                    ),
+                  if (showReactionsViewer &&
+                      note.reactionAcceptance !=
+                          ReactionAcceptance.likeOnly) ...[
+                    if (note.reactions.isNotEmpty) const SizedBox(height: 4.0),
+                    ReactionsViewer(
+                      account: account,
+                      noteId: noteId,
+                      showAllReactions: showAllReactions,
                       note: this.note,
+                    ),
+                  ],
+                  if (showSubNoteFooter)
+                    NoteFooter(
+                      account: account,
+                      note: note,
+                      appearNote: note,
+                      focusPostForm: focusPostForm,
                     ),
                 ],
               ),
