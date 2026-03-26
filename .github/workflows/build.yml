@@ -97,7 +97,7 @@ jobs:
           cp -r . $APK_BUILD_DIR
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -213,7 +213,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -284,7 +284,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -389,7 +389,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -464,7 +464,7 @@ jobs:
         run: rustup update
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: stable
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
@@ -584,7 +584,7 @@ jobs:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@0ca7a949e71ae44c8e688a51c5e7e93b2c87e295 # v2.22.0
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
           channel: master
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}

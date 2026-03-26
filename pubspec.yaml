@@ -12,7 +12,7 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/animated_image
       ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
-  async: ^2.13.0
+  async: ^2.13.1
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
@@ -116,8 +116,8 @@ dependencies:
   rust_lib_aria:
     path: rust_builder
   share_plus: ^12.0.1
-  shared_preferences: ^2.5.4
-  shared_preferences_platform_interface: ^2.4.1
+  shared_preferences: ^2.5.5
+  shared_preferences_platform_interface: ^2.4.2
   slang: ^4.14.0
   slang_flutter: ^4.14.0
   tinycolor2:
