@@ -296,6 +296,11 @@ class NoteWidget extends HookConsumerWidget {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: showFooter ?? showNoteFooter
+                        ? 2.0 + max(verticalPadding, 8.0)
+                        : 2.0,
+                  ),
                 ] else
                   ChannelColorBarBox(
                     note: appearNote,
