@@ -106,9 +106,9 @@ class NoteSimpleWidget extends HookConsumerWidget {
       borderRadius: borderRadius,
       child: Padding(
         padding: EdgeInsets.only(
-          left: 4.0,
-          top: 8.0,
-          right: 4.0,
+          left: 8.0,
+          top: 6.0,
+          right: 8.0,
           bottom: showFooter ?? showSubNoteFooter ? 0.0 : 8.0,
         ),
         child: Row(
