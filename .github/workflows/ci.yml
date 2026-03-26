@@ -8,30 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  get-flutter-version:
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-
-    outputs:
-      flutter-version: ${{ steps.get-flutter-version.outputs.version }}
-
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-
-      - name: Get Flutter version from .fvmrc
-        id: get-flutter-version
-        run: >
-          echo version=$(grep flutter .fvmrc | cut -d ":" -f2|cut -d "\"" -f2)
-          >> $GITHUB_OUTPUT
-
   format:
     runs-on: ubuntu-latest
-
-    needs: get-flutter-version
 
     permissions:
       contents: read
@@ -45,8 +23,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Get dependencies
@@ -74,8 +52,6 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
-
     permissions:
       contents: read
 
@@ -87,8 +63,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Get dependencies
@@ -102,8 +78,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
-
     permissions:
       contents: read
 
@@ -115,8 +89,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Get dependencies
@@ -128,8 +102,6 @@ jobs:
   integration-test-ios:
     runs-on: macos-26
 
-    needs: get-flutter-version
-
     permissions:
       contents: read
 
@@ -141,8 +113,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Get dependencies
@@ -167,8 +139,6 @@ jobs:
   check-i18n-sorting:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
-
     permissions:
       contents: read
       pull-requests: write
@@ -181,8 +151,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Get dependencies
@@ -207,8 +177,6 @@ jobs:
   check-build-diff:
     runs-on: ubuntu-latest
 
-    needs: get-flutter-version
-
     permissions:
       contents: read
       pull-requests: write
@@ -221,8 +189,8 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
         with:
-          channel: 'stable'
-          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          channel: stable
+          flutter-version-file: .fvmrc
           cache: true
 
       - name: Run build_runner
