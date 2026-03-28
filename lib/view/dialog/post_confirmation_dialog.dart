@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/max_content_width.dart';
-import '../../extension/notes_create_request_extension.dart';
+import '../../extension/community_channel_extension.dart';
+import '../../extension/note_draft_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/channel_notifier_provider.dart';
@@ -19,10 +20,10 @@ import '../widget/note_widget.dart';
 Future<bool> confirmPost(
   WidgetRef ref,
   Account account,
-  NotesCreateRequest request, {
+  NoteDraft draft, {
   List<DriveFile>? files,
 }) async {
-  if (request.replyId case final replyId?) {
+  if (draft.replyId case final replyId?) {
     final reply = ref.read(noteNotifierProvider(account, replyId));
     if (reply == null) {
       final reply = await futureWithDialog(
@@ -34,7 +35,7 @@ Future<bool> confirmPost(
       }
     }
   }
-  if (request.renoteId case final renoteId?) {
+  if (draft.renoteId case final renoteId?) {
     final renote = ref.read(noteNotifierProvider(account, renoteId));
     if (renote == null) {
       if (!ref.context.mounted) return false;
@@ -54,7 +55,7 @@ Future<bool> confirmPost(
     context: ref.context,
     builder: (context) => PostConfirmationDialog(
       account: account,
-      request: request,
+      draft: draft,
       files: files ?? [],
     ),
   );
@@ -65,26 +66,37 @@ class PostConfirmationDialog extends ConsumerWidget {
   const PostConfirmationDialog({
     super.key,
     required this.account,
-    required this.request,
+    required this.draft,
     required this.files,
   });
 
   final Account account;
-  final NotesCreateRequest request;
+  final NoteDraft draft;
   final List<DriveFile> files;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
-    final channel = request.channelId != null
-        ? ref.watch(channelNotifierProvider(account, request.channelId!)).value
-        : null;
+    final channel =
+        draft.channel ??
+        switch (draft.channelId) {
+          final channelId? => ref.watch(
+            channelNotifierProvider(
+              account,
+              channelId,
+            ).select((channel) => channel.value?.toNoteChannelInfo()),
+          ),
+          _ => null,
+        };
     final canScheduleNote =
         i?.policies?.canScheduleNote ??
         ((i?.policies?.scheduleNoteMax ?? 0) > 0);
-    final note = request
-        .copyWith(scheduledAt: canScheduleNote ? request.scheduledAt : null)
-        .toNote(i: i, channel: channel);
+    final note = draft
+        .copyWith(
+          channel: channel,
+          scheduledAt: canScheduleNote ? draft.scheduledAt : null,
+        )
+        .toNote();
     final theme = Theme.of(context);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
@@ -101,14 +113,14 @@ class PostConfirmationDialog extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    request.isRenote && files.isEmpty
+                    draft.isRenote && files.isEmpty
                         ? t.aria.renoteConfirm
                         : t.aria.postConfirm,
                     style: theme.textTheme.titleMedium,
                   ),
                 ),
               ),
-              if (request.scheduledAt case final date? when canScheduleNote)
+              if (draft.scheduledAt case final date? when canScheduleNote)
                 Card.filled(
                   color: colors.infoBg,
                   child: Padding(
@@ -134,10 +146,10 @@ class PostConfirmationDialog extends ConsumerWidget {
                     ),
                   ),
                 ),
-              if (request.isRenote && files.isEmpty)
+              if (draft.isRenote && files.isEmpty)
                 NoteWidget(
                   account: account,
-                  noteId: request.renoteId!,
+                  noteId: draft.renoteId!,
                   showFooter: false,
                   backgroundColor: Colors.transparent,
                 )

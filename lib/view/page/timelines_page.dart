@@ -359,10 +359,10 @@ class _PostForm extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
-    final request = ref.watch(postNotifierProvider(account.value));
+    final draft = ref.watch(postNotifierProvider(account.value));
     final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
-    final cwController = useTextEditingController(text: request.cw);
-    final controller = useTextEditingController(text: request.text);
+    final cwController = useTextEditingController(text: draft.cw);
+    final controller = useTextEditingController(text: draft.text);
     final hashtagsController = useTextEditingController(
       text: hashtags.join(' '),
     );

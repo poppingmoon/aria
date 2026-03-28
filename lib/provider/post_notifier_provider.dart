@@ -5,6 +5,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../extension/note_draft_extension.dart';
 import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
@@ -23,21 +24,22 @@ part 'post_notifier_provider.g.dart';
 @Riverpod(keepAlive: true)
 class PostNotifier extends _$PostNotifier {
   @override
-  NotesCreateRequest build(Account account, {String? noteId}) {
+  NoteDraft build(Account account, {String? noteId}) {
     ref.onDispose(() => _timer?.cancel());
     if (noteId != null) {
       final note = ref.read(noteNotifierProvider(account, noteId));
-      return note?.toNotesCreateRequest() ?? _defaultRequest;
+      return note?.toNoteDraft() ?? _defaultDraft;
     }
     final draft = ref.watch(sharedPreferencesProvider).getString(_key);
     if (draft != null) {
       try {
-        return NotesCreateRequest.fromJson(
+        final request = NotesCreateRequest.fromJson(
           jsonDecode(draft) as Map<String, dynamic>,
         );
+        return request.toNoteDraft(i: _i);
       } catch (_) {}
     }
-    return _defaultRequest;
+    return _defaultDraft;
   }
 
   String get _key => '$account/draft';
@@ -51,7 +53,7 @@ class PostNotifier extends _$PostNotifier {
 
   bool _saveScheduled = false;
 
-  NotesCreateRequest get _defaultRequest {
+  NoteDraft get _defaultDraft {
     final settings = ref.read(accountSettingsNotifierProvider(account));
     final localOnly = settings.rememberNoteVisibility
         ? settings.localOnly
@@ -64,7 +66,11 @@ class PostNotifier extends _$PostNotifier {
       isSilenced ? NoteVisibility.home : NoteVisibility.public,
     );
     final reactionAcceptance = settings.reactionAcceptance;
-    return NotesCreateRequest(
+    return NoteDraft(
+      id: '',
+      createdAt: DateTime.now(),
+      userId: '',
+      user: UserLite(id: '', username: '', avatarUrl: Uri()),
       localOnly: localOnly,
       visibility: visibility,
       reactionAcceptance: reactionAcceptance,
@@ -118,24 +124,24 @@ class PostNotifier extends _$PostNotifier {
     return response.object['id'] as String;
   }
 
-  Future<void> fromRequest(NotesCreateRequest request, Account origin) async {
+  Future<void> fromDraft(NoteDraft draft, Account origin) async {
     if (account.host == origin.host) {
-      if (request case NotesCreateRequest(:final replyId?)) {
+      if (draft case NoteDraft(:final replyId?)) {
         final reply = ref.read(noteNotifierProvider(origin, replyId));
         if (reply != null) {
           ref.read(notesNotifierProvider(account).notifier).add(reply);
         }
       }
-      if (request case NotesCreateRequest(:final renoteId?)) {
+      if (draft case NoteDraft(:final renoteId?)) {
         final renote = ref.read(noteNotifierProvider(origin, renoteId));
         if (renote != null) {
           ref.read(notesNotifierProvider(account).notifier).add(renote);
         }
       }
-      state = request;
+      state = draft;
     } else {
-      final reply = request.replyId != null
-          ? ref.read(noteNotifierProvider(origin, request.replyId!))
+      final reply = draft.replyId != null
+          ? ref.read(noteNotifierProvider(origin, draft.replyId!))
           : null;
       String? replyId;
       if (reply != null && !reply.localOnly) {
@@ -143,8 +149,8 @@ class PostNotifier extends _$PostNotifier {
           replyId = await _getNoteIdFromRemoteNote(origin, reply);
         } catch (_) {}
       }
-      final renote = request.renoteId != null
-          ? ref.read(noteNotifierProvider(origin, request.renoteId!))
+      final renote = draft.renoteId != null
+          ? ref.read(noteNotifierProvider(origin, draft.renoteId!))
           : null;
       String? renoteId;
       if (renote != null && !renote.localOnly) {
@@ -152,8 +158,8 @@ class PostNotifier extends _$PostNotifier {
           renoteId = await _getNoteIdFromRemoteNote(origin, renote);
         } catch (_) {}
       }
-      final poll = request.poll;
-      state = request.copyWith(
+      final poll = draft.poll;
+      state = draft.copyWith(
         visibleUserIds: null,
         replyId: replyId,
         renoteId: renoteId,
@@ -170,17 +176,20 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void fromNote(Note note) {
-    state = note.toNotesCreateRequest();
+    state = note.toNoteDraft();
     _scheduleSave();
   }
 
   void reset() {
-    state = _defaultRequest;
+    state = _defaultDraft;
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 
   Future<Note> post({List<String>? fileIds, List<String>? hashtags}) async {
-    final request = state.copyWith(fileIds: fileIds).addHashtags(hashtags);
+    final draft = state.copyWith(
+      fileIds: fileIds,
+      hashtag: hashtags?.join(' '),
+    );
     if (noteId case final noteId?) {
       List<String>? endpoints;
       try {
@@ -190,78 +199,45 @@ class PostNotifier extends _$PostNotifier {
         );
       } catch (_) {}
       if (endpoints?.contains('notes/update') ?? true) {
-        await _misskey.notes.update(
-          NotesUpdateRequest(
-            noteId: noteId,
-            text: request.text,
-            cw: request.cw,
-            fileIds: fileIds,
-            poll: request.poll,
-          ),
-        );
-        final note = request.toNote();
+        await _misskey.notes.update(draft.toNotesUpdateRequest(noteId));
+        final note = draft.toNote();
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
         final response = await _misskey.notes.edit(
-          NotesEditRequest(
-            editId: noteId,
-            visibility: request.visibility,
-            visibleUserIds: request.visibleUserIds,
-            text: request.text,
-            cw: request.cw,
-            localOnly: request.localOnly,
-            fileIds: fileIds,
-            replyId: request.replyId,
-            renoteId: request.renoteId,
-            channelId: request.channelId,
-            poll: request.poll,
-          ),
+          draft.toNotesEditRequest(noteId),
         );
         ref.read(notesNotifierProvider(account).notifier).add(response);
         return response;
       }
     } else {
-      if (request.scheduledAt case final scheduledAt?) {
+      if (draft.scheduledAt != null) {
         MeDetailed? i;
         try {
           // ignore: only_use_keep_alive_inside_keep_alive
           i = await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
-          await _misskey.notes.create(request);
+          await _misskey.notes.create(draft.toNotesCreateRequest());
           reset();
-          return request.toNote();
+          return draft.toNote();
         } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
             when scheduleNoteMax > 0) {
           await _misskey.notes.schedule.create(
-            NotesScheduleCreateRequest(
-              visibility: request.visibility,
-              visibleUserIds: request.visibleUserIds,
-              cw: request.cw,
-              reactionAcceptance: request.reactionAcceptance,
-              replyId: request.replyId,
-              renoteId: request.renoteId,
-              text: request.text,
-              fileIds: request.fileIds,
-              channelId: request.channelId,
-              localOnly: request.localOnly,
-              poll: request.poll,
-              scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
-            ),
+            draft.toNotesScheduleCreateRequest(),
           );
           reset();
-          return request.toNote();
+          return draft.toNote();
         }
       }
       final response = await _misskey.notes.create(
-        request.copyWith(scheduledAt: null),
+        draft.copyWith(scheduledAt: null).toNotesCreateRequest(),
       );
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
       }
       reset();
-      return response ?? request.toNote();
+      return response ?? draft.toNote();
     }
   }
 
@@ -424,7 +400,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearReply() {
-    final defaultRequest = _defaultRequest;
+    final defaultRequest = _defaultDraft;
     state = state.copyWith(
       visibility: defaultRequest.visibility,
       localOnly: defaultRequest.localOnly,
@@ -452,7 +428,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearRenote() {
-    final defaultRequest = _defaultRequest;
+    final defaultRequest = _defaultDraft;
     state = state.copyWith(
       visibility: defaultRequest.visibility,
       localOnly: defaultRequest.localOnly,
@@ -471,7 +447,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearChannel() {
-    final defaultRequest = _defaultRequest;
+    final defaultRequest = _defaultDraft;
     state = state.copyWith(
       channelId: null,
       visibility: defaultRequest.visibility,
@@ -500,7 +476,7 @@ class PostNotifier extends _$PostNotifier {
       state = state.copyWith(poll: null);
     } else {
       state = state.copyWith(
-        poll: const NotesCreatePollRequest(choices: ['', ''], multiple: false),
+        poll: const NoteDraftPoll(multiple: false, choices: ['', '']),
       );
     }
     _scheduleSave();
@@ -511,7 +487,7 @@ class PostNotifier extends _$PostNotifier {
     state = state.copyWith(
       poll:
           poll?.copyWith(choices: [...poll.choices, choice]) ??
-          NotesCreatePollRequest(choices: [choice]),
+          NoteDraftPoll(multiple: false, choices: [choice]),
     );
     _scheduleSave();
   }

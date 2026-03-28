@@ -4,13 +4,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/max_content_width.dart';
-import '../../extension/notes_create_request_extension.dart';
+import '../../extension/note_draft_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
-import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_form_hashtags_notifier_provider.dart';
@@ -30,49 +29,44 @@ class PostPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
     final i = ref.watch(iNotifierProvider(account.value)).value;
-    final request = ref.watch(
+    final draft = ref.watch(
       postNotifierProvider(account.value, noteId: noteId),
     );
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final channel = request.channelId != null
-        ? ref
-              .watch(channelNotifierProvider(account.value, request.channelId!))
-              .value
-        : null;
     final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
     final useHashtags = ref.watch(
       accountSettingsNotifierProvider(
         account.value,
       ).select((settings) => settings.postFormUseHashtags),
     );
-    final note = request
-        .addHashtags(useHashtags ? hashtags : null)
-        .toNote(i: i, channel: channel);
-    final canPost = request.canPost || attaches.isNotEmpty;
+    final note = draft
+        .copyWith(hashtag: useHashtags ? hashtags.join(' ') : null)
+        .toNote();
+    final canPost = draft.canPost || attaches.isNotEmpty;
     final canScheduleNote =
         noteId == null &&
         (i?.policies?.canScheduleNote ??
             ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = switch (request) {
+    final (buttonText, buttonIcon) = switch (draft) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+      NoteDraft(scheduledAt: _?) when canScheduleNote => (
         t.misskey.schedule,
         Icons.send,
       ),
-      NotesCreateRequest(isRenote: true) when attaches.isEmpty => (
+      NoteDraft(isRenote: true) when attaches.isEmpty => (
         t.misskey.renote,
         Icons.repeat_rounded,
       ),
-      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
-      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
+      NoteDraft(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NoteDraft(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
-    final cwController = useTextEditingController(text: request.cw);
-    final controller = useTextEditingController(text: request.text);
+    final cwController = useTextEditingController(text: draft.cw);
+    final controller = useTextEditingController(text: draft.text);
     final hashtagsController = useTextEditingController(
       text: hashtags.join(' '),
     );
@@ -171,11 +165,11 @@ class PostPage extends HookConsumerWidget {
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       width: maxContentWidth,
-                      child: request.isRenote
+                      child: draft.isRenote
                           ? NoteWidget(
                               key: const ValueKey('renote'),
                               account: account.value,
-                              noteId: request.renoteId!,
+                              noteId: draft.renoteId!,
                               borderRadius: BorderRadius.circular(8.0),
                             )
                           : NoteWidget(

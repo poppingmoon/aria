@@ -14,7 +14,7 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../constant/shortcuts.dart';
 import '../../extension/community_channel_extension.dart';
 import '../../extension/list_mfm_node_extension.dart';
-import '../../extension/notes_create_request_extension.dart';
+import '../../extension/note_draft_extension.dart';
 import '../../extension/text_editing_controller_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -97,7 +97,7 @@ class PostForm extends HookConsumerWidget {
     Account account,
     String? noteId,
   ) async {
-    final request = ref.read(postNotifierProvider(account, noteId: noteId));
+    final draft = ref.read(postNotifierProvider(account, noteId: noteId));
     final hashtags =
         ref.read(accountSettingsNotifierProvider(account)).postFormUseHashtags
         ? ref.read(postFormHashtagsNotifierProvider(account))
@@ -121,12 +121,7 @@ class PostForm extends HookConsumerWidget {
     if (!ref.context.mounted) return;
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final confirmed = await confirmPost(
-        ref,
-        account,
-        request.addHashtags(hashtags),
-        files: files,
-      );
+      final confirmed = await confirmPost(ref, account, draft, files: files);
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
@@ -198,11 +193,11 @@ class PostForm extends HookConsumerWidget {
     if (destination == null || destination == origin) {
       return null;
     }
-    final request = ref.read(postNotifierProvider(origin));
+    final draft = ref.read(postNotifierProvider(origin));
     try {
       await ref
           .read(postNotifierProvider(destination).notifier)
-          .fromRequest(request, origin);
+          .fromDraft(draft, origin);
       ref.read(postNotifierProvider(origin).notifier).reset();
     } catch (_) {}
     return destination;
@@ -216,24 +211,24 @@ class PostForm extends HookConsumerWidget {
       return;
     }, [this.account]);
     final i = ref.watch(iNotifierProvider(account.value)).value;
-    final request = ref.watch(
+    final draft = ref.watch(
       postNotifierProvider(account.value, noteId: noteId),
     );
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final reply = request.replyId != null
-        ? ref.watch(noteNotifierProvider(account.value, request.replyId!))
+    final reply = draft.replyId != null
+        ? ref.watch(noteNotifierProvider(account.value, draft.replyId!))
         : null;
-    final renote = request.renoteId != null
-        ? ref.watch(noteNotifierProvider(account.value, request.renoteId!))
+    final renote = draft.renoteId != null
+        ? ref.watch(noteNotifierProvider(account.value, draft.renoteId!))
         : null;
-    final channel = request.channelId != null
+    final channel = draft.channelId != null
         ? ref
-              .watch(channelNotifierProvider(account.value, request.channelId!))
+              .watch(channelNotifierProvider(account.value, draft.channelId!))
               .value
         : null;
-    final mentions = switch (request.text) {
+    final mentions = switch (draft.text) {
       final text? when text.isNotEmpty => ref.watch(
         parsedMfmProvider(text).select(extractMentions),
       ),
@@ -293,37 +288,37 @@ class PostForm extends HookConsumerWidget {
     );
     final canChangeLocalOnly =
         noteId == null &&
-        request.channelId == null &&
-        request.visibility != NoteVisibility.specified &&
+        draft.channelId == null &&
+        draft.visibility != NoteVisibility.specified &&
         !(reply?.localOnly ?? false) &&
         !(renote?.localOnly ?? false);
     final canChangeVisibility =
         noteId == null &&
-        request.channelId == null &&
+        draft.channelId == null &&
         reply?.visibility != NoteVisibility.specified;
     final canChangeChannel =
         noteId == null &&
         (renote?.channel?.allowRenoteToExternal ?? true) &&
         reply?.channel == null;
-    final canPost = request.canPost || attaches.isNotEmpty;
+    final canPost = draft.canPost || attaches.isNotEmpty;
     final canScheduleNote =
         noteId == null &&
         (i?.policies?.canScheduleNote ??
             ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = switch (request) {
+    final (buttonText, buttonIcon) = switch (draft) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+      NoteDraft(scheduledAt: _?) when canScheduleNote => (
         t.misskey.schedule,
         Icons.send,
       ),
-      NotesCreateRequest(isRenote: true) when attaches.isEmpty => (
+      NoteDraft(isRenote: true) when attaches.isEmpty => (
         t.misskey.renote,
         Icons.repeat_rounded,
       ),
-      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
-      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
+      NoteDraft(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NoteDraft(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
     final enableSpellCheck = ref.watch(
@@ -332,7 +327,7 @@ class PostForm extends HookConsumerWidget {
       ),
     );
     final useCw = useState(
-      useMemoized(() => request.cw?.isNotEmpty ?? false, []),
+      useMemoized(() => draft.cw?.isNotEmpty ?? false, []),
     );
     final (useHashtags, postFormHashtags) = ref.watch(
       accountSettingsNotifierProvider(account.value).select(
@@ -340,9 +335,9 @@ class PostForm extends HookConsumerWidget {
       ),
     );
     final cwController =
-        this.cwController ?? useTextEditingController(text: request.cw);
+        this.cwController ?? useTextEditingController(text: draft.cw);
     final controller =
-        this.controller ?? useTextEditingController(text: request.text);
+        this.controller ?? useTextEditingController(text: draft.text);
     final hashtagsController =
         this.hashtagsController ??
         useTextEditingController(text: postFormHashtags.join(' '));
@@ -353,7 +348,7 @@ class PostForm extends HookConsumerWidget {
       postNotifierProvider(
         account.value,
         noteId: noteId,
-      ).select((request) => request.cw),
+      ).select((draft) => draft.cw),
       (_, cw) {
         final s = cw ?? '';
         if (s != cwController.text) {
@@ -365,7 +360,7 @@ class PostForm extends HookConsumerWidget {
       postNotifierProvider(
         account.value,
         noteId: noteId,
-      ).select((request) => request.text),
+      ).select((draft) => draft.text),
       (_, text) {
         final s = text ?? '';
         if (s != controller.text) {
@@ -386,7 +381,7 @@ class PostForm extends HookConsumerWidget {
       }
     });
     useEffect(() {
-      final visibleUserIds = request.visibleUserIds;
+      final visibleUserIds = draft.visibleUserIds;
       if (visibleUserIds != null && visibleUserIds.isNotEmpty) {
         Future(() async {
           final users = await ref
@@ -417,8 +412,8 @@ class PostForm extends HookConsumerWidget {
             .updateFromString(hashtagsController.text);
       }
 
-      cwController.text = request.cw ?? '';
-      controller.text = request.text ?? '';
+      cwController.text = draft.cw ?? '';
+      controller.text = draft.text ?? '';
 
       cwController.addListener(cwControllerCallback);
       controller.addListener(controllerCallback);
@@ -431,20 +426,20 @@ class PostForm extends HookConsumerWidget {
       };
     }, [account.value]);
     final placeholderPrefix = [
-      switch (request.visibility) {
+      switch (draft.visibility) {
         NoteVisibility.public => t.misskey.visibility_.public,
         NoteVisibility.home => t.misskey.visibility_.home,
         NoteVisibility.followers => t.misskey.visibility_.followers,
         NoteVisibility.specified => t.misskey.visibility_.specified,
         _ => '',
       },
-      if (request.localOnly ?? false) t.misskey.visibility_.disableFederation,
+      if (draft.localOnly ?? false) t.misskey.visibility_.disableFederation,
     ].join(', ');
     final placeholder =
-        '[$placeholderPrefix] ${switch (request) {
-          NotesCreateRequest(replyId: _?) => t.misskey.postForm_.replyPlaceholder,
-          NotesCreateRequest(renoteId: _?) => t.misskey.postForm_.quotePlaceholder,
-          NotesCreateRequest(channelId: _?) => t.misskey.postForm_.channelPlaceholder,
+        '[$placeholderPrefix] ${switch (draft) {
+          NoteDraft(replyId: _?) => t.misskey.postForm_.replyPlaceholder,
+          NoteDraft(renoteId: _?) => t.misskey.postForm_.quotePlaceholder,
+          NoteDraft(channelId: _?) => t.misskey.postForm_.channelPlaceholder,
           _ => useMemoized(() => [t.misskey.postForm_.placeholders_.a, t.misskey.postForm_.placeholders_.b, t.misskey.postForm_.placeholders_.c, t.misskey.postForm_.placeholders_.d, t.misskey.postForm_.placeholders_.e, t.misskey.postForm_.placeholders_.f][Random().nextInt(6)], []),
         }}';
     final colors = ref.watch(
@@ -531,10 +526,10 @@ class PostForm extends HookConsumerWidget {
                             }
                           }
                         : null,
-                    icon: NoteVisibilityIcon(visibility: request.visibility),
+                    icon: NoteVisibilityIcon(visibility: draft.visibility),
                   ),
                   IconButton(
-                    tooltip: request.localOnly ?? false
+                    tooltip: draft.localOnly ?? false
                         ? t.misskey.visibility_.disableFederation
                         : null,
                     onPressed: canChangeLocalOnly
@@ -542,17 +537,17 @@ class PostForm extends HookConsumerWidget {
                               .read(
                                 postNotifierProvider(account.value).notifier,
                               )
-                              .setLocalOnly(!(request.localOnly ?? false))
+                              .setLocalOnly(!(draft.localOnly ?? false))
                         : null,
-                    color: request.localOnly ?? false
+                    color: draft.localOnly ?? false
                         ? Theme.of(context).colorScheme.error
                         : null,
-                    disabledColor: request.localOnly ?? false
+                    disabledColor: draft.localOnly ?? false
                         ? Theme.of(
                             context,
                           ).colorScheme.error.withValues(alpha: 0.5)
                         : null,
-                    icon: request.localOnly ?? false
+                    icon: draft.localOnly ?? false
                         ? const Icon(OffIcons.rocket_outlined)
                         : const Icon(Icons.rocket),
                   ),
@@ -606,19 +601,19 @@ class PostForm extends HookConsumerWidget {
                             : null,
                         child: ListTile(
                           leading: ReactionAcceptanceIcon(
-                            acceptance: request.reactionAcceptance,
+                            acceptance: draft.reactionAcceptance,
                           ),
                           title: Text(t.misskey.reactionAcceptance),
                         ),
                       ),
                       PopupMenuItem(
                         onTap: () {
-                          final text = request.text;
+                          final text = draft.text;
                           ref
                               .read(
                                 postNotifierProvider(account.value).notifier,
                               )
-                              .setText(request.cw);
+                              .setText(draft.cw);
                           ref
                               .read(
                                 postNotifierProvider(account.value).notifier,
@@ -626,7 +621,7 @@ class PostForm extends HookConsumerWidget {
                               .setCw(text?.replaceAll('\n', ' '));
                           useCw.value = true;
                         },
-                        enabled: request.text != null || request.cw != null,
+                        enabled: draft.text != null || draft.cw != null,
                         child: ListTile(
                           leading: const Icon(Icons.swap_vert),
                           title: Text(t.aria.swapCw),
@@ -721,7 +716,7 @@ class PostForm extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (request.replyId case final replyId?)
+            if (draft.replyId case final replyId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$replyId'),
                 onLongPress: () => showNoteSheet(
@@ -763,7 +758,7 @@ class PostForm extends HookConsumerWidget {
                   ],
                 ),
               ),
-            if (request.renoteId case final renoteId?)
+            if (draft.renoteId case final renoteId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$renoteId'),
                 onLongPress: () => showNoteSheet(
@@ -805,7 +800,7 @@ class PostForm extends HookConsumerWidget {
                   ],
                 ),
               ),
-            if (request.channelId case final channelId?)
+            if (draft.channelId case final channelId?)
               InkWell(
                 onTap: () =>
                     context.push('/${account.value}/channels/$channelId'),
@@ -844,13 +839,12 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
-            if (request.scheduledAt case final scheduledAt?
-                when canScheduleNote)
+            if (draft.scheduledAt case final scheduledAt? when canScheduleNote)
               InkWell(
                 onTap: () async {
                   final now = DateTime.now();
                   final DateTime initialDate;
-                  if (request.scheduledAt case final scheduledAt?
+                  if (draft.scheduledAt case final scheduledAt?
                       when scheduledAt.isAfter(now)) {
                     initialDate = scheduledAt;
                   } else {
@@ -910,7 +904,7 @@ class PostForm extends HookConsumerWidget {
                   ],
                 ),
               ),
-            if (request.visibility == NoteVisibility.specified) ...[
+            if (draft.visibility == NoteVisibility.specified) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Wrap(
@@ -947,7 +941,7 @@ class PostForm extends HookConsumerWidget {
                         onPressed: () async {
                           final user = await selectUser(context, account.value);
                           if (user != null &&
-                              !(request.visibleUserIds?.contains(user.id) ??
+                              !(draft.visibleUserIds?.contains(user.id) ??
                                   false)) {
                             visibleUsers.value = [...visibleUsers.value, user];
                             ref
@@ -1021,7 +1015,7 @@ class PostForm extends HookConsumerWidget {
                 const SizedBox(height: 8.0),
               ],
             ],
-            if (hasMentionToRemote && (request.localOnly ?? false)) ...[
+            if (hasMentionToRemote && (draft.localOnly ?? false)) ...[
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Padding(
@@ -1029,7 +1023,7 @@ class PostForm extends HookConsumerWidget {
                   child: Row(
                     children: [
                       Expanded(child: Text(t.aria.mentionToRemoteWarning)),
-                      if (request.channelId == null &&
+                      if (draft.channelId == null &&
                           !(reply?.localOnly ?? false) &&
                           !(renote?.localOnly ?? false))
                         TextButton(
@@ -1060,7 +1054,7 @@ class PostForm extends HookConsumerWidget {
                       Expanded(child: Text(t.aria.extraMentionsWarning)),
                       TextButton(
                         onPressed: () {
-                          String text = request.text ?? '';
+                          String text = draft.text ?? '';
                           for (final mention in extraMentions) {
                             text = text.replaceAllMapped(
                               RegExp('${mention.acct}(\$|[^\\w.-@])'),
@@ -1093,7 +1087,7 @@ class PostForm extends HookConsumerWidget {
                       ),
                     ),
                     textInputAction: TextInputAction.next,
-                    maxLength: (request.cw?.length ?? 0) > 80 ? 100 : null,
+                    maxLength: (draft.cw?.length ?? 0) > 80 ? 100 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
                     spellCheckConfiguration: enableSpellCheck
                         ? const SpellCheckConfiguration()
@@ -1116,7 +1110,7 @@ class PostForm extends HookConsumerWidget {
                 autofocus: true,
                 minLines: 1,
                 maxLines: maxLines,
-                maxLength: (request.text?.length ?? 0) > 2900 ? 3000 : null,
+                maxLength: (draft.text?.length ?? 0) > 2900 ? 3000 : null,
                 maxLengthEnforcement: MaxLengthEnforcement.none,
                 contextMenuBuilder: (context, editableTextState) =>
                     AdaptiveTextSelectionToolbar.editable(
@@ -1243,7 +1237,7 @@ class PostForm extends HookConsumerWidget {
               ),
               const SizedBox(height: 8.0),
             ],
-            if (request.poll != null) ...[
+            if (draft.poll != null) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: PollEditor(account: account.value, noteId: noteId),
@@ -1284,7 +1278,7 @@ class _PostFormFooter extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final request = ref.watch(postNotifierProvider(account, noteId: noteId));
+    final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
     final useHashtags = ref.watch(
       accountSettingsNotifierProvider(
         account,
@@ -1360,7 +1354,7 @@ class _PostFormFooter extends HookConsumerWidget {
                             .togglePoll(),
                         icon: Icon(
                           Icons.bar_chart,
-                          color: request.poll != null
+                          color: draft.poll != null
                               ? Theme.of(context).colorScheme.primary
                               : null,
                         ),
@@ -1404,7 +1398,7 @@ class _PostFormFooter extends HookConsumerWidget {
                           final user = await selectUser(
                             context,
                             account,
-                            localOnly: request.localOnly ?? false,
+                            localOnly: draft.localOnly ?? false,
                           );
                           if (user != null) {
                             controller.insert(user.acct);
@@ -1477,7 +1471,7 @@ class _PostFormFooter extends HookConsumerWidget {
                           onPressed: () async {
                             final now = DateTime.now();
                             final DateTime initialDate;
-                            if (request.scheduledAt case final scheduledAt?
+                            if (draft.scheduledAt case final scheduledAt?
                                 when scheduledAt.isAfter(now)) {
                               initialDate = scheduledAt;
                             } else {

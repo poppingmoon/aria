@@ -194,7 +194,13 @@ class RenoteSheet extends HookConsumerWidget {
                       final confirmed = await confirmPost(
                         ref,
                         account,
-                        request,
+                        NoteDraft(
+                          id: '',
+                          createdAt: DateTime.now(),
+                          userId: '',
+                          user: const UserLite(id: '', username: ''),
+                          renoteId: note.id,
+                        ),
                       );
                       if (!confirmed) return;
                     }
