@@ -180,16 +180,13 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void reset() {
-    state = _defaultDraft;
+  void reset({bool keepHashtag = false}) {
+    state = _defaultDraft.copyWith(hashtag: keepHashtag ? state.hashtag : null);
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 
-  Future<Note> post({List<String>? fileIds, List<String>? hashtags}) async {
-    final draft = state.copyWith(
-      fileIds: fileIds,
-      hashtag: hashtags?.join(' '),
-    );
+  Future<Note> post({List<String>? fileIds}) async {
+    final draft = state.copyWith(fileIds: fileIds);
     if (noteId case final noteId?) {
       List<String>? endpoints;
       try {
@@ -219,14 +216,14 @@ class PostNotifier extends _$PostNotifier {
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
           await _misskey.notes.create(draft.toNotesCreateRequest());
-          reset();
+          reset(keepHashtag: true);
           return draft.toNote();
         } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
             when scheduleNoteMax > 0) {
           await _misskey.notes.schedule.create(
             draft.toNotesScheduleCreateRequest(),
           );
-          reset();
+          reset(keepHashtag: true);
           return draft.toNote();
         }
       }
@@ -236,7 +233,7 @@ class PostNotifier extends _$PostNotifier {
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
       }
-      reset();
+      reset(keepHashtag: true);
       return response ?? draft.toNote();
     }
   }
@@ -465,6 +462,21 @@ class PostNotifier extends _$PostNotifier {
       }
     } else if (text != state.text) {
       state = state.copyWith(text: text);
+    } else {
+      return;
+    }
+    _scheduleSave();
+  }
+
+  void setHashtag(String? hashtag) {
+    if (hashtag == null || hashtag.isEmpty) {
+      if (state.hashtag != null) {
+        state = state.copyWith(hashtag: hashtag);
+      } else {
+        return;
+      }
+    } else if (hashtag != state.hashtag) {
+      state = state.copyWith(hashtag: hashtag);
     } else {
       return;
     }

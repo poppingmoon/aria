@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:misskey_dart/misskey_dart.dart';
 
 extension on NoteDraftPoll {
@@ -40,10 +42,27 @@ extension NoteDraftExtension on NoteDraft {
         _ => true,
       };
 
+  List<String>? get _hashtags => hashtag
+      ?.trim()
+      .split(RegExp(r'\s'))
+      .map((tag) => tag.trim())
+      .map((tag) => tag.startsWith('#') ? tag.substring(1) : tag)
+      .where((tag) => tag.isNotEmpty)
+      .toList();
+
   Note toNote() => Note(
     id: '',
     createdAt: createdAt,
-    text: text,
+    text: switch (_hashtags?.map((tag) => '#$tag').join(' ')) {
+      final hashtags? when hashtags.isNotEmpty => switch (text) {
+        final text? when text.isNotEmpty =>
+          LineSplitter.split(text).last.trim().isEmpty
+              ? '$text$hashtags'
+              : '$text $hashtags',
+        _ => hashtags,
+      },
+      _ => text,
+    },
     cw: cw,
     user: user,
     userId: userId,
@@ -65,7 +84,16 @@ extension NoteDraftExtension on NoteDraft {
   NotesCreateRequest toNotesCreateRequest() => NotesCreateRequest(
     visibility: visibility,
     visibleUserIds: visibleUserIds,
-    text: text,
+    text: switch (_hashtags?.map((tag) => '#$tag').join(' ')) {
+      final hashtags? when hashtags.isNotEmpty => switch (text) {
+        final text? when text.isNotEmpty =>
+          LineSplitter.split(text).last.trim().isEmpty
+              ? '$text$hashtags'
+              : '$text $hashtags',
+        _ => hashtags,
+      },
+      _ => text,
+    },
     cw: cw,
     localOnly: localOnly,
     reactionAcceptance: reactionAcceptance,
@@ -85,7 +113,16 @@ extension NoteDraftExtension on NoteDraft {
         reactionAcceptance: reactionAcceptance,
         replyId: replyId,
         renoteId: renoteId,
-        text: text,
+        text: switch (_hashtags?.map((tag) => '#$tag').join(' ')) {
+          final hashtags? when hashtags.isNotEmpty => switch (text) {
+            final text? when text.isNotEmpty =>
+              LineSplitter.split(text).last.trim().isEmpty
+                  ? '$text$hashtags'
+                  : '$text $hashtags',
+            _ => hashtags,
+          },
+          _ => text,
+        },
         fileIds: fileIds,
         channelId: channelId,
         localOnly: localOnly,
@@ -95,7 +132,16 @@ extension NoteDraftExtension on NoteDraft {
 
   NotesUpdateRequest toNotesUpdateRequest(String noteId) => NotesUpdateRequest(
     noteId: noteId,
-    text: text,
+    text: switch (_hashtags?.map((tag) => '#$tag').join(' ')) {
+      final hashtags? when hashtags.isNotEmpty => switch (text) {
+        final text? when text.isNotEmpty =>
+          LineSplitter.split(text).last.trim().isEmpty
+              ? '$text$hashtags'
+              : '$text $hashtags',
+        _ => hashtags,
+      },
+      _ => text,
+    },
     cw: cw,
     fileIds: fileIds,
     poll: poll?.toNotesCreatePollRequest(),
@@ -105,7 +151,16 @@ extension NoteDraftExtension on NoteDraft {
     editId: noteId,
     visibility: visibility,
     visibleUserIds: visibleUserIds,
-    text: text,
+    text: switch (_hashtags?.map((tag) => '#$tag').join(' ')) {
+      final hashtags? when hashtags.isNotEmpty => switch (text) {
+        final text? when text.isNotEmpty =>
+          LineSplitter.split(text).last.trim().isEmpty
+              ? '$text$hashtags'
+              : '$text $hashtags',
+        _ => hashtags,
+      },
+      _ => text,
+    },
     cw: cw,
     localOnly: localOnly,
     fileIds: fileIds,

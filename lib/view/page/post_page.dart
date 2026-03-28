@@ -8,11 +8,9 @@ import '../../extension/note_draft_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
-import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/mfm_keyboard.dart';
@@ -35,15 +33,6 @@ class PostPage extends HookConsumerWidget {
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
-    final useHashtags = ref.watch(
-      accountSettingsNotifierProvider(
-        account.value,
-      ).select((settings) => settings.postFormUseHashtags),
-    );
-    final note = draft
-        .copyWith(hashtag: useHashtags ? hashtags.join(' ') : null)
-        .toNote();
     final canPost = draft.canPost || attaches.isNotEmpty;
     final canScheduleNote =
         noteId == null &&
@@ -67,15 +56,13 @@ class PostPage extends HookConsumerWidget {
     };
     final cwController = useTextEditingController(text: draft.cw);
     final controller = useTextEditingController(text: draft.text);
-    final hashtagsController = useTextEditingController(
-      text: hashtags.join(' '),
-    );
+    final hashtagController = useTextEditingController(text: draft.hashtag);
     final cwFocusNode = useFocusNode();
     final focusNode = useFocusNode();
-    final hashtagsFocusNode = useFocusNode();
+    final hashtagFocusNode = useFocusNode();
     final isCwFocused = useState(false);
     final isFocused = useState(false);
-    final isHashtagsFocused = useState(false);
+    final isHashtagFocused = useState(false);
     useEffect(() {
       void cwFocusNodeCallback() {
         isCwFocused.value = cwFocusNode.hasFocus;
@@ -85,18 +72,18 @@ class PostPage extends HookConsumerWidget {
         isFocused.value = focusNode.hasFocus;
       }
 
-      void hashtagsFocusNodeCallback() {
-        isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
+      void hashtagFocusNodeCallback() {
+        isHashtagFocused.value = hashtagFocusNode.hasFocus;
       }
 
       cwFocusNode.addListener(cwFocusNodeCallback);
       focusNode.addListener(focusNodeCallback);
-      hashtagsFocusNode.addListener(hashtagsFocusNodeCallback);
+      hashtagFocusNode.addListener(hashtagFocusNodeCallback);
 
       return () {
         cwFocusNode.removeListener(cwFocusNodeCallback);
         focusNode.removeListener(focusNodeCallback);
-        hashtagsFocusNode.removeListener(hashtagsFocusNodeCallback);
+        hashtagFocusNode.removeListener(hashtagFocusNodeCallback);
       };
     }, [account.value]);
     final colors = ref.watch(
@@ -151,10 +138,10 @@ class PostPage extends HookConsumerWidget {
                             noteId: noteId,
                             controller: controller,
                             cwController: cwController,
-                            hashtagsController: hashtagsController,
+                            hashtagController: hashtagController,
                             focusNode: focusNode,
                             cwFocusNode: cwFocusNode,
-                            hashtagsFocusNode: hashtagsFocusNode,
+                            hashtagFocusNode: hashtagFocusNode,
                             onAccountChanged: (newAccount) =>
                                 account.value = newAccount,
                           ),
@@ -176,7 +163,7 @@ class PostPage extends HookConsumerWidget {
                               key: const ValueKey('note'),
                               account: account.value,
                               noteId: '',
-                              note: note,
+                              note: draft.toNote(),
                               showFooter: false,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
@@ -213,14 +200,14 @@ class PostPage extends HookConsumerWidget {
               ),
             ),
             Visibility(
-              visible: isHashtagsFocused.value,
+              visible: isHashtagFocused.value,
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
                 child: SafeArea(
                   child: MfmHashtagKeyboard(
                     account: account.value,
-                    controller: hashtagsController,
+                    controller: hashtagController,
                   ),
                 ),
               ),
@@ -228,7 +215,7 @@ class PostPage extends HookConsumerWidget {
           ],
         ),
         floatingActionButton:
-            !isCwFocused.value && !isFocused.value && !isHashtagsFocused.value
+            !isCwFocused.value && !isFocused.value && !isHashtagFocused.value
             ? FloatingActionButton.extended(
                 onPressed: canPost
                     ? () => PostForm.post(ref, account.value, noteId)

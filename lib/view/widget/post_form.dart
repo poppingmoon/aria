@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -32,7 +31,6 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
-import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
@@ -65,10 +63,10 @@ class PostForm extends HookConsumerWidget {
     this.noteId,
     this.controller,
     this.cwController,
-    this.hashtagsController,
+    this.hashtagController,
     this.focusNode,
     this.cwFocusNode,
-    this.hashtagsFocusNode,
+    this.hashtagFocusNode,
     this.onHide,
     this.onExpand,
     this.onAccountChanged,
@@ -81,10 +79,10 @@ class PostForm extends HookConsumerWidget {
   final String? noteId;
   final TextEditingController? controller;
   final TextEditingController? cwController;
-  final TextEditingController? hashtagsController;
+  final TextEditingController? hashtagController;
   final FocusNode? focusNode;
   final FocusNode? cwFocusNode;
-  final FocusNode? hashtagsFocusNode;
+  final FocusNode? hashtagFocusNode;
   final void Function()? onHide;
   final void Function(Account account)? onExpand;
   final void Function(Account account)? onAccountChanged;
@@ -98,10 +96,6 @@ class PostForm extends HookConsumerWidget {
     String? noteId,
   ) async {
     final draft = ref.read(postNotifierProvider(account, noteId: noteId));
-    final hashtags =
-        ref.read(accountSettingsNotifierProvider(account)).postFormUseHashtags
-        ? ref.read(postFormHashtagsNotifierProvider(account))
-        : null;
     final attaches = ref.read(
       attachesNotifierProvider(account, noteId: noteId),
     );
@@ -129,10 +123,7 @@ class PostForm extends HookConsumerWidget {
       ref.context,
       ref
           .read(postNotifierProvider(account, noteId: noteId).notifier)
-          .post(
-            fileIds: files?.map((file) => file.id).toList(),
-            hashtags: hashtags,
-          ),
+          .post(fileIds: files?.map((file) => file.id).toList()),
     );
     if (!ref.context.mounted) return;
     if (result case final note?) {
@@ -157,9 +148,6 @@ class PostForm extends HookConsumerWidget {
             .read(postNotifierProvider(account, noteId: noteId).notifier)
             .setChannel(channelId);
       }
-      unawaited(
-        ref.read(postFormHashtagsNotifierProvider(account).notifier).save(),
-      );
       if (note.replyId case final replyId?) {
         ref.invalidate(childrenNotesNotifierProvider(account, replyId));
       }
@@ -326,24 +314,27 @@ class PostForm extends HookConsumerWidget {
         (settings) => settings.enableSpellCheck,
       ),
     );
-    final useCw = useState(
-      useMemoized(() => draft.cw?.isNotEmpty ?? false, []),
+    final useCw = useState(useMemoized(() => draft.cw?.isNotEmpty ?? false));
+    final useHashtag = useState(
+      useMemoized(() => draft.hashtag?.isNotEmpty ?? false),
     );
-    final (useHashtags, postFormHashtags) = ref.watch(
-      accountSettingsNotifierProvider(account.value).select(
-        (settings) => (settings.postFormUseHashtags, settings.postFormHashtags),
-      ),
+    final postFormHashtags = ref.watch(
+      accountSettingsNotifierProvider(
+        account.value,
+      ).select((settings) => settings.postFormHashtags),
     );
     final cwController =
         this.cwController ?? useTextEditingController(text: draft.cw);
     final controller =
         this.controller ?? useTextEditingController(text: draft.text);
-    final hashtagsController =
-        this.hashtagsController ??
-        useTextEditingController(text: postFormHashtags.join(' '));
+    final hashtagController =
+        this.hashtagController ??
+        useTextEditingController(
+          text: draft.hashtag ?? postFormHashtags.join(' '),
+        );
     final cwFocusNode = this.cwFocusNode ?? useFocusNode();
     final focusNode = this.focusNode ?? useFocusNode();
-    final hashtagsFocusNode = this.hashtagsFocusNode ?? useFocusNode();
+    final hashtagFocusNode = this.hashtagFocusNode ?? useFocusNode();
     ref.listen(
       postNotifierProvider(
         account.value,
@@ -368,18 +359,18 @@ class PostForm extends HookConsumerWidget {
         }
       },
     );
-    ref.listen(postFormHashtagsNotifierProvider(account.value), (_, hashtags) {
-      if (!hashtags.equals(
-        hashtagsController.text
-            .split(RegExp(r'\s'))
-            .map((tag) => tag.trim())
-            .map((tag) => tag.startsWith('#') ? tag.substring(1) : tag)
-            .where((tag) => tag.isNotEmpty)
-            .toList(),
-      )) {
-        hashtagsController.text = hashtags.join(' ');
-      }
-    });
+    ref.listen(
+      postNotifierProvider(
+        account.value,
+        noteId: noteId,
+      ).select((draft) => draft.hashtag),
+      (_, hashtag) {
+        final s = hashtag ?? '';
+        if (s != hashtagController.text) {
+          hashtagController.text = s;
+        }
+      },
+    );
     useEffect(() {
       final visibleUserIds = draft.visibleUserIds;
       if (visibleUserIds != null && visibleUserIds.isNotEmpty) {
@@ -406,23 +397,24 @@ class PostForm extends HookConsumerWidget {
             .setText(controller.text);
       }
 
-      void hashtagsControllerCallback() {
+      void hashtagControllerCallback() {
         ref
-            .read(postFormHashtagsNotifierProvider(account.value).notifier)
-            .updateFromString(hashtagsController.text);
+            .read(postNotifierProvider(account.value, noteId: noteId).notifier)
+            .setHashtag(hashtagController.text);
       }
 
       cwController.text = draft.cw ?? '';
       controller.text = draft.text ?? '';
+      hashtagController.text = draft.hashtag ?? '';
 
       cwController.addListener(cwControllerCallback);
       controller.addListener(controllerCallback);
-      hashtagsController.addListener(hashtagsControllerCallback);
+      hashtagController.addListener(hashtagControllerCallback);
 
       return () {
         cwController.removeListener(cwControllerCallback);
         controller.removeListener(controllerCallback);
-        hashtagsController.removeListener(hashtagsControllerCallback);
+        hashtagController.removeListener(hashtagControllerCallback);
       };
     }, [account.value]);
     final placeholderPrefix = [
@@ -1177,15 +1169,15 @@ class PostForm extends HookConsumerWidget {
                     : null,
               ),
             ),
-            if (useHashtags) ...[
+            if (useHashtag.value) ...[
               const Divider(height: 0.0),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Shortcuts(
                   shortcuts: disablingTextShortcuts,
                   child: TextField(
-                    controller: hashtagsController,
-                    focusNode: hashtagsFocusNode,
+                    controller: hashtagController,
+                    focusNode: hashtagFocusNode,
                     decoration: InputDecoration(
                       hintText: t.misskey.hashtags,
                       filled: false,
@@ -1204,11 +1196,13 @@ class PostForm extends HookConsumerWidget {
                 noteId: noteId,
                 cwController: cwController,
                 controller: controller,
+                hashtagController: hashtagController,
                 cwFocusNode: cwFocusNode,
-                hashtagsFocusNode: hashtagsFocusNode,
+                hashtagFocusNode: hashtagFocusNode,
                 onHide: onHide,
                 onExpand: onExpand,
                 useCw: useCw,
+                useHashtag: useHashtag,
                 canChangeChannel: canChangeChannel,
               ),
             ),
@@ -1254,14 +1248,16 @@ class PostForm extends HookConsumerWidget {
 class _PostFormFooter extends HookConsumerWidget {
   const _PostFormFooter({
     required this.account,
-    this.noteId,
+    required this.noteId,
     required this.cwController,
     required this.controller,
+    required this.hashtagController,
     required this.cwFocusNode,
-    required this.hashtagsFocusNode,
-    this.onHide,
-    this.onExpand,
+    required this.hashtagFocusNode,
+    required this.onHide,
+    required this.onExpand,
     required this.useCw,
+    required this.useHashtag,
     required this.canChangeChannel,
   });
 
@@ -1269,21 +1265,18 @@ class _PostFormFooter extends HookConsumerWidget {
   final String? noteId;
   final TextEditingController cwController;
   final TextEditingController controller;
+  final TextEditingController hashtagController;
   final FocusNode cwFocusNode;
-  final FocusNode hashtagsFocusNode;
+  final FocusNode hashtagFocusNode;
   final void Function()? onHide;
   final void Function(Account account)? onExpand;
   final ValueNotifier<bool> useCw;
+  final ValueNotifier<bool> useHashtag;
   final bool canChangeChannel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
-    final useHashtags = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.postFormUseHashtags),
-    );
     final i = ref.watch(iNotifierProvider(account)).value;
     final canScheduleNote =
         noteId == null &&
@@ -1408,22 +1401,60 @@ class _PostFormFooter extends HookConsumerWidget {
                       ),
                       IconButton(
                         tooltip: t.misskey.hashtags,
-                        onPressed: () async {
-                          final value = useHashtags;
-                          await ref
-                              .read(
-                                accountSettingsNotifierProvider(
-                                  account,
-                                ).notifier,
-                              )
-                              .setPostFormUseHashtags(!value);
-                          if (!value) {
-                            hashtagsFocusNode.requestFocus();
+                        onPressed: () {
+                          if (useHashtag.value) {
+                            ref
+                                .read(
+                                  accountSettingsNotifierProvider(
+                                    account,
+                                  ).notifier,
+                                )
+                                .setPostFormHashtags(
+                                  hashtagController.text
+                                      .split(RegExp(r'\s'))
+                                      .map((tag) => tag.trim())
+                                      .map(
+                                        (tag) => tag.startsWith('#')
+                                            ? tag.substring(1)
+                                            : tag,
+                                      )
+                                      .where((tag) => tag.isNotEmpty)
+                                      .toList(),
+                                );
+                            ref
+                                .read(
+                                  postNotifierProvider(
+                                    account,
+                                    noteId: noteId,
+                                  ).notifier,
+                                )
+                                .setHashtag(null);
+                            useHashtag.value = false;
+                          } else {
+                            ref
+                                .read(
+                                  postNotifierProvider(
+                                    account,
+                                    noteId: noteId,
+                                  ).notifier,
+                                )
+                                .setHashtag(
+                                  ref
+                                      .read(
+                                        accountSettingsNotifierProvider(
+                                          account,
+                                        ),
+                                      )
+                                      .postFormHashtags
+                                      .join(' '),
+                                );
+                            useHashtag.value = true;
+                            hashtagFocusNode.requestFocus();
                           }
                         },
                         icon: Icon(
                           Icons.tag,
-                          color: useHashtags
+                          color: useHashtag.value
                               ? Theme.of(context).colorScheme.primary
                               : null,
                         ),
