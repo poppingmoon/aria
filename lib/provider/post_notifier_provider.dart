@@ -181,7 +181,47 @@ class PostNotifier extends _$PostNotifier {
 
   Future<Note> post({List<String>? fileIds, List<String>? hashtags}) async {
     final request = state.copyWith(fileIds: fileIds).addHashtags(hashtags);
-    if (noteId == null) {
+    if (noteId case final noteId?) {
+      List<String>? endpoints;
+      try {
+        // ignore: only_use_keep_alive_inside_keep_alive
+        endpoints = await ref.read(
+          endpointsNotifierProvider(account.host).future,
+        );
+      } catch (_) {}
+      if (endpoints?.contains('notes/update') ?? true) {
+        await _misskey.notes.update(
+          NotesUpdateRequest(
+            noteId: noteId,
+            text: request.text,
+            cw: request.cw,
+            fileIds: fileIds,
+            poll: request.poll,
+          ),
+        );
+        final note = request.toNote();
+        ref.read(notesNotifierProvider(account).notifier).add(note);
+        return note;
+      } else {
+        final response = await _misskey.notes.edit(
+          NotesEditRequest(
+            editId: noteId,
+            visibility: request.visibility,
+            visibleUserIds: request.visibleUserIds,
+            text: request.text,
+            cw: request.cw,
+            localOnly: request.localOnly,
+            fileIds: fileIds,
+            replyId: request.replyId,
+            renoteId: request.renoteId,
+            channelId: request.channelId,
+            poll: request.poll,
+          ),
+        );
+        ref.read(notesNotifierProvider(account).notifier).add(response);
+        return response;
+      }
+    } else {
       if (request.scheduledAt case final scheduledAt?) {
         MeDetailed? i;
         try {
@@ -222,46 +262,6 @@ class PostNotifier extends _$PostNotifier {
       }
       reset();
       return response ?? request.toNote();
-    } else {
-      List<String>? endpoints;
-      try {
-        // ignore: only_use_keep_alive_inside_keep_alive
-        endpoints = await ref.read(
-          endpointsNotifierProvider(account.host).future,
-        );
-      } catch (_) {}
-      if (endpoints?.contains('notes/update') ?? true) {
-        await _misskey.notes.update(
-          NotesUpdateRequest(
-            noteId: noteId!,
-            text: request.text,
-            cw: request.cw,
-            fileIds: fileIds,
-            poll: request.poll,
-          ),
-        );
-        final note = request.toNote();
-        ref.read(notesNotifierProvider(account).notifier).add(note);
-        return note;
-      } else {
-        final response = await _misskey.notes.edit(
-          NotesEditRequest(
-            editId: noteId!,
-            visibility: request.visibility,
-            visibleUserIds: request.visibleUserIds,
-            text: request.text,
-            cw: request.cw,
-            localOnly: request.localOnly,
-            fileIds: fileIds,
-            replyId: request.replyId,
-            renoteId: request.renoteId,
-            channelId: request.channelId,
-            poll: request.poll,
-          ),
-        );
-        ref.read(notesNotifierProvider(account).notifier).add(response);
-        return response;
-      }
     }
   }
 
