@@ -5,6 +5,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../extension/me_detailed_extension.dart';
 import '../extension/note_draft_extension.dart';
 import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
@@ -26,6 +27,17 @@ class PostNotifier extends _$PostNotifier {
   @override
   NoteDraft build(Account account, {String? noteId}) {
     ref.onDispose(() => _timer?.cancel());
+    listenSelf((_, next) async {
+      MeDetailed? i;
+      if (next.user.username != account.username) {
+        try {
+          i = await ref.read(iNotifierProvider(account).future);
+        } catch (_) {}
+      }
+      if (i != null) {
+        state = next.copyWith(userId: i.id, user: i.toUserLite());
+      }
+    });
     if (noteId != null) {
       final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNoteDraft() ?? _defaultDraft;
@@ -54,11 +66,12 @@ class PostNotifier extends _$PostNotifier {
   bool _saveScheduled = false;
 
   NoteDraft get _defaultDraft {
+    final i = _i;
     final settings = ref.read(accountSettingsNotifierProvider(account));
     final localOnly = settings.rememberNoteVisibility
         ? settings.localOnly
         : settings.defaultNoteLocalOnly;
-    final isSilenced = _i?.isSilenced ?? false;
+    final isSilenced = i?.isSilenced ?? false;
     final visibility = NoteVisibility.min(
       settings.rememberNoteVisibility
           ? settings.visibility
@@ -69,8 +82,8 @@ class PostNotifier extends _$PostNotifier {
     return NoteDraft(
       id: '',
       createdAt: DateTime.now(),
-      userId: '',
-      user: UserLite(id: '', username: '', avatarUrl: Uri()),
+      userId: i?.id ?? '',
+      user: i?.toUserLite() ?? const UserLite(id: '', username: ''),
       localOnly: localOnly,
       visibility: visibility,
       reactionAcceptance: reactionAcceptance,
@@ -125,33 +138,43 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<void> fromDraft(NoteDraft draft, Account origin) async {
+    MeDetailed? i = _i;
+    try {
+      // ignore: only_use_keep_alive_inside_keep_alive
+      i ??= await ref.read(iNotifierProvider(account).future);
+    } catch (_) {}
     if (account.host == origin.host) {
-      if (draft case NoteDraft(:final replyId?)) {
+      if (draft.replyId case final replyId?) {
         final reply = ref.read(noteNotifierProvider(origin, replyId));
         if (reply != null) {
           ref.read(notesNotifierProvider(account).notifier).add(reply);
         }
       }
-      if (draft case NoteDraft(:final renoteId?)) {
+      if (draft.renoteId case final renoteId?) {
         final renote = ref.read(noteNotifierProvider(origin, renoteId));
         if (renote != null) {
           ref.read(notesNotifierProvider(account).notifier).add(renote);
         }
       }
-      state = draft;
+      state = draft.copyWith(
+        userId: i?.id ?? draft.id,
+        user: i?.toUserLite() ?? draft.user,
+      );
     } else {
-      final reply = draft.replyId != null
-          ? ref.read(noteNotifierProvider(origin, draft.replyId!))
-          : null;
+      final reply = switch (draft.replyId) {
+        final replyId? => ref.read(noteNotifierProvider(origin, replyId)),
+        _ => null,
+      };
       String? replyId;
       if (reply != null && !reply.localOnly) {
         try {
           replyId = await _getNoteIdFromRemoteNote(origin, reply);
         } catch (_) {}
       }
-      final renote = draft.renoteId != null
-          ? ref.read(noteNotifierProvider(origin, draft.renoteId!))
-          : null;
+      final renote = switch (draft.renoteId) {
+        final renoteId? => ref.read(noteNotifierProvider(origin, renoteId)),
+        _ => null,
+      };
       String? renoteId;
       if (renote != null && !renote.localOnly) {
         try {
@@ -160,6 +183,8 @@ class PostNotifier extends _$PostNotifier {
       }
       final poll = draft.poll;
       state = draft.copyWith(
+        userId: i?.id ?? draft.id,
+        user: i?.toUserLite() ?? draft.user,
         visibleUserIds: null,
         replyId: replyId,
         renoteId: renoteId,
@@ -197,7 +222,7 @@ class PostNotifier extends _$PostNotifier {
       } catch (_) {}
       if (endpoints?.contains('notes/update') ?? true) {
         await _misskey.notes.update(draft.toNotesUpdateRequest(noteId));
-        final note = draft.toNote();
+        final note = draft.toNote().copyWith(id: noteId);
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
@@ -209,10 +234,10 @@ class PostNotifier extends _$PostNotifier {
       }
     } else {
       if (draft.scheduledAt != null) {
-        MeDetailed? i;
+        MeDetailed? i = _i;
         try {
           // ignore: only_use_keep_alive_inside_keep_alive
-          i = await ref.read(iNotifierProvider(account).future);
+          i ??= await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
           await _misskey.notes.create(draft.toNotesCreateRequest());
@@ -236,6 +261,10 @@ class PostNotifier extends _$PostNotifier {
       reset(keepHashtag: true);
       return response ?? draft.toNote();
     }
+  }
+
+  void setUser(MeDetailed user) {
+    state = state.copyWith(userId: user.id, user: user.toUserLite());
   }
 
   void setVisibility(NoteVisibility visibility) {

@@ -5,6 +5,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/max_content_width.dart';
 import '../../extension/community_channel_extension.dart';
+import '../../extension/me_detailed_extension.dart';
 import '../../extension/note_draft_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -93,6 +94,8 @@ class PostConfirmationDialog extends ConsumerWidget {
         ((i?.policies?.scheduleNoteMax ?? 0) > 0);
     final note = draft
         .copyWith(
+          userId: i?.id ?? draft.userId,
+          user: i?.toUserLite() ?? draft.user,
           channel: channel,
           scheduledAt: canScheduleNote ? draft.scheduledAt : null,
         )
