@@ -33,6 +33,9 @@ deleteAccountTabsConfirm:
   other: "Czy chcesz usunąć {n} kart powiązanych z tym kontem?"
 deleteFilesConfirm:
   one: "Czy na pewno chcesz usunąć {n} plik?"
+  other: "Czy na pewno chcesz usunąć {n} plików?"
+deleteTabConfirm: "Czy na pewno chcesz usunąć tę kartę?"
+device: "Urządzenie"
 followConfirm(rich): "Czy na pewno chcesz zaobserwować {name}?"
 i18nInfo(rich): "Aria jest tłumaczone na wiele języków przez wolontariuszy. Możesz pomóc na {link}."
 onlineUsersCount(rich): "{n} osób jest online"
