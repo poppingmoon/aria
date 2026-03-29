@@ -13,6 +13,7 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../constant/shortcuts.dart';
 import '../../extension/community_channel_extension.dart';
 import '../../extension/list_mfm_node_extension.dart';
+import '../../extension/note_channel_info_extension.dart';
 import '../../extension/note_draft_extension.dart';
 import '../../extension/text_editing_controller_extension.dart';
 import '../../extension/user_extension.dart';
@@ -22,7 +23,6 @@ import '../../model/post_file.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
-import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
@@ -32,7 +32,6 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../provider/post_notifier_provider.dart';
-import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
@@ -142,12 +141,6 @@ class PostForm extends HookConsumerWidget {
               .setHashtags({...hashtags, ...history}.toList()),
         );
       }
-      if (ref.read(timelineTabSettingsProvider)?.channelId
-          case final channelId?) {
-        ref
-            .read(postNotifierProvider(account, noteId: noteId).notifier)
-            .setChannel(channelId);
-      }
       if (note.replyId case final replyId?) {
         ref.invalidate(childrenNotesNotifierProvider(account, replyId));
       }
@@ -205,17 +198,16 @@ class PostForm extends HookConsumerWidget {
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final reply = draft.replyId != null
-        ? ref.watch(noteNotifierProvider(account.value, draft.replyId!))
-        : null;
-    final renote = draft.renoteId != null
-        ? ref.watch(noteNotifierProvider(account.value, draft.renoteId!))
-        : null;
-    final channel = draft.channelId != null
-        ? ref
-              .watch(channelNotifierProvider(account.value, draft.channelId!))
-              .value
-        : null;
+    final reply = switch (draft.replyId) {
+      final replyId? => ref.watch(noteNotifierProvider(account.value, replyId)),
+      _ => null,
+    };
+    final renote = switch (draft.renoteId) {
+      final renoteId? => ref.watch(
+        noteNotifierProvider(account.value, renoteId),
+      ),
+      _ => null,
+    };
     final mentions = switch (draft.text) {
       final text? when text.isNotEmpty => ref.watch(
         parsedMfmProvider(text).select(extractMentions),
@@ -800,7 +792,7 @@ class PostForm extends HookConsumerWidget {
                   decoration: BoxDecoration(
                     border: BorderDirectional(
                       start: BorderSide(
-                        color: channel?.toColor() ?? Colors.transparent,
+                        color: draft.channel?.toColor() ?? Colors.transparent,
                         width: 4,
                       ),
                     ),
@@ -811,7 +803,7 @@ class PostForm extends HookConsumerWidget {
                         padding: EdgeInsets.all(8.0),
                         child: Icon(Icons.tv),
                       ),
-                      if (channel != null)
+                      if (draft.channel case final channel?)
                         Expanded(child: Text(channel.name))
                       else
                         const Spacer(),
@@ -823,7 +815,7 @@ class PostForm extends HookConsumerWidget {
                                       account.value,
                                     ).notifier,
                                   )
-                                  .setChannel(null)
+                                  .clearChannel()
                             : null,
                         icon: const Icon(Icons.close),
                       ),
@@ -1490,7 +1482,7 @@ class _PostFormFooter extends HookConsumerWidget {
                                       .read(
                                         postNotifierProvider(account).notifier,
                                       )
-                                      .setChannel(result.id);
+                                      .setChannel(result.toNoteChannelInfo());
                                 }
                               }
                             : null,

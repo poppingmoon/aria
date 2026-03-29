@@ -14,7 +14,6 @@ import '../../model/account.dart';
 import '../../model/general_settings.dart';
 import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
-import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -117,31 +116,12 @@ class TimelinesPage extends HookConsumerWidget {
         }
         if (nextAccount.isGuest) {
           showPostForm.value = false;
-        } else {
-          if (nextTab.tabType == TabType.channel) {
-            ref
-                .read(postNotifierProvider(nextAccount).notifier)
-                .setChannel(nextTab.channelId);
-          } else {
-            ref.read(postNotifierProvider(nextAccount).notifier).clearChannel();
-          }
         }
       }
 
       if (tabSettings != null) {
         final account = tabSettings.account;
         ref.read(emojisNotifierProvider(account.host).notifier).reloadEmojis();
-        if (!account.isGuest) {
-          Future(() {
-            if (tabSettings.tabType == TabType.channel) {
-              ref
-                  .read(postNotifierProvider(account).notifier)
-                  .setChannel(tabSettings.channelId);
-            } else {
-              ref.read(postNotifierProvider(account).notifier).clearChannel();
-            }
-          });
-        }
       }
       controller.animation?.addListener(callback);
       return () => controller.animation?.removeListener(callback);
