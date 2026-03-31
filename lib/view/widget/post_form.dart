@@ -13,6 +13,7 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../constant/shortcuts.dart';
 import '../../extension/community_channel_extension.dart';
 import '../../extension/list_mfm_node_extension.dart';
+import '../../extension/me_detailed_extension.dart';
 import '../../extension/mfm_mention_extension.dart';
 import '../../extension/note_channel_info_extension.dart';
 import '../../extension/note_draft_extension.dart';
@@ -228,10 +229,7 @@ class PostForm extends HookConsumerWidget {
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
     final canPost = draft.canPost || attaches.isNotEmpty;
-    final canScheduleNote =
-        noteId == null &&
-        (i?.policies?.canScheduleNote ??
-            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
+    final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final enableSpellCheck = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.enableSpellCheck,
@@ -514,42 +512,48 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
-            if (draft.scheduledAt case final scheduledAt? when canScheduleNote)
+            if (draft.scheduledAt case final scheduledAt?)
               InkWell(
-                onTap: () async {
-                  final now = DateTime.now();
-                  final DateTime initialDate;
-                  if (draft.scheduledAt case final scheduledAt?
-                      when scheduledAt.isAfter(now)) {
-                    initialDate = scheduledAt;
-                  } else {
-                    initialDate = DateTime(now.year, now.month, now.day + 1);
-                  }
-                  final DateTime? lastDate;
-                  if (i?.policies?.scheduleNoteMaxDays case final days?
-                      when days >= 0) {
-                    lastDate = now.add(Duration(days: days));
-                  } else {
-                    lastDate = null;
-                  }
-                  final date = await pickDateTime(
-                    context,
-                    initialDate: initialDate,
-                    firstDate: now,
-                    lastDate: lastDate,
-                  );
-                  if (!context.mounted) return;
-                  if (date != null) {
-                    ref
-                        .read(
-                          postNotifierProvider(
-                            account.value,
-                            noteId: noteId,
-                          ).notifier,
-                        )
-                        .setScheduledAt(date);
-                  }
-                },
+                onTap: canScheduleNote
+                    ? () async {
+                        final now = DateTime.now();
+                        final DateTime initialDate;
+                        if (draft.scheduledAt case final scheduledAt?
+                            when scheduledAt.isAfter(now)) {
+                          initialDate = scheduledAt;
+                        } else {
+                          initialDate = DateTime(
+                            now.year,
+                            now.month,
+                            now.day + 1,
+                          );
+                        }
+                        final DateTime? lastDate;
+                        if (i?.policies?.scheduleNoteMaxDays case final days?
+                            when days >= 0) {
+                          lastDate = now.add(Duration(days: days));
+                        } else {
+                          lastDate = null;
+                        }
+                        final date = await pickDateTime(
+                          context,
+                          initialDate: initialDate,
+                          firstDate: now,
+                          lastDate: lastDate,
+                        );
+                        if (!context.mounted) return;
+                        if (date != null) {
+                          ref
+                              .read(
+                                postNotifierProvider(
+                                  account.value,
+                                  noteId: noteId,
+                                ).notifier,
+                              )
+                              .setScheduledAt(date);
+                        }
+                      }
+                    : null,
                 child: Row(
                   children: [
                     const Padding(
@@ -573,7 +577,7 @@ class PostForm extends HookConsumerWidget {
                               noteId: noteId,
                             ).notifier,
                           )
-                          .setScheduledAt(null),
+                          .clearScheduledAt(),
                       icon: const Icon(Icons.close),
                     ),
                   ],
@@ -984,10 +988,7 @@ class _PostFormHeader extends HookConsumerWidget {
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeVisibility = noteId == null && draft.canChangeVisibility;
     final canPost = draft.canPost || attaches.isNotEmpty;
-    final canScheduleNote =
-        noteId == null &&
-        (i?.policies?.canScheduleNote ??
-            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
+    final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (draft) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
@@ -1244,10 +1245,7 @@ class _PostFormFooter extends HookConsumerWidget {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
     final i = ref.watch(iNotifierProvider(account)).value;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
-    final canScheduleNote =
-        noteId == null &&
-        (i?.policies?.canScheduleNote ??
-            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
+    final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final hasExtentBefore = useState(false);
     final hasExtentAfter = useState(false);
     final scrollController = useScrollController();

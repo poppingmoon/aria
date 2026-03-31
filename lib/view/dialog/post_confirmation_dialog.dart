@@ -89,9 +89,7 @@ class PostConfirmationDialog extends ConsumerWidget {
           ),
           _ => null,
         };
-    final canScheduleNote =
-        i?.policies?.canScheduleNote ??
-        ((i?.policies?.scheduleNoteMax ?? 0) > 0);
+    final canScheduleNote = i?.canScheduleNote ?? false;
     final note = draft
         .copyWith(
           userId: i?.id ?? draft.userId,

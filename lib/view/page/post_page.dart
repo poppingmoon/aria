@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/max_content_width.dart';
+import '../../extension/me_detailed_extension.dart';
 import '../../extension/note_draft_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -34,10 +35,7 @@ class PostPage extends HookConsumerWidget {
       attachesNotifierProvider(account.value, noteId: noteId),
     );
     final canPost = draft.canPost || attaches.isNotEmpty;
-    final canScheduleNote =
-        noteId == null &&
-        (i?.policies?.canScheduleNote ??
-            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
+    final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (draft) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),

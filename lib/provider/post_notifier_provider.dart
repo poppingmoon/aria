@@ -303,10 +303,16 @@ class PostNotifier extends _$PostNotifier {
           );
           reset(keepHashtag: true);
           return draft.toNote();
+        } else {
+          final response = await _misskey.notes.drafts.create(
+            draft.toNotesDraftsCreateRequest(),
+          );
+          reset(keepHashtag: true);
+          return response.createdDraft.toNote();
         }
       }
       final response = await _misskey.notes.create(
-        draft.copyWith(scheduledAt: null).toNotesCreateRequest(),
+        draft.toNotesCreateRequest(),
       );
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
@@ -681,8 +687,13 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setScheduledAt(DateTime? scheduledAt) {
-    state = state.copyWith(scheduledAt: scheduledAt);
+  void setScheduledAt(DateTime scheduledAt) {
+    state = state.copyWith(scheduledAt: scheduledAt, isActuallyScheduled: true);
+    _scheduleSave();
+  }
+
+  void clearScheduledAt() {
+    state = state.copyWith(scheduledAt: null, isActuallyScheduled: false);
     _scheduleSave();
   }
 }

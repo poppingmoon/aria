@@ -182,4 +182,22 @@ extension NoteDraftExtension on NoteDraft {
     channelId: channelId,
     poll: poll?.toNotesCreatePollRequest(),
   );
+
+  NotesDraftsCreateRequest toNotesDraftsCreateRequest() =>
+      NotesDraftsCreateRequest(
+        visibility: visibility,
+        visibleUserIds: visibleUserIds,
+        cw: cw,
+        hashtag: hashtag,
+        localOnly: localOnly,
+        reactionAcceptance: reactionAcceptance,
+        replyId: replyId,
+        renoteId: renoteId,
+        channelId: channelId,
+        text: text,
+        fileIds: fileIds,
+        poll: poll?.toNotesCreatePollRequest(),
+        scheduledAt: scheduledAt,
+        isActuallyScheduled: isActuallyScheduled,
+      );
 }
