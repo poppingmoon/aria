@@ -13,6 +13,7 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../constant/shortcuts.dart';
 import '../../extension/community_channel_extension.dart';
 import '../../extension/list_mfm_node_extension.dart';
+import '../../extension/mfm_mention_extension.dart';
 import '../../extension/note_channel_info_extension.dart';
 import '../../extension/note_draft_extension.dart';
 import '../../extension/text_editing_controller_extension.dart';
@@ -29,7 +30,6 @@ import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/extract_mentions.dart';
@@ -198,16 +198,6 @@ class PostForm extends HookConsumerWidget {
     final attaches = ref.watch(
       attachesNotifierProvider(account.value, noteId: noteId),
     );
-    final reply = switch (draft.replyId) {
-      final replyId? => ref.watch(noteNotifierProvider(account.value, replyId)),
-      _ => null,
-    };
-    final renote = switch (draft.renoteId) {
-      final renoteId? => ref.watch(
-        noteNotifierProvider(account.value, renoteId),
-      ),
-      _ => null,
-    };
     final mentions = switch (draft.text) {
       final text? when text.isNotEmpty => ref.watch(
         parsedMfmProvider(text).select(extractMentions),
@@ -218,7 +208,7 @@ class PostForm extends HookConsumerWidget {
       final localHost = toUnicode(account.value.host.toLowerCase());
       return mentions.map((mention) => mention.normalize(localHost)).toSet();
     }, [mentions]);
-    final replyMentions = switch (reply?.text) {
+    final replyMentions = switch (draft.reply?.text) {
       final text? when text.isNotEmpty => ref.watch(
         parsedMfmProvider(text).select(extractMentions),
       ),
@@ -235,6 +225,7 @@ class PostForm extends HookConsumerWidget {
       [normalizedMentions],
     );
     final extraMentions = useMemoized(() {
+      final reply = draft.reply;
       if (reply == null) {
         return <MfmMention>[];
       }
@@ -266,20 +257,9 @@ class PostForm extends HookConsumerWidget {
       ),
       [normalizedMentions, visibleUsers],
     );
-    final canChangeLocalOnly =
-        noteId == null &&
-        draft.channelId == null &&
-        draft.visibility != NoteVisibility.specified &&
-        !(reply?.localOnly ?? false) &&
-        !(renote?.localOnly ?? false);
-    final canChangeVisibility =
-        noteId == null &&
-        draft.channelId == null &&
-        reply?.visibility != NoteVisibility.specified;
-    final canChangeChannel =
-        noteId == null &&
-        (renote?.channel?.allowRenoteToExternal ?? true) &&
-        reply?.channel == null;
+    final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
+    final canChangeVisibility = noteId == null && draft.canChangeVisibility;
+    final canChangeChannel = noteId == null && draft.canChangeChannel;
     final canPost = draft.canPost || attaches.isNotEmpty;
     final canScheduleNote =
         noteId == null &&
@@ -486,9 +466,9 @@ class PostForm extends HookConsumerWidget {
                                       !i.isSilenced) &&
                                   (visibility.priority >=
                                       NoteVisibility.min(
-                                        reply?.visibility ??
+                                        draft.reply?.visibility ??
                                             NoteVisibility.public,
-                                        renote?.visibility ??
+                                        draft.renote?.visibility ??
                                             NoteVisibility.public,
                                       ).priority),
                             );
@@ -714,7 +694,7 @@ class PostForm extends HookConsumerWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.reply),
                     ),
-                    if (reply?.user case final user?) ...[
+                    if (draft.reply?.user case final user?) ...[
                       UserAvatar(
                         account: account.value,
                         user: user,
@@ -735,7 +715,7 @@ class PostForm extends HookConsumerWidget {
                                 .read(
                                   postNotifierProvider(account.value).notifier,
                                 )
-                                .setReply(null)
+                                .clearReply()
                           : null,
                       icon: const Icon(Icons.close),
                     ),
@@ -756,7 +736,7 @@ class PostForm extends HookConsumerWidget {
                       padding: EdgeInsets.all(8.0),
                       child: Icon(Icons.repeat_rounded),
                     ),
-                    if (renote?.user case final user?) ...[
+                    if (draft.renote?.user case final user?) ...[
                       UserAvatar(
                         account: account.value,
                         user: user,
@@ -777,7 +757,7 @@ class PostForm extends HookConsumerWidget {
                                 .read(
                                   postNotifierProvider(account.value).notifier,
                                 )
-                                .setRenote(null)
+                                .clearRenote()
                           : null,
                       icon: const Icon(Icons.close),
                     ),
@@ -1007,9 +987,7 @@ class PostForm extends HookConsumerWidget {
                   child: Row(
                     children: [
                       Expanded(child: Text(t.aria.mentionToRemoteWarning)),
-                      if (draft.channelId == null &&
-                          !(reply?.localOnly ?? false) &&
-                          !(renote?.localOnly ?? false))
+                      if (canChangeLocalOnly)
                         TextButton(
                           onPressed: noteId == null
                               ? () => ref
@@ -1585,20 +1563,5 @@ class _PostFormFooter extends HookConsumerWidget {
           ),
       ],
     );
-  }
-}
-
-extension on MfmMention {
-  MfmMention normalize(String localHost) {
-    if (host case final host?) {
-      final normalizedHost = toUnicode(host.toLowerCase());
-      return MfmMention(
-        username: username.toLowerCase(),
-        host: normalizedHost == localHost ? null : normalizedHost,
-        acct: acct,
-      );
-    } else {
-      return MfmMention(username: username.toLowerCase(), acct: acct);
-    }
   }
 }

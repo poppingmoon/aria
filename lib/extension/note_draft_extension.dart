@@ -42,6 +42,19 @@ extension NoteDraftExtension on NoteDraft {
         _ => true,
       };
 
+  bool get canChangeLocalOnly =>
+      channelId == null &&
+      visibility != NoteVisibility.specified &&
+      !(reply?.localOnly ?? false) &&
+      !(renote?.localOnly ?? false);
+
+  bool get canChangeVisibility =>
+      channelId == null && reply?.visibility != NoteVisibility.specified;
+
+  bool get canChangeChannel =>
+      (renote?.channel?.allowRenoteToExternal ?? true) &&
+      reply?.channel == null;
+
   List<String>? get _hashtags => hashtag
       ?.trim()
       .split(RegExp(r'\s'))

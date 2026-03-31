@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:mfm_parser/mfm_parser.dart';
@@ -7,12 +8,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../extension/community_channel_extension.dart';
 import '../extension/me_detailed_extension.dart';
+import '../extension/mfm_mention_extension.dart';
 import '../extension/note_draft_extension.dart';
 import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
 import '../util/extract_mentions.dart';
+import '../util/punycode.dart';
 import 'account_settings_notifier_provider.dart';
 import 'api/channel_notifier_provider.dart';
 import 'api/endpoints_notifier_provider.dart';
@@ -20,6 +23,7 @@ import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
 import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
+import 'parsed_mfm_provider.dart';
 import 'shared_preferences_provider.dart';
 
 part 'post_notifier_provider.g.dart';
@@ -36,6 +40,30 @@ class PostNotifier extends _$PostNotifier {
           i = await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
       }
+      Note? reply = next.reply;
+      if (next.replyId case final replyId?) {
+        if (next.reply?.id != replyId) {
+          try {
+            reply =
+                ref.read(noteNotifierProvider(account, replyId)) ??
+                await ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .show(replyId);
+          } catch (_) {}
+        }
+      }
+      Note? renote = next.renote;
+      if (next.renoteId case final renoteId?) {
+        if (next.renote?.id != renoteId) {
+          try {
+            renote =
+                ref.read(noteNotifierProvider(account, renoteId)) ??
+                await ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .show(renoteId);
+          } catch (_) {}
+        }
+      }
       NoteChannelInfo? channel = next.channel;
       if (next.channelId case final channelId?) {
         if (next.channel?.id != channelId) {
@@ -46,14 +74,23 @@ class PostNotifier extends _$PostNotifier {
           } catch (_) {}
         }
       }
-      if (i != null || channel != next.channel) {
+      if (i != null ||
+          reply != next.reply ||
+          renote != next.renote ||
+          channel != next.channel) {
         state = next.copyWith(
           userId: i?.id ?? next.userId,
           user: i?.toUserLite() ?? next.user,
+          reply: reply,
+          renote: renote,
           channel: channel,
         );
       }
     });
+    if (noteId != null) {
+      final note = ref.read(noteNotifierProvider(account, noteId));
+      return note?.toNoteDraft() ?? _defaultDraft;
+    }
     if (noteId != null) {
       final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNoteDraft() ?? _defaultDraft;
@@ -100,7 +137,7 @@ class PostNotifier extends _$PostNotifier {
       createdAt: DateTime.now(),
       userId: i?.id ?? '',
       user: i?.toUserLite() ?? const UserLite(id: '', username: ''),
-      localOnly: localOnly,
+      localOnly: visibility != NoteVisibility.specified && localOnly,
       visibility: visibility,
       reactionAcceptance: reactionAcceptance,
     );
@@ -285,15 +322,19 @@ class PostNotifier extends _$PostNotifier {
 
   void setVisibility(NoteVisibility visibility) {
     if (state.channelId != null) {
-      state = state.copyWith(visibility: NoteVisibility.public);
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        visibleUserIds: [],
+      );
     } else if (visibility == NoteVisibility.specified) {
       state = state.copyWith(
         visibility: NoteVisibility.specified,
+        visibleUserIds: [],
         channelId: null,
         localOnly: false,
       );
     } else {
-      state = state.copyWith(visibility: visibility);
+      state = state.copyWith(visibility: visibility, visibleUserIds: []);
     }
     if (ref
         .read(accountSettingsNotifierProvider(account))
@@ -379,65 +420,94 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setReply(Note? reply) {
-    if (reply == null) {
-      state = state.copyWith(replyId: null);
-    } else {
-      if (state.replyId == reply.id) return;
-      if (state.text case final text?) {
-        final nodes = parse(text);
-        final isMentionOnly = nodes.every(
+  void setReply(Note reply) {
+    if (state.replyId == reply.id) {
+      state = state.copyWith(reply: reply);
+      _scheduleSave();
+      return;
+    }
+
+    final visibility = reply.channelId != null
+        ? NoteVisibility.public
+        : NoteVisibility.min(
+            state.visibility ?? NoteVisibility.public,
+            reply.visibility ?? NoteVisibility.public,
+          );
+    final i = _i;
+    final visibleUserIds = {
+      ...?state.visibleUserIds,
+      ...reply.visibleUserIds.where(
+        (userId) => userId != i?.id && userId != reply.userId,
+      ),
+      if (reply.userId != i?.id) reply.userId,
+    }.toList();
+    final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
+    final localHost = toUnicode(account.host.toLowerCase());
+    final replyMentions = switch (reply.text) {
+      final text? when text.isNotEmpty => extractMentions(
+        ref.read(parsedMfmProvider(text)),
+      ).map((mention) => mention.normalize(localHost)),
+      _ => null,
+    };
+    final nodes = switch (state.text) {
+      final text? when text.isNotEmpty => ref.read(parsedMfmProvider(text)),
+      _ => null,
+    };
+    final isMentionOnly =
+        nodes != null &&
+        nodes.isNotEmpty &&
+        nodes.every(
           (node) => switch (node) {
             MfmMention() => true,
-            MfmText(:final text) => RegExp(r'\s*').hasMatch(text),
+            MfmText(:final text) => text.trim().isEmpty,
             _ => false,
           },
         );
-        if (isMentionOnly) {
-          state = state.copyWith(text: null);
-        }
+    final textMentions = nodes != null
+        ? extractMentions(nodes).map((mention) => mention.normalize(localHost))
+        : null;
+    final additionalMentions = HashSet<MfmMention>(
+      equals: (p0, p1) => (p0.username, p0.host) == (p1.username, p1.host),
+      hashCode: (p0) => (p0.username, p0.host).hashCode,
+    );
+    for (final mention in [
+      ...?replyMentions,
+      MfmMention(
+        username: reply.user.username.toLowerCase(),
+        host: reply.user.host?.toLowerCase(),
+        acct: reply.user.acct,
+      ),
+    ]) {
+      if ((textMentions?.every(
+                (e) => (mention.username, mention.host) != (e.username, e.host),
+              ) ??
+              true) &&
+          (mention.username != account.username?.toLowerCase() ||
+              mention.host != null)) {
+        additionalMentions.add(mention);
       }
-      final visibility = reply.channelId != null
-          ? NoteVisibility.public
-          : NoteVisibility.min(
-              state.visibility ?? NoteVisibility.public,
-              reply.visibility ?? NoteVisibility.public,
-            );
-      final i = _i;
-      final visibleUserIds = {
-        ...?state.visibleUserIds,
-        ...reply.visibleUserIds.where(
-          (userId) => userId != i?.id && userId != reply.userId,
-        ),
-        if (reply.userId != i?.id) reply.userId,
-      }.toList();
-      final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
-      final replyMentions = extractMentions(
-        parse(reply.text ?? ''),
-      ).map((mention) => mention.acct);
-      final textMentions = extractMentions(
-        parse(state.text ?? ''),
-      ).map((mention) => mention.acct);
-      final text = [
-        ...{...replyMentions, reply.user.acct}.where(
-          (acct) => ![
-            ...textMentions,
-            '@${account.username}',
-            account.toString(),
-          ].contains(acct),
-        ),
-        state.text ?? '',
-      ].join(' ');
-      state = state.copyWith(
-        visibility: visibility,
-        visibleUserIds: visibleUserIds,
-        localOnly: (state.localOnly ?? false) || reply.localOnly,
-        cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
-        replyId: reply.id,
-        channelId: reply.channelId ?? state.channelId,
-        text: text,
-      );
     }
+    final text = [
+      ...additionalMentions.map((mention) => mention.acct),
+      if (!isMentionOnly) state.text ?? '' else '',
+    ].join(' ');
+    state = state.copyWith(
+      visibility: visibility,
+      visibleUserIds: visibleUserIds,
+      localOnly:
+          visibility != NoteVisibility.specified &&
+          ((state.localOnly ?? false) || reply.localOnly),
+      cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
+      replyId: reply.id,
+      reply: reply,
+      channelId: visibility != NoteVisibility.specified
+          ? reply.channelId ?? state.channelId
+          : null,
+      channel: visibility != NoteVisibility.specified
+          ? reply.channel ?? state.channel
+          : null,
+      text: text,
+    );
     _scheduleSave();
   }
 
@@ -447,25 +517,30 @@ class PostNotifier extends _$PostNotifier {
       visibility: defaultRequest.visibility,
       localOnly: defaultRequest.localOnly,
       replyId: null,
+      reply: null,
     );
     _scheduleSave();
   }
 
-  void setRenote(Note? renote) {
-    if (renote == null) {
-      state = state.copyWith(renoteId: null);
-    } else {
-      final visibility = NoteVisibility.min(
-        state.visibility ?? NoteVisibility.public,
-        renote.visibility ?? NoteVisibility.public,
-      );
-      state = state.copyWith(
-        visibility: visibility,
-        localOnly: (state.localOnly ?? false) || renote.localOnly,
-        renoteId: renote.id,
-        channelId: renote.channelId ?? state.channelId,
-      );
-    }
+  void setRenote(Note renote) {
+    final visibility = NoteVisibility.min(
+      state.visibility ?? NoteVisibility.public,
+      renote.visibility ?? NoteVisibility.public,
+    );
+    state = state.copyWith(
+      visibility: visibility,
+      localOnly:
+          visibility != NoteVisibility.specified &&
+          ((state.localOnly ?? false) || renote.localOnly),
+      renoteId: renote.id,
+      renote: renote,
+      channelId: visibility != NoteVisibility.specified
+          ? renote.channelId ?? state.channelId
+          : null,
+      channel: visibility != NoteVisibility.specified
+          ? renote.channel ?? state.channel
+          : null,
+    );
     _scheduleSave();
   }
 
@@ -475,6 +550,7 @@ class PostNotifier extends _$PostNotifier {
       visibility: defaultRequest.visibility,
       localOnly: defaultRequest.localOnly,
       renoteId: null,
+      renote: null,
     );
     _scheduleSave();
   }
@@ -485,6 +561,7 @@ class PostNotifier extends _$PostNotifier {
       channel: channel,
       localOnly: true,
       visibility: NoteVisibility.public,
+      visibleUserIds: [],
     );
     _scheduleSave();
   }
