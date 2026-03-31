@@ -152,38 +152,6 @@ class PostForm extends HookConsumerWidget {
     }
   }
 
-  Future<Account?> _switchAccount(WidgetRef ref, Account origin) async {
-    final accounts = ref.read(accountsNotifierProvider);
-    final destination = await showModalBottomSheet<Account>(
-      context: ref.context,
-      builder: (context) => ListView.separated(
-        itemBuilder: (context, index) {
-          final account = accounts[index];
-          return AccountPreview(
-            account: account,
-            trailing: const Icon(Icons.navigate_next),
-            avatarSize: 40.0,
-            onTap: () => context.pop(accounts[index]),
-          );
-        },
-        separatorBuilder: (_, _) => const Divider(height: 0.0),
-        itemCount: accounts.length,
-      ),
-      clipBehavior: Clip.hardEdge,
-    );
-    if (destination == null || destination == origin) {
-      return null;
-    }
-    final draft = ref.read(postNotifierProvider(origin));
-    try {
-      await ref
-          .read(postNotifierProvider(destination).notifier)
-          .fromDraft(draft, origin);
-      ref.read(postNotifierProvider(origin).notifier).reset();
-    } catch (_) {}
-    return destination;
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
@@ -258,29 +226,12 @@ class PostForm extends HookConsumerWidget {
       [normalizedMentions, visibleUsers],
     );
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
-    final canChangeVisibility = noteId == null && draft.canChangeVisibility;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
     final canPost = draft.canPost || attaches.isNotEmpty;
     final canScheduleNote =
         noteId == null &&
         (i?.policies?.canScheduleNote ??
             ((i?.policies?.scheduleNoteMax ?? 0) > 0));
-    final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = switch (draft) {
-      _ when needsUpload => (t.misskey.upload, Icons.upload),
-      _ when noteId != null => (t.misskey.edit, Icons.edit),
-      NoteDraft(scheduledAt: _?) when canScheduleNote => (
-        t.misskey.schedule,
-        Icons.send,
-      ),
-      NoteDraft(isRenote: true) when attaches.isEmpty => (
-        t.misskey.renote,
-        Icons.repeat_rounded,
-      ),
-      NoteDraft(replyId: _?) => (t.misskey.reply, Icons.reply),
-      NoteDraft(renoteId: _?) => (t.misskey.quote, Icons.send),
-      _ => (t.misskey.note, Icons.send),
-    };
     final enableSpellCheck = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.enableSpellCheck,
@@ -406,9 +357,6 @@ class PostForm extends HookConsumerWidget {
           NoteDraft(channelId: _?) => t.misskey.postForm_.channelPlaceholder,
           _ => useMemoized(() => [t.misskey.postForm_.placeholders_.a, t.misskey.postForm_.placeholders_.b, t.misskey.postForm_.placeholders_.c, t.misskey.postForm_.placeholders_.d, t.misskey.postForm_.placeholders_.e, t.misskey.postForm_.placeholders_.f][Random().nextInt(6)], []),
         }}';
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
 
     return Shortcuts(
       shortcuts: {
@@ -431,253 +379,16 @@ class PostForm extends HookConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    tooltip: t.misskey.switchAccount,
-                    onPressed: noteId == null
-                        ? () async {
-                            final destination = await _switchAccount(
-                              ref,
-                              account.value,
-                            );
-                            if (destination != null) {
-                              account.value = destination;
-                              onAccountChanged?.call(destination);
-                            }
-                          }
-                        : null,
-                    icon: i != null
-                        ? UserAvatar(
-                            account: account.value,
-                            user: i,
-                            size: 32.0,
-                          )
-                        : const Icon(Icons.person),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: canChangeVisibility
-                        ? () async {
-                            final candidates = NoteVisibility.values.where(
-                              (visibility) =>
-                                  (visibility != NoteVisibility.public ||
-                                      i == null ||
-                                      !i.isSilenced) &&
-                                  (visibility.priority >=
-                                      NoteVisibility.min(
-                                        draft.reply?.visibility ??
-                                            NoteVisibility.public,
-                                        draft.renote?.visibility ??
-                                            NoteVisibility.public,
-                                      ).priority),
-                            );
-                            final result =
-                                await showModalBottomSheet<NoteVisibility>(
-                                  context: context,
-                                  builder: (context) => NoteVisibilitySheet(
-                                    visibilities: candidates,
-                                  ),
-                                );
-                            if (result != null) {
-                              ref
-                                  .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
-                                  )
-                                  .setVisibility(result);
-                            }
-                          }
-                        : null,
-                    icon: NoteVisibilityIcon(visibility: draft.visibility),
-                  ),
-                  IconButton(
-                    tooltip: draft.localOnly ?? false
-                        ? t.misskey.visibility_.disableFederation
-                        : null,
-                    onPressed: canChangeLocalOnly
-                        ? () => ref
-                              .read(
-                                postNotifierProvider(account.value).notifier,
-                              )
-                              .setLocalOnly(!(draft.localOnly ?? false))
-                        : null,
-                    color: draft.localOnly ?? false
-                        ? Theme.of(context).colorScheme.error
-                        : null,
-                    disabledColor: draft.localOnly ?? false
-                        ? Theme.of(
-                            context,
-                          ).colorScheme.error.withValues(alpha: 0.5)
-                        : null,
-                    icon: draft.localOnly ?? false
-                        ? const Icon(OffIcons.rocket_outlined)
-                        : const Icon(Icons.rocket),
-                  ),
-                  PopupMenuButton<void>(
-                    itemBuilder: (context) => [
-                      PopupMenuItem(
-                        onTap: noteId == null
-                            ? () async {
-                                final result =
-                                    await showModalBottomSheet<
-                                      (ReactionAcceptance?,)
-                                    >(
-                                      context: context,
-                                      builder: (context) => ListView(
-                                        shrinkWrap: true,
-                                        children: [
-                                          ListTile(
-                                            title: Text(
-                                              t.misskey.reactionAcceptance,
-                                            ),
-                                          ),
-                                          const Divider(height: 0.0),
-                                          ...[
-                                            null,
-                                            ...ReactionAcceptance.values,
-                                          ].map(
-                                            (acceptance) => ListTile(
-                                              leading: ReactionAcceptanceIcon(
-                                                acceptance: acceptance,
-                                              ),
-                                              title: ReactionAcceptanceWidget(
-                                                acceptance: acceptance,
-                                              ),
-                                              onTap: () =>
-                                                  context.pop((acceptance,)),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                if (result != null) {
-                                  ref
-                                      .read(
-                                        postNotifierProvider(
-                                          account.value,
-                                        ).notifier,
-                                      )
-                                      .setReactionAcceptance(result.$1);
-                                }
-                              }
-                            : null,
-                        child: ListTile(
-                          leading: ReactionAcceptanceIcon(
-                            acceptance: draft.reactionAcceptance,
-                          ),
-                          title: Text(t.misskey.reactionAcceptance),
-                        ),
-                      ),
-                      PopupMenuItem(
-                        onTap: () {
-                          final text = draft.text;
-                          ref
-                              .read(
-                                postNotifierProvider(account.value).notifier,
-                              )
-                              .setText(draft.cw);
-                          ref
-                              .read(
-                                postNotifierProvider(account.value).notifier,
-                              )
-                              .setCw(text?.replaceAll('\n', ' '));
-                          useCw.value = true;
-                        },
-                        enabled: draft.text != null || draft.cw != null,
-                        child: ListTile(
-                          leading: const Icon(Icons.swap_vert),
-                          title: Text(t.aria.swapCw),
-                        ),
-                      ),
-                      if (canScheduleNote)
-                        PopupMenuItem(
-                          onTap: () =>
-                              context.push('/${account.value}/scheduled-notes'),
-                          child: ListTile(
-                            leading: const Icon(Icons.schedule),
-                            title: Text(t.misskey.drafts_.listScheduledNotes),
-                          ),
-                        ),
-                      PopupMenuItem(
-                        onTap: () async {
-                          final confirmed = await confirm(
-                            context,
-                            message: t.misskey.resetAreYouSure,
-                          );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            ref
-                                .read(
-                                  postNotifierProvider(account.value).notifier,
-                                )
-                                .reset();
-                          }
-                        },
-                        child: ListTile(
-                          leading: const Icon(Icons.delete),
-                          title: Text(t.aria.reset),
-                          iconColor: colors.error,
-                          textColor: colors.error,
-                        ),
-                      ),
-                    ],
-                    icon: const Icon(Icons.more_horiz),
-                  ),
-                  if (showPostButton) ...[
-                    const SizedBox(width: 4.0),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        foregroundColor: colors.fgOnAccent,
-                        disabledForegroundColor: colors.fgOnAccent.withValues(
-                          alpha: 0.5,
-                        ),
-                        backgroundColor: Colors.transparent,
-                        iconColor: colors.fgOnAccent,
-                        disabledIconColor: colors.fgOnAccent.withValues(
-                          alpha: 0.5,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      onPressed: canPost
-                          ? () => post(ref, account.value, noteId)
-                          : null,
-                      child: Ink(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              colors.buttonGradateA.withValues(
-                                alpha: canPost ? 1.0 : 0.5,
-                              ),
-                              colors.buttonGradateB.withValues(
-                                alpha: canPost ? 1.0 : 0.5,
-                              ),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 16.0,
-                          ),
-                          child: Row(
-                            children: [
-                              Text(buttonText),
-                              const SizedBox(width: 4.0),
-                              Icon(buttonIcon),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+              child: _PostFormHeader(
+                account: account.value,
+                noteId: noteId,
+                post: post,
+                onAccountChanged: (newAccount) {
+                  account.value = newAccount;
+                  onAccountChanged?.call(newAccount);
+                },
+                showPostButton: showPostButton,
+                useCw: useCw,
               ),
             ),
             if (draft.replyId case final replyId?)
@@ -1173,7 +884,6 @@ class PostForm extends HookConsumerWidget {
                 onExpand: onExpand,
                 useCw: useCw,
                 useHashtag: useHashtag,
-                canChangeChannel: canChangeChannel,
               ),
             ),
             if (attaches.isNotEmpty) ...[
@@ -1215,6 +925,293 @@ class PostForm extends HookConsumerWidget {
   }
 }
 
+class _PostFormHeader extends HookConsumerWidget {
+  const _PostFormHeader({
+    required this.account,
+    required this.noteId,
+    required this.post,
+    required this.onAccountChanged,
+    required this.showPostButton,
+    required this.useCw,
+  });
+
+  final Account account;
+  final String? noteId;
+  final void Function(WidgetRef ref, Account account, String? noteId) post;
+  final void Function(Account account) onAccountChanged;
+  final bool showPostButton;
+  final ValueNotifier<bool> useCw;
+
+  Future<Account?> _switchAccount(WidgetRef ref, Account origin) async {
+    final accounts = ref.read(accountsNotifierProvider);
+    final destination = await showModalBottomSheet<Account>(
+      context: ref.context,
+      builder: (context) => ListView.separated(
+        itemBuilder: (context, index) {
+          final account = accounts[index];
+          return AccountPreview(
+            account: account,
+            trailing: const Icon(Icons.navigate_next),
+            avatarSize: 40.0,
+            onTap: () => context.pop(accounts[index]),
+          );
+        },
+        separatorBuilder: (_, _) => const Divider(height: 0.0),
+        itemCount: accounts.length,
+      ),
+      clipBehavior: Clip.hardEdge,
+    );
+    if (destination == null || destination == origin) {
+      return null;
+    }
+    final draft = ref.read(postNotifierProvider(origin));
+    try {
+      await ref
+          .read(postNotifierProvider(destination).notifier)
+          .fromDraft(draft, origin);
+      ref.read(postNotifierProvider(origin).notifier).reset();
+    } catch (_) {}
+    return destination;
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
+    final attaches = ref.watch(
+      attachesNotifierProvider(account, noteId: noteId),
+    );
+    final i = ref.watch(iNotifierProvider(account)).value;
+    final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
+    final canChangeVisibility = noteId == null && draft.canChangeVisibility;
+    final canPost = draft.canPost || attaches.isNotEmpty;
+    final canScheduleNote =
+        noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
+    final needsUpload = attaches.any((file) => file is LocalPostFile);
+    final (buttonText, buttonIcon) = switch (draft) {
+      _ when needsUpload => (t.misskey.upload, Icons.upload),
+      _ when noteId != null => (t.misskey.edit, Icons.edit),
+      NoteDraft(scheduledAt: _?) when canScheduleNote => (
+        t.misskey.schedule,
+        Icons.send,
+      ),
+      NoteDraft(isRenote: true) when attaches.isEmpty => (
+        t.misskey.renote,
+        Icons.repeat_rounded,
+      ),
+      NoteDraft(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NoteDraft(renoteId: _?) => (t.misskey.quote, Icons.send),
+      _ => (t.misskey.note, Icons.send),
+    };
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
+
+    return Row(
+      children: [
+        IconButton(
+          tooltip: t.misskey.switchAccount,
+          onPressed: noteId == null
+              ? () async {
+                  final destination = await _switchAccount(ref, account);
+                  if (destination != null) {
+                    onAccountChanged(destination);
+                  }
+                }
+              : null,
+          icon: i != null
+              ? UserAvatar(account: account, user: i, size: 32.0)
+              : const Icon(Icons.person),
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: canChangeVisibility
+              ? () async {
+                  final candidates = NoteVisibility.values.where(
+                    (visibility) =>
+                        (visibility != NoteVisibility.public ||
+                            i == null ||
+                            !i.isSilenced) &&
+                        visibility.priority >=
+                            NoteVisibility.min(
+                              draft.reply?.visibility ?? NoteVisibility.public,
+                              draft.renote?.visibility ?? NoteVisibility.public,
+                            ).priority,
+                  );
+                  final result = await showModalBottomSheet<NoteVisibility>(
+                    context: context,
+                    builder: (context) =>
+                        NoteVisibilitySheet(visibilities: candidates),
+                  );
+                  if (result != null) {
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setVisibility(result);
+                  }
+                }
+              : null,
+          icon: NoteVisibilityIcon(visibility: draft.visibility),
+        ),
+        IconButton(
+          tooltip: draft.localOnly ?? false
+              ? t.misskey.visibility_.disableFederation
+              : null,
+          onPressed: canChangeLocalOnly
+              ? () => ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setLocalOnly(!(draft.localOnly ?? false))
+              : null,
+          color: draft.localOnly ?? false
+              ? Theme.of(context).colorScheme.error
+              : null,
+          disabledColor: draft.localOnly ?? false
+              ? Theme.of(context).colorScheme.error.withValues(alpha: 0.5)
+              : null,
+          icon: draft.localOnly ?? false
+              ? const Icon(OffIcons.rocket_outlined)
+              : const Icon(Icons.rocket),
+        ),
+        PopupMenuButton<void>(
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              onTap: noteId == null
+                  ? () async {
+                      final result =
+                          await showModalBottomSheet<(ReactionAcceptance?,)>(
+                            context: context,
+                            builder: (context) => ListView(
+                              shrinkWrap: true,
+                              children: [
+                                ListTile(
+                                  title: Text(t.misskey.reactionAcceptance),
+                                ),
+                                const Divider(height: 0.0),
+                                ...[null, ...ReactionAcceptance.values].map(
+                                  (acceptance) => ListTile(
+                                    leading: ReactionAcceptanceIcon(
+                                      acceptance: acceptance,
+                                    ),
+                                    title: ReactionAcceptanceWidget(
+                                      acceptance: acceptance,
+                                    ),
+                                    onTap: () => context.pop((acceptance,)),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                      if (result != null) {
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setReactionAcceptance(result.$1);
+                      }
+                    }
+                  : null,
+              child: ListTile(
+                leading: ReactionAcceptanceIcon(
+                  acceptance: draft.reactionAcceptance,
+                ),
+                title: Text(t.misskey.reactionAcceptance),
+              ),
+            ),
+            PopupMenuItem(
+              onTap: () {
+                final text = draft.text;
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setText(draft.cw);
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setCw(text?.replaceAll('\n', ' '));
+                useCw.value = true;
+              },
+              enabled: draft.text != null || draft.cw != null,
+              child: ListTile(
+                leading: const Icon(Icons.swap_vert),
+                title: Text(t.aria.swapCw),
+              ),
+            ),
+            if (canScheduleNote)
+              PopupMenuItem(
+                onTap: () => context.push('/$account/scheduled-notes'),
+                child: ListTile(
+                  leading: const Icon(Icons.schedule),
+                  title: Text(t.misskey.drafts_.listScheduledNotes),
+                ),
+              ),
+            PopupMenuItem(
+              onTap: () async {
+                final confirmed = await confirm(
+                  context,
+                  message: t.misskey.resetAreYouSure,
+                );
+                if (!context.mounted) return;
+                if (confirmed) {
+                  ref.read(postNotifierProvider(account).notifier).reset();
+                }
+              },
+              child: ListTile(
+                leading: const Icon(Icons.delete),
+                title: Text(t.aria.reset),
+                iconColor: colors.error,
+                textColor: colors.error,
+              ),
+            ),
+          ],
+          icon: const Icon(Icons.more_horiz),
+        ),
+        if (showPostButton) ...[
+          const SizedBox(width: 4.0),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              foregroundColor: colors.fgOnAccent,
+              disabledForegroundColor: colors.fgOnAccent.withValues(alpha: 0.5),
+              backgroundColor: Colors.transparent,
+              iconColor: colors.fgOnAccent,
+              disabledIconColor: colors.fgOnAccent.withValues(alpha: 0.5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+            ),
+            onPressed: canPost ? () => post(ref, account, noteId) : null,
+            child: Ink(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    colors.buttonGradateA.withValues(
+                      alpha: canPost ? 1.0 : 0.5,
+                    ),
+                    colors.buttonGradateB.withValues(
+                      alpha: canPost ? 1.0 : 0.5,
+                    ),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 16.0,
+                ),
+                child: Row(
+                  children: [
+                    Text(buttonText),
+                    const SizedBox(width: 4.0),
+                    Icon(buttonIcon),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
 class _PostFormFooter extends HookConsumerWidget {
   const _PostFormFooter({
     required this.account,
@@ -1228,7 +1225,6 @@ class _PostFormFooter extends HookConsumerWidget {
     required this.onExpand,
     required this.useCw,
     required this.useHashtag,
-    required this.canChangeChannel,
   });
 
   final Account account;
@@ -1242,12 +1238,12 @@ class _PostFormFooter extends HookConsumerWidget {
   final void Function(Account account)? onExpand;
   final ValueNotifier<bool> useCw;
   final ValueNotifier<bool> useHashtag;
-  final bool canChangeChannel;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
     final i = ref.watch(iNotifierProvider(account)).value;
+    final canChangeChannel = noteId == null && draft.canChangeChannel;
     final canScheduleNote =
         noteId == null &&
         (i?.policies?.canScheduleNote ??
