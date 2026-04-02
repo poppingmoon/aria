@@ -563,7 +563,9 @@ class PostForm extends HookConsumerWidget {
                     Expanded(
                       child: Text(
                         t.misskey.scheduleToPostOnX(
-                          x: absoluteTime(scheduledAt),
+                          x:
+                              '${absoluteTime(scheduledAt)} '
+                              '(${relativeTime(scheduledAt)})',
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,

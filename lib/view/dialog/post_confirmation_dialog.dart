@@ -138,7 +138,9 @@ class PostConfirmationDialog extends ConsumerWidget {
                             const WidgetSpan(child: SizedBox(width: 8.0)),
                             TextSpan(
                               text: t.misskey.scheduleToPostOnX(
-                                x: absoluteTime(date),
+                                x:
+                                    '${absoluteTime(date)} '
+                                    '(${relativeTime(date)})',
                               ),
                             ),
                           ],
