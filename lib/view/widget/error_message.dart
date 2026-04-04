@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:html/parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
@@ -27,7 +28,6 @@ class ErrorMessage extends HookConsumerWidget {
         'INTERNAL_ERROR' => [
           t.misskey.internalServerError,
           t.misskey.internalServerErrorDescription,
-          const JsonEncoder.withIndent('  ').convert(error.info),
         ],
         'RATE_LIMIT_EXCEEDED' => [
           t.misskey.cannotPerformTemporary,
@@ -36,8 +36,6 @@ class ErrorMessage extends HookConsumerWidget {
         'INVALID_PARAM' => [
           t.misskey.invalidParamError,
           t.misskey.invalidParamErrorDescription,
-          if (error.info != null)
-            const JsonEncoder.withIndent('  ').convert(error.info),
         ],
         'ROLE_PERMISSION_DENIED' => [
           t.misskey.permissionDeniedError,
@@ -65,24 +63,45 @@ class ErrorMessage extends HookConsumerWidget {
           error.message,
           error.id,
         ],
-        _ => [
-          error.code,
-          error.message,
-          if (error.info case final info?)
-            const JsonEncoder.withIndent('  ').convert(info),
-        ],
+        _ => [error.code, error.message],
       }.join('\n'),
       DioException(:final type, :final response, :final error) => [
-        type,
-        if (response != null) response,
-        if (error != null) error,
+        if (response case Response(:final statusCode?, :final statusMessage?))
+          '$statusCode $statusMessage'
+        else
+          type.name,
+        if (response?.headers['Content-Type']?.firstOrNull == 'text/html')
+          if (response?.data case final String text?)
+            if ((parse(text).body
+                      ?..querySelectorAll(
+                        'noscript, script, style',
+                      ).forEach((e) => e.remove()))
+                    ?.text
+                case final text?)
+              ...LineSplitter.split(
+                text,
+              ).map((line) => line.trim()).where((line) => line.isNotEmpty),
+        ?error,
       ].join('\n'),
       _ => error.toString(),
+    };
+    final info = switch (error) {
+      MisskeyException(:final info?) => const JsonEncoder.withIndent(
+        '  ',
+      ).convert(info),
+      DioException(:final response?) => response.toString(),
+      _ => null,
     };
     final maskedMessage = tokens.fold(
       message,
       (acc, token) => acc.replaceAll(token, '*' * token.length),
     );
+    final maskedInfo = info != null
+        ? tokens.fold(
+            info,
+            (acc, token) => acc.replaceAll(token, '*' * token.length),
+          )
+        : null;
     final maskedStackTrace = stackTrace != null
         ? tokens.fold(
             stackTrace.toString(),
@@ -97,9 +116,16 @@ class ErrorMessage extends HookConsumerWidget {
           title: Text(t.misskey.error),
           subtitle: InkWell(
             onTap: () => isCollapsed.value = false,
-            onLongPress: () => copyToClipboard(context, maskedMessage),
+            onLongPress: () => copyToClipboard(
+              context,
+              [maskedMessage, ?maskedInfo].join('\n\n'),
+            ),
             child: Text(
-              maskedMessage,
+              [
+                maskedMessage,
+                if (maskedInfo != null)
+                  if (isCollapsed.value) '...' else ...['', maskedInfo],
+              ].join('\n'),
               overflow: TextOverflow.fade,
               maxLines: isCollapsed.value ? 10 : null,
             ),

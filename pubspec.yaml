@@ -71,6 +71,7 @@ dependencies:
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
   hooks_riverpod: ^3.3.1
+  html: ^0.15.6
   image: ^4.8.0
   image_compression:
     git:
