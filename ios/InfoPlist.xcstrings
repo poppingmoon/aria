@@ -22,6 +22,12 @@
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby pobrać pliki, zezwól na dostęp do swojej biblioteki zdjęć."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -49,6 +55,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby przesłać pliki, zezwól na dostęp do swojej biblioteki zdjęć."
           }
         },
         "zh-Hans" : {

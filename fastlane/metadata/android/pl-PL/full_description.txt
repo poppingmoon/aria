@@ -1,6 +1,6 @@
-Aria is a client app for Misskey, a federated social media platform.
+Aria to aplikacja kliencka dla Misskey, federacyjnej platformy mediów społecznościowych.
 
-Supports most of Misskey's features
+Obsługuje większość funkcji Misskey
 Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
 
 Swipe to switch between multiple accounts (of multiple servers)
