@@ -202,7 +202,7 @@ class NoteWidget extends HookConsumerWidget {
           child: Padding(
             padding: EdgeInsetsDirectional.only(
               start: 4.0,
-              top: verticalPadding,
+              top: max(0.0, verticalPadding - 2.0),
               end: horizontalPadding,
               bottom: showFooter ?? showNoteFooter
                   ? max(0.0, verticalPadding - 8.0)
