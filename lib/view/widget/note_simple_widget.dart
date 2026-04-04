@@ -159,6 +159,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
                       account: account,
                       noteId: noteId,
                       focusPostForm: focusPostForm,
+                      note: this.note,
                     ),
                   if (showReactionsViewer &&
                       note.reactionAcceptance !=

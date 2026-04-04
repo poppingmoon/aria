@@ -23,15 +23,17 @@ class SubNoteContent extends HookConsumerWidget {
     required this.account,
     required this.noteId,
     this.focusPostForm,
+    this.note,
   });
 
   final Account account;
   final String noteId;
   final void Function()? focusPostForm;
+  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteNotifierProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
