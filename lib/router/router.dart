@@ -52,6 +52,7 @@ import '../view/page/play/play_edit_page.dart';
 import '../view/page/play/play_page.dart';
 import '../view/page/play/plays_page.dart';
 import '../view/page/post_page.dart';
+import '../view/page/qr_page.dart';
 import '../view/page/role_page.dart';
 import '../view/page/scheduled_notes_page.dart';
 import '../view/page/scratchpad_page.dart';
@@ -611,6 +612,12 @@ GoRouter router(Ref ref) {
           GoRoute(
             path: 'post',
             builder: (_, state) => PostPage(
+              account: Account.fromString(state.pathParameters['acct']!),
+            ),
+          ),
+          GoRoute(
+            path: 'qr',
+            builder: (_, state) => QrPage(
               account: Account.fromString(state.pathParameters['acct']!),
             ),
           ),

@@ -238,6 +238,13 @@ class _TimelineDrawerExpansionTile extends ConsumerWidget {
               ),
             ),
             PopupMenuItem(
+              onTap: () => context.push('/$account/qr'),
+              child: ListTile(
+                leading: const Icon(Icons.qr_code_rounded),
+                title: Text(t.misskey.qr),
+              ),
+            ),
+            PopupMenuItem(
               onTap: () => context.push('/$account/lists'),
               child: ListTile(
                 leading: const Icon(Icons.list),

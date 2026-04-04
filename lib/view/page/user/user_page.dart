@@ -1,6 +1,8 @@
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../../hook/confetti_controller_hook.dart';
 import '../../../i18n/strings.g.dart';
@@ -89,6 +91,11 @@ class UserPage extends HookConsumerWidget {
                 )
               : null,
           actions: [
+            if (user is MeDetailed)
+              IconButton(
+                onPressed: () => context.push('/$account/qr'),
+                icon: const Icon(Icons.qr_code_rounded),
+              ),
             if (userId != null)
               IconButton(
                 onPressed: () => showUserSheet(

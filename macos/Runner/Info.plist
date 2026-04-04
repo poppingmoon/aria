@@ -30,6 +30,8 @@
 	<string>$(PRODUCT_COPYRIGHT)</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>NSMotionUsageDescription</key>
+	<string>To detect orientation of the device, please allow access to your sensor.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To download files, please allow access to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

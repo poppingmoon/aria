@@ -215,6 +215,9 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
   AssetGenImage get dummy =>
       const AssetGenImage('assets/misskey/packages/frontend/assets/dummy.png');
 
+  /// File path: assets/misskey/packages/frontend/assets/misskey.svg
+  String get misskey => 'assets/misskey/packages/frontend/assets/misskey.svg';
+
   /// Directory path: assets/misskey/packages/frontend/assets/sounds
   $AssetsMisskeyPackagesFrontendAssetsSoundsGen get sounds =>
       const $AssetsMisskeyPackagesFrontendAssetsSoundsGen();
@@ -225,7 +228,7 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [aboutIcon, dummy, unknown];
+  List<dynamic> get values => [aboutIcon, dummy, misskey, unknown];
 }
 
 class $AssetsMisskeyPackagesFrontendAssetsSoundsGen {
