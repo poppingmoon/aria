@@ -44,6 +44,60 @@ class _TranslationsAriaPlPl extends TranslationsAriaEnUs {
 	final TranslationsPlPl _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'O Arii';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Czy na pewno chcesz zaakceptować prośbę o obserwowanie od '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+	@override String get accessToken => 'Token dostępu';
+	@override String get accessTokenUpdated => 'Pomyślnie zaktualizowano token dostępu';
+	@override String get accountAdded => 'Pomyślnie dodano konto';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Aria jest rozwidleniem projektu '),
+		miria,
+		const TextSpan(text: '.\nLokalizacja Arii opiera się na plikach lokalizacyjnych '),
+		misskey,
+		const TextSpan(text: '.\nChcielibyśmy wyrazić naszą wdzięczność wszystkim współtwórcom tych projektów.'),
+	]);
+	@override String get addTab => 'Dodaj kartę';
+	@override String get alwaysExpandCw => 'Zawsze wyświetlaj ostrzeżenie dotyczące treści';
+	@override String get alwaysExpandLongNote => 'Zawsze rozwijaj długą notatkę';
+	@override String get alwaysExpandMediaInSubNote => 'Zawsze rozwijaj multimedia w pod mnotatce';
+	@override String get alwaysShowAllReactions => 'Always show all reactions';
+	@override String get alwaysShowTabHeader => 'Zawsze wyświetlaj informacje o zakładkach';
+	@override String get authenticate => 'Uwierzytelnianie';
+	@override String get authenticated => 'Uwierzytelniony';
+	@override String get avatarSize => 'Rozmiar awatara';
+	@override String get background => 'Tło';
+	@override String get buttonTypes => 'Typy przycisków';
+	@override String get cache => 'Pamięć podręczna';
+	@override String get calculating => 'Obliczenie...';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Czy na pewno chcesz anulować prośbę o obserwowanie użytkownika '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+	@override String get clientInfo => 'Informacje o kliencie';
+	@override String get confirmBeforeFollow => 'Potwierdź przed kontynuacją';
+	@override String get confirmBeforePost => 'Potwierdź przed wysłaniem';
+	@override String get confirmBeforeReact => 'Potwierdź przed reakcją';
+	@override String get confirmBeforeRenote => 'Potwierdź przed ponownym wprowadzeniem';
+	@override String get copied => 'Skopiowano do schowka';
+	@override String get copyName => 'Skopiuj nazwę';
+	@override String get crop => 'Przyciąć';
+	@override String get custom => 'Niestandardowe';
+	@override String get defaultReaction => 'Domyślna reakcja';
+	@override String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pl'))(n,
+		one: 'Czy chcesz usunąć ${n} zakładkę związaną z tym kontem?',
+		other: 'Czy chcesz usunąć ${n} kart powiązanych z tym kontem?',
+	);
+	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('pl'))(n,
+		one: 'Czy na pewno chcesz usunąć ${n} plik?',
+		other: 'Czy na pewno chcesz usunąć ${n} plików?',
+	);
+	@override String get deleteTabConfirm => 'Czy na pewno chcesz usunąć tę kartę?';
+	@override String get device => 'Urządzenie';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Czy na pewno chcesz zaobserwować '),
 		name,

@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.4.8+92
+version: 1.4.9+93
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -21,8 +21,8 @@ dependencies:
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
-  connectivity_plus: ^7.0.0
-  device_info_plus: ^12.3.0
+  connectivity_plus: ^7.1.0
+  device_info_plus: ^12.4.0
   dio: ^5.9.2
   dotted_border: ^3.1.0
   dynamic_color: ^1.8.1
@@ -53,7 +53,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: 2.11.1
+  flutter_rust_bridge: ^2.12.0
   flutter_secure_storage: ^10.0.0
   flutter_svg: ^2.2.4
   fluttertoast: ^9.0.0
@@ -64,7 +64,7 @@ dependencies:
       ref: 40be5996125c6ee95714a8be64d69fa49ad35724
   gal: ^2.3.2
   gal_linux: ^0.1.2
-  go_router: ^17.1.0
+  go_router: ^17.2.0
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -91,7 +91,7 @@ dependencies:
   kana_kit: ^2.1.1
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
-  material_symbols_icons: ^4.2906.0
+  material_symbols_icons: ^4.2928.1
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
@@ -102,7 +102,7 @@ dependencies:
       url: https://github.com/poppingmoon/misskey_dart
       ref: aa1a4277c381fe4db7bbb074693c1d4dacab56b8
   multi_split_view: ^3.6.1
-  package_info_plus: ^9.0.0
+  package_info_plus: ^9.0.1
   path: ^1.9.1
   path_provider: ^2.1.5
   photo_view: ^0.15.0
@@ -116,7 +116,7 @@ dependencies:
   riverpod_annotation: ^4.0.2
   rust_lib_aria:
     path: rust_builder
-  share_plus: ^12.0.1
+  share_plus: ^12.0.2
   shared_preferences: ^2.5.5
   shared_preferences_platform_interface: ^2.4.2
   slang: ^4.14.0
