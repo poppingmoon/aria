@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "NSCameraUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To take photos or videos, please allow access to your camera."
+          }
+        }
+      }
+    },
     "NSMotionUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -246,7 +246,8 @@ class PostNotifier extends _$PostNotifier {
     }
     final response = await _misskey.ap.show(
       ApShowRequest(
-        uri: remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'),
+        uri: (remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'))
+            .toString(),
       ),
     );
     final note = Note.fromJson(response.object);

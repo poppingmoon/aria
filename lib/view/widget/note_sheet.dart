@@ -262,7 +262,7 @@ class NoteSheet extends ConsumerWidget {
                   ref
                       .read(misskeyProvider(destination))
                       .ap
-                      .show(ApShowRequest(uri: remoteUrl ?? url)),
+                      .show(ApShowRequest(uri: (remoteUrl ?? url).toString())),
                 );
                 if (!context.mounted) return;
                 if (response != null) {

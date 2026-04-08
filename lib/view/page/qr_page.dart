@@ -310,6 +310,24 @@ class QrPage extends HookConsumerWidget {
             ),
         ],
       ),
+      floatingActionButton: switch (defaultTargetPlatform) {
+        TargetPlatform.android ||
+        TargetPlatform.iOS ||
+        TargetPlatform.macOS => FloatingActionButton.extended(
+          onPressed: () async {
+            sub?.pause();
+            ScreenBrightness.instance
+                .resetApplicationScreenBrightness()
+                .ignore();
+            SystemChrome.setPreferredOrientations([]).ignore();
+            await context.push('/$account/qr/read');
+            sub?.resume();
+          },
+          icon: const Icon(Icons.qr_code_scanner_rounded),
+          label: Text(t.misskey.qr_.readTabTitle),
+        ),
+        _ => null,
+      },
     );
   }
 }

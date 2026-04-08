@@ -1394,11 +1394,20 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "62a4df4aaca142f7146608f15a65c0523a5b00a1"
-      resolved-ref: "62a4df4aaca142f7146608f15a65c0523a5b00a1"
+      ref: "05cd06feefdfccd61555248f739acda8f46403d3"
+      resolved-ref: "05cd06feefdfccd61555248f739acda8f46403d3"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
+  mobile_scanner:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
+      resolved-ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
+      url: "https://github.com/poppingmoon/mobile_scanner"
+    source: git
+    version: "7.2.1"
   mockito:
     dependency: transitive
     description:
@@ -2331,10 +2340,10 @@ packages:
     dependency: transitive
     description:
       name: vector_graphics
-      sha256: "81da85e9ca8885ade47f9685b953cb098970d11be4821ac765580a6607ea4373"
+      sha256: "7076216a10d5c390315fbe536a30f1254c341e7543e6c4c8a815e591307772b1"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.21"
+    version: "1.1.20"
   vector_graphics_codec:
     dependency: transitive
     description:
