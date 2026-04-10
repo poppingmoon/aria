@@ -199,6 +199,9 @@ flutter:
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
     - assets/misskey/packages/frontend/assets/
+    - assets/misskey/packages/frontend/assets/sounds/aisha/
+    - assets/misskey/packages/frontend/assets/sounds/noizenecio/
+    - assets/misskey/packages/frontend/assets/sounds/syuilo/
   fonts:
     - family: BIZ UDGothic
       fonts:

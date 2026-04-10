@@ -215,6 +215,10 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
   AssetGenImage get dummy =>
       const AssetGenImage('assets/misskey/packages/frontend/assets/dummy.png');
 
+  /// Directory path: assets/misskey/packages/frontend/assets/sounds
+  $AssetsMisskeyPackagesFrontendAssetsSoundsGen get sounds =>
+      const $AssetsMisskeyPackagesFrontendAssetsSoundsGen();
+
   /// File path: assets/misskey/packages/frontend/assets/unknown.png
   AssetGenImage get unknown => const AssetGenImage(
     'assets/misskey/packages/frontend/assets/unknown.png',
@@ -222,6 +226,294 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [aboutIcon, dummy, unknown];
+}
+
+class $AssetsMisskeyPackagesFrontendAssetsSoundsGen {
+  const $AssetsMisskeyPackagesFrontendAssetsSoundsGen();
+
+  /// Directory path: assets/misskey/packages/frontend/assets/sounds/aisha
+  $AssetsMisskeyPackagesFrontendAssetsSoundsAishaGen get aisha =>
+      const $AssetsMisskeyPackagesFrontendAssetsSoundsAishaGen();
+
+  /// Directory path: assets/misskey/packages/frontend/assets/sounds/noizenecio
+  $AssetsMisskeyPackagesFrontendAssetsSoundsNoizenecioGen get noizenecio =>
+      const $AssetsMisskeyPackagesFrontendAssetsSoundsNoizenecioGen();
+
+  /// Directory path: assets/misskey/packages/frontend/assets/sounds/syuilo
+  $AssetsMisskeyPackagesFrontendAssetsSoundsSyuiloGen get syuilo =>
+      const $AssetsMisskeyPackagesFrontendAssetsSoundsSyuiloGen();
+}
+
+class $AssetsMisskeyPackagesFrontendAssetsSoundsAishaGen {
+  const $AssetsMisskeyPackagesFrontendAssetsSoundsAishaGen();
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/aisha/1.mp3
+  String get a1 => 'assets/misskey/packages/frontend/assets/sounds/aisha/1.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/aisha/2.mp3
+  String get a2 => 'assets/misskey/packages/frontend/assets/sounds/aisha/2.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/aisha/3.mp3
+  String get a3 => 'assets/misskey/packages/frontend/assets/sounds/aisha/3.mp3';
+
+  /// List of all assets
+  List<String> get values => [a1, a2, a3];
+}
+
+class $AssetsMisskeyPackagesFrontendAssetsSoundsNoizenecioGen {
+  const $AssetsMisskeyPackagesFrontendAssetsSoundsNoizenecioGen();
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba1.mp3
+  String get kickGaba1 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba1.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba2.mp3
+  String get kickGaba2 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba2.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba3.mp3
+  String get kickGaba3 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba3.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba4.mp3
+  String get kickGaba4 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba4.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba5.mp3
+  String get kickGaba5 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba5.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba6.mp3
+  String get kickGaba6 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba6.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba7.mp3
+  String get kickGaba7 =>
+      'assets/misskey/packages/frontend/assets/sounds/noizenecio/kick_gaba7.mp3';
+
+  /// List of all assets
+  List<String> get values => [
+    kickGaba1,
+    kickGaba2,
+    kickGaba3,
+    kickGaba4,
+    kickGaba5,
+    kickGaba6,
+    kickGaba7,
+  ];
+}
+
+class $AssetsMisskeyPackagesFrontendAssetsSoundsSyuiloGen {
+  const $AssetsMisskeyPackagesFrontendAssetsSoundsSyuiloGen();
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/bubble1.mp3
+  String get bubble1 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/bubble1.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/bubble2.mp3
+  String get bubble2 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/bubble2.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/down.mp3
+  String get down =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/down.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/kick.mp3
+  String get kick =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/kick.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-4va.mp3
+  String get nAec4va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-4va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-4vb.mp3
+  String get nAec4vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-4vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-8va.mp3
+  String get nAec8va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-8va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-8vb.mp3
+  String get nAec8vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec-8vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec.mp3
+  String get nAec =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-aec.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-4va.mp3
+  String get nCea4va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-4va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-4vb.mp3
+  String get nCea4vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-4vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-8va.mp3
+  String get nCea8va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-8va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-8vb.mp3
+  String get nCea8vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea-8vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea.mp3
+  String get nCea =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-cea.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-4va.mp3
+  String get nEa4va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-4va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-4vb.mp3
+  String get nEa4vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-4vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-8va.mp3
+  String get nEa8va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-8va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-8vb.mp3
+  String get nEa8vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-8vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-harmony.mp3
+  String get nEaHarmony =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea-harmony.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea.mp3
+  String get nEa =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-ea.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-4va.mp3
+  String get nEca4va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-4va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-4vb.mp3
+  String get nEca4vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-4vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-8va.mp3
+  String get nEca8va =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-8va.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-8vb.mp3
+  String get nEca8vb =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca-8vb.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca.mp3
+  String get nEca =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/n-eca.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/pirori-square-wet.mp3
+  String get piroriSquareWet =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/pirori-square-wet.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/pirori-wet.mp3
+  String get piroriWet =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/pirori-wet.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/pirori.mp3
+  String get pirori =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/pirori.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/poi1.mp3
+  String get poi1 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/poi1.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/poi2.mp3
+  String get poi2 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/poi2.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/pope1.mp3
+  String get pope1 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/pope1.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/pope2.mp3
+  String get pope2 =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/pope2.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/popo.mp3
+  String get popo =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/popo.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/queue-jammed.mp3
+  String get queueJammed =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/queue-jammed.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/reverved.mp3
+  String get reverved =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/reverved.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/ryukyu.mp3
+  String get ryukyu =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/ryukyu.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/snare.mp3
+  String get snare =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/snare.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/square-pico.mp3
+  String get squarePico =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/square-pico.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/triple.mp3
+  String get triple =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/triple.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/up.mp3
+  String get up =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/up.mp3';
+
+  /// File path: assets/misskey/packages/frontend/assets/sounds/syuilo/waon.mp3
+  String get waon =>
+      'assets/misskey/packages/frontend/assets/sounds/syuilo/waon.mp3';
+
+  /// List of all assets
+  List<String> get values => [
+    bubble1,
+    bubble2,
+    down,
+    kick,
+    nAec4va,
+    nAec4vb,
+    nAec8va,
+    nAec8vb,
+    nAec,
+    nCea4va,
+    nCea4vb,
+    nCea8va,
+    nCea8vb,
+    nCea,
+    nEa4va,
+    nEa4vb,
+    nEa8va,
+    nEa8vb,
+    nEaHarmony,
+    nEa,
+    nEca4va,
+    nEca4vb,
+    nEca8va,
+    nEca8vb,
+    nEca,
+    piroriSquareWet,
+    piroriWet,
+    pirori,
+    poi1,
+    poi2,
+    pope1,
+    pope2,
+    popo,
+    queueJammed,
+    reverved,
+    ryukyu,
+    snare,
+    squarePico,
+    triple,
+    up,
+    waon,
+  ];
 }
 
 class Assets {
