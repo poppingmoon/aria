@@ -72,4 +72,24 @@ class ChannelNotifier extends _$ChannelNotifier {
       state = AsyncValue.data(channel.copyWith(isFavorited: false));
     }
   }
+
+  Future<void> mute({DateTime? expiresAt}) async {
+    await _misskey.channels.mute.create(
+      ChannelsMuteCreateRequest(channelId: channelId, expiresAt: expiresAt),
+    );
+    final channel = state.value;
+    if (channel != null) {
+      state = AsyncValue.data(channel.copyWith(isMuting: true));
+    }
+  }
+
+  Future<void> unmute() async {
+    await _misskey.channels.mute.delete(
+      ChannelsMuteDeleteRequest(channelId: channelId),
+    );
+    final channel = state.value;
+    if (channel != null) {
+      state = AsyncValue.data(channel.copyWith(isMuting: false));
+    }
+  }
 }

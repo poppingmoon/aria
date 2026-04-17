@@ -9,7 +9,9 @@ import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
 import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
+import '../../dialog/channel_mute_dialog.dart';
 import '../../widget/timeline_list_view.dart';
 import 'channel_featured.dart';
 import 'channel_home.dart';
@@ -50,16 +52,58 @@ class ChannelPage extends ConsumerWidget {
                 PopupMenuItem(
                   onTap: () =>
                       context.push('/$account/search?channelId=$channelId'),
-                  child: Text(t.misskey.search),
+                  child: ListTile(
+                    leading: const Icon(Icons.search),
+                    title: Text(t.misskey.search),
+                  ),
                 ),
                 PopupMenuItem(
                   onTap: () => launchUrl(ref, url),
-                  child: Text(t.aria.openInBrowser),
+                  child: ListTile(
+                    leading: const Icon(Icons.open_in_browser),
+                    title: Text(t.aria.openInBrowser),
+                  ),
                 ),
                 PopupMenuItem(
                   onTap: () => copyToClipboard(context, url.toString()),
-                  child: Text(t.misskey.copyLink),
+                  child: ListTile(
+                    leading: const Icon(Icons.copy),
+                    title: Text(t.misskey.copyLink),
+                  ),
                 ),
+                if (channel?.isMuting case final isMuting?)
+                  if (isMuting)
+                    PopupMenuItem(
+                      onTap: () => futureWithDialog(
+                        context,
+                        ref
+                            .read(
+                              channelNotifierProvider(
+                                account,
+                                channelId,
+                              ).notifier,
+                            )
+                            .unmute(),
+                      ),
+                      child: ListTile(
+                        leading: const Icon(Icons.visibility),
+                        title: Text(t.misskey.unmute),
+                      ),
+                    )
+                  else
+                    PopupMenuItem(
+                      onTap: () => showDialog<void>(
+                        context: context,
+                        builder: (context) => ChannelMuteDialog(
+                          account: account,
+                          channelId: channelId,
+                        ),
+                      ),
+                      child: ListTile(
+                        leading: const Icon(Icons.visibility_off),
+                        title: Text(t.misskey.mute),
+                      ),
+                    ),
               ],
             ),
           ],

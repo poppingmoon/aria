@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 import '../../../constant/colors.dart';
 import '../../../constant/max_content_width.dart';
+import '../../../extension/text_style_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
+import '../../../provider/api/i_notifier_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_dialog.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
@@ -31,8 +36,13 @@ class ChannelHome extends ConsumerWidget {
     if (channel == null) {
       return const Center(child: CircularProgressIndicator());
     }
+    final i = ref.watch(iNotifierProvider(account)).value;
     final bannerUrl = channel.bannerUrl?.toString();
     final description = channel.description;
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.brightnessOf(context)),
+    );
+    final style = DefaultTextStyle.of(context).style;
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () =>
@@ -66,52 +76,75 @@ class ChannelHome extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    if (!account.isGuest) ...[
+                    if (!account.isGuest)
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: channel.isFollowing ?? false
-                            ? ElevatedButton(
-                                onPressed: () => futureWithDialog(
-                                  context,
-                                  ref
-                                      .read(
-                                        channelNotifierProvider(
-                                          account,
-                                          channelId,
-                                        ).notifier,
-                                      )
-                                      .unfollow(),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 8.0,
+                          children: [
+                            if (channel.isFollowing case final isFollowing?)
+                              isFollowing
+                                  ? ElevatedButton(
+                                      onPressed: () => futureWithDialog(
+                                        context,
+                                        ref
+                                            .read(
+                                              channelNotifierProvider(
+                                                account,
+                                                channelId,
+                                              ).notifier,
+                                            )
+                                            .unfollow(),
+                                      ),
+                                      child: Text(t.misskey.unfollow),
+                                    )
+                                  : ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: colors.accent,
+                                        backgroundColor: colors.panel,
+                                      ),
+                                      onPressed: () => futureWithDialog(
+                                        context,
+                                        ref
+                                            .read(
+                                              channelNotifierProvider(
+                                                account,
+                                                channelId,
+                                              ).notifier,
+                                            )
+                                            .follow(),
+                                      ),
+                                      child: Text(t.misskey.follow),
+                                    ),
+                            if (channel.isMuting ?? false)
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: Colors.black87,
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                child: Text(t.misskey.unfollow),
-                              )
-                            : ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Theme.of(
-                                    context,
-                                  ).colorScheme.primary,
-                                  backgroundColor: Theme.of(
-                                    context,
-                                  ).colorScheme.surface,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                    child: Text(
+                                      t.aria.muted,
+                                      style: style.apply(
+                                        color: Colors.white,
+                                        fontSizeFactor: 0.85,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                onPressed: () => futureWithDialog(
-                                  context,
-                                  ref
-                                      .read(
-                                        channelNotifierProvider(
-                                          account,
-                                          channelId,
-                                        ).notifier,
-                                      )
-                                      .follow(),
-                                ),
-                                child: Text(t.misskey.follow),
                               ),
+                          ],
+                        ),
                       ),
+                    if (channel.isFavorited case final isFavorited?)
                       Align(
                         alignment: AlignmentDirectional.topEnd,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: channel.isFavorited ?? false
+                          child: isFavorited
                               ? ElevatedButton(
                                   onPressed: () => futureWithDialog(
                                     context,
@@ -128,12 +161,8 @@ class ChannelHome extends ConsumerWidget {
                                 )
                               : ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    foregroundColor: Theme.of(
-                                      context,
-                                    ).colorScheme.primary,
-                                    backgroundColor: Theme.of(
-                                      context,
-                                    ).colorScheme.surface,
+                                    foregroundColor: colors.accent,
+                                    backgroundColor: colors.panel,
                                   ),
                                   onPressed: () => futureWithDialog(
                                     context,
@@ -150,7 +179,24 @@ class ChannelHome extends ConsumerWidget {
                                 ),
                         ),
                       ),
-                    ],
+                    if (channel.isSensitive)
+                      PositionedDirectional(
+                        start: 8.0,
+                        bottom: 8.0,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.black87,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              t.misskey.sensitive,
+                              style: TextStyle(color: colors.warn),
+                            ),
+                          ),
+                        ),
+                      ),
                     PositionedDirectional(
                       end: 8.0,
                       bottom: 8.0,
@@ -161,22 +207,80 @@ class ChannelHome extends ConsumerWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                t.misskey.channel_.usersCount(
-                                  n: channel.usersCount,
-                                ),
-                                style: const TextStyle(color: Colors.white),
+                          child: DefaultTextStyle(
+                            style: style.apply(
+                              color: Colors.white,
+                              fontSizeFactor: 0.85,
+                            ),
+                            child: IconTheme.merge(
+                              data: IconThemeData(
+                                size: style.lineHeight * 0.85,
+                                color: Colors.white,
                               ),
-                              Text(
-                                t.misskey.channel_.notesCount(
-                                  n: channel.notesCount,
-                                ),
-                                style: const TextStyle(color: Colors.white),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const WidgetSpan(
+                                          child: Icon(Icons.people),
+                                        ),
+                                        const WidgetSpan(
+                                          child: SizedBox(width: 4.0),
+                                        ),
+                                        TextSpan(
+                                          text: t.misskey.channel_.usersCount(
+                                            n: NumberFormat().format(
+                                              channel.usersCount,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        const WidgetSpan(
+                                          child: Icon(Icons.edit),
+                                        ),
+                                        const WidgetSpan(
+                                          child: SizedBox(width: 4.0),
+                                        ),
+                                        TextSpan(
+                                          text: t.misskey.channel_.notesCount(
+                                            n: NumberFormat().format(
+                                              channel.notesCount,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  if (channel.userId case final userId?
+                                      when userId == i?.id)
+                                    Text.rich(
+                                      TextSpan(
+                                        style: TextStyle(color: colors.warn),
+                                        children: [
+                                          WidgetSpan(
+                                            child: Icon(
+                                              Symbols.crown,
+                                              fill: 1.0,
+                                              color: colors.warn,
+                                            ),
+                                          ),
+                                          const WidgetSpan(
+                                            child: SizedBox(width: 4.0),
+                                          ),
+                                          TextSpan(text: t.misskey.youAreAdmin),
+                                        ],
+                                      ),
+                                    ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -189,9 +293,8 @@ class ChannelHome extends ConsumerWidget {
                   child: Container(
                     width: maxContentWidth,
                     margin: const EdgeInsets.all(8.0),
-                    child: Card(
-                      color: Theme.of(context).colorScheme.surface,
-                      elevation: 0.0,
+                    child: Card.filled(
+                      color: colors.panel,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Mfm(account: account, text: description),
@@ -212,7 +315,7 @@ class ChannelHome extends ConsumerWidget {
                       children: [
                         Icon(
                           Icons.push_pin,
-                          size: DefaultTextStyle.of(context).style.fontSize,
+                          size: style.fontSize,
                           color: pinColor,
                         ),
                         const SizedBox(width: 2.0),

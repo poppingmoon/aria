@@ -50,7 +50,7 @@ final class ChannelNotifierProvider
   }
 }
 
-String _$channelNotifierHash() => r'11eb92c887d5e7b675752b4f0b00371c8fb1775e';
+String _$channelNotifierHash() => r'639014283572730a5fd3f334a6ff009e72093ff3';
 
 final class ChannelNotifierFamily extends $Family
     with
