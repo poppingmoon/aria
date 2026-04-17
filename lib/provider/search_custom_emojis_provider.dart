@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -7,8 +9,13 @@ import 'custom_emoji_index_provider.dart';
 
 part 'search_custom_emojis_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
+  final link = ref.keepAlive();
+  Timer? timer;
+  ref.onCancel(() => timer = Timer(const Duration(minutes: 1), link.close));
+  ref.onResume(() => timer?.cancel());
+  ref.onDispose(() => timer?.cancel());
   if (query.isEmpty) {
     return {};
   }
@@ -41,13 +48,15 @@ Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
       }
     }
   } else {
+    final hankakuKeywords = hankakuQuery.split(RegExp(r'\s'));
+    final kanaKeywords = kanaQuery.split(RegExp(r'\s'));
     for (final entry in customEmojiIndex.entries) {
-      if (entry.key.contains(hankakuQuery)) {
+      if (hankakuKeywords.every(entry.key.contains)) {
         result.addAll(entry.value);
         if (result.length >= maxEmojis) {
           return result;
         }
-      } else if (entry.key.contains(kanaQuery)) {
+      } else if (kanaKeywords.every(entry.key.contains)) {
         result.addAll(entry.value);
         if (result.length >= maxEmojis) {
           return result;

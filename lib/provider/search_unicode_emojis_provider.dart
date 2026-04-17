@@ -26,8 +26,9 @@ Set<String> searchUnicodeEmojis(Ref ref, String query) {
       }
     }
   } else {
+    final keywords = hankakuQuery.split(RegExp(r'\s'));
     for (final entry in unicodeEmojiIndex.entries) {
-      if (entry.key.contains(hankakuQuery)) {
+      if (keywords.every(entry.key.contains)) {
         result.addAll(entry.value);
         if (result.length >= maxEmojis) {
           return result;

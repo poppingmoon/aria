@@ -67,7 +67,7 @@ final class SearchUnicodeEmojisProvider
 }
 
 String _$searchUnicodeEmojisHash() =>
-    r'f0afe74cded6bf88c8815d5ac73bd9608c524acb';
+    r'33d7c23d4b6bde7e0b24885ce56b13384c0eb7c1';
 
 final class SearchUnicodeEmojisFamily extends $Family
     with $FunctionalFamilyOverride<Set<String>, String> {
