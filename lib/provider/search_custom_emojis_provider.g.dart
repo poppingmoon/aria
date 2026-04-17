@@ -21,7 +21,7 @@ final class SearchCustomEmojisProvider
   }) : super(
          retry: null,
          name: r'searchCustomEmojisProvider',
-         isAutoDispose: false,
+         isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
@@ -67,7 +67,7 @@ final class SearchCustomEmojisProvider
 }
 
 String _$searchCustomEmojisHash() =>
-    r'86540d6f27768294f26da083c8c0e45f78502218';
+    r'0c1f681dbd87f74d2f5f91454a8f7cd0333abe76';
 
 final class SearchCustomEmojisFamily extends $Family
     with $FunctionalFamilyOverride<Set<Emoji>, (String, String)> {
@@ -77,7 +77,7 @@ final class SearchCustomEmojisFamily extends $Family
         name: r'searchCustomEmojisProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
-        isAutoDispose: false,
+        isAutoDispose: true,
       );
 
   SearchCustomEmojisProvider call(String host, String query) =>
