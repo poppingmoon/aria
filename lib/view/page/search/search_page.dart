@@ -159,6 +159,7 @@ class SearchPage extends HookConsumerWidget {
                             ),
                     ),
                     autoFocus: true,
+                    textInputAction: TextInputAction.search,
                   ),
               optionsViewBuilder: (context, _, _) => FadeTransition(
                 opacity: opacity,
