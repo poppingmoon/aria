@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +22,6 @@ import 'package:webpush_encryption/webpush_encryption.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'constant/colors.dart';
-import 'constant/notification_channel_id.dart';
 import 'constant/shortcuts.dart';
 import 'extension/user_extension.dart';
 import 'gen/assets.gen.dart';
@@ -213,6 +213,145 @@ class Aria extends HookConsumerWidget {
           } else if (AppLocaleUtils.findDeviceLocale() != currentLocale) {
             await LocaleSettings.useDeviceLocale();
           }
+
+          final channel = switch (notification) {
+            NotificationPushNotification(:final body) => switch (body.type) {
+              NotificationType.note => AndroidNotificationChannel(
+                '$account/note',
+                t.misskey.notification_.types_.note,
+                groupId: account.toString(),
+              ),
+              NotificationType.follow => AndroidNotificationChannel(
+                '$account/follow',
+                t.misskey.notification_.types_.follow,
+                groupId: account.toString(),
+              ),
+              NotificationType.mention => AndroidNotificationChannel(
+                '$account/mention',
+                t.misskey.notification_.types_.mention,
+                groupId: account.toString(),
+              ),
+              NotificationType.reply => AndroidNotificationChannel(
+                '$account/reply',
+                t.misskey.notification_.types_.reply,
+                groupId: account.toString(),
+              ),
+              NotificationType.renote => AndroidNotificationChannel(
+                '$account/renote',
+                t.misskey.notification_.types_.renote,
+                groupId: account.toString(),
+              ),
+              NotificationType.quote => AndroidNotificationChannel(
+                '$account/quote',
+                t.misskey.notification_.types_.quote,
+                groupId: account.toString(),
+              ),
+              NotificationType.reaction => AndroidNotificationChannel(
+                '$account/reaction',
+                t.misskey.notification_.types_.reaction,
+                groupId: account.toString(),
+              ),
+              NotificationType.pollEnded => AndroidNotificationChannel(
+                '$account/pollEnded',
+                t.misskey.notification_.types_.pollEnded,
+                groupId: account.toString(),
+              ),
+              NotificationType.scheduledNotePosted =>
+                AndroidNotificationChannel(
+                  '$account/scheduledNotePosted',
+                  t.misskey.notification_.types_.scheduledNotePosted,
+                  groupId: account.toString(),
+                ),
+              NotificationType.scheduledNotePostFailed ||
+              NotificationType.scheduleNote ||
+              NotificationType.scheduledNoteError => AndroidNotificationChannel(
+                '$account/scheduledNotePostFailed',
+                t.misskey.notification_.types_.scheduledNotePostFailed,
+                groupId: account.toString(),
+              ),
+              NotificationType.receiveFollowRequest =>
+                AndroidNotificationChannel(
+                  '$account/receiveFollowRequest',
+                  t.misskey.notification_.types_.receiveFollowRequest,
+                  groupId: account.toString(),
+                ),
+              NotificationType.followRequestAccepted =>
+                AndroidNotificationChannel(
+                  '$account/followRequestAccepted',
+                  t.misskey.notification_.types_.followRequestAccepted,
+                  groupId: account.toString(),
+                ),
+              NotificationType.roleAssigned => AndroidNotificationChannel(
+                '$account/roleAssigned',
+                t.misskey.notification_.types_.roleAssigned,
+                groupId: account.toString(),
+              ),
+              NotificationType.chatRoomInvitationReceived =>
+                AndroidNotificationChannel(
+                  '$account/chatRoomInvitationReceived',
+                  t.misskey.notification_.types_.chatRoomInvitationReceived,
+                  groupId: account.toString(),
+                ),
+              NotificationType.achievementEarned => AndroidNotificationChannel(
+                '$account/achievementEarned',
+                t.misskey.notification_.types_.achievementEarned,
+                groupId: account.toString(),
+              ),
+              NotificationType.exportCompleted => AndroidNotificationChannel(
+                '$account/exportCompleted',
+                t.misskey.notification_.types_.exportCompleted,
+                groupId: account.toString(),
+              ),
+              NotificationType.login => AndroidNotificationChannel(
+                '$account/login',
+                t.misskey.notification_.types_.login,
+                groupId: account.toString(),
+              ),
+              NotificationType.createToken => AndroidNotificationChannel(
+                '$account/createToken',
+                t.misskey.notification_.types_.createToken,
+                groupId: account.toString(),
+              ),
+              NotificationType.app => AndroidNotificationChannel(
+                '$account/app',
+                t.misskey.notification_.types_.app,
+                groupId: account.toString(),
+              ),
+              NotificationType.test => AndroidNotificationChannel(
+                '$account/test',
+                t.misskey.notification_.types_.test,
+                groupId: account.toString(),
+              ),
+              NotificationType.edited ||
+              NotificationType.noteScheduled ||
+              NotificationType.reactionGrouped ||
+              NotificationType.renoteGrouped ||
+              NotificationType.noteGrouped ||
+              NotificationType.pollVote ||
+              NotificationType.groupInvited ||
+              null => AndroidNotificationChannel(
+                '$account/other',
+                t.misskey.other,
+                groupId: account.toString(),
+              ),
+            },
+            ReadAllNotificationsPushNotification() =>
+              AndroidNotificationChannel(
+                '$account/other',
+                t.misskey.other,
+                groupId: account.toString(),
+              ),
+            NewChatMessagePushNotification() => AndroidNotificationChannel(
+              '$account/newChatMessage',
+              t.misskey.directMessage,
+              groupId: account.toString(),
+            ),
+          };
+          await flutterLocalNotificationsPlugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >()
+              ?.createNotificationChannel(channel);
 
           final title = switch (notification) {
             NotificationPushNotification(:final body) => switch (body.type) {
@@ -503,16 +642,17 @@ class Aria extends HookConsumerWidget {
 
           final url = switch (notification) {
             NotificationPushNotification(:final body) =>
-              body.user?.avatarUrl ?? body.icon,
+              body.user?.avatarUrl?.toString() ?? body.icon?.toString(),
             NewChatMessagePushNotification(:final body) =>
-              body.fromUser?.avatarUrl,
+              body.fromUser?.avatarUrl.toString(),
             _ => null,
           };
-          final file = url != null
-              ? await ref
-                    .read(cacheManagerProvider)
-                    .getSingleFile(url.toString())
-              : null;
+          File? file;
+          if (url != null) {
+            try {
+              file = await ref.read(cacheManagerProvider).getSingleFile(url);
+            } catch (_) {}
+          }
 
           await flutterLocalNotificationsPlugin.show(
             id: DateTime.now().millisecondsSinceEpoch & 0x7fffffff,
@@ -520,8 +660,8 @@ class Aria extends HookConsumerWidget {
             body: body,
             notificationDetails: NotificationDetails(
               android: AndroidNotificationDetails(
-                notificationChannelId,
-                t.misskey.notifications,
+                channel.id,
+                channel.name,
                 styleInformation: BigTextStyleInformation(body ?? ''),
                 color: ariaColor,
                 largeIcon: file != null
@@ -544,8 +684,8 @@ class Aria extends HookConsumerWidget {
             body: body,
             notificationDetails: NotificationDetails(
               android: AndroidNotificationDetails(
-                notificationChannelId,
-                t.misskey.notifications,
+                channel.id,
+                channel.name,
                 color: ariaColor,
                 groupKey: account.toString(),
                 subText: account.toString(),
