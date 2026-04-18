@@ -114,14 +114,15 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showOnlineStatus,
     @Default(false) bool showTimelineTabBarAtBottom,
     @Default(false) bool showMenuButtonInTabBar,
-    @Default(defaultTimelinesPageButtonTypes)
-    List<TimelinesPageButtonType?> timelinesPageButtonTypes,
-    @Default(false) bool showSmallTimelinesPageButtons,
-    @Default(false) bool showSquaredTimelinesPageButtons,
     @Default(true) bool showTabHeaderInOneLine,
     @Default(false) bool alwaysShowTabHeader,
     @Default(true) bool showTimelineLastViewedAt,
     @Default(true) bool showPopupOnNewNote,
+    @Default(defaultTimelinesPageButtonTypes)
+    List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+    @Default(false) bool showSmallTimelinesPageButtons,
+    @Default(false) bool showSquaredTimelinesPageButtons,
+    @Default(false) bool showEmojiInReactionNotification,
 
     // Behavior
     @Default(true) bool enableInfiniteScroll,

@@ -115,6 +115,10 @@ _GeneralSettings _$GeneralSettingsFromJson(
   showTimelineTabBarAtBottom:
       json['showTimelineTabBarAtBottom'] as bool? ?? false,
   showMenuButtonInTabBar: json['showMenuButtonInTabBar'] as bool? ?? false,
+  showTabHeaderInOneLine: json['showTabHeaderInOneLine'] as bool? ?? true,
+  alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
+  showTimelineLastViewedAt: json['showTimelineLastViewedAt'] as bool? ?? true,
+  showPopupOnNewNote: json['showPopupOnNewNote'] as bool? ?? true,
   timelinesPageButtonTypes:
       (json['timelinesPageButtonTypes'] as List<dynamic>?)
           ?.map((e) => $enumDecodeNullable(_$TimelinesPageButtonTypeEnumMap, e))
@@ -124,10 +128,8 @@ _GeneralSettings _$GeneralSettingsFromJson(
       json['showSmallTimelinesPageButtons'] as bool? ?? false,
   showSquaredTimelinesPageButtons:
       json['showSquaredTimelinesPageButtons'] as bool? ?? false,
-  showTabHeaderInOneLine: json['showTabHeaderInOneLine'] as bool? ?? true,
-  alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
-  showTimelineLastViewedAt: json['showTimelineLastViewedAt'] as bool? ?? true,
-  showPopupOnNewNote: json['showPopupOnNewNote'] as bool? ?? true,
+  showEmojiInReactionNotification:
+      json['showEmojiInReactionNotification'] as bool? ?? false,
   enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
   keepScreenOn: json['keepScreenOn'] as bool? ?? false,
   openSensitiveMediaOnDoubleTap:
@@ -260,15 +262,16 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'showOnlineStatus': instance.showOnlineStatus,
   'showTimelineTabBarAtBottom': instance.showTimelineTabBarAtBottom,
   'showMenuButtonInTabBar': instance.showMenuButtonInTabBar,
+  'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,
+  'alwaysShowTabHeader': instance.alwaysShowTabHeader,
+  'showTimelineLastViewedAt': instance.showTimelineLastViewedAt,
+  'showPopupOnNewNote': instance.showPopupOnNewNote,
   'timelinesPageButtonTypes': instance.timelinesPageButtonTypes
       .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
       .toList(),
   'showSmallTimelinesPageButtons': instance.showSmallTimelinesPageButtons,
   'showSquaredTimelinesPageButtons': instance.showSquaredTimelinesPageButtons,
-  'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,
-  'alwaysShowTabHeader': instance.alwaysShowTabHeader,
-  'showTimelineLastViewedAt': instance.showTimelineLastViewedAt,
-  'showPopupOnNewNote': instance.showPopupOnNewNote,
+  'showEmojiInReactionNotification': instance.showEmojiInReactionNotification,
   'enableInfiniteScroll': instance.enableInfiniteScroll,
   'keepScreenOn': instance.keepScreenOn,
   'openSensitiveMediaOnDoubleTap': instance.openSensitiveMediaOnDoubleTap,

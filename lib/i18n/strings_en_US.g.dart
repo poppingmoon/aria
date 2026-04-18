@@ -517,6 +517,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Show alt text'
 	String get showCaption => 'Show alt text';
 
+	/// en-US: 'Show emoji in reaction notifications'
+	String get showEmojiInReactionNotification => 'Show emoji in reaction notifications';
+
 	/// en-US: 'Show entire image'
 	String get showEntireImage => 'Show entire image';
 
