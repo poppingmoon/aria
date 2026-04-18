@@ -12,7 +12,6 @@ import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../constant/misskey_web_push_proxy_url.dart';
-import '../../../constant/notification_channel_id.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
@@ -175,13 +174,6 @@ class NotificationsSettingsPage extends ConsumerWidget {
           >();
       await flutterLocalNotificationsPlugin?.createNotificationChannelGroup(
         AndroidNotificationChannelGroup(account.toString(), account.toString()),
-      );
-      await flutterLocalNotificationsPlugin?.createNotificationChannel(
-        AndroidNotificationChannel(
-          notificationChannelId,
-          t.misskey.notifications,
-          groupId: account.toString(),
-        ),
       );
     }
   }
