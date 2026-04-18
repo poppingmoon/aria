@@ -19,13 +19,12 @@ class ChannelsSearch extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = useTextEditingController();
     final query = useState('');
     final includeDescription = useState(true);
     final channels = ref.watch(
       searchChannelsNotifierProvider(
         account,
-        controller.text,
+        query.value,
         includeDescription: includeDescription.value,
       ),
     );
@@ -41,7 +40,6 @@ class ChannelsSearch extends HookConsumerWidget {
               child: Shortcuts(
                 shortcuts: disablingTextShortcuts,
                 child: TextField(
-                  controller: controller,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.search),
                   ),
@@ -74,18 +72,6 @@ class ChannelsSearch extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 4.0),
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              width: maxContentWidth,
-              child: ElevatedButton(
-                onPressed: () => query.value = controller.text.trim(),
-                child: Text(t.misskey.search),
-              ),
-            ),
-          ),
-          const SizedBox(height: 4.0),
         ],
       ),
       paginationState: channels,

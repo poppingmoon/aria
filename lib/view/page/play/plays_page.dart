@@ -21,7 +21,7 @@ class PlaysPage extends ConsumerWidget {
     final isSearchAvailable = endpoints?.contains('flash/search') ?? false;
 
     return DefaultTabController(
-      length: 1 + (account.isGuest ? 0 : 2) + (isSearchAvailable ? 1 : 0),
+      length: 1 + (isSearchAvailable ? 1 : 0) + (account.isGuest ? 0 : 2),
       initialIndex: isSearchAvailable ? 1 : 0,
       child: Scaffold(
         appBar: AppBar(
