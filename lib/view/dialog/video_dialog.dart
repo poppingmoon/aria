@@ -44,9 +44,10 @@ class VideoDialog extends HookConsumerWidget {
       final url? => Uri.tryParse(url),
       _ => null,
     };
-    final enableHapticFeedback = ref.watch(
+    final (enableHapticFeedback, mediaSaveLocation) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.enableHapticFeedback,
+        (settings) =>
+            (settings.enableHapticFeedback, settings.mediaSaveLocation),
       ),
     );
     final controller = useChewieController(
@@ -127,7 +128,9 @@ class VideoDialog extends HookConsumerWidget {
                       ),
                     PopupMenuItem(
                       onTap: () async {
-                        if (!await Gal.requestAccess()) {
+                        if (!await Gal.requestAccess(
+                          toAlbum: mediaSaveLocation != null,
+                        )) {
                           if (!context.mounted) return;
                           await showMessageDialog(
                             context,
@@ -141,7 +144,12 @@ class VideoDialog extends HookConsumerWidget {
                           ref
                               .read(cacheManagerProvider)
                               .getSingleFile(url.toString())
-                              .then((file) => Gal.putVideo(file.path)),
+                              .then(
+                                (file) => Gal.putVideo(
+                                  file.path,
+                                  album: mediaSaveLocation,
+                                ),
+                              ),
                           message: t.misskey.saved,
                         );
                       },

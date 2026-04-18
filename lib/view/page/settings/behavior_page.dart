@@ -20,6 +20,7 @@ import '../../../provider/isar_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/pretty_bytes.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../dialog/text_field_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
 double _minFlingFactorToSensitivity(double minFlingFactor) {
@@ -314,6 +315,34 @@ class BehaviorPage extends HookConsumerWidget {
                       await ref
                           .read(generalSettingsNotifierProvider.notifier)
                           .setLaunchMode(result);
+                    }
+                  },
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.aria.mediaSaveLocation),
+                  subtitle: Text(
+                    settings.mediaSaveLocation ?? t.misskey.notSet,
+                  ),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showTextFieldDialog(
+                      context,
+                      title: Text(t.aria.mediaSaveLocation),
+                      initialText: settings.mediaSaveLocation,
+                      decoration: const InputDecoration(hintText: 'Aria'),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setMediaSaveLocation(
+                            result.isNotEmpty ? result : null,
+                          );
                     }
                   },
                   shape: switch (defaultTargetPlatform) {

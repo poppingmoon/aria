@@ -136,14 +136,15 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforeFollow,
     @Default(false) bool confirmWhenRevealingSensitiveMedia,
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
+    String? mediaSaveLocation,
     @Default(false) bool enableSpellCheck,
     @Default(false) bool enablePredictiveBack,
-    @Default(true) bool enableHapticFeedback,
     @Default(true) bool enableHorizontalSwipe,
     @Default(defaultTimelinesPageSpringStiffness)
     double timelinesPageSpringStiffness,
     @Default(defaultTimelinesPageMinFlingFactor)
     double timelinesPageMinFlingFactor,
+    @Default(true) bool enableHapticFeedback,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
 

@@ -40,9 +40,10 @@ class ImageDialog extends HookConsumerWidget {
       final url? => Uri.tryParse(url),
       _ => null,
     };
-    final enableHapticFeedback = ref.watch(
+    final (enableHapticFeedback, mediaSaveLocation) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.enableHapticFeedback,
+        (settings) =>
+            (settings.enableHapticFeedback, settings.mediaSaveLocation),
       ),
     );
     final isZoomed = useState(false);
@@ -155,7 +156,9 @@ class ImageDialog extends HookConsumerWidget {
                           itemBuilder: (context) => [
                             PopupMenuItem(
                               onTap: () async {
-                                if (!await Gal.requestAccess()) {
+                                if (!await Gal.requestAccess(
+                                  toAlbum: mediaSaveLocation != null,
+                                )) {
                                   if (!context.mounted) return;
                                   await showMessageDialog(
                                     context,
@@ -169,7 +172,12 @@ class ImageDialog extends HookConsumerWidget {
                                   ref
                                       .read(cacheManagerProvider)
                                       .getSingleFile(url.toString())
-                                      .then((file) => Gal.putImage(file.path)),
+                                      .then(
+                                        (file) => Gal.putImage(
+                                          file.path,
+                                          album: mediaSaveLocation,
+                                        ),
+                                      ),
                                   message: t.misskey.saved,
                                 );
                               },
