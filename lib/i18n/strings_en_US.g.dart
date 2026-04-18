@@ -397,6 +397,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Open menu'
 	String get openMenu => 'Open menu';
 
+	/// en-US: 'Open notification settings'
+	String get openNotificationSettings => 'Open notification settings';
+
 	/// en-US: 'Open {scratchpad} in your browser, then enter the following code and run it.'
 	TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Open '),

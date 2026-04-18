@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -235,11 +236,38 @@ class NotificationsSettingsPage extends ConsumerWidget {
                     : null,
                 tileColor: theme.colorScheme.surface,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.vertical(
+                    top: const Radius.circular(8.0),
+                    bottom: Radius.circular(switch (defaultTargetPlatform) {
+                      TargetPlatform.android || TargetPlatform.iOS => 0.0,
+                      _ => 8.0,
+                    }),
+                  ),
                 ),
               ),
             ),
           ),
+          if (defaultTargetPlatform
+              case TargetPlatform.android || TargetPlatform.iOS)
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  title: Text(t.aria.openNotificationSettings),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () => AppSettings.openAppSettings(
+                    type: AppSettingsType.notification,
+                  ),
+                  tileColor: theme.colorScheme.surface,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
       selectedDestination: AccountSettingsDestination.notifications,
