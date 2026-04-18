@@ -156,9 +156,9 @@ _GeneralSettings _$GeneralSettingsFromJson(
   launchMode:
       $enumDecodeNullable(_$LaunchModeEnumMap, json['launchMode']) ??
       LaunchMode.externalApplication,
+  mediaSaveLocation: json['mediaSaveLocation'] as String?,
   enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
   enablePredictiveBack: json['enablePredictiveBack'] as bool? ?? false,
-  enableHapticFeedback: json['enableHapticFeedback'] as bool? ?? true,
   enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
   timelinesPageSpringStiffness:
       (json['timelinesPageSpringStiffness'] as num?)?.toDouble() ??
@@ -166,6 +166,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
   timelinesPageMinFlingFactor:
       (json['timelinesPageMinFlingFactor'] as num?)?.toDouble() ??
       defaultTimelinesPageMinFlingFactor,
+  enableHapticFeedback: json['enableHapticFeedback'] as bool? ?? true,
   vibrateNote: json['vibrateNote'] as bool? ?? false,
   vibrateNotification: json['vibrateNotification'] as bool? ?? false,
   themeMode:
@@ -281,12 +282,13 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'confirmWhenRevealingSensitiveMedia':
       instance.confirmWhenRevealingSensitiveMedia,
   'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
+  'mediaSaveLocation': ?instance.mediaSaveLocation,
   'enableSpellCheck': instance.enableSpellCheck,
   'enablePredictiveBack': instance.enablePredictiveBack,
-  'enableHapticFeedback': instance.enableHapticFeedback,
   'enableHorizontalSwipe': instance.enableHorizontalSwipe,
   'timelinesPageSpringStiffness': instance.timelinesPageSpringStiffness,
   'timelinesPageMinFlingFactor': instance.timelinesPageMinFlingFactor,
+  'enableHapticFeedback': instance.enableHapticFeedback,
   'vibrateNote': instance.vibrateNote,
   'vibrateNotification': instance.vibrateNotification,
   'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,

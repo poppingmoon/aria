@@ -768,7 +768,10 @@ class _MediaCardSheet extends ConsumerWidget {
   final void Function()? hideMedia;
 
   Future<void> _downloadImage(WidgetRef ref) async {
-    if (!await Gal.requestAccess()) {
+    final mediaSaveLocation = ref
+        .read(generalSettingsNotifierProvider)
+        .mediaSaveLocation;
+    if (!await Gal.requestAccess(toAlbum: mediaSaveLocation != null)) {
       if (!ref.context.mounted) return;
       await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
       return;
@@ -779,13 +782,16 @@ class _MediaCardSheet extends ConsumerWidget {
       ref
           .read(cacheManagerProvider)
           .getSingleFile(file.url)
-          .then((file) => Gal.putImage(file.path)),
+          .then((file) => Gal.putImage(file.path, album: mediaSaveLocation)),
       message: t.misskey.saved,
     );
   }
 
   Future<void> _downloadVideo(WidgetRef ref) async {
-    if (!await Gal.requestAccess()) {
+    final mediaSaveLocation = ref
+        .read(generalSettingsNotifierProvider)
+        .mediaSaveLocation;
+    if (!await Gal.requestAccess(toAlbum: mediaSaveLocation != null)) {
       if (!ref.context.mounted) return;
       await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
       return;
@@ -796,7 +802,7 @@ class _MediaCardSheet extends ConsumerWidget {
       ref
           .read(cacheManagerProvider)
           .getSingleFile(file.url)
-          .then((file) => Gal.putVideo(file.path)),
+          .then((file) => Gal.putVideo(file.path, album: mediaSaveLocation)),
       message: t.misskey.saved,
     );
   }

@@ -13,6 +13,7 @@ import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/drive_files_notifier_provider.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/selected_drive_files_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
@@ -113,7 +114,10 @@ class DriveFileSheet extends ConsumerWidget {
   }
 
   Future<void> _downloadImage(WidgetRef ref) async {
-    if (!await Gal.requestAccess()) {
+    final mediaSaveLocation = ref
+        .read(generalSettingsNotifierProvider)
+        .mediaSaveLocation;
+    if (!await Gal.requestAccess(toAlbum: mediaSaveLocation != null)) {
       if (!ref.context.mounted) return;
       await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
       return;
@@ -124,13 +128,16 @@ class DriveFileSheet extends ConsumerWidget {
       ref
           .read(cacheManagerProvider)
           .getSingleFile(file.url)
-          .then((file) => Gal.putImage(file.path)),
+          .then((file) => Gal.putImage(file.path, album: mediaSaveLocation)),
       message: t.misskey.saved,
     );
   }
 
   Future<void> _downloadVideo(WidgetRef ref) async {
-    if (!await Gal.requestAccess()) {
+    final mediaSaveLocation = ref
+        .read(generalSettingsNotifierProvider)
+        .mediaSaveLocation;
+    if (!await Gal.requestAccess(toAlbum: mediaSaveLocation != null)) {
       if (!ref.context.mounted) return;
       await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
       return;
@@ -141,7 +148,7 @@ class DriveFileSheet extends ConsumerWidget {
       ref
           .read(cacheManagerProvider)
           .getSingleFile(file.url)
-          .then((file) => Gal.putVideo(file.path)),
+          .then((file) => Gal.putVideo(file.path, album: mediaSaveLocation)),
       message: t.misskey.saved,
     );
   }

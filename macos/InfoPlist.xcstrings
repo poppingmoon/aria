@@ -22,10 +22,51 @@
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
           }
         },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby pobrać pliki, zezwól na dostęp do swojej biblioteki zdjęć."
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "要下载文件，请允许访问您的照片库。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Dateien hochzuladen, erlaube bitte Zugriff auf deine Foto-Bibliothek."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To upload files, please allow access to your photo library."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby przesłać pliki, zezwól na dostęp do swojej biblioteki zdjęć."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要上传文件，请允许访问您的照片库。"
           }
         }
       }

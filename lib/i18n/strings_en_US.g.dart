@@ -307,6 +307,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Media'
 	String get media => 'Media';
 
+	/// en-US: 'Media save location'
+	String get mediaSaveLocation => 'Media save location';
+
 	/// en-US: 'This note includes mentions to remote users'
 	String get mentionToRemoteWarning => 'This note includes mentions to remote users';
 

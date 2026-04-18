@@ -32,6 +32,8 @@
 	<string>MainMenu</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To download files, please allow access to your photo library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To upload files, please allow access to your photo library.</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

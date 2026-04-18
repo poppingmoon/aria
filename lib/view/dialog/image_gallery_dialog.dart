@@ -59,9 +59,10 @@ class ImageGalleryDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final enableHapticFeedback = ref.watch(
+    final (enableHapticFeedback, mediaSaveLocation) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.enableHapticFeedback,
+        (settings) =>
+            (settings.enableHapticFeedback, settings.mediaSaveLocation),
       ),
     );
     final controller =
@@ -270,7 +271,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             ),
                           PopupMenuItem(
                             onTap: () async {
-                              if (!await Gal.requestAccess()) {
+                              if (!await Gal.requestAccess(
+                                toAlbum: mediaSaveLocation != null,
+                              )) {
                                 if (!context.mounted) return;
                                 await showMessageDialog(
                                   context,
@@ -284,7 +287,12 @@ class ImageGalleryDialog extends HookConsumerWidget {
                                 ref
                                     .read(cacheManagerProvider)
                                     .getSingleFile(files[index.value].url)
-                                    .then((file) => Gal.putImage(file.path)),
+                                    .then(
+                                      (file) => Gal.putImage(
+                                        file.path,
+                                        album: mediaSaveLocation,
+                                      ),
+                                    ),
                                 message: t.misskey.saved,
                               );
                             },
