@@ -96,7 +96,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get username => '使用者名稱';
 	@override String get password => '密碼';
 	@override String get initialPasswordForSetup => '啟動初始設定的密碼';
-	@override String get initialPasswordIsIncorrect => '啟動初始設定的密碼錯誤。';
+	@override String get initialPasswordIsIncorrect => '啟動初始設定密碼錯誤。';
 	@override String get initialPasswordForSetupDescription => '如果您自己安裝了 Misskey，請使用您在設定檔中輸入的密碼。\n如果您使用 Misskey 的託管服務之類的服務，請使用提供的密碼。\n如果您尚未設定密碼，請將其留空並繼續。';
 	@override String get forgotPassword => '忘記密碼';
 	@override String get fetchingAsApObject => '從聯邦宇宙取得中...';

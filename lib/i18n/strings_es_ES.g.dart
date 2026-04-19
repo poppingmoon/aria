@@ -258,8 +258,6 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' contiene material sensible'),
 	]);
-	@override String get vibrateNote => 'Vibrar en una nueva nota';
-	@override String get vibrateNotification => 'Vibrar en una nueva notificación';
 	@override String get webBrowser => 'Navegador';
 }
 
@@ -3789,7 +3787,7 @@ class _TranslationsMisskeyUserListsEsEs extends TranslationsMisskeyUserListsEnUs
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get tip => 'Las listas pueden contener cualquier usuario que especifiques al crearlas, la lista creada puede mostrarse entonces como una línea de tiempo mostrando solo los usuarios especificados.';
+	@override String get tip => 'Puedes crear listas que incluyan a cualquier usuario. Las listas creadas se pueden visualizar en forma de cronología.';
 }
 
 // Path: misskey.watermarkEditor_

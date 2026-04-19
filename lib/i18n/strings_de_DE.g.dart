@@ -295,8 +295,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' sagt etwas mit sensiblem Inhalt.'),
 	]);
-	@override String get vibrateNote => 'Bei neuer Notiz vibrieren';
-	@override String get vibrateNotification => 'Bei neuer Benachrichtigung vibrieren';
 	@override String get vibration => 'Vibration';
 	@override String get webBrowser => 'Webbrowser';
 }

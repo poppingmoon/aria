@@ -296,8 +296,6 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' 敏感文件的帖子'),
 	]);
-	@override String get vibrateNote => '有新帖子时振动';
-	@override String get vibrateNotification => '有新通知时振动';
 	@override String get vibration => '振动';
 	@override String get webBrowser => '网页浏览器';
 }

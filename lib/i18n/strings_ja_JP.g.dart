@@ -151,6 +151,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get margin => '余白';
 	@override String get media => 'メディア';
+	@override String get mediaSaveLocation => 'メディアの保存先';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get mergeReactionsByName => '同じ名前のリアクションをまとめて表示する';
 	@override String get moved => '移動しました';
@@ -184,6 +185,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '外部ブラウザで開く';
 	@override String get openInInternalBrowser => '内部ブラウザで開く';
 	@override String get openMenu => 'メニューを開く';
+	@override String get openNotificationSettings => '通知の設定を開く';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'ブラウザで'),
 		scratchpad,
@@ -236,6 +238,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示する';
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示する';
 	@override String get showCaption => 'キャプションを表示';
+	@override String get showEmojiInReactionNotification => 'リアクションの通知に絵文字を表示する';
 	@override String get showEntireImage => '全体を表示する';
 	@override String get showExpandedImage => '拡大して表示する';
 	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示';
@@ -291,8 +294,6 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: 'のセンシティブなファイルを含む投稿'),
 	]);
-	@override String get vibrateNote => 'ノートを受信したときに振動する';
-	@override String get vibrateNotification => '通知を受信したときに振動する';
 	@override String get vibration => 'バイブレーション';
 	@override String get webBrowser => 'ウェブブラウザ';
 }

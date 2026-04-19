@@ -247,7 +247,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	// Translations
 	@override String get lang__ => 'Italiano';
 	@override String get headlineMisskey => 'Rete collegata tramite Note';
-	@override String get introMisskey => 'Eccoci! Misskey è un servizio di microblogging decentralizzato, libero e aperto. \n\n📡 Puoi pubblicare «Note» per condividere ciò che sta succedendo o per dire a tutti qualcosa su di te. \n\n👍 Puoi reagire inviando emoji rapidi alle «Note» provenienti da altri profili nel Fediverso.\n\n🚀 Esplora un nuovo mondo insieme a noi!';
+	@override String get introMisskey => 'Eccoci! Misskey è un servizio di microblogging decentralizzato, libero e aperto. \n📡 Puoi pubblicare «Note» per condividere ciò che sta succedendo o per dire a tutti qualcosa su di te. \n👍 Puoi reagire inviando emoji rapidi alle «Note» provenienti da altri profili nel Fediverso.\n🚀 Esplora un nuovo mondo insieme a noi!';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} è uno dei servizi (chiamati istanze) che utilizzano la piattaforma open source <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Cerca';
@@ -3796,7 +3796,7 @@ class _TranslationsMisskeyWatermarkEditorItIt extends TranslationsMisskeyWaterma
 	@override String get stripeWidth => 'Larghezza della linea';
 	@override String get stripeFrequency => 'Il numero di linee';
 	@override String get polkadot => 'A pallini';
-	@override String get checker => 'revisore';
+	@override String get checker => 'Scacchiera';
 	@override String get polkadotMainDotOpacity => 'Opacità del punto principale';
 	@override String get polkadotMainDotRadius => 'Dimensione del punto principale';
 	@override String get polkadotSubDotOpacity => 'Opacità del punto secondario';
@@ -4924,7 +4924,7 @@ class _TranslationsMisskeyImageEffectorFxsItIt extends TranslationsMisskeyImageE
 	@override String get zoomLines => 'Linea di saturazione';
 	@override String get stripe => 'Strisce';
 	@override String get polkadot => 'A pallini';
-	@override String get checker => 'revisore';
+	@override String get checker => 'Scacchiera';
 	@override String get blockNoise => 'Attenua rumore';
 	@override String get tearing => 'Strappa immagine';
 	@override String get fill => 'Riempimento';
