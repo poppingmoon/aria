@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.4.9+93
+version: 1.5.0-beta.1+94
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
