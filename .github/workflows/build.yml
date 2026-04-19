@@ -132,26 +132,35 @@ jobs:
       - name: Rename APK
         working-directory: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
         run: |
-          mv app-armeabi-v7a-release.apk aria-${{ github.ref_name }}-armeabi-v7a.apk
           mv app-arm64-v8a-release.apk aria-${{ github.ref_name }}-arm64-v8a.apk
+          mv app-armeabi-v7a-release.apk aria-${{ github.ref_name }}-armeabi-v7a.apk
           mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
 
-      - name: Upload APK
+      - name: Upload arm64-v8a APK
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: APK
-          path: |
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
+          archive: false
+
+      - name: Upload armeabi-v7a APK
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
+          archive: false
+
+      - name: Upload x86_64 APK
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+          archive: false
 
       - name: Release APK
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
           files: |
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
             ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
             ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
           draft: true
 
@@ -170,8 +179,8 @@ jobs:
               exit 1
             fi
           }
-          check_version_code armeabi-v7a ${{ needs.get-build-number.outputs.build-number }}2
           check_version_code arm64-v8a ${{ needs.get-build-number.outputs.build-number }}3
+          check_version_code armeabi-v7a ${{ needs.get-build-number.outputs.build-number }}2
           check_version_code x86_64 ${{ needs.get-build-number.outputs.build-number }}1
 
   build-appbundle:
@@ -224,8 +233,8 @@ jobs:
       - name: Upload App Bundle
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: App Bundle
           path: build/app/outputs/bundle/release/app-release.aab
+          archive: false
 
       - name: Authenticate to Google Cloud
         id: auth
@@ -287,8 +296,8 @@ jobs:
       - name: Upload IPA (Unsigned)
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: IPA
           path: aria-${{ github.ref_name }}.ipa
+          archive: false
 
       - name: Release IPA (Unsigned)
         if: startsWith(github.ref, 'refs/tags/v')
@@ -382,8 +391,8 @@ jobs:
       - name: Upload ZIP
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: Windows ZIP
           path: aria-${{ github.ref_name }}-windows-x64.zip
+          archive: false
 
       - name: Release ZIP
         if: startsWith(github.ref, 'refs/tags/v')
@@ -407,8 +416,8 @@ jobs:
       - name: Upload installer
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: Windows Installer
           path: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
+          archive: false
 
       - name: Release installer
         if: startsWith(github.ref, 'refs/tags/v')
@@ -497,8 +506,8 @@ jobs:
       - name: Upload DMG
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: DMG
           path: aria-${{ github.ref_name }}.dmg
+          archive: false
 
       - name: Release DMG
         if: startsWith(github.ref, 'refs/tags/v')
@@ -581,8 +590,8 @@ jobs:
       - name: Upload TAR
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: Linux ${{ matrix.arch }} TAR
           path: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
+          archive: false
 
       - name: Release TAR
         if: startsWith(github.ref, 'refs/tags/v')
