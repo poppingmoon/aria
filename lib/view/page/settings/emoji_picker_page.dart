@@ -133,6 +133,7 @@ class EmojiPickerPage extends HookConsumerWidget {
                             .setEmojiPickerScale(value),
                       ),
                       trailing: IconButton(
+                        tooltip: t.misskey.reset,
                         onPressed: () {
                           emojiPickerScale.value = 1.0;
                           ref

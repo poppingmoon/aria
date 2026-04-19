@@ -165,6 +165,7 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                   max: maxAngle,
                 ),
                 trailing: IconButton(
+                  tooltip: t.misskey.reset,
                   onPressed: () => angle.value = 0.0,
                   icon: const Icon(Icons.refresh),
                 ),
@@ -178,6 +179,7 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                   max: maxOffsetX,
                 ),
                 trailing: IconButton(
+                  tooltip: t.misskey.reset,
                   onPressed: () => offsetX.value = 0.0,
                   icon: const Icon(Icons.refresh),
                 ),
@@ -191,6 +193,7 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                   max: maxOffsetY,
                 ),
                 trailing: IconButton(
+                  tooltip: t.misskey.reset,
                   onPressed: () => offsetY.value = 0.0,
                   icon: const Icon(Icons.refresh),
                 ),

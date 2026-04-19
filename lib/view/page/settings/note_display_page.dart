@@ -806,6 +806,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setFontSize(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             fontSize.value = defaultFontSize;
                             ref
@@ -834,6 +835,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setLineHeight(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             lineHeight.value = defaultLineHeight;
                             ref
@@ -880,6 +882,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setAvatarScale(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             avatarScale.value = defaultAvatarScale;
                             ref
@@ -914,6 +917,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setReactionsDisplayScale(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             reactionsDisplayScale.value = 1.0;
                             ref
@@ -942,6 +946,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setNoteFooterScale(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             noteFooterScale.value = 1.0;
                             ref
@@ -988,6 +993,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setNoteVerticalPadding(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             noteVerticalPadding.value =
                                 defaultNoteVerticalPadding;
@@ -1025,6 +1031,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                               .setNoteHorizontalPadding(value),
                         ),
                         trailing: IconButton(
+                          tooltip: t.misskey.reset,
                           onPressed: () {
                             noteHorizontalPadding.value =
                                 defaultNoteHorizontalPadding;

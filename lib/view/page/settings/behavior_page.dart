@@ -455,6 +455,7 @@ class BehaviorPage extends HookConsumerWidget {
                         ),
                   ),
                   trailing: IconButton(
+                    tooltip: t.misskey.reset,
                     onPressed: settings.enableHorizontalSwipe
                         ? () {
                             sqrtStiffness.value = sqrt(
@@ -492,6 +493,7 @@ class BehaviorPage extends HookConsumerWidget {
                         ),
                   ),
                   trailing: IconButton(
+                    tooltip: t.misskey.reset,
                     onPressed: settings.enableHorizontalSwipe
                         ? () {
                             sensitivity.value = _minFlingFactorToSensitivity(
