@@ -43,7 +43,7 @@ class FilePickerSheet extends ConsumerWidget {
             leading: const Icon(Icons.upload_file),
             title: Text('${t.aria.fromDevice} (${t.aria.media})'),
             onTap: () async {
-              final result = await FilePicker.platform.pickFiles(
+              final result = await FilePicker.pickFiles(
                 type: FileType.media,
                 allowMultiple: allowMultiple,
               );
@@ -77,7 +77,7 @@ class FilePickerSheet extends ConsumerWidget {
                 : t.aria.fromDevice,
           ),
           onTap: () async {
-            final result = await FilePicker.platform.pickFiles(
+            final result = await FilePicker.pickFiles(
               type: type ?? FileType.any,
               allowMultiple: allowMultiple,
             );

@@ -195,7 +195,7 @@ class ImageDialog extends HookConsumerWidget {
                                       .getSingleFile(url.toString())
                                       .then((file) => file.readAsBytes())
                                       .then(
-                                        (bytes) => FilePicker.platform.saveFile(
+                                        (bytes) => FilePicker.saveFile(
                                           fileName: url.pathSegments.lastOrNull,
                                           bytes: bytes,
                                         ),
