@@ -42,7 +42,7 @@ final class GeneralSettingsNotifierProvider
 }
 
 String _$generalSettingsNotifierHash() =>
-    r'a1d01fc22be47e8db04878833475a57e37bcd60e';
+    r'56b06bbed22a8661b8903b130d2a18050b48b6b9';
 
 abstract class _$GeneralSettingsNotifier extends $Notifier<GeneralSettings> {
   GeneralSettings build();

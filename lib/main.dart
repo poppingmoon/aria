@@ -16,6 +16,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
+import 'package:twemoji_v2/twemoji_v2.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
@@ -641,6 +642,36 @@ class Aria extends HookConsumerWidget {
           };
 
           final url = switch (notification) {
+            NotificationPushNotification(
+              body: PushNotificationBody(
+                type: NotificationType.reaction,
+                :final note,
+                :final reaction?,
+              ),
+            )
+                when generalSettings.showEmojiInReactionNotification =>
+              reaction.startsWith(':')
+                  ? switch (reaction.substring(1, reaction.length - 1)) {
+                      final emoji =>
+                        {...?note?.emojis, ...?note?.reactionEmojis}[emoji] ??
+                            Uri(
+                              scheme: 'https',
+                              host: account.host,
+                              pathSegments: ['emoji', '$emoji.webp'],
+                            ).toString(),
+                    }
+                  : Uri(
+                      scheme: 'https',
+                      host: 'raw.githubusercontent.com',
+                      pathSegments: [
+                        'jdecked',
+                        'twemoji',
+                        'main',
+                        'assets',
+                        '72x72',
+                        '${TwemojiUtils.toUnicode(reaction)}.png',
+                      ],
+                    ).toString(),
             NotificationPushNotification(:final body) =>
               body.user?.avatarUrl?.toString() ?? body.icon?.toString(),
             NewChatMessagePushNotification(:final body) =>

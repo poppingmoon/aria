@@ -414,6 +414,28 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowTabHeaderInOneLine(bool showTabHeaderInOneLine) async {
+    state = state.copyWith(showTabHeaderInOneLine: showTabHeaderInOneLine);
+    await _save();
+  }
+
+  Future<void> setAlwaysShowTabHeader(bool alwaysShowTabHeader) async {
+    state = state.copyWith(alwaysShowTabHeader: alwaysShowTabHeader);
+    await _save();
+  }
+
+  Future<void> setShowTimelineLastViewedAt(
+    bool showTimelineLastViewedAt,
+  ) async {
+    state = state.copyWith(showTimelineLastViewedAt: showTimelineLastViewedAt);
+    await _save();
+  }
+
+  Future<void> setShowPopupOnNewNote(bool showPopupOnNewNote) async {
+    state = state.copyWith(showPopupOnNewNote: showPopupOnNewNote);
+    await _save();
+  }
+
   Future<void> setTimelinesPageButtonTypes(
     List<TimelinesPageButtonType?> timelinesPageButtonTypes,
   ) async {
@@ -439,25 +461,12 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setShowTabHeaderInOneLine(bool showTabHeaderInOneLine) async {
-    state = state.copyWith(showTabHeaderInOneLine: showTabHeaderInOneLine);
-    await _save();
-  }
-
-  Future<void> setAlwaysShowTabHeader(bool alwaysShowTabHeader) async {
-    state = state.copyWith(alwaysShowTabHeader: alwaysShowTabHeader);
-    await _save();
-  }
-
-  Future<void> setShowTimelineLastViewedAt(
-    bool showTimelineLastViewedAt,
+  Future<void> setShowEmojiInReactionNotification(
+    bool showEmojiInReactionNotification,
   ) async {
-    state = state.copyWith(showTimelineLastViewedAt: showTimelineLastViewedAt);
-    await _save();
-  }
-
-  Future<void> setShowPopupOnNewNote(bool showPopupOnNewNote) async {
-    state = state.copyWith(showPopupOnNewNote: showPopupOnNewNote);
+    state = state.copyWith(
+      showEmojiInReactionNotification: showEmojiInReactionNotification,
+    );
     await _save();
   }
 
