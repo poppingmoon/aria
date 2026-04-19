@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,10 +8,12 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/sound_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/check_reaction_permissions.dart';
 import '../../util/decode_custom_emoji.dart';
@@ -90,6 +94,15 @@ class ReactionButton extends ConsumerWidget {
                   if (!confirmed) return;
                 }
                 if (!context.mounted) return;
+                unawaited(
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play(),
+                );
                 await futureWithDialog(
                   context,
                   ref
@@ -131,6 +144,15 @@ class ReactionButton extends ConsumerWidget {
                 );
                 if (!confirmed) return;
                 if (!context.mounted) return;
+                unawaited(
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play(),
+                );
                 await futureWithDialog(
                   context,
                   ref

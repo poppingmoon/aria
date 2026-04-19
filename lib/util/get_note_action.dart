@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../model/account.dart';
 import '../model/general_settings.dart';
+import '../model/sound_settings.dart';
 import '../provider/general_settings_notifier_provider.dart';
+import '../provider/misskey_sfx_notifier_provider.dart';
 import '../provider/notes_notifier_provider.dart';
 import '../view/dialog/reaction_confirmation_dialog.dart';
 import '../view/widget/emoji_picker.dart';
@@ -62,6 +66,15 @@ void Function(WidgetRef ref)? getNoteAction({
                   if (!confirmed) return;
                 }
                 if (!ref.context.mounted) return;
+                unawaited(
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play(),
+                );
                 await futureWithDialog(
                   ref.context,
                   ref

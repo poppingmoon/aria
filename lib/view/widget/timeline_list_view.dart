@@ -9,11 +9,13 @@ import '../../constant/max_content_width.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
+import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/streaming/timeline_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
@@ -191,6 +193,16 @@ class TimelineListView extends HookConsumerWidget {
                   ).notifier,
                 )
                 .addNote(note);
+            ref
+                .read(
+                  misskeySfxNotifierProvider(
+                    note.user.username == tabSettings.account.username &&
+                            note.user.host == null
+                        ? OperationType.noteMy
+                        : OperationType.note,
+                  ).notifier,
+                )
+                .play();
             if (keepAnimation.value) {
               if (controller.offset < 400.0) {
                 ref

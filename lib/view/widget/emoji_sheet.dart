@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,11 +8,13 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/sound_settings.dart';
 import '../../provider/api/chat_message_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/muted_emojis_notifier_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -132,6 +136,15 @@ class EmojiSheet extends ConsumerWidget {
                   if (!confirmed) return;
                 }
                 if (!context.mounted) return;
+                unawaited(
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play(),
+                );
                 await futureWithDialog(
                   context,
                   ref
@@ -172,6 +185,15 @@ class EmojiSheet extends ConsumerWidget {
             leading: const Icon(Icons.add),
             title: Text(t.misskey.doReaction),
             onTap: () async {
+              unawaited(
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play(),
+              );
               final result = await futureWithDialog(
                 context,
                 ref

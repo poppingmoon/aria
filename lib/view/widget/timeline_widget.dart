@@ -8,6 +8,7 @@ import '../../extension/scroll_controller_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
+import '../../model/sound_settings.dart';
 import '../../model/streaming/broadcast.dart' as broadcast;
 import '../../model/streaming/main_event.dart';
 import '../../model/tab_type.dart';
@@ -16,6 +17,7 @@ import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/streaming/broadcast_provider.dart';
 import '../../provider/streaming/main_stream_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
@@ -100,10 +102,24 @@ class TimelineWidget extends HookConsumerWidget {
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadNotification();
+              await ref
+                  .read(
+                    misskeySfxNotifierProvider(
+                      OperationType.notification,
+                    ).notifier,
+                  )
+                  .play();
             case NewChatMessage():
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadChatMessage();
+              await ref
+                  .read(
+                    misskeySfxNotifierProvider(
+                      OperationType.chatMessage,
+                    ).notifier,
+                  )
+                  .play();
             case AnnouncementCreated(:final announcement):
               await ref
                   .read(iNotifierProvider(account).notifier)
