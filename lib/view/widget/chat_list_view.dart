@@ -9,11 +9,13 @@ import '../../constant/max_content_width.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/sound_settings.dart';
 import '../../model/streaming/chat_event.dart';
 import '../../provider/api/chat_messages_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/streaming/chat_stream_notifier_provider.dart';
 import 'chat_message_widget.dart';
 import 'haptic_feedback_refresh_indicator.dart';
@@ -118,6 +120,11 @@ class ChatListView extends HookConsumerWidget {
                     ).notifier,
                   )
                   .read();
+              ref
+                  .read(
+                    misskeySfxNotifierProvider(OperationType.reaction).notifier,
+                  )
+                  .play();
               if (!keepAnimation.value) {
                 hasUnread.value = true;
               }

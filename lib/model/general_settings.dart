@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../i18n/strings.g.dart';
+import 'sound_settings.dart';
 
 part 'general_settings.freezed.dart';
 part 'general_settings.g.dart';
@@ -146,13 +147,14 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(defaultTimelinesPageMinFlingFactor)
     double timelinesPageMinFlingFactor,
     @Default(true) bool enableHapticFeedback,
-    @Default(false) bool vibrateNote,
-    @Default(false) bool vibrateNotification,
 
     // Theme
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default('a58a0abb-ff8c-476a-8dec-0ad7837e7e96') String lightThemeId,
     @Default('66e7e5a9-cd43-42cd-837d-12f47841fa34') String darkThemeId,
+
+    // Sounds
+    @Default(SoundSettings()) SoundSettings sound,
 
     // User select dialog
     @Default(true) bool searchUsersByUsername,

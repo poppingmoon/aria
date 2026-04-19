@@ -16,6 +16,7 @@ dependencies:
   async: ^2.13.1
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
+  audioplayers: ^6.6.0
   cached_network_image: ^3.4.1
   characters: ^1.4.1
   chewie: ^1.13.0
@@ -199,6 +200,9 @@ flutter:
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
     - assets/misskey/packages/frontend/assets/
+    - assets/misskey/packages/frontend/assets/sounds/aisha/
+    - assets/misskey/packages/frontend/assets/sounds/noizenecio/
+    - assets/misskey/packages/frontend/assets/sounds/syuilo/
   fonts:
     - family: BIZ UDGothic
       fonts:

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -11,12 +13,14 @@ import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/sound_settings.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -461,6 +465,15 @@ class _LikeButton extends ConsumerWidget {
                   ? ref.context
                   : listViewKey?.currentContext;
               if (context == null || !context.mounted) return;
+              unawaited(
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play(),
+              );
               await futureWithDialog(
                 context,
                 ref
@@ -555,6 +568,15 @@ class _AddReactionButton extends ConsumerWidget {
                     if (!confirmed) return;
                   }
                   if (!context.mounted) return;
+                  unawaited(
+                    ref
+                        .read(
+                          misskeySfxNotifierProvider(
+                            OperationType.reaction,
+                          ).notifier,
+                        )
+                        .play(),
+                  );
                   await futureWithDialog(
                     context,
                     notifier.react(note.id, emoji),

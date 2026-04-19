@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -9,10 +11,12 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
+import '../../model/sound_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/extract_url.dart';
@@ -243,6 +247,15 @@ class _ChatMessageSheet extends ConsumerWidget {
               if (!context.mounted) return;
               if (emoji != null) {
                 context.pop();
+                unawaited(
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play(),
+                );
                 final result = await futureWithDialog(
                   context,
                   ref

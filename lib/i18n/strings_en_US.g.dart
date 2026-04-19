@@ -669,12 +669,6 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: ' contains sensitive content'),
 	]);
 
-	/// en-US: 'Vibrate on new note'
-	String get vibrateNote => 'Vibrate on new note';
-
-	/// en-US: 'Vibrate on new notification'
-	String get vibrateNotification => 'Vibrate on new notification';
-
 	/// en-US: 'Vibration'
 	String get vibration => 'Vibration';
 

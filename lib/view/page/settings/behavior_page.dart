@@ -539,41 +539,8 @@ class BehaviorPage extends HookConsumerWidget {
                   onChanged: (value) => ref
                       .read(generalSettingsNotifierProvider.notifier)
                       .setEnableHapticFeedback(value),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.aria.vibrateNote),
-                  value: settings.vibrateNote,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setVibrateNote(value),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: SwitchListTile(
-                  title: Text(t.aria.vibrateNotification),
-                  value: settings.vibrateNotification,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setVibrateNotification(value),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(8.0),
-                    ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
               ),
