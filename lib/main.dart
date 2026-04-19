@@ -37,6 +37,7 @@ import 'provider/apns_push_connector_provider.dart';
 import 'provider/cache_manager_provider.dart';
 import 'provider/general_settings_notifier_provider.dart';
 import 'provider/push_notification_notifier_provider.dart';
+import 'provider/server_url_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
 import 'provider/unified_push_endpoint_notifier_provider.dart';
@@ -651,14 +652,22 @@ class Aria extends HookConsumerWidget {
             )
                 when generalSettings.showEmojiInReactionNotification =>
               reaction.startsWith(':')
-                  ? switch (reaction.substring(1, reaction.length - 1)) {
-                      final emoji =>
-                        {...?note?.emojis, ...?note?.reactionEmojis}[emoji] ??
-                            Uri(
-                              scheme: 'https',
-                              host: account.host,
-                              pathSegments: ['emoji', '$emoji.webp'],
-                            ).toString(),
+                  ? switch ((
+                      ref.read(serverUrlNotifierProvider(account.host)),
+                      reaction.substring(1, reaction.length - 1),
+                    )) {
+                      (final serverUrl, final emoji) => switch ({
+                        ...?note?.emojis,
+                        ...?note?.reactionEmojis,
+                      }[emoji]) {
+                        final url? => serverUrl.replace(
+                          pathSegments: ['proxy', 'image.webp'],
+                          queryParameters: {'url': url, 'emoji': '1'},
+                        ),
+                        _ => serverUrl.replace(
+                          pathSegments: ['emoji', '$emoji.webp'],
+                        ),
+                      },
                     }
                   : Uri(
                       scheme: 'https',
@@ -671,17 +680,19 @@ class Aria extends HookConsumerWidget {
                         '72x72',
                         '${TwemojiUtils.toUnicode(reaction)}.png',
                       ],
-                    ).toString(),
+                    ),
             NotificationPushNotification(:final body) =>
-              body.user?.avatarUrl?.toString() ?? body.icon?.toString(),
+              body.user?.avatarUrl ?? body.icon,
             NewChatMessagePushNotification(:final body) =>
-              body.fromUser?.avatarUrl.toString(),
+              body.fromUser?.avatarUrl,
             _ => null,
           };
           File? file;
           if (url != null) {
             try {
-              file = await ref.read(cacheManagerProvider).getSingleFile(url);
+              file = await ref
+                  .read(cacheManagerProvider)
+                  .getSingleFile(url.toString());
             } catch (_) {}
           }
 
