@@ -75,6 +75,7 @@ import '../view/page/settings/privacy_page.dart';
 import '../view/page/settings/profile_page.dart';
 import '../view/page/settings/renote_muted_users_page.dart';
 import '../view/page/settings/settings_page.dart';
+import '../view/page/settings/sounds_page.dart';
 import '../view/page/settings/tab_settings_page.dart';
 import '../view/page/settings/tabs_page.dart';
 import '../view/page/settings/theme_manage_page.dart';
@@ -273,6 +274,7 @@ GoRouter router(Ref ref) {
             path: 'note-display',
             builder: (_, _) => const NoteDisplayPage(),
           ),
+          GoRoute(path: 'sounds', builder: (_, _) => const SoundsPage()),
           GoRoute(
             path: 'tab',
             builder: (_, _) => const TabsPage(),

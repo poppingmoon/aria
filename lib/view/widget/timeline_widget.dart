@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart' hide Notification;
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -42,10 +41,9 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).value;
-    final (vibrateOnNotification, showTimelineLastViewedAt) = ref.watch(
+    final showTimelineLastViewedAt = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.vibrateNotification, settings.showTimelineLastViewedAt),
+        (settings) => settings.showTimelineLastViewedAt,
       ),
     );
     final lastViewedNoteId = tabSettings.tabType != TabType.notifications
@@ -102,16 +100,10 @@ class TimelineWidget extends HookConsumerWidget {
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadNotification();
-              if (vibrateOnNotification) {
-                await HapticFeedback.lightImpact();
-              }
             case NewChatMessage():
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadChatMessage();
-              if (vibrateOnNotification) {
-                await HapticFeedback.lightImpact();
-              }
             case AnnouncementCreated(:final announcement):
               await ref
                   .read(iNotifierProvider(account).notifier)

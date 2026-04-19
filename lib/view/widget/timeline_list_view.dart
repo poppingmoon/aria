@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -140,12 +139,11 @@ class TimelineListView extends HookConsumerWidget {
     final partialPreviousNoteIds =
         previousNotes.value?.items.take(5).map((note) => note.id) ?? [];
     final hasPreviousNote = partialPreviousNoteIds.isNotEmpty;
-    final (showGap, showPopup, vibrateOnNote) = ref.watch(
+    final (showGap, showPopup) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
           settings.showGapBetweenNotesInTimeline,
           settings.showPopupOnNewNote,
-          settings.vibrateNote,
         ),
       ),
     );
@@ -193,9 +191,6 @@ class TimelineListView extends HookConsumerWidget {
                   ).notifier,
                 )
                 .addNote(note);
-            if (vibrateOnNote) {
-              HapticFeedback.lightImpact();
-            }
             if (keepAnimation.value) {
               if (controller.offset < 400.0) {
                 ref

@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../i18n/strings.g.dart';
 import '../model/general_settings.dart';
+import '../model/sound_settings.dart';
 import 'shared_preferences_provider.dart';
 
 part 'general_settings_notifier_provider.g.dart';
@@ -585,16 +586,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setVibrateNote(bool vibrateNote) async {
-    state = state.copyWith(vibrateNote: vibrateNote);
-    await _save();
-  }
-
-  Future<void> setVibrateNotification(bool vibrateNotification) async {
-    state = state.copyWith(vibrateNotification: vibrateNotification);
-    await _save();
-  }
-
   Future<void> setThemeMode(ThemeMode themeMode) async {
     state = state.copyWith(themeMode: themeMode);
     await _save();
@@ -607,6 +598,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setDarkThemeId(String darkThemeId) async {
     state = state.copyWith(darkThemeId: darkThemeId);
+    await _save();
+  }
+
+  Future<void> setSound(SoundSettings sound) async {
+    state = state.copyWith(sound: sound);
     await _save();
   }
 

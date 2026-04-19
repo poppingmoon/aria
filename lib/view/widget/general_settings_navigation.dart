@@ -13,6 +13,7 @@ enum GeneralSettingsDestination {
   appearance,
   behavior,
   theme,
+  sounds,
   importExport,
   aboutAria,
 }
@@ -41,6 +42,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => const Icon(Icons.brush),
       GeneralSettingsDestination.behavior => const Icon(Icons.gesture),
       GeneralSettingsDestination.theme => const Icon(Icons.palette),
+      GeneralSettingsDestination.sounds => const Icon(Icons.music_note),
       GeneralSettingsDestination.importExport => const Icon(Icons.save),
       GeneralSettingsDestination.aboutAria => const Icon(Icons.info_outline),
     };
@@ -56,6 +58,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => t.misskey.appearance,
       GeneralSettingsDestination.behavior => t.misskey.behavior,
       GeneralSettingsDestination.theme => t.misskey.theme,
+      GeneralSettingsDestination.sounds => t.misskey.sounds,
       GeneralSettingsDestination.importExport => t.misskey.preferencesBackups,
       GeneralSettingsDestination.aboutAria => t.aria.aboutAria,
     };
@@ -71,6 +74,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => '/settings/appearance',
       GeneralSettingsDestination.behavior => '/settings/behavior',
       GeneralSettingsDestination.theme => '/settings/theme',
+      GeneralSettingsDestination.sounds => '/settings/sounds',
       GeneralSettingsDestination.importExport => '/settings/import-export',
       GeneralSettingsDestination.aboutAria => '/about-aria',
     };
