@@ -815,8 +815,7 @@ class _MediaCardSheet extends ConsumerWidget {
           .getSingleFile(file.url)
           .then((file) => file.readAsBytes())
           .then(
-            (bytes) =>
-                FilePicker.platform.saveFile(fileName: file.name, bytes: bytes),
+            (bytes) => FilePicker.saveFile(fileName: file.name, bytes: bytes),
           ),
     );
     if (!ref.context.mounted) return;

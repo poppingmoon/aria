@@ -68,6 +68,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} ແມ່ນສ່ວນໜຶ່ງຂອງການບໍລິການທີ່ຂັບເຄື່ອນໂດຍແພລດຟອມ open source. <b>Misskey</b> (ເອີ້ນວ່າ "Misskey instance")';
 	@override String monthAndDay({required Object month, required Object day}) => 'ເດືອນ${month} / ວັນ${day}';
 	@override String get search => 'ຄົ້ນຫາ';
+	@override String get reset => 'ຣີເຊັດ';
 	@override String get notifications => 'ການແຈ້ງເຕືອນ';
 	@override String get username => 'ຊື່ຜູ້ໃຊ້';
 	@override String get password => 'ລະຫັດຜ່ານ';

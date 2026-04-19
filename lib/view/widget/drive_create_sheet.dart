@@ -34,7 +34,7 @@ class DriveCreateSheet extends HookConsumerWidget {
     bool keepOriginalUploading,
     bool keepOriginalFilename,
   ) async {
-    final result = await FilePicker.platform.pickFiles(
+    final result = await FilePicker.pickFiles(
       type: defaultTargetPlatform == TargetPlatform.iOS
           ? FileType.media
           : FileType.any,

@@ -232,8 +232,6 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: '의 민감한 파일이 포함된 게시물'),
 	]);
-	@override String get vibrateNote => '새 노트 시 진동';
-	@override String get vibrateNotification => '새 알림 시 진동';
 	@override String get webBrowser => '웹 브라우저';
 }
 

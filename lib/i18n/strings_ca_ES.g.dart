@@ -1159,8 +1159,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingHome => 'Publicar a la línia de temps d\'Inici';
 	@override String get thisPostMayBeAnnoyingCancel => 'Cancel·lar ';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Publicar de totes maneres';
-	@override String get collapseRenotes => 'Col·lapsar les renotes que ja has vist';
-	@override String get collapseRenotesDescription => 'Col·lapse les notes a les quals ja has reaccionat o que ja has renotat';
+	@override String get collapseRenotes => 'Col·lapsar els impulsos que ja has vist';
+	@override String get collapseRenotesDescription => 'Col·lapse les notes a les quals ja has reaccionat o que ja has impulsat.';
 	@override String get internalServerError => 'Error intern del servidor';
 	@override String get internalServerErrorDescription => 'El servidor ha fallat de manera inexplicable.';
 	@override String get copyErrorInfo => 'Copiar la informació de l\'error ';
@@ -4820,7 +4820,7 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityCaEs extends Translat
 	@override String get description => 'Pots limitar qui pot veure les teves notes.';
 	@override String get public => 'La teva nota serà visible per a tots els usuaris.';
 	@override String get home => 'Publicar només a línia de temps d\'Inici. La gent que visiti el teu perfil o mitjançant les remotes també la podran veure.';
-	@override String get followers => 'Només visible per a seguidors. Només els teus seguidors la podran veure i ningú més. Ningú més podrà fer renotes.';
+	@override String get followers => 'Només visible per a seguidors. Només els teus seguidors la podran veure i ningú més. Ningú més podrà fer impulsos.';
 	@override String get direct => 'Només visible per a alguns seguidors, el destinatari rebre una notificació. Es pot fer servir com una alternativa als missatges directes.';
 	@override String get doNotSendConfidencialOnDirect1 => 'Tingues cura quan enviïs informació sensible.';
 	@override String get doNotSendConfidencialOnDirect2 => 'Els administradors del servidor poden veure tot el que escrius. Ves compte quan enviïs informació sensible en enviar notes directes a altres usuaris en servidors de poca confiança.';

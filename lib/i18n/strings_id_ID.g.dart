@@ -251,8 +251,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' mengandung konten sensitif'),
 	]);
-	@override String get vibrateNote => 'Getarkan untuk note baru';
-	@override String get vibrateNotification => 'Getarkan untuk notifikasi baru';
 	@override String get webBrowser => 'Peramban web';
 }
 

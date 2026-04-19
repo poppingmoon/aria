@@ -248,8 +248,6 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: '의 야시시한 파일이 든 글'),
 	]);
-	@override String get vibrateNote => '새 노트에 진동 울려달래이';
-	@override String get vibrateNotification => '새 알림에 진동 울려달래이';
 	@override String get vibration => '진동';
 	@override String get webBrowser => '웹 브라우저';
 }
