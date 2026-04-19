@@ -62,6 +62,8 @@ parts:
       - cmake
       - curl
       - git
+      - libgstreamer1.0-dev
+      - libgstreamer-plugins-base1.0-dev
       - libsecret-1-dev
       - lld-18
       - llvm-18-dev
