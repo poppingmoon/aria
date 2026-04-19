@@ -159,6 +159,7 @@ class _LayerSheet extends HookConsumerWidget {
             max: maxAngle,
           ),
           trailing: IconButton(
+            tooltip: t.misskey.reset,
             onPressed: () => ref
                 .read(overlayLayersNotifierProvider.notifier)
                 .setAngle(index, 0.0),
@@ -176,6 +177,7 @@ class _LayerSheet extends HookConsumerWidget {
             max: maxOffsetX,
           ),
           trailing: IconButton(
+            tooltip: t.misskey.reset,
             onPressed: () => ref
                 .read(overlayLayersNotifierProvider.notifier)
                 .setOffset(
@@ -196,6 +198,7 @@ class _LayerSheet extends HookConsumerWidget {
             max: maxOffsetY,
           ),
           trailing: IconButton(
+            tooltip: t.misskey.reset,
             onPressed: () => ref
                 .read(overlayLayersNotifierProvider.notifier)
                 .setOffset(
@@ -222,6 +225,7 @@ class _LayerSheet extends HookConsumerWidget {
             max: maxScale,
           ),
           trailing: IconButton(
+            tooltip: t.misskey.reset,
             onPressed: () => ref
                 .read(overlayLayersNotifierProvider.notifier)
                 .setScale(index, 1.0),
@@ -238,6 +242,7 @@ class _LayerSheet extends HookConsumerWidget {
                   .setOpacity(index, value),
             ),
             trailing: IconButton(
+              tooltip: t.misskey.reset,
               onPressed: () => ref
                   .read(overlayLayersNotifierProvider.notifier)
                   .setOpacity(index, 1.0),
@@ -314,6 +319,7 @@ class _LayerSheet extends HookConsumerWidget {
               max: maxStrokeWidthFactor,
             ),
             trailing: IconButton(
+              tooltip: t.misskey.reset,
               onPressed: () => ref
                   .read(overlayLayersNotifierProvider.notifier)
                   .setStrokeWidth(index, baseStrokeWidth),
