@@ -82,11 +82,6 @@ dependencies:
   image_editor: ^1.6.0
   intl: ^0.20.2
   isar_community: ^3.3.2
-  isar_community_flutter_libs:
-    git:
-      url: https://github.com/poppingmoon/isar-community
-      ref: c09cf49881b0ba0013198f31cbcc001a26f6ef63
-      path: packages/isar_community_flutter_libs
   json5: ^0.8.2
   json_annotation: ^4.11.0
   just_audio: ^0.10.5
@@ -178,6 +173,11 @@ dependency_overrides:
       url: https://github.com/Baseflow/flutter_cache_manager
       ref: 54904e499a06d0364a2b3f4ca9789e5f829f1879
       path: flutter_cache_manager
+  isar_community:
+    git:
+      url: https://github.com/poppingmoon/isar-community
+      ref: c376e990b9e0978f22250c74159350dd598fd4f8
+      path: packages/isar_community
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
@@ -187,6 +187,11 @@ dependency_overrides:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
       ref: 78c1829c9eb0749ada4043ca64b79e01da744a27
+
+hooks:
+  user_defines:
+    isar_community:
+      local_build: false
 
 flutter:
   uses-material-design: true
