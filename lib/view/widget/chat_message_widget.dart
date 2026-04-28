@@ -247,15 +247,14 @@ class _ChatMessageSheet extends ConsumerWidget {
               if (!context.mounted) return;
               if (emoji != null) {
                 context.pop();
-                unawaited(
-                  ref
-                      .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
-                      )
-                      .play(),
-                );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play()
+                    .ignore();
                 final result = await futureWithDialog(
                   context,
                   ref
