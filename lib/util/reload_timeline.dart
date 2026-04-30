@@ -11,12 +11,15 @@ Future<void> reloadTimeline(WidgetRef ref, TabSettings tabSettings) async {
   if (!tabSettings.disableStreaming) {
     ref.invalidate(webSocketChannelProvider(tabSettings.account));
   }
-  ref.read(timelineCenterNotifierProvider(tabSettings).notifier).reset();
-  await Future.wait([
-    ref.refresh(timelineNotesAfterNoteNotifierProvider(tabSettings).future),
-    ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
-    ref
-        .read(timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier)
-        .saveFromDate(DateTime.now()),
-  ]);
+  if (ref.read(timelineCenterNotifierProvider(tabSettings)) == null) {
+    await Future.wait([
+      ref.refresh(timelineNotesAfterNoteNotifierProvider(tabSettings).future),
+      ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
+    ]);
+  } else {
+    ref.read(timelineCenterNotifierProvider(tabSettings).notifier).reset();
+  }
+  await ref
+      .read(timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier)
+      .saveFromDate(DateTime.now());
 }

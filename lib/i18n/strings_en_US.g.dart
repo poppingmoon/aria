@@ -637,6 +637,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Timelines page buttons'
 	String get timelinesPageButtons => 'Timelines page buttons';
 
+	/// en-US: 'Trigger'
+	String get trigger => 'Trigger';
+
 	/// en-US: 'Removed from favorites'
 	String get unfavorited => 'Removed from favorites';
 

@@ -36,6 +36,9 @@ const _$OperationTypeEnumMap = {
   OperationType.notification: 'notification',
   OperationType.reaction: 'reaction',
   OperationType.chatMessage: 'chatMessage',
+  OperationType.tabSwitch: 'tabSwitch',
+  OperationType.reloadHold: 'reloadHold',
+  OperationType.reload: 'reload',
 };
 
 _SoundStore _$SoundStoreFromJson(Map<String, dynamic> json) => _SoundStore(

@@ -102,24 +102,26 @@ class TimelineWidget extends HookConsumerWidget {
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadNotification();
-              await ref
+              ref
                   .read(
                     misskeySfxNotifierProvider(
                       OperationType.notification,
                     ).notifier,
                   )
-                  .play();
+                  .play()
+                  .ignore();
             case NewChatMessage():
               await ref
                   .read(iNotifierProvider(account).notifier)
                   .addUnreadChatMessage();
-              await ref
+              ref
                   .read(
                     misskeySfxNotifierProvider(
                       OperationType.chatMessage,
                     ).notifier,
                   )
-                  .play();
+                  .play()
+                  .ignore();
             case AnnouncementCreated(:final announcement):
               await ref
                   .read(iNotifierProvider(account).notifier)

@@ -27,15 +27,59 @@ class SoundSettingsNotifier extends _$SoundSettingsNotifier {
         .setSound(state.copyWith(masterVolume: masterVolume));
   }
 
-  Future<void> setSound(OperationType type, SoundStore sound) async {
+  Future<void> setSound(OperationType operationType, SoundStore sound) async {
     await ref
         .read(generalSettingsNotifierProvider.notifier)
-        .setSound(state.copyWith(sounds: {...state.sounds, type: sound}));
+        .setSound(
+          state.copyWith(sounds: {...state.sounds, operationType: sound}),
+        );
   }
 
-  Future<void> resetSounds() async {
+  Future<void> setSoundType(
+    OperationType operationType,
+    SoundType? soundType,
+  ) async {
     await ref
         .read(generalSettingsNotifierProvider.notifier)
-        .setSound(state.copyWith(sounds: defaultSounds));
+        .setSound(
+          state.copyWith(
+            sounds: {
+              ...state.sounds,
+              operationType:
+                  state.sounds[operationType]?.copyWith(type: soundType) ??
+                  SoundStore(type: soundType),
+            },
+          ),
+        );
+  }
+
+  Future<void> setVolume(OperationType operationType, double volume) async {
+    await ref
+        .read(generalSettingsNotifierProvider.notifier)
+        .setSound(
+          state.copyWith(
+            sounds: {
+              ...state.sounds,
+              operationType:
+                  state.sounds[operationType]?.copyWith(volume: volume) ??
+                  SoundStore(volume: volume),
+            },
+          ),
+        );
+  }
+
+  Future<void> setVibrate(OperationType operationType, bool vibrate) async {
+    await ref
+        .read(generalSettingsNotifierProvider.notifier)
+        .setSound(
+          state.copyWith(
+            sounds: {
+              ...state.sounds,
+              operationType:
+                  state.sounds[operationType]?.copyWith(vibrate: vibrate) ??
+                  SoundStore(vibrate: vibrate),
+            },
+          ),
+        );
   }
 }

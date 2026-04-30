@@ -202,7 +202,8 @@ class TimelineListView extends HookConsumerWidget {
                         : OperationType.note,
                   ).notifier,
                 )
-                .play();
+                .play()
+                .ignore();
             if (keepAnimation.value) {
               if (controller.offset < 400.0) {
                 ref

@@ -94,15 +94,14 @@ class ReactionButton extends ConsumerWidget {
                   if (!confirmed) return;
                 }
                 if (!context.mounted) return;
-                unawaited(
-                  ref
-                      .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
-                      )
-                      .play(),
-                );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play()
+                    .ignore();
                 await futureWithDialog(
                   context,
                   ref
@@ -144,15 +143,14 @@ class ReactionButton extends ConsumerWidget {
                 );
                 if (!confirmed) return;
                 if (!context.mounted) return;
-                unawaited(
-                  ref
-                      .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
-                      )
-                      .play(),
-                );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play()
+                    .ignore();
                 await futureWithDialog(
                   context,
                   ref

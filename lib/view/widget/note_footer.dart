@@ -465,15 +465,12 @@ class _LikeButton extends ConsumerWidget {
                   ? ref.context
                   : listViewKey?.currentContext;
               if (context == null || !context.mounted) return;
-              unawaited(
-                ref
-                    .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
-                    )
-                    .play(),
-              );
+              ref
+                  .read(
+                    misskeySfxNotifierProvider(OperationType.reaction).notifier,
+                  )
+                  .play()
+                  .ignore();
               await futureWithDialog(
                 context,
                 ref
@@ -568,15 +565,14 @@ class _AddReactionButton extends ConsumerWidget {
                     if (!confirmed) return;
                   }
                   if (!context.mounted) return;
-                  unawaited(
-                    ref
-                        .read(
-                          misskeySfxNotifierProvider(
-                            OperationType.reaction,
-                          ).notifier,
-                        )
-                        .play(),
-                  );
+                  ref
+                      .read(
+                        misskeySfxNotifierProvider(
+                          OperationType.reaction,
+                        ).notifier,
+                      )
+                      .play()
+                      .ignore();
                   await futureWithDialog(
                     context,
                     notifier.react(note.id, emoji),

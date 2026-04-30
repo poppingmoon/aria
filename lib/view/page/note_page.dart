@@ -7,6 +7,7 @@ import '../../constant/max_content_width.dart';
 import '../../extension/note_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/api/conversation_notes_provider.dart';
@@ -16,6 +17,7 @@ import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -48,6 +50,12 @@ class NotePage extends HookConsumerWidget {
                       .read(notesNotifierProvider(account).notifier)
                       .show(noteId),
                 );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(OperationType.reload).notifier,
+                    )
+                    .play()
+                    .ignore();
               },
               icon: const Icon(Icons.refresh),
             ),

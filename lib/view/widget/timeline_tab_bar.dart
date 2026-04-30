@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/scroll_controller_extension.dart';
+import '../../model/sound_settings.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/reload_timeline.dart';
@@ -38,7 +40,7 @@ class TimelineTabBar extends HookConsumerWidget {
       indicatorWeight: 0.0,
       dividerHeight: 0.0,
       isScrollable: true,
-      onTap: (index) {
+      onTap: (index) async {
         if (index == controller.index) {
           final tabSettings = tabs[index];
           final scrollController = ref.read(
@@ -46,9 +48,15 @@ class TimelineTabBar extends HookConsumerWidget {
           );
           if (scrollController.hasClients) {
             if (scrollController.position.extentBefore < 10000) {
-              scrollController.scrollToTop();
+              await scrollController.scrollToTop();
             } else {
-              reloadTimeline(ref, tabSettings);
+              await reloadTimeline(ref, tabSettings);
+              ref
+                  .read(
+                    misskeySfxNotifierProvider(OperationType.reload).notifier,
+                  )
+                  .play()
+                  .ignore();
             }
           }
         } else {

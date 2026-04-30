@@ -66,15 +66,14 @@ void Function(WidgetRef ref)? getNoteAction({
                   if (!confirmed) return;
                 }
                 if (!ref.context.mounted) return;
-                unawaited(
-                  ref
-                      .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
-                      )
-                      .play(),
-                );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play()
+                    .ignore();
                 await futureWithDialog(
                   ref.context,
                   ref

@@ -6,10 +6,12 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
+import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
@@ -242,7 +244,15 @@ class TimelineMenu extends ConsumerWidget {
           Card(
             clipBehavior: Clip.hardEdge,
             child: InkWell(
-              onTap: () => reloadTimeline(ref, tabSettings),
+              onTap: () async {
+                await reloadTimeline(ref, tabSettings);
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(OperationType.reload).notifier,
+                    )
+                    .play()
+                    .ignore();
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

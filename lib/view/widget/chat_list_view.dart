@@ -124,7 +124,8 @@ class ChatListView extends HookConsumerWidget {
                   .read(
                     misskeySfxNotifierProvider(OperationType.reaction).notifier,
                   )
-                  .play();
+                  .play()
+                  .ignore();
               if (!keepAnimation.value) {
                 hasUnread.value = true;
               }

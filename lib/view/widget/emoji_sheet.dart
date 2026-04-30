@@ -136,15 +136,14 @@ class EmojiSheet extends ConsumerWidget {
                   if (!confirmed) return;
                 }
                 if (!context.mounted) return;
-                unawaited(
-                  ref
-                      .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
-                      )
-                      .play(),
-                );
+                ref
+                    .read(
+                      misskeySfxNotifierProvider(
+                        OperationType.reaction,
+                      ).notifier,
+                    )
+                    .play()
+                    .ignore();
                 await futureWithDialog(
                   context,
                   ref
@@ -185,15 +184,12 @@ class EmojiSheet extends ConsumerWidget {
             leading: const Icon(Icons.add),
             title: Text(t.misskey.doReaction),
             onTap: () async {
-              unawaited(
-                ref
-                    .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
-                    )
-                    .play(),
-              );
+              ref
+                  .read(
+                    misskeySfxNotifierProvider(OperationType.reaction).notifier,
+                  )
+                  .play()
+                  .ignore();
               final result = await futureWithDialog(
                 context,
                 ref
