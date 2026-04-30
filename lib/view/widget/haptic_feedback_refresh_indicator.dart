@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../model/sound_settings.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_sfx_notifier_provider.dart';
 
 class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
   const HapticFeedbackRefreshIndicator({
@@ -29,7 +30,13 @@ class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
     final armed = useState(false);
 
     return RefreshIndicator(
-      onRefresh: onRefresh,
+      onRefresh: () async {
+        await onRefresh();
+        ref
+            .read(misskeySfxNotifierProvider(OperationType.reload).notifier)
+            .play()
+            .ignore();
+      },
       notificationPredicate: enableHapticFeedback
           ? (notification) {
               if (!notificationPredicate(notification)) {
@@ -63,7 +70,14 @@ class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
                   if (!armed.value &&
                       (dragOffset.value / (metrics.viewportDimension * 0.25) >=
                           1.0)) {
-                    HapticFeedback.lightImpact();
+                    ref
+                        .read(
+                          misskeySfxNotifierProvider(
+                            OperationType.reloadHold,
+                          ).notifier,
+                        )
+                        .play()
+                        .ignore();
                     armed.value = true;
                   }
                 } else if (notification is ScrollEndNotification) {

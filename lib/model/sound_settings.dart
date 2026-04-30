@@ -58,7 +58,16 @@ enum SoundType {
   noizenecioKickGaba7,
 }
 
-enum OperationType { noteMy, note, notification, reaction, chatMessage }
+enum OperationType {
+  noteMy,
+  note,
+  notification,
+  reaction,
+  chatMessage,
+  tabSwitch,
+  reloadHold,
+  reload,
+}
 
 const defaultMasterVolume = 0.5;
 const defaultSounds = {
@@ -67,6 +76,9 @@ const defaultSounds = {
   OperationType.notification: SoundStore(type: SoundType.syuiloNEa),
   OperationType.reaction: SoundStore(type: SoundType.syuiloBubble2),
   OperationType.chatMessage: SoundStore(type: SoundType.syuiloWaon),
+  OperationType.tabSwitch: SoundStore(type: SoundType.syuiloPoi1),
+  OperationType.reloadHold: SoundStore(type: SoundType.syuiloPopo),
+  OperationType.reload: SoundStore(type: SoundType.syuiloPope2),
 };
 
 @Freezed(fromJson: true)
