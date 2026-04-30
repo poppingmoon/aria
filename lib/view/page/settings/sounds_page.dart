@@ -21,7 +21,6 @@ class SoundsPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(soundSettingsNotifierProvider);
     final masterVolume = useState(settings.masterVolume);
-    final resetCount = useState(0);
     final theme = Theme.of(context);
 
     return GeneralSettingsScaffold(
@@ -101,42 +100,11 @@ class SoundsPage extends HookConsumerWidget {
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
-                  child: _SoundSettingsWidget(
-                    operationType: type,
-                    resetCount: resetCount.value,
-                  ),
+                  child: _SoundSettingsWidget(operationType: type),
                 ),
               ),
               const SizedBox(height: 8.0),
             ],
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                width: maxContentWidth,
-                child: ListTile(
-                  leading: const Icon(Icons.refresh),
-                  title: Text(t.misskey.resetToDefaultValue),
-                  onTap: () async {
-                    final confirmed = await confirm(
-                      context,
-                      message: t.misskey.resetAreYouSure,
-                    );
-                    if (confirmed) {
-                      await ref
-                          .read(soundSettingsNotifierProvider.notifier)
-                          .resetSounds();
-                      resetCount.value += 1;
-                    }
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  iconColor: theme.colorScheme.error,
-                  textColor: theme.colorScheme.error,
-                ),
-              ),
-            ),
-            const SizedBox(height: 8.0),
           ],
         ),
       ),
@@ -146,13 +114,9 @@ class SoundsPage extends HookConsumerWidget {
 }
 
 class _SoundSettingsWidget extends HookConsumerWidget {
-  const _SoundSettingsWidget({
-    required this.operationType,
-    required this.resetCount,
-  });
+  const _SoundSettingsWidget({required this.operationType});
 
   final OperationType operationType;
-  final int resetCount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -166,28 +130,17 @@ class _SoundSettingsWidget extends HookConsumerWidget {
         ),
       ),
     );
-    final soundType = useState(sound?.type);
-    final sliderVolume = useState(sound?.volume ?? 1.0);
     final volume = useState(sound?.volume ?? 1.0);
-    final vibrate = useState(sound?.vibrate ?? false);
     final effectiveVolume = masterVolume * volume.value;
-    if (soundType.value case final soundType?) {
+    if (sound?.type case final soundType?) {
       ref.listen(
         assetAudioPlayerNotifierProvider(soundType.asset, effectiveVolume),
         (_, _) {},
       );
     }
-    useEffect(() {
-      soundType.value = sound?.type ?? soundType.value;
-      sliderVolume.value = sound?.volume ?? sliderVolume.value;
-      volume.value = sound?.volume ?? volume.value;
-      vibrate.value = sound?.vibrate ?? vibrate.value;
-      return;
-    }, [resetCount]);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.brightnessOf(context)),
     );
-    final theme = Theme.of(context);
 
     return ExpansionTile(
       title: Text(switch (operationType) {
@@ -200,8 +153,8 @@ class _SoundSettingsWidget extends HookConsumerWidget {
         OperationType.reloadHold => '${t.misskey.reload} (${t.aria.trigger})',
         OperationType.reload => t.misskey.reload,
       }),
-      initiallyExpanded: true,
-      backgroundColor: theme.colorScheme.surface,
+      initiallyExpanded: !notUseSound,
+      backgroundColor: colors.panel,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       collapsedShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -209,38 +162,69 @@ class _SoundSettingsWidget extends HookConsumerWidget {
       children: [
         ListTile(
           title: Text(t.misskey.sound),
-          subtitle: Text(soundType.value?.name ?? t.misskey.none),
-          trailing: const Icon(Icons.navigate_next),
+          subtitle: Text(sound?.type?.name ?? t.misskey.none),
+          trailing: switch (sound?.type) {
+            final soundType? when !notUseSound => IconButton(
+              style: IconButton.styleFrom(
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                minimumSize: Size.zero,
+              ),
+              tooltip: t.misskey.listen,
+              onPressed: () {
+                ref
+                    .read(
+                      assetAudioPlayerNotifierProvider(
+                        soundType.asset,
+                        effectiveVolume,
+                      ).notifier,
+                    )
+                    .play();
+                if (sound?.vibrate ?? false) {
+                  HapticFeedback.lightImpact();
+                }
+              },
+              icon: const Icon(Icons.play_arrow),
+            ),
+            _ => const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.navigate_next),
+            ),
+          },
           onTap: () async {
             final result = await showDialog<(SoundType?,)>(
               context: context,
               builder: (context) => _SoundDialog(
-                initialValue: soundType.value,
+                initialValue: sound?.type,
                 volume: effectiveVolume,
               ),
             );
             if (result != null) {
-              soundType.value = result.$1;
+              await ref
+                  .read(soundSettingsNotifierProvider.notifier)
+                  .setSoundType(operationType, result.$1);
             }
           },
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
           enabled: !notUseSound,
         ),
         ListTile(
           title: Text(t.misskey.volume),
           subtitle: Slider(
-            value: sliderVolume.value,
-            label: '${(sliderVolume.value * 100).toStringAsFixed(0)}%',
-            onChanged: !notUseSound
-                ? (value) => sliderVolume.value = value
-                : null,
-            onChangeEnd: (value) => volume.value = value,
+            value: volume.value,
+            label: '${(volume.value * 100).toStringAsFixed(0)}%',
+            onChanged: !notUseSound ? (value) => volume.value = value : null,
+            onChangeEnd: (value) => ref
+                .read(soundSettingsNotifierProvider.notifier)
+                .setVolume(operationType, value),
           ),
           enabled: !notUseSound,
         ),
         SwitchListTile(
           title: Text(t.aria.vibration),
-          value: vibrate.value,
-          onChanged: (value) => vibrate.value = value,
+          value: sound?.vibrate ?? false,
+          onChanged: (value) => ref
+              .read(soundSettingsNotifierProvider.notifier)
+              .setVibrate(operationType, value),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -249,47 +233,27 @@ class _SoundSettingsWidget extends HookConsumerWidget {
             children: [
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: colors.fg,
+                  foregroundColor: colors.error,
                   backgroundColor: colors.buttonBg,
-                  iconColor: colors.fg,
+                  iconColor: colors.error,
                 ),
-                onPressed: switch (soundType.value) {
-                  final soundType? when !notUseSound => () {
-                    ref
-                        .read(
-                          assetAudioPlayerNotifierProvider(
-                            soundType.asset,
-                            effectiveVolume,
-                          ).notifier,
-                        )
-                        .play();
-                    if (vibrate.value) {
-                      HapticFeedback.lightImpact();
+                onPressed: switch (defaultSounds[operationType]) {
+                  final defaultSound? when sound != defaultSound => () async {
+                    final confirmed = await confirm(
+                      context,
+                      message: t.misskey.resetAreYouSure,
+                    );
+                    if (confirmed) {
+                      await ref
+                          .read(soundSettingsNotifierProvider.notifier)
+                          .setSound(operationType, defaultSound);
+                      volume.value = defaultSound.volume;
                     }
                   },
                   _ => null,
                 },
-                icon: const Icon(Icons.play_arrow),
-                label: Text(t.misskey.listen),
-              ),
-              ElevatedButton.icon(
-                onPressed:
-                    soundType.value != sound?.type ||
-                        volume.value != sound?.volume ||
-                        vibrate.value != sound?.vibrate
-                    ? () => ref
-                          .read(soundSettingsNotifierProvider.notifier)
-                          .setSound(
-                            operationType,
-                            SoundStore(
-                              type: soundType.value,
-                              volume: volume.value,
-                              vibrate: vibrate.value,
-                            ),
-                          )
-                    : null,
-                icon: const Icon(Icons.save),
-                label: Text(t.misskey.save),
+                icon: const Icon(Icons.refresh),
+                label: Text(t.misskey.default_),
               ),
             ],
           ),

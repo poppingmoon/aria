@@ -42,7 +42,7 @@ final class SoundSettingsNotifierProvider
 }
 
 String _$soundSettingsNotifierHash() =>
-    r'644f7e16b280cfb5d503769f6bbd50762e4d39d0';
+    r'cb13a4aa4d130b2b7ff93644d88b38ac585473bd';
 
 abstract class _$SoundSettingsNotifier extends $Notifier<SoundSettings> {
   SoundSettings build();
