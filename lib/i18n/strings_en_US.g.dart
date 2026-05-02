@@ -547,6 +547,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Show image'
 	String get showImage => 'Show image';
 
+	/// en-US: 'Show image in notifications'
+	String get showImageInNotification => 'Show image in notifications';
+
 	/// en-US: 'Add "Like" to note action menu'
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
 

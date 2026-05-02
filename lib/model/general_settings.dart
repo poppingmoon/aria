@@ -123,6 +123,7 @@ abstract class GeneralSettings with _$GeneralSettings {
     List<TimelinesPageButtonType?> timelinesPageButtonTypes,
     @Default(false) bool showSmallTimelinesPageButtons,
     @Default(false) bool showSquaredTimelinesPageButtons,
+    @Default(true) bool showImageInNotification,
     @Default(false) bool showEmojiInReactionNotification,
 
     // Behavior
