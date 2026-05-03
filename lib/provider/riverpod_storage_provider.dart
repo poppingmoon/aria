@@ -3,6 +3,7 @@ import 'package:isar_community/isar.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/database/riverpod_storage_item.dart';
+import '../util/fast_hash.dart';
 import 'isar_provider.dart';
 
 part 'riverpod_storage_provider.g.dart';
@@ -17,21 +18,6 @@ final class _JsonIsarStorage extends Storage<String, String> {
   _JsonIsarStorage._(this.isar);
 
   final Isar isar;
-
-  static int _fastHash(String string) {
-    var hash = 0xcbf29ce484222325;
-
-    var i = 0;
-    while (i < string.length) {
-      final codeUnit = string.codeUnitAt(i++);
-      hash ^= codeUnit >> 8;
-      hash *= 0x100000001b3;
-      hash ^= codeUnit & 0xFF;
-      hash *= 0x100000001b3;
-    }
-
-    return hash;
-  }
 
   static Future<_JsonIsarStorage> open(Isar isar) async {
     final instance = _JsonIsarStorage._(isar);
@@ -51,12 +37,12 @@ final class _JsonIsarStorage extends Storage<String, String> {
 
   @override
   Future<void> delete(String key) async {
-    await isar.writeTxn(() => isar.riverpodStorageItems.delete(_fastHash(key)));
+    await isar.writeTxn(() => isar.riverpodStorageItems.delete(fastHash(key)));
   }
 
   @override
   Future<PersistedData<String>?> read(String key) async {
-    final result = await isar.riverpodStorageItems.get(_fastHash(key));
+    final result = await isar.riverpodStorageItems.get(fastHash(key));
     if (result != null) {
       return PersistedData(
         result.text,
@@ -71,7 +57,7 @@ final class _JsonIsarStorage extends Storage<String, String> {
   @override
   Future<void> write(String key, String value, StorageOptions options) async {
     final item = RiverpodStorageItem()
-      ..id = _fastHash(key)
+      ..id = fastHash(key)
       ..text = value;
     if (options.cacheTime.duration case final duration?) {
       item.expireAt = DateTime.now().add(duration);
