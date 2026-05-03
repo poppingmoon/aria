@@ -975,7 +975,7 @@ class _PostFormHeader extends HookConsumerWidget {
       await ref
           .read(postNotifierProvider(destination).notifier)
           .fromDraft(draft, origin);
-      ref.read(postNotifierProvider(origin).notifier).reset();
+      await ref.read(postNotifierProvider(origin).notifier).reset();
     } catch (_) {}
     return destination;
   }
@@ -1151,7 +1151,9 @@ class _PostFormHeader extends HookConsumerWidget {
                 );
                 if (!context.mounted) return;
                 if (confirmed) {
-                  ref.read(postNotifierProvider(account).notifier).reset();
+                  await ref
+                      .read(postNotifierProvider(account).notifier)
+                      .reset();
                 }
               },
               child: ListTile(
@@ -1452,7 +1454,7 @@ class _PostFormFooter extends HookConsumerWidget {
                                     );
                                 if (!context.mounted) return;
                                 if (result != null) {
-                                  ref
+                                  await ref
                                       .read(
                                         postNotifierProvider(account).notifier,
                                       )

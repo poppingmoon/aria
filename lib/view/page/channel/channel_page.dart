@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -125,10 +127,12 @@ class ChannelPage extends ConsumerWidget {
                   final channel = await ref.read(
                     channelNotifierProvider(account, channelId).future,
                   );
+                  unawaited(
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setChannel(channel.toNoteChannelInfo()),
+                  );
                   if (!context.mounted) return;
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setChannel(channel.toNoteChannelInfo());
                   await context.push('/$account/post');
                 },
                 label: Text(t.misskey.postToTheChannel),

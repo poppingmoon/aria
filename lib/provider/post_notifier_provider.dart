@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:isar_community/isar.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -14,6 +15,7 @@ import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
+import '../model/database/note_draft.dart' as db;
 import '../model/tab_settings.dart';
 import '../util/extract_mentions.dart';
 import '../util/punycode.dart';
@@ -22,6 +24,7 @@ import 'api/channel_notifier_provider.dart';
 import 'api/endpoints_notifier_provider.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
+import 'isar_provider.dart';
 import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
 import 'parsed_mfm_provider.dart';
@@ -166,6 +169,38 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<NoteDraft?> _loadDraft(TabSettings? tabSettings) async {
+    final isar = await ref.read(isarProvider.future);
+    if (tabSettings?.id case final tabId?) {
+      final draft = await isar.noteDrafts
+          .where()
+          .tabIdEqualTo(tabId)
+          .findFirst();
+      if (draft != null) {
+        try {
+          return NoteDraft.fromJson(
+            jsonDecode(draft.draft) as Map<String, dynamic>,
+          );
+        } catch (_) {}
+      }
+    } else {
+      final draft = await isar.noteDrafts
+          .where()
+          .tabIdIsNull()
+          .filter()
+          .accountEqualTo(account.toString())
+          .replyIdIsNull()
+          .renoteIdIsNull()
+          .channelIdIsNull()
+          .findFirst();
+      if (draft != null) {
+        try {
+          return NoteDraft.fromJson(
+            jsonDecode(draft.draft) as Map<String, dynamic>,
+          );
+        } catch (_) {}
+      }
+    }
+
     // Fallback for older format.
     final draft = ref.read(sharedPreferencesProvider).getString(_key);
     if (draft != null) {
@@ -182,11 +217,36 @@ class PostNotifier extends _$PostNotifier {
   Future<void> _saveDraft(TabSettings? tabSettings) async {
     _saveScheduled = false;
     _timer?.cancel();
-    if (!account.isGuest && noteId == null) {
-      await ref
-          .read(sharedPreferencesProvider)
-          .setString(_key, jsonEncode(state.toJson()));
+    if (account.isGuest || noteId != null) {
+      return;
     }
+    final isar = await ref.read(isarProvider.future);
+    final draft = db.NoteDraft()
+      ..account = account.toString()
+      ..draft = jsonEncode(state.copyWith(createdAt: DateTime.now()).toJson());
+    if (state.replyId case final replyId?) {
+      draft
+        ..replyId = replyId
+        ..renoteId = state.renoteId
+        ..setId();
+    } else if (state.renoteId case final renoteId?) {
+      draft
+        ..renoteId = renoteId
+        ..setId();
+    } else if (state.channelId != tabSettings?.channelId) {
+      draft
+        ..channelId = state.channelId
+        ..setId();
+    } else if (tabSettings != null && tabSettings.account == account) {
+      draft
+        ..tabId = tabSettings.id
+        ..setId();
+    } else {
+      draft.setId();
+    }
+    await isar.writeTxn(() async {
+      await isar.noteDrafts.put(draft);
+    });
   }
 
   Future<void> save() async {
@@ -298,11 +358,68 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void reset({bool keepHashtag = false}) {
+  Future<void> reset({bool keepHashtag = false}) async {
+    _saveScheduled = false;
+    _timer?.cancel();
+    final draft = state;
     state = _getDefaultDraft(
       _tabSettings,
     ).copyWith(hashtag: keepHashtag ? state.hashtag : null);
-    ref.read(sharedPreferencesProvider).remove(_key);
+
+    final isar = await ref.read(isarProvider.future);
+    if (draft.replyId case final replyId?) {
+      await isar.writeTxn(() async {
+        await isar.noteDrafts
+            .where()
+            .accountEqualTo(account.toString())
+            .filter()
+            .replyIdEqualTo(replyId)
+            .isPinnedEqualTo(false)
+            .deleteFirst();
+      });
+    } else if (draft.renoteId case final renoteId?) {
+      await isar.writeTxn(() async {
+        await isar.noteDrafts
+            .where()
+            .accountEqualTo(account.toString())
+            .filter()
+            .renoteIdEqualTo(renoteId)
+            .isPinnedEqualTo(false)
+            .deleteFirst();
+      });
+    } else if (draft.channelId case final channelId?) {
+      await isar.writeTxn(() async {
+        await isar.noteDrafts
+            .where()
+            .accountEqualTo(account.toString())
+            .filter()
+            .channelIdEqualTo(channelId)
+            .isPinnedEqualTo(false)
+            .deleteFirst();
+      });
+    } else if (_tabSettings case final tabSettings?
+        when tabSettings.account == account) {
+      await isar.writeTxn(() async {
+        await isar.noteDrafts
+            .where()
+            .tabIdEqualTo(tabSettings.id)
+            .deleteFirst();
+      });
+    } else {
+      await isar.writeTxn(() async {
+        await isar.noteDrafts
+            .where()
+            .tabIdIsNull()
+            .filter()
+            .accountEqualTo(account.toString())
+            .replyIdIsNull()
+            .renoteIdIsNull()
+            .channelIdIsNull()
+            .isPinnedEqualTo(false)
+            .deleteFirst();
+      });
+    }
+    await ref.read(sharedPreferencesProvider).remove(_key);
   }
 
   Future<Note> post({List<String>? fileIds}) async {
@@ -336,20 +453,20 @@ class PostNotifier extends _$PostNotifier {
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
           await _misskey.notes.create(draft.toNotesCreateRequest());
-          reset(keepHashtag: true);
+          unawaited(reset(keepHashtag: true));
           return draft.toNote();
         } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
             when scheduleNoteMax > 0) {
           await _misskey.notes.schedule.create(
             draft.toNotesScheduleCreateRequest(),
           );
-          reset(keepHashtag: true);
+          unawaited(reset(keepHashtag: true));
           return draft.toNote();
         } else {
           final response = await _misskey.notes.drafts.create(
             draft.toNotesDraftsCreateRequest(),
           );
-          reset(keepHashtag: true);
+          unawaited(reset(keepHashtag: true));
           return response.createdDraft.toNote();
         }
       }
@@ -359,7 +476,7 @@ class PostNotifier extends _$PostNotifier {
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
       }
-      reset(keepHashtag: true);
+      unawaited(reset(keepHashtag: true));
       return response ?? draft.toNote();
     }
   }
@@ -468,11 +585,28 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setReply(Note reply) {
+  Future<void> setReply(Note reply) async {
     if (state.replyId == reply.id) {
       state = state.copyWith(reply: reply);
       _scheduleSave();
       return;
+    }
+
+    final isar = await ref.read(isarProvider.future);
+    final draft = await isar.noteDrafts
+        .where()
+        .accountEqualTo(account.toString())
+        .filter()
+        .replyIdEqualTo(reply.id)
+        .findFirst();
+    if (draft != null) {
+      await save();
+      try {
+        state = NoteDraft.fromJson(
+          jsonDecode(draft.draft) as Map<String, dynamic>,
+        );
+        return;
+      } catch (_) {}
     }
 
     final visibility = reply.channelId != null
@@ -590,7 +724,30 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setRenote(Note renote) {
+  Future<void> setRenote(Note renote) async {
+    if (state.renoteId == renote.id) {
+      state = state.copyWith(renote: renote);
+      _scheduleSave();
+      return;
+    }
+
+    final isar = await ref.read(isarProvider.future);
+    final draft = await isar.noteDrafts
+        .where()
+        .accountEqualTo(account.toString())
+        .filter()
+        .renoteIdEqualTo(renote.id)
+        .findFirst();
+    if (draft != null) {
+      await save();
+      try {
+        state = NoteDraft.fromJson(
+          jsonDecode(draft.draft) as Map<String, dynamic>,
+        );
+        return;
+      } catch (_) {}
+    }
+
     final visibility = NoteVisibility.min(
       state.visibility ?? NoteVisibility.public,
       renote.visibility ?? NoteVisibility.public,
@@ -643,7 +800,30 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setChannel(NoteChannelInfo channel) {
+  Future<void> setChannel(NoteChannelInfo channel) async {
+    if (state.channelId == channel.id) {
+      state = state.copyWith(channel: channel);
+      _scheduleSave();
+      return;
+    }
+
+    final isar = await ref.read(isarProvider.future);
+    final draft = await isar.noteDrafts
+        .where()
+        .accountEqualTo(account.toString())
+        .filter()
+        .channelIdEqualTo(channel.id)
+        .findFirst();
+    if (draft != null) {
+      await save();
+      try {
+        state = NoteDraft.fromJson(
+          jsonDecode(draft.draft) as Map<String, dynamic>,
+        );
+        return;
+      } catch (_) {}
+    }
+
     state = state.copyWith(
       channelId: channel.id,
       channel: channel,
