@@ -14,6 +14,7 @@ import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
+import '../model/tab_settings.dart';
 import '../util/extract_mentions.dart';
 import '../util/punycode.dart';
 import 'account_settings_notifier_provider.dart';
@@ -25,6 +26,7 @@ import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
 import 'parsed_mfm_provider.dart';
 import 'shared_preferences_provider.dart';
+import 'timeline_tab_settings_provider.dart';
 
 part 'post_notifier_provider.g.dart';
 
@@ -89,22 +91,31 @@ class PostNotifier extends _$PostNotifier {
     });
     if (noteId != null) {
       final note = ref.read(noteNotifierProvider(account, noteId));
-      return note?.toNoteDraft() ?? _defaultDraft;
+      return note?.toNoteDraft() ?? _getDefaultDraft(null);
     }
-    if (noteId != null) {
-      final note = ref.read(noteNotifierProvider(account, noteId));
-      return note?.toNoteDraft() ?? _defaultDraft;
+    ref.listen(timelineTabSettingsProvider, (prev, next) async {
+      if (prev != null && prev.account == account) {
+        await _saveDraft(prev);
+      }
+      if (next != null && next.account == account) {
+        final draft = await _loadDraft(next);
+        if (draft != null) {
+          state = draft;
+        } else {
+          state = _getDefaultDraft(next);
+        }
+      }
+    });
+    final tabSettings = _tabSettings;
+    if (tabSettings?.account == account) {
+      Future(() async {
+        final draft = await _loadDraft(tabSettings);
+        if (draft != null) {
+          state = draft;
+        }
+      });
     }
-    final draft = ref.watch(sharedPreferencesProvider).getString(_key);
-    if (draft != null) {
-      try {
-        final request = NotesCreateRequest.fromJson(
-          jsonDecode(draft) as Map<String, dynamic>,
-        );
-        return request.toNoteDraft(i: _i);
-      } catch (_) {}
-    }
-    return _defaultDraft;
+    return _getDefaultDraft(tabSettings);
   }
 
   String get _key => '$account/draft';
@@ -114,43 +125,72 @@ class PostNotifier extends _$PostNotifier {
   // ignore: only_use_keep_alive_inside_keep_alive
   MeDetailed? get _i => ref.read(iNotifierProvider(account)).value;
 
+  TabSettings? get _tabSettings => ref.read(timelineTabSettingsProvider);
+
   Timer? _timer;
 
   bool _saveScheduled = false;
 
-  NoteDraft get _defaultDraft {
+  NoteDraft _getDefaultDraft(TabSettings? tabSettings) {
     final i = _i;
     final settings = ref.read(accountSettingsNotifierProvider(account));
-    final localOnly = settings.rememberNoteVisibility
-        ? settings.localOnly
-        : settings.defaultNoteLocalOnly;
+    final channelId = tabSettings?.account.host == account.host
+        ? tabSettings?.channelId
+        : null;
     final isSilenced = i?.isSilenced ?? false;
-    final visibility = NoteVisibility.min(
-      settings.rememberNoteVisibility
-          ? settings.visibility
-          : settings.defaultNoteVisibility,
-      isSilenced ? NoteVisibility.home : NoteVisibility.public,
-    );
+    final visibility = channelId != null
+        ? NoteVisibility.public
+        : NoteVisibility.min(
+            settings.rememberNoteVisibility
+                ? settings.visibility
+                : settings.defaultNoteVisibility,
+            isSilenced ? NoteVisibility.home : NoteVisibility.public,
+          );
+    final localOnly =
+        channelId != null ||
+        (visibility != NoteVisibility.specified &&
+                settings.rememberNoteVisibility
+            ? settings.localOnly
+            : settings.defaultNoteLocalOnly);
     final reactionAcceptance = settings.reactionAcceptance;
     return NoteDraft(
       id: '',
       createdAt: DateTime.now(),
       userId: i?.id ?? '',
       user: i?.toUserLite() ?? const UserLite(id: '', username: ''),
-      localOnly: visibility != NoteVisibility.specified && localOnly,
       visibility: visibility,
+      channelId: channelId,
+      localOnly: localOnly,
       reactionAcceptance: reactionAcceptance,
     );
   }
 
-  void save() {
+  Future<NoteDraft?> _loadDraft(TabSettings? tabSettings) async {
+    // Fallback for older format.
+    final draft = ref.read(sharedPreferencesProvider).getString(_key);
+    if (draft != null) {
+      try {
+        final request = NotesCreateRequest.fromJson(
+          jsonDecode(draft) as Map<String, dynamic>,
+        );
+        return request.toNoteDraft(i: _i);
+      } catch (_) {}
+    }
+    return null;
+  }
+
+  Future<void> _saveDraft(TabSettings? tabSettings) async {
     _saveScheduled = false;
     _timer?.cancel();
     if (!account.isGuest && noteId == null) {
-      ref
+      await ref
           .read(sharedPreferencesProvider)
           .setString(_key, jsonEncode(state.toJson()));
     }
+  }
+
+  Future<void> save() async {
+    await _saveDraft(_tabSettings);
   }
 
   void _scheduleSave() {
@@ -259,7 +299,9 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void reset({bool keepHashtag = false}) {
-    state = _defaultDraft.copyWith(hashtag: keepHashtag ? state.hashtag : null);
+    state = _getDefaultDraft(
+      _tabSettings,
+    ).copyWith(hashtag: keepHashtag ? state.hashtag : null);
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 
@@ -518,13 +560,33 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearReply() {
-    final defaultRequest = _defaultDraft;
-    state = state.copyWith(
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
-      replyId: null,
-      reply: null,
-    );
+    if (state.channelId != null) {
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        localOnly: true,
+        replyId: null,
+        reply: null,
+      );
+    } else {
+      final defaultRequest = _getDefaultDraft(null);
+      final visibility = switch (state.renote) {
+        final renote? => NoteVisibility.min(
+          defaultRequest.visibility ?? NoteVisibility.public,
+          renote.visibility ?? NoteVisibility.public,
+        ),
+        _ => defaultRequest.visibility,
+      };
+      final localOnly =
+          visibility != NoteVisibility.specified &&
+          ((defaultRequest.localOnly ?? false) ||
+              (state.renote?.localOnly ?? false));
+      state = state.copyWith(
+        visibility: visibility,
+        localOnly: localOnly,
+        replyId: null,
+        reply: null,
+      );
+    }
     _scheduleSave();
   }
 
@@ -551,13 +613,33 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearRenote() {
-    final defaultRequest = _defaultDraft;
-    state = state.copyWith(
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
-      renoteId: null,
-      renote: null,
-    );
+    if (state.channelId != null) {
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        localOnly: true,
+        renoteId: null,
+        renote: null,
+      );
+    } else {
+      final defaultRequest = _getDefaultDraft(null);
+      final visibility = switch (state.renote) {
+        final renote? => NoteVisibility.min(
+          defaultRequest.visibility ?? NoteVisibility.public,
+          renote.visibility ?? NoteVisibility.public,
+        ),
+        _ => defaultRequest.visibility,
+      };
+      final localOnly =
+          visibility != NoteVisibility.specified &&
+          ((state.renote?.localOnly ?? false) ||
+              (defaultRequest.localOnly ?? false));
+      state = state.copyWith(
+        visibility: visibility,
+        localOnly: localOnly,
+        renoteId: null,
+        renote: null,
+      );
+    }
     _scheduleSave();
   }
 
@@ -573,12 +655,24 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearChannel() {
-    final defaultRequest = _defaultDraft;
+    final defaultRequest = _getDefaultDraft(null);
+    final visibility = NoteVisibility.min(
+      defaultRequest.visibility ?? NoteVisibility.public,
+      NoteVisibility.min(
+        state.reply?.visibility ?? NoteVisibility.public,
+        state.renote?.visibility ?? NoteVisibility.public,
+      ),
+    );
+    final localOnly =
+        visibility != NoteVisibility.specified &&
+        ((defaultRequest.localOnly ?? false) ||
+            (state.reply?.localOnly ?? false) ||
+            (state.renote?.localOnly ?? false));
     state = state.copyWith(
       channelId: null,
       channel: null,
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
+      visibility: visibility,
+      localOnly: localOnly,
     );
     _scheduleSave();
   }
