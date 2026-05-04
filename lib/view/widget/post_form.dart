@@ -382,7 +382,11 @@ class PostForm extends HookConsumerWidget {
                 noteId: noteId,
                 post: post,
                 onAccountChanged: (newAccount) {
+                  final previousAttaches = attaches;
                   account.value = newAccount;
+                  ref
+                      .read(attachesNotifierProvider(newAccount).notifier)
+                      .addAll(previousAttaches.whereType<LocalPostFile>());
                   onAccountChanged?.call(newAccount);
                 },
                 showPostButton: showPostButton,
