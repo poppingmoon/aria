@@ -16,6 +16,7 @@ abstract class AriaBackup with _$AriaBackup {
     GeneralSettings? generalSettings,
     List<String>? themes,
     Map<String, Map<String, String>>? aiscriptStorage,
+    List<Map<String, dynamic>>? noteDrafts,
   }) = _AriaBackup;
 
   factory AriaBackup.fromJson(Map<String, dynamic> json) =>

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AriaBackup {
 
- Map<String, dynamic>? get metadata; List<TabSettings>? get timelineTabs; Map<String, AccountSettings>? get accountSettings; GeneralSettings? get generalSettings; List<String>? get themes; Map<String, Map<String, String>>? get aiscriptStorage;
+ Map<String, dynamic>? get metadata; List<TabSettings>? get timelineTabs; Map<String, AccountSettings>? get accountSettings; GeneralSettings? get generalSettings; List<String>? get themes; Map<String, Map<String, String>>? get aiscriptStorage; List<Map<String, dynamic>>? get noteDrafts;
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AriaBackupCopyWith<AriaBackup> get copyWith => _$AriaBackupCopyWithImpl<AriaBac
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AriaBackup&&const DeepCollectionEquality().equals(other.metadata, metadata)&&const DeepCollectionEquality().equals(other.timelineTabs, timelineTabs)&&const DeepCollectionEquality().equals(other.accountSettings, accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other.themes, themes)&&const DeepCollectionEquality().equals(other.aiscriptStorage, aiscriptStorage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AriaBackup&&const DeepCollectionEquality().equals(other.metadata, metadata)&&const DeepCollectionEquality().equals(other.timelineTabs, timelineTabs)&&const DeepCollectionEquality().equals(other.accountSettings, accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other.themes, themes)&&const DeepCollectionEquality().equals(other.aiscriptStorage, aiscriptStorage)&&const DeepCollectionEquality().equals(other.noteDrafts, noteDrafts));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(metadata),const DeepCollectionEquality().hash(timelineTabs),const DeepCollectionEquality().hash(accountSettings),generalSettings,const DeepCollectionEquality().hash(themes),const DeepCollectionEquality().hash(aiscriptStorage));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(metadata),const DeepCollectionEquality().hash(timelineTabs),const DeepCollectionEquality().hash(accountSettings),generalSettings,const DeepCollectionEquality().hash(themes),const DeepCollectionEquality().hash(aiscriptStorage),const DeepCollectionEquality().hash(noteDrafts));
 
 @override
 String toString() {
-  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage)';
+  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage, noteDrafts: $noteDrafts)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AriaBackupCopyWith<$Res>  {
   factory $AriaBackupCopyWith(AriaBackup value, $Res Function(AriaBackup) _then) = _$AriaBackupCopyWithImpl;
 @useResult
 $Res call({
- Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage
+ Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage, List<Map<String, dynamic>>? noteDrafts
 });
 
 
@@ -65,7 +65,7 @@ class _$AriaBackupCopyWithImpl<$Res>
 
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? metadata = freezed,Object? timelineTabs = freezed,Object? accountSettings = freezed,Object? generalSettings = freezed,Object? themes = freezed,Object? aiscriptStorage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? metadata = freezed,Object? timelineTabs = freezed,Object? accountSettings = freezed,Object? generalSettings = freezed,Object? themes = freezed,Object? aiscriptStorage = freezed,Object? noteDrafts = freezed,}) {
   return _then(_self.copyWith(
 metadata: freezed == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,timelineTabs: freezed == timelineTabs ? _self.timelineTabs : timelineTabs // ignore: cast_nullable_to_non_nullable
@@ -73,7 +73,8 @@ as List<TabSettings>?,accountSettings: freezed == accountSettings ? _self.accoun
 as Map<String, AccountSettings>?,generalSettings: freezed == generalSettings ? _self.generalSettings : generalSettings // ignore: cast_nullable_to_non_nullable
 as GeneralSettings?,themes: freezed == themes ? _self.themes : themes // ignore: cast_nullable_to_non_nullable
 as List<String>?,aiscriptStorage: freezed == aiscriptStorage ? _self.aiscriptStorage : aiscriptStorage // ignore: cast_nullable_to_non_nullable
-as Map<String, Map<String, String>>?,
+as Map<String, Map<String, String>>?,noteDrafts: freezed == noteDrafts ? _self.noteDrafts : noteDrafts // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>?,
   ));
 }
 /// Create a copy of AriaBackup
@@ -170,10 +171,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AriaBackup() when $default != null:
-return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage);case _:
+return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
   return orElse();
 
 }
@@ -191,10 +192,10 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)  $default,) {final _that = this;
 switch (_that) {
 case _AriaBackup():
-return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage);case _:
+return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -211,10 +212,10 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)?  $default,) {final _that = this;
 switch (_that) {
 case _AriaBackup() when $default != null:
-return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage);case _:
+return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
   return null;
 
 }
@@ -226,7 +227,7 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 @JsonSerializable()
 
 class _AriaBackup implements AriaBackup {
-  const _AriaBackup({final  Map<String, dynamic>? metadata, final  List<TabSettings>? timelineTabs, final  Map<String, AccountSettings>? accountSettings, this.generalSettings, final  List<String>? themes, final  Map<String, Map<String, String>>? aiscriptStorage}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage;
+  const _AriaBackup({final  Map<String, dynamic>? metadata, final  List<TabSettings>? timelineTabs, final  Map<String, AccountSettings>? accountSettings, this.generalSettings, final  List<String>? themes, final  Map<String, Map<String, String>>? aiscriptStorage, final  List<Map<String, dynamic>>? noteDrafts}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage,_noteDrafts = noteDrafts;
   factory _AriaBackup.fromJson(Map<String, dynamic> json) => _$AriaBackupFromJson(json);
 
  final  Map<String, dynamic>? _metadata;
@@ -275,6 +276,15 @@ class _AriaBackup implements AriaBackup {
   return EqualUnmodifiableMapView(value);
 }
 
+ final  List<Map<String, dynamic>>? _noteDrafts;
+@override List<Map<String, dynamic>>? get noteDrafts {
+  final value = _noteDrafts;
+  if (value == null) return null;
+  if (_noteDrafts is EqualUnmodifiableListView) return _noteDrafts;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
@@ -289,16 +299,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AriaBackup&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&const DeepCollectionEquality().equals(other._timelineTabs, _timelineTabs)&&const DeepCollectionEquality().equals(other._accountSettings, _accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other._themes, _themes)&&const DeepCollectionEquality().equals(other._aiscriptStorage, _aiscriptStorage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AriaBackup&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&const DeepCollectionEquality().equals(other._timelineTabs, _timelineTabs)&&const DeepCollectionEquality().equals(other._accountSettings, _accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other._themes, _themes)&&const DeepCollectionEquality().equals(other._aiscriptStorage, _aiscriptStorage)&&const DeepCollectionEquality().equals(other._noteDrafts, _noteDrafts));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(_timelineTabs),const DeepCollectionEquality().hash(_accountSettings),generalSettings,const DeepCollectionEquality().hash(_themes),const DeepCollectionEquality().hash(_aiscriptStorage));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(_timelineTabs),const DeepCollectionEquality().hash(_accountSettings),generalSettings,const DeepCollectionEquality().hash(_themes),const DeepCollectionEquality().hash(_aiscriptStorage),const DeepCollectionEquality().hash(_noteDrafts));
 
 @override
 String toString() {
-  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage)';
+  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage, noteDrafts: $noteDrafts)';
 }
 
 
@@ -309,7 +319,7 @@ abstract mixin class _$AriaBackupCopyWith<$Res> implements $AriaBackupCopyWith<$
   factory _$AriaBackupCopyWith(_AriaBackup value, $Res Function(_AriaBackup) _then) = __$AriaBackupCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage
+ Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage, List<Map<String, dynamic>>? noteDrafts
 });
 
 
@@ -326,7 +336,7 @@ class __$AriaBackupCopyWithImpl<$Res>
 
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? metadata = freezed,Object? timelineTabs = freezed,Object? accountSettings = freezed,Object? generalSettings = freezed,Object? themes = freezed,Object? aiscriptStorage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? metadata = freezed,Object? timelineTabs = freezed,Object? accountSettings = freezed,Object? generalSettings = freezed,Object? themes = freezed,Object? aiscriptStorage = freezed,Object? noteDrafts = freezed,}) {
   return _then(_AriaBackup(
 metadata: freezed == metadata ? _self._metadata : metadata // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,timelineTabs: freezed == timelineTabs ? _self._timelineTabs : timelineTabs // ignore: cast_nullable_to_non_nullable
@@ -334,7 +344,8 @@ as List<TabSettings>?,accountSettings: freezed == accountSettings ? _self._accou
 as Map<String, AccountSettings>?,generalSettings: freezed == generalSettings ? _self.generalSettings : generalSettings // ignore: cast_nullable_to_non_nullable
 as GeneralSettings?,themes: freezed == themes ? _self._themes : themes // ignore: cast_nullable_to_non_nullable
 as List<String>?,aiscriptStorage: freezed == aiscriptStorage ? _self._aiscriptStorage : aiscriptStorage // ignore: cast_nullable_to_non_nullable
-as Map<String, Map<String, String>>?,
+as Map<String, Map<String, String>>?,noteDrafts: freezed == noteDrafts ? _self._noteDrafts : noteDrafts // ignore: cast_nullable_to_non_nullable
+as List<Map<String, dynamic>>?,
   ));
 }
 
