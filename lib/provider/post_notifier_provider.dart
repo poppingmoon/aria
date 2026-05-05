@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 
-import 'package:isar_community/isar.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -15,7 +14,6 @@ import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
-import '../model/database/note_draft.dart' as db;
 import '../model/tab_settings.dart';
 import '../util/extract_mentions.dart';
 import '../util/punycode.dart';
@@ -24,7 +22,7 @@ import 'api/channel_notifier_provider.dart';
 import 'api/endpoints_notifier_provider.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
-import 'isar_provider.dart';
+import 'note_draft_repository_provider.dart';
 import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
 import 'parsed_mfm_provider.dart';
@@ -169,44 +167,21 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<NoteDraft?> _loadDraft(TabSettings? tabSettings) async {
-    final isar = await ref.read(isarProvider.future);
-    if (tabSettings?.id case final tabId?) {
-      final draft = await isar.noteDrafts
-          .where()
-          .tabIdEqualTo(tabId)
-          .findFirst();
-      if (draft != null) {
-        try {
-          return NoteDraft.fromJson(
-            jsonDecode(draft.draft) as Map<String, dynamic>,
-          );
-        } catch (_) {}
-      }
-    } else {
-      final draft = await isar.noteDrafts
-          .where()
-          .tabIdIsNull()
-          .filter()
-          .accountEqualTo(account.toString())
-          .replyIdIsNull()
-          .renoteIdIsNull()
-          .channelIdIsNull()
-          .findFirst();
-      if (draft != null) {
-        try {
-          return NoteDraft.fromJson(
-            jsonDecode(draft.draft) as Map<String, dynamic>,
-          );
-        } catch (_) {}
-      }
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(
+      account: account,
+      tabId: tabSettings?.id,
+    );
+    if (draft != null) {
+      return draft;
     }
 
     // Fallback for older format.
-    final draft = ref.read(sharedPreferencesProvider).getString(_key);
-    if (draft != null) {
+    final oldDraft = ref.read(sharedPreferencesProvider).getString(_key);
+    if (oldDraft != null) {
       try {
         final request = NotesCreateRequest.fromJson(
-          jsonDecode(draft) as Map<String, dynamic>,
+          jsonDecode(oldDraft) as Map<String, dynamic>,
         );
         return request.toNoteDraft(i: _i);
       } catch (_) {}
@@ -220,33 +195,32 @@ class PostNotifier extends _$PostNotifier {
     if (account.isGuest || noteId != null) {
       return;
     }
-    final isar = await ref.read(isarProvider.future);
-    final draft = db.NoteDraft()
-      ..account = account.toString()
-      ..draft = jsonEncode(state.copyWith(createdAt: DateTime.now()).toJson());
-    if (state.replyId case final replyId?) {
-      draft
-        ..replyId = replyId
-        ..renoteId = state.renoteId
-        ..setId();
-    } else if (state.renoteId case final renoteId?) {
-      draft
-        ..renoteId = renoteId
-        ..setId();
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    if (state.replyId != null || state.renoteId != null) {
+      await repo.saveDraft(
+        account: account,
+        replyId: state.replyId,
+        renoteId: state.renoteId,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
     } else if (state.channelId != tabSettings?.channelId) {
-      draft
-        ..channelId = state.channelId
-        ..setId();
+      await repo.saveDraft(
+        account: account,
+        channelId: state.channelId,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
     } else if (tabSettings != null && tabSettings.account == account) {
-      draft
-        ..tabId = tabSettings.id
-        ..setId();
+      await repo.saveDraft(
+        account: account,
+        tabId: tabSettings.id,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
     } else {
-      draft.setId();
+      await repo.saveDraft(
+        account: account,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
     }
-    await isar.writeTxn(() async {
-      await isar.noteDrafts.put(draft);
-    });
   }
 
   Future<void> save() async {
@@ -356,63 +330,26 @@ class PostNotifier extends _$PostNotifier {
     _saveScheduled = false;
     _timer?.cancel();
     final draft = state;
+    final tabSettings = _tabSettings;
     state = _getDefaultDraft(
-      _tabSettings,
-    ).copyWith(hashtag: keepHashtag ? state.hashtag : null);
+      tabSettings,
+    ).copyWith(hashtag: keepHashtag ? draft.hashtag : null);
 
-    final isar = await ref.read(isarProvider.future);
-    if (draft.replyId case final replyId?) {
-      await isar.writeTxn(() async {
-        await isar.noteDrafts
-            .where()
-            .accountEqualTo(account.toString())
-            .filter()
-            .replyIdEqualTo(replyId)
-            .isPinnedEqualTo(false)
-            .deleteFirst();
-      });
-    } else if (draft.renoteId case final renoteId?) {
-      await isar.writeTxn(() async {
-        await isar.noteDrafts
-            .where()
-            .accountEqualTo(account.toString())
-            .filter()
-            .renoteIdEqualTo(renoteId)
-            .isPinnedEqualTo(false)
-            .deleteFirst();
-      });
-    } else if (draft.channelId case final channelId?) {
-      await isar.writeTxn(() async {
-        await isar.noteDrafts
-            .where()
-            .accountEqualTo(account.toString())
-            .filter()
-            .channelIdEqualTo(channelId)
-            .isPinnedEqualTo(false)
-            .deleteFirst();
-      });
-    } else if (_tabSettings case final tabSettings?
-        when tabSettings.account == account) {
-      await isar.writeTxn(() async {
-        await isar.noteDrafts
-            .where()
-            .tabIdEqualTo(tabSettings.id)
-            .deleteFirst();
-      });
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    if (draft.replyId != null || draft.renoteId != null) {
+      await repo.deleteDraft(
+        account: account,
+        replyId: draft.replyId,
+        renoteId: draft.renoteId,
+      );
+    } else if (draft.channelId != tabSettings?.channelId) {
+      await repo.deleteDraft(account: account, channelId: draft.channelId);
+    } else if (tabSettings != null && tabSettings.account == account) {
+      await repo.deleteDraft(account: account, tabId: tabSettings.id);
     } else {
-      await isar.writeTxn(() async {
-        await isar.noteDrafts
-            .where()
-            .tabIdIsNull()
-            .filter()
-            .accountEqualTo(account.toString())
-            .replyIdIsNull()
-            .renoteIdIsNull()
-            .channelIdIsNull()
-            .isPinnedEqualTo(false)
-            .deleteFirst();
-      });
+      await repo.deleteDraft(account: account);
     }
+
     await ref.read(sharedPreferencesProvider).remove(_key);
   }
 
@@ -585,21 +522,11 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
-    final isar = await ref.read(isarProvider.future);
-    final draft = await isar.noteDrafts
-        .where()
-        .accountEqualTo(account.toString())
-        .filter()
-        .replyIdEqualTo(reply.id)
-        .findFirst();
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, replyId: reply.id);
     if (draft != null) {
       await save();
-      try {
-        state = NoteDraft.fromJson(
-          jsonDecode(draft.draft) as Map<String, dynamic>,
-        );
-        return;
-      } catch (_) {}
+      state = draft;
     }
 
     final visibility = reply.channelId != null
@@ -724,21 +651,11 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
-    final isar = await ref.read(isarProvider.future);
-    final draft = await isar.noteDrafts
-        .where()
-        .accountEqualTo(account.toString())
-        .filter()
-        .renoteIdEqualTo(renote.id)
-        .findFirst();
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, renoteId: renote.id);
     if (draft != null) {
       await save();
-      try {
-        state = NoteDraft.fromJson(
-          jsonDecode(draft.draft) as Map<String, dynamic>,
-        );
-        return;
-      } catch (_) {}
+      state = draft;
     }
 
     final visibility = NoteVisibility.min(
@@ -800,21 +717,11 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
-    final isar = await ref.read(isarProvider.future);
-    final draft = await isar.noteDrafts
-        .where()
-        .accountEqualTo(account.toString())
-        .filter()
-        .channelIdEqualTo(channel.id)
-        .findFirst();
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, channelId: channel.id);
     if (draft != null) {
       await save();
-      try {
-        state = NoteDraft.fromJson(
-          jsonDecode(draft.draft) as Map<String, dynamic>,
-        );
-        return;
-      } catch (_) {}
+      state = draft;
     }
 
     state = state.copyWith(
