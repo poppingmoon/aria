@@ -41,6 +41,7 @@ import '../../util/punycode.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/note_drafts_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
+import '../dialog/scheduled_notes_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import '../page/channel/channels_page.dart';
 import 'account_preview.dart';
@@ -1169,7 +1170,10 @@ class _PostFormHeader extends HookConsumerWidget {
             ),
             if (canScheduleNote)
               PopupMenuItem(
-                onTap: () => context.push('/$account/scheduled-notes'),
+                onTap: () => showDialog<void>(
+                  context: context,
+                  builder: (context) => ScheduledNotesDialog(account: account),
+                ),
                 child: ListTile(
                   leading: const Icon(Icons.schedule),
                   title: Text(t.misskey.drafts_.listScheduledNotes),

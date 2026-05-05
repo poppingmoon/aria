@@ -14,7 +14,10 @@ final scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily._();
 
 final class ScheduledNotesNotifierProvider
     extends
-        $StreamNotifierProvider<ScheduledNotesNotifier, PaginationState<Note>> {
+        $StreamNotifierProvider<
+          ScheduledNotesNotifier,
+          PaginationState<NoteDraft>
+        > {
   ScheduledNotesNotifierProvider._({
     required ScheduledNotesNotifierFamily super.from,
     required Account super.argument,
@@ -53,15 +56,15 @@ final class ScheduledNotesNotifierProvider
 }
 
 String _$scheduledNotesNotifierHash() =>
-    r'df28d87ba1e8cd0939b17884d60a124809f551ab';
+    r'e7827f7c94e65e2501a66df259cc41eb679bccb9';
 
 final class ScheduledNotesNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           ScheduledNotesNotifier,
-          AsyncValue<PaginationState<Note>>,
-          PaginationState<Note>,
-          Stream<PaginationState<Note>>,
+          AsyncValue<PaginationState<NoteDraft>>,
+          PaginationState<NoteDraft>,
+          Stream<PaginationState<NoteDraft>>,
           Account
         > {
   ScheduledNotesNotifierFamily._()
@@ -81,25 +84,28 @@ final class ScheduledNotesNotifierFamily extends $Family
 }
 
 abstract class _$ScheduledNotesNotifier
-    extends $StreamNotifier<PaginationState<Note>> {
+    extends $StreamNotifier<PaginationState<NoteDraft>> {
   late final _$args = ref.$arg as Account;
   Account get account => _$args;
 
-  Stream<PaginationState<Note>> build(Account account);
+  Stream<PaginationState<NoteDraft>> build(Account account);
   @$mustCallSuper
   @override
   void runBuild() {
     final ref =
         this.ref
-            as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
+            as $Ref<
+              AsyncValue<PaginationState<NoteDraft>>,
+              PaginationState<NoteDraft>
+            >;
     final element =
         ref.element
             as $ClassProviderElement<
               AnyNotifier<
-                AsyncValue<PaginationState<Note>>,
-                PaginationState<Note>
+                AsyncValue<PaginationState<NoteDraft>>,
+                PaginationState<NoteDraft>
               >,
-              AsyncValue<PaginationState<Note>>,
+              AsyncValue<PaginationState<NoteDraft>>,
               Object?,
               Object?
             >;
