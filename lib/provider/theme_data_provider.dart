@@ -113,6 +113,9 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       foregroundColor: colors.fgOnAccent,
       backgroundColor: colors.accent,
     ),
+    popupMenuTheme: PopupMenuThemeData(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+    ),
     sliderTheme: const SliderThemeData(
       showValueIndicator: ShowValueIndicator.onDrag,
       // Opting into the new appearance.

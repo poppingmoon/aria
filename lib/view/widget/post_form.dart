@@ -39,6 +39,7 @@ import '../../util/future_with_dialog.dart';
 import '../../util/pick_date_time.dart';
 import '../../util/punycode.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/note_drafts_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import '../page/channel/channels_page.dart';
@@ -1154,6 +1155,16 @@ class _PostFormHeader extends HookConsumerWidget {
               child: ListTile(
                 leading: const Icon(Icons.swap_vert),
                 title: Text(t.aria.swapCw),
+              ),
+            ),
+            PopupMenuItem(
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => NoteDraftsDialog(account: account),
+              ),
+              child: ListTile(
+                leading: const Icon(Icons.notes),
+                title: Text(t.misskey.drafts_.listDrafts),
               ),
             ),
             if (canScheduleNote)

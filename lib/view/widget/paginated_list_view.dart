@@ -75,21 +75,21 @@ class PaginatedListView<T> extends HookConsumerWidget {
                       bottom: index == items.length - 1 ? 8.0 : 0.0,
                     ),
                     width: maxContentWidth,
-                    child: Material(
-                      color: panel
-                          ? Theme.of(context).colorScheme.surface
-                          : null,
-                      borderRadius: BorderRadius.vertical(
-                        top: panel && index == 0
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                        bottom: panel && index == items.length - 1
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                      child: itemBuilder(context, items[index]),
-                    ),
+                    child: panel
+                        ? Material(
+                            color: Theme.of(context).colorScheme.surface,
+                            borderRadius: BorderRadius.vertical(
+                              top: index == 0
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
+                              bottom: index == items.length - 1
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: itemBuilder(context, items[index]),
+                          )
+                        : itemBuilder(context, items[index]),
                   ),
                 ),
                 separatorBuilder: (context, index) => Center(
