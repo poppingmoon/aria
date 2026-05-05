@@ -261,33 +261,23 @@ class PostNotifier extends _$PostNotifier {
     }
   }
 
-  Future<String> _getNoteIdFromRemoteNote(
-    Account origin,
-    Note remoteNote,
-  ) async {
+  Future<Note> _getNoteFromRemoteNote(Account origin, Note remoteNote) async {
     final remoteUrl = remoteNote.url ?? remoteNote.uri;
     if (account.host == remoteNote.user.host && remoteUrl != null) {
       final remoteNoteId = remoteUrl.pathSegments.last;
-      if (ref.read(noteNotifierProvider(account, remoteNoteId)) != null) {
-        return remoteNoteId;
-      }
-      try {
-        await ref
-            .read(notesNotifierProvider(account).notifier)
-            .show(remoteNoteId);
-      } catch (_) {}
-      return remoteNoteId;
+      return ref.read(noteNotifierProvider(account, remoteNoteId)) ??
+          await ref
+              .read(notesNotifierProvider(account).notifier)
+              .show(remoteNoteId);
     }
     final response = await _misskey.ap.show(
       ApShowRequest(
         uri: remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'),
       ),
     );
-    try {
-      final note = Note.fromJson(response.object);
-      ref.read(notesNotifierProvider(account).notifier).add(note);
-    } catch (_) {}
-    return response.object['id'] as String;
+    final note = Note.fromJson(response.object);
+    ref.read(notesNotifierProvider(account).notifier).add(note);
+    return note;
   }
 
   Future<void> fromDraft(NoteDraft draft, Account origin) async {
@@ -314,24 +304,24 @@ class PostNotifier extends _$PostNotifier {
         user: i?.toUserLite() ?? draft.user,
       );
     } else {
-      final reply = switch (draft.replyId) {
+      final originReply = switch (draft.replyId) {
         final replyId? => ref.read(noteNotifierProvider(origin, replyId)),
         _ => null,
       };
-      String? replyId;
-      if (reply != null && !reply.localOnly) {
+      Note? reply;
+      if (originReply != null && !originReply.localOnly) {
         try {
-          replyId = await _getNoteIdFromRemoteNote(origin, reply);
+          reply = await _getNoteFromRemoteNote(origin, originReply);
         } catch (_) {}
       }
-      final renote = switch (draft.renoteId) {
+      final originRenote = switch (draft.renoteId) {
         final renoteId? => ref.read(noteNotifierProvider(origin, renoteId)),
         _ => null,
       };
-      String? renoteId;
-      if (renote != null && !renote.localOnly) {
+      Note? renote;
+      if (originRenote != null && !originRenote.localOnly) {
         try {
-          renoteId = await _getNoteIdFromRemoteNote(origin, renote);
+          renote = await _getNoteFromRemoteNote(origin, originRenote);
         } catch (_) {}
       }
       final poll = draft.poll;
@@ -339,10 +329,14 @@ class PostNotifier extends _$PostNotifier {
         userId: i?.id ?? draft.id,
         user: i?.toUserLite() ?? draft.user,
         visibleUserIds: null,
-        replyId: replyId,
-        renoteId: renoteId,
+        replyId: reply?.id,
+        reply: reply,
+        renoteId: renote?.id,
+        renote: renote,
         channelId: null,
+        channel: null,
         fileIds: null,
+        files: null,
         poll: poll?.copyWith(
           expiresAt: poll.expiresAt?.isAfter(DateTime.now()) ?? false
               ? poll.expiresAt
