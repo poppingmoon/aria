@@ -52,6 +52,7 @@ class RenoteUsersSheet extends ConsumerWidget {
               loadMore: (skipError) => ref
                   .read(renotesNotifierProvider(account, noteId).notifier)
                   .loadMore(skipError: skipError),
+              noItemsLabel: t.misskey.noUsers,
             ),
           ),
         ],
