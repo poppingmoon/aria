@@ -95,7 +95,6 @@ class PostForm extends HookConsumerWidget {
     Account account,
     String? noteId,
   ) async {
-    final draft = ref.read(postNotifierProvider(account, noteId: noteId));
     final attaches = ref.read(
       attachesNotifierProvider(account, noteId: noteId),
     );
@@ -112,18 +111,20 @@ class PostForm extends HookConsumerWidget {
           )
         : null;
     if (hasFiles && files == null) return;
+    ref
+        .read(postNotifierProvider(account, noteId: noteId).notifier)
+        .setFiles(files);
+    final draft = ref.read(postNotifierProvider(account, noteId: noteId));
     if (!ref.context.mounted) return;
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final confirmed = await confirmPost(ref, account, draft, files: files);
+      final confirmed = await confirmPost(ref, account, draft);
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
     final result = await futureWithDialog(
       ref.context,
-      ref
-          .read(postNotifierProvider(account, noteId: noteId).notifier)
-          .post(fileIds: files?.map((file) => file.id).toList()),
+      ref.read(postNotifierProvider(account, noteId: noteId).notifier).post(),
     );
     if (!ref.context.mounted) return;
     if (result case final note?) {
@@ -292,6 +293,18 @@ class PostForm extends HookConsumerWidget {
         }
       },
     );
+    ref.listen(attachesNotifierProvider(account.value, noteId: noteId), (
+      _,
+      attaches,
+    ) {
+      ref
+          .read(postNotifierProvider(account.value, noteId: noteId).notifier)
+          .setFiles(
+            attaches
+                .map((file) => file is DrivePostFile ? file.file : null)
+                .nonNulls,
+          );
+    });
     useEffect(() {
       final visibleUserIds = draft.visibleUserIds;
       if (visibleUserIds != null && visibleUserIds.isNotEmpty) {
@@ -1126,10 +1139,14 @@ class _PostFormHeader extends HookConsumerWidget {
               onTap: () {
                 final text = draft.text;
                 ref
-                    .read(postNotifierProvider(account).notifier)
+                    .read(
+                      postNotifierProvider(account, noteId: noteId).notifier,
+                    )
                     .setText(draft.cw);
                 ref
-                    .read(postNotifierProvider(account).notifier)
+                    .read(
+                      postNotifierProvider(account, noteId: noteId).notifier,
+                    )
                     .setCw(text?.replaceAll('\n', ' '));
                 useCw.value = true;
               },
@@ -1156,8 +1173,18 @@ class _PostFormHeader extends HookConsumerWidget {
                 if (!context.mounted) return;
                 if (confirmed) {
                   await ref
-                      .read(postNotifierProvider(account).notifier)
+                      .read(
+                        postNotifierProvider(account, noteId: noteId).notifier,
+                      )
                       .reset();
+                  ref
+                      .read(
+                        attachesNotifierProvider(
+                          account,
+                          noteId: noteId,
+                        ).notifier,
+                      )
+                      .removeAll();
                 }
               },
               child: ListTile(

@@ -422,8 +422,7 @@ class PostNotifier extends _$PostNotifier {
     await ref.read(sharedPreferencesProvider).remove(_key);
   }
 
-  Future<Note> post({List<String>? fileIds}) async {
-    final draft = state.copyWith(fileIds: fileIds);
+  Future<Note> post() async {
     if (noteId case final noteId?) {
       List<String>? endpoints;
       try {
@@ -433,51 +432,51 @@ class PostNotifier extends _$PostNotifier {
         );
       } catch (_) {}
       if (endpoints?.contains('notes/update') ?? true) {
-        await _misskey.notes.update(draft.toNotesUpdateRequest(noteId));
-        final note = draft.toNote().copyWith(id: noteId);
+        await _misskey.notes.update(state.toNotesUpdateRequest(noteId));
+        final note = state.toNote().copyWith(id: noteId);
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
         final response = await _misskey.notes.edit(
-          draft.toNotesEditRequest(noteId),
+          state.toNotesEditRequest(noteId),
         );
         ref.read(notesNotifierProvider(account).notifier).add(response);
         return response;
       }
     } else {
-      if (draft.scheduledAt != null) {
+      if (state.scheduledAt != null) {
         MeDetailed? i = _i;
         try {
           // ignore: only_use_keep_alive_inside_keep_alive
           i ??= await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
-          await _misskey.notes.create(draft.toNotesCreateRequest());
+          await _misskey.notes.create(state.toNotesCreateRequest());
           unawaited(reset(keepHashtag: true));
-          return draft.toNote();
+          return state.toNote();
         } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
             when scheduleNoteMax > 0) {
           await _misskey.notes.schedule.create(
-            draft.toNotesScheduleCreateRequest(),
+            state.toNotesScheduleCreateRequest(),
           );
           unawaited(reset(keepHashtag: true));
-          return draft.toNote();
+          return state.toNote();
         } else {
           final response = await _misskey.notes.drafts.create(
-            draft.toNotesDraftsCreateRequest(),
+            state.toNotesDraftsCreateRequest(),
           );
           unawaited(reset(keepHashtag: true));
           return response.createdDraft.toNote();
         }
       }
       final response = await _misskey.notes.create(
-        draft.toNotesCreateRequest(),
+        state.toNotesCreateRequest(),
       );
       if (response != null) {
         ref.read(notesNotifierProvider(account).notifier).add(response);
       }
       unawaited(reset(keepHashtag: true));
-      return response ?? draft.toNote();
+      return response ?? state.toNote();
     }
   }
 
@@ -883,6 +882,19 @@ class PostNotifier extends _$PostNotifier {
       state = state.copyWith(hashtag: hashtag);
     } else {
       return;
+    }
+    _scheduleSave();
+  }
+
+  void setFiles(Iterable<DriveFile>? files) {
+    if (files == null || files.isEmpty) {
+      if (state.fileIds == null) return;
+      state = state.copyWith(fileIds: null, files: null);
+    } else {
+      state = state.copyWith(
+        fileIds: files.map((file) => file.id).toList(),
+        files: files.toList(),
+      );
     }
     _scheduleSave();
   }

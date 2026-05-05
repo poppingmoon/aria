@@ -21,9 +21,8 @@ import '../widget/note_widget.dart';
 Future<bool> confirmPost(
   WidgetRef ref,
   Account account,
-  NoteDraft draft, {
-  List<DriveFile>? files,
-}) async {
+  NoteDraft draft,
+) async {
   if (draft.replyId case final replyId?) {
     final reply = ref.read(noteNotifierProvider(account, replyId));
     if (reply == null) {
@@ -54,11 +53,8 @@ Future<bool> confirmPost(
   }
   final result = await showDialog<bool>(
     context: ref.context,
-    builder: (context) => PostConfirmationDialog(
-      account: account,
-      draft: draft,
-      files: files ?? [],
-    ),
+    builder: (context) =>
+        PostConfirmationDialog(account: account, draft: draft),
   );
   return result ?? false;
 }
@@ -68,12 +64,10 @@ class PostConfirmationDialog extends ConsumerWidget {
     super.key,
     required this.account,
     required this.draft,
-    required this.files,
   });
 
   final Account account;
   final NoteDraft draft;
-  final List<DriveFile> files;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -114,9 +108,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    draft.isRenote && files.isEmpty
-                        ? t.aria.renoteConfirm
-                        : t.aria.postConfirm,
+                    draft.isRenote ? t.aria.renoteConfirm : t.aria.postConfirm,
                     style: theme.textTheme.titleMedium,
                   ),
                 ),
@@ -149,7 +141,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                     ),
                   ),
                 ),
-              if (draft.isRenote && files.isEmpty)
+              if (draft.isRenote)
                 NoteWidget(
                   account: account,
                   noteId: draft.renoteId!,
@@ -160,7 +152,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                 NoteWidget(
                   account: account,
                   noteId: '',
-                  note: note.copyWith(files: files),
+                  note: note,
                   showFooter: false,
                   backgroundColor: Colors.transparent,
                 ),
