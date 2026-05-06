@@ -102,12 +102,17 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 62a4df4aaca142f7146608f15a65c0523a5b00a1
+      ref: 05cd06feefdfccd61555248f739acda8f46403d3
+  mobile_scanner:
+    git:
+      url: https://github.com/poppingmoon/mobile_scanner
+      ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
   multi_split_view: ^3.6.1
   package_info_plus: ^9.0.1
   path: ^1.9.1
   path_provider: ^2.1.5
   photo_view: ^0.15.0
+  pretty_qr_code: ^3.6.0
   punycode: ^1.0.0
   receive_sharing_intent:
     git:
@@ -118,6 +123,8 @@ dependencies:
   riverpod_annotation: ^4.0.2
   rust_lib_aria:
     path: rust_builder
+  screen_brightness: ^2.1.7
+  sensors_plus: ^7.0.0
   share_plus: ^12.0.2
   shared_preferences: ^2.5.5
   shared_preferences_platform_interface: ^2.4.2

@@ -14,14 +14,14 @@ Future<void> lookup(WidgetRef ref, Account account, String query) async {
   } else if (query.startsWith(RegExp('https?://'))) {
     final url = Uri.tryParse(query);
     if (url == null) return;
-    if (url.host == account.host) {
+    if (url.authority == account.host) {
       await navigate(ref, account, query);
     } else {
       try {
         final response = await ref
             .read(misskeyProvider(account))
             .ap
-            .show(ApShowRequest(uri: url));
+            .show(ApShowRequest(uri: url.toString()));
         if (!ref.context.mounted) return;
         if (response.type == 'User') {
           await ref.context.push('/$account/users/${response.object['id']}');

@@ -12,6 +12,8 @@ PODS:
   - OrderedSet (6.0.3)
   - rust_lib_aria (0.0.1):
     - FlutterMacOS
+  - screen_brightness_macos (0.1.0):
+    - FlutterMacOS
   - screen_retriever_macos (0.0.1):
     - FlutterMacOS
   - webcrypto (0.1.1):
@@ -25,6 +27,7 @@ DEPENDENCIES:
   - image_editor_common (from `Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos`)
   - isar_community_flutter_libs (from `Flutter/ephemeral/.symlinks/plugins/isar_community_flutter_libs/macos`)
   - rust_lib_aria (from `Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos`)
+  - screen_brightness_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_brightness_macos/macos`)
   - screen_retriever_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos`)
   - webcrypto (from `Flutter/ephemeral/.symlinks/plugins/webcrypto/darwin`)
 
@@ -45,6 +48,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/isar_community_flutter_libs/macos
   rust_lib_aria:
     :path: Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos
+  screen_brightness_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/screen_brightness_macos/macos
   screen_retriever_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos
   webcrypto:
@@ -58,6 +63,7 @@ SPEC CHECKSUMS:
   isar_community_flutter_libs: 8f2a1bdaae8c53ef898270dbdc06c80b277be8ae
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34
+  screen_brightness_macos: 2d6d3af2165592d9a55ffcd95b7550970e41ebda
   screen_retriever_macos: 776e0fa5d42c6163d2bf772d22478df4b302b161
   webcrypto: aa788ff6b0a956e5d6e613b35b99c13e220ca2d0
 

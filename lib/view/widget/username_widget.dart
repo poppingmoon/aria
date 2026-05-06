@@ -14,6 +14,7 @@ class UsernameWidget extends StatelessWidget {
     this.trailingSpans,
     this.builder,
     this.style,
+    this.textAlign,
     this.overflow,
     this.maxLines,
   });
@@ -24,6 +25,7 @@ class UsernameWidget extends StatelessWidget {
   final List<InlineSpan>? trailingSpans;
   final Widget Function(BuildContext context, InlineSpan span)? builder;
   final TextStyle? style;
+  final TextAlign? textAlign;
   final TextOverflow? overflow;
   final int? maxLines;
 
@@ -39,6 +41,7 @@ class UsernameWidget extends StatelessWidget {
       style: style,
       emojis: user.emojis,
       author: user,
+      textAlign: textAlign,
       overflow: overflow,
       maxLines: maxLines,
     );

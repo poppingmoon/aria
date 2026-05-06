@@ -17,10 +17,16 @@ import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class UserInfo extends ConsumerWidget {
-  const UserInfo({super.key, required this.account, required this.user});
+  const UserInfo({
+    super.key,
+    required this.account,
+    required this.user,
+    this.shape,
+  });
 
   final Account account;
   final UserDetailed user;
+  final ShapeBorder? shape;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +39,7 @@ class UserInfo extends ConsumerWidget {
 
     return Card.filled(
       color: Theme.of(context).colorScheme.surface,
+      shape: shape,
       margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
       child: InkWell(

@@ -59,6 +59,8 @@
 	<string>To take photos or videos, please allow access to your camera.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>To record audio files, please allow access to your microphone.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>To detect orientation of the device, please allow access to your sensor.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To download files, please allow access to your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

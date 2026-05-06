@@ -793,6 +793,23 @@ class ProfilePage extends HookConsumerWidget {
                 ),
               ),
             ),
+            const Divider(),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
+                  leading: const Icon(Icons.qr_code_rounded),
+                  title: Text(t.misskey.qr),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () => context.push('/$account/qr'),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  tileColor: colors.panel,
+                ),
+              ),
+            ),
             const SizedBox(height: 120.0),
           ],
         ),
