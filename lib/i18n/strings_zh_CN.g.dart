@@ -204,7 +204,10 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	]);
 	@override String get pasteResponseBelow => '粘贴下面的回复';
 	@override String get permissionDeniedErrorDescription => '您的访问令牌没有执行此操作的权限。请重新登录。';
+	@override String get pin => '置顶';
 	@override String get pinToEmojiPicker => '固定到表情选择器';
+	@override String get pinned => '已置顶';
+	@override String get pinnedDraft => '置顶草稿';
 	@override String get playAudio => '播放音频';
 	@override String get playVideo => '播放视频';
 	@override String get pleaseCopyResponse => '请复制此回复';
@@ -232,6 +235,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		const TextSpan(text: ' 自己转发了'),
 	]);
 	@override String get sendMessageConfirm => '你确定要发送这条消息吗？';
+	@override String get server => '服务器';
 	@override String get serverUrl => '服务器地址';
 	@override String get settingsFileForAria => 'Aria 的设置文件';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -246,6 +250,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showExpandedImage => '显示扩展图像';
 	@override String get showGapBetweenNotesInTimeline => '在帖子之间添加间隔';
 	@override String get showImage => '查看图片';
+	@override String get showImageInNotification => '在通知中显示图片';
 	@override String get showLikeButtonInNoteFooter => '在帖子菜单中添加喜欢按钮';
 	@override String get showMenuButtonInTabBar => '在标签栏中显示菜单按钮';
 	@override String get showNote => '查看帖子';
