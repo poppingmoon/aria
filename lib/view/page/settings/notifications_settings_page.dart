@@ -8,11 +8,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';
-import 'package:uuid/uuid.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../../../constant/max_content_width.dart';
-import '../../../constant/misskey_web_push_proxy_url.dart';
+import '../../../constant/web_push_proxy_url.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
@@ -32,11 +31,8 @@ class NotificationsSettingsPage extends ConsumerWidget {
   final Account account;
 
   Future<void> _subscribe(WidgetRef ref) async {
-    final id = const Uuid().v4();
     final String endpoint;
     ({String auth, String publicKey})? publicKeySet;
-    String? fcmToken;
-    String? apnsToken;
 
     // Request permissions and get the endpoint and the token.
     if (defaultTargetPlatform == TargetPlatform.android) {
@@ -98,7 +94,6 @@ class NotificationsSettingsPage extends ConsumerWidget {
         return;
       }
 
-      endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
       final completer = Completer<String>();
 
       void callback() {
@@ -110,12 +105,13 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
       callback();
       connector.token.addListener(callback);
-      apnsToken = await futureWithDialog(
+      final apnsToken = await futureWithDialog(
         ref.context,
         completer.future.timeout(const Duration(seconds: 10)),
       );
       connector.token.removeListener(callback);
       if (apnsToken == null) return;
+      endpoint = '$webPushProxyUrl/apns/$account/$apnsToken';
     }
 
     WebPushKeySet? keySet;
@@ -159,13 +155,7 @@ class NotificationsSettingsPage extends ConsumerWidget {
       ref.context,
       ref
           .read(pushSubscriptionNotifierProvider(account).notifier)
-          .subscribe(
-            id: id,
-            fcmToken: fcmToken,
-            apnsToken: apnsToken,
-            keySet: keySet,
-            response: response,
-          ),
+          .subscribe(keySet: keySet, response: response),
     );
 
     if (defaultTargetPlatform == TargetPlatform.android) {

@@ -60,7 +60,7 @@ final class PushSubscriptionNotifierProvider
 }
 
 String _$pushSubscriptionNotifierHash() =>
-    r'f5c3380f0dfbf57b9723b4551e8ee46882588d76';
+    r'04966a4c91b04bfe8dcf8179e18654a482109fad';
 
 final class PushSubscriptionNotifierFamily extends $Family
     with
