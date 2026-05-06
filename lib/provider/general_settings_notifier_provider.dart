@@ -462,6 +462,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowImageInNotification(bool showImageInNotification) async {
+    state = state.copyWith(showImageInNotification: showImageInNotification);
+    await _save();
+  }
+
   Future<void> setShowEmojiInReactionNotification(
     bool showEmojiInReactionNotification,
   ) async {

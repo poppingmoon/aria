@@ -335,13 +335,33 @@ class AppearancePage extends HookConsumerWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
                   child: SwitchListTile(
+                    title: Text(t.aria.showImageInNotification),
+                    value: settings.showImageInNotification,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowImageInNotification(value),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.aria.showEmojiInReactionNotification),
                     value: settings.showEmojiInReactionNotification,
                     onChanged: (value) => ref
                         .read(generalSettingsNotifierProvider.notifier)
                         .setShowEmojiInReactionNotification(value),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
+                      ),
                     ),
                   ),
                 ),

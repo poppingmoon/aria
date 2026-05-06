@@ -128,6 +128,7 @@ _GeneralSettings _$GeneralSettingsFromJson(
       json['showSmallTimelinesPageButtons'] as bool? ?? false,
   showSquaredTimelinesPageButtons:
       json['showSquaredTimelinesPageButtons'] as bool? ?? false,
+  showImageInNotification: json['showImageInNotification'] as bool? ?? true,
   showEmojiInReactionNotification:
       json['showEmojiInReactionNotification'] as bool? ?? false,
   enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
@@ -272,6 +273,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
       .toList(),
   'showSmallTimelinesPageButtons': instance.showSmallTimelinesPageButtons,
   'showSquaredTimelinesPageButtons': instance.showSquaredTimelinesPageButtons,
+  'showImageInNotification': instance.showImageInNotification,
   'showEmojiInReactionNotification': instance.showEmojiInReactionNotification,
   'enableInfiniteScroll': instance.enableInfiniteScroll,
   'keepScreenOn': instance.keepScreenOn,

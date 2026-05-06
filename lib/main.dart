@@ -688,7 +688,7 @@ class Aria extends HookConsumerWidget {
             _ => null,
           };
           File? file;
-          if (url != null) {
+          if (url != null && generalSettings.showImageInNotification) {
             try {
               file = await ref
                   .read(cacheManagerProvider)
