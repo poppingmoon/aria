@@ -26,7 +26,6 @@
 		F550C7AE2FA408470020C3BE /* NotificationSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F550C7A82FA408460020C3BE /* NotificationSettings.framework */; };
 		F550C7AF2FA408470020C3BE /* NotificationSettings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F550C7A82FA408460020C3BE /* NotificationSettings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F550C7B42FA40C530020C3BE /* NotificationSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F550C7A82FA408460020C3BE /* NotificationSettings.framework */; };
-		F550C7B52FA40C530020C3BE /* NotificationSettings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F550C7A82FA408460020C3BE /* NotificationSettings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F56CD7882CA62A62006EA6B3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F56CD7872CA62A62006EA6B3 /* Localizable.xcstrings */; };
 		F5C1038B2E899DDC007FB760 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F5C1038A2E899DDC007FB760 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
@@ -91,17 +90,6 @@
 				F550C6C12FA1815D0020C3BE /* Notification Service Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F550C79E2FA35C7C0020C3BE /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F550C7B52FA40C530020C3BE /* NotificationSettings.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -418,7 +406,6 @@
 				F550C6B62FA1815D0020C3BE /* Sources */,
 				F550C6B72FA1815D0020C3BE /* Frameworks */,
 				F550C6B82FA1815D0020C3BE /* Resources */,
-				F550C79E2FA35C7C0020C3BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
