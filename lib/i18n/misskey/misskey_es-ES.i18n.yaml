@@ -1412,6 +1412,7 @@ frame: "Marco"
 presets: "Predefinido"
 zeroPadding: "Relleno cero"
 nothingToConfigure: "No hay nada que configurar"
+viewRenotedChannel: "Ver el canal al que te has suscrito"
 imageEditing_:
   vars_:
     caption: "Título del archivo"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "Umbral"
     centerX: "Centrar X"
     centerY: "Centrar Y"
+    density: "Densidad"
+    zoomLinesOutlineThickness: "Grosor del borde"
     zoomLinesMaskSize: "Diámetro del centro"
     circle: "Círculo"
 drafts: "Borrador"

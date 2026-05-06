@@ -1677,6 +1677,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get presets => 'Predefinido';
 	@override String get zeroPadding => 'Relleno cero';
 	@override String get nothingToConfigure => 'No hay nada que configurar';
+	@override String get viewRenotedChannel => 'Ver el canal al que te has suscrito';
 	@override late final _TranslationsMisskeyImageEditingEsEs imageEditing_ = _TranslationsMisskeyImageEditingEsEs._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorEsEs imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorEsEs._(_root);
 	@override late final _TranslationsMisskeyCompressionEsEs compression_ = _TranslationsMisskeyCompressionEsEs._(_root);
@@ -4989,6 +4990,8 @@ class _TranslationsMisskeyImageEffectorFxPropsEsEs extends TranslationsMisskeyIm
 	@override String get threshold => 'Umbral';
 	@override String get centerX => 'Centrar X';
 	@override String get centerY => 'Centrar Y';
+	@override String get density => 'Densidad';
+	@override String get zoomLinesOutlineThickness => 'Grosor del borde';
 	@override String get zoomLinesMaskSize => 'Diámetro del centro';
 	@override String get circle => 'Círculo';
 }

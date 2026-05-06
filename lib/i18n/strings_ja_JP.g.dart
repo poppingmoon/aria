@@ -202,7 +202,10 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	]);
 	@override String get pasteResponseBelow => '以下にレスポンスを貼り付けてください。';
 	@override String get permissionDeniedErrorDescription => 'この操作を行うための権限がアクセストークンに付与されていません。もう一度ログインしてください。';
+	@override String get pin => 'ピン留め';
 	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留め';
+	@override String get pinned => 'ピン留めしました';
+	@override String get pinnedDraft => 'ピン留めされたノート';
 	@override String get playAudio => '音声を再生';
 	@override String get playVideo => '動画を再生';
 	@override String get pleaseCopyResponse => '以下のレスポンスをコピーしてください';
@@ -229,6 +232,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 		const TextSpan(text: 'がセルフリノート'),
 	]);
 	@override String get sendMessageConfirm => 'このメッセージを送信しますか？';
+	@override String get server => 'サーバー';
 	@override String get serverUrl => 'サーバーのURL';
 	@override String get settingsFileForAria => 'Ariaの設定ファイル';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -243,6 +247,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showExpandedImage => '拡大して表示する';
 	@override String get showGapBetweenNotesInTimeline => 'タイムラインのノートを離して表示';
 	@override String get showImage => '画像を表示';
+	@override String get showImageInNotification => '通知に画像を表示する';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
 	@override String get showMenuButtonInTabBar => 'タイムラインのタブバーにメニューボタンを追加';
 	@override String get showNote => 'ノートを表示';
@@ -278,6 +283,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get tapToShow => 'タップして表示';
 	@override String get timeMachine => 'タイムマシン';
 	@override String get timelinesPageButtons => 'タイムラインページのボタン';
+	@override String get trigger => 'トリガー';
 	@override String get unfavorited => 'お気に入りを解除しました';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		name,
@@ -1714,6 +1720,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get presets => 'プリセット';
 	@override String get zeroPadding => 'ゼロ埋め';
 	@override String get nothingToConfigure => '設定項目はありません';
+	@override String get viewRenotedChannel => 'リノート先のチャンネルを見る';
 	@override late final _TranslationsMisskeyImageEditingJaJp imageEditing_ = _TranslationsMisskeyImageEditingJaJp._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorJaJp imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorJaJp._(_root);
 	@override late final _TranslationsMisskeyCompressionJaJp compression_ = _TranslationsMisskeyCompressionJaJp._(_root);
@@ -5052,6 +5059,8 @@ class _TranslationsMisskeyImageEffectorFxPropsJaJp extends TranslationsMisskeyIm
 	@override String get threshold => 'しきい値';
 	@override String get centerX => '中心X';
 	@override String get centerY => '中心Y';
+	@override String get density => '密度';
+	@override String get zoomLinesOutlineThickness => '線の影の太さ';
 	@override String get zoomLinesMaskSize => '中心径';
 	@override String get circle => '円形';
 }

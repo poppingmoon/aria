@@ -4932,6 +4932,9 @@ class TranslationsMisskeyEnUs {
 	/// en-US: 'No configurable options available'
 	String get nothingToConfigure => 'No configurable options available';
 
+	/// en-US: 'Show renoted channel'
+	String get viewRenotedChannel => 'Show renoted channel';
+
 	late final TranslationsMisskeyImageEditingEnUs imageEditing_ = TranslationsMisskeyImageEditingEnUs.internal(_root);
 	late final TranslationsMisskeyImageFrameEditorEnUs imageFrameEditor_ = TranslationsMisskeyImageFrameEditorEnUs.internal(_root);
 	late final TranslationsMisskeyCompressionEnUs compression_ = TranslationsMisskeyCompressionEnUs.internal(_root);
@@ -11364,6 +11367,12 @@ class TranslationsMisskeyImageEffectorFxPropsEnUs {
 
 	/// en-US: 'Center Y'
 	String get centerY => 'Center Y';
+
+	/// en-US: 'Density'
+	String get density => 'Density';
+
+	/// en-US: 'Outline shadow thickness'
+	String get zoomLinesOutlineThickness => 'Outline shadow thickness';
 
 	/// en-US: 'Center diameter'
 	String get zoomLinesMaskSize => 'Center diameter';

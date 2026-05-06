@@ -1654,6 +1654,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get presets => 'Preimpostato';
 	@override String get zeroPadding => 'Al vivo';
 	@override String get nothingToConfigure => 'Niente da configurare';
+	@override String get viewRenotedChannel => 'Visualizza il canale del Rinota';
 	@override late final _TranslationsMisskeyImageEditingItIt imageEditing_ = _TranslationsMisskeyImageEditingItIt._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorItIt imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorItIt._(_root);
 	@override late final _TranslationsMisskeyCompressionItIt compression_ = _TranslationsMisskeyCompressionItIt._(_root);
@@ -4966,6 +4967,8 @@ class _TranslationsMisskeyImageEffectorFxPropsItIt extends TranslationsMisskeyIm
 	@override String get threshold => 'Soglia';
 	@override String get centerX => 'Centro orizzontale';
 	@override String get centerY => 'Centro verticale';
+	@override String get density => 'Densità';
+	@override String get zoomLinesOutlineThickness => 'Spessore del bordo';
 	@override String get zoomLinesMaskSize => 'Ampiezza del diametro';
 	@override String get circle => 'Circolare';
 }

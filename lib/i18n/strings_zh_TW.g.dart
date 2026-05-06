@@ -44,6 +44,25 @@ class _TranslationsAriaZhTw extends TranslationsAriaEnUs {
 	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => '關於 Aria';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: '確定要同意 '),
+		name,
+		const TextSpan(text: ' 的追隨請求嗎？'),
+	]);
+	@override String get accessToken => '存取權杖';
+	@override String get accessTokenUpdated => '成功更新存取權杖';
+	@override String get accountAdded => '成功添加帳戶';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Aria 是 '),
+		miria,
+		const TextSpan(text: ' 的一個分支項目。\nAria 的本地化是基於 '),
+		misskey,
+		const TextSpan(text: ' 的本地化檔案。\n我們想對這些專案的所有貢獻者表示感謝。'),
+	]);
+	@override String get addTab => '添加標籤';
+	@override String get alwaysExpandCw => '始終展開敏感的媒體內容';
+	@override String get alwaysExpandLongNote => '始終展開長貼文';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '你真的要追隨'),
 		name,
@@ -1494,6 +1513,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get presets => '預設值';
 	@override String get zeroPadding => '補零';
 	@override String get nothingToConfigure => '無可設定的項目';
+	@override String get viewRenotedChannel => '顯示轉發貼文者的頻道';
 	@override late final _TranslationsMisskeyImageEditingZhTw imageEditing_ = _TranslationsMisskeyImageEditingZhTw._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorZhTw imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorZhTw._(_root);
 	@override late final _TranslationsMisskeyCompressionZhTw compression_ = _TranslationsMisskeyCompressionZhTw._(_root);
@@ -4806,6 +4826,8 @@ class _TranslationsMisskeyImageEffectorFxPropsZhTw extends TranslationsMisskeyIm
 	@override String get threshold => '閾值';
 	@override String get centerX => 'X中心座標';
 	@override String get centerY => 'Y中心座標';
+	@override String get density => '密度';
+	@override String get zoomLinesOutlineThickness => '線條陰影的粗細';
 	@override String get zoomLinesMaskSize => '中心直徑';
 	@override String get circle => '圓形';
 }

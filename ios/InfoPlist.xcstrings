@@ -9,6 +9,12 @@
             "state" : "translated",
             "value" : "To take photos or videos, please allow access to your camera."
           }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
+          }
         }
       }
     },
@@ -19,6 +25,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To detect orientation of the device, please allow access to your sensor."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
           }
         }
       }

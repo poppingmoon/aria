@@ -1336,7 +1336,9 @@ overrideByAccount: "Переопределить этим аккаунтом"
 untitled: "Без названия"
 noName: "Имя не указано"
 skip: "Пропустить"
+restore: "Восстановить"
 syncBetweenDevices: "Синхронизировать между устройствами"
+paste: "вставить"
 postForm: "Форма отправки"
 textCount: "Количество символов"
 information: "Описание"
@@ -2399,6 +2401,8 @@ imageEffector_:
     opacity: "Непрозрачность"
     lightness: "Осветление"
 drafts: "Черновик"
+drafts_:
+  restore: "Восстановить"
 qr_:
   showTabTitle: "Отображение"
   raw: "Текст"

@@ -1412,6 +1412,7 @@ frame: "Çerçeve"
 presets: "Ön ayar"
 zeroPadding: "Sıfır doldurma"
 nothingToConfigure: "Ayarlar seçeneği bulunmamaktadır."
+viewRenotedChannel: "Show renoted channel"
 imageEditing_:
   vars_:
     caption: "Dosya başlığı"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "Eşik"
     centerX: "Merkez X"
     centerY: "Merkez Y"
+    density: "Yoğunluk"
+    zoomLinesOutlineThickness: "çizgi gölge kalınlığı"
     zoomLinesMaskSize: "Merkez çapı"
     circle: "Dairesel"
 drafts: "Taslaklar"

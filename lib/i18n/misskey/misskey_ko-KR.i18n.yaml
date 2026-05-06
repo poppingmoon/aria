@@ -1412,6 +1412,7 @@ frame: "프레임"
 presets: "프리셋"
 zeroPadding: "0으로 채우기"
 nothingToConfigure: "설정 항목이 없습니다."
+viewRenotedChannel: "리노트된 채널 보기"
 imageEditing_:
   vars_:
     caption: "파일 설명"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "한계 값"
     centerX: "X축 중심"
     centerY: "Y축 중심"
+    density: "밀도"
+    zoomLinesOutlineThickness: "선 그림자의 굵기"
     zoomLinesMaskSize: "중앙 값"
     circle: "원형"
 drafts: "초안"
