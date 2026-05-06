@@ -58,6 +58,7 @@ class ErrorMessage extends HookConsumerWidget {
           t.misskey.permissionDeniedError,
           t.aria.permissionDeniedErrorDescription,
         ],
+        'TOO_MANY_DRAFTS' => [t.misskey.drafts_.cannotCreateDraftAnymore],
         _ when error.code.startsWith('TOO_MANY') => [
           t.misskey.youCannotCreateAnymore,
           error.message,
