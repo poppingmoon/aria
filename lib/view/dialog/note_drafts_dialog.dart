@@ -400,7 +400,7 @@ class _NoteDraftWidget extends ConsumerWidget {
                     onTap: () async {
                       final confirmed = await confirm(
                         context,
-                        message: t.aria.draftDeleteConfirm,
+                        message: t.misskey.drafts_.deleteAreYouSure,
                       );
                       if (!context.mounted) return;
                       if (confirmed) {

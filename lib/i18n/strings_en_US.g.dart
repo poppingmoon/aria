@@ -188,9 +188,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Double tap to show'
 	String get doubleTapToShow => 'Double tap to show';
 
-	/// en-US: 'Are you sure you want to delete this draft?'
-	String get draftDeleteConfirm => 'Are you sure you want to delete this draft?';
-
 	/// en-US: 'Draw'
 	String get draw => 'Draw';
 
