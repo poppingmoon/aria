@@ -4,8 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
-import '../../../provider/account_settings_notifier_provider.dart';
-import '../../../provider/post_form_hashtags_notifier_provider.dart';
+import '../../../provider/post_notifier_provider.dart';
 import 'tag_notes.dart';
 import 'tag_users.dart';
 
@@ -46,27 +45,18 @@ class TagPage extends ConsumerWidget {
             ? null
             : FloatingActionButton.extended(
                 onPressed: () async {
-                  final hashtags = ref.read(
-                    postFormHashtagsNotifierProvider(account),
-                  );
+                  final previousHashtag = ref
+                      .read(postNotifierProvider(account))
+                      .hashtag;
                   ref
-                      .read(postFormHashtagsNotifierProvider(account).notifier)
-                      .updateHashtags([tag]);
-                  final useHashtags = ref
-                      .read(accountSettingsNotifierProvider(account))
-                      .postFormUseHashtags;
-                  await ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setPostFormUseHashtags(true);
+                      .read(postNotifierProvider(account).notifier)
+                      .setHashtag(tag);
                   if (!context.mounted) return;
                   await context.push('/$account/post');
                   if (!context.mounted) return;
                   ref
-                      .read(postFormHashtagsNotifierProvider(account).notifier)
-                      .updateHashtags(hashtags);
-                  await ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setPostFormUseHashtags(useHashtags);
+                      .read(postNotifierProvider(account).notifier)
+                      .setHashtag(previousHashtag);
                 },
                 label: Text(t.misskey.postToHashtag),
                 icon: const Icon(Icons.edit),

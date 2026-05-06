@@ -96,7 +96,7 @@ class PollEditor extends ConsumerWidget {
           const Divider(),
           SwitchListTile(
             title: Text(t.misskey.poll_.canMultipleVote),
-            value: poll.multiple ?? false,
+            value: poll.multiple,
             onChanged: (value) => ref
                 .read(postNotifierProvider(account, noteId: noteId).notifier)
                 .setMultiple(value),

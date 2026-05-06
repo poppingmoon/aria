@@ -1,43 +1,122 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../extension/community_channel_extension.dart';
+import '../extension/me_detailed_extension.dart';
+import '../extension/mfm_mention_extension.dart';
+import '../extension/note_draft_extension.dart';
 import '../extension/note_extension.dart';
 import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
+import '../model/tab_settings.dart';
 import '../util/extract_mentions.dart';
+import '../util/punycode.dart';
 import 'account_settings_notifier_provider.dart';
+import 'api/channel_notifier_provider.dart';
 import 'api/endpoints_notifier_provider.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
+import 'note_draft_repository_provider.dart';
 import 'note_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
+import 'parsed_mfm_provider.dart';
 import 'shared_preferences_provider.dart';
+import 'timeline_tab_settings_provider.dart';
 
 part 'post_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class PostNotifier extends _$PostNotifier {
   @override
-  NotesCreateRequest build(Account account, {String? noteId}) {
+  NoteDraft build(Account account, {String? noteId}) {
     ref.onDispose(() => _timer?.cancel());
+    listenSelf((_, next) async {
+      MeDetailed? i;
+      if (next.user.username != account.username) {
+        try {
+          i = await ref.read(iNotifierProvider(account).future);
+        } catch (_) {}
+      }
+      Note? reply = next.reply;
+      if (next.replyId case final replyId?) {
+        if (next.reply?.id != replyId) {
+          try {
+            reply =
+                ref.read(noteNotifierProvider(account, replyId)) ??
+                await ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .show(replyId);
+          } catch (_) {}
+        }
+      }
+      Note? renote = next.renote;
+      if (next.renoteId case final renoteId?) {
+        if (next.renote?.id != renoteId) {
+          try {
+            renote =
+                ref.read(noteNotifierProvider(account, renoteId)) ??
+                await ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .show(renoteId);
+          } catch (_) {}
+        }
+      }
+      NoteChannelInfo? channel = next.channel;
+      if (next.channelId case final channelId?) {
+        if (next.channel?.id != channelId) {
+          try {
+            channel = await ref
+                .read(channelNotifierProvider(account, channelId).future)
+                .then((channel) => channel.toNoteChannelInfo());
+          } catch (_) {}
+        }
+      }
+      if (i != null ||
+          reply != next.reply ||
+          renote != next.renote ||
+          channel != next.channel) {
+        state = next.copyWith(
+          userId: i?.id ?? next.userId,
+          user: i?.toUserLite() ?? next.user,
+          reply: reply,
+          renote: renote,
+          channel: channel,
+        );
+      }
+    });
     if (noteId != null) {
       final note = ref.read(noteNotifierProvider(account, noteId));
-      return note?.toNotesCreateRequest() ?? _defaultRequest;
+      return note?.toNoteDraft() ?? _getDefaultDraft(null);
     }
-    final draft = ref.watch(sharedPreferencesProvider).getString(_key);
-    if (draft != null) {
-      try {
-        return NotesCreateRequest.fromJson(
-          jsonDecode(draft) as Map<String, dynamic>,
-        );
-      } catch (_) {}
+    ref.listen(timelineTabSettingsProvider, (prev, next) async {
+      if (prev != null && prev.account == account) {
+        await _saveDraft(prev);
+      }
+      if (next != null && next.account == account) {
+        final draft = await _loadDraft(next);
+        if (draft != null) {
+          state = draft;
+        } else {
+          state = _getDefaultDraft(next);
+        }
+      }
+    });
+    final tabSettings = _tabSettings;
+    if (tabSettings?.account == account) {
+      Future(() async {
+        final draft = await _loadDraft(tabSettings);
+        if (draft != null) {
+          state = draft;
+        }
+      });
     }
-    return _defaultRequest;
+    return _getDefaultDraft(tabSettings);
   }
 
   String get _key => '$account/draft';
@@ -47,38 +126,105 @@ class PostNotifier extends _$PostNotifier {
   // ignore: only_use_keep_alive_inside_keep_alive
   MeDetailed? get _i => ref.read(iNotifierProvider(account)).value;
 
+  TabSettings? get _tabSettings => ref.read(timelineTabSettingsProvider);
+
   Timer? _timer;
 
   bool _saveScheduled = false;
 
-  NotesCreateRequest get _defaultRequest {
+  NoteDraft _getDefaultDraft(TabSettings? tabSettings) {
+    final i = _i;
     final settings = ref.read(accountSettingsNotifierProvider(account));
-    final localOnly = settings.rememberNoteVisibility
-        ? settings.localOnly
-        : settings.defaultNoteLocalOnly;
-    final isSilenced = _i?.isSilenced ?? false;
-    final visibility = NoteVisibility.min(
-      settings.rememberNoteVisibility
-          ? settings.visibility
-          : settings.defaultNoteVisibility,
-      isSilenced ? NoteVisibility.home : NoteVisibility.public,
-    );
+    final channelId = tabSettings?.account.host == account.host
+        ? tabSettings?.channelId
+        : null;
+    final isSilenced = i?.isSilenced ?? false;
+    final visibility = channelId != null
+        ? NoteVisibility.public
+        : NoteVisibility.min(
+            settings.rememberNoteVisibility
+                ? settings.visibility
+                : settings.defaultNoteVisibility,
+            isSilenced ? NoteVisibility.home : NoteVisibility.public,
+          );
+    final localOnly =
+        channelId != null ||
+        (visibility != NoteVisibility.specified &&
+                settings.rememberNoteVisibility
+            ? settings.localOnly
+            : settings.defaultNoteLocalOnly);
     final reactionAcceptance = settings.reactionAcceptance;
-    return NotesCreateRequest(
-      localOnly: localOnly,
+    return NoteDraft(
+      id: '',
+      createdAt: DateTime.now(),
+      userId: i?.id ?? '',
+      user: i?.toUserLite() ?? const UserLite(id: '', username: ''),
       visibility: visibility,
+      channelId: channelId,
+      localOnly: localOnly,
       reactionAcceptance: reactionAcceptance,
     );
   }
 
-  void save() {
+  Future<NoteDraft?> _loadDraft(TabSettings? tabSettings) async {
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(
+      account: account,
+      tabId: tabSettings?.id,
+    );
+    if (draft != null) {
+      return draft;
+    }
+
+    // Fallback for older format.
+    final oldDraft = ref.read(sharedPreferencesProvider).getString(_key);
+    if (oldDraft != null) {
+      try {
+        final request = NotesCreateRequest.fromJson(
+          jsonDecode(oldDraft) as Map<String, dynamic>,
+        );
+        return request.toNoteDraft(i: _i);
+      } catch (_) {}
+    }
+    return null;
+  }
+
+  Future<void> _saveDraft(TabSettings? tabSettings) async {
     _saveScheduled = false;
     _timer?.cancel();
-    if (!account.isGuest && noteId == null) {
-      ref
-          .read(sharedPreferencesProvider)
-          .setString(_key, jsonEncode(state.toJson()));
+    if (account.isGuest || noteId != null) {
+      return;
     }
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    if (state.replyId != null || state.renoteId != null) {
+      await repo.saveDraft(
+        account: account,
+        replyId: state.replyId,
+        renoteId: state.renoteId,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
+    } else if (state.channelId != tabSettings?.channelId) {
+      await repo.saveDraft(
+        account: account,
+        channelId: state.channelId,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
+    } else if (tabSettings != null && tabSettings.account == account) {
+      await repo.saveDraft(
+        account: account,
+        tabId: tabSettings.id,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
+    } else {
+      await repo.saveDraft(
+        account: account,
+        draft: state.copyWith(createdAt: DateTime.now()),
+      );
+    }
+  }
+
+  Future<void> save() async {
+    await _saveDraft(_tabSettings);
   }
 
   void _scheduleSave() {
@@ -89,76 +235,82 @@ class PostNotifier extends _$PostNotifier {
     }
   }
 
-  Future<String> _getNoteIdFromRemoteNote(
-    Account origin,
-    Note remoteNote,
-  ) async {
+  Future<Note> _getNoteFromRemoteNote(Account origin, Note remoteNote) async {
     final remoteUrl = remoteNote.url ?? remoteNote.uri;
     if (account.host == remoteNote.user.host && remoteUrl != null) {
       final remoteNoteId = remoteUrl.pathSegments.last;
-      if (ref.read(noteNotifierProvider(account, remoteNoteId)) != null) {
-        return remoteNoteId;
-      }
-      try {
-        await ref
-            .read(notesNotifierProvider(account).notifier)
-            .show(remoteNoteId);
-      } catch (_) {}
-      return remoteNoteId;
+      return ref.read(noteNotifierProvider(account, remoteNoteId)) ??
+          await ref
+              .read(notesNotifierProvider(account).notifier)
+              .show(remoteNoteId);
     }
     final response = await _misskey.ap.show(
       ApShowRequest(
         uri: remoteUrl ?? Uri.https(origin.host, 'notes/${remoteNote.id}'),
       ),
     );
-    try {
-      final note = Note.fromJson(response.object);
-      ref.read(notesNotifierProvider(account).notifier).add(note);
-    } catch (_) {}
-    return response.object['id'] as String;
+    final note = Note.fromJson(response.object);
+    ref.read(notesNotifierProvider(account).notifier).add(note);
+    return note;
   }
 
-  Future<void> fromRequest(NotesCreateRequest request, Account origin) async {
+  Future<void> fromDraft(NoteDraft draft, Account origin) async {
+    MeDetailed? i = _i;
+    try {
+      // ignore: only_use_keep_alive_inside_keep_alive
+      i ??= await ref.read(iNotifierProvider(account).future);
+    } catch (_) {}
     if (account.host == origin.host) {
-      if (request case NotesCreateRequest(:final replyId?)) {
+      if (draft.replyId case final replyId?) {
         final reply = ref.read(noteNotifierProvider(origin, replyId));
         if (reply != null) {
           ref.read(notesNotifierProvider(account).notifier).add(reply);
         }
       }
-      if (request case NotesCreateRequest(:final renoteId?)) {
+      if (draft.renoteId case final renoteId?) {
         final renote = ref.read(noteNotifierProvider(origin, renoteId));
         if (renote != null) {
           ref.read(notesNotifierProvider(account).notifier).add(renote);
         }
       }
-      state = request;
+      state = draft.copyWith(
+        userId: i?.id ?? draft.id,
+        user: i?.toUserLite() ?? draft.user,
+      );
     } else {
-      final reply = request.replyId != null
-          ? ref.read(noteNotifierProvider(origin, request.replyId!))
-          : null;
-      String? replyId;
-      if (reply != null && !reply.localOnly) {
+      final originReply = switch (draft.replyId) {
+        final replyId? => ref.read(noteNotifierProvider(origin, replyId)),
+        _ => null,
+      };
+      Note? reply;
+      if (originReply != null && !originReply.localOnly) {
         try {
-          replyId = await _getNoteIdFromRemoteNote(origin, reply);
+          reply = await _getNoteFromRemoteNote(origin, originReply);
         } catch (_) {}
       }
-      final renote = request.renoteId != null
-          ? ref.read(noteNotifierProvider(origin, request.renoteId!))
-          : null;
-      String? renoteId;
-      if (renote != null && !renote.localOnly) {
+      final originRenote = switch (draft.renoteId) {
+        final renoteId? => ref.read(noteNotifierProvider(origin, renoteId)),
+        _ => null,
+      };
+      Note? renote;
+      if (originRenote != null && !originRenote.localOnly) {
         try {
-          renoteId = await _getNoteIdFromRemoteNote(origin, renote);
+          renote = await _getNoteFromRemoteNote(origin, originRenote);
         } catch (_) {}
       }
-      final poll = request.poll;
-      state = request.copyWith(
+      final poll = draft.poll;
+      state = draft.copyWith(
+        userId: i?.id ?? draft.id,
+        user: i?.toUserLite() ?? draft.user,
         visibleUserIds: null,
-        replyId: replyId,
-        renoteId: renoteId,
+        replyId: reply?.id,
+        reply: reply,
+        renoteId: renote?.id,
+        renote: renote,
         channelId: null,
+        channel: null,
         fileIds: null,
+        files: null,
         poll: poll?.copyWith(
           expiresAt: poll.expiresAt?.isAfter(DateTime.now()) ?? false
               ? poll.expiresAt
@@ -170,59 +322,39 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void fromNote(Note note) {
-    state = note.toNotesCreateRequest();
+    state = note.toNoteDraft();
     _scheduleSave();
   }
 
-  void reset() {
-    state = _defaultRequest;
-    ref.read(sharedPreferencesProvider).remove(_key);
+  Future<void> reset({bool keepHashtag = false}) async {
+    _saveScheduled = false;
+    _timer?.cancel();
+    final draft = state;
+    final tabSettings = _tabSettings;
+    state = _getDefaultDraft(
+      tabSettings,
+    ).copyWith(hashtag: keepHashtag ? draft.hashtag : null);
+
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    if (draft.replyId != null || draft.renoteId != null) {
+      await repo.deleteDraft(
+        account: account,
+        replyId: draft.replyId,
+        renoteId: draft.renoteId,
+      );
+    } else if (draft.channelId != tabSettings?.channelId) {
+      await repo.deleteDraft(account: account, channelId: draft.channelId);
+    } else if (tabSettings != null && tabSettings.account == account) {
+      await repo.deleteDraft(account: account, tabId: tabSettings.id);
+    } else {
+      await repo.deleteDraft(account: account);
+    }
+
+    await ref.read(sharedPreferencesProvider).remove(_key);
   }
 
-  Future<Note> post({List<String>? fileIds, List<String>? hashtags}) async {
-    final request = state.copyWith(fileIds: fileIds).addHashtags(hashtags);
-    if (noteId == null) {
-      if (request.scheduledAt case final scheduledAt?) {
-        MeDetailed? i;
-        try {
-          // ignore: only_use_keep_alive_inside_keep_alive
-          i = await ref.read(iNotifierProvider(account).future);
-        } catch (_) {}
-        if (i?.policies?.canScheduleNote ?? false) {
-          await _misskey.notes.create(request);
-          reset();
-          return request.toNote();
-        } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
-            when scheduleNoteMax > 0) {
-          await _misskey.notes.schedule.create(
-            NotesScheduleCreateRequest(
-              visibility: request.visibility,
-              visibleUserIds: request.visibleUserIds,
-              cw: request.cw,
-              reactionAcceptance: request.reactionAcceptance,
-              replyId: request.replyId,
-              renoteId: request.renoteId,
-              text: request.text,
-              fileIds: request.fileIds,
-              channelId: request.channelId,
-              localOnly: request.localOnly,
-              poll: request.poll,
-              scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
-            ),
-          );
-          reset();
-          return request.toNote();
-        }
-      }
-      final response = await _misskey.notes.create(
-        request.copyWith(scheduledAt: null),
-      );
-      if (response != null) {
-        ref.read(notesNotifierProvider(account).notifier).add(response);
-      }
-      reset();
-      return response ?? request.toNote();
-    } else {
+  Future<Note> post() async {
+    if (noteId case final noteId?) {
       List<String>? endpoints;
       try {
         // ignore: only_use_keep_alive_inside_keep_alive
@@ -231,51 +363,73 @@ class PostNotifier extends _$PostNotifier {
         );
       } catch (_) {}
       if (endpoints?.contains('notes/update') ?? true) {
-        await _misskey.notes.update(
-          NotesUpdateRequest(
-            noteId: noteId!,
-            text: request.text,
-            cw: request.cw,
-            fileIds: fileIds,
-            poll: request.poll,
-          ),
-        );
-        final note = request.toNote();
+        await _misskey.notes.update(state.toNotesUpdateRequest(noteId));
+        final note = state.toNote().copyWith(id: noteId);
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
         final response = await _misskey.notes.edit(
-          NotesEditRequest(
-            editId: noteId!,
-            visibility: request.visibility,
-            visibleUserIds: request.visibleUserIds,
-            text: request.text,
-            cw: request.cw,
-            localOnly: request.localOnly,
-            fileIds: fileIds,
-            replyId: request.replyId,
-            renoteId: request.renoteId,
-            channelId: request.channelId,
-            poll: request.poll,
-          ),
+          state.toNotesEditRequest(noteId),
         );
         ref.read(notesNotifierProvider(account).notifier).add(response);
         return response;
       }
+    } else {
+      if (state.scheduledAt != null) {
+        MeDetailed? i = _i;
+        try {
+          // ignore: only_use_keep_alive_inside_keep_alive
+          i ??= await ref.read(iNotifierProvider(account).future);
+        } catch (_) {}
+        if (i?.policies?.canScheduleNote ?? false) {
+          await _misskey.notes.create(state.toNotesCreateRequest());
+          unawaited(reset(keepHashtag: true));
+          return state.toNote();
+        } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
+            when scheduleNoteMax > 0) {
+          await _misskey.notes.schedule.create(
+            state.toNotesScheduleCreateRequest(),
+          );
+          unawaited(reset(keepHashtag: true));
+          return state.toNote();
+        } else {
+          final response = await _misskey.notes.drafts.create(
+            state.toNotesDraftsCreateRequest(),
+          );
+          unawaited(reset(keepHashtag: true));
+          return response.createdDraft.toNote();
+        }
+      }
+      final response = await _misskey.notes.create(
+        state.toNotesCreateRequest(),
+      );
+      if (response != null) {
+        ref.read(notesNotifierProvider(account).notifier).add(response);
+      }
+      unawaited(reset(keepHashtag: true));
+      return response ?? state.toNote();
     }
+  }
+
+  void setUser(MeDetailed user) {
+    state = state.copyWith(userId: user.id, user: user.toUserLite());
   }
 
   void setVisibility(NoteVisibility visibility) {
     if (state.channelId != null) {
-      state = state.copyWith(visibility: NoteVisibility.public);
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        visibleUserIds: [],
+      );
     } else if (visibility == NoteVisibility.specified) {
       state = state.copyWith(
         visibility: NoteVisibility.specified,
+        visibleUserIds: [],
         channelId: null,
         localOnly: false,
       );
     } else {
-      state = state.copyWith(visibility: visibility);
+      state = state.copyWith(visibility: visibility, visibleUserIds: []);
     }
     if (ref
         .read(accountSettingsNotifierProvider(account))
@@ -361,121 +515,244 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setReply(Note? reply) {
-    if (reply == null) {
-      state = state.copyWith(replyId: null);
-    } else {
-      if (state.replyId == reply.id) return;
-      if (state.text case final text?) {
-        final nodes = parse(text);
-        final isMentionOnly = nodes.every(
+  Future<void> setReply(Note reply) async {
+    if (state.replyId == reply.id) {
+      state = state.copyWith(reply: reply);
+      _scheduleSave();
+      return;
+    }
+
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, replyId: reply.id);
+    if (draft != null) {
+      await save();
+      state = draft;
+    }
+
+    final visibility = reply.channelId != null
+        ? NoteVisibility.public
+        : NoteVisibility.min(
+            state.visibility ?? NoteVisibility.public,
+            reply.visibility ?? NoteVisibility.public,
+          );
+    final i = _i;
+    final visibleUserIds = {
+      ...?state.visibleUserIds,
+      ...reply.visibleUserIds.where(
+        (userId) => userId != i?.id && userId != reply.userId,
+      ),
+      if (reply.userId != i?.id) reply.userId,
+    }.toList();
+    final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
+    final localHost = toUnicode(account.host.toLowerCase());
+    final replyMentions = switch (reply.text) {
+      final text? when text.isNotEmpty => extractMentions(
+        ref.read(parsedMfmProvider(text)),
+      ).map((mention) => mention.normalize(localHost)),
+      _ => null,
+    };
+    final nodes = switch (state.text) {
+      final text? when text.isNotEmpty => ref.read(parsedMfmProvider(text)),
+      _ => null,
+    };
+    final isMentionOnly =
+        nodes != null &&
+        nodes.isNotEmpty &&
+        nodes.every(
           (node) => switch (node) {
             MfmMention() => true,
-            MfmText(:final text) => RegExp(r'\s*').hasMatch(text),
+            MfmText(:final text) => text.trim().isEmpty,
             _ => false,
           },
         );
-        if (isMentionOnly) {
-          state = state.copyWith(text: null);
-        }
+    final textMentions = nodes != null
+        ? extractMentions(nodes).map((mention) => mention.normalize(localHost))
+        : null;
+    final additionalMentions = HashSet<MfmMention>(
+      equals: (p0, p1) => (p0.username, p0.host) == (p1.username, p1.host),
+      hashCode: (p0) => (p0.username, p0.host).hashCode,
+    );
+    for (final mention in [
+      ...?replyMentions,
+      MfmMention(
+        username: reply.user.username.toLowerCase(),
+        host: reply.user.host?.toLowerCase(),
+        acct: reply.user.acct,
+      ),
+    ]) {
+      if ((textMentions?.every(
+                (e) => (mention.username, mention.host) != (e.username, e.host),
+              ) ??
+              true) &&
+          (mention.username != account.username?.toLowerCase() ||
+              mention.host != null)) {
+        additionalMentions.add(mention);
       }
-      final visibility = reply.channelId != null
-          ? NoteVisibility.public
-          : NoteVisibility.min(
-              state.visibility ?? NoteVisibility.public,
-              reply.visibility ?? NoteVisibility.public,
-            );
-      final i = _i;
-      final visibleUserIds = {
-        ...?state.visibleUserIds,
-        ...reply.visibleUserIds.where(
-          (userId) => userId != i?.id && userId != reply.userId,
-        ),
-        if (reply.userId != i?.id) reply.userId,
-      }.toList();
-      final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
-      final replyMentions = extractMentions(
-        parse(reply.text ?? ''),
-      ).map((mention) => mention.acct);
-      final textMentions = extractMentions(
-        parse(state.text ?? ''),
-      ).map((mention) => mention.acct);
-      final text = [
-        ...{...replyMentions, reply.user.acct}.where(
-          (acct) => ![
-            ...textMentions,
-            '@${account.username}',
-            account.toString(),
-          ].contains(acct),
-        ),
-        state.text ?? '',
-      ].join(' ');
-      state = state.copyWith(
-        visibility: visibility,
-        visibleUserIds: visibleUserIds,
-        localOnly: (state.localOnly ?? false) || reply.localOnly,
-        cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
-        replyId: reply.id,
-        channelId: reply.channelId ?? state.channelId,
-        text: text,
-      );
     }
+    final text = [
+      ...additionalMentions.map((mention) => mention.acct),
+      if (!isMentionOnly) state.text ?? '' else '',
+    ].join(' ');
+    state = state.copyWith(
+      visibility: visibility,
+      visibleUserIds: visibleUserIds,
+      localOnly:
+          visibility != NoteVisibility.specified &&
+          ((state.localOnly ?? false) || reply.localOnly),
+      cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
+      replyId: reply.id,
+      reply: reply,
+      channelId: visibility != NoteVisibility.specified
+          ? reply.channelId ?? state.channelId
+          : null,
+      channel: visibility != NoteVisibility.specified
+          ? reply.channel ?? state.channel
+          : null,
+      text: text,
+    );
     _scheduleSave();
   }
 
   void clearReply() {
-    final defaultRequest = _defaultRequest;
-    state = state.copyWith(
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
-      replyId: null,
-    );
-    _scheduleSave();
-  }
-
-  void setRenote(Note? renote) {
-    if (renote == null) {
-      state = state.copyWith(renoteId: null);
-    } else {
-      final visibility = NoteVisibility.min(
-        state.visibility ?? NoteVisibility.public,
-        renote.visibility ?? NoteVisibility.public,
+    if (state.channelId != null) {
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        localOnly: true,
+        replyId: null,
+        reply: null,
       );
+    } else {
+      final defaultRequest = _getDefaultDraft(null);
+      final visibility = switch (state.renote) {
+        final renote? => NoteVisibility.min(
+          defaultRequest.visibility ?? NoteVisibility.public,
+          renote.visibility ?? NoteVisibility.public,
+        ),
+        _ => defaultRequest.visibility,
+      };
+      final localOnly =
+          visibility != NoteVisibility.specified &&
+          ((defaultRequest.localOnly ?? false) ||
+              (state.renote?.localOnly ?? false));
       state = state.copyWith(
         visibility: visibility,
-        localOnly: (state.localOnly ?? false) || renote.localOnly,
-        renoteId: renote.id,
-        channelId: renote.channelId ?? state.channelId,
+        localOnly: localOnly,
+        replyId: null,
+        reply: null,
       );
     }
     _scheduleSave();
   }
 
-  void clearRenote() {
-    final defaultRequest = _defaultRequest;
+  Future<void> setRenote(Note renote) async {
+    if (state.renoteId == renote.id) {
+      state = state.copyWith(renote: renote);
+      _scheduleSave();
+      return;
+    }
+
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, renoteId: renote.id);
+    if (draft != null) {
+      await save();
+      state = draft;
+    }
+
+    final visibility = NoteVisibility.min(
+      state.visibility ?? NoteVisibility.public,
+      renote.visibility ?? NoteVisibility.public,
+    );
     state = state.copyWith(
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
-      renoteId: null,
+      visibility: visibility,
+      localOnly:
+          visibility != NoteVisibility.specified &&
+          ((state.localOnly ?? false) || renote.localOnly),
+      renoteId: renote.id,
+      renote: renote,
+      channelId: visibility != NoteVisibility.specified
+          ? renote.channelId ?? state.channelId
+          : null,
+      channel: visibility != NoteVisibility.specified
+          ? renote.channel ?? state.channel
+          : null,
     );
     _scheduleSave();
   }
 
-  void setChannel(String? channelId) {
+  void clearRenote() {
+    if (state.channelId != null) {
+      state = state.copyWith(
+        visibility: NoteVisibility.public,
+        localOnly: true,
+        renoteId: null,
+        renote: null,
+      );
+    } else {
+      final defaultRequest = _getDefaultDraft(null);
+      final visibility = switch (state.renote) {
+        final renote? => NoteVisibility.min(
+          defaultRequest.visibility ?? NoteVisibility.public,
+          renote.visibility ?? NoteVisibility.public,
+        ),
+        _ => defaultRequest.visibility,
+      };
+      final localOnly =
+          visibility != NoteVisibility.specified &&
+          ((state.renote?.localOnly ?? false) ||
+              (defaultRequest.localOnly ?? false));
+      state = state.copyWith(
+        visibility: visibility,
+        localOnly: localOnly,
+        renoteId: null,
+        renote: null,
+      );
+    }
+    _scheduleSave();
+  }
+
+  Future<void> setChannel(NoteChannelInfo channel) async {
+    if (state.channelId == channel.id) {
+      state = state.copyWith(channel: channel);
+      _scheduleSave();
+      return;
+    }
+
+    final repo = await ref.read(noteDraftRepositoryProvider.future);
+    final draft = await repo.loadDraft(account: account, channelId: channel.id);
+    if (draft != null) {
+      await save();
+      state = draft;
+    }
+
     state = state.copyWith(
-      channelId: channelId,
+      channelId: channel.id,
+      channel: channel,
       localOnly: true,
-      visibility: channelId != null ? NoteVisibility.public : state.visibility,
+      visibility: NoteVisibility.public,
+      visibleUserIds: [],
     );
     _scheduleSave();
   }
 
   void clearChannel() {
-    final defaultRequest = _defaultRequest;
+    final defaultRequest = _getDefaultDraft(null);
+    final visibility = NoteVisibility.min(
+      defaultRequest.visibility ?? NoteVisibility.public,
+      NoteVisibility.min(
+        state.reply?.visibility ?? NoteVisibility.public,
+        state.renote?.visibility ?? NoteVisibility.public,
+      ),
+    );
+    final localOnly =
+        visibility != NoteVisibility.specified &&
+        ((defaultRequest.localOnly ?? false) ||
+            (state.reply?.localOnly ?? false) ||
+            (state.renote?.localOnly ?? false));
     state = state.copyWith(
       channelId: null,
-      visibility: defaultRequest.visibility,
-      localOnly: defaultRequest.localOnly,
+      channel: null,
+      visibility: visibility,
+      localOnly: localOnly,
     );
     _scheduleSave();
   }
@@ -495,12 +772,40 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
+  void setHashtag(String? hashtag) {
+    if (hashtag == null || hashtag.isEmpty) {
+      if (state.hashtag != null) {
+        state = state.copyWith(hashtag: hashtag);
+      } else {
+        return;
+      }
+    } else if (hashtag != state.hashtag) {
+      state = state.copyWith(hashtag: hashtag);
+    } else {
+      return;
+    }
+    _scheduleSave();
+  }
+
+  void setFiles(Iterable<DriveFile>? files) {
+    if (files == null || files.isEmpty) {
+      if (state.fileIds == null) return;
+      state = state.copyWith(fileIds: null, files: null);
+    } else {
+      state = state.copyWith(
+        fileIds: files.map((file) => file.id).toList(),
+        files: files.toList(),
+      );
+    }
+    _scheduleSave();
+  }
+
   void togglePoll() {
     if (state.poll != null) {
       state = state.copyWith(poll: null);
     } else {
       state = state.copyWith(
-        poll: const NotesCreatePollRequest(choices: ['', ''], multiple: false),
+        poll: const NoteDraftPoll(multiple: false, choices: ['', '']),
       );
     }
     _scheduleSave();
@@ -511,7 +816,7 @@ class PostNotifier extends _$PostNotifier {
     state = state.copyWith(
       poll:
           poll?.copyWith(choices: [...poll.choices, choice]) ??
-          NotesCreatePollRequest(choices: [choice]),
+          NoteDraftPoll(multiple: false, choices: [choice]),
     );
     _scheduleSave();
   }
@@ -569,8 +874,13 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
-  void setScheduledAt(DateTime? scheduledAt) {
-    state = state.copyWith(scheduledAt: scheduledAt);
+  void setScheduledAt(DateTime scheduledAt) {
+    state = state.copyWith(scheduledAt: scheduledAt, isActuallyScheduled: true);
+    _scheduleSave();
+  }
+
+  void clearScheduledAt() {
+    state = state.copyWith(scheduledAt: null, isActuallyScheduled: false);
     _scheduleSave();
   }
 }

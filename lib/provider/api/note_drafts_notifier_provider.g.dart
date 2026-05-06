@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'scheduled_notes_notifier_provider.dart';
+part of 'note_drafts_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,44 +9,43 @@ part of 'scheduled_notes_notifier_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(ScheduledNotesNotifier)
-final scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily._();
+@ProviderFor(NoteDraftsNotifier)
+final noteDraftsNotifierProvider = NoteDraftsNotifierFamily._();
 
-final class ScheduledNotesNotifierProvider
+final class NoteDraftsNotifierProvider
     extends
         $StreamNotifierProvider<
-          ScheduledNotesNotifier,
+          NoteDraftsNotifier,
           PaginationState<NoteDraft>
         > {
-  ScheduledNotesNotifierProvider._({
-    required ScheduledNotesNotifierFamily super.from,
+  NoteDraftsNotifierProvider._({
+    required NoteDraftsNotifierFamily super.from,
     required Account super.argument,
   }) : super(
          retry: null,
-         name: r'scheduledNotesNotifierProvider',
+         name: r'noteDraftsNotifierProvider',
          isAutoDispose: true,
          dependencies: null,
          $allTransitiveDependencies: null,
        );
 
   @override
-  String debugGetCreateSourceHash() => _$scheduledNotesNotifierHash();
+  String debugGetCreateSourceHash() => _$noteDraftsNotifierHash();
 
   @override
   String toString() {
-    return r'scheduledNotesNotifierProvider'
+    return r'noteDraftsNotifierProvider'
         ''
         '($argument)';
   }
 
   @$internal
   @override
-  ScheduledNotesNotifier create() => ScheduledNotesNotifier();
+  NoteDraftsNotifier create() => NoteDraftsNotifier();
 
   @override
   bool operator ==(Object other) {
-    return other is ScheduledNotesNotifierProvider &&
-        other.argument == argument;
+    return other is NoteDraftsNotifierProvider && other.argument == argument;
   }
 
   @override
@@ -55,35 +54,35 @@ final class ScheduledNotesNotifierProvider
   }
 }
 
-String _$scheduledNotesNotifierHash() =>
-    r'e7827f7c94e65e2501a66df259cc41eb679bccb9';
+String _$noteDraftsNotifierHash() =>
+    r'e21985733d8c8717e60d3d71ddaf184367e0ecc6';
 
-final class ScheduledNotesNotifierFamily extends $Family
+final class NoteDraftsNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
-          ScheduledNotesNotifier,
+          NoteDraftsNotifier,
           AsyncValue<PaginationState<NoteDraft>>,
           PaginationState<NoteDraft>,
           Stream<PaginationState<NoteDraft>>,
           Account
         > {
-  ScheduledNotesNotifierFamily._()
+  NoteDraftsNotifierFamily._()
     : super(
         retry: null,
-        name: r'scheduledNotesNotifierProvider',
+        name: r'noteDraftsNotifierProvider',
         dependencies: null,
         $allTransitiveDependencies: null,
         isAutoDispose: true,
       );
 
-  ScheduledNotesNotifierProvider call(Account account) =>
-      ScheduledNotesNotifierProvider._(argument: account, from: this);
+  NoteDraftsNotifierProvider call(Account account) =>
+      NoteDraftsNotifierProvider._(argument: account, from: this);
 
   @override
-  String toString() => r'scheduledNotesNotifierProvider';
+  String toString() => r'noteDraftsNotifierProvider';
 }
 
-abstract class _$ScheduledNotesNotifier
+abstract class _$NoteDraftsNotifier
     extends $StreamNotifier<PaginationState<NoteDraft>> {
   late final _$args = ref.$arg as Account;
   Account get account => _$args;

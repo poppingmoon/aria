@@ -363,9 +363,11 @@ class _RenoteButton extends HookConsumerWidget {
                     myRenotingNoteId.value = result.id;
                   }
                 } else {
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setRenote(note);
+                  unawaited(
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setRenote(note),
+                  );
                   if (focusPostForm case final focusPostForm?) {
                     focusPostForm();
                   } else {

@@ -23,6 +23,9 @@ _AriaBackup _$AriaBackupFromJson(Map<String, dynamic> json) => _AriaBackup(
   aiscriptStorage: (json['aiscriptStorage'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),
   ),
+  noteDrafts: (json['noteDrafts'] as List<dynamic>?)
+      ?.map((e) => e as Map<String, dynamic>)
+      .toList(),
 );
 
 Map<String, dynamic> _$AriaBackupToJson(_AriaBackup instance) =>
@@ -35,4 +38,5 @@ Map<String, dynamic> _$AriaBackupToJson(_AriaBackup instance) =>
       'generalSettings': ?instance.generalSettings?.toJson(),
       'themes': ?instance.themes,
       'aiscriptStorage': ?instance.aiscriptStorage,
+      'noteDrafts': ?instance.noteDrafts,
     };

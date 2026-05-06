@@ -13,7 +13,7 @@ part of 'post_notifier_provider.dart';
 final postNotifierProvider = PostNotifierFamily._();
 
 final class PostNotifierProvider
-    extends $NotifierProvider<PostNotifier, NotesCreateRequest> {
+    extends $NotifierProvider<PostNotifier, NoteDraft> {
   PostNotifierProvider._({
     required PostNotifierFamily super.from,
     required (Account, {String? noteId}) super.argument,
@@ -40,10 +40,10 @@ final class PostNotifierProvider
   PostNotifier create() => PostNotifier();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(NotesCreateRequest value) {
+  Override overrideWithValue(NoteDraft value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<NotesCreateRequest>(value),
+      providerOverride: $SyncValueProvider<NoteDraft>(value),
     );
   }
 
@@ -58,15 +58,15 @@ final class PostNotifierProvider
   }
 }
 
-String _$postNotifierHash() => r'7f13428a981fb85983e31198f10fc80e4cee09c7';
+String _$postNotifierHash() => r'8041f67a66762bf7f6ca09d3c9fa8a9e7f33321a';
 
 final class PostNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           PostNotifier,
-          NotesCreateRequest,
-          NotesCreateRequest,
-          NotesCreateRequest,
+          NoteDraft,
+          NoteDraft,
+          NoteDraft,
           (Account, {String? noteId})
         > {
   PostNotifierFamily._()
@@ -85,21 +85,21 @@ final class PostNotifierFamily extends $Family
   String toString() => r'postNotifierProvider';
 }
 
-abstract class _$PostNotifier extends $Notifier<NotesCreateRequest> {
+abstract class _$PostNotifier extends $Notifier<NoteDraft> {
   late final _$args = ref.$arg as (Account, {String? noteId});
   Account get account => _$args.$1;
   String? get noteId => _$args.noteId;
 
-  NotesCreateRequest build(Account account, {String? noteId});
+  NoteDraft build(Account account, {String? noteId});
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<NotesCreateRequest, NotesCreateRequest>;
+    final ref = this.ref as $Ref<NoteDraft, NoteDraft>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<NotesCreateRequest, NotesCreateRequest>,
-              NotesCreateRequest,
+              AnyNotifier<NoteDraft, NoteDraft>,
+              NoteDraft,
               Object?,
               Object?
             >;

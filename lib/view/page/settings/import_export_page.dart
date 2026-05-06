@@ -5,13 +5,15 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:isar_community/isar.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide NoteDraft;
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/aria_backup.dart';
+import '../../../model/database/note_draft.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/aiscript_storage_notifier_provider.dart';
@@ -20,6 +22,7 @@ import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/file_system_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/isar_provider.dart';
 import '../../../provider/misskey_theme_codes_notifier_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
 import '../../../util/copy_text.dart';
@@ -38,6 +41,8 @@ class ImportExportPage extends ConsumerWidget {
   Future<AriaBackup> _export(WidgetRef ref) async {
     final accounts = ref.read(accountsNotifierProvider);
     final packageInfo = await PackageInfo.fromPlatform();
+    final isar = await ref.read(isarProvider.future);
+    final noteDrafts = await isar.noteDrafts.where().findAll();
     return AriaBackup(
       metadata: {
         'createdAt': DateTime.now().toUtc().toIso8601String(),
@@ -55,16 +60,17 @@ class ImportExportPage extends ConsumerWidget {
         for (final account in accounts)
           '$account': ref.read(aiscriptStorageNotifierProvider(account)),
       },
+      noteDrafts: noteDrafts.map((draft) => draft.toJson()).toList(),
     );
   }
 
   Future<bool> _import(WidgetRef ref, AriaBackup backup) async {
-    if (backup case AriaBackup(:final timelineTabs?)) {
+    if (backup.timelineTabs case final timelineTabs?) {
       await ref
           .read(timelineTabsNotifierProvider.notifier)
           .import(timelineTabs);
     }
-    if (backup case AriaBackup(:final accountSettings?)) {
+    if (backup.accountSettings case final accountSettings?) {
       for (final e in accountSettings.entries) {
         final account = Account.fromString(e.key);
         await ref
@@ -72,21 +78,29 @@ class ImportExportPage extends ConsumerWidget {
             .import(e.value);
       }
     }
-    if (backup case AriaBackup(:final generalSettings?)) {
+    if (backup.generalSettings case final generalSettings?) {
       await ref
           .read(generalSettingsNotifierProvider.notifier)
           .import(generalSettings);
     }
-    if (backup case AriaBackup(:final themes?)) {
+    if (backup.themes case final themes?) {
       await ref.read(misskeyThemeCodesNotifierProvider.notifier).import(themes);
     }
-    if (backup case AriaBackup(:final aiscriptStorage?)) {
+    if (backup.aiscriptStorage case final aiscriptStorage?) {
       for (final e in aiscriptStorage.entries) {
         final account = Account.fromString(e.key);
         await ref
             .read(aiscriptStorageNotifierProvider(account).notifier)
             .import(e.value);
       }
+    }
+    if (backup.noteDrafts case final noteDrafts?) {
+      final isar = await ref.read(isarProvider.future);
+      await isar.writeTxn(() async {
+        await isar.noteDrafts.putAll(
+          noteDrafts.map(NoteDraft.fromJson).toList(),
+        );
+      });
     }
     return true;
   }

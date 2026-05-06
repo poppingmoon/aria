@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../extension/community_channel_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/tab_settings.dart';
@@ -120,11 +123,17 @@ class ChannelPage extends ConsumerWidget {
         floatingActionButton: account.isGuest
             ? null
             : FloatingActionButton.extended(
-                onPressed: () {
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setChannel(channelId);
-                  context.push('/$account/post');
+                onPressed: () async {
+                  final channel = await ref.read(
+                    channelNotifierProvider(account, channelId).future,
+                  );
+                  unawaited(
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setChannel(channel.toNoteChannelInfo()),
+                  );
+                  if (!context.mounted) return;
+                  await context.push('/$account/post');
                 },
                 label: Text(t.misskey.postToTheChannel),
                 icon: const Icon(Icons.edit),

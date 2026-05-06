@@ -188,6 +188,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Double tap to show'
 	String get doubleTapToShow => 'Double tap to show';
 
+	/// en-US: 'Are you sure you want to delete this draft?'
+	String get draftDeleteConfirm => 'Are you sure you want to delete this draft?';
+
 	/// en-US: 'Draw'
 	String get draw => 'Draw';
 
@@ -432,8 +435,17 @@ class TranslationsAriaEnUs {
 	/// en-US: 'The access token does not have the permission to perform this action. Please sign in again.'
 	String get permissionDeniedErrorDescription => 'The access token does not have the permission to perform this action. Please sign in again.';
 
+	/// en-US: 'Pin'
+	String get pin => 'Pin';
+
 	/// en-US: 'Pin to emoji picker'
 	String get pinToEmojiPicker => 'Pin to emoji picker';
+
+	/// en-US: 'Pinned'
+	String get pinned => 'Pinned';
+
+	/// en-US: 'Pinned draft'
+	String get pinnedDraft => 'Pinned draft';
 
 	/// en-US: 'Play audio'
 	String get playAudio => 'Play audio';
@@ -495,6 +507,9 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Are you sure you want to send this message?'
 	String get sendMessageConfirm => 'Are you sure you want to send this message?';
+
+	/// en-US: 'Server'
+	String get server => 'Server';
 
 	/// en-US: 'Server URL'
 	String get serverUrl => 'Server URL';

@@ -80,7 +80,6 @@ _AccountSettings _$AccountSettingsFromJson(
   hashtags:
       (json['hashtags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
       const [],
-  postFormUseHashtags: json['postFormUseHashtags'] as bool? ?? false,
   postFormHashtags:
       (json['postFormHashtags'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -117,7 +116,6 @@ Map<String, dynamic> _$AccountSettingsToJson(_AccountSettings instance) =>
       'mutedEmojis': instance.mutedEmojis,
       'recentlyUsedUsers': instance.recentlyUsedUsers,
       'hashtags': instance.hashtags,
-      'postFormUseHashtags': instance.postFormUseHashtags,
       'postFormHashtags': instance.postFormHashtags,
     };
 

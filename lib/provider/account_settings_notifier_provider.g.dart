@@ -60,7 +60,7 @@ final class AccountSettingsNotifierProvider
 }
 
 String _$accountSettingsNotifierHash() =>
-    r'f4aafb2d7072ca2ab428674abd69667529b8f178';
+    r'390abdaa3c664ff860952001900da9692e58616d';
 
 final class AccountSettingsNotifierFamily extends $Family
     with

@@ -11,6 +11,7 @@ import 'package:aria/provider/api/misskey_provider.dart';
 import 'package:aria/provider/api/translated_note_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/misskey_colors_provider.dart';
+import 'package:aria/provider/note_draft_repository_provider.dart';
 import 'package:aria/provider/note_notifier_provider.dart';
 import 'package:aria/provider/post_notifier_provider.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
@@ -35,7 +36,9 @@ import 'package:url_launcher_platform_interface/url_launcher_platform_interface.
 
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_note.dart';
+import '../../test_util/dummy_note_draft.dart';
 import '../../test_util/dummy_user_lite.dart';
+import '../../test_util/fake_note_draft_repository.dart';
 import '../../test_util/fake_shared_preferences.dart';
 import '../../test_util/fake_url_launcher.dart';
 import '../../test_util/override_default_target_platform.dart';
@@ -64,6 +67,9 @@ Future<void> setupWidget(
         misskeyProvider(account).overrideWithValue(
           Misskey(serverUrl: Uri.https(account.host), dio: dio),
         ),
+        noteDraftRepositoryProvider.overrideWithValue(
+          AsyncValue.data(FakeNoteDraftRepository()),
+        ),
         noteNotifierProvider(
           account,
           note.id,
@@ -73,6 +79,9 @@ Future<void> setupWidget(
             account,
             renote.id,
           ).overrideWithBuild((_, _) => renote),
+        postNotifierProvider(
+          account,
+        ).overrideWithBuild((_, _) => dummyNoteDraft),
         sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
         ...overrides,
       ],
@@ -184,6 +193,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).replyId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should call a callback on tap', (tester) async {
@@ -203,6 +213,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).replyId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should reply to a renoted note', (tester) async {
@@ -225,6 +236,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).replyId,
         same(renote.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should reply to a quote note', (tester) async {
@@ -248,6 +260,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).replyId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
   });
 
@@ -443,6 +456,7 @@ void main() {
       await tester.tap(find.byIcon(Icons.repeat_rounded));
       await tester.pumpAndSettle();
       expect(find.textContaining('/$account/post'), findsOne);
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should call a callback on tap if a quote button is hidden', (
@@ -467,6 +481,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should renote a renoted note', (tester) async {
@@ -493,6 +508,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(renote.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should renote a quote note', (tester) async {
@@ -519,6 +535,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should not show renoted users on long press if not renoted', (
@@ -623,6 +640,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should quote a renoted note', (tester) async {
@@ -645,6 +663,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(renote.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
 
     testWidgets('should quote a quote note', (tester) async {
@@ -668,6 +687,7 @@ void main() {
         tester.container().read(postNotifierProvider(account)).renoteId,
         same(note.id),
       );
+      await tester.pump(const Duration(seconds: 3));
     });
   });
 
@@ -1544,13 +1564,6 @@ void main() {
             tester.element(find.byType(NoteFooter)),
           ).toLanguageTag(),
         },
-      );
-      await tester.runAsync(
-        () => tester.container().read(iNotifierProvider(account).future),
-      );
-      await tester.runAsync(
-        () =>
-            tester.container().read(metaNotifierProvider(account.host).future),
       );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.translate));

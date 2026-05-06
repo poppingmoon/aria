@@ -166,11 +166,6 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
-  Future<void> setPostFormUseHashtags(bool postFormUseHashtags) async {
-    state = state.copyWith(postFormUseHashtags: postFormUseHashtags);
-    await _save();
-  }
-
   Future<void> setPostFormHashtags(List<String> postFormHashtags) async {
     state = state.copyWith(postFormHashtags: postFormHashtags);
     await _save();

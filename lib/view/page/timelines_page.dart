@@ -14,13 +14,11 @@ import '../../model/account.dart';
 import '../../model/general_settings.dart';
 import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
-import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/misskey_sfx_notifier_provider.dart';
-import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tab_index_notifier_provider.dart';
@@ -118,31 +116,12 @@ class TimelinesPage extends HookConsumerWidget {
         }
         if (nextAccount.isGuest) {
           showPostForm.value = false;
-        } else {
-          if (nextTab.tabType == TabType.channel) {
-            ref
-                .read(postNotifierProvider(nextAccount).notifier)
-                .setChannel(nextTab.channelId);
-          } else {
-            ref.read(postNotifierProvider(nextAccount).notifier).clearChannel();
-          }
         }
       }
 
       if (tabSettings != null) {
         final account = tabSettings.account;
         ref.read(emojisNotifierProvider(account.host).notifier).reloadEmojis();
-        if (!account.isGuest) {
-          Future(() {
-            if (tabSettings.tabType == TabType.channel) {
-              ref
-                  .read(postNotifierProvider(account).notifier)
-                  .setChannel(tabSettings.channelId);
-            } else {
-              ref.read(postNotifierProvider(account).notifier).clearChannel();
-            }
-          });
-        }
       }
       controller.animation?.addListener(callback);
       return () => controller.animation?.removeListener(callback);
@@ -359,19 +338,16 @@ class _PostForm extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
-    final request = ref.watch(postNotifierProvider(account.value));
-    final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
-    final cwController = useTextEditingController(text: request.cw);
-    final controller = useTextEditingController(text: request.text);
-    final hashtagsController = useTextEditingController(
-      text: hashtags.join(' '),
-    );
+    final draft = ref.watch(postNotifierProvider(account.value));
+    final cwController = useTextEditingController(text: draft.cw);
+    final controller = useTextEditingController(text: draft.text);
+    final hashtagController = useTextEditingController(text: draft.hashtag);
     final cwFocusNode = useFocusNode();
     final focusNode = this.focusNode;
-    final hashtagsFocusNode = useFocusNode();
+    final hashtagFocusNode = useFocusNode();
     final isCwFocused = useState(false);
     final isFocused = useState(false);
-    final isHashtagsFocused = useState(false);
+    final isHashtagFocused = useState(false);
     useEffect(() {
       void cwFocusNodeCallback() {
         isCwFocused.value = cwFocusNode.hasFocus;
@@ -381,18 +357,18 @@ class _PostForm extends HookConsumerWidget {
         isFocused.value = focusNode.hasFocus;
       }
 
-      void hashtagsFocusNodeCallback() {
-        isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
+      void hashtagFocusNodeCallback() {
+        isHashtagFocused.value = hashtagFocusNode.hasFocus;
       }
 
       cwFocusNode.addListener(cwFocusNodeCallback);
       focusNode.addListener(focusNodeCallback);
-      hashtagsFocusNode.addListener(hashtagsFocusNodeCallback);
+      hashtagFocusNode.addListener(hashtagFocusNodeCallback);
 
       return () {
         cwFocusNode.removeListener(cwFocusNodeCallback);
         focusNode.removeListener(focusNodeCallback);
-        hashtagsFocusNode.removeListener(hashtagsFocusNodeCallback);
+        hashtagFocusNode.removeListener(hashtagFocusNodeCallback);
       };
     }, []);
 
@@ -405,10 +381,10 @@ class _PostForm extends HookConsumerWidget {
               account: this.account,
               cwController: cwController,
               controller: controller,
-              hashtagsController: hashtagsController,
+              hashtagController: hashtagController,
               cwFocusNode: cwFocusNode,
               focusNode: focusNode,
-              hashtagsFocusNode: hashtagsFocusNode,
+              hashtagFocusNode: hashtagFocusNode,
               onHide: onHide,
               onExpand: (account) => context.push('/$account/post'),
               onAccountChanged: (newAccount) => account.value = newAccount,
@@ -438,13 +414,13 @@ class _PostForm extends HookConsumerWidget {
           ),
         ),
         Visibility(
-          visible: isHashtagsFocused.value,
+          visible: isHashtagFocused.value,
           maintainState: true,
           child: TextFieldTapRegion(
             onTapOutside: (_) => primaryFocus?.unfocus(),
             child: MfmHashtagKeyboard(
               account: account.value,
-              controller: hashtagsController,
+              controller: hashtagController,
             ),
           ),
         ),
