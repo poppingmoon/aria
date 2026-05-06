@@ -668,6 +668,12 @@ class _RenoteSheet extends ConsumerWidget {
             title: Text(t.misskey.renoteDetails),
             onTap: () => context.push('/$account/notes/${note.id}'),
           ),
+        if (note.channelId case final channelId?)
+          ListTile(
+            leading: const Icon(Icons.tv),
+            title: Text(t.misskey.viewRenotedChannel),
+            onTap: () => context.push('/$account/channels/$channelId'),
+          ),
         ListTile(
           leading: const Icon(Icons.link),
           title: Text(t.misskey.copyLinkRenote),
