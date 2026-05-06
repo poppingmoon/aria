@@ -15,6 +15,18 @@
             "state" : "translated",
             "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
           }
+        },
+        "ja-KS" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要拍摄照片或视频，请允许访问您的摄像头。"
+          }
         }
       }
     },
@@ -31,6 +43,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "若要检测设备的方向，请允许访问您的传感器。"
           }
         }
       }
@@ -51,6 +75,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
@@ -86,6 +116,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
