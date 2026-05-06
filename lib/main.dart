@@ -748,10 +748,22 @@ class Aria extends HookConsumerWidget {
       }
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       Future<void> onMessageOpenedApp(ApnsRemoteMessage message) async {
+        dynamic stringifyKeys(dynamic value) {
+          return switch (value) {
+            final Map<dynamic, dynamic> value => value.map(
+              (key, value) => MapEntry(key.toString(), stringifyKeys(value)),
+            ),
+            final List<dynamic> value => value.map(stringifyKeys).toList(),
+            _ => value,
+          };
+        }
+
         if (message.payload['data'] case final Map<dynamic, dynamic> data) {
           if (data['payload'] case final Map<dynamic, dynamic> payload) {
             final notification = PushNotification.fromJson(
-              payload.map((key, value) => MapEntry(key.toString(), value)),
+              payload.map(
+                (key, value) => MapEntry(key.toString(), stringifyKeys(value)),
+              ),
             );
             ref
                 .read(pushNotificationNotifierProvider.notifier)

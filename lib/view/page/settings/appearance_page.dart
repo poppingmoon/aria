@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/notification_settings_repository_provider.dart';
+import '../../../util/future_with_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
 class AppearancePage extends HookConsumerWidget {
@@ -14,6 +17,34 @@ class AppearancePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      useEffect(() {
+        Future(() async {
+          final showImageInNotification = await ref
+              .read(notificationSettingsRepositoryProvider)
+              .getShowImageInNotification();
+          if (showImageInNotification != null &&
+              showImageInNotification != settings.showImageInNotification) {
+            await ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowImageInNotification(showImageInNotification);
+          }
+          final showEmojiInReactionNotification = await ref
+              .read(notificationSettingsRepositoryProvider)
+              .getShowEmojiInReactionNotification();
+          if (showEmojiInReactionNotification != null &&
+              showEmojiInReactionNotification !=
+                  settings.showEmojiInReactionNotification) {
+            await ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowEmojiInReactionNotification(
+                  showEmojiInReactionNotification,
+                );
+          }
+        });
+        return;
+      }, []);
+    }
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.appearance)),
@@ -316,7 +347,8 @@ class AppearancePage extends HookConsumerWidget {
                 ),
               ),
             ),
-            if (defaultTargetPlatform == TargetPlatform.android) ...[
+            if (defaultTargetPlatform
+                case TargetPlatform.android || TargetPlatform.iOS) ...[
               const SizedBox(height: 16.0),
               Center(
                 child: Container(
@@ -337,9 +369,19 @@ class AppearancePage extends HookConsumerWidget {
                   child: SwitchListTile(
                     title: Text(t.aria.showImageInNotification),
                     value: settings.showImageInNotification,
-                    onChanged: (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowImageInNotification(value),
+                    onChanged: (value) => Future.wait([
+                      ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setShowImageInNotification(value),
+                      if (defaultTargetPlatform == TargetPlatform.iOS)
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(notificationSettingsRepositoryProvider)
+                              .setShowImageInNotification(value),
+                          overlay: false,
+                        ),
+                    ]),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(8.0),
@@ -355,9 +397,19 @@ class AppearancePage extends HookConsumerWidget {
                   child: SwitchListTile(
                     title: Text(t.aria.showEmojiInReactionNotification),
                     value: settings.showEmojiInReactionNotification,
-                    onChanged: (value) => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setShowEmojiInReactionNotification(value),
+                    onChanged: (value) => Future.wait([
+                      ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setShowEmojiInReactionNotification(value),
+                      if (defaultTargetPlatform == TargetPlatform.iOS)
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(notificationSettingsRepositoryProvider)
+                              .setShowEmojiInReactionNotification(value),
+                          overlay: false,
+                        ),
+                    ]),
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         bottom: Radius.circular(8.0),

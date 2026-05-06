@@ -4,7 +4,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
-import '../constant/misskey_web_push_proxy_url.dart';
 import '../model/account.dart';
 import 'api/misskey_provider.dart';
 import 'dio_provider.dart';
@@ -25,39 +24,16 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
   String get _isProxyKey => '$account/push-subscription-is-proxy';
 
   Future<void> subscribe({
-    required String id,
-    String? fcmToken,
-    String? apnsToken,
     WebPushKeySet? keySet,
     required SwRegisterResponse response,
   }) async {
     final endpoint = response.endpoint;
-    final isProxy = endpoint.startsWith(misskeyWebPushProxyUrl);
     if (keySet != null) {
-      if (isProxy) {
-        final jwk = await (await keySet.privateKey.privKey).exportJsonWebKey();
-        await ref
-            .read(dioProvider)
-            .post<Map<String, dynamic>>(
-              '$misskeyWebPushProxyUrl/subscriptions',
-              data: {
-                'id': id,
-                if (fcmToken != null) 'fcmToken': fcmToken,
-                if (apnsToken != null) 'apnsToken': apnsToken,
-                'auth': keySet.publicKey.auth,
-                'publicKey': keySet.publicKey.p256dh,
-                'privateKey': jwk['d'],
-                'vapidKey': response.key,
-              },
-            );
-      } else {
-        await ref
-            .read(webPushKeySetNotifierProvider(account).notifier)
-            .save(keySet);
-      }
+      await ref
+          .read(webPushKeySetNotifierProvider(account).notifier)
+          .save(keySet);
     }
     await ref.read(sharedPreferencesProvider).setString(_key, endpoint);
-    await ref.read(sharedPreferencesProvider).setBool(_isProxyKey, isProxy);
     state = endpoint;
   }
 
@@ -82,7 +58,9 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
       await ref.read(webPushKeySetNotifierProvider(account).notifier).delete();
     }
     await ref.read(sharedPreferencesProvider).remove(_key);
-    await ref.read(sharedPreferencesProvider).remove(_isProxyKey);
+    if (ref.read(sharedPreferencesProvider).containsKey(_isProxyKey)) {
+      await ref.read(sharedPreferencesProvider).remove(_isProxyKey);
+    }
     state = null;
   }
 }
