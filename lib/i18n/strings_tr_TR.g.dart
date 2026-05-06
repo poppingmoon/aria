@@ -1478,6 +1478,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get presets => 'Ön ayar';
 	@override String get zeroPadding => 'Sıfır doldurma';
 	@override String get nothingToConfigure => 'Ayarlar seçeneği bulunmamaktadır.';
+	@override String get viewRenotedChannel => 'Show renoted channel';
 	@override late final _TranslationsMisskeyImageEditingTrTr imageEditing_ = _TranslationsMisskeyImageEditingTrTr._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorTrTr imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorTrTr._(_root);
 	@override late final _TranslationsMisskeyCompressionTrTr compression_ = _TranslationsMisskeyCompressionTrTr._(_root);
@@ -4790,6 +4791,8 @@ class _TranslationsMisskeyImageEffectorFxPropsTrTr extends TranslationsMisskeyIm
 	@override String get threshold => 'Eşik';
 	@override String get centerX => 'Merkez X';
 	@override String get centerY => 'Merkez Y';
+	@override String get density => 'Yoğunluk';
+	@override String get zoomLinesOutlineThickness => 'çizgi gölge kalınlığı';
 	@override String get zoomLinesMaskSize => 'Merkez çapı';
 	@override String get circle => 'Dairesel';
 }

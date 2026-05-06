@@ -1412,6 +1412,7 @@ frame: "邊框"
 presets: "預設值"
 zeroPadding: "補零"
 nothingToConfigure: "無可設定的項目"
+viewRenotedChannel: "顯示轉發貼文者的頻道"
 imageEditing_:
   vars_:
     caption: "檔案標題"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "閾值"
     centerX: "X中心座標"
     centerY: "Y中心座標"
+    density: "密度"
+    zoomLinesOutlineThickness: "線條陰影的粗細"
     zoomLinesMaskSize: "中心直徑"
     circle: "圓形"
 drafts: "草稿\n"

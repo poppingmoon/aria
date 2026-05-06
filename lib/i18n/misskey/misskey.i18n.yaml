@@ -1412,6 +1412,7 @@ frame: "Frame"
 presets: "Preset"
 zeroPadding: "Zero padding"
 nothingToConfigure: "No configurable options available"
+viewRenotedChannel: "Show renoted channel"
 imageEditing_:
   vars_:
     caption: "File caption"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "Threshold"
     centerX: "Center X"
     centerY: "Center Y"
+    density: "Density"
+    zoomLinesOutlineThickness: "Outline shadow thickness"
     zoomLinesMaskSize: "Center diameter"
     circle: "Circular"
 drafts: "Drafts"

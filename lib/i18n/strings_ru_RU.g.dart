@@ -1413,7 +1413,9 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get untitled => 'Без названия';
 	@override String get noName => 'Имя не указано';
 	@override String get skip => 'Пропустить';
+	@override String get restore => 'Восстановить';
 	@override String get syncBetweenDevices => 'Синхронизировать между устройствами';
+	@override String get paste => 'вставить';
 	@override String get postForm => 'Форма отправки';
 	@override String get textCount => 'Количество символов';
 	@override String get information => 'Описание';
@@ -1504,6 +1506,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWatermarkEditorRuRu watermarkEditor_ = _TranslationsMisskeyWatermarkEditorRuRu._(_root);
 	@override late final _TranslationsMisskeyImageEffectorRuRu imageEffector_ = _TranslationsMisskeyImageEffectorRuRu._(_root);
 	@override String get drafts => 'Черновик';
+	@override late final _TranslationsMisskeyDraftsRuRu drafts_ = _TranslationsMisskeyDraftsRuRu._(_root);
 	@override late final _TranslationsMisskeyQrRuRu qr_ = _TranslationsMisskeyQrRuRu._(_root);
 }
 
@@ -2731,6 +2734,16 @@ class _TranslationsMisskeyImageEffectorRuRu extends TranslationsMisskeyImageEffe
 
 	// Translations
 	@override late final _TranslationsMisskeyImageEffectorFxPropsRuRu fxProps_ = _TranslationsMisskeyImageEffectorFxPropsRuRu._(_root);
+}
+
+// Path: misskey.drafts_
+class _TranslationsMisskeyDraftsRuRu extends TranslationsMisskeyDraftsEnUs {
+	_TranslationsMisskeyDraftsRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get restore => 'Восстановить';
 }
 
 // Path: misskey.qr_

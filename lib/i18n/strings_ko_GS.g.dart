@@ -1668,6 +1668,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get presets => '프리셋';
 	@override String get zeroPadding => '0으로 채우기';
 	@override String get nothingToConfigure => '설정 항목이 없습니다.';
+	@override String get viewRenotedChannel => '리노트된 채널 보기';
 	@override late final _TranslationsMisskeyImageEditingKoGs imageEditing_ = _TranslationsMisskeyImageEditingKoGs._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorKoGs imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorKoGs._(_root);
 	@override late final _TranslationsMisskeyCompressionKoGs compression_ = _TranslationsMisskeyCompressionKoGs._(_root);
@@ -5006,6 +5007,8 @@ class _TranslationsMisskeyImageEffectorFxPropsKoGs extends TranslationsMisskeyIm
 	@override String get threshold => '한계 값';
 	@override String get centerX => 'X축 중심';
 	@override String get centerY => 'Y축 중심';
+	@override String get density => '밀도';
+	@override String get zoomLinesOutlineThickness => '선 그림자의 굵기';
 	@override String get zoomLinesMaskSize => '중앙 값';
 	@override String get circle => '원형';
 }

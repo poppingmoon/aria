@@ -1419,7 +1419,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get unmarkAsSensitiveConfirm => 'ต้องการยกเลิกการระบุว่าสื่อนี้มีเนื้อหาละเอียดอ่อนหรือไม่?';
 	@override String get preferences => 'การตั้งค่าสภาพแวดล้อม';
 	@override String get accessibility => 'การช่วยการเข้าถึง';
-	@override String get preferencesProfile => 'โปรไฟล์การกำหนดค่า';
+	@override String get preferencesProfile => 'โปรไฟล์ของการตั้งค่า';
 	@override String get copyPreferenceId => 'คัดลือก ID การตั้งค่า';
 	@override String get resetToDefaultValue => 'คืนค่าเป็นค่าเริ่มต้น';
 	@override String get overrideByAccount => 'เขียนทับด้วยบัญชี';
@@ -1429,10 +1429,10 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get restore => 'กู้คืน';
 	@override String get syncBetweenDevices => 'ซิงค์ระหว่างอุปกรณ์';
 	@override String get preferenceSyncConflictTitle => 'การตั้งค่ามีอยู่บนเซิร์ฟเวอร์';
-	@override String get preferenceSyncConflictText => 'การตั้งค่าที่เปิดใช้งานการซิงค์จะบันทึกค่าลงในเซิร์ฟเวอร์ อย่างไรก็ดี พบว่ามีค่าการตั้งค่านี้ที่เคยบันทึกไว้ในเซิร์ฟเวอร์แล้ว ต้องการดำเนินการอย่างไร?';
+	@override String get preferenceSyncConflictText => 'รายการตั้งค่าที่เปิดการซิงก์จะถูกบันทึกลงเซิร์ฟเวอร์ แต่รายการตั้งค่านี้ได้ถูกบันทึกลงเซิร์ฟเวอร์ไว้อยู่แล้ว ต้องการดำเนินการอย่างไร?';
 	@override String get preferenceSyncConflictChoiceMerge => 'รวมเข้าด้วยกัน';
-	@override String get preferenceSyncConflictChoiceServer => 'เขียนทับด้วยค่าการตั้งค่าเซิร์ฟเวอร์';
-	@override String get preferenceSyncConflictChoiceDevice => 'เขียนทับด้วยค่าการตั้งค่าอุปกรณ์';
+	@override String get preferenceSyncConflictChoiceServer => 'เขียนทับด้วยค่าการตั้งค่าของเซิร์ฟเวอร์';
+	@override String get preferenceSyncConflictChoiceDevice => 'เขียนทับด้วยค่าการตั้งค่าของอุปกรณ์';
 	@override String get preferenceSyncConflictChoiceCancel => 'ยกเลิกการเปิดใช้งานการซิงค์';
 	@override String get paste => 'วาง';
 	@override String get emojiPalette => 'จานสีเอโมจิ';
@@ -1492,6 +1492,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get presets => 'พรีเซ็ต';
 	@override String get zeroPadding => 'ห่างเป็น 0';
 	@override String get nothingToConfigure => 'ไม่มีอะไรให้ต้ังค่า';
+	@override String get viewRenotedChannel => 'แสดงช่องที่ถูกรีโน้ต';
 	@override late final _TranslationsMisskeyImageEditingThTh imageEditing_ = _TranslationsMisskeyImageEditingThTh._(_root);
 	@override late final _TranslationsMisskeyImageFrameEditorThTh imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorThTh._(_root);
 	@override late final _TranslationsMisskeyCompressionThTh compression_ = _TranslationsMisskeyCompressionThTh._(_root);
@@ -2099,7 +2100,7 @@ class _TranslationsMisskeySensitiveMediaDetectionThTh extends TranslationsMisske
 	@override String get sensitivityDescription => 'เมื่อความไวต่ำ Misdetection (ผลบวกลวง) จะลดลง, เมื่อความไวสูง Missed detection (ผลลบลวง) จะลดลง';
 	@override String get setSensitiveFlagAutomatically => 'ทำเครื่องหมายว่ามีเนื้อหาละเอียดอ่อน';
 	@override String get setSensitiveFlagAutomaticallyDescription => 'ผลลัพธ์ของการตรวจจับภายในนั้นจะยังคงอยู่ ถึงแม้ว่าจะปิดตัวเลือกนี้';
-	@override String get analyzeVideos => 'เปิดใช้งานวิเคราะห์ของวิดีโอ';
+	@override String get analyzeVideos => 'เปิดใช้งานวิเคราะห์วิดีโอ';
 	@override String get analyzeVideosDescription => 'การวิเคราะห์วิดีโอนอกเหนือจากรูปภาพนั้น การทำสิ่งนี้จะทำให้เพิ่มภาระบนเซิร์ฟเวอร์เล็กน้อย';
 }
 
@@ -2748,7 +2749,7 @@ class _TranslationsMisskeyCwThTh extends TranslationsMisskeyCwEnUs {
 
 	// Translations
 	@override String get hide => 'ซ่อน';
-	@override String get show => 'โหลดเพิ่มเติม';
+	@override String get show => 'ดูเพิ่มเติม';
 	@override String chars({required Object count}) => '${count} ตัวอักษร';
 	@override String files({required Object count}) => '${count} ไฟล์';
 }
@@ -3352,7 +3353,7 @@ class _TranslationsMisskeyMediaControlsThTh extends TranslationsMisskeyMediaCont
 	final TranslationsThTh _root; // ignore: unused_field
 
 	// Translations
-	@override String get pip => 'รูปภาพในรูปภาม';
+	@override String get pip => 'ภาพซ้อนภาพ (PiP)';
 	@override String get playbackRate => 'ความเร็วในการเล่น';
 	@override String get loop => 'เล่นวนซ้ำ';
 }
@@ -4512,7 +4513,7 @@ class _TranslationsMisskeyDataSaverMediaThTh extends TranslationsMisskeyDataSave
 	final TranslationsThTh _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'โหลดสื่อ';
+	@override String get title => 'ปิดใช้งานการโหลดสื่ออัตโนมัติ';
 	@override String get description => 'กันไม่ให้ภาพและวิดีโอโหลดโดยอัตโนมัติ แตะรูปภาพ/วิดีโอที่ซ่อนอยู่เพื่อโหลด';
 }
 
@@ -4804,6 +4805,8 @@ class _TranslationsMisskeyImageEffectorFxPropsThTh extends TranslationsMisskeyIm
 	@override String get threshold => 'เทรชโฮลด์';
 	@override String get centerX => 'กลาง X';
 	@override String get centerY => 'กลาง Y';
+	@override String get density => 'ความหนาทึบ';
+	@override String get zoomLinesOutlineThickness => 'ความหนาของเงาเส้น';
 	@override String get zoomLinesMaskSize => 'ขนาดพื้นที่ตรงกลาง';
 	@override String get circle => 'ทรงกลม';
 }

@@ -153,6 +153,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get loginWithAccessToken => 'Mit einem Zugangstoken anmelden';
 	@override String get margin => 'Außenabstand';
 	@override String get media => 'Medien';
+	@override String get mediaSaveLocation => 'Medienspeicherort';
 	@override String get mentionToRemoteWarning => 'Diese Notiz enthält Erwähnungen fremder Benutzer';
 	@override String get mergeReactionsByName => 'Reaktionen mit dem gleichen Namen zusammenführen';
 	@override String get moved => 'Verschoben';
@@ -186,6 +187,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => 'In externem Browser öffnen';
 	@override String get openInInternalBrowser => 'In internem Browser öffnen';
 	@override String get openMenu => 'Menü öffnen';
+	@override String get openNotificationSettings => 'Benachrichtigungseinstellungen öffnen';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Öffne '),
 		scratchpad,
@@ -239,6 +241,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get showAvatarsInNote => 'Avatare in Notizen anzeigen';
 	@override String get showAvatarsInSubNote => 'Avatare in Zitaten und Antworten anzeigen';
 	@override String get showCaption => 'Alternativtext anzeigen';
+	@override String get showEmojiInReactionNotification => 'Emoji in Reaktions-Benachrichtigungen anzeigen';
 	@override String get showEntireImage => 'Seitenverhältnis beibehalten';
 	@override String get showExpandedImage => 'Anzeigebereich ausfüllen';
 	@override String get showGapBetweenNotesInTimeline => 'Abstände zwischen Notizen in der Chronik anzeigen';
@@ -278,6 +281,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get tapToShow => 'Antippen zum Anzeigen';
 	@override String get timeMachine => 'Zeitmaschine';
 	@override String get timelinesPageButtons => 'Chronik-Schaltflächen';
+	@override String get trigger => 'Trigger';
 	@override String get unfavorited => 'Aus Favoriten entfernt';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Möchtest du '),

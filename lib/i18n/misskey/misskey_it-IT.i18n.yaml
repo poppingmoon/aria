@@ -1412,6 +1412,7 @@ frame: "Cornice"
 presets: "Preimpostato"
 zeroPadding: "Al vivo"
 nothingToConfigure: "Niente da configurare"
+viewRenotedChannel: "Visualizza il canale del Rinota"
 imageEditing_:
   vars_:
     caption: "Didascalia dell'immagine"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "Soglia"
     centerX: "Centro orizzontale"
     centerY: "Centro verticale"
+    density: "Densità"
+    zoomLinesOutlineThickness: "Spessore del bordo"
     zoomLinesMaskSize: "Ampiezza del diametro"
     circle: "Circolare"
 drafts: "Bozze"

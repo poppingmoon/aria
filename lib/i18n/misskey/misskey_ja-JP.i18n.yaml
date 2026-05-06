@@ -1412,6 +1412,7 @@ frame: "フレーム"
 presets: "プリセット"
 zeroPadding: "ゼロ埋め"
 nothingToConfigure: "設定項目はありません"
+viewRenotedChannel: "リノート先のチャンネルを見る"
 imageEditing_:
   vars_:
     caption: "ファイルのキャプション"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "しきい値"
     centerX: "中心X"
     centerY: "中心Y"
+    density: "密度"
+    zoomLinesOutlineThickness: "線の影の太さ"
     zoomLinesMaskSize: "中心径"
     circle: "円形"
 drafts: "下書き"

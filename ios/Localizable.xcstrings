@@ -2277,7 +2277,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已屏蔽的用户 的导出"
+            "value": "已完成 禁止与我互动的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2662,7 +2662,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已隐藏的用户 的导出"
+            "value": "已完成 已屏蔽的用户 的导出"
           }
         },
         "zh-Hant": {

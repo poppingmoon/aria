@@ -1412,6 +1412,7 @@ frame: "Marc"
 presets: "Predefinit"
 zeroPadding: "Sense omplir"
 nothingToConfigure: "No hi ha res a configurar"
+viewRenotedChannel: "Mirar el canal d'impulsos "
 imageEditing_:
   vars_:
     caption: "Títol de l'arxiu"
@@ -3405,6 +3406,8 @@ imageEffector_:
     threshold: "Llindar"
     centerX: "Centre de X"
     centerY: "Centre de Y"
+    density: "Densitat"
+    zoomLinesOutlineThickness: "Amplada de les vores exteriors"
     zoomLinesMaskSize: "Diàmetre del centre"
     circle: "Cercle"
 drafts: "Esborrany "

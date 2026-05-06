@@ -8,7 +8,6 @@ PODS:
   - image_editor_common (1.0.0):
     - Flutter
     - FlutterMacOS
-  - isar_community_flutter_libs (1.0.0)
   - OrderedSet (6.0.3)
   - rust_lib_aria (0.0.1):
     - FlutterMacOS
@@ -25,7 +24,6 @@ DEPENDENCIES:
   - flutter_inappwebview_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_inappwebview_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - image_editor_common (from `Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos`)
-  - isar_community_flutter_libs (from `Flutter/ephemeral/.symlinks/plugins/isar_community_flutter_libs/macos`)
   - rust_lib_aria (from `Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos`)
   - screen_brightness_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_brightness_macos/macos`)
   - screen_retriever_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos`)
@@ -44,8 +42,6 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
   image_editor_common:
     :path: Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos
-  isar_community_flutter_libs:
-    :path: Flutter/ephemeral/.symlinks/plugins/isar_community_flutter_libs/macos
   rust_lib_aria:
     :path: Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos
   screen_brightness_macos:
@@ -60,7 +56,6 @@ SPEC CHECKSUMS:
   flutter_inappwebview_macos: bdf207b8f4ebd58e86ae06cd96b147de99a67c9b
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
-  isar_community_flutter_libs: 8f2a1bdaae8c53ef898270dbdc06c80b277be8ae
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34
   screen_brightness_macos: 2d6d3af2165592d9a55ffcd95b7550970e41ebda
