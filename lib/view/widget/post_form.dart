@@ -73,6 +73,7 @@ class PostForm extends HookConsumerWidget {
     this.onExpand,
     this.onAccountChanged,
     this.showPostButton = false,
+    this.shouldPop = false,
     this.maxLines,
     this.thumbnailSize = 200.0,
   });
@@ -89,10 +90,11 @@ class PostForm extends HookConsumerWidget {
   final void Function(Account account)? onExpand;
   final void Function(Account account)? onAccountChanged;
   final bool showPostButton;
+  final bool shouldPop;
   final int? maxLines;
   final double thumbnailSize;
 
-  static Future<void> post(
+  static Future<Note?> post(
     WidgetRef ref,
     Account account,
     String? noteId,
@@ -112,48 +114,53 @@ class PostForm extends HookConsumerWidget {
                 .uploadAll(),
           )
         : null;
-    if (hasFiles && files == null) return;
+    if (hasFiles && files == null) {
+      return null;
+    }
     ref
         .read(postNotifierProvider(account, noteId: noteId).notifier)
         .setFiles(files);
     final draft = ref.read(postNotifierProvider(account, noteId: noteId));
-    if (!ref.context.mounted) return;
+    if (!ref.context.mounted) {
+      return null;
+    }
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
       final confirmed = await confirmPost(ref, account, draft);
-      if (!confirmed) return;
-      if (!ref.context.mounted) return;
+      if (!confirmed || !ref.context.mounted) {
+        return null;
+      }
     }
     final result = await futureWithDialog(
       ref.context,
       ref.read(postNotifierProvider(account, noteId: noteId).notifier).post(),
     );
-    if (!ref.context.mounted) return;
-    if (result case final note?) {
-      if (note.text case final text?) {
-        final nodes = parse(text);
-        final hashtags = nodes
-            .extract((node) => node is MfmHashtag)
-            .whereType<MfmHashtag>()
-            .map((node) => node.hashtag);
-        final history = ref
-            .read(accountSettingsNotifierProvider(account))
-            .hashtags;
-        unawaited(
-          ref
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .setHashtags({...hashtags, ...history}.toList()),
-        );
-      }
-      if (note.replyId case final replyId?) {
-        ref.invalidate(childrenNotesNotifierProvider(account, replyId));
-      }
-      if (note.renoteId case final renoteId?) {
-        ref.invalidate(childrenNotesNotifierProvider(account, renoteId));
-      }
-      ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
-      ref.context.pop();
+    if (result == null || !ref.context.mounted) {
+      return null;
     }
+    if (result.text case final text?) {
+      final nodes = parse(text);
+      final hashtags = nodes
+          .extract((node) => node is MfmHashtag)
+          .whereType<MfmHashtag>()
+          .map((node) => node.hashtag);
+      final history = ref
+          .read(accountSettingsNotifierProvider(account))
+          .hashtags;
+      unawaited(
+        ref
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setHashtags({...hashtags, ...history}.toList()),
+      );
+    }
+    if (result.replyId case final replyId?) {
+      ref.invalidate(childrenNotesNotifierProvider(account, replyId));
+    }
+    if (result.renoteId case final renoteId?) {
+      ref.invalidate(childrenNotesNotifierProvider(account, renoteId));
+    }
+    ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
+    return result;
   }
 
   @override
@@ -374,9 +381,13 @@ class PostForm extends HookConsumerWidget {
     return Shortcuts(
       shortcuts: {
         ...disablingTextShortcuts,
-        submitActivator: VoidCallbackIntent(() {
+        submitActivator: VoidCallbackIntent(() async {
           if (canPost) {
-            post(ref, account.value, noteId);
+            final result = await post(ref, account.value, noteId);
+            if (!context.mounted) return;
+            if (shouldPop && result != null) {
+              context.pop();
+            }
           }
         }),
       },
@@ -395,7 +406,13 @@ class PostForm extends HookConsumerWidget {
               child: _PostFormHeader(
                 account: account.value,
                 noteId: noteId,
-                post: post,
+                post: (ref, account, noteId) async {
+                  final result = await post(ref, account, noteId);
+                  if (!ref.context.mounted) return;
+                  if (shouldPop && result != null) {
+                    context.pop();
+                  }
+                },
                 onAccountChanged: (newAccount) {
                   final previousAttaches = attaches;
                   account.value = newAccount;

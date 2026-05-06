@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
@@ -111,7 +112,17 @@ class PostPage extends HookConsumerWidget {
                           .uploadAll(),
                     )
                   : canPost
-                  ? () => PostForm.post(ref, account.value, noteId)
+                  ? () async {
+                      final result = await PostForm.post(
+                        ref,
+                        account.value,
+                        noteId,
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        context.pop();
+                      }
+                    }
                   : null,
               icon: Icon(buttonIcon),
             ),
@@ -142,6 +153,7 @@ class PostPage extends HookConsumerWidget {
                             hashtagFocusNode: hashtagFocusNode,
                             onAccountChanged: (newAccount) =>
                                 account.value = newAccount,
+                            shouldPop: true,
                           ),
                         ),
                       ),
@@ -216,7 +228,17 @@ class PostPage extends HookConsumerWidget {
             !isCwFocused.value && !isFocused.value && !isHashtagFocused.value
             ? FloatingActionButton.extended(
                 onPressed: canPost
-                    ? () => PostForm.post(ref, account.value, noteId)
+                    ? () async {
+                        final result = await PostForm.post(
+                          ref,
+                          account.value,
+                          noteId,
+                        );
+                        if (!context.mounted) return;
+                        if (result != null) {
+                          context.pop();
+                        }
+                      }
                     : null,
                 backgroundColor: Colors.transparent,
                 extendedPadding: EdgeInsets.zero,
