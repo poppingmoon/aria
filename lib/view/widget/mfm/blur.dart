@@ -19,16 +19,15 @@ class Blur extends HookWidget {
       onHover: (value) => blurred.value = !value,
       splashFactory: NoSplash.splashFactory,
       overlayColor: const WidgetStatePropertyAll(Colors.transparent),
-      child: blurred.value
-          ? ImageFiltered(
-              imageFilter: ImageFilter.blur(
-                sigmaX: 6.0,
-                sigmaY: 6.0,
-                tileMode: TileMode.decal,
-              ),
-              child: AbsorbPointer(child: child),
-            )
-          : child,
+      child: ImageFiltered(
+        imageFilter: ImageFilter.blur(
+          sigmaX: 6.0,
+          sigmaY: 6.0,
+          tileMode: TileMode.decal,
+        ),
+        enabled: blurred.value,
+        child: AbsorbPointer(absorbing: blurred.value, child: child),
+      ),
     );
   }
 }
