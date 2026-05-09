@@ -46,8 +46,10 @@ class DriveFileInfo extends ConsumerWidget {
   Future<void> _setComment(WidgetRef ref, DriveFile file) async {
     final comment = await showDialog<String>(
       context: ref.context,
-      builder: (context) =>
-          FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
+      builder: (context) => FileCaptionEditDialog(
+        account: account,
+        file: DrivePostFile.fromDriveFile(file),
+      ),
     );
     if (!ref.context.mounted) return;
     if (comment != null && comment != file.comment) {

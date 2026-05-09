@@ -5,15 +5,22 @@ import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../widget/post_file_thumbnail.dart';
+import 'audio_dialog.dart';
 import 'image_dialog.dart';
 import 'image_gallery_dialog.dart';
 import 'video_dialog.dart';
 
 class FileCaptionEditDialog extends HookWidget {
-  const FileCaptionEditDialog({super.key, required this.file});
+  const FileCaptionEditDialog({
+    super.key,
+    required this.account,
+    required this.file,
+  });
 
+  final Account account;
   final PostFile file;
 
   @override
@@ -74,6 +81,26 @@ class FileCaptionEditDialog extends HookWidget {
                           fileName: file.name,
                           thumbnailUrl: switch (file) {
                             DrivePostFile(:final file) => file.thumbnailUrl,
+                            _ => null,
+                          },
+                        ),
+                      ),
+                    final type? when type.startsWith('audio/') =>
+                      () => showDialog<void>(
+                        context: context,
+                        builder: (context) => AudioDialog(
+                          account: account,
+                          url: switch (file) {
+                            DrivePostFile(:final file) => file.url,
+                            _ => null,
+                          },
+                          file: switch (file) {
+                            LocalPostFile(:final file) => file,
+                            _ => null,
+                          },
+                          fileName: file.name,
+                          user: switch (file) {
+                            DrivePostFile(:final file) => file.user,
                             _ => null,
                           },
                         ),

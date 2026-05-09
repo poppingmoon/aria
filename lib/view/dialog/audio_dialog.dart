@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:audio_service/audio_service.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
@@ -27,35 +28,44 @@ class AudioDialog extends HookConsumerWidget {
   const AudioDialog({
     super.key,
     required this.account,
-    required this.file,
+    this.url,
+    this.file,
+    required this.fileName,
     this.user,
     this.noteId,
   });
 
   final Account account;
-  final DriveFile file;
+  final String? url;
+  final File? file;
+  final String fileName;
   final User? user;
   final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = this.user ?? file.user;
-
     return Dialog(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: switch (defaultTargetPlatform) {
-          TargetPlatform.android ||
-          TargetPlatform.iOS ||
-          TargetPlatform.macOS => _AudioWidget(
-            account: account,
-            file: file,
-            user: user,
-            noteId: noteId,
-          ),
+        child: switch ((defaultTargetPlatform, url)) {
+          (
+            TargetPlatform.android ||
+                TargetPlatform.iOS ||
+                TargetPlatform.macOS,
+            final url?,
+          ) =>
+            _AudioWidget(
+              account: account,
+              url: url,
+              fileName: fileName,
+              user: user,
+              noteId: noteId,
+            ),
           _ => _VideoPlayerAudioWidget(
             account: account,
+            url: url,
             file: file,
+            fileName: fileName,
             user: user,
             noteId: noteId,
           ),
@@ -68,13 +78,15 @@ class AudioDialog extends HookConsumerWidget {
 class _AudioWidget extends HookConsumerWidget {
   const _AudioWidget({
     required this.account,
-    required this.file,
+    required this.url,
+    required this.fileName,
     required this.user,
     required this.noteId,
   });
 
   final Account account;
-  final DriveFile file;
+  final String url;
+  final String fileName;
   final User? user;
   final String? noteId;
 
@@ -96,8 +108,8 @@ class _AudioWidget extends HookConsumerWidget {
         final audioHandler = await ref.read(audioHandlerProvider.future);
         await audioHandler.updateMediaItem(
           MediaItem(
-            id: file.url,
-            title: file.name,
+            id: url,
+            title: fileName,
             artist: user?.nameOrUsername,
             artUri: user?.avatarUrl,
           ),
@@ -114,7 +126,8 @@ class _AudioWidget extends HookConsumerWidget {
       children: [
         _AudioHeader(
           account: account,
-          file: file,
+          url: url,
+          fileName: fileName,
           user: user,
           noteId: noteId,
           pause: audioHandler?.pause,
@@ -164,20 +177,29 @@ class _AudioWidget extends HookConsumerWidget {
 class _VideoPlayerAudioWidget extends HookWidget {
   const _VideoPlayerAudioWidget({
     required this.account,
+    required this.url,
     required this.file,
+    required this.fileName,
     required this.user,
     required this.noteId,
   });
 
   final Account account;
-  final DriveFile file;
+  final String? url;
+  final File? file;
+  final String fileName;
   final User? user;
   final String? noteId;
 
   @override
   Widget build(BuildContext context) {
+    final url = switch (this.url) {
+      final url? => Uri.tryParse(url),
+      _ => null,
+    };
     final videoPlayerController = useVideoPlayerController(
-      url: Uri.tryParse(file.url),
+      url: url,
+      file: file,
       autoPlay: true,
     );
     final videoPlayerValue = useValueListenable(
@@ -191,7 +213,7 @@ class _VideoPlayerAudioWidget extends HookWidget {
       children: [
         _AudioHeader(
           account: account,
-          file: file,
+          fileName: fileName,
           user: user,
           noteId: noteId,
           pause: videoPlayerController?.pause,
@@ -252,14 +274,16 @@ class _VideoPlayerAudioWidget extends HookWidget {
 class _AudioHeader extends ConsumerWidget {
   const _AudioHeader({
     required this.account,
-    required this.file,
+    this.url,
+    required this.fileName,
     required this.user,
     required this.noteId,
     required this.pause,
   });
 
   final Account account;
-  final DriveFile file;
+  final String? url;
+  final String fileName;
   final User? user;
   final String? noteId;
   final void Function()? pause;
@@ -270,78 +294,79 @@ class _AudioHeader extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (user case final user?)
-          Padding(
-            padding: const EdgeInsetsDirectional.only(end: 8.0),
-            child: UserAvatar(
-              account: account,
-              user: user,
-              size: 32.0,
-              onTap: () => context.push('/$account/users/${user.id}'),
-            ),
-          ),
-        Expanded(child: Text(file.name)),
-        PopupMenuButton<void>(
-          itemBuilder: (context) => [
-            if (noteId case final noteId?)
+          UserAvatar(
+            account: account,
+            user: user,
+            size: 32.0,
+            onTap: () => context.push('/$account/users/${user.id}'),
+          )
+        else
+          const Icon(Icons.music_note, size: 32.0),
+        const SizedBox(width: 8.0),
+        Expanded(child: Text(fileName)),
+        if (url case final url?)
+          PopupMenuButton<void>(
+            itemBuilder: (context) => [
+              if (noteId case final noteId?)
+                PopupMenuItem(
+                  onTap: () {
+                    pause?.call();
+                    context.push('/$account/notes/$noteId');
+                  },
+                  child: ListTile(
+                    leading: const Icon(Icons.open_in_new),
+                    title: Text(t.aria.showNote),
+                  ),
+                ),
+              PopupMenuItem(
+                onTap: () async {
+                  final result = await futureWithDialog(
+                    context,
+                    ref
+                        .read(cacheManagerProvider)
+                        .getSingleFile(url)
+                        .then((file) => file.readAsBytes())
+                        .then(
+                          (bytes) => FilePicker.saveFile(
+                            fileName: fileName,
+                            bytes: bytes,
+                          ),
+                        ),
+                  );
+                  if (!context.mounted) return;
+                  if (result != null) {
+                    showToast(context: context, message: t.misskey.saved);
+                  }
+                },
+                child: ListTile(
+                  leading: const Icon(Icons.download_outlined),
+                  title: Text(t.misskey.saveAs),
+                ),
+              ),
               PopupMenuItem(
                 onTap: () {
                   pause?.call();
-                  context.push('/$account/notes/$noteId');
+                  launchUrl(ref, Uri.parse(url));
                 },
                 child: ListTile(
-                  leading: const Icon(Icons.open_in_new),
-                  title: Text(t.aria.showNote),
+                  leading: const Icon(Icons.open_in_browser),
+                  title: Text(t.aria.openInBrowser),
                 ),
               ),
-            PopupMenuItem(
-              onTap: () async {
-                final result = await futureWithDialog(
-                  context,
-                  ref
-                      .read(cacheManagerProvider)
-                      .getSingleFile(file.url)
-                      .then((file) => file.readAsBytes())
-                      .then(
-                        (bytes) => FilePicker.saveFile(
-                          fileName: file.name,
-                          bytes: bytes,
-                        ),
-                      ),
-                );
-                if (!context.mounted) return;
-                if (result != null) {
-                  showToast(context: context, message: t.misskey.saved);
-                }
-              },
-              child: ListTile(
-                leading: const Icon(Icons.download_outlined),
-                title: Text(t.misskey.saveAs),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url),
+                child: ListTile(
+                  leading: const Icon(Icons.copy),
+                  title: Text(t.misskey.copyLink),
+                ),
               ),
+            ],
+            padding: const EdgeInsets.all(4.0),
+            style: IconButton.styleFrom(
+              minimumSize: const Size.square(32.0),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            PopupMenuItem(
-              onTap: () {
-                pause?.call();
-                launchUrl(ref, Uri.parse(file.url));
-              },
-              child: ListTile(
-                leading: const Icon(Icons.open_in_browser),
-                title: Text(t.aria.openInBrowser),
-              ),
-            ),
-            PopupMenuItem(
-              onTap: () => copyToClipboard(context, file.url),
-              child: ListTile(
-                leading: const Icon(Icons.copy),
-                title: Text(t.misskey.copyLink),
-              ),
-            ),
-          ],
-          padding: const EdgeInsets.all(4.0),
-          style: IconButton.styleFrom(
-            minimumSize: const Size.square(32.0),
-            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
-        ),
       ],
     );
   }

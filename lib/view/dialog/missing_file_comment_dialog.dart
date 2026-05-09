@@ -9,6 +9,7 @@ import '../../model/post_file.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/post_file_thumbnail.dart';
+import 'audio_dialog.dart';
 import 'file_caption_edit_dialog.dart';
 import 'image_dialog.dart';
 import 'image_gallery_dialog.dart';
@@ -87,6 +88,26 @@ class MissingFileCommentDialog extends ConsumerWidget {
                           },
                         ),
                       ),
+                    final type? when type.startsWith('audio/') =>
+                      () => showDialog<void>(
+                        context: context,
+                        builder: (context) => AudioDialog(
+                          account: account,
+                          url: switch (file) {
+                            DrivePostFile(:final file) => file.url,
+                            _ => null,
+                          },
+                          file: switch (file) {
+                            LocalPostFile(:final file) => file,
+                            _ => null,
+                          },
+                          fileName: file.name,
+                          user: switch (file) {
+                            DrivePostFile(:final file) => file.user,
+                            _ => null,
+                          },
+                        ),
+                      ),
                     _ => null,
                   },
                   onLongPress: () => showModalBottomSheet<void>(
@@ -112,7 +133,8 @@ class MissingFileCommentDialog extends ConsumerWidget {
           onPressed: () async {
             final result = await showDialog<String>(
               context: context,
-              builder: (context) => FileCaptionEditDialog(file: file),
+              builder: (context) =>
+                  FileCaptionEditDialog(account: account, file: file),
             );
             if (!ref.context.mounted) return;
             if (result != null && result.isNotEmpty) {
