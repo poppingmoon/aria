@@ -273,6 +273,19 @@ class BehaviorPage extends HookConsumerWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 width: maxContentWidth,
                 child: SwitchListTile(
+                  title: Text(t.aria.confirmBeforePostingMediaWithoutComment),
+                  value: settings.confirmBeforePostingMediaWithoutComment,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setConfirmBeforePostingMediaWithoutComment(value),
+                ),
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: SwitchListTile(
                   title: Text(t.misskey.confirmWhenRevealingSensitiveMedia),
                   value: settings.confirmWhenRevealingSensitiveMedia,
                   onChanged: (value) => ref

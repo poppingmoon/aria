@@ -534,6 +534,16 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setConfirmBeforePostingMediaWithoutComment(
+    bool confirmBeforePostingMediaWithoutComment,
+  ) async {
+    state = state.copyWith(
+      confirmBeforePostingMediaWithoutComment:
+          confirmBeforePostingMediaWithoutComment,
+    );
+    await _save();
+  }
+
   Future<void> setConfirmWhenRevealingSensitiveMedia(
     bool confirmWhenRevealingSensitiveMedia,
   ) async {

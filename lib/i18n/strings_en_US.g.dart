@@ -131,6 +131,9 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Confirm before post'
 	String get confirmBeforePost => 'Confirm before post';
 
+	/// en-US: 'Confirm before posting media without alt text'
+	String get confirmBeforePostingMediaWithoutComment => 'Confirm before posting media without alt text';
+
 	/// en-US: 'Confirm before react'
 	String get confirmBeforeReact => 'Confirm before react';
 
@@ -315,6 +318,9 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Merge reactions with the same name'
 	String get mergeReactionsByName => 'Merge reactions with the same name';
+
+	/// en-US: 'This file is missing alt text. Do you want to add it?'
+	String get missingFileCommentWarning => 'This file is missing alt text. Do you want to add it?';
 
 	/// en-US: 'Moved'
 	String get moved => 'Moved';

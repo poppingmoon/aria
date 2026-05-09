@@ -646,8 +646,13 @@ class _AudioPreview extends StatelessWidget {
   void _openAudio(BuildContext context) {
     showDialog<void>(
       context: context,
-      builder: (context) =>
-          AudioDialog(account: account, file: file, user: user, noteId: noteId),
+      builder: (context) => AudioDialog(
+        account: account,
+        url: file.url,
+        fileName: file.name,
+        user: user ?? file.user,
+        noteId: noteId,
+      ),
     );
   }
 

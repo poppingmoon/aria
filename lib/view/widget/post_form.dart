@@ -39,6 +39,7 @@ import '../../util/future_with_dialog.dart';
 import '../../util/pick_date_time.dart';
 import '../../util/punycode.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/missing_file_comment_dialog.dart';
 import '../dialog/note_drafts_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/scheduled_notes_dialog.dart';
@@ -104,6 +105,34 @@ class PostForm extends HookConsumerWidget {
     );
     final hasFiles = attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
+    final settings = ref.read(generalSettingsNotifierProvider);
+    if (settings.confirmBeforePostingMediaWithoutComment) {
+      final filesWithoutComment = attaches.indexed.where(
+        (file) =>
+            (file.$2.type?.startsWith(RegExp('(image|video|audio)/')) ??
+                false) &&
+            file.$2.comment == null,
+      );
+      if (filesWithoutComment.isNotEmpty) {
+        for (final (index, file) in filesWithoutComment) {
+          final result = await showDialog<(PostFile?,)>(
+            context: ref.context,
+            builder: (context) =>
+                MissingFileCommentDialog(account: account, file: file),
+          );
+          if (!ref.context.mounted || result == null) {
+            return null;
+          }
+          if (result.$1 case final file?) {
+            ref
+                .read(
+                  attachesNotifierProvider(account, noteId: noteId).notifier,
+                )
+                .replace(index, file);
+          }
+        }
+      }
+    }
     final files = hasFiles
         ? await futureWithDialog(
             ref.context,

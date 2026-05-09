@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
-import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
+import '../../provider/api/misskey_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../widget/post_file_thumbnail.dart';
 import 'audio_dialog.dart';
+import 'file_caption_edit_dialog.dart';
 import 'image_dialog.dart';
 import 'image_gallery_dialog.dart';
 import 'video_dialog.dart';
 
-class FileCaptionEditDialog extends HookWidget {
-  const FileCaptionEditDialog({
+class MissingFileCommentDialog extends ConsumerWidget {
+  const MissingFileCommentDialog({
     super.key,
     required this.account,
     required this.file,
@@ -24,8 +26,7 @@ class FileCaptionEditDialog extends HookWidget {
   final PostFile file;
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useTextEditingController(text: file.comment);
+  Widget build(BuildContext context, WidgetRef ref) {
     final aspectRatio = switch (file) {
       DrivePostFile(
         file: DriveFile(
@@ -38,10 +39,12 @@ class FileCaptionEditDialog extends HookWidget {
     final theme = Theme.of(context);
 
     return AlertDialog(
-      title: Text(t.misskey.describeFile),
+      icon: const Icon(Icons.help_outline, size: 36.0),
       content: Column(
         mainAxisSize: MainAxisSize.min,
+        spacing: 8.0,
         children: [
+          Text(t.aria.missingFileCommentWarning),
           ConstrainedBox(
             constraints: const BoxConstraints(
               minWidth: double.maxFinite,
@@ -107,6 +110,13 @@ class FileCaptionEditDialog extends HookWidget {
                       ),
                     _ => null,
                   },
+                  onLongPress: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => ListView(
+                      shrinkWrap: true,
+                      children: [ListTile(title: Text(file.name))],
+                    ),
+                  ),
                   child: PostFileThumbnail(
                     height: 360.0,
                     file: file,
@@ -116,44 +126,57 @@ class FileCaptionEditDialog extends HookWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16.0),
-          Shortcuts(
-            shortcuts: {
-              ...disablingTextShortcuts,
-              submitActivator: VoidCallbackIntent(
-                () => context.pop(controller.text),
-              ),
-            },
-            child: TextField(
-              controller: controller,
-              decoration: InputDecoration(
-                labelText: t.misskey.caption,
-                enabledBorder: theme.inputDecorationTheme.border,
-                alignLabelWithHint: true,
-              ),
-              onSubmitted: (value) => context.pop(value),
-              maxLines: 5,
-              autofocus: true,
-              onTapOutside: (_) => primaryFocus?.unfocus(),
-            ),
-          ),
         ],
       ),
       actions: [
         ElevatedButton(
-          onPressed: () => context.pop(controller.text),
-          child: Text(t.misskey.ok),
+          onPressed: () async {
+            final result = await showDialog<String>(
+              context: context,
+              builder: (context) =>
+                  FileCaptionEditDialog(account: account, file: file),
+            );
+            if (!ref.context.mounted) return;
+            if (result != null && result.isNotEmpty) {
+              final file = this.file;
+              switch (file) {
+                case LocalPostFile():
+                  context.pop((file.copyWith(comment: result),));
+                case DrivePostFile():
+                  final driveFile = await futureWithDialog(
+                    ref.context,
+                    ref
+                        .read(misskeyProvider(account))
+                        .apiService
+                        .post<Map<String, dynamic>>(
+                          'drive/files/update',
+                          DriveFilesUpdateRequest(
+                            fileId: file.file.id,
+                            comment: result.isNotEmpty ? result : null,
+                          ).toJson(),
+                          excludeRemoveNullPredicate: (key, _) =>
+                              key == 'comment',
+                        )
+                        .then(DriveFile.fromJson),
+                  );
+                  if (!context.mounted) return;
+                  if (driveFile != null) {
+                    context.pop((DrivePostFile.fromDriveFile(driveFile),));
+                  }
+              }
+            }
+          },
+          child: Text(t.misskey.describeFile),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             foregroundColor: theme.colorScheme.primary,
             backgroundColor: theme.colorScheme.surfaceContainerLowest,
           ),
-          onPressed: () => context.pop(),
-          child: Text(t.misskey.cancel),
+          onPressed: () => context.pop((null,)),
+          child: Text(t.misskey.doNothing),
         ),
       ],
-      scrollable: true,
     );
   }
 }

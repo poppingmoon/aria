@@ -165,7 +165,7 @@ class PostFormAttaches extends ConsumerWidget {
     )[index];
     final result = await showDialog<String>(
       context: ref.context,
-      builder: (context) => FileCaptionEditDialog(file: file),
+      builder: (context) => FileCaptionEditDialog(account: account, file: file),
     );
     if (!ref.context.mounted) return;
     if (result != null && result != file.comment) {
@@ -365,16 +365,29 @@ class PostFormAttaches extends ConsumerWidget {
                           ),
                         ),
                       if (files[index].type?.startsWith('audio/') ?? false)
-                        if (files[index] case DrivePostFile(:final file))
-                          ListTile(
-                            leading: const Icon(Icons.play_arrow),
-                            title: Text(t.aria.playAudio),
-                            onTap: () => showDialog<void>(
-                              context: context,
-                              builder: (context) =>
-                                  AudioDialog(account: account, file: file),
+                        ListTile(
+                          leading: const Icon(Icons.play_arrow),
+                          title: Text(t.aria.playAudio),
+                          onTap: () => showDialog<void>(
+                            context: context,
+                            builder: (context) => AudioDialog(
+                              account: account,
+                              url: switch (files[index]) {
+                                DrivePostFile(:final file) => file.url,
+                                _ => null,
+                              },
+                              file: switch (files[index]) {
+                                LocalPostFile(:final file) => file,
+                                _ => null,
+                              },
+                              user: switch (files[index]) {
+                                DrivePostFile(:final file) => file.user,
+                                _ => null,
+                              },
+                              fileName: files[index].name,
                             ),
                           ),
+                        ),
                       ListTile(
                         leading: const Icon(Icons.edit),
                         title: Text(t.misskey.renameFile),

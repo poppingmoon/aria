@@ -66,8 +66,10 @@ class DriveFileSheet extends ConsumerWidget {
   Future<void> _describeFile(WidgetRef ref) async {
     final result = await showDialog<String>(
       context: ref.context,
-      builder: (context) =>
-          FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
+      builder: (context) => FileCaptionEditDialog(
+        account: account,
+        file: DrivePostFile.fromDriveFile(file),
+      ),
     );
     if (!ref.context.mounted) return;
     if (result != null && result != file.name) {

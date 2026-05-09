@@ -137,6 +137,7 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforeRenote,
     @Default(true) bool confirmBeforeReact,
     @Default(true) bool confirmBeforeFollow,
+    @Default(false) bool confirmBeforePostingMediaWithoutComment,
     @Default(false) bool confirmWhenRevealingSensitiveMedia,
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
     String? mediaSaveLocation,
