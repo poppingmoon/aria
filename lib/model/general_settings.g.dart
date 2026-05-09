@@ -154,6 +154,8 @@ _GeneralSettings _$GeneralSettingsFromJson(
   confirmBeforeRenote: json['confirmBeforeRenote'] as bool? ?? true,
   confirmBeforeReact: json['confirmBeforeReact'] as bool? ?? true,
   confirmBeforeFollow: json['confirmBeforeFollow'] as bool? ?? true,
+  confirmBeforePostingMediaWithoutComment:
+      json['confirmBeforePostingMediaWithoutComment'] as bool? ?? false,
   confirmWhenRevealingSensitiveMedia:
       json['confirmWhenRevealingSensitiveMedia'] as bool? ?? false,
   launchMode:
@@ -285,6 +287,8 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'confirmBeforeRenote': instance.confirmBeforeRenote,
   'confirmBeforeReact': instance.confirmBeforeReact,
   'confirmBeforeFollow': instance.confirmBeforeFollow,
+  'confirmBeforePostingMediaWithoutComment':
+      instance.confirmBeforePostingMediaWithoutComment,
   'confirmWhenRevealingSensitiveMedia':
       instance.confirmWhenRevealingSensitiveMedia,
   'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
