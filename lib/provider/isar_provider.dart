@@ -10,7 +10,8 @@ part 'isar_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 FutureOr<Isar> isar(Ref ref) async {
-  final directory = await getApplicationDocumentsDirectory();
+  final directory = await getApplicationSupportDirectory();
+
   return Isar.open([
     NoteDraftSchema,
     QrReadHistorySchema,
