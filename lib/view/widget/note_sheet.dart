@@ -337,46 +337,44 @@ class NoteSheet extends ConsumerWidget {
                 context.push('/$account/notes/${appearNote.id}/after-renotes'),
           ),
           if (!account.isGuest) ...[
-            if (noteState != null)
+            if (noteState?.isFavorited ?? false)
               ListTile(
-                leading: Icon(
-                  noteState.isFavorited
-                      ? Icons.star_outline_rounded
-                      : Icons.star_rounded,
-                ),
-                title: Text(
-                  noteState.isFavorited
-                      ? t.misskey.unfavorite
-                      : t.misskey.favorite,
-                ),
+                leading: const Icon(Icons.star_outline_rounded),
+                title: Text(t.misskey.unfavorite),
                 onTap: () async {
-                  if (noteState.isFavorited) {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(
-                            noteStateNotifierProvider(
-                              account,
-                              appearNote.id,
-                            ).notifier,
-                          )
-                          .unfavorite(),
-                      message: t.aria.unfavorited,
-                    );
-                  } else {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(
-                            noteStateNotifierProvider(
-                              account,
-                              appearNote.id,
-                            ).notifier,
-                          )
-                          .favorite(),
-                      message: t.misskey.favorited,
-                    );
-                  }
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(
+                          noteStateNotifierProvider(
+                            account,
+                            appearNote.id,
+                          ).notifier,
+                        )
+                        .unfavorite(),
+                    message: t.aria.unfavorited,
+                  );
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+              )
+            else
+              ListTile(
+                leading: const Icon(Icons.star_rounded),
+                title: Text(t.misskey.favorite),
+                onTap: () async {
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(
+                          noteStateNotifierProvider(
+                            account,
+                            appearNote.id,
+                          ).notifier,
+                        )
+                        .favorite(),
+                    message: t.misskey.favorited,
+                  );
                   if (!context.mounted) return;
                   context.pop();
                 },
@@ -393,40 +391,42 @@ class NoteSheet extends ConsumerWidget {
                 ),
               ),
             ),
-            if (noteState != null)
+            if (noteState?.isMutedThread ?? false)
+              ListTile(
+                leading: const Icon(Icons.comments_disabled_outlined),
+                title: Text(t.misskey.unmuteThread),
+                onTap: () async {
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(
+                          noteStateNotifierProvider(
+                            account,
+                            appearNote.id,
+                          ).notifier,
+                        )
+                        .unmuteThread(),
+                  );
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+              )
+            else
               ListTile(
                 leading: const Icon(Icons.comments_disabled),
-                title: Text(
-                  noteState.isMutedThread
-                      ? t.misskey.unmuteThread
-                      : t.misskey.muteThread,
-                ),
+                title: Text(t.misskey.muteThread),
                 onTap: () async {
-                  if (noteState.isMutedThread) {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(
-                            noteStateNotifierProvider(
-                              account,
-                              appearNote.id,
-                            ).notifier,
-                          )
-                          .unmuteThread(),
-                    );
-                  } else {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(
-                            noteStateNotifierProvider(
-                              account,
-                              appearNote.id,
-                            ).notifier,
-                          )
-                          .muteThread(),
-                    );
-                  }
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(
+                          noteStateNotifierProvider(
+                            account,
+                            appearNote.id,
+                          ).notifier,
+                        )
+                        .muteThread(),
+                  );
                   if (!context.mounted) return;
                   context.pop();
                 },
