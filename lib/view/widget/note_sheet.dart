@@ -330,88 +330,6 @@ class NoteSheet extends ConsumerWidget {
                 }
               },
             ),
-          if (noteState != null) ...[
-            ListTile(
-              leading: Icon(
-                noteState.isFavorited
-                    ? Icons.star_outline_rounded
-                    : Icons.star_rounded,
-              ),
-              title: Text(
-                noteState.isFavorited
-                    ? t.misskey.unfavorite
-                    : t.misskey.favorite,
-              ),
-              onTap: () async {
-                if (noteState.isFavorited) {
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(
-                          noteStateNotifierProvider(
-                            account,
-                            appearNote.id,
-                          ).notifier,
-                        )
-                        .unfavorite(),
-                    message: t.aria.unfavorited,
-                  );
-                } else {
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(
-                          noteStateNotifierProvider(
-                            account,
-                            appearNote.id,
-                          ).notifier,
-                        )
-                        .favorite(),
-                    message: t.misskey.favorited,
-                  );
-                }
-                if (!context.mounted) return;
-                context.pop();
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.comments_disabled),
-              title: Text(
-                noteState.isMutedThread
-                    ? t.misskey.unmuteThread
-                    : t.misskey.muteThread,
-              ),
-              onTap: () async {
-                if (noteState.isMutedThread) {
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(
-                          noteStateNotifierProvider(
-                            account,
-                            appearNote.id,
-                          ).notifier,
-                        )
-                        .unmuteThread(),
-                  );
-                } else {
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(
-                          noteStateNotifierProvider(
-                            account,
-                            appearNote.id,
-                          ).notifier,
-                        )
-                        .muteThread(),
-                  );
-                }
-                if (!context.mounted) return;
-                context.pop();
-              },
-            ),
-          ],
           ListTile(
             leading: const Icon(Icons.repeat_rounded),
             title: Text(t.aria.notesAfterRenotes),
@@ -419,6 +337,100 @@ class NoteSheet extends ConsumerWidget {
                 context.push('/$account/notes/${appearNote.id}/after-renotes'),
           ),
           if (!account.isGuest) ...[
+            if (noteState != null)
+              ListTile(
+                leading: Icon(
+                  noteState.isFavorited
+                      ? Icons.star_outline_rounded
+                      : Icons.star_rounded,
+                ),
+                title: Text(
+                  noteState.isFavorited
+                      ? t.misskey.unfavorite
+                      : t.misskey.favorite,
+                ),
+                onTap: () async {
+                  if (noteState.isFavorited) {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            noteStateNotifierProvider(
+                              account,
+                              appearNote.id,
+                            ).notifier,
+                          )
+                          .unfavorite(),
+                      message: t.aria.unfavorited,
+                    );
+                  } else {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            noteStateNotifierProvider(
+                              account,
+                              appearNote.id,
+                            ).notifier,
+                          )
+                          .favorite(),
+                      message: t.misskey.favorited,
+                    );
+                  }
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+              ),
+            ListTile(
+              leading: const Icon(Icons.attach_file),
+              title: Text(t.misskey.clip),
+              onTap: () => showDialog<void>(
+                context: context,
+                builder: (context) => ClipDialog(
+                  account: account,
+                  noteId: appearNote.id,
+                  clipId: clipId,
+                ),
+              ),
+            ),
+            if (noteState != null)
+              ListTile(
+                leading: const Icon(Icons.comments_disabled),
+                title: Text(
+                  noteState.isMutedThread
+                      ? t.misskey.unmuteThread
+                      : t.misskey.muteThread,
+                ),
+                onTap: () async {
+                  if (noteState.isMutedThread) {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            noteStateNotifierProvider(
+                              account,
+                              appearNote.id,
+                            ).notifier,
+                          )
+                          .unmuteThread(),
+                    );
+                  } else {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            noteStateNotifierProvider(
+                              account,
+                              appearNote.id,
+                            ).notifier,
+                          )
+                          .muteThread(),
+                    );
+                  }
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+              ),
             if (appearNote.user.host == null &&
                 appearNote.user.username == account.username)
               if (i?.pinnedNoteIds?.contains(appearNote.id) ?? false)
@@ -443,18 +455,6 @@ class NoteSheet extends ConsumerWidget {
                         .pin(appearNote.id),
                   ),
                 ),
-            ListTile(
-              leading: const Icon(Icons.attach_file),
-              title: Text(t.misskey.clip),
-              onTap: () => showDialog<void>(
-                context: context,
-                builder: (context) => ClipDialog(
-                  account: account,
-                  noteId: appearNote.id,
-                  clipId: clipId,
-                ),
-              ),
-            ),
             if (appearNote.user.host == null &&
                 appearNote.user.username == account.username) ...[
               if (canEditNote)
