@@ -63,13 +63,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
         .apply(
           fontFamily: fontFamily,
           fontFamilyFallback: fontFamily != null
-              ? [
-                  FontFamily.bIZUDGothic,
-                  FontFamily.notoSansJP,
-                  FontFamily.notoSansKR,
-                  FontFamily.notoSansSC,
-                  FontFamily.notoSansTC,
-                ]
+              ? [FontFamily.bIZUDGothic]
               : null,
           displayColor: colors.fg,
           bodyColor: colors.fg,

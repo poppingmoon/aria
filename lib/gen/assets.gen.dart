@@ -18,34 +18,9 @@ class $AssetsFontsGen {
   $AssetsFontsBIZUDGothicGen get bIZUDGothic =>
       const $AssetsFontsBIZUDGothicGen();
 
-  /// Directory path: assets/fonts/BIZ_UDMincho
-  $AssetsFontsBIZUDMinchoGen get bIZUDMincho =>
-      const $AssetsFontsBIZUDMinchoGen();
-
-  /// Directory path: assets/fonts/Mplus1
-  $AssetsFontsMplus1Gen get mplus1 => const $AssetsFontsMplus1Gen();
-
-  /// Directory path: assets/fonts/Mplus2
-  $AssetsFontsMplus2Gen get mplus2 => const $AssetsFontsMplus2Gen();
-
-  /// Directory path: assets/fonts/Noto_Sans_JP
-  $AssetsFontsNotoSansJPGen get notoSansJP => const $AssetsFontsNotoSansJPGen();
-
-  /// Directory path: assets/fonts/Noto_Sans_KR
-  $AssetsFontsNotoSansKRGen get notoSansKR => const $AssetsFontsNotoSansKRGen();
-
-  /// Directory path: assets/fonts/Noto_Sans_SC
-  $AssetsFontsNotoSansSCGen get notoSansSC => const $AssetsFontsNotoSansSCGen();
-
-  /// Directory path: assets/fonts/Noto_Sans_TC
-  $AssetsFontsNotoSansTCGen get notoSansTC => const $AssetsFontsNotoSansTCGen();
-
   /// Directory path: assets/fonts/Noto_Serif_JP
   $AssetsFontsNotoSerifJPGen get notoSerifJP =>
       const $AssetsFontsNotoSerifJPGen();
-
-  /// Directory path: assets/fonts/Nunito
-  $AssetsFontsNunitoGen get nunito => const $AssetsFontsNunitoGen();
 
   /// Directory path: assets/fonts/Pretendard
   $AssetsFontsPretendardGen get pretendard => const $AssetsFontsPretendardGen();
@@ -87,91 +62,11 @@ class $AssetsFontsBIZUDGothicGen {
   List<String> get values => [ofl];
 }
 
-class $AssetsFontsBIZUDMinchoGen {
-  const $AssetsFontsBIZUDMinchoGen();
-
-  /// File path: assets/fonts/BIZ_UDMincho/OFL.txt
-  String get ofl => 'assets/fonts/BIZ_UDMincho/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsMplus1Gen {
-  const $AssetsFontsMplus1Gen();
-
-  /// File path: assets/fonts/Mplus1/OFL.txt
-  String get ofl => 'assets/fonts/Mplus1/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsMplus2Gen {
-  const $AssetsFontsMplus2Gen();
-
-  /// File path: assets/fonts/Mplus2/OFL.txt
-  String get ofl => 'assets/fonts/Mplus2/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsNotoSansJPGen {
-  const $AssetsFontsNotoSansJPGen();
-
-  /// File path: assets/fonts/Noto_Sans_JP/OFL.txt
-  String get ofl => 'assets/fonts/Noto_Sans_JP/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsNotoSansKRGen {
-  const $AssetsFontsNotoSansKRGen();
-
-  /// File path: assets/fonts/Noto_Sans_KR/OFL.txt
-  String get ofl => 'assets/fonts/Noto_Sans_KR/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsNotoSansSCGen {
-  const $AssetsFontsNotoSansSCGen();
-
-  /// File path: assets/fonts/Noto_Sans_SC/OFL.txt
-  String get ofl => 'assets/fonts/Noto_Sans_SC/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsNotoSansTCGen {
-  const $AssetsFontsNotoSansTCGen();
-
-  /// File path: assets/fonts/Noto_Sans_TC/OFL.txt
-  String get ofl => 'assets/fonts/Noto_Sans_TC/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
 class $AssetsFontsNotoSerifJPGen {
   const $AssetsFontsNotoSerifJPGen();
 
   /// File path: assets/fonts/Noto_Serif_JP/OFL.txt
   String get ofl => 'assets/fonts/Noto_Serif_JP/OFL.txt';
-
-  /// List of all assets
-  List<String> get values => [ofl];
-}
-
-class $AssetsFontsNunitoGen {
-  const $AssetsFontsNunitoGen();
-
-  /// File path: assets/fonts/Nunito/OFL.txt
-  String get ofl => 'assets/fonts/Nunito/OFL.txt';
 
   /// List of all assets
   List<String> get values => [ofl];
