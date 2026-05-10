@@ -21,6 +21,13 @@ class NotificationService: UNNotificationServiceExtension {
         bestAttemptContent.threadIdentifier = account
       }
 
+      let badgeCount = NotificationSettingsStorage.getBadgeCount()
+      let newBadgeCount = (badgeCount ?? 0) + 1
+      bestAttemptContent.badge = newBadgeCount as NSNumber?
+      NotificationSettingsStorage.setBadgeCount(
+        badgeCount: newBadgeCount,
+      )
+
       let notification: [String: Any]? =
         switch request.content.userInfo["payload"] {
         case let payload as [String: Any]:

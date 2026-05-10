@@ -33,6 +33,14 @@ class NotificationSettingsRepository {
     });
   }
 
+  Future<void> setBadgeCount(int badgeCount) async {
+    await _channel.invokeMethod('setBadgeCount', {'badgeCount': badgeCount});
+  }
+
+  Future<int?> getBadgeCount() {
+    return _channel.invokeMethod('getBadgeCount');
+  }
+
   Future<void> setShowImageInNotification(bool showImageInNotification) async {
     await _channel.invokeMethod('setShowImageInNotification', {
       'showImageInNotification': showImageInNotification,

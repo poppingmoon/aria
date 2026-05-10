@@ -36,6 +36,7 @@ import 'model/id.dart';
 import 'provider/apns_push_connector_provider.dart';
 import 'provider/cache_manager_provider.dart';
 import 'provider/general_settings_notifier_provider.dart';
+import 'provider/notification_settings_repository_provider.dart';
 import 'provider/push_notification_notifier_provider.dart';
 import 'provider/server_url_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
@@ -813,6 +814,12 @@ class Aria extends HookConsumerWidget {
             if (appLaunchDetails?.notificationResponse case final response?) {
               _onDidReceiveNotificationResponse(ref, response);
             }
+          }
+        });
+      case TargetPlatform.iOS:
+        useOnAppLifecycleStateChange((_, state) {
+          if (state == AppLifecycleState.resumed) {
+            ref.read(notificationSettingsRepositoryProvider).setBadgeCount(0);
           }
         });
       case TargetPlatform.linux:

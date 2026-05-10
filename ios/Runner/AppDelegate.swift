@@ -73,7 +73,7 @@ import UIKit
         }
         do {
           let keySet = try NotificationSettingsStorage.loadKeySet(
-            account: account
+            account: account,
           )
           result(keySet)
         } catch {
@@ -113,6 +113,26 @@ import UIKit
           return
         }
         result(nil)
+      case "setBadgeCount":
+        guard let args = call.arguments as? [String: Any],
+          let badgeCount = args["badgeCount"] as? Int
+        else {
+          result(
+            FlutterError(
+              code: "INVALID_ARGUMENT",
+              message: "Argument `badgeCount` is missing.",
+              details: nil,
+            ),
+          )
+          return
+        }
+        NotificationSettingsStorage.setBadgeCount(
+          badgeCount: badgeCount,
+        )
+        result(nil)
+      case "getBadgeCount":
+        let badgeCount = NotificationSettingsStorage.getBadgeCount()
+        result(badgeCount)
       case "setShowImageInNotification":
         guard let args = call.arguments as? [String: Any],
           let showImageInNotification = args["showImageInNotification"] as? Bool
@@ -127,7 +147,7 @@ import UIKit
           return
         }
         NotificationSettingsStorage.setShowImageInNotification(
-          showImageInNotification: showImageInNotification
+          showImageInNotification: showImageInNotification,
         )
         result(nil)
       case "getShowImageInNotification":
@@ -151,7 +171,7 @@ import UIKit
           return
         }
         NotificationSettingsStorage.setShowEmojiInReactionNotification(
-          showEmojiInReactionNotification: showEmojiInReactionNotification
+          showEmojiInReactionNotification: showEmojiInReactionNotification,
         )
         result(nil)
       case "getShowEmojiInReactionNotification":

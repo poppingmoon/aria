@@ -79,6 +79,17 @@ public struct NotificationSettingsStorage {
     }
   }
 
+  public static func setBadgeCount(badgeCount: Int) {
+    UserDefaults(suiteName: group)?.set(
+      badgeCount,
+      forKey: "badgeCount",
+    )
+  }
+
+  public static func getBadgeCount() -> Int? {
+    UserDefaults(suiteName: group)?.integer(forKey: "badgeCount")
+  }
+
   public static func setShowImageInNotification(showImageInNotification: Bool) {
     UserDefaults(suiteName: group)?.set(
       showImageInNotification,
