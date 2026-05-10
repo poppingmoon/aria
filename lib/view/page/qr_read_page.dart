@@ -376,7 +376,10 @@ class _BoundingBoxPainter extends CustomPainter {
     );
     for (final barcode in capture.barcodes) {
       final corners = barcode.corners.map((corner) => corner * scale + offset);
-      canvas.drawPoints(PointMode.polygon, [...corners, corners.first], paint);
+      canvas.drawPoints(PointMode.polygon, [
+        ...corners,
+        ?corners.firstOrNull,
+      ], paint);
     }
   }
 
