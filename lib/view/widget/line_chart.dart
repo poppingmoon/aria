@@ -36,13 +36,28 @@ class _LineChartPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (this.points.isEmpty) {
+      canvas.drawLine(
+        Offset(0.0, size.height),
+        Offset(size.width, size.height),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..color = color
+          ..strokeWidth = 1.0
+          ..strokeCap = StrokeCap.round,
+      );
+      return;
+    }
+
     final points = this.points
         .map((point) => Offset(size.width * point.x, size.height * point.y))
         .toList();
     final path = Path();
-    path.moveTo(points.first.dx, points.first.dy);
-    for (final point in points.skip(1)) {
-      path.lineTo(point.dx, point.dy);
+    if (points.isNotEmpty) {
+      path.moveTo(points.first.dx, points.first.dy);
+      for (final point in points.skip(1)) {
+        path.lineTo(point.dx, point.dy);
+      }
     }
     canvas.drawPath(
       path,

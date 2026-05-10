@@ -58,15 +58,17 @@ class GalleryPostPreview extends HookConsumerWidget {
               child: Stack(
                 children: [
                   Container(height: 200.0, color: bannerBackgroundColor),
-                  if (!hide.value)
+                  if (post.files.firstOrNull case final file? when !hide.value)
                     ImageWidget(
-                      url: post.files.first.url,
-                      blurHash: post.files.first.blurhash,
+                      url: file.url,
+                      blurHash: file.blurhash,
                       height: 200.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     )
-                  else if (post.files.first case DriveFile(:final blurhash?))
+                  else if (post.files.firstOrNull case DriveFile(
+                    :final blurhash?,
+                  ))
                     Positioned.fill(
                       child: InkWell(
                         onTap: () => hide.value = false,
