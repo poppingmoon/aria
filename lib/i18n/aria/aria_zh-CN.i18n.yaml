@@ -87,7 +87,7 @@ muted: "已屏蔽"
 mutedEmojis: "屏蔽回应表情"
 nFiles:
   one: "{n} 文件"
-  other: "{n} 多个文件"
+  other: "{n} 个文件"
 newFollowRequestReceived: "有新的关注请求"
 newNotes: "新帖子"
 newNotificationReceived: "有新的通知"
