@@ -4,6 +4,12 @@
     "NSCameraUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Fotos oder Videos aufzunehmen, erlaubt bitte Zugriff auf die Kamera."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11,6 +17,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
@@ -27,6 +39,12 @@
     "NSMotionUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die Ausrichtung des Gerätes festzustellen, erlaube bitte Zugriff auf den Sensor."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -34,6 +52,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
@@ -63,6 +87,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
@@ -98,6 +128,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
