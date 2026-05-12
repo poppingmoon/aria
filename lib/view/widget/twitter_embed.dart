@@ -29,7 +29,7 @@ class TwitterEmbed extends HookConsumerWidget {
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
   </head>
 
   <body style="margin: 0;">
@@ -78,7 +78,10 @@ class TwitterEmbed extends HookConsumerWidget {
         onTap: defaultTargetPlatform == TargetPlatform.windows ? () {} : null,
         onHover: (value) => shouldLaunch.value = value,
         child: InAppWebView(
-          initialSettings: InAppWebViewSettings(transparentBackground: true),
+          initialSettings: InAppWebViewSettings(
+            transparentBackground:
+                defaultTargetPlatform != TargetPlatform.windows,
+          ),
           initialData: InAppWebViewInitialData(data: content),
           onWebViewCreated: (controller) => controller.addJavaScriptHandler(
             handlerName: 'onReady',
