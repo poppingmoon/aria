@@ -4,19 +4,21 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:multi_split_view/multi_split_view.dart';
 import 'package:twemoji_v2/twemoji_v2.dart';
+import 'package:webfont_list/webfont_list.dart';
 
 import '../../../constant/default_pinned_emojis.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../dialog/font_picker_dialog.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/note_widget.dart';
@@ -750,27 +752,29 @@ class NoteDisplayPage extends HookConsumerWidget {
                       child: ListTile(
                         title: Text(t.aria.font),
                         subtitle: Text(settings.fontFamily ?? t.misskey.system),
-                        trailing: const Icon(Icons.navigate_next),
+                        trailing: settings.fontFamily != null
+                            ? IconButton(
+                                onPressed: () => ref
+                                    .read(
+                                      generalSettingsNotifierProvider.notifier,
+                                    )
+                                    .setFontFamily(null),
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
                         onTap: () async {
-                          final result = await showRadioDialog(
-                            context,
-                            title: Text(t.aria.font),
-                            values: [
-                              (null,),
-                              (FontFamily.bIZUDGothic,),
-                              (FontFamily.notoSerifJP,),
-                              (FontFamily.pretendard,),
-                            ],
-                            initialValue: (settings.fontFamily,),
-                            titleBuilder: (context, value) => Text(
-                              value.$1 ?? t.misskey.system,
-                              style: TextStyle(fontFamily: value.$1),
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
                             ),
                           );
                           if (result != null) {
                             await ref
                                 .read(generalSettingsNotifierProvider.notifier)
-                                .setFontFamily(result.$1);
+                                .setFontFamily(result);
                           }
                         },
                         shape: const RoundedRectangleBorder(
@@ -778,6 +782,277 @@ class NoteDisplayPage extends HookConsumerWidget {
                             top: Radius.circular(8.0),
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (serif)'),
+                        subtitle: Text(
+                          settings.serifFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.serifFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setSerifFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                              initialCategory: WebFontCategory.serif,
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setSerifFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.serifFontFamily]?.call(
+                              textStyle: DefaultTextStyle.of(context).style,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (monospace)'),
+                        subtitle: Text(
+                          settings.monospaceFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.monospaceFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setMonospaceFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                              initialCategory: WebFontCategory.monospace,
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setMonospaceFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.monospaceFontFamily]
+                                ?.call(
+                                  textStyle: DefaultTextStyle.of(context).style,
+                                ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (cursive)'),
+                        subtitle: Text(
+                          settings.cursiveFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.cursiveFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setCursiveFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                              initialCategory: WebFontCategory.handwriting,
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setCursiveFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.cursiveFontFamily]
+                                ?.call(
+                                  textStyle: DefaultTextStyle.of(context).style,
+                                ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (fantasy)'),
+                        subtitle: Text(
+                          settings.fantasyFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.fantasyFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setFantasyFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                              initialCategory: WebFontCategory.display,
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setFantasyFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.fantasyFontFamily]
+                                ?.call(
+                                  textStyle: DefaultTextStyle.of(context).style,
+                                ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (emoji)'),
+                        subtitle: Text(
+                          settings.emojiFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.emojiFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setEmojiFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setEmojiFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.emojiFontFamily]?.call(
+                              textStyle: DefaultTextStyle.of(context).style,
+                            ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTile(
+                        title: Text('${t.aria.font} (math)'),
+                        subtitle: Text(
+                          settings.mathFontFamily ?? t.misskey.notSet,
+                        ),
+                        trailing: settings.mathFontFamily != null
+                            ? IconButton(
+                                onPressed: () {
+                                  ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setMathFontFamily(null);
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : const Icon(Icons.navigate_next),
+                        onTap: () async {
+                          final result = await showDialog<String>(
+                            context: context,
+                            builder: (context) => FontPickerDialog(
+                              initialSubsets: {
+                                LocaleSettings.currentLocale.toSubset(),
+                              },
+                            ),
+                          );
+                          if (result != null) {
+                            await ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setMathFontFamily(result);
+                          }
+                        },
+                        subtitleTextStyle:
+                            GoogleFonts.asMap()[settings.mathFontFamily]?.call(
+                              textStyle: DefaultTextStyle.of(context).style,
+                            ),
                       ),
                     ),
                   ),
@@ -1392,4 +1667,40 @@ class _NotePreview extends HookWidget {
       borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
     );
   }
+}
+
+extension on AppLocale {
+  WebFontSubset toSubset() => switch (this) {
+    AppLocale.arSa => WebFontSubset.arabic,
+    AppLocale.bnBd => WebFontSubset.bengali,
+    AppLocale.caEs => WebFontSubset.latin,
+    AppLocale.csCz => WebFontSubset.latinExt,
+    AppLocale.deDe => WebFontSubset.latin,
+    AppLocale.elGr => WebFontSubset.greek,
+    AppLocale.enUs => WebFontSubset.latin,
+    AppLocale.esEs => WebFontSubset.latin,
+    AppLocale.frFr => WebFontSubset.latin,
+    AppLocale.idId => WebFontSubset.latin,
+    AppLocale.itIt => WebFontSubset.latin,
+    AppLocale.jaJp => WebFontSubset.japanese,
+    AppLocale.jaKs => WebFontSubset.japanese,
+    AppLocale.koGs => WebFontSubset.korean,
+    AppLocale.koKr => WebFontSubset.korean,
+    AppLocale.loLa => WebFontSubset.lao,
+    AppLocale.nlNl => WebFontSubset.latin,
+    AppLocale.noNo => WebFontSubset.latin,
+    AppLocale.plPl => WebFontSubset.latinExt,
+    AppLocale.ptPt => WebFontSubset.latin,
+    AppLocale.roRo => WebFontSubset.latinExt,
+    AppLocale.ruRu => WebFontSubset.cyrillic,
+    AppLocale.skSk => WebFontSubset.latinExt,
+    AppLocale.svSe => WebFontSubset.latin,
+    AppLocale.thTh => WebFontSubset.thai,
+    AppLocale.trTr => WebFontSubset.latinExt,
+    AppLocale.ukUa => WebFontSubset.cyrillic,
+    AppLocale.uzUz => WebFontSubset.latin,
+    AppLocale.viVn => WebFontSubset.vietnamese,
+    AppLocale.zhCn => WebFontSubset.chineseSimplified,
+    AppLocale.zhTw => WebFontSubset.chineseTraditional,
+  };
 }
