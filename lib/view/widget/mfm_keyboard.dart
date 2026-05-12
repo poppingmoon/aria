@@ -360,6 +360,8 @@ class MfmFnKeyboard extends HookConsumerWidget {
       'monospace': null,
       'cursive': null,
       'fantasy': null,
+      'emoji': null,
+      'math': null,
     },
     'blur': {},
     'rainbow': {'speed': '1s'},

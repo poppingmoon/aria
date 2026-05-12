@@ -1,20 +1,22 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' hide Page;
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
+import '../../../constant/fonts.dart';
 import '../../../constant/max_content_width.dart';
 import '../../../extension/user_extension.dart';
-import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/page_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
+import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
 import '../../../provider/server_url_notifier_provider.dart';
 import '../../../util/copy_text.dart';
@@ -60,6 +62,7 @@ class PagePage extends ConsumerWidget {
     BuildContext context,
     Page page,
     AbstractPageContent block, {
+    String? serifFontFamily,
     bool topLevel = true,
   }) {
     switch (block) {
@@ -74,11 +77,15 @@ class PagePage extends ConsumerWidget {
             Mfm(
               account: account,
               nodes: nodes,
-              style: TextStyle(
-                fontFamilyFallback: page.font == 'serif'
-                    ? ['serif', FontFamily.notoSerifJP]
-                    : null,
-              ),
+              style: page.font == 'serif'
+                  ? GoogleFonts.asMap()[serifFontFamily]?.call().apply(
+                          fontFamilyFallback: serifFallback,
+                        ) ??
+                        TextStyle(
+                          fontFamily: serifFontFamily ?? 'serif',
+                          fontFamilyFallback: serifFallback,
+                        )
+                  : null,
               textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
             ...urls.map(
@@ -90,6 +97,10 @@ class PagePage extends ConsumerWidget {
           ],
         );
       case PageSection(:final title, :final children):
+        final style =
+            (Theme.of(context).textTheme.bodyMedium ?? const TextStyle()).apply(
+              fontSizeFactor: topLevel ? 1.35 : 1.0,
+            );
         return Column(
           crossAxisAlignment: page.alignCenter ?? false
               ? CrossAxisAlignment.center
@@ -97,14 +108,17 @@ class PagePage extends ConsumerWidget {
           children: [
             Text(
               title ?? '',
-              style: Theme.of(context).textTheme.bodyMedium
-                  ?.apply(fontSizeFactor: topLevel ? 1.35 : 1.0)
-                  .copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontFamilyFallback: page.font == 'serif'
-                        ? ['serif', FontFamily.notoSerifJP]
-                        : null,
-                  ),
+              style: page.font == 'serif'
+                  ? (GoogleFonts.asMap()[serifFontFamily]?.call(
+                              textStyle: style,
+                            ) ??
+                            style)
+                        .copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: serifFontFamily ?? 'serif',
+                          fontFamilyFallback: serifFallback,
+                        )
+                  : style.copyWith(fontWeight: FontWeight.bold),
               textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
             const SizedBox(height: 8.0),
@@ -179,6 +193,11 @@ class PagePage extends ConsumerWidget {
       ),
     );
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final serifFontFamily = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.serifFontFamily,
+      ),
+    );
     final url = serverUrl.replace(
       pathSegments: [
         '@${page.value?.user.username}',
@@ -363,7 +382,12 @@ class PagePage extends ConsumerWidget {
                       color: theme.colorScheme.surface,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: _buildBlock(context, page, block),
+                        child: _buildBlock(
+                          context,
+                          page,
+                          block,
+                          serifFontFamily: serifFontFamily,
+                        ),
                       ),
                     ),
                   ),

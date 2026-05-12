@@ -6,6 +6,7 @@ import 'package:flutter_highlighting/themes/atom-one-dark.dart';
 import 'package:flutter_highlighting/tm_themes/theme_map.dart';
 import 'package:flutter_highlighting/tm_themes/themes/catppuccin-latte.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:highlighting/languages/all.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -41,12 +42,15 @@ class Code extends HookConsumerWidget {
         allLanguages[allAliases[language]]?.id ??
         'javascript';
     final brightness = Theme.of(context).brightness;
-    final themeId = ref.watch(
+    final (fontFamily, themeId) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => switch (brightness) {
-          Brightness.light => settings.lightThemeId,
-          Brightness.dark => settings.darkThemeId,
-        },
+        (settings) => (
+          settings.monospaceFontFamily,
+          switch (brightness) {
+            Brightness.light => settings.lightThemeId,
+            Brightness.dark => settings.darkThemeId,
+          },
+        ),
       ),
     );
     final codeHighlighter = ref.watch(
@@ -112,10 +116,18 @@ class Code extends HookConsumerWidget {
                   padding: inline
                       ? const EdgeInsets.symmetric(horizontal: 2.0)
                       : const EdgeInsets.all(16.0),
-                  textStyle: TextStyle(
-                    fontSize: fontSize,
-                    fontFamilyFallback: monospaceFallback,
-                  ),
+                  textStyle:
+                      GoogleFonts.asMap()[fontFamily]?.call(
+                        textStyle: TextStyle(
+                          fontSize: fontSize,
+                          fontFamilyFallback: monospaceFallback,
+                        ),
+                      ) ??
+                      TextStyle(
+                        fontSize: fontSize,
+                        fontFamily: fontFamily ?? 'monospace',
+                        fontFamilyFallback: monospaceFallback,
+                      ),
                 ),
               ),
             ),

@@ -66,7 +66,7 @@ final class ThemeDataProvider
   }
 }
 
-String _$themeDataHash() => r'9808ca5339e8ac141dc24ef5692d44f385f04969';
+String _$themeDataHash() => r'a918cfb59ec07c939fc67923ff98b62bcb6947ab';
 
 final class ThemeDataFamily extends $Family
     with $FunctionalFamilyOverride<ThemeData, Brightness> {

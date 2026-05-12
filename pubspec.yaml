@@ -67,6 +67,7 @@ dependencies:
   gal: ^2.3.2
   gal_linux: ^0.1.2
   go_router: ^17.2.3
+  google_fonts: ^8.1.0
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -141,6 +142,10 @@ dependencies:
   video_player: ^2.11.1
   wakelock_plus: ^1.5.2
   web_socket_channel: ^3.0.3
+  webfont_list:
+    git:
+      url: https://github.com/poppingmoon/webfont_list
+      ref: 13f22ab17514c13e76eb571ad053965e9841c77d
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.1
 

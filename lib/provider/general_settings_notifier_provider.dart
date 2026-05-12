@@ -249,6 +249,36 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setSerifFontFamily(String? serifFontFamily) async {
+    state = state.copyWith(serifFontFamily: serifFontFamily);
+    await _save();
+  }
+
+  Future<void> setMonospaceFontFamily(String? monospaceFontFamily) async {
+    state = state.copyWith(monospaceFontFamily: monospaceFontFamily);
+    await _save();
+  }
+
+  Future<void> setCursiveFontFamily(String? cursiveFontFamily) async {
+    state = state.copyWith(cursiveFontFamily: cursiveFontFamily);
+    await _save();
+  }
+
+  Future<void> setFantasyFontFamily(String? fantasyFontFamily) async {
+    state = state.copyWith(fantasyFontFamily: fantasyFontFamily);
+    await _save();
+  }
+
+  Future<void> setEmojiFontFamily(String? emojiFontFamily) async {
+    state = state.copyWith(emojiFontFamily: emojiFontFamily);
+    await _save();
+  }
+
+  Future<void> setMathFontFamily(String? mathFontFamily) async {
+    state = state.copyWith(mathFontFamily: mathFontFamily);
+    await _save();
+  }
+
   Future<void> setFontSize(double fontSize) async {
     state = state.copyWith(fontSize: fontSize);
     await _save();

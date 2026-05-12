@@ -6,6 +6,7 @@ import 'package:flutter/material.dart' as material show Border;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -109,14 +110,35 @@ class Mfm extends HookConsumerWidget {
     final theme = Theme.of(context);
     final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
     final style = defaultTextStyle
-        .apply(color: theme.colorScheme.onSurface)
+        .apply(
+          color: theme.colorScheme.onSurface,
+          fontFamilyFallback: defaultTextStyle.fontFamily != null
+              ? [FontFamily.bIZUDGothic]
+              : null,
+        )
         .merge(this.style);
-    final (enableAdvanced, enableAnimation, emojiStyle) = ref.watch(
+    final (
+      enableAdvanced,
+      enableAnimation,
+      emojiStyle,
+      serifFontFamily,
+      monospaceFontFamily,
+      cursiveFontFamily,
+      fantasyFontFamily,
+      emojiFontFamily,
+      mathFontFamily,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
           settings.advancedMfm,
           settings.advancedMfm && settings.animatedMfm,
           settings.emojiStyle,
+          settings.serifFontFamily,
+          settings.monospaceFontFamily,
+          settings.cursiveFontFamily,
+          settings.fantasyFontFamily,
+          settings.emojiFontFamily,
+          settings.mathFontFamily,
         ),
       ),
     );
@@ -147,6 +169,12 @@ class Mfm extends HookConsumerWidget {
       enableEmojiFadeIn: enableEmojiFadeIn,
       enableAdvanced: enableAdvanced,
       enableAnimation: enableAnimation,
+      serifFontFamily: serifFontFamily,
+      monospaceFontFamily: monospaceFontFamily,
+      cursiveFontFamily: cursiveFontFamily,
+      fantasyFontFamily: fantasyFontFamily,
+      emojiFontFamily: emojiFontFamily,
+      mathFontFamily: mathFontFamily,
       emojiStyle: emojiStyle,
       colors: colors,
     );
@@ -228,6 +256,12 @@ class _Mfm extends StatelessWidget {
     this.enableEmojiFadeIn,
     required this.enableAdvanced,
     required this.enableAnimation,
+    required this.serifFontFamily,
+    required this.monospaceFontFamily,
+    required this.cursiveFontFamily,
+    required this.fantasyFontFamily,
+    required this.emojiFontFamily,
+    required this.mathFontFamily,
     required this.emojiStyle,
     required this.colors,
   });
@@ -251,6 +285,12 @@ class _Mfm extends StatelessWidget {
   final bool? enableEmojiFadeIn;
   final bool enableAdvanced;
   final bool enableAnimation;
+  final String? serifFontFamily;
+  final String? monospaceFontFamily;
+  final String? cursiveFontFamily;
+  final String? fantasyFontFamily;
+  final String? emojiFontFamily;
+  final String? mathFontFamily;
   final EmojiStyle emojiStyle;
   final MisskeyColors colors;
 
@@ -845,26 +885,47 @@ class _Mfm extends StatelessWidget {
           ),
         );
       case 'font':
+        final fontFamily = switch (args.keys.firstOrNull) {
+          'serif' => serifFontFamily,
+          'monospace' => monospaceFontFamily,
+          'cursive' => cursiveFontFamily,
+          'fantasy' => fantasyFontFamily,
+          'emoji' => emojiFontFamily,
+          'math' => mathFontFamily,
+          _ => null,
+        };
         return TextSpan(
           children: _buildNodes(
             context,
             config.copyWith(
-              style: config.style.apply(
-                fontFamily: switch (args.keys.firstOrNull) {
-                  'serif' => 'serif',
-                  'monospace' => 'monospace',
-                  'cursive' => 'cursive',
-                  'fantasy' => 'fantasy',
-                  'emoji' => 'emoji',
-                  'math' => 'math',
-                  _ => null,
-                },
-                fontFamilyFallback: switch (args.keys.firstOrNull) {
-                  'serif' => [FontFamily.notoSerifJP],
-                  'monospace' => monospaceFallback,
-                  _ => null,
-                },
-              ),
+              style:
+                  GoogleFonts.asMap()[fontFamily]
+                      ?.call(textStyle: config.style)
+                      .apply(
+                        fontFamilyFallback: switch (args.keys.firstOrNull) {
+                          'serif' => serifFallback,
+                          'monospace' => monospaceFallback,
+                          _ => null,
+                        },
+                      ) ??
+                  config.style.apply(
+                    fontFamily:
+                        fontFamily ??
+                        switch (args.keys.firstOrNull) {
+                          'serif' => 'serif',
+                          'monospace' => 'monospace',
+                          'cursive' => 'cursive',
+                          'fantasy' => 'fantasy',
+                          'emoji' => 'emoji',
+                          'math' => 'math',
+                          _ => null,
+                        },
+                    fontFamilyFallback: switch (args.keys.firstOrNull) {
+                      'serif' => serifFallback,
+                      'monospace' => monospaceFallback,
+                      _ => null,
+                    },
+                  ),
             ),
             children,
           ),

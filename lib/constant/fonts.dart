@@ -1,3 +1,7 @@
+import '../gen/fonts.gen.dart';
+
+const serifFallback = ['serif', FontFamily.notoSerifJP];
+
 const monospaceFallback = [
   'Consolas',
   'Monaco',

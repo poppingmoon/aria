@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../constant/fonts.dart';
@@ -7,6 +8,7 @@ import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../provider/token_provider.dart';
@@ -59,6 +61,11 @@ class _Scratchpad extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final token = ref.watch(tokenProvider(account));
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
+    final monospaceFontFamily = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.monospaceFontFamily,
+      ),
+    );
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
     final logs = useState(<({String text, bool print})>[]);
@@ -118,10 +125,14 @@ class _Scratchpad extends HookConsumerWidget {
                 },
                 child: TextField(
                   controller: controller,
-                  style: const TextStyle(
-                    fontFamily: 'monospace',
-                    fontFamilyFallback: monospaceFallback,
-                  ),
+                  style:
+                      GoogleFonts.asMap()[monospaceFontFamily]?.call().apply(
+                        fontFamilyFallback: monospaceFallback,
+                      ) ??
+                      TextStyle(
+                        fontFamily: monospaceFontFamily ?? 'monospace',
+                        fontFamilyFallback: monospaceFallback,
+                      ),
                   minLines: 5,
                   maxLines: null,
                 ),
