@@ -693,7 +693,8 @@ class Aria extends HookConsumerWidget {
             try {
               file = await ref
                   .read(cacheManagerProvider)
-                  .getSingleFile(url.toString());
+                  .getSingleFile(url.toString())
+                  .timeout(const Duration(seconds: 10));
             } catch (_) {}
           }
 
