@@ -209,7 +209,10 @@ class PagePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(page.value?.title ?? ''),
+        title: Text(switch (page.value?.title) {
+          final title? when title.isNotEmpty => title,
+          _ => page.value?.name ?? '',
+        }),
         actions: [
           PopupMenuButton<void>(
             itemBuilder: (context) => [
@@ -323,7 +326,7 @@ class PagePage extends ConsumerWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
                   child: ListTile(
-                    title: Text(page.title),
+                    title: Text(page.title.isNotEmpty ? page.title : page.name),
                     subtitle: Row(
                       children: [
                         UserAvatar(

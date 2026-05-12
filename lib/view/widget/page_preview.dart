@@ -30,7 +30,7 @@ class PagePreview extends ConsumerWidget {
         onTap: onTap,
         child: Column(
           children: [
-            if (page case Page(:final eyeCatchingImage?))
+            if (page.eyeCatchingImage case final eyeCatchingImage?)
               ImageWidget(
                 url: eyeCatchingImage.url,
                 blurHash: eyeCatchingImage.blurhash,
@@ -39,11 +39,11 @@ class PagePreview extends ConsumerWidget {
                 fit: BoxFit.cover,
               ),
             ListTile(
-              title: Text(page.title),
+              title: Text(page.title.isNotEmpty ? page.title : page.name),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (page case Page(:final summary?))
+                  if (page.summary case final summary? when summary.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 2.0),
                       child: Mfm(
