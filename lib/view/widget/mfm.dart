@@ -639,7 +639,6 @@ class _Mfm extends StatelessWidget {
           child: Center(
             child: Math.tex(
               formula,
-              mathStyle: MathStyle.text,
               textStyle: config.style.apply(
                 color: config.style.color?.withValues(alpha: config.opacity),
               ),
