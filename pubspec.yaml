@@ -67,6 +67,7 @@ dependencies:
   gal: ^2.3.2
   gal_linux: ^0.1.2
   go_router: ^17.2.3
+  google_fonts: ^8.1.0
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -141,6 +142,10 @@ dependencies:
   video_player: ^2.11.1
   wakelock_plus: ^1.5.2
   web_socket_channel: ^3.0.3
+  webfont_list:
+    git:
+      url: https://github.com/poppingmoon/webfont_list
+      ref: 13f22ab17514c13e76eb571ad053965e9841c77d
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.1
 
@@ -198,15 +203,7 @@ flutter:
   assets:
     - assets/
     - assets/fonts/BIZ_UDGothic/OFL.txt
-    - assets/fonts/BIZ_UDMincho/OFL.txt
-    - assets/fonts/Mplus1/OFL.txt
-    - assets/fonts/Mplus2/OFL.txt
-    - assets/fonts/Noto_Sans_JP/OFL.txt
-    - assets/fonts/Noto_Sans_KR/OFL.txt
-    - assets/fonts/Noto_Sans_SC/OFL.txt
-    - assets/fonts/Noto_Sans_TC/OFL.txt
     - assets/fonts/Noto_Serif_JP/OFL.txt
-    - assets/fonts/Nunito/OFL.txt
     - assets/fonts/Pretendard/LICENSE.txt
     - assets/icons/aria.png
     - assets/misskey/COPYING
@@ -222,66 +219,12 @@ flutter:
           weight: 400
         - asset: assets/fonts/BIZ_UDGothic/BIZUDGothic-Bold.ttf
           weight: 700
-    - family: BIZ UDMincho
-      fonts:
-        - asset: assets/fonts/BIZ_UDMincho/BIZUDMincho-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/BIZ_UDMincho/BIZUDMincho-Bold.ttf
-          weight: 700
-    - family: M PLUS 1
-      fonts:
-        - asset: assets/fonts/Mplus1/Mplus1-Regular.otf
-          weight: 400
-        - asset: assets/fonts/Mplus1/Mplus1-Bold.otf
-          weight: 700
-    - family: M PLUS 2
-      fonts:
-        - asset: assets/fonts/Mplus2/Mplus2-Regular.otf
-          weight: 400
-        - asset: assets/fonts/Mplus2/Mplus2-Bold.otf
-          weight: 700
-    - family: Noto Sans JP
-      fonts:
-        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf
-          weight: 700
-    - family: Noto Sans KR
-      fonts:
-        - asset: assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.ttf
-          weight: 700
-    - family: Noto Sans SC
-      fonts:
-        - asset: assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Noto_Sans_SC/NotoSansSC-Bold.ttf
-          weight: 700
-    - family: Noto Sans TC
-      fonts:
-        - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.ttf
-          weight: 700
     - family: Noto Serif JP
       fonts:
-        - asset: assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf
-          weight: 400
-        - asset: assets/fonts/Noto_Serif_JP/NotoSerifJP-Bold.otf
-          weight: 700
-    - family: Nunito
-      fonts:
-        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Nunito/Nunito-Bold.ttf
-          weight: 700
+        - asset: assets/fonts/Noto_Serif_JP/NotoSerifJP-VariableFont_wght.ttf
     - family: Pretendard
       fonts:
-        - asset: assets/fonts/Pretendard/Pretendard-Regular.otf
-          weight: 400
-        - asset: assets/fonts/Pretendard/Pretendard-Bold.otf
-          weight: 700
+        - asset: assets/fonts/Pretendard/PretendardVariable.ttf
 
 flutter_launcher_icons:
   image_path: assets/icons/aria.png

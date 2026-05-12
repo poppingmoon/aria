@@ -59,27 +59,6 @@ void main() async {
       'BIZ UDGothic',
     ], await rootBundle.loadString(Assets.fonts.bIZUDGothic.ofl));
     yield LicenseEntryWithLineBreaks([
-      'BIZ UDMincho',
-    ], await rootBundle.loadString(Assets.fonts.bIZUDMincho.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'M PLUS 1',
-    ], await rootBundle.loadString(Assets.fonts.mplus1.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'M PLUS 2',
-    ], await rootBundle.loadString(Assets.fonts.mplus2.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'Noto Sans JP',
-    ], await rootBundle.loadString(Assets.fonts.notoSansJP.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'Noto Sans KR',
-    ], await rootBundle.loadString(Assets.fonts.notoSansKR.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'Noto Sans SC',
-    ], await rootBundle.loadString(Assets.fonts.notoSansSC.ofl));
-    yield LicenseEntryWithLineBreaks([
-      'Noto Sans TC',
-    ], await rootBundle.loadString(Assets.fonts.notoSansTC.ofl));
-    yield LicenseEntryWithLineBreaks([
       'Noto Serif JP',
     ], await rootBundle.loadString(Assets.fonts.notoSerifJP.ofl));
     yield LicenseEntryWithLineBreaks([

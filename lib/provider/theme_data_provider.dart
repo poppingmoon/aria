@@ -1,10 +1,10 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../gen/fonts.gen.dart';
 import 'dynamic_color_provider.dart';
 import 'general_settings_notifier_provider.dart';
 import 'misskey_colors_provider.dart';
@@ -36,6 +36,12 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       ),
     ),
   );
+  TextTheme? textTheme;
+  if (fontFamily != null) {
+    try {
+      textTheme = GoogleFonts.getTextTheme(fontFamily);
+    } catch (_) {}
+  }
 
   return ThemeData(
     colorScheme: colorScheme.copyWith(
@@ -52,7 +58,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     canvasColor: colors.bg,
     disabledColor: colors.fg.withValues(alpha: 0.5),
     scaffoldBackgroundColor: colors.bg,
-    textTheme: ThemeData(brightness: brightness).textTheme
+    textTheme: (textTheme ?? ThemeData(brightness: brightness).textTheme)
         .merge(
           TextTheme(
             titleMedium: TextStyle(fontSize: fontSize + 2.0),
@@ -61,16 +67,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
           ),
         )
         .apply(
-          fontFamily: fontFamily,
-          fontFamilyFallback: fontFamily != null
-              ? [
-                  FontFamily.bIZUDGothic,
-                  FontFamily.notoSansJP,
-                  FontFamily.notoSansKR,
-                  FontFamily.notoSansSC,
-                  FontFamily.notoSansTC,
-                ]
-              : null,
+          fontFamily: textTheme == null ? fontFamily : null,
           displayColor: colors.fg,
           bodyColor: colors.fg,
           decorationColor: colors.fg,

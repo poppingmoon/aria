@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
@@ -11,6 +12,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/play_notifier_provider.dart';
+import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../rust/api/aiscript.dart';
 import '../../../rust/frb_generated.dart';
 import '../../../util/future_with_dialog.dart';
@@ -28,6 +30,11 @@ class PlayEditPage extends HookConsumerWidget {
       final playId? => ref.watch(playNotifierProvider(account, playId)).value,
       _ => null,
     };
+    final monospaceFontFamily = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.monospaceFontFamily,
+      ),
+    );
     final title = useState(play?.title);
     final summary = useState(play?.summary);
     final script = useState(play?.script);
@@ -154,10 +161,14 @@ class PlayEditPage extends HookConsumerWidget {
                     labelText: t.misskey.play_.script,
                     alignLabelWithHint: true,
                   ),
-                  style: const TextStyle(
-                    fontFamily: 'monospace',
-                    fontFamilyFallback: monospaceFallback,
-                  ),
+                  style:
+                      GoogleFonts.asMap()[monospaceFontFamily]?.call().apply(
+                        fontFamilyFallback: monospaceFallback,
+                      ) ??
+                      TextStyle(
+                        fontFamily: monospaceFontFamily ?? 'monospace',
+                        fontFamilyFallback: monospaceFallback,
+                      ),
                   minLines: 10,
                   maxLines: null,
                   onTapOutside: (_) => primaryFocus?.unfocus(),

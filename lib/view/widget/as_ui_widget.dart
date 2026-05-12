@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../constant/fonts.dart';
 import '../../constant/shortcuts.dart';
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../rust/api/aiscript/ui.dart';
@@ -97,8 +100,45 @@ class AsUiWidget extends HookConsumerWidget {
           :final rounded,
         ),
       ):
+        final fontFamily = switch (font) {
+          'serif' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.serifFontFamily,
+            ),
+          ),
+          'monospace' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.monospaceFontFamily,
+            ),
+          ),
+          _ => null,
+        };
         return DefaultTextStyle.merge(
-          style: TextStyle(color: safeParseColor(fgColor), fontFamily: font),
+          style:
+              GoogleFonts.asMap()[fontFamily]?.call(
+                textStyle: TextStyle(
+                  color: safeParseColor(fgColor),
+                  fontFamilyFallback: switch (font) {
+                    'serif' => serifFallback,
+                    'monospace' => monospaceFallback,
+                    _ => null,
+                  },
+                ),
+              ) ??
+              TextStyle(
+                color: safeParseColor(fgColor),
+                fontFamily:
+                    fontFamily ??
+                    switch (font) {
+                      'serif' || 'monospace' => font,
+                      _ => null,
+                    },
+                fontFamilyFallback: switch (font) {
+                  'serif' => serifFallback,
+                  'monospace' => monospaceFallback,
+                  _ => null,
+                },
+              ),
           textAlign: switch (align) {
             'left' => TextAlign.left,
             'center' => TextAlign.center,
@@ -174,16 +214,50 @@ class AsUiWidget extends HookConsumerWidget {
           :final font,
         ),
       ):
+        final fontFamily = switch (font) {
+          'serif' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.serifFontFamily,
+            ),
+          ),
+          'monospace' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.monospaceFontFamily,
+            ),
+          ),
+          _ => null,
+        };
         return Text(
           text ?? '',
           style: DefaultTextStyle.of(context).style
               .apply(fontSizeFactor: size ?? 1.0)
               .merge(
-                TextStyle(
-                  color: safeParseColor(color),
-                  fontWeight: bold ?? false ? FontWeight.bold : null,
-                  fontFamily: font,
-                ),
+                GoogleFonts.asMap()[fontFamily]?.call(
+                      textStyle: TextStyle(
+                        color: safeParseColor(color),
+                        fontWeight: bold ?? false ? FontWeight.bold : null,
+                        fontFamilyFallback: switch (font) {
+                          'serif' => serifFallback,
+                          'monospace' => monospaceFallback,
+                          _ => null,
+                        },
+                      ),
+                    ) ??
+                    TextStyle(
+                      color: safeParseColor(color),
+                      fontWeight: bold ?? false ? FontWeight.bold : null,
+                      fontFamily:
+                          fontFamily ??
+                          switch (font) {
+                            'serif' || 'monospace' => font,
+                            _ => null,
+                          },
+                      fontFamilyFallback: switch (font) {
+                        'serif' => serifFallback,
+                        'monospace' => monospaceFallback,
+                        _ => null,
+                      },
+                    ),
               ),
         );
       case AsUiComponent_Mfm(
@@ -196,17 +270,51 @@ class AsUiWidget extends HookConsumerWidget {
           :final onClickEv,
         ),
       ):
+        final fontFamily = switch (font) {
+          'serif' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.serifFontFamily,
+            ),
+          ),
+          'monospace' => ref.watch(
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.monospaceFontFamily,
+            ),
+          ),
+          _ => null,
+        };
         return Mfm(
           account: account.host == host ? account : Account(host: host),
           text: text,
           style: DefaultTextStyle.of(context).style
               .apply(fontSizeFactor: size ?? 1.0)
               .merge(
-                TextStyle(
-                  color: safeParseColor(color),
-                  fontWeight: bold ?? false ? FontWeight.bold : null,
-                  fontFamily: font,
-                ),
+                GoogleFonts.asMap()[fontFamily]?.call(
+                      textStyle: TextStyle(
+                        color: safeParseColor(color),
+                        fontWeight: bold ?? false ? FontWeight.bold : null,
+                        fontFamilyFallback: switch (font) {
+                          'serif' => serifFallback,
+                          'monospace' => monospaceFallback,
+                          _ => null,
+                        },
+                      ),
+                    ) ??
+                    TextStyle(
+                      color: safeParseColor(color),
+                      fontWeight: bold ?? false ? FontWeight.bold : null,
+                      fontFamily:
+                          fontFamily ??
+                          switch (font) {
+                            'serif' || 'monospace' => font,
+                            _ => null,
+                          },
+                      fontFamilyFallback: switch (font) {
+                        'serif' => serifFallback,
+                        'monospace' => monospaceFallback,
+                        _ => null,
+                      },
+                    ),
               ),
           onClickEv: onClickEv != null
               ? (clickEv) => onClickEv.call(value: clickEv)

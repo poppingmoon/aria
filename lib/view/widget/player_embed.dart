@@ -34,7 +34,8 @@ class PlayerEmbed extends HookConsumerWidget {
         initialSettings: InAppWebViewSettings(
           mediaPlaybackRequiresUserGesture: false,
           allowsInlineMediaPlayback: true,
-          transparentBackground: true,
+          transparentBackground:
+              defaultTargetPlatform != TargetPlatform.windows,
         ),
         initialUrlRequest: URLRequest(
           headers: {'Referer': Uri.https(host).toString()},
