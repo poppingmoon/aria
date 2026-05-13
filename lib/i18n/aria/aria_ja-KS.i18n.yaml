@@ -55,6 +55,7 @@ enablePredictiveBack: "予測型「戻る」アニメーションを有効にす
 enableSpellCheck: "スペルチェックを有効にするで"
 endpoint: "エンドポイント"
 exitPlayConfirm: "Playをやめてええか？"
+expandNote: "ノートを開くで"
 extraMentionsWarning: "返信元のノートには入ってへんメンションがあるで"
 fileNotFound: "ファイルがあらへん"
 findServer: "Misskeyサーバーを探す"
