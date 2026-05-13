@@ -196,3 +196,4 @@ userSaysSomething(rich): "{name} 说了什么，但是被屏蔽词过滤了"
 userSaysSomethingSensitive(rich): "含 {name} 敏感文件的帖子"
 vibration: "振动"
 webBrowser: "网页浏览器"
+openNote: 展开贴子
