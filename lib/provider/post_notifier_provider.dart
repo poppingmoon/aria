@@ -108,15 +108,16 @@ class PostNotifier extends _$PostNotifier {
       }
     });
     final tabSettings = _tabSettings;
+    final defaultDraft = _getDefaultDraft(tabSettings);
     if (tabSettings?.account == account) {
       Future(() async {
         final draft = await _loadDraft(tabSettings);
-        if (draft != null) {
+        if (draft != null && state == defaultDraft) {
           state = draft;
         }
       });
     }
-    return _getDefaultDraft(tabSettings);
+    return defaultDraft;
   }
 
   String get _key => '$account/draft';
