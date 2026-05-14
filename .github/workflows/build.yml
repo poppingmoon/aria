@@ -58,6 +58,20 @@ jobs:
     env:
       APK_BUILD_DIR: /tmp/build
 
+    strategy:
+      matrix:
+        include:
+          - target-platform: android-x64
+            abi: x86_64
+            version-code: ${{ needs.get-build-number.outputs.build-number }}1
+          - target-platform: android-arm
+            abi: armeabi-v7a
+            version-code: ${{ needs.get-build-number.outputs.build-number }}2
+          - target-platform: android-arm64
+            abi: arm64-v8a
+            version-code: ${{ needs.get-build-number.outputs.build-number }}3
+      fail-fast: false
+
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -72,8 +86,8 @@ jobs:
 
       - name: Copy files to env.APK_BUILD_DIR
         run: |
-          mkdir -p $APK_BUILD_DIR
-          cp -r . $APK_BUILD_DIR
+          mkdir -p ${{ env.APK_BUILD_DIR }}
+          cp -r . ${{ env.APK_BUILD_DIR }}
 
       - name: Install Flutter
         uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
@@ -101,11 +115,9 @@ jobs:
           fileDir: ${{ env.APK_BUILD_DIR }}/android/app/
           encodedString: ${{ secrets.UPLOAD_KEYSTORE }}
 
-      - name: Move Rust toolchain to /tmp
-        run: mv $HOME/.cargo /tmp
-
-      - name: Add Rust toolchain to PATH
-        run: echo /tmp/.cargo/bin >> $GITHUB_PATH
+      - name: Set ANDROID_NDK_HOME
+        run: >
+          echo ANDROID_NDK_HOME=$ANDROID_HOME/ndk/28.2.13676358 >> $GITHUB_ENV
 
       - name: Build APK
         working-directory: ${{ env.APK_BUILD_DIR }}
@@ -114,61 +126,44 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-        run: flutter build apk --split-per-abi
+        run: >
+          flutter build apk --split-per-abi
+          --target-platform ${{ matrix.target-platform }}
 
       - name: Rename APK
-        working-directory: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
+        id: rename-apk
         run: |
-          mv app-arm64-v8a-release.apk aria-${{ github.ref_name }}-arm64-v8a.apk
-          mv app-armeabi-v7a-release.apk aria-${{ github.ref_name }}-armeabi-v7a.apk
-          mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
+          APK_DIR=${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
+          SOURCE=$APK_DIR/app-${{ matrix.abi }}-release.apk
+          TARGET=$APK_DIR/aria-${{ github.ref_name }}-${{ matrix.abi }}.apk
+          mv $SOURCE $TARGET
+          echo apk-path=$TARGET >> $GITHUB_OUTPUT
 
-      - name: Upload arm64-v8a APK
+      - name: Upload APK
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
-          archive: false
-
-      - name: Upload armeabi-v7a APK
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
-          archive: false
-
-      - name: Upload x86_64 APK
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+          path: ${{ steps.rename-apk.outputs.apk-path }}
           archive: false
 
       - name: Release APK
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
-          files: |
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
-            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+          files: ${{ steps.rename-apk.outputs.apk-path }}
           draft: true
 
-      - name: Check version codes
-        working-directory: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
+      - name: Check version code
         run: |
-          check_version_code() {
-            summary=$(
-              $ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer apk summary \
-                aria-${{ github.ref_name }}-$1.apk
-            )
-            echo aria-${{ github.ref_name }}-$1.apk: $summary
-            version_code=$(echo $summary | cut -d ' ' -f 2)
-            if [ $version_code -ne $2 ]; then
-              echo ::error::Invalid version code. Expected: $2. Actual: $version_code.
-              exit 1
-            fi
-          }
-          check_version_code arm64-v8a ${{ needs.get-build-number.outputs.build-number }}3
-          check_version_code armeabi-v7a ${{ needs.get-build-number.outputs.build-number }}2
-          check_version_code x86_64 ${{ needs.get-build-number.outputs.build-number }}1
+          summary=$(
+            $ANDROID_HOME/cmdline-tools/latest/bin/apkanalyzer apk summary \
+              ${{ steps.rename-apk.outputs.apk-path }}
+          )
+          echo aria-${{ github.ref_name }}-${{ matrix.abi }}.apk: $summary
+          version_code=$(echo $summary | cut -d ' ' -f 2)
+          if [ $version_code -ne ${{ matrix.version-code }} ]; then
+            echo ::error::Invalid version code. Expected: ${{ matrix.version-code }}. Actual: $version_code.
+            exit 1
+          fi
 
   build-appbundle:
     runs-on: ubuntu-latest
