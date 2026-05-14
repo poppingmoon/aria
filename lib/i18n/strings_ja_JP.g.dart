@@ -80,6 +80,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
+	@override String get confirmBeforePostingMediaWithoutComment => 'キャプションなしでメディアを投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
 	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしました';
@@ -154,6 +155,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get mediaSaveLocation => 'メディアの保存先';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get mergeReactionsByName => '同じ名前のリアクションをまとめて表示する';
+	@override String get missingFileCommentWarning => 'このファイルにはキャプションがありません。追加しますか？';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';
 	@override String get mutedEmojis => 'ミュートした絵文字';

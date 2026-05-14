@@ -80,6 +80,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
+	@override String get confirmBeforePostingMediaWithoutComment => 'キャプションがついてへんメディアを投稿する前に確認する';
 	@override String get confirmBeforeReact => 'ツッコミする前に確認する';
 	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしたで';
@@ -154,6 +155,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get mediaSaveLocation => 'メディアをとっとくとこ';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';
 	@override String get mergeReactionsByName => '同じ名前のリアクションをごっちゃにするで';
+	@override String get missingFileCommentWarning => 'このファイルにはキャプションがついてへんみたいや。追加しとく？';
 	@override String get moved => '移したで';
 	@override String get muted => 'ミュート中';
 	@override String get mutedEmojis => 'ミュートしとる絵文字';
