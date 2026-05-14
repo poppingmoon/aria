@@ -95,22 +95,6 @@ class PostNotifier extends _$PostNotifier {
       final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNoteDraft() ?? _getDefaultDraft(null);
     }
-    ref.listen(timelineTabSettingsProvider, (prev, next) async {
-      if (prev == null) return;
-      if (prev.account == account && _saveScheduled) {
-        await _saveDraft(prev);
-      }
-      if (next != null && next.account == account) {
-        final draft = await _loadDraft(next);
-        if (!(draft?.canPost ?? false) &&
-            state.canPost &&
-            prev.account == account) {
-          state = _merge(draft ?? _getDefaultDraft(next));
-        } else {
-          state = draft ?? _getDefaultDraft(next);
-        }
-      }
-    });
     final tabSettings = _tabSettings;
     final defaultDraft = _getDefaultDraft(tabSettings);
     if (tabSettings?.account == account) {
@@ -390,6 +374,20 @@ class PostNotifier extends _$PostNotifier {
   void fromNote(Note note) {
     state = note.toNoteDraft();
     _scheduleSave();
+  }
+
+  Future<void> switchTab(TabSettings prev, TabSettings next) async {
+    if (prev.account == account && _saveScheduled) {
+      await _saveDraft(prev);
+    }
+    if (next.account == account) {
+      final draft = await _loadDraft(next);
+      if (!(draft?.canPost ?? false) && state.canPost) {
+        state = _merge(draft ?? _getDefaultDraft(next));
+      } else {
+        state = draft ?? _getDefaultDraft(next);
+      }
+    }
   }
 
   Future<void> reset({bool keepHashtag = false}) async {
