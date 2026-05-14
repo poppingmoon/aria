@@ -34,7 +34,10 @@ extension NoteDraftExtension on NoteDraft {
       poll == null;
 
   bool get canPost =>
-      ((text?.isNotEmpty ?? false) || poll != null || renoteId != null) &&
+      ((text?.isNotEmpty ?? false) ||
+          (fileIds?.isNotEmpty ?? false) ||
+          poll != null ||
+          renoteId != null) &&
       switch (poll) {
         final poll? =>
           poll.choices.length >= 2 &&

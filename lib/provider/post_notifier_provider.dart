@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:collection/collection.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -81,7 +82,7 @@ class PostNotifier extends _$PostNotifier {
           reply != next.reply ||
           renote != next.renote ||
           channel != next.channel) {
-        state = next.copyWith(
+        state = state.copyWith(
           userId: i?.id ?? next.userId,
           user: i?.toUserLite() ?? next.user,
           reply: reply,
@@ -94,29 +95,17 @@ class PostNotifier extends _$PostNotifier {
       final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNoteDraft() ?? _getDefaultDraft(null);
     }
-    ref.listen(timelineTabSettingsProvider, (prev, next) async {
-      if (prev != null && prev.account == account) {
-        await _saveDraft(prev);
-      }
-      if (next != null && next.account == account) {
-        final draft = await _loadDraft(next);
-        if (draft != null) {
-          state = draft;
-        } else {
-          state = _getDefaultDraft(next);
-        }
-      }
-    });
     final tabSettings = _tabSettings;
+    final defaultDraft = _getDefaultDraft(tabSettings);
     if (tabSettings?.account == account) {
       Future(() async {
         final draft = await _loadDraft(tabSettings);
-        if (draft != null) {
+        if (draft != null && state == defaultDraft) {
           state = draft;
         }
       });
     }
-    return _getDefaultDraft(tabSettings);
+    return defaultDraft;
   }
 
   String get _key => '$account/draft';
@@ -150,9 +139,9 @@ class PostNotifier extends _$PostNotifier {
     final localOnly =
         channelId != null ||
         (visibility != NoteVisibility.specified &&
-                settings.rememberNoteVisibility
-            ? settings.localOnly
-            : settings.defaultNoteLocalOnly);
+            (settings.rememberNoteVisibility
+                ? settings.localOnly
+                : settings.defaultNoteLocalOnly));
     final reactionAcceptance = settings.reactionAcceptance;
     return NoteDraft(
       id: '',
@@ -163,6 +152,66 @@ class PostNotifier extends _$PostNotifier {
       channelId: channelId,
       localOnly: localOnly,
       reactionAcceptance: reactionAcceptance,
+    );
+  }
+
+  NoteDraft _merge(NoteDraft draft) {
+    final visibility = draft.channelId != null
+        ? NoteVisibility.public
+        : NoteVisibility.min(
+            state.visibility ?? NoteVisibility.public,
+            draft.visibility ?? NoteVisibility.public,
+          );
+    final localOnly =
+        draft.channelId != null ||
+        (visibility != NoteVisibility.specified &&
+            ((state.localOnly ?? false) || (draft.localOnly ?? false)));
+    final reply = switch (state.reply) {
+      final reply?
+          when (reply.visibility ?? NoteVisibility.public).priority <=
+                  visibility.priority &&
+              (reply.user.host == null || !localOnly) =>
+        reply,
+      _ => null,
+    };
+    final renote = switch (state.renote) {
+      final renote?
+          when (renote.visibility ?? NoteVisibility.public).priority <=
+                  visibility.priority &&
+              (renote.user.host == null || !localOnly) &&
+              ((renote.channel?.allowRenoteToExternal ?? true) ||
+                  draft.channelId == renote.channelId) =>
+        renote,
+      _ => null,
+    };
+    return state.copyWith(
+      text: state.text ?? draft.text,
+      cw: state.cw ?? draft.cw,
+      replyId: reply?.id,
+      reply: reply,
+      renoteId: renote?.id,
+      renote: renote,
+      fileIds: state.fileIds?.isNotEmpty ?? false
+          ? state.fileIds
+          : draft.fileIds,
+      files: state.fileIds?.isNotEmpty ?? false
+          ? const ListEquality<String>().equals(
+                  state.files?.map((file) => file.id).toList(),
+                  state.fileIds,
+                )
+                ? state.files
+                : null
+          : const ListEquality<String>().equals(
+              draft.files?.map((file) => file.id).toList(),
+              draft.fileIds,
+            )
+          ? draft.files
+          : null,
+      hashtag: state.hashtag ?? draft.hashtag,
+      poll: state.poll ?? draft.poll,
+      channelId: draft.channelId,
+      channel: draft.channel?.id == draft.channelId ? draft.channel : null,
+      localOnly: localOnly,
     );
   }
 
@@ -327,14 +376,32 @@ class PostNotifier extends _$PostNotifier {
     _scheduleSave();
   }
 
+  Future<void> switchTab(TabSettings prev, TabSettings next) async {
+    if (prev.account == account && _saveScheduled) {
+      await _saveDraft(prev);
+    }
+    if (next.account == account) {
+      final draft = await _loadDraft(next);
+      if (!(draft?.canPost ?? false) && state.canPost) {
+        state = _merge(draft ?? _getDefaultDraft(next));
+      } else {
+        state = draft ?? _getDefaultDraft(next);
+      }
+    }
+  }
+
   Future<void> reset({bool keepHashtag = false}) async {
     _saveScheduled = false;
     _timer?.cancel();
     final draft = state;
     final tabSettings = _tabSettings;
-    state = _getDefaultDraft(
-      tabSettings,
-    ).copyWith(hashtag: keepHashtag ? draft.hashtag : null);
+    final defaultDraft = _getDefaultDraft(tabSettings);
+    state = defaultDraft.copyWith(
+      hashtag: keepHashtag ? draft.hashtag : null,
+      channel: defaultDraft.channelId == draft.channel?.id
+          ? draft.channel
+          : null,
+    );
 
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (draft.replyId != null || draft.renoteId != null) {
@@ -594,20 +661,27 @@ class PostNotifier extends _$PostNotifier {
       ...additionalMentions.map((mention) => mention.acct),
       if (!isMentionOnly) state.text ?? '' else '',
     ].join(' ');
+    final channelId =
+        reply.channelId ??
+        (visibility != NoteVisibility.specified && reply.user.host == null
+            ? state.channelId
+            : null);
     state = state.copyWith(
       visibility: visibility,
       visibleUserIds: visibleUserIds,
       localOnly:
-          visibility != NoteVisibility.specified &&
-          ((state.localOnly ?? false) || reply.localOnly),
+          channelId != null ||
+          (visibility != NoteVisibility.specified &&
+              reply.user.host == null &&
+              ((state.localOnly ?? false) || reply.localOnly)),
       cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
       replyId: reply.id,
       reply: reply,
-      channelId: visibility != NoteVisibility.specified
-          ? reply.channelId ?? state.channelId
-          : null,
-      channel: visibility != NoteVisibility.specified
-          ? reply.channel ?? state.channel
+      channelId: channelId,
+      channel: reply.channel?.id == channelId
+          ? reply.channel
+          : state.channel?.id == channelId
+          ? state.channel
           : null,
       text: text,
     );
@@ -663,18 +737,25 @@ class PostNotifier extends _$PostNotifier {
       state.visibility ?? NoteVisibility.public,
       renote.visibility ?? NoteVisibility.public,
     );
+    final channelId =
+        renote.channelId ??
+        (visibility != NoteVisibility.specified && renote.user.host == null
+            ? state.channelId
+            : null);
     state = state.copyWith(
       visibility: visibility,
       localOnly:
-          visibility != NoteVisibility.specified &&
-          ((state.localOnly ?? false) || renote.localOnly),
+          channelId != null ||
+          (visibility != NoteVisibility.specified &&
+              renote.user.host == null &&
+              ((state.localOnly ?? false) || renote.localOnly)),
       renoteId: renote.id,
       renote: renote,
-      channelId: visibility != NoteVisibility.specified
-          ? renote.channelId ?? state.channelId
-          : null,
-      channel: visibility != NoteVisibility.specified
-          ? renote.channel ?? state.channel
+      channelId: channelId,
+      channel: renote.channel?.id == channelId
+          ? renote.channel
+          : state.channel?.id == channelId
+          ? state.channel
           : null,
     );
     _scheduleSave();
