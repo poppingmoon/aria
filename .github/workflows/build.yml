@@ -53,7 +53,7 @@ jobs:
     needs: get-build-number
 
     permissions:
-      contents: write
+      contents: read
 
     env:
       APK_BUILD_DIR: /tmp/build
@@ -145,13 +145,6 @@ jobs:
           path: ${{ steps.rename-apk.outputs.apk-path }}
           archive: false
 
-      - name: Release APK
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          files: ${{ steps.rename-apk.outputs.apk-path }}
-          draft: true
-
       - name: Check version code
         run: |
           summary=$(
@@ -171,8 +164,7 @@ jobs:
     needs: get-build-number
 
     permissions:
-      contents: write
-      id-token: write
+      contents: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -218,30 +210,13 @@ jobs:
           path: build/app/outputs/bundle/release/app-release.aab
           archive: false
 
-      - name: Authenticate to Google Cloud
-        id: auth
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
-        with:
-          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.SERVICE_ACCOUNT }}
-
-      - name: Upload App Bundle to Google Play
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1.1.5
-        with:
-          releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          packageName: com.poppingmoon.aria
-          track: beta
-          serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
-
   build-ios:
     runs-on: macos-26
 
     needs: get-build-name
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -280,13 +255,6 @@ jobs:
         with:
           path: aria-${{ github.ref_name }}.ipa
           archive: false
-
-      - name: Release IPA (Unsigned)
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          files: aria-${{ github.ref_name }}.ipa
-          draft: true
 
       - name: Install codemagic-cli-tools
         run: pip install codemagic-cli-tools
@@ -344,7 +312,7 @@ jobs:
     runs-on: windows-2022
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -376,13 +344,6 @@ jobs:
           path: aria-${{ github.ref_name }}-windows-x64.zip
           archive: false
 
-      - name: Release ZIP
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          files: aria-${{ github.ref_name }}-windows-x64.zip
-          draft: true
-
       - name: Trim version
         id: trim-version
         shell: bash
@@ -398,15 +359,8 @@ jobs:
       - name: Upload installer
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          path: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
+          path: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
           archive: false
-
-      - name: Release installer
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          files: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
-          draft: true
 
   build-macos:
     runs-on: macos-26
@@ -414,7 +368,7 @@ jobs:
     needs: get-build-name
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -491,13 +445,6 @@ jobs:
           path: aria-${{ github.ref_name }}.dmg
           archive: false
 
-      - name: Release DMG
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
-        with:
-          files: aria-${{ github.ref_name }}.dmg
-          draft: true
-
       - name: Create package
         run: |
           xcrun productbuild \
@@ -526,7 +473,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     permissions:
-      contents: write
+      contents: read
 
     strategy:
       matrix:
@@ -575,9 +522,63 @@ jobs:
           path: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
           archive: false
 
-      - name: Release TAR
-        if: startsWith(github.ref, 'refs/tags/v')
+  release:
+    runs-on: ubuntu-latest
+
+    if: startsWith(github.ref, 'refs/tags/v') && !cancelled()
+
+    needs:
+      - build-apk
+      - build-ios
+      - build-windows-x64
+      - build-macos
+      - build-linux
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          pattern: aria-${{ github.ref_name }}*
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Release
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
         with:
-          files: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
+          files: aria-${{ github.ref_name }}*
           draft: true
+
+  publish-appbundle:
+    runs-on: ubuntu-latest
+
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    needs: build-appbundle
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Download App Bundle
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: app-release.aab
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: Upload App Bundle to Google Play
+        uses: r0adkll/upload-google-play@e738b9dd8f2476ea806d921b64aacd24f34515a5 # v1.1.5
+        with:
+          releaseFiles: app-release.aab
+          packageName: com.poppingmoon.aria
+          track: beta
+          serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
