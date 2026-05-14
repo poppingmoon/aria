@@ -116,7 +116,6 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'スペルチェックを有効にする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get exitPlayConfirm => 'Playを終了しますか？';
-	@override String get expandNote => 'ノートを開く';
 	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
 	@override String get fileNotFound => 'ファイルが見つかりません';
 	@override String get findServer => 'Misskeyサーバーを見つける';
@@ -187,6 +186,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '外部ブラウザで開く';
 	@override String get openInInternalBrowser => '内部ブラウザで開く';
 	@override String get openMenu => 'メニューを開く';
+	@override String get openNote => 'ノートを開く';
 	@override String get openNotificationSettings => '通知の設定を開く';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'ブラウザで'),

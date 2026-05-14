@@ -119,7 +119,7 @@ class BehaviorPage extends HookConsumerWidget {
                   title: Text(t.aria.noteTapAction),
                   subtitle: Text(switch (settings.noteTapAction) {
                     NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
+                    NoteActionType.expand => t.aria.openNote,
                     NoteActionType.menu => t.aria.openMenu,
                     NoteActionType.reaction => t.misskey.doReaction,
                   }),
@@ -132,7 +132,7 @@ class BehaviorPage extends HookConsumerWidget {
                       initialValue: settings.noteTapAction,
                       titleBuilder: (context, value) => Text(switch (value) {
                         NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
+                        NoteActionType.expand => t.aria.openNote,
                         NoteActionType.menu => t.aria.openMenu,
                         NoteActionType.reaction => t.misskey.doReaction,
                       }),
@@ -154,7 +154,7 @@ class BehaviorPage extends HookConsumerWidget {
                   title: Text(t.aria.noteDoubleTapAction),
                   subtitle: Text(switch (settings.noteDoubleTapAction) {
                     NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
+                    NoteActionType.expand => t.aria.openNote,
                     NoteActionType.menu => t.aria.openMenu,
                     NoteActionType.reaction => t.misskey.doReaction,
                   }),
@@ -167,7 +167,7 @@ class BehaviorPage extends HookConsumerWidget {
                       initialValue: settings.noteDoubleTapAction,
                       titleBuilder: (context, value) => Text(switch (value) {
                         NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
+                        NoteActionType.expand => t.aria.openNote,
                         NoteActionType.menu => t.aria.openMenu,
                         NoteActionType.reaction => t.misskey.doReaction,
                       }),
@@ -189,7 +189,7 @@ class BehaviorPage extends HookConsumerWidget {
                   title: Text(t.aria.noteLongPressAction),
                   subtitle: Text(switch (settings.noteLongPressAction) {
                     NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
+                    NoteActionType.expand => t.aria.openNote,
                     NoteActionType.menu => t.aria.openMenu,
                     NoteActionType.reaction => t.misskey.doReaction,
                   }),
@@ -202,7 +202,7 @@ class BehaviorPage extends HookConsumerWidget {
                       initialValue: settings.noteLongPressAction,
                       titleBuilder: (context, value) => Text(switch (value) {
                         NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
+                        NoteActionType.expand => t.aria.openNote,
                         NoteActionType.menu => t.aria.openMenu,
                         NoteActionType.reaction => t.misskey.doReaction,
                       }),

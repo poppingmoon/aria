@@ -117,7 +117,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Rechtschreibprüfung aktivieren';
 	@override String get endpoint => 'Endpunkt';
 	@override String get exitPlayConfirm => 'Diesen Play verlassen?';
-	@override String get expandNote => 'Notiz ausklappen';
 	@override String get extraMentionsWarning => 'Diese Notiz enthält Erwähnungen, die nicht in der Zielnotiz der Antwort enthalten sind';
 	@override String get fileNotFound => 'Datei existiert nicht';
 	@override String get findServer => 'Einen Misskey-Server finden';
@@ -189,6 +188,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => 'In externem Browser öffnen';
 	@override String get openInInternalBrowser => 'In internem Browser öffnen';
 	@override String get openMenu => 'Menü öffnen';
+	@override String get openNote => 'Notiz ausklappen';
 	@override String get openNotificationSettings => 'Benachrichtigungseinstellungen öffnen';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Öffne '),

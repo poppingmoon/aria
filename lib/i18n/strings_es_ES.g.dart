@@ -102,7 +102,6 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Activar el corrector ortográfico';
 	@override String get endpoint => 'Endpoint';
 	@override String get exitPlayConfirm => '¿Estás seguro de salir de Play?';
-	@override String get expandNote => 'Mostrar nota';
 	@override String get extraMentionsWarning => 'Esta nota incluye menciones que no están incluidas en la nota a responder';
 	@override String get fileNotFound => 'Archivo no encontrado';
 	@override String get findServer => 'Encuentra un servidor Misskey';
@@ -168,6 +167,7 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => 'Abrir en el navegador externo';
 	@override String get openInInternalBrowser => 'Abrir en navegador interno';
 	@override String get openMenu => 'Abrir menú';
+	@override String get openNote => 'Mostrar nota';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Abre '),
 		scratchpad,

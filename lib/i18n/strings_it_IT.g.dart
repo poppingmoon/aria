@@ -106,7 +106,6 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Abilita controllo ortografico';
 	@override String get endpoint => 'Endpoint';
 	@override String get exitPlayConfirm => 'Sei sicuro di voler uscire dal gioco?';
-	@override String get expandNote => 'Espandi nota';
 	@override String get extraMentionsWarning => 'La presente nota include menzioni che non sono incluse nella nota di risposta';
 	@override String get fileNotFound => 'File non trovato';
 	@override String get findServer => 'Trova un server Misskey';
@@ -172,6 +171,7 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	@override String get openInAnotherAccount => 'Apri su un altro account';
 	@override String get openInBrowser => 'Apri nel browser';
 	@override String get openInExternalBrowser => 'Apri nel browser esterno';
+	@override String get openNote => 'Espandi nota';
 	@override String get owner => 'Proprietario';
 	@override String get parameters => 'Parametri';
 	@override String get paste => 'Incolla';
