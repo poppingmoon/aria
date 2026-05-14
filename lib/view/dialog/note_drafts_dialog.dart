@@ -309,16 +309,27 @@ class _LocalNoteDraftWidget extends ConsumerWidget {
             ],
           ),
         ),
-        NoteWidget(
-          account: draft.account,
-          noteId: '',
-          withHardMute: false,
-          showFooter: false,
-          note: draft.draft.toNote(),
-          borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(8.0),
+        if (draft.draft.isRenote)
+          NoteWidget(
+            account: draft.account,
+            noteId: draft.draft.renoteId!,
+            withHardMute: false,
+            showFooter: false,
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(8.0),
+            ),
+          )
+        else
+          NoteWidget(
+            account: draft.account,
+            noteId: '',
+            withHardMute: false,
+            showFooter: false,
+            note: draft.draft.toNote(),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(8.0),
+            ),
           ),
-        ),
       ],
     );
   }
@@ -427,16 +438,27 @@ class _NoteDraftWidget extends ConsumerWidget {
             ],
           ),
         ),
-        NoteWidget(
-          account: account,
-          noteId: '',
-          withHardMute: false,
-          showFooter: false,
-          note: draft.toNote(),
-          borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(8.0),
+        if (draft.isRenote)
+          NoteWidget(
+            account: account,
+            noteId: draft.renoteId!,
+            withHardMute: false,
+            showFooter: false,
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(8.0),
+            ),
+          )
+        else
+          NoteWidget(
+            account: account,
+            noteId: '',
+            withHardMute: false,
+            showFooter: false,
+            note: draft.toNote(),
+            borderRadius: const BorderRadius.vertical(
+              bottom: Radius.circular(8.0),
+            ),
           ),
-        ),
       ],
     );
   }
