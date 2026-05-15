@@ -227,9 +227,6 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Are you sure you want to exit the Play?'
 	String get exitPlayConfirm => 'Are you sure you want to exit the Play?';
 
-	/// en-US: 'Expand note'
-	String get expandNote => 'Expand note';
-
 	/// en-US: 'This note includes mentions that are not included in the target note of reply'
 	String get extraMentionsWarning => 'This note includes mentions that are not included in the target note of reply';
 
@@ -402,6 +399,9 @@ class TranslationsAriaEnUs {
 
 	/// en-US: 'Open menu'
 	String get openMenu => 'Open menu';
+
+	/// en-US: 'Expand note'
+	String get openNote => 'Expand note';
 
 	/// en-US: 'Open notification settings'
 	String get openNotificationSettings => 'Open notification settings';

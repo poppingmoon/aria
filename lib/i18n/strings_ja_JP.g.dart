@@ -80,6 +80,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
+	@override String get confirmBeforePostingMediaWithoutComment => 'キャプションなしでメディアを投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
 	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしました';
@@ -115,7 +116,6 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'スペルチェックを有効にする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get exitPlayConfirm => 'Playを終了しますか？';
-	@override String get expandNote => 'ノートを開く';
 	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
 	@override String get fileNotFound => 'ファイルが見つかりません';
 	@override String get findServer => 'Misskeyサーバーを見つける';
@@ -154,6 +154,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get mediaSaveLocation => 'メディアの保存先';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get mergeReactionsByName => '同じ名前のリアクションをまとめて表示する';
+	@override String get missingFileCommentWarning => 'このファイルにはキャプションがありません。追加しますか？';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';
 	@override String get mutedEmojis => 'ミュートした絵文字';
@@ -185,6 +186,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '外部ブラウザで開く';
 	@override String get openInInternalBrowser => '内部ブラウザで開く';
 	@override String get openMenu => 'メニューを開く';
+	@override String get openNote => 'ノートを開く';
 	@override String get openNotificationSettings => '通知の設定を開く';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'ブラウザで'),

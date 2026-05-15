@@ -4,6 +4,12 @@
     "NSCameraUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um Fotos oder Videos aufzunehmen, erlaubt bitte Zugriff auf die Kamera."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27,6 +33,12 @@
     "NSMotionUsageDescription" : {
       "extractionState" : "manual",
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die Ausrichtung des Gerätes festzustellen, erlaube bitte Zugriff auf den Sensor."
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",

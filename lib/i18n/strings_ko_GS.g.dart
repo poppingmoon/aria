@@ -109,7 +109,6 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get enableEmojiFadeIn => '커스텀 이모지에 페이드인 효과 키래이';
 	@override String get enableFederation => '연합 키라';
 	@override String get endpoint => '엔드포인트';
-	@override String get expandNote => '노트 열으라';
 	@override String get extraMentionsWarning => '원래 노트엔 읎던 멘션이 달맀는디. 그거 맞제?';
 	@override String get fileNotFound => '고런 파일 읎다';
 	@override String get findServer => 'Misskey 써버를 찾아보자야';
@@ -172,6 +171,7 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '외부 브라우저서 열으래이';
 	@override String get openInInternalBrowser => '내부 브라우저서 열으래이';
 	@override String get openMenu => '메뉴 열으래이';
+	@override String get openNote => '노트 열으라';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		scratchpad,
 		const TextSpan(text: ' 를 브라우저에서 열고, 다음 코드를 클릭한 다음 실행하세요.'),

@@ -81,6 +81,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get clientInfo => 'Client-Informationen';
 	@override String get confirmBeforeFollow => 'Folgen bestätigen';
 	@override String get confirmBeforePost => 'Posten bestätigen';
+	@override String get confirmBeforePostingMediaWithoutComment => 'Posten von Medien ohne Beschreibung bestätigen';
 	@override String get confirmBeforeReact => 'Reaktion bestätigen';
 	@override String get confirmBeforeRenote => 'Renote bestätigen';
 	@override String get copied => 'In Zwischenablage kopiert';
@@ -116,7 +117,6 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Rechtschreibprüfung aktivieren';
 	@override String get endpoint => 'Endpunkt';
 	@override String get exitPlayConfirm => 'Diesen Play verlassen?';
-	@override String get expandNote => 'Notiz ausklappen';
 	@override String get extraMentionsWarning => 'Diese Notiz enthält Erwähnungen, die nicht in der Zielnotiz der Antwort enthalten sind';
 	@override String get fileNotFound => 'Datei existiert nicht';
 	@override String get findServer => 'Einen Misskey-Server finden';
@@ -156,6 +156,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get mediaSaveLocation => 'Medienspeicherort';
 	@override String get mentionToRemoteWarning => 'Diese Notiz enthält Erwähnungen fremder Benutzer';
 	@override String get mergeReactionsByName => 'Reaktionen mit dem gleichen Namen zusammenführen';
+	@override String get missingFileCommentWarning => 'Diese Datei hat keinen alternativen Beschreibungstext. Möchtest du einen hinzufügen?';
 	@override String get moved => 'Verschoben';
 	@override String get muted => 'Stummgeschaltet';
 	@override String get mutedEmojis => 'Stummgeschaltete Emojis';
@@ -187,6 +188,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => 'In externem Browser öffnen';
 	@override String get openInInternalBrowser => 'In internem Browser öffnen';
 	@override String get openMenu => 'Menü öffnen';
+	@override String get openNote => 'Notiz ausklappen';
 	@override String get openNotificationSettings => 'Benachrichtigungseinstellungen öffnen';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Öffne '),
@@ -204,7 +206,10 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	]);
 	@override String get pasteResponseBelow => 'Füge die Ausgabe unten ein.';
 	@override String get permissionDeniedErrorDescription => 'Der Zugangstoken ist nicht berechtigt, diese Aktion auszuführen. Bitte melde dich erneut an.';
+	@override String get pin => 'Anheften';
 	@override String get pinToEmojiPicker => 'An Emoji-Picker anheften';
+	@override String get pinned => 'Angeheftet';
+	@override String get pinnedDraft => 'Angehefteter Entwurf';
 	@override String get playAudio => 'Audioinhalte wiedergeben';
 	@override String get playVideo => 'Video wiedergeben';
 	@override String get pleaseCopyResponse => 'Bitte kopiere diese Ausgabe';
@@ -232,6 +237,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 		user,
 	]);
 	@override String get sendMessageConfirm => 'Diese Nachricht senden?';
+	@override String get server => 'Server';
 	@override String get serverUrl => 'Server-URL';
 	@override String get settingsFileForAria => 'Konfigurationsdatei für Aria';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -246,6 +252,7 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get showExpandedImage => 'Anzeigebereich ausfüllen';
 	@override String get showGapBetweenNotesInTimeline => 'Abstände zwischen Notizen in der Chronik anzeigen';
 	@override String get showImage => 'Bild anzeigen';
+	@override String get showImageInNotification => 'Bilder in Benachrichtigungen anzeigen';
 	@override String get showLikeButtonInNoteFooter => '"Mag ich" den Notiz-Aktionen hinzufügen';
 	@override String get showMenuButtonInTabBar => 'Menü-Schaltfläche in der Tableiste anzeigen';
 	@override String get showNote => 'Notiz anzeigen';

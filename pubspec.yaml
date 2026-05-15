@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.0-beta.3+96
+version: 1.5.0-beta.4+97
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -19,18 +19,18 @@ dependencies:
   audioplayers: ^6.6.0
   cached_network_image: ^3.4.1
   characters: ^1.4.1
-  chewie: ^1.13.1
+  chewie: ^1.14.0
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
   connectivity_plus: ^7.1.1
-  device_info_plus: ^12.4.0
+  device_info_plus: ^13.1.0
   dio: ^5.9.2
   dotted_border: ^3.1.0
   dynamic_color: ^1.8.1
   extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker: ^11.0.2
+  file_picker: ^12.0.0-beta.3
   flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
@@ -56,8 +56,8 @@ dependencies:
     sdk: flutter
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: ^2.12.0
-  flutter_secure_storage: ^10.1.0
-  flutter_svg: ^2.2.4
+  flutter_secure_storage: ^10.2.0
+  flutter_svg: ^2.3.0
   fluttertoast: ^9.0.0
   freezed_annotation: ^3.1.0
   fvp:
@@ -104,7 +104,7 @@ dependencies:
       url: https://github.com/poppingmoon/mobile_scanner
       ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
   multi_split_view: ^3.6.1
-  package_info_plus: ^9.0.1
+  package_info_plus: ^10.1.0
   path: ^1.9.1
   path_provider: ^2.1.5
   photo_view: ^0.15.0
@@ -119,9 +119,9 @@ dependencies:
   riverpod_annotation: ^4.0.2
   rust_lib_aria:
     path: rust_builder
-  screen_brightness: ^2.1.7
+  screen_brightness: ^2.1.8
   sensors_plus: ^7.0.0
-  share_plus: ^12.0.2
+  share_plus: ^13.1.0
   shared_preferences: ^2.5.5
   shared_preferences_platform_interface: ^2.4.2
   slang: ^4.14.0
@@ -140,7 +140,7 @@ dependencies:
   uuid: ^4.5.3
   vector_math: ^2.2.0
   video_player: ^2.11.1
-  wakelock_plus: ^1.5.2
+  wakelock_plus: ^1.6.0
   web_socket_channel: ^3.0.3
   webfont_list:
     git:
@@ -183,6 +183,11 @@ dependency_overrides:
       url: https://github.com/poppingmoon/isar-community
       ref: c376e990b9e0978f22250c74159350dd598fd4f8
       path: packages/isar_community
+  jni:
+    git:
+      url: https://github.com/poppingmoon/native
+      ref: b380193822cbc7a6c74373edd3a2185edd89ba56
+      path: pkgs/jni
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector

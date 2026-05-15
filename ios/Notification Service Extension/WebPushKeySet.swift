@@ -25,25 +25,9 @@ struct WebPushKeySet {
     guard let privateKey = Data(base64UrlEncoded: String(keys[2])) else {
       throw WebPushKeySetError.privateKey
     }
-    if #available(iOS 14.0, *) {
-      self.privateKey = try P256.KeyAgreement.PrivateKey(
-        derRepresentation: privateKey
-      )
-    } else {
-      let octetStringTag = 4
-      let privateKeyLength = 32
-      let pattern = [UInt8(octetStringTag), UInt8(privateKeyLength)]
-      guard let range = privateKey.firstRange(of: pattern),
-        range.upperBound + privateKeyLength <= privateKey.count
-      else {
-        throw WebPushKeySetError.privateKey
-      }
-      self.privateKey = try P256.KeyAgreement.PrivateKey(
-        rawRepresentation: privateKey[
-          range.upperBound..<range.upperBound + privateKeyLength
-        ]
-      )
-    }
+    self.privateKey = try P256.KeyAgreement.PrivateKey(
+      derRepresentation: privateKey,
+    )
   }
 }
 

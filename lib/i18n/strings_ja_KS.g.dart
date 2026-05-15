@@ -80,6 +80,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get clientInfo => 'クライアント情報';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
+	@override String get confirmBeforePostingMediaWithoutComment => 'キャプションがついてへんメディアを投稿する前に確認する';
 	@override String get confirmBeforeReact => 'ツッコミする前に確認する';
 	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしたで';
@@ -115,7 +116,6 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'スペルチェックを有効にするで';
 	@override String get endpoint => 'エンドポイント';
 	@override String get exitPlayConfirm => 'Playをやめてええか？';
-	@override String get expandNote => 'ノートを開くで';
 	@override String get extraMentionsWarning => '返信元のノートには入ってへんメンションがあるで';
 	@override String get fileNotFound => 'ファイルがあらへん';
 	@override String get findServer => 'Misskeyサーバーを探す';
@@ -154,6 +154,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get mediaSaveLocation => 'メディアをとっとくとこ';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';
 	@override String get mergeReactionsByName => '同じ名前のリアクションをごっちゃにするで';
+	@override String get missingFileCommentWarning => 'このファイルにはキャプションがついてへんみたいや。追加しとく？';
 	@override String get moved => '移したで';
 	@override String get muted => 'ミュート中';
 	@override String get mutedEmojis => 'ミュートしとる絵文字';
@@ -185,6 +186,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '外部ブラウザで開くで';
 	@override String get openInInternalBrowser => '内部ブラウザで開くで';
 	@override String get openMenu => 'メニューを開くで';
+	@override String get openNote => 'ノートを開くで';
 	@override String get openNotificationSettings => '通知の設定を開く';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'ブラウザで'),

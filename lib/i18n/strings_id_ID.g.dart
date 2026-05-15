@@ -97,7 +97,6 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => 'Nyalakan animasi untuk predictive back';
 	@override String get enableSpellCheck => 'Nyalakan pemeriksaan ejaan';
 	@override String get endpoint => 'Endpoint';
-	@override String get expandNote => 'Tampilkan note';
 	@override String get extraMentionsWarning => 'Note ini memiliki mention yang tidak tercantum di target balasan note';
 	@override String get fileNotFound => 'Berkas tidak ditemukan';
 	@override String get findServer => 'Cari server Misskey';
@@ -163,6 +162,7 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => 'Buka di browser eksternal';
 	@override String get openInInternalBrowser => 'Buka di browser internal';
 	@override String get openMenu => 'Buka menu';
+	@override String get openNote => 'Tampilkan note';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: 'Buka '),
 		scratchpad,

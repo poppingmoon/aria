@@ -81,6 +81,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get clientInfo => '客户端信息';
 	@override String get confirmBeforeFollow => '在关注之前确认';
 	@override String get confirmBeforePost => '在发布帖子前确认';
+	@override String get confirmBeforePostingMediaWithoutComment => '在发布没有描述文本的媒体前进行确认';
 	@override String get confirmBeforeReact => '在表情回应前确认';
 	@override String get confirmBeforeRenote => '在转发之前确认';
 	@override String get copied => '已复制到剪贴板';
@@ -96,11 +97,11 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		one: '您确定要删除 ${n} 个文件吗？',
 		other: '您确定要删除 ${n} 个文件吗？',
 	);
-	@override String get deleteTabConfirm => '你确定要删除此标签吗？';
+	@override String get deleteTabConfirm => '确定要删除此标签吗？';
 	@override String get device => '设备';
 	@override String get disableDataSaverWhenOnWifi => '连接 Wi-Fi 时关闭省流量模式';
 	@override String get disableStreamingTimeline => '关闭动态实时刷新​';
-	@override String get disableSubscribingNotes => '关闭实时表情回应更新';
+	@override String get disableSubscribingNotes => '关闭回应实时更新';
 	@override String get discardChangesConfirm => '确认放弃更改并返回吗？';
 	@override String get displayOfThumbnail => '缩略图显示方式';
 	@override String get doubleTapToShow => '双击显示';
@@ -115,13 +116,12 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => '启用预测性返回动画';
 	@override String get enableSpellCheck => '启用拼写检查';
 	@override String get endpoint => '端点';
-	@override String get exitPlayConfirm => '你确定要退出这个 Play 吗？';
-	@override String get expandNote => '展开帖子';
-	@override String get extraMentionsWarning => '此帖子包含目标回复帖子中的未列入的提及';
+	@override String get exitPlayConfirm => '确定要退出这个 Play 吗？';
+	@override String get extraMentionsWarning => '该贴的提及包含非回复对象';
 	@override String get fileNotFound => '未找到文件';
 	@override String get findServer => '查找 Misskey 服务器';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: '你确定要关注 '),
+		const TextSpan(text: '确定要关注 '),
 		name,
 		const TextSpan(text: ' 吗？'),
 	]);
@@ -153,15 +153,16 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get loginWithAccessToken => '使用访问令牌登录';
 	@override String get margin => '边距';
 	@override String get media => '媒体';
-	@override String get mediaSaveLocation => '媒体存储位置';
-	@override String get mentionToRemoteWarning => '此帖子提及了远程用户';
+	@override String get mediaSaveLocation => '媒体保存位置';
+	@override String get mentionToRemoteWarning => '该贴的提及中包含远程用户';
 	@override String get mergeReactionsByName => '统一显示同名回应';
+	@override String get missingFileCommentWarning => '该文件缺少描述文本。确定要添加吗？';
 	@override String get moved => '移动';
 	@override String get muted => '已屏蔽';
 	@override String get mutedEmojis => '屏蔽回应表情';
 	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('zh'))(n,
 		one: '${n} 文件',
-		other: '${n} 多个文件',
+		other: '${n} 个文件',
 	);
 	@override String get newFollowRequestReceived => '有新的关注请求';
 	@override String get newNotes => '新帖子';
@@ -187,6 +188,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '用外部浏览器打开';
 	@override String get openInInternalBrowser => '用内置浏览器打开';
 	@override String get openMenu => '打开菜单';
+	@override String get openNote => '展开帖子';
 	@override String get openNotificationSettings => '打开通知设定';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		const TextSpan(text: '在浏览器中打开 '),
@@ -212,7 +214,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get playVideo => '播放视频';
 	@override String get pleaseCopyResponse => '请复制此回复';
 	@override String pleaseLoginAs({required Object user}) => '请以 ${user} 登录';
-	@override String get postConfirm => '你确定要发布这个帖子吗？';
+	@override String get postConfirm => '确定要发布这条帖子吗？';
 	@override String get reactionConfirm => '您确定要添加一个回应吗？';
 	@override String get recentlyUsedEmojis => '最近使用的表情';
 	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -234,10 +236,10 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 		user,
 		const TextSpan(text: ' 自己转发了'),
 	]);
-	@override String get sendMessageConfirm => '你确定要发送这条消息吗？';
+	@override String get sendMessageConfirm => '确定要发送这条消息吗？';
 	@override String get server => '服务器';
 	@override String get serverUrl => '服务器地址';
-	@override String get settingsFileForAria => 'Aria 的设置文件';
+	@override String get settingsFileForAria => 'Aria 的配置文件';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
 		user,
 		const TextSpan(text: ' 的设置'),
@@ -245,7 +247,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showAvatarsInNote => '在帖子中显示用户头像';
 	@override String get showAvatarsInSubNote => '在子贴中显示用户头像';
 	@override String get showCaption => '显示图像描述文本';
-	@override String get showEmojiInReactionNotification => '在反应通知时显示 Emoji';
+	@override String get showEmojiInReactionNotification => '收到回应时，通知中显示表情符号';
 	@override String get showEntireImage => '显示完整图像';
 	@override String get showExpandedImage => '显示扩展图像';
 	@override String get showGapBetweenNotesInTimeline => '在帖子之间添加间隔';
@@ -298,7 +300,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get useThisEmoji => '使用此表情';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		name,
-		const TextSpan(text: ' 说了什么,但是被屏蔽词过滤了'),
+		const TextSpan(text: ' 说了什么，但是被屏蔽词过滤了'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '含 '),
