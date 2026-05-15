@@ -1013,38 +1013,6 @@ class _PostFormHeader extends HookConsumerWidget {
   final bool showPostButton;
   final ValueNotifier<bool> useCw;
 
-  Future<Account?> _switchAccount(WidgetRef ref, Account origin) async {
-    final accounts = ref.read(accountsNotifierProvider);
-    final destination = await showModalBottomSheet<Account>(
-      context: ref.context,
-      builder: (context) => ListView.separated(
-        itemBuilder: (context, index) {
-          final account = accounts[index];
-          return AccountPreview(
-            account: account,
-            trailing: const Icon(Icons.navigate_next),
-            avatarSize: 40.0,
-            onTap: () => context.pop(accounts[index]),
-          );
-        },
-        separatorBuilder: (_, _) => const Divider(height: 0.0),
-        itemCount: accounts.length,
-      ),
-      clipBehavior: Clip.hardEdge,
-    );
-    if (destination == null || destination == origin) {
-      return null;
-    }
-    final draft = ref.read(postNotifierProvider(origin));
-    try {
-      await ref
-          .read(postNotifierProvider(destination).notifier)
-          .fromDraft(draft, origin);
-      await ref.read(postNotifierProvider(origin).notifier).reset();
-    } catch (_) {}
-    return destination;
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
@@ -1078,20 +1046,18 @@ class _PostFormHeader extends HookConsumerWidget {
 
     return Row(
       children: [
-        IconButton(
-          tooltip: t.misskey.switchAccount,
-          onPressed: noteId == null
-              ? () async {
-                  final destination = await _switchAccount(ref, account);
-                  if (destination != null) {
-                    onAccountChanged(destination);
-                  }
-                }
-              : null,
-          icon: i != null
-              ? UserAvatar(account: account, user: i, size: 32.0)
-              : const Icon(Icons.person),
-        ),
+        if (noteId != null)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: i != null
+                ? UserAvatar(account: account, user: i, size: 32.0)
+                : const Icon(Icons.person),
+          )
+        else
+          _AccountSwitchButton(
+            account: account,
+            onAccountChanged: onAccountChanged,
+          ),
         const Spacer(),
         IconButton(
           onPressed: canChangeVisibility
@@ -1305,6 +1271,63 @@ class _PostFormHeader extends HookConsumerWidget {
           ),
         ],
       ],
+    );
+  }
+}
+
+class _AccountSwitchButton extends HookConsumerWidget {
+  const _AccountSwitchButton({
+    required this.account,
+    required this.onAccountChanged,
+  });
+
+  final Account account;
+  final void Function(Account account) onAccountChanged;
+
+  Future<Account?> _switchAccount(WidgetRef ref, Account origin) async {
+    final accounts = ref.read(accountsNotifierProvider);
+    final destination = await showModalBottomSheet<Account>(
+      context: ref.context,
+      builder: (context) => ListView.separated(
+        itemBuilder: (context, index) => AccountPreview(
+          account: accounts[index],
+          trailing: const Icon(Icons.navigate_next),
+          avatarSize: 40.0,
+          onTap: () => context.pop(accounts[index]),
+        ),
+        separatorBuilder: (_, _) => const Divider(height: 0.0),
+        itemCount: accounts.length,
+      ),
+      clipBehavior: Clip.hardEdge,
+    );
+    if (destination == null || destination == origin) {
+      return null;
+    }
+    final draft = ref.read(postNotifierProvider(origin));
+    try {
+      await ref
+          .read(postNotifierProvider(destination).notifier)
+          .fromDraft(draft, origin);
+      await ref.read(postNotifierProvider(origin).notifier).reset();
+    } catch (_) {}
+    return destination;
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).value;
+
+    return IconButton(
+      tooltip: t.misskey.switchAccount,
+      onPressed: () async {
+        final destination = await _switchAccount(ref, account);
+        if (destination != null) {
+          onAccountChanged(destination);
+        }
+      },
+      icon: i != null
+          ? UserAvatar(account: account, user: i, size: 32.0)
+          : const Icon(Icons.person),
     );
   }
 }
