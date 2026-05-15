@@ -22,6 +22,12 @@
             "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
           }
         },
+        "ja-KS" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -51,6 +57,12 @@
             "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
           }
         },
+        "ja-KS" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
@@ -75,6 +87,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
@@ -110,6 +128,12 @@
           }
         },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
