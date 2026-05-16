@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SummalyResult {
 
- String? get title; String? get icon; String? get description; String? get thumbnail; Player get player; String? get sitename; bool? get sensitive; String? get url;
+ String? get title; String? get icon; String? get description; String? get thumbnail; String? get thumbnailStyle; String? get sitename; Player get player; bool? get sensitive; String? get activityPub; String? get fediverseCreater; String? get url;
 /// Create a copy of SummalyResult
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $SummalyResultCopyWith<SummalyResult> get copyWith => _$SummalyResultCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SummalyResult&&(identical(other.title, title) || other.title == title)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.description, description) || other.description == description)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.player, player) || other.player == player)&&(identical(other.sitename, sitename) || other.sitename == sitename)&&(identical(other.sensitive, sensitive) || other.sensitive == sensitive)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SummalyResult&&(identical(other.title, title) || other.title == title)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.description, description) || other.description == description)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.thumbnailStyle, thumbnailStyle) || other.thumbnailStyle == thumbnailStyle)&&(identical(other.sitename, sitename) || other.sitename == sitename)&&(identical(other.player, player) || other.player == player)&&(identical(other.sensitive, sensitive) || other.sensitive == sensitive)&&(identical(other.activityPub, activityPub) || other.activityPub == activityPub)&&(identical(other.fediverseCreater, fediverseCreater) || other.fediverseCreater == fediverseCreater)&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,icon,description,thumbnail,player,sitename,sensitive,url);
+int get hashCode => Object.hash(runtimeType,title,icon,description,thumbnail,thumbnailStyle,sitename,player,sensitive,activityPub,fediverseCreater,url);
 
 @override
 String toString() {
-  return 'SummalyResult(title: $title, icon: $icon, description: $description, thumbnail: $thumbnail, player: $player, sitename: $sitename, sensitive: $sensitive, url: $url)';
+  return 'SummalyResult(title: $title, icon: $icon, description: $description, thumbnail: $thumbnail, thumbnailStyle: $thumbnailStyle, sitename: $sitename, player: $player, sensitive: $sensitive, activityPub: $activityPub, fediverseCreater: $fediverseCreater, url: $url)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $SummalyResultCopyWith<$Res>  {
   factory $SummalyResultCopyWith(SummalyResult value, $Res Function(SummalyResult) _then) = _$SummalyResultCopyWithImpl;
 @useResult
 $Res call({
- String? title, String? icon, String? description, String? thumbnail, Player player, String? sitename, bool? sensitive, String? url
+ String? title, String? icon, String? description, String? thumbnail, String? thumbnailStyle, String? sitename, Player player, bool? sensitive, String? activityPub, String? fediverseCreater, String? url
 });
 
 
@@ -63,16 +63,19 @@ class _$SummalyResultCopyWithImpl<$Res>
 
 /// Create a copy of SummalyResult
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? icon = freezed,Object? description = freezed,Object? thumbnail = freezed,Object? player = null,Object? sitename = freezed,Object? sensitive = freezed,Object? url = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? icon = freezed,Object? description = freezed,Object? thumbnail = freezed,Object? thumbnailStyle = freezed,Object? sitename = freezed,Object? player = null,Object? sensitive = freezed,Object? activityPub = freezed,Object? fediverseCreater = freezed,Object? url = freezed,}) {
   return _then(_self.copyWith(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
+as String?,thumbnailStyle: freezed == thumbnailStyle ? _self.thumbnailStyle : thumbnailStyle // ignore: cast_nullable_to_non_nullable
+as String?,sitename: freezed == sitename ? _self.sitename : sitename // ignore: cast_nullable_to_non_nullable
 as String?,player: null == player ? _self.player : player // ignore: cast_nullable_to_non_nullable
-as Player,sitename: freezed == sitename ? _self.sitename : sitename // ignore: cast_nullable_to_non_nullable
-as String?,sensitive: freezed == sensitive ? _self.sensitive : sensitive // ignore: cast_nullable_to_non_nullable
-as bool?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as Player,sensitive: freezed == sensitive ? _self.sensitive : sensitive // ignore: cast_nullable_to_non_nullable
+as bool?,activityPub: freezed == activityPub ? _self.activityPub : activityPub // ignore: cast_nullable_to_non_nullable
+as String?,fediverseCreater: freezed == fediverseCreater ? _self.fediverseCreater : fediverseCreater // ignore: cast_nullable_to_non_nullable
+as String?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -167,10 +170,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? icon,  String? description,  String? thumbnail,  Player player,  String? sitename,  bool? sensitive,  String? url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? title,  String? icon,  String? description,  String? thumbnail,  String? thumbnailStyle,  String? sitename,  Player player,  bool? sensitive,  String? activityPub,  String? fediverseCreater,  String? url)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SummalyResult() when $default != null:
-return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.player,_that.sitename,_that.sensitive,_that.url);case _:
+return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.thumbnailStyle,_that.sitename,_that.player,_that.sensitive,_that.activityPub,_that.fediverseCreater,_that.url);case _:
   return orElse();
 
 }
@@ -188,10 +191,10 @@ return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? icon,  String? description,  String? thumbnail,  Player player,  String? sitename,  bool? sensitive,  String? url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? title,  String? icon,  String? description,  String? thumbnail,  String? thumbnailStyle,  String? sitename,  Player player,  bool? sensitive,  String? activityPub,  String? fediverseCreater,  String? url)  $default,) {final _that = this;
 switch (_that) {
 case _SummalyResult():
-return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.player,_that.sitename,_that.sensitive,_that.url);case _:
+return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.thumbnailStyle,_that.sitename,_that.player,_that.sensitive,_that.activityPub,_that.fediverseCreater,_that.url);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +211,10 @@ return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.p
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? icon,  String? description,  String? thumbnail,  Player player,  String? sitename,  bool? sensitive,  String? url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? title,  String? icon,  String? description,  String? thumbnail,  String? thumbnailStyle,  String? sitename,  Player player,  bool? sensitive,  String? activityPub,  String? fediverseCreater,  String? url)?  $default,) {final _that = this;
 switch (_that) {
 case _SummalyResult() when $default != null:
-return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.player,_that.sitename,_that.sensitive,_that.url);case _:
+return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.thumbnailStyle,_that.sitename,_that.player,_that.sensitive,_that.activityPub,_that.fediverseCreater,_that.url);case _:
   return null;
 
 }
@@ -223,16 +226,19 @@ return $default(_that.title,_that.icon,_that.description,_that.thumbnail,_that.p
 @JsonSerializable(createToJson: false)
 
 class _SummalyResult implements SummalyResult {
-  const _SummalyResult({this.title, this.icon, this.description, this.thumbnail, required this.player, this.sitename, this.sensitive, this.url});
+  const _SummalyResult({this.title, this.icon, this.description, this.thumbnail, this.thumbnailStyle, this.sitename, required this.player, this.sensitive, this.activityPub, this.fediverseCreater, this.url});
   factory _SummalyResult.fromJson(Map<String, dynamic> json) => _$SummalyResultFromJson(json);
 
 @override final  String? title;
 @override final  String? icon;
 @override final  String? description;
 @override final  String? thumbnail;
-@override final  Player player;
+@override final  String? thumbnailStyle;
 @override final  String? sitename;
+@override final  Player player;
 @override final  bool? sensitive;
+@override final  String? activityPub;
+@override final  String? fediverseCreater;
 @override final  String? url;
 
 /// Create a copy of SummalyResult
@@ -245,16 +251,16 @@ _$SummalyResultCopyWith<_SummalyResult> get copyWith => __$SummalyResultCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SummalyResult&&(identical(other.title, title) || other.title == title)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.description, description) || other.description == description)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.player, player) || other.player == player)&&(identical(other.sitename, sitename) || other.sitename == sitename)&&(identical(other.sensitive, sensitive) || other.sensitive == sensitive)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SummalyResult&&(identical(other.title, title) || other.title == title)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.description, description) || other.description == description)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.thumbnailStyle, thumbnailStyle) || other.thumbnailStyle == thumbnailStyle)&&(identical(other.sitename, sitename) || other.sitename == sitename)&&(identical(other.player, player) || other.player == player)&&(identical(other.sensitive, sensitive) || other.sensitive == sensitive)&&(identical(other.activityPub, activityPub) || other.activityPub == activityPub)&&(identical(other.fediverseCreater, fediverseCreater) || other.fediverseCreater == fediverseCreater)&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,icon,description,thumbnail,player,sitename,sensitive,url);
+int get hashCode => Object.hash(runtimeType,title,icon,description,thumbnail,thumbnailStyle,sitename,player,sensitive,activityPub,fediverseCreater,url);
 
 @override
 String toString() {
-  return 'SummalyResult(title: $title, icon: $icon, description: $description, thumbnail: $thumbnail, player: $player, sitename: $sitename, sensitive: $sensitive, url: $url)';
+  return 'SummalyResult(title: $title, icon: $icon, description: $description, thumbnail: $thumbnail, thumbnailStyle: $thumbnailStyle, sitename: $sitename, player: $player, sensitive: $sensitive, activityPub: $activityPub, fediverseCreater: $fediverseCreater, url: $url)';
 }
 
 
@@ -265,7 +271,7 @@ abstract mixin class _$SummalyResultCopyWith<$Res> implements $SummalyResultCopy
   factory _$SummalyResultCopyWith(_SummalyResult value, $Res Function(_SummalyResult) _then) = __$SummalyResultCopyWithImpl;
 @override @useResult
 $Res call({
- String? title, String? icon, String? description, String? thumbnail, Player player, String? sitename, bool? sensitive, String? url
+ String? title, String? icon, String? description, String? thumbnail, String? thumbnailStyle, String? sitename, Player player, bool? sensitive, String? activityPub, String? fediverseCreater, String? url
 });
 
 
@@ -282,16 +288,19 @@ class __$SummalyResultCopyWithImpl<$Res>
 
 /// Create a copy of SummalyResult
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? icon = freezed,Object? description = freezed,Object? thumbnail = freezed,Object? player = null,Object? sitename = freezed,Object? sensitive = freezed,Object? url = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = freezed,Object? icon = freezed,Object? description = freezed,Object? thumbnail = freezed,Object? thumbnailStyle = freezed,Object? sitename = freezed,Object? player = null,Object? sensitive = freezed,Object? activityPub = freezed,Object? fediverseCreater = freezed,Object? url = freezed,}) {
   return _then(_SummalyResult(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
+as String?,thumbnailStyle: freezed == thumbnailStyle ? _self.thumbnailStyle : thumbnailStyle // ignore: cast_nullable_to_non_nullable
+as String?,sitename: freezed == sitename ? _self.sitename : sitename // ignore: cast_nullable_to_non_nullable
 as String?,player: null == player ? _self.player : player // ignore: cast_nullable_to_non_nullable
-as Player,sitename: freezed == sitename ? _self.sitename : sitename // ignore: cast_nullable_to_non_nullable
-as String?,sensitive: freezed == sensitive ? _self.sensitive : sensitive // ignore: cast_nullable_to_non_nullable
-as bool?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as Player,sensitive: freezed == sensitive ? _self.sensitive : sensitive // ignore: cast_nullable_to_non_nullable
+as bool?,activityPub: freezed == activityPub ? _self.activityPub : activityPub // ignore: cast_nullable_to_non_nullable
+as String?,fediverseCreater: freezed == fediverseCreater ? _self.fediverseCreater : fediverseCreater // ignore: cast_nullable_to_non_nullable
+as String?,url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
