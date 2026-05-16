@@ -6,7 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/summaly_result.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/summaly_provider.dart';
@@ -167,54 +166,54 @@ class UrlPreview extends HookConsumerWidget {
             case TargetPlatform.android ||
                 TargetPlatform.iOS ||
                 TargetPlatform.macOS ||
-                TargetPlatform.windows)
-          if (playerUrl != null || tweetId != null) ...[
-            if (isPlayerOpen.value) ...[
-              if (summalyResult case SummalyResult(player: Player(url: _?)))
-                PlayerEmbed(host: account.host, player: summalyResult.player),
-              if (tweetId != null)
-                TwitterEmbed(
-                  tweetId: tweetId,
-                  isDark: Theme.of(context).brightness == Brightness.dark,
-                  lang: Localizations.localeOf(context).toLanguageTag(),
-                ),
-            ],
-            const SizedBox(height: 6.0),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                foregroundColor: colors.fg,
-                backgroundColor: colors.buttonBg,
-                iconColor: colors.fg,
-                textStyle: style.apply(fontSizeFactor: 0.9),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 6.0,
-                  horizontal: 12.0,
-                ),
-                minimumSize: Size.zero,
-                side: BorderSide.none,
-                visualDensity: VisualDensity.standard,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                TargetPlatform.windows
+            when summalyResult != null &&
+                (playerUrl != null || tweetId != null)) ...[
+          if (isPlayerOpen.value)
+            if (playerUrl != null)
+              PlayerEmbed(host: account.host, player: summalyResult.player)
+            else if (tweetId != null)
+              TwitterEmbed(
+                tweetId: tweetId,
+                isDark: brightness == Brightness.dark,
+                lang: Localizations.localeOf(context).toLanguageTag(),
               ),
-              onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
-              icon: Icon(
-                isPlayerOpen.value
-                    ? Icons.close
-                    : playerUrl != null
-                    ? Icons.play_arrow
-                    : Icons.open_in_full,
-                size: style.apply(fontSizeFactor: 0.9).lineHeight,
+          const SizedBox(height: 6.0),
+          OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: colors.fg,
+              backgroundColor: colors.buttonBg,
+              iconColor: colors.fg,
+              textStyle: style.apply(fontSizeFactor: 0.9),
+              padding: const EdgeInsets.symmetric(
+                vertical: 6.0,
+                horizontal: 12.0,
               ),
-              label: Text(
-                isPlayerOpen.value
-                    ? playerUrl != null
-                          ? t.misskey.disablePlayer
-                          : t.misskey.close
-                    : playerUrl != null
-                    ? t.misskey.enablePlayer
-                    : t.misskey.expandTweet,
-              ),
+              minimumSize: Size.zero,
+              side: BorderSide.none,
+              visualDensity: VisualDensity.standard,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-          ],
+            onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
+            icon: Icon(
+              isPlayerOpen.value
+                  ? Icons.close
+                  : playerUrl != null
+                  ? Icons.play_arrow
+                  : Icons.open_in_full,
+              size: style.apply(fontSizeFactor: 0.9).lineHeight,
+            ),
+            label: Text(
+              isPlayerOpen.value
+                  ? playerUrl != null
+                        ? t.misskey.disablePlayer
+                        : t.misskey.close
+                  : playerUrl != null
+                  ? t.misskey.enablePlayer
+                  : t.misskey.expandTweet,
+            ),
+          ),
+        ],
       ],
     );
   }
