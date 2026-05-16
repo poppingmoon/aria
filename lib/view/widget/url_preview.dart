@@ -6,15 +6,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/lookup.dart';
+import '../../provider/api/lookup_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
 import 'bluesky_embed.dart';
+import 'error_message.dart';
 import 'image_widget.dart';
+import 'note_simple_widget.dart';
 import 'player_embed.dart';
 import 'twitter_embed.dart';
 import 'url_sheet.dart';
+import 'user_info.dart';
 
 class UrlPreview extends HookConsumerWidget {
   const UrlPreview({super.key, required this.account, required this.link});
@@ -75,6 +80,7 @@ class UrlPreview extends HookConsumerWidget {
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
+    final activityPub = summalyResult?.activityPub;
     final tweetId = useMemoized(() => _extractTweetId(link), [link]);
     final atId = useMemoized(() => _extractAtId(link), [link]);
     final brightness = Theme.brightnessOf(context);
@@ -180,10 +186,15 @@ class UrlPreview extends HookConsumerWidget {
                 TargetPlatform.macOS ||
                 TargetPlatform.windows
             when summalyResult != null &&
-                (playerUrl != null || tweetId != null || atId != null)) ...[
+                (playerUrl != null ||
+                    activityPub != null ||
+                    tweetId != null ||
+                    atId != null)) ...[
           if (isPlayerOpen.value)
             if (playerUrl != null)
               PlayerEmbed(host: account.host, player: summalyResult.player)
+            else if (activityPub != null)
+              _LookupPreview(account: account, url: activityPub)
             else if (tweetId != null)
               TwitterEmbed(
                 tweetId: tweetId,
@@ -228,11 +239,57 @@ class UrlPreview extends HookConsumerWidget {
                         : t.misskey.close
                   : playerUrl != null
                   ? t.misskey.enablePlayer
+                  : activityPub != null
+                  ? activityPub.contains('/users/')
+                        ? t.aria.expandUser
+                        : t.aria.expandNote
                   : t.misskey.expandTweet,
             ),
           ),
         ],
       ],
+    );
+  }
+}
+
+class _LookupPreview extends ConsumerWidget {
+  const _LookupPreview({required this.account, required this.url});
+
+  final Account account;
+  final String url;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final response = ref.watch(lookupProvider(account, url));
+    final theme = Theme.of(context);
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        border: BoxBorder.all(
+          color: theme.colorScheme.outlineVariant,
+          strokeAlign: BorderSide.strokeAlignOutside,
+        ),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      child: switch (response) {
+        AsyncValue(value: LookupUser(:final user)) => UserInfo(
+          account: account,
+          user: user,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+        ),
+        AsyncValue(value: LookupNote(:final note)) => NoteSimpleWidget(
+          account: account,
+          noteId: note.id,
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
+          error: error,
+          stackTrace: stackTrace,
+        ),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

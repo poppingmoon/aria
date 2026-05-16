@@ -11,9 +11,12 @@ abstract class SummalyResult with _$SummalyResult {
     String? icon,
     String? description,
     String? thumbnail,
-    required Player player,
+    String? thumbnailStyle,
     String? sitename,
+    required Player player,
     bool? sensitive,
+    String? activityPub,
+    String? fediverseCreater,
     String? url,
   }) = _SummalyResult;
 

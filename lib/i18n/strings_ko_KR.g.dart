@@ -93,7 +93,6 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get enableEmojiFadeIn => '커스텀 이모지에 페이드인 애니메이션 활성화';
 	@override String get enableFederation => '연합 활성화하기';
 	@override String get endpoint => 'Endpoint';
-	@override String get openNote => '노트 펼치기';
 	@override String get extraMentionsWarning => '이 노트에는 대상 답글에 포함되지 않은 멘션이 포함되어 있습니다.';
 	@override String get fileNotFound => '파일을 찾을 수 없음';
 	@override String get findServer => 'Misskey 서버 찾아보기';
@@ -156,6 +155,7 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '외부 브라우저에서 열기';
 	@override String get openInInternalBrowser => '내부 브라우저에서 열기';
 	@override String get openMenu => '메뉴 열기';
+	@override String get openNote => '노트 펼치기';
 	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
 		scratchpad,
 		const TextSpan(text: ' 를 브라우저에서 열고, 다음 코드를 클릭한 다음 실행하세요.'),

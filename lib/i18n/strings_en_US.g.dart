@@ -227,6 +227,12 @@ class TranslationsAriaEnUs {
 	/// en-US: 'Are you sure you want to exit the Play?'
 	String get exitPlayConfirm => 'Are you sure you want to exit the Play?';
 
+	/// en-US: 'Expand note'
+	String get expandNote => 'Expand note';
+
+	/// en-US: 'Expand user'
+	String get expandUser => 'Expand user';
+
 	/// en-US: 'This note includes mentions that are not included in the target note of reply'
 	String get extraMentionsWarning => 'This note includes mentions that are not included in the target note of reply';
 

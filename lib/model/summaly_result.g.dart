@@ -12,9 +12,12 @@ _SummalyResult _$SummalyResultFromJson(Map<String, dynamic> json) =>
       icon: json['icon'] as String?,
       description: json['description'] as String?,
       thumbnail: json['thumbnail'] as String?,
-      player: Player.fromJson(json['player'] as Map<String, dynamic>),
+      thumbnailStyle: json['thumbnailStyle'] as String?,
       sitename: json['sitename'] as String?,
+      player: Player.fromJson(json['player'] as Map<String, dynamic>),
       sensitive: json['sensitive'] as bool?,
+      activityPub: json['activityPub'] as String?,
+      fediverseCreater: json['fediverseCreater'] as String?,
       url: json['url'] as String?,
     );
 
