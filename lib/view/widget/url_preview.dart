@@ -6,11 +6,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/summaly_result.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
+import 'bluesky_embed.dart';
 import 'image_widget.dart';
 import 'player_embed.dart';
 import 'twitter_embed.dart';
@@ -44,6 +44,17 @@ class UrlPreview extends HookConsumerWidget {
     return null;
   }
 
+  ({String atId, String rkey})? _extractAtId(String link) {
+    final url = Uri.tryParse(link);
+    if (url case Uri(
+      host: 'bsky.app',
+      pathSegments: ['profile', final atId, 'post', final rkey],
+    )) {
+      return (atId: atId, rkey: rkey);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final summalyResult = ref
@@ -64,10 +75,10 @@ class UrlPreview extends HookConsumerWidget {
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
-    final tweetId = _extractTweetId(link);
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final tweetId = useMemoized(() => _extractTweetId(link), [link]);
+    final atId = useMemoized(() => _extractAtId(link), [link]);
+    final brightness = Theme.brightnessOf(context);
+    final colors = ref.watch(misskeyColorsProvider(brightness));
     final style = DefaultTextStyle.of(context).style;
     final titleStyle = style
         .apply(fontSizeFactor: 0.85)
@@ -167,54 +178,60 @@ class UrlPreview extends HookConsumerWidget {
             case TargetPlatform.android ||
                 TargetPlatform.iOS ||
                 TargetPlatform.macOS ||
-                TargetPlatform.windows)
-          if (playerUrl != null || tweetId != null) ...[
-            if (isPlayerOpen.value) ...[
-              if (summalyResult case SummalyResult(player: Player(url: _?)))
-                PlayerEmbed(host: account.host, player: summalyResult.player),
-              if (tweetId != null)
-                TwitterEmbed(
-                  tweetId: tweetId,
-                  isDark: Theme.of(context).brightness == Brightness.dark,
-                  lang: Localizations.localeOf(context).toLanguageTag(),
-                ),
-            ],
-            const SizedBox(height: 6.0),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                foregroundColor: colors.fg,
-                backgroundColor: colors.buttonBg,
-                iconColor: colors.fg,
-                textStyle: style.apply(fontSizeFactor: 0.9),
-                padding: const EdgeInsets.symmetric(
-                  vertical: 6.0,
-                  horizontal: 12.0,
-                ),
-                minimumSize: Size.zero,
-                side: BorderSide.none,
-                visualDensity: VisualDensity.standard,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                TargetPlatform.windows
+            when summalyResult != null &&
+                (playerUrl != null || tweetId != null || atId != null)) ...[
+          if (isPlayerOpen.value)
+            if (playerUrl != null)
+              PlayerEmbed(host: account.host, player: summalyResult.player)
+            else if (tweetId != null)
+              TwitterEmbed(
+                tweetId: tweetId,
+                isDark: brightness == Brightness.dark,
+                lang: Localizations.localeOf(context).toLanguageTag(),
+              )
+            else if (atId != null)
+              BlueskyEmbed(
+                atId: atId.atId,
+                rkey: atId.rkey,
+                isDark: brightness == Brightness.dark,
               ),
-              onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
-              icon: Icon(
-                isPlayerOpen.value
-                    ? Icons.close
-                    : playerUrl != null
-                    ? Icons.play_arrow
-                    : Icons.open_in_full,
-                size: style.apply(fontSizeFactor: 0.9).lineHeight,
+          const SizedBox(height: 6.0),
+          OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: colors.fg,
+              backgroundColor: colors.buttonBg,
+              iconColor: colors.fg,
+              textStyle: style.apply(fontSizeFactor: 0.9),
+              padding: const EdgeInsets.symmetric(
+                vertical: 6.0,
+                horizontal: 12.0,
               ),
-              label: Text(
-                isPlayerOpen.value
-                    ? playerUrl != null
-                          ? t.misskey.disablePlayer
-                          : t.misskey.close
-                    : playerUrl != null
-                    ? t.misskey.enablePlayer
-                    : t.misskey.expandTweet,
-              ),
+              minimumSize: Size.zero,
+              side: BorderSide.none,
+              visualDensity: VisualDensity.standard,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-          ],
+            onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
+            icon: Icon(
+              isPlayerOpen.value
+                  ? Icons.close
+                  : playerUrl != null
+                  ? Icons.play_arrow
+                  : Icons.open_in_full,
+              size: style.apply(fontSizeFactor: 0.9).lineHeight,
+            ),
+            label: Text(
+              isPlayerOpen.value
+                  ? playerUrl != null
+                        ? t.misskey.disablePlayer
+                        : t.misskey.close
+                  : playerUrl != null
+                  ? t.misskey.enablePlayer
+                  : t.misskey.expandTweet,
+            ),
+          ),
+        ],
       ],
     );
   }
