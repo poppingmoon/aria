@@ -10,6 +10,7 @@ import '../../provider/data_saver_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
+import 'bluesky_embed.dart';
 import 'image_widget.dart';
 import 'player_embed.dart';
 import 'twitter_embed.dart';
@@ -43,6 +44,17 @@ class UrlPreview extends HookConsumerWidget {
     return null;
   }
 
+  ({String atId, String rkey})? _extractAtId(String link) {
+    final url = Uri.tryParse(link);
+    if (url case Uri(
+      host: 'bsky.app',
+      pathSegments: ['profile', final atId, 'post', final rkey],
+    )) {
+      return (atId: atId, rkey: rkey);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final summalyResult = ref
@@ -63,10 +75,10 @@ class UrlPreview extends HookConsumerWidget {
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
-    final tweetId = _extractTweetId(link);
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final tweetId = useMemoized(() => _extractTweetId(link), [link]);
+    final atId = useMemoized(() => _extractAtId(link), [link]);
+    final brightness = Theme.brightnessOf(context);
+    final colors = ref.watch(misskeyColorsProvider(brightness));
     final style = DefaultTextStyle.of(context).style;
     final titleStyle = style
         .apply(fontSizeFactor: 0.85)
@@ -168,7 +180,7 @@ class UrlPreview extends HookConsumerWidget {
                 TargetPlatform.macOS ||
                 TargetPlatform.windows
             when summalyResult != null &&
-                (playerUrl != null || tweetId != null)) ...[
+                (playerUrl != null || tweetId != null || atId != null)) ...[
           if (isPlayerOpen.value)
             if (playerUrl != null)
               PlayerEmbed(host: account.host, player: summalyResult.player)
@@ -177,6 +189,12 @@ class UrlPreview extends HookConsumerWidget {
                 tweetId: tweetId,
                 isDark: brightness == Brightness.dark,
                 lang: Localizations.localeOf(context).toLanguageTag(),
+              )
+            else if (atId != null)
+              BlueskyEmbed(
+                atId: atId.atId,
+                rkey: atId.rkey,
+                isDark: brightness == Brightness.dark,
               ),
           const SizedBox(height: 6.0),
           OutlinedButton.icon(
