@@ -1293,15 +1293,20 @@ class _AccountSwitchButton extends HookConsumerWidget {
     final accounts = ref.read(accountsNotifierProvider);
     final destination = await showModalBottomSheet<Account>(
       context: ref.context,
-      builder: (context) => ListView.separated(
-        itemBuilder: (context, index) => AccountPreview(
-          account: accounts[index],
-          trailing: const Icon(Icons.navigate_next),
-          avatarSize: 40.0,
-          onTap: () => context.pop(accounts[index]),
+      builder: (context) => RadioGroup(
+        groupValue: origin,
+        onChanged: (value) => context.pop(value),
+        child: ListView.separated(
+          itemBuilder: (context, index) => AccountPreview(
+            account: accounts[index],
+            trailing: Radio(value: accounts[index]),
+            avatarSize: 40.0,
+            onTap: () => context.pop(accounts[index]),
+          ),
+          separatorBuilder: (_, _) => const Divider(height: 0.0),
+          itemCount: accounts.length,
+          shrinkWrap: true,
         ),
-        separatorBuilder: (_, _) => const Divider(height: 0.0),
-        itemCount: accounts.length,
       ),
       clipBehavior: Clip.hardEdge,
     );
