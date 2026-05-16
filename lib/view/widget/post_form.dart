@@ -1051,9 +1051,12 @@ class _PostFormHeader extends HookConsumerWidget {
         if (noteId != null || accounts.length <= 1)
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: i != null
-                ? UserAvatar(account: account, user: i, size: 32.0)
-                : const Icon(Icons.person, size: 32.0),
+            child: Tooltip(
+              message: account.toString(),
+              child: i != null
+                  ? UserAvatar(account: account, user: i, size: 32.0)
+                  : const Icon(Icons.person, size: 32.0),
+            ),
           )
         else
           _AccountSwitchButton(
@@ -1391,7 +1394,7 @@ class _AccountSwitchButton extends HookConsumerWidget {
                 1.0 - clampDouble(dragAmount.value.abs() / threshold, 0.0, 1.0),
               ),
               child: IconButton(
-                tooltip: t.misskey.switchAccount,
+                tooltip: account.toString(),
                 onPressed: () async {
                   final destination = await _switchAccount(ref, account);
                   if (destination != null) {
