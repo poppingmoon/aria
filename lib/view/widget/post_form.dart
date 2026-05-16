@@ -1347,6 +1347,10 @@ class _AccountSwitchButton extends HookConsumerWidget {
       duration: const Duration(milliseconds: 100),
       initialValue: 1.0,
     );
+    useEffect(() {
+      accountIndex.value = max(0, accounts.indexOf(this.account));
+      return;
+    }, [this.account]);
     const threshold = 20.0;
 
     return ClipRect(
