@@ -107,20 +107,11 @@ class Mfm extends HookConsumerWidget {
       }
       return null;
     }, [this.nodes, text]);
-    final theme = Theme.of(context);
-    final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
-    final style = defaultTextStyle
-        .apply(
-          color: theme.colorScheme.onSurface,
-          fontFamilyFallback: defaultTextStyle.fontFamily != null
-              ? [FontFamily.bIZUDGothic]
-              : null,
-        )
-        .merge(this.style);
     final (
       enableAdvanced,
       enableAnimation,
       emojiStyle,
+      fontFamily,
       serifFontFamily,
       monospaceFontFamily,
       cursiveFontFamily,
@@ -133,6 +124,7 @@ class Mfm extends HookConsumerWidget {
           settings.advancedMfm,
           settings.advancedMfm && settings.animatedMfm,
           settings.emojiStyle,
+          settings.fontFamily,
           settings.serifFontFamily,
           settings.monospaceFontFamily,
           settings.cursiveFontFamily,
@@ -142,6 +134,16 @@ class Mfm extends HookConsumerWidget {
         ),
       ),
     );
+    final theme = Theme.of(context);
+    final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
+    final style = defaultTextStyle
+        .apply(
+          color: theme.colorScheme.onSurface,
+          fontFamilyFallback: fontFamily != null
+              ? [FontFamily.bIZUDGothic]
+              : null,
+        )
+        .merge(this.style);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return _Mfm(
