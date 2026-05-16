@@ -38,14 +38,18 @@ class AvatarDecorationsPage extends ConsumerWidget {
           slivers: [
             if (!account.isGuest)
               SliverToBoxAdapter(
-                child: Card(
+                child: Card.filled(
                   color: colors.infoBg,
-                  elevation: 0.0,
                   child: Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '${t.misskey.profile_.avatarDecorationMax(max: i?.policies?.avatarDecorationLimit ?? '?')} (${t.misskey.remainingN(n: remaining)})',
+                      [
+                        t.misskey.profile_.avatarDecorationMax(
+                          max: i?.policies?.avatarDecorationLimit ?? '?',
+                        ),
+                        '(${t.misskey.remainingN(n: remaining)})',
+                      ].join(' '),
                       style: TextStyle(color: colors.infoFg),
                     ),
                   ),
@@ -165,99 +169,58 @@ class AvatarDecorationsPage extends ConsumerWidget {
               ),
               const SliverToBoxAdapter(child: Divider()),
             ],
-            if (avatarDecorations.isNotEmpty)
-              SliverGrid.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  mainAxisExtent: 150,
-                ),
-                itemCount: avatarDecorations.length,
-                itemBuilder: (context, index) => Card(
-                  clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    onTap: () async {
-                      final result = await showDialog<(UserAvatarDecoration?,)>(
-                        context: context,
-                        builder: (context) => AvatarDecorationDialog(
-                          account: account,
-                          decoration: UserAvatarDecoration(
-                            id: avatarDecorations[index].id,
-                            url: avatarDecorations[index].url.toString(),
-                          ),
+            if (avatarDecorations.isNotEmpty) ...[
+              if (avatarDecorations.groupListsBy(
+                    (decoration) => decoration.category ?? '',
+                  )
+                  case final groupedAvatarDecorations)
+                if (groupedAvatarDecorations[''] case final avatarDecorations?
+                    when groupedAvatarDecorations.length == 1)
+                  SliverGrid.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 200,
+                          mainAxisExtent: 150,
                         ),
-                      );
-                      if (!context.mounted) return;
-                      if (result case (final decoration?,)) {
-                        await futureWithDialog(
-                          context,
-                          ref
-                              .read(iNotifierProvider(account).notifier)
-                              .setAvatarDecorations([
-                                ...?i?.avatarDecorations,
-                                decoration,
-                              ]),
-                        );
-                      }
-                    },
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                avatarDecorations[index].name,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: i != null
-                                  ? UserAvatar(
-                                      account: account,
-                                      user: i,
-                                      size: 60.0,
-                                      decorations: [
-                                        UserAvatarDecoration(
-                                          id: avatarDecorations[index].id,
-                                          url: avatarDecorations[index].url
-                                              .toString(),
-                                        ),
-                                      ],
-                                      forceShowDecoration: true,
-                                    )
-                                  : ImageWidget(
-                                      url: avatarDecorations[index].url
-                                          .toString(),
-                                      width: 60.0,
-                                      height: 60.0,
-                                    ),
-                            ),
-                          ],
-                        ),
-                        if (avatarDecorations[index]
-                                .roleIdsThatCanBeUsedThisDecoration
-                                .isNotEmpty &&
-                            (i?.roles?.every(
-                                  (role) => !avatarDecorations[index]
-                                      .roleIdsThatCanBeUsedThisDecoration
-                                      .contains(role.id),
-                                ) ??
-                                false))
-                          const PositionedDirectional(
-                            end: 8.0,
-                            bottom: 8.0,
-                            child: Icon(Icons.lock),
-                          ),
-                      ],
+                    itemCount: avatarDecorations.length,
+                    itemBuilder: (context, index) => _AvatarDecorationPreview(
+                      account: account,
+                      avatarDecoration: avatarDecorations[index],
                     ),
-                  ),
-                ),
-              )
-            else
+                  )
+                else
+                  for (final entry in groupedAvatarDecorations.entries.sorted(
+                    (a, b) => b.key.isEmpty
+                        ? -1
+                        : a.key.isEmpty
+                        ? 1
+                        : a.key.compareTo(b.key),
+                  ))
+                    SliverToBoxAdapter(
+                      child: ExpansionTile(
+                        title: Text(
+                          entry.key.isNotEmpty ? entry.key : t.misskey.other,
+                        ),
+                        initiallyExpanded: true,
+                        children: [
+                          GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 200,
+                                  mainAxisExtent: 150,
+                                ),
+                            itemBuilder: (context, index) =>
+                                _AvatarDecorationPreview(
+                                  account: account,
+                                  avatarDecoration: entry.value[index],
+                                ),
+                            itemCount: entry.value.length,
+                            shrinkWrap: true,
+                          ),
+                        ],
+                      ),
+                    ),
+            ] else
               SliverToBoxAdapter(child: Center(child: Text(t.misskey.nothing))),
           ],
         ),
@@ -267,6 +230,101 @@ class AvatarDecorationsPage extends ConsumerWidget {
         ),
         _ => const Center(child: CircularProgressIndicator()),
       },
+    );
+  }
+}
+
+class _AvatarDecorationPreview extends ConsumerWidget {
+  const _AvatarDecorationPreview({
+    required this.account,
+    required this.avatarDecoration,
+  });
+
+  final Account account;
+  final GetAvatarDecorationsResponse avatarDecoration;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).value;
+
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: () async {
+          final result = await showDialog<(UserAvatarDecoration?,)>(
+            context: context,
+            builder: (context) => AvatarDecorationDialog(
+              account: account,
+              decoration: UserAvatarDecoration(
+                id: avatarDecoration.id,
+                url: avatarDecoration.url.toString(),
+              ),
+            ),
+          );
+          if (!context.mounted) return;
+          if (result case (final decoration?,)) {
+            await futureWithDialog(
+              context,
+              ref
+                  .read(iNotifierProvider(account).notifier)
+                  .setAvatarDecorations([...?i?.avatarDecorations, decoration]),
+            );
+          }
+        },
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    avatarDecoration.name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: i != null
+                      ? UserAvatar(
+                          account: account,
+                          user: i,
+                          size: 60.0,
+                          decorations: [
+                            UserAvatarDecoration(
+                              id: avatarDecoration.id,
+                              url: avatarDecoration.url.toString(),
+                            ),
+                          ],
+                          forceShowDecoration: true,
+                        )
+                      : ImageWidget(
+                          url: avatarDecoration.url.toString(),
+                          width: 60.0,
+                          height: 60.0,
+                        ),
+                ),
+              ],
+            ),
+            if (avatarDecoration
+                    .roleIdsThatCanBeUsedThisDecoration
+                    .isNotEmpty &&
+                (i?.roles?.every(
+                      (role) => !avatarDecoration
+                          .roleIdsThatCanBeUsedThisDecoration
+                          .contains(role.id),
+                    ) ??
+                    false))
+              const PositionedDirectional(
+                end: 8.0,
+                bottom: 8.0,
+                child: Icon(Icons.lock),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
