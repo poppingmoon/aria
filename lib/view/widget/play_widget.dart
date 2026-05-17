@@ -196,21 +196,25 @@ class PlayWidget extends HookConsumerWidget {
                           final destination =
                               await showModalBottomSheet<Account>(
                                 context: ref.context,
-                                builder: (context) => ListView.separated(
-                                  itemBuilder: (context, index) {
-                                    final account = index == 0
-                                        ? Account(host: host)
-                                        : accounts[index - 1];
-                                    return AccountPreview(
-                                      account: account,
-                                      trailing: const Icon(Icons.navigate_next),
-                                      avatarSize: 40.0,
-                                      onTap: () => context.pop(account),
-                                    );
-                                  },
-                                  separatorBuilder: (_, _) =>
-                                      const Divider(height: 0.0),
-                                  itemCount: accounts.length + 1,
+                                builder: (context) => RadioGroup(
+                                  groupValue: account,
+                                  onChanged: (value) => context.pop(value),
+                                  child: ListView.separated(
+                                    itemBuilder: (context, index) {
+                                      final account = index == 0
+                                          ? Account(host: host)
+                                          : accounts[index - 1];
+                                      return AccountPreview(
+                                        account: account,
+                                        trailing: Radio(value: account),
+                                        avatarSize: 40.0,
+                                        onTap: () => context.pop(account),
+                                      );
+                                    },
+                                    separatorBuilder: (_, _) =>
+                                        const Divider(height: 0.0),
+                                    itemCount: accounts.length + 1,
+                                  ),
                                 ),
                                 clipBehavior: Clip.hardEdge,
                               );
