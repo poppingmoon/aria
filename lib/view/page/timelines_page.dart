@@ -15,11 +15,14 @@ import '../../model/general_settings.dart';
 import '../../model/sound_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/misskey_sfx_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
+import '../../provider/timeline_center_notifier_provider.dart';
+import '../../provider/timeline_notes_queue_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tab_index_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
@@ -556,10 +559,31 @@ class _TimelinesPageButton extends ConsumerWidget {
         '/$account/gallery',
       ),
       TimelinesPageButtonType.games => () => context.push('/$account/games'),
-      TimelinesPageButtonType.home =>
-        () => ref
-            .read(timelineScrollControllerProvider(tabSettings!))
-            .scrollToTop(),
+      TimelinesPageButtonType.home => () {
+        final tabSettings = this.tabSettings!;
+        final scrollController = ref.read(
+          timelineScrollControllerProvider(tabSettings),
+        );
+        final notes = ref
+            .read(timelineNotesQueueNotifierProvider(tabSettings).notifier)
+            .popMany(100);
+        if (notes.isNotEmpty) {
+          final centerId = ref.read(
+            timelineCenterNotifierProvider(tabSettings),
+          );
+          ref
+              .read(
+                timelineNotesAfterNoteNotifierProvider(
+                  tabSettings,
+                  sinceId: centerId,
+                ).notifier,
+              )
+              .addNotes(notes);
+        }
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => scrollController.scrollToTop(),
+        );
+      },
       TimelinesPageButtonType.instanceInfo => () => context.push(
         '/$account/servers/${account!.host}',
       ),

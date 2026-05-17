@@ -41,16 +41,43 @@ class FollowRequestsListView extends HookConsumerWidget {
     final controller = useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
-    final keepAnimation = useState(true);
-    final isAtBottom = useState(false);
+    final keepAnimation = useRef(true);
+    final scrollingFrom = useRef<double?>(null);
+    final scrollingTo = useRef<double?>(null);
     useEffect(() {
       controller.addListener(() {
         if (controller.position.userScrollDirection ==
             ScrollDirection.reverse) {
           keepAnimation.value = false;
-        } else if (controller.position.extentBefore == 0) {
+        } else if (controller.position.extentBefore == 0.0) {
           keepAnimation.value = true;
           hasUnread.value = false;
+        } else if ((
+              keepAnimation.value,
+              scrollingFrom.value,
+              scrollingTo.value,
+              controller.position.minScrollExtent,
+            )
+            case (true, final from?, final to?, final minScrollExtent)
+            when to != minScrollExtent && from > to) {
+          final offset = controller.offset;
+          final progress = (offset - from) / (to - from);
+          scrollingFrom.value = offset;
+          scrollingTo.value = minScrollExtent;
+          if (progress < 0.7) {
+            controller.animateTo(
+              minScrollExtent,
+              duration: const Duration(milliseconds: 750),
+              curve: Curves.easeOutQuint,
+            );
+          } else {
+            final remaining = (minScrollExtent - offset).abs();
+            controller.animateTo(
+              minScrollExtent,
+              duration: const Duration(milliseconds: 300) * (remaining / 100.0),
+              curve: Curves.easeOut,
+            );
+          }
         }
       });
       return;
@@ -71,11 +98,14 @@ class FollowRequestsListView extends HookConsumerWidget {
           nextRequests.value = [...nextRequests.value, user];
           if (keepAnimation.value) {
             if (controller.offset < 400.0) {
-              Future<void>.delayed(const Duration(milliseconds: 100), () async {
-                await controller.scrollToTop();
-                await Future<void>.delayed(
-                  const Duration(milliseconds: 100),
-                  controller.scrollToTop,
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                scrollingFrom.value = controller.offset;
+                final minScrollExtent = controller.position.minScrollExtent;
+                scrollingTo.value = minScrollExtent;
+                controller.animateTo(
+                  minScrollExtent,
+                  duration: const Duration(milliseconds: 750),
+                  curve: Curves.easeOutQuint,
                 );
               });
             } else {
@@ -90,16 +120,17 @@ class FollowRequestsListView extends HookConsumerWidget {
     });
     useEffect(() {
       if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+        bool isAtBottom = false;
         controller.addListener(() {
           if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-            if (!isAtBottom.value) {
+            if (!isAtBottom) {
               ref
                   .read(followRequestsNotifierProvider(account).notifier)
                   .loadMore();
-              isAtBottom.value = true;
+              isAtBottom = true;
             }
           } else {
-            isAtBottom.value = false;
+            isAtBottom = false;
           }
         });
       }
@@ -218,7 +249,9 @@ class FollowRequestsListView extends HookConsumerWidget {
                       width: maxContentWidth,
                       child: PaginationBottomWidget(
                         paginationState: requests,
-                        noItemsLabel: t.misskey.noFollowRequests,
+                        noItemsLabel: nextRequests.value.isEmpty
+                            ? t.misskey.noFollowRequests
+                            : null,
                         loadMore: () => ref
                             .read(
                               followRequestsNotifierProvider(account).notifier,

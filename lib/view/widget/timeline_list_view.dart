@@ -20,6 +20,7 @@ import '../../provider/streaming/timeline_stream_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
+import '../../provider/timeline_notes_queue_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../util/reload_timeline.dart';
 import 'haptic_feedback_refresh_indicator.dart';
@@ -127,6 +128,12 @@ class TimelineListView extends HookConsumerWidget {
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
+    ref.listen(
+      timelineNotesQueueNotifierProvider(
+        tabSettings,
+      ).select((notes) => notes.isNotEmpty),
+      (_, next) => hasUnread.value = next,
+    );
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
     );
@@ -164,16 +171,44 @@ class TimelineListView extends HookConsumerWidget {
       }
       return;
     }, [tabSettings, nextNotes.value?.items, previousNotes.value?.items]);
-    final keepAnimation = useState(true);
+    final keepAnimation = useRef(true);
+    final scrollingFrom = useRef<double?>(null);
+    final scrollingTo = useRef<double?>(null);
     if (!tabSettings.disableStreaming) {
       useEffect(() {
         void callback() {
           if (controller.position.userScrollDirection ==
               ScrollDirection.reverse) {
             keepAnimation.value = false;
-          } else if (controller.position.extentBefore == 0) {
+          } else if (controller.position.extentBefore == 0.0) {
             keepAnimation.value = true;
-            hasUnread.value = false;
+          } else if ((
+                keepAnimation.value,
+                scrollingFrom.value,
+                scrollingTo.value,
+                controller.position.minScrollExtent,
+              )
+              case (true, final from?, final to?, final minScrollExtent)
+              when to != minScrollExtent && from > to) {
+            final offset = controller.offset;
+            final progress = (offset - from) / (to - from);
+            scrollingFrom.value = offset;
+            scrollingTo.value = minScrollExtent;
+            if (progress < 0.7) {
+              controller.animateTo(
+                minScrollExtent,
+                duration: const Duration(milliseconds: 750),
+                curve: Curves.easeOutQuint,
+              );
+            } else {
+              final remaining = (minScrollExtent - offset).abs();
+              controller.animateTo(
+                minScrollExtent,
+                duration:
+                    const Duration(milliseconds: 300) * (remaining / 100.0),
+                curve: Curves.easeOut,
+              );
+            }
           }
         }
 
@@ -187,14 +222,6 @@ class TimelineListView extends HookConsumerWidget {
           if (next case AsyncData(value: final note)) {
             ref
                 .read(
-                  timelineNotesAfterNoteNotifierProvider(
-                    tabSettings,
-                    sinceId: centerId,
-                  ).notifier,
-                )
-                .addNote(note);
-            ref
-                .read(
                   misskeySfxNotifierProvider(
                     note.user.username == tabSettings.account.username &&
                             note.user.host == null
@@ -204,7 +231,15 @@ class TimelineListView extends HookConsumerWidget {
                 )
                 .play()
                 .ignore();
-            if (keepAnimation.value) {
+            if (keepAnimation.value && !hasUnread.value) {
+              ref
+                  .read(
+                    timelineNotesAfterNoteNotifierProvider(
+                      tabSettings,
+                      sinceId: centerId,
+                    ).notifier,
+                  )
+                  .addNote(note);
               if (controller.offset < 400.0) {
                 ref
                     .read(
@@ -213,22 +248,26 @@ class TimelineListView extends HookConsumerWidget {
                       ).notifier,
                     )
                     .save(note.id);
-                Future<void>.delayed(
-                  const Duration(milliseconds: 100),
-                  () async {
-                    await controller.scrollToTop();
-                    await Future<void>.delayed(
-                      const Duration(milliseconds: 100),
-                      controller.scrollToTop,
-                    );
-                  },
-                );
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  scrollingFrom.value = controller.offset;
+                  final minScrollExtent = controller.position.minScrollExtent;
+                  scrollingTo.value = minScrollExtent;
+                  controller.animateTo(
+                    minScrollExtent,
+                    duration: const Duration(milliseconds: 750),
+                    curve: Curves.easeOutQuint,
+                  );
+                });
               } else {
                 keepAnimation.value = false;
-                hasUnread.value = true;
               }
             } else {
-              hasUnread.value = true;
+              ref
+                  .read(
+                    timelineNotesQueueNotifierProvider(tabSettings).notifier,
+                  )
+                  .add(note);
+              keepAnimation.value = false;
             }
           }
         });
@@ -258,7 +297,21 @@ class TimelineListView extends HookConsumerWidget {
       void callback() {
         bool isAtTop = false;
         bool isAtBottom = false;
-        if (!isLatestLoaded) {
+        if (controller.position.extentBefore <
+                infiniteScrollExtentThreshold * 5 &&
+            hasUnread.value) {
+          final notes = ref
+              .read(timelineNotesQueueNotifierProvider(tabSettings).notifier)
+              .popMany(100);
+          ref
+              .read(
+                timelineNotesAfterNoteNotifierProvider(
+                  tabSettings,
+                  sinceId: centerId,
+                ).notifier,
+              )
+              .addNotes(notes);
+        } else if (!isLatestLoaded) {
           if (controller.position.extentBefore <
               infiniteScrollExtentThreshold) {
             if (!isAtTop) {
@@ -352,19 +405,39 @@ class TimelineListView extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: PaginationBottomWidget(
                       paginationState: nextNotes,
-                      loadMore: () => ref
-                          .read(
-                            timelineNotesAfterNoteNotifierProvider(
-                              tabSettings,
-                              sinceId: centerId,
-                            ).notifier,
-                          )
-                          .loadMore(
-                            skipError: true,
-                            sinceId:
-                                nextNotes.value?.items.firstOrNull?.id ??
-                                previousNotes.value?.items.firstOrNull?.id,
-                          ),
+                      loadMore: () {
+                        if (hasUnread.value) {
+                          final notes = ref
+                              .read(
+                                timelineNotesQueueNotifierProvider(
+                                  tabSettings,
+                                ).notifier,
+                              )
+                              .popMany(100);
+                          ref
+                              .read(
+                                timelineNotesAfterNoteNotifierProvider(
+                                  tabSettings,
+                                  sinceId: centerId,
+                                ).notifier,
+                              )
+                              .addNotes(notes);
+                        } else {
+                          ref
+                              .read(
+                                timelineNotesAfterNoteNotifierProvider(
+                                  tabSettings,
+                                  sinceId: centerId,
+                                ).notifier,
+                              )
+                              .loadMore(
+                                skipError: true,
+                                sinceId:
+                                    nextNotes.value?.items.firstOrNull?.id ??
+                                    previousNotes.value?.items.firstOrNull?.id,
+                              );
+                        }
+                      },
                       reversed: true,
                     ),
                   ),
@@ -566,25 +639,24 @@ class TimelineListView extends HookConsumerWidget {
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 onPressed: () {
-                  if (controller.position.extentBefore < 10000) {
-                    controller.scrollToTop();
-                    keepAnimation.value = true;
-                  } else {
-                    ref.invalidate(
-                      timelineNotesAfterNoteNotifierProvider(
-                        tabSettings,
-                        sinceId: centerId,
-                      ),
-                    );
-                    ref.invalidate(
-                      timelineNotesNotifierProvider(
-                        tabSettings,
-                        untilId: untilId,
-                      ),
-                    );
-                    keepAnimation.value = true;
-                  }
-                  hasUnread.value = false;
+                  final notes = ref
+                      .read(
+                        timelineNotesQueueNotifierProvider(
+                          tabSettings,
+                        ).notifier,
+                      )
+                      .popMany(100);
+                  ref
+                      .read(
+                        timelineNotesAfterNoteNotifierProvider(
+                          tabSettings,
+                          sinceId: centerId,
+                        ).notifier,
+                      )
+                      .addNotes(notes);
+                  WidgetsBinding.instance.addPostFrameCallback(
+                    (_) => controller.scrollToTop(),
+                  );
                 },
                 child: Text(t.misskey.newNoteRecived),
               ),

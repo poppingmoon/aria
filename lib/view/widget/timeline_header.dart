@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart' hide TextDirection;
-import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
@@ -48,23 +48,27 @@ class TimelineHeader extends HookConsumerWidget {
     final sizeFactor = useState(1.0);
     useEffect(() {
       double? offset;
-      bool isScrollingUp = false;
-      bool scrollDirectionChanged = false;
 
       void callback() {
         final nextOffset = scrollController.position.extentBefore;
+        final scrollDirection = scrollController.position.userScrollDirection;
+        if (scrollDirection == ScrollDirection.idle) {
+          if (nextOffset == 0.0) {
+            sizeFactor.value = 1.0;
+          }
+          return;
+        }
         if (offset case final offset?) {
           final diff = nextOffset - offset;
-          if (diff != 0) {
-            final isNegative = diff.isNegative;
-            final changed = isScrollingUp ^ isNegative;
-            if (!(scrollDirectionChanged || changed)) {
-              if (!isMenuExpanded.value) {
-                sizeFactor.value = clamp01(sizeFactor.value - diff * 0.01);
-              }
-            }
-            isScrollingUp = isNegative;
-            scrollDirectionChanged = changed;
+          switch ((scrollDirection, diff)) {
+            case (ScrollDirection.forward, < 0) ||
+                    (ScrollDirection.reverse, > 0)
+                when !isMenuExpanded.value:
+              sizeFactor.value = clampDouble(
+                sizeFactor.value - diff * 0.01,
+                0.0,
+                1.0,
+              );
           }
         }
         offset = nextOffset;
