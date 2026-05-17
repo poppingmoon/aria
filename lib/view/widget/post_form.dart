@@ -268,7 +268,8 @@ class PostForm extends HookConsumerWidget {
     );
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
-    final canPost = draft.canPost || attaches.isNotEmpty;
+    final canPost =
+        !account.value.isGuest && (draft.canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final enableSpellCheck = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -1021,10 +1022,9 @@ class _PostFormHeader extends HookConsumerWidget {
       attachesNotifierProvider(account, noteId: noteId),
     );
     final i = ref.watch(iNotifierProvider(account)).value;
-    final accounts = ref.watch(accountsNotifierProvider);
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeVisibility = noteId == null && draft.canChangeVisibility;
-    final canPost = draft.canPost || attaches.isNotEmpty;
+    final canPost = !account.isGuest && (draft.canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (draft) {
@@ -1048,21 +1048,11 @@ class _PostFormHeader extends HookConsumerWidget {
 
     return Row(
       children: [
-        if (noteId != null || accounts.length <= 1)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Tooltip(
-              message: account.toString(),
-              child: i != null
-                  ? UserAvatar(account: account, user: i, size: 32.0)
-                  : const Icon(Icons.person, size: 32.0),
-            ),
-          )
-        else
-          _AccountSwitchButton(
-            account: account,
-            onAccountChanged: onAccountChanged,
-          ),
+        _AccountSwitchButton(
+          account: account,
+          onAccountChanged: onAccountChanged,
+          enabled: noteId == null,
+        ),
         const Spacer(),
         IconButton(
           onPressed: canChangeVisibility
@@ -1284,10 +1274,12 @@ class _AccountSwitchButton extends HookConsumerWidget {
   const _AccountSwitchButton({
     required this.account,
     required this.onAccountChanged,
+    required this.enabled,
   });
 
   final Account account;
   final void Function(Account account) onAccountChanged;
+  final bool enabled;
 
   Future<Account?> _switchAccount(WidgetRef ref, Account? origin) async {
     final accounts = ref.read(accountsNotifierProvider);
@@ -1336,8 +1328,10 @@ class _AccountSwitchButton extends HookConsumerWidget {
         (settings) => settings.enableHapticFeedback,
       ),
     );
-    final accountIndex = useState(max(0, accounts.indexOf(this.account)));
-    final account = accounts.elementAtOrNull(accountIndex.value);
+    final accountIndex = useState(accounts.indexOf(this.account));
+    final account = accountIndex.value >= 0
+        ? accounts.elementAtOrNull(accountIndex.value)
+        : this.account;
     final i = account != null
         ? ref.watch(iNotifierProvider(account)).value
         : null;
@@ -1347,53 +1341,73 @@ class _AccountSwitchButton extends HookConsumerWidget {
       duration: const Duration(milliseconds: 100),
       initialValue: 1.0,
     );
+    final canChangeAccount =
+        enabled &&
+        (accounts.length >= 2 ||
+            (accountIndex.value < 0 && accounts.isNotEmpty));
     useEffect(() {
-      accountIndex.value = max(0, accounts.indexOf(this.account));
+      accountIndex.value = accounts.indexOf(this.account);
       return;
     }, [this.account]);
     const threshold = 20.0;
 
     return ClipRect(
       child: GestureDetector(
-        onVerticalDragStart: (_) {
-          armed.value = false;
-          dragAmount.value = 0.0;
-        },
-        onVerticalDragUpdate: (details) {
-          dragAmount.value += details.delta.dy;
-          final previouslyArmed = armed.value;
-          armed.value = dragAmount.value.abs() > threshold;
-          if (!previouslyArmed && armed.value && enableHapticFeedback) {
-            HapticFeedback.lightImpact();
-          }
-        },
-        onVerticalDragCancel: () {
-          if (!animationController.isAnimating) {
-            armed.value = false;
-            dragAmount.value = 0.0;
-          }
-        },
-        onVerticalDragEnd: (_) async {
-          final originIndex = accountIndex.value;
-          if (dragAmount.value > threshold) {
-            accountIndex.value = (originIndex + 1) % accounts.length;
-          } else if (dragAmount.value < -threshold) {
-            accountIndex.value = (originIndex - 1) % accounts.length;
-          } else {
-            dragAmount.value = 0.0;
-            return;
-          }
-          dragAmount.value = 0.0;
-          await animationController.forward(from: 0.0);
-          final origin = accounts.elementAtOrNull(originIndex);
-          final destination = accounts.elementAtOrNull(accountIndex.value);
-          if (destination != null) {
-            if (origin != null) {
-              await _transferDraft(ref, origin, destination);
-            }
-            onAccountChanged(destination);
-          }
-        },
+        onVerticalDragStart: canChangeAccount
+            ? (_) {
+                armed.value = false;
+                dragAmount.value = 0.0;
+              }
+            : null,
+        onVerticalDragUpdate: canChangeAccount
+            ? (details) {
+                dragAmount.value += details.delta.dy;
+                final previouslyArmed = armed.value;
+                armed.value = dragAmount.value.abs() > threshold;
+                if (!previouslyArmed && armed.value && enableHapticFeedback) {
+                  HapticFeedback.lightImpact();
+                }
+              }
+            : null,
+        onVerticalDragCancel: canChangeAccount
+            ? () {
+                if (!animationController.isAnimating) {
+                  armed.value = false;
+                  dragAmount.value = 0.0;
+                }
+              }
+            : null,
+        onVerticalDragEnd: canChangeAccount
+            ? (_) async {
+                final originIndex = accountIndex.value;
+                if (dragAmount.value > threshold) {
+                  accountIndex.value = (originIndex + 1) % accounts.length;
+                } else if (dragAmount.value < -threshold) {
+                  if (originIndex < 0) {
+                    accountIndex.value = 0;
+                  } else {
+                    accountIndex.value = (originIndex - 1) % accounts.length;
+                  }
+                } else {
+                  dragAmount.value = 0.0;
+                  return;
+                }
+                dragAmount.value = 0.0;
+                await animationController.forward(from: 0.0);
+                final origin = originIndex >= 0
+                    ? accounts.elementAtOrNull(originIndex)
+                    : this.account;
+                final destination = accounts.elementAtOrNull(
+                  accountIndex.value,
+                );
+                if (destination != null) {
+                  if (origin != null) {
+                    await _transferDraft(ref, origin, destination);
+                  }
+                  onAccountChanged(destination);
+                }
+              }
+            : null,
         child: Transform.translate(
           offset: Offset(0.0, dragAmount.value),
           child: ScaleTransition(
@@ -1404,16 +1418,18 @@ class _AccountSwitchButton extends HookConsumerWidget {
               ),
               child: IconButton(
                 tooltip: account.toString(),
-                onPressed: () async {
-                  final destination = await _switchAccount(ref, account);
-                  if (destination != null) {
-                    accountIndex.value = accounts.indexOf(destination);
-                    if (account != null) {
-                      await _transferDraft(ref, account, destination);
-                    }
-                    onAccountChanged(destination);
-                  }
-                },
+                onPressed: canChangeAccount
+                    ? () async {
+                        final destination = await _switchAccount(ref, account);
+                        if (destination != null) {
+                          accountIndex.value = accounts.indexOf(destination);
+                          if (account != null) {
+                            await _transferDraft(ref, account, destination);
+                          }
+                          onAccountChanged(destination);
+                        }
+                      }
+                    : null,
                 icon: account != null && i != null
                     ? UserAvatar(account: account, user: i, size: 32.0)
                     : const Icon(Icons.person, size: 32.0),
