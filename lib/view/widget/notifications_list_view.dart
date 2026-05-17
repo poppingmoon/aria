@@ -47,8 +47,9 @@ class NotificationsListView extends HookConsumerWidget {
     final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
-    final keepAnimation = useState(true);
-    final isAtBottom = useState(false);
+    final keepAnimation = useRef(true);
+    final scrollingFrom = useRef<double?>(null);
+    final scrollingTo = useRef<double?>(null);
     useEffect(() {
       ref
           .read(notificationsLastViewedAtNotifierProvider(account).notifier)
@@ -58,25 +59,52 @@ class NotificationsListView extends HookConsumerWidget {
         if (controller.position.userScrollDirection ==
             ScrollDirection.reverse) {
           keepAnimation.value = false;
-        } else if (controller.position.extentBefore == 0) {
+        } else if (controller.position.extentBefore == 0.0) {
           keepAnimation.value = true;
           hasUnread.value = false;
           if (i != null && i.hasUnreadNotification) {
             ref.read(iNotifierProvider(account).notifier).readNotifications();
           }
+        } else if ((
+              keepAnimation.value,
+              scrollingFrom.value,
+              scrollingTo.value,
+              controller.position.minScrollExtent,
+            )
+            case (true, final from?, final to?, final minScrollExtent)
+            when to != minScrollExtent && from > to) {
+          final offset = controller.offset;
+          final progress = (offset - from) / (to - from);
+          scrollingFrom.value = offset;
+          scrollingTo.value = minScrollExtent;
+          if (progress < 0.7) {
+            controller.animateTo(
+              minScrollExtent,
+              duration: const Duration(milliseconds: 750),
+              curve: Curves.easeOutQuint,
+            );
+          } else {
+            final remaining = (minScrollExtent - offset).abs();
+            controller.animateTo(
+              minScrollExtent,
+              duration: const Duration(milliseconds: 300) * (remaining / 100.0),
+              curve: Curves.easeOut,
+            );
+          }
         }
       });
       if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+        bool isAtBottom = false;
         controller.addListener(() {
           if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-            if (!isAtBottom.value) {
+            if (!isAtBottom) {
               ref
                   .read(notificationsNotifierProvider(account).notifier)
                   .loadMore();
-              isAtBottom.value = true;
+              isAtBottom = true;
             }
           } else {
-            isAtBottom.value = false;
+            isAtBottom = false;
           }
         });
       }
@@ -87,11 +115,14 @@ class NotificationsListView extends HookConsumerWidget {
         nextNotifications.value = [...nextNotifications.value, notification];
         if (keepAnimation.value) {
           if (controller.offset < 400.0) {
-            Future<void>.delayed(const Duration(milliseconds: 100), () async {
-              await controller.scrollToTop();
-              await Future<void>.delayed(
-                const Duration(milliseconds: 100),
-                controller.scrollToTop,
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              scrollingFrom.value = controller.offset;
+              final minScrollExtent = controller.position.minScrollExtent;
+              scrollingTo.value = minScrollExtent;
+              controller.animateTo(
+                minScrollExtent,
+                duration: const Duration(milliseconds: 750),
+                curve: Curves.easeOutQuint,
               );
             });
           } else {
@@ -248,7 +279,9 @@ class NotificationsListView extends HookConsumerWidget {
                       width: maxContentWidth,
                       child: PaginationBottomWidget(
                         paginationState: notifications,
-                        noItemsLabel: t.misskey.noNotes,
+                        noItemsLabel: nextNotifications.value.isEmpty
+                            ? t.misskey.noNotifications
+                            : null,
                         loadMore: () => ref
                             .read(
                               notificationsNotifierProvider(account).notifier,

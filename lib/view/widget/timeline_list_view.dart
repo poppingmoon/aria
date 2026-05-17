@@ -164,16 +164,45 @@ class TimelineListView extends HookConsumerWidget {
       }
       return;
     }, [tabSettings, nextNotes.value?.items, previousNotes.value?.items]);
-    final keepAnimation = useState(true);
+    final keepAnimation = useRef(true);
+    final scrollingFrom = useRef<double?>(null);
+    final scrollingTo = useRef<double?>(null);
     if (!tabSettings.disableStreaming) {
       useEffect(() {
         void callback() {
           if (controller.position.userScrollDirection ==
               ScrollDirection.reverse) {
             keepAnimation.value = false;
-          } else if (controller.position.extentBefore == 0) {
+          } else if (controller.position.extentBefore == 0.0) {
             keepAnimation.value = true;
             hasUnread.value = false;
+          } else if ((
+                keepAnimation.value,
+                scrollingFrom.value,
+                scrollingTo.value,
+                controller.position.minScrollExtent,
+              )
+              case (true, final from?, final to?, final minScrollExtent)
+              when to != minScrollExtent && from > to) {
+            final offset = controller.offset;
+            final progress = (offset - from) / (to - from);
+            scrollingFrom.value = offset;
+            scrollingTo.value = minScrollExtent;
+            if (progress < 0.7) {
+              controller.animateTo(
+                minScrollExtent,
+                duration: const Duration(milliseconds: 750),
+                curve: Curves.easeOutQuint,
+              );
+            } else {
+              final remaining = (minScrollExtent - offset).abs();
+              controller.animateTo(
+                minScrollExtent,
+                duration:
+                    const Duration(milliseconds: 300) * (remaining / 100.0),
+                curve: Curves.easeOut,
+              );
+            }
           }
         }
 
@@ -213,16 +242,16 @@ class TimelineListView extends HookConsumerWidget {
                       ).notifier,
                     )
                     .save(note.id);
-                Future<void>.delayed(
-                  const Duration(milliseconds: 100),
-                  () async {
-                    await controller.scrollToTop();
-                    await Future<void>.delayed(
-                      const Duration(milliseconds: 100),
-                      controller.scrollToTop,
-                    );
-                  },
-                );
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  scrollingFrom.value = controller.offset;
+                  final minScrollExtent = controller.position.minScrollExtent;
+                  scrollingTo.value = minScrollExtent;
+                  controller.animateTo(
+                    minScrollExtent,
+                    duration: const Duration(milliseconds: 750),
+                    curve: Curves.easeOutQuint,
+                  );
+                });
               } else {
                 keepAnimation.value = false;
                 hasUnread.value = true;
