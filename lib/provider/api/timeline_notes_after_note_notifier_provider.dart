@@ -256,6 +256,22 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     }
   }
 
+  void addNotes(Iterable<Note> notes) {
+    final value = state.value;
+    state = AsyncValue.data(
+      PaginationState(
+        items: [
+          if (value?.items.firstOrNull?.id case final latestNoteId?)
+            ...notes.where((note) => latestNoteId.compareTo(note.id) < 0)
+          else
+            ...notes,
+          ...?value?.items,
+        ],
+        isLastLoaded: value?.isLastLoaded ?? true,
+      ),
+    );
+  }
+
   void pause() {
     state = state.whenData((value) => value.copyWith(isLastLoaded: false));
   }
