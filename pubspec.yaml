@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.0-beta.4+97
+version: 1.5.0+98
 
 environment:
   sdk: ">=3.10.0 <4.0.0"
@@ -19,7 +19,7 @@ dependencies:
   audioplayers: ^6.6.0
   cached_network_image: ^3.4.1
   characters: ^1.4.1
-  chewie: ^1.14.0
+  chewie: ^1.14.1
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
@@ -140,7 +140,7 @@ dependencies:
   uuid: ^4.5.3
   vector_math: ^2.2.0
   video_player: ^2.11.1
-  wakelock_plus: ^1.6.0
+  wakelock_plus: ^1.6.1
   web_socket_channel: ^3.0.3
   webfont_list:
     git:
