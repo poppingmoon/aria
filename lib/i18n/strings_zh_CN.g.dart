@@ -117,6 +117,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => '启用拼写检查';
 	@override String get endpoint => '端点';
 	@override String get exitPlayConfirm => '确定要退出这个 Play 吗？';
+	@override String get expandNote => '展开帖子';
 	@override String get extraMentionsWarning => '该贴的提及包含非回复对象';
 	@override String get fileNotFound => '未找到文件';
 	@override String get findServer => '查找 Misskey 服务器';

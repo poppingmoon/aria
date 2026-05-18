@@ -117,6 +117,8 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Rechtschreibprüfung aktivieren';
 	@override String get endpoint => 'Endpunkt';
 	@override String get exitPlayConfirm => 'Diesen Play verlassen?';
+	@override String get expandNote => 'Notiz ausklappen';
+	@override String get expandUser => 'Benutzer ausklappen';
 	@override String get extraMentionsWarning => 'Diese Notiz enthält Erwähnungen, die nicht in der Zielnotiz der Antwort enthalten sind';
 	@override String get fileNotFound => 'Datei existiert nicht';
 	@override String get findServer => 'Einen Misskey-Server finden';

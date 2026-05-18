@@ -116,6 +116,8 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'スペルチェックを有効にする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get exitPlayConfirm => 'Playを終了しますか？';
+	@override String get expandNote => 'ノートを展開する';
+	@override String get expandUser => 'ユーザーを展開する';
 	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
 	@override String get fileNotFound => 'ファイルが見つかりません';
 	@override String get findServer => 'Misskeyサーバーを見つける';

@@ -97,6 +97,7 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get enablePredictiveBack => 'Nyalakan animasi untuk predictive back';
 	@override String get enableSpellCheck => 'Nyalakan pemeriksaan ejaan';
 	@override String get endpoint => 'Endpoint';
+	@override String get expandNote => 'Tampilkan note';
 	@override String get extraMentionsWarning => 'Note ini memiliki mention yang tidak tercantum di target balasan note';
 	@override String get fileNotFound => 'Berkas tidak ditemukan';
 	@override String get findServer => 'Cari server Misskey';
