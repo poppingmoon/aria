@@ -81,7 +81,16 @@ class UrlPreview extends HookConsumerWidget {
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
     final activityPub = switch (summalyResult?.activityPub) {
-      final activityPub? when !activityPub.contains('/tags/') => activityPub,
+      final activityPub? => switch (Uri.tryParse(activityPub)) {
+        final url => switch (url) {
+          Uri(
+            pathSegments: ['tags', ...] ||
+                ['users', _, 'statuses', _, 'references'],
+          ) =>
+            null,
+          _ => activityPub,
+        },
+      },
       _ => null,
     };
     final tweetId = useMemoized(() => _extractTweetId(link), [link]);
@@ -243,7 +252,8 @@ class UrlPreview extends HookConsumerWidget {
                   : playerUrl != null
                   ? t.misskey.enablePlayer
                   : activityPub != null
-                  ? activityPub.contains('/users/')
+                  ? activityPub.contains('/users/') &&
+                            !activityPub.contains('/statuses/')
                         ? t.aria.expandUser
                         : t.aria.expandNote
                   : t.misskey.expandTweet,
