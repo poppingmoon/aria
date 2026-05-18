@@ -30,7 +30,10 @@ dependencies:
   dynamic_color: ^1.8.1
   extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker: ^12.0.0-beta.3
+  file_picker:
+    git:
+      url: https://github.com/miguelpruivo/flutter_file_picker
+      ref: 064f0cc23d704069168c13306a12a17090ceaf30
   flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
