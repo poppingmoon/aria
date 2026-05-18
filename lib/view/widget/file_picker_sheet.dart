@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -38,7 +37,7 @@ class FilePickerSheet extends ConsumerWidget {
     return ListView(
       shrinkWrap: true,
       children: [
-        if (defaultTargetPlatform == TargetPlatform.iOS && type == null)
+        if (type == null)
           ListTile(
             leading: const Icon(Icons.upload_file),
             title: Text('${t.aria.fromDevice} (${t.aria.media})'),
@@ -72,7 +71,7 @@ class FilePickerSheet extends ConsumerWidget {
         ListTile(
           leading: const Icon(Icons.upload),
           title: Text(
-            defaultTargetPlatform == TargetPlatform.iOS && type == null
+            type == null
                 ? '${t.aria.fromDevice} (${t.misskey.file})'
                 : t.aria.fromDevice,
           ),
