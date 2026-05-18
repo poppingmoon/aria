@@ -80,7 +80,10 @@ class UrlPreview extends HookConsumerWidget {
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
-    final activityPub = summalyResult?.activityPub;
+    final activityPub = switch (summalyResult?.activityPub) {
+      final activityPub? when !activityPub.contains('/tags/') => activityPub,
+      _ => null,
+    };
     final tweetId = useMemoized(() => _extractTweetId(link), [link]);
     final atId = useMemoized(() => _extractAtId(link), [link]);
     final brightness = Theme.brightnessOf(context);
