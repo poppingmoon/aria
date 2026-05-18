@@ -80,7 +80,19 @@ class UrlPreview extends HookConsumerWidget {
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
-    final activityPub = summalyResult?.activityPub;
+    final activityPub = switch (summalyResult?.activityPub) {
+      final activityPub? => switch (Uri.tryParse(activityPub)) {
+        final url => switch (url) {
+          Uri(
+            pathSegments: ['tags', ...] ||
+                ['users', _, 'statuses', _, 'references'],
+          ) =>
+            null,
+          _ => activityPub,
+        },
+      },
+      _ => null,
+    };
     final tweetId = useMemoized(() => _extractTweetId(link), [link]);
     final atId = useMemoized(() => _extractAtId(link), [link]);
     final brightness = Theme.brightnessOf(context);
@@ -240,7 +252,8 @@ class UrlPreview extends HookConsumerWidget {
                   : playerUrl != null
                   ? t.misskey.enablePlayer
                   : activityPub != null
-                  ? activityPub.contains('/users/')
+                  ? activityPub.contains('/users/') &&
+                            !activityPub.contains('/statuses/')
                         ? t.aria.expandUser
                         : t.aria.expandNote
                   : t.misskey.expandTweet,
@@ -288,7 +301,12 @@ class _LookupPreview extends ConsumerWidget {
           error: error,
           stackTrace: stackTrace,
         ),
-        _ => const Center(child: CircularProgressIndicator()),
+        _ => const Center(
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(),
+          ),
+        ),
       },
     );
   }
