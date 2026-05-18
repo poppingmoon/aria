@@ -291,7 +291,12 @@ class _LookupPreview extends ConsumerWidget {
           error: error,
           stackTrace: stackTrace,
         ),
-        _ => const Center(child: CircularProgressIndicator()),
+        _ => const Center(
+          child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(),
+          ),
+        ),
       },
     );
   }
