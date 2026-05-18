@@ -106,6 +106,7 @@ class _TranslationsAriaItIt extends TranslationsAriaEnUs {
 	@override String get enableSpellCheck => 'Abilita controllo ortografico';
 	@override String get endpoint => 'Endpoint';
 	@override String get exitPlayConfirm => 'Sei sicuro di voler uscire dal gioco?';
+	@override String get expandNote => 'Espandi nota';
 	@override String get extraMentionsWarning => 'La presente nota include menzioni che non sono incluse nella nota di risposta';
 	@override String get fileNotFound => 'File non trovato';
 	@override String get findServer => 'Trova un server Misskey';

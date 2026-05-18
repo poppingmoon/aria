@@ -109,6 +109,7 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get enableEmojiFadeIn => '커스텀 이모지에 페이드인 효과 키래이';
 	@override String get enableFederation => '연합 키라';
 	@override String get endpoint => '엔드포인트';
+	@override String get expandNote => '노트 열으라';
 	@override String get extraMentionsWarning => '원래 노트엔 읎던 멘션이 달맀는디. 그거 맞제?';
 	@override String get fileNotFound => '고런 파일 읎다';
 	@override String get findServer => 'Misskey 써버를 찾아보자야';
