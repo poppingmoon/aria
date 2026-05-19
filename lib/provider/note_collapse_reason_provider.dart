@@ -76,6 +76,10 @@ enum CollapseReason { long, large }
   return (null, (maxLength: length, maxNewLines: newLines));
 }
 
+CollapseReason? checkShouldCollapse(List<MfmNode> nodes) {
+  return _checkShouldCollapse(nodes).$1;
+}
+
 @riverpod
 CollapseReason? noteCollapseReason(Ref ref, Account account, String noteId) {
   final text = ref.watch(
@@ -83,7 +87,7 @@ CollapseReason? noteCollapseReason(Ref ref, Account account, String noteId) {
   );
   if (text != null) {
     final nodes = ref.watch(parsedMfmProvider(text));
-    return _checkShouldCollapse(nodes).$1;
+    return checkShouldCollapse(nodes);
   } else {
     return null;
   }

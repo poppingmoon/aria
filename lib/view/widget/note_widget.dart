@@ -415,7 +415,14 @@ class _NoteContent extends HookConsumerWidget {
       [parsed],
     );
     final collapseReason = appearNote.cw == null && !alwaysExpandLongNote
-        ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
+        ? appearNote.id.isNotEmpty
+              ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
+              : switch (appearNote.text) {
+                  final text? => checkShouldCollapse(
+                    ref.watch(parsedMfmProvider(text)),
+                  ),
+                  _ => null,
+                }
         : null;
     final isCollapsed = useState(collapseReason != null);
     final colors = ref.watch(
