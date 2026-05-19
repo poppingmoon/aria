@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
 import '../../util/punycode.dart';
 
-class AcctWidget extends StatelessWidget {
+class AcctWidget extends HookWidget {
   const AcctWidget({
     super.key,
     required this.account,
@@ -18,13 +19,20 @@ class AcctWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final host = useMemoized(
+      () => user.host != null || showLocalHost
+          ? toUnicode(user.host ?? account.host)
+          : null,
+      [user.host, account.host, showLocalHost],
+    );
+
     return Text.rich(
       TextSpan(
         children: [
           TextSpan(text: '@${user.username}'),
           if (user.host != null || showLocalHost)
             TextSpan(
-              text: '@${toUnicode(user.host ?? account.host)}',
+              text: '@$host',
               style: TextStyle(
                 color: DefaultTextStyle.of(
                   context,

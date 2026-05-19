@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_off_icons/material_off_icons.dart';
@@ -31,6 +32,13 @@ class NoteHeader extends HookConsumerWidget {
       generalSettingsNotifierProvider.select(
         (settings) => settings.showNoteCreatedAt,
       ),
+    );
+    final host = useMemoized(
+      () => switch (note.user.host) {
+        final host? => toUnicode(host),
+        _ => null,
+      },
+      [note.user.host],
     );
     final style = DefaultTextStyle.of(context).style;
 
@@ -72,9 +80,9 @@ class NoteHeader extends HookConsumerWidget {
                   if (defaultTargetPlatform != TargetPlatform.linux)
                     const TextSpan(text: Unicode.LRI),
                   TextSpan(text: '@${note.user.username}'),
-                  if (note.user case User(:final host?))
+                  if (note.user.host != null)
                     TextSpan(
-                      text: '@${toUnicode(host)}',
+                      text: '@$host',
                       style: TextStyle(
                         color: style.color?.withValues(alpha: 0.5),
                       ),

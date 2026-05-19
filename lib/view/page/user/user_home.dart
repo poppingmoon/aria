@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -87,7 +88,7 @@ class UserHome extends ConsumerWidget {
   }
 }
 
-class _UserHome extends ConsumerWidget {
+class _UserHome extends HookConsumerWidget {
   const _UserHome({required this.account, required this.user});
 
   final Account account;
@@ -137,6 +138,10 @@ class _UserHome extends ConsumerWidget {
       misskeyColorsProvider(Theme.of(context).brightness),
     );
     final style = DefaultTextStyle.of(context).style;
+    final host = useMemoized(() => toUnicode(user.host ?? account.host), [
+      user.host,
+      account.host,
+    ]);
     final remoteUrl = user.uri ?? user.url;
     final birthday = switch (user.birthday) {
       final birthday? => switch (DateTime.tryParse(birthday)) {
@@ -225,7 +230,7 @@ class _UserHome extends ConsumerWidget {
                           const TextSpan(text: Unicode.LRI),
                         TextSpan(text: '@${user.username}'),
                         TextSpan(
-                          text: '@${toUnicode(user.host ?? account.host)}',
+                          text: '@$host',
                           style: TextStyle(
                             color: Theme.of(
                               context,

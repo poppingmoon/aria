@@ -15,16 +15,25 @@ class PlayerEmbed extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final url = player.url != null ? Uri.tryParse(player.url!) : null;
+    final url = useMemoized(
+      () => switch (player.url) {
+        final url? => Uri.tryParse(url),
+        _ => null,
+      },
+      [player.url],
+    );
     if (url == null) {
       return const SizedBox.shrink();
     }
-    final replacedUrl = url.replace(
-      queryParameters: {
-        ...url.queryParameters,
-        'autoplay': '1',
-        'auto_play': '1',
-      },
+    final replacedUrl = useMemoized(
+      () => url.replace(
+        queryParameters: {
+          ...url.queryParameters,
+          'autoplay': '1',
+          'auto_play': '1',
+        },
+      ),
+      [url],
     );
     final shouldLaunch = useState(false);
     final webView = InkWell(

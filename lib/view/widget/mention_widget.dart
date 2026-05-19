@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/account.dart';
@@ -12,7 +13,7 @@ import '../../provider/static_image_url_provider.dart';
 import '../../provider/user_agent_provider.dart';
 import '../../util/punycode.dart';
 
-class MentionWidget extends ConsumerWidget {
+class MentionWidget extends HookConsumerWidget {
   const MentionWidget({
     super.key,
     required this.account,
@@ -45,11 +46,17 @@ class MentionWidget extends ConsumerWidget {
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));
     final userAgent = ref.watch(userAgentProvider).value;
-    final url = serverUrl.replace(pathSegments: ['avatar', '@$username@$host']);
+    final url = serverUrl.replace(
+      pathSegments: ['avatar', '@$username@${this.host}'],
+    );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
-    final isLocal = account.host.toLowerCase() == host.toLowerCase();
+    final isLocal = account.host.toLowerCase() == this.host.toLowerCase();
+    final host = useMemoized(() => !isLocal ? toUnicode(this.host) : null, [
+      this.host,
+      isLocal,
+    ]);
     final isMe =
         isLocal && account.username?.toLowerCase() == username.toLowerCase();
     final color = (isMe ? colors.mentionMe : colors.mention).withValues(
@@ -86,7 +93,7 @@ class MentionWidget extends ConsumerWidget {
               TextSpan(text: '@$username'),
               if (!isLocal)
                 TextSpan(
-                  text: '@${toUnicode(host)}',
+                  text: '@$host',
                   style: TextStyle(
                     color: color.withValues(alpha: color.a * 0.7),
                   ),
