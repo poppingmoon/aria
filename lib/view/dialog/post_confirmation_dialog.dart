@@ -146,6 +146,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                   account: account,
                   noteId: draft.renoteId!,
                   showFooter: false,
+                  expandLongNote: true,
                   backgroundColor: Colors.transparent,
                 )
               else
@@ -154,6 +155,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                   noteId: '',
                   note: note,
                   showFooter: false,
+                  expandLongNote: true,
                   backgroundColor: Colors.transparent,
                 ),
               Align(

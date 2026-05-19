@@ -52,6 +52,7 @@ class NoteWidget extends HookConsumerWidget {
     this.focusPostForm,
     this.note,
     this.showFooter,
+    this.expandLongNote,
     this.backgroundColor,
     this.margin = EdgeInsets.zero,
     this.borderRadius,
@@ -65,6 +66,7 @@ class NoteWidget extends HookConsumerWidget {
   final void Function()? focusPostForm;
   final Note? note;
   final bool? showFooter;
+  final bool? expandLongNote;
   final Color? backgroundColor;
   final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
@@ -337,6 +339,7 @@ class NoteWidget extends HookConsumerWidget {
                             clipId: clipId,
                             style: style,
                             showFooter: showFooter,
+                            expandLongNote: expandLongNote,
                             focusPostForm: focusPostForm,
                             listViewKey: listViewKey,
                           ),
@@ -362,6 +365,7 @@ class _NoteContent extends HookConsumerWidget {
     required this.clipId,
     required this.style,
     required this.showFooter,
+    required this.expandLongNote,
     required this.focusPostForm,
     required this.listViewKey,
   });
@@ -373,6 +377,7 @@ class _NoteContent extends HookConsumerWidget {
   final String? clipId;
   final TextStyle style;
   final bool? showFooter;
+  final bool? expandLongNote;
   final void Function()? focusPostForm;
   final GlobalKey? listViewKey;
 
@@ -414,7 +419,8 @@ class _NoteContent extends HookConsumerWidget {
           : null,
       [parsed],
     );
-    final collapseReason = appearNote.cw == null && !alwaysExpandLongNote
+    final collapseReason =
+        appearNote.cw == null && !(expandLongNote ?? alwaysExpandLongNote)
         ? appearNote.id.isNotEmpty
               ? ref.watch(noteCollapseReasonProvider(account, appearNote.id))
               : switch (appearNote.text) {

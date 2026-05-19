@@ -1664,6 +1664,7 @@ class _NotePreview extends HookWidget {
           files: [],
         ),
       ),
+      expandLongNote: true,
       borderRadius: const BorderRadius.vertical(top: Radius.circular(8.0)),
     );
   }
