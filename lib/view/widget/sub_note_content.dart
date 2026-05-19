@@ -50,7 +50,14 @@ class SubNoteContent extends HookConsumerWidget {
         ? ref.watch(parsedMfmProvider(note.text!))
         : null;
     final collapseReason = note.cw == null && !alwaysExpandLongNote
-        ? ref.watch(noteCollapseReasonProvider(account, noteId))
+        ? noteId.isNotEmpty
+              ? ref.watch(noteCollapseReasonProvider(account, noteId))
+              : switch (note.text) {
+                  final text? => checkShouldCollapse(
+                    ref.watch(parsedMfmProvider(text)),
+                  ),
+                  _ => null,
+                }
         : null;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

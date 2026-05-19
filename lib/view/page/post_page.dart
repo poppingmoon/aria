@@ -176,6 +176,7 @@ class PostPage extends HookConsumerWidget {
                               noteId: '',
                               note: draft.toNote(),
                               showFooter: false,
+                              expandLongNote: true,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                     ),

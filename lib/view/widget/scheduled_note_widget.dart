@@ -134,6 +134,7 @@ class ScheduledNoteWidget extends ConsumerWidget {
           noteId: '',
           withHardMute: false,
           showFooter: false,
+          expandLongNote: true,
           note: draft.toNote(),
           borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(8.0),
