@@ -27,11 +27,19 @@ class UrlPreview extends HookConsumerWidget {
   final Account account;
   final String link;
 
-  String? _extractTweetId(String link) {
-    final url = Uri.tryParse(link);
-    if (url == null) {
-      return null;
-    }
+  String? _normalizeActivityPub(Uri activityPub, Uri? url) {
+    return switch (activityPub) {
+      Uri(
+        pathSegments: ['tags', ...] ||
+            ['users', _, 'statuses', _, 'references'],
+      ) =>
+        null,
+      Uri(hasScheme: false) => url?.resolveUri(activityPub).toString(),
+      _ => activityPub.toString(),
+    };
+  }
+
+  String? _extractTweetId(Uri url) {
     if (url.host
         case 'twitter.com' ||
             'mobile.twitter.com' ||
@@ -49,8 +57,7 @@ class UrlPreview extends HookConsumerWidget {
     return null;
   }
 
-  ({String atId, String rkey})? _extractAtId(String link) {
-    final url = Uri.tryParse(link);
+  ({String atId, String rkey})? _extractAtId(Uri url) {
     if (url case Uri(
       host: 'bsky.app',
       pathSegments: ['profile', final atId, 'post', final rkey],
@@ -78,23 +85,34 @@ class UrlPreview extends HookConsumerWidget {
         ref.watch(
           dataSaverProvider.select((dataSaver) => dataSaver.urlPreview),
         );
+    final url = useMemoized(() => Uri.tryParse(link), [link]);
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
-    final activityPub = switch (summalyResult?.activityPub) {
-      final activityPub? => switch (Uri.tryParse(activityPub)) {
-        final url => switch (url) {
-          Uri(
-            pathSegments: ['tags', ...] ||
-                ['users', _, 'statuses', _, 'references'],
-          ) =>
-            null,
-          _ => activityPub,
-        },
+    final apUrl = useMemoized(
+      () => switch (summalyResult?.activityPub) {
+        final activityPub? => Uri.tryParse(activityPub),
+        _ => null,
       },
-      _ => null,
-    };
-    final tweetId = useMemoized(() => _extractTweetId(link), [link]);
-    final atId = useMemoized(() => _extractAtId(link), [link]);
+      [summalyResult?.activityPub],
+    );
+    final activityPub = useMemoized(
+      () => apUrl != null ? _normalizeActivityPub(apUrl, url) : null,
+      [apUrl, url],
+    );
+    final tweetId = useMemoized(
+      () => switch (url) {
+        final url? => _extractTweetId(url),
+        _ => null,
+      },
+      [url],
+    );
+    final atId = useMemoized(
+      () => switch (url) {
+        final url? => _extractAtId(url),
+        _ => null,
+      },
+      [url],
+    );
     final brightness = Theme.brightnessOf(context);
     final colors = ref.watch(misskeyColorsProvider(brightness));
     final style = DefaultTextStyle.of(context).style;
@@ -252,10 +270,14 @@ class UrlPreview extends HookConsumerWidget {
                   : playerUrl != null
                   ? t.misskey.enablePlayer
                   : activityPub != null
-                  ? activityPub.contains('/users/') &&
-                            !activityPub.contains('/statuses/')
-                        ? t.aria.expandUser
-                        : t.aria.expandNote
+                  ? switch (apUrl) {
+                      Uri(pathSegments: ['ap', 'users', _] || ['users', _]) =>
+                        t.aria.expandUser,
+                      Uri(pathSegments: [final acct])
+                          when acct.startsWith('@') =>
+                        t.aria.expandUser,
+                      _ => t.aria.expandNote,
+                    }
                   : t.misskey.expandTweet,
             ),
           ),
