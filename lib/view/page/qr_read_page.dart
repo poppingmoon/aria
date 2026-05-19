@@ -160,7 +160,7 @@ class QrReadPage extends HookConsumerWidget {
                         alignment: AlignmentDirectional.bottomEnd,
                         child: ValueListenableBuilder(
                           valueListenable: controller,
-                          builder: (context, value, _) => Row(
+                          builder: (buttonContext, value, _) => Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
@@ -202,9 +202,9 @@ class QrReadPage extends HookConsumerWidget {
                                       return;
                                     }
                                   }
-                                  if (!context.mounted) return;
+                                  if (!buttonContext.mounted) return;
                                   await showMessageDialog(
-                                    context,
+                                    buttonContext,
                                     t.misskey.qr_.noQrCodeFound,
                                   );
                                 },
