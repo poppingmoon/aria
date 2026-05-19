@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -87,7 +89,9 @@ class NotificationsListView extends HookConsumerWidget {
             final remaining = (minScrollExtent - offset).abs();
             controller.animateTo(
               minScrollExtent,
-              duration: const Duration(milliseconds: 300) * (remaining / 100.0),
+              duration:
+                  const Duration(milliseconds: 300) *
+                  min(remaining / 100.0, 2.0),
               curve: Curves.easeOut,
             );
           }
