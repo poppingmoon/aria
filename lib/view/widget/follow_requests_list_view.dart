@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter/rendering.dart';
@@ -74,7 +76,9 @@ class FollowRequestsListView extends HookConsumerWidget {
             final remaining = (minScrollExtent - offset).abs();
             controller.animateTo(
               minScrollExtent,
-              duration: const Duration(milliseconds: 300) * (remaining / 100.0),
+              duration:
+                  const Duration(milliseconds: 300) *
+                  min(remaining / 100.0, 2.0),
               curve: Curves.easeOut,
             );
           }

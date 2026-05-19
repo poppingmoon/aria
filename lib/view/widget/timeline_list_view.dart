@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -205,7 +207,8 @@ class TimelineListView extends HookConsumerWidget {
               controller.animateTo(
                 minScrollExtent,
                 duration:
-                    const Duration(milliseconds: 300) * (remaining / 100.0),
+                    const Duration(milliseconds: 300) *
+                    min(remaining / 100.0, 2.0),
                 curve: Curves.easeOut,
               );
             }
