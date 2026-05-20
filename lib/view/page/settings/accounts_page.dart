@@ -67,7 +67,7 @@ class AccountsPage extends HookConsumerWidget {
                   }
                 },
                 itemCount: accounts.length + 2,
-                onReorder: (oldIndex, newIndex) => ref
+                onReorderItem: (oldIndex, newIndex) => ref
                     .read(accountsNotifierProvider.notifier)
                     .reorder(
                       max(0, oldIndex - 1),

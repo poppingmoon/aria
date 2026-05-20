@@ -78,7 +78,7 @@ class TabsPage extends HookConsumerWidget {
                   }
                 },
                 itemCount: tabs.length + 2,
-                onReorder: (oldIndex, newIndex) => ref
+                onReorderItem: (oldIndex, newIndex) => ref
                     .read(timelineTabsNotifierProvider.notifier)
                     .reorder(
                       max(0, oldIndex - 1),
