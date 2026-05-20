@@ -76,6 +76,7 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
+  hooks: ^1.0.3
   hooks_riverpod: ^3.3.1
   html: ^0.15.6
   image: ^4.8.0
@@ -107,6 +108,7 @@ dependencies:
       url: https://github.com/poppingmoon/mobile_scanner
       ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
   multi_split_view: ^3.6.1
+  native_toolchain_rust: ^1.0.4
   package_info_plus: ^10.1.0
   path: ^1.9.1
   path_provider: ^2.1.5
@@ -120,8 +122,6 @@ dependencies:
   reorderable_grid: ^1.0.13
   reorderables: ^0.6.0
   riverpod_annotation: ^4.0.2
-  rust_lib_aria:
-    path: rust_builder
   screen_brightness: ^2.1.8
   sensors_plus: ^7.0.0
   share_plus: ^13.1.0
