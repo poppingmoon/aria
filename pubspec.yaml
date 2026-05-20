@@ -52,7 +52,11 @@ dependencies:
   flutter_hooks: ^0.21.3+1
   flutter_html: ^3.0.0
   flutter_image_compress: ^2.4.0
-  flutter_inappwebview: ^6.1.5
+  flutter_inappwebview:
+    git:
+      url: https://github.com/poppingmoon/flutter_inappwebview
+      ref: 31cd241ffbfd104261cbc55d8245a15b5a7495b0
+      path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
   flutter_local_notifications: ^21.0.0
   flutter_localizations:

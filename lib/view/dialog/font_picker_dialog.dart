@@ -399,8 +399,7 @@ class _FontPreviewDialog extends HookWidget {
               ),
               initialSettings: InAppWebViewSettings(
                 appCachePath: appCachePath,
-                transparentBackground:
-                    defaultTargetPlatform != TargetPlatform.windows,
+                transparentBackground: true,
               ),
               onLoadStop: (_, _) => isLoading.value = false,
             ),
