@@ -97,7 +97,7 @@ class AccountsNotifier extends _$AccountsNotifier {
   Future<void> reorder(int oldIndex, int newIndex) async {
     final items = state.toList();
     final item = items.removeAt(oldIndex);
-    items.insert(oldIndex < newIndex ? newIndex - 1 : newIndex, item);
+    items.insert(newIndex, item);
     state = items;
     await _save();
   }

@@ -78,14 +78,11 @@ class TwitterEmbed extends HookConsumerWidget {
         onTap: defaultTargetPlatform == TargetPlatform.windows ? () {} : null,
         onHover: (value) => shouldLaunch.value = value,
         child: InAppWebView(
-          initialSettings: InAppWebViewSettings(
-            transparentBackground:
-                defaultTargetPlatform != TargetPlatform.windows,
-          ),
+          initialSettings: InAppWebViewSettings(transparentBackground: true),
           initialData: InAppWebViewInitialData(data: content),
           onWebViewCreated: (controller) => controller.addJavaScriptHandler(
             handlerName: 'onReady',
-            callback: (arguments) =>
+            callback: (List<dynamic> arguments) =>
                 height.value = (arguments.single as num).toDouble() + 16.0,
           ),
           shouldOverrideUrlLoading: (controller, navigationAction) async {

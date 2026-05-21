@@ -4,7 +4,7 @@ publish_to: "none"
 version: 1.5.1+99
 
 environment:
-  sdk: ">=3.10.0 <4.0.0"
+  sdk: ">=3.12.0 <4.0.0"
 
 dependencies:
   aho_corasick: ^2.0.0
@@ -52,7 +52,11 @@ dependencies:
   flutter_hooks: ^0.21.3+1
   flutter_html: ^3.0.0
   flutter_image_compress: ^2.4.0
-  flutter_inappwebview: ^6.1.5
+  flutter_inappwebview:
+    git:
+      url: https://github.com/poppingmoon/flutter_inappwebview
+      ref: 31cd241ffbfd104261cbc55d8245a15b5a7495b0
+      path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
   flutter_local_notifications: ^21.0.0
   flutter_localizations:
@@ -93,7 +97,7 @@ dependencies:
   kana_kit: ^2.1.1
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
-  material_symbols_icons: 4.2906.0
+  material_symbols_icons: ^4.2928.1
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser

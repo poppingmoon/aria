@@ -42,7 +42,7 @@ final class OverlayLayersNotifierProvider
 }
 
 String _$overlayLayersNotifierHash() =>
-    r'578deffd986dd4c8a74a68d4da3f3020da90be08';
+    r'ee7fc1f49933fa86d134f6841638a9acb536f7e4';
 
 abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
   List<Layer> build();

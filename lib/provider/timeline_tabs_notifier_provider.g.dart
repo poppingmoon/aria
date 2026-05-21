@@ -42,7 +42,7 @@ final class TimelineTabsNotifierProvider
 }
 
 String _$timelineTabsNotifierHash() =>
-    r'd7b4a0253af678c8ca25935227503f2e920cfe75';
+    r'b7e18094a4e9dcef68ab339f1495ab2b724fa97b';
 
 abstract class _$TimelineTabsNotifier extends $Notifier<List<TabSettings>> {
   List<TabSettings> build();

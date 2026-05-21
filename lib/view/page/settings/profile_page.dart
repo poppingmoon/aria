@@ -674,13 +674,10 @@ class ProfilePage extends HookConsumerWidget {
                         );
                       },
                       itemCount: fields.value.length,
-                      onReorder: (oldIndex, newIndex) {
+                      onReorderItem: (oldIndex, newIndex) {
                         final items = fields.value.toList();
                         final item = items.removeAt(oldIndex);
-                        items.insert(
-                          oldIndex < newIndex ? newIndex - 1 : newIndex,
-                          item,
-                        );
+                        items.insert(newIndex, item);
                         fields.value = items;
                       },
                       shrinkWrap: true,

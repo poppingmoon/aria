@@ -174,56 +174,61 @@ class SearchPage extends HookConsumerWidget {
                     clipBehavior: Clip.hardEdge,
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxHeight: 300.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          if (options.value.isNotEmpty)
-                            Divider(
-                              height: 1.0,
-                              color: theme.colorScheme.outline,
-                            ),
-                          Flexible(
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: options.value
-                                  .map(
-                                    (option) => ListTile(
-                                      leading: const Icon(Icons.history),
-                                      title: Text(option),
-                                      trailing: IconButton(
-                                        tooltip: t.misskey.delete,
-                                        onPressed: () => ref
-                                            .read(
-                                              searchedQueriesNotifierProvider(
-                                                account,
-                                              ).notifier,
-                                            )
-                                            .delete(option),
-                                        icon: const Icon(Icons.close),
+                      child: MediaQuery.removePadding(
+                        context: context,
+                        removeTop: true,
+                        removeBottom: true,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (options.value.isNotEmpty)
+                              Divider(
+                                height: 1.0,
+                                color: theme.colorScheme.outline,
+                              ),
+                            Flexible(
+                              child: ListView(
+                                shrinkWrap: true,
+                                children: options.value
+                                    .map(
+                                      (option) => ListTile(
+                                        leading: const Icon(Icons.history),
+                                        title: Text(option),
+                                        trailing: IconButton(
+                                          tooltip: t.misskey.delete,
+                                          onPressed: () => ref
+                                              .read(
+                                                searchedQueriesNotifierProvider(
+                                                  account,
+                                                ).notifier,
+                                              )
+                                              .delete(option),
+                                          icon: const Icon(Icons.close),
+                                        ),
+                                        onTap: () {
+                                          controller.text = '$option ';
+                                          focusNode.unfocus();
+                                          query.value = option;
+                                          ref
+                                              .read(
+                                                searchedQueriesNotifierProvider(
+                                                  account,
+                                                ).notifier,
+                                              )
+                                              .add(option);
+                                        },
+                                        contentPadding:
+                                            const EdgeInsetsDirectional.only(
+                                              start: 16.0,
+                                              end: 8.0,
+                                            ),
                                       ),
-                                      onTap: () {
-                                        controller.text = '$option ';
-                                        focusNode.unfocus();
-                                        query.value = option;
-                                        ref
-                                            .read(
-                                              searchedQueriesNotifierProvider(
-                                                account,
-                                              ).notifier,
-                                            )
-                                            .add(option);
-                                      },
-                                      contentPadding:
-                                          const EdgeInsetsDirectional.only(
-                                            start: 16.0,
-                                            end: 8.0,
-                                          ),
-                                    ),
-                                  )
-                                  .toList(),
+                                    )
+                                    .toList(),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

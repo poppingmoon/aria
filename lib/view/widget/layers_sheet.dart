@@ -95,7 +95,7 @@ class LayersSheet extends ConsumerWidget {
         }
       },
       itemCount: overlayLayers.length + 1,
-      onReorder: (oldIndex, newIndex) {
+      onReorderItem: (oldIndex, newIndex) {
         ref
             .read(overlayLayersNotifierProvider.notifier)
             .reorder(oldIndex, newIndex);
