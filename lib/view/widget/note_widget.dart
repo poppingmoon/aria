@@ -412,12 +412,17 @@ class _NoteContent extends HookConsumerWidget {
     final parsed = appearNote.text != null
         ? ref.watch(parsedMfmProvider(appearNote.text!))
         : null;
-    final renoteUrl = note.uri?.toString() ?? note.url?.toString();
     final urls = useMemoized(
       () => parsed != null
-          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+          ? extractUrl(parsed)
+                .where(
+                  (url) =>
+                      url != appearNote.renote?.url?.toString() &&
+                      url != appearNote.renote?.uri?.toString(),
+                )
+                .toList()
           : null,
-      [parsed],
+      [parsed, appearNote.renote],
     );
     final collapseReason =
         appearNote.cw == null && !(expandLongNote ?? alwaysExpandLongNote)
