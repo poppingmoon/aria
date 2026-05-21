@@ -36,10 +36,13 @@ class ImageDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final url = switch (this.url) {
-      final url? => Uri.tryParse(url),
-      _ => null,
-    };
+    final url = useMemoized(
+      () => switch (this.url) {
+        final url? => Uri.tryParse(url),
+        _ => null,
+      },
+      [this.url],
+    );
     final (enableHapticFeedback, mediaSaveLocation) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) =>

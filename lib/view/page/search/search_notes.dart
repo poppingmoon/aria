@@ -69,6 +69,13 @@ class SearchNotes extends HookConsumerWidget {
             ),
           )
         : null;
+    final host = useMemoized(
+      () => switch (user?.host) {
+        final host? => toUnicode(host),
+        _ => null,
+      },
+      [user?.host],
+    );
     final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
@@ -135,7 +142,7 @@ class SearchNotes extends HookConsumerWidget {
                               TextSpan(text: '@${user.username}'),
                               if (user.host != null)
                                 TextSpan(
-                                  text: '@${toUnicode(user.host!)}',
+                                  text: '@$host',
                                   style: TextStyle(
                                     color: style.color?.withValues(alpha: 0.5),
                                   ),

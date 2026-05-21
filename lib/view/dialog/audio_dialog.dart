@@ -193,10 +193,13 @@ class _VideoPlayerAudioWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = switch (this.url) {
-      final url? => Uri.tryParse(url),
-      _ => null,
-    };
+    final url = useMemoized(
+      () => switch (this.url) {
+        final url? => Uri.tryParse(url),
+        _ => null,
+      },
+      [this.url],
+    );
     final videoPlayerController = useVideoPlayerController(
       url: url,
       file: file,

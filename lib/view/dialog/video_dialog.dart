@@ -4,6 +4,7 @@ import 'package:chewie/chewie.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,10 +41,13 @@ class VideoDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final url = switch (this.url) {
-      final url? => Uri.tryParse(url),
-      _ => null,
-    };
+    final url = useMemoized(
+      () => switch (this.url) {
+        final url? => Uri.tryParse(url),
+        _ => null,
+      },
+      [this.url],
+    );
     final (enableHapticFeedback, mediaSaveLocation) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) =>

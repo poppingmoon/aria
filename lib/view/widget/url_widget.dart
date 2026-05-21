@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/string_extension.dart';
@@ -7,7 +8,7 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../util/punycode.dart';
 import 'url_sheet.dart';
 
-class UrlWidget extends StatelessWidget {
+class UrlWidget extends HookWidget {
   const UrlWidget({
     required this.url,
     this.verified = false,
@@ -51,7 +52,7 @@ class UrlWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = Uri.tryParse(this.url);
+    final url = useMemoized(() => Uri.tryParse(this.url), [this.url]);
     final style = DefaultTextStyle.of(context).style.merge(this.style);
     if (url == null) {
       return InkWell(
@@ -76,11 +77,13 @@ class UrlWidget extends StatelessWidget {
     }
 
     final scheme = url.scheme;
-    final host = toUnicode(url.host);
+    final host = useMemoized(() => toUnicode(url.host), [url.host]);
     final port = url.port;
-    final path = _decodeComponent(url.path);
-    final query = _decodeQueryComponent(url.query);
-    final fragment = _decodeComponent(url.fragment);
+    final path = useMemoized(() => _decodeComponent(url.path), [url.path]);
+    final query = useMemoized(() => _decodeQueryComponent(url.query), [
+      url.query,
+    ]);
+    final fragment = useMemoized(() => _decodeComponent(url.fragment));
 
     return InkWell(
       onTap: onTap,
