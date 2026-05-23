@@ -52,7 +52,7 @@ final class EmojisNotifierProvider
   }
 }
 
-String _$emojisNotifierHash() => r'814f4ba365e11b59627df5c8687d29f999bc0828';
+String _$emojisNotifierHash() => r'435830bddf419cf81d54c762750299c769810203';
 
 @JsonPersist()
 final class EmojisNotifierFamily extends $Family
