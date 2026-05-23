@@ -6,6 +6,114 @@ import '../constant/theme_props.dart';
 import '../model/misskey_colors.dart';
 import '../model/misskey_theme.dart';
 
+class CompileThemeException implements Exception {}
+
+class CompileThemeReferenceLimitException implements CompileThemeException {
+  const CompileThemeReferenceLimitException();
+
+  @override
+  String toString() {
+    return 'Theme reference limit exceeded';
+  }
+}
+
+class CompileThemeCircularReferenceException implements CompileThemeException {
+  const CompileThemeCircularReferenceException();
+
+  @override
+  String toString() {
+    return 'Theme contains circular references';
+  }
+}
+
+class CompileThemeMissingPropertyException implements CompileThemeException {
+  const CompileThemeMissingPropertyException(this.key);
+
+  final String key;
+
+  @override
+  String toString() {
+    return 'Theme references missing property: $key';
+  }
+}
+
+const _maxThemeReferenceDepth = 8;
+
+Color _getThemeReferenceColor(
+  Map<String, String> props,
+  String key,
+  List<String> stack,
+  int depth,
+) {
+  if (depth >= _maxThemeReferenceDepth) {
+    throw const CompileThemeReferenceLimitException();
+  }
+
+  if (stack.contains(key)) {
+    throw const CompileThemeCircularReferenceException();
+  }
+
+  final nextValue = props[key];
+  if (nextValue == null) {
+    throw CompileThemeMissingPropertyException(key);
+  }
+
+  return _getColor(props, nextValue, [...stack, key], depth + 1);
+}
+
+Color _getColor(
+  Map<String, String> props,
+  String val,
+  List<String> stack,
+  int depth,
+) {
+  if (val[0] == '@') {
+    return _getThemeReferenceColor(props, val.substring(1), stack, depth);
+  } else if (val[0] == r'$') {
+    return _getThemeReferenceColor(props, val, stack, depth);
+  } else if (val[0] == ':') {
+    if (depth >= _maxThemeReferenceDepth) {
+      throw const CompileThemeReferenceLimitException();
+    }
+    final parts = val.split('<');
+    final func = parts.removeAt(0).substring(1);
+    final arg = double.parse(parts.removeAt(0));
+    final color = _getColor(props, parts.join('<'), stack, depth + 1);
+
+    switch (func) {
+      case 'darken':
+        return color.darken(arg.toInt());
+      case 'lighten':
+        return color.lighten(arg.toInt());
+      case 'alpha':
+        return color.withValues(alpha: arg);
+      case 'hue':
+        return color.spin(arg);
+      case 'saturate':
+        return color.saturate(arg.toInt());
+    }
+  }
+
+  final input = val.trim();
+  if (input.startsWith('rgb(') && input.endsWith(')')) {
+    final rgb = input
+        .substring(4, input.length - 1)
+        .split(RegExp(r'[,\s]\s*'))
+        .map(int.parse)
+        .toList();
+    return Color.fromRGBO(rgb[0], rgb[1], rgb[2], 1);
+  }
+  if (input.startsWith('rgba(') && input.endsWith(')')) {
+    final rgbo = input
+        .substring(5, input.length - 1)
+        .split(RegExp(r'[,\s]\s*'));
+    final rgb = rgbo.sublist(0, 3).map(int.parse).toList();
+    final opacity = double.parse(rgbo[3]);
+    return Color.fromRGBO(rgb[0], rgb[1], rgb[2], opacity);
+  }
+  return TinyColor.fromString(input).toColor();
+}
+
 MisskeyColors compileTheme(MisskeyTheme theme) {
   final isDark = theme.base == 'dark';
   final props = {
@@ -13,76 +121,35 @@ MisskeyColors compileTheme(MisskeyTheme theme) {
     ...theme.props,
   };
 
-  Color getColor(String val) {
-    if (val[0] == '@') {
-      return getColor(props[val.substring(1)]!);
-    } else if (val[0] == r'$') {
-      return getColor(props[val]!);
-    } else if (val[0] == ':') {
-      final parts = val.split('<');
-      final func = parts.removeAt(0).substring(1);
-      final arg = double.parse(parts.removeAt(0));
-      final color = getColor(parts.join('<'));
-
-      return switch (func) {
-        'darken' => color.darken(arg.toInt()),
-        'lighten' => color.lighten(arg.toInt()),
-        'alpha' => color.withValues(alpha: arg),
-        'hue' => color.spin(arg),
-        'saturate' => color.saturate(arg.toInt()),
-        _ => color,
-      };
-    } else {
-      final input = val.trim();
-      if (input.startsWith('rgb(') && input.endsWith(')')) {
-        final rgb = input
-            .substring(4, input.length - 1)
-            .split(RegExp(r'[,\s]\s*'))
-            .map(int.parse)
-            .toList();
-        return Color.fromRGBO(rgb[0], rgb[1], rgb[2], 1);
-      }
-      if (input.startsWith('rgba(') && input.endsWith(')')) {
-        final rgbo = input
-            .substring(5, input.length - 1)
-            .split(RegExp(r'[,\s]\s*'));
-        final rgb = rgbo.sublist(0, 3).map(int.parse).toList();
-        final opacity = double.parse(rgbo[3]);
-        return Color.fromRGBO(rgb[0], rgb[1], rgb[2], opacity);
-      }
-      return TinyColor.fromString(input).toColor();
-    }
-  }
-
   return MisskeyColors(
     id: theme.id,
     name: theme.name,
     isDark: isDark,
-    accent: getColor(props['accent']!),
-    accentDarken: getColor(props['accentDarken']!),
-    accentLighten: getColor(props['accentLighten']!),
-    accentedBg: getColor(props['accentedBg']!),
-    love: getColor(props['love']!),
-    bg: getColor(props['bg']!),
-    fg: getColor(props['fg']!),
-    fgOnAccent: getColor(props['fgOnAccent']!),
-    divider: getColor(props['divider']!),
-    panel: getColor(props['panel']!),
-    link: getColor(props['link']!),
-    hashtag: getColor(props['hashtag']!),
-    mention: getColor(props['mention']!),
-    mentionMe: getColor(props['mentionMe']!),
-    renote: getColor(props['renote']!),
-    infoFg: getColor(props['infoFg']!),
-    infoBg: getColor(props['infoBg']!),
-    infoWarnFg: getColor(props['infoWarnFg']!),
-    infoWarnBg: getColor(props['infoWarnBg']!),
-    buttonBg: getColor(props['buttonBg']!),
-    buttonGradateA: getColor(props['buttonGradateA']!),
-    buttonGradateB: getColor(props['buttonGradateB']!),
-    driveFolderBg: getColor(props['driveFolderBg']!),
-    success: getColor(props['success']!),
-    error: getColor(props['error']!),
-    warn: getColor(props['warn']!),
+    accent: _getThemeReferenceColor(props, 'accent', [], 0),
+    accentDarken: _getThemeReferenceColor(props, 'accentDarken', [], 0),
+    accentLighten: _getThemeReferenceColor(props, 'accentLighten', [], 0),
+    accentedBg: _getThemeReferenceColor(props, 'accentedBg', [], 0),
+    love: _getThemeReferenceColor(props, 'love', [], 0),
+    bg: _getThemeReferenceColor(props, 'bg', [], 0),
+    fg: _getThemeReferenceColor(props, 'fg', [], 0),
+    fgOnAccent: _getThemeReferenceColor(props, 'fgOnAccent', [], 0),
+    divider: _getThemeReferenceColor(props, 'divider', [], 0),
+    panel: _getThemeReferenceColor(props, 'panel', [], 0),
+    link: _getThemeReferenceColor(props, 'link', [], 0),
+    hashtag: _getThemeReferenceColor(props, 'hashtag', [], 0),
+    mention: _getThemeReferenceColor(props, 'mention', [], 0),
+    mentionMe: _getThemeReferenceColor(props, 'mentionMe', [], 0),
+    renote: _getThemeReferenceColor(props, 'renote', [], 0),
+    infoFg: _getThemeReferenceColor(props, 'infoFg', [], 0),
+    infoBg: _getThemeReferenceColor(props, 'infoBg', [], 0),
+    infoWarnFg: _getThemeReferenceColor(props, 'infoWarnFg', [], 0),
+    infoWarnBg: _getThemeReferenceColor(props, 'infoWarnBg', [], 0),
+    buttonBg: _getThemeReferenceColor(props, 'buttonBg', [], 0),
+    buttonGradateA: _getThemeReferenceColor(props, 'buttonGradateA', [], 0),
+    buttonGradateB: _getThemeReferenceColor(props, 'buttonGradateB', [], 0),
+    driveFolderBg: _getThemeReferenceColor(props, 'driveFolderBg', [], 0),
+    success: _getThemeReferenceColor(props, 'success', [], 0),
+    error: _getThemeReferenceColor(props, 'error', [], 0),
+    warn: _getThemeReferenceColor(props, 'warn', [], 0),
   );
 }
