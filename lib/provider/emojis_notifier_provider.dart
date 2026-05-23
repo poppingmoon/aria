@@ -71,15 +71,17 @@ class EmojisNotifier extends _$EmojisNotifier {
   }
 
   Future<void> reloadEmojis({bool force = false}) async {
-    if (force ||
-        (!state.isLoading &&
-            ((state.value?.isEmpty ?? true) || !_recentlyFetched))) {
-      final emojis = await _fetchEmojis();
-      state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
-      _recentlyFetched = true;
-      _timer = Timer(const Duration(minutes: 10), () {
-        _recentlyFetched = false;
-      });
+    if (force || (state.value?.isEmpty ?? true) || !_recentlyFetched) {
+      if (state.isLoading) {
+        await future;
+      } else {
+        final emojis = await _fetchEmojis();
+        state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
+        _recentlyFetched = true;
+        _timer = Timer(const Duration(minutes: 10), () {
+          _recentlyFetched = false;
+        });
+      }
     }
   }
 
