@@ -192,6 +192,7 @@ class PostNotifier extends _$PostNotifier {
       reply: reply,
       renoteId: renote?.id,
       renote: renote,
+      visibility: visibility,
       fileIds: state.fileIds?.isNotEmpty ?? false
           ? state.fileIds
           : draft.fileIds,
