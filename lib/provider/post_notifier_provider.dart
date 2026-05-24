@@ -95,16 +95,17 @@ class PostNotifier extends _$PostNotifier {
       final note = ref.read(noteNotifierProvider(account, noteId));
       return note?.toNoteDraft() ?? _getDefaultDraft(null);
     }
-    final tabSettings = _tabSettings;
+    final tabSettings = switch (_tabSettings) {
+      final tabSettings? when tabSettings.account == account => tabSettings,
+      _ => null,
+    };
     final defaultDraft = _getDefaultDraft(tabSettings);
-    if (tabSettings?.account == account) {
-      Future(() async {
-        final draft = await _loadDraft(tabSettings);
-        if (draft != null && state == defaultDraft) {
-          state = draft;
-        }
-      });
-    }
+    Future(() async {
+      final draft = await _loadDraft(tabSettings);
+      if (draft != null && state == defaultDraft) {
+        state = draft;
+      }
+    });
     return defaultDraft;
   }
 

@@ -26,6 +26,7 @@ class NoteDraftRepository {
               .accountEqualTo(account.toString())
               .filter()
               .replyIdEqualTo(replyId)
+              .sortByIsPinned()
               .findFirst()
         : renoteId != null
         ? await isar.noteDrafts
@@ -33,6 +34,7 @@ class NoteDraftRepository {
               .accountEqualTo(account.toString())
               .filter()
               .renoteIdEqualTo(renoteId)
+              .sortByIsPinned()
               .findFirst()
         : channelId != null
         ? await isar.noteDrafts
@@ -40,6 +42,7 @@ class NoteDraftRepository {
               .accountEqualTo(account.toString())
               .filter()
               .channelIdEqualTo(channelId)
+              .sortByIsPinned()
               .findFirst()
         : await isar.noteDrafts
               .where()
@@ -49,6 +52,7 @@ class NoteDraftRepository {
               .replyIdIsNull()
               .renoteIdIsNull()
               .channelIdIsNull()
+              .sortByIsPinned()
               .findFirst();
     if (draft != null) {
       try {

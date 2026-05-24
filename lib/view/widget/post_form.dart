@@ -269,7 +269,8 @@ class PostForm extends HookConsumerWidget {
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
     final canPost =
-        !account.value.isGuest && (draft.canPost || attaches.isNotEmpty);
+        !account.value.isGuest &&
+        (draft.copyWith(fileIds: null).canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final enableSpellCheck = ref.watch(
       generalSettingsNotifierProvider.select(
@@ -330,6 +331,34 @@ class PostForm extends HookConsumerWidget {
         final s = hashtag ?? '';
         if (s != hashtagController.text) {
           hashtagController.text = s;
+        }
+      },
+    );
+    ref.listen(
+      postNotifierProvider(
+        account.value,
+        noteId: noteId,
+      ).select((draft) => draft.files),
+      (prev, next) {
+        if ((prev?.isEmpty ?? true) && next != null && next.isNotEmpty) {
+          final attaches = ref.read(
+            attachesNotifierProvider(account.value, noteId: noteId),
+          );
+          final files = next.where(
+            (file) => attaches.every(
+              (attach) => attach is! DrivePostFile || attach.file.id != file.id,
+            ),
+          );
+          if (files.isNotEmpty) {
+            ref
+                .read(
+                  attachesNotifierProvider(
+                    account.value,
+                    noteId: noteId,
+                  ).notifier,
+                )
+                .addAll(files.map(DrivePostFile.fromDriveFile));
+          }
         }
       },
     );
@@ -1024,7 +1053,9 @@ class _PostFormHeader extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).value;
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeVisibility = noteId == null && draft.canChangeVisibility;
-    final canPost = !account.isGuest && (draft.canPost || attaches.isNotEmpty);
+    final canPost =
+        !account.isGuest &&
+        (draft.copyWith(fileIds: null).canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (draft) {
