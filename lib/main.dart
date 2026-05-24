@@ -24,6 +24,7 @@ import 'package:window_manager/window_manager.dart';
 
 import 'constant/colors.dart';
 import 'constant/shortcuts.dart';
+import 'extension/app_locale_utils_extension.dart';
 import 'extension/user_extension.dart';
 import 'gen/assets.gen.dart';
 import 'hook/on_window_move_hook.dart';
@@ -114,11 +115,9 @@ class Aria extends HookConsumerWidget {
   Future<void> _init(WidgetRef ref) async {
     final generalSettings = ref.read(generalSettingsNotifierProvider);
     Future(() {
-      if (generalSettings.locale case final locale?) {
-        LocaleSettings.setLocale(locale);
-      } else {
-        LocaleSettings.useDeviceLocale();
-      }
+      final locale =
+          generalSettings.locale ?? AppLocaleUtils.instance.findDeviceLocale();
+      LocaleSettings.instance.setLocale(locale);
     }).ignore();
     if (generalSettings.keepScreenOn) {
       WakelockPlus.enable().ignore();
@@ -189,11 +188,13 @@ class Aria extends HookConsumerWidget {
           }
 
           final currentLocale = LocaleSettings.currentLocale;
-          if (generalSettings.locale case final locale?
-              when locale != currentLocale) {
+          if (generalSettings.locale case final locale?) {
+            if (locale != currentLocale) {
+              await LocaleSettings.setLocale(locale);
+            }
+          } else if (AppLocaleUtils.instance.findDeviceLocale()
+              case final locale when locale != currentLocale) {
             await LocaleSettings.setLocale(locale);
-          } else if (AppLocaleUtils.findDeviceLocale() != currentLocale) {
-            await LocaleSettings.useDeviceLocale();
           }
 
           final channel = switch (notification) {
