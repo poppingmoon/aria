@@ -36,7 +36,8 @@ class PostPage extends HookConsumerWidget {
       attachesNotifierProvider(account.value, noteId: noteId),
     );
     final canPost =
-        !account.value.isGuest && (draft.canPost || attaches.isNotEmpty);
+        !account.value.isGuest &&
+        (draft.copyWith(fileIds: null).canPost || attaches.isNotEmpty);
     final canScheduleNote = noteId == null && (i?.canScheduleNote ?? false);
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (draft) {
