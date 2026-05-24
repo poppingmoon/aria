@@ -90,6 +90,11 @@ class NotesNotifier extends _$NotesNotifier {
         .markAsDeleted();
   }
 
+  Future<void> delete(String noteId) async {
+    await _misskey.notes.delete(NotesDeleteRequest(noteId: noteId));
+    remove(noteId);
+  }
+
   void addReaction(String noteId, Reacted reacted) {
     final note = ref.read(noteNotifierProvider(account, noteId));
     if (note == null) {

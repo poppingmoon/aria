@@ -7,7 +7,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -42,14 +41,12 @@ class DeleteAndEditDialog extends ConsumerWidget {
             final deleted = await futureWithDialog(
               context,
               ref
-                  .read(misskeyProvider(account))
-                  .notes
-                  .delete(NotesDeleteRequest(noteId: note.id))
+                  .read(notesNotifierProvider(account).notifier)
+                  .delete(note.id)
                   .then((_) => true),
             );
             if (!(deleted ?? false)) return;
             if (!context.mounted) return;
-            ref.read(notesNotifierProvider(account).notifier).remove(note.id);
             context.pop();
             await context.push('/$account/post');
           },

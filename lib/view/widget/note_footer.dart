@@ -320,16 +320,12 @@ class _RenoteButton extends HookConsumerWidget {
                       final result = await futureWithDialog(
                         context,
                         ref
-                            .read(misskeyProvider(account))
-                            .notes
-                            .delete(NotesDeleteRequest(noteId: noteId))
+                            .read(notesNotifierProvider(account).notifier)
+                            .delete(noteId)
                             .then((_) => true),
                       );
                       if (!context.mounted) return;
                       if (result != null) {
-                        ref
-                            .read(notesNotifierProvider(account).notifier)
-                            .remove(noteId);
                         myRenotingNoteId.value = null;
                       }
                       return;
