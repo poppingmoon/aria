@@ -496,14 +496,8 @@ class NoteSheet extends ConsumerWidget {
                     await futureWithDialog(
                       context,
                       ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: appearNote.id))
-                          .then(
-                            (_) => ref
-                                .read(notesNotifierProvider(account).notifier)
-                                .remove(appearNote.id),
-                          ),
+                          .read(notesNotifierProvider(account).notifier)
+                          .delete(appearNote.id),
                     );
                     if (!context.mounted) return;
                   }
@@ -520,14 +514,8 @@ class NoteSheet extends ConsumerWidget {
                   await futureWithDialog(
                     context,
                     ref
-                        .read(misskeyProvider(account))
-                        .notes
-                        .delete(NotesDeleteRequest(noteId: noteId))
-                        .then(
-                          (_) => ref
-                              .read(notesNotifierProvider(account).notifier)
-                              .remove(noteId),
-                        ),
+                        .read(notesNotifierProvider(account).notifier)
+                        .delete(note.id),
                   );
                   if (!context.mounted) return;
                   context.pop();
@@ -687,14 +675,8 @@ class _RenoteSheet extends ConsumerWidget {
               await futureWithDialog(
                 context,
                 ref
-                    .read(misskeyProvider(account))
-                    .notes
-                    .delete(NotesDeleteRequest(noteId: note.id))
-                    .then(
-                      (_) => ref
-                          .read(notesNotifierProvider(account).notifier)
-                          .remove(note.id),
-                    ),
+                    .read(notesNotifierProvider(account).notifier)
+                    .delete(note.id),
               );
               if (!context.mounted) return;
               context.pop();

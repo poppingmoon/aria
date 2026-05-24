@@ -58,7 +58,7 @@ final class NotesNotifierProvider
   }
 }
 
-String _$notesNotifierHash() => r'90b8787afd898e84bfcb1daf7e5574265fe9167b';
+String _$notesNotifierHash() => r'1fd379f97231581768eb70f269ca2749e86f58e9';
 
 final class NotesNotifierFamily extends $Family
     with $ClassFamilyOverride<NotesNotifier, void, void, void, Account> {
