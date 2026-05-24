@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../constant/max_content_width.dart';
+import '../../../extension/app_locale_utils_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
@@ -28,11 +29,8 @@ class LanguagesPage extends ConsumerWidget {
           groupValue: locale,
           onChanged: (value) {
             ref.read(generalSettingsNotifierProvider.notifier).setLocale(value);
-            if (value == null) {
-              LocaleSettings.useDeviceLocale();
-            } else {
-              LocaleSettings.setLocale(value);
-            }
+            final locale = value ?? AppLocaleUtils.instance.findDeviceLocale();
+            LocaleSettings.setLocale(locale);
           },
           child: ListView(
             children: [
