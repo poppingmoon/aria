@@ -246,6 +246,9 @@ class PostNotifier extends _$PostNotifier {
     if (account.isGuest || noteId != null) {
       return;
     }
+    if (!state.canPost && (state.cw?.isEmpty ?? true)) {
+      return;
+    }
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (state.replyId != null || state.renoteId != null) {
       await repo.saveDraft(
