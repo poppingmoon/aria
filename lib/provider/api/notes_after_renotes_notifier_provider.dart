@@ -13,6 +13,7 @@ part 'notes_after_renotes_notifier_provider.g.dart';
 class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
   @override
   Stream<PaginationState<Note>> build(Account account, String noteId) async* {
+    _untilId = null;
     final renotes = await _fetchRenotes();
     final notes = await Future.wait(renotes.map(_fetchNote));
     yield PaginationState(
@@ -48,12 +49,15 @@ class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
         .notes(
           UsersNotesRequest(
             userId: renote.userId,
-            sinceDate: renote.createdAt,
+            sinceDate: renote.createdAt.add(const Duration(milliseconds: 1)),
             untilDate: renote.createdAt.add(const Duration(minutes: 3)),
             limit: 100,
           ),
         );
-    final note = notes.firstOrNull;
+    final note = notes.fold<Note?>(
+      null,
+      (acc, note) => acc == null || note.id.compareTo(acc.id) < 0 ? note : acc,
+    );
     if (note != null) {
       if (!note.isRenote) {
         ref.read(notesNotifierProvider(account).notifier).add(note);

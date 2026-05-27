@@ -56,7 +56,7 @@ final class NotesAfterRenotesNotifierProvider
 }
 
 String _$notesAfterRenotesNotifierHash() =>
-    r'e0e3d72ae0b7e5bda63f973041164065ac406b9e';
+    r'17875804fac29faf372abe0b5e6147ca2ee19d14';
 
 final class NotesAfterRenotesNotifierFamily extends $Family
     with
