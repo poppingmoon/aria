@@ -7,15 +7,6 @@ PODS:
     - Mantle
     - SDWebImage
     - SDWebImageWebPCoder
-  - flutter_inappwebview_ios (0.0.1):
-    - Flutter
-    - flutter_inappwebview_ios/Core (= 0.0.1)
-    - OrderedSet (~> 6.0.3)
-  - flutter_inappwebview_ios/Core (0.0.1):
-    - Flutter
-    - OrderedSet (~> 6.0.3)
-  - fluttertoast (0.0.2):
-    - Flutter
   - image_editor_common (1.0.0):
     - Flutter
   - libwebp (1.3.2):
@@ -33,7 +24,6 @@ PODS:
   - Mantle (2.2.0):
     - Mantle/extobjc (= 2.2.0)
   - Mantle/extobjc (2.2.0)
-  - OrderedSet (6.0.3)
   - receive_sharing_intent (1.8.1):
     - Flutter
   - SDWebImage (5.19.7):
@@ -42,25 +32,18 @@ PODS:
   - SDWebImageWebPCoder (0.14.6):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.17)
-  - webcrypto (0.1.1):
-    - Flutter
-    - FlutterMacOS
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_apns_only (from `.symlinks/plugins/flutter_apns_only/ios`)
   - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
-  - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
   - receive_sharing_intent (from `.symlinks/plugins/receive_sharing_intent/ios`)
-  - webcrypto (from `.symlinks/plugins/webcrypto/darwin`)
 
 SPEC REPOS:
   trunk:
     - libwebp
     - Mantle
-    - OrderedSet
     - SDWebImage
     - SDWebImageWebPCoder
 
@@ -71,31 +54,21 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_apns_only/ios"
   flutter_image_compress_common:
     :path: ".symlinks/plugins/flutter_image_compress_common/ios"
-  flutter_inappwebview_ios:
-    :path: ".symlinks/plugins/flutter_inappwebview_ios/ios"
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
   image_editor_common:
     :path: ".symlinks/plugins/image_editor_common/ios"
   receive_sharing_intent:
     :path: ".symlinks/plugins/receive_sharing_intent/ios"
-  webcrypto:
-    :path: ".symlinks/plugins/webcrypto/darwin"
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_apns_only: 3d91c0ca9dbef4439874858590909a19f8ed06a4
   flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
-  flutter_inappwebview_ios: 6f63631e2c62a7c350263b13fa5427aedefe81d4
-  fluttertoast: 21eecd6935e7064cc1fcb733a4c5a428f3f24f0f
   image_editor_common: d6f6644ae4a6de80481e89fe6d0a8c49e30b4b43
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
-  OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   receive_sharing_intent: 79c848f5b045674ad60b9fea3bafea59962ad2c1
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
-  webcrypto: aa788ff6b0a956e5d6e613b35b99c13e220ca2d0
 
 PODFILE CHECKSUM: 8f87dd84ac2556c1d3c027edd6e2b6d74267735a
 

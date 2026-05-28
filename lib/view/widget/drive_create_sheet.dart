@@ -38,7 +38,6 @@ class DriveCreateSheet extends HookConsumerWidget {
       type: defaultTargetPlatform == TargetPlatform.iOS
           ? FileType.media
           : FileType.any,
-      allowMultiple: true,
     );
     if (result == null || result.files.isEmpty) return;
     if (!ref.context.mounted) return;

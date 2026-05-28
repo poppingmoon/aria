@@ -173,7 +173,9 @@ class VideoDialog extends HookConsumerWidget {
                               .then(
                                 (bytes) => FilePicker.saveFile(
                                   fileName:
-                                      fileName ?? url.pathSegments.lastOrNull,
+                                      fileName ??
+                                      url.pathSegments.lastOrNull ??
+                                      '',
                                   bytes: bytes,
                                 ),
                               ),

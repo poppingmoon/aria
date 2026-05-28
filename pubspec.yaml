@@ -33,7 +33,7 @@ dependencies:
   file_picker:
     git:
       url: https://github.com/miguelpruivo/flutter_file_picker
-      ref: 064f0cc23d704069168c13306a12a17090ceaf30
+      ref: a601fb97217668af0bc56f69a25322f6714739bd
   flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
@@ -55,7 +55,7 @@ dependencies:
   flutter_inappwebview:
     git:
       url: https://github.com/poppingmoon/flutter_inappwebview
-      ref: 31cd241ffbfd104261cbc55d8245a15b5a7495b0
+      ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
   flutter_local_notifications: ^21.0.0
@@ -63,14 +63,14 @@ dependencies:
     sdk: flutter
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: ^2.12.0
-  flutter_secure_storage: ^10.2.0
+  flutter_secure_storage: ^10.3.1
   flutter_svg: ^2.3.0
-  fluttertoast: ^9.0.0
+  fluttertoast: ^9.1.0
   freezed_annotation: ^3.1.0
   fvp:
     git:
       url: https://github.com/poppingmoon/fvp
-      ref: eaecc1226f8f8ec9141d3145f627a0ec5550e3b1
+      ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
   gal: ^2.3.2
   gal_linux: ^0.1.2
   go_router: ^17.2.3
@@ -111,7 +111,7 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/mobile_scanner
       ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
-  multi_split_view: ^3.6.1
+  multi_split_view: ^3.6.2
   native_toolchain_rust: ^1.0.4
   package_info_plus: ^10.1.0
   path: ^1.9.1
@@ -131,8 +131,8 @@ dependencies:
   share_plus: ^13.1.0
   shared_preferences: ^2.5.5
   shared_preferences_platform_interface: ^2.4.2
-  slang: ^4.14.0
-  slang_flutter: ^4.14.0
+  slang: ^4.15.0
+  slang_flutter: ^4.15.0
   tinycolor2:
     git:
       url: https://github.com/poppingmoon/tinycolor2
@@ -152,7 +152,7 @@ dependencies:
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: 13f22ab17514c13e76eb571ad053965e9841c77d
+      ref: a9b7e41f89d9632710a9d334d7c518ebe3cc32ad
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.1
 
@@ -175,7 +175,7 @@ dev_dependencies:
   lint: ^2.8.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^4.0.3
-  slang_build_runner: ^4.14.0
+  slang_build_runner: ^4.15.0
   url_launcher_platform_interface: ^2.3.2
   yaml: ^3.1.3
 
@@ -185,6 +185,11 @@ dependency_overrides:
       url: https://github.com/Baseflow/flutter_cache_manager
       ref: 54904e499a06d0364a2b3f4ca9789e5f829f1879
       path: flutter_cache_manager
+  flutter_inappwebview_macos:
+    git:
+      url: https://github.com/poppingmoon/flutter_inappwebview
+      ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
+      path: flutter_inappwebview_macos
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
@@ -203,7 +208,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 78c1829c9eb0749ada4043ca64b79e01da744a27
+      ref: 2d0473cac437acdf930080c46a4aac6108b7fc25
 
 hooks:
   user_defines:
