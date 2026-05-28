@@ -258,6 +258,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  change_case:
+    dependency: transitive
+    description:
+      name: change_case
+      sha256: e41ef3df58521194ef8d7649928954805aeb08061917cf658322305e61568003
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   characters:
     dependency: "direct main"
     description:
@@ -558,11 +566,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "064f0cc23d704069168c13306a12a17090ceaf30"
-      resolved-ref: "064f0cc23d704069168c13306a12a17090ceaf30"
+      ref: a601fb97217668af0bc56f69a25322f6714739bd
+      resolved-ref: a601fb97217668af0bc56f69a25322f6714739bd
       url: "https://github.com/miguelpruivo/flutter_file_picker"
     source: git
-    version: "12.0.0-beta.4"
+    version: "12.0.0-beta.5"
   fixnum:
     dependency: transitive
     description:
@@ -716,8 +724,8 @@ packages:
     dependency: "direct main"
     description:
       path: flutter_inappwebview
-      ref: "31cd241ffbfd104261cbc55d8245a15b5a7495b0"
-      resolved-ref: "31cd241ffbfd104261cbc55d8245a15b5a7495b0"
+      ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
+      resolved-ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       url: "https://github.com/poppingmoon/flutter_inappwebview"
     source: git
     version: "6.2.0-beta.3"
@@ -746,12 +754,13 @@ packages:
     source: hosted
     version: "1.2.0-beta.3"
   flutter_inappwebview_macos:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: flutter_inappwebview_macos
-      sha256: "545148cb5c46475ce669ab21621e9f2ad66e05f8e80b2cf49d4018879ab52393"
-      url: "https://pub.dev"
-    source: hosted
+      path: flutter_inappwebview_macos
+      ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
+      resolved-ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
+      url: "https://github.com/poppingmoon/flutter_inappwebview"
+    source: git
     version: "1.2.0-beta.3"
   flutter_inappwebview_platform_interface:
     dependency: transitive
@@ -866,26 +875,26 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_secure_storage
-      sha256: "6848263f9744072d0977347c383fb8b57d9780319a6bf5238b5a2866a029de62"
+      sha256: "7686b1d6a29985dcbb808c59518226e603e3bfa7c0ddfd1a0d00e4cda77c868e"
       url: "https://pub.dev"
     source: hosted
-    version: "10.2.0"
+    version: "10.3.1"
   flutter_secure_storage_darwin:
     dependency: transitive
     description:
       name: flutter_secure_storage_darwin
-      sha256: "67cd1ff671add31dc13e45194398187a04bb63804b37fa47866afae296d73fcb"
+      sha256: "82329fa5cdf343773b1b6897dea959105a29f092454259edff92f9f6637e8149"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.1"
+    version: "0.3.2"
   flutter_secure_storage_linux:
     dependency: transitive
     description:
       name: flutter_secure_storage_linux
-      sha256: "2b5c76dce569ab752d55a1cee6a2242bcc11fdba927078fb88c503f150767cda"
+      sha256: a5f35ddab43cf5c8215d2feb4ce1957851f28c5c37e6f04335066a0602087bf5
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   flutter_secure_storage_platform_interface:
     dependency: transitive
     description:
@@ -906,10 +915,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_secure_storage_windows
-      sha256: "8f42f359f187a94dce7a3ab2ec5903d013dddfc7127078ebab19fa244c3840e8"
+      sha256: "471951813a97006d899db4948acc654a4f28c440083ea08178935ce20b173ec1"
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.1"
+    version: "4.2.2"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -932,10 +941,10 @@ packages:
     dependency: "direct main"
     description:
       name: fluttertoast
-      sha256: "144ddd74d49c865eba47abe31cbc746c7b311c82d6c32e571fd73c4264b740e2"
+      sha256: "7903c9d5339173497bfecbc23bc4212f5a87e0edfac2e1693fb74465ea67da7e"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.0"
+    version: "9.1.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -969,11 +978,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: eaecc1226f8f8ec9141d3145f627a0ec5550e3b1
-      resolved-ref: eaecc1226f8f8ec9141d3145f627a0ec5550e3b1
+      ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
+      resolved-ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
       url: "https://github.com/poppingmoon/fvp"
     source: git
-    version: "0.36.2"
+    version: "0.37.0"
   gal:
     dependency: "direct main"
     description:
@@ -1431,10 +1440,10 @@ packages:
     dependency: "direct main"
     description:
       name: multi_split_view
-      sha256: "06f5126a65d3010ce0a9d5c003e793041fe99377b23e3534bb05059f79a580e9"
+      sha256: "76f6d593bce29e36ec52d8eff8849ac5a0e5b28648ebf38d8bbc158155b109d3"
       url: "https://pub.dev"
     source: hosted
-    version: "3.6.1"
+    version: "3.6.2"
   native_toolchain_c:
     dependency: transitive
     description:
@@ -1443,6 +1452,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.17.6"
+  native_toolchain_cmake:
+    dependency: transitive
+    description:
+      path: "."
+      ref: c83d9ce6d81cf3fd59b8eaa14c86ba2a3451de6b
+      resolved-ref: c83d9ce6d81cf3fd59b8eaa14c86ba2a3451de6b
+      url: "https://github.com/poppingmoon/native_toolchain_cmake"
+    source: git
+    version: "0.2.5"
   native_toolchain_rust:
     dependency: "direct main"
     description:
@@ -1997,26 +2015,26 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: ea6702ed6b1c82065fb2de906fe34ac9298117342e3c2ea2567132efdc81bd17
+      sha256: "46e929158c2f563994c4d1fce5819cfa13e18b164941473d2553bcddcf387c31"
       url: "https://pub.dev"
     source: hosted
-    version: "4.14.0"
+    version: "4.15.0"
   slang_build_runner:
     dependency: "direct dev"
     description:
       name: slang_build_runner
-      sha256: "1db59254041026aec97df5aca30a602e09e9d1546c3d16b55c3c7cf4c16cdb6c"
+      sha256: "7da604c926c15435543a4a7088133bd4b9d027a55257e516474811534701e676"
       url: "https://pub.dev"
     source: hosted
-    version: "4.14.0"
+    version: "4.15.0"
   slang_flutter:
     dependency: "direct main"
     description:
       name: slang_flutter
-      sha256: dcc4e77527c91b12348fc8bdd43d3eb92d8cea37c12a23a1f9719cdc12c804c6
+      sha256: "0eb6348416a296f1bd940fe02669bcd2df5c5cfdabf893b98e448df8b7ecf4ac"
       url: "https://pub.dev"
     source: hosted
-    version: "4.14.0"
+    version: "4.15.0"
   source_gen:
     dependency: transitive
     description:
@@ -2304,10 +2322,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_android
-      sha256: "3bb000251e55d4a209aa0e2e563309dc9bb2befea2295fd0cec1f51760aac572"
+      sha256: "17bc677f0b301615530dd1d67e0a9828cafa2d0b6b6eae4cd3679b7eac4a273c"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.29"
+    version: "6.3.30"
   url_launcher_ios:
     dependency: transitive
     description:
@@ -2496,11 +2514,11 @@ packages:
     dependency: "direct overridden"
     description:
       path: "."
-      ref: "78c1829c9eb0749ada4043ca64b79e01da744a27"
-      resolved-ref: "78c1829c9eb0749ada4043ca64b79e01da744a27"
+      ref: "2d0473cac437acdf930080c46a4aac6108b7fc25"
+      resolved-ref: "2d0473cac437acdf930080c46a4aac6108b7fc25"
       url: "https://github.com/poppingmoon/webcrypto.dart"
     source: git
-    version: "0.6.0"
+    version: "0.6.1"
   webdriver:
     dependency: transitive
     description:
@@ -2513,8 +2531,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "13f22ab17514c13e76eb571ad053965e9841c77d"
-      resolved-ref: "13f22ab17514c13e76eb571ad053965e9841c77d"
+      ref: a9b7e41f89d9632710a9d334d7c518ebe3cc32ad
+      resolved-ref: a9b7e41f89d9632710a9d334d7c518ebe3cc32ad
       url: "https://github.com/poppingmoon/webfont_list"
     source: git
     version: "1.0.0"
@@ -2538,10 +2556,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: a1fc9eb9248baa05dfc12ed5b66e377b3e23f095eec078e0371622b9033810d9
+      sha256: ba6f4bba816c8d7e3c1580e170f3786d216951cc6b94babc3b814c08d2cb2738
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.0"
+    version: "6.3.0"
   win32_registry:
     dependency: transitive
     description:
@@ -2592,4 +2610,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.12.0 <4.0.0"
-  flutter: ">=3.38.4"
+  flutter: ">=3.41.0"

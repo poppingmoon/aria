@@ -33,13 +33,13 @@ class TranslationsViVn extends Translations with BaseTranslations<AppLocale, Tra
 	TranslationsViVn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsViVn(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsAriaViVn aria = _TranslationsAriaViVn._(_root);
-	@override late final _TranslationsMisskeyViVn misskey = _TranslationsMisskeyViVn._(_root);
+	@override late final _Translations$aria$vi_VN aria = _Translations$aria$vi_VN._(_root);
+	@override late final _Translations$misskey$vi_VN misskey = _Translations$misskey$vi_VN._(_root);
 }
 
 // Path: aria
-class _TranslationsAriaViVn extends TranslationsAriaEnUs {
-	_TranslationsAriaViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$aria$vi_VN extends Translations$aria$en_US {
+	_Translations$aria$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -74,8 +74,8 @@ class _TranslationsAriaViVn extends TranslationsAriaEnUs {
 }
 
 // Path: misskey
-class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
-	_TranslationsMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$vi_VN extends Translations$misskey$en_US {
+	_Translations$misskey$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1307,90 +1307,90 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get inDays => 'ngày';
 	@override String get widgets => 'Tiện ích';
 	@override String get presets => 'Mẫu thiết lập';
-	@override late final _TranslationsMisskeyImageEditingViVn imageEditing_ = _TranslationsMisskeyImageEditingViVn._(_root);
-	@override late final _TranslationsMisskeyImageFrameEditorViVn imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorViVn._(_root);
-	@override late final _TranslationsMisskeyChatViVn chat_ = _TranslationsMisskeyChatViVn._(_root);
-	@override late final _TranslationsMisskeySettingsViVn settings_ = _TranslationsMisskeySettingsViVn._(_root);
-	@override late final _TranslationsMisskeyAccountSettingsViVn accountSettings_ = _TranslationsMisskeyAccountSettingsViVn._(_root);
-	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
-	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
-	@override late final _TranslationsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingViVn._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialViVn initialTutorial_ = _TranslationsMisskeyInitialTutorialViVn._(_root);
-	@override late final _TranslationsMisskeyTimelineDescriptionViVn timelineDescription_ = _TranslationsMisskeyTimelineDescriptionViVn._(_root);
-	@override late final _TranslationsMisskeyServerSettingsViVn serverSettings_ = _TranslationsMisskeyServerSettingsViVn._(_root);
-	@override late final _TranslationsMisskeyAccountMigrationViVn accountMigration_ = _TranslationsMisskeyAccountMigrationViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsViVn achievements_ = _TranslationsMisskeyAchievementsViVn._(_root);
-	@override late final _TranslationsMisskeyRoleViVn role_ = _TranslationsMisskeyRoleViVn._(_root);
-	@override late final _TranslationsMisskeySensitiveMediaDetectionViVn sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionViVn._(_root);
-	@override late final _TranslationsMisskeyEmailUnavailableViVn emailUnavailable_ = _TranslationsMisskeyEmailUnavailableViVn._(_root);
-	@override late final _TranslationsMisskeyFfVisibilityViVn ffVisibility_ = _TranslationsMisskeyFfVisibilityViVn._(_root);
-	@override late final _TranslationsMisskeySignupViVn signup_ = _TranslationsMisskeySignupViVn._(_root);
-	@override late final _TranslationsMisskeyAccountDeleteViVn accountDelete_ = _TranslationsMisskeyAccountDeleteViVn._(_root);
-	@override late final _TranslationsMisskeyAdViVn ad_ = _TranslationsMisskeyAdViVn._(_root);
-	@override late final _TranslationsMisskeyForgotPasswordViVn forgotPassword_ = _TranslationsMisskeyForgotPasswordViVn._(_root);
-	@override late final _TranslationsMisskeyGalleryViVn gallery_ = _TranslationsMisskeyGalleryViVn._(_root);
-	@override late final _TranslationsMisskeyEmailViVn email_ = _TranslationsMisskeyEmailViVn._(_root);
-	@override late final _TranslationsMisskeyPluginViVn plugin_ = _TranslationsMisskeyPluginViVn._(_root);
-	@override late final _TranslationsMisskeyPreferencesBackupsViVn preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsViVn._(_root);
-	@override late final _TranslationsMisskeyRegistryViVn registry_ = _TranslationsMisskeyRegistryViVn._(_root);
-	@override late final _TranslationsMisskeyAboutMisskeyViVn aboutMisskey_ = _TranslationsMisskeyAboutMisskeyViVn._(_root);
-	@override late final _TranslationsMisskeyInstanceTickerViVn instanceTicker_ = _TranslationsMisskeyInstanceTickerViVn._(_root);
-	@override late final _TranslationsMisskeyServerDisconnectedBehaviorViVn serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorViVn._(_root);
-	@override late final _TranslationsMisskeyChannelViVn channel_ = _TranslationsMisskeyChannelViVn._(_root);
-	@override late final _TranslationsMisskeyMenuDisplayViVn menuDisplay_ = _TranslationsMisskeyMenuDisplayViVn._(_root);
-	@override late final _TranslationsMisskeyWordMuteViVn wordMute_ = _TranslationsMisskeyWordMuteViVn._(_root);
-	@override late final _TranslationsMisskeyInstanceMuteViVn instanceMute_ = _TranslationsMisskeyInstanceMuteViVn._(_root);
-	@override late final _TranslationsMisskeyThemeViVn theme_ = _TranslationsMisskeyThemeViVn._(_root);
-	@override late final _TranslationsMisskeySfxViVn sfx_ = _TranslationsMisskeySfxViVn._(_root);
-	@override late final _TranslationsMisskeyAgoViVn ago_ = _TranslationsMisskeyAgoViVn._(_root);
-	@override late final _TranslationsMisskeyTimeViVn time_ = _TranslationsMisskeyTimeViVn._(_root);
-	@override late final _TranslationsMisskeyX2faViVn x2fa_ = _TranslationsMisskeyX2faViVn._(_root);
-	@override late final _TranslationsMisskeyPermissionsViVn permissions_ = _TranslationsMisskeyPermissionsViVn._(_root);
-	@override late final _TranslationsMisskeyAuthViVn auth_ = _TranslationsMisskeyAuthViVn._(_root);
-	@override late final _TranslationsMisskeyAntennaSourcesViVn antennaSources_ = _TranslationsMisskeyAntennaSourcesViVn._(_root);
-	@override late final _TranslationsMisskeyWeekdayViVn weekday_ = _TranslationsMisskeyWeekdayViVn._(_root);
-	@override late final _TranslationsMisskeyWidgetsViVn widgets_ = _TranslationsMisskeyWidgetsViVn._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsViVn widgetOptions_ = _TranslationsMisskeyWidgetOptionsViVn._(_root);
-	@override late final _TranslationsMisskeyCwViVn cw_ = _TranslationsMisskeyCwViVn._(_root);
-	@override late final _TranslationsMisskeyPollViVn poll_ = _TranslationsMisskeyPollViVn._(_root);
-	@override late final _TranslationsMisskeyVisibilityViVn visibility_ = _TranslationsMisskeyVisibilityViVn._(_root);
-	@override late final _TranslationsMisskeyPostFormViVn postForm_ = _TranslationsMisskeyPostFormViVn._(_root);
-	@override late final _TranslationsMisskeyProfileViVn profile_ = _TranslationsMisskeyProfileViVn._(_root);
-	@override late final _TranslationsMisskeyExportOrImportViVn exportOrImport_ = _TranslationsMisskeyExportOrImportViVn._(_root);
-	@override late final _TranslationsMisskeyChartsViVn charts_ = _TranslationsMisskeyChartsViVn._(_root);
-	@override late final _TranslationsMisskeyInstanceChartsViVn instanceCharts_ = _TranslationsMisskeyInstanceChartsViVn._(_root);
-	@override late final _TranslationsMisskeyTimelinesViVn timelines_ = _TranslationsMisskeyTimelinesViVn._(_root);
-	@override late final _TranslationsMisskeyPlayViVn play_ = _TranslationsMisskeyPlayViVn._(_root);
-	@override late final _TranslationsMisskeyPagesViVn pages_ = _TranslationsMisskeyPagesViVn._(_root);
-	@override late final _TranslationsMisskeyRelayStatusViVn relayStatus_ = _TranslationsMisskeyRelayStatusViVn._(_root);
-	@override late final _TranslationsMisskeyNotificationViVn notification_ = _TranslationsMisskeyNotificationViVn._(_root);
-	@override late final _TranslationsMisskeyDeckViVn deck_ = _TranslationsMisskeyDeckViVn._(_root);
-	@override late final _TranslationsMisskeyDialogViVn dialog_ = _TranslationsMisskeyDialogViVn._(_root);
-	@override late final _TranslationsMisskeyWebhookSettingsViVn webhookSettings_ = _TranslationsMisskeyWebhookSettingsViVn._(_root);
-	@override late final _TranslationsMisskeyAbuseReportViVn abuseReport_ = _TranslationsMisskeyAbuseReportViVn._(_root);
-	@override late final _TranslationsMisskeyModerationLogTypesViVn moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesViVn._(_root);
-	@override late final _TranslationsMisskeyReversiViVn reversi_ = _TranslationsMisskeyReversiViVn._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerViVn customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerViVn._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
-	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
-	@override late final _TranslationsMisskeyWatermarkEditorViVn watermarkEditor_ = _TranslationsMisskeyWatermarkEditorViVn._(_root);
-	@override late final _TranslationsMisskeyImageEffectorViVn imageEffector_ = _TranslationsMisskeyImageEffectorViVn._(_root);
-	@override late final _TranslationsMisskeyQrViVn qr_ = _TranslationsMisskeyQrViVn._(_root);
+	@override late final _Translations$misskey$imageEditing_$vi_VN imageEditing_ = _Translations$misskey$imageEditing_$vi_VN._(_root);
+	@override late final _Translations$misskey$imageFrameEditor_$vi_VN imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$vi_VN._(_root);
+	@override late final _Translations$misskey$chat_$vi_VN chat_ = _Translations$misskey$chat_$vi_VN._(_root);
+	@override late final _Translations$misskey$settings_$vi_VN settings_ = _Translations$misskey$settings_$vi_VN._(_root);
+	@override late final _Translations$misskey$accountSettings_$vi_VN accountSettings_ = _Translations$misskey$accountSettings_$vi_VN._(_root);
+	@override late final _Translations$misskey$delivery_$vi_VN delivery_ = _Translations$misskey$delivery_$vi_VN._(_root);
+	@override late final _Translations$misskey$announcement_$vi_VN announcement_ = _Translations$misskey$announcement_$vi_VN._(_root);
+	@override late final _Translations$misskey$initialAccountSetting_$vi_VN initialAccountSetting_ = _Translations$misskey$initialAccountSetting_$vi_VN._(_root);
+	@override late final _Translations$misskey$initialTutorial_$vi_VN initialTutorial_ = _Translations$misskey$initialTutorial_$vi_VN._(_root);
+	@override late final _Translations$misskey$timelineDescription_$vi_VN timelineDescription_ = _Translations$misskey$timelineDescription_$vi_VN._(_root);
+	@override late final _Translations$misskey$serverSettings_$vi_VN serverSettings_ = _Translations$misskey$serverSettings_$vi_VN._(_root);
+	@override late final _Translations$misskey$accountMigration_$vi_VN accountMigration_ = _Translations$misskey$accountMigration_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$vi_VN achievements_ = _Translations$misskey$achievements_$vi_VN._(_root);
+	@override late final _Translations$misskey$role_$vi_VN role_ = _Translations$misskey$role_$vi_VN._(_root);
+	@override late final _Translations$misskey$sensitiveMediaDetection_$vi_VN sensitiveMediaDetection_ = _Translations$misskey$sensitiveMediaDetection_$vi_VN._(_root);
+	@override late final _Translations$misskey$emailUnavailable_$vi_VN emailUnavailable_ = _Translations$misskey$emailUnavailable_$vi_VN._(_root);
+	@override late final _Translations$misskey$ffVisibility_$vi_VN ffVisibility_ = _Translations$misskey$ffVisibility_$vi_VN._(_root);
+	@override late final _Translations$misskey$signup_$vi_VN signup_ = _Translations$misskey$signup_$vi_VN._(_root);
+	@override late final _Translations$misskey$accountDelete_$vi_VN accountDelete_ = _Translations$misskey$accountDelete_$vi_VN._(_root);
+	@override late final _Translations$misskey$ad_$vi_VN ad_ = _Translations$misskey$ad_$vi_VN._(_root);
+	@override late final _Translations$misskey$forgotPassword_$vi_VN forgotPassword_ = _Translations$misskey$forgotPassword_$vi_VN._(_root);
+	@override late final _Translations$misskey$gallery_$vi_VN gallery_ = _Translations$misskey$gallery_$vi_VN._(_root);
+	@override late final _Translations$misskey$email_$vi_VN email_ = _Translations$misskey$email_$vi_VN._(_root);
+	@override late final _Translations$misskey$plugin_$vi_VN plugin_ = _Translations$misskey$plugin_$vi_VN._(_root);
+	@override late final _Translations$misskey$preferencesBackups_$vi_VN preferencesBackups_ = _Translations$misskey$preferencesBackups_$vi_VN._(_root);
+	@override late final _Translations$misskey$registry_$vi_VN registry_ = _Translations$misskey$registry_$vi_VN._(_root);
+	@override late final _Translations$misskey$aboutMisskey_$vi_VN aboutMisskey_ = _Translations$misskey$aboutMisskey_$vi_VN._(_root);
+	@override late final _Translations$misskey$instanceTicker_$vi_VN instanceTicker_ = _Translations$misskey$instanceTicker_$vi_VN._(_root);
+	@override late final _Translations$misskey$serverDisconnectedBehavior_$vi_VN serverDisconnectedBehavior_ = _Translations$misskey$serverDisconnectedBehavior_$vi_VN._(_root);
+	@override late final _Translations$misskey$channel_$vi_VN channel_ = _Translations$misskey$channel_$vi_VN._(_root);
+	@override late final _Translations$misskey$menuDisplay_$vi_VN menuDisplay_ = _Translations$misskey$menuDisplay_$vi_VN._(_root);
+	@override late final _Translations$misskey$wordMute_$vi_VN wordMute_ = _Translations$misskey$wordMute_$vi_VN._(_root);
+	@override late final _Translations$misskey$instanceMute_$vi_VN instanceMute_ = _Translations$misskey$instanceMute_$vi_VN._(_root);
+	@override late final _Translations$misskey$theme_$vi_VN theme_ = _Translations$misskey$theme_$vi_VN._(_root);
+	@override late final _Translations$misskey$sfx_$vi_VN sfx_ = _Translations$misskey$sfx_$vi_VN._(_root);
+	@override late final _Translations$misskey$ago_$vi_VN ago_ = _Translations$misskey$ago_$vi_VN._(_root);
+	@override late final _Translations$misskey$time_$vi_VN time_ = _Translations$misskey$time_$vi_VN._(_root);
+	@override late final _Translations$misskey$x2fa_$vi_VN x2fa_ = _Translations$misskey$x2fa_$vi_VN._(_root);
+	@override late final _Translations$misskey$permissions_$vi_VN permissions_ = _Translations$misskey$permissions_$vi_VN._(_root);
+	@override late final _Translations$misskey$auth_$vi_VN auth_ = _Translations$misskey$auth_$vi_VN._(_root);
+	@override late final _Translations$misskey$antennaSources_$vi_VN antennaSources_ = _Translations$misskey$antennaSources_$vi_VN._(_root);
+	@override late final _Translations$misskey$weekday_$vi_VN weekday_ = _Translations$misskey$weekday_$vi_VN._(_root);
+	@override late final _Translations$misskey$widgets_$vi_VN widgets_ = _Translations$misskey$widgets_$vi_VN._(_root);
+	@override late final _Translations$misskey$widgetOptions_$vi_VN widgetOptions_ = _Translations$misskey$widgetOptions_$vi_VN._(_root);
+	@override late final _Translations$misskey$cw_$vi_VN cw_ = _Translations$misskey$cw_$vi_VN._(_root);
+	@override late final _Translations$misskey$poll_$vi_VN poll_ = _Translations$misskey$poll_$vi_VN._(_root);
+	@override late final _Translations$misskey$visibility_$vi_VN visibility_ = _Translations$misskey$visibility_$vi_VN._(_root);
+	@override late final _Translations$misskey$postForm_$vi_VN postForm_ = _Translations$misskey$postForm_$vi_VN._(_root);
+	@override late final _Translations$misskey$profile_$vi_VN profile_ = _Translations$misskey$profile_$vi_VN._(_root);
+	@override late final _Translations$misskey$exportOrImport_$vi_VN exportOrImport_ = _Translations$misskey$exportOrImport_$vi_VN._(_root);
+	@override late final _Translations$misskey$charts_$vi_VN charts_ = _Translations$misskey$charts_$vi_VN._(_root);
+	@override late final _Translations$misskey$instanceCharts_$vi_VN instanceCharts_ = _Translations$misskey$instanceCharts_$vi_VN._(_root);
+	@override late final _Translations$misskey$timelines_$vi_VN timelines_ = _Translations$misskey$timelines_$vi_VN._(_root);
+	@override late final _Translations$misskey$play_$vi_VN play_ = _Translations$misskey$play_$vi_VN._(_root);
+	@override late final _Translations$misskey$pages_$vi_VN pages_ = _Translations$misskey$pages_$vi_VN._(_root);
+	@override late final _Translations$misskey$relayStatus_$vi_VN relayStatus_ = _Translations$misskey$relayStatus_$vi_VN._(_root);
+	@override late final _Translations$misskey$notification_$vi_VN notification_ = _Translations$misskey$notification_$vi_VN._(_root);
+	@override late final _Translations$misskey$deck_$vi_VN deck_ = _Translations$misskey$deck_$vi_VN._(_root);
+	@override late final _Translations$misskey$dialog_$vi_VN dialog_ = _Translations$misskey$dialog_$vi_VN._(_root);
+	@override late final _Translations$misskey$webhookSettings_$vi_VN webhookSettings_ = _Translations$misskey$webhookSettings_$vi_VN._(_root);
+	@override late final _Translations$misskey$abuseReport_$vi_VN abuseReport_ = _Translations$misskey$abuseReport_$vi_VN._(_root);
+	@override late final _Translations$misskey$moderationLogTypes_$vi_VN moderationLogTypes_ = _Translations$misskey$moderationLogTypes_$vi_VN._(_root);
+	@override late final _Translations$misskey$reversi_$vi_VN reversi_ = _Translations$misskey$reversi_$vi_VN._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$vi_VN customEmojisManager_ = _Translations$misskey$customEmojisManager_$vi_VN._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$vi_VN remoteLookupErrors_ = _Translations$misskey$remoteLookupErrors_$vi_VN._(_root);
+	@override late final _Translations$misskey$search_$vi_VN search_ = _Translations$misskey$search_$vi_VN._(_root);
+	@override late final _Translations$misskey$watermarkEditor_$vi_VN watermarkEditor_ = _Translations$misskey$watermarkEditor_$vi_VN._(_root);
+	@override late final _Translations$misskey$imageEffector_$vi_VN imageEffector_ = _Translations$misskey$imageEffector_$vi_VN._(_root);
+	@override late final _Translations$misskey$qr_$vi_VN qr_ = _Translations$misskey$qr_$vi_VN._(_root);
 }
 
 // Path: misskey.imageEditing_
-class _TranslationsMisskeyImageEditingViVn extends TranslationsMisskeyImageEditingEnUs {
-	_TranslationsMisskeyImageEditingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEditing_$vi_VN extends Translations$misskey$imageEditing_$en_US {
+	_Translations$misskey$imageEditing_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyImageEditingVarsViVn vars_ = _TranslationsMisskeyImageEditingVarsViVn._(_root);
+	@override late final _Translations$misskey$imageEditing_$vars_$vi_VN vars_ = _Translations$misskey$imageEditing_$vars_$vi_VN._(_root);
 }
 
 // Path: misskey.imageFrameEditor_
-class _TranslationsMisskeyImageFrameEditorViVn extends TranslationsMisskeyImageFrameEditorEnUs {
-	_TranslationsMisskeyImageFrameEditorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageFrameEditor_$vi_VN extends Translations$misskey$imageFrameEditor_$en_US {
+	_Translations$misskey$imageFrameEditor_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1402,8 +1402,8 @@ class _TranslationsMisskeyImageFrameEditorViVn extends TranslationsMisskeyImageF
 }
 
 // Path: misskey.chat_
-class _TranslationsMisskeyChatViVn extends TranslationsMisskeyChatEnUs {
-	_TranslationsMisskeyChatViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$chat_$vi_VN extends Translations$misskey$chat_$en_US {
+	_Translations$misskey$chat_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1416,8 +1416,8 @@ class _TranslationsMisskeyChatViVn extends TranslationsMisskeyChatEnUs {
 }
 
 // Path: misskey.settings_
-class _TranslationsMisskeySettingsViVn extends TranslationsMisskeySettingsEnUs {
-	_TranslationsMisskeySettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$settings_$vi_VN extends Translations$misskey$settings_$en_US {
+	_Translations$misskey$settings_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1426,8 +1426,8 @@ class _TranslationsMisskeySettingsViVn extends TranslationsMisskeySettingsEnUs {
 }
 
 // Path: misskey.accountSettings_
-class _TranslationsMisskeyAccountSettingsViVn extends TranslationsMisskeyAccountSettingsEnUs {
-	_TranslationsMisskeyAccountSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountSettings_$vi_VN extends Translations$misskey$accountSettings_$en_US {
+	_Translations$misskey$accountSettings_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1437,19 +1437,19 @@ class _TranslationsMisskeyAccountSettingsViVn extends TranslationsMisskeyAccount
 }
 
 // Path: misskey.delivery_
-class _TranslationsMisskeyDeliveryViVn extends TranslationsMisskeyDeliveryEnUs {
-	_TranslationsMisskeyDeliveryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$delivery_$vi_VN extends Translations$misskey$delivery_$en_US {
+	_Translations$misskey$delivery_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Đã vô hiệu hóa';
-	@override late final _TranslationsMisskeyDeliveryTypeViVn type_ = _TranslationsMisskeyDeliveryTypeViVn._(_root);
+	@override late final _Translations$misskey$delivery_$type_$vi_VN type_ = _Translations$misskey$delivery_$type_$vi_VN._(_root);
 }
 
 // Path: misskey.announcement_
-class _TranslationsMisskeyAnnouncementViVn extends TranslationsMisskeyAnnouncementEnUs {
-	_TranslationsMisskeyAnnouncementViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$announcement_$vi_VN extends Translations$misskey$announcement_$en_US {
+	_Translations$misskey$announcement_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1463,8 +1463,8 @@ class _TranslationsMisskeyAnnouncementViVn extends TranslationsMisskeyAnnounceme
 }
 
 // Path: misskey.initialAccountSetting_
-class _TranslationsMisskeyInitialAccountSettingViVn extends TranslationsMisskeyInitialAccountSettingEnUs {
-	_TranslationsMisskeyInitialAccountSettingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialAccountSetting_$vi_VN extends Translations$misskey$initialAccountSetting_$en_US {
+	_Translations$misskey$initialAccountSetting_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1487,8 +1487,8 @@ class _TranslationsMisskeyInitialAccountSettingViVn extends TranslationsMisskeyI
 }
 
 // Path: misskey.initialTutorial_
-class _TranslationsMisskeyInitialTutorialViVn extends TranslationsMisskeyInitialTutorialEnUs {
-	_TranslationsMisskeyInitialTutorialViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$vi_VN extends Translations$misskey$initialTutorial_$en_US {
+	_Translations$misskey$initialTutorial_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1497,15 +1497,15 @@ class _TranslationsMisskeyInitialTutorialViVn extends TranslationsMisskeyInitial
 	@override String get title => 'Hướng dẫn';
 	@override String get wellDone => 'Làm tốt!';
 	@override String get skipAreYouSure => 'Thoát khỏi hướng dẫn?';
-	@override late final _TranslationsMisskeyInitialTutorialLandingViVn landing_ = _TranslationsMisskeyInitialTutorialLandingViVn._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialNoteViVn note_ = _TranslationsMisskeyInitialTutorialNoteViVn._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialTimelineViVn timeline_ = _TranslationsMisskeyInitialTutorialTimelineViVn._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteViVn postNote_ = _TranslationsMisskeyInitialTutorialPostNoteViVn._(_root);
+	@override late final _Translations$misskey$initialTutorial_$landing_$vi_VN landing_ = _Translations$misskey$initialTutorial_$landing_$vi_VN._(_root);
+	@override late final _Translations$misskey$initialTutorial_$note_$vi_VN note_ = _Translations$misskey$initialTutorial_$note_$vi_VN._(_root);
+	@override late final _Translations$misskey$initialTutorial_$timeline_$vi_VN timeline_ = _Translations$misskey$initialTutorial_$timeline_$vi_VN._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$vi_VN postNote_ = _Translations$misskey$initialTutorial_$postNote_$vi_VN._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _TranslationsMisskeyTimelineDescriptionViVn extends TranslationsMisskeyTimelineDescriptionEnUs {
-	_TranslationsMisskeyTimelineDescriptionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$timelineDescription_$vi_VN extends Translations$misskey$timelineDescription_$en_US {
+	_Translations$misskey$timelineDescription_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1516,8 +1516,8 @@ class _TranslationsMisskeyTimelineDescriptionViVn extends TranslationsMisskeyTim
 }
 
 // Path: misskey.serverSettings_
-class _TranslationsMisskeyServerSettingsViVn extends TranslationsMisskeyServerSettingsEnUs {
-	_TranslationsMisskeyServerSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSettings_$vi_VN extends Translations$misskey$serverSettings_$en_US {
+	_Translations$misskey$serverSettings_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1528,8 +1528,8 @@ class _TranslationsMisskeyServerSettingsViVn extends TranslationsMisskeyServerSe
 }
 
 // Path: misskey.accountMigration_
-class _TranslationsMisskeyAccountMigrationViVn extends TranslationsMisskeyAccountMigrationEnUs {
-	_TranslationsMisskeyAccountMigrationViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountMigration_$vi_VN extends Translations$misskey$accountMigration_$en_US {
+	_Translations$misskey$accountMigration_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1545,33 +1545,33 @@ class _TranslationsMisskeyAccountMigrationViVn extends TranslationsMisskeyAccoun
 }
 
 // Path: misskey.achievements_
-class _TranslationsMisskeyAchievementsViVn extends TranslationsMisskeyAchievementsEnUs {
-	_TranslationsMisskeyAchievementsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$vi_VN extends Translations$misskey$achievements_$en_US {
+	_Translations$misskey$achievements_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => 'Ngày thu nhận';
-	@override late final _TranslationsMisskeyAchievementsTypesViVn types_ = _TranslationsMisskeyAchievementsTypesViVn._(_root);
+	@override late final _Translations$misskey$achievements_$types_$vi_VN types_ = _Translations$misskey$achievements_$types_$vi_VN._(_root);
 }
 
 // Path: misskey.role_
-class _TranslationsMisskeyRoleViVn extends TranslationsMisskeyRoleEnUs {
-	_TranslationsMisskeyRoleViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$vi_VN extends Translations$misskey$role_$en_US {
+	_Translations$misskey$role_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get assignTarget => 'Phân công';
 	@override String get priority => 'Ưu tiên';
-	@override late final _TranslationsMisskeyRolePriorityViVn priority_ = _TranslationsMisskeyRolePriorityViVn._(_root);
-	@override late final _TranslationsMisskeyRoleOptionsViVn options_ = _TranslationsMisskeyRoleOptionsViVn._(_root);
-	@override late final _TranslationsMisskeyRoleConditionViVn condition_ = _TranslationsMisskeyRoleConditionViVn._(_root);
+	@override late final _Translations$misskey$role_$priority_$vi_VN priority_ = _Translations$misskey$role_$priority_$vi_VN._(_root);
+	@override late final _Translations$misskey$role_$options_$vi_VN options_ = _Translations$misskey$role_$options_$vi_VN._(_root);
+	@override late final _Translations$misskey$role_$condition_$vi_VN condition_ = _Translations$misskey$role_$condition_$vi_VN._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _TranslationsMisskeySensitiveMediaDetectionViVn extends TranslationsMisskeySensitiveMediaDetectionEnUs {
-	_TranslationsMisskeySensitiveMediaDetectionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$sensitiveMediaDetection_$vi_VN extends Translations$misskey$sensitiveMediaDetection_$en_US {
+	_Translations$misskey$sensitiveMediaDetection_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1586,8 +1586,8 @@ class _TranslationsMisskeySensitiveMediaDetectionViVn extends TranslationsMisske
 }
 
 // Path: misskey.emailUnavailable_
-class _TranslationsMisskeyEmailUnavailableViVn extends TranslationsMisskeyEmailUnavailableEnUs {
-	_TranslationsMisskeyEmailUnavailableViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$emailUnavailable_$vi_VN extends Translations$misskey$emailUnavailable_$en_US {
+	_Translations$misskey$emailUnavailable_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1600,8 +1600,8 @@ class _TranslationsMisskeyEmailUnavailableViVn extends TranslationsMisskeyEmailU
 }
 
 // Path: misskey.ffVisibility_
-class _TranslationsMisskeyFfVisibilityViVn extends TranslationsMisskeyFfVisibilityEnUs {
-	_TranslationsMisskeyFfVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$ffVisibility_$vi_VN extends Translations$misskey$ffVisibility_$en_US {
+	_Translations$misskey$ffVisibility_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1612,8 +1612,8 @@ class _TranslationsMisskeyFfVisibilityViVn extends TranslationsMisskeyFfVisibili
 }
 
 // Path: misskey.signup_
-class _TranslationsMisskeySignupViVn extends TranslationsMisskeySignupEnUs {
-	_TranslationsMisskeySignupViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$signup_$vi_VN extends Translations$misskey$signup_$en_US {
+	_Translations$misskey$signup_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1624,8 +1624,8 @@ class _TranslationsMisskeySignupViVn extends TranslationsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _TranslationsMisskeyAccountDeleteViVn extends TranslationsMisskeyAccountDeleteEnUs {
-	_TranslationsMisskeyAccountDeleteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountDelete_$vi_VN extends Translations$misskey$accountDelete_$en_US {
+	_Translations$misskey$accountDelete_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1639,8 +1639,8 @@ class _TranslationsMisskeyAccountDeleteViVn extends TranslationsMisskeyAccountDe
 }
 
 // Path: misskey.ad_
-class _TranslationsMisskeyAdViVn extends TranslationsMisskeyAdEnUs {
-	_TranslationsMisskeyAdViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$ad_$vi_VN extends Translations$misskey$ad_$en_US {
+	_Translations$misskey$ad_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1651,8 +1651,8 @@ class _TranslationsMisskeyAdViVn extends TranslationsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _TranslationsMisskeyForgotPasswordViVn extends TranslationsMisskeyForgotPasswordEnUs {
-	_TranslationsMisskeyForgotPasswordViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$forgotPassword_$vi_VN extends Translations$misskey$forgotPassword_$en_US {
+	_Translations$misskey$forgotPassword_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1663,8 +1663,8 @@ class _TranslationsMisskeyForgotPasswordViVn extends TranslationsMisskeyForgotPa
 }
 
 // Path: misskey.gallery_
-class _TranslationsMisskeyGalleryViVn extends TranslationsMisskeyGalleryEnUs {
-	_TranslationsMisskeyGalleryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$gallery_$vi_VN extends Translations$misskey$gallery_$en_US {
+	_Translations$misskey$gallery_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1676,19 +1676,19 @@ class _TranslationsMisskeyGalleryViVn extends TranslationsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _TranslationsMisskeyEmailViVn extends TranslationsMisskeyEmailEnUs {
-	_TranslationsMisskeyEmailViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$vi_VN extends Translations$misskey$email_$en_US {
+	_Translations$misskey$email_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyEmailFollowViVn follow_ = _TranslationsMisskeyEmailFollowViVn._(_root);
-	@override late final _TranslationsMisskeyEmailReceiveFollowRequestViVn receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestViVn._(_root);
+	@override late final _Translations$misskey$email_$follow_$vi_VN follow_ = _Translations$misskey$email_$follow_$vi_VN._(_root);
+	@override late final _Translations$misskey$email_$receiveFollowRequest_$vi_VN receiveFollowRequest_ = _Translations$misskey$email_$receiveFollowRequest_$vi_VN._(_root);
 }
 
 // Path: misskey.plugin_
-class _TranslationsMisskeyPluginViVn extends TranslationsMisskeyPluginEnUs {
-	_TranslationsMisskeyPluginViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$plugin_$vi_VN extends Translations$misskey$plugin_$en_US {
+	_Translations$misskey$plugin_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1700,8 +1700,8 @@ class _TranslationsMisskeyPluginViVn extends TranslationsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _TranslationsMisskeyPreferencesBackupsViVn extends TranslationsMisskeyPreferencesBackupsEnUs {
-	_TranslationsMisskeyPreferencesBackupsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$preferencesBackups_$vi_VN extends Translations$misskey$preferencesBackups_$en_US {
+	_Translations$misskey$preferencesBackups_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1726,8 +1726,8 @@ class _TranslationsMisskeyPreferencesBackupsViVn extends TranslationsMisskeyPref
 }
 
 // Path: misskey.registry_
-class _TranslationsMisskeyRegistryViVn extends TranslationsMisskeyRegistryEnUs {
-	_TranslationsMisskeyRegistryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$registry_$vi_VN extends Translations$misskey$registry_$en_US {
+	_Translations$misskey$registry_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1740,8 +1740,8 @@ class _TranslationsMisskeyRegistryViVn extends TranslationsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _TranslationsMisskeyAboutMisskeyViVn extends TranslationsMisskeyAboutMisskeyEnUs {
-	_TranslationsMisskeyAboutMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$aboutMisskey_$vi_VN extends Translations$misskey$aboutMisskey_$en_US {
+	_Translations$misskey$aboutMisskey_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1757,8 +1757,8 @@ class _TranslationsMisskeyAboutMisskeyViVn extends TranslationsMisskeyAboutMissk
 }
 
 // Path: misskey.instanceTicker_
-class _TranslationsMisskeyInstanceTickerViVn extends TranslationsMisskeyInstanceTickerEnUs {
-	_TranslationsMisskeyInstanceTickerViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceTicker_$vi_VN extends Translations$misskey$instanceTicker_$en_US {
+	_Translations$misskey$instanceTicker_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1769,8 +1769,8 @@ class _TranslationsMisskeyInstanceTickerViVn extends TranslationsMisskeyInstance
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _TranslationsMisskeyServerDisconnectedBehaviorViVn extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
-	_TranslationsMisskeyServerDisconnectedBehaviorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverDisconnectedBehavior_$vi_VN extends Translations$misskey$serverDisconnectedBehavior_$en_US {
+	_Translations$misskey$serverDisconnectedBehavior_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1781,8 +1781,8 @@ class _TranslationsMisskeyServerDisconnectedBehaviorViVn extends TranslationsMis
 }
 
 // Path: misskey.channel_
-class _TranslationsMisskeyChannelViVn extends TranslationsMisskeyChannelEnUs {
-	_TranslationsMisskeyChannelViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$channel_$vi_VN extends Translations$misskey$channel_$en_US {
+	_Translations$misskey$channel_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1799,8 +1799,8 @@ class _TranslationsMisskeyChannelViVn extends TranslationsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _TranslationsMisskeyMenuDisplayViVn extends TranslationsMisskeyMenuDisplayEnUs {
-	_TranslationsMisskeyMenuDisplayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$menuDisplay_$vi_VN extends Translations$misskey$menuDisplay_$en_US {
+	_Translations$misskey$menuDisplay_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1812,8 +1812,8 @@ class _TranslationsMisskeyMenuDisplayViVn extends TranslationsMisskeyMenuDisplay
 }
 
 // Path: misskey.wordMute_
-class _TranslationsMisskeyWordMuteViVn extends TranslationsMisskeyWordMuteEnUs {
-	_TranslationsMisskeyWordMuteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$wordMute_$vi_VN extends Translations$misskey$wordMute_$en_US {
+	_Translations$misskey$wordMute_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1824,8 +1824,8 @@ class _TranslationsMisskeyWordMuteViVn extends TranslationsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _TranslationsMisskeyInstanceMuteViVn extends TranslationsMisskeyInstanceMuteEnUs {
-	_TranslationsMisskeyInstanceMuteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceMute_$vi_VN extends Translations$misskey$instanceMute_$en_US {
+	_Translations$misskey$instanceMute_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1837,8 +1837,8 @@ class _TranslationsMisskeyInstanceMuteViVn extends TranslationsMisskeyInstanceMu
 }
 
 // Path: misskey.theme_
-class _TranslationsMisskeyThemeViVn extends TranslationsMisskeyThemeEnUs {
-	_TranslationsMisskeyThemeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$theme_$vi_VN extends Translations$misskey$theme_$en_US {
+	_Translations$misskey$theme_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1872,12 +1872,12 @@ class _TranslationsMisskeyThemeViVn extends TranslationsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Nhập tên cho hằng số này';
 	@override String get importInfo => 'Nếu bạn nhập mã theme ở đây, bạn có thể nhập mã đó vào trình chỉnh sửa theme';
 	@override String deleteConstantConfirm({required Object const_}) => 'Bạn có chắc muốn xóa hằng số ${const_} không?';
-	@override late final _TranslationsMisskeyThemeKeysViVn keys = _TranslationsMisskeyThemeKeysViVn._(_root);
+	@override late final _Translations$misskey$theme_$keys$vi_VN keys = _Translations$misskey$theme_$keys$vi_VN._(_root);
 }
 
 // Path: misskey.sfx_
-class _TranslationsMisskeySfxViVn extends TranslationsMisskeySfxEnUs {
-	_TranslationsMisskeySfxViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$sfx_$vi_VN extends Translations$misskey$sfx_$en_US {
+	_Translations$misskey$sfx_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1888,8 +1888,8 @@ class _TranslationsMisskeySfxViVn extends TranslationsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _TranslationsMisskeyAgoViVn extends TranslationsMisskeyAgoEnUs {
-	_TranslationsMisskeyAgoViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$ago_$vi_VN extends Translations$misskey$ago_$en_US {
+	_Translations$misskey$ago_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1907,8 +1907,8 @@ class _TranslationsMisskeyAgoViVn extends TranslationsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _TranslationsMisskeyTimeViVn extends TranslationsMisskeyTimeEnUs {
-	_TranslationsMisskeyTimeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$time_$vi_VN extends Translations$misskey$time_$en_US {
+	_Translations$misskey$time_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1920,8 +1920,8 @@ class _TranslationsMisskeyTimeViVn extends TranslationsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _TranslationsMisskeyX2faViVn extends TranslationsMisskeyX2faEnUs {
-	_TranslationsMisskeyX2faViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$x2fa_$vi_VN extends Translations$misskey$x2fa_$en_US {
+	_Translations$misskey$x2fa_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1948,8 +1948,8 @@ class _TranslationsMisskeyX2faViVn extends TranslationsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _TranslationsMisskeyPermissionsViVn extends TranslationsMisskeyPermissionsEnUs {
-	_TranslationsMisskeyPermissionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$permissions_$vi_VN extends Translations$misskey$permissions_$en_US {
+	_Translations$misskey$permissions_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -1990,8 +1990,8 @@ class _TranslationsMisskeyPermissionsViVn extends TranslationsMisskeyPermissions
 }
 
 // Path: misskey.auth_
-class _TranslationsMisskeyAuthViVn extends TranslationsMisskeyAuthEnUs {
-	_TranslationsMisskeyAuthViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$auth_$vi_VN extends Translations$misskey$auth_$en_US {
+	_Translations$misskey$auth_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2008,8 +2008,8 @@ class _TranslationsMisskeyAuthViVn extends TranslationsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _TranslationsMisskeyAntennaSourcesViVn extends TranslationsMisskeyAntennaSourcesEnUs {
-	_TranslationsMisskeyAntennaSourcesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$antennaSources_$vi_VN extends Translations$misskey$antennaSources_$en_US {
+	_Translations$misskey$antennaSources_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2021,8 +2021,8 @@ class _TranslationsMisskeyAntennaSourcesViVn extends TranslationsMisskeyAntennaS
 }
 
 // Path: misskey.weekday_
-class _TranslationsMisskeyWeekdayViVn extends TranslationsMisskeyWeekdayEnUs {
-	_TranslationsMisskeyWeekdayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$weekday_$vi_VN extends Translations$misskey$weekday_$en_US {
+	_Translations$misskey$weekday_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2037,8 +2037,8 @@ class _TranslationsMisskeyWeekdayViVn extends TranslationsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
-	_TranslationsMisskeyWidgetsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgets_$vi_VN extends Translations$misskey$widgets_$en_US {
+	_Translations$misskey$widgets_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2069,26 +2069,26 @@ class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript App';
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Danh sách người dùng';
-	@override late final _TranslationsMisskeyWidgetsUserListViVn userList_ = _TranslationsMisskeyWidgetsUserListViVn._(_root);
+	@override late final _Translations$misskey$widgets_$userList_$vi_VN userList_ = _Translations$misskey$widgets_$userList_$vi_VN._(_root);
 	@override String get clicker => 'clicker';
 }
 
 // Path: misskey.widgetOptions_
-class _TranslationsMisskeyWidgetOptionsViVn extends TranslationsMisskeyWidgetOptionsEnUs {
-	_TranslationsMisskeyWidgetOptionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$vi_VN extends Translations$misskey$widgetOptions_$en_US {
+	_Translations$misskey$widgetOptions_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get height => 'Chiều cao';
-	@override late final _TranslationsMisskeyWidgetOptionsButtonViVn button_ = _TranslationsMisskeyWidgetOptionsButtonViVn._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsClockViVn clock_ = _TranslationsMisskeyWidgetOptionsClockViVn._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn._(_root);
+	@override late final _Translations$misskey$widgetOptions_$button_$vi_VN button_ = _Translations$misskey$widgetOptions_$button_$vi_VN._(_root);
+	@override late final _Translations$misskey$widgetOptions_$clock_$vi_VN clock_ = _Translations$misskey$widgetOptions_$clock_$vi_VN._(_root);
+	@override late final _Translations$misskey$widgetOptions_$birthdayFollowings_$vi_VN birthdayFollowings_ = _Translations$misskey$widgetOptions_$birthdayFollowings_$vi_VN._(_root);
 }
 
 // Path: misskey.cw_
-class _TranslationsMisskeyCwViVn extends TranslationsMisskeyCwEnUs {
-	_TranslationsMisskeyCwViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$cw_$vi_VN extends Translations$misskey$cw_$en_US {
+	_Translations$misskey$cw_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2100,8 +2100,8 @@ class _TranslationsMisskeyCwViVn extends TranslationsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _TranslationsMisskeyPollViVn extends TranslationsMisskeyPollEnUs {
-	_TranslationsMisskeyPollViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$poll_$vi_VN extends Translations$misskey$poll_$en_US {
+	_Translations$misskey$poll_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2130,8 +2130,8 @@ class _TranslationsMisskeyPollViVn extends TranslationsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _TranslationsMisskeyVisibilityViVn extends TranslationsMisskeyVisibilityEnUs {
-	_TranslationsMisskeyVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$visibility_$vi_VN extends Translations$misskey$visibility_$en_US {
+	_Translations$misskey$visibility_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2149,8 +2149,8 @@ class _TranslationsMisskeyVisibilityViVn extends TranslationsMisskeyVisibilityEn
 }
 
 // Path: misskey.postForm_
-class _TranslationsMisskeyPostFormViVn extends TranslationsMisskeyPostFormEnUs {
-	_TranslationsMisskeyPostFormViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$vi_VN extends Translations$misskey$postForm_$en_US {
+	_Translations$misskey$postForm_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2158,13 +2158,13 @@ class _TranslationsMisskeyPostFormViVn extends TranslationsMisskeyPostFormEnUs {
 	@override String get replyPlaceholder => 'Trả lời tút này';
 	@override String get quotePlaceholder => 'Trích dẫn tút này';
 	@override String get channelPlaceholder => 'Đăng lên một kênh';
-	@override late final _TranslationsMisskeyPostFormHowToUseViVn howToUse_ = _TranslationsMisskeyPostFormHowToUseViVn._(_root);
-	@override late final _TranslationsMisskeyPostFormPlaceholdersViVn placeholders_ = _TranslationsMisskeyPostFormPlaceholdersViVn._(_root);
+	@override late final _Translations$misskey$postForm_$howToUse_$vi_VN howToUse_ = _Translations$misskey$postForm_$howToUse_$vi_VN._(_root);
+	@override late final _Translations$misskey$postForm_$placeholders_$vi_VN placeholders_ = _Translations$misskey$postForm_$placeholders_$vi_VN._(_root);
 }
 
 // Path: misskey.profile_
-class _TranslationsMisskeyProfileViVn extends TranslationsMisskeyProfileEnUs {
-	_TranslationsMisskeyProfileViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$profile_$vi_VN extends Translations$misskey$profile_$en_US {
+	_Translations$misskey$profile_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2183,8 +2183,8 @@ class _TranslationsMisskeyProfileViVn extends TranslationsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _TranslationsMisskeyExportOrImportViVn extends TranslationsMisskeyExportOrImportEnUs {
-	_TranslationsMisskeyExportOrImportViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$exportOrImport_$vi_VN extends Translations$misskey$exportOrImport_$en_US {
+	_Translations$misskey$exportOrImport_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2201,8 +2201,8 @@ class _TranslationsMisskeyExportOrImportViVn extends TranslationsMisskeyExportOr
 }
 
 // Path: misskey.charts_
-class _TranslationsMisskeyChartsViVn extends TranslationsMisskeyChartsEnUs {
-	_TranslationsMisskeyChartsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$charts_$vi_VN extends Translations$misskey$charts_$en_US {
+	_Translations$misskey$charts_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2223,8 +2223,8 @@ class _TranslationsMisskeyChartsViVn extends TranslationsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _TranslationsMisskeyInstanceChartsViVn extends TranslationsMisskeyInstanceChartsEnUs {
-	_TranslationsMisskeyInstanceChartsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceCharts_$vi_VN extends Translations$misskey$instanceCharts_$en_US {
+	_Translations$misskey$instanceCharts_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2243,8 +2243,8 @@ class _TranslationsMisskeyInstanceChartsViVn extends TranslationsMisskeyInstance
 }
 
 // Path: misskey.timelines_
-class _TranslationsMisskeyTimelinesViVn extends TranslationsMisskeyTimelinesEnUs {
-	_TranslationsMisskeyTimelinesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$timelines_$vi_VN extends Translations$misskey$timelines_$en_US {
+	_Translations$misskey$timelines_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2256,8 +2256,8 @@ class _TranslationsMisskeyTimelinesViVn extends TranslationsMisskeyTimelinesEnUs
 }
 
 // Path: misskey.play_
-class _TranslationsMisskeyPlayViVn extends TranslationsMisskeyPlayEnUs {
-	_TranslationsMisskeyPlayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$play_$vi_VN extends Translations$misskey$play_$en_US {
+	_Translations$misskey$play_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2279,8 +2279,8 @@ class _TranslationsMisskeyPlayViVn extends TranslationsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _TranslationsMisskeyPagesViVn extends TranslationsMisskeyPagesEnUs {
-	_TranslationsMisskeyPagesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$vi_VN extends Translations$misskey$pages_$en_US {
+	_Translations$misskey$pages_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2319,12 +2319,12 @@ class _TranslationsMisskeyPagesViVn extends TranslationsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Nội dung';
 	@override String get inputBlocks => 'Nhập';
 	@override String get specialBlocks => 'Đặc biệt';
-	@override late final _TranslationsMisskeyPagesBlocksViVn blocks = _TranslationsMisskeyPagesBlocksViVn._(_root);
+	@override late final _Translations$misskey$pages_$blocks$vi_VN blocks = _Translations$misskey$pages_$blocks$vi_VN._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _TranslationsMisskeyRelayStatusViVn extends TranslationsMisskeyRelayStatusEnUs {
-	_TranslationsMisskeyRelayStatusViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$relayStatus_$vi_VN extends Translations$misskey$relayStatus_$en_US {
+	_Translations$misskey$relayStatus_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2335,8 +2335,8 @@ class _TranslationsMisskeyRelayStatusViVn extends TranslationsMisskeyRelayStatus
 }
 
 // Path: misskey.notification_
-class _TranslationsMisskeyNotificationViVn extends TranslationsMisskeyNotificationEnUs {
-	_TranslationsMisskeyNotificationViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$vi_VN extends Translations$misskey$notification_$en_US {
+	_Translations$misskey$notification_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2353,13 +2353,13 @@ class _TranslationsMisskeyNotificationViVn extends TranslationsMisskeyNotificati
 	@override String unreadAntennaNote({required Object name}) => 'Ăng ten ${name}';
 	@override String get emptyPushNotificationMessage => 'Đã cập nhật thông báo đẩy';
 	@override String get achievementEarned => 'Hoàn thành Achievement';
-	@override late final _TranslationsMisskeyNotificationTypesViVn types_ = _TranslationsMisskeyNotificationTypesViVn._(_root);
-	@override late final _TranslationsMisskeyNotificationActionsViVn actions_ = _TranslationsMisskeyNotificationActionsViVn._(_root);
+	@override late final _Translations$misskey$notification_$types_$vi_VN types_ = _Translations$misskey$notification_$types_$vi_VN._(_root);
+	@override late final _Translations$misskey$notification_$actions_$vi_VN actions_ = _Translations$misskey$notification_$actions_$vi_VN._(_root);
 }
 
 // Path: misskey.deck_
-class _TranslationsMisskeyDeckViVn extends TranslationsMisskeyDeckEnUs {
-	_TranslationsMisskeyDeckViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$deck_$vi_VN extends Translations$misskey$deck_$en_US {
+	_Translations$misskey$deck_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2380,12 +2380,12 @@ class _TranslationsMisskeyDeckViVn extends TranslationsMisskeyDeckEnUs {
 	@override String get introduction => 'Kết hợp các cột để tạo giao diện của riêng bạn!';
 	@override String get introduction2 => 'Bạn có thể thêm cột bất kỳ lúc nào bằng cách nhấn + ở bên phải màn hình.';
 	@override String get widgetsIntroduction => 'Chọn "Sửa widget" trong menu cột và thêm một widget.';
-	@override late final _TranslationsMisskeyDeckColumnsViVn columns_ = _TranslationsMisskeyDeckColumnsViVn._(_root);
+	@override late final _Translations$misskey$deck_$columns_$vi_VN columns_ = _Translations$misskey$deck_$columns_$vi_VN._(_root);
 }
 
 // Path: misskey.dialog_
-class _TranslationsMisskeyDialogViVn extends TranslationsMisskeyDialogEnUs {
-	_TranslationsMisskeyDialogViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$dialog_$vi_VN extends Translations$misskey$dialog_$en_US {
+	_Translations$misskey$dialog_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2395,8 +2395,8 @@ class _TranslationsMisskeyDialogViVn extends TranslationsMisskeyDialogEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _TranslationsMisskeyWebhookSettingsViVn extends TranslationsMisskeyWebhookSettingsEnUs {
-	_TranslationsMisskeyWebhookSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$webhookSettings_$vi_VN extends Translations$misskey$webhookSettings_$en_US {
+	_Translations$misskey$webhookSettings_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2405,22 +2405,22 @@ class _TranslationsMisskeyWebhookSettingsViVn extends TranslationsMisskeyWebhook
 	@override String get name => 'Tên';
 	@override String get secret => 'Mã bí mật';
 	@override String get active => 'Đã bật';
-	@override late final _TranslationsMisskeyWebhookSettingsEventsViVn events_ = _TranslationsMisskeyWebhookSettingsEventsViVn._(_root);
+	@override late final _Translations$misskey$webhookSettings_$events_$vi_VN events_ = _Translations$misskey$webhookSettings_$events_$vi_VN._(_root);
 }
 
 // Path: misskey.abuseReport_
-class _TranslationsMisskeyAbuseReportViVn extends TranslationsMisskeyAbuseReportEnUs {
-	_TranslationsMisskeyAbuseReportViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$vi_VN extends Translations$misskey$abuseReport_$en_US {
+	_Translations$misskey$abuseReport_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientViVn notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientViVn._(_root);
+	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$vi_VN notificationRecipient_ = _Translations$misskey$abuseReport_$notificationRecipient_$vi_VN._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _TranslationsMisskeyModerationLogTypesViVn extends TranslationsMisskeyModerationLogTypesEnUs {
-	_TranslationsMisskeyModerationLogTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$moderationLogTypes_$vi_VN extends Translations$misskey$moderationLogTypes_$en_US {
+	_Translations$misskey$moderationLogTypes_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2437,8 +2437,8 @@ class _TranslationsMisskeyModerationLogTypesViVn extends TranslationsMisskeyMode
 }
 
 // Path: misskey.reversi_
-class _TranslationsMisskeyReversiViVn extends TranslationsMisskeyReversiEnUs {
-	_TranslationsMisskeyReversiViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$reversi_$vi_VN extends Translations$misskey$reversi_$en_US {
+	_Translations$misskey$reversi_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2447,28 +2447,28 @@ class _TranslationsMisskeyReversiViVn extends TranslationsMisskeyReversiEnUs {
 }
 
 // Path: misskey.customEmojisManager_
-class _TranslationsMisskeyCustomEmojisManagerViVn extends TranslationsMisskeyCustomEmojisManagerEnUs {
-	_TranslationsMisskeyCustomEmojisManagerViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$vi_VN extends Translations$misskey$customEmojisManager_$en_US {
+	_Translations$misskey$customEmojisManager_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyCustomEmojisManagerLocalViVn local_ = _TranslationsMisskeyCustomEmojisManagerLocalViVn._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$vi_VN local_ = _Translations$misskey$customEmojisManager_$local_$vi_VN._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_
-class _TranslationsMisskeyRemoteLookupErrorsViVn extends TranslationsMisskeyRemoteLookupErrorsEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$vi_VN extends Translations$misskey$remoteLookupErrors_$en_US {
+	_Translations$misskey$remoteLookupErrors_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$noSuchObject_$vi_VN noSuchObject_ = _Translations$misskey$remoteLookupErrors_$noSuchObject_$vi_VN._(_root);
 }
 
 // Path: misskey.search_
-class _TranslationsMisskeySearchViVn extends TranslationsMisskeySearchEnUs {
-	_TranslationsMisskeySearchViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$search_$vi_VN extends Translations$misskey$search_$en_US {
+	_Translations$misskey$search_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2479,8 +2479,8 @@ class _TranslationsMisskeySearchViVn extends TranslationsMisskeySearchEnUs {
 }
 
 // Path: misskey.watermarkEditor_
-class _TranslationsMisskeyWatermarkEditorViVn extends TranslationsMisskeyWatermarkEditorEnUs {
-	_TranslationsMisskeyWatermarkEditorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$watermarkEditor_$vi_VN extends Translations$misskey$watermarkEditor_$en_US {
+	_Translations$misskey$watermarkEditor_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2496,18 +2496,18 @@ class _TranslationsMisskeyWatermarkEditorViVn extends TranslationsMisskeyWaterma
 }
 
 // Path: misskey.imageEffector_
-class _TranslationsMisskeyImageEffectorViVn extends TranslationsMisskeyImageEffectorEnUs {
-	_TranslationsMisskeyImageEffectorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEffector_$vi_VN extends Translations$misskey$imageEffector_$en_US {
+	_Translations$misskey$imageEffector_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyImageEffectorFxPropsViVn fxProps_ = _TranslationsMisskeyImageEffectorFxPropsViVn._(_root);
+	@override late final _Translations$misskey$imageEffector_$fxProps_$vi_VN fxProps_ = _Translations$misskey$imageEffector_$fxProps_$vi_VN._(_root);
 }
 
 // Path: misskey.qr_
-class _TranslationsMisskeyQrViVn extends TranslationsMisskeyQrEnUs {
-	_TranslationsMisskeyQrViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$qr_$vi_VN extends Translations$misskey$qr_$en_US {
+	_Translations$misskey$qr_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2517,8 +2517,8 @@ class _TranslationsMisskeyQrViVn extends TranslationsMisskeyQrEnUs {
 }
 
 // Path: misskey.imageEditing_.vars_
-class _TranslationsMisskeyImageEditingVarsViVn extends TranslationsMisskeyImageEditingVarsEnUs {
-	_TranslationsMisskeyImageEditingVarsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEditing_$vars_$vi_VN extends Translations$misskey$imageEditing_$vars_$en_US {
+	_Translations$misskey$imageEditing_$vars_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2527,8 +2527,8 @@ class _TranslationsMisskeyImageEditingVarsViVn extends TranslationsMisskeyImageE
 }
 
 // Path: misskey.delivery_.type_
-class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
-	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$delivery_$type_$vi_VN extends Translations$misskey$delivery_$type_$en_US {
+	_Translations$misskey$delivery_$type_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2537,8 +2537,8 @@ class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTy
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _TranslationsMisskeyInitialTutorialLandingViVn extends TranslationsMisskeyInitialTutorialLandingEnUs {
-	_TranslationsMisskeyInitialTutorialLandingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$landing_$vi_VN extends Translations$misskey$initialTutorial_$landing_$en_US {
+	_Translations$misskey$initialTutorial_$landing_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2548,8 +2548,8 @@ class _TranslationsMisskeyInitialTutorialLandingViVn extends TranslationsMisskey
 }
 
 // Path: misskey.initialTutorial_.note_
-class _TranslationsMisskeyInitialTutorialNoteViVn extends TranslationsMisskeyInitialTutorialNoteEnUs {
-	_TranslationsMisskeyInitialTutorialNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$note_$vi_VN extends Translations$misskey$initialTutorial_$note_$en_US {
+	_Translations$misskey$initialTutorial_$note_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2559,8 +2559,8 @@ class _TranslationsMisskeyInitialTutorialNoteViVn extends TranslationsMisskeyIni
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _TranslationsMisskeyInitialTutorialTimelineViVn extends TranslationsMisskeyInitialTutorialTimelineEnUs {
-	_TranslationsMisskeyInitialTutorialTimelineViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$timeline_$vi_VN extends Translations$misskey$initialTutorial_$timeline_$en_US {
+	_Translations$misskey$initialTutorial_$timeline_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2572,87 +2572,87 @@ class _TranslationsMisskeyInitialTutorialTimelineViVn extends TranslationsMisske
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _TranslationsMisskeyInitialTutorialPostNoteViVn extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$vi_VN extends Translations$misskey$initialTutorial_$postNote_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$visibility_$vi_VN visibility_ = _Translations$misskey$initialTutorial_$postNote_$visibility_$vi_VN._(_root);
 }
 
 // Path: misskey.achievements_.types_
-class _TranslationsMisskeyAchievementsTypesViVn extends TranslationsMisskeyAchievementsTypesEnUs {
-	_TranslationsMisskeyAchievementsTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$vi_VN extends Translations$misskey$achievements_$types_$en_US {
+	_Translations$misskey$achievements_$types_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyAchievementsTypesNotes1ViVn notes1_ = _TranslationsMisskeyAchievementsTypesNotes1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes10ViVn notes10_ = _TranslationsMisskeyAchievementsTypesNotes10ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes100ViVn notes100_ = _TranslationsMisskeyAchievementsTypesNotes100ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes500ViVn notes500_ = _TranslationsMisskeyAchievementsTypesNotes500ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes1000ViVn notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes5000ViVn notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes10000ViVn notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes20000ViVn notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes30000ViVn notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes40000ViVn notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes50000ViVn notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes100000ViVn notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin3ViVn login3_ = _TranslationsMisskeyAchievementsTypesLogin3ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin7ViVn login7_ = _TranslationsMisskeyAchievementsTypesLogin7ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin15ViVn login15_ = _TranslationsMisskeyAchievementsTypesLogin15ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin30ViVn login30_ = _TranslationsMisskeyAchievementsTypesLogin30ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin60ViVn login60_ = _TranslationsMisskeyAchievementsTypesLogin60ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin100ViVn login100_ = _TranslationsMisskeyAchievementsTypesLogin100ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin200ViVn login200_ = _TranslationsMisskeyAchievementsTypesLogin200ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin300ViVn login300_ = _TranslationsMisskeyAchievementsTypesLogin300ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin400ViVn login400_ = _TranslationsMisskeyAchievementsTypesLogin400ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin1000ViVn login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledViVn profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing1ViVn following1_ = _TranslationsMisskeyAchievementsTypesFollowing1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing10ViVn following10_ = _TranslationsMisskeyAchievementsTypesFollowing10ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing50ViVn following50_ = _TranslationsMisskeyAchievementsTypesFollowing50ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing100ViVn following100_ = _TranslationsMisskeyAchievementsTypesFollowing100ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing300ViVn following300_ = _TranslationsMisskeyAchievementsTypesFollowing300ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers1ViVn followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers10ViVn followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers50ViVn followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers100ViVn followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers300ViVn followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers500ViVn followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000ViVn followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureViVn foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClient30minViVn client30min_ = _TranslationsMisskeyAchievementsTypesClient30minViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClient60minViVn client60min_ = _TranslationsMisskeyAchievementsTypesClient60minViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteViVn selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmViVn htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsViVn open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereViVn clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedViVn cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedViVn._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes1_$vi_VN notes1_ = _Translations$misskey$achievements_$types_$notes1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes10_$vi_VN notes10_ = _Translations$misskey$achievements_$types_$notes10_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes100_$vi_VN notes100_ = _Translations$misskey$achievements_$types_$notes100_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes500_$vi_VN notes500_ = _Translations$misskey$achievements_$types_$notes500_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes1000_$vi_VN notes1000_ = _Translations$misskey$achievements_$types_$notes1000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes5000_$vi_VN notes5000_ = _Translations$misskey$achievements_$types_$notes5000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes10000_$vi_VN notes10000_ = _Translations$misskey$achievements_$types_$notes10000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes20000_$vi_VN notes20000_ = _Translations$misskey$achievements_$types_$notes20000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes30000_$vi_VN notes30000_ = _Translations$misskey$achievements_$types_$notes30000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes40000_$vi_VN notes40000_ = _Translations$misskey$achievements_$types_$notes40000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes50000_$vi_VN notes50000_ = _Translations$misskey$achievements_$types_$notes50000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes100000_$vi_VN notes100000_ = _Translations$misskey$achievements_$types_$notes100000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login3_$vi_VN login3_ = _Translations$misskey$achievements_$types_$login3_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login7_$vi_VN login7_ = _Translations$misskey$achievements_$types_$login7_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login15_$vi_VN login15_ = _Translations$misskey$achievements_$types_$login15_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login30_$vi_VN login30_ = _Translations$misskey$achievements_$types_$login30_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login60_$vi_VN login60_ = _Translations$misskey$achievements_$types_$login60_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login100_$vi_VN login100_ = _Translations$misskey$achievements_$types_$login100_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login200_$vi_VN login200_ = _Translations$misskey$achievements_$types_$login200_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login300_$vi_VN login300_ = _Translations$misskey$achievements_$types_$login300_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login400_$vi_VN login400_ = _Translations$misskey$achievements_$types_$login400_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login1000_$vi_VN login1000_ = _Translations$misskey$achievements_$types_$login1000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$noteFavorited1_$vi_VN noteFavorited1_ = _Translations$misskey$achievements_$types_$noteFavorited1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$myNoteFavorited1_$vi_VN myNoteFavorited1_ = _Translations$misskey$achievements_$types_$myNoteFavorited1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$profileFilled_$vi_VN profileFilled_ = _Translations$misskey$achievements_$types_$profileFilled_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$markedAsCat_$vi_VN markedAsCat_ = _Translations$misskey$achievements_$types_$markedAsCat_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following1_$vi_VN following1_ = _Translations$misskey$achievements_$types_$following1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following10_$vi_VN following10_ = _Translations$misskey$achievements_$types_$following10_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following50_$vi_VN following50_ = _Translations$misskey$achievements_$types_$following50_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following100_$vi_VN following100_ = _Translations$misskey$achievements_$types_$following100_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following300_$vi_VN following300_ = _Translations$misskey$achievements_$types_$following300_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers1_$vi_VN followers1_ = _Translations$misskey$achievements_$types_$followers1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers10_$vi_VN followers10_ = _Translations$misskey$achievements_$types_$followers10_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers50_$vi_VN followers50_ = _Translations$misskey$achievements_$types_$followers50_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers100_$vi_VN followers100_ = _Translations$misskey$achievements_$types_$followers100_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers300_$vi_VN followers300_ = _Translations$misskey$achievements_$types_$followers300_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers500_$vi_VN followers500_ = _Translations$misskey$achievements_$types_$followers500_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers1000_$vi_VN followers1000_ = _Translations$misskey$achievements_$types_$followers1000_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$collectAchievements30_$vi_VN collectAchievements30_ = _Translations$misskey$achievements_$types_$collectAchievements30_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$viewAchievements3min_$vi_VN viewAchievements3min_ = _Translations$misskey$achievements_$types_$viewAchievements3min_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$iLoveMisskey_$vi_VN iLoveMisskey_ = _Translations$misskey$achievements_$types_$iLoveMisskey_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$foundTreasure_$vi_VN foundTreasure_ = _Translations$misskey$achievements_$types_$foundTreasure_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$client30min_$vi_VN client30min_ = _Translations$misskey$achievements_$types_$client30min_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$client60min_$vi_VN client60min_ = _Translations$misskey$achievements_$types_$client60min_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$vi_VN noteDeletedWithin1min_ = _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$postedAtLateNight_$vi_VN postedAtLateNight_ = _Translations$misskey$achievements_$types_$postedAtLateNight_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$postedAt0min0sec_$vi_VN postedAt0min0sec_ = _Translations$misskey$achievements_$types_$postedAt0min0sec_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$selfQuote_$vi_VN selfQuote_ = _Translations$misskey$achievements_$types_$selfQuote_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$htl20npm_$vi_VN htl20npm_ = _Translations$misskey$achievements_$types_$htl20npm_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$viewInstanceChart_$vi_VN viewInstanceChart_ = _Translations$misskey$achievements_$types_$viewInstanceChart_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$vi_VN outputHelloWorldOnScratchpad_ = _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$open3windows_$vi_VN open3windows_ = _Translations$misskey$achievements_$types_$open3windows_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$reactWithoutRead_$vi_VN reactWithoutRead_ = _Translations$misskey$achievements_$types_$reactWithoutRead_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$clickedClickHere_$vi_VN clickedClickHere_ = _Translations$misskey$achievements_$types_$clickedClickHere_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$justPlainLucky_$vi_VN justPlainLucky_ = _Translations$misskey$achievements_$types_$justPlainLucky_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$setNameToSyuilo_$vi_VN setNameToSyuilo_ = _Translations$misskey$achievements_$types_$setNameToSyuilo_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$vi_VN passedSinceAccountCreated1_ = _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$loggedInOnBirthday_$vi_VN loggedInOnBirthday_ = _Translations$misskey$achievements_$types_$loggedInOnBirthday_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$vi_VN loggedInOnNewYearsDay_ = _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$vi_VN._(_root);
+	@override late final _Translations$misskey$achievements_$types_$cookieClicked_$vi_VN cookieClicked_ = _Translations$misskey$achievements_$types_$cookieClicked_$vi_VN._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _TranslationsMisskeyRolePriorityViVn extends TranslationsMisskeyRolePriorityEnUs {
-	_TranslationsMisskeyRolePriorityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$priority_$vi_VN extends Translations$misskey$role_$priority_$en_US {
+	_Translations$misskey$role_$priority_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2663,8 +2663,8 @@ class _TranslationsMisskeyRolePriorityViVn extends TranslationsMisskeyRolePriori
 }
 
 // Path: misskey.role_.options_
-class _TranslationsMisskeyRoleOptionsViVn extends TranslationsMisskeyRoleOptionsEnUs {
-	_TranslationsMisskeyRoleOptionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$options_$vi_VN extends Translations$misskey$role_$options_$en_US {
+	_Translations$misskey$role_$options_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2681,8 +2681,8 @@ class _TranslationsMisskeyRoleOptionsViVn extends TranslationsMisskeyRoleOptions
 }
 
 // Path: misskey.role_.condition_
-class _TranslationsMisskeyRoleConditionViVn extends TranslationsMisskeyRoleConditionEnUs {
-	_TranslationsMisskeyRoleConditionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$condition_$vi_VN extends Translations$misskey$role_$condition_$en_US {
+	_Translations$misskey$role_$condition_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2698,8 +2698,8 @@ class _TranslationsMisskeyRoleConditionViVn extends TranslationsMisskeyRoleCondi
 }
 
 // Path: misskey.email_.follow_
-class _TranslationsMisskeyEmailFollowViVn extends TranslationsMisskeyEmailFollowEnUs {
-	_TranslationsMisskeyEmailFollowViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$follow_$vi_VN extends Translations$misskey$email_$follow_$en_US {
+	_Translations$misskey$email_$follow_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2708,8 +2708,8 @@ class _TranslationsMisskeyEmailFollowViVn extends TranslationsMisskeyEmailFollow
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _TranslationsMisskeyEmailReceiveFollowRequestViVn extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
-	_TranslationsMisskeyEmailReceiveFollowRequestViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$receiveFollowRequest_$vi_VN extends Translations$misskey$email_$receiveFollowRequest_$en_US {
+	_Translations$misskey$email_$receiveFollowRequest_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2718,8 +2718,8 @@ class _TranslationsMisskeyEmailReceiveFollowRequestViVn extends TranslationsMiss
 }
 
 // Path: misskey.theme_.keys
-class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs {
-	_TranslationsMisskeyThemeKeysViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$theme_$keys$vi_VN extends Translations$misskey$theme_$keys$en_US {
+	_Translations$misskey$theme_$keys$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2761,8 +2761,8 @@ class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs
 }
 
 // Path: misskey.widgets_.userList_
-class _TranslationsMisskeyWidgetsUserListViVn extends TranslationsMisskeyWidgetsUserListEnUs {
-	_TranslationsMisskeyWidgetsUserListViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgets_$userList_$vi_VN extends Translations$misskey$widgets_$userList_$en_US {
+	_Translations$misskey$widgets_$userList_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2771,8 +2771,8 @@ class _TranslationsMisskeyWidgetsUserListViVn extends TranslationsMisskeyWidgets
 }
 
 // Path: misskey.widgetOptions_.button_
-class _TranslationsMisskeyWidgetOptionsButtonViVn extends TranslationsMisskeyWidgetOptionsButtonEnUs {
-	_TranslationsMisskeyWidgetOptionsButtonViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$button_$vi_VN extends Translations$misskey$widgetOptions_$button_$en_US {
+	_Translations$misskey$widgetOptions_$button_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2781,8 +2781,8 @@ class _TranslationsMisskeyWidgetOptionsButtonViVn extends TranslationsMisskeyWid
 }
 
 // Path: misskey.widgetOptions_.clock_
-class _TranslationsMisskeyWidgetOptionsClockViVn extends TranslationsMisskeyWidgetOptionsClockEnUs {
-	_TranslationsMisskeyWidgetOptionsClockViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$clock_$vi_VN extends Translations$misskey$widgetOptions_$clock_$en_US {
+	_Translations$misskey$widgetOptions_$clock_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2791,8 +2791,8 @@ class _TranslationsMisskeyWidgetOptionsClockViVn extends TranslationsMisskeyWidg
 }
 
 // Path: misskey.widgetOptions_.birthdayFollowings_
-class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
-	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$birthdayFollowings_$vi_VN extends Translations$misskey$widgetOptions_$birthdayFollowings_$en_US {
+	_Translations$misskey$widgetOptions_$birthdayFollowings_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2801,8 +2801,8 @@ class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsViVn extends Translatio
 }
 
 // Path: misskey.postForm_.howToUse_
-class _TranslationsMisskeyPostFormHowToUseViVn extends TranslationsMisskeyPostFormHowToUseEnUs {
-	_TranslationsMisskeyPostFormHowToUseViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$howToUse_$vi_VN extends Translations$misskey$postForm_$howToUse_$en_US {
+	_Translations$misskey$postForm_$howToUse_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2812,8 +2812,8 @@ class _TranslationsMisskeyPostFormHowToUseViVn extends TranslationsMisskeyPostFo
 }
 
 // Path: misskey.postForm_.placeholders_
-class _TranslationsMisskeyPostFormPlaceholdersViVn extends TranslationsMisskeyPostFormPlaceholdersEnUs {
-	_TranslationsMisskeyPostFormPlaceholdersViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$placeholders_$vi_VN extends Translations$misskey$postForm_$placeholders_$en_US {
+	_Translations$misskey$postForm_$placeholders_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2827,8 +2827,8 @@ class _TranslationsMisskeyPostFormPlaceholdersViVn extends TranslationsMisskeyPo
 }
 
 // Path: misskey.pages_.blocks
-class _TranslationsMisskeyPagesBlocksViVn extends TranslationsMisskeyPagesBlocksEnUs {
-	_TranslationsMisskeyPagesBlocksViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$blocks$vi_VN extends Translations$misskey$pages_$blocks$en_US {
+	_Translations$misskey$pages_$blocks$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2839,12 +2839,12 @@ class _TranslationsMisskeyPagesBlocksViVn extends TranslationsMisskeyPagesBlocks
 	@override String get image => 'Hình ảnh';
 	@override String get button => 'Nút';
 	@override String get note => 'Tút đã nhúng';
-	@override late final _TranslationsMisskeyPagesBlocksNoteViVn note_ = _TranslationsMisskeyPagesBlocksNoteViVn._(_root);
+	@override late final _Translations$misskey$pages_$blocks$note_$vi_VN note_ = _Translations$misskey$pages_$blocks$note_$vi_VN._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _TranslationsMisskeyNotificationTypesViVn extends TranslationsMisskeyNotificationTypesEnUs {
-	_TranslationsMisskeyNotificationTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$types_$vi_VN extends Translations$misskey$notification_$types_$en_US {
+	_Translations$misskey$notification_$types_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2865,8 +2865,8 @@ class _TranslationsMisskeyNotificationTypesViVn extends TranslationsMisskeyNotif
 }
 
 // Path: misskey.notification_.actions_
-class _TranslationsMisskeyNotificationActionsViVn extends TranslationsMisskeyNotificationActionsEnUs {
-	_TranslationsMisskeyNotificationActionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$actions_$vi_VN extends Translations$misskey$notification_$actions_$en_US {
+	_Translations$misskey$notification_$actions_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2877,8 +2877,8 @@ class _TranslationsMisskeyNotificationActionsViVn extends TranslationsMisskeyNot
 }
 
 // Path: misskey.deck_.columns_
-class _TranslationsMisskeyDeckColumnsViVn extends TranslationsMisskeyDeckColumnsEnUs {
-	_TranslationsMisskeyDeckColumnsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$deck_$columns_$vi_VN extends Translations$misskey$deck_$columns_$en_US {
+	_Translations$misskey$deck_$columns_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2895,8 +2895,8 @@ class _TranslationsMisskeyDeckColumnsViVn extends TranslationsMisskeyDeckColumns
 }
 
 // Path: misskey.webhookSettings_.events_
-class _TranslationsMisskeyWebhookSettingsEventsViVn extends TranslationsMisskeyWebhookSettingsEventsEnUs {
-	_TranslationsMisskeyWebhookSettingsEventsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$webhookSettings_$events_$vi_VN extends Translations$misskey$webhookSettings_$events_$en_US {
+	_Translations$misskey$webhookSettings_$events_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2906,28 +2906,28 @@ class _TranslationsMisskeyWebhookSettingsEventsViVn extends TranslationsMisskeyW
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _TranslationsMisskeyAbuseReportNotificationRecipientViVn extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
-	_TranslationsMisskeyAbuseReportNotificationRecipientViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$notificationRecipient_$vi_VN extends Translations$misskey$abuseReport_$notificationRecipient_$en_US {
+	_Translations$misskey$abuseReport_$notificationRecipient_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_root);
+	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$vi_VN recipientType_ = _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$vi_VN._(_root);
 }
 
 // Path: misskey.customEmojisManager_.local_
-class _TranslationsMisskeyCustomEmojisManagerLocalViVn extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLocalViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$local_$vi_VN extends Translations$misskey$customEmojisManager_$local_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListViVn list_ = _TranslationsMisskeyCustomEmojisManagerLocalListViVn._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$list_$vi_VN list_ = _Translations$misskey$customEmojisManager_$local_$list_$vi_VN._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
-class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$noSuchObject_$vi_VN extends Translations$misskey$remoteLookupErrors_$noSuchObject_$en_US {
+	_Translations$misskey$remoteLookupErrors_$noSuchObject_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2936,8 +2936,8 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn extends Translation
 }
 
 // Path: misskey.imageEffector_.fxProps_
-class _TranslationsMisskeyImageEffectorFxPropsViVn extends TranslationsMisskeyImageEffectorFxPropsEnUs {
-	_TranslationsMisskeyImageEffectorFxPropsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEffector_$fxProps_$vi_VN extends Translations$misskey$imageEffector_$fxProps_$en_US {
+	_Translations$misskey$imageEffector_$fxProps_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2952,8 +2952,8 @@ class _TranslationsMisskeyImageEffectorFxPropsViVn extends TranslationsMisskeyIm
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$visibility_$vi_VN extends Translations$misskey$initialTutorial_$postNote_$visibility_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$visibility_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2962,8 +2962,8 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityViVn extends Translat
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _TranslationsMisskeyAchievementsTypesNotes1ViVn extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes1_$vi_VN extends Translations$misskey$achievements_$types_$notes1_$en_US {
+	_Translations$misskey$achievements_$types_$notes1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2974,8 +2974,8 @@ class _TranslationsMisskeyAchievementsTypesNotes1ViVn extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _TranslationsMisskeyAchievementsTypesNotes10ViVn extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes10_$vi_VN extends Translations$misskey$achievements_$types_$notes10_$en_US {
+	_Translations$misskey$achievements_$types_$notes10_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2985,8 +2985,8 @@ class _TranslationsMisskeyAchievementsTypesNotes10ViVn extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _TranslationsMisskeyAchievementsTypesNotes100ViVn extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes100_$vi_VN extends Translations$misskey$achievements_$types_$notes100_$en_US {
+	_Translations$misskey$achievements_$types_$notes100_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -2996,8 +2996,8 @@ class _TranslationsMisskeyAchievementsTypesNotes100ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _TranslationsMisskeyAchievementsTypesNotes500ViVn extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes500ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes500_$vi_VN extends Translations$misskey$achievements_$types_$notes500_$en_US {
+	_Translations$misskey$achievements_$types_$notes500_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3007,8 +3007,8 @@ class _TranslationsMisskeyAchievementsTypesNotes500ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _TranslationsMisskeyAchievementsTypesNotes1000ViVn extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes1000_$vi_VN extends Translations$misskey$achievements_$types_$notes1000_$en_US {
+	_Translations$misskey$achievements_$types_$notes1000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3018,8 +3018,8 @@ class _TranslationsMisskeyAchievementsTypesNotes1000ViVn extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _TranslationsMisskeyAchievementsTypesNotes5000ViVn extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes5000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes5000_$vi_VN extends Translations$misskey$achievements_$types_$notes5000_$en_US {
+	_Translations$misskey$achievements_$types_$notes5000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3029,8 +3029,8 @@ class _TranslationsMisskeyAchievementsTypesNotes5000ViVn extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _TranslationsMisskeyAchievementsTypesNotes10000ViVn extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes10000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes10000_$vi_VN extends Translations$misskey$achievements_$types_$notes10000_$en_US {
+	_Translations$misskey$achievements_$types_$notes10000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3040,8 +3040,8 @@ class _TranslationsMisskeyAchievementsTypesNotes10000ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _TranslationsMisskeyAchievementsTypesNotes20000ViVn extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes20000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes20000_$vi_VN extends Translations$misskey$achievements_$types_$notes20000_$en_US {
+	_Translations$misskey$achievements_$types_$notes20000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3051,8 +3051,8 @@ class _TranslationsMisskeyAchievementsTypesNotes20000ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _TranslationsMisskeyAchievementsTypesNotes30000ViVn extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes30000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes30000_$vi_VN extends Translations$misskey$achievements_$types_$notes30000_$en_US {
+	_Translations$misskey$achievements_$types_$notes30000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3062,8 +3062,8 @@ class _TranslationsMisskeyAchievementsTypesNotes30000ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _TranslationsMisskeyAchievementsTypesNotes40000ViVn extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes40000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes40000_$vi_VN extends Translations$misskey$achievements_$types_$notes40000_$en_US {
+	_Translations$misskey$achievements_$types_$notes40000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3073,8 +3073,8 @@ class _TranslationsMisskeyAchievementsTypesNotes40000ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _TranslationsMisskeyAchievementsTypesNotes50000ViVn extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes50000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes50000_$vi_VN extends Translations$misskey$achievements_$types_$notes50000_$en_US {
+	_Translations$misskey$achievements_$types_$notes50000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3084,8 +3084,8 @@ class _TranslationsMisskeyAchievementsTypesNotes50000ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _TranslationsMisskeyAchievementsTypesNotes100000ViVn extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes100000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes100000_$vi_VN extends Translations$misskey$achievements_$types_$notes100000_$en_US {
+	_Translations$misskey$achievements_$types_$notes100000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3096,8 +3096,8 @@ class _TranslationsMisskeyAchievementsTypesNotes100000ViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _TranslationsMisskeyAchievementsTypesLogin3ViVn extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin3ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login3_$vi_VN extends Translations$misskey$achievements_$types_$login3_$en_US {
+	_Translations$misskey$achievements_$types_$login3_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3108,8 +3108,8 @@ class _TranslationsMisskeyAchievementsTypesLogin3ViVn extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _TranslationsMisskeyAchievementsTypesLogin7ViVn extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin7ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login7_$vi_VN extends Translations$misskey$achievements_$types_$login7_$en_US {
+	_Translations$misskey$achievements_$types_$login7_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3120,8 +3120,8 @@ class _TranslationsMisskeyAchievementsTypesLogin7ViVn extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _TranslationsMisskeyAchievementsTypesLogin15ViVn extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin15ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login15_$vi_VN extends Translations$misskey$achievements_$types_$login15_$en_US {
+	_Translations$misskey$achievements_$types_$login15_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3131,8 +3131,8 @@ class _TranslationsMisskeyAchievementsTypesLogin15ViVn extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _TranslationsMisskeyAchievementsTypesLogin30ViVn extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin30ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login30_$vi_VN extends Translations$misskey$achievements_$types_$login30_$en_US {
+	_Translations$misskey$achievements_$types_$login30_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3142,8 +3142,8 @@ class _TranslationsMisskeyAchievementsTypesLogin30ViVn extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _TranslationsMisskeyAchievementsTypesLogin60ViVn extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin60ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login60_$vi_VN extends Translations$misskey$achievements_$types_$login60_$en_US {
+	_Translations$misskey$achievements_$types_$login60_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3153,8 +3153,8 @@ class _TranslationsMisskeyAchievementsTypesLogin60ViVn extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _TranslationsMisskeyAchievementsTypesLogin100ViVn extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login100_$vi_VN extends Translations$misskey$achievements_$types_$login100_$en_US {
+	_Translations$misskey$achievements_$types_$login100_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3165,8 +3165,8 @@ class _TranslationsMisskeyAchievementsTypesLogin100ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _TranslationsMisskeyAchievementsTypesLogin200ViVn extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin200ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login200_$vi_VN extends Translations$misskey$achievements_$types_$login200_$en_US {
+	_Translations$misskey$achievements_$types_$login200_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3176,8 +3176,8 @@ class _TranslationsMisskeyAchievementsTypesLogin200ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _TranslationsMisskeyAchievementsTypesLogin300ViVn extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login300_$vi_VN extends Translations$misskey$achievements_$types_$login300_$en_US {
+	_Translations$misskey$achievements_$types_$login300_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3187,8 +3187,8 @@ class _TranslationsMisskeyAchievementsTypesLogin300ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _TranslationsMisskeyAchievementsTypesLogin400ViVn extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin400ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login400_$vi_VN extends Translations$misskey$achievements_$types_$login400_$en_US {
+	_Translations$misskey$achievements_$types_$login400_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3198,8 +3198,8 @@ class _TranslationsMisskeyAchievementsTypesLogin400ViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _TranslationsMisskeyAchievementsTypesLogin1000ViVn extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login1000_$vi_VN extends Translations$misskey$achievements_$types_$login1000_$en_US {
+	_Translations$misskey$achievements_$types_$login1000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3208,8 +3208,8 @@ class _TranslationsMisskeyAchievementsTypesLogin1000ViVn extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$noteFavorited1_$vi_VN extends Translations$misskey$achievements_$types_$noteFavorited1_$en_US {
+	_Translations$misskey$achievements_$types_$noteFavorited1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3218,8 +3218,8 @@ class _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn extends Translatio
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$myNoteFavorited1_$vi_VN extends Translations$misskey$achievements_$types_$myNoteFavorited1_$en_US {
+	_Translations$misskey$achievements_$types_$myNoteFavorited1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3228,8 +3228,8 @@ class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn extends Translat
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _TranslationsMisskeyAchievementsTypesProfileFilledViVn extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
-	_TranslationsMisskeyAchievementsTypesProfileFilledViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$profileFilled_$vi_VN extends Translations$misskey$achievements_$types_$profileFilled_$en_US {
+	_Translations$misskey$achievements_$types_$profileFilled_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3239,8 +3239,8 @@ class _TranslationsMisskeyAchievementsTypesProfileFilledViVn extends Translation
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_TranslationsMisskeyAchievementsTypesMarkedAsCatViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$markedAsCat_$vi_VN extends Translations$misskey$achievements_$types_$markedAsCat_$en_US {
+	_Translations$misskey$achievements_$types_$markedAsCat_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3251,8 +3251,8 @@ class _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _TranslationsMisskeyAchievementsTypesFollowing1ViVn extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following1_$vi_VN extends Translations$misskey$achievements_$types_$following1_$en_US {
+	_Translations$misskey$achievements_$types_$following1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3262,8 +3262,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing1ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _TranslationsMisskeyAchievementsTypesFollowing10ViVn extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following10_$vi_VN extends Translations$misskey$achievements_$types_$following10_$en_US {
+	_Translations$misskey$achievements_$types_$following10_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3273,8 +3273,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing10ViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _TranslationsMisskeyAchievementsTypesFollowing50ViVn extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing50ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following50_$vi_VN extends Translations$misskey$achievements_$types_$following50_$en_US {
+	_Translations$misskey$achievements_$types_$following50_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3284,8 +3284,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing50ViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _TranslationsMisskeyAchievementsTypesFollowing100ViVn extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following100_$vi_VN extends Translations$misskey$achievements_$types_$following100_$en_US {
+	_Translations$misskey$achievements_$types_$following100_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3295,8 +3295,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing100ViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _TranslationsMisskeyAchievementsTypesFollowing300ViVn extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following300_$vi_VN extends Translations$misskey$achievements_$types_$following300_$en_US {
+	_Translations$misskey$achievements_$types_$following300_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3306,8 +3306,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing300ViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _TranslationsMisskeyAchievementsTypesFollowers1ViVn extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers1_$vi_VN extends Translations$misskey$achievements_$types_$followers1_$en_US {
+	_Translations$misskey$achievements_$types_$followers1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3317,8 +3317,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers1ViVn extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _TranslationsMisskeyAchievementsTypesFollowers10ViVn extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers10_$vi_VN extends Translations$misskey$achievements_$types_$followers10_$en_US {
+	_Translations$misskey$achievements_$types_$followers10_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3328,8 +3328,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers10ViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _TranslationsMisskeyAchievementsTypesFollowers50ViVn extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers50ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers50_$vi_VN extends Translations$misskey$achievements_$types_$followers50_$en_US {
+	_Translations$misskey$achievements_$types_$followers50_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3339,8 +3339,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers50ViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _TranslationsMisskeyAchievementsTypesFollowers100ViVn extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers100_$vi_VN extends Translations$misskey$achievements_$types_$followers100_$en_US {
+	_Translations$misskey$achievements_$types_$followers100_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3350,8 +3350,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers100ViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _TranslationsMisskeyAchievementsTypesFollowers300ViVn extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers300_$vi_VN extends Translations$misskey$achievements_$types_$followers300_$en_US {
+	_Translations$misskey$achievements_$types_$followers300_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3361,8 +3361,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers300ViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _TranslationsMisskeyAchievementsTypesFollowers500ViVn extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers500ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers500_$vi_VN extends Translations$misskey$achievements_$types_$followers500_$en_US {
+	_Translations$misskey$achievements_$types_$followers500_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3372,8 +3372,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers500ViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _TranslationsMisskeyAchievementsTypesFollowers1000ViVn extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers1000_$vi_VN extends Translations$misskey$achievements_$types_$followers1000_$en_US {
+	_Translations$misskey$achievements_$types_$followers1000_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3383,8 +3383,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers1000ViVn extends Translation
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$collectAchievements30_$vi_VN extends Translations$misskey$achievements_$types_$collectAchievements30_$en_US {
+	_Translations$misskey$achievements_$types_$collectAchievements30_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3394,8 +3394,8 @@ class _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn extends Tra
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_TranslationsMisskeyAchievementsTypesViewAchievements3minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$viewAchievements3min_$vi_VN extends Translations$misskey$achievements_$types_$viewAchievements3min_$en_US {
+	_Translations$misskey$achievements_$types_$viewAchievements3min_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3405,8 +3405,8 @@ class _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn extends Tran
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_TranslationsMisskeyAchievementsTypesILoveMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$iLoveMisskey_$vi_VN extends Translations$misskey$achievements_$types_$iLoveMisskey_$en_US {
+	_Translations$misskey$achievements_$types_$iLoveMisskey_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3417,8 +3417,8 @@ class _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _TranslationsMisskeyAchievementsTypesFoundTreasureViVn extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_TranslationsMisskeyAchievementsTypesFoundTreasureViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$foundTreasure_$vi_VN extends Translations$misskey$achievements_$types_$foundTreasure_$en_US {
+	_Translations$misskey$achievements_$types_$foundTreasure_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3428,8 +3428,8 @@ class _TranslationsMisskeyAchievementsTypesFoundTreasureViVn extends Translation
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _TranslationsMisskeyAchievementsTypesClient30minViVn extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
-	_TranslationsMisskeyAchievementsTypesClient30minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$client30min_$vi_VN extends Translations$misskey$achievements_$types_$client30min_$en_US {
+	_Translations$misskey$achievements_$types_$client30min_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3439,8 +3439,8 @@ class _TranslationsMisskeyAchievementsTypesClient30minViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _TranslationsMisskeyAchievementsTypesClient60minViVn extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
-	_TranslationsMisskeyAchievementsTypesClient60minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$client60min_$vi_VN extends Translations$misskey$achievements_$types_$client60min_$en_US {
+	_Translations$misskey$achievements_$types_$client60min_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3449,8 +3449,8 @@ class _TranslationsMisskeyAchievementsTypesClient60minViVn extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$vi_VN extends Translations$misskey$achievements_$types_$noteDeletedWithin1min_$en_US {
+	_Translations$misskey$achievements_$types_$noteDeletedWithin1min_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3459,8 +3459,8 @@ class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn extends Tra
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$postedAtLateNight_$vi_VN extends Translations$misskey$achievements_$types_$postedAtLateNight_$en_US {
+	_Translations$misskey$achievements_$types_$postedAtLateNight_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3471,8 +3471,8 @@ class _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn extends Transla
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$postedAt0min0sec_$vi_VN extends Translations$misskey$achievements_$types_$postedAt0min0sec_$en_US {
+	_Translations$misskey$achievements_$types_$postedAt0min0sec_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3483,8 +3483,8 @@ class _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn extends Translat
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _TranslationsMisskeyAchievementsTypesSelfQuoteViVn extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_TranslationsMisskeyAchievementsTypesSelfQuoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$selfQuote_$vi_VN extends Translations$misskey$achievements_$types_$selfQuote_$en_US {
+	_Translations$misskey$achievements_$types_$selfQuote_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3494,8 +3494,8 @@ class _TranslationsMisskeyAchievementsTypesSelfQuoteViVn extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _TranslationsMisskeyAchievementsTypesHtl20npmViVn extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
-	_TranslationsMisskeyAchievementsTypesHtl20npmViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$htl20npm_$vi_VN extends Translations$misskey$achievements_$types_$htl20npm_$en_US {
+	_Translations$misskey$achievements_$types_$htl20npm_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3505,8 +3505,8 @@ class _TranslationsMisskeyAchievementsTypesHtl20npmViVn extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_TranslationsMisskeyAchievementsTypesViewInstanceChartViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$viewInstanceChart_$vi_VN extends Translations$misskey$achievements_$types_$viewInstanceChart_$en_US {
+	_Translations$misskey$achievements_$types_$viewInstanceChart_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3516,8 +3516,8 @@ class _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn extends Transla
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$vi_VN extends Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$en_US {
+	_Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3526,8 +3526,8 @@ class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn exte
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _TranslationsMisskeyAchievementsTypesOpen3windowsViVn extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_TranslationsMisskeyAchievementsTypesOpen3windowsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$open3windows_$vi_VN extends Translations$misskey$achievements_$types_$open3windows_$en_US {
+	_Translations$misskey$achievements_$types_$open3windows_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3537,8 +3537,8 @@ class _TranslationsMisskeyAchievementsTypesOpen3windowsViVn extends Translations
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_TranslationsMisskeyAchievementsTypesReactWithoutReadViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$reactWithoutRead_$vi_VN extends Translations$misskey$achievements_$types_$reactWithoutRead_$en_US {
+	_Translations$misskey$achievements_$types_$reactWithoutRead_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3548,8 +3548,8 @@ class _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn extends Translat
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _TranslationsMisskeyAchievementsTypesClickedClickHereViVn extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_TranslationsMisskeyAchievementsTypesClickedClickHereViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$clickedClickHere_$vi_VN extends Translations$misskey$achievements_$types_$clickedClickHere_$en_US {
+	_Translations$misskey$achievements_$types_$clickedClickHere_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3559,8 +3559,8 @@ class _TranslationsMisskeyAchievementsTypesClickedClickHereViVn extends Translat
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$justPlainLucky_$vi_VN extends Translations$misskey$achievements_$types_$justPlainLucky_$en_US {
+	_Translations$misskey$achievements_$types_$justPlainLucky_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3570,8 +3570,8 @@ class _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn extends Translatio
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$setNameToSyuilo_$vi_VN extends Translations$misskey$achievements_$types_$setNameToSyuilo_$en_US {
+	_Translations$misskey$achievements_$types_$setNameToSyuilo_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3581,8 +3581,8 @@ class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn extends Translati
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$vi_VN extends Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$en_US {
+	_Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3591,8 +3591,8 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn extend
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$loggedInOnBirthday_$vi_VN extends Translations$misskey$achievements_$types_$loggedInOnBirthday_$en_US {
+	_Translations$misskey$achievements_$types_$loggedInOnBirthday_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3602,8 +3602,8 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends Transl
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$vi_VN extends Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$en_US {
+	_Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3614,8 +3614,8 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends Tra
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _TranslationsMisskeyAchievementsTypesCookieClickedViVn extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
-	_TranslationsMisskeyAchievementsTypesCookieClickedViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$cookieClicked_$vi_VN extends Translations$misskey$achievements_$types_$cookieClicked_$en_US {
+	_Translations$misskey$achievements_$types_$cookieClicked_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3624,8 +3624,8 @@ class _TranslationsMisskeyAchievementsTypesCookieClickedViVn extends Translation
 }
 
 // Path: misskey.pages_.blocks.note_
-class _TranslationsMisskeyPagesBlocksNoteViVn extends TranslationsMisskeyPagesBlocksNoteEnUs {
-	_TranslationsMisskeyPagesBlocksNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$blocks$note_$vi_VN extends Translations$misskey$pages_$blocks$note_$en_US {
+	_Translations$misskey$pages_$blocks$note_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3636,8 +3636,8 @@ class _TranslationsMisskeyPagesBlocksNoteViVn extends TranslationsMisskeyPagesBl
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$vi_VN extends Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$en_US {
+	_Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 
@@ -3646,8 +3646,8 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn exte
 }
 
 // Path: misskey.customEmojisManager_.local_.list_
-class _TranslationsMisskeyCustomEmojisManagerLocalListViVn extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLocalListViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$local_$list_$vi_VN extends Translations$misskey$customEmojisManager_$local_$list_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$list_$vi_VN._(TranslationsViVn root) : this._root = root, super.internal(root);
 
 	final TranslationsViVn _root; // ignore: unused_field
 

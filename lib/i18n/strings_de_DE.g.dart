@@ -33,13 +33,13 @@ class TranslationsDeDe extends Translations with BaseTranslations<AppLocale, Tra
 	TranslationsDeDe $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsDeDe(meta: meta ?? this.$meta);
 
 	// Translations
-	@override late final _TranslationsAriaDeDe aria = _TranslationsAriaDeDe._(_root);
-	@override late final _TranslationsMisskeyDeDe misskey = _TranslationsMisskeyDeDe._(_root);
+	@override late final _Translations$aria$de_DE aria = _Translations$aria$de_DE._(_root);
+	@override late final _Translations$misskey$de_DE misskey = _Translations$misskey$de_DE._(_root);
 }
 
 // Path: aria
-class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
-	_TranslationsAriaDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$aria$de_DE extends Translations$aria$en_US {
+	_Translations$aria$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -313,8 +313,8 @@ class _TranslationsAriaDeDe extends TranslationsAriaEnUs {
 }
 
 // Path: misskey
-class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
-	_TranslationsMisskeyDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$de_DE extends Translations$misskey$en_US {
+	_Translations$misskey$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -1728,128 +1728,128 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override String get presets => 'Vorlage';
 	@override String get zeroPadding => 'Nullauffüllung';
 	@override String get nothingToConfigure => 'Es sind keine Einstellungen verfügbar';
-	@override late final _TranslationsMisskeyImageEditingDeDe imageEditing_ = _TranslationsMisskeyImageEditingDeDe._(_root);
-	@override late final _TranslationsMisskeyImageFrameEditorDeDe imageFrameEditor_ = _TranslationsMisskeyImageFrameEditorDeDe._(_root);
-	@override late final _TranslationsMisskeyCompressionDeDe compression_ = _TranslationsMisskeyCompressionDeDe._(_root);
-	@override late final _TranslationsMisskeyOrderDeDe order_ = _TranslationsMisskeyOrderDeDe._(_root);
-	@override late final _TranslationsMisskeyChatDeDe chat_ = _TranslationsMisskeyChatDeDe._(_root);
-	@override late final _TranslationsMisskeyEmojiPaletteDeDe emojiPalette_ = _TranslationsMisskeyEmojiPaletteDeDe._(_root);
-	@override late final _TranslationsMisskeySettingsDeDe settings_ = _TranslationsMisskeySettingsDeDe._(_root);
-	@override late final _TranslationsMisskeyPreferencesProfileDeDe preferencesProfile_ = _TranslationsMisskeyPreferencesProfileDeDe._(_root);
-	@override late final _TranslationsMisskeyPreferencesBackupDeDe preferencesBackup_ = _TranslationsMisskeyPreferencesBackupDeDe._(_root);
-	@override late final _TranslationsMisskeyAccountSettingsDeDe accountSettings_ = _TranslationsMisskeyAccountSettingsDeDe._(_root);
-	@override late final _TranslationsMisskeyAbuseUserReportDeDe abuseUserReport_ = _TranslationsMisskeyAbuseUserReportDeDe._(_root);
-	@override late final _TranslationsMisskeyDeliveryDeDe delivery_ = _TranslationsMisskeyDeliveryDeDe._(_root);
-	@override late final _TranslationsMisskeyBubbleGameDeDe bubbleGame_ = _TranslationsMisskeyBubbleGameDeDe._(_root);
-	@override late final _TranslationsMisskeyAnnouncementDeDe announcement_ = _TranslationsMisskeyAnnouncementDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialAccountSettingDeDe initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialDeDe initialTutorial_ = _TranslationsMisskeyInitialTutorialDeDe._(_root);
-	@override late final _TranslationsMisskeyTimelineDescriptionDeDe timelineDescription_ = _TranslationsMisskeyTimelineDescriptionDeDe._(_root);
-	@override late final _TranslationsMisskeyServerRulesDeDe serverRules_ = _TranslationsMisskeyServerRulesDeDe._(_root);
-	@override late final _TranslationsMisskeyServerSettingsDeDe serverSettings_ = _TranslationsMisskeyServerSettingsDeDe._(_root);
-	@override late final _TranslationsMisskeyAccountMigrationDeDe accountMigration_ = _TranslationsMisskeyAccountMigrationDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsDeDe achievements_ = _TranslationsMisskeyAchievementsDeDe._(_root);
-	@override late final _TranslationsMisskeyRoleDeDe role_ = _TranslationsMisskeyRoleDeDe._(_root);
-	@override late final _TranslationsMisskeySensitiveMediaDetectionDeDe sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionDeDe._(_root);
-	@override late final _TranslationsMisskeyEmailUnavailableDeDe emailUnavailable_ = _TranslationsMisskeyEmailUnavailableDeDe._(_root);
-	@override late final _TranslationsMisskeyFfVisibilityDeDe ffVisibility_ = _TranslationsMisskeyFfVisibilityDeDe._(_root);
-	@override late final _TranslationsMisskeySignupDeDe signup_ = _TranslationsMisskeySignupDeDe._(_root);
-	@override late final _TranslationsMisskeyAccountDeleteDeDe accountDelete_ = _TranslationsMisskeyAccountDeleteDeDe._(_root);
-	@override late final _TranslationsMisskeyAdDeDe ad_ = _TranslationsMisskeyAdDeDe._(_root);
-	@override late final _TranslationsMisskeyForgotPasswordDeDe forgotPassword_ = _TranslationsMisskeyForgotPasswordDeDe._(_root);
-	@override late final _TranslationsMisskeyGalleryDeDe gallery_ = _TranslationsMisskeyGalleryDeDe._(_root);
-	@override late final _TranslationsMisskeyEmailDeDe email_ = _TranslationsMisskeyEmailDeDe._(_root);
-	@override late final _TranslationsMisskeyPluginDeDe plugin_ = _TranslationsMisskeyPluginDeDe._(_root);
-	@override late final _TranslationsMisskeyPreferencesBackupsDeDe preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsDeDe._(_root);
-	@override late final _TranslationsMisskeyRegistryDeDe registry_ = _TranslationsMisskeyRegistryDeDe._(_root);
-	@override late final _TranslationsMisskeyAboutMisskeyDeDe aboutMisskey_ = _TranslationsMisskeyAboutMisskeyDeDe._(_root);
-	@override late final _TranslationsMisskeyDisplayOfSensitiveMediaDeDe displayOfSensitiveMedia_ = _TranslationsMisskeyDisplayOfSensitiveMediaDeDe._(_root);
-	@override late final _TranslationsMisskeyInstanceTickerDeDe instanceTicker_ = _TranslationsMisskeyInstanceTickerDeDe._(_root);
-	@override late final _TranslationsMisskeyServerDisconnectedBehaviorDeDe serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorDeDe._(_root);
-	@override late final _TranslationsMisskeyChannelDeDe channel_ = _TranslationsMisskeyChannelDeDe._(_root);
-	@override late final _TranslationsMisskeyMenuDisplayDeDe menuDisplay_ = _TranslationsMisskeyMenuDisplayDeDe._(_root);
-	@override late final _TranslationsMisskeyWordMuteDeDe wordMute_ = _TranslationsMisskeyWordMuteDeDe._(_root);
-	@override late final _TranslationsMisskeyInstanceMuteDeDe instanceMute_ = _TranslationsMisskeyInstanceMuteDeDe._(_root);
-	@override late final _TranslationsMisskeyThemeDeDe theme_ = _TranslationsMisskeyThemeDeDe._(_root);
-	@override late final _TranslationsMisskeySfxDeDe sfx_ = _TranslationsMisskeySfxDeDe._(_root);
-	@override late final _TranslationsMisskeySoundSettingsDeDe soundSettings_ = _TranslationsMisskeySoundSettingsDeDe._(_root);
-	@override late final _TranslationsMisskeyAgoDeDe ago_ = _TranslationsMisskeyAgoDeDe._(_root);
-	@override late final _TranslationsMisskeyTimeInDeDe timeIn_ = _TranslationsMisskeyTimeInDeDe._(_root);
-	@override late final _TranslationsMisskeyTimeDeDe time_ = _TranslationsMisskeyTimeDeDe._(_root);
-	@override late final _TranslationsMisskeyX2faDeDe x2fa_ = _TranslationsMisskeyX2faDeDe._(_root);
-	@override late final _TranslationsMisskeyPermissionsDeDe permissions_ = _TranslationsMisskeyPermissionsDeDe._(_root);
-	@override late final _TranslationsMisskeyAuthDeDe auth_ = _TranslationsMisskeyAuthDeDe._(_root);
-	@override late final _TranslationsMisskeyAntennaSourcesDeDe antennaSources_ = _TranslationsMisskeyAntennaSourcesDeDe._(_root);
-	@override late final _TranslationsMisskeyWeekdayDeDe weekday_ = _TranslationsMisskeyWeekdayDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetsDeDe widgets_ = _TranslationsMisskeyWidgetsDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsDeDe widgetOptions_ = _TranslationsMisskeyWidgetOptionsDeDe._(_root);
-	@override late final _TranslationsMisskeyCwDeDe cw_ = _TranslationsMisskeyCwDeDe._(_root);
-	@override late final _TranslationsMisskeyPollDeDe poll_ = _TranslationsMisskeyPollDeDe._(_root);
-	@override late final _TranslationsMisskeyVisibilityDeDe visibility_ = _TranslationsMisskeyVisibilityDeDe._(_root);
-	@override late final _TranslationsMisskeyPostFormDeDe postForm_ = _TranslationsMisskeyPostFormDeDe._(_root);
-	@override late final _TranslationsMisskeyProfileDeDe profile_ = _TranslationsMisskeyProfileDeDe._(_root);
-	@override late final _TranslationsMisskeyExportOrImportDeDe exportOrImport_ = _TranslationsMisskeyExportOrImportDeDe._(_root);
-	@override late final _TranslationsMisskeyChartsDeDe charts_ = _TranslationsMisskeyChartsDeDe._(_root);
-	@override late final _TranslationsMisskeyInstanceChartsDeDe instanceCharts_ = _TranslationsMisskeyInstanceChartsDeDe._(_root);
-	@override late final _TranslationsMisskeyTimelinesDeDe timelines_ = _TranslationsMisskeyTimelinesDeDe._(_root);
-	@override late final _TranslationsMisskeyPlayDeDe play_ = _TranslationsMisskeyPlayDeDe._(_root);
-	@override late final _TranslationsMisskeyPagesDeDe pages_ = _TranslationsMisskeyPagesDeDe._(_root);
-	@override late final _TranslationsMisskeyRelayStatusDeDe relayStatus_ = _TranslationsMisskeyRelayStatusDeDe._(_root);
-	@override late final _TranslationsMisskeyNotificationDeDe notification_ = _TranslationsMisskeyNotificationDeDe._(_root);
-	@override late final _TranslationsMisskeyDeckDeDe deck_ = _TranslationsMisskeyDeckDeDe._(_root);
-	@override late final _TranslationsMisskeyDialogDeDe dialog_ = _TranslationsMisskeyDialogDeDe._(_root);
-	@override late final _TranslationsMisskeyDisabledTimelineDeDe disabledTimeline_ = _TranslationsMisskeyDisabledTimelineDeDe._(_root);
-	@override late final _TranslationsMisskeyDrivecleanerDeDe drivecleaner_ = _TranslationsMisskeyDrivecleanerDeDe._(_root);
-	@override late final _TranslationsMisskeyWebhookSettingsDeDe webhookSettings_ = _TranslationsMisskeyWebhookSettingsDeDe._(_root);
-	@override late final _TranslationsMisskeyAbuseReportDeDe abuseReport_ = _TranslationsMisskeyAbuseReportDeDe._(_root);
-	@override late final _TranslationsMisskeyModerationLogTypesDeDe moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesDeDe._(_root);
-	@override late final _TranslationsMisskeyFileViewerDeDe fileViewer_ = _TranslationsMisskeyFileViewerDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerDeDe externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverDeDe dataSaver_ = _TranslationsMisskeyDataSaverDeDe._(_root);
-	@override late final _TranslationsMisskeyHemisphereDeDe hemisphere_ = _TranslationsMisskeyHemisphereDeDe._(_root);
-	@override late final _TranslationsMisskeyReversiDeDe reversi_ = _TranslationsMisskeyReversiDeDe._(_root);
-	@override late final _TranslationsMisskeyOfflineScreenDeDe offlineScreen_ = _TranslationsMisskeyOfflineScreenDeDe._(_root);
-	@override late final _TranslationsMisskeyUrlPreviewSettingDeDe urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingDeDe._(_root);
-	@override late final _TranslationsMisskeyMediaControlsDeDe mediaControls_ = _TranslationsMisskeyMediaControlsDeDe._(_root);
-	@override late final _TranslationsMisskeyContextMenuDeDe contextMenu_ = _TranslationsMisskeyContextMenuDeDe._(_root);
-	@override late final _TranslationsMisskeyGridComponentDeDe gridComponent_ = _TranslationsMisskeyGridComponentDeDe._(_root);
-	@override late final _TranslationsMisskeyRoleSelectDialogDeDe roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogDeDe._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerDeDe customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerDeDe._(_root);
-	@override late final _TranslationsMisskeyEmbedCodeGenDeDe embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenDeDe._(_root);
-	@override late final _TranslationsMisskeySelfXssPreventionDeDe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionDeDe._(_root);
-	@override late final _TranslationsMisskeyFollowRequestDeDe followRequest_ = _TranslationsMisskeyFollowRequestDeDe._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsDeDe remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsDeDe._(_root);
-	@override late final _TranslationsMisskeyCaptchaDeDe captcha_ = _TranslationsMisskeyCaptchaDeDe._(_root);
-	@override late final _TranslationsMisskeyBootErrorsDeDe bootErrors_ = _TranslationsMisskeyBootErrorsDeDe._(_root);
-	@override late final _TranslationsMisskeySearchDeDe search_ = _TranslationsMisskeySearchDeDe._(_root);
-	@override late final _TranslationsMisskeyServerSetupWizardDeDe serverSetupWizard_ = _TranslationsMisskeyServerSetupWizardDeDe._(_root);
-	@override late final _TranslationsMisskeyUploaderDeDe uploader_ = _TranslationsMisskeyUploaderDeDe._(_root);
-	@override late final _TranslationsMisskeyClientPerformanceIssueTipDeDe clientPerformanceIssueTip_ = _TranslationsMisskeyClientPerformanceIssueTipDeDe._(_root);
-	@override late final _TranslationsMisskeyClipDeDe clip_ = _TranslationsMisskeyClipDeDe._(_root);
-	@override late final _TranslationsMisskeyUserListsDeDe userLists_ = _TranslationsMisskeyUserListsDeDe._(_root);
+	@override late final _Translations$misskey$imageEditing_$de_DE imageEditing_ = _Translations$misskey$imageEditing_$de_DE._(_root);
+	@override late final _Translations$misskey$imageFrameEditor_$de_DE imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$de_DE._(_root);
+	@override late final _Translations$misskey$compression_$de_DE compression_ = _Translations$misskey$compression_$de_DE._(_root);
+	@override late final _Translations$misskey$order_$de_DE order_ = _Translations$misskey$order_$de_DE._(_root);
+	@override late final _Translations$misskey$chat_$de_DE chat_ = _Translations$misskey$chat_$de_DE._(_root);
+	@override late final _Translations$misskey$emojiPalette_$de_DE emojiPalette_ = _Translations$misskey$emojiPalette_$de_DE._(_root);
+	@override late final _Translations$misskey$settings_$de_DE settings_ = _Translations$misskey$settings_$de_DE._(_root);
+	@override late final _Translations$misskey$preferencesProfile_$de_DE preferencesProfile_ = _Translations$misskey$preferencesProfile_$de_DE._(_root);
+	@override late final _Translations$misskey$preferencesBackup_$de_DE preferencesBackup_ = _Translations$misskey$preferencesBackup_$de_DE._(_root);
+	@override late final _Translations$misskey$accountSettings_$de_DE accountSettings_ = _Translations$misskey$accountSettings_$de_DE._(_root);
+	@override late final _Translations$misskey$abuseUserReport_$de_DE abuseUserReport_ = _Translations$misskey$abuseUserReport_$de_DE._(_root);
+	@override late final _Translations$misskey$delivery_$de_DE delivery_ = _Translations$misskey$delivery_$de_DE._(_root);
+	@override late final _Translations$misskey$bubbleGame_$de_DE bubbleGame_ = _Translations$misskey$bubbleGame_$de_DE._(_root);
+	@override late final _Translations$misskey$announcement_$de_DE announcement_ = _Translations$misskey$announcement_$de_DE._(_root);
+	@override late final _Translations$misskey$initialAccountSetting_$de_DE initialAccountSetting_ = _Translations$misskey$initialAccountSetting_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$de_DE initialTutorial_ = _Translations$misskey$initialTutorial_$de_DE._(_root);
+	@override late final _Translations$misskey$timelineDescription_$de_DE timelineDescription_ = _Translations$misskey$timelineDescription_$de_DE._(_root);
+	@override late final _Translations$misskey$serverRules_$de_DE serverRules_ = _Translations$misskey$serverRules_$de_DE._(_root);
+	@override late final _Translations$misskey$serverSettings_$de_DE serverSettings_ = _Translations$misskey$serverSettings_$de_DE._(_root);
+	@override late final _Translations$misskey$accountMigration_$de_DE accountMigration_ = _Translations$misskey$accountMigration_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$de_DE achievements_ = _Translations$misskey$achievements_$de_DE._(_root);
+	@override late final _Translations$misskey$role_$de_DE role_ = _Translations$misskey$role_$de_DE._(_root);
+	@override late final _Translations$misskey$sensitiveMediaDetection_$de_DE sensitiveMediaDetection_ = _Translations$misskey$sensitiveMediaDetection_$de_DE._(_root);
+	@override late final _Translations$misskey$emailUnavailable_$de_DE emailUnavailable_ = _Translations$misskey$emailUnavailable_$de_DE._(_root);
+	@override late final _Translations$misskey$ffVisibility_$de_DE ffVisibility_ = _Translations$misskey$ffVisibility_$de_DE._(_root);
+	@override late final _Translations$misskey$signup_$de_DE signup_ = _Translations$misskey$signup_$de_DE._(_root);
+	@override late final _Translations$misskey$accountDelete_$de_DE accountDelete_ = _Translations$misskey$accountDelete_$de_DE._(_root);
+	@override late final _Translations$misskey$ad_$de_DE ad_ = _Translations$misskey$ad_$de_DE._(_root);
+	@override late final _Translations$misskey$forgotPassword_$de_DE forgotPassword_ = _Translations$misskey$forgotPassword_$de_DE._(_root);
+	@override late final _Translations$misskey$gallery_$de_DE gallery_ = _Translations$misskey$gallery_$de_DE._(_root);
+	@override late final _Translations$misskey$email_$de_DE email_ = _Translations$misskey$email_$de_DE._(_root);
+	@override late final _Translations$misskey$plugin_$de_DE plugin_ = _Translations$misskey$plugin_$de_DE._(_root);
+	@override late final _Translations$misskey$preferencesBackups_$de_DE preferencesBackups_ = _Translations$misskey$preferencesBackups_$de_DE._(_root);
+	@override late final _Translations$misskey$registry_$de_DE registry_ = _Translations$misskey$registry_$de_DE._(_root);
+	@override late final _Translations$misskey$aboutMisskey_$de_DE aboutMisskey_ = _Translations$misskey$aboutMisskey_$de_DE._(_root);
+	@override late final _Translations$misskey$displayOfSensitiveMedia_$de_DE displayOfSensitiveMedia_ = _Translations$misskey$displayOfSensitiveMedia_$de_DE._(_root);
+	@override late final _Translations$misskey$instanceTicker_$de_DE instanceTicker_ = _Translations$misskey$instanceTicker_$de_DE._(_root);
+	@override late final _Translations$misskey$serverDisconnectedBehavior_$de_DE serverDisconnectedBehavior_ = _Translations$misskey$serverDisconnectedBehavior_$de_DE._(_root);
+	@override late final _Translations$misskey$channel_$de_DE channel_ = _Translations$misskey$channel_$de_DE._(_root);
+	@override late final _Translations$misskey$menuDisplay_$de_DE menuDisplay_ = _Translations$misskey$menuDisplay_$de_DE._(_root);
+	@override late final _Translations$misskey$wordMute_$de_DE wordMute_ = _Translations$misskey$wordMute_$de_DE._(_root);
+	@override late final _Translations$misskey$instanceMute_$de_DE instanceMute_ = _Translations$misskey$instanceMute_$de_DE._(_root);
+	@override late final _Translations$misskey$theme_$de_DE theme_ = _Translations$misskey$theme_$de_DE._(_root);
+	@override late final _Translations$misskey$sfx_$de_DE sfx_ = _Translations$misskey$sfx_$de_DE._(_root);
+	@override late final _Translations$misskey$soundSettings_$de_DE soundSettings_ = _Translations$misskey$soundSettings_$de_DE._(_root);
+	@override late final _Translations$misskey$ago_$de_DE ago_ = _Translations$misskey$ago_$de_DE._(_root);
+	@override late final _Translations$misskey$timeIn_$de_DE timeIn_ = _Translations$misskey$timeIn_$de_DE._(_root);
+	@override late final _Translations$misskey$time_$de_DE time_ = _Translations$misskey$time_$de_DE._(_root);
+	@override late final _Translations$misskey$x2fa_$de_DE x2fa_ = _Translations$misskey$x2fa_$de_DE._(_root);
+	@override late final _Translations$misskey$permissions_$de_DE permissions_ = _Translations$misskey$permissions_$de_DE._(_root);
+	@override late final _Translations$misskey$auth_$de_DE auth_ = _Translations$misskey$auth_$de_DE._(_root);
+	@override late final _Translations$misskey$antennaSources_$de_DE antennaSources_ = _Translations$misskey$antennaSources_$de_DE._(_root);
+	@override late final _Translations$misskey$weekday_$de_DE weekday_ = _Translations$misskey$weekday_$de_DE._(_root);
+	@override late final _Translations$misskey$widgets_$de_DE widgets_ = _Translations$misskey$widgets_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$de_DE widgetOptions_ = _Translations$misskey$widgetOptions_$de_DE._(_root);
+	@override late final _Translations$misskey$cw_$de_DE cw_ = _Translations$misskey$cw_$de_DE._(_root);
+	@override late final _Translations$misskey$poll_$de_DE poll_ = _Translations$misskey$poll_$de_DE._(_root);
+	@override late final _Translations$misskey$visibility_$de_DE visibility_ = _Translations$misskey$visibility_$de_DE._(_root);
+	@override late final _Translations$misskey$postForm_$de_DE postForm_ = _Translations$misskey$postForm_$de_DE._(_root);
+	@override late final _Translations$misskey$profile_$de_DE profile_ = _Translations$misskey$profile_$de_DE._(_root);
+	@override late final _Translations$misskey$exportOrImport_$de_DE exportOrImport_ = _Translations$misskey$exportOrImport_$de_DE._(_root);
+	@override late final _Translations$misskey$charts_$de_DE charts_ = _Translations$misskey$charts_$de_DE._(_root);
+	@override late final _Translations$misskey$instanceCharts_$de_DE instanceCharts_ = _Translations$misskey$instanceCharts_$de_DE._(_root);
+	@override late final _Translations$misskey$timelines_$de_DE timelines_ = _Translations$misskey$timelines_$de_DE._(_root);
+	@override late final _Translations$misskey$play_$de_DE play_ = _Translations$misskey$play_$de_DE._(_root);
+	@override late final _Translations$misskey$pages_$de_DE pages_ = _Translations$misskey$pages_$de_DE._(_root);
+	@override late final _Translations$misskey$relayStatus_$de_DE relayStatus_ = _Translations$misskey$relayStatus_$de_DE._(_root);
+	@override late final _Translations$misskey$notification_$de_DE notification_ = _Translations$misskey$notification_$de_DE._(_root);
+	@override late final _Translations$misskey$deck_$de_DE deck_ = _Translations$misskey$deck_$de_DE._(_root);
+	@override late final _Translations$misskey$dialog_$de_DE dialog_ = _Translations$misskey$dialog_$de_DE._(_root);
+	@override late final _Translations$misskey$disabledTimeline_$de_DE disabledTimeline_ = _Translations$misskey$disabledTimeline_$de_DE._(_root);
+	@override late final _Translations$misskey$drivecleaner_$de_DE drivecleaner_ = _Translations$misskey$drivecleaner_$de_DE._(_root);
+	@override late final _Translations$misskey$webhookSettings_$de_DE webhookSettings_ = _Translations$misskey$webhookSettings_$de_DE._(_root);
+	@override late final _Translations$misskey$abuseReport_$de_DE abuseReport_ = _Translations$misskey$abuseReport_$de_DE._(_root);
+	@override late final _Translations$misskey$moderationLogTypes_$de_DE moderationLogTypes_ = _Translations$misskey$moderationLogTypes_$de_DE._(_root);
+	@override late final _Translations$misskey$fileViewer_$de_DE fileViewer_ = _Translations$misskey$fileViewer_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$de_DE externalResourceInstaller_ = _Translations$misskey$externalResourceInstaller_$de_DE._(_root);
+	@override late final _Translations$misskey$dataSaver_$de_DE dataSaver_ = _Translations$misskey$dataSaver_$de_DE._(_root);
+	@override late final _Translations$misskey$hemisphere_$de_DE hemisphere_ = _Translations$misskey$hemisphere_$de_DE._(_root);
+	@override late final _Translations$misskey$reversi_$de_DE reversi_ = _Translations$misskey$reversi_$de_DE._(_root);
+	@override late final _Translations$misskey$offlineScreen_$de_DE offlineScreen_ = _Translations$misskey$offlineScreen_$de_DE._(_root);
+	@override late final _Translations$misskey$urlPreviewSetting_$de_DE urlPreviewSetting_ = _Translations$misskey$urlPreviewSetting_$de_DE._(_root);
+	@override late final _Translations$misskey$mediaControls_$de_DE mediaControls_ = _Translations$misskey$mediaControls_$de_DE._(_root);
+	@override late final _Translations$misskey$contextMenu_$de_DE contextMenu_ = _Translations$misskey$contextMenu_$de_DE._(_root);
+	@override late final _Translations$misskey$gridComponent_$de_DE gridComponent_ = _Translations$misskey$gridComponent_$de_DE._(_root);
+	@override late final _Translations$misskey$roleSelectDialog_$de_DE roleSelectDialog_ = _Translations$misskey$roleSelectDialog_$de_DE._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$de_DE customEmojisManager_ = _Translations$misskey$customEmojisManager_$de_DE._(_root);
+	@override late final _Translations$misskey$embedCodeGen_$de_DE embedCodeGen_ = _Translations$misskey$embedCodeGen_$de_DE._(_root);
+	@override late final _Translations$misskey$selfXssPrevention_$de_DE selfXssPrevention_ = _Translations$misskey$selfXssPrevention_$de_DE._(_root);
+	@override late final _Translations$misskey$followRequest_$de_DE followRequest_ = _Translations$misskey$followRequest_$de_DE._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$de_DE remoteLookupErrors_ = _Translations$misskey$remoteLookupErrors_$de_DE._(_root);
+	@override late final _Translations$misskey$captcha_$de_DE captcha_ = _Translations$misskey$captcha_$de_DE._(_root);
+	@override late final _Translations$misskey$bootErrors_$de_DE bootErrors_ = _Translations$misskey$bootErrors_$de_DE._(_root);
+	@override late final _Translations$misskey$search_$de_DE search_ = _Translations$misskey$search_$de_DE._(_root);
+	@override late final _Translations$misskey$serverSetupWizard_$de_DE serverSetupWizard_ = _Translations$misskey$serverSetupWizard_$de_DE._(_root);
+	@override late final _Translations$misskey$uploader_$de_DE uploader_ = _Translations$misskey$uploader_$de_DE._(_root);
+	@override late final _Translations$misskey$clientPerformanceIssueTip_$de_DE clientPerformanceIssueTip_ = _Translations$misskey$clientPerformanceIssueTip_$de_DE._(_root);
+	@override late final _Translations$misskey$clip_$de_DE clip_ = _Translations$misskey$clip_$de_DE._(_root);
+	@override late final _Translations$misskey$userLists_$de_DE userLists_ = _Translations$misskey$userLists_$de_DE._(_root);
 	@override String get watermark => 'Wasserzeichen';
 	@override String get defaultPreset => 'Standard-Voreinstellungen';
-	@override late final _TranslationsMisskeyWatermarkEditorDeDe watermarkEditor_ = _TranslationsMisskeyWatermarkEditorDeDe._(_root);
-	@override late final _TranslationsMisskeyImageEffectorDeDe imageEffector_ = _TranslationsMisskeyImageEffectorDeDe._(_root);
+	@override late final _Translations$misskey$watermarkEditor_$de_DE watermarkEditor_ = _Translations$misskey$watermarkEditor_$de_DE._(_root);
+	@override late final _Translations$misskey$imageEffector_$de_DE imageEffector_ = _Translations$misskey$imageEffector_$de_DE._(_root);
 	@override String get drafts => 'Entwurf';
-	@override late final _TranslationsMisskeyDraftsDeDe drafts_ = _TranslationsMisskeyDraftsDeDe._(_root);
+	@override late final _Translations$misskey$drafts_$de_DE drafts_ = _Translations$misskey$drafts_$de_DE._(_root);
 	@override String get qr => 'QR-Code';
-	@override late final _TranslationsMisskeyQrDeDe qr_ = _TranslationsMisskeyQrDeDe._(_root);
+	@override late final _Translations$misskey$qr_$de_DE qr_ = _Translations$misskey$qr_$de_DE._(_root);
 }
 
 // Path: misskey.imageEditing_
-class _TranslationsMisskeyImageEditingDeDe extends TranslationsMisskeyImageEditingEnUs {
-	_TranslationsMisskeyImageEditingDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEditing_$de_DE extends Translations$misskey$imageEditing_$en_US {
+	_Translations$misskey$imageEditing_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyImageEditingVarsDeDe vars_ = _TranslationsMisskeyImageEditingVarsDeDe._(_root);
+	@override late final _Translations$misskey$imageEditing_$vars_$de_DE vars_ = _Translations$misskey$imageEditing_$vars_$de_DE._(_root);
 }
 
 // Path: misskey.imageFrameEditor_
-class _TranslationsMisskeyImageFrameEditorDeDe extends TranslationsMisskeyImageFrameEditorEnUs {
-	_TranslationsMisskeyImageFrameEditorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageFrameEditor_$de_DE extends Translations$misskey$imageFrameEditor_$en_US {
+	_Translations$misskey$imageFrameEditor_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -1876,19 +1876,19 @@ class _TranslationsMisskeyImageFrameEditorDeDe extends TranslationsMisskeyImageF
 }
 
 // Path: misskey.compression_
-class _TranslationsMisskeyCompressionDeDe extends TranslationsMisskeyCompressionEnUs {
-	_TranslationsMisskeyCompressionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$compression_$de_DE extends Translations$misskey$compression_$en_US {
+	_Translations$misskey$compression_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyCompressionQualityDeDe quality_ = _TranslationsMisskeyCompressionQualityDeDe._(_root);
-	@override late final _TranslationsMisskeyCompressionSizeDeDe size_ = _TranslationsMisskeyCompressionSizeDeDe._(_root);
+	@override late final _Translations$misskey$compression_$quality_$de_DE quality_ = _Translations$misskey$compression_$quality_$de_DE._(_root);
+	@override late final _Translations$misskey$compression_$size_$de_DE size_ = _Translations$misskey$compression_$size_$de_DE._(_root);
 }
 
 // Path: misskey.order_
-class _TranslationsMisskeyOrderDeDe extends TranslationsMisskeyOrderEnUs {
-	_TranslationsMisskeyOrderDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$order_$de_DE extends Translations$misskey$order_$en_US {
+	_Translations$misskey$order_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -1898,8 +1898,8 @@ class _TranslationsMisskeyOrderDeDe extends TranslationsMisskeyOrderEnUs {
 }
 
 // Path: misskey.chat_
-class _TranslationsMisskeyChatDeDe extends TranslationsMisskeyChatEnUs {
-	_TranslationsMisskeyChatDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$chat_$de_DE extends Translations$misskey$chat_$en_US {
+	_Translations$misskey$chat_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -1946,12 +1946,12 @@ class _TranslationsMisskeyChatDeDe extends TranslationsMisskeyChatEnUs {
 	@override String get thisUserNotAllowedChatAnyone => 'Dieser Benutzer nimmt keine Chats von anderen Benutzern an.';
 	@override String get chatAllowedUsers => 'Wem das Chatten erlaubt werden soll';
 	@override String get chatAllowedUsers_note => 'Du kannst unabhängig von dieser Einstellung mit allen Personen chatten, denen du eine Chat-Nachricht gesendet hast.';
-	@override late final _TranslationsMisskeyChatChatAllowedUsersDeDe chatAllowedUsers_ = _TranslationsMisskeyChatChatAllowedUsersDeDe._(_root);
+	@override late final _Translations$misskey$chat_$chatAllowedUsers_$de_DE chatAllowedUsers_ = _Translations$misskey$chat_$chatAllowedUsers_$de_DE._(_root);
 }
 
 // Path: misskey.emojiPalette_
-class _TranslationsMisskeyEmojiPaletteDeDe extends TranslationsMisskeyEmojiPaletteEnUs {
-	_TranslationsMisskeyEmojiPaletteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$emojiPalette_$de_DE extends Translations$misskey$emojiPalette_$en_US {
+	_Translations$misskey$emojiPalette_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -1963,8 +1963,8 @@ class _TranslationsMisskeyEmojiPaletteDeDe extends TranslationsMisskeyEmojiPalet
 }
 
 // Path: misskey.settings_
-class _TranslationsMisskeySettingsDeDe extends TranslationsMisskeySettingsEnUs {
-	_TranslationsMisskeySettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$settings_$de_DE extends Translations$misskey$settings_$en_US {
+	_Translations$misskey$settings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2009,12 +2009,12 @@ class _TranslationsMisskeySettingsDeDe extends TranslationsMisskeySettingsEnUs {
 	@override String get settingsPersistence_title => 'Persistenz der Einstellungen';
 	@override String get settingsPersistence_description1 => 'Durch das Aktivieren der persistenten Speicherung der Einstellungen kann verhindert werden, dass Einstellungsinformationen verloren gehen.';
 	@override String get settingsPersistence_description2 => 'Je nach Umgebung ist eine Aktivierung möglicherweise nicht möglich.';
-	@override late final _TranslationsMisskeySettingsChatDeDe chat_ = _TranslationsMisskeySettingsChatDeDe._(_root);
+	@override late final _Translations$misskey$settings_$chat_$de_DE chat_ = _Translations$misskey$settings_$chat_$de_DE._(_root);
 }
 
 // Path: misskey.preferencesProfile_
-class _TranslationsMisskeyPreferencesProfileDeDe extends TranslationsMisskeyPreferencesProfileEnUs {
-	_TranslationsMisskeyPreferencesProfileDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$preferencesProfile_$de_DE extends Translations$misskey$preferencesProfile_$en_US {
+	_Translations$misskey$preferencesProfile_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2028,8 +2028,8 @@ class _TranslationsMisskeyPreferencesProfileDeDe extends TranslationsMisskeyPref
 }
 
 // Path: misskey.preferencesBackup_
-class _TranslationsMisskeyPreferencesBackupDeDe extends TranslationsMisskeyPreferencesBackupEnUs {
-	_TranslationsMisskeyPreferencesBackupDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$preferencesBackup_$de_DE extends Translations$misskey$preferencesBackup_$en_US {
+	_Translations$misskey$preferencesBackup_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2046,8 +2046,8 @@ class _TranslationsMisskeyPreferencesBackupDeDe extends TranslationsMisskeyPrefe
 }
 
 // Path: misskey.accountSettings_
-class _TranslationsMisskeyAccountSettingsDeDe extends TranslationsMisskeyAccountSettingsEnUs {
-	_TranslationsMisskeyAccountSettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountSettings_$de_DE extends Translations$misskey$accountSettings_$en_US {
+	_Translations$misskey$accountSettings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2067,8 +2067,8 @@ class _TranslationsMisskeyAccountSettingsDeDe extends TranslationsMisskeyAccount
 }
 
 // Path: misskey.abuseUserReport_
-class _TranslationsMisskeyAbuseUserReportDeDe extends TranslationsMisskeyAbuseUserReportEnUs {
-	_TranslationsMisskeyAbuseUserReportDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseUserReport_$de_DE extends Translations$misskey$abuseUserReport_$en_US {
+	_Translations$misskey$abuseUserReport_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2082,8 +2082,8 @@ class _TranslationsMisskeyAbuseUserReportDeDe extends TranslationsMisskeyAbuseUs
 }
 
 // Path: misskey.delivery_
-class _TranslationsMisskeyDeliveryDeDe extends TranslationsMisskeyDeliveryEnUs {
-	_TranslationsMisskeyDeliveryDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$delivery_$de_DE extends Translations$misskey$delivery_$en_US {
+	_Translations$misskey$delivery_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2091,25 +2091,25 @@ class _TranslationsMisskeyDeliveryDeDe extends TranslationsMisskeyDeliveryEnUs {
 	@override String get status => 'Auslieferungsstatus';
 	@override String get stop => 'Gesperrt';
 	@override String get resume => 'Zustellung wieder fortsetzen';
-	@override late final _TranslationsMisskeyDeliveryTypeDeDe type_ = _TranslationsMisskeyDeliveryTypeDeDe._(_root);
+	@override late final _Translations$misskey$delivery_$type_$de_DE type_ = _Translations$misskey$delivery_$type_$de_DE._(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _TranslationsMisskeyBubbleGameDeDe extends TranslationsMisskeyBubbleGameEnUs {
-	_TranslationsMisskeyBubbleGameDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$bubbleGame_$de_DE extends Translations$misskey$bubbleGame_$en_US {
+	_Translations$misskey$bubbleGame_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get howToPlay => 'Wie man spielt';
 	@override String get hold => 'Halten';
-	@override late final _TranslationsMisskeyBubbleGameScoreDeDe score_ = _TranslationsMisskeyBubbleGameScoreDeDe._(_root);
-	@override late final _TranslationsMisskeyBubbleGameHowToPlayDeDe howToPlay_ = _TranslationsMisskeyBubbleGameHowToPlayDeDe._(_root);
+	@override late final _Translations$misskey$bubbleGame_$score_$de_DE score_ = _Translations$misskey$bubbleGame_$score_$de_DE._(_root);
+	@override late final _Translations$misskey$bubbleGame_$howToPlay_$de_DE howToPlay_ = _Translations$misskey$bubbleGame_$howToPlay_$de_DE._(_root);
 }
 
 // Path: misskey.announcement_
-class _TranslationsMisskeyAnnouncementDeDe extends TranslationsMisskeyAnnouncementEnUs {
-	_TranslationsMisskeyAnnouncementDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$announcement_$de_DE extends Translations$misskey$announcement_$en_US {
+	_Translations$misskey$announcement_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2129,8 +2129,8 @@ class _TranslationsMisskeyAnnouncementDeDe extends TranslationsMisskeyAnnounceme
 }
 
 // Path: misskey.initialAccountSetting_
-class _TranslationsMisskeyInitialAccountSettingDeDe extends TranslationsMisskeyInitialAccountSettingEnUs {
-	_TranslationsMisskeyInitialAccountSettingDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialAccountSetting_$de_DE extends Translations$misskey$initialAccountSetting_$en_US {
+	_Translations$misskey$initialAccountSetting_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2153,8 +2153,8 @@ class _TranslationsMisskeyInitialAccountSettingDeDe extends TranslationsMisskeyI
 }
 
 // Path: misskey.initialTutorial_
-class _TranslationsMisskeyInitialTutorialDeDe extends TranslationsMisskeyInitialTutorialEnUs {
-	_TranslationsMisskeyInitialTutorialDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$de_DE extends Translations$misskey$initialTutorial_$en_US {
+	_Translations$misskey$initialTutorial_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2163,18 +2163,18 @@ class _TranslationsMisskeyInitialTutorialDeDe extends TranslationsMisskeyInitial
 	@override String get title => 'Tutorial';
 	@override String get wellDone => 'Gut gemacht!';
 	@override String get skipAreYouSure => 'Möchtest du das Tutorial verlassen?';
-	@override late final _TranslationsMisskeyInitialTutorialLandingDeDe landing_ = _TranslationsMisskeyInitialTutorialLandingDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialNoteDeDe note_ = _TranslationsMisskeyInitialTutorialNoteDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialReactionDeDe reaction_ = _TranslationsMisskeyInitialTutorialReactionDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialTimelineDeDe timeline_ = _TranslationsMisskeyInitialTutorialTimelineDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteDeDe postNote_ = _TranslationsMisskeyInitialTutorialPostNoteDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe howToMakeAttachmentsSensitive_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialDoneDeDe done_ = _TranslationsMisskeyInitialTutorialDoneDeDe._(_root);
+	@override late final _Translations$misskey$initialTutorial_$landing_$de_DE landing_ = _Translations$misskey$initialTutorial_$landing_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$note_$de_DE note_ = _Translations$misskey$initialTutorial_$note_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$reaction_$de_DE reaction_ = _Translations$misskey$initialTutorial_$reaction_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$timeline_$de_DE timeline_ = _Translations$misskey$initialTutorial_$timeline_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$de_DE postNote_ = _Translations$misskey$initialTutorial_$postNote_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$de_DE howToMakeAttachmentsSensitive_ = _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$done_$de_DE done_ = _Translations$misskey$initialTutorial_$done_$de_DE._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _TranslationsMisskeyTimelineDescriptionDeDe extends TranslationsMisskeyTimelineDescriptionEnUs {
-	_TranslationsMisskeyTimelineDescriptionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$timelineDescription_$de_DE extends Translations$misskey$timelineDescription_$en_US {
+	_Translations$misskey$timelineDescription_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2186,8 +2186,8 @@ class _TranslationsMisskeyTimelineDescriptionDeDe extends TranslationsMisskeyTim
 }
 
 // Path: misskey.serverRules_
-class _TranslationsMisskeyServerRulesDeDe extends TranslationsMisskeyServerRulesEnUs {
-	_TranslationsMisskeyServerRulesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverRules_$de_DE extends Translations$misskey$serverRules_$en_US {
+	_Translations$misskey$serverRules_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2196,8 +2196,8 @@ class _TranslationsMisskeyServerRulesDeDe extends TranslationsMisskeyServerRules
 }
 
 // Path: misskey.serverSettings_
-class _TranslationsMisskeyServerSettingsDeDe extends TranslationsMisskeyServerSettingsEnUs {
-	_TranslationsMisskeyServerSettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSettings_$de_DE extends Translations$misskey$serverSettings_$en_US {
+	_Translations$misskey$serverSettings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2241,12 +2241,12 @@ class _TranslationsMisskeyServerSettingsDeDe extends TranslationsMisskeyServerSe
 	@override String get entrancePageStyle => 'Stil der Einstiegsseite';
 	@override String get showTimelineForVisitor => 'Zeitleiste anzeigen';
 	@override String get showActivitiesForVisitor => 'Aktivitäten anzeigen';
-	@override late final _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorDeDe userGeneratedContentsVisibilityForVisitor_ = _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorDeDe._(_root);
+	@override late final _Translations$misskey$serverSettings_$userGeneratedContentsVisibilityForVisitor_$de_DE userGeneratedContentsVisibilityForVisitor_ = _Translations$misskey$serverSettings_$userGeneratedContentsVisibilityForVisitor_$de_DE._(_root);
 }
 
 // Path: misskey.accountMigration_
-class _TranslationsMisskeyAccountMigrationDeDe extends TranslationsMisskeyAccountMigrationEnUs {
-	_TranslationsMisskeyAccountMigrationDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountMigration_$de_DE extends Translations$misskey$accountMigration_$en_US {
+	_Translations$misskey$accountMigration_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2268,19 +2268,19 @@ class _TranslationsMisskeyAccountMigrationDeDe extends TranslationsMisskeyAccoun
 }
 
 // Path: misskey.achievements_
-class _TranslationsMisskeyAchievementsDeDe extends TranslationsMisskeyAchievementsEnUs {
-	_TranslationsMisskeyAchievementsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$de_DE extends Translations$misskey$achievements_$en_US {
+	_Translations$misskey$achievements_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => 'Freigeschaltet am';
-	@override late final _TranslationsMisskeyAchievementsTypesDeDe types_ = _TranslationsMisskeyAchievementsTypesDeDe._(_root);
+	@override late final _Translations$misskey$achievements_$types_$de_DE types_ = _Translations$misskey$achievements_$types_$de_DE._(_root);
 }
 
 // Path: misskey.role_
-class _TranslationsMisskeyRoleDeDe extends TranslationsMisskeyRoleEnUs {
-	_TranslationsMisskeyRoleDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$de_DE extends Translations$misskey$role_$en_US {
+	_Translations$misskey$role_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2318,14 +2318,14 @@ class _TranslationsMisskeyRoleDeDe extends TranslationsMisskeyRoleEnUs {
 	@override String get canEditMembersByModerator => 'Moderatoren können Benutzern diese Rolle zuweisen';
 	@override String get descriptionOfCanEditMembersByModerator => 'Wenn aktiviert, so können Moderatoren und Adminstratoren anderen Benutzern diese Rolle zuweisen bzw. diese Zuweisung aufheben. Wenn deaktiviert, so ist es nur Administratoren möglich, Zuweisungen dieser Rolle zu verwalten.';
 	@override String get priority => 'Priorität';
-	@override late final _TranslationsMisskeyRolePriorityDeDe priority_ = _TranslationsMisskeyRolePriorityDeDe._(_root);
-	@override late final _TranslationsMisskeyRoleOptionsDeDe options_ = _TranslationsMisskeyRoleOptionsDeDe._(_root);
-	@override late final _TranslationsMisskeyRoleConditionDeDe condition_ = _TranslationsMisskeyRoleConditionDeDe._(_root);
+	@override late final _Translations$misskey$role_$priority_$de_DE priority_ = _Translations$misskey$role_$priority_$de_DE._(_root);
+	@override late final _Translations$misskey$role_$options_$de_DE options_ = _Translations$misskey$role_$options_$de_DE._(_root);
+	@override late final _Translations$misskey$role_$condition_$de_DE condition_ = _Translations$misskey$role_$condition_$de_DE._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _TranslationsMisskeySensitiveMediaDetectionDeDe extends TranslationsMisskeySensitiveMediaDetectionEnUs {
-	_TranslationsMisskeySensitiveMediaDetectionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$sensitiveMediaDetection_$de_DE extends Translations$misskey$sensitiveMediaDetection_$en_US {
+	_Translations$misskey$sensitiveMediaDetection_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2340,8 +2340,8 @@ class _TranslationsMisskeySensitiveMediaDetectionDeDe extends TranslationsMisske
 }
 
 // Path: misskey.emailUnavailable_
-class _TranslationsMisskeyEmailUnavailableDeDe extends TranslationsMisskeyEmailUnavailableEnUs {
-	_TranslationsMisskeyEmailUnavailableDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$emailUnavailable_$de_DE extends Translations$misskey$emailUnavailable_$en_US {
+	_Translations$misskey$emailUnavailable_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2355,8 +2355,8 @@ class _TranslationsMisskeyEmailUnavailableDeDe extends TranslationsMisskeyEmailU
 }
 
 // Path: misskey.ffVisibility_
-class _TranslationsMisskeyFfVisibilityDeDe extends TranslationsMisskeyFfVisibilityEnUs {
-	_TranslationsMisskeyFfVisibilityDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$ffVisibility_$de_DE extends Translations$misskey$ffVisibility_$en_US {
+	_Translations$misskey$ffVisibility_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2367,8 +2367,8 @@ class _TranslationsMisskeyFfVisibilityDeDe extends TranslationsMisskeyFfVisibili
 }
 
 // Path: misskey.signup_
-class _TranslationsMisskeySignupDeDe extends TranslationsMisskeySignupEnUs {
-	_TranslationsMisskeySignupDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$signup_$de_DE extends Translations$misskey$signup_$en_US {
+	_Translations$misskey$signup_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2379,8 +2379,8 @@ class _TranslationsMisskeySignupDeDe extends TranslationsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _TranslationsMisskeyAccountDeleteDeDe extends TranslationsMisskeyAccountDeleteEnUs {
-	_TranslationsMisskeyAccountDeleteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$accountDelete_$de_DE extends Translations$misskey$accountDelete_$en_US {
+	_Translations$misskey$accountDelete_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2394,8 +2394,8 @@ class _TranslationsMisskeyAccountDeleteDeDe extends TranslationsMisskeyAccountDe
 }
 
 // Path: misskey.ad_
-class _TranslationsMisskeyAdDeDe extends TranslationsMisskeyAdEnUs {
-	_TranslationsMisskeyAdDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$ad_$de_DE extends Translations$misskey$ad_$en_US {
+	_Translations$misskey$ad_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2411,8 +2411,8 @@ class _TranslationsMisskeyAdDeDe extends TranslationsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _TranslationsMisskeyForgotPasswordDeDe extends TranslationsMisskeyForgotPasswordEnUs {
-	_TranslationsMisskeyForgotPasswordDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$forgotPassword_$de_DE extends Translations$misskey$forgotPassword_$en_US {
+	_Translations$misskey$forgotPassword_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2423,8 +2423,8 @@ class _TranslationsMisskeyForgotPasswordDeDe extends TranslationsMisskeyForgotPa
 }
 
 // Path: misskey.gallery_
-class _TranslationsMisskeyGalleryDeDe extends TranslationsMisskeyGalleryEnUs {
-	_TranslationsMisskeyGalleryDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$gallery_$de_DE extends Translations$misskey$gallery_$en_US {
+	_Translations$misskey$gallery_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2436,19 +2436,19 @@ class _TranslationsMisskeyGalleryDeDe extends TranslationsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _TranslationsMisskeyEmailDeDe extends TranslationsMisskeyEmailEnUs {
-	_TranslationsMisskeyEmailDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$de_DE extends Translations$misskey$email_$en_US {
+	_Translations$misskey$email_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyEmailFollowDeDe follow_ = _TranslationsMisskeyEmailFollowDeDe._(_root);
-	@override late final _TranslationsMisskeyEmailReceiveFollowRequestDeDe receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestDeDe._(_root);
+	@override late final _Translations$misskey$email_$follow_$de_DE follow_ = _Translations$misskey$email_$follow_$de_DE._(_root);
+	@override late final _Translations$misskey$email_$receiveFollowRequest_$de_DE receiveFollowRequest_ = _Translations$misskey$email_$receiveFollowRequest_$de_DE._(_root);
 }
 
 // Path: misskey.plugin_
-class _TranslationsMisskeyPluginDeDe extends TranslationsMisskeyPluginEnUs {
-	_TranslationsMisskeyPluginDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$plugin_$de_DE extends Translations$misskey$plugin_$en_US {
+	_Translations$misskey$plugin_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2461,8 +2461,8 @@ class _TranslationsMisskeyPluginDeDe extends TranslationsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _TranslationsMisskeyPreferencesBackupsDeDe extends TranslationsMisskeyPreferencesBackupsEnUs {
-	_TranslationsMisskeyPreferencesBackupsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$preferencesBackups_$de_DE extends Translations$misskey$preferencesBackups_$en_US {
+	_Translations$misskey$preferencesBackups_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2487,8 +2487,8 @@ class _TranslationsMisskeyPreferencesBackupsDeDe extends TranslationsMisskeyPref
 }
 
 // Path: misskey.registry_
-class _TranslationsMisskeyRegistryDeDe extends TranslationsMisskeyRegistryEnUs {
-	_TranslationsMisskeyRegistryDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$registry_$de_DE extends Translations$misskey$registry_$en_US {
+	_Translations$misskey$registry_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2501,8 +2501,8 @@ class _TranslationsMisskeyRegistryDeDe extends TranslationsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _TranslationsMisskeyAboutMisskeyDeDe extends TranslationsMisskeyAboutMisskeyEnUs {
-	_TranslationsMisskeyAboutMisskeyDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$aboutMisskey_$de_DE extends Translations$misskey$aboutMisskey_$en_US {
+	_Translations$misskey$aboutMisskey_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2521,8 +2521,8 @@ class _TranslationsMisskeyAboutMisskeyDeDe extends TranslationsMisskeyAboutMissk
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _TranslationsMisskeyDisplayOfSensitiveMediaDeDe extends TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
-	_TranslationsMisskeyDisplayOfSensitiveMediaDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$displayOfSensitiveMedia_$de_DE extends Translations$misskey$displayOfSensitiveMedia_$en_US {
+	_Translations$misskey$displayOfSensitiveMedia_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2533,8 +2533,8 @@ class _TranslationsMisskeyDisplayOfSensitiveMediaDeDe extends TranslationsMisske
 }
 
 // Path: misskey.instanceTicker_
-class _TranslationsMisskeyInstanceTickerDeDe extends TranslationsMisskeyInstanceTickerEnUs {
-	_TranslationsMisskeyInstanceTickerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceTicker_$de_DE extends Translations$misskey$instanceTicker_$en_US {
+	_Translations$misskey$instanceTicker_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2545,8 +2545,8 @@ class _TranslationsMisskeyInstanceTickerDeDe extends TranslationsMisskeyInstance
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _TranslationsMisskeyServerDisconnectedBehaviorDeDe extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
-	_TranslationsMisskeyServerDisconnectedBehaviorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverDisconnectedBehavior_$de_DE extends Translations$misskey$serverDisconnectedBehavior_$en_US {
+	_Translations$misskey$serverDisconnectedBehavior_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2557,8 +2557,8 @@ class _TranslationsMisskeyServerDisconnectedBehaviorDeDe extends TranslationsMis
 }
 
 // Path: misskey.channel_
-class _TranslationsMisskeyChannelDeDe extends TranslationsMisskeyChannelEnUs {
-	_TranslationsMisskeyChannelDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$channel_$de_DE extends Translations$misskey$channel_$en_US {
+	_Translations$misskey$channel_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2578,8 +2578,8 @@ class _TranslationsMisskeyChannelDeDe extends TranslationsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _TranslationsMisskeyMenuDisplayDeDe extends TranslationsMisskeyMenuDisplayEnUs {
-	_TranslationsMisskeyMenuDisplayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$menuDisplay_$de_DE extends Translations$misskey$menuDisplay_$en_US {
+	_Translations$misskey$menuDisplay_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2591,8 +2591,8 @@ class _TranslationsMisskeyMenuDisplayDeDe extends TranslationsMisskeyMenuDisplay
 }
 
 // Path: misskey.wordMute_
-class _TranslationsMisskeyWordMuteDeDe extends TranslationsMisskeyWordMuteEnUs {
-	_TranslationsMisskeyWordMuteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$wordMute_$de_DE extends Translations$misskey$wordMute_$en_US {
+	_Translations$misskey$wordMute_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2603,8 +2603,8 @@ class _TranslationsMisskeyWordMuteDeDe extends TranslationsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _TranslationsMisskeyInstanceMuteDeDe extends TranslationsMisskeyInstanceMuteEnUs {
-	_TranslationsMisskeyInstanceMuteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceMute_$de_DE extends Translations$misskey$instanceMute_$en_US {
+	_Translations$misskey$instanceMute_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2616,8 +2616,8 @@ class _TranslationsMisskeyInstanceMuteDeDe extends TranslationsMisskeyInstanceMu
 }
 
 // Path: misskey.theme_
-class _TranslationsMisskeyThemeDeDe extends TranslationsMisskeyThemeEnUs {
-	_TranslationsMisskeyThemeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$theme_$de_DE extends Translations$misskey$theme_$en_US {
+	_Translations$misskey$theme_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2653,12 +2653,12 @@ class _TranslationsMisskeyThemeDeDe extends TranslationsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Name der Konstanten eingeben';
 	@override String get importInfo => 'Hier kannst du Farbschemencode einfügen, um ihn in den Editor zu importieren';
 	@override String deleteConstantConfirm({required Object const_}) => 'Die Konstante ${const_} wirklich löschen?';
-	@override late final _TranslationsMisskeyThemeKeysDeDe keys = _TranslationsMisskeyThemeKeysDeDe._(_root);
+	@override late final _Translations$misskey$theme_$keys$de_DE keys = _Translations$misskey$theme_$keys$de_DE._(_root);
 }
 
 // Path: misskey.sfx_
-class _TranslationsMisskeySfxDeDe extends TranslationsMisskeySfxEnUs {
-	_TranslationsMisskeySfxDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$sfx_$de_DE extends Translations$misskey$sfx_$en_US {
+	_Translations$misskey$sfx_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2671,8 +2671,8 @@ class _TranslationsMisskeySfxDeDe extends TranslationsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _TranslationsMisskeySoundSettingsDeDe extends TranslationsMisskeySoundSettingsEnUs {
-	_TranslationsMisskeySoundSettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$soundSettings_$de_DE extends Translations$misskey$soundSettings_$en_US {
+	_Translations$misskey$soundSettings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2687,8 +2687,8 @@ class _TranslationsMisskeySoundSettingsDeDe extends TranslationsMisskeySoundSett
 }
 
 // Path: misskey.ago_
-class _TranslationsMisskeyAgoDeDe extends TranslationsMisskeyAgoEnUs {
-	_TranslationsMisskeyAgoDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$ago_$de_DE extends Translations$misskey$ago_$en_US {
+	_Translations$misskey$ago_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2706,8 +2706,8 @@ class _TranslationsMisskeyAgoDeDe extends TranslationsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _TranslationsMisskeyTimeInDeDe extends TranslationsMisskeyTimeInEnUs {
-	_TranslationsMisskeyTimeInDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$timeIn_$de_DE extends Translations$misskey$timeIn_$en_US {
+	_Translations$misskey$timeIn_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2722,8 +2722,8 @@ class _TranslationsMisskeyTimeInDeDe extends TranslationsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _TranslationsMisskeyTimeDeDe extends TranslationsMisskeyTimeEnUs {
-	_TranslationsMisskeyTimeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$time_$de_DE extends Translations$misskey$time_$en_US {
+	_Translations$misskey$time_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2736,8 +2736,8 @@ class _TranslationsMisskeyTimeDeDe extends TranslationsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _TranslationsMisskeyX2faDeDe extends TranslationsMisskeyX2faEnUs {
-	_TranslationsMisskeyX2faDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$x2fa_$de_DE extends Translations$misskey$x2fa_$en_US {
+	_Translations$misskey$x2fa_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2773,8 +2773,8 @@ class _TranslationsMisskeyX2faDeDe extends TranslationsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _TranslationsMisskeyPermissionsDeDe extends TranslationsMisskeyPermissionsEnUs {
-	_TranslationsMisskeyPermissionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$permissions_$de_DE extends Translations$misskey$permissions_$en_US {
+	_Translations$misskey$permissions_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2868,8 +2868,8 @@ class _TranslationsMisskeyPermissionsDeDe extends TranslationsMisskeyPermissions
 }
 
 // Path: misskey.auth_
-class _TranslationsMisskeyAuthDeDe extends TranslationsMisskeyAuthEnUs {
-	_TranslationsMisskeyAuthDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$auth_$de_DE extends Translations$misskey$auth_$en_US {
+	_Translations$misskey$auth_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2890,8 +2890,8 @@ class _TranslationsMisskeyAuthDeDe extends TranslationsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _TranslationsMisskeyAntennaSourcesDeDe extends TranslationsMisskeyAntennaSourcesEnUs {
-	_TranslationsMisskeyAntennaSourcesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$antennaSources_$de_DE extends Translations$misskey$antennaSources_$en_US {
+	_Translations$misskey$antennaSources_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2904,8 +2904,8 @@ class _TranslationsMisskeyAntennaSourcesDeDe extends TranslationsMisskeyAntennaS
 }
 
 // Path: misskey.weekday_
-class _TranslationsMisskeyWeekdayDeDe extends TranslationsMisskeyWeekdayEnUs {
-	_TranslationsMisskeyWeekdayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$weekday_$de_DE extends Translations$misskey$weekday_$en_US {
+	_Translations$misskey$weekday_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2920,8 +2920,8 @@ class _TranslationsMisskeyWeekdayDeDe extends TranslationsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _TranslationsMisskeyWidgetsDeDe extends TranslationsMisskeyWidgetsEnUs {
-	_TranslationsMisskeyWidgetsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgets_$de_DE extends Translations$misskey$widgets_$en_US {
+	_Translations$misskey$widgets_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2952,15 +2952,15 @@ class _TranslationsMisskeyWidgetsDeDe extends TranslationsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript-Anwendung';
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Benutzerliste';
-	@override late final _TranslationsMisskeyWidgetsUserListDeDe userList_ = _TranslationsMisskeyWidgetsUserListDeDe._(_root);
+	@override late final _Translations$misskey$widgets_$userList_$de_DE userList_ = _Translations$misskey$widgets_$userList_$de_DE._(_root);
 	@override String get clicker => 'Klickzähler';
 	@override String get birthdayFollowings => 'Nutzer, die heute Geburtstag haben';
 	@override String get chat => 'Mit dem Benutzer chatten';
 }
 
 // Path: misskey.widgetOptions_
-class _TranslationsMisskeyWidgetOptionsDeDe extends TranslationsMisskeyWidgetOptionsEnUs {
-	_TranslationsMisskeyWidgetOptionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$de_DE extends Translations$misskey$widgetOptions_$en_US {
+	_Translations$misskey$widgetOptions_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2968,17 +2968,17 @@ class _TranslationsMisskeyWidgetOptionsDeDe extends TranslationsMisskeyWidgetOpt
 	@override String get showHeader => 'Kopfzeile anzeigen';
 	@override String get transparent => 'Hintergrund transparent machen';
 	@override String get height => 'Höhe';
-	@override late final _TranslationsMisskeyWidgetOptionsButtonDeDe button_ = _TranslationsMisskeyWidgetOptionsButtonDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsClockDeDe clock_ = _TranslationsMisskeyWidgetOptionsClockDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsJobQueueDeDe jobQueue_ = _TranslationsMisskeyWidgetOptionsJobQueueDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsRssDeDe rss_ = _TranslationsMisskeyWidgetOptionsRssDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsRssTickerDeDe rssTicker_ = _TranslationsMisskeyWidgetOptionsRssTickerDeDe._(_root);
-	@override late final _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe birthdayFollowings_ = _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe._(_root);
+	@override late final _Translations$misskey$widgetOptions_$button_$de_DE button_ = _Translations$misskey$widgetOptions_$button_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$clock_$de_DE clock_ = _Translations$misskey$widgetOptions_$clock_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$jobQueue_$de_DE jobQueue_ = _Translations$misskey$widgetOptions_$jobQueue_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$rss_$de_DE rss_ = _Translations$misskey$widgetOptions_$rss_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$rssTicker_$de_DE rssTicker_ = _Translations$misskey$widgetOptions_$rssTicker_$de_DE._(_root);
+	@override late final _Translations$misskey$widgetOptions_$birthdayFollowings_$de_DE birthdayFollowings_ = _Translations$misskey$widgetOptions_$birthdayFollowings_$de_DE._(_root);
 }
 
 // Path: misskey.cw_
-class _TranslationsMisskeyCwDeDe extends TranslationsMisskeyCwEnUs {
-	_TranslationsMisskeyCwDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$cw_$de_DE extends Translations$misskey$cw_$en_US {
+	_Translations$misskey$cw_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -2990,8 +2990,8 @@ class _TranslationsMisskeyCwDeDe extends TranslationsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _TranslationsMisskeyPollDeDe extends TranslationsMisskeyPollEnUs {
-	_TranslationsMisskeyPollDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$poll_$de_DE extends Translations$misskey$poll_$en_US {
+	_Translations$misskey$poll_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3020,8 +3020,8 @@ class _TranslationsMisskeyPollDeDe extends TranslationsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _TranslationsMisskeyVisibilityDeDe extends TranslationsMisskeyVisibilityEnUs {
-	_TranslationsMisskeyVisibilityDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$visibility_$de_DE extends Translations$misskey$visibility_$en_US {
+	_Translations$misskey$visibility_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3039,8 +3039,8 @@ class _TranslationsMisskeyVisibilityDeDe extends TranslationsMisskeyVisibilityEn
 }
 
 // Path: misskey.postForm_
-class _TranslationsMisskeyPostFormDeDe extends TranslationsMisskeyPostFormEnUs {
-	_TranslationsMisskeyPostFormDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$de_DE extends Translations$misskey$postForm_$en_US {
+	_Translations$misskey$postForm_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3051,13 +3051,13 @@ class _TranslationsMisskeyPostFormDeDe extends TranslationsMisskeyPostFormEnUs {
 	@override String get quotePlaceholder => 'Diese Notiz zitieren …';
 	@override String get channelPlaceholder => 'In einen Kanal senden';
 	@override String get showHowToUse => 'Formularbeschreibung anzeigen';
-	@override late final _TranslationsMisskeyPostFormHowToUseDeDe howToUse_ = _TranslationsMisskeyPostFormHowToUseDeDe._(_root);
-	@override late final _TranslationsMisskeyPostFormPlaceholdersDeDe placeholders_ = _TranslationsMisskeyPostFormPlaceholdersDeDe._(_root);
+	@override late final _Translations$misskey$postForm_$howToUse_$de_DE howToUse_ = _Translations$misskey$postForm_$howToUse_$de_DE._(_root);
+	@override late final _Translations$misskey$postForm_$placeholders_$de_DE placeholders_ = _Translations$misskey$postForm_$placeholders_$de_DE._(_root);
 }
 
 // Path: misskey.profile_
-class _TranslationsMisskeyProfileDeDe extends TranslationsMisskeyProfileEnUs {
-	_TranslationsMisskeyProfileDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$profile_$de_DE extends Translations$misskey$profile_$en_US {
+	_Translations$misskey$profile_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3081,8 +3081,8 @@ class _TranslationsMisskeyProfileDeDe extends TranslationsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _TranslationsMisskeyExportOrImportDeDe extends TranslationsMisskeyExportOrImportEnUs {
-	_TranslationsMisskeyExportOrImportDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$exportOrImport_$de_DE extends Translations$misskey$exportOrImport_$en_US {
+	_Translations$misskey$exportOrImport_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3100,8 +3100,8 @@ class _TranslationsMisskeyExportOrImportDeDe extends TranslationsMisskeyExportOr
 }
 
 // Path: misskey.charts_
-class _TranslationsMisskeyChartsDeDe extends TranslationsMisskeyChartsEnUs {
-	_TranslationsMisskeyChartsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$charts_$de_DE extends Translations$misskey$charts_$en_US {
+	_Translations$misskey$charts_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3122,8 +3122,8 @@ class _TranslationsMisskeyChartsDeDe extends TranslationsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _TranslationsMisskeyInstanceChartsDeDe extends TranslationsMisskeyInstanceChartsEnUs {
-	_TranslationsMisskeyInstanceChartsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$instanceCharts_$de_DE extends Translations$misskey$instanceCharts_$en_US {
+	_Translations$misskey$instanceCharts_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3142,8 +3142,8 @@ class _TranslationsMisskeyInstanceChartsDeDe extends TranslationsMisskeyInstance
 }
 
 // Path: misskey.timelines_
-class _TranslationsMisskeyTimelinesDeDe extends TranslationsMisskeyTimelinesEnUs {
-	_TranslationsMisskeyTimelinesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$timelines_$de_DE extends Translations$misskey$timelines_$en_US {
+	_Translations$misskey$timelines_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3155,8 +3155,8 @@ class _TranslationsMisskeyTimelinesDeDe extends TranslationsMisskeyTimelinesEnUs
 }
 
 // Path: misskey.play_
-class _TranslationsMisskeyPlayDeDe extends TranslationsMisskeyPlayEnUs {
-	_TranslationsMisskeyPlayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$play_$de_DE extends Translations$misskey$play_$en_US {
+	_Translations$misskey$play_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3179,8 +3179,8 @@ class _TranslationsMisskeyPlayDeDe extends TranslationsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _TranslationsMisskeyPagesDeDe extends TranslationsMisskeyPagesEnUs {
-	_TranslationsMisskeyPagesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$de_DE extends Translations$misskey$pages_$en_US {
+	_Translations$misskey$pages_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3220,12 +3220,12 @@ class _TranslationsMisskeyPagesDeDe extends TranslationsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Inhalt';
 	@override String get inputBlocks => 'Eingabe';
 	@override String get specialBlocks => 'Spezial';
-	@override late final _TranslationsMisskeyPagesBlocksDeDe blocks = _TranslationsMisskeyPagesBlocksDeDe._(_root);
+	@override late final _Translations$misskey$pages_$blocks$de_DE blocks = _Translations$misskey$pages_$blocks$de_DE._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _TranslationsMisskeyRelayStatusDeDe extends TranslationsMisskeyRelayStatusEnUs {
-	_TranslationsMisskeyRelayStatusDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$relayStatus_$de_DE extends Translations$misskey$relayStatus_$en_US {
+	_Translations$misskey$relayStatus_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3236,8 +3236,8 @@ class _TranslationsMisskeyRelayStatusDeDe extends TranslationsMisskeyRelayStatus
 }
 
 // Path: misskey.notification_
-class _TranslationsMisskeyNotificationDeDe extends TranslationsMisskeyNotificationEnUs {
-	_TranslationsMisskeyNotificationDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$de_DE extends Translations$misskey$notification_$en_US {
+	_Translations$misskey$notification_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3272,13 +3272,13 @@ class _TranslationsMisskeyNotificationDeDe extends TranslationsMisskeyNotificati
 	@override String get login => 'Neue Anmeldung erfolgt';
 	@override String get createToken => 'Ein Zugangstoken wurde erstellt';
 	@override String createTokenDescription({required Object text}) => 'Wenn Sie keine Ahnung haben, löschen Sie das Zugriffstoken über "${text}"';
-	@override late final _TranslationsMisskeyNotificationTypesDeDe types_ = _TranslationsMisskeyNotificationTypesDeDe._(_root);
-	@override late final _TranslationsMisskeyNotificationActionsDeDe actions_ = _TranslationsMisskeyNotificationActionsDeDe._(_root);
+	@override late final _Translations$misskey$notification_$types_$de_DE types_ = _Translations$misskey$notification_$types_$de_DE._(_root);
+	@override late final _Translations$misskey$notification_$actions_$de_DE actions_ = _Translations$misskey$notification_$actions_$de_DE._(_root);
 }
 
 // Path: misskey.deck_
-class _TranslationsMisskeyDeckDeDe extends TranslationsMisskeyDeckEnUs {
-	_TranslationsMisskeyDeckDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$deck_$de_DE extends Translations$misskey$deck_$en_US {
+	_Translations$misskey$deck_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3308,13 +3308,13 @@ class _TranslationsMisskeyDeckDeDe extends TranslationsMisskeyDeckEnUs {
 	@override String get flexible => 'Automatische Breitenanpassung';
 	@override String get enableSyncBetweenDevicesForProfiles => 'Aktivieren der Synchronisierung von Profilinformationen zwischen Geräten';
 	@override String get showHowToUse => 'Siehe dir die UI-Beschreibung an.';
-	@override late final _TranslationsMisskeyDeckHowToUseDeDe howToUse_ = _TranslationsMisskeyDeckHowToUseDeDe._(_root);
-	@override late final _TranslationsMisskeyDeckColumnsDeDe columns_ = _TranslationsMisskeyDeckColumnsDeDe._(_root);
+	@override late final _Translations$misskey$deck_$howToUse_$de_DE howToUse_ = _Translations$misskey$deck_$howToUse_$de_DE._(_root);
+	@override late final _Translations$misskey$deck_$columns_$de_DE columns_ = _Translations$misskey$deck_$columns_$de_DE._(_root);
 }
 
 // Path: misskey.dialog_
-class _TranslationsMisskeyDialogDeDe extends TranslationsMisskeyDialogEnUs {
-	_TranslationsMisskeyDialogDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dialog_$de_DE extends Translations$misskey$dialog_$en_US {
+	_Translations$misskey$dialog_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3324,8 +3324,8 @@ class _TranslationsMisskeyDialogDeDe extends TranslationsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _TranslationsMisskeyDisabledTimelineDeDe extends TranslationsMisskeyDisabledTimelineEnUs {
-	_TranslationsMisskeyDisabledTimelineDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$disabledTimeline_$de_DE extends Translations$misskey$disabledTimeline_$en_US {
+	_Translations$misskey$disabledTimeline_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3335,8 +3335,8 @@ class _TranslationsMisskeyDisabledTimelineDeDe extends TranslationsMisskeyDisabl
 }
 
 // Path: misskey.drivecleaner_
-class _TranslationsMisskeyDrivecleanerDeDe extends TranslationsMisskeyDrivecleanerEnUs {
-	_TranslationsMisskeyDrivecleanerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$drivecleaner_$de_DE extends Translations$misskey$drivecleaner_$en_US {
+	_Translations$misskey$drivecleaner_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3346,8 +3346,8 @@ class _TranslationsMisskeyDrivecleanerDeDe extends TranslationsMisskeyDriveclean
 }
 
 // Path: misskey.webhookSettings_
-class _TranslationsMisskeyWebhookSettingsDeDe extends TranslationsMisskeyWebhookSettingsEnUs {
-	_TranslationsMisskeyWebhookSettingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$webhookSettings_$de_DE extends Translations$misskey$webhookSettings_$en_US {
+	_Translations$misskey$webhookSettings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3358,25 +3358,25 @@ class _TranslationsMisskeyWebhookSettingsDeDe extends TranslationsMisskeyWebhook
 	@override String get secret => 'Secret';
 	@override String get trigger => 'Auslöser';
 	@override String get active => 'Aktiviert';
-	@override late final _TranslationsMisskeyWebhookSettingsEventsDeDe events_ = _TranslationsMisskeyWebhookSettingsEventsDeDe._(_root);
-	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsDeDe systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsDeDe._(_root);
+	@override late final _Translations$misskey$webhookSettings_$events_$de_DE events_ = _Translations$misskey$webhookSettings_$events_$de_DE._(_root);
+	@override late final _Translations$misskey$webhookSettings_$systemEvents_$de_DE systemEvents_ = _Translations$misskey$webhookSettings_$systemEvents_$de_DE._(_root);
 	@override String get deleteConfirm => 'Bist du sicher, dass du den Webhook löschen willst?';
 	@override String get testRemarks => 'Klicke auf die Schaltfläche rechts neben dem Schalter, um einen Test-Webhook mit Dummy-Daten zu senden.';
 }
 
 // Path: misskey.abuseReport_
-class _TranslationsMisskeyAbuseReportDeDe extends TranslationsMisskeyAbuseReportEnUs {
-	_TranslationsMisskeyAbuseReportDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$de_DE extends Translations$misskey$abuseReport_$en_US {
+	_Translations$misskey$abuseReport_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientDeDe notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientDeDe._(_root);
+	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$de_DE notificationRecipient_ = _Translations$misskey$abuseReport_$notificationRecipient_$de_DE._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _TranslationsMisskeyModerationLogTypesDeDe extends TranslationsMisskeyModerationLogTypesEnUs {
-	_TranslationsMisskeyModerationLogTypesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$moderationLogTypes_$de_DE extends Translations$misskey$moderationLogTypes_$en_US {
+	_Translations$misskey$moderationLogTypes_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3436,8 +3436,8 @@ class _TranslationsMisskeyModerationLogTypesDeDe extends TranslationsMisskeyMode
 }
 
 // Path: misskey.fileViewer_
-class _TranslationsMisskeyFileViewerDeDe extends TranslationsMisskeyFileViewerEnUs {
-	_TranslationsMisskeyFileViewerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$fileViewer_$de_DE extends Translations$misskey$fileViewer_$en_US {
+	_Translations$misskey$fileViewer_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3453,38 +3453,38 @@ class _TranslationsMisskeyFileViewerDeDe extends TranslationsMisskeyFileViewerEn
 }
 
 // Path: misskey.externalResourceInstaller_
-class _TranslationsMisskeyExternalResourceInstallerDeDe extends TranslationsMisskeyExternalResourceInstallerEnUs {
-	_TranslationsMisskeyExternalResourceInstallerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$de_DE extends Translations$misskey$externalResourceInstaller_$en_US {
+	_Translations$misskey$externalResourceInstaller_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Von externer Seite installieren';
 	@override String get checkVendorBeforeInstall => 'Überprüfe vor Installation die Vertrauenswürdigkeit des Vertreibers.';
-	@override late final _TranslationsMisskeyExternalResourceInstallerPluginDeDe plugin_ = _TranslationsMisskeyExternalResourceInstallerPluginDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerThemeDeDe theme_ = _TranslationsMisskeyExternalResourceInstallerThemeDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerMetaDeDe meta_ = _TranslationsMisskeyExternalResourceInstallerMetaDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerVendorInfoDeDe vendorInfo_ = _TranslationsMisskeyExternalResourceInstallerVendorInfoDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsDeDe errors_ = _TranslationsMisskeyExternalResourceInstallerErrorsDeDe._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$plugin_$de_DE plugin_ = _Translations$misskey$externalResourceInstaller_$plugin_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$theme_$de_DE theme_ = _Translations$misskey$externalResourceInstaller_$theme_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$meta_$de_DE meta_ = _Translations$misskey$externalResourceInstaller_$meta_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$vendorInfo_$de_DE vendorInfo_ = _Translations$misskey$externalResourceInstaller_$vendorInfo_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$de_DE errors_ = _Translations$misskey$externalResourceInstaller_$errors_$de_DE._(_root);
 }
 
 // Path: misskey.dataSaver_
-class _TranslationsMisskeyDataSaverDeDe extends TranslationsMisskeyDataSaverEnUs {
-	_TranslationsMisskeyDataSaverDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$de_DE extends Translations$misskey$dataSaver_$en_US {
+	_Translations$misskey$dataSaver_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyDataSaverMediaDeDe media_ = _TranslationsMisskeyDataSaverMediaDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverAvatarDeDe avatar_ = _TranslationsMisskeyDataSaverAvatarDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverUrlPreviewThumbnailDeDe urlPreviewThumbnail_ = _TranslationsMisskeyDataSaverUrlPreviewThumbnailDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverDisableUrlPreviewDeDe disableUrlPreview_ = _TranslationsMisskeyDataSaverDisableUrlPreviewDeDe._(_root);
-	@override late final _TranslationsMisskeyDataSaverCodeDeDe code_ = _TranslationsMisskeyDataSaverCodeDeDe._(_root);
+	@override late final _Translations$misskey$dataSaver_$media_$de_DE media_ = _Translations$misskey$dataSaver_$media_$de_DE._(_root);
+	@override late final _Translations$misskey$dataSaver_$avatar_$de_DE avatar_ = _Translations$misskey$dataSaver_$avatar_$de_DE._(_root);
+	@override late final _Translations$misskey$dataSaver_$urlPreviewThumbnail_$de_DE urlPreviewThumbnail_ = _Translations$misskey$dataSaver_$urlPreviewThumbnail_$de_DE._(_root);
+	@override late final _Translations$misskey$dataSaver_$disableUrlPreview_$de_DE disableUrlPreview_ = _Translations$misskey$dataSaver_$disableUrlPreview_$de_DE._(_root);
+	@override late final _Translations$misskey$dataSaver_$code_$de_DE code_ = _Translations$misskey$dataSaver_$code_$de_DE._(_root);
 }
 
 // Path: misskey.hemisphere_
-class _TranslationsMisskeyHemisphereDeDe extends TranslationsMisskeyHemisphereEnUs {
-	_TranslationsMisskeyHemisphereDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$hemisphere_$de_DE extends Translations$misskey$hemisphere_$en_US {
+	_Translations$misskey$hemisphere_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3495,8 +3495,8 @@ class _TranslationsMisskeyHemisphereDeDe extends TranslationsMisskeyHemisphereEn
 }
 
 // Path: misskey.reversi_
-class _TranslationsMisskeyReversiDeDe extends TranslationsMisskeyReversiEnUs {
-	_TranslationsMisskeyReversiDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$reversi_$de_DE extends Translations$misskey$reversi_$en_US {
+	_Translations$misskey$reversi_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3547,8 +3547,8 @@ class _TranslationsMisskeyReversiDeDe extends TranslationsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _TranslationsMisskeyOfflineScreenDeDe extends TranslationsMisskeyOfflineScreenEnUs {
-	_TranslationsMisskeyOfflineScreenDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$offlineScreen_$de_DE extends Translations$misskey$offlineScreen_$en_US {
+	_Translations$misskey$offlineScreen_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3558,8 +3558,8 @@ class _TranslationsMisskeyOfflineScreenDeDe extends TranslationsMisskeyOfflineSc
 }
 
 // Path: misskey.urlPreviewSetting_
-class _TranslationsMisskeyUrlPreviewSettingDeDe extends TranslationsMisskeyUrlPreviewSettingEnUs {
-	_TranslationsMisskeyUrlPreviewSettingDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$urlPreviewSetting_$de_DE extends Translations$misskey$urlPreviewSetting_$en_US {
+	_Translations$misskey$urlPreviewSetting_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3582,8 +3582,8 @@ class _TranslationsMisskeyUrlPreviewSettingDeDe extends TranslationsMisskeyUrlPr
 }
 
 // Path: misskey.mediaControls_
-class _TranslationsMisskeyMediaControlsDeDe extends TranslationsMisskeyMediaControlsEnUs {
-	_TranslationsMisskeyMediaControlsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$mediaControls_$de_DE extends Translations$misskey$mediaControls_$en_US {
+	_Translations$misskey$mediaControls_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3594,8 +3594,8 @@ class _TranslationsMisskeyMediaControlsDeDe extends TranslationsMisskeyMediaCont
 }
 
 // Path: misskey.contextMenu_
-class _TranslationsMisskeyContextMenuDeDe extends TranslationsMisskeyContextMenuEnUs {
-	_TranslationsMisskeyContextMenuDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$contextMenu_$de_DE extends Translations$misskey$contextMenu_$en_US {
+	_Translations$misskey$contextMenu_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3607,18 +3607,18 @@ class _TranslationsMisskeyContextMenuDeDe extends TranslationsMisskeyContextMenu
 }
 
 // Path: misskey.gridComponent_
-class _TranslationsMisskeyGridComponentDeDe extends TranslationsMisskeyGridComponentEnUs {
-	_TranslationsMisskeyGridComponentDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$gridComponent_$de_DE extends Translations$misskey$gridComponent_$en_US {
+	_Translations$misskey$gridComponent_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyGridComponentErrorDeDe error_ = _TranslationsMisskeyGridComponentErrorDeDe._(_root);
+	@override late final _Translations$misskey$gridComponent_$error_$de_DE error_ = _Translations$misskey$gridComponent_$error_$de_DE._(_root);
 }
 
 // Path: misskey.roleSelectDialog_
-class _TranslationsMisskeyRoleSelectDialogDeDe extends TranslationsMisskeyRoleSelectDialogEnUs {
-	_TranslationsMisskeyRoleSelectDialogDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$roleSelectDialog_$de_DE extends Translations$misskey$roleSelectDialog_$en_US {
+	_Translations$misskey$roleSelectDialog_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3627,21 +3627,21 @@ class _TranslationsMisskeyRoleSelectDialogDeDe extends TranslationsMisskeyRoleSe
 }
 
 // Path: misskey.customEmojisManager_
-class _TranslationsMisskeyCustomEmojisManagerDeDe extends TranslationsMisskeyCustomEmojisManagerEnUs {
-	_TranslationsMisskeyCustomEmojisManagerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$de_DE extends Translations$misskey$customEmojisManager_$en_US {
+	_Translations$misskey$customEmojisManager_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerLogsDeDe logs_ = _TranslationsMisskeyCustomEmojisManagerLogsDeDe._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteDeDe remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteDeDe._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerLocalDeDe local_ = _TranslationsMisskeyCustomEmojisManagerLocalDeDe._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$gridCommon_$de_DE gridCommon_ = _Translations$misskey$customEmojisManager_$gridCommon_$de_DE._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$logs_$de_DE logs_ = _Translations$misskey$customEmojisManager_$logs_$de_DE._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$remote_$de_DE remote_ = _Translations$misskey$customEmojisManager_$remote_$de_DE._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$de_DE local_ = _Translations$misskey$customEmojisManager_$local_$de_DE._(_root);
 }
 
 // Path: misskey.embedCodeGen_
-class _TranslationsMisskeyEmbedCodeGenDeDe extends TranslationsMisskeyEmbedCodeGenEnUs {
-	_TranslationsMisskeyEmbedCodeGenDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$embedCodeGen_$de_DE extends Translations$misskey$embedCodeGen_$en_US {
+	_Translations$misskey$embedCodeGen_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3662,8 +3662,8 @@ class _TranslationsMisskeyEmbedCodeGenDeDe extends TranslationsMisskeyEmbedCodeG
 }
 
 // Path: misskey.selfXssPrevention_
-class _TranslationsMisskeySelfXssPreventionDeDe extends TranslationsMisskeySelfXssPreventionEnUs {
-	_TranslationsMisskeySelfXssPreventionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$selfXssPrevention_$de_DE extends Translations$misskey$selfXssPrevention_$en_US {
+	_Translations$misskey$selfXssPrevention_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3676,8 +3676,8 @@ class _TranslationsMisskeySelfXssPreventionDeDe extends TranslationsMisskeySelfX
 }
 
 // Path: misskey.followRequest_
-class _TranslationsMisskeyFollowRequestDeDe extends TranslationsMisskeyFollowRequestEnUs {
-	_TranslationsMisskeyFollowRequestDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$followRequest_$de_DE extends Translations$misskey$followRequest_$en_US {
+	_Translations$misskey$followRequest_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3687,34 +3687,34 @@ class _TranslationsMisskeyFollowRequestDeDe extends TranslationsMisskeyFollowReq
 }
 
 // Path: misskey.remoteLookupErrors_
-class _TranslationsMisskeyRemoteLookupErrorsDeDe extends TranslationsMisskeyRemoteLookupErrorsEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$de_DE extends Translations$misskey$remoteLookupErrors_$en_US {
+	_Translations$misskey$remoteLookupErrors_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedDeDe federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedDeDe._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidDeDe uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidDeDe._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedDeDe requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidDeDe responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidDeDe._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$de_DE federationNotAllowed_ = _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$de_DE._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$uriInvalid_$de_DE uriInvalid_ = _Translations$misskey$remoteLookupErrors_$uriInvalid_$de_DE._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$requestFailed_$de_DE requestFailed_ = _Translations$misskey$remoteLookupErrors_$requestFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$responseInvalid_$de_DE responseInvalid_ = _Translations$misskey$remoteLookupErrors_$responseInvalid_$de_DE._(_root);
+	@override late final _Translations$misskey$remoteLookupErrors_$noSuchObject_$de_DE noSuchObject_ = _Translations$misskey$remoteLookupErrors_$noSuchObject_$de_DE._(_root);
 }
 
 // Path: misskey.captcha_
-class _TranslationsMisskeyCaptchaDeDe extends TranslationsMisskeyCaptchaEnUs {
-	_TranslationsMisskeyCaptchaDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$captcha_$de_DE extends Translations$misskey$captcha_$en_US {
+	_Translations$misskey$captcha_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get verify => 'Bitte beantworte das CAPTCHA';
 	@override String get testSiteKeyMessage => 'Du kannst die Vorschau prüfen, indem du die Testwerte für den Site- und Secret-Key eingibst. Weitere Informationen findest du auf der folgenden Seite.';
-	@override late final _TranslationsMisskeyCaptchaErrorDeDe error_ = _TranslationsMisskeyCaptchaErrorDeDe._(_root);
+	@override late final _Translations$misskey$captcha_$error_$de_DE error_ = _Translations$misskey$captcha_$error_$de_DE._(_root);
 }
 
 // Path: misskey.bootErrors_
-class _TranslationsMisskeyBootErrorsDeDe extends TranslationsMisskeyBootErrorsEnUs {
-	_TranslationsMisskeyBootErrorsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$bootErrors_$de_DE extends Translations$misskey$bootErrors_$en_US {
+	_Translations$misskey$bootErrors_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3734,8 +3734,8 @@ class _TranslationsMisskeyBootErrorsDeDe extends TranslationsMisskeyBootErrorsEn
 }
 
 // Path: misskey.search_
-class _TranslationsMisskeySearchDeDe extends TranslationsMisskeySearchEnUs {
-	_TranslationsMisskeySearchDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$search_$de_DE extends Translations$misskey$search_$en_US {
+	_Translations$misskey$search_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3750,8 +3750,8 @@ class _TranslationsMisskeySearchDeDe extends TranslationsMisskeySearchEnUs {
 }
 
 // Path: misskey.serverSetupWizard_
-class _TranslationsMisskeyServerSetupWizardDeDe extends TranslationsMisskeyServerSetupWizardEnUs {
-	_TranslationsMisskeyServerSetupWizardDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSetupWizard_$de_DE extends Translations$misskey$serverSetupWizard_$en_US {
+	_Translations$misskey$serverSetupWizard_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3763,11 +3763,11 @@ class _TranslationsMisskeyServerSetupWizardDeDe extends TranslationsMisskeyServe
 	@override String get youCanEasilyConfigureOptimalServerSettingsWithThisWizard => 'Mit diesem Assistenten lässt sich die optimale Serverkonfiguration leicht einrichten.';
 	@override String get settingsYouMakeHereCanBeChangedLater => 'Die Einstellungen hier können später geändert werden.';
 	@override String get howWillYouUseMisskey => 'Wie wirst du Misskey verwenden?';
-	@override late final _TranslationsMisskeyServerSetupWizardUseDeDe use_ = _TranslationsMisskeyServerSetupWizardUseDeDe._(_root);
+	@override late final _Translations$misskey$serverSetupWizard_$use_$de_DE use_ = _Translations$misskey$serverSetupWizard_$use_$de_DE._(_root);
 	@override String get openServerAdvice => 'Die Aufnahme einer unbestimmten Anzahl von Nutzern birgt Risiken. Es wird empfohlen, mit einem zuverlässigen Moderationssystem zu arbeiten, um eventuell auftretende Probleme behandeln zu können.';
 	@override String get openServerAntiSpamAdvice => 'Große Sorgfalt muss auch auf die Sicherheit gelegt werden, z. B. durch die Aktivierung von Anti-Bot-Funktionen wie reCAPTCHA, um sicherzustellen, dass der Server nicht zum Verbreiten von Spam genutzt wird.';
 	@override String get howManyUsersDoYouExpect => 'Mit wie vielen Benutzern rechnest du?';
-	@override late final _TranslationsMisskeyServerSetupWizardScaleDeDe scale_ = _TranslationsMisskeyServerSetupWizardScaleDeDe._(_root);
+	@override late final _Translations$misskey$serverSetupWizard_$scale_$de_DE scale_ = _Translations$misskey$serverSetupWizard_$scale_$de_DE._(_root);
 	@override String get largeScaleServerAdvice => 'Für große Server sind unter Umständen fortgeschrittene Kenntnisse erforderlich, z. B. Lastverteilung und Datenbankreplikation.';
 	@override String get doYouConnectToFediverse => 'Mit dem Fediverse verbinden?';
 	@override String get doYouConnectToFediverse_description1 => 'Bei Anschluss an ein Netz von verteilten Servern (Fediverse) können Inhalte mit anderen Servern ausgetauscht werden.';
@@ -3785,12 +3785,12 @@ class _TranslationsMisskeyServerSetupWizardDeDe extends TranslationsMisskeyServe
 	@override String get settingsCompleted_description => 'Vielen Dank für deine Zeit. Jetzt, wo alles fertig ist, kannst du den Server sofort benutzen.';
 	@override String get settingsCompleted_description2 => 'Detaillierte Servereinstellungen können über die „Systemsteuerung“ vorgenommen werden.';
 	@override String get donationRequest => 'Spendenaufruf';
-	@override late final _TranslationsMisskeyServerSetupWizardDonationRequestDeDe donationRequest_ = _TranslationsMisskeyServerSetupWizardDonationRequestDeDe._(_root);
+	@override late final _Translations$misskey$serverSetupWizard_$donationRequest_$de_DE donationRequest_ = _Translations$misskey$serverSetupWizard_$donationRequest_$de_DE._(_root);
 }
 
 // Path: misskey.uploader_
-class _TranslationsMisskeyUploaderDeDe extends TranslationsMisskeyUploaderEnUs {
-	_TranslationsMisskeyUploaderDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$uploader_$de_DE extends Translations$misskey$uploader_$en_US {
+	_Translations$misskey$uploader_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3806,8 +3806,8 @@ class _TranslationsMisskeyUploaderDeDe extends TranslationsMisskeyUploaderEnUs {
 }
 
 // Path: misskey.clientPerformanceIssueTip_
-class _TranslationsMisskeyClientPerformanceIssueTipDeDe extends TranslationsMisskeyClientPerformanceIssueTipEnUs {
-	_TranslationsMisskeyClientPerformanceIssueTipDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$clientPerformanceIssueTip_$de_DE extends Translations$misskey$clientPerformanceIssueTip_$en_US {
+	_Translations$misskey$clientPerformanceIssueTip_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3822,8 +3822,8 @@ class _TranslationsMisskeyClientPerformanceIssueTipDeDe extends TranslationsMiss
 }
 
 // Path: misskey.clip_
-class _TranslationsMisskeyClipDeDe extends TranslationsMisskeyClipEnUs {
-	_TranslationsMisskeyClipDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$clip_$de_DE extends Translations$misskey$clip_$en_US {
+	_Translations$misskey$clip_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3832,8 +3832,8 @@ class _TranslationsMisskeyClipDeDe extends TranslationsMisskeyClipEnUs {
 }
 
 // Path: misskey.userLists_
-class _TranslationsMisskeyUserListsDeDe extends TranslationsMisskeyUserListsEnUs {
-	_TranslationsMisskeyUserListsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$userLists_$de_DE extends Translations$misskey$userLists_$en_US {
+	_Translations$misskey$userLists_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3842,8 +3842,8 @@ class _TranslationsMisskeyUserListsDeDe extends TranslationsMisskeyUserListsEnUs
 }
 
 // Path: misskey.watermarkEditor_
-class _TranslationsMisskeyWatermarkEditorDeDe extends TranslationsMisskeyWatermarkEditorEnUs {
-	_TranslationsMisskeyWatermarkEditorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$watermarkEditor_$de_DE extends Translations$misskey$watermarkEditor_$en_US {
+	_Translations$misskey$watermarkEditor_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3881,8 +3881,8 @@ class _TranslationsMisskeyWatermarkEditorDeDe extends TranslationsMisskeyWaterma
 }
 
 // Path: misskey.imageEffector_
-class _TranslationsMisskeyImageEffectorDeDe extends TranslationsMisskeyImageEffectorEnUs {
-	_TranslationsMisskeyImageEffectorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEffector_$de_DE extends Translations$misskey$imageEffector_$en_US {
+	_Translations$misskey$imageEffector_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3891,13 +3891,13 @@ class _TranslationsMisskeyImageEffectorDeDe extends TranslationsMisskeyImageEffe
 	@override String get addEffect => 'Effekte hinzufügen';
 	@override String get discardChangesConfirm => 'Änderungen verwerfen und beenden?';
 	@override String get failedToLoadImage => 'Bild konnte nicht geladen werden';
-	@override late final _TranslationsMisskeyImageEffectorFxsDeDe fxs_ = _TranslationsMisskeyImageEffectorFxsDeDe._(_root);
-	@override late final _TranslationsMisskeyImageEffectorFxPropsDeDe fxProps_ = _TranslationsMisskeyImageEffectorFxPropsDeDe._(_root);
+	@override late final _Translations$misskey$imageEffector_$fxs_$de_DE fxs_ = _Translations$misskey$imageEffector_$fxs_$de_DE._(_root);
+	@override late final _Translations$misskey$imageEffector_$fxProps_$de_DE fxProps_ = _Translations$misskey$imageEffector_$fxProps_$de_DE._(_root);
 }
 
 // Path: misskey.drafts_
-class _TranslationsMisskeyDraftsDeDe extends TranslationsMisskeyDraftsEnUs {
-	_TranslationsMisskeyDraftsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$drafts_$de_DE extends Translations$misskey$drafts_$en_US {
+	_Translations$misskey$drafts_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3921,8 +3921,8 @@ class _TranslationsMisskeyDraftsDeDe extends TranslationsMisskeyDraftsEnUs {
 }
 
 // Path: misskey.qr_
-class _TranslationsMisskeyQrDeDe extends TranslationsMisskeyQrEnUs {
-	_TranslationsMisskeyQrDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$qr_$de_DE extends Translations$misskey$qr_$en_US {
+	_Translations$misskey$qr_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3944,8 +3944,8 @@ class _TranslationsMisskeyQrDeDe extends TranslationsMisskeyQrEnUs {
 }
 
 // Path: misskey.imageEditing_.vars_
-class _TranslationsMisskeyImageEditingVarsDeDe extends TranslationsMisskeyImageEditingVarsEnUs {
-	_TranslationsMisskeyImageEditingVarsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEditing_$vars_$de_DE extends Translations$misskey$imageEditing_$vars_$en_US {
+	_Translations$misskey$imageEditing_$vars_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3971,8 +3971,8 @@ class _TranslationsMisskeyImageEditingVarsDeDe extends TranslationsMisskeyImageE
 }
 
 // Path: misskey.compression_.quality_
-class _TranslationsMisskeyCompressionQualityDeDe extends TranslationsMisskeyCompressionQualityEnUs {
-	_TranslationsMisskeyCompressionQualityDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$compression_$quality_$de_DE extends Translations$misskey$compression_$quality_$en_US {
+	_Translations$misskey$compression_$quality_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3983,8 +3983,8 @@ class _TranslationsMisskeyCompressionQualityDeDe extends TranslationsMisskeyComp
 }
 
 // Path: misskey.compression_.size_
-class _TranslationsMisskeyCompressionSizeDeDe extends TranslationsMisskeyCompressionSizeEnUs {
-	_TranslationsMisskeyCompressionSizeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$compression_$size_$de_DE extends Translations$misskey$compression_$size_$en_US {
+	_Translations$misskey$compression_$size_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -3995,8 +3995,8 @@ class _TranslationsMisskeyCompressionSizeDeDe extends TranslationsMisskeyCompres
 }
 
 // Path: misskey.chat_.chatAllowedUsers_
-class _TranslationsMisskeyChatChatAllowedUsersDeDe extends TranslationsMisskeyChatChatAllowedUsersEnUs {
-	_TranslationsMisskeyChatChatAllowedUsersDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$chat_$chatAllowedUsers_$de_DE extends Translations$misskey$chat_$chatAllowedUsers_$en_US {
+	_Translations$misskey$chat_$chatAllowedUsers_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4009,8 +4009,8 @@ class _TranslationsMisskeyChatChatAllowedUsersDeDe extends TranslationsMisskeyCh
 }
 
 // Path: misskey.settings_.chat_
-class _TranslationsMisskeySettingsChatDeDe extends TranslationsMisskeySettingsChatEnUs {
-	_TranslationsMisskeySettingsChatDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$settings_$chat_$de_DE extends Translations$misskey$settings_$chat_$en_US {
+	_Translations$misskey$settings_$chat_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4020,8 +4020,8 @@ class _TranslationsMisskeySettingsChatDeDe extends TranslationsMisskeySettingsCh
 }
 
 // Path: misskey.delivery_.type_
-class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTypeEnUs {
-	_TranslationsMisskeyDeliveryTypeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$delivery_$type_$de_DE extends Translations$misskey$delivery_$type_$en_US {
+	_Translations$misskey$delivery_$type_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4034,8 +4034,8 @@ class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTy
 }
 
 // Path: misskey.bubbleGame_.score_
-class _TranslationsMisskeyBubbleGameScoreDeDe extends TranslationsMisskeyBubbleGameScoreEnUs {
-	_TranslationsMisskeyBubbleGameScoreDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$bubbleGame_$score_$de_DE extends Translations$misskey$bubbleGame_$score_$en_US {
+	_Translations$misskey$bubbleGame_$score_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4050,8 +4050,8 @@ class _TranslationsMisskeyBubbleGameScoreDeDe extends TranslationsMisskeyBubbleG
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _TranslationsMisskeyBubbleGameHowToPlayDeDe extends TranslationsMisskeyBubbleGameHowToPlayEnUs {
-	_TranslationsMisskeyBubbleGameHowToPlayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$bubbleGame_$howToPlay_$de_DE extends Translations$misskey$bubbleGame_$howToPlay_$en_US {
+	_Translations$misskey$bubbleGame_$howToPlay_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4062,8 +4062,8 @@ class _TranslationsMisskeyBubbleGameHowToPlayDeDe extends TranslationsMisskeyBub
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _TranslationsMisskeyInitialTutorialLandingDeDe extends TranslationsMisskeyInitialTutorialLandingEnUs {
-	_TranslationsMisskeyInitialTutorialLandingDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$landing_$de_DE extends Translations$misskey$initialTutorial_$landing_$en_US {
+	_Translations$misskey$initialTutorial_$landing_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4073,8 +4073,8 @@ class _TranslationsMisskeyInitialTutorialLandingDeDe extends TranslationsMisskey
 }
 
 // Path: misskey.initialTutorial_.note_
-class _TranslationsMisskeyInitialTutorialNoteDeDe extends TranslationsMisskeyInitialTutorialNoteEnUs {
-	_TranslationsMisskeyInitialTutorialNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$note_$de_DE extends Translations$misskey$initialTutorial_$note_$en_US {
+	_Translations$misskey$initialTutorial_$note_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4088,8 +4088,8 @@ class _TranslationsMisskeyInitialTutorialNoteDeDe extends TranslationsMisskeyIni
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _TranslationsMisskeyInitialTutorialReactionDeDe extends TranslationsMisskeyInitialTutorialReactionEnUs {
-	_TranslationsMisskeyInitialTutorialReactionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$reaction_$de_DE extends Translations$misskey$initialTutorial_$reaction_$en_US {
+	_Translations$misskey$initialTutorial_$reaction_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4103,8 +4103,8 @@ class _TranslationsMisskeyInitialTutorialReactionDeDe extends TranslationsMisske
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _TranslationsMisskeyInitialTutorialTimelineDeDe extends TranslationsMisskeyInitialTutorialTimelineEnUs {
-	_TranslationsMisskeyInitialTutorialTimelineDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$timeline_$de_DE extends Translations$misskey$initialTutorial_$timeline_$en_US {
+	_Translations$misskey$initialTutorial_$timeline_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4120,21 +4120,21 @@ class _TranslationsMisskeyInitialTutorialTimelineDeDe extends TranslationsMisske
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _TranslationsMisskeyInitialTutorialPostNoteDeDe extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$de_DE extends Translations$misskey$initialTutorial_$postNote_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Optionen bei Abschicken einer Notiz';
 	@override String get description1 => 'Wenn du eine Notiz auf Misskey veröffentlichst, stehen dir verschiedene Optionen zur Verfügung. Die Oberfläche sieht folgendermaßen aus.';
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe._(_root);
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwDeDe cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwDeDe._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$visibility_$de_DE visibility_ = _Translations$misskey$initialTutorial_$postNote_$visibility_$de_DE._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$cw_$de_DE cw_ = _Translations$misskey$initialTutorial_$postNote_$cw_$de_DE._(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$de_DE extends Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$en_US {
+	_Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4142,15 +4142,15 @@ class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe exten
 	@override String get title => 'Wie markiert man Anhänge als sensibel?';
 	@override String get description => 'Markiere Anhänge als sensibel, die aufgrund von den Serverregeln nicht sichtbar sein sollen.';
 	@override String get tryThisFile => 'Versuche, das angehängte Bild als sensibel zu markieren!';
-	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe._(_root);
+	@override late final _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$de_DE exampleNote_ = _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$de_DE._(_root);
 	@override String get method => 'Um einen Anhang als sensibel zu kennzeichnen, klicke auf das Vorschaubild der Datei, um das Menü zu öffnen, und klicke auf „Als sensibel markieren“.';
 	@override String get sensitiveSucceeded => 'Wenn du Dateien anhängst, stelle bitte die Sensibilität entsprechend der Serverrichtlinien ein.';
 	@override String get doItToContinue => 'Markiere die angehängte Datei als sensibel, um fortzufahren.';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _TranslationsMisskeyInitialTutorialDoneDeDe extends TranslationsMisskeyInitialTutorialDoneEnUs {
-	_TranslationsMisskeyInitialTutorialDoneDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$done_$de_DE extends Translations$misskey$initialTutorial_$done_$en_US {
+	_Translations$misskey$initialTutorial_$done_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4160,8 +4160,8 @@ class _TranslationsMisskeyInitialTutorialDoneDeDe extends TranslationsMisskeyIni
 }
 
 // Path: misskey.serverSettings_.userGeneratedContentsVisibilityForVisitor_
-class _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorDeDe extends TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorEnUs {
-	_TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisitorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSettings_$userGeneratedContentsVisibilityForVisitor_$de_DE extends Translations$misskey$serverSettings_$userGeneratedContentsVisibilityForVisitor_$en_US {
+	_Translations$misskey$serverSettings_$userGeneratedContentsVisibilityForVisitor_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4172,95 +4172,95 @@ class _TranslationsMisskeyServerSettingsUserGeneratedContentsVisibilityForVisito
 }
 
 // Path: misskey.achievements_.types_
-class _TranslationsMisskeyAchievementsTypesDeDe extends TranslationsMisskeyAchievementsTypesEnUs {
-	_TranslationsMisskeyAchievementsTypesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$de_DE extends Translations$misskey$achievements_$types_$en_US {
+	_Translations$misskey$achievements_$types_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyAchievementsTypesNotes1DeDe notes1_ = _TranslationsMisskeyAchievementsTypesNotes1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes10DeDe notes10_ = _TranslationsMisskeyAchievementsTypesNotes10DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes100DeDe notes100_ = _TranslationsMisskeyAchievementsTypesNotes100DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes500DeDe notes500_ = _TranslationsMisskeyAchievementsTypesNotes500DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes1000DeDe notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes5000DeDe notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes10000DeDe notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes20000DeDe notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes30000DeDe notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes40000DeDe notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes50000DeDe notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes60000DeDe notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes70000DeDe notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes80000DeDe notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes90000DeDe notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNotes100000DeDe notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin3DeDe login3_ = _TranslationsMisskeyAchievementsTypesLogin3DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin7DeDe login7_ = _TranslationsMisskeyAchievementsTypesLogin7DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin15DeDe login15_ = _TranslationsMisskeyAchievementsTypesLogin15DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin30DeDe login30_ = _TranslationsMisskeyAchievementsTypesLogin30DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin60DeDe login60_ = _TranslationsMisskeyAchievementsTypesLogin60DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin100DeDe login100_ = _TranslationsMisskeyAchievementsTypesLogin100DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin200DeDe login200_ = _TranslationsMisskeyAchievementsTypesLogin200DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin300DeDe login300_ = _TranslationsMisskeyAchievementsTypesLogin300DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin400DeDe login400_ = _TranslationsMisskeyAchievementsTypesLogin400DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin500DeDe login500_ = _TranslationsMisskeyAchievementsTypesLogin500DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin600DeDe login600_ = _TranslationsMisskeyAchievementsTypesLogin600DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin700DeDe login700_ = _TranslationsMisskeyAchievementsTypesLogin700DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin800DeDe login800_ = _TranslationsMisskeyAchievementsTypesLogin800DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin900DeDe login900_ = _TranslationsMisskeyAchievementsTypesLogin900DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLogin1000DeDe login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1DeDe noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1DeDe noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1DeDe myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledDeDe profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatDeDe markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing1DeDe following1_ = _TranslationsMisskeyAchievementsTypesFollowing1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing10DeDe following10_ = _TranslationsMisskeyAchievementsTypesFollowing10DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing50DeDe following50_ = _TranslationsMisskeyAchievementsTypesFollowing50DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing100DeDe following100_ = _TranslationsMisskeyAchievementsTypesFollowing100DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowing300DeDe following300_ = _TranslationsMisskeyAchievementsTypesFollowing300DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers1DeDe followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers10DeDe followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers50DeDe followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers100DeDe followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers300DeDe followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers500DeDe followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000DeDe followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30DeDe collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minDeDe viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyDeDe iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureDeDe foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClient30minDeDe client30min_ = _TranslationsMisskeyAchievementsTypesClient30minDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClient60minDeDe client60min_ = _TranslationsMisskeyAchievementsTypesClient60minDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minDeDe noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightDeDe postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secDeDe postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteDeDe selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmDeDe htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartDeDe viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadDeDe outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsDeDe open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceDeDe driveFolderCircularReference_ = _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadDeDe reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereDeDe clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyDeDe justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloDeDe setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1DeDe passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2DeDe passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3DeDe passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3DeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayDeDe loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayDeDe loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedDeDe cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverDeDe brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonDeDe smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedDeDe tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadDeDe bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadDeDe._(_root);
-	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadDeDe bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadDeDe._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes1_$de_DE notes1_ = _Translations$misskey$achievements_$types_$notes1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes10_$de_DE notes10_ = _Translations$misskey$achievements_$types_$notes10_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes100_$de_DE notes100_ = _Translations$misskey$achievements_$types_$notes100_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes500_$de_DE notes500_ = _Translations$misskey$achievements_$types_$notes500_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes1000_$de_DE notes1000_ = _Translations$misskey$achievements_$types_$notes1000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes5000_$de_DE notes5000_ = _Translations$misskey$achievements_$types_$notes5000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes10000_$de_DE notes10000_ = _Translations$misskey$achievements_$types_$notes10000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes20000_$de_DE notes20000_ = _Translations$misskey$achievements_$types_$notes20000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes30000_$de_DE notes30000_ = _Translations$misskey$achievements_$types_$notes30000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes40000_$de_DE notes40000_ = _Translations$misskey$achievements_$types_$notes40000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes50000_$de_DE notes50000_ = _Translations$misskey$achievements_$types_$notes50000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes60000_$de_DE notes60000_ = _Translations$misskey$achievements_$types_$notes60000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes70000_$de_DE notes70000_ = _Translations$misskey$achievements_$types_$notes70000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes80000_$de_DE notes80000_ = _Translations$misskey$achievements_$types_$notes80000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes90000_$de_DE notes90000_ = _Translations$misskey$achievements_$types_$notes90000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$notes100000_$de_DE notes100000_ = _Translations$misskey$achievements_$types_$notes100000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login3_$de_DE login3_ = _Translations$misskey$achievements_$types_$login3_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login7_$de_DE login7_ = _Translations$misskey$achievements_$types_$login7_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login15_$de_DE login15_ = _Translations$misskey$achievements_$types_$login15_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login30_$de_DE login30_ = _Translations$misskey$achievements_$types_$login30_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login60_$de_DE login60_ = _Translations$misskey$achievements_$types_$login60_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login100_$de_DE login100_ = _Translations$misskey$achievements_$types_$login100_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login200_$de_DE login200_ = _Translations$misskey$achievements_$types_$login200_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login300_$de_DE login300_ = _Translations$misskey$achievements_$types_$login300_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login400_$de_DE login400_ = _Translations$misskey$achievements_$types_$login400_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login500_$de_DE login500_ = _Translations$misskey$achievements_$types_$login500_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login600_$de_DE login600_ = _Translations$misskey$achievements_$types_$login600_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login700_$de_DE login700_ = _Translations$misskey$achievements_$types_$login700_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login800_$de_DE login800_ = _Translations$misskey$achievements_$types_$login800_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login900_$de_DE login900_ = _Translations$misskey$achievements_$types_$login900_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$login1000_$de_DE login1000_ = _Translations$misskey$achievements_$types_$login1000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$noteClipped1_$de_DE noteClipped1_ = _Translations$misskey$achievements_$types_$noteClipped1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$noteFavorited1_$de_DE noteFavorited1_ = _Translations$misskey$achievements_$types_$noteFavorited1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$myNoteFavorited1_$de_DE myNoteFavorited1_ = _Translations$misskey$achievements_$types_$myNoteFavorited1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$profileFilled_$de_DE profileFilled_ = _Translations$misskey$achievements_$types_$profileFilled_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$markedAsCat_$de_DE markedAsCat_ = _Translations$misskey$achievements_$types_$markedAsCat_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following1_$de_DE following1_ = _Translations$misskey$achievements_$types_$following1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following10_$de_DE following10_ = _Translations$misskey$achievements_$types_$following10_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following50_$de_DE following50_ = _Translations$misskey$achievements_$types_$following50_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following100_$de_DE following100_ = _Translations$misskey$achievements_$types_$following100_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$following300_$de_DE following300_ = _Translations$misskey$achievements_$types_$following300_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers1_$de_DE followers1_ = _Translations$misskey$achievements_$types_$followers1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers10_$de_DE followers10_ = _Translations$misskey$achievements_$types_$followers10_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers50_$de_DE followers50_ = _Translations$misskey$achievements_$types_$followers50_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers100_$de_DE followers100_ = _Translations$misskey$achievements_$types_$followers100_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers300_$de_DE followers300_ = _Translations$misskey$achievements_$types_$followers300_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers500_$de_DE followers500_ = _Translations$misskey$achievements_$types_$followers500_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$followers1000_$de_DE followers1000_ = _Translations$misskey$achievements_$types_$followers1000_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$collectAchievements30_$de_DE collectAchievements30_ = _Translations$misskey$achievements_$types_$collectAchievements30_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$viewAchievements3min_$de_DE viewAchievements3min_ = _Translations$misskey$achievements_$types_$viewAchievements3min_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$iLoveMisskey_$de_DE iLoveMisskey_ = _Translations$misskey$achievements_$types_$iLoveMisskey_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$foundTreasure_$de_DE foundTreasure_ = _Translations$misskey$achievements_$types_$foundTreasure_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$client30min_$de_DE client30min_ = _Translations$misskey$achievements_$types_$client30min_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$client60min_$de_DE client60min_ = _Translations$misskey$achievements_$types_$client60min_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$de_DE noteDeletedWithin1min_ = _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$postedAtLateNight_$de_DE postedAtLateNight_ = _Translations$misskey$achievements_$types_$postedAtLateNight_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$postedAt0min0sec_$de_DE postedAt0min0sec_ = _Translations$misskey$achievements_$types_$postedAt0min0sec_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$selfQuote_$de_DE selfQuote_ = _Translations$misskey$achievements_$types_$selfQuote_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$htl20npm_$de_DE htl20npm_ = _Translations$misskey$achievements_$types_$htl20npm_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$viewInstanceChart_$de_DE viewInstanceChart_ = _Translations$misskey$achievements_$types_$viewInstanceChart_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$de_DE outputHelloWorldOnScratchpad_ = _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$open3windows_$de_DE open3windows_ = _Translations$misskey$achievements_$types_$open3windows_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$driveFolderCircularReference_$de_DE driveFolderCircularReference_ = _Translations$misskey$achievements_$types_$driveFolderCircularReference_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$reactWithoutRead_$de_DE reactWithoutRead_ = _Translations$misskey$achievements_$types_$reactWithoutRead_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$clickedClickHere_$de_DE clickedClickHere_ = _Translations$misskey$achievements_$types_$clickedClickHere_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$justPlainLucky_$de_DE justPlainLucky_ = _Translations$misskey$achievements_$types_$justPlainLucky_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$setNameToSyuilo_$de_DE setNameToSyuilo_ = _Translations$misskey$achievements_$types_$setNameToSyuilo_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$de_DE passedSinceAccountCreated1_ = _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$de_DE passedSinceAccountCreated2_ = _Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$passedSinceAccountCreated3_$de_DE passedSinceAccountCreated3_ = _Translations$misskey$achievements_$types_$passedSinceAccountCreated3_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$loggedInOnBirthday_$de_DE loggedInOnBirthday_ = _Translations$misskey$achievements_$types_$loggedInOnBirthday_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$de_DE loggedInOnNewYearsDay_ = _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$cookieClicked_$de_DE cookieClicked_ = _Translations$misskey$achievements_$types_$cookieClicked_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$brainDiver_$de_DE brainDiver_ = _Translations$misskey$achievements_$types_$brainDiver_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$smashTestNotificationButton_$de_DE smashTestNotificationButton_ = _Translations$misskey$achievements_$types_$smashTestNotificationButton_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$tutorialCompleted_$de_DE tutorialCompleted_ = _Translations$misskey$achievements_$types_$tutorialCompleted_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$de_DE bubbleGameExplodingHead_ = _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$de_DE._(_root);
+	@override late final _Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$de_DE bubbleGameDoubleExplodingHead_ = _Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$de_DE._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _TranslationsMisskeyRolePriorityDeDe extends TranslationsMisskeyRolePriorityEnUs {
-	_TranslationsMisskeyRolePriorityDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$priority_$de_DE extends Translations$misskey$role_$priority_$en_US {
+	_Translations$misskey$role_$priority_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4271,8 +4271,8 @@ class _TranslationsMisskeyRolePriorityDeDe extends TranslationsMisskeyRolePriori
 }
 
 // Path: misskey.role_.options_
-class _TranslationsMisskeyRoleOptionsDeDe extends TranslationsMisskeyRoleOptionsEnUs {
-	_TranslationsMisskeyRoleOptionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$options_$de_DE extends Translations$misskey$role_$options_$en_US {
+	_Translations$misskey$role_$options_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4322,8 +4322,8 @@ class _TranslationsMisskeyRoleOptionsDeDe extends TranslationsMisskeyRoleOptions
 }
 
 // Path: misskey.role_.condition_
-class _TranslationsMisskeyRoleConditionDeDe extends TranslationsMisskeyRoleConditionEnUs {
-	_TranslationsMisskeyRoleConditionDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$role_$condition_$de_DE extends Translations$misskey$role_$condition_$en_US {
+	_Translations$misskey$role_$condition_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4350,8 +4350,8 @@ class _TranslationsMisskeyRoleConditionDeDe extends TranslationsMisskeyRoleCondi
 }
 
 // Path: misskey.email_.follow_
-class _TranslationsMisskeyEmailFollowDeDe extends TranslationsMisskeyEmailFollowEnUs {
-	_TranslationsMisskeyEmailFollowDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$follow_$de_DE extends Translations$misskey$email_$follow_$en_US {
+	_Translations$misskey$email_$follow_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4360,8 +4360,8 @@ class _TranslationsMisskeyEmailFollowDeDe extends TranslationsMisskeyEmailFollow
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _TranslationsMisskeyEmailReceiveFollowRequestDeDe extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
-	_TranslationsMisskeyEmailReceiveFollowRequestDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$email_$receiveFollowRequest_$de_DE extends Translations$misskey$email_$receiveFollowRequest_$en_US {
+	_Translations$misskey$email_$receiveFollowRequest_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4370,8 +4370,8 @@ class _TranslationsMisskeyEmailReceiveFollowRequestDeDe extends TranslationsMiss
 }
 
 // Path: misskey.theme_.keys
-class _TranslationsMisskeyThemeKeysDeDe extends TranslationsMisskeyThemeKeysEnUs {
-	_TranslationsMisskeyThemeKeysDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$theme_$keys$de_DE extends Translations$misskey$theme_$keys$en_US {
+	_Translations$misskey$theme_$keys$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4413,8 +4413,8 @@ class _TranslationsMisskeyThemeKeysDeDe extends TranslationsMisskeyThemeKeysEnUs
 }
 
 // Path: misskey.widgets_.userList_
-class _TranslationsMisskeyWidgetsUserListDeDe extends TranslationsMisskeyWidgetsUserListEnUs {
-	_TranslationsMisskeyWidgetsUserListDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgets_$userList_$de_DE extends Translations$misskey$widgets_$userList_$en_US {
+	_Translations$misskey$widgets_$userList_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4423,8 +4423,8 @@ class _TranslationsMisskeyWidgetsUserListDeDe extends TranslationsMisskeyWidgets
 }
 
 // Path: misskey.widgetOptions_.button_
-class _TranslationsMisskeyWidgetOptionsButtonDeDe extends TranslationsMisskeyWidgetOptionsButtonEnUs {
-	_TranslationsMisskeyWidgetOptionsButtonDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$button_$de_DE extends Translations$misskey$widgetOptions_$button_$en_US {
+	_Translations$misskey$widgetOptions_$button_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4433,8 +4433,8 @@ class _TranslationsMisskeyWidgetOptionsButtonDeDe extends TranslationsMisskeyWid
 }
 
 // Path: misskey.widgetOptions_.clock_
-class _TranslationsMisskeyWidgetOptionsClockDeDe extends TranslationsMisskeyWidgetOptionsClockEnUs {
-	_TranslationsMisskeyWidgetOptionsClockDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$clock_$de_DE extends Translations$misskey$widgetOptions_$clock_$en_US {
+	_Translations$misskey$widgetOptions_$clock_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4461,8 +4461,8 @@ class _TranslationsMisskeyWidgetOptionsClockDeDe extends TranslationsMisskeyWidg
 }
 
 // Path: misskey.widgetOptions_.jobQueue_
-class _TranslationsMisskeyWidgetOptionsJobQueueDeDe extends TranslationsMisskeyWidgetOptionsJobQueueEnUs {
-	_TranslationsMisskeyWidgetOptionsJobQueueDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$jobQueue_$de_DE extends Translations$misskey$widgetOptions_$jobQueue_$en_US {
+	_Translations$misskey$widgetOptions_$jobQueue_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4471,8 +4471,8 @@ class _TranslationsMisskeyWidgetOptionsJobQueueDeDe extends TranslationsMisskeyW
 }
 
 // Path: misskey.widgetOptions_.rss_
-class _TranslationsMisskeyWidgetOptionsRssDeDe extends TranslationsMisskeyWidgetOptionsRssEnUs {
-	_TranslationsMisskeyWidgetOptionsRssDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$rss_$de_DE extends Translations$misskey$widgetOptions_$rss_$en_US {
+	_Translations$misskey$widgetOptions_$rss_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4483,8 +4483,8 @@ class _TranslationsMisskeyWidgetOptionsRssDeDe extends TranslationsMisskeyWidget
 }
 
 // Path: misskey.widgetOptions_.rssTicker_
-class _TranslationsMisskeyWidgetOptionsRssTickerDeDe extends TranslationsMisskeyWidgetOptionsRssTickerEnUs {
-	_TranslationsMisskeyWidgetOptionsRssTickerDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$rssTicker_$de_DE extends Translations$misskey$widgetOptions_$rssTicker_$en_US {
+	_Translations$misskey$widgetOptions_$rssTicker_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4495,8 +4495,8 @@ class _TranslationsMisskeyWidgetOptionsRssTickerDeDe extends TranslationsMisskey
 }
 
 // Path: misskey.widgetOptions_.birthdayFollowings_
-class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe extends TranslationsMisskeyWidgetOptionsBirthdayFollowingsEnUs {
-	_TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$widgetOptions_$birthdayFollowings_$de_DE extends Translations$misskey$widgetOptions_$birthdayFollowings_$en_US {
+	_Translations$misskey$widgetOptions_$birthdayFollowings_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4505,8 +4505,8 @@ class _TranslationsMisskeyWidgetOptionsBirthdayFollowingsDeDe extends Translatio
 }
 
 // Path: misskey.postForm_.howToUse_
-class _TranslationsMisskeyPostFormHowToUseDeDe extends TranslationsMisskeyPostFormHowToUseEnUs {
-	_TranslationsMisskeyPostFormHowToUseDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$howToUse_$de_DE extends Translations$misskey$postForm_$howToUse_$en_US {
+	_Translations$misskey$postForm_$howToUse_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4526,8 +4526,8 @@ class _TranslationsMisskeyPostFormHowToUseDeDe extends TranslationsMisskeyPostFo
 }
 
 // Path: misskey.postForm_.placeholders_
-class _TranslationsMisskeyPostFormPlaceholdersDeDe extends TranslationsMisskeyPostFormPlaceholdersEnUs {
-	_TranslationsMisskeyPostFormPlaceholdersDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$postForm_$placeholders_$de_DE extends Translations$misskey$postForm_$placeholders_$en_US {
+	_Translations$misskey$postForm_$placeholders_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4541,8 +4541,8 @@ class _TranslationsMisskeyPostFormPlaceholdersDeDe extends TranslationsMisskeyPo
 }
 
 // Path: misskey.pages_.blocks
-class _TranslationsMisskeyPagesBlocksDeDe extends TranslationsMisskeyPagesBlocksEnUs {
-	_TranslationsMisskeyPagesBlocksDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$blocks$de_DE extends Translations$misskey$pages_$blocks$en_US {
+	_Translations$misskey$pages_$blocks$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4555,12 +4555,12 @@ class _TranslationsMisskeyPagesBlocksDeDe extends TranslationsMisskeyPagesBlocks
 	@override String get dynamic => 'Dynamische Bausteine';
 	@override String dynamicDescription({required Object play}) => 'Dieser Baustein wurde abgeschafft. Bitte verwende von nun an ${play}.';
 	@override String get note => 'Eingebettete Notiz';
-	@override late final _TranslationsMisskeyPagesBlocksNoteDeDe note_ = _TranslationsMisskeyPagesBlocksNoteDeDe._(_root);
+	@override late final _Translations$misskey$pages_$blocks$note_$de_DE note_ = _Translations$misskey$pages_$blocks$note_$de_DE._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _TranslationsMisskeyNotificationTypesDeDe extends TranslationsMisskeyNotificationTypesEnUs {
-	_TranslationsMisskeyNotificationTypesDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$types_$de_DE extends Translations$misskey$notification_$types_$en_US {
+	_Translations$misskey$notification_$types_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4589,8 +4589,8 @@ class _TranslationsMisskeyNotificationTypesDeDe extends TranslationsMisskeyNotif
 }
 
 // Path: misskey.notification_.actions_
-class _TranslationsMisskeyNotificationActionsDeDe extends TranslationsMisskeyNotificationActionsEnUs {
-	_TranslationsMisskeyNotificationActionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$notification_$actions_$de_DE extends Translations$misskey$notification_$actions_$en_US {
+	_Translations$misskey$notification_$actions_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4601,8 +4601,8 @@ class _TranslationsMisskeyNotificationActionsDeDe extends TranslationsMisskeyNot
 }
 
 // Path: misskey.deck_.howToUse_
-class _TranslationsMisskeyDeckHowToUseDeDe extends TranslationsMisskeyDeckHowToUseEnUs {
-	_TranslationsMisskeyDeckHowToUseDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$deck_$howToUse_$de_DE extends Translations$misskey$deck_$howToUse_$en_US {
+	_Translations$misskey$deck_$howToUse_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4616,8 +4616,8 @@ class _TranslationsMisskeyDeckHowToUseDeDe extends TranslationsMisskeyDeckHowToU
 }
 
 // Path: misskey.deck_.columns_
-class _TranslationsMisskeyDeckColumnsDeDe extends TranslationsMisskeyDeckColumnsEnUs {
-	_TranslationsMisskeyDeckColumnsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$deck_$columns_$de_DE extends Translations$misskey$deck_$columns_$en_US {
+	_Translations$misskey$deck_$columns_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4636,8 +4636,8 @@ class _TranslationsMisskeyDeckColumnsDeDe extends TranslationsMisskeyDeckColumns
 }
 
 // Path: misskey.webhookSettings_.events_
-class _TranslationsMisskeyWebhookSettingsEventsDeDe extends TranslationsMisskeyWebhookSettingsEventsEnUs {
-	_TranslationsMisskeyWebhookSettingsEventsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$webhookSettings_$events_$de_DE extends Translations$misskey$webhookSettings_$events_$en_US {
+	_Translations$misskey$webhookSettings_$events_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4652,8 +4652,8 @@ class _TranslationsMisskeyWebhookSettingsEventsDeDe extends TranslationsMisskeyW
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _TranslationsMisskeyWebhookSettingsSystemEventsDeDe extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
-	_TranslationsMisskeyWebhookSettingsSystemEventsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$webhookSettings_$systemEvents_$de_DE extends Translations$misskey$webhookSettings_$systemEvents_$en_US {
+	_Translations$misskey$webhookSettings_$systemEvents_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4666,8 +4666,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsDeDe extends TranslationsMi
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _TranslationsMisskeyAbuseReportNotificationRecipientDeDe extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
-	_TranslationsMisskeyAbuseReportNotificationRecipientDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$notificationRecipient_$de_DE extends Translations$misskey$abuseReport_$notificationRecipient_$en_US {
+	_Translations$misskey$abuseReport_$notificationRecipient_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4675,7 +4675,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientDeDe extends Translati
 	@override String get createRecipient => 'Meldungsempfänger hinzufügen';
 	@override String get modifyRecipient => 'Bearbeite einen Empfänger für Meldungen';
 	@override String get recipientType => 'Art der Benachrichtigung';
-	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe._(_root);
+	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$de_DE recipientType_ = _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$de_DE._(_root);
 	@override String get keywords => 'Schlüsselwort';
 	@override String get notifiedUser => 'Zu benachrichtigender Benutzer';
 	@override String get notifiedWebhook => 'Zu verwendender Webhook';
@@ -4683,8 +4683,8 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientDeDe extends Translati
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _TranslationsMisskeyExternalResourceInstallerPluginDeDe extends TranslationsMisskeyExternalResourceInstallerPluginEnUs {
-	_TranslationsMisskeyExternalResourceInstallerPluginDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$plugin_$de_DE extends Translations$misskey$externalResourceInstaller_$plugin_$en_US {
+	_Translations$misskey$externalResourceInstaller_$plugin_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4693,8 +4693,8 @@ class _TranslationsMisskeyExternalResourceInstallerPluginDeDe extends Translatio
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _TranslationsMisskeyExternalResourceInstallerThemeDeDe extends TranslationsMisskeyExternalResourceInstallerThemeEnUs {
-	_TranslationsMisskeyExternalResourceInstallerThemeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$theme_$de_DE extends Translations$misskey$externalResourceInstaller_$theme_$en_US {
+	_Translations$misskey$externalResourceInstaller_$theme_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4703,8 +4703,8 @@ class _TranslationsMisskeyExternalResourceInstallerThemeDeDe extends Translation
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _TranslationsMisskeyExternalResourceInstallerMetaDeDe extends TranslationsMisskeyExternalResourceInstallerMetaEnUs {
-	_TranslationsMisskeyExternalResourceInstallerMetaDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$meta_$de_DE extends Translations$misskey$externalResourceInstaller_$meta_$en_US {
+	_Translations$misskey$externalResourceInstaller_$meta_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4713,8 +4713,8 @@ class _TranslationsMisskeyExternalResourceInstallerMetaDeDe extends Translations
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _TranslationsMisskeyExternalResourceInstallerVendorInfoDeDe extends TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_TranslationsMisskeyExternalResourceInstallerVendorInfoDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$vendorInfo_$de_DE extends Translations$misskey$externalResourceInstaller_$vendorInfo_$en_US {
+	_Translations$misskey$externalResourceInstaller_$vendorInfo_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4725,25 +4725,25 @@ class _TranslationsMisskeyExternalResourceInstallerVendorInfoDeDe extends Transl
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _TranslationsMisskeyExternalResourceInstallerErrorsDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsDeDe invalidParams_ = _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedDeDe resourceTypeNotSupported_ = _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchDeDe failedToFetch_ = _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedDeDe hashUnmatched_ = _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedDeDe pluginParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedDeDe pluginInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedDeDe themeParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe themeInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$invalidParams_$de_DE invalidParams_ = _Translations$misskey$externalResourceInstaller_$errors_$invalidParams_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$resourceTypeNotSupported_$de_DE resourceTypeNotSupported_ = _Translations$misskey$externalResourceInstaller_$errors_$resourceTypeNotSupported_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$failedToFetch_$de_DE failedToFetch_ = _Translations$misskey$externalResourceInstaller_$errors_$failedToFetch_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$hashUnmatched_$de_DE hashUnmatched_ = _Translations$misskey$externalResourceInstaller_$errors_$hashUnmatched_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$pluginParseFailed_$de_DE pluginParseFailed_ = _Translations$misskey$externalResourceInstaller_$errors_$pluginParseFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$pluginInstallFailed_$de_DE pluginInstallFailed_ = _Translations$misskey$externalResourceInstaller_$errors_$pluginInstallFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$themeParseFailed_$de_DE themeParseFailed_ = _Translations$misskey$externalResourceInstaller_$errors_$themeParseFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$externalResourceInstaller_$errors_$themeInstallFailed_$de_DE themeInstallFailed_ = _Translations$misskey$externalResourceInstaller_$errors_$themeInstallFailed_$de_DE._(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _TranslationsMisskeyDataSaverMediaDeDe extends TranslationsMisskeyDataSaverMediaEnUs {
-	_TranslationsMisskeyDataSaverMediaDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$media_$de_DE extends Translations$misskey$dataSaver_$media_$en_US {
+	_Translations$misskey$dataSaver_$media_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4753,8 +4753,8 @@ class _TranslationsMisskeyDataSaverMediaDeDe extends TranslationsMisskeyDataSave
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _TranslationsMisskeyDataSaverAvatarDeDe extends TranslationsMisskeyDataSaverAvatarEnUs {
-	_TranslationsMisskeyDataSaverAvatarDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$avatar_$de_DE extends Translations$misskey$dataSaver_$avatar_$en_US {
+	_Translations$misskey$dataSaver_$avatar_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4764,8 +4764,8 @@ class _TranslationsMisskeyDataSaverAvatarDeDe extends TranslationsMisskeyDataSav
 }
 
 // Path: misskey.dataSaver_.urlPreviewThumbnail_
-class _TranslationsMisskeyDataSaverUrlPreviewThumbnailDeDe extends TranslationsMisskeyDataSaverUrlPreviewThumbnailEnUs {
-	_TranslationsMisskeyDataSaverUrlPreviewThumbnailDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$urlPreviewThumbnail_$de_DE extends Translations$misskey$dataSaver_$urlPreviewThumbnail_$en_US {
+	_Translations$misskey$dataSaver_$urlPreviewThumbnail_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4775,8 +4775,8 @@ class _TranslationsMisskeyDataSaverUrlPreviewThumbnailDeDe extends TranslationsM
 }
 
 // Path: misskey.dataSaver_.disableUrlPreview_
-class _TranslationsMisskeyDataSaverDisableUrlPreviewDeDe extends TranslationsMisskeyDataSaverDisableUrlPreviewEnUs {
-	_TranslationsMisskeyDataSaverDisableUrlPreviewDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$disableUrlPreview_$de_DE extends Translations$misskey$dataSaver_$disableUrlPreview_$en_US {
+	_Translations$misskey$dataSaver_$disableUrlPreview_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4786,8 +4786,8 @@ class _TranslationsMisskeyDataSaverDisableUrlPreviewDeDe extends TranslationsMis
 }
 
 // Path: misskey.dataSaver_.code_
-class _TranslationsMisskeyDataSaverCodeDeDe extends TranslationsMisskeyDataSaverCodeEnUs {
-	_TranslationsMisskeyDataSaverCodeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$dataSaver_$code_$de_DE extends Translations$misskey$dataSaver_$code_$en_US {
+	_Translations$misskey$dataSaver_$code_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4797,8 +4797,8 @@ class _TranslationsMisskeyDataSaverCodeDeDe extends TranslationsMisskeyDataSaver
 }
 
 // Path: misskey.gridComponent_.error_
-class _TranslationsMisskeyGridComponentErrorDeDe extends TranslationsMisskeyGridComponentErrorEnUs {
-	_TranslationsMisskeyGridComponentErrorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$gridComponent_$error_$de_DE extends Translations$misskey$gridComponent_$error_$en_US {
+	_Translations$misskey$gridComponent_$error_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4810,8 +4810,8 @@ class _TranslationsMisskeyGridComponentErrorDeDe extends TranslationsMisskeyGrid
 }
 
 // Path: misskey.customEmojisManager_.gridCommon_
-class _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
-	_TranslationsMisskeyCustomEmojisManagerGridCommonDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$gridCommon_$de_DE extends Translations$misskey$customEmojisManager_$gridCommon_$en_US {
+	_Translations$misskey$customEmojisManager_$gridCommon_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4830,8 +4830,8 @@ class _TranslationsMisskeyCustomEmojisManagerGridCommonDeDe extends Translations
 }
 
 // Path: misskey.customEmojisManager_.logs_
-class _TranslationsMisskeyCustomEmojisManagerLogsDeDe extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLogsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$logs_$de_DE extends Translations$misskey$customEmojisManager_$logs_$en_US {
+	_Translations$misskey$customEmojisManager_$logs_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4842,8 +4842,8 @@ class _TranslationsMisskeyCustomEmojisManagerLogsDeDe extends TranslationsMisske
 }
 
 // Path: misskey.customEmojisManager_.remote_
-class _TranslationsMisskeyCustomEmojisManagerRemoteDeDe extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
-	_TranslationsMisskeyCustomEmojisManagerRemoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$remote_$de_DE extends Translations$misskey$customEmojisManager_$remote_$en_US {
+	_Translations$misskey$customEmojisManager_$remote_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4857,21 +4857,21 @@ class _TranslationsMisskeyCustomEmojisManagerRemoteDeDe extends TranslationsMiss
 }
 
 // Path: misskey.customEmojisManager_.local_
-class _TranslationsMisskeyCustomEmojisManagerLocalDeDe extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLocalDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$local_$de_DE extends Translations$misskey$customEmojisManager_$local_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get tabTitleList => 'Hinzugefügte Emojis';
 	@override String get tabTitleRegister => 'Emojis hinzufügen';
-	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListDeDe list_ = _TranslationsMisskeyCustomEmojisManagerLocalListDeDe._(_root);
-	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$list_$de_DE list_ = _Translations$misskey$customEmojisManager_$local_$list_$de_DE._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$register_$de_DE register_ = _Translations$misskey$customEmojisManager_$local_$register_$de_DE._(_root);
 }
 
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
-class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedDeDe extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$federationNotAllowed_$de_DE extends Translations$misskey$remoteLookupErrors_$federationNotAllowed_$en_US {
+	_Translations$misskey$remoteLookupErrors_$federationNotAllowed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4881,8 +4881,8 @@ class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedDeDe extends Tra
 }
 
 // Path: misskey.remoteLookupErrors_.uriInvalid_
-class _TranslationsMisskeyRemoteLookupErrorsUriInvalidDeDe extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsUriInvalidDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$uriInvalid_$de_DE extends Translations$misskey$remoteLookupErrors_$uriInvalid_$en_US {
+	_Translations$misskey$remoteLookupErrors_$uriInvalid_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4892,8 +4892,8 @@ class _TranslationsMisskeyRemoteLookupErrorsUriInvalidDeDe extends TranslationsM
 }
 
 // Path: misskey.remoteLookupErrors_.requestFailed_
-class _TranslationsMisskeyRemoteLookupErrorsRequestFailedDeDe extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsRequestFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$requestFailed_$de_DE extends Translations$misskey$remoteLookupErrors_$requestFailed_$en_US {
+	_Translations$misskey$remoteLookupErrors_$requestFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4903,8 +4903,8 @@ class _TranslationsMisskeyRemoteLookupErrorsRequestFailedDeDe extends Translatio
 }
 
 // Path: misskey.remoteLookupErrors_.responseInvalid_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidDeDe extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$responseInvalid_$de_DE extends Translations$misskey$remoteLookupErrors_$responseInvalid_$en_US {
+	_Translations$misskey$remoteLookupErrors_$responseInvalid_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4914,8 +4914,8 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidDeDe extends Translat
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
-class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$remoteLookupErrors_$noSuchObject_$de_DE extends Translations$misskey$remoteLookupErrors_$noSuchObject_$en_US {
+	_Translations$misskey$remoteLookupErrors_$noSuchObject_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4925,20 +4925,20 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe extends Translation
 }
 
 // Path: misskey.captcha_.error_
-class _TranslationsMisskeyCaptchaErrorDeDe extends TranslationsMisskeyCaptchaErrorEnUs {
-	_TranslationsMisskeyCaptchaErrorDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$captcha_$error_$de_DE extends Translations$misskey$captcha_$error_$en_US {
+	_Translations$misskey$captcha_$error_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedDeDe requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe._(_root);
-	@override late final _TranslationsMisskeyCaptchaErrorUnknownDeDe unknown_ = _TranslationsMisskeyCaptchaErrorUnknownDeDe._(_root);
+	@override late final _Translations$misskey$captcha_$error_$requestFailed_$de_DE requestFailed_ = _Translations$misskey$captcha_$error_$requestFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$captcha_$error_$verificationFailed_$de_DE verificationFailed_ = _Translations$misskey$captcha_$error_$verificationFailed_$de_DE._(_root);
+	@override late final _Translations$misskey$captcha_$error_$unknown_$de_DE unknown_ = _Translations$misskey$captcha_$error_$unknown_$de_DE._(_root);
 }
 
 // Path: misskey.serverSetupWizard_.use_
-class _TranslationsMisskeyServerSetupWizardUseDeDe extends TranslationsMisskeyServerSetupWizardUseEnUs {
-	_TranslationsMisskeyServerSetupWizardUseDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSetupWizard_$use_$de_DE extends Translations$misskey$serverSetupWizard_$use_$en_US {
+	_Translations$misskey$serverSetupWizard_$use_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4953,8 +4953,8 @@ class _TranslationsMisskeyServerSetupWizardUseDeDe extends TranslationsMisskeySe
 }
 
 // Path: misskey.serverSetupWizard_.scale_
-class _TranslationsMisskeyServerSetupWizardScaleDeDe extends TranslationsMisskeyServerSetupWizardScaleEnUs {
-	_TranslationsMisskeyServerSetupWizardScaleDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSetupWizard_$scale_$de_DE extends Translations$misskey$serverSetupWizard_$scale_$en_US {
+	_Translations$misskey$serverSetupWizard_$scale_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4965,8 +4965,8 @@ class _TranslationsMisskeyServerSetupWizardScaleDeDe extends TranslationsMisskey
 }
 
 // Path: misskey.serverSetupWizard_.donationRequest_
-class _TranslationsMisskeyServerSetupWizardDonationRequestDeDe extends TranslationsMisskeyServerSetupWizardDonationRequestEnUs {
-	_TranslationsMisskeyServerSetupWizardDonationRequestDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$serverSetupWizard_$donationRequest_$de_DE extends Translations$misskey$serverSetupWizard_$donationRequest_$en_US {
+	_Translations$misskey$serverSetupWizard_$donationRequest_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -4977,8 +4977,8 @@ class _TranslationsMisskeyServerSetupWizardDonationRequestDeDe extends Translati
 }
 
 // Path: misskey.imageEffector_.fxs_
-class _TranslationsMisskeyImageEffectorFxsDeDe extends TranslationsMisskeyImageEffectorFxsEnUs {
-	_TranslationsMisskeyImageEffectorFxsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEffector_$fxs_$de_DE extends Translations$misskey$imageEffector_$fxs_$en_US {
+	_Translations$misskey$imageEffector_$fxs_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5005,8 +5005,8 @@ class _TranslationsMisskeyImageEffectorFxsDeDe extends TranslationsMisskeyImageE
 }
 
 // Path: misskey.imageEffector_.fxProps_
-class _TranslationsMisskeyImageEffectorFxPropsDeDe extends TranslationsMisskeyImageEffectorFxPropsEnUs {
-	_TranslationsMisskeyImageEffectorFxPropsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$imageEffector_$fxProps_$de_DE extends Translations$misskey$imageEffector_$fxProps_$en_US {
+	_Translations$misskey$imageEffector_$fxProps_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5045,8 +5045,8 @@ class _TranslationsMisskeyImageEffectorFxPropsDeDe extends TranslationsMisskeyIm
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$visibility_$de_DE extends Translations$misskey$initialTutorial_$postNote_$visibility_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$visibility_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5062,21 +5062,21 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe extends Translat
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _TranslationsMisskeyInitialTutorialPostNoteCwDeDe extends TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteCwDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$cw_$de_DE extends Translations$misskey$initialTutorial_$postNote_$cw_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$cw_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Inhaltswarnung';
 	@override String get description => 'Anstelle des Textes wird das angezeigt, was du im Abschnitt „Anmerkungen“ angibst. Drücke auf „Inhalt anzeigen“, um den vollständigen Text zu sehen.';
-	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$de_DE exampleNote_ = _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$de_DE._(_root);
 	@override String get useCases => 'Dient zur Kennzeichnung von Notizen, wie sie in den Serverrichtlinien vorgeschrieben sind, oder zur eigenen Festlegung von Spoiler-Beiträgen oder sensiblem Text.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$de_DE extends Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$en_US {
+	_Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5085,8 +5085,8 @@ class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNot
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _TranslationsMisskeyAchievementsTypesNotes1DeDe extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes1_$de_DE extends Translations$misskey$achievements_$types_$notes1_$en_US {
+	_Translations$misskey$achievements_$types_$notes1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5097,8 +5097,8 @@ class _TranslationsMisskeyAchievementsTypesNotes1DeDe extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _TranslationsMisskeyAchievementsTypesNotes10DeDe extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes10DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes10_$de_DE extends Translations$misskey$achievements_$types_$notes10_$en_US {
+	_Translations$misskey$achievements_$types_$notes10_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5108,8 +5108,8 @@ class _TranslationsMisskeyAchievementsTypesNotes10DeDe extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _TranslationsMisskeyAchievementsTypesNotes100DeDe extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes100DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes100_$de_DE extends Translations$misskey$achievements_$types_$notes100_$en_US {
+	_Translations$misskey$achievements_$types_$notes100_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5119,8 +5119,8 @@ class _TranslationsMisskeyAchievementsTypesNotes100DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _TranslationsMisskeyAchievementsTypesNotes500DeDe extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes500DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes500_$de_DE extends Translations$misskey$achievements_$types_$notes500_$en_US {
+	_Translations$misskey$achievements_$types_$notes500_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5130,8 +5130,8 @@ class _TranslationsMisskeyAchievementsTypesNotes500DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _TranslationsMisskeyAchievementsTypesNotes1000DeDe extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes1000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes1000_$de_DE extends Translations$misskey$achievements_$types_$notes1000_$en_US {
+	_Translations$misskey$achievements_$types_$notes1000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5141,8 +5141,8 @@ class _TranslationsMisskeyAchievementsTypesNotes1000DeDe extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _TranslationsMisskeyAchievementsTypesNotes5000DeDe extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes5000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes5000_$de_DE extends Translations$misskey$achievements_$types_$notes5000_$en_US {
+	_Translations$misskey$achievements_$types_$notes5000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5152,8 +5152,8 @@ class _TranslationsMisskeyAchievementsTypesNotes5000DeDe extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _TranslationsMisskeyAchievementsTypesNotes10000DeDe extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes10000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes10000_$de_DE extends Translations$misskey$achievements_$types_$notes10000_$en_US {
+	_Translations$misskey$achievements_$types_$notes10000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5163,8 +5163,8 @@ class _TranslationsMisskeyAchievementsTypesNotes10000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _TranslationsMisskeyAchievementsTypesNotes20000DeDe extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes20000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes20000_$de_DE extends Translations$misskey$achievements_$types_$notes20000_$en_US {
+	_Translations$misskey$achievements_$types_$notes20000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5174,8 +5174,8 @@ class _TranslationsMisskeyAchievementsTypesNotes20000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _TranslationsMisskeyAchievementsTypesNotes30000DeDe extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes30000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes30000_$de_DE extends Translations$misskey$achievements_$types_$notes30000_$en_US {
+	_Translations$misskey$achievements_$types_$notes30000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5185,8 +5185,8 @@ class _TranslationsMisskeyAchievementsTypesNotes30000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _TranslationsMisskeyAchievementsTypesNotes40000DeDe extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes40000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes40000_$de_DE extends Translations$misskey$achievements_$types_$notes40000_$en_US {
+	_Translations$misskey$achievements_$types_$notes40000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5196,8 +5196,8 @@ class _TranslationsMisskeyAchievementsTypesNotes40000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _TranslationsMisskeyAchievementsTypesNotes50000DeDe extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes50000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes50000_$de_DE extends Translations$misskey$achievements_$types_$notes50000_$en_US {
+	_Translations$misskey$achievements_$types_$notes50000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5207,8 +5207,8 @@ class _TranslationsMisskeyAchievementsTypesNotes50000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _TranslationsMisskeyAchievementsTypesNotes60000DeDe extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes60000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes60000_$de_DE extends Translations$misskey$achievements_$types_$notes60000_$en_US {
+	_Translations$misskey$achievements_$types_$notes60000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5218,8 +5218,8 @@ class _TranslationsMisskeyAchievementsTypesNotes60000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _TranslationsMisskeyAchievementsTypesNotes70000DeDe extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes70000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes70000_$de_DE extends Translations$misskey$achievements_$types_$notes70000_$en_US {
+	_Translations$misskey$achievements_$types_$notes70000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5229,8 +5229,8 @@ class _TranslationsMisskeyAchievementsTypesNotes70000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _TranslationsMisskeyAchievementsTypesNotes80000DeDe extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes80000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes80000_$de_DE extends Translations$misskey$achievements_$types_$notes80000_$en_US {
+	_Translations$misskey$achievements_$types_$notes80000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5240,8 +5240,8 @@ class _TranslationsMisskeyAchievementsTypesNotes80000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _TranslationsMisskeyAchievementsTypesNotes90000DeDe extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes90000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes90000_$de_DE extends Translations$misskey$achievements_$types_$notes90000_$en_US {
+	_Translations$misskey$achievements_$types_$notes90000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5251,8 +5251,8 @@ class _TranslationsMisskeyAchievementsTypesNotes90000DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _TranslationsMisskeyAchievementsTypesNotes100000DeDe extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
-	_TranslationsMisskeyAchievementsTypesNotes100000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$notes100000_$de_DE extends Translations$misskey$achievements_$types_$notes100000_$en_US {
+	_Translations$misskey$achievements_$types_$notes100000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5263,8 +5263,8 @@ class _TranslationsMisskeyAchievementsTypesNotes100000DeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _TranslationsMisskeyAchievementsTypesLogin3DeDe extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin3DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login3_$de_DE extends Translations$misskey$achievements_$types_$login3_$en_US {
+	_Translations$misskey$achievements_$types_$login3_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5275,8 +5275,8 @@ class _TranslationsMisskeyAchievementsTypesLogin3DeDe extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _TranslationsMisskeyAchievementsTypesLogin7DeDe extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin7DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login7_$de_DE extends Translations$misskey$achievements_$types_$login7_$en_US {
+	_Translations$misskey$achievements_$types_$login7_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5287,8 +5287,8 @@ class _TranslationsMisskeyAchievementsTypesLogin7DeDe extends TranslationsMisske
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _TranslationsMisskeyAchievementsTypesLogin15DeDe extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin15DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login15_$de_DE extends Translations$misskey$achievements_$types_$login15_$en_US {
+	_Translations$misskey$achievements_$types_$login15_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5298,8 +5298,8 @@ class _TranslationsMisskeyAchievementsTypesLogin15DeDe extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _TranslationsMisskeyAchievementsTypesLogin30DeDe extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin30DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login30_$de_DE extends Translations$misskey$achievements_$types_$login30_$en_US {
+	_Translations$misskey$achievements_$types_$login30_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5309,8 +5309,8 @@ class _TranslationsMisskeyAchievementsTypesLogin30DeDe extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _TranslationsMisskeyAchievementsTypesLogin60DeDe extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin60DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login60_$de_DE extends Translations$misskey$achievements_$types_$login60_$en_US {
+	_Translations$misskey$achievements_$types_$login60_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5320,8 +5320,8 @@ class _TranslationsMisskeyAchievementsTypesLogin60DeDe extends TranslationsMissk
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _TranslationsMisskeyAchievementsTypesLogin100DeDe extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin100DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login100_$de_DE extends Translations$misskey$achievements_$types_$login100_$en_US {
+	_Translations$misskey$achievements_$types_$login100_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5332,8 +5332,8 @@ class _TranslationsMisskeyAchievementsTypesLogin100DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _TranslationsMisskeyAchievementsTypesLogin200DeDe extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin200DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login200_$de_DE extends Translations$misskey$achievements_$types_$login200_$en_US {
+	_Translations$misskey$achievements_$types_$login200_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5343,8 +5343,8 @@ class _TranslationsMisskeyAchievementsTypesLogin200DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _TranslationsMisskeyAchievementsTypesLogin300DeDe extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin300DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login300_$de_DE extends Translations$misskey$achievements_$types_$login300_$en_US {
+	_Translations$misskey$achievements_$types_$login300_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5354,8 +5354,8 @@ class _TranslationsMisskeyAchievementsTypesLogin300DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _TranslationsMisskeyAchievementsTypesLogin400DeDe extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin400DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login400_$de_DE extends Translations$misskey$achievements_$types_$login400_$en_US {
+	_Translations$misskey$achievements_$types_$login400_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5365,8 +5365,8 @@ class _TranslationsMisskeyAchievementsTypesLogin400DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _TranslationsMisskeyAchievementsTypesLogin500DeDe extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin500DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login500_$de_DE extends Translations$misskey$achievements_$types_$login500_$en_US {
+	_Translations$misskey$achievements_$types_$login500_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5377,8 +5377,8 @@ class _TranslationsMisskeyAchievementsTypesLogin500DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _TranslationsMisskeyAchievementsTypesLogin600DeDe extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin600DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login600_$de_DE extends Translations$misskey$achievements_$types_$login600_$en_US {
+	_Translations$misskey$achievements_$types_$login600_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5388,8 +5388,8 @@ class _TranslationsMisskeyAchievementsTypesLogin600DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _TranslationsMisskeyAchievementsTypesLogin700DeDe extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin700DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login700_$de_DE extends Translations$misskey$achievements_$types_$login700_$en_US {
+	_Translations$misskey$achievements_$types_$login700_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5399,8 +5399,8 @@ class _TranslationsMisskeyAchievementsTypesLogin700DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _TranslationsMisskeyAchievementsTypesLogin800DeDe extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin800DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login800_$de_DE extends Translations$misskey$achievements_$types_$login800_$en_US {
+	_Translations$misskey$achievements_$types_$login800_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5410,8 +5410,8 @@ class _TranslationsMisskeyAchievementsTypesLogin800DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _TranslationsMisskeyAchievementsTypesLogin900DeDe extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin900DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login900_$de_DE extends Translations$misskey$achievements_$types_$login900_$en_US {
+	_Translations$misskey$achievements_$types_$login900_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5421,8 +5421,8 @@ class _TranslationsMisskeyAchievementsTypesLogin900DeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _TranslationsMisskeyAchievementsTypesLogin1000DeDe extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
-	_TranslationsMisskeyAchievementsTypesLogin1000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$login1000_$de_DE extends Translations$misskey$achievements_$types_$login1000_$en_US {
+	_Translations$misskey$achievements_$types_$login1000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5433,8 +5433,8 @@ class _TranslationsMisskeyAchievementsTypesLogin1000DeDe extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _TranslationsMisskeyAchievementsTypesNoteClipped1DeDe extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_TranslationsMisskeyAchievementsTypesNoteClipped1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$noteClipped1_$de_DE extends Translations$misskey$achievements_$types_$noteClipped1_$en_US {
+	_Translations$misskey$achievements_$types_$noteClipped1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5444,8 +5444,8 @@ class _TranslationsMisskeyAchievementsTypesNoteClipped1DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _TranslationsMisskeyAchievementsTypesNoteFavorited1DeDe extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_TranslationsMisskeyAchievementsTypesNoteFavorited1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$noteFavorited1_$de_DE extends Translations$misskey$achievements_$types_$noteFavorited1_$en_US {
+	_Translations$misskey$achievements_$types_$noteFavorited1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5455,8 +5455,8 @@ class _TranslationsMisskeyAchievementsTypesNoteFavorited1DeDe extends Translatio
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1DeDe extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$myNoteFavorited1_$de_DE extends Translations$misskey$achievements_$types_$myNoteFavorited1_$en_US {
+	_Translations$misskey$achievements_$types_$myNoteFavorited1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5466,8 +5466,8 @@ class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1DeDe extends Translat
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _TranslationsMisskeyAchievementsTypesProfileFilledDeDe extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
-	_TranslationsMisskeyAchievementsTypesProfileFilledDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$profileFilled_$de_DE extends Translations$misskey$achievements_$types_$profileFilled_$en_US {
+	_Translations$misskey$achievements_$types_$profileFilled_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5477,8 +5477,8 @@ class _TranslationsMisskeyAchievementsTypesProfileFilledDeDe extends Translation
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _TranslationsMisskeyAchievementsTypesMarkedAsCatDeDe extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_TranslationsMisskeyAchievementsTypesMarkedAsCatDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$markedAsCat_$de_DE extends Translations$misskey$achievements_$types_$markedAsCat_$en_US {
+	_Translations$misskey$achievements_$types_$markedAsCat_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5489,8 +5489,8 @@ class _TranslationsMisskeyAchievementsTypesMarkedAsCatDeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _TranslationsMisskeyAchievementsTypesFollowing1DeDe extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following1_$de_DE extends Translations$misskey$achievements_$types_$following1_$en_US {
+	_Translations$misskey$achievements_$types_$following1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5500,8 +5500,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing1DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _TranslationsMisskeyAchievementsTypesFollowing10DeDe extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing10DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following10_$de_DE extends Translations$misskey$achievements_$types_$following10_$en_US {
+	_Translations$misskey$achievements_$types_$following10_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5511,8 +5511,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing10DeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _TranslationsMisskeyAchievementsTypesFollowing50DeDe extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing50DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following50_$de_DE extends Translations$misskey$achievements_$types_$following50_$en_US {
+	_Translations$misskey$achievements_$types_$following50_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5522,8 +5522,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing50DeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _TranslationsMisskeyAchievementsTypesFollowing100DeDe extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing100DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following100_$de_DE extends Translations$misskey$achievements_$types_$following100_$en_US {
+	_Translations$misskey$achievements_$types_$following100_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5533,8 +5533,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing100DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _TranslationsMisskeyAchievementsTypesFollowing300DeDe extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowing300DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$following300_$de_DE extends Translations$misskey$achievements_$types_$following300_$en_US {
+	_Translations$misskey$achievements_$types_$following300_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5544,8 +5544,8 @@ class _TranslationsMisskeyAchievementsTypesFollowing300DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _TranslationsMisskeyAchievementsTypesFollowers1DeDe extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers1_$de_DE extends Translations$misskey$achievements_$types_$followers1_$en_US {
+	_Translations$misskey$achievements_$types_$followers1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5555,8 +5555,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers1DeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _TranslationsMisskeyAchievementsTypesFollowers10DeDe extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers10DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers10_$de_DE extends Translations$misskey$achievements_$types_$followers10_$en_US {
+	_Translations$misskey$achievements_$types_$followers10_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5566,8 +5566,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers10DeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _TranslationsMisskeyAchievementsTypesFollowers50DeDe extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers50DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers50_$de_DE extends Translations$misskey$achievements_$types_$followers50_$en_US {
+	_Translations$misskey$achievements_$types_$followers50_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5577,8 +5577,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers50DeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _TranslationsMisskeyAchievementsTypesFollowers100DeDe extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers100DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers100_$de_DE extends Translations$misskey$achievements_$types_$followers100_$en_US {
+	_Translations$misskey$achievements_$types_$followers100_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5588,8 +5588,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers100DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _TranslationsMisskeyAchievementsTypesFollowers300DeDe extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers300DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers300_$de_DE extends Translations$misskey$achievements_$types_$followers300_$en_US {
+	_Translations$misskey$achievements_$types_$followers300_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5599,8 +5599,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers300DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _TranslationsMisskeyAchievementsTypesFollowers500DeDe extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers500DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers500_$de_DE extends Translations$misskey$achievements_$types_$followers500_$en_US {
+	_Translations$misskey$achievements_$types_$followers500_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5610,8 +5610,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers500DeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _TranslationsMisskeyAchievementsTypesFollowers1000DeDe extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
-	_TranslationsMisskeyAchievementsTypesFollowers1000DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$followers1000_$de_DE extends Translations$misskey$achievements_$types_$followers1000_$en_US {
+	_Translations$misskey$achievements_$types_$followers1000_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5621,8 +5621,8 @@ class _TranslationsMisskeyAchievementsTypesFollowers1000DeDe extends Translation
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _TranslationsMisskeyAchievementsTypesCollectAchievements30DeDe extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_TranslationsMisskeyAchievementsTypesCollectAchievements30DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$collectAchievements30_$de_DE extends Translations$misskey$achievements_$types_$collectAchievements30_$en_US {
+	_Translations$misskey$achievements_$types_$collectAchievements30_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5632,8 +5632,8 @@ class _TranslationsMisskeyAchievementsTypesCollectAchievements30DeDe extends Tra
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _TranslationsMisskeyAchievementsTypesViewAchievements3minDeDe extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_TranslationsMisskeyAchievementsTypesViewAchievements3minDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$viewAchievements3min_$de_DE extends Translations$misskey$achievements_$types_$viewAchievements3min_$en_US {
+	_Translations$misskey$achievements_$types_$viewAchievements3min_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5643,8 +5643,8 @@ class _TranslationsMisskeyAchievementsTypesViewAchievements3minDeDe extends Tran
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _TranslationsMisskeyAchievementsTypesILoveMisskeyDeDe extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_TranslationsMisskeyAchievementsTypesILoveMisskeyDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$iLoveMisskey_$de_DE extends Translations$misskey$achievements_$types_$iLoveMisskey_$en_US {
+	_Translations$misskey$achievements_$types_$iLoveMisskey_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5655,8 +5655,8 @@ class _TranslationsMisskeyAchievementsTypesILoveMisskeyDeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _TranslationsMisskeyAchievementsTypesFoundTreasureDeDe extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_TranslationsMisskeyAchievementsTypesFoundTreasureDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$foundTreasure_$de_DE extends Translations$misskey$achievements_$types_$foundTreasure_$en_US {
+	_Translations$misskey$achievements_$types_$foundTreasure_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5666,8 +5666,8 @@ class _TranslationsMisskeyAchievementsTypesFoundTreasureDeDe extends Translation
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _TranslationsMisskeyAchievementsTypesClient30minDeDe extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
-	_TranslationsMisskeyAchievementsTypesClient30minDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$client30min_$de_DE extends Translations$misskey$achievements_$types_$client30min_$en_US {
+	_Translations$misskey$achievements_$types_$client30min_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5677,8 +5677,8 @@ class _TranslationsMisskeyAchievementsTypesClient30minDeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _TranslationsMisskeyAchievementsTypesClient60minDeDe extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
-	_TranslationsMisskeyAchievementsTypesClient60minDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$client60min_$de_DE extends Translations$misskey$achievements_$types_$client60min_$en_US {
+	_Translations$misskey$achievements_$types_$client60min_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5688,8 +5688,8 @@ class _TranslationsMisskeyAchievementsTypesClient60minDeDe extends TranslationsM
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minDeDe extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$noteDeletedWithin1min_$de_DE extends Translations$misskey$achievements_$types_$noteDeletedWithin1min_$en_US {
+	_Translations$misskey$achievements_$types_$noteDeletedWithin1min_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5699,8 +5699,8 @@ class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minDeDe extends Tra
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _TranslationsMisskeyAchievementsTypesPostedAtLateNightDeDe extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_TranslationsMisskeyAchievementsTypesPostedAtLateNightDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$postedAtLateNight_$de_DE extends Translations$misskey$achievements_$types_$postedAtLateNight_$en_US {
+	_Translations$misskey$achievements_$types_$postedAtLateNight_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5711,8 +5711,8 @@ class _TranslationsMisskeyAchievementsTypesPostedAtLateNightDeDe extends Transla
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _TranslationsMisskeyAchievementsTypesPostedAt0min0secDeDe extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_TranslationsMisskeyAchievementsTypesPostedAt0min0secDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$postedAt0min0sec_$de_DE extends Translations$misskey$achievements_$types_$postedAt0min0sec_$en_US {
+	_Translations$misskey$achievements_$types_$postedAt0min0sec_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5723,8 +5723,8 @@ class _TranslationsMisskeyAchievementsTypesPostedAt0min0secDeDe extends Translat
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _TranslationsMisskeyAchievementsTypesSelfQuoteDeDe extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_TranslationsMisskeyAchievementsTypesSelfQuoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$selfQuote_$de_DE extends Translations$misskey$achievements_$types_$selfQuote_$en_US {
+	_Translations$misskey$achievements_$types_$selfQuote_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5734,8 +5734,8 @@ class _TranslationsMisskeyAchievementsTypesSelfQuoteDeDe extends TranslationsMis
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _TranslationsMisskeyAchievementsTypesHtl20npmDeDe extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
-	_TranslationsMisskeyAchievementsTypesHtl20npmDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$htl20npm_$de_DE extends Translations$misskey$achievements_$types_$htl20npm_$en_US {
+	_Translations$misskey$achievements_$types_$htl20npm_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5745,8 +5745,8 @@ class _TranslationsMisskeyAchievementsTypesHtl20npmDeDe extends TranslationsMiss
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _TranslationsMisskeyAchievementsTypesViewInstanceChartDeDe extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_TranslationsMisskeyAchievementsTypesViewInstanceChartDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$viewInstanceChart_$de_DE extends Translations$misskey$achievements_$types_$viewInstanceChart_$en_US {
+	_Translations$misskey$achievements_$types_$viewInstanceChart_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5756,8 +5756,8 @@ class _TranslationsMisskeyAchievementsTypesViewInstanceChartDeDe extends Transla
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadDeDe extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$de_DE extends Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$en_US {
+	_Translations$misskey$achievements_$types_$outputHelloWorldOnScratchpad_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5767,8 +5767,8 @@ class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadDeDe exte
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _TranslationsMisskeyAchievementsTypesOpen3windowsDeDe extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_TranslationsMisskeyAchievementsTypesOpen3windowsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$open3windows_$de_DE extends Translations$misskey$achievements_$types_$open3windows_$en_US {
+	_Translations$misskey$achievements_$types_$open3windows_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5778,8 +5778,8 @@ class _TranslationsMisskeyAchievementsTypesOpen3windowsDeDe extends Translations
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceDeDe extends TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$driveFolderCircularReference_$de_DE extends Translations$misskey$achievements_$types_$driveFolderCircularReference_$en_US {
+	_Translations$misskey$achievements_$types_$driveFolderCircularReference_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5789,8 +5789,8 @@ class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceDeDe exte
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _TranslationsMisskeyAchievementsTypesReactWithoutReadDeDe extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_TranslationsMisskeyAchievementsTypesReactWithoutReadDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$reactWithoutRead_$de_DE extends Translations$misskey$achievements_$types_$reactWithoutRead_$en_US {
+	_Translations$misskey$achievements_$types_$reactWithoutRead_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5800,8 +5800,8 @@ class _TranslationsMisskeyAchievementsTypesReactWithoutReadDeDe extends Translat
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _TranslationsMisskeyAchievementsTypesClickedClickHereDeDe extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_TranslationsMisskeyAchievementsTypesClickedClickHereDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$clickedClickHere_$de_DE extends Translations$misskey$achievements_$types_$clickedClickHere_$en_US {
+	_Translations$misskey$achievements_$types_$clickedClickHere_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5811,8 +5811,8 @@ class _TranslationsMisskeyAchievementsTypesClickedClickHereDeDe extends Translat
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _TranslationsMisskeyAchievementsTypesJustPlainLuckyDeDe extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_TranslationsMisskeyAchievementsTypesJustPlainLuckyDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$justPlainLucky_$de_DE extends Translations$misskey$achievements_$types_$justPlainLucky_$en_US {
+	_Translations$misskey$achievements_$types_$justPlainLucky_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5822,8 +5822,8 @@ class _TranslationsMisskeyAchievementsTypesJustPlainLuckyDeDe extends Translatio
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloDeDe extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$setNameToSyuilo_$de_DE extends Translations$misskey$achievements_$types_$setNameToSyuilo_$en_US {
+	_Translations$misskey$achievements_$types_$setNameToSyuilo_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5833,8 +5833,8 @@ class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloDeDe extends Translati
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1DeDe extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$de_DE extends Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$en_US {
+	_Translations$misskey$achievements_$types_$passedSinceAccountCreated1_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5844,8 +5844,8 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1DeDe extend
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2DeDe extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$de_DE extends Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$en_US {
+	_Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5855,8 +5855,8 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2DeDe extend
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3DeDe extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3DeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$passedSinceAccountCreated3_$de_DE extends Translations$misskey$achievements_$types_$passedSinceAccountCreated3_$en_US {
+	_Translations$misskey$achievements_$types_$passedSinceAccountCreated3_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5866,8 +5866,8 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3DeDe extend
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayDeDe extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$loggedInOnBirthday_$de_DE extends Translations$misskey$achievements_$types_$loggedInOnBirthday_$en_US {
+	_Translations$misskey$achievements_$types_$loggedInOnBirthday_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5877,8 +5877,8 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayDeDe extends Transl
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayDeDe extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$de_DE extends Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$en_US {
+	_Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5889,8 +5889,8 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayDeDe extends Tra
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _TranslationsMisskeyAchievementsTypesCookieClickedDeDe extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
-	_TranslationsMisskeyAchievementsTypesCookieClickedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$cookieClicked_$de_DE extends Translations$misskey$achievements_$types_$cookieClicked_$en_US {
+	_Translations$misskey$achievements_$types_$cookieClicked_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5901,8 +5901,8 @@ class _TranslationsMisskeyAchievementsTypesCookieClickedDeDe extends Translation
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _TranslationsMisskeyAchievementsTypesBrainDiverDeDe extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
-	_TranslationsMisskeyAchievementsTypesBrainDiverDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$brainDiver_$de_DE extends Translations$misskey$achievements_$types_$brainDiver_$en_US {
+	_Translations$misskey$achievements_$types_$brainDiver_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5913,8 +5913,8 @@ class _TranslationsMisskeyAchievementsTypesBrainDiverDeDe extends TranslationsMi
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonDeDe extends TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$smashTestNotificationButton_$de_DE extends Translations$misskey$achievements_$types_$smashTestNotificationButton_$en_US {
+	_Translations$misskey$achievements_$types_$smashTestNotificationButton_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5924,8 +5924,8 @@ class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonDeDe exten
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _TranslationsMisskeyAchievementsTypesTutorialCompletedDeDe extends TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_TranslationsMisskeyAchievementsTypesTutorialCompletedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$tutorialCompleted_$de_DE extends Translations$misskey$achievements_$types_$tutorialCompleted_$en_US {
+	_Translations$misskey$achievements_$types_$tutorialCompleted_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5935,8 +5935,8 @@ class _TranslationsMisskeyAchievementsTypesTutorialCompletedDeDe extends Transla
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadDeDe extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$de_DE extends Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$en_US {
+	_Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5946,8 +5946,8 @@ class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadDeDe extends T
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadDeDe extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$de_DE extends Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$en_US {
+	_Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5958,8 +5958,8 @@ class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadDeDe ext
 }
 
 // Path: misskey.pages_.blocks.note_
-class _TranslationsMisskeyPagesBlocksNoteDeDe extends TranslationsMisskeyPagesBlocksNoteEnUs {
-	_TranslationsMisskeyPagesBlocksNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$pages_$blocks$note_$de_DE extends Translations$misskey$pages_$blocks$note_$en_US {
+	_Translations$misskey$pages_$blocks$note_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5970,20 +5970,20 @@ class _TranslationsMisskeyPagesBlocksNoteDeDe extends TranslationsMisskeyPagesBl
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$de_DE extends Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$en_US {
+	_Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Email';
 	@override String get webhook => 'Webhook';
-	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe._(_root);
+	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$de_DE captions_ = _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$de_DE._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$invalidParams_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$invalidParams_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$invalidParams_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -5993,8 +5993,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsDeDe exten
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$resourceTypeNotSupported_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$resourceTypeNotSupported_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$resourceTypeNotSupported_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6004,8 +6004,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupporte
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$failedToFetch_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$failedToFetch_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$failedToFetch_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6016,8 +6016,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchDeDe exten
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$hashUnmatched_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$hashUnmatched_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$hashUnmatched_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6027,8 +6027,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedDeDe exten
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$pluginParseFailed_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$pluginParseFailed_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$pluginParseFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6038,8 +6038,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedDeDe e
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$pluginInstallFailed_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$pluginInstallFailed_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$pluginInstallFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6049,8 +6049,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedDeDe
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$themeParseFailed_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$themeParseFailed_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$themeParseFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6060,8 +6060,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedDeDe ex
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe extends TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$externalResourceInstaller_$errors_$themeInstallFailed_$de_DE extends Translations$misskey$externalResourceInstaller_$errors_$themeInstallFailed_$en_US {
+	_Translations$misskey$externalResourceInstaller_$errors_$themeInstallFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6071,8 +6071,8 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedDeDe 
 }
 
 // Path: misskey.customEmojisManager_.local_.list_
-class _TranslationsMisskeyCustomEmojisManagerLocalListDeDe extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLocalListDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$local_$list_$de_DE extends Translations$misskey$customEmojisManager_$local_$list_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$list_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6092,8 +6092,8 @@ class _TranslationsMisskeyCustomEmojisManagerLocalListDeDe extends TranslationsM
 }
 
 // Path: misskey.customEmojisManager_.local_.register_
-class _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
-	_TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$customEmojisManager_$local_$register_$de_DE extends Translations$misskey$customEmojisManager_$local_$register_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$register_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6108,8 +6108,8 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterDeDe extends Translati
 }
 
 // Path: misskey.captcha_.error_.requestFailed_
-class _TranslationsMisskeyCaptchaErrorRequestFailedDeDe extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
-	_TranslationsMisskeyCaptchaErrorRequestFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$captcha_$error_$requestFailed_$de_DE extends Translations$misskey$captcha_$error_$requestFailed_$en_US {
+	_Translations$misskey$captcha_$error_$requestFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6119,8 +6119,8 @@ class _TranslationsMisskeyCaptchaErrorRequestFailedDeDe extends TranslationsMiss
 }
 
 // Path: misskey.captcha_.error_.verificationFailed_
-class _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
-	_TranslationsMisskeyCaptchaErrorVerificationFailedDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$captcha_$error_$verificationFailed_$de_DE extends Translations$misskey$captcha_$error_$verificationFailed_$en_US {
+	_Translations$misskey$captcha_$error_$verificationFailed_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6130,8 +6130,8 @@ class _TranslationsMisskeyCaptchaErrorVerificationFailedDeDe extends Translation
 }
 
 // Path: misskey.captcha_.error_.unknown_
-class _TranslationsMisskeyCaptchaErrorUnknownDeDe extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
-	_TranslationsMisskeyCaptchaErrorUnknownDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$captcha_$error_$unknown_$de_DE extends Translations$misskey$captcha_$error_$unknown_$en_US {
+	_Translations$misskey$captcha_$error_$unknown_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6141,8 +6141,8 @@ class _TranslationsMisskeyCaptchaErrorUnknownDeDe extends TranslationsMisskeyCap
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe extends TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$de_DE extends Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
@@ -6152,8 +6152,8 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe extends Trans
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+class _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$de_DE extends Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$en_US {
+	_Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$de_DE._(TranslationsDeDe root) : this._root = root, super.internal(root);
 
 	final TranslationsDeDe _root; // ignore: unused_field
 
