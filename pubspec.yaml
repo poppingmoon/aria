@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.2+100
+version: 1.5.3+101
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -16,7 +16,7 @@ dependencies:
   async: ^2.13.1
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
-  audioplayers: ^6.6.0
+  audioplayers: ^6.7.0
   cached_network_image: ^3.4.1
   characters: ^1.4.1
   chewie: ^1.14.1
@@ -30,10 +30,7 @@ dependencies:
   dynamic_color: ^1.8.1
   extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker:
-    git:
-      url: https://github.com/miguelpruivo/flutter_file_picker
-      ref: a601fb97217668af0bc56f69a25322f6714739bd
+  file_picker: ^12.0.0-beta.5
   flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
@@ -70,7 +67,7 @@ dependencies:
   fvp:
     git:
       url: https://github.com/poppingmoon/fvp
-      ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
+      ref: 0f654a4765299efa5a89d5e46f3183e46213f2ae
   gal: ^2.3.2
   gal_linux: ^0.1.2
   go_router: ^17.2.3
@@ -101,7 +98,7 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
+      ref: b0ffed719065ab8880da07d37d450580cf0ea13a
   mime: ^2.0.0
   misskey_dart:
     git:
@@ -126,7 +123,7 @@ dependencies:
   reorderable_grid: ^1.0.13
   reorderables: ^0.6.0
   riverpod_annotation: ^4.0.2
-  screen_brightness: ^2.1.8
+  screen_brightness: ^2.1.9
   sensors_plus: ^7.0.0
   share_plus: ^13.1.0
   shared_preferences: ^2.5.5
@@ -140,7 +137,7 @@ dependencies:
   twemoji_v2:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
-      ref: 535ea95511bc93623264e1027087495a17bd68b9
+      ref: 2daaf885d50c0886035839b99ac5ac3e87650e7d
   unifiedpush: ^6.2.0
   unifiedpush_ui: ^0.2.0
   url_launcher: ^6.3.2
@@ -169,7 +166,7 @@ dev_dependencies:
   isar_community_generator:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: c09cf49881b0ba0013198f31cbcc001a26f6ef63
+      ref: 54e11e041c520d89a3a8953d155d31afa9dfe373
       path: packages/isar_community_generator
   json_serializable: ^6.13.0
   lint: ^2.8.0
@@ -193,13 +190,14 @@ dependency_overrides:
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 81a5bb0aa550a6c75a190924a5f1cb6e4c664b7b
+      ref: 54e11e041c520d89a3a8953d155d31afa9dfe373
       path: packages/isar_community
   jni:
     git:
       url: https://github.com/poppingmoon/native
       ref: b380193822cbc7a6c74373edd3a2185edd89ba56
       path: pkgs/jni
+  screen_brightness_android: 2.1.4
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector

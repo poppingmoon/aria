@@ -118,10 +118,10 @@ packages:
     dependency: "direct main"
     description:
       name: audioplayers
-      sha256: a72dd459d1a48f61a6fb9c0134dba26597c9236af40639ff0eb70eb4e0baab70
+      sha256: "1d0c1b1f2095e59080e2d5046639096417a86687d89778da41b0c9a06d683dfd"
       url: "https://pub.dev"
     source: hosted
-    version: "6.6.0"
+    version: "6.7.0"
   audioplayers_android:
     dependency: transitive
     description:
@@ -158,18 +158,18 @@ packages:
     dependency: transitive
     description:
       name: audioplayers_web
-      sha256: faa8fa6587f996a6f604433b53af44c57a1407d4fe8dff5766cf63d6875e8de9
+      sha256: "24a6f258062bd7da8cb2157e83fccb9816a08dd306cbaaa24f9813d071470545"
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.0"
+    version: "5.2.1"
   audioplayers_windows:
     dependency: transitive
     description:
       name: audioplayers_windows
-      sha256: bafff2b38b6f6d331887558ba6e0a01c9c208d9dbb3ad0005234db065122a734
+      sha256: "95f875a96c88c3dbbcb608d4f8288e300b0113d256a81d0b3197fcc18f0dc91a"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.0"
+    version: "4.3.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -565,11 +565,10 @@ packages:
   file_picker:
     dependency: "direct main"
     description:
-      path: "."
-      ref: a601fb97217668af0bc56f69a25322f6714739bd
-      resolved-ref: a601fb97217668af0bc56f69a25322f6714739bd
-      url: "https://github.com/miguelpruivo/flutter_file_picker"
-    source: git
+      name: file_picker
+      sha256: fc83774ce5bd7ce08168333b5e53dbe9090ec04eb21e7aa7cd7bac921032c934
+      url: "https://pub.dev"
+    source: hosted
     version: "12.0.0-beta.5"
   fixnum:
     dependency: transitive
@@ -978,11 +977,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
-      resolved-ref: f148ede71db202dc48c1129b20a38b1c9ddf2283
+      ref: "0f654a4765299efa5a89d5e46f3183e46213f2ae"
+      resolved-ref: "0f654a4765299efa5a89d5e46f3183e46213f2ae"
       url: "https://github.com/poppingmoon/fvp"
     source: git
-    version: "0.37.0"
+    version: "0.37.1"
   gal:
     dependency: "direct main"
     description:
@@ -1194,8 +1193,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/isar_community"
-      ref: "81a5bb0aa550a6c75a190924a5f1cb6e4c664b7b"
-      resolved-ref: "81a5bb0aa550a6c75a190924a5f1cb6e4c664b7b"
+      ref: "54e11e041c520d89a3a8953d155d31afa9dfe373"
+      resolved-ref: "54e11e041c520d89a3a8953d155d31afa9dfe373"
       url: "https://github.com/poppingmoon/isar-community"
     source: git
     version: "3.3.2"
@@ -1203,8 +1202,8 @@ packages:
     dependency: "direct dev"
     description:
       path: "packages/isar_community_generator"
-      ref: c09cf49881b0ba0013198f31cbcc001a26f6ef63
-      resolved-ref: c09cf49881b0ba0013198f31cbcc001a26f6ef63
+      ref: "54e11e041c520d89a3a8953d155d31afa9dfe373"
+      resolved-ref: "54e11e041c520d89a3a8953d155d31afa9dfe373"
       url: "https://github.com/poppingmoon/isar-community"
     source: git
     version: "3.3.2"
@@ -1397,8 +1396,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
-      resolved-ref: d3f6e7a7aa4dd05b7d5a7879ed41c1536a5ed1ff
+      ref: b0ffed719065ab8880da07d37d450580cf0ea13a
+      resolved-ref: b0ffed719065ab8880da07d37d450580cf0ea13a
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -1786,12 +1785,12 @@ packages:
     dependency: "direct main"
     description:
       name: screen_brightness
-      sha256: "3dc44301ad51e6361b58a081d1bbd4a38442c9ed9b607a0970b7ca07f16cd691"
+      sha256: "7ea1c037422f007f022dcff3ee955bf8e61a474d5426b29be9290fd976c3e46b"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.8"
+    version: "2.1.9"
   screen_brightness_android:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: screen_brightness_android
       sha256: "2df5e0488a22a73271a43d92dbcd80643df6910cf69690faacaf9929ae9ade3b"
@@ -2248,8 +2247,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "535ea95511bc93623264e1027087495a17bd68b9"
-      resolved-ref: "535ea95511bc93623264e1027087495a17bd68b9"
+      ref: "2daaf885d50c0886035839b99ac5ac3e87650e7d"
+      resolved-ref: "2daaf885d50c0886035839b99ac5ac3e87650e7d"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
