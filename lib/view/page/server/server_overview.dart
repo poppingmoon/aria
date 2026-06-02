@@ -20,6 +20,7 @@ import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/key_value_widget.dart';
+import '../../widget/url_sheet.dart';
 
 class ServerOverview extends ConsumerWidget {
   const ServerOverview({super.key, required this.account, required this.host});
@@ -83,14 +84,23 @@ class ServerOverview extends ConsumerWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: ImageWidget(
-                          url:
-                              (meta?.iconUrl ??
-                                      instance?.iconUrl ??
-                                      instance?.faviconUrl ??
-                                      serverUrl.replace(
-                                        pathSegments: ['favicon.ico'],
-                                      ))
+                          url: switch ((
+                            meta?.iconUrl,
+                            instance?.iconUrl,
+                            instance?.faviconUrl,
+                          )) {
+                            (final iconUrl?, _, _) when iconUrl.hasAuthority =>
+                              iconUrl.toString(),
+                            (_, final iconUrl?, _) when iconUrl.hasAuthority =>
+                              iconUrl.toString(),
+                            (_, _, final faviconUrl?)
+                                when faviconUrl.hasAuthority =>
+                              faviconUrl.toString(),
+                            _ =>
+                              serverUrl
+                                  .replace(pathSegments: ['favicon.ico'])
                                   .toString(),
+                          },
                           height: 64.0,
                           width: 64.0,
                         ),
@@ -159,19 +169,23 @@ class ServerOverview extends ConsumerWidget {
               title: Text(t.misskey.aboutMisskey),
               onTap: () => context.push('/about-misskey'),
             ),
-            if (meta.repositoryUrl != null || (meta.providesTarball ?? false))
+            if (meta.repositoryUrl ??
+                    ((meta.providesTarball ?? false)
+                        ? serverUrl.replace(
+                            pathSegments: [
+                              'tarball',
+                              'misskey-${meta.version}.tar.gz',
+                            ],
+                          )
+                        : null)
+                case final sourceCode?)
               ListTile(
                 leading: const Icon(Icons.code),
                 title: Text(t.misskey.sourceCode),
-                onTap: () => launchUrl(
-                  ref,
-                  meta.repositoryUrl ??
-                      serverUrl.replace(
-                        pathSegments: [
-                          'tarball',
-                          'misskey-${meta.version}.tar.gz',
-                        ],
-                      ),
+                onTap: () => launchUrl(ref, sourceCode),
+                onLongPress: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => UrlSheet(url: sourceCode.toString()),
                 ),
               ),
           ],
@@ -180,6 +194,7 @@ class ServerOverview extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 8.0,
               children: [
                 Expanded(
                   child: KeyValueWidget(
@@ -196,11 +211,16 @@ class ServerOverview extends ConsumerWidget {
               ],
             ),
           ),
-          if (meta case MetaResponse(:final impressumUrl?))
+          if (meta?.impressumUrl case final impressumUrl?
+              when impressumUrl.hasAuthority)
             ListTile(
               leading: const Icon(Icons.shield),
               title: Text(t.misskey.impressum),
               onTap: () => launchUrl(ref, impressumUrl),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => UrlSheet(url: impressumUrl.toString()),
+              ),
             ),
           if (meta != null && meta.serverRules.isNotEmpty)
             ExpansionTile(
@@ -242,23 +262,38 @@ class ServerOverview extends ConsumerWidget {
                   )
                   .toList(),
             ),
-          if (meta case MetaResponse(:final tosUrl?))
+          if (meta?.tosUrl case final tosUrl? when tosUrl.hasAuthority)
             ListTile(
               leading: const Icon(Icons.verified),
               title: Text(t.misskey.termsOfService),
               onTap: () => launchUrl(ref, tosUrl),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => UrlSheet(url: tosUrl.toString()),
+              ),
             ),
-          if (meta case MetaResponse(:final privacyPolicyUrl?))
+          if (meta?.privacyPolicyUrl case final privacyPolicyUrl?
+              when privacyPolicyUrl.hasAuthority)
             ListTile(
               leading: const Icon(Icons.policy),
               title: Text(t.misskey.privacyPolicy),
               onTap: () => launchUrl(ref, privacyPolicyUrl),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) =>
+                    UrlSheet(url: privacyPolicyUrl.toString()),
+              ),
             ),
-          if (meta case MetaResponse(:final feedbackUrl?))
+          if (meta?.feedbackUrl case final feedbackUrl?
+              when feedbackUrl.isNotEmpty)
             ListTile(
               leading: const Icon(Icons.message),
               title: Text(t.misskey.feedback),
               onTap: () => launchUrl(ref, Uri.parse(feedbackUrl)),
+              onLongPress: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => UrlSheet(url: feedbackUrl),
+              ),
             ),
           if (stats != null) ...[
             const Divider(),
@@ -277,6 +312,7 @@ class ServerOverview extends ConsumerWidget {
               child: switch (stats) {
                 AsyncValue(value: final stats?) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 8.0,
                   children: [
                     Expanded(
                       child: KeyValueWidget(

@@ -58,11 +58,13 @@ class TokenLoginPage extends HookConsumerWidget {
         .first;
     final queryFocusNode = useFocusNode();
     final server = servers.firstWhereOrNull((server) => server.url == host);
-    final iconUrl =
-        server?.meta?['iconUrl'] as String? ??
-        (server != null && server.icon
-            ? 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp'
-            : null);
+    final iconUrl = switch (server?.meta) {
+      {'iconUrl': final String iconUrl} when iconUrl.isNotEmpty => iconUrl,
+      _ when server != null && server.icon =>
+        'https://instanceapp.misskey.page/instance-icons/${server.url}.webp',
+      _ when server != null => 'https://${server.url}/favicon.ico',
+      _ => null,
+    };
     final tokenController = useTextEditingController();
     final token = useState('');
     final tokenFocusNode = useFocusNode();
