@@ -195,6 +195,10 @@ jobs:
           fileDir: android/app/
           encodedString: ${{ secrets.UPLOAD_KEYSTORE }}
 
+      - name: Set ANDROID_NDK_HOME
+        run: >
+          echo ANDROID_NDK_HOME=$ANDROID_HOME/ndk/28.2.13676358 >> $GITHUB_ENV
+
       - name: Build App Bundle
         env:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
