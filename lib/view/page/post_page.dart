@@ -175,7 +175,9 @@ class PostPage extends HookConsumerWidget {
                               key: const ValueKey('note'),
                               account: account.value,
                               noteId: '',
-                              note: draft.toNote(),
+                              note: draft
+                                  .copyWith(createdAt: DateTime.now())
+                                  .toNote(),
                               showFooter: false,
                               expandLongNote: true,
                               borderRadius: BorderRadius.circular(8.0),
