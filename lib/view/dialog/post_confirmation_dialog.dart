@@ -86,6 +86,7 @@ class PostConfirmationDialog extends ConsumerWidget {
     final canScheduleNote = i?.canScheduleNote ?? false;
     final note = draft
         .copyWith(
+          createdAt: DateTime.now(),
           userId: i?.id ?? draft.userId,
           user: i?.toUserLite() ?? draft.user,
           channel: channel,
