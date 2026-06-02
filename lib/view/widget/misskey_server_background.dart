@@ -49,7 +49,6 @@ class MisskeyServerBackground extends HookConsumerWidget {
     final opacityController = useAnimationController(
       duration: const Duration(seconds: 1),
     );
-    final opacity = useAnimation(opacityController);
     final backgroundImageUrl = useState<String?>(null);
     useEffect(() {
       Future<void> listener() async {
@@ -83,7 +82,10 @@ class MisskeyServerBackground extends HookConsumerWidget {
       children: [
         if (backgroundImageUrl case ValueNotifier(:final value?))
           Positioned.fill(
-            child: ImageWidget(url: value, fit: BoxFit.cover, opacity: opacity),
+            child: FadeTransition(
+              opacity: opacityController,
+              child: ImageWidget(url: value, fit: BoxFit.cover),
+            ),
           ),
         child,
       ],
