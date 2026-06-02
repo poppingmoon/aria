@@ -533,6 +533,8 @@ class _UserHome extends HookConsumerWidget {
                                     TextSpan(
                                       children: [
                                         const WidgetSpan(
+                                          alignment:
+                                              PlaceholderAlignment.middle,
                                           child: Icon(Icons.place),
                                         ),
                                         const WidgetSpan(
@@ -564,6 +566,8 @@ class _UserHome extends HookConsumerWidget {
                                     TextSpan(
                                       children: [
                                         const WidgetSpan(
+                                          alignment:
+                                              PlaceholderAlignment.middle,
                                           child: Icon(Icons.cake),
                                         ),
                                         const WidgetSpan(
@@ -602,6 +606,7 @@ class _UserHome extends HookConsumerWidget {
                                   TextSpan(
                                     children: [
                                       const WidgetSpan(
+                                        alignment: PlaceholderAlignment.middle,
                                         child: Icon(Icons.calendar_today),
                                       ),
                                       const WidgetSpan(
