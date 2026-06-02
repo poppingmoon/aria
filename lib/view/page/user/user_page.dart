@@ -101,11 +101,13 @@ class UserPage extends HookConsumerWidget {
               actions: [
                 if (user is MeDetailed)
                   IconButton(
+                    tooltip: t.misskey.qr,
                     onPressed: () => context.push('/$account/qr'),
                     icon: const Icon(Icons.qr_code_rounded),
                   ),
                 if (userId != null)
                   IconButton(
+                    tooltip: t.misskey.menu,
                     onPressed: () => showUserSheet(
                       context: context,
                       account: account,
