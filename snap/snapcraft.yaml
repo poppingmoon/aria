@@ -77,6 +77,7 @@ parts:
       git clone https://github.com/flutter/flutter.git --branch $VERSION --depth 1
       export PATH="$(pwd)/flutter/bin:$PATH"
       curl https://sh.rustup.rs -sSf | sh -s -- -y
+      . $HOME/.cargo/env
       sed -i "s|local_build: false|https_proxy: $https_proxy|" pubspec.yaml
       flutter pub get
       flutter build linux
