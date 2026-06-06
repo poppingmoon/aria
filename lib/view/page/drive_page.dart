@@ -73,27 +73,28 @@ class DrivePage extends HookConsumerWidget {
     final controller = useScrollController();
     final isAtBottom = useState(false);
     useEffect(() {
-      if (enableInfiniteScroll) {
-        controller.addListener(() {
-          if (controller.position.extentAfter < 100) {
-            if (!isAtBottom.value) {
-              ref
-                  .read(
-                    driveFoldersNotifierProvider(account, folderId).notifier,
-                  )
-                  .loadMore();
-              ref
-                  .read(driveFilesNotifierProvider(account, folderId).notifier)
-                  .loadMore();
-              isAtBottom.value = true;
-            }
-          } else {
-            isAtBottom.value = false;
+      void callback() {
+        if (controller.position.extentAfter < 100.0) {
+          if (!isAtBottom.value) {
+            ref
+                .read(driveFoldersNotifierProvider(account, folderId).notifier)
+                .loadMore();
+            ref
+                .read(driveFilesNotifierProvider(account, folderId).notifier)
+                .loadMore();
+            isAtBottom.value = true;
           }
-        });
+        } else {
+          isAtBottom.value = false;
+        }
       }
-      return;
-    }, []);
+
+      if (enableInfiniteScroll) {
+        isAtBottom.value = false;
+        controller.addListener(callback);
+      }
+      return () => controller.removeListener(callback);
+    }, [enableInfiniteScroll, folderId]);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
