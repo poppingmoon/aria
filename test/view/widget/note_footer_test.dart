@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:aria/extension/note_extension.dart';
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
-import 'package:aria/model/account_settings.dart';
 import 'package:aria/model/general_settings.dart';
 import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
@@ -50,7 +49,6 @@ Future<void> setupWidget(
   void Function()? focusPostForm,
   MeDetailed? i,
   MetaResponse meta = const MetaResponse(),
-  AccountSettings accountSettings = const AccountSettings(),
   GeneralSettings generalSettings = const GeneralSettings(),
   Dio? dio,
   List<Override> overrides = const [],
@@ -1001,15 +999,7 @@ void main() {
         ),
         data: {'noteId': 'test'},
       );
-      await setupWidget(
-        tester,
-        account: account,
-        note: note,
-        accountSettings: const AccountSettings(
-          pinnedEmojisForReaction: [':test:'],
-        ),
-        dio: dio,
-      );
+      await setupWidget(tester, account: account, note: note, dio: dio);
       await tester.tap(find.byIcon(Icons.add));
       await tester.pumpAndSettle();
       tester.element(find.byType(EmojiPicker)).pop(':test:');
@@ -1052,9 +1042,6 @@ void main() {
         tester,
         account: account,
         note: note,
-        accountSettings: const AccountSettings(
-          pinnedEmojisForReaction: [':test:'],
-        ),
         generalSettings: const GeneralSettings(confirmBeforeReact: false),
         dio: dio,
       );
@@ -1106,9 +1093,6 @@ void main() {
         tester,
         account: account,
         note: note,
-        accountSettings: const AccountSettings(
-          pinnedEmojisForReaction: [':test:'],
-        ),
         generalSettings: const GeneralSettings(confirmBeforeReact: false),
         dio: dio,
       );
@@ -1326,15 +1310,7 @@ void main() {
         (server) => server.reply(200, note.copyWith(myReaction: null)),
         data: {'noteId': 'test'},
       );
-      await setupWidget(
-        tester,
-        account: account,
-        note: note,
-        accountSettings: const AccountSettings(
-          pinnedEmojisForReaction: [':test:'],
-        ),
-        dio: dio,
-      );
+      await setupWidget(tester, account: account, note: note, dio: dio);
       await tester.tap(find.byIcon(Icons.remove));
       await tester.pumpAndSettle();
       await tester.tap(find.text(t.misskey.ok));

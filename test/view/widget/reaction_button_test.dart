@@ -30,8 +30,6 @@ Future<void> setupWidget(
   required Note note,
   required String emoji,
   required int count,
-  double? scale,
-  Key? emojiKey,
   GeneralSettings generalSettings = const GeneralSettings(),
   Dio? dio,
   List<Override> overrides = const [],

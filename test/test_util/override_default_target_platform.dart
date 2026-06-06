@@ -2,10 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
-void overrideDefaultTargetPlatform([TargetPlatform? platform]) {
-  if (platform != null) {
-    debugDefaultTargetPlatformOverride = platform;
-  } else if (Platform.isAndroid) {
+void overrideDefaultTargetPlatform() {
+  if (Platform.isAndroid) {
     debugDefaultTargetPlatformOverride = TargetPlatform.android;
   } else if (Platform.isIOS) {
     debugDefaultTargetPlatformOverride = TargetPlatform.iOS;

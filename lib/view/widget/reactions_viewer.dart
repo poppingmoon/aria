@@ -25,7 +25,7 @@ class ReactionsViewer extends HookConsumerWidget {
   final bool showAllReactions;
   final Note? note;
 
-  Map<String, int> _mergeReactions(WidgetRef ref, Map<String, int> reactions) {
+  Map<String, int> _mergeReactions(Map<String, int> reactions) {
     final groups = reactions.entries.groupListsBy(
       (reaction) => reaction.key.startsWith(':'),
     );
@@ -84,7 +84,7 @@ class ReactionsViewer extends HookConsumerWidget {
     );
     final initialReactions = useMemoized(() {
       if (shouldMergeReactions) {
-        return _mergeReactions(ref, note.reactions);
+        return _mergeReactions(note.reactions);
       } else {
         return Map.fromEntries(
           note.reactions.entries.sortedBy<num>((e) => -e.value),
@@ -99,7 +99,7 @@ class ReactionsViewer extends HookConsumerWidget {
         return;
       }
       final newSource = shouldMergeReactions
-          ? _mergeReactions(ref, note.reactions)
+          ? _mergeReactions(note.reactions)
           : Map.of(note.reactions);
       final newReactions = <String, int>{};
       for (final emoji in reactions.value.keys) {
