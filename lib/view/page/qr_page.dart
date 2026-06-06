@@ -36,7 +36,9 @@ class QrPage extends HookConsumerWidget {
             TargetPlatform.iOS ||
             TargetPlatform.macOS ||
             TargetPlatform.windows) {
-      await ScreenBrightness.instance.setApplicationScreenBrightness(1.0);
+      await ScreenBrightness.instance.setApplicationScreenBrightness(
+        brightness,
+      );
     }
   }
 

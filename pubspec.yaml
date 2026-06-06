@@ -127,7 +127,6 @@ dependencies:
   sensors_plus: ^7.0.0
   share_plus: ^13.1.0
   shared_preferences: ^2.5.5
-  shared_preferences_platform_interface: ^2.4.2
   slang: ^4.15.0
   slang_flutter: ^4.15.0
   tinycolor2:

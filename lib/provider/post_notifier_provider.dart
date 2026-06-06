@@ -490,10 +490,6 @@ class PostNotifier extends _$PostNotifier {
     }
   }
 
-  void setUser(MeDetailed user) {
-    state = state.copyWith(userId: user.id, user: user.toUserLite());
-  }
-
   void setVisibility(NoteVisibility visibility) {
     if (state.channelId != null) {
       state = state.copyWith(

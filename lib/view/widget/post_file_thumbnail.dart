@@ -15,14 +15,12 @@ class PostFileThumbnail extends StatelessWidget {
     this.width,
     this.height,
     this.fit,
-    this.fallbackToOriginalImage = false,
   });
 
   final PostFile file;
   final double? width;
   final double? height;
   final BoxFit? fit;
-  final bool fallbackToOriginalImage;
 
   @override
   Widget build(BuildContext context) {

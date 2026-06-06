@@ -28,14 +28,13 @@ abstract class LocalPostFile with _$LocalPostFile implements PostFile {
     String? name,
     bool? isSensitive,
     String? comment,
-    String? type,
   }) {
     return LocalPostFile(
       file: file,
       name: name ?? file.basename,
       isSensitive: isSensitive ?? false,
       comment: comment,
-      type: type ?? lookupMimeType(file.path) ?? 'application/octet-stream',
+      type: lookupMimeType(file.path) ?? 'application/octet-stream',
     );
   }
 }
@@ -50,19 +49,13 @@ abstract class DrivePostFile with _$DrivePostFile implements PostFile {
     String? type,
   }) = _DrivePostFile;
 
-  factory DrivePostFile.fromDriveFile(
-    DriveFile file, {
-    String? name,
-    bool? isSensitive,
-    String? comment,
-    String? type,
-  }) {
+  factory DrivePostFile.fromDriveFile(DriveFile file) {
     return DrivePostFile(
       file: file,
-      name: name ?? file.name,
-      isSensitive: isSensitive ?? file.isSensitive,
-      comment: comment ?? file.comment,
-      type: type ?? file.type,
+      name: file.name,
+      isSensitive: file.isSensitive,
+      comment: file.comment,
+      type: file.type,
     );
   }
 }

@@ -12,7 +12,6 @@ Future<void> setupWidget(
   WidgetTester tester, {
   required Account account,
   String? userId,
-  String? roomId,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
@@ -21,7 +20,7 @@ Future<void> setupWidget(
       ],
       child: MaterialApp(
         home: Material(
-          child: ChatPostForm(account: account, userId: userId, roomId: roomId),
+          child: ChatPostForm(account: account, userId: userId),
         ),
       ),
     ),

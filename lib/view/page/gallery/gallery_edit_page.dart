@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
@@ -11,7 +10,7 @@ import '../../../model/account.dart';
 import '../../../model/post_file.dart';
 import '../../../provider/api/attaches_notifier_provider.dart';
 import '../../../provider/api/gallery_post_notifier_provider.dart';
-import '../../../provider/api/misskey_provider.dart';
+import '../../../provider/api/my_gallery_posts_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../widget/file_picker_sheet.dart';
 import '../../widget/post_form_attaches.dart';
@@ -166,42 +165,39 @@ class GalleryEditPage extends HookConsumerWidget {
                 );
                 if (files == null) return;
                 if (!context.mounted) return;
-                if (postId == null) {
+                if (postId case final postId?) {
                   final result = await futureWithDialog(
                     context,
                     ref
-                        .read(misskeyProvider(account))
-                        .gallery
-                        .posts
-                        .create(
-                          GalleryPostsCreateRequest(
-                            title: title.value,
-                            description: description.value,
-                            fileIds: files.map((file) => file.id).toList(),
-                            isSensitive: isSensitive.value,
-                          ),
-                        ),
+                        .read(myGalleryPostsNotifierProvider(account).notifier)
+                        .updatePost(
+                          postId: postId,
+                          title: title.value,
+                          description: description.value,
+                          fileIds: files.map((file) => file.id).toList(),
+                          isSensitive: isSensitive.value,
+                        )
+                        .then((_) => ()),
                   );
                   if (!context.mounted) return;
                   if (result != null) {
+                    ref.invalidate(
+                      galleryPostNotifierProvider(account, postId),
+                    );
                     context.pop();
                   }
                 } else {
                   final result = await futureWithDialog(
                     context,
                     ref
-                        .read(misskeyProvider(account))
-                        .gallery
-                        .posts
-                        .update(
-                          GalleryPostsUpdateRequest(
-                            postId: postId!,
-                            title: title.value,
-                            description: description.value,
-                            fileIds: files.map((file) => file.id).toList(),
-                            isSensitive: isSensitive.value,
-                          ),
-                        ),
+                        .read(myGalleryPostsNotifierProvider(account).notifier)
+                        .create(
+                          title: title.value,
+                          description: description.value,
+                          fileIds: files.map((file) => file.id).toList(),
+                          isSensitive: isSensitive.value,
+                        )
+                        .then((_) => ()),
                   );
                   if (!context.mounted) return;
                   if (result != null) {

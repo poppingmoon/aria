@@ -82,7 +82,7 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
       ),
     );
     final value = state.value ?? const PaginationState();
-    state = AsyncValue.data(value.copyWith(items: [...value.items, post]));
+    state = AsyncValue.data(value.copyWith(items: [post, ...value.items]));
   }
 
   Future<void> updatePost({

@@ -74,18 +74,12 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     }
   }
 
-  Future<void> upload(
-    File file, {
-    String? name,
-    String? comment,
-    bool? isSensitive,
-  }) async {
+  Future<void> upload(File file, {String? comment}) async {
     final response = await _misskey.drive.files.create(
       DriveFilesCreateRequest(
         folderId: folderId,
-        name: name ?? file.basename,
+        name: file.basename,
         comment: comment,
-        isSensitive: isSensitive,
         force: true,
       ),
       file,
@@ -114,19 +108,9 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
-  Future<void> uploadFromUrl(
-    String url, {
-    String? comment,
-    bool? isSensitive,
-  }) async {
+  Future<void> uploadFromUrl(String url) async {
     await _misskey.drive.files.uploadFromUrl(
-      DriveFilesUploadFromUrlRequest(
-        url: url,
-        folderId: folderId,
-        comment: comment,
-        isSensitive: isSensitive,
-        force: true,
-      ),
+      DriveFilesUploadFromUrlRequest(url: url, folderId: folderId, force: true),
     );
   }
 

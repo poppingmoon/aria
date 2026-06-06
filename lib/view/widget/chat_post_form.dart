@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/shortcuts.dart';
 import '../../extension/text_editing_controller_extension.dart';
@@ -10,7 +9,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/send_chat_message_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -33,7 +31,6 @@ class ChatPostForm extends HookConsumerWidget {
   final String? roomId;
 
   Future<void> _send(WidgetRef ref, TextEditingController controller) async {
-    final text = controller.text.isNotEmpty ? controller.text : null;
     final attaches = ref.read(attachesNotifierProvider(account, chat: true));
     final hasFile = attaches.isNotEmpty;
     final file = hasFile
@@ -47,6 +44,13 @@ class ChatPostForm extends HookConsumerWidget {
     if (hasFile && file == null) return;
     if (!ref.context.mounted) return;
     if (ref.read(generalSettingsNotifierProvider).confirmBeforePost) {
+      final text = ref.read(
+        sendChatMessageNotifierProvider(
+          account,
+          userId: userId,
+          roomId: roomId,
+        ),
+      );
       final confirmed = await confirmSend(
         ref.context,
         account,
@@ -56,31 +60,18 @@ class ChatPostForm extends HookConsumerWidget {
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
-    final misskey = ref.read(misskeyProvider(account));
-    ChatMessage? message;
-    if (userId case final userId?) {
-      message = await futureWithDialog(
-        ref.context,
-        misskey.chat.messages.createToUser(
-          ChatMessagesCreateToUserRequest(
-            toUserId: userId,
-            text: text,
-            fileId: file?.id,
-          ),
-        ),
-      );
-    } else if (roomId case final roomId?) {
-      message = await futureWithDialog(
-        ref.context,
-        misskey.chat.messages.createToRoom(
-          ChatMessagesCreateToRoomRequest(
-            toRoomId: roomId,
-            text: text,
-            fileId: file?.id,
-          ),
-        ),
-      );
-    }
+    final message = await futureWithDialog(
+      ref.context,
+      ref
+          .read(
+            sendChatMessageNotifierProvider(
+              account,
+              userId: userId,
+              roomId: roomId,
+            ).notifier,
+          )
+          .send(fileId: file?.id),
+    );
     if (message != null) {
       controller.text = '';
       ref.invalidate(attachesNotifierProvider(account, chat: true));
