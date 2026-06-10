@@ -194,12 +194,15 @@ class _Confetti extends HookConsumerWidget {
           this.delay ??
           const Duration(seconds: 5) *
               min(Random().nextDouble(), Random().nextDouble());
-      Future.delayed(delay, () => controller.play());
-      Future.delayed(
+      final timer = Timer(delay, () => controller.play());
+      final longTimer = Timer(
         delay * 2 + const Duration(seconds: 1),
         () => controller.play(),
       );
-      return;
+      return () {
+        timer.cancel();
+        longTimer.cancel();
+      };
     }, []);
 
     return Align(

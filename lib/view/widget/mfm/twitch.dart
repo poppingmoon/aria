@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -166,8 +168,8 @@ class Twitch extends HookWidget {
       if (delay.isNegative) {
         controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
       }
-      Future.delayed(delay, () => controller.repeat());
-      return;
+      final timer = Timer(delay, () => controller.repeat());
+      return timer.cancel;
     }, [speed, delay]);
     final offset = useAnimation(_offsetTween.animate(controller));
 

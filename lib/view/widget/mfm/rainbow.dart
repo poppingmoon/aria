@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:colorfilter_generator/addons.dart';
 import 'package:colorfilter_generator/colorfilter_generator.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +27,8 @@ class Rainbow extends HookWidget {
       if (delay.isNegative) {
         controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
       }
-      Future.delayed(delay, () => controller.repeat());
-      return;
+      final timer = Timer(delay, () => controller.repeat());
+      return timer.cancel;
     }, [speed, delay]);
     final hue = useAnimation(Tween(begin: 0.0, end: 2.0).animate(controller));
 

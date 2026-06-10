@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -305,8 +306,8 @@ class Shake extends HookWidget {
       if (delay.isNegative) {
         controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
       }
-      Future.delayed(delay, () => controller.repeat());
-      return;
+      final timer = Timer(delay, () => controller.repeat());
+      return timer.cancel;
     }, [speed, delay]);
     final offset = useAnimation(_offsetTween.animate(controller));
     final angle = useAnimation(_angleTween.animate(controller));
