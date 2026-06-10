@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -32,11 +33,11 @@ class Spin extends HookWidget {
       if (delay.isNegative) {
         controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
       }
-      Future.delayed(
+      final timer = Timer(
         delay,
         () => controller.repeat(reverse: direction == _SpinDirection.alternate),
       );
-      return;
+      return timer.cancel;
     }, [speed, delay]);
     final angle = useAnimation(
       Tween(

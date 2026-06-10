@@ -260,7 +260,7 @@ class _EmojiWidgetWithEffect extends HookWidget {
     final previousCount = useRef(count);
     useEffect(() {
       if (count > previousCount.value || forceShowEffect.value) {
-        Future.delayed(const Duration(milliseconds: 50), () {
+        final timer = Timer(const Duration(milliseconds: 50), () {
           if (!context.mounted) return;
           if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
           if (context.findRenderObject() case final RenderBox renderBox) {
@@ -284,10 +284,13 @@ class _EmojiWidgetWithEffect extends HookWidget {
             Future.delayed(const Duration(milliseconds: 1100), entry.remove);
           }
         });
+        previousCount.value = count;
+        forceShowEffect.value = false;
+        return timer.cancel;
       }
       previousCount.value = count;
       forceShowEffect.value = false;
-      return;
+      return null;
     }, [count]);
 
     return EmojiWidget(

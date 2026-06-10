@@ -513,7 +513,7 @@ class _EmojiWidgetWithEffect extends HookWidget {
     final isNewReaction = useRef(this.isNewReaction);
     useEffect(() {
       if (isNewReaction.value) {
-        Future.delayed(const Duration(milliseconds: 50), () {
+        final timer = Timer(const Duration(milliseconds: 50), () {
           if (!context.mounted) return;
           if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
           if (context.findRenderObject() case final RenderBox renderBox) {
@@ -537,8 +537,9 @@ class _EmojiWidgetWithEffect extends HookWidget {
           }
         });
         isNewReaction.value = false;
+        return timer.cancel;
       }
-      return;
+      return null;
     }, []);
 
     return EmojiWidget(
