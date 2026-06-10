@@ -50,7 +50,7 @@ final class RenotesNotifierProvider
   }
 }
 
-String _$renotesNotifierHash() => r'2015a651de24f4a2da5cc75986f37d4bac0c3997';
+String _$renotesNotifierHash() => r'e6a50187df02ecaef010200d1cfd4d5390eeee65';
 
 final class RenotesNotifierFamily extends $Family
     with

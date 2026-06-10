@@ -55,7 +55,7 @@ final class SearchUsersNotifierProvider
 }
 
 String _$searchUsersNotifierHash() =>
-    r'0189374919488391d778aabf120ae5fd83f598aa';
+    r'4fa843c6c3d7b27d6e114b9c0a320e0a251fa6dd';
 
 final class SearchUsersNotifierFamily extends $Family
     with

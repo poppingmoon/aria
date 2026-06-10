@@ -54,7 +54,7 @@ final class RoleUsersNotifierProvider
   }
 }
 
-String _$roleUsersNotifierHash() => r'22616a56e85834765b55410a38565e98dd768368';
+String _$roleUsersNotifierHash() => r'7ead95e97e6bc355dcadfab07fd2a744b8122d6d';
 
 final class RoleUsersNotifierFamily extends $Family
     with

@@ -50,7 +50,7 @@ final class UserClipsNotifierProvider
   }
 }
 
-String _$userClipsNotifierHash() => r'acc98ccdcb5063831892d50dff6e6b92144d5eb4';
+String _$userClipsNotifierHash() => r'60d25eb4ab0f6d8c7a07929721e6b710db315326';
 
 final class UserClipsNotifierFamily extends $Family
     with

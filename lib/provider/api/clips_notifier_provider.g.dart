@@ -50,7 +50,7 @@ final class ClipsNotifierProvider
   }
 }
 
-String _$clipsNotifierHash() => r'f52864d1b6ada7abeb5f25b42f6ce93059bf5c08';
+String _$clipsNotifierHash() => r'd55044bed0bfeadd5ab69fd24b276df06f63559f';
 
 final class ClipsNotifierFamily extends $Family
     with

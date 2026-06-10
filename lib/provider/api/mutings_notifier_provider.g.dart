@@ -50,7 +50,7 @@ final class MutingsNotifierProvider
   }
 }
 
-String _$mutingsNotifierHash() => r'd8c89c831def0bb241b86c533a0d51e99323545b';
+String _$mutingsNotifierHash() => r'a32c49ef4b0abc752f6577f78229ad2ecca5e564';
 
 final class MutingsNotifierFamily extends $Family
     with

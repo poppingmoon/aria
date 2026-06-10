@@ -52,7 +52,7 @@ final class AttachedNotesNotifierProvider
 }
 
 String _$attachedNotesNotifierHash() =>
-    r'0c8d766cd0a5fc3ef4165149b9b50d2d1ce0ff88';
+    r'b9f5670814d51b60fe50e1a26bae3dd194c96d65';
 
 final class AttachedNotesNotifierFamily extends $Family
     with

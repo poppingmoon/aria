@@ -57,7 +57,7 @@ final class FeaturedGalleryPostsNotifierProvider
 }
 
 String _$featuredGalleryPostsNotifierHash() =>
-    r'89f504bdc619eaef3b7e203a1327af571dc629fc';
+    r'012cefbab7f28b39898a8577a3146f6caaacdce1';
 
 final class FeaturedGalleryPostsNotifierFamily extends $Family
     with

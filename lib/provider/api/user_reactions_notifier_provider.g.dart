@@ -55,7 +55,7 @@ final class UserReactionsNotifierProvider
 }
 
 String _$userReactionsNotifierHash() =>
-    r'2849f3191c86222924d004ca3b25dc3c0c7776ca';
+    r'9049dcdebae7ac617c915c6c59308a3f11f1a646';
 
 final class UserReactionsNotifierFamily extends $Family
     with

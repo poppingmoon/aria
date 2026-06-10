@@ -55,7 +55,7 @@ final class LikedPlaysNotifierProvider
 }
 
 String _$likedPlaysNotifierHash() =>
-    r'eb38fa8f4da77685b3e4e8bd58bcd24394a6b606';
+    r'f89f249bec3147017592896694b90b7194eb81a5';
 
 final class LikedPlaysNotifierFamily extends $Family
     with

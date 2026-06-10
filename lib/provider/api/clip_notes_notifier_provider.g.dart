@@ -50,7 +50,7 @@ final class ClipNotesNotifierProvider
   }
 }
 
-String _$clipNotesNotifierHash() => r'30f5bdc1f6a0b1de87ba3ebfa919d1de329f6dbf';
+String _$clipNotesNotifierHash() => r'e9b048e518b3149090f1a321916a798e982916cd';
 
 final class ClipNotesNotifierFamily extends $Family
     with

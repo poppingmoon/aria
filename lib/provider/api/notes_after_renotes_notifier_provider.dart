@@ -71,8 +71,8 @@ class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     bool shouldLoadMore = false;
@@ -82,7 +82,7 @@ class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
       final notes = await Future.wait(renotes.map(_fetchNote));
       shouldLoadMore = renotes.isNotEmpty && renotes.length < 5;
       return PaginationState(
-        items: [...value.items, ...notes.nonNulls],
+        items: [...?value?.items, ...notes.nonNulls],
         isLastLoaded: renotes.isEmpty,
       );
     });

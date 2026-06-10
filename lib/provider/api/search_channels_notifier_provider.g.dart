@@ -56,7 +56,7 @@ final class SearchChannelsNotifierProvider
 }
 
 String _$searchChannelsNotifierHash() =>
-    r'58c97152232e15d73b7495ee90b7663e8c685afb';
+    r'd5db1707e8af7dcfb8e7f7c65e28d167e71dc70e';
 
 final class SearchChannelsNotifierFamily extends $Family
     with

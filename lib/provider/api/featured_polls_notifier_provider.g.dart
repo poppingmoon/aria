@@ -52,7 +52,7 @@ final class FeaturedPollsNotifierProvider
 }
 
 String _$featuredPollsNotifierHash() =>
-    r'5b1a4b5a43904f7634b471bf90319c2f927afaed';
+    r'126aa47ca5e66debb9e0518ce80defcc1eba0a2e';
 
 final class FeaturedPollsNotifierFamily extends $Family
     with

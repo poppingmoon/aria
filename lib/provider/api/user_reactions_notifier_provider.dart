@@ -55,19 +55,19 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchReactions(
-        untilId: value.items.lastOrNull?.id,
+        untilId: value?.items.lastOrNull?.id,
       );
       shouldLoadMore = response.isNotEmpty && response.length < 5;
       return PaginationState(
-        items: [...value.items, ...response],
+        items: [...?value?.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });

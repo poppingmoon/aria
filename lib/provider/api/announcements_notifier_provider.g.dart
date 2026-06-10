@@ -55,7 +55,7 @@ final class AnnouncementsNotifierProvider
 }
 
 String _$announcementsNotifierHash() =>
-    r'c832a2bf4f15158981987084a305c4f905c2403d';
+    r'9248860322e2b1ee7b8539a746088e007dcb583a';
 
 final class AnnouncementsNotifierFamily extends $Family
     with

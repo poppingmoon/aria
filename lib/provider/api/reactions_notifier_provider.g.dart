@@ -54,7 +54,7 @@ final class ReactionsNotifierProvider
   }
 }
 
-String _$reactionsNotifierHash() => r'2e66fa3e42c1d5edad63a7f184bea39025783b78';
+String _$reactionsNotifierHash() => r'd67c3ba9305b7967d90dbc375909935ba854108c';
 
 final class ReactionsNotifierFamily extends $Family
     with

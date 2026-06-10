@@ -54,7 +54,7 @@ final class FavoritesNotifierProvider
   }
 }
 
-String _$favoritesNotifierHash() => r'1bfdc86f43e7b6d453689086cce38614ec318a87';
+String _$favoritesNotifierHash() => r'9c59ccb245d0d77036303f57fb2c086aa1482b79';
 
 final class FavoritesNotifierFamily extends $Family
     with

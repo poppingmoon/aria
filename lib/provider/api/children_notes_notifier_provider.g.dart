@@ -52,7 +52,7 @@ final class ChildrenNotesNotifierProvider
 }
 
 String _$childrenNotesNotifierHash() =>
-    r'a7b8772227ffef5c4b28b3609b45ec1c726b4ec3';
+    r'0edc382791636b8066d877c1a9c66096d3ca4fdd';
 
 final class ChildrenNotesNotifierFamily extends $Family
     with
