@@ -57,7 +57,7 @@ final class ChatRoomInvitationsNotifierProvider
 }
 
 String _$chatRoomInvitationsNotifierHash() =>
-    r'a0ae4c31a559478bcec07ac19b6c2605a350527e';
+    r'033fb67da287f795e8980865effced8c38364909';
 
 final class ChatRoomInvitationsNotifierFamily extends $Family
     with

@@ -55,7 +55,7 @@ final class RenoteMutingsNotifierProvider
 }
 
 String _$renoteMutingsNotifierHash() =>
-    r'1a4f49024f4e8f5d427d87719883fb2b6f2a0ec0';
+    r'306c3bc7be165d51f539e215c0cbee9e44973b03';
 
 final class RenoteMutingsNotifierFamily extends $Family
     with

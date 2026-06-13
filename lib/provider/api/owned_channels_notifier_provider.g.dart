@@ -55,7 +55,7 @@ final class OwnedChannelsNotifierProvider
 }
 
 String _$ownedChannelsNotifierHash() =>
-    r'eadda957788c207c4572647f59f6a7eeac61e802';
+    r'90408dbcc902117d3888464a42115ad92feaa4e5';
 
 final class OwnedChannelsNotifierFamily extends $Family
     with

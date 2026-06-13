@@ -52,7 +52,7 @@ final class SearchPlaysNotifierProvider
 }
 
 String _$searchPlaysNotifierHash() =>
-    r'c8b5cc6131718a6c07fe25e7e15807db211b4aee';
+    r'beb98dd2140c77bce316fea3bb1df4f441032fb1';
 
 final class SearchPlaysNotifierFamily extends $Family
     with

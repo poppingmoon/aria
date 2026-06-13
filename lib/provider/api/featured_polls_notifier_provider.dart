@@ -36,15 +36,15 @@ class FeaturedPollsNotifier extends _$FeaturedPollsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = await _fetchNotes(offset: value.items.length);
+      final response = await _fetchNotes(offset: value?.items.length);
       return PaginationState(
-        items: [...value.items, ...response],
+        items: [...?value?.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });

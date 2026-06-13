@@ -40,18 +40,18 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final response = await _fetchAnnouncements(
-        untilId: value.items.lastOrNull?.id,
-        offset: value.items.length,
+        untilId: value?.items.lastOrNull?.id,
+        offset: value?.items.length,
       );
       return PaginationState(
-        items: [...value.items, ...response],
+        items: [...?value?.items, ...response],
         isLastLoaded: response.isEmpty,
       );
     });

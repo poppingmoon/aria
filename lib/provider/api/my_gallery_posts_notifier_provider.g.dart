@@ -56,7 +56,7 @@ final class MyGalleryPostsNotifierProvider
 }
 
 String _$myGalleryPostsNotifierHash() =>
-    r'0766543bc2ef465e56d9fcc0323f84560f1cf172';
+    r'0a6251ce39518db2154a2a8d327bb157e686a060';
 
 final class MyGalleryPostsNotifierFamily extends $Family
     with

@@ -50,7 +50,7 @@ final class UserPlaysNotifierProvider
   }
 }
 
-String _$userPlaysNotifierHash() => r'005484ab65efef54301f6a8b7c3dc96324cc6d96';
+String _$userPlaysNotifierHash() => r'ca3bf69a832e5d69143c6d00837ca6bbc0cd76cf';
 
 final class UserPlaysNotifierFamily extends $Family
     with

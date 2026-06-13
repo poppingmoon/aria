@@ -55,7 +55,7 @@ final class NoteDraftsNotifierProvider
 }
 
 String _$noteDraftsNotifierHash() =>
-    r'e21985733d8c8717e60d3d71ddaf184367e0ecc6';
+    r'c906225065a92f0977ef0c3ce2b1bb5e1a1c5dce';
 
 final class NoteDraftsNotifierFamily extends $Family
     with

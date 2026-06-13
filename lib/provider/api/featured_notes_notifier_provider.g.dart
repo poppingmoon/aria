@@ -52,7 +52,7 @@ final class FeaturedNotesNotifierProvider
 }
 
 String _$featuredNotesNotifierHash() =>
-    r'48686a73dcd0b50daba59c479cef79d5c8ec00fb';
+    r'7dcbd2fc298cfc6a0eaa2de2494bcb0c4ecd6b7b';
 
 final class FeaturedNotesNotifierFamily extends $Family
     with

@@ -56,7 +56,7 @@ final class FollowingChannelsNotifierProvider
 }
 
 String _$followingChannelsNotifierHash() =>
-    r'c88a531402bb859e0d9eebf98f25a57ff45f17fc';
+    r'a20b0536303ca920b2d80e5a62c877d5973a6aba';
 
 final class FollowingChannelsNotifierFamily extends $Family
     with

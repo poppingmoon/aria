@@ -219,24 +219,25 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     bool shouldLoadMore = false;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      if (value.items.firstOrNull?.id ?? sinceId case final sinceId?) {
+      if (value?.items.firstOrNull?.id ?? sinceId case final sinceId?) {
         final response = tabSettings.keepPosition
             ? await _fetchNotes(sinceId: sinceId)
             : await _fetchNotesEagerly(sinceId);
         shouldLoadMore = response.isNotEmpty && response.length < 5;
         return PaginationState(
-          items: [...response, ...value.items],
+          items: [...response, ...?value?.items],
           isLastLoaded: response.isEmpty,
         );
       } else {
-        return value.copyWith(isLastLoaded: true);
+        return value?.copyWith(isLastLoaded: true) ??
+            const PaginationState(isLastLoaded: true);
       }
     });
     if (shouldLoadMore) {

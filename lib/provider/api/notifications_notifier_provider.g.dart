@@ -55,7 +55,7 @@ final class NotificationsNotifierProvider
 }
 
 String _$notificationsNotifierHash() =>
-    r'0a84a6525ab2490d109d5019eafe5d081b264f90';
+    r'f9e45212ad6cb26eced89d9f60d8e124b4bbd093';
 
 final class NotificationsNotifierFamily extends $Family
     with

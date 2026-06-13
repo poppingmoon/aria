@@ -55,7 +55,7 @@ final class UserFollowersNotifierProvider
 }
 
 String _$userFollowersNotifierHash() =>
-    r'77b51c21ae542161c58df737fbd378e071bd84c2';
+    r'e8fd3f07f5a94d4939279c9f9d14e43dd0697903';
 
 final class UserFollowersNotifierFamily extends $Family
     with

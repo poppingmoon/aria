@@ -50,7 +50,7 @@ final class UserPagesNotifierProvider
   }
 }
 
-String _$userPagesNotifierHash() => r'4ec091c2a47aa8555289391661606dff09d764aa';
+String _$userPagesNotifierHash() => r'07c5970b6e2b1618bbe8077fd40bcd86e8ba6ea2';
 
 final class UserPagesNotifierFamily extends $Family
     with

@@ -51,7 +51,7 @@ final class BlockingsNotifierProvider
   }
 }
 
-String _$blockingsNotifierHash() => r'eada842e68beb95cad93a758d9b05e7b29349cef';
+String _$blockingsNotifierHash() => r'30a0ddcdccdee724bf25679c945f27644a284387';
 
 final class BlockingsNotifierFamily extends $Family
     with

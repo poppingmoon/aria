@@ -61,7 +61,7 @@ final class SearchNotesNotifierProvider
 }
 
 String _$searchNotesNotifierHash() =>
-    r'02f553cddb209095727514a347669ee623a00ea5';
+    r'f0814a3b239da44937b72c47f81048086eeee4cc';
 
 final class SearchNotesNotifierFamily extends $Family
     with

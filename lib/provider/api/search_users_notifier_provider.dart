@@ -56,16 +56,19 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = await _fetchUsers(offset: value.items.length);
+      final response = await _fetchUsers(offset: value?.items.length);
       return PaginationState(
         items: Map.fromEntries(
-          [...value.items, ...response].map((user) => MapEntry(user.id, user)),
+          [
+            ...?value?.items,
+            ...response,
+          ].map((user) => MapEntry(user.id, user)),
         ).values.toList(),
         isLastLoaded: response.isEmpty,
       );

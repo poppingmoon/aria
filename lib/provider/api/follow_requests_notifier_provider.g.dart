@@ -56,7 +56,7 @@ final class FollowRequestsNotifierProvider
 }
 
 String _$followRequestsNotifierHash() =>
-    r'50f7f4ed6ac46a899e263608bbfca6286ef42232';
+    r'31430fac305bf2398476819c58530231079e41ed';
 
 final class FollowRequestsNotifierFamily extends $Family
     with

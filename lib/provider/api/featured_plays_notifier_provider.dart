@@ -29,20 +29,21 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
     if (state.isLoading || (state.hasError && !skipError)) {
       return;
     }
-    final value = skipError ? state.value! : await future;
-    if (value.isLastLoaded) {
+    final value = skipError ? state.value : await future;
+    if (value?.isLastLoaded ?? false) {
       return;
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = await _fetchPlays(offset: value.items.length);
-      if (response.any((play) => play.id == value.items.firstOrNull?.id)) {
+      final response = await _fetchPlays(offset: value?.items.length);
+      if (value != null &&
+          response.any((play) => play.id == value.items.firstOrNull?.id)) {
         // Pagination for `flash/featured` was not supported
         // until Misskey 2024.10.0.
         return value.copyWith(isLastLoaded: true);
       } else {
         return PaginationState(
-          items: [...value.items, ...response],
+          items: [...?value?.items, ...response],
           isLastLoaded: response.isEmpty,
         );
       }

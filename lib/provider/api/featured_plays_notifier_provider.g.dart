@@ -52,7 +52,7 @@ final class FeaturedPlaysNotifierProvider
 }
 
 String _$featuredPlaysNotifierHash() =>
-    r'2be58faa0a3ca73d9c094d87882f13b0cdefdac2';
+    r'2849b17814a22fa0e732d790e3e160e6c10695ef';
 
 final class FeaturedPlaysNotifierFamily extends $Family
     with

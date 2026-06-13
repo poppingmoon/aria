@@ -56,7 +56,7 @@ final class OwnedChatRoomsNotifierProvider
 }
 
 String _$ownedChatRoomsNotifierHash() =>
-    r'a8fb559689e9710348dfab294b4824b3f31af599';
+    r'c05494b4ad64ae9551f250f339845663de57612b';
 
 final class OwnedChatRoomsNotifierFamily extends $Family
     with
