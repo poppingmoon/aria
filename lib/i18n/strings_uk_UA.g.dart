@@ -85,6 +85,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} є одним із сервісів (які називаються інстансами Misskey), що використовують платформу з відкритим вихідним кодом <b>Misskey</b>.';
 	@override String monthAndDay({required Object month, required Object day}) => '${month}/${day}';
 	@override String get search => 'Пошук';
+	@override String get reset => 'Скинути';
 	@override String get notifications => 'Сповіщення';
 	@override String get username => 'Ім\'я користувача';
 	@override String get password => 'Пароль';
@@ -129,6 +130,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get copyContent => 'Скопіювати контент';
 	@override String get copyLink => 'Скопіювати посилання';
 	@override String get copyRemoteLink => 'Копіювати віддалене посилання';
+	@override String get copyLinkRenote => 'Копіювати посилання на поширення';
 	@override String get delete => 'Видалити';
 	@override String get deleteAndEdit => 'Видалити й редагувати';
 	@override String get deleteAndEditConfirm => 'Ви впевнені, що хочете видалити цю нотатку та відредагувати її? Ви втратите всі реакції, поширення та відповіді на неї.';
@@ -138,8 +140,10 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get copyRSS => 'Скопіювати RSS';
 	@override String get copyUsername => 'Скопіювати ім’я користувача';
 	@override String get copyUserId => 'Копіювати ID користувача';
-	@override String get copyNoteId => 'блокнот ID користувача';
+	@override String get copyNoteId => 'Копіювати ID нотатки';
 	@override String get copyFileId => 'Скопіювати ідентифікатор файлу.';
+	@override String get copyFolderId => 'Копіювати ID теки';
+	@override String get copyProfileUrl => 'Копіювати URL профілю';
 	@override String get searchUser => 'Пошук користувачів';
 	@override String get searchThisUsersNotes => 'Пошук нотаток користувача';
 	@override String get reply => 'Відповісти';
@@ -159,6 +163,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get download => 'Завантажити';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Ви впевнені, що хочете видалити файл ${name}? Нотатки із цим файлом також буде видалено.';
 	@override String unfollowConfirm({required Object name}) => 'Ви впевнені, що хочете відписатися від ${name}?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Ви впевнені, що хочете скасувати запит на підписку до ${name}?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Ви впевнені, що хочете відхилити запит на підписку від ${name}?';
 	@override String get exportRequested => 'Експортування розпочато. Це може зайняти деякий час. Після завершення експорту отриманий файл буде додано на диск.';
 	@override String get importRequested => 'Імпортування розпочато. Це може зайняти деякий час.';
 	@override String get lists => 'Списки';
@@ -195,6 +201,9 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get cantReRenote => 'Поширення не можливо поширити.';
 	@override String get quote => 'Цитата';
 	@override String get inChannelRenote => 'Поширено у канал';
+	@override String get inChannelQuote => 'Цитата в каналі';
+	@override String get renoteToChannel => 'Поширити в канал';
+	@override String get renoteToOtherChannel => 'Поширити в інший канал';
 	@override String get pinnedNote => 'Закріплений запис';
 	@override String get pinned => 'Закріпити';
 	@override String get you => 'Ви';
@@ -204,14 +213,22 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get reaction => 'Реакції';
 	@override String get reactions => 'Реакції';
 	@override String get emojiPicker => 'Вибір реакції';
+	@override String get pinnedEmojisForReactionSettingDescription => 'Виберіть емодзі, які будуть закріплені й зображатимуться під час реакції';
+	@override String get pinnedEmojisSettingDescription => 'Виберіть емодзі, які будуть закріплені й зображатимуться під час перегляду вибору емодзі';
+	@override String get emojiPickerDisplay => 'Зображення вибору емодзі';
+	@override String get overwriteFromPinnedEmojisForReaction => 'Перевизначити налаштування реакцій';
+	@override String get overwriteFromPinnedEmojis => 'Перевизначити загальні налаштування';
 	@override String get reactionSettingDescription2 => 'Перемістити щоб змінити порядок, Клацнути мишою щоб видалити, Натиснути "+" щоб додати.';
 	@override String get rememberNoteVisibility => 'Пам’ятати параметри видимісті';
 	@override String get attachCancel => 'Видалити вкладення';
+	@override String get deleteFile => 'Видалити файл';
 	@override String get markAsSensitive => 'Позначити як NSFW';
 	@override String get unmarkAsSensitive => 'Зняти позначку NSFW';
 	@override String get enterFileName => 'Введіть ім\'я файлу';
 	@override String get mute => 'Ігнорувати';
 	@override String get unmute => 'Показувати';
+	@override String get renoteMute => 'Приховати поширення';
+	@override String get renoteUnmute => 'Показувати поширення';
 	@override String get block => 'Заблокувати';
 	@override String get unblock => 'Розблокувати';
 	@override String get suspend => 'Призупинити';
@@ -221,21 +238,26 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get suspendConfirm => 'Ви впевнені, що хочете призупинити цей акаунт?';
 	@override String get unsuspendConfirm => 'Ви впевнені, що хочете відновити цей акаунт?';
 	@override String get selectList => 'Виберіть список';
-	@override String get editList => 'Редагувати список.';
+	@override String get editList => 'Редагувати список';
 	@override String get selectChannel => 'Виберіть канал';
 	@override String get selectAntenna => 'Виберіть антену';
+	@override String get editAntenna => 'Редагувати антену';
+	@override String get createAntenna => 'Створити антену';
 	@override String get selectWidget => 'Виберіть віджет';
 	@override String get editWidgets => 'Редагувати віджети';
 	@override String get editWidgetsExit => 'Готово';
 	@override String get customEmojis => 'Кастомні емоджі';
-	@override String get emoji => 'Емоджі';
-	@override String get emojis => 'Емоджі';
-	@override String get emojiName => 'Назва емоджі';
+	@override String get emoji => 'Емодзі';
+	@override String get emojis => 'Емодзі';
+	@override String get emojiName => 'Назва емодзі';
 	@override String get emojiUrl => 'URL емодзі';
 	@override String get addEmoji => 'Додати емодзі';
 	@override String get settingGuide => 'Рекомендована конфігурація';
 	@override String get cacheRemoteFiles => 'Кешувати дані з інших інстансів';
 	@override String get cacheRemoteFilesDescription => 'Якщо кешування вимкнено, віддалені файли завантажуються безпосередньо з віддаленого інстансу. Це зменшує використання сховища, але збільшує трафік, оскільки не генеруются ескізи.';
+	@override String get youCanCleanRemoteFilesCache => 'Ви можете очистити кеш, натиснувши кнопку 🗑️ у вікні керування файлами.';
+	@override String get cacheRemoteSensitiveFiles => 'Кешувати чутливі віддалені файли';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Ви можете очистити кеш, натиснувши кнопку 🗑️ у вікні керування файлами.';
 	@override String get flagAsBot => 'Акаунт бота';
 	@override String get flagAsBotDescription => 'Ввімкніть якщо цей обліковий запис використовується ботом. Ця опція позначить обліковий запис як бота. Це потрібно щоб виключити безкінечну інтеракцію між ботами а також відповідного підлаштування Misskey.';
 	@override String get flagAsCat => 'Акаунт кота';
@@ -244,8 +266,13 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get flagShowTimelineRepliesDescription => 'Показує відповіді користувачів на нотатки інших користувачів на часовій шкалі.';
 	@override String get autoAcceptFollowed => 'Автоматично приймати запити на підписку від користувачів, на яких ви підписані';
 	@override String get addAccount => 'Додати акаунт';
+	@override String get reloadAccountsList => 'Оновити список акаунтів';
 	@override String get loginFailed => 'Не вдалося увійти';
 	@override String get showOnRemote => 'Переглянути в оригіналі';
+	@override String get continueOnRemote => 'Продовжити на віддаленому сервері';
+	@override String get chooseServerOnMisskeyHub => 'Вибрати сервер із Misskey Hub';
+	@override String get specifyServerHost => 'Вказати хост сервера вручну';
+	@override String get inputHostName => 'Введіть домен';
 	@override String get general => 'Загальне';
 	@override String get wallpaper => 'Шпалери';
 	@override String get setWallpaper => 'Встановити шпалери';
@@ -256,6 +283,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get proxyAccount => 'Проксі-акаунт';
 	@override String get proxyAccountDescription => 'Обліковий запис проксі – це обліковий запис, який діє як віддалений підписник для користувачів за певних умов. Наприклад, коли користувач додає віддаленого користувача до списку, активність віддаленого користувача не буде доставлена на сервер, якщо жоден локальний користувач не стежить за цим користувачем, то замість нього буде використовуватися обліковий запис проксі-сервера.';
 	@override String get host => 'Хост';
+	@override String get selectSelf => 'Вибрати себе';
 	@override String get selectUser => 'Виберіть користувача';
 	@override String get recipient => 'Отримувач';
 	@override String get annotation => 'Коментарі';
@@ -270,8 +298,11 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get perDay => 'Щоденно';
 	@override String get stopActivityDelivery => 'Припинити розсилання активності';
 	@override String get blockThisInstance => 'Заблокувати цей інстанс';
+	@override String get silenceThisInstance => 'Обмежити цей інстанс';
+	@override String get mediaSilenceThisInstance => 'Обмежити медіа з цього сервера';
 	@override String get operations => 'Операції';
 	@override String get software => 'Програмне забезпечення';
+	@override String get softwareName => 'Програмне забезпечення';
 	@override String get version => 'Версія';
 	@override String get metadata => 'Метадані';
 	@override String withNFiles({required Object n}) => 'файли: ${n}';
@@ -289,6 +320,12 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get clearCachedFilesConfirm => 'Ви впевнені, що хочете видалити всі кешовані файли?';
 	@override String get blockedInstances => 'Заблоковані інстанси';
 	@override String get blockedInstancesDescription => 'Вкажіть інстанси, які потрібно заблокувати. Перелічені інстанси більше не зможуть спілкуватися з цим інстансом.';
+	@override String get silencedInstances => 'Обмежені інстанси';
+	@override String get silencedInstancesDescription => 'Вкажіть імена хостів серверів, які потрібно обмежити, кожен з нового рядка. Усі облікові записи з указаних серверів вважатимуться обмеженими: вони зможуть лише надсилати запити на підписку та не зможуть згадувати локальні облікові записи, якщо ті на них не підписані. Це не вплине на заблоковані сервери.';
+	@override String get mediaSilencedInstances => 'Сервери з обмеженими медіа';
+	@override String get mediaSilencedInstancesDescription => 'Вкажіть імена хостів серверів, для яких потрібно обмежити медіа, кожен з нового рядка. Усі облікові записи з указаних серверів вважатимуться чутливими, і вони не зможуть використовувати користувацькі емодзі. Це не вплине на заблоковані сервери.';
+	@override String get federationAllowedHosts => 'Сервери, що підтримують федерацію';
+	@override String get federationAllowedHostsDescription => 'Вкажіть імена хостів серверів, з якими потрібно дозволити федерацію, кожне з нового рядка.';
 	@override String get muteAndBlock => 'Заглушення і блокування';
 	@override String get mutedUsers => 'Заглушені користувачі';
 	@override String get blockedUsers => 'Заблоковані користувачі';
@@ -298,6 +335,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get pinLimitExceeded => 'Більше записів не можна закріпити';
 	@override String get done => 'Готово';
 	@override String get processing => 'Обробка';
+	@override String get preprocessing => 'Підготовка';
 	@override String get preview => 'Попередній перегляд';
 	@override String get default_ => 'За умовчанням';
 	@override String defaultValueIs({required Object value}) => 'За промовчанням: ${value}';
@@ -332,6 +370,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String removeAreYouSure({required Object x}) => 'Ви впевнені, що хочете видалити "${x}"?';
 	@override String deleteAreYouSure({required Object x}) => 'Ви впевнені, що хочете видалити "${x}"?';
 	@override String get resetAreYouSure => 'Справді скинути?';
+	@override String get areYouSure => 'Ви впевнені?';
 	@override String get saved => 'Збережено';
 	@override String get upload => 'Завантажити';
 	@override String get keepOriginalUploading => 'Зберегти оригінальне зображення';
@@ -342,12 +381,18 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get uploadFromUrlDescription => 'Посилання на файл для завантаження';
 	@override String get uploadFromUrlRequested => 'Завантаження розпочалось';
 	@override String get uploadFromUrlMayTakeTime => 'Завантаження може зайняти деякий час.';
+	@override String uploadNFiles({required Object n}) => 'Завантажити ${n} файлів';
 	@override String get explore => 'Огляд';
 	@override String get messageRead => 'Прочитано';
+	@override String get readAllChatMessages => 'Позначити всі повідомлення як прочитані';
 	@override String get noMoreHistory => 'Подальшої історії немає';
+	@override String get startChat => 'Почати чат';
 	@override String nUsersRead({required Object n}) => 'Прочитали ${n}';
 	@override String agreeTo({required Object x0}) => 'Я погоджуюсь з ${x0}';
+	@override String get agree => 'Гаразд';
 	@override String get agreeBelow => 'Я погоджуюся з наведеним нижче';
+	@override String get basicNotesBeforeCreateAccount => 'Важливі нотатки';
+	@override String get termsOfService => 'Умови використання';
 	@override String get start => 'Розпочати';
 	@override String get home => 'Домівка';
 	@override String get remoteUserCaution => 'Інформація може бути неповною, оскільки це віддалений користувач.';
@@ -366,12 +411,15 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get lightThemes => 'Світлі теми';
 	@override String get darkThemes => 'Темні теми';
 	@override String get syncDeviceDarkMode => 'Синхронізувати темний режим із налаштуваннями вашого пристрою';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => 'Увімкнено «${x}». Бажаєте вимкнути синхронізацію та перемикати режими вручну?\n';
 	@override String get drive => 'Диск';
 	@override String get fileName => 'Ім\'я файлу';
 	@override String get selectFile => 'Вибрати файл';
 	@override String get selectFiles => 'Вибрати файли';
 	@override String get selectFolder => 'Вибрати теку';
+	@override String get unselectFolder => 'Скасувати вибір теки';
 	@override String get selectFolders => 'Вибрати теки';
+	@override String get fileNotSelected => 'Файл не вибрано';
 	@override String get renameFile => 'Перейменувати файл';
 	@override String get folderName => 'Ім\'я теки';
 	@override String get createFolder => 'Створити теку';
@@ -382,6 +430,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get showFile => 'Показати файл';
 	@override String get emptyDrive => 'Диск порожній';
 	@override String get emptyFolder => 'Тека порожня';
+	@override String get dropHereToUpload => 'Перетягніть файли сюди, щоб завантажити';
 	@override String get unableToDelete => 'Видалення неможливе';
 	@override String get inputNewFileName => 'Введіть ім\'я нового файлу';
 	@override String get inputNewDescription => 'Введіть новий заголовок';
@@ -433,7 +482,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get pinnedUsersDescription => 'Впишіть в список користувачів, яких хочете закріпити на сторінці "Знайти", ім\'я в стовпчик.';
 	@override String get pinnedPages => 'Закріплені сторінки';
 	@override String get pinnedPagesDescription => 'Введіть шляхи сторінок, які ви бажаєте закріпити на головній сторінці цього інстанса, розділені новими рядками.';
-	@override String get pinnedClipId => 'Ідентифікатор закріпленої замітки.';
+	@override String get pinnedClipId => 'Ідентифікатор закріпленої добірки.';
 	@override String get pinnedNotes => 'Закріплена нотатка';
 	@override String get hcaptcha => 'hCaptcha';
 	@override String get enableHcaptcha => 'Увімкнути hCaptcha';
@@ -459,9 +508,11 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get antennaSource => 'Джерело антени';
 	@override String get antennaKeywords => 'Ключові слова антени';
 	@override String get antennaExcludeKeywords => 'Винятки';
+	@override String get antennaExcludeBots => 'Виключити облікові записи ботів';
 	@override String get antennaKeywordsDescription => 'Розділення ключових слів пробілами для "І" або з нової лінійки для "АБО"';
 	@override String get notifyAntenna => 'Сповіщати про нові нотатки';
 	@override String get withFileAntenna => 'Тільки нотатки з вкладеними файлами';
+	@override String get excludeNotesInSensitiveChannel => 'Виключати нотатки з чутливих каналів';
 	@override String get enableServiceworker => 'Увімкнути ServiceWorker';
 	@override String get antennaUsersDescription => 'Список імя користувачів в стопчик';
 	@override String get caseSensitive => 'З урахуванням регістру';
@@ -486,14 +537,23 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get administrator => 'Адмін';
 	@override String get token => 'Токен';
 	@override String get x2fa => 'Двофакторна аутентифікація';
+	@override String get setupOf2fa => 'Налаштувати двофакторну автентифікацію';
 	@override String get totp => 'Програма аутентифікації';
+	@override String get totpDescription => 'Використовуйте застосунок-автентифікатор для введення одноразових паролів';
 	@override String get moderator => 'Модератор';
 	@override String get moderation => 'Модерація';
+	@override String get moderationNote => 'Модераторська нотатка';
+	@override String get moderationNoteDescription => 'Ви можете додати нотатки, які будуть доступні лише модераторам.\n';
+	@override String get addModerationNote => 'Додати модераторську нотатку';
+	@override String get moderationLogs => 'Журнали модерації';
 	@override String nUsersMentioned({required Object n}) => 'Згадали: ${n}';
+	@override String get securityKeyAndPasskey => 'Ключі безпеки та ключі доступу';
 	@override String get securityKey => 'Ключ захисту';
 	@override String get lastUsed => 'Востаннє використано';
+	@override String lastUsedAt({required Object t}) => 'Востаннє використано: ${t}';
 	@override String get unregister => 'Скасувати реєстрацію';
 	@override String get passwordLessLogin => 'Налаштувати вхід без пароля';
+	@override String get passwordLessLoginDescription => 'Дозволяє вхід без пароля лише за допомогою ключа безпеки або ключа доступу';
 	@override String get resetPassword => 'Скинути пароль';
 	@override String newPasswordIs({required Object password}) => 'Новий пароль: ${password}';
 	@override String get reduceUiAnimation => 'Зменшити анімацію інтерфейсу';
@@ -518,8 +578,10 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String noteOf({required Object user}) => 'Нотатка ${user}';
 	@override String get quoteAttached => 'Цитата';
 	@override String get quoteQuestion => 'Ви хочете додати цитату?';
+	@override String get attachAsFileQuestion => 'Текст у буфері обміну довгий. Хочете прикріпити його як текстовий файл?';
 	@override String get onlyOneFileCanBeAttached => 'До повідомлення можна вкласти лише один файл';
 	@override String get signinRequired => 'Будь ласка, авторизуйтесь';
+	@override String get signinOrContinueOnRemote => 'Щоб продовжити, потрібно перейти на свій сервер або зареєструватися / увійти на цей сервер.';
 	@override String get invitations => 'Запрошення';
 	@override String get invitationCode => 'Код запрошення';
 	@override String get checking => 'Перевірка…';
@@ -539,7 +601,14 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get language => 'Мова';
 	@override String get uiLanguage => 'Мова інтерфейсу';
 	@override String aboutX({required Object x}) => 'Про ${x}';
+	@override String get emojiStyle => 'Стиль емодзі';
 	@override String get native => 'місцевий';
+	@override String get menuStyle => 'Стиль меню';
+	@override String get style => 'Стиль';
+	@override String get drawer => 'Панель';
+	@override String get popup => 'Спливаючі вікна';
+	@override String get showNoteActionsOnlyHover => 'Показувати дії з нотаткою лише при наведенні';
+	@override String get showReactionsCount => 'Показувати кількість реакцій у нотатках';
 	@override String get noHistory => 'Історія порожня';
 	@override String get signinHistory => 'Історія входів';
 	@override String get enableAdvancedMfm => 'Увімкнути розширений MFM';
@@ -549,9 +618,12 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get tags => 'Теги';
 	@override String get docSource => 'Джерело цього документа';
 	@override String get createAccount => 'Створити акаунт';
-	@override String get existingAccount => 'Існуючий обліковий запис';
+	@override String get existingAccount => 'Існуючий акаунт';
 	@override String get regenerate => 'Оновити';
 	@override String get fontSize => 'Розмір шрифту';
+	@override String get mediaListWithOneImageAppearance => 'Висота списків медіа лише з одним зображенням';
+	@override String limitTo({required Object x}) => 'Обмежити до ${x}';
+	@override String get showMediaListByGridInWideArea => 'Відображати список медіа у вигляді сітки, коли екран достатньо широкий';
 	@override String get noFollowRequests => 'Немає запитів на підписку';
 	@override String get openImageInNewTab => 'Відкрити зображення в новій вкладці';
 	@override String get dashboard => 'Панель приладів';
@@ -562,7 +634,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get dayOverDayChanges => 'Доба';
 	@override String get appearance => 'Вигляд';
 	@override String get clientSettings => 'Налаштування клієнта';
-	@override String get accountSettings => 'Налаштування акаунта';
+	@override String get accountSettings => 'Налаштування акаунту';
 	@override String get promotion => 'Виділене';
 	@override String get promote => 'Виділити';
 	@override String get numberOfDays => 'Кількість днів';
@@ -585,19 +657,27 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get objectStorageUseProxy => 'Використовувати Proxy';
 	@override String get objectStorageUseProxyDesc => 'Вимкніть коли проксі не використовується для з\'єднання ObjectStorage';
 	@override String get objectStorageSetPublicRead => 'Встановіть \'публічне читання\' при завантаженні';
+	@override String get s3ForcePathStyleDesc => 'Якщо увімкнено s3ForcePathStyle, назва бакету має бути включена до шляху URL, а не до імені хосту URL. Можливо, вам потрібно ввімкнути це налаштування під час використання таких сервісів, як власний екземпляр Minio.';
 	@override String get serverLogs => 'Журнал сервера';
 	@override String get deleteAll => 'Видалити все';
 	@override String get showFixedPostForm => 'Показати форму запису над стрічкою новин.';
+	@override String get showFixedPostFormInChannel => 'Відображати форму публікації вгорі стрічки (Канали)';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Типово включати відповіді нових користувачів, на яких ви підписалися, до стрічки';
 	@override String get newNoteRecived => 'Є нові нотатки';
+	@override String get newNote => 'Нова нотатка';
 	@override String get sounds => 'Звуки';
 	@override String get sound => 'Звуки';
+	@override String get notificationSoundSettings => 'Вибрати звук сповіщення';
 	@override String get listen => 'Слухати';
 	@override String get none => 'Відсутній';
 	@override String get showInPage => 'Показати на сторінці';
 	@override String get popout => 'Від\'єднати';
 	@override String get volume => 'Гучність';
 	@override String get masterVolume => 'Загальна гучність';
+	@override String get notUseSound => 'Вимкнути звук';
+	@override String get useSoundOnlyWhenActive => 'Відтворювати звуки лише коли Misskey активний';
 	@override String get details => 'Детальніше';
+	@override String get renoteDetails => 'Деталі поширення';
 	@override String get chooseEmoji => 'Виберіть емодзі';
 	@override String get unableToProcess => 'Не вдається завершити операцію';
 	@override String get recentUsed => 'Нещодавні';
@@ -613,23 +693,32 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get descendingOrder => 'За спаданням';
 	@override String get scratchpad => 'Scratchpad';
 	@override String get scratchpadDescription => 'Scratchpad надає середовище для експериментів з AiScript. Ви можете писати, виконувати його і тестувати взаємодію з Misskey.';
+	@override String get uiInspector => 'Інспектор UI';
+	@override String get uiInspectorDescription => 'Ви можете переглянути список серверних компонентів інтерфейсу в памʼяті. Компонент інтерфейсу буде згенеровано функцією Ui:C:.';
 	@override String get output => 'Вихід';
 	@override String get script => 'Скрипт';
 	@override String get disablePagesScript => 'Вимкнути AiScript на Сторінках';
 	@override String get updateRemoteUser => 'Оновити інформацію про віддаленого користувача';
 	@override String get unsetUserAvatar => 'Деактивувати піктограму.';
+	@override String get unsetUserAvatarConfirm => ' Ви впевнені, що хочете прибрати аватар?';
 	@override String get unsetUserBanner => 'Випустити прапор.';
+	@override String get unsetUserBannerConfirm => 'Ви впевнені, що хочете прибрати банер?';
 	@override String get deleteAllFiles => 'Видалити всі файли';
 	@override String get deleteAllFilesConfirm => 'Ви дійсно хочете видалити всі файли?';
 	@override String get removeAllFollowing => 'Скасувати всі підписки';
 	@override String removeAllFollowingDescription({required Object host}) => 'Скасувати підписку на всі акаунти з ${host}. Будь ласка, робіть це, якщо інстанс більше не існує.';
 	@override String get userSuspended => 'Обліковий запис заблокований.';
 	@override String get userSilenced => 'Обліковий запис приглушений.';
-	@override String get yourAccountSuspendedTitle => 'Цей обліковий запис заблоковано';
+	@override String get yourAccountSuspendedTitle => 'Цей акаунт заблоковано';
 	@override String get yourAccountSuspendedDescription => 'Цей обліковий запис було заблоковано через порушення умов надання послуг сервера. Зв\'яжіться з адміністратором, якщо ви хочете дізнатися докладнішу причину. Будь ласка, не створюйте новий обліковий запис.';
+	@override String get tokenRevoked => 'Недійсний токен';
+	@override String get tokenRevokedDescription => 'Термін дії цього токена минув. Увійдіть знову.';
+	@override String get accountDeleted => 'Акаунт видалено';
+	@override String get accountDeletedDescription => 'Цей акаунт було видалено.';
 	@override String get menu => 'Меню';
 	@override String get divider => 'Розділювач';
 	@override String get addItem => 'Додати елемент';
+	@override String get rearrange => 'Сортувати за';
 	@override String get relays => 'Ретранслятори';
 	@override String get addRelay => 'Додати ретранслятор';
 	@override String get inboxUrl => 'Inbox URL';
@@ -664,6 +753,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get small => 'Маленький';
 	@override String get generateAccessToken => 'Згенерувати токен доступу';
 	@override String get permission => 'Права';
+	@override String get adminPermission => 'Права адміністратора';
 	@override String get enableAll => 'Увімкнути все';
 	@override String get disableAll => 'Вимкнути все';
 	@override String get tokenRequested => 'Надати доступ до акаунту';
@@ -685,13 +775,19 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get smtpSecureInfo => 'Вимкніть при використанні STARTTLS  ';
 	@override String get testEmail => 'Тестовий email';
 	@override String get wordMute => 'Блокування слів';
+	@override String get wordMuteDescription => 'Згортати нотатки, що містять указане слово або фразу. Згорнуті нотатки можна показати, натиснувши на них.';
+	@override String get hardWordMute => 'Повне приховування слів';
+	@override String get showMutedWord => 'Показати приховані слова';
+	@override String get hardWordMuteDescription => 'Приховувати нотатки, що містять указане слово або фразу. На відміну від приховування слів, нотатку буде повністю приховано з перегляду.';
 	@override String get regexpError => 'Помилка регулярного виразу';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Сталася помилка в регулярному виразі в рядку ${line} вашого слова ${tab} слова що ігноруються:';
 	@override String get instanceMute => 'Приглушення інстансів';
 	@override String userSaysSomething({required Object name}) => '${name} щось сказав(ла)';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} згадує «${word}»';
 	@override String get makeActive => 'Активувати';
 	@override String get display => 'Відображення';
 	@override String get copy => 'Скопіювати';
+	@override String get copiedToClipboard => 'Скопійовано до буфера обміну';
 	@override String get metrics => 'Показники';
 	@override String get overview => 'Огляд';
 	@override String get logs => 'Журнал';
@@ -706,14 +802,16 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get other => 'Інше';
 	@override String get regenerateLoginToken => 'Оновити Login Token';
 	@override String get regenerateLoginTokenDescription => 'Регенерувати внутрішній ключ використовуваний під час входу. Зазвичай цього не потрібно робити. При регенерації всі пристрої вийдуть з системи.';
+	@override String get theKeywordWhenSearchingForCustomEmoji => 'Це ключове слово для пошуку користувацьких емодзі.';
 	@override String get setMultipleBySeparatingWithSpace => 'Можна вказати кілька значень, відділивши їх пробілом.';
 	@override String get fileIdOrUrl => 'Ідентифікатор файлу або посилання';
 	@override String get behavior => 'Поведінка';
 	@override String get sample => 'Приклад';
 	@override String get abuseReports => 'Скарги';
 	@override String get reportAbuse => 'Поскаржитись';
+	@override String get reportAbuseRenote => 'Поскаржитися на поширення';
 	@override String reportAbuseOf({required Object name}) => 'Поскаржитись на ${name}';
-	@override String get fillAbuseReportDescription => 'Будь ласка вкажіть подробиці скарги. Якщо скарга стосується запису, вкажіть посилання на нього.';
+	@override String get fillAbuseReportDescription => 'Будь ласка, вкажіть подробиці скарги. Якщо скарга стосується запису, вкажіть посилання на нього.';
 	@override String get abuseReported => 'Дякуємо, вашу скаргу було відправлено. ';
 	@override String get reporter => 'Репортер';
 	@override String get reporteeOrigin => 'Про кого повідомлено';
@@ -732,9 +830,9 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get clip => 'Добірка';
 	@override String get createNew => 'Створити новий';
 	@override String get optional => 'Необов\'язково';
-	@override String get createNewClip => 'Створити нотатку';
+	@override String get createNewClip => 'Створити добірку';
 	@override String get unclip => 'Незакріплений';
-	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Ця нотатка вже включена до кліпу "${name}". Ви хочете виключити нотатку з цього кліпу?';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Ця нотатка вже включена до добірки "${name}". Ви хочете виключити нотатку з цього кліпу?';
 	@override String get public => 'Публічний';
 	@override String get private => 'Приватне';
 	@override String i18nInfo({required Object link}) => 'Misskey перекладається на різні мови волонтерами. Ви можете допомогти: ${link}';
@@ -761,6 +859,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get alwaysMarkSensitive => 'Позначати NSFW за замовчуванням';
 	@override String get loadRawImages => 'Відображати вкладені зображення повністю замість ескізів';
 	@override String get disableShowingAnimatedImages => 'Не програвати анімовані зображення';
+	@override String get disableShowingAnimatedImages_caption => 'Якщо анімовані зображення не відтворюються навіть коли це налаштування вимкнено, причиною можуть бути налаштування доступності браузера чи ОС, режим енергоощадження';
+	@override String get highlightSensitiveMedia => 'Виділяти чутливі медіа';
 	@override String get verificationEmailSent => 'Електронний лист з підтвердженням відісланий. Будь ласка перейдіть по посиланню в листі для підтвердження.';
 	@override String get notSet => 'Не налаштовано';
 	@override String get emailVerified => 'Електронну пошту підтверджено.';
@@ -771,6 +871,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get useSystemFont => 'Використовувати стандартний шрифт системи';
 	@override String get clips => 'Добірки';
 	@override String get experimentalFeatures => 'Експериментальні функції';
+	@override String get experimental => 'Експериментальні';
+	@override String get thisIsExperimentalFeature => 'Це експериментальна функція. Її можливості можуть змінюватися, і вона може працювати не так, як очікується.';
 	@override String get developer => 'Розробник';
 	@override String get makeExplorable => 'Зробіть обліковий запис видимим у розділі "Огляд"';
 	@override String get makeExplorableDescription => 'Вимкніть, щоб обліковий запис не показувався у розділі "Огляд".';
@@ -781,6 +883,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get narrow => 'Вузький';
 	@override String get reloadToApplySetting => 'Налаштування ввійде в дію при перезавантаженні. Перезавантажити?';
 	@override String get needReloadToApply => 'Зміни набудуть чинності після перезавантаження сторінки.';
+	@override String get needToRestartServerToApply => 'Щоб застосувати зміну, потрібно перезапустити Misskey.';
 	@override String get showTitlebar => 'Показати титульний рядок';
 	@override String get clearCache => 'Очистити кеш';
 	@override String onlineUsersCount({required Object n}) => '${n} користувачів онлайн';
@@ -834,6 +937,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get unknown => 'Невідомо';
 	@override String get onlineStatus => 'Онлайн статус';
 	@override String get hideOnlineStatus => 'Приховати онлайн статус.';
+	@override String get hideOnlineStatusDescription => 'Приховування вашого онлайн-статусу може обмежити зручність деяких функцій, зокрема пошуку.';
 	@override String get online => 'Онлайн';
 	@override String get active => 'Активовано';
 	@override String get offline => 'Офлайн';
@@ -850,9 +954,11 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get accounts => 'Акаунти';
 	@override String get switch_ => 'Перемкнути';
 	@override String get noMaintainerInformationWarning => 'Інформація про адміністраторів не налаштована';
+	@override String get noInquiryUrlWarning => 'URL для звернень не встановлено';
 	@override String get noBotProtectionWarning => 'Захист від ботів не налаштовано';
 	@override String get configure => 'Налаштувати';
 	@override String get postToGallery => 'Допис у галерею';
+	@override String get postToHashtag => 'Опублікувати з цим хештегом';
 	@override String get gallery => 'Галерея';
 	@override String get recentPosts => 'Нещодавні дописи';
 	@override String get popularPosts => 'Популярні дописи';
@@ -869,6 +975,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get ratio => 'Співвідношення';
 	@override String get previewNoteText => 'Показати передогляд';
 	@override String get customCss => 'Власний CSS';
+	@override String get customCssWarn => 'Використовуйте це налаштування лише якщо розумієте, що воно робить. Неправильні значення можуть призвести до некоректної роботи клієнта.';
 	@override String get global => 'Глобальна';
 	@override String get squareAvatars => 'Квадратні аватарки';
 	@override String get sent => 'Відправити';
@@ -883,15 +990,20 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get translate => 'Переклад';
 	@override String translatedFrom({required Object x}) => 'Переклад з ${x}';
 	@override String get accountDeletionInProgress => 'Наразі триває видалення акаунту';
+	@override String get usernameInfo => 'Ім’я, яке відрізняє ваш обліковий запис від інших на цьому сервері. Можна використовувати латинські літери (az, AZ), цифри (0~9) або підкреслення (_). Ім’я користувача не можна буде змінити пізніше.';
 	@override String get aiChanMode => 'Режим Ai';
+	@override String get devMode => 'Режим розробника';
 	@override String get keepCw => 'Зберігати попередження щодо вмісту';
 	@override String get pubSub => 'Акаунти Pub/Sub';
 	@override String get lastCommunication => 'Останній зв\'язок';
 	@override String get resolved => 'Вирішено';
 	@override String get unresolved => 'Не вирішено';
 	@override String get breakFollow => 'Видалити підписника';
+	@override String get breakFollowConfirm => 'Справді видалити цього підписника?';
 	@override String get itsOn => 'Увімкнено';
 	@override String get itsOff => 'Вимкнено';
+	@override String get on => 'Увімкнено';
+	@override String get off => 'Вимкнено';
 	@override String get emailRequiredForSignup => 'Вимагати email адресу для реєстрації';
 	@override String get unread => 'Непрочитане';
 	@override String get filter => 'Фільтр';
@@ -902,11 +1014,15 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get classic => 'Класичний';
 	@override String get muteThread => 'Приглушити тред';
 	@override String get unmuteThread => 'Скасувати глушіння';
+	@override String get followingVisibility => 'Видимість підписок';
+	@override String get followersVisibility => 'Visibility of followers';
 	@override String get continueThread => 'Показати продовження треду';
 	@override String get deleteAccountConfirm => 'Це незворотно видалить ваш акаунт. Продовжити?';
 	@override String get incorrectPassword => 'Неправильний пароль.';
+	@override String get incorrectTotp => 'Одноразовий пароль неправильний або його термін дії минув.';
 	@override String voteConfirm({required Object choice}) => 'Підтверджуєте свій голос за "${choice}"?';
 	@override String get hide => 'Сховати';
+	@override String get useDrawerReactionPickerForMobile => 'Показувати вибір реакцій як висувну панель на мобільних пристроях';
 	@override String welcomeBackWithName({required Object name}) => 'З поверненням, ${name}!';
 	@override String clickToFinishEmailVerification({required Object ok}) => 'Натисніть [${ok}], щоб завершити перевірку email.';
 	@override String get overridedDeviceKind => 'Тип пристрою';
@@ -919,6 +1035,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get searchByGoogle => 'Пошук';
 	@override String get instanceDefaultLightTheme => 'Світла тема за промовчанням';
 	@override String get instanceDefaultDarkTheme => 'Темна тема за промовчанням';
+	@override String get instanceDefaultThemeDescription => 'Введіть код теми у форматі об’єкта.';
 	@override String get mutePeriod => 'Тривалість приховування';
 	@override String get period => 'Опитування закінчується';
 	@override String get indefinitely => 'Ніколи';
@@ -926,25 +1043,35 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get oneHour => '1 година';
 	@override String get oneDay => '1 день';
 	@override String get oneWeek => '1 тиждень';
+	@override String get oneMonth => '1 місяць';
+	@override String get threeMonths => '3 months';
+	@override String get oneYear => '1 рік';
+	@override String get threeDays => '3 дні';
 	@override String get reflectMayTakeTime => 'Може знадобитися деякий час для відображення';
 	@override String get failedToFetchAccountInformation => 'Не вдалося отримати інформацію про акаунт';
 	@override String get rateLimitExceeded => 'Ліміт швидкості перевищено';
 	@override String get cropImage => 'Кадрування';
 	@override String get cropImageAsk => 'Бажаєте кадрувати це зображення?';
+	@override String get cropYes => 'Crop';
+	@override String get cropNo => 'Використати як є';
 	@override String get file => 'Файли';
 	@override String recentNHours({required Object n}) => 'Останні ${n} годин';
 	@override String recentNDays({required Object n}) => 'Останні ${n} днів';
 	@override String get noEmailServerWarning => 'Email сервер не налаштовано.';
+	@override String get thereIsUnresolvedAbuseReportWarning => 'Є нерозглянуті скарги.';
 	@override String get recommended => 'Рекомендоване';
 	@override String get check => 'Перевірити';
 	@override String get driveCapOverrideLabel => 'Змінити ємність диска для цього користувача';
 	@override String get driveCapOverrideCaption => 'Для скасування вкажіть 0 або менше.';
 	@override String get requireAdminForView => 'Для перегляду ви повинні увійти в акаунт адміністратора.';
+	@override String get isSystemAccount => 'Акаунт, створений і автоматично керований системою.';
 	@override String typeToConfirm({required Object x}) => 'Введіть ${x} для підтвердження';
 	@override String get deleteAccount => 'Видалення акаунту';
 	@override String get document => 'Документація';
 	@override String get numberOfPageCache => 'Кількість кешованих сторінок';
+	@override String get numberOfPageCacheDescription => 'Збільшення цього значення покращить зручність, але підвищить навантаження через більше використання пам’яті на пристрої користувача.';
 	@override String get logoutConfirm => 'Справді вийти?';
+	@override String get logoutWillClearClientData => 'Вихід з облікового запису видалить налаштування клієнта з браузера. Щоб відновити налаштування після повторного входу, потрібно увімкнути автоматичне резервне копіювання налаштувань.';
 	@override String get lastActiveDate => 'Останнє використання';
 	@override String get statusbar => 'Рядок стану';
 	@override String get pleaseSelect => 'Виберіть будь ласка';
@@ -960,9 +1087,14 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get localOnly => 'Локально';
 	@override String get remoteOnly => 'Тільки віддаленi';
 	@override String get failedToUpload => 'Збій завантаження';
+	@override String get cannotUploadBecauseInappropriate => 'Не вдалося завантажити цей файл, оскільки деякі його частини визначено як потенційно неприйнятні.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Помилка завантаження через брак місця на Диску.';
+	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Цей файл не можна завантажити, оскільки він перевищує обмеження розміру.';
+	@override String get cannotUploadBecauseUnallowedFileType => 'Не вдалося завантажити файл через недозволений тип файлу.';
 	@override String get beta => 'Бета';
 	@override String get enableAutoSensitive => 'Автоматичне маркування NSFW';
+	@override String get enableAutoSensitiveDescription => 'Дозволяє, за можливості, автоматично виявляти й позначати чутливі медіа за допомогою машинного навчання. Навіть якщо цю опцію вимкнено, вона може бути увімкнена на рівні інстансу.';
+	@override String get activeEmailValidationDescription => 'Увімкнути суворішу перевірку адрес електронної пошти, зокрема перевірку на тимчасові адреси та можливість фактичного зв’язку з ними. Якщо вимкнено, перевірятиметься лише формат адреси.';
 	@override String get navbar => 'Рядок навігації';
 	@override String get shuffle => 'Перемішати';
 	@override String get account => 'Акаунти';
@@ -970,40 +1102,356 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get pushNotification => 'Push сповіщення';
 	@override String get subscribePushNotification => 'Увімкнути push-сповіщення';
 	@override String get unsubscribePushNotification => 'Вимкнути push-сповіщення';
+	@override String get pushNotificationAlreadySubscribed => 'Push-сповіщення вже увімкнено';
+	@override String get pushNotificationNotSupported => 'Ваш браузер або інстанс не підтримує push-сповіщення';
+	@override String get sendPushNotificationReadMessage => 'Видаляти push-сповіщення після прочитання';
+	@override String get sendPushNotificationReadMessageCaption => 'Це може збільшити споживання енергії вашим пристроєм.';
+	@override String get pleaseAllowPushNotification => 'Увімкніть push-сповіщення у браузері';
+	@override String get browserPushNotificationDisabled => 'Не вдалося отримати дозвіл на надсилання сповіщень';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => 'Немає дозволу на надсилання сповіщень від ${serverName}. Дозвольте сповіщення в налаштуваннях браузера й спробуйте ще раз.';
 	@override String get windowMaximize => 'Розгорнути';
+	@override String get windowMinimize => 'Згорнути';
 	@override String get windowRestore => 'Відновити';
 	@override String get caption => 'Підпис';
+	@override String get loggedInAsBot => 'Зараз виконано вхід як бот';
 	@override String get tools => 'Інструменти';
+	@override String get cannotLoad => 'Не вдалося завантажити';
+	@override String get numberOfProfileView => 'Перегляди профілю';
 	@override String get like => 'Вподобати';
 	@override String get unlike => 'Не вподобати';
 	@override String get numberOfLikes => 'Вподобання';
 	@override String get show => 'Відображення';
+	@override String get neverShow => 'Більше не показувати';
+	@override String get remindMeLater => 'Можливо, пізніше';
+	@override String get didYouLikeMisskey => 'Вам сподобався Misskey?';
+	@override String pleaseDonate({required Object host}) => '${host} використовує вільне програмне забезпечення Misskey. Ми будемо дуже вдячні за ваші донати, щоб розробка Misskey могла тривати!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Відповідний вихідний код доступний за посиланням: ${anchor}';
 	@override String get roles => 'Ролі';
 	@override String get role => 'Роль';
+	@override String get noRole => 'Роль не знайдено';
 	@override String get normalUser => 'Звичайний користувач';
 	@override String get undefined => 'Не визначено';
 	@override String get assign => 'Призначити';
 	@override String get unassign => 'Скасувати призначення';
 	@override String get color => 'Колір';
+	@override String get manageCustomEmojis => 'Керування користувацькими емодзі';
+	@override String get manageAvatarDecorations => 'Керувати прикрасами аватара';
+	@override String get youCannotCreateAnymore => 'Ви досягли ліміту створення.';
+	@override String get cannotPerformTemporary => 'Тимчасово недоступний';
+	@override String get cannotPerformTemporaryDescription => 'Цю дію тимчасово неможливо виконати через перевищення ліміту виконання. Будь ласка, зачекайте трохи й спробуйте ще раз.';
+	@override String get invalidParamError => 'Неправильні параметри';
+	@override String get invalidParamErrorDescription => 'Параметри запиту неправильні. Зазвичай це спричинено помилкою, але також може бути пов’язано з перевищенням обмежень розміру введених даних або подібними причинами.';
+	@override String get permissionDeniedError => 'Операцію заборонено';
+	@override String get permissionDeniedErrorDescription => 'Цей обліковий запис не має дозволу на виконання цієї дії.';
+	@override String get preset => 'Пресет';
+	@override String get selectFromPresets => 'Вибрати з пресетів';
+	@override String get custom => 'Користувацькі';
 	@override String get achievements => 'Досягнення';
+	@override String get gotInvalidResponseError => 'Неправильна відповідь сервера';
+	@override String get gotInvalidResponseErrorDescription => 'Сервер може бути недоступний або перебувати на технічному обслуговуванні. Будь ласка, спробуйте пізніше.';
+	@override String get thisPostMayBeAnnoying => 'Ця нотатка може дратувати інших.';
+	@override String get thisPostMayBeAnnoyingHome => 'Опублікувати в домашній стрічці';
+	@override String get thisPostMayBeAnnoyingCancel => 'Скасувати';
+	@override String get thisPostMayBeAnnoyingIgnore => 'Усе одно опублікувати';
+	@override String get collapseRenotes => 'Згортати поширення, які ви вже бачили';
+	@override String get collapseRenotesDescription => 'Згортати нотатки, на які ви вже відреагували або які поширили раніше.';
+	@override String get internalServerError => 'Внутрішня помилка сервера';
+	@override String get internalServerErrorDescription => 'На сервері сталася неочікувана помилка.';
+	@override String get copyErrorInfo => 'Скопіювати код помилки';
 	@override String get joinThisServer => 'Зареєструватися на цьому сервері';
 	@override String get exploreOtherServers => 'Знайти інший сервер';
 	@override String get letsLookAtTimeline => 'Перегляд історії';
+	@override String get disableFederationConfirm => 'Справді вимкнути федерацію?';
+	@override String get disableFederationConfirmWarn => 'Навіть якщо федерацію вимкнено, дописи залишатимуться публічними, якщо не вказано інше. Зазвичай вам не потрібно цього робити.';
+	@override String get disableFederationOk => 'Не федерується';
+	@override String get invitationRequiredToRegister => 'Цей інстанс доступний лише за запрошенням. Щоб зареєструватися, потрібно ввести дійсний код запрошення.';
+	@override String get emailNotSupported => 'Цей інстанс не підтримує надсилання електронних листів.';
+	@override String get postToTheChannel => 'Опублікувати в каналі';
+	@override String get cannotBeChangedLater => 'Це не можна буде змінити пізніше.';
+	@override String get reactionAcceptance => 'Прийняття реакцій';
+	@override String get likeOnly => 'Лише вподобання';
+	@override String get likeOnlyForRemote => 'Усі — лише вподобання для віддалених інстансів';
+	@override String get nonSensitiveOnly => 'Тільки нечутливий контент';
+	@override String get nonSensitiveOnlyForLocalLikeOnlyForRemote => 'Тільки нечутливий контент (тільки віддалені вподобання)';
+	@override String get rolesAssignedToMe => 'Ролі, призначені мені';
+	@override String get resetPasswordConfirm => 'Справді скинути пароль?';
+	@override String get sensitiveWords => 'Чутливі слова';
+	@override String get sensitiveWordsDescription => 'Видимість усіх нотаток, що містять будь-яке з налаштованих слів, автоматично буде встановлено на «Домашня». Можна вказати кілька слів, розділяючи їх переносами рядка.';
+	@override String get sensitiveWordsDescription2 => 'Використання пробілів створює AND-вирази, а ключові слова, взяті в скісні риски, перетворюються на регулярний вираз.';
+	@override String get prohibitedWords => 'Заборонені слова';
+	@override String get prohibitedWordsDescription => 'Вмикає помилку під час спроби опублікувати нотатку, що містить налаштоване слово або слова. Можна вказати кілька слів, розділяючи їх новим рядком.';
+	@override String get prohibitedWordsDescription2 => 'Використання пробілів створює AND-вирази, а ключові слова, взяті в скісні риски, перетворюються на регулярний вираз.';
+	@override String get hiddenTags => 'Приховані хештеги';
+	@override String get hiddenTagsDescription => 'Виберіть теги, які не зображатимуться у списку трендів. Можна зареєструвати кілька тегів, розділяючи їх рядками.';
+	@override String get notesSearchNotAvailable => 'Пошук нотаток недоступний.';
+	@override String get usersSearchNotAvailable => 'Пошук користувачів недоступний.';
+	@override String get license => 'Ліцензія';
+	@override String get unfavoriteConfirm => 'Справді видалити з обраного?';
+	@override String get myClips => 'Мої добірки';
+	@override String get drivecleaner => 'Очищувач Диска\n';
+	@override String get retryAllQueuesNow => 'Повторно запустити всі черги';
+	@override String get retryAllQueuesConfirmTitle => 'Справді повторити все?';
+	@override String get retryAllQueuesConfirmText => 'Це тимчасово збільшить навантаження на сервер.';
+	@override String get enableChartsForRemoteUser => 'Створити графіки даних віддалених користувачів';
+	@override String get enableChartsForFederatedInstances => 'Створити графіки даних віддалених інстансів';
+	@override String get enableStatsForFederatedInstances => 'Отримувати статистику віддаленого сервера';
+	@override String get showClipButtonInNoteFooter => 'Додати «Добірка» до меню дій нотатки';
+	@override String get reactionsDisplaySize => 'Розмір відображення реакцій';
+	@override String get limitWidthOfReaction => 'Обмежити максимальну ширину реакцій і показувати їх у зменшеному розмірі.';
+	@override String get noteIdOrUrl => 'ID або URL нотатки';
+	@override String get video => 'Відео';
+	@override String get videos => 'Відео';
+	@override String get audio => 'Аудіо';
+	@override String get audioFiles => 'Аудіо';
+	@override String get dataSaver => 'Заощадження трафіку';
+	@override String get accountMigration => 'Міграція акаунту';
+	@override String get accountMoved => 'Цей користувач перейшов на новий акаунт:';
+	@override String get accountMovedShort => 'Цей акаунт було перенесено.';
+	@override String get operationForbidden => 'Операцію заборонено';
+	@override String get forceShowAds => 'Завжди показувати рекламу';
+	@override String get addMemo => 'Додати пам\'ятку';
+	@override String get editMemo => 'Редагувати пам\'ятку';
+	@override String get reactionsList => 'Реакції';
+	@override String get renotesList => 'Поширення';
+	@override String get notificationDisplay => 'Сповіщення';
+	@override String get leftTop => 'Ліворуч зверху';
+	@override String get rightTop => 'Праворуч зверху';
+	@override String get leftBottom => 'Ліворуч знизу';
+	@override String get rightBottom => 'Праворуч знизу';
+	@override String get stackAxis => 'Напрямок накладання';
+	@override String get vertical => 'Вертикально';
 	@override String get horizontal => 'Збоку';
+	@override String get position => 'Позиція';
+	@override String get serverRules => 'Правила сервера';
+	@override String get pleaseConfirmBelowBeforeSignup => 'Щоб зареєструватися на цьому сервері, ви повинні переглянути та прийняти наведені нижче умови:';
+	@override String get pleaseAgreeAllToContinue => 'Щоб продовжити, потрібно погодитися з усіма полями вище.\n\n';
+	@override String get continue_ => 'Продовжити';
+	@override String get preservedUsernames => 'Зарезервовані імена користувачів';
+	@override String get preservedUsernamesDescription => 'Укажіть імена користувачів, які потрібно зарезервувати, розділяючи їх переносами рядка. Вони стануть недоступними під час звичайного створення облікового запису, але адміністратори зможуть використовувати їх для ручного створення облікових записів. Уже наявні облікові записи з такими іменами користувачів не будуть зачеплені.';
+	@override String get createNoteFromTheFile => 'Створити нотатку з цього файла';
+	@override String get archive => 'Архів';
+	@override String get archived => 'Заархівовано';
+	@override String get unarchive => 'Розархівувати';
+	@override String channelArchiveConfirmTitle({required Object name}) => 'Справді архівувати ${name}?';
+	@override String get channelArchiveConfirmDescription => 'Архівований канал більше не відображатиметься у списку каналів або результатах пошуку. До нього також більше не можна буде додавати нові дописи.';
+	@override String get thisChannelArchived => 'Цей канал заархівовано.';
+	@override String get displayOfNote => 'Відображення нотаток';
+	@override String get initialAccountSetting => 'Налаштування профілю';
 	@override String get youFollowing => 'Підписки';
+	@override String get preventAiLearning => 'Відхилити використання в машинному навчанні (генеративному ШІ)';
+	@override String get preventAiLearningDescription => 'Запит до пошукових роботів не використовувати опубліковані тексти, зображення тощо в наборах даних для машинного навчання (прогнозного / генеративного ШІ). Це досягається додаванням HTML-прапорця відповіді «noai» до відповідного вмісту. Однак повного запобігання за допомогою цього прапорця досягти неможливо, оскільки його можуть просто ігнорувати.';
+	@override String get options => 'Опції';
+	@override String get specifyUser => 'Вказаний користувач';
+	@override String get lookupConfirm => 'Хочете дізнатись?';
+	@override String get openTagPageConfirm => 'Хочете відкрити сторінку хештега?';
+	@override String get specifyHost => 'Вказати хост';
+	@override String get failedToPreviewUrl => 'Не вдалося переглянути';
+	@override String get update => 'Оновити';
+	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Ролі, які можуть використовувати цей емодзі як реакцію';
+	@override String get rolesThatCanBeUsedThisEmojiAsReactionEmptyDescription => 'Якщо ролі не вказано, будь-хто може використовувати цей емодзі як реакцію.';
+	@override String get rolesThatCanBeUsedThisEmojiAsReactionPublicRoleWarn => 'Ці ролі мають бути публічними.';
+	@override String get cancelReactionConfirm => 'Справді видалити вашу реакцію?';
+	@override String get changeReactionConfirm => 'Справді змінити вашу реакцію?';
+	@override String get later => 'Пізніше';
+	@override String get goToMisskey => 'До Misskey';
+	@override String get additionalEmojiDictionary => 'Додаткові словники емодзі';
+	@override String get installed => 'Встановлено';
+	@override String get branding => 'Брендинг';
+	@override String get enableServerMachineStats => 'Публікувати статистику серверного обладнання';
+	@override String get enableIdenticonGeneration => 'Увімкнути генерацію ідентиконів користувачів';
+	@override String get showRoleBadgesOfRemoteUsers => 'Відображати значки ролей, призначені віддаленим користувачам';
+	@override String get turnOffToImprovePerformance => 'Вимкнення цієї опції може підвищити продуктивність.';
+	@override String get createInviteCode => 'Створити запрошення';
+	@override String get createWithOptions => 'Створити з параметрами';
+	@override String get createCount => 'Кількість запрошень';
+	@override String get inviteCodeCreated => 'Запрошення створено';
+	@override String get inviteLimitExceeded => 'Ви перевищили ліміт запрошень, які можете створити.';
+	@override String createLimitRemaining({required Object limit}) => 'Ліміт запрошень: залишилося ${limit}';
+	@override String inviteLimitResetCycle({required Object limit, required Object time}) => 'Цей ліміт буде скинуто до ${limit} о ${time}.';
+	@override String get expirationDate => 'Дата закінчення терміну дії';
+	@override String get noExpirationDate => 'Без закінчення терміну дії';
+	@override String get inviteCodeUsedAt => 'Код запрошення використано о';
+	@override String get registeredUserUsingInviteCode => 'Запрошення використав(-ла)';
+	@override String get waitingForMailAuth => 'Очікується підтвердження електронної пошти';
+	@override String get inviteCodeCreator => 'Запрошення створив(-ла)';
+	@override String get usedAt => 'Використано';
+	@override String get unused => 'Не використано';
+	@override String get used => 'Використаний';
+	@override String get expired => 'Термін дії минув';
+	@override String get doYouAgree => 'Погоджуєтеся?';
+	@override String get beSureToReadThisAsItIsImportant => 'Будь ласка, прочитайте цю важливу інформацію.';
+	@override String iHaveReadXCarefullyAndAgree({required Object x}) => 'Я прочитав/прочитала текст «${x}» і погоджуюся.';
+	@override String get dialog => 'Діалог';
 	@override String get icon => 'Аватар';
+	@override String get forYou => 'Для вас';
+	@override String get currentAnnouncements => 'Поточні оголошення';
+	@override String get pastAnnouncements => 'Минулі оголошення';
+	@override String get youHaveUnreadAnnouncements => 'Є непрочитані оголошення.';
+	@override String get useSecurityKey => 'Дотримуйтеся інструкцій вашого браузера або пристрою, щоб скористатися ключем безпеки або passkey.';
 	@override String get replies => 'Відповісти';
 	@override String get renotes => 'Поширити';
+	@override String get loadReplies => 'Показати відповіді';
+	@override String get loadConversation => 'Показати розмову';
+	@override String get pinnedList => 'Закріплений список';
+	@override String get keepScreenOn => 'Не вимикати екран';
+	@override String get verifiedLink => 'Право власності на посилання підтверджено';
+	@override String get notifyNotes => 'Сповіщати про нові нотатки';
+	@override String get unnotifyNotes => 'Припинити сповіщати про нові нотатки';
+	@override String get notifyUsers => 'Користувачі, які ввімкнули сповіщення про публікації';
+	@override String get authentication => 'Автентикація';
+	@override String get authenticationRequiredToContinue => 'Будь ласка, автентифікуйтеся, щоб продовжити';
+	@override String get dateAndTime => 'Дата та час';
+	@override String get showRenotes => 'Показати поширення';
+	@override String get edited => 'Відредаговано';
+	@override String get notificationRecieveConfig => 'Налаштування сповіщень';
+	@override String get mutualFollow => 'Взаємна підписка';
+	@override String get followingOrFollower => 'Підписки або підписники';
+	@override String get fileAttachedOnly => 'Лише нотатки з файлами';
+	@override String get showRepliesToOthersInTimeline => 'Показувати відповіді іншим у стрічці';
+	@override String get hideRepliesToOthersInTimeline => 'Приховувати відповіді іншим зі стрічки';
+	@override String get showRepliesToOthersInTimelineAll => 'Показувати відповіді іншим від усіх, на кого ви підписані, у стрічці';
+	@override String get hideRepliesToOthersInTimelineAll => 'Приховувати відповіді іншим від усіх, на кого ви підписані, зі стрічки';
+	@override String get confirmShowRepliesAll => 'Ви впевнені, що хочете показувати відповіді від усіх, на кого ви підписані, у своїй стрічці? Цю дію не можна скасувати.';
+	@override String get confirmHideRepliesAll => 'Ви впевнені, що хочете приховувати відповіді від усіх, на кого ви підписані, у своїй стрічці? Цю дію не можна скасувати.';
+	@override String get externalServices => 'Зовнішні сервіси';
 	@override String get sourceCode => 'Вихідний код';
+	@override String get sourceCodeIsNotYetProvided => 'Вихідний код ще недоступний. Зверніться до адміністратора, щоб виправити цю проблему.';
+	@override String get repositoryUrl => 'URL репозиторію';
+	@override String get repositoryUrlDescription => 'Якщо ви використовуєте Misskey без змін у вихідному коді, введіть https://github.com/misskey-dev/misskey';
+	@override String get repositoryUrlOrTarballRequired => 'Якщо ви не опублікували репозиторій, натомість потрібно надати tarball-архів. Докладніше див. у .config/example.yml.';
+	@override String get feedback => 'Відгук';
+	@override String get feedbackUrl => 'URL відгуків';
+	@override String get impressumDescription => 'У деяких країнах, наприклад у Німеччині, для комерційних сайтів юридично обов’язково вказувати контактну інформацію оператора сайту — вихідні дані.';
+	@override String get privacyPolicy => 'Політика конфіденційності';
+	@override String get privacyPolicyUrl => 'URL політики конфіденційності';
+	@override String get tosAndPrivacyPolicy => 'Умови користування та політика конфіденційності';
+	@override String get avatarDecorations => 'Прикраси аватара';
+	@override String get attach => 'Прикріпити';
+	@override String get detach => 'Відкріпити';
+	@override String get detachAll => 'Видалити все';
+	@override String get angle => 'Кут';
 	@override String get flip => 'Перевернути';
+	@override String get showAvatarDecorations => 'Показувати прикраси аватара';
+	@override String get releaseToRefresh => 'Відпустіть, щоб оновити';
+	@override String get refreshing => 'Оновлення...';
+	@override String get pullDownToRefresh => 'Потягніть вниз, щоб оновити';
+	@override String get useGroupedNotifications => 'Показувати згруповані сповіщення';
+	@override String get emailVerificationFailedError => 'Під час підтвердження адреси електронної пошти сталася помилка. Можливо, посилання застаріло.';
+	@override String get cwNotationRequired => 'Якщо ввімкнено «Приховати вміст», потрібно додати опис.';
+	@override String get doReaction => 'Додати реакцію';
+	@override String get code => 'Код';
+	@override String get reloadRequiredToApplySettings => 'Щоб застосувати налаштування, потрібно перезавантажити сторінку.';
+	@override String remainingN({required Object n}) => 'Залишилося: ${n}';
+	@override String get overwriteContentConfirm => 'Ви впевнені, що хочете перезаписати поточний вміст?';
+	@override String get seasonalScreenEffect => 'Сезонний ефект екрана';
+	@override String get decorate => 'Прикрасити';
+	@override String get addMfmFunction => 'Додати MFM';
+	@override String get enableQuickAddMfmFunction => 'Показувати розширений вибір MFM';
+	@override String get bubbleGame => 'Bubble Game';
+	@override String get sfx => 'Звукові ефекти';
+	@override String get soundWillBePlayed => 'Буде відтворено звук';
+	@override String get showReplay => 'Переглянути повтор';
+	@override String get replay => 'Повтор';
+	@override String get replaying => 'Показ повтору';
+	@override String get endReplay => 'Вийти з повтору';
+	@override String get copyReplayData => 'Копіювати дані повтору';
+	@override String get ranking => 'Рейтинг';
 	@override String lastNDays({required Object n}) => 'Останні ${n} днів';
+	@override String get backToTitle => 'Повернутися до заголовного екрана';
+	@override String get hemisphere => 'Місце проживання';
+	@override String get withSensitive => 'Допис від  містить чутливий вміст';
+	@override String userSaysSomethingSensitive({required Object name}) => 'Нотатка від ${name} містить чутливий вміст';
+	@override String get enableHorizontalSwipe => 'Проведіть, щоб перемикати вкладки';
+	@override String get loading => 'Завантаження';
+	@override String get surrender => 'Скасувати';
+	@override String get gameRetry => 'Спробувати знову';
+	@override String get notUsePleaseLeaveBlank => 'Залиште порожнім, якщо не використовується';
+	@override String get useTotp => 'Введіть одноразовий пароль';
+	@override String get useBackupCode => 'Використати резервні коди';
+	@override String get launchApp => 'Запуск додатку';
+	@override String get useNativeUIForVideoAudioPlayer => 'Використовувати інтерфейс браузера під час відтворення відео й аудіо';
+	@override String get keepOriginalFilename => 'Зберігати початкову назву файлу';
+	@override String get keepOriginalFilenameDescription => 'Якщо вимкнути це налаштування, під час завантаження файлів їхні назви автоматично замінюватимуться випадковими рядками.';
+	@override String get noDescription => 'Пояснення відсутнє';
+	@override String get alwaysConfirmFollow => 'Завжди підтверджувати підписку';
+	@override String get inquiry => 'Зв\'язок';
+	@override String get tryAgain => 'Повторіть спробу.';
+	@override String get createdLists => 'Створені списки';
+	@override String get createdAntennas => 'Створені антени';
+	@override String get discard => 'Відхилити';
+	@override String get prohibitedWordsForNameOfUser => 'Заборонені слова (імʼя користувача)';
+	@override String get pleaseSelectAccount => 'Виберіть акаунт';
+	@override String get draft => 'Чернетка';
+	@override String get preferences => 'Налаштування';
+	@override String get untitled => 'Без назви';
+	@override String get skip => 'Пропустити';
+	@override String get restore => 'Відновити';
+	@override String get paste => 'Вставити';
+	@override String get emojiPalette => 'Палітра емодзі';
 	@override String get postForm => 'Створення нотатки';
+	@override String get textCount => 'Кількість символів';
 	@override String get information => 'Інформація';
+	@override String get chat => 'Чат';
+	@override String get directMessage => 'Чат із користувачем';
+	@override String get directMessage_short => 'Повідомлення';
+	@override String get migrateOldSettings => 'Перенести минулі налаштування клієнта';
+	@override String get migrateOldSettings_description => 'Це має відбутися автоматично, але якщо з якоїсь причини перенесення не вдалося, ви можете запустити його вручну. Поточні дані конфігурації буде перезаписано.';
+	@override String get compress => 'Стиснути';
+	@override String get right => 'Праворуч';
+	@override String get bottom => 'Зверху';
+	@override String get top => 'Знизу';
+	@override String get embed => 'Вбудувати';
+	@override String get settingsMigrating => 'Налаштування переносяться, зачекайте трохи... (Ви також можете перенести їх вручну пізніше: Налаштування → Інше → Перенести старі налаштування)';
+	@override String get readonly => 'Лише для читання';
+	@override String get goToDeck => 'Повернутися до Деки';
+	@override String get federationJobs => 'Завдання федерації';
+	@override String get driveAboutTip => 'У Диску відображатиметься список файлів, які ви раніше завантажили.<br>Ви можете повторно використовувати ці файли, прикріплюючи їх до нотаток, або завантажувати файли заздалегідь, щоб опублікувати їх пізніше.<br><b>Будьте обережні під час видалення файлу, адже він стане недоступним усюди, де використовувався (наприклад, у нотатках, сторінках, аватарах, банерах тощо).</b><br>Ви також можете створювати теки, щоб упорядкувати файли.';
+	@override String get scrollToClose => 'Прокрутіть, щоб закрити';
+	@override String get advice => 'Порада';
+	@override String get realtimeMode => 'Режим реального часу';
+	@override String get turnItOn => 'Увімкнути';
+	@override String get turnItOff => 'Вимкнути';
+	@override String get emojiMute => 'Приховати емодзі';
+	@override String get emojiUnmute => 'Показувати емодзі';
+	@override String muteX({required Object x}) => 'Приховати ${x}';
+	@override String unmuteX({required Object x}) => 'Показувати ${x}';
+	@override String get abort => 'Перервати';
+	@override String get tip => 'Поради та підказки';
+	@override String get redisplayAllTips => 'Знову показувати всі «Поради й підказки»';
+	@override String get hideAllTips => 'Приховати всі «Поради й підказки»';
+	@override String get defaultImageCompressionLevel => 'Рівень стиснення зображень по замовчуванню';
+	@override String get defaultImageCompressionLevel_description => 'Нижчий рівень зберігає якість зображення, але збільшує розмір файлу.<br>Вищий рівень зменшує розмір файлу, але погіршує якість зображення.';
+	@override String get defaultCompressionLevel => 'Рівень стиснення по замовчуванню';
+	@override String get defaultCompressionLevel_description => 'Нижчий рівень стиснення зберігає якість, але збільшує розмір файлу.<br>Вищий рівень стиснення зменшує розмір файлу, але погіршує якість.';
 	@override String get inMinutes => 'х';
 	@override String get inDays => 'д';
+	@override String get safeModeEnabled => 'Безпечний режим увімкнено';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Усі плагіни вимкнено, оскільки ввімкнено безпечний режим.';
+	@override String get customCssIsDisabledBecauseSafeMode => 'Користувацький CSS не застосовується, оскільки ввімкнено безпечний режим.';
+	@override String get themeIsDefaultBecauseSafeMode => 'Поки активний безпечний режим, використовується типова тема. Вимкнення безпечного режиму скасує ці зміни.';
+	@override String get thankYouForTestingBeta => 'Дякуємо, що допомагаєте нам тестувати бета-версію!';
+	@override String get createUserSpecifiedNote => 'Створити особисту нотатку';
+	@override String get schedulePost => 'Запланувати нотатку';
+	@override String scheduleToPostOnX({required Object x}) => 'Заплановано створити нотатку на ${x}';
+	@override String scheduledToPostOnX({required Object x}) => 'Нотатку заплановано на ${x}';
+	@override String get schedule => 'Запланувати';
+	@override String get scheduled => 'Заплановано';
 	@override String get widgets => 'Віджети';
+	@override String get deviceInfo => 'Відомості про пристрій';
+	@override String get deviceInfoDescription => 'Під час технічного звернення додавання наведеної нижче інформації може допомогти розв’язати проблему.';
+	@override String get youAreAdmin => 'Ви адмін';
+	@override String get frame => 'Кадр';
+	@override String get presets => 'Пресети';
+	@override String get zeroPadding => 'Доповнення нулями';
+	@override String get nothingToConfigure => 'Немає доступних параметрів для налаштування';
+	@override String get viewRenotedChannel => 'Показувати канал поширення';
+	@override String get previewingTheme => 'Попередній перегляд теми';
+	@override String get previewingThemeRestore => 'Відновити';
+	@override String get accessToken => 'Токен доступу';
 	@override late final _Translations$misskey$imageEditing_$uk_UA imageEditing_ = _Translations$misskey$imageEditing_$uk_UA._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$uk_UA imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$uk_UA._(_root);
+	@override late final _Translations$misskey$compression_$uk_UA compression_ = _Translations$misskey$compression_$uk_UA._(_root);
+	@override late final _Translations$misskey$order_$uk_UA order_ = _Translations$misskey$order_$uk_UA._(_root);
 	@override late final _Translations$misskey$chat_$uk_UA chat_ = _Translations$misskey$chat_$uk_UA._(_root);
 	@override late final _Translations$misskey$delivery_$uk_UA delivery_ = _Translations$misskey$delivery_$uk_UA._(_root);
 	@override late final _Translations$misskey$achievements_$uk_UA achievements_ = _Translations$misskey$achievements_$uk_UA._(_root);
@@ -1057,8 +1505,13 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$reversi_$uk_UA reversi_ = _Translations$misskey$reversi_$uk_UA._(_root);
 	@override late final _Translations$misskey$remoteLookupErrors_$uk_UA remoteLookupErrors_ = _Translations$misskey$remoteLookupErrors_$uk_UA._(_root);
 	@override late final _Translations$misskey$search_$uk_UA search_ = _Translations$misskey$search_$uk_UA._(_root);
+	@override String get watermark => 'Водяний знак';
+	@override String get defaultPreset => 'Default Preset';
 	@override late final _Translations$misskey$watermarkEditor_$uk_UA watermarkEditor_ = _Translations$misskey$watermarkEditor_$uk_UA._(_root);
 	@override late final _Translations$misskey$imageEffector_$uk_UA imageEffector_ = _Translations$misskey$imageEffector_$uk_UA._(_root);
+	@override String get drafts => 'Чернетка';
+	@override late final _Translations$misskey$drafts_$uk_UA drafts_ = _Translations$misskey$drafts_$uk_UA._(_root);
+	@override String get qr => 'QR-код';
 	@override late final _Translations$misskey$qr_$uk_UA qr_ = _Translations$misskey$qr_$uk_UA._(_root);
 }
 
@@ -1080,9 +1533,33 @@ class _Translations$misskey$imageFrameEditor_$uk_UA extends Translations$misskey
 
 	// Translations
 	@override String get header => 'Заголовок';
+	@override String get withQrCode => 'QR-код';
+	@override String get textColor => 'Колір тексту';
 	@override String get font => 'Шрифт';
 	@override String get fontSerif => 'Serif';
 	@override String get fontSansSerif => 'Sans serif';
+}
+
+// Path: misskey.compression_
+class _Translations$misskey$compression_$uk_UA extends Translations$misskey$compression_$en_US {
+	_Translations$misskey$compression_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _Translations$misskey$compression_$quality_$uk_UA quality_ = _Translations$misskey$compression_$quality_$uk_UA._(_root);
+	@override late final _Translations$misskey$compression_$size_$uk_UA size_ = _Translations$misskey$compression_$size_$uk_UA._(_root);
+}
+
+// Path: misskey.order_
+class _Translations$misskey$order_$uk_UA extends Translations$misskey$order_$en_US {
+	_Translations$misskey$order_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Найновіші спочатку';
+	@override String get oldest => 'Спочатку старі';
 }
 
 // Path: misskey.chat_
@@ -1092,11 +1569,18 @@ class _Translations$misskey$chat_$uk_UA extends Translations$misskey$chat_$en_US
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Повідомлення';
+	@override String get noMessagesYet => 'Повідомлень поки немає';
+	@override String get newMessage => 'Нове повідомлення';
 	@override String get invitations => 'Запросити';
+	@override String get history => 'Історія';
 	@override String get noHistory => 'Історія порожня';
+	@override String get inviteUser => 'Запросити користувачів';
+	@override String get ignore => 'Ігнорувати';
 	@override String get members => 'Учасники';
 	@override String get home => 'Домівка';
 	@override String get send => 'Відправити';
+	@override String get newline => 'Новий рядок';
 }
 
 // Path: misskey.delivery_
@@ -1135,8 +1619,10 @@ class _Translations$misskey$role_$uk_UA extends Translations$misskey$role_$en_US
 	@override String get permission => 'Права ролі';
 	@override String get assignTarget => 'Призначити';
 	@override String get manual => 'Вручну';
+	@override String get condition => 'Умови';
 	@override String get priority => 'Пріоритет';
 	@override late final _Translations$misskey$role_$priority_$uk_UA priority_ = _Translations$misskey$role_$priority_$uk_UA._(_root);
+	@override late final _Translations$misskey$role_$options_$uk_UA options_ = _Translations$misskey$role_$options_$uk_UA._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
@@ -1903,6 +2389,7 @@ class _Translations$misskey$moderationLogTypes_$uk_UA extends Translations$missk
 	// Translations
 	@override String get suspend => 'Призупинити';
 	@override String get resetPassword => 'Скинути пароль';
+	@override String get createInvitation => 'Створити запрошення';
 }
 
 // Path: misskey.reversi_
@@ -1934,6 +2421,7 @@ class _Translations$misskey$search_$uk_UA extends Translations$misskey$search_$e
 	// Translations
 	@override String get searchScopeAll => 'Всі';
 	@override String get searchScopeLocal => 'Локальна';
+	@override String get searchScopeUser => 'Вказаний користувач';
 }
 
 // Path: misskey.watermarkEditor_
@@ -1946,9 +2434,12 @@ class _Translations$misskey$watermarkEditor_$uk_UA extends Translations$misskey$
 	@override String get opacity => 'Непрозорість';
 	@override String get scale => 'Розмір';
 	@override String get text => 'Текст';
+	@override String get qr => 'QR-код';
+	@override String get position => 'Позиція';
 	@override String get type => 'Тип';
 	@override String get image => 'Зображення';
 	@override String get advanced => 'Розширені';
+	@override String get angle => 'Кут';
 }
 
 // Path: misskey.imageEffector_
@@ -1958,7 +2449,18 @@ class _Translations$misskey$imageEffector_$uk_UA extends Translations$misskey$im
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override late final _Translations$misskey$imageEffector_$fxs_$uk_UA fxs_ = _Translations$misskey$imageEffector_$fxs_$uk_UA._(_root);
 	@override late final _Translations$misskey$imageEffector_$fxProps_$uk_UA fxProps_ = _Translations$misskey$imageEffector_$fxProps_$uk_UA._(_root);
+}
+
+// Path: misskey.drafts_
+class _Translations$misskey$drafts_$uk_UA extends Translations$misskey$drafts_$en_US {
+	_Translations$misskey$drafts_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get restore => 'Відновити';
 }
 
 // Path: misskey.qr_
@@ -1980,6 +2482,34 @@ class _Translations$misskey$imageEditing_$vars_$uk_UA extends Translations$missk
 
 	// Translations
 	@override String get filename => 'Ім\'я файлу';
+	@override String get camera_f => 'Діафрагма (f-число)';
+	@override String get camera_iso => 'ISO';
+	@override String get gps_lat => 'Широта';
+	@override String get gps_long => 'Довгота';
+}
+
+// Path: misskey.compression_.quality_
+class _Translations$misskey$compression_$quality_$uk_UA extends Translations$misskey$compression_$quality_$en_US {
+	_Translations$misskey$compression_$quality_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'Висока якість';
+	@override String get medium => 'Середня якість';
+	@override String get low => 'Низька якість';
+}
+
+// Path: misskey.compression_.size_
+class _Translations$misskey$compression_$size_$uk_UA extends Translations$misskey$compression_$size_$en_US {
+	_Translations$misskey$compression_$size_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'Великий розмір';
+	@override String get medium => 'Середній розмір';
+	@override String get small => 'Малий розмір';
 }
 
 // Path: misskey.delivery_.type_
@@ -2082,6 +2612,17 @@ class _Translations$misskey$role_$priority_$uk_UA extends Translations$misskey$r
 	@override String get low => 'Низький';
 	@override String get middle => 'Середній';
 	@override String get high => 'Високий';
+}
+
+// Path: misskey.role_.options_
+class _Translations$misskey$role_$options_$uk_UA extends Translations$misskey$role_$options_$en_US {
+	_Translations$misskey$role_$options_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get canManageCustomEmojis => 'Керування користувацькими емодзі';
+	@override String get canManageAvatarDecorations => 'Керувати прикрасами аватара';
 }
 
 // Path: misskey.email_.follow_
@@ -2298,6 +2839,17 @@ class _Translations$misskey$remoteLookupErrors_$noSuchObject_$uk_UA extends Tran
 	@override String get title => 'Не знайдено';
 }
 
+// Path: misskey.imageEffector_.fxs_
+class _Translations$misskey$imageEffector_$fxs_$uk_UA extends Translations$misskey$imageEffector_$fxs_$en_US {
+	_Translations$misskey$imageEffector_$fxs_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get grayscale => 'Чорно-білий';
+	@override String get stripe => 'Смуги';
+}
+
 // Path: misskey.imageEffector_.fxProps_
 class _Translations$misskey$imageEffector_$fxProps_$uk_UA extends Translations$misskey$imageEffector_$fxProps_$en_US {
 	_Translations$misskey$imageEffector_$fxProps_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
@@ -2305,8 +2857,10 @@ class _Translations$misskey$imageEffector_$fxProps_$uk_UA extends Translations$m
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get angle => 'Кут';
 	@override String get scale => 'Розмір';
 	@override String get size => 'Розмір';
+	@override String get offset => 'Позиція';
 	@override String get color => 'Колір';
 	@override String get opacity => 'Непрозорість';
 	@override String get lightness => 'Яскравість';
@@ -3039,7 +3593,7 @@ class _Translations$misskey$achievements_$types_$passedSinceAccountCreated2_$uk_
 
 	// Translations
 	@override String get title => 'Друга річниця';
-	@override String get description => 'Минуло 2 роки з моменту створення акаунта';
+	@override String get description => 'Минуло 2 роки з моменту створення акаунту';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_

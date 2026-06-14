@@ -48,7 +48,7 @@ abstract class _$CorePaletteNotifier extends $Notifier<CorePalette?> {
   CorePalette? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<CorePalette?, CorePalette?>;
     final element =
         ref.element
@@ -58,7 +58,7 @@ abstract class _$CorePaletteNotifier extends $Notifier<CorePalette?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 
@@ -101,7 +101,7 @@ abstract class _$AccentColorNotifier extends $Notifier<Color?> {
   Color? build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<Color?, Color?>;
     final element =
         ref.element
@@ -111,7 +111,7 @@ abstract class _$AccentColorNotifier extends $Notifier<Color?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }
 

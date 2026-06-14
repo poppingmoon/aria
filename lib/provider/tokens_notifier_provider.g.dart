@@ -47,7 +47,7 @@ abstract class _$TokensNotifier extends $Notifier<Map<Account, String>> {
   Map<Account, String> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<Map<Account, String>, Map<Account, String>>;
     final element =
         ref.element
@@ -57,6 +57,6 @@ abstract class _$TokensNotifier extends $Notifier<Map<Account, String>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

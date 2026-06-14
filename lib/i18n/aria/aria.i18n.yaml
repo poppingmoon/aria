@@ -1,6 +1,5 @@
 aboutAria: "About Aria"
 acceptFollowRequestConfirm(rich): "Are you sure that you want to accept the follow request from {name}?"
-accessToken: "Access token"
 accessTokenUpdated: "Successfully updated an access token"
 accountAdded: "Successfully added an account"
 acknowledgements(rich): "Aria is a fork of {miria}.\nLocalization of Aria is based on localization files of {misskey}.\nWe would like to show our appreciation to all contributers of these projects."

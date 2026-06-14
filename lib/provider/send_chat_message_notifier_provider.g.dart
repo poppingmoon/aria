@@ -102,7 +102,7 @@ abstract class _$SendChatMessageNotifier extends $Notifier<String?> {
   String? build(Account account, {String? userId, String? roomId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -112,7 +112,7 @@ abstract class _$SendChatMessageNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
     );

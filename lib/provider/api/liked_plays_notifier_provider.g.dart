@@ -90,7 +90,7 @@ abstract class _$LikedPlaysNotifier
   Stream<PaginationState<FlashMyLikesResponse>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -108,6 +108,6 @@ abstract class _$LikedPlaysNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

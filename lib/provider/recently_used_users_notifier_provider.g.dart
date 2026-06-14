@@ -88,7 +88,7 @@ abstract class _$RecentlyUsedUsersNotifier
   FutureOr<List<UserDetailed>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<List<UserDetailed>>, List<UserDetailed>>;
     final element =
@@ -99,6 +99,6 @@ abstract class _$RecentlyUsedUsersNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

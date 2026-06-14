@@ -1089,6 +1089,7 @@ class _Translations$misskey$ar_SA extends Translations$misskey$en_US {
 	@override String get inDays => 'ي';
 	@override String get widgets => 'التطبيقات المُصغّرة';
 	@override String get presets => 'إعدادات مسبقة';
+	@override String get previewingThemeRestore => 'استرجاع';
 	@override late final _Translations$misskey$imageEditing_$ar_SA imageEditing_ = _Translations$misskey$imageEditing_$ar_SA._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ar_SA imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ar_SA._(_root);
 	@override late final _Translations$misskey$chat_$ar_SA chat_ = _Translations$misskey$chat_$ar_SA._(_root);

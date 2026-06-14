@@ -839,6 +839,8 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Crear un nou Retall';
 	@override String get unclip => 'Treure Retall';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Aquesta nota ja és inclosa al Retall "${name}". Vols treure-la d\'aquest retall?';
+	@override String get removeFromAntenna => 'Elimina d\'aquesta Antena';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Vols eliminar aquesta nota de \'${name}\'?';
 	@override String get public => 'Públic ';
 	@override String get private => 'Privat';
 	@override String i18nInfo({required Object link}) => 'Misskey està sent traduït a diferents idiomes per voluntaris. Pots ajudar aquí ${link}.';
@@ -1303,6 +1305,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'La propietat de l\'enllaç ha sigut verificada';
 	@override String get notifyNotes => 'Notificar quan hi hagi notes noves';
 	@override String get unnotifyNotes => 'Deixar de notificar quan hi hagi notes noves';
+	@override String get notifyUsers => 'Usuaris que han activat les notificacions de publicacions';
 	@override String get authentication => 'Autenticació ';
 	@override String get authenticationRequiredToContinue => 'Si us plau autentificat per continuar';
 	@override String get dateAndTime => 'Data i hora';
@@ -1495,6 +1498,14 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'Sense omplir';
 	@override String get nothingToConfigure => 'No hi ha res a configurar';
 	@override String get viewRenotedChannel => 'Mirar el canal d\'impulsos ';
+	@override String get previewingTheme => 'Previsualització del tema';
+	@override String get previewingThemeRestore => 'Restaurar';
+	@override String get accessToken => 'Token d\'accés';
+	@override String get chooseEmojiPalette => 'Selecciona el calaix d\'emojis';
+	@override String get addToEmojiPalette => 'Afegeix al calaix d\'emojis';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'Aquest emoji ja està inclòs en aquest calaix d\'emojis. Vols afegir-lo de nou?';
+	@override String get append => 'Afegeix al final';
+	@override String get prepend => 'Afegeix al principi';
 	@override late final _Translations$misskey$imageEditing_$ca_ES imageEditing_ = _Translations$misskey$imageEditing_$ca_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ca_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ca_ES._(_root);
 	@override late final _Translations$misskey$compression_$ca_ES compression_ = _Translations$misskey$compression_$ca_ES._(_root);
@@ -3514,6 +3525,8 @@ class _Translations$misskey$search_$ca_ES extends Translations$misskey$search_$e
 	@override String get pleaseEnterServerHost => 'Introdueix l\'adreça de la instància ';
 	@override String get pleaseSelectUser => 'Selecciona un usuari';
 	@override String get serverHostPlaceholder => 'Ex: misskey.example.com';
+	@override String get postFrom => 'Publicat el';
+	@override String get postTo => 'Publicat el';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4057,6 +4070,7 @@ class _Translations$misskey$role_$options_$ca_ES extends Translations$misskey$ro
 	@override String get driveCapacity => 'Capacitat del disc';
 	@override String get maxFileSize => 'Mida màxima de l\'arxiu que es pot carregar';
 	@override String get maxFileSize_caption => 'Pot haver-hi la possibilitat que existeixin altres opcions de configuració de l\'etapa anterior, com podria ser el proxy invers i la CDN.';
+	@override String maxFileSize_caption2({required Object max}) => 'La configuració de la mida màxima de fitxer per a tot el servidor és ${max}. Per permetre la pujada de fitxers més grans, si us plau, canvieu aquesta opció al fitxer de configuració de Misskey.';
 	@override String get alwaysMarkNsfw => 'Marca sempre els fitxers com a sensibles';
 	@override String get canUpdateBioMedia => 'Permet l\'edició d\'una icona o un bàner';
 	@override String get pinMax => 'Nombre màxim de notes fixades';
@@ -4073,6 +4087,7 @@ class _Translations$misskey$role_$options_$ca_ES extends Translations$misskey$ro
 	@override String get canSearchNotes => 'Pot cercar notes';
 	@override String get canSearchUsers => 'Pot cercar usuaris';
 	@override String get canUseTranslator => 'Pot fer servir el traductor';
+	@override String get canCreateChannel => 'Previsualitzant el tema';
 	@override String get avatarDecorationLimit => 'Nombre màxim de decoracions que es poden aplicar els avatars';
 	@override String get canImportAntennas => 'Autoritza la importació d\'antenes ';
 	@override String get canImportBlocking => 'Autoritza la importació de bloquejats';

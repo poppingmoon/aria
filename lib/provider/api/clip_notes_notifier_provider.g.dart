@@ -86,7 +86,7 @@ abstract class _$ClipNotesNotifier
   Stream<PaginationState<Note>> build(Account account, String clipId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -101,6 +101,6 @@ abstract class _$ClipNotesNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

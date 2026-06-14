@@ -102,7 +102,7 @@ abstract class _$ChatMessagesNotifier
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -120,7 +120,7 @@ abstract class _$ChatMessagesNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
     );

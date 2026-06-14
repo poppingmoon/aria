@@ -58,9 +58,6 @@ class Translations$aria$en_US {
 		const TextSpan(text: '?'),
 	]);
 
-	/// en-US: 'Access token'
-	String get accessToken => 'Access token';
-
 	/// en-US: 'Successfully updated an access token'
 	String get accessTokenUpdated => 'Successfully updated an access token';
 
@@ -2976,6 +2973,12 @@ class Translations$misskey$en_US {
 	/// en-US: 'This note is already part of the "{name}" clip. Do you want to remove it from this clip instead?'
 	String confirmToUnclipAlreadyClippedNote({required Object name}) => 'This note is already part of the "${name}" clip. Do you want to remove it from this clip instead?';
 
+	/// en-US: 'Remove from this antenna'
+	String get removeFromAntenna => 'Remove from this antenna';
+
+	/// en-US: 'Are you sure you want to remove this note from {name}?'
+	String removeNoteFromAntennaConfirm({required Object name}) => 'Are you sure you want to remove this note from ${name}?';
+
 	/// en-US: 'Public'
 	String get public => 'Public';
 
@@ -4368,6 +4371,9 @@ class Translations$misskey$en_US {
 	/// en-US: 'Stop notifying about new notes'
 	String get unnotifyNotes => 'Stop notifying about new notes';
 
+	/// en-US: 'Users with post notifications enabled'
+	String get notifyUsers => 'Users with post notifications enabled';
+
 	/// en-US: 'Authentication'
 	String get authentication => 'Authentication';
 
@@ -4943,6 +4949,30 @@ class Translations$misskey$en_US {
 
 	/// en-US: 'Show renoted channel'
 	String get viewRenotedChannel => 'Show renoted channel';
+
+	/// en-US: 'Previewing theme'
+	String get previewingTheme => 'Previewing theme';
+
+	/// en-US: 'Restore'
+	String get previewingThemeRestore => 'Restore';
+
+	/// en-US: 'Access Token'
+	String get accessToken => 'Access Token';
+
+	/// en-US: 'Choose emoji palette'
+	String get chooseEmojiPalette => 'Choose emoji palette';
+
+	/// en-US: 'Add to emoji palette'
+	String get addToEmojiPalette => 'Add to emoji palette';
+
+	/// en-US: 'This emoji is already included in this emoji palette. Do you want to add it again?'
+	String get emojiPaletteAlreadyAddedConfirm => 'This emoji is already included in this emoji palette. Do you want to add it again?';
+
+	/// en-US: 'Append to end'
+	String get append => 'Append to end';
+
+	/// en-US: 'Append to beginning'
+	String get prepend => 'Append to beginning';
 
 	late final Translations$misskey$imageEditing_$en_US imageEditing_ = Translations$misskey$imageEditing_$en_US.internal(_root);
 	late final Translations$misskey$imageFrameEditor_$en_US imageFrameEditor_ = Translations$misskey$imageFrameEditor_$en_US.internal(_root);
@@ -9012,6 +9042,12 @@ class Translations$misskey$search_$en_US {
 
 	/// en-US: 'Example: misskey.example.com'
 	String get serverHostPlaceholder => 'Example: misskey.example.com';
+
+	/// en-US: 'Date posted from'
+	String get postFrom => 'Date posted from';
+
+	/// en-US: 'Date posted to'
+	String get postTo => 'Date posted to';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -10000,6 +10036,9 @@ class Translations$misskey$role_$options_$en_US {
 	/// en-US: 'Reverse proxies, CDNs, and other front-end components may have their own configuration settings.'
 	String get maxFileSize_caption => 'Reverse proxies, CDNs, and other front-end components may have their own configuration settings.';
 
+	/// en-US: 'The maximum file size setting for the entire server is {max}. To allow uploading files larger than this, please adjust this setting in the Misskey configuration file.'
+	String maxFileSize_caption2({required Object max}) => 'The maximum file size setting for the entire server is ${max}. To allow uploading files larger than this, please adjust this setting in the Misskey configuration file.';
+
 	/// en-US: 'Always mark files as NSFW'
 	String get alwaysMarkNsfw => 'Always mark files as NSFW';
 
@@ -10047,6 +10086,9 @@ class Translations$misskey$role_$options_$en_US {
 
 	/// en-US: 'Translator usage'
 	String get canUseTranslator => 'Translator usage';
+
+	/// en-US: 'Allow creating channels'
+	String get canCreateChannel => 'Allow creating channels';
 
 	/// en-US: 'Maximum number of avatar decorations'
 	String get avatarDecorationLimit => 'Maximum number of avatar decorations';

@@ -46,7 +46,6 @@ class Translations$aria$ko_KR extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Aria란';
-	@override String get accessToken => '액세스 토큰';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: '아리아는 '),
 		miria,
@@ -997,6 +996,8 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get createNewClip => '새 클립 만들기';
 	@override String get unclip => '클립 해제';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '이 노트는 ‘${name}’ 클립을 이미 포함합니다. 클립에서 제외하시겠습니까?';
+	@override String get removeFromAntenna => '이 안테나에서 삭제';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '\'${name}\'으로부터의 노트를 삭제하시겠습니까?';
 	@override String get public => '공개';
 	@override String get private => '비공개';
 	@override String i18nInfo({required Object link}) => 'Misskey는 자원봉사자들에 의해 다양한 언어로 번역되고 있습니다. ${link}에서 번역에 참가할 수 있습니다.';
@@ -1461,6 +1462,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get verifiedLink => '이 링크의 소유자임이 확인되었습니다.';
 	@override String get notifyNotes => '새 노트 알림 켜기';
 	@override String get unnotifyNotes => '새 노트 알림 끄기';
+	@override String get notifyUsers => '게시물 알림을 설정한 사용자';
 	@override String get authentication => '인증';
 	@override String get authenticationRequiredToContinue => '계속하려면 인증하십시오';
 	@override String get dateAndTime => '일시';
@@ -1653,6 +1655,14 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get zeroPadding => '0으로 채우기';
 	@override String get nothingToConfigure => '설정 항목이 없습니다.';
 	@override String get viewRenotedChannel => '리노트된 채널 보기';
+	@override String get previewingTheme => '테마 미리보기 중';
+	@override String get previewingThemeRestore => '복구';
+	@override String get accessToken => '접근 토큰';
+	@override String get chooseEmojiPalette => '이모지 팔레트 선택';
+	@override String get addToEmojiPalette => '이모지 팔레트에 추가';
+	@override String get emojiPaletteAlreadyAddedConfirm => '이 이모지는 이미 이 이모지 팔레트에 포함돼있습니다. 다시 추가하시겠습니까?';
+	@override String get append => '맨뒤에 추가';
+	@override String get prepend => '맨앞에 추가';
 	@override late final Translations$misskey$imageEditing_$ko_KR imageEditing_ = Translations$misskey$imageEditing_$ko_KR.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ko_KR imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ko_KR.internal(_root);
 	@override late final Translations$misskey$compression_$ko_KR compression_ = Translations$misskey$compression_$ko_KR.internal(_root);
@@ -3682,6 +3692,8 @@ class Translations$misskey$search_$ko_KR extends Translations$misskey$search_$en
 	@override String get pleaseEnterServerHost => '서버의 호스트를 입력해 주세요.';
 	@override String get pleaseSelectUser => '유저를 선택해주세요';
 	@override String get serverHostPlaceholder => '예: misskey.example.com';
+	@override String get postFrom => '게시 날짜 from';
+	@override String get postTo => '게시 날짜 to';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4241,6 +4253,7 @@ class Translations$misskey$role_$options_$ko_KR extends Translations$misskey$rol
 	@override String get driveCapacity => '드라이브 용량';
 	@override String get maxFileSize => '업로드 가능한 최대 파일 크기';
 	@override String get maxFileSize_caption => '리버스 프록시나 CDN 등 전단에서 다른 설정값이 존재하는 경우가 있습니다.';
+	@override String maxFileSize_caption2({required Object max}) => '서버 전체의 최대 파일 크기 설정은 ${max}입니다. 이보다 큰 파일을 업로드하려면 Misskey 설정 파일에서 이 설정을 늘려주십시오.';
 	@override String get alwaysMarkNsfw => '파일을 항상 NSFW로 지정';
 	@override String get canUpdateBioMedia => '아바타 및 배너 이미지 변경 허용';
 	@override String get pinMax => '고정할 수 있는 노트 수';
@@ -4257,6 +4270,7 @@ class Translations$misskey$role_$options_$ko_KR extends Translations$misskey$rol
 	@override String get canSearchNotes => '노트 검색 이용 가능 여부';
 	@override String get canSearchUsers => '유저 검색 이용';
 	@override String get canUseTranslator => '번역 기능의 사용';
+	@override String get canCreateChannel => '패널 생성';
 	@override String get avatarDecorationLimit => '아바타 장식의 최대 붙임 개수';
 	@override String get canImportAntennas => '안테나 가져오기 허용';
 	@override String get canImportBlocking => '차단 목록 가져오기 허용';

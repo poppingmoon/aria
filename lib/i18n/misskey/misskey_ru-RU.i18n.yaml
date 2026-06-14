@@ -1354,6 +1354,7 @@ frame: "Рамки"
 presets: "Шаблоны"
 zeroPadding: "Без отступов"
 nothingToConfigure: "Нечего менять"
+previewingThemeRestore: "Восстановить"
 imageEditing_:
   vars_:
     caption: "Описание файла"

@@ -1371,6 +1371,7 @@ class _Translations$misskey$fr_FR extends Translations$misskey$en_US {
 	@override String get inDays => 'j';
 	@override String get widgets => 'Widgets';
 	@override String get presets => 'Préréglage';
+	@override String get previewingThemeRestore => 'Restaurer';
 	@override late final _Translations$misskey$imageEditing_$fr_FR imageEditing_ = _Translations$misskey$imageEditing_$fr_FR._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$fr_FR imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$fr_FR._(_root);
 	@override late final _Translations$misskey$chat_$fr_FR chat_ = _Translations$misskey$chat_$fr_FR._(_root);

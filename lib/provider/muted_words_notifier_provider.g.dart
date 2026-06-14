@@ -97,7 +97,7 @@ abstract class _$MutedWordsNotifier extends $Notifier<List<MuteWord>> {
   List<MuteWord> build(Account account, {bool hardMute = false});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<MuteWord>, List<MuteWord>>;
     final element =
         ref.element
@@ -107,7 +107,7 @@ abstract class _$MutedWordsNotifier extends $Notifier<List<MuteWord>> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, hardMute: _$args.hardMute),
     );

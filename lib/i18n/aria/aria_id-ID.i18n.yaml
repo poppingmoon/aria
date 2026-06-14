@@ -1,5 +1,4 @@
 aboutAria: "Tentang Aria"
-accessToken: "Token akses"
 acknowledgements(rich): "Aria adalah fork dari {miria}.\nTerjemahan Aria berdasarkan dari berkas terjemahan dari {misskey}.\nKami ingin menunjukkan apresiasi kami kepada semua kontributor projek ini."
 addTab: "Tambah tab"
 alwaysExpandCw: "Selalu tampilkan isi Content Warning"

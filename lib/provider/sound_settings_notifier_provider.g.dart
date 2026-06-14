@@ -48,7 +48,7 @@ abstract class _$SoundSettingsNotifier extends $Notifier<SoundSettings> {
   SoundSettings build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<SoundSettings, SoundSettings>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$SoundSettingsNotifier extends $Notifier<SoundSettings> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

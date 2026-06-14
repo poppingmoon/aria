@@ -48,7 +48,7 @@ abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
   List<Layer> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<Layer>, List<Layer>>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$OverlayLayersNotifier extends $Notifier<List<Layer>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

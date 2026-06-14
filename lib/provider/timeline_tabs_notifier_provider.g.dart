@@ -48,7 +48,7 @@ abstract class _$TimelineTabsNotifier extends $Notifier<List<TabSettings>> {
   List<TabSettings> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<TabSettings>, List<TabSettings>>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$TimelineTabsNotifier extends $Notifier<List<TabSettings>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

@@ -1288,6 +1288,7 @@ class _Translations$misskey$ro_RO extends Translations$misskey$en_US {
 	@override String get copyPreferenceId => 'Copiază ID-ul preferințelor';
 	@override String get information => 'Despre';
 	@override String get presets => 'Presetate';
+	@override String get previewingThemeRestore => 'Restabilește';
 	@override late final _Translations$misskey$imageEditing_$ro_RO imageEditing_ = _Translations$misskey$imageEditing_$ro_RO._(_root);
 	@override late final _Translations$misskey$chat_$ro_RO chat_ = _Translations$misskey$chat_$ro_RO._(_root);
 	@override late final _Translations$misskey$accountSettings_$ro_RO accountSettings_ = _Translations$misskey$accountSettings_$ro_RO._(_root);

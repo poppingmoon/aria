@@ -97,7 +97,7 @@ abstract class _$PinnedEmojisNotifier extends $Notifier<List<String>> {
   List<String> build(Account account, {bool reaction = false});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<String>, List<String>>;
     final element =
         ref.element
@@ -107,7 +107,7 @@ abstract class _$PinnedEmojisNotifier extends $Notifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, reaction: _$args.reaction),
     );

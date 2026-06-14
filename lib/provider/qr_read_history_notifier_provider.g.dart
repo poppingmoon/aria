@@ -85,7 +85,7 @@ abstract class _$QrReadHistoryNotifier extends $StreamNotifier<List<String>> {
   Stream<List<String>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<String>>, List<String>>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$QrReadHistoryNotifier extends $StreamNotifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

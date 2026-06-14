@@ -563,6 +563,7 @@ tryAgain: "Försök igen senare"
 signinWithPasskey: "Logga in med nyckel"
 unknownWebAuthnKey: "Okänd nyckel"
 information: "Om"
+previewingThemeRestore: "Återställ"
 imageEditing_:
   vars_:
     filename: "Filnamn"

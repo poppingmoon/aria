@@ -15,8 +15,6 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$IncomingMessage {
 
-// https://github.com/rrousselGit/freezed/issues/488
-// ignore: invalid_annotation_target
 @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? get type; Map<String, dynamic> get body;
 /// Create a copy of IncomingMessage
 /// with the given fields replaced by the non-null parameter values.
@@ -213,8 +211,6 @@ class _IncomingMessage implements IncomingMessage {
   const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type, final  Map<String, dynamic> body = const {}}): _body = body;
   factory _IncomingMessage.fromJson(Map<String, dynamic> json) => _$IncomingMessageFromJson(json);
 
-// https://github.com/rrousselGit/freezed/issues/488
-// ignore: invalid_annotation_target
 @override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) final  IncomingMessageType? type;
  final  Map<String, dynamic> _body;
 @override@JsonKey() Map<String, dynamic> get body {

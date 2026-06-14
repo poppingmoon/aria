@@ -1,6 +1,5 @@
 aboutAria: "Ariaについて"
 acceptFollowRequestConfirm(rich): "{name}からのフォロー申請を許可しますか？"
-accessToken: "アクセストークン"
 accessTokenUpdated: "アクセストークンを更新しました"
 accountAdded: "アカウントを追加しました"
 acknowledgements(rich): "Ariaは{miria}のフォークです。\nAriaのローカライゼーションは{misskey}のローカライゼーションファイルを基にしています。\n両プロジェクトのコントリビューターの皆様に感謝いたします。"

@@ -1,6 +1,5 @@
 aboutAria: "關於 Aria"
 acceptFollowRequestConfirm(rich): "確定要同意 {name} 的追隨請求嗎？"
-accessToken: "存取權杖"
 accessTokenUpdated: "成功更新存取權杖"
 accountAdded: "成功添加帳戶"
 acknowledgements(rich): "Aria 是 {miria} 的一個分支項目。\nAria 的本地化是基於 {misskey} 的本地化檔案。\n我們想對這些專案的所有貢獻者表示感謝。"

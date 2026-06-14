@@ -1728,6 +1728,7 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get presets => 'Vorlage';
 	@override String get zeroPadding => 'Nullauffüllung';
 	@override String get nothingToConfigure => 'Es sind keine Einstellungen verfügbar';
+	@override String get previewingThemeRestore => 'Wiederherstellen';
 	@override late final _Translations$misskey$imageEditing_$de_DE imageEditing_ = _Translations$misskey$imageEditing_$de_DE._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$de_DE imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$de_DE._(_root);
 	@override late final _Translations$misskey$compression_$de_DE compression_ = _Translations$misskey$compression_$de_DE._(_root);

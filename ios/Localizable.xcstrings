@@ -603,7 +603,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "来自%@的转发"
+            "value": "%@ 转发你的帖子"
           }
         },
         "zh-Hant": {
@@ -746,7 +746,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "来自%@的引用"
+            "value": "%@ 引用了您"
           }
         },
         "zh-Hant": {
@@ -1266,6 +1266,12 @@
             "value": "Quelqu'un s'est connecté"
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seseorang telah masuk"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -1474,6 +1480,12 @@
             "value": "Una nota programada ha sido publicada"
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note terjadwal sudah diunggah"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -1549,6 +1561,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ha fallado la publicación de una nota programada"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gagal mengunggah note terjadwal"
           }
         },
         "it": {
@@ -1717,6 +1735,12 @@
             "value": "Invitado a la sala de chat."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kamu telah diundang ke dalam ruang chat"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -1792,6 +1816,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Token de acceso creado"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token akses berhasil dibuat"
           }
         },
         "it": {
@@ -2043,6 +2073,12 @@
             "value": "Si no tienes ni idea, elimina el token de acceso a través de \"Administrar tokens de acceso\"."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika anda tidak tahu apa-apa, hapus token akses melalui \"Kelola token akses\"."
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2082,7 +2118,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果不明白其用途，请遵循「管理访问令牌」的指示删除访问令牌。"
+            "value": "如果不明白其用途，请遵循 “管理访问令牌” 的指示删除访问令牌。"
           }
         },
         "zh-Hant": {
@@ -2159,6 +2195,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La exportación de Antenas ha sido completada."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Antena"
           }
         },
         "it": {
@@ -2238,6 +2280,12 @@
             "value": "La exportación de Usuarios bloqueados ha sido completada."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Pengguna yang diblokir"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2277,7 +2325,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 禁止与我互动的用户 的导出"
+            "value": "已完成 已屏蔽的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2313,6 +2361,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La exportación de Clip ha sido completada."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Klip"
           }
         },
         "it": {
@@ -2392,6 +2446,12 @@
             "value": "La exportación de Emojis personalizados ha sido completada."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Emoji kustom"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2467,6 +2527,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La exportación de Favoritos ha sido completada."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Favorit"
           }
         },
         "it": {
@@ -2546,6 +2612,12 @@
             "value": "La exportación de Siguiendo ha sido completada."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Ikuti"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2623,6 +2695,12 @@
             "value": "La exportación de Usuarios silenciados ha sido completada."
           }
         },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Pengguna yang dibisukan"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",
@@ -2662,7 +2740,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已屏蔽的用户 的导出"
+            "value": "已完成 已隐藏的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2698,6 +2776,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La exportación de Notas ha sido completada."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Catatan"
           }
         },
         "it": {
@@ -2775,6 +2859,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La exportación de Listas ha sido completada."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berhasil mengekspor Daftar"
           }
         },
         "it": {
@@ -6504,7 +6594,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "忍不住要收藏到便签"
+            "value": "忍不住想加入便签"
           }
         },
         "zh-Hant": {

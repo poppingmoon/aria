@@ -89,7 +89,7 @@ abstract class _$INotifierBase extends $AsyncNotifier<MeDetailed?> {
   FutureOr<MeDetailed?> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<MeDetailed?>, MeDetailed?>;
     final element =
         ref.element
@@ -99,7 +99,7 @@ abstract class _$INotifierBase extends $AsyncNotifier<MeDetailed?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 

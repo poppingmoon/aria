@@ -94,7 +94,7 @@ abstract class _$TimelineNotesQueueNotifier extends $Notifier<List<Note>> {
   List<Note> build(TabSettings tabSettings);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<Note>, List<Note>>;
     final element =
         ref.element
@@ -104,6 +104,6 @@ abstract class _$TimelineNotesQueueNotifier extends $Notifier<List<Note>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

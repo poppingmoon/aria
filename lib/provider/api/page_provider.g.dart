@@ -102,7 +102,7 @@ abstract class _$PageNotifier extends $AsyncNotifier<Page> {
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Page>, Page>;
     final element =
         ref.element
@@ -112,7 +112,7 @@ abstract class _$PageNotifier extends $AsyncNotifier<Page> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(
         _$args.$1,

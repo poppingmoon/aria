@@ -89,7 +89,7 @@ abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
   FutureOr<Map<String, Emoji>> build(String host);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<Map<String, Emoji>>, Map<String, Emoji>>;
     final element =
@@ -100,7 +100,7 @@ abstract class _$EmojisNotifierBase extends $AsyncNotifier<Map<String, Emoji>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 

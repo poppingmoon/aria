@@ -89,7 +89,7 @@ abstract class _$MetaNotifierBase extends $AsyncNotifier<MetaResponse> {
   FutureOr<MetaResponse> build(String host);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<MetaResponse>, MetaResponse>;
     final element =
         ref.element
@@ -99,7 +99,7 @@ abstract class _$MetaNotifierBase extends $AsyncNotifier<MetaResponse> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 

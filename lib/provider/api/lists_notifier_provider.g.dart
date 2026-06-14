@@ -84,7 +84,7 @@ abstract class _$ListsNotifier extends $AsyncNotifier<List<UsersList>> {
   FutureOr<List<UsersList>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<UsersList>>, List<UsersList>>;
     final element =
         ref.element
@@ -94,6 +94,6 @@ abstract class _$ListsNotifier extends $AsyncNotifier<List<UsersList>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

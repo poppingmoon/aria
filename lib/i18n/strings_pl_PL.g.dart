@@ -50,7 +50,6 @@ class _Translations$aria$pl_PL extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: '?'),
 	]);
-	@override String get accessToken => 'Token dostępu';
 	@override String get accessTokenUpdated => 'Pomyślnie zaktualizowano token dostępu';
 	@override String get accountAdded => 'Pomyślnie dodano konto';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
@@ -1179,6 +1178,7 @@ class _Translations$misskey$pl_PL extends Translations$misskey$en_US {
 	@override String get inDays => 'dzień';
 	@override String get widgets => 'Widżety';
 	@override String get presets => 'Konfiguracja';
+	@override String get previewingThemeRestore => 'Przywróć';
 	@override late final _Translations$misskey$imageEditing_$pl_PL imageEditing_ = _Translations$misskey$imageEditing_$pl_PL._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$pl_PL imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$pl_PL._(_root);
 	@override late final _Translations$misskey$chat_$pl_PL chat_ = _Translations$misskey$chat_$pl_PL._(_root);

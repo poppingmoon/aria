@@ -42,7 +42,7 @@ abstract class _$PushNotificationNotifier
   Stream<PushNotification> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<PushNotification>, PushNotification>;
     final element =
@@ -53,6 +53,6 @@ abstract class _$PushNotificationNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

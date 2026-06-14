@@ -102,7 +102,7 @@ abstract class _$SearchUsersNotifier
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -120,7 +120,7 @@ abstract class _$SearchUsersNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, _$args.$2, userOrigin: _$args.userOrigin),
     );

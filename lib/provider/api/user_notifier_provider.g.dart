@@ -101,7 +101,7 @@ abstract class _$UserNotifier extends $AsyncNotifier<UserDetailed> {
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<UserDetailed>, UserDetailed>;
     final element =
         ref.element
@@ -111,7 +111,7 @@ abstract class _$UserNotifier extends $AsyncNotifier<UserDetailed> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(
         _$args.$1,

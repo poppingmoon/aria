@@ -50,7 +50,6 @@ class Translations$aria$ja_KS extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: 'からのフォロー申請を許可してええか？'),
 	]);
-	@override String get accessToken => 'アクセストークン';
 	@override String get accessTokenUpdated => 'アクセストークンを更新したで';
 	@override String get accountAdded => 'アカウントを追加したで';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
@@ -1069,6 +1068,8 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get createNewClip => '新しいクリップを作るで';
 	@override String get unclip => 'クリップやめとく';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'このノートはもう「${name}」に含まれとるで。ノート、このクリップから外そか？';
+	@override String get removeFromAntenna => 'このアンテナから削除';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '「${name}」からこのノートを削除しますか？';
 	@override String get public => 'パブリック';
 	@override String get private => '非公開';
 	@override String i18nInfo({required Object link}) => 'Misskeyは有志がいろんな言語に訳しとるで。${link}で翻訳に協力したってやー。';
@@ -1533,6 +1534,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'このリンク先の所有者ってわかったわ。';
 	@override String get notifyNotes => '投稿を通知';
 	@override String get unnotifyNotes => '投稿の通知やめる';
+	@override String get notifyUsers => '投稿通知を設定したユーザー';
 	@override String get authentication => '認証';
 	@override String get authenticationRequiredToContinue => '続けるんなら認証してや。';
 	@override String get dateAndTime => '日時';
@@ -1725,6 +1727,14 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'ゼロ埋め';
 	@override String get nothingToConfigure => '設定項目はありません';
 	@override String get viewRenotedChannel => 'リノート先のチャンネルを見る';
+	@override String get previewingTheme => 'テーマのプレビュー中';
+	@override String get previewingThemeRestore => '元に戻す';
+	@override String get accessToken => 'アクセストークン';
+	@override String get chooseEmojiPalette => '絵文字パレットを選択';
+	@override String get addToEmojiPalette => '絵文字パレットに追加';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'この絵文字はすでにこの絵文字パレットに含まれています。追加しなおしますか？';
+	@override String get append => '末尾に追加';
+	@override String get prepend => '先頭に追加';
 	@override late final Translations$misskey$imageEditing_$ja_KS imageEditing_ = Translations$misskey$imageEditing_$ja_KS.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ja_KS imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ja_KS.internal(_root);
 	@override late final Translations$misskey$compression_$ja_KS compression_ = Translations$misskey$compression_$ja_KS.internal(_root);
@@ -3754,6 +3764,8 @@ class Translations$misskey$search_$ja_KS extends Translations$misskey$search_$en
 	@override String get pleaseEnterServerHost => 'サーバーのホストはどないするん？';
 	@override String get pleaseSelectUser => 'ユーザーを選んでや';
 	@override String get serverHostPlaceholder => '例: misskey.example.com';
+	@override String get postFrom => '投稿日時from';
+	@override String get postTo => '投稿日時to';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4313,6 +4325,7 @@ class Translations$misskey$role_$options_$ja_KS extends Translations$misskey$rol
 	@override String get driveCapacity => 'ドライブ容量';
 	@override String get maxFileSize => 'アップロード可能な最大ファイルサイズ';
 	@override String get maxFileSize_caption => 'リバースプロキシやCDNなど、前段で別の設定値が存在する場合があります。';
+	@override String maxFileSize_caption2({required Object max}) => 'サーバー全体の最大ファイルサイズ設定は ${max} です。これより大きいファイルをアップロードできるようにするには、Misskeyの設定ファイルからこの設定を緩和してください。';
 	@override String get alwaysMarkNsfw => '勝手にファイルにNSFWをくっつける';
 	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートピン留めできる数';
@@ -4329,6 +4342,7 @@ class Translations$misskey$role_$options_$ja_KS extends Translations$misskey$rol
 	@override String get canSearchNotes => 'ノート探せるかどうか';
 	@override String get canSearchUsers => 'ユーザー検索の利用';
 	@override String get canUseTranslator => '翻訳使えるかどうか';
+	@override String get canCreateChannel => 'チャンネルの作成';
 	@override String get avatarDecorationLimit => 'アイコンデコのいっちばんつけれる数';
 	@override String get canImportAntennas => 'アンテナのインポートを許す';
 	@override String get canImportBlocking => 'ブロックのインポートを許す';

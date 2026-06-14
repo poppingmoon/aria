@@ -1431,6 +1431,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get presets => 'Шаблоны';
 	@override String get zeroPadding => 'Без отступов';
 	@override String get nothingToConfigure => 'Нечего менять';
+	@override String get previewingThemeRestore => 'Восстановить';
 	@override late final _Translations$misskey$imageEditing_$ru_RU imageEditing_ = _Translations$misskey$imageEditing_$ru_RU._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ru_RU imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ru_RU._(_root);
 	@override late final _Translations$misskey$chat_$ru_RU chat_ = _Translations$misskey$chat_$ru_RU._(_root);

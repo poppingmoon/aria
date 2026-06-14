@@ -85,7 +85,7 @@ abstract class _$ServerUrlNotifier extends $Notifier<Uri> {
   Uri build(String host);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<Uri, Uri>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$ServerUrlNotifier extends $Notifier<Uri> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

@@ -85,7 +85,7 @@ abstract class _$NoteClipsNotifier extends $AsyncNotifier<List<Clip>> {
   FutureOr<List<Clip>> build(Account account, String noteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Clip>>, List<Clip>>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$NoteClipsNotifier extends $AsyncNotifier<List<Clip>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

@@ -86,7 +86,7 @@ abstract class _$GalleryPostNotifier extends $AsyncNotifier<GalleryPost> {
   FutureOr<GalleryPost> build(Account account, String postId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<GalleryPost>, GalleryPost>;
     final element =
         ref.element
@@ -96,6 +96,6 @@ abstract class _$GalleryPostNotifier extends $AsyncNotifier<GalleryPost> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

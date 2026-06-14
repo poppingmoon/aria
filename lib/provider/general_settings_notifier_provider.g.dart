@@ -48,7 +48,7 @@ abstract class _$GeneralSettingsNotifier extends $Notifier<GeneralSettings> {
   GeneralSettings build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<GeneralSettings, GeneralSettings>;
     final element =
         ref.element
@@ -58,6 +58,6 @@ abstract class _$GeneralSettingsNotifier extends $Notifier<GeneralSettings> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

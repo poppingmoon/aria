@@ -45,7 +45,6 @@ class _Translations$aria$es_ES extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Acerca de Aria';
-	@override String get accessToken => 'Token de acceso';
 	@override String get accessTokenUpdated => 'Se actualizó correctamente un token de acceso';
 	@override String get accountAdded => 'Se añadió una cuenta correctamente';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
@@ -1023,6 +1022,8 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Crear clip nuevo';
 	@override String get unclip => 'Quitar clip';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Esta nota ya está incluida en el clip "${name}". ¿Quiere quitar la nota del clip?';
+	@override String get removeFromAntenna => 'Quitar de esta antena.';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '¿Quieres eliminar esta nota de \'${name}\'?';
 	@override String get public => 'Público';
 	@override String get private => 'Privado';
 	@override String i18nInfo({required Object link}) => 'Misskey está siendo traducido a varios idiomas gracias a voluntarios. Se puede colaborar traduciendo en ${link}';
@@ -1257,7 +1258,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get isSystemAccount => 'Cuenta creada y operada automáticamente por el sistema';
 	@override String typeToConfirm({required Object x}) => 'Ingrese ${x} para confirmar';
 	@override String get deleteAccount => 'Borrar cuenta';
-	@override String get document => 'Documento';
+	@override String get document => 'Guía de usuario';
 	@override String get numberOfPageCache => 'Cantidad de páginas cacheadas';
 	@override String get numberOfPageCacheDescription => 'Al aumentar el número mejora la conveniencia pero también puede aumentar la carga y la memoria a usarse';
 	@override String get logoutConfirm => '¿Cerrar sesión?';
@@ -1487,6 +1488,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Propiedad del enlace verificada';
 	@override String get notifyNotes => 'Notificar nuevas notas';
 	@override String get unnotifyNotes => 'Dejar de notificar nuevas notas';
+	@override String get notifyUsers => 'Usuarios que han activado las notificaciones de publicaciones';
 	@override String get authentication => 'Autenticación';
 	@override String get authenticationRequiredToContinue => 'Por favor, autentifícate para continuar';
 	@override String get dateAndTime => 'Fecha y hora';
@@ -1508,7 +1510,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get repositoryUrl => 'URL del repositorio';
 	@override String get repositoryUrlDescription => 'Si estás usando Misskey tal cual (sin cambios en el código fuente), entra en https://github.com/misskey-dev/misskey';
 	@override String get repositoryUrlOrTarballRequired => 'Si no has publicado un repositorio aún, deberás publicar un tarball en su lugar. Mira el archivo .config/example.yml para más información.';
-	@override String get feedback => 'Comentarios';
+	@override String get feedback => 'Enviar sugerencias (Feedback)';
 	@override String get feedbackUrl => 'URL de comentarios';
 	@override String get impressum => 'Impressum';
 	@override String get impressumUrl => 'Impressum URL';
@@ -1679,6 +1681,14 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'Relleno cero';
 	@override String get nothingToConfigure => 'No hay nada que configurar';
 	@override String get viewRenotedChannel => 'Ver el canal al que te has suscrito';
+	@override String get previewingTheme => 'Vista previa del tema';
+	@override String get previewingThemeRestore => 'Regresar';
+	@override String get accessToken => 'Token de acceso';
+	@override String get chooseEmojiPalette => 'Seleccionar la paleta de emojis';
+	@override String get addToEmojiPalette => 'Añadir a la paleta de emojis';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'Este emoji ya está incluido en esta paleta de emojis. ¿Quieres volver a añadirlo?';
+	@override String get append => 'Añadir al final';
+	@override String get prepend => 'Añadir al principio';
 	@override late final _Translations$misskey$imageEditing_$es_ES imageEditing_ = _Translations$misskey$imageEditing_$es_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$es_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$es_ES._(_root);
 	@override late final _Translations$misskey$compression_$es_ES compression_ = _Translations$misskey$compression_$es_ES._(_root);
@@ -2458,7 +2468,7 @@ class _Translations$misskey$aboutMisskey_$es_ES extends Translations$misskey$abo
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get about => 'Misskey es un software de código abierto, desarrollado por syuilo desde el 2014';
+	@override String get about => 'Misskey es un software de código abierto, desarrollado por syuilo desde 2014';
 	@override String get contributors => 'Principales colaboradores';
 	@override String get allContributors => 'Todos los colaboradores';
 	@override String get source => 'Código fuente';
@@ -3698,6 +3708,8 @@ class _Translations$misskey$search_$es_ES extends Translations$misskey$search_$e
 	@override String get pleaseEnterServerHost => 'Introduce la dirección del servidor/Instancia';
 	@override String get pleaseSelectUser => 'Selecciona un usuario, por favor';
 	@override String get serverHostPlaceholder => 'Ejemplo: misskey.example.com';
+	@override String get postFrom => 'Publicado desde';
+	@override String get postTo => 'Publicado el';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4241,6 +4253,7 @@ class _Translations$misskey$role_$options_$es_ES extends Translations$misskey$ro
 	@override String get driveCapacity => 'Capacidad del drive';
 	@override String get maxFileSize => 'Tamaño máximo de archivo que se puede cargar.';
 	@override String get maxFileSize_caption => 'Los proxies inversos o las CDN pueden tener diferentes valores de configuración aguas arriba.';
+	@override String maxFileSize_caption2({required Object max}) => 'El tamaño máximo de archivo para todo el servidor está fijado en ${max}. Para poder subir archivos de mayor tamaño, modifica este valor en el archivo de configuración de Misskey.';
 	@override String get alwaysMarkNsfw => 'Siempre marcar archivos como NSFW';
 	@override String get canUpdateBioMedia => 'Puede editar un icono o una imagen de fondo (banner)';
 	@override String get pinMax => 'Máximo de notas fijadas';
@@ -4257,6 +4270,7 @@ class _Translations$misskey$role_$options_$es_ES extends Translations$misskey$ro
 	@override String get canSearchNotes => 'Uso de la búsqueda de notas';
 	@override String get canSearchUsers => 'Uso de la búsqueda de usuarios';
 	@override String get canUseTranslator => 'Uso de traductor';
+	@override String get canCreateChannel => 'Puede crear canales';
 	@override String get avatarDecorationLimit => 'Número máximo de decoraciones de avatar';
 	@override String get canImportAntennas => 'Permitir la importación de antenas';
 	@override String get canImportBlocking => 'Permitir la importación de bloqueos';

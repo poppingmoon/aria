@@ -636,6 +636,7 @@ class _Translations$misskey$sv_SE extends Translations$misskey$en_US {
 	@override String get signinWithPasskey => 'Logga in med nyckel';
 	@override String get unknownWebAuthnKey => 'Okänd nyckel';
 	@override String get information => 'Om';
+	@override String get previewingThemeRestore => 'Återställ';
 	@override late final _Translations$misskey$imageEditing_$sv_SE imageEditing_ = _Translations$misskey$imageEditing_$sv_SE._(_root);
 	@override late final _Translations$misskey$chat_$sv_SE chat_ = _Translations$misskey$chat_$sv_SE._(_root);
 	@override late final _Translations$misskey$delivery_$sv_SE delivery_ = _Translations$misskey$delivery_$sv_SE._(_root);

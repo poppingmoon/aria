@@ -1307,6 +1307,7 @@ class _Translations$misskey$vi_VN extends Translations$misskey$en_US {
 	@override String get inDays => 'ngày';
 	@override String get widgets => 'Tiện ích';
 	@override String get presets => 'Mẫu thiết lập';
+	@override String get previewingThemeRestore => 'Khôi phục';
 	@override late final _Translations$misskey$imageEditing_$vi_VN imageEditing_ = _Translations$misskey$imageEditing_$vi_VN._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$vi_VN imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$vi_VN._(_root);
 	@override late final _Translations$misskey$chat_$vi_VN chat_ = _Translations$misskey$chat_$vi_VN._(_root);

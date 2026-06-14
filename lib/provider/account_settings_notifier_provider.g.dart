@@ -94,7 +94,7 @@ abstract class _$AccountSettingsNotifier extends $Notifier<AccountSettings> {
   AccountSettings build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AccountSettings, AccountSettings>;
     final element =
         ref.element
@@ -104,6 +104,6 @@ abstract class _$AccountSettingsNotifier extends $Notifier<AccountSettings> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

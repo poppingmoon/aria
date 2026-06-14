@@ -50,7 +50,6 @@ class Translations$aria$zh_TW extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: ' 的追隨請求嗎？'),
 	]);
-	@override String get accessToken => '存取權杖';
 	@override String get accessTokenUpdated => '成功更新存取權杖';
 	@override String get accountAdded => '成功添加帳戶';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
@@ -241,8 +240,8 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get pinnedEmojisForReactionSettingDescription => '選擇反應時可以設定要固定顯示在頂端的表情符號';
 	@override String get pinnedEmojisSettingDescription => '輸入表情符號時可以設定要固定顯示在頂端的表情符號';
 	@override String get emojiPickerDisplay => '顯示表情符號選擇器';
-	@override String get overwriteFromPinnedEmojisForReaction => '從反應複寫設定';
-	@override String get overwriteFromPinnedEmojis => '從一般複寫設定';
+	@override String get overwriteFromPinnedEmojisForReaction => '覆寫反應的設定';
+	@override String get overwriteFromPinnedEmojis => '覆寫一般的設定';
 	@override String get reactionSettingDescription2 => '拖動以交換，點擊以刪除，按下「+」以新增。';
 	@override String get rememberNoteVisibility => '記住貼文可見性';
 	@override String get attachCancel => '移除附件';
@@ -332,7 +331,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get metadata => '詮釋資料';
 	@override String withNFiles({required Object n}) => '${n} 個檔案';
 	@override String get monitor => '監視器';
-	@override String get jobQueue => '佇列';
+	@override String get jobQueue => '工作佇列';
 	@override String get cpuAndMemory => 'CPU 及記憶體';
 	@override String get network => '網路';
 	@override String get disk => '硬碟';
@@ -342,7 +341,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get clearQueueConfirmTitle => '確定要清除佇列嗎？';
 	@override String get clearQueueConfirmText => '未成功發佈的貼文將不會再嘗試發佈。通常不需要進行這項操作。';
 	@override String get clearCachedFiles => '清除快取資料';
-	@override String get clearCachedFilesConfirm => '確定要清除所有遠端暫存資料嗎？';
+	@override String get clearCachedFilesConfirm => '確定要刪除所有快取的遠端資料嗎？';
 	@override String get blockedInstances => '已封鎖的伺服器';
 	@override String get blockedInstancesDescription => '請逐行輸入需要封鎖的伺服器。已封鎖的伺服器將無法與本伺服器進行通訊。';
 	@override String get silencedInstances => '被禁言的伺服器';
@@ -858,6 +857,8 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get createNewClip => '建立新摘錄';
 	@override String get unclip => '解除摘錄';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '此貼文已包含在摘錄「${name}」中。 你想將貼文從這個摘錄中排除嗎？';
+	@override String get removeFromAntenna => '從這個天線刪除';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '要從「${name}」刪除這則貼文嗎？';
 	@override String get public => '公開';
 	@override String get private => '私密';
 	@override String i18nInfo({required Object link}) => 'Misskey 已被志願者們翻譯成各種語言版本。您可以前往 ${link} 以協助翻譯。';
@@ -1322,6 +1323,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get verifiedLink => '已驗證連結';
 	@override String get notifyNotes => '開啟貼文通知';
 	@override String get unnotifyNotes => '關閉貼文通知';
+	@override String get notifyUsers => '設定了貼文通知的使用者';
 	@override String get authentication => '驗證';
 	@override String get authenticationRequiredToContinue => '請於繼續前完成驗證';
 	@override String get dateAndTime => '日期與時間';
@@ -1514,6 +1516,14 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get zeroPadding => '補零';
 	@override String get nothingToConfigure => '無可設定的項目';
 	@override String get viewRenotedChannel => '顯示轉發貼文者的頻道';
+	@override String get previewingTheme => '正在預覽主題';
+	@override String get previewingThemeRestore => '復原';
+	@override String get accessToken => '存取權杖';
+	@override String get chooseEmojiPalette => '選擇表情符號調色盤';
+	@override String get addToEmojiPalette => '增加表情符號調色盤';
+	@override String get emojiPaletteAlreadyAddedConfirm => '此表情符號在這個表情符號調色盤裡已經有了。確定要增加嗎？';
+	@override String get append => '加在最後';
+	@override String get prepend => '加在前面';
 	@override late final Translations$misskey$imageEditing_$zh_TW imageEditing_ = Translations$misskey$imageEditing_$zh_TW.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_TW imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_TW.internal(_root);
 	@override late final Translations$misskey$compression_$zh_TW compression_ = Translations$misskey$compression_$zh_TW.internal(_root);
@@ -3533,6 +3543,8 @@ class Translations$misskey$search_$zh_TW extends Translations$misskey$search_$en
 	@override String get pleaseEnterServerHost => '請輸入伺服器的主機名稱';
 	@override String get pleaseSelectUser => '請選擇使用者';
 	@override String get serverHostPlaceholder => '例：misskey.example.com';
+	@override String get postFrom => '發布時間 from';
+	@override String get postTo => '發布時間 to';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4076,6 +4088,7 @@ class Translations$misskey$role_$options_$zh_TW extends Translations$misskey$rol
 	@override String get driveCapacity => '雲端硬碟容量';
 	@override String get maxFileSize => '可上傳的最大檔案大小';
 	@override String get maxFileSize_caption => '前端可能還有其他設定值，例如反向代理或 CDN。';
+	@override String maxFileSize_caption2({required Object max}) => '伺服器整體的最大檔案大小設定為 ${max}。若要允許上傳更大的檔案，請在 Misskey 設定檔中放寬此設定。';
 	@override String get alwaysMarkNsfw => '總是將檔案標記為NSFW';
 	@override String get canUpdateBioMedia => '允許更新大頭貼和橫幅';
 	@override String get pinMax => '置頂貼文的最大數量';
@@ -4092,6 +4105,7 @@ class Translations$misskey$role_$options_$zh_TW extends Translations$misskey$rol
 	@override String get canSearchNotes => '可否搜尋貼文';
 	@override String get canSearchUsers => '可使用使用者搜尋功能';
 	@override String get canUseTranslator => '使用翻譯功能';
+	@override String get canCreateChannel => '建立頻道';
 	@override String get avatarDecorationLimit => '頭像可掛上的最大裝飾數量';
 	@override String get canImportAntennas => '允許匯入天線';
 	@override String get canImportBlocking => '允許匯入封鎖名單';

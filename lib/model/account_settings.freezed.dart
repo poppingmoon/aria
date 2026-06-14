@@ -15,13 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AccountSettings {
 
-// Privacy
- bool get keepCw; bool get rememberNoteVisibility; NoteVisibility get defaultNoteVisibility; bool get defaultNoteLocalOnly; bool get rememberRenoteVisibility; NoteVisibility get defaultRenoteVisibility; bool get defaultRenoteLocalOnly; ReactionAcceptance? get reactionAcceptance; NoteVisibility get visibility; bool get localOnly; NoteVisibility get renoteVisibility; bool get renoteLocalOnly;// EmojiPicker
- List<String> get pinnedEmojisForReaction; List<String> get pinnedEmojis; List<String> get recentlyUsedEmojis; String? get defaultReaction;// Drive
- String? get uploadFolder; bool get keepOriginalUploading; bool get keepOriginalFilename;// Mute
- List<MuteWord> get mutedWords; List<MuteWord> get hardMutedWords; List<String> get mutedEmojis;// UserSelectDialog
- List<String> get recentlyUsedUsers;// PostForm
- List<String> get hashtags; List<String> get postFormHashtags;
+ bool get keepCw; bool get rememberNoteVisibility; NoteVisibility get defaultNoteVisibility; bool get defaultNoteLocalOnly; bool get rememberRenoteVisibility; NoteVisibility get defaultRenoteVisibility; bool get defaultRenoteLocalOnly; ReactionAcceptance? get reactionAcceptance; NoteVisibility get visibility; bool get localOnly; NoteVisibility get renoteVisibility; bool get renoteLocalOnly; List<String> get pinnedEmojisForReaction; List<String> get pinnedEmojis; List<String> get recentlyUsedEmojis; String? get defaultReaction; String? get uploadFolder; bool get keepOriginalUploading; bool get keepOriginalFilename; List<MuteWord> get mutedWords; List<MuteWord> get hardMutedWords; List<String> get mutedEmojis; List<String> get recentlyUsedUsers; List<String> get hashtags; List<String> get postFormHashtags;
 /// Create a copy of AccountSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -242,7 +236,6 @@ class _AccountSettings implements AccountSettings {
   const _AccountSettings({this.keepCw = true, this.rememberNoteVisibility = false, this.defaultNoteVisibility = NoteVisibility.public, this.defaultNoteLocalOnly = false, this.rememberRenoteVisibility = false, this.defaultRenoteVisibility = NoteVisibility.public, this.defaultRenoteLocalOnly = false, this.reactionAcceptance, this.visibility = NoteVisibility.public, this.localOnly = false, this.renoteVisibility = NoteVisibility.public, this.renoteLocalOnly = false, final  List<String> pinnedEmojisForReaction = defaultPinnedEmojis, final  List<String> pinnedEmojis = defaultPinnedEmojis, final  List<String> recentlyUsedEmojis = const [], this.defaultReaction, this.uploadFolder, this.keepOriginalUploading = false, this.keepOriginalFilename = true, final  List<MuteWord> mutedWords = const [], final  List<MuteWord> hardMutedWords = const [], final  List<String> mutedEmojis = const [], final  List<String> recentlyUsedUsers = const [], final  List<String> hashtags = const [], final  List<String> postFormHashtags = const []}): _pinnedEmojisForReaction = pinnedEmojisForReaction,_pinnedEmojis = pinnedEmojis,_recentlyUsedEmojis = recentlyUsedEmojis,_mutedWords = mutedWords,_hardMutedWords = hardMutedWords,_mutedEmojis = mutedEmojis,_recentlyUsedUsers = recentlyUsedUsers,_hashtags = hashtags,_postFormHashtags = postFormHashtags;
   factory _AccountSettings.fromJson(Map<String, dynamic> json) => _$AccountSettingsFromJson(json);
 
-// Privacy
 @override@JsonKey() final  bool keepCw;
 @override@JsonKey() final  bool rememberNoteVisibility;
 @override@JsonKey() final  NoteVisibility defaultNoteVisibility;
@@ -255,9 +248,7 @@ class _AccountSettings implements AccountSettings {
 @override@JsonKey() final  bool localOnly;
 @override@JsonKey() final  NoteVisibility renoteVisibility;
 @override@JsonKey() final  bool renoteLocalOnly;
-// EmojiPicker
  final  List<String> _pinnedEmojisForReaction;
-// EmojiPicker
 @override@JsonKey() List<String> get pinnedEmojisForReaction {
   if (_pinnedEmojisForReaction is EqualUnmodifiableListView) return _pinnedEmojisForReaction;
   // ignore: implicit_dynamic_type
@@ -279,13 +270,10 @@ class _AccountSettings implements AccountSettings {
 }
 
 @override final  String? defaultReaction;
-// Drive
 @override final  String? uploadFolder;
 @override@JsonKey() final  bool keepOriginalUploading;
 @override@JsonKey() final  bool keepOriginalFilename;
-// Mute
  final  List<MuteWord> _mutedWords;
-// Mute
 @override@JsonKey() List<MuteWord> get mutedWords {
   if (_mutedWords is EqualUnmodifiableListView) return _mutedWords;
   // ignore: implicit_dynamic_type
@@ -306,18 +294,14 @@ class _AccountSettings implements AccountSettings {
   return EqualUnmodifiableListView(_mutedEmojis);
 }
 
-// UserSelectDialog
  final  List<String> _recentlyUsedUsers;
-// UserSelectDialog
 @override@JsonKey() List<String> get recentlyUsedUsers {
   if (_recentlyUsedUsers is EqualUnmodifiableListView) return _recentlyUsedUsers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_recentlyUsedUsers);
 }
 
-// PostForm
  final  List<String> _hashtags;
-// PostForm
 @override@JsonKey() List<String> get hashtags {
   if (_hashtags is EqualUnmodifiableListView) return _hashtags;
   // ignore: implicit_dynamic_type

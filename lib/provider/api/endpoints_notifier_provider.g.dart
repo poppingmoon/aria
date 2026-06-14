@@ -89,7 +89,7 @@ abstract class _$EndpointsNotifierBase extends $AsyncNotifier<List<String>> {
   FutureOr<List<String>> build(String host);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<String>>, List<String>>;
     final element =
         ref.element
@@ -99,7 +99,7 @@ abstract class _$EndpointsNotifierBase extends $AsyncNotifier<List<String>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }
 
