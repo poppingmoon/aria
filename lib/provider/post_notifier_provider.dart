@@ -247,7 +247,7 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
     if (!state.canPost && (state.cw?.isEmpty ?? true)) {
-      await _deleteDraft(tabSettings);
+      await _deleteDraft(tabSettings, state);
       return;
     }
 
@@ -279,16 +279,16 @@ class PostNotifier extends _$PostNotifier {
     }
   }
 
-  Future<void> _deleteDraft(TabSettings? tabSettings) async {
+  Future<void> _deleteDraft(TabSettings? tabSettings, NoteDraft draft) async {
     final repo = await ref.read(noteDraftRepositoryProvider.future);
-    if (state.replyId != null || state.renoteId != null) {
+    if (draft.replyId != null || draft.renoteId != null) {
       await repo.deleteDraft(
         account: account,
-        replyId: state.replyId,
-        renoteId: state.renoteId,
+        replyId: draft.replyId,
+        renoteId: draft.renoteId,
       );
-    } else if (state.channelId != tabSettings?.channelId) {
-      await repo.deleteDraft(account: account, channelId: state.channelId);
+    } else if (draft.channelId != tabSettings?.channelId) {
+      await repo.deleteDraft(account: account, channelId: draft.channelId);
     } else if (tabSettings != null && tabSettings.account == account) {
       await repo.deleteDraft(account: account, tabId: tabSettings.id);
     } else {
@@ -427,7 +427,7 @@ class PostNotifier extends _$PostNotifier {
           : null,
     );
 
-    await _deleteDraft(tabSettings);
+    await _deleteDraft(tabSettings, draft);
 
     await ref.read(sharedPreferencesProvider).remove(_key);
   }
