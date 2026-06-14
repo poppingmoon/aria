@@ -85,7 +85,7 @@ abstract class _$ChannelNotifier extends $AsyncNotifier<CommunityChannel> {
   FutureOr<CommunityChannel> build(Account account, String channelId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref as $Ref<AsyncValue<CommunityChannel>, CommunityChannel>;
     final element =
@@ -96,6 +96,6 @@ abstract class _$ChannelNotifier extends $AsyncNotifier<CommunityChannel> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

@@ -91,7 +91,7 @@ abstract class _$FeaturedPollsNotifier
   Stream<PaginationState<Note>> build(Account account, {String? channelId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -106,7 +106,7 @@ abstract class _$FeaturedPollsNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, channelId: _$args.channelId),
     );

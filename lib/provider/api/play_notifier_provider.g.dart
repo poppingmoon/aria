@@ -85,7 +85,7 @@ abstract class _$PlayNotifier extends $AsyncNotifier<Flash> {
   FutureOr<Flash> build(Account account, String playId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<Flash>, Flash>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$PlayNotifier extends $AsyncNotifier<Flash> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

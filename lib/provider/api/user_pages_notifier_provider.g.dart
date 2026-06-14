@@ -86,7 +86,7 @@ abstract class _$UserPagesNotifier
   Stream<PaginationState<Page>> build(Account account, String userId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Page>>, PaginationState<Page>>;
@@ -101,6 +101,6 @@ abstract class _$UserPagesNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

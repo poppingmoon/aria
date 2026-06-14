@@ -91,7 +91,7 @@ abstract class _$UserFollowingNotifier
   Stream<PaginationState<Following>> build(Account account, String userId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -109,6 +109,6 @@ abstract class _$UserFollowingNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

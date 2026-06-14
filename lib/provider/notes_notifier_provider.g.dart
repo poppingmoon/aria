@@ -85,7 +85,7 @@ abstract class _$NotesNotifier extends $Notifier<void> {
   void build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$NotesNotifier extends $Notifier<void> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

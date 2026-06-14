@@ -179,7 +179,7 @@ abstract class _$ChatStreamNotifier extends $StreamNotifier<ChatEvent> {
   Stream<ChatEvent> build(Account account, {String? userId, String? roomId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<ChatEvent>, ChatEvent>;
     final element =
         ref.element
@@ -189,7 +189,7 @@ abstract class _$ChatStreamNotifier extends $StreamNotifier<ChatEvent> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, userId: _$args.userId, roomId: _$args.roomId),
     );

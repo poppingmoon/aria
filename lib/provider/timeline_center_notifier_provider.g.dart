@@ -94,7 +94,7 @@ abstract class _$TimelineCenterNotifier extends $Notifier<String?> {
   String? build(TabSettings tabSettings);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<String?, String?>;
     final element =
         ref.element
@@ -104,6 +104,6 @@ abstract class _$TimelineCenterNotifier extends $Notifier<String?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

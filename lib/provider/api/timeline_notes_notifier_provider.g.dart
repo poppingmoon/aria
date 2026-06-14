@@ -96,7 +96,7 @@ abstract class _$TimelineNotesNotifier
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Note>>, PaginationState<Note>>;
@@ -111,6 +111,9 @@ abstract class _$TimelineNotesNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, untilId: _$args.untilId));
+    return element.handleCreate(
+      ref,
+      () => build(_$args.$1, untilId: _$args.untilId),
+    );
   }
 }

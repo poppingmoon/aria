@@ -95,7 +95,7 @@ abstract class _$UnifiedPushEndpointNotifier extends $Notifier<PushEndpoint?> {
   PushEndpoint? build(String instance);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<PushEndpoint?, PushEndpoint?>;
     final element =
         ref.element
@@ -105,6 +105,6 @@ abstract class _$UnifiedPushEndpointNotifier extends $Notifier<PushEndpoint?> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

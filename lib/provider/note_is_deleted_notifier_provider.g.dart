@@ -94,7 +94,7 @@ abstract class _$NoteIsDeletedNotifier extends $Notifier<bool> {
   bool build(Account account, String noteId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<bool, bool>;
     final element =
         ref.element
@@ -104,6 +104,6 @@ abstract class _$NoteIsDeletedNotifier extends $Notifier<bool> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

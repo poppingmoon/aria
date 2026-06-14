@@ -93,7 +93,7 @@ abstract class _$MutedEmojisNotifier extends $Notifier<Set<String>> {
   Set<String> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<Set<String>, Set<String>>;
     final element =
         ref.element
@@ -103,6 +103,6 @@ abstract class _$MutedEmojisNotifier extends $Notifier<Set<String>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

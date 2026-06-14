@@ -85,7 +85,7 @@ abstract class _$DriveFileNotifier extends $AsyncNotifier<DriveFile> {
   FutureOr<DriveFile> build(Account account, String fileId);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<DriveFile>, DriveFile>;
     final element =
         ref.element
@@ -95,6 +95,6 @@ abstract class _$DriveFileNotifier extends $AsyncNotifier<DriveFile> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

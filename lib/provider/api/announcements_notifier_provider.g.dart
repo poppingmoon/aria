@@ -97,7 +97,7 @@ abstract class _$AnnouncementsNotifier
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<
@@ -115,7 +115,7 @@ abstract class _$AnnouncementsNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(_$args.$1, isActive: _$args.isActive),
     );

@@ -101,7 +101,7 @@ abstract class _$NotificationsLastViewedAtNotifier
   DateTime? build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<DateTime?, DateTime?>;
     final element =
         ref.element
@@ -111,6 +111,6 @@ abstract class _$NotificationsLastViewedAtNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

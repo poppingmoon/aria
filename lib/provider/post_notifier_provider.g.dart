@@ -93,7 +93,7 @@ abstract class _$PostNotifier extends $Notifier<NoteDraft> {
   NoteDraft build(Account account, {String? noteId});
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<NoteDraft, NoteDraft>;
     final element =
         ref.element
@@ -103,6 +103,9 @@ abstract class _$PostNotifier extends $Notifier<NoteDraft> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, noteId: _$args.noteId));
+    return element.handleCreate(
+      ref,
+      () => build(_$args.$1, noteId: _$args.noteId),
+    );
   }
 }

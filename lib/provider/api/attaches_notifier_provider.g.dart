@@ -109,7 +109,7 @@ abstract class _$AttachesNotifier extends $Notifier<List<PostFile>> {
   });
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<PostFile>, List<PostFile>>;
     final element =
         ref.element
@@ -119,7 +119,7 @@ abstract class _$AttachesNotifier extends $Notifier<List<PostFile>> {
               Object?,
               Object?
             >;
-    element.handleCreate(
+    return element.handleCreate(
       ref,
       () => build(
         _$args.$1,

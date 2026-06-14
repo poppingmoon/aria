@@ -84,7 +84,7 @@ abstract class _$AntennasNotifier extends $AsyncNotifier<List<Antenna>> {
   FutureOr<List<Antenna>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<List<Antenna>>, List<Antenna>>;
     final element =
         ref.element
@@ -94,6 +94,6 @@ abstract class _$AntennasNotifier extends $AsyncNotifier<List<Antenna>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

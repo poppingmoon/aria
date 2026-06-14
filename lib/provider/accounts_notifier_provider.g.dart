@@ -47,7 +47,7 @@ abstract class _$AccountsNotifier extends $Notifier<List<Account>> {
   List<Account> build();
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<List<Account>, List<Account>>;
     final element =
         ref.element
@@ -57,6 +57,6 @@ abstract class _$AccountsNotifier extends $Notifier<List<Account>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, build);
+    return element.handleCreate(ref, build);
   }
 }

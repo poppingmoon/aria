@@ -120,7 +120,7 @@ abstract class _$AssetAudioPlayerNotifier extends $AsyncNotifier<AudioPlayer> {
   FutureOr<AudioPlayer> build(String asset, double volume);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref = this.ref as $Ref<AsyncValue<AudioPlayer>, AudioPlayer>;
     final element =
         ref.element
@@ -130,6 +130,6 @@ abstract class _$AssetAudioPlayerNotifier extends $AsyncNotifier<AudioPlayer> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }

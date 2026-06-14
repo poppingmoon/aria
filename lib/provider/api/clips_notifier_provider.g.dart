@@ -84,7 +84,7 @@ abstract class _$ClipsNotifier extends $StreamNotifier<PaginationState<Clip>> {
   Stream<PaginationState<Clip>> build(Account account);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Clip>>, PaginationState<Clip>>;
@@ -99,6 +99,6 @@ abstract class _$ClipsNotifier extends $StreamNotifier<PaginationState<Clip>> {
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args));
+    return element.handleCreate(ref, () => build(_$args));
   }
 }

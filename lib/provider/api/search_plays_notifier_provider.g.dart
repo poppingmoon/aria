@@ -88,7 +88,7 @@ abstract class _$SearchPlaysNotifier
   Stream<PaginationState<Flash>> build(Account account, String query);
   @$mustCallSuper
   @override
-  void runBuild() {
+  WhenComplete runBuild() {
     final ref =
         this.ref
             as $Ref<AsyncValue<PaginationState<Flash>>, PaginationState<Flash>>;
@@ -103,6 +103,6 @@ abstract class _$SearchPlaysNotifier
               Object?,
               Object?
             >;
-    element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
+    return element.handleCreate(ref, () => build(_$args.$1, _$args.$2));
   }
 }
