@@ -50,7 +50,6 @@ class Translations$aria$ja_KS extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: 'からのフォロー申請を許可してええか？'),
 	]);
-	@override String get accessToken => 'アクセストークン';
 	@override String get accessTokenUpdated => 'アクセストークンを更新したで';
 	@override String get accountAdded => 'アカウントを追加したで';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [

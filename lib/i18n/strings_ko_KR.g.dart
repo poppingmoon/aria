@@ -46,7 +46,6 @@ class Translations$aria$ko_KR extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Aria란';
-	@override String get accessToken => '액세스 토큰';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: '아리아는 '),
 		miria,

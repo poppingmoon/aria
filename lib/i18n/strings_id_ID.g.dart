@@ -45,7 +45,6 @@ class _Translations$aria$id_ID extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Tentang Aria';
-	@override String get accessToken => 'Token akses';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: 'Aria adalah fork dari '),
 		miria,

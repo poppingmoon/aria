@@ -1,6 +1,5 @@
 aboutAria: "O Arii"
 acceptFollowRequestConfirm(rich): "Czy na pewno chcesz zaakceptować prośbę o obserwowanie od {name}?"
-accessToken: "Token dostępu"
 accessTokenUpdated: "Pomyślnie zaktualizowano token dostępu"
 accountAdded: "Pomyślnie dodano konto"
 acknowledgements(rich): "Aria jest rozwidleniem projektu {miria}.\nLokalizacja Arii opiera się na plikach lokalizacyjnych {misskey}.\nChcielibyśmy wyrazić naszą wdzięczność wszystkim współtwórcom tych projektów."

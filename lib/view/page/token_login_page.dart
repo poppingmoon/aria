@@ -174,7 +174,7 @@ class TokenLoginPage extends HookConsumerWidget {
                               controller: tokenController,
                               focusNode: tokenFocusNode,
                               decoration: InputDecoration(
-                                labelText: t.aria.accessToken,
+                                labelText: t.misskey.accessToken,
                                 prefixIcon: const Icon(Icons.key),
                                 suffixIcon: IconButton(
                                   onPressed: () => tokenController.clear(),

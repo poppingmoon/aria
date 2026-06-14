@@ -50,7 +50,6 @@ class Translations$aria$ko_GS extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: '한테서 온 팔로우 리퀘스트 참말로 수락하는거 맞나?'),
 	]);
-	@override String get accessToken => '액세스 토큰';
 	@override String get accessTokenUpdated => '액세스 토큰 갱신 성공했디';
 	@override String get accountAdded => '계정 추가 성공했디';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [

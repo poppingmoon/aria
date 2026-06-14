@@ -50,7 +50,6 @@ class Translations$aria$zh_TW extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: ' 的追隨請求嗎？'),
 	]);
-	@override String get accessToken => '存取權杖';
 	@override String get accessTokenUpdated => '成功更新存取權杖';
 	@override String get accountAdded => '成功添加帳戶';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [

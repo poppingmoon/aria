@@ -58,9 +58,6 @@ class Translations$aria$en_US {
 		const TextSpan(text: '?'),
 	]);
 
-	/// en-US: 'Access token'
-	String get accessToken => 'Access token';
-
 	/// en-US: 'Successfully updated an access token'
 	String get accessTokenUpdated => 'Successfully updated an access token';
 

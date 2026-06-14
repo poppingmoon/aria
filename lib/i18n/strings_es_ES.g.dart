@@ -45,7 +45,6 @@ class _Translations$aria$es_ES extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Acerca de Aria';
-	@override String get accessToken => 'Token de acceso';
 	@override String get accessTokenUpdated => 'Se actualizó correctamente un token de acceso';
 	@override String get accountAdded => 'Se añadió una cuenta correctamente';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [

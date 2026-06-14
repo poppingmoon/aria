@@ -1,5 +1,4 @@
 aboutAria: "Acerca de Aria"
-accessToken: "Token de acceso"
 accessTokenUpdated: "Se actualizó correctamente un token de acceso"
 accountAdded: "Se añadió una cuenta correctamente"
 acknowledgements(rich): "Aria es una fork de {miria}.\nLas traducciones de Aria se basan en los archivos de localización de {misskey}.\nNos gustaría mostrar nuestro agradecimiento a todos los contribuyentes de estos proyectos."

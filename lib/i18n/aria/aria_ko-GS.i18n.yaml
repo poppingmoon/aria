@@ -1,6 +1,5 @@
 aboutAria: "Aria라 카믄"
 acceptFollowRequestConfirm(rich): "{name}한테서 온 팔로우 리퀘스트 참말로 수락하는거 맞나?"
-accessToken: "액세스 토큰"
 accessTokenUpdated: "액세스 토큰 갱신 성공했디"
 accountAdded: "계정 추가 성공했디"
 acknowledgements(rich): "아리아라 카믄, {miria}를 갖다 포크한 기라.\n또 요 번역은 기본적으로는 {misskey}의 번역 파일을 갖다 쓴 거래이.\n기여자 선새임들, 참말로 고맙심더!"

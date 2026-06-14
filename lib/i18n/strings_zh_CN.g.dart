@@ -50,7 +50,6 @@ class Translations$aria$zh_CN extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: ' 的关注请求吗？'),
 	]);
-	@override String get accessToken => '访问令牌';
 	@override String get accessTokenUpdated => '成功更新访问令牌';
 	@override String get accountAdded => '成功添加账户';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
