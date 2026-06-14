@@ -1413,6 +1413,7 @@ presets: "พรีเซ็ต"
 zeroPadding: "ห่างเป็น 0"
 nothingToConfigure: "ไม่มีอะไรให้ต้ังค่า"
 viewRenotedChannel: "แสดงช่องที่ถูกรีโน้ต"
+previewingThemeRestore: "เลิกทำ"
 imageEditing_:
   vars_:
     caption: "แคปชั่นของไฟล์"
@@ -2102,6 +2103,7 @@ role_:
     canSearchNotes: "การใช้การค้นหาโน้ต"
     canSearchUsers: "ค้นหาผู้ใช้"
     canUseTranslator: "การใช้งานแปล"
+    canCreateChannel: "สร้างช่องใหม่"
     avatarDecorationLimit: "จำนวนของตกแต่งไอคอนสูงสุดที่สามารถติดตั้งได้"
     canImportAntennas: "อนุญาตให้นำเข้าเสาอากาศ"
     canImportBlocking: "อนุญาตให้นำเข้าการบล็อก"

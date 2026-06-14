@@ -1524,6 +1524,7 @@ class _Translations$misskey$pt_PT extends Translations$misskey$en_US {
 	@override String get scheduled => 'Agendado';
 	@override String get widgets => 'Widgets';
 	@override String get presets => 'Predefinições';
+	@override String get previewingThemeRestore => 'Restaurar';
 	@override late final _Translations$misskey$imageEditing_$pt_PT imageEditing_ = _Translations$misskey$imageEditing_$pt_PT._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$pt_PT imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$pt_PT._(_root);
 	@override late final _Translations$misskey$compression_$pt_PT compression_ = _Translations$misskey$compression_$pt_PT._(_root);

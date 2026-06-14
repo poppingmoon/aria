@@ -1048,6 +1048,7 @@ inMinutes: "minuta"
 inDays: "dzień"
 widgets: "Widżety"
 presets: "Konfiguracja"
+previewingThemeRestore: "Przywróć"
 imageEditing_:
   vars_:
     filename: "Nazwa pliku"

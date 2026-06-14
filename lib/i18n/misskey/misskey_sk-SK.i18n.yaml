@@ -920,6 +920,7 @@ information: "Informácie"
 inMinutes: "min"
 inDays: "dní"
 widgets: "Widgety"
+previewingThemeRestore: "Obnoviť"
 imageEditing_:
   vars_:
     filename: "Názov súboru"

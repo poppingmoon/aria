@@ -334,14 +334,14 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get initialPasswordIsIncorrect => '初始化密码不正确。';
 	@override String get initialPasswordForSetupDescription => '如果是自己安装的 Misskey，请输入配置文件里设好的密码。\n如果使用的是 Misskey 的托管服务等，请输入服务商提供的密码。\n如果没有设置密码，请留空并继续。';
 	@override String get forgotPassword => '忘记密码';
-	@override String get fetchingAsApObject => '在联邦宇宙查询中...';
+	@override String get fetchingAsApObject => '在联邦中查找中…';
 	@override String get ok => 'OK';
 	@override String get gotIt => '好';
 	@override String get cancel => '取消';
 	@override String get noThankYou => '不用，谢谢';
 	@override String get enterUsername => '输入用户名';
 	@override String renotedBy({required Object user}) => '${user} 转发了';
-	@override String get noNotes => '没有帖文';
+	@override String get noNotes => '没有帖子';
 	@override String get noNotifications => '无通知';
 	@override String get instance => '服务器';
 	@override String get settings => '设置';
@@ -374,7 +374,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get copyLinkRenote => '复制转帖链接';
 	@override String get delete => '删除';
 	@override String get deleteAndEdit => '删除并编辑';
-	@override String get deleteAndEditConfirm => '要删除此帖并再次编辑吗？此帖下所有的回应、转发和回复也将被删除。';
+	@override String get deleteAndEditConfirm => '要删除该帖并重新编辑吗？该帖下的所有回应、转发和回复也将被删除。';
 	@override String get addToList => '添加至列表';
 	@override String get addToAntenna => '添加到天线';
 	@override String get sendMessage => '发送消息';
@@ -402,11 +402,11 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get export => '导出';
 	@override String get files => '文件';
 	@override String get download => '下载';
-	@override String driveFileDeleteConfirm({required Object name}) => '要删除「${name}」文件吗？附加此文件的帖子也会被删除。';
+	@override String driveFileDeleteConfirm({required Object name}) => '确认删除文件 “${name}” 吗？使用此文件的帖子也将被删除。';
 	@override String unfollowConfirm({required Object name}) => '要取消对 ${name} 的关注吗？';
 	@override String cancelFollowRequestConfirm({required Object name}) => '要取消申请关注${name}吗？';
 	@override String rejectFollowRequestConfirm({required Object name}) => '要拒绝${name}的关注申请吗？';
-	@override String get exportRequested => '导出请求已提交，这可能需要花一些时间，导出的文件将保存到网盘中。';
+	@override String get exportRequested => '已请求导出，这可能需要一段时间，导出的文件将保存至网盘中。';
 	@override String get importRequested => '导入请求已提交，这可能需要花一点时间。';
 	@override String get lists => '列表';
 	@override String get noLists => '列表为空';
@@ -423,7 +423,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get pageLoadError => '页面加载失败。';
 	@override String get pageLoadErrorDescription => '这通常是由于网络或浏览器缓存的原因。请清除缓存或等待片刻后重试。';
 	@override String get serverIsDead => '服务器未响应。 请稍后再试。';
-	@override String get youShouldUpgradeClient => '请重新加载并使用新版本的客户端查看此页面。';
+	@override String get youShouldUpgradeClient => '请刷新并使用新版本客户端查看此页面。';
 	@override String get enterListName => '输入列表名称';
 	@override String get privacy => '隐私';
 	@override String get makeFollowManuallyApprove => '关注请求需要批准';
@@ -437,15 +437,15 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get renote => '转发';
 	@override String get unrenote => '取消转发';
 	@override String get renoted => '已转发。';
-	@override String renotedToX({required Object name}) => '转帖给 ${name}';
+	@override String renotedToX({required Object name}) => '转发给 ${name} 了';
 	@override String get cantRenote => '该帖无法转发。';
 	@override String get cantReRenote => '转发无法被再次转发。';
 	@override String get quote => '引用';
 	@override String get inChannelRenote => '在频道内转发';
 	@override String get inChannelQuote => '在频道内引用';
-	@override String get renoteToChannel => '转帖至频道';
-	@override String get renoteToOtherChannel => '转帖至其它频道';
-	@override String get pinnedNote => '已置顶的帖子';
+	@override String get renoteToChannel => '转发至频道';
+	@override String get renoteToOtherChannel => '转发至其它频道';
+	@override String get pinnedNote => '置顶的帖子';
 	@override String get pinned => '置顶';
 	@override String get you => '您';
 	@override String get clickToShow => '点击以显示';
@@ -470,12 +470,12 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get unmute => '取消隐藏';
 	@override String get renoteMute => '隐藏转帖';
 	@override String get renoteUnmute => '取消隐藏转帖';
-	@override String get block => '禁止对方与我互动';
-	@override String get unblock => '允许对方与我互动';
+	@override String get block => '屏蔽';
+	@override String get unblock => '取消屏蔽';
 	@override String get suspend => '冻结';
 	@override String get unsuspend => '解除冻结';
 	@override String get blockConfirm => '确定要禁止对方与我互动吗？';
-	@override String get unblockConfirm => '确定要允许对方与我互动吗？';
+	@override String get unblockConfirm => '确认解除对方的互动限制吗？';
 	@override String get suspendConfirm => '要冻结吗？';
 	@override String get unsuspendConfirm => '要解除冻结吗？';
 	@override String get selectList => '选择列表';
@@ -564,14 +564,14 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get silencedInstances => '被静音的服务器';
 	@override String get silencedInstancesDescription => '设置要静音的服务器，以换行分隔。被静音的服务器内所有的账户都被视为「静音」状态，且关注操作均需要被批准。已被屏蔽的实例不受影响。';
 	@override String get mediaSilencedInstances => '已隐藏媒体文件的服务器';
-	@override String get mediaSilencedInstancesDescription => '设置要隐藏媒体文件的服务器，以换行分隔。被设置的服务器内所有账号的文件均按照「敏感内容」处理，且将无法使用自定义表情符号。已被屏蔽的实例不受影响。';
+	@override String get mediaSilencedInstancesDescription => '设置要隐藏媒体文件的服务器，以换行分隔。被设置的服务器内所有账号的文件均按照 “敏感内容” 处理，且将无法使用自定义表情符号。已被屏蔽的实例不受影响。';
 	@override String get federationAllowedHosts => '允许联邦交互的服务器';
 	@override String get federationAllowedHostsDescription => '设定允许联邦通信的服务器，以换行分隔。';
-	@override String get muteAndBlock => '屏蔽用户/禁止用户与我互动';
-	@override String get mutedUsers => '已屏蔽的用户';
-	@override String get blockedUsers => '禁止与我互动的用户';
+	@override String get muteAndBlock => '隐藏和屏蔽';
+	@override String get mutedUsers => '已隐藏的用户';
+	@override String get blockedUsers => '已屏蔽的用户';
 	@override String get noUsers => '无用户';
-	@override String get editProfile => '编辑资料';
+	@override String get editProfile => '编辑个人资料';
 	@override String get noteDeleteConfirm => '确定要删除该帖子吗？';
 	@override String get pinLimitExceeded => '无法置顶更多了';
 	@override String get done => '完成';
@@ -602,15 +602,15 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get more => '更多！';
 	@override String get featured => '热门';
 	@override String get usernameOrUserId => '用户名或用户 ID';
-	@override String get noSuchUser => '用户不存在';
-	@override String get lookup => '查询';
+	@override String get noSuchUser => '未找到该用户';
+	@override String get lookup => '查找用户';
 	@override String get announcements => '公告';
 	@override String get imageUrl => '图片 URL';
 	@override String get remove => '删除';
 	@override String get removed => '已删除';
 	@override String removeAreYouSure({required Object x}) => '要删掉「${x}」吗？';
 	@override String deleteAreYouSure({required Object x}) => '要删掉「${x}」吗？';
-	@override String get resetAreYouSure => '恢复默认设置？';
+	@override String get resetAreYouSure => '确定要重置吗？';
 	@override String get areYouSure => '你确定吗？';
 	@override String get saved => '已保存';
 	@override String get upload => '本地上传';
@@ -652,7 +652,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get lightThemes => '浅色主题';
 	@override String get darkThemes => '深色主题';
 	@override String get syncDeviceDarkMode => '将深色模式与设备设置同步';
-	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '「${x}」已开启。要关闭同步并手动切换模式吗？';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '“${x}” 已开启。要关闭同步并手动切换模式吗？';
 	@override String get drive => '网盘';
 	@override String get fileName => '文件名称';
 	@override String get selectFile => '选择文件';
@@ -670,7 +670,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get addFile => '添加文件';
 	@override String get showFile => '显示文件';
 	@override String get emptyDrive => '网盘中无文件';
-	@override String get emptyFolder => '此文件夹中无文件';
+	@override String get emptyFolder => '此文件夹为空';
 	@override String get dropHereToUpload => '将文件拖动到这里来上传';
 	@override String get unableToDelete => '无法删除';
 	@override String get inputNewFileName => '请输入新文件名';
@@ -685,9 +685,9 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get displayOfSensitiveMedia => '显示敏感媒体';
 	@override String get whenServerDisconnected => '与服务器连接中断时';
 	@override String get disconnectedFromServer => '已和服务器断开连接';
-	@override String get reload => '重新加载';
+	@override String get reload => '刷新';
 	@override String get doNothing => '关闭';
-	@override String get reloadConfirm => '确定要重新加载吗？';
+	@override String get reloadConfirm => '确定要刷新吗？';
 	@override String get watch => '关注';
 	@override String get unwatch => '取消关注';
 	@override String get accept => '允许';
@@ -720,11 +720,11 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get backgroundImageUrl => '背景图片的链接';
 	@override String get basicInfo => '基本信息';
 	@override String get pinnedUsers => '置顶用户';
-	@override String get pinnedUsersDescription => '在「发现」页面中使用换行标记想要置顶的用户。';
+	@override String get pinnedUsersDescription => '在 “发现” 页面中使用换行标记要置顶的用户。';
 	@override String get pinnedPages => '固定页面';
 	@override String get pinnedPagesDescription => '输入您要固定到服务器首页的页面路径，以换行符分隔。';
 	@override String get pinnedClipId => '置顶的便签 ID';
-	@override String get pinnedNotes => '已置顶的帖子';
+	@override String get pinnedNotes => '置顶的帖子';
 	@override String get hcaptcha => 'hCaptcha';
 	@override String get enableHcaptcha => '启用 hCaptcha';
 	@override String get hcaptchaSiteKey => '网站密钥';
@@ -752,12 +752,12 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get antennaExcludeBots => '排除机器人账户';
 	@override String get antennaKeywordsDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔。';
 	@override String get notifyAntenna => '开启通知';
-	@override String get withFileAntenna => '仅带有附件的帖子';
+	@override String get withFileAntenna => '仅包含附件的帖子';
 	@override String get excludeNotesInSensitiveChannel => '排除敏感频道的帖子';
 	@override String get enableServiceworker => '启用 ServiceWorker';
 	@override String get antennaUsersDescription => '指定用户名，用换行符进行分隔';
 	@override String get caseSensitive => '区分大小写';
-	@override String get withReplies => '包括回复';
+	@override String get withReplies => '包含回复';
 	@override String get connectedTo => '您的账号已连到接以下第三方账号';
 	@override String get notesAndReplies => '帖子与回复';
 	@override String get withFiles => '附件';
@@ -916,7 +916,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get volume => '音量';
 	@override String get masterVolume => '主音量';
 	@override String get notUseSound => '静音';
-	@override String get useSoundOnlyWhenActive => '仅在 Misskey 活跃时输出声音';
+	@override String get useSoundOnlyWhenActive => '仅在使用 Misskey 时发出音效';
 	@override String get details => '详情';
 	@override String get renoteDetails => '转帖详情';
 	@override String get chooseEmoji => '选择表情符号';
@@ -1018,13 +1018,13 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get wordMute => '折叠关键词';
 	@override String get wordMuteDescription => '折叠包含指定关键词的帖子。被折叠的帖子可单击展开。';
 	@override String get hardWordMute => '屏蔽关键词';
-	@override String get showMutedWord => '显示已折叠的关键词';
-	@override String get hardWordMuteDescription => '屏蔽包含指定关键词的帖子。与折叠关键词不同，帖子将完全不会显示。';
+	@override String get showMutedWord => '显示折叠关键词';
+	@override String get hardWordMuteDescription => '屏蔽包含指定关键词的帖子。与折叠关键词不同，帖子将完全不会被显示。';
 	@override String get regexpError => '正则表达式错误';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 折叠关键词的第 ${line} 行的正则表达式有错误：';
 	@override String get instanceMute => '已隐藏的服务器';
-	@override String userSaysSomething({required Object name}) => '${name} 说了什么,但是被屏蔽词过滤了';
-	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} 说了关于「${word}」的什么';
+	@override String userSaysSomething({required Object name}) => '${name} 说了些什么，但被屏蔽词过滤了';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} 说了关于 “${word}” 的什么';
 	@override String get makeActive => '启用';
 	@override String get display => '显示';
 	@override String get copy => '复制';
@@ -1073,7 +1073,9 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get optional => '可选';
 	@override String get createNewClip => '新建便签';
 	@override String get unclip => '移除便签';
-	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '本帖已包含在便签 "${name}" 里。您想要将本帖从该便签中移除吗？';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '本帖已包含在便签 “${name}” 里。您想要将本帖从该便签中移除吗？';
+	@override String get removeFromAntenna => '从此天线中删除';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '要从「${name}」中删除此帖子吗？';
 	@override String get public => '公开';
 	@override String get private => '私密';
 	@override String i18nInfo({required Object link}) => 'Misskey 已经被志愿者们翻译成了各种语言。如果你也有兴趣，可以通过 ${link} 帮助翻译。';
@@ -1096,7 +1098,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get driveUsage => '网盘的空间用量';
 	@override String get noCrawle => '拒绝搜索引擎的索引';
 	@override String get noCrawleDescription => '拒绝搜索引擎收录（索引）您的个人资料，帖子，页面等。';
-	@override String get lockedAccountInfo => '即使启用该功能，只要帖子可见范围不是「仅关注者」，任何人都可以看到您的帖子。';
+	@override String get lockedAccountInfo => '即使启用该功能，只要帖子可见范围不是 “仅关注者”，任何人都可以看到您的帖子。';
 	@override String get alwaysMarkSensitive => '默认将媒体文件标记为敏感内容';
 	@override String get loadRawImages => '添加附件图像的缩略图时使用原始图像质量';
 	@override String get disableShowingAnimatedImages => '不播放动态图像';
@@ -1128,7 +1130,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get showTitlebar => '显示标题栏';
 	@override String get clearCache => '清除缓存';
 	@override String onlineUsersCount({required Object n}) => '${n} 人在线';
-	@override String nUsers({required Object n}) => '${n} 用户';
+	@override String nUsers({required Object n}) => '${n} 位用户';
 	@override String nNotes({required Object n}) => '${n}帖子';
 	@override String get sendErrorReports => '发送错误报告';
 	@override String get sendErrorReportsDescription => '启用后，如果出现问题，可以与 Misskey 共享详细的错误信息，从而帮助提高软件的质量。错误信息包括操作系统版本、浏览器类型、行为历史记录等。';
@@ -1198,7 +1200,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get noInquiryUrlWarning => '尚未设置联络地址。';
 	@override String get noBotProtectionWarning => '尚未设置 Bot 防御。';
 	@override String get configure => '设置';
-	@override String get postToGallery => '发表相册';
+	@override String get postToGallery => '发布相册';
 	@override String get postToHashtag => '发布至该话题';
 	@override String get gallery => '相册';
 	@override String get recentPosts => '最新发布';
@@ -1261,7 +1263,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get deleteAccountConfirm => '将要删除账户。是否确认？';
 	@override String get incorrectPassword => '密码错误';
 	@override String get incorrectTotp => '一次性密码不正确或已过期';
-	@override String voteConfirm({required Object choice}) => '确定投给 “${choice}” ？';
+	@override String voteConfirm({required Object choice}) => '要投给 “${choice}” 吗？';
 	@override String get hide => '隐藏';
 	@override String get useDrawerReactionPickerForMobile => '在移动设备上使用抽屉显示';
 	@override String welcomeBackWithName({required Object name}) => '欢迎回来，${name}';
@@ -1354,7 +1356,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get windowMinimize => '最小化';
 	@override String get windowRestore => '还原';
 	@override String get caption => '描述文本';
-	@override String get loggedInAsBot => '以 Bot 账户登录';
+	@override String get loggedInAsBot => '以机器人账户登录中';
 	@override String get tools => '工具';
 	@override String get cannotLoad => '无法加载';
 	@override String get numberOfProfileView => '个人资料展示次数';
@@ -1390,8 +1392,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get achievements => '成就';
 	@override String get gotInvalidResponseError => '服务器无应答';
 	@override String get gotInvalidResponseErrorDescription => '您的网络连接可能出现了问题, 或是远程服务器暂时不可用. 请稍后重试。';
-	@override String get thisPostMayBeAnnoying => '这个帖子可能会让其他人感到困扰。';
-	@override String get thisPostMayBeAnnoyingHome => '发到首页';
+	@override String get thisPostMayBeAnnoying => '该帖文可能会使他人感到不适。';
+	@override String get thisPostMayBeAnnoyingHome => '发布到首页';
 	@override String get thisPostMayBeAnnoyingCancel => '取消';
 	@override String get thisPostMayBeAnnoyingIgnore => '就这样发布';
 	@override String get collapseRenotes => '折叠已经看过的转贴';
@@ -1453,7 +1455,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get addMemo => '添加备注';
 	@override String get editMemo => '编辑备注';
 	@override String get reactionsList => '回应列表';
-	@override String get renotesList => '转发列表';
+	@override String get renotesList => '转贴列表';
 	@override String get notificationDisplay => '显示通知';
 	@override String get leftTop => '屏幕左上方';
 	@override String get rightTop => '屏幕右上方';
@@ -1465,7 +1467,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get position => '位置';
 	@override String get serverRules => '服务器规则';
 	@override String get pleaseConfirmBelowBeforeSignup => '如果要在此服务器上注册，需要确认并同意以下内容。';
-	@override String get pleaseAgreeAllToContinue => '必须全部勾选「同意」才能够继续。';
+	@override String get pleaseAgreeAllToContinue => '必须全部勾选 “同意” 才能够继续。';
 	@override String get continue_ => '继续';
 	@override String get preservedUsernames => '保留的用户名';
 	@override String get preservedUsernamesDescription => '列出需要保留的用户名，使用换行来作为分割。被指定的用户名在建立账户时无法使用，但由管理员所创建的账户不受该限制。此外，现有的账户也不会受到影响。';
@@ -1483,7 +1485,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get preventAiLearningDescription => '要求文章生成 AI 或图像生成 AI 不能够以发布的帖子和图像等内容作为学习对象。这是通过在 HTML 响应中包含 noai 标志来实现的，这不能完全阻止 AI 学习你的发布内容，并不是所有 AI 都会遵守这类请求。';
 	@override String get options => '选项';
 	@override String get specifyUser => '指定用户';
-	@override String get lookupConfirm => '确定查询？';
+	@override String get lookupConfirm => '确定查找吗？';
 	@override String get openTagPageConfirm => '确定打开话题标签页面？';
 	@override String get specifyHost => '指定主机名';
 	@override String get failedToPreviewUrl => '无法预览';
@@ -1521,7 +1523,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get expired => '已过期';
 	@override String get doYouAgree => '你同意吗？';
 	@override String get beSureToReadThisAsItIsImportant => '请好好阅读，这真的很重要。';
-	@override String iHaveReadXCarefullyAndAgree({required Object x}) => '我已经仔细阅读并同意了「${x}」的内容。';
+	@override String iHaveReadXCarefullyAndAgree({required Object x}) => '我已经仔细阅读并同意了 “${x}” 的内容。';
 	@override String get dialog => '对话框';
 	@override String get icon => '头像';
 	@override String get forYou => '您的';
@@ -1530,14 +1532,15 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get youHaveUnreadAnnouncements => '您有未读的公告';
 	@override String get useSecurityKey => '请根据浏览器或设备的提示，使用安全密钥或通行密钥。';
 	@override String get replies => '回复';
-	@override String get renotes => '转发';
+	@override String get renotes => '转贴';
 	@override String get loadReplies => '查看回复';
 	@override String get loadConversation => '查看对话';
 	@override String get pinnedList => '已置顶的列表';
 	@override String get keepScreenOn => '保持屏幕常亮';
 	@override String get verifiedLink => '已验证的链接';
-	@override String get notifyNotes => '打开发帖通知';
+	@override String get notifyNotes => '开启发帖通知';
 	@override String get unnotifyNotes => '关闭发帖通知';
+	@override String get notifyUsers => '已开启发帖通知的用户';
 	@override String get authentication => '验证';
 	@override String get authenticationRequiredToContinue => '要继续，请先进行验证';
 	@override String get dateAndTime => '日期和时间';
@@ -1579,7 +1582,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get pullDownToRefresh => '下拉以刷新';
 	@override String get useGroupedNotifications => '分组显示通知';
 	@override String get emailVerificationFailedError => '确认电子邮件时出现错误。链接可能已过期。';
-	@override String get cwNotationRequired => '在启用「隐藏内容」时必须输入注释';
+	@override String get cwNotationRequired => '如果启用了 “隐藏内容”，则需要进行注解。';
 	@override String get doReaction => '回应';
 	@override String get code => '代码';
 	@override String get reloadRequiredToApplySettings => '需要重新载入来使设置生效';
@@ -1651,7 +1654,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get draft => '草稿';
 	@override String get draftsAndScheduledNotes => '草稿和定时发送';
 	@override String get confirmOnReact => '发送回应前需要确认';
-	@override String reactAreYouSure({required Object emoji}) => '要用「${emoji}」进行回应吗？';
+	@override String reactAreYouSure({required Object emoji}) => '要用 “${emoji}” 进行回应吗？';
 	@override String get markAsSensitiveConfirm => '确定标记此媒体为敏感内容吗？';
 	@override String get unmarkAsSensitiveConfirm => '确定取消标记为敏感内容吗？';
 	@override String get preferences => '偏好设置';
@@ -1696,13 +1699,13 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get realtimeMode => '实时模式';
 	@override String get turnItOn => '开启';
 	@override String get turnItOff => '关闭';
-	@override String get emojiMute => '打码表情符号';
-	@override String get emojiUnmute => '取消表情符号打码';
+	@override String get emojiMute => '屏蔽表情符号';
+	@override String get emojiUnmute => '取消屏蔽表情符号';
 	@override String muteX({required Object x}) => '隐藏${x}';
 	@override String unmuteX({required Object x}) => '取消对${x}的隐藏';
 	@override String get abort => '中止';
 	@override String get tip => '提示和技巧';
-	@override String get redisplayAllTips => '重新显示所有的提示和技巧';
+	@override String get redisplayAllTips => '重新显示所有 “提示和技巧”';
 	@override String get hideAllTips => '隐藏所有的 “提示与技巧”';
 	@override String get defaultImageCompressionLevel => '默认图像压缩等级';
 	@override String get defaultImageCompressionLevel_description => '较低的等级可以保持画质，但会增加文件大小。<br>较高的等级可以减少文件大小，但相对应的画质将会降低。';
@@ -1730,6 +1733,14 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get zeroPadding => '填充 0';
 	@override String get nothingToConfigure => '没有项目';
 	@override String get viewRenotedChannel => '查看转帖所属频道';
+	@override String get previewingTheme => '正在预览主题';
+	@override String get previewingThemeRestore => '还原';
+	@override String get accessToken => '访问令牌';
+	@override String get chooseEmojiPalette => '选择表情符号选择器';
+	@override String get addToEmojiPalette => '添加至表情符号选择器';
+	@override String get emojiPaletteAlreadyAddedConfirm => '此表情符号已存在于此表情符号选择器中。要再次添加吗？';
+	@override String get append => '加到最后';
+	@override String get prepend => '加到最前';
 	@override late final Translations$misskey$imageEditing_$zh_CN imageEditing_ = Translations$misskey$imageEditing_$zh_CN.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_CN imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_CN.internal(_root);
 	@override late final Translations$misskey$compression_$zh_CN compression_ = Translations$misskey$compression_$zh_CN.internal(_root);
@@ -2023,10 +2034,10 @@ class Translations$misskey$preferencesProfile_$zh_CN extends Translations$misske
 	// Translations
 	@override String get profileName => '配置文件名';
 	@override String get profileNameDescription => '请指定用于识别此设备的名称';
-	@override String get profileNameDescription2 => '如「PC」、「手机」等';
+	@override String get profileNameDescription2 => '例如：“PC"、“手机” 等';
 	@override String get manageProfiles => '管理配置文件';
 	@override String get shareSameProfileBetweenDevicesIsNotRecommended => '不建议在多个设备间共用同一个配置文件。';
-	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => '若想在多个设备间同步某些设置，请为每个设置打开「多设备间同步」选项。';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => '若想在多个设备间同步某些设置，请为每个设置打开 “多设备间同步” 选项。';
 }
 
 // Path: misskey.preferencesBackup_
@@ -2076,11 +2087,11 @@ class Translations$misskey$abuseUserReport_$zh_CN extends Translations$misskey$a
 
 	// Translations
 	@override String get forward => '转发';
-	@override String get forwardDescription => '目标是匿名系统账户，将把举报转发给远程服务器。';
+	@override String get forwardDescription => '以匿名系统账户的身份，将举报转发至远程服务器。';
 	@override String get resolve => '解决';
-	@override String get accept => '确认';
-	@override String get reject => '拒绝';
-	@override String get resolveTutorial => '如果认可举报并已解决，选择「确认」将案件以肯定的态度标记为已解决。\n如果不认可举报，选择「拒绝」将案件以否定的态度标记为已解决。';
+	@override String get accept => '认可';
+	@override String get reject => '驳回';
+	@override String get resolveTutorial => '若处理的举报内容属实，请选择 “认可”，以标记该案件已得到妥善解决。\n若举报内容不属实，请选择 “驳回”，以标记该案件未得到妥善解决。';
 }
 
 // Path: misskey.delivery_
@@ -2123,7 +2134,7 @@ class Translations$misskey$announcement_$zh_CN extends Translations$misskey$anno
 	@override String get end => '结束公告';
 	@override String get tooManyActiveAnnouncementDescription => '若有大量活动公告，可能会造成用户体验下降。请考虑归档已完成的公告。';
 	@override String get readConfirmTitle => '标记为已读？';
-	@override String readConfirmText({required Object title}) => '阅读“${title}”的内容并将其标记为已读。';
+	@override String readConfirmText({required Object title}) => '阅读 “${title}” 的内容，并标记为已读。';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => '因可能损坏新用户的 UX 体验，建议将通知用于发布具有时效性的信息，而不是用于长期展示的信息。';
 	@override String get dialogAnnouncementUxWarn => '同时存在 2 个或以上的对话框公告极有可能对用户体验产生负面的影响，建议谨慎使用。';
 	@override String get silence => '不发送通知';
@@ -2143,7 +2154,7 @@ class Translations$misskey$initialAccountSetting_$zh_CN extends Translations$mis
 	@override String get profileSetting => '个人资料设置';
 	@override String get privacySetting => '隐私设置';
 	@override String get theseSettingsCanEditLater => '也可以在稍后修改这里的设置。';
-	@override String get youCanEditMoreSettingsInSettingsPageLater => '还可以在「设置」页面进行其它各种设置，稍后就来确认一下看看吧。';
+	@override String get youCanEditMoreSettingsInSettingsPageLater => '还可以在 “设置” 页面进行各种其它设置，稍后来确认一下吧。';
 	@override String get followUsers => '为了建立属于你自己的时间线，试着去关注你感兴趣的用户吧。';
 	@override String pushNotificationDescription({required Object name}) => '启用推送通知的话，就可以在设备上接收来自 ${name} 的通知了。';
 	@override String get initialAccountSettingCompleted => '初始设定已经完成了！';
@@ -2239,7 +2250,7 @@ class Translations$misskey$serverSettings_$zh_CN extends Translations$misskey$se
 	@override String get userGeneratedContentsVisibilityForVisitor_description => '对于防止诸如难以管理的不适当的远程内容通过自己的服务器意外地在互联网上公开等问题很有用。';
 	@override String get userGeneratedContentsVisibilityForVisitor_description2 => '包含服务器接收到的远程内容在内，无条件将服务器上的所有内容公开在互联网上存在风险。特别是对去中心化的特性不是很了解的访问者有可能将远程服务器上的内容误认为是在此服务器内生成的，需要特别留意。';
 	@override String get restartServerSetupWizardConfirm_title => '要重新开始服务器初始设定向导吗？';
-	@override String get restartServerSetupWizardConfirm_text => '现有的部分设定将重置。';
+	@override String get restartServerSetupWizardConfirm_text => '当前的部分设置将被重置。';
 	@override String get entrancePageStyle => '入口页面样式';
 	@override String get showTimelineForVisitor => '显示时间线';
 	@override String get showActivitiesForVisitor => '显示活动';
@@ -2265,7 +2276,7 @@ class Translations$misskey$accountMigration_$zh_CN extends Translations$misskey$
 	@override String get startMigration => '迁移';
 	@override String migrationConfirm({required Object account}) => '确定要把此账户迁移到 ${account} 吗？一旦确定后，此操作无法取消，此账户也无法以原来的状态使用。\n同时，请确认迁移后的账户，已创造别名。';
 	@override String get movedAndCannotBeUndone => '该账户已被迁移。\n迁移操作无法撤销。';
-	@override String get postMigrationNote => '这个账户的关注会在迁移操作后的 24 小时后解除。该账户的「关注中」和「关注者」皆会变为 0。由于不会解除关注关系，你的关注者仍然可以继续查看该账户发补给关注者的帖子。';
+	@override String get postMigrationNote => '这个账户的关注会在迁移操作后的24小时后解除。该账户的 “关注中” 和 “关注者” 的数量都将变为0。由于不会解除关注关系，你的关注者仍然可以继续查看该账户发布的帖子。';
 	@override String get movedTo => '迁移后的账户';
 }
 
@@ -2312,7 +2323,7 @@ class Translations$misskey$role_$zh_CN extends Translations$misskey$role_$en_US 
 	@override String get asBadge => '作为徽章显示';
 	@override String get descriptionOfAsBadge => '开启后，用户名旁边将会出现角色图标。';
 	@override String get isExplorable => '公开角色时间线';
-	@override String get descriptionOfIsExplorable => '打开后将公开角色时间线。如果角色不是公开的，就无法公开时间线。';
+	@override String get descriptionOfIsExplorable => '开启后将公开角色时间线。如果角色为非公开，则无法公开时间线。';
 	@override String get displayOrder => '显示顺序';
 	@override String get descriptionOfDisplayOrder => '数字越大，显示位置越靠前。';
 	@override String get preserveAssignmentOnMoveAccount => '将分配状态继承到目标账户';
@@ -2364,7 +2375,7 @@ class Translations$misskey$ffVisibility_$zh_CN extends Translations$misskey$ffVi
 
 	// Translations
 	@override String get public => '公开';
-	@override String get followers => '只有关注你的用户能看到';
+	@override String get followers => '仅关注者可见';
 	@override String get private => '私密';
 }
 
@@ -2407,7 +2418,7 @@ class Translations$misskey$ad_$zh_CN extends Translations$misskey$ad_$en_US {
 	@override String get hide => '不显示';
 	@override String get timezoneinfo => '星期几是根据服务器的时区确定的。';
 	@override String get adsSettings => '广告设置';
-	@override String get notesPerOneAd => '在实时更新时间线中插入广告的间隔（帖子个数）';
+	@override String get notesPerOneAd => '实时更新时插入广告的间隔（每条帖文）';
 	@override String get setZeroToDisable => '设为 0 将不在实时更新时间线中投放广告';
 	@override String get adsTooClose => '广告投放时间间隔过短将可能显著损害用户体验。';
 }
@@ -2431,8 +2442,8 @@ class Translations$misskey$gallery_$zh_CN extends Translations$misskey$gallery_$
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get my => '我的图集';
-	@override String get liked => '喜欢的图集';
+	@override String get my => '我的相册';
+	@override String get liked => '喜欢的相册';
 	@override String get like => '喜欢！';
 	@override String get unlike => '取消喜欢';
 }
@@ -2476,12 +2487,12 @@ class Translations$misskey$preferencesBackups_$zh_CN extends Translations$misske
 	@override String get save => '覆盖存档';
 	@override String get inputName => '请输入备份的名称';
 	@override String get cannotSave => '无法保存';
-	@override String nameAlreadyExists({required Object name}) => '备份名称 "${name}" 已经存在，请指定其他名称。';
+	@override String nameAlreadyExists({required Object name}) => '备份名称 “${name}” 已经存在，请指定其他名称。';
 	@override String applyConfirm({required Object name}) => '您是否要将备份 "${name}" 应用到当前设备上？当前设备现有配置将被丢弃。';
 	@override String saveConfirm({required Object name}) => '您确定要覆盖保存 ${name} 吗？';
 	@override String deleteConfirm({required Object name}) => '您确定要删除 ${name} 吗？';
-	@override String renameConfirm({required Object old, required Object new_}) => '您确定要把“${old}”改为“${new_}”吗？';
-	@override String get noBackups => '当前没有备份，“另存为”允许您在服务器上保存当前客户端的配置。';
+	@override String renameConfirm({required Object old, required Object new_}) => '确定要把 “${old}” 改为 “${new_}” 吗？';
+	@override String get noBackups => '当前没有备份，“另存为” 允许您在服务器上保存当前客户端的配置。';
 	@override String createdAt({required Object date, required Object time}) => '创建日期：${date} ${time}';
 	@override String updatedAt({required Object date, required Object time}) => '更新日期：${date} ${time}';
 	@override String get cannotLoad => '无法加载';
@@ -2570,13 +2581,13 @@ class Translations$misskey$channel_$zh_CN extends Translations$misskey$channel_$
 	@override String get setBanner => '设置横幅';
 	@override String get removeBanner => '删除横幅';
 	@override String get featured => '热门';
-	@override String get owned => '正在管理';
+	@override String get owned => '我的频道';
 	@override String get following => '正在关注';
-	@override String usersCount({required Object n}) => '有${n}人参与';
-	@override String notesCount({required Object n}) => '有${n}个帖子';
+	@override String usersCount({required Object n}) => '${n} 人参与';
+	@override String notesCount({required Object n}) => '${n} 篇帖子';
 	@override String get nameAndDescription => '名称与描述';
 	@override String get nameOnly => '仅名称';
-	@override String get allowRenoteToExternal => '允许转发到频道外和引用';
+	@override String get allowRenoteToExternal => '允许转发至频道外及引用';
 }
 
 // Path: misskey.menuDisplay_
@@ -2613,7 +2624,7 @@ class Translations$misskey$instanceMute_$zh_CN extends Translations$misskey$inst
 	// Translations
 	@override String get instanceMuteDescription => '隐藏来自这些服务器的所有帖子和转贴，包括这些服务器上用户的回复。';
 	@override String get instanceMuteDescription2 => '通过换行符分隔进行设置';
-	@override String get title => '下面实例中的帖子将被隐藏。';
+	@override String get title => '以下服务器中的帖子将被隐藏。';
 	@override String get heading => '已隐藏的服务器';
 }
 
@@ -2668,7 +2679,7 @@ class Translations$misskey$sfx_$zh_CN extends Translations$misskey$sfx_$en_US {
 	@override String get note => '帖子';
 	@override String get noteMy => '发帖';
 	@override String get notification => '通知';
-	@override String get reaction => '选择回应时';
+	@override String get reaction => '添加回应';
 	@override String get chatMessage => '私信';
 }
 
@@ -2815,7 +2826,7 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	@override String get writeGalleryLikes => '管理喜欢的相册';
 	@override String get readFlash => '查看 Play';
 	@override String get writeFlash => '编辑 Play';
-	@override String get readFlashLikes => '查看 Play 的点赞';
+	@override String get readFlashLikes => '查看喜欢的 Play';
 	@override String get writeFlashLikes => '编辑 Play 的点赞列表';
 	@override String get readAdminAbuseUserReports => '查看来自用户的举报';
 	@override String get writeAdminDeleteAccount => '删除用户账户';
@@ -2825,7 +2836,7 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	@override String get readAdminUserIps => '查看用户 IP 地址';
 	@override String get readAdminMeta => '查看实例的元数据';
 	@override String get writeAdminResetPassword => '重置用户密码';
-	@override String get writeAdminResolveAbuseUserReport => '将来自用户的报告标记为「已解决」';
+	@override String get writeAdminResolveAbuseUserReport => '处理来自用户的举报';
 	@override String get writeAdminSendEmail => '发送邮件';
 	@override String get readAdminServerInfo => '查看服务器信息';
 	@override String get readAdminShowModerationLog => '查看管理日志';
@@ -2853,16 +2864,16 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	@override String get readAdminEmoji => '查看表情符号';
 	@override String get writeAdminQueue => '编辑作业队列';
 	@override String get readAdminQueue => '查看作业队列相关情报';
-	@override String get writeAdminPromo => '运营推广说明';
+	@override String get writeAdminPromo => '编辑推广帖文';
 	@override String get writeAdminDrive => '管理用户网盘';
-	@override String get readAdminDrive => '查看用户网盘相关情报';
+	@override String get readAdminDrive => '查看用户网盘的相关信息';
 	@override String get readAdminStream => '使用管理员用的 Websocket API';
 	@override String get writeAdminAd => '管理广告';
 	@override String get readAdminAd => '查看广告';
 	@override String get writeInviteCodes => '生成邀请码';
 	@override String get readInviteCodes => '获取已发行的邀请码';
 	@override String get writeClipFavorite => '管理喜欢的便签';
-	@override String get readClipFavorite => '查看便签的点赞';
+	@override String get readClipFavorite => '查看收藏的便签';
 	@override String get readFederation => '查看联邦相关信息';
 	@override String get writeReportAbuse => '举报用户';
 	@override String get writeChat => '撰写或删除消息';
@@ -2930,7 +2941,7 @@ class Translations$misskey$widgets_$zh_CN extends Translations$misskey$widgets_$
 	// Translations
 	@override String get profile => '个人资料';
 	@override String get instanceInfo => '服务器信息';
-	@override String get memo => '便利贴';
+	@override String get memo => '便签';
 	@override String get notifications => '通知';
 	@override String get timeline => '时间线';
 	@override String get calendar => '日历';
@@ -3005,7 +3016,7 @@ class Translations$misskey$poll_$zh_CN extends Translations$misskey$poll_$en_US 
 	@override String get expiration => '截止时间';
 	@override String get infinite => '永久';
 	@override String get at => '指定日期';
-	@override String get after => '指定时间';
+	@override String get after => '指定时长';
 	@override String get deadlineDate => '截止日期';
 	@override String get deadlineTime => '时间';
 	@override String get duration => '期限';
@@ -3029,11 +3040,11 @@ class Translations$misskey$visibility_$zh_CN extends Translations$misskey$visibi
 
 	// Translations
 	@override String get public => '公开';
-	@override String get publicDescription => '您的帖子将出现在全局时间线上';
+	@override String get publicDescription => '所有用户均可见';
 	@override String get home => '首页';
-	@override String get homeDescription => '仅发送至首页的时间线';
+	@override String get homeDescription => '仅发布至首页';
 	@override String get followers => '仅关注者';
-	@override String get followersDescription => '仅发送至关注者';
+	@override String get followersDescription => '仅关注者可见';
 	@override String get specified => '指定用户';
 	@override String get specifiedDescription => '仅发送至指定用户';
 	@override String get disableFederation => '仅限本地';
@@ -3047,10 +3058,10 @@ class Translations$misskey$postForm_$zh_CN extends Translations$misskey$postForm
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => '还有未上传的文件，要丢弃并关闭窗口吗？';
+	@override String get quitInspiteOfThereAreUnuploadedFilesConfirm => '还有一些文件尚未上传，要放弃上传并关闭窗口吗？';
 	@override String get uploaderTip => '文件尚未上传。您可以在文件菜单中设置重命名、裁剪图片、添加水印以及是否压缩等功能。文件将在帖子发布时自动上传。';
-	@override String get replyPlaceholder => '回复这个帖子...';
-	@override String get quotePlaceholder => '引用这个帖子...';
+	@override String get replyPlaceholder => '回复该帖…';
+	@override String get quotePlaceholder => '引用该贴…';
 	@override String get channelPlaceholder => '发布到频道…';
 	@override String get showHowToUse => '显示窗口说明';
 	@override late final Translations$misskey$postForm_$howToUse_$zh_CN howToUse_ = Translations$misskey$postForm_$howToUse_$zh_CN.internal(_root);
@@ -3247,8 +3258,8 @@ class Translations$misskey$notification_$zh_CN extends Translations$misskey$noti
 	@override String get fileUploaded => '文件已上传';
 	@override String youGotMention({required Object name}) => '来自${name}的提及';
 	@override String youGotReply({required Object name}) => '来自${name}的回复';
-	@override String youGotQuote({required Object name}) => '来自${name}的引用';
-	@override String youRenoted({required Object name}) => '来自${name}的转发';
+	@override String youGotQuote({required Object name}) => '${name} 引用了您';
+	@override String youRenoted({required Object name}) => '${name} 转发你的帖子';
 	@override String get youWereFollowed => '关注了你';
 	@override String get youReceivedFollowRequest => '您有新的关注请求';
 	@override String get yourFollowRequestAccepted => '您的关注请求已通过';
@@ -3273,7 +3284,7 @@ class Translations$misskey$notification_$zh_CN extends Translations$misskey$noti
 	@override String exportOfXCompleted({required Object x}) => '已完成 ${x} 的导出';
 	@override String get login => '有新的登录';
 	@override String get createToken => '访问令牌已创建';
-	@override String createTokenDescription({required Object text}) => '如果不明白其用途，请遵循「${text}」的指示删除访问令牌。';
+	@override String createTokenDescription({required Object text}) => '如果不明白其用途，请遵循 “${text}” 的指示删除访问令牌。';
 	@override late final Translations$misskey$notification_$types_$zh_CN types_ = Translations$misskey$notification_$types_$zh_CN.internal(_root);
 	@override late final Translations$misskey$notification_$actions_$zh_CN actions_ = Translations$misskey$notification_$actions_$zh_CN.internal(_root);
 }
@@ -3304,9 +3315,9 @@ class Translations$misskey$deck_$zh_CN extends Translations$misskey$deck_$en_US 
 	@override String get deleteProfile => '删除配置文件';
 	@override String get introduction => '将各列进行组合以创建您自己的界面！';
 	@override String get introduction2 => '可以随时通过屏幕右侧的 + 来添加列';
-	@override String get widgetsIntroduction => '从列菜单中，选择“小工具编辑”来添加小工具';
+	@override String get widgetsIntroduction => '从列菜单中，选择 “小工具编辑” 来添加小工具';
 	@override String get useSimpleUiForNonRootPages => '使用简易UI显示导航页面';
-	@override String get usedAsMinWidthWhenFlexible => '「自适应宽度」被启用的时候，这就是最小的宽度';
+	@override String get usedAsMinWidthWhenFlexible => '如果启用 “自适应宽度”，此为最小宽度';
 	@override String get flexible => '自适应宽度';
 	@override String get enableSyncBetweenDevicesForProfiles => '启用配置文件跨设备同步';
 	@override String get showHowToUse => '查看用户界面说明';
@@ -3358,7 +3369,7 @@ class Translations$misskey$webhookSettings_$zh_CN extends Translations$misskey$w
 	@override String get modifyWebhook => '编辑 webhook';
 	@override String get name => '名称';
 	@override String get secret => '密钥';
-	@override String get trigger => '触发器';
+	@override String get trigger => '触发';
 	@override String get active => '已启用';
 	@override late final Translations$misskey$webhookSettings_$events_$zh_CN events_ = Translations$misskey$webhookSettings_$events_$zh_CN.internal(_root);
 	@override late final Translations$misskey$webhookSettings_$systemEvents_$zh_CN systemEvents_ = Translations$misskey$webhookSettings_$systemEvents_$zh_CN.internal(_root);
@@ -3409,8 +3420,8 @@ class Translations$misskey$moderationLogTypes_$zh_CN extends Translations$misske
 	@override String get suspendRemoteInstance => '停止远程服务器';
 	@override String get unsuspendRemoteInstance => '恢复远程服务器';
 	@override String get updateRemoteInstanceNote => '更新远程服务器的管理笔记';
-	@override String get markSensitiveDriveFile => '标记网盘文件为敏感媒体';
-	@override String get unmarkSensitiveDriveFile => '取消标记网盘文件为敏感媒体';
+	@override String get markSensitiveDriveFile => '标记为敏感内容';
+	@override String get unmarkSensitiveDriveFile => '取消标记为敏感内容';
 	@override String get resolveAbuseReport => '处理举报';
 	@override String get forwardAbuseReport => '转发举报';
 	@override String get updateAbuseReportNote => '更新举报用管理笔记';
@@ -3671,7 +3682,7 @@ class Translations$misskey$selfXssPrevention_$zh_CN extends Translations$misskey
 
 	// Translations
 	@override String get warning => '警告';
-	@override String get title => '「在此处粘贴什么东西」是欺诈行为。';
+	@override String get title => '任何要求 “在屏幕上贴些什么吧” 的都是诈骗。';
 	@override String get description1 => '如果在此处粘贴了什么，恶意用户可能会接管账户或者盗取个人资料。';
 	@override String get description2 => '如果不能完全理解将要粘贴的内容，%c 请立即停止操作并关闭这个窗口。';
 	@override String description3({required Object link}) => '详情请看这里。${link}';
@@ -3749,6 +3760,8 @@ class Translations$misskey$search_$zh_CN extends Translations$misskey$search_$en
 	@override String get pleaseEnterServerHost => '请填写服务器的主机名称';
 	@override String get pleaseSelectUser => '请选择用户';
 	@override String get serverHostPlaceholder => '如：misskey.example.com';
+	@override String get postFrom => '起始日期';
+	@override String get postTo => '终止日期';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -3773,7 +3786,7 @@ class Translations$misskey$serverSetupWizard_$zh_CN extends Translations$misskey
 	@override String get largeScaleServerAdvice => '运营大规模服务器可能需要高级基础设施知识，如负载均衡和数据库复制。';
 	@override String get doYouConnectToFediverse => '要加入 Fediverse 吗？';
 	@override String get doYouConnectToFediverse_description1 => '若加入由分散性服务器所构成的网络（Fediverse），将能与其它服务器交换内容。';
-	@override String get doYouConnectToFediverse_description2 => '加入 Fediverse 在这里被称为「联邦」。';
+	@override String get doYouConnectToFediverse_description2 => '接入 Fediverse 被称为 “联邦”。';
 	@override String get youCanConfigureMoreFederationSettingsLater => '可在之后进行如哪些服务器允许进行联邦交互等高级设置。';
 	@override String get remoteContentsCleaning => '自动清理传入内容';
 	@override String get remoteContentsCleaning_description => '开启联邦互通后，服务器将持续接收大量内容。打开自动清理后，将自动删除无法找到的旧内容，可节省存储空间。';
@@ -3785,7 +3798,7 @@ class Translations$misskey$serverSetupWizard_$zh_CN extends Translations$misskey
 	@override String get skipSettings => '跳过设置';
 	@override String get settingsCompleted => '设置完成！';
 	@override String get settingsCompleted_description => '辛苦了。设置已完成，可以立即开始使用服务器了。';
-	@override String get settingsCompleted_description2 => '服务器的详细设置可在「控制面板」进行。';
+	@override String get settingsCompleted_description2 => '服务器的详细设置可在 “控制面板” 进行。';
 	@override String get donationRequest => '请求捐助';
 	@override late final Translations$misskey$serverSetupWizard_$donationRequest_$zh_CN donationRequest_ = Translations$misskey$serverSetupWizard_$donationRequest_$zh_CN.internal(_root);
 }
@@ -3804,7 +3817,7 @@ class Translations$misskey$uploader_$zh_CN extends Translations$misskey$uploader
 	@override String get doneConfirm => '部分文件尚未上传，是否继续？';
 	@override String maxFileSizeIsX({required Object x}) => '可上传最大 ${x} 的文件。';
 	@override String get allowedTypes => '可上传的文件类型';
-	@override String get tip => '文件尚未上传。在此对话框中，您可以进行上传前的确认、重命名、压缩和裁剪等操作。准备就绪后，点击“上传”按钮即可开始上传。';
+	@override String get tip => '文件尚未上传。在此对话框中，您可以进行上传前的确认、重命名、压缩和裁剪等操作。准备就绪后，点击 “上传” 按钮即可开始上传。';
 }
 
 // Path: misskey.clientPerformanceIssueTip_
@@ -3908,15 +3921,15 @@ class Translations$misskey$drafts_$zh_CN extends Translations$misskey$drafts_$en
 	@override String get cannotCreateDraftAnymore => '已超过可创建的草稿数量。';
 	@override String get cannotCreateDraft => '此内容无法创建草稿。';
 	@override String get delete => '删除草稿';
-	@override String get deleteAreYouSure => '要删除草稿吗？';
+	@override String get deleteAreYouSure => '确认删除草稿吗？';
 	@override String get noDrafts => '没有草稿';
 	@override String replyTo({required Object user}) => '回复给 ${user}';
-	@override String quoteOf({required Object user}) => '对 ${user} 帖子的引用';
+	@override String quoteOf({required Object user}) => '引用自 ${user} 的帖子';
 	@override String postTo({required Object channel}) => '向 ${channel} 的投稿';
 	@override String get saveToDraft => '保存到草稿';
 	@override String get restoreFromDraft => '从草稿恢复';
 	@override String get restore => '恢复';
-	@override String get listDrafts => '草稿一览';
+	@override String get listDrafts => '草稿列表';
 	@override String get schedule => '定时发布';
 	@override String get listScheduledNotes => '定时发布列表';
 	@override String get cancelSchedule => '取消定时';
@@ -3930,17 +3943,17 @@ class Translations$misskey$qr_$zh_CN extends Translations$misskey$qr_$en_US {
 
 	// Translations
 	@override String get showTabTitle => '显示';
-	@override String get readTabTitle => '读取';
+	@override String get readTabTitle => '扫描';
 	@override String shareTitle({required Object name, required Object acct}) => '${name} ${acct}';
 	@override String get shareText => '请在 Fediverse 上关注我！';
-	@override String get chooseCamera => '选择相机';
+	@override String get chooseCamera => '切换镜头';
 	@override String get cannotToggleFlash => '无法开关闪光灯';
-	@override String get turnOnFlash => '打开闪光灯';
+	@override String get turnOnFlash => '开启闪光灯';
 	@override String get turnOffFlash => '关闭闪光灯';
 	@override String get startQr => '重新打开二维码扫描器';
-	@override String get stopQr => '关闭二维码扫描器';
+	@override String get stopQr => '关闭扫码器';
 	@override String get noQrCodeFound => '未找到二维码';
-	@override String get scanFile => '扫描设备上的图像';
+	@override String get scanFile => '从设备扫描图像';
 	@override String get raw => '文本';
 	@override String get mfm => 'MFM';
 }
@@ -4082,7 +4095,7 @@ class Translations$misskey$initialTutorial_$note_$zh_CN extends Translations$mis
 
 	// Translations
 	@override String get title => '什么是帖子？';
-	@override String get description => '在 Misskey 上发表的文章称为「帖子」。帖子在时间线上按照时间顺序排列，并实时更新。';
+	@override String get description => '在 Misskey 上发表的文章称为 “帖子”。帖子在时间线上按照时间顺序排列，并实时更新。';
 	@override String get reply => '用来回复帖子。可以对回复进行回复，从而形成一串对话。';
 	@override String get renote => '用来将帖子共享到自己的时间线上。也可以加上自己的文字然后引用它。';
 	@override String get reaction => '用来添加回应。详细信息将在下一页进行说明。';
@@ -4097,11 +4110,11 @@ class Translations$misskey$initialTutorial_$reaction_$zh_CN extends Translations
 
 	// Translations
 	@override String get title => '什么是回应？';
-	@override String get description => '您可以在帖子中添加“回应”。 您可以使用反应轻松地表达点“赞”所无法传达的细微差别。';
-	@override String get letsTryReacting => '回应可以通过点击帖子中的「+」按钮来添加。试着给这个示例帖子添加一个回应！';
+	@override String get description => '您可以在帖子中添加 “回应”。 使用回应可以轻松地表达 “点赞” 无法传达的心情。';
+	@override String get letsTryReacting => '点击帖子下方的 “＋” 可以添加回应。试着给这个示例帖子添加一个回应！';
 	@override String get reactToContinue => '添加一个回应来继续';
 	@override String get reactNotification => '当您的帖子被某人添加了回应时，将实时收到通知。';
-	@override String get reactDone => '通过按下「ー」按钮，可以取消已经添加的回应';
+	@override String get reactDone => '点击 “ー” 可以取消回应。';
 }
 
 // Path: misskey.initialTutorial_.timeline_
@@ -4142,11 +4155,11 @@ class Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$zh_CN
 
 	// Translations
 	@override String get title => '如何标记附件为敏感内容？';
-	@override String get description => '对于服务器方针所要求要求的，又或者不适合直接展示的附件，请添加「敏感」标记。\n';
-	@override String get tryThisFile => '试试看，将附加到此窗口的图像标注为敏感！';
+	@override String get description => '对于服务器守则所要求的，或不适合直接展示的附件，请添加 “敏感” 标记。';
+	@override String get tryThisFile => '试试看！将添加到该窗口的图像标记为敏感内容。';
 	@override late final Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$zh_CN exampleNote_ = Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$zh_CN.internal(_root);
-	@override String get method => '要标注附件为敏感内容，请单击该文件以打开菜单，然后单击「标记为敏感内容」。';
-	@override String get sensitiveSucceeded => '附加文件时，请遵循服务器的条款来设置正确敏感设定。\n';
+	@override String get method => '要标注附件为敏感内容，请单击该文件以打开菜单，然后单击 “标记为敏感内容”。';
+	@override String get sensitiveSucceeded => '添加附件时，请遵循服务器的条款、适当设定敏感内容。';
 	@override String get doItToContinue => '将图像标记为敏感后才能够继续';
 }
 
@@ -4292,15 +4305,16 @@ class Translations$misskey$role_$options_$zh_CN extends Translations$misskey$rol
 	@override String get driveCapacity => '网盘容量';
 	@override String get maxFileSize => '可上传的最大文件大小';
 	@override String get maxFileSize_caption => '可能在反向代理或 CDN 等前端存在其它设定值。';
+	@override String maxFileSize_caption2({required Object max}) => '服务器整体的最大文件大小限制为 ${max}。若要允许上传大于此限制的文件，请在 Misskey 配置文件中放宽此设置。';
 	@override String get alwaysMarkNsfw => '总是将文件标记为 NSFW';
 	@override String get canUpdateBioMedia => '允许更新头像和横幅';
 	@override String get pinMax => '帖子置顶数量限制';
-	@override String get antennaMax => '可创建的最大天线数量';
+	@override String get antennaMax => '可创建的天线数量';
 	@override String get wordMuteMax => '折叠词的字数限制';
-	@override String get webhookMax => 'Webhook 创建数量限制';
-	@override String get clipMax => '便签创建数量限制';
+	@override String get webhookMax => '可创建的 Webhook 的数量';
+	@override String get clipMax => '可创建的便签数量';
 	@override String get noteEachClipsMax => '便签内贴文的最大数量';
-	@override String get userListMax => '用户列表创建数量限制';
+	@override String get userListMax => '可创建的用户列表数量';
 	@override String get userEachUserListsMax => '单个用户列表内用户数量限制';
 	@override String get rateLimitFactor => '速率限制';
 	@override String get descriptionOfRateLimitFactor => '值越小限制越少，值越大限制越多。';
@@ -4308,6 +4322,7 @@ class Translations$misskey$role_$options_$zh_CN extends Translations$misskey$rol
 	@override String get canSearchNotes => '是否可以搜索帖子';
 	@override String get canSearchUsers => '使用用户检索';
 	@override String get canUseTranslator => '使用翻译功能';
+	@override String get canCreateChannel => '创建频道';
 	@override String get avatarDecorationLimit => '可添加头像挂件的最大个数';
 	@override String get canImportAntennas => '允许导入天线';
 	@override String get canImportBlocking => '允许导入禁止与我互动的列表';
@@ -4337,13 +4352,13 @@ class Translations$misskey$role_$condition_$zh_CN extends Translations$misskey$r
 	@override String get isBot => '机器人用户';
 	@override String get isSuspended => '停用的用户';
 	@override String get isLocked => '锁推用户';
-	@override String get isExplorable => '启用“使账号可见”的用户';
+	@override String get isExplorable => '启用 “使账号可见” 的用户';
 	@override String get createdLessThan => '账户创建时间少于';
 	@override String get createdMoreThan => '账户创建时间超过';
 	@override String get followersLessThanOrEq => '关注者不多于';
 	@override String get followersMoreThanOrEq => '关注者不少于';
-	@override String get followingLessThanOrEq => '关注中不多于';
-	@override String get followingMoreThanOrEq => '关注中不少于';
+	@override String get followingLessThanOrEq => '关注人数不多于';
+	@override String get followingMoreThanOrEq => '关注人数不少于';
 	@override String get notesLessThanOrEq => '帖子数在～以下';
 	@override String get notesMoreThanOrEq => '帖子数在～以上';
 	@override String get and => '符合以下全部条件';
@@ -4534,12 +4549,12 @@ class Translations$misskey$postForm_$placeholders_$zh_CN extends Translations$mi
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get a => '现在怎么样？';
-	@override String get b => '想好发些什么了吗？';
+	@override String get a => '最近怎么样？';
+	@override String get b => '有什么新鲜事吗？';
 	@override String get c => '在想些什么呢？';
-	@override String get d => '你想要发布些什么吗？';
-	@override String get e => '请写下来吧';
-	@override String get f => '等待您的发布...';
+	@override String get d => '想说些什么？';
+	@override String get e => '写些什么吧';
+	@override String get f => '期待您的发文…';
 }
 
 // Path: misskey.pages_.blocks
@@ -4572,7 +4587,7 @@ class Translations$misskey$notification_$types_$zh_CN extends Translations$missk
 	@override String get follow => '关注中';
 	@override String get mention => '提及';
 	@override String get reply => '回复';
-	@override String get renote => '转发';
+	@override String get renote => '转贴';
 	@override String get quote => '引用';
 	@override String get reaction => '回应';
 	@override String get pollEnded => '问卷调查结束';
@@ -4762,7 +4777,7 @@ class Translations$misskey$dataSaver_$avatar_$zh_CN extends Translations$misskey
 
 	// Translations
 	@override String get title => '头像';
-	@override String get description => '不播放头像的动画。 由于动态图像的文件大小远大于一般图像，停止播放能够进一步节省数据流量。';
+	@override String get description => '不播放动态头像。 动态图像的文件大小远大于一般图像，不播放能够节省更多数据流量。';
 }
 
 // Path: misskey.dataSaver_.urlPreviewThumbnail_
@@ -4772,8 +4787,8 @@ class Translations$misskey$dataSaver_$urlPreviewThumbnail_$zh_CN extends Transla
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '不显示 URL预览缩略图';
-	@override String get description => '将不再加载 URL 预览缩略图。';
+	@override String get title => '隐藏 URL 预览图';
+	@override String get description => '不再加载 URL 预览图。';
 }
 
 // Path: misskey.dataSaver_.disableUrlPreview_
@@ -4912,7 +4927,7 @@ class Translations$misskey$remoteLookupErrors_$responseInvalid_$zh_CN extends Tr
 
 	// Translations
 	@override String get title => '响应无效';
-	@override String get description => '成功与此服务器通信，但返回的数据无效。';
+	@override String get description => '成功与该服务器建立通信，但获取的数据有误。';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
@@ -5057,8 +5072,8 @@ class Translations$misskey$initialTutorial_$postNote_$visibility_$zh_CN extends 
 	// Translations
 	@override String get description => '您可以限制谁可以看到您的帖子。';
 	@override String get public => '向所有用户公开。\n';
-	@override String get home => '仅在首页时间线上发布。 关注者、从个人资料页查看过来的用户、以及通过转帖也能被别的用户看见。';
-	@override String get followers => '仅对关注者可见。 除了您自己之外，没有人可以转贴，并且只有您的关注者可以查看它。\n';
+	@override String get home => '仅发布至首页时间线。 仅您的关注者，以及从个人资料页、通过转帖，其他用户才能够看到。';
+	@override String get followers => '仅关注者可见。 除了您自己，其他人无法转贴。';
 	@override String get direct => '仅对指定用户公开，且收件人将收到通知。';
 	@override String get doNotSendConfidencialOnDirect1 => '发送敏感信息时请注意。\n';
 	@override String get doNotSendConfidencialOnDirect2 => '目标服务器的管理员可以看到发布的内容，因此如果您向不受信任的服务器上的用户发送私信，则在处理敏感信息时需要小心。';
@@ -5072,8 +5087,8 @@ class Translations$misskey$initialTutorial_$postNote_$cw_$zh_CN extends Translat
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '隐藏内容 (CW)\n';
-	@override String get description => '显示「注解」里的内容而不是正文。点击「查看更多」将会把正文显示出来。';
+	@override String get title => '隐藏内容（CW）';
+	@override String get description => '显示 “注释” 中的内容，而非正文。点击 “查看更多” 以显示正文。';
 	@override late final Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$zh_CN exampleNote_ = Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$zh_CN.internal(_root);
 	@override String get useCases => '用于服务器条款所规定的帖子，或对剧透内容和敏感内容进行自主规制。';
 }
@@ -5443,7 +5458,7 @@ class Translations$misskey$achievements_$types_$noteClipped1_$zh_CN extends Tran
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '忍不住要收藏到便签';
+	@override String get title => '忍不住想加入便签';
 	@override String get description => '第一次将帖子加入便签';
 }
 
@@ -5745,7 +5760,7 @@ class Translations$misskey$achievements_$types_$htl20npm_$zh_CN extends Translat
 
 	// Translations
 	@override String get title => '流动的时间线';
-	@override String get description => '在首页时间线的流速超过 20npm';
+	@override String get description => '首页时间线中，帖子加载速度超过每分钟20篇';
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
@@ -6104,8 +6119,8 @@ class Translations$misskey$customEmojisManager_$local_$register_$zh_CN extends T
 	// Translations
 	@override String get uploadSettingTitle => '上传设置';
 	@override String get uploadSettingDescription => '可以在此页面设置上传表情符号时的行为。';
-	@override String get directoryToCategoryLabel => '将目录名设为「category」';
-	@override String get directoryToCategoryCaption => '拖放目录时，将目录名设置为「category」';
+	@override String get directoryToCategoryLabel => '将目录名设为 “category”';
+	@override String get directoryToCategoryCaption => '拖放目录时，将目录名设置为 “category”。';
 	@override String confirmRegisterEmojisDescription({required Object count}) => '要将列表内显示的表情符号替换为新的自定义表情符号吗？（为降低服务器负载，一次操作最多只能注册 ${count} 个表情符号）';
 	@override String get confirmClearEmojisDescription => '要放弃编辑并将列表内表示的表情符号清空吗？';
 	@override String confirmUploadEmojisDescription({required Object count}) => '要将拖放的 ${count} 个文件上传到网盘上吗？';

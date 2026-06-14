@@ -1479,6 +1479,7 @@ class _Translations$misskey$tr_TR extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'Sıfır doldurma';
 	@override String get nothingToConfigure => 'Ayarlar seçeneği bulunmamaktadır.';
 	@override String get viewRenotedChannel => 'Show renoted channel';
+	@override String get previewingThemeRestore => 'Geri yükle';
 	@override late final _Translations$misskey$imageEditing_$tr_TR imageEditing_ = _Translations$misskey$imageEditing_$tr_TR._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$tr_TR imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$tr_TR._(_root);
 	@override late final _Translations$misskey$compression_$tr_TR compression_ = _Translations$misskey$compression_$tr_TR._(_root);

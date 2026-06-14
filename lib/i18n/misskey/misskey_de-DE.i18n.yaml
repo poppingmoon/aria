@@ -1412,6 +1412,7 @@ frame: "Rahmen"
 presets: "Vorlage"
 zeroPadding: "Nullauffüllung"
 nothingToConfigure: "Es sind keine Einstellungen verfügbar"
+previewingThemeRestore: "Wiederherstellen"
 imageEditing_:
   vars_:
     caption: "Dateibeschriftung"

@@ -1215,6 +1215,7 @@ class _Translations$misskey$cs_CZ extends Translations$misskey$en_US {
 	@override String get inDays => 'Dnů';
 	@override String get widgets => 'Widgety';
 	@override String get presets => 'Předvolba';
+	@override String get previewingThemeRestore => 'Obnovit';
 	@override late final _Translations$misskey$imageEditing_$cs_CZ imageEditing_ = _Translations$misskey$imageEditing_$cs_CZ._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$cs_CZ imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$cs_CZ._(_root);
 	@override late final _Translations$misskey$chat_$cs_CZ chat_ = _Translations$misskey$chat_$cs_CZ._(_root);

@@ -1038,6 +1038,7 @@ class _Translations$misskey$nl_NL extends Translations$misskey$en_US {
 	@override String get followingOrFollower => 'Gevolgd of volger';
 	@override String get confirmShowRepliesAll => 'Dit is een onomkeerbare operatie. Weet je zeker dat reacties op anderen van iedereen die je volgt, wil weergeven in je tijdlijn?';
 	@override String get information => 'Over';
+	@override String get previewingThemeRestore => 'Herstellen';
 	@override late final _Translations$misskey$imageEditing_$nl_NL imageEditing_ = _Translations$misskey$imageEditing_$nl_NL._(_root);
 	@override late final _Translations$misskey$chat_$nl_NL chat_ = _Translations$misskey$chat_$nl_NL._(_root);
 	@override late final _Translations$misskey$delivery_$nl_NL delivery_ = _Translations$misskey$delivery_$nl_NL._(_root);

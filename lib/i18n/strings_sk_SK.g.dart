@@ -997,6 +997,7 @@ class _Translations$misskey$sk_SK extends Translations$misskey$en_US {
 	@override String get inMinutes => 'min';
 	@override String get inDays => 'dní';
 	@override String get widgets => 'Widgety';
+	@override String get previewingThemeRestore => 'Obnoviť';
 	@override late final _Translations$misskey$imageEditing_$sk_SK imageEditing_ = _Translations$misskey$imageEditing_$sk_SK._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$sk_SK imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$sk_SK._(_root);
 	@override late final _Translations$misskey$chat_$sk_SK chat_ = _Translations$misskey$chat_$sk_SK._(_root);

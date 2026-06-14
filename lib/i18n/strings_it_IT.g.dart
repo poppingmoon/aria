@@ -45,6 +45,11 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 
 	// Translations
 	@override String get aboutAria => 'Informazioni Su Aria';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Sei sicuro di voler accettare la richiesta seguente da '),
+		name,
+		const TextSpan(text: '?'),
+	]);
 	@override String get accessToken => 'Token di accesso';
 	@override String get accessTokenUpdated => 'Token di accesso aggiornato con successo';
 	@override String get accountAdded => 'Account aggiunto con successo';
@@ -68,9 +73,15 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get buttonTypes => 'Tipi di pulsanti';
 	@override String get cache => 'Cache';
 	@override String get calculating => 'Calcolando...';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Sei sicuro di voler accettare la richiesta seguente da '),
+		name,
+		const TextSpan(text: '?'),
+	]);
 	@override String get clientInfo => 'Informazioni client';
 	@override String get confirmBeforeFollow => 'Conferma prima di seguire';
 	@override String get confirmBeforePost => 'Conferma prima di seguire';
+	@override String get confirmBeforePostingMediaWithoutComment => 'Conferma prima di pubblicare media senza testo alt';
 	@override String get confirmBeforeReact => 'Conferma prima di reagire';
 	@override String get confirmBeforeRenote => 'Conferma prima di rinotare';
 	@override String get copied => 'Copiato negli appunti';
@@ -107,6 +118,7 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get endpoint => 'Endpoint';
 	@override String get exitPlayConfirm => 'Sei sicuro di voler uscire dal gioco?';
 	@override String get expandNote => 'Espandi nota';
+	@override String get expandUser => 'Espandi utente';
 	@override String get extraMentionsWarning => 'La presente nota include menzioni che non sono incluse nella nota di risposta';
 	@override String get fileNotFound => 'File non trovato';
 	@override String get findServer => 'Trova un server Misskey';
@@ -132,6 +144,8 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	]);
 	@override String get importCompleted => 'Importazione completata';
 	@override String get importConfirm => 'Sei sicuro di voler importare le impostazioni? Le impostazioni esistenti verranno sovrascritte.';
+	@override String get invalidEndpoint => 'Endpoint invalido';
+	@override String get invalidEndpointDescription => 'L\'endpoint nella risposta non è valido. Assicurati che il codice che stai eseguendo corrisponda a quello fornito nell\'app.';
 	@override String get invalidListFormat => 'Formato della lista non è valido';
 	@override String jumpTo({required Object x}) => 'Vai a ${x}';
 	@override String get keepOpen => 'Mantieni aperto';
@@ -141,8 +155,10 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get loginWithAccessToken => 'Accedi con un token di accesso';
 	@override String get margin => 'Margine';
 	@override String get media => 'Media';
+	@override String get mediaSaveLocation => 'Posizione di salvataggio media';
 	@override String get mentionToRemoteWarning => 'Questa nota include menzioni agli utenti remoti';
 	@override String get mergeReactionsByName => 'Unisci le reazioni con lo stesso nome';
+	@override String get missingFileCommentWarning => 'Questo file manca di testo alt. Aggiungerlo?';
 	@override String get moved => 'Spostato';
 	@override String get muted => 'Silenziato';
 	@override String get mutedEmojis => 'Emoji silenziate';
@@ -172,11 +188,30 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get openInAnotherAccount => 'Apri su un altro account';
 	@override String get openInBrowser => 'Apri nel browser';
 	@override String get openInExternalBrowser => 'Apri nel browser esterno';
+	@override String get openInInternalBrowser => 'Apri nel browser esterno';
+	@override String get openMenu => 'Apri menu';
 	@override String get openNote => 'Espandi nota';
+	@override String get openNotificationSettings => 'Apri impostazioni notifica';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		const TextSpan(text: 'Apri '),
+		scratchpad,
+		const TextSpan(text: ' nel tuo browser, quindi inserisci il seguente codice ed eseguilo.'),
+	]);
+	@override String get openSensitiveMediaOnDoubleTap => 'Apri media sensibili al doppio tocco';
 	@override String get owner => 'Proprietario';
 	@override String get parameters => 'Parametri';
 	@override String get paste => 'Incolla';
+	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
+		const TextSpan(text: 'Incolla la lista di emoji per fissare le emoji.\nPuoi copiare le tue emoji bloccate per Misskey Web da '),
+		url,
+		const TextSpan(text: '.'),
+	]);
 	@override String get pasteResponseBelow => 'Incolla la risposta qui sotto.';
+	@override String get permissionDeniedErrorDescription => 'Il token di accesso non ha il permesso di eseguire questa azione. Effettua nuovamente il login.';
+	@override String get pin => 'Pin';
+	@override String get pinToEmojiPicker => 'Pin al selettore di emoji';
+	@override String get pinned => 'Fissato';
+	@override String get pinnedDraft => 'Bozza appuntata';
 	@override String get playAudio => 'Riproduci audio';
 	@override String get playVideo => 'Riproduci video';
 	@override String get pleaseCopyResponse => 'Copia questa risposta';
@@ -184,19 +219,27 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get postConfirm => 'Sei sicuro di voler pubblicare questa nota?';
 	@override String get reactionConfirm => 'Sei sicuro di voler aggiungere una reazione?';
 	@override String get recentlyUsedEmojis => 'Emoji usate di recente';
+	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Sei sicuro di voler accettare la richiesta seguente da '),
+		name,
+		const TextSpan(text: '?'),
+	]);
 	@override String get renoteConfirm => 'Sei sicuro di voler rinotare questa nota?';
 	@override String get renoteToChannel => 'Rinota in un canale';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Rinotata da '),
 		user,
 	]);
+	@override String get reset => 'Reset';
 	@override String get rotate => 'Ruota';
+	@override String get saveToDrive => 'Salva su Drive';
 	@override String get selectIcon => 'Seleziona un\'icona';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Rinotata da '),
 		user,
 	]);
 	@override String get sendMessageConfirm => 'Sei sicuro di voler rinotare questa nota?';
+	@override String get server => 'Server';
 	@override String get serverUrl => 'Server Url';
 	@override String get settingsFileForAria => 'File impostazioni per Aria';
 	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
@@ -205,10 +248,13 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	]);
 	@override String get showAvatarsInNote => 'Mostra gli avatar nelle note';
 	@override String get showAvatarsInSubNote => 'Mostra gli avatar nelle sotto-note';
+	@override String get showCaption => 'Mostra testo alternativo';
+	@override String get showEmojiInReactionNotification => 'Mostra emoji nelle notifiche di reazione';
 	@override String get showEntireImage => 'Mostra l\'intera immagine';
 	@override String get showExpandedImage => 'Mostra immagine espansa';
 	@override String get showGapBetweenNotesInTimeline => 'Mostra uno spazio tra i post sulla timeline';
 	@override String get showImage => 'Mostra immagine';
+	@override String get showImageInNotification => 'Mostra immagine nelle notifiche';
 	@override String get showLikeButtonInNoteFooter => 'Aggiungi "Mi piace" al menu di azione note';
 	@override String get showMenuButtonInTabBar => 'Mostra il pulsante menu nella barra delle schede';
 	@override String get showNote => 'Mostra nota';
@@ -221,6 +267,7 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 	@override String get showReactionsCountForEachTypes => 'Vedere il numero di reazioni per ciascun tipo di reazione';
 	@override String get showRenotesCount => 'Vedere il numero di renote nelle note';
 	@override String get showRepliesCount => 'Vedi il numero di risposte nelle note';
+	@override String get showSelfRenotes => 'Mostra autorenotes';
 	@override String get showSmallButtons => 'Mostra pulsanti piccoli';
 	@override String get showSquaredButtons => 'Mostra pulsanti squadrati';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -1000,6 +1047,8 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Crea una Clip';
 	@override String get unclip => 'Togli Nota dalla Clip';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Questa nota è già inclusa in "${name}". Si desidera escludere la nota?';
+	@override String get removeFromAntenna => 'Elimina da questa Antenna';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Vuoi davvero eliminare la Nota di ${name} ?';
 	@override String get public => 'Pubblica';
 	@override String get private => 'Privato';
 	@override String i18nInfo({required Object link}) => 'Misskey è tradotto in diverse lingue da volontari. Anche tu puoi contribuire su ${link}.';
@@ -1464,6 +1513,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Abbiamo confermato la validità di questo collegamento';
 	@override String get notifyNotes => 'Notifica nuove Note';
 	@override String get unnotifyNotes => 'Interrompi le notifiche di nuove Note';
+	@override String get notifyUsers => 'Persone che hanno attivato le notifiche di pubblicazione';
 	@override String get authentication => 'Autenticazione';
 	@override String get authenticationRequiredToContinue => 'Per procedere, è richiesta l\'autenticazione';
 	@override String get dateAndTime => 'Data e Ora';
@@ -1656,6 +1706,9 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'Al vivo';
 	@override String get nothingToConfigure => 'Niente da configurare';
 	@override String get viewRenotedChannel => 'Visualizza il canale del Rinota';
+	@override String get previewingTheme => 'Anteprima del Tema';
+	@override String get previewingThemeRestore => 'Ripristina';
+	@override String get accessToken => 'Codice di accesso';
 	@override late final _Translations$misskey$imageEditing_$it_IT imageEditing_ = _Translations$misskey$imageEditing_$it_IT._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$it_IT imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$it_IT._(_root);
 	@override late final _Translations$misskey$compression_$it_IT compression_ = _Translations$misskey$compression_$it_IT._(_root);
@@ -3675,6 +3728,8 @@ class _Translations$misskey$search_$it_IT extends Translations$misskey$search_$e
 	@override String get pleaseEnterServerHost => 'Inserire il nome host';
 	@override String get pleaseSelectUser => 'Per favore, seleziona un profilo';
 	@override String get serverHostPlaceholder => 'Es: misskey.example.com';
+	@override String get postFrom => 'Pubblicazione dal';
+	@override String get postTo => 'Pubblicazione al';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4218,6 +4273,7 @@ class _Translations$misskey$role_$options_$it_IT extends Translations$misskey$ro
 	@override String get driveCapacity => 'Capienza del Drive';
 	@override String get maxFileSize => 'Dimensione massima del file caricabile';
 	@override String get maxFileSize_caption => 'Potrebbero esserci altre impostazioni nella fase precedente, come reverse proxy o CDN.';
+	@override String maxFileSize_caption2({required Object max}) => 'La dimensione massima dei file caricabili sul server è ${max}. Per consentire il caricamento di file più grandi, aumenta la dimensione nel file di configurazione Misskey.';
 	@override String get alwaysMarkNsfw => 'Impostare sempre come esplicito (NSFW)';
 	@override String get canUpdateBioMedia => 'Può aggiornare foto profilo e di testata';
 	@override String get pinMax => 'Quantità massima di Note in primo piano';
@@ -4234,6 +4290,7 @@ class _Translations$misskey$role_$options_$it_IT extends Translations$misskey$ro
 	@override String get canSearchNotes => 'Ricercare nelle Note';
 	@override String get canSearchUsers => 'Può cercare profili';
 	@override String get canUseTranslator => 'Tradurre le Note';
+	@override String get canCreateChannel => 'Può creare canali';
 	@override String get avatarDecorationLimit => 'Numero massimo di decorazioni foto profilo installabili';
 	@override String get canImportAntennas => 'Può importare Antenne';
 	@override String get canImportBlocking => 'Può importare Blocchi';

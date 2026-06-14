@@ -1493,6 +1493,7 @@ class _Translations$misskey$th_TH extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'ห่างเป็น 0';
 	@override String get nothingToConfigure => 'ไม่มีอะไรให้ต้ังค่า';
 	@override String get viewRenotedChannel => 'แสดงช่องที่ถูกรีโน้ต';
+	@override String get previewingThemeRestore => 'เลิกทำ';
 	@override late final _Translations$misskey$imageEditing_$th_TH imageEditing_ = _Translations$misskey$imageEditing_$th_TH._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$th_TH imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$th_TH._(_root);
 	@override late final _Translations$misskey$compression_$th_TH compression_ = _Translations$misskey$compression_$th_TH._(_root);
@@ -4071,6 +4072,7 @@ class _Translations$misskey$role_$options_$th_TH extends Translations$misskey$ro
 	@override String get canSearchNotes => 'การใช้การค้นหาโน้ต';
 	@override String get canSearchUsers => 'ค้นหาผู้ใช้';
 	@override String get canUseTranslator => 'การใช้งานแปล';
+	@override String get canCreateChannel => 'สร้างช่องใหม่';
 	@override String get avatarDecorationLimit => 'จำนวนของตกแต่งไอคอนสูงสุดที่สามารถติดตั้งได้';
 	@override String get canImportAntennas => 'อนุญาตให้นำเข้าเสาอากาศ';
 	@override String get canImportBlocking => 'อนุญาตให้นำเข้าการบล็อก';

@@ -274,7 +274,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get password => 'Kata sandi';
 	@override String get initialPasswordForSetup => 'Kata sandi untuk memulai konfigurasi awal';
 	@override String get initialPasswordIsIncorrect => 'Kata sandi untuk memulai konfigurasi awal salah.';
-	@override String get initialPasswordForSetupDescription => 'Jika Anda menginstal Misskey sendiri, gunakan kata sandi yang Anda masukkan di berkas konfigurasi.\nJika Anda menggunakan layanan hosting Misskey, gunakan kata sandi yang diberikan.\nJika Anda belum mengatur kata sandi, biarkan kosong dan lanjutkan.';
+	@override String get initialPasswordForSetupDescription => 'Jika Anda memasang Misskey sendiri, gunakan kata sandi yang Anda masukkan di berkas konfigurasi.\nJika Anda menggunakan layanan hosting Misskey, gunakan kata sandi yang diberikan.\nJika Anda belum mengatur kata sandi, biarkan kosong dan lanjutkan.';
 	@override String get forgotPassword => 'Lupa Kata Sandi';
 	@override String get fetchingAsApObject => 'Mengambil data dari Fediverse...';
 	@override String get ok => 'OK';
@@ -282,7 +282,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get cancel => 'Batalkan';
 	@override String get noThankYou => 'Tidak sekarang.';
 	@override String get enterUsername => 'Masukkan nama pengguna';
-	@override String renotedBy({required Object user}) => 'direnote oleh ${user}';
+	@override String renotedBy({required Object user}) => 'Direnote oleh ${user}';
 	@override String get noNotes => 'Tidak ada catatan';
 	@override String get noNotifications => 'Tidak ada notifikasi';
 	@override String get instance => 'Instansi';
@@ -316,7 +316,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get copyLinkRenote => 'Salin tautan renote';
 	@override String get delete => 'Hapus';
 	@override String get deleteAndEdit => 'Hapus dan sunting';
-	@override String get deleteAndEditConfirm => 'Apakah kamu yakin ingin menghapus note ini dan menyuntingnya? Kamu akan kehilangan semua reaksi, renote dan balasan di note ini.';
+	@override String get deleteAndEditConfirm => 'Apakah anda yakin ingin menghapus dan menyunting ulang note ini? Anda akan kehilangan semua reaksi, renote, dan balasan di note ini.';
 	@override String get addToList => 'Tambahkan ke daftar';
 	@override String get addToAntenna => 'Tambahkan ke Antena';
 	@override String get sendMessage => 'Kirim pesan';
@@ -346,6 +346,8 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get download => 'Unduh';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Hapus ${name}? Catatan dengan berkas terkait juga akan terhapus.';
 	@override String unfollowConfirm({required Object name}) => 'Berhenti mengikuti ${name}?';
+	@override String cancelFollowRequestConfirm({required Object name}) => 'Apa anda yakin ingin membatalkan permintaan mengikuti ke ${name}?';
+	@override String rejectFollowRequestConfirm({required Object name}) => 'Apa anda yakin ingin menolak permintaan mengikuti dari ${name}?';
 	@override String get exportRequested => 'Kamu telah meminta ekspor. Ini akan memakan waktu sesaat. Setelah ekspor selesai, berkas yang dihasilkan akan ditambahkan ke Drive';
 	@override String get importRequested => 'Kamu telah meminta impor. Ini akan memakan waktu sesaat.';
 	@override String get lists => 'Daftar';
@@ -377,7 +379,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get renote => 'Renote';
 	@override String get unrenote => 'Hapus renote';
 	@override String get renoted => 'Telah direnote';
-	@override String renotedToX({required Object name}) => '${name} telah merenote';
+	@override String renotedToX({required Object name}) => '${name} telah merenote.';
 	@override String get cantRenote => 'Postingan ini tidak dapat direnote';
 	@override String get cantReRenote => 'Renote tidak dapat direnote';
 	@override String get quote => 'Kutip';
@@ -435,7 +437,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get addEmoji => 'Tambahkan emoji';
 	@override String get settingGuide => 'Pengaturan rekomendasi';
 	@override String get cacheRemoteFiles => 'Tembolokkan berkas dari instansi luar';
-	@override String get cacheRemoteFilesDescription => 'Ketika pengaturan ini dinonaktifkan, berkas dari instansi luar akan dimuat langsung. Menonaktifkan ini akan mengurangi penggunaan penyimpanan peladen, namun dapat menyebabkan peningkatan lalu lintas bandwidth, karena keluku tidak dihasilkan.';
+	@override String get cacheRemoteFilesDescription => 'Ketika pengaturan ini dinonaktifkan, berkas dari peladen luar akan dimuat secara langsung. Menonaktifkan ini akan mengurangi penggunaan penyimpanan peladen, namun dapat menyebabkan peningkatan lalu lintas bandwidth, karena keluku tidak dihasilkan.';
 	@override String get youCanCleanRemoteFilesCache => 'Kamu dapat mengosongkan tembolok dengan mengeklik tombol 🗑️ pada layar manajemen berkas.';
 	@override String get cacheRemoteSensitiveFiles => 'Tembolokkan berkas dari instansi luar';
 	@override String get cacheRemoteSensitiveFilesDescription => 'Menonaktifkan pengaturan ini menyebabkan berkas sensitif dari instansi luar ditautkan secara langsung, bukan ditembolok.';
@@ -445,7 +447,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get flagAsCatDescription => 'Nyalakan tanda ini untuk menandai akun ini sebagai kucing.';
 	@override String get flagShowTimelineReplies => 'Tampilkan balasan di lini masa';
 	@override String get flagShowTimelineRepliesDescription => 'Menampilkan balasan pengguna dari catatan pengguna lain di lini masa apabila dinyalakan.';
-	@override String get autoAcceptFollowed => 'Setujui otomatis permintaan mengikuti dari pengguna yang kamu ikuti';
+	@override String get autoAcceptFollowed => 'Setujui otomatis permintaan mengikuti dari pengguna yang anda ikuti';
 	@override String get addAccount => 'Tambahkan akun';
 	@override String get reloadAccountsList => 'Muat ulang daftar akun';
 	@override String get loginFailed => 'Gagal untuk masuk';
@@ -480,7 +482,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get stopActivityDelivery => 'Berhenti mengirim aktivitas';
 	@override String get blockThisInstance => 'Blokir instansi ini';
 	@override String get silenceThisInstance => 'Senyapkan instansi ini';
-	@override String get mediaSilenceThisInstance => 'Server media senyap';
+	@override String get mediaSilenceThisInstance => 'Senyapkan media dari peladen ini';
 	@override String get operations => 'Tindakan';
 	@override String get software => 'Perangkat lunak';
 	@override String get softwareName => 'Nama Perangkat Lunak';
@@ -502,10 +504,11 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get blockedInstances => 'Instansi terblokir';
 	@override String get blockedInstancesDescription => 'Daftar nama host dari instansi yang diperlukan untuk diblokir. Instansi yang didaftarkan tidak akan dapat berkomunikasi dengan instansi ini.';
 	@override String get silencedInstances => 'Instansi yang disenyapkan';
-	@override String get silencedInstancesDescription => 'Daftar nama host dari instansi yang ingin kamu senyapkan. Semua akun dari instansi yang terdaftar akan diperlakukan sebagai disenyapkan. Hal ini membuat akun hanya dapat membuat permintaan mengikuti, dan tidak dapat menyebutkan akun lokal apabila tidak mengikuti. Hal ini tidak akan mempengaruhi instansi yang diblokir.';
-	@override String get mediaSilencedInstances => 'Server dengan media dibisukan';
-	@override String get mediaSilencedInstancesDescription => 'Masukkan host server yang medianya ingin Anda bisukan, pisahkan dengan baris baru. Semua berkas dari akun di server ini akan dianggap sebagai sensitif dan emoji kustom tidak akan tersedia. Ini tidak akan membengaruhi server yang diblokir.';
-	@override String get federationAllowedHosts => 'Server yang membolehkan federasi';
+	@override String get silencedInstancesDescription => 'Daftar nama host dari peladen yang ingin anda senyapkan, dipisah dengan baris baru. Semua akun yang terdaftar di dalam peladen yang disebut akan dianggap disenyapkan, hanya dapat membuat permintaan mengikuti, dan didak dapat menyebut akun lokal jika tidak diikuti. Ini tidak akan mempengaruhi peladen terblokir.';
+	@override String get mediaSilencedInstances => 'Peladen dengan media yang disenyapkan';
+	@override String get mediaSilencedInstancesDescription => 'Masukkan nama host dari peladen yang ingin medianya dibisukan, dipisah dengan baris baru. Semua akun yang terdaftar di dalam peladen yang disebut akan dianggap sebagai akun sensitif, dan tidak dapat menggunakan emoji kustom. Ini tidak akan mempengaruhi peladen terblokir.';
+	@override String get federationAllowedHosts => 'Peladen yang membolehkan federasi';
+	@override String get federationAllowedHostsDescription => 'Cantumkan nama domain (hostname) peladen yang ingin anda perbolehkan untuk terdesentralisasi, dipisah dengan jeda baris.';
 	@override String get muteAndBlock => 'Bisukan / Blokir';
 	@override String get mutedUsers => 'Pengguna yang dibisukan';
 	@override String get blockedUsers => 'Pengguna yang diblokir';
@@ -515,6 +518,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get pinLimitExceeded => 'Kamu tidak dapat menyematkan catatan lagi';
 	@override String get done => 'Selesai';
 	@override String get processing => 'Memproses';
+	@override String get preprocessing => 'Sedang mempersiapkan...';
 	@override String get preview => 'Pratinjau';
 	@override String get default_ => 'Bawaan';
 	@override String defaultValueIs({required Object value}) => 'Bawaan: ${value}';
@@ -560,8 +564,10 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get uploadFromUrlDescription => 'URL berkas yang ingin kamu unggah';
 	@override String get uploadFromUrlRequested => 'Pengunggahan telah diminta';
 	@override String get uploadFromUrlMayTakeTime => 'Membutuhkan beberapa waktu hingga pengunggahan selesai';
+	@override String uploadNFiles({required Object n}) => 'Unggah file ${n}';
 	@override String get explore => 'Jelajahi';
 	@override String get messageRead => 'Telah dibaca';
+	@override String get readAllChatMessages => 'Tandai semua pesan menjadi terbaca';
 	@override String get noMoreHistory => 'Tidak ada sejarah lagi';
 	@override String get startChat => 'Kirim pesan';
 	@override String nUsersRead({required Object n}) => 'Dibaca oleh ${n}';
@@ -588,11 +594,13 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get lightThemes => 'Tema Terang';
 	@override String get darkThemes => 'Tema gelap';
 	@override String get syncDeviceDarkMode => 'Sinkronkan mode gelap dengan pengaturan perangkat';
+	@override String switchDarkModeManuallyWhenSyncEnabledConfirm({required Object x}) => '"${x}" sedang dinyalakan. Apa anda ingin untuk menghentikan sinkronisasi dan mengganti mode secara manual?';
 	@override String get drive => 'Drive';
 	@override String get fileName => 'Nama berkas';
 	@override String get selectFile => 'Pilih berkas';
 	@override String get selectFiles => 'Pilih berkas';
 	@override String get selectFolder => 'Pilih folder';
+	@override String get unselectFolder => 'Membatalkan seleksi folder';
 	@override String get selectFolders => 'Pilih folder';
 	@override String get fileNotSelected => 'Tidak ada file yang dipilih';
 	@override String get renameFile => 'Ubah nama berkas';
@@ -605,6 +613,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get showFile => 'Tampilkan berkas';
 	@override String get emptyDrive => 'Drive kosong';
 	@override String get emptyFolder => 'Folder kosong';
+	@override String get dropHereToUpload => 'Lepas file di sini untuk diunggah';
 	@override String get unableToDelete => 'Tidak dapat menghapus';
 	@override String get inputNewFileName => 'Masukkan nama berkas yang baru';
 	@override String get inputNewDescription => 'Masukkan keterangan disini';
@@ -663,7 +672,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get hcaptchaSiteKey => 'Site Key';
 	@override String get hcaptchaSecretKey => 'Secret Key';
 	@override String get mcaptcha => 'mCaptcha';
-	@override String get enableMcaptcha => '';
+	@override String get enableMcaptcha => 'Aktifkan mCaptcha';
 	@override String get mcaptchaSiteKey => 'Site key';
 	@override String get mcaptchaSecretKey => 'Secret Key';
 	@override String get mcaptchaInstanceUrl => 'URL instansi mCaptcha';
@@ -686,6 +695,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get antennaKeywordsDescription => 'Pisahkan dengan spasi untuk kondisi AND. Pisahkan dengan baris baru untuk kondisi OR.';
 	@override String get notifyAntenna => 'Beritahu untuk catatan baru';
 	@override String get withFileAntenna => 'Hanya tampilkan catatan dengan berkas yang dilampirkan';
+	@override String get excludeNotesInSensitiveChannel => 'Kecualikan note dari kanal sensitif';
 	@override String get enableServiceworker => 'Aktifkan ServiceWorker';
 	@override String get antennaUsersDescription => 'Tuliskan satu nama pengguna per baris';
 	@override String get caseSensitive => 'Peka huruf besar dan huruf kecil';
@@ -716,6 +726,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get moderator => 'Moderator';
 	@override String get moderation => 'Moderasi';
 	@override String get moderationNote => 'Catatan moderasi';
+	@override String get moderationNoteDescription => 'Anda dapat mengisi note yang hanya akan dibagikan diantara moderator.';
 	@override String get addModerationNote => 'Tambahkan catatan moderasi';
 	@override String get moderationLogs => 'Log moderasi';
 	@override String nUsersMentioned({required Object n}) => '${n} pengguna disebut';
@@ -752,7 +763,8 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get quoteQuestion => 'Apakah kamu ingin menambahkan kutipan?';
 	@override String get attachAsFileQuestion => 'Teks dalam papan klip terlalu panjang. Apakah kamu ingin melampirkannya sebagai berkas teks?';
 	@override String get onlyOneFileCanBeAttached => 'Kamu hanya dapat melampirkan satu berkas ke dalam pesan';
-	@override String get signinRequired => 'Silahkan login';
+	@override String get signinRequired => 'Silahkan mendaftar atau masuk sebelum melanjutkan';
+	@override String get signinOrContinueOnRemote => 'Untuk melanjutkan, anda perlu berpindah peladen atau mendaftar / masuk ke peladen ini.';
 	@override String get invitations => 'Undangan';
 	@override String get invitationCode => 'Kode undangan';
 	@override String get checking => 'Memeriksa';
@@ -776,6 +788,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get native => 'Native';
 	@override String get menuStyle => 'Gaya menu';
 	@override String get style => 'Gaya';
+	@override String get drawer => 'Drawer';
 	@override String get popup => 'Pemunculan';
 	@override String get showNoteActionsOnlyHover => 'Hanya tampilkan aksi catatan saat ditunjuk';
 	@override String get showReactionsCount => 'Lihat jumlah reaksi dalam catatan';
@@ -793,6 +806,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get fontSize => 'Ukuran huruf';
 	@override String get mediaListWithOneImageAppearance => 'Tinggi daftar media dengan satu gambar saja';
 	@override String limitTo({required Object x}) => 'Batasi pada ${x}';
+	@override String get showMediaListByGridInWideArea => 'Tampilkan daftar media berupa kisi-kisi ketika lebar tampilan menjadi luas';
 	@override String get noFollowRequests => 'Kamu tidak memiliki permintaan mengikuti yang menunggu';
 	@override String get openImageInNewTab => 'Buka gambar di tab baru';
 	@override String get dashboard => 'Dasbor';
@@ -833,9 +847,10 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get showFixedPostFormInChannel => 'Tampilkan form posting di atas lini masa (Kanal)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Termasuk balasan dari pengguna baru yang diikuti pada lini masa secara bawaan';
 	@override String get newNoteRecived => 'Kamu mendapat catatan baru';
-	@override String get newNote => 'Catatan baru';
+	@override String get newNote => 'Note baru';
 	@override String get sounds => 'Bunyi';
 	@override String get sound => 'Bunyi';
+	@override String get notificationSoundSettings => 'Pengaturan suara notifikasi';
 	@override String get listen => 'Dengarkan';
 	@override String get none => 'Tidak ada';
 	@override String get showInPage => 'Tampilkan di halaman';
@@ -845,6 +860,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get notUseSound => 'Tidak ada keluaran suara';
 	@override String get useSoundOnlyWhenActive => 'Hanya keluarkan suara jika Misskey sedang aktif';
 	@override String get details => 'Selengkapnya';
+	@override String get renoteDetails => 'Rincian renote';
 	@override String get chooseEmoji => 'Pilih emoji';
 	@override String get unableToProcess => 'Operasi tersebut tidak dapat diselesaikan.';
 	@override String get recentUsed => 'Baru saja digunakan';
@@ -860,6 +876,8 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get descendingOrder => 'Urutkan menurun';
 	@override String get scratchpad => 'Scratchpad';
 	@override String get scratchpadDescription => 'Scratchpad menyediakan lingkungan eksperimen untuk AiScript. Kamu  bisa menulis, mengeksuksi, serta mengecek hasil yang berinteraksi dengan Misskey.';
+	@override String get uiInspector => 'Inspektor UI';
+	@override String get uiInspectorDescription => 'Anda dapat melihat peladen komponen UI di memori. Komponen UI akan dibuat oleh fungsi UI:C.';
 	@override String get output => 'Keluaran';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Nonaktifkan script pada halaman';
@@ -940,14 +958,19 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get smtpSecureInfo => 'Matikan ini ketika menggunakan STARTTLS';
 	@override String get testEmail => 'Tes pengiriman surel';
 	@override String get wordMute => 'Bisukan kata';
+	@override String get wordMuteDescription => 'Minimalkan note yang mengandung kata atau frasa yang dicantumkan. Note yang terminimkan dapat ditampilkan setelah note tersebut diklik.';
 	@override String get hardWordMute => 'Pembisuan kata keras';
+	@override String get showMutedWord => 'Tampilkan kata yang dibisukan';
+	@override String get hardWordMuteDescription => 'Sembunyikan note yang mengandung kata atau frasa yang dicantumkan. Berbeda dengan pembisuan kata, note tersebut akan disembunyikan sepenuhnya dari tampilan.';
 	@override String get regexpError => 'Kesalahan ekspresi reguler';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Galat terjadi pada baris ${line} ekspresi reguler dari ${tab} kata yang dibisukan:';
 	@override String get instanceMute => 'Bisukan instansi';
 	@override String userSaysSomething({required Object name}) => '${name} mengatakan sesuatu';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} menyebutkan sesuatu tentang "${word}"';
 	@override String get makeActive => 'Aktifkan';
 	@override String get display => 'Tampilkan';
 	@override String get copy => 'Salin';
+	@override String get copiedToClipboard => 'Disalin ke papan klip';
 	@override String get metrics => 'Metrik';
 	@override String get overview => 'Ikhtisar';
 	@override String get logs => 'Log';
@@ -993,6 +1016,8 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Buat klip baru';
 	@override String get unclip => 'Batalkan klip';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Catatan ini sudah disertakan di klip "${name}". Yakin ingin membatalkan catatan dari klip ini?';
+	@override String get removeFromAntenna => 'Hapus dari antena ini';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Apa anda yakin ingin menghapus note dari ${name} ini?';
 	@override String get public => 'Publik';
 	@override String get private => 'Tersembunyi';
 	@override String i18nInfo({required Object link}) => 'Misskey diterjemahkan ke dalam banyak bahasa oleh sukarelawan. Kamu juga dapat ikut membantu menerjemahkannya di ${link}.';
@@ -1019,6 +1044,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get alwaysMarkSensitive => 'Tandai media dalam catatan sebagai media sensitif';
 	@override String get loadRawImages => 'Tampilkan lampiran gambar secara penuh daripada thumbnail';
 	@override String get disableShowingAnimatedImages => 'Jangan mainkan gambar bergerak';
+	@override String get disableShowingAnimatedImages_caption => 'Jika gambar bergerak tidak terputar bahkan setelah pengaturan ini dinonaktifkan, bisa jadi ini karena pengaturan aksesibilitas dari peramban atau Sistem Operasi, pengaturan hemat daya, atau hal-hal terkait lainnya.';
 	@override String get highlightSensitiveMedia => 'Sorot media sensitif';
 	@override String get verificationEmailSent => 'Surel verifikasi telah dikirimkan. Mohon akses tautan yang telah disertakan untuk menyelesaikan verifikasi.';
 	@override String get notSet => 'Tidak disetel';
@@ -1042,6 +1068,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get narrow => 'Sempit';
 	@override String get reloadToApplySetting => 'Pengaturan ini akan diterapkan saat memuat halaman kembali. Apakah kamu ingin memuat halaman kembali sekarang?';
 	@override String get needReloadToApply => 'Pengaturan ini hanya akan diterapkan setelah memuat ulang halaman.';
+	@override String get needToRestartServerToApply => 'Perlu memulai ulang Misskey untuk memunculkan pengubahan.';
 	@override String get showTitlebar => 'Tampilkan bilah judul';
 	@override String get clearCache => 'Hapus tembolok';
 	@override String onlineUsersCount({required Object n}) => '${n} orang sedang daring';
@@ -1112,6 +1139,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get accounts => 'Akun';
 	@override String get switch_ => 'Beralih';
 	@override String get noMaintainerInformationWarning => 'Informasi pengelola belum disetel.';
+	@override String get noInquiryUrlWarning => 'URL kontak belum diatur';
 	@override String get noBotProtectionWarning => 'Proteksi bot belum disetel.';
 	@override String get configure => 'Setel';
 	@override String get postToGallery => 'Posting ke galeri';
@@ -1176,6 +1204,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get continueThread => 'Lihat lanjutan thread';
 	@override String get deleteAccountConfirm => 'Akun akan dihapus. Apakah kamu yakin?';
 	@override String get incorrectPassword => 'Kata sandi salah.';
+	@override String get incorrectTotp => 'Password sekali pakai salah dimasukkan atau sudah kadaluarsa.';
 	@override String voteConfirm({required Object choice}) => 'Konfirmasi suara kamu untuk (${choice})？';
 	@override String get hide => 'Sembunyikan';
 	@override String get useDrawerReactionPickerForMobile => 'Tampilkan bilah reaksi sebagai laci di ponsel';
@@ -1227,6 +1256,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get numberOfPageCache => 'Jumlah halaman ditembolokkan';
 	@override String get numberOfPageCacheDescription => 'Menaikkan jumlah ini akan meningkatkan kenyamanan untuk pengguna, namun dapat menyebabkan lonjakan beban pada peladen dan juga memori yang digunakan.';
 	@override String get logoutConfirm => 'Anda yakin ingin keluar?';
+	@override String get logoutWillClearClientData => 'Pengaturan klien di browser akan terhapus jika anda keluar dari sesi. Untuk mengembalikan pengaturan saat masuk kembali, anda perlu mengaktifkan pencadangan otomatis di pengaturan anda.';
 	@override String get lastActiveDate => 'Terakhir digunakan';
 	@override String get statusbar => 'Bilah status';
 	@override String get pleaseSelect => 'Pilih opsi...';
@@ -1245,6 +1275,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseInappropriate => 'Berkas ini tidak dapat diunggah karena sebagian dari berkas terdeteksi berpotensi NSFW.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Gagal mengunggah karena kekurangan kapasitas Drive.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Berkas ini tidak dapat diunggah karena melebihi batas ukuran berkas.';
+	@override String get cannotUploadBecauseUnallowedFileType => 'Tidak dapat mengunggah karena tipe file yang tidak diijinkan.';
 	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Penandaan NSFW otomatis';
 	@override String get enableAutoSensitiveDescription => 'Mendeteksi otomatis dan menandai media NSFW menggunakan Pembelajaran Mesin jika memungkinkan. Meskipun opsi ini dimatikan, ada kemungkinan dinyalakan secara menyeluruh pada instansi peladen.';
@@ -1260,6 +1291,9 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get pushNotificationNotSupported => 'Browser atau instansi kamu tidak mendukung notifikasi dorong';
 	@override String get sendPushNotificationReadMessage => 'Hapus notifikasi dorong ketika notifikasi relevan atau pesan telah dibaca';
 	@override String get sendPushNotificationReadMessageCaption => 'Notifikasi berisi teks「」akan ditampilkan dalam waktu pendek. Ini mungkin dapat menambah pemakaian baterai pada perangkat kamu.';
+	@override String get pleaseAllowPushNotification => 'Mohon nyalakan notifikasi push di peramban anda';
+	@override String get browserPushNotificationDisabled => 'Gagal mendapatkan ijin untuk mengirim notifikasi';
+	@override String browserPushNotificationDisabledDescription({required Object serverName}) => 'Anda tidak memiliki ijin untuk mengirim notifikasi dari ${serverName}. Mohon ijinkan notifikasi di pengaturan peramban anda dan coba lagi.';
 	@override String get windowMaximize => 'Maksimalkan';
 	@override String get windowMinimize => 'Minimalkan';
 	@override String get windowRestore => 'Kembalikan';
@@ -1305,6 +1339,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get thisPostMayBeAnnoyingCancel => 'Batalkan';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Tetap catat';
 	@override String get collapseRenotes => 'Tutup renote yang sudah kamu lihat';
+	@override String get collapseRenotesDescription => 'Tutup note yang sudah kamu beri reaksi atau direnote sebelumnya.';
 	@override String get internalServerError => 'Kesalahan internal peladen';
 	@override String get internalServerErrorDescription => 'Peladen sedang mengalami galat tak terduga';
 	@override String get copyErrorInfo => 'Salin detil galat';
@@ -1343,6 +1378,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get retryAllQueuesConfirmText => 'Hal ini akan meningkatkan beban sementara ke peladen.';
 	@override String get enableChartsForRemoteUser => 'Buat bagan data pengguna instansi luar';
 	@override String get enableChartsForFederatedInstances => 'Buat bagan data peladen instansi luar';
+	@override String get enableStatsForFederatedInstances => 'Terima informasi peladen luar';
 	@override String get showClipButtonInNoteFooter => 'Tambahkan "Klip" ke menu aksi catatan';
 	@override String get reactionsDisplaySize => 'Ukuran tampilan reaksi';
 	@override String get limitWidthOfReaction => 'Batasi lebar maksimum reaksi dan tampilkan dalam ukuran terbatasi.';
@@ -1442,6 +1478,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Tautan kepemilikan telah diverifikasi';
 	@override String get notifyNotes => 'Beritahu mengenai catatan baru';
 	@override String get unnotifyNotes => 'Berhenti memberitahu mengenai catatan baru';
+	@override String get notifyUsers => 'Pengguna dengan notifikasi pos yang dinyalakan';
 	@override String get authentication => 'Autentikasi';
 	@override String get authenticationRequiredToContinue => 'Mohon autentikasikan terlebih dahulu sebelum melanjutkan';
 	@override String get dateAndTime => 'Tanggal dan Waktu';
@@ -1537,9 +1574,16 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Verifikasi kunci sandi berhasil, namun pemasukan tanpa sandi dinonaktifkan.';
 	@override String get messageToFollower => 'Pesan kepada pengikut';
 	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Jika anda ingin menggunakan nama ini, mohon hubungi admin peladen.';
 	@override String get lockdown => 'Kuncitara';
+	@override String get federationSpecified => 'Peladen ini dioperasikan dalam federasi daftar putih. Interaksi dengan peladen selain yang telah dikelola oleh admin tidak diperbolehkan.';
+	@override String get federationDisabled => 'Federasi dimatikan di peladen ini. Anda tidak dapat berinteraksi dengan pengguna di peladen lain.';
+	@override String get draft => 'Draf';
+	@override String get draftsAndScheduledNotes => 'Draf dan note terjadwal';
 	@override String get noName => 'Tidak ada nama';
 	@override String get skip => 'Lewati';
+	@override String get restore => 'Kembalikan';
+	@override String get preferenceSyncConflictTitle => 'Nilai yang diatur sudah ada di dalam peladen.';
 	@override String get paste => 'Tempel';
 	@override String get emojiPalette => 'Palet emoji';
 	@override String get postForm => 'Buat catatan';
@@ -1554,11 +1598,14 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get inDays => 'hari';
 	@override String get widgets => 'Widget';
 	@override String get presets => 'Prasetel';
+	@override String get previewingThemeRestore => 'Kembalikan';
 	@override late final _Translations$misskey$imageEditing_$id_ID imageEditing_ = _Translations$misskey$imageEditing_$id_ID._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$id_ID imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$id_ID._(_root);
 	@override late final _Translations$misskey$chat_$id_ID chat_ = _Translations$misskey$chat_$id_ID._(_root);
 	@override late final _Translations$misskey$settings_$id_ID settings_ = _Translations$misskey$settings_$id_ID._(_root);
 	@override late final _Translations$misskey$preferencesProfile_$id_ID preferencesProfile_ = _Translations$misskey$preferencesProfile_$id_ID._(_root);
+	@override late final _Translations$misskey$preferencesBackup_$id_ID preferencesBackup_ = _Translations$misskey$preferencesBackup_$id_ID._(_root);
+	@override late final _Translations$misskey$accountSettings_$id_ID accountSettings_ = _Translations$misskey$accountSettings_$id_ID._(_root);
 	@override late final _Translations$misskey$abuseUserReport_$id_ID abuseUserReport_ = _Translations$misskey$abuseUserReport_$id_ID._(_root);
 	@override late final _Translations$misskey$delivery_$id_ID delivery_ = _Translations$misskey$delivery_$id_ID._(_root);
 	@override late final _Translations$misskey$bubbleGame_$id_ID bubbleGame_ = _Translations$misskey$bubbleGame_$id_ID._(_root);
@@ -1636,6 +1683,8 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$search_$id_ID search_ = _Translations$misskey$search_$id_ID._(_root);
 	@override late final _Translations$misskey$watermarkEditor_$id_ID watermarkEditor_ = _Translations$misskey$watermarkEditor_$id_ID._(_root);
 	@override late final _Translations$misskey$imageEffector_$id_ID imageEffector_ = _Translations$misskey$imageEffector_$id_ID._(_root);
+	@override String get drafts => 'Draf';
+	@override late final _Translations$misskey$drafts_$id_ID drafts_ = _Translations$misskey$drafts_$id_ID._(_root);
 	@override late final _Translations$misskey$qr_$id_ID qr_ = _Translations$misskey$qr_$id_ID._(_root);
 }
 
@@ -1657,6 +1706,8 @@ class _Translations$misskey$imageFrameEditor_$id_ID extends Translations$misskey
 
 	// Translations
 	@override String get header => 'Header';
+	@override String get withQrCode => 'QR Code';
+	@override String get backgroundColor => 'Warna latar belakang';
 	@override String get font => 'Font';
 	@override String get fontSerif => 'Serif';
 	@override String get fontSansSerif => 'Sans-serif';
@@ -1685,6 +1736,7 @@ class _Translations$misskey$settings_$id_ID extends Translations$misskey$setting
 	final TranslationsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get notificationsBanner => 'Anda dapat mengatur tipe dan rentang notifikasi dari peladen dan notifikasi push.';
 	@override String get webhook => 'Webhook';
 	@override String get contentsUpdateFrequency => 'Frekuensi pembaruan konten';
 }
@@ -1697,6 +1749,30 @@ class _Translations$misskey$preferencesProfile_$id_ID extends Translations$missk
 
 	// Translations
 	@override String get profileName => 'Nama profil';
+}
+
+// Path: misskey.preferencesBackup_
+class _Translations$misskey$preferencesBackup_$id_ID extends Translations$misskey$preferencesBackup_$en_US {
+	_Translations$misskey$preferencesBackup_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => 'Pencadangan otomatis';
+	@override String get restoreFromBackup => 'Kembalikan dari pencadangan';
+	@override String get noBackupsFoundDescription => 'Tidak ada pencadangan otomatis yang ditemukan, namun jika anda pernah membuat cadangan secara manual, anda bisa mengimpor dan mengembalikan pencadangan tersebut.';
+	@override String get selectBackupToRestore => 'Pilih pencadangan untuk dikembalikan';
+}
+
+// Path: misskey.accountSettings_
+class _Translations$misskey$accountSettings_$id_ID extends Translations$misskey$accountSettings_$en_US {
+	_Translations$misskey$accountSettings_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'Ketika fitur ini diaktifkan, hanya pengikut yang dapat melihat note sebelum tanggal dan waktu yang ditentukan atau telah terlihat untuk waktu tertentu. Setelah dinonaktifkan, status publikasi note juga akan dikembalikan seperti semula.';
+	@override String get makeNotesHiddenBeforeDescription => 'Saat fitur ini diaktifkan, note sebelum tanggal dan waktu tertentu hanya akan terlihat oleh anda. Setelah dinonaktifkan, status publikasi note juga akan dikembalikan seperti semula.';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1842,6 +1918,9 @@ class _Translations$misskey$serverSettings_$id_ID extends Translations$misskey$s
 	@override String get fanoutTimelineDescription => 'Dapat meningkatkan performa dalam pengambilan data linimasa dan mengurangi beban pada database ketika dinyalakan. Sebagai gantinya, penggunaan memory pada Redis akan meningkan. Pertimbangkan untuk menonaktifkan fitur ini jika mengalami kekurangan memori pada server atau menyebabkan server tidak stabil.';
 	@override String get fanoutTimelineDbFallback => 'Fallback ke database';
 	@override String get fanoutTimelineDbFallbackDescription => 'Ketika diaktifkan, lini masa akan fallback ke database untuk melakukan kueri tambahan apabila linimasa tidak disimpan dalam cache. Menonaktifkan ini dapat mengurangi beban server dengan mengeliminasi proses fallback, namun dapat berakibat membatasi jarak data dari lini masa yang dapat diambil.';
+	@override String get reactionsBufferingDescription => 'Ketika diaktifkan, performa saat membuat reaksi akan meningkat drastis, mengurangi beban database. Namun, penggunaan memori Redis akan meningkat.';
+	@override String get remoteNotesCleaning_description => 'Ketika diaktifkan, note yang tidak terpakai dan kadaluarsa dari instansi luar akan dibersihkan secara berkala untuk mencegah membengkaknya database.';
+	@override String get inquiryUrlDescription => 'Cantumkan URL untuk menghubungi pengelola peladen atau laman web berisikan informasi kontak.';
 }
 
 // Path: misskey.accountMigration_
@@ -2477,6 +2556,7 @@ class _Translations$misskey$auth_$id_ID extends Translations$misskey$auth_$en_US
 	@override String get callback => 'Mengembalikan kamu ke aplikasi';
 	@override String get denied => 'Akses ditolak';
 	@override String get pleaseLogin => 'Mohon masuk untuk otorisasi aplikasi.';
+	@override String get alreadyAuthorized => 'Aplikasi ini sudah memiliki ijin akses.';
 }
 
 // Path: misskey.antennaSources_
@@ -2829,9 +2909,12 @@ class _Translations$misskey$notification_$id_ID extends Translations$misskey$not
 	@override String get youReceivedFollowRequest => 'Kamu menerima permintaan mengikuti';
 	@override String get yourFollowRequestAccepted => 'Permintaan mengikuti kamu telah diterima';
 	@override String get pollEnded => 'Hasil Kuesioner telah keluar';
+	@override String get scheduledNotePosted => 'Note terjadwal sudah diunggah';
+	@override String get scheduledNotePostFailed => 'Gagal mengunggah note terjadwal';
 	@override String get newNote => 'Catatan baru';
 	@override String unreadAntennaNote({required Object name}) => 'Antena ${name}';
 	@override String get roleAssigned => 'Peran Diberikan';
+	@override String get chatRoomInvitationReceived => 'Kamu telah diundang ke dalam ruang chat';
 	@override String get emptyPushNotificationMessage => 'Pembaruan notifikasi dorong';
 	@override String get achievementEarned => 'Pencapaian didapatkan';
 	@override String get testNotification => 'Tes notifikasi';
@@ -2843,6 +2926,10 @@ class _Translations$misskey$notification_$id_ID extends Translations$misskey$not
 	@override String renotedBySomeUsers({required Object n}) => '${n} orang telah merenote';
 	@override String followedBySomeUsers({required Object n}) => '${n} orang telah mengikuti';
 	@override String get flushNotification => 'Bersihkan notifikasi';
+	@override String exportOfXCompleted({required Object x}) => 'Berhasil mengekspor ${x}';
+	@override String get login => 'Seseorang telah masuk';
+	@override String get createToken => 'Token akses berhasil dibuat';
+	@override String createTokenDescription({required Object text}) => 'Jika anda tidak tahu apa-apa, hapus token akses melalui "${text}".';
 	@override late final _Translations$misskey$notification_$types_$id_ID types_ = _Translations$misskey$notification_$types_$id_ID._(_root);
 	@override late final _Translations$misskey$notification_$actions_$id_ID actions_ = _Translations$misskey$notification_$actions_$id_ID._(_root);
 }
@@ -2857,6 +2944,7 @@ class _Translations$misskey$deck_$id_ID extends Translations$misskey$deck_$en_US
 	@override String get alwaysShowMainColumn => 'Selalu tampilkan kolom utama';
 	@override String get columnAlign => 'Luruskan kolom';
 	@override String get addColumn => 'Tambahkan kolom';
+	@override String get newNoteNotificationSettings => 'Pengaturan notifikasi untuk note baru';
 	@override String get configureColumn => 'Atur kolom';
 	@override String get swapLeft => 'Pindah ke kiri';
 	@override String get swapRight => 'Pindah ke kanan';
@@ -3184,6 +3272,31 @@ class _Translations$misskey$imageEffector_$id_ID extends Translations$misskey$im
 	@override late final _Translations$misskey$imageEffector_$fxProps_$id_ID fxProps_ = _Translations$misskey$imageEffector_$fxProps_$id_ID._(_root);
 }
 
+// Path: misskey.drafts_
+class _Translations$misskey$drafts_$id_ID extends Translations$misskey$drafts_$en_US {
+	_Translations$misskey$drafts_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get select => 'Pilih Draf';
+	@override String get cannotCreateDraftAnymore => 'Telah melebihi jumlah draf yang dapat dibuat.';
+	@override String get cannotCreateDraft => 'Anda tidak dapat membuat draf dengan konten ini.';
+	@override String get delete => 'Hapus Draf';
+	@override String get deleteAreYouSure => 'Hapus Draf?';
+	@override String get noDrafts => 'Tidak ada draf';
+	@override String replyTo({required Object user}) => 'Balas ke ${user}';
+	@override String quoteOf({required Object user}) => 'Mengutip note dari ${user}';
+	@override String postTo({required Object channel}) => 'Mengunggah ke ${channel}';
+	@override String get saveToDraft => 'Simpan ke Draf';
+	@override String get restoreFromDraft => 'Kembalikan dari Draf';
+	@override String get restore => 'Kembalikan';
+	@override String get listDrafts => 'Daftar Draf';
+	@override String get schedule => 'Jadwalkan note';
+	@override String get listScheduledNotes => 'Daftar note terjadwal';
+	@override String get cancelSchedule => 'Batalkan penjadwalan';
+}
+
 // Path: misskey.qr_
 class _Translations$misskey$qr_$id_ID extends Translations$misskey$qr_$en_US {
 	_Translations$misskey$qr_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3478,6 +3591,7 @@ class _Translations$misskey$role_$options_$id_ID extends Translations$misskey$ro
 	@override String get avatarDecorationLimit => 'Jumlah maksimum dekorasi avatar yang dapat diterapkan';
 	@override String get canImportAntennas => 'Izinkan mengimpor antena';
 	@override String get canImportUserLists => 'Izinkan mengimpor senarai';
+	@override String get noteDraftLimit => 'Jumlah dari draf yang dapat dibuat dari sisi peladen';
 }
 
 // Path: misskey.role_.condition_
@@ -3618,8 +3732,10 @@ class _Translations$misskey$postForm_$howToUse_$id_ID extends Translations$missk
 	final TranslationsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get account_description => 'Anda dapat berpindah antar akun untuk mengunggah note, melihat daftar draf dan note terjadwal yang tersimpan di akun anda.';
 	@override String get visibility_title => 'Visibilitas';
 	@override String get menu_title => 'Menu';
+	@override String get menu_description => 'Anda dapat menyimpan konten saat ini ke dalam draf, menjadwalkan note, mengatur reaksi, dan melakukan aksi lainnya.';
 }
 
 // Path: misskey.postForm_.placeholders_
@@ -3671,11 +3787,17 @@ class _Translations$misskey$notification_$types_$id_ID extends Translations$miss
 	@override String get quote => 'Kutip';
 	@override String get reaction => 'Reaksi';
 	@override String get pollEnded => 'Jajak pendapat berakhir';
+	@override String get scheduledNotePosted => 'Note terjadwal berhasil';
+	@override String get scheduledNotePostFailed => 'Note terjadwal gagal';
 	@override String get receiveFollowRequest => 'Permintaan mengikuti diterima';
 	@override String get followRequestAccepted => 'Permintaan mengikuti disetujui';
 	@override String get roleAssigned => 'Peran Diberikan';
+	@override String get chatRoomInvitationReceived => 'Diundang ke dalam ruang chat';
 	@override String get achievementEarned => 'Pencapaian didapatkan';
+	@override String get exportCompleted => 'Ekspor telah selesai';
 	@override String get login => 'Masuk';
+	@override String get createToken => 'Buat token akses';
+	@override String get test => 'Tes notifikasi';
 	@override String get app => 'Notifikasi dari aplikasi tertaut';
 }
 
@@ -3734,6 +3856,7 @@ class _Translations$misskey$abuseReport_$notificationRecipient_$id_ID extends Tr
 	final TranslationsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get createRecipient => 'Tambah penerima laporan';
 	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$id_ID recipientType_ = _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$id_ID._(_root);
 	@override String get keywords => 'Kata kunci';
 }

@@ -1069,6 +1069,8 @@ class Translations$misskey$ja_JP extends Translations$misskey$en_US {
 	@override String get createNewClip => '新しいクリップを作成';
 	@override String get unclip => 'クリップ解除';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'このノートはすでにクリップ「${name}」に含まれています。ノートをこのクリップから除外しますか？';
+	@override String get removeFromAntenna => 'このアンテナから削除';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => '「${name}」からこのノートを削除しますか？';
 	@override String get public => 'パブリック';
 	@override String get private => '非公開';
 	@override String i18nInfo({required Object link}) => 'Misskeyは有志によって様々な言語に翻訳されています。${link}で翻訳に協力できます。';
@@ -1533,6 +1535,7 @@ class Translations$misskey$ja_JP extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'このリンク先の所有者であることが確認されました';
 	@override String get notifyNotes => '投稿を通知';
 	@override String get unnotifyNotes => '投稿の通知を解除';
+	@override String get notifyUsers => '投稿通知を設定したユーザー';
 	@override String get authentication => '認証';
 	@override String get authenticationRequiredToContinue => '続けるには認証を行ってください';
 	@override String get dateAndTime => '日時';
@@ -1725,6 +1728,14 @@ class Translations$misskey$ja_JP extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'ゼロ埋め';
 	@override String get nothingToConfigure => '設定項目はありません';
 	@override String get viewRenotedChannel => 'リノート先のチャンネルを見る';
+	@override String get previewingTheme => 'テーマのプレビュー中';
+	@override String get previewingThemeRestore => '元に戻す';
+	@override String get accessToken => 'アクセストークン';
+	@override String get chooseEmojiPalette => '絵文字パレットを選択';
+	@override String get addToEmojiPalette => '絵文字パレットに追加';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'この絵文字はすでにこの絵文字パレットに含まれています。追加しなおしますか？';
+	@override String get append => '末尾に追加';
+	@override String get prepend => '先頭に追加';
 	@override late final Translations$misskey$imageEditing_$ja_JP imageEditing_ = Translations$misskey$imageEditing_$ja_JP.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ja_JP imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ja_JP.internal(_root);
 	@override late final Translations$misskey$compression_$ja_JP compression_ = Translations$misskey$compression_$ja_JP.internal(_root);
@@ -3754,6 +3765,8 @@ class Translations$misskey$search_$ja_JP extends Translations$misskey$search_$en
 	@override String get pleaseEnterServerHost => 'サーバーのホストを入力してください';
 	@override String get pleaseSelectUser => 'ユーザーを選択してください';
 	@override String get serverHostPlaceholder => '例: misskey.example.com';
+	@override String get postFrom => '投稿日時from';
+	@override String get postTo => '投稿日時to';
 }
 
 // Path: misskey.serverSetupWizard_
@@ -4313,6 +4326,7 @@ class Translations$misskey$role_$options_$ja_JP extends Translations$misskey$rol
 	@override String get driveCapacity => 'ドライブ容量';
 	@override String get maxFileSize => 'アップロード可能な最大ファイルサイズ';
 	@override String get maxFileSize_caption => 'リバースプロキシやCDNなど、前段で別の設定値が存在する場合があります。';
+	@override String maxFileSize_caption2({required Object max}) => 'サーバー全体の最大ファイルサイズ設定は ${max} です。これより大きいファイルをアップロードできるようにするには、Misskeyの設定ファイルからこの設定を緩和してください。';
 	@override String get alwaysMarkNsfw => 'ファイルにNSFWを常に付与';
 	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートのピン留めの最大数';
@@ -4329,6 +4343,7 @@ class Translations$misskey$role_$options_$ja_JP extends Translations$misskey$rol
 	@override String get canSearchNotes => 'ノート検索の利用';
 	@override String get canSearchUsers => 'ユーザー検索の利用';
 	@override String get canUseTranslator => '翻訳機能の利用';
+	@override String get canCreateChannel => 'チャンネルの作成';
 	@override String get avatarDecorationLimit => 'アイコンデコレーションの最大取付個数';
 	@override String get canImportAntennas => 'アンテナのインポートを許可';
 	@override String get canImportBlocking => 'ブロックのインポートを許可';
