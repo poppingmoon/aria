@@ -317,7 +317,9 @@ class _Mfm extends StatelessWidget {
             : text,
         style: config.style.apply(
           fontSizeFactor: config.scale,
-          color: config.style.color?.withValues(alpha: config.opacity),
+          color: config.style.color?.withValues(
+            alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+          ),
         ),
       ),
       MfmBold(:final children?) => TextSpan(
@@ -495,7 +497,7 @@ class _Mfm extends StatelessWidget {
           child: Code(
             code: code,
             inline: true,
-            fontSize: config.style.apply(fontSizeFactor: config.scale).fontSize,
+            style: config.style.apply(fontSizeFactor: config.scale),
           ),
         ),
       ),
@@ -580,7 +582,12 @@ class _Mfm extends StatelessWidget {
                       )
                     : null,
                 fallbackTextStyle: config.style
-                    .apply(fontSizeFactor: config.scale)
+                    .apply(
+                      fontSizeFactor: config.scale,
+                      color: config.style.color?.withValues(
+                        alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+                      ),
+                    )
                     .copyWith(height: simple ? 1.0 : null),
                 fallbackToImage: false,
                 enableFadeIn: enableEmojiFadeIn,
@@ -597,7 +604,9 @@ class _Mfm extends StatelessWidget {
           emoji: emoji,
           style: config.style.apply(
             fontSizeFactor: config.scale,
-            color: config.style.color?.withValues(alpha: config.opacity),
+            color: config.style.color?.withValues(
+              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+            ),
           ),
           onTap: !simple
               ? () => showModalBottomSheet<void>(
@@ -622,7 +631,9 @@ class _Mfm extends StatelessWidget {
           formula,
           mathStyle: MathStyle.text,
           textStyle: config.style.apply(
-            color: config.style.color?.withValues(alpha: config.opacity),
+            color: config.style.color?.withValues(
+              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+            ),
           ),
           textScaleFactor: config.scale,
           onErrorFallback: (_) => Text(
@@ -642,7 +653,9 @@ class _Mfm extends StatelessWidget {
             child: Math.tex(
               formula,
               textStyle: config.style.apply(
-                color: config.style.color?.withValues(alpha: config.opacity),
+                color: config.style.color?.withValues(
+                  alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+                ),
               ),
               textScaleFactor: config.scale,
               onErrorFallback: (_) => Text(
@@ -663,7 +676,9 @@ class _Mfm extends StatelessWidget {
         text: text,
         style: config.style.apply(
           fontSizeFactor: config.scale,
-          color: config.style.color?.withValues(alpha: config.opacity),
+          color: config.style.color?.withValues(
+            alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+          ),
         ),
       ),
       _ => null,
@@ -1068,10 +1083,7 @@ class _Mfm extends StatelessWidget {
         return TextSpan(
           children: _buildNodes(
             context,
-            config.copyWith(
-              style: config.style.apply(color: color),
-              opacity: config.opacity * color.a,
-            ),
+            config.copyWith(style: config.style.apply(color: color)),
             children,
           ),
         );
@@ -1114,7 +1126,9 @@ class _Mfm extends StatelessWidget {
         final rubyStyle = config.style
             .apply(
               fontSizeFactor: config.scale * 0.5,
-              color: config.style.color?.withValues(alpha: config.opacity),
+              color: config.style.color?.withValues(
+                alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+              ),
             )
             .copyWith(height: 1.0);
         if (children.length <= 1) {
@@ -1210,7 +1224,8 @@ class _Mfm extends StatelessWidget {
                       child: Icon(
                         Icons.access_time,
                         color: config.style.color?.withValues(
-                          alpha: config.opacity,
+                          alpha:
+                              (config.style.color?.a ?? 1.0) * config.opacity,
                         ),
                         size: config.style.lineHeight * config.scale * 0.9,
                       ),
@@ -1222,7 +1237,8 @@ class _Mfm extends StatelessWidget {
                         style: config.style.apply(
                           fontSizeFactor: config.scale * 0.9,
                           color: config.style.color?.withValues(
-                            alpha: config.opacity,
+                            alpha:
+                                (config.style.color?.a ?? 1.0) * config.opacity,
                           ),
                         ),
                       )

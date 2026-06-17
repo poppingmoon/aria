@@ -24,24 +24,25 @@ class Code extends HookConsumerWidget {
     required this.code,
     this.language,
     this.inline = false,
-    this.fontSize,
+    this.style,
     this.copyOnTap = false,
   });
 
   final String code;
   final String? language;
   final bool inline;
-  final double? fontSize;
+  final TextStyle? style;
   final bool copyOnTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final input = code.replaceAll(RegExp(r'\r?\n$'), '');
-    final languageId =
-        allLanguages[language]?.id ??
-        allLanguages[allAliases[language]]?.id ??
-        'javascript';
-    final brightness = Theme.of(context).brightness;
+    final languageId = !inline
+        ? allLanguages[language]?.id ??
+              allLanguages[allAliases[language]]?.id ??
+              'javascript'
+        : 'plaintext';
+    final brightness = Theme.brightnessOf(context);
     final (fontFamily, themeId) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
@@ -95,6 +96,24 @@ class Code extends HookConsumerWidget {
       }
       return theme;
     }, [themeId]);
+    final style =
+        (fontFamily != null
+            ? GoogleFonts.asMap()[fontFamily]?.call(
+                textStyle:
+                    this.style?.copyWith(
+                      fontFamilyFallback: monospaceFallback,
+                    ) ??
+                    const TextStyle(fontFamilyFallback: monospaceFallback),
+              )
+            : null) ??
+        this.style?.copyWith(
+          fontFamily: fontFamily ?? 'monospace',
+          fontFamilyFallback: monospaceFallback,
+        ) ??
+        TextStyle(
+          fontFamily: fontFamily ?? 'monospace',
+          fontFamilyFallback: monospaceFallback,
+        );
 
     return Stack(
       children: [
@@ -116,18 +135,7 @@ class Code extends HookConsumerWidget {
                   padding: inline
                       ? const EdgeInsets.symmetric(horizontal: 2.0)
                       : const EdgeInsets.all(16.0),
-                  textStyle:
-                      GoogleFonts.asMap()[fontFamily]?.call(
-                        textStyle: TextStyle(
-                          fontSize: fontSize,
-                          fontFamilyFallback: monospaceFallback,
-                        ),
-                      ) ??
-                      TextStyle(
-                        fontSize: fontSize,
-                        fontFamily: fontFamily ?? 'monospace',
-                        fontFamilyFallback: monospaceFallback,
-                      ),
+                  textStyle: style,
                 ),
               ),
             ),
