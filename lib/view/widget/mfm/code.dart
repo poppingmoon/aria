@@ -37,6 +37,11 @@ class Code extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final input = code.replaceAll(RegExp(r'\r?\n$'), '');
+    final languageId = !inline
+        ? allLanguages[language]?.id ??
+              allLanguages[allAliases[language]]?.id ??
+              'javascript'
+        : 'plaintext';
     final brightness = Theme.brightnessOf(context);
     final (fontFamily, themeId) = ref.watch(
       generalSettingsNotifierProvider.select(
