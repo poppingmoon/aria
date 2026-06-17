@@ -495,7 +495,7 @@ class _Mfm extends StatelessWidget {
           child: Code(
             code: code,
             inline: true,
-            fontSize: config.style.apply(fontSizeFactor: config.scale).fontSize,
+            style: config.style.apply(fontSizeFactor: config.scale),
           ),
         ),
       ),
