@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:file/file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:mime/mime.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:uuid/uuid.dart';
 
@@ -32,6 +34,34 @@ class FilePickerSheet extends ConsumerWidget {
   final FileType? type;
   final bool allowMultiple;
 
+  Future<List<File>> _collectFiles(
+    FileSystem fileSystem,
+    List<PlatformFile> files, {
+    FileType? type,
+  }) async {
+    final result = <File>[];
+    for (final file in files) {
+      if (file.path case final path?) {
+        if (fileSystem.isDirectorySync(path)) {
+          await for (final entity in fileSystem.directory(path).list()) {
+            if (entity is File) {
+              if (type == FileType.image) {
+                final type = lookupMimeType(entity.path);
+                if (!(type?.startsWith('image/') ?? false)) {
+                  continue;
+                }
+              }
+              result.add(entity);
+            }
+          }
+        } else {
+          result.add(fileSystem.file(file.path));
+        }
+      }
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
@@ -47,16 +77,13 @@ class FilePickerSheet extends ConsumerWidget {
                       type: FileType.media,
                     );
                     if (!context.mounted) return;
-                    if (result?.files case final files?) {
-                      context.pop(
-                        files
-                            .map(
-                              (file) => LocalPostFile.fromFile(
-                                ref.read(fileSystemProvider).file(file.path),
-                              ),
-                            )
-                            .toList(),
+                    if (result?.files case final platformFiles?) {
+                      final files = await _collectFiles(
+                        ref.read(fileSystemProvider),
+                        platformFiles,
                       );
+                      if (!context.mounted) return;
+                      context.pop(files.map(LocalPostFile.fromFile).toList());
                     }
                   }
                 : () async {
@@ -65,10 +92,22 @@ class FilePickerSheet extends ConsumerWidget {
                     );
                     if (!context.mounted) return;
                     if (result != null) {
+                      final files = await _collectFiles(
+                        ref.read(fileSystemProvider),
+                        [result],
+                      );
+                      if (!context.mounted) return;
+                      if (files.length >= 2) {
+                        for (final file in files) {
+                          final type = lookupMimeType(file.path);
+                          if (type?.startsWith('image/') ?? false) {
+                            context.pop(LocalPostFile.fromFile(file));
+                            return;
+                          }
+                        }
+                      }
                       context.pop(
-                        LocalPostFile.fromFile(
-                          ref.read(fileSystemProvider).file(result.path),
-                        ),
+                        files.map(LocalPostFile.fromFile).firstOrNull,
                       );
                     }
                   },
@@ -86,16 +125,14 @@ class FilePickerSheet extends ConsumerWidget {
                     type: type ?? FileType.any,
                   );
                   if (!context.mounted) return;
-                  if (result?.files case final files?) {
-                    context.pop(
-                      files
-                          .map(
-                            (file) => LocalPostFile.fromFile(
-                              ref.read(fileSystemProvider).file(file.path),
-                            ),
-                          )
-                          .toList(),
+                  if (result?.files case final platformFiles?) {
+                    final files = await _collectFiles(
+                      ref.read(fileSystemProvider),
+                      platformFiles,
+                      type: type,
                     );
+                    if (!context.mounted) return;
+                    context.pop(files.map(LocalPostFile.fromFile).toList());
                   }
                 }
               : () async {
@@ -104,11 +141,13 @@ class FilePickerSheet extends ConsumerWidget {
                   );
                   if (!context.mounted) return;
                   if (result != null) {
-                    context.pop(
-                      LocalPostFile.fromFile(
-                        ref.read(fileSystemProvider).file(result.path),
-                      ),
+                    final files = await _collectFiles(
+                      ref.read(fileSystemProvider),
+                      [result],
+                      type: type,
                     );
+                    if (!context.mounted) return;
+                    context.pop(files.map(LocalPostFile.fromFile).firstOrNull);
                   }
                 },
         ),
