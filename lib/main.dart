@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +14,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
 import 'package:twemoji_v2/twemoji_v2.dart';
@@ -72,9 +74,25 @@ void main() async {
       'misskey',
     ], await rootBundle.loadString(Assets.misskey.license));
   });
-  final prefs = await SharedPreferencesWithCache.create(
-    cacheOptions: const SharedPreferencesWithCacheOptions(),
-  );
+  late final SharedPreferencesWithCache prefs;
+  try {
+    prefs = await SharedPreferencesWithCache.create(
+      cacheOptions: const SharedPreferencesWithCacheOptions(),
+    );
+  } on FormatException {
+    if (defaultTargetPlatform
+        case TargetPlatform.linux || TargetPlatform.windows) {
+      final directory = await getApplicationSupportDirectory();
+      await File(
+        p.join(directory.path, 'shared_preferences.json'),
+      ).rename(p.join(directory.path, '_shared_preferences.json'));
+      prefs = await SharedPreferencesWithCache.create(
+        cacheOptions: const SharedPreferencesWithCacheOptions(),
+      );
+    } else {
+      rethrow;
+    }
+  }
   const migrationCompletedKey = 'migrationCompleted';
   if (!prefs.containsKey(migrationCompletedKey)) {
     await migrateLegacySharedPreferencesToSharedPreferencesAsyncIfNecessary(
@@ -668,13 +686,14 @@ class Aria extends HookConsumerWidget {
               body.fromUser?.avatarUrl,
             _ => null,
           };
-          File? file;
+          String? filePath;
           if (url != null && generalSettings.showImageInNotification) {
             try {
-              file = await ref
+              final file = await ref
                   .read(cacheManagerProvider)
                   .getSingleFile(url.toString())
                   .timeout(const Duration(seconds: 10));
+              filePath = file.path;
             } catch (_) {}
           }
 
@@ -688,8 +707,8 @@ class Aria extends HookConsumerWidget {
                 channel.name,
                 styleInformation: BigTextStyleInformation(body ?? ''),
                 color: ariaColor,
-                largeIcon: file != null
-                    ? FilePathAndroidBitmap(file.path)
+                largeIcon: filePath != null
+                    ? FilePathAndroidBitmap(filePath)
                     : null,
                 groupKey: account.toString(),
                 subText: account.toString(),
