@@ -2,14 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/lookup.dart';
 import '../../provider/api/lookup_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
 import 'bluesky_embed.dart';
@@ -99,6 +102,20 @@ class UrlPreview extends HookConsumerWidget {
       () => apUrl != null ? _normalizeActivityPub(apUrl, url) : null,
       [apUrl, url],
     );
+    final canLookup =
+        activityPub != null &&
+        (apUrl?.authority.toLowerCase() ==
+                ref
+                    .watch(serverUrlNotifierProvider(account.host))
+                    .authority
+                    .toLowerCase() ||
+            (!account.isGuest &&
+                ref.watch(
+                      metaNotifierProvider(
+                        account.host,
+                      ).select((meta) => meta.value?.federation),
+                    ) !=
+                    MetaFederation.none));
     final tweetId = useMemoized(
       () => switch (url) {
         final url? => _extractTweetId(url),
@@ -217,7 +234,7 @@ class UrlPreview extends HookConsumerWidget {
                 TargetPlatform.windows
             when summalyResult != null &&
                 (playerUrl != null ||
-                    activityPub != null ||
+                    canLookup ||
                     tweetId != null ||
                     atId != null)) ...[
           if (isPlayerOpen.value)
