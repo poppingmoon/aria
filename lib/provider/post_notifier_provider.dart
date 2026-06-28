@@ -597,27 +597,35 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
+    final draft = switch (state.replyId) {
+      final replyId? when replyId != reply.id => null,
+      _ => state,
+    };
+
     final repo = await ref.read(noteDraftRepositoryProvider.future);
-    final draft = await repo.loadDraft(account: account, replyId: reply.id);
-    if (draft != null) {
+    if (await repo.loadDraft(account: account, replyId: reply.id)
+        case final draft?) {
       await save();
       state = draft;
+      return;
     }
 
     final visibility = reply.channelId != null
         ? NoteVisibility.public
         : NoteVisibility.min(
-            state.visibility ?? NoteVisibility.public,
+            draft?.visibility ?? NoteVisibility.public,
             reply.visibility ?? NoteVisibility.public,
           );
     final i = _i;
-    final visibleUserIds = {
-      ...?state.visibleUserIds,
-      ...reply.visibleUserIds.where(
-        (userId) => userId != i?.id && userId != reply.userId,
-      ),
-      if (reply.userId != i?.id) reply.userId,
-    }.toList();
+    final visibleUserIds = visibility == NoteVisibility.specified
+        ? {
+            ...?draft?.visibleUserIds,
+            ...reply.visibleUserIds.where(
+              (userId) => userId != i?.id && userId != reply.userId,
+            ),
+            if (reply.userId != i?.id) reply.userId,
+          }.toList()
+        : <String>[];
     final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
     final localHost = toUnicode(account.host.toLowerCase());
     final replyMentions = switch (reply.text) {
@@ -626,7 +634,7 @@ class PostNotifier extends _$PostNotifier {
       ).map((mention) => mention.normalize(localHost)),
       _ => null,
     };
-    final nodes = switch (state.text) {
+    final nodes = switch (draft?.text) {
       final text? when text.isNotEmpty => ref.read(parsedMfmProvider(text)),
       _ => null,
     };
@@ -666,29 +674,29 @@ class PostNotifier extends _$PostNotifier {
     }
     final text = [
       ...additionalMentions.map((mention) => mention.acct),
-      if (!isMentionOnly) state.text ?? '' else '',
+      if (!isMentionOnly) draft?.text ?? '' else '',
     ].join(' ');
     final channelId =
         reply.channelId ??
         (visibility != NoteVisibility.specified && reply.user.host == null
-            ? state.channelId
+            ? draft?.channelId
             : null);
-    state = state.copyWith(
+    state = (draft ?? _getDefaultDraft(null)).copyWith(
       visibility: visibility,
       visibleUserIds: visibleUserIds,
       localOnly:
           channelId != null ||
           (visibility != NoteVisibility.specified &&
               reply.user.host == null &&
-              ((state.localOnly ?? false) || reply.localOnly)),
-      cw: keepCw ? (reply.cw ?? state.cw) : state.cw,
+              ((draft?.localOnly ?? false) || reply.localOnly)),
+      cw: keepCw ? (reply.cw ?? draft?.cw) : draft?.cw,
       replyId: reply.id,
       reply: reply,
       channelId: channelId,
       channel: reply.channel?.id == channelId
           ? reply.channel
-          : state.channel?.id == channelId
-          ? state.channel
+          : draft?.channel?.id == channelId
+          ? draft?.channel
           : null,
       text: text,
     );
@@ -704,17 +712,17 @@ class PostNotifier extends _$PostNotifier {
         reply: null,
       );
     } else {
-      final defaultRequest = _getDefaultDraft(null);
+      final defaultDraft = _getDefaultDraft(null);
       final visibility = switch (state.renote) {
         final renote? => NoteVisibility.min(
-          defaultRequest.visibility ?? NoteVisibility.public,
+          defaultDraft.visibility ?? NoteVisibility.public,
           renote.visibility ?? NoteVisibility.public,
         ),
-        _ => defaultRequest.visibility,
+        _ => defaultDraft.visibility,
       };
       final localOnly =
           visibility != NoteVisibility.specified &&
-          ((defaultRequest.localOnly ?? false) ||
+          ((defaultDraft.localOnly ?? false) ||
               (state.renote?.localOnly ?? false));
       state = state.copyWith(
         visibility: visibility,
@@ -733,36 +741,42 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
+    final draft = switch (state.renoteId) {
+      final renoteId? when renoteId != renote.id => null,
+      _ => state,
+    };
+
     final repo = await ref.read(noteDraftRepositoryProvider.future);
-    final draft = await repo.loadDraft(account: account, renoteId: renote.id);
-    if (draft != null) {
+    if (await repo.loadDraft(account: account, renoteId: renote.id)
+        case final draft?) {
       await save();
       state = draft;
+      return;
     }
 
     final visibility = NoteVisibility.min(
-      state.visibility ?? NoteVisibility.public,
+      draft?.visibility ?? NoteVisibility.public,
       renote.visibility ?? NoteVisibility.public,
     );
     final channelId =
         renote.channelId ??
         (visibility != NoteVisibility.specified && renote.user.host == null
-            ? state.channelId
+            ? draft?.channelId
             : null);
-    state = state.copyWith(
+    state = (draft ?? _getDefaultDraft(null)).copyWith(
       visibility: visibility,
       localOnly:
           channelId != null ||
           (visibility != NoteVisibility.specified &&
               renote.user.host == null &&
-              ((state.localOnly ?? false) || renote.localOnly)),
+              ((draft?.localOnly ?? false) || renote.localOnly)),
       renoteId: renote.id,
       renote: renote,
       channelId: channelId,
       channel: renote.channel?.id == channelId
           ? renote.channel
-          : state.channel?.id == channelId
-          ? state.channel
+          : draft?.channel?.id == channelId
+          ? draft?.channel
           : null,
     );
     _scheduleSave();
@@ -777,18 +791,18 @@ class PostNotifier extends _$PostNotifier {
         renote: null,
       );
     } else {
-      final defaultRequest = _getDefaultDraft(null);
+      final defaultDraft = _getDefaultDraft(null);
       final visibility = switch (state.renote) {
         final renote? => NoteVisibility.min(
-          defaultRequest.visibility ?? NoteVisibility.public,
+          defaultDraft.visibility ?? NoteVisibility.public,
           renote.visibility ?? NoteVisibility.public,
         ),
-        _ => defaultRequest.visibility,
+        _ => defaultDraft.visibility,
       };
       final localOnly =
           visibility != NoteVisibility.specified &&
           ((state.renote?.localOnly ?? false) ||
-              (defaultRequest.localOnly ?? false));
+              (defaultDraft.localOnly ?? false));
       state = state.copyWith(
         visibility: visibility,
         localOnly: localOnly,
@@ -824,9 +838,9 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearChannel() {
-    final defaultRequest = _getDefaultDraft(null);
+    final defaultDraft = _getDefaultDraft(null);
     final visibility = NoteVisibility.min(
-      defaultRequest.visibility ?? NoteVisibility.public,
+      defaultDraft.visibility ?? NoteVisibility.public,
       NoteVisibility.min(
         state.reply?.visibility ?? NoteVisibility.public,
         state.renote?.visibility ?? NoteVisibility.public,
@@ -834,7 +848,7 @@ class PostNotifier extends _$PostNotifier {
     );
     final localOnly =
         visibility != NoteVisibility.specified &&
-        ((defaultRequest.localOnly ?? false) ||
+        ((defaultDraft.localOnly ?? false) ||
             (state.reply?.localOnly ?? false) ||
             (state.renote?.localOnly ?? false));
     state = state.copyWith(

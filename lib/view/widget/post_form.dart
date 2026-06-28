@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -252,19 +253,22 @@ class PostForm extends HookConsumerWidget {
             ),
       );
     }, [normalizedMentions, normalizedReplyMentions]);
-    final visibleUsers = useState(<UserDetailed>[]);
+    final visibleUsers = useState<List<UserDetailed>?>(null);
     final notSpecifiedMentions = useMemoized(
-      () => normalizedMentions.where(
-        (mention) => visibleUsers.value.every(
-          (user) =>
-              user.username.toLowerCase() != mention.username ||
-              switch (user.host) {
-                final host? => toUnicode(host.toLowerCase()) != mention.host,
-                _ => mention.host != null,
-              },
+      () => switch (visibleUsers.value) {
+        final visibleUsers? => normalizedMentions.where(
+          (mention) => visibleUsers.every(
+            (user) =>
+                user.username.toLowerCase() != mention.username ||
+                switch (user.host) {
+                  final host? => toUnicode(host.toLowerCase()) != mention.host,
+                  _ => mention.host != null,
+                },
+          ),
         ),
-      ),
-      [normalizedMentions, visibleUsers],
+        _ => <MfmMention>[],
+      },
+      [normalizedMentions, visibleUsers.value],
     );
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
@@ -338,6 +342,41 @@ class PostForm extends HookConsumerWidget {
       postNotifierProvider(
         account.value,
         noteId: noteId,
+      ).select((draft) => draft.visibleUserIds),
+      (_, visibleUserIds) async {
+        if (visibleUserIds != null) {
+          final users = {
+            for (final userId in visibleUserIds)
+              userId: visibleUsers.value?.firstWhereOrNull(
+                (user) => user.id == userId,
+              ),
+          };
+          final missingUserIds = users.entries
+              .where((e) => e.value == null)
+              .map((e) => e.key)
+              .toList();
+          if (missingUserIds.isNotEmpty) {
+            if (visibleUsers.value?.isEmpty ?? false) {
+              visibleUsers.value = null;
+            }
+            try {
+              final missingUsers = await ref
+                  .read(misskeyProvider(account.value))
+                  .users
+                  .showByIds(UsersShowByIdsRequest(userIds: missingUserIds));
+              for (final user in missingUsers) {
+                users[user.id] = user;
+              }
+            } catch (_) {}
+          }
+          visibleUsers.value = users.values.nonNulls.toList();
+        }
+      },
+    );
+    ref.listen(
+      postNotifierProvider(
+        account.value,
+        noteId: noteId,
       ).select((draft) => draft.files),
       (prev, next) {
         if ((prev?.isEmpty ?? true) && next != null && next.isNotEmpty) {
@@ -378,11 +417,15 @@ class PostForm extends HookConsumerWidget {
       final visibleUserIds = draft.visibleUserIds;
       if (visibleUserIds != null && visibleUserIds.isNotEmpty) {
         Future(() async {
-          final users = await ref
-              .read(misskeyProvider(account.value))
-              .users
-              .showByIds(UsersShowByIdsRequest(userIds: visibleUserIds));
-          visibleUsers.value = users.toList();
+          try {
+            final users = await ref
+                .read(misskeyProvider(account.value))
+                .users
+                .showByIds(UsersShowByIdsRequest(userIds: visibleUserIds));
+            visibleUsers.value = users.toList();
+          } catch (_) {
+            visibleUsers.value = [];
+          }
         });
       } else {
         visibleUsers.value = [];
@@ -692,7 +735,7 @@ class PostForm extends HookConsumerWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Text(t.misskey.recipient),
-                    ...visibleUsers.value.map(
+                    ...?visibleUsers.value?.map(
                       (user) => MentionWidget(
                         account: account.value,
                         username: user.username,
@@ -707,7 +750,7 @@ class PostForm extends HookConsumerWidget {
                                     )
                                     .removeVisibleUser(user.id);
                                 visibleUsers.value = visibleUsers.value
-                                    .where((e) => e.id != user.id)
+                                    ?.where((e) => e.id != user.id)
                                     .toList();
                               }
                             : null,
@@ -720,7 +763,7 @@ class PostForm extends HookConsumerWidget {
                           if (user != null &&
                               !(draft.visibleUserIds?.contains(user.id) ??
                                   false)) {
-                            visibleUsers.value = [...visibleUsers.value, user];
+                            visibleUsers.value = [...?visibleUsers.value, user];
                             ref
                                 .read(
                                   postNotifierProvider(account.value).notifier,
@@ -771,7 +814,7 @@ class PostForm extends HookConsumerWidget {
                               );
                               if (users != null) {
                                 visibleUsers.value = [
-                                  ...visibleUsers.value,
+                                  ...?visibleUsers.value,
                                   ...users,
                                 ];
                                 ref
