@@ -16,7 +16,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -41,7 +41,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
+        uses: reviewdog/action-suggester@2558ba17e65a9039e73764a73009fc05fef28a46 # v1.24.3
         with:
           fail_level: error
           cleanup: false
@@ -56,7 +56,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -82,7 +82,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -106,7 +106,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -144,7 +144,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -166,7 +166,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
+        uses: reviewdog/action-suggester@2558ba17e65a9039e73764a73009fc05fef28a46 # v1.24.3
         with:
           fail_level: error
           cleanup: false
@@ -182,7 +182,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
@@ -201,7 +201,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@aa38384ceb608d00f84b4690cacc83a5aba307ff # v1.24.0
+        uses: reviewdog/action-suggester@2558ba17e65a9039e73764a73009fc05fef28a46 # v1.24.3
         with:
           fail_level: error
           cleanup: false

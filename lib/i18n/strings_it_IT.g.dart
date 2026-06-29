@@ -50,7 +50,6 @@ class _Translations$aria$it_IT extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: '?'),
 	]);
-	@override String get accessToken => 'Token di accesso';
 	@override String get accessTokenUpdated => 'Token di accesso aggiornato con successo';
 	@override String get accountAdded => 'Account aggiunto con successo';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
@@ -1709,6 +1708,11 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get previewingTheme => 'Anteprima del Tema';
 	@override String get previewingThemeRestore => 'Ripristina';
 	@override String get accessToken => 'Codice di accesso';
+	@override String get chooseEmojiPalette => 'Scegli la tavolozza emoji';
+	@override String get addToEmojiPalette => 'Aggiungi alla tavolozza emoji';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'Questa emoji è già inclusa in nella tavolozza. Vuoi davvero aggiungerla?';
+	@override String get append => 'Accodare';
+	@override String get prepend => 'Anteporre';
 	@override late final _Translations$misskey$imageEditing_$it_IT imageEditing_ = _Translations$misskey$imageEditing_$it_IT._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$it_IT imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$it_IT._(_root);
 	@override late final _Translations$misskey$compression_$it_IT compression_ = _Translations$misskey$compression_$it_IT._(_root);

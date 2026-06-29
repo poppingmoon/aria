@@ -1,6 +1,5 @@
 use std::{
     collections::HashMap,
-    ops::Deref,
     sync::{Arc, Mutex},
 };
 
@@ -29,7 +28,7 @@ impl TryFrom<v0::values::Value> for AsUiRoot {
         for value in children {
             let value = <IndexMap<String, v0::values::Value>>::try_from(value)?;
             if let Some(v0::values::Value { value, .. }) = value.get("id")
-                && let v0::values::V::Str(id) = value.deref()
+                && let v0::values::V::Str(id) = value
             {
                 ids.push(id.clone());
             }
@@ -52,7 +51,7 @@ impl TryFrom<v1::values::Value> for AsUiRoot {
         for value in children {
             let value = <IndexMap<String, v1::values::Value>>::try_from(value)?;
             if let Some(v1::values::Value { value, .. }) = value.get("id")
-                && let v1::values::V::Str(id) = value.deref()
+                && let v1::values::V::Str(id) = value
             {
                 ids.push(id.clone());
             }
@@ -102,7 +101,7 @@ impl TryFrom<v0::values::Value> for AsUiContainer {
                 for value in children {
                     let value = <IndexMap<String, v0::values::Value>>::try_from(value)?;
                     if let Some(v0::values::Value { value, .. }) = value.get("id")
-                        && let v0::values::V::Str(id) = value.deref()
+                        && let v0::values::V::Str(id) = value
                     {
                         ids.push(id.clone());
                     }
@@ -200,7 +199,7 @@ impl TryFrom<v1::values::Value> for AsUiContainer {
                 for value in children {
                     let value = <IndexMap<String, v1::values::Value>>::try_from(value)?;
                     if let Some(v1::values::Value { value, .. }) = value.get("id")
-                        && let v1::values::V::Str(id) = value.deref()
+                        && let v1::values::V::Str(id) = value
                     {
                         ids.push(id.clone());
                     }
@@ -1731,7 +1730,7 @@ impl TryFrom<v0::values::Value> for AsUiFolder {
                     let value = v0::values::VObj::try_from(value)?;
                     let value = value.read().map_err(v0::errors::AiScriptError::internal)?;
                     if let Some(v0::values::Value { value, .. }) = value.get("id")
-                        && let v0::values::V::Str(id) = value.deref()
+                        && let v0::values::V::Str(id) = value
                     {
                         ids.push(id.clone());
                     }
@@ -1776,7 +1775,7 @@ impl TryFrom<v1::values::Value> for AsUiFolder {
                     let value = v1::values::VObj::try_from(value)?;
                     let value = value.read().map_err(v1::errors::AiScriptError::internal)?;
                     if let Some(v1::values::Value { value, .. }) = value.get("id")
-                        && let v1::values::V::Str(id) = value.deref()
+                        && let v1::values::V::Str(id) = value
                     {
                         ids.push(id.clone());
                     }
@@ -2287,7 +2286,7 @@ impl AsUiLibV0 {
                                         .read()
                                         .map_err(v0::errors::AiScriptError::internal)?;
                                     if let Some(v0::values::Value { value, .. }) = value.get("id")
-                                        && let v0::values::V::Str(id) = value.deref()
+                                        && let v0::values::V::Str(id) = value
                                     {
                                         ids.push(id.clone());
                                     }
@@ -2691,7 +2690,7 @@ impl AsUiLibV1 {
                                         .read()
                                         .map_err(v1::errors::AiScriptError::internal)?;
                                     if let Some(v1::values::Value { value, .. }) = value.get("id")
-                                        && let v1::values::V::Str(id) = value.deref()
+                                        && let v1::values::V::Str(id) = value
                                     {
                                         ids.push(id.clone());
                                     }

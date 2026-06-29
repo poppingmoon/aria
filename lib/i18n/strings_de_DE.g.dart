@@ -50,7 +50,6 @@ class _Translations$aria$de_DE extends Translations$aria$en_US {
 		name,
 		const TextSpan(text: ' akzeptieren?'),
 	]);
-	@override String get accessToken => 'Zugangstoken';
 	@override String get accessTokenUpdated => 'Zugangstoken erfolgreich aktualisiert';
 	@override String get accountAdded => 'Konto erfolgreich hinzugefügt';
 	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [

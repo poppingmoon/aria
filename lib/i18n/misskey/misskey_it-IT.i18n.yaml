@@ -1419,6 +1419,11 @@ viewRenotedChannel: "Visualizza il canale del Rinota"
 previewingTheme: "Anteprima del Tema"
 previewingThemeRestore: "Ripristina"
 accessToken: "Codice di accesso"
+chooseEmojiPalette: "Scegli la tavolozza emoji"
+addToEmojiPalette: "Aggiungi alla tavolozza emoji"
+emojiPaletteAlreadyAddedConfirm: "Questa emoji è già inclusa in nella tavolozza. Vuoi davvero aggiungerla?"
+append: "Accodare"
+prepend: "Anteporre"
 imageEditing_:
   vars_:
     caption: "Didascalia dell'immagine"

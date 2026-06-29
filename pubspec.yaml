@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.4+102
+version: 1.5.5+103
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -16,21 +16,21 @@ dependencies:
   async: ^2.13.1
   audio_service: ^0.18.18
   audio_video_progress_bar: ^2.0.3
-  audioplayers: ^6.7.1
+  audioplayers: ^6.8.1
   cached_network_image: ^3.4.1
   characters: ^1.4.1
   chewie: ^1.14.1
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
-  connectivity_plus: ^7.1.1
-  device_info_plus: ^13.1.0
-  dio: ^5.9.2
+  connectivity_plus: ^7.2.0
+  device_info_plus: ^13.2.0
+  dio: ^5.10.0
   dotted_border: ^3.1.0
   dynamic_color: ^1.8.1
   extended_image: ^10.0.1
   file: ^7.0.1
-  file_picker: ^12.0.0-beta.5
+  file_picker: ^12.0.0-beta.7
   flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
@@ -55,7 +55,7 @@ dependencies:
       ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^22.0.0
+  flutter_local_notifications: ^22.0.1
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
@@ -77,7 +77,7 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
-  hooks: ^1.0.3
+  hooks: ^2.0.2
   hooks_riverpod: ^3.3.2
   html: ^0.15.6
   image: ^4.8.0
@@ -90,15 +90,15 @@ dependencies:
   isar_community: ^3.3.2
   json5: ^0.8.2
   json_annotation: ^4.12.0
-  just_audio: ^0.10.5
+  just_audio: ^0.10.6
   kana_kit: ^2.1.1
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
-  material_symbols_icons: ^4.2928.1
+  material_symbols_icons: ^4.2951.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 49e815676825972f6d893a6aaa8663f50f15b3ee
+      ref: b89d453e6c73233937b74c18ccc9e0044106b9eb
   mime: ^2.0.0
   misskey_dart:
     git:
@@ -109,10 +109,10 @@ dependencies:
       url: https://github.com/poppingmoon/mobile_scanner
       ref: b4d2b5e3899f53ae33932a45a296ef0a84c86f90
   multi_split_view: ^3.6.2
-  native_toolchain_rust: ^1.0.4
-  package_info_plus: ^10.1.0
+  native_toolchain_rust: ^1.0.4+0
+  package_info_plus: ^10.2.0
   path: ^1.9.1
-  path_provider: ^2.1.5
+  path_provider: ^2.1.6
   photo_view: ^0.15.0
   pretty_qr_code: ^3.6.0
   punycode: ^1.0.0
@@ -123,9 +123,9 @@ dependencies:
   reorderable_grid: ^1.0.13
   reorderables: ^0.6.0
   riverpod_annotation: ^4.0.3
-  screen_brightness: ^2.1.9
-  sensors_plus: ^7.0.0
-  share_plus: ^13.1.0
+  screen_brightness: ^2.1.11
+  sensors_plus: ^7.1.0
+  share_plus: ^13.2.0
   shared_preferences: ^2.5.5
   slang: ^4.16.0
   slang_flutter: ^4.16.0
@@ -136,7 +136,7 @@ dependencies:
   twemoji_v2:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
-      ref: 51c93b038c033e525c48e386665983730660cc44
+      ref: 536835989425cb69c5ca5f9d2619104e549cfc61
   unifiedpush: ^6.2.0
   unifiedpush_ui: ^0.2.0
   url_launcher: ^6.3.2
@@ -148,7 +148,7 @@ dependencies:
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: b5e1eb1b4c93d057706c607cb3e721e44f15590e
+      ref: ce88e756a40b3916c17ede631f45353595f6ddd5
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.1
 
@@ -165,7 +165,7 @@ dev_dependencies:
   isar_community_generator:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 50983857096bac7fb14b491b606bb17d40599c6e
+      ref: 08387268dbb22a0ae01b80e5f15241f75086522f
       path: packages/isar_community_generator
   json_serializable: ^6.14.0
   lint: ^2.8.0
@@ -189,14 +189,13 @@ dependency_overrides:
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 50983857096bac7fb14b491b606bb17d40599c6e
+      ref: 08387268dbb22a0ae01b80e5f15241f75086522f
       path: packages/isar_community
   jni:
     git:
       url: https://github.com/poppingmoon/native
       ref: b380193822cbc7a6c74373edd3a2185edd89ba56
       path: pkgs/jni
-  screen_brightness_android: 2.1.4
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
@@ -205,7 +204,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 2d0473cac437acdf930080c46a4aac6108b7fc25
+      ref: 65144d0a180cbb891b524f0cbe8c50bb3326aad6
 
 hooks:
   user_defines:
