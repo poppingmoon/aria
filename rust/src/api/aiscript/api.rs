@@ -119,7 +119,7 @@ impl AsApiLib {
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -129,7 +129,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -139,7 +139,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -164,7 +164,7 @@ impl AsApiLib {
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -174,7 +174,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -184,7 +184,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let v0::values::V::Str(value) = *value.value {
+                            if let v0::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -380,7 +380,7 @@ impl AsApiLib {
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -390,7 +390,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -400,7 +400,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -425,7 +425,7 @@ impl AsApiLib {
                     let title = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -435,7 +435,7 @@ impl AsApiLib {
                     let text = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
@@ -445,7 +445,7 @@ impl AsApiLib {
                     let type_ = args
                         .next()
                         .and_then(|value| {
-                            if let v1::values::V::Str(value) = *value.value {
+                            if let v1::values::V::Str(value) = value.value {
                                 Some(value)
                             } else {
                                 None
