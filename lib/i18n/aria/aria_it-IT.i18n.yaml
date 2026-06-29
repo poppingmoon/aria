@@ -1,6 +1,5 @@
 aboutAria: "Informazioni Su Aria"
 acceptFollowRequestConfirm(rich): "Sei sicuro di voler accettare la richiesta seguente da {name}?"
-accessToken: "Token di accesso"
 accessTokenUpdated: "Token di accesso aggiornato con successo"
 accountAdded: "Account aggiunto con successo"
 acknowledgements(rich): "Aria è un fork di {miria}.\nLa localizzazione di Aria si basa su file di localizzazione di {misskey}.\nVorremmo mostrare il nostro apprezzamento a tutti i collaboratori di questi progetti."

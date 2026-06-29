@@ -1676,14 +1676,11 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get chat => 'チャット';
 	@override String get directMessage => 'チャットしよか';
 	@override String get directMessage_short => 'メッセージ';
-	@override String get migrateOldSettings => '旧設定情報をお引っ越し';
-	@override String get migrateOldSettings_description => '通常これは自動で行われるはずなんやけど、なんかの理由で上手く移行できへんかったときは手動で移行処理をポチっとできるで。今の設定情報は上書きされるで。';
 	@override String get compress => '圧縮';
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '埋め込み';
-	@override String get settingsMigrating => '設定を移行しとるで。ちょっと待っとってな... (後で、設定→その他→旧設定情報を移行 で手動で移行することもできるで)';
 	@override String get readonly => '読み取り専用';
 	@override String get goToDeck => 'デッキへ戻る';
 	@override String get federationJobs => '連合ジョブ';

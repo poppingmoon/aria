@@ -394,16 +394,16 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get add => 'Tambahkan';
 	@override String get reaction => 'Reaksi';
 	@override String get reactions => 'Reaksi';
-	@override String get emojiPicker => 'Emoji Picker';
-	@override String get pinnedEmojisForReactionSettingDescription => 'Atur sematan emoji pada reaksi';
-	@override String get pinnedEmojisSettingDescription => 'Atur sematan emoji pada masukan emoji';
-	@override String get emojiPickerDisplay => 'Tampilan Emoji Picker';
+	@override String get emojiPicker => 'Palet emoji';
+	@override String get pinnedEmojisForReactionSettingDescription => 'Atur emoji yang akan disematkan dan ditampilkan saat memberi reaksi.';
+	@override String get pinnedEmojisSettingDescription => 'Atur emoji yang akan disematkan dan ditampilkan saat melihat palet emoji';
+	@override String get emojiPickerDisplay => 'Tampilan palet emoji';
 	@override String get overwriteFromPinnedEmojisForReaction => 'Timpa dari pengaturan reaksi';
 	@override String get overwriteFromPinnedEmojis => 'Timpa dari pengaturan umum';
 	@override String get reactionSettingDescription2 => 'Geser untuk memindah urutan emoji, klik untuk menghapus, tekan "+" untuk menambahkan';
 	@override String get rememberNoteVisibility => 'Ingat pengaturan visibilitas catatan';
 	@override String get attachCancel => 'Hapus lampiran';
-	@override String get deleteFile => 'Berkas dihapus';
+	@override String get deleteFile => 'Hapus berkas';
 	@override String get markAsSensitive => 'Tandai sebagai konten sensitif';
 	@override String get unmarkAsSensitive => 'Hapus tanda konten sensitif';
 	@override String get enterFileName => 'Masukkan nama berkas';
@@ -424,7 +424,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get selectChannel => 'Pilih kanal';
 	@override String get selectAntenna => 'Pilih Antena';
 	@override String get editAntenna => 'Sunting antena';
-	@override String get createAntenna => 'Membuat antena.';
+	@override String get createAntenna => 'Membuat antena';
 	@override String get selectWidget => 'Pilih gawit';
 	@override String get editWidgets => 'Sunting gawit';
 	@override String get editWidgetsExit => 'Selesai';
@@ -563,7 +563,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get uploadFromUrlDescription => 'URL berkas yang ingin kamu unggah';
 	@override String get uploadFromUrlRequested => 'Pengunggahan telah diminta';
 	@override String get uploadFromUrlMayTakeTime => 'Membutuhkan beberapa waktu hingga pengunggahan selesai';
-	@override String uploadNFiles({required Object n}) => 'Unggah file ${n}';
+	@override String uploadNFiles({required Object n}) => 'Unggah berkas ${n}';
 	@override String get explore => 'Jelajahi';
 	@override String get messageRead => 'Telah dibaca';
 	@override String get readAllChatMessages => 'Tandai semua pesan menjadi terbaca';
@@ -601,7 +601,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get selectFolder => 'Pilih folder';
 	@override String get unselectFolder => 'Membatalkan seleksi folder';
 	@override String get selectFolders => 'Pilih folder';
-	@override String get fileNotSelected => 'Tidak ada file yang dipilih';
+	@override String get fileNotSelected => 'Tidak ada berkas yang terpilih';
 	@override String get renameFile => 'Ubah nama berkas';
 	@override String get folderName => 'Nama folder';
 	@override String get createFolder => 'Buat folder';
@@ -612,7 +612,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get showFile => 'Tampilkan berkas';
 	@override String get emptyDrive => 'Drive kosong';
 	@override String get emptyFolder => 'Folder kosong';
-	@override String get dropHereToUpload => 'Lepas file di sini untuk diunggah';
+	@override String get dropHereToUpload => 'Lepas berkas di sini untuk diunggah';
 	@override String get unableToDelete => 'Tidak dapat menghapus';
 	@override String get inputNewFileName => 'Masukkan nama berkas yang baru';
 	@override String get inputNewDescription => 'Masukkan keterangan disini';
@@ -1274,7 +1274,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get cannotUploadBecauseInappropriate => 'Berkas ini tidak dapat diunggah karena sebagian dari berkas terdeteksi berpotensi NSFW.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Gagal mengunggah karena kekurangan kapasitas Drive.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Berkas ini tidak dapat diunggah karena melebihi batas ukuran berkas.';
-	@override String get cannotUploadBecauseUnallowedFileType => 'Tidak dapat mengunggah karena tipe file yang tidak diijinkan.';
+	@override String get cannotUploadBecauseUnallowedFileType => 'Tidak dapat mengunggah karena tipe berkas yang tidak diijinkan.';
 	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Penandaan NSFW otomatis';
 	@override String get enableAutoSensitiveDescription => 'Mendeteksi otomatis dan menandai media NSFW menggunakan Pembelajaran Mesin jika memungkinkan. Meskipun opsi ini dimatikan, ada kemungkinan dinyalakan secara menyeluruh pada instansi peladen.';
@@ -1518,6 +1518,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get refreshing => 'Sedang memuat ulang...';
 	@override String get pullDownToRefresh => 'Tarik ke bawah untuk memuat ulang';
 	@override String get useGroupedNotifications => 'Tampilkan notifikasi secara dikelompokkan';
+	@override String get emailVerificationFailedError => 'Ada masalah saat memverifikasi alamat surel anda. Tautannya mungkin sudah kadaluarsa.';
 	@override String get cwNotationRequired => 'Jika "Sembunyikan konten" diaktifkan, deskripsi harus disediakan.';
 	@override String get doReaction => 'Tambahkan reaksi';
 	@override String get code => 'Kode';
@@ -1551,12 +1552,13 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get useBackupCode => 'Gunakan kode cadangan';
 	@override String get launchApp => 'Luncurkan Aplikasi';
 	@override String get useNativeUIForVideoAudioPlayer => 'Gunakan antarmuka peramban ketika memainkan video dan audio';
-	@override String get keepOriginalFilename => 'Simpan nama berkas asli';
+	@override String get keepOriginalFilename => 'Gunakan nama asli berkas';
 	@override String get keepOriginalFilenameDescription => 'Apabila pengaturan ini dimatikan, nama berkas akan diganti dengan string acak secara otomatis ketika kamu mengunggah berkas.';
 	@override String get noDescription => 'Tidak ada deskripsi';
 	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
 	@override String get inquiry => 'Hubungi kami';
 	@override String get tryAgain => 'Silahkan coba lagi.';
+	@override String get confirmWhenRevealingSensitiveMedia => 'Konfirmasi saat membuka media sensitif';
 	@override String get sensitiveMediaRevealConfirm => 'Media sensitif. Apakah ingin melihat?';
 	@override String get createdLists => 'Senarai yang dibuat';
 	@override String get createdAntennas => 'Antena yang dibuat';
@@ -1579,6 +1581,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get federationDisabled => 'Federasi dimatikan di peladen ini. Anda tidak dapat berinteraksi dengan pengguna di peladen lain.';
 	@override String get draft => 'Draf';
 	@override String get draftsAndScheduledNotes => 'Draf dan note terjadwal';
+	@override String get preferencesProfile => 'Pengaturan profil';
 	@override String get noName => 'Tidak ada nama';
 	@override String get skip => 'Lewati';
 	@override String get restore => 'Kembalikan';
@@ -1592,7 +1595,10 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get right => 'Kanan';
 	@override String get bottom => 'Bawah';
 	@override String get top => 'Atas';
+	@override String get driveAboutTip => 'Dalam Drive, daftar berkas yang telah anda unggah sebelumnya akan ditampilkan. <br>\nAnda dapat menggunakan kembali berkas-berkas tersebut dalam lampiran note, atau mengunggah berkas sekarang untuk dipublikasikan nanti. <br>\n<b>Harap berhati-hati ketika menghapus berkas, karena berkas tersebut akan tidak bisa diakses di semua tempat yang menggunakan berkas tersebut (seperti note, halaman, avatar, banner, dll.)</b><br>\nAnda juga dapat membuat folder untuk menata berkas-berkas anda.';
 	@override String get advice => 'Saran';
+	@override String get defaultImageCompressionLevel_description => 'Level yang rendah akan menjaga kualitas gambar namun memperbesar ukuran berkas.<br>Level yang tinggi akan mengurangi ukuran berkas, namun mengurangi kualitas gambar.';
+	@override String get defaultCompressionLevel_description => 'Kompresi yang rendah akan menjaga kualitas namun memperbesar ukuran berkas. Kompresi yang tinggi akan mengurangi ukuran berkas namun mengurangi kualitas.';
 	@override String get inMinutes => 'menit';
 	@override String get inDays => 'hari';
 	@override String get widgets => 'Widget';
@@ -1680,6 +1686,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$mediaControls_$id_ID mediaControls_ = _Translations$misskey$mediaControls_$id_ID._(_root);
 	@override late final _Translations$misskey$remoteLookupErrors_$id_ID remoteLookupErrors_ = _Translations$misskey$remoteLookupErrors_$id_ID._(_root);
 	@override late final _Translations$misskey$search_$id_ID search_ = _Translations$misskey$search_$id_ID._(_root);
+	@override late final _Translations$misskey$uploader_$id_ID uploader_ = _Translations$misskey$uploader_$id_ID._(_root);
 	@override late final _Translations$misskey$watermarkEditor_$id_ID watermarkEditor_ = _Translations$misskey$watermarkEditor_$id_ID._(_root);
 	@override late final _Translations$misskey$imageEffector_$id_ID imageEffector_ = _Translations$misskey$imageEffector_$id_ID._(_root);
 	@override String get drafts => 'Draf';
@@ -1735,6 +1742,7 @@ class _Translations$misskey$settings_$id_ID extends Translations$misskey$setting
 	final TranslationsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get driveBanner => 'Anda dapat mengelola dan mengatur drive, melihat penggunaan, dan mengatur pengaturan unggahan berkas.';
 	@override String get notificationsBanner => 'Anda dapat mengatur tipe dan rentang notifikasi dari peladen dan notifikasi push.';
 	@override String get webhook => 'Webhook';
 	@override String get contentsUpdateFrequency => 'Frekuensi pembaruan konten';
@@ -1748,6 +1756,11 @@ class _Translations$misskey$preferencesProfile_$id_ID extends Translations$missk
 
 	// Translations
 	@override String get profileName => 'Nama profil';
+	@override String get profileNameDescription => 'Tulis nama untuk mengidentifikasi perangkat ini.';
+	@override String get profileNameDescription2 => 'Contoh: "PC Utama", "Smartphone"';
+	@override String get manageProfiles => 'Kelola Profil';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => 'Kami tidak menyarankan menggunakan profil yang sama diantara beberapa perangkat yang berbeda.';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => 'Jika terdapat pengaturan yang ingin anda sinkronkan diantara beberapa perangkat yang berbeda, nyalakan opsi "Sinkronisasi pada perangkat yang berbeda" satu per satu untuk setiap perangkat.';
 }
 
 // Path: misskey.preferencesBackup_
@@ -1761,6 +1774,7 @@ class _Translations$misskey$preferencesBackup_$id_ID extends Translations$misske
 	@override String get restoreFromBackup => 'Kembalikan dari pencadangan';
 	@override String get noBackupsFoundDescription => 'Tidak ada pencadangan otomatis yang ditemukan, namun jika anda pernah membuat cadangan secara manual, anda bisa mengimpor dan mengembalikan pencadangan tersebut.';
 	@override String get selectBackupToRestore => 'Pilih pencadangan untuk dikembalikan';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Nama profil harus dibuat untuk menyalakan cadangan otomatis.';
 }
 
 // Path: misskey.accountSettings_
@@ -1840,7 +1854,7 @@ class _Translations$misskey$initialAccountSetting_$id_ID extends Translations$mi
 
 	// Translations
 	@override String get accountCreated => 'Akun kamu telah sukses dibuat!';
-	@override String get letsStartAccountSetup => 'Untuk pemula, ayo atur profilmu dulu.';
+	@override String get letsStartAccountSetup => 'Pertama-tama, ayo atur profilmu dulu.';
 	@override String get letsFillYourProfile => 'Pertama, ayo atur profilmu dulu.';
 	@override String get profileSetting => 'Pengaturan profil';
 	@override String get privacySetting => 'Pengaturan privasi';
@@ -1920,6 +1934,8 @@ class _Translations$misskey$serverSettings_$id_ID extends Translations$misskey$s
 	@override String get reactionsBufferingDescription => 'Ketika diaktifkan, performa saat membuat reaksi akan meningkat drastis, mengurangi beban database. Namun, penggunaan memori Redis akan meningkat.';
 	@override String get remoteNotesCleaning_description => 'Ketika diaktifkan, note yang tidak terpakai dan kadaluarsa dari instansi luar akan dibersihkan secara berkala untuk mencegah membengkaknya database.';
 	@override String get inquiryUrlDescription => 'Cantumkan URL untuk menghubungi pengelola peladen atau laman web berisikan informasi kontak.';
+	@override String get proxyRemoteFiles => 'Berkas proksi remote';
+	@override String get proxyRemoteFiles_description => 'Ketika dinyalakan, peladen akan berperan sebagai proksi menyajikan berkas secara remote. Ini dapat berguna untuk membuat keluku gambar dan melindungi privasi pengguna.';
 }
 
 // Path: misskey.accountMigration_
@@ -3243,6 +3259,16 @@ class _Translations$misskey$search_$id_ID extends Translations$misskey$search_$e
 	@override String get searchScopeUser => 'Pengguna spesifik';
 }
 
+// Path: misskey.uploader_
+class _Translations$misskey$uploader_$id_ID extends Translations$misskey$uploader_$en_US {
+	_Translations$misskey$uploader_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get allowedTypes => 'Jenis berkas yang dapat diunggah';
+}
+
 // Path: misskey.watermarkEditor_
 class _Translations$misskey$watermarkEditor_$id_ID extends Translations$misskey$watermarkEditor_$en_US {
 	_Translations$misskey$watermarkEditor_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3314,7 +3340,9 @@ class _Translations$misskey$imageEditing_$vars_$id_ID extends Translations$missk
 	final TranslationsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get caption => 'Keterangan berkas';
 	@override String get filename => 'Nama berkas';
+	@override String get filename_without_ext => 'Nama berkas tanpa ekstensi';
 }
 
 // Path: misskey.delivery_.type_
@@ -3573,6 +3601,9 @@ class _Translations$misskey$role_$options_$id_ID extends Translations$misskey$ro
 	@override String get canManageCustomEmojis => 'Dapat mengelola Emoji kustom';
 	@override String get canManageAvatarDecorations => 'Kelola dekorasi avatar';
 	@override String get driveCapacity => 'Kapasitas Drive';
+	@override String get maxFileSize => 'Ukuran berkas maksimal yang dapat diunggah';
+	@override String get maxFileSize_caption => 'Proksi terbalik, CDN, dan komponen antarmuka-depan bisa memiliki pengaturan tersendiri.';
+	@override String maxFileSize_caption2({required Object max}) => 'Ukuran berkas maksimal di keseluruhan peladen adalah ${max}. Untuk memperbolehkan unggahan berkas yang lebih besar dari ini, silahkan mengubah pengaturan ini di dalam berkas pengaturan Misskey.';
 	@override String get alwaysMarkNsfw => 'Selalu tandai berkas sebagai NSFW';
 	@override String get pinMax => 'Jumlah maksimal catatan yang disematkan';
 	@override String get antennaMax => 'Jumlah maksimum antena';
@@ -3590,6 +3621,7 @@ class _Translations$misskey$role_$options_$id_ID extends Translations$misskey$ro
 	@override String get avatarDecorationLimit => 'Jumlah maksimum dekorasi avatar yang dapat diterapkan';
 	@override String get canImportAntennas => 'Izinkan mengimpor antena';
 	@override String get canImportUserLists => 'Izinkan mengimpor senarai';
+	@override String get uploadableFileTypes => 'Jenis berkas yang dapat diunggah';
 	@override String get noteDraftLimit => 'Jumlah dari draf yang dapat dibuat dari sisi peladen';
 }
 

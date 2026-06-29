@@ -323,7 +323,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get stopActivityDelivery => '停止發送活動';
 	@override String get blockThisInstance => '封鎖此伺服器';
 	@override String get silenceThisInstance => '禁言此伺服器';
-	@override String get mediaSilenceThisInstance => '將這個伺服器的媒體設為禁言';
+	@override String get mediaSilenceThisInstance => '將這個伺服器的媒體設為禁言（隱藏媒體預覽）';
 	@override String get operations => '操作';
 	@override String get software => '軟體';
 	@override String get softwareName => '軟體名稱';

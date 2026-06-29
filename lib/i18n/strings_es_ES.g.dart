@@ -849,7 +849,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle esta habilitado el nombre del bucket debe ser especificado como parte de la URL en lugar del nombre de host en la URL. Puede ser necesario activar esta opción cuando se utilice, por ejemplo, Minio en un servidor propio.';
 	@override String get serverLogs => 'Registros del servidor';
 	@override String get deleteAll => 'Eliminar todos';
-	@override String get showFixedPostForm => 'Visualizar la ventana de publicación en la parte superior de la línea de tiempo.';
+	@override String get showFixedPostForm => 'Mostrar formulario de publicación sobre la línea de tiempo.';
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulario de publicación por encima de la cronología (Canales)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Incluir por defecto respuestas de usuarios recién seguidos en la línea de tiempo';
 	@override String get newNoteRecived => 'Tienes una nota nueva';
@@ -4497,7 +4497,7 @@ class _Translations$misskey$postForm_$placeholders_$es_ES extends Translations$m
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get a => '¿Qué haces?';
+	@override String get a => '¿Qué está pasando?';
 	@override String get b => '¿Te pasó algo?';
 	@override String get c => '¿Qué estás pensando?';
 	@override String get d => '¿Algo que quieras decir?';
