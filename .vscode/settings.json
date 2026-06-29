@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.44.2",
+  "dart.flutterSdkPath": ".fvm/versions/3.44.4",
   "editor.formatOnSave": true,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
