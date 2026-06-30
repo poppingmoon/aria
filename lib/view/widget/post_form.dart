@@ -253,22 +253,25 @@ class PostForm extends HookConsumerWidget {
             ),
       );
     }, [normalizedMentions, normalizedReplyMentions]);
-    final visibleUsers = useState<List<UserDetailed>?>(null);
+    final visibleUsers = useState(<String, UserDetailed>{});
     final notSpecifiedMentions = useMemoized(
-      () => switch (visibleUsers.value) {
-        final visibleUsers? => normalizedMentions.where(
-          (mention) => visibleUsers.every(
-            (user) =>
-                user.username.toLowerCase() != mention.username ||
-                switch (user.host) {
-                  final host? => toUnicode(host.toLowerCase()) != mention.host,
-                  _ => mention.host != null,
-                },
-          ),
-        ),
-        _ => <MfmMention>[],
-      },
-      [normalizedMentions, visibleUsers.value],
+      () => normalizedMentions.where(
+        (mention) =>
+            draft.visibleUserIds?.every(
+              (userId) => switch (visibleUsers.value[userId]) {
+                final user? =>
+                  user.username.toLowerCase() != mention.username ||
+                      switch (user.host) {
+                        final host? =>
+                          toUnicode(host.toLowerCase()) != mention.host,
+                        _ => mention.host != null,
+                      },
+                _ => false,
+              },
+            ) ??
+            false,
+      ),
+      [draft.visibleUserIds, normalizedMentions, visibleUsers.value],
     );
     final canChangeLocalOnly = noteId == null && draft.canChangeLocalOnly;
     final canChangeChannel = noteId == null && draft.canChangeChannel;
@@ -345,31 +348,19 @@ class PostForm extends HookConsumerWidget {
       ).select((draft) => draft.visibleUserIds),
       (_, visibleUserIds) async {
         if (visibleUserIds != null) {
-          final users = {
-            for (final userId in visibleUserIds)
-              userId: visibleUsers.value?.firstWhereOrNull(
-                (user) => user.id == userId,
-              ),
-          };
-          final missingUserIds = users.entries
-              .where((e) => e.value == null)
-              .map((e) => e.key)
+          final missingUserIds = visibleUserIds
+              .where((userId) => visibleUsers.value[userId] == null)
               .toList();
           if (missingUserIds.isNotEmpty) {
-            if (visibleUsers.value?.isEmpty ?? false) {
-              visibleUsers.value = null;
-            }
-            try {
-              final missingUsers = await ref
-                  .read(misskeyProvider(account.value))
-                  .users
-                  .showByIds(UsersShowByIdsRequest(userIds: missingUserIds));
-              for (final user in missingUsers) {
-                users[user.id] = user;
-              }
-            } catch (_) {}
+            final missingUsers = await ref
+                .read(misskeyProvider(account.value))
+                .users
+                .showByIds(UsersShowByIdsRequest(userIds: missingUserIds));
+            visibleUsers.value = {
+              ...visibleUsers.value,
+              for (final user in missingUsers) user.id: user,
+            };
           }
-          visibleUsers.value = users.values.nonNulls.toList();
         }
       },
     );
@@ -417,18 +408,12 @@ class PostForm extends HookConsumerWidget {
       final visibleUserIds = draft.visibleUserIds;
       if (visibleUserIds != null && visibleUserIds.isNotEmpty) {
         Future(() async {
-          try {
-            final users = await ref
-                .read(misskeyProvider(account.value))
-                .users
-                .showByIds(UsersShowByIdsRequest(userIds: visibleUserIds));
-            visibleUsers.value = users.toList();
-          } catch (_) {
-            visibleUsers.value = [];
-          }
+          final users = await ref
+              .read(misskeyProvider(account.value))
+              .users
+              .showByIds(UsersShowByIdsRequest(userIds: visibleUserIds));
+          visibleUsers.value = {for (final user in users) user.id: user};
         });
-      } else {
-        visibleUsers.value = [];
       }
 
       void cwControllerCallback() {
@@ -735,26 +720,48 @@ class PostForm extends HookConsumerWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     Text(t.misskey.recipient),
-                    ...?visibleUsers.value?.map(
-                      (user) => MentionWidget(
-                        account: account.value,
-                        username: user.username,
-                        host: user.host ?? account.value.host,
-                        onDeleted: noteId == null
-                            ? () {
-                                ref
+                    ...?draft.visibleUserIds?.map(
+                      (userId) => switch (visibleUsers.value[userId]) {
+                        final user? => MentionWidget(
+                          account: account.value,
+                          username: user.username,
+                          host: user.host ?? account.value.host,
+                          onDeleted: noteId == null
+                              ? () => ref
                                     .read(
                                       postNotifierProvider(
                                         account.value,
                                       ).notifier,
                                     )
-                                    .removeVisibleUser(user.id);
-                                visibleUsers.value = visibleUsers.value
-                                    ?.where((e) => e.id != user.id)
-                                    .toList();
-                              }
-                            : null,
-                      ),
+                                    .removeVisibleUser(user.id)
+                              : null,
+                        ),
+                        _ => InputChip(
+                          label: Text(userId),
+                          labelStyle: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                          ),
+                          padding: const EdgeInsets.all(4.0),
+                          labelPadding: const EdgeInsets.symmetric(
+                            horizontal: 4.0,
+                          ),
+                          onPressed: () =>
+                              context.push('/${account.value}/users/$userId'),
+                          onDeleted: noteId == null
+                              ? () => ref
+                                    .read(
+                                      postNotifierProvider(
+                                        account.value,
+                                      ).notifier,
+                                    )
+                                    .removeVisibleUser(userId)
+                              : null,
+                          side: BorderSide.none,
+                          shape: const StadiumBorder(),
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                        ),
+                      },
                     ),
                     if (noteId == null)
                       IconButton(
@@ -763,7 +770,10 @@ class PostForm extends HookConsumerWidget {
                           if (user != null &&
                               !(draft.visibleUserIds?.contains(user.id) ??
                                   false)) {
-                            visibleUsers.value = [...?visibleUsers.value, user];
+                            visibleUsers.value = {
+                              ...visibleUsers.value,
+                              user.id: user,
+                            };
                             ref
                                 .read(
                                   postNotifierProvider(account.value).notifier,
@@ -813,10 +823,10 @@ class PostForm extends HookConsumerWidget {
                                 ),
                               );
                               if (users != null) {
-                                visibleUsers.value = [
-                                  ...?visibleUsers.value,
-                                  ...users,
-                                ];
+                                visibleUsers.value = {
+                                  ...visibleUsers.value,
+                                  for (final user in users) user.id: user,
+                                };
                                 ref
                                     .read(
                                       postNotifierProvider(
