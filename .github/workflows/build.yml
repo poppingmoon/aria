@@ -584,5 +584,5 @@ jobs:
         with:
           releaseFiles: app-release.aab
           packageName: com.poppingmoon.aria
-          track: beta
+          tracks: beta
           serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
