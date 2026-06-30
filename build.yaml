@@ -29,6 +29,8 @@ targets:
         options:
           provider_name_strip_pattern: ""
       slang_build_runner:
+        enabled: false
+      slang_build_runner:legacy:
         options:
           base_locale: en-US
           fallback_strategy: base_locale
