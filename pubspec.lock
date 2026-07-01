@@ -78,10 +78,10 @@ packages:
     dependency: "direct main"
     description:
       name: audio_service
-      sha256: cb122c7c2639d2a992421ef96b67948ad88c5221da3365ccef1031393a76e044
+      sha256: "95f3267f3449eb5cf71c8fcf1d556f57af1e898e2dc5815fb168d1843653edb7"
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.18"
+    version: "0.18.19"
   audio_service_platform_interface:
     dependency: transitive
     description:
@@ -406,10 +406,10 @@ packages:
     dependency: transitive
     description:
       name: cross_file
-      sha256: "28bb3ae56f117b5aec029d702a90f57d285cd975c3c5c281eaca38dbc47c5937"
+      sha256: d687bec93342bf6a764a116d15c8694ebeff10e633dc28a39dd3144f7195024e
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.5+2"
+    version: "0.3.5+3"
   crypto:
     dependency: transitive
     description:
@@ -985,11 +985,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "0d733a5f4dc03f793a9da9729eb9dd3eb6be4843"
-      resolved-ref: "0d733a5f4dc03f793a9da9729eb9dd3eb6be4843"
+      ref: "4490cc1f362039553f6167cb44fa989239069e80"
+      resolved-ref: "4490cc1f362039553f6167cb44fa989239069e80"
       url: "https://github.com/poppingmoon/fvp"
     source: git
-    version: "0.37.2"
+    version: "0.37.3"
   gal:
     dependency: "direct main"
     description:
@@ -1711,12 +1711,11 @@ packages:
   receive_sharing_intent:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "2cea396843cd3ab1b5ec4334be4233864637874e"
-      resolved-ref: "2cea396843cd3ab1b5ec4334be4233864637874e"
-      url: "https://github.com/KasemJaffer/receive_sharing_intent"
-    source: git
-    version: "1.8.1"
+      name: receive_sharing_intent
+      sha256: "72f229a38f2910029c11d840770c173b27072e348ef3376130b37514bc4556f6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.0"
   record_use:
     dependency: transitive
     description:
@@ -2014,26 +2013,26 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: fe12e1eeb1fae0dd8e4e453ef6bb39dabb1fa2460a33ebfcdd3f84c8748d28b6
+      sha256: "76dbf1f8e87ed1c417026e93a57512f6b6b597104ce72eed99b24a3ed08f0ba2"
       url: "https://pub.dev"
     source: hosted
-    version: "4.16.0"
+    version: "4.18.0"
   slang_build_runner:
     dependency: "direct dev"
     description:
       name: slang_build_runner
-      sha256: c148e493b8edc528feebb71814c95219ac5d5cc060230bac220100f469cfeb48
+      sha256: e24f5ab540c2078db20a1e3292b9bae11ef4ed07bef1c235ae000b0a6113267e
       url: "https://pub.dev"
     source: hosted
-    version: "4.16.0"
+    version: "4.18.0"
   slang_flutter:
     dependency: "direct main"
     description:
       name: slang_flutter
-      sha256: ee9dbb86bc58994eb0a5cd5f17de484daa70e7224c62cc69b8620065b213dc73
+      sha256: "7523a9389b44210eabcfd58412d9131f284b9b3c22d731614f0016e9582ee996"
       url: "https://pub.dev"
     source: hosted
-    version: "4.16.0"
+    version: "4.18.0"
   source_gen:
     dependency: transitive
     description:
@@ -2425,10 +2424,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_android
-      sha256: "8401adac6f33e78a0f255a75a7e7c9e2f9713ffcd87ff4e6c00d9bd92b5d99db"
+      sha256: "15bfd0598f8d8946bf0e2d50e2ca1a0db9491589a8bb7f6f9a388c0b48aef764"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.7"
+    version: "2.10.0"
   video_player_avfoundation:
     dependency: transitive
     description:
