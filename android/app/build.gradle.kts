@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.poppingmoon.aria"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
