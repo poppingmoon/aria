@@ -41,6 +41,11 @@ class ImportExportPage extends ConsumerWidget {
   Future<AriaBackup> _export(WidgetRef ref) async {
     final accounts = ref.read(accountsNotifierProvider);
     final packageInfo = await PackageInfo.fromPlatform();
+    for (final account in accounts) {
+      await ref
+          .read(aiscriptStorageNotifierProvider(account).notifier)
+          .migrate();
+    }
     final isar = await ref.read(isarProvider.future);
     final noteDrafts = await isar.noteDrafts.where().findAll();
     return AriaBackup(
@@ -58,7 +63,9 @@ class ImportExportPage extends ConsumerWidget {
       themes: ref.read(misskeyThemeCodesNotifierProvider),
       aiscriptStorage: {
         for (final account in accounts)
-          '$account': ref.read(aiscriptStorageNotifierProvider(account)),
+          '$account': await ref
+              .read(aiscriptStorageNotifierProvider(account).notifier)
+              .export(),
       },
       noteDrafts: noteDrafts.map((draft) => draft.toJson()).toList(),
     );
@@ -89,6 +96,9 @@ class ImportExportPage extends ConsumerWidget {
     if (backup.aiscriptStorage case final aiscriptStorage?) {
       for (final e in aiscriptStorage.entries) {
         final account = Account.fromString(e.key);
+        await ref
+            .read(aiscriptStorageNotifierProvider(account).notifier)
+            .migrate();
         await ref
             .read(aiscriptStorageNotifierProvider(account).notifier)
             .import(e.value);
