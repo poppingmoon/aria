@@ -215,113 +215,115 @@ class Aria extends HookConsumerWidget {
             await LocaleSettings.setLocale(locale);
           }
 
+          final acct = account.toString();
+
           final channel = switch (notification) {
             NotificationPushNotification(:final body) => switch (body.type) {
               NotificationType.note => AndroidNotificationChannel(
                 '$account/note',
                 t.misskey.notification_.types_.note,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.follow => AndroidNotificationChannel(
                 '$account/follow',
                 t.misskey.notification_.types_.follow,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.mention => AndroidNotificationChannel(
                 '$account/mention',
                 t.misskey.notification_.types_.mention,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.reply => AndroidNotificationChannel(
                 '$account/reply',
                 t.misskey.notification_.types_.reply,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.renote => AndroidNotificationChannel(
                 '$account/renote',
                 t.misskey.notification_.types_.renote,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.quote => AndroidNotificationChannel(
                 '$account/quote',
                 t.misskey.notification_.types_.quote,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.reaction => AndroidNotificationChannel(
                 '$account/reaction',
                 t.misskey.notification_.types_.reaction,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.pollEnded => AndroidNotificationChannel(
                 '$account/pollEnded',
                 t.misskey.notification_.types_.pollEnded,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.scheduledNotePosted =>
                 AndroidNotificationChannel(
                   '$account/scheduledNotePosted',
                   t.misskey.notification_.types_.scheduledNotePosted,
-                  groupId: account.toString(),
+                  groupId: acct,
                 ),
               NotificationType.scheduledNotePostFailed ||
               NotificationType.scheduleNote ||
               NotificationType.scheduledNoteError => AndroidNotificationChannel(
                 '$account/scheduledNotePostFailed',
                 t.misskey.notification_.types_.scheduledNotePostFailed,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.receiveFollowRequest =>
                 AndroidNotificationChannel(
                   '$account/receiveFollowRequest',
                   t.misskey.notification_.types_.receiveFollowRequest,
-                  groupId: account.toString(),
+                  groupId: acct,
                 ),
               NotificationType.followRequestAccepted =>
                 AndroidNotificationChannel(
                   '$account/followRequestAccepted',
                   t.misskey.notification_.types_.followRequestAccepted,
-                  groupId: account.toString(),
+                  groupId: acct,
                 ),
               NotificationType.roleAssigned => AndroidNotificationChannel(
                 '$account/roleAssigned',
                 t.misskey.notification_.types_.roleAssigned,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.chatRoomInvitationReceived =>
                 AndroidNotificationChannel(
                   '$account/chatRoomInvitationReceived',
                   t.misskey.notification_.types_.chatRoomInvitationReceived,
-                  groupId: account.toString(),
+                  groupId: acct,
                 ),
               NotificationType.achievementEarned => AndroidNotificationChannel(
                 '$account/achievementEarned',
                 t.misskey.notification_.types_.achievementEarned,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.exportCompleted => AndroidNotificationChannel(
                 '$account/exportCompleted',
                 t.misskey.notification_.types_.exportCompleted,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.login => AndroidNotificationChannel(
                 '$account/login',
                 t.misskey.notification_.types_.login,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.createToken => AndroidNotificationChannel(
                 '$account/createToken',
                 t.misskey.notification_.types_.createToken,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.app => AndroidNotificationChannel(
                 '$account/app',
                 t.misskey.notification_.types_.app,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.test => AndroidNotificationChannel(
                 '$account/test',
                 t.misskey.notification_.types_.test,
-                groupId: account.toString(),
+                groupId: acct,
               ),
               NotificationType.edited ||
               NotificationType.noteScheduled ||
@@ -333,19 +335,19 @@ class Aria extends HookConsumerWidget {
               null => AndroidNotificationChannel(
                 '$account/other',
                 t.misskey.other,
-                groupId: account.toString(),
+                groupId: acct,
               ),
             },
             ReadAllNotificationsPushNotification() =>
               AndroidNotificationChannel(
                 '$account/other',
                 t.misskey.other,
-                groupId: account.toString(),
+                groupId: acct,
               ),
             NewChatMessagePushNotification() => AndroidNotificationChannel(
               '$account/newChatMessage',
               t.misskey.directMessage,
-              groupId: account.toString(),
+              groupId: acct,
             ),
           };
           await flutterLocalNotificationsPlugin
@@ -706,12 +708,23 @@ class Aria extends HookConsumerWidget {
                 channel.id,
                 channel.name,
                 styleInformation: BigTextStyleInformation(body ?? ''),
+                groupKey: acct,
+                groupAlertBehavior: GroupAlertBehavior.children,
                 color: ariaColor,
                 largeIcon: filePath != null
                     ? FilePathAndroidBitmap(filePath)
                     : null,
-                groupKey: account.toString(),
-                subText: account.toString(),
+                when: notification.dateTime?.millisecondsSinceEpoch,
+                subText: acct,
+                tag: switch (notification) {
+                  NotificationPushNotification(
+                    body: PushNotificationBody(:final id),
+                  ) ||
+                  NewChatMessagePushNotification(
+                    body: ChatMessage(:final id),
+                  ) => id,
+                  _ => null,
+                },
               ),
             ),
             payload: jsonEncode(notification),
@@ -729,10 +742,11 @@ class Aria extends HookConsumerWidget {
               android: AndroidNotificationDetails(
                 channel.id,
                 channel.name,
-                color: ariaColor,
-                groupKey: account.toString(),
-                subText: account.toString(),
+                groupKey: acct,
                 setAsGroupSummary: true,
+                groupAlertBehavior: GroupAlertBehavior.children,
+                color: ariaColor,
+                subText: acct,
               ),
             ),
             payload: jsonEncode(
