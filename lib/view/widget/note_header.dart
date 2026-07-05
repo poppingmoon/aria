@@ -129,12 +129,11 @@ class NoteHeader extends HookConsumerWidget {
         const SizedBox(width: 2.0),
         DefaultTextStyle.merge(
           style: style.apply(fontSizeFactor: 0.9),
-          child: TimeWidget(
-            time: note.createdAt,
+          child: InkWell(
             onTap: note.id.isNotEmpty
                 ? () => context.push('/$account/notes/${note.id}')
                 : null,
-            absolute: showCreatedAt,
+            child: TimeWidget(time: note.createdAt, absolute: showCreatedAt),
           ),
         ),
         IconTheme.merge(
