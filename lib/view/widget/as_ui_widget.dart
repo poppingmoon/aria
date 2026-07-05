@@ -18,7 +18,7 @@ import 'mfm.dart';
 import 'mfm/border.dart';
 import 'post_form.dart';
 
-class AsUiWidget extends HookConsumerWidget {
+class AsUiWidget extends ConsumerWidget {
   const AsUiWidget({
     super.key,
     required this.account,
@@ -381,28 +381,11 @@ class AsUiWidget extends HookConsumerWidget {
           :final caption,
         ),
       ):
-        final value = useState(defaultValue);
-        return SwitchListTile(
-          value: value.value ?? false,
-          title: label != null ? Text(label) : null,
-          subtitle: caption != null
-              ? Text(
-                  caption,
-                  style: TextStyle(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.75),
-                  ),
-                )
-              : null,
-          onChanged: onChange != null
-              ? (v) {
-                  value.value = v;
-                  onChange.call(value: v);
-                }
-              : null,
-          controlAffinity: ListTileControlAffinity.leading,
-          dense: true,
+        return _Switch(
+          onChange: onChange,
+          defaultValue: defaultValue,
+          label: label,
+          caption: caption,
         );
       case AsUiComponent_Textarea(
         field0: AsUiTextarea(
@@ -412,23 +395,15 @@ class AsUiWidget extends HookConsumerWidget {
           :final caption,
         ),
       ):
-        final controller = useTextEditingController(text: defaultValue);
-        return Shortcuts(
-          shortcuts: disablingTextShortcuts,
-          child: TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              labelText: label,
-              helperText: caption,
-              alignLabelWithHint: true,
-            ),
-            onChanged: onInput != null
-                ? (value) => onInput.call(value: value)
-                : null,
-            minLines: 6,
-            maxLines: 6,
-            onTapOutside: (_) => primaryFocus?.unfocus(),
-          ),
+        return _TextField(
+          defaultValue: defaultValue,
+          label: label,
+          caption: caption,
+          onChanged: onInput != null
+              ? (value) => onInput.call(value: value)
+              : null,
+          minLines: 6,
+          maxLines: 6,
         );
       case AsUiComponent_TextInput(
         field0: AsUiTextInput(
@@ -438,17 +413,13 @@ class AsUiWidget extends HookConsumerWidget {
           :final caption,
         ),
       ):
-        final controller = useTextEditingController(text: defaultValue);
-        return Shortcuts(
-          shortcuts: disablingTextShortcuts,
-          child: TextField(
-            controller: controller,
-            decoration: InputDecoration(labelText: label, helperText: caption),
-            onChanged: onInput != null
-                ? (value) => onInput.call(value: value)
-                : null,
-            onTapOutside: (_) => primaryFocus?.unfocus(),
-          ),
+        return _TextField(
+          defaultValue: defaultValue,
+          label: label,
+          caption: caption,
+          onChanged: onInput != null
+              ? (value) => onInput.call(value: value)
+              : null,
         );
       case AsUiComponent_NumberInput(
         field0: AsUiNumberInput(
@@ -458,99 +429,11 @@ class AsUiWidget extends HookConsumerWidget {
           :final caption,
         ),
       ):
-        final controller = useTextEditingController(
-          text: defaultValue != null
-              ? defaultValue == defaultValue.toInt()
-                    ? defaultValue.toInt().toString()
-                    : defaultValue.toString()
-              : null,
-        );
-        return Shortcuts(
-          shortcuts: disablingTextShortcuts,
-          child: TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              labelText: label,
-              helperText: caption,
-              isDense: true,
-              suffix: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      minimumSize: Size.zero,
-                      padding: const EdgeInsets.all(2.0),
-                      iconSize: 16.0,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    onPressed: () {
-                      if (controller.text.isEmpty) {
-                        controller.text = '-1';
-                        if (onInput != null) {
-                          onInput.call(value: -1);
-                        }
-                        return;
-                      }
-                      final i = int.tryParse(controller.text);
-                      if (i != null) {
-                        controller.text = (i - 1).toString();
-                        if (onInput != null) {
-                          onInput.call(value: i - 1);
-                        }
-                      }
-                    },
-                    icon: const Icon(Icons.remove),
-                  ),
-                  const SizedBox(width: 4.0),
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      minimumSize: Size.zero,
-                      padding: const EdgeInsets.all(2.0),
-                      iconSize: 16.0,
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    onPressed: () {
-                      if (controller.text.isEmpty) {
-                        controller.text = '1';
-                        if (onInput != null) {
-                          onInput.call(value: 1);
-                        }
-                        return;
-                      }
-                      final i = int.tryParse(controller.text);
-                      if (i != null) {
-                        controller.text = (i + 1).toString();
-                        if (onInput != null) {
-                          onInput.call(value: i + 1);
-                        }
-                      }
-                    },
-                    icon: const Icon(Icons.add),
-                  ),
-                ],
-              ),
-            ),
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              TextInputFormatter.withFunction((oldValue, newValue) {
-                if (newValue.text.isEmpty ||
-                    double.tryParse(newValue.text) != null) {
-                  return newValue;
-                } else {
-                  return oldValue;
-                }
-              }),
-            ],
-            onChanged: onInput != null
-                ? (value) async {
-                    final v = double.tryParse(value);
-                    if (v != null) {
-                      await onInput.call(value: v);
-                    }
-                  }
-                : null,
-            onTapOutside: (_) => primaryFocus?.unfocus(),
-          ),
+        return _NumberInput(
+          onInput: onInput,
+          defaultValue: defaultValue,
+          label: label,
+          caption: caption,
         );
       case AsUiComponent_Select(
         field0: AsUiSelect(
@@ -561,29 +444,12 @@ class AsUiWidget extends HookConsumerWidget {
           :final caption,
         ),
       ):
-        final value = useState(
-          defaultValue != null &&
-                  (items?.map((item) => item.$2).contains(defaultValue) ??
-                      false)
-              ? defaultValue
-              : null,
-        );
-        return DropdownButtonFormField(
-          decoration: InputDecoration(labelText: label, helperText: caption),
-          items: items
-              ?.map(
-                (item) =>
-                    DropdownMenuItem(value: item.$2, child: Text(item.$1)),
-              )
-              .toList(),
-          initialValue: value.value,
-          onChanged: (v) async {
-            value.value = v;
-            if (v != null) {
-              await onChange?.call(value: v);
-            }
-          },
-          isExpanded: true,
+        return _Select(
+          items: items,
+          onChange: onChange,
+          defaultValue: defaultValue,
+          label: label,
+          caption: caption,
         );
       case AsUiComponent_Folder(
         field0: AsUiFolder(:final children, :final title, :final opened),
@@ -671,54 +537,7 @@ class AsUiWidget extends HookConsumerWidget {
           ),
         );
       case AsUiComponent_PostForm(field0: AsUiPostForm(:final form)):
-        useEffect(() {
-          Future(() {
-            if (form?.text case final text?) {
-              ref.read(postNotifierProvider(account).notifier).setText(text);
-            }
-            if (form?.cw case final cw?) {
-              ref.read(postNotifierProvider(account).notifier).setCw(cw);
-            }
-            switch (form?.visibility) {
-              case 'public':
-                ref
-                    .read(postNotifierProvider(account).notifier)
-                    .setVisibility(NoteVisibility.public);
-              case 'home':
-                ref
-                    .read(postNotifierProvider(account).notifier)
-                    .setVisibility(NoteVisibility.home);
-              case 'followers':
-                ref
-                    .read(postNotifierProvider(account).notifier)
-                    .setVisibility(NoteVisibility.followers);
-              case 'specified':
-                ref
-                    .read(postNotifierProvider(account).notifier)
-                    .setVisibility(NoteVisibility.specified);
-            }
-            if (form?.localOnly case final localOnly?) {
-              ref
-                  .read(postNotifierProvider(account).notifier)
-                  .setLocalOnly(localOnly);
-            }
-          });
-          return;
-        }, [form]);
-        final colors = ref.watch(
-          misskeyColorsProvider(Theme.of(context).brightness),
-        );
-        return Card(
-          color: colors.bg,
-          margin: EdgeInsets.zero,
-          elevation: 0.0,
-          child: PostForm(
-            account: account,
-            onExpand: (account) => context.push('/$account/post'),
-            showPostButton: true,
-            maxLines: 6,
-          ),
-        );
+        return _PostForm(account: account, form: form);
       case null:
         return const SizedBox.shrink();
     }
@@ -765,8 +584,253 @@ class _Button extends ConsumerWidget {
   }
 }
 
+class _Switch extends HookWidget {
+  const _Switch({
+    required this.onChange,
+    required this.defaultValue,
+    required this.label,
+    required this.caption,
+  });
+
+  final AsUiSwitchCallback? onChange;
+  final bool? defaultValue;
+  final String? label;
+  final String? caption;
+
+  @override
+  Widget build(BuildContext context) {
+    final value = useState(defaultValue);
+
+    return SwitchListTile(
+      value: value.value ?? false,
+      title: switch (label) {
+        final label? => Text(label),
+        _ => null,
+      },
+      subtitle: switch (caption) {
+        final caption? => Text(
+          caption,
+          style: TextStyle(
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.75),
+          ),
+        ),
+        _ => null,
+      },
+      onChanged: switch (onChange) {
+        final onChange? => (v) {
+          value.value = v;
+          onChange.call(value: v);
+        },
+        _ => null,
+      },
+      controlAffinity: ListTileControlAffinity.leading,
+      dense: true,
+    );
+  }
+}
+
+class _TextField extends HookWidget {
+  const _TextField({
+    required this.defaultValue,
+    required this.label,
+    required this.caption,
+    required this.onChanged,
+    this.minLines,
+    this.maxLines,
+  });
+
+  final String? defaultValue;
+  final String? label;
+  final String? caption;
+  final void Function(String)? onChanged;
+  final int? minLines;
+  final int? maxLines;
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = useTextEditingController(text: defaultValue);
+
+    return Shortcuts(
+      shortcuts: disablingTextShortcuts,
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(labelText: label, helperText: caption),
+        onChanged: onChanged,
+        minLines: minLines,
+        maxLines: maxLines,
+        onTapOutside: (_) => primaryFocus?.unfocus(),
+      ),
+    );
+  }
+}
+
+class _NumberInput extends HookWidget {
+  const _NumberInput({
+    required this.onInput,
+    required this.defaultValue,
+    required this.label,
+    required this.caption,
+  });
+
+  final AsUiNumberCallback? onInput;
+  final double? defaultValue;
+  final String? label;
+  final String? caption;
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = useTextEditingController(
+      text: switch (defaultValue) {
+        final defaultValue? =>
+          defaultValue == defaultValue.toInt()
+              ? defaultValue.toInt().toString()
+              : defaultValue.toString(),
+        _ => null,
+      },
+    );
+
+    return Shortcuts(
+      shortcuts: disablingTextShortcuts,
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          helperText: caption,
+          isDense: true,
+          suffix: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                style: IconButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: const EdgeInsets.all(2.0),
+                  iconSize: 16.0,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: () {
+                  if (controller.text.isEmpty) {
+                    controller.text = '-1';
+                    if (onInput case final onInput?) {
+                      onInput.call(value: -1);
+                    }
+                    return;
+                  }
+                  final i = int.tryParse(controller.text);
+                  if (i != null) {
+                    controller.text = (i - 1).toString();
+                    if (onInput case final onInput?) {
+                      onInput.call(value: i - 1);
+                    }
+                  }
+                },
+                icon: const Icon(Icons.remove),
+              ),
+              const SizedBox(width: 4.0),
+              IconButton(
+                style: IconButton.styleFrom(
+                  minimumSize: Size.zero,
+                  padding: const EdgeInsets.all(2.0),
+                  iconSize: 16.0,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                onPressed: () {
+                  if (controller.text.isEmpty) {
+                    controller.text = '1';
+                    if (onInput case final onInput?) {
+                      onInput.call(value: 1);
+                    }
+                    return;
+                  }
+                  final i = int.tryParse(controller.text);
+                  if (i != null) {
+                    controller.text = (i + 1).toString();
+                    if (onInput case final onInput?) {
+                      onInput.call(value: i + 1);
+                    }
+                  }
+                },
+                icon: const Icon(Icons.add),
+              ),
+            ],
+          ),
+        ),
+        keyboardType: TextInputType.number,
+        inputFormatters: [
+          TextInputFormatter.withFunction((oldValue, newValue) {
+            if (newValue.text.isEmpty ||
+                double.tryParse(newValue.text) != null) {
+              return newValue;
+            } else {
+              return oldValue;
+            }
+          }),
+        ],
+        onChanged: switch (onInput) {
+          final onInput? => (value) async {
+            final v = double.tryParse(value);
+            if (v != null) {
+              await onInput.call(value: v);
+            }
+          },
+          _ => null,
+        },
+        onTapOutside: (_) => primaryFocus?.unfocus(),
+      ),
+    );
+  }
+}
+
+class _Select extends HookWidget {
+  const _Select({
+    required this.items,
+    required this.onChange,
+    required this.defaultValue,
+    required this.label,
+    required this.caption,
+  });
+
+  final List<(String, String)>? items;
+  final AsUiSelectCallback? onChange;
+  final String? defaultValue;
+  final String? label;
+  final String? caption;
+
+  @override
+  Widget build(BuildContext context) {
+    final value = useState(
+      defaultValue != null &&
+              (items?.map((item) => item.$2).contains(defaultValue) ?? false)
+          ? defaultValue
+          : null,
+    );
+
+    return DropdownButtonFormField(
+      decoration: InputDecoration(labelText: label, helperText: caption),
+      items: items
+          ?.map(
+            (item) => DropdownMenuItem(value: item.$2, child: Text(item.$1)),
+          )
+          .toList(),
+      initialValue: value.value,
+      onChanged: (v) async {
+        value.value = v;
+        if (v != null) {
+          await onChange?.call(value: v);
+        }
+      },
+      isExpanded: true,
+    );
+  }
+}
+
 class _Folder extends ConsumerWidget {
-  const _Folder({this.title, this.opened, this.children});
+  const _Folder({
+    required this.title,
+    required this.opened,
+    required this.children,
+  });
 
   final String? title;
   final bool? opened;
@@ -775,17 +839,17 @@ class _Folder extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
+      misskeyColorsProvider(Theme.brightnessOf(context)),
     );
-    final style = DefaultTextStyle.of(context).style;
+    final style = DefaultTextStyle.of(context);
 
     return ExpansionTile(
       title: Text(title ?? ''),
       initiallyExpanded: opened ?? true,
       collapsedBackgroundColor: colors.buttonBg,
       backgroundColor: colors.buttonBg,
-      textColor: style.color,
-      collapsedTextColor: style.color,
+      textColor: style.style.color,
+      collapsedTextColor: style.style.color,
       iconColor: colors.fg,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
       collapsedShape: RoundedRectangleBorder(
@@ -799,11 +863,9 @@ class _Folder extends ConsumerWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(16.0),
             child: DefaultTextStyle.merge(
-              style: style,
+              style: style.style,
               child: Column(
-                crossAxisAlignment: switch (DefaultTextStyle.of(
-                  context,
-                ).textAlign) {
+                crossAxisAlignment: switch (style.textAlign) {
                   TextAlign.left => CrossAxisAlignment.start,
                   TextAlign.center => CrossAxisAlignment.center,
                   TextAlign.right => CrossAxisAlignment.end,
@@ -815,6 +877,66 @@ class _Folder extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _PostForm extends HookConsumerWidget {
+  const _PostForm({required this.account, required this.form});
+
+  final Account account;
+  final PostFormPropsForAsUi? form;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    useEffect(() {
+      Future(() {
+        if (form?.text case final text?) {
+          ref.read(postNotifierProvider(account).notifier).setText(text);
+        }
+        if (form?.cw case final cw?) {
+          ref.read(postNotifierProvider(account).notifier).setCw(cw);
+        }
+        switch (form?.visibility) {
+          case 'public':
+            ref
+                .read(postNotifierProvider(account).notifier)
+                .setVisibility(NoteVisibility.public);
+          case 'home':
+            ref
+                .read(postNotifierProvider(account).notifier)
+                .setVisibility(NoteVisibility.home);
+          case 'followers':
+            ref
+                .read(postNotifierProvider(account).notifier)
+                .setVisibility(NoteVisibility.followers);
+          case 'specified':
+            ref
+                .read(postNotifierProvider(account).notifier)
+                .setVisibility(NoteVisibility.specified);
+        }
+        if (form?.localOnly case final localOnly?) {
+          ref
+              .read(postNotifierProvider(account).notifier)
+              .setLocalOnly(localOnly);
+        }
+      });
+      return;
+    }, [form]);
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.brightnessOf(context)),
+    );
+
+    return Card(
+      color: colors.bg,
+      margin: EdgeInsets.zero,
+      elevation: 0.0,
+      child: PostForm(
+        account: account,
+        onExpand: (account) => context.push('/$account/post'),
+        showPostButton: true,
+        maxLines: 6,
+      ),
     );
   }
 }
