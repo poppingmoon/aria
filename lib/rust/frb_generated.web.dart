@@ -207,8 +207,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   );
 
   @protected
-  FutureOr<void> Function(String, AsUiComponent)
-  dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+  FutureOr<void> Function(String, AsUiComponent, PlatformInt64)
+  dco_decode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
     dynamic raw,
   );
 
@@ -441,6 +441,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   double dco_decode_f_64(dynamic raw);
+
+  @protected
+  PlatformInt64 dco_decode_i_64(dynamic raw);
 
   @protected
   PlatformInt64 dco_decode_isize(dynamic raw);
@@ -913,6 +916,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
   double sse_decode_f_64(SseDeserializer deserializer);
 
   @protected
+  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer);
+
+  @protected
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer);
 
   @protected
@@ -1215,8 +1221,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-  sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-    FutureOr<void> Function(String, AsUiComponent) self,
+  sse_encode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent, PlatformInt64) self,
     SseSerializer serializer,
   );
 
@@ -1520,6 +1526,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
+
+  @protected
+  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer);
 
   @protected
   void sse_encode_isize(PlatformInt64 self, SseSerializer serializer);

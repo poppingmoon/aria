@@ -121,7 +121,8 @@ abstract class RustLibApi extends BaseApi {
   });
 
   AsUiLib crateApiAiscriptUiAsUiLibNew({
-    required FutureOr<void> Function(String, AsUiComponent) onUpdate,
+    required FutureOr<void> Function(String, AsUiComponent, PlatformInt64)
+    onUpdate,
   });
 
   Future<void> crateApiAiscriptUiAsUiMfmCallbackCall({
@@ -555,13 +556,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   AsUiLib crateApiAiscriptUiAsUiLibNew({
-    required FutureOr<void> Function(String, AsUiComponent) onUpdate,
+    required FutureOr<void> Function(String, AsUiComponent, PlatformInt64)
+    onUpdate,
   }) {
     return handler.executeSync(
       SyncTask(
         callFfi: () {
           final serializer = SseSerializer(generalizedFrbRustBinding);
-          sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+          sse_encode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
             onUpdate,
             serializer,
           );
@@ -1027,18 +1029,19 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     };
   }
 
-  Future<void> Function(int, dynamic, dynamic)
-  encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-    FutureOr<void> Function(String, AsUiComponent) raw,
+  Future<void> Function(int, dynamic, dynamic, dynamic)
+  encode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent, PlatformInt64) raw,
   ) {
-    return (callId, rawArg0, rawArg1) async {
+    return (callId, rawArg0, rawArg1, rawArg2) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_as_ui_component(rawArg1);
+      final arg2 = dco_decode_i_64(rawArg2);
 
       Box<void>? rawOutput;
       Box<AnyhowException>? rawError;
       try {
-        rawOutput = Box(await raw(arg0, arg1));
+        rawOutput = Box(await raw(arg0, arg1, arg2));
       } catch (e, s) {
         rawError = Box(AnyhowException("$e\n\n$s"));
       }
@@ -1362,8 +1365,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
-  FutureOr<void> Function(String, AsUiComponent)
-  dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+  FutureOr<void> Function(String, AsUiComponent, PlatformInt64)
+  dco_decode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
     dynamic raw,
   ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
@@ -1980,6 +1983,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   double dco_decode_f_64(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw as double;
+  }
+
+  @protected
+  PlatformInt64 dco_decode_i_64(dynamic raw) {
+    // Codec=Dco (DartCObject based), see doc to use other codecs
+    return dcoDecodeI64(raw);
   }
 
   @protected
@@ -3130,6 +3139,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   }
 
   @protected
+  PlatformInt64 sse_decode_i_64(SseDeserializer deserializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    return deserializer.buffer.getPlatformInt64();
+  }
+
+  @protected
   PlatformInt64 sse_decode_isize(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return deserializer.buffer.getPlatformInt64();
@@ -3806,13 +3821,13 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-  sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-    FutureOr<void> Function(String, AsUiComponent) self,
+  sse_encode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent, PlatformInt64) self,
     SseSerializer serializer,
   ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-      encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+      encode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
         self,
       ),
       serializer,
@@ -4474,6 +4489,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_f_64(double self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     serializer.buffer.putFloat64(self);
+  }
+
+  @protected
+  void sse_encode_i_64(PlatformInt64 self, SseSerializer serializer) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    serializer.buffer.putPlatformInt64(self);
   }
 
   @protected

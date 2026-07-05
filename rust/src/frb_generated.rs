@@ -256,7 +256,7 @@ fn wire__crate__api__aiscript__api__AsApiLib_new_impl(
     rust_vec_len_: i32,
     data_len_: i32,
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AsApiLib_new", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AsApiLib_new", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || {
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_user_id = <Option<String>>::sse_decode(&mut deserializer);
@@ -358,7 +358,7 @@ fn wire__crate__api__aiscript__ui__AsUiLib_new_impl(
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_on_update =
-                decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+                decode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
                     <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
                 );
             deserializer.end();
@@ -963,9 +963,9 @@ fn decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string
         ))
     }
 }
-fn decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+fn decode_DartFn_Inputs_String_as_ui_component_i_64_Output_unit_AnyhowException(
     dart_opaque: flutter_rust_bridge::DartOpaque,
-) -> impl Fn(String, crate::api::aiscript::ui::AsUiComponent) -> flutter_rust_bridge::DartFnFuture<()>
+) -> impl Fn(String, crate::api::aiscript::ui::AsUiComponent, i64) -> flutter_rust_bridge::DartFnFuture<()>
 {
     use flutter_rust_bridge::IntoDart;
 
@@ -973,10 +973,12 @@ fn decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
         dart_opaque: flutter_rust_bridge::DartOpaque,
         arg0: String,
         arg1: crate::api::aiscript::ui::AsUiComponent,
+        arg2: i64,
     ) -> () {
         let args = vec![
             arg0.into_into_dart().into_dart(),
             arg1.into_into_dart().into_dart(),
+            arg2.into_into_dart().into_dart(),
         ];
         let message = FLUTTER_RUST_BRIDGE_HANDLER
             .dart_fn_invoke(dart_opaque, args)
@@ -996,11 +998,12 @@ fn decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
         ans
     }
 
-    move |arg0: String, arg1: crate::api::aiscript::ui::AsUiComponent| {
+    move |arg0: String, arg1: crate::api::aiscript::ui::AsUiComponent, arg2: i64| {
         flutter_rust_bridge::for_generated::convert_into_dart_fn_future(body(
             dart_opaque.clone(),
             arg0,
             arg1,
+            arg2,
         ))
     }
 }
@@ -1594,6 +1597,13 @@ impl SseDecode for f64 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_f64::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for i64 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i64::<NativeEndian>().unwrap()
     }
 }
 
@@ -3021,6 +3031,13 @@ impl SseEncode for f64 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_f64::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for i64 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i64::<NativeEndian>(self).unwrap();
     }
 }
 

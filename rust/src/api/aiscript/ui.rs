@@ -1,5 +1,6 @@
 use std::{
     collections::HashMap,
+    sync::atomic::{AtomicI64, Ordering},
     sync::{Arc, Mutex},
 };
 
@@ -2116,22 +2117,20 @@ impl AsUiComponent {
 
 #[derive(Clone)]
 pub struct AsUiLib {
-    // on_update: Arc<dyn Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static>,
     v0: AsUiLibV0,
     v1: AsUiLibV1,
-    // components: Arc<Mutex<HashMap<String, AsUiComponent>>>,
-    // instances: Arc<Mutex<HashMap<String, v0::values::Value>>>,
 }
 
 impl AsUiLib {
     #[frb(sync)]
     pub fn new(
-        on_update: impl Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static,
+        on_update: impl Fn(String, AsUiComponent, i64) -> DartFnFuture<()> + Sync + Send + 'static,
     ) -> Self {
         let on_update = Arc::new(on_update);
+        let update_count = Arc::new(AtomicI64::new(0));
         AsUiLib {
-            v0: AsUiLibV0::new(on_update.clone()),
-            v1: AsUiLibV1::new(on_update),
+            v0: AsUiLibV0::new(on_update.clone(), update_count.clone()),
+            v1: AsUiLibV1::new(on_update, update_count),
         }
     }
 
@@ -2146,19 +2145,24 @@ impl AsUiLib {
 
 #[derive(Clone)]
 struct AsUiLibV0 {
-    on_update: Arc<dyn Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static>,
+    on_update: Arc<dyn Fn(String, AsUiComponent, i64) -> DartFnFuture<()> + Sync + Send + 'static>,
     components: Arc<Mutex<HashMap<String, AsUiComponent>>>,
     instances: Arc<Mutex<HashMap<String, v0::values::Value>>>,
+    update_count: Arc<AtomicI64>,
 }
 
 impl AsUiLibV0 {
     fn new(
-        on_update: Arc<dyn Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static>,
+        on_update: Arc<
+            dyn Fn(String, AsUiComponent, i64) -> DartFnFuture<()> + Sync + Send + 'static,
+        >,
+        update_count: Arc<AtomicI64>,
     ) -> Self {
         AsUiLibV0 {
             on_update,
             components: Arc::new(Mutex::new(HashMap::new())),
             instances: Arc::new(Mutex::new(HashMap::new())),
+            update_count,
         }
     }
 
@@ -2189,6 +2193,7 @@ impl AsUiLibV0 {
                     let id = id.clone();
                     let components = self.components.clone();
                     let on_update = self.on_update.clone();
+                    let update_count = self.update_count.clone();
                     move |args, _| {
                         let def = args
                             .first()
@@ -2208,7 +2213,8 @@ impl AsUiLibV0 {
                                     updates
                                 }
                             };
-                            tokio::spawn(on_update(id.clone(), component));
+                            let update_count = update_count.fetch_add(1, Ordering::Relaxed);
+                            tokio::spawn(on_update(id.clone(), component, update_count));
                             Ok(v0::values::Value::null())
                         });
                         async { result }.boxed()
@@ -2220,7 +2226,8 @@ impl AsUiLibV0 {
             .lock()
             .map_err(v0::errors::AiScriptError::internal)?
             .insert(id.clone(), instance.clone());
-        tokio::spawn((self.on_update)(id, component));
+        let update_count = self.update_count.fetch_add(1, Ordering::Relaxed);
+        tokio::spawn((self.on_update)(id, component, update_count));
         Ok(instance)
     }
 
@@ -2274,6 +2281,7 @@ impl AsUiLibV0 {
             v0::values::Value::fn_native({
                 let components = self.components.clone();
                 let on_update = self.on_update.clone();
+                let update_count = self.update_count.clone();
                 move |args, _| {
                     let mut args = args.into_iter();
                     let result =
@@ -2296,7 +2304,12 @@ impl AsUiLibV0 {
                                     .lock()
                                     .map_err(v0::errors::AiScriptError::internal)?
                                     .insert(ROOT_ID.to_string(), component.clone());
-                                tokio::spawn(on_update(ROOT_ID.to_string(), component));
+                                let update_count = update_count.fetch_add(1, Ordering::Relaxed);
+                                tokio::spawn(on_update(
+                                    ROOT_ID.to_string(),
+                                    component,
+                                    update_count,
+                                ));
                                 Ok(v0::values::Value::null())
                             });
                     async { result }.boxed()
@@ -2550,19 +2563,24 @@ impl AsUiLibV0 {
 
 #[derive(Clone)]
 struct AsUiLibV1 {
-    on_update: Arc<dyn Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static>,
+    on_update: Arc<dyn Fn(String, AsUiComponent, i64) -> DartFnFuture<()> + Sync + Send + 'static>,
     components: Arc<Mutex<HashMap<String, AsUiComponent>>>,
     instances: Arc<Mutex<HashMap<String, v1::values::Value>>>,
+    update_count: Arc<AtomicI64>,
 }
 
 impl AsUiLibV1 {
     fn new(
-        on_update: Arc<dyn Fn(String, AsUiComponent) -> DartFnFuture<()> + Sync + Send + 'static>,
+        on_update: Arc<
+            dyn Fn(String, AsUiComponent, i64) -> DartFnFuture<()> + Sync + Send + 'static,
+        >,
+        update_count: Arc<AtomicI64>,
     ) -> Self {
         AsUiLibV1 {
             on_update,
             components: Arc::new(Mutex::new(HashMap::new())),
             instances: Arc::new(Mutex::new(HashMap::new())),
+            update_count,
         }
     }
 
@@ -2593,6 +2611,7 @@ impl AsUiLibV1 {
                     let id = id.clone();
                     let components = self.components.clone();
                     let on_update = self.on_update.clone();
+                    let update_count = self.update_count.clone();
                     move |args, _| {
                         let def = args
                             .first()
@@ -2612,7 +2631,8 @@ impl AsUiLibV1 {
                                     updates
                                 }
                             };
-                            tokio::spawn(on_update(id.clone(), component));
+                            let update_count = update_count.fetch_add(1, Ordering::Relaxed);
+                            tokio::spawn(on_update(id.clone(), component, update_count));
                             Ok(v1::values::Value::null())
                         });
                         async { result }.boxed()
@@ -2624,7 +2644,8 @@ impl AsUiLibV1 {
             .lock()
             .map_err(v1::errors::AiScriptError::internal)?
             .insert(id.clone(), instance.clone());
-        tokio::spawn((self.on_update)(id, component));
+        let update_count = self.update_count.fetch_add(1, Ordering::Relaxed);
+        tokio::spawn((self.on_update)(id, component, update_count));
         Ok(instance)
     }
 
@@ -2678,6 +2699,7 @@ impl AsUiLibV1 {
             v1::values::Value::fn_native({
                 let components = self.components.clone();
                 let on_update = self.on_update.clone();
+                let update_count = self.update_count.clone();
                 move |args, _| {
                     let mut args = args.into_iter();
                     let result =
@@ -2700,7 +2722,12 @@ impl AsUiLibV1 {
                                     .lock()
                                     .map_err(v1::errors::AiScriptError::internal)?
                                     .insert(ROOT_ID.to_string(), component.clone());
-                                tokio::spawn(on_update(ROOT_ID.to_string(), component));
+                                let update_count = update_count.fetch_add(1, Ordering::Relaxed);
+                                tokio::spawn(on_update(
+                                    ROOT_ID.to_string(),
+                                    component,
+                                    update_count,
+                                ));
                                 Ok(v1::values::Value::null())
                             });
                     async { result }.boxed()

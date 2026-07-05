@@ -47,6 +47,7 @@ Future<AiScript> createAiScript(
   if (components != null) {
     components.value = {};
   }
+  final updateCounts = <String, int>{};
 
   return AiScript.newInstance(
     read: (prompt) async {
@@ -138,8 +139,14 @@ Future<AiScript> createAiScript(
     ),
     ui: components != null
         ? AsUiLib(
-            onUpdate: (id, component) =>
-                components.value = {...components.value, id: component},
+            onUpdate: (id, component, updateCount) {
+              if (updateCounts[id] case final previousCount?
+                  when updateCount < previousCount) {
+                return;
+              }
+              updateCounts[id] = updateCount;
+              components.value = {...components.value, id: component};
+            },
           )
         : null,
     play: playId != null
