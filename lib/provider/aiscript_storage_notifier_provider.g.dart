@@ -13,7 +13,7 @@ part of 'aiscript_storage_notifier_provider.dart';
 final aiscriptStorageNotifierProvider = AiscriptStorageNotifierFamily._();
 
 final class AiscriptStorageNotifierProvider
-    extends $NotifierProvider<AiscriptStorageNotifier, Map<String, String>> {
+    extends $NotifierProvider<AiscriptStorageNotifier, void> {
   AiscriptStorageNotifierProvider._({
     required AiscriptStorageNotifierFamily super.from,
     required Account super.argument,
@@ -40,10 +40,10 @@ final class AiscriptStorageNotifierProvider
   AiscriptStorageNotifier create() => AiscriptStorageNotifier();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Map<String, String> value) {
+  Override overrideWithValue(void value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<Map<String, String>>(value),
+      providerOverride: $SyncValueProvider<void>(value),
     );
   }
 
@@ -60,15 +60,15 @@ final class AiscriptStorageNotifierProvider
 }
 
 String _$aiscriptStorageNotifierHash() =>
-    r'7db948673c9ab7cf747cd8327aae2e4367192053';
+    r'9bcb8955da14eb2eef77369f462f7f58fa69714e';
 
 final class AiscriptStorageNotifierFamily extends $Family
     with
         $ClassFamilyOverride<
           AiscriptStorageNotifier,
-          Map<String, String>,
-          Map<String, String>,
-          Map<String, String>,
+          void,
+          void,
+          void,
           Account
         > {
   AiscriptStorageNotifierFamily._()
@@ -87,21 +87,20 @@ final class AiscriptStorageNotifierFamily extends $Family
   String toString() => r'aiscriptStorageNotifierProvider';
 }
 
-abstract class _$AiscriptStorageNotifier
-    extends $Notifier<Map<String, String>> {
+abstract class _$AiscriptStorageNotifier extends $Notifier<void> {
   late final _$args = ref.$arg as Account;
   Account get account => _$args;
 
-  Map<String, String> build(Account account);
+  void build(Account account);
   @$mustCallSuper
   @override
   WhenComplete runBuild() {
-    final ref = this.ref as $Ref<Map<String, String>, Map<String, String>>;
+    final ref = this.ref as $Ref<void, void>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<Map<String, String>, Map<String, String>>,
-              Map<String, String>,
+              AnyNotifier<void, void>,
+              void,
               Object?,
               Object?
             >;

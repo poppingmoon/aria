@@ -49,6 +49,7 @@ class PlayWidget extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).value;
     final serverUrl = ref.watch(serverUrlNotifierProvider(host));
     final url = serverUrl.replace(pathSegments: ['play', play.id]);
+    final creatingAiScript = useState(false);
     final started = useState(false);
     final aiscript = useState<AiScript?>(null);
     final components = useState(<String, AsUiComponent>{});
@@ -260,52 +261,58 @@ class PlayWidget extends HookConsumerWidget {
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           autofocus: true,
-                          onPressed: () async {
-                            if (!RustLib.instance.initialized) {
-                              await RustLib.init();
-                            }
-                            await aiscript.value?.abort();
-                            try {
-                              aiscript.value = await createAiScript(
-                                ref,
-                                account: account,
-                                host: host,
-                                storageKey: play.id,
-                                url: url,
-                                components: components,
-                                playId: play.id,
-                              );
-                              started.value = true;
-                              await aiscript.value?.exec(
-                                input: play.script,
-                                isLegacy: switch (play.updatedAt) {
-                                  final updatedAt
-                                      when updatedAt.isBefore(
-                                        // 2025.8.0-alpha.5
-                                        DateTime.utc(2025, 8, 8),
-                                      ) =>
-                                    true,
-                                  final updatedAt
-                                      when updatedAt.isBefore(
-                                        // 2025.4.1-io.2
-                                        DateTime.utc(2025, 11, 23),
-                                      ) =>
-                                    null,
-                                  _ => false,
-                                },
-                              );
-                            } catch (e, st) {
-                              try {
-                                await aiscript.value?.abort();
-                              } catch (_) {}
-                              if (!context.mounted) return;
-                              await showErrorMessageDialog(
-                                context,
-                                error: e,
-                                stackTrace: st,
-                              );
-                            }
-                          },
+                          onPressed: !creatingAiScript.value
+                              ? () async {
+                                  creatingAiScript.value = true;
+                                  try {
+                                    if (!RustLib.instance.initialized) {
+                                      await RustLib.init();
+                                    }
+                                    await aiscript.value?.abort();
+                                    aiscript.value = await createAiScript(
+                                      ref,
+                                      account: account,
+                                      host: host,
+                                      storageKey: play.id,
+                                      url: url,
+                                      components: components,
+                                      playId: play.id,
+                                    );
+                                    creatingAiScript.value = false;
+                                    if (!context.mounted) return;
+                                    started.value = true;
+                                    await aiscript.value?.exec(
+                                      input: play.script,
+                                      isLegacy: switch (play.updatedAt) {
+                                        final updatedAt
+                                            when updatedAt.isBefore(
+                                              // 2025.8.0-alpha.5
+                                              DateTime.utc(2025, 8, 8),
+                                            ) =>
+                                          true,
+                                        final updatedAt
+                                            when updatedAt.isBefore(
+                                              // 2025.4.1-io.2
+                                              DateTime.utc(2025, 11, 23),
+                                            ) =>
+                                          null,
+                                        _ => false,
+                                      },
+                                    );
+                                  } catch (e, st) {
+                                    creatingAiScript.value = false;
+                                    try {
+                                      await aiscript.value?.abort();
+                                    } catch (_) {}
+                                    if (!context.mounted) return;
+                                    await showErrorMessageDialog(
+                                      context,
+                                      error: e,
+                                      stackTrace: st,
+                                    );
+                                  }
+                                }
+                              : null,
                           child: Ink(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(

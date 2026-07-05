@@ -10,6 +10,7 @@ import 'package:aria/provider/api/user_notifier_provider.dart';
 import 'package:aria/provider/emojis_notifier_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
+import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:aria/provider/timeline_tabs_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,6 +21,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../test/test_util/dummy_me_detailed.dart';
 import '../test/test_util/dummy_user_detailed_not_me.dart';
 import '../test/test_util/dummy_user_lite.dart';
+import '../test/test_util/fake_shared_preferences.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
@@ -74,6 +76,9 @@ Ui:render([
           serverUrlNotifierProvider(
             account.host,
           ).overrideWithValue(Uri.https(account.host)),
+          sharedPreferencesProvider.overrideWithValue(
+            FakeSharedPreferences({}),
+          ),
           timelineTabsNotifierProvider.overrideWithValue([]),
           userNotifierProvider(
             account,
@@ -146,6 +151,9 @@ Ui:render([Ui:C:text({text: Core:ai}) Ui:C:text({text: Core:ai})])
           serverUrlNotifierProvider(
             account.host,
           ).overrideWithValue(Uri.https(account.host)),
+          sharedPreferencesProvider.overrideWithValue(
+            FakeSharedPreferences({}),
+          ),
           timelineTabsNotifierProvider.overrideWithValue([]),
           userNotifierProvider(
             account,
@@ -214,6 +222,9 @@ Ui:render([Ui:C:text({text: `https://{host}/@{username}`})])
           serverUrlNotifierProvider(
             account.host,
           ).overrideWithValue(Uri.https(account.host)),
+          sharedPreferencesProvider.overrideWithValue(
+            FakeSharedPreferences({}),
+          ),
           timelineTabsNotifierProvider.overrideWithValue([]),
           userNotifierProvider(
             account,

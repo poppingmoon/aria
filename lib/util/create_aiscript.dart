@@ -44,6 +44,7 @@ Future<AiScript> createAiScript(
     );
     emojis = response.values.toList();
   } catch (_) {}
+  await ref.read(aiscriptStorageNotifierProvider(account).notifier).migrate();
   if (components != null) {
     components.value = {};
   }
@@ -126,11 +127,10 @@ Future<AiScript> createAiScript(
       save: (key, value) => ref
           .read(aiscriptStorageNotifierProvider(account).notifier)
           .save('$storageKey:$key', value),
-      load: (key) =>
-          ref
-              .read(aiscriptStorageNotifierProvider(account).notifier)
-              .load('$storageKey:$key') ??
-          '',
+      load: (key) => ref
+          .read(aiscriptStorageNotifierProvider(account).notifier)
+          .load('$storageKey:$key')
+          .then((value) => value ?? ''),
       remove: (key) => ref
           .read(aiscriptStorageNotifierProvider(account).notifier)
           .remove('$storageKey:$key'),
