@@ -20,6 +20,7 @@ class ImageWidget extends ConsumerWidget {
     this.opacity = 1.0,
     this.fit,
     this.alignment = Alignment.center,
+    this.blurHashDecodingSize = 32,
     this.placeholderBuilder,
     this.errorBuilder,
     this.semanticLabel,
@@ -34,6 +35,7 @@ class ImageWidget extends ConsumerWidget {
   final double opacity;
   final BoxFit? fit;
   final Alignment alignment;
+  final int blurHashDecodingSize;
   final Widget Function(BuildContext context)? placeholderBuilder;
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
@@ -51,6 +53,8 @@ class ImageWidget extends ConsumerWidget {
         child: BlurHash(
           hash: blurHash,
           color: Colors.transparent,
+          decodingWidth: blurHashDecodingSize,
+          decodingHeight: blurHashDecodingSize,
           optimizationMode: BlurHashOptimizationMode.approximation,
         ),
       );

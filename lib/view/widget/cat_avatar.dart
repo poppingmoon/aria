@@ -139,6 +139,7 @@ class CatAvatar extends HookWidget {
                 height: size,
                 width: size,
                 fit: BoxFit.cover,
+                blurHashDecodingSize: 16,
                 disableAnimations: disableAnimations,
               ),
             ),
