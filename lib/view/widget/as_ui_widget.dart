@@ -347,6 +347,18 @@ class AsUiWidget extends HookConsumerWidget {
         );
       case AsUiComponent_Buttons(field0: AsUiButtons(:final buttons)):
         return Wrap(
+          alignment: switch (DefaultTextStyle.of(context).textAlign) {
+            TextAlign.left => switch (Directionality.of(context)) {
+              TextDirection.rtl => WrapAlignment.end,
+              TextDirection.ltr => WrapAlignment.start,
+            },
+            TextAlign.center => WrapAlignment.center,
+            TextAlign.right => switch (Directionality.of(context)) {
+              TextDirection.rtl => WrapAlignment.start,
+              TextDirection.ltr => WrapAlignment.end,
+            },
+            _ => WrapAlignment.start,
+          },
           spacing: 8.0,
           runSpacing: 8.0,
           children: [
