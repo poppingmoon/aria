@@ -13,6 +13,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../rust/api/aiscript/ui.dart';
+import '../../util/future_with_dialog.dart';
 import '../../util/safe_parse_color.dart';
 import 'mfm.dart';
 import 'mfm/border.dart';
@@ -317,7 +318,11 @@ class AsUiWidget extends ConsumerWidget {
                     ),
               ),
           onClickEv: onClickEv != null
-              ? (clickEv) => onClickEv.call(value: clickEv)
+              ? (clickEv) => futureWithDialog(
+                  context,
+                  onClickEv(value: clickEv),
+                  overlay: false,
+                )
               : null,
           enableEmojiFadeIn: false,
         );
@@ -399,9 +404,7 @@ class AsUiWidget extends ConsumerWidget {
           defaultValue: defaultValue,
           label: label,
           caption: caption,
-          onChanged: onInput != null
-              ? (value) => onInput.call(value: value)
-              : null,
+          onChanged: onInput != null ? (value) => onInput(value: value) : null,
           minLines: 6,
           maxLines: 6,
         );
@@ -417,9 +420,7 @@ class AsUiWidget extends ConsumerWidget {
           defaultValue: defaultValue,
           label: label,
           caption: caption,
-          onChanged: onInput != null
-              ? (value) => onInput.call(value: value)
-              : null,
+          onChanged: onInput != null ? (value) => onInput(value: value) : null,
         );
       case AsUiComponent_NumberInput(
         field0: AsUiNumberInput(
@@ -532,6 +533,7 @@ class AsUiWidget extends ConsumerWidget {
                           .setLocalOnly(localOnly);
                     }
                     context.push('/$account/post');
+                    return null;
                   }
                 : null,
           ),
@@ -554,7 +556,7 @@ class _Button extends ConsumerWidget {
   });
 
   final String? text;
-  final void Function()? onTap;
+  final Future<void>? Function()? onTap;
   final bool? primary;
   final bool? rounded;
   final bool? disabled;
@@ -578,7 +580,16 @@ class _Button extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 14.0),
         minimumSize: const Size(100.0, 40.0),
       ),
-      onPressed: !(disabled ?? false) ? onTap : null,
+      onPressed: !(disabled ?? false)
+          ? switch (onTap) {
+              final onTap? => () => futureWithDialog(
+                context,
+                onTap(),
+                overlay: false,
+              ),
+              _ => null,
+            }
+          : null,
       child: Text(text ?? ''),
     );
   }
@@ -621,7 +632,7 @@ class _Switch extends HookWidget {
       onChanged: switch (onChange) {
         final onChange? => (v) {
           value.value = v;
-          onChange.call(value: v);
+          futureWithDialog(context, onChange(value: v), overlay: false);
         },
         _ => null,
       },
@@ -644,7 +655,7 @@ class _TextField extends HookWidget {
   final String? defaultValue;
   final String? label;
   final String? caption;
-  final void Function(String)? onChanged;
+  final Future<void> Function(String)? onChanged;
   final int? minLines;
   final int? maxLines;
 
@@ -657,7 +668,14 @@ class _TextField extends HookWidget {
       child: TextField(
         controller: controller,
         decoration: InputDecoration(labelText: label, helperText: caption),
-        onChanged: onChanged,
+        onChanged: switch (onChanged) {
+          final onChanged? => (value) => futureWithDialog(
+            context,
+            onChanged(value),
+            overlay: false,
+          ),
+          _ => null,
+        },
         minLines: minLines,
         maxLines: maxLines,
         onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -713,7 +731,11 @@ class _NumberInput extends HookWidget {
                   if (controller.text.isEmpty) {
                     controller.text = '-1';
                     if (onInput case final onInput?) {
-                      onInput.call(value: -1);
+                      futureWithDialog(
+                        context,
+                        onInput(value: -1),
+                        overlay: false,
+                      );
                     }
                     return;
                   }
@@ -721,7 +743,11 @@ class _NumberInput extends HookWidget {
                   if (i != null) {
                     controller.text = (i - 1).toString();
                     if (onInput case final onInput?) {
-                      onInput.call(value: i - 1);
+                      futureWithDialog(
+                        context,
+                        onInput(value: i - 1),
+                        overlay: false,
+                      );
                     }
                   }
                 },
@@ -739,7 +765,11 @@ class _NumberInput extends HookWidget {
                   if (controller.text.isEmpty) {
                     controller.text = '1';
                     if (onInput case final onInput?) {
-                      onInput.call(value: 1);
+                      futureWithDialog(
+                        context,
+                        onInput(value: 1),
+                        overlay: false,
+                      );
                     }
                     return;
                   }
@@ -747,7 +777,11 @@ class _NumberInput extends HookWidget {
                   if (i != null) {
                     controller.text = (i + 1).toString();
                     if (onInput case final onInput?) {
-                      onInput.call(value: i + 1);
+                      futureWithDialog(
+                        context,
+                        onInput(value: i + 1),
+                        overlay: false,
+                      );
                     }
                   }
                 },
@@ -768,10 +802,10 @@ class _NumberInput extends HookWidget {
           }),
         ],
         onChanged: switch (onInput) {
-          final onInput? => (value) async {
+          final onInput? => (value) {
             final v = double.tryParse(value);
             if (v != null) {
-              await onInput.call(value: v);
+              futureWithDialog(context, onInput(value: v), overlay: false);
             }
           },
           _ => null,
@@ -814,10 +848,10 @@ class _Select extends HookWidget {
           )
           .toList(),
       initialValue: value.value,
-      onChanged: (v) async {
+      onChanged: (v) {
         value.value = v;
-        if (v != null) {
-          await onChange?.call(value: v);
+        if (onChange case final onChange? when v != null) {
+          futureWithDialog(context, onChange(value: v), overlay: false);
         }
       },
       isExpanded: true,
