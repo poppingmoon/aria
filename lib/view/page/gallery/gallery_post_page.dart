@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -146,7 +147,26 @@ class GalleryPostPage extends ConsumerWidget {
                         files: post.files,
                         initialIndex: index,
                       ),
-                      child: ImageWidget(url: file.url, fit: BoxFit.cover),
+                      child: ImageWidget(
+                        url: file.url,
+                        fit: BoxFit.cover,
+                        placeholderBuilder: switch (file.properties) {
+                          DriveFileProperties(:final width?, :final height?) =>
+                            (context) => AspectRatio(
+                              aspectRatio: width / height,
+                              child: switch (file.blurhash) {
+                                final blurHash? => BlurHash(
+                                  hash: blurHash,
+                                  color: Colors.transparent,
+                                  optimizationMode:
+                                      BlurHashOptimizationMode.approximation,
+                                ),
+                                _ => null,
+                              },
+                            ),
+                          _ => null,
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -162,7 +182,7 @@ class GalleryPostPage extends ConsumerWidget {
                   ),
                 ),
               ),
-              if (post case GalleryPost(:final description?))
+              if (post.description case final description?)
                 Center(
                   child: Material(
                     color: theme.colorScheme.surface,
