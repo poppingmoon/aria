@@ -13,7 +13,6 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import '../../util/launch_url.dart';
 import 'achievement_widget.dart';
 import 'emoji_widget.dart';
@@ -374,22 +373,21 @@ class NotificationWidget extends ConsumerWidget {
                 ScheduledNoteSummary(account: account, note: draft),
                 if (draft.scheduledAt case final scheduledAt?) ...[
                   const SizedBox(height: 4.0),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        WidgetSpan(
-                          alignment: PlaceholderAlignment.middle,
-                          child: Icon(
-                            Icons.schedule,
-                            size: style.lineHeight,
-                            color: style.color?.withValues(alpha: 0.5),
-                          ),
+                  TimeWidget(
+                    leadingSpans: [
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: Icon(
+                          Icons.schedule,
+                          size: style.lineHeight,
+                          color: style.color?.withValues(alpha: 0.5),
                         ),
-                        const WidgetSpan(child: SizedBox(width: 4.0)),
-                        TextSpan(text: absoluteTime(scheduledAt)),
-                        TextSpan(text: ' (${relativeTime(scheduledAt)})'),
-                      ],
-                    ),
+                      ),
+                      const WidgetSpan(child: SizedBox(width: 4.0)),
+                    ],
+                    time: scheduledAt,
+                    detailed: true,
+                    disableTooltip: true,
                   ),
                 ],
               ],

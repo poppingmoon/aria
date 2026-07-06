@@ -6,19 +6,23 @@ import '../../util/format_datetime.dart';
 class TimeWidget extends StatelessWidget {
   const TimeWidget({
     super.key,
+    this.leadingSpans,
     required this.time,
     this.detailed = false,
     this.absolute = false,
     this.fallbackText,
     this.disableTooltip = false,
+    this.style,
     this.textScaler,
   });
 
+  final List<InlineSpan>? leadingSpans;
   final DateTime? time;
   final bool detailed;
   final bool absolute;
   final String? fallbackText;
   final bool disableTooltip;
+  final TextStyle? style;
   final TextScaler? textScaler;
 
   @override
@@ -28,8 +32,12 @@ class TimeWidget extends StatelessWidget {
     if (time == null) {
       return Text.rich(
         TextSpan(
-          children: [TextSpan(text: fallbackText ?? t.misskey.ago_.invalid)],
+          children: [
+            ...?leadingSpans,
+            TextSpan(text: fallbackText ?? t.misskey.ago_.invalid),
+          ],
         ),
+        style: style,
         textScaler: textScaler,
       );
     }
@@ -45,6 +53,7 @@ class TimeWidget extends StatelessWidget {
       return Text.rich(
         TextSpan(
           children: [
+            ...?leadingSpans,
             TextSpan(
               text: detailed
                   ? '$absolute ($relative)'
@@ -54,6 +63,7 @@ class TimeWidget extends StatelessWidget {
             ),
           ],
         ),
+        style: style,
         textScaler: textScaler,
       );
     } else {
@@ -64,6 +74,7 @@ class TimeWidget extends StatelessWidget {
         child: Text.rich(
           TextSpan(
             children: [
+              ...?leadingSpans,
               TextSpan(
                 text: detailed
                     ? '$absolute ($relative)'
@@ -73,6 +84,7 @@ class TimeWidget extends StatelessWidget {
               ),
             ],
           ),
+          style: style,
           textScaler: textScaler,
         ),
       );

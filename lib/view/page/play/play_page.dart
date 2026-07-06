@@ -203,45 +203,25 @@ class PlayPage extends HookConsumerWidget {
                               : null,
                         ),
                         const Divider(),
-                        DefaultTextStyle.merge(
+                        TimeWidget(
+                          leadingSpans: [
+                            TextSpan(text: '${t.misskey.createdAt}: '),
+                          ],
+                          time: play.createdAt,
+                          detailed: true,
                           style: TextStyle(
                             color: colors.fg.withValues(alpha: 0.75),
                           ),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: '${t.misskey.createdAt}: '),
-                                WidgetSpan(
-                                  alignment: PlaceholderAlignment.middle,
-                                  child: TimeWidget(
-                                    time: play.createdAt,
-                                    detailed: true,
-                                    textScaler: TextScaler.noScaling,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ),
                         if (play.updatedAt != play.createdAt)
-                          DefaultTextStyle.merge(
+                          TimeWidget(
+                            leadingSpans: [
+                              TextSpan(text: '${t.misskey.updatedAt}: '),
+                            ],
+                            time: play.updatedAt,
+                            detailed: true,
                             style: TextStyle(
                               color: colors.fg.withValues(alpha: 0.75),
-                            ),
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(text: '${t.misskey.updatedAt}: '),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    child: TimeWidget(
-                                      time: play.updatedAt,
-                                      detailed: true,
-                                      textScaler: TextScaler.noScaling,
-                                    ),
-                                  ),
-                                ],
-                              ),
                             ),
                           ),
                       ],

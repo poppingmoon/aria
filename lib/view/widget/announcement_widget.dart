@@ -8,11 +8,11 @@ import '../../model/account.dart';
 import '../../provider/api/announcements_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../util/format_datetime.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_dialog.dart';
 import 'image_widget.dart';
 import 'mfm.dart';
+import 'time_widget.dart';
 
 class AnnouncementWidget extends ConsumerWidget {
   const AnnouncementWidget({
@@ -105,14 +105,10 @@ class AnnouncementWidget extends ConsumerWidget {
               fontSizeFactor: 0.9,
               color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
             ),
-            child: Text.rich(
-              TextSpan(
-                text: '${t.misskey.createdAt}: ',
-                children: [
-                  TextSpan(text: '${absoluteTime(announcement.createdAt)} '),
-                  TextSpan(text: '(${relativeTime(announcement.createdAt)})'),
-                ],
-              ),
+            child: TimeWidget(
+              leadingSpans: [TextSpan(text: '${t.misskey.createdAt}: ')],
+              time: announcement.createdAt,
+              detailed: true,
             ),
           ),
           if (announcement.updatedAt case final updatedAt?)
@@ -121,14 +117,10 @@ class AnnouncementWidget extends ConsumerWidget {
                 fontSizeFactor: 0.9,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
               ),
-              child: Text.rich(
-                TextSpan(
-                  text: '${t.misskey.updatedAt}: ',
-                  children: [
-                    TextSpan(text: '${absoluteTime(updatedAt)} '),
-                    TextSpan(text: '(${relativeTime(updatedAt)})'),
-                  ],
-                ),
+              child: TimeWidget(
+                leadingSpans: [TextSpan(text: '${t.misskey.updatedAt}: ')],
+                time: updatedAt,
+                detailed: true,
               ),
             ),
           if (showButton) ...[

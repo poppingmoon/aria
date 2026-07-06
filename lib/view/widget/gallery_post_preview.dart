@@ -177,11 +177,9 @@ class GalleryPostPreview extends HookConsumerWidget {
               ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text('${t.misskey.updatedAt}: '),
-                  Expanded(child: TimeWidget(time: post.updatedAt)),
-                ],
+              child: TimeWidget(
+                leadingSpans: [TextSpan(text: '${t.misskey.updatedAt}: ')],
+                time: post.updatedAt,
               ),
             ),
           ],

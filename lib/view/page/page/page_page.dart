@@ -523,25 +523,13 @@ class PagePage extends ConsumerWidget {
                   width: maxContentWidth,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   color: theme.colorScheme.surface,
-                  child: DefaultTextStyle.merge(
+                  child: TimeWidget(
+                    leadingSpans: [TextSpan(text: '${t.misskey.createdAt}: ')],
+                    time: page.createdAt,
+                    detailed: true,
                     style: TextStyle(
                       color: theme.colorScheme.onSurface.withValues(
                         alpha: 0.75,
-                      ),
-                    ),
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: '${t.misskey.createdAt}: '),
-                          WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: TimeWidget(
-                              time: page.createdAt,
-                              detailed: true,
-                              textScaler: TextScaler.noScaling,
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ),
@@ -554,25 +542,15 @@ class PagePage extends ConsumerWidget {
                     width: maxContentWidth,
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     color: theme.colorScheme.surface,
-                    child: DefaultTextStyle.merge(
+                    child: TimeWidget(
+                      leadingSpans: [
+                        TextSpan(text: '${t.misskey.updatedAt}: '),
+                      ],
+                      time: page.updatedAt,
+                      detailed: true,
                       style: TextStyle(
                         color: theme.colorScheme.onSurface.withValues(
                           alpha: 0.75,
-                        ),
-                      ),
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(text: '${t.misskey.updatedAt}: '),
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: TimeWidget(
-                                time: page.updatedAt,
-                                detailed: true,
-                                textScaler: TextScaler.noScaling,
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),

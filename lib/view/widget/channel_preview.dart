@@ -228,11 +228,9 @@ class ChannelPreview extends ConsumerWidget {
               const Divider(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text('${t.misskey.updatedAt}: '),
-                    Expanded(child: TimeWidget(time: lastNotedAt)),
-                  ],
+                child: TimeWidget(
+                  leadingSpans: [TextSpan(text: '${t.misskey.updatedAt}: ')],
+                  time: lastNotedAt,
                 ),
               ),
             ],

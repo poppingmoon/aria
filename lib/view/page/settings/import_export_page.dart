@@ -26,13 +26,13 @@ import '../../../provider/isar_provider.dart';
 import '../../../provider/misskey_theme_codes_notifier_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
 import '../../../util/copy_text.dart';
-import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/message_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
+import '../../widget/time_widget.dart';
 import '../drive_page.dart';
 
 class ImportExportPage extends ConsumerWidget {
@@ -325,8 +325,13 @@ class ImportExportPage extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(t.aria.importConfirm),
-                              Text(
-                                '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
+                              TimeWidget(
+                                leadingSpans: [
+                                  TextSpan(text: '${t.misskey.createdAt}: '),
+                                ],
+                                time: latest.createdAt,
+                                detailed: true,
+                                disableTooltip: true,
                               ),
                             ],
                           ),

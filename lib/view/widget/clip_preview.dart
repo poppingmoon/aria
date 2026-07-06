@@ -6,8 +6,8 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import 'mfm.dart';
+import 'time_widget.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
@@ -34,7 +34,7 @@ class ClipPreview extends ConsumerWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (clip case Clip(:final description?))
+          if (clip.description case final description?)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Mfm(
@@ -45,14 +45,16 @@ class ClipPreview extends ConsumerWidget {
                 maxLines: 1,
               ),
             ),
-          if (clip case Clip(:final lastClippedAt?))
+          if (clip.lastClippedAt case final lastClippedAt?)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
-              child: Text(
-                '${t.misskey.updatedAt}: ${absoluteTime(lastClippedAt)} (${relativeTime(lastClippedAt)})',
+              child: TimeWidget(
+                leadingSpans: [TextSpan(text: '${t.misskey.updatedAt}: ')],
+                time: lastClippedAt,
+                detailed: true,
               ),
             ),
-          if (clip case Clip(:final notesCount?))
+          if (clip.notesCount case final notesCount?)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Text(

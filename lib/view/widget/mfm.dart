@@ -14,14 +14,12 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../constant/fonts.dart';
 import '../../extension/text_style_extension.dart';
 import '../../gen/fonts.gen.dart';
-import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
 import '../../model/mfm_config.dart';
 import '../../model/misskey_colors.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../util/format_datetime.dart';
 import '../../util/navigate.dart';
 import '../../util/nyaize.dart';
 import '../../util/safe_parse_color.dart';
@@ -44,6 +42,7 @@ import 'mfm/sparkle.dart';
 import 'mfm/spin.dart';
 import 'mfm/tada.dart';
 import 'mfm/twitch.dart';
+import 'time_widget.dart';
 import 'unicode_emoji.dart';
 import 'url_sheet.dart';
 import 'url_widget.dart';
@@ -1216,36 +1215,30 @@ class _Mfm extends StatelessWidget {
                 vertical: 4.0 * config.scale,
                 horizontal: 8.0 * config.scale,
               ),
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Icon(
-                        Icons.access_time,
-                        color: config.style.color?.withValues(
-                          alpha:
-                              (config.style.color?.a ?? 1.0) * config.opacity,
-                        ),
-                        size: config.style.lineHeight * config.scale * 0.9,
+              child: TimeWidget(
+                leadingSpans: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Icon(
+                      Icons.access_time,
+                      color: config.style.color?.withValues(
+                        alpha: (config.style.color?.a ?? 1.0) * config.opacity,
                       ),
+                      size: config.style.lineHeight * config.scale * 0.9,
                     ),
-                    WidgetSpan(child: SizedBox(width: 2.0 * config.scale)),
-                    if (time != null)
-                      TextSpan(
-                        text: '${absoluteTime(time)} (${relativeTime(time)})',
-                        style: config.style.apply(
-                          fontSizeFactor: config.scale * 0.9,
-                          color: config.style.color?.withValues(
-                            alpha:
-                                (config.style.color?.a ?? 1.0) * config.opacity,
-                          ),
-                        ),
-                      )
-                    else
-                      TextSpan(text: t.misskey.ago_.invalid),
-                  ],
+                  ),
+                  WidgetSpan(child: SizedBox(width: 2.0 * config.scale)),
+                ],
+                time: time,
+                detailed: true,
+                disableTooltip: true,
+                style: config.style.apply(
+                  fontSizeFactor: config.scale * 0.9,
+                  color: config.style.color?.withValues(
+                    alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+                  ),
                 ),
+                textScaler: TextScaler.noScaling,
               ),
             ),
           ),
