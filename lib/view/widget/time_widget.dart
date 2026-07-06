@@ -9,12 +9,14 @@ class TimeWidget extends StatelessWidget {
     required this.time,
     this.detailed = false,
     this.absolute = false,
+    this.disableTooltip = false,
     this.textScaler,
   });
 
   final DateTime? time;
   final bool detailed;
   final bool absolute;
+  final bool disableTooltip;
   final TextScaler? textScaler;
 
   @override
@@ -22,23 +24,54 @@ class TimeWidget extends StatelessWidget {
     final time = this.time;
 
     if (time == null) {
-      return Text(t.misskey.ago_.invalid, textScaler: textScaler);
+      return Text.rich(
+        TextSpan(children: [TextSpan(text: t.misskey.ago_.invalid)]),
+        textScaler: textScaler,
+      );
     }
 
-    final absolute = absoluteTime(time);
-    final relative = relativeTime(time);
+    final absolute = !disableTooltip || detailed || this.absolute
+        ? absoluteTime(time)
+        : null;
+    final relative = !disableTooltip || detailed || !this.absolute
+        ? relativeTime(time)
+        : null;
 
-    return Tooltip(
-      message:
-          '$absolute.${time.millisecond.toString().padLeft(3, '0')} ($relative)',
-      child: Text(
-        detailed
-            ? '$absolute ($relative)'
-            : this.absolute
-            ? absolute
-            : relative,
+    if (disableTooltip) {
+      return Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(
+              text: detailed
+                  ? '$absolute ($relative)'
+                  : this.absolute
+                  ? absolute
+                  : relative,
+            ),
+          ],
+        ),
         textScaler: textScaler,
-      ),
-    );
+      );
+    } else {
+      return Tooltip(
+        message:
+            '$absolute.${time.millisecond.toString().padLeft(3, '0')}'
+            ' ($relative)',
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: detailed
+                    ? '$absolute ($relative)'
+                    : this.absolute
+                    ? absolute
+                    : relative,
+              ),
+            ],
+          ),
+          textScaler: textScaler,
+        ),
+      );
+    }
   }
 }

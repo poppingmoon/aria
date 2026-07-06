@@ -92,7 +92,7 @@ class DriveFolderSheet extends ConsumerWidget {
         ListTile(
           leading: const Icon(Icons.folder, size: 50.0),
           title: Text(folder.name),
-          subtitle: TimeWidget(time: folder.createdAt),
+          subtitle: TimeWidget(time: folder.createdAt, detailed: true),
         ),
         const Divider(height: 0.0),
         ListTile(
