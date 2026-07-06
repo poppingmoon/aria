@@ -9,6 +9,7 @@ class TimeWidget extends StatelessWidget {
     required this.time,
     this.detailed = false,
     this.absolute = false,
+    this.fallbackText,
     this.disableTooltip = false,
     this.textScaler,
   });
@@ -16,6 +17,7 @@ class TimeWidget extends StatelessWidget {
   final DateTime? time;
   final bool detailed;
   final bool absolute;
+  final String? fallbackText;
   final bool disableTooltip;
   final TextScaler? textScaler;
 
@@ -25,7 +27,9 @@ class TimeWidget extends StatelessWidget {
 
     if (time == null) {
       return Text.rich(
-        TextSpan(children: [TextSpan(text: t.misskey.ago_.invalid)]),
+        TextSpan(
+          children: [TextSpan(text: fallbackText ?? t.misskey.ago_.invalid)],
+        ),
         textScaler: textScaler,
       );
     }
