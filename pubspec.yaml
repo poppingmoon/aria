@@ -103,7 +103,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 6bae76ef634627a2335834ded1b96cd481d20418
+      ref: ebd8ae33c1c9bbd4dc93c2b43b477f9425ec2ee5
   mobile_scanner:
     git:
       url: https://github.com/poppingmoon/mobile_scanner
