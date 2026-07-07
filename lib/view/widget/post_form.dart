@@ -36,7 +36,6 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/extract_mentions.dart';
-import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/pick_date_time.dart';
 import '../../util/punycode.dart';
@@ -59,6 +58,7 @@ import 'poll_editor.dart';
 import 'post_form_attaches.dart';
 import 'reaction_acceptance_icon.dart';
 import 'reaction_acceptance_widget.dart';
+import 'time_widget.dart';
 import 'user_avatar.dart';
 
 class PostForm extends HookConsumerWidget {
@@ -685,14 +685,15 @@ class PostForm extends HookConsumerWidget {
                       child: Icon(Icons.schedule),
                     ),
                     Expanded(
-                      child: Text(
-                        t.misskey.scheduleToPostOnX(
-                          x:
-                              '${absoluteTime(scheduledAt)} '
-                              '(${relativeTime(scheduledAt)})',
+                      child: TimeWidget(
+                        time: scheduledAt,
+                        builder: (context, absolute, relative) => Text(
+                          t.misskey.scheduleToPostOnX(
+                            x: '$absolute ($relative)',
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
                       ),
                     ),
                     IconButton(

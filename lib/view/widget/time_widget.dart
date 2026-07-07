@@ -8,6 +8,7 @@ class TimeWidget extends StatelessWidget {
     super.key,
     this.leadingSpans,
     required this.time,
+    this.builder,
     this.detailed = false,
     this.absolute = false,
     this.fallbackText,
@@ -18,6 +19,12 @@ class TimeWidget extends StatelessWidget {
 
   final List<InlineSpan>? leadingSpans;
   final DateTime? time;
+  final Widget Function(
+    BuildContext context,
+    String? absolute,
+    String? relative,
+  )?
+  builder;
   final bool detailed;
   final bool absolute;
   final String? fallbackText;
@@ -30,16 +37,17 @@ class TimeWidget extends StatelessWidget {
     final time = this.time;
 
     if (time == null) {
-      return Text.rich(
-        TextSpan(
-          children: [
-            ...?leadingSpans,
-            TextSpan(text: fallbackText ?? t.misskey.ago_.invalid),
-          ],
-        ),
-        style: style,
-        textScaler: textScaler,
-      );
+      return builder?.call(context, null, null) ??
+          Text.rich(
+            TextSpan(
+              children: [
+                ...?leadingSpans,
+                TextSpan(text: fallbackText ?? t.misskey.ago_.invalid),
+              ],
+            ),
+            style: style,
+            textScaler: textScaler,
+          );
     }
 
     final absolute = !disableTooltip || detailed || this.absolute
@@ -49,7 +57,9 @@ class TimeWidget extends StatelessWidget {
         ? relativeTime(time)
         : null;
 
-    if (disableTooltip) {
+    if (builder case final builder?) {
+      return builder(context, absolute, relative);
+    } else if (disableTooltip) {
       return Text.rich(
         TextSpan(
           children: [

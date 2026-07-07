@@ -11,7 +11,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import '../../util/punycode.dart';
 import 'bot_badge.dart';
 import 'image_widget.dart';
@@ -142,13 +141,15 @@ class NoteHeader extends HookConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (note.updatedAt case final updatedAt?)
-                Tooltip(
-                  message:
-                      '${t.misskey.edited}: '
-                      '${absoluteTime(updatedAt)}'
-                      '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
-                      '(${relativeTime(updatedAt)})',
-                  child: const Icon(Icons.edit),
+                TimeWidget(
+                  time: updatedAt,
+                  builder: (context, absolute, relative) => Tooltip(
+                    message:
+                        '${t.misskey.edited}: $absolute.'
+                        '${updatedAt.millisecond.toString().padLeft(3, '0')}'
+                        ' ($relative)',
+                    child: const Icon(Icons.edit),
+                  ),
                 ),
               if (note.visibility != NoteVisibility.public)
                 NoteVisibilityIcon(visibility: note.visibility),
