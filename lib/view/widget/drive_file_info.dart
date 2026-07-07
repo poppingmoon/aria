@@ -6,11 +6,11 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
+import '../../provider/absolute_time_provider.dart';
 import '../../provider/api/drive_file_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/copy_text.dart';
-import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/navigate.dart';
 import '../../util/pretty_bytes.dart';
@@ -181,7 +181,12 @@ class DriveFileInfo extends ConsumerWidget {
                     InkWell(
                       onLongPress: () => copyToClipboard(
                         context,
-                        absoluteTime(file.createdAt),
+                        ref.read(
+                          absoluteTimeProvider(
+                            t.$meta.locale.languageTag,
+                            file.createdAt,
+                          ),
+                        ),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

@@ -74,11 +74,7 @@ class UrlPreview extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final summalyResult = ref
         .watch(
-          summalyProvider(
-            account.host,
-            link,
-            lang: Localizations.localeOf(context).toLanguageTag(),
-          ),
+          summalyProvider(account.host, link, lang: t.$meta.locale.languageTag),
         )
         .value;
     final isPlayerOpen = useState(false);
@@ -246,7 +242,7 @@ class UrlPreview extends HookConsumerWidget {
               TwitterEmbed(
                 tweetId: tweetId,
                 isDark: brightness == Brightness.dark,
-                lang: Localizations.localeOf(context).toLanguageTag(),
+                lang: t.$meta.locale.languageTag,
               )
             else if (atId != null)
               BlueskyEmbed(

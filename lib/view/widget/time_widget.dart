@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
+import '../../provider/absolute_time_provider.dart';
 import '../../util/format_datetime.dart';
 
-class TimeWidget extends StatelessWidget {
+class TimeWidget extends ConsumerWidget {
   const TimeWidget({
     super.key,
     this.leadingSpans,
@@ -33,7 +35,7 @@ class TimeWidget extends StatelessWidget {
   final TextScaler? textScaler;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final time = this.time;
 
     if (time == null) {
@@ -51,7 +53,7 @@ class TimeWidget extends StatelessWidget {
     }
 
     final absolute = !disableTooltip || detailed || this.absolute
-        ? absoluteTime(time)
+        ? ref.watch(absoluteTimeProvider(t.$meta.locale.languageTag, time))
         : null;
     final relative = !disableTooltip || detailed || !this.absolute
         ? relativeTime(time)
