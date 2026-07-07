@@ -11,10 +11,10 @@ import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/endpoints_notifier_provider.dart';
 import '../../provider/api/scheduled_notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import 'note_widget.dart';
+import 'time_widget.dart';
 
 class ScheduledNoteWidget extends ConsumerWidget {
   const ScheduledNoteWidget({
@@ -49,11 +49,10 @@ class ScheduledNoteWidget extends ConsumerWidget {
               ),
               if (draft.scheduledAt case final scheduledAt?)
                 Expanded(
-                  child: Text(
-                    t.misskey.scheduledToPostOnX(
-                      x:
-                          '${absoluteTime(scheduledAt)} '
-                          '(${relativeTime(scheduledAt)})',
+                  child: TimeWidget(
+                    time: scheduledAt,
+                    builder: (context, absolute, relative) => Text(
+                      t.misskey.scheduledToPostOnX(x: '$absolute ($relative)'),
                     ),
                   ),
                 )

@@ -25,8 +25,8 @@ import '../../provider/timeline_last_viewed_at_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import 'announcement_widget.dart';
+import 'time_widget.dart';
 import 'timeline_header.dart';
 import 'timeline_list_view.dart';
 
@@ -286,13 +286,12 @@ class TimelineWidget extends HookConsumerWidget {
                         const SizedBox(width: 8.0),
                         if (lastViewedAt != null)
                           Expanded(
-                            child: Text(
-                              t.aria.jumpTo(
-                                x:
-                                    '${absoluteTime(lastViewedAt)}'
-                                    ' (${relativeTime(lastViewedAt)})',
+                            child: TimeWidget(
+                              time: lastViewedAt,
+                              builder: (context, absolute, relative) => Text(
+                                t.aria.jumpTo(x: '$absolute ($relative)'),
+                                maxLines: 1,
                               ),
-                              maxLines: 1,
                             ),
                           ),
                         IconButton(
@@ -325,13 +324,12 @@ class TimelineWidget extends HookConsumerWidget {
                         if (Id.tryParse(nextNoteId)?.date
                             case final nextNoteDate?)
                           Expanded(
-                            child: Text(
-                              t.aria.jumpTo(
-                                x:
-                                    '${absoluteTime(nextNoteDate)}'
-                                    ' (${relativeTime(nextNoteDate)})',
+                            child: TimeWidget(
+                              time: nextNoteDate,
+                              builder: (context, absolute, relative) => Text(
+                                t.aria.jumpTo(x: '$absolute ($relative)'),
+                                maxLines: 1,
                               ),
-                              maxLines: 1,
                             ),
                           ),
                         IconButton(

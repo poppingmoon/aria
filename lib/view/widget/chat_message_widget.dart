@@ -140,8 +140,7 @@ class ChatMessageWidget extends HookConsumerWidget {
                   color: theme.colorScheme.onSurface.withValues(alpha: 0.8),
                   fontSizeFactor: 0.8,
                 ),
-                child: TimeWidget(
-                  time: message.createdAt,
+                child: InkWell(
                   onTap: () {
                     if (message.id.isEmpty) return;
                     showModalBottomSheet<void>(
@@ -154,6 +153,7 @@ class ChatMessageWidget extends HookConsumerWidget {
                       ),
                     );
                   },
+                  child: TimeWidget(time: message.createdAt),
                 ),
               ),
               if (message.reactions.isNotEmpty) const SizedBox(height: 2.0),

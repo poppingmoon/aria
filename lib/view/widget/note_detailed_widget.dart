@@ -22,7 +22,6 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
-import '../../util/format_datetime.dart';
 import '../../util/get_note_action.dart';
 import 'acct_widget.dart';
 import 'bot_badge.dart';
@@ -434,14 +433,16 @@ class _NoteDetailedContent extends HookConsumerWidget {
                           ],
                         ),
                       ),
-                      if (appearNote.updatedAt case final updatedAt?)
-                        Tooltip(
-                          message:
-                              '${t.misskey.edited}: '
-                              '${absoluteTime(updatedAt)}'
-                              '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
-                              '(${relativeTime(updatedAt)})',
-                          child: const Icon(Icons.edit),
+                      if (appearNote.updatedAt case final date?)
+                        TimeWidget(
+                          time: date,
+                          builder: (context, absolute, relative) => Tooltip(
+                            message:
+                                '${t.misskey.edited}: $absolute.'
+                                '${date.millisecond.toString().padLeft(3, '0')}'
+                                ' ($relative)',
+                            child: const Icon(Icons.edit),
+                          ),
                         ),
                       if (appearNote.visibility != NoteVisibility.public)
                         NoteVisibilityIcon(visibility: appearNote.visibility),

@@ -6,11 +6,11 @@ import '../../../extension/text_style_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/mutings_notifier_provider.dart';
-import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../widget/acct_widget.dart';
 import '../../widget/paginated_list_view.dart';
+import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
@@ -46,47 +46,39 @@ class MutedUsersPage extends ConsumerWidget {
             children: [
               AcctWidget(account: account, user: muting.mutee),
               const SizedBox(height: 4.0),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Icon(
-                        Icons.schedule,
-                        size: style?.lineHeight,
-                        color: style?.color,
-                      ),
+              TimeWidget(
+                leadingSpans: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Icon(
+                      Icons.schedule,
+                      size: style?.lineHeight,
+                      color: style?.color,
                     ),
-                    const WidgetSpan(child: SizedBox(width: 2.0)),
-                    TextSpan(text: absoluteTime(muting.createdAt)),
-                    const TextSpan(text: ' ('),
-                    TextSpan(text: relativeTime(muting.createdAt)),
-                    const TextSpan(text: ')'),
-                  ],
-                ),
+                  ),
+                  const WidgetSpan(child: SizedBox(width: 2.0)),
+                ],
+                time: muting.createdAt,
+                detailed: true,
+                disableTooltip: true,
                 style: style,
               ),
-              Text.rich(
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      alignment: PlaceholderAlignment.middle,
-                      child: Icon(
-                        Icons.visibility_off,
-                        size: style?.lineHeight,
-                        color: style?.color,
-                      ),
+              TimeWidget(
+                leadingSpans: [
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: Icon(
+                      Icons.visibility_off,
+                      size: style?.lineHeight,
+                      color: style?.color,
                     ),
-                    const WidgetSpan(child: SizedBox(width: 2.0)),
-                    if (muting.expiresAt case final expiresAt?) ...[
-                      TextSpan(text: absoluteTime(expiresAt)),
-                      const TextSpan(text: ' ('),
-                      TextSpan(text: relativeTime(expiresAt)),
-                      const TextSpan(text: ')'),
-                    ] else
-                      TextSpan(text: t.misskey.indefinitely),
-                  ],
-                ),
+                  ),
+                  const WidgetSpan(child: SizedBox(width: 2.0)),
+                ],
+                time: muting.expiresAt,
+                detailed: true,
+                fallbackText: t.misskey.indefinitely,
+                disableTooltip: true,
                 style: style,
               ),
             ],

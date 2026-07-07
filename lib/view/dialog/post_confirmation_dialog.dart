@@ -14,9 +14,9 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
-import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/note_widget.dart';
+import '../widget/time_widget.dart';
 
 Future<bool> confirmPost(
   WidgetRef ref,
@@ -119,26 +119,21 @@ class PostConfirmationDialog extends ConsumerWidget {
                   color: colors.infoBg,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            const WidgetSpan(
-                              alignment: PlaceholderAlignment.middle,
-                              child: Icon(Icons.schedule),
-                            ),
-                            const WidgetSpan(child: SizedBox(width: 8.0)),
-                            TextSpan(
-                              text: t.misskey.scheduleToPostOnX(
-                                x:
-                                    '${absoluteTime(date)} '
-                                    '(${relativeTime(date)})',
+                    child: Row(
+                      spacing: 8.0,
+                      children: [
+                        const Icon(Icons.schedule),
+                        Expanded(
+                          child: TimeWidget(
+                            time: date,
+                            builder: (context, absolute, relative) => Text(
+                              t.misskey.scheduleToPostOnX(
+                                x: '$absolute ($relative)',
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),

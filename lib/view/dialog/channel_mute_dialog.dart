@@ -78,7 +78,11 @@ class ChannelMuteDialog extends HookConsumerWidget {
               const SizedBox(height: 8.0),
               ListTile(
                 title: Text(t.misskey.poll_.deadlineDate),
-                subtitle: TimeWidget(time: expiresAt.value, detailed: true),
+                subtitle: TimeWidget(
+                  time: expiresAt.value,
+                  detailed: true,
+                  disableTooltip: true,
+                ),
                 onTap: () async {
                   final result = await pickDateTime(
                     context,

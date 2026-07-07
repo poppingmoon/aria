@@ -174,7 +174,11 @@ class PollEditor extends ConsumerWidget {
           if (expiresAt != null)
             ListTile(
               title: Text(t.misskey.poll_.deadlineDate),
-              subtitle: TimeWidget(time: expiresAt, detailed: true),
+              subtitle: TimeWidget(
+                time: expiresAt,
+                detailed: true,
+                disableTooltip: true,
+              ),
               onTap: () async {
                 final expiresAt = await pickDateTime(
                   context,

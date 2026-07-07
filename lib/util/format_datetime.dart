@@ -33,6 +33,7 @@ String relativeTime(DateTime time) {
   }
 }
 
+// あとでけす
 String absoluteTime(DateTime time) {
   final lang = t.$meta.locale.languageTag;
   final prefix = time.year.isNegative ? '-' : '';

@@ -12,12 +12,12 @@ import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/api/search_notes_notifier_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
 import '../../../provider/id_gen_method_provider.dart';
-import '../../../util/format_datetime.dart';
 import '../../../util/pick_date_time.dart';
 import '../../../util/punycode.dart';
 import '../../dialog/user_select_dialog.dart';
 import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
+import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
 import '../channel/channels_page.dart';
@@ -197,10 +197,11 @@ class SearchNotes extends HookConsumerWidget {
                   ),
                   ListTile(
                     title: Text(t.aria.sinceDate),
-                    subtitle: Text(
-                      sinceDate.value != null
-                          ? absoluteTime(sinceDate.value!)
-                          : t.misskey.notSet,
+                    subtitle: TimeWidget(
+                      time: sinceDate.value,
+                      absolute: true,
+                      fallbackText: t.misskey.notSet,
+                      disableTooltip: true,
                     ),
                     trailing: sinceDate.value != null
                         ? IconButton(
@@ -220,10 +221,11 @@ class SearchNotes extends HookConsumerWidget {
                   ),
                   ListTile(
                     title: Text(t.aria.untilDate),
-                    subtitle: Text(
-                      untilDate.value != null
-                          ? absoluteTime(untilDate.value!)
-                          : t.misskey.notSet,
+                    subtitle: TimeWidget(
+                      time: untilDate.value,
+                      absolute: true,
+                      fallbackText: t.misskey.notSet,
+                      disableTooltip: true,
                     ),
                     trailing: untilDate.value != null
                         ? IconButton(
