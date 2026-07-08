@@ -1244,16 +1244,14 @@ class _Mfm extends StatelessWidget {
           ),
         );
       case 'clickable':
-        final clickEv = args['ev'];
+        final clickEv = args['ev'] ?? '';
         return WidgetSpan(
           alignment: children.any(_containsNewLine)
               ? PlaceholderAlignment.bottom
               : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: InkWell(
-            onTap: clickEv != null && onClickEv != null
-                ? () => onClickEv?.call(clickEv)
-                : null,
+            onTap: onClickEv != null ? () => onClickEv?.call(clickEv) : null,
             child: AbsorbPointer(
               child: Text.rich(
                 TextSpan(children: _buildNodes(context, config, children)),
