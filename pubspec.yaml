@@ -145,12 +145,12 @@ dependencies:
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: ce88e756a40b3916c17ede631f45353595f6ddd5
+      ref: aee1311ea73635347225250d4c615f577d284781
   webpush_encryption: ^1.0.1
-  window_manager: ^0.5.1
+  window_manager: ^0.5.2
 
 dev_dependencies:
-  build_runner: ^2.15.0
+  build_runner: ^2.15.1
   flutter_gen_runner: ^5.14.1
   flutter_launcher_icons: ^0.14.4
   flutter_test:
@@ -201,7 +201,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 65144d0a180cbb891b524f0cbe8c50bb3326aad6
+      ref: e9513be9b0f6d254fdab765f6322d4484615ba66
 
 hooks:
   user_defines:
