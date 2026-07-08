@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.6+104
+version: 1.5.7+105
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -59,7 +59,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.12.0
+  flutter_rust_bridge: 2.13.0-beta.4
+  flutter_rust_bridge_hooks: 2.13.0-beta.4
   flutter_secure_storage: ^10.3.1
   flutter_svg: ^2.3.0
   fluttertoast: ^9.1.0
@@ -77,7 +78,6 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
-  hooks: ^2.0.2
   hooks_riverpod: ^3.3.2
   html: ^0.15.6
   image: ^4.8.0
@@ -145,12 +145,12 @@ dependencies:
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: ce88e756a40b3916c17ede631f45353595f6ddd5
+      ref: aee1311ea73635347225250d4c615f577d284781
   webpush_encryption: ^1.0.1
-  window_manager: ^0.5.1
+  window_manager: ^0.5.2
 
 dev_dependencies:
-  build_runner: ^2.15.0
+  build_runner: ^2.15.1
   flutter_gen_runner: ^5.14.1
   flutter_launcher_icons: ^0.14.4
   flutter_test:
@@ -201,7 +201,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 65144d0a180cbb891b524f0cbe8c50bb3326aad6
+      ref: e9513be9b0f6d254fdab765f6322d4484615ba66
 
 hooks:
   user_defines:
