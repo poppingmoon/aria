@@ -59,7 +59,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.12.0
+  flutter_rust_bridge: 2.13.0-beta.4
+  flutter_rust_bridge_hooks: 2.13.0-beta.4
   flutter_secure_storage: ^10.3.1
   flutter_svg: ^2.3.0
   fluttertoast: ^9.1.0
@@ -77,7 +78,6 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
       path: highlighting
-  hooks: ^2.0.2
   hooks_riverpod: ^3.3.2
   html: ^0.15.6
   image: ^4.8.0

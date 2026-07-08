@@ -1,11 +1,10 @@
-import 'package:hooks/hooks.dart';
-import 'package:native_toolchain_rust/native_toolchain_rust.dart';
+import 'package:flutter_rust_bridge_hooks/flutter_rust_bridge_hooks.dart';
 
 void main(List<String> args) async {
   await build(args, (input, output) async {
-    await const RustBuilder(
-      assetName: 'rust/frb_generated.io.dart',
-      cratePath: 'rust',
-    ).run(input: input, output: output);
+    await const FlutterRustBridgeNativeAssetsBuilder().run(
+      input: input,
+      output: output,
+    );
   });
 }
