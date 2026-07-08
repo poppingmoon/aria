@@ -11,6 +11,42 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsEmojisGen {
+  const $AssetsEmojisGen();
+
+  /// File path: assets/emojis/LICENSE
+  String get license => 'assets/emojis/LICENSE';
+
+  /// File path: assets/emojis/LICENSE-CLDR
+  String get licenseCldr => 'assets/emojis/LICENSE-CLDR';
+
+  /// File path: assets/emojis/LICENSE-CODE
+  String get licenseCode => 'assets/emojis/LICENSE-CODE';
+
+  /// File path: assets/emojis/LICENSE-EMOJILIB
+  String get licenseEmojilib => 'assets/emojis/LICENSE-EMOJILIB';
+
+  /// File path: assets/emojis/LICENSE-FLUENT-EMOJI
+  String get licenseFluentEmoji => 'assets/emojis/LICENSE-FLUENT-EMOJI';
+
+  /// File path: assets/emojis/LICENSE-TWEMOJI
+  String get licenseTwemoji => 'assets/emojis/LICENSE-TWEMOJI';
+
+  /// File path: assets/emojis/LICENSE-TWEMOJI-PARSER
+  String get licenseTwemojiParser => 'assets/emojis/LICENSE-TWEMOJI-PARSER';
+
+  /// List of all assets
+  List<String> get values => [
+    license,
+    licenseCldr,
+    licenseCode,
+    licenseEmojilib,
+    licenseFluentEmoji,
+    licenseTwemoji,
+    licenseTwemojiParser,
+  ];
+}
+
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
@@ -419,6 +455,7 @@ class Assets {
 
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
+  static const $AssetsEmojisGen emojis = $AssetsEmojisGen();
   static const String flower = 'assets/flower.svg';
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();

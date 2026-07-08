@@ -67,12 +67,16 @@ void main() async {
     yield LicenseEntryWithLineBreaks([
       'Pretendard',
     ], await rootBundle.loadString(Assets.fonts.pretendard.license));
-    yield LicenseEntryWithLineBreaks([
-      'misskey',
-    ], await rootBundle.loadString(Assets.misskey.copying));
-    yield LicenseEntryWithLineBreaks([
-      'misskey',
-    ], await rootBundle.loadString(Assets.misskey.license));
+    for (final asset in Assets.emojis.values) {
+      yield LicenseEntryWithLineBreaks([
+        'emojis',
+      ], await rootBundle.loadString(asset));
+    }
+    for (final asset in Assets.misskey.values) {
+      yield LicenseEntryWithLineBreaks([
+        'misskey',
+      ], await rootBundle.loadString(asset));
+    }
   });
   late final SharedPreferencesWithCache prefs;
   try {

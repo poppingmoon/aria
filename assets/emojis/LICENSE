@@ -1,0 +1,30 @@
+Unless otherwise stated this repository is
+Copyright (c) Misskey Project
+
+And is licensed under the MIT License. See LICENSE-CODE for details.
+
+This repository contains the following third-party works:
+
+## `@misskey-dev/emoji-data`
+
+Emoji keywords for Unicode 11 and below by Mu-An Chiou
+License: MIT
+See LICENSE-EMOJILIB for details.
+
+Character annotation data for Unicode 12 and above by Unicode CLDR Project
+License: Unicode License v3
+See LICENSE-CLDR for details.
+
+Emoji regex by Twemoji (@twemoji/parser)
+License: MIT
+See LICENSE-TWEMOJI-PARSER for details.
+
+## `@misskey-dev/emoji-assets`
+
+Fluent Emoji by Microsoft Corporation
+License: MIT
+See LICENSE-FLUENT-EMOJI for details.
+
+Twemoji by Twitter, Inc., Jason Sofonia and Justine De Caires 
+License: CC-BY-4.0
+See LICENSE-TWEMOJI for details.

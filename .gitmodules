@@ -1,3 +1,6 @@
+[submodule "emojis"]
+	path = emojis
+	url = https://github.com/misskey-dev/emojis.git
 [submodule "misskey"]
 	path = misskey
 	url = https://github.com/misskey-dev/misskey.git
