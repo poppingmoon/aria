@@ -212,6 +212,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/emojis/
     - assets/fonts/BIZ_UDGothic/OFL.txt
     - assets/fonts/Noto_Serif_JP/OFL.txt
     - assets/fonts/Pretendard/LICENSE.txt

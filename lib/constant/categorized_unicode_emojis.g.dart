@@ -1,7 +1,7 @@
 /// Generated file. Do not edit.
 ///
-/// Source: misskey/packages/frontend-shared/js/emojilist.json
-/// To regenerate, run: `flutter run script/gen_unicode_emoji_index.dart`
+/// Source: emojis/packages/emoji-data/src/emojilist.json
+/// To regenerate, run: `dart script/gen_unicode_emoji_index.dart`
 
 const categorizedUnicodeEmojis = {
   "face": [
@@ -59,6 +59,7 @@ const categorizedUnicodeEmojis = {
     "🤬",
     "🤯",
     "😳",
+    "🫪",
     "😞",
     "😟",
     "😠",
@@ -101,6 +102,7 @@ const categorizedUnicodeEmojis = {
     "🥴",
     "🥱",
     "😴",
+    "🫯",
     "👁️‍🗨️",
     "💤",
     "😶‍🌫️",
@@ -131,9 +133,7 @@ const categorizedUnicodeEmojis = {
     "😽",
     "🙀",
     "😿",
-    "😾",
-    "🫪",
-    "🫯"
+    "😾"
   ],
   "people": [
     "🤲",
@@ -302,6 +302,7 @@ const categorizedUnicodeEmojis = {
     "🤶",
     "🧑‍🎄",
     "🎅",
+    "🫈",
     "🥷",
     "🧙",
     "🧙‍♀️",
@@ -354,6 +355,7 @@ const categorizedUnicodeEmojis = {
     "🚶‍♀️‍➡️",
     "🚶‍♂️",
     "🚶‍♂️‍➡️",
+    "🧑‍🩰",
     "💃",
     "🕺",
     "👯",
@@ -514,9 +516,7 @@ const categorizedUnicodeEmojis = {
     "🕶",
     "🥽",
     "💍",
-    "🌂",
-    "🫈",
-    "🧑‍🩰"
+    "🌂"
   ],
   "animals_and_nature": [
     "🐶",
@@ -535,6 +535,7 @@ const categorizedUnicodeEmojis = {
     "🐷",
     "🐽",
     "🐸",
+    "🫍",
     "🦑",
     "🐙",
     "🪼",
@@ -730,8 +731,7 @@ const categorizedUnicodeEmojis = {
     "🪷",
     "🪸",
     "🪹",
-    "🪺",
-    "🫍"
+    "🪺"
   ],
   "food_and_drink": [
     "🍋‍🟩",
@@ -1179,6 +1179,7 @@ const categorizedUnicodeEmojis = {
     "🧯",
     "🗑",
     "🛢",
+    "🪎",
     "💸",
     "💵",
     "💴",
@@ -1366,7 +1367,6 @@ const categorizedUnicodeEmojis = {
     "🔎",
     "🪦",
     "🪧",
-    "🪎",
     "🪊"
   ],
   "symbols": [

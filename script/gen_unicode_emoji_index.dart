@@ -15,14 +15,6 @@ void main() {
     'flags',
   ];
   const emojilist = [
-    ['🫪', 'distorted_face', 0],
-    ['🫯', 'fight_cloud', 0],
-    ['🫈', 'hairy_creature', 1],
-    ['🧑‍🩰', 'ballet_dancer', 1],
-    ['🫍', 'orca', 2],
-    ['🛘', 'landslide', 4],
-    ['🪎', 'treasure_chest', 6],
-    ['🪊', 'trombone', 6],
     ['🇦', 'regional_indicator_a', 7],
     ['🇧', 'regional_indicator_b', 7],
     ['🇨', 'regional_indicator_c', 7],
@@ -52,57 +44,6 @@ void main() {
   ];
   final unicodeEmojiIndexes = <String, Map<String, List<String>>>{
     'en-US': {
-      '🫪': [
-        'face',
-        'anxiety',
-        'bloated',
-        'panic',
-        'shocked',
-        'surprised',
-        'vulnerable',
-      ],
-      '🫯': [
-        'argument',
-        'brawl',
-        'debate',
-        'disagreement',
-        'fight',
-        'ruckus',
-        'wrestle',
-      ],
-      '🫈': [
-        'bigfoot',
-        'cryptid',
-        'forest',
-        'giant',
-        'hairy',
-        'sasquatch',
-        'woodwose',
-        'yeti',
-      ],
-      '🧑‍🩰': ['ballet', 'dancer'],
-      '🫍': ['animal', 'nature', 'marine', 'ocean', 'whale'],
-      '🛘': [
-        'avalanche',
-        'danger',
-        'disaster',
-        'earthquake',
-        'mountain',
-        'mudslide',
-        'rocks',
-      ],
-      '🪎': [
-        'gem',
-        'gold',
-        'jewels',
-        'loot',
-        'money',
-        'prize',
-        'silver',
-        'valuables',
-        'wealth',
-      ],
-      '🪊': ['brass', 'instrument', 'jazz', 'music', 'sad', 'slide'],
       '🇦': ['a', 'blue-square', 'alphabet'],
       '🇧': ['b', 'blue-square', 'alphabet'],
       '🇨': ['c', 'blue-square', 'alphabet'],
@@ -131,14 +72,6 @@ void main() {
       '🇿': ['z', 'blue-square', 'alphabet'],
     },
     'ja-JP': {
-      '🫪': ['あぜん', 'ショック', 'ぼう然', '不安', '膨れた', '驚いた'],
-      '🫯': ['ケンカ', 'バトル', 'ボカスカ', '争い', '取っ組み合い', '喧嘩', '土煙'],
-      '🫈': ['イエティ', 'サスカッチ', 'ビッグフット', '巨人', '未確認動物', '森', '毛むくじゃら'],
-      '🧑‍🩰': ['ダンサー', 'バレエ'],
-      '🫍': ['クジラ', '海', '海洋'],
-      '🛘': ['土砂災害', '山', '山崩れ', '岩石', '崩落', '災害', '落石'],
-      '🪎': ['お宝', 'お金', 'ジュエリー', '宝石', '富', '財宝', '貴金属', '金貨'],
-      '🪊': ['ジャズ', 'スライド', '吹奏楽', '楽器', '管楽器', '音楽'],
       '🇦': ['a', 'アルファベット'],
       '🇧': ['b', 'アルファベット'],
       '🇨': ['c', 'アルファベット'],
@@ -167,14 +100,6 @@ void main() {
       '🇿': ['z', 'アルファベット'],
     },
     'ja-JP_hira': {
-      '🫪': ['あぜん', 'しょっく', 'ぼうぜん', 'ふあん', 'ふくれた', 'おどろいた'],
-      '🫯': ['けんか', 'ばとる', 'ぼかすか', 'あらそい', 'とっくみあい', 'つちけむり'],
-      '🫈': ['いえてぃ', 'さすかっち', 'びっぐふっと', 'きょじん', 'みかくにんどうぶつ', 'もり', 'けむくじゃら'],
-      '🧑‍🩰': ['だんさー', 'ばれえ'],
-      '🫍': ['くじら', 'うみ', 'かいよう'],
-      '🛘': ['どしゃさいがい', 'やま', 'やまくずれ', 'がんせき', 'ほうらく', 'さいがい', 'らくせき'],
-      '🪎': ['おたから', 'おかね', 'じゅえりー', 'ほうせき', 'とみ', 'ざいほう', 'ききんぞく', 'きんか'],
-      '🪊': ['じゃず', 'すらいど', 'すいそうがく', 'がっき', 'かんがっき', 'おんがく'],
       '🇦': ['a', 'あるふぁべっと'],
       '🇧': ['b', 'あるふぁべっと'],
       '🇨': ['c', 'あるふぁべっと'],
@@ -208,7 +133,7 @@ void main() {
   final emojis = [
     ...jsonDecode(
           File(
-            'misskey/packages/frontend-shared/js/emojilist.json',
+            'emojis/packages/emoji-data/src/emojilist.json',
           ).readAsStringSync(),
         )
         as List,
@@ -227,8 +152,8 @@ void main() {
   categorizedEmojisFile.writeAsStringSync("""
 /// Generated file. Do not edit.
 ///
-/// Source: misskey/packages/frontend-shared/js/emojilist.json
-/// To regenerate, run: `flutter run script/gen_unicode_emoji_index.dart`
+/// Source: emojis/packages/emoji-data/src/emojilist.json
+/// To regenerate, run: `dart script/gen_unicode_emoji_index.dart`
 
 const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(categorized)};
 """);
@@ -239,7 +164,7 @@ const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(ca
     final emojiToText = {
       ...jsonDecode(
             File(
-              'misskey/packages/frontend/src/unicode-emoji-indexes/$language.json',
+              'emojis/packages/emoji-data/src/indexes/$language.json',
             ).readAsStringSync(),
           )
           as Map<String, dynamic>,
@@ -255,9 +180,9 @@ const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(ca
   emojiIndexFile.writeAsStringSync("""
 /// Generated file. Do not edit.
 ///
-/// Source: misskey/packages/frontend-shared/js/emojilist.json
-/// Source: misskey/packages/frontend/src/unicode-emoji-indexes
-/// To regenerate, run: `flutter run script/gen_unicode_emoji_index.dart`
+/// Source: emojis/packages/emoji-data/src/emojilist.json
+/// Source: emojis/packages/emoji-data/src/indexes
+/// To regenerate, run: `dart script/gen_unicode_emoji_index.dart`
 
 const unicodeEmojiIndex = {
 ${textToEmoji.entries.map((e) => "  '${e.key.replaceAll("'", r"\'")}': ${jsonEncode(e.value.toList())}").join(',\n')}
