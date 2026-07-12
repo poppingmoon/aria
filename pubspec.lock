@@ -518,10 +518,10 @@ packages:
     dependency: "direct main"
     description:
       name: extended_image
-      sha256: f6cbb1d798f51262ed1a3d93b4f1f2aa0d76128df39af18ecb77fa740f88b2e0
+      sha256: e81d801cd692921f152834e01f39bba8b3d6302c48ad420d499c6062a7e24737
       url: "https://pub.dev"
     source: hosted
-    version: "10.0.1"
+    version: "10.1.0"
   extended_image_library:
     dependency: transitive
     description:
@@ -874,18 +874,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge
-      sha256: "20861a4148ebb72f547366b2dd575ef803e32ff1cb6dc5aa0c9ffdbc774f2799"
+      sha256: d9d819e3f39efe08a68309ff7cadc9d8bcfd65d86319e0c5735cd4f4fee16c4a
       url: "https://pub.dev"
     source: hosted
-    version: "2.13.0-beta.4"
+    version: "2.13.0-beta.5"
   flutter_rust_bridge_hooks:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge_hooks
-      sha256: "0ae752d541b6878ac1baac7827502ea21cb3ac81bf57362895a6df2929707ac7"
+      sha256: "33f96e930af9016405f519696574f6fcb96ec37a515188d1da484fa81f9a90f7"
       url: "https://pub.dev"
     source: hosted
-    version: "2.13.0-beta.4"
+    version: "2.13.0-beta.5"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -1412,8 +1412,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: b89d453e6c73233937b74c18ccc9e0044106b9eb
-      resolved-ref: b89d453e6c73233937b74c18ccc9e0044106b9eb
+      ref: "3f2a4e305854ca0bf8e4e03583db796b63aff5c7"
+      resolved-ref: "3f2a4e305854ca0bf8e4e03583db796b63aff5c7"
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -2254,8 +2254,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "536835989425cb69c5ca5f9d2619104e549cfc61"
-      resolved-ref: "536835989425cb69c5ca5f9d2619104e549cfc61"
+      ref: "792a15478ad25b00b22552ac9cf809920f16cbdd"
+      resolved-ref: "792a15478ad25b00b22552ac9cf809920f16cbdd"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
@@ -2424,26 +2424,26 @@ packages:
     dependency: "direct main"
     description:
       name: video_player
-      sha256: "48a7bdaa38a3d50ec10c78627abdbfad863fdf6f0d6e08c7c3c040cfd80ae36f"
+      sha256: "0431179e1a7a2234a1148f64dde63c73167ca23829815169b24cc0bc6b9444a3"
       url: "https://pub.dev"
     source: hosted
-    version: "2.11.1"
+    version: "2.12.0"
   video_player_android:
     dependency: transitive
     description:
       name: video_player_android
-      sha256: "15bfd0598f8d8946bf0e2d50e2ca1a0db9491589a8bb7f6f9a388c0b48aef764"
+      sha256: "5121de08444d00363efdda630a69ad4d27a208a9f7586482d4909a44a1cdbc63"
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.0"
+    version: "2.11.0"
   video_player_avfoundation:
     dependency: transitive
     description:
       name: video_player_avfoundation
-      sha256: "76097729ef0c976937945afa53f1ca3afa9b50c9a95909ba347bcf93270466fd"
+      sha256: c238f5f0a26845cd0bcc2956049b63065a4d3c40ddfc22c3414cd170bef7fff9
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.0"
+    version: "2.11.0"
   video_player_platform_interface:
     dependency: transitive
     description:
@@ -2537,8 +2537,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: aee1311ea73635347225250d4c615f577d284781
-      resolved-ref: aee1311ea73635347225250d4c615f577d284781
+      ref: "6b13ce67e93c5f30ad2d456d22e188ec83e581ec"
+      resolved-ref: "6b13ce67e93c5f30ad2d456d22e188ec83e581ec"
       url: "https://github.com/poppingmoon/webfont_list"
     source: git
     version: "1.0.0"
