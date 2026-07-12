@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -43,9 +46,10 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).value;
-    final showTimelineLastViewedAt = ref.watch(
+    final (showTimelineLastViewedAt, alwaysShowHeader) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showTimelineLastViewedAt,
+        (settings) =>
+            (settings.showTimelineLastViewedAt, settings.alwaysShowTabHeader),
       ),
     );
     final lastViewedNoteId = tabSettings.tabType != TabType.notifications
@@ -77,6 +81,15 @@ class TimelineWidget extends HookConsumerWidget {
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
     );
+    final sizeFactorController = useAnimationController(
+      duration: const Duration(milliseconds: 200),
+      initialValue: 1.0,
+    );
+    final headerKey = useMemoized(() => GlobalKey());
+    final expansibleController = useExpansibleController();
+    final isMenuExpanded = useRef(false);
+    final headerHeight = useRef<double?>(null);
+    final scrollDirection = useRef<ScrollDirection?>(null);
     useEffect(() {
       if (!tabSettings.keepPosition) {
         ref
@@ -85,6 +98,9 @@ class TimelineWidget extends HookConsumerWidget {
             )
             .saveFromDate(DateTime.now());
       }
+      expansibleController.addListener(() {
+        isMenuExpanded.value = expansibleController.isExpanded;
+      });
       return;
     }, []);
     if (!account.isGuest) {
@@ -160,17 +176,25 @@ class TimelineWidget extends HookConsumerWidget {
       (announcement) => announcement.display == AnnouncementDisplayType.banner,
     );
     final showLastViewedAt = useState(showTimelineLastViewedAt);
+    final theme = Theme.of(context);
 
     return Stack(
       alignment: Alignment.center,
       children: [
         Column(
           children: [
-            TimelineHeader(tabSettings: tabSettings),
+            SizeTransition(
+              sizeFactor: sizeFactorController,
+              child: TimelineHeader(
+                key: headerKey,
+                tabSettings: tabSettings,
+                controller: expansibleController,
+              ),
+            ),
             ...?bannerAnnouncements?.map(
               (announcement) => Container(
                 width: double.infinity,
-                color: Theme.of(context).colorScheme.primary,
+                color: theme.colorScheme.primary,
                 padding: const EdgeInsets.all(4.0),
                 child: InkWell(
                   onTap: () => context.push('/$account/announcements'),
@@ -178,9 +202,7 @@ class TimelineWidget extends HookConsumerWidget {
                     child: Text.rich(
                       TextSpan(
                         children: [
-                          if (announcement case AnnouncementsResponse(
-                            :final icon?,
-                          ))
+                          if (announcement.icon case final icon?)
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Padding(
@@ -216,9 +238,7 @@ class TimelineWidget extends HookConsumerWidget {
                           ),
                         ],
                       ),
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.onPrimary),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
@@ -230,7 +250,7 @@ class TimelineWidget extends HookConsumerWidget {
               if (previousNoteId != null &&
                   lastViewedNoteId.compareTo(previousNoteId) < 0)
                 Container(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  color: theme.colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: InkWell(
                     onTap: () async {
@@ -310,7 +330,7 @@ class TimelineWidget extends HookConsumerWidget {
               else if (nextNoteId != null &&
                   lastViewedNoteId.compareTo(nextNoteId) < 0)
                 Container(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  color: theme.colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: InkWell(
                     onTap: () async {
@@ -347,10 +367,61 @@ class TimelineWidget extends HookConsumerWidget {
                 ),
             const Divider(height: 1.0),
             Expanded(
-              child: TimelineListView(
-                tabSettings: tabSettings,
-                focusPostForm: focusPostForm,
-                lastViewedAtKey: lastViewedAtKey,
+              child: NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  if (alwaysShowHeader || isMenuExpanded.value) {
+                    return false;
+                  }
+                  switch (notification) {
+                    case UserScrollNotification(:final direction):
+                      if (direction == ScrollDirection.idle) {
+                        final sizeFactor = sizeFactorController.value;
+                        switch (scrollDirection.value) {
+                          case ScrollDirection.forward when sizeFactor < 1.0:
+                            sizeFactorController.animateTo(
+                              1.0,
+                              curve: Curves.easeOut,
+                            );
+                          case ScrollDirection.reverse when sizeFactor > 0.0:
+                            sizeFactorController.animateTo(
+                              0.0,
+                              curve: Curves.easeOut,
+                            );
+                          default:
+                        }
+                      } else {
+                        sizeFactorController.stop();
+                      }
+                      scrollDirection.value = direction;
+                    case ScrollUpdateNotification(:final scrollDelta?) ||
+                        OverscrollNotification(overscroll: final scrollDelta):
+                      final sizeFactor = sizeFactorController.value;
+                      if ((scrollDirection.value, scrollDelta, sizeFactor)
+                          case (ScrollDirection.forward, < 0.0, < 1.0) ||
+                              (ScrollDirection.reverse, > 0.0, > 0.0)) {
+                        headerHeight.value ??=
+                            headerKey.currentContext?.size?.height;
+                        final height = headerHeight.value ?? 48.0;
+                        final currentHeight = height * sizeFactor;
+                        final nextHeight = currentHeight - scrollDelta;
+                        final clampedHeight = clampDouble(
+                          nextHeight,
+                          0.0,
+                          height,
+                        );
+                        sizeFactorController.value = clampedHeight / height;
+                        scrollController.position.correctBy(
+                          clampedHeight - currentHeight,
+                        );
+                      }
+                  }
+                  return false;
+                },
+                child: TimelineListView(
+                  tabSettings: tabSettings,
+                  focusPostForm: focusPostForm,
+                  lastViewedAtKey: lastViewedAtKey,
+                ),
               ),
             ),
           ],
