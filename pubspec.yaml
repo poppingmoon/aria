@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.7+105
+version: 1.5.8+106
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -28,7 +28,7 @@ dependencies:
   dio: ^5.10.0
   dotted_border: ^3.1.0
   dynamic_color: ^1.8.1
-  extended_image: ^10.0.1
+  extended_image: ^10.1.0
   file: ^7.0.1
   file_picker: ^12.0.0-beta.7
   flex_color_picker: ^3.8.0
@@ -59,8 +59,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: 2.13.0-beta.4
-  flutter_rust_bridge_hooks: 2.13.0-beta.4
+  flutter_rust_bridge: ^2.13.0-beta.5
+  flutter_rust_bridge_hooks: ^2.13.0-beta.5
   flutter_secure_storage: ^10.3.1
   flutter_svg: ^2.3.0
   fluttertoast: ^9.1.0
@@ -98,7 +98,7 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: b89d453e6c73233937b74c18ccc9e0044106b9eb
+      ref: 3f2a4e305854ca0bf8e4e03583db796b63aff5c7
   mime: ^2.0.0
   misskey_dart:
     git:
@@ -133,19 +133,19 @@ dependencies:
   twemoji_v2:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
-      ref: 536835989425cb69c5ca5f9d2619104e549cfc61
+      ref: 792a15478ad25b00b22552ac9cf809920f16cbdd
   unifiedpush: ^6.2.0
   unifiedpush_ui: ^0.2.0
   url_launcher: ^6.3.2
   uuid: ^4.5.3
   vector_math: ^2.2.0
-  video_player: ^2.11.1
+  video_player: ^2.12.0
   wakelock_plus: ^1.6.1
   web_socket_channel: ^3.0.3
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: aee1311ea73635347225250d4c615f577d284781
+      ref: 6b13ce67e93c5f30ad2d456d22e188ec83e581ec
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.2
 
