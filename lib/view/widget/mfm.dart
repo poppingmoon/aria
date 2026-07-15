@@ -106,6 +106,9 @@ class Mfm extends HookConsumerWidget {
       }
       return null;
     }, [this.nodes, text]);
+    final needsIsolate =
+        defaultTargetPlatform != TargetPlatform.linux &&
+        (builder != null || (trailingSpans?.isNotEmpty ?? false));
     final (
       enableAdvanced,
       enableAnimation,
@@ -143,6 +146,29 @@ class Mfm extends HookConsumerWidget {
               : null,
         )
         .merge(this.style);
+
+    if (simple) {
+      return _SimpleMfm(
+        account: account,
+        leadingSpans: leadingSpans,
+        nodes: nodes,
+        trailingSpans: trailingSpans,
+        builder: builder,
+        config: MfmConfig(
+          style: style,
+          align: textAlign,
+          opacity: this.style?.color?.a ?? defaultTextStyle.color?.a ?? 1.0,
+        ),
+        emojis: emojis,
+        author: author,
+        overflow: overflow,
+        maxLines: maxLines,
+        needsIsolate: needsIsolate,
+        enableEmojiFadeIn: enableEmojiFadeIn,
+        emojiStyle: emojiStyle,
+      );
+    }
+
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return _Mfm(
@@ -156,7 +182,6 @@ class Mfm extends HookConsumerWidget {
         align: textAlign,
         opacity: this.style?.color?.a ?? defaultTextStyle.color?.a ?? 1.0,
       ),
-      simple: simple,
       emojis: emojis,
       author: author,
       noteId: noteId,
@@ -167,6 +192,7 @@ class Mfm extends HookConsumerWidget {
       onClickEv: onClickEv,
       overflow: overflow,
       maxLines: maxLines,
+      needsIsolate: needsIsolate,
       enableEmojiFadeIn: enableEmojiFadeIn,
       enableAdvanced: enableAdvanced,
       enableAnimation: enableAnimation,
@@ -179,6 +205,169 @@ class Mfm extends HookConsumerWidget {
       emojiStyle: emojiStyle,
       colors: colors,
     );
+  }
+}
+
+class _SimpleMfm extends StatelessWidget {
+  const _SimpleMfm({
+    required this.account,
+    required this.leadingSpans,
+    required this.nodes,
+    required this.trailingSpans,
+    required this.builder,
+    required this.config,
+    required this.emojis,
+    required this.author,
+    required this.overflow,
+    required this.maxLines,
+    required this.needsIsolate,
+    required this.enableEmojiFadeIn,
+    required this.emojiStyle,
+  });
+
+  final Account account;
+  final List<InlineSpan>? leadingSpans;
+  final List<MfmNode>? nodes;
+  final List<InlineSpan>? trailingSpans;
+  final Widget Function(BuildContext context, InlineSpan span)? builder;
+  final MfmConfig config;
+  final Map<String, String>? emojis;
+  final User? author;
+  final TextOverflow? overflow;
+  final int? maxLines;
+  final bool needsIsolate;
+  final bool? enableEmojiFadeIn;
+  final EmojiStyle emojiStyle;
+
+  List<InlineSpan> _buildNodes(
+    BuildContext context,
+    MfmConfig config,
+    List<MfmNode> nodes,
+  ) {
+    return [
+      for (final node in nodes)
+        if (_buildNode(context, config, node) case final span?) span,
+    ];
+  }
+
+  InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
+    switch (node) {
+      case MfmText(:final text):
+        return TextSpan(
+          text: text.replaceAll('\n', ' '),
+          style: config.style.apply(
+            fontSizeFactor: config.scale,
+            color: config.style.color?.withValues(
+              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+            ),
+          ),
+        );
+      case MfmEmojiCode(:final name):
+        return WidgetSpan(
+          alignment: PlaceholderAlignment.middle,
+          child: maxLines == 1
+              ? LayoutBuilder(
+                  builder: (context, constraints) => ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxWidth: constraints.maxWidth - config.style.fontSize!,
+                    ),
+                    child: CustomEmoji(
+                      account: account,
+                      emoji: ':$name:',
+                      url: emojis?[name],
+                      host: author?.host,
+                      opacity: config.opacity,
+                      alignment: Alignment.centerLeft,
+                      fallbackTextStyle: config.style.copyWith(height: 1.0),
+                      fallbackToImage: false,
+                      enableFadeIn: enableEmojiFadeIn,
+                    ),
+                  ),
+                )
+              : CustomEmoji(
+                  account: account,
+                  emoji: ':$name:',
+                  url: emojis?[name],
+                  host: author?.host,
+                  useOriginalSize: config.scale >= 2.5,
+                  height: config.style.fontSize! * config.scale,
+                  opacity: config.opacity,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.centerLeft,
+                  fallbackTextStyle: config.style
+                      .apply(
+                        fontSizeFactor: config.scale,
+                        color: config.style.color?.withValues(
+                          alpha:
+                              (config.style.color?.a ?? 1.0) * config.opacity,
+                        ),
+                      )
+                      .copyWith(height: 1.0),
+                  fallbackToImage: false,
+                  enableFadeIn: enableEmojiFadeIn,
+                ),
+        );
+      case MfmUnicodeEmoji(:final emoji):
+        return WidgetSpan(
+          alignment: switch (emojiStyle) {
+            EmojiStyle.native => PlaceholderAlignment.baseline,
+            EmojiStyle.twemoji => PlaceholderAlignment.middle,
+          },
+          baseline: TextBaseline.alphabetic,
+          child: UnicodeEmoji(
+            account: account,
+            emoji: emoji,
+            style: config.style.apply(
+              fontSizeFactor: config.scale,
+              color: config.style.color?.withValues(
+                alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+              ),
+            ),
+            inline: true,
+            fit: BoxFit.cover,
+            alignment: Alignment.centerLeft,
+          ),
+        );
+      case MfmPlain(:final text):
+        return TextSpan(
+          text: text,
+          style: config.style.apply(
+            fontSizeFactor: config.scale,
+            color: config.style.color?.withValues(
+              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+            ),
+          ),
+        );
+      default:
+        return null;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final needsIsolate =
+        defaultTargetPlatform != TargetPlatform.linux &&
+        (builder != null || (trailingSpans?.isNotEmpty ?? false));
+    final span = TextSpan(
+      children: [
+        ...?leadingSpans,
+        if (needsIsolate) const TextSpan(text: Unicode.FSI),
+        if (nodes case final nodes?) ..._buildNodes(context, config, nodes),
+        if (needsIsolate) const TextSpan(text: Unicode.PDI),
+        ...?trailingSpans,
+      ],
+    );
+
+    if (builder case final builder?) {
+      return builder(context, span);
+    } else {
+      return Text.rich(
+        span,
+        textAlign: config.align,
+        overflow: overflow,
+        maxLines: maxLines,
+      );
+    }
   }
 }
 
@@ -239,22 +428,22 @@ MfmInline _removeNewLines(MfmInline node) {
 class _Mfm extends StatelessWidget {
   const _Mfm({
     required this.account,
-    this.leadingSpans,
+    required this.leadingSpans,
     required this.nodes,
-    this.trailingSpans,
-    this.builder,
+    required this.trailingSpans,
+    required this.builder,
     required this.config,
-    required this.simple,
-    this.emojis,
-    this.author,
-    this.noteId,
-    this.messageId,
+    required this.emojis,
+    required this.author,
+    required this.noteId,
+    required this.messageId,
     required this.shouldNyaize,
     required this.isUserDescription,
-    this.onClickEv,
-    this.overflow,
-    this.maxLines,
-    this.enableEmojiFadeIn,
+    required this.onClickEv,
+    required this.overflow,
+    required this.maxLines,
+    required this.needsIsolate,
+    required this.enableEmojiFadeIn,
     required this.enableAdvanced,
     required this.enableAnimation,
     required this.serifFontFamily,
@@ -273,7 +462,6 @@ class _Mfm extends StatelessWidget {
   final List<InlineSpan>? trailingSpans;
   final Widget Function(BuildContext context, InlineSpan span)? builder;
   final MfmConfig config;
-  final bool simple;
   final Map<String, String>? emojis;
   final User? author;
   final String? noteId;
@@ -283,6 +471,7 @@ class _Mfm extends StatelessWidget {
   final void Function(String clickEv)? onClickEv;
   final TextOverflow? overflow;
   final int? maxLines;
+  final bool needsIsolate;
   final bool? enableEmojiFadeIn;
   final bool enableAdvanced;
   final bool enableAnimation;
@@ -309,11 +498,7 @@ class _Mfm extends StatelessWidget {
   InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
     return switch (node) {
       MfmText(:final text) => TextSpan(
-        text: simple
-            ? text.replaceAll('\n', ' ')
-            : !config.disableNyaize && shouldNyaize
-            ? nyaize(text)
-            : text,
+        text: !config.disableNyaize && shouldNyaize ? nyaize(text) : text,
         style: config.style.apply(
           fontSizeFactor: config.scale,
           color: config.style.color?.withValues(
@@ -537,7 +722,7 @@ class _Mfm extends StatelessWidget {
       ),
       MfmEmojiCode(:final name) => WidgetSpan(
         alignment: PlaceholderAlignment.middle,
-        child: simple && maxLines == 1
+        child: maxLines == 1
             ? LayoutBuilder(
                 builder: (context, constraints) => ConstrainedBox(
                   constraints: BoxConstraints(
@@ -562,32 +747,25 @@ class _Mfm extends StatelessWidget {
                 url: emojis?[name],
                 host: author?.host,
                 useOriginalSize: config.scale >= 2.5,
-                height:
-                    config.style.fontSize! *
-                    config.scale *
-                    (simple ? 1.0 : 2.0),
+                height: config.style.fontSize! * config.scale * 2.0,
                 opacity: config.opacity,
                 fit: BoxFit.cover,
                 alignment: Alignment.centerLeft,
-                onTap: !simple
-                    ? () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => EmojiSheet(
-                          account: account,
-                          emoji: ':$name@${author?.host ?? '.'}:',
-                          targetNoteId: noteId,
-                          targetMessageId: messageId,
-                        ),
-                      )
-                    : null,
-                fallbackTextStyle: config.style
-                    .apply(
-                      fontSizeFactor: config.scale,
-                      color: config.style.color?.withValues(
-                        alpha: (config.style.color?.a ?? 1.0) * config.opacity,
-                      ),
-                    )
-                    .copyWith(height: simple ? 1.0 : null),
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => EmojiSheet(
+                    account: account,
+                    emoji: ':$name@${author?.host ?? '.'}:',
+                    targetNoteId: noteId,
+                    targetMessageId: messageId,
+                  ),
+                ),
+                fallbackTextStyle: config.style.apply(
+                  fontSizeFactor: config.scale,
+                  color: config.style.color?.withValues(
+                    alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+                  ),
+                ),
                 fallbackToImage: false,
                 enableFadeIn: enableEmojiFadeIn,
               ),
@@ -607,17 +785,15 @@ class _Mfm extends StatelessWidget {
               alpha: (config.style.color?.a ?? 1.0) * config.opacity,
             ),
           ),
-          onTap: !simple
-              ? () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => EmojiSheet(
-                    account: account,
-                    emoji: emoji,
-                    targetNoteId: noteId,
-                    targetMessageId: messageId,
-                  ),
-                )
-              : null,
+          onTap: () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) => EmojiSheet(
+              account: account,
+              emoji: emoji,
+              targetNoteId: noteId,
+              targetMessageId: messageId,
+            ),
+          ),
           inline: true,
           fit: BoxFit.cover,
           alignment: Alignment.centerLeft,
@@ -1294,9 +1470,6 @@ class _Mfm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final needsIsolate =
-        (builder != null || (trailingSpans?.isNotEmpty ?? false)) &&
-        defaultTargetPlatform != TargetPlatform.linux;
     final span = TextSpan(
       children: [
         ...?leadingSpans,
