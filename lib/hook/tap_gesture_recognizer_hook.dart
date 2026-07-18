@@ -16,11 +16,11 @@ class _TapGestureRecognizerHook extends Hook<TapGestureRecognizer> {
 
 class _TapGestureRecognizerHookState
     extends HookState<TapGestureRecognizer, _TapGestureRecognizerHook> {
-  final player = TapGestureRecognizer();
+  final recognizer = TapGestureRecognizer();
 
   @override
-  TapGestureRecognizer build(BuildContext context) => player;
+  TapGestureRecognizer build(BuildContext context) => recognizer;
 
   @override
-  void dispose() => player.dispose();
+  void dispose() => recognizer.dispose();
 }

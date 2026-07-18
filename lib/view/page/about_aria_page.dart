@@ -1,5 +1,6 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +12,9 @@ import '../../gen/assets.gen.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/copy_text.dart';
+import '../../util/force_accept_gesture_recognizer.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/get_link_background_color.dart';
 import '../../util/launch_url.dart';
 import '../widget/url_sheet.dart';
 
@@ -31,6 +34,96 @@ class AboutAriaPage extends HookConsumerWidget {
       _ => (null, null),
     };
     final deviceInfo = useMemoized(() => DeviceInfoPlugin().deviceInfo);
+    final controller = useAnimationController(
+      duration: kLongPressTimeout - kPressTimeout,
+    );
+    final animationValue = useAnimation(controller);
+    final activeLinkId = useState<String?>(null);
+    final recognizers = useMemoized(() {
+      GestureRecognizer registerRecognizer({
+        required String linkId,
+        void Function()? onTap,
+        void Function()? onLongPress,
+      }) {
+        return ForceAcceptGestureRecognizer()
+          ..onLongPressDown = (_) {
+            activeLinkId.value = linkId;
+            controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
+          }
+          ..onLongPressUp = () {
+            if (onTap case final onTap?) {
+              Feedback.forTap(context);
+              onTap();
+            }
+            controller.animateTo(0.0, curve: Curves.easeOut);
+          }
+          ..onLongPressCancel = () {
+            controller.animateTo(0.0, curve: Curves.easeOut);
+          }
+          ..onLongPress = () {
+            if (onLongPress case final onLongPress?) {
+              Feedback.forLongPress(context);
+              onLongPress();
+            }
+            controller.animateTo(0.0, curve: Curves.easeOut);
+          };
+      }
+
+      return {
+        'miria': registerRecognizer(
+          linkId: 'miria',
+          onTap: () => launchUrl(
+            ref,
+            Uri.https('github.com', 'shiosyakeyakini-info/miria'),
+          ),
+          onLongPress: () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) => const UrlSheet(
+              url: 'https://github.com/shiosyakeyakini-info/miria',
+            ),
+          ),
+        ),
+        'misskey': registerRecognizer(
+          linkId: 'misskey',
+          onTap: () =>
+              launchUrl(ref, Uri.https('github.com', 'misskey-dev/misskey')),
+          onLongPress: () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) =>
+                const UrlSheet(url: 'https://github.com/misskey-dev/misskey'),
+          ),
+        ),
+        'sevenc_nanashi': registerRecognizer(
+          linkId: 'sevenc_nanashi',
+          onTap: () => context.push('/voskey.icalo.net/users/9d8sfcv0qj'),
+          onLongPress: () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) =>
+                const UrlSheet(url: 'https://voskey.icalo.net/@sevenc_nanashi'),
+          ),
+        ),
+        'cc_by': registerRecognizer(
+          linkId: 'cc_by',
+          onTap: () => launchUrl(
+            ref,
+            Uri.https('creativecommons.org', 'licenses/by/4.0'),
+          ),
+          onLongPress: () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) => const UrlSheet(
+              url: 'https://creativecommons.org/licenses/by/4.0',
+            ),
+          ),
+        ),
+      };
+    });
+    useEffect(() {
+      return () {
+        for (final recognizer in recognizers.values) {
+          recognizer.dispose();
+        }
+      };
+    }, []);
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -81,96 +174,114 @@ class AboutAriaPage extends HookConsumerWidget {
                 TextSpan(
                   children: [
                     t.aria.acknowledgements(
-                      miria: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => launchUrl(
-                            ref,
-                            Uri.https(
-                              'github.com',
-                              'shiosyakeyakini-info/miria',
-                            ),
-                          ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url:
-                                  'https://github.com/shiosyakeyakini-info/miria',
-                            ),
-                          ),
-                          child: Text(
-                            'Miria',
-                            style: TextStyle(color: colors.link),
-                            textScaler: TextScaler.noScaling,
-                          ),
+                      miria: TextSpan(
+                        text: 'Miria',
+                        style: TextStyle(
+                          color: colors.link,
+                          backgroundColor: activeLinkId.value == 'miria'
+                              ? getLinkBackgroundColor(
+                                  Theme.brightnessOf(context),
+                                  animationValue,
+                                )
+                              : null,
                         ),
+                        recognizer: recognizers['miria'],
+                        onEnter: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            activeLinkId.value = 'miria';
+                            controller.value = 0.25;
+                          }
+                        },
+                        onExit: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            controller.value = 0.0;
+                          }
+                        },
+                        mouseCursor: SystemMouseCursors.click,
                       ),
-                      misskey: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => launchUrl(
-                            ref,
-                            Uri.https('github.com', 'misskey-dev/misskey'),
-                          ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url: 'https://github.com/misskey-dev/misskey',
-                            ),
-                          ),
-                          child: Text(
-                            'Misskey',
-                            style: TextStyle(color: colors.link),
-                            textScaler: TextScaler.noScaling,
-                          ),
+                      misskey: TextSpan(
+                        text: 'Misskey',
+                        style: TextStyle(
+                          color: colors.link,
+                          backgroundColor: activeLinkId.value == 'misskey'
+                              ? getLinkBackgroundColor(
+                                  Theme.brightnessOf(context),
+                                  animationValue,
+                                )
+                              : null,
                         ),
+                        recognizer: recognizers['misskey'],
+                        onEnter: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            activeLinkId.value = 'misskey';
+                            controller.value = 0.25;
+                          }
+                        },
+                        onExit: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            controller.value = 0.0;
+                          }
+                        },
                       ),
                     ),
                     const TextSpan(text: '\n\n'),
                     t.aria.iconAttribution(
-                      sevenc_nanashi: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => context.push(
-                            '/voskey.icalo.net/users/9d8sfcv0qj',
-                          ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url: 'https://voskey.icalo.net/@sevenc_nanashi',
-                            ),
-                          ),
-                          child: Text(
-                            '@sevenc_nanashi@voskey.icalo.net',
-                            style: TextStyle(color: colors.mention),
-                            textScaler: TextScaler.noScaling,
-                          ),
+                      sevenc_nanashi: TextSpan(
+                        text: '@sevenc_nanashi@voskey.icalo.net',
+                        style: TextStyle(
+                          color: colors.mention,
+                          backgroundColor:
+                              activeLinkId.value == 'sevenc_nanashi'
+                              ? getLinkBackgroundColor(
+                                  Theme.brightnessOf(context),
+                                  animationValue,
+                                )
+                              : null,
                         ),
+                        recognizer: recognizers['sevenc_nanashi'],
+                        onEnter: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            activeLinkId.value = 'sevenc_nanashi';
+                            controller.value = 0.25;
+                          }
+                        },
+                        onExit: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            controller.value = 0.0;
+                          }
+                        },
                       ),
-                      cc_by: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => launchUrl(
-                            ref,
-                            Uri.https('creativecommons.org', 'licenses/by/4.0'),
-                          ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url:
-                                  'https://creativecommons.org/licenses/by/4.0',
-                            ),
-                          ),
-                          child: Text(
-                            'CC-BY 4.0',
-                            style: TextStyle(color: colors.link),
-                            textScaler: TextScaler.noScaling,
-                          ),
+                      cc_by: TextSpan(
+                        text: 'CC-BY 4.0',
+                        style: TextStyle(
+                          color: colors.link,
+                          backgroundColor: activeLinkId.value == 'cc_by'
+                              ? getLinkBackgroundColor(
+                                  Theme.brightnessOf(context),
+                                  animationValue,
+                                )
+                              : null,
                         ),
+                        recognizer: recognizers['cc_by'],
+                        onEnter: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            activeLinkId.value = 'cc_by';
+                            controller.value = 0.25;
+                          }
+                        },
+                        onExit: (_) {
+                          if (!controller.isAnimating &&
+                              controller.value < 1.0) {
+                            controller.value = 0.0;
+                          }
+                        },
                       ),
                     ),
                   ],
@@ -188,6 +299,12 @@ class AboutAriaPage extends HookConsumerWidget {
                 title: Text(t.misskey.aboutMisskey_.source),
                 onTap: () =>
                     launchUrl(ref, Uri.https('github.com', 'poppingmoon/aria')),
+                onLongPress: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => const UrlSheet(
+                    url: 'https://github.com/poppingmoon/aria',
+                  ),
+                ),
               ),
             ),
           ),
@@ -199,6 +316,11 @@ class AboutAriaPage extends HookConsumerWidget {
                 leading: const Icon(Icons.alternate_email),
                 title: Text(t.misskey.contact),
                 onTap: () => context.push('/misskey.io/users/9qaqpdbgn1nk03sc'),
+                onLongPress: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) =>
+                      const UrlSheet(url: 'https://misskey.io/@aria_app'),
+                ),
               ),
             ),
           ),
