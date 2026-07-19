@@ -22,7 +22,6 @@ import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
-import '../../../util/navigate.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/field_dialog.dart';
 import '../../dialog/radio_dialog.dart';
@@ -32,7 +31,6 @@ import '../../widget/file_picker_sheet.dart';
 import '../../widget/key_value_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
-import '../../widget/url_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_banner.dart';
 
@@ -169,8 +167,9 @@ class ProfilePage extends HookConsumerWidget {
       );
       return;
     }, []);
-    final theme = Theme.of(context);
-    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.brightnessOf(context)),
+    );
 
     return AccountSettingsScaffold(
       account: account,
@@ -389,7 +388,7 @@ class ProfilePage extends HookConsumerWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   width: maxContentWidth,
                   child: Card(
-                    color: theme.colorScheme.surface,
+                    color: colors.panel,
                     margin: EdgeInsets.zero,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -495,7 +494,7 @@ class ProfilePage extends HookConsumerWidget {
                       );
                     }
                   },
-                  tileColor: theme.colorScheme.surface,
+                  tileColor: colors.panel,
                 ),
               ),
             ),
@@ -545,7 +544,7 @@ class ProfilePage extends HookConsumerWidget {
                       );
                     }
                   },
-                  tileColor: theme.colorScheme.surface,
+                  tileColor: colors.panel,
                 ),
               ),
             ),
@@ -556,8 +555,8 @@ class ProfilePage extends HookConsumerWidget {
                 width: maxContentWidth,
                 child: ExpansionTile(
                   title: Text(t.misskey.profile_.metadataEdit),
-                  backgroundColor: theme.colorScheme.surface,
-                  collapsedBackgroundColor: theme.colorScheme.surface,
+                  backgroundColor: colors.panel,
+                  collapsedBackgroundColor: colors.panel,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.0),
                   ),
@@ -636,21 +635,35 @@ class ProfilePage extends HookConsumerWidget {
                                   flex: 7,
                                   child: KeyValueWidget(
                                     label: t.misskey.profile_.metadataContent,
-                                    child: i.verifiedLinks.contains(value)
-                                        ? UrlWidget(
-                                            url: value,
-                                            verified: true,
-                                            onTap: () =>
-                                                navigate(ref, account, value),
-                                            style: TextStyle(
-                                              color: colors.link,
-                                            ),
-                                          )
-                                        : Mfm(
-                                            account: account,
-                                            text: value,
-                                            author: i,
-                                          ),
+                                    child: Mfm(
+                                      account: account,
+                                      text: value,
+                                      trailingSpans:
+                                          i.verifiedLinks.contains(value)
+                                          ? [
+                                              const WidgetSpan(
+                                                child: SizedBox(width: 2.0),
+                                              ),
+                                              WidgetSpan(
+                                                child: Tooltip(
+                                                  message:
+                                                      t.misskey.verifiedLink,
+                                                  child: Builder(
+                                                    builder: (context) => Icon(
+                                                      Icons
+                                                          .check_circle_outline,
+                                                      color: colors.success,
+                                                      size: DefaultTextStyle.of(
+                                                        context,
+                                                      ).style.fontSize,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]
+                                          : null,
+                                      author: i,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -755,8 +768,8 @@ class ProfilePage extends HookConsumerWidget {
                 width: maxContentWidth,
                 child: ExpansionTile(
                   title: Text(t.misskey.advancedSettings),
-                  backgroundColor: theme.colorScheme.surface,
-                  collapsedBackgroundColor: theme.colorScheme.surface,
+                  backgroundColor: colors.panel,
+                  collapsedBackgroundColor: colors.panel,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6.0),
                   ),
