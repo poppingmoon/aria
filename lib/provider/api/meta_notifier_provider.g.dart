@@ -52,7 +52,7 @@ final class MetaNotifierProvider
   }
 }
 
-String _$metaNotifierHash() => r'1b7df220286a85f8d2f422db70c44cef4ec34ddd';
+String _$metaNotifierHash() => r'4646792a521f70e2a32db170b3d59ec843e0699b';
 
 @JsonPersist()
 final class MetaNotifierFamily extends $Family

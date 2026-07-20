@@ -14,14 +14,16 @@ class EndpointsNotifier extends _$EndpointsNotifier {
   @override
   FutureOr<List<String>> build(String host) async {
     final link = ref.keepAlive();
-    persist(ref.watch(riverpodStorageProvider.future));
+    final persistResult = persist(ref.watch(riverpodStorageProvider.future));
     try {
       final endpoints = await ref
           .watch(misskeyProvider(Account(host: host)))
           .endpoints();
+      await persistResult.future;
       return endpoints;
     } catch (_) {
       link.close();
+      await persistResult.future;
       if (state.value case final endpoints?) {
         return endpoints;
       }

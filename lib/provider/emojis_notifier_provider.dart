@@ -18,15 +18,17 @@ class EmojisNotifier extends _$EmojisNotifier {
   @override
   FutureOr<Map<String, Emoji>> build(String host) async {
     ref.onDispose(() => _timer?.cancel());
-    persist(ref.watch(riverpodStorageProvider.future));
+    final persistResult = persist(ref.watch(riverpodStorageProvider.future));
     try {
       final response = await _fetchEmojis();
       _recentlyFetched = true;
       _timer = Timer(const Duration(minutes: 10), () {
         _recentlyFetched = false;
       });
+      await persistResult.future;
       return {for (final emoji in response) emoji.name: emoji};
     } catch (_) {
+      await persistResult.future;
       if (state.value case final emojis?) {
         return emojis;
       }

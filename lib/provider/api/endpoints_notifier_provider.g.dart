@@ -52,7 +52,7 @@ final class EndpointsNotifierProvider
   }
 }
 
-String _$endpointsNotifierHash() => r'57baa3332c348703e927be6674200cc094fe3209';
+String _$endpointsNotifierHash() => r'19e80ea94d32ea3aad67e2ef40353f1cbf4a8c0f';
 
 @JsonPersist()
 final class EndpointsNotifierFamily extends $Family

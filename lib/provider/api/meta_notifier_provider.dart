@@ -15,12 +15,14 @@ class MetaNotifier extends _$MetaNotifier {
   @override
   FutureOr<MetaResponse> build(String host) async {
     final link = ref.keepAlive();
-    persist(ref.watch(riverpodStorageProvider.future));
+    final persistResult = persist(ref.watch(riverpodStorageProvider.future));
     try {
       final meta = await ref.read(misskeyProvider(Account(host: host))).meta();
+      await persistResult.future;
       return meta;
     } catch (_) {
       link.close();
+      await persistResult.future;
       if (state.value case final meta?) {
         return meta;
       }
