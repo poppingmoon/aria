@@ -14,6 +14,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/fonts.dart';
 import '../../extension/list_mfm_node_extension.dart';
+import '../../extension/string_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../gen/fonts.gen.dart';
 import '../../model/account.dart';
@@ -696,9 +697,10 @@ class _Mfm extends StatelessWidget {
         );
       case MfmUrl(:final url):
         final linkId = identityHashCode(node);
+        final accessibleNavigation = MediaQuery.accessibleNavigationOf(context);
         return TextSpan(
           children: [
-            if (urls[url] case final url?)
+            if (urls[url] case final url? when !accessibleNavigation)
               buildUrlSpan(
                 url: url,
                 textSpanBuilder: ({text, style}) =>
@@ -707,7 +709,11 @@ class _Mfm extends StatelessWidget {
                 opacity: config.opacity,
               )
             else
-              _buildLinkSpan(linkId: linkId, text: url),
+              _buildLinkSpan(
+                linkId: linkId,
+                text: url.breakAll,
+                semanticsLabel: url,
+              ),
             WidgetSpan(
               child: _buildLinkWidget(
                 context,
@@ -1924,6 +1930,7 @@ class _Mfm extends StatelessWidget {
     required int? linkId,
     String? text,
     TextStyle? style,
+    String? semanticsLabel,
   }) {
     if (linkId == null) {
       return TextSpan(text: text, style: style);
@@ -1943,6 +1950,7 @@ class _Mfm extends StatelessWidget {
           controller.value = 0.0;
         }
       },
+      semanticsLabel: semanticsLabel,
     );
   }
 
