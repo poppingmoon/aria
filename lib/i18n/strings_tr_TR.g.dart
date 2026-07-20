@@ -1428,14 +1428,11 @@ class _Translations$misskey$tr_TR extends Translations$misskey$en_US {
 	@override String get chat => 'Sohbet';
 	@override String get directMessage => 'Kullanıcıyla sohbet et';
 	@override String get directMessage_short => 'Mesaj';
-	@override String get migrateOldSettings => 'Eski istemci ayarlarını taşıma';
-	@override String get migrateOldSettings_description => 'Bu işlem otomatik olarak yapılmalıdır, ancak herhangi bir nedenle geçiş başarısız olursa, geçiş işlemini manuel olarak kendin başlatabilirsin. Mevcut yapılandırma bilgileri üzerine yazılacaktır.';
 	@override String get compress => 'Sıkıştır';
 	@override String get right => 'Sağ';
 	@override String get bottom => 'Alt';
 	@override String get top => 'Üst';
 	@override String get embed => 'Göm';
-	@override String get settingsMigrating => 'Ayarlar taşınıyor, lütfen bir dakika bekle... (Daha sonra Ayarlar→Diğerler→Eski ayarları taşı seçeneğine giderek manuel olarak da taşıyabilirsin)';
 	@override String get readonly => 'Sadece okuma';
 	@override String get goToDeck => 'Güverteye Dön';
 	@override String get federationJobs => 'Federasyon İşleri';

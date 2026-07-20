@@ -4797,12 +4797,6 @@ class Translations$misskey$en_US {
 	/// en-US: 'Message'
 	String get directMessage_short => 'Message';
 
-	/// en-US: 'Migrate old client settings'
-	String get migrateOldSettings => 'Migrate old client settings';
-
-	/// en-US: 'This should be done automatically but if for some reason the migration was not successful, you can trigger the migration process yourself manually. The current configuration information will be overwritten.'
-	String get migrateOldSettings_description => 'This should be done automatically but if for some reason the migration was not successful, you can trigger the migration process yourself manually. The current configuration information will be overwritten.';
-
 	/// en-US: 'Compress'
 	String get compress => 'Compress';
 
@@ -4817,9 +4811,6 @@ class Translations$misskey$en_US {
 
 	/// en-US: 'Embed'
 	String get embed => 'Embed';
-
-	/// en-US: 'Settings are being migrated, please wait a moment... (You can also migrate manually later by going to Settings→Others→Migrate old settings)'
-	String get settingsMigrating => 'Settings are being migrated, please wait a moment... (You can also migrate manually later by going to Settings→Others→Migrate old settings)';
 
 	/// en-US: 'Read only'
 	String get readonly => 'Read only';

@@ -1447,14 +1447,11 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get chat => 'Xat';
 	@override String get directMessage => 'Xateja amb aquest usuari';
 	@override String get directMessage_short => 'Missatge';
-	@override String get migrateOldSettings => 'Migrar la configuració anterior';
-	@override String get migrateOldSettings_description => 'Normalment això es fa automàticament, però si la transició no es fa, el procés es pot iniciar manualment. S\'esborrarà la configuració actual.';
 	@override String get compress => 'Comprimir ';
 	@override String get right => 'Dreta';
 	@override String get bottom => 'A baix ';
 	@override String get top => 'A dalt ';
 	@override String get embed => 'Incrustar';
-	@override String get settingsMigrating => 'Estem migrant la teva configuració. Si us plau espera un moment... (També pots fer la migració més tard, manualment, anant a Preferències → Altres → Migrar configuració antiga)';
 	@override String get readonly => 'Només lectura';
 	@override String get goToDeck => 'Tornar al tauler';
 	@override String get federationJobs => 'Treballs de federació';

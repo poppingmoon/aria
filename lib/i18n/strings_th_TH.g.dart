@@ -1442,14 +1442,11 @@ class _Translations$misskey$th_TH extends Translations$misskey$en_US {
 	@override String get chat => 'แชต';
 	@override String get directMessage => 'แชตเลย';
 	@override String get directMessage_short => 'ข้อความ';
-	@override String get migrateOldSettings => 'ย้ายข้อมูลการตั้งค่าเก่า';
-	@override String get migrateOldSettings_description => 'โดยปกติจะทำโดยอัตโนมัติ แต่หากด้วยเหตุผลบางประการที่ไม่สามารถย้ายได้สำเร็จ สามารถสั่งย้ายด้วยตนเองได้ การตั้งค่าปัจจุบันจะถูกเขียนทับ';
 	@override String get compress => 'บีบอัด';
 	@override String get right => 'ขวา';
 	@override String get bottom => 'ล่าง';
 	@override String get top => 'บน';
 	@override String get embed => 'ฝัง';
-	@override String get settingsMigrating => 'กำลังย้ายการตั้งค่า กรุณารอสักครู่... (สามารถย้ายด้วยตนเองภายหลังได้ที่ การตั้งค่า → อื่นๆ → ย้ายข้อมูลการตั้งค่าเก่า)';
 	@override String get readonly => 'อ่านได้อย่างเดียว';
 	@override String get goToDeck => 'กลับไปยังเด็ค';
 	@override String get federationJobs => 'งานสหพันธ์';

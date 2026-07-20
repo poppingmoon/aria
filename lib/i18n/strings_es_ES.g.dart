@@ -853,7 +853,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulario de publicación por encima de la cronología (Canales)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Incluir por defecto respuestas de usuarios recién seguidos en la línea de tiempo';
 	@override String get newNoteRecived => 'Tienes una nota nueva';
-	@override String get newNote => 'Nueva nota';
+	@override String get newNote => 'Nuevas notas';
 	@override String get sounds => 'Sonidos';
 	@override String get sound => 'Sonidos';
 	@override String get notificationSoundSettings => 'Configuración del sonido de las notificaciones';
@@ -1488,7 +1488,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Propiedad del enlace verificada';
 	@override String get notifyNotes => 'Notificar nuevas notas';
 	@override String get unnotifyNotes => 'Dejar de notificar nuevas notas';
-	@override String get notifyUsers => 'Usuarios que han activado las notificaciones de publicaciones';
+	@override String get notifyUsers => 'Cuentas con notificaciones activadas';
 	@override String get authentication => 'Autenticación';
 	@override String get authenticationRequiredToContinue => 'Por favor, autentifícate para continuar';
 	@override String get dateAndTime => 'Fecha y hora';
@@ -1630,14 +1630,11 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get chat => 'Chat';
 	@override String get directMessage => 'Chatear';
 	@override String get directMessage_short => 'Mensajes';
-	@override String get migrateOldSettings => 'Migrar la configuración anterior';
-	@override String get migrateOldSettings_description => 'Esto debería hacerse automáticamente, pero si por alguna razón la migración no ha tenido éxito, puede activar usted mismo el proceso de migración manualmente. Se sobrescribirá la información de configuración actual.';
 	@override String get compress => 'Compresión de la imagen';
 	@override String get right => 'Derecha';
 	@override String get bottom => 'Abajo';
 	@override String get top => 'Arriba';
 	@override String get embed => 'Insertar';
-	@override String get settingsMigrating => 'La configuración está siendo migrada, por favor espera un momento... (También puedes migrar manualmente más tarde yendo a Ajustes  otros migrar configuración antigua';
 	@override String get readonly => 'Solo Lectura';
 	@override String get goToDeck => 'Volver al Deck';
 	@override String get federationJobs => 'Trabajos de Federación';

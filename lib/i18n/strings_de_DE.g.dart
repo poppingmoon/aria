@@ -1677,14 +1677,11 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get chat => 'Chat';
 	@override String get directMessage => 'Mit dem Benutzer chatten';
 	@override String get directMessage_short => 'Nachrichten';
-	@override String get migrateOldSettings => 'Alte Client-Einstellungen migrieren';
-	@override String get migrateOldSettings_description => 'Dies sollte normalerweise automatisch geschehen, aber wenn die Migration aus irgendeinem Grund nicht erfolgreich war, kannst du den Migrationsprozess selbst manuell auslösen. Die aktuellen Konfigurationsinformationen werden dabei überschrieben.';
 	@override String get compress => 'Komprimieren';
 	@override String get right => 'Rechts';
 	@override String get bottom => 'Unten';
 	@override String get top => 'Oben';
 	@override String get embed => 'Einbetten';
-	@override String get settingsMigrating => 'Deine Einstellungen werden gerade migriert. Bitte warte einen Moment... (Du kannst die Einstellungen später auch manuell migrieren, indem du zu Einstellungen → Anderes → Alte Einstellungen migrieren gehst)';
 	@override String get readonly => 'Nur Lesezugriff';
 	@override String get goToDeck => 'Zurück zum Deck';
 	@override String get federationJobs => 'Föderation Jobs';

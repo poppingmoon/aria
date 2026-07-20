@@ -1654,14 +1654,11 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get chat => 'Chat';
 	@override String get directMessage => 'Chattare insieme';
 	@override String get directMessage_short => 'Messaggio';
-	@override String get migrateOldSettings => 'Migrare le vecchie impostazioni';
-	@override String get migrateOldSettings_description => 'Di solito, viene fatto automaticamente. Se per qualche motivo non fossero migrate con successo, è possibile avviare il processo di migrazione manualmente, sovrascrivendo le configurazioni attuali.';
 	@override String get compress => 'Compressione';
 	@override String get right => 'Destra';
 	@override String get bottom => 'Sotto';
 	@override String get top => 'Sopra';
 	@override String get embed => 'Incorporare';
-	@override String get settingsMigrating => 'Migrazione delle impostazioni. Attendere prego ... (Puoi anche migrare manualmente in un secondo momento, nel menu: Impostazioni → Altro → Migrazione delle impostazioni)';
 	@override String get readonly => 'Sola lettura';
 	@override String get goToDeck => 'Torna al Deck';
 	@override String get federationJobs => 'Coda di federazione';

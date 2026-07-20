@@ -1300,8 +1300,6 @@ class _Translations$misskey$vi_VN extends Translations$misskey$en_US {
 	@override String get postForm => 'Mẫu đăng';
 	@override String get information => 'Giới thiệu';
 	@override String get chat => 'Trò chuyện';
-	@override String get migrateOldSettings => 'Di chuyển cài đặt cũ';
-	@override String get migrateOldSettings_description => 'Thông thường, quá trình này diễn ra tự động, nhưng nếu vì lý do nào đó mà quá trình di chuyển không thành công, bạn có thể kích hoạt thủ công quy trình di chuyển, quá trình này sẽ ghi đè lên thông tin cấu hình hiện tại của bạn.';
 	@override String get driveAboutTip => 'Trong Drive, danh sách các tệp bạn đã tải lên trước đây sẽ được hiển thị.<br>\nBạn có thể sử dụng lại chúng khi đính kèm vào ghi chú, hoặc tải lên trước các tệp để đăng sau.<br>\n<b>Lưu ý rằng nếu bạn xóa một tệp, tệp đó cũng sẽ biến mất khỏi tất cả những nơi đã sử dụng tệp đó (ghi chú, trang, ảnh đại diện, biểu ngữ, v.v.).</b><br>\nBạn cũng có thể tạo các thư mục để sắp xếp chúng.';
 	@override String get inMinutes => 'phút';
 	@override String get inDays => 'ngày';
