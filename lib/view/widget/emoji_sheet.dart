@@ -245,17 +245,35 @@ class EmojiSheet extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.visibility),
               title: Text(t.misskey.unmute),
-              onTap: () => ref
-                  .read(mutedEmojisNotifierProvider(account).notifier)
-                  .remove(emoji),
+              onTap: () async {
+                final confirmed = await confirm(
+                  context,
+                  message: t.misskey.unmuteX(x: emoji.replaceFirst('@.', '')),
+                );
+                if (!context.mounted) return;
+                if (confirmed) {
+                  await ref
+                      .read(mutedEmojisNotifierProvider(account).notifier)
+                      .remove(emoji);
+                }
+              },
             )
           else
             ListTile(
               leading: const Icon(Icons.visibility_off),
               title: Text(t.misskey.mute),
-              onTap: () => ref
-                  .read(mutedEmojisNotifierProvider(account).notifier)
-                  .add(emoji),
+              onTap: () async {
+                final confirmed = await confirm(
+                  context,
+                  message: t.misskey.muteX(x: emoji.replaceFirst('@.', '')),
+                );
+                if (!context.mounted) return;
+                if (confirmed) {
+                  await ref
+                      .read(mutedEmojisNotifierProvider(account).notifier)
+                      .add(emoji);
+                }
+              },
             ),
         if (isCustomEmoji)
           ListTile(
