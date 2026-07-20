@@ -149,10 +149,11 @@ class UrlPreview extends HookConsumerWidget {
                     context: context,
                     builder: (context) => UrlSheet(url: link),
                   ),
+                  borderRadius: BorderRadius.circular(4.0),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Theme.of(context).colorScheme.outlineVariant,
+                        color: colors.divider,
                         strokeAlign: BorderSide.strokeAlignOutside,
                       ),
                       borderRadius: BorderRadius.circular(4.0),
