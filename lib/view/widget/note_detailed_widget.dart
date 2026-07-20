@@ -19,6 +19,7 @@ import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/note_is_deleted_notifier_provider.dart';
 import '../../provider/note_notifier_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
@@ -111,6 +112,16 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final children = ref.watch(
       childrenNotesNotifierProvider(account, appearNote.id),
     );
+    final reply = switch (appearNote.replyId) {
+      final replyId? => ref.watch(noteNotifierProvider(account, replyId)),
+      _ => null,
+    };
+    final isReplyDeleted = switch (appearNote.replyId) {
+      final replyId? => ref.watch(
+        noteIsDeletedNotifierProvider(account, replyId),
+      ),
+      _ => false,
+    };
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, appearNote.id))
         : null;
@@ -169,7 +180,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
         ),
         child: Column(
           children: [
-            if (conversation?.value case final conversation?)
+            if (appearNote.replyId case final replyId)
               DefaultTextStyle.merge(
                 style: style.apply(
                   color: style.color?.withValues(alpha: 0.7),
@@ -181,24 +192,40 @@ class NoteDetailedWidget extends HookConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      if (conversation.isNotEmpty)
-                        for (final note in conversation.reversed) ...[
-                          ChannelColorBarBox(
-                            note: note,
-                            barBottomPadding: showSubNoteFooter ? 8.0 : 0.0,
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.only(
-                                start: horizontalPadding - 4.0,
-                              ),
-                              child: NoteSubWidget(
-                                account: account,
-                                noteId: note.id,
+                      if (conversation?.value case final conversation?)
+                        for (final note in conversation.reversed)
+                          if (note.id != replyId) ...[
+                            ChannelColorBarBox(
+                              note: note,
+                              barBottomPadding: showSubNoteFooter ? 8.0 : 0.0,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.only(
+                                  start: horizontalPadding - 4.0,
+                                ),
+                                child: NoteSubWidget(
+                                  account: account,
+                                  noteId: note.id,
+                                ),
                               ),
                             ),
+                            SizedBox(height: showSubNoteFooter ? 4.0 : 12.0),
+                          ],
+                      if (reply != null) ...[
+                        ChannelColorBarBox(
+                          note: reply,
+                          barBottomPadding: showSubNoteFooter ? 8.0 : 0.0,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.only(
+                              start: horizontalPadding - 4.0,
+                            ),
+                            child: NoteSubWidget(
+                              account: account,
+                              noteId: reply.id,
+                            ),
                           ),
-                          SizedBox(height: showSubNoteFooter ? 4.0 : 12.0),
-                        ]
-                      else ...[
+                        ),
+                        SizedBox(height: showSubNoteFooter ? 4.0 : 12.0),
+                      ] else if (isReplyDeleted) ...[
                         const DeletedNoteWidget(),
                         const SizedBox(height: 8.0),
                       ],
