@@ -14,9 +14,9 @@ import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../provider/user_ids_notifier_provider.dart';
+import '../widget/link_widget.dart';
 import '../widget/mfm.dart';
 import '../widget/mfm/code.dart';
 import '../widget/url_sheet.dart';
@@ -42,9 +42,6 @@ class SwRegisterDialog extends HookConsumerWidget {
       ),
     );
     final responseText = useState('');
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
 
     return AlertDialog(
       title: Text(t.misskey.subscribePushNotification),
@@ -52,27 +49,15 @@ class SwRegisterDialog extends HookConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(
-            t.aria.openScratchpadAndRunCode(
-              scratchpad: WidgetSpan(
-                alignment: PlaceholderAlignment.baseline,
-                baseline: TextBaseline.alphabetic,
-                child: InkWell(
-                  onTap: () => launchUrl(
-                    scratchPadUrl,
-                    mode: LaunchMode.externalApplication,
-                  ),
-                  onLongPress: () => showModalBottomSheet<void>(
-                    context: context,
-                    builder: (context) =>
-                        UrlSheet(url: scratchPadUrl.toString()),
-                  ),
-                  child: Text(
-                    t.misskey.scratchpad,
-                    style: TextStyle(color: colors.link),
-                  ),
-                ),
-              ),
+          LinkWidget(
+            text: t.misskey.scratchpad,
+            builder: (context, span) =>
+                Text.rich(t.aria.openScratchpadAndRunCode(scratchpad: span)),
+            onTap: () =>
+                launchUrl(scratchPadUrl, mode: LaunchMode.externalApplication),
+            onLongPress: () => showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => UrlSheet(url: scratchPadUrl.toString()),
             ),
           ),
           const SizedBox(height: 8.0),

@@ -34,7 +34,6 @@ import '../../widget/shake_widget.dart';
 import '../../widget/skeb_status_widget.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/url_sheet.dart';
-import '../../widget/url_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_banner.dart';
 import '../../widget/username_widget.dart';
@@ -669,30 +668,30 @@ class _UserHome extends HookConsumerWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child:
-                                      user.verifiedLinks.contains(field.value)
-                                      ? Align(
-                                          alignment:
-                                              AlignmentDirectional.centerStart,
-                                          child: UrlWidget(
-                                            url: field.value,
-                                            verified: true,
-                                            onTap: () => navigate(
-                                              ref,
-                                              account,
-                                              field.value,
+                                  child: Mfm(
+                                    account: account,
+                                    text: field.value,
+                                    trailingSpans:
+                                        user.verifiedLinks.contains(field.value)
+                                        ? [
+                                            const WidgetSpan(
+                                              child: SizedBox(width: 2.0),
                                             ),
-                                            style: TextStyle(
-                                              color: colors.link,
+                                            WidgetSpan(
+                                              child: Tooltip(
+                                                message: t.misskey.verifiedLink,
+                                                child: Icon(
+                                                  Icons.check_circle_outline,
+                                                  color: colors.success,
+                                                  size: style.fontSize,
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        )
-                                      : Mfm(
-                                          account: account,
-                                          text: field.value,
-                                          emojis: user.emojis,
-                                          author: user,
-                                        ),
+                                          ]
+                                        : null,
+                                    emojis: user.emojis,
+                                    author: user,
+                                  ),
                                 ),
                               ],
                             ),

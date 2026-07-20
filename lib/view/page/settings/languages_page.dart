@@ -10,7 +10,9 @@ import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/launch_url.dart';
 import '../../widget/general_settings_scaffold.dart';
+import '../../widget/link_widget.dart';
 import '../../widget/mfm.dart';
+import '../../widget/url_sheet.dart';
 
 class LanguagesPage extends ConsumerWidget {
   const LanguagesPage({super.key});
@@ -66,47 +68,23 @@ class LanguagesPage extends ConsumerWidget {
                     margin: EdgeInsets.zero,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text.rich(
-                        t.aria.i18nInfo(
-                          link: WidgetSpan(
-                            alignment: PlaceholderAlignment.baseline,
-                            baseline: TextBaseline.alphabetic,
-                            child: InkWell(
-                              onTap: () => launchUrl(
-                                ref,
-                                Uri.https(
-                                  'crowdin.com',
-                                  'project/aria-for-misskey',
-                                ),
-                              ),
-                              child: Text.rich(
-                                TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: 'Crowdin',
-                                      style: TextStyle(color: colors.link),
-                                    ),
-                                    WidgetSpan(
-                                      child: Builder(
-                                        builder: (context) => Icon(
-                                          Icons.open_in_new,
-                                          color: colors.link,
-                                          size: DefaultTextStyle.of(
-                                            context,
-                                          ).style.fontSize,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                textAlign: TextAlign.center,
-                                textScaler: TextScaler.noScaling,
-                              ),
-                            ),
+                      child: LinkWidget(
+                        text: 'Crowdin',
+                        builder: (context, span) => Text.rich(
+                          t.aria.i18nInfo(link: span),
+                          style: TextStyle(
+                            color: theme.colorScheme.onSecondaryContainer,
                           ),
                         ),
-                        style: TextStyle(
-                          color: theme.colorScheme.onSecondaryContainer,
+                        onTap: () => launchUrl(
+                          ref,
+                          Uri.https('crowdin.com', 'project/aria-for-misskey'),
+                        ),
+                        onLongPress: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) => const UrlSheet(
+                            url: 'https://crowdin.com/project/aria-for-misskey',
+                          ),
                         ),
                       ),
                     ),

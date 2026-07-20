@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MfmConfig {
 
- TextStyle get style; bool get disableNyaize; double get scale; double get opacity; TextAlign? get align; int get xNest;
+ TextStyle get style; bool get disableNyaize; double get scale; double get opacity; TextAlign? get align; int get xNest; int? get linkId;
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $MfmConfigCopyWith<MfmConfig> get copyWith => _$MfmConfigCopyWithImpl<MfmConfig>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest)&&(identical(other.linkId, linkId) || other.linkId == linkId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest);
+int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest,linkId);
 
 @override
 String toString() {
-  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest)';
+  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest, linkId: $linkId)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $MfmConfigCopyWith<$Res>  {
   factory $MfmConfigCopyWith(MfmConfig value, $Res Function(MfmConfig) _then) = _$MfmConfigCopyWithImpl;
 @useResult
 $Res call({
- TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest
+ TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
 });
 
 
@@ -62,7 +62,7 @@ class _$MfmConfigCopyWithImpl<$Res>
 
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? style = null,Object? disableNyaize = null,Object? scale = null,Object? opacity = null,Object? align = freezed,Object? xNest = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? style = null,Object? disableNyaize = null,Object? scale = null,Object? opacity = null,Object? align = freezed,Object? xNest = null,Object? linkId = freezed,}) {
   return _then(_self.copyWith(
 style: null == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as TextStyle,disableNyaize: null == disableNyaize ? _self.disableNyaize : disableNyaize // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,8 @@ as bool,scale: null == scale ? _self.scale : scale // ignore: cast_nullable_to_n
 as double,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double,align: freezed == align ? _self.align : align // ignore: cast_nullable_to_non_nullable
 as TextAlign?,xNest: null == xNest ? _self.xNest : xNest // ignore: cast_nullable_to_non_nullable
-as int,
+as int,linkId: freezed == linkId ? _self.linkId : linkId // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MfmConfig() when $default != null:
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest);case _:
+return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)  $default,) {final _that = this;
 switch (_that) {
 case _MfmConfig():
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest);case _:
+return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)?  $default,) {final _that = this;
 switch (_that) {
 case _MfmConfig() when $default != null:
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest);case _:
+return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
   return null;
 
 }
@@ -211,7 +212,7 @@ return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.
 
 
 class _MfmConfig implements MfmConfig {
-  const _MfmConfig({required this.style, this.disableNyaize = false, this.scale = 1.0, this.opacity = 1.0, this.align, this.xNest = 0});
+  const _MfmConfig({required this.style, this.disableNyaize = false, this.scale = 1.0, this.opacity = 1.0, this.align, this.xNest = 0, this.linkId});
   
 
 @override final  TextStyle style;
@@ -220,6 +221,7 @@ class _MfmConfig implements MfmConfig {
 @override@JsonKey() final  double opacity;
 @override final  TextAlign? align;
 @override@JsonKey() final  int xNest;
+@override final  int? linkId;
 
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +233,16 @@ _$MfmConfigCopyWith<_MfmConfig> get copyWith => __$MfmConfigCopyWithImpl<_MfmCon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest)&&(identical(other.linkId, linkId) || other.linkId == linkId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest);
+int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest,linkId);
 
 @override
 String toString() {
-  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest)';
+  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest, linkId: $linkId)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$MfmConfigCopyWith<$Res> implements $MfmConfigCopyWith<$Re
   factory _$MfmConfigCopyWith(_MfmConfig value, $Res Function(_MfmConfig) _then) = __$MfmConfigCopyWithImpl;
 @override @useResult
 $Res call({
- TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest
+ TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
 });
 
 
@@ -268,7 +270,7 @@ class __$MfmConfigCopyWithImpl<$Res>
 
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? style = null,Object? disableNyaize = null,Object? scale = null,Object? opacity = null,Object? align = freezed,Object? xNest = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? style = null,Object? disableNyaize = null,Object? scale = null,Object? opacity = null,Object? align = freezed,Object? xNest = null,Object? linkId = freezed,}) {
   return _then(_MfmConfig(
 style: null == style ? _self.style : style // ignore: cast_nullable_to_non_nullable
 as TextStyle,disableNyaize: null == disableNyaize ? _self.disableNyaize : disableNyaize // ignore: cast_nullable_to_non_nullable
@@ -276,7 +278,8 @@ as bool,scale: null == scale ? _self.scale : scale // ignore: cast_nullable_to_n
 as double,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double,align: freezed == align ? _self.align : align // ignore: cast_nullable_to_non_nullable
 as TextAlign?,xNest: null == xNest ? _self.xNest : xNest // ignore: cast_nullable_to_non_nullable
-as int,
+as int,linkId: freezed == linkId ? _self.linkId : linkId // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
