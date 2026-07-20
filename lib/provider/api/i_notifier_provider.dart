@@ -30,12 +30,14 @@ class INotifier extends _$INotifier {
         ref.read(notesNotifierProvider(account).notifier).addAll(pinnedNotes);
       }
     });
-    persist(ref.watch(riverpodStorageProvider.future));
+    final persistResult = persist(ref.watch(riverpodStorageProvider.future));
     try {
       final i = await _misskey.i.i();
+      await persistResult.future;
       return i;
     } catch (_) {
       link.close();
+      await persistResult.future;
       if (state.value case final i?) {
         return i;
       }
