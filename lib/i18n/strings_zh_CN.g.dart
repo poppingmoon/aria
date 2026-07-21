@@ -1681,14 +1681,11 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get chat => '聊天';
 	@override String get directMessage => '私信';
 	@override String get directMessage_short => '消息';
-	@override String get migrateOldSettings => '迁移旧设置信息';
-	@override String get migrateOldSettings_description => '通常设置信息将自动迁移。但如果由于某种原因迁移不成功，则可以手动触发迁移过程。当前的配置信息将被覆盖。';
 	@override String get compress => '压缩';
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '嵌入';
-	@override String get settingsMigrating => '正在迁移设置，请稍候。（之后也可以在设置 → 其它 → 迁移旧设置来手动迁移）';
 	@override String get readonly => '只读';
 	@override String get goToDeck => '返回至 Deck';
 	@override String get federationJobs => '联邦作业';

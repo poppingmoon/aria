@@ -2,67 +2,26 @@ PODS:
   - Flutter (1.0.0)
   - flutter_apns_only (0.0.1):
     - Flutter
-  - flutter_image_compress_common (1.0.0):
-    - Flutter
-    - Mantle
-    - SDWebImage
-    - SDWebImageWebPCoder
   - image_editor_common (1.0.0):
     - Flutter
-  - libwebp (1.3.2):
-    - libwebp/demux (= 1.3.2)
-    - libwebp/mux (= 1.3.2)
-    - libwebp/sharpyuv (= 1.3.2)
-    - libwebp/webp (= 1.3.2)
-  - libwebp/demux (1.3.2):
-    - libwebp/webp
-  - libwebp/mux (1.3.2):
-    - libwebp/demux
-  - libwebp/sharpyuv (1.3.2)
-  - libwebp/webp (1.3.2):
-    - libwebp/sharpyuv
-  - Mantle (2.2.0):
-    - Mantle/extobjc (= 2.2.0)
-  - Mantle/extobjc (2.2.0)
-  - SDWebImage (5.19.7):
-    - SDWebImage/Core (= 5.19.7)
-  - SDWebImage/Core (5.19.7)
-  - SDWebImageWebPCoder (0.14.6):
-    - libwebp (~> 1.0)
-    - SDWebImage/Core (~> 5.17)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_apns_only (from `.symlinks/plugins/flutter_apns_only/ios`)
-  - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
   - image_editor_common (from `.symlinks/plugins/image_editor_common/ios`)
-
-SPEC REPOS:
-  trunk:
-    - libwebp
-    - Mantle
-    - SDWebImage
-    - SDWebImageWebPCoder
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   flutter_apns_only:
     :path: ".symlinks/plugins/flutter_apns_only/ios"
-  flutter_image_compress_common:
-    :path: ".symlinks/plugins/flutter_image_compress_common/ios"
   image_editor_common:
     :path: ".symlinks/plugins/image_editor_common/ios"
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_apns_only: 3d91c0ca9dbef4439874858590909a19f8ed06a4
-  flutter_image_compress_common: ec1d45c362c9d30a3f6a0426c297f47c52007e3e
   image_editor_common: d6f6644ae4a6de80481e89fe6d0a8c49e30b4b43
-  libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
-  Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
-  SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
-  SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
 
 PODFILE CHECKSUM: 8f87dd84ac2556c1d3c027edd6e2b6d74267735a
 

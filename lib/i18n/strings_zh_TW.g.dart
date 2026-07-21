@@ -1465,14 +1465,11 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get chat => '聊天';
 	@override String get directMessage => '直接訊息';
 	@override String get directMessage_short => '訊息';
-	@override String get migrateOldSettings => '遷移舊設定資訊';
-	@override String get migrateOldSettings_description => '通常情況下，這會自動進行，但若因某些原因未能順利遷移，您可以手動觸發遷移處理。請注意，當前的設定資訊將會被覆寫。';
 	@override String get compress => '壓縮';
 	@override String get right => '右';
 	@override String get bottom => '下';
 	@override String get top => '上';
 	@override String get embed => '嵌入';
-	@override String get settingsMigrating => '正在移轉設定。請稍候……（之後也可以到「設定 → 其他 → 舊設定資訊移轉」中手動進行移轉）';
 	@override String get readonly => '唯讀';
 	@override String get goToDeck => '回到多欄模式';
 	@override String get federationJobs => '聯邦通訊作業';

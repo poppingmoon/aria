@@ -450,9 +450,7 @@ class $AssetsMisskeyPackagesFrontendAssetsSoundsSyuiloGen {
   ];
 }
 
-class Assets {
-  const Assets._();
-
+abstract final class Assets {
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const $AssetsEmojisGen emojis = $AssetsEmojisGen();

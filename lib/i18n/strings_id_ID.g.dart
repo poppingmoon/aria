@@ -1729,6 +1729,7 @@ class _Translations$misskey$chat_$id_ID extends Translations$misskey$chat_$en_US
 	@override String get invitations => 'Undang';
 	@override String get history => 'Riwayat obrolan';
 	@override String get noHistory => 'Tidak ada riwayat';
+	@override String get join => 'Gabung';
 	@override String get members => 'Anggota';
 	@override String get home => 'Beranda';
 	@override String get send => 'Kirim';
@@ -2976,6 +2977,7 @@ class _Translations$misskey$deck_$id_ID extends Translations$misskey$deck_$en_US
 	@override String get useSimpleUiForNonRootPages => 'Gunakan antarmuka sederhana ke halaman yang dituju';
 	@override String get usedAsMinWidthWhenFlexible => 'Lebar minimum akan digunakan untuk ini ketika opsi "Atur-otomatis lebar" dinyalakan';
 	@override String get flexible => 'Atur-otomatis lebar';
+	@override late final _Translations$misskey$deck_$howToUse_$id_ID howToUse_ = _Translations$misskey$deck_$howToUse_$id_ID._(_root);
 	@override late final _Translations$misskey$deck_$columns_$id_ID columns_ = _Translations$misskey$deck_$columns_$id_ID._(_root);
 }
 
@@ -3842,6 +3844,16 @@ class _Translations$misskey$notification_$actions_$id_ID extends Translations$mi
 	@override String get followBack => 'Ikuti Kembali';
 	@override String get reply => 'Balas';
 	@override String get renote => 'Renote';
+}
+
+// Path: misskey.deck_.howToUse_
+class _Translations$misskey$deck_$howToUse_$id_ID extends Translations$misskey$deck_$howToUse_$en_US {
+	_Translations$misskey$deck_$howToUse_$id_ID._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get settings_title => 'Pengaturan UI';
 }
 
 // Path: misskey.deck_.columns_

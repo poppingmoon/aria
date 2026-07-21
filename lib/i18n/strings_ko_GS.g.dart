@@ -1621,14 +1621,11 @@ class Translations$misskey$ko_GS extends Translations$misskey$en_US {
 	@override String get chat => '채팅';
 	@override String get directMessage => '채팅하기';
 	@override String get directMessage_short => '메시지';
-	@override String get migrateOldSettings => '기존 설정 정보를 이전';
-	@override String get migrateOldSettings_description => '보통은 자동으로 이루어지지만, 어떤 이유로 인해 성공적으로 이전이 이루어지지 않는 경우 수동으로 이전을 실행할 수 있습니다. 현재 설정 정보는 덮어쓰게 됩니다.';
 	@override String get compress => '압축';
 	@override String get right => '오른쪽';
 	@override String get bottom => '아래';
 	@override String get top => '위';
 	@override String get embed => '임베드';
-	@override String get settingsMigrating => '설정을 이전하는 중입니다. 잠시 기다려주십시오... (나중에 \'환경설정 → 기타 → 기존 설정 정보를 이전\'에서 수동으로 이전할 수도 있습니다)';
 	@override String get readonly => '읽기 전용';
 	@override String get goToDeck => '덱으로 돌아가기';
 	@override String get federationJobs => '연합 작업';

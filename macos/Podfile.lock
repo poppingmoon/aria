@@ -1,26 +1,20 @@
 PODS:
-  - flutter_image_compress_macos (1.0.0):
-    - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - image_editor_common (1.0.0):
     - Flutter
     - FlutterMacOS
 
 DEPENDENCIES:
-  - flutter_image_compress_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_image_compress_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - image_editor_common (from `Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos`)
 
 EXTERNAL SOURCES:
-  flutter_image_compress_macos:
-    :path: Flutter/ephemeral/.symlinks/plugins/flutter_image_compress_macos/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
   image_editor_common:
     :path: Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos
 
 SPEC CHECKSUMS:
-  flutter_image_compress_macos: c26c3c13ea0f28ae6dea4e139b3292e7729f99f1
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
 

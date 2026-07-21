@@ -1394,14 +1394,11 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get chat => 'Чат';
 	@override String get directMessage => 'Чат із користувачем';
 	@override String get directMessage_short => 'Повідомлення';
-	@override String get migrateOldSettings => 'Перенести минулі налаштування клієнта';
-	@override String get migrateOldSettings_description => 'Це має відбутися автоматично, але якщо з якоїсь причини перенесення не вдалося, ви можете запустити його вручну. Поточні дані конфігурації буде перезаписано.';
 	@override String get compress => 'Стиснути';
 	@override String get right => 'Праворуч';
 	@override String get bottom => 'Зверху';
 	@override String get top => 'Знизу';
 	@override String get embed => 'Вбудувати';
-	@override String get settingsMigrating => 'Налаштування переносяться, зачекайте трохи... (Ви також можете перенести їх вручну пізніше: Налаштування → Інше → Перенести старі налаштування)';
 	@override String get readonly => 'Лише для читання';
 	@override String get goToDeck => 'Повернутися до Деки';
 	@override String get federationJobs => 'Завдання федерації';
