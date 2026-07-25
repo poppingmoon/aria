@@ -912,6 +912,8 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilitare AiScript nelle pagine';
 	@override String get updateRemoteUser => 'Aggiorna dati dal profilo remoto';
+	@override String get unsetMfa => 'Rimuovere l\'autenticazione a due fattori (2FA/MFA)';
+	@override String get unsetMfaConfirm => 'Vuoi davvero rimuovere l\'autenticazione a due fattori?';
 	@override String get unsetUserAvatar => 'Rimozione foto profilo';
 	@override String get unsetUserAvatarConfirm => 'Vuoi davvero rimuovere la foto profilo?';
 	@override String get unsetUserBanner => 'Rimuovi intestazione profilo';
@@ -1710,6 +1712,8 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => 'Questa emoji è già inclusa in nella tavolozza. Vuoi davvero aggiungerla?';
 	@override String get append => 'Accodare';
 	@override String get prepend => 'Anteporre';
+	@override String get urlPreviewSensitiveList => 'URL da impedire alla vista delle anteprime';
+	@override String get urlPreviewSensitiveListDescription => 'Separando con uno spazio si indica E, separando con una linea si indica O. Circondando con barre / si indica una Espressione Regolare.\nLe URL che coincidono con le indicazioni non verranno visualizzate.';
 	@override late final _Translations$misskey$imageEditing_$it_IT imageEditing_ = _Translations$misskey$imageEditing_$it_IT._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$it_IT imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$it_IT._(_root);
 	@override late final _Translations$misskey$compression_$it_IT compression_ = _Translations$misskey$compression_$it_IT._(_root);
@@ -2319,6 +2323,15 @@ class _Translations$misskey$sensitiveMediaDetection_$it_IT extends Translations$
 	@override String get setSensitiveFlagAutomaticallyDescription => 'Anche se questa impostazione è disattivata, il risultato della decisione viene conservato internamente.';
 	@override String get analyzeVideos => 'Abilitazione dell\'analisi video.';
 	@override String get analyzeVideosDescription => 'Assicuratevi che vengano analizzati anche i video oltre alle immagini fisse. Il carico del server aumenterà leggermente.';
+	@override String get externalServiceInfo => 'Abbiamo spostato esternamente il riconoscimento di media espliciti (sensitive-detector). Per usufruirne devi impostare un servizio separato e indicare di seguito la destinazione. Se non è impostata, non viene emesso alcun giudizio (contenuto NON esplicito).';
+	@override String get apiUrl => 'URL di connessione a Sensitive-Detector';
+	@override String get apiUrlDescription => 'L\'URL di base del servizio (ad esempio http://localhost:3009). Collegandosi a una rete privata, autorizzare la rete nel parametro allowedPrivateNetworks nel file di configurazione.\nCollegandosi con un proxy, è anche necessario impostare proxyBypassHosts. Nel caso il campo sia vuoto, non vengono emessi giudizi di sensibilità.';
+	@override String get apiKey => 'Chiave API';
+	@override String get apiKeyDescription => 'Indicare il token di autenticazione (Bearer token), soltanto se occorre, altrimenti lasciare vuoto.';
+	@override String get timeout => 'Timeout (ms)';
+	@override String get timeoutDescription => 'Tempo limite per ogni richiesta';
+	@override String get maxImagesPerRequest => 'Numero massimo di media per ogni richiesta';
+	@override String get maxImagesPerRequestDescription => 'In caso ci siano più fotogrammi, come nei video, questo è il numero massimo di immagini da inviare in una richiesta. Oltre questo numero, il totale sarà diviso e inviato in sequenza.\nImpostare in modo che non superi il valore maxParts (default: 10) in Sensitive-Detector. Se viene superato, il media sarà considerato non esplicito.';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2811,6 +2824,7 @@ class _Translations$misskey$permissions_$it_IT extends Translations$misskey$perm
 	@override String get readAdminShowModerationLog => 'Vedere lo storico di moderazione';
 	@override String get readAdminShowUser => 'Vedere le informazioni private dei profili';
 	@override String get writeAdminSuspendUser => 'Sospendere i profili';
+	@override String get writeAdminUnsetMfa => 'Può rimuovere l\'autenticazione a due fattori (2FA/MFA)';
 	@override String get writeAdminUnsetUserAvatar => 'Rimuovere la foto profilo dai profili';
 	@override String get writeAdminUnsetUserBanner => 'Rimuovere l\'immagine testata dai profili';
 	@override String get writeAdminUnsuspendUser => 'Rimuovere la sospensione ai profili';
@@ -3401,6 +3415,7 @@ class _Translations$misskey$moderationLogTypes_$it_IT extends Translations$missk
 	@override String get createAvatarDecoration => 'Crea una decorazione della foto profilo';
 	@override String get updateAvatarDecoration => 'Modifica una decorazione della foto profilo';
 	@override String get deleteAvatarDecoration => 'Elimina una decorazione della foto profilo';
+	@override String get unsetMfa => 'Rimossa l\'autenticazione a due fattori (2FA7MFA)';
 	@override String get unsetUserAvatar => 'Toglie una foto profilo';
 	@override String get unsetUserBanner => 'Toglie una immagine di intestazione profilo';
 	@override String get createSystemWebhook => 'Aggiunge un System Webhook';

@@ -862,6 +862,8 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get script => '스크립트';
 	@override String get disablePagesScript => 'Pages 에서 AiScript 를 사용하지 않음';
 	@override String get updateRemoteUser => '리모트 유저 정보 갱신';
+	@override String get unsetMfa => '2단계 인증 해제';
+	@override String get unsetMfaConfirm => '2단계 인증을 해제하시겠습니까?';
 	@override String get unsetUserAvatar => '아바타 제거';
 	@override String get unsetUserAvatarConfirm => '아바타를 제거할까요?';
 	@override String get unsetUserBanner => '배너 제거';
@@ -1660,6 +1662,8 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => '이 이모지는 이미 이 이모지 팔레트에 포함돼있습니다. 다시 추가하시겠습니까?';
 	@override String get append => '맨뒤에 추가';
 	@override String get prepend => '맨앞에 추가';
+	@override String get urlPreviewSensitiveList => '썸네일 표시 제한 URL';
+	@override String get urlPreviewSensitiveListDescription => '공백으로 구분하면 AND 지정으로 되고, 줄내림으로 구분하면 OR 지정으로 됩니다. 슬래시로 감싸면 정규 표현으로 됩니다. 일치한 경우에 썸네일이 표시되지 않게 됩니다.';
 	@override late final Translations$misskey$imageEditing_$ko_KR imageEditing_ = Translations$misskey$imageEditing_$ko_KR.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ko_KR imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ko_KR.internal(_root);
 	@override late final Translations$misskey$compression_$ko_KR compression_ = Translations$misskey$compression_$ko_KR.internal(_root);
@@ -2279,6 +2283,15 @@ class Translations$misskey$sensitiveMediaDetection_$ko_KR extends Translations$m
 	@override String get setSensitiveFlagAutomaticallyDescription => '이 설정을 해제해도 탐지 결과는 유지됩니다.';
 	@override String get analyzeVideos => '동영상도 같이 확인하기';
 	@override String get analyzeVideosDescription => '사진 뿐만 아니라 동영상의 NSFW 여부도 탐지합니다. 서버의 부하를 약간 증가시킵니다.';
+	@override String get externalServiceInfo => '민감한 미디어 판정은 외부 서비스(sensitive-detector)로 분리됐습니다. 이 기능을 이용하려면 별도 사이드카 서비스를 설정하고, 아래의 접속 위치를 설정해야 합니다. 접속 위치가 설정되지 않은 경우에는 판정이 이루어지지 않습니다. (민감하지 않음 처리)';
+	@override String get apiUrl => '판정 서비스의 접속 위치 URL';
+	@override String get apiUrlDescription => 'sensitive-detector 서비스의 베이스 URL(예시: http://localhost:3009). 프라이빗 네트워크상의 서비스에 접속하는 경우에는 설정 파일의 allowedPrivateNetworks로 접속 위치 네트워크를 허가해 주십시오. 프록시를 사용하고 있는 경우에는 proxyBypassHosts도 설정해 주십시오. 비어있으면 민감함 판정은 이루어지지 않습니다.';
+	@override String get apiKey => 'API 키';
+	@override String get apiKeyDescription => '판정 서비스 측에서 인증(Bearer 토큰)을 설정하고 있는 경우에 입력합니다. 설정하고 있지 않은 경우에는 빈칸으로 둬주십시오.';
+	@override String get timeout => '타임아웃 (밀리초)';
+	@override String get timeoutDescription => '판정 요청 1회당 타임아웃 시간입니다.';
+	@override String get maxImagesPerRequest => '한 요청당 최대 이미지 수';
+	@override String get maxImagesPerRequestDescription => '동영상 등 여러 프레임을 판정할 때, 한 번의 요청에 모아서 보내는 이미지의 최대 장수입니다. 이를 넘으면 분할해 순차적으로 송신됩니다. sensitive-detector 측의 maxParts 설정(기본: 10)을 남지 않도록 설정해 주십시오. 넘은 경우에는 그 청크는 전부 민감하지 않음 처리로 됩니다.';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2771,6 +2784,7 @@ class Translations$misskey$permissions_$ko_KR extends Translations$misskey$permi
 	@override String get readAdminShowModerationLog => '조정 기록 보기';
 	@override String get readAdminShowUser => '유저 개인정보 보기';
 	@override String get writeAdminSuspendUser => '유저 정지하기';
+	@override String get writeAdminUnsetMfa => '사용자의 2단계 인증 해제';
 	@override String get writeAdminUnsetUserAvatar => '유저 아바타 삭제하기';
 	@override String get writeAdminUnsetUserBanner => '유저 배너 삭제하기';
 	@override String get writeAdminUnsuspendUser => '유저 정지 해제하기';
@@ -3361,6 +3375,7 @@ class Translations$misskey$moderationLogTypes_$ko_KR extends Translations$misske
 	@override String get createAvatarDecoration => '아바타 장식 만들기';
 	@override String get updateAvatarDecoration => '아바타 장식 수정';
 	@override String get deleteAvatarDecoration => '아바타 장식 삭제';
+	@override String get unsetMfa => '사용자의 2단계 인증 해제';
 	@override String get unsetUserAvatar => '유저 아바타 제거';
 	@override String get unsetUserBanner => '유저 배너 제거';
 	@override String get createSystemWebhook => 'SystemWebhook을 생성';

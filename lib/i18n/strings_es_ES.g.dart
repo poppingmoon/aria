@@ -888,6 +888,8 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Deshabilitar AiScript en Páginas';
 	@override String get updateRemoteUser => 'Actualizar información de usuario remoto';
+	@override String get unsetMfa => 'Desactivar la autenticación de dos factores';
+	@override String get unsetMfaConfirm => '¿Desea desactivar la autenticación de dos factores?';
 	@override String get unsetUserAvatar => 'Quitar avatar';
 	@override String get unsetUserAvatarConfirm => '¿Confirmas que quieres quitar tu avatar?';
 	@override String get unsetUserBanner => 'Quitar banner';
@@ -1686,6 +1688,8 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => 'Este emoji ya está incluido en esta paleta de emojis. ¿Quieres volver a añadirlo?';
 	@override String get append => 'Añadir al final';
 	@override String get prepend => 'Añadir al principio';
+	@override String get urlPreviewSensitiveList => 'URL para restringir la visualización de miniaturas';
+	@override String get urlPreviewSensitiveListDescription => 'Si se separan con un espacio, se interpretará como una condición «AND»; si se separan con un salto de línea, se interpretará como una condición «OR». Si se escriben entre barras, se interpretarán como expresiones regulares. Si se encuentra una coincidencia, no se mostrará la miniatura.';
 	@override late final _Translations$misskey$imageEditing_$es_ES imageEditing_ = _Translations$misskey$imageEditing_$es_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$es_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$es_ES._(_root);
 	@override late final _Translations$misskey$compression_$es_ES compression_ = _Translations$misskey$compression_$es_ES._(_root);
@@ -2295,6 +2299,15 @@ class _Translations$misskey$sensitiveMediaDetection_$es_ES extends Translations$
 	@override String get setSensitiveFlagAutomaticallyDescription => 'Los resultados de la detección interna pueden ser retenidos incluso si la opción está desactivada.';
 	@override String get analyzeVideos => 'Habilitar el análisis de videos';
 	@override String get analyzeVideosDescription => 'Analizar videos en adición a las imágenes. Esto puede incrementar ligeramente la carga del servidor.';
+	@override String get externalServiceInfo => 'La detección de contenidos sensibles se ha externalizado a un servicio externo (sensitive-detector). Para utilizar esta función, es necesario configurar por separado un servicio «sidecar» y establecer los datos de conexión que se indican a continuación. Si no se configuran los datos de conexión, no se realizará la detección (se tratará como contenido no sensible).';
+	@override String get apiUrl => 'URL de conexión al servicio de verificación';
+	@override String get apiUrlDescription => 'URL base del servicio «sensitive-detector» (por ejemplo: http://localhost:3009). Si te conectas a un servicio situado en una red privada, debes permitir la red de destino en el parámetro «allowedPrivateNetworks» del archivo de configuración. Si utilizas un proxy, configura también el parámetro «proxyBypassHosts». Si se deja en blanco, no se realizará la evaluación de datos sensibles.';
+	@override String get apiKey => 'Clave API';
+	@override String get apiKeyDescription => 'Introduce este dato si se ha configurado la autenticación (token Bearer) en el servicio de validación. Si no se ha configurado, déjalo en blanco.';
+	@override String get timeout => 'Tiempo de espera (milisegundos)';
+	@override String get timeoutDescription => 'Duración del tiempo de espera para cada solicitud de resolución.';
+	@override String get maxImagesPerRequest => 'Número máximo de imágenes por solicitud';
+	@override String get maxImagesPerRequestDescription => 'Es el número máximo de imágenes que se pueden enviar en una sola solicitud al analizar varios fotogramas, como en un vídeo. Las imágenes que superen este límite se dividirán y se enviarán de forma secuencial. Configúralo de manera que no se supere el valor de «maxParts» de sensitive-detector (por defecto: 10). Si se supera este límite, todas las imágenes de ese fragmento se considerarán no sensibles.';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2787,6 +2800,7 @@ class _Translations$misskey$permissions_$es_ES extends Translations$misskey$perm
 	@override String get readAdminShowModerationLog => 'Ver log de moderación';
 	@override String get readAdminShowUser => 'Ver información privada de usuario';
 	@override String get writeAdminSuspendUser => 'Suspender cuentas de usuario';
+	@override String get writeAdminUnsetMfa => 'Desactivar la autenticación de dos factores del usuario';
 	@override String get writeAdminUnsetUserAvatar => 'Quitar avatares de usuario';
 	@override String get writeAdminUnsetUserBanner => 'Quitar banner de usuarios';
 	@override String get writeAdminUnsuspendUser => 'Quitar suspensión de cuentas de usuario';
@@ -3377,6 +3391,7 @@ class _Translations$misskey$moderationLogTypes_$es_ES extends Translations$missk
 	@override String get createAvatarDecoration => 'Decoración de avatar creada';
 	@override String get updateAvatarDecoration => 'Decoración de avatar actualizada';
 	@override String get deleteAvatarDecoration => 'Decoración de avatar eliminada';
+	@override String get unsetMfa => 'Desactivar la autenticación de dos factores del usuario';
 	@override String get unsetUserAvatar => 'Quitar decoración de avatar de este usuario';
 	@override String get unsetUserBanner => 'Quitar banner de este usuario';
 	@override String get createSystemWebhook => 'Crear un SystemWebhook';

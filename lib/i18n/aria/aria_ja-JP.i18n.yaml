@@ -122,7 +122,7 @@ permissionDeniedErrorDescription: "この操作を行うための権限がアク
 pin: "ピン留め"
 pinToEmojiPicker: "絵文字ピッカーにピン留め"
 pinned: "ピン留めしました"
-pinnedDraft: "ピン留めされたノート"
+pinnedDraft: "ピン留めされた下書き"
 playAudio: "音声を再生"
 playVideo: "動画を再生"
 pleaseCopyResponse: "以下のレスポンスをコピーしてください"
