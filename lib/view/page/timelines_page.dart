@@ -80,7 +80,6 @@ class TimelinesPage extends HookConsumerWidget {
       keys: [numTabs],
     );
     final showPostForm = useState(false);
-    final postFormAccount = useState<Account?>(null);
     useEffect(() {
       int previousIndex = tabIndex;
       int index = tabIndex;
@@ -109,10 +108,9 @@ class TimelinesPage extends HookConsumerWidget {
         final nextTab = tabs[nextIndex];
         final nextAccount = nextTab.account;
         index = nextIndex;
-        if (postFormAccount.value ?? previousAccount case final previousAccount
-            when previousAccount == nextAccount) {
+        if (!nextAccount.isGuest) {
           ref
-              .read(postNotifierProvider(previousAccount).notifier)
+              .read(postNotifierProvider(nextAccount).notifier)
               .switchTab(previousTab, nextTab);
         }
         if (previousAccount != nextAccount) {
@@ -124,7 +122,6 @@ class TimelinesPage extends HookConsumerWidget {
           if (!nextAccount.isGuest) {
             ref.invalidate(iNotifierProvider(nextAccount));
           }
-          postFormAccount.value = null;
         }
         if (nextAccount.isGuest) {
           showPostForm.value = false;
@@ -262,8 +259,6 @@ class TimelinesPage extends HookConsumerWidget {
                                       account: tabSettings.account,
                                       focusNode: postFormFocusNode,
                                       onHide: () => showPostForm.value = false,
-                                      onAccountChanged: (account) =>
-                                          postFormAccount.value = account,
                                     ),
                                   ),
                                 ),
@@ -343,13 +338,11 @@ class _PostForm extends HookConsumerWidget {
     required this.account,
     required this.focusNode,
     required this.onHide,
-    required this.onAccountChanged,
   });
 
   final Account account;
   final FocusNode focusNode;
   final void Function() onHide;
-  final void Function(Account account) onAccountChanged;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -403,10 +396,7 @@ class _PostForm extends HookConsumerWidget {
               hashtagFocusNode: hashtagFocusNode,
               onHide: onHide,
               onExpand: (account) => context.push('/$account/post'),
-              onAccountChanged: (newAccount) {
-                account.value = newAccount;
-                onAccountChanged(newAccount);
-              },
+              onAccountChanged: (newAccount) => account.value = newAccount,
               showPostButton: true,
               maxLines: 6,
               thumbnailSize: 100.0,
