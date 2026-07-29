@@ -705,6 +705,8 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Desactivar AiScript a les pàgines ';
 	@override String get updateRemoteUser => 'Actualitzar la informació de l\'usuari remot';
+	@override String get unsetMfa => 'Desactiva l\'autenticació de dos factors';
+	@override String get unsetMfaConfirm => 'Voldries desactivar l\'autenticació de dos factors?';
 	@override String get unsetUserAvatar => 'Desactiva l\'avatar ';
 	@override String get unsetUserAvatarConfirm => 'Segur que vols desactivar l\'avatar?';
 	@override String get unsetUserBanner => 'Desactiva el bàner ';
@@ -1503,6 +1505,8 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => 'Aquest emoji ja està inclòs en aquest calaix d\'emojis. Vols afegir-lo de nou?';
 	@override String get append => 'Afegeix al final';
 	@override String get prepend => 'Afegeix al principi';
+	@override String get urlPreviewSensitiveList => 'Llista d\'URLs per restringir la visualització de miniatures';
+	@override String get urlPreviewSensitiveListDescription => 'Si separeu els termes amb un espai, s\'interpretarà com una condició \'AND\'; si els separeu amb un salt de línia, s\'interpretarà com una condició \'OR\'. Si envolupeu els termes amb barres obliqües, s\'interpretarà com una expressió regular. Si es troba una coincidència, la miniatura ja no es mostrarà.';
 	@override late final _Translations$misskey$imageEditing_$ca_ES imageEditing_ = _Translations$misskey$imageEditing_$ca_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ca_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ca_ES._(_root);
 	@override late final _Translations$misskey$compression_$ca_ES compression_ = _Translations$misskey$compression_$ca_ES._(_root);
@@ -2112,6 +2116,15 @@ class _Translations$misskey$sensitiveMediaDetection_$ca_ES extends Translations$
 	@override String get setSensitiveFlagAutomaticallyDescription => 'Els resultats de la detecció interna seran desats, inclòs si aquesta opció es troba desactivada.';
 	@override String get analyzeVideos => 'Activar anàlisis de vídeos ';
 	@override String get analyzeVideosDescription => 'Analitzar els vídeos a més de les imatges. Això incrementarà lleugerament la càrrega del servidor.';
+	@override String get externalServiceInfo => 'La detecció de mitjans sensibles s\'ha delegat a un servei extern (sensitive-detector). Per utilitzar aquesta funció, cal configurar un servei sidecar separat i establir els detalls de connexió que es detallen a continuació. Si no es configuren els detalls de connexió, no es durà a terme cap detecció (el contingut es tractarà com a no sensible).';
+	@override String get apiUrl => 'URL per connectar-se al servei de verificació';
+	@override String get apiUrlDescription => 'L\'URL base del servei de detector de sensibilitat (per exemple, http://localhost:3009). Si us connecteu a un servei en una xarxa privada, afegiu la xarxa de destinació a la configuració `allowedPrivateNetworks` del fitxer de configuració. Si utilitzeu un proxy, configureu també `proxyBypassHosts`. Si es deixa en blanc, no es realitzaran comprovacions de sensibilitat.';
+	@override String get apiKey => 'Clau de l\'API';
+	@override String get apiKeyDescription => 'Introduïu això si l\'autenticació (token Bearer) està configurada al costat del servei d\'autenticació. Si no està configurada, deixeu aquest camp en blanc.';
+	@override String get timeout => 'Temps d\'espera (mil·lisegons)';
+	@override String get timeoutDescription => '1 Aquesta és la durada del temps mort per sol·licitud de validació.';
+	@override String get maxImagesPerRequest => '1 Nombre màxim d\'imatges per sol·licitud';
+	@override String get maxImagesPerRequestDescription => '1 Quan s\'analitzen múltiples fotogrames, com en un vídeo, aquest és el nombre màxim d\'imatges que es poden enviar en una única petició. Qualsevol imatge que superi aquest límit es dividirà en parts i s\'enviarà seqüencialment. Assegureu-vos que aquest ajust no superi el valor de `maxParts` al costat del `sensitive-detector` (per defecte: 10). Si es supera aquest límit, totes les imatges d\'aquest lot es consideraran no sensibles.';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2604,6 +2617,7 @@ class _Translations$misskey$permissions_$ca_ES extends Translations$misskey$perm
 	@override String get readAdminShowModerationLog => 'Veure registre de moderació ';
 	@override String get readAdminShowUser => 'Veure informació privada de l\'usuari ';
 	@override String get writeAdminSuspendUser => 'Suspendre usuari';
+	@override String get writeAdminUnsetMfa => 'Desactiva l\'autenticació de dos factors per a un usuari';
 	@override String get writeAdminUnsetUserAvatar => 'Esborrar avatar d\'usuari ';
 	@override String get writeAdminUnsetUserBanner => 'Esborrar bàner de l\'usuari ';
 	@override String get writeAdminUnsuspendUser => 'Treure la suspensió d\'un usuari';
@@ -3194,6 +3208,7 @@ class _Translations$misskey$moderationLogTypes_$ca_ES extends Translations$missk
 	@override String get createAvatarDecoration => 'Decoració de l\'avatar creada';
 	@override String get updateAvatarDecoration => 'S\'ha actualitzat la decoració de l\'avatar ';
 	@override String get deleteAvatarDecoration => 'S\'ha esborrat la decoració de l\'avatar ';
+	@override String get unsetMfa => 'Desactiva l\'autenticació de dos factors per a l\'usuari';
 	@override String get unsetUserAvatar => 'Esborrar l\'avatar d\'aquest usuari';
 	@override String get unsetUserBanner => 'Esborrar el bàner d\'aquest usuari';
 	@override String get createSystemWebhook => 'Crear un SystemWebhook';

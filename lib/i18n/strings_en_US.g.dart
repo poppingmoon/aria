@@ -2571,6 +2571,12 @@ class Translations$misskey$en_US {
 	/// en-US: 'Update remote user information'
 	String get updateRemoteUser => 'Update remote user information';
 
+	/// en-US: 'Reset two-factor authentication'
+	String get unsetMfa => 'Reset two-factor authentication';
+
+	/// en-US: 'Are you sure you want to reset two-factor authentication?'
+	String get unsetMfaConfirm => 'Are you sure you want to reset two-factor authentication?';
+
 	/// en-US: 'Unset avatar'
 	String get unsetUserAvatar => 'Unset avatar';
 
@@ -4965,6 +4971,12 @@ class Translations$misskey$en_US {
 	/// en-US: 'Append to beginning'
 	String get prepend => 'Append to beginning';
 
+	/// en-US: 'URL to restrict thumbnail display'
+	String get urlPreviewSensitiveList => 'URL to restrict thumbnail display';
+
+	/// en-US: 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.'
+	String get urlPreviewSensitiveListDescription => 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.';
+
 	late final Translations$misskey$imageEditing_$en_US imageEditing_ = Translations$misskey$imageEditing_$en_US.internal(_root);
 	late final Translations$misskey$imageFrameEditor_$en_US imageFrameEditor_ = Translations$misskey$imageFrameEditor_$en_US.internal(_root);
 	late final Translations$misskey$compression_$en_US compression_ = Translations$misskey$compression_$en_US.internal(_root);
@@ -6153,6 +6165,33 @@ class Translations$misskey$sensitiveMediaDetection_$en_US {
 
 	/// en-US: 'Analyzes videos in addition to images. This will slightly increase the load on the server.'
 	String get analyzeVideosDescription => 'Analyzes videos in addition to images. This will slightly increase the load on the server.';
+
+	/// en-US: 'The detection of sensitive media has been offloaded to an external service (sensitive-detector). To use this feature, you must set up a separate service and configure the connection details provided below. If no connection details are configured, no detection will be performed (it will be treated as non-sensitive).'
+	String get externalServiceInfo => 'The detection of sensitive media has been offloaded to an external service (sensitive-detector). To use this feature, you must set up a separate service and configure the connection details provided below. If no connection details are configured, no detection will be performed (it will be treated as non-sensitive).';
+
+	/// en-US: 'Detection service endpoint URL'
+	String get apiUrl => 'Detection service endpoint URL';
+
+	/// en-US: 'The base URL for the sensitive-detector service (e.g., http://localhost:3009). If you are connecting to a service on a private network, please allow the target network in the allowedPrivateNetworks setting in the configuration file. If you are using a proxy, please also configure proxyBypassHosts. If left blank, sensitive media detection will not be performed.'
+	String get apiUrlDescription => 'The base URL for the sensitive-detector service (e.g., http://localhost:3009). If you are connecting to a service on a private network, please allow the target network in the allowedPrivateNetworks setting in the configuration file. If you are using a proxy, please also configure proxyBypassHosts. If left blank, sensitive media detection will not be performed.';
+
+	/// en-US: 'API key'
+	String get apiKey => 'API key';
+
+	/// en-US: 'Enter this if authentication (Bearer token) is configured on the detector service. If it is not configured, please leave it blank.'
+	String get apiKeyDescription => 'Enter this if authentication (Bearer token) is configured on the detector service. If it is not configured, please leave it blank.';
+
+	/// en-US: 'Timeout (Milliseconds)'
+	String get timeout => 'Timeout (Milliseconds)';
+
+	/// en-US: 'Timeout duration for each judgment request.'
+	String get timeoutDescription => 'Timeout duration for each judgment request.';
+
+	/// en-US: 'Max images per request'
+	String get maxImagesPerRequest => 'Max images per request';
+
+	/// en-US: 'Maximum number of images that can be sent in a single request when processing multi-frame at once, such as videos. Any images exceeding this limit will be split and sent sequentially. Please ensure this is set to not exceed the maxParts setting (default: 10) on the detector service. If it exceeds this limit, all items in that chunk will be treated as non-sensitive.'
+	String get maxImagesPerRequestDescription => 'Maximum number of images that can be sent in a single request when processing multi-frame at once, such as videos. Any images exceeding this limit will be split and sent sequentially. Please ensure this is set to not exceed the maxParts setting (default: 10) on the detector service. If it exceeds this limit, all items in that chunk will be treated as non-sensitive.';
 }
 
 // Path: misskey.emailUnavailable_
@@ -7138,6 +7177,9 @@ class Translations$misskey$permissions_$en_US {
 
 	/// en-US: 'Suspend user'
 	String get writeAdminSuspendUser => 'Suspend user';
+
+	/// en-US: 'Reset two-factor authentication for the user'
+	String get writeAdminUnsetMfa => 'Reset two-factor authentication for the user';
 
 	/// en-US: 'Remove user avatar'
 	String get writeAdminUnsetUserAvatar => 'Remove user avatar';
@@ -8431,6 +8473,9 @@ class Translations$misskey$moderationLogTypes_$en_US {
 
 	/// en-US: 'Avatar decoration deleted'
 	String get deleteAvatarDecoration => 'Avatar decoration deleted';
+
+	/// en-US: 'Reset two-factor authentication for the user'
+	String get unsetMfa => 'Reset two-factor authentication for the user';
 
 	/// en-US: 'User avatar unset'
 	String get unsetUserAvatar => 'User avatar unset';

@@ -934,6 +934,8 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get script => 'スクリプト';
 	@override String get disablePagesScript => 'Pagesのスクリプトを無効にしてや';
 	@override String get updateRemoteUser => 'リモートユーザー情報の更新してくれん？';
+	@override String get unsetMfa => '二要素認証を解除';
+	@override String get unsetMfaConfirm => '二要素認証を解除しますか？';
 	@override String get unsetUserAvatar => 'アイコン戻す';
 	@override String get unsetUserAvatarConfirm => 'アイコンを元に戻すで？';
 	@override String get unsetUserBanner => 'バナー戻す';
@@ -1732,6 +1734,8 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => 'この絵文字はすでにこの絵文字パレットに含まれています。追加しなおしますか？';
 	@override String get append => '末尾に追加';
 	@override String get prepend => '先頭に追加';
+	@override String get urlPreviewSensitiveList => 'サムネイルの表示を制限するURL';
+	@override String get urlPreviewSensitiveListDescription => 'スペースで区切るとAND指定になり、改行で区切るとOR指定になります。スラッシュで囲むと正規表現になります。一致した場合、サムネイルが表示されなくなります。';
 	@override late final Translations$misskey$imageEditing_$ja_KS imageEditing_ = Translations$misskey$imageEditing_$ja_KS.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ja_KS imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ja_KS.internal(_root);
 	@override late final Translations$misskey$compression_$ja_KS compression_ = Translations$misskey$compression_$ja_KS.internal(_root);
@@ -2351,6 +2355,15 @@ class Translations$misskey$sensitiveMediaDetection_$ja_KS extends Translations$m
 	@override String get setSensitiveFlagAutomaticallyDescription => 'この設定切っても内部的には判定結果はそのままや。';
 	@override String get analyzeVideos => '動画の解析をオンにするで';
 	@override String get analyzeVideosDescription => '画像だけじゃなくて動画も解析するようにするで。サーバーがちょっと重くなるで。';
+	@override String get externalServiceInfo => 'センシティブメディアの判定は外部サービス (sensitive-detector) に分離されました。この機能を利用するには、別途サイドカーサービスをセットアップし、下記の接続先を設定する必要があります。接続先が未設定の場合、判定は行われません (非センシティブ扱い)。';
+	@override String get apiUrl => '判定サービスの接続先URL';
+	@override String get apiUrlDescription => 'sensitive-detector サービスのベースURL (例: http://localhost:3009)。プライベートネットワーク上のサービスに接続する場合は、設定ファイルの allowedPrivateNetworks で接続先ネットワークを許可してください。プロキシを使用している場合は、proxyBypassHosts も設定してください。空欄の場合、センシティブ判定は行われません。';
+	@override String get apiKey => 'APIキー';
+	@override String get apiKeyDescription => '判定サービス側で認証 (Bearerトークン) を設定している場合に入力します。設定していない場合は空欄のままにしてください。';
+	@override String get timeout => 'タイムアウト (ミリ秒)';
+	@override String get timeoutDescription => '判定リクエスト1回あたりのタイムアウト時間です。';
+	@override String get maxImagesPerRequest => '1リクエストあたりの最大画像数';
+	@override String get maxImagesPerRequestDescription => '動画など複数フレームを判定する際、1回のリクエストにまとめて送る画像の最大枚数です。これを超える分は分割して順次送信されます。sensitive-detector 側の maxParts 設定（デフォルト: 10）を超えないように設定してください。超えた場合、そのチャンクは全件非センシティブ扱いとなります。';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2843,6 +2856,7 @@ class Translations$misskey$permissions_$ja_KS extends Translations$misskey$permi
 	@override String get readAdminShowModerationLog => 'モデレーションログ見る';
 	@override String get readAdminShowUser => 'ユーザーのプライベートな情報見る';
 	@override String get writeAdminSuspendUser => 'ユーザーを凍結';
+	@override String get writeAdminUnsetMfa => 'ユーザーの二要素認証を解除する';
 	@override String get writeAdminUnsetUserAvatar => 'ユーザーのアバターを削除';
 	@override String get writeAdminUnsetUserBanner => 'ユーザーのバナーを削除';
 	@override String get writeAdminUnsuspendUser => 'ユーザーの凍結解除';
@@ -3433,6 +3447,7 @@ class Translations$misskey$moderationLogTypes_$ja_KS extends Translations$misske
 	@override String get createAvatarDecoration => 'アイコンデコレーションを作成';
 	@override String get updateAvatarDecoration => 'アイコンデコレーションを更新';
 	@override String get deleteAvatarDecoration => 'アイコンデコレーションを削除';
+	@override String get unsetMfa => 'ユーザーの二要素認証を解除';
 	@override String get unsetUserAvatar => 'この子のアイコン元に戻す';
 	@override String get unsetUserBanner => 'この子のバナー元に戻す';
 	@override String get createSystemWebhook => 'SystemWebhookを作成';

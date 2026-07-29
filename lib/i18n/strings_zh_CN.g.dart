@@ -169,7 +169,7 @@ class Translations$aria$zh_CN extends Translations$aria$en_US {
 	@override String get newNotes => '新帖子';
 	@override String get newNotificationReceived => '有新的通知';
 	@override String get newNotifications => '新通知';
-	@override String get noAccounts => '无账号';
+	@override String get noAccounts => '无账户';
 	@override String get noTabs => '无标签页';
 	@override String get noThemes => '无主题';
 	@override String get noteDoubleTapAction => '双击帖子时操作';
@@ -377,7 +377,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get addToList => '添加至列表';
 	@override String get addToAntenna => '添加到天线';
 	@override String get sendMessage => '发送消息';
-	@override String get copyRSS => '复制RSS';
+	@override String get copyRSS => '复制 RSS';
 	@override String get copyUsername => '复制用户名';
 	@override String get copyUserId => '复制用户 ID';
 	@override String get copyNoteId => '复制帖子 ID';
@@ -776,8 +776,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get aboutMisskey => '关于 Misskey';
 	@override String get administrator => '管理员';
 	@override String get token => 'Token (令牌)';
-	@override String get x2fa => '双因素认证';
-	@override String get setupOf2fa => '设置双因素认证';
+	@override String get x2fa => '双重验证';
+	@override String get setupOf2fa => '设置双重验证';
 	@override String get totp => '验证器';
 	@override String get totpDescription => '使用验证器输入一次性密码';
 	@override String get moderator => '监察员';
@@ -805,7 +805,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get markAsReadAllUnreadNotes => '将所有帖子标记为已读';
 	@override String get markAsReadAllTalkMessages => '将所有私信标记为已读';
 	@override String get help => '帮助';
-	@override String get inputMessageHere => '在此键入信息';
+	@override String get inputMessageHere => '在此输入信息';
 	@override String get close => '关闭';
 	@override String get invites => '邀请';
 	@override String get members => '成员';
@@ -939,6 +939,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get script => '脚本';
 	@override String get disablePagesScript => '禁用页面脚本';
 	@override String get updateRemoteUser => '更新远程用户信息';
+	@override String get unsetMfa => '解除双重验证';
+	@override String get unsetMfaConfirm => '确认解除双重验证吗？';
 	@override String get unsetUserAvatar => '清除头像';
 	@override String get unsetUserAvatarConfirm => '要清除头像吗？';
 	@override String get unsetUserBanner => '清除横幅';
@@ -1737,6 +1739,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => '此表情符号已存在于此表情符号选择器中。要再次添加吗？';
 	@override String get append => '加到最后';
 	@override String get prepend => '加到最前';
+	@override String get urlPreviewSensitiveList => '限制显示缩略图的 URL';
+	@override String get urlPreviewSensitiveListDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔，正则表达式用斜线包裹。成功匹配则不再显示缩略图。';
 	@override late final Translations$misskey$imageEditing_$zh_CN imageEditing_ = Translations$misskey$imageEditing_$zh_CN.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_CN imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_CN.internal(_root);
 	@override late final Translations$misskey$compression_$zh_CN compression_ = Translations$misskey$compression_$zh_CN.internal(_root);
@@ -2346,6 +2350,15 @@ class Translations$misskey$sensitiveMediaDetection_$zh_CN extends Translations$m
 	@override String get setSensitiveFlagAutomaticallyDescription => '即使关闭此配置，识别结果也会在内部保存。';
 	@override String get analyzeVideos => '启用对视频的检测';
 	@override String get analyzeVideosDescription => '除了静止图像之外，还对视频进行分析。服务器负载会略微增加。';
+	@override String get externalServiceInfo => '检测敏感媒体已分离至外部服务 (sensitive-detector)。若要使用，需额外部署 Sidecar 服务，并设置下方的连接 URL。未设定时将不会进行检测（视为非敏感媒体）。';
+	@override String get apiUrl => '检测服务的连接 URL';
+	@override String get apiUrlDescription => 'sensitive-detector 服务的 base URL（如：http://localhost:3009）。若是连接至部署在专用网络上的服务，请在配置文件中的 allowedPrivateNetworks 里允许目标网络。若是使用了代理，请一并设置 proxyBypassHosts。留空则不进行敏感媒体检测。';
+	@override String get apiKey => 'API 密钥';
+	@override String get apiKeyDescription => '若服务端有设置验证（Bearer token）则填写，未设置则留空。';
+	@override String get timeout => '超时（毫秒）';
+	@override String get timeoutDescription => '此为单次检测请求的超时时长。';
+	@override String get maxImagesPerRequest => '单次检测请求最大图像数量';
+	@override String get maxImagesPerRequestDescription => '此为在检测动画等多帧图像时，单次请求中可发送的图像数量上限。超出此值时动画将被拆分并按序发送。请勿将此值设为超出 sensitive-detector 侧的 maxParts 的值（默认：10），否则对应的分块将全被视为非敏感媒体。';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2838,6 +2851,7 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	@override String get readAdminShowModerationLog => '查看管理日志';
 	@override String get readAdminShowUser => '查看用户的非公开信息';
 	@override String get writeAdminSuspendUser => '冻结用户';
+	@override String get writeAdminUnsetMfa => '解除用户的双重验证';
 	@override String get writeAdminUnsetUserAvatar => '删除用户头像';
 	@override String get writeAdminUnsetUserBanner => '删除用户横幅';
 	@override String get writeAdminUnsuspendUser => '解除用户冻结';
@@ -3428,6 +3442,7 @@ class Translations$misskey$moderationLogTypes_$zh_CN extends Translations$misske
 	@override String get createAvatarDecoration => '新建头像挂件';
 	@override String get updateAvatarDecoration => '更新头像挂件';
 	@override String get deleteAvatarDecoration => '删除头像挂件';
+	@override String get unsetMfa => '解除用户的双重验证';
 	@override String get unsetUserAvatar => '清除用户头像';
 	@override String get unsetUserBanner => '清除用户横幅';
 	@override String get createSystemWebhook => '新建了 SystemWebhook';
@@ -4490,7 +4505,7 @@ class Translations$misskey$widgetOptions_$rss_$zh_CN extends Translations$misske
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get url => 'RSS feed 的 URL';
+	@override String get url => 'RSS 订阅源网址';
 	@override String get refreshIntervalSec => '更新间隔（秒）';
 	@override String get maxEntries => '最大显示个数';
 }
