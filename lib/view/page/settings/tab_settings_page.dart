@@ -711,7 +711,8 @@ class TabSettingsPage extends HookConsumerWidget {
                         );
                         if (result != null) {
                           if (!context.mounted) return;
-                          if (RegExp(r'^[\w\/\-]{0,100}$').hasMatch(result)) {
+                          if (RegExp(r'^[\w\/\-]{0,100}$').hasMatch(result) &&
+                              !result.contains('//')) {
                             tabSettings.value = tabSettings.value.copyWith(
                               endpoint: result.isNotEmpty ? result : null,
                             );

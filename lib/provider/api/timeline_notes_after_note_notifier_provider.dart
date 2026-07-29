@@ -35,13 +35,19 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
 
   Duration _duration = const Duration(minutes: 1);
 
-  Future<Iterable<Note>> _fetchNotesFromCustomTimeline(String? sinceId) async {
+  Future<Iterable<Note>> _fetchNotesFromCustomTimeline({
+    String? sinceId,
+    DateTime? sinceDate,
+    DateTime? untilDate,
+  }) async {
     final endpoint = tabSettings.endpoint;
-    if (endpoint == null) {
+    if (endpoint == null || endpoint.contains('//')) {
       return [];
     }
     final response = await _misskey.apiService.post<List<dynamic>>(endpoint, {
       'sinceId': ?sinceId,
+      'sinceDate': ?sinceDate?.millisecondsSinceEpoch,
+      'untilDate': ?untilDate?.millisecondsSinceEpoch,
       'withRenotes': tabSettings.withRenotes,
       'withReplies': tabSettings.withReplies,
       'withFiles': tabSettings.withFiles,
@@ -141,17 +147,26 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         NotesSearchByTagRequest(
           tag: tabSettings.hashtag!,
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
           limit: limit,
           reply: tabSettings.withReplies ? null : false,
           withFiles: tabSettings.withFiles,
         ),
       ),
       TabType.mention => _misskey.notes.mentions(
-        NotesMentionsRequest(sinceId: sinceId, limit: limit),
+        NotesMentionsRequest(
+          sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
+          limit: limit,
+        ),
       ),
       TabType.direct => _misskey.notes.mentions(
         NotesMentionsRequest(
           sinceId: sinceId,
+          sinceDate: sinceDate,
+          untilDate: untilDate,
           limit: limit,
           visibility: NoteVisibility.specified,
         ),
@@ -172,7 +187,11 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.notifications => throw UnsupportedError(
         '_fetchNote() for TabType.notifications is not supported',
       ),
-      TabType.custom => _fetchNotesFromCustomTimeline(sinceId),
+      TabType.custom => _fetchNotesFromCustomTimeline(
+        sinceId: sinceId,
+        sinceDate: sinceDate,
+        untilDate: untilDate,
+      ),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
     return (sinceId != null
