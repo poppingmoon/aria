@@ -44,6 +44,45 @@ class _Translations$aria$fr_FR extends Translations$aria$en_US {
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'À propos d\'Aria';
+	@override TextSpan acceptFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Êtes-vous sûr·e de vouloir accepter la demande de suivi de '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+	@override String get addTab => 'Ajouter un onglet';
+	@override String get alwaysExpandLongNote => 'Toujours développer les notes longues';
+	@override String get alwaysExpandMediaInSubNote => 'Toujours développer les médias dans les sous-notes';
+	@override String get alwaysShowAllReactions => 'Toujours afficher toutes les réactions';
+	@override String get alwaysShowTabHeader => 'Toujours afficher les infos de l\'onglet';
+	@override String get authenticate => 'S\'authentifier';
+	@override String get authenticated => 'Authentifié·e';
+	@override String get avatarSize => 'Taille de l\'avatar';
+	@override String get buttonTypes => 'Types de boutons';
+	@override String get cache => 'Cache';
+	@override String get calculating => 'Calcul en cours...';
+	@override TextSpan cancelFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Êtes-vous sûr·e de vouloir annuler la demande de suivi de '),
+		name,
+		const TextSpan(text: ' ?'),
+	]);
+	@override String get clientInfo => 'Informations sur le client';
+	@override String get confirmBeforeFollow => 'Confirmer avant de suivre';
+	@override String get confirmBeforePost => 'Confirmer avant de publier';
+	@override String get confirmBeforePostingMediaWithoutComment => 'Confirmer avant de poster des médias sans texte alternatif';
+	@override String get confirmBeforeReact => 'Confirmer avant de réagir';
+	@override String get confirmBeforeRenote => 'Confirmer avant de renoter';
+	@override String get disableStreamingTimeline => 'Désactiver les mises à jour en temps réel de la timeline';
+	@override String get disableSubscribingNotes => 'Désactiver les mises à jour en temps réel des réactions';
+	@override String get doubleTapToShow => 'Double appui pour afficher';
+	@override String get emojiPickerAutofocus => 'Développer le clavier lors de l\'ouverture du sélecteur d\'émoji';
+	@override String get emojiPickerScale => 'Échelle du sélecteur d\'émoji';
+	@override String get emojiPickerUseDialog => 'Afficher le sélecteur d\'émoji en tant que boîte de dialogue';
+	@override String get enableEmojiFadeIn => 'Activer les animations de fondu pour les émojis personnalisés';
+	@override String get enableFederation => 'Activer la fédération';
+	@override String get enableHapticFeedback => 'Activer le retour haptique';
+	@override String get enableSpellCheck => 'Activer le correcteur orthographique';
+	@override String get expandNote => 'Développer la note';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Êtes-vous sûr·e de vouloir suivre '),
 		name,
@@ -54,19 +93,71 @@ class _Translations$aria$fr_FR extends Translations$aria$en_US {
 		link,
 		const TextSpan(text: '.'),
 	]);
+	@override String get lineHeight => 'Interlignage';
+	@override String get margin => 'Marges';
+	@override String get media => 'Médias';
+	@override String get mediaSaveLocation => 'Emplacement d\'enregistrement des médias';
+	@override String get mentionToRemoteWarning => 'Cette note inclut des mentions d\'utilisateurs distants';
+	@override String get missingFileCommentWarning => 'Le texte alternatif de ce fichier est manquant. Voulez-vous l\'ajouter ?';
+	@override String get moved => 'Déplacé';
+	@override String get mutedEmojis => 'Émojis en sourdine';
+	@override String get newFollowRequestReceived => 'Il y a de nouvelles demandes de suivi';
+	@override String get newNotes => 'Nouvelles notes';
+	@override String get noteDoubleTapAction => 'Action de double appui sur la note';
+	@override String get noteFooterSize => 'Taille des boutons d\'action de la note';
+	@override String get noteLongPressAction => 'Action d\'appui long sur la note';
+	@override String get noteScheduled => 'La note a été planifiée';
+	@override String get noteTapAction => 'Action de l\'appui sur la note';
+	@override String get notesAfterRenotes => 'Notes après les renotes';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' utilisateur(s) en ligne'),
 	]);
+	@override String get openNote => 'Développer la note';
+	@override String get openSensitiveMediaOnDoubleTap => 'Ouvrir les médias sensibles par double appui';
+	@override String get pinToEmojiPicker => 'Épingler au sélecteur d\'émoji';
+	@override String get postConfirm => 'Êtes-vous sûr·e de vouloir publier cette note ?';
+	@override String get recentlyUsedEmojis => 'Émojis récemment utilisés';
+	@override TextSpan rejectFollowRequestConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Êtes-vous sûr·e de vouloir rejeter la demande de suivi de '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+	@override String get renoteConfirm => 'Êtes-vous sûr·e de vouloir renoter cette note ?';
+	@override String get renoteToChannel => 'Renoter dans un canal';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Renoté par '),
 		user,
 	]);
+	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Auto-renoté par '),
+		user,
+	]);
+	@override String get showAvatarsInNote => 'Afficher les avatars dans les notes';
+	@override String get showAvatarsInSubNote => 'Afficher les avatars dans les sous-notes';
+	@override String get showCaption => 'Afficher le texte alternatif';
+	@override String get showEmojiInReactionNotification => 'Afficher les émojis dans les notifications de réaction';
+	@override String get showEntireImage => 'Afficher l\'image entière';
+	@override String get showExpandedImage => 'Afficher l\'image développée';
+	@override String get showGapBetweenNotesInTimeline => 'Afficher un écart entre les publications sur la timeline';
+	@override String get showImage => 'Afficher l\'image';
+	@override String get showImageInNotification => 'Afficher les images dans les notifications';
+	@override String get showLikeButtonInNoteFooter => 'Ajouter "J\'aime" au menu d\'action de la note';
+	@override String get showNote => 'Afficher la note';
+	@override String get showNoteCreatedAt => 'Afficher la date de création des notes';
+	@override String get showNoteFooter => 'Afficher les boutons d\'action dans les notes';
+	@override String get showOnlineStatus => 'Afficher le statut en ligne';
+	@override String get showPopupOnNewNote => 'Afficher un popup sur une nouvelle note';
+	@override String get showRenotesCount => 'Voir le nombre de renotes des notes';
+	@override String get showSelfRenotes => 'Afficher ses propres renotes';
+	@override String get showTimelineTabBarAtBottom => 'Afficher la barre d\'onglets en bas de la timeline';
+	@override String get tapToShow => 'Appuyer pour afficher';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'Désirez-vous vous désabonner de '),
+		const TextSpan(text: 'Désirez-vous arrêter de suivre '),
 		name,
 		const TextSpan(text: ' ?'),
 	]);
+	@override String get useThisEmoji => 'Utiliser cet émoji';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		name,
 		const TextSpan(text: ' a dit quelque chose'),
