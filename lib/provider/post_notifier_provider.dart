@@ -698,7 +698,7 @@ class PostNotifier extends _$PostNotifier {
           : draft?.channel?.id == channelId
           ? draft?.channel
           : null,
-      text: text,
+      text: text.isNotEmpty ? text : null,
     );
     _scheduleSave();
   }
