@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.10+108
+version: 1.5.11+109
 
 environment:
   sdk: ">=3.12.0 <4.0.0"
@@ -27,7 +27,7 @@ dependencies:
   device_info_plus: ^13.2.0
   dio: ^5.11.0
   dotted_border: ^3.1.0
-  dynamic_color: ^1.8.1
+  dynamic_color: ^1.9.0
   extended_image: ^10.1.0
   file: ^7.0.1
   file_picker: ^12.0.0-beta.7
@@ -55,15 +55,15 @@ dependencies:
       ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^22.2.0
+  flutter_local_notifications: ^22.3.0
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.13.0-beta.5
-  flutter_rust_bridge_hooks: ^2.13.0-beta.5
-  flutter_secure_storage: ^10.3.1
+  flutter_rust_bridge: ^2.13.0-beta.6
+  flutter_rust_bridge_hooks: ^2.13.0-beta.6
+  flutter_secure_storage: ^11.0.0
   flutter_svg: ^2.3.0
-  fluttertoast: ^9.1.0
+  fluttertoast: ^10.0.0
   freezed_annotation: ^3.1.0
   fvp:
     git:
@@ -71,8 +71,8 @@ dependencies:
       ref: 4490cc1f362039553f6167cb44fa989239069e80
   gal: ^2.3.3
   gal_linux: ^0.1.2
-  go_router: ^17.3.0
-  google_fonts: ^8.2.0
+  go_router: ^17.4.0
+  google_fonts: ^8.2.1
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -124,8 +124,8 @@ dependencies:
   sensors_plus: ^7.1.0
   share_plus: ^13.3.0
   shared_preferences: ^2.5.5
-  slang: ^4.18.0
-  slang_flutter: ^4.18.0
+  slang: ^4.19.0
+  slang_flutter: ^4.19.0
   tinycolor2:
     git:
       url: https://github.com/poppingmoon/tinycolor2
@@ -145,7 +145,7 @@ dependencies:
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: f0b06f8a4246836ea6a5cd3bcbba83a73531edaf
+      ref: addfe2df1f0c5cf48b99394add829b01e8692f78
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.2
 
@@ -164,11 +164,11 @@ dev_dependencies:
       url: https://github.com/poppingmoon/isar-community
       ref: 24c09d4192dcf3c15c01a7e916de33e1c410d9b8
       path: packages/isar_community_generator
-  json_serializable: ^6.14.0
+  json_serializable: ^6.14.1
   lint: ^2.8.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^4.0.4
-  slang_build_runner: ^4.18.0
+  slang_build_runner: ^4.19.0
   url_launcher_platform_interface: ^2.3.2
   yaml: ^3.1.3
 
@@ -186,7 +186,7 @@ dependency_overrides:
   jni:
     git:
       url: https://github.com/poppingmoon/native
-      ref: b380193822cbc7a6c74373edd3a2185edd89ba56
+      ref: e7e48c07cb5d7087dce097a79d3f4dcd53a8fab3
       path: pkgs/jni
   unifiedpush_android:
     git:

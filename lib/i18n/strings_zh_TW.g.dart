@@ -723,6 +723,8 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get script => '腳本';
 	@override String get disablePagesScript => '停用頁面的 AiScript 腳本';
 	@override String get updateRemoteUser => '更新遠端使用者資訊';
+	@override String get unsetMfa => '解除雙重驗證';
+	@override String get unsetMfaConfirm => '要解除雙重驗證嗎？';
 	@override String get unsetUserAvatar => '移除使用者的大頭貼';
 	@override String get unsetUserAvatarConfirm => '確定要移除使用者的大頭貼嗎？';
 	@override String get unsetUserBanner => '移除使用者的橫幅圖像';
@@ -1521,6 +1523,8 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get emojiPaletteAlreadyAddedConfirm => '此表情符號在這個表情符號調色盤裡已經有了。確定要增加嗎？';
 	@override String get append => '加在最後';
 	@override String get prepend => '加在前面';
+	@override String get urlPreviewSensitiveList => '限制縮圖顯示的 URL';
+	@override String get urlPreviewSensitiveListDescription => '以空格指定為 AND，以換行指定為 OR。若以斜線（/）包圍則視為正規表達式。符合條件時，將不再顯示縮圖。';
 	@override late final Translations$misskey$imageEditing_$zh_TW imageEditing_ = Translations$misskey$imageEditing_$zh_TW.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_TW imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_TW.internal(_root);
 	@override late final Translations$misskey$compression_$zh_TW compression_ = Translations$misskey$compression_$zh_TW.internal(_root);
@@ -2130,6 +2134,15 @@ class Translations$misskey$sensitiveMediaDetection_$zh_TW extends Translations$m
 	@override String get setSensitiveFlagAutomaticallyDescription => '即使將此設定關閉，判定結果也會保留在內部。';
 	@override String get analyzeVideos => '啟用影片分析';
 	@override String get analyzeVideosDescription => '除了靜止影像以外，也分析影片。伺服器的負荷會稍微增加。';
+	@override String get externalServiceInfo => '敏感媒體的判定已分離至外部服務（sensitive-detector）。若要使用此功能，必須另外設定 Sidecar 服務，並設定下方的連接資訊。若未設定連接資訊，則不會執行判定（視為非敏感內容）。';
+	@override String get apiUrl => '判定服務的連接資訊 URL';
+	@override String get apiUrlDescription => 'sensitive-detector 服務的基礎網址（例如：http://localhost:3009）。若要連接位於私有網路上的服務，請在設定檔的 allowedPrivateNetworks 中允許對應的連接網路。若使用代理伺服器（Proxy），也請一併設定 proxyBypassHosts。若留白，則不會執行敏感內容判定。';
+	@override String get apiKey => 'API 金鑰';
+	@override String get apiKeyDescription => '若判定服務端已設定認證（Bearer Token），請輸入此資訊。若未設定，請保持空白。';
+	@override String get timeout => '連線逾時（微秒）';
+	@override String get timeoutDescription => '單次判定請求的逾時時間。';
+	@override String get maxImagesPerRequest => '每筆請求的最大圖片數量';
+	@override String get maxImagesPerRequestDescription => '當判定包含多個影格的內容（如影片等）時，為每筆請求所允許的單次最大圖片數量。超過此數量的部分將會分割並依序發送。請確保此數值不超過 sensitive-detector 端的 maxParts 設定（預設值：10）。若超過該數值，該區塊（Chunk）的所有項目將被視為非敏感內容。';
 }
 
 // Path: misskey.emailUnavailable_
@@ -2622,6 +2635,7 @@ class Translations$misskey$permissions_$zh_TW extends Translations$misskey$permi
 	@override String get readAdminShowModerationLog => '查看審查紀錄';
 	@override String get readAdminShowUser => '查看使用者的私密資訊';
 	@override String get writeAdminSuspendUser => '凍結使用者';
+	@override String get writeAdminUnsetMfa => '解除使用者的雙重驗證';
 	@override String get writeAdminUnsetUserAvatar => '刪除使用者的頭像';
 	@override String get writeAdminUnsetUserBanner => '刪除使用者的橫幅';
 	@override String get writeAdminUnsuspendUser => '解除凍結使用者';
@@ -3212,6 +3226,7 @@ class Translations$misskey$moderationLogTypes_$zh_TW extends Translations$misske
 	@override String get createAvatarDecoration => '建立頭像裝飾';
 	@override String get updateAvatarDecoration => '更新頭像裝飾';
 	@override String get deleteAvatarDecoration => '刪除頭像裝飾';
+	@override String get unsetMfa => '解除使用者的雙重驗證';
 	@override String get unsetUserAvatar => '移除使用者的大頭貼';
 	@override String get unsetUserBanner => '移除使用者的橫幅圖像';
 	@override String get createSystemWebhook => '建立 SystemWebhook';
