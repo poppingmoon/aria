@@ -420,6 +420,7 @@ class AsUiWidget extends ConsumerWidget {
           onChanged: onInput != null
               ? (value) => onInput.call(value: value)
               : null,
+          maxLines: 1,
         );
       case AsUiComponent_NumberInput(
         field0: AsUiNumberInput(
