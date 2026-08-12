@@ -369,7 +369,9 @@ class TimelineWidget extends HookConsumerWidget {
             Expanded(
               child: NotificationListener<ScrollNotification>(
                 onNotification: (notification) {
-                  if (alwaysShowHeader || isMenuExpanded.value) {
+                  if (alwaysShowHeader ||
+                      isMenuExpanded.value ||
+                      notification.metrics.axis == Axis.horizontal) {
                     return false;
                   }
                   switch (notification) {
