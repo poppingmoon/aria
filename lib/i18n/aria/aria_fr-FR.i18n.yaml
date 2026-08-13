@@ -79,6 +79,7 @@ mentionToRemoteWarning: "Cette note inclut des mentions d'utilisateur⸱ices dis
 mergeReactionsByName: "Fusionner les réactions avec le même nom"
 missingFileCommentWarning: "Le texte alternatif de ce fichier est manquant. Voulez-vous l'ajouter ?"
 moved: "Déplacé"
+muted: "Muet"
 mutedEmojis: "Émojis en sourdine"
 nFiles:
   one: "{n} fichier"
