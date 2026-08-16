@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 extension ScrollControllerExtension on ScrollController {
@@ -10,9 +8,9 @@ extension ScrollControllerExtension on ScrollController {
     final extentBefore = position.extentBefore;
     if (extentBefore == 0.0) return;
     await animateTo(
-      max(position.minScrollExtent, offset - 10000.0),
+      extentBefore < 10000.0 ? position.minScrollExtent : 1000.0,
       duration: duration,
-      curve: Curves.ease,
+      curve: Curves.easeOut,
     );
     jumpTo(position.minScrollExtent);
   }
