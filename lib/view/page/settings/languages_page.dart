@@ -26,7 +26,7 @@ class LanguagesPage extends ConsumerWidget {
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.uiLanguage)),
       body: ListTileTheme(
-        tileColor: colors.panel,
+        data: ListTileThemeData(tileColor: colors.panel),
         child: RadioGroup<AppLocale?>(
           groupValue: locale,
           onChanged: (value) {
@@ -45,14 +45,16 @@ class LanguagesPage extends ConsumerWidget {
                     margin: EdgeInsets.zero,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Mfm(
-                        account: Account.dummy(),
-                        text: t.misskey.i18nInfo(
-                          link:
-                              '[Crowdin](https://crowdin.com/project/misskey)',
-                        ),
-                        style: TextStyle(
-                          color: theme.colorScheme.onSecondaryContainer,
+                      child: ListTileTheme(
+                        child: Mfm(
+                          account: Account.dummy(),
+                          text: t.misskey.i18nInfo(
+                            link:
+                                '[Crowdin](https://crowdin.com/project/misskey)',
+                          ),
+                          style: TextStyle(
+                            color: theme.colorScheme.onSecondaryContainer,
+                          ),
                         ),
                       ),
                     ),
