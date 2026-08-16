@@ -395,7 +395,7 @@ class _UserHome extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  if (user case UserDetailed(:final memo?))
+                  if (user.memo case final memo?)
                     Container(
                       width: double.infinity,
                       color: colors.panel,
@@ -523,7 +523,7 @@ class _UserHome extends HookConsumerWidget {
                           1: FlexColumnWidth(7.0),
                         },
                         children: [
-                          if (user case UserDetailed(:final location?))
+                          if (user.location case final location?)
                             TableRow(
                               children: [
                                 Padding(
@@ -556,7 +556,7 @@ class _UserHome extends HookConsumerWidget {
                                 ),
                               ],
                             ),
-                          if (user case UserDetailed(birthday: final date?))
+                          if (user.birthday case final date?)
                             TableRow(
                               children: [
                                 Padding(
@@ -662,6 +662,7 @@ class _UserHome extends HookConsumerWidget {
                                         text: field.name,
                                         simple: true,
                                         emojis: user.emojis,
+                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ),
@@ -713,6 +714,7 @@ class _UserHome extends HookConsumerWidget {
                                           account: account,
                                           text: ':skeb: Skeb',
                                           simple: true,
+                                          textAlign: TextAlign.center,
                                         ),
                                       ),
                                     ),
@@ -831,7 +833,7 @@ class _UserHome extends HookConsumerWidget {
             ),
           ),
         ),
-        if (user case UserDetailed(:final pinnedNoteIds?))
+        if (user.pinnedNoteIds case final pinnedNoteIds?)
           SliverList.builder(
             itemBuilder: (context, index) => Center(
               child: Container(
