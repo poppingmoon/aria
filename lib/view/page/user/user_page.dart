@@ -66,82 +66,100 @@ class UserPage extends HookConsumerWidget {
       final birthday? => DateTime.tryParse(birthday),
       _ => null,
     };
+    final tabLength = userId != null
+        ? 3 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0)
+        : 1;
+    final tabIndex = useRef(0);
+    final controller = useTabController(
+      initialLength: tabLength,
+      initialIndex: switch (tabIndex.value) {
+        2 when isLocal => 3,
+        final tabIndex when tabIndex < tabLength => tabIndex,
+        _ => tabLength - 1,
+      },
+      keys: [tabLength],
+    );
+    useEffect(() {
+      void callback() {
+        tabIndex.value = controller.index;
+      }
+
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [controller]);
 
     return Stack(
       children: [
-        DefaultTabController(
-          length: userId != null
-              ? 3 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0)
-              : 1,
-          child: Scaffold(
-            appBar: AppBar(
-              title: user != null
-                  ? UsernameWidget(account: account, user: user)
-                  : null,
-              bottom: user != null
-                  ? TabBar(
-                      tabs: [
-                        Tab(text: t.misskey.overview),
-                        Tab(text: t.misskey.notes),
-                        if (isLocal) Tab(text: t.misskey.featured),
-                        Tab(text: t.misskey.files),
-                        if (isReactionsVisibile) Tab(text: t.misskey.reactions),
-                        if (isLocal) ...[
-                          Tab(text: t.misskey.clips),
-                          Tab(text: t.misskey.lists),
-                          Tab(text: t.misskey.pages),
-                          const Tab(text: 'Play'),
-                          Tab(text: t.misskey.gallery),
-                        ],
+        Scaffold(
+          appBar: AppBar(
+            title: user != null
+                ? UsernameWidget(account: account, user: user)
+                : null,
+            bottom: user != null
+                ? TabBar(
+                    tabs: [
+                      Tab(text: t.misskey.overview),
+                      Tab(text: t.misskey.notes),
+                      if (isLocal) Tab(text: t.misskey.featured),
+                      Tab(text: t.misskey.files),
+                      if (isReactionsVisibile) Tab(text: t.misskey.reactions),
+                      if (isLocal) ...[
+                        Tab(text: t.misskey.clips),
+                        Tab(text: t.misskey.lists),
+                        Tab(text: t.misskey.pages),
+                        const Tab(text: 'Play'),
+                        Tab(text: t.misskey.gallery),
                       ],
-                      isScrollable: isLocal,
-                      tabAlignment: isLocal ? TabAlignment.center : null,
-                    )
-                  : null,
-              actions: [
-                if (user is MeDetailed)
-                  IconButton(
-                    tooltip: t.misskey.qr,
-                    onPressed: () => context.push('/$account/qr'),
-                    icon: const Icon(Icons.qr_code_rounded),
-                  ),
-                if (userId != null)
-                  IconButton(
-                    tooltip: t.misskey.menu,
-                    onPressed: () => showUserSheet(
-                      context: context,
-                      account: account,
-                      userId: userId,
-                      disableHeader: true,
-                    ),
-                    icon: const Icon(Icons.more_vert),
-                  ),
-              ],
-            ),
-            body: TabBarView(
-              children: [
-                UserHome(
-                  account: account,
-                  userId: this.userId,
-                  username: username,
-                  host: host,
+                    ],
+                    controller: controller,
+                    isScrollable: isLocal,
+                    tabAlignment: isLocal ? TabAlignment.center : null,
+                  )
+                : null,
+            actions: [
+              if (user is MeDetailed)
+                IconButton(
+                  tooltip: t.misskey.qr,
+                  onPressed: () => context.push('/$account/qr'),
+                  icon: const Icon(Icons.qr_code_rounded),
                 ),
-                if (userId != null) ...[
-                  UserNotes(account: account, userId: userId),
-                  if (isLocal) UserFeatured(account: account, userId: userId),
-                  UserFiles(account: account, userId: userId),
-                  if (isReactionsVisibile)
-                    UserReactions(account: account, userId: userId),
-                  if (isLocal) ...[
-                    UserClips(account: account, userId: userId),
-                    UserLists(account: account, userId: userId),
-                    UserPages(account: account, userId: userId),
-                    UserPlays(account: account, userId: userId),
-                    UserGallery(account: account, userId: userId),
-                  ],
+              if (userId != null)
+                IconButton(
+                  tooltip: t.misskey.menu,
+                  onPressed: () => showUserSheet(
+                    context: context,
+                    account: account,
+                    userId: userId,
+                    disableHeader: true,
+                  ),
+                  icon: const Icon(Icons.more_vert),
+                ),
+            ],
+          ),
+          body: TabBarView(
+            controller: controller,
+            children: [
+              UserHome(
+                account: account,
+                userId: this.userId,
+                username: username,
+                host: host,
+              ),
+              if (userId != null) ...[
+                UserNotes(account: account, userId: userId),
+                if (isLocal) UserFeatured(account: account, userId: userId),
+                UserFiles(account: account, userId: userId),
+                if (isReactionsVisibile)
+                  UserReactions(account: account, userId: userId),
+                if (isLocal) ...[
+                  UserClips(account: account, userId: userId),
+                  UserLists(account: account, userId: userId),
+                  UserPages(account: account, userId: userId),
+                  UserPlays(account: account, userId: userId),
+                  UserGallery(account: account, userId: userId),
                 ],
               ],
-            ),
+            ],
           ),
         ),
         if ((birthday?.day == now.day && birthday?.month == now.month) ||
