@@ -130,11 +130,12 @@ class TimelineListView extends HookConsumerWidget {
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
+    final hasQueuedNotes = useRef(false);
     ref.listen(
       timelineNotesQueueNotifierProvider(
         tabSettings,
       ).select((notes) => notes.isNotEmpty),
-      (_, next) => hasUnread.value = next,
+      (_, next) => hasQueuedNotes.value = next,
     );
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
@@ -184,6 +185,7 @@ class TimelineListView extends HookConsumerWidget {
             keepAnimation.value = false;
           } else if (controller.position.extentBefore == 0.0) {
             keepAnimation.value = true;
+            hasUnread.value = hasQueuedNotes.value;
           } else if ((
                 keepAnimation.value,
                 scrollingFrom.value,
@@ -234,7 +236,7 @@ class TimelineListView extends HookConsumerWidget {
                 )
                 .play()
                 .ignore();
-            if (keepAnimation.value && !hasUnread.value) {
+            if (keepAnimation.value && !hasQueuedNotes.value) {
               ref
                   .read(
                     timelineNotesAfterNoteNotifierProvider(
@@ -263,6 +265,7 @@ class TimelineListView extends HookConsumerWidget {
                 });
               } else {
                 keepAnimation.value = false;
+                hasUnread.value = true;
               }
             } else {
               ref
@@ -271,6 +274,7 @@ class TimelineListView extends HookConsumerWidget {
                   )
                   .add(note);
               keepAnimation.value = false;
+              hasUnread.value = true;
             }
           }
         });
@@ -302,7 +306,7 @@ class TimelineListView extends HookConsumerWidget {
         bool isAtBottom = false;
         if (controller.position.extentBefore <
                 infiniteScrollExtentThreshold * 5 &&
-            hasUnread.value) {
+            hasQueuedNotes.value) {
           final notes = ref
               .read(timelineNotesQueueNotifierProvider(tabSettings).notifier)
               .popMany(100);
@@ -409,7 +413,7 @@ class TimelineListView extends HookConsumerWidget {
                     child: PaginationBottomWidget(
                       paginationState: nextNotes,
                       loadMore: () {
-                        if (hasUnread.value) {
+                        if (hasQueuedNotes.value) {
                           final notes = ref
                               .read(
                                 timelineNotesQueueNotifierProvider(
