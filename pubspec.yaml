@@ -31,7 +31,6 @@ dependencies:
   extended_image: ^10.1.0
   file: ^7.0.1
   file_picker: ^12.0.0-beta.7
-  flex_color_picker: ^3.8.0
   flutter:
     sdk: flutter
   flutter_apns_only:

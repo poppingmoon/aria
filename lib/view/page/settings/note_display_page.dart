@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -18,6 +17,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../dialog/color_picker_dialog.dart';
 import '../../dialog/font_picker_dialog.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
@@ -1350,19 +1350,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                         onTap: () async {
                           final result = await showColorPickerDialog(
                             context,
-                            settings.publicNoteBackgroundColor ??
-                                Colors.transparent,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
-                            enableOpacity: true,
+                            initialColor: settings.publicNoteBackgroundColor,
                           );
+                          if (result == null) return;
                           await ref
                               .read(generalSettingsNotifierProvider.notifier)
                               .setPublicNoteBackgroundColor(
-                                result != Colors.transparent ? result : null,
+                                result.a > 0.0 ? result : null,
                               );
                         },
                         shape: const RoundedRectangleBorder(
@@ -1392,19 +1386,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                         onTap: () async {
                           final result = await showColorPickerDialog(
                             context,
-                            settings.homeNoteBackgroundColor ??
-                                Colors.transparent,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
-                            enableOpacity: true,
+                            initialColor: settings.homeNoteBackgroundColor,
                           );
+                          if (result == null) return;
                           await ref
                               .read(generalSettingsNotifierProvider.notifier)
                               .setHomeNoteBackgroundColor(
-                                result != Colors.transparent ? result : null,
+                                result.a > 0.0 ? result : null,
                               );
                         },
                       ),
@@ -1429,19 +1417,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                         onTap: () async {
                           final result = await showColorPickerDialog(
                             context,
-                            settings.followersNoteBackgroundColor ??
-                                Colors.transparent,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
-                            enableOpacity: true,
+                            initialColor: settings.followersNoteBackgroundColor,
                           );
+                          if (result == null) return;
                           await ref
                               .read(generalSettingsNotifierProvider.notifier)
                               .setFollowersNoteBackgroundColor(
-                                result != Colors.transparent ? result : null,
+                                result.a > 0.0 ? result : null,
                               );
                         },
                       ),
@@ -1466,19 +1448,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                         onTap: () async {
                           final result = await showColorPickerDialog(
                             context,
-                            settings.specifiedNoteBackgroundColor ??
-                                Colors.transparent,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
-                            enableOpacity: true,
+                            initialColor: settings.specifiedNoteBackgroundColor,
                           );
+                          if (result == null) return;
                           await ref
                               .read(generalSettingsNotifierProvider.notifier)
                               .setSpecifiedNoteBackgroundColor(
-                                result != Colors.transparent ? result : null,
+                                result.a > 0.0 ? result : null,
                               );
                         },
                         shape: const RoundedRectangleBorder(

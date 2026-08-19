@@ -1567,7 +1567,7 @@ class _Mfm extends StatelessWidget {
           ),
         );
       case 'fg':
-        final color = safeParseColor(args['color']) ?? Colors.red;
+        final color = safeParseColor(args['color']) ?? const Color(0xffff0000);
         return TextSpan(
           children: _buildNodes(
             context,
@@ -1576,7 +1576,7 @@ class _Mfm extends StatelessWidget {
           ),
         );
       case 'bg':
-        final color = safeParseColor(args['color']) ?? Colors.red;
+        final color = safeParseColor(args['color']) ?? const Color(0xffff0000);
         return WidgetSpan(
           alignment: children.any(_containsNewLine)
               ? PlaceholderAlignment.bottom
