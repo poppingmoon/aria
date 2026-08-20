@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:collection/collection.dart';
-import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +20,7 @@ import '../../provider/search_custom_emojis_provider.dart';
 import '../../provider/search_unicode_emojis_provider.dart';
 import '../../util/pick_date_time.dart';
 import '../../util/punycode.dart';
+import '../dialog/color_picker_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import 'emoji_picker.dart';
 import 'emoji_widget.dart';
@@ -407,17 +407,11 @@ class MfmFnKeyboard extends HookConsumerWidget {
                       case 'fg' || 'bg':
                         final color = await showColorPickerDialog(
                           ref.context,
-                          Colors.red,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
+                          initialColor: const Color(0xffff0000),
                         );
-                        if (color != Colors.red) {
+                        if (color != null) {
                           controller.insert('.color=${color.hex} ');
                         }
-
                       case 'unixtime':
                         final date = await pickDateTime(ref.context);
                         if (date != null) {
@@ -470,16 +464,11 @@ class MfmFnKeyboard extends HookConsumerWidget {
                       switch ((fnName, e.key)) {
                         case (_, 'color'):
                           final color = await showColorPickerDialog(
-                            ref.context,
-                            Colors.red,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
+                            context,
+                            initialColor: const Color(0xffff0000),
                           );
-                          if (color != Colors.red) {
-                            controller.insert('=${color.hex}');
+                          if (color != null) {
+                            controller.insert('=${color.hex} ');
                           }
                         case ('border', 'style'):
                           final style = await showDialog<String>(
@@ -688,5 +677,25 @@ class MfmHashtagKeyboard extends HookConsumerWidget {
     }
 
     return fallbackBuilder?.call(context) ?? const SizedBox.shrink();
+  }
+}
+
+int _floatToInt4(double x) {
+  return (x * 15.0).round().clamp(0, 15);
+}
+
+extension on Color {
+  String get hex {
+    if (a > 31 / 32) {
+      final value = toARGB32() & 0x00ffffff;
+      return value.toRadixString(16).padLeft(6, '0');
+    } else {
+      final value =
+          _floatToInt4(r) << 12 |
+          _floatToInt4(g) << 8 |
+          _floatToInt4(b) << 4 |
+          _floatToInt4(a);
+      return value.toRadixString(16).padLeft(4, '0');
+    }
   }
 }

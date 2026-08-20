@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:extended_image/extended_image.dart';
-import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,6 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/layer.dart';
 import '../../provider/overlay_layers_notifier_provider.dart';
+import '../dialog/color_picker_dialog.dart';
 import 'reorderable_drag_start_listener_wrapper.dart';
 
 class LayersSheet extends ConsumerWidget {
@@ -265,14 +265,9 @@ class _LayerSheet extends HookConsumerWidget {
             onTap: () async {
               final result = await showColorPickerDialog(
                 context,
-                color ?? Colors.white,
-                pickersEnabled: {
-                  ColorPickerType.primary: false,
-                  ColorPickerType.accent: false,
-                  ColorPickerType.wheel: true,
-                },
-                enableOpacity: true,
+                initialColor: color,
               );
+              if (result == null) return;
               ref
                   .read(overlayLayersNotifierProvider.notifier)
                   .setColor(index, result);
@@ -294,14 +289,9 @@ class _LayerSheet extends HookConsumerWidget {
             onTap: () async {
               final result = await showColorPickerDialog(
                 context,
-                layer.backgroundColor ?? Colors.transparent,
-                pickersEnabled: {
-                  ColorPickerType.primary: false,
-                  ColorPickerType.accent: false,
-                  ColorPickerType.wheel: true,
-                },
-                enableOpacity: true,
+                initialColor: layer.backgroundColor,
               );
+              if (result == null) return;
               ref
                   .read(overlayLayersNotifierProvider.notifier)
                   .setBackgroundColor(index, result);
