@@ -4,8 +4,14 @@ analyzer:
   exclude:
     - "**.freezed.dart"
     - "**.g.dart"
+    - android/**
+    - build/**
+    - ios/**
     - lib/rust/**
-    - rust_builder/**
+    - linux/**
+    - macos/**
+    - web/**
+    - windows/**
   language:
     strict-casts: true
     strict-inference: true
