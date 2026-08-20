@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_off_icons/material_off_icons.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/user_extension.dart';

@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart' hide ImageIcon;
+import 'package:material_ui/material_ui.dart' hide ImageIcon;
 
 import '../../constant/tab_icon_data.dart';
 import '../../model/tab_icon.dart';

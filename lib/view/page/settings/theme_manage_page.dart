@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:json5/json5.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../constant/builtin_misskey_colors.g.dart';

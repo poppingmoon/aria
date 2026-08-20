@@ -13,12 +13,12 @@ import 'package:aria/view/dialog/reaction_confirmation_dialog.dart';
 import 'package:aria/view/widget/reaction_button.dart';
 import 'package:aria/view/widget/reaction_users_sheet.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/misc.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../test_util/dummy_note.dart';

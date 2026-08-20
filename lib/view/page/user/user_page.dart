@@ -2,14 +2,15 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_hooks/flutter_hooks.dart' hide useTabController;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../../hook/confetti_controller_hook.dart';
+import '../../../hook/tab_controller_hook.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/user_notifier_provider.dart';

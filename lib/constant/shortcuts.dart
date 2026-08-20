@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:material_ui/material_ui.dart';
 
 const darkModeActivator = SingleActivator(LogicalKeyboardKey.keyD);
 const postActivatorN = SingleActivator(LogicalKeyboardKey.keyN);

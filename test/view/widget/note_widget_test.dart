@@ -24,11 +24,11 @@ import 'package:aria/view/widget/renote_header.dart';
 import 'package:aria/view/widget/url_preview.dart';
 import 'package:aria/view/widget/user_avatar.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/misc.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../test_util/dummy_drive_file.dart';

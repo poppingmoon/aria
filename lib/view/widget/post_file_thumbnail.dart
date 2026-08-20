@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:animated_image/animated_image.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/post_file.dart';

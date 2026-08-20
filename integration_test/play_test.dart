@@ -12,10 +12,10 @@ import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:aria/provider/timeline_tabs_notifier_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../test/test_util/dummy_me_detailed.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class MediaIcon extends StatelessWidget {
   const MediaIcon({super.key, required this.mimeType, this.size, this.color});

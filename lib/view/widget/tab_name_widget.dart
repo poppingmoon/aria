@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../model/tab_settings.dart';
 import 'tab_type_widget.dart';

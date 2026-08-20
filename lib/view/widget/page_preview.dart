@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart' hide Page;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart' hide Page;
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../model/account.dart';

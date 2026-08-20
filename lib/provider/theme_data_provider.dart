@@ -1,10 +1,12 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../extension/color_scheme_extension.dart';
+import '../extension/text_theme_extension.dart';
 import 'dynamic_color_provider.dart';
 import 'general_settings_notifier_provider.dart';
 import 'misskey_colors_provider.dart';
@@ -21,7 +23,8 @@ ThemeData themeData(Ref ref, Brightness brightness) {
               (Brightness.dark, darkDynamicColorThemeId) =>
                 ref
                     .watch(corePaletteNotifierProvider)
-                    ?.toColorScheme(brightness: brightness),
+                    ?.toColorScheme(brightness: brightness)
+                    .toModern(),
               _ => null,
             }
           : null) ??
@@ -39,7 +42,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
   TextTheme? textTheme;
   if (fontFamily != null) {
     try {
-      textTheme = GoogleFonts.getTextTheme(fontFamily);
+      textTheme = GoogleFonts.getTextTheme(fontFamily).toModern();
     } catch (_) {}
   }
 

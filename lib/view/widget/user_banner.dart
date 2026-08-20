@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
+import 'package:material_ui/material_ui.dart' hide BoxDecoration, BoxShadow;
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/colors.dart';

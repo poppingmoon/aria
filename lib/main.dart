@@ -6,13 +6,12 @@ import 'dart:ui';
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_apns_only/flutter_apns_only.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -87,9 +86,8 @@ void main() async {
     if (defaultTargetPlatform
         case TargetPlatform.linux || TargetPlatform.windows) {
       final directory = await getApplicationSupportDirectory();
-      await File(
-        p.join(directory.path, 'shared_preferences.json'),
-      ).rename(p.join(directory.path, '_shared_preferences.json'));
+      await File(p.join(directory.path, 'shared_preferences.json'))
+          .rename(p.join(directory.path, '_shared_preferences.json'));
       prefs = await SharedPreferencesWithCache.create(
         cacheOptions: const SharedPreferencesWithCacheOptions(),
       );
@@ -172,9 +170,9 @@ class Aria extends HookConsumerWidget {
           Account account = Account.fromString(instance);
           final PushNotification notification;
           if (message.decrypted) {
-            final webPushMessage =
-                jsonDecode(utf8.decode(message.content))
-                    as Map<String, dynamic>;
+            final webPushMessage = jsonDecode(
+              utf8.decode(message.content),
+            ) as Map<String, dynamic>;
             notification = PushNotification.fromJson(webPushMessage);
           } else {
             final keySet = await ref.read(
@@ -189,9 +187,9 @@ class Aria extends HookConsumerWidget {
                   jsonDecode(utf8.decode(decrypted)) as Map<String, dynamic>;
               notification = PushNotification.fromJson(webPushMessage);
             } else {
-              final fcmMessage =
-                  jsonDecode(utf8.decode(message.content))
-                      as Map<String, dynamic>;
+              final fcmMessage = jsonDecode(
+                utf8.decode(message.content),
+              ) as Map<String, dynamic>;
               if (fcmMessage['body'] case final String body) {
                 fcmMessage['body'] = jsonDecode(body);
               }

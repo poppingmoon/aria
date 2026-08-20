@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 extension TextEditingControllerExtension on TextEditingController {
   void insert(String insertText, [String closeTag = '']) {
