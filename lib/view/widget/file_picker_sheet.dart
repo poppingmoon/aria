@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:file/file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,17 @@ class FilePickerSheet extends ConsumerWidget {
   final FileType? type;
   final bool allowMultiple;
 
+  Future<String?> _lookupMimeType(File file) async {
+    List<int>? headerBytes;
+    try {
+      final bytes = await file
+          .openRead(0, defaultMagicNumbersMaxLength)
+          .toList();
+      headerBytes = bytes.flattenedToList;
+    } catch (_) {}
+    return lookupMimeType(file.path, headerBytes: headerBytes);
+  }
+
   Future<List<File>> _collectFiles(
     FileSystem fileSystem,
     List<PlatformFile> files, {
@@ -45,11 +57,20 @@ class FilePickerSheet extends ConsumerWidget {
         if (fileSystem.isDirectorySync(path)) {
           await for (final entity in fileSystem.directory(path).list()) {
             if (entity is File) {
-              if (type == FileType.image) {
-                final type = lookupMimeType(entity.path);
-                if (!(type?.startsWith('image/') ?? false)) {
-                  continue;
-                }
+              switch (type) {
+                case FileType.image:
+                  final type = await _lookupMimeType(entity);
+                  if (type == null || !type.startsWith('image/')) {
+                    continue;
+                  }
+                case FileType.media:
+                  final type = await _lookupMimeType(entity);
+                  if (type == null ||
+                      !(type.startsWith('image/') ||
+                          type.startsWith('video/'))) {
+                    continue;
+                  }
+                default:
               }
               result.add(entity);
             }
@@ -81,6 +102,7 @@ class FilePickerSheet extends ConsumerWidget {
                       final files = await _collectFiles(
                         ref.read(fileSystemProvider),
                         platformFiles,
+                        type: FileType.media,
                       );
                       if (!context.mounted) return;
                       context.pop(files.map(LocalPostFile.fromFile).toList());
@@ -95,12 +117,14 @@ class FilePickerSheet extends ConsumerWidget {
                       final files = await _collectFiles(
                         ref.read(fileSystemProvider),
                         [result],
+                        type: FileType.media,
                       );
                       if (!context.mounted) return;
                       if (files.length >= 2) {
                         for (final file in files) {
-                          final type = lookupMimeType(file.path);
-                          if (type?.startsWith('image/') ?? false) {
+                          final type = await _lookupMimeType(file);
+                          if (!context.mounted) return;
+                          if (type != null && type.startsWith('image/')) {
                             context.pop(LocalPostFile.fromFile(file));
                             return;
                           }
