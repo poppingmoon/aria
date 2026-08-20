@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'layer.dart';
@@ -9,6 +9,7 @@ part of 'layer.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$ImageLayerCopyWithImpl<$Res>
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? data = null,Object? opacity = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
-  return _then(_self.copyWith(
+  return _then(ImageLayer(
 data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as Uint8List,opacity: null == opacity ? _self.opacity : opacity // ignore: cast_nullable_to_non_nullable
 as double,offset: null == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
@@ -335,7 +336,7 @@ class _$TextLayerCopyWithImpl<$Res>
 /// Create a copy of TextLayer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? color = freezed,Object? backgroundColor = freezed,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
-  return _then(_self.copyWith(
+  return _then(TextLayer(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,backgroundColor: freezed == backgroundColor ? _self.backgroundColor : backgroundColor // ignore: cast_nullable_to_non_nullable
@@ -610,7 +611,7 @@ class _$DrawLayerCopyWithImpl<$Res>
 /// Create a copy of DrawLayer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? offsets = null,Object? color = freezed,Object? strokeWidth = null,Object? offset = null,Object? scale = null,Object? angle = null,Object? flipX = null,}) {
-  return _then(_self.copyWith(
+  return _then(DrawLayer(
 offsets: null == offsets ? _self.offsets : offsets // ignore: cast_nullable_to_non_nullable
 as List<Offset?>,color: freezed == color ? _self.color : color // ignore: cast_nullable_to_non_nullable
 as Color?,strokeWidth: null == strokeWidth ? _self.strokeWidth : strokeWidth // ignore: cast_nullable_to_non_nullable
@@ -759,7 +760,7 @@ return $default(_that.offsets,_that.color,_that.strokeWidth,_that.offset,_that.s
 
 
 class _DrawLayer implements DrawLayer {
-  const _DrawLayer({final  List<Offset?> offsets = const [], this.color, this.strokeWidth = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false}): _offsets = offsets;
+  const _DrawLayer({ List<Offset?> offsets = const [], this.color, this.strokeWidth = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false}): _offsets = offsets;
   
 
  final  List<Offset?> _offsets;

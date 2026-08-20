@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'note_update_event.dart';
@@ -9,6 +9,7 @@ part of 'note_update_event.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -64,7 +65,7 @@ class _$ReactedCopyWithImpl<$Res>
 /// Create a copy of Reacted
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? reaction = null,Object? emoji = freezed,Object? userId = null,}) {
-  return _then(_self.copyWith(
+  return _then(Reacted(
 reaction: null == reaction ? _self.reaction : reaction // ignore: cast_nullable_to_non_nullable
 as String,emoji: freezed == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
 as ReactedEmoji?,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
@@ -352,7 +353,7 @@ class _$UnreactedCopyWithImpl<$Res>
 /// Create a copy of Unreacted
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? reaction = null,Object? userId = null,}) {
-  return _then(_self.copyWith(
+  return _then(Unreacted(
 reaction: null == reaction ? _self.reaction : reaction // ignore: cast_nullable_to_non_nullable
 as String,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
@@ -613,7 +614,7 @@ class _$DeletedCopyWithImpl<$Res>
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? deletedAt = null,}) {
-  return _then(_self.copyWith(
+  return _then(Deleted(
 deletedAt: null == deletedAt ? _self.deletedAt : deletedAt // ignore: cast_nullable_to_non_nullable
 as DateTime,
   ));
@@ -871,7 +872,7 @@ class _$PollVotedCopyWithImpl<$Res>
 /// Create a copy of PollVoted
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? choice = null,Object? userId = null,}) {
-  return _then(_self.copyWith(
+  return _then(PollVoted(
 choice: null == choice ? _self.choice : choice // ignore: cast_nullable_to_non_nullable
 as int,userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as String,
@@ -1132,7 +1133,7 @@ class _$UpdatedCopyWithImpl<$Res>
 /// Create a copy of Updated
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? cw = freezed,Object? text = freezed,Object? note = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Updated(
 cw: freezed == cw ? _self.cw : cw // ignore: cast_nullable_to_non_nullable
 as String?,text: freezed == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
@@ -1420,7 +1421,7 @@ class _$ReactedEmojiCopyWithImpl<$Res>
 /// Create a copy of ReactedEmoji
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? url = null,}) {
-  return _then(_self.copyWith(
+  return _then(ReactedEmoji(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String,

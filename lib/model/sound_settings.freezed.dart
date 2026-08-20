@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'sound_settings.dart';
@@ -9,6 +9,7 @@ part of 'sound_settings.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$SoundSettingsCopyWithImpl<$Res>
 /// Create a copy of SoundSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? notUseSound = null,Object? masterVolume = null,Object? sounds = null,}) {
-  return _then(_self.copyWith(
+  return _then(SoundSettings(
 notUseSound: null == notUseSound ? _self.notUseSound : notUseSound // ignore: cast_nullable_to_non_nullable
 as bool,masterVolume: null == masterVolume ? _self.masterVolume : masterVolume // ignore: cast_nullable_to_non_nullable
 as double,sounds: null == sounds ? _self.sounds : sounds // ignore: cast_nullable_to_non_nullable
@@ -211,7 +212,7 @@ return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
 @JsonSerializable()
 
 class _SoundSettings implements SoundSettings {
-  const _SoundSettings({this.notUseSound = true, this.masterVolume = defaultMasterVolume, final  Map<OperationType, SoundStore> sounds = defaultSounds}): _sounds = sounds;
+  const _SoundSettings({this.notUseSound = true, this.masterVolume = defaultMasterVolume,  Map<OperationType, SoundStore> sounds = defaultSounds}): _sounds = sounds;
   factory _SoundSettings.fromJson(Map<String, dynamic> json) => _$SoundSettingsFromJson(json);
 
 @override@JsonKey() final  bool notUseSound;
@@ -341,7 +342,7 @@ class _$SoundStoreCopyWithImpl<$Res>
 /// Create a copy of SoundStore
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,Object? volume = null,Object? vibrate = null,}) {
-  return _then(_self.copyWith(
+  return _then(SoundStore(
 type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as SoundType?,volume: null == volume ? _self.volume : volume // ignore: cast_nullable_to_non_nullable
 as double,vibrate: null == vibrate ? _self.vibrate : vibrate // ignore: cast_nullable_to_non_nullable

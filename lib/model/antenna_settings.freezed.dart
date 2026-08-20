@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'antenna_settings.dart';
@@ -9,6 +9,7 @@ part of 'antenna_settings.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -63,7 +64,7 @@ class _$AntennaSettingsCopyWithImpl<$Res>
 /// Create a copy of AntennaSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = freezed,Object? src = freezed,Object? userListId = freezed,Object? users = freezed,Object? withReplies = freezed,Object? keywords = freezed,Object? excludeKeywords = freezed,Object? localOnly = freezed,Object? caseSensitive = freezed,Object? withFile = freezed,Object? excludeBots = freezed,Object? excludeNotesInSensitiveChannel = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AntennaSettings(
 name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String?,src: freezed == src ? _self.src : src // ignore: cast_nullable_to_non_nullable
 as AntennaSource?,userListId: freezed == userListId ? _self.userListId : userListId // ignore: cast_nullable_to_non_nullable
@@ -217,7 +218,7 @@ return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withRepl
 
 
 class _AntennaSettings implements AntennaSettings {
-  const _AntennaSettings({this.name, this.src, this.userListId, final  List<String>? users, this.withReplies, final  List<List<String>>? keywords, final  List<List<String>>? excludeKeywords, this.localOnly, this.caseSensitive, this.withFile, this.excludeBots, this.excludeNotesInSensitiveChannel}): _users = users,_keywords = keywords,_excludeKeywords = excludeKeywords;
+  const _AntennaSettings({this.name, this.src, this.userListId,  List<String>? users, this.withReplies,  List<List<String>>? keywords,  List<List<String>>? excludeKeywords, this.localOnly, this.caseSensitive, this.withFile, this.excludeBots, this.excludeNotesInSensitiveChannel}): _users = users,_keywords = keywords,_excludeKeywords = excludeKeywords;
   
 
 @override final  String? name;
