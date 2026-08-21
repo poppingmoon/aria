@@ -783,6 +783,7 @@ void main() {
             account: account,
             noteId: note.id,
             generalSettings: const GeneralSettings(
+              noteTapAction: NoteActionType.none,
               noteDoubleTapAction: NoteActionType.reaction,
             ),
             overrides: [
@@ -791,7 +792,7 @@ void main() {
           );
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapMinTime);
-          await tester.tap(find.text('text'), warnIfMissed: false);
+          await tester.tap(find.text('text'));
           await tester.pumpAndSettle();
           expect(find.byType(EmojiPicker), findsNothing);
         },
