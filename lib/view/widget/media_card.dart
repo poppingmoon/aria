@@ -923,10 +923,8 @@ class _MediaCardSheet extends ConsumerWidget {
           title: Text(t.aria.openInBrowser),
           onTap: () => launchUrl(ref, Uri.parse(file.url)),
         ),
-        if (user case User(
-          :final username,
-          host: null,
-        ) when !account.isGuest && account.username == username)
+        if (user case User(:final username, host: null)
+            when !account.isGuest && account.username == username)
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(t.misskey.fileViewer_.title),

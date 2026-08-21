@@ -69,9 +69,8 @@ class ReactionConfirmationDialog extends ConsumerWidget {
           EmojiWidget(
             account: account,
             emoji: emoji,
-            style: DefaultTextStyle.of(
-              context,
-            ).style.apply(fontSizeFactor: 2.0),
+            style: DefaultTextStyle.of(context).style
+                .apply(fontSizeFactor: 2.0),
           ),
           Text(t.aria.reactionConfirm),
         ],

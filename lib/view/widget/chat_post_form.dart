@@ -96,9 +96,8 @@ class ChatPostForm extends HookConsumerWidget {
       duration: const Duration(milliseconds: 200),
       initialValue: text?.isNotEmpty ?? false ? 1.0 : 0.0,
     );
-    final animation = CurveTween(
-      curve: Curves.easeInOut,
-    ).animate(animationController);
+    final animation = CurveTween(curve: Curves.easeInOut)
+        .animate(animationController);
     ref.listen(
       sendChatMessageNotifierProvider(account, userId: userId, roomId: roomId),
       (_, text) {

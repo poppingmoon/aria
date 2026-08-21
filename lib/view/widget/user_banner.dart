@@ -73,9 +73,8 @@ class UserBanner extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: DefaultTextStyle(
-                      style: DefaultTextStyle.of(
-                        context,
-                      ).style.apply(fontSizeFactor: 0.85),
+                      style: DefaultTextStyle.of(context).style
+                          .apply(fontSizeFactor: 0.85),
                       child: Column(
                         children: [
                           if (isFollowed) Text(t.misskey.followsYou),

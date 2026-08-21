@@ -84,12 +84,15 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setBirthday(DateTime? birthday) async {
-    final response = await _misskey.apiService
-        .post<Map<String, dynamic>>('i/update', {
-          'birthday': birthday != null
-              ? birthday.toIso8601String().split('T')[0]
-              : null,
-        }, excludeRemoveNullPredicate: (_, _) => true);
+    final response = await _misskey.apiService.post<Map<String, dynamic>>(
+      'i/update',
+      {
+        'birthday': birthday != null
+            ? birthday.toIso8601String().split('T')[0]
+            : null,
+      },
+      excludeRemoveNullPredicate: (_, _) => true,
+    );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
 

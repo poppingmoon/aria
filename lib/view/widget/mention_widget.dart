@@ -62,9 +62,8 @@ class MentionWidget extends HookConsumerWidget {
     final color = (isMe ? colors.mentionMe : colors.mention).withValues(
       alpha: opacity,
     );
-    final style = DefaultTextStyle.of(
-      context,
-    ).style.apply(fontSizeFactor: scale, color: color);
+    final style = DefaultTextStyle.of(context).style
+        .apply(fontSizeFactor: scale, color: color);
 
     return ChipTheme(
       data: ChipThemeData.fromDefaults(

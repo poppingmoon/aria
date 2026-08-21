@@ -146,9 +146,8 @@ class GalleryEditPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: t.misskey.save,
-        backgroundColor: Theme.of(
-          context,
-        ).colorScheme.primary.withValues(alpha: canSave ? 1.0 : 0.5),
+        backgroundColor: Theme.of(context).colorScheme.primary
+            .withValues(alpha: canSave ? 1.0 : 0.5),
         disabledElevation: 0.0,
         onPressed: canSave
             ? () async {

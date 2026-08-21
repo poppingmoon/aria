@@ -22,9 +22,8 @@ void main() {
         metaNotifierProvider(account.host).overrideWithBuild(
           (_, _) => const MetaResponse(mediaProxy: 'https://proxy.misskey.tld'),
         ),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
       ],
     );
     expect(

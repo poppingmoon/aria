@@ -74,14 +74,13 @@ class ErrorMessage extends HookConsumerWidget {
         if (response?.headers['Content-Type']?.firstOrNull == 'text/html')
           if (response?.data case final String text?)
             if ((parse(text).body
-                      ?..querySelectorAll(
-                        'noscript, script, style',
-                      ).forEach((e) => e.remove()))
+                      ?..querySelectorAll('noscript, script, style')
+                          .forEach((e) => e.remove()))
                     ?.text
                 case final text?)
-              ...LineSplitter.split(
-                text,
-              ).map((line) => line.trim()).where((line) => line.isNotEmpty),
+              ...LineSplitter.split(text)
+                  .map((line) => line.trim())
+                  .where((line) => line.isNotEmpty),
         ?error,
       ].join('\n'),
       _ => error.toString(),
@@ -144,9 +143,8 @@ class ErrorMessage extends HookConsumerWidget {
                   : Text(
                       t.misskey.nothing,
                       style: TextStyle(
-                        color: DefaultTextStyle.of(
-                          context,
-                        ).style.color?.withValues(alpha: 0.5),
+                        color: DefaultTextStyle.of(context).style.color
+                            ?.withValues(alpha: 0.5),
                       ),
                     ),
             ),

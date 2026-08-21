@@ -26,9 +26,8 @@ Duration? getRetryDelay(
 Duration? _getRetryDelay(int retryCount, Object error, Duration minDelay) {
   if (error case MisskeyException(code: 'RATE_LIMIT_EXCEEDED')) {
     if (error.info case {'resetMs': final int resetMs}) {
-      return DateTime.fromMillisecondsSinceEpoch(
-        resetMs,
-      ).difference(DateTime.now());
+      return DateTime.fromMillisecondsSinceEpoch(resetMs)
+          .difference(DateTime.now());
     }
     return _exponentialBackoff(retryCount, minDelay);
   } else if (error case DioException(:final response?)) {

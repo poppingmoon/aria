@@ -372,9 +372,8 @@ class EmojiPicker extends HookConsumerWidget {
                         remove: () {
                           ref
                               .read(
-                                recentlyUsedEmojisNotifierProvider(
-                                  account,
-                                ).notifier,
+                                recentlyUsedEmojisNotifierProvider(account)
+                                    .notifier,
                               )
                               .remove(index);
                           context.pop();
@@ -401,9 +400,8 @@ class EmojiPicker extends HookConsumerWidget {
                         remove: () {
                           ref
                               .read(
-                                recentlyUsedEmojisNotifierProvider(
-                                  account,
-                                ).notifier,
+                                recentlyUsedEmojisNotifierProvider(account)
+                                    .notifier,
                               )
                               .remove(index);
                           context.pop();

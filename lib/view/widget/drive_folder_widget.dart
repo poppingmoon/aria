@@ -25,9 +25,8 @@ class DriveFolderWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final uploadFolder = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.uploadFolder),
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.uploadFolder),
     );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

@@ -33,15 +33,13 @@ void main() {
         overrides: [
           accountsNotifierProvider.overrideWithValue([account]),
           emojisNotifierProvider.overrideWithBuild((_, _) => {}),
-          endpointsNotifierProvider(
-            account.host,
-          ).overrideWithBuild((_, _) => []),
+          endpointsNotifierProvider(account.host)
+              .overrideWithBuild((_, _) => []),
           generalSettingsNotifierProvider.overrideWithValue(
             const GeneralSettings(),
           ),
-          iNotifierProvider(
-            account,
-          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          iNotifierProvider(account)
+              .overrideWithBuild((_, _) => dummyMeDetailed),
           playNotifierProvider(account, 'testplay').overrideWithBuild(
             (_, _) => Flash(
               id: 'testplay',
@@ -73,9 +71,8 @@ Ui:render([
               user: dummyUserLite,
             ),
           ),
-          serverUrlNotifierProvider(
-            account.host,
-          ).overrideWithValue(Uri.https(account.host)),
+          serverUrlNotifierProvider(account.host)
+              .overrideWithValue(Uri.https(account.host)),
           sharedPreferencesProvider.overrideWithValue(
             FakeSharedPreferences({}),
           ),
@@ -123,15 +120,13 @@ Ui:render([
         overrides: [
           accountsNotifierProvider.overrideWithValue([account]),
           emojisNotifierProvider.overrideWithBuild((_, _) => {}),
-          endpointsNotifierProvider(
-            account.host,
-          ).overrideWithBuild((_, _) => []),
+          endpointsNotifierProvider(account.host)
+              .overrideWithBuild((_, _) => []),
           generalSettingsNotifierProvider.overrideWithValue(
             const GeneralSettings(),
           ),
-          iNotifierProvider(
-            account,
-          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          iNotifierProvider(account)
+              .overrideWithBuild((_, _) => dummyMeDetailed),
           playNotifierProvider(account, 'testplay').overrideWithBuild(
             (_, _) => Flash(
               id: 'testplay',
@@ -148,9 +143,8 @@ Ui:render([Ui:C:text({text: Core:ai}) Ui:C:text({text: Core:ai})])
               user: dummyUserLite,
             ),
           ),
-          serverUrlNotifierProvider(
-            account.host,
-          ).overrideWithValue(Uri.https(account.host)),
+          serverUrlNotifierProvider(account.host)
+              .overrideWithValue(Uri.https(account.host)),
           sharedPreferencesProvider.overrideWithValue(
             FakeSharedPreferences({}),
           ),
@@ -193,15 +187,13 @@ Ui:render([Ui:C:text({text: Core:ai}) Ui:C:text({text: Core:ai})])
         overrides: [
           accountsNotifierProvider.overrideWithValue([account]),
           emojisNotifierProvider.overrideWithBuild((_, _) => {}),
-          endpointsNotifierProvider(
-            account.host,
-          ).overrideWithBuild((_, _) => []),
+          endpointsNotifierProvider(account.host)
+              .overrideWithBuild((_, _) => []),
           generalSettingsNotifierProvider.overrideWithValue(
             const GeneralSettings(),
           ),
-          iNotifierProvider(
-            account,
-          ).overrideWithBuild((_, _) => dummyMeDetailed),
+          iNotifierProvider(account)
+              .overrideWithBuild((_, _) => dummyMeDetailed),
           playNotifierProvider(account, 'testplay').overrideWithBuild(
             (_, _) => Flash(
               id: 'testplay',
@@ -219,9 +211,8 @@ Ui:render([Ui:C:text({text: `https://{host}/@{username}`})])
               user: dummyUserLite,
             ),
           ),
-          serverUrlNotifierProvider(
-            account.host,
-          ).overrideWithValue(Uri.https(account.host)),
+          serverUrlNotifierProvider(account.host)
+              .overrideWithValue(Uri.https(account.host)),
           sharedPreferencesProvider.overrideWithValue(
             FakeSharedPreferences({}),
           ),

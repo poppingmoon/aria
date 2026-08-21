@@ -38,9 +38,8 @@ class UserReactions extends ConsumerWidget {
                 EmojiWidget(
                   account: account,
                   emoji: reaction.type,
-                  style: DefaultTextStyle.of(
-                    context,
-                  ).style.apply(fontSizeFactor: 1.5),
+                  style: DefaultTextStyle.of(context).style
+                      .apply(fontSizeFactor: 1.5),
                   emojis: reaction.note.reactionEmojis,
                   onTap: () => showModalBottomSheet<void>(
                     context: context,

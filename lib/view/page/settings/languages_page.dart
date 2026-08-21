@@ -49,8 +49,7 @@ class LanguagesPage extends ConsumerWidget {
                         child: Mfm(
                           account: Account.dummy(),
                           text: t.misskey.i18nInfo(
-                            link:
-                                '[Crowdin](https://crowdin.com/project/misskey)',
+                            link: '[Crowdin](https://crowdin.com/project/misskey)',
                           ),
                           style: TextStyle(
                             color: theme.colorScheme.onSecondaryContainer,

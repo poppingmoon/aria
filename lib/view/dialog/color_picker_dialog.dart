@@ -54,9 +54,8 @@ class ColorPickerDialog extends HookWidget {
     final overlayAnimationController = useAnimationController(
       duration: kRadialReactionDuration,
     );
-    final overlayAnimation = CurveTween(
-      curve: Curves.fastOutSlowIn,
-    ).animate(overlayAnimationController);
+    final overlayAnimation = CurveTween(curve: Curves.fastOutSlowIn)
+        .animate(overlayAnimationController);
     final cursor = useState(MouseCursor.defer);
     final theme = Theme.of(context);
 

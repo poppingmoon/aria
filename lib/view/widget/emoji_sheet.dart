@@ -74,9 +74,8 @@ class EmojiSheet extends ConsumerWidget {
       ).select((emojis) => emojis.contains(emoji)),
     );
     final isPinned = ref.watch(
-      pinnedEmojisNotifierProvider(
-        account,
-      ).select((emojis) => emojis.contains(emoji)),
+      pinnedEmojisNotifierProvider(account)
+          .select((emojis) => emojis.contains(emoji)),
     );
     final isMuted = ref
         .watch(mutedEmojisNotifierProvider(account))
@@ -138,9 +137,8 @@ class EmojiSheet extends ConsumerWidget {
                 if (!context.mounted) return;
                 ref
                     .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
+                      misskeySfxNotifierProvider(OperationType.reaction)
+                          .notifier,
                     )
                     .play()
                     .ignore();
@@ -162,9 +160,8 @@ class EmojiSheet extends ConsumerWidget {
                       EmojiWidget(
                         account: account,
                         emoji: localEmoji,
-                        style: DefaultTextStyle.of(
-                          context,
-                        ).style.apply(fontSizeFactor: 2.0),
+                        style: DefaultTextStyle.of(context).style
+                            .apply(fontSizeFactor: 2.0),
                       ),
                     ],
                   ),

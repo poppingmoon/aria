@@ -107,9 +107,8 @@ class UrlPreview extends HookConsumerWidget {
                     .toLowerCase() ||
             (!account.isGuest &&
                 ref.watch(
-                      metaNotifierProvider(
-                        account.host,
-                      ).select((meta) => meta.value?.federation),
+                      metaNotifierProvider(account.host)
+                          .select((meta) => meta.value?.federation),
                     ) !=
                     MetaFederation.none));
     final tweetId = useMemoized(

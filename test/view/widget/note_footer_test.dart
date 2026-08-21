@@ -77,9 +77,8 @@ Future<void> setupWidget(
             account,
             renote.id,
           ).overrideWithBuild((_, _) => renote),
-        postNotifierProvider(
-          account,
-        ).overrideWithBuild((_, _) => dummyNoteDraft),
+        postNotifierProvider(account)
+            .overrideWithBuild((_, _) => dummyNoteDraft),
         sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
         ...overrides,
       ],

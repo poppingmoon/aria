@@ -143,9 +143,9 @@ class AccountSettingsNavigation extends ConsumerWidget {
                             destination == AccountSettingsDestination.signOut
                             ? Theme.of(context).colorScheme.error
                             : null,
-                        disabledForegroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary,
+                        disabledForegroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary,
                         minimumSize: const Size(48.0, 48.0),
                       ),
                     ),

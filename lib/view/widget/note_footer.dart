@@ -565,9 +565,8 @@ class _AddReactionButton extends ConsumerWidget {
                   if (!context.mounted) return;
                   ref
                       .read(
-                        misskeySfxNotifierProvider(
-                          OperationType.reaction,
-                        ).notifier,
+                        misskeySfxNotifierProvider(OperationType.reaction)
+                            .notifier,
                       )
                       .play()
                       .ignore();

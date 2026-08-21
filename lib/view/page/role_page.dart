@@ -88,18 +88,18 @@ class RolePage extends ConsumerWidget {
                                       ) =>
                                         Icon(
                                           Symbols.crown,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           size: 28.0,
                                           fill: 1.0,
                                         ),
                                       RolesListResponse(isModerator: true) =>
                                         Icon(
                                           Icons.shield,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           size: 28.0,
                                         ),
                                       _ => Icon(

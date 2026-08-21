@@ -47,11 +47,9 @@ void main() {
     (name) => compileTheme(
       MisskeyTheme.fromJson(
         json5Decode(
-              File(
-                'misskey/packages/frontend-shared/themes/$name.json5',
-              ).readAsStringSync(),
-            )
-            as Map<String, dynamic>,
+          File('misskey/packages/frontend-shared/themes/$name.json5')
+              .readAsStringSync(),
+        ) as Map<String, dynamic>,
       ),
     ),
   );

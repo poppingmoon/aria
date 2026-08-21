@@ -314,9 +314,9 @@ class ImportExportPage extends ConsumerWidget {
                             .getSingleFile(latest.url),
                       );
                       try {
-                        final json =
-                            jsonDecode(await file!.readAsString())
-                                as Map<String, dynamic>;
+                        final json = jsonDecode(
+                          await file!.readAsString(),
+                        ) as Map<String, dynamic>;
                         final backup = AriaBackup.fromJson(json);
                         if (!context.mounted) return;
                         final confirmed = await confirm(

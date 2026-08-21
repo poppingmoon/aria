@@ -249,9 +249,8 @@ class _ChatMessageSheet extends ConsumerWidget {
                 context.pop();
                 ref
                     .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
+                      misskeySfxNotifierProvider(OperationType.reaction)
+                          .notifier,
                     )
                     .play()
                     .ignore();
@@ -394,9 +393,8 @@ class _ReactionButton extends ConsumerWidget {
         : reaction.user?.id == i?.id;
     final user = reaction.user ?? (isMyReaction ? i : this.user);
     final theme = Theme.of(context);
-    final style = DefaultTextStyle.of(
-      context,
-    ).style.apply(fontSizeFactor: scale);
+    final style = DefaultTextStyle.of(context).style
+        .apply(fontSizeFactor: scale);
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return Tooltip(

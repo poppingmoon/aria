@@ -13,9 +13,8 @@ class RecentlyUsedUsersNotifier extends _$RecentlyUsedUsersNotifier {
   @override
   Future<List<UserDetailed>> build(Account account) async {
     final userIds = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.recentlyUsedUsers),
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.recentlyUsedUsers),
     );
     if (userIds.isEmpty) {
       return [];

@@ -104,9 +104,8 @@ class UserFiles extends HookConsumerWidget {
                         paginationState: notes,
                         loadMore: () => ref
                             .read(
-                              timelineNotesNotifierProvider(
-                                tabSettings,
-                              ).notifier,
+                              timelineNotesNotifierProvider(tabSettings)
+                                  .notifier,
                             )
                             .loadMore(skipError: true),
                       ),

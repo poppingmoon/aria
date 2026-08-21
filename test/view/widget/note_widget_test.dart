@@ -53,19 +53,16 @@ Future<void> setupWidget(
     ProviderScope(
       overrides: [
         accountsNotifierProvider.overrideWithValue([account]),
-        accountSettingsNotifierProvider(
-          account,
-        ).overrideWithValue(const AccountSettings()),
+        accountSettingsNotifierProvider(account)
+            .overrideWithValue(const AccountSettings()),
         generalSettingsNotifierProvider.overrideWithValue(generalSettings),
         iNotifierProvider(account).overrideWithBuild(
           (_, _) => i ?? dummyMeDetailed.copyWith(id: 'testuser'),
         ),
-        metaNotifierProvider(
-          account.host,
-        ).overrideWithBuild((_, _) => const MetaResponse()),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        metaNotifierProvider(account.host)
+            .overrideWithBuild((_, _) => const MetaResponse()),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
         ...overrides,
       ],
       child: MaterialApp.router(

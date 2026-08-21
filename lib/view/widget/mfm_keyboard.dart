@@ -257,9 +257,8 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
           selectionIndex - (match[0]?.length ?? 0),
           controller.text.length,
         );
-        isAfterCloseTag.value = RegExp(
-          r':\w+$',
-        ).hasMatch(controller.text.substring(0, tagIndex));
+        isAfterCloseTag.value = RegExp(r':\w+$')
+            .hasMatch(controller.text.substring(0, tagIndex));
       }
 
       callback();
@@ -540,9 +539,8 @@ class MfmMentionKeyboard extends HookConsumerWidget {
           0,
           selectionIndex,
         );
-        final match = RegExp(
-          r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$',
-        ).firstMatch(textBeforeSelection);
+        final match = RegExp(r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$')
+            .firstMatch(textBeforeSelection);
         final q = match?[0]?.substring(1) ?? '';
         query.value = q;
         final first = match?[2];
@@ -655,9 +653,8 @@ class MfmHashtagKeyboard extends HookConsumerWidget {
       return () => controller.removeListener(callback);
     }, [account, controller]);
     final history = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.hashtags),
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.hashtags),
     );
 
     if (query.value.isEmpty ? history : hashtags.value case final hashtags

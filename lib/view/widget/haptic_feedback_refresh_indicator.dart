@@ -72,9 +72,8 @@ class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
                           1.0)) {
                     ref
                         .read(
-                          misskeySfxNotifierProvider(
-                            OperationType.reloadHold,
-                          ).notifier,
+                          misskeySfxNotifierProvider(OperationType.reloadHold)
+                              .notifier,
                         )
                         .play()
                         .ignore();

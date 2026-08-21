@@ -37,16 +37,14 @@ Future<void> setupWidget(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
-        accountSettingsNotifierProvider(
-          account,
-        ).overrideWithValue(const AccountSettings()),
+        accountSettingsNotifierProvider(account)
+            .overrideWithValue(const AccountSettings()),
         generalSettingsNotifierProvider.overrideWithValue(generalSettings),
         misskeyProvider(account).overrideWithValue(
           Misskey(serverUrl: Uri.https(account.host), dio: dio),
         ),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
         ...overrides,
       ],
       child: MaterialApp.router(

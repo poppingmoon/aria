@@ -34,9 +34,8 @@ class AcctWidget extends HookWidget {
             TextSpan(
               text: '@$host',
               style: TextStyle(
-                color: DefaultTextStyle.of(
-                  context,
-                ).style.color?.withValues(alpha: 0.5),
+                color: DefaultTextStyle.of(context).style.color
+                    ?.withValues(alpha: 0.5),
               ),
             ),
         ],

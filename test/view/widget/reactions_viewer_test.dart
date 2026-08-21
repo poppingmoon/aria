@@ -29,9 +29,8 @@ Future<void> setupWidget(
           account,
           note.id,
         ).overrideWithBuild((_, _) => note),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
       ],
       child: MaterialApp(
         home: ReactionsViewer(

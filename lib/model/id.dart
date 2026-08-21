@@ -115,9 +115,8 @@ class Id {
         final randomStr = random.padLeft(12, '0');
         return 'g$timeStr$randomStr';
       case IdGenMethod.ulid:
-        final timeStr = _toCrockfordsBase32(
-          BigInt.from(epochMillis),
-        ).padLeft(10, '0');
+        final timeStr = _toCrockfordsBase32(BigInt.from(epochMillis))
+            .padLeft(10, '0');
         final randomStr = random.padLeft(16, '0');
         return '$timeStr$randomStr';
       case IdGenMethod.objectid:

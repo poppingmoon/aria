@@ -145,9 +145,8 @@ class _UserHome extends HookConsumerWidget {
     final birthday = switch (user.birthday) {
       final birthday? => switch (DateTime.tryParse(birthday)) {
         final date? when DateFormat('yyyy-MM-dd').format(date) == birthday =>
-          DateFormat.yMd(
-            Localizations.localeOf(context).toLanguageTag(),
-          ).format(date),
+          DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
+              .format(date),
         _ => birthday.replaceAll('-', '/'),
       },
       _ => null,
@@ -231,9 +230,8 @@ class _UserHome extends HookConsumerWidget {
                         TextSpan(
                           text: '@$host',
                           style: TextStyle(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.5),
+                            color: Theme.of(context).colorScheme.onSurface
+                                .withValues(alpha: 0.5),
                           ),
                         ),
                         if (defaultTargetPlatform != TargetPlatform.linux)
@@ -457,9 +455,8 @@ class _UserHome extends HookConsumerWidget {
                           : Text(
                               t.misskey.noAccountDescription,
                               style: TextStyle(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurface.withValues(alpha: 0.8),
+                                color: Theme.of(context).colorScheme.onSurface
+                                    .withValues(alpha: 0.8),
                               ),
                               textAlign: TextAlign.center,
                             ),

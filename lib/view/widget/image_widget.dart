@@ -246,9 +246,8 @@ class _FadeStack extends HookWidget {
         if (!animationStatus.value.isCompleted)
           FadeTransition(
             opacity: Tween(begin: 1.0, end: 0.0).animate(
-              CurveTween(
-                curve: const Interval(0.0, 0.5, curve: Curves.easeOut),
-              ).animate(controller),
+              CurveTween(curve: const Interval(0.0, 0.5, curve: Curves.easeOut))
+                  .animate(controller),
             ),
             child: placeholderBuilder(context),
           ),

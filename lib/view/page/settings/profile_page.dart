@@ -111,9 +111,8 @@ class ProfilePage extends HookConsumerWidget {
       ),
     );
     final folderId = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.uploadFolder),
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.uploadFolder),
     );
     final nameController = useTextEditingController(text: i.value?.name);
     final descriptionController = useTextEditingController(

@@ -142,9 +142,8 @@ class PlayWidget extends HookConsumerWidget {
                                   onPressed: () {
                                     ref
                                         .read(
-                                          postNotifierProvider(
-                                            account,
-                                          ).notifier,
+                                          postNotifierProvider(account)
+                                              .notifier,
                                         )
                                         .setText('${play.title} $url');
                                     context.push('/$account/post');

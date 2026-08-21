@@ -289,9 +289,8 @@ class PostForm extends HookConsumerWidget {
       useMemoized(() => draft.hashtag?.isNotEmpty ?? false),
     );
     final postFormHashtags = ref.watch(
-      accountSettingsNotifierProvider(
-        account.value,
-      ).select((settings) => settings.postFormHashtags),
+      accountSettingsNotifierProvider(account.value)
+          .select((settings) => settings.postFormHashtags),
     );
     final cwController =
         this.cwController ?? useTextEditingController(text: draft.cw);
@@ -624,9 +623,8 @@ class PostForm extends HookConsumerWidget {
                         onPressed: canChangeChannel
                             ? () => ref
                                   .read(
-                                    postNotifierProvider(
-                                      account.value,
-                                    ).notifier,
+                                    postNotifierProvider(account.value)
+                                        .notifier,
                                   )
                                   .clearChannel()
                             : null,
@@ -730,9 +728,8 @@ class PostForm extends HookConsumerWidget {
                           onDeleted: noteId == null
                               ? () => ref
                                     .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
+                                      postNotifierProvider(account.value)
+                                          .notifier,
                                     )
                                     .removeVisibleUser(user.id)
                               : null,
@@ -751,9 +748,8 @@ class PostForm extends HookConsumerWidget {
                           onDeleted: noteId == null
                               ? () => ref
                                     .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
+                                      postNotifierProvider(account.value)
+                                          .notifier,
                                     )
                                     .removeVisibleUser(userId)
                               : null,
@@ -830,9 +826,8 @@ class PostForm extends HookConsumerWidget {
                                 };
                                 ref
                                     .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
+                                      postNotifierProvider(account.value)
+                                          .notifier,
                                     )
                                     .addVisibleUsers(users);
                               }
@@ -859,9 +854,8 @@ class PostForm extends HookConsumerWidget {
                           onPressed: noteId == null
                               ? () => ref
                                     .read(
-                                      postNotifierProvider(
-                                        account.value,
-                                      ).notifier,
+                                      postNotifierProvider(account.value)
+                                          .notifier,
                                     )
                                     .setLocalOnly(false)
                               : null,
@@ -961,9 +955,8 @@ class PostForm extends HookConsumerWidget {
                               );
                               if (data case ClipboardData(:final text?)) {
                                 if (Uri.tryParse(text) case final url?
-                                    when RegExp(
-                                      r'^https?$',
-                                    ).hasMatch(url.scheme)) {
+                                    when RegExp(r'^https?$')
+                                        .hasMatch(url.scheme)) {
                                   if (!controller.selection.isCollapsed) {
                                     controller.insert('[', ']()');
                                     controller.selection =
@@ -1683,9 +1676,8 @@ class _PostFormFooter extends HookConsumerWidget {
                           if (useHashtag.value) {
                             ref
                                 .read(
-                                  accountSettingsNotifierProvider(
-                                    account,
-                                  ).notifier,
+                                  accountSettingsNotifierProvider(account)
+                                      .notifier,
                                 )
                                 .setPostFormHashtags(
                                   hashtagController.text

@@ -50,9 +50,8 @@ class QrReadPage extends HookConsumerWidget {
     final scrollController = useScrollController();
     final capture = useState<BarcodeCapture?>(null);
     ref.listen(
-      qrReadHistoryNotifierProvider(
-        account,
-      ).selectAsync((history) => history.firstOrNull),
+      qrReadHistoryNotifierProvider(account)
+          .selectAsync((history) => history.firstOrNull),
       (prev, next) {
         if (prev != next) {
           if (enableHapticFeedback) {

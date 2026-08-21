@@ -147,9 +147,8 @@ class Code extends HookConsumerWidget {
             child: IconButton(
               tooltip: t.misskey.copy,
               style: IconButton.styleFrom(
-                foregroundColor: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.5),
+                foregroundColor: Theme.of(context).colorScheme.onSurface
+                    .withValues(alpha: 0.5),
                 minimumSize: Size.zero,
                 iconSize: DefaultTextStyle.of(context).style.lineHeight,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,

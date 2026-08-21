@@ -527,9 +527,8 @@ class _ImagePage extends HookConsumerWidget {
           },
         ),
         floatingActionButton: FloatingActionButton.small(
-          backgroundColor: Theme.of(
-            context,
-          ).colorScheme.primary.withValues(alpha: 0.8),
+          backgroundColor: Theme.of(context).colorScheme.primary
+              .withValues(alpha: 0.8),
           onPressed: () => showModalBottomSheet<void>(
             context: context,
             builder: (context) => LayersSheet(

@@ -97,9 +97,8 @@ class TagNotes extends HookConsumerWidget {
                       if (date != null) {
                         await ref
                             .read(
-                              timelineCenterNotifierProvider(
-                                tabSettings,
-                              ).notifier,
+                              timelineCenterNotifierProvider(tabSettings)
+                                  .notifier,
                             )
                             .setCenterFromDate(date);
                       }

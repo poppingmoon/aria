@@ -55,9 +55,8 @@ class SearchPage extends HookConsumerWidget {
     final opacityController = useAnimationController(
       duration: const Duration(milliseconds: 200),
     );
-    final opacity = CurveTween(
-      curve: Curves.easeInOut,
-    ).animate(opacityController);
+    final opacity = CurveTween(curve: Curves.easeInOut)
+        .animate(opacityController);
     useEffect(() {
       void controllerCallback() {
         text.value = controller.text;

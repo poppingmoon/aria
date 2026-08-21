@@ -71,9 +71,8 @@ class ReactionButton extends ConsumerWidget {
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
-    final style = DefaultTextStyle.of(
-      context,
-    ).style.apply(fontSizeFactor: scale);
+    final style = DefaultTextStyle.of(context).style
+        .apply(fontSizeFactor: scale);
 
     return ElevatedButton(
       onPressed: canReact
@@ -96,9 +95,8 @@ class ReactionButton extends ConsumerWidget {
                 if (!context.mounted) return;
                 ref
                     .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
+                      misskeySfxNotifierProvider(OperationType.reaction)
+                          .notifier,
                     )
                     .play()
                     .ignore();
@@ -134,9 +132,8 @@ class ReactionButton extends ConsumerWidget {
                       EmojiWidget(
                         account: account,
                         emoji: localEmoji,
-                        style: DefaultTextStyle.of(
-                          context,
-                        ).style.apply(fontSizeFactor: 2.0),
+                        style: DefaultTextStyle.of(context).style
+                            .apply(fontSizeFactor: 2.0),
                       ),
                     ],
                   ),
@@ -145,9 +142,8 @@ class ReactionButton extends ConsumerWidget {
                 if (!context.mounted) return;
                 ref
                     .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
+                      misskeySfxNotifierProvider(OperationType.reaction)
+                          .notifier,
                     )
                     .play()
                     .ignore();

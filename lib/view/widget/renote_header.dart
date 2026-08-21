@@ -44,9 +44,8 @@ class RenoteHeader extends HookConsumerWidget {
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
-    final style = DefaultTextStyle.of(
-      context,
-    ).style.apply(color: colors.renote);
+    final style = DefaultTextStyle.of(context).style
+        .apply(color: colors.renote);
 
     return InkWell(
       onTap: onTap,

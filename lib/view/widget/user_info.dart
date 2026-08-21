@@ -116,9 +116,8 @@ class UserInfo extends ConsumerWidget {
                 child: Text(
                   t.misskey.noAccountDescription,
                   style: TextStyle(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.8),
+                    color: Theme.of(context).colorScheme.onSurface
+                        .withValues(alpha: 0.8),
                   ),
                 ),
               ),

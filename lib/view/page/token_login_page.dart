@@ -89,9 +89,8 @@ class TokenLoginPage extends HookConsumerWidget {
                 filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                 child: AppBar(
                   title: Text(t.aria.loginWithAccessToken),
-                  backgroundColor: Theme.of(
-                    context,
-                  ).scaffoldBackgroundColor.withValues(alpha: 0.5),
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor
+                      .withValues(alpha: 0.5),
                 ),
               ),
             ),

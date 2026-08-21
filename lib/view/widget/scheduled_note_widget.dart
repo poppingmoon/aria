@@ -107,9 +107,8 @@ class ScheduledNoteWidget extends ConsumerWidget {
                           context,
                           ref
                               .read(
-                                scheduledNotesNotifierProvider(
-                                  account,
-                                ).notifier,
+                                scheduledNotesNotifierProvider(account)
+                                    .notifier,
                               )
                               .delete(draft.id),
                         );

@@ -233,9 +233,11 @@ class FilePickerSheet extends ConsumerWidget {
               _,
               next,
             ) {
-              if (next case AsyncData(
-                value: UrlUploadFinished(marker: final m?, :final file),
-              ) when m == marker) {
+              if (next
+                  case AsyncData(
+                    value: UrlUploadFinished(marker: final m?, :final file),
+                  )
+                  when m == marker) {
                 completer.complete(file);
               }
             });

@@ -120,9 +120,8 @@ class TimelineWidget extends HookConsumerWidget {
                   .addUnreadNotification();
               ref
                   .read(
-                    misskeySfxNotifierProvider(
-                      OperationType.notification,
-                    ).notifier,
+                    misskeySfxNotifierProvider(OperationType.notification)
+                        .notifier,
                   )
                   .play()
                   .ignore();
@@ -132,9 +131,8 @@ class TimelineWidget extends HookConsumerWidget {
                   .addUnreadChatMessage();
               ref
                   .read(
-                    misskeySfxNotifierProvider(
-                      OperationType.chatMessage,
-                    ).notifier,
+                    misskeySfxNotifierProvider(OperationType.chatMessage)
+                        .notifier,
                   )
                   .play()
                   .ignore();
@@ -219,12 +217,12 @@ class TimelineWidget extends HookConsumerWidget {
                                       Icons.warning_amber,
                                     AnnouncementIconType.success => Icons.check,
                                   },
-                                  size: DefaultTextStyle.of(
-                                    context,
-                                  ).style.lineHeight,
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onPrimary,
+                                  size: DefaultTextStyle.of(context)
+                                      .style
+                                      .lineHeight,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onPrimary,
                                 ),
                               ),
                             ),
@@ -291,9 +289,8 @@ class TimelineWidget extends HookConsumerWidget {
                         } else {
                           ref
                               .read(
-                                timelineCenterNotifierProvider(
-                                  tabSettings,
-                                ).notifier,
+                                timelineCenterNotifierProvider(tabSettings)
+                                    .notifier,
                               )
                               .setCenter(lastViewedNoteId);
                         }
