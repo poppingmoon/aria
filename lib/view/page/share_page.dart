@@ -7,9 +7,7 @@ import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/share_notifier_provider.dart';
 import '../widget/account_preview.dart';
 
-class SharePage extends ConsumerWidget {
-  const SharePage({super.key});
-
+class const SharePage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);

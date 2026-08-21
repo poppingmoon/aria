@@ -5,12 +5,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
-class Twitch extends HookWidget {
-  const Twitch({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Twitch({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   static final _offsetTween = TweenSequence([
     TweenSequenceItem(
       tween: Tween(

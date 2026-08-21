@@ -17,12 +17,11 @@ import '../../widget/users_sort_type_widget.dart';
 
 enum _UserType { pinned, local, remote }
 
-class ExploreUsers extends HookConsumerWidget {
-  const ExploreUsers({super.key, required this.account, this.host});
-
-  final Account account;
-  final String? host;
-
+class const ExploreUsers({
+  super.key,
+  required final Account account,
+  final String? host,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final type = useState(

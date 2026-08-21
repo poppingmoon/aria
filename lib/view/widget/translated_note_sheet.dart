@@ -9,16 +9,11 @@ import '../../util/copy_text.dart';
 import 'error_message.dart';
 import 'mfm.dart';
 
-class TranslatedNoteSheet extends ConsumerWidget {
-  const TranslatedNoteSheet({
-    super.key,
-    required this.account,
-    required this.note,
-  });
-
-  final Account account;
-  final Note note;
-
+class const TranslatedNoteSheet({
+  super.key,
+  required final Account account,
+  required final Note note,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final translatedNote = ref.watch(

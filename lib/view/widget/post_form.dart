@@ -61,42 +61,24 @@ import 'reaction_acceptance_widget.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
 
-class PostForm extends HookConsumerWidget {
-  const PostForm({
-    super.key,
-    required this.account,
-    this.noteId,
-    this.controller,
-    this.cwController,
-    this.hashtagController,
-    this.focusNode,
-    this.cwFocusNode,
-    this.hashtagFocusNode,
-    this.onHide,
-    this.onExpand,
-    this.onAccountChanged,
-    this.showPostButton = false,
-    this.shouldPop = false,
-    this.maxLines,
-    this.thumbnailSize = 200.0,
-  });
-
-  final Account account;
-  final String? noteId;
-  final TextEditingController? controller;
-  final TextEditingController? cwController;
-  final TextEditingController? hashtagController;
-  final FocusNode? focusNode;
-  final FocusNode? cwFocusNode;
-  final FocusNode? hashtagFocusNode;
-  final void Function()? onHide;
-  final void Function(Account account)? onExpand;
-  final void Function(Account account)? onAccountChanged;
-  final bool showPostButton;
-  final bool shouldPop;
-  final int? maxLines;
-  final double thumbnailSize;
-
+class const PostForm({
+  super.key,
+  required final Account account,
+  final String? noteId,
+  final TextEditingController? controller,
+  final TextEditingController? cwController,
+  final TextEditingController? hashtagController,
+  final FocusNode? focusNode,
+  final FocusNode? cwFocusNode,
+  final FocusNode? hashtagFocusNode,
+  final void Function()? onHide,
+  final void Function(Account account)? onExpand,
+  final void Function(Account account)? onAccountChanged,
+  final bool showPostButton = false,
+  final bool shouldPop = false,
+  final int? maxLines,
+  final double thumbnailSize = 200.0,
+}) extends HookConsumerWidget {
   static Future<Note?> post(
     WidgetRef ref,
     Account account,
@@ -1074,23 +1056,15 @@ class PostForm extends HookConsumerWidget {
   }
 }
 
-class _PostFormHeader extends HookConsumerWidget {
-  const _PostFormHeader({
-    required this.account,
-    required this.noteId,
-    required this.post,
-    required this.onAccountChanged,
-    required this.showPostButton,
-    required this.useCw,
-  });
-
-  final Account account;
-  final String? noteId;
-  final void Function(WidgetRef ref, Account account, String? noteId) post;
-  final void Function(Account account) onAccountChanged;
-  final bool showPostButton;
-  final ValueNotifier<bool> useCw;
-
+class const _PostFormHeader({
+  required final Account account,
+  required final String? noteId,
+  required final void Function(WidgetRef ref, Account account, String? noteId)
+  post,
+  required final void Function(Account account) onAccountChanged,
+  required final bool showPostButton,
+  required final ValueNotifier<bool> useCw,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));
@@ -1348,17 +1322,11 @@ class _PostFormHeader extends HookConsumerWidget {
   }
 }
 
-class _AccountSwitchButton extends HookConsumerWidget {
-  const _AccountSwitchButton({
-    required this.account,
-    required this.onAccountChanged,
-    required this.enabled,
-  });
-
-  final Account account;
-  final void Function(Account account) onAccountChanged;
-  final bool enabled;
-
+class const _AccountSwitchButton({
+  required final Account account,
+  required final void Function(Account account) onAccountChanged,
+  required final bool enabled,
+}) extends HookConsumerWidget {
   Future<Account?> _switchAccount(WidgetRef ref, Account? origin) async {
     final accounts = ref.read(accountsNotifierProvider);
     final destination = await showModalBottomSheet<Account>(
@@ -1520,33 +1488,19 @@ class _AccountSwitchButton extends HookConsumerWidget {
   }
 }
 
-class _PostFormFooter extends HookConsumerWidget {
-  const _PostFormFooter({
-    required this.account,
-    required this.noteId,
-    required this.cwController,
-    required this.controller,
-    required this.hashtagController,
-    required this.cwFocusNode,
-    required this.hashtagFocusNode,
-    required this.onHide,
-    required this.onExpand,
-    required this.useCw,
-    required this.useHashtag,
-  });
-
-  final Account account;
-  final String? noteId;
-  final TextEditingController cwController;
-  final TextEditingController controller;
-  final TextEditingController hashtagController;
-  final FocusNode cwFocusNode;
-  final FocusNode hashtagFocusNode;
-  final void Function()? onHide;
-  final void Function(Account account)? onExpand;
-  final ValueNotifier<bool> useCw;
-  final ValueNotifier<bool> useHashtag;
-
+class const _PostFormFooter({
+  required final Account account,
+  required final String? noteId,
+  required final TextEditingController cwController,
+  required final TextEditingController controller,
+  required final TextEditingController hashtagController,
+  required final FocusNode cwFocusNode,
+  required final FocusNode hashtagFocusNode,
+  required final void Function()? onHide,
+  required final void Function(Account account)? onExpand,
+  required final ValueNotifier<bool> useCw,
+  required final ValueNotifier<bool> useHashtag,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final draft = ref.watch(postNotifierProvider(account, noteId: noteId));

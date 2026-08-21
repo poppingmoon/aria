@@ -15,12 +15,11 @@ import 'streaming_error_icon.dart';
 import 'tab_icon_widget.dart';
 import 'timeline_menu.dart';
 
-class TimelineHeader extends ConsumerWidget {
-  const TimelineHeader({super.key, required this.tabSettings, this.controller});
-
-  final TabSettings tabSettings;
-  final ExpansibleController? controller;
-
+class const TimelineHeader({
+  super.key,
+  required final TabSettings tabSettings,
+  final ExpansibleController? controller,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(tabSettings.account)).value;

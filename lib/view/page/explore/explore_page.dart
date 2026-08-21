@@ -8,11 +8,8 @@ import 'explore_hashtags.dart';
 import 'explore_roles.dart';
 import 'explore_users.dart';
 
-class ExplorePage extends ConsumerWidget {
-  const ExplorePage({super.key, required this.account});
-
-  final Account account;
-
+class const ExplorePage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(

@@ -25,22 +25,14 @@ import '../dialog/text_field_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'post_file_thumbnail.dart';
 
-class PostFormAttaches extends ConsumerWidget {
-  const PostFormAttaches({
-    super.key,
-    required this.account,
-    this.noteId,
-    this.gallery = false,
-    this.chat = false,
-    this.maxCrossAxisExtent = 200.0,
-  });
-
-  final Account account;
-  final String? noteId;
-  final bool gallery;
-  final bool chat;
-  final double maxCrossAxisExtent;
-
+class const PostFormAttaches({
+  super.key,
+  required final Account account,
+  final String? noteId,
+  final bool gallery = false,
+  final bool chat = false,
+  final double maxCrossAxisExtent = 200.0,
+}) extends ConsumerWidget {
   Future<void> _renameFile(WidgetRef ref, int index) async {
     final file = ref.read(
       attachesNotifierProvider(
@@ -448,24 +440,15 @@ class PostFormAttaches extends ConsumerWidget {
   }
 }
 
-class _PostFormAttach extends ConsumerWidget {
-  const _PostFormAttach({
-    super.key,
-    required this.account,
-    required this.index,
-    this.noteId,
-    required this.gallery,
-    required this.chat,
-    this.onTap,
-  });
-
-  final Account account;
-  final int index;
-  final String? noteId;
-  final bool gallery;
-  final bool chat;
-  final void Function()? onTap;
-
+class const _PostFormAttach({
+  super.key,
+  required final Account account,
+  required final int index,
+  final String? noteId,
+  required final bool gallery,
+  required final bool chat,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = ref.watch(

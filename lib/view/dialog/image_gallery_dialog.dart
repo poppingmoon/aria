@@ -41,22 +41,14 @@ Future<void> showImageGalleryDialog(
   );
 }
 
-class ImageGalleryDialog extends HookConsumerWidget {
-  const ImageGalleryDialog({
-    super.key,
-    this.account,
-    required this.files,
-    this.noteIds,
-    this.controller,
-    this.initialIndex = 0,
-  });
-
-  final Account? account;
-  final List<DriveFile> files;
-  final List<String>? noteIds;
-  final PageController? controller;
-  final int initialIndex;
-
+class const ImageGalleryDialog({
+  super.key,
+  final Account? account,
+  required final List<DriveFile> files,
+  final List<String>? noteIds,
+  final PageController? controller,
+  final int initialIndex = 0,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (enableHapticFeedback, mediaSaveLocation) = ref.watch(

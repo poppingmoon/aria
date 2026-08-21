@@ -8,11 +8,8 @@ import '../../../provider/api/gallery_posts_notifier_provider.dart';
 import '../../widget/gallery_post_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class GalleryRecent extends ConsumerWidget {
-  const GalleryRecent({super.key, required this.account});
-
-  final Account account;
-
+class const GalleryRecent({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(galleryPostsNotifierProvider(account));

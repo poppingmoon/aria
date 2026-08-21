@@ -8,12 +8,11 @@ import '../../../util/safe_parse_duration.dart';
 
 enum _SpinDirection { normal, reverse, alternate }
 
-class Spin extends HookWidget {
-  const Spin({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Spin({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final direction = args.containsKey('left')

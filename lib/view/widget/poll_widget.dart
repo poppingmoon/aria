@@ -16,18 +16,12 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import 'mfm.dart';
 
-class PollWidget extends HookConsumerWidget {
-  const PollWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-    required this.poll,
-  });
-
-  final Account account;
-  final String noteId;
-  final NotePoll poll;
-
+class const PollWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  required final NotePoll poll,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final total = poll.choices.fold(0, (acc, choice) => acc + choice.votes);

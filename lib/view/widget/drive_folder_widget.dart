@@ -8,20 +8,13 @@ import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import 'drive_folder_sheet.dart';
 
-class DriveFolderWidget extends ConsumerWidget {
-  const DriveFolderWidget({
-    super.key,
-    required this.account,
-    required this.folder,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFolder folder;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const DriveFolderWidget({
+  super.key,
+  required final Account account,
+  required final DriveFolder folder,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final uploadFolder = ref.watch(

@@ -14,16 +14,11 @@ import '../dialog/confirmation_dialog.dart';
 import '../dialog/gallery_dialog.dart';
 import '../page/drive_page.dart';
 
-class DriveFilesSheet extends ConsumerWidget {
-  const DriveFilesSheet({
-    super.key,
-    required this.account,
-    required this.files,
-  });
-
-  final Account account;
-  final List<DriveFile> files;
-
+class const DriveFilesSheet({
+  super.key,
+  required final Account account,
+  required final List<DriveFile> files,
+}) extends ConsumerWidget {
   Future<void> _move(WidgetRef ref) async {
     final result = await showDialog<(DriveFolder?,)>(
       context: ref.context,

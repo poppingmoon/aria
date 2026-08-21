@@ -6,11 +6,8 @@ void useOnWindowResize(void Function() onWindowResize) {
   use(_OnWindowResizeHook(onWindowResize: onWindowResize));
 }
 
-class _OnWindowResizeHook extends Hook<void> {
-  const _OnWindowResizeHook({required this.onWindowResize});
-
-  final void Function() onWindowResize;
-
+class const _OnWindowResizeHook({required final void Function() onWindowResize})
+    extends Hook<void> {
   @override
   __OnWindowResizeStateState createState() => __OnWindowResizeStateState();
 }

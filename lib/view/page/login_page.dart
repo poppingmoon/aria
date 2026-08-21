@@ -24,11 +24,8 @@ import '../widget/image_widget.dart';
 import '../widget/misskey_server_autocomplete.dart';
 import '../widget/misskey_server_background.dart';
 
-class LoginPage extends HookConsumerWidget {
-  const LoginPage({super.key, this.query});
-
-  final String? query;
-
+class const LoginPage({super.key, final String? query})
+    extends HookConsumerWidget {
   Future<void> _launchMiAuth(
     WidgetRef ref,
     String query, {

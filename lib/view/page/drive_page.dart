@@ -25,22 +25,14 @@ import '../widget/drive_folder_widget.dart';
 import '../widget/haptic_feedback_refresh_indicator.dart';
 import '../widget/pagination_bottom_widget.dart';
 
-class DrivePage extends HookConsumerWidget {
-  const DrivePage({
-    super.key,
-    required this.account,
-    this.selectFile = false,
-    this.selectFiles = false,
-    this.selectFolder = false,
-    this.type = FileType.any,
-  });
-
-  final Account account;
-  final bool selectFile;
-  final bool selectFiles;
-  final bool selectFolder;
-  final FileType type;
-
+class const DrivePage({
+  super.key,
+  required final Account account,
+  final bool selectFile = false,
+  final bool selectFiles = false,
+  final bool selectFolder = false,
+  final FileType type = FileType.any,
+}) extends HookConsumerWidget {
   static const itemMaxCrossAxisExtent = 300.0;
 
   @override

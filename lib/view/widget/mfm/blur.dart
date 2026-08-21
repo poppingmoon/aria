@@ -3,11 +3,7 @@ import 'dart:ui';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_ui/material_ui.dart';
 
-class Blur extends HookWidget {
-  const Blur({super.key, required this.child});
-
-  final Widget child;
-
+class const Blur({super.key, required final Widget child}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final blurred = useState(true);

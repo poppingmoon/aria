@@ -3,11 +3,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class NoteVisibilityWidget extends StatelessWidget {
-  const NoteVisibilityWidget({super.key, required this.visibility});
-
-  final NoteVisibility visibility;
-
+class const NoteVisibilityWidget({
+  super.key,
+  required final NoteVisibility visibility,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (visibility) {

@@ -35,26 +35,16 @@ import 'renote_sheet.dart';
 import 'renote_users_sheet.dart';
 import 'translated_note_sheet.dart';
 
-class NoteFooter extends ConsumerWidget {
-  const NoteFooter({
-    super.key,
-    required this.account,
-    required this.note,
-    required this.appearNote,
-    this.clipId,
-    this.disableHeader = false,
-    this.focusPostForm,
-    this.listViewKey,
-  });
-
-  final Account account;
-  final Note note;
-  final Note appearNote;
-  final String? clipId;
-  final bool disableHeader;
-  final void Function()? focusPostForm;
-  final GlobalKey? listViewKey;
-
+class const NoteFooter({
+  super.key,
+  required final Account account,
+  required final Note note,
+  required final Note appearNote,
+  final String? clipId,
+  final bool disableHeader = false,
+  final void Function()? focusPostForm,
+  final GlobalKey? listViewKey,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (
@@ -191,19 +181,12 @@ class NoteFooter extends ConsumerWidget {
   }
 }
 
-class _ReplyButton extends ConsumerWidget {
-  const _ReplyButton({
-    required this.account,
-    required this.note,
-    required this.focusPostForm,
-    required this.style,
-  });
-
-  final Account account;
-  final Note note;
-  final void Function()? focusPostForm;
-  final TextStyle? style;
-
+class const _ReplyButton({
+  required final Account account,
+  required final Note note,
+  required final void Function()? focusPostForm,
+  required final TextStyle? style,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showRepliesCount = ref.watch(
@@ -243,23 +226,14 @@ class _ReplyButton extends ConsumerWidget {
   }
 }
 
-class _RenoteButton extends HookConsumerWidget {
-  const _RenoteButton({
-    required this.account,
-    required this.note,
-    required this.myRenotingNoteId,
-    required this.showQuoteButton,
-    required this.focusPostForm,
-    required this.style,
-  });
-
-  final Account account;
-  final Note note;
-  final String? myRenotingNoteId;
-  final bool showQuoteButton;
-  final void Function()? focusPostForm;
-  final TextStyle? style;
-
+class const _RenoteButton({
+  required final Account account,
+  required final Note note,
+  required final String? myRenotingNoteId,
+  required final bool showQuoteButton,
+  required final void Function()? focusPostForm,
+  required final TextStyle? style,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showRenotesCount = ref.watch(
@@ -395,17 +369,11 @@ class _RenoteButton extends HookConsumerWidget {
   }
 }
 
-class _QuoteButton extends ConsumerWidget {
-  const _QuoteButton({
-    required this.account,
-    required this.note,
-    required this.focusPostForm,
-  });
-
-  final Account account;
-  final Note note;
-  final void Function()? focusPostForm;
-
+class const _QuoteButton({
+  required final Account account,
+  required final Note note,
+  required final void Function()? focusPostForm,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
@@ -426,17 +394,11 @@ class _QuoteButton extends ConsumerWidget {
   }
 }
 
-class _LikeButton extends ConsumerWidget {
-  const _LikeButton({
-    required this.account,
-    required this.note,
-    required this.listViewKey,
-  });
-
-  final Account account;
-  final Note note;
-  final GlobalKey? listViewKey;
-
+class const _LikeButton({
+  required final Account account,
+  required final Note note,
+  required final GlobalKey? listViewKey,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
@@ -483,19 +445,12 @@ class _LikeButton extends ConsumerWidget {
   }
 }
 
-class _AddReactionButton extends ConsumerWidget {
-  const _AddReactionButton({
-    required this.account,
-    required this.note,
-    required this.style,
-    required this.listViewKey,
-  });
-
-  final Account account;
-  final Note note;
-  final TextStyle? style;
-  final GlobalKey? listViewKey;
-
+class const _AddReactionButton({
+  required final Account account,
+  required final Note note,
+  required final TextStyle? style,
+  required final GlobalKey? listViewKey,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showReactionsCount = ref.watch(
@@ -602,19 +557,12 @@ class _AddReactionButton extends ConsumerWidget {
   }
 }
 
-class _RemoveReactionButton extends ConsumerWidget {
-  const _RemoveReactionButton({
-    required this.account,
-    required this.note,
-    required this.style,
-    required this.listViewKey,
-  });
-
-  final Account account;
-  final Note note;
-  final TextStyle? style;
-  final GlobalKey? listViewKey;
-
+class const _RemoveReactionButton({
+  required final Account account,
+  required final Note note,
+  required final TextStyle? style,
+  required final GlobalKey? listViewKey,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showReactionsCount = ref.watch(
@@ -686,17 +634,11 @@ class _RemoveReactionButton extends ConsumerWidget {
   }
 }
 
-class _ClipButton extends ConsumerWidget {
-  const _ClipButton({
-    required this.account,
-    required this.note,
-    required this.clipId,
-  });
-
-  final Account account;
-  final Note note;
-  final String? clipId;
-
+class const _ClipButton({
+  required final Account account,
+  required final Note note,
+  required final String? clipId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(
@@ -719,12 +661,10 @@ class _ClipButton extends ConsumerWidget {
   }
 }
 
-class _TranslateButton extends ConsumerWidget {
-  const _TranslateButton({required this.account, required this.note});
-
-  final Account account;
-  final Note note;
-
+class const _TranslateButton({
+  required final Account account,
+  required final Note note,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -757,21 +697,13 @@ class _TranslateButton extends ConsumerWidget {
   }
 }
 
-class _MenuButton extends ConsumerWidget {
-  const _MenuButton({
-    required this.account,
-    required this.note,
-    required this.disableHeader,
-    required this.focusPostForm,
-    required this.clipId,
-  });
-
-  final Account account;
-  final Note note;
-  final String? clipId;
-  final bool disableHeader;
-  final void Function()? focusPostForm;
-
+class const _MenuButton({
+  required final Account account,
+  required final Note note,
+  required final bool disableHeader,
+  required final void Function()? focusPostForm,
+  required final String? clipId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return IconButton(

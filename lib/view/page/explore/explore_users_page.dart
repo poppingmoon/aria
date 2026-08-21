@@ -5,12 +5,11 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import 'explore_users.dart';
 
-class ExploreUsersPage extends ConsumerWidget {
-  const ExploreUsersPage({super.key, required this.account, this.host});
-
-  final Account account;
-  final String? host;
-
+class const ExploreUsersPage({
+  super.key,
+  required final Account account,
+  final String? host,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(

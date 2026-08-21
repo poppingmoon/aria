@@ -11,12 +11,11 @@ import '../../provider/api/attaches_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/error_message.dart';
 
-class GalleryDialog extends ConsumerWidget {
-  const GalleryDialog({super.key, required this.account, required this.files});
-
-  final Account account;
-  final List<DriveFile> files;
-
+class const GalleryDialog({
+  super.key,
+  required final Account account,
+  required final List<DriveFile> files,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(myGalleryPostsNotifierProvider(account));

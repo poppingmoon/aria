@@ -42,7 +42,7 @@ const maxTimelinesPageMinFlingFactor = 10.0;
 
 @freezed
 abstract class GeneralSettings with _$GeneralSettings {
-  const factory GeneralSettings({
+  const factory({
     // Locale
     // ignore: invalid_annotation_target
     @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -168,7 +168,7 @@ abstract class GeneralSettings with _$GeneralSettings {
     @Default(true) bool searchUsersByUsername,
   }) = _GeneralSettings;
 
-  factory GeneralSettings.fromJson(Map<String, dynamic> json) =>
+  factory fromJson(Map<String, dynamic> json) =>
       _$GeneralSettingsFromJson(json);
 }
 
@@ -182,9 +182,7 @@ enum EmojiStyle { native, twemoji }
 
 enum NoteActionType { none, expand, menu, reaction }
 
-class _ColorConverter extends JsonConverter<Color, int> {
-  const _ColorConverter();
-
+class const _ColorConverter() extends JsonConverter<Color, int> {
   @override
   Color fromJson(int json) {
     return Color(json);

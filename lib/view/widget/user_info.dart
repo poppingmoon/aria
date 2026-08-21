@@ -16,18 +16,12 @@ import 'user_banner.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class UserInfo extends ConsumerWidget {
-  const UserInfo({
-    super.key,
-    required this.account,
-    required this.user,
-    this.shape,
-  });
-
-  final Account account;
-  final UserDetailed user;
-  final ShapeBorder? shape;
-
+class const UserInfo({
+  super.key,
+  required final Account account,
+  required final UserDetailed user,
+  final ShapeBorder? shape,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final squareAvatars = ref.watch(

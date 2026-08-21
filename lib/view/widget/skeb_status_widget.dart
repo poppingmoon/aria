@@ -8,16 +8,11 @@ import '../../model/account.dart';
 import '../../util/launch_url.dart';
 import 'mfm.dart';
 
-class SkebStatusWidget extends ConsumerWidget {
-  const SkebStatusWidget({
-    super.key,
-    required this.account,
-    required this.skebStatus,
-  });
-
-  final Account account;
-  final UsersGetSkebStatusResponse skebStatus;
-
+class const SkebStatusWidget({
+  super.key,
+  required final Account account,
+  required final UsersGetSkebStatusResponse skebStatus,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final style = DefaultTextStyle.of(context).style;

@@ -9,11 +9,8 @@ import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import 'tab_icon_widget.dart';
 
-class TimelineTabBar extends HookConsumerWidget {
-  const TimelineTabBar({super.key, required this.controller});
-
-  final TabController controller;
-
+class const TimelineTabBar({super.key, required final TabController controller})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const tabHeight = 46.0;

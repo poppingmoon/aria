@@ -17,26 +17,16 @@ import 'note_fallback_widget.dart';
 import 'note_widget.dart';
 import 'username_widget.dart';
 
-class TimelineNote extends HookConsumerWidget {
-  const TimelineNote({
-    super.key,
-    required this.tabSettings,
-    required this.noteId,
-    this.focusPostForm,
-    this.margin = EdgeInsets.zero,
-    this.borderRadius,
-    this.hide = false,
-    this.listViewKey,
-  });
-
-  final TabSettings tabSettings;
-  final String noteId;
-  final void Function()? focusPostForm;
-  final EdgeInsetsGeometry margin;
-  final BorderRadiusGeometry? borderRadius;
-  final bool hide;
-  final GlobalKey? listViewKey;
-
+class const TimelineNote({
+  super.key,
+  required final TabSettings tabSettings,
+  required final String noteId,
+  final void Function()? focusPostForm,
+  final EdgeInsetsGeometry margin = EdgeInsets.zero,
+  final BorderRadiusGeometry? borderRadius,
+  final bool hide = false,
+  final GlobalKey? listViewKey,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;

@@ -83,13 +83,13 @@ const defaultSounds = {
 
 @Freezed(fromJson: true)
 abstract class SoundSettings with _$SoundSettings {
-  const factory SoundSettings({
+  const factory({
     @Default(true) bool notUseSound,
     @Default(defaultMasterVolume) double masterVolume,
     @Default(defaultSounds) Map<OperationType, SoundStore> sounds,
   }) = _SoundSettings;
 
-  factory SoundSettings.fromJson(Map<String, Object?> json) => _SoundSettings(
+  factory fromJson(Map<String, Object?> json) => _SoundSettings(
     notUseSound: switch (json['notUseSound']) {
       final bool notUseSound => notUseSound,
       _ => true,
@@ -115,13 +115,12 @@ abstract class SoundSettings with _$SoundSettings {
 
 @freezed
 abstract class SoundStore with _$SoundStore {
-  const factory SoundStore({
+  const factory({
     @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
     SoundType? type,
     @Default(1.0) double volume,
     @Default(false) bool vibrate,
   }) = _SoundStore;
 
-  factory SoundStore.fromJson(Map<String, Object?> json) =>
-      _$SoundStoreFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$SoundStoreFromJson(json);
 }

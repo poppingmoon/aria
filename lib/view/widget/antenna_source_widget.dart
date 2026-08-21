@@ -3,11 +3,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class AntennaSourceWidget extends StatelessWidget {
-  const AntennaSourceWidget({super.key, required this.antennaSource});
-
-  final AntennaSource? antennaSource;
-
+class const AntennaSourceWidget({
+  super.key,
+  required final AntennaSource? antennaSource,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (antennaSource) {

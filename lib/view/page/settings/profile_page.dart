@@ -34,11 +34,8 @@ import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_banner.dart';
 
-class ProfilePage extends HookConsumerWidget {
-  const ProfilePage({super.key, required this.account});
-
-  final Account account;
-
+class const ProfilePage({super.key, required final Account account})
+    extends HookConsumerWidget {
   Future<DriveFile?> _getFile(
     WidgetRef ref, {
     String? folderId,

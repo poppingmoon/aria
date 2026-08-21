@@ -6,11 +6,8 @@ import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/list_settings.dart';
 
-class ListSettingsDialog extends HookWidget {
-  const ListSettingsDialog({super.key, this.settings});
-
-  final ListSettings? settings;
-
+class const ListSettingsDialog({super.key, final ListSettings? settings})
+    extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final settings = useState(this.settings ?? const ListSettings());

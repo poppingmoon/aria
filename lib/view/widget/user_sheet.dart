@@ -44,18 +44,12 @@ Future<void> showUserSheet({
   );
 }
 
-class UserSheet extends ConsumerWidget {
-  const UserSheet({
-    super.key,
-    required this.account,
-    required this.userId,
-    this.disableHeader = false,
-  });
-
-  final Account account;
-  final String userId;
-  final bool disableHeader;
-
+class const UserSheet({
+  super.key,
+  required final Account account,
+  required final String userId,
+  final bool disableHeader = false,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userNotifierProvider(account, userId: userId)).value;

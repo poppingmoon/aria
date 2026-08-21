@@ -15,11 +15,8 @@ import '../../widget/ff_visibility_widget.dart';
 import '../../widget/note_visibility_widget.dart';
 import '../../widget/reaction_acceptance_widget.dart';
 
-class PrivacyPage extends ConsumerWidget {
-  const PrivacyPage({super.key, required this.account});
-
-  final Account account;
-
+class const PrivacyPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
@@ -514,11 +511,8 @@ class PrivacyPage extends ConsumerWidget {
   }
 }
 
-class _ChatScopeWidget extends StatelessWidget {
-  const _ChatScopeWidget({this.chatScope});
-
-  final ChatScope? chatScope;
-
+class const _ChatScopeWidget({final ChatScope? chatScope})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (chatScope) {
@@ -532,11 +526,9 @@ class _ChatScopeWidget extends StatelessWidget {
   }
 }
 
-class _NoteVisibilityDescriptionWidget extends StatelessWidget {
-  const _NoteVisibilityDescriptionWidget({required this.visibility});
-
-  final NoteVisibility visibility;
-
+class const _NoteVisibilityDescriptionWidget({
+  required final NoteVisibility visibility,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (visibility) {

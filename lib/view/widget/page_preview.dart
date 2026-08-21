@@ -8,18 +8,12 @@ import 'mfm.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class PagePreview extends ConsumerWidget {
-  const PagePreview({
-    super.key,
-    required this.account,
-    required this.page,
-    this.onTap,
-  });
-
-  final Account account;
-  final Page page;
-  final void Function()? onTap;
-
+class const PagePreview({
+  super.key,
+  required final Account account,
+  required final Page page,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Card.filled(

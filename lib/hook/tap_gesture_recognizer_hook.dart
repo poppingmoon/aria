@@ -6,9 +6,8 @@ TapGestureRecognizer useTapGestureRecognizer({List<Object?>? keys}) {
   return use(_TapGestureRecognizerHook(keys: keys));
 }
 
-class _TapGestureRecognizerHook extends Hook<TapGestureRecognizer> {
-  const _TapGestureRecognizerHook({super.keys});
-
+class const _TapGestureRecognizerHook({super.keys})
+    extends Hook<TapGestureRecognizer> {
   @override
   HookState<TapGestureRecognizer, Hook<TapGestureRecognizer>> createState() =>
       _TapGestureRecognizerHookState();

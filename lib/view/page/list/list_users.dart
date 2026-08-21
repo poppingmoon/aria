@@ -14,12 +14,11 @@ import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
-class ListUsers extends ConsumerWidget {
-  const ListUsers({super.key, required this.account, required this.listId});
-
-  final Account account;
-  final String listId;
-
+class const ListUsers({
+  super.key,
+  required final Account account,
+  required final String listId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final users = ref.watch(listUsersNotifierProvider(account, listId));

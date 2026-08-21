@@ -18,18 +18,12 @@ import '../widget/mfm.dart';
 import '../widget/role_chip.dart';
 import '../widget/user_avatar.dart';
 
-class AvatarDecorationDialog extends HookConsumerWidget {
-  const AvatarDecorationDialog({
-    super.key,
-    required this.account,
-    required this.decoration,
-    this.index,
-  });
-
-  final Account account;
-  final UserAvatarDecoration decoration;
-  final int? index;
-
+class const AvatarDecorationDialog({
+  super.key,
+  required final Account account,
+  required final UserAvatarDecoration decoration,
+  final int? index,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final avatarDecorations = ref

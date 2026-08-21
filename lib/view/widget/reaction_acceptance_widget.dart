@@ -3,11 +3,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class ReactionAcceptanceWidget extends StatelessWidget {
-  const ReactionAcceptanceWidget({super.key, required this.acceptance});
-
-  final ReactionAcceptance? acceptance;
-
+class const ReactionAcceptanceWidget({
+  super.key,
+  required final ReactionAcceptance? acceptance,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (acceptance) {

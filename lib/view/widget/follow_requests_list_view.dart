@@ -26,11 +26,8 @@ import 'user_avatar.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class FollowRequestsListView extends HookConsumerWidget {
-  const FollowRequestsListView({super.key, required this.account});
-
-  final Account account;
-
+class const FollowRequestsListView({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final requests = ref.watch(followRequestsNotifierProvider(account));
@@ -293,17 +290,11 @@ class FollowRequestsListView extends HookConsumerWidget {
   }
 }
 
-class _FollowRequestTile extends ConsumerWidget {
-  const _FollowRequestTile({
-    required this.account,
-    required this.user,
-    this.onDone,
-  });
-
-  final Account account;
-  final User user;
-  final void Function()? onDone;
-
+class const _FollowRequestTile({
+  required final Account account,
+  required final User user,
+  final void Function()? onDone,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(

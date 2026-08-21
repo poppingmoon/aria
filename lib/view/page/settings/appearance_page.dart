@@ -11,9 +11,7 @@ import '../../../provider/notification_settings_repository_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
-class AppearancePage extends HookConsumerWidget {
-  const AppearancePage({super.key});
-
+class const AppearancePage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);

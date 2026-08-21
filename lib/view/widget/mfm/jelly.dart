@@ -6,12 +6,11 @@ import 'package:vector_math/vector_math.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
-class Jelly extends HookWidget {
-  const Jelly({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Jelly({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   static final _scaleTween = TweenSequence([
     TweenSequenceItem(
       tween: Tween(

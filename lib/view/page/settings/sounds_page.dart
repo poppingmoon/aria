@@ -14,9 +14,7 @@ import '../../../provider/sound_settings_notifier_provider.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
-class SoundsPage extends HookConsumerWidget {
-  const SoundsPage({super.key});
-
+class const SoundsPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(soundSettingsNotifierProvider);
@@ -113,11 +111,8 @@ class SoundsPage extends HookConsumerWidget {
   }
 }
 
-class _SoundSettingsWidget extends HookConsumerWidget {
-  const _SoundSettingsWidget({required this.operationType});
-
-  final OperationType operationType;
-
+class const _SoundSettingsWidget({required final OperationType operationType})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();
@@ -263,12 +258,10 @@ class _SoundSettingsWidget extends HookConsumerWidget {
   }
 }
 
-class _SoundDialog extends ConsumerWidget {
-  const _SoundDialog({required this.initialValue, required this.volume});
-
-  final SoundType? initialValue;
-  final double volume;
-
+class const _SoundDialog({
+  required final SoundType? initialValue,
+  required final double volume,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SimpleDialog(

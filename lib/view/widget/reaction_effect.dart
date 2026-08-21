@@ -6,20 +6,13 @@ import 'package:material_ui/material_ui.dart';
 import '../../model/account.dart';
 import 'emoji_widget.dart';
 
-class ReactionEffect extends HookWidget {
-  const ReactionEffect({
-    super.key,
-    required this.account,
-    required this.emoji,
-    this.emojis = const {},
-    this.style,
-  });
-
-  final Account account;
-  final String emoji;
-  final Map<String, String> emojis;
-  final TextStyle? style;
-
+class const ReactionEffect({
+  super.key,
+  required final Account account,
+  required final String emoji,
+  final Map<String, String> emojis = const {},
+  final TextStyle? style,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useAnimationController(

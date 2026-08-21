@@ -22,20 +22,13 @@ import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
 import '../channel/channels_page.dart';
 
-class SearchNotes extends HookConsumerWidget {
-  const SearchNotes({
-    super.key,
-    required this.account,
-    required this.query,
-    this.userId,
-    this.channelId,
-  });
-
-  final Account account;
-  final String query;
-  final String? userId;
-  final String? channelId;
-
+class const SearchNotes({
+  super.key,
+  required final Account account,
+  required final String query,
+  final String? userId,
+  final String? channelId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userId = useState(this.userId);

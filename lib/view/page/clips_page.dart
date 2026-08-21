@@ -15,11 +15,8 @@ import '../widget/error_message.dart';
 import '../widget/haptic_feedback_refresh_indicator.dart';
 import '../widget/paginated_list_view.dart';
 
-class ClipsPage extends ConsumerWidget {
-  const ClipsPage({super.key, required this.account});
-
-  final Account account;
-
+class const ClipsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(clipsNotifierProvider(account));

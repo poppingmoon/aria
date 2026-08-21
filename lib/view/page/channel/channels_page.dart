@@ -10,18 +10,12 @@ import 'channels_following.dart';
 import 'channels_owned.dart';
 import 'channels_search.dart';
 
-class ChannelsPage extends ConsumerWidget {
-  const ChannelsPage({
-    super.key,
-    required this.account,
-    this.onChannelTap,
-    this.initialIndex = 1,
-  });
-
-  final Account account;
-  final void Function(CommunityChannel channel)? onChannelTap;
-  final int initialIndex;
-
+class const ChannelsPage({
+  super.key,
+  required final Account account,
+  final void Function(CommunityChannel channel)? onChannelTap,
+  final int initialIndex = 1,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(

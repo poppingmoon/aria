@@ -8,12 +8,11 @@ import '../../../provider/api/owned_channels_notifier_provider.dart';
 import '../../widget/channel_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class ChannelsOwned extends ConsumerWidget {
-  const ChannelsOwned({super.key, required this.account, this.onChannelTap});
-
-  final Account account;
-  final void Function(CommunityChannel channel)? onChannelTap;
-
+class const ChannelsOwned({
+  super.key,
+  required final Account account,
+  final void Function(CommunityChannel channel)? onChannelTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channels = ref.watch(ownedChannelsNotifierProvider(account));

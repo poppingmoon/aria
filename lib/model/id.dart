@@ -23,13 +23,11 @@ String _toCrockfordsBase32(BigInt i) {
 
 enum IdGenMethod { aid, aidx, meid, meidg, ulid, objectid }
 
-class Id {
-  const Id({required this.method, required this.date, this.random = ''});
-
-  final IdGenMethod method;
-  final DateTime date;
-  final String random;
-
+class const Id({
+  required final IdGenMethod method,
+  required final DateTime date,
+  final String random = '',
+}) {
   static Id parse(String str) {
     return switch (str.length) {
       10 => Id(

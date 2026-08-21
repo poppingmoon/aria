@@ -14,7 +14,7 @@ sealed class Layer {
 
 @freezed
 abstract class ImageLayer with _$ImageLayer implements Layer {
-  const factory ImageLayer({
+  const factory({
     required Uint8List data,
     @Default(1.0) double opacity,
     @Default(Offset.zero) Offset offset,
@@ -26,7 +26,7 @@ abstract class ImageLayer with _$ImageLayer implements Layer {
 
 @freezed
 abstract class TextLayer with _$TextLayer implements Layer {
-  const factory TextLayer({
+  const factory({
     required String text,
     Color? color,
     Color? backgroundColor,
@@ -39,7 +39,7 @@ abstract class TextLayer with _$TextLayer implements Layer {
 
 @freezed
 abstract class DrawLayer with _$DrawLayer implements Layer {
-  const factory DrawLayer({
+  const factory({
     @Default([]) List<Offset?> offsets,
     Color? color,
     @Default(1.0) double strokeWidth,

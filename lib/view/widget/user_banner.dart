@@ -9,20 +9,13 @@ import '../dialog/image_dialog.dart';
 import 'follow_button.dart';
 import 'image_widget.dart';
 
-class UserBanner extends StatelessWidget {
-  const UserBanner({
-    super.key,
-    required this.account,
-    required this.user,
-    this.height = 200,
-    this.expandOnTap = false,
-  });
-
-  final Account account;
-  final UserDetailed user;
-  final double height;
-  final bool expandOnTap;
-
+class const UserBanner({
+  super.key,
+  required final Account account,
+  required final UserDetailed user,
+  final double height = 200,
+  final bool expandOnTap = false,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(

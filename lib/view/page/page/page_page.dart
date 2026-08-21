@@ -44,20 +44,13 @@ import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
-class PagePage extends ConsumerWidget {
-  const PagePage({
-    super.key,
-    required this.account,
-    this.pageId,
-    this.pageName,
-    this.username,
-  });
-
-  final Account account;
-  final String? pageId;
-  final String? pageName;
-  final String? username;
-
+class const PagePage({
+  super.key,
+  required final Account account,
+  final String? pageId,
+  final String? pageName,
+  final String? username,
+}) extends ConsumerWidget {
   Widget _buildBlock(
     BuildContext context,
     Page page,

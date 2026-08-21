@@ -6,12 +6,11 @@ import 'package:vector_math/vector_math.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
-class Bounce extends HookWidget {
-  const Bounce({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Bounce({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   static final _offsetTween = TweenSequence([
     TweenSequenceItem(
       tween: Tween(begin: Offset.zero, end: const Offset(0, -16.0)),

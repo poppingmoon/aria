@@ -7,12 +7,11 @@ import '../../../provider/api/user_featured_notes_notifier_provider.dart';
 import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
 
-class UserFeatured extends ConsumerWidget {
-  const UserFeatured({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const UserFeatured({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notes = ref.watch(userFeaturedNotesNotifierProvider(account, userId));

@@ -42,11 +42,8 @@ import '../../widget/tab_type_widget.dart';
 import '../../widget/username_widget.dart';
 import '../channel/channels_page.dart';
 
-class TabSettingsPage extends HookConsumerWidget {
-  const TabSettingsPage({super.key, this.tabId});
-
-  final String? tabId;
-
+class const TabSettingsPage({super.key, final String? tabId})
+    extends HookConsumerWidget {
   Future<RolesListResponse?> _selectRole(
     WidgetRef ref,
     Account account,

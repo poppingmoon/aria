@@ -10,18 +10,12 @@ import '../../../provider/api/user_notifier_provider.dart';
 import '../../widget/chat_list_view.dart';
 import '../../widget/chat_post_form.dart';
 
-class ChatRoomChat extends ConsumerWidget {
-  const ChatRoomChat({
-    super.key,
-    required this.account,
-    this.userId,
-    this.roomId,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
-
+class const ChatRoomChat({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? roomId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

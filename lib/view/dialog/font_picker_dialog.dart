@@ -15,16 +15,11 @@ import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../widget/url_sheet.dart';
 
-class FontPickerDialog extends HookWidget {
-  const FontPickerDialog({
-    super.key,
-    this.initialSubsets = const {},
-    this.initialCategory,
-  });
-
-  final Set<WebFontSubset> initialSubsets;
-  final WebFontCategory? initialCategory;
-
+class const FontPickerDialog({
+  super.key,
+  final Set<WebFontSubset> initialSubsets = const {},
+  final WebFontCategory? initialCategory,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController();
@@ -245,11 +240,7 @@ class FontPickerDialog extends HookWidget {
   }
 }
 
-class _FontPreview extends ConsumerWidget {
-  const _FontPreview({required this.font});
-
-  final WebFont font;
-
+class const _FontPreview({required final WebFont font}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
@@ -333,15 +324,10 @@ class _FontPreview extends ConsumerWidget {
   }
 }
 
-class _FontPreviewDialog extends HookWidget {
-  const _FontPreviewDialog({
-    required this.fontFamily,
-    required this.appCachePath,
-  });
-
-  final String fontFamily;
-  final String appCachePath;
-
+class const _FontPreviewDialog({
+  required final String fontFamily,
+  required final String appCachePath,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final url = Uri(

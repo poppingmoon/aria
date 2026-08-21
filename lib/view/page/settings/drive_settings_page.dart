@@ -17,11 +17,8 @@ import '../../widget/account_settings_scaffold.dart';
 import '../../widget/key_value_widget.dart';
 import '../drive_page.dart';
 
-class DriveSettingsPage extends ConsumerWidget {
-  const DriveSettingsPage({super.key, required this.account});
-
-  final Account account;
-
+class const DriveSettingsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));

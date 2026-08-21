@@ -16,11 +16,8 @@ Future<Duration?> showDurationPickerDialog(
   );
 }
 
-class DurationPickerDialog extends HookWidget {
-  const DurationPickerDialog({super.key, this.initialDuration});
-
-  final Duration? initialDuration;
-
+class const DurationPickerDialog({super.key, final Duration? initialDuration})
+    extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final daysController = useTextEditingController(

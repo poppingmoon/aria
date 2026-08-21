@@ -3,8 +3,8 @@ import 'package:aria/repository/note_draft_repository.dart';
 import 'package:isar_community/isar.dart';
 import 'package:misskey_dart/src/data/base/note_draft.dart';
 
-class FakeNoteDraftRepository extends NoteDraftRepository {
-  FakeNoteDraftRepository() : super(_FakeIsar());
+class FakeNoteDraftRepository() extends NoteDraftRepository {
+  this : super(_FakeIsar());
 
   @override
   Future<NoteDraft?> loadDraft({
@@ -37,9 +37,7 @@ class FakeNoteDraftRepository extends NoteDraftRepository {
   }) async {}
 }
 
-class _FakeIsar extends Isar {
-  _FakeIsar() : super('');
-
+class _FakeIsar([super.name = '']) extends Isar {
   @override
   Future<void> copyToFile(String targetPath) {
     throw UnimplementedError();

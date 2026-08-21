@@ -27,12 +27,11 @@ import '../page/drive_page.dart';
 import 'post_file_thumbnail.dart';
 import 'time_widget.dart';
 
-class DriveFileSheet extends ConsumerWidget {
-  const DriveFileSheet({super.key, required this.account, required this.file});
-
-  final Account account;
-  final DriveFile file;
-
+class const DriveFileSheet({
+  super.key,
+  required final Account account,
+  required final DriveFile file,
+}) extends ConsumerWidget {
   Future<void> _renameFile(WidgetRef ref) async {
     final result = await showTextFieldDialog(
       ref.context,

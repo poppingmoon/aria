@@ -129,9 +129,7 @@ void main() async {
   );
 }
 
-class Aria extends HookConsumerWidget {
-  const Aria({super.key});
-
+class const Aria({super.key}) extends HookConsumerWidget {
   Future<void> _init(WidgetRef ref) async {
     final generalSettings = ref.read(generalSettingsNotifierProvider);
     Future(() {

@@ -28,12 +28,11 @@ import '../../widget/time_widget.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
-class PlayPage extends HookConsumerWidget {
-  const PlayPage({super.key, required this.account, required this.playId});
-
-  final Account account;
-  final String playId;
-
+class const PlayPage({
+  super.key,
+  required final Account account,
+  required final String playId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);

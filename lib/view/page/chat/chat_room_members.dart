@@ -19,16 +19,11 @@ import '../../widget/pagination_bottom_widget.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
-class ChatRoomMembers extends HookConsumerWidget {
-  const ChatRoomMembers({
-    super.key,
-    required this.account,
-    required this.roomId,
-  });
-
-  final Account account;
-  final String roomId;
-
+class const ChatRoomMembers({
+  super.key,
+  required final Account account,
+  required final String roomId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final room = ref.watch(chatRoomNotifierProvider(account, roomId)).value;

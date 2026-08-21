@@ -9,11 +9,8 @@ import '../widget/follow_requests_list_view.dart';
 import '../widget/notifications_list_view.dart';
 import '../widget/timeline_list_view.dart';
 
-class NotificationsPage extends ConsumerWidget {
-  const NotificationsPage({super.key, required this.account});
-
-  final Account account;
-
+class const NotificationsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

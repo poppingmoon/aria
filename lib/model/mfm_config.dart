@@ -5,7 +5,7 @@ part 'mfm_config.freezed.dart';
 
 @freezed
 abstract class MfmConfig with _$MfmConfig {
-  const factory MfmConfig({
+  const factory({
     required TextStyle style,
     @Default(false) bool disableNyaize,
     @Default(1.0) double scale,

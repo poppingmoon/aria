@@ -6,11 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../model/account.dart';
 import '../model/database/note_draft.dart' as db;
 
-class NoteDraftRepository {
-  const NoteDraftRepository(this.isar);
-
-  final Isar isar;
-
+class const NoteDraftRepository(final Isar isar) {
   Future<NoteDraft?> loadDraft({
     required Account account,
     String? tabId,

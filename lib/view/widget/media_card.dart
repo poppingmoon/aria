@@ -33,24 +33,15 @@ import 'media_icon.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class MediaCard extends HookConsumerWidget {
-  const MediaCard({
-    super.key,
-    required this.account,
-    required this.files,
-    required this.index,
-    this.user,
-    this.noteId,
-    this.fit = BoxFit.contain,
-  });
-
-  final Account account;
-  final List<DriveFile> files;
-  final int index;
-  final User? user;
-  final String? noteId;
-  final BoxFit fit;
-
+class const MediaCard({
+  super.key,
+  required final Account account,
+  required final List<DriveFile> files,
+  required final int index,
+  final User? user,
+  final String? noteId,
+  final BoxFit fit = BoxFit.contain,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = files.elementAtOrNull(index);
@@ -478,25 +469,15 @@ class MediaCard extends HookConsumerWidget {
   }
 }
 
-class _ImagePreview extends ConsumerWidget {
-  const _ImagePreview({
-    required this.account,
-    required this.file,
-    required this.files,
-    this.user,
-    this.noteId,
-    this.fit,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final List<DriveFile> files;
-  final User? user;
-  final String? noteId;
-  final BoxFit? fit;
-  final void Function()? onLongPress;
-
+class const _ImagePreview({
+  required final Account account,
+  required final DriveFile file,
+  required final List<DriveFile> files,
+  final User? user,
+  final String? noteId,
+  final BoxFit? fit,
+  final void Function()? onLongPress,
+}) extends ConsumerWidget {
   void _openImage(BuildContext context) {
     if (user?.id case final userId? when noteId != null) {
       showUserImageGalleryDialog(
@@ -557,23 +538,14 @@ class _ImagePreview extends ConsumerWidget {
   }
 }
 
-class _VideoPreview extends StatelessWidget {
-  const _VideoPreview({
-    required this.account,
-    required this.file,
-    this.user,
-    this.noteId,
-    this.fit,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final User? user;
-  final String? noteId;
-  final BoxFit? fit;
-  final void Function()? onLongPress;
-
+class const _VideoPreview({
+  required final Account account,
+  required final DriveFile file,
+  final User? user,
+  final String? noteId,
+  final BoxFit? fit,
+  final void Function()? onLongPress,
+}) extends StatelessWidget {
   void _openVideo(BuildContext context) {
     showDialog<void>(
       context: context,
@@ -628,21 +600,13 @@ class _VideoPreview extends StatelessWidget {
   }
 }
 
-class _AudioPreview extends StatelessWidget {
-  const _AudioPreview({
-    required this.account,
-    required this.file,
-    this.user,
-    this.noteId,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final User? user;
-  final String? noteId;
-  final void Function()? onLongPress;
-
+class const _AudioPreview({
+  required final Account account,
+  required final DriveFile file,
+  final User? user,
+  final String? noteId,
+  final void Function()? onLongPress,
+}) extends StatelessWidget {
   void _openAudio(BuildContext context) {
     showDialog<void>(
       context: context,
@@ -689,23 +653,14 @@ class _AudioPreview extends StatelessWidget {
   }
 }
 
-class _FilePreview extends ConsumerWidget {
-  const _FilePreview({
-    required this.account,
-    required this.file,
-    this.user,
-    this.noteId,
-    this.fit,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final User? user;
-  final String? noteId;
-  final BoxFit? fit;
-  final void Function()? onLongPress;
-
+class const _FilePreview({
+  required final Account account,
+  required final DriveFile file,
+  final User? user,
+  final String? noteId,
+  final BoxFit? fit,
+  final void Function()? onLongPress,
+}) extends ConsumerWidget {
   void _openFile(WidgetRef ref) {
     if (noteId case final noteId?) {
       ref.context.push('/$account/notes/$noteId');
@@ -757,21 +712,13 @@ class _FilePreview extends ConsumerWidget {
   }
 }
 
-class _MediaCardSheet extends ConsumerWidget {
-  const _MediaCardSheet({
-    required this.account,
-    required this.file,
-    this.user,
-    this.noteId,
-    this.hideMedia,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final User? user;
-  final String? noteId;
-  final void Function()? hideMedia;
-
+class const _MediaCardSheet({
+  required final Account account,
+  required final DriveFile file,
+  final User? user,
+  final String? noteId,
+  final void Function()? hideMedia,
+}) extends ConsumerWidget {
   Future<void> _downloadImage(WidgetRef ref) async {
     final mediaSaveLocation = ref
         .read(generalSettingsNotifierProvider)

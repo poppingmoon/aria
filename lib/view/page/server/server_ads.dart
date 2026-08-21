@@ -9,11 +9,8 @@ import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 
-class ServerAds extends ConsumerWidget {
-  const ServerAds({super.key, required this.host});
-
-  final String host;
-
+class const ServerAds({super.key, required final String host})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host));

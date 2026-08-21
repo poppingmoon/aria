@@ -5,12 +5,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
-class Jump extends HookWidget {
-  const Jump({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Jump({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   static final _offsetTween = TweenSequence([
     TweenSequenceItem(
       tween: Tween(begin: Offset.zero, end: const Offset(0, -16.0)),

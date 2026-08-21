@@ -5,35 +5,23 @@ import '../../i18n/strings.g.dart';
 import '../../provider/absolute_time_provider.dart';
 import '../../util/format_datetime.dart';
 
-class TimeWidget extends ConsumerWidget {
-  const TimeWidget({
-    super.key,
-    this.leadingSpans,
-    required this.time,
-    this.builder,
-    this.detailed = false,
-    this.absolute = false,
-    this.fallbackText,
-    this.disableTooltip = false,
-    this.style,
-    this.textScaler,
-  });
-
-  final List<InlineSpan>? leadingSpans;
-  final DateTime? time;
+class const TimeWidget({
+  super.key,
+  final List<InlineSpan>? leadingSpans,
+  required final DateTime? time,
   final Widget Function(
     BuildContext context,
     String? absolute,
     String? relative,
   )?
-  builder;
-  final bool detailed;
-  final bool absolute;
-  final String? fallbackText;
-  final bool disableTooltip;
-  final TextStyle? style;
-  final TextScaler? textScaler;
-
+  builder,
+  final bool detailed = false,
+  final bool absolute = false,
+  final String? fallbackText,
+  final bool disableTooltip = false,
+  final TextStyle? style,
+  final TextScaler? textScaler,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final time = this.time;

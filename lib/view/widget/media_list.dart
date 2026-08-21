@@ -10,18 +10,12 @@ import '../../model/general_settings.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import 'media_card.dart';
 
-class MediaList extends ConsumerWidget {
-  const MediaList({
-    super.key,
-    required this.account,
-    required this.files,
-    this.user,
-  });
-
-  final Account account;
-  final List<DriveFile> files;
-  final User? user;
-
+class const MediaList({
+  super.key,
+  required final Account account,
+  required final List<DriveFile> files,
+  final User? user,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fit = ref.watch(

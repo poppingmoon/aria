@@ -14,7 +14,7 @@ enum IncomingMessageType {
 
 @Freezed(toJson: false)
 abstract class IncomingMessage with _$IncomingMessage {
-  const factory IncomingMessage({
+  const factory({
     // https://github.com/rrousselGit/freezed/issues/488
     // ignore: invalid_annotation_target
     @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
@@ -22,6 +22,6 @@ abstract class IncomingMessage with _$IncomingMessage {
     @Default({}) Map<String, dynamic> body,
   }) = _IncomingMessage;
 
-  factory IncomingMessage.fromJson(Map<String, Object?> json) =>
+  factory fromJson(Map<String, Object?> json) =>
       _$IncomingMessageFromJson(json);
 }

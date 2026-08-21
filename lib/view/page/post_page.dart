@@ -19,12 +19,11 @@ import '../widget/mfm_keyboard.dart';
 import '../widget/note_widget.dart';
 import '../widget/post_form.dart';
 
-class PostPage extends HookConsumerWidget {
-  const PostPage({super.key, required this.account, this.noteId});
-
-  final Account account;
-  final String? noteId;
-
+class const PostPage({
+  super.key,
+  required final Account account,
+  final String? noteId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);

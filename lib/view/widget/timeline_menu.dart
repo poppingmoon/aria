@@ -17,11 +17,8 @@ import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 import '../../util/reload_timeline.dart';
 
-class TimelineMenu extends ConsumerWidget {
-  const TimelineMenu({super.key, required this.tabSettings});
-
-  final TabSettings tabSettings;
-
+class const TimelineMenu({super.key, required final TabSettings tabSettings})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;

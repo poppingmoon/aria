@@ -14,11 +14,8 @@ import '../../../provider/search_custom_emojis_provider.dart';
 import '../../widget/custom_emoji.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 
-class ServerEmojis extends HookConsumerWidget {
-  const ServerEmojis({super.key, required this.host});
-
-  final String host;
-
+class const ServerEmojis({super.key, required final String host})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref.watch(categorizedEmojisProvider(host));

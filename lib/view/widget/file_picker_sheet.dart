@@ -23,18 +23,12 @@ import '../dialog/message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import '../page/drive_page.dart';
 
-class FilePickerSheet extends ConsumerWidget {
-  const FilePickerSheet({
-    super.key,
-    required this.account,
-    this.type,
-    this.allowMultiple = false,
-  });
-
-  final Account account;
-  final FileType? type;
-  final bool allowMultiple;
-
+class const FilePickerSheet({
+  super.key,
+  required final Account account,
+  final FileType? type,
+  final bool allowMultiple = false,
+}) extends ConsumerWidget {
   Future<String?> _lookupMimeType(File file) async {
     List<int>? headerBytes;
     try {

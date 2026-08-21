@@ -11,12 +11,11 @@ import '../../../provider/api/search_channels_notifier_provider.dart';
 import '../../widget/channel_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class ChannelsSearch extends HookConsumerWidget {
-  const ChannelsSearch({super.key, required this.account, this.onChannelTap});
-
-  final Account account;
-  final void Function(CommunityChannel channel)? onChannelTap;
-
+class const ChannelsSearch({
+  super.key,
+  required final Account account,
+  final void Function(CommunityChannel channel)? onChannelTap,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');

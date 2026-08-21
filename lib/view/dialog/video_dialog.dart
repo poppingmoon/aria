@@ -21,23 +21,16 @@ import '../../util/show_toast.dart';
 import '../widget/image_widget.dart';
 import 'message_dialog.dart';
 
-class VideoDialog extends HookConsumerWidget {
-  const VideoDialog({
-    super.key,
-    this.account,
-    this.url,
-    this.file,
-    this.fileName,
-    this.thumbnailUrl,
-    this.noteId,
-  }) : assert(url != null || file != null);
-
-  final Account? account;
-  final String? url;
-  final File? file;
-  final String? fileName;
-  final String? thumbnailUrl;
-  final String? noteId;
+class const VideoDialog({
+  super.key,
+  final Account? account,
+  final String? url,
+  final File? file,
+  final String? fileName,
+  final String? thumbnailUrl,
+  final String? noteId,
+}) extends HookConsumerWidget {
+  this : assert(url != null || file != null);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

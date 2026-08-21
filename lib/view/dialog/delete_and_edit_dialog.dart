@@ -11,16 +11,11 @@ import '../../provider/notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 
-class DeleteAndEditDialog extends ConsumerWidget {
-  const DeleteAndEditDialog({
-    super.key,
-    required this.account,
-    required this.note,
-  });
-
-  final Account account;
-  final Note note;
-
+class const DeleteAndEditDialog({
+  super.key,
+  required final Account account,
+  required final Note note,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);

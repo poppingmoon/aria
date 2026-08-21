@@ -6,9 +6,8 @@ MobileScannerController useMobileScannerController({List<Object?>? keys}) {
   return use(_MobileScannerControllerHook(keys: keys));
 }
 
-class _MobileScannerControllerHook extends Hook<MobileScannerController> {
-  const _MobileScannerControllerHook({super.keys});
-
+class const _MobileScannerControllerHook({super.keys})
+    extends Hook<MobileScannerController> {
   @override
   HookState<MobileScannerController, Hook<MobileScannerController>>
   createState() => _MobileScannerControllerHookState();

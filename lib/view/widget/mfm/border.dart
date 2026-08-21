@@ -17,12 +17,11 @@ enum _BorderStyle {
   outset,
 }
 
-class Border extends StatelessWidget {
-  const Border({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Border({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = switch (args['style']) {
@@ -46,24 +45,15 @@ class Border extends StatelessWidget {
   }
 }
 
-class BorderWidget extends StatelessWidget {
-  const BorderWidget({
-    super.key,
-    this.style,
-    this.color,
-    this.width = 1.0,
-    this.radius = 0.0,
-    this.noClip = false,
-    required this.child,
-  });
-
-  final String? style;
-  final Color? color;
-  final double width;
-  final double radius;
-  final bool noClip;
-  final Widget child;
-
+class const BorderWidget({
+  super.key,
+  final String? style,
+  final Color? color,
+  final double width = 1.0,
+  final double radius = 0.0,
+  final bool noClip = false,
+  required final Widget child,
+}) extends StatelessWidget {
   (Color, Color) _get3DColors(Color color) {
     // https://searchfox.org/mozilla-central/source/layout/base/nsCSSColorUtils.cpp#22
     const darkerScale = 2.0 / 3.0;
@@ -209,17 +199,11 @@ class BorderWidget extends StatelessWidget {
   }
 }
 
-class _DotBorderPainter extends CustomPainter {
-  _DotBorderPainter({
-    required this.width,
-    required this.radius,
-    required this.color,
-  });
-
-  final double width;
-  final double radius;
-  final Color color;
-
+class const _DotBorderPainter({
+  required final double width,
+  required final double radius,
+  required final Color color,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()

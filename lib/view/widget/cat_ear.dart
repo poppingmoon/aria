@@ -1,18 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
-class CatEar extends AnimatedWidget {
-  const CatEar({
-    super.key,
-    required super.listenable,
-    required this.color,
-    required this.height,
-    this.flipped = false,
-  });
-
-  final Color color;
-  final double height;
-  final bool flipped;
-
+class const CatEar({
+  super.key,
+  required super.listenable,
+  required final Color color,
+  required final double height,
+  final bool flipped = false,
+}) extends AnimatedWidget {
   // pi - 2 * atan2(2, 3)
   static const double _angleOffset = 1.96558744;
 
@@ -36,12 +30,10 @@ class CatEar extends AnimatedWidget {
   }
 }
 
-class CatEarPainter extends CustomPainter {
-  const CatEarPainter({required this.color, required this.animation});
-
-  final Color color;
-  final double animation;
-
+class const CatEarPainter({
+  required final Color color,
+  required final double animation,
+}) extends CustomPainter {
   // pi / 6
   static const double _sx = 0.52359877;
 

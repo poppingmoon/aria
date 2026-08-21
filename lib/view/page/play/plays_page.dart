@@ -10,11 +10,8 @@ import 'plays_liked.dart';
 import 'plays_my.dart';
 import 'plays_search.dart';
 
-class PlaysPage extends ConsumerWidget {
-  const PlaysPage({super.key, required this.account});
-
-  final Account account;
-
+class const PlaysPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;

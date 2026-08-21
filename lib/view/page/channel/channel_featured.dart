@@ -7,16 +7,11 @@ import '../../../provider/api/featured_notes_notifier_provider.dart';
 import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
 
-class ChannelFeatured extends ConsumerWidget {
-  const ChannelFeatured({
-    super.key,
-    required this.account,
-    required this.channelId,
-  });
-
-  final Account account;
-  final String channelId;
-
+class const ChannelFeatured({
+  super.key,
+  required final Account account,
+  required final String channelId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notes = ref.watch(

@@ -14,12 +14,11 @@ import 'duration_picker_dialog.dart';
 
 enum _MutePeriod { indefinite, at, after }
 
-class MuteDialog extends HookConsumerWidget {
-  const MuteDialog({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const MuteDialog({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final period = useState(_MutePeriod.indefinite);

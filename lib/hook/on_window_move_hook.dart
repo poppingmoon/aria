@@ -6,11 +6,8 @@ void useOnWindowMove(void Function() onWindowMove) {
   use(_OnWindowMoveHook(onWindowMove: onWindowMove));
 }
 
-class _OnWindowMoveHook extends Hook<void> {
-  const _OnWindowMoveHook({required this.onWindowMove});
-
-  final void Function() onWindowMove;
-
+class const _OnWindowMoveHook({required final void Function() onWindowMove})
+    extends Hook<void> {
   @override
   __OnWindowMoveStateState createState() => __OnWindowMoveStateState();
 }

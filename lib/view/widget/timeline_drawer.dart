@@ -16,11 +16,8 @@ import '../dialog/text_field_dialog.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class TimelineDrawer extends HookConsumerWidget {
-  const TimelineDrawer({super.key, this.controller});
-
-  final TabController? controller;
-
+class const TimelineDrawer({super.key, final TabController? controller})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
@@ -101,17 +98,11 @@ class TimelineDrawer extends HookConsumerWidget {
   }
 }
 
-class _TimelineDrawerExpansionTile extends ConsumerWidget {
-  const _TimelineDrawerExpansionTile({
-    required this.account,
-    required this.initiallyExpanded,
-    required this.controller,
-  });
-
-  final Account account;
-  final bool initiallyExpanded;
-  final ExpansibleController controller;
-
+class const _TimelineDrawerExpansionTile({
+  required final Account account,
+  required final bool initiallyExpanded,
+  required final ExpansibleController controller,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

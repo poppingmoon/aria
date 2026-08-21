@@ -24,12 +24,11 @@ import 'twitter_embed.dart';
 import 'url_sheet.dart';
 import 'user_info.dart';
 
-class UrlPreview extends HookConsumerWidget {
-  const UrlPreview({super.key, required this.account, required this.link});
-
-  final Account account;
-  final String link;
-
+class const UrlPreview({
+  super.key,
+  required final Account account,
+  required final String link,
+}) extends HookConsumerWidget {
   String? _normalizeActivityPub(Uri activityPub, Uri? url) {
     return switch (activityPub) {
       Uri(
@@ -300,12 +299,10 @@ class UrlPreview extends HookConsumerWidget {
   }
 }
 
-class _LookupPreview extends ConsumerWidget {
-  const _LookupPreview({required this.account, required this.url});
-
-  final Account account;
-  final String url;
-
+class const _LookupPreview({
+  required final Account account,
+  required final String url,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final response = ref.watch(lookupProvider(account, url));

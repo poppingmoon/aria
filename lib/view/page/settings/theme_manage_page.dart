@@ -21,9 +21,7 @@ import '../../widget/error_message.dart';
 import '../../widget/key_value_widget.dart';
 import '../../widget/mfm/code.dart';
 
-class ThemeManagePage extends ConsumerWidget {
-  const ThemeManagePage({super.key});
-
+class const ThemeManagePage({super.key}) extends ConsumerWidget {
   Future<void> _install(
     WidgetRef ref,
     String code, {

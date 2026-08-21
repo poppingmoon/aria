@@ -24,38 +24,22 @@ final _catEarWiggleTween = TweenSequence([
   TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.65624379), weight: 25),
 ]);
 
-class CatAvatar extends HookWidget {
-  const CatAvatar({
-    super.key,
-    required this.account,
-    required this.url,
-    required this.blurHash,
-    required this.catEarColor,
-    required this.decorations,
-    required this.decorationsBelowAvatar,
-    required this.showOnlineStatus,
-    required this.onlineStatus,
-    required this.enableHapticFeedback,
-    required this.size,
-    required this.borderRadius,
-    required this.onTap,
-    required this.disableAnimations,
-  });
-
-  final Account account;
-  final Uri? url;
-  final String? blurHash;
-  final Color catEarColor;
-  final List<UserAvatarDecoration>? decorations;
-  final List<UserAvatarDecoration>? decorationsBelowAvatar;
-  final bool showOnlineStatus;
-  final OnlineStatus? onlineStatus;
-  final bool enableHapticFeedback;
-  final double size;
-  final BorderRadius borderRadius;
-  final void Function()? onTap;
-  final bool disableAnimations;
-
+class const CatAvatar({
+  super.key,
+  required final Account account,
+  required final Uri? url,
+  required final String? blurHash,
+  required final Color catEarColor,
+  required final List<UserAvatarDecoration>? decorations,
+  required final List<UserAvatarDecoration>? decorationsBelowAvatar,
+  required final bool showOnlineStatus,
+  required final OnlineStatus? onlineStatus,
+  required final bool enableHapticFeedback,
+  required final double size,
+  required final BorderRadius borderRadius,
+  required final void Function()? onTap,
+  required final bool disableAnimations,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useAnimationController(

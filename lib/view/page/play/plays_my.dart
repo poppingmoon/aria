@@ -8,11 +8,8 @@ import '../../../provider/api/plays_notifier_provider.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/play_preview.dart';
 
-class PlaysMy extends ConsumerWidget {
-  const PlaysMy({super.key, required this.account});
-
-  final Account account;
-
+class const PlaysMy({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final plays = ref.watch(playsNotifierProvider(account));

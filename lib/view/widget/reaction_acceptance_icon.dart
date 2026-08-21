@@ -3,11 +3,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class ReactionAcceptanceIcon extends StatelessWidget {
-  const ReactionAcceptanceIcon({super.key, required this.acceptance});
-
-  final ReactionAcceptance? acceptance;
-
+class const ReactionAcceptanceIcon({
+  super.key,
+  required final ReactionAcceptance? acceptance,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(

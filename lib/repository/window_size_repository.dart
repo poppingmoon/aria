@@ -2,11 +2,7 @@ import 'dart:ui';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class WindowSizeRepository {
-  const WindowSizeRepository(this.prefs);
-
-  final SharedPreferencesWithCache prefs;
-
+class const WindowSizeRepository(final SharedPreferencesWithCache prefs) {
   static const _widthKey = 'windowWidth';
   static const _heightKey = 'windowHeight';
 

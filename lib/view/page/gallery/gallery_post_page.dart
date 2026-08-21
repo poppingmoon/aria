@@ -34,16 +34,11 @@ import '../../widget/time_widget.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
-class GalleryPostPage extends ConsumerWidget {
-  const GalleryPostPage({
-    super.key,
-    required this.account,
-    required this.postId,
-  });
-
-  final Account account;
-  final String postId;
-
+class const GalleryPostPage({
+  super.key,
+  required final Account account,
+  required final String postId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

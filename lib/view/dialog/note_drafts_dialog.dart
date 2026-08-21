@@ -29,11 +29,8 @@ import '../widget/tab_icon_widget.dart';
 import '../widget/user_avatar.dart';
 import 'confirmation_dialog.dart';
 
-class NoteDraftsDialog extends HookConsumerWidget {
-  const NoteDraftsDialog({super.key, required this.account});
-
-  final Account account;
-
+class const NoteDraftsDialog({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
@@ -75,11 +72,8 @@ class NoteDraftsDialog extends HookConsumerWidget {
   }
 }
 
-class _LocalNoteDrafts extends ConsumerWidget {
-  const _LocalNoteDrafts({required this.account});
-
-  final Account account;
-
+class const _LocalNoteDrafts({required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final drafts = ref.watch(localNoteDraftsNotifierProvider);
@@ -119,12 +113,10 @@ class _LocalNoteDrafts extends ConsumerWidget {
   }
 }
 
-class _LocalNoteDraftWidget extends ConsumerWidget {
-  const _LocalNoteDraftWidget({required this.account, required this.draft});
-
-  final Account account;
-  final LocalNoteDraft draft;
-
+class const _LocalNoteDraftWidget({
+  required final Account account,
+  required final LocalNoteDraft draft,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(draft.account)).value;
@@ -335,11 +327,8 @@ class _LocalNoteDraftWidget extends ConsumerWidget {
   }
 }
 
-class _NoteDrafts extends ConsumerWidget {
-  const _NoteDrafts({required this.account});
-
-  final Account account;
-
+class const _NoteDrafts({required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final drafts = ref.watch(noteDraftsNotifierProvider(account));
@@ -358,12 +347,10 @@ class _NoteDrafts extends ConsumerWidget {
   }
 }
 
-class _NoteDraftWidget extends ConsumerWidget {
-  const _NoteDraftWidget({required this.account, required this.draft});
-
-  final Account account;
-  final NoteDraft draft;
-
+class const _NoteDraftWidget({
+  required final Account account,
+  required final NoteDraft draft,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);

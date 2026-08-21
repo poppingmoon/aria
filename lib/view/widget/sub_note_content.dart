@@ -17,20 +17,13 @@ import 'media_list.dart';
 import 'mfm.dart';
 import 'poll_widget.dart';
 
-class SubNoteContent extends HookConsumerWidget {
-  const SubNoteContent({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.focusPostForm,
-    this.note,
-  });
-
-  final Account account;
-  final String noteId;
-  final void Function()? focusPostForm;
-  final Note? note;
-
+class const SubNoteContent({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final void Function()? focusPostForm,
+  final Note? note,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
@@ -199,19 +192,12 @@ class SubNoteContent extends HookConsumerWidget {
   }
 }
 
-class _SubNoteMfm extends ConsumerWidget {
-  const _SubNoteMfm({
-    required this.account,
-    required this.nodes,
-    required this.note,
-    this.maxLines,
-  });
-
-  final Account account;
-  final List<MfmNode>? nodes;
-  final Note note;
-  final int? maxLines;
-
+class const _SubNoteMfm({
+  required final Account account,
+  required final List<MfmNode>? nodes,
+  required final Note note,
+  final int? maxLines,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final style = DefaultTextStyle.of(context).style;

@@ -15,12 +15,11 @@ import '../../../util/future_with_dialog.dart';
 import '../../widget/file_picker_sheet.dart';
 import '../../widget/post_form_attaches.dart';
 
-class GalleryEditPage extends HookConsumerWidget {
-  const GalleryEditPage({super.key, required this.account, this.postId});
-
-  final Account account;
-  final String? postId;
-
+class const GalleryEditPage({
+  super.key,
+  required final Account account,
+  final String? postId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(attachesNotifierProvider(account, gallery: true));

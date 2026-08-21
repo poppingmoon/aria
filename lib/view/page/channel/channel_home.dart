@@ -18,16 +18,11 @@ import '../../widget/image_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/note_widget.dart';
 
-class ChannelHome extends ConsumerWidget {
-  const ChannelHome({
-    super.key,
-    required this.account,
-    required this.channelId,
-  });
-
-  final Account account;
-  final String channelId;
-
+class const ChannelHome({
+  super.key,
+  required final Account account,
+  required final String channelId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channel = ref

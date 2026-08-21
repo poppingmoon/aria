@@ -19,16 +19,11 @@ import '../../util/randomize_filename.dart';
 import '../dialog/message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 
-class DriveCreateSheet extends HookConsumerWidget {
-  const DriveCreateSheet({
-    super.key,
-    required this.account,
-    required this.folder,
-  });
-
-  final Account account;
-  final DriveFolder? folder;
-
+class const DriveCreateSheet({
+  super.key,
+  required final Account account,
+  required final DriveFolder? folder,
+}) extends HookConsumerWidget {
   Future<void> _upload(
     WidgetRef ref,
     bool keepOriginalUploading,

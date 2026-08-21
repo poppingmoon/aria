@@ -9,7 +9,7 @@ part 'tab_settings.g.dart';
 
 @freezed
 abstract class TabSettings with _$TabSettings {
-  const factory TabSettings({
+  const factory({
     String? id,
     required TabType tabType,
     String? name,
@@ -34,26 +34,25 @@ abstract class TabSettings with _$TabSettings {
     Map<String, dynamic>? parameters,
   }) = _TabSettings;
 
-  factory TabSettings.fromJson(Map<String, Object?> json) =>
-      _$TabSettingsFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$TabSettingsFromJson(json);
 
-  factory TabSettings.dummy() {
+  factory dummy() {
     return TabSettings(tabType: TabType.homeTimeline, account: Account.dummy());
   }
 
-  factory TabSettings.homeTimeline(Account account) {
+  factory homeTimeline(Account account) {
     return TabSettings(tabType: TabType.homeTimeline, account: account);
   }
 
-  factory TabSettings.localTimeline(Account account) {
+  factory localTimeline(Account account) {
     return TabSettings(tabType: TabType.localTimeline, account: account);
   }
 
-  factory TabSettings.globalTimeline(Account account) {
+  factory globalTimeline(Account account) {
     return TabSettings(tabType: TabType.globalTimeline, account: account);
   }
 
-  factory TabSettings.roleTimeline(Account account, String roleId) {
+  factory roleTimeline(Account account, String roleId) {
     return TabSettings(
       tabType: TabType.roleTimeline,
       account: account,
@@ -61,7 +60,7 @@ abstract class TabSettings with _$TabSettings {
     );
   }
 
-  factory TabSettings.userList(Account account, String listId) {
+  factory userList(Account account, String listId) {
     return TabSettings(
       tabType: TabType.userList,
       account: account,
@@ -69,7 +68,7 @@ abstract class TabSettings with _$TabSettings {
     );
   }
 
-  factory TabSettings.antenna(Account account, String antennaId) {
+  factory antenna(Account account, String antennaId) {
     return TabSettings(
       tabType: TabType.antenna,
       account: account,
@@ -77,7 +76,7 @@ abstract class TabSettings with _$TabSettings {
     );
   }
 
-  factory TabSettings.channel(Account account, String channelId) {
+  factory channel(Account account, String channelId) {
     return TabSettings(
       tabType: TabType.channel,
       account: account,
@@ -85,15 +84,15 @@ abstract class TabSettings with _$TabSettings {
     );
   }
 
-  factory TabSettings.mention(Account account) {
+  factory mention(Account account) {
     return TabSettings(tabType: TabType.mention, account: account);
   }
 
-  factory TabSettings.direct(Account account) {
+  factory direct(Account account) {
     return TabSettings(tabType: TabType.direct, account: account);
   }
 
-  factory TabSettings.user(Account account, String userId) {
+  factory user(Account account, String userId) {
     return TabSettings(tabType: TabType.user, account: account, userId: userId);
   }
 }

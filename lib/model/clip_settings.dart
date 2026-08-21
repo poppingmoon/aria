@@ -5,13 +5,10 @@ part 'clip_settings.freezed.dart';
 
 @freezed
 abstract class ClipSettings with _$ClipSettings {
-  const factory ClipSettings({
-    String? name,
-    String? description,
-    bool? isPublic,
-  }) = _ClipSettings;
+  const factory({String? name, String? description, bool? isPublic}) =
+      _ClipSettings;
 
-  factory ClipSettings.fromClip(Clip clip) {
+  factory fromClip(Clip clip) {
     return ClipSettings(
       name: clip.name,
       description: clip.description,

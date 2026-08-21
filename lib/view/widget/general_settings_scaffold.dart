@@ -4,20 +4,13 @@ import 'general_settings_navigation.dart';
 
 export 'general_settings_navigation.dart' show GeneralSettingsDestination;
 
-class GeneralSettingsScaffold extends StatelessWidget {
-  const GeneralSettingsScaffold({
-    super.key,
-    this.appBar,
-    this.body,
-    this.floatingActionButton,
-    this.selectedDestination,
-  });
-
-  final PreferredSizeWidget? appBar;
-  final Widget? body;
-  final Widget? floatingActionButton;
-  final GeneralSettingsDestination? selectedDestination;
-
+class const GeneralSettingsScaffold({
+  super.key,
+  final PreferredSizeWidget? appBar,
+  final Widget? body,
+  final Widget? floatingActionButton,
+  final GeneralSettingsDestination? selectedDestination,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;

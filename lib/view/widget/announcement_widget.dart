@@ -14,18 +14,12 @@ import 'image_widget.dart';
 import 'mfm.dart';
 import 'time_widget.dart';
 
-class AnnouncementWidget extends ConsumerWidget {
-  const AnnouncementWidget({
-    super.key,
-    required this.account,
-    required this.announcement,
-    this.showButton = true,
-  });
-
-  final Account account;
-  final AnnouncementsResponse announcement;
-  final bool showButton;
-
+class const AnnouncementWidget({
+  super.key,
+  required final Account account,
+  required final AnnouncementsResponse announcement,
+  final bool showButton = true,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final icon = announcement.icon;

@@ -20,11 +20,8 @@ import '../widget/image_widget.dart';
 import '../widget/misskey_server_autocomplete.dart';
 import '../widget/misskey_server_background.dart';
 
-class TokenLoginPage extends HookConsumerWidget {
-  const TokenLoginPage({super.key, this.query});
-
-  final String? query;
-
+class const TokenLoginPage({super.key, final String? query})
+    extends HookConsumerWidget {
   Future<void> _login(WidgetRef ref, String query, String token) async {
     final trimmed = query.trim();
     final match = RegExp(

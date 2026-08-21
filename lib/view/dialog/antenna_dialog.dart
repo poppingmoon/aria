@@ -10,12 +10,11 @@ import '../../provider/api/antennas_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'antenna_settings_dialog.dart';
 
-class AntennaDialog extends HookConsumerWidget {
-  const AntennaDialog({super.key, required this.account, required this.user});
-
-  final Account account;
-  final User user;
-
+class const AntennaDialog({
+  super.key,
+  required final Account account,
+  required final User user,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final antennas = ref.watch(antennasNotifierProvider(account)).value;

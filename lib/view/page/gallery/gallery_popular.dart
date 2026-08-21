@@ -10,11 +10,8 @@ import '../../widget/error_message.dart';
 import '../../widget/gallery_post_preview.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 
-class GalleryPopular extends ConsumerWidget {
-  const GalleryPopular({super.key, required this.account});
-
-  final Account account;
-
+class const GalleryPopular({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = ref.watch(popularGalleryPostsProvider(account));

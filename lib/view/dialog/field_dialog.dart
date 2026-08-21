@@ -6,11 +6,8 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 
-class FieldDialog extends HookWidget {
-  const FieldDialog({super.key, this.field});
-
-  final UserField? field;
-
+class const FieldDialog({super.key, final UserField? field})
+    extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final nameController = useTextEditingController(text: field?.name);

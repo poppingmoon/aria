@@ -45,11 +45,7 @@ const _permissions = [
   Permission.writeChat,
 ];
 
-class MiAuthRepository {
-  const MiAuthRepository(this.dio);
-
-  final Dio dio;
-
+class const MiAuthRepository(final Dio dio) {
   ({String sessionId, Uri url}) buildMiAuthUrl(Uri serverUrl) {
     final sessionId = const Uuid().v4();
     final url = serverUrl.replace(

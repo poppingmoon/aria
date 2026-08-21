@@ -17,17 +17,11 @@ import 'paginated_list_view.dart';
 import 'user_preview.dart';
 import 'user_sheet.dart';
 
-class ReactionUsersSheet extends HookConsumerWidget {
-  const ReactionUsersSheet({
-    required this.account,
-    required this.noteId,
-    this.initialReaction,
-  });
-
-  final Account account;
-  final String noteId;
-  final String? initialReaction;
-
+class const ReactionUsersSheet({
+  required final Account account,
+  required final String noteId,
+  final String? initialReaction,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (likeOnly, emojis, reactions) = ref.watch(
@@ -147,19 +141,12 @@ class ReactionUsersSheet extends HookConsumerWidget {
   }
 }
 
-class _ReactionUsers extends ConsumerWidget {
-  const _ReactionUsers({
-    required this.account,
-    required this.noteId,
-    required this.reaction,
-    this.controller,
-  });
-
-  final Account account;
-  final String noteId;
-  final String reaction;
-  final ScrollController? controller;
-
+class const _ReactionUsers({
+  required final Account account,
+  required final String noteId,
+  required final String reaction,
+  final ScrollController? controller,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final reactions = ref.watch(

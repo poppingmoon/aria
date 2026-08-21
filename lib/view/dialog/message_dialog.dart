@@ -14,12 +14,11 @@ Future<void> showMessageDialog(
   );
 }
 
-class MessageDialog extends StatelessWidget {
-  const MessageDialog({super.key, required this.message, required this.icon});
-
-  final String message;
-  final Widget icon;
-
+class const MessageDialog({
+  super.key,
+  required final String message,
+  required final Widget icon,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

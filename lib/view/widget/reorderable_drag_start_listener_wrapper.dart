@@ -1,18 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 
-class ReorderableDragStartListenerWrapper extends StatelessWidget {
-  const ReorderableDragStartListenerWrapper({
-    super.key,
-    required this.child,
-    required this.index,
-    this.enabled = true,
-  });
-
-  final Widget child;
-  final int index;
-  final bool enabled;
-
+class const ReorderableDragStartListenerWrapper({
+  super.key,
+  required final Widget child,
+  required final int index,
+  final bool enabled = true,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (defaultTargetPlatform

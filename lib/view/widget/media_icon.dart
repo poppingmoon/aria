@@ -1,12 +1,11 @@
 import 'package:material_ui/material_ui.dart';
 
-class MediaIcon extends StatelessWidget {
-  const MediaIcon({super.key, required this.mimeType, this.size, this.color});
-
-  final String? mimeType;
-  final double? size;
-  final Color? color;
-
+class const MediaIcon({
+  super.key,
+  required final String? mimeType,
+  final double? size,
+  final Color? color,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final IconData icon;

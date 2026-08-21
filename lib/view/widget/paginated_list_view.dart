@@ -9,30 +9,18 @@ import '../../provider/general_settings_notifier_provider.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 
-class PaginatedListView<T> extends HookConsumerWidget {
-  const PaginatedListView({
-    super.key,
-    this.controller,
-    this.header,
-    required this.paginationState,
-    required this.itemBuilder,
-    this.footer,
-    this.onRefresh,
-    this.loadMore,
-    this.panel = true,
-    this.noItemsLabel,
-  });
-
-  final ScrollController? controller;
-  final Widget? header;
-  final AsyncValue<PaginationState<T>>? paginationState;
-  final Widget Function(BuildContext context, T item) itemBuilder;
-  final Widget? footer;
-  final Future<void> Function()? onRefresh;
-  final void Function(bool skipError)? loadMore;
-  final bool panel;
-  final String? noItemsLabel;
-
+class const PaginatedListView<T>({
+  super.key,
+  final ScrollController? controller,
+  final Widget? header,
+  required final AsyncValue<PaginationState<T>>? paginationState,
+  required final Widget Function(BuildContext context, T item) itemBuilder,
+  final Widget? footer,
+  final Future<void> Function()? onRefresh,
+  final void Function(bool skipError)? loadMore,
+  final bool panel = true,
+  final String? noItemsLabel,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = this.controller ?? useScrollController();

@@ -14,9 +14,7 @@ import '../../widget/link_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/url_sheet.dart';
 
-class LanguagesPage extends ConsumerWidget {
-  const LanguagesPage({super.key});
-
+class const LanguagesPage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(generalSettingsNotifierProvider).locale;

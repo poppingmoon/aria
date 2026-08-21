@@ -59,16 +59,11 @@ Future<bool> confirmPost(
   return result ?? false;
 }
 
-class PostConfirmationDialog extends ConsumerWidget {
-  const PostConfirmationDialog({
-    super.key,
-    required this.account,
-    required this.draft,
-  });
-
-  final Account account;
-  final NoteDraft draft;
-
+class const PostConfirmationDialog({
+  super.key,
+  required final Account account,
+  required final NoteDraft draft,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

@@ -6,7 +6,7 @@ part 'misskey_colors.freezed.dart';
 
 @freezed
 abstract class MisskeyColors with _$MisskeyColors {
-  const factory MisskeyColors({
+  const factory({
     required String id,
     required String name,
     required bool isDark,

@@ -17,18 +17,12 @@ import '../widget/pagination_bottom_widget.dart';
 import 'clip_settings_dialog.dart';
 import 'confirmation_dialog.dart';
 
-class ClipDialog extends HookConsumerWidget {
-  const ClipDialog({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.clipId,
-  });
-
-  final Account account;
-  final String noteId;
-  final String? clipId;
-
+class const ClipDialog({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final String? clipId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(clipsNotifierProvider(account));

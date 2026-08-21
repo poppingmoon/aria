@@ -105,17 +105,12 @@ extension on String {
   }
 }
 
-class Converter {
-  const Converter({required this.key, this.params = const {}, this.children});
-
-  final String key;
-  final Map<String, String> params;
-  final Map<String, Converter>? children;
-
-  factory Converter.fromYamlMap({
-    required String key,
-    required YamlMap source,
-  }) {
+class const Converter({
+  required final String key,
+  final Map<String, String> params = const {},
+  final Map<String, Converter>? children,
+}) {
+  factory fromYamlMap({required String key, required YamlMap source}) {
     final children = <String, Converter>{};
     for (final e in source.entries) {
       final originalKey = e.key as String;

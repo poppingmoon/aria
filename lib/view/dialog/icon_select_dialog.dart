@@ -10,11 +10,8 @@ import '../../model/tab_icon.dart';
 import '../../provider/emoji_url_provider.dart';
 import '../widget/emoji_picker.dart';
 
-class IconSelectDialog extends HookConsumerWidget {
-  const IconSelectDialog({super.key, required this.account});
-
-  final Account? account;
-
+class const IconSelectDialog({super.key, required final Account? account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showEmojiPicker = useState(false);

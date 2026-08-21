@@ -14,12 +14,11 @@ import '../widget/paginated_list_view.dart';
 import '../widget/timeline_list_view.dart';
 import '../widget/user_info.dart';
 
-class RolePage extends ConsumerWidget {
-  const RolePage({super.key, required this.account, required this.roleId});
-
-  final Account account;
-  final String roleId;
-
+class const RolePage({
+  super.key,
+  required final Account account,
+  required final String roleId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final role = ref.watch(roleProvider(account, roleId)).value;

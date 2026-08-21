@@ -4,40 +4,36 @@ import 'package:misskey_dart/misskey_dart.dart';
 part 'broadcast.freezed.dart';
 part 'broadcast.g.dart';
 
-sealed class Broadcast {}
+sealed class Broadcast;
 
 @Freezed(toJson: false)
 abstract class EmojiAdded with _$EmojiAdded implements Broadcast {
-  const factory EmojiAdded({required Emoji emoji}) = _EmojiAdded;
+  const factory({required Emoji emoji}) = _EmojiAdded;
 
-  factory EmojiAdded.fromJson(Map<String, Object?> json) =>
-      _$EmojiAddedFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$EmojiAddedFromJson(json);
 }
 
 @Freezed(toJson: false)
 abstract class EmojiUpdated with _$EmojiUpdated implements Broadcast {
-  const factory EmojiUpdated({required List<Emoji> emojis}) = _EmojiUpdated;
+  const factory({required List<Emoji> emojis}) = _EmojiUpdated;
 
-  factory EmojiUpdated.fromJson(Map<String, Object?> json) =>
-      _$EmojiUpdatedFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$EmojiUpdatedFromJson(json);
 }
 
 @Freezed(toJson: false)
 abstract class EmojiDeleted with _$EmojiDeleted implements Broadcast {
-  const factory EmojiDeleted({required List<Emoji> emojis}) = _EmojiDeleted;
+  const factory({required List<Emoji> emojis}) = _EmojiDeleted;
 
-  factory EmojiDeleted.fromJson(Map<String, Object?> json) =>
-      _$EmojiDeletedFromJson(json);
+  factory fromJson(Map<String, Object?> json) => _$EmojiDeletedFromJson(json);
 }
 
 @Freezed(toJson: false)
 abstract class AnnouncementCreated
     with _$AnnouncementCreated
     implements Broadcast {
-  const factory AnnouncementCreated({
-    required AnnouncementsResponse announcement,
-  }) = _AnnouncementCreated;
+  const factory({required AnnouncementsResponse announcement}) =
+      _AnnouncementCreated;
 
-  factory AnnouncementCreated.fromJson(Map<String, Object?> json) =>
+  factory fromJson(Map<String, Object?> json) =>
       _$AnnouncementCreatedFromJson(json);
 }

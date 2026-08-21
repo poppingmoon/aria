@@ -6,14 +6,10 @@ import '../../i18n/strings.g.dart';
 import 'note_visibility_icon.dart';
 import 'note_visibility_widget.dart';
 
-class NoteVisibilitySheet extends StatelessWidget {
-  const NoteVisibilitySheet({
-    super.key,
-    this.visibilities = NoteVisibility.values,
-  });
-
-  final Iterable<NoteVisibility> visibilities;
-
+class const NoteVisibilitySheet({
+  super.key,
+  final Iterable<NoteVisibility> visibilities = NoteVisibility.values,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(

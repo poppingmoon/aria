@@ -2,11 +2,7 @@ import 'package:dio/dio.dart';
 
 import '../model/summaly_result.dart';
 
-class SummalyRepository {
-  const SummalyRepository(this.dio);
-
-  final Dio dio;
-
+class const SummalyRepository(final Dio dio) {
   Future<SummalyResult> getSummary({
     required Uri serverUrl,
     required String link,

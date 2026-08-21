@@ -14,11 +14,8 @@ import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 
-class ListsPage extends ConsumerWidget {
-  const ListsPage({super.key, required this.account});
-
-  final Account account;
-
+class const ListsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account));

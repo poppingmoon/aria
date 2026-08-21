@@ -6,7 +6,7 @@ part 'summaly_result.g.dart';
 // https://github.com/misskey-dev/summaly
 @Freezed(toJson: false)
 abstract class SummalyResult with _$SummalyResult {
-  const factory SummalyResult({
+  const factory({
     String? title,
     String? icon,
     String? description,
@@ -20,18 +20,17 @@ abstract class SummalyResult with _$SummalyResult {
     String? url,
   }) = _SummalyResult;
 
-  factory SummalyResult.fromJson(Map<String, dynamic> json) =>
-      _$SummalyResultFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$SummalyResultFromJson(json);
 }
 
 @Freezed(toJson: false)
 abstract class Player with _$Player {
-  const factory Player({
+  const factory({
     String? url,
     double? width,
     double? height,
     List<String>? allow,
   }) = _Player;
 
-  factory Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
 }

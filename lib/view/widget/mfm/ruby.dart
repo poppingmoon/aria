@@ -3,18 +3,12 @@ import 'dart:ui';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_ui/material_ui.dart';
 
-class Ruby extends HookWidget {
-  const Ruby({
-    super.key,
-    required this.style,
-    required this.ruby,
-    required this.child,
-  });
-
-  final TextStyle style;
-  final String ruby;
-  final Widget child;
-
+class const Ruby({
+  super.key,
+  required final TextStyle style,
+  required final String ruby,
+  required final Widget child,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final childKey = useMemoized(() => GlobalKey(), []);

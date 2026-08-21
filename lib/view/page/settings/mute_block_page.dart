@@ -19,11 +19,8 @@ import '../../widget/account_settings_scaffold.dart';
 import '../../widget/emoji_picker.dart';
 import '../../widget/muted_words_editor.dart';
 
-class MuteBlockPage extends StatelessWidget {
-  const MuteBlockPage({super.key, required this.account});
-
-  final Account account;
-
+class const MuteBlockPage({super.key, required final Account account})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -146,11 +143,8 @@ class MuteBlockPage extends StatelessWidget {
   }
 }
 
-class _MutedEmojisEditor extends HookConsumerWidget {
-  const _MutedEmojisEditor({required this.account});
-
-  final Account account;
-
+class const _MutedEmojisEditor({required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mutedEmojis = ref.watch(mutedEmojisNotifierProvider(account));
@@ -263,11 +257,8 @@ class _MutedEmojisEditor extends HookConsumerWidget {
   }
 }
 
-class _InstanceMuteEditor extends HookConsumerWidget {
-  const _InstanceMuteEditor({required this.account});
-
-  final Account account;
-
+class const _InstanceMuteEditor({required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

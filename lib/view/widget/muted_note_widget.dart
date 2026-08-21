@@ -7,22 +7,14 @@ import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import 'username_widget.dart';
 
-class MutedNoteWidget extends ConsumerWidget {
-  const MutedNoteWidget({
-    super.key,
-    required this.account,
-    required this.note,
-    this.onTap,
-    this.backgroundColor,
-    this.borderRadius,
-  });
-
-  final Account account;
-  final Note note;
-  final void Function()? onTap;
-  final Color? backgroundColor;
-  final BorderRadiusGeometry? borderRadius;
-
+class const MutedNoteWidget({
+  super.key,
+  required final Account account,
+  required final Note note,
+  final void Function()? onTap,
+  final Color? backgroundColor,
+  final BorderRadiusGeometry? borderRadius,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (verticalPadding, horizontalPadding, noteBackgroundColor) = ref.watch(

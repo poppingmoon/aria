@@ -7,11 +7,8 @@ import '../../provider/api/scheduled_notes_notifier_provider.dart';
 import '../widget/paginated_list_view.dart';
 import '../widget/scheduled_note_widget.dart';
 
-class ScheduledNotesPage extends ConsumerWidget {
-  const ScheduledNotesPage({super.key, required this.account});
-
-  final Account account;
-
+class const ScheduledNotesPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final drafts = ref.watch(scheduledNotesNotifierProvider(account));

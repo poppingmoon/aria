@@ -7,7 +7,7 @@ part 'local_note_draft.freezed.dart';
 
 @freezed
 abstract class LocalNoteDraft with _$LocalNoteDraft {
-  const factory LocalNoteDraft({
+  const factory({
     required int id,
     required Account account,
     String? tabId,

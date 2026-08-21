@@ -2,11 +2,7 @@ import 'dart:ui';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class WindowPositionRepository {
-  const WindowPositionRepository(this.prefs);
-
-  final SharedPreferencesWithCache prefs;
-
+class const WindowPositionRepository(final SharedPreferencesWithCache prefs) {
   static const _positionXKey = 'windowPositionX';
   static const _positionYKey = 'windowPositionY';
 

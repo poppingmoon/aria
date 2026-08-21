@@ -18,18 +18,12 @@ import 'file_picker_sheet.dart';
 import 'mfm_keyboard.dart';
 import 'post_form_attaches.dart';
 
-class ChatPostForm extends HookConsumerWidget {
-  const ChatPostForm({
-    super.key,
-    required this.account,
-    this.userId,
-    this.roomId,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
-
+class const ChatPostForm({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? roomId,
+}) extends HookConsumerWidget {
   Future<void> _send(WidgetRef ref, TextEditingController controller) async {
     final attaches = ref.read(attachesNotifierProvider(account, chat: true));
     final hasFile = attaches.isNotEmpty;

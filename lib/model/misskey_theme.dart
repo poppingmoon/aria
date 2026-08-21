@@ -5,7 +5,7 @@ part 'misskey_theme.g.dart';
 
 @Freezed(toJson: false)
 abstract class MisskeyTheme with _$MisskeyTheme {
-  const factory MisskeyTheme({
+  const factory({
     required String id,
     required String name,
     String? author,
@@ -15,6 +15,5 @@ abstract class MisskeyTheme with _$MisskeyTheme {
     Map<String, dynamic>? codeHighlighter,
   }) = _MisskeyTheme;
 
-  factory MisskeyTheme.fromJson(Map<String, dynamic> json) =>
-      _$MisskeyThemeFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$MisskeyThemeFromJson(json);
 }

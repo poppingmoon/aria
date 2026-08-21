@@ -4,9 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../i18n/strings.g.dart';
 import '../widget/misskey_servers.dart';
 
-class MisskeyServerListDialog extends StatelessWidget {
-  const MisskeyServerListDialog({super.key});
-
+class const MisskeyServerListDialog({super.key}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

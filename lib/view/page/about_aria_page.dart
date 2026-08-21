@@ -18,9 +18,7 @@ import '../../util/get_link_background_color.dart';
 import '../../util/launch_url.dart';
 import '../widget/url_sheet.dart';
 
-class AboutAriaPage extends HookConsumerWidget {
-  const AboutAriaPage({super.key});
-
+class const AboutAriaPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final packageInfo = useMemoized(PackageInfo.fromPlatform);

@@ -4,11 +4,8 @@ import 'dart:ui';
 import 'package:collection/collection.dart';
 import 'package:material_ui/material_ui.dart';
 
-class LineChart extends StatelessWidget {
-  const LineChart({super.key, required this.chart});
-
-  final List<int> chart;
-
+class const LineChart({super.key, required final List<int> chart})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final maxValue = max(1.0, chart.max);
@@ -28,12 +25,10 @@ class LineChart extends StatelessWidget {
   }
 }
 
-class _LineChartPainter extends CustomPainter {
-  const _LineChartPainter({required this.points, required this.color});
-
-  final List<({double x, double y})> points;
-  final Color color;
-
+class const _LineChartPainter({
+  required final List<({double x, double y})> points,
+  required final Color color,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     if (this.points.isEmpty) {

@@ -12,12 +12,11 @@ import '../../../provider/timeline_center_notifier_provider.dart';
 import '../../../util/pick_date_time.dart';
 import '../../widget/timeline_list_view.dart';
 
-class TagNotes extends HookConsumerWidget {
-  const TagNotes({super.key, required this.account, required this.tag});
-
-  final Account account;
-  final String tag;
-
+class const TagNotes({
+  super.key,
+  required final Account account,
+  required final String tag,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final withReplies = useState(true);

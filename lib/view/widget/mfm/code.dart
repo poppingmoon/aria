@@ -18,22 +18,14 @@ import '../../../provider/misskey_themes_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/safe_parse_color.dart';
 
-class Code extends HookConsumerWidget {
-  const Code({
-    super.key,
-    required this.code,
-    this.language,
-    this.inline = false,
-    this.style,
-    this.copyOnTap = false,
-  });
-
-  final String code;
-  final String? language;
-  final bool inline;
-  final TextStyle? style;
-  final bool copyOnTap;
-
+class const Code({
+  super.key,
+  required final String code,
+  final String? language,
+  final bool inline = false,
+  final TextStyle? style,
+  final bool copyOnTap = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final input = code.replaceAll(RegExp(r'\r?\n$'), '');

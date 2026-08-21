@@ -20,18 +20,12 @@ import 'chat_room_chat.dart';
 import 'chat_room_info.dart';
 import 'chat_room_members.dart';
 
-class ChatRoomPage extends ConsumerWidget {
-  const ChatRoomPage({
-    super.key,
-    required this.account,
-    this.userId,
-    this.roomId,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
-
+class const ChatRoomPage({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? roomId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = userId != null

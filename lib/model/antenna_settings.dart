@@ -5,7 +5,7 @@ part 'antenna_settings.freezed.dart';
 
 @freezed
 abstract class AntennaSettings with _$AntennaSettings {
-  const factory AntennaSettings({
+  const factory({
     String? name,
     AntennaSource? src,
     String? userListId,
@@ -20,7 +20,7 @@ abstract class AntennaSettings with _$AntennaSettings {
     bool? excludeNotesInSensitiveChannel,
   }) = _AntennaSettings;
 
-  factory AntennaSettings.fromAntenna(Antenna antenna) {
+  factory fromAntenna(Antenna antenna) {
     return AntennaSettings(
       name: antenna.name,
       src: antenna.src,

@@ -21,24 +21,15 @@ import 'reactions_viewer.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
-class NoteSubWidget extends HookConsumerWidget {
-  const NoteSubWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.depth = 0,
-    this.showReplies = false,
-    this.focusPostForm,
-    this.barBottomPadding,
-  });
-
-  final Account account;
-  final String noteId;
-  final int depth;
-  final bool showReplies;
-  final void Function()? focusPostForm;
-  final double? barBottomPadding;
-
+class const NoteSubWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final int depth = 0,
+  final bool showReplies = false,
+  final void Function()? focusPostForm,
+  final double? barBottomPadding,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteNotifierProvider(account, noteId));

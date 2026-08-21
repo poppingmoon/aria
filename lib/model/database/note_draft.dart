@@ -5,9 +5,7 @@ import '../../util/fast_hash.dart';
 part 'note_draft.g.dart';
 
 @collection
-class NoteDraft {
-  NoteDraft();
-
+class NoteDraft() {
   Id id = Isar.autoIncrement;
 
   @Index()
@@ -54,7 +52,7 @@ class NoteDraft {
     };
   }
 
-  factory NoteDraft.fromJson(Map<String, dynamic> json) {
+  factory fromJson(Map<String, dynamic> json) {
     return NoteDraft()
       ..id = json['id'] as int
       ..account = json['account'] as String

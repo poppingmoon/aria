@@ -10,11 +10,8 @@ import '../../util/punycode.dart';
 import '../widget/misskey_server_autocomplete.dart';
 import 'misskey_server_list_dialog.dart';
 
-class AccountSelectDialog extends HookConsumerWidget {
-  const AccountSelectDialog({super.key, this.initialAccount});
-
-  final Account? initialAccount;
-
+class const AccountSelectDialog({super.key, final Account? initialAccount})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);

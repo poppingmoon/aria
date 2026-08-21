@@ -8,18 +8,12 @@ import '../../provider/note_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import 'mfm.dart';
 
-class NoteSummary extends ConsumerWidget {
-  const NoteSummary({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.onTap,
-  });
-
-  final Account account;
-  final String noteId;
-  final void Function()? onTap;
-
+class const NoteSummary({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   String _getNoteSummary(
     BuildContext context,
     Note note, {

@@ -16,12 +16,11 @@ import '../../widget/like_button.dart';
 import '../../widget/user_preview.dart';
 import '../../widget/user_sheet.dart';
 
-class UserListPage extends HookConsumerWidget {
-  const UserListPage({super.key, required this.account, required this.listId});
-
-  final Account account;
-  final String listId;
-
+class const UserListPage({
+  super.key,
+  required final Account account,
+  required final String listId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final list = ref

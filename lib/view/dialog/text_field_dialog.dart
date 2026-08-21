@@ -30,28 +30,17 @@ Future<String?> showTextFieldDialog(
   );
 }
 
-class TextFieldDialog extends HookWidget {
-  const TextFieldDialog({
-    super.key,
-    this.title,
-    this.initialText,
-    this.decoration,
-    this.style,
-    this.minLines,
-    this.maxLines = 1,
-    this.maxLength,
-    this.autocompleteOptions,
-  });
-
-  final Widget? title;
-  final String? initialText;
-  final InputDecoration? decoration;
-  final TextStyle? style;
-  final int? minLines;
-  final int? maxLines;
-  final int? maxLength;
-  final List<String>? autocompleteOptions;
-
+class const TextFieldDialog({
+  super.key,
+  final Widget? title,
+  final String? initialText,
+  final InputDecoration? decoration,
+  final TextStyle? style,
+  final int? minLines,
+  final int? maxLines = 1,
+  final int? maxLength,
+  final List<String>? autocompleteOptions,
+}) extends HookWidget {
   Widget _buildField(BuildContext context, TextEditingController controller) {
     final decoration = (this.decoration ?? const InputDecoration()).copyWith(
       suffixIcon: maxLines == 1
@@ -117,17 +106,11 @@ class TextFieldDialog extends HookWidget {
   }
 }
 
-class _Autocomplete extends HookWidget {
-  const _Autocomplete({
-    required this.textEditingController,
-    required this.options,
-    this.decoration,
-  });
-
-  final TextEditingController textEditingController;
-  final List<String> options;
-  final InputDecoration? decoration;
-
+class const _Autocomplete({
+  required final TextEditingController textEditingController,
+  required final List<String> options,
+  final InputDecoration? decoration,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();

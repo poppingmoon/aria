@@ -5,12 +5,11 @@ import '../../../i18n/strings.g.dart';
 import '../../../util/launch_url.dart';
 import '../url_sheet.dart';
 
-class Search extends HookConsumerWidget {
-  const Search({super.key, required this.query, this.textScaler});
-
-  final String query;
-  final TextScaler? textScaler;
-
+class const Search({
+  super.key,
+  required final String query,
+  final TextScaler? textScaler,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(

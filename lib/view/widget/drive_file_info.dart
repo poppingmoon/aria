@@ -20,12 +20,11 @@ import 'media_list.dart';
 import 'time_widget.dart';
 import 'url_widget.dart';
 
-class DriveFileInfo extends ConsumerWidget {
-  const DriveFileInfo({super.key, required this.account, required this.file});
-
-  final Account account;
-  final DriveFile file;
-
+class const DriveFileInfo({
+  super.key,
+  required final Account account,
+  required final DriveFile file,
+}) extends ConsumerWidget {
   Future<void> _setName(WidgetRef ref, DriveFile file) async {
     final name = await showTextFieldDialog(
       ref.context,

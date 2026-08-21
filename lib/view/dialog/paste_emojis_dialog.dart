@@ -20,16 +20,11 @@ import 'message_dialog.dart';
 
 const _sampleEmojis = ['👍', '❤️', ':misskey:', ':ai_yay@.:'];
 
-class PasteEmojisDialog extends HookConsumerWidget {
-  const PasteEmojisDialog({
-    super.key,
-    required this.account,
-    this.reaction = false,
-  });
-
-  final Account account;
-  final bool reaction;
-
+class const PasteEmojisDialog({
+  super.key,
+  required final Account account,
+  final bool reaction = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;
@@ -113,11 +108,8 @@ class PasteEmojisDialog extends HookConsumerWidget {
   }
 }
 
-class _PastePinnedEmojisDescription extends HookConsumerWidget {
-  const _PastePinnedEmojisDescription({required this.url});
-
-  final Uri url;
-
+class const _PastePinnedEmojisDescription({required final Uri url})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final url = useMemoized(() => parseDisplayUrl(this.url), [this.url]);

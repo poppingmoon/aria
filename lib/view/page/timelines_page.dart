@@ -38,9 +38,7 @@ import '../widget/timeline_tab_bar.dart';
 import '../widget/timeline_widget.dart';
 import '../widget/user_avatar.dart';
 
-class TimelinesPage extends HookConsumerWidget {
-  const TimelinesPage({super.key});
-
+class const TimelinesPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);
@@ -334,17 +332,11 @@ class TimelinesPage extends HookConsumerWidget {
   }
 }
 
-class _PostForm extends HookConsumerWidget {
-  const _PostForm({
-    required this.account,
-    required this.focusNode,
-    required this.onHide,
-  });
-
-  final Account account;
-  final FocusNode focusNode;
-  final void Function() onHide;
-
+class const _PostForm({
+  required final Account account,
+  required final FocusNode focusNode,
+  required final void Function() onHide,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
@@ -439,23 +431,14 @@ class _PostForm extends HookConsumerWidget {
   }
 }
 
-class _TimelinesPageButton extends ConsumerWidget {
-  const _TimelinesPageButton({
-    required this.tabSettings,
-    required this.buttonType,
-    this.index,
-    this.mini = false,
-    this.square = false,
-    this.showPostForm,
-  });
-
-  final TabSettings? tabSettings;
-  final TimelinesPageButtonType buttonType;
-  final int? index;
-  final bool mini;
-  final bool square;
-  final void Function()? showPostForm;
-
+class const _TimelinesPageButton({
+  required final TabSettings? tabSettings,
+  required final TimelinesPageButtonType buttonType,
+  final int? index,
+  final bool mini = false,
+  final bool square = false,
+  final void Function()? showPostForm,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings?.account;
@@ -709,27 +692,17 @@ class _TimelinesPageButton extends ConsumerWidget {
   }
 }
 
-class _TimelinesPageScrollPhysics extends ScrollPhysics {
-  const _TimelinesPageScrollPhysics({
-    super.parent,
-    this.spring = const SpringDescription(
-      mass: 0.5,
-      stiffness: 100.0,
-      damping: 15.556349186104047,
-    ),
-    this.minFlingDistance = kTouchSlop,
-    this.minFlingVelocity = kMinFlingVelocity,
-  });
-
+class const _TimelinesPageScrollPhysics({
+  super.parent,
   @override
-  final SpringDescription spring;
-
-  @override
-  final double minFlingDistance;
-
-  @override
-  final double minFlingVelocity;
-
+  final SpringDescription spring = const SpringDescription(
+    mass: 0.5,
+    stiffness: 100.0,
+    damping: 15.556349186104047,
+  ),
+  @override final double minFlingDistance = kTouchSlop,
+  @override final double minFlingVelocity = kMinFlingVelocity,
+}) extends ScrollPhysics {
   @override
   _TimelinesPageScrollPhysics applyTo(ScrollPhysics? ancestor) {
     return _TimelinesPageScrollPhysics(

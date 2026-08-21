@@ -17,11 +17,8 @@ import '../../widget/user_avatar.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
-class ChatInvitations extends ConsumerWidget {
-  const ChatInvitations({super.key, required this.account});
-
-  final Account account;
-
+class const ChatInvitations({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final invitations = ref.watch(chatInvitationsNotifierProvider(account));

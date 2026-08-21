@@ -15,11 +15,8 @@ import '../widget/error_message.dart';
 import '../widget/image_widget.dart';
 import '../widget/user_avatar.dart';
 
-class AvatarDecorationsPage extends ConsumerWidget {
-  const AvatarDecorationsPage({super.key, required this.account});
-
-  final Account account;
-
+class const AvatarDecorationsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final avatarDecorations = ref.watch(avatarDecorationsProvider(account));
@@ -234,15 +231,10 @@ class AvatarDecorationsPage extends ConsumerWidget {
   }
 }
 
-class _AvatarDecorationPreview extends ConsumerWidget {
-  const _AvatarDecorationPreview({
-    required this.account,
-    required this.avatarDecoration,
-  });
-
-  final Account account;
-  final GetAvatarDecorationsResponse avatarDecoration;
-
+class const _AvatarDecorationPreview({
+  required final Account account,
+  required final GetAvatarDecorationsResponse avatarDecoration,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

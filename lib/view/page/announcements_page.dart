@@ -10,11 +10,8 @@ import '../../provider/misskey_colors_provider.dart';
 import '../widget/announcement_widget.dart';
 import '../widget/paginated_list_view.dart';
 
-class AnnouncementsPage extends ConsumerWidget {
-  const AnnouncementsPage({super.key, required this.account});
-
-  final Account account;
-
+class const AnnouncementsPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(
@@ -40,12 +37,10 @@ class AnnouncementsPage extends ConsumerWidget {
   }
 }
 
-class _Announcements extends ConsumerWidget {
-  const _Announcements({required this.account, required this.isActive});
-
-  final Account account;
-  final bool isActive;
-
+class const _Announcements({
+  required final Account account,
+  required final bool isActive,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final announcements = ref.watch(

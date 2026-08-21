@@ -16,12 +16,11 @@ Future<void> showErrorMessageDialog(
   );
 }
 
-class ErrorMessageDialog extends StatelessWidget {
-  const ErrorMessageDialog({super.key, this.error, this.stackTrace});
-
-  final Object? error;
-  final StackTrace? stackTrace;
-
+class const ErrorMessageDialog({
+  super.key,
+  final Object? error,
+  final StackTrace? stackTrace,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

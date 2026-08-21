@@ -11,20 +11,13 @@ import '../../provider/note_notifier_provider.dart';
 import '../../util/decode_custom_emoji.dart';
 import 'reaction_button.dart';
 
-class ReactionsViewer extends HookConsumerWidget {
-  const ReactionsViewer({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.showAllReactions = false,
-    this.note,
-  });
-
-  final Account account;
-  final String noteId;
-  final bool showAllReactions;
-  final Note? note;
-
+class const ReactionsViewer({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final bool showAllReactions = false,
+  final Note? note,
+}) extends HookConsumerWidget {
   Map<String, int> _mergeReactions(Map<String, int> reactions) {
     final groups = reactions.entries.groupListsBy(
       (reaction) => reaction.key.startsWith(':'),

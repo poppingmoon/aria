@@ -16,11 +16,10 @@ import 'error_message.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'image_widget.dart';
 
-class MisskeyServers extends HookConsumerWidget {
-  const MisskeyServers({super.key, required this.onTapServer});
-
-  final void Function(JoinMisskeyInstanceInfo) onTapServer;
-
+class const MisskeyServers({
+  super.key,
+  required final void Function(JoinMisskeyInstanceInfo) onTapServer,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
@@ -64,12 +63,10 @@ class MisskeyServers extends HookConsumerWidget {
   }
 }
 
-class _ServerPreview extends ConsumerWidget {
-  const _ServerPreview({required this.server, this.onTap});
-
-  final JoinMisskeyInstanceInfo server;
-  final void Function()? onTap;
-
+class const _ServerPreview({
+  required final JoinMisskeyInstanceInfo server,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(

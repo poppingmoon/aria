@@ -2,11 +2,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 
-class ThemeModeWidget extends StatelessWidget {
-  const ThemeModeWidget({super.key, required this.themeMode});
-
-  final ThemeMode themeMode;
-
+class const ThemeModeWidget({super.key, required final ThemeMode themeMode})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (themeMode) {

@@ -8,7 +8,7 @@ part 'account_settings.g.dart';
 
 @freezed
 abstract class AccountSettings with _$AccountSettings {
-  const factory AccountSettings({
+  const factory({
     // Privacy
     @Default(true) bool keepCw,
     @Default(false) bool rememberNoteVisibility,
@@ -47,6 +47,6 @@ abstract class AccountSettings with _$AccountSettings {
     @Default([]) List<String> postFormHashtags,
   }) = _AccountSettings;
 
-  factory AccountSettings.fromJson(Map<String, Object?> json) =>
+  factory fromJson(Map<String, Object?> json) =>
       _$AccountSettingsFromJson(json);
 }

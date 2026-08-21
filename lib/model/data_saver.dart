@@ -4,7 +4,7 @@ part 'data_saver.freezed.dart';
 
 @freezed
 abstract class DataSaver with _$DataSaver {
-  const factory DataSaver({
+  const factory({
     required bool media,
     required bool avatar,
     required bool urlPreview,

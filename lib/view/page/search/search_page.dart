@@ -13,18 +13,12 @@ import '../../../provider/searched_queries_notifier_provider.dart';
 import 'search_notes.dart';
 import 'search_users.dart';
 
-class SearchPage extends HookConsumerWidget {
-  const SearchPage({
-    super.key,
-    required this.account,
-    this.userId,
-    this.channelId,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? channelId;
-
+class const SearchPage({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? channelId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

@@ -4,12 +4,8 @@ import 'dart:math';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_ui/material_ui.dart';
 
-class Sparkle extends HookWidget {
-  const Sparkle({this.opacity = 1.0, required this.child});
-
-  final double opacity;
-  final Widget child;
-
+class const Sparkle({final double opacity = 1.0, required final Widget child})
+    extends HookWidget {
   static final random = Random();
   static const colors = [
     Color(0xFFFF1493),
@@ -77,21 +73,15 @@ class Sparkle extends HookWidget {
   }
 }
 
-class _Particle {
-  _Particle({
-    required this.color,
-    required this.position,
-    required this.size,
-    required this.duration,
-  }) : path = drawStar(size);
-
-  final Color color;
-  final Offset position;
-  final double size;
-  final Path path;
+class _Particle({
+  required final Color color,
+  required final Offset position,
+  required final double size,
+  required final Duration duration,
+}) {
+  final Path path = drawStar(size);
   double scale = 0;
   double angle = 0;
-  final Duration duration;
   Duration timeAlive = Duration.zero;
 
   void update(Duration diff) {
@@ -123,10 +113,8 @@ class _Particle {
   }
 }
 
-class _ParticlePainter extends CustomPainter {
-  _ParticlePainter({required this.particles});
-
-  final List<_Particle> particles;
+class _ParticlePainter({required final List<_Particle> particles})
+    extends CustomPainter {
   final particlePaint = Paint()..style = PaintingStyle.fill;
 
   @override

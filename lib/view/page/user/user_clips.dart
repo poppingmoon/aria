@@ -8,12 +8,11 @@ import '../../../provider/api/user_clips_notifier_provider.dart';
 import '../../widget/clip_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class UserClips extends ConsumerWidget {
-  const UserClips({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const UserClips({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(userClipsNotifierProvider(account, userId));

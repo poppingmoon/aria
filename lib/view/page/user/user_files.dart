@@ -15,12 +15,11 @@ import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/media_card.dart';
 import '../../widget/pagination_bottom_widget.dart';
 
-class UserFiles extends HookConsumerWidget {
-  const UserFiles({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const UserFiles({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabSettings = TabSettings(

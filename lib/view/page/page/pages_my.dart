@@ -8,11 +8,8 @@ import '../../../provider/api/pages_notifier_provider.dart';
 import '../../widget/page_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class PagesMy extends ConsumerWidget {
-  const PagesMy({super.key, required this.account});
-
-  final Account account;
-
+class const PagesMy({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = ref.watch(pagesNotifierProvider(account));

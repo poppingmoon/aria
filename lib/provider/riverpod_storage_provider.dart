@@ -14,11 +14,8 @@ Future<Storage<String, String>> riverpodStorage(Ref ref) async {
   return _JsonIsarStorage.open(isar);
 }
 
-final class _JsonIsarStorage extends Storage<String, String> {
-  _JsonIsarStorage._(this.isar);
-
-  final Isar isar;
-
+final class _JsonIsarStorage._(final Isar isar)
+    extends Storage<String, String> {
   static Future<_JsonIsarStorage> open(Isar isar) async {
     final instance = _JsonIsarStorage._(isar);
     await instance.deleteOutOfDate();

@@ -10,12 +10,11 @@ import '../../i18n/strings.g.dart';
 import '../../util/edit_image.dart';
 import '../../util/future_with_dialog.dart';
 
-class CropImagePage extends HookWidget {
-  const CropImagePage({super.key, required this.image, this.aspectRatio});
-
-  final Uint8List image;
-  final double? aspectRatio;
-
+class const CropImagePage({
+  super.key,
+  required final Uint8List image,
+  final double? aspectRatio,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final editorKey = useMemoized(() => GlobalKey<ExtendedImageEditorState>());

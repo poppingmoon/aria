@@ -13,12 +13,11 @@ import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/user_info.dart';
 import '../../widget/users_sort_type_widget.dart';
 
-class TagUsers extends HookConsumerWidget {
-  const TagUsers({super.key, required this.account, required this.tag});
-
-  final Account account;
-  final String tag;
-
+class const TagUsers({
+  super.key,
+  required final Account account,
+  required final String tag,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sort = useState(UsersSortType.followerDescendant);

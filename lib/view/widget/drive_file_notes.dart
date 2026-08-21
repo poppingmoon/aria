@@ -7,16 +7,11 @@ import '../../provider/api/attached_notes_notifier_provider.dart';
 import 'note_widget.dart';
 import 'paginated_list_view.dart';
 
-class DriveFileNotes extends ConsumerWidget {
-  const DriveFileNotes({
-    super.key,
-    required this.account,
-    required this.fileId,
-  });
-
-  final Account account;
-  final String fileId;
-
+class const DriveFileNotes({
+  super.key,
+  required final Account account,
+  required final String fileId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notes = ref.watch(attachedNotesNotifierProvider(account, fileId));

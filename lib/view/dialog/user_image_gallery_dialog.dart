@@ -32,20 +32,13 @@ Future<void> showUserImageGalleryDialog(
   );
 }
 
-class UserImageGalleryDialog extends HookConsumerWidget {
-  const UserImageGalleryDialog({
-    super.key,
-    required this.account,
-    required this.userId,
-    this.initialNoteId,
-    this.initialFileId,
-  });
-
-  final Account account;
-  final String userId;
-  final String? initialNoteId;
-  final String? initialFileId;
-
+class const UserImageGalleryDialog({
+  super.key,
+  required final Account account,
+  required final String userId,
+  final String? initialNoteId,
+  final String? initialFileId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabSettings = TabSettings(
@@ -79,19 +72,12 @@ class UserImageGalleryDialog extends HookConsumerWidget {
   }
 }
 
-class _UserImageGalleryDialog extends HookConsumerWidget {
-  const _UserImageGalleryDialog({
-    required this.tabSettings,
-    required this.notes,
-    this.initialNoteId,
-    this.initialFileId,
-  });
-
-  final TabSettings tabSettings;
-  final List<Note> notes;
-  final String? initialNoteId;
-  final String? initialFileId;
-
+class const _UserImageGalleryDialog({
+  required final TabSettings tabSettings,
+  required final List<Note> notes,
+  final String? initialNoteId,
+  final String? initialFileId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final noteIdFilePairs = notes

@@ -15,16 +15,11 @@ import 'image_dialog.dart';
 import 'image_gallery_dialog.dart';
 import 'video_dialog.dart';
 
-class MissingFileCommentDialog extends ConsumerWidget {
-  const MissingFileCommentDialog({
-    super.key,
-    required this.account,
-    required this.file,
-  });
-
-  final Account account;
-  final PostFile file;
-
+class const MissingFileCommentDialog({
+  super.key,
+  required final Account account,
+  required final PostFile file,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final aspectRatio = switch (file) {

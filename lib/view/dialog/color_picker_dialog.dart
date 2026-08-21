@@ -17,11 +17,8 @@ Future<Color?> showColorPickerDialog(
   );
 }
 
-class ColorPickerDialog extends HookWidget {
-  const ColorPickerDialog({super.key, this.initialColor});
-
-  final Color? initialColor;
-
+class const ColorPickerDialog({super.key, final Color? initialColor})
+    extends HookWidget {
   ({double hue, double saturation}) _getHueAndSaturation(
     Size size,
     Offset localPosition,
@@ -243,12 +240,10 @@ class ColorPickerDialog extends HookWidget {
   }
 }
 
-class _HsvCirclePainter extends CustomPainter {
-  const _HsvCirclePainter({required this.value, required this.alpha});
-
-  final double value;
-  final double alpha;
-
+class const _HsvCirclePainter({
+  required final double value,
+  required final double alpha,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final radius = size.shortestSide * 0.5;
@@ -293,17 +288,11 @@ class _HsvCirclePainter extends CustomPainter {
   }
 }
 
-class _HsvPointerPainter extends CustomPainter {
-  const _HsvPointerPainter({
-    required this.hue,
-    required this.saturation,
-    required this.overlayAnimationValue,
-  });
-
-  final double hue;
-  final double saturation;
-  final double overlayAnimationValue;
-
+class const _HsvPointerPainter({
+  required final double hue,
+  required final double saturation,
+  required final double overlayAnimationValue,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final radius = size.shortestSide * 0.5;
@@ -340,21 +329,13 @@ class _HsvPointerPainter extends CustomPainter {
   }
 }
 
-class _GradientSlider extends StatelessWidget {
-  const _GradientSlider({
-    required this.value,
-    required this.onChanged,
-    this.max = 1.0,
-    required this.gradient,
-    required this.color,
-  });
-
-  final double value;
-  final void Function(double value) onChanged;
-  final double max;
-  final LinearGradient gradient;
-  final Color color;
-
+class const _GradientSlider({
+  required final double value,
+  required final void Function(double value) onChanged,
+  final double max = 1.0,
+  required final LinearGradient gradient,
+  required final Color color,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliderTheme(
@@ -391,12 +372,9 @@ class _GradientSlider extends StatelessWidget {
   }
 }
 
-class _GradientSliderTrackShape extends SliderTrackShape
+class const _GradientSliderTrackShape({required final LinearGradient gradient})
+    extends SliderTrackShape
     with BaseSliderTrackShape {
-  const _GradientSliderTrackShape({required this.gradient});
-
-  final LinearGradient gradient;
-
   @override
   void paint(
     PaintingContext context,

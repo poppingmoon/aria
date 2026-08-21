@@ -20,9 +20,15 @@ analyzer:
 linter:
   rules:
     always_use_package_imports: false
+    empty_container_bodies: true
+    initialize_in_field_declaration: true
     prefer_relative_imports: true
     prefer_single_quotes: true
     unawaited_futures: true
+    unnecessary_const_in_enum_constructor: true
+    unnecessary_primary_constructor_body: true
+    unnecessary_type_name_in_constructor: true
+    use_declaring_parameters: true
 
 plugins:
   riverpod_lint:

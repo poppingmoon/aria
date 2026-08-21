@@ -23,16 +23,11 @@ import 'haptic_feedback_refresh_indicator.dart';
 import 'notification_widget.dart';
 import 'pagination_bottom_widget.dart';
 
-class NotificationsListView extends HookConsumerWidget {
-  const NotificationsListView({
-    super.key,
-    required this.account,
-    this.controller,
-  });
-
-  final Account account;
-  final ScrollController? controller;
-
+class const NotificationsListView({
+  super.key,
+  required final Account account,
+  final ScrollController? controller,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifications = ref.watch(notificationsNotifierProvider(account));
@@ -323,9 +318,7 @@ class NotificationsListView extends HookConsumerWidget {
   }
 }
 
-class _NewNotificationsDivider extends ConsumerWidget {
-  const _NewNotificationsDivider();
-
+class const _NewNotificationsDivider() extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final color = Theme.of(context).colorScheme.primary;

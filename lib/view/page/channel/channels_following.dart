@@ -8,16 +8,11 @@ import '../../../provider/api/following_channels_notifier_provider.dart';
 import '../../widget/channel_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class ChannelsFollowing extends ConsumerWidget {
-  const ChannelsFollowing({
-    super.key,
-    required this.account,
-    this.onChannelTap,
-  });
-
-  final Account account;
-  final void Function(CommunityChannel channel)? onChannelTap;
-
+class const ChannelsFollowing({
+  super.key,
+  required final Account account,
+  final void Function(CommunityChannel channel)? onChannelTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channels = ref.watch(followingChannelsNotifierProvider(account));

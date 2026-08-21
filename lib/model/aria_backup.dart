@@ -9,7 +9,7 @@ part 'aria_backup.g.dart';
 
 @freezed
 abstract class AriaBackup with _$AriaBackup {
-  const factory AriaBackup({
+  const factory({
     Map<String, dynamic>? metadata,
     List<TabSettings>? timelineTabs,
     Map<String, AccountSettings>? accountSettings,
@@ -19,6 +19,5 @@ abstract class AriaBackup with _$AriaBackup {
     List<Map<String, dynamic>>? noteDrafts,
   }) = _AriaBackup;
 
-  factory AriaBackup.fromJson(Map<String, dynamic> json) =>
-      _$AriaBackupFromJson(json);
+  factory fromJson(Map<String, dynamic> json) => _$AriaBackupFromJson(json);
 }

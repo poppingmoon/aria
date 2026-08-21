@@ -22,12 +22,11 @@ import '../../widget/image_widget.dart';
 import '../../widget/key_value_widget.dart';
 import '../../widget/url_sheet.dart';
 
-class ServerOverview extends ConsumerWidget {
-  const ServerOverview({super.key, required this.account, required this.host});
-
-  final Account account;
-  final String host;
-
+class const ServerOverview({
+  super.key,
+  required final Account account,
+  required final String host,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host)).value;

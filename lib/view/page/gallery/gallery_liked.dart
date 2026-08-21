@@ -8,11 +8,8 @@ import '../../../provider/api/liked_gallery_posts_notifier_provider.dart';
 import '../../widget/gallery_post_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
-class GalleryLiked extends ConsumerWidget {
-  const GalleryLiked({super.key, required this.account});
-
-  final Account account;
-
+class const GalleryLiked({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final likes = ref.watch(likedGalleryPostsNotifierProvider(account));

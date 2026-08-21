@@ -23,18 +23,12 @@ Future<bool> confirmReaction(
   return result ?? false;
 }
 
-class ReactionConfirmationDialog extends ConsumerWidget {
-  const ReactionConfirmationDialog({
-    super.key,
-    required this.account,
-    required this.emoji,
-    required this.note,
-  });
-
-  final Account account;
-  final String emoji;
-  final Note note;
-
+class const ReactionConfirmationDialog({
+  super.key,
+  required final Account account,
+  required final String emoji,
+  required final Note note,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

@@ -10,11 +10,8 @@ import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/page_preview.dart';
 
-class PagesFeatured extends ConsumerWidget {
-  const PagesFeatured({super.key, required this.account});
-
-  final Account account;
-
+class const PagesFeatured({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pages = ref.watch(featuredPagesProvider(account));

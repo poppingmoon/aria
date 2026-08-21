@@ -5,22 +5,14 @@ import 'account_settings_navigation.dart';
 
 export 'account_settings_navigation.dart' show AccountSettingsDestination;
 
-class AccountSettingsScaffold extends StatelessWidget {
-  const AccountSettingsScaffold({
-    super.key,
-    required this.account,
-    this.appBar,
-    this.body,
-    this.floatingActionButton,
-    this.selectedDestination,
-  });
-
-  final Account account;
-  final PreferredSizeWidget? appBar;
-  final Widget? body;
-  final Widget? floatingActionButton;
-  final AccountSettingsDestination? selectedDestination;
-
+class const AccountSettingsScaffold({
+  super.key,
+  required final Account account,
+  final PreferredSizeWidget? appBar,
+  final Widget? body,
+  final Widget? floatingActionButton,
+  final AccountSettingsDestination? selectedDestination,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;

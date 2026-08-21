@@ -5,13 +5,12 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../util/copy_text.dart';
 
-class KeyValueWidget extends ConsumerWidget {
-  const KeyValueWidget({super.key, required this.label, this.text, this.child});
-
-  final String label;
-  final String? text;
-  final Widget? child;
-
+class const KeyValueWidget({
+  super.key,
+  required final String label,
+  final String? text,
+  final Widget? child,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final style = DefaultTextStyle.of(context).style;

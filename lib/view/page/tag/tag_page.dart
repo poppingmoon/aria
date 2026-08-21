@@ -8,18 +8,12 @@ import '../../../provider/post_notifier_provider.dart';
 import 'tag_notes.dart';
 import 'tag_users.dart';
 
-class TagPage extends ConsumerWidget {
-  const TagPage({
-    super.key,
-    required this.account,
-    required this.tag,
-    this.initialIndex = 0,
-  });
-
-  final Account account;
-  final String tag;
-  final int initialIndex;
-
+class const TagPage({
+  super.key,
+  required final Account account,
+  required final String tag,
+  final int initialIndex = 0,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(

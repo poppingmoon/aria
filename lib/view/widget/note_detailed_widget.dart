@@ -49,16 +49,11 @@ import 'user_avatar.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class NoteDetailedWidget extends HookConsumerWidget {
-  const NoteDetailedWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-  });
-
-  final Account account;
-  final String noteId;
-
+class const NoteDetailedWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteNotifierProvider(account, noteId));
@@ -353,19 +348,12 @@ class NoteDetailedWidget extends HookConsumerWidget {
   }
 }
 
-class _NoteDetailedContent extends HookConsumerWidget {
-  const _NoteDetailedContent({
-    required this.account,
-    required this.note,
-    required this.appearNote,
-    required this.style,
-  });
-
-  final Account account;
-  final Note note;
-  final Note appearNote;
-  final TextStyle style;
-
+class const _NoteDetailedContent({
+  required final Account account,
+  required final Note note,
+  required final Note appearNote,
+  required final TextStyle style,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showContent = useState(

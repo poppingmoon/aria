@@ -13,12 +13,11 @@ import '../../widget/timeline_list_view.dart';
 
 enum _NoteType { notes, all, files }
 
-class UserNotes extends HookConsumerWidget {
-  const UserNotes({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const UserNotes({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final type = useState(_NoteType.all);

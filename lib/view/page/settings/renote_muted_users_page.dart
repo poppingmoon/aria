@@ -15,11 +15,8 @@ import '../../widget/user_avatar.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
-class RenoteMutedUsersPage extends ConsumerWidget {
-  const RenoteMutedUsersPage({super.key, required this.account});
-
-  final Account account;
-
+class const RenoteMutedUsersPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final renoteMutings = ref.watch(renoteMutingsNotifierProvider(account));

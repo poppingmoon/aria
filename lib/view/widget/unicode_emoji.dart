@@ -23,28 +23,17 @@ const _v11Reactions = {
   'star': '⭐',
 };
 
-class UnicodeEmoji extends ConsumerWidget {
-  const UnicodeEmoji({
-    super.key,
-    this.account,
-    required this.emoji,
-    this.style,
-    this.fit = BoxFit.contain,
-    this.alignment = Alignment.center,
-    this.onTap,
-    this.onLongPress,
-    this.inline = false,
-  });
-
-  final Account? account;
-  final String emoji;
-  final TextStyle? style;
-  final BoxFit fit;
-  final Alignment alignment;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-  final bool inline;
-
+class const UnicodeEmoji({
+  super.key,
+  final Account? account,
+  required final String emoji,
+  final TextStyle? style,
+  final BoxFit fit = BoxFit.contain,
+  final Alignment alignment = Alignment.center,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+  final bool inline = false,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final emojiStyle = ref.watch(
