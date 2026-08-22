@@ -330,6 +330,9 @@ jobs:
           flutter-version-file: .fvmrc
           cache: true
 
+      - name: Allow long paths
+        run: git config --global core.longpaths true
+
       - name: Get dependencies
         run: flutter pub get
 
