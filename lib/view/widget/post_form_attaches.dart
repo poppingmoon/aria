@@ -282,162 +282,166 @@ class PostFormAttaches extends ConsumerWidget {
       (file) => file is LocalPostFile && file.uploading,
     );
 
-    return ReorderableGridView.extent(
-      shrinkWrap: true,
-      maxCrossAxisExtent: maxCrossAxisExtent,
-      physics: const NeverScrollableScrollPhysics(),
-      onReorder: (oldIndex, newIndex) => ref
-          .read(
-            attachesNotifierProvider(
-              account,
-              noteId: noteId,
-              gallery: gallery,
-              chat: chat,
-            ).notifier,
-          )
-          .reorder(oldIndex, newIndex),
-      itemDragEnable: (_) => !uploading,
-      proxyDecorator: (child, _, animation) => AnimatedBuilder(
-        animation: animation,
-        builder: (context, child) {
-          final animValue = Curves.easeInOut.transform(animation.value);
-          final elevation = lerpDouble(0.0, 6.0, animValue)!;
-          return Material(
-            elevation: elevation,
-            borderRadius: BorderRadius.circular(12.0),
-            color: Colors.transparent,
-            child: child,
-          );
-        },
-        child: child,
-      ),
-      children: List.generate(
-        files.length,
-        (index) => _PostFormAttach(
-          key: ValueKey(index),
-          account: account,
-          index: index,
-          noteId: noteId,
-          gallery: gallery,
-          chat: chat,
-          onTap: !uploading
-              ? () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ListTile(title: Text(files[index].name)),
-                      const Divider(height: 0.0),
-                      if (files[index].type?.startsWith('image/') ?? false)
-                        ListTile(
-                          leading: const Icon(Icons.visibility),
-                          title: Text(t.aria.showImage),
-                          onTap: () => switch (files[index]) {
-                            LocalPostFile(:final file) => showImageDialog(
-                              context,
-                              file: file,
+    // ignore: deprecated_member_use
+    return MaterialUiCompatibilityBridge(
+      child: ReorderableGridView.extent(
+        shrinkWrap: true,
+        maxCrossAxisExtent: maxCrossAxisExtent,
+        physics: const NeverScrollableScrollPhysics(),
+        onReorder: (oldIndex, newIndex) => ref
+            .read(
+              attachesNotifierProvider(
+                account,
+                noteId: noteId,
+                gallery: gallery,
+                chat: chat,
+              ).notifier,
+            )
+            .reorder(oldIndex, newIndex),
+        itemDragEnable: (_) => !uploading,
+        proxyDecorator: (child, _, animation) => AnimatedBuilder(
+          animation: animation,
+          builder: (context, child) {
+            final animValue = Curves.easeInOut.transform(animation.value);
+            final elevation = lerpDouble(0.0, 6.0, animValue)!;
+            return Material(
+              elevation: elevation,
+              borderRadius: BorderRadius.circular(12.0),
+              color: Colors.transparent,
+              child: child,
+            );
+          },
+          child: child,
+        ),
+        children: List.generate(
+          files.length,
+          (index) => _PostFormAttach(
+            key: ValueKey(index),
+            account: account,
+            index: index,
+            noteId: noteId,
+            gallery: gallery,
+            chat: chat,
+            onTap: !uploading
+                ? () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ListTile(title: Text(files[index].name)),
+                        const Divider(height: 0.0),
+                        if (files[index].type?.startsWith('image/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.visibility),
+                            title: Text(t.aria.showImage),
+                            onTap: () => switch (files[index]) {
+                              LocalPostFile(:final file) => showImageDialog(
+                                context,
+                                file: file,
+                              ),
+                              DrivePostFile(:final file) =>
+                                showImageGalleryDialog(context, files: [file]),
+                            },
+                          ),
+                        if (files[index].type?.startsWith('video/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.play_arrow),
+                            title: Text(t.aria.playVideo),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => VideoDialog(
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                                fileName: files[index].name,
+                                thumbnailUrl: switch (files[index]) {
+                                  DrivePostFile(:final file) =>
+                                    file.thumbnailUrl,
+                                  _ => null,
+                                },
+                              ),
                             ),
-                            DrivePostFile(:final file) =>
-                              showImageGalleryDialog(context, files: [file]),
+                          ),
+                        if (files[index].type?.startsWith('audio/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.play_arrow),
+                            title: Text(t.aria.playAudio),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => AudioDialog(
+                                account: account,
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                                user: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.user,
+                                  _ => null,
+                                },
+                                fileName: files[index].name,
+                              ),
+                            ),
+                          ),
+                        ListTile(
+                          leading: const Icon(Icons.edit),
+                          title: Text(t.misskey.renameFile),
+                          onTap: () => _renameFile(ref, index),
+                        ),
+                        if (files[index].isSensitive)
+                          ListTile(
+                            leading: const Icon(Icons.visibility),
+                            title: Text(t.misskey.unmarkAsSensitive),
+                            onTap: () => _updateIsSensitive(ref, index, false),
+                          )
+                        else
+                          ListTile(
+                            leading: const Icon(Icons.visibility_off),
+                            title: Text(t.misskey.markAsSensitive),
+                            onTap: () => _updateIsSensitive(ref, index, true),
+                          ),
+                        ListTile(
+                          leading: const Icon(Icons.edit_note),
+                          title: Text(t.misskey.describeFile),
+                          onTap: () => _describeFile(ref, index),
+                        ),
+                        if (files[index].type?.startsWith('image/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.crop),
+                            title: Text(t.aria.editImage),
+                            onTap: () => _editImage(ref, index),
+                          ),
+                        ListTile(
+                          leading: const Icon(Icons.close),
+                          title: Text(t.misskey.attachCancel),
+                          onTap: () {
+                            ref
+                                .read(
+                                  attachesNotifierProvider(
+                                    account,
+                                    noteId: noteId,
+                                    gallery: gallery,
+                                    chat: chat,
+                                  ).notifier,
+                                )
+                                .remove(index);
+                            context.pop();
                           },
                         ),
-                      if (files[index].type?.startsWith('video/') ?? false)
-                        ListTile(
-                          leading: const Icon(Icons.play_arrow),
-                          title: Text(t.aria.playVideo),
-                          onTap: () => showDialog<void>(
-                            context: context,
-                            builder: (context) => VideoDialog(
-                              url: switch (files[index]) {
-                                DrivePostFile(:final file) => file.url,
-                                _ => null,
-                              },
-                              file: switch (files[index]) {
-                                LocalPostFile(:final file) => file,
-                                _ => null,
-                              },
-                              fileName: files[index].name,
-                              thumbnailUrl: switch (files[index]) {
-                                DrivePostFile(:final file) => file.thumbnailUrl,
-                                _ => null,
-                              },
-                            ),
-                          ),
-                        ),
-                      if (files[index].type?.startsWith('audio/') ?? false)
-                        ListTile(
-                          leading: const Icon(Icons.play_arrow),
-                          title: Text(t.aria.playAudio),
-                          onTap: () => showDialog<void>(
-                            context: context,
-                            builder: (context) => AudioDialog(
-                              account: account,
-                              url: switch (files[index]) {
-                                DrivePostFile(:final file) => file.url,
-                                _ => null,
-                              },
-                              file: switch (files[index]) {
-                                LocalPostFile(:final file) => file,
-                                _ => null,
-                              },
-                              user: switch (files[index]) {
-                                DrivePostFile(:final file) => file.user,
-                                _ => null,
-                              },
-                              fileName: files[index].name,
-                            ),
-                          ),
-                        ),
-                      ListTile(
-                        leading: const Icon(Icons.edit),
-                        title: Text(t.misskey.renameFile),
-                        onTap: () => _renameFile(ref, index),
-                      ),
-                      if (files[index].isSensitive)
-                        ListTile(
-                          leading: const Icon(Icons.visibility),
-                          title: Text(t.misskey.unmarkAsSensitive),
-                          onTap: () => _updateIsSensitive(ref, index, false),
-                        )
-                      else
-                        ListTile(
-                          leading: const Icon(Icons.visibility_off),
-                          title: Text(t.misskey.markAsSensitive),
-                          onTap: () => _updateIsSensitive(ref, index, true),
-                        ),
-                      ListTile(
-                        leading: const Icon(Icons.edit_note),
-                        title: Text(t.misskey.describeFile),
-                        onTap: () => _describeFile(ref, index),
-                      ),
-                      if (files[index].type?.startsWith('image/') ?? false)
-                        ListTile(
-                          leading: const Icon(Icons.crop),
-                          title: Text(t.aria.editImage),
-                          onTap: () => _editImage(ref, index),
-                        ),
-                      ListTile(
-                        leading: const Icon(Icons.close),
-                        title: Text(t.misskey.attachCancel),
-                        onTap: () {
-                          ref
-                              .read(
-                                attachesNotifierProvider(
-                                  account,
-                                  noteId: noteId,
-                                  gallery: gallery,
-                                  chat: chat,
-                                ).notifier,
-                              )
-                              .remove(index);
-                          context.pop();
-                        },
-                      ),
-                    ],
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                )
-              : null,
+                      ],
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                  )
+                : null,
+          ),
         ),
       ),
     );

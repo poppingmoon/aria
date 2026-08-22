@@ -61,35 +61,45 @@ class PinnedEmojisEditor extends HookConsumerWidget {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(8.0),
-              child: ReorderableWrap(
-                spacing: 4.0,
-                runSpacing: 4.0,
-                onReorder: (oldIndex, newIndex) => ref
-                    .read(
-                      pinnedEmojisNotifierProvider(
-                        account,
-                        reaction: reaction,
-                      ).notifier,
-                    )
-                    .reorder(oldIndex, newIndex),
-                children: pinnedEmojis
-                    .mapIndexed(
-                      (index, name) => EmojiWidget(
-                        account: account,
-                        emoji: name,
-                        onTap: () => ref
-                            .read(
-                              pinnedEmojisNotifierProvider(
-                                account,
-                                reaction: reaction,
-                              ).notifier,
-                            )
-                            .remove(index),
-                        style: style.apply(fontSizeFactor: 2.0),
-                        disableTooltip: true,
-                      ),
-                    )
-                    .toList(),
+              // ignore: deprecated_member_use
+              child: MaterialUiCompatibilityBridge(
+                child: ReorderableWrap(
+                  spacing: 4.0,
+                  runSpacing: 4.0,
+                  onReorder: (oldIndex, newIndex) => ref
+                      .read(
+                        pinnedEmojisNotifierProvider(
+                          account,
+                          reaction: reaction,
+                        ).notifier,
+                      )
+                      .reorder(oldIndex, newIndex),
+                  buildDraggableFeedback: (context, constraints, child) => Card(
+                    color: Colors.transparent,
+                    child: ConstrainedBox(
+                      constraints: constraints,
+                      child: child,
+                    ),
+                  ),
+                  children: pinnedEmojis
+                      .mapIndexed(
+                        (index, name) => EmojiWidget(
+                          account: account,
+                          emoji: name,
+                          onTap: () => ref
+                              .read(
+                                pinnedEmojisNotifierProvider(
+                                  account,
+                                  reaction: reaction,
+                                ).notifier,
+                              )
+                              .remove(index),
+                          style: style.apply(fontSizeFactor: 2.0),
+                          disableTooltip: true,
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ),
           ),

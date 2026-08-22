@@ -37,8 +37,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
-      resolved-ref: c2f85204e18389c4bfe4d7d0aaca4e7c9b861060
+      ref: "260ec173013069b4b86ac633928e4d278729e3df"
+      resolved-ref: "260ec173013069b4b86ac633928e4d278729e3df"
       url: "https://github.com/poppingmoon/animated_image"
     source: git
     version: "0.1.0"
@@ -1016,11 +1016,12 @@ packages:
   go_router:
     dependency: "direct main"
     description:
-      name: go_router
-      sha256: "55973bf1b27790489f8710ea615fe939f911ddcc5986fe97305e4fc19fa29ee9"
-      url: "https://pub.dev"
-    source: hosted
-    version: "17.4.0"
+      path: "packages/go_router"
+      ref: ed5bd29a357c45f2822b02f04705ed920317a65a
+      resolved-ref: ed5bd29a357c45f2822b02f04705ed920317a65a
+      url: "https://github.com/flutter/packages"
+    source: git
+    version: "17.5.0"
   google_fonts:
     dependency: "direct main"
     description:
@@ -2269,8 +2270,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "792a15478ad25b00b22552ac9cf809920f16cbdd"
-      resolved-ref: "792a15478ad25b00b22552ac9cf809920f16cbdd"
+      ref: "4e8febedae9dc0d9ce47b4f6347c83d0bed464bf"
+      resolved-ref: "4e8febedae9dc0d9ce47b4f6347c83d0bed464bf"
       url: "https://github.com/poppingmoon/twemoji_v2"
     source: git
     version: "0.5.3"
@@ -2294,8 +2295,8 @@ packages:
     dependency: "direct overridden"
     description:
       path: unifiedpush_android
-      ref: "7b6619f06f243a4e5711a934891d3c16ac4ba931"
-      resolved-ref: "7b6619f06f243a4e5711a934891d3c16ac4ba931"
+      ref: b1fe6a72502fc801371ac1426af4220ca77fd4f7
+      resolved-ref: b1fe6a72502fc801371ac1426af4220ca77fd4f7
       url: "https://github.com/poppingmoon/flutter-connector"
     source: git
     version: "3.4.1"
@@ -2326,10 +2327,11 @@ packages:
   unifiedpush_ui:
     dependency: "direct main"
     description:
-      name: unifiedpush_ui
-      sha256: "1b36b2aa0bc6b61577e2661c1183bd3442969ecf77b4c78174796d324f66dd1d"
-      url: "https://pub.dev"
-    source: hosted
+      path: unifiedpush_ui
+      ref: b1fe6a72502fc801371ac1426af4220ca77fd4f7
+      resolved-ref: b1fe6a72502fc801371ac1426af4220ca77fd4f7
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
     version: "0.2.0"
   url_launcher:
     dependency: "direct main"
@@ -2631,4 +2633,4 @@ packages:
     version: "3.1.3"
 sdks:
   dart: ">=3.13.0 <4.0.0"
-  flutter: ">=3.44.0"
+  flutter: ">=3.47.0"

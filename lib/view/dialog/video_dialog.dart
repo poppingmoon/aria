@@ -85,7 +85,10 @@ class VideoDialog extends HookConsumerWidget {
                     child: AspectRatio(
                       aspectRatio:
                           controller.videoPlayerController.value.aspectRatio,
-                      child: Chewie(controller: controller),
+                      // ignore: deprecated_member_use
+                      child: MaterialUiCompatibilityBridge(
+                        child: Chewie(controller: controller),
+                      ),
                     ),
                   )
                 : SizedBox.expand(

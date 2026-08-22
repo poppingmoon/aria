@@ -163,11 +163,14 @@ class _AudioWidget extends HookConsumerWidget {
             ),
           ],
         ),
-        ProgressBar(
-          progress: position ?? Duration.zero,
-          buffered: playbackState?.bufferedPosition,
-          total: mediaItem?.duration ?? Duration.zero,
-          onSeek: audioHandler?.seek,
+        // ignore: deprecated_member_use
+        MaterialUiCompatibilityBridge(
+          child: ProgressBar(
+            progress: position ?? Duration.zero,
+            buffered: playbackState?.bufferedPosition,
+            total: mediaItem?.duration ?? Duration.zero,
+            onSeek: audioHandler?.seek,
+          ),
         ),
       ],
     );
@@ -255,19 +258,22 @@ class _VideoPlayerAudioWidget extends HookWidget {
             ),
           ],
         ),
-        ProgressBar(
-          progress: videoPlayerValue.position,
-          total: videoPlayerValue.duration,
-          buffered: videoPlayerValue.buffered.fold<Duration>(
-            Duration.zero,
-            (acc, value) => acc < value.end ? value.end : acc,
+        // ignore: deprecated_member_use
+        MaterialUiCompatibilityBridge(
+          child: ProgressBar(
+            progress: videoPlayerValue.position,
+            total: videoPlayerValue.duration,
+            buffered: videoPlayerValue.buffered.fold<Duration>(
+              Duration.zero,
+              (acc, value) => acc < value.end ? value.end : acc,
+            ),
+            onSeek: (position) async {
+              if (videoPlayerValue.isCompleted) {
+                await videoPlayerController?.play();
+              }
+              await videoPlayerController?.seekTo(position);
+            },
           ),
-          onSeek: (position) async {
-            if (videoPlayerValue.isCompleted) {
-              await videoPlayerController?.play();
-            }
-            await videoPlayerController?.seekTo(position);
-          },
         ),
       ],
     );
