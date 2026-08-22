@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../../constant/colors.dart';
@@ -145,9 +145,8 @@ class _UserHome extends HookConsumerWidget {
     final birthday = switch (user.birthday) {
       final birthday? => switch (DateTime.tryParse(birthday)) {
         final date? when DateFormat('yyyy-MM-dd').format(date) == birthday =>
-          DateFormat.yMd(
-            Localizations.localeOf(context).toLanguageTag(),
-          ).format(date),
+          DateFormat.yMd(Localizations.localeOf(context).toLanguageTag())
+              .format(date),
         _ => birthday.replaceAll('-', '/'),
       },
       _ => null,
@@ -231,9 +230,8 @@ class _UserHome extends HookConsumerWidget {
                         TextSpan(
                           text: '@$host',
                           style: TextStyle(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.5),
+                            color: Theme.of(context).colorScheme.onSurface
+                                .withValues(alpha: 0.5),
                           ),
                         ),
                         if (defaultTargetPlatform != TargetPlatform.linux)
@@ -457,9 +455,8 @@ class _UserHome extends HookConsumerWidget {
                           : Text(
                               t.misskey.noAccountDescription,
                               style: TextStyle(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurface.withValues(alpha: 0.8),
+                                color: Theme.of(context).colorScheme.onSurface
+                                    .withValues(alpha: 0.8),
                               ),
                               textAlign: TextAlign.center,
                             ),

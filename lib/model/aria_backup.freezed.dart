@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'aria_backup.dart';
@@ -9,6 +9,7 @@ part of 'aria_backup.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$AriaBackupCopyWithImpl<$Res>
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? metadata = freezed,Object? timelineTabs = freezed,Object? accountSettings = freezed,Object? generalSettings = freezed,Object? themes = freezed,Object? aiscriptStorage = freezed,Object? noteDrafts = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(AriaBackup(
 metadata: freezed == metadata ? _self.metadata : metadata // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>?,timelineTabs: freezed == timelineTabs ? _self.timelineTabs : timelineTabs // ignore: cast_nullable_to_non_nullable
 as List<TabSettings>?,accountSettings: freezed == accountSettings ? _self.accountSettings : accountSettings // ignore: cast_nullable_to_non_nullable
@@ -227,7 +228,7 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 @JsonSerializable()
 
 class _AriaBackup implements AriaBackup {
-  const _AriaBackup({final  Map<String, dynamic>? metadata, final  List<TabSettings>? timelineTabs, final  Map<String, AccountSettings>? accountSettings, this.generalSettings, final  List<String>? themes, final  Map<String, Map<String, String>>? aiscriptStorage, final  List<Map<String, dynamic>>? noteDrafts}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage,_noteDrafts = noteDrafts;
+  const _AriaBackup({ Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings, this.generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage,_noteDrafts = noteDrafts;
   factory _AriaBackup.fromJson(Map<String, dynamic> json) => _$AriaBackupFromJson(json);
 
  final  Map<String, dynamic>? _metadata;

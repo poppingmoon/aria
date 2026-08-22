@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'misskey_theme.dart';
@@ -9,6 +9,7 @@ part of 'misskey_theme.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -64,7 +65,7 @@ class _$MisskeyThemeCopyWithImpl<$Res>
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? author = freezed,Object? desc = freezed,Object? base = freezed,Object? props = null,Object? codeHighlighter = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(MisskeyTheme(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,author: freezed == author ? _self.author : author // ignore: cast_nullable_to_non_nullable
@@ -213,7 +214,7 @@ return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.pro
 @JsonSerializable(createToJson: false)
 
 class _MisskeyTheme implements MisskeyTheme {
-  const _MisskeyTheme({required this.id, required this.name, this.author, this.desc, this.base, required final  Map<String, String> props, final  Map<String, dynamic>? codeHighlighter}): _props = props,_codeHighlighter = codeHighlighter;
+  const _MisskeyTheme({required this.id, required this.name, this.author, this.desc, this.base, required  Map<String, String> props,  Map<String, dynamic>? codeHighlighter}): _props = props,_codeHighlighter = codeHighlighter;
   factory _MisskeyTheme.fromJson(Map<String, dynamic> json) => _$MisskeyThemeFromJson(json);
 
 @override final  String id;

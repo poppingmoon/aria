@@ -2,10 +2,10 @@ import 'dart:typed_data';
 import 'dart:ui';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart' hide Image;
 import 'package:twemoji_v2/twemoji_v2.dart';
 
 import '../../extension/image_extension.dart';
@@ -527,9 +527,8 @@ class _ImagePage extends HookConsumerWidget {
           },
         ),
         floatingActionButton: FloatingActionButton.small(
-          backgroundColor: Theme.of(
-            context,
-          ).colorScheme.primary.withValues(alpha: 0.8),
+          backgroundColor: Theme.of(context).colorScheme.primary
+              .withValues(alpha: 0.8),
           onPressed: () => showModalBottomSheet<void>(
             context: context,
             builder: (context) => LayersSheet(

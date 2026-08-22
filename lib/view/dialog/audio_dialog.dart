@@ -5,10 +5,10 @@ import 'package:audio_service/audio_service.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:video_player/video_player.dart';
 
@@ -163,11 +163,14 @@ class _AudioWidget extends HookConsumerWidget {
             ),
           ],
         ),
-        ProgressBar(
-          progress: position ?? Duration.zero,
-          buffered: playbackState?.bufferedPosition,
-          total: mediaItem?.duration ?? Duration.zero,
-          onSeek: audioHandler?.seek,
+        // ignore: deprecated_member_use
+        MaterialUiCompatibilityBridge(
+          child: ProgressBar(
+            progress: position ?? Duration.zero,
+            buffered: playbackState?.bufferedPosition,
+            total: mediaItem?.duration ?? Duration.zero,
+            onSeek: audioHandler?.seek,
+          ),
         ),
       ],
     );
@@ -255,19 +258,22 @@ class _VideoPlayerAudioWidget extends HookWidget {
             ),
           ],
         ),
-        ProgressBar(
-          progress: videoPlayerValue.position,
-          total: videoPlayerValue.duration,
-          buffered: videoPlayerValue.buffered.fold<Duration>(
-            Duration.zero,
-            (acc, value) => acc < value.end ? value.end : acc,
+        // ignore: deprecated_member_use
+        MaterialUiCompatibilityBridge(
+          child: ProgressBar(
+            progress: videoPlayerValue.position,
+            total: videoPlayerValue.duration,
+            buffered: videoPlayerValue.buffered.fold<Duration>(
+              Duration.zero,
+              (acc, value) => acc < value.end ? value.end : acc,
+            ),
+            onSeek: (position) async {
+              if (videoPlayerValue.isCompleted) {
+                await videoPlayerController?.play();
+              }
+              await videoPlayerController?.seekTo(position);
+            },
           ),
-          onSeek: (position) async {
-            if (videoPlayerValue.isCompleted) {
-              await videoPlayerController?.play();
-            }
-            await videoPlayerController?.seekTo(position);
-          },
         ),
       ],
     );

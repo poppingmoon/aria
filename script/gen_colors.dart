@@ -47,11 +47,9 @@ void main() {
     (name) => compileTheme(
       MisskeyTheme.fromJson(
         json5Decode(
-              File(
-                'misskey/packages/frontend-shared/themes/$name.json5',
-              ).readAsStringSync(),
-            )
-            as Map<String, dynamic>,
+          File('misskey/packages/frontend-shared/themes/$name.json5')
+              .readAsStringSync(),
+        ) as Map<String, dynamic>,
       ),
     ),
   );
@@ -99,7 +97,7 @@ void main() {
 /// Source: misskey/packages/frontend-shared/themes
 /// To regenerate, run: `flutter run script/gen_colors.dart`
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../model/misskey_colors.dart';
 

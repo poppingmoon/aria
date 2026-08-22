@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../extension/text_editing_controller_extension.dart';
@@ -96,9 +96,8 @@ class ChatPostForm extends HookConsumerWidget {
       duration: const Duration(milliseconds: 200),
       initialValue: text?.isNotEmpty ?? false ? 1.0 : 0.0,
     );
-    final animation = CurveTween(
-      curve: Curves.easeInOut,
-    ).animate(animationController);
+    final animation = CurveTween(curve: Curves.easeInOut)
+        .animate(animationController);
     ref.listen(
       sendChatMessageNotifierProvider(account, userId: userId, roomId: roomId),
       (_, text) {

@@ -390,49 +390,26 @@ struct NotificationUpdater {
     guard let url = URL(string: url) else {
       return
     }
-    if #available(iOS 15.0, *) {
-      let (path, response) = try await URLSession.shared.download(
-        from: url
-      )
-      let fileName = UUID().uuidString.appending(
-        response.suggestedFilename ?? url.lastPathComponent
-      )
-      let target =
-        if #available(iOS 16.0, *) {
-          URL(filePath: NSTemporaryDirectory().appending(fileName))
-        } else {
-          URL(fileURLWithPath: NSTemporaryDirectory().appending(fileName))
-        }
-      try FileManager.default.moveItem(at: path, to: target)
-      if let response = response as? HTTPURLResponse,
-        200..<300 ~= response.statusCode
-      {
-
-        let attachment = try UNNotificationAttachment(
-          identifier: fileName,
-          url: target,
-        )
-        bestAttemptContent.attachments.append(attachment)
-      }
-    } else {
-      let (data, response) = try await URLSession.shared.data(from: url)
-      if let response = response as? HTTPURLResponse,
-        200..<300 ~= response.statusCode
-      {
-        let fileName =
-          UUID().uuidString.appending(
-            response.suggestedFilename ?? url.lastPathComponent
-          )
-        let path = URL(
-          fileURLWithPath: NSTemporaryDirectory().appending(fileName)
-        )
-        try data.write(to: path)
-        let attachment = try UNNotificationAttachment(
-          identifier: fileName,
-          url: path,
-        )
-        bestAttemptContent.attachments.append(attachment)
-      }
+    let (path, response) = try await URLSession.shared.download(from: url)
+    guard let response = response as? HTTPURLResponse,
+      200..<300 ~= response.statusCode
+    else {
+      return
     }
+    let fileName = UUID().uuidString.appending(
+      response.suggestedFilename ?? url.lastPathComponent
+    )
+    let target =
+      if #available(iOS 16.0, *) {
+        URL(filePath: NSTemporaryDirectory().appending(fileName))
+      } else {
+        URL(fileURLWithPath: NSTemporaryDirectory().appending(fileName))
+      }
+    try FileManager.default.moveItem(at: path, to: target)
+    let attachment = try UNNotificationAttachment(
+      identifier: fileName,
+      url: target,
+    )
+    bestAttemptContent.attachments.append(attachment)
   }
 }

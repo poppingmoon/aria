@@ -6,9 +6,9 @@ import 'package:aria/provider/notes_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/reaction_button.dart';
 import 'package:aria/view/widget/reactions_viewer.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../test_util/dummy_note.dart';
@@ -29,9 +29,8 @@ Future<void> setupWidget(
           account,
           note.id,
         ).overrideWithBuild((_, _) => note),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
       ],
       child: MaterialApp(
         home: ReactionsViewer(

@@ -68,9 +68,8 @@ void Function(WidgetRef ref)? getNoteAction({
                 if (!ref.context.mounted) return;
                 ref
                     .read(
-                      misskeySfxNotifierProvider(
-                        OperationType.reaction,
-                      ).notifier,
+                      misskeySfxNotifierProvider(OperationType.reaction)
+                          .notifier,
                     )
                     .play()
                     .ignore();

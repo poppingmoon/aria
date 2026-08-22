@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../extension/app_locale_utils_extension.dart';
@@ -49,8 +49,7 @@ class LanguagesPage extends ConsumerWidget {
                         child: Mfm(
                           account: Account.dummy(),
                           text: t.misskey.i18nInfo(
-                            link:
-                                '[Crowdin](https://crowdin.com/project/misskey)',
+                            link: '[Crowdin](https://crowdin.com/project/misskey)',
                           ),
                           style: TextStyle(
                             color: theme.colorScheme.onSecondaryContainer,

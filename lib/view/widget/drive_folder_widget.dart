@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../i18n/strings.g.dart';
@@ -25,9 +25,8 @@ class DriveFolderWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final uploadFolder = ref.watch(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.uploadFolder),
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.uploadFolder),
     );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),

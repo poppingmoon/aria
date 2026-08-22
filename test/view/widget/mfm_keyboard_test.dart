@@ -8,10 +8,10 @@ import 'package:aria/provider/general_settings_notifier_provider.dart';
 import 'package:aria/provider/recently_used_users_notifier_provider.dart';
 import 'package:aria/provider/server_url_notifier_provider.dart';
 import 'package:aria/view/widget/mfm_keyboard.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/misc.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_user_detailed_not_me.dart';
@@ -26,15 +26,13 @@ Future<void> setupWidget(
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
-        accountSettingsNotifierProvider(
-          account,
-        ).overrideWithValue(accountSettings),
+        accountSettingsNotifierProvider(account)
+            .overrideWithValue(accountSettings),
         generalSettingsNotifierProvider.overrideWithValue(
           const GeneralSettings(),
         ),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
         ...overrides,
       ],
       child: MaterialApp(

@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 
@@ -54,9 +54,8 @@ class ColorPickerDialog extends HookWidget {
     final overlayAnimationController = useAnimationController(
       duration: kRadialReactionDuration,
     );
-    final overlayAnimation = CurveTween(
-      curve: Curves.fastOutSlowIn,
-    ).animate(overlayAnimationController);
+    final overlayAnimation = CurveTween(curve: Curves.fastOutSlowIn)
+        .animate(overlayAnimationController);
     final cursor = useState(MouseCursor.defer);
     final theme = Theme.of(context);
 

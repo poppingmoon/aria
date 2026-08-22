@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../constant/colors.dart';
 import '../../../constant/max_content_width.dart';
@@ -84,39 +84,40 @@ class ChannelHome extends ConsumerWidget {
                           spacing: 8.0,
                           children: [
                             if (channel.isFollowing case final isFollowing?)
-                              isFollowing
-                                  ? ElevatedButton(
-                                      onPressed: () => futureWithDialog(
-                                        context,
-                                        ref
-                                            .read(
-                                              channelNotifierProvider(
-                                                account,
-                                                channelId,
-                                              ).notifier,
-                                            )
-                                            .unfollow(),
-                                      ),
-                                      child: Text(t.misskey.unfollow),
-                                    )
-                                  : ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: colors.accent,
-                                        backgroundColor: colors.panel,
-                                      ),
-                                      onPressed: () => futureWithDialog(
-                                        context,
-                                        ref
-                                            .read(
-                                              channelNotifierProvider(
-                                                account,
-                                                channelId,
-                                              ).notifier,
-                                            )
-                                            .follow(),
-                                      ),
-                                      child: Text(t.misskey.follow),
-                                    ),
+                              if (isFollowing)
+                                ElevatedButton(
+                                  onPressed: () => futureWithDialog(
+                                    context,
+                                    ref
+                                        .read(
+                                          channelNotifierProvider(
+                                            account,
+                                            channelId,
+                                          ).notifier,
+                                        )
+                                        .unfollow(),
+                                  ),
+                                  child: Text(t.misskey.unfollow),
+                                )
+                              else
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    foregroundColor: colors.accent,
+                                    backgroundColor: colors.panel,
+                                  ),
+                                  onPressed: () => futureWithDialog(
+                                    context,
+                                    ref
+                                        .read(
+                                          channelNotifierProvider(
+                                            account,
+                                            channelId,
+                                          ).notifier,
+                                        )
+                                        .follow(),
+                                  ),
+                                  child: Text(t.misskey.follow),
+                                ),
                             if (channel.isMuting ?? false)
                               DecoratedBox(
                                 decoration: BoxDecoration(

@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as material show Border;
+import 'package:material_ui/material_ui.dart';
+import 'package:material_ui/material_ui.dart' as material show Border;
 
 import '../../../util/safe_parse_color.dart';
 import '../../../util/safe_parse_double.dart';

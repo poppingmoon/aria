@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tab_settings.dart';
@@ -9,6 +9,7 @@ part of 'tab_settings.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$TabSettingsCopyWithImpl<$Res>
 /// Create a copy of TabSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? tabType = null,Object? name = freezed,Object? account = null,Object? icon = freezed,Object? disableStreaming = null,Object? disableSubscribing = null,Object? withReplies = null,Object? withRenotes = null,Object? withSelfRenotes = null,Object? withFiles = null,Object? withSensitive = null,Object? keepPosition = null,Object? roleId = freezed,Object? channelId = freezed,Object? listId = freezed,Object? antennaId = freezed,Object? hashtag = freezed,Object? userId = freezed,Object? endpoint = freezed,Object? streamingChannel = freezed,Object? parameters = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(TabSettings(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,tabType: null == tabType ? _self.tabType : tabType // ignore: cast_nullable_to_non_nullable
 as TabType,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -239,7 +240,7 @@ return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that
 @JsonSerializable()
 
 class _TabSettings implements TabSettings {
-  const _TabSettings({this.id, required this.tabType, this.name, required this.account, this.icon, this.disableStreaming = false, this.disableSubscribing = false, this.withReplies = false, this.withRenotes = true, this.withSelfRenotes = true, this.withFiles = false, this.withSensitive = true, this.keepPosition = false, this.roleId, this.channelId, this.listId, this.antennaId, this.hashtag, this.userId, this.endpoint, this.streamingChannel, final  Map<String, dynamic>? parameters}): _parameters = parameters;
+  const _TabSettings({this.id, required this.tabType, this.name, required this.account, this.icon, this.disableStreaming = false, this.disableSubscribing = false, this.withReplies = false, this.withRenotes = true, this.withSelfRenotes = true, this.withFiles = false, this.withSensitive = true, this.keepPosition = false, this.roleId, this.channelId, this.listId, this.antennaId, this.hashtag, this.userId, this.endpoint, this.streamingChannel,  Map<String, dynamic>? parameters}): _parameters = parameters;
   factory _TabSettings.fromJson(Map<String, dynamic> json) => _$TabSettingsFromJson(json);
 
 @override final  String? id;

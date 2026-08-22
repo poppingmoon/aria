@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart' as legacy;
+import 'package:material_ui/material_ui.dart';
+
+extension ColorSchemeExtension on legacy.ColorScheme {
+  ColorScheme toModern() => ColorScheme(
+    brightness: brightness,
+    primary: primary,
+    onPrimary: onPrimary,
+    primaryContainer: primaryContainer,
+    onPrimaryContainer: onPrimaryContainer,
+    secondary: secondary,
+    onSecondary: onSecondary,
+    secondaryContainer: secondaryContainer,
+    onSecondaryContainer: onSecondaryContainer,
+    tertiary: tertiary,
+    onTertiary: onTertiary,
+    tertiaryContainer: tertiaryContainer,
+    onTertiaryContainer: onTertiaryContainer,
+    error: error,
+    onError: onError,
+    errorContainer: errorContainer,
+    onErrorContainer: onErrorContainer,
+    surface: surface,
+    onSurface: onSurface,
+    surfaceDim: surfaceDim,
+    surfaceBright: surfaceBright,
+    surfaceContainerLowest: surfaceContainerLowest,
+    surfaceContainerLow: surfaceContainerLow,
+    surfaceContainer: surfaceContainer,
+    surfaceContainerHigh: surfaceContainerHigh,
+    surfaceContainerHighest: surfaceContainerHighest,
+    onSurfaceVariant: onSurfaceVariant,
+    outline: outline,
+    outlineVariant: outlineVariant,
+    shadow: shadow,
+    scrim: scrim,
+    inverseSurface: inverseSurface,
+    onInverseSurface: onInverseSurface,
+    inversePrimary: inversePrimary,
+    surfaceTint: surfaceTint,
+  );
+}

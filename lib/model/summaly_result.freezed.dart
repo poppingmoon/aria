@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'summaly_result.dart';
@@ -9,6 +9,7 @@ part of 'summaly_result.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -64,7 +65,7 @@ class _$SummalyResultCopyWithImpl<$Res>
 /// Create a copy of SummalyResult
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? title = freezed,Object? icon = freezed,Object? description = freezed,Object? thumbnail = freezed,Object? thumbnailStyle = freezed,Object? sitename = freezed,Object? player = null,Object? sensitive = freezed,Object? activityPub = freezed,Object? fediverseCreater = freezed,Object? url = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(SummalyResult(
 title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
@@ -370,7 +371,7 @@ class _$PlayerCopyWithImpl<$Res>
 /// Create a copy of Player
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? url = freezed,Object? width = freezed,Object? height = freezed,Object? allow = freezed,}) {
-  return _then(_self.copyWith(
+  return _then(Player(
 url: freezed == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as String?,width: freezed == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
 as double?,height: freezed == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
@@ -516,7 +517,7 @@ return $default(_that.url,_that.width,_that.height,_that.allow);case _:
 @JsonSerializable(createToJson: false)
 
 class _Player implements Player {
-  const _Player({this.url, this.width, this.height, final  List<String>? allow}): _allow = allow;
+  const _Player({this.url, this.width, this.height,  List<String>? allow}): _allow = allow;
   factory _Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
 
 @override final  String? url;

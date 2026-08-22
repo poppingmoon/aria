@@ -37,111 +37,93 @@ void main() {
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
 
-    test(
-      'should return true if mutedWords is not empty and text contains muted word',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['foo']),
-            ],
-          ),
-          note: dummyNote.copyWith(text: 'foo'),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isTrue);
-      },
-    );
+    test('should return true if mutedWords is not empty and text contains muted word', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['foo']),
+          ],
+        ),
+        note: dummyNote.copyWith(text: 'foo'),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isTrue);
+    });
 
-    test(
-      'should return false if mutedWords is not empty and text does not contain muted word',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['bar']),
-            ],
-          ),
-          note: dummyNote.copyWith(text: 'foo'),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isFalse);
-      },
-    );
+    test('should return false if mutedWords is not empty and text does not contain muted word', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['bar']),
+          ],
+        ),
+        note: dummyNote.copyWith(text: 'foo'),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isFalse);
+    });
 
-    test(
-      'should return false when the note is written by me even if mutedWords is not empty and text contains muted word',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['foo']),
-            ],
-          ),
-          note: dummyNote.copyWith(
-            text: 'foo',
-            user: dummyUserLite.copyWith(username: 'testuser'),
-          ),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isFalse);
-      },
-    );
+    test('should return false when the note is written by me even if mutedWords is not empty and text contains muted word', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['foo']),
+          ],
+        ),
+        note: dummyNote.copyWith(
+          text: 'foo',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isFalse);
+    });
 
-    test(
-      'should return true if mutedWords is not empty and text contains muted word in CW',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['bar']),
-            ],
-          ),
-          note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isTrue);
-      },
-    );
+    test('should return true if mutedWords is not empty and text contains muted word in CW', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['bar']),
+          ],
+        ),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isTrue);
+    });
 
-    test(
-      'should return true if mutedWords is not empty and text contains muted word in both CW and text',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['foo']),
-              const MuteWord(content: ['bar']),
-            ],
-          ),
-          note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isTrue);
-      },
-    );
+    test('should return true if mutedWords is not empty and text contains muted word in both CW and text', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['foo']),
+            const MuteWord(content: ['bar']),
+          ],
+        ),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isTrue);
+    });
 
-    test(
-      'should return false if mutedWords is not empty and text does not contain muted word in both CW and text',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['baz']),
-            ],
-          ),
-          note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isFalse);
-      },
-    );
+    test('should return false if mutedWords is not empty and text does not contain muted word in both CW and text', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['baz']),
+          ],
+        ),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isFalse);
+    });
   });
 
   group('normal mode', () {
@@ -173,25 +155,22 @@ void main() {
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
 
-    test(
-      'should return false when the note is written by me even if text contains muted words',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [
-              const MuteWord(content: ['foo', 'bar']),
-            ],
-          ),
-          note: dummyNote.copyWith(
-            text: 'foo bar',
-            user: dummyUserLite.copyWith(username: 'testuser'),
-          ),
-        );
-        expect(container.read(noteNotifierProvider(account, '')), isNotNull);
-        expect(container.read(checkWordMuteProvider(account, '')), isFalse);
-      },
-    );
+    test('should return false when the note is written by me even if text contains muted words', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [
+            const MuteWord(content: ['foo', 'bar']),
+          ],
+        ),
+        note: dummyNote.copyWith(
+          text: 'foo bar',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
+      );
+      expect(container.read(noteNotifierProvider(account, '')), isNotNull);
+      expect(container.read(checkWordMuteProvider(account, '')), isFalse);
+    });
   });
 
   group('RegExp mode', () {
@@ -219,35 +198,29 @@ void main() {
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
 
-    test(
-      'should return false when the note is written by me even if text contains muted words',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [const MuteWord(regExp: '/bar/')],
-          ),
-          note: dummyNote.copyWith(
-            text: 'foobar',
-            user: dummyUserLite.copyWith(username: 'testuser'),
-          ),
-        );
-        expect(container.read(checkWordMuteProvider(account, '')), isFalse);
-      },
-    );
+    test('should return false when the note is written by me even if text contains muted words', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [const MuteWord(regExp: '/bar/')],
+        ),
+        note: dummyNote.copyWith(
+          text: 'foobar',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
+      );
+      expect(container.read(checkWordMuteProvider(account, '')), isFalse);
+    });
 
-    test(
-      'should return true if ignoreCase flag is used and text contains muted words with different cases',
-      () {
-        final container = setupContainer(
-          account: account,
-          i: dummyMeDetailed.copyWith(
-            mutedWords: [const MuteWord(regExp: '/bar/i')],
-          ),
-          note: dummyNote.copyWith(text: 'fooBar'),
-        );
-        expect(container.read(checkWordMuteProvider(account, '')), isTrue);
-      },
-    );
+    test('should return true if ignoreCase flag is used and text contains muted words with different cases', () {
+      final container = setupContainer(
+        account: account,
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [const MuteWord(regExp: '/bar/i')],
+        ),
+        note: dummyNote.copyWith(text: 'fooBar'),
+      );
+      expect(container.read(checkWordMuteProvider(account, '')), isTrue);
+    });
   });
 }

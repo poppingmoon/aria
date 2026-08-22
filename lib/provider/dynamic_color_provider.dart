@@ -2,11 +2,12 @@ import 'dart:convert';
 
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:material_color_utilities/material_color_utilities.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
+import '../extension/color_scheme_extension.dart';
 import '../model/misskey_colors.dart';
 import 'shared_preferences_provider.dart';
 
@@ -83,7 +84,8 @@ MisskeyColors? dynamicColor(Ref ref, Brightness brightness) {
     TargetPlatform.android =>
       ref
           .watch(corePaletteNotifierProvider)
-          ?.toColorScheme(brightness: brightness),
+          ?.toColorScheme(brightness: brightness)
+          .toModern(),
     TargetPlatform.windows || TargetPlatform.macOS || TargetPlatform.linux =>
       ref
           .watch(_accentColorNotifierProvider)

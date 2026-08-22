@@ -172,7 +172,7 @@ final class DynamicColorProvider
   }
 }
 
-String _$dynamicColorHash() => r'7d22b4869ca21666054ceef3c2a20ca2a6134372';
+String _$dynamicColorHash() => r'e1d668184fdf9410dabcddba7dc1b9e590e765cd';
 
 final class DynamicColorFamily extends $Family
     with $FunctionalFamilyOverride<MisskeyColors?, Brightness> {

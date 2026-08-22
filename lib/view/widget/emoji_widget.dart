@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../model/account.dart';

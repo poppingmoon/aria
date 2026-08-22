@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:twemoji_v2/twemoji_v2.dart';
 
 import '../../extension/text_style_extension.dart';

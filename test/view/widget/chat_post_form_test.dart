@@ -2,9 +2,9 @@ import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:aria/view/widget/chat_post_form.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../test_util/fake_shared_preferences.dart';
 

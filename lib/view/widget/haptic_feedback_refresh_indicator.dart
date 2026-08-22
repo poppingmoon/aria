@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../model/sound_settings.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -72,9 +72,8 @@ class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
                           1.0)) {
                     ref
                         .read(
-                          misskeySfxNotifierProvider(
-                            OperationType.reloadHold,
-                          ).notifier,
+                          misskeySfxNotifierProvider(OperationType.reloadHold)
+                              .notifier,
                         )
                         .play()
                         .ignore();

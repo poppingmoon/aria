@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'account_settings.dart';
@@ -9,6 +9,7 @@ part of 'account_settings.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -66,7 +67,7 @@ class _$AccountSettingsCopyWithImpl<$Res>
 /// Create a copy of AccountSettings
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? keepCw = null,Object? rememberNoteVisibility = null,Object? defaultNoteVisibility = null,Object? defaultNoteLocalOnly = null,Object? rememberRenoteVisibility = null,Object? defaultRenoteVisibility = null,Object? defaultRenoteLocalOnly = null,Object? reactionAcceptance = freezed,Object? visibility = null,Object? localOnly = null,Object? renoteVisibility = null,Object? renoteLocalOnly = null,Object? pinnedEmojisForReaction = null,Object? pinnedEmojis = null,Object? recentlyUsedEmojis = null,Object? defaultReaction = freezed,Object? uploadFolder = freezed,Object? keepOriginalUploading = null,Object? keepOriginalFilename = null,Object? mutedWords = null,Object? hardMutedWords = null,Object? mutedEmojis = null,Object? recentlyUsedUsers = null,Object? hashtags = null,Object? postFormHashtags = null,}) {
-  return _then(_self.copyWith(
+  return _then(AccountSettings(
 keepCw: null == keepCw ? _self.keepCw : keepCw // ignore: cast_nullable_to_non_nullable
 as bool,rememberNoteVisibility: null == rememberNoteVisibility ? _self.rememberNoteVisibility : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
 as bool,defaultNoteVisibility: null == defaultNoteVisibility ? _self.defaultNoteVisibility : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
@@ -233,7 +234,7 @@ return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisib
 @JsonSerializable()
 
 class _AccountSettings implements AccountSettings {
-  const _AccountSettings({this.keepCw = true, this.rememberNoteVisibility = false, this.defaultNoteVisibility = NoteVisibility.public, this.defaultNoteLocalOnly = false, this.rememberRenoteVisibility = false, this.defaultRenoteVisibility = NoteVisibility.public, this.defaultRenoteLocalOnly = false, this.reactionAcceptance, this.visibility = NoteVisibility.public, this.localOnly = false, this.renoteVisibility = NoteVisibility.public, this.renoteLocalOnly = false, final  List<String> pinnedEmojisForReaction = defaultPinnedEmojis, final  List<String> pinnedEmojis = defaultPinnedEmojis, final  List<String> recentlyUsedEmojis = const [], this.defaultReaction, this.uploadFolder, this.keepOriginalUploading = false, this.keepOriginalFilename = true, final  List<MuteWord> mutedWords = const [], final  List<MuteWord> hardMutedWords = const [], final  List<String> mutedEmojis = const [], final  List<String> recentlyUsedUsers = const [], final  List<String> hashtags = const [], final  List<String> postFormHashtags = const []}): _pinnedEmojisForReaction = pinnedEmojisForReaction,_pinnedEmojis = pinnedEmojis,_recentlyUsedEmojis = recentlyUsedEmojis,_mutedWords = mutedWords,_hardMutedWords = hardMutedWords,_mutedEmojis = mutedEmojis,_recentlyUsedUsers = recentlyUsedUsers,_hashtags = hashtags,_postFormHashtags = postFormHashtags;
+  const _AccountSettings({this.keepCw = true, this.rememberNoteVisibility = false, this.defaultNoteVisibility = NoteVisibility.public, this.defaultNoteLocalOnly = false, this.rememberRenoteVisibility = false, this.defaultRenoteVisibility = NoteVisibility.public, this.defaultRenoteLocalOnly = false, this.reactionAcceptance, this.visibility = NoteVisibility.public, this.localOnly = false, this.renoteVisibility = NoteVisibility.public, this.renoteLocalOnly = false,  List<String> pinnedEmojisForReaction = defaultPinnedEmojis,  List<String> pinnedEmojis = defaultPinnedEmojis,  List<String> recentlyUsedEmojis = const [], this.defaultReaction, this.uploadFolder, this.keepOriginalUploading = false, this.keepOriginalFilename = true,  List<MuteWord> mutedWords = const [],  List<MuteWord> hardMutedWords = const [],  List<String> mutedEmojis = const [],  List<String> recentlyUsedUsers = const [],  List<String> hashtags = const [],  List<String> postFormHashtags = const []}): _pinnedEmojisForReaction = pinnedEmojisForReaction,_pinnedEmojis = pinnedEmojis,_recentlyUsedEmojis = recentlyUsedEmojis,_mutedWords = mutedWords,_hardMutedWords = hardMutedWords,_mutedEmojis = mutedEmojis,_recentlyUsedUsers = recentlyUsedUsers,_hashtags = hashtags,_postFormHashtags = postFormHashtags;
   factory _AccountSettings.fromJson(Map<String, dynamic> json) => _$AccountSettingsFromJson(json);
 
 @override@JsonKey() final  bool keepCw;

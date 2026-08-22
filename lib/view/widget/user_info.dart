@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/user_detailed_extension.dart';
@@ -116,9 +116,8 @@ class UserInfo extends ConsumerWidget {
                 child: Text(
                   t.misskey.noAccountDescription,
                   style: TextStyle(
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.8),
+                    color: Theme.of(context).colorScheme.onSurface
+                        .withValues(alpha: 0.8),
                   ),
                 ),
               ),

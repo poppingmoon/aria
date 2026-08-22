@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
@@ -89,9 +89,8 @@ class TokenLoginPage extends HookConsumerWidget {
                 filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                 child: AppBar(
                   title: Text(t.aria.loginWithAccessToken),
-                  backgroundColor: Theme.of(
-                    context,
-                  ).scaffoldBackgroundColor.withValues(alpha: 0.5),
+                  backgroundColor: Theme.of(context).scaffoldBackgroundColor
+                      .withValues(alpha: 0.5),
                 ),
               ),
             ),

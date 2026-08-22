@@ -19,10 +19,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/image_editor_common/ios"
 
 SPEC CHECKSUMS:
-  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
   flutter_apns_only: 3d91c0ca9dbef4439874858590909a19f8ed06a4
   image_editor_common: d6f6644ae4a6de80481e89fe6d0a8c49e30b4b43
 
-PODFILE CHECKSUM: 8f87dd84ac2556c1d3c027edd6e2b6d74267735a
+PODFILE CHECKSUM: 524f9ea2bc6266b33df281650761b8944de9a5d2
 
 COCOAPODS: 1.16.2

@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
@@ -67,9 +67,8 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
                         builder: (context) => EmojiWidget(
                           account: account,
                           emoji: settings.defaultReaction!,
-                          style: DefaultTextStyle.of(
-                            context,
-                          ).style.apply(fontSizeFactor: 2.0),
+                          style: DefaultTextStyle.of(context).style
+                              .apply(fontSizeFactor: 2.0),
                         ),
                       )
                     : Text(t.misskey.notSet),
@@ -156,9 +155,8 @@ class _RecentlyUsedEmojisEditor extends ConsumerWidget {
                             remove: () {
                               ref
                                   .read(
-                                    recentlyUsedEmojisNotifierProvider(
-                                      account,
-                                    ).notifier,
+                                    recentlyUsedEmojisNotifierProvider(account)
+                                        .notifier,
                                   )
                                   .remove(index);
                               context.pop();

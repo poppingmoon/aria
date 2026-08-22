@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'broadcast.dart';
@@ -9,6 +9,7 @@ part of 'broadcast.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -64,7 +65,7 @@ class _$EmojiAddedCopyWithImpl<$Res>
 /// Create a copy of EmojiAdded
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? emoji = null,}) {
-  return _then(_self.copyWith(
+  return _then(EmojiAdded(
 emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
 as Emoji,
   ));
@@ -340,7 +341,7 @@ class _$EmojiUpdatedCopyWithImpl<$Res>
 /// Create a copy of EmojiUpdated
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? emojis = null,}) {
-  return _then(_self.copyWith(
+  return _then(EmojiUpdated(
 emojis: null == emojis ? _self.emojis : emojis // ignore: cast_nullable_to_non_nullable
 as List<Emoji>,
   ));
@@ -483,7 +484,7 @@ return $default(_that.emojis);case _:
 @JsonSerializable(createToJson: false)
 
 class _EmojiUpdated implements EmojiUpdated {
-  const _EmojiUpdated({required final  List<Emoji> emojis}): _emojis = emojis;
+  const _EmojiUpdated({required  List<Emoji> emojis}): _emojis = emojis;
   factory _EmojiUpdated.fromJson(Map<String, dynamic> json) => _$EmojiUpdatedFromJson(json);
 
  final  List<Emoji> _emojis;
@@ -604,7 +605,7 @@ class _$EmojiDeletedCopyWithImpl<$Res>
 /// Create a copy of EmojiDeleted
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? emojis = null,}) {
-  return _then(_self.copyWith(
+  return _then(EmojiDeleted(
 emojis: null == emojis ? _self.emojis : emojis // ignore: cast_nullable_to_non_nullable
 as List<Emoji>,
   ));
@@ -747,7 +748,7 @@ return $default(_that.emojis);case _:
 @JsonSerializable(createToJson: false)
 
 class _EmojiDeleted implements EmojiDeleted {
-  const _EmojiDeleted({required final  List<Emoji> emojis}): _emojis = emojis;
+  const _EmojiDeleted({required  List<Emoji> emojis}): _emojis = emojis;
   factory _EmojiDeleted.fromJson(Map<String, dynamic> json) => _$EmojiDeletedFromJson(json);
 
  final  List<Emoji> _emojis;
@@ -868,7 +869,7 @@ class _$AnnouncementCreatedCopyWithImpl<$Res>
 /// Create a copy of AnnouncementCreated
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? announcement = null,}) {
-  return _then(_self.copyWith(
+  return _then(AnnouncementCreated(
 announcement: null == announcement ? _self.announcement : announcement // ignore: cast_nullable_to_non_nullable
 as AnnouncementsResponse,
   ));

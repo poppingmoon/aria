@@ -132,11 +132,8 @@ void main() {
   final textToEmoji = SplayTreeMap<String, Set<String>>();
   final emojis = [
     ...jsonDecode(
-          File(
-            'emojis/packages/emoji-data/src/emojilist.json',
-          ).readAsStringSync(),
-        )
-        as List,
+      File('emojis/packages/emoji-data/src/emojilist.json').readAsStringSync(),
+    ) as List,
     ...emojilist,
   ];
   for (final emoji in emojis) {
@@ -163,11 +160,9 @@ const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(ca
   for (final language in languages) {
     final emojiToText = {
       ...jsonDecode(
-            File(
-              'emojis/packages/emoji-data/src/indexes/$language.json',
-            ).readAsStringSync(),
-          )
-          as Map<String, dynamic>,
+        File('emojis/packages/emoji-data/src/indexes/$language.json')
+            .readAsStringSync(),
+      ) as Map<String, dynamic>,
       ...?unicodeEmojiIndexes[language],
     };
     for (final entry in emojiToText.entries) {

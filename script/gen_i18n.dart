@@ -126,9 +126,9 @@ class Converter {
           .postfixReservedWords()
           .replaceSeparators();
       if (originalValue is String) {
-        final originalParams = RegExp(
-          r'\{([^}]+)}',
-        ).allMatches(originalValue).map((match) => match[1]!);
+        final originalParams = RegExp(r'\{([^}]+)}')
+            .allMatches(originalValue)
+            .map((match) => match[1]!);
         final params = {
           for (final originalParam in originalParams)
             originalParam: originalParam

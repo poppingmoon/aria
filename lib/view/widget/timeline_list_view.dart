@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/inifite_scroll_extent_threshold.dart';
@@ -132,9 +132,8 @@ class TimelineListView extends HookConsumerWidget {
     final hasUnread = useState(false);
     final hasQueuedNotes = useRef(false);
     ref.listen(
-      timelineNotesQueueNotifierProvider(
-        tabSettings,
-      ).select((notes) => notes.isNotEmpty),
+      timelineNotesQueueNotifierProvider(tabSettings)
+          .select((notes) => notes.isNotEmpty),
       (_, next) => hasQueuedNotes.value = next,
     );
     final nextNotes = ref.watch(
@@ -248,9 +247,8 @@ class TimelineListView extends HookConsumerWidget {
               if (controller.offset < 400.0) {
                 ref
                     .read(
-                      timelineLastViewedNoteIdNotifierProvider(
-                        tabSettings,
-                      ).notifier,
+                      timelineLastViewedNoteIdNotifierProvider(tabSettings)
+                          .notifier,
                     )
                     .save(note.id);
                 WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -279,9 +277,8 @@ class TimelineListView extends HookConsumerWidget {
           }
         });
         ref.listen(
-          webSocketChannelProvider(
-            tabSettings.account,
-          ).select((value) => value.error),
+          webSocketChannelProvider(tabSettings.account)
+              .select((value) => value.error),
           (_, next) {
             if (next != null) {
               if (WidgetsBinding.instance.lifecycleState !=
@@ -380,9 +377,8 @@ class TimelineListView extends HookConsumerWidget {
                   lastViewedNoteId.compareTo(latestNoteId) < 0)) {
             ref
                 .read(
-                  timelineLastViewedNoteIdNotifierProvider(
-                    tabSettings,
-                  ).notifier,
+                  timelineLastViewedNoteIdNotifierProvider(tabSettings)
+                      .notifier,
                 )
                 .save(latestNoteId);
           }
@@ -416,9 +412,8 @@ class TimelineListView extends HookConsumerWidget {
                         if (hasQueuedNotes.value) {
                           final notes = ref
                               .read(
-                                timelineNotesQueueNotifierProvider(
-                                  tabSettings,
-                                ).notifier,
+                                timelineNotesQueueNotifierProvider(tabSettings)
+                                    .notifier,
                               )
                               .popMany(100);
                           ref
@@ -648,9 +643,8 @@ class TimelineListView extends HookConsumerWidget {
                 onPressed: () {
                   final notes = ref
                       .read(
-                        timelineNotesQueueNotifierProvider(
-                          tabSettings,
-                        ).notifier,
+                        timelineNotesQueueNotifierProvider(tabSettings)
+                            .notifier,
                       )
                       .popMany(100);
                   ref

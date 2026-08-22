@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:isar_community/isar.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide NoteDraft;
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -314,9 +314,9 @@ class ImportExportPage extends ConsumerWidget {
                             .getSingleFile(latest.url),
                       );
                       try {
-                        final json =
-                            jsonDecode(await file!.readAsString())
-                                as Map<String, dynamic>;
+                        final json = jsonDecode(
+                          await file!.readAsString(),
+                        ) as Map<String, dynamic>;
                         final backup = AriaBackup.fromJson(json);
                         if (!context.mounted) return;
                         final confirmed = await confirm(

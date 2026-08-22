@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/max_content_width.dart';
@@ -88,18 +88,18 @@ class RolePage extends ConsumerWidget {
                                       ) =>
                                         Icon(
                                           Symbols.crown,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           size: 28.0,
                                           fill: 1.0,
                                         ),
                                       RolesListResponse(isModerator: true) =>
                                         Icon(
                                           Icons.shield,
-                                          color: Theme.of(
-                                            context,
-                                          ).colorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                           size: 28.0,
                                         ),
                                       _ => Icon(

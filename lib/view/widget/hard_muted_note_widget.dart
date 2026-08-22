@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class HardMutedNoteWidget extends StatelessWidget {
   const HardMutedNoteWidget({super.key, this.borderRadius});
@@ -7,10 +7,8 @@ class HardMutedNoteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (borderRadius case BorderRadius(
-      :final topLeft,
-      :final bottomLeft,
-    ) when topLeft != bottomLeft) {
+    if (borderRadius case BorderRadius(:final topLeft, :final bottomLeft)
+        when topLeft != bottomLeft) {
       return Material(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: borderRadius,

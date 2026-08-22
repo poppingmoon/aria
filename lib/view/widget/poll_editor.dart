@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -68,9 +68,8 @@ class PollEditor extends ConsumerWidget {
                     ? choice
                     : t.misskey.poll_.choiceN(n: index + 1),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface.withValues(
-                    alpha: choice.isNotEmpty ? 1.0 : 0.5,
-                  ),
+                  color: Theme.of(context).colorScheme.onSurface
+                      .withValues(alpha: choice.isNotEmpty ? 1.0 : 0.5),
                 ),
               ),
               trailing: IconButton(

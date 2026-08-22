@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_highlighting/flutter_highlighting.dart';
 import 'package:flutter_highlighting/theme_map.dart';
 import 'package:flutter_highlighting/themes/atom-one-dark.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:highlighting/languages/all.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../constant/fonts.dart';
 import '../../../extension/text_style_extension.dart';
@@ -147,9 +147,8 @@ class Code extends HookConsumerWidget {
             child: IconButton(
               tooltip: t.misskey.copy,
               style: IconButton.styleFrom(
-                foregroundColor: Theme.of(
-                  context,
-                ).colorScheme.onSurface.withValues(alpha: 0.5),
+                foregroundColor: Theme.of(context).colorScheme.onSurface
+                    .withValues(alpha: 0.5),
                 minimumSize: Size.zero,
                 iconSize: DefaultTextStyle.of(context).style.lineHeight,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,

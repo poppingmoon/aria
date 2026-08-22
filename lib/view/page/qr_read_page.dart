@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
+
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:multi_split_view/multi_split_view.dart';
 
@@ -49,9 +50,8 @@ class QrReadPage extends HookConsumerWidget {
     final scrollController = useScrollController();
     final capture = useState<BarcodeCapture?>(null);
     ref.listen(
-      qrReadHistoryNotifierProvider(
-        account,
-      ).selectAsync((history) => history.firstOrNull),
+      qrReadHistoryNotifierProvider(account)
+          .selectAsync((history) => history.firstOrNull),
       (prev, next) {
         if (prev != next) {
           if (enableHapticFeedback) {

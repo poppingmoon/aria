@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kana_kit/kana_kit.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../constant/shortcuts.dart';
 import '../../../extension/string_extension.dart';
@@ -55,9 +55,8 @@ class SearchPage extends HookConsumerWidget {
     final opacityController = useAnimationController(
       duration: const Duration(milliseconds: 200),
     );
-    final opacity = CurveTween(
-      curve: Curves.easeInOut,
-    ).animate(opacityController);
+    final opacity = CurveTween(curve: Curves.easeInOut)
+        .animate(opacityController);
     useEffect(() {
       void controllerCallback() {
         text.value = controller.text;

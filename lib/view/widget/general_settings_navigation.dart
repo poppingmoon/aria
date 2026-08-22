@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 
@@ -97,9 +97,9 @@ class GeneralSettingsNavigation extends StatelessWidget {
                 ? IconButtonTheme(
                     data: IconButtonThemeData(
                       style: IconButton.styleFrom(
-                        disabledForegroundColor: Theme.of(
-                          context,
-                        ).colorScheme.primary,
+                        disabledForegroundColor: Theme.of(context)
+                            .colorScheme
+                            .primary,
                         minimumSize: const Size(48.0, 48.0),
                       ),
                     ),

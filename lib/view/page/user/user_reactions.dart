@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -38,9 +38,8 @@ class UserReactions extends ConsumerWidget {
                 EmojiWidget(
                   account: account,
                   emoji: reaction.type,
-                  style: DefaultTextStyle.of(
-                    context,
-                  ).style.apply(fontSizeFactor: 1.5),
+                  style: DefaultTextStyle.of(context).style
+                      .apply(fontSizeFactor: 1.5),
                   emojis: reaction.note.reactionEmojis,
                   onTap: () => showModalBottomSheet<void>(
                     context: context,

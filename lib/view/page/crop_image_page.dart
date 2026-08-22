@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:extended_image/extended_image.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as legacy;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../util/edit_image.dart';
@@ -17,21 +18,30 @@ class CropImagePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final editorKey = useMemoized(
-      () => GlobalKey<ExtendedImageEditorState>(),
-      [],
-    );
+    final editorKey = useMemoized(() => GlobalKey<ExtendedImageEditorState>());
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.cropImage)),
-      body: ExtendedImage.memory(
-        image,
-        fit: BoxFit.contain,
-        mode: ExtendedImageMode.editor,
-        extendedImageEditorKey: editorKey,
-        cacheRawData: true,
-        initEditorConfigHandler: (ExtendedImageState? state) =>
-            EditorConfig(cropAspectRatio: aspectRatio),
+      // ignore: deprecated_member_use
+      body: MaterialUiCompatibilityBridge(
+        child: Builder(
+          builder: (context) => legacy.Theme(
+            data: legacy.Theme.of(context).copyWith(
+              primaryColor: theme.primaryColor,
+              scaffoldBackgroundColor: theme.scaffoldBackgroundColor,
+            ),
+            child: ExtendedImage.memory(
+              image,
+              fit: BoxFit.contain,
+              mode: ExtendedImageMode.editor,
+              extendedImageEditorKey: editorKey,
+              cacheRawData: true,
+              initEditorConfigHandler: (state) =>
+                  EditorConfig(cropAspectRatio: aspectRatio),
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: t.misskey.done,

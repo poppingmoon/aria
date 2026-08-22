@@ -1,10 +1,10 @@
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/text_style_extension.dart';
@@ -923,10 +923,8 @@ class _MediaCardSheet extends ConsumerWidget {
           title: Text(t.aria.openInBrowser),
           onTap: () => launchUrl(ref, Uri.parse(file.url)),
         ),
-        if (user case User(
-          :final username,
-          host: null,
-        ) when !account.isGuest && account.username == username)
+        if (user case User(:final username, host: null)
+            when !account.isGuest && account.username == username)
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(t.misskey.fileViewer_.title),

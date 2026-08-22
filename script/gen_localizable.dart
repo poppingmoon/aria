@@ -176,9 +176,9 @@ void main() {
       'zh-TW' => 'zh-Hant',
       _ => language.split('-')[0],
     };
-    final localizations =
-        loadYaml(File('misskey/locales/$language.yml').readAsStringSync())
-            as YamlMap;
+    final localizations = loadYaml(
+      File('misskey/locales/$language.yml').readAsStringSync(),
+    ) as YamlMap;
     if (localizations['_notification'] case final YamlMap notifications) {
       for (final key in notificationKeys) {
         if (notifications[key] case final String value) {

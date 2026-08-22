@@ -24,11 +24,11 @@ import 'package:aria/view/widget/renote_header.dart';
 import 'package:aria/view/widget/url_preview.dart';
 import 'package:aria/view/widget/user_avatar.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/misc.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../test_util/dummy_drive_file.dart';
@@ -53,19 +53,16 @@ Future<void> setupWidget(
     ProviderScope(
       overrides: [
         accountsNotifierProvider.overrideWithValue([account]),
-        accountSettingsNotifierProvider(
-          account,
-        ).overrideWithValue(const AccountSettings()),
+        accountSettingsNotifierProvider(account)
+            .overrideWithValue(const AccountSettings()),
         generalSettingsNotifierProvider.overrideWithValue(generalSettings),
         iNotifierProvider(account).overrideWithBuild(
           (_, _) => i ?? dummyMeDetailed.copyWith(id: 'testuser'),
         ),
-        metaNotifierProvider(
-          account.host,
-        ).overrideWithBuild((_, _) => const MetaResponse()),
-        serverUrlNotifierProvider(
-          account.host,
-        ).overrideWithValue(Uri.https(account.host)),
+        metaNotifierProvider(account.host)
+            .overrideWithBuild((_, _) => const MetaResponse()),
+        serverUrlNotifierProvider(account.host)
+            .overrideWithValue(Uri.https(account.host)),
         ...overrides,
       ],
       child: MaterialApp.router(
@@ -786,6 +783,7 @@ void main() {
             account: account,
             noteId: note.id,
             generalSettings: const GeneralSettings(
+              noteTapAction: NoteActionType.none,
               noteDoubleTapAction: NoteActionType.reaction,
             ),
             overrides: [
@@ -794,7 +792,7 @@ void main() {
           );
           await tester.tap(find.text('text'));
           await tester.pump(kDoubleTapMinTime);
-          await tester.tap(find.text('text'), warnIfMissed: false);
+          await tester.tap(find.text('text'));
           await tester.pumpAndSettle();
           expect(find.byType(EmojiPicker), findsNothing);
         },
