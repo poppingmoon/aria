@@ -4,13 +4,21 @@ import 'package:material_ui/material_ui.dart';
 import '../util/force_accept_gesture_recognizer.dart';
 
 ForceAcceptGestureRecognizer useForceAcceptGestureRecognizer({
+  ScrollPosition? Function(Axis axis)? getScrollPosition,
   List<Object?>? keys,
 }) {
-  return use(_ForceAcceptGestureRecognizerHook(keys: keys));
+  return use(
+    _ForceAcceptGestureRecognizerHook(
+      getScrollPosition: getScrollPosition,
+      keys: keys,
+    ),
+  );
 }
 
-class const _ForceAcceptGestureRecognizerHook({super.keys})
-    extends Hook<ForceAcceptGestureRecognizer> {
+class const _ForceAcceptGestureRecognizerHook({
+  final ScrollPosition? Function(Axis axis)? getScrollPosition,
+  super.keys,
+}) extends Hook<ForceAcceptGestureRecognizer> {
   @override
   HookState<ForceAcceptGestureRecognizer, Hook<ForceAcceptGestureRecognizer>>
   createState() => _ForceAcceptGestureRecognizerHookState();
@@ -22,7 +30,9 @@ class _ForceAcceptGestureRecognizerHookState
           ForceAcceptGestureRecognizer,
           _ForceAcceptGestureRecognizerHook
         > {
-  final recognizer = ForceAcceptGestureRecognizer();
+  late final recognizer = ForceAcceptGestureRecognizer(
+    getScrollPosition: hook.getScrollPosition,
+  );
 
   @override
   ForceAcceptGestureRecognizer build(BuildContext context) => recognizer;

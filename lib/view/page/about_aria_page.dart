@@ -36,6 +36,7 @@ class const AboutAriaPage({super.key}) extends HookConsumerWidget {
       duration: kLongPressTimeout - kPressTimeout,
     );
     final animationValue = useAnimation(controller);
+    final scrollController = useScrollController();
     final activeLinkId = useState<String?>(null);
     final recognizers = useMemoized(() {
       GestureRecognizer registerRecognizer({
@@ -43,7 +44,15 @@ class const AboutAriaPage({super.key}) extends HookConsumerWidget {
         void Function()? onTap,
         void Function()? onLongPress,
       }) {
-        return ForceAcceptGestureRecognizer()
+        return ForceAcceptGestureRecognizer(
+            getScrollPosition: (axis) => switch (axis) {
+              Axis.horizontal => Scrollable.maybeOf(
+                context,
+                axis: Axis.horizontal,
+              )?.position,
+              Axis.vertical => scrollController.position,
+            },
+          )
           ..onLongPressDown = (_) {
             activeLinkId.value = linkId;
             controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
@@ -129,6 +138,7 @@ class const AboutAriaPage({super.key}) extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(t.aria.aboutAria)),
       body: ListView(
+        controller: scrollController,
         children: [
           Center(
             child: Container(

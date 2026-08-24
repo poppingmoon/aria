@@ -226,29 +226,33 @@ class const Mfm({
         };
         recognizers.value = {
           for (final linkId in linkNodes.map(identityHashCode))
-            linkId: ForceAcceptGestureRecognizer()
-              ..onLongPressDown = (_) {
-                activeLinkId.value = linkId;
-                controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
-              }
-              ..onLongPressUp = () {
-                if (callbacks.value[linkId]?.onTap case final onTap?) {
-                  Feedback.forTap(context);
-                  onTap();
-                }
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              }
-              ..onLongPressCancel = () {
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              }
-              ..onLongPress = () {
-                if (callbacks.value[linkId]?.onLongPress
-                    case final onLongPress?) {
-                  Feedback.forLongPress(context);
-                  onLongPress();
-                }
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              },
+            linkId:
+                ForceAcceptGestureRecognizer(
+                    getScrollPosition: (axis) =>
+                        Scrollable.maybeOf(context, axis: axis)?.position,
+                  )
+                  ..onLongPressDown = (_) {
+                    activeLinkId.value = linkId;
+                    controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
+                  }
+                  ..onLongPressUp = () {
+                    if (callbacks.value[linkId]?.onTap case final onTap?) {
+                      Feedback.forTap(context);
+                      onTap();
+                    }
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  }
+                  ..onLongPressCancel = () {
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  }
+                  ..onLongPress = () {
+                    if (callbacks.value[linkId]?.onLongPress
+                        case final onLongPress?) {
+                      Feedback.forLongPress(context);
+                      onLongPress();
+                    }
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  },
         };
       }
 
