@@ -6,47 +6,49 @@ import '../constant/default_pinned_emojis.dart';
 part 'account_settings.freezed.dart';
 part 'account_settings.g.dart';
 
-@freezed
-abstract class AccountSettings with _$AccountSettings {
-  const factory({
-    // Privacy
-    @Default(true) bool keepCw,
-    @Default(false) bool rememberNoteVisibility,
-    @Default(NoteVisibility.public) NoteVisibility defaultNoteVisibility,
-    @Default(false) bool defaultNoteLocalOnly,
-    @Default(false) bool rememberRenoteVisibility,
-    @Default(NoteVisibility.public) NoteVisibility defaultRenoteVisibility,
-    @Default(false) bool defaultRenoteLocalOnly,
-    ReactionAcceptance? reactionAcceptance,
-    @Default(NoteVisibility.public) NoteVisibility visibility,
-    @Default(false) bool localOnly,
-    @Default(NoteVisibility.public) NoteVisibility renoteVisibility,
-    @Default(false) bool renoteLocalOnly,
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const AccountSettings({
+  // Privacy
+  @override final bool keepCw = true,
+  @override final bool rememberNoteVisibility = false,
+  @override final NoteVisibility defaultNoteVisibility = NoteVisibility.public,
+  @override final bool defaultNoteLocalOnly = false,
+  @override final bool rememberRenoteVisibility = false,
+  @override
+  final NoteVisibility defaultRenoteVisibility = NoteVisibility.public,
+  @override final bool defaultRenoteLocalOnly = false,
+  @override final ReactionAcceptance? reactionAcceptance,
+  @override final NoteVisibility visibility = NoteVisibility.public,
+  @override final bool localOnly = false,
+  @override final NoteVisibility renoteVisibility = NoteVisibility.public,
+  @override final bool renoteLocalOnly = false,
 
-    // EmojiPicker
-    @Default(defaultPinnedEmojis) List<String> pinnedEmojisForReaction,
-    @Default(defaultPinnedEmojis) List<String> pinnedEmojis,
-    @Default([]) List<String> recentlyUsedEmojis,
-    String? defaultReaction,
+  // EmojiPicker
+  @override final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
+  @override final List<String> pinnedEmojis = defaultPinnedEmojis,
+  @override final List<String> recentlyUsedEmojis = const [],
+  @override final String? defaultReaction,
 
-    // Drive
-    String? uploadFolder,
-    @Default(false) bool keepOriginalUploading,
-    @Default(true) bool keepOriginalFilename,
+  // Drive
+  @override final String? uploadFolder,
+  @override final bool keepOriginalUploading = false,
+  @override final bool keepOriginalFilename = true,
 
-    // Mute
-    @Default([]) List<MuteWord> mutedWords,
-    @Default([]) List<MuteWord> hardMutedWords,
-    @Default([]) List<String> mutedEmojis,
+  // Mute
+  @override final List<MuteWord> mutedWords = const [],
+  @override final List<MuteWord> hardMutedWords = const [],
+  @override final List<String> mutedEmojis = const [],
 
-    // UserSelectDialog
-    @Default([]) List<String> recentlyUsedUsers,
+  // UserSelectDialog
+  @override final List<String> recentlyUsedUsers = const [],
 
-    // PostForm
-    @Default([]) List<String> hashtags,
-    @Default([]) List<String> postFormHashtags,
-  }) = _AccountSettings;
-
+  // PostForm
+  @override final List<String> hashtags = const [],
+  @override final List<String> postFormHashtags = const [],
+}) with _$AccountSettings {
   factory fromJson(Map<String, Object?> json) =>
       _$AccountSettingsFromJson(json);
+
+  Map<String, Object?> toJson() => _$AccountSettingsToJson(this);
 }

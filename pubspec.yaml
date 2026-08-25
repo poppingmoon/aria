@@ -163,7 +163,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
-  freezed: ^4.0.0-dev.3
+  freezed: ^4.0.0
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter

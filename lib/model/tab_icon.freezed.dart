@@ -12,19 +12,16 @@ part of 'tab_icon.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$MaterialIcon {
 
- int get codePoint;
+@override int get codePoint;
 /// Create a copy of MaterialIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $MaterialIconCopyWith<MaterialIcon> get copyWith => _$MaterialIconCopyWithImpl<MaterialIcon>(this as MaterialIcon, _$identity);
 
-  /// Serializes this MaterialIcon to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -32,7 +29,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is MaterialIcon&&(identical(other.codePoint, codePoint) || other.codePoint == codePoint));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,codePoint);
 
@@ -49,7 +46,7 @@ abstract mixin class $MaterialIconCopyWith<$Res>  {
   factory $MaterialIconCopyWith(MaterialIcon value, $Res Function(MaterialIcon) _then) = _$MaterialIconCopyWithImpl;
 @useResult
 $Res call({
- int codePoint
+@override int codePoint
 });
 
 
@@ -154,7 +151,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int codePoint)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  int codePoint)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MaterialIcon() when $default != null:
 return $default(_that.codePoint);case _:
@@ -175,7 +172,7 @@ return $default(_that.codePoint);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int codePoint)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  int codePoint)  $default,) {final _that = this;
 switch (_that) {
 case _MaterialIcon():
 return $default(_that.codePoint);case _:
@@ -195,7 +192,7 @@ return $default(_that.codePoint);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int codePoint)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  int codePoint)?  $default,) {final _that = this;
 switch (_that) {
 case _MaterialIcon() when $default != null:
 return $default(_that.codePoint);case _:
@@ -207,13 +204,13 @@ return $default(_that.codePoint);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
-class _MaterialIcon implements MaterialIcon {
-  const _MaterialIcon({required this.codePoint});
-  factory _MaterialIcon.fromJson(Map<String, dynamic> json) => _$MaterialIconFromJson(json);
 
-@override final  int codePoint;
+class _MaterialIcon extends MaterialIcon {
+  const _MaterialIcon({@override required this.codePoint}): super(codePoint: codePoint);
+  
+
+@override@override final  int codePoint;
 
 /// Create a copy of MaterialIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -221,17 +218,14 @@ class _MaterialIcon implements MaterialIcon {
 @pragma('vm:prefer-inline')
 _$MaterialIconCopyWith<_MaterialIcon> get copyWith => __$MaterialIconCopyWithImpl<_MaterialIcon>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$MaterialIconToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaterialIcon&&(identical(other.codePoint, codePoint) || other.codePoint == codePoint));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,codePoint);
 
@@ -248,7 +242,7 @@ abstract mixin class _$MaterialIconCopyWith<$Res> implements $MaterialIconCopyWi
   factory _$MaterialIconCopyWith(_MaterialIcon value, $Res Function(_MaterialIcon) _then) = __$MaterialIconCopyWithImpl;
 @override @useResult
 $Res call({
- int codePoint
+@override int codePoint
 });
 
 
@@ -275,19 +269,16 @@ as int,
 
 }
 
-
 /// @nodoc
 mixin _$ImageIcon {
 
- String get url;
+@override String get url;
 /// Create a copy of ImageIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ImageIconCopyWith<ImageIcon> get copyWith => _$ImageIconCopyWithImpl<ImageIcon>(this as ImageIcon, _$identity);
 
-  /// Serializes this ImageIcon to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -295,7 +286,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageIcon&&(identical(other.url, url) || other.url == url));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,url);
 
@@ -312,7 +303,7 @@ abstract mixin class $ImageIconCopyWith<$Res>  {
   factory $ImageIconCopyWith(ImageIcon value, $Res Function(ImageIcon) _then) = _$ImageIconCopyWithImpl;
 @useResult
 $Res call({
- String url
+@override String url
 });
 
 
@@ -417,7 +408,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String url)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ImageIcon() when $default != null:
 return $default(_that.url);case _:
@@ -438,7 +429,7 @@ return $default(_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String url)  $default,) {final _that = this;
 switch (_that) {
 case _ImageIcon():
 return $default(_that.url);case _:
@@ -458,7 +449,7 @@ return $default(_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String url)?  $default,) {final _that = this;
 switch (_that) {
 case _ImageIcon() when $default != null:
 return $default(_that.url);case _:
@@ -470,13 +461,13 @@ return $default(_that.url);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
-class _ImageIcon implements ImageIcon {
-  const _ImageIcon({required this.url});
-  factory _ImageIcon.fromJson(Map<String, dynamic> json) => _$ImageIconFromJson(json);
 
-@override final  String url;
+class _ImageIcon extends ImageIcon {
+  const _ImageIcon({@override required this.url}): super(url: url);
+  
+
+@override@override final  String url;
 
 /// Create a copy of ImageIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -484,17 +475,14 @@ class _ImageIcon implements ImageIcon {
 @pragma('vm:prefer-inline')
 _$ImageIconCopyWith<_ImageIcon> get copyWith => __$ImageIconCopyWithImpl<_ImageIcon>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$ImageIconToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageIcon&&(identical(other.url, url) || other.url == url));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,url);
 
@@ -511,7 +499,7 @@ abstract mixin class _$ImageIconCopyWith<$Res> implements $ImageIconCopyWith<$Re
   factory _$ImageIconCopyWith(_ImageIcon value, $Res Function(_ImageIcon) _then) = __$ImageIconCopyWithImpl;
 @override @useResult
 $Res call({
- String url
+@override String url
 });
 
 
@@ -538,19 +526,16 @@ as String,
 
 }
 
-
 /// @nodoc
 mixin _$EmojiIcon {
 
- String get emoji;
+@override String get emoji;
 /// Create a copy of EmojiIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $EmojiIconCopyWith<EmojiIcon> get copyWith => _$EmojiIconCopyWithImpl<EmojiIcon>(this as EmojiIcon, _$identity);
 
-  /// Serializes this EmojiIcon to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -558,7 +543,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiIcon&&(identical(other.emoji, emoji) || other.emoji == emoji));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,emoji);
 
@@ -575,7 +560,7 @@ abstract mixin class $EmojiIconCopyWith<$Res>  {
   factory $EmojiIconCopyWith(EmojiIcon value, $Res Function(EmojiIcon) _then) = _$EmojiIconCopyWithImpl;
 @useResult
 $Res call({
- String emoji
+@override String emoji
 });
 
 
@@ -680,7 +665,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String emoji)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String emoji)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmojiIcon() when $default != null:
 return $default(_that.emoji);case _:
@@ -701,7 +686,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String emoji)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String emoji)  $default,) {final _that = this;
 switch (_that) {
 case _EmojiIcon():
 return $default(_that.emoji);case _:
@@ -721,7 +706,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String emoji)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String emoji)?  $default,) {final _that = this;
 switch (_that) {
 case _EmojiIcon() when $default != null:
 return $default(_that.emoji);case _:
@@ -733,13 +718,13 @@ return $default(_that.emoji);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
-class _EmojiIcon implements EmojiIcon {
-  const _EmojiIcon({required this.emoji});
-  factory _EmojiIcon.fromJson(Map<String, dynamic> json) => _$EmojiIconFromJson(json);
 
-@override final  String emoji;
+class _EmojiIcon extends EmojiIcon {
+  const _EmojiIcon({@override required this.emoji}): super(emoji: emoji);
+  
+
+@override@override final  String emoji;
 
 /// Create a copy of EmojiIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -747,17 +732,14 @@ class _EmojiIcon implements EmojiIcon {
 @pragma('vm:prefer-inline')
 _$EmojiIconCopyWith<_EmojiIcon> get copyWith => __$EmojiIconCopyWithImpl<_EmojiIcon>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$EmojiIconToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiIcon&&(identical(other.emoji, emoji) || other.emoji == emoji));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,emoji);
 
@@ -774,7 +756,7 @@ abstract mixin class _$EmojiIconCopyWith<$Res> implements $EmojiIconCopyWith<$Re
   factory _$EmojiIconCopyWith(_EmojiIcon value, $Res Function(_EmojiIcon) _then) = __$EmojiIconCopyWithImpl;
 @override @useResult
 $Res call({
- String emoji
+@override String emoji
 });
 
 

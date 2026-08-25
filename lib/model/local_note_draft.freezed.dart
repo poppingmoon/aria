@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocalNoteDraft {
 
- int get id; Account get account; String? get tabId; NoteDraft get draft; bool get isPinned;
+@override int get id;@override Account get account;@override String? get tabId;@override NoteDraft get draft;@override bool get isPinned;
 /// Create a copy of LocalNoteDraft
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $LocalNoteDraftCopyWith<$Res>  {
   factory $LocalNoteDraftCopyWith(LocalNoteDraft value, $Res Function(LocalNoteDraft) _then) = _$LocalNoteDraftCopyWithImpl;
 @useResult
 $Res call({
- int id, Account account, String? tabId, NoteDraft draft, bool isPinned
+@override int id,@override Account account,@override String? tabId,@override NoteDraft draft,@override bool isPinned
 });
 
 
@@ -95,148 +95,19 @@ $NoteDraftCopyWith<$Res> get draft {
 }
 
 
-/// Adds pattern-matching-related methods to [LocalNoteDraft].
-extension LocalNoteDraftPatterns on LocalNoteDraft {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LocalNoteDraft value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _LocalNoteDraft() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LocalNoteDraft value)  $default,){
-final _that = this;
-switch (_that) {
-case _LocalNoteDraft():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LocalNoteDraft value)?  $default,){
-final _that = this;
-switch (_that) {
-case _LocalNoteDraft() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  Account account,  String? tabId,  NoteDraft draft,  bool isPinned)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _LocalNoteDraft() when $default != null:
-return $default(_that.id,_that.account,_that.tabId,_that.draft,_that.isPinned);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  Account account,  String? tabId,  NoteDraft draft,  bool isPinned)  $default,) {final _that = this;
-switch (_that) {
-case _LocalNoteDraft():
-return $default(_that.id,_that.account,_that.tabId,_that.draft,_that.isPinned);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  Account account,  String? tabId,  NoteDraft draft,  bool isPinned)?  $default,) {final _that = this;
-switch (_that) {
-case _LocalNoteDraft() when $default != null:
-return $default(_that.id,_that.account,_that.tabId,_that.draft,_that.isPinned);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _LocalNoteDraft implements LocalNoteDraft {
-  const _LocalNoteDraft({required this.id, required this.account, this.tabId, required this.draft, required this.isPinned});
+class _LocalNoteDraft extends LocalNoteDraft {
+  const _LocalNoteDraft({@override required this.id, @override required this.account, @override this.tabId, @override required this.draft, @override required this.isPinned}): super(id: id, account: account, tabId: tabId, draft: draft, isPinned: isPinned);
   
 
-@override final  int id;
-@override final  Account account;
-@override final  String? tabId;
-@override final  NoteDraft draft;
-@override final  bool isPinned;
+@override@override final  int id;
+@override@override final  Account account;
+@override@override final  String? tabId;
+@override@override final  NoteDraft draft;
+@override@override final  bool isPinned;
 
 /// Create a copy of LocalNoteDraft
 /// with the given fields replaced by the non-null parameter values.
@@ -268,7 +139,7 @@ abstract mixin class _$LocalNoteDraftCopyWith<$Res> implements $LocalNoteDraftCo
   factory _$LocalNoteDraftCopyWith(_LocalNoteDraft value, $Res Function(_LocalNoteDraft) _then) = __$LocalNoteDraftCopyWithImpl;
 @override @useResult
 $Res call({
- int id, Account account, String? tabId, NoteDraft draft, bool isPinned
+@override int id,@override Account account,@override String? tabId,@override NoteDraft draft,@override bool isPinned
 });
 
 

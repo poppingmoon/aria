@@ -138,7 +138,9 @@ class const TabSettingsPage({super.key, final String? tabId})
             ),
           )
         : null;
-    final tabSettings = useState(initialTabSettings ?? TabSettings.dummy());
+    final tabSettings = useState(
+      initialTabSettings ?? const TabSettings.dummy(),
+    );
     final account = useState(
       initialTabSettings?.account ??
           ref.watch(
@@ -185,7 +187,9 @@ class const TabSettingsPage({super.key, final String? tabId})
     final theme = Theme.of(context);
 
     return PopScope(
-      canPop: (initialTabSettings ?? TabSettings.dummy()) == tabSettings.value,
+      canPop:
+          (initialTabSettings ?? const TabSettings.dummy()) ==
+          tabSettings.value,
       onPopInvokedWithResult: (didPop, _) async {
         if (!didPop) {
           final confirmed = await confirm(

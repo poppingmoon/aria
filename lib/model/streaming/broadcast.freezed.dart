@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$EmojiAdded {
 
- Emoji get emoji;
+@override Emoji get emoji;
 /// Create a copy of EmojiAdded
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -47,7 +47,7 @@ abstract mixin class $EmojiAddedCopyWith<$Res>  {
   factory $EmojiAddedCopyWith(EmojiAdded value, $Res Function(EmojiAdded) _then) = _$EmojiAddedCopyWithImpl;
 @useResult
 $Res call({
- Emoji emoji
+@override Emoji emoji
 });
 
 
@@ -161,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Emoji emoji)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  Emoji emoji)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmojiAdded() when $default != null:
 return $default(_that.emoji);case _:
@@ -182,7 +182,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Emoji emoji)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  Emoji emoji)  $default,) {final _that = this;
 switch (_that) {
 case _EmojiAdded():
 return $default(_that.emoji);case _:
@@ -202,7 +202,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Emoji emoji)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  Emoji emoji)?  $default,) {final _that = this;
 switch (_that) {
 case _EmojiAdded() when $default != null:
 return $default(_that.emoji);case _:
@@ -216,11 +216,11 @@ return $default(_that.emoji);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _EmojiAdded implements EmojiAdded {
-  const _EmojiAdded({required this.emoji});
+class _EmojiAdded extends EmojiAdded {
+  const _EmojiAdded({@override required this.emoji}): super(emoji: emoji);
   factory _EmojiAdded.fromJson(Map<String, dynamic> json) => _$EmojiAddedFromJson(json);
 
-@override final  Emoji emoji;
+@override@override final  Emoji emoji;
 
 /// Create a copy of EmojiAdded
 /// with the given fields replaced by the non-null parameter values.
@@ -252,7 +252,7 @@ abstract mixin class _$EmojiAddedCopyWith<$Res> implements $EmojiAddedCopyWith<$
   factory _$EmojiAddedCopyWith(_EmojiAdded value, $Res Function(_EmojiAdded) _then) = __$EmojiAddedCopyWithImpl;
 @override @useResult
 $Res call({
- Emoji emoji
+@override Emoji emoji
 });
 
 
@@ -292,7 +292,7 @@ $EmojiCopyWith<$Res> get emoji {
 /// @nodoc
 mixin _$EmojiUpdated {
 
- List<Emoji> get emojis;
+@override List<Emoji> get emojis;
 /// Create a copy of EmojiUpdated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,7 +323,7 @@ abstract mixin class $EmojiUpdatedCopyWith<$Res>  {
   factory $EmojiUpdatedCopyWith(EmojiUpdated value, $Res Function(EmojiUpdated) _then) = _$EmojiUpdatedCopyWithImpl;
 @useResult
 $Res call({
- List<Emoji> emojis
+@override List<Emoji> emojis
 });
 
 
@@ -428,7 +428,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Emoji> emojis)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  List<Emoji> emojis)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmojiUpdated() when $default != null:
 return $default(_that.emojis);case _:
@@ -449,7 +449,7 @@ return $default(_that.emojis);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Emoji> emojis)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  List<Emoji> emojis)  $default,) {final _that = this;
 switch (_that) {
 case _EmojiUpdated():
 return $default(_that.emojis);case _:
@@ -469,7 +469,7 @@ return $default(_that.emojis);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Emoji> emojis)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  List<Emoji> emojis)?  $default,) {final _that = this;
 switch (_that) {
 case _EmojiUpdated() when $default != null:
 return $default(_that.emojis);case _:
@@ -483,12 +483,12 @@ return $default(_that.emojis);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _EmojiUpdated implements EmojiUpdated {
-  const _EmojiUpdated({required  List<Emoji> emojis}): _emojis = emojis;
+class _EmojiUpdated extends EmojiUpdated {
+  const _EmojiUpdated({@override required  List<Emoji> emojis}): _emojis = emojis,super(emojis: emojis);
   factory _EmojiUpdated.fromJson(Map<String, dynamic> json) => _$EmojiUpdatedFromJson(json);
 
  final  List<Emoji> _emojis;
-@override List<Emoji> get emojis {
+@override@override List<Emoji> get emojis {
   if (_emojis is EqualUnmodifiableListView) return _emojis;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_emojis);
@@ -525,7 +525,7 @@ abstract mixin class _$EmojiUpdatedCopyWith<$Res> implements $EmojiUpdatedCopyWi
   factory _$EmojiUpdatedCopyWith(_EmojiUpdated value, $Res Function(_EmojiUpdated) _then) = __$EmojiUpdatedCopyWithImpl;
 @override @useResult
 $Res call({
- List<Emoji> emojis
+@override List<Emoji> emojis
 });
 
 
@@ -556,7 +556,7 @@ as List<Emoji>,
 /// @nodoc
 mixin _$EmojiDeleted {
 
- List<Emoji> get emojis;
+@override List<Emoji> get emojis;
 /// Create a copy of EmojiDeleted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -587,7 +587,7 @@ abstract mixin class $EmojiDeletedCopyWith<$Res>  {
   factory $EmojiDeletedCopyWith(EmojiDeleted value, $Res Function(EmojiDeleted) _then) = _$EmojiDeletedCopyWithImpl;
 @useResult
 $Res call({
- List<Emoji> emojis
+@override List<Emoji> emojis
 });
 
 
@@ -692,7 +692,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Emoji> emojis)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  List<Emoji> emojis)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmojiDeleted() when $default != null:
 return $default(_that.emojis);case _:
@@ -713,7 +713,7 @@ return $default(_that.emojis);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Emoji> emojis)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  List<Emoji> emojis)  $default,) {final _that = this;
 switch (_that) {
 case _EmojiDeleted():
 return $default(_that.emojis);case _:
@@ -733,7 +733,7 @@ return $default(_that.emojis);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Emoji> emojis)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  List<Emoji> emojis)?  $default,) {final _that = this;
 switch (_that) {
 case _EmojiDeleted() when $default != null:
 return $default(_that.emojis);case _:
@@ -747,12 +747,12 @@ return $default(_that.emojis);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _EmojiDeleted implements EmojiDeleted {
-  const _EmojiDeleted({required  List<Emoji> emojis}): _emojis = emojis;
+class _EmojiDeleted extends EmojiDeleted {
+  const _EmojiDeleted({@override required  List<Emoji> emojis}): _emojis = emojis,super(emojis: emojis);
   factory _EmojiDeleted.fromJson(Map<String, dynamic> json) => _$EmojiDeletedFromJson(json);
 
  final  List<Emoji> _emojis;
-@override List<Emoji> get emojis {
+@override@override List<Emoji> get emojis {
   if (_emojis is EqualUnmodifiableListView) return _emojis;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_emojis);
@@ -789,7 +789,7 @@ abstract mixin class _$EmojiDeletedCopyWith<$Res> implements $EmojiDeletedCopyWi
   factory _$EmojiDeletedCopyWith(_EmojiDeleted value, $Res Function(_EmojiDeleted) _then) = __$EmojiDeletedCopyWithImpl;
 @override @useResult
 $Res call({
- List<Emoji> emojis
+@override List<Emoji> emojis
 });
 
 
@@ -820,7 +820,7 @@ as List<Emoji>,
 /// @nodoc
 mixin _$AnnouncementCreated {
 
- AnnouncementsResponse get announcement;
+@override AnnouncementsResponse get announcement;
 /// Create a copy of AnnouncementCreated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -851,7 +851,7 @@ abstract mixin class $AnnouncementCreatedCopyWith<$Res>  {
   factory $AnnouncementCreatedCopyWith(AnnouncementCreated value, $Res Function(AnnouncementCreated) _then) = _$AnnouncementCreatedCopyWithImpl;
 @useResult
 $Res call({
- AnnouncementsResponse announcement
+@override AnnouncementsResponse announcement
 });
 
 
@@ -965,7 +965,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AnnouncementsResponse announcement)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  AnnouncementsResponse announcement)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AnnouncementCreated() when $default != null:
 return $default(_that.announcement);case _:
@@ -986,7 +986,7 @@ return $default(_that.announcement);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AnnouncementsResponse announcement)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  AnnouncementsResponse announcement)  $default,) {final _that = this;
 switch (_that) {
 case _AnnouncementCreated():
 return $default(_that.announcement);case _:
@@ -1006,7 +1006,7 @@ return $default(_that.announcement);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AnnouncementsResponse announcement)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  AnnouncementsResponse announcement)?  $default,) {final _that = this;
 switch (_that) {
 case _AnnouncementCreated() when $default != null:
 return $default(_that.announcement);case _:
@@ -1020,11 +1020,11 @@ return $default(_that.announcement);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _AnnouncementCreated implements AnnouncementCreated {
-  const _AnnouncementCreated({required this.announcement});
+class _AnnouncementCreated extends AnnouncementCreated {
+  const _AnnouncementCreated({@override required this.announcement}): super(announcement: announcement);
   factory _AnnouncementCreated.fromJson(Map<String, dynamic> json) => _$AnnouncementCreatedFromJson(json);
 
-@override final  AnnouncementsResponse announcement;
+@override@override final  AnnouncementsResponse announcement;
 
 /// Create a copy of AnnouncementCreated
 /// with the given fields replaced by the non-null parameter values.
@@ -1056,7 +1056,7 @@ abstract mixin class _$AnnouncementCreatedCopyWith<$Res> implements $Announcemen
   factory _$AnnouncementCreatedCopyWith(_AnnouncementCreated value, $Res Function(_AnnouncementCreated) _then) = __$AnnouncementCreatedCopyWithImpl;
 @override @useResult
 $Res call({
- AnnouncementsResponse announcement
+@override AnnouncementsResponse announcement
 });
 
 

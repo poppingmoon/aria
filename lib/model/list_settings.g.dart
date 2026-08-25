@@ -11,6 +11,3 @@ _ListSettings _$ListSettingsFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       isPublic: json['isPublic'] as bool?,
     );
-
-Map<String, dynamic> _$ListSettingsToJson(_ListSettings instance) =>
-    <String, dynamic>{'name': ?instance.name, 'isPublic': ?instance.isPublic};

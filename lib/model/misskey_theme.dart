@@ -4,16 +4,14 @@ part 'misskey_theme.freezed.dart';
 part 'misskey_theme.g.dart';
 
 @Freezed(toJson: false)
-abstract class MisskeyTheme with _$MisskeyTheme {
-  const factory({
-    required String id,
-    required String name,
-    String? author,
-    String? desc,
-    String? base,
-    required Map<String, String> props,
-    Map<String, dynamic>? codeHighlighter,
-  }) = _MisskeyTheme;
-
-  factory fromJson(Map<String, dynamic> json) => _$MisskeyThemeFromJson(json);
+class const MisskeyTheme({
+  @override required final String id,
+  @override required final String name,
+  @override final String? author,
+  @override final String? desc,
+  @override final String? base,
+  @override required final Map<String, String> props,
+  @override final Map<String, dynamic>? codeHighlighter,
+}) with _$MisskeyTheme {
+  factory fromJson(Map<String, Object?> json) => _$MisskeyThemeFromJson(json);
 }

@@ -79,7 +79,7 @@ class _Particle({
   required final double size,
   required final Duration duration,
 }) {
-  final Path path = drawStar(size);
+  final path = drawStar(size);
   double scale = 0;
   double angle = 0;
   Duration timeAlive = Duration.zero;

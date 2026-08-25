@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MfmConfig {
 
- TextStyle get style; bool get disableNyaize; double get scale; double get opacity; TextAlign? get align; int get xNest; int? get linkId;
+@override TextStyle get style;@override bool get disableNyaize;@override double get scale;@override double get opacity;@override TextAlign? get align;@override int get xNest;@override int? get linkId;
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $MfmConfigCopyWith<$Res>  {
   factory $MfmConfigCopyWith(MfmConfig value, $Res Function(MfmConfig) _then) = _$MfmConfigCopyWithImpl;
 @useResult
 $Res call({
- TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
+@override TextStyle style,@override bool disableNyaize,@override double scale,@override double opacity,@override TextAlign? align,@override int xNest,@override int? linkId
 });
 
 
@@ -79,150 +79,21 @@ as int?,
 }
 
 
-/// Adds pattern-matching-related methods to [MfmConfig].
-extension MfmConfigPatterns on MfmConfig {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MfmConfig value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _MfmConfig() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MfmConfig value)  $default,){
-final _that = this;
-switch (_that) {
-case _MfmConfig():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MfmConfig value)?  $default,){
-final _that = this;
-switch (_that) {
-case _MfmConfig() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _MfmConfig() when $default != null:
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)  $default,) {final _that = this;
-switch (_that) {
-case _MfmConfig():
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TextStyle style,  bool disableNyaize,  double scale,  double opacity,  TextAlign? align,  int xNest,  int? linkId)?  $default,) {final _that = this;
-switch (_that) {
-case _MfmConfig() when $default != null:
-return $default(_that.style,_that.disableNyaize,_that.scale,_that.opacity,_that.align,_that.xNest,_that.linkId);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _MfmConfig implements MfmConfig {
-  const _MfmConfig({required this.style, this.disableNyaize = false, this.scale = 1.0, this.opacity = 1.0, this.align, this.xNest = 0, this.linkId});
+class _MfmConfig extends MfmConfig {
+  const _MfmConfig({@override required this.style, @override this.disableNyaize = false, @override this.scale = 1.0, @override this.opacity = 1.0, @override this.align, @override this.xNest = 0, @override this.linkId}): super(style: style, disableNyaize: disableNyaize, scale: scale, opacity: opacity, align: align, xNest: xNest, linkId: linkId);
   
 
-@override final  TextStyle style;
-@override@JsonKey() final  bool disableNyaize;
-@override@JsonKey() final  double scale;
-@override@JsonKey() final  double opacity;
-@override final  TextAlign? align;
-@override@JsonKey() final  int xNest;
-@override final  int? linkId;
+@override@override final  TextStyle style;
+@override@override final  bool disableNyaize;
+@override@override final  double scale;
+@override@override final  double opacity;
+@override@override final  TextAlign? align;
+@override@override final  int xNest;
+@override@override final  int? linkId;
 
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
@@ -254,7 +125,7 @@ abstract mixin class _$MfmConfigCopyWith<$Res> implements $MfmConfigCopyWith<$Re
   factory _$MfmConfigCopyWith(_MfmConfig value, $Res Function(_MfmConfig) _then) = __$MfmConfigCopyWithImpl;
 @override @useResult
 $Res call({
- TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
+@override TextStyle style,@override bool disableNyaize,@override double scale,@override double opacity,@override TextAlign? align,@override int xNest,@override int? linkId
 });
 
 

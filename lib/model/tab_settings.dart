@@ -7,38 +7,38 @@ import 'tab_type.dart';
 part 'tab_settings.freezed.dart';
 part 'tab_settings.g.dart';
 
-@freezed
-abstract class TabSettings with _$TabSettings {
-  const factory({
-    String? id,
-    required TabType tabType,
-    String? name,
-    required Account account,
-    TabIcon? icon,
-    @Default(false) bool disableStreaming,
-    @Default(false) bool disableSubscribing,
-    @Default(false) bool withReplies,
-    @Default(true) bool withRenotes,
-    @Default(true) bool withSelfRenotes,
-    @Default(false) bool withFiles,
-    @Default(true) bool withSensitive,
-    @Default(false) bool keepPosition,
-    String? roleId,
-    String? channelId,
-    String? listId,
-    String? antennaId,
-    String? hashtag,
-    String? userId,
-    String? endpoint,
-    String? streamingChannel,
-    Map<String, dynamic>? parameters,
-  }) = _TabSettings;
-
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const TabSettings({
+  @override final String? id,
+  @override required final TabType tabType,
+  @override final String? name,
+  @override required final Account account,
+  @override final TabIcon? icon,
+  @override final bool disableStreaming = false,
+  @override final bool disableSubscribing = false,
+  @override final bool withReplies = false,
+  @override final bool withRenotes = true,
+  @override final bool withSelfRenotes = true,
+  @override final bool withFiles = false,
+  @override final bool withSensitive = true,
+  @override final bool keepPosition = false,
+  @override final String? roleId,
+  @override final String? channelId,
+  @override final String? listId,
+  @override final String? antennaId,
+  @override final String? hashtag,
+  @override final String? userId,
+  @override final String? endpoint,
+  @override final String? streamingChannel,
+  @override final Map<String, dynamic>? parameters,
+}) with _$TabSettings {
   factory fromJson(Map<String, Object?> json) => _$TabSettingsFromJson(json);
 
-  factory dummy() {
-    return TabSettings(tabType: TabType.homeTimeline, account: Account.dummy());
-  }
+  Map<String, Object?> toJson() => _$TabSettingsToJson(this);
+
+  const new dummy()
+    : this(tabType: TabType.homeTimeline, account: const Account.dummy());
 
   factory homeTimeline(Account account) {
     return TabSettings(tabType: TabType.homeTimeline, account: account);

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ImageLayer {
 
- Uint8List get data; double get opacity; Offset get offset; double get scale; double get angle; bool get flipX;
+@override Uint8List get data;@override double get opacity;@override Offset get offset;@override double get scale;@override double get angle;@override bool get flipX;
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $ImageLayerCopyWith<$Res>  {
   factory $ImageLayerCopyWith(ImageLayer value, $Res Function(ImageLayer) _then) = _$ImageLayerCopyWithImpl;
 @useResult
 $Res call({
- Uint8List data, double opacity, Offset offset, double scale, double angle, bool flipX
+@override Uint8List data,@override double opacity,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 
@@ -78,149 +78,20 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [ImageLayer].
-extension ImageLayerPatterns on ImageLayer {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ImageLayer value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _ImageLayer() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ImageLayer value)  $default,){
-final _that = this;
-switch (_that) {
-case _ImageLayer():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ImageLayer value)?  $default,){
-final _that = this;
-switch (_that) {
-case _ImageLayer() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Uint8List data,  double opacity,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _ImageLayer() when $default != null:
-return $default(_that.data,_that.opacity,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Uint8List data,  double opacity,  Offset offset,  double scale,  double angle,  bool flipX)  $default,) {final _that = this;
-switch (_that) {
-case _ImageLayer():
-return $default(_that.data,_that.opacity,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Uint8List data,  double opacity,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,) {final _that = this;
-switch (_that) {
-case _ImageLayer() when $default != null:
-return $default(_that.data,_that.opacity,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _ImageLayer implements ImageLayer {
-  const _ImageLayer({required this.data, this.opacity = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false});
+class _ImageLayer extends ImageLayer {
+  const _ImageLayer({@override required this.data, @override this.opacity = 1.0, @override this.offset = Offset.zero, @override this.scale = 1.0, @override this.angle = 0.0, @override this.flipX = false}): super(data: data, opacity: opacity, offset: offset, scale: scale, angle: angle, flipX: flipX);
   
 
-@override final  Uint8List data;
-@override@JsonKey() final  double opacity;
-@override@JsonKey() final  Offset offset;
-@override@JsonKey() final  double scale;
-@override@JsonKey() final  double angle;
-@override@JsonKey() final  bool flipX;
+@override@override final  Uint8List data;
+@override@override final  double opacity;
+@override@override final  Offset offset;
+@override@override final  double scale;
+@override@override final  double angle;
+@override@override final  bool flipX;
 
 /// Create a copy of ImageLayer
 /// with the given fields replaced by the non-null parameter values.
@@ -252,7 +123,7 @@ abstract mixin class _$ImageLayerCopyWith<$Res> implements $ImageLayerCopyWith<$
   factory _$ImageLayerCopyWith(_ImageLayer value, $Res Function(_ImageLayer) _then) = __$ImageLayerCopyWithImpl;
 @override @useResult
 $Res call({
- Uint8List data, double opacity, Offset offset, double scale, double angle, bool flipX
+@override Uint8List data,@override double opacity,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 
@@ -287,7 +158,7 @@ as bool,
 /// @nodoc
 mixin _$TextLayer {
 
- String get text; Color? get color; Color? get backgroundColor; Offset get offset; double get scale; double get angle; bool get flipX;
+@override String get text;@override Color? get color;@override Color? get backgroundColor;@override Offset get offset;@override double get scale;@override double get angle;@override bool get flipX;
 /// Create a copy of TextLayer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,7 +189,7 @@ abstract mixin class $TextLayerCopyWith<$Res>  {
   factory $TextLayerCopyWith(TextLayer value, $Res Function(TextLayer) _then) = _$TextLayerCopyWithImpl;
 @useResult
 $Res call({
- String text, Color? color, Color? backgroundColor, Offset offset, double scale, double angle, bool flipX
+@override String text,@override Color? color,@override Color? backgroundColor,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 
@@ -351,150 +222,21 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [TextLayer].
-extension TextLayerPatterns on TextLayer {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TextLayer value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _TextLayer() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TextLayer value)  $default,){
-final _that = this;
-switch (_that) {
-case _TextLayer():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TextLayer value)?  $default,){
-final _that = this;
-switch (_that) {
-case _TextLayer() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  Color? color,  Color? backgroundColor,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _TextLayer() when $default != null:
-return $default(_that.text,_that.color,_that.backgroundColor,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  Color? color,  Color? backgroundColor,  Offset offset,  double scale,  double angle,  bool flipX)  $default,) {final _that = this;
-switch (_that) {
-case _TextLayer():
-return $default(_that.text,_that.color,_that.backgroundColor,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  Color? color,  Color? backgroundColor,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,) {final _that = this;
-switch (_that) {
-case _TextLayer() when $default != null:
-return $default(_that.text,_that.color,_that.backgroundColor,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _TextLayer implements TextLayer {
-  const _TextLayer({required this.text, this.color, this.backgroundColor, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false});
+class _TextLayer extends TextLayer {
+  const _TextLayer({@override required this.text, @override this.color, @override this.backgroundColor, @override this.offset = Offset.zero, @override this.scale = 1.0, @override this.angle = 0.0, @override this.flipX = false}): super(text: text, color: color, backgroundColor: backgroundColor, offset: offset, scale: scale, angle: angle, flipX: flipX);
   
 
-@override final  String text;
-@override final  Color? color;
-@override final  Color? backgroundColor;
-@override@JsonKey() final  Offset offset;
-@override@JsonKey() final  double scale;
-@override@JsonKey() final  double angle;
-@override@JsonKey() final  bool flipX;
+@override@override final  String text;
+@override@override final  Color? color;
+@override@override final  Color? backgroundColor;
+@override@override final  Offset offset;
+@override@override final  double scale;
+@override@override final  double angle;
+@override@override final  bool flipX;
 
 /// Create a copy of TextLayer
 /// with the given fields replaced by the non-null parameter values.
@@ -526,7 +268,7 @@ abstract mixin class _$TextLayerCopyWith<$Res> implements $TextLayerCopyWith<$Re
   factory _$TextLayerCopyWith(_TextLayer value, $Res Function(_TextLayer) _then) = __$TextLayerCopyWithImpl;
 @override @useResult
 $Res call({
- String text, Color? color, Color? backgroundColor, Offset offset, double scale, double angle, bool flipX
+@override String text,@override Color? color,@override Color? backgroundColor,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 
@@ -562,7 +304,7 @@ as bool,
 /// @nodoc
 mixin _$DrawLayer {
 
- List<Offset?> get offsets; Color? get color; double get strokeWidth; Offset get offset; double get scale; double get angle; bool get flipX;
+@override List<Offset?> get offsets;@override Color? get color;@override double get strokeWidth;@override Offset get offset;@override double get scale;@override double get angle;@override bool get flipX;
 /// Create a copy of DrawLayer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -593,7 +335,7 @@ abstract mixin class $DrawLayerCopyWith<$Res>  {
   factory $DrawLayerCopyWith(DrawLayer value, $Res Function(DrawLayer) _then) = _$DrawLayerCopyWithImpl;
 @useResult
 $Res call({
- List<Offset?> offsets, Color? color, double strokeWidth, Offset offset, double scale, double angle, bool flipX
+@override List<Offset?> offsets,@override Color? color,@override double strokeWidth,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 
@@ -626,156 +368,27 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [DrawLayer].
-extension DrawLayerPatterns on DrawLayer {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DrawLayer value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _DrawLayer() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DrawLayer value)  $default,){
-final _that = this;
-switch (_that) {
-case _DrawLayer():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DrawLayer value)?  $default,){
-final _that = this;
-switch (_that) {
-case _DrawLayer() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Offset?> offsets,  Color? color,  double strokeWidth,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _DrawLayer() when $default != null:
-return $default(_that.offsets,_that.color,_that.strokeWidth,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Offset?> offsets,  Color? color,  double strokeWidth,  Offset offset,  double scale,  double angle,  bool flipX)  $default,) {final _that = this;
-switch (_that) {
-case _DrawLayer():
-return $default(_that.offsets,_that.color,_that.strokeWidth,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Offset?> offsets,  Color? color,  double strokeWidth,  Offset offset,  double scale,  double angle,  bool flipX)?  $default,) {final _that = this;
-switch (_that) {
-case _DrawLayer() when $default != null:
-return $default(_that.offsets,_that.color,_that.strokeWidth,_that.offset,_that.scale,_that.angle,_that.flipX);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _DrawLayer implements DrawLayer {
-  const _DrawLayer({ List<Offset?> offsets = const [], this.color, this.strokeWidth = 1.0, this.offset = Offset.zero, this.scale = 1.0, this.angle = 0.0, this.flipX = false}): _offsets = offsets;
+class _DrawLayer extends DrawLayer {
+  const _DrawLayer({@override  List<Offset?> offsets = const [], @override this.color, @override this.strokeWidth = 1.0, @override this.offset = Offset.zero, @override this.scale = 1.0, @override this.angle = 0.0, @override this.flipX = false}): _offsets = offsets,super(offsets: offsets, color: color, strokeWidth: strokeWidth, offset: offset, scale: scale, angle: angle, flipX: flipX);
   
 
  final  List<Offset?> _offsets;
-@override@JsonKey() List<Offset?> get offsets {
+@override@override List<Offset?> get offsets {
   if (_offsets is EqualUnmodifiableListView) return _offsets;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_offsets);
 }
 
-@override final  Color? color;
-@override@JsonKey() final  double strokeWidth;
-@override@JsonKey() final  Offset offset;
-@override@JsonKey() final  double scale;
-@override@JsonKey() final  double angle;
-@override@JsonKey() final  bool flipX;
+@override@override final  Color? color;
+@override@override final  double strokeWidth;
+@override@override final  Offset offset;
+@override@override final  double scale;
+@override@override final  double angle;
+@override@override final  bool flipX;
 
 /// Create a copy of DrawLayer
 /// with the given fields replaced by the non-null parameter values.
@@ -807,7 +420,7 @@ abstract mixin class _$DrawLayerCopyWith<$Res> implements $DrawLayerCopyWith<$Re
   factory _$DrawLayerCopyWith(_DrawLayer value, $Res Function(_DrawLayer) _then) = __$DrawLayerCopyWithImpl;
 @override @useResult
 $Res call({
- List<Offset?> offsets, Color? color, double strokeWidth, Offset offset, double scale, double angle, bool flipX
+@override List<Offset?> offsets,@override Color? color,@override double strokeWidth,@override Offset offset,@override double scale,@override double angle,@override bool flipX
 });
 
 

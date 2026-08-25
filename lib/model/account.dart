@@ -3,11 +3,17 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'account.freezed.dart';
 part 'account.g.dart';
 
-@freezed
-abstract class const Account._() with _$Account {
-  const factory({required String host, String? username}) = _Account;
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const Account({
+  @override required final String host,
+  @override final String? username,
+}) with _$Account {
+  const new _() : this(host: '');
 
   factory fromJson(Map<String, Object?> json) => _$AccountFromJson(json);
+
+  Map<String, Object?> toJson() => _$AccountToJson(this);
 
   factory fromString(String input) {
     final l = input.substring(1).split('@');
@@ -18,7 +24,7 @@ abstract class const Account._() with _$Account {
     }
   }
 
-  factory dummy() => const Account(host: '');
+  const new dummy() : this(host: '');
 
   @override
   String toString() {

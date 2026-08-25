@@ -81,14 +81,13 @@ const defaultSounds = {
   OperationType.reload: SoundStore(type: SoundType.syuiloPope2),
 };
 
-@Freezed(fromJson: true)
-abstract class SoundSettings with _$SoundSettings {
-  const factory({
-    @Default(true) bool notUseSound,
-    @Default(defaultMasterVolume) double masterVolume,
-    @Default(defaultSounds) Map<OperationType, SoundStore> sounds,
-  }) = _SoundSettings;
-
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const SoundSettings({
+  @override final bool notUseSound = true,
+  @override final double masterVolume = defaultMasterVolume,
+  @override final Map<OperationType, SoundStore> sounds = defaultSounds,
+}) with _$SoundSettings {
   factory fromJson(Map<String, Object?> json) => _SoundSettings(
     notUseSound: switch (json['notUseSound']) {
       final bool notUseSound => notUseSound,
@@ -111,16 +110,20 @@ abstract class SoundSettings with _$SoundSettings {
       _ => defaultSounds,
     },
   );
+
+  Map<String, Object?> toJson() => _$SoundSettingsToJson(this);
 }
 
-@freezed
-abstract class SoundStore with _$SoundStore {
-  const factory({
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-    SoundType? type,
-    @Default(1.0) double volume,
-    @Default(false) bool vibrate,
-  }) = _SoundStore;
-
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const SoundStore({
+  @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  @override
+  final SoundType? type,
+  @override final double volume = 1.0,
+  @override final bool vibrate = false,
+}) with _$SoundStore {
   factory fromJson(Map<String, Object?> json) => _$SoundStoreFromJson(json);
+
+  Map<String, Object?> toJson() => _$SoundStoreToJson(this);
 }

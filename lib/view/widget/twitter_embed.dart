@@ -10,9 +10,9 @@ class const TwitterEmbed({
   super.key,
   required final String tweetId,
   final bool isDark = false,
+  // https://developer.twitter.com/en/docs/twitter-for-websites/supported-languages
   final String lang = 'en',
 }) extends HookConsumerWidget {
-  // https://developer.twitter.com/en/docs/twitter-for-websites/supported-languages
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final height = useState(200.0);

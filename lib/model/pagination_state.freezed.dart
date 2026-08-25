@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PaginationState<T> {
 
- List<T> get items; bool get isLastLoaded;
+@override List<T> get items;@override bool get isLastLoaded;
 /// Create a copy of PaginationState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $PaginationStateCopyWith<T,$Res>  {
   factory $PaginationStateCopyWith(PaginationState<T> value, $Res Function(PaginationState<T>) _then) = _$PaginationStateCopyWithImpl;
 @useResult
 $Res call({
- List<T> items, bool isLastLoaded
+@override List<T> items,@override bool isLastLoaded
 });
 
 
@@ -152,7 +152,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<T> items,  bool isLastLoaded)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  List<T> items, @override  bool isLastLoaded)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PaginationState() when $default != null:
 return $default(_that.items,_that.isLastLoaded);case _:
@@ -173,7 +173,7 @@ return $default(_that.items,_that.isLastLoaded);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<T> items,  bool isLastLoaded)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  List<T> items, @override  bool isLastLoaded)  $default,) {final _that = this;
 switch (_that) {
 case _PaginationState():
 return $default(_that.items,_that.isLastLoaded);case _:
@@ -193,7 +193,7 @@ return $default(_that.items,_that.isLastLoaded);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<T> items,  bool isLastLoaded)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  List<T> items, @override  bool isLastLoaded)?  $default,) {final _that = this;
 switch (_that) {
 case _PaginationState() when $default != null:
 return $default(_that.items,_that.isLastLoaded);case _:
@@ -207,18 +207,18 @@ return $default(_that.items,_that.isLastLoaded);case _:
 /// @nodoc
 
 
-class _PaginationState<T> implements PaginationState<T> {
-  const _PaginationState({ List<T> items = const [], this.isLastLoaded = false}): _items = items;
+class _PaginationState<T> extends PaginationState<T> {
+  const _PaginationState({@override  List<T> items = const [], @override this.isLastLoaded = false}): _items = items,super(items: items, isLastLoaded: isLastLoaded);
   
 
  final  List<T> _items;
-@override@JsonKey() List<T> get items {
+@override@override List<T> get items {
   if (_items is EqualUnmodifiableListView) return _items;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_items);
 }
 
-@override@JsonKey() final  bool isLastLoaded;
+@override@override final  bool isLastLoaded;
 
 /// Create a copy of PaginationState
 /// with the given fields replaced by the non-null parameter values.
@@ -250,7 +250,7 @@ abstract mixin class _$PaginationStateCopyWith<T,$Res> implements $PaginationSta
   factory _$PaginationStateCopyWith(_PaginationState<T> value, $Res Function(_PaginationState<T>) _then) = __$PaginationStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<T> items, bool isLastLoaded
+@override List<T> items,@override bool isLastLoaded
 });
 
 

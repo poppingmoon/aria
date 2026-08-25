@@ -50,7 +50,7 @@ void main() {
     test('emoji', () {
       final controller = TextEditingController();
       final widget = MfmKeyboard(
-        account: Account.dummy(),
+        account: const Account.dummy(),
         controller: controller,
       );
       controller.text = ':';
@@ -71,7 +71,7 @@ void main() {
     test('mfmFn', () {
       final controller = TextEditingController();
       final widget = MfmKeyboard(
-        account: Account.dummy(),
+        account: const Account.dummy(),
         controller: controller,
       );
       controller.text = r'$[';
@@ -92,7 +92,7 @@ void main() {
     test('mention', () {
       final controller = TextEditingController();
       final widget = MfmKeyboard(
-        account: Account.dummy(),
+        account: const Account.dummy(),
         controller: controller,
       );
       controller.text = '@';
@@ -110,7 +110,7 @@ void main() {
     test('hashtag', () {
       final controller = TextEditingController();
       final widget = MfmKeyboard(
-        account: Account.dummy(),
+        account: const Account.dummy(),
         controller: controller,
       );
       controller.text = '#';
@@ -128,7 +128,7 @@ void main() {
     test('mixed', () {
       final controller = TextEditingController();
       final widget = MfmKeyboard(
-        account: Account.dummy(),
+        account: const Account.dummy(),
         controller: controller,
       );
       controller.text = r':emoji: #hashtag $[tada a] @user';

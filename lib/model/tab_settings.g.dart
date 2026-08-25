@@ -6,7 +6,7 @@ part of 'tab_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) => _TabSettings(
+TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) => TabSettings(
   id: json['id'] as String?,
   tabType: $enumDecode(_$TabTypeEnumMap, json['tabType']),
   name: json['name'] as String?,
@@ -33,7 +33,7 @@ _TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) => _TabSettings(
   parameters: json['parameters'] as Map<String, dynamic>?,
 );
 
-Map<String, dynamic> _$TabSettingsToJson(_TabSettings instance) =>
+Map<String, dynamic> _$TabSettingsToJson(TabSettings instance) =>
     <String, dynamic>{
       'id': ?instance.id,
       'tabType': _$TabTypeEnumMap[instance.tabType]!,

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Reacted {
 
- String get reaction; ReactedEmoji? get emoji; String get userId;
+@override String get reaction;@override ReactedEmoji? get emoji;@override String get userId;
 /// Create a copy of Reacted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -47,7 +47,7 @@ abstract mixin class $ReactedCopyWith<$Res>  {
   factory $ReactedCopyWith(Reacted value, $Res Function(Reacted) _then) = _$ReactedCopyWithImpl;
 @useResult
 $Res call({
- String reaction, ReactedEmoji? emoji, String userId
+@override String reaction,@override ReactedEmoji? emoji,@override String userId
 });
 
 
@@ -166,7 +166,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  ReactedEmoji? emoji,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Reacted() when $default != null:
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -187,7 +187,7 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  ReactedEmoji? emoji,  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _Reacted():
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -207,7 +207,7 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  ReactedEmoji? emoji,  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _Reacted() when $default != null:
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -221,13 +221,13 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _Reacted implements Reacted {
-  const _Reacted({required this.reaction, this.emoji, required this.userId});
+class _Reacted extends Reacted {
+  const _Reacted({@override required this.reaction, @override this.emoji, @override required this.userId}): super(reaction: reaction, emoji: emoji, userId: userId);
   factory _Reacted.fromJson(Map<String, dynamic> json) => _$ReactedFromJson(json);
 
-@override final  String reaction;
-@override final  ReactedEmoji? emoji;
-@override final  String userId;
+@override@override final  String reaction;
+@override@override final  ReactedEmoji? emoji;
+@override@override final  String userId;
 
 /// Create a copy of Reacted
 /// with the given fields replaced by the non-null parameter values.
@@ -259,7 +259,7 @@ abstract mixin class _$ReactedCopyWith<$Res> implements $ReactedCopyWith<$Res> {
   factory _$ReactedCopyWith(_Reacted value, $Res Function(_Reacted) _then) = __$ReactedCopyWithImpl;
 @override @useResult
 $Res call({
- String reaction, ReactedEmoji? emoji, String userId
+@override String reaction,@override ReactedEmoji? emoji,@override String userId
 });
 
 
@@ -304,7 +304,7 @@ $ReactedEmojiCopyWith<$Res>? get emoji {
 /// @nodoc
 mixin _$Unreacted {
 
- String get reaction; String get userId;
+@override String get reaction;@override String get userId;
 /// Create a copy of Unreacted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -335,7 +335,7 @@ abstract mixin class $UnreactedCopyWith<$Res>  {
   factory $UnreactedCopyWith(Unreacted value, $Res Function(Unreacted) _then) = _$UnreactedCopyWithImpl;
 @useResult
 $Res call({
- String reaction, String userId
+@override String reaction,@override String userId
 });
 
 
@@ -441,7 +441,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Unreacted() when $default != null:
 return $default(_that.reaction,_that.userId);case _:
@@ -462,7 +462,7 @@ return $default(_that.reaction,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _Unreacted():
 return $default(_that.reaction,_that.userId);case _:
@@ -482,7 +482,7 @@ return $default(_that.reaction,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _Unreacted() when $default != null:
 return $default(_that.reaction,_that.userId);case _:
@@ -496,12 +496,12 @@ return $default(_that.reaction,_that.userId);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _Unreacted implements Unreacted {
-  const _Unreacted({required this.reaction, required this.userId});
+class _Unreacted extends Unreacted {
+  const _Unreacted({@override required this.reaction, @override required this.userId}): super(reaction: reaction, userId: userId);
   factory _Unreacted.fromJson(Map<String, dynamic> json) => _$UnreactedFromJson(json);
 
-@override final  String reaction;
-@override final  String userId;
+@override@override final  String reaction;
+@override@override final  String userId;
 
 /// Create a copy of Unreacted
 /// with the given fields replaced by the non-null parameter values.
@@ -533,7 +533,7 @@ abstract mixin class _$UnreactedCopyWith<$Res> implements $UnreactedCopyWith<$Re
   factory _$UnreactedCopyWith(_Unreacted value, $Res Function(_Unreacted) _then) = __$UnreactedCopyWithImpl;
 @override @useResult
 $Res call({
- String reaction, String userId
+@override String reaction,@override String userId
 });
 
 
@@ -565,7 +565,7 @@ as String,
 /// @nodoc
 mixin _$Deleted {
 
- DateTime get deletedAt;
+@override DateTime get deletedAt;
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -596,7 +596,7 @@ abstract mixin class $DeletedCopyWith<$Res>  {
   factory $DeletedCopyWith(Deleted value, $Res Function(Deleted) _then) = _$DeletedCopyWithImpl;
 @useResult
 $Res call({
- DateTime deletedAt
+@override DateTime deletedAt
 });
 
 
@@ -701,7 +701,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( DateTime deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  DateTime deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Deleted() when $default != null:
 return $default(_that.deletedAt);case _:
@@ -722,7 +722,7 @@ return $default(_that.deletedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( DateTime deletedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  DateTime deletedAt)  $default,) {final _that = this;
 switch (_that) {
 case _Deleted():
 return $default(_that.deletedAt);case _:
@@ -742,7 +742,7 @@ return $default(_that.deletedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( DateTime deletedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  DateTime deletedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Deleted() when $default != null:
 return $default(_that.deletedAt);case _:
@@ -756,11 +756,11 @@ return $default(_that.deletedAt);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _Deleted implements Deleted {
-  const _Deleted({required this.deletedAt});
+class _Deleted extends Deleted {
+  const _Deleted({@override required this.deletedAt}): super(deletedAt: deletedAt);
   factory _Deleted.fromJson(Map<String, dynamic> json) => _$DeletedFromJson(json);
 
-@override final  DateTime deletedAt;
+@override@override final  DateTime deletedAt;
 
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
@@ -792,7 +792,7 @@ abstract mixin class _$DeletedCopyWith<$Res> implements $DeletedCopyWith<$Res> {
   factory _$DeletedCopyWith(_Deleted value, $Res Function(_Deleted) _then) = __$DeletedCopyWithImpl;
 @override @useResult
 $Res call({
- DateTime deletedAt
+@override DateTime deletedAt
 });
 
 
@@ -823,7 +823,7 @@ as DateTime,
 /// @nodoc
 mixin _$PollVoted {
 
- int get choice; String get userId;
+@override int get choice;@override String get userId;
 /// Create a copy of PollVoted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -854,7 +854,7 @@ abstract mixin class $PollVotedCopyWith<$Res>  {
   factory $PollVotedCopyWith(PollVoted value, $Res Function(PollVoted) _then) = _$PollVotedCopyWithImpl;
 @useResult
 $Res call({
- int choice, String userId
+@override int choice,@override String userId
 });
 
 
@@ -960,7 +960,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int choice,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  int choice, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PollVoted() when $default != null:
 return $default(_that.choice,_that.userId);case _:
@@ -981,7 +981,7 @@ return $default(_that.choice,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int choice,  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  int choice, @override  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _PollVoted():
 return $default(_that.choice,_that.userId);case _:
@@ -1001,7 +1001,7 @@ return $default(_that.choice,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int choice,  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  int choice, @override  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _PollVoted() when $default != null:
 return $default(_that.choice,_that.userId);case _:
@@ -1015,12 +1015,12 @@ return $default(_that.choice,_that.userId);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _PollVoted implements PollVoted {
-  const _PollVoted({required this.choice, required this.userId});
+class _PollVoted extends PollVoted {
+  const _PollVoted({@override required this.choice, @override required this.userId}): super(choice: choice, userId: userId);
   factory _PollVoted.fromJson(Map<String, dynamic> json) => _$PollVotedFromJson(json);
 
-@override final  int choice;
-@override final  String userId;
+@override@override final  int choice;
+@override@override final  String userId;
 
 /// Create a copy of PollVoted
 /// with the given fields replaced by the non-null parameter values.
@@ -1052,7 +1052,7 @@ abstract mixin class _$PollVotedCopyWith<$Res> implements $PollVotedCopyWith<$Re
   factory _$PollVotedCopyWith(_PollVoted value, $Res Function(_PollVoted) _then) = __$PollVotedCopyWithImpl;
 @override @useResult
 $Res call({
- int choice, String userId
+@override int choice,@override String userId
 });
 
 
@@ -1084,7 +1084,7 @@ as String,
 /// @nodoc
 mixin _$Updated {
 
- String? get cw; String? get text; Note? get note;
+@override String? get cw;@override String? get text;@override Note? get note;
 /// Create a copy of Updated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1115,7 +1115,7 @@ abstract mixin class $UpdatedCopyWith<$Res>  {
   factory $UpdatedCopyWith(Updated value, $Res Function(Updated) _then) = _$UpdatedCopyWithImpl;
 @useResult
 $Res call({
- String? cw, String? text, Note? note
+@override String? cw,@override String? text,@override Note? note
 });
 
 
@@ -1234,7 +1234,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? cw,  String? text,  Note? note)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? cw, @override  String? text, @override  Note? note)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Updated() when $default != null:
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1255,7 +1255,7 @@ return $default(_that.cw,_that.text,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? cw,  String? text,  Note? note)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? cw, @override  String? text, @override  Note? note)  $default,) {final _that = this;
 switch (_that) {
 case _Updated():
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1275,7 +1275,7 @@ return $default(_that.cw,_that.text,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? cw,  String? text,  Note? note)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? cw, @override  String? text, @override  Note? note)?  $default,) {final _that = this;
 switch (_that) {
 case _Updated() when $default != null:
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1289,13 +1289,13 @@ return $default(_that.cw,_that.text,_that.note);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _Updated implements Updated {
-  const _Updated({this.cw, this.text, this.note});
+class _Updated extends Updated {
+  const _Updated({@override this.cw, @override this.text, @override this.note}): super(cw: cw, text: text, note: note);
   factory _Updated.fromJson(Map<String, dynamic> json) => _$UpdatedFromJson(json);
 
-@override final  String? cw;
-@override final  String? text;
-@override final  Note? note;
+@override@override final  String? cw;
+@override@override final  String? text;
+@override@override final  Note? note;
 
 /// Create a copy of Updated
 /// with the given fields replaced by the non-null parameter values.
@@ -1327,7 +1327,7 @@ abstract mixin class _$UpdatedCopyWith<$Res> implements $UpdatedCopyWith<$Res> {
   factory _$UpdatedCopyWith(_Updated value, $Res Function(_Updated) _then) = __$UpdatedCopyWithImpl;
 @override @useResult
 $Res call({
- String? cw, String? text, Note? note
+@override String? cw,@override String? text,@override Note? note
 });
 
 
@@ -1372,7 +1372,7 @@ $NoteCopyWith<$Res>? get note {
 /// @nodoc
 mixin _$ReactedEmoji {
 
- String get name; String get url;
+@override String get name;@override String get url;
 /// Create a copy of ReactedEmoji
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1403,7 +1403,7 @@ abstract mixin class $ReactedEmojiCopyWith<$Res>  {
   factory $ReactedEmojiCopyWith(ReactedEmoji value, $Res Function(ReactedEmoji) _then) = _$ReactedEmojiCopyWithImpl;
 @useResult
 $Res call({
- String name, String url
+@override String name,@override String url
 });
 
 
@@ -1509,7 +1509,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String name, @override  String url)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReactedEmoji() when $default != null:
 return $default(_that.name,_that.url);case _:
@@ -1530,7 +1530,7 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String name, @override  String url)  $default,) {final _that = this;
 switch (_that) {
 case _ReactedEmoji():
 return $default(_that.name,_that.url);case _:
@@ -1550,7 +1550,7 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String name, @override  String url)?  $default,) {final _that = this;
 switch (_that) {
 case _ReactedEmoji() when $default != null:
 return $default(_that.name,_that.url);case _:
@@ -1564,12 +1564,12 @@ return $default(_that.name,_that.url);case _:
 /// @nodoc
 @JsonSerializable(createToJson: false)
 
-class _ReactedEmoji implements ReactedEmoji {
-  const _ReactedEmoji({required this.name, required this.url});
+class _ReactedEmoji extends ReactedEmoji {
+  const _ReactedEmoji({@override required this.name, @override required this.url}): super(name: name, url: url);
   factory _ReactedEmoji.fromJson(Map<String, dynamic> json) => _$ReactedEmojiFromJson(json);
 
-@override final  String name;
-@override final  String url;
+@override@override final  String name;
+@override@override final  String url;
 
 /// Create a copy of ReactedEmoji
 /// with the given fields replaced by the non-null parameter values.
@@ -1601,7 +1601,7 @@ abstract mixin class _$ReactedEmojiCopyWith<$Res> implements $ReactedEmojiCopyWi
   factory _$ReactedEmojiCopyWith(_ReactedEmoji value, $Res Function(_ReactedEmoji) _then) = __$ReactedEmojiCopyWithImpl;
 @override @useResult
 $Res call({
- String name, String url
+@override String name,@override String url
 });
 
 

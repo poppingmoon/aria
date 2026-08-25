@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClipSettings {
 
- String? get name; String? get description; bool? get isPublic;
+@override String? get name;@override String? get description;@override bool? get isPublic;
 /// Create a copy of ClipSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $ClipSettingsCopyWith<$Res>  {
   factory $ClipSettingsCopyWith(ClipSettings value, $Res Function(ClipSettings) _then) = _$ClipSettingsCopyWithImpl;
 @useResult
 $Res call({
- String? name, String? description, bool? isPublic
+@override String? name,@override String? description,@override bool? isPublic
 });
 
 
@@ -153,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  String? description,  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? name, @override  String? description, @override  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ClipSettings() when $default != null:
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -174,7 +174,7 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  String? description,  bool? isPublic)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? name, @override  String? description, @override  bool? isPublic)  $default,) {final _that = this;
 switch (_that) {
 case _ClipSettings():
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -194,7 +194,7 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  String? description,  bool? isPublic)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? name, @override  String? description, @override  bool? isPublic)?  $default,) {final _that = this;
 switch (_that) {
 case _ClipSettings() when $default != null:
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -208,13 +208,13 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 /// @nodoc
 
 
-class _ClipSettings implements ClipSettings {
-  const _ClipSettings({this.name, this.description, this.isPublic});
+class _ClipSettings extends ClipSettings {
+  const _ClipSettings({@override this.name, @override this.description, @override this.isPublic}): super(name: name, description: description, isPublic: isPublic);
   
 
-@override final  String? name;
-@override final  String? description;
-@override final  bool? isPublic;
+@override@override final  String? name;
+@override@override final  String? description;
+@override@override final  bool? isPublic;
 
 /// Create a copy of ClipSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -246,7 +246,7 @@ abstract mixin class _$ClipSettingsCopyWith<$Res> implements $ClipSettingsCopyWi
   factory _$ClipSettingsCopyWith(_ClipSettings value, $Res Function(_ClipSettings) _then) = __$ClipSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- String? name, String? description, bool? isPublic
+@override String? name,@override String? description,@override bool? isPublic
 });
 
 

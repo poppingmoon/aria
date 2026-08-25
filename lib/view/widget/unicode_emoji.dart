@@ -42,7 +42,7 @@ class const UnicodeEmoji({
     final emoji = _v11Reactions[this.emoji] ?? this.emoji;
     final style = DefaultTextStyle.of(context).style.merge(this.style);
     final muted = ref
-        .watch(mutedEmojisNotifierProvider(account ?? Account.dummy()))
+        .watch(mutedEmojisNotifierProvider(account ?? const Account.dummy()))
         .contains(emoji);
     if (muted) {
       return InkWell(

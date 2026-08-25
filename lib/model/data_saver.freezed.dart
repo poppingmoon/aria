@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DataSaver {
 
- bool get media; bool get avatar; bool get urlPreview;
+@override bool get media;@override bool get avatar;@override bool get urlPreview;
 /// Create a copy of DataSaver
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $DataSaverCopyWith<$Res>  {
   factory $DataSaverCopyWith(DataSaver value, $Res Function(DataSaver) _then) = _$DataSaverCopyWithImpl;
 @useResult
 $Res call({
- bool media, bool avatar, bool urlPreview
+@override bool media,@override bool avatar,@override bool urlPreview
 });
 
 
@@ -75,146 +75,17 @@ as bool,
 }
 
 
-/// Adds pattern-matching-related methods to [DataSaver].
-extension DataSaverPatterns on DataSaver {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _DataSaver value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _DataSaver() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _DataSaver value)  $default,){
-final _that = this;
-switch (_that) {
-case _DataSaver():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _DataSaver value)?  $default,){
-final _that = this;
-switch (_that) {
-case _DataSaver() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool media,  bool avatar,  bool urlPreview)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _DataSaver() when $default != null:
-return $default(_that.media,_that.avatar,_that.urlPreview);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool media,  bool avatar,  bool urlPreview)  $default,) {final _that = this;
-switch (_that) {
-case _DataSaver():
-return $default(_that.media,_that.avatar,_that.urlPreview);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool media,  bool avatar,  bool urlPreview)?  $default,) {final _that = this;
-switch (_that) {
-case _DataSaver() when $default != null:
-return $default(_that.media,_that.avatar,_that.urlPreview);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _DataSaver implements DataSaver {
-  const _DataSaver({required this.media, required this.avatar, required this.urlPreview});
+class _DataSaver extends DataSaver {
+  const _DataSaver({@override required this.media, @override required this.avatar, @override required this.urlPreview}): super(media: media, avatar: avatar, urlPreview: urlPreview);
   
 
-@override final  bool media;
-@override final  bool avatar;
-@override final  bool urlPreview;
+@override@override final  bool media;
+@override@override final  bool avatar;
+@override@override final  bool urlPreview;
 
 /// Create a copy of DataSaver
 /// with the given fields replaced by the non-null parameter values.
@@ -246,7 +117,7 @@ abstract mixin class _$DataSaverCopyWith<$Res> implements $DataSaverCopyWith<$Re
   factory _$DataSaverCopyWith(_DataSaver value, $Res Function(_DataSaver) _then) = __$DataSaverCopyWithImpl;
 @override @useResult
 $Res call({
- bool media, bool avatar, bool urlPreview
+@override bool media,@override bool avatar,@override bool urlPreview
 });
 
 
