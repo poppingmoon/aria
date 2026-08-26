@@ -7,12 +7,11 @@ import 'package:material_ui/material_ui.dart';
 import '../../model/summaly_result.dart';
 import '../../util/launch_url.dart';
 
-class PlayerEmbed extends HookConsumerWidget {
-  const PlayerEmbed({super.key, required this.host, required this.player});
-
-  final String host;
-  final Player player;
-
+class const PlayerEmbed({
+  super.key,
+  required final String host,
+  required final Player player,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final url = useMemoized(

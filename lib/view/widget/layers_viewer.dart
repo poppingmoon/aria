@@ -7,28 +7,17 @@ import 'package:material_ui/material_ui.dart' hide Image;
 import '../../extension/image_extension.dart';
 import '../../model/layer.dart';
 
-class LayersViewer extends StatefulWidget {
-  const LayersViewer({
-    super.key,
-    required this.layers,
-    required this.images,
-    this.transformationController,
-    this.panEnabled = true,
-    this.scaleEnabled = true,
-    this.onInteractionStart,
-    this.onInteractionUpdate,
-    this.onInteractionEnd,
-  });
-
-  final List<Layer> layers;
-  final Map<Uint8List, Image> images;
-  final TransformationController? transformationController;
-  final bool panEnabled;
-  final bool scaleEnabled;
-  final void Function(ScaleStartDetails details)? onInteractionStart;
-  final void Function(ScaleUpdateDetails details)? onInteractionUpdate;
-  final void Function(ScaleEndDetails details)? onInteractionEnd;
-
+class const LayersViewer({
+  super.key,
+  required final List<Layer> layers,
+  required final Map<Uint8List, Image> images,
+  final TransformationController? transformationController,
+  final bool panEnabled = true,
+  final bool scaleEnabled = true,
+  final void Function(ScaleStartDetails details)? onInteractionStart,
+  final void Function(ScaleUpdateDetails details)? onInteractionUpdate,
+  final void Function(ScaleEndDetails details)? onInteractionEnd,
+}) extends StatefulWidget {
   @override
   State<LayersViewer> createState() => LayersViewerState();
 }
@@ -88,12 +77,10 @@ class LayersViewerState extends State<LayersViewer> {
   }
 }
 
-class _LayersPainter extends CustomPainter {
-  const _LayersPainter({required this.layers, required this.images});
-
-  final List<Layer> layers;
-  final Map<Uint8List, Image> images;
-
+class const _LayersPainter({
+  required final List<Layer> layers,
+  required final Map<Uint8List, Image> images,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final layer in layers) {

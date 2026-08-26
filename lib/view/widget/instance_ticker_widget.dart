@@ -11,18 +11,12 @@ import '../../provider/server_url_notifier_provider.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
-class InstanceTickerWidget extends ConsumerWidget {
-  const InstanceTickerWidget({
-    super.key,
-    required this.account,
-    this.instance,
-    this.host,
-  });
-
-  final Account account;
-  final UserInstanceInfo? instance;
-  final String? host;
-
+class const InstanceTickerWidget({
+  super.key,
+  required final Account account,
+  final UserInstanceInfo? instance,
+  final String? host,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(account.host)).value;
@@ -93,12 +87,10 @@ class InstanceTickerWidget extends ConsumerWidget {
   }
 }
 
-class _ShadowText extends StatelessWidget {
-  const _ShadowText({required this.text, required this.style});
-
-  final String text;
-  final TextStyle style;
-
+class const _ShadowText({
+  required final String text,
+  required final TextStyle style,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (defaultTargetPlatform == TargetPlatform.android) {

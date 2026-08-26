@@ -1,10 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class FakeSharedPreferences implements SharedPreferencesWithCache {
-  FakeSharedPreferences(this.map);
-
-  final Map<String, dynamic> map;
-
+class FakeSharedPreferences(final Map<String, dynamic> map)
+    implements SharedPreferencesWithCache {
   @override
   Future<void> reloadCache() async {}
 

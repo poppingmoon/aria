@@ -13,17 +13,15 @@ sealed class PostFile {
 }
 
 @freezed
-abstract class LocalPostFile with _$LocalPostFile implements PostFile {
-  const factory LocalPostFile({
-    required File file,
-    required String name,
-    @Default(false) bool isSensitive,
-    String? comment,
-    String? type,
-    @Default(false) bool uploading,
-  }) = _LocalPostFile;
-
-  factory LocalPostFile.fromFile(
+class const LocalPostFile({
+  @override required final File file,
+  @override required final String name,
+  @override final bool isSensitive = false,
+  @override final String? comment,
+  @override final String? type,
+  @override final bool uploading = false,
+}) with _$LocalPostFile implements PostFile {
+  factory fromFile(
     File file, {
     String? name,
     bool? isSensitive,
@@ -40,16 +38,14 @@ abstract class LocalPostFile with _$LocalPostFile implements PostFile {
 }
 
 @freezed
-abstract class DrivePostFile with _$DrivePostFile implements PostFile {
-  const factory DrivePostFile({
-    required DriveFile file,
-    required String name,
-    @Default(false) bool isSensitive,
-    String? comment,
-    String? type,
-  }) = _DrivePostFile;
-
-  factory DrivePostFile.fromDriveFile(DriveFile file) {
+class const DrivePostFile({
+  @override required final DriveFile file,
+  @override required final String name,
+  @override final bool isSensitive = false,
+  @override final String? comment,
+  @override final String? type,
+}) with _$DrivePostFile implements PostFile {
+  factory fromDriveFile(DriveFile file) {
     return DrivePostFile(
       file: file,
       name: file.name,

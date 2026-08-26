@@ -14,12 +14,11 @@ import 'chat_invitations.dart';
 import 'chat_joining_rooms.dart';
 import 'chat_owned_rooms.dart';
 
-class ChatPage extends ConsumerWidget {
-  const ChatPage({super.key, required this.account, this.initialIndex = 0});
-
-  final Account account;
-  final int initialIndex;
-
+class const ChatPage({
+  super.key,
+  required final Account account,
+  final int initialIndex = 0,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(
@@ -61,11 +60,8 @@ class ChatPage extends ConsumerWidget {
   }
 }
 
-class _ChatCreateSheet extends ConsumerWidget {
-  const _ChatCreateSheet({required this.account});
-
-  final Account account;
-
+class const _ChatCreateSheet({required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(

@@ -24,24 +24,15 @@ import '../../util/launch_url.dart';
 import '../../util/show_toast.dart';
 import '../widget/user_avatar.dart';
 
-class AudioDialog extends HookConsumerWidget {
-  const AudioDialog({
-    super.key,
-    required this.account,
-    this.url,
-    this.file,
-    required this.fileName,
-    this.user,
-    this.noteId,
-  });
-
-  final Account account;
-  final String? url;
-  final File? file;
-  final String fileName;
-  final User? user;
-  final String? noteId;
-
+class const AudioDialog({
+  super.key,
+  required final Account account,
+  final String? url,
+  final File? file,
+  required final String fileName,
+  final User? user,
+  final String? noteId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Dialog(
@@ -75,21 +66,13 @@ class AudioDialog extends HookConsumerWidget {
   }
 }
 
-class _AudioWidget extends HookConsumerWidget {
-  const _AudioWidget({
-    required this.account,
-    required this.url,
-    required this.fileName,
-    required this.user,
-    required this.noteId,
-  });
-
-  final Account account;
-  final String url;
-  final String fileName;
-  final User? user;
-  final String? noteId;
-
+class const _AudioWidget({
+  required final Account account,
+  required final String url,
+  required final String fileName,
+  required final User? user,
+  required final String? noteId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final audioHandler = ref.watch(audioHandlerProvider).value;
@@ -177,23 +160,14 @@ class _AudioWidget extends HookConsumerWidget {
   }
 }
 
-class _VideoPlayerAudioWidget extends HookWidget {
-  const _VideoPlayerAudioWidget({
-    required this.account,
-    required this.url,
-    required this.file,
-    required this.fileName,
-    required this.user,
-    required this.noteId,
-  });
-
-  final Account account;
-  final String? url;
-  final File? file;
-  final String fileName;
-  final User? user;
-  final String? noteId;
-
+class const _VideoPlayerAudioWidget({
+  required final Account account,
+  required final String? url,
+  required final File? file,
+  required final String fileName,
+  required final User? user,
+  required final String? noteId,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final url = useMemoized(
@@ -280,23 +254,14 @@ class _VideoPlayerAudioWidget extends HookWidget {
   }
 }
 
-class _AudioHeader extends ConsumerWidget {
-  const _AudioHeader({
-    required this.account,
-    this.url,
-    required this.fileName,
-    required this.user,
-    required this.noteId,
-    required this.pause,
-  });
-
-  final Account account;
-  final String? url;
-  final String fileName;
-  final User? user;
-  final String? noteId;
-  final void Function()? pause;
-
+class const _AudioHeader({
+  required final Account account,
+  final String? url,
+  required final String fileName,
+  required final User? user,
+  required final String? noteId,
+  required final void Function()? pause,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(

@@ -10,11 +10,8 @@ import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/role_preview.dart';
 
-class ExploreRoles extends ConsumerWidget {
-  const ExploreRoles({super.key, required this.account});
-
-  final Account account;
-
+class const ExploreRoles({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final roles = ref.watch(rolesProvider(account));

@@ -22,18 +22,12 @@ VideoPlayerController? useVideoPlayerController({
   );
 }
 
-class _VideoPlayerControllerHook extends Hook<VideoPlayerController?> {
-  const _VideoPlayerControllerHook({
-    super.keys,
-    this.url,
-    this.file,
-    this.autoPlay = false,
-  });
-
-  final Uri? url;
-  final File? file;
-  final bool autoPlay;
-
+class const _VideoPlayerControllerHook({
+  super.keys,
+  final Uri? url,
+  final File? file,
+  final bool autoPlay = false,
+}) extends Hook<VideoPlayerController?> {
   @override
   HookState<VideoPlayerController?, Hook<VideoPlayerController?>>
   createState() => _VideoPlayerControllerHookState();

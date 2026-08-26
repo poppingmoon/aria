@@ -33,11 +33,8 @@ import '../widget/user_info.dart';
 
 enum _QrReadArea { scanner, preview }
 
-class QrReadPage extends HookConsumerWidget {
-  const QrReadPage({super.key, required this.account});
-
-  final Account account;
-
+class const QrReadPage({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final history = ref.watch(qrReadHistoryNotifierProvider(account));
@@ -315,11 +312,9 @@ class QrReadPage extends HookConsumerWidget {
   }
 }
 
-class _MobileScannerErrorWidget extends HookWidget {
-  const _MobileScannerErrorWidget({required this.error});
-
-  final MobileScannerException error;
-
+class const _MobileScannerErrorWidget({
+  required final MobileScannerException error,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isCollapsed = useState(true);
@@ -355,11 +350,8 @@ class _MobileScannerErrorWidget extends HookWidget {
   }
 }
 
-class _BoundingBoxPainter extends CustomPainter {
-  const _BoundingBoxPainter({required this.capture});
-
-  final BarcodeCapture capture;
-
+class const _BoundingBoxPainter({required final BarcodeCapture capture})
+    extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -389,16 +381,11 @@ class _BoundingBoxPainter extends CustomPainter {
   }
 }
 
-class _QrReaderPreview extends HookConsumerWidget {
-  const _QrReaderPreview({
-    super.key,
-    required this.account,
-    required this.value,
-  });
-
-  final Account account;
-  final String value;
-
+class const _QrReaderPreview({
+  super.key,
+  required final Account account,
+  required final String value,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nodes = ref.watch(parsedMfmProvider(value));

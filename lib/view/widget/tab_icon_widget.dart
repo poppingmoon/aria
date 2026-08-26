@@ -8,12 +8,11 @@ import '../../model/tab_type.dart';
 import 'image_widget.dart';
 import 'unicode_emoji.dart';
 
-class TabIconWidget extends StatelessWidget {
-  const TabIconWidget({super.key, required this.tabSettings, this.size = 24.0});
-
-  final TabSettings tabSettings;
-  final double size;
-
+class const TabIconWidget({
+  super.key,
+  required final TabSettings tabSettings,
+  final double size = 24.0,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return switch (tabSettings.icon) {

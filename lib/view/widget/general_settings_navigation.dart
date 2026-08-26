@@ -18,20 +18,13 @@ enum GeneralSettingsDestination {
   aboutAria,
 }
 
-class GeneralSettingsNavigation extends StatelessWidget {
-  const GeneralSettingsNavigation({
-    super.key,
-    this.rail = false,
-    this.round = false,
-    this.selectedDestination,
-    this.physics,
-  });
-
-  final bool rail;
-  final bool round;
-  final GeneralSettingsDestination? selectedDestination;
-  final ScrollPhysics? physics;
-
+class const GeneralSettingsNavigation({
+  super.key,
+  final bool rail = false,
+  final bool round = false,
+  final GeneralSettingsDestination? selectedDestination,
+  final ScrollPhysics? physics,
+}) extends StatelessWidget {
   Widget _buildIcon(GeneralSettingsDestination destination) {
     return switch (destination) {
       GeneralSettingsDestination.tabs => const Icon(Icons.bookmark),

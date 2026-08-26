@@ -9,9 +9,7 @@ import '../../util/future_with_dialog.dart';
 import '../../util/show_toast.dart';
 import '../dialog/message_dialog.dart';
 
-class AuthenticatePage extends ConsumerWidget {
-  const AuthenticatePage({super.key});
-
+class const AuthenticatePage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final miAuthState = ref.watch(miAuthNotifierProvider);

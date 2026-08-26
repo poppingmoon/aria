@@ -29,20 +29,13 @@ import 'like_button.dart';
 import 'mfm.dart';
 import 'user_avatar.dart';
 
-class PlayWidget extends HookConsumerWidget {
-  const PlayWidget({
-    super.key,
-    required this.account,
-    required this.host,
-    required this.play,
-    this.onAccountChanged,
-  });
-
-  final Account account;
-  final String host;
-  final Flash play;
-  final void Function(Account account)? onAccountChanged;
-
+class const PlayWidget({
+  super.key,
+  required final Account account,
+  required final String host,
+  required final Flash play,
+  final void Function(Account account)? onAccountChanged,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useAutomaticKeepAlive();

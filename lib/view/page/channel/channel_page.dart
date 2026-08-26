@@ -19,16 +19,11 @@ import '../../widget/timeline_list_view.dart';
 import 'channel_featured.dart';
 import 'channel_home.dart';
 
-class ChannelPage extends ConsumerWidget {
-  const ChannelPage({
-    super.key,
-    required this.account,
-    required this.channelId,
-  });
-
-  final Account account;
-  final String channelId;
-
+class const ChannelPage({
+  super.key,
+  required final Account account,
+  required final String channelId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channel = ref

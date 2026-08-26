@@ -9,12 +9,10 @@ import 'paginated_list_view.dart';
 import 'user_preview.dart';
 import 'user_sheet.dart';
 
-class RenoteUsersSheet extends ConsumerWidget {
-  const RenoteUsersSheet({required this.account, required this.noteId});
-
-  final Account account;
-  final String noteId;
-
+class const RenoteUsersSheet({
+  required final Account account,
+  required final String noteId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final renotes = ref.watch(renotesNotifierProvider(account, noteId));

@@ -35,9 +35,7 @@ import '../../widget/general_settings_scaffold.dart';
 import '../../widget/time_widget.dart';
 import '../drive_page.dart';
 
-class ImportExportPage extends ConsumerWidget {
-  const ImportExportPage({super.key});
-
+class const ImportExportPage({super.key}) extends ConsumerWidget {
   Future<AriaBackup> _export(WidgetRef ref) async {
     final accounts = ref.read(accountsNotifierProvider);
     final packageInfo = await PackageInfo.fromPlatform();

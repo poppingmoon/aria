@@ -5,18 +5,12 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../model/account.dart';
 import '../../util/punycode.dart';
 
-class AcctWidget extends HookWidget {
-  const AcctWidget({
-    super.key,
-    required this.account,
-    required this.user,
-    this.showLocalHost = false,
-  });
-
-  final Account account;
-  final User user;
-  final bool showLocalHost;
-
+class const AcctWidget({
+  super.key,
+  required final Account account,
+  required final User user,
+  final bool showLocalHost = false,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final host = useMemoized(

@@ -26,18 +26,12 @@ Future<bool> confirmSend(
   return result ?? false;
 }
 
-class ChatMessageSendConfirmationDialog extends ConsumerWidget {
-  const ChatMessageSendConfirmationDialog({
-    super.key,
-    required this.account,
-    this.text,
-    this.file,
-  });
-
-  final Account account;
-  final String? text;
-  final DriveFile? file;
-
+class const ChatMessageSendConfirmationDialog({
+  super.key,
+  required final Account account,
+  final String? text,
+  final DriveFile? file,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

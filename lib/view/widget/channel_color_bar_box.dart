@@ -3,18 +3,12 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/note_channel_info_extension.dart';
 
-class ChannelColorBarBox extends StatelessWidget {
-  const ChannelColorBarBox({
-    super.key,
-    required this.note,
-    this.barBottomPadding = 0.0,
-    required this.child,
-  });
-
-  final Note? note;
-  final double barBottomPadding;
-  final Widget child;
-
+class const ChannelColorBarBox({
+  super.key,
+  required final Note? note,
+  final double barBottomPadding = 0.0,
+  required final Widget child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = note?.channel?.toColor();
@@ -32,20 +26,13 @@ class ChannelColorBarBox extends StatelessWidget {
   }
 }
 
-class ColorBarBox extends StatelessWidget {
-  const ColorBarBox({
-    super.key,
-    required this.color,
-    required this.width,
-    this.barBottomPadding = 0.0,
-    required this.child,
-  });
-
-  final Color color;
-  final double width;
-  final double barBottomPadding;
-  final Widget child;
-
+class const ColorBarBox({
+  super.key,
+  required final Color color,
+  required final double width,
+  final double barBottomPadding = 0.0,
+  required final Widget child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
@@ -60,19 +47,12 @@ class ColorBarBox extends StatelessWidget {
   }
 }
 
-class _ColorBarPainter extends CustomPainter {
-  const _ColorBarPainter({
-    required this.color,
-    required this.width,
-    required this.direction,
-    required this.bottomPadding,
-  });
-
-  final Color color;
-  final double width;
-  final TextDirection direction;
-  final double bottomPadding;
-
+class const _ColorBarPainter({
+  required final Color color,
+  required final double width,
+  required final TextDirection direction,
+  required final double bottomPadding,
+}) extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final halfWidth = width * 0.5;

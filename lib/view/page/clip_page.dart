@@ -26,12 +26,11 @@ import '../widget/user_avatar.dart';
 import '../widget/user_sheet.dart';
 import '../widget/username_widget.dart';
 
-class ClipPage extends HookConsumerWidget {
-  const ClipPage({super.key, required this.account, required this.clipId});
-
-  final Account account;
-  final String clipId;
-
+class const ClipPage({
+  super.key,
+  required final Account account,
+  required final String clipId,
+}) extends HookConsumerWidget {
   Future<void> _edit(WidgetRef ref, Clip clip) async {
     final result = await showDialog<ClipSettings>(
       context: ref.context,
@@ -169,19 +168,12 @@ class ClipPage extends HookConsumerWidget {
   }
 }
 
-class _ClipDescription extends ConsumerWidget {
-  const _ClipDescription({
-    required this.account,
-    required this.clipId,
-    required this.clip,
-    required this.isMyClip,
-  });
-
-  final Account account;
-  final String clipId;
-  final Clip? clip;
-  final bool isMyClip;
-
+class const _ClipDescription({
+  required final Account account,
+  required final String clipId,
+  required final Clip? clip,
+  required final bool isMyClip,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(

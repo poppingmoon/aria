@@ -9,10 +9,8 @@ ForceAcceptGestureRecognizer useForceAcceptGestureRecognizer({
   return use(_ForceAcceptGestureRecognizerHook(keys: keys));
 }
 
-class _ForceAcceptGestureRecognizerHook
+class const _ForceAcceptGestureRecognizerHook({super.keys})
     extends Hook<ForceAcceptGestureRecognizer> {
-  const _ForceAcceptGestureRecognizerHook({super.keys});
-
   @override
   HookState<ForceAcceptGestureRecognizer, Hook<ForceAcceptGestureRecognizer>>
   createState() => _ForceAcceptGestureRecognizerHookState();

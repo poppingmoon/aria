@@ -6,11 +6,8 @@ import '../widget/tab_icon_widget.dart';
 import '../widget/tab_name_widget.dart';
 import '../widget/timeline_list_view.dart';
 
-class TimelinePage extends ConsumerWidget {
-  const TimelinePage({super.key, required this.tabSettings});
-
-  final TabSettings tabSettings;
-
+class const TimelinePage({super.key, required final TabSettings tabSettings})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(

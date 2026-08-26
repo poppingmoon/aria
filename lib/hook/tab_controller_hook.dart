@@ -21,20 +21,13 @@ TabController useTabController({
   );
 }
 
-class _TabControllerHook extends Hook<TabController> {
-  const _TabControllerHook({
-    required this.length,
-    required this.vsync,
-    required this.initialIndex,
-    required this.animationDuration,
-    super.keys,
-  });
-
-  final int length;
-  final TickerProvider vsync;
-  final int initialIndex;
-  final Duration? animationDuration;
-
+class const _TabControllerHook({
+  required final int length,
+  required final TickerProvider vsync,
+  required final int initialIndex,
+  required final Duration? animationDuration,
+  super.keys,
+}) extends Hook<TabController> {
   @override
   HookState<TabController, Hook<TabController>> createState() =>
       _TabControllerHookState();

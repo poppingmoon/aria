@@ -10,12 +10,11 @@ import '../../provider/api/lists_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'text_field_dialog.dart';
 
-class ListDialog extends HookConsumerWidget {
-  const ListDialog({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const ListDialog({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account)).value;

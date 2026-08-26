@@ -10,12 +10,11 @@ import '../../../provider/api/search_users_notifier_provider.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
 
-class SearchUsers extends HookConsumerWidget {
-  const SearchUsers({super.key, required this.account, required this.query});
-
-  final Account account;
-  final String query;
-
+class const SearchUsers({
+  super.key,
+  required final Account account,
+  required final String query,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final origin = useState(Origin.combined);

@@ -11,20 +11,13 @@ import 'time_widget.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class ClipPreview extends ConsumerWidget {
-  const ClipPreview({
-    super.key,
-    required this.account,
-    required this.clip,
-    this.hideUserInfo = false,
-    this.onTap,
-  });
-
-  final Account account;
-  final Clip clip;
-  final bool hideUserInfo;
-  final void Function()? onTap;
-
+class const ClipPreview({
+  super.key,
+  required final Account account,
+  required final Clip clip,
+  final bool hideUserInfo = false,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

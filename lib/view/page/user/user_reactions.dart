@@ -10,12 +10,11 @@ import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/time_widget.dart';
 
-class UserReactions extends ConsumerWidget {
-  const UserReactions({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const UserReactions({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final reactions = ref.watch(userReactionsNotifierProvider(account, userId));

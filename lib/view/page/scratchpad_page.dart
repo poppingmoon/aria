@@ -19,11 +19,8 @@ import '../../util/create_aiscript.dart';
 import '../dialog/error_message_dialog.dart';
 import '../widget/as_ui_widget.dart';
 
-class ScratchpadPage extends HookWidget {
-  const ScratchpadPage({super.key, required this.account});
-
-  final Account account;
-
+class const ScratchpadPage({super.key, required final Account account})
+    extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final running = useState(false);
@@ -51,12 +48,10 @@ class ScratchpadPage extends HookWidget {
   }
 }
 
-class _Scratchpad extends HookConsumerWidget {
-  const _Scratchpad({required this.account, required this.onRunningChanged});
-
-  final Account account;
-  final void Function(bool value) onRunningChanged;
-
+class const _Scratchpad({
+  required final Account account,
+  required final void Function(bool value) onRunningChanged,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final token = ref.watch(tokenProvider(account));

@@ -15,12 +15,11 @@ import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/key_value_widget.dart';
 
-class ChatRoomInfo extends ConsumerWidget {
-  const ChatRoomInfo({super.key, required this.account, required this.roomId});
-
-  final Account account;
-  final String roomId;
-
+class const ChatRoomInfo({
+  super.key,
+  required final Account account,
+  required final String roomId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final room = ref.watch(chatRoomNotifierProvider(account, roomId));

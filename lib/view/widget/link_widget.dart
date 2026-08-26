@@ -7,20 +7,13 @@ import '../../hook/force_accept_gesture_recognizer_hook.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/get_link_background_color.dart';
 
-class LinkWidget extends HookConsumerWidget {
-  const LinkWidget({
-    super.key,
-    required this.text,
-    required this.builder,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final String text;
-  final Widget Function(BuildContext context, TextSpan span) builder;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const LinkWidget({
+  super.key,
+  required final String text,
+  required final Widget Function(BuildContext context, TextSpan span) builder,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = useAnimationController(

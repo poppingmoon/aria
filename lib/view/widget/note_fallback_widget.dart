@@ -5,16 +5,11 @@ import '../../model/account.dart';
 import '../../provider/notes_notifier_provider.dart';
 import 'error_message.dart';
 
-class NoteFallbackWidget extends ConsumerWidget {
-  const NoteFallbackWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-  });
-
-  final Account account;
-  final String noteId;
-
+class const NoteFallbackWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(

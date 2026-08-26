@@ -10,16 +10,11 @@ import '../../widget/channel_preview.dart';
 import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 
-class ChannelsFavorites extends ConsumerWidget {
-  const ChannelsFavorites({
-    super.key,
-    required this.account,
-    this.onChannelTap,
-  });
-
-  final Account account;
-  final void Function(CommunityChannel channel)? onChannelTap;
-
+class const ChannelsFavorites({
+  super.key,
+  required final Account account,
+  final void Function(CommunityChannel channel)? onChannelTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final channels = ref.watch(favoriteChannelsProvider(account));

@@ -17,18 +17,12 @@ import '../widget/key_value_widget.dart';
 import '../widget/mfm.dart';
 import '../widget/url_widget.dart';
 
-class EmojiPage extends ConsumerWidget {
-  const EmojiPage({
-    super.key,
-    required this.account,
-    required this.name,
-    this.confirm = false,
-  });
-
-  final Account account;
-  final String name;
-  final bool confirm;
-
+class const EmojiPage({
+  super.key,
+  required final Account account,
+  required final String name,
+  final bool confirm = false,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final emoji = ref.watch(emojiResponseProvider(account, name));

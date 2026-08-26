@@ -14,9 +14,7 @@ import '../../widget/link_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/url_sheet.dart';
 
-class LanguagesPage extends ConsumerWidget {
-  const LanguagesPage({super.key});
-
+class const LanguagesPage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(generalSettingsNotifierProvider).locale;
@@ -47,7 +45,7 @@ class LanguagesPage extends ConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ListTileTheme(
                         child: Mfm(
-                          account: Account.dummy(),
+                          account: const Account.dummy(),
                           text: t.misskey.i18nInfo(
                             link: '[Crowdin](https://crowdin.com/project/misskey)',
                           ),

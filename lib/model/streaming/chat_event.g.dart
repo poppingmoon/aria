@@ -6,7 +6,7 @@ part of 'chat_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-React _$ReactFromJson(Map<String, dynamic> json) => React(
+_React _$ReactFromJson(Map<String, dynamic> json) => _React(
   reaction: json['reaction'] as String,
   user: json['user'] == null
       ? null
@@ -14,7 +14,7 @@ React _$ReactFromJson(Map<String, dynamic> json) => React(
   messageId: json['messageId'] as String,
 );
 
-Unreact _$UnreactFromJson(Map<String, dynamic> json) => Unreact(
+_Unreact _$UnreactFromJson(Map<String, dynamic> json) => _Unreact(
   reaction: json['reaction'] as String,
   user: json['user'] == null
       ? null

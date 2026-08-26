@@ -5,24 +5,15 @@ import '../../model/account.dart';
 import 'custom_emoji.dart';
 import 'unicode_emoji.dart';
 
-class EmojiWidget extends StatelessWidget {
-  const EmojiWidget({
-    super.key,
-    required this.account,
-    required this.emoji,
-    this.emojis = const {},
-    this.style,
-    this.onTap,
-    this.disableTooltip = false,
-  });
-
-  final Account account;
-  final String emoji;
-  final Map<String, String> emojis;
-  final TextStyle? style;
-  final void Function()? onTap;
-  final bool disableTooltip;
-
+class const EmojiWidget({
+  super.key,
+  required final Account account,
+  required final String emoji,
+  final Map<String, String> emojis = const {},
+  final TextStyle? style,
+  final void Function()? onTap,
+  final bool disableTooltip = false,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (emoji.startsWith(':')) {

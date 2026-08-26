@@ -6,24 +6,15 @@ import 'acct_widget.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class UserPreview extends StatelessWidget {
-  const UserPreview({
-    super.key,
-    required this.account,
-    required this.user,
-    this.trailing,
-    this.avatarSize = 32.0,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final User user;
-  final Widget? trailing;
-  final double avatarSize;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const UserPreview({
+  super.key,
+  required final Account account,
+  required final User user,
+  final Widget? trailing,
+  final double avatarSize = 32.0,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(

@@ -3,16 +3,11 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class OnlineIndicator extends StatelessWidget {
-  const OnlineIndicator({
-    super.key,
-    required this.onlineStatus,
-    required this.size,
-  });
-
-  final OnlineStatus? onlineStatus;
-  final double size;
-
+class const OnlineIndicator({
+  super.key,
+  required final OnlineStatus? onlineStatus,
+  required final double size,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Tooltip(

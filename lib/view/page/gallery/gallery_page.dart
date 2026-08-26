@@ -10,11 +10,8 @@ import 'gallery_my.dart';
 import 'gallery_popular.dart';
 import 'gallery_recent.dart';
 
-class GalleryPage extends ConsumerWidget {
-  const GalleryPage({super.key, required this.account});
-
-  final Account account;
-
+class const GalleryPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(

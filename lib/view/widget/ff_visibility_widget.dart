@@ -3,11 +3,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class FfVisibilityWidget extends StatelessWidget {
-  const FfVisibilityWidget({super.key, required this.visibility});
-
-  final FFVisibility? visibility;
-
+class const FfVisibilityWidget({
+  super.key,
+  required final FFVisibility? visibility,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (visibility) {

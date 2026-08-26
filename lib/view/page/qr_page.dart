@@ -25,11 +25,8 @@ import '../widget/acct_widget.dart';
 import '../widget/user_avatar.dart';
 import '../widget/username_widget.dart';
 
-class QrPage extends HookConsumerWidget {
-  const QrPage({super.key, required this.account});
-
-  final Account account;
-
+class const QrPage({super.key, required final Account account})
+    extends HookConsumerWidget {
   Future<void> _setBrightness(double brightness) async {
     if (defaultTargetPlatform
         case TargetPlatform.android ||
@@ -334,11 +331,7 @@ class QrPage extends HookConsumerWidget {
   }
 }
 
-class _FinderShape extends PrettyQrShape {
-  const _FinderShape({required this.color});
-
-  final Color color;
-
+class const _FinderShape({required final Color color}) extends PrettyQrShape {
   @override
   void paint(PrettyQrPaintingContext context) {
     final matrix = context.matrix;

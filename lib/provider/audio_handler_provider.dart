@@ -23,10 +23,10 @@ FutureOr<AudioHandler> audioHandler(Ref ref) {
   };
 }
 
-class _AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
+class _AudioPlayerHandler() extends BaseAudioHandler with SeekHandler {
   final _player = AudioPlayer();
 
-  _AudioPlayerHandler() {
+  this {
     _player.playbackEventStream.map(_transformEvent).pipe(playbackState);
   }
 

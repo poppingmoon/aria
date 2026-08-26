@@ -13,9 +13,7 @@ import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 import '../../widget/tab_icon_widget.dart';
 import '../../widget/tab_type_widget.dart';
 
-class TabsPage extends HookConsumerWidget {
-  const TabsPage({super.key});
-
+class const TabsPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);

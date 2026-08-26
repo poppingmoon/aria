@@ -7,16 +7,11 @@ import '../../provider/api/notes_after_renotes_notifier_provider.dart';
 import '../widget/note_widget.dart';
 import '../widget/paginated_list_view.dart';
 
-class NotesAfterRenotesPage extends ConsumerWidget {
-  const NotesAfterRenotesPage({
-    super.key,
-    required this.account,
-    required this.noteId,
-  });
-
-  final Account account;
-  final String noteId;
-
+class const NotesAfterRenotesPage({
+  super.key,
+  required final Account account,
+  required final String noteId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notes = ref.watch(notesAfterRenotesNotifierProvider(account, noteId));

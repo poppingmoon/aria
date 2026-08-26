@@ -11,11 +11,8 @@ import '../../../provider/api/search_plays_notifier_provider.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/play_preview.dart';
 
-class PlaysSearch extends HookConsumerWidget {
-  const PlaysSearch({super.key, required this.account});
-
-  final Account account;
-
+class const PlaysSearch({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');

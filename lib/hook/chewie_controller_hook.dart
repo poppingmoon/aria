@@ -25,18 +25,12 @@ ChewieController? useChewieController({
   );
 }
 
-class _ChewieControllerHook extends Hook<ChewieController?> {
-  const _ChewieControllerHook({
-    super.keys,
-    this.videoPlayerController,
-    this.autoPlay = false,
-    this.showControlsOnInitialize = true,
-  });
-
-  final VideoPlayerController? videoPlayerController;
-  final bool autoPlay;
-  final bool showControlsOnInitialize;
-
+class const _ChewieControllerHook({
+  super.keys,
+  final VideoPlayerController? videoPlayerController,
+  final bool autoPlay = false,
+  final bool showControlsOnInitialize = true,
+}) extends Hook<ChewieController?> {
   @override
   HookState<ChewieController?, Hook<ChewieController?>> createState() =>
       _ChewieControllerHookState();

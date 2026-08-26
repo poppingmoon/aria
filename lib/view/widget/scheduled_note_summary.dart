@@ -7,18 +7,12 @@ import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import 'mfm.dart';
 
-class ScheduledNoteSummary extends ConsumerWidget {
-  const ScheduledNoteSummary({
-    super.key,
-    required this.account,
-    required this.note,
-    this.onTap,
-  });
-
-  final Account account;
-  final ScheduledNote note;
-  final void Function()? onTap;
-
+class const ScheduledNoteSummary({
+  super.key,
+  required final Account account,
+  required final ScheduledNote note,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   String _getNoteSummary(BuildContext context, ScheduledNote note) {
     return [
       if (note.data.cw case final cw?)

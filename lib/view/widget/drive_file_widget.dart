@@ -8,22 +8,14 @@ import '../../model/post_file.dart';
 import 'drive_file_sheet.dart';
 import 'post_file_thumbnail.dart';
 
-class DriveFileWidget extends ConsumerWidget {
-  const DriveFileWidget({
-    super.key,
-    required this.account,
-    required this.file,
-    this.isSelected = false,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final DriveFile file;
-  final bool isSelected;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const DriveFileWidget({
+  super.key,
+  required final Account account,
+  required final DriveFile file,
+  final bool isSelected = false,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);

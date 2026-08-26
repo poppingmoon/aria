@@ -13,12 +13,11 @@ import 'server_ads.dart';
 import 'server_emojis.dart';
 import 'server_overview.dart';
 
-class ServerPage extends HookConsumerWidget {
-  const ServerPage({super.key, required this.account, required this.host});
-
-  final Account account;
-  final String host;
-
+class const ServerPage({
+  super.key,
+  required final Account account,
+  required final String host,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host)).value;

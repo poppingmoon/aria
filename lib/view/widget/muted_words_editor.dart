@@ -14,16 +14,11 @@ import '../../provider/muted_words_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
 
-class MutedWordsEditor extends HookConsumerWidget {
-  const MutedWordsEditor({
-    super.key,
-    required this.account,
-    this.hardMute = false,
-  });
-
-  final Account account;
-  final bool hardMute;
-
+class const MutedWordsEditor({
+  super.key,
+  required final Account account,
+  final bool hardMute = false,
+}) extends HookConsumerWidget {
   List<MuteWord> _parseMutes(BuildContext context, String mutes) {
     return LineSplitter.split(mutes.trim())
         .map((line) => line.trim())

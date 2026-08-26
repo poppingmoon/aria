@@ -3,9 +3,7 @@ import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../model/account.dart';
 
-class NotificationSettingsRepository {
-  const NotificationSettingsRepository();
-
+class const NotificationSettingsRepository() {
   static const _channel = MethodChannel(
     'com.poppingmoon.aria/notification_settings',
   );

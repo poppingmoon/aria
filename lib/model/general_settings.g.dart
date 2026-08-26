@@ -6,9 +6,9 @@ part of 'general_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_GeneralSettings _$GeneralSettingsFromJson(
+GeneralSettings _$GeneralSettingsFromJson(
   Map<String, dynamic> json,
-) => _GeneralSettings(
+) => GeneralSettings(
   locale: $enumDecodeNullable(
     _$AppLocaleEnumMap,
     json['locale'],
@@ -192,11 +192,9 @@ _GeneralSettings _$GeneralSettingsFromJson(
 );
 
 Map<String, dynamic> _$GeneralSettingsToJson(
-  _GeneralSettings instance,
+  GeneralSettings instance,
 ) => <String, dynamic>{
-  'locale': ?_$AppLocaleEnumMap[instance.locale],
-  'collapseRenotes': instance.collapseRenotes,
-  'sensitive': _$SensitiveMediaDisplayEnumMap[instance.sensitive]!,
+  'serifFontFamily': ?instance.serifFontFamily,
   'highlightSensitiveMedia': instance.highlightSensitiveMedia,
   'animatedMfm': instance.animatedMfm,
   'advancedMfm': instance.advancedMfm,
@@ -232,7 +230,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'thumbnailBoxFit': _$BoxFitEnumMap[instance.thumbnailBoxFit]!,
   'emojiStyle': _$EmojiStyleEnumMap[instance.emojiStyle]!,
   'fontFamily': ?instance.fontFamily,
-  'serifFontFamily': ?instance.serifFontFamily,
+  'locale': ?_$AppLocaleEnumMap[instance.locale],
   'monospaceFontFamily': ?instance.monospaceFontFamily,
   'cursiveFontFamily': ?instance.cursiveFontFamily,
   'fantasyFontFamily': ?instance.fantasyFontFamily,
@@ -278,7 +276,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'showOnlineStatus': instance.showOnlineStatus,
   'showTimelineTabBarAtBottom': instance.showTimelineTabBarAtBottom,
   'showMenuButtonInTabBar': instance.showMenuButtonInTabBar,
-  'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,
+  'collapseRenotes': instance.collapseRenotes,
   'alwaysShowTabHeader': instance.alwaysShowTabHeader,
   'showTimelineLastViewedAt': instance.showTimelineLastViewedAt,
   'showPopupOnNewNote': instance.showPopupOnNewNote,
@@ -316,6 +314,8 @@ Map<String, dynamic> _$GeneralSettingsToJson(
   'darkThemeId': instance.darkThemeId,
   'sound': instance.sound.toJson(),
   'searchUsersByUsername': instance.searchUsersByUsername,
+  'sensitive': _$SensitiveMediaDisplayEnumMap[instance.sensitive]!,
+  'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,
 };
 
 const _$AppLocaleEnumMap = {

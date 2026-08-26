@@ -7,22 +7,14 @@ import '../../model/account.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../widget/mfm.dart';
 
-class AiScriptDialog extends ConsumerWidget {
-  const AiScriptDialog({
-    super.key,
-    required this.account,
-    this.title,
-    this.text,
-    this.type,
-    this.showCancelButton = false,
-  });
-
-  final Account account;
-  final String? title;
-  final String? text;
-  final String? type;
-  final bool showCancelButton;
-
+class const AiScriptDialog({
+  super.key,
+  required final Account account,
+  final String? title,
+  final String? text,
+  final String? type,
+  final bool showCancelButton = false,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);

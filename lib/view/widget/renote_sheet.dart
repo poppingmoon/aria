@@ -21,12 +21,11 @@ import 'note_visibility_icon.dart';
 import 'note_visibility_sheet.dart';
 import 'note_visibility_widget.dart';
 
-class RenoteSheet extends HookConsumerWidget {
-  const RenoteSheet({super.key, required this.account, required this.note});
-
-  final Account account;
-  final Note note;
-
+class const RenoteSheet({
+  super.key,
+  required final Account account,
+  required final Note note,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

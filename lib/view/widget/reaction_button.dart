@@ -24,24 +24,15 @@ import 'emoji_widget.dart';
 import 'reaction_effect.dart';
 import 'reaction_users_sheet.dart';
 
-class ReactionButton extends ConsumerWidget {
-  const ReactionButton({
-    super.key,
-    required this.account,
-    required this.note,
-    required this.emoji,
-    required this.count,
-    this.isNewReaction = false,
-    this.scale,
-  });
-
-  final Account account;
-  final Note note;
-  final String emoji;
-  final int count;
-  final bool isNewReaction;
-  final double? scale;
-
+class const ReactionButton({
+  super.key,
+  required final Account account,
+  required final Note note,
+  required final String emoji,
+  required final int count,
+  final bool isNewReaction = false,
+  final double? scale,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -231,25 +222,15 @@ class ReactionButton extends ConsumerWidget {
   }
 }
 
-class _EmojiWidgetWithEffect extends HookWidget {
-  const _EmojiWidgetWithEffect({
-    required this.account,
-    required this.note,
-    required this.emoji,
-    required this.emojis,
-    required this.style,
-    required this.count,
-    required this.isNewReaction,
-  });
-
-  final Account account;
-  final Note note;
-  final String emoji;
-  final Map<String, String> emojis;
-  final TextStyle style;
-  final int count;
-  final bool isNewReaction;
-
+class const _EmojiWidgetWithEffect({
+  required final Account account,
+  required final Note note,
+  required final String emoji,
+  required final Map<String, String> emojis,
+  required final TextStyle style,
+  required final int count,
+  required final bool isNewReaction,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final forceShowEffect = useRef(isNewReaction);

@@ -4,22 +4,14 @@ import 'package:material_ui/material_ui.dart';
 import '../../model/pagination_state.dart';
 import 'error_message.dart';
 
-class PaginationBottomWidget<T> extends StatelessWidget {
-  const PaginationBottomWidget({
-    super.key,
-    required this.paginationState,
-    this.noItemsLabel,
-    this.loadMore,
-    this.reversed = false,
-    this.height,
-  });
-
-  final AsyncValue<PaginationState<T>> paginationState;
-  final String? noItemsLabel;
-  final void Function()? loadMore;
-  final bool reversed;
-  final double? height;
-
+class const PaginationBottomWidget<T>({
+  super.key,
+  required final AsyncValue<PaginationState<T>> paginationState,
+  final String? noItemsLabel,
+  final void Function()? loadMore,
+  final bool reversed = false,
+  final double? height,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final value = paginationState.value;

@@ -7,18 +7,12 @@ import 'package:material_ui/material_ui.dart';
 import '../../provider/dio_provider.dart';
 import '../../util/launch_url.dart';
 
-class BlueskyEmbed extends HookConsumerWidget {
-  const BlueskyEmbed({
-    super.key,
-    required this.atId,
-    required this.rkey,
-    this.isDark = false,
-  });
-
-  final String atId;
-  final String rkey;
-  final bool isDark;
-
+class const BlueskyEmbed({
+  super.key,
+  required final String atId,
+  required final String rkey,
+  final bool isDark = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dio = ref.watch(dioProvider);

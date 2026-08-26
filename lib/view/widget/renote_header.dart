@@ -16,20 +16,13 @@ import 'user_avatar.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class RenoteHeader extends HookConsumerWidget {
-  const RenoteHeader({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final String noteId;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const RenoteHeader({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteNotifierProvider(account, noteId));

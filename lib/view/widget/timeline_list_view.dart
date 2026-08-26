@@ -30,20 +30,13 @@ import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
 import 'timeline_note.dart';
 
-class TimelineListView extends HookConsumerWidget {
-  const TimelineListView({
-    super.key,
-    required this.tabSettings,
-    this.nested = false,
-    this.focusPostForm,
-    this.lastViewedAtKey,
-  });
-
-  final TabSettings tabSettings;
-  final bool nested;
-  final void Function()? focusPostForm;
-  final Key? lastViewedAtKey;
-
+class const TimelineListView({
+  super.key,
+  required final TabSettings tabSettings,
+  final bool nested = false,
+  final void Function()? focusPostForm,
+  final Key? lastViewedAtKey,
+}) extends HookConsumerWidget {
   @visibleForTesting
   int? getNewNoteDividerIndex({
     required String lastViewedNoteId,
@@ -668,9 +661,7 @@ class TimelineListView extends HookConsumerWidget {
   }
 }
 
-class _NewNotesDivider extends ConsumerWidget {
-  const _NewNotesDivider({super.key});
-
+class const _NewNotesDivider({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final color = Theme.of(context).colorScheme.primary;

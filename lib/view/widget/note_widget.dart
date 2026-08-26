@@ -42,36 +42,21 @@ import 'renote_header.dart';
 import 'url_preview.dart';
 import 'user_avatar.dart';
 
-class NoteWidget extends HookConsumerWidget {
-  const NoteWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.clipId,
-    this.withHardMute = true,
-    this.focusPostForm,
-    this.note,
-    this.showFooter,
-    this.expandLongNote,
-    this.backgroundColor,
-    this.margin = EdgeInsets.zero,
-    this.borderRadius,
-    this.listViewKey,
-  });
-
-  final Account account;
-  final String noteId;
-  final String? clipId;
-  final bool withHardMute;
-  final void Function()? focusPostForm;
-  final Note? note;
-  final bool? showFooter;
-  final bool? expandLongNote;
-  final Color? backgroundColor;
-  final EdgeInsetsGeometry margin;
-  final BorderRadiusGeometry? borderRadius;
-  final GlobalKey? listViewKey;
-
+class const NoteWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final String? clipId,
+  final bool withHardMute = true,
+  final void Function()? focusPostForm,
+  final Note? note,
+  final bool? showFooter,
+  final bool? expandLongNote,
+  final Color? backgroundColor,
+  final EdgeInsetsGeometry margin = EdgeInsets.zero,
+  final BorderRadiusGeometry? borderRadius,
+  final GlobalKey? listViewKey,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));
@@ -356,31 +341,18 @@ class NoteWidget extends HookConsumerWidget {
   }
 }
 
-class _NoteContent extends HookConsumerWidget {
-  const _NoteContent({
-    required this.account,
-    required this.noteId,
-    required this.note,
-    required this.appearNote,
-    required this.clipId,
-    required this.style,
-    required this.showFooter,
-    required this.expandLongNote,
-    required this.focusPostForm,
-    required this.listViewKey,
-  });
-
-  final Account account;
-  final String noteId;
-  final Note note;
-  final Note appearNote;
-  final String? clipId;
-  final TextStyle style;
-  final bool? showFooter;
-  final bool? expandLongNote;
-  final void Function()? focusPostForm;
-  final GlobalKey? listViewKey;
-
+class const _NoteContent({
+  required final Account account,
+  required final String noteId,
+  required final Note note,
+  required final Note appearNote,
+  required final String? clipId,
+  required final TextStyle style,
+  required final bool? showFooter,
+  required final bool? expandLongNote,
+  required final void Function()? focusPostForm,
+  required final GlobalKey? listViewKey,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (
@@ -665,19 +637,12 @@ class _NoteContent extends HookConsumerWidget {
   }
 }
 
-class _NoteMfm extends StatelessWidget {
-  const _NoteMfm({
-    required this.account,
-    required this.nodes,
-    required this.note,
-    this.maxLines,
-  });
-
-  final Account account;
-  final List<MfmNode>? nodes;
-  final Note note;
-  final int? maxLines;
-
+class const _NoteMfm({
+  required final Account account,
+  required final List<MfmNode>? nodes,
+  required final Note note,
+  final int? maxLines,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

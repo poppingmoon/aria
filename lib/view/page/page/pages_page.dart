@@ -7,11 +7,8 @@ import 'pages_featured.dart';
 import 'pages_liked.dart';
 import 'pages_my.dart';
 
-class PagesPage extends ConsumerWidget {
-  const PagesPage({super.key, required this.account});
-
-  final Account account;
-
+class const PagesPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DefaultTabController(

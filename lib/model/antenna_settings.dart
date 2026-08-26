@@ -4,23 +4,21 @@ import 'package:misskey_dart/misskey_dart.dart';
 part 'antenna_settings.freezed.dart';
 
 @freezed
-abstract class AntennaSettings with _$AntennaSettings {
-  const factory AntennaSettings({
-    String? name,
-    AntennaSource? src,
-    String? userListId,
-    List<String>? users,
-    bool? withReplies,
-    List<List<String>>? keywords,
-    List<List<String>>? excludeKeywords,
-    bool? localOnly,
-    bool? caseSensitive,
-    bool? withFile,
-    bool? excludeBots,
-    bool? excludeNotesInSensitiveChannel,
-  }) = _AntennaSettings;
-
-  factory AntennaSettings.fromAntenna(Antenna antenna) {
+class const AntennaSettings({
+  @override final String? name,
+  @override final AntennaSource? src,
+  @override final String? userListId,
+  @override final List<String>? users,
+  @override final bool? withReplies,
+  @override final List<List<String>>? keywords,
+  @override final List<List<String>>? excludeKeywords,
+  @override final bool? localOnly,
+  @override final bool? caseSensitive,
+  @override final bool? withFile,
+  @override final bool? excludeBots,
+  @override final bool? excludeNotesInSensitiveChannel,
+}) with _$AntennaSettings {
+  factory fromAntenna(Antenna antenna) {
     return AntennaSettings(
       name: antenna.name,
       src: antenna.src,

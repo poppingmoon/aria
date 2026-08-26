@@ -28,12 +28,8 @@ Future<void> showImageDialog(BuildContext context, {String? url, File? file}) {
   );
 }
 
-class ImageDialog extends HookConsumerWidget {
-  const ImageDialog({super.key, this.url, this.file});
-
-  final String? url;
-  final File? file;
-
+class const ImageDialog({super.key, final String? url, final File? file})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final url = useMemoized(

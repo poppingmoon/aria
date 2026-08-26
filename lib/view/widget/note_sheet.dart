@@ -57,22 +57,14 @@ Future<void> showNoteSheet({
   );
 }
 
-class NoteSheet extends ConsumerWidget {
-  const NoteSheet({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.renote = false,
-    this.clipId,
-    this.disableHeader = false,
-  });
-
-  final Account account;
-  final String noteId;
-  final bool renote;
-  final String? clipId;
-  final bool disableHeader;
-
+class const NoteSheet({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final bool renote = false,
+  final String? clipId,
+  final bool disableHeader = false,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteNotifierProvider(account, noteId));
@@ -630,17 +622,11 @@ class NoteSheet extends ConsumerWidget {
   }
 }
 
-class _RenoteSheet extends ConsumerWidget {
-  const _RenoteSheet({
-    required this.account,
-    required this.note,
-    required this.disableHeader,
-  });
-
-  final Account account;
-  final Note note;
-  final bool disableHeader;
-
+class const _RenoteSheet({
+  required final Account account,
+  required final Note note,
+  required final bool disableHeader,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));

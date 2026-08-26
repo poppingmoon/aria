@@ -5,33 +5,28 @@ part 'summaly_result.g.dart';
 
 // https://github.com/misskey-dev/summaly
 @Freezed(toJson: false)
-abstract class SummalyResult with _$SummalyResult {
-  const factory SummalyResult({
-    String? title,
-    String? icon,
-    String? description,
-    String? thumbnail,
-    String? thumbnailStyle,
-    String? sitename,
-    required Player player,
-    bool? sensitive,
-    String? activityPub,
-    String? fediverseCreater,
-    String? url,
-  }) = _SummalyResult;
-
-  factory SummalyResult.fromJson(Map<String, dynamic> json) =>
-      _$SummalyResultFromJson(json);
+class const SummalyResult({
+  @override final String? title,
+  @override final String? icon,
+  @override final String? description,
+  @override final String? thumbnail,
+  @override final String? thumbnailStyle,
+  @override final String? sitename,
+  @override required final Player player,
+  @override final bool? sensitive,
+  @override final String? activityPub,
+  @override final String? fediverseCreater,
+  @override final String? url,
+}) with _$SummalyResult {
+  factory fromJson(Map<String, Object?> json) => _$SummalyResultFromJson(json);
 }
 
 @Freezed(toJson: false)
-abstract class Player with _$Player {
-  const factory Player({
-    String? url,
-    double? width,
-    double? height,
-    List<String>? allow,
-  }) = _Player;
-
-  factory Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);
+class const Player({
+  @override final String? url,
+  @override final double? width,
+  @override final double? height,
+  @override final List<String>? allow,
+}) with _$Player {
+  factory fromJson(Map<String, Object?> json) => _$PlayerFromJson(json);
 }

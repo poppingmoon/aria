@@ -7,11 +7,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../provider/general_settings_notifier_provider.dart';
 
-class ShakeWidget extends HookConsumerWidget {
-  const ShakeWidget({super.key, required this.child});
-
-  final Widget child;
-
+class const ShakeWidget({super.key, required final Widget child})
+    extends HookConsumerWidget {
   static final _offsetTween = TweenSequence([
     TweenSequenceItem(
       tween: Tween(

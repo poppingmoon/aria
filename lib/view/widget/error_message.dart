@@ -11,12 +11,11 @@ import '../../i18n/strings.g.dart';
 import '../../provider/tokens_notifier_provider.dart';
 import '../../util/copy_text.dart';
 
-class ErrorMessage extends HookConsumerWidget {
-  const ErrorMessage({super.key, this.error, this.stackTrace});
-
-  final Object? error;
-  final StackTrace? stackTrace;
-
+class const ErrorMessage({
+  super.key,
+  final Object? error,
+  final StackTrace? stackTrace,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tokens = ref.watch(tokensNotifierProvider).values;

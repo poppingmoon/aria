@@ -17,16 +17,11 @@ import '../dialog/antenna_settings_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../widget/timeline_list_view.dart';
 
-class AntennaPage extends ConsumerWidget {
-  const AntennaPage({
-    super.key,
-    required this.account,
-    required this.antennaId,
-  });
-
-  final Account account;
-  final String antennaId;
-
+class const AntennaPage({
+  super.key,
+  required final Account account,
+  required final String antennaId,
+}) extends ConsumerWidget {
   Future<void> _edit(WidgetRef ref, Antenna antenna) async {
     final result = await showDialog<AntennaSettings>(
       context: ref.context,

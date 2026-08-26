@@ -7,16 +7,11 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../provider/misskey_servers_provider.dart';
 import 'image_widget.dart';
 
-class MisskeyServerBackground extends HookConsumerWidget {
-  const MisskeyServerBackground({
-    super.key,
-    required this.controller,
-    required this.child,
-  });
-
-  final TextEditingController controller;
-  final Widget child;
-
+class const MisskeyServerBackground({
+  super.key,
+  required final TextEditingController controller,
+  required final Widget child,
+}) extends HookConsumerWidget {
   String? getBackgroundImageUrl(JoinMisskeyInstanceInfo? server) {
     if (server == null) {
       return null;

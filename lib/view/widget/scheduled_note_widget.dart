@@ -16,16 +16,11 @@ import '../dialog/confirmation_dialog.dart';
 import 'note_widget.dart';
 import 'time_widget.dart';
 
-class ScheduledNoteWidget extends ConsumerWidget {
-  const ScheduledNoteWidget({
-    super.key,
-    required this.account,
-    required this.draft,
-  });
-
-  final Account account;
-  final NoteDraft draft;
-
+class const ScheduledNoteWidget({
+  super.key,
+  required final Account account,
+  required final NoteDraft draft,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final endpoints = ref.watch(endpointsNotifierProvider(account.host)).value;

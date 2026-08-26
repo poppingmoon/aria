@@ -24,22 +24,14 @@ Future<bool> confirm(
   return result ?? false;
 }
 
-class ConfirmationDialog extends StatelessWidget {
-  const ConfirmationDialog({
-    super.key,
-    this.title,
-    this.message,
-    this.content,
-    this.okText,
-    this.cancelText,
-  });
-
-  final Widget? title;
-  final String? message;
-  final Widget? content;
-  final String? okText;
-  final String? cancelText;
-
+class const ConfirmationDialog({
+  super.key,
+  final Widget? title,
+  final String? message,
+  final Widget? content,
+  final String? okText,
+  final String? cancelText,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

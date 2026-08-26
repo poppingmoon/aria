@@ -27,12 +27,11 @@ import '../widget/note_fallback_widget.dart';
 import '../widget/note_widget.dart';
 import '../widget/pagination_bottom_widget.dart';
 
-class NotePage extends HookConsumerWidget {
-  const NotePage({super.key, required this.account, required this.noteId});
-
-  final Account account;
-  final String noteId;
-
+class const NotePage({
+  super.key,
+  required final Account account,
+  required final String noteId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteNotifierProvider(account, noteId));

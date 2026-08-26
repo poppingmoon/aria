@@ -13,20 +13,13 @@ import '../dialog/confirmation_dialog.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class FollowRequestActionButton extends ConsumerWidget {
-  const FollowRequestActionButton({
-    super.key,
-    required this.account,
-    required this.user,
-    required this.accept,
-    this.onDone,
-  });
-
-  final Account account;
-  final User user;
-  final bool accept;
-  final void Function()? onDone;
-
+class const FollowRequestActionButton({
+  super.key,
+  required final Account account,
+  required final User user,
+  required final bool accept,
+  final void Function()? onDone,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

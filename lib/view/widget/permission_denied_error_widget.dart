@@ -6,11 +6,10 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/server_url_notifier_provider.dart';
 
-class PermissionDeniedErrorWidget extends ConsumerWidget {
-  const PermissionDeniedErrorWidget({super.key, required this.account});
-
-  final Account account;
-
+class const PermissionDeniedErrorWidget({
+  super.key,
+  required final Account account,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));

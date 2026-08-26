@@ -7,12 +7,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
-class Tada extends HookWidget {
-  const Tada({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Tada({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends HookWidget {
   static final _scaleTween = TweenSequence([
     TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.9), weight: 10.0),
     TweenSequenceItem(tween: Tween(begin: 0.9, end: 0.9), weight: 10.0),

@@ -2,11 +2,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 
-class AchievementWidget extends StatelessWidget {
-  const AchievementWidget({super.key, required this.achievement});
-
-  final String achievement;
-
+class const AchievementWidget({super.key, required final String achievement})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return switch (achievement) {

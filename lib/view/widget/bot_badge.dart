@@ -1,10 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
-class BotBadge extends StatelessWidget {
-  const BotBadge({super.key, this.textScaler});
-
-  final TextScaler? textScaler;
-
+class const BotBadge({super.key, final TextScaler? textScaler})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

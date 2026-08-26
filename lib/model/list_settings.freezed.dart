@@ -16,15 +16,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ListSettings {
 
- String? get name; bool? get isPublic;
+@override String? get name;@override bool? get isPublic;
 /// Create a copy of ListSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ListSettingsCopyWith<ListSettings> get copyWith => _$ListSettingsCopyWithImpl<ListSettings>(this as ListSettings, _$identity);
 
-  /// Serializes this ListSettings to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -49,7 +47,7 @@ abstract mixin class $ListSettingsCopyWith<$Res>  {
   factory $ListSettingsCopyWith(ListSettings value, $Res Function(ListSettings) _then) = _$ListSettingsCopyWithImpl;
 @useResult
 $Res call({
- String? name, bool? isPublic
+@override String? name,@override bool? isPublic
 });
 
 
@@ -155,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? name, @override  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ListSettings() when $default != null:
 return $default(_that.name,_that.isPublic);case _:
@@ -176,7 +174,7 @@ return $default(_that.name,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  bool? isPublic)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? name, @override  bool? isPublic)  $default,) {final _that = this;
 switch (_that) {
 case _ListSettings():
 return $default(_that.name,_that.isPublic);case _:
@@ -196,7 +194,7 @@ return $default(_that.name,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  bool? isPublic)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? name, @override  bool? isPublic)?  $default,) {final _that = this;
 switch (_that) {
 case _ListSettings() when $default != null:
 return $default(_that.name,_that.isPublic);case _:
@@ -208,14 +206,14 @@ return $default(_that.name,_that.isPublic);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 
-class _ListSettings implements ListSettings {
-  const _ListSettings({this.name, this.isPublic});
+class _ListSettings extends ListSettings {
+  const _ListSettings({@override this.name, @override this.isPublic}): super(name: name, isPublic: isPublic);
   factory _ListSettings.fromJson(Map<String, dynamic> json) => _$ListSettingsFromJson(json);
 
-@override final  String? name;
-@override final  bool? isPublic;
+@override@override final  String? name;
+@override@override final  bool? isPublic;
 
 /// Create a copy of ListSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -223,10 +221,7 @@ class _ListSettings implements ListSettings {
 @pragma('vm:prefer-inline')
 _$ListSettingsCopyWith<_ListSettings> get copyWith => __$ListSettingsCopyWithImpl<_ListSettings>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$ListSettingsToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
@@ -250,7 +245,7 @@ abstract mixin class _$ListSettingsCopyWith<$Res> implements $ListSettingsCopyWi
   factory _$ListSettingsCopyWith(_ListSettings value, $Res Function(_ListSettings) _then) = __$ListSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- String? name, bool? isPublic
+@override String? name,@override bool? isPublic
 });
 
 

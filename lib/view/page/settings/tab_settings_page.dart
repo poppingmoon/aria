@@ -42,11 +42,8 @@ import '../../widget/tab_type_widget.dart';
 import '../../widget/username_widget.dart';
 import '../channel/channels_page.dart';
 
-class TabSettingsPage extends HookConsumerWidget {
-  const TabSettingsPage({super.key, this.tabId});
-
-  final String? tabId;
-
+class const TabSettingsPage({super.key, final String? tabId})
+    extends HookConsumerWidget {
   Future<RolesListResponse?> _selectRole(
     WidgetRef ref,
     Account account,
@@ -141,7 +138,9 @@ class TabSettingsPage extends HookConsumerWidget {
             ),
           )
         : null;
-    final tabSettings = useState(initialTabSettings ?? TabSettings.dummy());
+    final tabSettings = useState(
+      initialTabSettings ?? const TabSettings.dummy(),
+    );
     final account = useState(
       initialTabSettings?.account ??
           ref.watch(
@@ -188,7 +187,9 @@ class TabSettingsPage extends HookConsumerWidget {
     final theme = Theme.of(context);
 
     return PopScope(
-      canPop: (initialTabSettings ?? TabSettings.dummy()) == tabSettings.value,
+      canPop:
+          (initialTabSettings ?? const TabSettings.dummy()) ==
+          tabSettings.value,
       onPopInvokedWithResult: (didPop, _) async {
         if (!didPop) {
           final confirmed = await confirm(

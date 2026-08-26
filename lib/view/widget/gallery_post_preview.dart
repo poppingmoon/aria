@@ -18,20 +18,13 @@ import 'user_avatar.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class GalleryPostPreview extends HookConsumerWidget {
-  const GalleryPostPreview({
-    super.key,
-    required this.account,
-    required this.post,
-    this.hideUserInfo = false,
-    this.onTap,
-  });
-
-  final Account account;
-  final GalleryPost post;
-  final bool hideUserInfo;
-  final void Function()? onTap;
-
+class const GalleryPostPreview({
+  super.key,
+  required final Account account,
+  required final GalleryPost post,
+  final bool hideUserInfo = false,
+  final void Function()? onTap,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sensitive = ref.watch(

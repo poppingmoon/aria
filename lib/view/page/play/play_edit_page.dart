@@ -18,12 +18,11 @@ import '../../../rust/frb_generated.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 
-class PlayEditPage extends HookConsumerWidget {
-  const PlayEditPage({super.key, required this.account, this.playId});
-
-  final Account account;
-  final String? playId;
-
+class const PlayEditPage({
+  super.key,
+  required final Account account,
+  final String? playId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final play = switch (playId) {

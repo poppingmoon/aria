@@ -5,9 +5,7 @@ import '../../i18n/strings.g.dart';
 import '../../provider/boot_state_provider.dart';
 import '../widget/error_message.dart';
 
-class SplashPage extends ConsumerWidget {
-  const SplashPage({super.key});
-
+class const SplashPage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bootState = ref.watch(bootStateProvider);

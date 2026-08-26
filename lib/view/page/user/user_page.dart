@@ -28,20 +28,13 @@ import 'user_pages.dart';
 import 'user_plays.dart';
 import 'user_reactions.dart';
 
-class UserPage extends HookConsumerWidget {
-  const UserPage({
-    super.key,
-    required this.account,
-    this.userId,
-    this.username,
-    this.host,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? username;
-  final String? host;
-
+class const UserPage({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? username,
+  final String? host,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref
@@ -179,11 +172,7 @@ class UserPage extends HookConsumerWidget {
   }
 }
 
-class _Confetti extends HookConsumerWidget {
-  const _Confetti({this.delay});
-
-  final Duration? delay;
-
+class const _Confetti({final Duration? delay}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final enableHapticFeedback = ref.watch(

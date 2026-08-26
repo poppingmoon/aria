@@ -28,22 +28,14 @@ import '../dialog/reaction_confirmation_dialog.dart';
 import 'custom_emoji.dart';
 import 'emoji_widget.dart';
 
-class EmojiSheet extends ConsumerWidget {
-  const EmojiSheet({
-    super.key,
-    required this.account,
-    required this.emoji,
-    this.targetNoteId,
-    this.targetMessageId,
-    this.remove,
-  });
-
-  final Account account;
-  final String emoji;
-  final String? targetNoteId;
-  final String? targetMessageId;
-  final void Function()? remove;
-
+class const EmojiSheet({
+  super.key,
+  required final Account account,
+  required final String emoji,
+  final String? targetNoteId,
+  final String? targetMessageId,
+  final void Function()? remove,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

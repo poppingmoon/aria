@@ -3,11 +3,8 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 
-class UsersSortTypeWidget extends StatelessWidget {
-  const UsersSortTypeWidget({super.key, required this.sort});
-
-  final UsersSortType sort;
-
+class const UsersSortTypeWidget({super.key, required final UsersSortType sort})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (sort) {

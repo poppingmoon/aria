@@ -11,11 +11,8 @@ import '../../widget/paginated_list_view.dart';
 
 enum _NoteType { notes, polls }
 
-class ExploreFeatured extends HookConsumerWidget {
-  const ExploreFeatured({super.key, required this.account});
-
-  final Account account;
-
+class const ExploreFeatured({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final type = useState(_NoteType.notes);

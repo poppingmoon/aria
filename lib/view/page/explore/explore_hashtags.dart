@@ -10,11 +10,8 @@ import '../../widget/error_message.dart';
 import '../../widget/haptic_feedback_refresh_indicator.dart';
 import '../../widget/line_chart.dart';
 
-class ExploreHashtags extends ConsumerWidget {
-  const ExploreHashtags({super.key, required this.account});
-
-  final Account account;
-
+class const ExploreHashtags({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final trend = ref.watch(hashtagsTrendProvider(account));

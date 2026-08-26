@@ -11,9 +11,7 @@ import '../../widget/general_settings_navigation.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
 
-class SettingsPage extends HookConsumerWidget {
-  const SettingsPage({super.key});
-
+class const SettingsPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
@@ -74,15 +72,10 @@ class SettingsPage extends HookConsumerWidget {
   }
 }
 
-class _AccountSettingsTile extends ConsumerWidget {
-  const _AccountSettingsTile({
-    required this.account,
-    this.borderRadius = BorderRadius.zero,
-  });
-
-  final Account account;
-  final BorderRadiusGeometry borderRadius;
-
+class const _AccountSettingsTile({
+  required final Account account,
+  final BorderRadiusGeometry borderRadius = BorderRadius.zero,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

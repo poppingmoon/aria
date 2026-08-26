@@ -6,18 +6,13 @@ import '../../model/sound_settings.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_sfx_notifier_provider.dart';
 
-class HapticFeedbackRefreshIndicator extends HookConsumerWidget {
-  const HapticFeedbackRefreshIndicator({
-    super.key,
-    required this.onRefresh,
-    this.notificationPredicate = defaultScrollNotificationPredicate,
-    required this.child,
-  });
-
-  final Future<void> Function() onRefresh;
-  final bool Function(ScrollNotification notification) notificationPredicate;
-  final Widget child;
-
+class const HapticFeedbackRefreshIndicator({
+  super.key,
+  required final Future<void> Function() onRefresh,
+  final bool Function(ScrollNotification notification) notificationPredicate =
+      defaultScrollNotificationPredicate,
+  required final Widget child,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final enableHapticFeedback = ref.watch(

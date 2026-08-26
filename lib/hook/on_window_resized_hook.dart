@@ -6,11 +6,9 @@ void useOnWindowResized(void Function() onWindowResized) {
   use(_OnWindowResizedHook(onWindowResized: onWindowResized));
 }
 
-class _OnWindowResizedHook extends Hook<void> {
-  const _OnWindowResizedHook({required this.onWindowResized});
-
-  final void Function() onWindowResized;
-
+class const _OnWindowResizedHook({
+  required final void Function() onWindowResized,
+}) extends Hook<void> {
   @override
   __OnWindowResizedStateState createState() => __OnWindowResizedStateState();
 }

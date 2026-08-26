@@ -1,18 +1,12 @@
 import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 
-class LikeButton extends StatelessWidget {
-  const LikeButton({
-    super.key,
-    this.isLiked = false,
-    this.likedCount = 0,
-    this.onTap,
-  });
-
-  final bool isLiked;
-  final int likedCount;
-  final void Function()? onTap;
-
+class const LikeButton({
+  super.key,
+  final bool isLiked = false,
+  final int likedCount = 0,
+  final void Function()? onTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(

@@ -27,27 +27,18 @@ import 'emoji_widget.dart';
 import 'mention_widget.dart';
 
 @visibleForTesting
-enum TagType {
+enum TagType(final String tag) {
   emoji(':'),
   mfmFn(r'$['),
   mention('@'),
   hashtag('#');
-
-  const TagType(this.tag);
-
-  final String tag;
 }
 
-class MfmKeyboard extends HookConsumerWidget {
-  const MfmKeyboard({
-    super.key,
-    required this.account,
-    required this.controller,
-  });
-
-  final Account account;
-  final TextEditingController controller;
-
+class const MfmKeyboard({
+  super.key,
+  required final Account account,
+  required final TextEditingController controller,
+}) extends HookConsumerWidget {
   @visibleForTesting
   (TagType?, int) getLastTag() {
     final start = controller.selection.start;
@@ -113,11 +104,8 @@ class MfmKeyboard extends HookConsumerWidget {
   }
 }
 
-class _MfmKeyboardContainer extends StatelessWidget {
-  const _MfmKeyboardContainer({required this.children});
-
-  final List<Widget> children;
-
+class const _MfmKeyboardContainer({required final List<Widget> children})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -138,16 +126,11 @@ class _MfmKeyboardContainer extends StatelessWidget {
   }
 }
 
-class MfmBasicKeyboard extends ConsumerWidget {
-  const MfmBasicKeyboard({
-    super.key,
-    required this.account,
-    required this.controller,
-  });
-
-  final Account account;
-  final TextEditingController controller;
-
+class const MfmBasicKeyboard({
+  super.key,
+  required final Account account,
+  required final TextEditingController controller,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return _MfmKeyboardContainer(
@@ -224,18 +207,12 @@ class MfmBasicKeyboard extends ConsumerWidget {
   }
 }
 
-class MfmEmojiKeyboard extends HookConsumerWidget {
-  const MfmEmojiKeyboard({
-    super.key,
-    required this.account,
-    required this.controller,
-    this.fallbackBuilder,
-  });
-
-  final Account account;
-  final TextEditingController controller;
-  final Widget Function(BuildContext context)? fallbackBuilder;
-
+class const MfmEmojiKeyboard({
+  super.key,
+  required final Account account,
+  required final TextEditingController controller,
+  final Widget Function(BuildContext context)? fallbackBuilder,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
@@ -314,16 +291,11 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
   }
 }
 
-class MfmFnKeyboard extends HookConsumerWidget {
-  const MfmFnKeyboard({
-    super.key,
-    required this.controller,
-    this.fallbackBuilder,
-  });
-
-  final TextEditingController controller;
-  final Widget Function(BuildContext context)? fallbackBuilder;
-
+class const MfmFnKeyboard({
+  super.key,
+  required final TextEditingController controller,
+  final Widget Function(BuildContext context)? fallbackBuilder,
+}) extends HookConsumerWidget {
   static const Map<String, Map<String, String?>> _mfmFn = {
     'tada': {'delay': '0s', 'speed': '1s'},
     'jelly': {'speed': '1s', 'delay': '0s'},
@@ -516,18 +488,12 @@ class MfmFnKeyboard extends HookConsumerWidget {
   }
 }
 
-class MfmMentionKeyboard extends HookConsumerWidget {
-  const MfmMentionKeyboard({
-    super.key,
-    required this.account,
-    required this.controller,
-    this.fallbackBuilder,
-  });
-
-  final Account account;
-  final TextEditingController controller;
-  final Widget Function(BuildContext context)? fallbackBuilder;
-
+class const MfmMentionKeyboard({
+  super.key,
+  required final Account account,
+  required final TextEditingController controller,
+  final Widget Function(BuildContext context)? fallbackBuilder,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
@@ -603,18 +569,12 @@ class MfmMentionKeyboard extends HookConsumerWidget {
   }
 }
 
-class MfmHashtagKeyboard extends HookConsumerWidget {
-  const MfmHashtagKeyboard({
-    super.key,
-    required this.account,
-    required this.controller,
-    this.fallbackBuilder,
-  });
-
-  final Account account;
-  final TextEditingController controller;
-  final Widget Function(BuildContext context)? fallbackBuilder;
-
+class const MfmHashtagKeyboard({
+  super.key,
+  required final Account account,
+  required final TextEditingController controller,
+  final Widget Function(BuildContext context)? fallbackBuilder,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');

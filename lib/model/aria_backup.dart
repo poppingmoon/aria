@@ -7,18 +7,18 @@ import 'tab_settings.dart';
 part 'aria_backup.freezed.dart';
 part 'aria_backup.g.dart';
 
-@freezed
-abstract class AriaBackup with _$AriaBackup {
-  const factory AriaBackup({
-    Map<String, dynamic>? metadata,
-    List<TabSettings>? timelineTabs,
-    Map<String, AccountSettings>? accountSettings,
-    GeneralSettings? generalSettings,
-    List<String>? themes,
-    Map<String, Map<String, String>>? aiscriptStorage,
-    List<Map<String, dynamic>>? noteDrafts,
-  }) = _AriaBackup;
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const AriaBackup({
+  @override final Map<String, dynamic>? metadata,
+  @override final List<TabSettings>? timelineTabs,
+  @override final Map<String, AccountSettings>? accountSettings,
+  @override final GeneralSettings? generalSettings,
+  @override final List<String>? themes,
+  @override final Map<String, Map<String, String>>? aiscriptStorage,
+  @override final List<Map<String, dynamic>>? noteDrafts,
+}) with _$AriaBackup {
+  factory fromJson(Map<String, Object?> json) => _$AriaBackupFromJson(json);
 
-  factory AriaBackup.fromJson(Map<String, dynamic> json) =>
-      _$AriaBackupFromJson(json);
+  Map<String, Object?> toJson() => _$AriaBackupToJson(this);
 }

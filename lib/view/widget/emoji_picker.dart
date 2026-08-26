@@ -108,24 +108,16 @@ Future<String?> pickEmoji(
   }
 }
 
-class EmojiPicker extends HookConsumerWidget {
-  const EmojiPicker({
-    super.key,
-    required this.account,
-    required this.onTapEmoji,
-    this.scrollController,
-    this.reaction = false,
-    this.targetNote,
-    this.post = false,
-  });
-
-  final Account account;
-  final void Function(WidgetRef ref, String emoji, bool popEmoji) onTapEmoji;
-  final ScrollController? scrollController;
-  final bool reaction;
-  final Note? targetNote;
-  final bool post;
-
+class const EmojiPicker({
+  super.key,
+  required final Account account,
+  required final void Function(WidgetRef ref, String emoji, bool popEmoji)
+  onTapEmoji,
+  final ScrollController? scrollController,
+  final bool reaction = false,
+  final Note? targetNote,
+  final bool post = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final groups = ref.watch(categorizedEmojisProvider(account.host));
@@ -512,25 +504,15 @@ class EmojiPicker extends HookConsumerWidget {
   }
 }
 
-class _CustomEmoji extends StatelessWidget {
-  const _CustomEmoji({
-    required this.account,
-    required this.emoji,
-    required this.onTap,
-    required this.onLongPress,
-    required this.height,
-    this.opacity = 1.0,
-    required this.fallbackTextStyle,
-  });
-
-  final Account account;
-  final String emoji;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-  final double height;
-  final double opacity;
-  final TextStyle fallbackTextStyle;
-
+class const _CustomEmoji({
+  required final Account account,
+  required final String emoji,
+  required final void Function()? onTap,
+  required final void Function()? onLongPress,
+  required final double height,
+  final double opacity = 1.0,
+  required final TextStyle fallbackTextStyle,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

@@ -10,12 +10,11 @@ import '../widget/drive_file_notes.dart';
 import '../widget/drive_file_sheet.dart';
 import '../widget/error_message.dart';
 
-class DriveFilePage extends ConsumerWidget {
-  const DriveFilePage({super.key, required this.account, required this.fileId});
-
-  final Account account;
-  final String fileId;
-
+class const DriveFilePage({
+  super.key,
+  required final Account account,
+  required final String fileId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = ref.watch(driveFileNotifierProvider(account, fileId));

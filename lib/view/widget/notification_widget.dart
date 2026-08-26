@@ -29,16 +29,11 @@ import 'user_avatar.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class NotificationWidget extends ConsumerWidget {
-  const NotificationWidget({
-    super.key,
-    required this.account,
-    required this.notification,
-  });
-
-  final Account account;
-  final INotificationsResponse notification;
-
+class const NotificationWidget({
+  super.key,
+  required final Account account,
+  required final INotificationsResponse notification,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -774,33 +769,19 @@ class NotificationWidget extends ConsumerWidget {
   }
 }
 
-class _NotificationTile extends ConsumerWidget {
-  const _NotificationTile({
-    required this.account,
-    this.user,
-    this.icon,
-    this.iconBackgroundColor,
-    this.leading,
-    this.title,
-    this.subtitle,
-    this.actions,
-    this.createdAt,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Account account;
-  final User? user;
-  final Widget? icon;
-  final Color? iconBackgroundColor;
-  final Widget? leading;
-  final Widget? title;
-  final Widget? subtitle;
-  final List<Widget>? actions;
-  final DateTime? createdAt;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-
+class const _NotificationTile({
+  required final Account account,
+  final User? user,
+  final Widget? icon,
+  final Color? iconBackgroundColor,
+  final Widget? leading,
+  final Widget? title,
+  final Widget? subtitle,
+  final List<Widget>? actions,
+  final DateTime? createdAt,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (verticalPadding, horizontalPadding, avatarScale) = ref.watch(

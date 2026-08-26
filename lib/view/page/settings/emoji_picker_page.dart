@@ -15,9 +15,7 @@ import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/unicode_emoji.dart';
 
-class EmojiPickerPage extends HookConsumerWidget {
-  const EmojiPickerPage({super.key});
-
+class const EmojiPickerPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);

@@ -12,11 +12,8 @@ import '../../widget/paginated_list_view.dart';
 import '../../widget/permission_denied_error_widget.dart';
 import '../../widget/user_avatar.dart';
 
-class ChatOwnedRooms extends ConsumerWidget {
-  const ChatOwnedRooms({super.key, required this.account});
-
-  final Account account;
-
+class const ChatOwnedRooms({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final rooms = ref.watch(ownedChatRoomsNotifierProvider(account));

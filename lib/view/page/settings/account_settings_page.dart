@@ -8,11 +8,8 @@ import '../../../provider/api/i_notifier_provider.dart';
 import '../../widget/account_settings_navigation.dart';
 import '../../widget/username_widget.dart';
 
-class AccountSettingsPage extends HookConsumerWidget {
-  const AccountSettingsPage({super.key, required this.account});
-
-  final Account account;
-
+class const AccountSettingsPage({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

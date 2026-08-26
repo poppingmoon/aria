@@ -8,20 +8,13 @@ import '../../model/post_file.dart';
 import 'image_widget.dart';
 import 'media_icon.dart';
 
-class PostFileThumbnail extends StatelessWidget {
-  const PostFileThumbnail({
-    super.key,
-    required this.file,
-    this.width,
-    this.height,
-    this.fit,
-  });
-
-  final PostFile file;
-  final double? width;
-  final double? height;
-  final BoxFit? fit;
-
+class const PostFileThumbnail({
+  super.key,
+  required final PostFile file,
+  final double? width,
+  final double? height,
+  final BoxFit? fit,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (file case DrivePostFile(

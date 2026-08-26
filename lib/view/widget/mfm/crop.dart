@@ -4,12 +4,11 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../util/safe_parse_double.dart';
 
-class Crop extends StatelessWidget {
-  const Crop({super.key, required this.args, required this.child});
-
-  final Map<String, dynamic> args;
-  final Widget child;
-
+class const Crop({
+  super.key,
+  required final Map<String, dynamic> args,
+  required final Widget child,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final top = safeParseDouble(args['top']) ?? 0.0;
@@ -29,19 +28,12 @@ class Crop extends StatelessWidget {
   }
 }
 
-class _InsetClipper extends CustomClipper<Rect> {
-  const _InsetClipper({
-    required this.left,
-    required this.top,
-    required this.right,
-    required this.bottom,
-  });
-
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
-
+class const _InsetClipper({
+  required final double left,
+  required final double top,
+  required final double right,
+  required final double bottom,
+}) extends CustomClipper<Rect> {
   @override
   Rect getClip(Size size) {
     final left = size.width * this.left;

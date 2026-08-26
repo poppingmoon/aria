@@ -7,18 +7,12 @@ import '../../model/account.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
-class RoleChip extends ConsumerWidget {
-  const RoleChip({
-    super.key,
-    required this.account,
-    required this.role,
-    this.onTap,
-  });
-
-  final Account account;
-  final UserRole role;
-  final void Function()? onTap;
-
+class const RoleChip({
+  super.key,
+  required final Account account,
+  required final UserRole role,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final height = DefaultTextStyle.of(context).style.lineHeight;

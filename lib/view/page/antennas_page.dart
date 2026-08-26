@@ -12,11 +12,8 @@ import '../dialog/antenna_settings_dialog.dart';
 import '../widget/error_message.dart';
 import '../widget/haptic_feedback_refresh_indicator.dart';
 
-class AntennasPage extends ConsumerWidget {
-  const AntennasPage({super.key, required this.account});
-
-  final Account account;
-
+class const AntennasPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final antennas = ref.watch(antennasNotifierProvider(account));

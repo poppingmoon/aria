@@ -10,18 +10,12 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
 
-class AvatarDecorations extends ConsumerWidget {
-  const AvatarDecorations({
-    super.key,
-    required this.account,
-    required this.decorations,
-    required this.size,
-  });
-
-  final Account account;
-  final List<UserAvatarDecoration> decorations;
-  final double size;
-
+class const AvatarDecorations({
+  super.key,
+  required final Account account,
+  required final List<UserAvatarDecoration> decorations,
+  required final double size,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final disableShowingAnimatedImages =

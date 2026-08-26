@@ -16,16 +16,11 @@ ConfettiController useConfettiController({
   );
 }
 
-class _ConfettiControllerHook extends Hook<ConfettiController> {
-  const _ConfettiControllerHook({
-    this.duration = const Duration(seconds: 30),
-    this.particleStatsCallback,
-    super.keys,
-  });
-
-  final Duration duration;
-  final void Function(ParticleStats stats)? particleStatsCallback;
-
+class const _ConfettiControllerHook({
+  final Duration duration = const Duration(seconds: 30),
+  final void Function(ParticleStats stats)? particleStatsCallback,
+  super.keys,
+}) extends Hook<ConfettiController> {
   @override
   HookState<ConfettiController, Hook<ConfettiController>> createState() =>
       _ConfettiControllerHookState();

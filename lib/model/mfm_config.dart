@@ -4,14 +4,12 @@ import 'package:material_ui/material_ui.dart';
 part 'mfm_config.freezed.dart';
 
 @freezed
-abstract class MfmConfig with _$MfmConfig {
-  const factory MfmConfig({
-    required TextStyle style,
-    @Default(false) bool disableNyaize,
-    @Default(1.0) double scale,
-    @Default(1.0) double opacity,
-    TextAlign? align,
-    @Default(0) int xNest,
-    int? linkId,
-  }) = _MfmConfig;
-}
+class const MfmConfig({
+  @override required final TextStyle style,
+  @override final bool disableNyaize = false,
+  @override final double scale = 1.0,
+  @override final double opacity = 1.0,
+  @override final TextAlign? align,
+  @override final int xNest = 0,
+  @override final int? linkId,
+}) with _$MfmConfig;

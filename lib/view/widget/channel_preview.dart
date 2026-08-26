@@ -14,18 +14,12 @@ import 'image_widget.dart';
 import 'mfm.dart';
 import 'time_widget.dart';
 
-class ChannelPreview extends ConsumerWidget {
-  const ChannelPreview({
-    super.key,
-    required this.account,
-    required this.channel,
-    this.onTap,
-  });
-
-  final Account account;
-  final CommunityChannel channel;
-  final void Function()? onTap;
-
+class const ChannelPreview({
+  super.key,
+  required final Account account,
+  required final CommunityChannel channel,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

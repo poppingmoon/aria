@@ -2,11 +2,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../i18n/strings.g.dart';
 
-class DurationWidget extends StatelessWidget {
-  const DurationWidget({super.key, required this.duration});
-
-  final Duration duration;
-
+class const DurationWidget({super.key, required final Duration duration})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(

@@ -31,9 +31,7 @@ double _sensitivityToMinFlingFactor(double sensitivity) {
   return maxTimelinesPageMinFlingFactor - sqrt(sensitivity);
 }
 
-class BehaviorPage extends HookConsumerWidget {
-  const BehaviorPage({super.key});
-
+class const BehaviorPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);

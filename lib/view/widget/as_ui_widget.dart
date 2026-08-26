@@ -18,20 +18,13 @@ import 'mfm.dart';
 import 'mfm/border.dart';
 import 'post_form.dart';
 
-class AsUiWidget extends ConsumerWidget {
-  const AsUiWidget({
-    super.key,
-    required this.account,
-    required this.host,
-    this.componentId = '___root___',
-    required this.components,
-  });
-
-  final Account account;
-  final String host;
-  final String componentId;
-  final Map<String, AsUiComponent> components;
-
+class const AsUiWidget({
+  super.key,
+  required final Account account,
+  required final String host,
+  final String componentId = '___root___',
+  required final Map<String, AsUiComponent> components,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     switch (components[componentId]) {
@@ -545,21 +538,13 @@ class AsUiWidget extends ConsumerWidget {
   }
 }
 
-class _Button extends ConsumerWidget {
-  const _Button({
-    this.text,
-    this.onTap,
-    this.primary,
-    this.rounded,
-    this.disabled,
-  });
-
-  final String? text;
-  final void Function()? onTap;
-  final bool? primary;
-  final bool? rounded;
-  final bool? disabled;
-
+class const _Button({
+  final String? text,
+  final void Function()? onTap,
+  final bool? primary,
+  final bool? rounded,
+  final bool? disabled,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(
@@ -585,19 +570,12 @@ class _Button extends ConsumerWidget {
   }
 }
 
-class _Switch extends HookWidget {
-  const _Switch({
-    required this.onChange,
-    required this.defaultValue,
-    required this.label,
-    required this.caption,
-  });
-
-  final AsUiSwitchCallback? onChange;
-  final bool? defaultValue;
-  final String? label;
-  final String? caption;
-
+class const _Switch({
+  required final AsUiSwitchCallback? onChange,
+  required final bool? defaultValue,
+  required final String? label,
+  required final String? caption,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final value = useState(defaultValue);
@@ -631,23 +609,14 @@ class _Switch extends HookWidget {
   }
 }
 
-class _TextField extends HookWidget {
-  const _TextField({
-    required this.defaultValue,
-    required this.label,
-    required this.caption,
-    required this.onChanged,
-    this.minLines,
-    this.maxLines,
-  });
-
-  final String? defaultValue;
-  final String? label;
-  final String? caption;
-  final void Function(String)? onChanged;
-  final int? minLines;
-  final int? maxLines;
-
+class const _TextField({
+  required final String? defaultValue,
+  required final String? label,
+  required final String? caption,
+  required final void Function(String)? onChanged,
+  final int? minLines,
+  final int? maxLines,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: defaultValue);
@@ -666,19 +635,12 @@ class _TextField extends HookWidget {
   }
 }
 
-class _NumberInput extends HookWidget {
-  const _NumberInput({
-    required this.onInput,
-    required this.defaultValue,
-    required this.label,
-    required this.caption,
-  });
-
-  final AsUiNumberCallback? onInput;
-  final double? defaultValue;
-  final String? label;
-  final String? caption;
-
+class const _NumberInput({
+  required final AsUiNumberCallback? onInput,
+  required final double? defaultValue,
+  required final String? label,
+  required final String? caption,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(
@@ -782,21 +744,13 @@ class _NumberInput extends HookWidget {
   }
 }
 
-class _Select extends HookWidget {
-  const _Select({
-    required this.items,
-    required this.onChange,
-    required this.defaultValue,
-    required this.label,
-    required this.caption,
-  });
-
-  final List<(String, String)>? items;
-  final AsUiSelectCallback? onChange;
-  final String? defaultValue;
-  final String? label;
-  final String? caption;
-
+class const _Select({
+  required final List<(String, String)>? items,
+  required final AsUiSelectCallback? onChange,
+  required final String? defaultValue,
+  required final String? label,
+  required final String? caption,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final value = useState(
@@ -825,17 +779,11 @@ class _Select extends HookWidget {
   }
 }
 
-class _Folder extends ConsumerWidget {
-  const _Folder({
-    required this.title,
-    required this.opened,
-    required this.children,
-  });
-
-  final String? title;
-  final bool? opened;
-  final List<Widget>? children;
-
+class const _Folder({
+  required final String? title,
+  required final bool? opened,
+  required final List<Widget>? children,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(
@@ -881,12 +829,10 @@ class _Folder extends ConsumerWidget {
   }
 }
 
-class _PostForm extends HookConsumerWidget {
-  const _PostForm({required this.account, required this.form});
-
-  final Account account;
-  final PostFormPropsForAsUi? form;
-
+class const _PostForm({
+  required final Account account,
+  required final PostFormPropsForAsUi? form,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     useEffect(() {

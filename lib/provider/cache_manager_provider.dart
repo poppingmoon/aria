@@ -42,10 +42,7 @@ extension on db.CacheObject {
   );
 }
 
-class _IsarCacheInfoRepository extends CacheInfoRepository {
-  _IsarCacheInfoRepository(this.ref);
-
-  final Ref ref;
+class _IsarCacheInfoRepository(final Ref ref) extends CacheInfoRepository {
   late final Isar _isar;
 
   @override
@@ -148,9 +145,9 @@ class _IsarCacheInfoRepository extends CacheInfoRepository {
   Future<bool> exists() async => true;
 }
 
-class _ImageCacheManager extends CacheManager with ImageCacheManager {
-  _ImageCacheManager(super.config);
-
+class _ImageCacheManager(super.config)
+    extends CacheManager
+    with ImageCacheManager {
   @override
   Stream<FileResponse> getFileStream(
     String url, {
@@ -177,11 +174,8 @@ class _ImageCacheManager extends CacheManager with ImageCacheManager {
   }
 }
 
-class _IOFileSystem implements FileSystem {
-  final Future<Directory> _fileDir;
-  final String _cacheKey;
-
-  _IOFileSystem(this._cacheKey) : _fileDir = createDirectory(_cacheKey);
+class _IOFileSystem(final String _cacheKey) implements FileSystem {
+  final Future<Directory> _fileDir = createDirectory(_cacheKey);
 
   static Future<Directory> createDirectory(String key) async {
     final baseDir = await getApplicationCacheDirectory();

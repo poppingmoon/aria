@@ -14,9 +14,7 @@ import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/theme_mode_widget.dart';
 
-class ThemePage extends ConsumerWidget {
-  const ThemePage({super.key});
-
+class const ThemePage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final generalSettings = ref.watch(generalSettingsNotifierProvider);

@@ -20,16 +20,11 @@ import '../widget/mention_widget.dart';
 import 'radio_dialog.dart';
 import 'user_select_dialog.dart';
 
-class AntennaSettingsDialog extends HookConsumerWidget {
-  const AntennaSettingsDialog({
-    super.key,
-    required this.account,
-    this.settings,
-  });
-
-  final Account account;
-  final AntennaSettings? settings;
-
+class const AntennaSettingsDialog({
+  super.key,
+  required final Account account,
+  final AntennaSettings? settings,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = useState(

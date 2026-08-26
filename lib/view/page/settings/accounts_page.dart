@@ -12,9 +12,7 @@ import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 
-class AccountsPage extends HookConsumerWidget {
-  const AccountsPage({super.key});
-
+class const AccountsPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);

@@ -12,20 +12,13 @@ import 'deleted_note_widget.dart';
 import 'note_sheet.dart';
 import 'renote_header.dart';
 
-class DeletedRenoteWidget extends HookConsumerWidget {
-  const DeletedRenoteWidget({
-    super.key,
-    required this.account,
-    required this.note,
-    this.backgroundColor,
-    this.borderRadius,
-  });
-
-  final Account account;
-  final Note note;
-  final Color? backgroundColor;
-  final BorderRadiusGeometry? borderRadius;
-
+class const DeletedRenoteWidget({
+  super.key,
+  required final Account account,
+  required final Note note,
+  final Color? backgroundColor,
+  final BorderRadiusGeometry? borderRadius,
+}) extends HookConsumerWidget {
   void Function(BuildContext context)? _getNoteAction(NoteActionType type) {
     if (note.id.isEmpty) {
       return null;

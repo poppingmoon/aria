@@ -19,12 +19,11 @@ import 'time_widget.dart';
 import 'user_sheet.dart';
 import 'username_widget.dart';
 
-class NoteHeader extends HookConsumerWidget {
-  const NoteHeader({super.key, required this.account, required this.note});
-
-  final Account account;
-  final Note note;
-
+class const NoteHeader({
+  super.key,
+  required final Account account,
+  required final Note note,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showCreatedAt = ref.watch(

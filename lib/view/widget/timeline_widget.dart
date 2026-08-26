@@ -33,12 +33,11 @@ import 'time_widget.dart';
 import 'timeline_header.dart';
 import 'timeline_list_view.dart';
 
-class TimelineWidget extends HookConsumerWidget {
-  const TimelineWidget({super.key, required this.tabIndex, this.focusPostForm});
-
-  final int tabIndex;
-  final void Function()? focusPostForm;
-
+class const TimelineWidget({
+  super.key,
+  required final int tabIndex,
+  final void Function()? focusPostForm,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabSettings = ref.watch(

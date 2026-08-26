@@ -7,18 +7,12 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import 'image_widget.dart';
 
-class RolePreview extends ConsumerWidget {
-  const RolePreview({
-    super.key,
-    required this.account,
-    required this.role,
-    this.onTap,
-  });
-
-  final Account account;
-  final RolesListResponse role;
-  final void Function()? onTap;
-
+class const RolePreview({
+  super.key,
+  required final Account account,
+  required final RolesListResponse role,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final color = role.color != null ? Color(0xFF000000 | role.color!) : null;

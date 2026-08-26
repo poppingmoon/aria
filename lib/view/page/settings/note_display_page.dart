@@ -25,9 +25,7 @@ import '../../widget/note_widget.dart';
 
 enum _NoteDisplayArea { settings, preview }
 
-class NoteDisplayPage extends HookConsumerWidget {
-  const NoteDisplayPage({super.key});
-
+class const NoteDisplayPage({super.key}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
@@ -1488,9 +1486,7 @@ class NoteDisplayPage extends HookConsumerWidget {
   }
 }
 
-class _NotePreview extends HookWidget {
-  const _NotePreview();
-
+class const _NotePreview() extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final meltingFace = useFuture(

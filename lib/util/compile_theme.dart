@@ -6,31 +6,26 @@ import '../constant/theme_props.dart';
 import '../model/misskey_colors.dart';
 import '../model/misskey_theme.dart';
 
-class CompileThemeException implements Exception {}
+class CompileThemeException implements Exception;
 
-class CompileThemeReferenceLimitException implements CompileThemeException {
-  const CompileThemeReferenceLimitException();
-
+class const CompileThemeReferenceLimitException()
+    implements CompileThemeException {
   @override
   String toString() {
     return 'Theme reference limit exceeded';
   }
 }
 
-class CompileThemeCircularReferenceException implements CompileThemeException {
-  const CompileThemeCircularReferenceException();
-
+class const CompileThemeCircularReferenceException()
+    implements CompileThemeException {
   @override
   String toString() {
     return 'Theme contains circular references';
   }
 }
 
-class CompileThemeMissingPropertyException implements CompileThemeException {
-  const CompileThemeMissingPropertyException(this.key);
-
-  final String key;
-
+class const CompileThemeMissingPropertyException(final String key)
+    implements CompileThemeException {
   @override
   String toString() {
     return 'Theme references missing property: $key';

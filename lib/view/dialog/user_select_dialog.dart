@@ -37,18 +37,12 @@ Future<UserDetailed?> selectUser(
   );
 }
 
-class UserSelectDialog extends HookConsumerWidget {
-  const UserSelectDialog({
-    super.key,
-    required this.account,
-    this.includeSelf = false,
-    this.localOnly = false,
-  });
-
-  final Account account;
-  final bool includeSelf;
-  final bool localOnly;
-
+class const UserSelectDialog({
+  super.key,
+  required final Account account,
+  final bool includeSelf = false,
+  final bool localOnly = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

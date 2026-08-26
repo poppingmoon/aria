@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MisskeyColors {
 
- String get id; String get name; bool get isDark; Color get accent; Color get accentDarken; Color get accentLighten; Color get accentedBg; Color get love; Color get bg; Color get fg; Color get fgOnAccent; Color get divider; Color get panel; Color get link; Color get hashtag; Color get mention; Color get mentionMe; Color get renote; Color get infoBg; Color get infoFg; Color get infoWarnBg; Color get infoWarnFg; Color get buttonBg; Color get buttonGradateA; Color get buttonGradateB; Color get driveFolderBg; Color get success; Color get error; Color get warn;
+@override String get id;@override String get name;@override bool get isDark;@override Color get accent;@override Color get accentDarken;@override Color get accentLighten;@override Color get accentedBg;@override Color get love;@override Color get bg;@override Color get fg;@override Color get fgOnAccent;@override Color get divider;@override Color get panel;@override Color get link;@override Color get hashtag;@override Color get mention;@override Color get mentionMe;@override Color get renote;@override Color get infoBg;@override Color get infoFg;@override Color get infoWarnBg;@override Color get infoWarnFg;@override Color get buttonBg;@override Color get buttonGradateA;@override Color get buttonGradateB;@override Color get driveFolderBg;@override Color get success;@override Color get error;@override Color get warn;
 /// Create a copy of MisskeyColors
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -46,7 +46,7 @@ abstract mixin class $MisskeyColorsCopyWith<$Res>  {
   factory $MisskeyColorsCopyWith(MisskeyColors value, $Res Function(MisskeyColors) _then) = _$MisskeyColorsCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, bool isDark, Color accent, Color accentDarken, Color accentLighten, Color accentedBg, Color love, Color bg, Color fg, Color fgOnAccent, Color divider, Color panel, Color link, Color hashtag, Color mention, Color mentionMe, Color renote, Color infoBg, Color infoFg, Color infoWarnBg, Color infoWarnFg, Color buttonBg, Color buttonGradateA, Color buttonGradateB, Color driveFolderBg, Color success, Color error, Color warn
+@override String id,@override String name,@override bool isDark,@override Color accent,@override Color accentDarken,@override Color accentLighten,@override Color accentedBg,@override Color love,@override Color bg,@override Color fg,@override Color fgOnAccent,@override Color divider,@override Color panel,@override Color link,@override Color hashtag,@override Color mention,@override Color mentionMe,@override Color renote,@override Color infoBg,@override Color infoFg,@override Color infoWarnBg,@override Color infoWarnFg,@override Color buttonBg,@override Color buttonGradateA,@override Color buttonGradateB,@override Color driveFolderBg,@override Color success,@override Color error,@override Color warn
 });
 
 
@@ -101,172 +101,43 @@ as Color,
 }
 
 
-/// Adds pattern-matching-related methods to [MisskeyColors].
-extension MisskeyColorsPatterns on MisskeyColors {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MisskeyColors value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _MisskeyColors() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MisskeyColors value)  $default,){
-final _that = this;
-switch (_that) {
-case _MisskeyColors():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MisskeyColors value)?  $default,){
-final _that = this;
-switch (_that) {
-case _MisskeyColors() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _MisskeyColors() when $default != null:
-return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)  $default,) {final _that = this;
-switch (_that) {
-case _MisskeyColors():
-return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  bool isDark,  Color accent,  Color accentDarken,  Color accentLighten,  Color accentedBg,  Color love,  Color bg,  Color fg,  Color fgOnAccent,  Color divider,  Color panel,  Color link,  Color hashtag,  Color mention,  Color mentionMe,  Color renote,  Color infoBg,  Color infoFg,  Color infoWarnBg,  Color infoWarnFg,  Color buttonBg,  Color buttonGradateA,  Color buttonGradateB,  Color driveFolderBg,  Color success,  Color error,  Color warn)?  $default,) {final _that = this;
-switch (_that) {
-case _MisskeyColors() when $default != null:
-return $default(_that.id,_that.name,_that.isDark,_that.accent,_that.accentDarken,_that.accentLighten,_that.accentedBg,_that.love,_that.bg,_that.fg,_that.fgOnAccent,_that.divider,_that.panel,_that.link,_that.hashtag,_that.mention,_that.mentionMe,_that.renote,_that.infoBg,_that.infoFg,_that.infoWarnBg,_that.infoWarnFg,_that.buttonBg,_that.buttonGradateA,_that.buttonGradateB,_that.driveFolderBg,_that.success,_that.error,_that.warn);case _:
-  return null;
-
-}
-}
-
-}
 
 /// @nodoc
 
 
-class _MisskeyColors implements MisskeyColors {
-  const _MisskeyColors({required this.id, required this.name, required this.isDark, required this.accent, required this.accentDarken, required this.accentLighten, required this.accentedBg, required this.love, required this.bg, required this.fg, required this.fgOnAccent, required this.divider, required this.panel, required this.link, required this.hashtag, required this.mention, required this.mentionMe, required this.renote, required this.infoBg, required this.infoFg, required this.infoWarnBg, required this.infoWarnFg, required this.buttonBg, required this.buttonGradateA, required this.buttonGradateB, required this.driveFolderBg, required this.success, required this.error, required this.warn});
+class _MisskeyColors extends MisskeyColors {
+  const _MisskeyColors({@override required this.id, @override required this.name, @override required this.isDark, @override required this.accent, @override required this.accentDarken, @override required this.accentLighten, @override required this.accentedBg, @override required this.love, @override required this.bg, @override required this.fg, @override required this.fgOnAccent, @override required this.divider, @override required this.panel, @override required this.link, @override required this.hashtag, @override required this.mention, @override required this.mentionMe, @override required this.renote, @override required this.infoBg, @override required this.infoFg, @override required this.infoWarnBg, @override required this.infoWarnFg, @override required this.buttonBg, @override required this.buttonGradateA, @override required this.buttonGradateB, @override required this.driveFolderBg, @override required this.success, @override required this.error, @override required this.warn}): super(id: id, name: name, isDark: isDark, accent: accent, accentDarken: accentDarken, accentLighten: accentLighten, accentedBg: accentedBg, love: love, bg: bg, fg: fg, fgOnAccent: fgOnAccent, divider: divider, panel: panel, link: link, hashtag: hashtag, mention: mention, mentionMe: mentionMe, renote: renote, infoBg: infoBg, infoFg: infoFg, infoWarnBg: infoWarnBg, infoWarnFg: infoWarnFg, buttonBg: buttonBg, buttonGradateA: buttonGradateA, buttonGradateB: buttonGradateB, driveFolderBg: driveFolderBg, success: success, error: error, warn: warn);
   
 
-@override final  String id;
-@override final  String name;
-@override final  bool isDark;
-@override final  Color accent;
-@override final  Color accentDarken;
-@override final  Color accentLighten;
-@override final  Color accentedBg;
-@override final  Color love;
-@override final  Color bg;
-@override final  Color fg;
-@override final  Color fgOnAccent;
-@override final  Color divider;
-@override final  Color panel;
-@override final  Color link;
-@override final  Color hashtag;
-@override final  Color mention;
-@override final  Color mentionMe;
-@override final  Color renote;
-@override final  Color infoBg;
-@override final  Color infoFg;
-@override final  Color infoWarnBg;
-@override final  Color infoWarnFg;
-@override final  Color buttonBg;
-@override final  Color buttonGradateA;
-@override final  Color buttonGradateB;
-@override final  Color driveFolderBg;
-@override final  Color success;
-@override final  Color error;
-@override final  Color warn;
+@override@override final  String id;
+@override@override final  String name;
+@override@override final  bool isDark;
+@override@override final  Color accent;
+@override@override final  Color accentDarken;
+@override@override final  Color accentLighten;
+@override@override final  Color accentedBg;
+@override@override final  Color love;
+@override@override final  Color bg;
+@override@override final  Color fg;
+@override@override final  Color fgOnAccent;
+@override@override final  Color divider;
+@override@override final  Color panel;
+@override@override final  Color link;
+@override@override final  Color hashtag;
+@override@override final  Color mention;
+@override@override final  Color mentionMe;
+@override@override final  Color renote;
+@override@override final  Color infoBg;
+@override@override final  Color infoFg;
+@override@override final  Color infoWarnBg;
+@override@override final  Color infoWarnFg;
+@override@override final  Color buttonBg;
+@override@override final  Color buttonGradateA;
+@override@override final  Color buttonGradateB;
+@override@override final  Color driveFolderBg;
+@override@override final  Color success;
+@override@override final  Color error;
+@override@override final  Color warn;
 
 /// Create a copy of MisskeyColors
 /// with the given fields replaced by the non-null parameter values.
@@ -298,7 +169,7 @@ abstract mixin class _$MisskeyColorsCopyWith<$Res> implements $MisskeyColorsCopy
   factory _$MisskeyColorsCopyWith(_MisskeyColors value, $Res Function(_MisskeyColors) _then) = __$MisskeyColorsCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, bool isDark, Color accent, Color accentDarken, Color accentLighten, Color accentedBg, Color love, Color bg, Color fg, Color fgOnAccent, Color divider, Color panel, Color link, Color hashtag, Color mention, Color mentionMe, Color renote, Color infoBg, Color infoFg, Color infoWarnBg, Color infoWarnFg, Color buttonBg, Color buttonGradateA, Color buttonGradateB, Color driveFolderBg, Color success, Color error, Color warn
+@override String id,@override String name,@override bool isDark,@override Color accent,@override Color accentDarken,@override Color accentLighten,@override Color accentedBg,@override Color love,@override Color bg,@override Color fg,@override Color fgOnAccent,@override Color divider,@override Color panel,@override Color link,@override Color hashtag,@override Color mention,@override Color mentionMe,@override Color renote,@override Color infoBg,@override Color infoFg,@override Color infoWarnBg,@override Color infoWarnFg,@override Color buttonBg,@override Color buttonGradateA,@override Color buttonGradateB,@override Color driveFolderBg,@override Color success,@override Color error,@override Color warn
 });
 
 

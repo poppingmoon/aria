@@ -6,11 +6,8 @@ import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/clip_settings.dart';
 
-class ClipSettingsDialog extends HookWidget {
-  const ClipSettingsDialog({super.key, this.settings});
-
-  final ClipSettings? settings;
-
+class const ClipSettingsDialog({super.key, final ClipSettings? settings})
+    extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final settings = useState(this.settings ?? const ClipSettings());

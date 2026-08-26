@@ -10,44 +10,25 @@ import '../../provider/muted_emojis_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
 
-class CustomEmoji extends ConsumerWidget {
-  const CustomEmoji({
-    super.key,
-    required this.account,
-    required this.emoji,
-    this.url,
-    this.host,
-    this.useOriginalSize = false,
-    this.height,
-    this.opacity = 1.0,
-    this.fit = BoxFit.contain,
-    this.alignment = Alignment.center,
-    this.onTap,
-    this.onLongPress,
-    this.disableTooltip = false,
-    this.fallbackTextStyle,
-    this.fallbackToImage = true,
-    this.enableFadeIn,
-    this.placeholderBuilder,
-  });
-
-  final Account account;
-  final String emoji;
-  final String? url;
-  final String? host;
-  final bool useOriginalSize;
-  final double? height;
-  final double opacity;
-  final BoxFit fit;
-  final Alignment alignment;
-  final void Function()? onTap;
-  final void Function()? onLongPress;
-  final bool disableTooltip;
-  final TextStyle? fallbackTextStyle;
-  final bool fallbackToImage;
-  final bool? enableFadeIn;
-  final Widget Function(BuildContext context)? placeholderBuilder;
-
+class const CustomEmoji({
+  super.key,
+  required final Account account,
+  required final String emoji,
+  final String? url,
+  final String? host,
+  final bool useOriginalSize = false,
+  final double? height,
+  final double opacity = 1.0,
+  final BoxFit fit = BoxFit.contain,
+  final Alignment alignment = Alignment.center,
+  final void Function()? onTap,
+  final void Function()? onLongPress,
+  final bool disableTooltip = false,
+  final TextStyle? fallbackTextStyle,
+  final bool fallbackToImage = true,
+  final bool? enableFadeIn,
+  final Widget Function(BuildContext context)? placeholderBuilder,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     assert(emoji.startsWith(':') && emoji.endsWith(':'));

@@ -5,6 +5,6 @@ part 'lookup.freezed.dart';
 
 @freezed
 sealed class Lookup with _$Lookup {
-  const factory Lookup.user(UserDetailed user) = LookupUser;
-  const factory Lookup.note(Note note) = LookupNote;
+  const factory user(UserDetailed user) = LookupUser;
+  const factory note(Note note) = LookupNote;
 }

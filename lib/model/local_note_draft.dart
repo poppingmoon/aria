@@ -6,12 +6,10 @@ import 'account.dart';
 part 'local_note_draft.freezed.dart';
 
 @freezed
-abstract class LocalNoteDraft with _$LocalNoteDraft {
-  const factory LocalNoteDraft({
-    required int id,
-    required Account account,
-    String? tabId,
-    required NoteDraft draft,
-    required bool isPinned,
-  }) = _LocalNoteDraft;
-}
+class const LocalNoteDraft({
+  @override required final int id,
+  @override required final Account account,
+  @override final String? tabId,
+  @override required final NoteDraft draft,
+  @override required final bool isPinned,
+}) with _$LocalNoteDraft;

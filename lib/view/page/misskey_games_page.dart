@@ -8,11 +8,8 @@ import '../../provider/api/reversi_invitations_provider.dart';
 import '../../provider/server_url_notifier_provider.dart';
 import '../../util/launch_url.dart';
 
-class MisskeyGamesPage extends ConsumerWidget {
-  const MisskeyGamesPage({super.key, required this.account});
-
-  final Account account;
-
+class const MisskeyGamesPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final invitations =

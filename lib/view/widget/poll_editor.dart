@@ -12,12 +12,11 @@ import '../dialog/text_field_dialog.dart';
 import 'duration_widget.dart';
 import 'time_widget.dart';
 
-class PollEditor extends ConsumerWidget {
-  const PollEditor({super.key, required this.account, this.noteId});
-
-  final Account account;
-  final String? noteId;
-
+class const PollEditor({
+  super.key,
+  required final Account account,
+  final String? noteId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final poll = ref.watch(

@@ -15,11 +15,8 @@ import '../../widget/emoji_sheet.dart';
 import '../../widget/emoji_widget.dart';
 import '../../widget/pinned_emojis_editor.dart';
 
-class PinnedEmojisEditorPage extends ConsumerWidget {
-  const PinnedEmojisEditorPage({super.key, required this.account});
-
-  final Account account;
-
+class const PinnedEmojisEditorPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
@@ -110,11 +107,8 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
   }
 }
 
-class _RecentlyUsedEmojisEditor extends ConsumerWidget {
-  const _RecentlyUsedEmojisEditor({required this.account});
-
-  final Account account;
-
+class const _RecentlyUsedEmojisEditor({required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final recentlyUsedEmojis = ref.watch(

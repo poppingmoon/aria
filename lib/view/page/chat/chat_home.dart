@@ -19,11 +19,8 @@ import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
 
-class ChatHome extends HookConsumerWidget {
-  const ChatHome({super.key, required this.account});
-
-  final Account account;
-
+class const ChatHome({super.key, required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final history = ref.watch(chatHistoryNotifierProvider(account));
@@ -107,12 +104,10 @@ class ChatHome extends HookConsumerWidget {
   }
 }
 
-class _ChatMessagePreview extends ConsumerWidget {
-  const _ChatMessagePreview({required this.account, required this.message});
-
-  final Account account;
-  final ChatMessage message;
-
+class const _ChatMessagePreview({
+  required final Account account,
+  required final ChatMessage message,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

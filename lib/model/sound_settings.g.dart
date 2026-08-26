@@ -6,8 +6,8 @@ part of 'sound_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SoundSettings _$SoundSettingsFromJson(Map<String, dynamic> json) =>
-    _SoundSettings(
+SoundSettings _$SoundSettingsFromJson(Map<String, dynamic> json) =>
+    SoundSettings(
       notUseSound: json['notUseSound'] as bool? ?? true,
       masterVolume:
           (json['masterVolume'] as num?)?.toDouble() ?? defaultMasterVolume,
@@ -21,7 +21,7 @@ _SoundSettings _$SoundSettingsFromJson(Map<String, dynamic> json) =>
           defaultSounds,
     );
 
-Map<String, dynamic> _$SoundSettingsToJson(_SoundSettings instance) =>
+Map<String, dynamic> _$SoundSettingsToJson(SoundSettings instance) =>
     <String, dynamic>{
       'notUseSound': instance.notUseSound,
       'masterVolume': instance.masterVolume,
@@ -41,7 +41,7 @@ const _$OperationTypeEnumMap = {
   OperationType.reload: 'reload',
 };
 
-_SoundStore _$SoundStoreFromJson(Map<String, dynamic> json) => _SoundStore(
+SoundStore _$SoundStoreFromJson(Map<String, dynamic> json) => SoundStore(
   type: $enumDecodeNullable(
     _$SoundTypeEnumMap,
     json['type'],
@@ -51,7 +51,7 @@ _SoundStore _$SoundStoreFromJson(Map<String, dynamic> json) => _SoundStore(
   vibrate: json['vibrate'] as bool? ?? false,
 );
 
-Map<String, dynamic> _$SoundStoreToJson(_SoundStore instance) =>
+Map<String, dynamic> _$SoundStoreToJson(SoundStore instance) =>
     <String, dynamic>{
       'type': ?_$SoundTypeEnumMap[instance.type],
       'volume': instance.volume,

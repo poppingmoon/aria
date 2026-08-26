@@ -6,9 +6,9 @@ part of 'account_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_AccountSettings _$AccountSettingsFromJson(
+AccountSettings _$AccountSettingsFromJson(
   Map<String, dynamic> json,
-) => _AccountSettings(
+) => AccountSettings(
   keepCw: json['keepCw'] as bool? ?? true,
   rememberNoteVisibility: json['rememberNoteVisibility'] as bool? ?? false,
   defaultNoteVisibility:
@@ -87,7 +87,7 @@ _AccountSettings _$AccountSettingsFromJson(
       const [],
 );
 
-Map<String, dynamic> _$AccountSettingsToJson(_AccountSettings instance) =>
+Map<String, dynamic> _$AccountSettingsToJson(AccountSettings instance) =>
     <String, dynamic>{
       'keepCw': instance.keepCw,
       'rememberNoteVisibility': instance.rememberNoteVisibility,

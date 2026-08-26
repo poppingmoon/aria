@@ -24,24 +24,15 @@ Future<T?> showRadioDialog<T>(
   );
 }
 
-class RadioDialog<T> extends HookWidget {
-  const RadioDialog({
-    super.key,
-    this.title,
-    this.header,
-    required this.values,
-    this.initialValue,
-    required this.titleBuilder,
-    this.subtitleBuilder,
-  });
-
-  final Widget? title;
-  final Widget? header;
-  final Iterable<T> values;
-  final T? initialValue;
-  final Widget Function(BuildContext context, T value) titleBuilder;
-  final Widget Function(BuildContext context, T value)? subtitleBuilder;
-
+class const RadioDialog<T>({
+  super.key,
+  final Widget? title,
+  final Widget? header,
+  required final Iterable<T> values,
+  final T? initialValue,
+  required final Widget Function(BuildContext context, T value) titleBuilder,
+  final Widget Function(BuildContext context, T value)? subtitleBuilder,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

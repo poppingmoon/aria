@@ -20,12 +20,11 @@ import '../../util/navigate.dart';
 import 'image_widget.dart';
 import 'url_sheet.dart';
 
-class AdWidget extends HookConsumerWidget {
-  const AdWidget({super.key, required this.account, this.specify});
-
-  final Account account;
-  final MetaAd? specify;
-
+class const AdWidget({
+  super.key,
+  required final Account account,
+  final MetaAd? specify,
+}) extends HookConsumerWidget {
   MetaAd chooseAd(List<MetaAd> allAds, List<String> mutedAds) {
     final ads = allAds.map(
       (ad) => mutedAds.contains(ad.id) ? ad.copyWith(ratio: 0) : ad,

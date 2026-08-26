@@ -6,9 +6,7 @@ import '../../gen/assets.gen.dart';
 import '../../i18n/strings.g.dart';
 import '../../util/launch_url.dart';
 
-class AboutMisskeyPage extends ConsumerWidget {
-  const AboutMisskeyPage({super.key});
-
+class const AboutMisskeyPage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(

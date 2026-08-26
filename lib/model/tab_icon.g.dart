@@ -6,20 +6,22 @@ part of 'tab_icon.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_MaterialIcon _$MaterialIconFromJson(Map<String, dynamic> json) =>
-    _MaterialIcon(codePoint: (json['codePoint'] as num).toInt());
+MaterialIcon _$MaterialIconFromJson(Map<String, dynamic> json) =>
+    MaterialIcon(codePoint: (json['codePoint'] as num).toInt());
 
-Map<String, dynamic> _$MaterialIconToJson(_MaterialIcon instance) =>
+Map<String, dynamic> _$MaterialIconToJson(MaterialIcon instance) =>
     <String, dynamic>{'codePoint': instance.codePoint};
 
-_ImageIcon _$ImageIconFromJson(Map<String, dynamic> json) =>
-    _ImageIcon(url: json['url'] as String);
+ImageIcon _$ImageIconFromJson(Map<String, dynamic> json) =>
+    ImageIcon(url: json['url'] as String);
 
-Map<String, dynamic> _$ImageIconToJson(_ImageIcon instance) =>
-    <String, dynamic>{'url': instance.url};
+Map<String, dynamic> _$ImageIconToJson(ImageIcon instance) => <String, dynamic>{
+  'url': instance.url,
+};
 
-_EmojiIcon _$EmojiIconFromJson(Map<String, dynamic> json) =>
-    _EmojiIcon(emoji: json['emoji'] as String);
+EmojiIcon _$EmojiIconFromJson(Map<String, dynamic> json) =>
+    EmojiIcon(emoji: json['emoji'] as String);
 
-Map<String, dynamic> _$EmojiIconToJson(_EmojiIcon instance) =>
-    <String, dynamic>{'emoji': instance.emoji};
+Map<String, dynamic> _$EmojiIconToJson(EmojiIcon instance) => <String, dynamic>{
+  'emoji': instance.emoji,
+};

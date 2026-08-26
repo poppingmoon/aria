@@ -29,12 +29,11 @@ import '../widget/layers_viewer.dart';
 
 enum _Modes { move, crop, flip, rotate, draw, text, image, emoji }
 
-class ImagePage extends HookConsumerWidget {
-  const ImagePage({super.key, required this.account, required this.image});
-
-  final Account account;
-  final Uint8List image;
-
+class const ImagePage({
+  super.key,
+  required final Account account,
+  required final Uint8List image,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
@@ -58,17 +57,11 @@ class ImagePage extends HookConsumerWidget {
   }
 }
 
-class _ImagePage extends HookConsumerWidget {
-  const _ImagePage({
-    required this.account,
-    required this.data,
-    required this.image,
-  });
-
-  final Account account;
-  final Uint8List data;
-  final Image image;
-
+class const _ImagePage({
+  required final Account account,
+  required final Uint8List data,
+  required final Image image,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final images = useState({data: image});

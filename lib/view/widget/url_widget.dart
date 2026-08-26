@@ -83,29 +83,17 @@ TextSpan buildUrlSpan({
   );
 }
 
-class UrlWidget extends HookWidget {
-  const UrlWidget({
-    required this.url,
-    this.onTap,
-    this.style,
-    this.scale = 1.0,
-    this.opacity = 1.0,
-    this.align,
-    this.overflow,
-    this.maxLines,
-    this.textScaler,
-  });
-
-  final String url;
-  final void Function()? onTap;
-  final TextStyle? style;
-  final double scale;
-  final double opacity;
-  final TextAlign? align;
-  final TextOverflow? overflow;
-  final TextScaler? textScaler;
-  final int? maxLines;
-
+class const UrlWidget({
+  required final String url,
+  final void Function()? onTap,
+  final TextStyle? style,
+  final double scale = 1.0,
+  final double opacity = 1.0,
+  final TextAlign? align,
+  final TextOverflow? overflow,
+  final int? maxLines,
+  final TextScaler? textScaler,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final url = useMemoized(

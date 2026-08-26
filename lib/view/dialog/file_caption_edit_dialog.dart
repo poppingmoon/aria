@@ -13,16 +13,11 @@ import 'image_dialog.dart';
 import 'image_gallery_dialog.dart';
 import 'video_dialog.dart';
 
-class FileCaptionEditDialog extends HookWidget {
-  const FileCaptionEditDialog({
-    super.key,
-    required this.account,
-    required this.file,
-  });
-
-  final Account account;
-  final PostFile file;
-
+class const FileCaptionEditDialog({
+  super.key,
+  required final Account account,
+  required final PostFile file,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: file.comment);

@@ -14,16 +14,11 @@ import '../dialog/paste_emojis_dialog.dart';
 import 'emoji_picker.dart';
 import 'emoji_widget.dart';
 
-class PinnedEmojisEditor extends HookConsumerWidget {
-  const PinnedEmojisEditor({
-    super.key,
-    required this.account,
-    this.reaction = false,
-  });
-
-  final Account account;
-  final bool reaction;
-
+class const PinnedEmojisEditor({
+  super.key,
+  required final Account account,
+  final bool reaction = false,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pinnedEmojis = ref.watch(

@@ -8,18 +8,14 @@ import '../../model/account.dart';
 import '../../provider/note_is_deleted_notifier_provider.dart';
 import 'note_fallback_widget.dart';
 
-class DeletedNoteWidget extends ConsumerWidget {
-  const DeletedNoteWidget({
-    super.key,
-    this.account,
-    this.noteId,
-    this.borderRadius = const BorderRadius.all(Radius.circular(16.0)),
-  });
-
-  final Account? account;
-  final String? noteId;
-  final BorderRadiusGeometry? borderRadius;
-
+class const DeletedNoteWidget({
+  super.key,
+  final Account? account,
+  final String? noteId,
+  final BorderRadiusGeometry? borderRadius = const BorderRadius.all(
+    Radius.circular(16.0),
+  ),
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if ((account, noteId) case (final account?, final noteId?)) {
@@ -37,11 +33,9 @@ class DeletedNoteWidget extends ConsumerWidget {
   }
 }
 
-class _DeletedNoteWidget extends StatelessWidget {
-  const _DeletedNoteWidget({required this.borderRadius});
-
-  final BorderRadiusGeometry? borderRadius;
-
+class const _DeletedNoteWidget({
+  required final BorderRadiusGeometry? borderRadius,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(

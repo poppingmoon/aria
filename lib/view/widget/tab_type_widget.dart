@@ -3,11 +3,8 @@ import 'package:material_ui/material_ui.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_type.dart';
 
-class TabTypeWidget extends StatelessWidget {
-  const TabTypeWidget({super.key, required this.tabType});
-
-  final TabType tabType;
-
+class const TabTypeWidget({super.key, required final TabType tabType})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (tabType) {

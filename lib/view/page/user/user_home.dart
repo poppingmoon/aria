@@ -38,20 +38,13 @@ import '../../widget/user_avatar.dart';
 import '../../widget/user_banner.dart';
 import '../../widget/username_widget.dart';
 
-class UserHome extends ConsumerWidget {
-  const UserHome({
-    super.key,
-    required this.account,
-    this.userId,
-    this.username,
-    this.host,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? username;
-  final String? host;
-
+class const UserHome({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? username,
+  final String? host,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(
@@ -87,12 +80,10 @@ class UserHome extends ConsumerWidget {
   }
 }
 
-class _UserHome extends HookConsumerWidget {
-  const _UserHome({required this.account, required this.user});
-
-  final Account account;
-  final UserDetailed user;
-
+class const _UserHome({
+  required final Account account,
+  required final UserDetailed user,
+}) extends HookConsumerWidget {
   int? _calcAge(String birthday) {
     final date = switch (DateTime.tryParse(birthday)) {
       final date? when DateFormat('yyyy-MM-dd').format(date) == birthday => (

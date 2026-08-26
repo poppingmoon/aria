@@ -21,18 +21,12 @@ import 'chat_message_widget.dart';
 import 'haptic_feedback_refresh_indicator.dart';
 import 'pagination_bottom_widget.dart';
 
-class ChatListView extends HookConsumerWidget {
-  const ChatListView({
-    super.key,
-    required this.account,
-    this.userId,
-    this.roomId,
-  });
-
-  final Account account;
-  final String? userId;
-  final String? roomId;
-
+class const ChatListView({
+  super.key,
+  required final Account account,
+  final String? userId,
+  final String? roomId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final messages = ref.watch(

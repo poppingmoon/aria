@@ -14,26 +14,16 @@ import 'cat_avatar.dart';
 import 'image_widget.dart';
 import 'online_indicator.dart';
 
-class UserAvatar extends ConsumerWidget {
-  const UserAvatar({
-    super.key,
-    required this.account,
-    required this.user,
-    this.size,
-    this.decorations,
-    this.forceShowDecoration = false,
-    this.showOnlineIndicator = false,
-    this.onTap,
-  });
-
-  final Account account;
-  final User user;
-  final double? size;
-  final List<UserAvatarDecoration>? decorations;
-  final bool forceShowDecoration;
-  final bool showOnlineIndicator;
-  final void Function()? onTap;
-
+class const UserAvatar({
+  super.key,
+  required final Account account,
+  required final User user,
+  final double? size,
+  final List<UserAvatarDecoration>? decorations,
+  final bool forceShowDecoration = false,
+  final bool showOnlineIndicator = false,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = this.size ?? DefaultTextStyle.of(context).style.lineHeight;

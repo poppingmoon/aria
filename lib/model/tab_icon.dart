@@ -4,7 +4,7 @@ part 'tab_icon.freezed.dart';
 part 'tab_icon.g.dart';
 
 sealed class TabIcon {
-  factory TabIcon.fromJson(Map<String, Object?> json) {
+  factory fromJson(Map<String, Object?> json) {
     if (json.containsKey('codePoint')) {
       return MaterialIcon.fromJson(json);
     }
@@ -20,26 +20,35 @@ sealed class TabIcon {
   Map<String, Object?> toJson();
 }
 
-@freezed
-abstract class MaterialIcon with _$MaterialIcon implements TabIcon {
-  const factory MaterialIcon({required int codePoint}) = _MaterialIcon;
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const MaterialIcon({@override required final int codePoint})
+    with _$MaterialIcon
+    implements TabIcon {
+  factory fromJson(Map<String, Object?> json) => _$MaterialIconFromJson(json);
 
-  factory MaterialIcon.fromJson(Map<String, Object?> json) =>
-      _$MaterialIconFromJson(json);
+  @override
+  Map<String, Object?> toJson() => _$MaterialIconToJson(this);
 }
 
-@freezed
-abstract class ImageIcon with _$ImageIcon implements TabIcon {
-  const factory ImageIcon({required String url}) = _ImageIcon;
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const ImageIcon({@override required final String url})
+    with _$ImageIcon
+    implements TabIcon {
+  factory fromJson(Map<String, Object?> json) => _$ImageIconFromJson(json);
 
-  factory ImageIcon.fromJson(Map<String, Object?> json) =>
-      _$ImageIconFromJson(json);
+  @override
+  Map<String, Object?> toJson() => _$ImageIconToJson(this);
 }
 
-@freezed
-abstract class EmojiIcon with _$EmojiIcon implements TabIcon {
-  const factory EmojiIcon({required String emoji}) = _EmojiIcon;
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const EmojiIcon({@override required final String emoji})
+    with _$EmojiIcon
+    implements TabIcon {
+  factory fromJson(Map<String, Object?> json) => _$EmojiIconFromJson(json);
 
-  factory EmojiIcon.fromJson(Map<String, Object?> json) =>
-      _$EmojiIconFromJson(json);
+  @override
+  Map<String, Object?> toJson() => _$EmojiIconToJson(this);
 }

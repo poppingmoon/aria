@@ -10,38 +10,22 @@ import 'package:material_ui/material_ui.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../provider/user_agent_provider.dart';
 
-class ImageWidget extends ConsumerWidget {
-  const ImageWidget({
-    super.key,
-    required this.url,
-    this.blurHash,
-    this.width,
-    this.height,
-    this.opacity = 1.0,
-    this.fit,
-    this.alignment = Alignment.center,
-    this.blurHashDecodingSize = 32,
-    this.placeholderBuilder,
-    this.errorBuilder,
-    this.semanticLabel,
-    this.enableFadeIn = true,
-    this.disableAnimations = false,
-  });
-
-  final String? url;
-  final String? blurHash;
-  final double? width;
-  final double? height;
-  final double opacity;
-  final BoxFit? fit;
-  final Alignment alignment;
-  final int blurHashDecodingSize;
-  final Widget Function(BuildContext context)? placeholderBuilder;
-  final Widget Function(BuildContext, Object, Object?)? errorBuilder;
-  final String? semanticLabel;
-  final bool enableFadeIn;
-  final bool disableAnimations;
-
+class const ImageWidget({
+  super.key,
+  required final String? url,
+  final String? blurHash,
+  final double? width,
+  final double? height,
+  final double opacity = 1.0,
+  final BoxFit? fit,
+  final Alignment alignment = Alignment.center,
+  final int blurHashDecodingSize = 32,
+  final Widget Function(BuildContext context)? placeholderBuilder,
+  final Widget Function(BuildContext, Object, Object?)? errorBuilder,
+  final String? semanticLabel,
+  final bool enableFadeIn = true,
+  final bool disableAnimations = false,
+}) extends ConsumerWidget {
   Widget _buildPlaceholder(BuildContext context) {
     if (placeholderBuilder case final placeholderBuilder?) {
       return placeholderBuilder(context);
@@ -144,31 +128,18 @@ class ImageWidget extends ConsumerWidget {
   }
 }
 
-class _FadeImageWidget extends HookWidget {
-  const _FadeImageWidget({
-    required this.image,
-    this.width,
-    this.height,
-    this.fit,
-    this.alignment = Alignment.center,
-    this.opacity = 1.0,
-    required this.placeholderBuilder,
-    this.errorBuilder,
-    this.semanticLabel,
-    this.disableAnimations = false,
-  });
-
-  final ImageProvider<Object> image;
-  final double? width;
-  final double? height;
-  final BoxFit? fit;
-  final AlignmentGeometry alignment;
-  final double opacity;
-  final Widget Function(BuildContext context) placeholderBuilder;
-  final Widget Function(BuildContext, Object, Object?)? errorBuilder;
-  final String? semanticLabel;
-  final bool disableAnimations;
-
+class const _FadeImageWidget({
+  required final ImageProvider<Object> image,
+  final double? width,
+  final double? height,
+  final BoxFit? fit,
+  final AlignmentGeometry alignment = Alignment.center,
+  final double opacity = 1.0,
+  required final Widget Function(BuildContext context) placeholderBuilder,
+  final Widget Function(BuildContext, Object, Object?)? errorBuilder,
+  final String? semanticLabel,
+  final bool disableAnimations = false,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isLoaded = useState(false);
@@ -215,17 +186,11 @@ class _FadeImageWidget extends HookWidget {
   }
 }
 
-class _FadeStack extends HookWidget {
-  const _FadeStack({
-    required this.controller,
-    required this.placeholderBuilder,
-    required this.child,
-  });
-
-  final AnimationController controller;
-  final Widget Function(BuildContext context) placeholderBuilder;
-  final Widget child;
-
+class const _FadeStack({
+  required final AnimationController controller,
+  required final Widget Function(BuildContext context) placeholderBuilder,
+  required final Widget child,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final animationStatus = useState(AnimationStatus.dismissed);

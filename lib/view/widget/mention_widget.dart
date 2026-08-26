@@ -13,28 +13,17 @@ import '../../provider/static_image_url_provider.dart';
 import '../../provider/user_agent_provider.dart';
 import '../../util/punycode.dart';
 
-class MentionWidget extends HookConsumerWidget {
-  const MentionWidget({
-    super.key,
-    required this.account,
-    required this.username,
-    required this.host,
-    this.scale = 1.0,
-    this.opacity = 1.0,
-    this.onTap,
-    this.onDeleted,
-    this.textScaler,
-  });
-
-  final Account account;
-  final String username;
-  final String host;
-  final double scale;
-  final double opacity;
-  final void Function()? onTap;
-  final void Function()? onDeleted;
-  final TextScaler? textScaler;
-
+class const MentionWidget({
+  super.key,
+  required final Account account,
+  required final String username,
+  required final String host,
+  final double scale = 1.0,
+  final double opacity = 1.0,
+  final void Function()? onTap,
+  final void Function()? onDeleted,
+  final TextScaler? textScaler,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final disableShowingAnimatedImages =

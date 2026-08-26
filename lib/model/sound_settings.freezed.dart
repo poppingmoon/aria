@@ -12,19 +12,16 @@ part of 'sound_settings.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$SoundSettings {
 
- bool get notUseSound; double get masterVolume; Map<OperationType, SoundStore> get sounds;
+@override bool get notUseSound;@override double get masterVolume;@override Map<OperationType, SoundStore> get sounds;
 /// Create a copy of SoundSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SoundSettingsCopyWith<SoundSettings> get copyWith => _$SoundSettingsCopyWithImpl<SoundSettings>(this as SoundSettings, _$identity);
 
-  /// Serializes this SoundSettings to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -32,7 +29,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is SoundSettings&&(identical(other.notUseSound, notUseSound) || other.notUseSound == notUseSound)&&(identical(other.masterVolume, masterVolume) || other.masterVolume == masterVolume)&&const DeepCollectionEquality().equals(other.sounds, sounds));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,notUseSound,masterVolume,const DeepCollectionEquality().hash(sounds));
 
@@ -49,7 +46,7 @@ abstract mixin class $SoundSettingsCopyWith<$Res>  {
   factory $SoundSettingsCopyWith(SoundSettings value, $Res Function(SoundSettings) _then) = _$SoundSettingsCopyWithImpl;
 @useResult
 $Res call({
- bool notUseSound, double masterVolume, Map<OperationType, SoundStore> sounds
+@override bool notUseSound,@override double masterVolume,@override Map<OperationType, SoundStore> sounds
 });
 
 
@@ -156,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool notUseSound,  double masterVolume,  Map<OperationType, SoundStore> sounds)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  bool notUseSound, @override  double masterVolume, @override  Map<OperationType, SoundStore> sounds)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SoundSettings() when $default != null:
 return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
@@ -177,7 +174,7 @@ return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool notUseSound,  double masterVolume,  Map<OperationType, SoundStore> sounds)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  bool notUseSound, @override  double masterVolume, @override  Map<OperationType, SoundStore> sounds)  $default,) {final _that = this;
 switch (_that) {
 case _SoundSettings():
 return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
@@ -197,7 +194,7 @@ return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool notUseSound,  double masterVolume,  Map<OperationType, SoundStore> sounds)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  bool notUseSound, @override  double masterVolume, @override  Map<OperationType, SoundStore> sounds)?  $default,) {final _that = this;
 switch (_that) {
 case _SoundSettings() when $default != null:
 return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
@@ -209,16 +206,16 @@ return $default(_that.notUseSound,_that.masterVolume,_that.sounds);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
-class _SoundSettings implements SoundSettings {
-  const _SoundSettings({this.notUseSound = true, this.masterVolume = defaultMasterVolume,  Map<OperationType, SoundStore> sounds = defaultSounds}): _sounds = sounds;
-  factory _SoundSettings.fromJson(Map<String, dynamic> json) => _$SoundSettingsFromJson(json);
 
-@override@JsonKey() final  bool notUseSound;
-@override@JsonKey() final  double masterVolume;
+class _SoundSettings extends SoundSettings {
+  const _SoundSettings({@override this.notUseSound = true, @override this.masterVolume = defaultMasterVolume, @override  Map<OperationType, SoundStore> sounds = defaultSounds}): _sounds = sounds,super(notUseSound: notUseSound, masterVolume: masterVolume, sounds: sounds);
+  
+
+@override@override final  bool notUseSound;
+@override@override final  double masterVolume;
  final  Map<OperationType, SoundStore> _sounds;
-@override@JsonKey() Map<OperationType, SoundStore> get sounds {
+@override@override Map<OperationType, SoundStore> get sounds {
   if (_sounds is EqualUnmodifiableMapView) return _sounds;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_sounds);
@@ -231,17 +228,14 @@ class _SoundSettings implements SoundSettings {
 @pragma('vm:prefer-inline')
 _$SoundSettingsCopyWith<_SoundSettings> get copyWith => __$SoundSettingsCopyWithImpl<_SoundSettings>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$SoundSettingsToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _SoundSettings&&(identical(other.notUseSound, notUseSound) || other.notUseSound == notUseSound)&&(identical(other.masterVolume, masterVolume) || other.masterVolume == masterVolume)&&const DeepCollectionEquality().equals(other._sounds, _sounds));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,notUseSound,masterVolume,const DeepCollectionEquality().hash(_sounds));
 
@@ -258,7 +252,7 @@ abstract mixin class _$SoundSettingsCopyWith<$Res> implements $SoundSettingsCopy
   factory _$SoundSettingsCopyWith(_SoundSettings value, $Res Function(_SoundSettings) _then) = __$SoundSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- bool notUseSound, double masterVolume, Map<OperationType, SoundStore> sounds
+@override bool notUseSound,@override double masterVolume,@override Map<OperationType, SoundStore> sounds
 });
 
 
@@ -287,19 +281,16 @@ as Map<OperationType, SoundStore>,
 
 }
 
-
 /// @nodoc
 mixin _$SoundStore {
 
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) SoundType? get type; double get volume; bool get vibrate;
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override SoundType? get type;@override double get volume;@override bool get vibrate;
 /// Create a copy of SoundStore
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SoundStoreCopyWith<SoundStore> get copyWith => _$SoundStoreCopyWithImpl<SoundStore>(this as SoundStore, _$identity);
 
-  /// Serializes this SoundStore to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -307,7 +298,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is SoundStore&&(identical(other.type, type) || other.type == type)&&(identical(other.volume, volume) || other.volume == volume)&&(identical(other.vibrate, vibrate) || other.vibrate == vibrate));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,type,volume,vibrate);
 
@@ -324,7 +315,7 @@ abstract mixin class $SoundStoreCopyWith<$Res>  {
   factory $SoundStoreCopyWith(SoundStore value, $Res Function(SoundStore) _then) = _$SoundStoreCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) SoundType? type, double volume, bool vibrate
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override SoundType? type,@override double volume,@override bool vibrate
 });
 
 
@@ -431,7 +422,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  SoundType? type,  double volume,  bool vibrate)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  SoundType? type, @override  double volume, @override  bool vibrate)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SoundStore() when $default != null:
 return $default(_that.type,_that.volume,_that.vibrate);case _:
@@ -452,7 +443,7 @@ return $default(_that.type,_that.volume,_that.vibrate);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  SoundType? type,  double volume,  bool vibrate)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  SoundType? type, @override  double volume, @override  bool vibrate)  $default,) {final _that = this;
 switch (_that) {
 case _SoundStore():
 return $default(_that.type,_that.volume,_that.vibrate);case _:
@@ -472,7 +463,7 @@ return $default(_that.type,_that.volume,_that.vibrate);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  SoundType? type,  double volume,  bool vibrate)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  SoundType? type, @override  double volume, @override  bool vibrate)?  $default,) {final _that = this;
 switch (_that) {
 case _SoundStore() when $default != null:
 return $default(_that.type,_that.volume,_that.vibrate);case _:
@@ -484,15 +475,15 @@ return $default(_that.type,_that.volume,_that.vibrate);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
-class _SoundStore implements SoundStore {
-  const _SoundStore({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type, this.volume = 1.0, this.vibrate = false});
-  factory _SoundStore.fromJson(Map<String, dynamic> json) => _$SoundStoreFromJson(json);
 
-@override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) final  SoundType? type;
-@override@JsonKey() final  double volume;
-@override@JsonKey() final  bool vibrate;
+class _SoundStore extends SoundStore {
+  const _SoundStore({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override this.type, @override this.volume = 1.0, @override this.vibrate = false}): super(type: type, volume: volume, vibrate: vibrate);
+  
+
+@override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override final  SoundType? type;
+@override@override final  double volume;
+@override@override final  bool vibrate;
 
 /// Create a copy of SoundStore
 /// with the given fields replaced by the non-null parameter values.
@@ -500,17 +491,14 @@ class _SoundStore implements SoundStore {
 @pragma('vm:prefer-inline')
 _$SoundStoreCopyWith<_SoundStore> get copyWith => __$SoundStoreCopyWithImpl<_SoundStore>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$SoundStoreToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _SoundStore&&(identical(other.type, type) || other.type == type)&&(identical(other.volume, volume) || other.volume == volume)&&(identical(other.vibrate, vibrate) || other.vibrate == vibrate));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,type,volume,vibrate);
 
@@ -527,7 +515,7 @@ abstract mixin class _$SoundStoreCopyWith<$Res> implements $SoundStoreCopyWith<$
   factory _$SoundStoreCopyWith(_SoundStore value, $Res Function(_SoundStore) _then) = __$SoundStoreCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) SoundType? type, double volume, bool vibrate
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override SoundType? type,@override double volume,@override bool vibrate
 });
 
 

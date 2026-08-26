@@ -6,19 +6,13 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../util/launch_url.dart';
 
-class TwitterEmbed extends HookConsumerWidget {
-  const TwitterEmbed({
-    super.key,
-    required this.tweetId,
-    this.isDark = false,
-    this.lang = 'en',
-  });
-
-  final String tweetId;
-  final bool isDark;
+class const TwitterEmbed({
+  super.key,
+  required final String tweetId,
+  final bool isDark = false,
   // https://developer.twitter.com/en/docs/twitter-for-websites/supported-languages
-  final String lang;
-
+  final String lang = 'en',
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final height = useState(200.0);

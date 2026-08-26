@@ -8,11 +8,10 @@ import '../../model/tab_type.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../dialog/error_message_dialog.dart';
 
-class StreamingErrorIcon extends StatelessWidget {
-  const StreamingErrorIcon({super.key, required this.tabSettings});
-
-  final TabSettings tabSettings;
-
+class const StreamingErrorIcon({
+  super.key,
+  required final TabSettings tabSettings,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (tabSettings.tabType
@@ -36,11 +35,8 @@ class StreamingErrorIcon extends StatelessWidget {
   }
 }
 
-class _StreamingErrorIcon extends HookConsumerWidget {
-  const _StreamingErrorIcon({required this.account});
-
-  final Account account;
-
+class const _StreamingErrorIcon({required final Account account})
+    extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final error = useState<Object?>(null);

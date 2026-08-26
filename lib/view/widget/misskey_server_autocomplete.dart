@@ -7,20 +7,13 @@ import '../../i18n/strings.g.dart';
 import '../../provider/search_misskey_servers_provider.dart';
 import '../../util/punycode.dart';
 
-class MisskeyServerAutocomplete extends ConsumerWidget {
-  const MisskeyServerAutocomplete({
-    super.key,
-    required this.controller,
-    required this.focusNode,
-    this.autofocus = false,
-    this.onSubmitted,
-  });
-
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final bool autofocus;
-  final void Function(String)? onSubmitted;
-
+class const MisskeyServerAutocomplete({
+  super.key,
+  required final TextEditingController controller,
+  required final FocusNode focusNode,
+  final bool autofocus = false,
+  final void Function(String)? onSubmitted,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TextFieldTapRegion(

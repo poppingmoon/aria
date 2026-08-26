@@ -19,12 +19,11 @@ import '../../dialog/list_settings_dialog.dart';
 import '../../widget/timeline_list_view.dart';
 import 'list_users.dart';
 
-class ListPage extends HookConsumerWidget {
-  const ListPage({super.key, required this.account, required this.listId});
-
-  final Account account;
-  final String listId;
-
+class const ListPage({
+  super.key,
+  required final Account account,
+  required final String listId,
+}) extends HookConsumerWidget {
   Future<void> _edit(WidgetRef ref, UsersList list) async {
     final result = await showDialog<ListSettings>(
       context: ref.context,

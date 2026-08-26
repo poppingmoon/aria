@@ -9,9 +9,7 @@ import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../dialog/radio_dialog.dart';
 
-class TimelineButtonsPage extends ConsumerWidget {
-  const TimelineButtonsPage({super.key});
-
+class const TimelineButtonsPage({super.key}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
@@ -245,11 +243,9 @@ class TimelineButtonsPage extends ConsumerWidget {
   }
 }
 
-class _TimelinesPageButtonIcon extends StatelessWidget {
-  const _TimelinesPageButtonIcon({this.buttonType});
-
-  final TimelinesPageButtonType? buttonType;
-
+class const _TimelinesPageButtonIcon({
+  final TimelinesPageButtonType? buttonType,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (buttonType case final buttonType?) {
@@ -285,11 +281,9 @@ class _TimelinesPageButtonIcon extends StatelessWidget {
   }
 }
 
-class _TimelinesPageButtonTypeNameWidget extends StatelessWidget {
-  const _TimelinesPageButtonTypeNameWidget({this.buttonType});
-
-  final TimelinesPageButtonType? buttonType;
-
+class const _TimelinesPageButtonTypeNameWidget({
+  final TimelinesPageButtonType? buttonType,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(switch (buttonType) {
@@ -322,13 +316,11 @@ class _TimelinesPageButtonTypeNameWidget extends StatelessWidget {
   }
 }
 
-class _TimelinePageButton extends ConsumerWidget {
-  const _TimelinePageButton({this.buttonType, this.index, this.onPressed});
-
-  final TimelinesPageButtonType? buttonType;
-  final int? index;
-  final void Function()? onPressed;
-
+class const _TimelinePageButton({
+  final TimelinesPageButtonType? buttonType,
+  final int? index,
+  final void Function()? onPressed,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final (mini, square) = ref.watch(

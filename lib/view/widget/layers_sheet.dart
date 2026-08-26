@@ -13,16 +13,11 @@ import '../../provider/overlay_layers_notifier_provider.dart';
 import '../dialog/color_picker_dialog.dart';
 import 'reorderable_drag_start_listener_wrapper.dart';
 
-class LayersSheet extends ConsumerWidget {
-  const LayersSheet({
-    super.key,
-    required this.backgroundLayer,
-    required this.images,
-  });
-
-  final ImageLayer backgroundLayer;
-  final Map<Uint8List, Image> images;
-
+class const LayersSheet({
+  super.key,
+  required final ImageLayer backgroundLayer,
+  required final Map<Uint8List, Image> images,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final overlayLayers = ref.watch(overlayLayersNotifierProvider);
@@ -106,19 +101,12 @@ class LayersSheet extends ConsumerWidget {
   }
 }
 
-class _LayerSheet extends HookConsumerWidget {
-  const _LayerSheet({
-    required this.backgroundLayer,
-    required this.backgroundImage,
-    required this.index,
-    this.image,
-  });
-
-  final ImageLayer backgroundLayer;
-  final Image backgroundImage;
-  final int index;
-  final Image? image;
-
+class const _LayerSheet({
+  required final ImageLayer backgroundLayer,
+  required final Image backgroundImage,
+  required final int index,
+  final Image? image,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final layer = ref.watch(

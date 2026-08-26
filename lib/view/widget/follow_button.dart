@@ -13,12 +13,11 @@ import '../dialog/confirmation_dialog.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class FollowButton extends HookConsumerWidget {
-  const FollowButton({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const FollowButton({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userNotifierProvider(account, userId: userId)).value;

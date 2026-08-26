@@ -7,20 +7,13 @@ import '../../provider/api/i_notifier_provider.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class AccountPreview extends ConsumerWidget {
-  const AccountPreview({
-    super.key,
-    required this.account,
-    this.trailing,
-    this.avatarSize = 32.0,
-    this.onTap,
-  });
-
-  final Account account;
-  final Widget? trailing;
-  final double avatarSize;
-  final void Function()? onTap;
-
+class const AccountPreview({
+  super.key,
+  required final Account account,
+  final Widget? trailing,
+  final double avatarSize = 32.0,
+  final void Function()? onTap,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;

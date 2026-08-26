@@ -17,24 +17,15 @@ import 'reactions_viewer.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
-class NoteSimpleWidget extends HookConsumerWidget {
-  const NoteSimpleWidget({
-    super.key,
-    required this.account,
-    required this.noteId,
-    this.borderRadius,
-    this.showFooter,
-    this.focusPostForm,
-    this.note,
-  });
-
-  final Account account;
-  final String noteId;
-  final BorderRadius? borderRadius;
-  final bool? showFooter;
-  final void Function()? focusPostForm;
-  final Note? note;
-
+class const NoteSimpleWidget({
+  super.key,
+  required final Account account,
+  required final String noteId,
+  final BorderRadius? borderRadius,
+  final bool? showFooter,
+  final void Function()? focusPostForm,
+  final Note? note,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteNotifierProvider(account, noteId));

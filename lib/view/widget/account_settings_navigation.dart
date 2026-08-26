@@ -21,22 +21,14 @@ enum AccountSettingsDestination {
   signOut,
 }
 
-class AccountSettingsNavigation extends ConsumerWidget {
-  const AccountSettingsNavigation({
-    super.key,
-    required this.account,
-    this.rail = false,
-    this.round = false,
-    this.selectedDestination,
-    this.physics,
-  });
-
-  final Account account;
-  final bool rail;
-  final bool round;
-  final AccountSettingsDestination? selectedDestination;
-  final ScrollPhysics? physics;
-
+class const AccountSettingsNavigation({
+  super.key,
+  required final Account account,
+  final bool rail = false,
+  final bool round = false,
+  final AccountSettingsDestination? selectedDestination,
+  final ScrollPhysics? physics,
+}) extends ConsumerWidget {
   Widget _buildIcon(AccountSettingsDestination destination) {
     return switch (destination) {
       AccountSettingsDestination.profile => const Icon(Icons.person),

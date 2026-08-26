@@ -40,136 +40,141 @@ const maxTimelinesPageSpringStiffness = 500.0;
 const defaultTimelinesPageMinFlingFactor = 2.0;
 const maxTimelinesPageMinFlingFactor = 10.0;
 
-@freezed
-abstract class GeneralSettings with _$GeneralSettings {
-  const factory GeneralSettings({
-    // Locale
-    // ignore: invalid_annotation_target
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-    AppLocale? locale,
+@Freezed(fromJson: false, toJson: false)
+@JsonSerializable()
+class const GeneralSettings({
+  // Locale
+  @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  @override
+  final AppLocale? locale,
 
-    // Note display
-    @Default(true) bool collapseRenotes,
-    @Default(SensitiveMediaDisplay.respect) SensitiveMediaDisplay sensitive,
-    @Default(false) bool highlightSensitiveMedia,
-    @Default(true) bool animatedMfm,
-    @Default(true) bool advancedMfm,
-    @Default(true) bool showRepliesCount,
-    @Default(true) bool showRenotesCount,
-    @Default(false) bool showReactionsCount,
-    @Default(true) bool showReactionsCountInReactionButton,
-    @Default(false) bool showGapBetweenNotesInTimeline,
-    @Default(false) bool loadRawImages,
-    @Default(InstanceTicker.remote) InstanceTicker instanceTicker,
-    @Default(false) bool showNoteCreatedAt,
-    @Default(true) bool showAvatarsInNote,
-    @Default(true) bool showAvatarsInSubNote,
-    @Default(false) bool squareAvatars,
-    @Default(true) bool showAvatarDecorations,
-    @Default(true) bool showQuoteButtonInNoteFooter,
-    @Default(false) bool showLikeButtonInNoteFooter,
-    @Default(false) bool showClipButtonInNoteFooter,
-    @Default(false) bool showTranslateButtonInNoteFooter,
-    @Default(true) bool showNoteReactionsViewer,
-    @Default(false) bool showSubNoteReactionsViewer,
-    @Default(true) bool showNoteFooter,
-    @Default(false) bool showSubNoteFooter,
-    @Default(false) bool alwaysExpandCw,
-    @Default(false) bool alwaysExpandLongNote,
-    @Default(false) bool alwaysExpandMediaInSubNote,
-    @Default(false) bool mergeReactionsByName,
-    @Default(false) bool alwaysShowAllReactions,
-    MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
-    @Default(BoxFit.contain) BoxFit thumbnailBoxFit,
-    @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
-    String? fontFamily,
-    String? serifFontFamily,
-    String? monospaceFontFamily,
-    String? cursiveFontFamily,
-    String? fantasyFontFamily,
-    String? emojiFontFamily,
-    String? mathFontFamily,
-    @Default(defaultFontSize) double fontSize,
-    @Default(defaultLineHeight) double lineHeight,
-    @Default(defaultAvatarScale) double avatarScale,
-    @Default(1.0) double reactionsDisplayScale,
-    @Default(true) bool limitWidthOfReaction,
-    @Default(1.0) double noteFooterScale,
-    @Default(defaultNoteVerticalPadding) double noteVerticalPadding,
-    @Default(defaultNoteHorizontalPadding) double noteHorizontalPadding,
-    @_ColorConverter() Color? publicNoteBackgroundColor,
-    @_ColorConverter() Color? homeNoteBackgroundColor,
-    @_ColorConverter() Color? followersNoteBackgroundColor,
-    @_ColorConverter() Color? specifiedNoteBackgroundColor,
+  // Note display
+  @override final bool collapseRenotes = true,
+  @override
+  final SensitiveMediaDisplay sensitive = SensitiveMediaDisplay.respect,
+  @override final bool highlightSensitiveMedia = false,
+  @override final bool animatedMfm = true,
+  @override final bool advancedMfm = true,
+  @override final bool showRepliesCount = true,
+  @override final bool showRenotesCount = true,
+  @override final bool showReactionsCount = false,
+  @override final bool showReactionsCountInReactionButton = true,
+  @override final bool showGapBetweenNotesInTimeline = false,
+  @override final bool loadRawImages = false,
+  @override final InstanceTicker instanceTicker = InstanceTicker.remote,
+  @override final bool showNoteCreatedAt = false,
+  @override final bool showAvatarsInNote = true,
+  @override final bool showAvatarsInSubNote = true,
+  @override final bool squareAvatars = false,
+  @override final bool showAvatarDecorations = true,
+  @override final bool showQuoteButtonInNoteFooter = true,
+  @override final bool showLikeButtonInNoteFooter = false,
+  @override final bool showClipButtonInNoteFooter = false,
+  @override final bool showTranslateButtonInNoteFooter = false,
+  @override final bool showNoteReactionsViewer = true,
+  @override final bool showSubNoteReactionsViewer = false,
+  @override final bool showNoteFooter = true,
+  @override final bool showSubNoteFooter = false,
+  @override final bool alwaysExpandCw = false,
+  @override final bool alwaysExpandLongNote = false,
+  @override final bool alwaysExpandMediaInSubNote = false,
+  @override final bool mergeReactionsByName = false,
+  @override final bool alwaysShowAllReactions = false,
+  @override
+  final MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
+  @override final BoxFit thumbnailBoxFit = BoxFit.contain,
+  @override final EmojiStyle emojiStyle = EmojiStyle.twemoji,
+  @override final String? fontFamily,
+  @override final String? serifFontFamily,
+  @override final String? monospaceFontFamily,
+  @override final String? cursiveFontFamily,
+  @override final String? fantasyFontFamily,
+  @override final String? emojiFontFamily,
+  @override final String? mathFontFamily,
+  @override final double fontSize = defaultFontSize,
+  @override final double lineHeight = defaultLineHeight,
+  @override final double avatarScale = defaultAvatarScale,
+  @override final double reactionsDisplayScale = 1.0,
+  @override final bool limitWidthOfReaction = true,
+  @override final double noteFooterScale = 1.0,
+  @override final double noteVerticalPadding = defaultNoteVerticalPadding,
+  @override final double noteHorizontalPadding = defaultNoteHorizontalPadding,
+  @_ColorConverter() @override final Color? publicNoteBackgroundColor,
+  @_ColorConverter() @override final Color? homeNoteBackgroundColor,
+  @_ColorConverter() @override final Color? followersNoteBackgroundColor,
+  @_ColorConverter() @override final Color? specifiedNoteBackgroundColor,
 
-    // Emoji picker
-    @Default(false) bool emojiPickerUseDialog,
-    @Default(1.0) double emojiPickerScale,
-    @Default(true) bool emojiPickerAutofocus,
-    @Default(false) bool emojiPickerKeepOpen,
+  // Emoji picker
+  @override final bool emojiPickerUseDialog = false,
+  @override final double emojiPickerScale = 1.0,
+  @override final bool emojiPickerAutofocus = true,
+  @override final bool emojiPickerKeepOpen = false,
 
-    // Appearance
-    @Default(false) bool dataSaverMedia,
-    @Default(false) bool dataSaverAvatar,
-    @Default(false) bool dataSaverUrlPreview,
-    @Default(false) bool disableDataSaverWhenOnWifi,
-    @Default(false) bool reduceAnimation,
-    @Default(false) bool disableShowingAnimatedImages,
-    @Default(false) bool enableEmojiFadeIn,
-    @Default(false) bool forceShowAds,
-    @Default(false) bool useGroupedNotifications,
-    @Default(false) bool showOnlineStatus,
-    @Default(false) bool showTimelineTabBarAtBottom,
-    @Default(false) bool showMenuButtonInTabBar,
-    @Default(true) bool showTabHeaderInOneLine,
-    @Default(false) bool alwaysShowTabHeader,
-    @Default(true) bool showTimelineLastViewedAt,
-    @Default(true) bool showPopupOnNewNote,
-    @Default(defaultTimelinesPageButtonTypes)
-    List<TimelinesPageButtonType?> timelinesPageButtonTypes,
-    @Default(false) bool showSmallTimelinesPageButtons,
-    @Default(false) bool showSquaredTimelinesPageButtons,
-    @Default(true) bool showImageInNotification,
-    @Default(false) bool showEmojiInReactionNotification,
+  // Appearance
+  @override final bool dataSaverMedia = false,
+  @override final bool dataSaverAvatar = false,
+  @override final bool dataSaverUrlPreview = false,
+  @override final bool disableDataSaverWhenOnWifi = false,
+  @override final bool reduceAnimation = false,
+  @override final bool disableShowingAnimatedImages = false,
+  @override final bool enableEmojiFadeIn = false,
+  @override final bool forceShowAds = false,
+  @override final bool useGroupedNotifications = false,
+  @override final bool showOnlineStatus = false,
+  @override final bool showTimelineTabBarAtBottom = false,
+  @override final bool showMenuButtonInTabBar = false,
+  @override final bool showTabHeaderInOneLine = true,
+  @override final bool alwaysShowTabHeader = false,
+  @override final bool showTimelineLastViewedAt = true,
+  @override final bool showPopupOnNewNote = true,
+  @override
+  final List<TimelinesPageButtonType?> timelinesPageButtonTypes =
+      defaultTimelinesPageButtonTypes,
+  @override final bool showSmallTimelinesPageButtons = false,
+  @override final bool showSquaredTimelinesPageButtons = false,
+  @override final bool showImageInNotification = true,
+  @override final bool showEmojiInReactionNotification = false,
 
-    // Behavior
-    @Default(true) bool enableInfiniteScroll,
-    @Default(false) bool keepScreenOn,
-    @Default(false) bool openSensitiveMediaOnDoubleTap,
-    @Default(NoteActionType.expand) NoteActionType noteTapAction,
-    @Default(NoteActionType.menu) NoteActionType noteDoubleTapAction,
-    @Default(NoteActionType.reaction) NoteActionType noteLongPressAction,
-    @Default(true) bool confirmBeforePost,
-    @Default(true) bool confirmBeforeRenote,
-    @Default(true) bool confirmBeforeReact,
-    @Default(true) bool confirmBeforeFollow,
-    @Default(false) bool confirmBeforePostingMediaWithoutComment,
-    @Default(false) bool confirmWhenRevealingSensitiveMedia,
-    @Default(LaunchMode.externalApplication) LaunchMode launchMode,
-    String? mediaSaveLocation,
-    @Default(false) bool enableSpellCheck,
-    @Default(false) bool enablePredictiveBack,
-    @Default(true) bool enableHorizontalSwipe,
-    @Default(defaultTimelinesPageSpringStiffness)
-    double timelinesPageSpringStiffness,
-    @Default(defaultTimelinesPageMinFlingFactor)
-    double timelinesPageMinFlingFactor,
-    @Default(true) bool enableHapticFeedback,
+  // Behavior
+  @override final bool enableInfiniteScroll = true,
+  @override final bool keepScreenOn = false,
+  @override final bool openSensitiveMediaOnDoubleTap = false,
+  @override final NoteActionType noteTapAction = NoteActionType.expand,
+  @override final NoteActionType noteDoubleTapAction = NoteActionType.menu,
+  @override final NoteActionType noteLongPressAction = NoteActionType.reaction,
+  @override final bool confirmBeforePost = true,
+  @override final bool confirmBeforeRenote = true,
+  @override final bool confirmBeforeReact = true,
+  @override final bool confirmBeforeFollow = true,
+  @override final bool confirmBeforePostingMediaWithoutComment = false,
+  @override final bool confirmWhenRevealingSensitiveMedia = false,
+  @override final LaunchMode launchMode = LaunchMode.externalApplication,
+  @override final String? mediaSaveLocation,
+  @override final bool enableSpellCheck = false,
+  @override final bool enablePredictiveBack = false,
+  @override final bool enableHorizontalSwipe = true,
+  @override
+  final double timelinesPageSpringStiffness =
+      defaultTimelinesPageSpringStiffness,
+  @override
+  final double timelinesPageMinFlingFactor = defaultTimelinesPageMinFlingFactor,
+  @override final bool enableHapticFeedback = true,
 
-    // Theme
-    @Default(ThemeMode.system) ThemeMode themeMode,
-    @Default('a58a0abb-ff8c-476a-8dec-0ad7837e7e96') String lightThemeId,
-    @Default('66e7e5a9-cd43-42cd-837d-12f47841fa34') String darkThemeId,
+  // Theme
+  @override final ThemeMode themeMode = ThemeMode.system,
+  @override final String lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
+  @override final String darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34',
 
-    // Sounds
-    @Default(SoundSettings()) SoundSettings sound,
+  // Sounds
+  @override final SoundSettings sound = const SoundSettings(),
 
-    // User select dialog
-    @Default(true) bool searchUsersByUsername,
-  }) = _GeneralSettings;
-
-  factory GeneralSettings.fromJson(Map<String, dynamic> json) =>
+  // User select dialog
+  @override final bool searchUsersByUsername = true,
+}) with _$GeneralSettings {
+  factory fromJson(Map<String, Object?> json) =>
       _$GeneralSettingsFromJson(json);
+
+  Map<String, Object?> toJson() => _$GeneralSettingsToJson(this);
 }
 
 enum SensitiveMediaDisplay { respect, ignore, force }
@@ -182,9 +187,7 @@ enum EmojiStyle { native, twemoji }
 
 enum NoteActionType { none, expand, menu, reaction }
 
-class _ColorConverter extends JsonConverter<Color, int> {
-  const _ColorConverter();
-
+class const _ColorConverter() extends JsonConverter<Color, int> {
   @override
   Color fromJson(int json) {
     return Color(json);

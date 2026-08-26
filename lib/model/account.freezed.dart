@@ -12,19 +12,16 @@ part of 'account.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Account {
 
- String get host; String? get username;
+@override String get host;@override String? get username;
 /// Create a copy of Account
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $AccountCopyWith<Account> get copyWith => _$AccountCopyWithImpl<Account>(this as Account, _$identity);
 
-  /// Serializes this Account to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -32,7 +29,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Account&&(identical(other.host, host) || other.host == host)&&(identical(other.username, username) || other.username == username));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,host,username);
 
@@ -45,7 +42,7 @@ abstract mixin class $AccountCopyWith<$Res>  {
   factory $AccountCopyWith(Account value, $Res Function(Account) _then) = _$AccountCopyWithImpl;
 @useResult
 $Res call({
- String host, String? username
+@override String host,@override String? username
 });
 
 
@@ -151,7 +148,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String host,  String? username)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String host, @override  String? username)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Account() when $default != null:
 return $default(_that.host,_that.username);case _:
@@ -172,7 +169,7 @@ return $default(_that.host,_that.username);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String host,  String? username)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String host, @override  String? username)  $default,) {final _that = this;
 switch (_that) {
 case _Account():
 return $default(_that.host,_that.username);case _:
@@ -192,7 +189,7 @@ return $default(_that.host,_that.username);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String host,  String? username)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String host, @override  String? username)?  $default,) {final _that = this;
 switch (_that) {
 case _Account() when $default != null:
 return $default(_that.host,_that.username);case _:
@@ -204,14 +201,14 @@ return $default(_that.host,_that.username);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
+
 
 class _Account extends Account {
-  const _Account({required this.host, this.username}): super._();
-  factory _Account.fromJson(Map<String, dynamic> json) => _$AccountFromJson(json);
+  const _Account({@override required this.host, @override this.username}): super._();
+  
 
-@override final  String host;
-@override final  String? username;
+@override@override final  String host;
+@override@override final  String? username;
 
 /// Create a copy of Account
 /// with the given fields replaced by the non-null parameter values.
@@ -219,17 +216,14 @@ class _Account extends Account {
 @pragma('vm:prefer-inline')
 _$AccountCopyWith<_Account> get copyWith => __$AccountCopyWithImpl<_Account>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$AccountToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _Account&&(identical(other.host, host) || other.host == host)&&(identical(other.username, username) || other.username == username));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,host,username);
 
@@ -242,7 +236,7 @@ abstract mixin class _$AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   factory _$AccountCopyWith(_Account value, $Res Function(_Account) _then) = __$AccountCopyWithImpl;
 @override @useResult
 $Res call({
- String host, String? username
+@override String host,@override String? username
 });
 
 

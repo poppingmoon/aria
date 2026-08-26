@@ -25,11 +25,10 @@ import '../../dialog/message_dialog.dart';
 import '../../dialog/sw_register_dialog.dart';
 import '../../widget/account_settings_scaffold.dart';
 
-class NotificationsSettingsPage extends ConsumerWidget {
-  const NotificationsSettingsPage({super.key, required this.account});
-
-  final Account account;
-
+class const NotificationsSettingsPage({
+  super.key,
+  required final Account account,
+}) extends ConsumerWidget {
   Future<void> _subscribe(WidgetRef ref) async {
     final String endpoint;
     ({String auth, String publicKey})? publicKeySet;
@@ -265,11 +264,8 @@ class NotificationsSettingsPage extends ConsumerWidget {
   }
 }
 
-class _UnifiedPushFunctions implements UnifiedPushFunctions {
-  const _UnifiedPushFunctions({this.vapid});
-
-  final String? vapid;
-
+class const _UnifiedPushFunctions({final String? vapid})
+    implements UnifiedPushFunctions {
   @override
   Future<String?> getDistributor() {
     return UnifiedPush.getDistributor();

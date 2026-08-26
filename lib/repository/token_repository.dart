@@ -2,9 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../model/account.dart';
 
-class TokenRepository {
-  const TokenRepository();
-
+class const TokenRepository() {
   static const storage = FlutterSecureStorage();
 
   Future<void> writeToken(Account account, String token) async {

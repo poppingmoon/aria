@@ -22,16 +22,11 @@ import '../widget/mfm/code.dart';
 import '../widget/url_sheet.dart';
 import 'error_message_dialog.dart';
 
-class SwRegisterDialog extends HookConsumerWidget {
-  const SwRegisterDialog({
-    super.key,
-    required this.account,
-    required this.request,
-  });
-
-  final Account account;
-  final SwRegisterRequest request;
-
+class const SwRegisterDialog({
+  super.key,
+  required final Account account,
+  required final SwRegisterRequest request,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final serverUrl = ref.watch(serverUrlNotifierProvider(account.host));

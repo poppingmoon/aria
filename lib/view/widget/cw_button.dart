@@ -5,18 +5,12 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/misskey_colors_provider.dart';
 
-class CwButton extends ConsumerWidget {
-  const CwButton({
-    super.key,
-    required this.note,
-    required this.onPressed,
-    required this.isOpen,
-  });
-
-  final Note note;
-  final void Function(bool value)? onPressed;
-  final bool isOpen;
-
+class const CwButton({
+  super.key,
+  required final Note note,
+  required final void Function(bool value)? onPressed,
+  required final bool isOpen,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colors = ref.watch(

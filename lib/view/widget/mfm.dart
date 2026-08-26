@@ -52,50 +52,28 @@ import 'unicode_emoji.dart';
 import 'url_sheet.dart';
 import 'url_widget.dart';
 
-class Mfm extends HookConsumerWidget {
-  const Mfm({
-    super.key,
-    required this.account,
-    this.leadingSpans,
-    this.text,
-    this.nodes,
-    this.trailingSpans,
-    this.builder,
-    this.simple = false,
-    this.style,
-    this.emojis,
-    this.author,
-    this.noteId,
-    this.messageId,
-    this.nyaize = false,
-    this.isUserDescription = false,
-    this.onClickEv,
-    this.textAlign,
-    this.overflow,
-    this.maxLines,
-    this.enableEmojiFadeIn,
-  });
-
-  final Account account;
-  final List<InlineSpan>? leadingSpans;
-  final String? text;
-  final List<MfmNode>? nodes;
-  final List<InlineSpan>? trailingSpans;
-  final Widget Function(BuildContext context, InlineSpan span)? builder;
-  final bool simple;
-  final TextStyle? style;
-  final Map<String, String>? emojis;
-  final User? author;
-  final String? noteId;
-  final String? messageId;
-  final bool nyaize;
-  final bool isUserDescription;
-  final void Function(String clickEv)? onClickEv;
-  final TextAlign? textAlign;
-  final TextOverflow? overflow;
-  final int? maxLines;
-  final bool? enableEmojiFadeIn;
-
+class const Mfm({
+  super.key,
+  required final Account account,
+  final List<InlineSpan>? leadingSpans,
+  final String? text,
+  final List<MfmNode>? nodes,
+  final List<InlineSpan>? trailingSpans,
+  final Widget Function(BuildContext context, InlineSpan span)? builder,
+  final bool simple = false,
+  final TextStyle? style,
+  final Map<String, String>? emojis,
+  final User? author,
+  final String? noteId,
+  final String? messageId,
+  final bool nyaize = false,
+  final bool isUserDescription = false,
+  final void Function(String clickEv)? onClickEv,
+  final TextAlign? textAlign,
+  final TextOverflow? overflow,
+  final int? maxLines,
+  final bool? enableEmojiFadeIn,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nodes = useMemoized(() {
@@ -309,37 +287,22 @@ class Mfm extends HookConsumerWidget {
   }
 }
 
-class _SimpleMfm extends StatelessWidget {
-  const _SimpleMfm({
-    required this.account,
-    required this.leadingSpans,
-    required this.nodes,
-    required this.trailingSpans,
-    required this.builder,
-    required this.config,
-    required this.emojis,
-    required this.author,
-    required this.overflow,
-    required this.maxLines,
-    required this.needsIsolate,
-    required this.enableEmojiFadeIn,
-    required this.emojiStyle,
-  });
-
-  final Account account;
-  final List<InlineSpan>? leadingSpans;
-  final List<MfmNode>? nodes;
-  final List<InlineSpan>? trailingSpans;
-  final Widget Function(BuildContext context, InlineSpan span)? builder;
-  final MfmConfig config;
-  final Map<String, String>? emojis;
-  final User? author;
-  final TextOverflow? overflow;
-  final int? maxLines;
-  final bool needsIsolate;
-  final bool? enableEmojiFadeIn;
-  final EmojiStyle emojiStyle;
-
+class const _SimpleMfm({
+  required final Account account,
+  required final List<InlineSpan>? leadingSpans,
+  required final List<MfmNode>? nodes,
+  required final List<InlineSpan>? trailingSpans,
+  required final Widget Function(BuildContext context, InlineSpan span)?
+  builder,
+  required final MfmConfig config,
+  required final Map<String, String>? emojis,
+  required final User? author,
+  required final TextOverflow? overflow,
+  required final int? maxLines,
+  required final bool needsIsolate,
+  required final bool? enableEmojiFadeIn,
+  required final EmojiStyle emojiStyle,
+}) extends StatelessWidget {
   List<InlineSpan> _buildNodes(
     BuildContext context,
     MfmConfig config,
@@ -526,78 +489,44 @@ MfmInline _removeNewLines(MfmInline node) {
   };
 }
 
-class _Mfm extends StatelessWidget {
-  const _Mfm({
-    required this.account,
-    required this.leadingSpans,
-    required this.nodes,
-    required this.trailingSpans,
-    required this.builder,
-    required this.config,
-    required this.emojis,
-    required this.author,
-    required this.noteId,
-    required this.messageId,
-    required this.shouldNyaize,
-    required this.isUserDescription,
-    required this.onClickEv,
-    required this.overflow,
-    required this.maxLines,
-    required this.needsIsolate,
-    required this.enableEmojiFadeIn,
-    required this.enableAdvanced,
-    required this.enableAnimation,
-    required this.serifFontFamily,
-    required this.monospaceFontFamily,
-    required this.cursiveFontFamily,
-    required this.fantasyFontFamily,
-    required this.emojiFontFamily,
-    required this.mathFontFamily,
-    required this.emojiStyle,
-    required this.colors,
-    required this.urls,
-    required this.controller,
-    required this.recognizers,
-    required this.callbacks,
-    required this.activeLinkId,
-  });
-
-  final Account account;
-  final List<InlineSpan>? leadingSpans;
-  final List<MfmNode>? nodes;
-  final List<InlineSpan>? trailingSpans;
-  final Widget Function(BuildContext context, InlineSpan span)? builder;
-  final MfmConfig config;
-  final Map<String, String>? emojis;
-  final User? author;
-  final String? noteId;
-  final String? messageId;
-  final bool shouldNyaize;
-  final bool isUserDescription;
-  final void Function(String clickEv)? onClickEv;
-  final TextOverflow? overflow;
-  final int? maxLines;
-  final bool needsIsolate;
-  final bool? enableEmojiFadeIn;
-  final bool enableAdvanced;
-  final bool enableAnimation;
-  final String? serifFontFamily;
-  final String? monospaceFontFamily;
-  final String? cursiveFontFamily;
-  final String? fantasyFontFamily;
-  final String? emojiFontFamily;
-  final String? mathFontFamily;
-  final EmojiStyle emojiStyle;
-  final MisskeyColors colors;
-  final Map<String, DisplayUrl?> urls;
-  final AnimationController controller;
-  final Map<int, GestureRecognizer> recognizers;
-  final ObjectRef<
+class const _Mfm({
+  required final Account account,
+  required final List<InlineSpan>? leadingSpans,
+  required final List<MfmNode>? nodes,
+  required final List<InlineSpan>? trailingSpans,
+  required final Widget Function(BuildContext context, InlineSpan span)?
+  builder,
+  required final MfmConfig config,
+  required final Map<String, String>? emojis,
+  required final User? author,
+  required final String? noteId,
+  required final String? messageId,
+  required final bool shouldNyaize,
+  required final bool isUserDescription,
+  required final void Function(String clickEv)? onClickEv,
+  required final TextOverflow? overflow,
+  required final int? maxLines,
+  required final bool needsIsolate,
+  required final bool? enableEmojiFadeIn,
+  required final bool enableAdvanced,
+  required final bool enableAnimation,
+  required final String? serifFontFamily,
+  required final String? monospaceFontFamily,
+  required final String? cursiveFontFamily,
+  required final String? fantasyFontFamily,
+  required final String? emojiFontFamily,
+  required final String? mathFontFamily,
+  required final EmojiStyle emojiStyle,
+  required final MisskeyColors colors,
+  required final Map<String, DisplayUrl?> urls,
+  required final AnimationController controller,
+  required final Map<int, GestureRecognizer> recognizers,
+  required final ObjectRef<
     Map<int, ({void Function()? onTap, void Function()? onLongPress})>
   >
-  callbacks;
-  final ValueNotifier<int?> activeLinkId;
-
+  callbacks,
+  required final ValueNotifier<int?> activeLinkId,
+}) extends StatelessWidget {
   List<InlineSpan> _buildNodes(
     BuildContext context,
     MfmConfig config,

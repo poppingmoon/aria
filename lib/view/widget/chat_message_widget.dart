@@ -31,22 +31,14 @@ import 'url_preview.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class ChatMessageWidget extends HookConsumerWidget {
-  const ChatMessageWidget({
-    super.key,
-    required this.account,
-    required this.message,
-    this.user,
-    this.showAvatar = true,
-    this.updateMessage,
-  });
-
-  final Account account;
-  final ChatMessage message;
-  final User? user;
-  final bool showAvatar;
-  final void Function({bool deleted})? updateMessage;
-
+class const ChatMessageWidget({
+  super.key,
+  required final Account account,
+  required final ChatMessage message,
+  final User? user,
+  final bool showAvatar = true,
+  final void Function({bool deleted})? updateMessage,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -191,19 +183,12 @@ class ChatMessageWidget extends HookConsumerWidget {
   }
 }
 
-class _ChatMessageSheet extends ConsumerWidget {
-  const _ChatMessageSheet({
-    required this.account,
-    required this.message,
-    required this.user,
-    required this.updateMessage,
-  });
-
-  final Account account;
-  final ChatMessage message;
-  final User? user;
-  final void Function({bool deleted})? updateMessage;
-
+class const _ChatMessageSheet({
+  required final Account account,
+  required final ChatMessage message,
+  required final User? user,
+  required final void Function({bool deleted})? updateMessage,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -312,21 +297,13 @@ class _ChatMessageSheet extends ConsumerWidget {
   }
 }
 
-class _ReactionsViewer extends HookConsumerWidget {
-  const _ReactionsViewer({
-    required this.account,
-    required this.messageId,
-    required this.reactions,
-    required this.user,
-    required this.updateMessage,
-  });
-
-  final Account account;
-  final String messageId;
-  final List<ChatMessageReaction> reactions;
-  final User? user;
-  final void Function()? updateMessage;
-
+class const _ReactionsViewer({
+  required final Account account,
+  required final String messageId,
+  required final List<ChatMessageReaction> reactions,
+  required final User? user,
+  required final void Function()? updateMessage,
+}) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final previousReactionsCount = useState<int?>(null);
@@ -362,23 +339,14 @@ class _ReactionsViewer extends HookConsumerWidget {
   }
 }
 
-class _ReactionButton extends ConsumerWidget {
-  const _ReactionButton({
-    required this.account,
-    required this.messageId,
-    required this.reaction,
-    required this.user,
-    required this.updateMessage,
-    required this.isNewReaction,
-  });
-
-  final Account account;
-  final String messageId;
-  final ChatMessageReaction reaction;
-  final User? user;
-  final void Function()? updateMessage;
-  final bool isNewReaction;
-
+class const _ReactionButton({
+  required final Account account,
+  required final String messageId,
+  required final ChatMessageReaction reaction,
+  required final User? user,
+  required final void Function()? updateMessage,
+  required final bool isNewReaction,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
@@ -493,19 +461,12 @@ class _ReactionButton extends ConsumerWidget {
   }
 }
 
-class _EmojiWidgetWithEffect extends HookWidget {
-  const _EmojiWidgetWithEffect({
-    required this.account,
-    required this.emoji,
-    required this.style,
-    required this.isNewReaction,
-  });
-
-  final Account account;
-  final String emoji;
-  final TextStyle style;
-  final bool isNewReaction;
-
+class const _EmojiWidgetWithEffect({
+  required final Account account,
+  required final String emoji,
+  required final TextStyle style,
+  required final bool isNewReaction,
+}) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isNewReaction = useRef(this.isNewReaction);

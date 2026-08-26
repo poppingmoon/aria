@@ -13,16 +13,11 @@ import '../dialog/text_field_dialog.dart';
 import '../page/drive_page.dart';
 import 'time_widget.dart';
 
-class DriveFolderSheet extends ConsumerWidget {
-  const DriveFolderSheet({
-    super.key,
-    required this.account,
-    required this.folder,
-  });
-
-  final Account account;
-  final DriveFolder folder;
-
+class const DriveFolderSheet({
+  super.key,
+  required final Account account,
+  required final DriveFolder folder,
+}) extends ConsumerWidget {
   Future<void> _changeName(WidgetRef ref) async {
     final name = await showTextFieldDialog(
       ref.context,

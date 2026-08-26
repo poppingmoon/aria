@@ -7,11 +7,8 @@ import '../../provider/api/favorites_notifier_provider.dart';
 import '../widget/note_widget.dart';
 import '../widget/paginated_list_view.dart';
 
-class FavoritesPage extends ConsumerWidget {
-  const FavoritesPage({super.key, required this.account});
-
-  final Account account;
-
+class const FavoritesPage({super.key, required final Account account})
+    extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final favorites = ref.watch(favoritesNotifierProvider(account));

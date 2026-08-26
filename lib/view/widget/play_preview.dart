@@ -7,20 +7,13 @@ import 'mfm.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class PlayPreview extends StatelessWidget {
-  const PlayPreview({
-    super.key,
-    required this.account,
-    required this.play,
-    this.hideUserInfo = false,
-    this.onTap,
-  });
-
-  final Account account;
-  final Flash play;
-  final bool hideUserInfo;
-  final void Function()? onTap;
-
+class const PlayPreview({
+  super.key,
+  required final Account account,
+  required final Flash play,
+  final bool hideUserInfo = false,
+  final void Function()? onTap,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(

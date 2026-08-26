@@ -7,12 +7,11 @@ import '../../../provider/api/user_followers_notifier_provider.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
 
-class FollowersPage extends ConsumerWidget {
-  const FollowersPage({super.key, required this.account, required this.userId});
-
-  final Account account;
-  final String userId;
-
+class const FollowersPage({
+  super.key,
+  required final Account account,
+  required final String userId,
+}) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final followers = ref.watch(userFollowersNotifierProvider(account, userId));

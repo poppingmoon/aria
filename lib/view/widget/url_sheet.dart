@@ -5,11 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../i18n/strings.g.dart';
 import '../../util/copy_text.dart';
 
-class UrlSheet extends StatelessWidget {
-  const UrlSheet({super.key, required this.url});
-
-  final String url;
-
+class const UrlSheet({super.key, required final String url})
+    extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
