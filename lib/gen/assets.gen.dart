@@ -92,6 +92,22 @@ class $AssetsMisskeyGen {
   List<String> get values => [copying, license];
 }
 
+class $AssetsTwemojiGen {
+  const $AssetsTwemojiGen();
+
+  /// File path: assets/twemoji/LICENSE
+  String get license => 'assets/twemoji/LICENSE';
+
+  /// File path: assets/twemoji/LICENSE-GRAPHICS
+  String get licenseGraphics => 'assets/twemoji/LICENSE-GRAPHICS';
+
+  /// Directory path: assets/twemoji/assets
+  $AssetsTwemojiAssetsGen get assets => const $AssetsTwemojiAssetsGen();
+
+  /// List of all assets
+  List<String> get values => [license, licenseGraphics];
+}
+
 class $AssetsFontsBIZUDGothicGen {
   const $AssetsFontsBIZUDGothicGen();
 
@@ -140,12 +156,35 @@ class $AssetsMisskeyPackagesGen {
       const $AssetsMisskeyPackagesFrontendGen();
 }
 
+class $AssetsTwemojiAssetsGen {
+  const $AssetsTwemojiAssetsGen();
+
+  /// Directory path: assets/twemoji/assets/svg
+  $AssetsTwemojiAssetsSvgGen get svg => const $AssetsTwemojiAssetsSvgGen();
+}
+
 class $AssetsMisskeyPackagesFrontendGen {
   const $AssetsMisskeyPackagesFrontendGen();
 
   /// Directory path: assets/misskey/packages/frontend/assets
   $AssetsMisskeyPackagesFrontendAssetsGen get assets =>
       const $AssetsMisskeyPackagesFrontendAssetsGen();
+}
+
+class $AssetsTwemojiAssetsSvgGen {
+  const $AssetsTwemojiAssetsSvgGen();
+
+  /// File path: assets/twemoji/assets/svg/1f306.svg
+  String get a1f306 => 'assets/twemoji/assets/svg/1f306.svg';
+
+  /// File path: assets/twemoji/assets/svg/1f337.svg
+  String get a1f337 => 'assets/twemoji/assets/svg/1f337.svg';
+
+  /// File path: assets/twemoji/assets/svg/1fae0.svg
+  String get a1fae0 => 'assets/twemoji/assets/svg/1fae0.svg';
+
+  /// List of all assets
+  List<String> get values => [a1f306, a1f337, a1fae0];
 }
 
 class $AssetsMisskeyPackagesFrontendAssetsGen {
@@ -468,13 +507,13 @@ abstract final class Assets {
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const $AssetsEmojisGen emojis = $AssetsEmojisGen();
-  static const String flower = 'assets/flower.svg';
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsMisskeyGen misskey = $AssetsMisskeyGen();
+  static const $AssetsTwemojiGen twemoji = $AssetsTwemojiGen();
 
   /// List of all assets
-  static List<dynamic> get values => [bird, cat, flower];
+  static List<AssetGenImage> get values => [bird, cat];
 }
 
 class AssetGenImage {

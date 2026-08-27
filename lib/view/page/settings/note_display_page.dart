@@ -7,7 +7,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:multi_split_view/multi_split_view.dart';
-import 'package:twemoji_v2/twemoji_v2.dart';
 import 'package:webfont_list/webfont_list.dart';
 
 import '../../../constant/default_pinned_emojis.dart';
@@ -1492,9 +1491,7 @@ class const _NotePreview() extends HookWidget {
     final meltingFace = useFuture(
       useMemoized(
         () => rootBundle
-            .load(
-              'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🫠')}.svg',
-            )
+            .load(Assets.twemoji.assets.svg.a1fae0)
             .then(
               (bytes) => Uri.dataFromBytes(
                 bytes.buffer.asUint8List(),
@@ -1505,12 +1502,24 @@ class const _NotePreview() extends HookWidget {
     );
     final flower = useFuture(
       useMemoized(
-        () => rootBundle
-            .loadString(Assets.flower)
-            .then(
-              (content) =>
-                  Uri.dataFromString(content, mimeType: 'image/svg+xml'),
-            ),
+        () => rootBundle.loadString(Assets.twemoji.assets.svg.a1f337).then((
+          content,
+        ) {
+          final paths = content.substring(
+            content.indexOf('<path'),
+            content.lastIndexOf('/>') + 2,
+          );
+          return Uri.dataFromString('''
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+        <symbol id="flower" viewBox="0 0 36 36">
+            $paths
+        </symbol>
+    </defs>
+    <use href="#flower" transform="translate(202 70) scale(3)" />
+</svg>
+''', mimeType: 'image/svg+xml');
+        }),
       ),
     );
     final aboutIcon = useFuture(
@@ -1552,12 +1561,12 @@ class const _NotePreview() extends HookWidget {
     final cityscapeAtDusk = useFuture(
       useMemoized(
         () => rootBundle
-            .loadString(
-              'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🌆')}.svg',
-            )
+            .load(Assets.twemoji.assets.svg.a1f306)
             .then(
-              (content) =>
-                  Uri.dataFromString(content, mimeType: 'image/svg+xml'),
+              (bytes) => Uri.dataFromBytes(
+                bytes.buffer.asUint8List(),
+                mimeType: 'image/svg+xml',
+              ),
             ),
       ),
     );
