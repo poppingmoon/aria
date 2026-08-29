@@ -50,8 +50,9 @@ class const CustomEmoji({
     if (muted) {
       return InkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         child: TooltipVisibility(
-          visible: !disableTooltip,
+          visible: onLongPress == null && !disableTooltip,
           child: Tooltip(
             message: emoji.replaceFirst('@.', ''),
             child: Assets.misskey.packages.frontend.assets.unknown.image(
