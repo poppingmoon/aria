@@ -57,6 +57,11 @@ import 'view/dialog/error_message_dialog.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
+    for (final asset in Assets.emojis.values) {
+      yield LicenseEntryWithLineBreaks([
+        'emojis',
+      ], await rootBundle.loadString(asset));
+    }
     yield LicenseEntryWithLineBreaks([
       'BIZ UDGothic',
     ], await rootBundle.loadString(Assets.fonts.bIZUDGothic.ofl));
@@ -69,14 +74,9 @@ void main() async {
     yield LicenseEntryWithLineBreaks([
       'Twemoji Mozilla',
     ], await rootBundle.loadString(Assets.fonts.twemojiMozilla.license));
-    for (final asset in Assets.emojis.values) {
-      yield LicenseEntryWithLineBreaks([
-        'emojis',
-      ], await rootBundle.loadString(asset));
-    }
     for (final asset in Assets.misskey.values) {
       yield LicenseEntryWithLineBreaks([
-        'misskey',
+        'Misskey',
       ], await rootBundle.loadString(asset));
     }
     for (final asset in Assets.twemoji.values) {
