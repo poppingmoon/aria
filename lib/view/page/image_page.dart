@@ -6,7 +6,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart' hide Image;
-import 'package:twemoji_v2/twemoji_v2.dart';
 
 import '../../extension/image_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -18,6 +17,7 @@ import '../../provider/emoji_url_provider.dart';
 import '../../provider/overlay_layers_notifier_provider.dart';
 import '../../util/edit_image.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/twemoji.dart';
 import '../dialog/color_picker_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/text_field_dialog.dart';
@@ -492,11 +492,7 @@ class const _ImagePage({
                         ),
                       );
                 } else {
-                  final unicode = TwemojiUtils.toUnicode(emoji);
-                  final url = Uri.https(
-                    'raw.githubusercontent.com',
-                    'jdecked/twemoji/main/assets/72x72/$unicode.png',
-                  ).toString();
+                  final url = getTwemojiUrl(emoji).toString();
                   final file = await ref
                       .read(cacheManagerProvider)
                       .getSingleFile(url);

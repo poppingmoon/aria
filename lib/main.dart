@@ -17,7 +17,6 @@ import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
-import 'package:twemoji_v2/twemoji_v2.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
@@ -52,11 +51,17 @@ import 'repository/window_position_repository.dart';
 import 'repository/window_size_repository.dart';
 import 'router/router.dart';
 import 'util/get_retry_delay.dart';
+import 'util/twemoji.dart';
 import 'view/dialog/error_message_dialog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LicenseRegistry.addLicense(() async* {
+    for (final asset in Assets.emojis.values) {
+      yield LicenseEntryWithLineBreaks([
+        'emojis',
+      ], await rootBundle.loadString(asset));
+    }
     yield LicenseEntryWithLineBreaks([
       'BIZ UDGothic',
     ], await rootBundle.loadString(Assets.fonts.bIZUDGothic.ofl));
@@ -66,14 +71,17 @@ void main() async {
     yield LicenseEntryWithLineBreaks([
       'Pretendard',
     ], await rootBundle.loadString(Assets.fonts.pretendard.license));
-    for (final asset in Assets.emojis.values) {
-      yield LicenseEntryWithLineBreaks([
-        'emojis',
-      ], await rootBundle.loadString(asset));
-    }
+    yield LicenseEntryWithLineBreaks([
+      'Twemoji Mozilla',
+    ], await rootBundle.loadString(Assets.fonts.twemojiMozilla.license));
     for (final asset in Assets.misskey.values) {
       yield LicenseEntryWithLineBreaks([
-        'misskey',
+        'Misskey',
+      ], await rootBundle.loadString(asset));
+    }
+    for (final asset in Assets.twemoji.values) {
+      yield LicenseEntryWithLineBreaks([
+        'Twemoji',
       ], await rootBundle.loadString(asset));
     }
   });
@@ -670,18 +678,7 @@ class const Aria({super.key}) extends HookConsumerWidget {
                         ),
                       },
                     }
-                  : Uri(
-                      scheme: 'https',
-                      host: 'raw.githubusercontent.com',
-                      pathSegments: [
-                        'jdecked',
-                        'twemoji',
-                        'main',
-                        'assets',
-                        '72x72',
-                        '${TwemojiUtils.toUnicode(reaction)}.png',
-                      ],
-                    ),
+                  : getTwemojiUrl(reaction),
             NotificationPushNotification(:final body) =>
               body.user?.avatarUrl ?? body.icon,
             NewChatMessagePushNotification(:final body) =>

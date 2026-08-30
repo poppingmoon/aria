@@ -16,6 +16,7 @@ import '../../constant/fonts.dart';
 import '../../extension/list_mfm_node_extension.dart';
 import '../../extension/string_extension.dart';
 import '../../extension/text_style_extension.dart';
+import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
@@ -23,6 +24,7 @@ import '../../model/mfm_config.dart';
 import '../../model/misskey_colors.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/muted_emojis_notifier_provider.dart';
 import '../../util/force_accept_gesture_recognizer.dart';
 import '../../util/get_link_background_color.dart';
 import '../../util/navigate.dart';
@@ -48,7 +50,6 @@ import 'mfm/spin.dart';
 import 'mfm/tada.dart';
 import 'mfm/twitch.dart';
 import 'time_widget.dart';
-import 'unicode_emoji.dart';
 import 'url_sheet.dart';
 import 'url_widget.dart';
 
@@ -119,6 +120,7 @@ class const Mfm({
         ),
       ),
     );
+    final mutedEmojis = ref.watch(mutedEmojisNotifierProvider(account));
     final theme = Theme.of(context);
     final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
     final style = defaultTextStyle
@@ -149,13 +151,14 @@ class const Mfm({
         needsIsolate: needsIsolate,
         enableEmojiFadeIn: enableEmojiFadeIn,
         emojiStyle: emojiStyle,
+        mutedEmojis: mutedEmojis,
       );
     }
 
     final linkNodes = useMemoized(
       () => nodes?.extract(
         (node) => switch (node) {
-          MfmUrl() || MfmLink() || MfmHashtag() => true,
+          MfmUnicodeEmoji() || MfmUrl() || MfmLink() || MfmHashtag() => true,
           _ => false,
         },
       ),
@@ -193,6 +196,18 @@ class const Mfm({
         callbacks.value = {
           for (final node in linkNodes)
             identityHashCode(node): switch (node) {
+              MfmUnicodeEmoji(:final emoji) => (
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => EmojiSheet(
+                    account: account,
+                    emoji: emoji,
+                    targetNoteId: noteId,
+                    targetMessageId: messageId,
+                  ),
+                ),
+                onLongPress: null,
+              ),
               MfmUrl(:final url) || MfmLink(:final url) => (
                 onTap: () => navigate(ref, account, url),
                 onLongPress: () => showModalBottomSheet<void>(
@@ -211,29 +226,33 @@ class const Mfm({
         };
         recognizers.value = {
           for (final linkId in linkNodes.map(identityHashCode))
-            linkId: ForceAcceptGestureRecognizer()
-              ..onLongPressDown = (_) {
-                activeLinkId.value = linkId;
-                controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
-              }
-              ..onLongPressUp = () {
-                if (callbacks.value[linkId]?.onTap case final onTap?) {
-                  Feedback.forTap(context);
-                  onTap();
-                }
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              }
-              ..onLongPressCancel = () {
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              }
-              ..onLongPress = () {
-                if (callbacks.value[linkId]?.onLongPress
-                    case final onLongPress?) {
-                  Feedback.forLongPress(context);
-                  onLongPress();
-                }
-                controller.animateTo(0.0, curve: Curves.easeOut);
-              },
+            linkId:
+                ForceAcceptGestureRecognizer(
+                    getScrollPosition: (axis) =>
+                        Scrollable.maybeOf(context, axis: axis)?.position,
+                  )
+                  ..onLongPressDown = (_) {
+                    activeLinkId.value = linkId;
+                    controller.animateTo(1.0, curve: Curves.fastOutSlowIn);
+                  }
+                  ..onLongPressUp = () {
+                    if (callbacks.value[linkId]?.onTap case final onTap?) {
+                      Feedback.forTap(context);
+                      onTap();
+                    }
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  }
+                  ..onLongPressCancel = () {
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  }
+                  ..onLongPress = () {
+                    if (callbacks.value[linkId]?.onLongPress
+                        case final onLongPress?) {
+                      Feedback.forLongPress(context);
+                      onLongPress();
+                    }
+                    controller.animateTo(0.0, curve: Curves.easeOut);
+                  },
         };
       }
 
@@ -277,6 +296,7 @@ class const Mfm({
       emojiFontFamily: emojiFontFamily,
       mathFontFamily: mathFontFamily,
       emojiStyle: emojiStyle,
+      mutedEmojis: mutedEmojis,
       colors: colors,
       urls: urls,
       controller: controller,
@@ -302,6 +322,7 @@ class const _SimpleMfm({
   required final bool needsIsolate,
   required final bool? enableEmojiFadeIn,
   required final EmojiStyle emojiStyle,
+  required final Set<String> mutedEmojis,
 }) extends StatelessWidget {
   List<InlineSpan> _buildNodes(
     BuildContext context,
@@ -333,7 +354,9 @@ class const _SimpleMfm({
               ? LayoutBuilder(
                   builder: (context, constraints) => ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxWidth: constraints.maxWidth - config.style.fontSize!,
+                      maxWidth:
+                          constraints.maxWidth -
+                          (config.style.fontSize ?? 14.0),
                     ),
                     child: CustomEmoji(
                       account: account,
@@ -354,7 +377,7 @@ class const _SimpleMfm({
                   url: emojis?[name],
                   host: author?.host,
                   useOriginalSize: config.scale >= 2.5,
-                  height: config.style.fontSize! * config.scale,
+                  height: (config.style.fontSize ?? 14.0) * config.scale,
                   opacity: config.opacity,
                   fit: BoxFit.cover,
                   alignment: Alignment.centerLeft,
@@ -372,26 +395,33 @@ class const _SimpleMfm({
                 ),
         );
       case MfmUnicodeEmoji(:final emoji):
-        return WidgetSpan(
-          alignment: switch (emojiStyle) {
-            EmojiStyle.native => PlaceholderAlignment.baseline,
-            EmojiStyle.twemoji => PlaceholderAlignment.middle,
-          },
-          baseline: TextBaseline.alphabetic,
-          child: UnicodeEmoji(
-            account: account,
-            emoji: emoji,
+        if (mutedEmojis.contains(emoji)) {
+          return WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Assets.misskey.packages.frontend.assets.unknown.image(
+              height: (config.style.fontSize ?? 14.0) * config.scale,
+              opacity: AlwaysStoppedAnimation(
+                (config.style.color?.a ?? 1.0) * config.opacity,
+              ),
+              fit: BoxFit.cover,
+              alignment: Alignment.centerLeft,
+            ),
+          );
+        } else {
+          return TextSpan(
+            text: emoji,
             style: config.style.apply(
+              fontFamily: switch (emojiStyle) {
+                EmojiStyle.native => null,
+                EmojiStyle.twemoji => FontFamily.twemojiMozilla,
+              },
               fontSizeFactor: config.scale,
               color: config.style.color?.withValues(
                 alpha: (config.style.color?.a ?? 1.0) * config.opacity,
               ),
             ),
-            inline: true,
-            fit: BoxFit.cover,
-            alignment: Alignment.centerLeft,
-          ),
-        );
+          );
+        }
       case MfmPlain(:final text):
         return TextSpan(
           text: text,
@@ -517,6 +547,7 @@ class const _Mfm({
   required final String? emojiFontFamily,
   required final String? mathFontFamily,
   required final EmojiStyle emojiStyle,
+  required final Set<String> mutedEmojis,
   required final MisskeyColors colors,
   required final Map<String, DisplayUrl?> urls,
   required final AnimationController controller,
@@ -650,7 +681,7 @@ class const _Mfm({
                 child: Icon(
                   Icons.open_in_new,
                   color: colors.link.withValues(alpha: config.opacity),
-                  size: config.style.fontSize! * config.scale,
+                  size: (config.style.fontSize ?? 14.0) * config.scale,
                 ),
               ),
             ),
@@ -685,7 +716,7 @@ class const _Mfm({
                 child: Icon(
                   Icons.open_in_new,
                   color: colors.link.withValues(alpha: config.opacity),
-                  size: config.style.fontSize! * config.scale,
+                  size: (config.style.fontSize ?? 14.0) * config.scale,
                 ),
               ),
             ),
@@ -807,7 +838,9 @@ class const _Mfm({
                 ? LayoutBuilder(
                     builder: (context, constraints) => ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxWidth: constraints.maxWidth - config.style.fontSize!,
+                        maxWidth:
+                            constraints.maxWidth -
+                            (config.style.fontSize ?? 14.0),
                       ),
                       child: CustomEmoji(
                         account: account,
@@ -828,7 +861,8 @@ class const _Mfm({
                     url: emojis?[name],
                     host: author?.host,
                     useOriginalSize: config.scale >= 2.5,
-                    height: config.style.fontSize! * config.scale * 2.0,
+                    height:
+                        (config.style.fontSize ?? 14.0) * config.scale * 2.0,
                     opacity: config.opacity,
                     fit: BoxFit.cover,
                     alignment: Alignment.centerLeft,
@@ -853,24 +887,10 @@ class const _Mfm({
           ),
         );
       case MfmUnicodeEmoji(:final emoji):
-        return WidgetSpan(
-          alignment: switch (emojiStyle) {
-            EmojiStyle.native => PlaceholderAlignment.baseline,
-            EmojiStyle.twemoji => PlaceholderAlignment.middle,
-          },
-          baseline: TextBaseline.alphabetic,
-          child: _buildLinkWidget(
-            context,
-            linkId: config.linkId,
-            child: UnicodeEmoji(
-              account: account,
-              emoji: emoji,
-              style: config.style.apply(
-                fontSizeFactor: config.scale,
-                color: config.style.color?.withValues(
-                  alpha: (config.style.color?.a ?? 1.0) * config.opacity,
-                ),
-              ),
+        if (mutedEmojis.contains(emoji)) {
+          return WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: InkWell(
               onTap: () => showModalBottomSheet<void>(
                 context: context,
                 builder: (context) => EmojiSheet(
@@ -880,12 +900,39 @@ class const _Mfm({
                   targetMessageId: messageId,
                 ),
               ),
-              inline: true,
-              fit: BoxFit.cover,
-              alignment: Alignment.centerLeft,
+              child: Assets.misskey.packages.frontend.assets.unknown.image(
+                height: (config.style.fontSize ?? 14.0) * config.scale,
+                opacity: AlwaysStoppedAnimation(
+                  (config.style.color?.a ?? 1.0) * config.opacity,
+                ),
+                fit: BoxFit.cover,
+                alignment: Alignment.centerLeft,
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          final linkId = identityHashCode(node);
+          return _buildLinkSpan(
+            linkId: linkId,
+            text: emoji,
+            style: config.style.apply(
+              fontFamily: switch (emojiStyle) {
+                EmojiStyle.native => null,
+                EmojiStyle.twemoji => FontFamily.twemojiMozilla,
+              },
+              fontSizeFactor: config.scale,
+              color: config.style.color?.withValues(
+                alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+              ),
+              backgroundColor: activeLinkId.value == linkId
+                  ? getLinkBackgroundColor(
+                      Theme.brightnessOf(context),
+                      controller.value,
+                    )
+                  : null,
+            ),
+          );
+        }
       case MfmMathInline(:final formula):
         return WidgetSpan(
           alignment: PlaceholderAlignment.baseline,
@@ -1445,10 +1492,10 @@ class const _Mfm({
               offset: Offset(
                 (safeParseDouble(args['x']) ?? 0.0) *
                     config.scale *
-                    config.style.fontSize!,
+                    (config.style.fontSize ?? 14.0),
                 (safeParseDouble(args['y']) ?? 0.0) *
                     config.scale *
-                    config.style.fontSize!,
+                    (config.style.fontSize ?? 14.0),
               ),
               child: Text.rich(
                 TextSpan(

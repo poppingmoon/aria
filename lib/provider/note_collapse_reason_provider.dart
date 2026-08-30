@@ -25,6 +25,10 @@ enum CollapseReason { long, large }
         if (newLines < 0) {
           return (CollapseReason.large, null);
         }
+      case MfmUnicodeEmoji():
+        length -= 1;
+      case MfmEmojiCode():
+        length -= 2;
       case MfmPlain(:final text):
         length -= text.length;
         newLines -= '\n'.allMatches(text).length;

@@ -134,10 +134,6 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/tinycolor2
       ref: 030e8d5f6167071016ebc9fe7359003a4f78dcc3
-  twemoji_v2:
-    git:
-      url: https://github.com/poppingmoon/twemoji_v2
-      ref: 4e8febedae9dc0d9ce47b4f6347c83d0bed464bf
   unifiedpush: ^6.2.0
   unifiedpush_ui:
     git:
@@ -219,6 +215,7 @@ flutter:
     - assets/fonts/BIZ_UDGothic/OFL.txt
     - assets/fonts/Noto_Serif_JP/OFL.txt
     - assets/fonts/Pretendard/LICENSE.txt
+    - assets/fonts/Twemoji_Mozilla/LICENSE.md
     - assets/icons/aria.png
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
@@ -226,6 +223,8 @@ flutter:
     - assets/misskey/packages/frontend/assets/sounds/aisha/
     - assets/misskey/packages/frontend/assets/sounds/noizenecio/
     - assets/misskey/packages/frontend/assets/sounds/syuilo/
+    - assets/twemoji/
+    - assets/twemoji/assets/svg/
   fonts:
     - family: BIZ UDGothic
       fonts:
@@ -239,6 +238,9 @@ flutter:
     - family: Pretendard
       fonts:
         - asset: assets/fonts/Pretendard/PretendardVariable.ttf
+    - family: Twemoji Mozilla
+      fonts:
+        - asset: assets/fonts/Twemoji_Mozilla/TwemojiMozilla.ttf
 
 flutter_launcher_icons:
   image_path: assets/icons/aria.png

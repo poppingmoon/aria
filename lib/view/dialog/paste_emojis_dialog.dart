@@ -117,7 +117,10 @@ class const _PastePinnedEmojisDescription({required final Uri url})
       duration: kLongPressTimeout - kPressTimeout,
     );
     final animationValue = useAnimation(controller);
-    final recognizer = useForceAcceptGestureRecognizer();
+    final recognizer = useForceAcceptGestureRecognizer(
+      getScrollPosition: (axis) =>
+          Scrollable.maybeOf(context, axis: axis)?.position,
+    );
     useEffect(() {
       recognizer
         ..onLongPressDown = (_) {

@@ -2266,15 +2266,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
-  twemoji_v2:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "4e8febedae9dc0d9ce47b4f6347c83d0bed464bf"
-      resolved-ref: "4e8febedae9dc0d9ce47b4f6347c83d0bed464bf"
-      url: "https://github.com/poppingmoon/twemoji_v2"
-    source: git
-    version: "0.5.3"
   typed_data:
     dependency: transitive
     description:
