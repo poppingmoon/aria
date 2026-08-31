@@ -25,6 +25,8 @@ class const ImageWidget({
   final String? semanticLabel,
   final bool enableFadeIn = true,
   final bool disableAnimations = false,
+  final int? cacheWidth,
+  final int? cacheHeight,
 }) extends ConsumerWidget {
   Widget _buildPlaceholder(BuildContext context) {
     if (placeholderBuilder case final placeholderBuilder?) {
@@ -87,10 +89,14 @@ class const ImageWidget({
     }
     if (enableFadeIn) {
       return _FadeImageWidget(
-        image: CachedNetworkImageProvider(
-          url,
-          headers: {'User-Agent': ?userAgent},
-          cacheManager: cacheManager,
+        image: ResizeImage.resizeIfNeeded(
+          cacheWidth,
+          cacheHeight,
+          CachedNetworkImageProvider(
+            url,
+            headers: {'User-Agent': ?userAgent},
+            cacheManager: cacheManager,
+          ),
         ),
         width: width,
         height: height,
@@ -105,10 +111,14 @@ class const ImageWidget({
       );
     } else {
       return AnimatedImage(
-        image: CachedNetworkImageProvider(
-          url,
-          headers: {'User-Agent': ?userAgent},
-          cacheManager: cacheManager,
+        image: ResizeImage.resizeIfNeeded(
+          cacheWidth,
+          cacheHeight,
+          CachedNetworkImageProvider(
+            url,
+            headers: {'User-Agent': ?userAgent},
+            cacheManager: cacheManager,
+          ),
         ),
         width: width,
         height: height,
@@ -169,7 +179,7 @@ class const _FadeImageWidget({
         if (wasSynchronouslyLoaded) {
           return child;
         }
-        if (frame != null) {
+        if (frame != null && !isLoaded.value) {
           Future(() => isLoaded.value = true);
         }
         return _FadeStack(

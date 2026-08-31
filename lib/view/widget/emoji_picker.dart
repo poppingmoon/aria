@@ -170,6 +170,7 @@ class const EmojiPicker({
       };
     }, []);
     final theme = Theme.of(context);
+    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
 
     return ListView(
       controller: scrollController,
@@ -232,6 +233,8 @@ class const EmojiPicker({
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 }),
                 ...unicodeEmojis.map(
@@ -297,6 +300,8 @@ class const EmojiPicker({
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -377,6 +382,8 @@ class const EmojiPicker({
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -456,6 +463,9 @@ class const EmojiPicker({
                           fallbackTextStyle: style.apply(
                             fontSizeFactor: fontScaleFactor,
                           ),
+                          placeholderColor:
+                              theme.colorScheme.surfaceContainerHigh,
+                          devicePixelRatio: devicePixelRatio,
                         );
                       }).toList(),
                     ),
@@ -512,11 +522,11 @@ class const _CustomEmoji({
   required final double height,
   final double opacity = 1.0,
   required final TextStyle fallbackTextStyle,
+  required final Color placeholderColor,
+  required final double devicePixelRatio,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return CustomEmoji(
       account: account,
       emoji: emoji,
@@ -529,11 +539,12 @@ class const _CustomEmoji({
         dimension: height,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerHigh,
+            color: placeholderColor,
             borderRadius: BorderRadius.circular(8.0),
           ),
         ),
       ),
+      cacheHeight: (height * devicePixelRatio).ceil(),
     );
   }
 }
