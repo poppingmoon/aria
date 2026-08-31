@@ -28,6 +28,7 @@ class const CustomEmoji({
   final bool fallbackToImage = true,
   final bool? enableFadeIn,
   final Widget Function(BuildContext context)? placeholderBuilder,
+  final int? cacheHeight,
 }) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -136,10 +137,12 @@ class const CustomEmoji({
                       ),
                 enableFadeIn: enableFadeIn,
                 disableAnimations: disableShowingAnimatedImages,
+                cacheHeight: cacheHeight,
               ),
               semanticLabel: emoji,
               enableFadeIn: enableFadeIn,
               disableAnimations: disableShowingAnimatedImages,
+              cacheHeight: cacheHeight,
             ),
           ),
         ),

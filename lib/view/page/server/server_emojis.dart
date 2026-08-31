@@ -71,10 +71,9 @@ class const ServerEmojis({super.key, required final String host})
                                 ...customEmojis.map(
                                   (emoji) => CustomEmoji(
                                     account: Account(host: host),
-                                    emoji: emoji.emoji,
-                                    onTap: () => context.push(
-                                      '/$host/emojis/${emoji.name}',
-                                    ),
+                                    emoji: ':$emoji@.:',
+                                    onTap: () =>
+                                        context.push('/$host/emojis/$emoji'),
                                     height: style.lineHeight * 2.0,
                                     fallbackTextStyle: style.apply(
                                       fontSizeFactor: 2.0,

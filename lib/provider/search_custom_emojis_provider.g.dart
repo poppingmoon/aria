@@ -13,8 +13,8 @@ part of 'search_custom_emojis_provider.dart';
 final searchCustomEmojisProvider = SearchCustomEmojisFamily._();
 
 final class SearchCustomEmojisProvider
-    extends $FunctionalProvider<Set<Emoji>, Set<Emoji>, Set<Emoji>>
-    with $Provider<Set<Emoji>> {
+    extends $FunctionalProvider<Set<String>, Set<String>, Set<String>>
+    with $Provider<Set<String>> {
   SearchCustomEmojisProvider._({
     required SearchCustomEmojisFamily super.from,
     required (String, String) super.argument,
@@ -38,20 +38,20 @@ final class SearchCustomEmojisProvider
 
   @$internal
   @override
-  $ProviderElement<Set<Emoji>> $createElement($ProviderPointer pointer) =>
+  $ProviderElement<Set<String>> $createElement($ProviderPointer pointer) =>
       $ProviderElement(pointer);
 
   @override
-  Set<Emoji> create(Ref ref) {
+  Set<String> create(Ref ref) {
     final argument = this.argument as (String, String);
     return searchCustomEmojis(ref, argument.$1, argument.$2);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(Set<Emoji> value) {
+  Override overrideWithValue(Set<String> value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<Set<Emoji>>(value),
+      providerOverride: $SyncValueProvider<Set<String>>(value),
     );
   }
 
@@ -67,10 +67,10 @@ final class SearchCustomEmojisProvider
 }
 
 String _$searchCustomEmojisHash() =>
-    r'0c1f681dbd87f74d2f5f91454a8f7cd0333abe76';
+    r'376bebf51f341a1390358b5edc75dad424094b75';
 
 final class SearchCustomEmojisFamily extends $Family
-    with $FunctionalFamilyOverride<Set<Emoji>, (String, String)> {
+    with $FunctionalFamilyOverride<Set<String>, (String, String)> {
   SearchCustomEmojisFamily._()
     : super(
         retry: null,

@@ -15,6 +15,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/categorized_emojis_provider.dart';
 import '../../provider/custom_emoji_index_provider.dart';
 import '../../provider/emoji_provider.dart';
+import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../provider/recently_used_emojis_notifier_provider.dart';
@@ -131,6 +132,7 @@ class const EmojiPicker({
     final emojiPickerAutofocus = generalSettings.emojiPickerAutofocus;
     final emojiPickerScale = generalSettings.emojiPickerScale;
     final fontScaleFactor = 2.0 * emojiPickerScale;
+    final emojis = ref.watch(emojisNotifierProvider(account.host)).value;
     final customEmojis = ref.watch(
       searchCustomEmojisProvider(account.host, query.value),
     );
@@ -170,6 +172,7 @@ class const EmojiPicker({
       };
     }, []);
     final theme = Theme.of(context);
+    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
 
     return ListView(
       controller: scrollController,
@@ -211,27 +214,34 @@ class const EmojiPicker({
               spacing: 4.0,
               runSpacing: 4.0,
               children: [
-                ...customEmojis.map((emoji) {
-                  final enabled =
-                      targetNote == null ||
-                      checkReactionPermissions(i, targetNote!, emoji);
+                ...customEmojis.map((name) {
+                  final emoji = ':$name@.:';
+                  final enabled = switch (targetNote) {
+                    final note? => switch (emojis?[name]) {
+                      final emoji? => checkReactionPermissions(i, note, emoji),
+                      _ => true,
+                    },
+                    _ => true,
+                  };
 
                   return _CustomEmoji(
                     account: account,
-                    emoji: emoji.emoji,
+                    emoji: emoji,
                     onTap: enabled
-                        ? () => onTapEmoji(ref, emoji.emoji, keepOpen)
+                        ? () => onTapEmoji(ref, emoji, keepOpen)
                         : null,
                     onLongPress: () => showModalBottomSheet<void>(
                       context: context,
                       builder: (context) =>
-                          EmojiSheet(account: account, emoji: emoji.emoji),
+                          EmojiSheet(account: account, emoji: emoji),
                     ),
                     height: style.lineHeight * fontScaleFactor,
                     opacity: enabled ? 1.0 : 0.1,
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 }),
                 ...unicodeEmojis.map(
@@ -297,6 +307,8 @@ class const EmojiPicker({
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -377,6 +389,8 @@ class const EmojiPicker({
                     fallbackTextStyle: style.apply(
                       fontSizeFactor: fontScaleFactor,
                     ),
+                    placeholderColor: theme.colorScheme.surfaceContainerHigh,
+                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -456,6 +470,9 @@ class const EmojiPicker({
                           fallbackTextStyle: style.apply(
                             fontSizeFactor: fontScaleFactor,
                           ),
+                          placeholderColor:
+                              theme.colorScheme.surfaceContainerHigh,
+                          devicePixelRatio: devicePixelRatio,
                         );
                       }).toList(),
                     ),
@@ -512,11 +529,11 @@ class const _CustomEmoji({
   required final double height,
   final double opacity = 1.0,
   required final TextStyle fallbackTextStyle,
+  required final Color placeholderColor,
+  required final double devicePixelRatio,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return CustomEmoji(
       account: account,
       emoji: emoji,
@@ -529,11 +546,12 @@ class const _CustomEmoji({
         dimension: height,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerHigh,
+            color: placeholderColor,
             borderRadius: BorderRadius.circular(8.0),
           ),
         ),
       ),
+      cacheHeight: (height * devicePixelRatio).ceil(),
     );
   }
 }
