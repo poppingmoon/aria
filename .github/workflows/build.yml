@@ -102,7 +102,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
         with:
           distribution: zulu
           java-version: 21
@@ -182,7 +182,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
         with:
           distribution: zulu
           java-version: 21
@@ -329,9 +329,6 @@ jobs:
           channel: stable
           flutter-version-file: .fvmrc
           cache: true
-
-      - name: Allow long paths
-        run: git config --global core.longpaths true
 
       - name: Get dependencies
         run: flutter pub get
@@ -553,7 +550,7 @@ jobs:
           skip-decompress: true
 
       - name: Release
-        uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           files: aria-${{ github.ref_name }}*
           draft: true
