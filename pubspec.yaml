@@ -61,8 +61,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
-  flutter_rust_bridge: ^2.13.0-beta.6
-  flutter_rust_bridge_hooks: ^2.13.0-beta.6
+  flutter_rust_bridge: ^2.13.0
+  flutter_rust_bridge_hooks: ^2.13.0
   flutter_secure_storage: ^11.0.0
   flutter_svg: ^2.3.0
   fluttertoast: ^10.0.0

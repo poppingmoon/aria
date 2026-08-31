@@ -898,18 +898,18 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge
-      sha256: "7e8f565714dcb06197d29c74a559ee826c4eab4d586d7ccf9826aa5dc9478015"
+      sha256: ec69331e2335ab4d456c0a9fc700892c2c85b72b9c0cb39df3ecfe8833d5d5c8
       url: "https://pub.dev"
     source: hosted
-    version: "2.13.0-beta.6"
+    version: "2.13.0"
   flutter_rust_bridge_hooks:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge_hooks
-      sha256: a950952d2de2ffc2464e336bd04fe16124b863a27ed547c41b94ad635d07bfd1
+      sha256: "19900fbcaa8ddc2a4f1b13994ef34393eda129ebccc59ceb887a8fd2cf5def3e"
       url: "https://pub.dev"
     source: hosted
-    version: "2.13.0-beta.6"
+    version: "2.13.0"
   flutter_secure_storage:
     dependency: "direct main"
     description:
