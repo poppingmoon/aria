@@ -92,10 +92,10 @@ class const FilePickerSheet({
                       type: FileType.media,
                     );
                     if (!context.mounted) return;
-                    if (result?.files case final platformFiles?) {
+                    if (result.isNotEmpty) {
                       final files = await _collectFiles(
                         ref.read(fileSystemProvider),
-                        platformFiles,
+                        result,
                         type: FileType.media,
                       );
                       if (!context.mounted) return;
@@ -143,10 +143,10 @@ class const FilePickerSheet({
                     type: type ?? FileType.any,
                   );
                   if (!context.mounted) return;
-                  if (result?.files case final platformFiles?) {
+                  if (result.isNotEmpty) {
                     final files = await _collectFiles(
                       ref.read(fileSystemProvider),
-                      platformFiles,
+                      result,
                       type: type,
                     );
                     if (!context.mounted) return;
