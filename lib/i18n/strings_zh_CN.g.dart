@@ -777,8 +777,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get aboutMisskey => '关于 Misskey';
 	@override String get administrator => '管理员';
 	@override String get token => 'Token (令牌)';
-	@override String get x2fa => '双重验证';
-	@override String get setupOf2fa => '设置双重验证';
+	@override String get x2fa => '双重认证';
+	@override String get setupOf2fa => '设置双重认证';
 	@override String get totp => '验证器';
 	@override String get totpDescription => '使用验证器输入一次性密码';
 	@override String get moderator => '监察员';
@@ -940,8 +940,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get script => '脚本';
 	@override String get disablePagesScript => '禁用页面脚本';
 	@override String get updateRemoteUser => '更新远程用户信息';
-	@override String get unsetMfa => '解除双重验证';
-	@override String get unsetMfaConfirm => '确认解除双重验证吗？';
+	@override String get unsetMfa => '解除双重认证';
+	@override String get unsetMfaConfirm => '确认解除双重认证吗？';
 	@override String get unsetUserAvatar => '清除头像';
 	@override String get unsetUserAvatarConfirm => '要清除头像吗？';
 	@override String get unsetUserBanner => '清除横幅';
@@ -1361,6 +1361,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => '以机器人账户登录中';
 	@override String get tools => '工具';
 	@override String get cannotLoad => '无法加载';
+	@override String get cannotPreview => '无法预览';
 	@override String get numberOfProfileView => '个人资料展示次数';
 	@override String get like => '点赞！';
 	@override String get unlike => '取消喜欢';
@@ -1742,6 +1743,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get prepend => '加到最前';
 	@override String get urlPreviewSensitiveList => '限制显示缩略图的 URL';
 	@override String get urlPreviewSensitiveListDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔，正则表达式用斜线包裹。成功匹配则不再显示缩略图。';
+	@override String get pixelatedZoom => '像素画放大模式';
 	@override late final Translations$misskey$imageEditing_$zh_CN imageEditing_ = Translations$misskey$imageEditing_$zh_CN.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_CN imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_CN.internal(_root);
 	@override late final Translations$misskey$compression_$zh_CN compression_ = Translations$misskey$compression_$zh_CN.internal(_root);
@@ -2852,7 +2854,7 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	@override String get readAdminShowModerationLog => '查看管理日志';
 	@override String get readAdminShowUser => '查看用户的非公开信息';
 	@override String get writeAdminSuspendUser => '冻结用户';
-	@override String get writeAdminUnsetMfa => '解除用户的双重验证';
+	@override String get writeAdminUnsetMfa => '解除用户的双重认证';
 	@override String get writeAdminUnsetUserAvatar => '删除用户头像';
 	@override String get writeAdminUnsetUserBanner => '删除用户横幅';
 	@override String get writeAdminUnsuspendUser => '解除用户冻结';
@@ -3443,7 +3445,7 @@ class Translations$misskey$moderationLogTypes_$zh_CN extends Translations$misske
 	@override String get createAvatarDecoration => '新建头像挂件';
 	@override String get updateAvatarDecoration => '更新头像挂件';
 	@override String get deleteAvatarDecoration => '删除头像挂件';
-	@override String get unsetMfa => '解除用户的双重验证';
+	@override String get unsetMfa => '解除用户的双重认证';
 	@override String get unsetUserAvatar => '清除用户头像';
 	@override String get unsetUserBanner => '清除用户横幅';
 	@override String get createSystemWebhook => '新建了 SystemWebhook';

@@ -2150,6 +2150,12 @@
             "value": "La nota ha sido programada"
           }
         },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La note a été planifiée"
+          }
+        },
         "it": {
           "stringUnit": {
             "state": "translated",

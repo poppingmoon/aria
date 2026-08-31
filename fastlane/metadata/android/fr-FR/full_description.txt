@@ -1,13 +1,13 @@
-Aria is a client app for Misskey, a federated social media platform.
+Aria est une application client pour Misskey, une plateforme de réseaux sociaux fédérés.
 
-Supports most of Misskey's features
-Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
+Supporte la plupart des fonctionnalités de Misskey
+Aria supporte la plupart des fonctions disponibles dans Misskey, y compris la visualisation de différents types de timelines, la publication de notes, l'édition de clips, de listes ou d'antennes, etc.
 
-Swipe to switch between multiple accounts (of multiple servers)
-Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+Glisser pour basculer entre plusieurs comptes (sur plusieurs serveurs)
+Aria facilite la visualisation des différentes timelines en les enregistrant sous forme d'onglets. L'ajout de la timeline de n'importe quel compte à un onglet facilite le suivi des discussions entre les serveurs.
 
-Based on the design of the official Misskey Web client
-The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+Basé sur le design du client web officiel de Misskey
+L'interface utilisateur est conçue pour être familière, comme le front-end officiel de Misskey. Elle supporte également la décoration de notes avec MFM.
 
-Highly customizable
-Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+Hautement personnalisable
+De nombreux paramètres, tels que la taille d'affichage des réactions et l'affichage des icônes de l'utilisateur, peuvent être modifiés et ajustés à votre goût. De plus, vous pouvez changer le thème pour décorer l'application avec vos couleurs préférées.
