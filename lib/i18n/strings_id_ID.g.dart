@@ -1300,6 +1300,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Sedang login sebagai bot';
 	@override String get tools => 'Alat';
 	@override String get cannotLoad => 'Tidak dapat memuat';
+	@override String get cannotPreview => 'Tidak dapat dipratinjau';
 	@override String get numberOfProfileView => 'tayang profil';
 	@override String get like => 'Suka';
 	@override String get unlike => 'Tidak Suka';

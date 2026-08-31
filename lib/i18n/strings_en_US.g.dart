@@ -3834,6 +3834,9 @@ class Translations$misskey$en_US {
 	/// en-US: 'Unable to load'
 	String get cannotLoad => 'Unable to load';
 
+	/// en-US: 'Could not preview'
+	String get cannotPreview => 'Could not preview';
+
 	/// en-US: 'Profile views'
 	String get numberOfProfileView => 'Profile views';
 
@@ -4976,6 +4979,9 @@ class Translations$misskey$en_US {
 
 	/// en-US: 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.'
 	String get urlPreviewSensitiveListDescription => 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.';
+
+	/// en-US: 'Pixalated Zoom'
+	String get pixelatedZoom => 'Pixalated Zoom';
 
 	late final Translations$misskey$imageEditing_$en_US imageEditing_ = Translations$misskey$imageEditing_$en_US.internal(_root);
 	late final Translations$misskey$imageFrameEditor_$en_US imageFrameEditor_ = Translations$misskey$imageFrameEditor_$en_US.internal(_root);

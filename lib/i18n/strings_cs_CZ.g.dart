@@ -1052,6 +1052,7 @@ class _Translations$misskey$cs_CZ extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Právě jste přihlášen jako bot';
 	@override String get tools => 'Nástroje';
 	@override String get cannotLoad => 'Načtení se nezdařilo';
+	@override String get cannotPreview => 'Náhled se nezdařil';
 	@override String get numberOfProfileView => 'Počet zobrazení profilu';
 	@override String get like => 'To se mi líbí';
 	@override String get unlike => 'Už se mi to nelíbí';

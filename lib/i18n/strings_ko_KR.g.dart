@@ -1283,6 +1283,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => '봇 계정으로 로그인중';
 	@override String get tools => '도구';
 	@override String get cannotLoad => '불러오지 못했습니다';
+	@override String get cannotPreview => '미리 볼 수 없음';
 	@override String get numberOfProfileView => '프로필 뷰 수';
 	@override String get like => '좋아요!';
 	@override String get unlike => '좋아요 취소';

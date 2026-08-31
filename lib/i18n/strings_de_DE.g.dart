@@ -1355,6 +1355,7 @@ class _Translations$misskey$de_DE extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Momentan als Bot angemeldet';
 	@override String get tools => 'Werkzeuge';
 	@override String get cannotLoad => 'Kann nicht geladen werden';
+	@override String get cannotPreview => 'Vorschau nicht anzeigbar';
 	@override String get numberOfProfileView => 'Profilaufrufe';
 	@override String get like => 'Gefällt mir';
 	@override String get unlike => '"Gefällt mir" entfernen';

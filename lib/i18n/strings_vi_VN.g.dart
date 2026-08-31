@@ -1102,6 +1102,7 @@ class _Translations$misskey$vi_VN extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Đang đăng nhập bằng tài khoản Bot';
 	@override String get tools => 'Công Cụ';
 	@override String get cannotLoad => 'Không tải được';
+	@override String get cannotPreview => 'Không thể xem trước';
 	@override String get numberOfProfileView => 'Số lần mở hồ sơ';
 	@override String get like => 'Thích';
 	@override String get unlike => 'Bỏ lượt thích';

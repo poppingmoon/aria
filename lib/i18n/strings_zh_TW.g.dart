@@ -1144,6 +1144,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => '以機器人帳戶登入中';
 	@override String get tools => '工具';
 	@override String get cannotLoad => '無法載入';
+	@override String get cannotPreview => '無法預覽';
 	@override String get numberOfProfileView => '個人檔案檢視次數';
 	@override String get like => '讚';
 	@override String get unlike => '收回讚';
@@ -1525,6 +1526,7 @@ class Translations$misskey$zh_TW extends Translations$misskey$en_US {
 	@override String get prepend => '加在前面';
 	@override String get urlPreviewSensitiveList => '限制縮圖顯示的 URL';
 	@override String get urlPreviewSensitiveListDescription => '以空格指定為 AND，以換行指定為 OR。若以斜線（/）包圍則視為正規表達式。符合條件時，將不再顯示縮圖。';
+	@override String get pixelatedZoom => '像素藝術縮放模式';
 	@override late final Translations$misskey$imageEditing_$zh_TW imageEditing_ = Translations$misskey$imageEditing_$zh_TW.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_TW imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_TW.internal(_root);
 	@override late final Translations$misskey$compression_$zh_TW compression_ = Translations$misskey$compression_$zh_TW.internal(_root);

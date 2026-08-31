@@ -1126,6 +1126,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Identificat com a bot';
 	@override String get tools => 'Eines';
 	@override String get cannotLoad => 'No es pot carregar';
+	@override String get cannotPreview => 'No es pot previsualitzar';
 	@override String get numberOfProfileView => 'Visualitzacions del perfil';
 	@override String get like => 'M\'agrada ';
 	@override String get unlike => 'Treure m\'agrada ';
@@ -1507,6 +1508,7 @@ class _Translations$misskey$ca_ES extends Translations$misskey$en_US {
 	@override String get prepend => 'Afegeix al principi';
 	@override String get urlPreviewSensitiveList => 'Llista d\'URLs per restringir la visualització de miniatures';
 	@override String get urlPreviewSensitiveListDescription => 'Si separeu els termes amb un espai, s\'interpretarà com una condició \'AND\'; si els separeu amb un salt de línia, s\'interpretarà com una condició \'OR\'. Si envolupeu els termes amb barres obliqües, s\'interpretarà com una expressió regular. Si es troba una coincidència, la miniatura ja no es mostrarà.';
+	@override String get pixelatedZoom => 'Mode de zoom d\'art pixelat';
 	@override late final _Translations$misskey$imageEditing_$ca_ES imageEditing_ = _Translations$misskey$imageEditing_$ca_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ca_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ca_ES._(_root);
 	@override late final _Translations$misskey$compression_$ca_ES compression_ = _Translations$misskey$compression_$ca_ES._(_root);

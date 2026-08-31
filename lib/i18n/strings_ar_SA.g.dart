@@ -970,6 +970,7 @@ class _Translations$misskey$ar_SA extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'والج كآلي';
 	@override String get tools => 'أدوات';
 	@override String get cannotLoad => 'تعذر التحميل';
+	@override String get cannotPreview => 'تتعذر المعاينة';
 	@override String get numberOfProfileView => 'مشاهدات الملف الشخصي';
 	@override String get like => 'أعجبني';
 	@override String get unlike => 'ألغِ الإعجاب';
