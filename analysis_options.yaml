@@ -33,5 +33,3 @@ linter:
 plugins:
   riverpod_lint:
     version: ^3.1.8
-    diagnostics:
-      only_use_keep_alive_inside_keep_alive: false

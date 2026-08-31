@@ -41,6 +41,7 @@ class PostNotifier extends _$PostNotifier {
       MeDetailed? i;
       if (next.user.username != account.username) {
         try {
+          // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
           i = await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
       }
@@ -72,6 +73,7 @@ class PostNotifier extends _$PostNotifier {
       if (next.channelId case final channelId?) {
         if (next.channel?.id != channelId) {
           try {
+            // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
             channel = await ref
                 .read(channelNotifierProvider(account, channelId).future)
                 .then((channel) => channel.toNoteChannelInfo());
@@ -113,9 +115,10 @@ class PostNotifier extends _$PostNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  // ignore: only_use_keep_alive_inside_keep_alive
+  // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
   MeDetailed? get _i => ref.read(iNotifierProvider(account)).value;
 
+  // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
   TabSettings? get _tabSettings => ref.read(timelineTabSettingsProvider);
 
   Timer? _timer;
@@ -218,6 +221,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<NoteDraft?> _loadDraft(TabSettings? tabSettings) async {
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     final draft = await repo.loadDraft(
       account: account,
@@ -251,6 +255,7 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (state.replyId != null || state.renoteId != null) {
       await repo.saveDraft(
@@ -280,6 +285,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<void> _deleteDraft(TabSettings? tabSettings, NoteDraft draft) async {
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (draft.replyId != null || draft.renoteId != null) {
       await repo.deleteDraft(
@@ -331,7 +337,7 @@ class PostNotifier extends _$PostNotifier {
   Future<void> fromDraft(NoteDraft draft, Account origin) async {
     MeDetailed? i = _i;
     try {
-      // ignore: only_use_keep_alive_inside_keep_alive
+      // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
       i ??= await ref.read(iNotifierProvider(account).future);
     } catch (_) {}
     if (account.host == origin.host) {
@@ -436,7 +442,7 @@ class PostNotifier extends _$PostNotifier {
     if (noteId case final noteId?) {
       List<String>? endpoints;
       try {
-        // ignore: only_use_keep_alive_inside_keep_alive
+        // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
         endpoints = await ref.read(
           endpointsNotifierProvider(account.host).future,
         );
@@ -457,7 +463,7 @@ class PostNotifier extends _$PostNotifier {
       if (state.scheduledAt != null) {
         MeDetailed? i = _i;
         try {
-          // ignore: only_use_keep_alive_inside_keep_alive
+          // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
           i ??= await ref.read(iNotifierProvider(account).future);
         } catch (_) {}
         if (i?.policies?.canScheduleNote ?? false) {
@@ -602,6 +608,7 @@ class PostNotifier extends _$PostNotifier {
       _ => state,
     };
 
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (await repo.loadDraft(account: account, replyId: reply.id)
         case final draft?) {
@@ -630,11 +637,13 @@ class PostNotifier extends _$PostNotifier {
     final localHost = toUnicode(account.host.toLowerCase());
     final replyMentions = switch (reply.text) {
       final text? when text.isNotEmpty => extractMentions(
+        // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
         ref.read(parsedMfmProvider(text)),
       ).map((mention) => mention.normalize(localHost)),
       _ => null,
     };
     final nodes = switch (draft?.text) {
+      // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
       final text? when text.isNotEmpty => ref.read(parsedMfmProvider(text)),
       _ => null,
     };
@@ -746,6 +755,7 @@ class PostNotifier extends _$PostNotifier {
       _ => state,
     };
 
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     if (await repo.loadDraft(account: account, renoteId: renote.id)
         case final draft?) {
@@ -820,6 +830,7 @@ class PostNotifier extends _$PostNotifier {
       return;
     }
 
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final repo = await ref.read(noteDraftRepositoryProvider.future);
     final draft = await repo.loadDraft(account: account, channelId: channel.id);
     if (draft != null) {
