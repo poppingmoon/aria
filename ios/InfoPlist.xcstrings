@@ -16,7 +16,19 @@
             "value" : "To take photos or videos, please allow access to your camera."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour prendre des photos ou des vidéos, veuillez autoriser l'accès à votre caméra."
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "写真や動画を撮影するために、カメラへのアクセスを許可してください。"
@@ -45,7 +57,19 @@
             "value" : "To detect orientation of the device, please allow access to your sensor."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour détecter l'orientation de l'appareil, veuillez autoriser l'accès à votre capteur."
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "デバイスの向きを検知するために、センサーへのアクセスを許可してください。"
@@ -74,7 +98,19 @@
             "value" : "To download files, please allow access to your photo library."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour télécharger des fichiers, veuillez autoriser l'accès à votre galerie photo."
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをダウンロードするために、写真ライブラリへのアクセスを許可してください。"
@@ -109,7 +145,19 @@
             "value" : "To upload files, please allow access to your photo library."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour téléverser des fichiers, veuillez autoriser l'accès à votre galerie photo."
+          }
+        },
         "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
+          }
+        },
+        "ja-KS" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ファイルをアップロードするために、写真ライブラリへのアクセスを許可してください。"
