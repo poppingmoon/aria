@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$IncomingMessage {
 
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override IncomingMessageType? get type;@override Map<String, dynamic> get body;
+
 /// Create a copy of IncomingMessage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,21 @@ $IncomingMessageCopyWith<IncomingMessage> get copyWith => _$IncomingMessageCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IncomingMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.body, body));
+  final _this = this as IncomingMessage;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IncomingMessage&&(identical(other.type, _this.type) || other.type == _this.type)&&const DeepCollectionEquality().equals(other.body, _this.body));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(body));
+int get hashCode {
+  final _this = this as IncomingMessage;
+  return Object.hash(runtimeType,_this.type,const DeepCollectionEquality().hash(_this.body));
+}
 
 @override
 String toString() {
-  return 'IncomingMessage(type: $type, body: $body)';
+  final _this = this as IncomingMessage;
+  return 'IncomingMessage(type: ${_this.type}, body: ${_this.body})';
 }
 
 
@@ -47,7 +52,7 @@ abstract mixin class $IncomingMessageCopyWith<$Res>  {
   factory $IncomingMessageCopyWith(IncomingMessage value, $Res Function(IncomingMessage) _then) = _$IncomingMessageCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override IncomingMessageType? type,@override Map<String, dynamic> body
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? type, Map<String, dynamic> body
 });
 
 
@@ -153,7 +158,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  IncomingMessageType? type, @override  Map<String, dynamic> body)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  IncomingMessageType? type,  Map<String, dynamic> body)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _IncomingMessage() when $default != null:
 return $default(_that.type,_that.body);case _:
@@ -174,7 +179,7 @@ return $default(_that.type,_that.body);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  IncomingMessageType? type, @override  Map<String, dynamic> body)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  IncomingMessageType? type,  Map<String, dynamic> body)  $default,) {final _that = this;
 switch (_that) {
 case _IncomingMessage():
 return $default(_that.type,_that.body);case _:
@@ -194,7 +199,7 @@ return $default(_that.type,_that.body);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override  IncomingMessageType? type, @override  Map<String, dynamic> body)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)  IncomingMessageType? type,  Map<String, dynamic> body)?  $default,) {final _that = this;
 switch (_that) {
 case _IncomingMessage() when $default != null:
 return $default(_that.type,_that.body);case _:
@@ -209,12 +214,12 @@ return $default(_that.type,_that.body);case _:
 @JsonSerializable(createToJson: false)
 
 class _IncomingMessage extends IncomingMessage {
-  const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override this.type, @override  Map<String, dynamic> body = const {}}): _body = body,super(type: type, body: body);
+  const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type,  Map<String, dynamic> body = const {}}): _body = body,super(type: type, body: body);
   factory _IncomingMessage.fromJson(Map<String, dynamic> json) => _$IncomingMessageFromJson(json);
 
-@override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override final  IncomingMessageType? type;
+@override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) final  IncomingMessageType? type;
  final  Map<String, dynamic> _body;
-@override@override Map<String, dynamic> get body {
+@override Map<String, dynamic> get body {
   if (_body is EqualUnmodifiableMapView) return _body;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_body);
@@ -231,16 +236,18 @@ _$IncomingMessageCopyWith<_IncomingMessage> get copyWith => __$IncomingMessageCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IncomingMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._body, _body));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _IncomingMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.body, _body));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_body));
+int get hashCode {
+    return Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_body));
+}
 
 @override
 String toString() {
-  return 'IncomingMessage(type: $type, body: $body)';
+    return 'IncomingMessage(type: $type, body: $body)';
 }
 
 
@@ -251,7 +258,7 @@ abstract mixin class _$IncomingMessageCopyWith<$Res> implements $IncomingMessage
   factory _$IncomingMessageCopyWith(_IncomingMessage value, $Res Function(_IncomingMessage) _then) = __$IncomingMessageCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)@override IncomingMessageType? type,@override Map<String, dynamic> body
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? type, Map<String, dynamic> body
 });
 
 

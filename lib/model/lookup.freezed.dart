@@ -21,7 +21,7 @@ mixin _$Lookup {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Lookup);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is Lookup);
 }
 
 
@@ -30,7 +30,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'Lookup()';
+    return 'Lookup()';
 }
 
 
@@ -191,16 +191,18 @@ $LookupUserCopyWith<LookupUser> get copyWith => _$LookupUserCopyWithImpl<LookupU
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LookupUser&&(identical(other.user, user) || other.user == user));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is LookupUser&&(identical(other.user, user) || other.user == user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user);
+int get hashCode {
+    return Object.hash(runtimeType,user);
+}
 
 @override
 String toString() {
-  return 'Lookup.user(user: $user)';
+    return 'Lookup.user(user: $user)';
 }
 
 
@@ -257,16 +259,18 @@ $LookupNoteCopyWith<LookupNote> get copyWith => _$LookupNoteCopyWithImpl<LookupN
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LookupNote&&(identical(other.note, note) || other.note == note));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is LookupNote&&(identical(other.note, note) || other.note == note));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,note);
+int get hashCode {
+    return Object.hash(runtimeType,note);
+}
 
 @override
 String toString() {
-  return 'Lookup.note(note: $note)';
+    return 'Lookup.note(note: $note)';
 }
 
 

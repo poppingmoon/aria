@@ -5,10 +5,8 @@ part 'account.g.dart';
 
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
-class const Account({
-  @override required final String host,
-  @override final String? username,
-}) with _$Account {
+class const Account({required final String host, final String? username})
+    with _$Account {
   const new _() : this(host: '');
 
   factory fromJson(Map<String, Object?> json) => _$AccountFromJson(json);

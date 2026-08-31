@@ -15,9 +15,8 @@ enum IncomingMessageType {
 @Freezed(toJson: false)
 class const IncomingMessage({
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  @override
   final IncomingMessageType? type,
-  @override final Map<String, dynamic> body = const {},
+  final Map<String, dynamic> body = const {},
 }) with _$IncomingMessage {
   factory fromJson(Map<String, Object?> json) =>
       _$IncomingMessageFromJson(json);

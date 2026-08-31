@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MfmConfig {
 
-@override TextStyle get style;@override bool get disableNyaize;@override double get scale;@override double get opacity;@override TextAlign? get align;@override int get xNest;@override int? get linkId;
+
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $MfmConfigCopyWith<MfmConfig> get copyWith => _$MfmConfigCopyWithImpl<MfmConfig>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest)&&(identical(other.linkId, linkId) || other.linkId == linkId));
+  final _this = this as MfmConfig;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MfmConfig&&(identical(other.style, _this.style) || other.style == _this.style)&&(identical(other.disableNyaize, _this.disableNyaize) || other.disableNyaize == _this.disableNyaize)&&(identical(other.scale, _this.scale) || other.scale == _this.scale)&&(identical(other.opacity, _this.opacity) || other.opacity == _this.opacity)&&(identical(other.align, _this.align) || other.align == _this.align)&&(identical(other.xNest, _this.xNest) || other.xNest == _this.xNest)&&(identical(other.linkId, _this.linkId) || other.linkId == _this.linkId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest,linkId);
+int get hashCode {
+  final _this = this as MfmConfig;
+  return Object.hash(runtimeType,_this.style,_this.disableNyaize,_this.scale,_this.opacity,_this.align,_this.xNest,_this.linkId);
+}
 
 @override
 String toString() {
-  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest, linkId: $linkId)';
+  final _this = this as MfmConfig;
+  return 'MfmConfig(style: ${_this.style}, disableNyaize: ${_this.disableNyaize}, scale: ${_this.scale}, opacity: ${_this.opacity}, align: ${_this.align}, xNest: ${_this.xNest}, linkId: ${_this.linkId})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $MfmConfigCopyWith<$Res>  {
   factory $MfmConfigCopyWith(MfmConfig value, $Res Function(MfmConfig) _then) = _$MfmConfigCopyWithImpl;
 @useResult
 $Res call({
-@override TextStyle style,@override bool disableNyaize,@override double scale,@override double opacity,@override TextAlign? align,@override int xNest,@override int? linkId
+ TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
 });
 
 
@@ -84,16 +89,16 @@ as int?,
 
 
 class _MfmConfig extends MfmConfig {
-  const _MfmConfig({@override required this.style, @override this.disableNyaize = false, @override this.scale = 1.0, @override this.opacity = 1.0, @override this.align, @override this.xNest = 0, @override this.linkId}): super(style: style, disableNyaize: disableNyaize, scale: scale, opacity: opacity, align: align, xNest: xNest, linkId: linkId);
+  const _MfmConfig({required this.style, this.disableNyaize = false, this.scale = 1.0, this.opacity = 1.0, this.align, this.xNest = 0, this.linkId}): super(style: style, disableNyaize: disableNyaize, scale: scale, opacity: opacity, align: align, xNest: xNest, linkId: linkId);
   
 
-@override@override final  TextStyle style;
-@override@override final  bool disableNyaize;
-@override@override final  double scale;
-@override@override final  double opacity;
-@override@override final  TextAlign? align;
-@override@override final  int xNest;
-@override@override final  int? linkId;
+@override final  TextStyle style;
+@override final  bool disableNyaize;
+@override final  double scale;
+@override final  double opacity;
+@override final  TextAlign? align;
+@override final  int xNest;
+@override final  int? linkId;
 
 /// Create a copy of MfmConfig
 /// with the given fields replaced by the non-null parameter values.
@@ -105,16 +110,18 @@ _$MfmConfigCopyWith<_MfmConfig> get copyWith => __$MfmConfigCopyWithImpl<_MfmCon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest)&&(identical(other.linkId, linkId) || other.linkId == linkId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MfmConfig&&(identical(other.style, style) || other.style == style)&&(identical(other.disableNyaize, disableNyaize) || other.disableNyaize == disableNyaize)&&(identical(other.scale, scale) || other.scale == scale)&&(identical(other.opacity, opacity) || other.opacity == opacity)&&(identical(other.align, align) || other.align == align)&&(identical(other.xNest, xNest) || other.xNest == xNest)&&(identical(other.linkId, linkId) || other.linkId == linkId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest,linkId);
+int get hashCode {
+    return Object.hash(runtimeType,style,disableNyaize,scale,opacity,align,xNest,linkId);
+}
 
 @override
 String toString() {
-  return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest, linkId: $linkId)';
+    return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align, xNest: $xNest, linkId: $linkId)';
 }
 
 
@@ -125,7 +132,7 @@ abstract mixin class _$MfmConfigCopyWith<$Res> implements $MfmConfigCopyWith<$Re
   factory _$MfmConfigCopyWith(_MfmConfig value, $Res Function(_MfmConfig) _then) = __$MfmConfigCopyWithImpl;
 @override @useResult
 $Res call({
-@override TextStyle style,@override bool disableNyaize,@override double scale,@override double opacity,@override TextAlign? align,@override int xNest,@override int? linkId
+ TextStyle style, bool disableNyaize, double scale, double opacity, TextAlign? align, int xNest, int? linkId
 });
 
 

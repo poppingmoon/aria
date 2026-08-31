@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TabSettings {
 
-@override String? get id;@override TabType get tabType;@override String? get name;@override Account get account;@override TabIcon? get icon;@override bool get disableStreaming;@override bool get disableSubscribing;@override bool get withReplies;@override bool get withRenotes;@override bool get withSelfRenotes;@override bool get withFiles;@override bool get withSensitive;@override bool get keepPosition;@override String? get roleId;@override String? get channelId;@override String? get listId;@override String? get antennaId;@override String? get hashtag;@override String? get userId;@override String? get endpoint;@override String? get streamingChannel;@override Map<String, dynamic>? get parameters;
+
 /// Create a copy of TabSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $TabSettingsCopyWith<TabSettings> get copyWith => _$TabSettingsCopyWithImpl<TabS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TabSettings&&(identical(other.id, id) || other.id == id)&&(identical(other.tabType, tabType) || other.tabType == tabType)&&(identical(other.name, name) || other.name == name)&&(identical(other.account, account) || other.account == account)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.disableStreaming, disableStreaming) || other.disableStreaming == disableStreaming)&&(identical(other.disableSubscribing, disableSubscribing) || other.disableSubscribing == disableSubscribing)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&(identical(other.withRenotes, withRenotes) || other.withRenotes == withRenotes)&&(identical(other.withSelfRenotes, withSelfRenotes) || other.withSelfRenotes == withSelfRenotes)&&(identical(other.withFiles, withFiles) || other.withFiles == withFiles)&&(identical(other.withSensitive, withSensitive) || other.withSensitive == withSensitive)&&(identical(other.keepPosition, keepPosition) || other.keepPosition == keepPosition)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.listId, listId) || other.listId == listId)&&(identical(other.antennaId, antennaId) || other.antennaId == antennaId)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.streamingChannel, streamingChannel) || other.streamingChannel == streamingChannel)&&const DeepCollectionEquality().equals(other.parameters, parameters));
+  final _this = this as TabSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TabSettings&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.tabType, _this.tabType) || other.tabType == _this.tabType)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.account, _this.account) || other.account == _this.account)&&(identical(other.icon, _this.icon) || other.icon == _this.icon)&&(identical(other.disableStreaming, _this.disableStreaming) || other.disableStreaming == _this.disableStreaming)&&(identical(other.disableSubscribing, _this.disableSubscribing) || other.disableSubscribing == _this.disableSubscribing)&&(identical(other.withReplies, _this.withReplies) || other.withReplies == _this.withReplies)&&(identical(other.withRenotes, _this.withRenotes) || other.withRenotes == _this.withRenotes)&&(identical(other.withSelfRenotes, _this.withSelfRenotes) || other.withSelfRenotes == _this.withSelfRenotes)&&(identical(other.withFiles, _this.withFiles) || other.withFiles == _this.withFiles)&&(identical(other.withSensitive, _this.withSensitive) || other.withSensitive == _this.withSensitive)&&(identical(other.keepPosition, _this.keepPosition) || other.keepPosition == _this.keepPosition)&&(identical(other.roleId, _this.roleId) || other.roleId == _this.roleId)&&(identical(other.channelId, _this.channelId) || other.channelId == _this.channelId)&&(identical(other.listId, _this.listId) || other.listId == _this.listId)&&(identical(other.antennaId, _this.antennaId) || other.antennaId == _this.antennaId)&&(identical(other.hashtag, _this.hashtag) || other.hashtag == _this.hashtag)&&(identical(other.userId, _this.userId) || other.userId == _this.userId)&&(identical(other.endpoint, _this.endpoint) || other.endpoint == _this.endpoint)&&(identical(other.streamingChannel, _this.streamingChannel) || other.streamingChannel == _this.streamingChannel)&&const DeepCollectionEquality().equals(other.parameters, _this.parameters));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,tabType,name,account,icon,disableStreaming,disableSubscribing,withReplies,withRenotes,withSelfRenotes,withFiles,withSensitive,keepPosition,roleId,channelId,listId,antennaId,hashtag,userId,endpoint,streamingChannel,const DeepCollectionEquality().hash(parameters)]);
+int get hashCode {
+  final _this = this as TabSettings;
+  return Object.hashAll([runtimeType,_this.id,_this.tabType,_this.name,_this.account,_this.icon,_this.disableStreaming,_this.disableSubscribing,_this.withReplies,_this.withRenotes,_this.withSelfRenotes,_this.withFiles,_this.withSensitive,_this.keepPosition,_this.roleId,_this.channelId,_this.listId,_this.antennaId,_this.hashtag,_this.userId,_this.endpoint,_this.streamingChannel,const DeepCollectionEquality().hash(_this.parameters)]);
+}
 
 @override
 String toString() {
-  return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, hashtag: $hashtag, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel, parameters: $parameters)';
+  final _this = this as TabSettings;
+  return 'TabSettings(id: ${_this.id}, tabType: ${_this.tabType}, name: ${_this.name}, account: ${_this.account}, icon: ${_this.icon}, disableStreaming: ${_this.disableStreaming}, disableSubscribing: ${_this.disableSubscribing}, withReplies: ${_this.withReplies}, withRenotes: ${_this.withRenotes}, withSelfRenotes: ${_this.withSelfRenotes}, withFiles: ${_this.withFiles}, withSensitive: ${_this.withSensitive}, keepPosition: ${_this.keepPosition}, roleId: ${_this.roleId}, channelId: ${_this.channelId}, listId: ${_this.listId}, antennaId: ${_this.antennaId}, hashtag: ${_this.hashtag}, userId: ${_this.userId}, endpoint: ${_this.endpoint}, streamingChannel: ${_this.streamingChannel}, parameters: ${_this.parameters})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $TabSettingsCopyWith<$Res>  {
   factory $TabSettingsCopyWith(TabSettings value, $Res Function(TabSettings) _then) = _$TabSettingsCopyWithImpl;
 @useResult
 $Res call({
-@override String? id,@override TabType tabType,@override String? name,@override Account account,@override TabIcon? icon,@override bool disableStreaming,@override bool disableSubscribing,@override bool withReplies,@override bool withRenotes,@override bool withSelfRenotes,@override bool withFiles,@override bool withSensitive,@override bool keepPosition,@override String? roleId,@override String? channelId,@override String? listId,@override String? antennaId,@override String? hashtag,@override String? userId,@override String? endpoint,@override String? streamingChannel,@override Map<String, dynamic>? parameters
+ String? id, TabType tabType, String? name, Account account, TabIcon? icon, bool disableStreaming, bool disableSubscribing, bool withReplies, bool withRenotes, bool withSelfRenotes, bool withFiles, bool withSensitive, bool keepPosition, String? roleId, String? channelId, String? listId, String? antennaId, String? hashtag, String? userId, String? endpoint, String? streamingChannel, Map<String, dynamic>? parameters
 });
 
 
@@ -181,7 +186,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? id, @override  TabType tabType, @override  String? name, @override  Account account, @override  TabIcon? icon, @override  bool disableStreaming, @override  bool disableSubscribing, @override  bool withReplies, @override  bool withRenotes, @override  bool withSelfRenotes, @override  bool withFiles, @override  bool withSensitive, @override  bool keepPosition, @override  String? roleId, @override  String? channelId, @override  String? listId, @override  String? antennaId, @override  String? hashtag, @override  String? userId, @override  String? endpoint, @override  String? streamingChannel, @override  Map<String, dynamic>? parameters)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id,  TabType tabType,  String? name,  Account account,  TabIcon? icon,  bool disableStreaming,  bool disableSubscribing,  bool withReplies,  bool withRenotes,  bool withSelfRenotes,  bool withFiles,  bool withSensitive,  bool keepPosition,  String? roleId,  String? channelId,  String? listId,  String? antennaId,  String? hashtag,  String? userId,  String? endpoint,  String? streamingChannel,  Map<String, dynamic>? parameters)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _TabSettings() when $default != null:
 return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that.disableStreaming,_that.disableSubscribing,_that.withReplies,_that.withRenotes,_that.withSelfRenotes,_that.withFiles,_that.withSensitive,_that.keepPosition,_that.roleId,_that.channelId,_that.listId,_that.antennaId,_that.hashtag,_that.userId,_that.endpoint,_that.streamingChannel,_that.parameters);case _:
@@ -202,7 +207,7 @@ return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? id, @override  TabType tabType, @override  String? name, @override  Account account, @override  TabIcon? icon, @override  bool disableStreaming, @override  bool disableSubscribing, @override  bool withReplies, @override  bool withRenotes, @override  bool withSelfRenotes, @override  bool withFiles, @override  bool withSensitive, @override  bool keepPosition, @override  String? roleId, @override  String? channelId, @override  String? listId, @override  String? antennaId, @override  String? hashtag, @override  String? userId, @override  String? endpoint, @override  String? streamingChannel, @override  Map<String, dynamic>? parameters)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id,  TabType tabType,  String? name,  Account account,  TabIcon? icon,  bool disableStreaming,  bool disableSubscribing,  bool withReplies,  bool withRenotes,  bool withSelfRenotes,  bool withFiles,  bool withSensitive,  bool keepPosition,  String? roleId,  String? channelId,  String? listId,  String? antennaId,  String? hashtag,  String? userId,  String? endpoint,  String? streamingChannel,  Map<String, dynamic>? parameters)  $default,) {final _that = this;
 switch (_that) {
 case _TabSettings():
 return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that.disableStreaming,_that.disableSubscribing,_that.withReplies,_that.withRenotes,_that.withSelfRenotes,_that.withFiles,_that.withSensitive,_that.keepPosition,_that.roleId,_that.channelId,_that.listId,_that.antennaId,_that.hashtag,_that.userId,_that.endpoint,_that.streamingChannel,_that.parameters);case _:
@@ -222,7 +227,7 @@ return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? id, @override  TabType tabType, @override  String? name, @override  Account account, @override  TabIcon? icon, @override  bool disableStreaming, @override  bool disableSubscribing, @override  bool withReplies, @override  bool withRenotes, @override  bool withSelfRenotes, @override  bool withFiles, @override  bool withSensitive, @override  bool keepPosition, @override  String? roleId, @override  String? channelId, @override  String? listId, @override  String? antennaId, @override  String? hashtag, @override  String? userId, @override  String? endpoint, @override  String? streamingChannel, @override  Map<String, dynamic>? parameters)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id,  TabType tabType,  String? name,  Account account,  TabIcon? icon,  bool disableStreaming,  bool disableSubscribing,  bool withReplies,  bool withRenotes,  bool withSelfRenotes,  bool withFiles,  bool withSensitive,  bool keepPosition,  String? roleId,  String? channelId,  String? listId,  String? antennaId,  String? hashtag,  String? userId,  String? endpoint,  String? streamingChannel,  Map<String, dynamic>? parameters)?  $default,) {final _that = this;
 switch (_that) {
 case _TabSettings() when $default != null:
 return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that.disableStreaming,_that.disableSubscribing,_that.withReplies,_that.withRenotes,_that.withSelfRenotes,_that.withFiles,_that.withSensitive,_that.keepPosition,_that.roleId,_that.channelId,_that.listId,_that.antennaId,_that.hashtag,_that.userId,_that.endpoint,_that.streamingChannel,_that.parameters);case _:
@@ -237,32 +242,32 @@ return $default(_that.id,_that.tabType,_that.name,_that.account,_that.icon,_that
 
 
 class _TabSettings extends TabSettings {
-  const _TabSettings({@override this.id, @override required this.tabType, @override this.name, @override required this.account, @override this.icon, @override this.disableStreaming = false, @override this.disableSubscribing = false, @override this.withReplies = false, @override this.withRenotes = true, @override this.withSelfRenotes = true, @override this.withFiles = false, @override this.withSensitive = true, @override this.keepPosition = false, @override this.roleId, @override this.channelId, @override this.listId, @override this.antennaId, @override this.hashtag, @override this.userId, @override this.endpoint, @override this.streamingChannel, @override  Map<String, dynamic>? parameters}): _parameters = parameters,super(id: id, tabType: tabType, name: name, account: account, icon: icon, disableStreaming: disableStreaming, disableSubscribing: disableSubscribing, withReplies: withReplies, withRenotes: withRenotes, withSelfRenotes: withSelfRenotes, withFiles: withFiles, withSensitive: withSensitive, keepPosition: keepPosition, roleId: roleId, channelId: channelId, listId: listId, antennaId: antennaId, hashtag: hashtag, userId: userId, endpoint: endpoint, streamingChannel: streamingChannel, parameters: parameters);
+  const _TabSettings({this.id, required this.tabType, this.name, required this.account, this.icon, this.disableStreaming = false, this.disableSubscribing = false, this.withReplies = false, this.withRenotes = true, this.withSelfRenotes = true, this.withFiles = false, this.withSensitive = true, this.keepPosition = false, this.roleId, this.channelId, this.listId, this.antennaId, this.hashtag, this.userId, this.endpoint, this.streamingChannel,  Map<String, dynamic>? parameters}): _parameters = parameters,super(id: id, tabType: tabType, name: name, account: account, icon: icon, disableStreaming: disableStreaming, disableSubscribing: disableSubscribing, withReplies: withReplies, withRenotes: withRenotes, withSelfRenotes: withSelfRenotes, withFiles: withFiles, withSensitive: withSensitive, keepPosition: keepPosition, roleId: roleId, channelId: channelId, listId: listId, antennaId: antennaId, hashtag: hashtag, userId: userId, endpoint: endpoint, streamingChannel: streamingChannel, parameters: parameters);
   
 
-@override@override final  String? id;
-@override@override final  TabType tabType;
-@override@override final  String? name;
-@override@override final  Account account;
-@override@override final  TabIcon? icon;
-@override@override final  bool disableStreaming;
-@override@override final  bool disableSubscribing;
-@override@override final  bool withReplies;
-@override@override final  bool withRenotes;
-@override@override final  bool withSelfRenotes;
-@override@override final  bool withFiles;
-@override@override final  bool withSensitive;
-@override@override final  bool keepPosition;
-@override@override final  String? roleId;
-@override@override final  String? channelId;
-@override@override final  String? listId;
-@override@override final  String? antennaId;
-@override@override final  String? hashtag;
-@override@override final  String? userId;
-@override@override final  String? endpoint;
-@override@override final  String? streamingChannel;
+@override final  String? id;
+@override final  TabType tabType;
+@override final  String? name;
+@override final  Account account;
+@override final  TabIcon? icon;
+@override final  bool disableStreaming;
+@override final  bool disableSubscribing;
+@override final  bool withReplies;
+@override final  bool withRenotes;
+@override final  bool withSelfRenotes;
+@override final  bool withFiles;
+@override final  bool withSensitive;
+@override final  bool keepPosition;
+@override final  String? roleId;
+@override final  String? channelId;
+@override final  String? listId;
+@override final  String? antennaId;
+@override final  String? hashtag;
+@override final  String? userId;
+@override final  String? endpoint;
+@override final  String? streamingChannel;
  final  Map<String, dynamic>? _parameters;
-@override@override Map<String, dynamic>? get parameters {
+@override Map<String, dynamic>? get parameters {
   final value = _parameters;
   if (value == null) return null;
   if (_parameters is EqualUnmodifiableMapView) return _parameters;
@@ -281,16 +286,18 @@ _$TabSettingsCopyWith<_TabSettings> get copyWith => __$TabSettingsCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TabSettings&&(identical(other.id, id) || other.id == id)&&(identical(other.tabType, tabType) || other.tabType == tabType)&&(identical(other.name, name) || other.name == name)&&(identical(other.account, account) || other.account == account)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.disableStreaming, disableStreaming) || other.disableStreaming == disableStreaming)&&(identical(other.disableSubscribing, disableSubscribing) || other.disableSubscribing == disableSubscribing)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&(identical(other.withRenotes, withRenotes) || other.withRenotes == withRenotes)&&(identical(other.withSelfRenotes, withSelfRenotes) || other.withSelfRenotes == withSelfRenotes)&&(identical(other.withFiles, withFiles) || other.withFiles == withFiles)&&(identical(other.withSensitive, withSensitive) || other.withSensitive == withSensitive)&&(identical(other.keepPosition, keepPosition) || other.keepPosition == keepPosition)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.listId, listId) || other.listId == listId)&&(identical(other.antennaId, antennaId) || other.antennaId == antennaId)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.streamingChannel, streamingChannel) || other.streamingChannel == streamingChannel)&&const DeepCollectionEquality().equals(other._parameters, _parameters));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _TabSettings&&(identical(other.id, id) || other.id == id)&&(identical(other.tabType, tabType) || other.tabType == tabType)&&(identical(other.name, name) || other.name == name)&&(identical(other.account, account) || other.account == account)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.disableStreaming, disableStreaming) || other.disableStreaming == disableStreaming)&&(identical(other.disableSubscribing, disableSubscribing) || other.disableSubscribing == disableSubscribing)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&(identical(other.withRenotes, withRenotes) || other.withRenotes == withRenotes)&&(identical(other.withSelfRenotes, withSelfRenotes) || other.withSelfRenotes == withSelfRenotes)&&(identical(other.withFiles, withFiles) || other.withFiles == withFiles)&&(identical(other.withSensitive, withSensitive) || other.withSensitive == withSensitive)&&(identical(other.keepPosition, keepPosition) || other.keepPosition == keepPosition)&&(identical(other.roleId, roleId) || other.roleId == roleId)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.listId, listId) || other.listId == listId)&&(identical(other.antennaId, antennaId) || other.antennaId == antennaId)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.streamingChannel, streamingChannel) || other.streamingChannel == streamingChannel)&&const DeepCollectionEquality().equals(other.parameters, _parameters));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,tabType,name,account,icon,disableStreaming,disableSubscribing,withReplies,withRenotes,withSelfRenotes,withFiles,withSensitive,keepPosition,roleId,channelId,listId,antennaId,hashtag,userId,endpoint,streamingChannel,const DeepCollectionEquality().hash(_parameters)]);
+int get hashCode {
+    return Object.hashAll([runtimeType,id,tabType,name,account,icon,disableStreaming,disableSubscribing,withReplies,withRenotes,withSelfRenotes,withFiles,withSensitive,keepPosition,roleId,channelId,listId,antennaId,hashtag,userId,endpoint,streamingChannel,const DeepCollectionEquality().hash(_parameters)]);
+}
 
 @override
 String toString() {
-  return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, hashtag: $hashtag, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel, parameters: $parameters)';
+    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, hashtag: $hashtag, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel, parameters: $parameters)';
 }
 
 
@@ -301,7 +308,7 @@ abstract mixin class _$TabSettingsCopyWith<$Res> implements $TabSettingsCopyWith
   factory _$TabSettingsCopyWith(_TabSettings value, $Res Function(_TabSettings) _then) = __$TabSettingsCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? id,@override TabType tabType,@override String? name,@override Account account,@override TabIcon? icon,@override bool disableStreaming,@override bool disableSubscribing,@override bool withReplies,@override bool withRenotes,@override bool withSelfRenotes,@override bool withFiles,@override bool withSensitive,@override bool keepPosition,@override String? roleId,@override String? channelId,@override String? listId,@override String? antennaId,@override String? hashtag,@override String? userId,@override String? endpoint,@override String? streamingChannel,@override Map<String, dynamic>? parameters
+ String? id, TabType tabType, String? name, Account account, TabIcon? icon, bool disableStreaming, bool disableSubscribing, bool withReplies, bool withRenotes, bool withSelfRenotes, bool withFiles, bool withSensitive, bool keepPosition, String? roleId, String? channelId, String? listId, String? antennaId, String? hashtag, String? userId, String? endpoint, String? streamingChannel, Map<String, dynamic>? parameters
 });
 
 

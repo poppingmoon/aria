@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$DataSaver {
 
-@override bool get media;@override bool get avatar;@override bool get urlPreview;
+
 /// Create a copy of DataSaver
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $DataSaverCopyWith<DataSaver> get copyWith => _$DataSaverCopyWithImpl<DataSaver>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataSaver&&(identical(other.media, media) || other.media == media)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.urlPreview, urlPreview) || other.urlPreview == urlPreview));
+  final _this = this as DataSaver;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataSaver&&(identical(other.media, _this.media) || other.media == _this.media)&&(identical(other.avatar, _this.avatar) || other.avatar == _this.avatar)&&(identical(other.urlPreview, _this.urlPreview) || other.urlPreview == _this.urlPreview));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,media,avatar,urlPreview);
+int get hashCode {
+  final _this = this as DataSaver;
+  return Object.hash(runtimeType,_this.media,_this.avatar,_this.urlPreview);
+}
 
 @override
 String toString() {
-  return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
+  final _this = this as DataSaver;
+  return 'DataSaver(media: ${_this.media}, avatar: ${_this.avatar}, urlPreview: ${_this.urlPreview})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $DataSaverCopyWith<$Res>  {
   factory $DataSaverCopyWith(DataSaver value, $Res Function(DataSaver) _then) = _$DataSaverCopyWithImpl;
 @useResult
 $Res call({
-@override bool media,@override bool avatar,@override bool urlPreview
+ bool media, bool avatar, bool urlPreview
 });
 
 
@@ -80,12 +85,12 @@ as bool,
 
 
 class _DataSaver extends DataSaver {
-  const _DataSaver({@override required this.media, @override required this.avatar, @override required this.urlPreview}): super(media: media, avatar: avatar, urlPreview: urlPreview);
+  const _DataSaver({required this.media, required this.avatar, required this.urlPreview}): super(media: media, avatar: avatar, urlPreview: urlPreview);
   
 
-@override@override final  bool media;
-@override@override final  bool avatar;
-@override@override final  bool urlPreview;
+@override final  bool media;
+@override final  bool avatar;
+@override final  bool urlPreview;
 
 /// Create a copy of DataSaver
 /// with the given fields replaced by the non-null parameter values.
@@ -97,16 +102,18 @@ _$DataSaverCopyWith<_DataSaver> get copyWith => __$DataSaverCopyWithImpl<_DataSa
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataSaver&&(identical(other.media, media) || other.media == media)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.urlPreview, urlPreview) || other.urlPreview == urlPreview));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataSaver&&(identical(other.media, media) || other.media == media)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.urlPreview, urlPreview) || other.urlPreview == urlPreview));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,media,avatar,urlPreview);
+int get hashCode {
+    return Object.hash(runtimeType,media,avatar,urlPreview);
+}
 
 @override
 String toString() {
-  return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
+    return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
 }
 
 
@@ -117,7 +124,7 @@ abstract mixin class _$DataSaverCopyWith<$Res> implements $DataSaverCopyWith<$Re
   factory _$DataSaverCopyWith(_DataSaver value, $Res Function(_DataSaver) _then) = __$DataSaverCopyWithImpl;
 @override @useResult
 $Res call({
-@override bool media,@override bool avatar,@override bool urlPreview
+ bool media, bool avatar, bool urlPreview
 });
 
 

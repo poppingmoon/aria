@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AriaBackup {
 
-@override Map<String, dynamic>? get metadata;@override List<TabSettings>? get timelineTabs;@override Map<String, AccountSettings>? get accountSettings;@override GeneralSettings? get generalSettings;@override List<String>? get themes;@override Map<String, Map<String, String>>? get aiscriptStorage;@override List<Map<String, dynamic>>? get noteDrafts;
+
 /// Create a copy of AriaBackup
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $AriaBackupCopyWith<AriaBackup> get copyWith => _$AriaBackupCopyWithImpl<AriaBac
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AriaBackup&&const DeepCollectionEquality().equals(other.metadata, metadata)&&const DeepCollectionEquality().equals(other.timelineTabs, timelineTabs)&&const DeepCollectionEquality().equals(other.accountSettings, accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other.themes, themes)&&const DeepCollectionEquality().equals(other.aiscriptStorage, aiscriptStorage)&&const DeepCollectionEquality().equals(other.noteDrafts, noteDrafts));
+  final _this = this as AriaBackup;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AriaBackup&&const DeepCollectionEquality().equals(other.metadata, _this.metadata)&&const DeepCollectionEquality().equals(other.timelineTabs, _this.timelineTabs)&&const DeepCollectionEquality().equals(other.accountSettings, _this.accountSettings)&&(identical(other.generalSettings, _this.generalSettings) || other.generalSettings == _this.generalSettings)&&const DeepCollectionEquality().equals(other.themes, _this.themes)&&const DeepCollectionEquality().equals(other.aiscriptStorage, _this.aiscriptStorage)&&const DeepCollectionEquality().equals(other.noteDrafts, _this.noteDrafts));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(metadata),const DeepCollectionEquality().hash(timelineTabs),const DeepCollectionEquality().hash(accountSettings),generalSettings,const DeepCollectionEquality().hash(themes),const DeepCollectionEquality().hash(aiscriptStorage),const DeepCollectionEquality().hash(noteDrafts));
+int get hashCode {
+  final _this = this as AriaBackup;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.metadata),const DeepCollectionEquality().hash(_this.timelineTabs),const DeepCollectionEquality().hash(_this.accountSettings),_this.generalSettings,const DeepCollectionEquality().hash(_this.themes),const DeepCollectionEquality().hash(_this.aiscriptStorage),const DeepCollectionEquality().hash(_this.noteDrafts));
+}
 
 @override
 String toString() {
-  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage, noteDrafts: $noteDrafts)';
+  final _this = this as AriaBackup;
+  return 'AriaBackup(metadata: ${_this.metadata}, timelineTabs: ${_this.timelineTabs}, accountSettings: ${_this.accountSettings}, generalSettings: ${_this.generalSettings}, themes: ${_this.themes}, aiscriptStorage: ${_this.aiscriptStorage}, noteDrafts: ${_this.noteDrafts})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $AriaBackupCopyWith<$Res>  {
   factory $AriaBackupCopyWith(AriaBackup value, $Res Function(AriaBackup) _then) = _$AriaBackupCopyWithImpl;
 @useResult
 $Res call({
-@override Map<String, dynamic>? metadata,@override List<TabSettings>? timelineTabs,@override Map<String, AccountSettings>? accountSettings,@override GeneralSettings? generalSettings,@override List<String>? themes,@override Map<String, Map<String, String>>? aiscriptStorage,@override List<Map<String, dynamic>>? noteDrafts
+ Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage, List<Map<String, dynamic>>? noteDrafts
 });
 
 
@@ -169,7 +174,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  Map<String, dynamic>? metadata, @override  List<TabSettings>? timelineTabs, @override  Map<String, AccountSettings>? accountSettings, @override  GeneralSettings? generalSettings, @override  List<String>? themes, @override  Map<String, Map<String, String>>? aiscriptStorage, @override  List<Map<String, dynamic>>? noteDrafts)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AriaBackup() when $default != null:
 return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
@@ -190,7 +195,7 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  Map<String, dynamic>? metadata, @override  List<TabSettings>? timelineTabs, @override  Map<String, AccountSettings>? accountSettings, @override  GeneralSettings? generalSettings, @override  List<String>? themes, @override  Map<String, Map<String, String>>? aiscriptStorage, @override  List<Map<String, dynamic>>? noteDrafts)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)  $default,) {final _that = this;
 switch (_that) {
 case _AriaBackup():
 return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
@@ -210,7 +215,7 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  Map<String, dynamic>? metadata, @override  List<TabSettings>? timelineTabs, @override  Map<String, AccountSettings>? accountSettings, @override  GeneralSettings? generalSettings, @override  List<String>? themes, @override  Map<String, Map<String, String>>? aiscriptStorage, @override  List<Map<String, dynamic>>? noteDrafts)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings,  GeneralSettings? generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts)?  $default,) {final _that = this;
 switch (_that) {
 case _AriaBackup() when $default != null:
 return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.generalSettings,_that.themes,_that.aiscriptStorage,_that.noteDrafts);case _:
@@ -225,11 +230,11 @@ return $default(_that.metadata,_that.timelineTabs,_that.accountSettings,_that.ge
 
 
 class _AriaBackup extends AriaBackup {
-  const _AriaBackup({@override  Map<String, dynamic>? metadata, @override  List<TabSettings>? timelineTabs, @override  Map<String, AccountSettings>? accountSettings, @override this.generalSettings, @override  List<String>? themes, @override  Map<String, Map<String, String>>? aiscriptStorage, @override  List<Map<String, dynamic>>? noteDrafts}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage,_noteDrafts = noteDrafts,super(metadata: metadata, timelineTabs: timelineTabs, accountSettings: accountSettings, generalSettings: generalSettings, themes: themes, aiscriptStorage: aiscriptStorage, noteDrafts: noteDrafts);
+  const _AriaBackup({ Map<String, dynamic>? metadata,  List<TabSettings>? timelineTabs,  Map<String, AccountSettings>? accountSettings, this.generalSettings,  List<String>? themes,  Map<String, Map<String, String>>? aiscriptStorage,  List<Map<String, dynamic>>? noteDrafts}): _metadata = metadata,_timelineTabs = timelineTabs,_accountSettings = accountSettings,_themes = themes,_aiscriptStorage = aiscriptStorage,_noteDrafts = noteDrafts,super(metadata: metadata, timelineTabs: timelineTabs, accountSettings: accountSettings, generalSettings: generalSettings, themes: themes, aiscriptStorage: aiscriptStorage, noteDrafts: noteDrafts);
   
 
  final  Map<String, dynamic>? _metadata;
-@override@override Map<String, dynamic>? get metadata {
+@override Map<String, dynamic>? get metadata {
   final value = _metadata;
   if (value == null) return null;
   if (_metadata is EqualUnmodifiableMapView) return _metadata;
@@ -238,7 +243,7 @@ class _AriaBackup extends AriaBackup {
 }
 
  final  List<TabSettings>? _timelineTabs;
-@override@override List<TabSettings>? get timelineTabs {
+@override List<TabSettings>? get timelineTabs {
   final value = _timelineTabs;
   if (value == null) return null;
   if (_timelineTabs is EqualUnmodifiableListView) return _timelineTabs;
@@ -247,7 +252,7 @@ class _AriaBackup extends AriaBackup {
 }
 
  final  Map<String, AccountSettings>? _accountSettings;
-@override@override Map<String, AccountSettings>? get accountSettings {
+@override Map<String, AccountSettings>? get accountSettings {
   final value = _accountSettings;
   if (value == null) return null;
   if (_accountSettings is EqualUnmodifiableMapView) return _accountSettings;
@@ -255,9 +260,9 @@ class _AriaBackup extends AriaBackup {
   return EqualUnmodifiableMapView(value);
 }
 
-@override@override final  GeneralSettings? generalSettings;
+@override final  GeneralSettings? generalSettings;
  final  List<String>? _themes;
-@override@override List<String>? get themes {
+@override List<String>? get themes {
   final value = _themes;
   if (value == null) return null;
   if (_themes is EqualUnmodifiableListView) return _themes;
@@ -266,7 +271,7 @@ class _AriaBackup extends AriaBackup {
 }
 
  final  Map<String, Map<String, String>>? _aiscriptStorage;
-@override@override Map<String, Map<String, String>>? get aiscriptStorage {
+@override Map<String, Map<String, String>>? get aiscriptStorage {
   final value = _aiscriptStorage;
   if (value == null) return null;
   if (_aiscriptStorage is EqualUnmodifiableMapView) return _aiscriptStorage;
@@ -275,7 +280,7 @@ class _AriaBackup extends AriaBackup {
 }
 
  final  List<Map<String, dynamic>>? _noteDrafts;
-@override@override List<Map<String, dynamic>>? get noteDrafts {
+@override List<Map<String, dynamic>>? get noteDrafts {
   final value = _noteDrafts;
   if (value == null) return null;
   if (_noteDrafts is EqualUnmodifiableListView) return _noteDrafts;
@@ -294,16 +299,18 @@ _$AriaBackupCopyWith<_AriaBackup> get copyWith => __$AriaBackupCopyWithImpl<_Ari
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AriaBackup&&const DeepCollectionEquality().equals(other._metadata, _metadata)&&const DeepCollectionEquality().equals(other._timelineTabs, _timelineTabs)&&const DeepCollectionEquality().equals(other._accountSettings, _accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other._themes, _themes)&&const DeepCollectionEquality().equals(other._aiscriptStorage, _aiscriptStorage)&&const DeepCollectionEquality().equals(other._noteDrafts, _noteDrafts));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AriaBackup&&const DeepCollectionEquality().equals(other.metadata, _metadata)&&const DeepCollectionEquality().equals(other.timelineTabs, _timelineTabs)&&const DeepCollectionEquality().equals(other.accountSettings, _accountSettings)&&(identical(other.generalSettings, generalSettings) || other.generalSettings == generalSettings)&&const DeepCollectionEquality().equals(other.themes, _themes)&&const DeepCollectionEquality().equals(other.aiscriptStorage, _aiscriptStorage)&&const DeepCollectionEquality().equals(other.noteDrafts, _noteDrafts));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(_timelineTabs),const DeepCollectionEquality().hash(_accountSettings),generalSettings,const DeepCollectionEquality().hash(_themes),const DeepCollectionEquality().hash(_aiscriptStorage),const DeepCollectionEquality().hash(_noteDrafts));
+int get hashCode {
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_metadata),const DeepCollectionEquality().hash(_timelineTabs),const DeepCollectionEquality().hash(_accountSettings),generalSettings,const DeepCollectionEquality().hash(_themes),const DeepCollectionEquality().hash(_aiscriptStorage),const DeepCollectionEquality().hash(_noteDrafts));
+}
 
 @override
 String toString() {
-  return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage, noteDrafts: $noteDrafts)';
+    return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage, noteDrafts: $noteDrafts)';
 }
 
 
@@ -314,7 +321,7 @@ abstract mixin class _$AriaBackupCopyWith<$Res> implements $AriaBackupCopyWith<$
   factory _$AriaBackupCopyWith(_AriaBackup value, $Res Function(_AriaBackup) _then) = __$AriaBackupCopyWithImpl;
 @override @useResult
 $Res call({
-@override Map<String, dynamic>? metadata,@override List<TabSettings>? timelineTabs,@override Map<String, AccountSettings>? accountSettings,@override GeneralSettings? generalSettings,@override List<String>? themes,@override Map<String, Map<String, String>>? aiscriptStorage,@override List<Map<String, dynamic>>? noteDrafts
+ Map<String, dynamic>? metadata, List<TabSettings>? timelineTabs, Map<String, AccountSettings>? accountSettings, GeneralSettings? generalSettings, List<String>? themes, Map<String, Map<String, String>>? aiscriptStorage, List<Map<String, dynamic>>? noteDrafts
 });
 
 

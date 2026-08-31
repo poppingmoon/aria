@@ -14,12 +14,12 @@ sealed class PostFile {
 
 @freezed
 class const LocalPostFile({
-  @override required final File file,
+  required final File file,
   @override required final String name,
   @override final bool isSensitive = false,
   @override final String? comment,
   @override final String? type,
-  @override final bool uploading = false,
+  final bool uploading = false,
 }) with _$LocalPostFile implements PostFile {
   factory fromFile(
     File file, {
@@ -39,7 +39,7 @@ class const LocalPostFile({
 
 @freezed
 class const DrivePostFile({
-  @override required final DriveFile file,
+  required final DriveFile file,
   @override required final String name,
   @override final bool isSensitive = false,
   @override final String? comment,

@@ -5,13 +5,13 @@ part 'misskey_theme.g.dart';
 
 @Freezed(toJson: false)
 class const MisskeyTheme({
-  @override required final String id,
-  @override required final String name,
-  @override final String? author,
-  @override final String? desc,
-  @override final String? base,
-  @override required final Map<String, String> props,
-  @override final Map<String, dynamic>? codeHighlighter,
+  required final String id,
+  required final String name,
+  final String? author,
+  final String? desc,
+  final String? base,
+  required final Map<String, String> props,
+  final Map<String, dynamic>? codeHighlighter,
 }) with _$MisskeyTheme {
   factory fromJson(Map<String, Object?> json) => _$MisskeyThemeFromJson(json);
 }

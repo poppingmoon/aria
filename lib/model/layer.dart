@@ -14,8 +14,8 @@ sealed class Layer {
 
 @freezed
 class const ImageLayer({
-  @override required final Uint8List data,
-  @override final double opacity = 1.0,
+  required final Uint8List data,
+  final double opacity = 1.0,
   @override final Offset offset = Offset.zero,
   @override final double scale = 1.0,
   @override final double angle = 0.0,
@@ -24,9 +24,9 @@ class const ImageLayer({
 
 @freezed
 class const TextLayer({
-  @override required final String text,
-  @override final Color? color,
-  @override final Color? backgroundColor,
+  required final String text,
+  final Color? color,
+  final Color? backgroundColor,
   @override final Offset offset = Offset.zero,
   @override final double scale = 1.0,
   @override final double angle = 0.0,
@@ -35,9 +35,9 @@ class const TextLayer({
 
 @freezed
 class const DrawLayer({
-  @override final List<Offset?> offsets = const [],
-  @override final Color? color,
-  @override final double strokeWidth = 1.0,
+  final List<Offset?> offsets = const [],
+  final Color? color,
+  final double strokeWidth = 1.0,
   @override final Offset offset = Offset.zero,
   @override final double scale = 1.0,
   @override final double angle = 0.0,
