@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../extension/color_scheme_extension.dart';
 import '../extension/text_theme_extension.dart';
 import 'dynamic_color_provider.dart';
 import 'general_settings_notifier_provider.dart';
@@ -23,8 +22,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
               (Brightness.dark, darkDynamicColorThemeId) =>
                 ref
                     .watch(corePaletteNotifierProvider)
-                    ?.toColorScheme(brightness: brightness)
-                    .toModern(),
+                    ?.toColorScheme(brightness: brightness),
               _ => null,
             }
           : null) ??

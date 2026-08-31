@@ -7,7 +7,6 @@ import 'package:material_ui/material_ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tinycolor2/tinycolor2.dart';
 
-import '../extension/color_scheme_extension.dart';
 import '../model/misskey_colors.dart';
 import 'shared_preferences_provider.dart';
 
@@ -84,8 +83,7 @@ MisskeyColors? dynamicColor(Ref ref, Brightness brightness) {
     TargetPlatform.android =>
       ref
           .watch(corePaletteNotifierProvider)
-          ?.toColorScheme(brightness: brightness)
-          .toModern(),
+          ?.toColorScheme(brightness: brightness),
     TargetPlatform.windows || TargetPlatform.macOS || TargetPlatform.linux =>
       ref
           .watch(_accentColorNotifierProvider)

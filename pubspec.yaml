@@ -27,7 +27,7 @@ dependencies:
   device_info_plus: ^13.2.0
   dio: ^5.11.0
   dotted_border: ^3.1.0
-  dynamic_color: ^1.9.0
+  dynamic_color: ^2.1.0
   extended_image: ^10.1.0
   file: ^7.0.1
   file_picker: ^12.1.3
