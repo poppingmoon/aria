@@ -34,12 +34,12 @@ class const DriveCreateSheet({
           ? FileType.media
           : FileType.any,
     );
-    if (result == null || result.files.isEmpty) return;
+    if (result.isEmpty) return;
     if (!ref.context.mounted) return;
     await futureWithDialog(
       ref.context,
       Future.wait(
-        result.files.map((file) async {
+        result.map((file) async {
           if (file case PlatformFile(:final path?)) {
             final data = await ref
                 .read(fileSystemProvider)
