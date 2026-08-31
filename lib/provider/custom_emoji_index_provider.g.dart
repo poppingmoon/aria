@@ -15,13 +15,13 @@ final customEmojiIndexProvider = CustomEmojiIndexFamily._();
 final class CustomEmojiIndexProvider
     extends
         $FunctionalProvider<
-          AsyncValue<Map<String, Set<Emoji>>>,
-          Map<String, Set<Emoji>>,
-          FutureOr<Map<String, Set<Emoji>>>
+          AsyncValue<Map<String, Set<String>>>,
+          Map<String, Set<String>>,
+          FutureOr<Map<String, Set<String>>>
         >
     with
-        $FutureModifier<Map<String, Set<Emoji>>>,
-        $FutureProvider<Map<String, Set<Emoji>>> {
+        $FutureModifier<Map<String, Set<String>>>,
+        $FutureProvider<Map<String, Set<String>>> {
   CustomEmojiIndexProvider._({
     required CustomEmojiIndexFamily super.from,
     required String super.argument,
@@ -45,12 +45,12 @@ final class CustomEmojiIndexProvider
 
   @$internal
   @override
-  $FutureProviderElement<Map<String, Set<Emoji>>> $createElement(
+  $FutureProviderElement<Map<String, Set<String>>> $createElement(
     $ProviderPointer pointer,
   ) => $FutureProviderElement(pointer);
 
   @override
-  FutureOr<Map<String, Set<Emoji>>> create(Ref ref) {
+  FutureOr<Map<String, Set<String>>> create(Ref ref) {
     final argument = this.argument as String;
     return customEmojiIndex(ref, argument);
   }
@@ -66,10 +66,10 @@ final class CustomEmojiIndexProvider
   }
 }
 
-String _$customEmojiIndexHash() => r'b0b4f5411d2ea2ac82b7d5d09dc3b422937e6a82';
+String _$customEmojiIndexHash() => r'f63dbcb72b97f5ed8152746f4d88e60d9c2dfb1a';
 
 final class CustomEmojiIndexFamily extends $Family
-    with $FunctionalFamilyOverride<FutureOr<Map<String, Set<Emoji>>>, String> {
+    with $FunctionalFamilyOverride<FutureOr<Map<String, Set<String>>>, String> {
   CustomEmojiIndexFamily._()
     : super(
         retry: null,

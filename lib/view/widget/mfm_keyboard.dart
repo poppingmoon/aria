@@ -252,7 +252,7 @@ class const MfmEmojiKeyboard({
         else ...[
           ...ref
               .watch(searchCustomEmojisProvider(account.host, query.value))
-              .map((emoji) => ':${emoji.name}:'),
+              .map((emoji) => ':$emoji:'),
           ...ref.watch(searchUnicodeEmojisProvider(query.value)),
         ],
       ];

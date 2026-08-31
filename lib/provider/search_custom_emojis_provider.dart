@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../extension/string_extension.dart';
@@ -10,7 +9,7 @@ import 'custom_emoji_index_provider.dart';
 part 'search_custom_emojis_provider.g.dart';
 
 @riverpod
-Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
+Set<String> searchCustomEmojis(Ref ref, String host, String query) {
   final link = ref.keepAlive();
   Timer? timer;
   ref.onCancel(() => timer = Timer(const Duration(minutes: 1), link.close));
