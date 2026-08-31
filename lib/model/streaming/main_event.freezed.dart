@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Notification {
 
-@override INotificationsResponse get notification;
+
 /// Create a copy of Notification
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $NotificationCopyWith<Notification> get copyWith => _$NotificationCopyWithImpl<N
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Notification&&(identical(other.notification, notification) || other.notification == notification));
+  final _this = this as Notification;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Notification&&(identical(other.notification, _this.notification) || other.notification == _this.notification));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notification);
+int get hashCode {
+  final _this = this as Notification;
+  return Object.hash(runtimeType,_this.notification);
+}
 
 @override
 String toString() {
-  return 'Notification(notification: $notification)';
+  final _this = this as Notification;
+  return 'Notification(notification: ${_this.notification})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $NotificationCopyWith<$Res>  {
   factory $NotificationCopyWith(Notification value, $Res Function(Notification) _then) = _$NotificationCopyWithImpl;
 @useResult
 $Res call({
-@override INotificationsResponse notification
+ INotificationsResponse notification
 });
 
 
@@ -87,10 +92,10 @@ $INotificationsResponseCopyWith<$Res> get notification {
 
 
 class _Notification extends Notification {
-  const _Notification(@override this.notification): super(notification);
+  const _Notification(this.notification): super(notification);
   
 
-@override@override final  INotificationsResponse notification;
+@override final  INotificationsResponse notification;
 
 /// Create a copy of Notification
 /// with the given fields replaced by the non-null parameter values.
@@ -102,16 +107,18 @@ _$NotificationCopyWith<_Notification> get copyWith => __$NotificationCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Notification&&(identical(other.notification, notification) || other.notification == notification));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Notification&&(identical(other.notification, notification) || other.notification == notification));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notification);
+int get hashCode {
+    return Object.hash(runtimeType,notification);
+}
 
 @override
 String toString() {
-  return 'Notification(notification: $notification)';
+    return 'Notification(notification: $notification)';
 }
 
 
@@ -122,7 +129,7 @@ abstract mixin class _$NotificationCopyWith<$Res> implements $NotificationCopyWi
   factory _$NotificationCopyWith(_Notification value, $Res Function(_Notification) _then) = __$NotificationCopyWithImpl;
 @override @useResult
 $Res call({
-@override INotificationsResponse notification
+ INotificationsResponse notification
 });
 
 
@@ -161,7 +168,7 @@ $INotificationsResponseCopyWith<$Res> get notification {
 /// @nodoc
 mixin _$Mention {
 
-@override Note get note;
+
 /// Create a copy of Mention
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -172,16 +179,21 @@ $MentionCopyWith<Mention> get copyWith => _$MentionCopyWithImpl<Mention>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Mention&&(identical(other.note, note) || other.note == note));
+  final _this = this as Mention;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Mention&&(identical(other.note, _this.note) || other.note == _this.note));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,note);
+int get hashCode {
+  final _this = this as Mention;
+  return Object.hash(runtimeType,_this.note);
+}
 
 @override
 String toString() {
-  return 'Mention(note: $note)';
+  final _this = this as Mention;
+  return 'Mention(note: ${_this.note})';
 }
 
 
@@ -192,7 +204,7 @@ abstract mixin class $MentionCopyWith<$Res>  {
   factory $MentionCopyWith(Mention value, $Res Function(Mention) _then) = _$MentionCopyWithImpl;
 @useResult
 $Res call({
-@override Note note
+ Note note
 });
 
 
@@ -233,10 +245,10 @@ $NoteCopyWith<$Res> get note {
 
 
 class _Mention extends Mention {
-  const _Mention(@override this.note): super(note);
+  const _Mention(this.note): super(note);
   
 
-@override@override final  Note note;
+@override final  Note note;
 
 /// Create a copy of Mention
 /// with the given fields replaced by the non-null parameter values.
@@ -248,16 +260,18 @@ _$MentionCopyWith<_Mention> get copyWith => __$MentionCopyWithImpl<_Mention>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Mention&&(identical(other.note, note) || other.note == note));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Mention&&(identical(other.note, note) || other.note == note));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,note);
+int get hashCode {
+    return Object.hash(runtimeType,note);
+}
 
 @override
 String toString() {
-  return 'Mention(note: $note)';
+    return 'Mention(note: $note)';
 }
 
 
@@ -268,7 +282,7 @@ abstract mixin class _$MentionCopyWith<$Res> implements $MentionCopyWith<$Res> {
   factory _$MentionCopyWith(_Mention value, $Res Function(_Mention) _then) = __$MentionCopyWithImpl;
 @override @useResult
 $Res call({
-@override Note note
+ Note note
 });
 
 
@@ -307,7 +321,7 @@ $NoteCopyWith<$Res> get note {
 /// @nodoc
 mixin _$MeUpdated {
 
-@override MeDetailed get i;
+
 /// Create a copy of MeUpdated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -318,16 +332,21 @@ $MeUpdatedCopyWith<MeUpdated> get copyWith => _$MeUpdatedCopyWithImpl<MeUpdated>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MeUpdated&&(identical(other.i, i) || other.i == i));
+  final _this = this as MeUpdated;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MeUpdated&&(identical(other.i, _this.i) || other.i == _this.i));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,i);
+int get hashCode {
+  final _this = this as MeUpdated;
+  return Object.hash(runtimeType,_this.i);
+}
 
 @override
 String toString() {
-  return 'MeUpdated(i: $i)';
+  final _this = this as MeUpdated;
+  return 'MeUpdated(i: ${_this.i})';
 }
 
 
@@ -338,7 +357,7 @@ abstract mixin class $MeUpdatedCopyWith<$Res>  {
   factory $MeUpdatedCopyWith(MeUpdated value, $Res Function(MeUpdated) _then) = _$MeUpdatedCopyWithImpl;
 @useResult
 $Res call({
-@override MeDetailed i
+ MeDetailed i
 });
 
 
@@ -379,10 +398,10 @@ $MeDetailedCopyWith<$Res> get i {
 
 
 class _MeUpdated extends MeUpdated {
-  const _MeUpdated(@override this.i): super(i);
+  const _MeUpdated(this.i): super(i);
   
 
-@override@override final  MeDetailed i;
+@override final  MeDetailed i;
 
 /// Create a copy of MeUpdated
 /// with the given fields replaced by the non-null parameter values.
@@ -394,16 +413,18 @@ _$MeUpdatedCopyWith<_MeUpdated> get copyWith => __$MeUpdatedCopyWithImpl<_MeUpda
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MeUpdated&&(identical(other.i, i) || other.i == i));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MeUpdated&&(identical(other.i, i) || other.i == i));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,i);
+int get hashCode {
+    return Object.hash(runtimeType,i);
+}
 
 @override
 String toString() {
-  return 'MeUpdated(i: $i)';
+    return 'MeUpdated(i: $i)';
 }
 
 
@@ -414,7 +435,7 @@ abstract mixin class _$MeUpdatedCopyWith<$Res> implements $MeUpdatedCopyWith<$Re
   factory _$MeUpdatedCopyWith(_MeUpdated value, $Res Function(_MeUpdated) _then) = __$MeUpdatedCopyWithImpl;
 @override @useResult
 $Res call({
-@override MeDetailed i
+ MeDetailed i
 });
 
 
@@ -454,7 +475,7 @@ $MeDetailedCopyWith<$Res> get i {
 /// @nodoc
 mixin _$UrlUploadFinished {
 
-@override String? get marker;@override DriveFile get file;
+
 /// Create a copy of UrlUploadFinished
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -465,16 +486,21 @@ $UrlUploadFinishedCopyWith<UrlUploadFinished> get copyWith => _$UrlUploadFinishe
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UrlUploadFinished&&(identical(other.marker, marker) || other.marker == marker)&&(identical(other.file, file) || other.file == file));
+  final _this = this as UrlUploadFinished;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UrlUploadFinished&&(identical(other.marker, _this.marker) || other.marker == _this.marker)&&(identical(other.file, _this.file) || other.file == _this.file));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,marker,file);
+int get hashCode {
+  final _this = this as UrlUploadFinished;
+  return Object.hash(runtimeType,_this.marker,_this.file);
+}
 
 @override
 String toString() {
-  return 'UrlUploadFinished(marker: $marker, file: $file)';
+  final _this = this as UrlUploadFinished;
+  return 'UrlUploadFinished(marker: ${_this.marker}, file: ${_this.file})';
 }
 
 
@@ -485,7 +511,7 @@ abstract mixin class $UrlUploadFinishedCopyWith<$Res>  {
   factory $UrlUploadFinishedCopyWith(UrlUploadFinished value, $Res Function(UrlUploadFinished) _then) = _$UrlUploadFinishedCopyWithImpl;
 @useResult
 $Res call({
-@override String? marker,@override DriveFile file
+ String? marker, DriveFile file
 });
 
 
@@ -600,7 +626,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? marker, @override  DriveFile file)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? marker,  DriveFile file)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _UrlUploadFinished() when $default != null:
 return $default(_that.marker,_that.file);case _:
@@ -621,7 +647,7 @@ return $default(_that.marker,_that.file);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? marker, @override  DriveFile file)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? marker,  DriveFile file)  $default,) {final _that = this;
 switch (_that) {
 case _UrlUploadFinished():
 return $default(_that.marker,_that.file);case _:
@@ -641,7 +667,7 @@ return $default(_that.marker,_that.file);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? marker, @override  DriveFile file)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? marker,  DriveFile file)?  $default,) {final _that = this;
 switch (_that) {
 case _UrlUploadFinished() when $default != null:
 return $default(_that.marker,_that.file);case _:
@@ -656,11 +682,11 @@ return $default(_that.marker,_that.file);case _:
 @JsonSerializable(createToJson: false)
 
 class _UrlUploadFinished extends UrlUploadFinished {
-  const _UrlUploadFinished({@override this.marker, @override required this.file}): super(marker: marker, file: file);
+  const _UrlUploadFinished({this.marker, required this.file}): super(marker: marker, file: file);
   factory _UrlUploadFinished.fromJson(Map<String, dynamic> json) => _$UrlUploadFinishedFromJson(json);
 
-@override@override final  String? marker;
-@override@override final  DriveFile file;
+@override final  String? marker;
+@override final  DriveFile file;
 
 /// Create a copy of UrlUploadFinished
 /// with the given fields replaced by the non-null parameter values.
@@ -672,16 +698,18 @@ _$UrlUploadFinishedCopyWith<_UrlUploadFinished> get copyWith => __$UrlUploadFini
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UrlUploadFinished&&(identical(other.marker, marker) || other.marker == marker)&&(identical(other.file, file) || other.file == file));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UrlUploadFinished&&(identical(other.marker, marker) || other.marker == marker)&&(identical(other.file, file) || other.file == file));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,marker,file);
+int get hashCode {
+    return Object.hash(runtimeType,marker,file);
+}
 
 @override
 String toString() {
-  return 'UrlUploadFinished(marker: $marker, file: $file)';
+    return 'UrlUploadFinished(marker: $marker, file: $file)';
 }
 
 
@@ -692,7 +720,7 @@ abstract mixin class _$UrlUploadFinishedCopyWith<$Res> implements $UrlUploadFini
   factory _$UrlUploadFinishedCopyWith(_UrlUploadFinished value, $Res Function(_UrlUploadFinished) _then) = __$UrlUploadFinishedCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? marker,@override DriveFile file
+ String? marker, DriveFile file
 });
 
 
@@ -732,7 +760,7 @@ $DriveFileCopyWith<$Res> get file {
 /// @nodoc
 mixin _$UnreadNotification {
 
-@override INotificationsResponse get notification;
+
 /// Create a copy of UnreadNotification
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -743,16 +771,21 @@ $UnreadNotificationCopyWith<UnreadNotification> get copyWith => _$UnreadNotifica
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnreadNotification&&(identical(other.notification, notification) || other.notification == notification));
+  final _this = this as UnreadNotification;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UnreadNotification&&(identical(other.notification, _this.notification) || other.notification == _this.notification));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notification);
+int get hashCode {
+  final _this = this as UnreadNotification;
+  return Object.hash(runtimeType,_this.notification);
+}
 
 @override
 String toString() {
-  return 'UnreadNotification(notification: $notification)';
+  final _this = this as UnreadNotification;
+  return 'UnreadNotification(notification: ${_this.notification})';
 }
 
 
@@ -763,7 +796,7 @@ abstract mixin class $UnreadNotificationCopyWith<$Res>  {
   factory $UnreadNotificationCopyWith(UnreadNotification value, $Res Function(UnreadNotification) _then) = _$UnreadNotificationCopyWithImpl;
 @useResult
 $Res call({
-@override INotificationsResponse notification
+ INotificationsResponse notification
 });
 
 
@@ -804,10 +837,10 @@ $INotificationsResponseCopyWith<$Res> get notification {
 
 
 class _UnreadNotification extends UnreadNotification {
-  const _UnreadNotification(@override this.notification): super(notification);
+  const _UnreadNotification(this.notification): super(notification);
   
 
-@override@override final  INotificationsResponse notification;
+@override final  INotificationsResponse notification;
 
 /// Create a copy of UnreadNotification
 /// with the given fields replaced by the non-null parameter values.
@@ -819,16 +852,18 @@ _$UnreadNotificationCopyWith<_UnreadNotification> get copyWith => __$UnreadNotif
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UnreadNotification&&(identical(other.notification, notification) || other.notification == notification));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _UnreadNotification&&(identical(other.notification, notification) || other.notification == notification));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,notification);
+int get hashCode {
+    return Object.hash(runtimeType,notification);
+}
 
 @override
 String toString() {
-  return 'UnreadNotification(notification: $notification)';
+    return 'UnreadNotification(notification: $notification)';
 }
 
 
@@ -839,7 +874,7 @@ abstract mixin class _$UnreadNotificationCopyWith<$Res> implements $UnreadNotifi
   factory _$UnreadNotificationCopyWith(_UnreadNotification value, $Res Function(_UnreadNotification) _then) = __$UnreadNotificationCopyWithImpl;
 @override @useResult
 $Res call({
-@override INotificationsResponse notification
+ INotificationsResponse notification
 });
 
 
@@ -878,7 +913,7 @@ $INotificationsResponseCopyWith<$Res> get notification {
 /// @nodoc
 mixin _$NewChatMessage {
 
-@override ChatMessage get message;
+
 /// Create a copy of NewChatMessage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -889,16 +924,21 @@ $NewChatMessageCopyWith<NewChatMessage> get copyWith => _$NewChatMessageCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewChatMessage&&(identical(other.message, message) || other.message == message));
+  final _this = this as NewChatMessage;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NewChatMessage&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+  final _this = this as NewChatMessage;
+  return Object.hash(runtimeType,_this.message);
+}
 
 @override
 String toString() {
-  return 'NewChatMessage(message: $message)';
+  final _this = this as NewChatMessage;
+  return 'NewChatMessage(message: ${_this.message})';
 }
 
 
@@ -909,7 +949,7 @@ abstract mixin class $NewChatMessageCopyWith<$Res>  {
   factory $NewChatMessageCopyWith(NewChatMessage value, $Res Function(NewChatMessage) _then) = _$NewChatMessageCopyWithImpl;
 @useResult
 $Res call({
-@override ChatMessage message
+ ChatMessage message
 });
 
 
@@ -950,10 +990,10 @@ $ChatMessageCopyWith<$Res> get message {
 
 
 class _NewChatMessage extends NewChatMessage {
-  const _NewChatMessage(@override this.message): super(message);
+  const _NewChatMessage(this.message): super(message);
   
 
-@override@override final  ChatMessage message;
+@override final  ChatMessage message;
 
 /// Create a copy of NewChatMessage
 /// with the given fields replaced by the non-null parameter values.
@@ -965,16 +1005,18 @@ _$NewChatMessageCopyWith<_NewChatMessage> get copyWith => __$NewChatMessageCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewChatMessage&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _NewChatMessage&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'NewChatMessage(message: $message)';
+    return 'NewChatMessage(message: $message)';
 }
 
 
@@ -985,7 +1027,7 @@ abstract mixin class _$NewChatMessageCopyWith<$Res> implements $NewChatMessageCo
   factory _$NewChatMessageCopyWith(_NewChatMessage value, $Res Function(_NewChatMessage) _then) = __$NewChatMessageCopyWithImpl;
 @override @useResult
 $Res call({
-@override ChatMessage message
+ ChatMessage message
 });
 
 
@@ -1024,7 +1066,7 @@ $ChatMessageCopyWith<$Res> get message {
 /// @nodoc
 mixin _$ReceiveFollowRequest {
 
-@override UserLite get user;
+
 /// Create a copy of ReceiveFollowRequest
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1035,16 +1077,21 @@ $ReceiveFollowRequestCopyWith<ReceiveFollowRequest> get copyWith => _$ReceiveFol
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceiveFollowRequest&&(identical(other.user, user) || other.user == user));
+  final _this = this as ReceiveFollowRequest;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReceiveFollowRequest&&(identical(other.user, _this.user) || other.user == _this.user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user);
+int get hashCode {
+  final _this = this as ReceiveFollowRequest;
+  return Object.hash(runtimeType,_this.user);
+}
 
 @override
 String toString() {
-  return 'ReceiveFollowRequest(user: $user)';
+  final _this = this as ReceiveFollowRequest;
+  return 'ReceiveFollowRequest(user: ${_this.user})';
 }
 
 
@@ -1055,7 +1102,7 @@ abstract mixin class $ReceiveFollowRequestCopyWith<$Res>  {
   factory $ReceiveFollowRequestCopyWith(ReceiveFollowRequest value, $Res Function(ReceiveFollowRequest) _then) = _$ReceiveFollowRequestCopyWithImpl;
 @useResult
 $Res call({
-@override UserLite user
+ UserLite user
 });
 
 
@@ -1096,10 +1143,10 @@ $UserLiteCopyWith<$Res> get user {
 
 
 class _ReceiveFollowRequest extends ReceiveFollowRequest {
-  const _ReceiveFollowRequest(@override this.user): super(user);
+  const _ReceiveFollowRequest(this.user): super(user);
   
 
-@override@override final  UserLite user;
+@override final  UserLite user;
 
 /// Create a copy of ReceiveFollowRequest
 /// with the given fields replaced by the non-null parameter values.
@@ -1111,16 +1158,18 @@ _$ReceiveFollowRequestCopyWith<_ReceiveFollowRequest> get copyWith => __$Receive
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReceiveFollowRequest&&(identical(other.user, user) || other.user == user));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReceiveFollowRequest&&(identical(other.user, user) || other.user == user));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,user);
+int get hashCode {
+    return Object.hash(runtimeType,user);
+}
 
 @override
 String toString() {
-  return 'ReceiveFollowRequest(user: $user)';
+    return 'ReceiveFollowRequest(user: $user)';
 }
 
 
@@ -1131,7 +1180,7 @@ abstract mixin class _$ReceiveFollowRequestCopyWith<$Res> implements $ReceiveFol
   factory _$ReceiveFollowRequestCopyWith(_ReceiveFollowRequest value, $Res Function(_ReceiveFollowRequest) _then) = __$ReceiveFollowRequestCopyWithImpl;
 @override @useResult
 $Res call({
-@override UserLite user
+ UserLite user
 });
 
 
@@ -1170,7 +1219,7 @@ $UserLiteCopyWith<$Res> get user {
 /// @nodoc
 mixin _$AnnouncementCreated {
 
-@override AnnouncementsResponse get announcement;
+
 /// Create a copy of AnnouncementCreated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1181,16 +1230,21 @@ $AnnouncementCreatedCopyWith<AnnouncementCreated> get copyWith => _$Announcement
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
+  final _this = this as AnnouncementCreated;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnnouncementCreated&&(identical(other.announcement, _this.announcement) || other.announcement == _this.announcement));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,announcement);
+int get hashCode {
+  final _this = this as AnnouncementCreated;
+  return Object.hash(runtimeType,_this.announcement);
+}
 
 @override
 String toString() {
-  return 'AnnouncementCreated(announcement: $announcement)';
+  final _this = this as AnnouncementCreated;
+  return 'AnnouncementCreated(announcement: ${_this.announcement})';
 }
 
 
@@ -1201,7 +1255,7 @@ abstract mixin class $AnnouncementCreatedCopyWith<$Res>  {
   factory $AnnouncementCreatedCopyWith(AnnouncementCreated value, $Res Function(AnnouncementCreated) _then) = _$AnnouncementCreatedCopyWithImpl;
 @useResult
 $Res call({
-@override AnnouncementsResponse announcement
+ AnnouncementsResponse announcement
 });
 
 
@@ -1242,10 +1296,10 @@ $AnnouncementsResponseCopyWith<$Res> get announcement {
 
 
 class _AnnouncementCreated extends AnnouncementCreated {
-  const _AnnouncementCreated(@override this.announcement): super(announcement);
+  const _AnnouncementCreated(this.announcement): super(announcement);
   
 
-@override@override final  AnnouncementsResponse announcement;
+@override final  AnnouncementsResponse announcement;
 
 /// Create a copy of AnnouncementCreated
 /// with the given fields replaced by the non-null parameter values.
@@ -1257,16 +1311,18 @@ _$AnnouncementCreatedCopyWith<_AnnouncementCreated> get copyWith => __$Announcem
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,announcement);
+int get hashCode {
+    return Object.hash(runtimeType,announcement);
+}
 
 @override
 String toString() {
-  return 'AnnouncementCreated(announcement: $announcement)';
+    return 'AnnouncementCreated(announcement: $announcement)';
 }
 
 
@@ -1277,7 +1333,7 @@ abstract mixin class _$AnnouncementCreatedCopyWith<$Res> implements $Announcemen
   factory _$AnnouncementCreatedCopyWith(_AnnouncementCreated value, $Res Function(_AnnouncementCreated) _then) = __$AnnouncementCreatedCopyWithImpl;
 @override @useResult
 $Res call({
-@override AnnouncementsResponse announcement
+ AnnouncementsResponse announcement
 });
 
 

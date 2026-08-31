@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Message {
 
-@override ChatMessage get message;
+
 /// Create a copy of Message
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $MessageCopyWith<Message> get copyWith => _$MessageCopyWithImpl<Message>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Message&&(identical(other.message, message) || other.message == message));
+  final _this = this as Message;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Message&&(identical(other.message, _this.message) || other.message == _this.message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+  final _this = this as Message;
+  return Object.hash(runtimeType,_this.message);
+}
 
 @override
 String toString() {
-  return 'Message(message: $message)';
+  final _this = this as Message;
+  return 'Message(message: ${_this.message})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $MessageCopyWith<$Res>  {
   factory $MessageCopyWith(Message value, $Res Function(Message) _then) = _$MessageCopyWithImpl;
 @useResult
 $Res call({
-@override ChatMessage message
+ ChatMessage message
 });
 
 
@@ -87,10 +92,10 @@ $ChatMessageCopyWith<$Res> get message {
 
 
 class _Message extends Message {
-  const _Message(@override this.message): super(message);
+  const _Message(this.message): super(message);
   
 
-@override@override final  ChatMessage message;
+@override final  ChatMessage message;
 
 /// Create a copy of Message
 /// with the given fields replaced by the non-null parameter values.
@@ -102,16 +107,18 @@ _$MessageCopyWith<_Message> get copyWith => __$MessageCopyWithImpl<_Message>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Message&&(identical(other.message, message) || other.message == message));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Message&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message);
+int get hashCode {
+    return Object.hash(runtimeType,message);
+}
 
 @override
 String toString() {
-  return 'Message(message: $message)';
+    return 'Message(message: $message)';
 }
 
 
@@ -122,7 +129,7 @@ abstract mixin class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
   factory _$MessageCopyWith(_Message value, $Res Function(_Message) _then) = __$MessageCopyWithImpl;
 @override @useResult
 $Res call({
-@override ChatMessage message
+ ChatMessage message
 });
 
 
@@ -161,7 +168,7 @@ $ChatMessageCopyWith<$Res> get message {
 /// @nodoc
 mixin _$Deleted {
 
-@override String get messageId;
+
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -172,16 +179,21 @@ $DeletedCopyWith<Deleted> get copyWith => _$DeletedCopyWithImpl<Deleted>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Deleted&&(identical(other.messageId, messageId) || other.messageId == messageId));
+  final _this = this as Deleted;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Deleted&&(identical(other.messageId, _this.messageId) || other.messageId == _this.messageId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,messageId);
+int get hashCode {
+  final _this = this as Deleted;
+  return Object.hash(runtimeType,_this.messageId);
+}
 
 @override
 String toString() {
-  return 'Deleted(messageId: $messageId)';
+  final _this = this as Deleted;
+  return 'Deleted(messageId: ${_this.messageId})';
 }
 
 
@@ -192,7 +204,7 @@ abstract mixin class $DeletedCopyWith<$Res>  {
   factory $DeletedCopyWith(Deleted value, $Res Function(Deleted) _then) = _$DeletedCopyWithImpl;
 @useResult
 $Res call({
-@override String messageId
+ String messageId
 });
 
 
@@ -224,10 +236,10 @@ as String,
 
 
 class _Deleted extends Deleted {
-  const _Deleted(@override this.messageId): super(messageId);
+  const _Deleted(this.messageId): super(messageId);
   
 
-@override@override final  String messageId;
+@override final  String messageId;
 
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +251,18 @@ _$DeletedCopyWith<_Deleted> get copyWith => __$DeletedCopyWithImpl<_Deleted>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Deleted&&(identical(other.messageId, messageId) || other.messageId == messageId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Deleted&&(identical(other.messageId, messageId) || other.messageId == messageId));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,messageId);
+int get hashCode {
+    return Object.hash(runtimeType,messageId);
+}
 
 @override
 String toString() {
-  return 'Deleted(messageId: $messageId)';
+    return 'Deleted(messageId: $messageId)';
 }
 
 
@@ -259,7 +273,7 @@ abstract mixin class _$DeletedCopyWith<$Res> implements $DeletedCopyWith<$Res> {
   factory _$DeletedCopyWith(_Deleted value, $Res Function(_Deleted) _then) = __$DeletedCopyWithImpl;
 @override @useResult
 $Res call({
-@override String messageId
+ String messageId
 });
 
 
@@ -290,7 +304,7 @@ as String,
 /// @nodoc
 mixin _$React {
 
-@override String get reaction;@override UserLite? get user;@override String get messageId;
+
 /// Create a copy of React
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -301,16 +315,21 @@ $ReactCopyWith<React> get copyWith => _$ReactCopyWithImpl<React>(this as React, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is React&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
+  final _this = this as React;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is React&&(identical(other.reaction, _this.reaction) || other.reaction == _this.reaction)&&(identical(other.user, _this.user) || other.user == _this.user)&&(identical(other.messageId, _this.messageId) || other.messageId == _this.messageId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,user,messageId);
+int get hashCode {
+  final _this = this as React;
+  return Object.hash(runtimeType,_this.reaction,_this.user,_this.messageId);
+}
 
 @override
 String toString() {
-  return 'React(reaction: $reaction, user: $user, messageId: $messageId)';
+  final _this = this as React;
+  return 'React(reaction: ${_this.reaction}, user: ${_this.user}, messageId: ${_this.messageId})';
 }
 
 
@@ -321,7 +340,7 @@ abstract mixin class $ReactCopyWith<$Res>  {
   factory $ReactCopyWith(React value, $Res Function(React) _then) = _$ReactCopyWithImpl;
 @useResult
 $Res call({
-@override String reaction,@override UserLite? user,@override String messageId
+ String reaction, UserLite? user, String messageId
 });
 
 
@@ -440,7 +459,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  UserLite? user, @override  String messageId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  UserLite? user,  String messageId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _React() when $default != null:
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -461,7 +480,7 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  UserLite? user, @override  String messageId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  UserLite? user,  String messageId)  $default,) {final _that = this;
 switch (_that) {
 case _React():
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -481,7 +500,7 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  UserLite? user, @override  String messageId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  UserLite? user,  String messageId)?  $default,) {final _that = this;
 switch (_that) {
 case _React() when $default != null:
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -496,12 +515,12 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 @JsonSerializable(createToJson: false)
 
 class _React extends React {
-  const _React({@override required this.reaction, @override this.user, @override required this.messageId}): super(reaction: reaction, user: user, messageId: messageId);
+  const _React({required this.reaction, this.user, required this.messageId}): super(reaction: reaction, user: user, messageId: messageId);
   factory _React.fromJson(Map<String, dynamic> json) => _$ReactFromJson(json);
 
-@override@override final  String reaction;
-@override@override final  UserLite? user;
-@override@override final  String messageId;
+@override final  String reaction;
+@override final  UserLite? user;
+@override final  String messageId;
 
 /// Create a copy of React
 /// with the given fields replaced by the non-null parameter values.
@@ -513,16 +532,18 @@ _$ReactCopyWith<_React> get copyWith => __$ReactCopyWithImpl<_React>(this, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _React&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _React&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,user,messageId);
+int get hashCode {
+    return Object.hash(runtimeType,reaction,user,messageId);
+}
 
 @override
 String toString() {
-  return 'React(reaction: $reaction, user: $user, messageId: $messageId)';
+    return 'React(reaction: $reaction, user: $user, messageId: $messageId)';
 }
 
 
@@ -533,7 +554,7 @@ abstract mixin class _$ReactCopyWith<$Res> implements $ReactCopyWith<$Res> {
   factory _$ReactCopyWith(_React value, $Res Function(_React) _then) = __$ReactCopyWithImpl;
 @override @useResult
 $Res call({
-@override String reaction,@override UserLite? user,@override String messageId
+ String reaction, UserLite? user, String messageId
 });
 
 
@@ -578,7 +599,7 @@ $UserLiteCopyWith<$Res>? get user {
 /// @nodoc
 mixin _$Unreact {
 
-@override String get reaction;@override UserLite? get user;@override String get messageId;
+
 /// Create a copy of Unreact
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -589,16 +610,21 @@ $UnreactCopyWith<Unreact> get copyWith => _$UnreactCopyWithImpl<Unreact>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Unreact&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
+  final _this = this as Unreact;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Unreact&&(identical(other.reaction, _this.reaction) || other.reaction == _this.reaction)&&(identical(other.user, _this.user) || other.user == _this.user)&&(identical(other.messageId, _this.messageId) || other.messageId == _this.messageId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,user,messageId);
+int get hashCode {
+  final _this = this as Unreact;
+  return Object.hash(runtimeType,_this.reaction,_this.user,_this.messageId);
+}
 
 @override
 String toString() {
-  return 'Unreact(reaction: $reaction, user: $user, messageId: $messageId)';
+  final _this = this as Unreact;
+  return 'Unreact(reaction: ${_this.reaction}, user: ${_this.user}, messageId: ${_this.messageId})';
 }
 
 
@@ -609,7 +635,7 @@ abstract mixin class $UnreactCopyWith<$Res>  {
   factory $UnreactCopyWith(Unreact value, $Res Function(Unreact) _then) = _$UnreactCopyWithImpl;
 @useResult
 $Res call({
-@override String reaction,@override UserLite? user,@override String messageId
+ String reaction, UserLite? user, String messageId
 });
 
 
@@ -728,7 +754,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  UserLite? user, @override  String messageId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  UserLite? user,  String messageId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Unreact() when $default != null:
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -749,7 +775,7 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  UserLite? user, @override  String messageId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  UserLite? user,  String messageId)  $default,) {final _that = this;
 switch (_that) {
 case _Unreact():
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -769,7 +795,7 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  UserLite? user, @override  String messageId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  UserLite? user,  String messageId)?  $default,) {final _that = this;
 switch (_that) {
 case _Unreact() when $default != null:
 return $default(_that.reaction,_that.user,_that.messageId);case _:
@@ -784,12 +810,12 @@ return $default(_that.reaction,_that.user,_that.messageId);case _:
 @JsonSerializable(createToJson: false)
 
 class _Unreact extends Unreact {
-  const _Unreact({@override required this.reaction, @override this.user, @override required this.messageId}): super(reaction: reaction, user: user, messageId: messageId);
+  const _Unreact({required this.reaction, this.user, required this.messageId}): super(reaction: reaction, user: user, messageId: messageId);
   factory _Unreact.fromJson(Map<String, dynamic> json) => _$UnreactFromJson(json);
 
-@override@override final  String reaction;
-@override@override final  UserLite? user;
-@override@override final  String messageId;
+@override final  String reaction;
+@override final  UserLite? user;
+@override final  String messageId;
 
 /// Create a copy of Unreact
 /// with the given fields replaced by the non-null parameter values.
@@ -801,16 +827,18 @@ _$UnreactCopyWith<_Unreact> get copyWith => __$UnreactCopyWithImpl<_Unreact>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unreact&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unreact&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.user, user) || other.user == user)&&(identical(other.messageId, messageId) || other.messageId == messageId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,user,messageId);
+int get hashCode {
+    return Object.hash(runtimeType,reaction,user,messageId);
+}
 
 @override
 String toString() {
-  return 'Unreact(reaction: $reaction, user: $user, messageId: $messageId)';
+    return 'Unreact(reaction: $reaction, user: $user, messageId: $messageId)';
 }
 
 
@@ -821,7 +849,7 @@ abstract mixin class _$UnreactCopyWith<$Res> implements $UnreactCopyWith<$Res> {
   factory _$UnreactCopyWith(_Unreact value, $Res Function(_Unreact) _then) = __$UnreactCopyWithImpl;
 @override @useResult
 $Res call({
-@override String reaction,@override UserLite? user,@override String messageId
+ String reaction, UserLite? user, String messageId
 });
 
 

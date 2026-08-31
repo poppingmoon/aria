@@ -10,13 +10,13 @@ part 'aria_backup.g.dart';
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
 class const AriaBackup({
-  @override final Map<String, dynamic>? metadata,
-  @override final List<TabSettings>? timelineTabs,
-  @override final Map<String, AccountSettings>? accountSettings,
-  @override final GeneralSettings? generalSettings,
-  @override final List<String>? themes,
-  @override final Map<String, Map<String, String>>? aiscriptStorage,
-  @override final List<Map<String, dynamic>>? noteDrafts,
+  final Map<String, dynamic>? metadata,
+  final List<TabSettings>? timelineTabs,
+  final Map<String, AccountSettings>? accountSettings,
+  final GeneralSettings? generalSettings,
+  final List<String>? themes,
+  final Map<String, Map<String, String>>? aiscriptStorage,
+  final List<Map<String, dynamic>>? noteDrafts,
 }) with _$AriaBackup {
   factory fromJson(Map<String, Object?> json) => _$AriaBackupFromJson(json);
 

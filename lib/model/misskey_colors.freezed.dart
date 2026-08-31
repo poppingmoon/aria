@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MisskeyColors {
 
-@override String get id;@override String get name;@override bool get isDark;@override Color get accent;@override Color get accentDarken;@override Color get accentLighten;@override Color get accentedBg;@override Color get love;@override Color get bg;@override Color get fg;@override Color get fgOnAccent;@override Color get divider;@override Color get panel;@override Color get link;@override Color get hashtag;@override Color get mention;@override Color get mentionMe;@override Color get renote;@override Color get infoBg;@override Color get infoFg;@override Color get infoWarnBg;@override Color get infoWarnFg;@override Color get buttonBg;@override Color get buttonGradateA;@override Color get buttonGradateB;@override Color get driveFolderBg;@override Color get success;@override Color get error;@override Color get warn;
+
 /// Create a copy of MisskeyColors
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $MisskeyColorsCopyWith<MisskeyColors> get copyWith => _$MisskeyColorsCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyColors&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.isDark, isDark) || other.isDark == isDark)&&(identical(other.accent, accent) || other.accent == accent)&&(identical(other.accentDarken, accentDarken) || other.accentDarken == accentDarken)&&(identical(other.accentLighten, accentLighten) || other.accentLighten == accentLighten)&&(identical(other.accentedBg, accentedBg) || other.accentedBg == accentedBg)&&(identical(other.love, love) || other.love == love)&&(identical(other.bg, bg) || other.bg == bg)&&(identical(other.fg, fg) || other.fg == fg)&&(identical(other.fgOnAccent, fgOnAccent) || other.fgOnAccent == fgOnAccent)&&(identical(other.divider, divider) || other.divider == divider)&&(identical(other.panel, panel) || other.panel == panel)&&(identical(other.link, link) || other.link == link)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.mention, mention) || other.mention == mention)&&(identical(other.mentionMe, mentionMe) || other.mentionMe == mentionMe)&&(identical(other.renote, renote) || other.renote == renote)&&(identical(other.infoBg, infoBg) || other.infoBg == infoBg)&&(identical(other.infoFg, infoFg) || other.infoFg == infoFg)&&(identical(other.infoWarnBg, infoWarnBg) || other.infoWarnBg == infoWarnBg)&&(identical(other.infoWarnFg, infoWarnFg) || other.infoWarnFg == infoWarnFg)&&(identical(other.buttonBg, buttonBg) || other.buttonBg == buttonBg)&&(identical(other.buttonGradateA, buttonGradateA) || other.buttonGradateA == buttonGradateA)&&(identical(other.buttonGradateB, buttonGradateB) || other.buttonGradateB == buttonGradateB)&&(identical(other.driveFolderBg, driveFolderBg) || other.driveFolderBg == driveFolderBg)&&(identical(other.success, success) || other.success == success)&&(identical(other.error, error) || other.error == error)&&(identical(other.warn, warn) || other.warn == warn));
+  final _this = this as MisskeyColors;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyColors&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.isDark, _this.isDark) || other.isDark == _this.isDark)&&(identical(other.accent, _this.accent) || other.accent == _this.accent)&&(identical(other.accentDarken, _this.accentDarken) || other.accentDarken == _this.accentDarken)&&(identical(other.accentLighten, _this.accentLighten) || other.accentLighten == _this.accentLighten)&&(identical(other.accentedBg, _this.accentedBg) || other.accentedBg == _this.accentedBg)&&(identical(other.love, _this.love) || other.love == _this.love)&&(identical(other.bg, _this.bg) || other.bg == _this.bg)&&(identical(other.fg, _this.fg) || other.fg == _this.fg)&&(identical(other.fgOnAccent, _this.fgOnAccent) || other.fgOnAccent == _this.fgOnAccent)&&(identical(other.divider, _this.divider) || other.divider == _this.divider)&&(identical(other.panel, _this.panel) || other.panel == _this.panel)&&(identical(other.link, _this.link) || other.link == _this.link)&&(identical(other.hashtag, _this.hashtag) || other.hashtag == _this.hashtag)&&(identical(other.mention, _this.mention) || other.mention == _this.mention)&&(identical(other.mentionMe, _this.mentionMe) || other.mentionMe == _this.mentionMe)&&(identical(other.renote, _this.renote) || other.renote == _this.renote)&&(identical(other.infoBg, _this.infoBg) || other.infoBg == _this.infoBg)&&(identical(other.infoFg, _this.infoFg) || other.infoFg == _this.infoFg)&&(identical(other.infoWarnBg, _this.infoWarnBg) || other.infoWarnBg == _this.infoWarnBg)&&(identical(other.infoWarnFg, _this.infoWarnFg) || other.infoWarnFg == _this.infoWarnFg)&&(identical(other.buttonBg, _this.buttonBg) || other.buttonBg == _this.buttonBg)&&(identical(other.buttonGradateA, _this.buttonGradateA) || other.buttonGradateA == _this.buttonGradateA)&&(identical(other.buttonGradateB, _this.buttonGradateB) || other.buttonGradateB == _this.buttonGradateB)&&(identical(other.driveFolderBg, _this.driveFolderBg) || other.driveFolderBg == _this.driveFolderBg)&&(identical(other.success, _this.success) || other.success == _this.success)&&(identical(other.error, _this.error) || other.error == _this.error)&&(identical(other.warn, _this.warn) || other.warn == _this.warn));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,name,isDark,accent,accentDarken,accentLighten,accentedBg,love,bg,fg,fgOnAccent,divider,panel,link,hashtag,mention,mentionMe,renote,infoBg,infoFg,infoWarnBg,infoWarnFg,buttonBg,buttonGradateA,buttonGradateB,driveFolderBg,success,error,warn]);
+int get hashCode {
+  final _this = this as MisskeyColors;
+  return Object.hashAll([runtimeType,_this.id,_this.name,_this.isDark,_this.accent,_this.accentDarken,_this.accentLighten,_this.accentedBg,_this.love,_this.bg,_this.fg,_this.fgOnAccent,_this.divider,_this.panel,_this.link,_this.hashtag,_this.mention,_this.mentionMe,_this.renote,_this.infoBg,_this.infoFg,_this.infoWarnBg,_this.infoWarnFg,_this.buttonBg,_this.buttonGradateA,_this.buttonGradateB,_this.driveFolderBg,_this.success,_this.error,_this.warn]);
+}
 
 @override
 String toString() {
-  return 'MisskeyColors(id: $id, name: $name, isDark: $isDark, accent: $accent, accentDarken: $accentDarken, accentLighten: $accentLighten, accentedBg: $accentedBg, love: $love, bg: $bg, fg: $fg, fgOnAccent: $fgOnAccent, divider: $divider, panel: $panel, link: $link, hashtag: $hashtag, mention: $mention, mentionMe: $mentionMe, renote: $renote, infoBg: $infoBg, infoFg: $infoFg, infoWarnBg: $infoWarnBg, infoWarnFg: $infoWarnFg, buttonBg: $buttonBg, buttonGradateA: $buttonGradateA, buttonGradateB: $buttonGradateB, driveFolderBg: $driveFolderBg, success: $success, error: $error, warn: $warn)';
+  final _this = this as MisskeyColors;
+  return 'MisskeyColors(id: ${_this.id}, name: ${_this.name}, isDark: ${_this.isDark}, accent: ${_this.accent}, accentDarken: ${_this.accentDarken}, accentLighten: ${_this.accentLighten}, accentedBg: ${_this.accentedBg}, love: ${_this.love}, bg: ${_this.bg}, fg: ${_this.fg}, fgOnAccent: ${_this.fgOnAccent}, divider: ${_this.divider}, panel: ${_this.panel}, link: ${_this.link}, hashtag: ${_this.hashtag}, mention: ${_this.mention}, mentionMe: ${_this.mentionMe}, renote: ${_this.renote}, infoBg: ${_this.infoBg}, infoFg: ${_this.infoFg}, infoWarnBg: ${_this.infoWarnBg}, infoWarnFg: ${_this.infoWarnFg}, buttonBg: ${_this.buttonBg}, buttonGradateA: ${_this.buttonGradateA}, buttonGradateB: ${_this.buttonGradateB}, driveFolderBg: ${_this.driveFolderBg}, success: ${_this.success}, error: ${_this.error}, warn: ${_this.warn})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $MisskeyColorsCopyWith<$Res>  {
   factory $MisskeyColorsCopyWith(MisskeyColors value, $Res Function(MisskeyColors) _then) = _$MisskeyColorsCopyWithImpl;
 @useResult
 $Res call({
-@override String id,@override String name,@override bool isDark,@override Color accent,@override Color accentDarken,@override Color accentLighten,@override Color accentedBg,@override Color love,@override Color bg,@override Color fg,@override Color fgOnAccent,@override Color divider,@override Color panel,@override Color link,@override Color hashtag,@override Color mention,@override Color mentionMe,@override Color renote,@override Color infoBg,@override Color infoFg,@override Color infoWarnBg,@override Color infoWarnFg,@override Color buttonBg,@override Color buttonGradateA,@override Color buttonGradateB,@override Color driveFolderBg,@override Color success,@override Color error,@override Color warn
+ String id, String name, bool isDark, Color accent, Color accentDarken, Color accentLighten, Color accentedBg, Color love, Color bg, Color fg, Color fgOnAccent, Color divider, Color panel, Color link, Color hashtag, Color mention, Color mentionMe, Color renote, Color infoBg, Color infoFg, Color infoWarnBg, Color infoWarnFg, Color buttonBg, Color buttonGradateA, Color buttonGradateB, Color driveFolderBg, Color success, Color error, Color warn
 });
 
 
@@ -106,38 +111,38 @@ as Color,
 
 
 class _MisskeyColors extends MisskeyColors {
-  const _MisskeyColors({@override required this.id, @override required this.name, @override required this.isDark, @override required this.accent, @override required this.accentDarken, @override required this.accentLighten, @override required this.accentedBg, @override required this.love, @override required this.bg, @override required this.fg, @override required this.fgOnAccent, @override required this.divider, @override required this.panel, @override required this.link, @override required this.hashtag, @override required this.mention, @override required this.mentionMe, @override required this.renote, @override required this.infoBg, @override required this.infoFg, @override required this.infoWarnBg, @override required this.infoWarnFg, @override required this.buttonBg, @override required this.buttonGradateA, @override required this.buttonGradateB, @override required this.driveFolderBg, @override required this.success, @override required this.error, @override required this.warn}): super(id: id, name: name, isDark: isDark, accent: accent, accentDarken: accentDarken, accentLighten: accentLighten, accentedBg: accentedBg, love: love, bg: bg, fg: fg, fgOnAccent: fgOnAccent, divider: divider, panel: panel, link: link, hashtag: hashtag, mention: mention, mentionMe: mentionMe, renote: renote, infoBg: infoBg, infoFg: infoFg, infoWarnBg: infoWarnBg, infoWarnFg: infoWarnFg, buttonBg: buttonBg, buttonGradateA: buttonGradateA, buttonGradateB: buttonGradateB, driveFolderBg: driveFolderBg, success: success, error: error, warn: warn);
+  const _MisskeyColors({required this.id, required this.name, required this.isDark, required this.accent, required this.accentDarken, required this.accentLighten, required this.accentedBg, required this.love, required this.bg, required this.fg, required this.fgOnAccent, required this.divider, required this.panel, required this.link, required this.hashtag, required this.mention, required this.mentionMe, required this.renote, required this.infoBg, required this.infoFg, required this.infoWarnBg, required this.infoWarnFg, required this.buttonBg, required this.buttonGradateA, required this.buttonGradateB, required this.driveFolderBg, required this.success, required this.error, required this.warn}): super(id: id, name: name, isDark: isDark, accent: accent, accentDarken: accentDarken, accentLighten: accentLighten, accentedBg: accentedBg, love: love, bg: bg, fg: fg, fgOnAccent: fgOnAccent, divider: divider, panel: panel, link: link, hashtag: hashtag, mention: mention, mentionMe: mentionMe, renote: renote, infoBg: infoBg, infoFg: infoFg, infoWarnBg: infoWarnBg, infoWarnFg: infoWarnFg, buttonBg: buttonBg, buttonGradateA: buttonGradateA, buttonGradateB: buttonGradateB, driveFolderBg: driveFolderBg, success: success, error: error, warn: warn);
   
 
-@override@override final  String id;
-@override@override final  String name;
-@override@override final  bool isDark;
-@override@override final  Color accent;
-@override@override final  Color accentDarken;
-@override@override final  Color accentLighten;
-@override@override final  Color accentedBg;
-@override@override final  Color love;
-@override@override final  Color bg;
-@override@override final  Color fg;
-@override@override final  Color fgOnAccent;
-@override@override final  Color divider;
-@override@override final  Color panel;
-@override@override final  Color link;
-@override@override final  Color hashtag;
-@override@override final  Color mention;
-@override@override final  Color mentionMe;
-@override@override final  Color renote;
-@override@override final  Color infoBg;
-@override@override final  Color infoFg;
-@override@override final  Color infoWarnBg;
-@override@override final  Color infoWarnFg;
-@override@override final  Color buttonBg;
-@override@override final  Color buttonGradateA;
-@override@override final  Color buttonGradateB;
-@override@override final  Color driveFolderBg;
-@override@override final  Color success;
-@override@override final  Color error;
-@override@override final  Color warn;
+@override final  String id;
+@override final  String name;
+@override final  bool isDark;
+@override final  Color accent;
+@override final  Color accentDarken;
+@override final  Color accentLighten;
+@override final  Color accentedBg;
+@override final  Color love;
+@override final  Color bg;
+@override final  Color fg;
+@override final  Color fgOnAccent;
+@override final  Color divider;
+@override final  Color panel;
+@override final  Color link;
+@override final  Color hashtag;
+@override final  Color mention;
+@override final  Color mentionMe;
+@override final  Color renote;
+@override final  Color infoBg;
+@override final  Color infoFg;
+@override final  Color infoWarnBg;
+@override final  Color infoWarnFg;
+@override final  Color buttonBg;
+@override final  Color buttonGradateA;
+@override final  Color buttonGradateB;
+@override final  Color driveFolderBg;
+@override final  Color success;
+@override final  Color error;
+@override final  Color warn;
 
 /// Create a copy of MisskeyColors
 /// with the given fields replaced by the non-null parameter values.
@@ -149,16 +154,18 @@ _$MisskeyColorsCopyWith<_MisskeyColors> get copyWith => __$MisskeyColorsCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyColors&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.isDark, isDark) || other.isDark == isDark)&&(identical(other.accent, accent) || other.accent == accent)&&(identical(other.accentDarken, accentDarken) || other.accentDarken == accentDarken)&&(identical(other.accentLighten, accentLighten) || other.accentLighten == accentLighten)&&(identical(other.accentedBg, accentedBg) || other.accentedBg == accentedBg)&&(identical(other.love, love) || other.love == love)&&(identical(other.bg, bg) || other.bg == bg)&&(identical(other.fg, fg) || other.fg == fg)&&(identical(other.fgOnAccent, fgOnAccent) || other.fgOnAccent == fgOnAccent)&&(identical(other.divider, divider) || other.divider == divider)&&(identical(other.panel, panel) || other.panel == panel)&&(identical(other.link, link) || other.link == link)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.mention, mention) || other.mention == mention)&&(identical(other.mentionMe, mentionMe) || other.mentionMe == mentionMe)&&(identical(other.renote, renote) || other.renote == renote)&&(identical(other.infoBg, infoBg) || other.infoBg == infoBg)&&(identical(other.infoFg, infoFg) || other.infoFg == infoFg)&&(identical(other.infoWarnBg, infoWarnBg) || other.infoWarnBg == infoWarnBg)&&(identical(other.infoWarnFg, infoWarnFg) || other.infoWarnFg == infoWarnFg)&&(identical(other.buttonBg, buttonBg) || other.buttonBg == buttonBg)&&(identical(other.buttonGradateA, buttonGradateA) || other.buttonGradateA == buttonGradateA)&&(identical(other.buttonGradateB, buttonGradateB) || other.buttonGradateB == buttonGradateB)&&(identical(other.driveFolderBg, driveFolderBg) || other.driveFolderBg == driveFolderBg)&&(identical(other.success, success) || other.success == success)&&(identical(other.error, error) || other.error == error)&&(identical(other.warn, warn) || other.warn == warn));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyColors&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.isDark, isDark) || other.isDark == isDark)&&(identical(other.accent, accent) || other.accent == accent)&&(identical(other.accentDarken, accentDarken) || other.accentDarken == accentDarken)&&(identical(other.accentLighten, accentLighten) || other.accentLighten == accentLighten)&&(identical(other.accentedBg, accentedBg) || other.accentedBg == accentedBg)&&(identical(other.love, love) || other.love == love)&&(identical(other.bg, bg) || other.bg == bg)&&(identical(other.fg, fg) || other.fg == fg)&&(identical(other.fgOnAccent, fgOnAccent) || other.fgOnAccent == fgOnAccent)&&(identical(other.divider, divider) || other.divider == divider)&&(identical(other.panel, panel) || other.panel == panel)&&(identical(other.link, link) || other.link == link)&&(identical(other.hashtag, hashtag) || other.hashtag == hashtag)&&(identical(other.mention, mention) || other.mention == mention)&&(identical(other.mentionMe, mentionMe) || other.mentionMe == mentionMe)&&(identical(other.renote, renote) || other.renote == renote)&&(identical(other.infoBg, infoBg) || other.infoBg == infoBg)&&(identical(other.infoFg, infoFg) || other.infoFg == infoFg)&&(identical(other.infoWarnBg, infoWarnBg) || other.infoWarnBg == infoWarnBg)&&(identical(other.infoWarnFg, infoWarnFg) || other.infoWarnFg == infoWarnFg)&&(identical(other.buttonBg, buttonBg) || other.buttonBg == buttonBg)&&(identical(other.buttonGradateA, buttonGradateA) || other.buttonGradateA == buttonGradateA)&&(identical(other.buttonGradateB, buttonGradateB) || other.buttonGradateB == buttonGradateB)&&(identical(other.driveFolderBg, driveFolderBg) || other.driveFolderBg == driveFolderBg)&&(identical(other.success, success) || other.success == success)&&(identical(other.error, error) || other.error == error)&&(identical(other.warn, warn) || other.warn == warn));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,id,name,isDark,accent,accentDarken,accentLighten,accentedBg,love,bg,fg,fgOnAccent,divider,panel,link,hashtag,mention,mentionMe,renote,infoBg,infoFg,infoWarnBg,infoWarnFg,buttonBg,buttonGradateA,buttonGradateB,driveFolderBg,success,error,warn]);
+int get hashCode {
+    return Object.hashAll([runtimeType,id,name,isDark,accent,accentDarken,accentLighten,accentedBg,love,bg,fg,fgOnAccent,divider,panel,link,hashtag,mention,mentionMe,renote,infoBg,infoFg,infoWarnBg,infoWarnFg,buttonBg,buttonGradateA,buttonGradateB,driveFolderBg,success,error,warn]);
+}
 
 @override
 String toString() {
-  return 'MisskeyColors(id: $id, name: $name, isDark: $isDark, accent: $accent, accentDarken: $accentDarken, accentLighten: $accentLighten, accentedBg: $accentedBg, love: $love, bg: $bg, fg: $fg, fgOnAccent: $fgOnAccent, divider: $divider, panel: $panel, link: $link, hashtag: $hashtag, mention: $mention, mentionMe: $mentionMe, renote: $renote, infoBg: $infoBg, infoFg: $infoFg, infoWarnBg: $infoWarnBg, infoWarnFg: $infoWarnFg, buttonBg: $buttonBg, buttonGradateA: $buttonGradateA, buttonGradateB: $buttonGradateB, driveFolderBg: $driveFolderBg, success: $success, error: $error, warn: $warn)';
+    return 'MisskeyColors(id: $id, name: $name, isDark: $isDark, accent: $accent, accentDarken: $accentDarken, accentLighten: $accentLighten, accentedBg: $accentedBg, love: $love, bg: $bg, fg: $fg, fgOnAccent: $fgOnAccent, divider: $divider, panel: $panel, link: $link, hashtag: $hashtag, mention: $mention, mentionMe: $mentionMe, renote: $renote, infoBg: $infoBg, infoFg: $infoFg, infoWarnBg: $infoWarnBg, infoWarnFg: $infoWarnFg, buttonBg: $buttonBg, buttonGradateA: $buttonGradateA, buttonGradateB: $buttonGradateB, driveFolderBg: $driveFolderBg, success: $success, error: $error, warn: $warn)';
 }
 
 
@@ -169,7 +176,7 @@ abstract mixin class _$MisskeyColorsCopyWith<$Res> implements $MisskeyColorsCopy
   factory _$MisskeyColorsCopyWith(_MisskeyColors value, $Res Function(_MisskeyColors) _then) = __$MisskeyColorsCopyWithImpl;
 @override @useResult
 $Res call({
-@override String id,@override String name,@override bool isDark,@override Color accent,@override Color accentDarken,@override Color accentLighten,@override Color accentedBg,@override Color love,@override Color bg,@override Color fg,@override Color fgOnAccent,@override Color divider,@override Color panel,@override Color link,@override Color hashtag,@override Color mention,@override Color mentionMe,@override Color renote,@override Color infoBg,@override Color infoFg,@override Color infoWarnBg,@override Color infoWarnFg,@override Color buttonBg,@override Color buttonGradateA,@override Color buttonGradateB,@override Color driveFolderBg,@override Color success,@override Color error,@override Color warn
+ String id, String name, bool isDark, Color accent, Color accentDarken, Color accentLighten, Color accentedBg, Color love, Color bg, Color fg, Color fgOnAccent, Color divider, Color panel, Color link, Color hashtag, Color mention, Color mentionMe, Color renote, Color infoBg, Color infoFg, Color infoWarnBg, Color infoWarnFg, Color buttonBg, Color buttonGradateA, Color buttonGradateB, Color driveFolderBg, Color success, Color error, Color warn
 });
 
 

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MisskeyTheme {
 
-@override String get id;@override String get name;@override String? get author;@override String? get desc;@override String? get base;@override Map<String, String> get props;@override Map<String, dynamic>? get codeHighlighter;
+
 /// Create a copy of MisskeyTheme
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,21 @@ $MisskeyThemeCopyWith<MisskeyTheme> get copyWith => _$MisskeyThemeCopyWithImpl<M
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other.props, props)&&const DeepCollectionEquality().equals(other.codeHighlighter, codeHighlighter));
+  final _this = this as MisskeyTheme;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MisskeyTheme&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.author, _this.author) || other.author == _this.author)&&(identical(other.desc, _this.desc) || other.desc == _this.desc)&&(identical(other.base, _this.base) || other.base == _this.base)&&const DeepCollectionEquality().equals(other.props, _this.props)&&const DeepCollectionEquality().equals(other.codeHighlighter, _this.codeHighlighter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(props),const DeepCollectionEquality().hash(codeHighlighter));
+int get hashCode {
+  final _this = this as MisskeyTheme;
+  return Object.hash(runtimeType,_this.id,_this.name,_this.author,_this.desc,_this.base,const DeepCollectionEquality().hash(_this.props),const DeepCollectionEquality().hash(_this.codeHighlighter));
+}
 
 @override
 String toString() {
-  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props, codeHighlighter: $codeHighlighter)';
+  final _this = this as MisskeyTheme;
+  return 'MisskeyTheme(id: ${_this.id}, name: ${_this.name}, author: ${_this.author}, desc: ${_this.desc}, base: ${_this.base}, props: ${_this.props}, codeHighlighter: ${_this.codeHighlighter})';
 }
 
 
@@ -47,7 +52,7 @@ abstract mixin class $MisskeyThemeCopyWith<$Res>  {
   factory $MisskeyThemeCopyWith(MisskeyTheme value, $Res Function(MisskeyTheme) _then) = _$MisskeyThemeCopyWithImpl;
 @useResult
 $Res call({
-@override String id,@override String name,@override String? author,@override String? desc,@override String? base,@override Map<String, String> props,@override Map<String, dynamic>? codeHighlighter
+ String id, String name, String? author, String? desc, String? base, Map<String, String> props, Map<String, dynamic>? codeHighlighter
 });
 
 
@@ -158,7 +163,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String id, @override  String name, @override  String? author, @override  String? desc, @override  String? base, @override  Map<String, String> props, @override  Map<String, dynamic>? codeHighlighter)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String? author,  String? desc,  String? base,  Map<String, String> props,  Map<String, dynamic>? codeHighlighter)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MisskeyTheme() when $default != null:
 return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.props,_that.codeHighlighter);case _:
@@ -179,7 +184,7 @@ return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.pro
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String id, @override  String name, @override  String? author, @override  String? desc, @override  String? base, @override  Map<String, String> props, @override  Map<String, dynamic>? codeHighlighter)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String? author,  String? desc,  String? base,  Map<String, String> props,  Map<String, dynamic>? codeHighlighter)  $default,) {final _that = this;
 switch (_that) {
 case _MisskeyTheme():
 return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.props,_that.codeHighlighter);case _:
@@ -199,7 +204,7 @@ return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.pro
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String id, @override  String name, @override  String? author, @override  String? desc, @override  String? base, @override  Map<String, String> props, @override  Map<String, dynamic>? codeHighlighter)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String? author,  String? desc,  String? base,  Map<String, String> props,  Map<String, dynamic>? codeHighlighter)?  $default,) {final _that = this;
 switch (_that) {
 case _MisskeyTheme() when $default != null:
 return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.props,_that.codeHighlighter);case _:
@@ -214,23 +219,23 @@ return $default(_that.id,_that.name,_that.author,_that.desc,_that.base,_that.pro
 @JsonSerializable(createToJson: false)
 
 class _MisskeyTheme extends MisskeyTheme {
-  const _MisskeyTheme({@override required this.id, @override required this.name, @override this.author, @override this.desc, @override this.base, @override required  Map<String, String> props, @override  Map<String, dynamic>? codeHighlighter}): _props = props,_codeHighlighter = codeHighlighter,super(id: id, name: name, author: author, desc: desc, base: base, props: props, codeHighlighter: codeHighlighter);
+  const _MisskeyTheme({required this.id, required this.name, this.author, this.desc, this.base, required  Map<String, String> props,  Map<String, dynamic>? codeHighlighter}): _props = props,_codeHighlighter = codeHighlighter,super(id: id, name: name, author: author, desc: desc, base: base, props: props, codeHighlighter: codeHighlighter);
   factory _MisskeyTheme.fromJson(Map<String, dynamic> json) => _$MisskeyThemeFromJson(json);
 
-@override@override final  String id;
-@override@override final  String name;
-@override@override final  String? author;
-@override@override final  String? desc;
-@override@override final  String? base;
+@override final  String id;
+@override final  String name;
+@override final  String? author;
+@override final  String? desc;
+@override final  String? base;
  final  Map<String, String> _props;
-@override@override Map<String, String> get props {
+@override Map<String, String> get props {
   if (_props is EqualUnmodifiableMapView) return _props;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_props);
 }
 
  final  Map<String, dynamic>? _codeHighlighter;
-@override@override Map<String, dynamic>? get codeHighlighter {
+@override Map<String, dynamic>? get codeHighlighter {
   final value = _codeHighlighter;
   if (value == null) return null;
   if (_codeHighlighter is EqualUnmodifiableMapView) return _codeHighlighter;
@@ -249,16 +254,18 @@ _$MisskeyThemeCopyWith<_MisskeyTheme> get copyWith => __$MisskeyThemeCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other._props, _props)&&const DeepCollectionEquality().equals(other._codeHighlighter, _codeHighlighter));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MisskeyTheme&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.author, author) || other.author == author)&&(identical(other.desc, desc) || other.desc == desc)&&(identical(other.base, base) || other.base == base)&&const DeepCollectionEquality().equals(other.props, _props)&&const DeepCollectionEquality().equals(other.codeHighlighter, _codeHighlighter));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(_props),const DeepCollectionEquality().hash(_codeHighlighter));
+int get hashCode {
+    return Object.hash(runtimeType,id,name,author,desc,base,const DeepCollectionEquality().hash(_props),const DeepCollectionEquality().hash(_codeHighlighter));
+}
 
 @override
 String toString() {
-  return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props, codeHighlighter: $codeHighlighter)';
+    return 'MisskeyTheme(id: $id, name: $name, author: $author, desc: $desc, base: $base, props: $props, codeHighlighter: $codeHighlighter)';
 }
 
 
@@ -269,7 +276,7 @@ abstract mixin class _$MisskeyThemeCopyWith<$Res> implements $MisskeyThemeCopyWi
   factory _$MisskeyThemeCopyWith(_MisskeyTheme value, $Res Function(_MisskeyTheme) _then) = __$MisskeyThemeCopyWithImpl;
 @override @useResult
 $Res call({
-@override String id,@override String name,@override String? author,@override String? desc,@override String? base,@override Map<String, String> props,@override Map<String, dynamic>? codeHighlighter
+ String id, String name, String? author, String? desc, String? base, Map<String, String> props, Map<String, dynamic>? codeHighlighter
 });
 
 

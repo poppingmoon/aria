@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MaterialIcon {
 
-@override int get codePoint;
+
 /// Create a copy of MaterialIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $MaterialIconCopyWith<MaterialIcon> get copyWith => _$MaterialIconCopyWithImpl<M
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MaterialIcon&&(identical(other.codePoint, codePoint) || other.codePoint == codePoint));
+  final _this = this as MaterialIcon;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MaterialIcon&&(identical(other.codePoint, _this.codePoint) || other.codePoint == _this.codePoint));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,codePoint);
+int get hashCode {
+  final _this = this as MaterialIcon;
+  return Object.hash(runtimeType,_this.codePoint);
+}
 
 @override
 String toString() {
-  return 'MaterialIcon(codePoint: $codePoint)';
+  final _this = this as MaterialIcon;
+  return 'MaterialIcon(codePoint: ${_this.codePoint})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $MaterialIconCopyWith<$Res>  {
   factory $MaterialIconCopyWith(MaterialIcon value, $Res Function(MaterialIcon) _then) = _$MaterialIconCopyWithImpl;
 @useResult
 $Res call({
-@override int codePoint
+ int codePoint
 });
 
 
@@ -151,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  int codePoint)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int codePoint)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MaterialIcon() when $default != null:
 return $default(_that.codePoint);case _:
@@ -172,7 +177,7 @@ return $default(_that.codePoint);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  int codePoint)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int codePoint)  $default,) {final _that = this;
 switch (_that) {
 case _MaterialIcon():
 return $default(_that.codePoint);case _:
@@ -192,7 +197,7 @@ return $default(_that.codePoint);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  int codePoint)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int codePoint)?  $default,) {final _that = this;
 switch (_that) {
 case _MaterialIcon() when $default != null:
 return $default(_that.codePoint);case _:
@@ -207,10 +212,10 @@ return $default(_that.codePoint);case _:
 
 
 class _MaterialIcon extends MaterialIcon {
-  const _MaterialIcon({@override required this.codePoint}): super(codePoint: codePoint);
+  const _MaterialIcon({required this.codePoint}): super(codePoint: codePoint);
   
 
-@override@override final  int codePoint;
+@override final  int codePoint;
 
 /// Create a copy of MaterialIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -222,16 +227,18 @@ _$MaterialIconCopyWith<_MaterialIcon> get copyWith => __$MaterialIconCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaterialIcon&&(identical(other.codePoint, codePoint) || other.codePoint == codePoint));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaterialIcon&&(identical(other.codePoint, codePoint) || other.codePoint == codePoint));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,codePoint);
+int get hashCode {
+    return Object.hash(runtimeType,codePoint);
+}
 
 @override
 String toString() {
-  return 'MaterialIcon(codePoint: $codePoint)';
+    return 'MaterialIcon(codePoint: $codePoint)';
 }
 
 
@@ -242,7 +249,7 @@ abstract mixin class _$MaterialIconCopyWith<$Res> implements $MaterialIconCopyWi
   factory _$MaterialIconCopyWith(_MaterialIcon value, $Res Function(_MaterialIcon) _then) = __$MaterialIconCopyWithImpl;
 @override @useResult
 $Res call({
-@override int codePoint
+ int codePoint
 });
 
 
@@ -272,7 +279,7 @@ as int,
 /// @nodoc
 mixin _$ImageIcon {
 
-@override String get url;
+
 /// Create a copy of ImageIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -283,16 +290,21 @@ $ImageIconCopyWith<ImageIcon> get copyWith => _$ImageIconCopyWithImpl<ImageIcon>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageIcon&&(identical(other.url, url) || other.url == url));
+  final _this = this as ImageIcon;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImageIcon&&(identical(other.url, _this.url) || other.url == _this.url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,url);
+int get hashCode {
+  final _this = this as ImageIcon;
+  return Object.hash(runtimeType,_this.url);
+}
 
 @override
 String toString() {
-  return 'ImageIcon(url: $url)';
+  final _this = this as ImageIcon;
+  return 'ImageIcon(url: ${_this.url})';
 }
 
 
@@ -303,7 +315,7 @@ abstract mixin class $ImageIconCopyWith<$Res>  {
   factory $ImageIconCopyWith(ImageIcon value, $Res Function(ImageIcon) _then) = _$ImageIconCopyWithImpl;
 @useResult
 $Res call({
-@override String url
+ String url
 });
 
 
@@ -408,7 +420,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ImageIcon() when $default != null:
 return $default(_that.url);case _:
@@ -429,7 +441,7 @@ return $default(_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url)  $default,) {final _that = this;
 switch (_that) {
 case _ImageIcon():
 return $default(_that.url);case _:
@@ -449,7 +461,7 @@ return $default(_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url)?  $default,) {final _that = this;
 switch (_that) {
 case _ImageIcon() when $default != null:
 return $default(_that.url);case _:
@@ -464,10 +476,10 @@ return $default(_that.url);case _:
 
 
 class _ImageIcon extends ImageIcon {
-  const _ImageIcon({@override required this.url}): super(url: url);
+  const _ImageIcon({required this.url}): super(url: url);
   
 
-@override@override final  String url;
+@override final  String url;
 
 /// Create a copy of ImageIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -479,16 +491,18 @@ _$ImageIconCopyWith<_ImageIcon> get copyWith => __$ImageIconCopyWithImpl<_ImageI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageIcon&&(identical(other.url, url) || other.url == url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ImageIcon&&(identical(other.url, url) || other.url == url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,url);
+int get hashCode {
+    return Object.hash(runtimeType,url);
+}
 
 @override
 String toString() {
-  return 'ImageIcon(url: $url)';
+    return 'ImageIcon(url: $url)';
 }
 
 
@@ -499,7 +513,7 @@ abstract mixin class _$ImageIconCopyWith<$Res> implements $ImageIconCopyWith<$Re
   factory _$ImageIconCopyWith(_ImageIcon value, $Res Function(_ImageIcon) _then) = __$ImageIconCopyWithImpl;
 @override @useResult
 $Res call({
-@override String url
+ String url
 });
 
 
@@ -529,7 +543,7 @@ as String,
 /// @nodoc
 mixin _$EmojiIcon {
 
-@override String get emoji;
+
 /// Create a copy of EmojiIcon
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -540,16 +554,21 @@ $EmojiIconCopyWith<EmojiIcon> get copyWith => _$EmojiIconCopyWithImpl<EmojiIcon>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiIcon&&(identical(other.emoji, emoji) || other.emoji == emoji));
+  final _this = this as EmojiIcon;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiIcon&&(identical(other.emoji, _this.emoji) || other.emoji == _this.emoji));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,emoji);
+int get hashCode {
+  final _this = this as EmojiIcon;
+  return Object.hash(runtimeType,_this.emoji);
+}
 
 @override
 String toString() {
-  return 'EmojiIcon(emoji: $emoji)';
+  final _this = this as EmojiIcon;
+  return 'EmojiIcon(emoji: ${_this.emoji})';
 }
 
 
@@ -560,7 +579,7 @@ abstract mixin class $EmojiIconCopyWith<$Res>  {
   factory $EmojiIconCopyWith(EmojiIcon value, $Res Function(EmojiIcon) _then) = _$EmojiIconCopyWithImpl;
 @useResult
 $Res call({
-@override String emoji
+ String emoji
 });
 
 
@@ -665,7 +684,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String emoji)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String emoji)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _EmojiIcon() when $default != null:
 return $default(_that.emoji);case _:
@@ -686,7 +705,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String emoji)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String emoji)  $default,) {final _that = this;
 switch (_that) {
 case _EmojiIcon():
 return $default(_that.emoji);case _:
@@ -706,7 +725,7 @@ return $default(_that.emoji);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String emoji)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String emoji)?  $default,) {final _that = this;
 switch (_that) {
 case _EmojiIcon() when $default != null:
 return $default(_that.emoji);case _:
@@ -721,10 +740,10 @@ return $default(_that.emoji);case _:
 
 
 class _EmojiIcon extends EmojiIcon {
-  const _EmojiIcon({@override required this.emoji}): super(emoji: emoji);
+  const _EmojiIcon({required this.emoji}): super(emoji: emoji);
   
 
-@override@override final  String emoji;
+@override final  String emoji;
 
 /// Create a copy of EmojiIcon
 /// with the given fields replaced by the non-null parameter values.
@@ -736,16 +755,18 @@ _$EmojiIconCopyWith<_EmojiIcon> get copyWith => __$EmojiIconCopyWithImpl<_EmojiI
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiIcon&&(identical(other.emoji, emoji) || other.emoji == emoji));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiIcon&&(identical(other.emoji, emoji) || other.emoji == emoji));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,emoji);
+int get hashCode {
+    return Object.hash(runtimeType,emoji);
+}
 
 @override
 String toString() {
-  return 'EmojiIcon(emoji: $emoji)';
+    return 'EmojiIcon(emoji: $emoji)';
 }
 
 
@@ -756,7 +777,7 @@ abstract mixin class _$EmojiIconCopyWith<$Res> implements $EmojiIconCopyWith<$Re
   factory _$EmojiIconCopyWith(_EmojiIcon value, $Res Function(_EmojiIcon) _then) = __$EmojiIconCopyWithImpl;
 @override @useResult
 $Res call({
-@override String emoji
+ String emoji
 });
 
 

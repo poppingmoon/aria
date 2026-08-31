@@ -4,7 +4,7 @@ part 'miauth_state.freezed.dart';
 
 @freezed
 class const MiAuthState({
-  @override required final Uri serverUrl,
-  @override required final String sessionId,
-  @override required final Uri url,
+  required final Uri serverUrl,
+  required final String sessionId,
+  required final Uri url,
 }) with _$MiAuthState;

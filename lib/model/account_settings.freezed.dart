@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AccountSettings {
 
-@override bool get keepCw;@override bool get rememberNoteVisibility;@override NoteVisibility get defaultNoteVisibility;@override bool get defaultNoteLocalOnly;@override bool get rememberRenoteVisibility;@override NoteVisibility get defaultRenoteVisibility;@override bool get defaultRenoteLocalOnly;@override ReactionAcceptance? get reactionAcceptance;@override NoteVisibility get visibility;@override bool get localOnly;@override NoteVisibility get renoteVisibility;@override bool get renoteLocalOnly;@override List<String> get pinnedEmojisForReaction;@override List<String> get pinnedEmojis;@override List<String> get recentlyUsedEmojis;@override String? get defaultReaction;@override String? get uploadFolder;@override bool get keepOriginalUploading;@override bool get keepOriginalFilename;@override List<MuteWord> get mutedWords;@override List<MuteWord> get hardMutedWords;@override List<String> get mutedEmojis;@override List<String> get recentlyUsedUsers;@override List<String> get hashtags;@override List<String> get postFormHashtags;
+
 /// Create a copy of AccountSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $AccountSettingsCopyWith<AccountSettings> get copyWith => _$AccountSettingsCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AccountSettings&&(identical(other.keepCw, keepCw) || other.keepCw == keepCw)&&(identical(other.rememberNoteVisibility, rememberNoteVisibility) || other.rememberNoteVisibility == rememberNoteVisibility)&&(identical(other.defaultNoteVisibility, defaultNoteVisibility) || other.defaultNoteVisibility == defaultNoteVisibility)&&(identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) || other.defaultNoteLocalOnly == defaultNoteLocalOnly)&&(identical(other.rememberRenoteVisibility, rememberRenoteVisibility) || other.rememberRenoteVisibility == rememberRenoteVisibility)&&(identical(other.defaultRenoteVisibility, defaultRenoteVisibility) || other.defaultRenoteVisibility == defaultRenoteVisibility)&&(identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) || other.defaultRenoteLocalOnly == defaultRenoteLocalOnly)&&(identical(other.reactionAcceptance, reactionAcceptance) || other.reactionAcceptance == reactionAcceptance)&&(identical(other.visibility, visibility) || other.visibility == visibility)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.renoteVisibility, renoteVisibility) || other.renoteVisibility == renoteVisibility)&&(identical(other.renoteLocalOnly, renoteLocalOnly) || other.renoteLocalOnly == renoteLocalOnly)&&const DeepCollectionEquality().equals(other.pinnedEmojisForReaction, pinnedEmojisForReaction)&&const DeepCollectionEquality().equals(other.pinnedEmojis, pinnedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedEmojis, recentlyUsedEmojis)&&(identical(other.defaultReaction, defaultReaction) || other.defaultReaction == defaultReaction)&&(identical(other.uploadFolder, uploadFolder) || other.uploadFolder == uploadFolder)&&(identical(other.keepOriginalUploading, keepOriginalUploading) || other.keepOriginalUploading == keepOriginalUploading)&&(identical(other.keepOriginalFilename, keepOriginalFilename) || other.keepOriginalFilename == keepOriginalFilename)&&const DeepCollectionEquality().equals(other.mutedWords, mutedWords)&&const DeepCollectionEquality().equals(other.hardMutedWords, hardMutedWords)&&const DeepCollectionEquality().equals(other.mutedEmojis, mutedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedUsers, recentlyUsedUsers)&&const DeepCollectionEquality().equals(other.hashtags, hashtags)&&const DeepCollectionEquality().equals(other.postFormHashtags, postFormHashtags));
+  final _this = this as AccountSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AccountSettings&&(identical(other.keepCw, _this.keepCw) || other.keepCw == _this.keepCw)&&(identical(other.rememberNoteVisibility, _this.rememberNoteVisibility) || other.rememberNoteVisibility == _this.rememberNoteVisibility)&&(identical(other.defaultNoteVisibility, _this.defaultNoteVisibility) || other.defaultNoteVisibility == _this.defaultNoteVisibility)&&(identical(other.defaultNoteLocalOnly, _this.defaultNoteLocalOnly) || other.defaultNoteLocalOnly == _this.defaultNoteLocalOnly)&&(identical(other.rememberRenoteVisibility, _this.rememberRenoteVisibility) || other.rememberRenoteVisibility == _this.rememberRenoteVisibility)&&(identical(other.defaultRenoteVisibility, _this.defaultRenoteVisibility) || other.defaultRenoteVisibility == _this.defaultRenoteVisibility)&&(identical(other.defaultRenoteLocalOnly, _this.defaultRenoteLocalOnly) || other.defaultRenoteLocalOnly == _this.defaultRenoteLocalOnly)&&(identical(other.reactionAcceptance, _this.reactionAcceptance) || other.reactionAcceptance == _this.reactionAcceptance)&&(identical(other.visibility, _this.visibility) || other.visibility == _this.visibility)&&(identical(other.localOnly, _this.localOnly) || other.localOnly == _this.localOnly)&&(identical(other.renoteVisibility, _this.renoteVisibility) || other.renoteVisibility == _this.renoteVisibility)&&(identical(other.renoteLocalOnly, _this.renoteLocalOnly) || other.renoteLocalOnly == _this.renoteLocalOnly)&&const DeepCollectionEquality().equals(other.pinnedEmojisForReaction, _this.pinnedEmojisForReaction)&&const DeepCollectionEquality().equals(other.pinnedEmojis, _this.pinnedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedEmojis, _this.recentlyUsedEmojis)&&(identical(other.defaultReaction, _this.defaultReaction) || other.defaultReaction == _this.defaultReaction)&&(identical(other.uploadFolder, _this.uploadFolder) || other.uploadFolder == _this.uploadFolder)&&(identical(other.keepOriginalUploading, _this.keepOriginalUploading) || other.keepOriginalUploading == _this.keepOriginalUploading)&&(identical(other.keepOriginalFilename, _this.keepOriginalFilename) || other.keepOriginalFilename == _this.keepOriginalFilename)&&const DeepCollectionEquality().equals(other.mutedWords, _this.mutedWords)&&const DeepCollectionEquality().equals(other.hardMutedWords, _this.hardMutedWords)&&const DeepCollectionEquality().equals(other.mutedEmojis, _this.mutedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedUsers, _this.recentlyUsedUsers)&&const DeepCollectionEquality().equals(other.hashtags, _this.hashtags)&&const DeepCollectionEquality().equals(other.postFormHashtags, _this.postFormHashtags));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,keepCw,rememberNoteVisibility,defaultNoteVisibility,defaultNoteLocalOnly,rememberRenoteVisibility,defaultRenoteVisibility,defaultRenoteLocalOnly,reactionAcceptance,visibility,localOnly,renoteVisibility,renoteLocalOnly,const DeepCollectionEquality().hash(pinnedEmojisForReaction),const DeepCollectionEquality().hash(pinnedEmojis),const DeepCollectionEquality().hash(recentlyUsedEmojis),defaultReaction,uploadFolder,keepOriginalUploading,keepOriginalFilename,const DeepCollectionEquality().hash(mutedWords),const DeepCollectionEquality().hash(hardMutedWords),const DeepCollectionEquality().hash(mutedEmojis),const DeepCollectionEquality().hash(recentlyUsedUsers),const DeepCollectionEquality().hash(hashtags),const DeepCollectionEquality().hash(postFormHashtags)]);
+int get hashCode {
+  final _this = this as AccountSettings;
+  return Object.hashAll([runtimeType,_this.keepCw,_this.rememberNoteVisibility,_this.defaultNoteVisibility,_this.defaultNoteLocalOnly,_this.rememberRenoteVisibility,_this.defaultRenoteVisibility,_this.defaultRenoteLocalOnly,_this.reactionAcceptance,_this.visibility,_this.localOnly,_this.renoteVisibility,_this.renoteLocalOnly,const DeepCollectionEquality().hash(_this.pinnedEmojisForReaction),const DeepCollectionEquality().hash(_this.pinnedEmojis),const DeepCollectionEquality().hash(_this.recentlyUsedEmojis),_this.defaultReaction,_this.uploadFolder,_this.keepOriginalUploading,_this.keepOriginalFilename,const DeepCollectionEquality().hash(_this.mutedWords),const DeepCollectionEquality().hash(_this.hardMutedWords),const DeepCollectionEquality().hash(_this.mutedEmojis),const DeepCollectionEquality().hash(_this.recentlyUsedUsers),const DeepCollectionEquality().hash(_this.hashtags),const DeepCollectionEquality().hash(_this.postFormHashtags)]);
+}
 
 @override
 String toString() {
-  return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags, postFormHashtags: $postFormHashtags)';
+  final _this = this as AccountSettings;
+  return 'AccountSettings(keepCw: ${_this.keepCw}, rememberNoteVisibility: ${_this.rememberNoteVisibility}, defaultNoteVisibility: ${_this.defaultNoteVisibility}, defaultNoteLocalOnly: ${_this.defaultNoteLocalOnly}, rememberRenoteVisibility: ${_this.rememberRenoteVisibility}, defaultRenoteVisibility: ${_this.defaultRenoteVisibility}, defaultRenoteLocalOnly: ${_this.defaultRenoteLocalOnly}, reactionAcceptance: ${_this.reactionAcceptance}, visibility: ${_this.visibility}, localOnly: ${_this.localOnly}, renoteVisibility: ${_this.renoteVisibility}, renoteLocalOnly: ${_this.renoteLocalOnly}, pinnedEmojisForReaction: ${_this.pinnedEmojisForReaction}, pinnedEmojis: ${_this.pinnedEmojis}, recentlyUsedEmojis: ${_this.recentlyUsedEmojis}, defaultReaction: ${_this.defaultReaction}, uploadFolder: ${_this.uploadFolder}, keepOriginalUploading: ${_this.keepOriginalUploading}, keepOriginalFilename: ${_this.keepOriginalFilename}, mutedWords: ${_this.mutedWords}, hardMutedWords: ${_this.hardMutedWords}, mutedEmojis: ${_this.mutedEmojis}, recentlyUsedUsers: ${_this.recentlyUsedUsers}, hashtags: ${_this.hashtags}, postFormHashtags: ${_this.postFormHashtags})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $AccountSettingsCopyWith<$Res>  {
   factory $AccountSettingsCopyWith(AccountSettings value, $Res Function(AccountSettings) _then) = _$AccountSettingsCopyWithImpl;
 @useResult
 $Res call({
-@override bool keepCw,@override bool rememberNoteVisibility,@override NoteVisibility defaultNoteVisibility,@override bool defaultNoteLocalOnly,@override bool rememberRenoteVisibility,@override NoteVisibility defaultRenoteVisibility,@override bool defaultRenoteLocalOnly,@override ReactionAcceptance? reactionAcceptance,@override NoteVisibility visibility,@override bool localOnly,@override NoteVisibility renoteVisibility,@override bool renoteLocalOnly,@override List<String> pinnedEmojisForReaction,@override List<String> pinnedEmojis,@override List<String> recentlyUsedEmojis,@override String? defaultReaction,@override String? uploadFolder,@override bool keepOriginalUploading,@override bool keepOriginalFilename,@override List<MuteWord> mutedWords,@override List<MuteWord> hardMutedWords,@override List<String> mutedEmojis,@override List<String> recentlyUsedUsers,@override List<String> hashtags,@override List<String> postFormHashtags
+ bool keepCw, bool rememberNoteVisibility, NoteVisibility defaultNoteVisibility, bool defaultNoteLocalOnly, bool rememberRenoteVisibility, NoteVisibility defaultRenoteVisibility, bool defaultRenoteLocalOnly, ReactionAcceptance? reactionAcceptance, NoteVisibility visibility, bool localOnly, NoteVisibility renoteVisibility, bool renoteLocalOnly, List<String> pinnedEmojisForReaction, List<String> pinnedEmojis, List<String> recentlyUsedEmojis, String? defaultReaction, String? uploadFolder, bool keepOriginalUploading, bool keepOriginalFilename, List<MuteWord> mutedWords, List<MuteWord> hardMutedWords, List<String> mutedEmojis, List<String> recentlyUsedUsers, List<String> hashtags, List<String> postFormHashtags
 });
 
 
@@ -175,7 +180,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  bool keepCw, @override  bool rememberNoteVisibility, @override  NoteVisibility defaultNoteVisibility, @override  bool defaultNoteLocalOnly, @override  bool rememberRenoteVisibility, @override  NoteVisibility defaultRenoteVisibility, @override  bool defaultRenoteLocalOnly, @override  ReactionAcceptance? reactionAcceptance, @override  NoteVisibility visibility, @override  bool localOnly, @override  NoteVisibility renoteVisibility, @override  bool renoteLocalOnly, @override  List<String> pinnedEmojisForReaction, @override  List<String> pinnedEmojis, @override  List<String> recentlyUsedEmojis, @override  String? defaultReaction, @override  String? uploadFolder, @override  bool keepOriginalUploading, @override  bool keepOriginalFilename, @override  List<MuteWord> mutedWords, @override  List<MuteWord> hardMutedWords, @override  List<String> mutedEmojis, @override  List<String> recentlyUsedUsers, @override  List<String> hashtags, @override  List<String> postFormHashtags)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool keepCw,  bool rememberNoteVisibility,  NoteVisibility defaultNoteVisibility,  bool defaultNoteLocalOnly,  bool rememberRenoteVisibility,  NoteVisibility defaultRenoteVisibility,  bool defaultRenoteLocalOnly,  ReactionAcceptance? reactionAcceptance,  NoteVisibility visibility,  bool localOnly,  NoteVisibility renoteVisibility,  bool renoteLocalOnly,  List<String> pinnedEmojisForReaction,  List<String> pinnedEmojis,  List<String> recentlyUsedEmojis,  String? defaultReaction,  String? uploadFolder,  bool keepOriginalUploading,  bool keepOriginalFilename,  List<MuteWord> mutedWords,  List<MuteWord> hardMutedWords,  List<String> mutedEmojis,  List<String> recentlyUsedUsers,  List<String> hashtags,  List<String> postFormHashtags)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AccountSettings() when $default != null:
 return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisibility,_that.defaultNoteLocalOnly,_that.rememberRenoteVisibility,_that.defaultRenoteVisibility,_that.defaultRenoteLocalOnly,_that.reactionAcceptance,_that.visibility,_that.localOnly,_that.renoteVisibility,_that.renoteLocalOnly,_that.pinnedEmojisForReaction,_that.pinnedEmojis,_that.recentlyUsedEmojis,_that.defaultReaction,_that.uploadFolder,_that.keepOriginalUploading,_that.keepOriginalFilename,_that.mutedWords,_that.hardMutedWords,_that.mutedEmojis,_that.recentlyUsedUsers,_that.hashtags,_that.postFormHashtags);case _:
@@ -196,7 +201,7 @@ return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisib
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  bool keepCw, @override  bool rememberNoteVisibility, @override  NoteVisibility defaultNoteVisibility, @override  bool defaultNoteLocalOnly, @override  bool rememberRenoteVisibility, @override  NoteVisibility defaultRenoteVisibility, @override  bool defaultRenoteLocalOnly, @override  ReactionAcceptance? reactionAcceptance, @override  NoteVisibility visibility, @override  bool localOnly, @override  NoteVisibility renoteVisibility, @override  bool renoteLocalOnly, @override  List<String> pinnedEmojisForReaction, @override  List<String> pinnedEmojis, @override  List<String> recentlyUsedEmojis, @override  String? defaultReaction, @override  String? uploadFolder, @override  bool keepOriginalUploading, @override  bool keepOriginalFilename, @override  List<MuteWord> mutedWords, @override  List<MuteWord> hardMutedWords, @override  List<String> mutedEmojis, @override  List<String> recentlyUsedUsers, @override  List<String> hashtags, @override  List<String> postFormHashtags)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool keepCw,  bool rememberNoteVisibility,  NoteVisibility defaultNoteVisibility,  bool defaultNoteLocalOnly,  bool rememberRenoteVisibility,  NoteVisibility defaultRenoteVisibility,  bool defaultRenoteLocalOnly,  ReactionAcceptance? reactionAcceptance,  NoteVisibility visibility,  bool localOnly,  NoteVisibility renoteVisibility,  bool renoteLocalOnly,  List<String> pinnedEmojisForReaction,  List<String> pinnedEmojis,  List<String> recentlyUsedEmojis,  String? defaultReaction,  String? uploadFolder,  bool keepOriginalUploading,  bool keepOriginalFilename,  List<MuteWord> mutedWords,  List<MuteWord> hardMutedWords,  List<String> mutedEmojis,  List<String> recentlyUsedUsers,  List<String> hashtags,  List<String> postFormHashtags)  $default,) {final _that = this;
 switch (_that) {
 case _AccountSettings():
 return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisibility,_that.defaultNoteLocalOnly,_that.rememberRenoteVisibility,_that.defaultRenoteVisibility,_that.defaultRenoteLocalOnly,_that.reactionAcceptance,_that.visibility,_that.localOnly,_that.renoteVisibility,_that.renoteLocalOnly,_that.pinnedEmojisForReaction,_that.pinnedEmojis,_that.recentlyUsedEmojis,_that.defaultReaction,_that.uploadFolder,_that.keepOriginalUploading,_that.keepOriginalFilename,_that.mutedWords,_that.hardMutedWords,_that.mutedEmojis,_that.recentlyUsedUsers,_that.hashtags,_that.postFormHashtags);case _:
@@ -216,7 +221,7 @@ return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisib
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  bool keepCw, @override  bool rememberNoteVisibility, @override  NoteVisibility defaultNoteVisibility, @override  bool defaultNoteLocalOnly, @override  bool rememberRenoteVisibility, @override  NoteVisibility defaultRenoteVisibility, @override  bool defaultRenoteLocalOnly, @override  ReactionAcceptance? reactionAcceptance, @override  NoteVisibility visibility, @override  bool localOnly, @override  NoteVisibility renoteVisibility, @override  bool renoteLocalOnly, @override  List<String> pinnedEmojisForReaction, @override  List<String> pinnedEmojis, @override  List<String> recentlyUsedEmojis, @override  String? defaultReaction, @override  String? uploadFolder, @override  bool keepOriginalUploading, @override  bool keepOriginalFilename, @override  List<MuteWord> mutedWords, @override  List<MuteWord> hardMutedWords, @override  List<String> mutedEmojis, @override  List<String> recentlyUsedUsers, @override  List<String> hashtags, @override  List<String> postFormHashtags)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool keepCw,  bool rememberNoteVisibility,  NoteVisibility defaultNoteVisibility,  bool defaultNoteLocalOnly,  bool rememberRenoteVisibility,  NoteVisibility defaultRenoteVisibility,  bool defaultRenoteLocalOnly,  ReactionAcceptance? reactionAcceptance,  NoteVisibility visibility,  bool localOnly,  NoteVisibility renoteVisibility,  bool renoteLocalOnly,  List<String> pinnedEmojisForReaction,  List<String> pinnedEmojis,  List<String> recentlyUsedEmojis,  String? defaultReaction,  String? uploadFolder,  bool keepOriginalUploading,  bool keepOriginalFilename,  List<MuteWord> mutedWords,  List<MuteWord> hardMutedWords,  List<String> mutedEmojis,  List<String> recentlyUsedUsers,  List<String> hashtags,  List<String> postFormHashtags)?  $default,) {final _that = this;
 switch (_that) {
 case _AccountSettings() when $default != null:
 return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisibility,_that.defaultNoteLocalOnly,_that.rememberRenoteVisibility,_that.defaultRenoteVisibility,_that.defaultRenoteLocalOnly,_that.reactionAcceptance,_that.visibility,_that.localOnly,_that.renoteVisibility,_that.renoteLocalOnly,_that.pinnedEmojisForReaction,_that.pinnedEmojis,_that.recentlyUsedEmojis,_that.defaultReaction,_that.uploadFolder,_that.keepOriginalUploading,_that.keepOriginalFilename,_that.mutedWords,_that.hardMutedWords,_that.mutedEmojis,_that.recentlyUsedUsers,_that.hashtags,_that.postFormHashtags);case _:
@@ -231,83 +236,83 @@ return $default(_that.keepCw,_that.rememberNoteVisibility,_that.defaultNoteVisib
 
 
 class _AccountSettings extends AccountSettings {
-  const _AccountSettings({@override this.keepCw = true, @override this.rememberNoteVisibility = false, @override this.defaultNoteVisibility = NoteVisibility.public, @override this.defaultNoteLocalOnly = false, @override this.rememberRenoteVisibility = false, @override this.defaultRenoteVisibility = NoteVisibility.public, @override this.defaultRenoteLocalOnly = false, @override this.reactionAcceptance, @override this.visibility = NoteVisibility.public, @override this.localOnly = false, @override this.renoteVisibility = NoteVisibility.public, @override this.renoteLocalOnly = false, @override  List<String> pinnedEmojisForReaction = defaultPinnedEmojis, @override  List<String> pinnedEmojis = defaultPinnedEmojis, @override  List<String> recentlyUsedEmojis = const [], @override this.defaultReaction, @override this.uploadFolder, @override this.keepOriginalUploading = false, @override this.keepOriginalFilename = true, @override  List<MuteWord> mutedWords = const [], @override  List<MuteWord> hardMutedWords = const [], @override  List<String> mutedEmojis = const [], @override  List<String> recentlyUsedUsers = const [], @override  List<String> hashtags = const [], @override  List<String> postFormHashtags = const []}): _pinnedEmojisForReaction = pinnedEmojisForReaction,_pinnedEmojis = pinnedEmojis,_recentlyUsedEmojis = recentlyUsedEmojis,_mutedWords = mutedWords,_hardMutedWords = hardMutedWords,_mutedEmojis = mutedEmojis,_recentlyUsedUsers = recentlyUsedUsers,_hashtags = hashtags,_postFormHashtags = postFormHashtags,super(keepCw: keepCw, rememberNoteVisibility: rememberNoteVisibility, defaultNoteVisibility: defaultNoteVisibility, defaultNoteLocalOnly: defaultNoteLocalOnly, rememberRenoteVisibility: rememberRenoteVisibility, defaultRenoteVisibility: defaultRenoteVisibility, defaultRenoteLocalOnly: defaultRenoteLocalOnly, reactionAcceptance: reactionAcceptance, visibility: visibility, localOnly: localOnly, renoteVisibility: renoteVisibility, renoteLocalOnly: renoteLocalOnly, pinnedEmojisForReaction: pinnedEmojisForReaction, pinnedEmojis: pinnedEmojis, recentlyUsedEmojis: recentlyUsedEmojis, defaultReaction: defaultReaction, uploadFolder: uploadFolder, keepOriginalUploading: keepOriginalUploading, keepOriginalFilename: keepOriginalFilename, mutedWords: mutedWords, hardMutedWords: hardMutedWords, mutedEmojis: mutedEmojis, recentlyUsedUsers: recentlyUsedUsers, hashtags: hashtags, postFormHashtags: postFormHashtags);
+  const _AccountSettings({this.keepCw = true, this.rememberNoteVisibility = false, this.defaultNoteVisibility = NoteVisibility.public, this.defaultNoteLocalOnly = false, this.rememberRenoteVisibility = false, this.defaultRenoteVisibility = NoteVisibility.public, this.defaultRenoteLocalOnly = false, this.reactionAcceptance, this.visibility = NoteVisibility.public, this.localOnly = false, this.renoteVisibility = NoteVisibility.public, this.renoteLocalOnly = false,  List<String> pinnedEmojisForReaction = defaultPinnedEmojis,  List<String> pinnedEmojis = defaultPinnedEmojis,  List<String> recentlyUsedEmojis = const [], this.defaultReaction, this.uploadFolder, this.keepOriginalUploading = false, this.keepOriginalFilename = true,  List<MuteWord> mutedWords = const [],  List<MuteWord> hardMutedWords = const [],  List<String> mutedEmojis = const [],  List<String> recentlyUsedUsers = const [],  List<String> hashtags = const [],  List<String> postFormHashtags = const []}): _pinnedEmojisForReaction = pinnedEmojisForReaction,_pinnedEmojis = pinnedEmojis,_recentlyUsedEmojis = recentlyUsedEmojis,_mutedWords = mutedWords,_hardMutedWords = hardMutedWords,_mutedEmojis = mutedEmojis,_recentlyUsedUsers = recentlyUsedUsers,_hashtags = hashtags,_postFormHashtags = postFormHashtags,super(keepCw: keepCw, rememberNoteVisibility: rememberNoteVisibility, defaultNoteVisibility: defaultNoteVisibility, defaultNoteLocalOnly: defaultNoteLocalOnly, rememberRenoteVisibility: rememberRenoteVisibility, defaultRenoteVisibility: defaultRenoteVisibility, defaultRenoteLocalOnly: defaultRenoteLocalOnly, reactionAcceptance: reactionAcceptance, visibility: visibility, localOnly: localOnly, renoteVisibility: renoteVisibility, renoteLocalOnly: renoteLocalOnly, pinnedEmojisForReaction: pinnedEmojisForReaction, pinnedEmojis: pinnedEmojis, recentlyUsedEmojis: recentlyUsedEmojis, defaultReaction: defaultReaction, uploadFolder: uploadFolder, keepOriginalUploading: keepOriginalUploading, keepOriginalFilename: keepOriginalFilename, mutedWords: mutedWords, hardMutedWords: hardMutedWords, mutedEmojis: mutedEmojis, recentlyUsedUsers: recentlyUsedUsers, hashtags: hashtags, postFormHashtags: postFormHashtags);
   
 
-@override@override final  bool keepCw;
-@override@override final  bool rememberNoteVisibility;
-@override@override final  NoteVisibility defaultNoteVisibility;
-@override@override final  bool defaultNoteLocalOnly;
-@override@override final  bool rememberRenoteVisibility;
-@override@override final  NoteVisibility defaultRenoteVisibility;
-@override@override final  bool defaultRenoteLocalOnly;
-@override@override final  ReactionAcceptance? reactionAcceptance;
-@override@override final  NoteVisibility visibility;
-@override@override final  bool localOnly;
-@override@override final  NoteVisibility renoteVisibility;
-@override@override final  bool renoteLocalOnly;
+@override final  bool keepCw;
+@override final  bool rememberNoteVisibility;
+@override final  NoteVisibility defaultNoteVisibility;
+@override final  bool defaultNoteLocalOnly;
+@override final  bool rememberRenoteVisibility;
+@override final  NoteVisibility defaultRenoteVisibility;
+@override final  bool defaultRenoteLocalOnly;
+@override final  ReactionAcceptance? reactionAcceptance;
+@override final  NoteVisibility visibility;
+@override final  bool localOnly;
+@override final  NoteVisibility renoteVisibility;
+@override final  bool renoteLocalOnly;
  final  List<String> _pinnedEmojisForReaction;
-@override@override List<String> get pinnedEmojisForReaction {
+@override List<String> get pinnedEmojisForReaction {
   if (_pinnedEmojisForReaction is EqualUnmodifiableListView) return _pinnedEmojisForReaction;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_pinnedEmojisForReaction);
 }
 
  final  List<String> _pinnedEmojis;
-@override@override List<String> get pinnedEmojis {
+@override List<String> get pinnedEmojis {
   if (_pinnedEmojis is EqualUnmodifiableListView) return _pinnedEmojis;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_pinnedEmojis);
 }
 
  final  List<String> _recentlyUsedEmojis;
-@override@override List<String> get recentlyUsedEmojis {
+@override List<String> get recentlyUsedEmojis {
   if (_recentlyUsedEmojis is EqualUnmodifiableListView) return _recentlyUsedEmojis;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_recentlyUsedEmojis);
 }
 
-@override@override final  String? defaultReaction;
-@override@override final  String? uploadFolder;
-@override@override final  bool keepOriginalUploading;
-@override@override final  bool keepOriginalFilename;
+@override final  String? defaultReaction;
+@override final  String? uploadFolder;
+@override final  bool keepOriginalUploading;
+@override final  bool keepOriginalFilename;
  final  List<MuteWord> _mutedWords;
-@override@override List<MuteWord> get mutedWords {
+@override List<MuteWord> get mutedWords {
   if (_mutedWords is EqualUnmodifiableListView) return _mutedWords;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_mutedWords);
 }
 
  final  List<MuteWord> _hardMutedWords;
-@override@override List<MuteWord> get hardMutedWords {
+@override List<MuteWord> get hardMutedWords {
   if (_hardMutedWords is EqualUnmodifiableListView) return _hardMutedWords;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_hardMutedWords);
 }
 
  final  List<String> _mutedEmojis;
-@override@override List<String> get mutedEmojis {
+@override List<String> get mutedEmojis {
   if (_mutedEmojis is EqualUnmodifiableListView) return _mutedEmojis;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_mutedEmojis);
 }
 
  final  List<String> _recentlyUsedUsers;
-@override@override List<String> get recentlyUsedUsers {
+@override List<String> get recentlyUsedUsers {
   if (_recentlyUsedUsers is EqualUnmodifiableListView) return _recentlyUsedUsers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_recentlyUsedUsers);
 }
 
  final  List<String> _hashtags;
-@override@override List<String> get hashtags {
+@override List<String> get hashtags {
   if (_hashtags is EqualUnmodifiableListView) return _hashtags;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_hashtags);
 }
 
  final  List<String> _postFormHashtags;
-@override@override List<String> get postFormHashtags {
+@override List<String> get postFormHashtags {
   if (_postFormHashtags is EqualUnmodifiableListView) return _postFormHashtags;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_postFormHashtags);
@@ -324,16 +329,18 @@ _$AccountSettingsCopyWith<_AccountSettings> get copyWith => __$AccountSettingsCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AccountSettings&&(identical(other.keepCw, keepCw) || other.keepCw == keepCw)&&(identical(other.rememberNoteVisibility, rememberNoteVisibility) || other.rememberNoteVisibility == rememberNoteVisibility)&&(identical(other.defaultNoteVisibility, defaultNoteVisibility) || other.defaultNoteVisibility == defaultNoteVisibility)&&(identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) || other.defaultNoteLocalOnly == defaultNoteLocalOnly)&&(identical(other.rememberRenoteVisibility, rememberRenoteVisibility) || other.rememberRenoteVisibility == rememberRenoteVisibility)&&(identical(other.defaultRenoteVisibility, defaultRenoteVisibility) || other.defaultRenoteVisibility == defaultRenoteVisibility)&&(identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) || other.defaultRenoteLocalOnly == defaultRenoteLocalOnly)&&(identical(other.reactionAcceptance, reactionAcceptance) || other.reactionAcceptance == reactionAcceptance)&&(identical(other.visibility, visibility) || other.visibility == visibility)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.renoteVisibility, renoteVisibility) || other.renoteVisibility == renoteVisibility)&&(identical(other.renoteLocalOnly, renoteLocalOnly) || other.renoteLocalOnly == renoteLocalOnly)&&const DeepCollectionEquality().equals(other._pinnedEmojisForReaction, _pinnedEmojisForReaction)&&const DeepCollectionEquality().equals(other._pinnedEmojis, _pinnedEmojis)&&const DeepCollectionEquality().equals(other._recentlyUsedEmojis, _recentlyUsedEmojis)&&(identical(other.defaultReaction, defaultReaction) || other.defaultReaction == defaultReaction)&&(identical(other.uploadFolder, uploadFolder) || other.uploadFolder == uploadFolder)&&(identical(other.keepOriginalUploading, keepOriginalUploading) || other.keepOriginalUploading == keepOriginalUploading)&&(identical(other.keepOriginalFilename, keepOriginalFilename) || other.keepOriginalFilename == keepOriginalFilename)&&const DeepCollectionEquality().equals(other._mutedWords, _mutedWords)&&const DeepCollectionEquality().equals(other._hardMutedWords, _hardMutedWords)&&const DeepCollectionEquality().equals(other._mutedEmojis, _mutedEmojis)&&const DeepCollectionEquality().equals(other._recentlyUsedUsers, _recentlyUsedUsers)&&const DeepCollectionEquality().equals(other._hashtags, _hashtags)&&const DeepCollectionEquality().equals(other._postFormHashtags, _postFormHashtags));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AccountSettings&&(identical(other.keepCw, keepCw) || other.keepCw == keepCw)&&(identical(other.rememberNoteVisibility, rememberNoteVisibility) || other.rememberNoteVisibility == rememberNoteVisibility)&&(identical(other.defaultNoteVisibility, defaultNoteVisibility) || other.defaultNoteVisibility == defaultNoteVisibility)&&(identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) || other.defaultNoteLocalOnly == defaultNoteLocalOnly)&&(identical(other.rememberRenoteVisibility, rememberRenoteVisibility) || other.rememberRenoteVisibility == rememberRenoteVisibility)&&(identical(other.defaultRenoteVisibility, defaultRenoteVisibility) || other.defaultRenoteVisibility == defaultRenoteVisibility)&&(identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) || other.defaultRenoteLocalOnly == defaultRenoteLocalOnly)&&(identical(other.reactionAcceptance, reactionAcceptance) || other.reactionAcceptance == reactionAcceptance)&&(identical(other.visibility, visibility) || other.visibility == visibility)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.renoteVisibility, renoteVisibility) || other.renoteVisibility == renoteVisibility)&&(identical(other.renoteLocalOnly, renoteLocalOnly) || other.renoteLocalOnly == renoteLocalOnly)&&const DeepCollectionEquality().equals(other.pinnedEmojisForReaction, _pinnedEmojisForReaction)&&const DeepCollectionEquality().equals(other.pinnedEmojis, _pinnedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedEmojis, _recentlyUsedEmojis)&&(identical(other.defaultReaction, defaultReaction) || other.defaultReaction == defaultReaction)&&(identical(other.uploadFolder, uploadFolder) || other.uploadFolder == uploadFolder)&&(identical(other.keepOriginalUploading, keepOriginalUploading) || other.keepOriginalUploading == keepOriginalUploading)&&(identical(other.keepOriginalFilename, keepOriginalFilename) || other.keepOriginalFilename == keepOriginalFilename)&&const DeepCollectionEquality().equals(other.mutedWords, _mutedWords)&&const DeepCollectionEquality().equals(other.hardMutedWords, _hardMutedWords)&&const DeepCollectionEquality().equals(other.mutedEmojis, _mutedEmojis)&&const DeepCollectionEquality().equals(other.recentlyUsedUsers, _recentlyUsedUsers)&&const DeepCollectionEquality().equals(other.hashtags, _hashtags)&&const DeepCollectionEquality().equals(other.postFormHashtags, _postFormHashtags));
 }
 
 
 @override
-int get hashCode => Object.hashAll([runtimeType,keepCw,rememberNoteVisibility,defaultNoteVisibility,defaultNoteLocalOnly,rememberRenoteVisibility,defaultRenoteVisibility,defaultRenoteLocalOnly,reactionAcceptance,visibility,localOnly,renoteVisibility,renoteLocalOnly,const DeepCollectionEquality().hash(_pinnedEmojisForReaction),const DeepCollectionEquality().hash(_pinnedEmojis),const DeepCollectionEquality().hash(_recentlyUsedEmojis),defaultReaction,uploadFolder,keepOriginalUploading,keepOriginalFilename,const DeepCollectionEquality().hash(_mutedWords),const DeepCollectionEquality().hash(_hardMutedWords),const DeepCollectionEquality().hash(_mutedEmojis),const DeepCollectionEquality().hash(_recentlyUsedUsers),const DeepCollectionEquality().hash(_hashtags),const DeepCollectionEquality().hash(_postFormHashtags)]);
+int get hashCode {
+    return Object.hashAll([runtimeType,keepCw,rememberNoteVisibility,defaultNoteVisibility,defaultNoteLocalOnly,rememberRenoteVisibility,defaultRenoteVisibility,defaultRenoteLocalOnly,reactionAcceptance,visibility,localOnly,renoteVisibility,renoteLocalOnly,const DeepCollectionEquality().hash(_pinnedEmojisForReaction),const DeepCollectionEquality().hash(_pinnedEmojis),const DeepCollectionEquality().hash(_recentlyUsedEmojis),defaultReaction,uploadFolder,keepOriginalUploading,keepOriginalFilename,const DeepCollectionEquality().hash(_mutedWords),const DeepCollectionEquality().hash(_hardMutedWords),const DeepCollectionEquality().hash(_mutedEmojis),const DeepCollectionEquality().hash(_recentlyUsedUsers),const DeepCollectionEquality().hash(_hashtags),const DeepCollectionEquality().hash(_postFormHashtags)]);
+}
 
 @override
 String toString() {
-  return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags, postFormHashtags: $postFormHashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags, postFormHashtags: $postFormHashtags)';
 }
 
 
@@ -344,7 +351,7 @@ abstract mixin class _$AccountSettingsCopyWith<$Res> implements $AccountSettings
   factory _$AccountSettingsCopyWith(_AccountSettings value, $Res Function(_AccountSettings) _then) = __$AccountSettingsCopyWithImpl;
 @override @useResult
 $Res call({
-@override bool keepCw,@override bool rememberNoteVisibility,@override NoteVisibility defaultNoteVisibility,@override bool defaultNoteLocalOnly,@override bool rememberRenoteVisibility,@override NoteVisibility defaultRenoteVisibility,@override bool defaultRenoteLocalOnly,@override ReactionAcceptance? reactionAcceptance,@override NoteVisibility visibility,@override bool localOnly,@override NoteVisibility renoteVisibility,@override bool renoteLocalOnly,@override List<String> pinnedEmojisForReaction,@override List<String> pinnedEmojis,@override List<String> recentlyUsedEmojis,@override String? defaultReaction,@override String? uploadFolder,@override bool keepOriginalUploading,@override bool keepOriginalFilename,@override List<MuteWord> mutedWords,@override List<MuteWord> hardMutedWords,@override List<String> mutedEmojis,@override List<String> recentlyUsedUsers,@override List<String> hashtags,@override List<String> postFormHashtags
+ bool keepCw, bool rememberNoteVisibility, NoteVisibility defaultNoteVisibility, bool defaultNoteLocalOnly, bool rememberRenoteVisibility, NoteVisibility defaultRenoteVisibility, bool defaultRenoteLocalOnly, ReactionAcceptance? reactionAcceptance, NoteVisibility visibility, bool localOnly, NoteVisibility renoteVisibility, bool renoteLocalOnly, List<String> pinnedEmojisForReaction, List<String> pinnedEmojis, List<String> recentlyUsedEmojis, String? defaultReaction, String? uploadFolder, bool keepOriginalUploading, bool keepOriginalFilename, List<MuteWord> mutedWords, List<MuteWord> hardMutedWords, List<String> mutedEmojis, List<String> recentlyUsedUsers, List<String> hashtags, List<String> postFormHashtags
 });
 
 

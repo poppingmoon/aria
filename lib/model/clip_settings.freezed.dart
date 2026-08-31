@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ClipSettings {
 
-@override String? get name;@override String? get description;@override bool? get isPublic;
+
 /// Create a copy of ClipSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $ClipSettingsCopyWith<ClipSettings> get copyWith => _$ClipSettingsCopyWithImpl<C
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClipSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
+  final _this = this as ClipSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ClipSettings&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.description, _this.description) || other.description == _this.description)&&(identical(other.isPublic, _this.isPublic) || other.isPublic == _this.isPublic));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,description,isPublic);
+int get hashCode {
+  final _this = this as ClipSettings;
+  return Object.hash(runtimeType,_this.name,_this.description,_this.isPublic);
+}
 
 @override
 String toString() {
-  return 'ClipSettings(name: $name, description: $description, isPublic: $isPublic)';
+  final _this = this as ClipSettings;
+  return 'ClipSettings(name: ${_this.name}, description: ${_this.description}, isPublic: ${_this.isPublic})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $ClipSettingsCopyWith<$Res>  {
   factory $ClipSettingsCopyWith(ClipSettings value, $Res Function(ClipSettings) _then) = _$ClipSettingsCopyWithImpl;
 @useResult
 $Res call({
-@override String? name,@override String? description,@override bool? isPublic
+ String? name, String? description, bool? isPublic
 });
 
 
@@ -153,7 +158,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? name, @override  String? description, @override  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  String? description,  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ClipSettings() when $default != null:
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -174,7 +179,7 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? name, @override  String? description, @override  bool? isPublic)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  String? description,  bool? isPublic)  $default,) {final _that = this;
 switch (_that) {
 case _ClipSettings():
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -194,7 +199,7 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? name, @override  String? description, @override  bool? isPublic)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  String? description,  bool? isPublic)?  $default,) {final _that = this;
 switch (_that) {
 case _ClipSettings() when $default != null:
 return $default(_that.name,_that.description,_that.isPublic);case _:
@@ -209,12 +214,12 @@ return $default(_that.name,_that.description,_that.isPublic);case _:
 
 
 class _ClipSettings extends ClipSettings {
-  const _ClipSettings({@override this.name, @override this.description, @override this.isPublic}): super(name: name, description: description, isPublic: isPublic);
+  const _ClipSettings({this.name, this.description, this.isPublic}): super(name: name, description: description, isPublic: isPublic);
   
 
-@override@override final  String? name;
-@override@override final  String? description;
-@override@override final  bool? isPublic;
+@override final  String? name;
+@override final  String? description;
+@override final  bool? isPublic;
 
 /// Create a copy of ClipSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -226,16 +231,18 @@ _$ClipSettingsCopyWith<_ClipSettings> get copyWith => __$ClipSettingsCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClipSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ClipSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.description, description) || other.description == description)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,description,isPublic);
+int get hashCode {
+    return Object.hash(runtimeType,name,description,isPublic);
+}
 
 @override
 String toString() {
-  return 'ClipSettings(name: $name, description: $description, isPublic: $isPublic)';
+    return 'ClipSettings(name: $name, description: $description, isPublic: $isPublic)';
 }
 
 
@@ -246,7 +253,7 @@ abstract mixin class _$ClipSettingsCopyWith<$Res> implements $ClipSettingsCopyWi
   factory _$ClipSettingsCopyWith(_ClipSettings value, $Res Function(_ClipSettings) _then) = __$ClipSettingsCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? name,@override String? description,@override bool? isPublic
+ String? name, String? description, bool? isPublic
 });
 
 
