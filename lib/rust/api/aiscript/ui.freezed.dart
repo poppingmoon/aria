@@ -21,16 +21,21 @@ mixin _$AsUiComponent {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent&&const DeepCollectionEquality().equals(other.field0, field0));
+  final _this = this as AsUiComponent;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent&&const DeepCollectionEquality().equals(other.field0, _this.field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(field0));
+int get hashCode {
+  final _this = this as AsUiComponent;
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.field0));
+}
 
 @override
 String toString() {
-  return 'AsUiComponent(field0: $field0)';
+  final _this = this as AsUiComponent;
+  return 'AsUiComponent(field0: ${_this.field0})';
 }
 
 
@@ -263,16 +268,18 @@ $AsUiComponent_RootCopyWith<AsUiComponent_Root> get copyWith => _$AsUiComponent_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Root&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Root&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.root(field0: $field0)';
+    return 'AsUiComponent.root(field0: $field0)';
 }
 
 
@@ -329,16 +336,18 @@ $AsUiComponent_ContainerCopyWith<AsUiComponent_Container> get copyWith => _$AsUi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Container&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Container&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.container(field0: $field0)';
+    return 'AsUiComponent.container(field0: $field0)';
 }
 
 
@@ -395,16 +404,18 @@ $AsUiComponent_TextCopyWith<AsUiComponent_Text> get copyWith => _$AsUiComponent_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Text&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Text&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.text(field0: $field0)';
+    return 'AsUiComponent.text(field0: $field0)';
 }
 
 
@@ -461,16 +472,18 @@ $AsUiComponent_MfmCopyWith<AsUiComponent_Mfm> get copyWith => _$AsUiComponent_Mf
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Mfm&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Mfm&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.mfm(field0: $field0)';
+    return 'AsUiComponent.mfm(field0: $field0)';
 }
 
 
@@ -527,16 +540,18 @@ $AsUiComponent_ButtonCopyWith<AsUiComponent_Button> get copyWith => _$AsUiCompon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Button&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Button&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.button(field0: $field0)';
+    return 'AsUiComponent.button(field0: $field0)';
 }
 
 
@@ -593,16 +608,18 @@ $AsUiComponent_ButtonsCopyWith<AsUiComponent_Buttons> get copyWith => _$AsUiComp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Buttons&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Buttons&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.buttons(field0: $field0)';
+    return 'AsUiComponent.buttons(field0: $field0)';
 }
 
 
@@ -659,16 +676,18 @@ $AsUiComponent_ToggleSwitchCopyWith<AsUiComponent_ToggleSwitch> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_ToggleSwitch&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_ToggleSwitch&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.toggleSwitch(field0: $field0)';
+    return 'AsUiComponent.toggleSwitch(field0: $field0)';
 }
 
 
@@ -725,16 +744,18 @@ $AsUiComponent_TextareaCopyWith<AsUiComponent_Textarea> get copyWith => _$AsUiCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Textarea&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Textarea&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.textarea(field0: $field0)';
+    return 'AsUiComponent.textarea(field0: $field0)';
 }
 
 
@@ -791,16 +812,18 @@ $AsUiComponent_TextInputCopyWith<AsUiComponent_TextInput> get copyWith => _$AsUi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_TextInput&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_TextInput&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.textInput(field0: $field0)';
+    return 'AsUiComponent.textInput(field0: $field0)';
 }
 
 
@@ -857,16 +880,18 @@ $AsUiComponent_NumberInputCopyWith<AsUiComponent_NumberInput> get copyWith => _$
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_NumberInput&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_NumberInput&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.numberInput(field0: $field0)';
+    return 'AsUiComponent.numberInput(field0: $field0)';
 }
 
 
@@ -923,16 +948,18 @@ $AsUiComponent_SelectCopyWith<AsUiComponent_Select> get copyWith => _$AsUiCompon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Select&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Select&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.select(field0: $field0)';
+    return 'AsUiComponent.select(field0: $field0)';
 }
 
 
@@ -989,16 +1016,18 @@ $AsUiComponent_FolderCopyWith<AsUiComponent_Folder> get copyWith => _$AsUiCompon
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Folder&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_Folder&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.folder(field0: $field0)';
+    return 'AsUiComponent.folder(field0: $field0)';
 }
 
 
@@ -1055,16 +1084,18 @@ $AsUiComponent_PostFormButtonCopyWith<AsUiComponent_PostFormButton> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_PostFormButton&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_PostFormButton&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.postFormButton(field0: $field0)';
+    return 'AsUiComponent.postFormButton(field0: $field0)';
 }
 
 
@@ -1121,16 +1152,18 @@ $AsUiComponent_PostFormCopyWith<AsUiComponent_PostForm> get copyWith => _$AsUiCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_PostForm&&(identical(other.field0, field0) || other.field0 == field0));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AsUiComponent_PostForm&&(identical(other.field0, field0) || other.field0 == field0));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,field0);
+int get hashCode {
+    return Object.hash(runtimeType,field0);
+}
 
 @override
 String toString() {
-  return 'AsUiComponent.postForm(field0: $field0)';
+    return 'AsUiComponent.postForm(field0: $field0)';
 }
 
 

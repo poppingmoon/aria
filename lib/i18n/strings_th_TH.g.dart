@@ -1120,6 +1120,7 @@ class _Translations$misskey$th_TH extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'เข้าสู่ระบบเป็นบอตอยู่ในขณะนี้';
 	@override String get tools => 'เครื่องมือ';
 	@override String get cannotLoad => 'ไม่สามารถโหลดได้';
+	@override String get cannotPreview => 'ไม่สามารถดูตัวอย่างได้';
 	@override String get numberOfProfileView => 'มุมมองโปรไฟล์';
 	@override String get like => 'ถูกใจ!';
 	@override String get unlike => 'เลิกถูกใจ';

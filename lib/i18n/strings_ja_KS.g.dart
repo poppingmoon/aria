@@ -1355,6 +1355,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Botアカウントでログイン中やで';
 	@override String get tools => 'ツール';
 	@override String get cannotLoad => '読み込めへんで';
+	@override String get cannotPreview => 'プレビューできへん';
 	@override String get numberOfProfileView => 'プロフィール表示回数';
 	@override String get like => 'ええやん！';
 	@override String get unlike => 'いいねやめる';
@@ -1736,6 +1737,7 @@ class Translations$misskey$ja_KS extends Translations$misskey$en_US {
 	@override String get prepend => '先頭に追加';
 	@override String get urlPreviewSensitiveList => 'サムネイルの表示を制限するURL';
 	@override String get urlPreviewSensitiveListDescription => 'スペースで区切るとAND指定になり、改行で区切るとOR指定になります。スラッシュで囲むと正規表現になります。一致した場合、サムネイルが表示されなくなります。';
+	@override String get pixelatedZoom => 'ピクセルアート拡大モード';
 	@override late final Translations$misskey$imageEditing_$ja_KS imageEditing_ = Translations$misskey$imageEditing_$ja_KS.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ja_KS imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ja_KS.internal(_root);
 	@override late final Translations$misskey$compression_$ja_KS compression_ = Translations$misskey$compression_$ja_KS.internal(_root);

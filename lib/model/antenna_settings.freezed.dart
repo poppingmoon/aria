@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AntennaSettings {
 
-@override String? get name;@override AntennaSource? get src;@override String? get userListId;@override List<String>? get users;@override bool? get withReplies;@override List<List<String>>? get keywords;@override List<List<String>>? get excludeKeywords;@override bool? get localOnly;@override bool? get caseSensitive;@override bool? get withFile;@override bool? get excludeBots;@override bool? get excludeNotesInSensitiveChannel;
+
 /// Create a copy of AntennaSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $AntennaSettingsCopyWith<AntennaSettings> get copyWith => _$AntennaSettingsCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AntennaSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.src, src) || other.src == src)&&(identical(other.userListId, userListId) || other.userListId == userListId)&&const DeepCollectionEquality().equals(other.users, users)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&const DeepCollectionEquality().equals(other.keywords, keywords)&&const DeepCollectionEquality().equals(other.excludeKeywords, excludeKeywords)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.caseSensitive, caseSensitive) || other.caseSensitive == caseSensitive)&&(identical(other.withFile, withFile) || other.withFile == withFile)&&(identical(other.excludeBots, excludeBots) || other.excludeBots == excludeBots)&&(identical(other.excludeNotesInSensitiveChannel, excludeNotesInSensitiveChannel) || other.excludeNotesInSensitiveChannel == excludeNotesInSensitiveChannel));
+  final _this = this as AntennaSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AntennaSettings&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.src, _this.src) || other.src == _this.src)&&(identical(other.userListId, _this.userListId) || other.userListId == _this.userListId)&&const DeepCollectionEquality().equals(other.users, _this.users)&&(identical(other.withReplies, _this.withReplies) || other.withReplies == _this.withReplies)&&const DeepCollectionEquality().equals(other.keywords, _this.keywords)&&const DeepCollectionEquality().equals(other.excludeKeywords, _this.excludeKeywords)&&(identical(other.localOnly, _this.localOnly) || other.localOnly == _this.localOnly)&&(identical(other.caseSensitive, _this.caseSensitive) || other.caseSensitive == _this.caseSensitive)&&(identical(other.withFile, _this.withFile) || other.withFile == _this.withFile)&&(identical(other.excludeBots, _this.excludeBots) || other.excludeBots == _this.excludeBots)&&(identical(other.excludeNotesInSensitiveChannel, _this.excludeNotesInSensitiveChannel) || other.excludeNotesInSensitiveChannel == _this.excludeNotesInSensitiveChannel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,src,userListId,const DeepCollectionEquality().hash(users),withReplies,const DeepCollectionEquality().hash(keywords),const DeepCollectionEquality().hash(excludeKeywords),localOnly,caseSensitive,withFile,excludeBots,excludeNotesInSensitiveChannel);
+int get hashCode {
+  final _this = this as AntennaSettings;
+  return Object.hash(runtimeType,_this.name,_this.src,_this.userListId,const DeepCollectionEquality().hash(_this.users),_this.withReplies,const DeepCollectionEquality().hash(_this.keywords),const DeepCollectionEquality().hash(_this.excludeKeywords),_this.localOnly,_this.caseSensitive,_this.withFile,_this.excludeBots,_this.excludeNotesInSensitiveChannel);
+}
 
 @override
 String toString() {
-  return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile, excludeBots: $excludeBots, excludeNotesInSensitiveChannel: $excludeNotesInSensitiveChannel)';
+  final _this = this as AntennaSettings;
+  return 'AntennaSettings(name: ${_this.name}, src: ${_this.src}, userListId: ${_this.userListId}, users: ${_this.users}, withReplies: ${_this.withReplies}, keywords: ${_this.keywords}, excludeKeywords: ${_this.excludeKeywords}, localOnly: ${_this.localOnly}, caseSensitive: ${_this.caseSensitive}, withFile: ${_this.withFile}, excludeBots: ${_this.excludeBots}, excludeNotesInSensitiveChannel: ${_this.excludeNotesInSensitiveChannel})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $AntennaSettingsCopyWith<$Res>  {
   factory $AntennaSettingsCopyWith(AntennaSettings value, $Res Function(AntennaSettings) _then) = _$AntennaSettingsCopyWithImpl;
 @useResult
 $Res call({
-@override String? name,@override AntennaSource? src,@override String? userListId,@override List<String>? users,@override bool? withReplies,@override List<List<String>>? keywords,@override List<List<String>>? excludeKeywords,@override bool? localOnly,@override bool? caseSensitive,@override bool? withFile,@override bool? excludeBots,@override bool? excludeNotesInSensitiveChannel
+ String? name, AntennaSource? src, String? userListId, List<String>? users, bool? withReplies, List<List<String>>? keywords, List<List<String>>? excludeKeywords, bool? localOnly, bool? caseSensitive, bool? withFile, bool? excludeBots, bool? excludeNotesInSensitiveChannel
 });
 
 
@@ -162,7 +167,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? name, @override  AntennaSource? src, @override  String? userListId, @override  List<String>? users, @override  bool? withReplies, @override  List<List<String>>? keywords, @override  List<List<String>>? excludeKeywords, @override  bool? localOnly, @override  bool? caseSensitive, @override  bool? withFile, @override  bool? excludeBots, @override  bool? excludeNotesInSensitiveChannel)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  AntennaSource? src,  String? userListId,  List<String>? users,  bool? withReplies,  List<List<String>>? keywords,  List<List<String>>? excludeKeywords,  bool? localOnly,  bool? caseSensitive,  bool? withFile,  bool? excludeBots,  bool? excludeNotesInSensitiveChannel)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AntennaSettings() when $default != null:
 return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withReplies,_that.keywords,_that.excludeKeywords,_that.localOnly,_that.caseSensitive,_that.withFile,_that.excludeBots,_that.excludeNotesInSensitiveChannel);case _:
@@ -183,7 +188,7 @@ return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withRepl
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? name, @override  AntennaSource? src, @override  String? userListId, @override  List<String>? users, @override  bool? withReplies, @override  List<List<String>>? keywords, @override  List<List<String>>? excludeKeywords, @override  bool? localOnly, @override  bool? caseSensitive, @override  bool? withFile, @override  bool? excludeBots, @override  bool? excludeNotesInSensitiveChannel)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  AntennaSource? src,  String? userListId,  List<String>? users,  bool? withReplies,  List<List<String>>? keywords,  List<List<String>>? excludeKeywords,  bool? localOnly,  bool? caseSensitive,  bool? withFile,  bool? excludeBots,  bool? excludeNotesInSensitiveChannel)  $default,) {final _that = this;
 switch (_that) {
 case _AntennaSettings():
 return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withReplies,_that.keywords,_that.excludeKeywords,_that.localOnly,_that.caseSensitive,_that.withFile,_that.excludeBots,_that.excludeNotesInSensitiveChannel);case _:
@@ -203,7 +208,7 @@ return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withRepl
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? name, @override  AntennaSource? src, @override  String? userListId, @override  List<String>? users, @override  bool? withReplies, @override  List<List<String>>? keywords, @override  List<List<String>>? excludeKeywords, @override  bool? localOnly, @override  bool? caseSensitive, @override  bool? withFile, @override  bool? excludeBots, @override  bool? excludeNotesInSensitiveChannel)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  AntennaSource? src,  String? userListId,  List<String>? users,  bool? withReplies,  List<List<String>>? keywords,  List<List<String>>? excludeKeywords,  bool? localOnly,  bool? caseSensitive,  bool? withFile,  bool? excludeBots,  bool? excludeNotesInSensitiveChannel)?  $default,) {final _that = this;
 switch (_that) {
 case _AntennaSettings() when $default != null:
 return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withReplies,_that.keywords,_that.excludeKeywords,_that.localOnly,_that.caseSensitive,_that.withFile,_that.excludeBots,_that.excludeNotesInSensitiveChannel);case _:
@@ -218,14 +223,14 @@ return $default(_that.name,_that.src,_that.userListId,_that.users,_that.withRepl
 
 
 class _AntennaSettings extends AntennaSettings {
-  const _AntennaSettings({@override this.name, @override this.src, @override this.userListId, @override  List<String>? users, @override this.withReplies, @override  List<List<String>>? keywords, @override  List<List<String>>? excludeKeywords, @override this.localOnly, @override this.caseSensitive, @override this.withFile, @override this.excludeBots, @override this.excludeNotesInSensitiveChannel}): _users = users,_keywords = keywords,_excludeKeywords = excludeKeywords,super(name: name, src: src, userListId: userListId, users: users, withReplies: withReplies, keywords: keywords, excludeKeywords: excludeKeywords, localOnly: localOnly, caseSensitive: caseSensitive, withFile: withFile, excludeBots: excludeBots, excludeNotesInSensitiveChannel: excludeNotesInSensitiveChannel);
+  const _AntennaSettings({this.name, this.src, this.userListId,  List<String>? users, this.withReplies,  List<List<String>>? keywords,  List<List<String>>? excludeKeywords, this.localOnly, this.caseSensitive, this.withFile, this.excludeBots, this.excludeNotesInSensitiveChannel}): _users = users,_keywords = keywords,_excludeKeywords = excludeKeywords,super(name: name, src: src, userListId: userListId, users: users, withReplies: withReplies, keywords: keywords, excludeKeywords: excludeKeywords, localOnly: localOnly, caseSensitive: caseSensitive, withFile: withFile, excludeBots: excludeBots, excludeNotesInSensitiveChannel: excludeNotesInSensitiveChannel);
   
 
-@override@override final  String? name;
-@override@override final  AntennaSource? src;
-@override@override final  String? userListId;
+@override final  String? name;
+@override final  AntennaSource? src;
+@override final  String? userListId;
  final  List<String>? _users;
-@override@override List<String>? get users {
+@override List<String>? get users {
   final value = _users;
   if (value == null) return null;
   if (_users is EqualUnmodifiableListView) return _users;
@@ -233,9 +238,9 @@ class _AntennaSettings extends AntennaSettings {
   return EqualUnmodifiableListView(value);
 }
 
-@override@override final  bool? withReplies;
+@override final  bool? withReplies;
  final  List<List<String>>? _keywords;
-@override@override List<List<String>>? get keywords {
+@override List<List<String>>? get keywords {
   final value = _keywords;
   if (value == null) return null;
   if (_keywords is EqualUnmodifiableListView) return _keywords;
@@ -244,7 +249,7 @@ class _AntennaSettings extends AntennaSettings {
 }
 
  final  List<List<String>>? _excludeKeywords;
-@override@override List<List<String>>? get excludeKeywords {
+@override List<List<String>>? get excludeKeywords {
   final value = _excludeKeywords;
   if (value == null) return null;
   if (_excludeKeywords is EqualUnmodifiableListView) return _excludeKeywords;
@@ -252,11 +257,11 @@ class _AntennaSettings extends AntennaSettings {
   return EqualUnmodifiableListView(value);
 }
 
-@override@override final  bool? localOnly;
-@override@override final  bool? caseSensitive;
-@override@override final  bool? withFile;
-@override@override final  bool? excludeBots;
-@override@override final  bool? excludeNotesInSensitiveChannel;
+@override final  bool? localOnly;
+@override final  bool? caseSensitive;
+@override final  bool? withFile;
+@override final  bool? excludeBots;
+@override final  bool? excludeNotesInSensitiveChannel;
 
 /// Create a copy of AntennaSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -268,16 +273,18 @@ _$AntennaSettingsCopyWith<_AntennaSettings> get copyWith => __$AntennaSettingsCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AntennaSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.src, src) || other.src == src)&&(identical(other.userListId, userListId) || other.userListId == userListId)&&const DeepCollectionEquality().equals(other._users, _users)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&const DeepCollectionEquality().equals(other._keywords, _keywords)&&const DeepCollectionEquality().equals(other._excludeKeywords, _excludeKeywords)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.caseSensitive, caseSensitive) || other.caseSensitive == caseSensitive)&&(identical(other.withFile, withFile) || other.withFile == withFile)&&(identical(other.excludeBots, excludeBots) || other.excludeBots == excludeBots)&&(identical(other.excludeNotesInSensitiveChannel, excludeNotesInSensitiveChannel) || other.excludeNotesInSensitiveChannel == excludeNotesInSensitiveChannel));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AntennaSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.src, src) || other.src == src)&&(identical(other.userListId, userListId) || other.userListId == userListId)&&const DeepCollectionEquality().equals(other.users, _users)&&(identical(other.withReplies, withReplies) || other.withReplies == withReplies)&&const DeepCollectionEquality().equals(other.keywords, _keywords)&&const DeepCollectionEquality().equals(other.excludeKeywords, _excludeKeywords)&&(identical(other.localOnly, localOnly) || other.localOnly == localOnly)&&(identical(other.caseSensitive, caseSensitive) || other.caseSensitive == caseSensitive)&&(identical(other.withFile, withFile) || other.withFile == withFile)&&(identical(other.excludeBots, excludeBots) || other.excludeBots == excludeBots)&&(identical(other.excludeNotesInSensitiveChannel, excludeNotesInSensitiveChannel) || other.excludeNotesInSensitiveChannel == excludeNotesInSensitiveChannel));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,name,src,userListId,const DeepCollectionEquality().hash(_users),withReplies,const DeepCollectionEquality().hash(_keywords),const DeepCollectionEquality().hash(_excludeKeywords),localOnly,caseSensitive,withFile,excludeBots,excludeNotesInSensitiveChannel);
+int get hashCode {
+    return Object.hash(runtimeType,name,src,userListId,const DeepCollectionEquality().hash(_users),withReplies,const DeepCollectionEquality().hash(_keywords),const DeepCollectionEquality().hash(_excludeKeywords),localOnly,caseSensitive,withFile,excludeBots,excludeNotesInSensitiveChannel);
+}
 
 @override
 String toString() {
-  return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile, excludeBots: $excludeBots, excludeNotesInSensitiveChannel: $excludeNotesInSensitiveChannel)';
+    return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile, excludeBots: $excludeBots, excludeNotesInSensitiveChannel: $excludeNotesInSensitiveChannel)';
 }
 
 
@@ -288,7 +295,7 @@ abstract mixin class _$AntennaSettingsCopyWith<$Res> implements $AntennaSettings
   factory _$AntennaSettingsCopyWith(_AntennaSettings value, $Res Function(_AntennaSettings) _then) = __$AntennaSettingsCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? name,@override AntennaSource? src,@override String? userListId,@override List<String>? users,@override bool? withReplies,@override List<List<String>>? keywords,@override List<List<String>>? excludeKeywords,@override bool? localOnly,@override bool? caseSensitive,@override bool? withFile,@override bool? excludeBots,@override bool? excludeNotesInSensitiveChannel
+ String? name, AntennaSource? src, String? userListId, List<String>? users, bool? withReplies, List<List<String>>? keywords, List<List<String>>? excludeKeywords, bool? localOnly, bool? caseSensitive, bool? withFile, bool? excludeBots, bool? excludeNotesInSensitiveChannel
 });
 
 

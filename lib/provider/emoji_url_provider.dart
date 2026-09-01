@@ -44,7 +44,7 @@ part 'emoji_url_provider.g.dart';
     rawUrl = serverUrl.resolveUri(rawUrl);
   }
 
-  // ignore: only_use_keep_alive_inside_keep_alive
+  // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
   final proxied = ref.watch(
     proxiedImageUrlProvider(account.host, rawUrl, emoji: !useOriginalSize),
   );

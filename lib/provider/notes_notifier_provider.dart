@@ -100,7 +100,7 @@ class NotesNotifier extends _$NotesNotifier {
     if (note == null) {
       return;
     }
-    // ignore: only_use_keep_alive_inside_keep_alive
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final i = ref.read(iNotifierProvider(account)).value;
     final isMyReaction = reacted.userId == i?.id;
     if (isMyReaction && note.myReaction == reacted.reaction) {
@@ -132,7 +132,7 @@ class NotesNotifier extends _$NotesNotifier {
     if (note == null) {
       return;
     }
-    // ignore: only_use_keep_alive_inside_keep_alive
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final i = ref.read(iNotifierProvider(account)).value;
     final isMyReaction = unreacted.userId == i?.id;
     if (isMyReaction && note.myReaction == null) {
@@ -166,7 +166,7 @@ class NotesNotifier extends _$NotesNotifier {
     }
     final poll = note.poll;
     if (poll == null) return;
-    // ignore: only_use_keep_alive_inside_keep_alive
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final i = ref.read(iNotifierProvider(account)).value;
     final isMyVote = pollVoted.userId == i?.id;
     if (isMyVote && poll.choices[pollVoted.choice].isVoted) {

@@ -1090,6 +1090,7 @@ class _Translations$misskey$ro_RO extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Conectat în prezent ca bot';
 	@override String get tools => 'Unelte';
 	@override String get cannotLoad => 'Nu se poate încărca';
+	@override String get cannotPreview => 'Nu se poate previzualiza';
 	@override String get numberOfProfileView => 'Numărul de vizualizări ale profilului';
 	@override String get like => 'Îmi place!';
 	@override String get unlike => 'Îmi displace';

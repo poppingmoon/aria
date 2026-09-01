@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MiAuthState {
 
-@override Uri get serverUrl;@override String get sessionId;@override Uri get url;
+
 /// Create a copy of MiAuthState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $MiAuthStateCopyWith<MiAuthState> get copyWith => _$MiAuthStateCopyWithImpl<MiAu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MiAuthState&&(identical(other.serverUrl, serverUrl) || other.serverUrl == serverUrl)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
+  final _this = this as MiAuthState;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MiAuthState&&(identical(other.serverUrl, _this.serverUrl) || other.serverUrl == _this.serverUrl)&&(identical(other.sessionId, _this.sessionId) || other.sessionId == _this.sessionId)&&(identical(other.url, _this.url) || other.url == _this.url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,serverUrl,sessionId,url);
+int get hashCode {
+  final _this = this as MiAuthState;
+  return Object.hash(runtimeType,_this.serverUrl,_this.sessionId,_this.url);
+}
 
 @override
 String toString() {
-  return 'MiAuthState(serverUrl: $serverUrl, sessionId: $sessionId, url: $url)';
+  final _this = this as MiAuthState;
+  return 'MiAuthState(serverUrl: ${_this.serverUrl}, sessionId: ${_this.sessionId}, url: ${_this.url})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $MiAuthStateCopyWith<$Res>  {
   factory $MiAuthStateCopyWith(MiAuthState value, $Res Function(MiAuthState) _then) = _$MiAuthStateCopyWithImpl;
 @useResult
 $Res call({
-@override Uri serverUrl,@override String sessionId,@override Uri url
+ Uri serverUrl, String sessionId, Uri url
 });
 
 
@@ -80,12 +85,12 @@ as Uri,
 
 
 class _MiAuthState extends MiAuthState {
-  const _MiAuthState({@override required this.serverUrl, @override required this.sessionId, @override required this.url}): super(serverUrl: serverUrl, sessionId: sessionId, url: url);
+  const _MiAuthState({required this.serverUrl, required this.sessionId, required this.url}): super(serverUrl: serverUrl, sessionId: sessionId, url: url);
   
 
-@override@override final  Uri serverUrl;
-@override@override final  String sessionId;
-@override@override final  Uri url;
+@override final  Uri serverUrl;
+@override final  String sessionId;
+@override final  Uri url;
 
 /// Create a copy of MiAuthState
 /// with the given fields replaced by the non-null parameter values.
@@ -97,16 +102,18 @@ _$MiAuthStateCopyWith<_MiAuthState> get copyWith => __$MiAuthStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MiAuthState&&(identical(other.serverUrl, serverUrl) || other.serverUrl == serverUrl)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _MiAuthState&&(identical(other.serverUrl, serverUrl) || other.serverUrl == serverUrl)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,serverUrl,sessionId,url);
+int get hashCode {
+    return Object.hash(runtimeType,serverUrl,sessionId,url);
+}
 
 @override
 String toString() {
-  return 'MiAuthState(serverUrl: $serverUrl, sessionId: $sessionId, url: $url)';
+    return 'MiAuthState(serverUrl: $serverUrl, sessionId: $sessionId, url: $url)';
 }
 
 
@@ -117,7 +124,7 @@ abstract mixin class _$MiAuthStateCopyWith<$Res> implements $MiAuthStateCopyWith
   factory _$MiAuthStateCopyWith(_MiAuthState value, $Res Function(_MiAuthState) _then) = __$MiAuthStateCopyWithImpl;
 @override @useResult
 $Res call({
-@override Uri serverUrl,@override String sessionId,@override Uri url
+ Uri serverUrl, String sessionId, Uri url
 });
 
 

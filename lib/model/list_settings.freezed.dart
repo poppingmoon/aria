@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ListSettings {
 
-@override String? get name;@override bool? get isPublic;
+
 /// Create a copy of ListSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,21 @@ $ListSettingsCopyWith<ListSettings> get copyWith => _$ListSettingsCopyWithImpl<L
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
+  final _this = this as ListSettings;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ListSettings&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.isPublic, _this.isPublic) || other.isPublic == _this.isPublic));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,isPublic);
+int get hashCode {
+  final _this = this as ListSettings;
+  return Object.hash(runtimeType,_this.name,_this.isPublic);
+}
 
 @override
 String toString() {
-  return 'ListSettings(name: $name, isPublic: $isPublic)';
+  final _this = this as ListSettings;
+  return 'ListSettings(name: ${_this.name}, isPublic: ${_this.isPublic})';
 }
 
 
@@ -47,7 +52,7 @@ abstract mixin class $ListSettingsCopyWith<$Res>  {
   factory $ListSettingsCopyWith(ListSettings value, $Res Function(ListSettings) _then) = _$ListSettingsCopyWithImpl;
 @useResult
 $Res call({
-@override String? name,@override bool? isPublic
+ String? name, bool? isPublic
 });
 
 
@@ -153,7 +158,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? name, @override  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? name,  bool? isPublic)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ListSettings() when $default != null:
 return $default(_that.name,_that.isPublic);case _:
@@ -174,7 +179,7 @@ return $default(_that.name,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? name, @override  bool? isPublic)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? name,  bool? isPublic)  $default,) {final _that = this;
 switch (_that) {
 case _ListSettings():
 return $default(_that.name,_that.isPublic);case _:
@@ -194,7 +199,7 @@ return $default(_that.name,_that.isPublic);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? name, @override  bool? isPublic)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? name,  bool? isPublic)?  $default,) {final _that = this;
 switch (_that) {
 case _ListSettings() when $default != null:
 return $default(_that.name,_that.isPublic);case _:
@@ -209,11 +214,11 @@ return $default(_that.name,_that.isPublic);case _:
 @JsonSerializable(createToJson: false)
 
 class _ListSettings extends ListSettings {
-  const _ListSettings({@override this.name, @override this.isPublic}): super(name: name, isPublic: isPublic);
+  const _ListSettings({this.name, this.isPublic}): super(name: name, isPublic: isPublic);
   factory _ListSettings.fromJson(Map<String, dynamic> json) => _$ListSettingsFromJson(json);
 
-@override@override final  String? name;
-@override@override final  bool? isPublic;
+@override final  String? name;
+@override final  bool? isPublic;
 
 /// Create a copy of ListSettings
 /// with the given fields replaced by the non-null parameter values.
@@ -225,16 +230,18 @@ _$ListSettingsCopyWith<_ListSettings> get copyWith => __$ListSettingsCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ListSettings&&(identical(other.name, name) || other.name == name)&&(identical(other.isPublic, isPublic) || other.isPublic == isPublic));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,isPublic);
+int get hashCode {
+    return Object.hash(runtimeType,name,isPublic);
+}
 
 @override
 String toString() {
-  return 'ListSettings(name: $name, isPublic: $isPublic)';
+    return 'ListSettings(name: $name, isPublic: $isPublic)';
 }
 
 
@@ -245,7 +252,7 @@ abstract mixin class _$ListSettingsCopyWith<$Res> implements $ListSettingsCopyWi
   factory _$ListSettingsCopyWith(_ListSettings value, $Res Function(_ListSettings) _then) = __$ListSettingsCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? name,@override bool? isPublic
+ String? name, bool? isPublic
 });
 
 

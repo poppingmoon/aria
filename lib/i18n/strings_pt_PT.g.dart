@@ -1159,6 +1159,7 @@ class _Translations$misskey$pt_PT extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Atualmente conectado como bot';
 	@override String get tools => 'Ferramentas';
 	@override String get cannotLoad => 'Não foi possível carregar';
+	@override String get cannotPreview => 'Não foi possível carregar prévia';
 	@override String get numberOfProfileView => 'Visualizações do perfil';
 	@override String get like => 'Curtir';
 	@override String get unlike => 'Remover curtida';

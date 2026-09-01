@@ -1360,6 +1360,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => '以机器人账户登录中';
 	@override String get tools => '工具';
 	@override String get cannotLoad => '无法加载';
+	@override String get cannotPreview => '无法预览';
 	@override String get numberOfProfileView => '个人资料展示次数';
 	@override String get like => '点赞！';
 	@override String get unlike => '取消喜欢';
@@ -1741,6 +1742,7 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get prepend => '加到最前';
 	@override String get urlPreviewSensitiveList => '限制显示缩略图的 URL';
 	@override String get urlPreviewSensitiveListDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔，正则表达式用斜线包裹。成功匹配则不再显示缩略图。';
+	@override String get pixelatedZoom => '像素画放大模式';
 	@override late final Translations$misskey$imageEditing_$zh_CN imageEditing_ = Translations$misskey$imageEditing_$zh_CN.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$zh_CN imageFrameEditor_ = Translations$misskey$imageFrameEditor_$zh_CN.internal(_root);
 	@override late final Translations$misskey$compression_$zh_CN compression_ = Translations$misskey$compression_$zh_CN.internal(_root);

@@ -7,21 +7,21 @@ part 'broadcast.g.dart';
 sealed class Broadcast;
 
 @Freezed(toJson: false)
-class const EmojiAdded({@override required final Emoji emoji})
+class const EmojiAdded({required final Emoji emoji})
     with _$EmojiAdded
     implements Broadcast {
   factory fromJson(Map<String, Object?> json) => _$EmojiAddedFromJson(json);
 }
 
 @Freezed(toJson: false)
-class const EmojiUpdated({@override required final List<Emoji> emojis})
+class const EmojiUpdated({required final List<Emoji> emojis})
     with _$EmojiUpdated
     implements Broadcast {
   factory fromJson(Map<String, Object?> json) => _$EmojiUpdatedFromJson(json);
 }
 
 @Freezed(toJson: false)
-class const EmojiDeleted({@override required final List<Emoji> emojis})
+class const EmojiDeleted({required final List<Emoji> emojis})
     with _$EmojiDeleted
     implements Broadcast {
   factory fromJson(Map<String, Object?> json) => _$EmojiDeletedFromJson(json);
@@ -29,7 +29,7 @@ class const EmojiDeleted({@override required final List<Emoji> emojis})
 
 @Freezed(toJson: false)
 class const AnnouncementCreated({
-  @override required final AnnouncementsResponse announcement,
+  required final AnnouncementsResponse announcement,
 }) with _$AnnouncementCreated implements Broadcast {
   factory fromJson(Map<String, Object?> json) =>
       _$AnnouncementCreatedFromJson(json);

@@ -1116,6 +1116,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Вы под аккаунтом бота!';
 	@override String get tools => 'Инструменты';
 	@override String get cannotLoad => 'Не удалось загрузить';
+	@override String get cannotPreview => 'Предварительный просмотр недоступен';
 	@override String get numberOfProfileView => 'Количество профилей для просмотра';
 	@override String get like => 'Нравится!';
 	@override String get unlike => 'Отменить «нравится»';

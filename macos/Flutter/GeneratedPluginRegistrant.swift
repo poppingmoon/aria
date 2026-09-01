@@ -12,7 +12,7 @@ import audioplayers_darwin
 import connectivity_plus
 import device_info_plus
 import dynamic_color
-import file_picker
+import file_picker_darwin
 import flutter_image_compress_macos
 import flutter_inappwebview_macos
 import flutter_local_notifications

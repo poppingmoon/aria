@@ -1106,6 +1106,7 @@ class _Translations$misskey$tr_TR extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Şu anda bot olarak oturum açmış durumdasınız.';
 	@override String get tools => 'Araçlar';
 	@override String get cannotLoad => 'Yüklenemiyor';
+	@override String get cannotPreview => 'Önizleme yapılamadı';
 	@override String get numberOfProfileView => 'Profil görüntülemeleri';
 	@override String get like => 'Beğen';
 	@override String get unlike => 'Beğenme';
