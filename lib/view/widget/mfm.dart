@@ -329,10 +329,7 @@ class const _SimpleMfm({
     MfmConfig config,
     List<MfmNode> nodes,
   ) {
-    return [
-      for (final node in nodes)
-        if (_buildNode(context, config, node) case final span?) span,
-    ];
+    return [for (final node in nodes) ?_buildNode(context, config, node)];
   }
 
   InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
@@ -563,15 +560,12 @@ class const _Mfm({
     MfmConfig config,
     List<MfmNode> nodes,
   ) {
-    return [
-      for (final node in nodes)
-        if (_buildNode(context, config, node) case final span?) span,
-    ];
+    return [for (final node in nodes) ?_buildNode(context, config, node)];
   }
 
   InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
     switch (node) {
-      case MfmText(:final text):
+      case MfmText(:final text) when text != '\u200B':
         return _buildLinkSpan(
           linkId: config.linkId,
           text: !config.disableNyaize && shouldNyaize ? nyaize(text) : text,
