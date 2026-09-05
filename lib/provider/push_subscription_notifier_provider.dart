@@ -40,14 +40,13 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
   Future<void> unsubscribe() async {
     final endpoint = state;
     if (endpoint == null) return;
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      await UnifiedPush.unregister(account.toString());
-    }
     final isProxy = ref.read(sharedPreferencesProvider).getBool(_isProxyKey);
     final keySet = await ref.read(
       webPushKeySetNotifierProvider(account).future,
     );
-    if (isProxy ?? keySet == null) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await UnifiedPush.unregister(account.toString());
+    } else if (isProxy ?? keySet == null) {
       await ref.read(dioProvider).delete<void>(endpoint);
     }
     await ref
