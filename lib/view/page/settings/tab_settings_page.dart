@@ -56,7 +56,7 @@ class const TabSettingsPage({super.key, final String? tabId})
     if (!ref.context.mounted || roles == null) {
       return null;
     }
-    return showRadioDialog(
+    return await showRadioDialog(
       ref.context,
       title: Text(t.misskey.role),
       values: roles,
@@ -77,7 +77,7 @@ class const TabSettingsPage({super.key, final String? tabId})
     if (!ref.context.mounted || lists == null) {
       return null;
     }
-    return showRadioDialog(
+    return await showRadioDialog(
       ref.context,
       title: Text(t.misskey.selectList),
       values: lists,
@@ -98,7 +98,7 @@ class const TabSettingsPage({super.key, final String? tabId})
     if (!ref.context.mounted || antennas == null) {
       return null;
     }
-    return showRadioDialog(
+    return await showRadioDialog(
       ref.context,
       title: Text(t.misskey.selectAntenna),
       values: antennas,

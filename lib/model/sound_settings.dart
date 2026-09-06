@@ -99,7 +99,7 @@ class const SoundSettings({
     },
     sounds: switch (json['sounds']) {
       final Map<String, dynamic> sounds => {
-        for (final MapEntry(:key, value: Map<String, dynamic> value)
+        for (final MapEntry(:key, :Map<String, dynamic> value)
             in sounds.entries)
           ?_$OperationTypeEnumMap.entries
               .firstWhereOrNull((e) => e.value == key)

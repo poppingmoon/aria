@@ -21,10 +21,7 @@ class const SummalyRepository(final Dio dio) {
     final response = await dio.getUri<Map<String, dynamic>>(
       serverUrl.replace(
         pathSegments: ['url'],
-        queryParameters: {
-          'url': replacedUrl.toString(),
-          if (lang != null) 'lang': lang,
-        },
+        queryParameters: {'url': replacedUrl.toString(), 'lang': ?lang},
       ),
     );
 

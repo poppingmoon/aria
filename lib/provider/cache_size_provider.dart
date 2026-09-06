@@ -5,7 +5,7 @@ part 'cache_size_provider.g.dart';
 
 @riverpod
 FutureOr<int> cacheSize(Ref ref) async {
-  return (await getApplicationCacheDirectory())
+  return await (await getApplicationCacheDirectory())
       .list(recursive: true)
       .fold<int>(0, (acc, entity) => acc + entity.statSync().size);
 }

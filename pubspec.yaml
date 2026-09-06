@@ -168,7 +168,7 @@ dev_dependencies:
       ref: 4bdb3ec9009549d5fa4a591b70482af4563bcbbd
       path: packages/isar_community_generator
   json_serializable: ^6.14.1
-  lint: ^2.8.0
+  lint: ^2.14.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^4.0.9
   slang_build_runner: ^4.19.0

@@ -228,7 +228,7 @@ class const _ChatMessagePreview({
                           child: Mfm(
                             account: account,
                             text: [
-                              if (message.text case final text?) text,
+                              ?message.text,
                               if (message.file case final file?)
                                 '(${file.name})',
                             ].join(' '),

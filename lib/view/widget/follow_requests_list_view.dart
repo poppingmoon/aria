@@ -143,7 +143,9 @@ class const FollowRequestsListView({super.key, required final Account account})
       onRefresh: () async {
         ref.invalidate(webSocketChannelProvider(account));
         nextRequests.value = [];
-        return ref.refresh(followRequestsNotifierProvider(account).future);
+        return await ref.refresh(
+          followRequestsNotifierProvider(account).future,
+        );
       },
       child: Center(
         child: Stack(

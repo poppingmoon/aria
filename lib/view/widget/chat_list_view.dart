@@ -203,7 +203,7 @@ class const ChatListView({
           (_, _) => const SizedBox.shrink(),
           duration: Duration.zero,
         );
-        return ref.refresh(
+        return await ref.refresh(
           chatMessagesNotifierProvider(
             account,
             userId: userId,

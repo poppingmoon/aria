@@ -51,7 +51,7 @@ class const CatAvatar({
       Future<void> callback(AnimationStatus status) async {
         if (status == AnimationStatus.completed) {
           if (loopAnimation.value) {
-            unawaited(controller.forward(from: 0.0));
+            controller.forward(from: 0.0);
             if (enableHapticFeedback) {
               await Future<void>.delayed(const Duration(milliseconds: 550));
               await HapticFeedback.lightImpact();

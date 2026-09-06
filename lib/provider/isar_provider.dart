@@ -14,7 +14,7 @@ part 'isar_provider.g.dart';
 FutureOr<Isar> isar(Ref ref) async {
   final directory = await getApplicationSupportDirectory();
 
-  return Isar.open([
+  return await Isar.open([
     AiscriptStorageItemSchema,
     CacheObjectSchema,
     NoteDraftSchema,

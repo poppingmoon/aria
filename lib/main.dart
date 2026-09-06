@@ -875,7 +875,7 @@ class const Aria({super.key}) extends HookConsumerWidget {
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      scrollBehavior: _AppScrollBehavior(),
+      scrollBehavior: const _AppScrollBehavior(),
       shortcuts: {
         ...WidgetsApp.defaultShortcuts,
         darkModeActivator: VoidCallbackIntent(() {
@@ -897,7 +897,7 @@ class const Aria({super.key}) extends HookConsumerWidget {
   }
 }
 
-class _AppScrollBehavior extends MaterialScrollBehavior {
+class const _AppScrollBehavior() extends MaterialScrollBehavior {
   @override
   Widget buildScrollbar(
     BuildContext context,

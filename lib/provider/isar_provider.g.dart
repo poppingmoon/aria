@@ -40,4 +40,4 @@ final class IsarProvider
   }
 }
 
-String _$isarHash() => r'8bc554859f437bba0b43d8a930e92bf1dbaac60c';
+String _$isarHash() => r'6c01f84c09fa37eef4be8b22392a4124d8076d91';

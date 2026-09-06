@@ -312,7 +312,7 @@ class PostNotifier extends _$PostNotifier {
     final remoteUrl = remoteNote.url ?? remoteNote.uri;
     if (account.host == remoteNote.user.host && remoteUrl != null) {
       final remoteNoteId = remoteUrl.pathSegments.last;
-      return ref.read(noteNotifierProvider(account, remoteNoteId)) ??
+      return await ref.read(noteNotifierProvider(account, remoteNoteId)) ??
           await ref
               .read(notesNotifierProvider(account).notifier)
               .show(remoteNoteId);

@@ -48,4 +48,4 @@ final class RiverpodStorageProvider
   }
 }
 
-String _$riverpodStorageHash() => r'2cd4f25a8c97a3de02c057bbf5ad8130800ab263';
+String _$riverpodStorageHash() => r'f5c1b682e494f93d2910f6f8db981d8869722687';
