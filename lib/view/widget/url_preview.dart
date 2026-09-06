@@ -32,7 +32,8 @@ class const UrlPreview({
   String? _normalizeActivityPub(Uri activityPub, Uri? url) {
     return switch (activityPub) {
       Uri(
-        pathSegments: ['tags', ...] ||
+        pathSegments: ['ap', 'users', _, 'collections', _] ||
+            ['tags', ...] ||
             ['users', _, 'statuses', _, 'references'],
       ) =>
         null,
