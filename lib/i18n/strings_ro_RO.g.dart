@@ -16,7 +16,7 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsRoRo({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.roRo,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsRoRo extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ro-RO>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsRoRo _root = this; // ignore: unused_field
 
@@ -1090,6 +1091,7 @@ class _Translations$misskey$ro_RO extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Conectat în prezent ca bot';
 	@override String get tools => 'Unelte';
 	@override String get cannotLoad => 'Nu se poate încărca';
+	@override String get cannotPreview => 'Nu se poate previzualiza';
 	@override String get numberOfProfileView => 'Numărul de vizualizări ale profilului';
 	@override String get like => 'Îmi place!';
 	@override String get unlike => 'Îmi displace';

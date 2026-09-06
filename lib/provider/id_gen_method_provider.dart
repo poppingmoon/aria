@@ -1,8 +1,8 @@
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../model/account.dart';
-import '../../model/id.dart';
+import '../model/account.dart';
+import '../model/id.dart';
 import 'api/i_notifier_provider.dart';
 import 'api/misskey_provider.dart';
 import 'shared_preferences_provider.dart';

@@ -16,7 +16,7 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsArSa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.arSa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsArSa extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ar-SA>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsArSa _root = this; // ignore: unused_field
 
@@ -970,6 +971,7 @@ class _Translations$misskey$ar_SA extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'والج كآلي';
 	@override String get tools => 'أدوات';
 	@override String get cannotLoad => 'تعذر التحميل';
+	@override String get cannotPreview => 'تتعذر المعاينة';
 	@override String get numberOfProfileView => 'مشاهدات الملف الشخصي';
 	@override String get like => 'أعجبني';
 	@override String get unlike => 'ألغِ الإعجاب';

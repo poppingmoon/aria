@@ -31,7 +31,7 @@ enum TagType(final String tag) {
   emoji(':'),
   mfmFn(r'$['),
   mention('@'),
-  hashtag('#');
+  hashtag('#'),
 }
 
 class const MfmKeyboard({

@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../model/summaly_result.dart';
+import '../model/summaly_result.dart';
 import 'server_url_notifier_provider.dart';
 import 'summaly_repository_provider.dart';
 

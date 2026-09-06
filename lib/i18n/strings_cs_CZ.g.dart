@@ -16,7 +16,7 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsCsCz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.csCz,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsCsCz extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <cs-CZ>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsCsCz _root = this; // ignore: unused_field
 
@@ -1052,6 +1053,7 @@ class _Translations$misskey$cs_CZ extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Právě jste přihlášen jako bot';
 	@override String get tools => 'Nástroje';
 	@override String get cannotLoad => 'Načtení se nezdařilo';
+	@override String get cannotPreview => 'Náhled se nezdařil';
 	@override String get numberOfProfileView => 'Počet zobrazení profilu';
 	@override String get like => 'To se mi líbí';
 	@override String get unlike => 'Už se mi to nelíbí';

@@ -50,7 +50,7 @@ Future<AiScript> createAiScript(
   }
   final updateCounts = <String, int>{};
 
-  return AiScript.newInstance(
+  return await AiScript.newInstance(
     read: (prompt) async {
       final result = await showTextFieldDialog(
         ref.context,

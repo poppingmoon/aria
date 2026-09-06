@@ -16,7 +16,7 @@ class TranslationsIdId extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsIdId({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.idId,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsIdId extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <id-ID>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsIdId _root = this; // ignore: unused_field
 
@@ -1300,6 +1301,7 @@ class _Translations$misskey$id_ID extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Sedang login sebagai bot';
 	@override String get tools => 'Alat';
 	@override String get cannotLoad => 'Tidak dapat memuat';
+	@override String get cannotPreview => 'Tidak dapat dipratinjau';
 	@override String get numberOfProfileView => 'tayang profil';
 	@override String get like => 'Suka';
 	@override String get unlike => 'Tidak Suka';

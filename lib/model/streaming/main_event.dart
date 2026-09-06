@@ -7,45 +7,41 @@ part 'main_event.g.dart';
 sealed class MainEvent;
 
 @freezed
-class const Notification(@override final INotificationsResponse notification)
+class const Notification(final INotificationsResponse notification)
     with _$Notification
     implements MainEvent;
 
 @freezed
-class const Mention(@override final Note note)
-    with _$Mention
-    implements MainEvent;
+class const Mention(final Note note) with _$Mention implements MainEvent;
 
 @freezed
-class const MeUpdated(@override final MeDetailed i)
-    with _$MeUpdated
-    implements MainEvent;
+class const MeUpdated(final MeDetailed i) with _$MeUpdated implements MainEvent;
 
 @Freezed(toJson: false)
 class const UrlUploadFinished({
-  @override final String? marker,
-  @override required final DriveFile file,
+  final String? marker,
+  required final DriveFile file,
 }) with _$UrlUploadFinished implements MainEvent {
   factory fromJson(Map<String, Object?> json) =>
       _$UrlUploadFinishedFromJson(json);
 }
 
 @freezed
-class const UnreadNotification(
-  @override final INotificationsResponse notification,
-) with _$UnreadNotification implements MainEvent;
+class const UnreadNotification(final INotificationsResponse notification)
+    with _$UnreadNotification
+    implements MainEvent;
 
 @freezed
-class const NewChatMessage(@override final ChatMessage message)
+class const NewChatMessage(final ChatMessage message)
     with _$NewChatMessage
     implements MainEvent;
 
 @freezed
-class const ReceiveFollowRequest(@override final UserLite user)
+class const ReceiveFollowRequest(final UserLite user)
     with _$ReceiveFollowRequest
     implements MainEvent;
 
 @freezed
-class const AnnouncementCreated(
-  @override final AnnouncementsResponse announcement,
-) with _$AnnouncementCreated implements MainEvent;
+class const AnnouncementCreated(final AnnouncementsResponse announcement)
+    with _$AnnouncementCreated
+    implements MainEvent;

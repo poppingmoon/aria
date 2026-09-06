@@ -5,10 +5,8 @@ part 'list_settings.freezed.dart';
 part 'list_settings.g.dart';
 
 @Freezed(toJson: false)
-class const ListSettings({
-  @override final String? name,
-  @override final bool? isPublic,
-}) with _$ListSettings {
+class const ListSettings({final String? name, final bool? isPublic})
+    with _$ListSettings {
   factory fromJson(Map<String, Object?> json) => _$ListSettingsFromJson(json);
 
   factory fromUsersList(UsersList list) {

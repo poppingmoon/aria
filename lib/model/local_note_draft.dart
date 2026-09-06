@@ -7,9 +7,9 @@ part 'local_note_draft.freezed.dart';
 
 @freezed
 class const LocalNoteDraft({
-  @override required final int id,
-  @override required final Account account,
-  @override final String? tabId,
-  @override required final NoteDraft draft,
-  @override required final bool isPinned,
+  required final int id,
+  required final Account account,
+  final String? tabId,
+  required final NoteDraft draft,
+  required final bool isPinned,
 }) with _$LocalNoteDraft;

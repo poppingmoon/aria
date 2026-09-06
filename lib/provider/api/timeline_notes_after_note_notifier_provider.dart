@@ -206,11 +206,11 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
             TabType.mention ||
             TabType.direct ||
             TabType.custom) {
-      return _fetchNotes(sinceId: sinceId);
+      return await _fetchNotes(sinceId: sinceId);
     }
     final id = Id.tryParse(sinceId);
     if (id == null) {
-      return _fetchNotes(sinceId: sinceId);
+      return await _fetchNotes(sinceId: sinceId);
     }
     DateTime sinceDate = id.date.add(const Duration(milliseconds: 1));
     while (sinceDate.isBefore(DateTime.now())) {

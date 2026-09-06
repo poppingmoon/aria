@@ -3,11 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../../i18n/strings.g.dart';
-import '../../../model/account.dart';
-import '../../../provider/api/my_gallery_posts_notifier_provider.dart';
+import '../../i18n/strings.g.dart';
+import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
+import '../../provider/api/my_gallery_posts_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/error_message.dart';
 

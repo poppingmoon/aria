@@ -16,7 +16,7 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsKoKr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.koKr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsKoKr extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ko-KR>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsKoKr _root = this; // ignore: unused_field
 
@@ -1283,6 +1284,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => '봇 계정으로 로그인중';
 	@override String get tools => '도구';
 	@override String get cannotLoad => '불러오지 못했습니다';
+	@override String get cannotPreview => '미리 볼 수 없음';
 	@override String get numberOfProfileView => '프로필 뷰 수';
 	@override String get like => '좋아요!';
 	@override String get unlike => '좋아요 취소';
@@ -1664,6 +1666,7 @@ class Translations$misskey$ko_KR extends Translations$misskey$en_US {
 	@override String get prepend => '맨앞에 추가';
 	@override String get urlPreviewSensitiveList => '썸네일 표시 제한 URL';
 	@override String get urlPreviewSensitiveListDescription => '공백으로 구분하면 AND 지정으로 되고, 줄내림으로 구분하면 OR 지정으로 됩니다. 슬래시로 감싸면 정규 표현으로 됩니다. 일치한 경우에 썸네일이 표시되지 않게 됩니다.';
+	@override String get pixelatedZoom => '픽셀 아트 확대 모드';
 	@override late final Translations$misskey$imageEditing_$ko_KR imageEditing_ = Translations$misskey$imageEditing_$ko_KR.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ko_KR imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ko_KR.internal(_root);
 	@override late final Translations$misskey$compression_$ko_KR compression_ = Translations$misskey$compression_$ko_KR.internal(_root);

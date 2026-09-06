@@ -99,7 +99,7 @@ class const AvatarDecorationsPage({super.key, required final Account account})
                               .read(iNotifierProvider(account).notifier)
                               .setAvatarDecorations([
                                 ...i.avatarDecorations.sublist(0, index),
-                                if (decoration != null) decoration,
+                                ?decoration,
                                 ...i.avatarDecorations.sublist(index + 1),
                               ]),
                         );

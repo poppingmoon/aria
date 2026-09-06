@@ -16,7 +16,7 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsJaJp({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.jaJp,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsJaJp extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ja-JP>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsJaJp _root = this; // ignore: unused_field
 
@@ -1355,6 +1356,7 @@ class Translations$misskey$ja_JP extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Botアカウントでログイン中';
 	@override String get tools => 'ツール';
 	@override String get cannotLoad => '読み込めません';
+	@override String get cannotPreview => 'プレビューできません';
 	@override String get numberOfProfileView => 'プロフィール表示回数';
 	@override String get like => 'いいね！';
 	@override String get unlike => 'いいねを解除';
@@ -1736,6 +1738,7 @@ class Translations$misskey$ja_JP extends Translations$misskey$en_US {
 	@override String get prepend => '先頭に追加';
 	@override String get urlPreviewSensitiveList => 'サムネイルの表示を制限するURL';
 	@override String get urlPreviewSensitiveListDescription => 'スペースで区切るとAND指定になり、改行で区切るとOR指定になります。スラッシュで囲むと正規表現になります。一致した場合、サムネイルが表示されなくなります。';
+	@override String get pixelatedZoom => 'ピクセルアート拡大モード';
 	@override late final Translations$misskey$imageEditing_$ja_JP imageEditing_ = Translations$misskey$imageEditing_$ja_JP.internal(_root);
 	@override late final Translations$misskey$imageFrameEditor_$ja_JP imageFrameEditor_ = Translations$misskey$imageFrameEditor_$ja_JP.internal(_root);
 	@override late final Translations$misskey$compression_$ja_JP compression_ = Translations$misskey$compression_$ja_JP.internal(_root);

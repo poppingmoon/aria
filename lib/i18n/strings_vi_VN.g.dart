@@ -16,7 +16,7 @@ class TranslationsViVn extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsViVn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.viVn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsViVn extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <vi-VN>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsViVn _root = this; // ignore: unused_field
 
@@ -1102,6 +1103,7 @@ class _Translations$misskey$vi_VN extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Đang đăng nhập bằng tài khoản Bot';
 	@override String get tools => 'Công Cụ';
 	@override String get cannotLoad => 'Không tải được';
+	@override String get cannotPreview => 'Không thể xem trước';
 	@override String get numberOfProfileView => 'Số lần mở hồ sơ';
 	@override String get like => 'Thích';
 	@override String get unlike => 'Bỏ lượt thích';

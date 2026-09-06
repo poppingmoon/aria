@@ -16,7 +16,7 @@ class TranslationsPtPt extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsPtPt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ptPt,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsPtPt extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <pt-PT>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsPtPt _root = this; // ignore: unused_field
 
@@ -1159,6 +1160,7 @@ class _Translations$misskey$pt_PT extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Atualmente conectado como bot';
 	@override String get tools => 'Ferramentas';
 	@override String get cannotLoad => 'Não foi possível carregar';
+	@override String get cannotPreview => 'Não foi possível carregar prévia';
 	@override String get numberOfProfileView => 'Visualizações do perfil';
 	@override String get like => 'Curtir';
 	@override String get unlike => 'Remover curtida';

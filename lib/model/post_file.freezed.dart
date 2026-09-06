@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocalPostFile {
 
-@override File get file;@override String get name;@override bool get isSensitive;@override String? get comment;@override String? get type;@override bool get uploading;
+
 /// Create a copy of LocalPostFile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $LocalPostFileCopyWith<LocalPostFile> get copyWith => _$LocalPostFileCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalPostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type)&&(identical(other.uploading, uploading) || other.uploading == uploading));
+  final _this = this as LocalPostFile;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalPostFile&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.isSensitive, _this.isSensitive) || other.isSensitive == _this.isSensitive)&&(identical(other.comment, _this.comment) || other.comment == _this.comment)&&(identical(other.type, _this.type) || other.type == _this.type)&&(identical(other.uploading, _this.uploading) || other.uploading == _this.uploading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,name,isSensitive,comment,type,uploading);
+int get hashCode {
+  final _this = this as LocalPostFile;
+  return Object.hash(runtimeType,_this.file,_this.name,_this.isSensitive,_this.comment,_this.type,_this.uploading);
+}
 
 @override
 String toString() {
-  return 'LocalPostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type, uploading: $uploading)';
+  final _this = this as LocalPostFile;
+  return 'LocalPostFile(file: ${_this.file}, name: ${_this.name}, isSensitive: ${_this.isSensitive}, comment: ${_this.comment}, type: ${_this.type}, uploading: ${_this.uploading})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $LocalPostFileCopyWith<$Res>  {
   factory $LocalPostFileCopyWith(LocalPostFile value, $Res Function(LocalPostFile) _then) = _$LocalPostFileCopyWithImpl;
 @useResult
 $Res call({
-@override File file,@override String name,@override bool isSensitive,@override String? comment,@override String? type,@override bool uploading
+ File file,@override String name,@override bool isSensitive,@override String? comment,@override String? type, bool uploading
 });
 
 
@@ -156,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type, @override  bool uploading)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type,  bool uploading)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LocalPostFile() when $default != null:
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type,_that.uploading);case _:
@@ -177,7 +182,7 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type, @override  bool uploading)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type,  bool uploading)  $default,) {final _that = this;
 switch (_that) {
 case _LocalPostFile():
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type,_that.uploading);case _:
@@ -197,7 +202,7 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type, @override  bool uploading)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( File file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type,  bool uploading)?  $default,) {final _that = this;
 switch (_that) {
 case _LocalPostFile() when $default != null:
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type,_that.uploading);case _:
@@ -212,15 +217,15 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 
 
 class _LocalPostFile extends LocalPostFile {
-  const _LocalPostFile({@override required this.file, @override required this.name, @override this.isSensitive = false, @override this.comment, @override this.type, @override this.uploading = false}): super(file: file, name: name, isSensitive: isSensitive, comment: comment, type: type, uploading: uploading);
+  const _LocalPostFile({required this.file, @override required this.name, @override this.isSensitive = false, @override this.comment, @override this.type, this.uploading = false}): super(file: file, name: name, isSensitive: isSensitive, comment: comment, type: type, uploading: uploading);
   
 
-@override@override final  File file;
+@override final  File file;
 @override@override final  String name;
 @override@override final  bool isSensitive;
 @override@override final  String? comment;
 @override@override final  String? type;
-@override@override final  bool uploading;
+@override final  bool uploading;
 
 /// Create a copy of LocalPostFile
 /// with the given fields replaced by the non-null parameter values.
@@ -232,16 +237,18 @@ _$LocalPostFileCopyWith<_LocalPostFile> get copyWith => __$LocalPostFileCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalPostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type)&&(identical(other.uploading, uploading) || other.uploading == uploading));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalPostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type)&&(identical(other.uploading, uploading) || other.uploading == uploading));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,name,isSensitive,comment,type,uploading);
+int get hashCode {
+    return Object.hash(runtimeType,file,name,isSensitive,comment,type,uploading);
+}
 
 @override
 String toString() {
-  return 'LocalPostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type, uploading: $uploading)';
+    return 'LocalPostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type, uploading: $uploading)';
 }
 
 
@@ -252,7 +259,7 @@ abstract mixin class _$LocalPostFileCopyWith<$Res> implements $LocalPostFileCopy
   factory _$LocalPostFileCopyWith(_LocalPostFile value, $Res Function(_LocalPostFile) _then) = __$LocalPostFileCopyWithImpl;
 @override @useResult
 $Res call({
-@override File file,@override String name,@override bool isSensitive,@override String? comment,@override String? type,@override bool uploading
+ File file,@override String name,@override bool isSensitive,@override String? comment,@override String? type, bool uploading
 });
 
 
@@ -287,7 +294,7 @@ as bool,
 /// @nodoc
 mixin _$DrivePostFile {
 
-@override DriveFile get file;@override String get name;@override bool get isSensitive;@override String? get comment;@override String? get type;
+
 /// Create a copy of DrivePostFile
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -298,16 +305,21 @@ $DrivePostFileCopyWith<DrivePostFile> get copyWith => _$DrivePostFileCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DrivePostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type));
+  final _this = this as DrivePostFile;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DrivePostFile&&(identical(other.file, _this.file) || other.file == _this.file)&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.isSensitive, _this.isSensitive) || other.isSensitive == _this.isSensitive)&&(identical(other.comment, _this.comment) || other.comment == _this.comment)&&(identical(other.type, _this.type) || other.type == _this.type));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,name,isSensitive,comment,type);
+int get hashCode {
+  final _this = this as DrivePostFile;
+  return Object.hash(runtimeType,_this.file,_this.name,_this.isSensitive,_this.comment,_this.type);
+}
 
 @override
 String toString() {
-  return 'DrivePostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type)';
+  final _this = this as DrivePostFile;
+  return 'DrivePostFile(file: ${_this.file}, name: ${_this.name}, isSensitive: ${_this.isSensitive}, comment: ${_this.comment}, type: ${_this.type})';
 }
 
 
@@ -318,7 +330,7 @@ abstract mixin class $DrivePostFileCopyWith<$Res>  {
   factory $DrivePostFileCopyWith(DrivePostFile value, $Res Function(DrivePostFile) _then) = _$DrivePostFileCopyWithImpl;
 @useResult
 $Res call({
-@override DriveFile file,@override String name,@override bool isSensitive,@override String? comment,@override String? type
+ DriveFile file,@override String name,@override bool isSensitive,@override String? comment,@override String? type
 });
 
 
@@ -436,7 +448,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _DrivePostFile() when $default != null:
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type);case _:
@@ -457,7 +469,7 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)  $default,) {final _that = this;
 switch (_that) {
 case _DrivePostFile():
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type);case _:
@@ -477,7 +489,7 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( DriveFile file, @override  String name, @override  bool isSensitive, @override  String? comment, @override  String? type)?  $default,) {final _that = this;
 switch (_that) {
 case _DrivePostFile() when $default != null:
 return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type);case _:
@@ -492,10 +504,10 @@ return $default(_that.file,_that.name,_that.isSensitive,_that.comment,_that.type
 
 
 class _DrivePostFile extends DrivePostFile {
-  const _DrivePostFile({@override required this.file, @override required this.name, @override this.isSensitive = false, @override this.comment, @override this.type}): super(file: file, name: name, isSensitive: isSensitive, comment: comment, type: type);
+  const _DrivePostFile({required this.file, @override required this.name, @override this.isSensitive = false, @override this.comment, @override this.type}): super(file: file, name: name, isSensitive: isSensitive, comment: comment, type: type);
   
 
-@override@override final  DriveFile file;
+@override final  DriveFile file;
 @override@override final  String name;
 @override@override final  bool isSensitive;
 @override@override final  String? comment;
@@ -511,16 +523,18 @@ _$DrivePostFileCopyWith<_DrivePostFile> get copyWith => __$DrivePostFileCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DrivePostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _DrivePostFile&&(identical(other.file, file) || other.file == file)&&(identical(other.name, name) || other.name == name)&&(identical(other.isSensitive, isSensitive) || other.isSensitive == isSensitive)&&(identical(other.comment, comment) || other.comment == comment)&&(identical(other.type, type) || other.type == type));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,file,name,isSensitive,comment,type);
+int get hashCode {
+    return Object.hash(runtimeType,file,name,isSensitive,comment,type);
+}
 
 @override
 String toString() {
-  return 'DrivePostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type)';
+    return 'DrivePostFile(file: $file, name: $name, isSensitive: $isSensitive, comment: $comment, type: $type)';
 }
 
 
@@ -531,7 +545,7 @@ abstract mixin class _$DrivePostFileCopyWith<$Res> implements $DrivePostFileCopy
   factory _$DrivePostFileCopyWith(_DrivePostFile value, $Res Function(_DrivePostFile) _then) = __$DrivePostFileCopyWithImpl;
 @override @useResult
 $Res call({
-@override DriveFile file,@override String name,@override bool isSensitive,@override String? comment,@override String? type
+ DriveFile file,@override String name,@override bool isSensitive,@override String? comment,@override String? type
 });
 
 

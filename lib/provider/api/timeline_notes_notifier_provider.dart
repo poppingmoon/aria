@@ -232,7 +232,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     if (response.isNotEmpty) {
       return response;
     }
-    return _fetchNotes(untilDate: sinceDate, limit: limit);
+    return await _fetchNotes(untilDate: sinceDate, limit: limit);
   }
 
   Future<void> loadMore({bool skipError = false}) async {

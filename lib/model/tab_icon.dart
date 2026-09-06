@@ -22,7 +22,7 @@ sealed class TabIcon {
 
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
-class const MaterialIcon({@override required final int codePoint})
+class const MaterialIcon({required final int codePoint})
     with _$MaterialIcon
     implements TabIcon {
   factory fromJson(Map<String, Object?> json) => _$MaterialIconFromJson(json);
@@ -33,7 +33,7 @@ class const MaterialIcon({@override required final int codePoint})
 
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
-class const ImageIcon({@override required final String url})
+class const ImageIcon({required final String url})
     with _$ImageIcon
     implements TabIcon {
   factory fromJson(Map<String, Object?> json) => _$ImageIconFromJson(json);
@@ -44,7 +44,7 @@ class const ImageIcon({@override required final String url})
 
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
-class const EmojiIcon({@override required final String emoji})
+class const EmojiIcon({required final String emoji})
     with _$EmojiIcon
     implements TabIcon {
   factory fromJson(Map<String, Object?> json) => _$EmojiIconFromJson(json);

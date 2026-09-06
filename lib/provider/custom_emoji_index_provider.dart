@@ -33,7 +33,7 @@ Map<String, Set<String>> _buildCustomEmojiIndex(
 @Riverpod(keepAlive: true)
 Future<Map<String, Set<String>>> customEmojiIndex(Ref ref, String host) async {
   final emojis = await ref.watch(emojisNotifierProvider(host).future);
-  return compute(
+  return await compute(
     _buildCustomEmojiIndex,
     emojis.values.map((emoji) => (name: emoji.name, aliases: emoji.aliases)),
   );

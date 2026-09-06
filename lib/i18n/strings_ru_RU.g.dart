@@ -16,7 +16,7 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsRuRu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ruRu,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsRuRu extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ru-RU>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsRuRu _root = this; // ignore: unused_field
 
@@ -1116,6 +1117,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Вы под аккаунтом бота!';
 	@override String get tools => 'Инструменты';
 	@override String get cannotLoad => 'Не удалось загрузить';
+	@override String get cannotPreview => 'Предварительный просмотр недоступен';
 	@override String get numberOfProfileView => 'Количество профилей для просмотра';
 	@override String get like => 'Нравится!';
 	@override String get unlike => 'Отменить «нравится»';

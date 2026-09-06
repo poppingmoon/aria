@@ -11,7 +11,7 @@ part 'riverpod_storage_provider.g.dart';
 @Riverpod(keepAlive: true)
 Future<Storage<String, String>> riverpodStorage(Ref ref) async {
   final isar = await ref.watch(isarProvider.future);
-  return _JsonIsarStorage.open(isar);
+  return await _JsonIsarStorage.open(isar);
 }
 
 final class _JsonIsarStorage._(final Isar isar)

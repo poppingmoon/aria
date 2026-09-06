@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Reacted {
 
-@override String get reaction;@override ReactedEmoji? get emoji;@override String get userId;
+
 /// Create a copy of Reacted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,16 +27,21 @@ $ReactedCopyWith<Reacted> get copyWith => _$ReactedCopyWithImpl<Reacted>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Reacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.userId, userId) || other.userId == userId));
+  final _this = this as Reacted;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Reacted&&(identical(other.reaction, _this.reaction) || other.reaction == _this.reaction)&&(identical(other.emoji, _this.emoji) || other.emoji == _this.emoji)&&(identical(other.userId, _this.userId) || other.userId == _this.userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,emoji,userId);
+int get hashCode {
+  final _this = this as Reacted;
+  return Object.hash(runtimeType,_this.reaction,_this.emoji,_this.userId);
+}
 
 @override
 String toString() {
-  return 'Reacted(reaction: $reaction, emoji: $emoji, userId: $userId)';
+  final _this = this as Reacted;
+  return 'Reacted(reaction: ${_this.reaction}, emoji: ${_this.emoji}, userId: ${_this.userId})';
 }
 
 
@@ -47,7 +52,7 @@ abstract mixin class $ReactedCopyWith<$Res>  {
   factory $ReactedCopyWith(Reacted value, $Res Function(Reacted) _then) = _$ReactedCopyWithImpl;
 @useResult
 $Res call({
-@override String reaction,@override ReactedEmoji? emoji,@override String userId
+ String reaction, ReactedEmoji? emoji, String userId
 });
 
 
@@ -166,7 +171,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  ReactedEmoji? emoji,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Reacted() when $default != null:
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -187,7 +192,7 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  ReactedEmoji? emoji,  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _Reacted():
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -207,7 +212,7 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  ReactedEmoji? emoji, @override  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  ReactedEmoji? emoji,  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _Reacted() when $default != null:
 return $default(_that.reaction,_that.emoji,_that.userId);case _:
@@ -222,12 +227,12 @@ return $default(_that.reaction,_that.emoji,_that.userId);case _:
 @JsonSerializable(createToJson: false)
 
 class _Reacted extends Reacted {
-  const _Reacted({@override required this.reaction, @override this.emoji, @override required this.userId}): super(reaction: reaction, emoji: emoji, userId: userId);
+  const _Reacted({required this.reaction, this.emoji, required this.userId}): super(reaction: reaction, emoji: emoji, userId: userId);
   factory _Reacted.fromJson(Map<String, dynamic> json) => _$ReactedFromJson(json);
 
-@override@override final  String reaction;
-@override@override final  ReactedEmoji? emoji;
-@override@override final  String userId;
+@override final  String reaction;
+@override final  ReactedEmoji? emoji;
+@override final  String userId;
 
 /// Create a copy of Reacted
 /// with the given fields replaced by the non-null parameter values.
@@ -239,16 +244,18 @@ _$ReactedCopyWith<_Reacted> get copyWith => __$ReactedCopyWithImpl<_Reacted>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Reacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.userId, userId) || other.userId == userId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Reacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.emoji, emoji) || other.emoji == emoji)&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,emoji,userId);
+int get hashCode {
+    return Object.hash(runtimeType,reaction,emoji,userId);
+}
 
 @override
 String toString() {
-  return 'Reacted(reaction: $reaction, emoji: $emoji, userId: $userId)';
+    return 'Reacted(reaction: $reaction, emoji: $emoji, userId: $userId)';
 }
 
 
@@ -259,7 +266,7 @@ abstract mixin class _$ReactedCopyWith<$Res> implements $ReactedCopyWith<$Res> {
   factory _$ReactedCopyWith(_Reacted value, $Res Function(_Reacted) _then) = __$ReactedCopyWithImpl;
 @override @useResult
 $Res call({
-@override String reaction,@override ReactedEmoji? emoji,@override String userId
+ String reaction, ReactedEmoji? emoji, String userId
 });
 
 
@@ -304,7 +311,7 @@ $ReactedEmojiCopyWith<$Res>? get emoji {
 /// @nodoc
 mixin _$Unreacted {
 
-@override String get reaction;@override String get userId;
+
 /// Create a copy of Unreacted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -315,16 +322,21 @@ $UnreactedCopyWith<Unreacted> get copyWith => _$UnreactedCopyWithImpl<Unreacted>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Unreacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.userId, userId) || other.userId == userId));
+  final _this = this as Unreacted;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Unreacted&&(identical(other.reaction, _this.reaction) || other.reaction == _this.reaction)&&(identical(other.userId, _this.userId) || other.userId == _this.userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,userId);
+int get hashCode {
+  final _this = this as Unreacted;
+  return Object.hash(runtimeType,_this.reaction,_this.userId);
+}
 
 @override
 String toString() {
-  return 'Unreacted(reaction: $reaction, userId: $userId)';
+  final _this = this as Unreacted;
+  return 'Unreacted(reaction: ${_this.reaction}, userId: ${_this.userId})';
 }
 
 
@@ -335,7 +347,7 @@ abstract mixin class $UnreactedCopyWith<$Res>  {
   factory $UnreactedCopyWith(Unreacted value, $Res Function(Unreacted) _then) = _$UnreactedCopyWithImpl;
 @useResult
 $Res call({
-@override String reaction,@override String userId
+ String reaction, String userId
 });
 
 
@@ -441,7 +453,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String reaction, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String reaction,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Unreacted() when $default != null:
 return $default(_that.reaction,_that.userId);case _:
@@ -462,7 +474,7 @@ return $default(_that.reaction,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String reaction, @override  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String reaction,  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _Unreacted():
 return $default(_that.reaction,_that.userId);case _:
@@ -482,7 +494,7 @@ return $default(_that.reaction,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String reaction, @override  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String reaction,  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _Unreacted() when $default != null:
 return $default(_that.reaction,_that.userId);case _:
@@ -497,11 +509,11 @@ return $default(_that.reaction,_that.userId);case _:
 @JsonSerializable(createToJson: false)
 
 class _Unreacted extends Unreacted {
-  const _Unreacted({@override required this.reaction, @override required this.userId}): super(reaction: reaction, userId: userId);
+  const _Unreacted({required this.reaction, required this.userId}): super(reaction: reaction, userId: userId);
   factory _Unreacted.fromJson(Map<String, dynamic> json) => _$UnreactedFromJson(json);
 
-@override@override final  String reaction;
-@override@override final  String userId;
+@override final  String reaction;
+@override final  String userId;
 
 /// Create a copy of Unreacted
 /// with the given fields replaced by the non-null parameter values.
@@ -513,16 +525,18 @@ _$UnreactedCopyWith<_Unreacted> get copyWith => __$UnreactedCopyWithImpl<_Unreac
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unreacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.userId, userId) || other.userId == userId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Unreacted&&(identical(other.reaction, reaction) || other.reaction == reaction)&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,reaction,userId);
+int get hashCode {
+    return Object.hash(runtimeType,reaction,userId);
+}
 
 @override
 String toString() {
-  return 'Unreacted(reaction: $reaction, userId: $userId)';
+    return 'Unreacted(reaction: $reaction, userId: $userId)';
 }
 
 
@@ -533,7 +547,7 @@ abstract mixin class _$UnreactedCopyWith<$Res> implements $UnreactedCopyWith<$Re
   factory _$UnreactedCopyWith(_Unreacted value, $Res Function(_Unreacted) _then) = __$UnreactedCopyWithImpl;
 @override @useResult
 $Res call({
-@override String reaction,@override String userId
+ String reaction, String userId
 });
 
 
@@ -565,7 +579,7 @@ as String,
 /// @nodoc
 mixin _$Deleted {
 
-@override DateTime get deletedAt;
+
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -576,16 +590,21 @@ $DeletedCopyWith<Deleted> get copyWith => _$DeletedCopyWithImpl<Deleted>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Deleted&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
+  final _this = this as Deleted;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Deleted&&(identical(other.deletedAt, _this.deletedAt) || other.deletedAt == _this.deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,deletedAt);
+int get hashCode {
+  final _this = this as Deleted;
+  return Object.hash(runtimeType,_this.deletedAt);
+}
 
 @override
 String toString() {
-  return 'Deleted(deletedAt: $deletedAt)';
+  final _this = this as Deleted;
+  return 'Deleted(deletedAt: ${_this.deletedAt})';
 }
 
 
@@ -596,7 +615,7 @@ abstract mixin class $DeletedCopyWith<$Res>  {
   factory $DeletedCopyWith(Deleted value, $Res Function(Deleted) _then) = _$DeletedCopyWithImpl;
 @useResult
 $Res call({
-@override DateTime deletedAt
+ DateTime deletedAt
 });
 
 
@@ -701,7 +720,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  DateTime deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( DateTime deletedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Deleted() when $default != null:
 return $default(_that.deletedAt);case _:
@@ -722,7 +741,7 @@ return $default(_that.deletedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  DateTime deletedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( DateTime deletedAt)  $default,) {final _that = this;
 switch (_that) {
 case _Deleted():
 return $default(_that.deletedAt);case _:
@@ -742,7 +761,7 @@ return $default(_that.deletedAt);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  DateTime deletedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( DateTime deletedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _Deleted() when $default != null:
 return $default(_that.deletedAt);case _:
@@ -757,10 +776,10 @@ return $default(_that.deletedAt);case _:
 @JsonSerializable(createToJson: false)
 
 class _Deleted extends Deleted {
-  const _Deleted({@override required this.deletedAt}): super(deletedAt: deletedAt);
+  const _Deleted({required this.deletedAt}): super(deletedAt: deletedAt);
   factory _Deleted.fromJson(Map<String, dynamic> json) => _$DeletedFromJson(json);
 
-@override@override final  DateTime deletedAt;
+@override final  DateTime deletedAt;
 
 /// Create a copy of Deleted
 /// with the given fields replaced by the non-null parameter values.
@@ -772,16 +791,18 @@ _$DeletedCopyWith<_Deleted> get copyWith => __$DeletedCopyWithImpl<_Deleted>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Deleted&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Deleted&&(identical(other.deletedAt, deletedAt) || other.deletedAt == deletedAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,deletedAt);
+int get hashCode {
+    return Object.hash(runtimeType,deletedAt);
+}
 
 @override
 String toString() {
-  return 'Deleted(deletedAt: $deletedAt)';
+    return 'Deleted(deletedAt: $deletedAt)';
 }
 
 
@@ -792,7 +813,7 @@ abstract mixin class _$DeletedCopyWith<$Res> implements $DeletedCopyWith<$Res> {
   factory _$DeletedCopyWith(_Deleted value, $Res Function(_Deleted) _then) = __$DeletedCopyWithImpl;
 @override @useResult
 $Res call({
-@override DateTime deletedAt
+ DateTime deletedAt
 });
 
 
@@ -823,7 +844,7 @@ as DateTime,
 /// @nodoc
 mixin _$PollVoted {
 
-@override int get choice;@override String get userId;
+
 /// Create a copy of PollVoted
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -834,16 +855,21 @@ $PollVotedCopyWith<PollVoted> get copyWith => _$PollVotedCopyWithImpl<PollVoted>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PollVoted&&(identical(other.choice, choice) || other.choice == choice)&&(identical(other.userId, userId) || other.userId == userId));
+  final _this = this as PollVoted;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PollVoted&&(identical(other.choice, _this.choice) || other.choice == _this.choice)&&(identical(other.userId, _this.userId) || other.userId == _this.userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,choice,userId);
+int get hashCode {
+  final _this = this as PollVoted;
+  return Object.hash(runtimeType,_this.choice,_this.userId);
+}
 
 @override
 String toString() {
-  return 'PollVoted(choice: $choice, userId: $userId)';
+  final _this = this as PollVoted;
+  return 'PollVoted(choice: ${_this.choice}, userId: ${_this.userId})';
 }
 
 
@@ -854,7 +880,7 @@ abstract mixin class $PollVotedCopyWith<$Res>  {
   factory $PollVotedCopyWith(PollVoted value, $Res Function(PollVoted) _then) = _$PollVotedCopyWithImpl;
 @useResult
 $Res call({
-@override int choice,@override String userId
+ int choice, String userId
 });
 
 
@@ -960,7 +986,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  int choice, @override  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int choice,  String userId)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PollVoted() when $default != null:
 return $default(_that.choice,_that.userId);case _:
@@ -981,7 +1007,7 @@ return $default(_that.choice,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  int choice, @override  String userId)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int choice,  String userId)  $default,) {final _that = this;
 switch (_that) {
 case _PollVoted():
 return $default(_that.choice,_that.userId);case _:
@@ -1001,7 +1027,7 @@ return $default(_that.choice,_that.userId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  int choice, @override  String userId)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int choice,  String userId)?  $default,) {final _that = this;
 switch (_that) {
 case _PollVoted() when $default != null:
 return $default(_that.choice,_that.userId);case _:
@@ -1016,11 +1042,11 @@ return $default(_that.choice,_that.userId);case _:
 @JsonSerializable(createToJson: false)
 
 class _PollVoted extends PollVoted {
-  const _PollVoted({@override required this.choice, @override required this.userId}): super(choice: choice, userId: userId);
+  const _PollVoted({required this.choice, required this.userId}): super(choice: choice, userId: userId);
   factory _PollVoted.fromJson(Map<String, dynamic> json) => _$PollVotedFromJson(json);
 
-@override@override final  int choice;
-@override@override final  String userId;
+@override final  int choice;
+@override final  String userId;
 
 /// Create a copy of PollVoted
 /// with the given fields replaced by the non-null parameter values.
@@ -1032,16 +1058,18 @@ _$PollVotedCopyWith<_PollVoted> get copyWith => __$PollVotedCopyWithImpl<_PollVo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PollVoted&&(identical(other.choice, choice) || other.choice == choice)&&(identical(other.userId, userId) || other.userId == userId));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _PollVoted&&(identical(other.choice, choice) || other.choice == choice)&&(identical(other.userId, userId) || other.userId == userId));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,choice,userId);
+int get hashCode {
+    return Object.hash(runtimeType,choice,userId);
+}
 
 @override
 String toString() {
-  return 'PollVoted(choice: $choice, userId: $userId)';
+    return 'PollVoted(choice: $choice, userId: $userId)';
 }
 
 
@@ -1052,7 +1080,7 @@ abstract mixin class _$PollVotedCopyWith<$Res> implements $PollVotedCopyWith<$Re
   factory _$PollVotedCopyWith(_PollVoted value, $Res Function(_PollVoted) _then) = __$PollVotedCopyWithImpl;
 @override @useResult
 $Res call({
-@override int choice,@override String userId
+ int choice, String userId
 });
 
 
@@ -1084,7 +1112,7 @@ as String,
 /// @nodoc
 mixin _$Updated {
 
-@override String? get cw;@override String? get text;@override Note? get note;
+
 /// Create a copy of Updated
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1095,16 +1123,21 @@ $UpdatedCopyWith<Updated> get copyWith => _$UpdatedCopyWithImpl<Updated>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Updated&&(identical(other.cw, cw) || other.cw == cw)&&(identical(other.text, text) || other.text == text)&&(identical(other.note, note) || other.note == note));
+  final _this = this as Updated;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Updated&&(identical(other.cw, _this.cw) || other.cw == _this.cw)&&(identical(other.text, _this.text) || other.text == _this.text)&&(identical(other.note, _this.note) || other.note == _this.note));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,cw,text,note);
+int get hashCode {
+  final _this = this as Updated;
+  return Object.hash(runtimeType,_this.cw,_this.text,_this.note);
+}
 
 @override
 String toString() {
-  return 'Updated(cw: $cw, text: $text, note: $note)';
+  final _this = this as Updated;
+  return 'Updated(cw: ${_this.cw}, text: ${_this.text}, note: ${_this.note})';
 }
 
 
@@ -1115,7 +1148,7 @@ abstract mixin class $UpdatedCopyWith<$Res>  {
   factory $UpdatedCopyWith(Updated value, $Res Function(Updated) _then) = _$UpdatedCopyWithImpl;
 @useResult
 $Res call({
-@override String? cw,@override String? text,@override Note? note
+ String? cw, String? text, Note? note
 });
 
 
@@ -1234,7 +1267,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String? cw, @override  String? text, @override  Note? note)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? cw,  String? text,  Note? note)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Updated() when $default != null:
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1255,7 +1288,7 @@ return $default(_that.cw,_that.text,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String? cw, @override  String? text, @override  Note? note)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? cw,  String? text,  Note? note)  $default,) {final _that = this;
 switch (_that) {
 case _Updated():
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1275,7 +1308,7 @@ return $default(_that.cw,_that.text,_that.note);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String? cw, @override  String? text, @override  Note? note)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? cw,  String? text,  Note? note)?  $default,) {final _that = this;
 switch (_that) {
 case _Updated() when $default != null:
 return $default(_that.cw,_that.text,_that.note);case _:
@@ -1290,12 +1323,12 @@ return $default(_that.cw,_that.text,_that.note);case _:
 @JsonSerializable(createToJson: false)
 
 class _Updated extends Updated {
-  const _Updated({@override this.cw, @override this.text, @override this.note}): super(cw: cw, text: text, note: note);
+  const _Updated({this.cw, this.text, this.note}): super(cw: cw, text: text, note: note);
   factory _Updated.fromJson(Map<String, dynamic> json) => _$UpdatedFromJson(json);
 
-@override@override final  String? cw;
-@override@override final  String? text;
-@override@override final  Note? note;
+@override final  String? cw;
+@override final  String? text;
+@override final  Note? note;
 
 /// Create a copy of Updated
 /// with the given fields replaced by the non-null parameter values.
@@ -1307,16 +1340,18 @@ _$UpdatedCopyWith<_Updated> get copyWith => __$UpdatedCopyWithImpl<_Updated>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Updated&&(identical(other.cw, cw) || other.cw == cw)&&(identical(other.text, text) || other.text == text)&&(identical(other.note, note) || other.note == note));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Updated&&(identical(other.cw, cw) || other.cw == cw)&&(identical(other.text, text) || other.text == text)&&(identical(other.note, note) || other.note == note));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,cw,text,note);
+int get hashCode {
+    return Object.hash(runtimeType,cw,text,note);
+}
 
 @override
 String toString() {
-  return 'Updated(cw: $cw, text: $text, note: $note)';
+    return 'Updated(cw: $cw, text: $text, note: $note)';
 }
 
 
@@ -1327,7 +1362,7 @@ abstract mixin class _$UpdatedCopyWith<$Res> implements $UpdatedCopyWith<$Res> {
   factory _$UpdatedCopyWith(_Updated value, $Res Function(_Updated) _then) = __$UpdatedCopyWithImpl;
 @override @useResult
 $Res call({
-@override String? cw,@override String? text,@override Note? note
+ String? cw, String? text, Note? note
 });
 
 
@@ -1372,7 +1407,7 @@ $NoteCopyWith<$Res>? get note {
 /// @nodoc
 mixin _$ReactedEmoji {
 
-@override String get name;@override String get url;
+
 /// Create a copy of ReactedEmoji
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1383,16 +1418,21 @@ $ReactedEmojiCopyWith<ReactedEmoji> get copyWith => _$ReactedEmojiCopyWithImpl<R
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReactedEmoji&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+  final _this = this as ReactedEmoji;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ReactedEmoji&&(identical(other.name, _this.name) || other.name == _this.name)&&(identical(other.url, _this.url) || other.url == _this.url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,url);
+int get hashCode {
+  final _this = this as ReactedEmoji;
+  return Object.hash(runtimeType,_this.name,_this.url);
+}
 
 @override
 String toString() {
-  return 'ReactedEmoji(name: $name, url: $url)';
+  final _this = this as ReactedEmoji;
+  return 'ReactedEmoji(name: ${_this.name}, url: ${_this.url})';
 }
 
 
@@ -1403,7 +1443,7 @@ abstract mixin class $ReactedEmojiCopyWith<$Res>  {
   factory $ReactedEmojiCopyWith(ReactedEmoji value, $Res Function(ReactedEmoji) _then) = _$ReactedEmojiCopyWithImpl;
 @useResult
 $Res call({
-@override String name,@override String url
+ String name, String url
 });
 
 
@@ -1509,7 +1549,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@override  String name, @override  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ReactedEmoji() when $default != null:
 return $default(_that.name,_that.url);case _:
@@ -1530,7 +1570,7 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@override  String name, @override  String url)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String url)  $default,) {final _that = this;
 switch (_that) {
 case _ReactedEmoji():
 return $default(_that.name,_that.url);case _:
@@ -1550,7 +1590,7 @@ return $default(_that.name,_that.url);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@override  String name, @override  String url)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String url)?  $default,) {final _that = this;
 switch (_that) {
 case _ReactedEmoji() when $default != null:
 return $default(_that.name,_that.url);case _:
@@ -1565,11 +1605,11 @@ return $default(_that.name,_that.url);case _:
 @JsonSerializable(createToJson: false)
 
 class _ReactedEmoji extends ReactedEmoji {
-  const _ReactedEmoji({@override required this.name, @override required this.url}): super(name: name, url: url);
+  const _ReactedEmoji({required this.name, required this.url}): super(name: name, url: url);
   factory _ReactedEmoji.fromJson(Map<String, dynamic> json) => _$ReactedEmojiFromJson(json);
 
-@override@override final  String name;
-@override@override final  String url;
+@override final  String name;
+@override final  String url;
 
 /// Create a copy of ReactedEmoji
 /// with the given fields replaced by the non-null parameter values.
@@ -1581,16 +1621,18 @@ _$ReactedEmojiCopyWith<_ReactedEmoji> get copyWith => __$ReactedEmojiCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReactedEmoji&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _ReactedEmoji&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,url);
+int get hashCode {
+    return Object.hash(runtimeType,name,url);
+}
 
 @override
 String toString() {
-  return 'ReactedEmoji(name: $name, url: $url)';
+    return 'ReactedEmoji(name: $name, url: $url)';
 }
 
 
@@ -1601,7 +1643,7 @@ abstract mixin class _$ReactedEmojiCopyWith<$Res> implements $ReactedEmojiCopyWi
   factory _$ReactedEmojiCopyWith(_ReactedEmoji value, $Res Function(_ReactedEmoji) _then) = __$ReactedEmojiCopyWithImpl;
 @override @useResult
 $Res call({
-@override String name,@override String url
+ String name, String url
 });
 
 

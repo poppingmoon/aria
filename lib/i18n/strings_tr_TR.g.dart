@@ -16,7 +16,7 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsTrTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.trTr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsTrTr extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <tr-TR>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsTrTr _root = this; // ignore: unused_field
 
@@ -1106,6 +1107,7 @@ class _Translations$misskey$tr_TR extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Şu anda bot olarak oturum açmış durumdasınız.';
 	@override String get tools => 'Araçlar';
 	@override String get cannotLoad => 'Yüklenemiyor';
+	@override String get cannotPreview => 'Önizleme yapılamadı';
 	@override String get numberOfProfileView => 'Profil görüntülemeleri';
 	@override String get like => 'Beğen';
 	@override String get unlike => 'Beğenme';

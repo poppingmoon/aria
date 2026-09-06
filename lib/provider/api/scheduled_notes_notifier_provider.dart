@@ -45,7 +45,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
       final response = await _misskey.notes.schedule.list(
         NotesScheduleListRequest(untilId: untilId),
       );
-      return Future.wait(
+      return await Future.wait(
         response
             .where(
               (schedule) =>

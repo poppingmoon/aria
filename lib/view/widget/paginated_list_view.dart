@@ -49,7 +49,7 @@ class const PaginatedListView<T>({
         controller: controller,
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
-          if (header case final header?) header,
+          ?header,
           if (paginationState case final paginationState?) ...[
             if (paginationState.value?.items case final items?
                 when items.isNotEmpty)
@@ -106,7 +106,7 @@ class const PaginatedListView<T>({
               ),
             ),
           ],
-          if (footer case final footer?) footer,
+          ?footer,
         ],
       ),
     );

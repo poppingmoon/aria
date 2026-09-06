@@ -16,7 +16,7 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsEsEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.esEs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsEsEs extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <es-ES>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsEsEs _root = this; // ignore: unused_field
 
@@ -1309,6 +1310,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Inicio sesión como cuenta bot.';
 	@override String get tools => 'Utilidades';
 	@override String get cannotLoad => 'No se puede cargar.';
+	@override String get cannotPreview => 'No se pudo generar la vista previa';
 	@override String get numberOfProfileView => 'Número de vistas de perfil';
 	@override String get like => '¡Muy bien!';
 	@override String get unlike => 'Quitar \'me gusta\'';
@@ -1690,6 +1692,7 @@ class _Translations$misskey$es_ES extends Translations$misskey$en_US {
 	@override String get prepend => 'Añadir al principio';
 	@override String get urlPreviewSensitiveList => 'URL para restringir la visualización de miniaturas';
 	@override String get urlPreviewSensitiveListDescription => 'Si se separan con un espacio, se interpretará como una condición «AND»; si se separan con un salto de línea, se interpretará como una condición «OR». Si se escriben entre barras, se interpretarán como expresiones regulares. Si se encuentra una coincidencia, no se mostrará la miniatura.';
+	@override String get pixelatedZoom => 'Modo de ampliación para pixel art';
 	@override late final _Translations$misskey$imageEditing_$es_ES imageEditing_ = _Translations$misskey$imageEditing_$es_ES._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$es_ES imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$es_ES._(_root);
 	@override late final _Translations$misskey$compression_$es_ES compression_ = _Translations$misskey$compression_$es_ES._(_root);

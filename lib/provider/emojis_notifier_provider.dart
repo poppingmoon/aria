@@ -43,7 +43,7 @@ class EmojisNotifier extends _$EmojisNotifier {
   bool _recentlyFetched = false;
 
   Future<List<Emoji>> _fetchEmojis() async {
-    // ignore: only_use_keep_alive_inside_keep_alive
+    // ignore: riverpod_lint/only_use_keep_alive_inside_keep_alive
     final endpoints = await ref.read(endpointsNotifierProvider(host).future);
     if (endpoints.contains('emojis')) {
       final emojis = await _misskey.emojis();

@@ -40,4 +40,4 @@ final class CacheSizeProvider
   }
 }
 
-String _$cacheSizeHash() => r'b0ca671e2da6877ebd701406cfedc7fb01174822';
+String _$cacheSizeHash() => r'69ca6d4282b64778965c2f50d7e7409aa1b0b401';

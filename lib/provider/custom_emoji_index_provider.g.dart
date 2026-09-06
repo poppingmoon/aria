@@ -66,7 +66,7 @@ final class CustomEmojiIndexProvider
   }
 }
 
-String _$customEmojiIndexHash() => r'f63dbcb72b97f5ed8152746f4d88e60d9c2dfb1a';
+String _$customEmojiIndexHash() => r'56dd430867451bdfcd27ab66583a054d0161e6b2';
 
 final class CustomEmojiIndexFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<Map<String, Set<String>>>, String> {

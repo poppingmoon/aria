@@ -16,7 +16,7 @@ class TranslationsUkUa extends Translations with BaseTranslations<AppLocale, Tra
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	TranslationsUkUa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ukUa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -25,7 +25,8 @@ class TranslationsUkUa extends Translations with BaseTranslations<AppLocale, Tra
 		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <uk-UA>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final TranslationsUkUa _root = this; // ignore: unused_field
 
@@ -1116,6 +1117,7 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get loggedInAsBot => 'Зараз виконано вхід як бот';
 	@override String get tools => 'Інструменти';
 	@override String get cannotLoad => 'Не вдалося завантажити';
+	@override String get cannotPreview => 'Не вдалося переглянути';
 	@override String get numberOfProfileView => 'Перегляди профілю';
 	@override String get like => 'Вподобати';
 	@override String get unlike => 'Не вподобати';

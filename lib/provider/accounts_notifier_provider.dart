@@ -80,7 +80,7 @@ class AccountsNotifier extends _$AccountsNotifier {
           serverUrl.replace(pathSegments: ['api', 'i']),
           data: {'i': token},
         );
-    return login(
+    return await login(
       serverUrl: serverUrl,
       username: i.data!['username'] as String,
       token: token,

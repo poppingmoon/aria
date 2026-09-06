@@ -5,9 +5,9 @@ part 'clip_settings.freezed.dart';
 
 @freezed
 class const ClipSettings({
-  @override final String? name,
-  @override final String? description,
-  @override final bool? isPublic,
+  final String? name,
+  final String? description,
+  final bool? isPublic,
 }) with _$ClipSettings {
   factory fromClip(Clip clip) {
     return ClipSettings(

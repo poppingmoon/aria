@@ -84,9 +84,9 @@ const defaultSounds = {
 @Freezed(fromJson: false, toJson: false)
 @JsonSerializable()
 class const SoundSettings({
-  @override final bool notUseSound = true,
-  @override final double masterVolume = defaultMasterVolume,
-  @override final Map<OperationType, SoundStore> sounds = defaultSounds,
+  final bool notUseSound = true,
+  final double masterVolume = defaultMasterVolume,
+  final Map<OperationType, SoundStore> sounds = defaultSounds,
 }) with _$SoundSettings {
   factory fromJson(Map<String, Object?> json) => _SoundSettings(
     notUseSound: switch (json['notUseSound']) {
@@ -99,7 +99,7 @@ class const SoundSettings({
     },
     sounds: switch (json['sounds']) {
       final Map<String, dynamic> sounds => {
-        for (final MapEntry(:key, value: Map<String, dynamic> value)
+        for (final MapEntry(:key, :Map<String, dynamic> value)
             in sounds.entries)
           ?_$OperationTypeEnumMap.entries
               .firstWhereOrNull((e) => e.value == key)
@@ -118,10 +118,9 @@ class const SoundSettings({
 @JsonSerializable()
 class const SoundStore({
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  @override
   final SoundType? type,
-  @override final double volume = 1.0,
-  @override final bool vibrate = false,
+  final double volume = 1.0,
+  final bool vibrate = false,
 }) with _$SoundStore {
   factory fromJson(Map<String, Object?> json) => _$SoundStoreFromJson(json);
 

@@ -7,29 +7,27 @@ part 'chat_event.g.dart';
 sealed class ChatEvent;
 
 @freezed
-class const Message(@override final ChatMessage message)
+class const Message(final ChatMessage message)
     with _$Message
     implements ChatEvent;
 
 @freezed
-class const Deleted(@override final String messageId)
-    with _$Deleted
-    implements ChatEvent;
+class const Deleted(final String messageId) with _$Deleted implements ChatEvent;
 
 @Freezed(toJson: false)
 class const React({
-  @override required final String reaction,
-  @override final UserLite? user,
-  @override required final String messageId,
+  required final String reaction,
+  final UserLite? user,
+  required final String messageId,
 }) with _$React implements ChatEvent {
   factory fromJson(Map<String, Object?> json) => _$ReactFromJson(json);
 }
 
 @Freezed(toJson: false)
 class const Unreact({
-  @override required final String reaction,
-  @override final UserLite? user,
-  @override required final String messageId,
+  required final String reaction,
+  final UserLite? user,
+  required final String messageId,
 }) with _$Unreact implements ChatEvent {
   factory fromJson(Map<String, Object?> json) => _$UnreactFromJson(json);
 }

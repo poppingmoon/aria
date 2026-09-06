@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../model/account.dart';
+import '../model/account.dart';
 import 'mute_provider.dart';
 import 'muted_words_notifier_provider.dart';
 import 'note_notifier_provider.dart';

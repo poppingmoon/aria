@@ -20,7 +20,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	/// Constructing via the enum [AppLocale.build] is preferred.
 	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = meta ?? TranslationMetadata(
+		  _meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.enUs,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -28,7 +28,8 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 		  );
 
 	/// Metadata for the translations of <en-US>.
-	@override final TranslationMetadata<AppLocale, Translations> $meta;
+	final TranslationMetadata<AppLocale, Translations> _meta;
+	@override TranslationMetadata<AppLocale, Translations> get $meta => _meta;
 
 	late final Translations _root = this; // ignore: unused_field
 
@@ -3834,6 +3835,9 @@ class Translations$misskey$en_US {
 	/// en-US: 'Unable to load'
 	String get cannotLoad => 'Unable to load';
 
+	/// en-US: 'Could not preview'
+	String get cannotPreview => 'Could not preview';
+
 	/// en-US: 'Profile views'
 	String get numberOfProfileView => 'Profile views';
 
@@ -4976,6 +4980,9 @@ class Translations$misskey$en_US {
 
 	/// en-US: 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.'
 	String get urlPreviewSensitiveListDescription => 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.';
+
+	/// en-US: 'Pixalated Zoom'
+	String get pixelatedZoom => 'Pixalated Zoom';
 
 	late final Translations$misskey$imageEditing_$en_US imageEditing_ = Translations$misskey$imageEditing_$en_US.internal(_root);
 	late final Translations$misskey$imageFrameEditor_$en_US imageFrameEditor_ = Translations$misskey$imageFrameEditor_$en_US.internal(_root);

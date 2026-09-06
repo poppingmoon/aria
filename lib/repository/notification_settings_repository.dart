@@ -20,7 +20,7 @@ class const NotificationSettingsRepository() {
       'account': account.toString(),
     });
     if (value != null) {
-      return WebPushKeySet.deserialize(value);
+      return await WebPushKeySet.deserialize(value);
     }
     return null;
   }

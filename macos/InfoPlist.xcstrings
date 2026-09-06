@@ -16,6 +16,12 @@
             "value" : "To take photos or videos, please allow access to your camera."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour prendre des photos ou des vidéos, veuillez autoriser l'accès à votre caméra."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -45,6 +51,12 @@
             "value" : "To detect orientation of the device, please allow access to your sensor."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour détecter l'orientation de l'appareil, veuillez autoriser l'accès à votre capteur."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72,6 +84,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To download files, please allow access to your photo library."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour télécharger des fichiers, veuillez autoriser l'accès à votre galerie photo."
           }
         },
         "ja" : {
@@ -107,6 +125,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To upload files, please allow access to your photo library."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour téléverser des fichiers, veuillez autoriser l'accès à votre galerie photo."
           }
         },
         "ja" : {

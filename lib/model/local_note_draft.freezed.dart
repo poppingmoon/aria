@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LocalNoteDraft {
 
-@override int get id;@override Account get account;@override String? get tabId;@override NoteDraft get draft;@override bool get isPinned;
+
 /// Create a copy of LocalNoteDraft
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,21 @@ $LocalNoteDraftCopyWith<LocalNoteDraft> get copyWith => _$LocalNoteDraftCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalNoteDraft&&(identical(other.id, id) || other.id == id)&&(identical(other.account, account) || other.account == account)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.draft, draft) || other.draft == draft)&&(identical(other.isPinned, isPinned) || other.isPinned == isPinned));
+  final _this = this as LocalNoteDraft;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LocalNoteDraft&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.account, _this.account) || other.account == _this.account)&&(identical(other.tabId, _this.tabId) || other.tabId == _this.tabId)&&(identical(other.draft, _this.draft) || other.draft == _this.draft)&&(identical(other.isPinned, _this.isPinned) || other.isPinned == _this.isPinned));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,account,tabId,draft,isPinned);
+int get hashCode {
+  final _this = this as LocalNoteDraft;
+  return Object.hash(runtimeType,_this.id,_this.account,_this.tabId,_this.draft,_this.isPinned);
+}
 
 @override
 String toString() {
-  return 'LocalNoteDraft(id: $id, account: $account, tabId: $tabId, draft: $draft, isPinned: $isPinned)';
+  final _this = this as LocalNoteDraft;
+  return 'LocalNoteDraft(id: ${_this.id}, account: ${_this.account}, tabId: ${_this.tabId}, draft: ${_this.draft}, isPinned: ${_this.isPinned})';
 }
 
 
@@ -46,7 +51,7 @@ abstract mixin class $LocalNoteDraftCopyWith<$Res>  {
   factory $LocalNoteDraftCopyWith(LocalNoteDraft value, $Res Function(LocalNoteDraft) _then) = _$LocalNoteDraftCopyWithImpl;
 @useResult
 $Res call({
-@override int id,@override Account account,@override String? tabId,@override NoteDraft draft,@override bool isPinned
+ int id, Account account, String? tabId, NoteDraft draft, bool isPinned
 });
 
 
@@ -100,14 +105,14 @@ $NoteDraftCopyWith<$Res> get draft {
 
 
 class _LocalNoteDraft extends LocalNoteDraft {
-  const _LocalNoteDraft({@override required this.id, @override required this.account, @override this.tabId, @override required this.draft, @override required this.isPinned}): super(id: id, account: account, tabId: tabId, draft: draft, isPinned: isPinned);
+  const _LocalNoteDraft({required this.id, required this.account, this.tabId, required this.draft, required this.isPinned}): super(id: id, account: account, tabId: tabId, draft: draft, isPinned: isPinned);
   
 
-@override@override final  int id;
-@override@override final  Account account;
-@override@override final  String? tabId;
-@override@override final  NoteDraft draft;
-@override@override final  bool isPinned;
+@override final  int id;
+@override final  Account account;
+@override final  String? tabId;
+@override final  NoteDraft draft;
+@override final  bool isPinned;
 
 /// Create a copy of LocalNoteDraft
 /// with the given fields replaced by the non-null parameter values.
@@ -119,16 +124,18 @@ _$LocalNoteDraftCopyWith<_LocalNoteDraft> get copyWith => __$LocalNoteDraftCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalNoteDraft&&(identical(other.id, id) || other.id == id)&&(identical(other.account, account) || other.account == account)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.draft, draft) || other.draft == draft)&&(identical(other.isPinned, isPinned) || other.isPinned == isPinned));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _LocalNoteDraft&&(identical(other.id, id) || other.id == id)&&(identical(other.account, account) || other.account == account)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.draft, draft) || other.draft == draft)&&(identical(other.isPinned, isPinned) || other.isPinned == isPinned));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,account,tabId,draft,isPinned);
+int get hashCode {
+    return Object.hash(runtimeType,id,account,tabId,draft,isPinned);
+}
 
 @override
 String toString() {
-  return 'LocalNoteDraft(id: $id, account: $account, tabId: $tabId, draft: $draft, isPinned: $isPinned)';
+    return 'LocalNoteDraft(id: $id, account: $account, tabId: $tabId, draft: $draft, isPinned: $isPinned)';
 }
 
 
@@ -139,7 +146,7 @@ abstract mixin class _$LocalNoteDraftCopyWith<$Res> implements $LocalNoteDraftCo
   factory _$LocalNoteDraftCopyWith(_LocalNoteDraft value, $Res Function(_LocalNoteDraft) _then) = __$LocalNoteDraftCopyWithImpl;
 @override @useResult
 $Res call({
-@override int id,@override Account account,@override String? tabId,@override NoteDraft draft,@override bool isPinned
+ int id, Account account, String? tabId, NoteDraft draft, bool isPinned
 });
 
 

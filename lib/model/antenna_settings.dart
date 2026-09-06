@@ -5,18 +5,18 @@ part 'antenna_settings.freezed.dart';
 
 @freezed
 class const AntennaSettings({
-  @override final String? name,
-  @override final AntennaSource? src,
-  @override final String? userListId,
-  @override final List<String>? users,
-  @override final bool? withReplies,
-  @override final List<List<String>>? keywords,
-  @override final List<List<String>>? excludeKeywords,
-  @override final bool? localOnly,
-  @override final bool? caseSensitive,
-  @override final bool? withFile,
-  @override final bool? excludeBots,
-  @override final bool? excludeNotesInSensitiveChannel,
+  final String? name,
+  final AntennaSource? src,
+  final String? userListId,
+  final List<String>? users,
+  final bool? withReplies,
+  final List<List<String>>? keywords,
+  final List<List<String>>? excludeKeywords,
+  final bool? localOnly,
+  final bool? caseSensitive,
+  final bool? withFile,
+  final bool? excludeBots,
+  final bool? excludeNotesInSensitiveChannel,
 }) with _$AntennaSettings {
   factory fromAntenna(Antenna antenna) {
     return AntennaSettings(
