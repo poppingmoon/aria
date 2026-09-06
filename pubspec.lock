@@ -2022,10 +2022,10 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: "430749837528bb692b5ee03699fadab90d0d4a6dfbf42aab28e81df8da4c2fb8"
+      sha256: f604ddb8f4af282d01645a45f43467dd431014ff317b39cf22d026ea281cf53a
       url: "https://pub.dev"
     source: hosted
-    version: "4.19.0"
+    version: "4.19.1"
   slang_build_runner:
     dependency: "direct dev"
     description:
