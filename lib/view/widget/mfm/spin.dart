@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:vector_math/vector_math_64.dart';
 
 import '../../../util/safe_parse_duration.dart';
 
@@ -48,16 +49,18 @@ class const Spin({
     if (args.containsKey('x')) {
       return Transform(
         transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.008)
-          ..rotateX(-angle),
+          ..setEntry(3, 2, -1 / 128)
+          ..rotateX(angle)
+          ..setRow(2, Vector4(0.0, 0.0, 1.0, 0.0)),
         alignment: Alignment.center,
         child: child,
       );
     } else if (args.containsKey('y')) {
       return Transform(
         transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.008)
-          ..rotateY(-angle),
+          ..setEntry(3, 2, -1 / 128)
+          ..rotateY(angle)
+          ..setRow(2, Vector4(0.0, 0.0, 1.0, 0.0)),
         alignment: Alignment.center,
         child: child,
       );
