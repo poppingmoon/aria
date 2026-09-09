@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.12+110
+version: 1.5.13+111
 
 environment:
   sdk: ">=3.13.0 <4.0.0"
@@ -97,7 +97,7 @@ dependencies:
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
   material_symbols_icons: ^4.2960.0
-  material_ui: ^1.1.1
+  material_ui: ^1.2.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
