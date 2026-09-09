@@ -240,65 +240,6 @@ class const PrivacyPage({super.key, required final Account account})
                 ),
               ),
             ],
-            if (i?.canChat != null) ...[
-              const SizedBox(height: 16.0),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Text(
-                    t.misskey.directMessage,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8.0),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ListTile(
-                    title: Text(t.misskey.chat_.chatAllowedUsers),
-                    subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () async {
-                      final result = await showRadioDialog(
-                        context,
-                        title: Text(t.misskey.chat_.chatAllowedUsers),
-                        header: Card.filled(
-                          color: colors.infoBg,
-                          margin: EdgeInsets.zero,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              t.misskey.chat_.chatAllowedUsers_note,
-                              style: TextStyle(color: colors.infoFg),
-                            ),
-                          ),
-                        ),
-                        values: ChatScope.values,
-                        initialValue: i?.chatScope,
-                        titleBuilder: (context, chatScope) =>
-                            _ChatScopeWidget(chatScope: chatScope),
-                      );
-                      if (!context.mounted) return;
-                      if (result != null) {
-                        await futureWithDialog(
-                          context,
-                          ref
-                              .read(iNotifierProvider(account).notifier)
-                              .setChatScope(result),
-                        );
-                      }
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              ),
-            ],
             const SizedBox(height: 16.0),
             Center(
               child: Container(
@@ -502,6 +443,65 @@ class const PrivacyPage({super.key, required final Account account})
                 ),
               ),
             ),
+            if (i?.canChat != null) ...[
+              const SizedBox(height: 16.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    t.misskey.directMessage,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
+                    title: Text(t.misskey.chat_.chatAllowedUsers),
+                    subtitle: _ChatScopeWidget(chatScope: i?.chatScope),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.chat_.chatAllowedUsers),
+                        header: Card.filled(
+                          color: colors.infoBg,
+                          margin: EdgeInsets.zero,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              t.misskey.chat_.chatAllowedUsers_note,
+                              style: TextStyle(color: colors.infoFg),
+                            ),
+                          ),
+                        ),
+                        values: ChatScope.values,
+                        initialValue: i?.chatScope,
+                        titleBuilder: (context, chatScope) =>
+                            _ChatScopeWidget(chatScope: chatScope),
+                      );
+                      if (!context.mounted) return;
+                      if (result != null) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setChatScope(result),
+                        );
+                      }
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
+              ),
+            ],
             const SizedBox(height: 8.0),
           ],
         ),
