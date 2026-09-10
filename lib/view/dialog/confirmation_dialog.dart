@@ -5,6 +5,7 @@ import '../../i18n/strings.g.dart';
 
 Future<bool> confirm(
   BuildContext context, {
+  Widget? icon,
   Widget? title,
   String? message,
   Widget? content,
@@ -14,6 +15,7 @@ Future<bool> confirm(
   final result = await showDialog<bool>(
     context: context,
     builder: (context) => ConfirmationDialog(
+      icon: icon,
       title: title,
       message: message,
       content: content,
@@ -26,6 +28,7 @@ Future<bool> confirm(
 
 class const ConfirmationDialog({
   super.key,
+  final Widget? icon,
   final Widget? title,
   final String? message,
   final Widget? content,
@@ -37,7 +40,12 @@ class const ConfirmationDialog({
     final theme = Theme.of(context);
 
     return AlertDialog(
-      icon: title == null ? const Icon(Icons.help_outline, size: 36.0) : null,
+      icon: title == null
+          ? IconTheme.merge(
+              data: const IconThemeData(size: 36.0),
+              child: icon ?? const Icon(Icons.help_outline),
+            )
+          : null,
       title: title,
       content: content ?? Text(message ?? ''),
       actions: [
