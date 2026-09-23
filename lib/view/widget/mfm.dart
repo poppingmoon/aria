@@ -819,56 +819,34 @@ class const _Mfm({
           child: _buildLinkWidget(
             context,
             linkId: config.linkId,
-            child: maxLines == 1
-                ? LayoutBuilder(
-                    builder: (context, constraints) => ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth:
-                            constraints.maxWidth -
-                            (config.style.fontSize ?? 14.0),
-                      ),
-                      child: CustomEmoji(
-                        account: account,
-                        emoji: ':$name:',
-                        url: emojis?[name],
-                        host: author?.host,
-                        opacity: config.opacity,
-                        alignment: Alignment.centerLeft,
-                        fallbackTextStyle: config.style.copyWith(height: 1.0),
-                        fallbackToImage: false,
-                        enableFadeIn: enableEmojiFadeIn,
-                      ),
-                    ),
-                  )
-                : CustomEmoji(
-                    account: account,
-                    emoji: ':$name:',
-                    url: emojis?[name],
-                    host: author?.host,
-                    useOriginalSize: config.scale >= 2.5,
-                    height:
-                        (config.style.fontSize ?? 14.0) * config.scale * 2.0,
-                    opacity: config.opacity,
-                    fit: BoxFit.cover,
-                    alignment: Alignment.centerLeft,
-                    onTap: () => showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) => EmojiSheet(
-                        account: account,
-                        emoji: ':$name@${author?.host ?? '.'}:',
-                        targetNoteId: noteId,
-                        targetMessageId: messageId,
-                      ),
-                    ),
-                    fallbackTextStyle: config.style.apply(
-                      fontSizeFactor: config.scale,
-                      color: config.style.color?.withValues(
-                        alpha: (config.style.color?.a ?? 1.0) * config.opacity,
-                      ),
-                    ),
-                    fallbackToImage: false,
-                    enableFadeIn: enableEmojiFadeIn,
-                  ),
+            child: CustomEmoji(
+              account: account,
+              emoji: ':$name:',
+              url: emojis?[name],
+              host: author?.host,
+              useOriginalSize: config.scale >= 2.5,
+              height: (config.style.fontSize ?? 14.0) * config.scale * 2.0,
+              opacity: config.opacity,
+              fit: BoxFit.cover,
+              alignment: Alignment.centerLeft,
+              onTap: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => EmojiSheet(
+                  account: account,
+                  emoji: ':$name@${author?.host ?? '.'}:',
+                  targetNoteId: noteId,
+                  targetMessageId: messageId,
+                ),
+              ),
+              fallbackTextStyle: config.style.apply(
+                fontSizeFactor: config.scale,
+                color: config.style.color?.withValues(
+                  alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+                ),
+              ),
+              fallbackToImage: false,
+              enableFadeIn: enableEmojiFadeIn,
+            ),
           ),
         );
       case MfmUnicodeEmoji(:final emoji):
