@@ -880,6 +880,7 @@ class const _Folder({
             padding: const EdgeInsets.all(16.0),
             child: DefaultTextStyle.merge(
               style: style.style,
+              textAlign: style.textAlign,
               child: Column(
                 crossAxisAlignment: switch (style.textAlign) {
                   TextAlign.left => CrossAxisAlignment.start,
