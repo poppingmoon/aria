@@ -46,10 +46,6 @@ class const AsUiWidget({
               ),
               filled: true,
               fillColor: theme.colorScheme.surface,
-              helperStyle: TextStyle(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
-              ),
-              helperMaxLines: 100,
               isDense: true,
             ),
           ),
@@ -620,17 +616,38 @@ class const _TextField({
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: defaultValue);
+    final style = DefaultTextStyle.of(context);
 
-    return Shortcuts(
-      shortcuts: disablingTextShortcuts,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(labelText: label, helperText: caption),
-        onChanged: onChanged,
-        minLines: minLines,
-        maxLines: maxLines,
-        onTapOutside: (_) => primaryFocus?.unfocus(),
-      ),
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
+      },
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            onChanged: onChanged,
+            minLines: minLines,
+            maxLines: maxLines,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
+          ),
+        ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
@@ -652,94 +669,113 @@ class const _NumberInput({
         _ => null,
       },
     );
+    final style = DefaultTextStyle.of(context);
 
-    return Shortcuts(
-      shortcuts: disablingTextShortcuts,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          helperText: caption,
-          isDense: true,
-          suffix: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                style: IconButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: const EdgeInsets.all(2.0),
-                  iconSize: 16.0,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                onPressed: () {
-                  if (controller.text.isEmpty) {
-                    controller.text = '-1';
-                    if (onInput case final onInput?) {
-                      onInput.call(value: -1);
-                    }
-                    return;
-                  }
-                  final i = int.tryParse(controller.text);
-                  if (i != null) {
-                    controller.text = (i - 1).toString();
-                    if (onInput case final onInput?) {
-                      onInput.call(value: i - 1);
-                    }
-                  }
-                },
-                icon: const Icon(Icons.remove),
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
+      },
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              suffix: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '-1';
+                        if (onInput case final onInput?) {
+                          onInput.call(value: -1);
+                        }
+                        return;
+                      }
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i - 1).toString();
+                        if (onInput case final onInput?) {
+                          onInput.call(value: i - 1);
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.remove),
+                  ),
+                  const SizedBox(width: 4.0),
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '1';
+                        if (onInput case final onInput?) {
+                          onInput.call(value: 1);
+                        }
+                        return;
+                      }
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i + 1).toString();
+                        if (onInput case final onInput?) {
+                          onInput.call(value: i + 1);
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.add),
+                  ),
+                ],
               ),
-              const SizedBox(width: 4.0),
-              IconButton(
-                style: IconButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: const EdgeInsets.all(2.0),
-                  iconSize: 16.0,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                onPressed: () {
-                  if (controller.text.isEmpty) {
-                    controller.text = '1';
-                    if (onInput case final onInput?) {
-                      onInput.call(value: 1);
-                    }
-                    return;
-                  }
-                  final i = int.tryParse(controller.text);
-                  if (i != null) {
-                    controller.text = (i + 1).toString();
-                    if (onInput case final onInput?) {
-                      onInput.call(value: i + 1);
-                    }
-                  }
-                },
-                icon: const Icon(Icons.add),
-              ),
+            ),
+            keyboardType: TextInputType.number,
+            inputFormatters: [
+              TextInputFormatter.withFunction((oldValue, newValue) {
+                if (newValue.text.isEmpty ||
+                    double.tryParse(newValue.text) != null) {
+                  return newValue;
+                } else {
+                  return oldValue;
+                }
+              }),
             ],
+            onChanged: switch (onInput) {
+              final onInput? => (value) async {
+                final v = double.tryParse(value);
+                if (v != null) {
+                  await onInput.call(value: v);
+                }
+              },
+              _ => null,
+            },
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ),
-        keyboardType: TextInputType.number,
-        inputFormatters: [
-          TextInputFormatter.withFunction((oldValue, newValue) {
-            if (newValue.text.isEmpty ||
-                double.tryParse(newValue.text) != null) {
-              return newValue;
-            } else {
-              return oldValue;
-            }
-          }),
-        ],
-        onChanged: switch (onInput) {
-          final onInput? => (value) async {
-            final v = double.tryParse(value);
-            if (v != null) {
-              await onInput.call(value: v);
-            }
-          },
-          _ => null,
-        },
-        onTapOutside: (_) => primaryFocus?.unfocus(),
-      ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
@@ -759,22 +795,44 @@ class const _Select({
           ? defaultValue
           : null,
     );
+    final style = DefaultTextStyle.of(context);
 
-    return DropdownButtonFormField(
-      decoration: InputDecoration(labelText: label, helperText: caption),
-      items: items
-          ?.map(
-            (item) => DropdownMenuItem(value: item.$2, child: Text(item.$1)),
-          )
-          .toList(),
-      initialValue: value.value,
-      onChanged: (v) async {
-        value.value = v;
-        if (v != null) {
-          await onChange?.call(value: v);
-        }
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
       },
-      isExpanded: true,
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        DropdownButtonFormField(
+          items: items
+              ?.map(
+                (item) =>
+                    DropdownMenuItem(value: item.$2, child: Text(item.$1)),
+              )
+              .toList(),
+          initialValue: value.value,
+          onChanged: (v) async {
+            value.value = v;
+            if (v != null) {
+              await onChange?.call(value: v);
+            }
+          },
+          isExpanded: true,
+        ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
