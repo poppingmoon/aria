@@ -353,6 +353,7 @@ class const _SimpleMfm({
                       emoji: ':$name:',
                       url: emojis?[name],
                       host: author?.host,
+                      height: (style.fontSize ?? 14.0) * 1.25,
                       opacity: opacity,
                       alignment: Alignment.centerLeft,
                       fallbackTextStyle: style.copyWith(
@@ -371,7 +372,7 @@ class const _SimpleMfm({
                   emoji: ':$name:',
                   url: emojis?[name],
                   host: author?.host,
-                  height: style.fontSize ?? 14.0,
+                  height: (style.fontSize ?? 14.0) * 1.25,
                   opacity: opacity,
                   alignment: Alignment.centerLeft,
                   fallbackTextStyle: style.copyWith(
@@ -389,7 +390,7 @@ class const _SimpleMfm({
           return WidgetSpan(
             alignment: PlaceholderAlignment.middle,
             child: Assets.misskey.packages.frontend.assets.unknown.image(
-              height: style.fontSize ?? 14.0,
+              height: (style.fontSize ?? 14.0) * 1.25,
               opacity: AlwaysStoppedAnimation(
                 (style.color?.a ?? 1.0) * opacity,
               ),
