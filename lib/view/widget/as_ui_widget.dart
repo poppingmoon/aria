@@ -36,20 +36,19 @@ class const AsUiWidget({
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: theme.colorScheme.primary),
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               filled: true,
               fillColor: theme.colorScheme.surface,
-              helperStyle: TextStyle(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.75),
-              ),
-              helperMaxLines: 100,
               isDense: true,
             ),
           ),
@@ -596,12 +595,9 @@ class const _Switch({
         ),
         _ => null,
       },
-      onChanged: switch (onChange) {
-        final onChange? => (v) {
-          value.value = v;
-          onChange.call(value: v);
-        },
-        _ => null,
+      onChanged: (v) {
+        value.value = v;
+        onChange?.call(value: v);
       },
       controlAffinity: ListTileControlAffinity.leading,
       dense: true,
@@ -615,22 +611,45 @@ class const _TextField({
   required final String? caption,
   required final void Function(String)? onChanged,
   final int? minLines,
-  final int? maxLines,
+  required final int maxLines,
 }) extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: defaultValue);
+    final style = DefaultTextStyle.of(context);
 
-    return Shortcuts(
-      shortcuts: disablingTextShortcuts,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(labelText: label, helperText: caption),
-        onChanged: onChanged,
-        minLines: minLines,
-        maxLines: maxLines,
-        onTapOutside: (_) => primaryFocus?.unfocus(),
-      ),
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
+      },
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(isDense: maxLines <= 1),
+            style: style.style,
+            onChanged: onChanged,
+            minLines: minLines,
+            maxLines: maxLines,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
+          ),
+        ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
@@ -652,94 +671,114 @@ class const _NumberInput({
         _ => null,
       },
     );
+    final style = DefaultTextStyle.of(context);
 
-    return Shortcuts(
-      shortcuts: disablingTextShortcuts,
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          helperText: caption,
-          isDense: true,
-          suffix: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                style: IconButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: const EdgeInsets.all(2.0),
-                  iconSize: 16.0,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                onPressed: () {
-                  if (controller.text.isEmpty) {
-                    controller.text = '-1';
-                    if (onInput case final onInput?) {
-                      onInput.call(value: -1);
-                    }
-                    return;
-                  }
-                  final i = int.tryParse(controller.text);
-                  if (i != null) {
-                    controller.text = (i - 1).toString();
-                    if (onInput case final onInput?) {
-                      onInput.call(value: i - 1);
-                    }
-                  }
-                },
-                icon: const Icon(Icons.remove),
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
+      },
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              suffix: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '-1';
+                        if (onInput case final onInput?) {
+                          onInput.call(value: -1);
+                        }
+                        return;
+                      }
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i - 1).toString();
+                        if (onInput case final onInput?) {
+                          onInput.call(value: i - 1);
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.remove),
+                  ),
+                  const SizedBox(width: 4.0),
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '1';
+                        if (onInput case final onInput?) {
+                          onInput.call(value: 1);
+                        }
+                        return;
+                      }
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i + 1).toString();
+                        if (onInput case final onInput?) {
+                          onInput.call(value: i + 1);
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.add),
+                  ),
+                ],
               ),
-              const SizedBox(width: 4.0),
-              IconButton(
-                style: IconButton.styleFrom(
-                  minimumSize: Size.zero,
-                  padding: const EdgeInsets.all(2.0),
-                  iconSize: 16.0,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                ),
-                onPressed: () {
-                  if (controller.text.isEmpty) {
-                    controller.text = '1';
-                    if (onInput case final onInput?) {
-                      onInput.call(value: 1);
-                    }
-                    return;
-                  }
-                  final i = int.tryParse(controller.text);
-                  if (i != null) {
-                    controller.text = (i + 1).toString();
-                    if (onInput case final onInput?) {
-                      onInput.call(value: i + 1);
-                    }
-                  }
-                },
-                icon: const Icon(Icons.add),
-              ),
+            ),
+            keyboardType: TextInputType.number,
+            style: style.style,
+            inputFormatters: [
+              TextInputFormatter.withFunction((oldValue, newValue) {
+                if (newValue.text.isEmpty ||
+                    double.tryParse(newValue.text) != null) {
+                  return newValue;
+                } else {
+                  return oldValue;
+                }
+              }),
             ],
+            onChanged: switch (onInput) {
+              final onInput? => (value) async {
+                final v = double.tryParse(value);
+                if (v != null) {
+                  await onInput.call(value: v);
+                }
+              },
+              _ => null,
+            },
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ),
-        keyboardType: TextInputType.number,
-        inputFormatters: [
-          TextInputFormatter.withFunction((oldValue, newValue) {
-            if (newValue.text.isEmpty ||
-                double.tryParse(newValue.text) != null) {
-              return newValue;
-            } else {
-              return oldValue;
-            }
-          }),
-        ],
-        onChanged: switch (onInput) {
-          final onInput? => (value) async {
-            final v = double.tryParse(value);
-            if (v != null) {
-              await onInput.call(value: v);
-            }
-          },
-          _ => null,
-        },
-        onTapOutside: (_) => primaryFocus?.unfocus(),
-      ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
@@ -759,22 +798,51 @@ class const _Select({
           ? defaultValue
           : null,
     );
+    final style = DefaultTextStyle.of(context);
 
-    return DropdownButtonFormField(
-      decoration: InputDecoration(labelText: label, helperText: caption),
-      items: items
-          ?.map(
-            (item) => DropdownMenuItem(value: item.$2, child: Text(item.$1)),
-          )
-          .toList(),
-      initialValue: value.value,
-      onChanged: (v) async {
-        value.value = v;
-        if (v != null) {
-          await onChange?.call(value: v);
-        }
+    return Column(
+      crossAxisAlignment: switch (style.textAlign) {
+        TextAlign.left => CrossAxisAlignment.start,
+        TextAlign.center => CrossAxisAlignment.center,
+        TextAlign.right => CrossAxisAlignment.end,
+        _ => CrossAxisAlignment.start,
       },
-      isExpanded: true,
+      spacing: 8.0,
+      children: [
+        if (label case final label?)
+          Text(label, style: style.style.apply(fontSizeFactor: 0.85)),
+        DropdownButtonFormField(
+          items: items
+              ?.map(
+                (item) =>
+                    DropdownMenuItem(value: item.$2, child: Text(item.$1)),
+              )
+              .toList(),
+          initialValue: value.value,
+          onChanged: (v) async {
+            value.value = v;
+            if (v != null) {
+              await onChange?.call(value: v);
+            }
+          },
+          style: style.style,
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 9.5,
+              horizontal: 12.0,
+            ),
+          ),
+          isExpanded: true,
+        ),
+        if (caption case final caption?)
+          Text(
+            caption,
+            style: style.style.apply(
+              color: style.style.color?.withValues(alpha: 0.75),
+              fontSizeFactor: 0.85,
+            ),
+          ),
+      ],
     );
   }
 }
@@ -812,6 +880,7 @@ class const _Folder({
             padding: const EdgeInsets.all(16.0),
             child: DefaultTextStyle.merge(
               style: style.style,
+              textAlign: style.textAlign,
               child: Column(
                 crossAxisAlignment: switch (style.textAlign) {
                   TextAlign.left => CrossAxisAlignment.start,

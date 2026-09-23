@@ -29,7 +29,7 @@ dependencies = [
 [[package]]
 name = "aiscript"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=9f89f8b6d7de31f2713f1a2c03599228eb13c18d#9f89f8b6d7de31f2713f1a2c03599228eb13c18d"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=594e4c2344c27afcfc713960b5521d5742e691c9#594e4c2344c27afcfc713960b5521d5742e691c9"
 dependencies = [
  "aiscript-v0",
  "aiscript-v1",
@@ -38,7 +38,7 @@ dependencies = [
 [[package]]
 name = "aiscript-v0"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=9f89f8b6d7de31f2713f1a2c03599228eb13c18d#9f89f8b6d7de31f2713f1a2c03599228eb13c18d"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=594e4c2344c27afcfc713960b5521d5742e691c9#594e4c2344c27afcfc713960b5521d5742e691c9"
 dependencies = [
  "chrono",
  "futures",
@@ -58,7 +58,7 @@ dependencies = [
 [[package]]
 name = "aiscript-v1"
 version = "0.1.0"
-source = "git+https://github.com/poppingmoon/aiscript-rs?rev=9f89f8b6d7de31f2713f1a2c03599228eb13c18d#9f89f8b6d7de31f2713f1a2c03599228eb13c18d"
+source = "git+https://github.com/poppingmoon/aiscript-rs?rev=594e4c2344c27afcfc713960b5521d5742e691c9#594e4c2344c27afcfc713960b5521d5742e691c9"
 dependencies = [
  "chacha20",
  "chrono",
