@@ -355,7 +355,12 @@ class const _SimpleMfm({
                       host: author?.host,
                       opacity: opacity,
                       alignment: Alignment.centerLeft,
-                      fallbackTextStyle: style.copyWith(height: 1.0),
+                      fallbackTextStyle: style.copyWith(
+                        color: style.color?.withValues(
+                          alpha: (style.color?.a ?? 1.0) * opacity,
+                        ),
+                        height: 1.0,
+                      ),
                       fallbackToImage: false,
                       enableFadeIn: enableEmojiFadeIn,
                     ),
@@ -368,15 +373,13 @@ class const _SimpleMfm({
                   host: author?.host,
                   height: style.fontSize ?? 14.0,
                   opacity: opacity,
-                  fit: BoxFit.cover,
                   alignment: Alignment.centerLeft,
-                  fallbackTextStyle: style
-                      .apply(
-                        color: style.color?.withValues(
-                          alpha: (style.color?.a ?? 1.0) * opacity,
-                        ),
-                      )
-                      .copyWith(height: 1.0),
+                  fallbackTextStyle: style.copyWith(
+                    color: style.color?.withValues(
+                      alpha: (style.color?.a ?? 1.0) * opacity,
+                    ),
+                    height: 1.0,
+                  ),
                   fallbackToImage: false,
                   enableFadeIn: enableEmojiFadeIn,
                 ),
