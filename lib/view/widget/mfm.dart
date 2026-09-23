@@ -139,11 +139,9 @@ class const Mfm({
         nodes: nodes,
         trailingSpans: trailingSpans,
         builder: builder,
-        config: MfmConfig(
-          style: style,
-          align: textAlign,
-          opacity: this.style?.color?.a ?? defaultTextStyle.color?.a ?? 1.0,
-        ),
+        style: style,
+        align: textAlign,
+        opacity: this.style?.color?.a ?? defaultTextStyle.color?.a ?? 1.0,
         emojis: emojis,
         author: author,
         overflow: overflow,
@@ -314,7 +312,9 @@ class const _SimpleMfm({
   required final List<InlineSpan>? trailingSpans,
   required final Widget Function(BuildContext context, InlineSpan span)?
   builder,
-  required final MfmConfig config,
+  required final TextStyle style,
+  required final TextAlign? align,
+  required final double opacity,
   required final Map<String, String>? emojis,
   required final User? author,
   required final TextOverflow? overflow,
@@ -324,23 +324,18 @@ class const _SimpleMfm({
   required final EmojiStyle emojiStyle,
   required final Set<String> mutedEmojis,
 }) extends StatelessWidget {
-  List<InlineSpan> _buildNodes(
-    BuildContext context,
-    MfmConfig config,
-    List<MfmNode> nodes,
-  ) {
-    return [for (final node in nodes) ?_buildNode(context, config, node)];
+  List<InlineSpan> _buildNodes(BuildContext context, List<MfmNode> nodes) {
+    return [for (final node in nodes) ?_buildNode(context, node)];
   }
 
-  InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
+  InlineSpan? _buildNode(BuildContext context, MfmNode node) {
     switch (node) {
       case MfmText(:final text):
         return TextSpan(
           text: text.replaceAll('\n', ' '),
-          style: config.style.apply(
-            fontSizeFactor: config.scale,
-            color: config.style.color?.withValues(
-              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+          style: style.apply(
+            color: style.color?.withValues(
+              alpha: (style.color?.a ?? 1.0) * opacity,
             ),
           ),
         );
@@ -351,18 +346,16 @@ class const _SimpleMfm({
               ? LayoutBuilder(
                   builder: (context, constraints) => ConstrainedBox(
                     constraints: BoxConstraints(
-                      maxWidth:
-                          constraints.maxWidth -
-                          (config.style.fontSize ?? 14.0),
+                      maxWidth: constraints.maxWidth - (style.fontSize ?? 14.0),
                     ),
                     child: CustomEmoji(
                       account: account,
                       emoji: ':$name:',
                       url: emojis?[name],
                       host: author?.host,
-                      opacity: config.opacity,
+                      opacity: opacity,
                       alignment: Alignment.centerLeft,
-                      fallbackTextStyle: config.style.copyWith(height: 1.0),
+                      fallbackTextStyle: style.copyWith(height: 1.0),
                       fallbackToImage: false,
                       enableFadeIn: enableEmojiFadeIn,
                     ),
@@ -373,17 +366,14 @@ class const _SimpleMfm({
                   emoji: ':$name:',
                   url: emojis?[name],
                   host: author?.host,
-                  useOriginalSize: config.scale >= 2.5,
-                  height: (config.style.fontSize ?? 14.0) * config.scale,
-                  opacity: config.opacity,
+                  height: style.fontSize ?? 14.0,
+                  opacity: opacity,
                   fit: BoxFit.cover,
                   alignment: Alignment.centerLeft,
-                  fallbackTextStyle: config.style
+                  fallbackTextStyle: style
                       .apply(
-                        fontSizeFactor: config.scale,
-                        color: config.style.color?.withValues(
-                          alpha:
-                              (config.style.color?.a ?? 1.0) * config.opacity,
+                        color: style.color?.withValues(
+                          alpha: (style.color?.a ?? 1.0) * opacity,
                         ),
                       )
                       .copyWith(height: 1.0),
@@ -396,9 +386,9 @@ class const _SimpleMfm({
           return WidgetSpan(
             alignment: PlaceholderAlignment.middle,
             child: Assets.misskey.packages.frontend.assets.unknown.image(
-              height: (config.style.fontSize ?? 14.0) * config.scale,
+              height: style.fontSize ?? 14.0,
               opacity: AlwaysStoppedAnimation(
-                (config.style.color?.a ?? 1.0) * config.opacity,
+                (style.color?.a ?? 1.0) * opacity,
               ),
               fit: BoxFit.cover,
               alignment: Alignment.centerLeft,
@@ -407,14 +397,13 @@ class const _SimpleMfm({
         } else {
           return TextSpan(
             text: emoji,
-            style: config.style.apply(
+            style: style.apply(
               fontFamily: switch (emojiStyle) {
                 EmojiStyle.native => null,
                 EmojiStyle.twemoji => FontFamily.twemojiMozilla,
               },
-              fontSizeFactor: config.scale,
-              color: config.style.color?.withValues(
-                alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+              color: style.color?.withValues(
+                alpha: (style.color?.a ?? 1.0) * opacity,
               ),
             ),
           );
@@ -422,10 +411,9 @@ class const _SimpleMfm({
       case MfmPlain(:final text):
         return TextSpan(
           text: text,
-          style: config.style.apply(
-            fontSizeFactor: config.scale,
-            color: config.style.color?.withValues(
-              alpha: (config.style.color?.a ?? 1.0) * config.opacity,
+          style: style.apply(
+            color: style.color?.withValues(
+              alpha: (style.color?.a ?? 1.0) * opacity,
             ),
           ),
         );
@@ -443,7 +431,7 @@ class const _SimpleMfm({
       children: [
         ...?leadingSpans,
         if (needsIsolate) const TextSpan(text: Unicode.FSI),
-        if (nodes case final nodes?) ..._buildNodes(context, config, nodes),
+        if (nodes case final nodes?) ..._buildNodes(context, nodes),
         if (needsIsolate) const TextSpan(text: Unicode.PDI),
         ...?trailingSpans,
       ],
@@ -454,7 +442,7 @@ class const _SimpleMfm({
     } else {
       return Text.rich(
         span,
-        textAlign: config.align,
+        textAlign: align,
         overflow: overflow,
         maxLines: maxLines,
       );
