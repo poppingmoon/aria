@@ -595,12 +595,9 @@ class const _Switch({
         ),
         _ => null,
       },
-      onChanged: switch (onChange) {
-        final onChange? => (v) {
-          value.value = v;
-          onChange.call(value: v);
-        },
-        _ => null,
+      onChanged: (v) {
+        value.value = v;
+        onChange?.call(value: v);
       },
       controlAffinity: ListTileControlAffinity.leading,
       dense: true,
