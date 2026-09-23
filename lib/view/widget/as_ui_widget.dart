@@ -36,13 +36,16 @@ class const AsUiWidget({
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: theme.colorScheme.outlineVariant),
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: theme.colorScheme.primary),
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6.0),
+                gapPadding: 0.0,
               ),
               filled: true,
               fillColor: theme.colorScheme.surface,
@@ -611,7 +614,7 @@ class const _TextField({
   required final String? caption,
   required final void Function(String)? onChanged,
   final int? minLines,
-  final int? maxLines,
+  required final int maxLines,
 }) extends HookWidget {
   @override
   Widget build(BuildContext context) {
@@ -633,6 +636,8 @@ class const _TextField({
           shortcuts: disablingTextShortcuts,
           child: TextField(
             controller: controller,
+            decoration: InputDecoration(isDense: maxLines <= 1),
+            style: style.style,
             onChanged: onChanged,
             minLines: minLines,
             maxLines: maxLines,
@@ -745,6 +750,7 @@ class const _NumberInput({
               ),
             ),
             keyboardType: TextInputType.number,
+            style: style.style,
             inputFormatters: [
               TextInputFormatter.withFunction((oldValue, newValue) {
                 if (newValue.text.isEmpty ||
@@ -822,6 +828,13 @@ class const _Select({
               await onChange?.call(value: v);
             }
           },
+          style: style.style,
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.symmetric(
+              vertical: 9.5,
+              horizontal: 12.0,
+            ),
+          ),
           isExpanded: true,
         ),
         if (caption case final caption?)
