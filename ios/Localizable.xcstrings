@@ -1765,6 +1765,12 @@
             "value": "Você foi convidado para uma conversa"
           }
         },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вас пригласили в чат"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -2064,7 +2070,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "If you have no idea, delete the access token through \"Manage access tokens\"."
+            "value": "If you did not create this, delete it in \"Manage access tokens\"."
           }
         },
         "es": {
@@ -11378,6 +11384,12 @@
             "value": "Teste de Transbordamento"
           }
         },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Избыточное тестирование"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -11465,6 +11477,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Diploma de Ensino Fundamental Misskey"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диплом начального курса Misskey"
           }
         },
         "th": {

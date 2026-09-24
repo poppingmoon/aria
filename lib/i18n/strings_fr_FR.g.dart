@@ -2910,6 +2910,7 @@ class _Translations$misskey$dataSaver_$fr_FR extends Translations$misskey$dataSa
 	// Translations
 	@override late final _Translations$misskey$dataSaver_$media_$fr_FR media_ = _Translations$misskey$dataSaver_$media_$fr_FR._(_root);
 	@override late final _Translations$misskey$dataSaver_$avatar_$fr_FR avatar_ = _Translations$misskey$dataSaver_$avatar_$fr_FR._(_root);
+	@override late final _Translations$misskey$dataSaver_$urlPreviewThumbnail_$fr_FR urlPreviewThumbnail_ = _Translations$misskey$dataSaver_$urlPreviewThumbnail_$fr_FR._(_root);
 	@override late final _Translations$misskey$dataSaver_$code_$fr_FR code_ = _Translations$misskey$dataSaver_$code_$fr_FR._(_root);
 }
 
@@ -3546,6 +3547,17 @@ class _Translations$misskey$dataSaver_$avatar_$fr_FR extends Translations$misske
 	// Translations
 	@override String get title => 'Animation d\'avatars';
 	@override String get description => 'Arrête l\'animation d\'avatars. Comme les images animées peuvent être plus volumineuses que les images normales, cela permet de réduire davantage le trafic de données.';
+}
+
+// Path: misskey.dataSaver_.urlPreviewThumbnail_
+class _Translations$misskey$dataSaver_$urlPreviewThumbnail_$fr_FR extends Translations$misskey$dataSaver_$urlPreviewThumbnail_$en_US {
+	_Translations$misskey$dataSaver_$urlPreviewThumbnail_$fr_FR._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Cacher les aperçus des liens';
+	@override String get description => 'Les miniatures d\'aperçu des liens ne seront plus chargés.';
 }
 
 // Path: misskey.dataSaver_.code_
