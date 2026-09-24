@@ -17,9 +17,9 @@ dependencies:
   audio_service: ^0.18.19
   audio_video_progress_bar: ^2.0.3
   audioplayers: ^6.8.1
-  cached_network_image: ^4.0.0
+  cached_network_image: ^4.0.2
   characters: ^1.4.1
-  chewie: ^1.16.2
+  chewie: ^1.17.2
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
@@ -30,7 +30,7 @@ dependencies:
   dynamic_color: ^2.1.0
   extended_image: ^10.1.0
   file: ^7.0.1
-  file_picker: ^12.2.0
+  file_picker: ^13.1.0
   flutter:
     sdk: flutter
   flutter_apns_only:
@@ -39,7 +39,7 @@ dependencies:
       ref: 1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb
       path: flutter_apns_only
   flutter_blurhash: ^0.9.1
-  flutter_cache_manager: ^3.4.2
+  flutter_cache_manager: ^3.4.5
   flutter_highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -57,13 +57,13 @@ dependencies:
       ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^22.3.0
+  flutter_local_notifications: ^22.3.1
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: ^2.13.0
   flutter_rust_bridge_hooks: ^2.13.0
-  flutter_secure_storage: ^11.0.0
+  flutter_secure_storage: ^11.2.0
   flutter_svg: ^2.3.0
   fluttertoast: ^10.0.0
   freezed_annotation: ^3.1.0
@@ -82,7 +82,7 @@ dependencies:
       path: highlighting
   hooks_riverpod: ^3.4.3
   html: ^0.15.7
-  image: ^4.9.2
+  image: ^4.10.1
   image_compression:
     git:
       url: https://github.com/poppingmoon/image_compression
@@ -97,7 +97,7 @@ dependencies:
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
   material_symbols_icons: ^4.2960.0
-  material_ui: ^1.2.0
+  material_ui: ^1.4.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
@@ -110,9 +110,9 @@ dependencies:
   mobile_scanner:
     git:
       url: https://github.com/poppingmoon/mobile_scanner
-      ref: 0926fe157f5978a8c56a1cdd08a06497358e587b
+      ref: 4c7c30ff16e9d0dde0491b3c5342250876f3a4d3
   multi_split_view: ^3.6.2
-  native_toolchain_rust: ^1.0.6
+  native_toolchain_rust: ^1.0.7
   package_info_plus: ^10.2.1
   path: ^1.9.1
   path_provider: ^2.1.6
@@ -127,7 +127,7 @@ dependencies:
   sensors_plus: ^7.1.0
   share_plus: ^13.3.0
   shared_preferences: ^2.5.5
-  slang: ^4.19.1
+  slang: ^4.19.2
   slang_flutter: ^4.19.0
   tinycolor2:
     git:
@@ -141,14 +141,14 @@ dependencies:
       path: unifiedpush_ui
   url_launcher: ^6.3.2
   uuid: ^4.6.0
-  vector_math: ^2.4.2
+  vector_math: ^2.4.3
   video_player: ^2.14.0
   wakelock_plus: ^1.8.0
   web_socket_channel: ^3.0.3
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: 70ef37831e8762ea82932a1de8f75a5eff2bed54
+      ref: 48bb229d1611df78c447f0aafd22b83cb9a5635d
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.2
 
@@ -184,18 +184,13 @@ dependency_overrides:
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 4bdb3ec9009549d5fa4a591b70482af4563bcbbd
+      ref: 703d8dc7ac76cefeb9f3a2543842105d4cafdde0
       path: packages/isar_community
   jni:
     git:
       url: https://github.com/poppingmoon/native
       ref: e7e48c07cb5d7087dce097a79d3f4dcd53a8fab3
       path: pkgs/jni
-  native_toolchain_rust:
-    git:
-      url: https://github.com/GregoryConrad/native_toolchain_rust
-      ref: 6113026d7b80344755160cfe9d615e024da0abe7
-      path: native_toolchain_rust
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
@@ -204,7 +199,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: d5b50b1d4392816ae9b078ca990e6b213e0e6b4d
+      ref: 1b5220e6fb9adef8ca80332e901f67580d7d42d5
 
 hooks:
   user_defines:
