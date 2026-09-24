@@ -7,7 +7,7 @@ import 'tab_type.dart';
 part 'tab_settings.freezed.dart';
 part 'tab_settings.g.dart';
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const TabSettings({
   final String? id,

@@ -299,13 +299,13 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} è uno dei servizi (chiamati istanze) che utilizzano la piattaforma open source <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Cerca';
-	@override String get reset => 'Ripristinare';
+	@override String get reset => 'Ripristina';
 	@override String get notifications => 'Notifiche';
 	@override String get username => 'Nome utente';
 	@override String get password => 'Password';
-	@override String get initialPasswordForSetup => 'Password iniziale, per avviare le impostazioni';
-	@override String get initialPasswordIsIncorrect => 'Password iniziale, sbagliata.';
-	@override String get initialPasswordForSetupDescription => 'Se hai installato Misskey di persona, usa la password che hai indicato nel file di configurazione.\nSe stai utilizzando un servizio di hosting Misskey, usa la password fornita dal gestore.\nSe non hai una password preimpostata, lascia il campo vuoto e continua.';
+	@override String get initialPasswordForSetup => 'Password iniziale per la configurazione';
+	@override String get initialPasswordIsIncorrect => 'La Password iniziale per la configurazione è sbagliata';
+	@override String get initialPasswordForSetupDescription => 'Se hai installato Misskey personalmente, usa la password che hai inserito nel file di configurazione.\nSe stai utilizzando un servizio di hosting Misskey, usa la password fornita dal gestore.\nSe non hai una password preimpostata, lascia il campo vuoto e continua.';
 	@override String get forgotPassword => 'Hai dimenticato la password?';
 	@override String get fetchingAsApObject => 'Recuperando dal Fediverso...';
 	@override String get ok => 'OK';

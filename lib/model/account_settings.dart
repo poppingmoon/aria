@@ -6,7 +6,7 @@ import '../constant/default_pinned_emojis.dart';
 part 'account_settings.freezed.dart';
 part 'account_settings.g.dart';
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const AccountSettings({
   // Privacy

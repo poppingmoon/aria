@@ -700,6 +700,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get script => 'Скрипт';
 	@override String get disablePagesScript => 'Вимкнути AiScript на Сторінках';
 	@override String get updateRemoteUser => 'Оновити інформацію про віддаленого користувача';
+	@override String get unsetMfa => 'Скинути двофакторну аутентифікацію';
+	@override String get unsetMfaConfirm => 'Ви впевнені, що бажаєте скинути двофакторну аутентифікацію?';
 	@override String get unsetUserAvatar => 'Деактивувати піктограму.';
 	@override String get unsetUserAvatarConfirm => ' Ви впевнені, що хочете прибрати аватар?';
 	@override String get unsetUserBanner => 'Випустити прапор.';
@@ -834,6 +836,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Створити добірку';
 	@override String get unclip => 'Незакріплений';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Ця нотатка вже включена до добірки "${name}". Ви хочете виключити нотатку з цього кліпу?';
+	@override String get removeFromAntenna => 'Видалити з цієї антени';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Ви впевнені, що бажаєте видалити цю нотатку від ${name}?';
 	@override String get public => 'Публічний';
 	@override String get private => 'Приватне';
 	@override String i18nInfo({required Object link}) => 'Misskey перекладається на різні мови волонтерами. Ви можете допомогти: ${link}';
@@ -1323,6 +1327,8 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get repositoryUrlOrTarballRequired => 'Якщо ви не опублікували репозиторій, натомість потрібно надати tarball-архів. Докладніше див. у .config/example.yml.';
 	@override String get feedback => 'Відгук';
 	@override String get feedbackUrl => 'URL відгуків';
+	@override String get impressum => 'Про власника';
+	@override String get impressumUrl => 'Посилання власника';
 	@override String get impressumDescription => 'У деяких країнах, наприклад у Німеччині, для комерційних сайтів юридично обов’язково вказувати контактну інформацію оператора сайту — вихідні дані.';
 	@override String get privacyPolicy => 'Політика конфіденційності';
 	@override String get privacyPolicyUrl => 'URL політики конфіденційності';
@@ -1378,16 +1384,59 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get alwaysConfirmFollow => 'Завжди підтверджувати підписку';
 	@override String get inquiry => 'Зв\'язок';
 	@override String get tryAgain => 'Повторіть спробу.';
+	@override String get confirmWhenRevealingSensitiveMedia => 'Підтверджуйте під час показу чутливого медіа ';
+	@override String get sensitiveMediaRevealConfirm => 'Це може бути чутливим медіа. Ви впевнені, що бажаєте побачити?';
 	@override String get createdLists => 'Створені списки';
 	@override String get createdAntennas => 'Створені антени';
+	@override String fromX({required Object x}) => 'З ${x}';
+	@override String get genEmbedCode => 'Згенерувати код для';
+	@override String get noteOfThisUser => 'Перелік нотаток цього користувача';
+	@override String get clipNoteLimitExceeded => 'До цього кліпу більше не можна додавати нотатки.';
+	@override String get performance => 'Продуктивність';
+	@override String get modified => 'Змінено';
 	@override String get discard => 'Відхилити';
+	@override String thereAreNChanges({required Object n}) => 'Змінено: ${n}';
+	@override String get signinWithPasskey => 'Увійти, використовуючи Passkey';
+	@override String get unknownWebAuthnKey => 'Невідомий Passkey';
+	@override String get passkeyVerificationFailed => 'Помилка під час верифікації Passkey';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Верифікація Passkey пройшла успішно, але вхід без пароля вимкнено.';
+	@override String get messageToFollower => 'Повідомлення підписникам';
+	@override String get target => 'Ціль';
+	@override String get testCaptchaWarning => 'Це тестова CAPTCHA. <strong>Не використовуйте її.</strong>';
 	@override String get prohibitedWordsForNameOfUser => 'Заборонені слова (імʼя користувача)';
+	@override String get prohibitedWordsForNameOfUserDescription => 'Якщо ім\'я користувача має рядок з цього переліку, зміна імені користувача буде заборонено. На користувачів з правами модератору ця заборона не розповсюджується.';
+	@override String get yourNameContainsProhibitedWords => 'Ваше ім\'я має заборонені слова';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Якщо ви бажаєте використовувати це ім\'я, зв\'яжіться з адміністратором вашого сервера.';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'Автор встановив необхідність авторизації для перегляду';
+	@override String get lockdown => 'Доступ обмежений';
 	@override String get pleaseSelectAccount => 'Виберіть акаунт';
+	@override String get availableRoles => 'Доступні ролі';
+	@override String get acknowledgeNotesAndEnable => 'Ввімкніть після зрозуміння попереджень.';
+	@override String get federationSpecified => 'Сервер працює через білий лист федерації. Зв\'язок з іншими серверами обмежена.';
+	@override String get federationDisabled => 'Федерація вимкнута для цього сервера. Ви не можете взаємодіяти з користувачами на інших серверах.';
 	@override String get draft => 'Чернетка';
+	@override String get draftsAndScheduledNotes => 'Чернетки й відкладені нотатки';
+	@override String get confirmOnReact => 'Підтвердити додавання реакції';
+	@override String reactAreYouSure({required Object emoji}) => 'Бажали б ви додати реакцію ${emoji}?';
+	@override String get markAsSensitiveConfirm => 'Чи бажаєте ви позначити цю медіа як чутливу?';
+	@override String get unmarkAsSensitiveConfirm => 'Чи бажаєте ви видалити позначку чутливості цього медіа?';
 	@override String get preferences => 'Налаштування';
+	@override String get accessibility => 'Доступність';
+	@override String get preferencesProfile => 'Налаштування профілю';
+	@override String get copyPreferenceId => 'Скопіювати ID налаштування';
+	@override String get resetToDefaultValue => 'Скинути налаштування до стандартних';
+	@override String get overrideByAccount => 'Перевизначити цим обліковим записом';
 	@override String get untitled => 'Без назви';
+	@override String get noName => 'Ім\'я не вказано';
 	@override String get skip => 'Пропустити';
 	@override String get restore => 'Відновити';
+	@override String get syncBetweenDevices => 'Синхронізувати між пристроями';
+	@override String get preferenceSyncConflictTitle => 'Налаштоване значення існує на сервері';
+	@override String get preferenceSyncConflictText => 'У разі увімкнення синхронізації налаштувань їхні значення будуть збережені на сервер. Але на сервері вже є налаштування. Який набір налаштувань ви б бажали перезаписати?';
+	@override String get preferenceSyncConflictChoiceMerge => 'З\'єднати';
+	@override String get preferenceSyncConflictChoiceServer => 'Налаштоване значення на сервері';
+	@override String get preferenceSyncConflictChoiceDevice => 'Налаштоване значення на пристрої';
+	@override String get preferenceSyncConflictChoiceCancel => 'Скасувати увімкнення синхронізації';
 	@override String get paste => 'Вставити';
 	@override String get emojiPalette => 'Палітра емодзі';
 	@override String get postForm => 'Створення нотатки';
@@ -1447,12 +1496,33 @@ class _Translations$misskey$uk_UA extends Translations$misskey$en_US {
 	@override String get previewingTheme => 'Попередній перегляд теми';
 	@override String get previewingThemeRestore => 'Відновити';
 	@override String get accessToken => 'Токен доступу';
+	@override String get chooseEmojiPalette => 'Обрати палітру емодзі';
+	@override String get addToEmojiPalette => 'Додати до палітри емодзі';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'Ця емодзі вже включена у цю палітру емодзі. Бажали б ви додати її ще раз?';
+	@override String get append => 'Додати у кінець';
+	@override String get prepend => 'Додати у початок';
+	@override String get urlPreviewSensitiveList => 'Посилання для обмеження показу мініатюр';
+	@override String get urlPreviewSensitiveListDescription => 'Використовуйте пробіл щоб зазначити умову AND, та перенесення на наступний ряд щоб зазначити умову OR. Закрийте текст використовуючи символ "/" для використання регулярних виразів. Якщо збіг знайдено, мініатюру буде сховано.';
+	@override String get pixelatedZoom => 'Пікселізоване приближення';
 	@override late final _Translations$misskey$imageEditing_$uk_UA imageEditing_ = _Translations$misskey$imageEditing_$uk_UA._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$uk_UA imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$uk_UA._(_root);
 	@override late final _Translations$misskey$compression_$uk_UA compression_ = _Translations$misskey$compression_$uk_UA._(_root);
 	@override late final _Translations$misskey$order_$uk_UA order_ = _Translations$misskey$order_$uk_UA._(_root);
 	@override late final _Translations$misskey$chat_$uk_UA chat_ = _Translations$misskey$chat_$uk_UA._(_root);
+	@override late final _Translations$misskey$emojiPalette_$uk_UA emojiPalette_ = _Translations$misskey$emojiPalette_$uk_UA._(_root);
+	@override late final _Translations$misskey$settings_$uk_UA settings_ = _Translations$misskey$settings_$uk_UA._(_root);
+	@override late final _Translations$misskey$preferencesProfile_$uk_UA preferencesProfile_ = _Translations$misskey$preferencesProfile_$uk_UA._(_root);
+	@override late final _Translations$misskey$preferencesBackup_$uk_UA preferencesBackup_ = _Translations$misskey$preferencesBackup_$uk_UA._(_root);
+	@override late final _Translations$misskey$accountSettings_$uk_UA accountSettings_ = _Translations$misskey$accountSettings_$uk_UA._(_root);
+	@override late final _Translations$misskey$abuseUserReport_$uk_UA abuseUserReport_ = _Translations$misskey$abuseUserReport_$uk_UA._(_root);
 	@override late final _Translations$misskey$delivery_$uk_UA delivery_ = _Translations$misskey$delivery_$uk_UA._(_root);
+	@override late final _Translations$misskey$bubbleGame_$uk_UA bubbleGame_ = _Translations$misskey$bubbleGame_$uk_UA._(_root);
+	@override late final _Translations$misskey$announcement_$uk_UA announcement_ = _Translations$misskey$announcement_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialAccountSetting_$uk_UA initialAccountSetting_ = _Translations$misskey$initialAccountSetting_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$uk_UA initialTutorial_ = _Translations$misskey$initialTutorial_$uk_UA._(_root);
+	@override late final _Translations$misskey$timelineDescription_$uk_UA timelineDescription_ = _Translations$misskey$timelineDescription_$uk_UA._(_root);
+	@override late final _Translations$misskey$serverRules_$uk_UA serverRules_ = _Translations$misskey$serverRules_$uk_UA._(_root);
+	@override late final _Translations$misskey$serverSettings_$uk_UA serverSettings_ = _Translations$misskey$serverSettings_$uk_UA._(_root);
 	@override late final _Translations$misskey$achievements_$uk_UA achievements_ = _Translations$misskey$achievements_$uk_UA._(_root);
 	@override late final _Translations$misskey$role_$uk_UA role_ = _Translations$misskey$role_$uk_UA._(_root);
 	@override late final _Translations$misskey$sensitiveMediaDetection_$uk_UA sensitiveMediaDetection_ = _Translations$misskey$sensitiveMediaDetection_$uk_UA._(_root);
@@ -1531,12 +1601,22 @@ class _Translations$misskey$imageFrameEditor_$uk_UA extends Translations$misskey
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Редагувати рамку';
+	@override String get tip => 'Ви можете декорувати зображення додаючи позначки, які мають кадри або метаданні.';
 	@override String get header => 'Заголовок';
+	@override String get footer => 'Нижня частина';
+	@override String get borderThickness => 'Товщина рамки';
+	@override String get labelScale => 'Розмір ';
+	@override String get centered => 'Центрувати';
+	@override String get availableVariables => 'Доступні змінні';
 	@override String get withQrCode => 'QR-код';
+	@override String get backgroundColor => 'Колір фону';
 	@override String get textColor => 'Колір тексту';
 	@override String get font => 'Шрифт';
 	@override String get fontSerif => 'Serif';
 	@override String get fontSansSerif => 'Sans serif';
+	@override String get quitWithoutSaveConfirm => 'Вийти без збереження?';
+	@override String get failedToLoadImage => 'Не вдалося завантажити зображення';
 }
 
 // Path: misskey.compression_
@@ -1571,15 +1651,176 @@ class _Translations$misskey$chat_$uk_UA extends Translations$misskey$chat_$en_US
 	@override String get messages => 'Повідомлення';
 	@override String get noMessagesYet => 'Повідомлень поки немає';
 	@override String get newMessage => 'Нове повідомлення';
+	@override String get individualChat => 'Особистий чат';
+	@override String get individualChat_description => 'Майте особистий чат з іншою людиною.';
+	@override String get roomChat => 'Група';
+	@override String get roomChat_description => 'Чат з декількома людьми.\nВи також можете запрошувати людей які мають вимкнені особисті чати, якщо вони приймуть запрошення.';
+	@override String get createRoom => 'Створити групу';
+	@override String get inviteUserToChat => 'Запросите людей щоб почати переписуватися';
+	@override String get yourRooms => 'Створені групи';
+	@override String get joiningRooms => 'Чати, до яких ви доєднанні';
 	@override String get invitations => 'Запросити';
+	@override String get noInvitations => 'Немає запрошень';
 	@override String get history => 'Історія';
 	@override String get noHistory => 'Історія порожня';
+	@override String get noRooms => 'Груп не знайдено';
 	@override String get inviteUser => 'Запросити користувачів';
+	@override String get sentInvitations => 'Відправленні запрошення';
+	@override String get join => 'Приєднатися';
 	@override String get ignore => 'Ігнорувати';
+	@override String get leave => 'Залишити групу';
 	@override String get members => 'Учасники';
+	@override String get searchMessages => 'Шукати повідомлення';
 	@override String get home => 'Домівка';
 	@override String get send => 'Відправити';
 	@override String get newline => 'Новий рядок';
+	@override String get muteThisRoom => 'Заглушити цю групу';
+	@override String get deleteRoom => 'Видалити групу';
+	@override String get chatNotAvailableForThisAccountOrServer => 'Чат не увімкнено на цьому сервері або для цього облікового запису.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'Чат доступний лише для читання для цього сервера або облікового запису. Ви не можете друкувати нові повідомлення або створювати/доєлнуватися до груп.';
+	@override String get chatNotAvailableInOtherAccount => 'Функція чату вимкнена для іншого користувача.';
+	@override String get cannotChatWithTheUser => 'Не можна почати чат з цим користувачем';
+	@override String get cannotChatWithTheUser_description => 'Чат або недоступний або інший користувач не увімкнув його.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'Ви не учасник цієї групи, але ви маєте запрошення до неї. Будь ласка, прийміть запрошення, щоб доєднатися.';
+	@override String get doYouAcceptInvitation => 'Чи приймаєте ви запрошення?';
+	@override String get chatWithThisUser => 'Написати цьому користувачу';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Цей користувач приймає особисті повідомлення лише від підписників.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Цей користувач приймає особисті повідомлення лише від тих користувачів, на яких має підписку.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Цей користувач приймає особисті повідомлення лише від користувачів, з якими вони взаємні підписники.';
+	@override String get thisUserNotAllowedChatAnyone => 'Цей користувач не приймає особисті повідомлення від усіх.';
+	@override String get chatAllowedUsers => 'З ким дозволити переписуватися';
+	@override String get chatAllowedUsers_note => 'Ви можете переписуватися з людьми, яким ви відправили повідомлення, не зважаючи на це налаштування.';
+	@override late final _Translations$misskey$chat_$chatAllowedUsers_$uk_UA chatAllowedUsers_ = _Translations$misskey$chat_$chatAllowedUsers_$uk_UA._(_root);
+}
+
+// Path: misskey.emojiPalette_
+class _Translations$misskey$emojiPalette_$uk_UA extends Translations$misskey$emojiPalette_$en_US {
+	_Translations$misskey$emojiPalette_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'Палітра';
+	@override String get enableSyncBetweenDevicesForPalettes => 'Увімкнути синхронізацію палітр між пристроями';
+	@override String get paletteForMain => 'Головна палітра';
+	@override String get paletteForReaction => 'Палітра реакцій';
+}
+
+// Path: misskey.settings_
+class _Translations$misskey$settings_$uk_UA extends Translations$misskey$settings_$en_US {
+	_Translations$misskey$settings_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get driveBanner => 'Ви можете курувати та налаштовувати диск, дивитися використовування, та керувати налаштуваннями вивантаження файлів. ';
+	@override String get pluginBanner => 'Ви можете розширювати функції клієнту за допомогою плагінів. Ви можете завантажити плагіни, налаштовувати та керувати окремо.';
+	@override String get notificationsBanner => 'Ви можете налаштовувати типи та кількість сповіщень від сервера також як і спливні сповіщення.';
+	@override String get api => 'API';
+	@override String get webhook => 'Веб хук';
+	@override String get serviceConnection => 'Інтеграції';
+	@override String get serviceConnectionBanner => 'Керуйте та налаштовуйте токени доступу та веб хуки задля інтегрування сторонніх додатків або сервісів.';
+	@override String get accountData => 'Інформація про обліковий запис';
+	@override String get accountDataBanner => 'Експортуйте та імпортуйте щоб керувати інформацією облікового запису.';
+	@override String get muteAndBlockBanner => 'Ви можете змінювати налаштування та керувати ними, щоб ховати контент та обмежувати дії від певних користувачів.';
+	@override String get accessibilityBanner => 'Ви можете персоналізувати клієнтський зовнішній вигляд та поведінку, та змінювати налаштування щоб оптимізувати використовування. ';
+	@override String get privacyBanner => 'Ви можете змінювати налаштування, пов\'язані з конфіденційністю облікового запису, такі як видимість змісту, виявність, та підтвердження підписок.';
+	@override String get securityBanner => 'Ви можете змінювати налаштування, пов\'язані з безпекою облікового запису, такі як пароль, методи входження, засоби аутентифікації, й Passkeys.';
+	@override String get preferencesBanner => 'Ви можете змінювати загальну поведінку клієнту згідно з вашими побажаннями.';
+	@override String get appearanceBanner => 'Ви можете налаштовувати зовнішній вигляд та показ клієнту згідно з вашими побажаннями.';
+	@override String get soundsBanner => 'Ви можете змінювати налаштування звукових ефектів для відтворення у клієнті.';
+	@override String get timelineAndNote => 'Стрічка та нотатки';
+	@override String get makeEveryTextElementsSelectable => 'Зробити всі текстові елементи здатними до виділення';
+	@override String get makeEveryTextElementsSelectable_description => 'Ввімкнення цього може зменшити зручність використання у деяких випадках.';
+	@override String get useStickyIcons => 'Зробити так, щоб іконки слідкували, поки гортаєш';
+	@override String get enableHighQualityImagePlaceholders => 'Показувати заповнювачі для високоякісних зображень ';
+	@override String get uiAnimations => 'Анімації інтерфейсу користувача';
+	@override String get showNavbarSubButtons => 'Показувати додаткові кнопки на панелі навігації';
+	@override String get ifOn => 'Коли ввімкнено';
+	@override String get ifOff => 'Коли вимкнено';
+	@override String get enableSyncThemesBetweenDevices => 'Синхронізувати встановленні теми між пристроями';
+	@override String get enablePullToRefresh => 'Потягніть щоб оновити';
+	@override String get enablePullToRefresh_description => 'Під час використовування миші, перетягувати коли натиснуто його колесо';
+	@override String get realtimeMode_description => 'Стабілізує з\'єднання з сервером й оновлює контент у реальному часі. Це може збільшити використання трафіку та споживання пам\'яті.';
+	@override String get contentsUpdateFrequency => 'Частота оновлення контенту';
+	@override String get contentsUpdateFrequency_description => 'Більше значення спричиняє до швидшого оновлення контенту, але зменшує продуктивність й збільшує споживання трафіку як і використання пам\'яті. ';
+	@override String get contentsUpdateFrequency_description2 => 'Коли режим реального часу увімкнуто, контент оновляється у реальному часі попри цього налаштування. ';
+	@override String get showUrlPreview => 'Показувати попередній перегляд посилань';
+	@override String get showAvailableReactionsFirstInNote => 'Показувати доступні реакції зверху.';
+	@override String get enableAnimatedImages => 'Увімкнути анімовані зображення';
+	@override String get settingsPersistence_title => 'Збереження налаштувань';
+	@override String get settingsPersistence_description1 => 'Ввімкнення збереження налаштувань запобігає загублення значень налаштувань.';
+	@override String get settingsPersistence_description2 => 'Це налаштування може бути неможливо увімкнути залежно від умов.';
+	@override late final _Translations$misskey$settings_$chat_$uk_UA chat_ = _Translations$misskey$settings_$chat_$uk_UA._(_root);
+}
+
+// Path: misskey.preferencesProfile_
+class _Translations$misskey$preferencesProfile_$uk_UA extends Translations$misskey$preferencesProfile_$en_US {
+	_Translations$misskey$preferencesProfile_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileName => 'Ім\'я профілю';
+	@override String get profileNameDescription => 'Встановіть ім\'я яке ідентифікує цей пристрій.';
+	@override String get profileNameDescription2 => 'Наприклад: "Сімейний комп\'ютер", "Телефон"';
+	@override String get manageProfiles => 'Керувати профілями';
+	@override String get shareSameProfileBetweenDevicesIsNotRecommended => 'Ми не рекомендуємо використовувати той самий профіль на декількох пристроях.';
+	@override String get useSyncBetweenDevicesOptionIfYouWantToSyncSetting => 'Якщо існують налаштування, які ви бажаєте синхронізувати між декількома пристроями, увімкніть пункт "Синхронізувати між декількома пристроями"  окремо для кожного пристрою.';
+}
+
+// Path: misskey.preferencesBackup_
+class _Translations$misskey$preferencesBackup_$uk_UA extends Translations$misskey$preferencesBackup_$en_US {
+	_Translations$misskey$preferencesBackup_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get autoBackup => 'Автоматичні резервні копії';
+	@override String get restoreFromBackup => 'Відновити резервну копію';
+	@override String get noBackupsFoundTitle => 'Резервних копій не знайдено';
+	@override String get noBackupsFoundDescription => 'Автоматично створених резервних копій не знайдено, але якщо ви зберегли файл з резервними копіями, ви можете імпортувати його та відновити їх.';
+	@override String get selectBackupToRestore => 'Оберіть резервну копію для відновлення';
+	@override String get youNeedToNameYourProfileToEnableAutoBackup => 'Ім\'я профілю повинно існувати, щоб увімкнути автоматичні резервні копії.';
+	@override String get autoPreferencesBackupIsNotEnabledForThisDevice => 'Автоматичне резервне копіювання налаштувань вимкнуто для цього пристрою.';
+	@override String get backupFound => 'Резервну копію налаштувань знайдено';
+	@override String get forceBackup => 'Примусово створити резервну копію налаштувань';
+}
+
+// Path: misskey.accountSettings_
+class _Translations$misskey$accountSettings_$uk_UA extends Translations$misskey$accountSettings_$en_US {
+	_Translations$misskey$accountSettings_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'Вимога входу для перегляду контенту';
+	@override String get requireSigninToViewContentsDescription1 => 'Вимагатиму входження для перегляду усіх нотаток й іншого створеного вами контенту. Це матиме ефект на запобігання збирачів збирати вашу інформацію.';
+	@override String get requireSigninToViewContentsDescription2 => 'Контент не буде показуватися у попередніх переглядах посилань (OGP), в інтеграціях у вебсторінки, або на серверах, які не підтримують цитати у нотатках.';
+	@override String get requireSigninToViewContentsDescription3 => 'Ці обмеження можуть не бути застосованими до федеративного контенту з інших видалених серверів.';
+	@override String get makeNotesFollowersOnlyBefore => 'Показувати минулі нотатки лише для підписників';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'Поки ця функція ввімкнена, тільки підписники можуть бачити нотатки створенні до обраної дати та часу або були видимі протягом зазначеного часу. У разі вимкнення, статус публікації нотаток також буде відновлено. ';
+	@override String get makeNotesHiddenBefore => 'Зробити минулі нотатки приватними';
+	@override String get makeNotesHiddenBeforeDescription => 'Поки ця функція ввімкнена, тільки ви можете бачити нотатки створенні до обраної дати та часу або були видимі протягом зазначеного часу. У разі вимкнення, статус публікації нотаток також буде відновлено. ';
+	@override String get mayNotEffectForFederatedNotes => 'Це не впливає на об\'єднанні з видаленим сервером нотатки.';
+	@override String get mayNotEffectSomeSituations => 'Ці обмеження спрощенні. Вони можуть бути не застосовуваними у деяких випадках, таких як перегляд на видаленому сервері під час модерації. ';
+	@override String get notesHavePassedSpecifiedPeriod => 'Нотатки, які знаходяться в обраному періоді';
+	@override String get notesOlderThanSpecifiedDateAndTime => 'Нотатки, які були створені до обраної дати та часу';
+}
+
+// Path: misskey.abuseUserReport_
+class _Translations$misskey$abuseUserReport_$uk_UA extends Translations$misskey$abuseUserReport_$en_US {
+	_Translations$misskey$abuseUserReport_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => 'Переслати';
+	@override String get forwardDescription => 'Переслати скаргу до видаленого сервера як анонімний системний обліковий запис.';
+	@override String get resolve => 'Вирішити';
+	@override String get accept => 'Прийняти';
+	@override String get reject => 'Відхилити';
+	@override String get resolveTutorial => 'Якщо зміст скарги правдивий, оберіть "Прийняти" щоб вирішити її.\nЯкщо зміст скарги брехливий, оберіть "Відхилити" щоб проігнорувати її.';
 }
 
 // Path: misskey.delivery_
@@ -1589,8 +1830,129 @@ class _Translations$misskey$delivery_$uk_UA extends Translations$misskey$deliver
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get status => 'Статус доставлення';
 	@override String get stop => 'Призупинено';
+	@override String get resume => 'Відновити доставлення';
 	@override late final _Translations$misskey$delivery_$type_$uk_UA type_ = _Translations$misskey$delivery_$type_$uk_UA._(_root);
+}
+
+// Path: misskey.bubbleGame_
+class _Translations$misskey$bubbleGame_$uk_UA extends Translations$misskey$bubbleGame_$en_US {
+	_Translations$misskey$bubbleGame_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get howToPlay => 'Як грати';
+	@override String get hold => 'Затримати';
+	@override late final _Translations$misskey$bubbleGame_$score_$uk_UA score_ = _Translations$misskey$bubbleGame_$score_$uk_UA._(_root);
+	@override late final _Translations$misskey$bubbleGame_$howToPlay_$uk_UA howToPlay_ = _Translations$misskey$bubbleGame_$howToPlay_$uk_UA._(_root);
+}
+
+// Path: misskey.announcement_
+class _Translations$misskey$announcement_$uk_UA extends Translations$misskey$announcement_$en_US {
+	_Translations$misskey$announcement_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get forExistingUsers => 'Тільки для існуючих користувачів';
+	@override String get forExistingUsersDescription => 'Це оголошення буде показано лише існуючим користувачам, якщо публікацію ввімкнуто.';
+	@override String get needConfirmationToRead => 'Вимагати окреме підтвердження заради позначення прочитаним';
+	@override String get needConfirmationToReadDescription => 'Окремий запит заради позначення цього оголошення прочитаним буде показано якщо ввімкнуто. Це оголошення також буде виключено з будь-якого функціоналу "Позначити як прочитане".';
+	@override String get end => 'Архівувати оголошення';
+	@override String get tooManyActiveAnnouncementDescription => 'Велика кількість оголошень може погіршити досвід користувача. Будь ласка, архівуйте оголошення, які здаються вам неактуальними.';
+	@override String get readConfirmTitle => 'Позначити як прочитане?';
+	@override String readConfirmText({required Object title}) => 'Це позначить зміст "${title}" як прочитаний.';
+	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Краще за все використовувати оголошення щоб повідомляти про свіжу й обмежену по часу інформацію, аніж стару й постійно актуальну.';
+	@override String get dialogAnnouncementUxWarn => 'Наявність двох або більше оголошення типу діалогу водночас може суттєво вплинути на досвід користувача, тому, будь ласка, використовуйте їх обережно.';
+	@override String get silence => 'Без оповіщення';
+	@override String get silenceDescription => 'Ввімкнення цього пункту вимкне повідомлення користувача про оголошення, й користувач не буде вимушеним його читати.';
+}
+
+// Path: misskey.initialAccountSetting_
+class _Translations$misskey$initialAccountSetting_$uk_UA extends Translations$misskey$initialAccountSetting_$en_US {
+	_Translations$misskey$initialAccountSetting_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get accountCreated => 'Ваш обліковий запис успішно створено!';
+	@override String get letsStartAccountSetup => 'Для початку нумо підготуймо ваш профіль.';
+	@override String get letsFillYourProfile => 'Спочатку нумо підготуймо ваш профіль.';
+	@override String get profileSetting => 'Налаштування профілю';
+	@override String get privacySetting => 'Налаштування конфіденційності';
+	@override String get theseSettingsCanEditLater => 'Ви завжди можете змінити ці налаштування пізніше.';
+	@override String get youCanEditMoreSettingsInSettingsPageLater => 'Є ще багато налаштувань які ви можете змінити у розділу "Налаштування". Обов\'язково завітайте туди.';
+	@override String get followUsers => 'Спробуйте підписатися на інших користувачів, щоб створити свою хронологію.';
+	@override String pushNotificationDescription({required Object name}) => 'Ввімкнення оповіщень дозволить вам отримувати оголошення від ${name} прямо на ваш пристрій.';
+	@override String get initialAccountSettingCompleted => 'Обліковий запис підготовано!';
+	@override String haveFun({required Object name}) => 'Насолоджуйтесь ${name}!';
+	@override String youCanContinueTutorial({required Object name}) => 'Ви можете продовжити посібник по тому, як використовувати ${name} (Misskey), або ви можете закінчити посібник й відразу почати користуватися ним. ';
+	@override String get startTutorial => 'Увімкнути посібник';
+	@override String get skipAreYouSure => 'Ви й правда бажаєте пропустити підготування профілю? (нуймо, не треба)';
+	@override String get laterAreYouSure => 'Ви й правда бажаєте підготувати профіль пізніше?';
+}
+
+// Path: misskey.initialTutorial_
+class _Translations$misskey$initialTutorial_$uk_UA extends Translations$misskey$initialTutorial_$en_US {
+	_Translations$misskey$initialTutorial_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get launchTutorial => 'Почати посібник';
+	@override String get title => 'Посібник';
+	@override String get wellDone => 'Ай, молодець! Відмінно!';
+	@override String get skipAreYouSure => 'Вимкнути посібник?';
+	@override late final _Translations$misskey$initialTutorial_$landing_$uk_UA landing_ = _Translations$misskey$initialTutorial_$landing_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$note_$uk_UA note_ = _Translations$misskey$initialTutorial_$note_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$reaction_$uk_UA reaction_ = _Translations$misskey$initialTutorial_$reaction_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$timeline_$uk_UA timeline_ = _Translations$misskey$initialTutorial_$timeline_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$uk_UA postNote_ = _Translations$misskey$initialTutorial_$postNote_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$uk_UA howToMakeAttachmentsSensitive_ = _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$done_$uk_UA done_ = _Translations$misskey$initialTutorial_$done_$uk_UA._(_root);
+}
+
+// Path: misskey.timelineDescription_
+class _Translations$misskey$timelineDescription_$uk_UA extends Translations$misskey$timelineDescription_$en_US {
+	_Translations$misskey$timelineDescription_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'У домашній стрічці ви можете бачити нотатки від облікових записів, на які ви підписані.';
+	@override String get local => 'У локальній стрічці ви можете побачити нотатки від усіх користувачів серверу.';
+	@override String get social => 'Соціальна стрічка показує нотатки й з домашньої, й з локальної стрічок. ';
+	@override String get global => 'У глобальній стрічці ви можете побачити нотатки з усіх під\'єднаних серверів.';
+}
+
+// Path: misskey.serverRules_
+class _Translations$misskey$serverRules_$uk_UA extends Translations$misskey$serverRules_$en_US {
+	_Translations$misskey$serverRules_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'Набір правил які будуть показані перед реєстрацією. Налаштування короткого огляду Умов Сервісу рекомендовано.';
+}
+
+// Path: misskey.serverSettings_
+class _Translations$misskey$serverSettings_$uk_UA extends Translations$misskey$serverSettings_$en_US {
+	_Translations$misskey$serverSettings_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get iconUrl => 'Посилання на іконку';
+	@override String appIconDescription({required Object host}) => 'Вказує іконку яку треба використовувати коли ${host} показано як застосунок.';
+	@override String get appIconUsageExample => 'Наприклад: як PWA, або коли показано як закладку на домашній сторінці на телефоні.';
+	@override String get appIconStyleRecommendation => 'Оскільки іконку можна обрізати до квадрата або кола, рекомендується використовувати іконку з кольоровою рамкою навколо змісту.';
+	@override String appIconResolutionMustBe({required Object resolution}) => 'Мінімальним розміром є ${resolution}.';
+	@override String get manifestJsonOverride => 'Перевизначення manifest.json ';
+	@override String get shortName => 'Коротке ім\'я';
+	@override String get shortNameDescription => 'Скорочення для ім\'я інстанції, яке може бути показано, якщо повне ім\'я задовге.';
+	@override String get fanoutTimelineDescription => 'Сильно покращує продуктивність отримання стрічки й зменшує навантаженість на базу даних, якщо ввімкнуто. Натомість Redis споживатиму більшу кількість пам\'яті. Розгляньте вимкнення у випадку малої кількості пам\'яті серверу або його нестабільності.';
 }
 
 // Path: misskey.achievements_
@@ -1907,6 +2269,7 @@ class _Translations$misskey$sfx_$uk_UA extends Translations$misskey$sfx_$en_US {
 	@override String get note => 'Нотатки';
 	@override String get noteMy => 'Мої нотатки';
 	@override String get notification => 'Сповіщення';
+	@override String get chatMessage => 'Написати цьому користувачу';
 }
 
 // Path: misskey.ago_
@@ -2066,6 +2429,7 @@ class _Translations$misskey$widgets_$uk_UA extends Translations$misskey$widgets_
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Список користувачів';
 	@override late final _Translations$misskey$widgets_$userList_$uk_UA userList_ = _Translations$misskey$widgets_$userList_$uk_UA._(_root);
+	@override String get chat => 'Написати цьому користувачу';
 }
 
 // Path: misskey.widgetOptions_
@@ -2439,6 +2803,7 @@ class _Translations$misskey$watermarkEditor_$uk_UA extends Translations$misskey$
 	@override String get image => 'Зображення';
 	@override String get advanced => 'Розширені';
 	@override String get angle => 'Кут';
+	@override String get failedToLoadImage => 'Не вдалося завантажити зображення';
 }
 
 // Path: misskey.imageEffector_
@@ -2448,6 +2813,7 @@ class _Translations$misskey$imageEffector_$uk_UA extends Translations$misskey$im
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get failedToLoadImage => 'Не вдалося завантажити зображення';
 	@override late final _Translations$misskey$imageEffector_$fxs_$uk_UA fxs_ = _Translations$misskey$imageEffector_$fxs_$uk_UA._(_root);
 	@override late final _Translations$misskey$imageEffector_$fxProps_$uk_UA fxProps_ = _Translations$misskey$imageEffector_$fxProps_$uk_UA._(_root);
 }
@@ -2480,8 +2846,21 @@ class _Translations$misskey$imageEditing_$vars_$uk_UA extends Translations$missk
 	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
+	@override String get caption => 'Опис файлу';
 	@override String get filename => 'Ім\'я файлу';
+	@override String get filename_without_ext => 'Ім\'я файлу без розширення';
+	@override String get year => 'Рік створення';
+	@override String get month => 'Місяць створення';
+	@override String get day => 'День створення';
+	@override String get hour => 'Година створення';
+	@override String get minute => 'Хвилина створення';
+	@override String get second => 'Секунда створення';
+	@override String get camera_model => 'Модель камери';
+	@override String get camera_lens_model => 'Модель лінзи';
+	@override String get camera_mm => 'Фокусна відстань';
+	@override String get camera_mm_35 => 'Фокусна відстань (у 35 мм форматі)';
 	@override String get camera_f => 'Діафрагма (f-число)';
+	@override String get camera_s => 'Витримка';
 	@override String get camera_iso => 'ISO';
 	@override String get gps_lat => 'Широта';
 	@override String get gps_long => 'Довгота';
@@ -2511,6 +2890,31 @@ class _Translations$misskey$compression_$size_$uk_UA extends Translations$misske
 	@override String get small => 'Малий розмір';
 }
 
+// Path: misskey.chat_.chatAllowedUsers_
+class _Translations$misskey$chat_$chatAllowedUsers_$uk_UA extends Translations$misskey$chat_$chatAllowedUsers_$en_US {
+	_Translations$misskey$chat_$chatAllowedUsers_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Усі';
+	@override String get followers => 'Тільки ваши підписники';
+	@override String get following => 'Тільки користувачі, за якими ви слідкуєте';
+	@override String get mutual => 'Тільки підписники, за якими ви слідкуєте';
+	@override String get none => 'Ніхто';
+}
+
+// Path: misskey.settings_.chat_
+class _Translations$misskey$settings_$chat_$uk_UA extends Translations$misskey$settings_$chat_$en_US {
+	_Translations$misskey$settings_$chat_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSenderName => 'Показувати ім\'я відправника';
+	@override String get sendOnEnter => 'Використовувати Enter для відправлення';
+}
+
 // Path: misskey.delivery_.type_
 class _Translations$misskey$delivery_$type_$uk_UA extends Translations$misskey$delivery_$type_$en_US {
 	_Translations$misskey$delivery_$type_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
@@ -2519,6 +2923,136 @@ class _Translations$misskey$delivery_$type_$uk_UA extends Translations$misskey$d
 
 	// Translations
 	@override String get none => 'Публікація';
+	@override String get manuallySuspended => 'Призупинено власноруч';
+	@override String get goneSuspended => 'Сервер призупинено через видалення серверу';
+	@override String get autoSuspendedForNotResponding => 'Сервер призупинено через відсутність відповідей';
+	@override String get softwareSuspended => 'Призупинено через припинення оновлення програмного забезпечення';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _Translations$misskey$bubbleGame_$score_$uk_UA extends Translations$misskey$bubbleGame_$score_$en_US {
+	_Translations$misskey$bubbleGame_$score_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Рахунок';
+	@override String get scoreYen => 'Кількість зроблених грошей';
+	@override String get highScore => 'Найвищий рахунок';
+	@override String get maxChain => 'Максимальна кількість ';
+	@override String yen({required Object yen}) => '${yen} Єн';
+	@override String estimatedQty({required Object qty}) => '${qty} Шматків';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} Оніґірі';
+}
+
+// Path: misskey.bubbleGame_.howToPlay_
+class _Translations$misskey$bubbleGame_$howToPlay_$uk_UA extends Translations$misskey$bubbleGame_$howToPlay_$en_US {
+	_Translations$misskey$bubbleGame_$howToPlay_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get section1 => 'Відкоректуйте позицію та скиньте об\'єкт у коробку.';
+	@override String get section2 => 'Коли два однакових об\'єкти доторкаються один одного, вони створять один більший об\'єкт, й ви отримаєте бали до рахунку.';
+	@override String get section3 => 'Гра закінчується коли об\'єкти переповнюють коробку. Розраховуйте на більший рахунок, поки з\'єднуєте об\'єкти заради уникнення переповнення коробки!';
+}
+
+// Path: misskey.initialTutorial_.landing_
+class _Translations$misskey$initialTutorial_$landing_$uk_UA extends Translations$misskey$initialTutorial_$landing_$en_US {
+	_Translations$misskey$initialTutorial_$landing_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ласкаво просимо до Посібника';
+	@override String get description => 'Тут ви можете ознайомитися з основами використання Misskey та його особливостями. ';
+}
+
+// Path: misskey.initialTutorial_.note_
+class _Translations$misskey$initialTutorial_$note_$uk_UA extends Translations$misskey$initialTutorial_$note_$en_US {
+	_Translations$misskey$initialTutorial_$note_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Що таке нотатка?';
+	@override String get description => 'Пости у Misskey називають "Нотатки". Нотатки відсортовані хронологічно й  оновлюються у реальному часі.';
+	@override String get reply => 'Натисніть на кнопку, щоб відповісти на повідомлення. Відповідати на відповіді також можливо.';
+	@override String get renote => 'Ви можете поділитися цією нотаткою у своїй стрічці. Ви також можете цитувати її у ваших коментарях.';
+	@override String get reaction => 'Ви можете додавати реакції на нотатки. Детальніше це буде пояснено на наступній сторінці.';
+	@override String get menu => 'Ви можете переглядати дані о нотатці, копіювати посилання, й виконувати інші дії.';
+}
+
+// Path: misskey.initialTutorial_.reaction_
+class _Translations$misskey$initialTutorial_$reaction_$uk_UA extends Translations$misskey$initialTutorial_$reaction_$en_US {
+	_Translations$misskey$initialTutorial_$reaction_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Що таке реакція?';
+	@override String get description => 'На нотатки можна додавати різні реакції. Реакції дозволяють вам передавати такі нюанси, які не передати звичайною "вподобайкою".';
+	@override String get letsTryReacting => 'Реакції можна додавати натискаючи на кнопку "+" на нотатці. Спробуйте додати реакцію на цю прикладкову нотатку!';
+	@override String get reactToContinue => 'Додайте реакцію, щоб продовжити.';
+	@override String get reactNotification => 'Ви отримаєте оголошення у реальному часі, якщо хтось додасть реакцію на вашу нотатку.';
+	@override String get reactDone => 'Ви можете скасувати реакцію натискаючи на кнопку "-".';
+}
+
+// Path: misskey.initialTutorial_.timeline_
+class _Translations$misskey$initialTutorial_$timeline_$uk_UA extends Translations$misskey$initialTutorial_$timeline_$en_US {
+	_Translations$misskey$initialTutorial_$timeline_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Концепт Стрічок';
+	@override String get description1 => 'Misskey надає декілька стрічок в залежності від того, як ви ними користуєтесь (деякі можуть бути недоступні в залежності від правил серверу).';
+	@override String get home => 'Ви можете переглядати нотатки від облікових записів на які ви підписані. ';
+	@override String get local => 'Ви можете переглядати нотатки від усіх користувачів цього сервера.';
+	@override String get social => 'Нотатки з домашньої й локальної стрічки будуть показані тут.';
+	@override String get global => 'Ви можете переглядати нотатки з усіх під\'єднаних серверів.';
+	@override String get description2 => 'Ви можете перемикатися між стрічками зверху вашого екрану у будь-який час.';
+	@override String description3({required Object link}) => 'Також є спискові стрічки й канальні стрічки. Детальніше написано у ${link}.';
+}
+
+// Path: misskey.initialTutorial_.postNote_
+class _Translations$misskey$initialTutorial_$postNote_$uk_UA extends Translations$misskey$initialTutorial_$postNote_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Налаштування публікації нотатки';
+	@override String get description1 => 'Коли ви публікуєте нотатку у Missket, доступно декілька її налаштувань. Публікація буде виглядати ось так.';
+	@override late final _Translations$misskey$initialTutorial_$postNote_$visibility_$uk_UA visibility_ = _Translations$misskey$initialTutorial_$postNote_$visibility_$uk_UA._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$cw_$uk_UA cw_ = _Translations$misskey$initialTutorial_$postNote_$cw_$uk_UA._(_root);
+}
+
+// Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
+class _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$uk_UA extends Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$en_US {
+	_Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Як позначати додатки як чутливі?';
+	@override String get description => 'Позначайте як чутливі додатки якщо цього вимагають правила серверу, або якщо ви вважаєте, що це потрібно.';
+	@override String get tryThisFile => 'Спробуйте позначити додане зображення як чутливе!';
+	@override late final _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$uk_UA exampleNote_ = _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$uk_UA._(_root);
+	@override String get method => 'Щоб позначити додаток як чутливий, натисніть на мініатюру файлу, відкрийте меню, й натисніть "Позначити як чутливе".';
+	@override String get sensitiveSucceeded => 'Коли додаєте файли, будь ласка, позначайте їх як чутливі у разі вимозі цього правилами серверу.';
+	@override String get doItToContinue => 'Позначте доданий файл як чутливий щоб продовжити.';
+}
+
+// Path: misskey.initialTutorial_.done_
+class _Translations$misskey$initialTutorial_$done_$uk_UA extends Translations$misskey$initialTutorial_$done_$en_US {
+	_Translations$misskey$initialTutorial_$done_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ви завершили посібник! 🎉';
+	@override String description({required Object link}) => 'Показані функції це лише мала частина. Щоб дізнатися детальніше про використання Misskey, зверніться до ${link}.';
 }
 
 // Path: misskey.achievements_.types_
@@ -2816,6 +3350,7 @@ class _Translations$misskey$deck_$columns_$uk_UA extends Translations$misskey$de
 	@override String get channel => 'Канали';
 	@override String get mentions => 'Згадки';
 	@override String get direct => 'Особисте';
+	@override String get chat => 'Написати цьому користувачу';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
@@ -2863,6 +3398,46 @@ class _Translations$misskey$imageEffector_$fxProps_$uk_UA extends Translations$m
 	@override String get color => 'Колір';
 	@override String get opacity => 'Непрозорість';
 	@override String get lightness => 'Яскравість';
+}
+
+// Path: misskey.initialTutorial_.postNote_.visibility_
+class _Translations$misskey$initialTutorial_$postNote_$visibility_$uk_UA extends Translations$misskey$initialTutorial_$postNote_$visibility_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$visibility_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'Ви можете обмежити хто може побачити вашу нотатку.';
+	@override String get public => 'Цю нотатку буде видно для кожного користувача.';
+	@override String get home => 'Показується лише у домашній стрічці. Люди відвідуючи ваш профіль, через підписки, або через реноти можуть побачити їх. ';
+	@override String get followers => 'Цю нотатку зможуть побачити лише ваші підписники, й ренотнути цю нотатку неможливо.';
+	@override String get direct => 'Цю нотатку зможуть побачити лише обрані користувачі, та їм буде оголошено про це. Може використовуватися як альтернатива особливим повідомленням.';
+	@override String get doNotSendConfidencialOnDirect1 => 'Будьте обережними з відсиланням конфіденційної інформації!';
+	@override String get doNotSendConfidencialOnDirect2 => 'Адміністратор сервера може бачити що ви пишете. Будьте обережними с чутливою інформацією коли відправляєте особисті нотатки користувачам на ненадійні сервери.';
+	@override String get localOnly => 'Публікування з цією позначкою не буде передаватися приєднаним серверам. Користувачі на інших серверах не зможуть переглядати ці нотатки напряму, всупереч налаштуванню зверху.';
+}
+
+// Path: misskey.initialTutorial_.postNote_.cw_
+class _Translations$misskey$initialTutorial_$postNote_$cw_$uk_UA extends Translations$misskey$initialTutorial_$postNote_$cw_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$cw_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Попередження щодо змісту';
+	@override String get description => 'Замість тіла буде показано зміст секції "коментарі". Натискання "прочитати більше" покаже тіло.';
+	@override late final _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$uk_UA exampleNote_ = _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$uk_UA._(_root);
+	@override String get useCases => 'Це використовується у разі вимоги правил серверу, для обов\'язкових нотаток, або заради самообмеження чутливого контенту.';
+}
+
+// Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
+class _Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$uk_UA extends Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$en_US {
+	_Translations$misskey$initialTutorial_$howToMakeAttachmentsSensitive_$exampleNote_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get note => 'Упс, щось я зробив не так...';
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -3670,4 +4245,15 @@ class _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$u
 
 	// Translations
 	@override String get mail => 'E-mail';
+}
+
+// Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
+class _Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$uk_UA extends Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$cw_$exampleNote_$uk_UA._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get cw => 'Увага: тут нема котиків!';
+	@override String get note => 'Їх тут і насправді нема. Я ж попереджав!';
 }

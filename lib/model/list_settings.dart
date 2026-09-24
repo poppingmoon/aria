@@ -4,7 +4,8 @@ import 'package:misskey_dart/misskey_dart.dart';
 part 'list_settings.freezed.dart';
 part 'list_settings.g.dart';
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const ListSettings({final String? name, final bool? isPublic})
     with _$ListSettings {
   factory fromJson(Map<String, Object?> json) => _$ListSettingsFromJson(json);

@@ -20,7 +20,7 @@ sealed class TabIcon {
   Map<String, Object?> toJson();
 }
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const MaterialIcon({required final int codePoint})
     with _$MaterialIcon
@@ -31,7 +31,7 @@ class const MaterialIcon({required final int codePoint})
   Map<String, Object?> toJson() => _$MaterialIconToJson(this);
 }
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const ImageIcon({required final String url})
     with _$ImageIcon
@@ -42,7 +42,7 @@ class const ImageIcon({required final String url})
   Map<String, Object?> toJson() => _$ImageIconToJson(this);
 }
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const EmojiIcon({required final String emoji})
     with _$EmojiIcon

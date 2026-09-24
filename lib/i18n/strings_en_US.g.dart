@@ -4981,8 +4981,8 @@ class Translations$misskey$en_US {
 	/// en-US: 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.'
 	String get urlPreviewSensitiveListDescription => 'Use spaces to specify AND conditions, and line breaks to specify OR conditions. Enclose text in slashes to use regular expressions. If a match is found, the thumbnail will be hidden.';
 
-	/// en-US: 'Pixalated Zoom'
-	String get pixelatedZoom => 'Pixalated Zoom';
+	/// en-US: 'Pixelated Zoom'
+	String get pixelatedZoom => 'Pixelated Zoom';
 
 	late final Translations$misskey$imageEditing_$en_US imageEditing_ = Translations$misskey$imageEditing_$en_US.internal(_root);
 	late final Translations$misskey$imageFrameEditor_$en_US imageFrameEditor_ = Translations$misskey$imageFrameEditor_$en_US.internal(_root);
@@ -5606,8 +5606,8 @@ class Translations$misskey$accountSettings_$en_US {
 	/// en-US: 'These restrictions are simplified. They may not apply in some situations, such as when viewing on a remote server or during moderation.'
 	String get mayNotEffectSomeSituations => 'These restrictions are simplified. They may not apply in some situations, such as when viewing on a remote server or during moderation.';
 
-	/// en-US: 'Note that the specified time has passed'
-	String get notesHavePassedSpecifiedPeriod => 'Note that the specified time has passed';
+	/// en-US: 'Notes after the specified date and time'
+	String get notesHavePassedSpecifiedPeriod => 'Notes after the specified date and time';
 
 	/// en-US: 'Notes before the specified date and time'
 	String get notesOlderThanSpecifiedDateAndTime => 'Notes before the specified date and time';
@@ -8174,8 +8174,8 @@ class Translations$misskey$notification_$en_US {
 	/// en-US: 'An access token has been created'
 	String get createToken => 'An access token has been created';
 
-	/// en-US: 'If you have no idea, delete the access token through "{text}".'
-	String createTokenDescription({required Object text}) => 'If you have no idea, delete the access token through "${text}".';
+	/// en-US: 'If you did not create this, delete it in "{text}".'
+	String createTokenDescription({required Object text}) => 'If you did not create this, delete it in "${text}".';
 
 	late final Translations$misskey$notification_$types_$en_US types_ = Translations$misskey$notification_$types_$en_US.internal(_root);
 	late final Translations$misskey$notification_$actions_$en_US actions_ = Translations$misskey$notification_$actions_$en_US.internal(_root);
@@ -11069,8 +11069,8 @@ class Translations$misskey$customEmojisManager_$gridCommon_$en_US {
 	/// en-US: 'Set detailed search criteria.'
 	String get searchSettingCaption => 'Set detailed search criteria.';
 
-	/// en-US: ''
-	String get searchLimit => '';
+	/// en-US: 'Search limit'
+	String get searchLimit => 'Search limit';
 
 	/// en-US: 'Sort order'
 	String get sortOrder => 'Sort order';
@@ -12969,8 +12969,8 @@ class Translations$misskey$customEmojisManager_$local_$list_$en_US {
 	/// en-US: 'Would you like to move pages?'
 	String get confirmMovePage => 'Would you like to move pages?';
 
-	/// en-US: ''
-	String get confirmChangeView => '';
+	/// en-US: 'Would you like to change view?'
+	String get confirmChangeView => 'Would you like to change view?';
 
 	/// en-US: 'Update {count} Emoji(s). Are you sure to continue?'
 	String confirmUpdateEmojisDescription({required Object count}) => 'Update ${count} Emoji(s). Are you sure to continue?';
@@ -12978,8 +12978,8 @@ class Translations$misskey$customEmojisManager_$local_$list_$en_US {
 	/// en-US: 'Delete checked {count} Emoji(s). Are you sure to continue?'
 	String confirmDeleteEmojisDescription({required Object count}) => 'Delete checked ${count} Emoji(s). Are you sure to continue?';
 
-	/// en-US: ''
-	String get confirmResetDescription => '';
+	/// en-US: 'All changes made so far will be reset'
+	String get confirmResetDescription => 'All changes made so far will be reset';
 
 	/// en-US: 'Changes have been made to the Emojis on this page. If you leave the page without saving, all changes made on this page will be discarded.'
 	String get confirmMovePageDesciption => 'Changes have been made to the Emojis on this page.\nIf you leave the page without saving, all changes made on this page will be discarded.';

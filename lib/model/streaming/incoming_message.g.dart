@@ -6,8 +6,8 @@ part of 'incoming_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) =>
-    _IncomingMessage(
+IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) =>
+    IncomingMessage(
       type: $enumDecodeNullable(
         _$IncomingMessageTypeEnumMap,
         json['type'],

@@ -12,7 +12,8 @@ enum IncomingMessageType {
   announcementCreated,
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const IncomingMessage({
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final IncomingMessageType? type,

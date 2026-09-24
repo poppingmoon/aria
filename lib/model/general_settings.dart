@@ -40,7 +40,7 @@ const maxTimelinesPageSpringStiffness = 500.0;
 const defaultTimelinesPageMinFlingFactor = 2.0;
 const maxTimelinesPageMinFlingFactor = 10.0;
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const GeneralSettings({
   // Locale

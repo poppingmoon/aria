@@ -17,7 +17,8 @@ class const Mention(final Note note) with _$Mention implements MainEvent;
 @freezed
 class const MeUpdated(final MeDetailed i) with _$MeUpdated implements MainEvent;
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const UrlUploadFinished({
   final String? marker,
   required final DriveFile file,

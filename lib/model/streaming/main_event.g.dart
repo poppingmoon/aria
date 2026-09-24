@@ -6,8 +6,8 @@ part of 'main_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_UrlUploadFinished _$UrlUploadFinishedFromJson(Map<String, dynamic> json) =>
-    _UrlUploadFinished(
+UrlUploadFinished _$UrlUploadFinishedFromJson(Map<String, dynamic> json) =>
+    UrlUploadFinished(
       marker: json['marker'] as String?,
       file: DriveFile.fromJson(json['file'] as Map<String, dynamic>),
     );

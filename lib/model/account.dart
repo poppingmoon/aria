@@ -3,12 +3,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'account.freezed.dart';
 part 'account.g.dart';
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const Account({required final String host, final String? username})
     with _$Account {
-  const new _() : this(host: '');
-
   factory fromJson(Map<String, Object?> json) => _$AccountFromJson(json);
 
   Map<String, Object?> toJson() => _$AccountToJson(this);

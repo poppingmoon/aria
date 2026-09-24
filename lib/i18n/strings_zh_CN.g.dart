@@ -2806,8 +2806,8 @@ class Translations$misskey$permissions_$zh_CN extends Translations$misskey$permi
 	// Translations
 	@override String get readAccount => '查看账户信息';
 	@override String get writeAccount => '更改帐户信息';
-	@override String get readBlocks => '查看禁止与我互动的列表';
-	@override String get writeBlocks => '编辑禁止与我互动的列表';
+	@override String get readBlocks => '查看屏蔽列表';
+	@override String get writeBlocks => '编辑屏蔽列表';
 	@override String get readDrive => '查看网盘';
 	@override String get writeDrive => '管理网盘文件';
 	@override String get readFavorites => '查看收藏夹';
@@ -3118,7 +3118,7 @@ class Translations$misskey$exportOrImport_$zh_CN extends Translations$misskey$ex
 	@override String get clips => '便签';
 	@override String get followingList => '关注中';
 	@override String get muteList => '隐藏';
-	@override String get blockingList => '禁止与我互动的列表';
+	@override String get blockingList => '屏蔽列表';
 	@override String get userLists => '列表';
 	@override String get excludeMutingUsers => '排除已隐藏用户';
 	@override String get excludeInactiveUsers => '排除不活跃用户';
@@ -4339,7 +4339,7 @@ class Translations$misskey$role_$options_$zh_CN extends Translations$misskey$rol
 	@override String get canCreateChannel => '创建频道';
 	@override String get avatarDecorationLimit => '可添加头像挂件的最大个数';
 	@override String get canImportAntennas => '允许导入天线';
-	@override String get canImportBlocking => '允许导入禁止与我互动的列表';
+	@override String get canImportBlocking => '允许导入屏蔽列表';
 	@override String get canImportFollowing => '允许导入关注列表';
 	@override String get canImportMuting => '允许导入隐藏列表';
 	@override String get canImportUserLists => '允许导入用户列表';

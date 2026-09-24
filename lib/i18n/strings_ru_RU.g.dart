@@ -131,7 +131,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get unpin => 'Открепить от профиля';
 	@override String get copyContent => 'Скопировать содержимое';
 	@override String get copyLink => 'Скопировать ссылку';
-	@override String get copyRemoteLink => 'Скопировать ссылку на репост';
+	@override String get copyRemoteLink => 'Скопировать удалённую ссылку';
 	@override String get copyLinkRenote => 'Скопировать ссылку на репост';
 	@override String get delete => 'Удалить';
 	@override String get deleteAndEdit => 'Удалить и отредактировать';
@@ -142,7 +142,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get copyRSS => 'Скопировать RSS';
 	@override String get copyUsername => 'Скопировать имя пользователя';
 	@override String get copyUserId => 'Скопировать ID пользователя';
-	@override String get copyNoteId => 'Скопировать ID поста';
+	@override String get copyNoteId => 'Скопировать ID заметки';
 	@override String get copyFileId => 'Скопировать ID файла';
 	@override String get copyFolderId => 'Скопировать ID папки';
 	@override String get copyProfileUrl => 'Скопировать ссылку на профиль';
@@ -171,7 +171,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get importRequested => 'Вы запросили импорт. Это может занять некоторое время.';
 	@override String get lists => 'Списки';
 	@override String get noLists => 'Нет ни одного списка';
-	@override String get note => 'Пост';
+	@override String get note => 'Заметка';
 	@override String get notes => 'Заметки';
 	@override String get following => 'Подписки';
 	@override String get followers => 'Подписчики';
@@ -206,7 +206,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get inChannelQuote => 'Заметки в канале';
 	@override String get renoteToChannel => 'Репостнуть в канал';
 	@override String get renoteToOtherChannel => 'Репостнуть в другой канал';
-	@override String get pinnedNote => 'Закреплённый пост';
+	@override String get pinnedNote => 'Закреплённая заметка';
 	@override String get pinned => 'Закрепить в профиле';
 	@override String get you => 'Вы';
 	@override String get clickToShow => 'Нажмите для просмотра';
@@ -214,7 +214,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get add => 'Добавить';
 	@override String get reaction => 'Реакции';
 	@override String get reactions => 'Реакции';
-	@override String get emojiPicker => 'Палитра эмодзи';
+	@override String get emojiPicker => 'Выбор эмодзи';
 	@override String get pinnedEmojisForReactionSettingDescription => 'Здесь можно закрепить эмодзи для реакций';
 	@override String get pinnedEmojisSettingDescription => 'Здесь можно закрепить эмодзи в общей палитре';
 	@override String get emojiPickerDisplay => 'Внешний вид палитры';
@@ -288,7 +288,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get selectSelf => 'Выбрать себя';
 	@override String get selectUser => 'Выберите пользователя';
 	@override String get recipient => 'Кому';
-	@override String get annotation => 'Описание';
+	@override String get annotation => 'Примечание';
 	@override String get federation => 'Федерация';
 	@override String get instances => 'Инстанс';
 	@override String get registeredAt => 'Первое наблюдение';
@@ -485,7 +485,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get pinnedPages => 'Закрепленные страницы';
 	@override String get pinnedPagesDescription => 'Если хотите закрепить страницы на главной сайта, сюда можно добавить пути к ним, каждый в отдельной строке.';
 	@override String get pinnedClipId => 'Идентификатор закреплённой подборки';
-	@override String get pinnedNotes => 'Закреплённый пост';
+	@override String get pinnedNotes => 'Закреплённая заметка';
 	@override String get hcaptcha => 'hCaptcha';
 	@override String get enableHcaptcha => 'Включить hCaptcha';
 	@override String get hcaptchaSiteKey => 'Ключ сайта';
@@ -514,7 +514,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get antennaKeywordsDescription => 'Пишите слова через пробел в одной строке, чтобы ловить их появление вместе; на отдельных строках располагайте слова, или группы слов, чтобы ловить любые из них.';
 	@override String get notifyAntenna => 'Уведомлять о новых заметках';
 	@override String get withFileAntenna => 'Только заметки с вложениями';
-	@override String get excludeNotesInSensitiveChannel => 'Исключить заметки из конфиденциальных каналов';
+	@override String get excludeNotesInSensitiveChannel => 'Исключить заметки из NSFW каналов';
 	@override String get enableServiceworker => 'Включить ServiceWorker';
 	@override String get antennaUsersDescription => 'Пишите каждое название аккаута на отдельной строке';
 	@override String get caseSensitive => 'С учётом регистра';
@@ -625,6 +625,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get fontSize => 'Размер шрифта';
 	@override String get mediaListWithOneImageAppearance => 'Вид изображения, если оно единственное в списке';
 	@override String limitTo({required Object x}) => 'Ограничить до ${x}';
+	@override String get showMediaListByGridInWideArea => 'Показывать медиа сеткой когда экран достаточно широкий';
 	@override String get noFollowRequests => 'Нерассмотренные запросы на подписку отсутствуют';
 	@override String get openImageInNewTab => 'Открыть изображение в новой вкладке';
 	@override String get dashboard => 'Панель управления';
@@ -700,6 +701,8 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get script => 'Скрипт';
 	@override String get disablePagesScript => 'Отключить скрипты на «Страницах»';
 	@override String get updateRemoteUser => 'Обновить данные пользователя с его сервера';
+	@override String get unsetMfa => 'Сбросить МФА';
+	@override String get unsetMfaConfirm => 'Вы точно хотите сбросить МФА?';
 	@override String get unsetUserAvatar => 'Убрать аватар';
 	@override String get unsetUserAvatarConfirm => 'Вы точно хотите убрать аватар?';
 	@override String get unsetUserBanner => 'Убрать баннер';
@@ -784,7 +787,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String regexpErrorDescription({required Object tab, required Object line}) => 'В списке ${tab} скрытых слов, в строке ${line} обнаружена синтаксическая ошибка:';
 	@override String get instanceMute => 'Глушение инстансов';
 	@override String userSaysSomething({required Object name}) => '${name} что-то сообщает';
-	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} что-то говорил о「${word}」';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} что-то говорил о «${word}»';
 	@override String get makeActive => 'Активировать';
 	@override String get display => 'Отображение';
 	@override String get copy => 'Копировать';
@@ -834,6 +837,8 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get createNewClip => 'Новая подборка';
 	@override String get unclip => 'Убрать из подборки';
 	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Эта заметка уже есть в подборке «${name}». Удалить из этой подборки?';
+	@override String get removeFromAntenna => 'Убрать из этой антенны';
+	@override String removeNoteFromAntennaConfirm({required Object name}) => 'Вы уверены, что хотите удалить эту заметку из ${name}?';
 	@override String get public => 'Общедоступно';
 	@override String get private => 'Личное';
 	@override String i18nInfo({required Object link}) => 'Misskey переводят на разные языки добровольцы со всего света. Ваша помощь тоже пригодится здесь: ${link}.';
@@ -975,7 +980,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get emailNotConfiguredWarning => 'Адрес почты пустует';
 	@override String get ratio => 'Соотношение';
 	@override String get previewNoteText => 'Предварительный просмотр';
-	@override String get customCss => 'Индивидуальный CSS';
+	@override String get customCss => 'Пользовательский CSS';
 	@override String get customCssWarn => 'Используйте эту настройку только если знаете, что делаете. Ошибки здесь чреваты тем, что у вас перестанет нормально работать сайт.';
 	@override String get global => 'Всеобщая';
 	@override String get squareAvatars => 'Квадратные аватарки';
@@ -1151,12 +1156,12 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get achievements => 'Достижения';
 	@override String get gotInvalidResponseError => 'Сервер ответил ошибкой';
 	@override String get gotInvalidResponseErrorDescription => 'Сервер временно не доступен. Возможно проводятся технические работы, или сервер отключен.';
-	@override String get thisPostMayBeAnnoying => 'Это сообщение может быть неприятным.';
-	@override String get thisPostMayBeAnnoyingHome => 'Этот пост может быть отправлен на главную';
-	@override String get thisPostMayBeAnnoyingCancel => 'Этот пост не может быть отменен.';
-	@override String get thisPostMayBeAnnoyingIgnore => 'Этот пост может быть проигнорирован ';
+	@override String get thisPostMayBeAnnoying => 'Эта заметка может быть сочтена неприятной.';
+	@override String get thisPostMayBeAnnoyingHome => 'Отправить на главную ленту';
+	@override String get thisPostMayBeAnnoyingCancel => 'Отменить';
+	@override String get thisPostMayBeAnnoyingIgnore => 'Всё равно опубликовать';
 	@override String get collapseRenotes => 'Сворачивать увиденные репосты';
-	@override String get collapseRenotesDescription => 'Сворачивать посты с которыми вы взаимодействовали.';
+	@override String get collapseRenotesDescription => 'Сворачивать заметки с которыми вы взаимодействовали.';
 	@override String get internalServerError => 'Внутренняя ошибка сервера';
 	@override String get internalServerErrorDescription => 'Внутри сервера произошла непредвиденная ошибка.';
 	@override String get copyErrorInfo => 'Скопировать код ошибки';
@@ -1181,7 +1186,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get sensitiveWordsDescription => 'Установите общедоступный диапазон заметки, содержащей заданное слово, на домашний. Можно сделать несколько настроек, разделив их переносами строк.';
 	@override String get sensitiveWordsDescription2 => 'Разделение пробелом создаёт спецификацию AND, а разделение косой чертой создаёт регулярное выражение.';
 	@override String get prohibitedWords => 'Запрещённые слова';
-	@override String get prohibitedWordsDescription => 'Включает вывод ошибки при попытке опубликовать пост, содержащий указанное слово/набор слов.\nМножество слов может быть указано, разделяемые новой строкой.';
+	@override String get prohibitedWordsDescription => 'Включает вывод ошибки при попытке опубликовать заметку, содержащую указанное слово/набор слов.\nМножество слов может быть указано, разделяемые новой строкой.';
 	@override String get prohibitedWordsDescription2 => 'Разделение пробелом создаёт спецификацию AND, а разделение косой чертой создаёт регулярное выражение.';
 	@override String get hiddenTags => 'Скрытые хештеги';
 	@override String get hiddenTagsDescription => 'Установленные теги не будут отображаться в тренде, можно установить несколько тегов.';
@@ -1299,6 +1304,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get verifiedLink => 'Эта ссылка принадлежит пользователю';
 	@override String get notifyNotes => 'Оповещать о публикациях';
 	@override String get unnotifyNotes => 'Отписаться от сообщений';
+	@override String get notifyUsers => 'Пользователи с включёнными уведомлениями о заметках';
 	@override String get authentication => 'Аутентификация';
 	@override String get authenticationRequiredToContinue => 'Пожалуйста, пройдите аутентификацию, чтобы продолжить';
 	@override String get dateAndTime => 'Дата и время';
@@ -1323,6 +1329,8 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get feedback => 'Обратная связь';
 	@override String get feedbackUrl => 'Ссылка для обратной связи';
 	@override String get impressum => 'О владельце';
+	@override String get impressumUrl => 'Ссылка на Impressum';
+	@override String get impressumDescription => 'В некоторых странах, например в Германии, раскрытие информации о владельце (Impressum) необходимо законом для коммерческих сайтов.';
 	@override String get privacyPolicy => 'Политика Конфиденциальности';
 	@override String get privacyPolicyUrl => 'Ссылка на Политику Конфиденциальности';
 	@override String get tosAndPrivacyPolicy => 'Условия использования и политика конфиденциальности';
@@ -1352,14 +1360,19 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get sfx => 'Звуковые эффекты';
 	@override String get soundWillBePlayed => 'Будет воспроизведен звук';
 	@override String get showReplay => 'Показать повтор';
-	@override String get replay => 'Ответить';
+	@override String get replay => 'Повтор';
+	@override String get replaying => 'Показывается повтор';
 	@override String get endReplay => 'Конец повтора';
+	@override String get copyReplayData => 'Копировать данные повтора';
+	@override String get ranking => 'Рейтинги';
 	@override String lastNDays({required Object n}) => 'Последние ${n} сут';
+	@override String get backToTitle => 'Вернуться к заголовку';
 	@override String get hemisphere => 'Место проживания';
-	@override String userSaysSomethingSensitive({required Object name}) => 'Сообщение, содержит конфиденциальные файлы от ${name}';
+	@override String get withSensitive => 'Показывать заметки с NSFW контентом';
+	@override String userSaysSomethingSensitive({required Object name}) => 'Заметка от ${name} содержит NSFW контент';
 	@override String get enableHorizontalSwipe => 'Смахните в сторону, чтобы сменить вкладки';
 	@override String get loading => 'Загрузка';
-	@override String get surrender => 'Этот пост не может быть отменен.';
+	@override String get surrender => 'Отменить';
 	@override String get gameRetry => 'Повторить попытку';
 	@override String get notUsePleaseLeaveBlank => 'Если не используется, оставьте пустым';
 	@override String get useTotp => 'Включить двухэтапную проверку';
@@ -1389,6 +1402,7 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get passkeyVerificationFailed => 'Ошибка проверка ключа доступа ';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Проверка Passkey выполнена, но вход без пароля отключен';
 	@override String get messageToFollower => 'Сообщение подписчикам';
+	@override String get target => 'Цель';
 	@override String get testCaptchaWarning => 'Эта тестовая CAPTCHA. <strong>Не используйте её!</strong>';
 	@override String get prohibitedWordsForNameOfUser => 'Запрещенные слова (имя пользователя)';
 	@override String get prohibitedWordsForNameOfUserDescription => 'Если имя пользователя содержит строку из этого списка, изменение имени пользователя будет запрещено. На пользователей с правами модератора это ограничение не распространяется. Имена пользователей также проверяются путём замены всех букв в нижнем регистре';
@@ -1398,31 +1412,69 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get lockdown => 'Доступ ограничен';
 	@override String get pleaseSelectAccount => 'Выберите свой аккаунт';
 	@override String get availableRoles => 'Доступные роли';
+	@override String get acknowledgeNotesAndEnable => 'Включайте только после понимания мер предосторожности';
 	@override String get federationSpecified => 'Сервер работает через белый список федерации. Связь с другими серверами ограничена';
 	@override String get federationDisabled => 'Федерация отключена для этого сервера. Вы не можете взаимодействовать с пользователями на других серверах.';
 	@override String get draft => 'Черновик';
 	@override String get draftsAndScheduledNotes => 'Черновики и отложенные публикации';
 	@override String get confirmOnReact => 'Подтверждать добавление реакции';
 	@override String reactAreYouSure({required Object emoji}) => 'Добавить ${emoji}?';
-	@override String get markAsSensitiveConfirm => 'Отметить контент как чувствительный?';
+	@override String get markAsSensitiveConfirm => 'Отметить контент как NSFW?';
 	@override String get unmarkAsSensitiveConfirm => 'Снять пометку о NSFW контенте?';
 	@override String get preferences => 'Основное';
 	@override String get accessibility => 'Специальные возможности';
 	@override String get preferencesProfile => 'Настройки профиля';
 	@override String get copyPreferenceId => 'Копировать ID настройки';
-	@override String get resetToDefaultValue => 'Сбросить настройки до стандартных';
+	@override String get resetToDefaultValue => 'Восстановить значения по умолчанию';
 	@override String get overrideByAccount => 'Переопределить этим аккаунтом';
 	@override String get untitled => 'Без названия';
 	@override String get noName => 'Имя не указано';
 	@override String get skip => 'Пропустить';
 	@override String get restore => 'Восстановить';
 	@override String get syncBetweenDevices => 'Синхронизировать между устройствами';
-	@override String get paste => 'вставить';
+	@override String get paste => 'Вставить';
+	@override String get emojiPalette => 'Палитра эмодзи';
 	@override String get postForm => 'Форма отправки';
 	@override String get textCount => 'Количество символов';
 	@override String get information => 'Описание';
+	@override String get chat => 'Чат';
+	@override String get directMessage => 'Личные сообщения';
+	@override String get directMessage_short => 'Написать';
+	@override String get compress => 'Сжатие';
+	@override String get right => 'Справа';
+	@override String get bottom => 'Снизу';
+	@override String get top => 'Сверху';
+	@override String get embed => 'Вложение';
+	@override String get readonly => 'Только для чтения';
+	@override String get federationJobs => 'Процессы федерации';
+	@override String get scrollToClose => 'Пролистайте для закрытия';
+	@override String get advice => 'Совет';
+	@override String get realtimeMode => 'Режим реального времени';
+	@override String get turnItOn => 'Включить';
+	@override String get turnItOff => 'Выключить';
+	@override String get emojiMute => 'Скрыть эмодзи';
+	@override String get emojiUnmute => 'Показать эмодзи';
+	@override String muteX({required Object x}) => 'Скрыть ${x}';
+	@override String unmuteX({required Object x}) => 'Показать ${x}';
+	@override String get abort => 'Отменить';
+	@override String get tip => 'Советы и рекомендации';
+	@override String get redisplayAllTips => 'Показывать все "Советы и рекомендации" снова';
+	@override String get hideAllTips => 'Скрыть все "Советы и рекомендации"';
+	@override String get defaultImageCompressionLevel => 'Уровень сжатия изображений по умолчанию';
+	@override String get defaultImageCompressionLevel_description => 'Уровень ниже сохраняет качество лучше, но увеличивает размер файла.<br>Уровень выше уменьшает размер файла, но уменьшает качество картинки.';
+	@override String get defaultCompressionLevel => 'Уровень сжатия по умолчанию';
+	@override String get defaultCompressionLevel_description => 'Уровень сжатия ниже сохраняет качество лучше, но увеличивает размер файла.<br>Уровень сжатия выше уменьшает размер файла, но уменьшает качество.';
 	@override String get inMinutes => 'мин';
 	@override String get inDays => 'сут';
+	@override String get safeModeEnabled => 'Безопасный режим включен';
+	@override String get pluginsAreDisabledBecauseSafeMode => 'Все плагины выключены из-за безопасного режима';
+	@override String get customCssIsDisabledBecauseSafeMode => 'Пользовательский CSS не применяется из-за безопасного режима.';
+	@override String get themeIsDefaultBecauseSafeMode => 'Пока безопасный режим активен, тема по умолчанию будет использована. При выключении безопасного режима тема применится обратно.';
+	@override String get thankYouForTestingBeta => 'Спасибо вам за помощь с тестированием бета-версии!';
+	@override String get createUserSpecifiedNote => 'Создать заметку для этого пользователя';
+	@override String get schedulePost => 'Запланировать заметку';
+	@override String scheduleToPostOnX({required Object x}) => 'Запланировать заметку на ${x}';
+	@override String scheduledToPostOnX({required Object x}) => 'Заметка запланирована на ${x}';
 	@override String get schedule => 'Отложить';
 	@override String get scheduled => 'Отложено';
 	@override String get widgets => 'Виджеты';
@@ -1434,11 +1486,24 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override String get zeroPadding => 'Без отступов';
 	@override String get nothingToConfigure => 'Нечего менять';
 	@override String get previewingThemeRestore => 'Восстановить';
+	@override String get accessToken => 'Токен доступа';
+	@override String get chooseEmojiPalette => 'Выберите палитру эмодзи';
+	@override String get addToEmojiPalette => 'Добавить к палитре эмодзи';
+	@override String get emojiPaletteAlreadyAddedConfirm => 'Этот эмодзи уже есть в этой палитре. Хотите добавить его снова?';
+	@override String get append => 'Добавить в конец';
+	@override String get prepend => 'Добавить в начало';
+	@override String get pixelatedZoom => 'Пиксельное масштабирование';
 	@override late final _Translations$misskey$imageEditing_$ru_RU imageEditing_ = _Translations$misskey$imageEditing_$ru_RU._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$ru_RU imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$ru_RU._(_root);
+	@override late final _Translations$misskey$compression_$ru_RU compression_ = _Translations$misskey$compression_$ru_RU._(_root);
+	@override late final _Translations$misskey$order_$ru_RU order_ = _Translations$misskey$order_$ru_RU._(_root);
 	@override late final _Translations$misskey$chat_$ru_RU chat_ = _Translations$misskey$chat_$ru_RU._(_root);
+	@override late final _Translations$misskey$emojiPalette_$ru_RU emojiPalette_ = _Translations$misskey$emojiPalette_$ru_RU._(_root);
 	@override late final _Translations$misskey$settings_$ru_RU settings_ = _Translations$misskey$settings_$ru_RU._(_root);
+	@override late final _Translations$misskey$accountSettings_$ru_RU accountSettings_ = _Translations$misskey$accountSettings_$ru_RU._(_root);
+	@override late final _Translations$misskey$abuseUserReport_$ru_RU abuseUserReport_ = _Translations$misskey$abuseUserReport_$ru_RU._(_root);
 	@override late final _Translations$misskey$delivery_$ru_RU delivery_ = _Translations$misskey$delivery_$ru_RU._(_root);
+	@override late final _Translations$misskey$bubbleGame_$ru_RU bubbleGame_ = _Translations$misskey$bubbleGame_$ru_RU._(_root);
 	@override late final _Translations$misskey$announcement_$ru_RU announcement_ = _Translations$misskey$announcement_$ru_RU._(_root);
 	@override late final _Translations$misskey$initialAccountSetting_$ru_RU initialAccountSetting_ = _Translations$misskey$initialAccountSetting_$ru_RU._(_root);
 	@override late final _Translations$misskey$initialTutorial_$ru_RU initialTutorial_ = _Translations$misskey$initialTutorial_$ru_RU._(_root);
@@ -1504,8 +1569,10 @@ class _Translations$misskey$ru_RU extends Translations$misskey$en_US {
 	@override late final _Translations$misskey$dataSaver_$ru_RU dataSaver_ = _Translations$misskey$dataSaver_$ru_RU._(_root);
 	@override late final _Translations$misskey$hemisphere_$ru_RU hemisphere_ = _Translations$misskey$hemisphere_$ru_RU._(_root);
 	@override late final _Translations$misskey$reversi_$ru_RU reversi_ = _Translations$misskey$reversi_$ru_RU._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$ru_RU customEmojisManager_ = _Translations$misskey$customEmojisManager_$ru_RU._(_root);
 	@override late final _Translations$misskey$remoteLookupErrors_$ru_RU remoteLookupErrors_ = _Translations$misskey$remoteLookupErrors_$ru_RU._(_root);
 	@override late final _Translations$misskey$search_$ru_RU search_ = _Translations$misskey$search_$ru_RU._(_root);
+	@override late final _Translations$misskey$clientPerformanceIssueTip_$ru_RU clientPerformanceIssueTip_ = _Translations$misskey$clientPerformanceIssueTip_$ru_RU._(_root);
 	@override late final _Translations$misskey$watermarkEditor_$ru_RU watermarkEditor_ = _Translations$misskey$watermarkEditor_$ru_RU._(_root);
 	@override late final _Translations$misskey$imageEffector_$ru_RU imageEffector_ = _Translations$misskey$imageEffector_$ru_RU._(_root);
 	@override String get drafts => 'Черновик';
@@ -1535,9 +1602,36 @@ class _Translations$misskey$imageFrameEditor_$ru_RU extends Translations$misskey
 	@override String get footer => 'Нижняя часть';
 	@override String get borderThickness => 'Толщина рамки';
 	@override String get labelThickness => 'Толщина границ';
+	@override String get withQrCode => 'QR код';
+	@override String get backgroundColor => 'Цвет фона';
+	@override String get textColor => 'Цвет текста';
 	@override String get font => 'Шрифт';
 	@override String get fontSerif => 'Антиква (с засечками)';
 	@override String get fontSansSerif => 'Гротеск (без засечек)';
+	@override String get quitWithoutSaveConfirm => 'Выйти без сохранения?';
+	@override String get failedToLoadImage => 'Не удалось загрузить изображение';
+}
+
+// Path: misskey.compression_
+class _Translations$misskey$compression_$ru_RU extends Translations$misskey$compression_$en_US {
+	_Translations$misskey$compression_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _Translations$misskey$compression_$quality_$ru_RU quality_ = _Translations$misskey$compression_$quality_$ru_RU._(_root);
+	@override late final _Translations$misskey$compression_$size_$ru_RU size_ = _Translations$misskey$compression_$size_$ru_RU._(_root);
+}
+
+// Path: misskey.order_
+class _Translations$misskey$order_$ru_RU extends Translations$misskey$order_$en_US {
+	_Translations$misskey$order_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get newest => 'Новейшие';
+	@override String get oldest => 'Старейшие';
 }
 
 // Path: misskey.chat_
@@ -1547,11 +1641,62 @@ class _Translations$misskey$chat_$ru_RU extends Translations$misskey$chat_$en_US
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get messages => 'Сообщения';
+	@override String get noMessagesYet => 'Сообщений пока нет';
+	@override String get newMessage => 'Новое сообщение';
+	@override String get individualChat => 'Приватный чат';
+	@override String get individualChat_description => 'Начать приватный чат с пользователем';
+	@override String get roomChat => 'Комната';
+	@override String get roomChat_description => 'Чат, в котором может быть несколько человек. Вы так же можете пригласить пользователей, которые выключили приватные чаты.';
+	@override String get createRoom => 'Создать комнату';
+	@override String get inviteUserToChat => 'Пригласите пользователей для того что бы начать беседу';
+	@override String get yourRooms => 'Ваши комнаты';
+	@override String get joiningRooms => 'Комнаты';
 	@override String get invitations => 'Пригласить';
+	@override String get noInvitations => 'Приглашений нет';
+	@override String get history => 'История';
 	@override String get noHistory => 'История пока пуста';
+	@override String get noRooms => 'Комнат не найдено';
+	@override String get inviteUser => 'Пригласить пользователей';
+	@override String get sentInvitations => 'Отправленные приглашения';
+	@override String get join => 'Войти';
+	@override String get ignore => 'Проигнорировать';
+	@override String get leave => 'Выйти из комнаты';
 	@override String get members => 'Участники';
+	@override String get searchMessages => 'Поиск сообщений';
 	@override String get home => 'Главная';
 	@override String get send => 'Отправить';
+	@override String get newline => 'Новая строка';
+	@override String get muteThisRoom => 'Заглушить комнату';
+	@override String get deleteRoom => 'Удалить комнату';
+	@override String get chatNotAvailableForThisAccountOrServer => 'Личные сообщения выключены для этого аккаунта или на этом сервере.';
+	@override String get chatIsReadOnlyForThisAccountOrServer => 'На этом сервере или для этого пользователя личные сообщения доступны только в режиме чтения. Вы не можете отправлять новые сообщения, создавать группы или присоединяться к ним.';
+	@override String get chatNotAvailableInOtherAccount => 'Функция чата выключена для другого пользователя.';
+	@override String get cannotChatWithTheUser => 'Невозможно начать чат с данным пользователем';
+	@override String get cannotChatWithTheUser_description => 'Чат недоступен либо пользователь не включил функцию чата.';
+	@override String get youAreNotAMemberOfThisRoomButInvited => 'Вы не являетесь участником этого чата, но вас в него пригласили. Пожалуйста, примите приглашение.';
+	@override String get doYouAcceptInvitation => 'Принять приглашение?';
+	@override String get chatWithThisUser => 'Открыть личные сообщения';
+	@override String get thisUserAllowsChatOnlyFromFollowers => 'Пользователь принимает сообщения только от подписчиков.';
+	@override String get thisUserAllowsChatOnlyFromFollowing => 'Пользователь принимает сообщения только от людей на которых они подписаны.';
+	@override String get thisUserAllowsChatOnlyFromMutualFollowing => 'Пользователь принимает сообщения только от взаимных подписчиков.';
+	@override String get thisUserNotAllowedChatAnyone => 'Пользователь не принимает личные сообщения.';
+	@override String get chatAllowedUsers => 'Кому разрешить присылать личные сообщения';
+	@override String get chatAllowedUsers_note => 'Вы можете общаться с теми кому вы уже отправили хоть одно сообщение вне зависимости от этой настройки.';
+	@override late final _Translations$misskey$chat_$chatAllowedUsers_$ru_RU chatAllowedUsers_ = _Translations$misskey$chat_$chatAllowedUsers_$ru_RU._(_root);
+}
+
+// Path: misskey.emojiPalette_
+class _Translations$misskey$emojiPalette_$ru_RU extends Translations$misskey$emojiPalette_$en_US {
+	_Translations$misskey$emojiPalette_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get palettes => 'Палитры';
+	@override String get enableSyncBetweenDevicesForPalettes => 'Включить синхронизацию палитр эмодзи между устройствами';
+	@override String get paletteForMain => 'Основная палитра';
+	@override String get paletteForReaction => 'Палитра реакций';
 }
 
 // Path: misskey.settings_
@@ -1561,10 +1706,52 @@ class _Translations$misskey$settings_$ru_RU extends Translations$misskey$setting
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get api => 'API';
 	@override String get webhook => 'Вебхук';
+	@override String get serviceConnection => 'Интеграция сервисов';
+	@override String get serviceConnectionBanner => 'Настраивайте и управляйте токенами и вебхуками для интеграции с внешними приложениями или сервисами.';
+	@override String get accountData => 'Данные аккаунта';
+	@override String get accountDataBanner => 'Экспортируйте и импортируйте данные для управления своими данными.';
 	@override String get preferencesBanner => 'Вы можете настроить общее поведение клиента по вашим предпочтениям';
 	@override String get timelineAndNote => 'Лента и заметки';
+	@override String get makeEveryTextElementsSelectable => 'Разрешить выбирать текст во всех элементах';
+	@override String get makeEveryTextElementsSelectable_description => 'Включение этой настройки может снизить удобство использования в некоторых ситуациях.';
+	@override String get uiAnimations => 'Анимации интерфейса';
+	@override String get ifOn => 'Когда включено';
+	@override String get ifOff => 'Когда выключено';
+	@override String get enableSyncThemesBetweenDevices => 'Синхронизировать темы между устройствами';
+	@override String get enablePullToRefresh => 'Потяните для обновления';
+	@override String get enablePullToRefresh_description => 'Когда пользуетесь мышкой, потяните держа среднюю кнопку мыши (колёсико)';
+	@override String get contentsUpdateFrequency => 'Частота получения данных';
+	@override String get contentsUpdateFrequency_description => 'Чем больше значение тем больше обновляется контент, но производительность снижается и увеличивается трафик и потребление памяти.';
+	@override String get contentsUpdateFrequency_description2 => 'Когда режим реального времени включен, контент обновляется в реальном времени вне зависимости от этой настройки.';
+	@override String get showUrlPreview => 'Показывать предпросмотр ссылок';
 	@override late final _Translations$misskey$settings_$chat_$ru_RU chat_ = _Translations$misskey$settings_$chat_$ru_RU._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _Translations$misskey$accountSettings_$ru_RU extends Translations$misskey$accountSettings_$en_US {
+	_Translations$misskey$accountSettings_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContentsDescription1 => 'Требовать входа в аккаунт для просмотра заметок и прочего вашего контента. Это не позволит ботам сканировать вашу информацию.';
+	@override String get notesHavePassedSpecifiedPeriod => 'Заметки после указанной даты';
+	@override String get notesOlderThanSpecifiedDateAndTime => 'Заметки до указанной даты';
+}
+
+// Path: misskey.abuseUserReport_
+class _Translations$misskey$abuseUserReport_$ru_RU extends Translations$misskey$abuseUserReport_$en_US {
+	_Translations$misskey$abuseUserReport_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get resolve => 'Решить';
+	@override String get accept => 'Принять';
+	@override String get reject => 'Отказать';
+	@override String get resolveTutorial => 'Если жалоба выглядит достоверной, выберите "Принять" что пометить её как решённую.\nЕсли жалоба выглядит недостоверной, нажмите "Отказать" что бы проигнорировать её.';
 }
 
 // Path: misskey.delivery_
@@ -1574,8 +1761,21 @@ class _Translations$misskey$delivery_$ru_RU extends Translations$misskey$deliver
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
-	@override String get stop => 'Заморожено';
+	@override String get status => 'Статус отправки';
+	@override String get stop => 'Остановить';
+	@override String get resume => 'Продолжить отправку';
 	@override late final _Translations$misskey$delivery_$type_$ru_RU type_ = _Translations$misskey$delivery_$type_$ru_RU._(_root);
+}
+
+// Path: misskey.bubbleGame_
+class _Translations$misskey$bubbleGame_$ru_RU extends Translations$misskey$bubbleGame_$en_US {
+	_Translations$misskey$bubbleGame_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _Translations$misskey$bubbleGame_$score_$ru_RU score_ = _Translations$misskey$bubbleGame_$score_$ru_RU._(_root);
+	@override late final _Translations$misskey$bubbleGame_$howToPlay_$ru_RU howToPlay_ = _Translations$misskey$bubbleGame_$howToPlay_$ru_RU._(_root);
 }
 
 // Path: misskey.announcement_
@@ -1597,11 +1797,19 @@ class _Translations$misskey$initialAccountSetting_$ru_RU extends Translations$mi
 	// Translations
 	@override String get accountCreated => 'Аккаунт успешно создан!';
 	@override String get letsStartAccountSetup => 'Давайте настроим вашу учётную запись.';
+	@override String get letsFillYourProfile => 'Для начала, давайте создадим ваш профиль.';
 	@override String get profileSetting => 'Настройки профиля';
 	@override String get privacySetting => 'Настройки конфиденциальности';
+	@override String get theseSettingsCanEditLater => 'Вы всегда сможете поменять эти настройки позже.';
+	@override String get youCanEditMoreSettingsInSettingsPageLater => 'Есть ещё много настроек на странице "Настройки". Не забудьте заглянуть туда позже.';
+	@override String get followUsers => 'Попробуйте подписаться на людей которые вас интересуют, что бы составить вашу ленту.';
+	@override String pushNotificationDescription({required Object name}) => 'Включение уведомлений позволит вам получать уведомления от ${name} напрямую на ваше устройство.';
 	@override String get initialAccountSettingCompleted => 'Первоначальная настройка успешно завершена!';
+	@override String haveFun({required Object name}) => 'Наслаждайтесь ${name}!';
+	@override String youCanContinueTutorial({required Object name}) => 'Вы можете продолжить туториал по тому как пользоваться ${name} (Misskey), или вы можете сразу перейти к его использованию.';
 	@override String get startTutorial => 'Пройти Обучение';
 	@override String get skipAreYouSure => 'Пропустить настройку?';
+	@override String get laterAreYouSure => 'Точно настроить профиль позже?';
 }
 
 // Path: misskey.initialTutorial_
@@ -1612,9 +1820,15 @@ class _Translations$misskey$initialTutorial_$ru_RU extends Translations$misskey$
 
 	// Translations
 	@override String get launchTutorial => 'Пройти обучение';
+	@override String get title => 'Туториал';
+	@override String get wellDone => 'Отлично!';
+	@override String get skipAreYouSure => 'Покинуть Туториал?';
+	@override late final _Translations$misskey$initialTutorial_$landing_$ru_RU landing_ = _Translations$misskey$initialTutorial_$landing_$ru_RU._(_root);
 	@override late final _Translations$misskey$initialTutorial_$note_$ru_RU note_ = _Translations$misskey$initialTutorial_$note_$ru_RU._(_root);
 	@override late final _Translations$misskey$initialTutorial_$reaction_$ru_RU reaction_ = _Translations$misskey$initialTutorial_$reaction_$ru_RU._(_root);
+	@override late final _Translations$misskey$initialTutorial_$timeline_$ru_RU timeline_ = _Translations$misskey$initialTutorial_$timeline_$ru_RU._(_root);
 	@override late final _Translations$misskey$initialTutorial_$postNote_$ru_RU postNote_ = _Translations$misskey$initialTutorial_$postNote_$ru_RU._(_root);
+	@override late final _Translations$misskey$initialTutorial_$done_$ru_RU done_ = _Translations$misskey$initialTutorial_$done_$ru_RU._(_root);
 }
 
 // Path: misskey.timelineDescription_
@@ -2033,6 +2247,7 @@ class _Translations$misskey$sfx_$ru_RU extends Translations$misskey$sfx_$en_US {
 	@override String get noteMy => 'Собственные заметки';
 	@override String get notification => 'Уведомления';
 	@override String get reaction => 'При выборе реакции';
+	@override String get chatMessage => 'Открыть личные сообщения';
 }
 
 // Path: misskey.soundSettings_
@@ -2164,7 +2379,10 @@ class _Translations$misskey$permissions_$ru_RU extends Translations$misskey$perm
 	@override String get writeGalleryLikes => 'Изменение списка понравившегося в галерее';
 	@override String get writeAdminResetPassword => 'Сбросить пароль пользователю';
 	@override String get writeAdminSendEmail => 'Отправить письмо';
+	@override String get writeAdminEmoji => 'Управлять эмодзи';
+	@override String get readAdminEmoji => 'Просматривать эмодзи';
 	@override String get writeChat => 'Писать и удалять сообщения';
+	@override String get readChat => 'Читать чаты';
 }
 
 // Path: misskey.auth_
@@ -2250,6 +2468,7 @@ class _Translations$misskey$widgets_$ru_RU extends Translations$misskey$widgets_
 	@override late final _Translations$misskey$widgets_$userList_$ru_RU userList_ = _Translations$misskey$widgets_$userList_$ru_RU._(_root);
 	@override String get clicker => 'Счётчик щелчков';
 	@override String get birthdayFollowings => 'Пользователи, у которых сегодня день рождения';
+	@override String get chat => 'Открыть личные сообщения';
 }
 
 // Path: misskey.widgetOptions_
@@ -2532,6 +2751,7 @@ class _Translations$misskey$notification_$ru_RU extends Translations$misskey$not
 	@override String get yourFollowRequestAccepted => 'Ваш запрос на подписку одобрен.';
 	@override String get pollEnded => 'Подведены окончательные итоги опроса';
 	@override String unreadAntennaNote({required Object name}) => 'Антенна ${name}';
+	@override String get chatRoomInvitationReceived => 'Вас пригласили в чат';
 	@override String get emptyPushNotificationMessage => 'Обновлены push-уведомления';
 	@override String get achievementEarned => 'Получено достижение';
 	@override String get checkNotificationBehavior => 'Проверить внешний вид уведомления';
@@ -2645,6 +2865,7 @@ class _Translations$misskey$moderationLogTypes_$ru_RU extends Translations$missk
 	@override String get createSystemWebhook => 'Создать Системный Вебхук';
 	@override String get updateSystemWebhook => 'Обновить Системый Вебхук';
 	@override String get deleteSystemWebhook => 'Удалить Системный Вебхук';
+	@override String get deleteChatRoom => 'Удалить чат';
 }
 
 // Path: misskey.fileViewer_
@@ -2690,6 +2911,19 @@ class _Translations$misskey$reversi_$ru_RU extends Translations$misskey$reversi_
 	@override String get total => 'Всего';
 }
 
+// Path: misskey.customEmojisManager_
+class _Translations$misskey$customEmojisManager_$ru_RU extends Translations$misskey$customEmojisManager_$en_US {
+	_Translations$misskey$customEmojisManager_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _Translations$misskey$customEmojisManager_$gridCommon_$ru_RU gridCommon_ = _Translations$misskey$customEmojisManager_$gridCommon_$ru_RU._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$logs_$ru_RU logs_ = _Translations$misskey$customEmojisManager_$logs_$ru_RU._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$remote_$ru_RU remote_ = _Translations$misskey$customEmojisManager_$remote_$ru_RU._(_root);
+	@override late final _Translations$misskey$customEmojisManager_$local_$ru_RU local_ = _Translations$misskey$customEmojisManager_$local_$ru_RU._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_
 class _Translations$misskey$remoteLookupErrors_$ru_RU extends Translations$misskey$remoteLookupErrors_$en_US {
 	_Translations$misskey$remoteLookupErrors_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2712,6 +2946,17 @@ class _Translations$misskey$search_$ru_RU extends Translations$misskey$search_$e
 	@override String get searchScopeUser => 'Указанный пользователь';
 }
 
+// Path: misskey.clientPerformanceIssueTip_
+class _Translations$misskey$clientPerformanceIssueTip_$ru_RU extends Translations$misskey$clientPerformanceIssueTip_$en_US {
+	_Translations$misskey$clientPerformanceIssueTip_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get makeSureDisabledCustomCss => 'Выключить пользовательский CSS';
+	@override String get makeSureDisabledCustomCss_description => 'Пользовательские стили CSS могут повлиять на производительность. Пожалуйста, убедитесь что пользовательский CSS или браузерные расширения изменяющие CSS не включены.';
+}
+
 // Path: misskey.watermarkEditor_
 class _Translations$misskey$watermarkEditor_$ru_RU extends Translations$misskey$watermarkEditor_$en_US {
 	_Translations$misskey$watermarkEditor_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2727,6 +2972,7 @@ class _Translations$misskey$watermarkEditor_$ru_RU extends Translations$misskey$
 	@override String get image => 'Изображения';
 	@override String get advanced => 'Для продвинутых';
 	@override String get angle => 'Угол';
+	@override String get failedToLoadImage => 'Не удалось загрузить изображение';
 }
 
 // Path: misskey.imageEffector_
@@ -2736,6 +2982,7 @@ class _Translations$misskey$imageEffector_$ru_RU extends Translations$misskey$im
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get failedToLoadImage => 'Не удалось загрузить изображение';
 	@override late final _Translations$misskey$imageEffector_$fxProps_$ru_RU fxProps_ = _Translations$misskey$imageEffector_$fxProps_$ru_RU._(_root);
 }
 
@@ -2757,7 +3004,9 @@ class _Translations$misskey$qr_$ru_RU extends Translations$misskey$qr_$en_US {
 
 	// Translations
 	@override String get showTabTitle => 'Отображение';
+	@override String get scanFile => 'Отсканировать изображение с устройства';
 	@override String get raw => 'Текст';
+	@override String get mfm => 'MFM';
 }
 
 // Path: misskey.imageEditing_.vars_
@@ -2787,6 +3036,44 @@ class _Translations$misskey$imageEditing_$vars_$ru_RU extends Translations$missk
 	@override String get gps_long => 'Долгота';
 }
 
+// Path: misskey.compression_.quality_
+class _Translations$misskey$compression_$quality_$ru_RU extends Translations$misskey$compression_$quality_$en_US {
+	_Translations$misskey$compression_$quality_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get high => 'Высокое качество';
+	@override String get medium => 'Среднее качество';
+	@override String get low => 'Низкое качество';
+}
+
+// Path: misskey.compression_.size_
+class _Translations$misskey$compression_$size_$ru_RU extends Translations$misskey$compression_$size_$en_US {
+	_Translations$misskey$compression_$size_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get large => 'Крупный размер';
+	@override String get medium => 'Средний размер';
+	@override String get small => 'Маленький размер';
+}
+
+// Path: misskey.chat_.chatAllowedUsers_
+class _Translations$misskey$chat_$chatAllowedUsers_$ru_RU extends Translations$misskey$chat_$chatAllowedUsers_$en_US {
+	_Translations$misskey$chat_$chatAllowedUsers_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get everyone => 'Всем';
+	@override String get followers => 'Только подписчикам';
+	@override String get following => 'Только тем на кого вы подписаны';
+	@override String get mutual => 'Только взаимным подписчикам';
+	@override String get none => 'Никому';
+}
+
 // Path: misskey.settings_.chat_
 class _Translations$misskey$settings_$chat_$ru_RU extends Translations$misskey$settings_$chat_$en_US {
 	_Translations$misskey$settings_$chat_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2806,6 +3093,46 @@ class _Translations$misskey$delivery_$type_$ru_RU extends Translations$misskey$d
 
 	// Translations
 	@override String get none => 'Публикация';
+	@override String get manuallySuspended => 'Остановлено вручную';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _Translations$misskey$bubbleGame_$score_$ru_RU extends Translations$misskey$bubbleGame_$score_$en_US {
+	_Translations$misskey$bubbleGame_$score_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Счёт';
+	@override String get scoreYen => 'Иен заработано';
+	@override String get highScore => 'Рекорд';
+	@override String get maxChain => 'Максимальное комбо';
+	@override String yen({required Object yen}) => '${yen} иен';
+	@override String estimatedQty({required Object qty}) => '${qty} объектов';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} онигири';
+}
+
+// Path: misskey.bubbleGame_.howToPlay_
+class _Translations$misskey$bubbleGame_$howToPlay_$ru_RU extends Translations$misskey$bubbleGame_$howToPlay_$en_US {
+	_Translations$misskey$bubbleGame_$howToPlay_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get section1 => 'Выберите позицию и отпустите объект.';
+	@override String get section2 => 'Когда два объекта одинакового типа соприкасаются, они превращаются в другой объект и вы получаете очки.';
+	@override String get section3 => 'Игра заканчивается, когда коробка переполняется. Старайтесь набрать больший счёт объединяя объекты, не давай коробке переполниться!';
+}
+
+// Path: misskey.initialTutorial_.landing_
+class _Translations$misskey$initialTutorial_$landing_$ru_RU extends Translations$misskey$initialTutorial_$landing_$en_US {
+	_Translations$misskey$initialTutorial_$landing_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Добро пожаловать в Туториал';
+	@override String get description => 'Здесь вы можете изучить основы пользования Misskey и его особенностями.';
 }
 
 // Path: misskey.initialTutorial_.note_
@@ -2815,7 +3142,12 @@ class _Translations$misskey$initialTutorial_$note_$ru_RU extends Translations$mi
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Что такое заметка?';
 	@override String get description => 'Посты в Misskey называются \'Заметками.\' Заметки отсортированы в хронологическом порядке в ленте и обновляются в режиме реального времени.';
+	@override String get reply => 'Нажмите на кнопку для того что бы ответить на сообщение. Так же можно ответить на ответ, продолжая дискуссию.';
+	@override String get renote => 'Вы можете поделиться этой заметкой в своей ленте. Вы так же можете процитировать её в ваших комментариях.';
+	@override String get reaction => 'Вы можете ставить реакции на заметки. Подробнее на следующей странице.';
+	@override String get menu => 'Вы можете посмотреть данные о заметке, копировать ссылки и выполнять прочие действия.';
 }
 
 // Path: misskey.initialTutorial_.reaction_
@@ -2825,7 +3157,29 @@ class _Translations$misskey$initialTutorial_$reaction_$ru_RU extends Translation
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Что такое реакции?';
+	@override String get description => 'На заметки можно ставить разные реакции. Реакции позволяют вам передавать такие нюансы, которые не передать простым "лайком"';
+	@override String get letsTryReacting => 'Реакцию можно поставить нажав кнопку "+" на заметке. Попробуйте поставить реакцию на эту заметку!';
 	@override String get reactToContinue => 'Добавьте реакцию, чтобы продолжить.';
+	@override String get reactNotification => 'Вы получите уведомление в реальном времени когда кто-то поставит реакцию на вашу заметку.';
+	@override String get reactDone => 'Вы можете убрать поставленную реакцию нажав на кнопку "-".';
+}
+
+// Path: misskey.initialTutorial_.timeline_
+class _Translations$misskey$initialTutorial_$timeline_$ru_RU extends Translations$misskey$initialTutorial_$timeline_$en_US {
+	_Translations$misskey$initialTutorial_$timeline_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Концепция Лент';
+	@override String get description1 => 'Misskey предоставляет несколько лент в зависимости от того как вы им пользуетесь (некоторые могут быть недоступны в зависимости от правил сервера).';
+	@override String get home => 'Вы можете смотреть заметки от пользователей на которых вы подписаны.';
+	@override String get local => 'Вы можете смотреть заметки от всех пользователей на сервере.';
+	@override String get social => 'Посты из домашней и локальной ленты будут показаны тут.';
+	@override String get global => 'Вы можете смотреть заметки со всех присоединённых серверов тут.';
+	@override String get description2 => 'Вы можете переключаться между лентами вверху в любое время.';
+	@override String description3({required Object link}) => 'Так же есть списковые ленты и ленты каналов. Для подробностей, загляните в ${link}.';
 }
 
 // Path: misskey.initialTutorial_.postNote_
@@ -2835,7 +3189,21 @@ class _Translations$misskey$initialTutorial_$postNote_$ru_RU extends Translation
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Настройки выкладывания заметки';
+	@override String get description1 => 'Когда вы публикуете заметку на Misskey, вы можете изменить некоторые настройки. Окно написания заметки выглядит вот так.';
 	@override late final _Translations$misskey$initialTutorial_$postNote_$visibility_$ru_RU visibility_ = _Translations$misskey$initialTutorial_$postNote_$visibility_$ru_RU._(_root);
+	@override late final _Translations$misskey$initialTutorial_$postNote_$cw_$ru_RU cw_ = _Translations$misskey$initialTutorial_$postNote_$cw_$ru_RU._(_root);
+}
+
+// Path: misskey.initialTutorial_.done_
+class _Translations$misskey$initialTutorial_$done_$ru_RU extends Translations$misskey$initialTutorial_$done_$en_US {
+	_Translations$misskey$initialTutorial_$done_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Вы прошли туториал! 🎉';
+	@override String description({required Object link}) => 'Вещи показанные тут это лишь малая часть. Для более детального понимания Misskey загляните в ${link}.';
 }
 
 // Path: misskey.achievements_.types_
@@ -2919,6 +3287,8 @@ class _Translations$misskey$achievements_$types_$ru_RU extends Translations$miss
 	@override late final _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$ru_RU loggedInOnNewYearsDay_ = _Translations$misskey$achievements_$types_$loggedInOnNewYearsDay_$ru_RU._(_root);
 	@override late final _Translations$misskey$achievements_$types_$cookieClicked_$ru_RU cookieClicked_ = _Translations$misskey$achievements_$types_$cookieClicked_$ru_RU._(_root);
 	@override late final _Translations$misskey$achievements_$types_$brainDiver_$ru_RU brainDiver_ = _Translations$misskey$achievements_$types_$brainDiver_$ru_RU._(_root);
+	@override late final _Translations$misskey$achievements_$types_$smashTestNotificationButton_$ru_RU smashTestNotificationButton_ = _Translations$misskey$achievements_$types_$smashTestNotificationButton_$ru_RU._(_root);
+	@override late final _Translations$misskey$achievements_$types_$tutorialCompleted_$ru_RU tutorialCompleted_ = _Translations$misskey$achievements_$types_$tutorialCompleted_$ru_RU._(_root);
 	@override late final _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$ru_RU bubbleGameExplodingHead_ = _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$ru_RU._(_root);
 	@override late final _Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$ru_RU bubbleGameDoubleExplodingHead_ = _Translations$misskey$achievements_$types_$bubbleGameDoubleExplodingHead_$ru_RU._(_root);
 }
@@ -2962,6 +3332,7 @@ class _Translations$misskey$role_$options_$ru_RU extends Translations$misskey$ro
 	@override String get descriptionOfRateLimitFactor => 'Меньшее значение — слабые ограничения, большее — сильные';
 	@override String get canHideAds => 'Может скрыть рекламу';
 	@override String get canImportFollowing => 'Можно импортировать подписчиков';
+	@override String get chatAvailability => 'Чаты';
 }
 
 // Path: misskey.role_.condition_
@@ -3094,6 +3465,7 @@ class _Translations$misskey$postForm_$howToUse_$ru_RU extends Translations$missk
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get toolbar_description => 'Вы можете прикрепить файл или голосование, добавить примечание или хэштег, и вставить эмодзи или упоминание';
 	@override String get visibility_title => 'Видимость';
 	@override String get menu_title => 'Меню';
 }
@@ -3146,6 +3518,7 @@ class _Translations$misskey$notification_$types_$ru_RU extends Translations$miss
 	@override String get pollEnded => 'Окончания опросов';
 	@override String get receiveFollowRequest => 'Получен запрос на подписку';
 	@override String get followRequestAccepted => 'Запрос на подписку одобрен';
+	@override String get chatRoomInvitationReceived => 'Пригласили в чат';
 	@override String get achievementEarned => 'Получение достижений';
 	@override String get login => 'Войти';
 	@override String get app => 'Уведомления из приложений';
@@ -3180,6 +3553,7 @@ class _Translations$misskey$deck_$columns_$ru_RU extends Translations$misskey$de
 	@override String get mentions => 'Упоминания';
 	@override String get direct => 'Личное';
 	@override String get roleTimeline => 'История Ролей';
+	@override String get chat => 'Открыть личные сообщения';
 }
 
 // Path: misskey.webhookSettings_.events_
@@ -3231,6 +3605,65 @@ class _Translations$misskey$dataSaver_$code_$ru_RU extends Translations$misskey$
 	@override String get title => 'Подсветка кода';
 }
 
+// Path: misskey.customEmojisManager_.gridCommon_
+class _Translations$misskey$customEmojisManager_$gridCommon_$ru_RU extends Translations$misskey$customEmojisManager_$gridCommon_$en_US {
+	_Translations$misskey$customEmojisManager_$gridCommon_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => 'Скопировать выбранную строку';
+	@override String get copySelectionRanges => 'Скопировать выбранное';
+	@override String get deleteSelectionRows => 'Удалить выбранные строки';
+	@override String get deleteSelectionRanges => 'Удалить строки в выделении';
+	@override String get searchSettings => 'Параметры поиска';
+	@override String get searchSettingCaption => 'Задать подробные критерии поиска';
+	@override String get searchLimit => 'Лимит поиска';
+	@override String get sortOrder => 'Порядок сортировки';
+	@override String get registrationLogs => 'Журнал регистрации';
+	@override String get registrationLogsCaption => 'Журнал будет показан при изменении или удалении эмодзи. Он будет очищен при их изменении или удалении, перемещении на новую страницу или обновлении страницы.';
+	@override String get alertEmojisRegisterFailedDescription => 'Не удалось обновить или удалить эмодзи. Посмотрите журнал регистрации для подробностей';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _Translations$misskey$customEmojisManager_$logs_$ru_RU extends Translations$misskey$customEmojisManager_$logs_$en_US {
+	_Translations$misskey$customEmojisManager_$logs_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => 'Показывать журнал удачных изменений';
+	@override String get failureLogNothing => 'Журнал ошибок пуст';
+	@override String get logNothing => 'Журнал пуст';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _Translations$misskey$customEmojisManager_$remote_$ru_RU extends Translations$misskey$customEmojisManager_$remote_$en_US {
+	_Translations$misskey$customEmojisManager_$remote_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => 'Информация о выбранных строках';
+	@override String get importSelectionRows => 'Импортировать выбранные строки';
+	@override String get importSelectionRangesRows => 'Импортировать строки в выделении';
+	@override String get importEmojisButton => 'Импортировать выбранные эмодзи';
+	@override String get confirmImportEmojisTitle => 'Импортировать эмодзи';
+	@override String confirmImportEmojisDescription({required Object count}) => 'Импортировать ${count} эмодзи с внешнего сервера. Пожалуйста, обратите внимание на их лицензию. Продолжить?';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _Translations$misskey$customEmojisManager_$local_$ru_RU extends Translations$misskey$customEmojisManager_$local_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => 'Зарегистрированные эмодзи';
+	@override String get tabTitleRegister => 'Регистрация эмодзи';
+	@override late final _Translations$misskey$customEmojisManager_$local_$list_$ru_RU list_ = _Translations$misskey$customEmojisManager_$local_$list_$ru_RU._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.noSuchObject_
 class _Translations$misskey$remoteLookupErrors_$noSuchObject_$ru_RU extends Translations$misskey$remoteLookupErrors_$noSuchObject_$en_US {
 	_Translations$misskey$remoteLookupErrors_$noSuchObject_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -3264,8 +3697,24 @@ class _Translations$misskey$initialTutorial_$postNote_$visibility_$ru_RU extends
 	final TranslationsRuRu _root; // ignore: unused_field
 
 	// Translations
+	@override String get description => 'Вы можете ограничить кто может увидеть вашу заметку.';
 	@override String get public => 'Твоя заметка будет видна всем.';
+	@override String get home => 'Видно только в домашней ленте. Пользователи посещающие ваш профиль, через подписки, и через репосты, могут видеть их.';
+	@override String get followers => 'Видно только подписчикам. Только подписчики могут видеть эту заметку и никто больше, и его нельзя репостить.';
+	@override String get direct => 'Видно только выбранным пользователям, и получатели получат уведомление. Может быть использовано как альтернатива личным сообщениям.';
+	@override String get doNotSendConfidencialOnDirect1 => 'Будьте осторожны с отправкой конфиденциальной информации!';
 	@override String get doNotSendConfidencialOnDirect2 => 'Администратор целевого сервера может видеть что вы отправляете. Будьте осторожны с конфиденциальной информацией, когда отправляете личные заметки пользователям с ненадёжных серверов.';
+	@override String get localOnly => 'Заметки с этим флагом не будут передаваться присоединённым серверам. Пользователи на других серверах не смогут увидеть её вне зависимости от настроек выше.';
+}
+
+// Path: misskey.initialTutorial_.postNote_.cw_
+class _Translations$misskey$initialTutorial_$postNote_$cw_$ru_RU extends Translations$misskey$initialTutorial_$postNote_$cw_$en_US {
+	_Translations$misskey$initialTutorial_$postNote_$cw_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Спойлер';
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -4096,6 +4545,28 @@ class _Translations$misskey$achievements_$types_$brainDiver_$ru_RU extends Trans
 	@override String get flavor => 'Мисски-Мисски Ла-Ту-Ма';
 }
 
+// Path: misskey.achievements_.types_.smashTestNotificationButton_
+class _Translations$misskey$achievements_$types_$smashTestNotificationButton_$ru_RU extends Translations$misskey$achievements_$types_$smashTestNotificationButton_$en_US {
+	_Translations$misskey$achievements_$types_$smashTestNotificationButton_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Избыточное тестирование';
+	@override String get description => 'Вызовите тестовое уведомление много раз за очень короткий период времени';
+}
+
+// Path: misskey.achievements_.types_.tutorialCompleted_
+class _Translations$misskey$achievements_$types_$tutorialCompleted_$ru_RU extends Translations$misskey$achievements_$types_$tutorialCompleted_$en_US {
+	_Translations$misskey$achievements_$types_$tutorialCompleted_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Диплом начального курса Misskey';
+	@override String get description => 'Закончите туториал';
+}
+
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
 class _Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$ru_RU extends Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$en_US {
 	_Translations$misskey$achievements_$types_$bubbleGameExplodingHead_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -4140,6 +4611,21 @@ class _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$r
 	@override String get mail => 'Электронная почта';
 	@override String get webhook => 'Вебхук';
 	@override late final _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$ru_RU captions_ = _Translations$misskey$abuseReport_$notificationRecipient_$recipientType_$captions_$ru_RU._(_root);
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _Translations$misskey$customEmojisManager_$local_$list_$ru_RU extends Translations$misskey$customEmojisManager_$local_$list_$en_US {
+	_Translations$misskey$customEmojisManager_$local_$list_$ru_RU._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => 'Зарегистрированных эмодзи нет.';
+	@override String get markAsDeleteTargetRows => 'Пометить выбранные строки для удаления';
+	@override String get markAsDeleteTargetRanges => 'Пометить строки в выделении для удаления';
+	@override String get alertUpdateEmojisNothingDescription => 'Никакие эмодзи не были изменены';
+	@override String get alertDeleteEmojisNothingDescription => 'Никакие эмодзи не были удалеы';
+	@override String get confirmMovePage => 'Перенести страницу?';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
