@@ -6,7 +6,7 @@ part of 'note_update_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_Reacted _$ReactedFromJson(Map<String, dynamic> json) => _Reacted(
+Reacted _$ReactedFromJson(Map<String, dynamic> json) => Reacted(
   reaction: json['reaction'] as String,
   emoji: json['emoji'] == null
       ? null
@@ -14,20 +14,20 @@ _Reacted _$ReactedFromJson(Map<String, dynamic> json) => _Reacted(
   userId: json['userId'] as String,
 );
 
-_Unreacted _$UnreactedFromJson(Map<String, dynamic> json) => _Unreacted(
+Unreacted _$UnreactedFromJson(Map<String, dynamic> json) => Unreacted(
   reaction: json['reaction'] as String,
   userId: json['userId'] as String,
 );
 
-_Deleted _$DeletedFromJson(Map<String, dynamic> json) =>
-    _Deleted(deletedAt: DateTime.parse(json['deletedAt'] as String));
+Deleted _$DeletedFromJson(Map<String, dynamic> json) =>
+    Deleted(deletedAt: DateTime.parse(json['deletedAt'] as String));
 
-_PollVoted _$PollVotedFromJson(Map<String, dynamic> json) => _PollVoted(
+PollVoted _$PollVotedFromJson(Map<String, dynamic> json) => PollVoted(
   choice: (json['choice'] as num).toInt(),
   userId: json['userId'] as String,
 );
 
-_Updated _$UpdatedFromJson(Map<String, dynamic> json) => _Updated(
+Updated _$UpdatedFromJson(Map<String, dynamic> json) => Updated(
   cw: json['cw'] as String?,
   text: json['text'] as String?,
   note: json['note'] == null
@@ -35,5 +35,5 @@ _Updated _$UpdatedFromJson(Map<String, dynamic> json) => _Updated(
       : Note.fromJson(json['note'] as Map<String, dynamic>),
 );
 
-_ReactedEmoji _$ReactedEmojiFromJson(Map<String, dynamic> json) =>
-    _ReactedEmoji(name: json['name'] as String, url: json['url'] as String);
+ReactedEmoji _$ReactedEmojiFromJson(Map<String, dynamic> json) =>
+    ReactedEmoji(name: json['name'] as String, url: json['url'] as String);

@@ -14,7 +14,8 @@ class const Message(final ChatMessage message)
 @freezed
 class const Deleted(final String messageId) with _$Deleted implements ChatEvent;
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const React({
   required final String reaction,
   final UserLite? user,
@@ -23,7 +24,8 @@ class const React({
   factory fromJson(Map<String, Object?> json) => _$ReactFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Unreact({
   required final String reaction,
   final UserLite? user,

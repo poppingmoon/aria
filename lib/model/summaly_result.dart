@@ -4,7 +4,8 @@ part 'summaly_result.freezed.dart';
 part 'summaly_result.g.dart';
 
 // https://github.com/misskey-dev/summaly
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const SummalyResult({
   final String? title,
   final String? icon,
@@ -21,7 +22,8 @@ class const SummalyResult({
   factory fromJson(Map<String, Object?> json) => _$SummalyResultFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Player({
   final String? url,
   final double? width,

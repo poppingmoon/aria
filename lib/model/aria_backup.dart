@@ -7,7 +7,7 @@ import 'tab_settings.dart';
 part 'aria_backup.freezed.dart';
 part 'aria_backup.g.dart';
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const AriaBackup({
   final Map<String, dynamic>? metadata,

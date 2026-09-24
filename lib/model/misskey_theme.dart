@@ -3,7 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'misskey_theme.freezed.dart';
 part 'misskey_theme.g.dart';
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const MisskeyTheme({
   required final String id,
   required final String name,

@@ -6,7 +6,8 @@ part 'note_update_event.g.dart';
 
 sealed class NoteUpdateEvent;
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Reacted({
   required final String reaction,
   final ReactedEmoji? emoji,
@@ -15,7 +16,8 @@ class const Reacted({
   factory fromJson(Map<String, Object?> json) => _$ReactedFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Unreacted({
   required final String reaction,
   required final String userId,
@@ -23,28 +25,32 @@ class const Unreacted({
   factory fromJson(Map<String, Object?> json) => _$UnreactedFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Deleted({required final DateTime deletedAt})
     with _$Deleted
     implements NoteUpdateEvent {
   factory fromJson(Map<String, Object?> json) => _$DeletedFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const PollVoted({required final int choice, required final String userId})
     with _$PollVoted
     implements NoteUpdateEvent {
   factory fromJson(Map<String, Object?> json) => _$PollVotedFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const Updated({final String? cw, final String? text, final Note? note})
     with _$Updated
     implements NoteUpdateEvent {
   factory fromJson(Map<String, Object?> json) => _$UpdatedFromJson(json);
 }
 
-@Freezed(toJson: false)
+@freezed
+@JsonSerializable(createToJson: false)
 class const ReactedEmoji({
   required final String name,
   required final String url,

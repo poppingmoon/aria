@@ -81,14 +81,14 @@ const defaultSounds = {
   OperationType.reload: SoundStore(type: SoundType.syuiloPope2),
 };
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const SoundSettings({
   final bool notUseSound = true,
   final double masterVolume = defaultMasterVolume,
   final Map<OperationType, SoundStore> sounds = defaultSounds,
 }) with _$SoundSettings {
-  factory fromJson(Map<String, Object?> json) => _SoundSettings(
+  factory fromJson(Map<String, Object?> json) => SoundSettings(
     notUseSound: switch (json['notUseSound']) {
       final bool notUseSound => notUseSound,
       _ => true,
@@ -114,7 +114,7 @@ class const SoundSettings({
   Map<String, Object?> toJson() => _$SoundSettingsToJson(this);
 }
 
-@Freezed(fromJson: false, toJson: false)
+@freezed
 @JsonSerializable()
 class const SoundStore({
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)

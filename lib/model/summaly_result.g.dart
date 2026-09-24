@@ -6,8 +6,8 @@ part of 'summaly_result.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_SummalyResult _$SummalyResultFromJson(Map<String, dynamic> json) =>
-    _SummalyResult(
+SummalyResult _$SummalyResultFromJson(Map<String, dynamic> json) =>
+    SummalyResult(
       title: json['title'] as String?,
       icon: json['icon'] as String?,
       description: json['description'] as String?,
@@ -21,7 +21,7 @@ _SummalyResult _$SummalyResultFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-_Player _$PlayerFromJson(Map<String, dynamic> json) => _Player(
+Player _$PlayerFromJson(Map<String, dynamic> json) => Player(
   url: json['url'] as String?,
   width: (json['width'] as num?)?.toDouble(),
   height: (json['height'] as num?)?.toDouble(),

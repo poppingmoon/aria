@@ -9,6 +9,9 @@ targets:
           exclude:
             - "**.freezed.dart"
             - "**.g.dart"
+        options:
+          map: false
+          when: false
       json_serializable:
         generate_for:
           include:
