@@ -43,7 +43,7 @@ dependencies:
   flutter_highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
-      ref: 11a5b3a455973c5021401725c4866b811b4a088f
+      ref: d4787ea8603e9176cb1c22ba7ca23fe4ccdc0433
       path: flutter_highlighting
   flutter_hooks: ^0.21.3+1
   flutter_html:
@@ -78,7 +78,7 @@ dependencies:
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
-      ref: cabd93636e331707ad6ff0f548a9c21e07b0e6c7
+      ref: d4787ea8603e9176cb1c22ba7ca23fe4ccdc0433
       path: highlighting
   hooks_riverpod: ^3.4.3
   html: ^0.15.7
@@ -185,6 +185,11 @@ dependency_overrides:
       url: https://github.com/poppingmoon/flutter_inappwebview
       ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview_macos
+  highlighting:
+    git:
+      url: https://github.com/poppingmoon/dart-highlighting
+      ref: d4787ea8603e9176cb1c22ba7ca23fe4ccdc0433
+      path: highlighting
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community

@@ -91,18 +91,11 @@ class const Code({
     final style =
         (fontFamily != null
             ? GoogleFonts.asMap()[fontFamily]?.call(
-                textStyle:
-                    this.style?.copyWith(
-                      fontFamilyFallback: monospaceFallback,
-                    ) ??
-                    const TextStyle(fontFamilyFallback: monospaceFallback),
+                textStyle: (this.style ?? DefaultTextStyle.of(context).style)
+                    .copyWith(fontFamilyFallback: monospaceFallback),
               )
             : null) ??
-        this.style?.copyWith(
-          fontFamily: fontFamily ?? 'monospace',
-          fontFamilyFallback: monospaceFallback,
-        ) ??
-        TextStyle(
+        (this.style ?? DefaultTextStyle.of(context).style).copyWith(
           fontFamily: fontFamily ?? 'monospace',
           fontFamilyFallback: monospaceFallback,
         );
