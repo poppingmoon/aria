@@ -91,7 +91,10 @@ class const UserSheet({
                   leading: const Icon(Icons.alternate_email),
                   title: Text(t.misskey.copyUsername),
                   onTap: () {
-                    copyToClipboard(context, user.acct);
+                    copyToClipboard(
+                      context,
+                      '@${user.username}@${user.host ?? account.host}',
+                    );
                     context.pop();
                   },
                 ),
