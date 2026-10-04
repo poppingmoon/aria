@@ -106,7 +106,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 14176c515a005a9fb01d3e6365a49b5a5d387a92
+      ref: 3b3e3f72bd9f5c7a3a52aa14294dc60950643921
   mobile_scanner:
     git:
       url: https://github.com/poppingmoon/mobile_scanner
@@ -133,11 +133,15 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/tinycolor2
       ref: 030e8d5f6167071016ebc9fe7359003a4f78dcc3
-  unifiedpush: ^6.2.0
+  unifiedpush:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 5528b941de39bb020ba5f0edb8f8a62718e20ec9
+      path: unifiedpush
   unifiedpush_ui:
     git:
       url: https://github.com/poppingmoon/flutter-connector
-      ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
+      ref: 5528b941de39bb020ba5f0edb8f8a62718e20ec9
       path: unifiedpush_ui
   url_launcher: ^6.3.2
   uuid: ^4.6.0
@@ -194,8 +198,13 @@ dependency_overrides:
   unifiedpush_android:
     git:
       url: https://github.com/poppingmoon/flutter-connector
-      ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
+      ref: 5528b941de39bb020ba5f0edb8f8a62718e20ec9
       path: unifiedpush_android
+  unifiedpush_platform_interface:
+    git:
+      url: https://github.com/poppingmoon/flutter-connector
+      ref: 5528b941de39bb020ba5f0edb8f8a62718e20ec9
+      path: unifiedpush_platform_interface
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart

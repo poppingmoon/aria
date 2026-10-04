@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
@@ -13,21 +14,33 @@ part 'web_push_key_set_notifier_provider.g.dart';
 @Riverpod(keepAlive: true)
 class WebPushKeySetNotifier extends _$WebPushKeySetNotifier {
   @override
-  FutureOr<WebPushKeySet?> build(Account account) {
+  FutureOr<WebPushKeySet?> build(Account account) async {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
-      return ref
+      return await ref
           .watch(notificationSettingsRepositoryProvider)
           .loadKeySet(account);
     } else {
-      final keySetBase64 = ref.watch(sharedPreferencesProvider).getString(_key);
+      final keySetBase64 = await _migrate() ?? await _storage.read(key: _key);
       if (keySetBase64 == null) {
         return null;
       }
-      return WebPushKeySet.deserialize(keySetBase64);
+      return await WebPushKeySet.deserialize(keySetBase64);
     }
   }
 
   String get _key => '$account/webPushKeySet';
+
+  static const _storage = FlutterSecureStorage();
+
+  Future<String?> _migrate() async {
+    final prefs = ref.read(sharedPreferencesProvider);
+    final keySetBase64 = prefs.getString(_key);
+    if (keySetBase64 != null) {
+      await _storage.write(key: _key, value: keySetBase64);
+      await prefs.remove(_key);
+    }
+    return keySetBase64;
+  }
 
   Future<void> save(WebPushKeySet keySet) async {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
@@ -35,9 +48,7 @@ class WebPushKeySetNotifier extends _$WebPushKeySetNotifier {
           .read(notificationSettingsRepositoryProvider)
           .saveKeySet(account, keySet);
     } else {
-      await ref
-          .read(sharedPreferencesProvider)
-          .setString(_key, keySet.serialize);
+      await _storage.write(key: _key, value: keySet.serialize);
     }
     state = AsyncValue.data(keySet);
   }
@@ -48,7 +59,7 @@ class WebPushKeySetNotifier extends _$WebPushKeySetNotifier {
           .read(notificationSettingsRepositoryProvider)
           .deleteKeySet(account);
     } else {
-      await ref.read(sharedPreferencesProvider).remove(_key);
+      await _storage.delete(key: _key);
     }
     state = const AsyncValue.data(null);
   }

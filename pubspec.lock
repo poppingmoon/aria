@@ -1453,8 +1453,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "14176c515a005a9fb01d3e6365a49b5a5d387a92"
-      resolved-ref: "14176c515a005a9fb01d3e6365a49b5a5d387a92"
+      ref: "3b3e3f72bd9f5c7a3a52aa14294dc60950643921"
+      resolved-ref: "3b3e3f72bd9f5c7a3a52aa14294dc60950643921"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
@@ -2229,17 +2229,18 @@ packages:
   unifiedpush:
     dependency: "direct main"
     description:
-      name: unifiedpush
-      sha256: "8ed9767f750a1dc6159a77e2171641d0cb825dc87682d1ce1b8618689b79f58e"
-      url: "https://pub.dev"
-    source: hosted
+      path: unifiedpush
+      ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      resolved-ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
     version: "6.2.0"
   unifiedpush_android:
     dependency: "direct overridden"
     description:
       path: unifiedpush_android
-      ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
-      resolved-ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
+      ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      resolved-ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
       url: "https://github.com/poppingmoon/flutter-connector"
     source: git
     version: "3.4.1"
@@ -2252,12 +2253,13 @@ packages:
     source: hosted
     version: "1.0.0"
   unifiedpush_platform_interface:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: unifiedpush_platform_interface
-      sha256: "83372bc8d794b8b12ef6993b518d7be907dcfc2191bdf6de0ece5c4445d89880"
-      url: "https://pub.dev"
-    source: hosted
+      path: unifiedpush_platform_interface
+      ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      resolved-ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      url: "https://github.com/poppingmoon/flutter-connector"
+    source: git
     version: "4.0.0"
   unifiedpush_storage_interface:
     dependency: transitive
@@ -2271,8 +2273,8 @@ packages:
     dependency: "direct main"
     description:
       path: unifiedpush_ui
-      ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
-      resolved-ref: d8926118768c3052f42e02f4aec2a7c7f4b8d72e
+      ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
+      resolved-ref: "5528b941de39bb020ba5f0edb8f8a62718e20ec9"
       url: "https://github.com/poppingmoon/flutter-connector"
     source: git
     version: "0.2.0"
