@@ -51,7 +51,7 @@ final class WebPushKeySetNotifierProvider
 }
 
 String _$webPushKeySetNotifierHash() =>
-    r'5582a01c27d964dc71aa350d577764d827c26764';
+    r'5fccfb5c9649e22957cc4dd7d81d480f8a361116';
 
 final class WebPushKeySetNotifierFamily extends $Family
     with

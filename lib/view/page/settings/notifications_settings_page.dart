@@ -17,6 +17,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/apns_push_connector_provider.dart';
+import '../../../provider/apns_token_provider.dart';
 import '../../../provider/push_subscription_notifier_provider.dart';
 import '../../../provider/unified_push_endpoint_notifier_provider.dart';
 import '../../../provider/user_ids_notifier_provider.dart';
@@ -93,42 +94,29 @@ class const NotificationsSettingsPage({
         return;
       }
 
-      final completer = Completer<String>();
-
-      void callback() {
-        if (connector.token.value case final token?
-            when !completer.isCompleted) {
-          completer.complete(token);
-        }
-      }
-
-      callback();
-      connector.token.addListener(callback);
+      final sub = ref.listenManual(apnsTokenProvider, (_, _) {});
       final apnsToken = await futureWithDialog(
         ref.context,
-        completer.future.timeout(const Duration(seconds: 10)),
+        ref.read(apnsTokenProvider.future).timeout(const Duration(seconds: 10)),
       );
-      connector.token.removeListener(callback);
+      sub.close();
       if (apnsToken == null) return;
       endpoint = '$webPushProxyUrl/apns/$account/$apnsToken';
     }
 
     WebPushKeySet? keySet;
-    final SwRegisterRequest request;
-    if (publicKeySet case (:final auth, :final publicKey)) {
-      request = SwRegisterRequest(
-        endpoint: endpoint,
-        auth: auth,
-        publickey: publicKey,
-      );
-    } else {
+    if (publicKeySet == null) {
       keySet = await WebPushKeySet.newKeyPair();
-      request = SwRegisterRequest(
-        endpoint: endpoint,
+      publicKeySet = (
         auth: keySet.publicKey.auth,
-        publickey: keySet.publicKey.p256dh,
+        publicKey: keySet.publicKey.p256dh,
       );
     }
+    final request = SwRegisterRequest(
+      endpoint: endpoint,
+      auth: publicKeySet.auth,
+      publickey: publicKeySet.publicKey,
+    );
     if (!ref.context.mounted) return;
 
     // Register the endpoint and keys to the Misskey server.
@@ -154,7 +142,11 @@ class const NotificationsSettingsPage({
       ref.context,
       ref
           .read(pushSubscriptionNotifierProvider(account).notifier)
-          .subscribe(keySet: keySet, response: response),
+          .subscribe(
+            publicKeySet: publicKeySet,
+            keySet: keySet,
+            response: response,
+          ),
     );
 
     if (defaultTargetPlatform == TargetPlatform.android) {
