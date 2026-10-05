@@ -1,3 +1,4 @@
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
@@ -17,14 +18,40 @@ class const FollowButton({
   super.key,
   required final Account account,
   required final String userId,
+  final UserDetailed? user,
 }) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userNotifierProvider(account, userId: userId)).value;
-    if (user is! UserDetailedNotMeWithRelations) {
+    final initialUser = useState(this.user);
+    final (user, isLoading) = switch (initialUser.value) {
+      final user? => (user, false),
+      _ => ref.watch(
+        userNotifierProvider(account, userId: userId).select(
+          (user) => (
+            user.value,
+            this.user == null ? user.isReloading : user.isLoading,
+          ),
+        ),
+      ),
+    };
+
+    if (isLoading) {
+      final theme = Theme.of(context);
+
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          disabledBackgroundColor: theme.colorScheme.surface,
+          side: BorderSide(color: theme.colorScheme.primary),
+        ),
+        onPressed: null,
+        child: const SizedBox.square(
+          dimension: 32.0,
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else if (user is! UserDetailedNotMeWithRelations) {
       return const SizedBox.shrink();
-    }
-    if (user.hasPendingFollowRequestFromYou) {
+    } else if (user.hasPendingFollowRequestFromYou) {
       return ElevatedButton(
         onPressed: () async {
           final confirmed = await confirm(
@@ -38,6 +65,7 @@ class const FollowButton({
           );
           if (!context.mounted) return;
           if (confirmed) {
+            initialUser.value = null;
             await futureWithDialog(
               context,
               ref
@@ -64,6 +92,7 @@ class const FollowButton({
           );
           if (!context.mounted) return;
           if (confirmed) {
+            initialUser.value = null;
             await futureWithDialog(
               context,
               ref
@@ -125,6 +154,7 @@ class const FollowButton({
             if (!confirmed) return;
           }
           if (!context.mounted) return;
+          initialUser.value = null;
           await futureWithDialog(
             context,
             ref

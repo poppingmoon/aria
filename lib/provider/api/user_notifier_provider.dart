@@ -46,8 +46,10 @@ class UserNotifier extends _$UserNotifier {
 
   Future<void> follow() async {
     await _misskey.following.create(FollowingCreateRequest(userId: _userId));
-    await Future<void>.delayed(const Duration(seconds: 1));
-    ref.invalidateSelf();
+    state = const AsyncValue.loading();
+    unawaited(
+      Future<void>.delayed(const Duration(seconds: 1), ref.invalidateSelf),
+    );
   }
 
   Future<void> unfollow() async {
@@ -55,6 +57,15 @@ class UserNotifier extends _$UserNotifier {
     final user = state.value;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isFollowing: false));
+    } else if (state.isLoading) {
+      unawaited(
+        Future(() async {
+          final user = await future;
+          if (user is UserDetailedNotMeWithRelations) {
+            state = AsyncValue.data(user.copyWith(isFollowing: false));
+          }
+        }),
+      );
     }
   }
 
@@ -66,6 +77,17 @@ class UserNotifier extends _$UserNotifier {
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(
         user.copyWith(hasPendingFollowRequestFromYou: false),
+      );
+    } else if (state.isLoading) {
+      unawaited(
+        Future(() async {
+          final user = await future;
+          if (user is UserDetailedNotMeWithRelations) {
+            state = AsyncValue.data(
+              user.copyWith(hasPendingFollowRequestFromYou: false),
+            );
+          }
+        }),
       );
     }
   }
