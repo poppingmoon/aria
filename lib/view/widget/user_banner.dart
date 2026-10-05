@@ -50,7 +50,11 @@ class const UserBanner({
             alignment: AlignmentDirectional.topEnd,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: FollowButton(account: account, userId: user.id),
+              child: FollowButton(
+                account: account,
+                userId: user.id,
+                user: user,
+              ),
             ),
           ),
           if (user case UserDetailedNotMeWithRelations(
