@@ -474,8 +474,8 @@ class Translations$misskey$zh_CN extends Translations$misskey$en_US {
 	@override String get unblock => '取消屏蔽';
 	@override String get suspend => '冻结';
 	@override String get unsuspend => '解除冻结';
-	@override String get blockConfirm => '确定要禁止对方与我互动吗？';
-	@override String get unblockConfirm => '确认解除对方的互动限制吗？';
+	@override String get blockConfirm => '确定要屏蔽吗？';
+	@override String get unblockConfirm => '确定要取消屏蔽吗？';
 	@override String get suspendConfirm => '要冻结吗？';
 	@override String get unsuspendConfirm => '要解除冻结吗？';
 	@override String get selectList => '选择列表';
@@ -2274,7 +2274,7 @@ class Translations$misskey$accountMigration_$zh_CN extends Translations$misskey$
 	@override String get moveTo => '把这个账户迁移到新的账户';
 	@override String get moveToLabel => '迁移后的账户';
 	@override String get moveCannotBeUndone => '一旦迁移账户，就无法撤销。';
-	@override String get moveAccountDescription => '\n迁移到新帐户。\n　・现有的关注者自动关注新帐户\n　・此帐户的所有关注者都将被删除\n　・您将无法再使用此帐户发帖。\n关注者迁移是自动的，但关注中迁移必须手动完成。请在迁移前在此帐户上导出关注列表，并在迁移后立即在目标帐户上执行导入。\n列表、屏蔽列表、禁止与我互动的列表也是如此，因此您必须手动迁移它。\n（此描述适用于该服务器（Misskey v13.12.0 或更高版本）。其他 ActivityPub 软件（例如 Mastodon）的行为可能有所不同。）';
+	@override String get moveAccountDescription => '\n迁移到新帐户。\n　・现有的关注者自动关注新帐户\n　・此帐户的所有关注者都将被删除\n　・您将无法再使用此帐户发帖。\n关注者迁移是自动的，但关注中迁移必须手动完成。请在迁移前在此帐户上导出关注列表，并在迁移后立即在目标帐户上执行导入。\n列表、隐藏、屏蔽也是如此，因此您必须手动迁移它。\n（此描述适用于该服务器（Misskey v13.12.0 或更高版本）。其他 ActivityPub 软件（例如 Mastodon）的行为可能有所不同。）';
 	@override String get moveAccountHowTo => '要进行账户迁移，请现在目标账户中为此账户建立一个别名。\n建立别名后，请像这样输入目标账户：@username@server.example.com';
 	@override String get startMigration => '迁移';
 	@override String migrationConfirm({required Object account}) => '确定要把此账户迁移到 ${account} 吗？一旦确定后，此操作无法取消，此账户也无法以原来的状态使用。\n同时，请确认迁移后的账户，已创造别名。';

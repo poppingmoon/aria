@@ -1716,6 +1716,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get prepend => 'Anteporre';
 	@override String get urlPreviewSensitiveList => 'URL da impedire alla vista delle anteprime';
 	@override String get urlPreviewSensitiveListDescription => 'Separando con uno spazio si indica E, separando con una linea si indica O. Circondando con barre / si indica una Espressione Regolare.\nLe URL che coincidono con le indicazioni non verranno visualizzate.';
+	@override String get pixelatedZoom => 'Ingrandimento pixelato';
 	@override late final _Translations$misskey$imageEditing_$it_IT imageEditing_ = _Translations$misskey$imageEditing_$it_IT._(_root);
 	@override late final _Translations$misskey$imageFrameEditor_$it_IT imageFrameEditor_ = _Translations$misskey$imageFrameEditor_$it_IT._(_root);
 	@override late final _Translations$misskey$compression_$it_IT compression_ = _Translations$misskey$compression_$it_IT._(_root);
