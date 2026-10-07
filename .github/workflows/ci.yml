@@ -122,7 +122,7 @@ jobs:
         run: rustup update
 
       - name: Start simulator
-        uses: futureware-tech/simulator-action@e89aa8f93d3aec35083ff49d2854d07f7186f7f5 # v5
+        uses: futureware-tech/simulator-action@c768f52966d5f70335ec77881f9806b24a52f80e # v6
         with:
           model: iPhone 17
           wait_for_boot: true

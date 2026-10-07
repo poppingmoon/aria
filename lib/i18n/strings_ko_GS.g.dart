@@ -768,7 +768,7 @@ class Translations$misskey$ko_GS extends Translations$misskey$en_US {
 	@override String get checking => '학인하고 잇십니다';
 	@override String get available => '사용 가능합니다';
 	@override String get unavailable => '사용할 수 없습니다';
-	@override String get usernameInvalidFormat => 'a~z, A~Z, 0-9, _를 사용할 수 있습니다';
+	@override String get usernameInvalidFormat => 'a~z, A~Z, 0-9, _를 쓸 수 있다';
 	@override String get tooShort => '억수로 짜립니다';
 	@override String get tooLong => '억수로 집니다';
 	@override String get weakPassword => '약한 비밀번호';
