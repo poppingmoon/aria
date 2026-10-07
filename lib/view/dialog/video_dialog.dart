@@ -52,6 +52,98 @@ class const VideoDialog({
       file: file,
       autoPlay: true,
       showControlsOnInitialize: false,
+      optionsBuilder: (context, controller) => showModalBottomSheet(
+        context: context,
+        builder: (context) => ValueListenableBuilder(
+          valueListenable: controller.videoPlayerController,
+          builder: (context, value, _) => ListView(
+            shrinkWrap: true,
+            children: [
+              SwitchListTile(
+                secondary: const Icon(Icons.repeat),
+                title: Text(t.misskey.mediaControls_.loop),
+                value: value.isLooping,
+                onChanged: (value) => controller.setLooping(value),
+              ),
+              ListTile(
+                leading: const Icon(Icons.speed),
+                title: Text(t.misskey.mediaControls_.playbackRate),
+                subtitle: Text('${value.playbackSpeed}x'),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () {
+                  context.pop();
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => ValueListenableBuilder(
+                      valueListenable: controller.videoPlayerController,
+                      builder: (context, value, _) => ListView(
+                        shrinkWrap: true,
+                        children: [
+                          ListTile(
+                            title: Text(t.misskey.mediaControls_.playbackRate),
+                          ),
+                          const Divider(height: 0.0),
+                          const SizedBox(height: 8.0),
+                          SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                              tickMarkShape: SliderTickMarkShape.noTickMark,
+                            ),
+                            child: Slider(
+                              value: value.playbackSpeed,
+                              onChanged: (value) =>
+                                  controller.playback.setPlaybackSpeed(value),
+                              min: 0.25,
+                              max: 2.0,
+                              divisions: 35,
+                              label:
+                                  '${value.playbackSpeed.toStringAsFixed(2)}x',
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Center(
+                            child: LayoutBuilder(
+                              builder: (context, constraint) =>
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      spacing: 4.0,
+                                      children: [
+                                        const SizedBox(width: 8.0),
+                                        ...[
+                                          if (constraint.maxWidth > 500.0) ...[
+                                            0.25,
+                                            0.5,
+                                            0.75,
+                                          ],
+                                          1.0,
+                                          1.25,
+                                          1.5,
+                                          2.0,
+                                        ].map(
+                                          (value) => ActionChip(
+                                            label: Text('${value}x'),
+                                            onPressed: () => controller.playback
+                                                .setPlaybackSpeed(value),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8.0),
+                                      ],
+                                    ),
+                                  ),
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        clipBehavior: Clip.hardEdge,
+      ),
     );
 
     return IconButtonTheme(

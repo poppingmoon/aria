@@ -13,6 +13,8 @@ ChewieController? useChewieController({
   File? file,
   bool autoPlay = false,
   bool showControlsOnInitialize = true,
+  Future<void> Function(BuildContext context, ChewieController controller)?
+  optionsBuilder,
 }) {
   final videoPlayerController = useVideoPlayerController(url: url, file: file);
   return use(
@@ -21,6 +23,7 @@ ChewieController? useChewieController({
       videoPlayerController: videoPlayerController,
       autoPlay: autoPlay,
       showControlsOnInitialize: showControlsOnInitialize,
+      optionsBuilder: optionsBuilder,
     ),
   );
 }
@@ -30,6 +33,11 @@ class const _ChewieControllerHook({
   final VideoPlayerController? videoPlayerController,
   final bool autoPlay = false,
   final bool showControlsOnInitialize = true,
+  final Future<void> Function(
+    BuildContext context,
+    ChewieController controller,
+  )?
+  optionsBuilder,
 }) extends Hook<ChewieController?> {
   @override
   HookState<ChewieController?, Hook<ChewieController?>> createState() =>
@@ -61,6 +69,14 @@ class _ChewieControllerHookState
         videoPlayerController: videoPlayerController,
         autoPlay: hook.autoPlay,
         showControlsOnInitialize: hook.showControlsOnInitialize,
+        optionsBuilder: switch (hook.optionsBuilder) {
+          final optionsBuilder? => (context, _) async {
+            if (_chewieController case final controller?) {
+              await optionsBuilder(context, controller);
+            }
+          },
+          _ => null,
+        },
       );
       setState(() {});
     }
