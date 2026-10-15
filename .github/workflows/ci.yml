@@ -16,12 +16,12 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -41,7 +41,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@c387862ad6765a9729f2b40ee4d8b5769f2145c7 # v1.26.1
+        uses: reviewdog/action-suggester@v1.26.1
         with:
           fail_level: error
           cleanup: false
@@ -56,12 +56,12 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -80,12 +80,12 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -104,12 +104,12 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -122,13 +122,13 @@ jobs:
         run: rustup update
 
       - name: Start simulator
-        uses: futureware-tech/simulator-action@c768f52966d5f70335ec77881f9806b24a52f80e # v6
+        uses: futureware-tech/simulator-action@v6
         with:
           model: iPhone 17
           wait_for_boot: true
 
       - name: Integration test
-        uses: nick-fields/retry@ad984534de44a9489a53aefd81eb77f87c70dc60 # v4.0.0
+        uses: nick-fields/retry@v4.0.0
         with:
           timeout_minutes: 30
           max_attempts: 3
@@ -142,12 +142,12 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -164,7 +164,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@c387862ad6765a9729f2b40ee4d8b5769f2145c7 # v1.26.1
+        uses: reviewdog/action-suggester@v1.26.1
         with:
           fail_level: error
           cleanup: false
@@ -180,12 +180,12 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Flutter
-        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2 # v2.23.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: stable
           flutter-version-file: .fvmrc
@@ -199,7 +199,7 @@ jobs:
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-suggester@c387862ad6765a9729f2b40ee4d8b5769f2145c7 # v1.26.1
+        uses: reviewdog/action-suggester@v1.26.1
         with:
           fail_level: error
           cleanup: false
