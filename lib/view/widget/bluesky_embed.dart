@@ -19,7 +19,10 @@ class const BlueskyEmbed({
     final did = useFuture(
       useMemoized(() async {
         if (atId.startsWith('did:')) {
-          return atId;
+          if (RegExp(r'^[A-Za-z0-9._:%-]+$').hasMatch(atId)) {
+            return atId;
+          }
+          return null;
         }
         final response = await dio.getUri<Map<String, dynamic>>(
           Uri(
@@ -29,13 +32,20 @@ class const BlueskyEmbed({
             queryParameters: {'handle': atId},
           ),
         );
-        if (response.data?['did'] case final String did) {
+        if (response.data?['did'] case final String did
+            when RegExp(r'^[A-Za-z0-9._:%-]+$').hasMatch(did)) {
           return did;
         }
         return null;
-      }),
+      }, [atId]),
     ).data;
-    if (did == null) {
+    final rkey = useMemoized(
+      () => RegExp(r'^[A-Za-z0-9.\-_:~]+$').hasMatch(this.rkey)
+          ? this.rkey
+          : null,
+      [this.rkey],
+    );
+    if (did == null || rkey == null) {
       return const SizedBox(height: 200.0);
     }
 
