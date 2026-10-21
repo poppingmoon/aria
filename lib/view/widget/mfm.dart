@@ -74,6 +74,7 @@ class const Mfm({
   final TextOverflow? overflow,
   final int? maxLines,
   final bool? enableEmojiFadeIn,
+  final ScrollPosition? Function(Axis axis)? getScrollPosition,
 }) extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -226,8 +227,10 @@ class const Mfm({
           for (final linkId in linkNodes.map(identityHashCode))
             linkId:
                 ForceAcceptGestureRecognizer(
-                    getScrollPosition: (axis) =>
-                        Scrollable.maybeOf(context, axis: axis)?.position,
+                    getScrollPosition:
+                        getScrollPosition ??
+                        (axis) =>
+                            Scrollable.maybeOf(context, axis: axis)?.position,
                   )
                   ..onLongPressDown = (_) {
                     activeLinkId.value = linkId;
