@@ -111,6 +111,7 @@ class const ProfilePage({super.key, required final Account account})
       accountSettingsNotifierProvider(account)
           .select((settings) => settings.uploadFolder),
     );
+    final controller = useScrollController();
     final nameController = useTextEditingController(text: i.value?.name);
     final descriptionController = useTextEditingController(
       text: i.value?.description,
@@ -185,6 +186,7 @@ class const ProfilePage({super.key, required final Account account})
       ),
       body: switch (i) {
         AsyncValue(value: final i, hasValue: true) when i != null => ListView(
+          controller: controller,
           children: [
             Stack(
               alignment: Alignment.bottomCenter,
@@ -659,6 +661,8 @@ class const ProfilePage({super.key, required final Account account})
                                             ]
                                           : null,
                                       author: i,
+                                      getScrollPosition: (_) =>
+                                          controller.position,
                                     ),
                                   ),
                                 ),
@@ -691,6 +695,7 @@ class const ProfilePage({super.key, required final Account account})
                       },
                       shrinkWrap: true,
                       buildDefaultDragHandles: false,
+                      physics: const NeverScrollableScrollPhysics(),
                     ),
                     Card(
                       margin: const EdgeInsets.all(8.0),
