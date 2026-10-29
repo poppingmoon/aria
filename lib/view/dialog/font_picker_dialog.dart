@@ -22,32 +22,36 @@ class const FontPickerDialog({
 }) extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final webfontList = useFuture(useMemoized(() => loadWebfontList()));
     final controller = useTextEditingController();
     final query = useValueListenable(controller).text.trim().toLowerCase();
     final subsets = useState(initialSubsets);
     final category = useState(initialCategory);
-    final fontList = [
-      ...webfontList.where(
-        (font) => GoogleFonts.asMap().containsKey(font.family),
-      ),
-      const WebFont(
-        family: 'Pretendard',
-        variants: [],
-        subsets: [
-          WebFontSubset.korean,
-          WebFontSubset.latin,
-          WebFontSubset.latinExt,
-        ],
-        version: '',
-        lastModified: '',
-        files: {},
-        category: WebFontCategory.sansSerif,
-        menu: '',
-        popularityRank: 10000,
-      ),
-    ];
+    final fontList = switch (webfontList.data) {
+      final webfontList? => [
+        ...webfontList.where(
+          (font) => GoogleFonts.asMap().containsKey(font.family),
+        ),
+        const WebFont(
+          family: 'Pretendard',
+          variants: [],
+          subsets: [
+            WebFontSubset.korean,
+            WebFontSubset.latin,
+            WebFontSubset.latinExt,
+          ],
+          version: '',
+          lastModified: '',
+          files: {},
+          category: WebFontCategory.sansSerif,
+          menu: '',
+          popularityRank: 10000,
+        ),
+      ],
+      _ => null,
+    };
     final fonts = fontList
-        .where(
+        ?.where(
           (font) =>
               (query.isEmpty || font.family.toLowerCase().contains(query)) &&
               subsets.value.every((subset) => font.subsets.contains(subset)) &&
@@ -206,7 +210,17 @@ class const FontPickerDialog({
             ),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
-          if (fonts.isEmpty)
+          if (fonts == null)
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: CircularProgressIndicator(),
+                ),
+              ),
+            )
+          else if (fonts.isEmpty)
             SliverFillRemaining(
               hasScrollBody: false,
               child: Center(
