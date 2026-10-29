@@ -2500,8 +2500,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "172cda47a23366f7dba888ee7d0d3f32edcda930"
-      resolved-ref: "172cda47a23366f7dba888ee7d0d3f32edcda930"
+      ref: fb0ffb324e4bf276e88666616374e0162f1973fc
+      resolved-ref: fb0ffb324e4bf276e88666616374e0162f1973fc
       url: "https://github.com/poppingmoon/webfont_list"
     source: git
     version: "1.0.0"
