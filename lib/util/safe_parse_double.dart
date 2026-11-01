@@ -2,7 +2,10 @@ double? safeParseDouble(dynamic value) {
   if (value is String) {
     // Ignore trailing dots.
     final trimmed = value.replaceFirst(RegExp(r'\.+$'), '');
-    return double.tryParse(trimmed);
+    final result = double.tryParse(trimmed);
+    if (result?.isFinite ?? false) {
+      return result;
+    }
   }
   return null;
 }
