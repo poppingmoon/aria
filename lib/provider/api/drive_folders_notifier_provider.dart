@@ -117,7 +117,6 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'drive/folders/update',
       {'folderId': folderId, 'parentId': parentId},
-      excludeRemoveNullPredicate: (key, _) => key == 'parentId',
     );
     final folder = DriveFolder.fromJson(response);
     final value = state.value ?? const PaginationState();
