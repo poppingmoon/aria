@@ -190,7 +190,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
       'draftId': draftId,
       'scheduledAt': null,
       'isActuallyScheduled': false,
-    }, excludeRemoveNullPredicate: (_, _) => true);
+    });
     final value = state.value;
     if (value != null) {
       state = AsyncValue.data(

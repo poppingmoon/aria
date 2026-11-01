@@ -48,11 +48,10 @@ class DriveFileNotifier extends _$DriveFileNotifier {
     final response = await ref
         .read(misskeyProvider(account))
         .apiService
-        .post<Map<String, dynamic>>(
-          'drive/files/update',
-          DriveFilesUpdateRequest(fileId: fileId, comment: comment).toJson(),
-          excludeRemoveNullPredicate: (key, _) => key == 'comment',
-        )
+        .post<Map<String, dynamic>>('drive/files/update', {
+          'fileId': fileId,
+          'comment': comment,
+        })
         .then((response) => DriveFile.fromJson(response));
     state = AsyncValue.data(response);
     ref

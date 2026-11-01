@@ -143,15 +143,10 @@ class const MissingFileCommentDialog({
                     ref
                         .read(misskeyProvider(account))
                         .apiService
-                        .post<Map<String, dynamic>>(
-                          'drive/files/update',
-                          DriveFilesUpdateRequest(
-                            fileId: file.file.id,
-                            comment: result.isNotEmpty ? result : null,
-                          ).toJson(),
-                          excludeRemoveNullPredicate: (key, _) =>
-                              key == 'comment',
-                        )
+                        .post<Map<String, dynamic>>('drive/files/update', {
+                          'fileId': file.file.id,
+                          'comment': result.isNotEmpty ? result : null,
+                        })
                         .then(DriveFile.fromJson),
                   );
                   if (!context.mounted) return;

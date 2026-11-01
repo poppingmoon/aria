@@ -154,11 +154,10 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
 
   Future<void> updateComment(String fileId, String? comment) async {
     final response = await _misskey.apiService
-        .post<Map<String, dynamic>>(
-          'drive/files/update',
-          DriveFilesUpdateRequest(fileId: fileId, comment: comment).toJson(),
-          excludeRemoveNullPredicate: (key, _) => key == 'comment',
-        )
+        .post<Map<String, dynamic>>('drive/files/update', {
+          'fileId': fileId,
+          'comment': comment,
+        })
         .then((response) => DriveFile.fromJson(response));
     final value = state.value ?? const PaginationState();
     state = AsyncValue.data(
@@ -178,7 +177,6 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'drive/files/update',
       {'fileId': fileId, 'folderId': folderId},
-      excludeRemoveNullPredicate: (key, _) => key == 'folderId',
     );
     final file = DriveFile.fromJson(response);
     final value = state.value ?? const PaginationState();

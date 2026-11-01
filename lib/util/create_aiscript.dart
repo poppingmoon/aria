@@ -101,7 +101,6 @@ Future<AiScript> createAiScript(
           final response = await misskey.apiService.post<dynamic>(
             ep,
             json is Map<String, dynamic> ? json : {},
-            excludeRemoveNullPredicate: (key, _) => key != 'i',
           );
           return (jsonEncode(response), null);
         } on MisskeyException catch (e) {
@@ -112,7 +111,6 @@ Future<AiScript> createAiScript(
               final response = await misskey.apiService.post<dynamic>(
                 ep,
                 json is Map<String, dynamic> ? json : {},
-                excludeRemoveNullPredicate: (key, _) => key != 'i',
               );
               return (jsonEncode(response), null);
             } catch (e) {

@@ -51,7 +51,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'name': name},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -60,7 +59,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'description': description},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -69,7 +67,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'followedMessage': followedMessage},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -78,7 +75,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'location': location},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -86,12 +82,7 @@ class INotifier extends _$INotifier {
   Future<void> setBirthday(DateTime? birthday) async {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
-      {
-        'birthday': birthday != null
-            ? birthday.toIso8601String().split('T')[0]
-            : null,
-      },
-      excludeRemoveNullPredicate: (_, _) => true,
+      {'birthday': birthday?.toIso8601String().split('T')[0]},
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -100,7 +91,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'lang': lang},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -109,7 +99,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'avatarId': avatarId},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }
@@ -139,7 +128,6 @@ class INotifier extends _$INotifier {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
       {'bannerId': bannerId},
-      excludeRemoveNullPredicate: (_, _) => true,
     );
     state = AsyncValue.data(MeDetailed.fromJson(response));
   }

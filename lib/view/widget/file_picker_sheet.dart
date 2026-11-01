@@ -282,11 +282,10 @@ class const FilePickerSheet({
               ref
                   .read(misskeyProvider(account))
                   .apiService
-                  .post<Map<String, dynamic>>(
-                    'drive/files/update',
-                    DriveFilesUpdateRequest(fileId: file.id).toJson(),
-                    excludeRemoveNullPredicate: (key, _) => key == 'comment',
-                  )
+                  .post<Map<String, dynamic>>('drive/files/update', {
+                    'fileId': file.id,
+                    'comment': null,
+                  })
                   .then((response) => DriveFile.fromJson(response)),
             );
             if (!context.mounted) return;
