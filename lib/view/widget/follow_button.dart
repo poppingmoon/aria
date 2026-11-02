@@ -62,6 +62,8 @@ class const FollowButton({
               builder: (context, span) =>
                   Text.rich(t.aria.cancelFollowRequestConfirm(name: span)),
             ),
+            okText: t.misskey.yes,
+            cancelText: t.misskey.no,
           );
           if (!context.mounted) return;
           if (confirmed) {
