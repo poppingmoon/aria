@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/misskey_colors.dart';
@@ -7,16 +9,18 @@ import 'misskey_themes_provider.dart';
 part 'installed_misskey_colors_provider.g.dart';
 
 @riverpod
-List<MisskeyColors> installedMisskeyColors(Ref ref) {
-  final themes = ref.watch(misskeyThemesProvider);
-  return themes.nonNulls
-      .map((theme) {
-        try {
-          return compileTheme(theme);
-        } catch (_) {
-          return null;
-        }
-      })
-      .nonNulls
-      .toList();
+MisskeyColors? installedMisskeyColors(Ref ref, String id) {
+  final theme = ref.watch(
+    misskeyThemesProvider.select(
+      (themes) => themes.firstWhereOrNull((theme) => theme?.id == id),
+    ),
+  );
+  if (theme == null) {
+    return null;
+  }
+  try {
+    return compileTheme(theme);
+  } catch (_) {
+    return null;
+  }
 }

@@ -8,8 +8,8 @@ import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../provider/dynamic_color_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
-import '../../../provider/installed_misskey_colors_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
+import '../../../provider/misskey_themes_provider.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/theme_mode_widget.dart';
@@ -20,7 +20,7 @@ class const ThemePage({super.key}) extends ConsumerWidget {
     final generalSettings = ref.watch(generalSettingsNotifierProvider);
     final lightColors = ref.watch(misskeyColorsProvider(Brightness.light));
     final darkColors = ref.watch(misskeyColorsProvider(Brightness.dark));
-    final installedColors = ref.watch(installedMisskeyColorsProvider);
+    final installedThemes = ref.watch(misskeyThemesProvider);
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.theme)),
@@ -92,11 +92,9 @@ class const ThemePage({super.key}) extends ConsumerWidget {
                                 TargetPlatform.macOS ||
                                 TargetPlatform.linux)
                           (id: lightDynamicColorThemeId, name: 'Dynamic Color'),
-                        ...installedColors
-                            .where((colors) => !colors.isDark)
-                            .map(
-                              (colors) => (id: colors.id, name: colors.name),
-                            ),
+                        ...installedThemes.nonNulls
+                            .where((theme) => theme.base != 'dark')
+                            .map((theme) => (id: theme.id, name: theme.name)),
                       ],
                       initialValue: (
                         id: lightColors.id,
@@ -137,11 +135,9 @@ class const ThemePage({super.key}) extends ConsumerWidget {
                                 TargetPlatform.macOS ||
                                 TargetPlatform.linux)
                           (id: darkDynamicColorThemeId, name: 'Dynamic Color'),
-                        ...installedColors
-                            .where((colors) => colors.isDark)
-                            .map(
-                              (colors) => (id: colors.id, name: colors.name),
-                            ),
+                        ...installedThemes.nonNulls
+                            .where((theme) => theme.base == 'dark')
+                            .map((theme) => (id: theme.id, name: theme.name)),
                       ],
                       initialValue: (id: darkColors.id, name: darkColors.name),
                       titleBuilder: (context, value) => Text(value.name),
@@ -163,7 +159,8 @@ class const ThemePage({super.key}) extends ConsumerWidget {
                   leading: const Icon(Icons.settings),
                   title: Text(t.misskey.theme_.manage),
                   subtitle: Text(
-                    '${t.misskey.theme_.installedThemes}: ${installedColors.length}',
+                    '${t.misskey.theme_.installedThemes}: '
+                    '${installedThemes.length}',
                   ),
                   onTap: () => context.push('/settings/theme/manage'),
                   shape: const RoundedRectangleBorder(
