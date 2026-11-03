@@ -2053,6 +2053,7 @@ deck_:
     antenna: "Antény"
     list: "Seznamy"
     channel: "Kanály"
+    clip: "Oříznout"
     mentions: "Zmínění"
     direct: "Přímé poznámky"
     roleTimeline: "Časová osa role"

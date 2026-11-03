@@ -10,7 +10,7 @@ crate-type = ["cdylib", "staticlib"]
 unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
 
 [dependencies]
-aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "594e4c2344c27afcfc713960b5521d5742e691c9" }
+aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "6c1c7f84d920eb4647ef241e34ff42784f472fb8" }
 flutter_rust_bridge = "=2.13.0"
 futures = "0.3"
 indexmap = "2.3"

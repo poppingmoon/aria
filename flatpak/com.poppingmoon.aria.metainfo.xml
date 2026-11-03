@@ -141,6 +141,9 @@
   </screenshots>
 
   <releases>
+    <release version="1.5.16" date="2026-11-03">
+      <url type="details">https://github.com/poppingmoon/aria/releases/v1.5.16</url>
+    </release>
     <release version="1.5.15" date="2026-10-07">
       <url type="details">https://github.com/poppingmoon/aria/releases/v1.5.15</url>
     </release>

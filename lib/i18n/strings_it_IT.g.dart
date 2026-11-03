@@ -874,7 +874,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get s3ForcePathStyleDesc => 'L\'attivazione di s3ForcePathStyle impone di specificare il nome del bucket come parte del percorso nell\'URL anziché del nome host. Potrebbe tornare utile quando si utilizzano applicazioni come Minio.';
 	@override String get serverLogs => 'Log del server';
 	@override String get deleteAll => 'Cancella cronologia';
-	@override String get showFixedPostForm => 'Visualizzare la finestra di pubblicazione in cima alla timeline';
+	@override String get showFixedPostForm => 'Modulo di pubblicazione in cima';
 	@override String get showFixedPostFormInChannel => 'Per i canali, mostra il modulo di pubblicazione in cima alla timeline';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Quando segui nuovi profili, includi le risposte in TL come impostazione predefinita';
 	@override String get newNoteRecived => 'Nuove Note da leggere';
@@ -1561,7 +1561,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get cwNotationRequired => 'Devi indicare perché il contenuto è indicato come esplicito.';
 	@override String get doReaction => 'Reagisci';
 	@override String get code => 'Codice';
-	@override String get reloadRequiredToApplySettings => 'Per applicare le impostazioni, occorre ricaricare.';
+	@override String get reloadRequiredToApplySettings => 'Ricarica le impostazioni. ';
 	@override String remainingN({required Object n}) => 'Rimangono: ${n}';
 	@override String get overwriteContentConfirm => 'Vuoi davvero sostituire l\'attuale contenuto?';
 	@override String get seasonalScreenEffect => 'Abilita gli effetti speciali stagionali';
@@ -1580,7 +1580,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String lastNDays({required Object n}) => 'Ultimi ${n} giorni';
 	@override String get backToTitle => 'Torna al titolo';
 	@override String get hemisphere => 'Geolocalizzazione';
-	@override String get withSensitive => 'Mostra le Note con allegati espliciti';
+	@override String get withSensitive => 'Includi con allegati espliciti';
 	@override String userSaysSomethingSensitive({required Object name}) => 'Note da ${name} con allegati espliciti';
 	@override String get enableHorizontalSwipe => 'Trascinare per invertire le colonne';
 	@override String get loading => 'Caricamento';
@@ -1691,7 +1691,7 @@ class _Translations$misskey$it_IT extends Translations$misskey$en_US {
 	@override String get customCssIsDisabledBecauseSafeMode => 'Il CSS personalizzato non è stato applicato, poiché la modalità sicura è attiva.';
 	@override String get themeIsDefaultBecauseSafeMode => 'Quando la modalità sicura è attiva, viene utilizzato il tema predefinito. Quando la modalità sicura viene disattivata, il tema torna a essere quello precedente.';
 	@override String get thankYouForTestingBeta => 'Grazie per la tua collaborazione nella verifica delle versioni beta!';
-	@override String get createUserSpecifiedNote => 'Crea Nota privata';
+	@override String get createUserSpecifiedNote => 'Messaggio diretto';
 	@override String get schedulePost => 'Pianificare la pubblicazione';
 	@override String scheduleToPostOnX({required Object x}) => 'Pianificare la pubblicazione ${x}';
 	@override String scheduledToPostOnX({required Object x}) => 'Pubblicazione pianificata ${x}';
@@ -4633,6 +4633,7 @@ class _Translations$misskey$deck_$columns_$it_IT extends Translations$misskey$de
 	@override String get antenna => 'Antenne';
 	@override String get list => 'Liste';
 	@override String get channel => 'Canali';
+	@override String get clip => 'Clip';
 	@override String get mentions => 'Menzioni';
 	@override String get direct => 'Note Dirette';
 	@override String get roleTimeline => 'Timeline Ruolo';

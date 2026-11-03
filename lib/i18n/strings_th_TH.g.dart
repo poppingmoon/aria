@@ -4395,6 +4395,7 @@ class _Translations$misskey$deck_$columns_$th_TH extends Translations$misskey$de
 	@override String get antenna => 'เสาอากาศ';
 	@override String get list => 'รายการ';
 	@override String get channel => 'ช่อง';
+	@override String get clip => 'คลิป';
 	@override String get mentions => 'กล่าวถึงคุณ';
 	@override String get direct => 'ไดเร็กต์';
 	@override String get roleTimeline => 'บทบาทไทม์ไลน์';

@@ -4380,6 +4380,7 @@ class _Translations$misskey$deck_$columns_$tr_TR extends Translations$misskey$de
 	@override String get antenna => 'Antenler';
 	@override String get list => 'Liste';
 	@override String get channel => 'Kanal';
+	@override String get clip => 'Klip';
 	@override String get mentions => 'Bahsetmeler';
 	@override String get direct => 'Doğrudan notlar';
 	@override String get roleTimeline => 'Rol Pano';

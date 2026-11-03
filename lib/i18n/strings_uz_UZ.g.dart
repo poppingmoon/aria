@@ -1698,6 +1698,7 @@ class _Translations$misskey$deck_$columns_$uz_UZ extends Translations$misskey$de
 	@override String get antenna => 'Antennalar';
 	@override String get list => 'Ro‘yxat';
 	@override String get channel => 'Kanal';
+	@override String get clip => 'Klip';
 	@override String get mentions => 'Eslatib o\'tish';
 	@override String get direct => 'Bevosita qaydlar';
 	@override String get roleTimeline => 'Rol xronologiyasi';

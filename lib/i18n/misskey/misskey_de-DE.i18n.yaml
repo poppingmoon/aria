@@ -2878,6 +2878,7 @@ deck_:
     antenna: "Antennen"
     list: "Listen"
     channel: "Kanal"
+    clip: "Clip erstellen"
     mentions: "Erwähnungen"
     direct: "Direktnachrichten"
     roleTimeline: "Rollenchronik"

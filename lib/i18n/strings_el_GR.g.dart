@@ -766,6 +766,7 @@ class _Translations$misskey$deck_$columns_$el_GR extends Translations$misskey$de
 	@override String get tl => 'Χρονολόγιο';
 	@override String get antenna => 'Αντένες';
 	@override String get list => 'Λίστα';
+	@override String get clip => 'Κλιπ';
 	@override String get mentions => 'Επισημάνσεις';
 	@override String get direct => 'Απευθείας σημειώματα';
 }

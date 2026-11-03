@@ -4681,6 +4681,7 @@ class Translations$misskey$deck_$columns_$ja_KS extends Translations$misskey$dec
 	@override String get antenna => 'アンテナ';
 	@override String get list => 'リスト';
 	@override String get channel => 'チャンネル';
+	@override String get clip => 'クリップ';
 	@override String get mentions => 'あんた宛て';
 	@override String get direct => 'ダイレクト';
 	@override String get roleTimeline => 'ロールタイムライン';

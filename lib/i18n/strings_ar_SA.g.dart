@@ -123,6 +123,8 @@ class _Translations$misskey$ar_SA extends Translations$misskey$en_US {
 	@override String get unpin => 'فكها من ملفك الشخصي';
 	@override String get copyContent => 'انسخ المحتوى';
 	@override String get copyLink => 'انسخ الرابط';
+	@override String get copyRemoteLink => 'نسخ الرابط البعيد';
+	@override String get copyLinkRenote => 'نسخ رابط أعادة النشر';
 	@override String get delete => 'حذف';
 	@override String get deleteAndEdit => 'إزالة وإعادة الصياغة';
 	@override String get deleteAndEditConfirm => 'أمتأكد من حذف الملاحظة؟ ستفقد كل مشاركاتها، والتفاعلات، والردود عليها.';
@@ -140,7 +142,7 @@ class _Translations$misskey$ar_SA extends Translations$misskey$en_US {
 	@override String get reply => 'رد';
 	@override String get loadMore => 'عرض المزيد';
 	@override String get showMore => 'عرض المزيد';
-	@override String get showLess => 'اغلق';
+	@override String get showLess => 'عرض اقل';
 	@override String get youGotNewFollower => 'يتابعك';
 	@override String get receiveFollowRequest => 'تلقيت طلب متابعة';
 	@override String get followRequestAccepted => 'قُبل طلب المتابعة';
@@ -2378,6 +2380,7 @@ class _Translations$misskey$deck_$columns_$ar_SA extends Translations$misskey$de
 	@override String get antenna => 'الهوائيات';
 	@override String get list => 'القوائم';
 	@override String get channel => 'القنوات';
+	@override String get clip => 'مِشبك';
 	@override String get mentions => 'الإشارات';
 	@override String get direct => 'مباشرة';
 }

@@ -4628,6 +4628,7 @@ class _Translations$misskey$deck_$columns_$de_DE extends Translations$misskey$de
 	@override String get antenna => 'Antennen';
 	@override String get list => 'Listen';
 	@override String get channel => 'Kanal';
+	@override String get clip => 'Clip erstellen';
 	@override String get mentions => 'Erwähnungen';
 	@override String get direct => 'Direktnachrichten';
 	@override String get roleTimeline => 'Rollenchronik';

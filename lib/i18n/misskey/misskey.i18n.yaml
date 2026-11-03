@@ -2906,6 +2906,7 @@ deck_:
     antenna: "Antennas"
     list: "List"
     channel: "Channel"
+    clip: "Clip"
     mentions: "Mentions"
     direct: "Direct notes"
     roleTimeline: "Role Timeline"

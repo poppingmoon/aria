@@ -3348,6 +3348,7 @@ class _Translations$misskey$deck_$columns_$uk_UA extends Translations$misskey$de
 	@override String get antenna => 'Антени';
 	@override String get list => 'Списки';
 	@override String get channel => 'Канали';
+	@override String get clip => 'Добірка';
 	@override String get mentions => 'Згадки';
 	@override String get direct => 'Особисте';
 	@override String get chat => 'Написати цьому користувачу';

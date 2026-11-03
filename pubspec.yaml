@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.5.15+113
+version: 1.5.16+114
 
 environment:
   sdk: ">=3.13.0 <4.0.0"
@@ -12,14 +12,14 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/animated_image
       ref: 260ec173013069b4b86ac633928e4d278729e3df
-  app_settings: ^9.0.0
+  app_settings: ^9.0.1
   async: ^2.13.1
   audio_service: ^0.18.19
   audio_video_progress_bar: ^2.0.3
   audioplayers: ^6.8.1
-  cached_network_image: ^4.0.4
+  cached_network_image: ^4.0.6
   characters: ^1.4.1
-  chewie: ^1.17.2
+  chewie: ^1.17.4
   collection: ^1.19.1
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
@@ -30,7 +30,7 @@ dependencies:
   dynamic_color: ^2.1.0
   extended_image: ^10.1.0
   file: ^7.0.1
-  file_picker: ^13.1.0
+  file_picker: ^13.3.2
   flutter:
     sdk: flutter
   flutter_apns_only:
@@ -39,7 +39,7 @@ dependencies:
       ref: 1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb
       path: flutter_apns_only
   flutter_blurhash: ^0.9.1
-  flutter_cache_manager: ^3.4.5
+  flutter_cache_manager: ^3.4.8
   flutter_highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
@@ -57,23 +57,23 @@ dependencies:
       ref: f7b5730d0c8c203574c16abc992cd13d1add3eba
       path: flutter_inappwebview
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^22.3.1
+  flutter_local_notifications: ^22.3.3
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.4
   flutter_rust_bridge: ^2.13.0
   flutter_rust_bridge_hooks: ^2.13.0
   flutter_secure_storage: ^11.2.0
-  flutter_svg: ^2.3.0
+  flutter_svg: ^2.3.2
   fluttertoast: ^10.0.2
   freezed_annotation: ^3.1.0
   fvp:
     git:
       url: https://github.com/poppingmoon/fvp
-      ref: d68e4c3d26c13ddf23bdb9f50b8e2012bc563e21
+      ref: 98da36b312ba7047b2dd2e97d5547d4fa301df4d
   gal: ^2.3.3
   gal_linux: ^0.1.2
-  go_router: ^18.0.2
+  go_router: ^18.1.2
   google_fonts: ^9.0.0
   highlighting:
     git:
@@ -82,14 +82,14 @@ dependencies:
       path: highlighting
   hooks_riverpod: ^3.4.3
   html: ^0.15.7
-  image: ^4.10.1
+  image: ^4.12.0
   image_compression:
     git:
       url: https://github.com/poppingmoon/image_compression
       ref: 37b78624635c42f51524cdfc001ae9073ec468ee
   image_editor: ^1.6.0
   intl: ^0.20.3
-  isar_community: ^3.3.2
+  isar_community: ^3.4.1
   json5: ^0.8.2
   json_annotation: ^4.12.0
   just_audio: ^0.10.6
@@ -97,11 +97,11 @@ dependencies:
   material_color_utilities: ^0.13.0
   material_off_icons: ^0.1.0
   material_symbols_icons: ^4.2960.0
-  material_ui: ^1.6.0
+  material_ui: ^1.9.0
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: eaac8e51dd1bd0bba870dc187bb8ca872ee8744c
+      ref: 1e12af6806a022d36474a01ce3acde6565bec40f
   mime: ^2.1.0
   misskey_dart:
     git:
@@ -110,7 +110,7 @@ dependencies:
   mobile_scanner:
     git:
       url: https://github.com/poppingmoon/mobile_scanner
-      ref: 4c7c30ff16e9d0dde0491b3c5342250876f3a4d3
+      ref: 98dc10f43523fba03c9fe1ed5bb2623bc707e883
   multi_split_view: ^3.6.2
   native_toolchain_rust: ^1.0.7
   package_info_plus: ^10.2.2
@@ -145,14 +145,14 @@ dependencies:
       path: unifiedpush_ui
   url_launcher: ^6.3.3
   uuid: ^4.6.0
-  vector_math: ^2.4.3
+  vector_math: ^2.4.4
   video_player: ^2.14.1
   wakelock_plus: ^1.8.0
   web_socket_channel: ^3.0.3
   webfont_list:
     git:
       url: https://github.com/poppingmoon/webfont_list
-      ref: fb0ffb324e4bf276e88666616374e0162f1973fc
+      ref: 5352307309cc138cf8f40ca9b4299a6b004984c6
   webpush_encryption: ^1.0.1
   window_manager: ^0.5.2
 
@@ -162,16 +162,16 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_test:
     sdk: flutter
-  freezed: ^4.0.2
+  freezed: ^4.0.3
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
   isar_community_generator:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 4bdb3ec9009549d5fa4a591b70482af4563bcbbd
+      ref: 24625dd5efe0e04d34684feae8687792f7726533
       path: packages/isar_community_generator
-  json_serializable: ^6.14.1
+  json_serializable: ^6.15.2
   lint: ^2.14.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^4.0.9
@@ -193,12 +193,12 @@ dependency_overrides:
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: a51a1ef77b34dd32c5eae81e179d757c91df4dc2
+      ref: 24625dd5efe0e04d34684feae8687792f7726533
       path: packages/isar_community
   jni:
     git:
       url: https://github.com/poppingmoon/native
-      ref: 1790e35a29f93d6afef66d93a58eaf60bc7796bc
+      ref: edf26c8eda0ab6c9cdb7d4bafbbb4e00003e0bcb
       path: pkgs/jni
   webcrypto:
     git:

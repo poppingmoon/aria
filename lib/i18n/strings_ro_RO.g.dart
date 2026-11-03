@@ -2020,6 +2020,7 @@ class _Translations$misskey$deck_$columns_$ro_RO extends Translations$misskey$de
 	@override String get antenna => 'Antene';
 	@override String get list => 'Liste';
 	@override String get channel => 'Canale';
+	@override String get clip => 'Clip';
 	@override String get mentions => 'Mențiuni';
 	@override String get direct => 'Note directe';
 	@override String get roleTimeline => 'Cronologia rolului';

@@ -2906,6 +2906,7 @@ deck_:
     antenna: "Antena"
     list: "Llistes"
     channel: "Canals"
+    clip: "Retalls"
     mentions: "Mencions"
     direct: "Publicacions directes"
     roleTimeline: "Línia de temps dels rols"

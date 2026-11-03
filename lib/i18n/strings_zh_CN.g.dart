@@ -4660,6 +4660,7 @@ class Translations$misskey$deck_$columns_$zh_CN extends Translations$misskey$dec
 	@override String get antenna => '天线';
 	@override String get list => '列表';
 	@override String get channel => '频道';
+	@override String get clip => '便签';
 	@override String get mentions => '提及';
 	@override String get direct => '指定用户';
 	@override String get roleTimeline => '角色时间线';

@@ -10777,6 +10777,9 @@ class Translations$misskey$deck_$columns_$en_US {
 	/// en-US: 'Channel'
 	String get channel => 'Channel';
 
+	/// en-US: 'Clip'
+	String get clip => 'Clip';
+
 	/// en-US: 'Mentions'
 	String get mentions => 'Mentions';
 

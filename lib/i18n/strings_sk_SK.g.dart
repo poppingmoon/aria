@@ -2225,6 +2225,7 @@ class _Translations$misskey$deck_$columns_$sk_SK extends Translations$misskey$de
 	@override String get antenna => 'Antény';
 	@override String get list => 'Zoznam';
 	@override String get channel => 'Kanály';
+	@override String get clip => 'Klip';
 	@override String get mentions => 'Zmienky';
 	@override String get direct => 'Priame poznámky';
 }

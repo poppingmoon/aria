@@ -2433,6 +2433,7 @@ class _Translations$misskey$deck_$columns_$pl_PL extends Translations$misskey$de
 	@override String get antenna => 'Anteny';
 	@override String get list => 'Listy';
 	@override String get channel => 'Kanały';
+	@override String get clip => 'Klip';
 	@override String get mentions => 'Wspomnienia';
 	@override String get direct => 'Bezpośredni';
 }
