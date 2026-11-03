@@ -2891,6 +2891,7 @@ class _Translations$misskey$deck_$columns_$vi_VN extends Translations$misskey$de
 	@override String get antenna => 'Trạm phát sóng';
 	@override String get list => 'Danh sách';
 	@override String get channel => 'Kênh';
+	@override String get clip => 'Lưu bài viết';
 	@override String get mentions => 'Lượt nhắc';
 	@override String get direct => 'Nhắn riêng';
 }

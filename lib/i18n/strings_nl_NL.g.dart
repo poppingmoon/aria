@@ -1537,6 +1537,7 @@ class _Translations$misskey$deck_$columns_$nl_NL extends Translations$misskey$de
 	@override String get antenna => 'Antennes';
 	@override String get list => 'Lijsten';
 	@override String get channel => 'Kanalen';
+	@override String get clip => 'Clip aanmaken';
 	@override String get mentions => 'Vermeldingen';
 	@override String get direct => 'Directe notities';
 }

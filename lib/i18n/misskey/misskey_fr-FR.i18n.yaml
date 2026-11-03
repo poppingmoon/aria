@@ -2268,6 +2268,7 @@ deck_:
     antenna: "Antennes"
     list: "Listes"
     channel: "Canal"
+    clip: "Clip"
     mentions: "Mentions"
     direct: "Direct"
 drivecleaner_:

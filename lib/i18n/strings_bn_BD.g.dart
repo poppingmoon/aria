@@ -2102,6 +2102,7 @@ class _Translations$misskey$deck_$columns_$bn_BD extends Translations$misskey$de
 	@override String get antenna => 'অ্যান্টেনা';
 	@override String get list => 'লিস্ট';
 	@override String get channel => 'চ্যানেলগুলি';
+	@override String get clip => 'ক্লিপ';
 	@override String get mentions => 'উল্লেখসমূহ';
 	@override String get direct => 'ডাইরেক্ট নোটগুলি';
 }

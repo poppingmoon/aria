@@ -1457,6 +1457,7 @@ deck_:
     antenna: "Antény"
     list: "Zoznam"
     channel: "Kanály"
+    clip: "Klip"
     mentions: "Zmienky"
     direct: "Priame poznámky"
 webhookSettings_:

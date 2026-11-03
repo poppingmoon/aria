@@ -1355,6 +1355,7 @@ deck_:
     antenna: "অ্যান্টেনা"
     list: "লিস্ট"
     channel: "চ্যানেলগুলি"
+    clip: "ক্লিপ"
     mentions: "উল্লেখসমূহ"
     direct: "ডাইরেক্ট নোটগুলি"
 webhookSettings_:

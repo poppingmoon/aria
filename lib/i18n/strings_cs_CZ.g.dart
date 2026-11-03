@@ -2782,6 +2782,7 @@ class _Translations$misskey$deck_$columns_$cs_CZ extends Translations$misskey$de
 	@override String get antenna => 'Antény';
 	@override String get list => 'Seznamy';
 	@override String get channel => 'Kanály';
+	@override String get clip => 'Oříznout';
 	@override String get mentions => 'Zmínění';
 	@override String get direct => 'Přímé poznámky';
 	@override String get roleTimeline => 'Časová osa role';

@@ -4609,6 +4609,7 @@ class Translations$misskey$deck_$columns_$ko_KR extends Translations$misskey$dec
 	@override String get antenna => '안테나';
 	@override String get list => '리스트';
 	@override String get channel => '채널';
+	@override String get clip => '클립';
 	@override String get mentions => '받은 멘션';
 	@override String get direct => '다이렉트';
 	@override String get roleTimeline => '역할 타임라인';

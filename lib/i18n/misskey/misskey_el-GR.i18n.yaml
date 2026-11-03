@@ -403,6 +403,7 @@ deck_:
     tl: "Χρονολόγιο"
     antenna: "Αντένες"
     list: "Λίστα"
+    clip: "Κλιπ"
     mentions: "Επισημάνσεις"
     direct: "Απευθείας σημειώματα"
 webhookSettings_:

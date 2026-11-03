@@ -1075,6 +1075,7 @@ deck_:
     antenna: "Antennes"
     list: "Lijsten"
     channel: "Kanalen"
+    clip: "Clip aanmaken"
     mentions: "Vermeldingen"
     direct: "Directe notities"
 webhookSettings_:

@@ -2906,6 +2906,7 @@ deck_:
     antenna: "안테나"
     list: "리스트"
     channel: "채널"
+    clip: "클립 맨걸기"
     mentions: "받언 멘션"
     direct: "쪽지 서기"
     roleTimeline: "역할 타임라인"

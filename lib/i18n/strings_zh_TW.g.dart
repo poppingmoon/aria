@@ -4444,6 +4444,7 @@ class Translations$misskey$deck_$columns_$zh_TW extends Translations$misskey$dec
 	@override String get antenna => '天線';
 	@override String get list => '清單';
 	@override String get channel => '頻道';
+	@override String get clip => '摘錄';
 	@override String get mentions => '提及';
 	@override String get direct => '指定使用者';
 	@override String get roleTimeline => '角色時間軸';

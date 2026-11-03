@@ -3453,6 +3453,7 @@ class _Translations$misskey$deck_$columns_$fr_FR extends Translations$misskey$de
 	@override String get antenna => 'Antennes';
 	@override String get list => 'Listes';
 	@override String get channel => 'Canal';
+	@override String get clip => 'Clip';
 	@override String get mentions => 'Mentions';
 	@override String get direct => 'Direct';
 }

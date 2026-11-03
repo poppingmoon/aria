@@ -3888,6 +3888,7 @@ class _Translations$misskey$deck_$columns_$id_ID extends Translations$misskey$de
 	@override String get antenna => 'Antena';
 	@override String get list => 'Daftar';
 	@override String get channel => 'Kanal';
+	@override String get clip => 'Klip';
 	@override String get mentions => 'Sebutan';
 	@override String get direct => 'Langsung';
 	@override String get roleTimeline => 'Lini masa peran';
