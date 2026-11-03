@@ -62,6 +62,7 @@ class ChatStreamNotifier extends _$ChatStreamNotifier {
       ).future,
     );
     final controller = StreamController<ChatEvent>();
+    ref.onDispose(controller.close);
     ref.listen(incomingMessageProvider(account), (prev, next) {
       if (next case AsyncData(value: final message)) {
         if (prev?.value != message) {
@@ -88,11 +89,16 @@ class ChatStreamNotifier extends _$ChatStreamNotifier {
   String? _id;
 
   Future<void> read() async {
-    (await ref.read(webSocketChannelProvider(account).future)).$1.sink.add(
-      jsonEncode({
-        'type': 'ch',
-        'body': {'id': _id, 'type': 'read', 'body': null},
-      }),
-    );
+    final webSocketChannel = (await ref.read(
+      webSocketChannelProvider(account).future,
+    )).$1;
+    if (_id case final id?) {
+      webSocketChannel.sink.add(
+        jsonEncode({
+          'type': 'ch',
+          'body': {'id': id, 'type': 'read', 'body': null},
+        }),
+      );
+    }
   }
 }

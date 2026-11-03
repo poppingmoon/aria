@@ -17,7 +17,7 @@ FutureOr<String> _noteSubscription(
   Account account,
   String noteId,
 ) async {
-  final webSocketChannel = (await ref.read(
+  final webSocketChannel = (await ref.watch(
     webSocketChannelProvider(account).future,
   )).$1;
   webSocketChannel.sink.add(
@@ -52,6 +52,7 @@ Stream<NoteUpdateEvent> noteUpdateEvent(
 ) async* {
   final id = await ref.watch(_noteSubscriptionProvider(account, noteId).future);
   final controller = StreamController<NoteUpdateEvent>();
+  ref.onDispose(controller.close);
   ref.listen(incomingMessageProvider(account), (prev, next) {
     if (next case AsyncData(value: final message)) {
       if (message.type == IncomingMessageType.noteUpdated &&

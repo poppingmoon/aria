@@ -42,6 +42,7 @@ FutureOr<String> _mainStreamConnection(Ref ref, Account account) async {
 Stream<MainEvent> mainStream(Ref ref, Account account) async* {
   final id = await ref.watch(_mainStreamConnectionProvider(account).future);
   final controller = StreamController<MainEvent>();
+  ref.onDispose(controller.close);
   ref.listen(incomingMessageProvider(account), (prev, next) {
     if (next case AsyncData(value: final message)) {
       if (prev?.value != message) {

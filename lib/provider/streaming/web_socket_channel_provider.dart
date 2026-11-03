@@ -37,8 +37,8 @@ FutureOr<(IOWebSocketChannel, DateTime)> webSocketChannel(
     connectTimeout: const Duration(seconds: 20),
   );
   ref.onDispose(() async {
-    await webSocketChannel.sink.done;
     await webSocketChannel.sink.close();
+    await webSocketChannel.sink.done;
   });
   await webSocketChannel.ready;
 

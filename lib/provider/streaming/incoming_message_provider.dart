@@ -22,9 +22,11 @@ Stream<IncomingMessage> incomingMessage(Ref ref, Account account) async* {
       debugPrint('webSocketChannel($account): $msg');
     }
     if (msg is String) {
-      if (jsonDecode(msg) case final Map<String, dynamic> message) {
-        yield IncomingMessage.fromJson(message);
-      }
+      try {
+        if (jsonDecode(msg) case final Map<String, dynamic> message) {
+          yield IncomingMessage.fromJson(message);
+        }
+      } catch (_) {}
     }
   }
 
