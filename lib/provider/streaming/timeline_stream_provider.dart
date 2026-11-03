@@ -42,7 +42,7 @@ FutureOr<String> _timelineStreamConnection(
             'id': id,
             'params': {
               if (!tabSettings.withRenotes) 'withRenotes': false,
-              if (tabSettings.withReplies) 'withRenotes': true,
+              if (tabSettings.withReplies) 'withReplies': true,
               if (tabSettings.withFiles) 'withFiles': true,
               'roleId': ?tabSettings.roleId,
               'channelId': ?tabSettings.channelId,
@@ -84,7 +84,7 @@ FutureOr<String> _timelineStreamConnection(
               'id': id,
               'params': {
                 if (!tabSettings.withRenotes) 'withRenotes': false,
-                if (tabSettings.withReplies) 'withRenotes': true,
+                if (tabSettings.withReplies) 'withReplies': true,
                 if (tabSettings.withFiles) 'withFiles': true,
                 ...?tabSettings.parameters,
               },
