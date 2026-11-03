@@ -24,7 +24,7 @@ const _compressTypeMapFallback = {
 };
 
 bool _isAnimated(Uint8List image) {
-  final gifInfo = GifDecoder(image).info;
+  final gifInfo = GifDecoder().startDecode(image);
   if (gifInfo != null) {
     return gifInfo.numFrames > 1;
   }
@@ -32,7 +32,7 @@ bool _isAnimated(Uint8List image) {
   if (pngInfo is PngInfo) {
     return pngInfo.isAnimated;
   }
-  final webpInfo = WebPDecoder(image).info;
+  final webpInfo = WebPDecoder().startDecode(image);
   if (webpInfo != null) {
     return webpInfo.hasAnimation;
   }
