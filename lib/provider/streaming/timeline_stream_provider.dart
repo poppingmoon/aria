@@ -109,6 +109,7 @@ FutureOr<String> _timelineStreamConnection(
 @riverpod
 Stream<Note> timelineStream(Ref ref, TabSettings tabSettings) async* {
   final controller = StreamController<Note>();
+  ref.onDispose(controller.close);
   switch (tabSettings.tabType) {
     case TabType.homeTimeline ||
         TabType.localTimeline ||

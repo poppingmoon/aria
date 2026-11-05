@@ -58,7 +58,7 @@ final class _NoteSubscriptionProvider
   }
 }
 
-String _$_noteSubscriptionHash() => r'88fcd136cc53cf3ffc0dca27f7a725976597c0b5';
+String _$_noteSubscriptionHash() => r'f73726702c712499b9c852f4c59b105088c423fb';
 
 final class _NoteSubscriptionFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<String>, (Account, String)> {
@@ -133,7 +133,7 @@ final class NoteUpdateEventProvider
   }
 }
 
-String _$noteUpdateEventHash() => r'83324e4d703d1cf7682ef44cd2999ff49104bd65';
+String _$noteUpdateEventHash() => r'dcda2dddf65c68eba48a2fb6425243c0e3f31726';
 
 final class NoteUpdateEventFamily extends $Family
     with $FunctionalFamilyOverride<Stream<NoteUpdateEvent>, (Account, String)> {

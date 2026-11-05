@@ -129,7 +129,7 @@ final class MainStreamProvider
   }
 }
 
-String _$mainStreamHash() => r'64516a65202e98291f9cbb189cb6e444cee56b51';
+String _$mainStreamHash() => r'321318dfdbdf74a3518020e769432b6950377eed';
 
 final class MainStreamFamily extends $Family
     with $FunctionalFamilyOverride<Stream<MainEvent>, Account> {

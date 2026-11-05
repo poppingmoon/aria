@@ -66,7 +66,7 @@ final class WebSocketChannelProvider
   }
 }
 
-String _$webSocketChannelHash() => r'532c2d2579309be5ce586606110e0efc57bd60f3';
+String _$webSocketChannelHash() => r'9a0a4f96be224f71a137ceeaa1737c8ce95ae138';
 
 final class WebSocketChannelFamily extends $Family
     with

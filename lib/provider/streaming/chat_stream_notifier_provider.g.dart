@@ -137,7 +137,7 @@ final class ChatStreamNotifierProvider
 }
 
 String _$chatStreamNotifierHash() =>
-    r'3d8704ed210852b397c1b4e319f0f83fa1079829';
+    r'309061442ea06a0bbbe0df4611bbe3dba475f4dc';
 
 final class ChatStreamNotifierFamily extends $Family
     with
