@@ -53,7 +53,7 @@ Color _getThemeReferenceColor(
     throw CompileThemeMissingPropertyException(key);
   }
 
-  return _getColor(props, nextValue, [...stack, key], depth + 1);
+  return _getColor(props, nextValue, [...stack, key], depth);
 }
 
 Color _getColor(
@@ -63,9 +63,9 @@ Color _getColor(
   int depth,
 ) {
   if (val[0] == '@') {
-    return _getThemeReferenceColor(props, val.substring(1), stack, depth);
+    return _getThemeReferenceColor(props, val.substring(1), stack, depth + 1);
   } else if (val[0] == r'$') {
-    return _getThemeReferenceColor(props, val, stack, depth);
+    return _getThemeReferenceColor(props, val, stack, depth + 1);
   } else if (val[0] == ':') {
     if (depth >= _maxThemeReferenceDepth) {
       throw const CompileThemeReferenceLimitException();
@@ -81,7 +81,7 @@ Color _getColor(
       case 'lighten':
         return color.lighten(arg.toInt());
       case 'alpha':
-        return color.withValues(alpha: arg);
+        return color.withValues(alpha: clampDouble(arg, 0.0, 1.0));
       case 'hue':
         return color.spin(arg);
       case 'saturate':
@@ -96,7 +96,12 @@ Color _getColor(
         .split(RegExp(r'[,\s]\s*'))
         .map(int.parse)
         .toList();
-    return Color.fromRGBO(rgb[0], rgb[1], rgb[2], 1);
+    return Color.fromRGBO(
+      rgb[0].clamp(0, 255),
+      rgb[1].clamp(0, 255),
+      rgb[2].clamp(0, 255),
+      1.0,
+    );
   }
   if (input.startsWith('rgba(') && input.endsWith(')')) {
     final rgbo = input
@@ -104,7 +109,12 @@ Color _getColor(
         .split(RegExp(r'[,\s]\s*'));
     final rgb = rgbo.sublist(0, 3).map(int.parse).toList();
     final opacity = double.parse(rgbo[3]);
-    return Color.fromRGBO(rgb[0], rgb[1], rgb[2], opacity);
+    return Color.fromRGBO(
+      rgb[0].clamp(0, 255),
+      rgb[1].clamp(0, 255),
+      rgb[2].clamp(0, 255),
+      clampDouble(opacity, 0.0, 1.0),
+    );
   }
   return TinyColor.fromString(input).toColor();
 }
