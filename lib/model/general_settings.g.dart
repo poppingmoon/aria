@@ -164,6 +164,7 @@ GeneralSettings _$GeneralSettingsFromJson(
       json['confirmBeforePostingMediaWithoutComment'] as bool? ?? false,
   confirmWhenRevealingSensitiveMedia:
       json['confirmWhenRevealingSensitiveMedia'] as bool? ?? false,
+  hidePostFormAfterPost: json['hidePostFormAfterPost'] as bool? ?? false,
   launchMode:
       $enumDecodeNullable(_$LaunchModeEnumMap, json['launchMode']) ??
       LaunchMode.externalApplication,
@@ -303,6 +304,7 @@ Map<String, dynamic> _$GeneralSettingsToJson(
       instance.confirmBeforePostingMediaWithoutComment,
   'confirmWhenRevealingSensitiveMedia':
       instance.confirmWhenRevealingSensitiveMedia,
+  'hidePostFormAfterPost': instance.hidePostFormAfterPost,
   'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
   'mediaSaveLocation': ?instance.mediaSaveLocation,
   'enableSpellCheck': instance.enableSpellCheck,
