@@ -340,6 +340,11 @@ class const _PostForm({
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
+    final hidePostFormAfterPost = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.hidePostFormAfterPost,
+      ),
+    );
     final draft = ref.watch(postNotifierProvider(account.value));
     final cwController = useTextEditingController(text: draft.cw);
     final controller = useTextEditingController(text: draft.text);
@@ -390,6 +395,11 @@ class const _PostForm({
               onHide: onHide,
               onExpand: (account) => context.push('/$account/post'),
               onAccountChanged: (newAccount) => account.value = newAccount,
+              onPosted: (_) {
+                if (hidePostFormAfterPost) {
+                  onHide();
+                }
+              },
               showPostButton: true,
               maxLines: 6,
               thumbnailSize: 100.0,

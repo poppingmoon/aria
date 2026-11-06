@@ -144,6 +144,7 @@ class const GeneralSettings({
   final bool confirmBeforeFollow = true,
   final bool confirmBeforePostingMediaWithoutComment = false,
   final bool confirmWhenRevealingSensitiveMedia = false,
+  final bool hidePostFormAfterPost = false,
   final LaunchMode launchMode = LaunchMode.externalApplication,
   final String? mediaSaveLocation,
   final bool enableSpellCheck = false,
