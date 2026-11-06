@@ -1209,8 +1209,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/isar_community"
-      ref: "24625dd5efe0e04d34684feae8687792f7726533"
-      resolved-ref: "24625dd5efe0e04d34684feae8687792f7726533"
+      ref: "108bbc4137239d36d886df0d54252f2080df33d5"
+      resolved-ref: "108bbc4137239d36d886df0d54252f2080df33d5"
       url: "https://github.com/poppingmoon/isar-community"
     source: git
     version: "3.4.1"
@@ -1218,8 +1218,8 @@ packages:
     dependency: "direct dev"
     description:
       path: "packages/isar_community_generator"
-      ref: "24625dd5efe0e04d34684feae8687792f7726533"
-      resolved-ref: "24625dd5efe0e04d34684feae8687792f7726533"
+      ref: "108bbc4137239d36d886df0d54252f2080df33d5"
+      resolved-ref: "108bbc4137239d36d886df0d54252f2080df33d5"
       url: "https://github.com/poppingmoon/isar-community"
     source: git
     version: "3.4.1"

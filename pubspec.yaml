@@ -169,7 +169,7 @@ dev_dependencies:
   isar_community_generator:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 24625dd5efe0e04d34684feae8687792f7726533
+      ref: 108bbc4137239d36d886df0d54252f2080df33d5
       path: packages/isar_community_generator
   json_serializable: ^6.15.2
   lint: ^2.14.0
@@ -193,7 +193,7 @@ dependency_overrides:
   isar_community:
     git:
       url: https://github.com/poppingmoon/isar-community
-      ref: 24625dd5efe0e04d34684feae8687792f7726533
+      ref: 108bbc4137239d36d886df0d54252f2080df33d5
       path: packages/isar_community
   jni:
     git:
