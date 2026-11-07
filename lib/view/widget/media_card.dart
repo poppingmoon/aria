@@ -48,16 +48,21 @@ class const MediaCard({
     if (file == null) {
       return const SizedBox.shrink();
     }
-    final (highlightSensitiveMedia, sensitive, openMediaOnDoubleTap) = ref
-        .watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => (
-              settings.highlightSensitiveMedia,
-              settings.sensitive,
-              settings.openSensitiveMediaOnDoubleTap,
-            ),
-          ),
-        );
+    final (
+      highlightSensitiveMedia,
+      sensitive,
+      openMediaOnDoubleTap,
+      confirmWhenRevealingSensitiveMedia,
+    ) = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (
+          settings.highlightSensitiveMedia,
+          settings.sensitive,
+          settings.openSensitiveMediaOnDoubleTap,
+          settings.confirmWhenRevealingSensitiveMedia,
+        ),
+      ),
+    );
     final dataSaver = ref.watch(
       dataSaverProvider.select((dataSaver) => dataSaver.media),
     );
@@ -102,34 +107,32 @@ class const MediaCard({
         label: file.comment ?? file.name,
         child: hide.value
             ? InkWell(
-                onTap: () async {
-                  if (!openMediaOnDoubleTap) {
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmWhenRevealingSensitiveMedia) {
-                      final result = await confirm(
-                        context,
-                        message: t.misskey.sensitiveMediaRevealConfirm,
-                      );
-                      if (!result) return;
-                    }
-                    hide.value = false;
-                  }
-                },
-                onDoubleTap: () async {
-                  if (openMediaOnDoubleTap) {
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmWhenRevealingSensitiveMedia) {
-                      final result = await confirm(
-                        context,
-                        message: t.misskey.sensitiveMediaRevealConfirm,
-                      );
-                      if (!result) return;
-                    }
-                    hide.value = false;
-                  }
-                },
+                onTap: !openMediaOnDoubleTap
+                    ? () async {
+                        if (file.isSensitive &&
+                            confirmWhenRevealingSensitiveMedia) {
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.sensitiveMediaRevealConfirm,
+                          );
+                          if (!confirmed) return;
+                        }
+                        hide.value = false;
+                      }
+                    : null,
+                onDoubleTap: openMediaOnDoubleTap
+                    ? () async {
+                        if (file.isSensitive &&
+                            confirmWhenRevealingSensitiveMedia) {
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.sensitiveMediaRevealConfirm,
+                          );
+                          if (!confirmed) return;
+                        }
+                        hide.value = false;
+                      }
+                    : null,
                 onLongPress: () => showModalBottomSheet<void>(
                   context: context,
                   builder: (context) => _MediaCardSheet(
