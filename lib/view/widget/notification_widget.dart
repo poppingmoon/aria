@@ -8,7 +8,6 @@ import '../../extension/text_style_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
@@ -33,13 +32,12 @@ class const NotificationWidget({
   super.key,
   required final Account account,
   required final INotificationsResponse notification,
+  final bool isFollowRequestPending = false,
+  final void Function()? onFollowRequestActionDone,
 }) extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).value;
-    final followRequests = (i?.isLocked ?? false)
-        ? ref.watch(followRequestsNotifierProvider(account)).value?.items ?? []
-        : <FollowRequest>[];
     final avatarScale = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => settings.avatarScale,
@@ -139,18 +137,19 @@ class const NotificationWidget({
             icon: const Icon(Icons.schedule),
             iconBackgroundColor: eventFollow,
             subtitle: Text(t.misskey.receiveFollowRequest),
-            actions:
-                followRequests.any((request) => request.follower.id == user.id)
+            actions: isFollowRequestPending
                 ? [
                     FollowRequestActionButton(
                       account: account,
                       user: user,
                       accept: true,
+                      onDone: onFollowRequestActionDone,
                     ),
                     FollowRequestActionButton(
                       account: account,
                       user: user,
                       accept: false,
+                      onDone: onFollowRequestActionDone,
                     ),
                   ]
                 : null,

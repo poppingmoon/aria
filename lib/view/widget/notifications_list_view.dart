@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,6 +14,7 @@ import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
+import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -32,6 +34,20 @@ class const NotificationsListView({
   Widget build(BuildContext context, WidgetRef ref) {
     final notifications = ref.watch(notificationsNotifierProvider(account));
     final nextNotifications = useState(<INotificationsResponse>[]);
+    final oldestFollowRequestNotificationId = useMemoized(
+      () => notifications.value?.items
+          .lastWhereOrNull(
+            (response) =>
+                response.type == NotificationType.receiveFollowRequest,
+          )
+          ?.id,
+      [notifications.value],
+    );
+    final followRequests = oldestFollowRequestNotificationId != null
+        ? ref.watch(followRequestsNotifierProvider(account))
+        : null;
+    final oldestFollowRequestId = followRequests?.value?.items.lastOrNull?.id;
+    final nextFollowRequestUserIds = useState(<String>{});
     final lastViewedAt = ref.watch(
       notificationsLastViewedAtNotifierProvider(account),
     );
@@ -47,6 +63,16 @@ class const NotificationsListView({
     final keepAnimation = useRef(true);
     final scrollingFrom = useRef<double?>(null);
     final scrollingTo = useRef<double?>(null);
+    useEffect(() {
+      if (oldestFollowRequestNotificationId != null &&
+          oldestFollowRequestId != null) {
+        if (oldestFollowRequestNotificationId.compareTo(oldestFollowRequestId) <
+            0) {
+          ref.read(followRequestsNotifierProvider(account).notifier).loadMore();
+        }
+      }
+      return;
+    }, [oldestFollowRequestNotificationId, oldestFollowRequestId]);
     useEffect(() {
       ref
           .read(notificationsLastViewedAtNotifierProvider(account).notifier)
@@ -112,6 +138,15 @@ class const NotificationsListView({
     ref.listen(mainStreamProvider(account), (_, next) {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
+        if (notification case INotificationsResponse(
+          type: NotificationType.receiveFollowRequest,
+          :final userId?,
+        )) {
+          nextFollowRequestUserIds.value = {
+            ...nextFollowRequestUserIds.value,
+            userId,
+          };
+        }
         if (keepAnimation.value) {
           if (controller.offset < 400.0) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -133,11 +168,14 @@ class const NotificationsListView({
         }
       }
     });
+    final theme = Theme.of(context);
 
     return HapticFeedbackRefreshIndicator(
       onRefresh: () async {
         ref.invalidate(webSocketChannelProvider(account));
+        ref.invalidate(followRequestsNotifierProvider(account));
         nextNotifications.value = [];
+        nextFollowRequestUserIds.value = {};
         await Future.wait([
           ref.refresh(iNotifierProvider(account).future),
           ref.refresh(notificationsNotifierProvider(account).future),
@@ -168,7 +206,7 @@ class const NotificationsListView({
                       ),
                       width: maxContentWidth,
                       child: Material(
-                        color: Theme.of(context).colorScheme.surface,
+                        color: theme.colorScheme.surface,
                         borderRadius: BorderRadius.vertical(
                           top: index == nextNotifications.value.length - 1
                               ? const Radius.circular(8.0)
@@ -183,6 +221,17 @@ class const NotificationsListView({
                         child: NotificationWidget(
                           account: account,
                           notification: nextNotifications.value[index],
+                          isFollowRequestPending: nextFollowRequestUserIds.value
+                              .contains(nextNotifications.value[index].userId),
+                          onFollowRequestActionDone:
+                              switch (nextNotifications.value[index].userId) {
+                                final userId? =>
+                                  () => nextFollowRequestUserIds.value =
+                                      nextFollowRequestUserIds.value
+                                          .where((id) => id != userId)
+                                          .toSet(),
+                                _ => null,
+                              },
                         ),
                       ),
                     ),
@@ -234,7 +283,7 @@ class const NotificationsListView({
                       ),
                       width: maxContentWidth,
                       child: Material(
-                        color: Theme.of(context).colorScheme.surface,
+                        color: theme.colorScheme.surface,
                         borderRadius: BorderRadius.vertical(
                           top: index == 0 && nextNotifications.value.isEmpty
                               ? const Radius.circular(8.0)
@@ -247,6 +296,19 @@ class const NotificationsListView({
                         child: NotificationWidget(
                           account: account,
                           notification: notifications.value!.items[index],
+                          isFollowRequestPending:
+                              switch (notifications.value!.items[index]) {
+                                INotificationsResponse(
+                                  type: NotificationType.receiveFollowRequest,
+                                  :final userId?,
+                                ) =>
+                                  followRequests?.value?.items.any(
+                                        (request) =>
+                                            request.follower.id == userId,
+                                      ) ??
+                                      false,
+                                _ => false,
+                              },
                         ),
                       ),
                     ),
@@ -321,23 +383,27 @@ class const NotificationsListView({
 class const _NewNotificationsDivider() extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color = Theme.of(context).colorScheme.primary;
+    final theme = Theme.of(context);
 
     return ColoredBox(
-      color: Theme.of(context).colorScheme.surface,
+      color: theme.colorScheme.surface,
       child: Row(
         children: [
-          Expanded(child: Divider(color: color, thickness: 2.0)),
+          Expanded(
+            child: Divider(color: theme.colorScheme.primary, thickness: 2.0),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               t.aria.newNotifications,
               style: DefaultTextStyle.of(context).style
-                  .apply(color: color, fontSizeFactor: 0.9)
+                  .apply(color: theme.colorScheme.primary, fontSizeFactor: 0.9)
                   .copyWith(fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(child: Divider(color: color, thickness: 2.0)),
+          Expanded(
+            child: Divider(color: theme.colorScheme.primary, thickness: 2.0),
+          ),
         ],
       ),
     );
