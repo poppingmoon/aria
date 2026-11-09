@@ -148,12 +148,9 @@ class const UserSheet({
                     leading: const Icon(Icons.mail),
                     title: Text(t.misskey.createUserSpecifiedNote),
                     onTap: () {
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .addVisibleUser(user);
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .setVisibility(NoteVisibility.specified);
+                      ref.read(postNotifierProvider(account).notifier)
+                        ..setVisibility(NoteVisibility.specified)
+                        ..addVisibleUser(user);
                       context.push('/$account/post');
                     },
                   ),
