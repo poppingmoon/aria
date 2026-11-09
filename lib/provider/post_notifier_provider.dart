@@ -250,7 +250,17 @@ class PostNotifier extends _$PostNotifier {
     if (account.isGuest || noteId != null) {
       return;
     }
-    if (!state.canPost && (state.cw?.isEmpty ?? true)) {
+    if (!state
+            .copyWith(
+              text: state.text
+                  ?.replaceFirst(
+                    RegExp(r'^@[\w.-]+(@[\w.-]+)?(\s+@[\w.-]+(@[\w.-]+)?)*'),
+                    '',
+                  )
+                  .trim(),
+            )
+            .canPost &&
+        (state.cw?.isEmpty ?? true)) {
       await _deleteDraft(tabSettings, state);
       return;
     }
