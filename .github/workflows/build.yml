@@ -102,7 +102,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@v6.1.0
+        uses: actions/setup-java@v6.2.0
         with:
           distribution: zulu
           java-version: 21
@@ -182,7 +182,7 @@ jobs:
         run: flutter pub get
 
       - name: Setup Java
-        uses: actions/setup-java@v6.1.0
+        uses: actions/setup-java@v6.2.0
         with:
           distribution: zulu
           java-version: 21
@@ -550,7 +550,7 @@ jobs:
           skip-decompress: true
 
       - name: Release
-        uses: softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@v3.0.4
         with:
           files: aria-${{ github.ref_name }}*
           draft: true
