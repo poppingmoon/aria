@@ -95,6 +95,7 @@ dependencies:
   just_audio: ^0.10.6
   kana_kit: ^2.1.1
   material_color_utilities: ^0.13.0
+  material_hooks: ^0.1.0
   material_off_icons: ^0.1.0
   material_symbols_icons: ^4.2960.0
   material_ui: ^1.11.0

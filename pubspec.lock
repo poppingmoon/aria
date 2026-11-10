@@ -1384,6 +1384,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.0"
+  material_hooks:
+    dependency: "direct main"
+    description:
+      name: material_hooks
+      sha256: c10e0e33f80cab3081850dcdb257f82072baf8ecdf252f2c2f80e8d7c12c14c2
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   material_off_icons:
     dependency: "direct main"
     description:
