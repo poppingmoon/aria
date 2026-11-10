@@ -516,8 +516,8 @@ class const MfmMentionKeyboard({
             ? toAscii(second)
             : null;
         if (username != null && username.isNotEmpty) {
-          if (ref.exists(
-            searchUsersByUsernameProvider(account, username, host),
+          if (ref.read(
+            searchUsersByUsernameProvider(account, username, host).exists,
           )) {
             users.value = await ref.read(
               searchUsersByUsernameProvider(account, username, host).future,
@@ -591,7 +591,7 @@ class const MfmHashtagKeyboard({
             RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
         query.value = match?[1] ?? '';
         if (query.value case final q when q.isNotEmpty) {
-          if (ref.exists(searchHashtagsProvider(account, q))) {
+          if (ref.read(searchHashtagsProvider(account, q).exists)) {
             hashtags.value = await ref.read(
               searchHashtagsProvider(account, q).future,
             );

@@ -2186,9 +2186,9 @@ impl AsUiLibV0 {
             .map_err(v0::errors::AiScriptError::internal)?
             .insert(id.clone(), component.clone());
         let instance = v0::values::Value::obj([
-            ("id", v0::values::Value::str(&id)),
+            ("id".to_string(), v0::values::Value::str(&id)),
             (
-                "update",
+                "update".to_string(),
                 v0::values::Value::fn_native({
                     let id = id.clone();
                     let components = self.components.clone();
@@ -2237,7 +2237,7 @@ impl AsUiLibV0 {
         consts.insert(
             "Ui:root".to_string(),
             self.create_component_instance(
-                v0::values::Value::obj([("children", v0::values::Value::arr([]))]),
+                v0::values::Value::obj([("children".to_string(), v0::values::Value::arr([]))]),
                 Some(v0::values::Value::str(ROOT_ID)),
                 |value| Ok(AsUiComponent::Root(AsUiRoot::try_from(value)?)),
             )
@@ -2604,9 +2604,9 @@ impl AsUiLibV1 {
             .map_err(v1::errors::AiScriptError::internal)?
             .insert(id.clone(), component.clone());
         let instance = v1::values::Value::obj([
-            ("id", v1::values::Value::str(&id)),
+            ("id".to_string(), v1::values::Value::str(&id)),
             (
-                "update",
+                "update".to_string(),
                 v1::values::Value::fn_native({
                     let id = id.clone();
                     let components = self.components.clone();
@@ -2655,7 +2655,7 @@ impl AsUiLibV1 {
         consts.insert(
             "Ui:root".to_string(),
             self.create_component_instance(
-                v1::values::Value::obj([("children", v1::values::Value::arr([]))]),
+                v1::values::Value::obj([("children".to_string(), v1::values::Value::arr([]))]),
                 Some(v1::values::Value::str(ROOT_ID)),
                 |value| Ok(AsUiComponent::Root(AsUiRoot::try_from(value)?)),
             )

@@ -65,7 +65,7 @@ final class _ChatStreamConnectionProvider
 }
 
 String _$_chatStreamConnectionHash() =>
-    r'717c8fe5a1c2e69504e7a3b5f8962b522dd8d4fd';
+    r'ff12e72b32dfb76e17a24ba9ae113ae01715e635';
 
 final class _ChatStreamConnectionFamily extends $Family
     with
