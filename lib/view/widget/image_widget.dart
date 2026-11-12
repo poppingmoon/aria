@@ -97,6 +97,7 @@ class const ImageWidget({
             headers: {'User-Agent': ?userAgent},
             cacheManager: cacheManager,
           ),
+          useLogicalSize: true,
         ),
         width: width,
         height: height,

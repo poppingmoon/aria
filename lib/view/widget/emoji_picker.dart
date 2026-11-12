@@ -172,7 +172,6 @@ class const EmojiPicker({
       };
     }, []);
     final theme = Theme.of(context);
-    final devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
 
     return ListView(
       controller: scrollController,
@@ -241,7 +240,6 @@ class const EmojiPicker({
                       fontSizeFactor: fontScaleFactor,
                     ),
                     placeholderColor: theme.colorScheme.surfaceContainerHigh,
-                    devicePixelRatio: devicePixelRatio,
                   );
                 }),
                 ...unicodeEmojis.map(
@@ -308,7 +306,6 @@ class const EmojiPicker({
                       fontSizeFactor: fontScaleFactor,
                     ),
                     placeholderColor: theme.colorScheme.surfaceContainerHigh,
-                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -390,7 +387,6 @@ class const EmojiPicker({
                       fontSizeFactor: fontScaleFactor,
                     ),
                     placeholderColor: theme.colorScheme.surfaceContainerHigh,
-                    devicePixelRatio: devicePixelRatio,
                   );
                 } else {
                   return UnicodeEmoji(
@@ -472,7 +468,6 @@ class const EmojiPicker({
                           ),
                           placeholderColor:
                               theme.colorScheme.surfaceContainerHigh,
-                          devicePixelRatio: devicePixelRatio,
                         );
                       }).toList(),
                     ),
@@ -530,7 +525,6 @@ class const _CustomEmoji({
   final double opacity = 1.0,
   required final TextStyle fallbackTextStyle,
   required final Color placeholderColor,
-  required final double devicePixelRatio,
 }) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -551,7 +545,7 @@ class const _CustomEmoji({
           ),
         ),
       ),
-      cacheHeight: (height * devicePixelRatio).ceil(),
+      cacheHeight: height.ceil(),
     );
   }
 }
