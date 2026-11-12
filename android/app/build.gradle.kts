@@ -1,4 +1,4 @@
-import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+import com.android.build.api.variant.FilterConfiguration.FilterType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -73,12 +73,14 @@ configurations.all {
 }
 
 val abiCodes = mapOf("x86_64" to 1, "armeabi-v7a" to 2, "arm64-v8a" to 3)
-android.applicationVariants.configureEach {
-    outputs.forEach { output ->
-        val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
-        if (abiVersionCode != null) {
-            (output as ApkVariantOutputImpl).versionCodeOverride =
-                this.versionCode * 10 + abiVersionCode
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            val abiVersionCode =
+                abiCodes[output.filters.find { it.filterType == FilterType.ABI }?.identifier]
+            if (abiVersionCode != null) {
+                output.versionCode.set(flutter.versionCode * 10 + abiVersionCode)
+            }
         }
     }
 }
