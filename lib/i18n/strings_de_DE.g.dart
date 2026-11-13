@@ -130,6 +130,7 @@ class _Translations$aria$de_DE extends Translations$aria$en_US {
 	@override String get font => 'Schriftart';
 	@override String get fromDevice => 'Vom Gerät';
 	@override String get guest => 'Gast';
+	@override String get hidePostFormAfterPost => 'Post-Formular nach dem Absenden ausblenden';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria wird durch freiwillige Helfer in viele verschiedene Sprachen übersetzt. Auf '),
 		link,
