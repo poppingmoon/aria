@@ -309,7 +309,7 @@ class const AsUiWidget({
                     ),
               ),
           onClickEv: onClickEv != null
-              ? (clickEv) => onClickEv.call(value: clickEv)
+              ? (clickEv) => onClickEv(value: clickEv)
               : null,
           enableEmojiFadeIn: false,
         );
@@ -391,9 +391,7 @@ class const AsUiWidget({
           defaultValue: defaultValue,
           label: label,
           caption: caption,
-          onChanged: onInput != null
-              ? (value) => onInput.call(value: value)
-              : null,
+          onChanged: onInput != null ? (value) => onInput(value: value) : null,
           minLines: 6,
           maxLines: 6,
         );
@@ -409,9 +407,7 @@ class const AsUiWidget({
           defaultValue: defaultValue,
           label: label,
           caption: caption,
-          onChanged: onInput != null
-              ? (value) => onInput.call(value: value)
-              : null,
+          onChanged: onInput != null ? (value) => onInput(value: value) : null,
           maxLines: 1,
         );
       case AsUiComponent_NumberInput(
@@ -616,6 +612,28 @@ class const _TextField({
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: defaultValue);
+    useEffect(() {
+      if (defaultValue case final defaultValue?) {
+        controller.text = defaultValue;
+      }
+      return;
+    }, [defaultValue]);
+    useEffect(() {
+      String previousText = controller.text;
+      void callback() {
+        if (controller.value.composing != TextRange.empty) {
+          return;
+        }
+        if (onChanged case final onChanged?
+            when controller.text != previousText) {
+          previousText = controller.text;
+          onChanged(controller.text);
+        }
+      }
+
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [onChanged]);
     final style = DefaultTextStyle.of(context);
 
     return Column(
@@ -635,7 +653,6 @@ class const _TextField({
             controller: controller,
             decoration: InputDecoration(isDense: maxLines <= 1),
             style: style.style,
-            onChanged: onChanged,
             minLines: minLines,
             maxLines: maxLines,
             onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -671,6 +688,37 @@ class const _NumberInput({
         _ => null,
       },
     );
+    useEffect(() {
+      if (defaultValue case final defaultValue?) {
+        controller.text = defaultValue == defaultValue.toInt()
+            ? defaultValue.toInt().toString()
+            : defaultValue.toString();
+      }
+      return;
+    }, [defaultValue]);
+    useEffect(() {
+      String previousText = controller.text;
+      double? previousValue = double.tryParse(controller.text);
+      void callback() {
+        if (controller.value.composing != TextRange.empty) {
+          return;
+        }
+        if (onInput case final onInput? when controller.text != previousText) {
+          previousText = controller.text;
+          if (controller.text.isEmpty) {
+            previousValue = null;
+            onInput(value: double.nan);
+          } else if (double.tryParse(controller.text) case final value?
+              when value != previousValue) {
+            previousValue = value;
+            onInput(value: value);
+          }
+        }
+      }
+
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [onInput]);
     final style = DefaultTextStyle.of(context);
 
     return Column(
@@ -702,17 +750,11 @@ class const _NumberInput({
                     onPressed: () {
                       if (controller.text.isEmpty) {
                         controller.text = '-1';
-                        if (onInput case final onInput?) {
-                          onInput.call(value: -1);
-                        }
                         return;
                       }
-                      final i = int.tryParse(controller.text);
-                      if (i != null) {
-                        controller.text = (i - 1).toString();
-                        if (onInput case final onInput?) {
-                          onInput.call(value: i - 1);
-                        }
+                      final value = double.tryParse(controller.text);
+                      if (value != null) {
+                        controller.text = (value - 1.0).ceil().toString();
                       }
                     },
                     icon: const Icon(Icons.remove),
@@ -728,17 +770,11 @@ class const _NumberInput({
                     onPressed: () {
                       if (controller.text.isEmpty) {
                         controller.text = '1';
-                        if (onInput case final onInput?) {
-                          onInput.call(value: 1);
-                        }
                         return;
                       }
-                      final i = int.tryParse(controller.text);
-                      if (i != null) {
-                        controller.text = (i + 1).toString();
-                        if (onInput case final onInput?) {
-                          onInput.call(value: i + 1);
-                        }
+                      final value = double.tryParse(controller.text);
+                      if (value != null) {
+                        controller.text = (value + 1.0).floor().toString();
                       }
                     },
                     icon: const Icon(Icons.add),
@@ -758,15 +794,6 @@ class const _NumberInput({
                 }
               }),
             ],
-            onChanged: switch (onInput) {
-              final onInput? => (value) async {
-                final v = double.tryParse(value);
-                if (v != null) {
-                  await onInput.call(value: v);
-                }
-              },
-              _ => null,
-            },
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ),
