@@ -60,7 +60,7 @@ final class _TimelineStreamConnectionProvider
 }
 
 String _$_timelineStreamConnectionHash() =>
-    r'1522bb0e25424b37c98cde814790a404b3fe49ca';
+    r'02d79dc252b7efd7392f0da359fa400bd0b451de';
 
 final class _TimelineStreamConnectionFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<String>, TabSettings> {
